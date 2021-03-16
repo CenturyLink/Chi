@@ -1,0 +1,25 @@
+---
+title: Search input
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+- var statuses = ['initial', 'hover', 'focus']
+- var sizes = ['default', 'sm', 'md', 'lg', 'xl']
+
+each size in sizes
+  div(class=`test-${size}`)
+    span.-text--h2= `Text Input / ${size}`
+    table(cellpadding='0', cellspacing='0', width='600px')
+      each status in statuses
+        tr
+          td
+            small= `${status}`
+          td
+            .-m--1
+              .chi-form__item.-row
+                .chi-input__wrapper.-icon--right
+                  chi-search-input(
+                    _status= status,
+                    size= size != 'default' && size,
+                    value='Value')

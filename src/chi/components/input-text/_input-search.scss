@@ -1,0 +1,87 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-search {
+  &__input {
+    ~ .chi-button,
+    ~ chi-button {
+      &.-icon {
+        &.-flat,
+        &.-close {
+          position: absolute;
+          top: 0;
+        }
+
+        &.-flat {
+          right: 0.25rem;
+        }
+
+        &.-close {
+          right: 2.25rem;
+        }
+      }
+    }
+
+    &[disabled],
+    &.-disabled {
+      ~ .chi-button,
+      ~ chi-button {
+        cursor: not-allowed;
+      }
+    }
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      display: none;
+    }
+  }
+}
+
+.chi-input__wrapper {
+  &.-icon--right {
+    input {
+      &[type='search'] {
+        &.chi-search__input {
+          padding-right: 4.25rem;
+
+          &.-sm {
+            padding-right: 3.375rem;
+
+            ~ .chi-button,
+            ~ chi-button {
+              &.-icon {
+                &.-flat {
+                  right: 0.375rem;
+                }
+
+                &.-close {
+                  right: 1.875rem;
+                }
+              }
+            }
+          }
+
+          &.-lg {
+            ~ .chi-button,
+            ~ chi-button {
+              &.-icon {
+                top: 0.25rem;
+              }
+            }
+          }
+
+          &.-xl {
+            ~ .chi-button,
+            ~ chi-button {
+              &.-icon {
+                top: 0.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
