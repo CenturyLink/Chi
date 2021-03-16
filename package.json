@@ -19,6 +19,7 @@
     "test:e2e:interactive": "gulp test:e2e:interactive",
     "echo": "gulp --version",
     "lint:css": "gulp lint:css",
+    "sri": "gulp sri:chi:assets",
     "test:backstop:responsive": "gulp backstop-test-responsive",
     "test:backstop:non-responsive": "gulp backstop-test-non-responsive",
     "test:backstop:non-responsive:ce": "gulp backstop-custom-elements-test"
@@ -46,8 +47,10 @@
     "gulp-index": "0.2.0",
     "gulp-plumber": "1.2.1",
     "gulp-postcss": "8.0.0",
+    "gulp-replace": "1.0.0",
     "gulp-sass": "4.0.2",
     "gulp-sass-lint": "1.4.0",
+    "gulp-sri": "0.3.1",
     "gulp-svg-sprite": "1.5.0",
     "gulp-wait": "0.0.2",
     "jstransformer-html-beautify": "0.0.1",
