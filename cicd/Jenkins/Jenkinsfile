@@ -471,6 +471,9 @@ pipeline {
             }  catch (Exception e) {
               echo "No coverage data"
             }
+            unstash name: "BACKSTOP-CE-CI"
+            unstash name: "BACKSTOP-NON-RES-CI"
+            unstash name: "BACKSTOP-RES-CI"
             jslSonarQubeStaticAnalysis('./cicd/docker/SonarQube/sonar-project.properties', env.SONARQUBE_CREDENTIALS)
           }
         }
