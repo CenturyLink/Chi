@@ -20,6 +20,7 @@
     "echo": "gulp --version",
     "lint:css": "gulp lint:css",
     "sri": "gulp sri:chi:assets",
+    "update:boilerplate:assets": "gulp update:boilerplate:assets",
     "test:backstop:responsive": "gulp backstop-test-responsive",
     "test:backstop:non-responsive": "gulp backstop-test-non-responsive",
     "test:backstop:non-responsive:ce": "gulp backstop-custom-elements-test"
