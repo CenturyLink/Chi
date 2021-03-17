@@ -1,0 +1,26 @@
+      stage('Publish Chi-Vue') {
+        when {
+          beforeAgent true
+          branch 'master'
+        }
+        agent {
+          dockerfile {
+            filename 'Dockerfile'
+            dir 'cicd/docker/jira'
+            label 'Docker-enabled'
+            // registryUrl DOCKER_REGISTRY
+            // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
+          }
+        }
+        steps {
+          script {
+            dir('src/chi-vue') {
+              unstash name: "DIST-CHI-VUE"
+              unstash name: "NODEMODULES-CHI-VUE"
+              jslNpmWrapper('pack')
+              jslNpmWrapper('login --scope=@centurylink --registry=https://npm.pkg.github.com')
+              jslNpmWrapper('publish')
+            }
+          }
+        }
+      }
