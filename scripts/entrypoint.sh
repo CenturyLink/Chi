@@ -63,7 +63,9 @@ build() {
     unbuffer npm run build 2>&1 | addheader_custom_elements
     cd /chi/src/chi-vue
     unbuffer npm run build:component 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
-
+    cd /chi
+    unbuffer npm run sri 2>&1 | addheader_chi
+    unbuffer npm run update:boilerplate:assets
 }
 
 publish_chi_vue() {
@@ -94,6 +96,8 @@ test() {
 
     cd /chi
     npm run test
+    unbuffer npm run sri 2>&1 | addheader_chi
+    unbuffer npm run update:boilerplate:assets
 }
 
 OPTION=$1

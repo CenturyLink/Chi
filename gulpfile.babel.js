@@ -3,6 +3,7 @@ import gulp from 'gulp';
 const requires = {
   'clean': require('./tasks/clean.js'),
   'serve': require('./tasks/serve.js'),
+  'update-boilerplate-assets': require('./tasks/update-boilerplate-assets.js'),
   'build-boilerplates': require('./tasks/build-boilerplates.js'),
   'build-chi-styles': require('./tasks/build-chi-styles.js'),
   'build-ctl-styles': require('./tasks/build-ctl-styles.js'),
@@ -21,6 +22,7 @@ const requires = {
   'build-website-views': require('./tasks/build-website-views.js'),
   'build-website': require('./tasks/build-website.js'),
   'copy-chi-ce-scripts': require('./tasks/copy-chi-ce-scripts'),
+  'sri-chi-assets' : require('./tasks/sri-chi-assets'),
   'build': require('./tasks/build.js'),
   'backstop': require('./tasks/backstop.js'),
   'ci': require('./tasks/ci.js'),

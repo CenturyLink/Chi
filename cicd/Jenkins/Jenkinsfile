@@ -45,9 +45,9 @@ pipeline {
       GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
       AMAZON_CREDENTIALS = 'awsCredentialsPR'
       AMAZON_CREDENTIALS_PR = 'awsCredentials'
-      SONARQUBE_CREDENTIALS = ''
+      SONARQUBE_CREDENTIALS = 'sonar-credentials'
       GCP_CREDENTIALS = ''
-      JIRA_CREDENTIALS = ''
+      JIRA_CREDENTIALS = 'jira-credentials'
       MSTEAMS_CREDENTIALS = ''
       QUALITY_GATE_CREDENTIALS = ''
       //Deployment control credentialsId
@@ -113,9 +113,9 @@ pipeline {
                 echo "CHANGE_ID: ${env.CHANGE_ID}"                       
             """, label: "Details summary"
             if ( BRANCH_NAME != "master" && BRANCH_NAME != "pr-*" ) {
-              currentBuild.description = "<a href='https://github.com/CenturyLinkCloud/ux-chi/tree/${BRANCH_NAME}'>${BRANCH_NAME}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${BRANCH_NAME}";
-            } else if ( BRANCH_NAME != "master" && BRANCH_NAME == "pr-*") {
-              currentBuild.description = "<a href='https://github.com/CenturyLinkCloud/ux-chi/pull/${CHANGE_ID}'>PR#${CHANGE_ID}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${PULL_REQUEST}";
+              currentBuild.description = "<a href='https://github.com/CenturyLink/Chi/tree/${BRANCH_NAME}'>${BRANCH_NAME}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${BRANCH_NAME}";
+            } else if ( BRANCH_NAME != "master" && BRANCH_NAME == "pr-*" && BRANCH_NAME == "PR-*" ) {
+              currentBuild.description = "<a href='https://github.com/CenturyLink/Chi/pull/${CHANGE_ID}'>PR#${CHANGE_ID}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${PULL_REQUEST}";
             }
           }
         }
@@ -310,7 +310,11 @@ pipeline {
                   cp -a config/backstop_data/bitmaps_reference/responsive reports/html_report/responsive/bitmaps_reference
                 """, label: "Copying for executing BackstopJS Responsive tests"
                 jslNpmWrapper('run test:backstop:responsive')
-                archiveArtifacts artifacts: 'reports/html_report/responsive/*.*', fingerprint: true
+                stash name: "BACKSTOP-RES-HTML", includes: "reports/html_report/responsive/**"
+                stash name: "BACKSTOP-RES-CI", includes: "reports/ci_report/responsive/**"  
+                archiveArtifacts artifacts: "reports/html_report/responsive/**", fingerprint: true
+                jslPublishTestResults('reports/ci_report/responsive/xunit.xml')
+                sh "test ${currentBuild.currentResult} != UNSTABLE"
               }
             }
           }
@@ -338,7 +342,11 @@ pipeline {
                   cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive/bitmaps_reference
                 """, label: "Copying for executing BackstopJS Non-Responsive tests"
                 jslNpmWrapper('run test:backstop:non-responsive')
-                archiveArtifacts artifacts: 'reports/html_report/non_responsive/*.*', fingerprint: true
+                stash name: "BACKSTOP-NON-RES-HTML", includes: "reports/html_report/non_responsive/**"
+                stash name: "BACKSTOP-NON-RES-CI", includes: "reports/ci_report/non_responsive/**"
+                archiveArtifacts artifacts: "reports/html_report/non_responsive/**", fingerprint: true
+                jslPublishTestResults('reports/ci_report/non_responsive/xunit.xml')
+                sh "test ${currentBuild.currentResult} != UNSTABLE"
               }
             }
           }
@@ -366,59 +374,14 @@ pipeline {
                   cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive_ce/bitmaps_reference
                 """, label: "Copying for executing BackstopJS Custom Elements tests"
                 jslNpmWrapper('run test:backstop:non-responsive:ce')
-                archiveArtifacts artifacts: 'reports/html_report/non_responsive_ce/*.*', fingerprint: true
+                stash name: "BACKSTOP-CE-HTML", includes: "reports/html_report/non_responsive_ce/**"
+                stash name: "BACKSTOP-CE-CI", includes: "reports/ci_report/non_responsive_ce/**"
+                archiveArtifacts artifacts: "reports/html_report/non_responsive_ce/**", fingerprint: true
+                jslPublishTestResults('reports/ci_report/non_responsive_ce/xunit.xml')
+                sh "test ${currentBuild.currentResult} != UNSTABLE"            
               }
             }
           }
-          // stage ('Unit Testing') {
-          //   agent {
-          //     dockerfile {
-          //       filename 'Dockerfile'
-          //       dir 'cicd/docker/sonar-scanner'
-          //       label 'Docker-enabled'
-          //       args '-m 2G --shm-size=2gb'
-          //       // registryUrl DOCKER_REGISTRY
-          //       // registryCredentialsId DOCKER_CREDENTIALS
-          //     }
-          //   }
-          //   steps {
-          //     script {
-          //       sh """
-          //         rm -rf dist
-          //         rm -rf node_modules
-          //       """
-          //       unstash name: "DIST-CHI"
-          //       unstash name: "NODEMODULES-CHI"
-          //       dir ('src/custom-elements') {
-          //         sh """
-          //           rm -rf dist
-          //           rm -rf node_modules
-          //         """
-          //         unstash name: "DIST-CHI-CE"
-          //         unstash name: "NODEMODULES-CHI-CE"
-          //       }
-          //       dir ('src/chi-vue') {
-          //         sh """
-          //           rm -rf dist
-          //           rm -rf node_modules
-          //         """
-          //         unstash name: "DIST-CHI-VUE"
-          //         unstash name: "NODEMODULES-CHI-VUE"
-          //       }
-          //       sh script: """
-          //         rm -rf reports test/bitmaps_test
-          //         mkdir -p reports/html_report/non_responsive
-          //         mkdir -p reports/html_report/non_responsive_ce
-          //         mkdir -p reports/html_report/responsive
-          //         cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive_ce/bitmaps_reference
-          //         cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive/bitmaps_reference
-          //         cp -a config/backstop_data/bitmaps_reference/responsive reports/html_report/responsive/bitmaps_reference
-          //       """, label: "Copying config files"
-          //       jslNpmWrapper('run test')
-          //       archiveArtifacts artifacts: 'reports/**/*.*', fingerprint: true
-          //     }
-          //   }
-          // }
           stage ('Cypress local Testing') {
             agent {
               dockerfile {
@@ -465,7 +428,7 @@ pipeline {
           }
         }
       }
-      stage('Coverage'){
+      stage('Coverage') {
         agent {
           dockerfile {
             filename 'Dockerfile'
@@ -487,12 +450,11 @@ pipeline {
             // jslNpmWrapper('run cover:report:jenkins || echo Error when evaluating coverage report!')
             // stash name: "COVERAGE", includes: "coverage/**"
             // archiveArtifacts artifacts: 'coverage/**'
-            // jslQualityGateCodeCoverage('./cicd/docker/SonarQube/sonar-project.properties')
-            echo "Coverage will be enabled as soon as Sonarqube is available for CHI"
+            jslQualityGateCodeCoverage('./cicd/docker/SonarQube/sonar-project.properties')
           }
         }
       }
-      stage('Coverage upload to Sonarqube'){
+      stage('Coverage upload to Sonarqube') {
         agent {
           dockerfile {
             filename 'Dockerfile'
@@ -504,13 +466,15 @@ pipeline {
         }
         steps {
           script {
-            // try {
-            //   unstash name: "COVERAGE"
-            // }  catch (Exception e) {
-            //   echo "No coverage data"
-            // }
-            // jslSonarQubeStaticAnalysis('./cicd/docker/SonarQube/sonar-project.properties', env.SONARQUBE_CREDENTIALS)
-            echo "Coverage upload will be enabled as soon as Sonarqube is available for CHI"
+            try {
+              unstash name: "COVERAGE"
+            }  catch (Exception e) {
+              echo "No coverage data"
+            }
+            unstash name: "BACKSTOP-CE-CI"
+            unstash name: "BACKSTOP-NON-RES-CI"
+            unstash name: "BACKSTOP-RES-CI"
+            jslSonarQubeStaticAnalysis('./cicd/docker/SonarQube/sonar-project.properties', env.SONARQUBE_CREDENTIALS)
           }
         }
       }
@@ -526,8 +490,7 @@ pipeline {
         }
         steps {
           script {
-            // jslQualityGate()
-            echo "Quality gate check will be enabled as soon as Sonarqube is available for CHI"
+            jslQualityGate()
           }
         }
       }
@@ -583,20 +546,27 @@ pipeline {
         }
         steps {
           script {
-            // try {
-            //   unstash name: "E2E_REPORTS"
-            //   jslAdoptionMain('tests/e2e/reports/*xml')
-            // } catch (Exception e) {
-            //   try {
-            //     unstash name: "UNIT_REPORTS"
-            //     jslAdoptionMain('tests/unit/reports/*xml')
-            //     echo "No E2E results found, reporting only unit"
-            //   } catch (Exception exc) {
-            //     echo "No E2E or Unit results found, reporting simple unit"
-            //     unstash name: "TEST_PROD"
-            //     jslAdoptionMain('test-results.xml')
-            //   }
-            echo "Adoption stats will be enabled as soon as E2E testing is enabled"
+            try {
+              unstash name: "E2E_REPORTS"
+              jslAdoptionMain('reports/cypress/*xml')
+            } catch (Exception e) {
+              try {
+                unstash name: "BACKSTOP-CE-CI"
+                unstash name: "BACKSTOP-NON-RES-CI"
+                unstash name: "BACKSTOP-RES-CI"
+                sh """
+                  ls -lah reports/ci_report/responsive
+                  ls -lah reports/ci_report/non_responsive
+                  ls -lah reports/ci_report/non_responsive_ce
+                """
+                jslAdoptionMain('reports/ci_report/responsive/*.xml')
+                jslAdoptionMain('reports/ci_report/non_responsive/*.xml')
+                jslAdoptionMain('reports/ci_report/non_responsive_ce/*.xml')
+                echo "No E2E results found, reporting only unit"
+              } catch (Exception exc) {
+                echo "No tests present"
+              }
+            }
           }
         }
       }
@@ -742,7 +712,7 @@ PRDesc
                   git config user.email "scmauto@lumen.com"
                   git config user.name "SCMAUTO"
                   git commit -m "CHI_\$VERSION"
-                  git push origin CHI_\$VERSION
+                  git push -f origin CHI_\$VERSION
                 """, label: "Pushing branch to AssetsServer"
                 dir ('ux-chi-AssetsServer') {
                   jslHubWrapper('pull-request -F prepared-message.md')
@@ -770,5 +740,5 @@ PRDesc
       always {
         cleanWs()  
       }
-    }
+  }
 }
