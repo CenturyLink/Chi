@@ -640,7 +640,7 @@ pipeline {
                     cat package.json | grep '"version":' | cut -f4 -d '"'
                   """,
                   returnStdout: true 
-                ).trim
+                ).trim()
                 jslHubWrapper("release create -F shortCHANGELOG.md v${VERSION}")
               }
             }
