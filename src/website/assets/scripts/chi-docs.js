@@ -222,4 +222,77 @@ onLoad(() => {
   if (drawerAccessibilityAccordion) {
     chi.accordion(drawerAccessibilityAccordion);
   }
+
+  window.theme = 'Lumen';
+
+  var themeAssets = {
+    chiCss: document.getElementById('chi-css'),
+    docsCss: document.getElementById('docs-css'),
+    faviconSvg: document.getElementById('favicon-svg'),
+    faviconIco: document.getElementById('favicon-ico')
+  };
+  var themes = {
+    Lumen: {
+      chiCss: '/chi.css',
+      docsCss: '/assets/themes/lumen/docs.css',
+      faviconSvg: '/assets/themes/lumen/images/favicon.svg',
+      faviconIco: '/assets/themes/lumen/images/favicon.ico',
+    },
+    CenturyLink: {
+      chiCss: '/chi-centurylink.css',
+      docsCss: '/assets/themes/centurylink/docs.css',
+      faviconSvg: '/assets/themes/centurylink/images/favicon.svg',
+      faviconIco: '/assets/themes/centurylink/images/favicon.ico',
+    }
+  };
+
+  chi.dropdown(document.querySelectorAll('.-theme-switch'));
+
+  window.switchTheme = function(theme, anchorTarget) {
+    var themeFavicon = anchorTarget.querySelector('img').getAttribute('src');
+    var themeSwitchButtons = document.querySelectorAll('button.-theme-switch');
+
+    window.theme = theme;
+    Array.prototype.forEach.call(
+      ['chiCss', 'docsCss', 'faviconSvg', 'faviconIco'],
+      function(asset) {
+        themeAssets[asset].setAttribute('href', themes[theme][asset]);
+      }
+    );
+
+    Array.prototype.forEach.call(
+      themeSwitchButtons,
+      function (button) {
+        const buttonImg = button.querySelector('img.-favicon');
+        const buttonThemeName = button.querySelector('.-theme-name');
+
+        buttonImg.setAttribute('src', themeFavicon);
+        buttonThemeName.innerText = window.theme;
+      }
+    );
+
+    Array.prototype.forEach.call(
+      anchorTarget.parentNode.querySelectorAll('a'),
+      function (anchor) {
+        if (anchor.classList.contains('-active')) {
+          anchor.classList.remove('-active');
+        }
+      }
+    );
+
+    Array.prototype.forEach.call(
+      document.querySelectorAll('nav.chi-header__content .chi-header__brand#header-brand .-logo-wrapper'),
+      function (logo) {
+        if (logo.classList.contains(`-${theme.toLowerCase()}`)) {
+          if (logo.classList.contains('-d--none')) {
+            logo.classList.remove('-d--none');
+          }
+        } else {
+          logo.classList.add('-d--none');
+        }
+      }
+    );
+
+    anchorTarget.classList.add('-active');
+  }
 });

@@ -2,9 +2,11 @@ import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import imagemin from 'gulp-imagemin';
 
-function buildWebsiteImages() {
+const merge = require('merge-stream');
+
+function buildIamges(source, dest) {
   return gulp.src(
-    'src/website/assets/images/**/*',
+    source,
     { since: gulp.lastRun(buildWebsiteImages) })
     .pipe(plumber())
     .pipe(imagemin([
@@ -18,10 +20,18 @@ function buildWebsiteImages() {
         ]
       })
     ]))
-    .pipe(gulp.dest('dist/assets/images'));
+    .pipe(gulp.dest(dest));
 }
 
-buildWebsiteImages.description = 'Optimizes images and puts them in ' +
-  'the dist/assets/images folder. Returns a stream. ';
+function buildWebsiteImages() {
+  const globalImages = buildIamges('src/website/assets/images/**/*', 'dist/assets/images');
+  const centurylinkImages = buildIamges('src/website/assets/themes/centurylink/images/**/*', 'dist/assets/themes/centurylink/images');
+  const lumenImages = buildIamges('src/website/assets/themes/lumen/images/**/*', 'dist/assets/themes/lumen/images');
+
+  return merge(globalImages, centurylinkImages, lumenImages);
+}
+
+buildWebsiteImages.description = 'Optimizes website images and puts them in ' +
+  'the respective folders. Returns a stream. ';
 
 gulp.task('build:website:images', buildWebsiteImages);

@@ -1,15 +1,10 @@
-$inter-url: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap';
-
-@import url($inter-url);
-
-/*
 @font-face {
   font-display: swap;
   font-family: 'Maison Neue';
   font-style: normal;
   font-weight: 400;
-  src: url('fonts/MaisonNeue-Book.otf') format('opentype'),
-  url('fonts/MaisonNeue-Book.woff') format('woff');
+  src: url('fonts/themes/centurylink/MaisonNeue-Book.otf') format('opentype'),
+  url('fonts/themes/centurylink/MaisonNeue-Book.woff') format('woff');
 }
 
 @font-face {
@@ -17,8 +12,8 @@ $inter-url: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700
   font-family: 'Maison Neue';
   font-style: normal;
   font-weight: 300;
-  src: url('fonts/MaisonNeue-Light.otf') format('opentype'),
-  url('fonts/MaisonNeue-Light.woff') format('woff');
+  src: url('fonts/themes/centurylink/MaisonNeue-Light.otf') format('opentype'),
+  url('fonts/themes/centurylink/MaisonNeue-Light.woff') format('woff');
 }
 
 @font-face {
@@ -26,9 +21,9 @@ $inter-url: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700
   font-family: 'Maison Neue';
   font-style: normal;
   font-weight: 500;
-  src: url('fonts/MaisonNeue-Medium.eot?#iefix') format('embedded-opentype'),
-  url('fonts/MaisonNeue-Medium.otf') format('opentype'),
-  url('fonts/MaisonNeue-Medium.woff') format('woff');
+  src: url('fonts/themes/centurylink/MaisonNeue-Medium.eot?#iefix') format('embedded-opentype'),
+  url('fonts/themes/centurylink/MaisonNeue-Medium.otf') format('opentype'),
+  url('fonts/themes/centurylink/MaisonNeue-Medium.woff') format('woff');
 }
 
 @font-face {
@@ -36,8 +31,8 @@ $inter-url: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700
   font-family: 'Maison Neue';
   font-style: normal;
   font-weight: 700;
-  src: url('fonts/MaisonNeue-Bold.otf') format('opentype'),
-  url('fonts/MaisonNeue-Bold.woff') format('woff');
+  src: url('fonts/themes/centurylink/MaisonNeue-Bold.otf') format('opentype'),
+  url('fonts/themes/centurylink/MaisonNeue-Bold.woff') format('woff');
 }
 
 @font-face {
@@ -45,8 +40,8 @@ $inter-url: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700
   font-family: 'Maison Neue Extended';
   font-style: normal;
   font-weight: 100;
-  src: url('fonts/MaisonNeueExtendedThin.otf') format('opentype'),
-  url('fonts/MaisonNeueExtendedThin.woff') format('woff');
+  src: url('fonts/themes/centurylink/MaisonNeueExtendedThin.otf') format('opentype'),
+  url('fonts/themes/centurylink/MaisonNeueExtendedThin.woff') format('woff');
 }
 
 @font-face {
@@ -54,9 +49,9 @@ $inter-url: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700
   font-family: 'Maison Neue';
   font-style: normal;
   font-weight: 800;
-  src: url('fonts/MaisonNeue-ExtraBold.eot?#iefix') format('embedded-opentype'),
-  url('fonts/MaisonNeue-ExtraBold.otf') format('opentype'),
-  url('fonts/MaisonNeue-ExtraBold.woff') format('woff');
+  src: url('fonts/themes/centurylink/MaisonNeue-ExtraBold.eot?#iefix') format('embedded-opentype'),
+  url('fonts/themes/centurylink/MaisonNeue-ExtraBold.otf') format('opentype'),
+  url('fonts/themes/centurylink/MaisonNeue-ExtraBold.woff') format('woff');
 }
 
 @font-face {
@@ -64,8 +59,6 @@ $inter-url: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700
   font-family: 'Maison Neue';
   font-style: normal;
   font-weight: 100;
-  src: url('fonts/MaisonNeueThin.otf') format('opentype'),
-  url('fonts/MaisonNeueThin.woff') format('woff');
+  src: url('fonts/themes/centurylink/MaisonNeueThin.otf') format('opentype'),
+  url('fonts/themes/centurylink/MaisonNeueThin.woff') format('woff');
 }
-*/
-

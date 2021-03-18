@@ -1,3 +1,19 @@
+.chi-dropdown.-w--100
+  button.-theme-switch.chi-button.-position--relative.-fluid.chi-dropdown__trigger
+    .chi-button__content.-flex--column
+      span.-d--flex.-w--100.-mr--0.-text--normal.-text--sm Theme
+      .-d--flex
+        .-align-items--center.-mr--1
+          img.-favicon(width='16', height='16', src='https://assets.ctl.io/images/favicon.ico')
+        div.-theme-name CenturyLink
+  .chi-dropdown__menu.-w--md
+    a.chi-dropdown__menu-item.-active(href='#' onclick="switchTheme('CenturyLink', this)")
+      img.-mr--1(width='16', height='16', src='https://assets.ctl.io/images/favicon.ico')
+      .-theme-name CenturyLink
+    a.chi-dropdown__menu-item(href='#' onclick="switchTheme('Lumen', this)")
+      img.-mr--1(width='16', height='16', src='https://assets.ctl.io/chi/3.13.0/assets/images/favicon.svg')
+      .-theme-name Lumen
+
 ul.chi-tabs.-vertical.-lg.-animated
   each collection, key in collections
     if utils.hasActiveSections(collection)
