@@ -3,28 +3,40 @@
 
 $brand-sizes: (
   xs: (
-    height: 0.75rem,
-    width: 5.25rem,
+    lumen-height: 0.75rem,
+    lumen-width: 5.25rem,
+    centurylink-height: 0.75rem,
+    centurylink-width: 3.731rem,
   ),
   sm: (
-    height: 1rem,
-    width: 7rem,
+    lumen-height: 1rem,
+    lumen-width: 7rem,
+    centurylink-height: 1rem,
+    centurylink-width: 4.975rem,
   ),
   md: (
-    height: 1.25rem,
-    width: 8.75rem,
+    lumen-height: 1.25rem,
+    lumen-width: 8.75rem,
+    centurylink-height: 2rem,
+    centurylink-width: 9.951rem,
   ),
   lg: (
-    height: 1.5rem,
-    width: 10.5rem,
+    lumen-height: 1.5rem,
+    lumen-width: 10.5rem,
+    centurylink-height: 4rem,
+    centurylink-width: 19.902rem,
   ),
   xl: (
-    height: 2rem,
-    width: 14rem,
+    lumen-height: 2rem,
+    lumen-width: 14rem,
+    centurylink-height: 6rem,
+    centurylink-width: 29.853rem,
   ),
   xxl: (
-    height: 2.5rem,
-    width: 17.5rem,
+    lumen-height: 2.5rem,
+    lumen-width: 17.5rem,
+    centurylink-height: 8rem,
+    centurylink-width: 39.805rem,
   ),
 );
 
@@ -36,12 +48,28 @@ $brand-sizes: (
     width: 8.75rem;
   }
 
+  &.-centurylink {
+    & > img,
+    & > svg {
+      height: 2rem;
+      width: 9.951rem;
+    }
+  }
+
   @each $type in map-keys($brand-sizes) {
     &.-#{$type} {
       & > img,
       & > svg {
-        height: map-get(map-get($brand-sizes, $type), height);
-        width: map-get(map-get($brand-sizes, $type), width);
+        height: map-get(map-get($brand-sizes, $type), lumen-height);
+        width: map-get(map-get($brand-sizes, $type), lumen-width);
+      }
+
+      &.-centurylink {
+        & > img,
+        & > svg {
+          height: map-get(map-get($brand-sizes, $type), centurylink-height);
+          width: map-get(map-get($brand-sizes, $type), centurylink-width);
+        }
       }
     }
   }

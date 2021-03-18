@@ -8,10 +8,12 @@
 @import '../../components/icons/webfont-font-face';
 @import '../../foundations/reset/reset';
 @import 'typography/root-typography';
+@import 'css-variables';
 
 $theme: 'lumen';
 
 .chi {
+  @extend %css-variables;
   @extend %root-typography;
   @import 'typography/typography';
   @import '../../components/accordion/accordion';

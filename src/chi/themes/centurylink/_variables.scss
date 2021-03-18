@@ -189,6 +189,7 @@ $color-text-code:                     $color-mint-60;
 // Icon color
 $color-icon-base:                     $color-grey-100;
 $color-icon-primary:                  $color-blue-70;
+$color-icon-primary-dark:             $color-blue-90;
 $color-icon-secondary:                $color-mint-40;
 $color-icon-secondary-dark:           $color-mint-50;
 $color-icon-success:                  $color-green-50;
@@ -264,6 +265,28 @@ $border-radius-base: 0; // 0px
 $border-radius-sharp: 0;
 $border-radius-circle: 50%;
 $border-radius: $border-radius-base;
+
+// Marketing icon color
+$color-marketing-icon-primary:              $color-icon-primary;
+$color-marketing-icon-secondary:            $color-icon-primary;
+$color-marketing-icon-shadow:               $color-icon-secondary;
+
+// Link CTA icon color
+$color-link-cta-icon:                       $color-icon-primary;
+
+// Sidenav color
+$color-sidenav-background:                  $color-background-base;
+$color-sidenav-border:                      $color-border-base;
+$color-sidenav-item-border-hover:           $color-border-dark;
+$color-sidenav-item-background-hover:       $color-background-base-darker;
+$color-sidenav-item-border-active:          $color-border-primary;
+$color-sidenav-item-background-active:      $color-background-primary-light;
+$color-sidenav-drawer-header-background:    $color-background-base;
+
+// Tab color
+$color-tabs-inverse-item-border-active:     $color-border-secondary;
+$color-tabs-inverse-item-text-active:       $color-text-secondary;
+$color-tabs-inverse-item-text-hover:        $color-text-secondary;
 
 // Semantic colors
 $color-semantic: (

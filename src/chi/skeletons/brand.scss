@@ -15,6 +15,11 @@ chi-brand:not(.hydrated) {
   height: 1.25rem;
   width: 8.75rem;
 
+  &[logo='centurylink'] {
+    height: 2rem;
+    width: 9.951rem;
+  }
+
   @each $name, $height in $sizes {
     &[size=#{$name}] {
       height: $height;

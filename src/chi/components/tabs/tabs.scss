@@ -551,14 +551,17 @@
   &.-inverse {
     & > li {
       &.-active > a {
-        color: $color-text-white;
+        &,
+        &:hover {
+          color: $color-tabs-inverse-item-text-hover;
+        }
       }
 
       & > a {
         color: $color-text-white;
 
         &:hover {
-          color: $color-text-white;
+          color: $color-tabs-inverse-item-text-hover;
         }
       }
 
@@ -573,16 +576,16 @@
       }
 
       &.chi-sliding-border {
-        background-color: $color-background-white;
+        background-color: $color-tabs-inverse-item-border-active;
       }
     }
 
     &:not(.-vertical):not(.-responsive):not(.-sliding) > li {
       &.-active > a {
-        border-bottom: 0.125rem solid $color-border-white;
+        border-bottom: 0.125rem solid $color-tabs-inverse-item-border-active;
 
         .chi-icon {
-          color: $color-text-white;
+          color: $color-tabs-inverse-item-text-active;
         }
       }
     }
@@ -598,12 +601,12 @@
       &:not(.-sliding) > li.-active:not(.-has-active) > a,
       &:not(.-sliding).-animated > li.-active:not(.-has-active) > a,
       &:not(.-sliding).-animated .chi-tabs__subtabs > li.-active:not(.-has-active) > a {
-        box-shadow: inset 0.125rem 0 0 $color-white;
+        box-shadow: inset 0.125rem 0 0 $color-tabs-inverse-item-border-active;
       }
 
       & > li {
         &.-active > a {
-          color: $color-text-white;
+          color: $color-tabs-inverse-item-text-active;
         }
       }
 
@@ -611,7 +614,7 @@
         & > li {
           &.-active > a {
             .chi-icon {
-              color: $color-text-white;
+              color: $color-tabs-inverse-item-text-active;
             }
           }
         }
@@ -631,7 +634,10 @@
         & > li {
           &.-active {
             & > a {
-              color: $color-text-white;
+              &,
+              &:hover {
+                color: $color-tabs-inverse-item-text-active;
+              }
             }
           }
 

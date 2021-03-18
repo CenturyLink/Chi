@@ -11,7 +11,7 @@ import * as chi from "../scripts/chi";
 
 
 function buildWebsiteStyles () {
-  const pipes = gulp.src(path.join('src/website/assets/themes/lumen', '**', '*.scss'))
+  const pipes = gulp.src(path.join('src/website/assets/themes/centurylink', '**', '*.scss'))
     .pipe(plumber())
     .pipe(sass({
       includePaths: [
@@ -26,7 +26,7 @@ function buildWebsiteStyles () {
       }),
       cssnano({zindex: false})
     ]))
-    .pipe(gulp.dest('dist/assets/themes/lumen'));
+    .pipe(gulp.dest('dist/assets/themes/centurylink'));
 
   if (server && server.active) {
     return pipes.pipe(server.stream()); //Updates css on the fly.
