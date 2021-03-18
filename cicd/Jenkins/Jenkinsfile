@@ -636,7 +636,9 @@ pipeline {
                   sed -n -e "/\$major.\$minor.\$patch/,/\$majorold.\$minorold.\$patchold/ p" CHANGELOG.md | head -n -2 >> shortCHANGELOG.md
                 """
                 VERSION = sh (
-                  script: "cat package.json | grep '\"version\":' | cut -f4 -d '\"'",
+                  script: """
+                    cat package.json | grep '"version":' | cut -f4 -d '"'
+                  """,
                   returnStdout: true 
                 ).trim
                 jslHubWrapper("release create -F shortCHANGELOG.md v${VERSION}")

@@ -1,4 +1,12 @@
 # CHANGELOG
+## 3.13.0 (March 18, 2021)
+### Components
+#### Added
+* Added: Subresource Integrity (SRI) support to improve the security of all Chi CDN-served assets. Chi assets now include an `integrity` attribute which contains a cryptographic hash used to validate the asset and ensure it has not been substituted with malicious code by an attacker.
+### Documentation
+#### Changed
+* Changed: Installation page code snippets and boilerplates have been updated to include `integrity` and `crossorigin` attributes on scripts, stylesheets, and favicons for SRI support.
+
 ## 3.12.0 (March 11, 2021)
 ### Components
 #### Added
