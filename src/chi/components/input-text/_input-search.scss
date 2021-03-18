@@ -9,15 +9,16 @@
         &.-flat,
         &.-close {
           position: absolute;
-          top: 0;
         }
 
         &.-flat {
           right: 0.25rem;
+          top: 0;
         }
 
         &.-close {
           right: 2.25rem;
+          top: 0.25rem;
         }
       }
     }
@@ -44,7 +45,7 @@
     input {
       &[type='search'] {
         &.chi-search__input {
-          padding-right: 4.25rem;
+          padding-right: 3.75rem;
 
           &.-sm {
             padding-right: 3.375rem;
@@ -58,6 +59,7 @@
 
                 &.-close {
                   right: 1.875rem;
+                  top: 0;
                 }
               }
             }
@@ -68,6 +70,10 @@
             ~ chi-button {
               &.-icon {
                 top: 0.25rem;
+
+                &.-close {
+                  top: 0.5rem;
+                }
               }
             }
           }
@@ -77,6 +83,10 @@
             ~ chi-button {
               &.-icon {
                 top: 0.5rem;
+
+                &.-close {
+                  top: 0.75rem;
+                }
               }
             }
           }

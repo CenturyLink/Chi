@@ -30,11 +30,6 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                   )
                     .chi-button__content
                       i.chi-icon.icon-search
-                  button.chi-button.-icon.-close(
-                    class={
-                      [`-${size}`]: size === 'sm' ? '-sm' : ''
-                    }
-                    aria-label='Close'
-                  )
+                  button.chi-button.-sm.-icon.-close(aria-label='Close')
                     .chi-button__content
                       i.chi-icon.icon-x

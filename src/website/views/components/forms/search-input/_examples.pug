@@ -1,7 +1,4 @@
 h2 Examples
-p.-text
-  | To render a search input, apply the class <code>chi-search__input</code> to an <code>input type="search"</code>.
-
 h3 Base
 .example.-mb--3
   .-p--3
@@ -60,7 +57,7 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-disabled
     :code(lang="html")
       <div class="chi-form__item">
-        <chi-search-input id="example__disabled" value="Sample Text" disabled="disabled"></chi-search-input>
+        <chi-search-input id="example__disabled" value="Sample Text" disabled></chi-search-input>
       </div>
   .chi-tabs-panel#html-disabled
     :code(lang="html")
@@ -82,9 +79,9 @@ p.-text
 
 h2 Sizes
 p.-text
-  | Search inputs supports the following sizes: <code>-sm</code>, <code>-md</code>,
-  |  <code>-lg</code>, <code>-xl</code>.
-  | The default size is <code>-md</code>.
+  | Search inputs supports the following sizes: <code>sm</code>, <code>md</code>,
+  |  <code>lg</code>, <code>xl</code>.
+  | The default size is <code>md</code>.
 .example.-mb--3
   .-p--3
     .chi-grid
@@ -147,7 +144,7 @@ p.-text
               <i class="chi-icon icon-search"></i>
             </div>
           </button>
-          <button class="chi-button -icon -close -md" aria-label="Close">
+          <button class="chi-button -icon -close -sm" aria-label="Close">
             <div class="chi-button__content">
               <i class="chi-icon icon-x"></i>
             </div>
@@ -162,7 +159,7 @@ p.-text
               <i class="chi-icon icon-search"></i>
             </div>
           </button>
-          <button class="chi-button -icon -close -lg" aria-label="Close">
+          <button class="chi-button -icon -close -sm" aria-label="Close">
             <div class="chi-button__content">
               <i class="chi-icon icon-x"></i>
             </div>
@@ -177,7 +174,7 @@ p.-text
               <i class="chi-icon icon-search"></i>
             </div>
           </button>
-          <button class="chi-button -icon -close -xl" aria-label="Close">
+          <button class="chi-button -icon -close -sm" aria-label="Close">
             <div class="chi-button__content">
               <i class="chi-icon icon-x"></i>
             </div>
