@@ -1,1 +1,1 @@
-window.chiCurrentVersion="3.12.0";
+window.chiCurrentVersion="3.13.0";

@@ -594,38 +594,56 @@ pipeline {
             }
             steps {
               script {
-                // read changelog
-                // jslHubWrapper('release create -F CHANGELOG-MOD.md \$Version')
-                echo "Active development, will activate as soon as this works"
+                sh script: """#!/bin/bash
+                  VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
+                  major=\$(echo \$VERSION | awk -F '.' '{print \$1}')
+                  minor=\$(echo \$VERSION | awk -F '.' '{print \$2}')
+                  patch=\$(echo \$VERSION | awk -F '.' '{print \$3}')
+                  
+                  if [[ \$major == 0 ]]
+                  then
+                      echo "Major digit Already Zero"
+                      majorold="0"
+                  elif [[ \$minor == 0 ]]
+                  then
+                      majorold=\$(( \$major - 1 ))
+                  else
+                      majorold="\$major"
+                  fi
+
+                  if [[ \$minor == 0 ]]
+                  then
+                      echo "Minor digit Already Zero"
+                      minorold="0"
+                  elif [[ \$patch == 0 ]]
+                  then
+                      minorold=\$(( \$minor - 1 ))
+                  else
+                      minorold="\$minor"
+                  fi
+
+                  if [[ \$patch == 0 ]]
+                  then
+                      echo "Patch digit Already Zero"
+                      patchold="0"
+                  else
+                      patchold=\$(( \$patch - 1 ))
+                  fi
+
+                  echo "READING CHANGELOG FOR VERSION: \$major.\$minor.\$patch"
+                  echo "v\$major.\$minor.\$patch" > shortCHANGELOG.md
+                  echo "" >> shortCHANGELOG.md
+                  sed -n -e "/\$major.\$minor.\$patch/,/\$majorold.\$minorold.\$patchold/ p" CHANGELOG.md | head -n -2 >> shortCHANGELOG.md
+                """
+                VERSION = sh (
+                  script: """
+                    cat package.json | grep '"version":' | cut -f4 -d '"'
+                  """,
+                  returnStdout: true 
+                ).trim()
+                jslHubWrapper("release create -F shortCHANGELOG.md v${VERSION}")
               }
             }
-          }
-        }
-      }
-      stage('Publish Chi-Vue') {
-        when {
-          beforeAgent true
-          branch 'master'
-        }
-        agent {
-          dockerfile {
-            filename 'Dockerfile'
-            dir 'cicd/docker/jira'
-            label 'Docker-enabled'
-            // registryUrl DOCKER_REGISTRY
-            // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
-          }
-        }
-        steps {
-          script {
-            // dir('src/chi-vue') {
-            //   unstash name: "DIST-CHI-VUE"
-            //   unstash name: "NODEMODULES-CHI-VUE"
-            //   jslNpmWrapper('pack')
-            //   jslNpmWrapper('login --scope=@centurylinkcloud --registry=https://npm.pkg.github.com')
-            //   jslNpmWrapper('publish')
-            // }
-            echo "Active development, will activate as soon as this works"
           }
         }
       }
@@ -699,7 +717,7 @@ PolicyDocument
                   ls -lah
                   VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
                   echo \${VERSION}
-                  cat << 'PRDesc' > ux-chi-AssetsServer/prepared-message.md
+                  cat << PRDesc > ux-chi-AssetsServer/prepared-message.md
 This PR is for CHI \${VERSION}
 PRDesc
                   mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
@@ -717,7 +735,6 @@ PRDesc
                 dir ('ux-chi-AssetsServer') {
                   jslHubWrapper('pull-request -F prepared-message.md')
                 }
-                echo "This will publish Prod build to S3 & CDN"
               }
             }
           }            
