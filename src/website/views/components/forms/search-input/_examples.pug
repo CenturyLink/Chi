@@ -8,11 +8,22 @@ h3 Base
           chi-search-input(id="example__base")
           
   .example-tabs.-pl--2
-    ul.chi-tabs#example-base
+    ul.chi-tabs#example-base(role="tablist")
       li.-active
-        a(href=`#webcomponent-base`) Web Component
+        a(
+          href=`#webcomponent-base`
+          role="tab"
+          aria-selected="true"
+          aria-controls="webcomponent-base"
+         ) Web Component
       li
-        a(href=`#html-base`) HTML Blueprint
+        a(
+          href=`#html-base`
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="html-base"
+         ) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-base
     :code(lang="html")
       <div class="chi-form__item">
@@ -49,11 +60,22 @@ p.-text
           chi-search-input(id="example__disabled" value="Sample text" disabled)
 
   .example-tabs.-pl--2
-    ul.chi-tabs#example-disabled
+    ul.chi-tabs#example-disabled(role="tablist")
       li.-active
-        a(href=`#webcomponent-disabled`) Web Component
+        a(
+          href=`#webcomponent-disabled`
+          role="tab"
+          aria-selected="true"
+          aria-controls="webcomponent-disabled"
+         ) Web Component
       li
-        a(href=`#html-disabled`) HTML Blueprint
+        a(
+          href=`#html-disabled`
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="html-disabled"
+         ) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-disabled
     :code(lang="html")
       <div class="chi-form__item">
@@ -100,11 +122,22 @@ p.-text
             .chi-form__item
               chi-search-input(size="xl", value="Sample Text", id="example__size-xl")
   .example-tabs.-pl--2
-    ul.chi-tabs#example-input-sizes
+    ul.chi-tabs#example-input-sizes(role="tablist")
       li.-active
-        a(href=`#webcomponent-input-sizes`) Web Component
+        a(
+          href=`#webcomponent-input-sizes`
+          role="tab"
+          aria-selected="true"
+          aria-controls="webcomponent-input-sizes"
+         ) Web Component
       li
-        a(href=`#html-input-sizes`) HTML Blueprint
+        a(
+          href=`#html-input-sizes`
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="html-input-sizes"
+         ) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-input-sizes
     :code(lang="html")
       <div class="chi-form__item">
