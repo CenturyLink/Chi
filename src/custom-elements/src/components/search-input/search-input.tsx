@@ -61,6 +61,10 @@ export class SearchInput {
    * Triggered when the user clicked the X button.
    */
   @Event({ eventName: 'chiClean' }) eventClean: EventEmitter;
+  /**
+   * Triggered when the user clicked the Search button.
+   */
+   @Event({ eventName: 'chiSearch' }) eventSearch: EventEmitter;
 
   @Watch('size')
   sizeValidation(newValue: TextInputSizes) {
@@ -140,6 +144,7 @@ export class SearchInput {
         chi-button -icon -flat -bg--none
         ${this.size === 'sm' ? '-sm' : ''}
         `}
+        onClick={() => this.eventSearch.emit(this.value)}
         aria-label="Search">
           <div class="chi-button__content">
             <i class="chi-icon icon-search"></i>

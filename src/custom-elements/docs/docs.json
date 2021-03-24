@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-03-18T19:22:59",
+  "timestamp": "2021-03-24T14:04:51",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2765,6 +2765,15 @@
           "cancelable": true,
           "composed": true,
           "docs": "Triggered when the user changed the element's value but did not commit the change yet",
+          "docsTags": []
+        },
+        {
+          "event": "chiSearch",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user clicked the Search button.",
           "docsTags": []
         }
       ],
