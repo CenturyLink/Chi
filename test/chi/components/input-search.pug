@@ -1,0 +1,35 @@
+---
+title: Input search
+---
+
+each size in ['default', 'sm', 'md', 'lg', 'xl']
+  div(class=`test-${size}`)
+    span.-text--h2= `Text Input / ${size}`
+    table(cellpadding='0', cellspacing='0', width='600px')
+      each state in ['initial', 'hover', 'focus']
+        tr
+          td
+            small= `${state}`
+          td
+            .-m--1
+              .chi-form__item.-row
+                .chi-input__wrapper.-icon--right
+                  input.chi-input.chi-search__input(
+                    type='search' 
+                    class={
+                      [`-${state}`]: state != 'disabled',
+                      [`-${size}`]:size != 'default'
+                    }
+                    value='Value'
+                  )
+                  button.chi-button.-icon.-flat.-bg--none(
+                    class={
+                      [`-${size}`]: size === 'sm' ? '-sm' : ''
+                    }
+                    aria-label='Search'
+                  )
+                    .chi-button__content
+                      i.chi-icon.icon-search
+                  button.chi-button.-sm.-icon.-close(aria-label='Close')
+                    .chi-button__content
+                      i.chi-icon.icon-x
