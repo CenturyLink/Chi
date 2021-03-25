@@ -601,9 +601,9 @@ p.-text Make Accordions appear inactive by adding the class <code>-disabled</cod
     .chi-accordion.-portal
       .chi-accordion__item
         button.chi-accordion__trigger.-disabled
-          i.chi-icon.icon-chevron-down
           .chi-accordion__title
             | Accordion 1
+          i.chi-icon.icon-chevron-down
         .chi-accordion__content
           p.chi-accordion__text Content goes here
   .example-tabs.-pl--2
@@ -632,8 +632,65 @@ p.-text Make Accordions appear inactive by adding the class <code>-disabled</cod
       <div class="chi-accordion -portal">
         <div class="chi-accordion__item">
           <button class="chi-accordion__trigger -disabled">
-            <i class="chi-icon icon-chevron-down"></i>
             <div class="chi-accordion__title">Accordion 1</div>
+            <i class="chi-icon icon-chevron-down"></i>
+          </button>
+          <div class="chi-accordion__content">
+            <p class="chi-accordion__text">Content goes here</p>
+          </div>
+        </div>
+      </div>
+
+h3 Truncated
+p.-text Truncate long accordion titles by adding the class <code>-truncated</code> to <code>chi-accordion</code>.
+.example.-mb--3
+  .-p--3.-p-lg--6
+    p.-text--bold Base
+    .chi-accordion.-truncated#example-truncated
+      .chi-accordion__item
+        button.chi-accordion__trigger
+          i.chi-icon.icon-chevron-down
+          .chi-accordion__title
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+    p.-text--bold Portal
+    .chi-accordion.-portal.-truncated#example-truncated-portal
+      .chi-accordion__item
+        button.chi-accordion__trigger
+          .chi-accordion__title
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex
+          i.chi-icon.icon-chevron-down
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-accordion-truncated
+      li.-disabled
+        a(href=`#webcomponent-accordion-truncated`) Web Component
+      li.-active
+        a(href=`#html-accordion-truncated`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-accordion-truncated
+  .chi-tabs-panel.-active#html-accordion-truncated
+    :code(lang="html")
+      <!-- Base -->
+      <div class="chi-accordion -truncated">
+        <div class="chi-accordion__item">
+          <button class="chi-accordion__trigger">
+            <i class="chi-icon icon-chevron-down"></i>
+            <div class="chi-accordion__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex</div>
+          </button>
+          <div class="chi-accordion__content">
+            <p class="chi-accordion__text">Content goes here</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portal -->
+      <div class="chi-accordion -portal -truncated">
+        <div class="chi-accordion__item">
+          <button class="chi-accordion__trigger">
+            <div class="chi-accordion__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex</div>
+            <i class="chi-icon icon-chevron-down"></i>
           </button>
           <div class="chi-accordion__content">
             <p class="chi-accordion__text">Content goes here</p>
@@ -760,6 +817,8 @@ script.
       collapseAll.addEventListener('click', function() {
         expandCollapseAccordion.collapseAll();
       });
+      chi.accordion(document.getElementById('example-truncated'));
+      chi.accordion(document.getElementById('example-truncated-portal'));
       chi.accordion(document.getElementById('example-size-sm'));
       chi.accordion(document.getElementById('example-size-md'));
       chi.accordion(document.getElementById('example-size-lg'));
