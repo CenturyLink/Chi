@@ -48,8 +48,8 @@ pipeline {
       SONARQUBE_CREDENTIALS = 'sonar-credentials'
       GCP_CREDENTIALS = ''
       JIRA_CREDENTIALS = 'jira-credentials'
-      MSTEAMS_CREDENTIALS = ''
-      QUALITY_GATE_CREDENTIALS = ''
+      MSTEAMS_CREDENTIALS = 'TEAMS-SECRET'
+      QUALITY_GATE_CREDENTIALS = 'CRUMBS-FILE'
       //Deployment control credentialsId
       AUTHORIZED_USERS = ''
       DEPLOY_AUTH_TOKEN = ''
@@ -551,17 +551,18 @@ pipeline {
               jslAdoptionMain('reports/cypress/*xml')
             } catch (Exception e) {
               try {
+                sh """
+                  rm -rf reports/ci_report/*
+                """
                 unstash name: "BACKSTOP-CE-CI"
                 unstash name: "BACKSTOP-NON-RES-CI"
                 unstash name: "BACKSTOP-RES-CI"
                 sh """
-                  ls -lah reports/ci_report/responsive
-                  ls -lah reports/ci_report/non_responsive
-                  ls -lah reports/ci_report/non_responsive_ce
+                  cat reports/ci_report/responsive/xunit.xml > reports/ci_report/xunitfinal.xml
+                  cat reports/ci_report/non_responsive/xunit.xml >> reports/ci_report/xunitfinal.xml
+                  cat reports/ci_report/non_responsive_ce/xunit.xml >> reports/ci_report/xunitfinal.xml
                 """
-                jslAdoptionMain('reports/ci_report/responsive/*.xml')
-                jslAdoptionMain('reports/ci_report/non_responsive/*.xml')
-                jslAdoptionMain('reports/ci_report/non_responsive_ce/*.xml')
+                jslAdoptionMain('reports/ci_report/xunitfinal.xml')
                 echo "No E2E results found, reporting only unit"
               } catch (Exception exc) {
                 echo "No tests present"
@@ -650,7 +651,7 @@ pipeline {
       stage('Publish Chi-Vue') {
         when {
           beforeAgent true
-          branch 'master'
+          branch 'chi-vue'
         }
         agent {
           dockerfile {
@@ -663,13 +664,12 @@ pipeline {
         }
         steps {
           script {
-            // dir('src/chi-vue') {
-            //   unstash name: "DIST-CHI-VUE"
-            //   unstash name: "NODEMODULES-CHI-VUE"
-            //   jslNpmWrapper('pack')
-            //   jslNpmWrapper('login --scope=@centurylink --registry=https://npm.pkg.github.com')
-            //   jslNpmWrapper('publish')
-            echo "Commented until 'when' logic is deployed"
+            dir('src/chi-vue') {
+              unstash name: "DIST-CHI-VUE"
+              unstash name: "NODEMODULES-CHI-VUE"
+              jslNpmWrapper('pack')
+              jslNpmWrapper('login --scope=@centurylink --registry=https://npm.pkg.github.com')
+              jslNpmWrapper('publish')
             }
           }
         }
@@ -746,6 +746,8 @@ PolicyDocument
                   echo \${VERSION}
                   cat << PRDesc > ux-chi-AssetsServer/prepared-message.md
 This PR is for CHI \${VERSION}
+
+You can check staging in https://assets-dev.ctl.io/chi/staging
 PRDesc
                   mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
                   cp -R ${WORKSPACE}/dist/* ${WORKSPACE}/ux-chi-AssetsServer/chi/latest/
@@ -767,11 +769,6 @@ PRDesc
           }            
         }
       }
-      stage ('Cleaning...') {
-        steps {
-          echo "Pipeline finished!"
-        }
-      }
     }
     post {
       /*
@@ -781,8 +778,18 @@ PRDesc
   	- md5sum of Jenkinsfile
   	- Output of the Jenkinsfile checker output
       */
-      always {
+      success {
+        jslNotification('success')
+        jslGitHubMessage("You can check this PRs instance in https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io", env.CHANGE_ID)
         cleanWs()  
+      }
+      failure {
+        jslNotification('failure')
+        cleanWs()
+      }
+      unstable {
+        jslNotification('unstable')
+        cleanWs()
       }
   }
 }
