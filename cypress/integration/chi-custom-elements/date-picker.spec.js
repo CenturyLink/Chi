@@ -147,7 +147,7 @@ describe('Date picker', function() {
         .find('[data-date="11/27/2018"]')
         .should('not.have.class', '-active')
         .click()
-        .wait(200)
+        .wait(300)
         .should('have.class', '-active');
     });
 
@@ -156,7 +156,7 @@ describe('Date picker', function() {
       cy.get('[data-cy="test-multiple-selection"]')
         .find('[data-date="11/28/2018"]')
         .click()
-        .wait(200)
+        .wait(300)
         .should('not.have.class', '-active');
     });
 
@@ -167,7 +167,7 @@ describe('Date picker', function() {
       .clear()
       .type('03/29/2021, 03/30/2021')
       .trigger('change')
-      .wait(200)
+      .wait(300)
       .get('[data-cy="test-multiple-picker-calendar"]')
       .should('have.value', '03/29/2021,03/30/2021')
       .find('[data-date="03/29/2021"], [data-date="03/30/2021"]')
@@ -184,7 +184,7 @@ describe('Date picker', function() {
       .clear()
       .type('03/29/2021, 111/111/1111')
       .trigger('change')
-      .wait(200)
+      .wait(300)
       .get('[data-cy="test-multiple-picker-calendar"]')
       .should('have.value', '03/29/2021')
       .find('[data-date="03/29/2021"]')

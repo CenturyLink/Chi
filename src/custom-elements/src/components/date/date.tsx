@@ -149,11 +149,7 @@ export class Date {
    */
   @Method()
   async setDate(date) {
-    if (this.multiple) {
-      this.value = `${this.value ? this.value + ',' : ''}${date}`;
-    } else {
-      this.value = date;
-    }
+    this.value = date;
   }
 
   /**
@@ -271,7 +267,11 @@ export class Date {
     this._updateViewMonth();
   }
 
-  deselectDate(day: Dayjs) {
+  addDate(date) {
+    if (this.multiple) this.value = `${this.value ? this.value + ',' : ''}${date}`;
+  }
+
+  removeDate(day: Dayjs) {
     const formattedDate = this.toDayString(day);
     const currentValues = Array.from(this.value.split(','));
 
@@ -282,7 +282,11 @@ export class Date {
   selectDate(day: Dayjs) {
     const formattedDate = this.toDayString(day);
 
-    this.setDate(formattedDate);
+    if (this.multiple) {
+      this.addDate(formattedDate);
+    } else {
+      this.setDate(formattedDate);
+    }
     this.eventChange.emit(this.value);
   }
 
@@ -363,7 +367,7 @@ export class Date {
               onClick={() => {
                 if (this.multiple &&
                   Array.from(this._vm.dates).some(vmDay => day.isSame(vmDay, 'day'))) {
-                  return this.deselectDate(day);
+                  return this.removeDate(day);
                 }
 
                 return this.selectDate(day)}
