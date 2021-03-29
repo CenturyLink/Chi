@@ -147,6 +147,7 @@ describe('Date picker', function() {
         .find('[data-date="11/27/2018"]')
         .should('not.have.class', '-active')
         .click()
+        .wait(200)
         .should('have.class', '-active');
     });
 
@@ -155,6 +156,7 @@ describe('Date picker', function() {
       cy.get('[data-cy="test-multiple-selection"]')
         .find('[data-date="11/28/2018"]')
         .click()
+        .wait(200)
         .should('not.have.class', '-active');
     });
 

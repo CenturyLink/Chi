@@ -209,11 +209,20 @@ p.-text Use the attribute <code>multiple</code> to allow the user selecting mult
     div(style="max-width: 14rem;")
       chi-date-picker(multiple)
   .example-tabs.-pl--2
-    ul.chi-tabs#example-multiple-date-picker
+    ul.chi-tabs#example-multiple-date-picker(role="tablist")
       li.-active
-        a(href=`#webcomponent-multiple-date-picker`) Web Component
+        a(
+          href=`#webcomponent-multiple-date-picker`
+          role="tab"
+          aria-selected="true"
+          aria-controls="webcomponent-multiple-date-picker") Web Component
       li.-disabled
-        a(href=`#html-multiple-date-picker`) HTML Blueprint
+        a(
+          href=`#html-multiple-date-picker`
+          tabindex="-1"
+          role="tab"
+          aria-selected="false"
+          aria-controls="html-multiple-date-picker") HTML Blueprint
   #webcomponent-multiple-date-picker.chi-tabs-panel.-active
     :code(lang="html",style="height:20rem")
       <chi-label for="multiple-dates">Date</chi-label>
@@ -404,11 +413,20 @@ h4 Multiple active dates
   .-p--3
     chi-date(multiple, value="03/10/2021,03/11/2021,03/12/2021")
   .example-tabs.-pl--2
-    ul.chi-tabs#example-multiple-dates
+    ul.chi-tabs#example-multiple-dates(role="tablist")
       li.-active
-        a(href=`#webcomponent-multiple-dates`) Web Component
+        a(
+          href=`#webcomponent-multiple-dates`
+          aria-selected="true"
+          aria-controls="webcomponent-multiple-dates"
+          role="tab") Web Component
       li
-        a(href=`#html-multiple-dates`) HTML Blueprint
+        a(
+          href=`#html-multiple-dates`
+          aria-selected="false"
+          aria-controls="html-multiple-dates"
+          role="tab"
+          tabindex="-1") HTML Blueprint
   #webcomponent-multiple-dates.chi-tabs-panel.-active
     .chi-tab__description Specify multiple active dates by separating the dates with a comma
     :code(lang="html")
