@@ -61,7 +61,7 @@ export class Date {
   @Prop({ reflect: true }) excludedDates: string;
 
   /**
-   * To allow the user selecting multiple days
+   * To allow the user selecting multiple dates
    */
   @Prop({ reflect: true }) multiple = false;
 
@@ -102,10 +102,10 @@ export class Date {
             }
           });
         }
-        this.viewMonth = this._vm.dates[0];
+        this.viewMonth = this._vm.dates[this._vm.dates.length - 1];
       } else {
         this._initCalendarViewModel();
-        this.viewMonth = this.value ? this.fromString(this.value) : dayjs();
+        this._initViewMonth();
         this._updateViewMonth();
       }
     }
@@ -157,18 +157,6 @@ export class Date {
   }
 
   /**
-   * Unsets date
-   */
-  @Method()
-  async unsetDate(date) {
-    const currentValues = Array.from(this.value.split(','));
-
-    this.value = currentValues.filter(value => value !== date).join(',');
-    // console.log(removedUnsetDate);
-    // console.log(currentValues.splice(dateIndex, 1).join(','));
-  }
-
-  /**
    * Gets date
    */
   @Method()
@@ -192,6 +180,18 @@ export class Date {
     max: Dayjs;
   };
 
+  private _initViewMonth():void {
+    if (this.multiple && this.value) {
+      const valueDates = this.value.replace(/ /g, '')
+        .split(',');
+      const date = valueDates[valueDates.length - 1];
+
+      this.viewMonth = date ? this.fromString(date) : dayjs();
+    } else {
+      this.viewMonth = this.value ? this.fromString(this.value) : dayjs();
+    }
+  };
+
   private _initCalendarViewModel(): void {
     dayjs.locale(this.locale);
 
@@ -202,10 +202,11 @@ export class Date {
     }
 
     this._vm = {
-      dates: this.multiple ?
-        this.value ? this.value.split(',').map(valueDay => {
+      dates: this.value ?
+        this.multiple ? this.value.replace(/ /g, '')
+          .split(',').map(valueDay => {
           return this.fromString(valueDay)
-          }) : this.fromString(this.value) : [],
+          }) : [this.fromString(this.value)] : [],
       today: dayjs(),
       weekStartClass:
         dayjs()
@@ -266,14 +267,15 @@ export class Date {
     this.updateExcludedDates();
     this.updateExcludedWeekdays();
     this._initCalendarViewModel();
-    this.viewMonth = this.value ? this.fromString(this.value) : dayjs();
+    this._initViewMonth();
     this._updateViewMonth();
   }
 
   deselectDate(day: Dayjs) {
     const formattedDate = this.toDayString(day);
+    const currentValues = Array.from(this.value.split(','));
 
-    this.unsetDate(formattedDate);
+    this.value = currentValues.filter(value => value !== formattedDate).join(',');
     this.eventChange.emit(this.value);
   }
 

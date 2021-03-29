@@ -25,9 +25,19 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 .test-input-combined-icon(data-cy="test-input-combined")
   span.-text--h2 Input Popover Combined w/ icon
   .-position--relative(style="height: 18rem; width:14rem;")
-    chi-date-picker(value=date2, min=date2, active)
+    chi-date-picker(data-cy="test-input-combined-picker" value=date2, min=date2, active)
 
 .test-disabled(data-cy="test-disabled")
   span.-text--h2 Disabled date picker
   .-position--relative(style="width:14rem;")
     chi-date-picker(disabled)
+
+.test-multiple(data-cy="test-multiple-selection")
+  span.-text--h2 Multiple Dates selection
+  .-position--relative(style="width:14rem;")
+    chi-date(value='11/28/2018, 11/29/2018, 11/30/2018', multiple)
+
+.test-multiple-picker(data-cy="test-multiple-picker")
+  span.-text--h2 Date Picker multiple dates
+  .-position--relative(style="width:14rem;")
+    chi-date-picker(data-cy="test-multiple-picker-calendar" multiple)

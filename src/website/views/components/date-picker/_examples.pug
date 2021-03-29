@@ -202,6 +202,24 @@ p.-text
       <chi-date-picker id="date-time" mode="datetime"></chi-date-picker>
   #html-datetime.chi-tabs-panel
 
+h3 Multiple dates
+p.-text Use the attribute <code>multiple</code> to allow the user selecting multiple dates
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 14rem;")
+      chi-date-picker(multiple)
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-multiple-date-picker
+      li.-active
+        a(href=`#webcomponent-multiple-date-picker`) Web Component
+      li.-disabled
+        a(href=`#html-multiple-date-picker`) HTML Blueprint
+  #webcomponent-multiple-date-picker.chi-tabs-panel.-active
+    :code(lang="html",style="height:20rem")
+      <chi-label for="multiple-dates">Date</chi-label>
+      <chi-date-picker id="multiple-dates" multiple></chi-date-picker>
+  #html-multiple-date-picker.chi-tabs-panel
+
 h3 Calendar
 p.-text
   | An example of a date picker calendar not attached to any element.
@@ -308,11 +326,6 @@ h4 Base
         </div>
       </div>
 
-h4 Multiple dates
-.example.-mb--3
-  .-p--3
-    chi-date(multiple)
-
 h4 Active
 .example.-mb--3
   .-p--3
@@ -385,6 +398,75 @@ h4 Active
           <div class="chi-datepicker__day">31</div>
         </div>
       </div>
+
+h4 Multiple active dates
+.example.-mb--3
+  .-p--3
+    chi-date(multiple, value="03/10/2021,03/11/2021,03/12/2021")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-multiple-dates
+      li.-active
+        a(href=`#webcomponent-multiple-dates`) Web Component
+      li
+        a(href=`#html-multiple-dates`) HTML Blueprint
+  #webcomponent-multiple-dates.chi-tabs-panel.-active
+    .chi-tab__description Specify multiple active dates by separating the dates with a comma
+    :code(lang="html")
+      <chi-date value="03/10/2021,03/11/2021,03/12/2021" multiple></chi-date>
+  #html-multiple-dates.chi-tabs-panel
+    .chi-tab__description
+      span.-text--grey Use class <code>-active</code> for the selected date
+    :code(lang="html")
+      <div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
+        <div class="chi-datepicker__month-row">
+          <div class="prev"><i class="chi-icon icon-chevron-left -sm"></i></div>
+          <div class="chi-datepicker__month">March 2021</div>
+          <div class="next"><i class="chi-icon icon-chevron-right -sm"></i></div>
+        </div>
+        <div class="chi-datepicker__day-names">
+          <div class="chi-datepicker__week-day">S</div>
+          <div class="chi-datepicker__week-day">M</div>
+          <div class="chi-datepicker__week-day">T</div>
+          <div class="chi-datepicker__week-day">W</div>
+          <div class="chi-datepicker__week-day">T</div>
+          <div class="chi-datepicker__week-day">F</div>
+          <div class="chi-datepicker__week-day">S</div>
+        </div>
+        <div class="chi-datepicker__days">
+          <div class="chi-datepicker__day">1</div>
+          <div class="chi-datepicker__day">2</div>
+          <div class="chi-datepicker__day">3</div>
+          <div class="chi-datepicker__day">4</div>
+          <div class="chi-datepicker__day">5</div>
+          <div class="chi-datepicker__day">6</div>
+          <div class="chi-datepicker__day">7</div>
+          <div class="chi-datepicker__day">8</div>
+          <div class="chi-datepicker__day">9</div>
+          <div class="chi-datepicker__day -active">10</div>
+          <div class="chi-datepicker__day -active">11</div>
+          <div class="chi-datepicker__day -active">12</div>
+          <div class="chi-datepicker__day">13</div>
+          <div class="chi-datepicker__day">14</div>
+          <div class="chi-datepicker__day">15</div>
+          <div class="chi-datepicker__day">16</div>
+          <div class="chi-datepicker__day">17</div>
+          <div class="chi-datepicker__day">18</div>
+          <div class="chi-datepicker__day">19</div>
+          <div class="chi-datepicker__day">20</div>
+          <div class="chi-datepicker__day">21</div>
+          <div class="chi-datepicker__day">22</div>
+          <div class="chi-datepicker__day">23</div>
+          <div class="chi-datepicker__day">24</div>
+          <div class="chi-datepicker__day">25</div>
+          <div class="chi-datepicker__day">26</div>
+          <div class="chi-datepicker__day">27</div>
+          <div class="chi-datepicker__day">28</div>
+          <div class="chi-datepicker__day">29</div>
+          <div class="chi-datepicker__day">30</div>
+          <div class="chi-datepicker__day">31</div>
+        </div>
+      </div>
+
 h4 Min and Max
 .example.-mb--3
   .-p--3

@@ -1,9 +1,8 @@
 import { Component, Element, Listen, Method, Prop, Watch, h } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
-import { ESCAPE_KEYCODE, DataLocales } from '../../constants/constants';
+import { ESCAPE_KEYCODE, DataLocales, DatePickerModes, CHI_TIME_AUTO_SCROLL_DELAY } from '../../constants/constants';
 import dayjs, { Dayjs } from 'dayjs';
 import { TIME_CLASSES } from '../../constants/classes';
-import { CHI_TIME_AUTO_SCROLL_DELAY, DatePickerModes } from '../../constants/constants';
 
 @Component({
   tag: 'chi-date-picker',
@@ -60,6 +59,11 @@ export class DatePicker {
    */
   @Prop({ reflect: true }) mode: DatePickerModes = 'date';
 
+  /**
+   * To allow the user selecting multiple dates
+   */
+  @Prop({ reflect: true }) multiple = false;
+
   @Element() el: HTMLElement;
 
   private _input: HTMLInputElement;
@@ -92,7 +96,7 @@ export class DatePicker {
     if (
       e.target !== document.body &&
       e.target !== null &&
-      !(!(this.mode === 'datetime') && new RegExp('(\\s|^)' + 'chi-datepicker__day' + '(\\s|$)').test(e.target.getAttribute('class')))
+      !(!(this.mode === 'datetime') && !this.multiple && new RegExp('(\\s|^)' + 'chi-datepicker__day' + '(\\s|$)').test(e.target.getAttribute('class')))
       // This hack is necessary because currently IE11 doesn't support .classList on SVG elements
     ) {
       this.active = contains(this.el, e.target);
@@ -126,31 +130,55 @@ export class DatePicker {
   }
 
   _checkDate() {
-    const inputDate = dayjs(this._input.value),
-      minDate = dayjs(this.min),
-      maxDate = dayjs(this.max);
+    const minDate = dayjs(this.min);
+    const maxDate = dayjs(this.max);
 
-    if (dayjs(this._input.value).isValid() && !this.checkIfExcluded(inputDate)) {
-      if (
-        dayjs(inputDate)
-          .startOf('day')
-          .isBefore(dayjs(minDate).startOf('day'))
-      ) {
-        this.value = this.min;
-        this._input.value = this.min;
-      } else if (
-        dayjs(inputDate)
-          .startOf('day')
-          .isAfter(dayjs(maxDate).startOf('day'))
-      ) {
-        this.value = this.max;
-        this._input.value = this.max;
-      } else {
-        this.value = this._input.value;
-      }
-    } else {
-      this.value = dayjs().format('MM/DD/YYYY');
+    const dateValid = (date) => {
+      const inputDate = dayjs(date);
+
+      return inputDate.isValid() &&
+        !this.checkIfExcluded(inputDate) &&
+        !inputDate.startOf('day').isBefore(dayjs(minDate).startOf('day')) &&
+        !inputDate.startOf('day').isAfter(dayjs(maxDate).startOf('day'));
+    };
+
+    if (this.multiple) {
+      const inputDates = this._input.value.replace(/ /g, '')
+        .split(',');
+      const validatedDates = [];
+
+      inputDates.forEach(date => {
+        if (dateValid(date) && !validatedDates.includes(date)) {
+          validatedDates.push(date);
+        }
+      });
+      this.value = validatedDates.join(',');
       this._input.value = this.value;
+    } else {
+      const inputDate = dayjs(this._input.value);
+
+      if (dayjs(this._input.value).isValid() && !this.checkIfExcluded(inputDate)) {
+        if (
+          dayjs(inputDate)
+            .startOf('day')
+            .isBefore(dayjs(minDate).startOf('day'))
+        ) {
+          this.value = this.min;
+          this._input.value = this.min;
+        } else if (
+          dayjs(inputDate)
+            .startOf('day')
+            .isAfter(dayjs(maxDate).startOf('day'))
+        ) {
+          this.value = this.max;
+          this._input.value = this.max;
+        } else {
+          this.value = this._input.value;
+        }
+      } else {
+        this.value = dayjs().format('MM/DD/YYYY');
+        this._input.value = this.value;
+      }
     }
   }
 
@@ -282,6 +310,7 @@ export class DatePicker {
       format={this.format}
       excluded-weekdays={this.excludedWeekdays}
       excluded-dates={this.excludedDates}
+      multiple={this.multiple}
     />;
     const time = this.mode === 'datetime' ? <chi-time/> : null;
     const popoverContent = this.mode === 'datetime' ?
@@ -317,7 +346,9 @@ export class DatePicker {
             type={`text`}
             placeholder={this.mode === 'datetime' ? `MM/DD/YYYY, --:-- --` : `MM/DD/YYYY`}
             ref={el => (this._input = el as HTMLInputElement)}
-            value={this.value}
+            value={(this.value && this.multiple) ?
+                String(this.value).replace(/,/g, ', ') :
+                this.value}
             onChange={() => {
               this._checkDate();
             }}

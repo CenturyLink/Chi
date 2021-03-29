@@ -117,13 +117,75 @@ describe('Date picker', function() {
       .should('have.value', '12/31/2099');
   });
 
-  it('Date-picker should reset input value to Max if the introduced date is after the max date. ', function() {
+  it('Date-picker should reset input value to Max if the introduced' +
+    'date is after the max date. ', function() {
     cy.get('[data-cy="test-input-combined"]')
       .find('input')
       .clear()
       .type('22/31/2099')
       .trigger('change')
-      .get('[data-cy="test-input-combined"] input')
+      .get('[data-cy="test-input-combined-picker"]')
       .should('have.value', today);
+  });
+
+  it('Should render calendar with multiple active days when attribute' +
+    ' multiple is present and more then one date is provided as value',
+    function() {
+    cy.get('[data-cy="test-multiple-selection"]')
+      .find('[data-date="11/28/2018"], [data-date="11/29/2018"],' +
+        '[data-date="11/30/2018"]')
+      .each(($el) => {
+        const classList = Array.from($el[0].classList);
+
+        expect(classList).to.include('-active');
+      });
+  });
+
+  it('Should select the clicked day',
+    function() {
+      cy.get('[data-cy="test-multiple-selection"]')
+        .find('[data-date="11/27/2018"]')
+        .should('not.have.class', '-active')
+        .click()
+        .should('have.class', '-active');
+    });
+
+  it('Should deselect the active day when clicked',
+    function() {
+      cy.get('[data-cy="test-multiple-selection"]')
+        .find('[data-date="11/28/2018"]')
+        .click()
+        .should('not.have.class', '-active');
+    });
+
+  it('Should render the calendar with the respective active dates ' +
+    'when the user types new input value', function() {
+    cy.get('[data-cy="test-multiple-picker"]')
+      .find('input')
+      .clear()
+      .type('03/29/2021, 03/30/2021')
+      .trigger('change')
+      .wait(200)
+      .get('[data-cy="test-multiple-picker-calendar"]')
+      .should('have.value', '03/29/2021,03/30/2021')
+      .find('[data-date="03/29/2021"], [data-date="03/30/2021"]')
+      .each(($el) => {
+        const classList = Array.from($el[0].classList);
+
+        expect(classList).to.include('-active');
+      });
+  });
+
+  it('Should accept only valid user inputs', function() {
+    cy.get('[data-cy="test-multiple-picker"]')
+      .find('input')
+      .clear()
+      .type('03/29/2021, 111/111/1111')
+      .trigger('change')
+      .wait(200)
+      .get('[data-cy="test-multiple-picker-calendar"]')
+      .should('have.value', '03/29/2021')
+      .find('[data-date="03/29/2021"]')
+      .should('have.class', '-active');
   });
 });

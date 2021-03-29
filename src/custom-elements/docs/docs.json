@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-03-25T18:07:11",
+  "timestamp": "2021-03-29T18:19:51",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -700,6 +700,23 @@
           "required": false
         },
         {
+          "name": "multiple",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "multiple",
+          "reflectToAttr": true,
+          "docs": "To allow the user selecting multiple dates",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "value",
           "type": "string",
           "mutable": true,
@@ -948,6 +965,23 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "multiple",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "multiple",
+          "reflectToAttr": true,
+          "docs": "To allow the user selecting multiple dates",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,
