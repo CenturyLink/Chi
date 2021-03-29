@@ -60,7 +60,7 @@ export class DatePicker {
   @Prop({ reflect: true }) mode: DatePickerModes = 'date';
 
   /**
-   * To allow the user selecting multiple dates
+   * To allow the user to select multiple dates
    */
   @Prop({ reflect: true }) multiple = false;
 
