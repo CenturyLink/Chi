@@ -1,4 +1,9 @@
 # CHANGELOG
+## 3.15.0 (March 30, 2021)
+### Components
+#### Added
+* Added: Date and date picker web components now support `multiple` date selection.
+
 ## 3.14.0 (March 25, 2021)
 ### Components
 #### Added
