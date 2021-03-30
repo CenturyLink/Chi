@@ -60,6 +60,11 @@ export class Date {
    */
   @Prop({ reflect: true }) excludedDates: string;
 
+  /**
+   * To allow the user to select multiple dates
+   */
+  @Prop({ reflect: true }) multiple = false;
+
   @State() viewMonth = dayjs();
 
   excludedWeekdaysArray = [];
@@ -83,14 +88,24 @@ export class Date {
   dateChanged(newValue: string, oldValue: string) {
     if (newValue !== oldValue && (newValue || oldValue)) {
       if (newValue) {
-        this._vm.date = newValue ? dayjs(newValue) : null;
-        if (this._vm.date && !this._vm.date.isValid()) {
-          throw new Error(`Date ${newValue} has an invalid format. `);
+        if (this.multiple) {
+          this._vm.dates = this.value ?
+            this.value.split(',').map(valueDay => this.fromString(valueDay)) : [];
+        } else {
+          this._vm.dates = [this.fromString(this.value)];
         }
-        this.viewMonth = this._vm.date;
+
+        if (this._vm.dates.length > 0) {
+          Array.from(this._vm.dates).forEach(date => {
+            if (!date.isValid()) {
+              throw new Error(`Date ${newValue} has an invalid format. `);
+            }
+          });
+        }
+        this.viewMonth = this._vm.dates[this._vm.dates.length - 1];
       } else {
         this._initCalendarViewModel();
-        this.viewMonth = this.value ? this.fromString(this.value) : dayjs();
+        this._initViewMonth();
         this._updateViewMonth();
       }
     }
@@ -151,7 +166,7 @@ export class Date {
   @Event({ eventName: 'chiDateChange' }) eventChange: EventEmitter;
 
   _vm: {
-    date: Dayjs;
+    dates: Dayjs[];
     today: Dayjs;
     weekStartClass: string;
     monthStartClass: string;
@@ -159,6 +174,18 @@ export class Date {
     monthDays: Dayjs[];
     min: Dayjs;
     max: Dayjs;
+  };
+
+  private _initViewMonth():void {
+    if (this.multiple && this.value) {
+      const valueDates = this.value.replace(/ /g, '')
+        .split(',');
+      const date = valueDates[valueDates.length - 1];
+
+      this.viewMonth = date ? this.fromString(date) : dayjs();
+    } else {
+      this.viewMonth = this.value ? this.fromString(this.value) : dayjs();
+    }
   };
 
   private _initCalendarViewModel(): void {
@@ -171,7 +198,11 @@ export class Date {
     }
 
     this._vm = {
-      date: this.value ? this.fromString(this.value) : null,
+      dates: this.value ?
+        this.multiple ? this.value.replace(/ /g, '')
+          .split(',').map(valueDay => {
+          return this.fromString(valueDay)
+          }) : [this.fromString(this.value)] : [],
       today: dayjs(),
       weekStartClass:
         dayjs()
@@ -232,14 +263,31 @@ export class Date {
     this.updateExcludedDates();
     this.updateExcludedWeekdays();
     this._initCalendarViewModel();
-    this.viewMonth = this.value ? this.fromString(this.value) : dayjs();
+    this._initViewMonth();
     this._updateViewMonth();
+  }
+
+  addDate(date) {
+    if (this.multiple) this.value = `${this.value ? this.value + ',' : ''}${date}`;
+  }
+
+  removeDate(day: Dayjs) {
+    const formattedDate = this.toDayString(day);
+    const currentValues = Array.from(this.value.split(','));
+
+    this.value = currentValues.filter(value => value !== formattedDate).join(',');
+    this.eventChange.emit(this.value);
   }
 
   selectDate(day: Dayjs) {
     const formattedDate = this.toDayString(day);
-    this.setDate(formattedDate);
-    this.eventChange.emit(formattedDate);
+
+    if (this.multiple) {
+      this.addDate(formattedDate);
+    } else {
+      this.setDate(formattedDate);
+    }
+    this.eventChange.emit(this.value);
   }
 
   checkIfExcluded(day: Dayjs) {
@@ -312,11 +360,18 @@ export class Date {
                   ? CLASSES.INACTIVE
                   : ''
               }
-              ${day.isSame(this._vm.date, 'day') ? CLASSES.ACTIVE : ''}
+              ${Array.from(this._vm.dates).some(vmDay => day.isSame(vmDay, 'day')) ? CLASSES.ACTIVE : ''}
               ${day.isSame(dayjs(), 'day') ? CLASSES.TODAY : ''}
             `}
               data-date={this.toDayString(day)}
-              onClick={() => this.selectDate(day)}
+              onClick={() => {
+                if (this.multiple &&
+                  Array.from(this._vm.dates).some(vmDay => day.isSame(vmDay, 'day'))) {
+                  return this.removeDate(day);
+                }
+
+                return this.selectDate(day)}
+              }
             >
               {day.date()}
             </div>

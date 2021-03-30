@@ -194,6 +194,36 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
         svg
           use(xlink:href="#icon-date")
 
+- day = 1;
+.test-multiple
+  span.-text--h2 Multiple Dates selection
+  .-position--relative
+    .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
+      .chi-datepicker__month-row
+        .prev
+          .chi-icon.-sm.-text--brand
+            svg
+              use(xlink:href='#icon-chevron-left')
+        .chi-datepicker__month
+          | November 2018
+        .next
+          .chi-icon.-sm.-text--brand
+            svg
+              use(xlink:href='#icon-chevron-right')
+      .chi-datepicker__day-names
+        each weekDay in weekS
+          .chi-datepicker__week-day=weekDay
+      .chi-datepicker__days
+        while day < 31
+          if day === 28
+            .chi-datepicker__day.-active=day++
+          else if day === 29
+            .chi-datepicker__day.-active=day++
+          else if day === 30
+            .chi-datepicker__day.-active=day++
+          else
+            .chi-datepicker__day=day++
+
 script.
   document.addEventListener(
     'DOMContentLoaded',
