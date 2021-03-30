@@ -144,9 +144,11 @@ describe('Date picker', function() {
   it('Should select the clicked day',
     function() {
       cy.get('[data-cy="test-multiple-selection"]')
+        .scrollIntoView()
+        .wait(300)
         .find('[data-date="11/27/2018"]')
         .should('not.have.class', '-active')
-        .click()
+        .click({force: true})
         .wait(300)
         .should('have.class', '-active');
     });
