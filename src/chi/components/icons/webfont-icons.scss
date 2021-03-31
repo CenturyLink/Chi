@@ -24,6 +24,14 @@ i {
   }
 }
 
+.icon-circle-slash::before {
+  content: '\e9d8';
+}
+
+.icon-circle-slash-outline::before {
+  content: '\e9d9';
+}
+
 .icon-bell-settings-outline::before {
   content: '\e9d7';
 }
