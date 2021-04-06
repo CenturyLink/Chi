@@ -16,8 +16,8 @@ $button-colors: (
   ),
   secondary: (
     background-color: $color-background-secondary,
-    background-color-hover: $color-cyan-50,
-    background-color-active: $color-cyan-60,
+    background-color-hover: $color-background-secondary-dark,
+    background-color-active: $color-background-secondary-darker,
     border-color: $color-border-secondary,
     border-color-hover: $color-cyan-50,
     border-color-active: $color-cyan-60,

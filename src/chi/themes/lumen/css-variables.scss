@@ -5,6 +5,8 @@
 
 // sass-lint:disable-all
 %css-variables {
+  --color-background-primary: #{$color-background-primary};
+  --color-background-secondary: #{$color-background-secondary};
   --color-link-cta-icon: #{$color-link-cta-icon};
   --color-marketing-icon-primary: #{$color-marketing-icon-primary};
   --color-marketing-icon-secondary: #{$color-marketing-icon-secondary};

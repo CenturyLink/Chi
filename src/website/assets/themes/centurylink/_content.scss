@@ -23,7 +23,8 @@
       width: 100%;
 
       .docs-titlebar {
-        background-color: $color-grey-15;
+        background-color: $color-background-black;
+        color: $color-text-white;
         display: flex;
         flex-direction: column;
         overflow: hidden;
@@ -59,13 +60,38 @@
           }
 
           .docs-titlebar__description {
-            color: $color-grey-70;
+            color: $color-grey-40;
             font-size: $font-size-base;
             line-height: $line-height;
             @include respond-to(lg) {
               font-size: $font-size-lg;
               line-height: $line-height-lg;
               margin: 0 0 1rem;
+            }
+          }
+
+          .docs-tabs {
+            .chi-tabs {
+              & > li {
+                & > a {
+                  color: $color-text-white;
+
+                  &:hover {
+                    color: $color-text-secondary;
+                  }
+                }
+
+                &.-active {
+                  & > a {
+                    color: $color-text-secondary;
+                    border-color: $color-border-secondary;
+                  }
+                }
+
+                &.chi-sliding-border {
+                  background-color: $color-background-secondary;
+                }
+              }
             }
           }
         }

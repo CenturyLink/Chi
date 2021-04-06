@@ -34,7 +34,7 @@
           }
 
           .docs-titlebar__description {
-            color: $color-grey-80;
+            color: $color-text-white;
             display: flex;
             font-size: $font-size-base;
             font-weight: $font-weight-normal;
@@ -73,6 +73,34 @@
               @include respond-to(sm) {
                 display: inline-flex;
                 width: auto;
+              }
+
+              &.-primary {
+                color: $color-text-black;
+                background: $color-background-secondary;
+                
+                &:hover {
+                  background: $color-background-secondary-dark;
+                }
+
+                &:active {
+                  background: $color-background-secondary-darker;
+                }
+              }
+
+              &.-dark {
+                color: $color-text-white;
+                border-color: $color-border-white;
+                
+                &:hover {
+                  color: $color-grey-25;
+                  border-color: $color-border-muted-light;
+                }
+
+                &:active {
+                  color: $color-grey-40;
+                  border-color: $color-grey-40;
+                }            
               }
             }
           }
@@ -116,7 +144,7 @@
               width: 8rem;
 
               &::before {
-                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='128' width='128'><polygon fill='#{$color-grey-15}' stroke='#{$color-teal-55}' stroke-width='4' points='50 15, 100 100, 0 100'/></svg>");
+                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='128' width='128'><polygon fill='#{$color-background-black}' stroke='#{$color-teal-55}' stroke-width='4' points='50 15, 100 100, 0 100'/></svg>");
                 background-repeat: no-repeat;
                 content: '';
                 display: block;
@@ -143,7 +171,7 @@
               width: 14rem;
 
               &::before {
-                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='224' width='224'><polygon fill='#{$color-grey-15}' stroke='#{$color-cyan-60}' stroke-width='2' points='50 15, 100 100, 0 100'/></svg>");
+                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='224' width='224'><polygon fill='#{$color-background-black}' stroke='#{$color-cyan-60}' stroke-width='2' points='50 15, 100 100, 0 100'/></svg>");
                 background-repeat: no-repeat;
                 content: '';
                 display: block;
