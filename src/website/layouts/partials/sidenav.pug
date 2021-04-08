@@ -8,10 +8,10 @@
             img.-favicon(width='16', height='16', src='https://assets.ctl.io/images/favicon.ico')
           div.-theme-name CenturyLink
     .chi-dropdown__menu
-      a.chi-dropdown__menu-item.-active(href='#' onclick="switchTheme('CenturyLink', this)")
+      a.theme-trigger-centurylink.chi-dropdown__menu-item(href='#', data-theme='CenturyLink', onclick="switchTheme('CenturyLink', this)")
         img.-mr--1(width='16', height='16', src='https://assets.ctl.io/images/favicon.ico')
         .-theme-name CenturyLink
-      a.chi-dropdown__menu-item(href='#' onclick="switchTheme('Lumen', this)")
+      a.theme-trigger-lumen.chi-dropdown__menu-item(href='#', data-theme='Lumen', onclick="switchTheme('Lumen', this)")
         img.-mr--1(width='16', height='16', src='https://assets.ctl.io/chi/3.13.0/assets/images/favicon.svg')
         .-theme-name Lumen
 
@@ -57,7 +57,8 @@ ul.chi-tabs.-vertical.-lg.-animated
                               a(href=`${rootPath}foundations/accessibility/other`) Other
                             
                 else
-                  li(class=section.path === path ? "-active" : "")
+                  -var lumenOnly = section.title === 'Portal' ? ' -lumen-only' : "";
+                  li(class=section.path === path ? '-active' + lumenOnly : lumenOnly)
                     a(href=`${rootPath}${section.path}`) #{section.title}
                       if section.title == 'Button'
                         .-sr--only component
@@ -99,7 +100,8 @@ ul.chi-tabs.-vertical.-lg.-animated
                             li(class=`${'foundations/accessibility/other' === path ? "-active" : ""}`)
                               a(href=`${rootPath}foundations/accessibility/other`) Other
                 else
-                  li(class=section.path === path ? "-active" : "")
+                  -var lumenOnly = section.title === 'Portal' ? ' -lumen-only' : "";
+                  li(class=section.path === path ? '-active' + lumenOnly : lumenOnly)
                     a(href=`${rootPath}${section.path}`) #{section.title}
                       if section.title == 'Button'
                         .-sr--only component

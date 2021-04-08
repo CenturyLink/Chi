@@ -223,8 +223,8 @@ onLoad(() => {
     chi.accordion(drawerAccessibilityAccordion);
   }
 
-  window.theme = 'Lumen';
-
+  var url = new URL(window.location.href);
+  var urlThemeParam = url.searchParams.get("theme");
   var themeAssets = {
     chiCss: document.getElementById('chi-css'),
     docsCss: document.getElementById('docs-css'),
@@ -237,22 +237,25 @@ onLoad(() => {
       docsCss: '/assets/themes/lumen/docs.css',
       faviconSvg: '/assets/themes/lumen/images/favicon.svg',
       faviconIco: '/assets/themes/lumen/images/favicon.ico',
+      trigger: '.theme-trigger-lumen'
     },
     CenturyLink: {
       chiCss: '/chi-centurylink.css',
       docsCss: '/assets/themes/centurylink/docs.css',
       faviconSvg: '/assets/themes/centurylink/images/favicon.svg',
       faviconIco: '/assets/themes/centurylink/images/favicon.ico',
+      trigger: '.theme-trigger-centurylink'
     }
   };
-
-  chi.dropdown(document.querySelectorAll('.-theme-switch'));
 
   window.switchTheme = function(theme, anchorTarget) {
     var themeFavicon = anchorTarget.querySelector('img').getAttribute('src');
     var themeSwitchButtons = document.querySelectorAll('button.-theme-switch');
 
     window.theme = theme;
+    localStorage.setItem('chiTheme', theme);
+    document.querySelector('html').setAttribute('class', `chi theme-${theme.toLowerCase()}`);
+
     Array.prototype.forEach.call(
       ['chiCss', 'docsCss', 'faviconSvg', 'faviconIco'],
       function(asset) {
@@ -262,7 +265,7 @@ onLoad(() => {
 
     Array.prototype.forEach.call(
       themeSwitchButtons,
-      function (button) {
+      function(button) {
         const buttonImg = button.querySelector('img.-favicon');
         const buttonThemeName = button.querySelector('.-theme-name');
 
@@ -270,29 +273,20 @@ onLoad(() => {
         buttonThemeName.innerText = window.theme;
       }
     );
+  };
 
-    Array.prototype.forEach.call(
-      anchorTarget.parentNode.querySelectorAll('a'),
-      function (anchor) {
-        if (anchor.classList.contains('-active')) {
-          anchor.classList.remove('-active');
-        }
-      }
-    );
+  if (urlThemeParam && themes.hasOwnProperty(urlThemeParam)) {
+    switchTheme(urlThemeParam,
+      document.querySelector(themes[urlThemeParam].trigger));
+  } else if (window.localStorage.getItem('chiTheme')) {
+    const localStorageTheme = window.localStorage.getItem('chiTheme');
 
-    Array.prototype.forEach.call(
-      document.querySelectorAll('nav.chi-header__content .chi-header__brand#header-brand .-logo-wrapper'),
-      function (logo) {
-        if (logo.classList.contains(`-${theme.toLowerCase()}`)) {
-          if (logo.classList.contains('-d--none')) {
-            logo.classList.remove('-d--none');
-          }
-        } else {
-          logo.classList.add('-d--none');
-        }
-      }
-    );
-
-    anchorTarget.classList.add('-active');
+    switchTheme(localStorageTheme,
+      document.querySelector(themes[localStorageTheme].trigger));
+  } else {
+    switchTheme('Lumen',
+      document.querySelector(themes.Lumen.trigger));
   }
+
+  chi.dropdown(document.querySelectorAll('.-theme-switch'));
 });
