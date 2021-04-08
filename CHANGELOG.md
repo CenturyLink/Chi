@@ -1,4 +1,14 @@
 # CHANGELOG
+## 3.16.0 (April 8, 2021)
+### Components
+#### Added
+* Added: Icons `icon-circle-slash` and `icon-circle-slash-outline`.
+* Added: Marketing icon `business-support-ticket`.
+### Documentation
+#### Fixed
+* Fixed: Error 500 template brand svg in code snippet.
+* Fixed: Search input close icon button code snippets were missing size class `-sm`.
+
 ## 3.15.0 (March 30, 2021)
 ### Components
 #### Added
