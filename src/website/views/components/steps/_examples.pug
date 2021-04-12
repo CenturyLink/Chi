@@ -8,7 +8,8 @@ p.-text
 h3 Base
 .example.-mb--3
   .-p--3
-    ul.chi-steps.-px--0.-pb--2.-p-sm--6
+    p.-text--bold.-pl--2 Old layout
+    ul.chi-steps.-pb--2.-p-sm--6
       each step in steps
         if step == 'Step 1'
           li.-completed
@@ -33,6 +34,38 @@ h3 Base
           li
             div.chi-steps__icon
               a(href='#')= `${step}`
+            div.chi-steps__line
+    p.-text--bold.-pl--2 New layout
+    ul.chi-steps.-pb--2.-p-sm--6
+      each step in steps
+        if step == 'Step 1'
+          li.-completed
+            div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 2'
+          li.-completed
+            div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 3'
+          li.-active
+            div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 5'
+          li
+            div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+        else
+          li
+            div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
             div.chi-steps__line
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -83,7 +116,8 @@ p.-text
 
 .example.-mb--3
   .-p--3
-    ul.chi-steps.-horizontal-label.-labels-sm--hide.-px--0.-p-sm--5
+    p.-text--bold.-pl--2 Old layout
+    ul.chi-steps.-horizontal-label.-labels-sm--hide.-p-sm--5
       each step in steps
         if step == 'Step 1'
           li.-completed
@@ -109,6 +143,38 @@ p.-text
             div.chi-steps__icon
             a(href='#')= `${step}`
             div.chi-steps__line
+    p.-text--bold.-pl--2 New layout
+    ul.chi-steps.-horizontal-label.-labels-sm--hide.-p-sm--5
+      each step in steps
+        if step == 'Step 1'
+          li.-completed
+            div.chi-steps__icon
+            div.chi-steps__content
+              a(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 2'
+          li.-completed
+            div.chi-steps__icon
+            div.chi-steps__content
+              a(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 3'
+          li.-active
+            div.chi-steps__icon
+            div.chi-steps__content
+              a(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 5'
+          li
+            div.chi-steps__icon
+            div.chi-steps__content
+              a(href='#')= `${step}`
+        else
+          li
+            div.chi-steps__icon
+            div.chi-steps__content
+              a(href='#')= `${step}`
+            div.chi-steps__line 
   .example-tabs.-pl--2
     ul.chi-tabs#example-horizontal-labels
       li.-disabled
@@ -119,6 +185,384 @@ p.-text
   .chi-tabs-panel.-active#html-horizontal-labels
     :code(lang="html")
       <ul class="chi-steps -horizontal-label">
+        <li class="-completed">
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 1</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-completed">
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 2</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-active">
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 3</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 4</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 5</a>
+        </li>
+      </ul>
+
+h3 Vertical
+.example.-mb--3
+  .-p--3.-d--flex.-flex--column.-justify-content--center.-align-items--center
+    .-d--flex.-justify-content--around
+      .-d--flex.-flex--column.-justify-content--center.-align-items--center
+        p.-text--bold.-pl--2 New layout Base example
+        ul.chi-steps.-vertical
+          each step in steps
+            if step == 'Step 1'
+              li.-completed
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a(href='#')= `${step}`
+                    .chi-steps__item.-completed
+                      i.chi-icon.icon-check.-xs
+                      p Some content
+                    .chi-steps__item.-active
+                      i.chi-icon.icon-spinner.-xs
+                      p Some content
+                    .chi-steps__item
+                      p Some content
+                div.chi-steps__line
+            else if step == 'Step 2'
+              li.-completed
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a(href='#')= `${step}`
+                div.chi-steps__line
+            else if step == 'Step 3'
+              li.-active
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a(href='#')= `${step}`
+                div.chi-steps__line
+            else if step == 'Step 5'
+              li
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a(href='#')= `${step}`
+            else
+              li
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a(href='#')= `${step}`
+                div.chi-steps__line
+      .-d--flex.-flex--column.-justify-content--center.-align-items--center
+        p.-text--bold.-pl--2 New layout Base small size example
+        ul.chi-steps.-vertical.-sm
+          each step in steps
+            if step == 'Step 1'
+              li.-completed
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a(href='#')= `${step}`
+                    .chi-steps__item.-completed
+                      i.chi-icon.icon-check.-xs
+                      p Some content
+                    .chi-steps__item.-active
+                      i.chi-icon.icon-spinner.-xs
+                      p Some content
+                    .chi-steps__item
+                      p Some content
+                div.chi-steps__line
+            else if step == 'Step 2'
+              li.-completed
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a(href='#')= `${step}`
+                div.chi-steps__line
+            else if step == 'Step 3'
+              li.-active
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a(href='#')= `${step}`
+                div.chi-steps__line
+            else if step == 'Step 5'
+              li
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a(href='#')= `${step}`
+            else
+              li
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a(href='#')= `${step}`
+                div.chi-steps__line
+    .-d--flex.-justify-content--around
+      .-d--flex.-flex--column.-justify-content--center.-align-items--center
+        p.-text--bold.-pl--2 New layout Horizontal Label example
+        ul.chi-steps.-horizontal-label.-vertical.-labels-sm--hide
+          each step in steps
+            if step == 'Step 1'
+              li.-completed
+                div.chi-steps__icon
+                div.chi-steps__content
+                    a(href='#')= `${step}`
+                    .chi-steps__item.-completed
+                      i.chi-icon.icon-check.-xs
+                      p Some content
+                    .chi-steps__item.-active
+                      i.chi-icon.icon-spinner.-xs
+                      p Some content
+                    .chi-steps__item
+                      p Some content
+                div.chi-steps__line
+            else if step == 'Step 2'
+              li.-completed
+                div.chi-steps__icon
+                div.chi-steps__content
+                    a(href='#')= `${step}`
+                div.chi-steps__line
+            else if step == 'Step 3'
+              li.-active
+                div.chi-steps__icon
+                div.chi-steps__content
+                    a(href='#')= `${step}`
+                div.chi-steps__line
+            else if step == 'Step 5'
+              li
+                div.chi-steps__icon
+                div.chi-steps__content
+                    a(href='#')= `${step}`
+            else
+              li
+                div.chi-steps__icon
+                div.chi-steps__content
+                    a(href='#')= `${step}`
+                div.chi-steps__line
+      .-d--flex.-flex--column.-justify-content--center.-align-items--center
+        p.-text--bold.-pl--2 New layout Horizontal Label small size example
+        ul.chi-steps.-horizontal-label.-vertical.-sm.-labels-sm--hide
+          each step in steps
+            if step == 'Step 1'
+              li.-completed
+                div.chi-steps__icon
+                div.chi-steps__content
+                    a(href='#')= `${step}`
+                    .chi-steps__item.-completed 
+                      i.chi-icon.icon-check.-xs
+                      p Some content
+                    .chi-steps__item.-active
+                      i.chi-icon.icon-spinner.-xs
+                      p Some content
+                    .chi-steps__item
+                      p Some content
+                div.chi-steps__line
+            else if step == 'Step 2'
+              li.-completed
+                div.chi-steps__icon
+                div.chi-steps__content
+                    a(href='#')= `${step}`
+                div.chi-steps__line
+            else if step == 'Step 3'
+              li.-active
+                div.chi-steps__icon
+                div.chi-steps__content
+                    a(href='#')= `${step}`
+                div.chi-steps__line
+            else if step == 'Step 5'
+              li
+                div.chi-steps__icon
+                div.chi-steps__content
+                    a(href='#')= `${step}`
+            else
+              li
+                div.chi-steps__icon
+                div.chi-steps__content
+                    a(href='#')= `${step}`
+                div.chi-steps__line
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-responsive
+      li.-disabled
+        a(href=`#webcomponent-responsive`) Web Component
+      li.-active
+        a(href=`#html-responsive`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-responsive
+  .chi-tabs-panel.-active#html-responsive
+    :code(lang="html")
+      <!-- Visible labels from md breakpoint -->
+      <ul class="chi-steps -sm">
+        <li class="-completed">
+          <div class="chi-steps__icon">
+            <a href="#">Step 1</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-completed">
+          <div class="chi-steps__icon">
+            <a href="#">Step 2</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-active">
+          <div class="chi-steps__icon">
+            <a href="#">Step 3</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 4</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 5</a>
+          </div>
+        </li>
+      </ul>
+      <!-- Visible labels from lg breakpoint -->
+      <ul class="chi-steps -sm -horizontal-label">
+        <li class="-completed">
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 1</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-completed">
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 2</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-active">
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 3</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 4</a>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon"></div>
+          <a href="#">Step 5</a>
+        </li>
+      </ul>
+
+h3 Sizes
+p.-text
+  | Steps supports the following sizes: <code>-sm</code>, <code>-md</code>.
+  | The default size is <code>-md</code>.
+
+.example.-mb--3
+  .-p--3
+    p.-text--bold.-pl--2 New layout Base small size example
+    ul.chi-steps.-sm.-pb--4.-p-sm--6
+      each step in steps
+        if step == 'Step 1'
+          li.-completed
+            div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 2'
+          li.-completed
+            div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 3'
+          li.-active
+            div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 5'
+          li
+            div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+        else
+          li
+            div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+            div.chi-steps__line
+    p.-text--bold.-pl--2 New layout Horizontal label small size example
+    ul.chi-steps.-horizontal-label.-sm.-labels-sm--hide.-p-sm--5
+      each step in steps
+        if step == 'Step 1'
+          li.-completed
+            div.chi-steps__icon
+            div.chi-steps__content
+              a(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 2'
+          li.-completed
+            div.chi-steps__icon
+            div.chi-steps__content
+              a(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 3'
+          li.-active
+            div.chi-steps__icon
+            div.chi-steps__content
+              a(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 5'
+          li
+            div.chi-steps__icon
+            div.chi-steps__content
+              a(href='#')= `${step}`
+        else
+          li
+            div.chi-steps__icon
+            div.chi-steps__content
+              a(href='#')= `${step}`
+            div.chi-steps__line
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-responsive
+      li.-disabled
+        a(href=`#webcomponent-responsive`) Web Component
+      li.-active
+        a(href=`#html-responsive`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-responsive
+  .chi-tabs-panel.-active#html-responsive
+    :code(lang="html")
+      <!-- Visible labels from md breakpoint -->
+      <ul class="chi-steps -sm">
+        <li class="-completed">
+          <div class="chi-steps__icon">
+            <a href="#">Step 1</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-completed">
+          <div class="chi-steps__icon">
+            <a href="#">Step 2</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-active">
+          <div class="chi-steps__icon">
+            <a href="#">Step 3</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 4</a>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <a href="#">Step 5</a>
+          </div>
+        </li>
+      </ul>
+      <!-- Visible labels from lg breakpoint -->
+      <ul class="chi-steps -sm -horizontal-label">
         <li class="-completed">
           <div class="chi-steps__icon"></div>
           <a href="#">Step 1</a>

@@ -12,7 +12,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   padding: 0;
 
   &__icon {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex: 1 0 auto;
     height: 1rem;
@@ -26,6 +26,46 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     width: 100%;
   }
 
+  &__content {
+    white-space: nowrap;
+  }
+
+  &__item {
+    align-items: center;
+    color: $color-text-muted-light;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.375rem;
+
+    &:last-child {
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: $font-size-xs;
+      line-height: 1.125rem;
+      margin: 0;
+    }
+
+    .chi-icon {
+      margin-right: 0.375rem;
+    }
+
+    &.-active {
+      font-weight: $font-weight-semi-bold;
+    }
+
+    &.-completed {
+      color: $color-navy-100;
+    }
+
+    &:not(.-active) {
+      &:not(.-completed) {
+        padding-left: 1.125rem;
+      }
+    }
+  }
+
   & > li {
     align-items: center;
     color: $color-text-primary-alt;
@@ -33,7 +73,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     flex: 1 0 auto;
     font-size: $font-size-base;
     justify-content: center;
-    line-height: 1rem;
+    line-height: $line-height-sm;
 
     & > .chi-steps__icon {
       &::before {
@@ -59,6 +99,18 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         top: 1.5rem;
         white-space: nowrap;
       }
+
+      & > .chi-steps__content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        top: 1.5rem;
+
+        & a {
+          top: 0;
+        }
+      }
     }
 
     & > a {
@@ -78,24 +130,11 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
           content: '';
         }
       }
-
-      & > .chi-steps__line {
-        &::after {
-          border-right: 0.125rem solid $color-border-primary;
-          border-top: 0.125rem solid $color-border-primary;
-          content: '';
-          height: 0.5rem;
-          position: absolute;
-          right: 0;
-          top: -0.3125rem;
-          transform: rotate(45deg);
-          width: 0.5rem;
-        }
-      }
     }
 
     &.-active {
-      & > a {
+      & > a,
+      & > .chi-steps__content {
         font-weight: $font-weight-semi-bold;
       }
 
@@ -171,15 +210,6 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         border-color: $color-border-secondary;
       }
 
-      &.-completed {
-        & > .chi-steps__line {
-          &::after {
-            border-right-color: $color-border-secondary;
-            border-top-color: $color-border-secondary;
-          }
-        }
-      }
-
       &.-active {
         & > .chi-steps__line {
           border-color: $color-grey-40;
@@ -210,6 +240,10 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         margin-left: 0.5rem;
         margin-right: 0.875rem;
       }
+
+      > .chi-steps__content {
+        margin-left: 0.75rem;
+      }
     }
   }
 
@@ -222,6 +256,132 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
     & > li > a {
       display: none;
+    }
+  }
+
+  &.-sm {
+    & > li {
+      font-size: $font-size-xs;
+
+      & > .chi-steps__icon {
+        &::before {
+          font-size: 0.625rem;
+        }
+
+        &::after {
+          font-size: $font-size-lg;
+        }
+
+        & > .chi-steps__content {
+          top: 1.25rem;
+        }
+      }
+
+      & > a,
+      & > .chi-steps__content {
+        margin-left: 0.25rem;
+      }
+
+      & > .chi-steps__line {
+        margin: 0.25rem;
+      }
+    }
+
+    &.-horizontal-label {
+      > li {
+        > .chi-steps__line {
+          margin-left: 0.25rem;
+          margin-right: 0.375rem;
+        }
+      }
+    }
+  }
+
+  &.-vertical {
+    align-items: flex-start;
+    flex-direction: column;
+
+    & > li {
+      align-items: flex-start;
+      min-height: 4rem;
+      position: relative;
+
+      & > .chi-steps__icon {
+        align-items: flex-start;
+        flex-direction: row-reverse;
+        height: 100%;
+        position: relative;
+        width: 100%;
+
+        &::before {
+          left: 0.5rem;
+        }
+
+        &::after {
+          position: relative;
+        }
+
+        & > .chi-steps__content {
+          align-items: flex-start;
+          margin-left: 0.75rem;
+          top: 0;
+        }
+      }
+
+      & > .chi-steps__line {
+        border-left: 0.125rem solid $color-border-primary;
+        border-top: 0;
+        height: calc(100% - 2rem);
+        left: 0.75rem;
+        margin: 1.5rem 0 0;
+        position: absolute;
+        top: 0;
+      }
+
+      &.-active {
+        & > .chi-steps__line {
+          border-color: $color-grey-60;
+        }
+      }
+    }
+
+    &.-horizontal-label {
+      > li {
+        > .chi-steps__icon {
+          width: 1.5rem;
+        }
+      }
+    }
+
+    &.-sm {
+      & > li {
+        & > .chi-steps__icon {
+          &::before {
+            left: 0.3125rem;
+          }
+        }
+
+        & > .chi-steps__line {
+          height: calc(100% - 1.25rem);
+          left: 0.5rem;
+          margin: 1.125rem 0 0;
+        }
+      }
+
+      &.-horizontal-label {
+        > li {
+          & > .chi-steps__icon {
+            &::before {
+              left: 0.5625rem;
+            }
+          }
+
+          > .chi-steps__line {
+            margin-left: 0.25rem;
+            margin-right: 0.375rem;
+          }
+        }
+      }
     }
   }
 
@@ -265,11 +425,6 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   .chi-steps li div.chi-steps__icon::after {
     position: relative;
     right: 3.47rem;
-  }
-
-  .chi-steps li.-completed div.chi-steps__icon::after {
-    position: relative;
-    right: 2.97rem;
   }
 
   .chi-steps div.chi-steps__icon::before,
