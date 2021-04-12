@@ -740,6 +740,19 @@ PolicyDocument
                   fi
                 """, label: "Cleaning before pushing to AssetsServer"
                 jslGitHubCloneRepo('ux-chi-AssetsServer')
+                CHECK = sh (
+                  script: """#!/bin/bash
+                    VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
+                    if [[ -d ux-chi-AssetsServer/chi/\$VERSION ]]
+                    then
+                        check="EXISTS"
+                    else
+                        check="NO"
+                    fi
+                    echo "\$check"
+                  """,
+                  returnStdout: true
+                ).trim()
                 sh script:"""
                   ls -lah
                   VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
@@ -761,8 +774,12 @@ PRDesc
                   git commit -m "CHI_\$VERSION"
                   git push -f origin CHI_\$VERSION
                 """, label: "Pushing branch to AssetsServer"
-                dir ('ux-chi-AssetsServer') {
-                  jslHubWrapper('pull-request -F prepared-message.md')
+                if ( CHECK == "NO" ) {
+                  dir ('ux-chi-AssetsServer') {
+                    jslHubWrapper('pull-request -F prepared-message.md')
+                  }
+                } else {
+                  echo "NO PR CREATED THIS TIME; REQUIRES VERSION BUMP"
                 }
               }
             }
