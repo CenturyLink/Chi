@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-04-14T18:10:58",
+  "timestamp": "2021-04-13T15:21:36",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2320,6 +2320,39 @@
           "docs": "to add a close button to the popover",
           "docsTags": [],
           "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "drag",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "drag",
+          "reflectToAttr": true,
+          "docs": "to allow the user to manually change position of the popover",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "portal",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "portal",
+          "reflectToAttr": true,
+          "docs": "To define portal style of the Popover",
+          "docsTags": [],
           "values": [
             {
               "type": "boolean"

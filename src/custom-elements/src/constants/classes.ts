@@ -1,6 +1,7 @@
 /* Common */
 export const ACTIVE_CLASS = '-active';
 export const DISABLED_CLASS = '-disabled';
+export const PORTAL_CLASS = '-portal';
 
 /* Time */
 export const TIME_CLASSES = {
@@ -14,4 +15,18 @@ export const TIME_CLASSES = {
   SECOND: 'chi-time-picker__second',
   PERIODS: 'chi-time-picker__periods',
   PERIOD: 'chi-time-picker__period',
+};
+
+export const POPOVER_CLASSES = {
+  ARROW: 'chi-popover__arrow',
+  CLOSABLE: '-closable',
+  CONTENT: 'chi-popover__content',
+  DRAGGABLE: '-draggable',
+  FOOTER: 'chi-popover__footer',
+  HEADER: 'chi-popover__header',
+  INPUT: 'chi-popover__input',
+  NO_ARROW: '-no-arrow',
+  POPOVER: 'chi-popover',
+  TEXT: 'chi-popover__text',
+  TITLE: 'chi-popover__title'
 };

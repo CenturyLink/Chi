@@ -6,7 +6,7 @@ h3 Base
 p.-text
   | Popover components are absolutely positioned. For this example we have forced a relative position.
 .example.-mb--3
-  .-p--3(style="height: 135px;")
+  .-p--3(style="height: 105px;")
     .-position--relative
       chi-popover(active, variant="text", prevent-auto-hide)
         | Popover content
@@ -219,6 +219,84 @@ p.-text
       <!-- Method 2 - Data Content -->
       <button id='popover-1' class="chi-button" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content</p></div>'>Popover</button>
       <script>chi.popover(document.getElementById('popover-1'));</script>
+
+h3 Portal
+.example.-mb--3
+  .-p--3(style='height: 155px')
+    .-position--relative
+      chi-popover#example-portal-popover(
+        portal
+        closable
+        title="Popover title"
+        active
+        prevent-auto-hide)
+        | Popover content
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-portal
+      li.-active
+        a(href=`#webcomponent-portal`) Web Component
+      li
+        a(href=`#html-portal`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-portal
+    .chi-tab__description
+      | Use the <code>portal</code> attribute to provide portal style to the Popover.
+    :code(lang="html")
+      <chi-popover title="Popover title" portal closable active>Popover content</chi-popover>
+  .chi-tabs-panel#html-portal
+    :code(lang="html")
+      <!-- Put the following code anywere in the DOM, e.g. at the end of the DOM -->
+      <section class="chi-popover -portal -active" aria-modal="true" role="dialog" aria-label="Popover title">
+        <button class="chi-button -sm -icon -close" aria-label="Close">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-x"></i>
+          </div>
+        </button>
+        <header class="chi-popover__header">
+          <h2 class="chi-popover__title">Popover title</h2>
+        </header>
+        <div class="chi-popover__content">
+          <p class="chi-popover__text">Popover content</p>
+        </div>
+      </section>
+
+h3 Draggable popover
+.example.-mb--3
+  .-p--3
+    chi-button#example-draggable-button Click me!
+    chi-popover#example-draggable-popover(
+      position="bottom-end"
+      title="Draggable Popover"
+      portal
+      reference="#example-draggable-button"
+      closable
+      drag)
+      | Popover content
+
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-draggable
+      li.-active
+        a(href=`#webcomponent-draggable`) Web Component
+      li.-disabled
+        a(href=`#html-draggable`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-draggable
+    .chi-tab__description
+      | Use the <code>reference</code> attribute with a
+      | CSS selector to properly reference an element.
+    :code(lang="html")
+      <chi-button id="example-draggable-button">Click me!</chi-button>
+
+      <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
+      <chi-popover id="example-draggable-popover" position="bottom-end" title="Draggable Popover" reference="#example-draggable-button" portal drag>Popover content</chi-popover>
+
+      <script>
+        document.querySelector("#example-draggable-button")
+          .addEventListener("click", function() {
+            var popoverElem = document.querySelector("#example-draggable-popover");
+
+            popoverElem.toggle();
+        });
+      </script>
+  .chi-tabs-panel#html-draggable
 
 h3 Open on hover
 .example.-mb--3
@@ -752,6 +830,8 @@ script.
       chi.tab(document.getElementById('examples-autohide-true'));
       chi.tab(document.getElementById('examples-hover'));
       chi.tab(document.getElementById('examples-close-button'));
+      chi.tab(document.getElementById('examples-draggable'));
+      chi.tab(document.getElementById('examples-portal'));
 
       buttonOpenOnHover.addEventListener('chiMouseEnter', function() {
         popoverOpenOnHover.show();
@@ -784,7 +864,8 @@ script.
         {button: '#example-5-button-toggle',        popover: '#example-5-popover',              action: "toggle"},
         {button: '#example-6-auto-hide-button',     popover: '#example-6-auto-hide-popover',    action: "toggle"},
         {button: '#example-6-no-auto-hide-button',  popover: '#example-6-no-auto-hide-popover', action: "toggle"},
-        {button: '#button-example-popover-closable-1',  popover: '#popover-example-popover-closable-1', action: "toggle"}
+        {button: '#button-example-popover-closable-1',  popover: '#popover-example-popover-closable-1', action: "toggle"},
+        {button: '#example-draggable-button',  popover: '#example-draggable-popover', action: "toggle"}
       ];
 
       Array.prototype.forEach.call(popovers, function(popover){
