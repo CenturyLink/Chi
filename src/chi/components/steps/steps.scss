@@ -413,12 +413,24 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 /* IE10+ CSS hack */
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   .chi-steps div.chi-steps__icon a {
+    right: 1.125rem;
+  }
+
+  .chi-steps li.-completed div.chi-steps__icon a {
+    right: 0.85rem;
+  }
+
+  .chi-steps li.-completed div.chi-steps__icon::after {
     position: relative;
-    right: 0.8625rem;
+    right: 2.95rem;
+  }
+
+  .chi-steps li:first-child.-active div.chi-steps__icon::before {
+    right: 3rem;
   }
 
   .chi-steps li:first-child.-active div.chi-steps__icon::after {
-    right: 3.4375rem;
+    right: 3.25rem;
   }
 
   .chi-steps li.-active div.chi-steps__icon::after,
@@ -429,7 +441,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
   .chi-steps div.chi-steps__icon::before,
   .chi-steps.-horizontal-label div.chi-steps__icon::before  {
-    left: 0.3rem;
+    left: 0.25rem;
     position: relative;
   }
 
@@ -447,6 +459,72 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   .chi-steps.-horizontal-label li.-completed div.chi-steps__icon::after {
     position: relative;
     right: 0.3125rem;
+  }
+
+  .chi-steps.-vertical li div.chi-steps__icon {
+    position: relative;
+  }
+
+  .chi-steps.-vertical li div.chi-steps__icon a,
+  .chi-steps.-vertical li div.chi-steps__icon::after {
+    right: 0rem;
+  }
+
+  .chi-steps.-vertical li div.chi-steps__icon::before {
+    left: -4.5rem;
+  }
+
+  .chi-steps.-vertical.-horizontal-label li.-completed div.chi-steps__icon::after {
+    right: 0rem;
+  }
+
+  .chi-steps.-vertical.-horizontal-label li.-active div.chi-steps__icon::after,
+  .chi-steps.-vertical.-horizontal-label li.-active ~ li div.chi-steps__icon::after {
+    right: -0.5rem;
+  }
+
+  .chi-steps.-vertical.-horizontal-label li div.chi-steps__icon::before {
+    left: -0.5rem;
+  }
+
+  .chi-steps.-sm li.-completed div.chi-steps__icon::after {
+    right: 2.35rem;
+  }
+
+  .chi-steps.-sm li.-active div.chi-steps__icon::after,
+  .chi-steps.-sm li div.chi-steps__icon::after {
+    right: 2.75rem;
+  }
+
+  .chi-steps.-horizontal-label.-sm li.-completed div.chi-steps__icon::after {
+    right: 0.15rem;
+  }
+
+  .chi-steps.-horizontal-label.-sm div.chi-steps__icon::after,
+  .chi-steps.-horizontal-label.-sm li.-active div.chi-steps__icon::after {
+    right: 0.45rem;
+  }
+
+  .chi-steps.-vertical.-sm li div.chi-steps__icon::before {
+    left: -3.8rem;
+  }
+
+  .chi-steps.-sm.-vertical li.-active div.chi-steps__icon::after,
+  .chi-steps.-sm.-vertical li div.chi-steps__icon::after {
+    right: 0rem;
+  }
+
+  .chi-steps.-vertical.-sm.-horizontal-label li div.chi-steps__icon::before {
+    left: -0.5rem;
+  }
+
+  .chi-steps.-vertical.-horizontal-label.-sm li.-active div.chi-steps__icon::after,
+  .chi-steps.-vertical.-horizontal-label.-sm li.-active ~ li div.chi-steps__icon::after {
+    right: -0.25rem;
+  }
+
+  .chi-steps.-vertical.-horizontal-label.-sm li.-completed div.chi-steps__icon::after {
+    right: 0rem;
   }
 }
 
