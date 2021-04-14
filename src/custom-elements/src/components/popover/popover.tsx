@@ -392,7 +392,8 @@ export class Popover {
     this._componentLoaded = true;
 
     if (this.drag) {
-      const popoverHeader = this._popoverElement.querySelector(`.${POPOVER_CLASSES.HEADER}`) as HTMLElement;
+      const popoverHeader = this._popoverElement
+        .querySelector(`.${POPOVER_CLASSES.HEADER}`) as HTMLElement;
       const dragMouseDown = (e) => {
         e = e || window.event;
         e.preventDefault();
@@ -401,18 +402,29 @@ export class Popover {
         pos4 = e.clientY;
         document.onmouseup = closeDragElement;
         document.onmousemove = elementDrag;
+        popoverHeader.ontouchmove = elementDragOnTouch;
       };
 
+      const setPosition = (positionData) => {
+        pos1 = pos3 - positionData.clientX;
+        pos2 = pos4 - positionData.clientY;
+        pos3 = positionData.clientX;
+        pos4 = positionData.clientY;
+        this._popoverElement.style.top = this._popoverElement.offsetTop - pos2 + "px";
+        this._popoverElement.style.left = this._popoverElement.offsetLeft - pos1 + "px";
+      };
       const elementDrag = (e) => {
         e = e || window.event;
         e.preventDefault();
         this._destroyPopper();
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        this._popoverElement.style.top = this._popoverElement.offsetTop - pos2 + "px";
-        this._popoverElement.style.left = this._popoverElement.offsetLeft - pos1 + "px";
+        setPosition(e);
+      };
+
+      const elementDragOnTouch = (e) => {
+        e.preventDefault();
+        const touch = e.targetTouches[0];
+
+        setPosition(touch);
       };
 
       const closeDragElement = () => {
