@@ -43,7 +43,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
     p {
       font-size: $font-size-xs;
-      line-height: 1.125rem;
+      line-height: $line-height-sm;
       margin: 0;
     }
 
@@ -104,11 +104,16 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         align-items: center;
         display: flex;
         flex-direction: column;
+        max-width: 100px;
         position: relative;
         top: 1.5rem;
+        white-space: normal;
 
         & a {
+          text-align: center;
           top: 0;
+          white-space: normal;
+          width: 100px;
         }
       }
     }
@@ -324,8 +329,19 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         & > .chi-steps__content {
           align-items: flex-start;
           margin-left: 0.75rem;
+          max-width: initial;
           top: 0;
+          z-index: 2;
+
+          a {
+            text-align: left;
+            width: auto;
+          }
         }
+      }
+
+      & > .chi-steps__content {
+        z-index: 2;
       }
 
       & > .chi-steps__line {
@@ -336,11 +352,24 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         margin: 1.5rem 0 0;
         position: absolute;
         top: 0;
+        z-index: 1;
       }
 
       &.-active {
         & > .chi-steps__line {
           border-color: $color-grey-60;
+        }
+
+        &:last-child {
+          flex-grow: 0;
+          min-height: auto;
+        }
+
+        & ~ li {
+          &:last-child {
+            flex-grow: 0;
+            min-height: auto;
+          }
         }
       }
     }
@@ -349,6 +378,12 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       > li {
         > .chi-steps__icon {
           width: 1.5rem;
+        }
+
+        .chi-steps__content {
+          .chi-steps__item {
+            justify-content: flex-start;
+          }
         }
       }
     }
