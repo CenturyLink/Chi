@@ -394,9 +394,8 @@ export class Popover {
     if (this.drag) {
       const popoverHeader = this._popoverElement
         .querySelector(`.${POPOVER_CLASSES.HEADER}`) as HTMLElement;
-      let initialTransformProperty;
-      const dragMouseDown = (e) => {
-        e = e || window.event;
+      let initialTransformProperty: string;
+      const dragMouseDown = (e: MouseEvent) => {
         e.preventDefault();
         this._closePrevented = true;
         pos3 = e.clientX;
@@ -405,29 +404,36 @@ export class Popover {
 
         document.onmouseup = closeDragElement;
         document.onmousemove = elementDrag;
+      };
+      const dragTouch = (e: TouchEvent) => {
+        e.preventDefault();
+        this._closePrevented = true;
+        pos3 = e.touches[0].clientX;
+        pos4 = e.touches[0].clientY;
+        initialTransformProperty = window.getComputedStyle(this._popoverElement)['transform'];
+
         popoverHeader.ontouchmove = elementDragOnTouch;
       };
-      const setPosition = (positionData) => {
-        pos1 = pos3 - positionData.clientX;
-        pos2 = pos4 - positionData.clientY;
-        pos3 = positionData.clientX;
-        pos4 = positionData.clientY;
+      const setPosition = (clientX: number, clientY: number) => {
+        pos1 = pos3 - clientX;
+        pos2 = pos4 - clientY;
+        pos3 = clientX;
+        pos4 = clientY;
         this._popoverElement.style.top = this._popoverElement.offsetTop - pos2 + "px";
         this._popoverElement.style.left = this._popoverElement.offsetLeft - pos1 + "px";
         this._popoverElement.style.transform = initialTransformProperty;
       };
-      const elementDrag = (e) => {
-        e = e || window.event;
+      const elementDrag = (e: MouseEvent) => {
         e.preventDefault();
         this._destroyPopper();
-        setPosition(e);
+        setPosition(e.clientX, e.clientY);
       };
-      const elementDragOnTouch = (e) => {
+      const elementDragOnTouch = (e: TouchEvent) => {
         e.preventDefault();
         const touch = e.targetTouches[0];
 
         this._destroyPopper();
-        setPosition(touch);
+        setPosition(touch.clientX, touch.clientY);
       };
       const closeDragElement = () => {
         document.onmouseup = null;
@@ -440,7 +446,7 @@ export class Popover {
 
       if (popoverHeader) {
         popoverHeader.onmousedown = dragMouseDown;
-        popoverHeader.ontouchstart = dragMouseDown;
+        popoverHeader.ontouchstart = dragTouch;
       } else {
         this._popoverElement.onmousedown = dragMouseDown;
       }

@@ -264,7 +264,6 @@ h3 Draggable popover
   .-p--3
     chi-button#example-draggable-button Click me!
     chi-popover#example-draggable-popover(
-      position="bottom-end"
       title="Draggable Popover"
       portal
       reference="#example-draggable-button"
@@ -286,7 +285,7 @@ h3 Draggable popover
       <chi-button id="example-draggable-button">Click me!</chi-button>
 
       <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
-      <chi-popover id="example-draggable-popover" position="bottom-end" title="Draggable Popover" reference="#example-draggable-button" portal drag>Popover content</chi-popover>
+      <chi-popover id="example-draggable-popover" title="Draggable Popover" reference="#example-draggable-button" drag portal closable>Popover content</chi-popover>
 
       <script>
         document.querySelector("#example-draggable-button")
