@@ -2,22 +2,22 @@
 @import '_global-mixins';
 
 $spinner-sizes: (
-  xs: 0.75rem,
-  sm: 1rem,
-  sm--2: 1.25rem,
-  sm--3: 1.5rem,
-  md: 2rem,
-  lg: 4rem,
-  xl: 6rem,
-  xxl: 8rem);
+  xs: $spinner-size-xs,
+  sm: $spinner-size-sm,
+  sm--2: $spinner-size-sm2,
+  sm--3: $spinner-size-sm3,
+  md: $spinner-size-md,
+  lg: $spinner-size-lg,
+  xl: $spinner-size-xl,
+  xxl: $spinner-size-xxl);
 
 .chi-spinner {
   animation: rotator 1.4s linear infinite;
-  height: 1rem;
+  height: $spinner-size-sm;
   position: relative;
   stroke: currentColor;
   vertical-align: top;
-  width: 1rem;
+  width: $spinner-size-sm;
 
   & .path {
     animation: dash 1.4s ease-in-out infinite;

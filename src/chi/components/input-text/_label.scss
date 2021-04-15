@@ -40,17 +40,17 @@ label,
   }
 
   &.-status {
-    color: $color-text-muted;
+    color: $label-status-text-color;
     font-weight: $font-weight-normal;
     margin-top: 0.25rem;
   }
 
   &.-danger {
-    color: $color-text-danger;
+    color: $label-status-danger-text-color;
   }
 
   &.-success {
-    color: $color-text-success;
+    color: $label-status-success-text-color;
   }
 
   .chi-label__required,
@@ -60,7 +60,7 @@ label,
   }
 
   .chi-label__required {
-    color: $color-text-danger;
+    color: $label-required-text-color;
   }
 
   .chi-label__optional {

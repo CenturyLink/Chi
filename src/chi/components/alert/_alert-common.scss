@@ -3,44 +3,44 @@
 
 $states: (
   success: (
-    border-left-color: $color-icon-success,
-    color: $color-icon-success,
-    background-color: $color-background-success-light,
-    title-color: $color-text-success
+    border-left-color: $alert-success-accent-border-color,
+    color: $alert-success-icon-color,
+    background-color: $alert-success-background-color,
+    title-color: $alert-success-title-text-color
   ),
   danger: (
-    border-left-color: $color-icon-danger,
-    color: $color-icon-danger,
-    background-color: $color-background-danger-light,
-    title-color: $color-text-danger
+    border-left-color: $alert-danger-accent-border-color,
+    color: $alert-danger-icon-color,
+    background-color: $alert-danger-background-color,
+    title-color: $alert-danger-title-text-color
   ),
   warning: (
-    border-left-color: $color-icon-warning,
-    color: $color-icon-warning,
-    background-color: $color-background-warning-light,
-    title-color: $color-text-warning
+    border-left-color: $alert-warning-accent-border-color,
+    color: $alert-warning-icon-color,
+    background-color: $alert-warning-background-color,
+    title-color: $alert-warning-title-text-color
   ),
   info: (
-    border-left-color: $color-icon-info,
-    color: $color-icon-info,
-    background-color: $color-background-info-light,
-    title-color: $color-text-info
+    border-left-color: $alert-info-accent-border-color,
+    color: $alert-info-icon-color,
+    background-color: $alert-info-background-color,
+    title-color: $alert-info-title-text-color
   ),
   muted: (
-    border-left-color: $color-icon-muted,
-    color: $color-icon-muted,
-    background-color: $color-background-muted-light,
-    title-color: $color-text-muted
+    border-left-color: $alert-muted-accent-border-color,
+    color: $alert-muted-icon-color,
+    background-color: $alert-muted-background-color,
+    title-color: $alert-muted-title-text-color
   )
 );
 
 .chi-alert {
-  background-color: $color-background-white;
-  border-color: $color-border-base-dark;
+  background-color: $alert-background-color;
+  border-color: $alert-border-color;
   border-style: solid;
   border-width: 0.0625rem;
   box-shadow: map-get($shadow, 1);
-  color: $color-text-base;
+  color: $alert-text-color;
   display: flex;
   font-family: $font-family-base;
   font-size: $font-size-base;
@@ -51,7 +51,7 @@ $states: (
 
   &:not(.-banner) {
     &::before {
-      background-color: $color-text-base;
+      background-color: $alert-text-color;
       content: '';
       height: 100%;
       left: -0.0625rem;
@@ -103,7 +103,7 @@ $states: (
 
   @each $state in map-keys($states) {
     &.-#{$state} {
-      color: $color-text-base;
+      color: $alert-text-color;
 
       &:not(.-banner) {
         &::before {

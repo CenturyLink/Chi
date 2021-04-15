@@ -2,16 +2,17 @@
 @import '_global-variables';
 
 $icon-sizes: (
-  xs: 4.5rem,
-  sm: 5rem,
-  md: 6rem,
-  lg: 8rem);
+  xs: $marketing-icon-size-xs,
+  sm: $marketing-icon-size-sm,
+  md: $marketing-icon-size-md,
+  lg: $marketing-icon-size-lg,
+);
 
 .chi-marketing-icon {
   display: inline-block;
-  height: 6rem;
+  height: $marketing-icon-size-md;
   position: relative;
-  width: 6rem;
+  width: $marketing-icon-size-md;
 
   & > svg {
     height: 100%;

@@ -3,7 +3,7 @@
 
 .chi-mobile-nav {
   .chi-drawer {
-    background-color: $color-background-base-darker;
+    background-color: $mobile-nav-background-color;
 
     .chi-mobile-nav__first-level-content {
       left: 0;
@@ -11,26 +11,26 @@
       transition-duration: 0.3s;
 
       &.-second-level-shown {
-        left: -23rem;
+        left: -$mobile-nav-width;
       }
     }
 
     &.-left,
     &.-right {
-      width: 23rem;
+      width: $mobile-nav-width;
     }
 
     &.-left {
       &.-animated {
         &:not(.-active) {
-          transform: translate(-23rem, 0);
+          transform: translate(-$mobile-nav-width, 0);
         }
       }
     }
 
     .chi-mobile-nav__header {
       align-items: center;
-      background-color: $color-background-base;
+      background-color: $mobile-nav-header-background-color;
       display: flex;
       justify-content: center;
       min-height: 3.5rem;
@@ -82,8 +82,8 @@
 
     .chi-mobile-nav__user {
       align-items: center;
-      background-color: $color-background-base;
-      border-top: 0.125rem solid $color-border-base;
+      background-color: $mobile-nav-user-background-color;
+      border-top: 0.125rem solid $mobile-nav-user-border-color;
       display: flex;
       justify-content: space-between;
       padding: 0.25rem 1rem;
@@ -100,7 +100,7 @@
     }
 
     .chi-mobile-nav__logout {
-      color: $color-text-primary;
+      color: $mobile-nav-logout-text-color;
       padding: 0.25rem 1rem;
 
       & > span {
@@ -123,7 +123,7 @@
         line-height: 1.25rem;
 
         > a {
-          color: $color-text-base;
+          color: $mobile-nav-list-item-text-color;
           display: block;
           padding-bottom: 0.625rem;
           padding-left: 1.5rem;
@@ -138,7 +138,7 @@
           &,
           &.-unselected {
             & > a {
-              color: $color-text-primary;
+              color: $mobile-nav-list-item-active-text-color;
 
               .chi-mobile-nav__list-title {
                 font-weight: $font-weight-semi-bold;
@@ -149,7 +149,7 @@
 
         &.-expanded {
           & > a {
-            color: $color-text-primary;
+            color: $mobile-nav-list-item-expanded-text-color;
 
             .chi-mobile-nav__list-title {
               font-weight: $font-weight-semi-bold;
@@ -191,7 +191,7 @@
                   padding-top: 0.625rem;
 
                   &.-active {
-                    color: $color-text-primary;
+                    color: $mobile-nav-list-item-active-text-color;
                     font-weight: $font-weight-semi-bold;
                   }
                 }
@@ -239,7 +239,7 @@
     .chi-drawer {
       box-shadow: none;
       display: block;
-      left: 23rem;
+      left: $mobile-nav-width;
       transition-duration: 0.3s;
       z-index: 50;
 

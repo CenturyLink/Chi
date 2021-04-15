@@ -3,16 +3,16 @@
 
 $states: (
   danger: (
-    background-color: $color-icon-danger,
+    background-color: $progress-value-danger-background-color,
   ),
   warning: (
-    background-color: $color-icon-warning,
+    background-color: $progress-value-warning-background-color,
   ),
   info: (
-    background-color: $color-background-primary,
+    background-color: $progress-value-background-color,
   ),
   success: (
-    background-color: $color-icon-success,
+    background-color: $progress-value-success-background-color,
   )
 );
 
@@ -25,7 +25,7 @@ progress {
   /* Get rid of default border in Firefox. */
   border: 0;
   /* For IE10 / IE 11 / Edge */
-  color:  $color-text-primary-alt;
+  color:  $progress-value-background-color;
   display: block;
   height: 0.5rem;
   overflow: hidden;
@@ -33,16 +33,16 @@ progress {
 
   //Chrome, Safari
   &::-webkit-progress-bar {
-    background-color: $color-grey-20;
+    background-color: $progress-background-color;
   }
 
   &::-webkit-progress-value {
-    background-color: $color-background-primary;
+    background-color: $progress-value-background-color;
   }
 
   //Firefox
   &::-moz-progress-bar {
-    background-color: $color-background-primary;
+    background-color: $progress-value-background-color;
   }
 
   //Fix for 1 px border-right on progress bar in IE10 / IE 11 / Edge

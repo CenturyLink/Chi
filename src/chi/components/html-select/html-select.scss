@@ -3,32 +3,32 @@
 
 $sizes: (
   sm: (
-    height: 1.5rem,
-    font-size: 0.75rem,
-    line-height: 1rem,
-    background-position: right 0.5rem center,
-    padding-left: 0.75rem,
+    height: $select-sm-height,
+    font-size: $select-sm-font-size,
+    line-height: $select-sm-line-height,
+    background-position: $select-sm-arrow-background-position,
+    padding: $select-sm-padding,
   ),
   md: (
-    height: 2rem,
-    font-size: 0.875rem,
-    line-height: 1rem,
-    background-position: right 0.5rem center,
-    padding-left: 0.75rem,
+    height: $select-md-height,
+    font-size: $select-md-font-size,
+    line-height: $select-md-line-height,
+    background-position: $select-md-arrow-background-position,
+    padding: $select-md-padding,
   ),
   lg: (
-    height: 2.5rem,
-    font-size: 0.875rem,
-    line-height: 1.25rem,
-    background-position: right 1rem center,
-    padding-left: 0.75rem,
+    height: $select-lg-height,
+    font-size: $select-lg-font-size,
+    line-height: $select-lg-line-height,
+    background-position: $select-lg-arrow-background-position,
+    padding: $select-lg-padding,
   ),
   xl: (
-    height: 3rem,
-    font-size: 0.875rem,
-    line-height: 1.25rem,
-    background-position: right 1rem center,
-    padding-left: 0.75rem,
+    height: $select-xl-height,
+    font-size: $select-xl-font-size,
+    line-height: $select-xl-line-height,
+    background-position: $select-xl-arrow-background-position,
+    padding: $select-xl-padding,
   )
 );
 
@@ -36,22 +36,21 @@ $sizes: (
 .chi-select,
 select.chi-input { // sass-lint:disable-line force-element-nesting
   appearance: none;
-  background-color: $color-background-white;
+  background-color: $select-background-color;
   background-image: url('icon-chevron-thin-down.svg');
   background-position: map-get(map-get($sizes, md), background-position);
   background-repeat: no-repeat;
-  background-size: 0.75rem 0.75rem;
-  border: 0.0625rem solid $color-border-base-dark;
-  border-radius: 0;
-  box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
-  color: $color-text-base;
+  background-size: 0.75rem;
+  border: 0.0625rem solid $select-border-color;
+  border-radius: $border-radius-base;
+  box-shadow: $select-box-shadow;
+  color: $select-text-color;
   cursor: pointer;
   font-size: map-get(map-get($sizes, md), font-size);
   height: map-get(map-get($sizes, md), height);
   line-height: map-get(map-get($sizes, md), line-height);
   outline: none;
-  padding-left: map-get(map-get($sizes, md), padding-left);
-  padding-right: 1.6875rem;
+  padding: map-get(map-get($sizes, md), padding);
   transition: background-color 0.12s ease-in, border-color 0.1s ease-in;
   width: 100%;
 
@@ -70,17 +69,17 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
   &.-hover,
   &:active,
   &.-active {
-    border-color: $color-grey-40;
+    border-color: $select-hover-border-color;
   }
 
   &:focus,
   &.-focus {
-    border-color: $focus-color;
-    box-shadow: 0 0 0 1px rgba($focus-color, 1);
+    border-color: $select-focus-border-color;
+    box-shadow: 0 0 0 1px rgba($select-focus-border-color, 1);
   }
 
   &[disabled] {
-    opacity: 0.6;
+    opacity: $select-disabled-opacity;
     pointer-events: none;
   }
 
@@ -90,22 +89,22 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
       font-size: map-get(map-get($sizes, $type), font-size);
       height: map-get(map-get($sizes, $type), height);
       line-height: map-get(map-get($sizes, $type), line-height);
-      padding-left: map-get(map-get($sizes, $type), padding-left);
+      padding: map-get(map-get($sizes, $type), padding);
     }
   }
 
   &:not([disabled]) {
     &.-danger {
-      border-color: $color-icon-danger;
+      border-color: $select-danger-border-color;
     }
   }
 
   &.-danger {
-    color: $color-text-base;
+    color: $select-danger-text-color;
 
     &:focus,
     &.-focus {
-      box-shadow: 0 0 0 1px $color-icon-danger;
+      box-shadow: 0 0 0 1px $select-danger-border-color;
     }
   }
 }

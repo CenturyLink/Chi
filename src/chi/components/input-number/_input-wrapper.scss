@@ -3,10 +3,10 @@
 
 $sizes: (
   sm: (
-    height: 1.5rem,
-    line-height: 1rem,
-    font-size: 0.75rem,
-    padding: 0.1875rem 0.4375rem,
+    height: $number-input-sm-height,
+    line-height: $number-input-sm-line-height,
+    font-size: $number-input-sm-font-size,
+    padding: $number-input-sm-padding,
     padding-right: 1.25rem,
     btn-height: 0.5rem,
     right: 0.1875rem,
@@ -15,10 +15,10 @@ $sizes: (
     background-size: 0.375rem
   ),
   md: (
-    height: 2rem,
-    line-height: 1rem,
-    font-size: 0.875rem,
-    padding: 0.4375rem,
+    height: $number-input-md-height,
+    line-height: $number-input-md-line-height,
+    font-size: $number-input-md-font-size,
+    padding: $number-input-md-padding,
     padding-right: 1.375rem,
     btn-height: 0.6875rem,
     btn-width: 1rem,
@@ -28,10 +28,10 @@ $sizes: (
     background-size: 0.5rem
   ),
   lg: (
-    height: 2.5rem,
-    line-height: 1.25rem,
-    font-size: 0.875rem,
-    padding: 0.5625rem 0.4375rem,
+    height: $number-input-lg-height,
+    line-height: $number-input-lg-line-height,
+    font-size: $number-input-lg-font-size,
+    padding: $number-input-lg-padding,
     padding-right: 1.8125rem,
     btn-height: 0.875rem,
     btn-width: 1.25rem,
@@ -41,10 +41,10 @@ $sizes: (
     background-size: 0.5rem
   ),
   xl: (
-    height: 3rem,
-    line-height: 1.5rem,
-    font-size: 0.875rem,
-    padding: 0.6875rem 0.4375rem,
+    height: $number-input-xl-height,
+    line-height: $number-input-xl-line-height,
+    font-size: $number-input-xl-font-size,
+    padding: $number-input-xl-padding,
     padding-right: 1.8125rem,
     btn-height: 1rem,
     btn-width: 1.5rem,
@@ -57,7 +57,7 @@ $sizes: (
 
 $expanded-sizes: (
   sm: (
-    width: 6rem,
+    width: $number-input-expanded-sm-width,
     btn-font-size: 0.75rem,
     btn-height: 1.5rem,
     btn-padding: 0.3125rem,
@@ -67,7 +67,7 @@ $expanded-sizes: (
     icon-width: 0.75rem
   ),
   md: (
-    width: 8rem,
+    width: $number-input-expanded-md-width,
     btn-height: 2rem,
     btn-font-size: 0.875rem,
     btn-padding: 0.4375rem,
@@ -77,7 +77,7 @@ $expanded-sizes: (
     icon-width: 1rem
   ),
   lg: (
-    width: 10rem,
+    width: $number-input-expanded-lg-width,
     btn-font-size: 0.875rem,
     btn-height: 2.5rem,
     btn-padding: 0.6875rem,
@@ -87,7 +87,7 @@ $expanded-sizes: (
     icon-width: 1rem
   ),
   xl: (
-    width: 12rem,
+    width: $number-input-expanded-xl-width,
     btn-font-size: 0.875rem,
     btn-height: 3rem,
     btn-padding: 0.9375rem,
@@ -100,19 +100,19 @@ $expanded-sizes: (
 
 .chi-number-input {
   position: relative;
-  width: 5.5rem;
+  width: $number-input-md-width;
 
   input {
     &[type='number'] {
       &.chi-input {
-        padding-right: 1.375rem;
+        padding: $number-input-md-padding;
 
         & ~ button {
-          background-color: $color-background-white;
+          background-color: $number-input-button-background-color;
           background-position: center;
           background-repeat: no-repeat;
           background-size: 0.5rem;
-          border: 0.0625rem solid $color-border-base-dark;
+          border: 0.0625rem solid $number-input-button-border-color;
           cursor: pointer;
           height: 0.6875rem;
           outline: none;
@@ -132,23 +132,23 @@ $expanded-sizes: (
           }
 
           &:hover {
-            background-color: $color-background-base-dark;
+            background-color: $number-input-button-hover-background-color;
           }
 
           &:active {
-            background-color: $color-background-base-darker;
+            background-color: $number-input-button-active-background-color;
           }
 
           &[disabled] {
-            background-color: $color-background-base-dark;
-            opacity: $opacity-60;
+            background-color: $number-input-button-disabled-background-color;
+            opacity: $number-input-button-disabled-opacity;
             pointer-events: none;
           }
         }
 
         &[disabled] {
           & ~ button {
-            opacity: $opacity-60;
+            opacity: $number-input-button-disabled-opacity;
             pointer-events: none;
           }
         }
@@ -166,7 +166,6 @@ $expanded-sizes: (
             height: map-get(map-get($sizes, $type), height);
             line-height: map-get(map-get($sizes, $type), line-height);
             padding: map-get(map-get($sizes, $type), padding);
-            padding-right: map-get(map-get($sizes, $type), padding-right);
 
             & ~ button {
               background-size: map-get(map-get($sizes, $type), background-size);
@@ -256,16 +255,16 @@ $expanded-sizes: (
         &[disabled] {
           &.chi-input {
             & ~ button {
-              background-color: $color-grey-10;
-              border-color: $color-border-base-dark;
+              background-color: $number-input-expanded-button-disabled-background-color;
+              border-color: $number-input-expanded-button-disabled-border-color;
               box-shadow: none;
-              color: $color-text-muted-light;
-              opacity: $opacity-100;
+              color: $number-input-expanded-button-disabled-text-color;
+              opacity: $number-input-expanded-button-disabled-opacity;
               pointer-events: none;
 
               & .chi-icon {
-                color: $color-icon-muted-light;
-                opacity: $opacity-100;
+                color: $number-input-expanded-button-disabled-icon-color;
+                opacity: $number-input-expanded-button-disabled-opacity;
               }
             }
           }

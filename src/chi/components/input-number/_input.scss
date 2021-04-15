@@ -6,11 +6,11 @@ input {
     &.chi-input {
       // sass-lint:disable no-vendor-prefixes
       -moz-appearance: textfield;
-      border: 0.0625rem solid $color-border-base-dark;
-      color: $color-text-base;
+      border: 0.0625rem solid $number-input-border-color;
+      color: $number-input-text-color;
       display: block;
       font-size: $font-size-base;
-      height: 2rem;
+      height: $number-input-md-height;
       line-height: $line-height-sm;
       outline: none;
       padding: 0.4375rem;
@@ -29,30 +29,30 @@ input {
 
       &:hover,
       &.-hover {
-        border-color: $color-grey-40;
+        border-color: $number-input-hover-border-color;
       }
 
       &:focus,
       &.-focus {
-        border-color: $focus-color;
-        box-shadow: 0 0 0 1px rgba($focus-color, 1);
+        border-color: $number-input-focus-border-color;
+        box-shadow: 0 0 0 1px $number-input-focus-border-color;
       }
 
       &[disabled],
       &.-disabled {
-        background-color: $color-grey-10;
-        border-color: $color-border-base-dark;
-        color: $color-text-muted-light;
+        background-color: $number-input-disabled-background-color;
+        border-color: $number-input-disabled-border-color;
+        color: $number-input-disabled-text-color;
         pointer-events: none;
       }
 
       &:not([disabled]) {
         &.-danger {
-          border-color: $color-border-danger;
+          border-color: $number-input-danger-border-color;
 
           &:focus,
           &.-focus {
-            box-shadow: 0 0 0 1px rgba($color-border-danger, 1);
+            box-shadow: 0 0 0 1px $number-input-danger-border-color;
           }
         }
       }

@@ -2,20 +2,20 @@
 @import '_global-variables';
 
 $icon-sizes: (
-  xs: 0.75rem,
-  sm: 1rem,
-  sm--2: 1.25rem,
-  sm--3: 1.5rem,
-  md: 2rem,
-  lg: 4rem,
-  xl: 6rem,
-  xxl: 8rem);
+  xs: $icon-size-xs,
+  sm: $icon-size-sm,
+  sm--2: $icon-size-sm2,
+  sm--3: $icon-size-sm3,
+  md: $icon-size-md,
+  lg: $icon-size-lg,
+  xl: $icon-size-xl,
+  xxl: $icon-size-xxl);
 
 .chi-icon {
   display: inline-block;
-  height: 1rem;
+  height: $icon-size-sm;
   position: relative;
-  width: 1rem;
+  width: $icon-size-sm;
 
   & > svg {
     fill: currentColor;

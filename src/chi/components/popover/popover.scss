@@ -1,22 +1,18 @@
 @import '_global-variables';
 @import '_global-mixins';
 
-$popover-arrow-size: 0.75rem;
-
 .chi-popover {
-  background-color: $color-background-white;
+  background-color: $popover-background-color;
   border-radius: $border-radius;
-  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
-  0 3px 14px 2px rgba(0, 0, 0, 0.12),
-  0 5px 5px -3px rgba(0, 0, 0, 0.2);
-  color: $color-text-base;
+  box-shadow: $popover-box-shadow;
+  color: $popover-text-color;
   display: none;
   font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-normal;
   left: 0;
   line-height: $line-height;
-  max-width: 18rem;
+  max-width: $popover-max-width;
   opacity: 0;
   position: absolute;
   top: 0;

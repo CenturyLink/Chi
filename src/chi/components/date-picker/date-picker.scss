@@ -32,7 +32,7 @@ $monday-starting-week: (
 
 .chi-datepicker {
   font-size: $font-size-base;
-  width: 14rem;
+  width: $date-picker-input-width;
 
   &__day {
     border-radius: $border-radius-base;
@@ -43,21 +43,21 @@ $monday-starting-week: (
     width: calc(100% / 7);
 
     &.-active {
-      background-color: $color-background-primary;
+      background-color: $date-picker-day-active-background-color;
       color: white;
       font-weight: $font-weight-semi-bold;
 
       &.-today::after {
-        background-color: white;
+        background-color: $date-picker-day-background-color;
       }
     }
 
     &.-inactive {
-      color: rgba($color-text-base, 0.4);
+      color: $date-picker-day-inactive-text-color;
       pointer-events: none;
 
       &.-today::after {
-        background-color: rgba($color-text-base, 0.4);
+        background-color: $date-picker-day-inactive-background-color;
       }
     }
 
@@ -65,7 +65,7 @@ $monday-starting-week: (
       position: relative;
 
       &::after {
-        background-color: $color-background-primary;
+        background-color: $date-picker-day-today-accent-background-color;
         bottom: 3px;
         content: '';
         height: 4px;
@@ -78,11 +78,11 @@ $monday-starting-week: (
 
     &:not(.-inactive):not(.-active) {
       &:hover {
-        background-color: ($color-grey-20);
+        background-color: $date-picker-day-hover-background-color;
       }
 
       &.-hover {
-        background-color: ($color-grey-20);
+        background-color: $date-picker-day-hover-background-color;
       }
     }
 
@@ -111,12 +111,12 @@ $monday-starting-week: (
         width: calc(100% / 7);
 
         &.-disabled {
-          color: rgba($color-text-base, 0.2);
+          color: $date-picker-arrow-disabled-icon-color;
           pointer-events: none;
         }
 
         &:not(.-disabled) {
-          color: $color-text-primary;
+          color: $date-picker-arrow-icon-color;
           cursor: pointer;
         }
       }
@@ -162,7 +162,7 @@ $monday-starting-week: (
   }
 
   & + .chi-time-picker {
-    box-shadow: inset 0.0625rem 0 0 0 $color-border-base;
+    box-shadow: inset 0.0625rem 0 0 0 $time-picker-border-color;
     margin-left: 0.75rem;
   }
 }
@@ -174,7 +174,7 @@ $monday-starting-week: (
     }
 
     .chi-time-picker {
-      box-shadow: inset 0.0625rem 0 0 0 $color-border-base;
+      box-shadow: inset 0.0625rem 0 0 0 $time-picker-border-color;
       margin-left: 0.75rem;
       padding: 0.5rem;
     }

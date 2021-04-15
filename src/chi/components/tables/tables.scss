@@ -57,18 +57,18 @@ $vertical-alignments: (top, bottom, middle);
   }
 
   tr {
-    background-color: $color-background-white;
+    background-color: $table-row-background-color;
 
     th,
     td {
-      border-bottom: 0.0625rem solid $color-border-base-light;
+      border-bottom: 0.0625rem solid $table-row-cell-border-color;
       padding: 1rem;
     }
 
     th,
     .-th {
       &:not([scope='row']) {
-        border-bottom: 0.0625rem solid $color-border-base-dark;
+        border-bottom: 0.0625rem solid $table-header-cell-border-color;
       }
     }
 
@@ -90,7 +90,7 @@ $vertical-alignments: (top, bottom, middle);
     font-weight: $font-weight-semi-bold;
 
     &:not([scope='row']) {
-      border-bottom: 0.0625rem solid $color-border-base-dark;
+      border-bottom: 0.0625rem solid $table-header-cell-border-color;
 
       &:not([scope='col']) {
         text-align: left;
@@ -139,31 +139,31 @@ $vertical-alignments: (top, bottom, middle);
   & tbody {
     tr {
       &.-row--success {
-        background-color: $color-background-success-light !important;
+        background-color: $table-row-success-background-color !important;
       }
 
       &.-row--warning {
-        background-color: $color-background-warning-light !important;
+        background-color: $table-row-warning-background-color !important;
       }
 
       &.-row--danger {
-        background-color: $color-background-danger-light !important;
+        background-color: $table-row-danger-background-color !important;
       }
 
       &.-row--info {
-        background-color: $color-background-info-light !important;
+        background-color: $table-row-info-background-color !important;
       }
 
       &[disabled] {
-        color: rgba($color-text-base, 0.4) !important;
+        color: $table-row-cell-disabled-text-color !important;
       }
 
       &.-active {
         td {
-          background-color: $color-background-info-light;
+          background-color: $table-row-active-cell-background-color;
 
           &:first-child {
-            border-left: 0.25rem solid $color-border-primary;
+            border-left: 0.25rem solid $table-row-active-cell-accent-border-color;
             padding-left: 0.75rem;
           }
         }
@@ -171,6 +171,7 @@ $vertical-alignments: (top, bottom, middle);
     }
   }
 
+  // Portal
   &.-portal {
     tr {
       th,
@@ -265,7 +266,7 @@ $vertical-alignments: (top, bottom, middle);
         tr {
           &:hover,
           &.-hover {
-            background-color: $color-background-base-dark;
+            background-color: $table-row-hover-background-color;
           }
         }
       }
@@ -275,7 +276,7 @@ $vertical-alignments: (top, bottom, middle);
   &.-striped {
     tbody {
       tr:nth-child(even) {
-        background-color: $color-background-muted-lighter;
+        background-color: $table-striped-row-background-color;
       }
     }
   }
@@ -300,7 +301,7 @@ $vertical-alignments: (top, bottom, middle);
     &,
     &.-portal {
       &::before {
-        border: 0.0625rem solid $color-border-base-dark;
+        border: 0.0625rem solid $table-bordered-row-cell-border-color;
         border-bottom-width: 0;
         border-left-width: 0;
       }
@@ -309,7 +310,7 @@ $vertical-alignments: (top, bottom, middle);
         tr {
           &:last-child {
             th {
-              border-bottom: 0.0625rem solid $color-border-base-dark;
+              border-bottom: 0.0625rem solid $table-bordered-header-cell-border-color;
             }
           }
         }
@@ -318,7 +319,7 @@ $vertical-alignments: (top, bottom, middle);
       tr {
         & th,
         & .-th {
-          border: 0.0625rem solid $color-border-base-dark;
+          border: 0.0625rem solid $table-bordered-header-cell-border-color;
           border-bottom-width: 0;
           border-right-width: 0;
 
@@ -328,7 +329,7 @@ $vertical-alignments: (top, bottom, middle);
         }
 
         & td {
-          border: 0.0625rem solid $color-border-base-dark;
+          border: 0.0625rem solid $table-bordered-row-cell-border-color;
           border-right-width: 0;
           border-top-width: 0;
 
@@ -366,7 +367,7 @@ $vertical-alignments: (top, bottom, middle);
     position: relative;
 
     &::before {
-      background-color: $color-background-white;
+      background-color: $table-fixed-header-row-cell-background-color;
       content: '';
       display: block;
       height: 3rem;
@@ -430,7 +431,7 @@ $vertical-alignments: (top, bottom, middle);
     }
 
     td {
-      border-bottom: 0.0625rem solid $color-border-base-light;
+      border-bottom: 0.0625rem solid $table-fixed-header-row-cell-border-color;
       padding: 1rem;
       padding-bottom: 0.9375rem;
       text-align: start;
@@ -442,7 +443,7 @@ $vertical-alignments: (top, bottom, middle);
         tr {
           &:hover,
           &.-hover {
-            background-color: $color-background-base-dark;
+            background-color: $table-fixed-header-row-hover-background-color;
           }
         }
       }
@@ -451,7 +452,7 @@ $vertical-alignments: (top, bottom, middle);
     &.-striped {
       tbody {
         tr:nth-child(even) {
-          background-color: $color-background-muted-lighter;
+          background-color: $table-fixed-header-striped-row-hover-background-color;
         }
       }
     }
@@ -469,7 +470,7 @@ $vertical-alignments: (top, bottom, middle);
 
     &.-bordered {
       &::before {
-        border: 0.0625rem solid $color-border-base-light;
+        border: 0.0625rem solid $table-fixed-header-bordered-row-cell-border-color;
         border-left-width: 0;
       }
 
@@ -478,12 +479,12 @@ $vertical-alignments: (top, bottom, middle);
       }
 
       th > div {
-        border-left: 0.0625rem solid $color-border-base-light;
+        border-left: 0.0625rem solid $table-fixed-header-bordered-row-cell-border-color;
         padding-left: 0.9375rem;
       }
 
       td {
-        border: 0.0625rem solid $color-border-base-light;
+        border: 0.0625rem solid $table-fixed-header-bordered-row-cell-border-color;
         border-right-width: 0;
         border-top-width: 0;
         padding: 1rem 1rem 0.9375rem 0.9375rem;

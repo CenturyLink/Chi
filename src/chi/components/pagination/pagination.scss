@@ -258,7 +258,7 @@ $icon-sizes: (
 
   &__results {
     align-items: center;
-    color: $color-text-muted-light;
+    color: $pagination-results-text-color;
     display: flex;
     justify-content: center;
     margin: 0.5rem;
@@ -306,7 +306,7 @@ $icon-sizes: (
     }
 
     .chi-pagination__label {
-      color: $color-text-muted-light;
+      color: $pagination-jumper-text-color;
       font-weight: $font-weight-normal;
       margin-bottom: 0;
       margin-right: 0.5rem;
@@ -365,7 +365,7 @@ $icon-sizes: (
     }
 
     .chi-pagination__label {
-      color: $color-text-muted-light;
+      color: $pagination-page-size-text-color;
       margin-left: 0.25rem;
     }
   }
@@ -410,7 +410,7 @@ $icon-sizes: (
     }
 
     .chi-pagination__label {
-      color: $color-text-base;
+      color: $pagination-compact-label-text-color;
       margin: 0 0.5rem;
 
       strong {
@@ -434,16 +434,16 @@ $icon-sizes: (
   }
 
   &.-inverse {
-    color: $color-text-white;
+    color: $pagination-inverse-text-color;
 
     .chi-pagination__results,
     .chi-pagination__label {
-      color: $color-grey-40;
+      color: $pagination-inverse-results-text-color;
     }
 
     .chi-pagination__results {
       & + .chi-pagination__page-size {
-        border-left-color: rgba(255, 255, 255, 0.2);
+        border-left-color: $pagination-inverse-page-size-divider;
       }
     }
 
@@ -456,15 +456,15 @@ $icon-sizes: (
           background-position: map-get(map-get($sizes, md), background-position);
           background-repeat: no-repeat;
           background-size: 0.75rem 0.75rem;
-          color: $color-text-white;
+          color: $pagination-inverse-page-size-select-text-color;
 
           &:hover {
-            border: 0.0625rem solid $color-border-white;
+            border: 0.0625rem solid $pagination-inverse-page-size-select-hover-border-color;
             box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
           }
 
           option {
-            color: $color-text-base;
+            color: $pagination-inverse-page-size-select-option-text-color;
           }
         }
       }
@@ -475,19 +475,19 @@ $icon-sizes: (
         background-color: transparent;
 
         &:not(:focus) {
-          border-color: $color-grey-70;
-          color: $color-text-white;
+          border-color: $pagination-inverse-input-border-color;
+          color: $pagination-inverse-input-text-color;
         }
 
         &:focus {
-          background-color: $color-background-white;
+          background-color: $pagination-inverse-input-focus-background-color;
         }
       }
     }
 
     &.-compact {
       .chi-pagination__label {
-        color: $color-text-white;
+        color: $pagination-inverse-compact-label-text-color;
       }
     }
   }

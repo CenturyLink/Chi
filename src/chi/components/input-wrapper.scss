@@ -43,7 +43,7 @@ $border: 0.0625rem;
   }
 
   &.-list {
-    border: $border solid $color-border-base-dark;
+    border: $border solid $form-item-list-border-color;
     flex-direction: column;
     list-style-type: none;
     margin: 0;
@@ -51,7 +51,7 @@ $border: 0.0625rem;
     padding: 0;
 
     & li {
-      border-bottom: $border solid $color-border-base-light;
+      border-bottom: $border solid $form-item-list-item-border-color;
       flex: 1 0 auto;
       line-height: 1rem;
       padding: (0.5rem - $border) (1rem - $border);
@@ -98,12 +98,12 @@ $border: 0.0625rem;
 
         &:not(.-light) {
           .chi-icon {
-            color: $color-icon-muted-dark;
+            color: $label-help-icon-color;
           }
 
           &:hover {
             .chi-icon {
-              color: $color-icon-primary;
+              color: $label-help-hover-icon-color;
             }
           }
         }

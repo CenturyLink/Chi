@@ -3,8 +3,8 @@
 @import '_input-text-variables';
 
 .chi-input {
-  border: 0.0625rem solid $color-border-base-dark;
-  color: $color-text-base;
+  border: 0.0625rem solid $text-input-border-color;
+  color: $text-input-text-color;
   display: block;
   font-size: map-get(map-get($sizes, md), font-size);
   height: map-get(map-get($sizes, md), height);
@@ -15,7 +15,7 @@
   width: 100%;
 
   &::placeholder {
-    color: $color-grey-50;
+    color: $text-input-placeholder-text-color;
   }
 
   &::-webkit-calendar-picker-indicator { // sass-lint:disable-line no-vendor-prefixes
@@ -24,25 +24,25 @@
 
   &:hover,
   &.-hover {
-    border-color: $color-grey-40;
+    border-color: $text-input-hover-border-color;
   }
 
   &:focus,
   &.-focus {
-    border-color: $focus-color;
-    box-shadow: 0 0 0 1px rgba($focus-color, 1);
+    border-color: $text-input-focus-border-color;
+    box-shadow: 0 0 0 1px $text-input-focus-border-color;
   }
 
   &[disabled],
   &.-disabled {
-    background-color: $color-grey-10;
-    border-color: $color-border-base-dark;
-    color: $color-text-muted-light;
+    background-color: $text-input-disabled-background-color;
+    border-color: $text-input-disabled-border-color;
+    color: $text-input-disabled-text-color;
     cursor: not-allowed;
 
     & ~ .chi-icon,
     & ~ chi-icon {
-      color: $color-icon-muted;
+      color: $text-input-disabled-icon-color;
     }
   }
 
@@ -55,7 +55,7 @@
 
     &:focus,
     &.-focus {
-      border-color: $focus-color;
+      border-color: $text-input-focus-border-color;
     }
   }
 
