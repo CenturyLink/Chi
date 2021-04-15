@@ -8,34 +8,6 @@ p.-text
 h3 Base
 .example.-mb--3
   .-p--3
-    p.-text--bold.-pl--2 Old layout
-    ul.chi-steps.-pb--2.-p-sm--6
-      each step in steps
-        if step == 'Step 1'
-          li.-completed
-            div.chi-steps__icon
-              a(href='#')= `${step}`
-            div.chi-steps__line
-        else if step == 'Step 2'
-          li.-completed
-            div.chi-steps__icon
-              a(href='#')= `${step}`
-            div.chi-steps__line
-        else if step == 'Step 3'
-          li.-active
-            div.chi-steps__icon
-              a(href='#')= `${step}`
-            div.chi-steps__line
-        else if step == 'Step 5'
-          li
-            div.chi-steps__icon
-              a(href='#')= `${step}`
-        else
-          li
-            div.chi-steps__icon
-              a(href='#')= `${step}`
-            div.chi-steps__line
-    p.-text--bold.-pl--2 New layout
     ul.chi-steps.-pb--2.-p-sm--6
       each step in steps
         if step == 'Step 1'
@@ -70,44 +42,63 @@ h3 Base
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
       li.-disabled
-        a(href=`#webcomponent-base`) Web Component
+        a(
+          href=`#webcomponent-base`
+          role="tab"
+          aria-selected="false"
+          aria-controls="webcomponent-base"
+         ) Web Component
       li.-active
-        a(href=`#html-base`) HTML Blueprint
+        a(
+          href=`#html-base`
+          role="tab"
+          aria-selected="true"
+          aria-controls="html-base"
+         ) HTML Blueprint
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#html-base
     :code(lang="html")
       <ul class="chi-steps">
         <li class="-completed">
           <div class="chi-steps__icon">
-            <a href="#">Step 1</a>
+            <div class="chi-steps__content">
+              <a href="#">Step 1</a>
+            </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
         <li class="-completed">
           <div class="chi-steps__icon">
-            <a href="#">Step 2</a>
+            <div class="chi-steps__content">
+              <a href="#">Step 2</a>
+            </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
         <li class="-active">
           <div class="chi-steps__icon">
-            <a href="#">Step 3</a>
+            <div class="chi-steps__content">
+              <a href="#">Step 3</a>
+            </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
         <li>
           <div class="chi-steps__icon">
-            <a href="#">Step 4</a>
+            <div class="chi-steps__content">
+              <a href="#">Step 4</a>
+            </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
         <li>
           <div class="chi-steps__icon">
-            <a href="#">Step 5</a>
+            <div class="chi-steps__content">
+              <a href="#">Step 5</a>
+            </div>
           </div>
         </li>
       </ul>
-
 
 h3 Horizontal Labels
 p.-text
@@ -116,34 +107,6 @@ p.-text
 
 .example.-mb--3
   .-p--3
-    p.-text--bold.-pl--2 Old layout
-    ul.chi-steps.-horizontal-label.-labels-sm--hide.-p-sm--5
-      each step in steps
-        if step == 'Step 1'
-          li.-completed
-            div.chi-steps__icon
-            a(href='#')= `${step}`
-            div.chi-steps__line
-        else if step == 'Step 2'
-          li.-completed
-            div.chi-steps__icon
-            a(href='#')= `${step}`
-            div.chi-steps__line
-        else if step == 'Step 3'
-          li.-active
-            div.chi-steps__icon
-            a(href='#')= `${step}`
-            div.chi-steps__line
-        else if step == 'Step 5'
-          li
-            div.chi-steps__icon
-            a(href='#')= `${step}`
-        else
-          li
-            div.chi-steps__icon
-            a(href='#')= `${step}`
-            div.chi-steps__line
-    p.-text--bold.-pl--2 New layout
     ul.chi-steps.-horizontal-label.-labels-sm--hide.-p-sm--5
       each step in steps
         if step == 'Step 1'
@@ -187,276 +150,166 @@ p.-text
       <ul class="chi-steps -horizontal-label">
         <li class="-completed">
           <div class="chi-steps__icon"></div>
-          <a href="#">Step 1</a>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li class="-completed">
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 2</a>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li class="-active">
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 3</a>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li>
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 4</a>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li>
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 5</a>
-        </li>
-      </ul>
-
-h3 Vertical
-.example.-mb--3
-  .-p--3.-d--flex.-flex--column.-justify-content--center.-align-items--center
-    .-d--flex.-justify-content--around
-      .-d--flex.-flex--column.-justify-content--center.-align-items--center
-        p.-text--bold.-pl--2 New layout Base example
-        ul.chi-steps.-vertical
-          each step in steps
-            if step == 'Step 1'
-              li.-completed
-                div.chi-steps__icon
-                  div.chi-steps__content
-                    a(href='#')= `${step}`
-                    .chi-steps__item.-completed
-                      i.chi-icon.icon-check.-xs
-                      p Some content
-                    .chi-steps__item.-active
-                      i.chi-icon.icon-spinner.-xs
-                      p Some content
-                    .chi-steps__item
-                      p Some content
-                div.chi-steps__line
-            else if step == 'Step 2'
-              li.-completed
-                div.chi-steps__icon
-                  div.chi-steps__content
-                    a(href='#')= `${step}`
-                div.chi-steps__line
-            else if step == 'Step 3'
-              li.-active
-                div.chi-steps__icon
-                  div.chi-steps__content
-                    a(href='#')= `${step}`
-                div.chi-steps__line
-            else if step == 'Step 5'
-              li
-                div.chi-steps__icon
-                  div.chi-steps__content
-                    a(href='#')= `${step}`
-            else
-              li
-                div.chi-steps__icon
-                  div.chi-steps__content
-                    a(href='#')= `${step}`
-                div.chi-steps__line
-      .-d--flex.-flex--column.-justify-content--center.-align-items--center
-        p.-text--bold.-pl--2 New layout Base small size example
-        ul.chi-steps.-vertical.-sm
-          each step in steps
-            if step == 'Step 1'
-              li.-completed
-                div.chi-steps__icon
-                  div.chi-steps__content
-                    a(href='#')= `${step}`
-                    .chi-steps__item.-completed
-                      i.chi-icon.icon-check.-xs
-                      p Some content
-                    .chi-steps__item.-active
-                      i.chi-icon.icon-spinner.-xs
-                      p Some content
-                    .chi-steps__item
-                      p Some content
-                div.chi-steps__line
-            else if step == 'Step 2'
-              li.-completed
-                div.chi-steps__icon
-                  div.chi-steps__content
-                    a(href='#')= `${step}`
-                div.chi-steps__line
-            else if step == 'Step 3'
-              li.-active
-                div.chi-steps__icon
-                  div.chi-steps__content
-                    a(href='#')= `${step}`
-                div.chi-steps__line
-            else if step == 'Step 5'
-              li
-                div.chi-steps__icon
-                  div.chi-steps__content
-                    a(href='#')= `${step}`
-            else
-              li
-                div.chi-steps__icon
-                  div.chi-steps__content
-                    a(href='#')= `${step}`
-                div.chi-steps__line
-    .-d--flex.-justify-content--around
-      .-d--flex.-flex--column.-justify-content--center.-align-items--center
-        p.-text--bold.-pl--2 New layout Horizontal Label example
-        ul.chi-steps.-horizontal-label.-vertical.-labels-sm--hide
-          each step in steps
-            if step == 'Step 1'
-              li.-completed
-                div.chi-steps__icon
-                div.chi-steps__content
-                    a(href='#')= `${step}`
-                    .chi-steps__item.-completed
-                      i.chi-icon.icon-check.-xs
-                      p Some content
-                    .chi-steps__item.-active
-                      i.chi-icon.icon-spinner.-xs
-                      p Some content
-                    .chi-steps__item
-                      p Some content
-                div.chi-steps__line
-            else if step == 'Step 2'
-              li.-completed
-                div.chi-steps__icon
-                div.chi-steps__content
-                    a(href='#')= `${step}`
-                div.chi-steps__line
-            else if step == 'Step 3'
-              li.-active
-                div.chi-steps__icon
-                div.chi-steps__content
-                    a(href='#')= `${step}`
-                div.chi-steps__line
-            else if step == 'Step 5'
-              li
-                div.chi-steps__icon
-                div.chi-steps__content
-                    a(href='#')= `${step}`
-            else
-              li
-                div.chi-steps__icon
-                div.chi-steps__content
-                    a(href='#')= `${step}`
-                div.chi-steps__line
-      .-d--flex.-flex--column.-justify-content--center.-align-items--center
-        p.-text--bold.-pl--2 New layout Horizontal Label small size example
-        ul.chi-steps.-horizontal-label.-vertical.-sm.-labels-sm--hide
-          each step in steps
-            if step == 'Step 1'
-              li.-completed
-                div.chi-steps__icon
-                div.chi-steps__content
-                    a(href='#')= `${step}`
-                    .chi-steps__item.-completed 
-                      i.chi-icon.icon-check.-xs
-                      p Some content
-                    .chi-steps__item.-active
-                      i.chi-icon.icon-spinner.-xs
-                      p Some content
-                    .chi-steps__item
-                      p Some content
-                div.chi-steps__line
-            else if step == 'Step 2'
-              li.-completed
-                div.chi-steps__icon
-                div.chi-steps__content
-                    a(href='#')= `${step}`
-                div.chi-steps__line
-            else if step == 'Step 3'
-              li.-active
-                div.chi-steps__icon
-                div.chi-steps__content
-                    a(href='#')= `${step}`
-                div.chi-steps__line
-            else if step == 'Step 5'
-              li
-                div.chi-steps__icon
-                div.chi-steps__content
-                    a(href='#')= `${step}`
-            else
-              li
-                div.chi-steps__icon
-                div.chi-steps__content
-                    a(href='#')= `${step}`
-                div.chi-steps__line
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-responsive
-      li.-disabled
-        a(href=`#webcomponent-responsive`) Web Component
-      li.-active
-        a(href=`#html-responsive`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-responsive
-  .chi-tabs-panel.-active#html-responsive
-    :code(lang="html")
-      <!-- Visible labels from md breakpoint -->
-      <ul class="chi-steps -sm">
-        <li class="-completed">
-          <div class="chi-steps__icon">
+          <div class="chi-steps__content">
             <a href="#">Step 1</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
         <li class="-completed">
-          <div class="chi-steps__icon">
+          <div class="chi-steps__icon"></div>
+          <div class="chi-steps__content">
             <a href="#">Step 2</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
         <li class="-active">
-          <div class="chi-steps__icon">
+          <div class="chi-steps__icon"></div>
+          <div class="chi-steps__content">
             <a href="#">Step 3</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
         <li>
-          <div class="chi-steps__icon">
+          <div class="chi-steps__icon"></div>
+          <div class="chi-steps__content">
             <a href="#">Step 4</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
         <li>
-          <div class="chi-steps__icon">
+          <div class="chi-steps__icon"></div>
+          <div class="chi-steps__content">
             <a href="#">Step 5</a>
           </div>
         </li>
       </ul>
-      <!-- Visible labels from lg breakpoint -->
-      <ul class="chi-steps -sm -horizontal-label">
-        <li class="-completed">
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 1</a>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li class="-completed">
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 2</a>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li class="-active">
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 3</a>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li>
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 4</a>
-          <div class="chi-steps__line"></div>
-        </li>
-        <li>
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 5</a>
-        </li>
-      </ul>
 
-h3 Sizes
+h3 Vertical
 p.-text
-  | Steps supports the following sizes: <code>-sm</code>, <code>-md</code>.
-  | The default size is <code>-md</code>.
+  | To display steps vertically, apply the class <code>-vertical</code> to the steps container.
 
 .example.-mb--3
   .-p--3
-    p.-text--bold.-pl--2 New layout Base small size example
+    .-d--flex.-flex--column.-justify-content--center.-align-items--center
+      ul.chi-steps.-vertical
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+                  .chi-steps__item.-completed
+                    i.chi-icon.icon-check.-xs
+                    p Completed item
+                  .chi-steps__item.-active
+                    i.chi-icon.icon-spinner.-xs
+                    p In progress item
+                  .chi-steps__item
+                    p Pending item
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-active
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-vertical
+      li.-disabled
+        a(
+          href=`#webcomponent-vertical`
+          role="tab"
+          aria-selected="false"
+          aria-controls="webcomponent-vertical"
+         ) Web Component
+      li.-active
+        a(
+          href=`#html-vertical`
+          role="tab"
+          aria-selected="true"
+          aria-controls="html-vertical"
+         ) HTML Blueprint
+  .chi-tabs-panel#webcomponent-vertical
+  .chi-tabs-panel.-active#html-vertical
+    :code(lang="html")
+      <ul class="chi-steps -vertical">
+        <li class="-completed">
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 1</a>
+              <div class="chi-steps__item -completed">
+                <i class="chi-icon icon-check -xs"></i>
+                <p>Completed item</p>
+              </div>
+              <div class="chi-steps__item -active">
+                <i class="chi-icon icon-spinner -xs"></i>
+                <p>In progress item</p>
+              </div>
+              <div class="chi-steps__item">
+                <p>Pending item</p>
+              </div>
+            </div>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-completed">
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 2</a>
+            </div>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-active">
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 3</a>
+            </div>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 4</a>
+            </div>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 5</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+h2 Additional size
+h3 Small
+p.-text
+  | Use the <code>-sm</code> modifier class to render small steps.
+
+h4 Horizontal
+.example.-mb--3
+  .-p--3
     ul.chi-steps.-sm.-pb--4.-p-sm--6
       each step in steps
         if step == 'Step 1'
@@ -488,7 +341,8 @@ p.-text
               div.chi-steps__content
                 a(href='#')= `${step}`
             div.chi-steps__line
-    p.-text--bold.-pl--2 New layout Horizontal label small size example
+    p.-text--center
+     | Base
     ul.chi-steps.-horizontal-label.-sm.-labels-sm--hide.-p-sm--5
       each step in steps
         if step == 'Step 1'
@@ -520,72 +374,218 @@ p.-text
             div.chi-steps__content
               a(href='#')= `${step}`
             div.chi-steps__line
+    p.-text--center
+     | Horizontal labels
   .example-tabs.-pl--2
-    ul.chi-tabs#example-responsive
+    ul.chi-tabs#example-size-horizontal
       li.-disabled
-        a(href=`#webcomponent-responsive`) Web Component
+        a(
+          href=`#webcomponent-size-horizontal`
+          role="tab"
+          aria-selected="false"
+          aria-controls="webcomponent-size-horizontal"
+         ) Web Component
       li.-active
-        a(href=`#html-responsive`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-responsive
-  .chi-tabs-panel.-active#html-responsive
+        a(href=`#html-size-horizontal`
+          role="tab"
+          aria-selected="true"
+          aria-controls="html-size-horizontal"
+         ) HTML Blueprint
+  .chi-tabs-panel#webcomponent-size-horizontal
+  .chi-tabs-panel.-active#html-size-horizontal
     :code(lang="html")
-      <!-- Visible labels from md breakpoint -->
+      <!-- Base -->
       <ul class="chi-steps -sm">
         <li class="-completed">
           <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 1</a>
+            </div>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-completed">
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 2</a>
+            </div>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="-active">
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 3</a>
+            </div>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 4</a>
+            </div>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li>
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 5</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <!-- Horizontal labels -->
+      <ul class="chi-steps -horizontal-label -sm">
+        <li class="-completed">
+          <div class="chi-steps__icon"></div>
+          <div class="chi-steps__content">
             <a href="#">Step 1</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
         <li class="-completed">
-          <div class="chi-steps__icon">
+          <div class="chi-steps__icon"></div>
+          <div class="chi-steps__content">
             <a href="#">Step 2</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
         <li class="-active">
-          <div class="chi-steps__icon">
+          <div class="chi-steps__icon"></div>
+          <div class="chi-steps__content">
             <a href="#">Step 3</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
         <li>
-          <div class="chi-steps__icon">
+          <div class="chi-steps__icon"></div>
+          <div class="chi-steps__content">
             <a href="#">Step 4</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
         <li>
-          <div class="chi-steps__icon">
+          <div class="chi-steps__icon"></div>
+          <div class="chi-steps__content">
             <a href="#">Step 5</a>
           </div>
         </li>
       </ul>
-      <!-- Visible labels from lg breakpoint -->
-      <ul class="chi-steps -sm -horizontal-label">
+
+h4 Vertical
+.example.-mb--3
+  .-p--3
+    .-d--flex.-flex--column.-justify-content--center.-align-items--center
+      ul.chi-steps.-vertical.-sm
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+                  .chi-steps__item.-completed
+                    i.chi-icon.icon-check.-xs
+                    p Completed item
+                  .chi-steps__item.-active
+                    i.chi-icon.icon-spinner.-xs
+                    p In progress item
+                  .chi-steps__item
+                    p Pending item
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-active
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-size-vertical
+      li.-disabled
+        a(
+          href=`#webcomponent-size-vertical`
+          role="tab"
+          aria-selected="false"
+          aria-controls="webcomponent-size-vertical"
+         ) Web Component
+      li.-active
+        a(
+          href=`#html-size-vertical`
+          role="tab"
+          aria-selected="true"
+          aria-controls="html-size-vertical"
+         ) HTML Blueprint
+  .chi-tabs-panel#webcomponent-size-vertical
+  .chi-tabs-panel.-active#html-size-vertical
+    :code(lang="html")
+      <ul class="chi-steps -vertical -sm">
         <li class="-completed">
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 1</a>
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 1</a>
+              <div class="chi-steps__item -completed">
+                <i class="chi-icon icon-check -xs"></i>
+                <p>Completed item</p>
+              </div>
+              <div class="chi-steps__item -active">
+                <i class="chi-icon icon-spinner -xs"></i>
+                <p>In progress item</p>
+              </div>
+              <div class="chi-steps__item">
+                <p>Pending item</p>
+              </div>
+            </div>
+          </div>
           <div class="chi-steps__line"></div>
         </li>
         <li class="-completed">
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 2</a>
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 2</a>
+            </div>
+          </div>
           <div class="chi-steps__line"></div>
         </li>
         <li class="-active">
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 3</a>
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 3</a>
+            </div>
+          </div>
           <div class="chi-steps__line"></div>
         </li>
         <li>
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 4</a>
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 4</a>
+            </div>
+          </div>
           <div class="chi-steps__line"></div>
         </li>
         <li>
-          <div class="chi-steps__icon"></div>
-          <a href="#">Step 5</a>
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a href="#">Step 5</a>
+            </div>
+          </div>
         </li>
       </ul>
 
@@ -656,9 +656,19 @@ p.-text
   .example-tabs.-pl--2
     ul.chi-tabs#example-responsive
       li.-disabled
-        a(href=`#webcomponent-responsive`) Web Component
+        a(
+          href=`#webcomponent-responsive`
+          role="tab"
+          aria-selected="false"
+          aria-controls="webcomponent-responsive"
+         ) Web Component
       li.-active
-        a(href=`#html-responsive`) HTML Blueprint
+        a(
+          href=`#html-responsive`
+          role="tab"
+          aria-selected="true"
+          aria-controls="html-responsive"
+         ) HTML Blueprint
   .chi-tabs-panel#webcomponent-responsive
   .chi-tabs-panel.-active#html-responsive
     :code(lang="html")
