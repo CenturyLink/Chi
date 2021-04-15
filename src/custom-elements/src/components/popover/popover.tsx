@@ -394,17 +394,19 @@ export class Popover {
     if (this.drag) {
       const popoverHeader = this._popoverElement
         .querySelector(`.${POPOVER_CLASSES.HEADER}`) as HTMLElement;
+      let initialTransformProperty;
       const dragMouseDown = (e) => {
         e = e || window.event;
         e.preventDefault();
         this._closePrevented = true;
         pos3 = e.clientX;
         pos4 = e.clientY;
+        initialTransformProperty = window.getComputedStyle(this._popoverElement)['transform'];
+
         document.onmouseup = closeDragElement;
         document.onmousemove = elementDrag;
         popoverHeader.ontouchmove = elementDragOnTouch;
       };
-
       const setPosition = (positionData) => {
         pos1 = pos3 - positionData.clientX;
         pos2 = pos4 - positionData.clientY;
@@ -412,6 +414,7 @@ export class Popover {
         pos4 = positionData.clientY;
         this._popoverElement.style.top = this._popoverElement.offsetTop - pos2 + "px";
         this._popoverElement.style.left = this._popoverElement.offsetLeft - pos1 + "px";
+        this._popoverElement.style.transform = initialTransformProperty;
       };
       const elementDrag = (e) => {
         e = e || window.event;
@@ -419,14 +422,13 @@ export class Popover {
         this._destroyPopper();
         setPosition(e);
       };
-
       const elementDragOnTouch = (e) => {
         e.preventDefault();
         const touch = e.targetTouches[0];
 
+        this._destroyPopper();
         setPosition(touch);
       };
-
       const closeDragElement = () => {
         document.onmouseup = null;
         document.onmousemove = null;
@@ -435,11 +437,10 @@ export class Popover {
         pos2 = 0,
         pos3 = 0,
         pos4 = 0;
+
       if (popoverHeader) {
-        popoverHeader
-          .onmousedown = dragMouseDown;
-        popoverHeader
-          .ontouchstart = dragMouseDown;
+        popoverHeader.onmousedown = dragMouseDown;
+        popoverHeader.ontouchstart = dragMouseDown;
       } else {
         this._popoverElement.onmousedown = dragMouseDown;
       }

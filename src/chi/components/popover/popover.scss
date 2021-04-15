@@ -263,6 +263,12 @@ $popover-arrow-size: 0.75rem;
           top: 1rem;
         }
       }
+
+      .chi-button {
+        &.-close {
+          top: 1rem;
+        }
+      }
     }
   }
 

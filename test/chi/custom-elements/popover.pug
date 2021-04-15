@@ -41,3 +41,15 @@ div(class=`test-closable -position--relative`, style='width: 450px; height: 320p
   .-position--relative
     chi-popover(title='Popover title', variant='text', closable, active)
       | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+div(class=`test-portal -position--relative`, style='width: 450px; height: 320px;', data-cy=`test-closable`)
+  span.-text--h2=`Portal`
+  .-position--relative
+    chi-popover(title='Popover title', variant='text', portal, closable, active)
+      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+div(class=`test-portal-draggable -position--relative`, style='width: 450px; height: 320px;', data-cy=`test-closable`)
+  span.-text--h2=`Portal draggable`
+  .-position--relative
+    chi-popover(title='Popover title', variant='text', portal, closable, drag, active)
+      | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
