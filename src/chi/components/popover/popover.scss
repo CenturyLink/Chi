@@ -276,6 +276,7 @@ $popover-arrow-size: 0.75rem;
     .chi-popover__header {
       cursor: move;
 
+      &::before,
       &::after {
         content: '\e976';
         display: flex;
@@ -290,18 +291,12 @@ $popover-arrow-size: 0.75rem;
         width: 1.5rem;
       }
 
+      &::after {
+        top: 0;
+      }
+
       &::before {
-        content: '\e976';
-        display: flex;
-        font-family: 'chi' !important;
-        height: 1.5rem;
-        justify-content: center;
-        left: 50%;
-        opacity: 0.3;
-        position: absolute;
         top: 0.3rem;
-        transform: translateX(-50%);
-        width: 1.5rem;
       }
     }
   }

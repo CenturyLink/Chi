@@ -263,14 +263,6 @@ h3 Draggable popover
 .example.-mb--3
   .-p--3
     chi-button#example-draggable-button Click me!
-    chi-popover#example-draggable-popover(
-      title="Draggable Popover"
-      portal
-      reference="#example-draggable-button"
-      closable
-      drag)
-      | Popover content
-
   .example-tabs.-pl--2
     ul.chi-tabs#examples-draggable
       li.-active
@@ -811,6 +803,9 @@ h3 Popover with custom content
         </div>
         <div class="chi-popover__arrow"></div>
       </section>
+
+chi-popover#example-draggable-popover(title="Draggable Popover" portal reference="#example-draggable-button" closable drag)
+  | Popover content
 
 script.
   document.addEventListener(

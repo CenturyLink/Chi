@@ -11,6 +11,7 @@ import {
 } from '@stencil/core';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
+import { Drag } from '../../utils/Drag';
 import {
   ANIMATION_DURATION,
   CLASSES,
@@ -147,7 +148,6 @@ export class Popover {
 
   @Watch('active')
   statusChanged(newValue: boolean, oldValue: boolean) {
-    // This weird double negation check is because of a stencil bug: https://github.com/ionic-team/stencil/issues/1238
     if (!!newValue !== !!oldValue) {
       if (newValue) {
         this.preventAutoClose();
@@ -255,7 +255,9 @@ export class Popover {
       },
       () => {
         this._animationClasses = '';
-        this._initializePopper();
+        if (!this._popper) {
+          this._initializePopper();
+        }
         this.eventHidden.emit();
       },
       ANIMATION_DURATION.SHORT
@@ -394,62 +396,8 @@ export class Popover {
     if (this.drag) {
       const popoverHeader = this._popoverElement
         .querySelector(`.${POPOVER_CLASSES.HEADER}`) as HTMLElement;
-      let initialTransformProperty: string;
-      const dragMouseDown = (e: MouseEvent) => {
-        e.preventDefault();
-        this._closePrevented = true;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        initialTransformProperty = window.getComputedStyle(this._popoverElement)['transform'];
 
-        document.onmouseup = closeDragElement;
-        document.onmousemove = elementDrag;
-      };
-      const dragTouch = (e: TouchEvent) => {
-        e.preventDefault();
-        this._closePrevented = true;
-        pos3 = e.touches[0].clientX;
-        pos4 = e.touches[0].clientY;
-        initialTransformProperty = window.getComputedStyle(this._popoverElement)['transform'];
-
-        popoverHeader.ontouchmove = elementDragOnTouch;
-      };
-      const setPosition = (clientX: number, clientY: number) => {
-        pos1 = pos3 - clientX;
-        pos2 = pos4 - clientY;
-        pos3 = clientX;
-        pos4 = clientY;
-        this._popoverElement.style.top = this._popoverElement.offsetTop - pos2 + "px";
-        this._popoverElement.style.left = this._popoverElement.offsetLeft - pos1 + "px";
-        this._popoverElement.style.transform = initialTransformProperty;
-      };
-      const elementDrag = (e: MouseEvent) => {
-        e.preventDefault();
-        this._destroyPopper();
-        setPosition(e.clientX, e.clientY);
-      };
-      const elementDragOnTouch = (e: TouchEvent) => {
-        e.preventDefault();
-        const touch = e.targetTouches[0];
-
-        this._destroyPopper();
-        setPosition(touch.clientX, touch.clientY);
-      };
-      const closeDragElement = () => {
-        document.onmouseup = null;
-        document.onmousemove = null;
-      };
-      let pos1 = 0,
-        pos2 = 0,
-        pos3 = 0,
-        pos4 = 0;
-
-      if (popoverHeader) {
-        popoverHeader.onmousedown = dragMouseDown;
-        popoverHeader.ontouchstart = dragTouch;
-      } else {
-        this._popoverElement.onmousedown = dragMouseDown;
-      }
+      new Drag(popoverHeader, this._popoverElement, this);
     } else {
       document.addEventListener('click', this._documentClickHandler);
       document.addEventListener('keyup', this._documentKeyHandler);
