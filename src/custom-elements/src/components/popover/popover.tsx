@@ -11,12 +11,14 @@ import {
 } from '@stencil/core';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
+import { Drag } from '../../utils/Drag';
 import {
   ANIMATION_DURATION,
   CLASSES,
   ESCAPE_KEYCODE
 } from '../../constants/constants';
 import Popper, { Placement } from 'popper.js';
+import { POPOVER_CLASSES, PORTAL_CLASS } from '../../constants/classes';
 
 @Component({
   tag: 'chi-popover',
@@ -40,6 +42,10 @@ export class Popover {
   @Prop({ reflect: true }) closable = false;
 
   /**
+   * to allow the user to manually change the position of the popover
+   */
+  @Prop({ reflect: true }) drag = false;
+  /**
    * to open or close the popover
    */
   @Prop({ reflect: true, mutable: true }) active: boolean;
@@ -48,6 +54,11 @@ export class Popover {
    * CSS Selector to the reference Element. I.e. #id > p
    */
   @Prop({ reflect: true }) reference: string;
+
+  /**
+   * To define portal style of the Popover
+   */
+  @Prop({ reflect: true }) portal: boolean;
 
   /**
    * Prevents closing the popover when clicking out of its bounds
@@ -79,6 +90,7 @@ export class Popover {
   private currentAnimation: ThreeStepsAnimation;
   private _reference: HTMLElement;
   _popoverElement!: HTMLElement;
+  _popoverHeader!: HTMLElement;
   private _popper: Popper;
   private _preAnimationTransformStyle: string;
   private _postAnimationTransformStyle: string;
@@ -89,6 +101,7 @@ export class Popover {
   private _documentClickHandler: () => void;
   private _documentKeyHandler: (event: KeyboardEvent) => void;
   private mutationObserver;
+  private _drag: Drag;
 
   @Watch('position')
   positionValidation(newValue: string) {
@@ -137,7 +150,6 @@ export class Popover {
 
   @Watch('active')
   statusChanged(newValue: boolean, oldValue: boolean) {
-    // This weird double negation check is because of a stencil bug: https://github.com/ionic-team/stencil/issues/1238
     if (!!newValue !== !!oldValue) {
       if (newValue) {
         this.preventAutoClose();
@@ -145,6 +157,17 @@ export class Popover {
       } else {
         this._hide();
       }
+    }
+  }
+
+  @Watch("drag")
+  dragUpdated(newVal: boolean) {
+    if (newVal && !this._drag) {
+      this._drag = new Drag(this._popoverHeader, this._popoverElement, this);
+    } else if (!newVal && this._drag) {
+      this._drag.dispose();
+      this._drag = undefined;
+      // To-do Recover Popper with auto-hide functionality
     }
   }
 
@@ -245,6 +268,9 @@ export class Popover {
       },
       () => {
         this._animationClasses = '';
+        if (!this._popper) {
+          this._initializePopper();
+        }
         this.eventHidden.emit();
       },
       ANIMATION_DURATION.SHORT
@@ -262,6 +288,11 @@ export class Popover {
       return;
     }
 
+    this._initializePopper();
+    this._popper.update();
+  }
+
+  private _initializePopper() {
     const savePopperData = (data: any) => {
       this._preAnimationTransformStyle = null;
       this._postAnimationTransformStyle = data.styles.transform;
@@ -271,14 +302,14 @@ export class Popover {
         }px, ${data.popper.top + 20}px, 0)`;
       } else if (data.placement.indexOf('right') === 0) {
         this._preAnimationTransformStyle = `translate3d(${data.popper.left -
-          20}px, ${data.popper.top}px, 0)`;
+        20}px, ${data.popper.top}px, 0)`;
       } else if (data.placement.indexOf('bottom') === 0) {
         this._preAnimationTransformStyle = `translate3d(${
           data.popper.left
         }px, ${data.popper.top - 20}px, 0)`;
       } else if (data.placement.indexOf('left') === 0) {
         this._preAnimationTransformStyle = `translate3d(${data.popper.left +
-          20}px, ${data.popper.top}px, 0)`;
+        20}px, ${data.popper.top}px, 0)`;
       } else {
         this._preAnimationTransformStyle = data.styles.transform;
       }
@@ -296,7 +327,7 @@ export class Popover {
           order: 875
         },
         arrow: {
-          element: '.chi-popover__arrow',
+          element: `.${POPOVER_CLASSES.ARROW}`,
           enabled: this.arrow
         },
         preventOverflow: {
@@ -306,8 +337,6 @@ export class Popover {
       removeOnDestroy: false,
       placement: this.position,
     });
-
-    this._popper.update();
   }
 
   private _destroyPopper() {
@@ -315,6 +344,7 @@ export class Popover {
     this._postAnimationTransformStyle = null;
     if (this._popper) {
       this._popper.destroy();
+      this._popper = null;
     }
   }
 
@@ -344,7 +374,6 @@ export class Popover {
   }
 
   componentWillLoad(): void {
-
     this.positionValidation(this.position);
     this.referenceElementChanged(this.reference);
     if (this.active) {
@@ -355,7 +384,7 @@ export class Popover {
       this.popoverTitle = this.el.getAttribute('title');
     }
 
-    if (Array.from(this.el.querySelectorAll("[slot=chi-popover__footer]")).length > 0) {
+    if (Array.from(this.el.querySelectorAll(`[slot=${POPOVER_CLASSES.FOOTER}]`)).length > 0) {
       this.popoverFooter = true;
     }
   }
@@ -375,14 +404,23 @@ export class Popover {
     };
     this._configurePopoverPopper();
     this._componentLoaded = true;
-    document.addEventListener('click', this._documentClickHandler);
-    document.addEventListener('keyup', this._documentKeyHandler);
+
+    if (this.drag) {
+      this.dragUpdated(this.drag);
+    } else {
+      document.addEventListener('click', this._documentClickHandler);
+      document.addEventListener('keyup', this._documentKeyHandler);
+    }
   }
 
   componentDidUnload(): void {
     this._destroyPopper();
     if (this.currentAnimation && !this.currentAnimation.isStopped()) {
       this.currentAnimation.stop();
+    }
+    if (this._drag) {
+      this._drag.dispose();
+      this._drag = undefined;
     }
     this.currentAnimation = null;
     this._componentLoaded = false;
@@ -413,19 +451,22 @@ export class Popover {
 
   render() {
     const closeButton = this.closable ? <chi-button size="sm" onClick={() => this.hide()} type="close" /> : null;
-    const popoverHeader = this.popoverTitle && <header class="chi-popover__header"><h2 class="chi-popover__title">{this.popoverTitle}</h2></header>;
-    const slot = this.variant && this.variant === 'text' ? <p class="chi-popover__text"><slot /></p> : <slot />;
-    const chiFooter = this.popoverFooter && <div class="chi-popover__footer"><slot name="chi-popover__footer"></slot></div>;
+    const popoverHeader = this.popoverTitle && <header ref={el => (this._popoverHeader = el as HTMLElement)} class={POPOVER_CLASSES.HEADER}><h2 class={POPOVER_CLASSES.TITLE}>{this.popoverTitle}</h2></header>;
+    const slot = this.variant && this.variant === 'text' ? <p class={POPOVER_CLASSES.TEXT}><slot /></p> : <slot />;
+    const chiFooter = this.popoverFooter && <div class={POPOVER_CLASSES.FOOTER}><slot name={POPOVER_CLASSES.FOOTER}></slot></div>;
 
     return (
       <section
-        class={`chi-popover
+        class={`
+          ${POPOVER_CLASSES.POPOVER}
           ${CLASSES.ANIMATED}
           ${this.position ? `chi-popover--${this.position}` : ''}
-          ${this.arrow ? '' : '-no-arrow'}
+          ${this.arrow ? '' : POPOVER_CLASSES.NO_ARROW}
           ${this._animationClasses}
-          ${this._reference && this._reference.classList.contains('chi-input') ? 'chi-popover__input' : ''}
-          ${this.closable ? '-closable' : ''}
+          ${this._reference && this._reference.classList.contains('chi-input') ? POPOVER_CLASSES.INPUT : ''}
+          ${this.closable ? POPOVER_CLASSES.CLOSABLE : ''}
+          ${this.drag ? POPOVER_CLASSES.DRAGGABLE : ''}
+          ${this.portal ? PORTAL_CLASS : ''}
         `}
         ref={el => (this._popoverElement = el as HTMLElement)}
         onClick={() => this.preventAutoClose()}
@@ -436,11 +477,11 @@ export class Popover {
       >
         {closeButton}
         {popoverHeader}
-        <div class="chi-popover__content">
+        <div class={POPOVER_CLASSES.CONTENT}>
           {slot}
         </div>
         {chiFooter}
-        {this.arrow && <div class="chi-popover__arrow" />}
+        {this.arrow && <div class={POPOVER_CLASSES.ARROW} />}
       </section>
     );
   }

@@ -205,8 +205,6 @@ $popover-arrow-size: 0.75rem;
   }
 
   &.-closable {
-    position: relative;
-
     :not(.chi-popover__header) {
       & + .chi-popover__content {
         padding-top: 2rem;
@@ -239,6 +237,65 @@ $popover-arrow-size: 0.75rem;
         position: absolute;
         right: 0.5rem;
         top: 0.5rem;
+      }
+    }
+  }
+
+  &.-portal {
+    .chi-popover__header {
+      background-color: $color-background-secondary;
+      padding-bottom: 1rem;
+    }
+
+    .chi-button {
+      &.-close {
+        color: $color-grey-100;
+      }
+    }
+
+    .chi-popover__content {
+      background-color: $color-grey-15;
+    }
+
+    &.-closable {
+      chi-button {
+        &[type='close'] {
+          top: 1rem;
+        }
+      }
+
+      .chi-button {
+        &.-close {
+          top: 1rem;
+        }
+      }
+    }
+  }
+
+  &.-draggable {
+    .chi-popover__header {
+      cursor: move;
+
+      &::before,
+      &::after {
+        content: '\e976';
+        display: flex;
+        font-family: 'chi' !important;
+        height: 1.5rem;
+        justify-content: center;
+        left: 50%;
+        opacity: 0.3;
+        position: absolute;
+        transform: translateX(-50%);
+        width: 1.5rem;
+      }
+
+      &::after {
+        top: 0;
+      }
+
+      &::before {
+        top: 0.3rem;
       }
     }
   }
