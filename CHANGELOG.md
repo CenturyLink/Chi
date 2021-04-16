@@ -1,4 +1,10 @@
 # CHANGELOG
+## 3.17.0 (April 16, 2021)
+### Components
+#### Added
+* Added: Steps component now supports the class `-vertical` to render steps vertically and additional size class `-sm`.
+* Added: Popover web component now supports the attribute `drag` for dragging functionality and `portal` for rendering portal themed Popovers.
+
 ## 3.16.0 (April 8, 2021)
 ### Components
 #### Added
