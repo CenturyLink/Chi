@@ -476,6 +476,27 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 // sass-lint:disable-all
 /* IE10+ CSS hack */
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .chi-steps > li.chi-steps__item > .chi-steps__icon > .chi-steps__content > a.chi-steps__item-title {
+    width: auto;
+  }
+
+  .chi-steps > li.chi-steps__item > div.chi-steps__icon::before {
+    left: 0.25rem;
+    position: relative;
+  }
+
+  .chi-steps > li.chi-steps__item > div.chi-steps__icon::after {
+    position: relative;
+  }
+
+  .chi-steps.-vertical > li.chi-steps__item > div.chi-steps__icon::before {
+    left: -4.5rem;
+  }
+
+  .chi-steps.-vertical.-sm > li.chi-steps__item > div.chi-steps__icon::before {
+    left: -3.8rem;
+  }
+
   .chi-steps div.chi-steps__icon a {
     right: 1.125rem;
   }
