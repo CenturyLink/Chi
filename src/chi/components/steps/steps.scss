@@ -30,7 +30,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     white-space: nowrap;
   }
 
-  &__item {
+  &__subitem {
     align-items: center;
     color: $color-text-muted-light;
     display: flex;
@@ -66,7 +66,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
   }
 
-  & > li {
+  & > li,
+  & > .chi-steps__item {
     align-items: center;
     color: $color-text-primary-alt;
     display: flex;
@@ -94,7 +95,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         position: absolute;
       }
 
-      & a {
+      & a,
+      & .chi-steps__item-title {
         position: relative;
         top: 1.5rem;
         white-space: nowrap;
@@ -109,7 +111,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         top: 1.5rem;
         white-space: normal;
 
-        & a {
+        & a,
+        & .chi-steps__item-title {
           text-align: center;
           top: 0;
           white-space: normal;
@@ -118,7 +121,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       }
     }
 
-    & > a {
+    & > a,
+    & > .chi-steps__item-title {
       font-weight: $font-weight-normal;
       margin-left: 0.75rem;
       white-space: nowrap;
@@ -144,7 +148,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       }
 
       & > .chi-steps__icon {
-        a {
+        a,
+        .chi-steps__item-title {
           font-weight: $font-weight-semi-bold;
         }
 
@@ -186,7 +191,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
   }
 
-  & a {
+  & a,
+  & .chi-steps__item-title {
     color: $color-text-base;
     text-decoration: none;
   }
@@ -194,7 +200,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   &.-inverse {
     background-color: $color-background-black;
 
-    & > li {
+    & > li,
+    & > .chi-steps__item {
       color: $color-text-secondary;
 
       & > .chi-steps__icon {
@@ -207,7 +214,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         border: 0.125rem solid $color-border-black;
       }
 
-      & a {
+      & a,
+      & .chi-steps__item-title {
         color: $color-text-white;
       }
 
@@ -240,7 +248,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   }
 
   &.-horizontal-label {
-    > li {
+    > li,
+    & > .chi-steps__item {
       > .chi-steps__line {
         margin-left: 0.5rem;
         margin-right: 0.875rem;
@@ -253,19 +262,25 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   }
 
   &.-labels--hide {
-    & li > .chi-steps__icon {
-      a {
-        display: none;
+    & li,
+    & > .chi-steps__item {
+      > .chi-steps__icon {
+        a,
+        .chi-steps__item-title {
+          display: none;
+        }
       }
     }
 
-    & > li > a {
+    & > li > a,
+    & > li > .chi-steps__item-title {
       display: none;
     }
   }
 
   &.-sm {
-    & > li {
+    & > li,
+    & > .chi-steps__item {
       font-size: $font-size-xs;
 
       & > .chi-steps__icon {
@@ -293,7 +308,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
 
     &.-horizontal-label {
-      > li {
+      > li,
+      & > .chi-steps__item {
         > .chi-steps__line {
           margin-left: 0.25rem;
           margin-right: 0.375rem;
@@ -306,7 +322,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     align-items: flex-start;
     flex-direction: column;
 
-    & > li {
+    & > li,
+    & > .chi-steps__item {
       align-items: flex-start;
       min-height: 4rem;
       position: relative;
@@ -333,7 +350,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
           top: 0;
           z-index: 2;
 
-          a {
+          a,
+          .chi-steps__item-title {
             text-align: left;
             width: auto;
           }
@@ -375,13 +393,14 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
 
     &.-horizontal-label {
-      > li {
+      > li,
+      & > .chi-steps__item {
         > .chi-steps__icon {
           width: 1.5rem;
         }
 
         .chi-steps__content {
-          .chi-steps__item {
+          .chi-steps__subitem {
             justify-content: flex-start;
           }
         }
@@ -389,7 +408,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
 
     &.-sm {
-      & > li {
+      & > li,
+      & > .chi-steps__item {
         & > .chi-steps__icon {
           &::before {
             left: 0.3125rem;
@@ -404,7 +424,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       }
 
       &.-horizontal-label {
-        > li {
+        > li,
+        > .chi-steps__item {
           & > .chi-steps__icon {
             &::before {
               left: 0.5625rem;
@@ -423,21 +444,29 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   @each $breakpoint in $breakpoints {
     &.-labels-#{$breakpoint}--hide {
 
-      & li > .chi-steps__icon {
-        a {
+      & li,
+      & .chi-steps__item {
+        > .chi-steps__icon {
+          a,
+          .chi-steps__item-title {
+            display: none;
+
+            @include respond-to(#{$breakpoint}) {
+              display: block;
+            }
+          }
+        }
+      }
+
+      & > li,
+      & > .chi-steps__item {
+        > a,
+        .chi-steps__item-title {
           display: none;
 
           @include respond-to(#{$breakpoint}) {
             display: block;
           }
-        }
-      }
-
-      & > li > a {
-        display: none;
-
-        @include respond-to(#{$breakpoint}) {
-          display: block;
         }
       }
     }

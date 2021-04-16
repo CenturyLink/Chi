@@ -11,33 +11,33 @@ h3 Base
     ul.chi-steps.-pb--2.-p-sm--6
       each step in steps
         if step == 'Step 1'
-          li.-completed
+          li.chi-steps__item.-completed
             div.chi-steps__icon
               div.chi-steps__content
-                a(href='#')= `${step}`
+                a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 2'
-          li.-completed
+          li.chi-steps__item.-completed
             div.chi-steps__icon
               div.chi-steps__content
-                a(href='#')= `${step}`
+                a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 3'
-          li.-active
+          li.chi-steps__item.-active
             div.chi-steps__icon
               div.chi-steps__content
-                a(href='#')= `${step}`
+                a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 5'
-          li
+          li.chi-steps__item
             div.chi-steps__icon
               div.chi-steps__content
-                a(href='#')= `${step}`
+                a.chi-steps__item-title(href='#')= `${step}`
         else
-          li
+          li.chi-steps__item
             div.chi-steps__icon
               div.chi-steps__content
-                a(href='#')= `${step}`
+                a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
@@ -59,42 +59,42 @@ h3 Base
   .chi-tabs-panel.-active#html-base
     :code(lang="html")
       <ul class="chi-steps">
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 1</a>
+              <a class="chi-steps__item-title" href="#">Step 1</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 2</a>
+              <a class="chi-steps__item-title" href="#">Step 2</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-active">
+        <li class="chi-steps__item -active">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 3</a>
+              <a class="chi-steps__item-title" href="#">Step 3</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 4</a>
+              <a class="chi-steps__item-title" href="#">Step 4</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 5</a>
+              <a class="chi-steps__item-title" href="#">Step 5</a>
             </div>
           </div>
         </li>
@@ -110,33 +110,33 @@ p.-text
     ul.chi-steps.-horizontal-label.-labels-sm--hide.-p-sm--5
       each step in steps
         if step == 'Step 1'
-          li.-completed
+          li.chi-steps__item.-completed
             div.chi-steps__icon
             div.chi-steps__content
-              a(href='#')= `${step}`
+              a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 2'
-          li.-completed
+          li.chi-steps__item.-completed
             div.chi-steps__icon
             div.chi-steps__content
-              a(href='#')= `${step}`
+              a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 3'
-          li.-active
+          li.chi-steps__item.-active
             div.chi-steps__icon
             div.chi-steps__content
-              a(href='#')= `${step}`
+              a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 5'
-          li
+          li.chi-steps__item
             div.chi-steps__icon
             div.chi-steps__content
-              a(href='#')= `${step}`
+              a.chi-steps__item-title(href='#')= `${step}`
         else
-          li
+          li.chi-steps__item
             div.chi-steps__icon
             div.chi-steps__content
-              a(href='#')= `${step}`
+              a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line 
   .example-tabs.-pl--2
     ul.chi-tabs#example-horizontal-labels
@@ -148,38 +148,38 @@ p.-text
   .chi-tabs-panel.-active#html-horizontal-labels
     :code(lang="html")
       <ul class="chi-steps -horizontal-label">
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon"></div>
           <div class="chi-steps__content">
-            <a href="#">Step 1</a>
+            <a class="chi-steps__item-title" href="#">Step 1</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon"></div>
           <div class="chi-steps__content">
-            <a href="#">Step 2</a>
+            <a class="chi-steps__item-title" href="#">Step 2</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-active">
+        <li class="chi-steps__item -active">
           <div class="chi-steps__icon"></div>
           <div class="chi-steps__content">
-            <a href="#">Step 3</a>
+            <a class="chi-steps__item-title" href="#">Step 3</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon"></div>
           <div class="chi-steps__content">
-            <a href="#">Step 4</a>
+            <a class="chi-steps__item-title" href="#">Step 4</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon"></div>
           <div class="chi-steps__content">
-            <a href="#">Step 5</a>
+            <a class="chi-steps__item-title" href="#">Step 5</a>
           </div>
         </li>
       </ul>
@@ -194,41 +194,41 @@ p.-text
       ul.chi-steps.-vertical
         each step in steps
           if step == 'Step 1'
-            li.-completed
+            li.chi-steps__item.-completed
               div.chi-steps__icon
                 div.chi-steps__content
-                  a(href='#')= `${step}`
-                  .chi-steps__item.-completed
+                  a.chi-steps__item-title(href='#')= `${step}`
+                  .chi-steps__subitem.-completed
                     i.chi-icon.icon-check.-xs
                     p Completed item
-                  .chi-steps__item.-active
+                  .chi-steps__subitem.-active
                     i.chi-icon.icon-spinner.-xs
                     p In progress item
-                  .chi-steps__item
+                  .chi-steps__subitem
                     p Pending item
               div.chi-steps__line
           else if step == 'Step 2'
-            li.-completed
+            li.chi-steps__item.-completed
               div.chi-steps__icon
                 div.chi-steps__content
-                  a(href='#')= `${step}`
+                  a.chi-steps__item-title(href='#')= `${step}`
               div.chi-steps__line
           else if step == 'Step 3'
-            li.-active
+            li.chi-steps__item.-active
               div.chi-steps__icon
                 div.chi-steps__content
-                  a(href='#')= `${step}`
+                  a.chi-steps__item-title(href='#')= `${step}`
               div.chi-steps__line
           else if step == 'Step 5'
-            li
+            li.chi-steps__item
               div.chi-steps__icon
                 div.chi-steps__content
-                  a(href='#')= `${step}`
+                  a.chi-steps__item-title(href='#')= `${step}`
           else
-            li
+            li.chi-steps__item
               div.chi-steps__icon
                 div.chi-steps__content
-                  a(href='#')= `${step}`
+                  a.chi-steps__item-title(href='#')= `${step}`
               div.chi-steps__line
   .example-tabs.-pl--2
     ul.chi-tabs#example-vertical
@@ -250,53 +250,53 @@ p.-text
   .chi-tabs-panel.-active#html-vertical
     :code(lang="html")
       <ul class="chi-steps -vertical">
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 1</a>
-              <div class="chi-steps__item -completed">
+              <a class="chi-steps__item-title" href="#">Step 1</a>
+              <div class="chi-steps__subitem -completed">
                 <i class="chi-icon icon-check -xs"></i>
                 <p>Completed item</p>
               </div>
-              <div class="chi-steps__item -active">
+              <div class="chi-steps__subitem -active">
                 <i class="chi-icon icon-spinner -xs"></i>
                 <p>In progress item</p>
               </div>
-              <div class="chi-steps__item">
+              <div class="chi-steps__subitem">
                 <p>Pending item</p>
               </div>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 2</a>
+              <a class="chi-steps__item-title" href="#">Step 2</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-active">
+        <li class="chi-steps__item -active">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 3</a>
+              <a class="chi-steps__item-title" href="#">Step 3</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 4</a>
+              <a class="chi-steps__item-title" href="#">Step 4</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 5</a>
+              <a class="chi-steps__item-title" href="#">Step 5</a>
             </div>
           </div>
         </li>
@@ -313,66 +313,66 @@ h4 Horizontal
     ul.chi-steps.-sm.-pb--4.-p-sm--6
       each step in steps
         if step == 'Step 1'
-          li.-completed
+          li.chi-steps__item.-completed
             div.chi-steps__icon
               div.chi-steps__content
-                a(href='#')= `${step}`
+                a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 2'
-          li.-completed
+          li.chi-steps__item.-completed
             div.chi-steps__icon
               div.chi-steps__content
-                a(href='#')= `${step}`
+                a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 3'
-          li.-active
+          li.chi-steps__item.-active
             div.chi-steps__icon
               div.chi-steps__content
-                a(href='#')= `${step}`
+                a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 5'
-          li
+          li.chi-steps__item
             div.chi-steps__icon
               div.chi-steps__content
-                a(href='#')= `${step}`
+                a.chi-steps__item-title(href='#')= `${step}`
         else
-          li
+          li.chi-steps__item
             div.chi-steps__icon
               div.chi-steps__content
-                a(href='#')= `${step}`
+                a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
     p.-text--center
      | Base
     ul.chi-steps.-horizontal-label.-sm.-labels-sm--hide.-p-sm--5
       each step in steps
         if step == 'Step 1'
-          li.-completed
+          li.chi-steps__item.-completed
             div.chi-steps__icon
             div.chi-steps__content
-              a(href='#')= `${step}`
+              a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 2'
-          li.-completed
+          li.chi-steps__item.-completed
             div.chi-steps__icon
             div.chi-steps__content
-              a(href='#')= `${step}`
+              a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 3'
-          li.-active
+          li.chi-steps__item.-active
             div.chi-steps__icon
             div.chi-steps__content
-              a(href='#')= `${step}`
+              a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 5'
-          li
+          li.chi-steps__item
             div.chi-steps__icon
             div.chi-steps__content
-              a(href='#')= `${step}`
+              a.chi-steps__item-title(href='#')= `${step}`
         else
-          li
+          li.chi-steps__item
             div.chi-steps__icon
             div.chi-steps__content
-              a(href='#')= `${step}`
+              a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
     p.-text--center
      | Horizontal labels
@@ -396,80 +396,80 @@ h4 Horizontal
     :code(lang="html")
       <!-- Base -->
       <ul class="chi-steps -sm">
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 1</a>
+              <a class="chi-steps__item-title" href="#">Step 1</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 2</a>
+              <a class="chi-steps__item-title" href="#">Step 2</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-active">
+        <li class="chi-steps__item -active">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 3</a>
+              <a class="chi-steps__item-title" href="#">Step 3</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 4</a>
+              <a class="chi-steps__item-title" href="#">Step 4</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 5</a>
+              <a class="chi-steps__item-title" href="#">Step 5</a>
             </div>
           </div>
         </li>
       </ul>
       <!-- Horizontal labels -->
       <ul class="chi-steps -horizontal-label -sm">
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon"></div>
           <div class="chi-steps__content">
-            <a href="#">Step 1</a>
+            <a class="chi-steps__item-title" href="#">Step 1</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon"></div>
           <div class="chi-steps__content">
-            <a href="#">Step 2</a>
+            <a class="chi-steps__item-title" href="#">Step 2</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-active">
+        <li class="chi-steps__item -active">
           <div class="chi-steps__icon"></div>
           <div class="chi-steps__content">
-            <a href="#">Step 3</a>
+            <a class="chi-steps__item-title" href="#">Step 3</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon"></div>
           <div class="chi-steps__content">
-            <a href="#">Step 4</a>
+            <a class="chi-steps__item-title" href="#">Step 4</a>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li clas="chi-steps__item">
           <div class="chi-steps__icon"></div>
           <div class="chi-steps__content">
-            <a href="#">Step 5</a>
+            <a class="chi-steps__item-title" href="#">Step 5</a>
           </div>
         </li>
       </ul>
@@ -481,41 +481,41 @@ h4 Vertical
       ul.chi-steps.-vertical.-sm
         each step in steps
           if step == 'Step 1'
-            li.-completed
+            li.chi-steps__item.-completed
               div.chi-steps__icon
                 div.chi-steps__content
-                  a(href='#')= `${step}`
-                  .chi-steps__item.-completed
+                  a.chi-steps__item-title(href='#')= `${step}`
+                  .chi-steps__subitem.-completed
                     i.chi-icon.icon-check.-xs
                     p Completed item
-                  .chi-steps__item.-active
+                  .chi-steps__subitem.-active
                     i.chi-icon.icon-spinner.-xs
                     p In progress item
-                  .chi-steps__item
+                  .chi-steps__subitem
                     p Pending item
               div.chi-steps__line
           else if step == 'Step 2'
-            li.-completed
+            li.chi-steps__item.-completed
               div.chi-steps__icon
                 div.chi-steps__content
-                  a(href='#')= `${step}`
+                  a.chi-steps__item-title(href='#')= `${step}`
               div.chi-steps__line
           else if step == 'Step 3'
-            li.-active
+            li.chi-steps__item.-active
               div.chi-steps__icon
                 div.chi-steps__content
-                  a(href='#')= `${step}`
+                  a.chi-steps__item-title(href='#')= `${step}`
               div.chi-steps__line
           else if step == 'Step 5'
-            li
+            li.chi-steps__item
               div.chi-steps__icon
                 div.chi-steps__content
-                  a(href='#')= `${step}`
+                  a.chi-steps__item-title(href='#')= `${step}`
           else
-            li
+            li.chi-steps__item
               div.chi-steps__icon
                 div.chi-steps__content
-                  a(href='#')= `${step}`
+                  a.chi-steps__item-title(href='#')= `${step}`
               div.chi-steps__line
   .example-tabs.-pl--2
     ul.chi-tabs#example-size-vertical
@@ -537,53 +537,53 @@ h4 Vertical
   .chi-tabs-panel.-active#html-size-vertical
     :code(lang="html")
       <ul class="chi-steps -vertical -sm">
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 1</a>
-              <div class="chi-steps__item -completed">
+              <a class="chi-steps__item-title" href="#">Step 1</a>
+              <div class="chi-steps__subitem -completed">
                 <i class="chi-icon icon-check -xs"></i>
                 <p>Completed item</p>
               </div>
-              <div class="chi-steps__item -active">
+              <div class="chi-steps__subitem -active">
                 <i class="chi-icon icon-spinner -xs"></i>
                 <p>In progress item</p>
               </div>
-              <div class="chi-steps__item">
+              <div class="chi-steps__subitem">
                 <p>Pending item</p>
               </div>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 2</a>
+              <a class="chi-steps__item-title" href="#">Step 2</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-active">
+        <li class="chi-steps__item -active">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 3</a>
+              <a class="chi-steps__item-title" href="#">Step 3</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 4</a>
+              <a class="chi-steps__item-title" href="#">Step 4</a>
             </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon">
             <div class="chi-steps__content">
-              <a href="#">Step 5</a>
+              <a class="chi-steps__item-title" href="#">Step 5</a>
             </div>
           </div>
         </li>
@@ -600,56 +600,66 @@ p.-text
     ul.chi-steps.-labels-md--hide.-p-sm--5
       each step in steps
         if step == 'Step 1'
-          li.-completed
+          li.chi-steps__item.-completed
             div.chi-steps__icon
-              a(href='#')= `${step}`
+              div.chi-steps__content
+                a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 2'
-          li.-completed
+          li.chi-steps__item.-completed
             div.chi-steps__icon
-              a(href='#')= `${step}`
+              div.chi-steps__content
+                a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 3'
-          li.-active
+          li.chi-steps__item.-active
             div.chi-steps__icon
-              a(href='#')= `${step}`
+              div.chi-steps__content
+                a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 5'
-          li
+          li.chi-steps__item
             div.chi-steps__icon
-              a(href='#')= `${step}`
+              div.chi-steps__content
+                a.chi-steps__item-title(href='#')= `${step}`
         else
-          li
+          li.chi-steps__item
             div.chi-steps__icon
-              a(href='#')= `${step}`
+              div.chi-steps__content
+                a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
     p.-text--center
      | -labels-md--hide
     ul.chi-steps.-horizontal-label.-labels-lg--hide.-pt--2.-p-sm--4
       each step in steps
         if step == 'Step 1'
-          li.-completed
+          li.chi-steps__item.-completed
             div.chi-steps__icon
-            a(href='#')= `${step}`
+            div.chi-steps__content
+              a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 2'
-          li.-completed
+          li.chi-steps__item.-completed
             div.chi-steps__icon
-            a(href='#')= `${step}`
+            div.chi-steps__content
+              a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 3'
-          li.-active
+          li.chi-steps__item.-active
             div.chi-steps__icon
-            a(href='#')= `${step}`
+            div.chi-steps__content
+              a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
         else if step == 'Step 5'
-          li
+          li.chi-steps__item
             div.chi-steps__icon
-            a(href='#')= `${step}`
+            div.chi-steps__content
+              a.chi-steps__item-title(href='#')= `${step}`
         else
-          li
+          li.chi-steps__item
             div.chi-steps__icon
-            a(href='#')= `${step}`
+            div.chi-steps__content
+              a.chi-steps__item-title(href='#')= `${step}`
             div.chi-steps__line
     p.-text--center
       | -labels-lg--hide
@@ -674,61 +684,81 @@ p.-text
     :code(lang="html")
       <!-- Visible labels from md breakpoint -->
       <ul class="chi-steps -labels-md--hide">
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon">
-            <a href="#">Step 1</a>
+            <div class="chi-steps__content">
+              <a class="chi-steps__item-title" href="#">Step 1</a>
+            </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon">
-            <a href="#">Step 2</a>
+            <div class="chi-steps__content">
+              <a class="chi-steps__item-title" href="#">Step 2</a>
+            </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-active">
+        <li class="chi-steps__item -active">
           <div class="chi-steps__icon">
-            <a href="#">Step 3</a>
+            <div class="chi-steps__content">
+              <a class="chi-steps__item-title" href="#">Step 3</a>
+            </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon">
-            <a href="#">Step 4</a>
+            <div class="chi-steps__content">
+              <a class="chi-steps__item-title" href="#">Step 4</a>
+            </div>
           </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon">
-            <a href="#">Step 5</a>
+            <div class="chi-steps__content">
+              <a class="chi-steps__item-title" href="#">Step 5</a>
+            </div>
           </div>
         </li>
       </ul>
       <!-- Visible labels from lg breakpoint -->
       <ul class="chi-steps -horizontal-label -labels-lg--hide">
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon"></div>
-          <a href="#">Step 1</a>
+          <div class="chi-steps__content">
+            <a class="chi-steps__item-title" href="#">Step 1</a>
+          </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-completed">
+        <li class="chi-steps__item -completed">
           <div class="chi-steps__icon"></div>
-          <a href="#">Step 2</a>
+          <div class="chi-steps__content">
+            <a class="chi-steps__item-title" href="#">Step 2</a>
+          </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li class="-active">
+        <li class="chi-steps__item -active">
           <div class="chi-steps__icon"></div>
-          <a href="#">Step 3</a>
+          <div class="chi-steps__content">
+            <a class="chi-steps__item-title" href="#">Step 3</a>
+          </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon"></div>
-          <a href="#">Step 4</a>
+          <div class="chi-steps__content">
+            <a class="chi-steps__item-title" href="#">Step 4</a>
+          </div>
           <div class="chi-steps__line"></div>
         </li>
-        <li>
+        <li class="chi-steps__item">
           <div class="chi-steps__icon"></div>
-          <a href="#">Step 5</a>
+          <div class="chi-steps__content">
+            <a class="chi-steps__item-title" href="#">Step 5</a>
+          </div>
         </li>
       </ul>
 
