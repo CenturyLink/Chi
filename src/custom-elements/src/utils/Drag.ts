@@ -1,87 +1,83 @@
-let self: Drag;
+import { MouseCursorPosition } from '../constants/constants';
 
 export class Drag {
   private trigger: HTMLElement;
   private elementToMove: HTMLElement;
   private initialTransformStyling: string;
-  private pos1: number;
-  private pos2: number;
-  private pos3: number;
-  private pos4: number;
+  private positionInitial: MouseCursorPosition = {
+    x: 0,
+    y: 0
+  };
+  private positionEnd: MouseCursorPosition = {
+    x: 0,
+    y: 0
+  };
   private component: any;
-
-  constructor(trigger: HTMLElement, elementToMove: HTMLElement, component: any) {
-    self = this;
-    this.trigger = trigger;
-    this.elementToMove = elementToMove;
-    this.component = component;
-    this.trigger.addEventListener('mousedown', (e) => this.dragMouseDown(e));
-    this.trigger.addEventListener('touchstart', (e) => this.dragTouch(e));
-  }
-
-  dragMouseDown(e: MouseEvent) {
+  private dragMouseDownHandler = (e: MouseEvent) => {
     e.preventDefault();
-    this.pos3 = e.clientX;
-    this.pos4 = e.clientY;
+    this.positionInitial.x = e.clientX;
+    this.positionInitial.y = e.clientY;
     this.initialTransformStyling = window.getComputedStyle(this.elementToMove)['transform'];
 
     document.addEventListener('mouseup', this.closeDragElement);
-    document.addEventListener('mousemove', this.elementDrag);
-  }
-
-  dragTouch(e: TouchEvent) {
+    document.addEventListener('mousemove', this.elementDragHandler);
+  };
+  private dragTouchHandler = (e: TouchEvent) => {
     e.preventDefault();
-    this.pos3 = e.touches[0].clientX;
-    this.pos4 = e.touches[0].clientY;
+    this.positionInitial.x = e.touches[0].clientX;
+    this.positionInitial.y = e.touches[0].clientY;
     this.initialTransformStyling = window.getComputedStyle(this.elementToMove)['transform'];
 
-    this.trigger.addEventListener('touchmove', this.elementDragOnTouch);
+    this.trigger.addEventListener('touchmove', this.elementDragOnTouchHandler);
   };
 
-  setPosition(clientX: number, clientY: number) {
-    this.pos1 = this.pos3 - clientX;
-    this.pos2 = this.pos4 - clientY;
-    this.pos3 = clientX;
-    this.pos4 = clientY;
+  private setPosition = (clientX: number, clientY: number) => {
+    this.positionEnd.x = this.positionInitial.x - clientX;
+    this.positionEnd.y = this.positionInitial.y - clientY;
+    this.positionInitial.x = clientX;
+    this.positionInitial.y = clientY;
     this.elementToMove.style.transform = this.initialTransformStyling;
-    this.elementToMove.style.top = this.elementToMove.offsetTop - this.pos2 + 'px';
-    this.elementToMove.style.left = this.elementToMove.offsetLeft - this.pos1 + 'px';
+    this.elementToMove.style.top = this.elementToMove.offsetTop - this.positionEnd.y + 'px';
+    this.elementToMove.style.left = this.elementToMove.offsetLeft - this.positionEnd.x + 'px';
   };
-
-  elementDrag(e: MouseEvent) {
+  private elementDragHandler = (e: MouseEvent) => {
     e.preventDefault();
-    if (self.component._popper) {
-      self.component._popper.destroy();
-      self.component._popper = null;
+    if (this.component._popper) {
+      this.component._popper.destroy();
+      this.component._popper = null;
     }
-    self.setPosition(e.clientX, e.clientY);
+    this.setPosition(e.clientX, e.clientY);
   };
-
-  elementDragOnTouch(e: TouchEvent) {
+  private elementDragOnTouchHandler = (e: TouchEvent) => {
     e.preventDefault();
     const touch = e.targetTouches[0];
 
-    if (self.component._popper) {
-      self.component._popper.destroy();
-      self.component._popper = null;
+    if (this.component._popper) {
+      this.component._popper.destroy();
+      this.component._popper = null;
     }
-    self.setPosition(touch.clientX, touch.clientY);
+    this.setPosition(touch.clientX, touch.clientY);
+  };
+  private closeDragElement = () => {
+    document.removeEventListener('mouseup', this.closeDragElement);
+    document.removeEventListener('mousemove', this.elementDragHandler);
   };
 
-  closeDragElement() {
-    document.removeEventListener('mouseup', self.closeDragElement);
-    document.removeEventListener('mousemove', self.elementDrag);
-  };
+  constructor(trigger: HTMLElement, elementToMove: HTMLElement, component: any) {
+    this.trigger = trigger;
+    this.elementToMove = elementToMove;
+    this.component = component;
+    this.trigger.addEventListener('mousedown', this.dragMouseDownHandler);
+    this.trigger.addEventListener('touchstart', this.dragTouchHandler);
+  }
 
   dispose() {
-    document.removeEventListener('mouseup', self.closeDragElement);
-    document.removeEventListener('mousemove', self.elementDrag);
+    document.removeEventListener('mouseup', this.closeDragElement);
+    document.removeEventListener('mousemove', this.elementDragHandler);
     this.trigger = null;
     this.elementToMove = null;
     this.initialTransformStyling = null;
-    this.pos1 = null;
-    this.pos2 = null;
-    this.pos3 = null;
-    this.pos4 = null;
+    this.positionEnd = null;
+    this.positionInitial = null;
   }
 }

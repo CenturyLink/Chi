@@ -42,7 +42,7 @@ export class Popover {
   @Prop({ reflect: true }) closable = false;
 
   /**
-   * to allow the user to manually change position of the popover
+   * to allow the user to manually change the position of the popover
    */
   @Prop({ reflect: true }) drag = false;
   /**
@@ -90,6 +90,7 @@ export class Popover {
   private currentAnimation: ThreeStepsAnimation;
   private _reference: HTMLElement;
   _popoverElement!: HTMLElement;
+  _popoverHeader!: HTMLElement;
   private _popper: Popper;
   private _preAnimationTransformStyle: string;
   private _postAnimationTransformStyle: string;
@@ -100,6 +101,7 @@ export class Popover {
   private _documentClickHandler: () => void;
   private _documentKeyHandler: (event: KeyboardEvent) => void;
   private mutationObserver;
+  private _drag: Drag;
 
   @Watch('position')
   positionValidation(newValue: string) {
@@ -155,6 +157,17 @@ export class Popover {
       } else {
         this._hide();
       }
+    }
+  }
+
+  @Watch("drag")
+  dragUpdated(newVal: boolean) {
+    if (newVal && !this._drag) {
+      this._drag = new Drag(this._popoverHeader, this._popoverElement, this);
+    } else if (!newVal && this._drag) {
+      this._drag.dispose();
+      this._drag = undefined;
+      // To-do Recover Popper with auto-hide functionality
     }
   }
 
@@ -361,7 +374,6 @@ export class Popover {
   }
 
   componentWillLoad(): void {
-
     this.positionValidation(this.position);
     this.referenceElementChanged(this.reference);
     if (this.active) {
@@ -394,10 +406,7 @@ export class Popover {
     this._componentLoaded = true;
 
     if (this.drag) {
-      const popoverHeader = this._popoverElement
-        .querySelector(`.${POPOVER_CLASSES.HEADER}`) as HTMLElement;
-
-      new Drag(popoverHeader, this._popoverElement, this);
+      this.dragUpdated(this.drag);
     } else {
       document.addEventListener('click', this._documentClickHandler);
       document.addEventListener('keyup', this._documentKeyHandler);
@@ -408,6 +417,10 @@ export class Popover {
     this._destroyPopper();
     if (this.currentAnimation && !this.currentAnimation.isStopped()) {
       this.currentAnimation.stop();
+    }
+    if (this._drag) {
+      this._drag.dispose();
+      this._drag = undefined;
     }
     this.currentAnimation = null;
     this._componentLoaded = false;
@@ -438,7 +451,7 @@ export class Popover {
 
   render() {
     const closeButton = this.closable ? <chi-button size="sm" onClick={() => this.hide()} type="close" /> : null;
-    const popoverHeader = this.popoverTitle && <header class={POPOVER_CLASSES.HEADER}><h2 class={POPOVER_CLASSES.TITLE}>{this.popoverTitle}</h2></header>;
+    const popoverHeader = this.popoverTitle && <header ref={el => (this._popoverHeader = el as HTMLElement)} class={POPOVER_CLASSES.HEADER}><h2 class={POPOVER_CLASSES.TITLE}>{this.popoverTitle}</h2></header>;
     const slot = this.variant && this.variant === 'text' ? <p class={POPOVER_CLASSES.TEXT}><slot /></p> : <slot />;
     const chiFooter = this.popoverFooter && <div class={POPOVER_CLASSES.FOOTER}><slot name={POPOVER_CLASSES.FOOTER}></slot></div>;
 
