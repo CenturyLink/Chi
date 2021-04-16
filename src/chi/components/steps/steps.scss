@@ -12,7 +12,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   padding: 0;
 
   &__icon {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex: 1 0 auto;
     height: 1rem;
@@ -26,14 +26,55 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     width: 100%;
   }
 
-  & > li {
+  &__content {
+    white-space: nowrap;
+  }
+
+  &__subitem {
+    align-items: center;
+    color: $color-text-muted-light;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.375rem;
+
+    &:last-child {
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      font-size: $font-size-xs;
+      line-height: $line-height-sm;
+      margin: 0;
+    }
+
+    .chi-icon {
+      margin-right: 0.375rem;
+    }
+
+    &.-active {
+      font-weight: $font-weight-semi-bold;
+    }
+
+    &.-completed {
+      color: $color-navy-100;
+    }
+
+    &:not(.-active) {
+      &:not(.-completed) {
+        padding-left: 1.125rem;
+      }
+    }
+  }
+
+  & > li,
+  & > .chi-steps__item {
     align-items: center;
     color: $color-text-primary-alt;
     display: flex;
     flex: 1 0 auto;
     font-size: $font-size-base;
     justify-content: center;
-    line-height: 1rem;
+    line-height: $line-height-sm;
 
     & > .chi-steps__icon {
       &::before {
@@ -54,14 +95,34 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         position: absolute;
       }
 
-      & a {
+      & a,
+      & .chi-steps__item-title {
         position: relative;
         top: 1.5rem;
         white-space: nowrap;
       }
+
+      & > .chi-steps__content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        max-width: 100px;
+        position: relative;
+        top: 1.5rem;
+        white-space: normal;
+
+        & a,
+        & .chi-steps__item-title {
+          text-align: center;
+          top: 0;
+          white-space: normal;
+          width: 100px;
+        }
+      }
     }
 
-    & > a {
+    & > a,
+    & > .chi-steps__item-title {
       font-weight: $font-weight-normal;
       margin-left: 0.75rem;
       white-space: nowrap;
@@ -78,29 +139,17 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
           content: '';
         }
       }
-
-      & > .chi-steps__line {
-        &::after {
-          border-right: 0.125rem solid $color-border-primary;
-          border-top: 0.125rem solid $color-border-primary;
-          content: '';
-          height: 0.5rem;
-          position: absolute;
-          right: 0;
-          top: -0.3125rem;
-          transform: rotate(45deg);
-          width: 0.5rem;
-        }
-      }
     }
 
     &.-active {
-      & > a {
+      & > a,
+      & > .chi-steps__content {
         font-weight: $font-weight-semi-bold;
       }
 
       & > .chi-steps__icon {
-        a {
+        a,
+        .chi-steps__item-title {
           font-weight: $font-weight-semi-bold;
         }
 
@@ -142,7 +191,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
   }
 
-  & a {
+  & a,
+  & .chi-steps__item-title {
     color: $color-text-base;
     text-decoration: none;
   }
@@ -150,7 +200,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   &.-inverse {
     background-color: $color-background-black;
 
-    & > li {
+    & > li,
+    & > .chi-steps__item {
       color: $color-text-secondary;
 
       & > .chi-steps__icon {
@@ -163,21 +214,13 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         border: 0.125rem solid $color-border-black;
       }
 
-      & a {
+      & a,
+      & .chi-steps__item-title {
         color: $color-text-white;
       }
 
       & > .chi-steps__line {
         border-color: $color-border-secondary;
-      }
-
-      &.-completed {
-        & > .chi-steps__line {
-          &::after {
-            border-right-color: $color-border-secondary;
-            border-top-color: $color-border-secondary;
-          }
-        }
       }
 
       &.-active {
@@ -205,44 +248,225 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   }
 
   &.-horizontal-label {
-    > li {
+    > li,
+    & > .chi-steps__item {
       > .chi-steps__line {
         margin-left: 0.5rem;
         margin-right: 0.875rem;
+      }
+
+      > .chi-steps__content {
+        margin-left: 0.75rem;
       }
     }
   }
 
   &.-labels--hide {
-    & li > .chi-steps__icon {
-      a {
-        display: none;
+    & li,
+    & > .chi-steps__item {
+      > .chi-steps__icon {
+        a,
+        .chi-steps__item-title {
+          display: none;
+        }
       }
     }
 
-    & > li > a {
+    & > li > a,
+    & > li > .chi-steps__item-title {
       display: none;
+    }
+  }
+
+  &.-sm {
+    & > li,
+    & > .chi-steps__item {
+      font-size: $font-size-xs;
+
+      & > .chi-steps__icon {
+        &::before {
+          font-size: 0.625rem;
+        }
+
+        &::after {
+          font-size: $font-size-lg;
+        }
+
+        & > .chi-steps__content {
+          top: 1.25rem;
+        }
+      }
+
+      & > a,
+      & > .chi-steps__content {
+        margin-left: 0.25rem;
+      }
+
+      & > .chi-steps__line {
+        margin: 0.25rem;
+      }
+    }
+
+    &.-horizontal-label {
+      > li,
+      & > .chi-steps__item {
+        > .chi-steps__line {
+          margin-left: 0.25rem;
+          margin-right: 0.375rem;
+        }
+      }
+    }
+  }
+
+  &.-vertical {
+    align-items: flex-start;
+    flex-direction: column;
+
+    & > li,
+    & > .chi-steps__item {
+      align-items: flex-start;
+      min-height: 4rem;
+      position: relative;
+
+      & > .chi-steps__icon {
+        align-items: flex-start;
+        flex-direction: row-reverse;
+        height: 100%;
+        position: relative;
+        width: 100%;
+
+        &::before {
+          left: 0.5rem;
+        }
+
+        &::after {
+          position: relative;
+        }
+
+        & > .chi-steps__content {
+          align-items: flex-start;
+          margin-left: 0.75rem;
+          max-width: initial;
+          top: 0;
+          z-index: 2;
+
+          a,
+          .chi-steps__item-title {
+            text-align: left;
+            width: auto;
+          }
+        }
+      }
+
+      & > .chi-steps__content {
+        z-index: 2;
+      }
+
+      & > .chi-steps__line {
+        border-left: 0.125rem solid $color-border-primary;
+        border-top: 0;
+        height: calc(100% - 2rem);
+        left: 0.75rem;
+        margin: 1.5rem 0 0;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+      }
+
+      &.-active {
+        & > .chi-steps__line {
+          border-color: $color-grey-60;
+        }
+
+        &:last-child {
+          flex-grow: 0;
+          min-height: auto;
+        }
+
+        & ~ li {
+          &:last-child {
+            flex-grow: 0;
+            min-height: auto;
+          }
+        }
+      }
+    }
+
+    &.-horizontal-label {
+      > li,
+      & > .chi-steps__item {
+        > .chi-steps__icon {
+          width: 1.5rem;
+        }
+
+        .chi-steps__content {
+          .chi-steps__subitem {
+            justify-content: flex-start;
+          }
+        }
+      }
+    }
+
+    &.-sm {
+      & > li,
+      & > .chi-steps__item {
+        & > .chi-steps__icon {
+          &::before {
+            left: 0.3125rem;
+          }
+        }
+
+        & > .chi-steps__line {
+          height: calc(100% - 1.25rem);
+          left: 0.5rem;
+          margin: 1.125rem 0 0;
+        }
+      }
+
+      &.-horizontal-label {
+        > li,
+        > .chi-steps__item {
+          & > .chi-steps__icon {
+            &::before {
+              left: 0.5625rem;
+            }
+          }
+
+          > .chi-steps__line {
+            margin-left: 0.25rem;
+            margin-right: 0.375rem;
+          }
+        }
+      }
     }
   }
 
   @each $breakpoint in $breakpoints {
     &.-labels-#{$breakpoint}--hide {
 
-      & li > .chi-steps__icon {
-        a {
+      & li,
+      & .chi-steps__item {
+        > .chi-steps__icon {
+          a,
+          .chi-steps__item-title {
+            display: none;
+
+            @include respond-to(#{$breakpoint}) {
+              display: block;
+            }
+          }
+        }
+      }
+
+      & > li,
+      & > .chi-steps__item {
+        > a,
+        .chi-steps__item-title {
           display: none;
 
           @include respond-to(#{$breakpoint}) {
             display: block;
           }
-        }
-      }
-
-      & > li > a {
-        display: none;
-
-        @include respond-to(#{$breakpoint}) {
-          display: block;
         }
       }
     }
@@ -252,13 +476,46 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 // sass-lint:disable-all
 /* IE10+ CSS hack */
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .chi-steps div.chi-steps__icon a {
+  .chi-steps > li.chi-steps__item > .chi-steps__icon > .chi-steps__content > a.chi-steps__item-title {
+    width: auto;
+  }
+
+  .chi-steps > li.chi-steps__item > div.chi-steps__icon::before {
+    left: 0.25rem;
     position: relative;
-    right: 0.8625rem;
+  }
+
+  .chi-steps > li.chi-steps__item > div.chi-steps__icon::after {
+    position: relative;
+  }
+
+  .chi-steps.-vertical > li.chi-steps__item > div.chi-steps__icon::before {
+    left: -4.5rem;
+  }
+
+  .chi-steps.-vertical.-sm > li.chi-steps__item > div.chi-steps__icon::before {
+    left: -3.8rem;
+  }
+
+  .chi-steps div.chi-steps__icon a {
+    right: 1.125rem;
+  }
+
+  .chi-steps li.-completed div.chi-steps__icon a {
+    right: 0.85rem;
+  }
+
+  .chi-steps li.-completed div.chi-steps__icon::after {
+    position: relative;
+    right: 2.95rem;
+  }
+
+  .chi-steps li:first-child.-active div.chi-steps__icon::before {
+    right: 3rem;
   }
 
   .chi-steps li:first-child.-active div.chi-steps__icon::after {
-    right: 3.4375rem;
+    right: 3.25rem;
   }
 
   .chi-steps li.-active div.chi-steps__icon::after,
@@ -267,14 +524,9 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     right: 3.47rem;
   }
 
-  .chi-steps li.-completed div.chi-steps__icon::after {
-    position: relative;
-    right: 2.97rem;
-  }
-
   .chi-steps div.chi-steps__icon::before,
   .chi-steps.-horizontal-label div.chi-steps__icon::before  {
-    left: 0.3rem;
+    left: 0.25rem;
     position: relative;
   }
 
@@ -292,6 +544,72 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   .chi-steps.-horizontal-label li.-completed div.chi-steps__icon::after {
     position: relative;
     right: 0.3125rem;
+  }
+
+  .chi-steps.-vertical li div.chi-steps__icon {
+    position: relative;
+  }
+
+  .chi-steps.-vertical li div.chi-steps__icon a,
+  .chi-steps.-vertical li div.chi-steps__icon::after {
+    right: 0rem;
+  }
+
+  .chi-steps.-vertical li div.chi-steps__icon::before {
+    left: -4.5rem;
+  }
+
+  .chi-steps.-vertical.-horizontal-label li.-completed div.chi-steps__icon::after {
+    right: 0rem;
+  }
+
+  .chi-steps.-vertical.-horizontal-label li.-active div.chi-steps__icon::after,
+  .chi-steps.-vertical.-horizontal-label li.-active ~ li div.chi-steps__icon::after {
+    right: -0.5rem;
+  }
+
+  .chi-steps.-vertical.-horizontal-label li div.chi-steps__icon::before {
+    left: -0.5rem;
+  }
+
+  .chi-steps.-sm li.-completed div.chi-steps__icon::after {
+    right: 2.35rem;
+  }
+
+  .chi-steps.-sm li.-active div.chi-steps__icon::after,
+  .chi-steps.-sm li div.chi-steps__icon::after {
+    right: 2.75rem;
+  }
+
+  .chi-steps.-horizontal-label.-sm li.-completed div.chi-steps__icon::after {
+    right: 0.15rem;
+  }
+
+  .chi-steps.-horizontal-label.-sm div.chi-steps__icon::after,
+  .chi-steps.-horizontal-label.-sm li.-active div.chi-steps__icon::after {
+    right: 0.45rem;
+  }
+
+  .chi-steps.-vertical.-sm li div.chi-steps__icon::before {
+    left: -3.8rem;
+  }
+
+  .chi-steps.-sm.-vertical li.-active div.chi-steps__icon::after,
+  .chi-steps.-sm.-vertical li div.chi-steps__icon::after {
+    right: 0rem;
+  }
+
+  .chi-steps.-vertical.-sm.-horizontal-label li div.chi-steps__icon::before {
+    left: -0.5rem;
+  }
+
+  .chi-steps.-vertical.-horizontal-label.-sm li.-active div.chi-steps__icon::after,
+  .chi-steps.-vertical.-horizontal-label.-sm li.-active ~ li div.chi-steps__icon::after {
+    right: -0.25rem;
+  }
+
+  .chi-steps.-vertical.-horizontal-label.-sm li.-completed div.chi-steps__icon::after {
+    right: 0rem;
   }
 }
 
