@@ -8,18 +8,30 @@
 
   This section always runs in the master jenkins.
 */
-
+try {
 library(
-      identifier: 'jsl-jenkins-shared-library@master',
+      identifier: 'jsl-jenkins-shared-library-local@release/20210415',
       retriever: modernSCM(
         [
           $class: 'GitSCMSource',
-          remote: "git@github.com:centurylink/jsl-jenkins-shared-library.git",
-          credentialsId: 'SCMAUTO_SSH_DEVOPS_PIPELINE',
+          remote: "/app/jenkins/git/jsl-jenkins-shared-library.git",
           extensions: [[$class: 'WipeWorkspace']]
         ]
       )
     ) _
+} catch (Exception Ex) {
+library(
+  identifier: 'jsl-jenkins-shared-library@release/20210415',
+  retriever: modernSCM(
+    [
+      $class: 'GitSCMSource',
+      remote: "git@github.com:CenturyLink/jsl-jenkins-shared-library.git",
+      credentialsId: 'SCMAUTO_SSH_DEVOPS_PIPELINE',
+      extensions: [[$class: 'WipeWorkspace']]
+    ]
+  )
+) _
+}
 
 pipeline {
 
