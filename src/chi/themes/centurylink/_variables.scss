@@ -199,7 +199,7 @@ $color-icon-primary-dark:             $color-blue-90;
 $color-icon-secondary:                $color-mint-40;
 $color-icon-secondary-dark:           $color-mint-50;
 $color-icon-success:                  $color-green-50;
-$color-icon-warning:                  $color-yellow-50;
+$color-icon-warning:                  $color-yellow-55;
 $color-icon-danger:                   $color-red-50;
 $color-icon-info:                     $color-blue-50;
 $color-icon-muted-light:              $color-grey-50;
@@ -673,13 +673,14 @@ $file-input-button-focus-border-color:      $button-solid-focus-border-color;
 $file-input-button-focus-outline-color:     $button-solid-focus-outline;
 
 // Footer
-$footer-internal-background-color:          $color-background-black;
-$footer-internal-text-color:                $color-text-white;
-$footer-internal-select-text-color:         $color-text-white;
+$footer-internal-background-color:          $color-background-white;
+$footer-internal-border-top-color:          $color-border-base;
+$footer-internal-text-color:                $color-text-muted;
+$footer-internal-select-text-color:         $color-text-muted;
 $footer-copyright-font-size:                $font-size-xs;
 $footer-copyright-line-height:              1rem;
-$footer-internal-link-color:                $color-text-white;
-$footer-external-background-color:          $color-grey-15;
+$footer-internal-link-color:                $color-text-muted;
+$footer-external-background-color:          $color-background-white;
 $footer-external-text-color:                $color-text-base;
 $footer-external-title-font-weight:         $font-weight-bold;
 $footer-external-title-text-transform:      uppercase;

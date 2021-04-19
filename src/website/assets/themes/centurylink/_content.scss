@@ -230,6 +230,30 @@
           width: 0.5rem;
         }
       }
+
+      .example-spacing-margin {
+        align-self: flex-start;
+        background: $color-orange-20;
+        border: 1px dashed $color-orange-50;
+
+        &__block {
+          background: $color-background-primary;
+          height: 3rem;
+          width: 3rem;
+        }
+      }
+
+      .example-spacing-padding {
+        align-self: flex-start;
+        background: $color-blue-20;
+        border: 1px dashed $color-blue-50;
+
+        &__block {
+          background: $color-background-primary;
+          height: 3rem;
+          width: 3rem;
+        }      
+      }
     }
 
     &.chi-grid__container-wide {

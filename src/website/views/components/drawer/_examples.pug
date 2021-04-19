@@ -782,70 +782,70 @@ ul#chi-tabs--header.chi-tabs
         <!-- JavaScript -->
         <script>chi.drawer(document.getElementById('drawer-trigger-21'));</script>
 
-h3 Portal
+.-lumen-only
+  h3 Portal
+  .example.-mb--3.-overflow--hidden
+    .-position--relative.-z--0.-overflow--hidden(style="height:30rem;")
+      chi-drawer(position='bottom' title='Drawer title here' portal active backdrop prevent-auto-hide)
+        .-p--2.-text Drawer content here
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-portal
+        li.-active
+          a(href=`#webcomponent-portal`) Web Component
+        li
+          a(href=`#html-portal`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal
+      .chi-tab__description
+        | Use the attribute <code>portal</code> to enable portal styling.
+      :code(lang="html")
+        <!-- Trigger -->
+        <chi-button id="drawer-trigger-22" color="primary">Launch demo drawer</chi-button>
 
-.example.-mb--3.-overflow--hidden
-  .-position--relative.-z--0.-overflow--hidden(style="height:30rem;")
-    chi-drawer(position='bottom' title='Drawer title here' portal active backdrop prevent-auto-hide)
-      .-p--2.-text Drawer content here
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-portal
-      li.-active
-        a(href=`#webcomponent-portal`) Web Component
-      li
-        a(href=`#html-portal`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-portal
-    .chi-tab__description
-      | Use the attribute <code>portal</code> to enable portal styling.
-    :code(lang="html")
-      <!-- Trigger -->
-      <chi-button id="drawer-trigger-22" color="primary">Launch demo drawer</chi-button>
+        <!-- Drawer -->
+        <chi-drawer id="interactive-drawer-22" position="bottom" title="Drawer title here" portal backdrop prevent-auto-hide>
+          <div class="-p--2 -text">Drawer content here</div>
+        </chi-drawer>
 
-      <!-- Drawer -->
-      <chi-drawer id="interactive-drawer-22" position="bottom" title="Drawer title here" portal backdrop prevent-auto-hide>
-        <div class="-p--2 -text">Drawer content here</div>
-      </chi-drawer>
+        <!-- JavaScript -->
+        <script>
+          var drawer = document.getElementById('interactive-drawer-22');
+          var drawerTrigger = document.getElementById('drawer-trigger-22');
+          drawerTrigger.addEventListener('click', function(){
+            drawer.toggle();
+            // or drawer.active = !drawer.active;
+          });
+        </script>
 
-      <!-- JavaScript -->
-      <script>
-        var drawer = document.getElementById('interactive-drawer-22');
-        var drawerTrigger = document.getElementById('drawer-trigger-22');
-        drawerTrigger.addEventListener('click', function(){
-          drawer.toggle();
-          // or drawer.active = !drawer.active;
-        });
-      </script>
+    .chi-tabs-panel#html-portal
+      .chi-tab__description
+        | Use the class <code>-portal</code> to enable portal styling.
+      :code(lang="html")
+        <!-- Trigger -->
+        <button id="drawer-trigger-23" class="chi-button -primary chi-drawer__trigger" data-target="#drawer-23">Launch demo drawer</button>
 
-  .chi-tabs-panel#html-portal
-    .chi-tab__description
-      | Use the class <code>-portal</code> to enable portal styling.
-    :code(lang="html")
-      <!-- Trigger -->
-      <button id="drawer-trigger-23" class="chi-button -primary chi-drawer__trigger" data-target="#drawer-23">Launch demo drawer</button>
-
-      <!-- Drawer -->
-      <div class="chi-backdrop -closed">
-        <div class="chi-backdrop__wrapper">
-          <div id="drawer-23" class="chi-drawer -bottom -portal">
-            <div class="chi-drawer__header">
-              <span class="chi-drawer__title">
-                Drawer title here
-              </span>
-              <button class="chi-button -icon -close" aria-label="Close">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-x"></i>
-                </div>
-              </button>
-            </div>
-            <div class="chi-drawer__content">
-              <div class="-p--2 -text">Drawer content here</div>
+        <!-- Drawer -->
+        <div class="chi-backdrop -closed">
+          <div class="chi-backdrop__wrapper">
+            <div id="drawer-23" class="chi-drawer -bottom -portal">
+              <div class="chi-drawer__header">
+                <span class="chi-drawer__title">
+                  Drawer title here
+                </span>
+                <button class="chi-button -icon -close" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x"></i>
+                  </div>
+                </button>
+              </div>
+              <div class="chi-drawer__content">
+                <div class="-p--2 -text">Drawer content here</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- JavaScript -->
-      <script>chi.drawer(document.getElementById('drawer-trigger-23'));</script>
+        <!-- JavaScript -->
+        <script>chi.drawer(document.getElementById('drawer-trigger-23'));</script>
 
 script.
   document.addEventListener(

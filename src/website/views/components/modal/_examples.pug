@@ -624,65 +624,66 @@ p.-text Remove <code>chi-modal__header</code> and <code>chi-modal__footer</code>
       <!-- JavaScript -->
       <script>chi.modal(document.getElementById('modal-trigger-9'));</script>
 
-h3 Portal
-.example.-mb--3
-  .chi-backdrop.-p--6.-position--relative.-z--0
-    .chi-backdrop__wrapper
-      section.chi-modal.-portal(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.chi-modal__header
-          h2.chi-modal__title Modal Title
-          button(class='chi-button -icon -close', aria-label='Close')
-            .chi-button__content
-              i.chi-icon.icon-x
-        .chi-modal__content
-          p.-text.-m--0 Modal content
-        footer.chi-modal__footer
-          button.chi-button.-primary.-outline.-lg.-px--4.-text--uppercase Cancel
-          button.chi-button.-primary.-lg.-px--4.-text--uppercase Save
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-portal
-      li.-disabled
-        a(href=`#webcomponent-portal`) Web Component
-      li.-active
-        a(href=`#html-portal`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-portal
-  .chi-tabs-panel.-active#html-portal
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
-      <!-- Trigger -->
-      <button id="modal-trigger-10" class="chi-button chi-modal__trigger" data-target="#modal-10">
-        Launch portal modal
-      </button>
+.-lumen-only
+  h3 Portal
+  .example.-mb--3
+    .chi-backdrop.-p--6.-position--relative.-z--0
+      .chi-backdrop__wrapper
+        section.chi-modal.-portal(role="dialog", aria-label="Modal description", aria-modal="true")
+          header.chi-modal__header
+            h2.chi-modal__title Modal Title
+            button(class='chi-button -icon -close', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x
+          .chi-modal__content
+            p.-text.-m--0 Modal content
+          footer.chi-modal__footer
+            button.chi-button.-primary.-outline.-lg.-px--4.-text--uppercase Cancel
+            button.chi-button.-primary.-lg.-px--4.-text--uppercase Save
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal
+        li.-disabled
+          a(href=`#webcomponent-portal`) Web Component
+        li.-active
+          a(href=`#html-portal`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal
+    .chi-tabs-panel.-active#html-portal
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang="html")
+        <!-- Trigger -->
+        <button id="modal-trigger-10" class="chi-button chi-modal__trigger" data-target="#modal-10">
+          Launch portal modal
+        </button>
 
-      <!-- Modal -->
-      <div class="chi-backdrop -closed">
-        <div class="chi-backdrop__wrapper">
-          <section id="modal-10" class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
-            <header class="chi-modal__header">
-              <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-x"></i>
-                </div>
-              </button>
-            </header>
-            <div class="chi-modal__content">
-              <p class="-text -m--0">Modal content</p>
-            </div>
-            <footer class="chi-modal__footer">
-              <button class="chi-button -primary -outline -lg -px--4 -text--uppercase">Cancel</button>
-              <button class="chi-button -primary -lg -px--4 -text--uppercase">Save</button>
-            </footer>
-          </section>
+        <!-- Modal -->
+        <div class="chi-backdrop -closed">
+          <div class="chi-backdrop__wrapper">
+            <section id="modal-10" class="chi-modal -portal" role="dialog" aria-label="Modal description" aria-modal="true">
+              <header class="chi-modal__header">
+                <h2 class="chi-modal__title">Modal Title</h2>
+                <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x"></i>
+                  </div>
+                </button>
+              </header>
+              <div class="chi-modal__content">
+                <p class="-text -m--0">Modal content</p>
+              </div>
+              <footer class="chi-modal__footer">
+                <button class="chi-button -primary -outline -lg -px--4 -text--uppercase">Cancel</button>
+                <button class="chi-button -primary -lg -px--4 -text--uppercase">Save</button>
+              </footer>
+            </section>
+          </div>
         </div>
-      </div>
 
-      <!-- JavaScript -->
-      <script>chi.modal(document.getElementById('modal-trigger-10'));</script>
+        <!-- JavaScript -->
+        <script>chi.modal(document.getElementById('modal-trigger-10'));</script>
 
 script.
     document.addEventListener(

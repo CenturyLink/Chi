@@ -281,5 +281,9 @@
         }
       }
     }
+
+    & + .chi-footer__internal {
+      box-shadow: 0 -1px 0 $footer-internal-border-top-color;
+    }
   }
 }

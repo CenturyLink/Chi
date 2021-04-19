@@ -500,25 +500,27 @@
     }
 
     .chi-brand {
-      margin: 0 0.5rem;
-      width: 9.0625rem;
-
-      @include respond-to(md) {
-        margin: 0 1rem 0 0;
-        width: 9.0625rem;
-      }
-
       @include respond-to(lg) {
         margin: 0 3rem 0 0;
       }
 
-      & > img,
-      & > svg {
-        height: 1.25rem;
+      &:not(.-centurylink) {
+        margin: 0 0.5rem;
         width: 9.0625rem;
 
         @include respond-to(md) {
+          margin: 0 1rem 0 0;
+          width: 9.0625rem;
+        }
+
+        & > img,
+        & > svg {
           height: 1.25rem;
+          width: 9.0625rem;
+
+          @include respond-to(md) {
+            height: 1.25rem;
+          }
         }
       }
     }
@@ -535,20 +537,22 @@
     }
 
     .chi-brand {
-      @include respond-to(md) {
-        margin: 0 1rem 0 0;
-        width: 10rem;
-      }
-
-      @include respond-to(lg) {
-        margin: 0 3rem 0 0;
-      }
-
-      & > img,
-      & > svg {
+      &:not(.-centurylink) {
         @include respond-to(md) {
-          height: 1.37875rem;
+          margin: 0 1rem 0 0;
           width: 10rem;
+        }
+
+        @include respond-to(lg) {
+          margin: 0 3rem 0 0;
+        }
+
+        & > img,
+        & > svg {
+          @include respond-to(md) {
+            height: 1.37875rem;
+            width: 10rem;
+          }
         }
       }
     }

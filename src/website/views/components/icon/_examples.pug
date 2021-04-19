@@ -166,30 +166,32 @@ p.-text
       <i class="chi-icon icon-atom -md -icon--warning"></i>
       <i class="chi-icon icon-atom -md -icon--danger"></i>
       <i class="chi-icon icon-atom -md -icon--muted"></i>
-h4 Brand complimentary
-p.-text
-  | More icon colors that can be used to compliment the primary brand palette.
-.example.-mb--3
-  .chi-grid.-no-gutter
-    .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
-      each color in ['icon--navy', 'icon--orange']
-        div(class=`chi-icon -md -${color} -m--1`)
-          svg
-            use(xlink:href='#icon-atom')
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-colors-brand-complimentary
-      li.-active
-        a(href='#webcomponent-colors-brand-complimentary') Web Component
-      li
-        a(href='#html-colors-brand-complimentary') HTML Blueprint
-  #webcomponent-colors-brand-complimentary.chi-tabs-panel.-active
-    :code(lang="html")
-      <chi-icon icon="atom" size="md" color="navy"></chi-icon>
-      <chi-icon icon="atom" size="md" color="orange"></chi-icon>
-  #html-colors-brand-complimentary.chi-tabs-panel
-    :code(lang="html")
-      <i class="chi-icon icon-atom -md -icon--navy"></i>
-      <i class="chi-icon icon-atom -md -icon--orange"></i>
+
+.-lumen-only
+  h4 Brand complimentary
+  p.-text
+    | More icon colors that can be used to compliment the primary brand palette.
+  .example.-mb--3
+    .chi-grid.-no-gutter
+      .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
+        each color in ['icon--navy', 'icon--orange']
+          div(class=`chi-icon -md -${color} -m--1`)
+            svg
+              use(xlink:href='#icon-atom')
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-colors-brand-complimentary
+        li.-active
+          a(href='#webcomponent-colors-brand-complimentary') Web Component
+        li
+          a(href='#html-colors-brand-complimentary') HTML Blueprint
+    #webcomponent-colors-brand-complimentary.chi-tabs-panel.-active
+      :code(lang="html")
+        <chi-icon icon="atom" size="md" color="navy"></chi-icon>
+        <chi-icon icon="atom" size="md" color="orange"></chi-icon>
+    #html-colors-brand-complimentary.chi-tabs-panel
+      :code(lang="html")
+        <i class="chi-icon icon-atom -md -icon--navy"></i>
+        <i class="chi-icon icon-atom -md -icon--orange"></i>
 
 h3 Icons
 .chi-grid.icon-library.-pt--2.-pb--6
