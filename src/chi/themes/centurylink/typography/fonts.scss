@@ -1,3 +1,8 @@
+$inter-url: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap';
+
+@import url($inter-url);
+
+/*
 @font-face {
   font-display: swap;
   font-family: 'Maison Neue';
@@ -62,3 +67,4 @@
   src: url('fonts/themes/centurylink/MaisonNeueThin.otf') format('opentype'),
   url('fonts/themes/centurylink/MaisonNeueThin.woff') format('woff');
 }
+*/
