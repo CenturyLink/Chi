@@ -34,31 +34,6 @@
         flex-direction: row;
       }
 
-      .chi-brand {
-        margin: 0;
-        width: 7.1875rem;
-
-        @include respond-to(md) {
-          margin: 0 1rem 0 0;
-          width: 8.75rem;
-        }
-
-        @include respond-to(lg) {
-          margin: 0 3rem 0 0;
-        }
-
-        & > img,
-        & > svg {
-          height: 1rem;
-          width: 7.1875rem;
-
-          @include respond-to(md) {
-            height: 1.25rem;
-            width: 8.75rem;
-          }
-        }
-      }
-
       .chi-header__title {
         font-size: $font-size-base;
         line-height: $line-height;

@@ -34,60 +34,6 @@
         flex-direction: row;
       }
 
-      .-logo-wrapper {
-        .chi-brand {
-          margin: 0;
-
-          @include respond-to(lg) {
-            margin: 0 3rem 0 0;
-          }
-        }
-
-        &.-centurylink {
-          .chi-brand {
-            width: 6.09375rem;
-
-            @include respond-to(md) {
-              margin: 0 3rem 0 0;
-              width: 9.75rem;
-            }
-
-            & > img,
-            & > svg {
-              height: 1.25rem;
-              width: 6.09375rem;
-
-              @include respond-to(md) {
-                height: 2rem;
-                width: 9.75rem;
-              }
-            }
-          }          
-        }
-
-        &:not(.-centurylink) {
-          .chi-brand {
-            width: 7.1875rem;
-
-            @include respond-to(md) {
-              margin: 0 1rem 0 0;
-              width: 8.75rem;
-            }
-
-            & > img,
-            & > svg {
-              height: 1rem;
-              width: 7.1875rem;
-
-              @include respond-to(md) {
-                height: 1.25rem;
-                width: 8.75rem;
-              }
-            }
-          }
-        }
-      }
-
       .chi-header__title {
         font-size: $font-size-base;
         line-height: $line-height;
