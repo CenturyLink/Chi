@@ -970,7 +970,30 @@ $stat-card-background-color:                $color-background-white;
 $stat-card-border-color:                    rgba($color-black, 0.12);
 $stat-active-card-border-color:             $color-border-primary;
 
-// Steps - Pending Design Refresh
+// Steps
+$steps-item-line-border-color:              $color-border-muted;
+$steps-subitem-text-color:                  $color-text-muted-light;
+$steps-subitem-active-font-weight:          $font-weight-semi-bold;
+$steps-subitem-completed-text-color:        $color-navy-100;
+$steps-item-completed-icon-color:           $color-icon-primary;
+$steps-item-count-text-color:               $color-text-muted;
+$steps-item-count-icon-color:               $color-icon-muted;
+$steps-item-count-font-weight:              $font-weight-semi-bold;
+$steps-item-completed-line-border-color:    $color-border-primary;
+$steps-item-active-content-font-weight:     $font-weight-semi-bold;
+$steps-item-active-title-font-weight:       $font-weight-semi-bold;
+$steps-item-active-count-text-color:        $color-text-white;
+$steps-item-title-text-color:               $color-text-base;
+
+$steps-inverse-background-color:            $color-background-black;
+$steps-inverse-item-completed-text-color:   $color-text-secondary;
+$steps-inverse-item-completed-count-text-color: $color-text-white;
+$steps-inverse-item-border-color:           $color-border-black;
+$steps-inverse-item-title-text-color:       $color-text-white;
+$steps-inverse-item-completed-line-border-color: $color-border-secondary;
+$steps-inverse-item-line-border-color:      $color-grey-40;
+$steps-inverse-item-active-count-text-color: $color-text-black;
+$steps-inverse-item-count-border-color:     $color-grey-40;
 
 // Table
 $table-row-background-color:                $color-background-white;

@@ -689,6 +689,10 @@ $footer-external-link-color:                $color-text-base;
 $footer-external-social-link-color:         $color-icon-base;
 $footer-external-social-hover-link-color:   $color-grey-80;
 
+// Form Item
+$form-item-list-border-color:               $color-border-base-dark;
+$form-item-list-item-border-color:          $color-border-base-light;
+
 // Header
 $header-background-color:                   $color-background-white;
 $header-shadow:                             0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
@@ -996,7 +1000,31 @@ $stat-card-background-color:                $color-background-white;
 $stat-card-border-color:                    rgba($color-black, 0.12);
 $stat-active-card-border-color:             $color-border-primary;
 
-// Steps - Pending Design Refresh
+// Steps
+$steps-item-line-border-color:              $color-border-muted;
+$steps-subitem-text-color:                  $color-text-muted-light;
+$steps-subitem-active-font-weight:          $font-weight-semi-bold;
+$steps-subitem-completed-text-color:        $color-navy-100;
+$steps-item-completed-icon-color:           $color-icon-primary;
+$steps-item-count-text-color:               $color-text-muted;
+$steps-item-count-icon-color:               $color-icon-muted;
+$steps-item-count-font-weight:              $font-weight-semi-bold;
+$steps-item-completed-line-border-color:    $color-border-primary;
+$steps-item-active-content-font-weight:     $font-weight-semi-bold;
+$steps-item-active-title-font-weight:       $font-weight-semi-bold;
+$steps-item-active-count-text-color:        $color-text-white;
+$steps-item-title-text-color:               $color-text-base;
+
+$steps-inverse-background-color:            $color-background-black;
+$steps-inverse-item-completed-text-color:   $color-text-secondary;
+$steps-inverse-item-completed-count-text-color: $color-text-white;
+$steps-inverse-item-border-color:           $color-border-black;
+$steps-inverse-item-title-text-color:       $color-text-white;
+$steps-inverse-item-completed-line-border-color: $color-border-secondary;
+$steps-inverse-item-line-border-color:      $color-grey-40;
+$steps-inverse-item-active-count-text-color: $color-text-black;
+$steps-inverse-item-count-border-color:     $color-grey-40;
+
 
 // Table
 $table-row-background-color:                $color-background-white;
@@ -1079,7 +1107,3 @@ $tooltip-max-width:                         20rem;
 $tooltip-light-background-color:            rgba($color-white, 0.96);
 $tooltip-light-text-color:                  $color-text-base;
 $tooltip-light-box-shadow:                  0 4px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 20px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
-
-// Form Item
-$form-item-list-border-color:               $color-border-base-dark;
-$form-item-list-item-border-color:          $color-border-base-light;

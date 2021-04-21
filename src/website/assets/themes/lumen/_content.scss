@@ -84,6 +84,8 @@
 
         &:not(.-introduction) {
           >,
+          .-centurylink-only,
+          .-lumen-only,
           .changelog__version >,
           .chi-tabs-panel >,
           > .chi-grid .chi-col,
