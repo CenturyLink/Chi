@@ -23,6 +23,8 @@ html.chi(lang="en")
         script(src=`${rootPath}assets/scripts/globalConfigs.js`)
         script(src=`${rootPath}assets/scripts/chiVersionCheck.js`)
         script(src=`${rootPath}js/chi.js`)
+        script(type='module' src=`${rootPath}/js/ce/ux-chi-ce/ux-chi-ce.esm.js`)
+        script(nomodule='' src=`${rootPath}/js/ce/ux-chi-ce/ux-chi-ce.js`)
         if styles
             each style in styles
                 link(rel="stylesheet", media="all", href=`${rootPath}${style}.css`)
@@ -69,3 +71,4 @@ html.chi(lang="en")
       if scripts
           each script in scripts
               script(type="text/javascript", src=`${rootPath}${script}.js`)
+
