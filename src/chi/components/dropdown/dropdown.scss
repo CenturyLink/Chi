@@ -44,6 +44,7 @@
     &:not([data-position^='left']) {
 
       &::after {
+        color: $dropdown-trigger-icon-color;
         content: '\e91e';
         display: block;
         font-family: 'chi';
@@ -91,6 +92,7 @@
     &[data-position^='left'] {
 
       &::before {
+        color: $dropdown-trigger-icon-color;
         content: '\e91e';
         display: block;
         font-family: 'chi';
@@ -132,7 +134,7 @@
   }
 
   &__menu {
-    background-color: $color-background-white;
+    background-color: $dropdown-menu-background-color;
     box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
     0 3px 14px 2px rgba(0, 0, 0, 0.12),
     0 5px 5px -3px rgba(0, 0, 0, 0.2);
@@ -148,10 +150,10 @@
     &-item {
       align-items: center;
       display: flex;
-      height: 2rem;
+      height: $dropdown-menu-item-height;
       line-height: $line-height;
-      padding-left: 1rem;
-      padding-right: 1rem;
+      padding-left: $dropdown-menu-item-padding-left;
+      padding-right: $dropdown-menu-item-padding-right;
       white-space: nowrap;
 
       & > .chi-checkbox {
@@ -179,29 +181,29 @@
 
       &:not(.-active) {
         .chi-icon {
-          color: $color-grey-60;
+          color: $dropdown-menu-item-icon-color;
         }
       }
 
       &.-active {
-        background-color: $color-background-primary-light;
-        box-shadow: inset 0.125rem 0 0 $color-border-primary;
-        color: $color-text-primary;
-        font-weight: $font-weight-semi-bold;
+        background-color: $dropdown-menu-item-active-background-color;
+        box-shadow: inset 0.125rem 0 0 $dropdown-menu-item-active-border-color;
+        color: $dropdown-menu-item-active-text-color;
+        font-weight: $dropdown-menu-item-active-font-weight;
       }
 
       &.-has-active {
-        color: $color-text-primary;
+        color: $dropdown-menu-item-active-text-color;
       }
 
       &.-disabled {
-        color: $color-grey-70;
-        opacity: 0.6;
+        color: $dropdown-menu-item-disabled-text-color;
+        opacity: $dropdown-menu-item-disabled-opacity;
         pointer-events: none;
 
         .chi-icon {
-          color: $color-grey-70;
-          opacity: 0.6;
+          color: $dropdown-menu-item-disabled-icon-color;
+          opacity: $dropdown-menu-item-disabled-opacity;
         }
       }
 
@@ -383,7 +385,7 @@ a {
     &.-hover:not(.-disabled):not(.-active),
     &:focus:not(.-disabled):not(.-active),
     &.focus:not(.-disabled):not(.-active) {
-      background-color: $color-grey-20;
+      background-color: $dropdown-menu-item-hover-background-color;
     }
   }
 }

@@ -53,8 +53,8 @@ $sizes: (
 
         & + label {
           align-items: center;
-          background-color: $color-text-white;
-          border: solid 0.0625rem $color-border-base-dark;
+          background-color: $picker-background-color;
+          border: solid 0.0625rem $picker-border-color;
           border-right-width: 0;
           box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
           cursor: pointer;
@@ -117,11 +117,11 @@ $sizes: (
         &.chi-picker__input {
           & + label {
             &:hover {
-              background-color: $color-background-base-dark;
+              background-color: $picker-group-hover-background-color;
             }
 
             &:active {
-              background-color: $color-background-base-darker;
+              background-color: $picker-group-active-background-color;
             }
           }
         }
@@ -130,9 +130,9 @@ $sizes: (
       &:checked {
         &.chi-picker__input {
           & + label {
-            border: solid 0.0625rem $color-border-primary;
-            box-shadow: inset 0 0 0 0.0625rem $color-border-primary;
-            color: $color-text-primary;
+            border: solid 0.0625rem $picker-checked-border-color;
+            box-shadow: inset 0 0 0 0.0625rem $picker-checked-border-color;
+            color: $picker-checked-text-color;
             font-weight: $font-weight-semi-bold;
             padding-right: 0.9375rem;
 
@@ -160,9 +160,9 @@ $sizes: (
       &.-disabled {
         &.chi-picker__input {
           & + label {
-            background-color: $color-background-base-dark;
+            background-color: $picker-disabled-background-color;
             box-shadow: none;
-            color: $color-text-muted-light;
+            color: $picker-disabled-text-color;
             pointer-events: none;
           }
         }
@@ -188,6 +188,7 @@ $sizes: (
     }
   }
 
+  // Portal
   &.-portal {
     input {
       &[type='radio'] {

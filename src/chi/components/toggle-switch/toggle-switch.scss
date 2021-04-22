@@ -30,7 +30,7 @@
     }
 
     .chi-switch__thumb {
-      background-color: $color-grey-50;
+      background-color: $toggle-switch-background-color;
       border: 0;
       border-radius: 0.75rem;
       cursor: pointer;
@@ -44,7 +44,7 @@
       width: 3rem;
 
       &::after {
-        background-color: $color-background-white;
+        background-color: $toggle-switch-thumb-background-color;
         border: 0;
         border-radius: 0.75rem;
         content: '';
@@ -86,10 +86,10 @@
     &:checked {
       & + .chi-switch__content {
         .chi-switch__thumb {
-          background-color: $color-background-primary;
+          background-color: $toggle-switch-checked-background-color;
 
           &::after {
-            background-color: $color-background-white;
+            background-color: $toggle-switch-checked-thumb-background-color;
             border: 0;
             border-radius: 0.75rem;
             content: '';
@@ -111,7 +111,7 @@
     &.-focus {
       & + .chi-switch__content {
         .chi-switch__thumb {
-          outline: 0.125rem solid $focus-color;
+          outline: 0.125rem solid $toggle-switch-focus-color;
           outline-offset: 0.0625rem;
         }
       }
@@ -121,13 +121,13 @@
     &[disabled] {
       & + .chi-switch__content {
         .chi-switch__thumb {
-          opacity: $opacity-60;
+          opacity: $toggle-switch-disabled-opacity;
           pointer-events: none;
         }
       }
 
       & ~ .chi-switch__label {
-        opacity: $opacity-60;
+        opacity: $toggle-switch-disabled-opacity;
         pointer-events: none;
       }
     }

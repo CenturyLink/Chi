@@ -6,7 +6,7 @@ $animation-duration: 0.5s;
 .chi-drawer {
 
   & {
-    background-color: $color-background-white;
+    background-color: $drawer-background-color;
     box-shadow: 0 0 25px 10px rgba($color-black, 0.15);
     display: none;
     flex-direction: column;
@@ -165,14 +165,14 @@ $animation-duration: 0.5s;
   }
 
   &__header {
-    min-height: 3.5rem;
-    padding: 1rem;
+    min-height: $drawer-header-min-height;
+    padding: $drawer-header-padding;
     position: relative;
   }
 
   &__title {
-    font-size: 1rem;
-    font-weight: $font-weight-semi-bold;
+    font-size: $drawer-header-title-font-size;
+    font-weight: $drawer-header-title-font-weight;
     line-height: 1.5rem;
     margin: 0;
   }
@@ -189,6 +189,7 @@ $animation-duration: 0.5s;
     z-index: 50;
   }
 
+  // Portal
   &.-portal {
     .chi-drawer__header {
       background-color: $color-background-secondary;

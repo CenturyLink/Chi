@@ -4,9 +4,12 @@ import sri from 'gulp-sri';
 gulp.task('sri:chi:assets', function () {
   return gulp.src([
     'dist/chi.css',
+    'dist/chi-centurylink.css',
     'dist/js/chi.js',
-    'src/website/assets/images/favicon.svg',
-    'src/website/assets/images/favicon.ico',
+    'dist/assets/themes/lumen/images/favicon.svg',
+    'dist/assets/themes/lumen/images/favicon.ico',
+    'dist/assets/themes/centurylink/images/favicon.svg',
+    'dist/assets/themes/centurylink/images/favicon.ico',
     'dist/js/ce/ux-chi-ce/ux-chi-ce.esm.js',
     'dist/js/ce/ux-chi-ce.js'])
     .pipe(sri())

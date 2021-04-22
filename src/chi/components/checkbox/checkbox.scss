@@ -28,8 +28,8 @@
       position: relative;
 
       &::before {
-        background-color: $color-background-white;
-        border: 0.0625rem solid $color-grey-40;
+        background-color: $checkbox-background-color;
+        border: 0.0625rem solid $checkbox-border-color;
         content: '';
         display: block;
         height: 1rem;
@@ -61,10 +61,10 @@
       }
 
       &.-danger {
-        color: $color-text-base;
+        color: $checkbox-label-danger-text-color;
 
         &::before {
-          border-color: $color-border-danger;
+          border-color: $checkbox-danger-border-color;
         }
       }
     }
@@ -72,8 +72,8 @@
     &:checked {
       & + .chi-checkbox__label {
         &::before {
-          background-color: $color-background-primary;
-          border-color: $color-border-primary;
+          background-color: $checkbox-checked-background-color;
+          border-color: $checkbox-checked-border-color;
         }
 
         &::after {
@@ -85,7 +85,7 @@
       &:focus,
       &.-focus {
         & + .chi-checkbox__label::before {
-          border-color: $color-border-primary;
+          border-color: $checkbox-checked-border-color;
         }
       }
     }
@@ -93,8 +93,8 @@
     &.-disabled,
     &[disabled] {
       & + .chi-checkbox__label {
-        color: $color-text-muted;
-        opacity: $opacity-60;
+        color: $checkbox-label-disabled-text-color;
+        opacity: $checkbox-label-disabled-opacity;
         pointer-events: none;
       }
     }
@@ -102,7 +102,7 @@
     &:focus,
     &.-focus {
       & + .chi-checkbox__label::before {
-        outline: 0.125rem solid $focus-color;
+        outline: 0.125rem solid $checkbox-focus-color;
         outline-offset: 0.0625rem;
       }
     }
@@ -110,12 +110,12 @@
     &.-indeterminate {
       & + .chi-checkbox__label {
         &::before {
-          background-color: $color-background-primary;
-          border-color: $color-border-primary;
+          background-color: $checkbox-checked-background-color;
+          border-color: $checkbox-checked-border-color;
         }
 
         &::after {
-          background: $color-background-white;
+          background: $checkbox-checked-icon-color;
           height: 0.125rem;
           top: 0.5625rem !important;
           transform: scale(1);

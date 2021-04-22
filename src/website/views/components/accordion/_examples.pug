@@ -92,108 +92,109 @@ h3 Base
         chi.accordion(accordionBase);
       </script>
 
-h3 Portal
-.example.-mb--3
-  .-p--3.-p-lg--6
-    .chi-accordion.-portal#example-portal
-      .chi-accordion__item
-        button.chi-accordion__trigger
-          .chi-accordion__title
-            | Accordion 1
-          i.chi-icon.icon-chevron-down
-        .chi-accordion__content
-          p.chi-accordion__text Content goes here
-      .chi-accordion__item.-expanded
-        button.chi-accordion__trigger
-          .chi-accordion__title
-            | Accordion 2
-          i.chi-icon.icon-chevron-down
-        .chi-accordion__content
-          p.chi-accordion__text Content goes here
-      .chi-accordion__item
-        button.chi-accordion__trigger
-          .chi-accordion__title
-            | Accordion 3
-          i.chi-icon.icon-chevron-down
-        .chi-accordion__content
-          p.chi-accordion__text Content goes here
-      .chi-accordion__item
-        button.chi-accordion__trigger
-          .chi-accordion__title
-           | Accordion 4
-          i.chi-icon.icon-chevron-down
-        .chi-accordion__content
-          p.chi-accordion__text Content goes here
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-accordion-portal
-      li.-disabled
-        a(href=`#webcomponent-accordion-portal`) Web Component
-      li.-active
-        a(href=`#html-accordion-portal`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-accordion-portal
-  .chi-tabs-panel.-active#html-accordion-portal
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
-      <div class="chi-accordion -portal" id="example-portal">
-        <div class="chi-accordion__item">
-          <button class="chi-accordion__trigger">
-            <div class="chi-accordion__title">Accordion 1</div>
-            <i class="chi-icon icon-chevron-down"></i>
-          </button>
-          <div class="chi-accordion__content">
-            <p class="chi-accordion__text">Content goes here</p>
+.-lumen-only
+  h3 Portal
+  .example.-mb--3
+    .-p--3.-p-lg--6
+      .chi-accordion.-portal#example-portal
+        .chi-accordion__item
+          button.chi-accordion__trigger
+            .chi-accordion__title
+              | Accordion 1
+            i.chi-icon.icon-chevron-down
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
+        .chi-accordion__item.-expanded
+          button.chi-accordion__trigger
+            .chi-accordion__title
+              | Accordion 2
+            i.chi-icon.icon-chevron-down
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
+        .chi-accordion__item
+          button.chi-accordion__trigger
+            .chi-accordion__title
+              | Accordion 3
+            i.chi-icon.icon-chevron-down
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
+        .chi-accordion__item
+          button.chi-accordion__trigger
+            .chi-accordion__title
+             | Accordion 4
+            i.chi-icon.icon-chevron-down
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-accordion-portal
+        li.-disabled
+          a(href=`#webcomponent-accordion-portal`) Web Component
+        li.-active
+          a(href=`#html-accordion-portal`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-accordion-portal
+    .chi-tabs-panel.-active#html-accordion-portal
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang="html")
+        <div class="chi-accordion -portal" id="example-portal">
+          <div class="chi-accordion__item">
+            <button class="chi-accordion__trigger">
+              <div class="chi-accordion__title">Accordion 1</div>
+              <i class="chi-icon icon-chevron-down"></i>
+            </button>
+            <div class="chi-accordion__content">
+              <p class="chi-accordion__text">Content goes here</p>
+            </div>
+          </div>
+          <div class="chi-accordion__item -expanded">
+            <button class="chi-accordion__trigger">
+              <div class="chi-accordion__title">Accordion 2</div>
+              <i class="chi-icon icon-chevron-down"></i>
+            </button>
+            <div class="chi-accordion__content">
+              <p class="chi-accordion__text">Content goes here</p>
+            </div>
+          </div>
+          <div class="chi-accordion__item">
+            <button class="chi-accordion__trigger">
+              <div class="chi-accordion__title">Accordion 3</div>
+              <i class="chi-icon icon-chevron-down"></i>
+            </button>
+            <div class="chi-accordion__content">
+              <p class="chi-accordion__text">Content goes here</p>
+            </div>
+          </div>
+          <div class="chi-accordion__item">
+            <button class="chi-accordion__trigger">
+              <div class="chi-accordion__title">Accordion 4</div>
+              <i class="chi-icon icon-chevron-down"></i>
+            </button>
+            <div class="chi-accordion__content">
+              <p class="chi-accordion__text">Content goes here</p>
+            </div>
           </div>
         </div>
-        <div class="chi-accordion__item -expanded">
-          <button class="chi-accordion__trigger">
-            <div class="chi-accordion__title">Accordion 2</div>
-            <i class="chi-icon icon-chevron-down"></i>
-          </button>
-          <div class="chi-accordion__content">
-            <p class="chi-accordion__text">Content goes here</p>
-          </div>
-        </div>
-        <div class="chi-accordion__item">
-          <button class="chi-accordion__trigger">
-            <div class="chi-accordion__title">Accordion 3</div>
-            <i class="chi-icon icon-chevron-down"></i>
-          </button>
-          <div class="chi-accordion__content">
-            <p class="chi-accordion__text">Content goes here</p>
-          </div>
-        </div>
-        <div class="chi-accordion__item">
-          <button class="chi-accordion__trigger">
-            <div class="chi-accordion__title">Accordion 4</div>
-            <i class="chi-icon icon-chevron-down"></i>
-          </button>
-          <div class="chi-accordion__content">
-            <p class="chi-accordion__text">Content goes here</p>
-          </div>
-        </div>
-      </div>
 
-      <script>
-        const accordionPortal = document.getElementById('example-portal');
+        <script>
+          const accordionPortal = document.getElementById('example-portal');
 
-        chi.accordion(accordionPortal);
-      </script>
+          chi.accordion(accordionPortal);
+        </script>
 
 h3 Nested Accordions
 .example.-mb--3
   .-p--3.-p-lg--6
-    .chi-accordion.-portal#example-nested
+    .chi-accordion#example-nested
       .chi-accordion__item
         button.chi-accordion__trigger
           .chi-accordion__title
             | Click me to expand Accordion
           i.chi-icon.icon-chevron-down
         .chi-accordion__content
-          .chi-accordion.-portal
+          .chi-accordion
             .chi-accordion__item
               button.chi-accordion__trigger
                 .chi-accordion__title
@@ -201,7 +202,7 @@ h3 Nested Accordions
                 i.chi-icon.icon-chevron-down
               .chi-accordion__content
                 p.chi-accordion__text Content goes here
-                .chi-accordion.-portal
+                .chi-accordion
                   .chi-accordion__item
                     button.chi-accordion__trigger
                       .chi-accordion__title
@@ -209,7 +210,7 @@ h3 Nested Accordions
                       i.chi-icon.icon-chevron-down
                     .chi-accordion__content
                       p.chi-accordion__text Content goes here
-                      .chi-accordion.-portal
+                      .chi-accordion
                         .chi-accordion__item
                           button.chi-accordion__trigger
                             .chi-accordion__title
@@ -231,7 +232,7 @@ h3 Nested Accordions
                 i.chi-icon.icon-chevron-down
               .chi-accordion__content
                 p.chi-accordion__text Content goes here
-                .chi-accordion.-portal
+                .chi-accordion
                   .chi-accordion__item
                     button.chi-accordion__trigger
                       .chi-accordion__title
@@ -253,14 +254,14 @@ h3 Nested Accordions
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-accordion -portal" id="nested-accordions">
+      <div class="chi-accordion" id="nested-accordions">
         <div class="chi-accordion__item">
           <button class="chi-accordion__trigger">
             <div class="chi-accordion__title">Click me to expand Accordion</div>
             <i class="chi-icon icon-chevron-down"></i>
           </button>
           <div class="chi-accordion__content">
-            <div class="chi-accordion -portal">
+            <div class="chi-accordion">
               <div class="chi-accordion__item">
                 <button class="chi-accordion__trigger">
                   <div class="chi-accordion__title">Accordion 1</div>
@@ -268,7 +269,7 @@ h3 Nested Accordions
                 </button>
                 <div class="chi-accordion__content">
                   <p class="chi-accordion__text">Content goes here</p>
-                  <div class="chi-accordion -portal">
+                  <div class="chi-accordion">
                     <div class="chi-accordion__item">
                       <button class="chi-accordion__trigger">
                         <div class="chi-accordion__title">Accordion 1.1</div>
@@ -276,7 +277,7 @@ h3 Nested Accordions
                       </button>
                       <div class="chi-accordion__content">
                         <p class="chi-accordion__text">Content goes here</p>
-                        <div class="chi-accordion -portal">
+                        <div class="chi-accordion">
                           <div class="chi-accordion__item">
                             <button class="chi-accordion__trigger">
                               <div class="chi-accordion__title">Accordion 1.1.1</div>
@@ -290,7 +291,7 @@ h3 Nested Accordions
                       </div>
                     </div>
                   </div>
-                  <div class="chi-accordion -portal">
+                  <div class="chi-accordion">
                     <div class="chi-accordion__item">
                       <button class="chi-accordion__trigger">
                         <div class="chi-accordion__title">Accordion 1.2</div>
@@ -310,7 +311,7 @@ h3 Nested Accordions
                 </button>
                 <div class="chi-accordion__content">
                   <p class="chi-accordion__text">Content goes here</p>
-                  <div class="chi-accordion -portal">
+                  <div class="chi-accordion">
                     <div class="chi-accordion__item">
                       <button class="chi-accordion__trigger">
                         <div class="chi-accordion__title">Accordion 2.1</div>
@@ -335,19 +336,18 @@ h3 Nested Accordions
       </script>
 
 h3 Show / Hide / Toggle of individual items of Accordion
-
 .example.-mb--3
   .-p--3.-p-lg--6
     button.chi-button#toggle-accordion-1 Toggle item 1
     button.chi-button.-ml--1#toggle-accordion-2 Toggle item 2
-    .chi-accordion.-portal.-mt--2#individual-accordion-items
+    .chi-accordion.-mt--2#individual-accordion-items
       .chi-accordion__item.-expanded
         button.chi-accordion__trigger
           .chi-accordion__title
             | Accordion
           i.chi-icon.icon-chevron-down
         .chi-accordion__content
-          .chi-accordion.-portal
+          .chi-accordion
             .chi-accordion__item#invividual-accordion-item-1
               button.chi-accordion__trigger
                 .chi-accordion__title
@@ -379,14 +379,14 @@ h3 Show / Hide / Toggle of individual items of Accordion
       <button class="chi-button" id="toggle-accordion-1">Toggle item 1</button>
       <button class="chi-button" id="toggle-accordion-2">Toggle item 2</button>
 
-      <div class="chi-accordion -portal" id="individual-accordion-items">
+      <div class="chi-accordion" id="individual-accordion-items">
         <div class="chi-accordion__item -expanded">
           <button class="chi-accordion__trigger">
             <div class="chi-accordion__title">Accordion</div>
             <i class="chi-icon icon-chevron-down"></i>
           </button>
           <div class="chi-accordion__content">
-            <div class="chi-accordion -portal">
+            <div class="chi-accordion">
               <div class="chi-accordion__item" id="invividual-accordion-item-1">
                 <button class="chi-accordion__trigger">
                   <div class="chi-accordion__title">Accordion item 1</div>
@@ -425,19 +425,18 @@ h3 Show / Hide / Toggle of individual items of Accordion
       </script>
 
 h3 Expand / Collapse all Accordion items
-
 .example.-mb--3
   .-p--3.-p-lg--6
     button.chi-button#expand-all Expand all
     button.chi-button.-ml--1#collapse-all Collapse all
-    .chi-accordion.-portal.-mt--2#expand-collapse
+    .chi-accordion.-mt--2#expand-collapse
       .chi-accordion__item.-expanded
         button.chi-accordion__trigger
           .chi-accordion__title
             | Accordion
           i.chi-icon.icon-chevron-down
         .chi-accordion__content
-          .chi-accordion.-portal
+          .chi-accordion
             .chi-accordion__item
               button.chi-accordion__trigger
                 .chi-accordion__title
@@ -445,7 +444,7 @@ h3 Expand / Collapse all Accordion items
                 i.chi-icon.icon-chevron-down
               .chi-accordion__content
                 p.chi-accordion__text Content of Accordion item 1
-                .chi-accordion.-portal
+                .chi-accordion
                   .chi-accordion__item
                     button.chi-accordion__trigger
                       .chi-accordion__title
@@ -467,7 +466,7 @@ h3 Expand / Collapse all Accordion items
                 i.chi-icon.icon-chevron-down
               .chi-accordion__content
                 p.chi-accordion__text Content of Accordion item 2
-                .chi-accordion.-portal
+                .chi-accordion
                   .chi-accordion__item
                     button.chi-accordion__trigger
                       .chi-accordion__title
@@ -499,14 +498,14 @@ h3 Expand / Collapse all Accordion items
       <button class="chi-button" id="expand-all">Expand all</button>
       <button class="chi-button" id="collapse-all">Collapse all</button>
 
-      <div class="chi-accordion -portal" id="expand-collapse">
+      <div class="chi-accordion" id="expand-collapse">
         <div class="chi-accordion__item -expanded">
           <button class="chi-accordion__trigger">
             <div class="chi-accordion__title">Accordion</div>
             <i class="chi-icon icon-chevron-down"></i>
           </button>
           <div class="chi-accordion__content">
-            <div class="chi-accordion -portal">
+            <div class="chi-accordion">
               <div class="chi-accordion__item">
                 <button class="chi-accordion__trigger">
                   <div class="chi-accordion__title">Accordion item 1</div>
@@ -514,7 +513,7 @@ h3 Expand / Collapse all Accordion items
                 </button>
                 <div class="chi-accordion__content">
                   <p class="chi-accordion__text">Content of Accordion item 1</p>
-                  <div class="chi-accordion -portal">
+                  <div class="chi-accordion">
                     <div class="chi-accordion__item">
                       <button class="chi-accordion__trigger">
                         <div class="chi-accordion__title">Accordion item 1.1</div>
@@ -543,7 +542,7 @@ h3 Expand / Collapse all Accordion items
                 </button>
                 <div class="chi-accordion__content">
                   <p class="chi-accordion__text">Content of Accordion item 2</p>
-                  <div class="chi-accordion -portal">
+                  <div class="chi-accordion">
                     <div class="chi-accordion__item">
                       <button class="chi-accordion__trigger">
                         <div class="chi-accordion__title">Accordion item 2.1</div>
@@ -588,22 +587,12 @@ h3 Disabled
 p.-text Make Accordions appear inactive by adding the class <code>-disabled</code> or the attribute <code>disabled</code> to Accordion trigger
 .example.-mb--3
   .-p--3.-p-lg--6
-    p.-text--bold Base
     .chi-accordion
       .chi-accordion__item
         button.chi-accordion__trigger.-disabled
           i.chi-icon.icon-chevron-down
           .chi-accordion__title
             | Accordion 1
-        .chi-accordion__content
-          p.chi-accordion__text Content goes here
-    p.-text--bold Portal
-    .chi-accordion.-portal
-      .chi-accordion__item
-        button.chi-accordion__trigger.-disabled
-          .chi-accordion__title
-            | Accordion 1
-          i.chi-icon.icon-chevron-down
         .chi-accordion__content
           p.chi-accordion__text Content goes here
   .example-tabs.-pl--2
@@ -615,7 +604,6 @@ p.-text Make Accordions appear inactive by adding the class <code>-disabled</cod
   .chi-tabs-panel#webcomponent-accordion-disabled
   .chi-tabs-panel.-active#html-accordion-disabled
     :code(lang="html")
-      <!-- Base -->
       <div class="chi-accordion">
         <div class="chi-accordion__item">
           <button class="chi-accordion__trigger -disabled">
@@ -628,39 +616,16 @@ p.-text Make Accordions appear inactive by adding the class <code>-disabled</cod
         </div>
       </div>
 
-      <!-- Portal -->
-      <div class="chi-accordion -portal">
-        <div class="chi-accordion__item">
-          <button class="chi-accordion__trigger -disabled">
-            <div class="chi-accordion__title">Accordion 1</div>
-            <i class="chi-icon icon-chevron-down"></i>
-          </button>
-          <div class="chi-accordion__content">
-            <p class="chi-accordion__text">Content goes here</p>
-          </div>
-        </div>
-      </div>
-
 h3 Truncated
 p.-text Truncate long accordion titles by adding the class <code>-truncated</code> to <code>chi-accordion</code>.
 .example.-mb--3
   .-p--3.-p-lg--6
-    p.-text--bold Base
     .chi-accordion.-truncated#example-truncated
       .chi-accordion__item
         button.chi-accordion__trigger
           i.chi-icon.icon-chevron-down
           .chi-accordion__title
             | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex
-        .chi-accordion__content
-          p.chi-accordion__text Content goes here
-    p.-text--bold Portal
-    .chi-accordion.-portal.-truncated#example-truncated-portal
-      .chi-accordion__item
-        button.chi-accordion__trigger
-          .chi-accordion__title
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex
-          i.chi-icon.icon-chevron-down
         .chi-accordion__content
           p.chi-accordion__text Content goes here
   .example-tabs.-pl--2
@@ -672,25 +637,11 @@ p.-text Truncate long accordion titles by adding the class <code>-truncated</cod
   .chi-tabs-panel#webcomponent-accordion-truncated
   .chi-tabs-panel.-active#html-accordion-truncated
     :code(lang="html")
-      <!-- Base -->
       <div class="chi-accordion -truncated">
         <div class="chi-accordion__item">
           <button class="chi-accordion__trigger">
             <i class="chi-icon icon-chevron-down"></i>
             <div class="chi-accordion__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex</div>
-          </button>
-          <div class="chi-accordion__content">
-            <p class="chi-accordion__text">Content goes here</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Portal -->
-      <div class="chi-accordion -portal -truncated">
-        <div class="chi-accordion__item">
-          <button class="chi-accordion__trigger">
-            <div class="chi-accordion__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex</div>
-            <i class="chi-icon icon-chevron-down"></i>
           </button>
           <div class="chi-accordion__content">
             <p class="chi-accordion__text">Content goes here</p>
@@ -818,7 +769,6 @@ script.
         expandCollapseAccordion.collapseAll();
       });
       chi.accordion(document.getElementById('example-truncated'));
-      chi.accordion(document.getElementById('example-truncated-portal'));
       chi.accordion(document.getElementById('example-size-sm'));
       chi.accordion(document.getElementById('example-size-md'));
       chi.accordion(document.getElementById('example-size-lg'));

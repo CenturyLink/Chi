@@ -3,84 +3,84 @@
 
 $colors: (
   primary: (
-    background-color: $color-background-primary,
-    border-color: $color-border-primary,
-    text-color: $color-text-white,
-    icon-color: $color-text-white,
-    text-color-flat: $color-text-primary,
-    icon-color-flat: $color-text-primary,
+    background-color: $badge-primary-background-color,
+    border-color: $badge-primary-border-color,
+    text-color: $badge-primary-text-color,
+    icon-color: $badge-primary-icon-color,
+    text-color-flat: $badge-flat-primary-text-color,
+    icon-color-flat: $badge-flat-primary-icon-color,
   ),
   secondary: (
-    background-color: $color-background-secondary,
-    border-color: $color-border-secondary,
-    text-color: $color-text-base,
-    icon-color: $color-text-base,
-    text-color-flat: $color-text-secondary,
-    icon-color-flat: $color-text-secondary,
+    background-color: $badge-secondary-background-color,
+    border-color: $badge-secondary-border-color,
+    text-color: $badge-secondary-text-color,
+    icon-color: $badge-secondary-icon-color,
+    text-color-flat: $badge-flat-secondary-text-color,
+    icon-color-flat: $badge-flat-secondary-icon-color,
   ),
   light: (
-    background-color: $color-background-white,
-    border-color: $color-border-white,
-    text-color: $color-text-base,
-    icon-color: $color-icon-base,
-    text-color-flat: $color-text-white,
-    icon-color-flat: $color-text-white,
+    background-color: $badge-light-background-color,
+    border-color: $badge-light-border-color,
+    text-color: $badge-light-text-color,
+    icon-color: $badge-light-icon-color,
+    text-color-flat: $badge-flat-light-text-color,
+    icon-color-flat: $badge-flat-light-icon-color,
   ),
   dark: (
-    background-color: $color-background-dark,
-    border-color: $color-border-dark,
-    text-color: $color-text-white,
-    icon-color: $color-icon-white,
-    text-color-flat: $color-text-base,
-    icon-color-flat: $color-icon-base,
+    background-color: $badge-dark-background-color,
+    border-color: $badge-dark-border-color,
+    text-color: $badge-dark-text-color,
+    icon-color: $badge-dark-icon-color,
+    text-color-flat: $badge-flat-dark-text-color,
+    icon-color-flat: $badge-flat-dark-icon-color,
   ),
   success: (
-    background-color: $color-background-success,
-    border-color: $color-border-success,
-    text-color: $color-text-white,
-    icon-color: $color-icon-white,
-    text-color-flat: $color-text-success,
-    icon-color-flat: $color-icon-success,
+    background-color: $badge-success-background-color,
+    border-color: $badge-success-border-color,
+    text-color: $badge-success-text-color,
+    icon-color: $badge-success-icon-color,
+    text-color-flat: $badge-flat-success-text-color,
+    icon-color-flat: $badge-flat-success-icon-color,
   ),
   danger: (
-    background-color: $color-background-danger,
-    border-color: $color-border-danger,
-    text-color: $color-text-white,
-    icon-color: $color-icon-white,
-    text-color-flat: $color-text-danger,
-    icon-color-flat: $color-icon-danger,
+    background-color: $badge-danger-background-color,
+    border-color: $badge-danger-border-color,
+    text-color: $badge-danger-text-color,
+    icon-color: $badge-danger-icon-color,
+    text-color-flat: $badge-flat-danger-text-color,
+    icon-color-flat: $badge-flat-danger-icon-color,
   ),
   warning: (
-    background-color: $color-background-warning,
-    border-color: $color-border-warning,
-    text-color: $color-text-white,
-    icon-color: $color-icon-white,
-    text-color-flat: $color-text-warning,
-    icon-color-flat: $color-icon-warning,
+    background-color: $badge-warning-background-color,
+    border-color: $badge-warning-border-color,
+    text-color: $badge-warning-text-color,
+    icon-color: $badge-warning-icon-color,
+    text-color-flat: $badge-flat-warning-text-color,
+    icon-color-flat: $badge-flat-warning-icon-color,
   ),
   info: (
-    background-color: $color-background-info,
-    border-color: $color-border-info,
-    text-color: $color-text-white,
-    icon-color: $color-icon-white,
-    text-color-flat: $color-text-info,
-    icon-color-flat: $color-icon-info,
+    background-color: $badge-info-background-color,
+    border-color: $badge-info-border-color,
+    text-color: $badge-info-text-color,
+    icon-color: $badge-info-icon-color,
+    text-color-flat: $badge-flat-info-text-color,
+    icon-color-flat: $badge-flat-info-icon-color,
   ),
   muted: (
-    background-color: $color-border-muted,
-    border-color: $color-border-muted,
-    text-color: $color-text-white,
-    icon-color: $color-icon-white,
-    text-color-flat: $color-text-muted,
-    icon-color-flat: $color-icon-muted,
+    background-color: $badge-muted-background-color,
+    border-color: $badge-muted-border-color,
+    text-color: $badge-muted-text-color,
+    icon-color: $badge-muted-icon-color,
+    text-color-flat: $badge-flat-muted-text-color,
+    icon-color-flat: $badge-flat-muted-icon-color,
   )
 );
 
 .chi-badge {
   // sass-lint:disable-block property-units
   align-items: center;
-  background-color: $color-background-white;
-  border: 0.0625rem solid $color-border-base-dark;
+  background-color: $badge-background-color;
+  border: 0.0625rem solid $badge-border-color;
   border-radius: 2em;
   box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
   display: inline-flex;
@@ -94,7 +94,7 @@ $colors: (
   white-space: nowrap;
 
   .chi-icon {
-    color: $color-icon-base;
+    color: $badge-icon-color;
     height: 1rem;
     width: 1rem;
   }

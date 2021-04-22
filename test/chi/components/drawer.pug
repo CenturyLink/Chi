@@ -12,7 +12,7 @@ each side in sides
         .-text--h2= `Drawer / ${version.title} / ${side}`
         div(class=`${version.classes}` style="position:relative;height:20rem")
           .chi-backdrop__wrapper
-            div(class=`chi-drawer -${side} -active`, style='position:absolute;')
+            div(class=`chi-drawer -${side} -active -position--absolute`)
               button(class='chi-button -icon -close', aria-label='Close')
                 .chi-button__content
                   i.chi-icon.icon-x
@@ -24,7 +24,7 @@ each side in sides
         .-text--h2= `Drawer / with head / ${version.title} / ${side}`
         div(class=`${version.classes}` style="position:relative;height:20rem")
           .chi-backdrop__wrapper
-            div(class=`chi-drawer -${side} -active`, style='position:absolute;')
+            div(class=`chi-drawer -${side} -active -position--absolute`)
               .chi-drawer__header
                 button(class='chi-button -icon -close', aria-label='Close')
                   .chi-button__content
@@ -37,7 +37,7 @@ each side in sides
         .-text--h2= `Drawer / with title / ${version.title} / ${side}`
         div(class=`${version.classes}` style="position:relative;height:20rem")
           .chi-backdrop__wrapper
-            div(class=`chi-drawer -${side} -active`, style='position:absolute;')
+            div(class=`chi-drawer -${side} -active -position--absolute`)
               .chi-drawer__header
                 span.chi-drawer__title Drawer title here
                 button(class='chi-button -icon -close', aria-label='Close')
@@ -64,6 +64,6 @@ div(class=`test-non-closable -mb--3 example -mb--3`)
   div(style='width: 320px')
     .-text--h2= `Drawer / Non closable`
     div(style="position:relative;height:20rem")
-      div(class=`chi-drawer -left -active`, style='position:absolute;')
+      div(class=`chi-drawer -left -active -position--absolute`)
         .chi-drawer__content
           .-px--2.-text Drawer content here

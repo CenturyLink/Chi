@@ -43,6 +43,15 @@
     }
   }
 
+  .chi-file-input {
+    & + label {
+      &::before {
+        outline: none !important;
+        outline-offset: 0;
+      }
+    }
+  }
+
   .chi-radio {
     .chi-radio__input {
       &:focus {

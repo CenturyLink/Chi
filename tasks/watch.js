@@ -38,7 +38,7 @@ export const serveAndWatch = gulp.parallel(
     )
   ),
   () => gulp.watch(
-    'src/website/assets/styles/**/*',
+    'src/website/assets/themes/**/*',
     watchOptions,
     gulp.series(
       'serve:notify:start',

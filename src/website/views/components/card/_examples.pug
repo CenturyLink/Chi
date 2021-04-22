@@ -632,108 +632,109 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
         </div>
       </div>
 
-h3 Portal
-p.-text Use portal themed cards for displaying content in Enterprise Portals. In general, all Enterprise Portal content should be contained within a card.
-h4 Base
-.example.-mb--3
-  .-p--3
-    .chi-card.-portal(style="max-width:20rem;")
-      .chi-card__header.-sm
-        .chi-card__title Title
-      .chi-card__content
-        .chi-card__caption
-          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
-          | Ut felis magna, facilisis ut malesuada nec.
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-portal-base
-      li.-disabled
-        a(href=`#webcomponent-portal-base`) Web Component
-      li.-active
-        a(href=`#html-portal-base`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-portal-base
-  .chi-tabs-panel.-active#html-portal-base
-    :code(lang="html")
-      <div class="chi-card -portal">
-        <div class="chi-card__header -sm">
-          <div class="chi-card__title">Title</div>
+.-lumen-only
+  h3 Portal
+  p.-text Use portal themed cards for displaying content in Enterprise Portals. In general, all Enterprise Portal content should be contained within a card.
+  h4 Base
+  .example.-mb--3
+    .-p--3
+      .chi-card.-portal(style="max-width:20rem;")
+        .chi-card__header.-sm
+          .chi-card__title Title
+        .chi-card__content
+          .chi-card__caption
+            | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+            | Ut felis magna, facilisis ut malesuada nec.
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-base
+        li.-disabled
+          a(href=`#webcomponent-portal-base`) Web Component
+        li.-active
+          a(href=`#html-portal-base`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-base
+    .chi-tabs-panel.-active#html-portal-base
+      :code(lang="html")
+        <div class="chi-card -portal">
+          <div class="chi-card__header -sm">
+            <div class="chi-card__title">Title</div>
+          </div>
+          <div class="chi-card__content">
+            <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
+          </div>
         </div>
-        <div class="chi-card__content">
-          <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
-        </div>
-      </div>
 
-h4 Highlight
-.example.-mb--3
-  .-p--3
-    .chi-card.-portal.-highlight(style="max-width:20rem;")
-      .chi-card__header.-sm
-        .chi-card__title Title
-      .chi-card__content
-        .chi-card__caption
-          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
-          | Ut felis magna, facilisis ut malesuada nec.
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-portal-highlight
-      li.-disabled
-        a(href=`#webcomponent-portal-highlight`) Web Component
-      li.-active
-        a(href=`#html-portal-highlight`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-portal-highlight
-  .chi-tabs-panel.-active#html-portal-highlight
-    :code(lang="html")
-      <div class="chi-card -portal -highlight">
-        <div class="chi-card__header -sm">
-          <div class="chi-card__title">Title</div>
+  h4 Highlight
+  .example.-mb--3
+    .-p--3
+      .chi-card.-portal.-highlight(style="max-width:20rem;")
+        .chi-card__header.-sm
+          .chi-card__title Title
+        .chi-card__content
+          .chi-card__caption
+            | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+            | Ut felis magna, facilisis ut malesuada nec.
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-highlight
+        li.-disabled
+          a(href=`#webcomponent-portal-highlight`) Web Component
+        li.-active
+          a(href=`#html-portal-highlight`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-highlight
+    .chi-tabs-panel.-active#html-portal-highlight
+      :code(lang="html")
+        <div class="chi-card -portal -highlight">
+          <div class="chi-card__header -sm">
+            <div class="chi-card__title">Title</div>
+          </div>
+          <div class="chi-card__content">
+            <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
+          </div>
         </div>
-        <div class="chi-card__content">
-          <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
-        </div>
-      </div>
 
-h3 Portal with tabs
-p.-text Use portal themed cards with tabs for organizing Enterprise Portal card content into separate but related views.
-.example.-mb--3
-  .-p--3
-    .chi-card.-portal(style="max-width:20rem;")
-      .chi-card__tabs
-        ul.chi-tabs.-xs
-          li.-active
-            a(href='#') Active Tab
-          li
-            a(href='#') Tab Link
-          li
-            a(href='#') Tab Link
-      .chi-card__content
-        .chi-card__caption
-          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
-          | Ut felis magna, facilisis ut malesuada nec.
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-portal-tabs
-      li.-disabled
-        a(href=`#webcomponent-portal-tabs`) Web Component
-      li.-active
-        a(href=`#html-portal-tabs`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-portal-tabs
-  .chi-tabs-panel.-active#html-portal-tabs
-    :code(lang="html")
-      <div class="chi-card -portal">
-        <div class="chi-card__tabs">
-          <ul class="chi-tabs -xs">
-            <li class="-active">
-              <a href="#">Active Tab</a>
-            </li>
-            <li>
-              <a href="#">Tab Link</a>
-            </li>
-            <li>
-              <a href="#">Tab Link</a>
-            </li>
-          </ul>
+  h3 Portal with tabs
+  p.-text Use portal themed cards with tabs for organizing Enterprise Portal card content into separate but related views.
+  .example.-mb--3
+    .-p--3
+      .chi-card.-portal(style="max-width:20rem;")
+        .chi-card__tabs
+          ul.chi-tabs.-xs
+            li.-active
+              a(href='#') Active Tab
+            li
+              a(href='#') Tab Link
+            li
+              a(href='#') Tab Link
+        .chi-card__content
+          .chi-card__caption
+            | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+            | Ut felis magna, facilisis ut malesuada nec.
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-tabs
+        li.-disabled
+          a(href=`#webcomponent-portal-tabs`) Web Component
+        li.-active
+          a(href=`#html-portal-tabs`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-tabs
+    .chi-tabs-panel.-active#html-portal-tabs
+      :code(lang="html")
+        <div class="chi-card -portal">
+          <div class="chi-card__tabs">
+            <ul class="chi-tabs -xs">
+              <li class="-active">
+                <a href="#">Active Tab</a>
+              </li>
+              <li>
+                <a href="#">Tab Link</a>
+              </li>
+              <li>
+                <a href="#">Tab Link</a>
+              </li>
+            </ul>
+          </div>
+          <div class="chi-card__content">
+            <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
+          </div>
         </div>
-        <div class="chi-card__content">
-          <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
-        </div>
-      </div>
 
 script.
   document.addEventListener(

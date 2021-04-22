@@ -35,8 +35,8 @@ $icon-sizes: (
 
 .chi-accordion {
   &__item {
-    background-color: $color-background-base;
-    border-bottom: 0.0625rem solid $color-border-base-dark;
+    background-color: $accordion-item-background-color;
+    border-bottom: 0.0625rem solid  $accordion-item-border-color;
 
     &:last-child {
       border-bottom: 0.0625rem solid transparent;
@@ -53,8 +53,8 @@ $icon-sizes: (
 
       &[disabled],
       &.-disabled {
-        color: $color-text-muted-light;
-        opacity: $opacity-60;
+        color: $accordion-item-disabled-text-color;
+        opacity: $accordion-item-disabled-opacity;
         pointer-events: none;
       }
 
@@ -66,11 +66,11 @@ $icon-sizes: (
 
       .chi-accordion__title {
         align-items: center;
-        color: $color-text-base;
+        color: $accordion-item-title-text-color;
         display: flex;
         flex-grow: 1;
-        font-size: $font-size-md;
-        font-weight: $font-weight-semi-bold;
+        font-size: $accordion-item-title-font-size;
+        font-weight: $accordion-item-title-font-weight;
         line-height: 1.25rem;
         text-align: left;
 

@@ -3,28 +3,28 @@
 
 $sizes: (
   sm: (
-    height: 1.5rem,
-    width: 5.109rem,
-    font-size: 0.75rem,
-    line-height: 1rem,
+    height: $file-input-sm-height,
+    width: $file-input-sm-width,
+    font-size: $file-input-sm-font-size,
+    line-height: $file-input-sm-line-height,
   ),
   md: (
-    height: 2rem,
-    width: 6.795rem,
-    font-size: 0.875rem,
-    line-height: 1rem,
+    height: $file-input-md-height,
+    width: $file-input-md-width,
+    font-size: $file-input-md-font-size,
+    line-height: $file-input-md-line-height,
   ),
   lg: (
-    height: 2.5rem,
-    width: 7.795rem,
-    font-size: 0.875rem,
-    line-height: 1.25rem,
+    height: $file-input-lg-height,
+    width: $file-input-lg-width,
+    font-size: $file-input-lg-font-size,
+    line-height: $file-input-lg-line-height,
   ),
   xl: (
-    height: 3rem,
-    width: 7.795rem,
-    font-size: 0.875rem,
-    line-height: 1.25rem,
+    height: $file-input-xl-height,
+    width: $file-input-xl-width,
+    font-size: $file-input-xl-font-size,
+    line-height: $file-input-xl-line-height,
   )
 );
 
@@ -48,41 +48,41 @@ $sizes: (
 
       &::before {
         align-items: center;
-        background-color: $color-background-white;
-        border: 0.0625rem solid $color-border-base-dark;
+        background-color: $file-input-button-background-color;
+        border: 0.0625rem solid $file-input-button-border-color;
         border-radius: $border-radius;
-        box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
-        content: 'Choose File';
+        box-shadow: $file-input-button-box-shadow;
+        content: $file-input-button-text-label-single;
         cursor: pointer;
         display: flex;
         font-weight: $font-weight-semi-bold;
-        height: 2rem;
+        height: $file-input-md-height;
         justify-content: center;
-        line-height: 1.125rem;
+        line-height: $file-input-md-line-height;
         margin-right: 1rem;
         pointer-events: initial;
-        width: 6.5rem;
+        width: $file-input-md-width;
       }
 
       &:hover,
       &.-hover {
         &::before {
-          background-color: $color-grey-20;
-          border-color: $color-border-base-dark;
+          background-color: $file-input-button-hover-background-color;
+          border-color: $file-input-button-hover-border-color;
         }
       }
 
       &:active,
       &.-active {
         &::before {
-          background-color: $color-grey-25;
-          border-color: rgba($color-grey-70, 0.2);
+          background-color: $file-input-button-active-background-color;
+          border-color: $file-input-button-active-border-color;
         }
       }
     }
 
     &[multiple] + label::before {
-      content: 'Choose Files';
+      content: $file-input-button-text-label-multiple;
     }
 
     &[disabled] + label {
@@ -94,7 +94,9 @@ $sizes: (
     &:focus,
     &.-focus {
       & + label::before {
-        border-color: $color-border-base-dark;
+        border: 0.0625rem solid $file-input-button-focus-border-color;
+        outline: 0.125rem solid $file-input-button-focus-outline-color;
+        outline-offset: 0.0625rem;
         z-index: $zindex-prominent;
       }
     }

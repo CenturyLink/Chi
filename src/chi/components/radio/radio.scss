@@ -18,12 +18,12 @@
     &:checked {
       & + .chi-radio__label {
         &::before {
-          background-color: $color-background-primary;
-          border-color: $color-border-primary;
+          background-color: $radio-checked-background-color;
+          border-color: $radio-checked-border-color;
         }
 
         &::after {
-          background-color: $color-background-white;
+          background-color: $radio-checked-icon-color;
           transform: scale(1);
         }
       }
@@ -32,8 +32,8 @@
     &.-disabled,
     &[disabled] {
       & + .chi-radio__label {
-        color: $color-grey-70;
-        opacity: 0.6;
+        color: $radio-disabled-text-color;
+        opacity: $radio-disabled-opacity;
         pointer-events: none;
       }
     }
@@ -41,7 +41,7 @@
     &:focus,
     &.-focus {
       & + .chi-radio__label::before {
-        outline: 0.125rem solid $focus-color;
+        outline: 0.125rem solid $radio-focus-border-color;
         outline-offset: 0.0625rem;
       }
     }
@@ -49,7 +49,7 @@
     &.-danger {
       &:not(:checked) {
         & + .chi-radio__label::before {
-          border-color: $color-border-danger;
+          border-color: $radio-danger-border-color;
         }
       }
     }
@@ -66,8 +66,8 @@
       position: relative;
 
       &::before {
-        background-color: $color-background-white;
-        border: 0.0625rem solid $color-grey-40;
+        background-color: $radio-background-color;
+        border: 0.0625rem solid $radio-border-color;
         border-radius: 0.5rem;
         content: '';
         cursor: pointer;
@@ -81,7 +81,7 @@
       }
 
       &::after {
-        background-color: $color-grey-50;
+        background-color: $radio-icon-color;
         border-radius: 0.5rem;
         content: '';
         display: block;

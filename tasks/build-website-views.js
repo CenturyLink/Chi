@@ -90,7 +90,7 @@ function buildWebsiteViews () {
                   <li><a href="#">Code</a></li>
                 </ul>
                 <div class="chi-example__html">${text}</div>
-                <div class="chi-example__code -hidden">
+                <div class="chi-example__code -d--none">
                   ${highlightCode(text, lang)}
                 </div>
               </div>`;

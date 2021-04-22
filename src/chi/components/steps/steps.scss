@@ -21,7 +21,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   }
 
   &__line {
-    border-top: 0.125rem solid $color-grey-60;
+    border-top: 0.125rem solid $steps-item-line-border-color;
     position: relative;
     width: 100%;
   }
@@ -32,7 +32,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
   &__subitem {
     align-items: center;
-    color: $color-text-muted-light;
+    color: $steps-subitem-text-color;
     display: flex;
     justify-content: center;
     margin-top: 0.375rem;
@@ -52,11 +52,11 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
 
     &.-active {
-      font-weight: $font-weight-semi-bold;
+      font-weight: $steps-subitem-active-font-weight;
     }
 
     &.-completed {
-      color: $color-navy-100;
+      color: $steps-subitem-completed-text-color;
     }
 
     &:not(.-active) {
@@ -69,7 +69,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   & > li,
   & > .chi-steps__item {
     align-items: center;
-    color: $color-text-primary-alt;
+    color: $steps-item-completed-icon-color;
     display: flex;
     flex: 1 0 auto;
     font-size: $font-size-base;
@@ -78,12 +78,12 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
     & > .chi-steps__icon {
       &::before {
-        color: $color-text-muted;
+        color: $steps-item-count-text-color;
         content: counter(step);
         counter-increment: step;
         font-family: $font-family-base;
         font-size: $font-size-xs;
-        font-weight: $font-weight-semi-bold;
+        font-weight: $steps-item-count-font-weight;
         position: absolute;
         z-index: $zindex-prominent;
       }
@@ -129,7 +129,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     }
 
     & > .chi-steps__line {
-      border-color: $color-border-primary;
+      border-color: $steps-item-completed-line-border-color;
       margin: 0.5rem 0.75rem;
     }
 
@@ -144,13 +144,13 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     &.-active {
       & > a,
       & > .chi-steps__content {
-        font-weight: $font-weight-semi-bold;
+        font-weight: $steps-item-active-content-font-weight;
       }
 
       & > .chi-steps__icon {
         a,
         .chi-steps__item-title {
-          font-weight: $font-weight-semi-bold;
+          font-weight: $steps-item-active-title-font-weight;
         }
 
         &::after {
@@ -158,12 +158,12 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         }
 
         &::before {
-          color: $color-text-white;
+          color: $steps-item-active-count-text-color;
         }
       }
 
       & > .chi-steps__line {
-        border-color: $color-grey-60;
+        border-color: $steps-item-line-border-color;
       }
 
       &:last-child {
@@ -172,7 +172,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
       & ~ li {
         & > .chi-steps__icon {
-          color: $color-grey-60;
+          color: $steps-item-count-icon-color;
 
           &::after {
             content: '\e934';
@@ -181,7 +181,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         }
 
         & > .chi-steps__line {
-          border-color: $color-grey-60;
+          border-color: $steps-item-line-border-color;
         }
 
         &:last-child {
@@ -193,54 +193,54 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
   & a,
   & .chi-steps__item-title {
-    color: $color-text-base;
+    color: $steps-item-title-text-color;
     text-decoration: none;
   }
 
   &.-inverse {
-    background-color: $color-background-black;
+    background-color: $steps-inverse-background-color;
 
     & > li,
     & > .chi-steps__item {
-      color: $color-text-secondary;
+      color: $steps-inverse-item-completed-text-color;
 
       & > .chi-steps__icon {
         &::before {
-          color: $color-text-white;
+          color: $steps-inverse-item-completed-count-text-color;
         }
       }
 
       &::before {
-        border: 0.125rem solid $color-border-black;
+        border: 0.125rem solid $steps-inverse-item-border-color;
       }
 
       & a,
       & .chi-steps__item-title {
-        color: $color-text-white;
+        color: $steps-inverse-item-title-text-color;
       }
 
       & > .chi-steps__line {
-        border-color: $color-border-secondary;
+        border-color: $steps-inverse-item-completed-line-border-color;
       }
 
       &.-active {
         & > .chi-steps__line {
-          border-color: $color-grey-40;
+          border-color: $steps-inverse-item-line-border-color;
         }
 
         & > .chi-steps__icon {
           &::before {
-            color: $color-text-black;
+            color: $steps-inverse-item-active-count-text-color;
           }
         }
 
         & ~ li {
           & > .chi-steps__icon {
-            color: $color-grey-40;
+            color: $steps-inverse-item-count-border-color;
           }
 
           & > .chi-steps__line {
-            border-color: $color-grey-40;
+            border-color: $steps-inverse-item-line-border-color;
           }
         }
       }
@@ -363,7 +363,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       }
 
       & > .chi-steps__line {
-        border-left: 0.125rem solid $color-border-primary;
+        border-left: 0.125rem solid $steps-item-completed-line-border-color;
         border-top: 0;
         height: calc(100% - 2rem);
         left: 0.75rem;
@@ -375,7 +375,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
       &.-active {
         & > .chi-steps__line {
-          border-color: $color-grey-60;
+          border-color: $steps-item-line-border-color;
         }
 
         &:last-child {

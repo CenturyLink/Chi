@@ -43,120 +43,223 @@ p.-text
     <i class="chi-icon icon-atom -md -icon--warning"></i>
     <i class="chi-icon icon-atom -md -icon--danger"></i>
     <i class="chi-icon icon-atom -md -icon--muted"></i>
-h3 Brand complimentary
-p.-text
-  | More icon colors that can be used to compliment the primary brand palette.
-.example.-mb--3
-  .chi-grid.-no-gutter
-    .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
-      each color in ['icon--navy', 'icon--orange']
-        i(class=`chi-icon icon-atom -md -${color} -m--1`)
-  :code(lang="html")
-    <i class="chi-icon icon-atom -md -icon--navy"></i>
-    <i class="chi-icon icon-atom -md -icon--orange"></i>
+
+.-lumen-only
+  h3 Brand complimentary
+  p.-text
+    | More icon colors that can be used to compliment the primary brand palette.
+  .example.-mb--3
+    .chi-grid.-no-gutter
+      .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
+        each color in ['icon--navy', 'icon--orange']
+          i(class=`chi-icon icon-atom -md -${color} -m--1`)
+    :code(lang="html")
+      <i class="chi-icon icon-atom -md -icon--navy"></i>
+      <i class="chi-icon icon-atom -md -icon--orange"></i>
 
 h2 Background-color
 p.-text
   | Define background-color classes using the format <code>-bg-{breakpoint}--{value}</code>.
   | Breakpoints supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
 
-h3 Brand
-p.-text
-  | Brand background-colors reinforce Lumen's brand.
-section.chi-table.-bordered.-mt--3.-mb--3
-  div
-    table.-text(cellpadding='0', cellspacing='0')
-      thead
-        tr
-          th
-            div Color Class
-          th
-            div Value
-          th
-            div Result
-      tbody
-        each val, type in {'primary': '#0075C9', 'secondary': '#38C6F4', 'black': '#000000', 'white': '#FFFFFF'}
+.-lumen-only
+  h3 Brand
+  p.-text
+    | Brand background-colors reinforce Lumen's brand.
+  section.chi-table.-bordered.-mt--3.-mb--3
+    div
+      table.-text(cellpadding='0', cellspacing='0')
+        thead
           tr
-            td(width='25%')
-              code= '-bg--' + type
-            td(width='35%')
-              code= 'background-color:' + val
-            td(width='40%')
-              .-text.-b--1(style=`background-color:${val};height:15px;`)
+            th
+              div Color Class
+            th
+              div Value
+            th
+              div Result
+        tbody
+          each val, type in {'primary': '#0075C9', 'secondary': '#38C6F4', 'black': '#000000', 'white': '#FFFFFF'}
+            tr
+              td(width='25%')
+                code= '-bg--' + type
+              td(width='35%')
+                code= 'background-color:' + val
+              td(width='40%')
+                .-text.-b--1(style=`background-color:${val};height:15px;`)
 
-h3 Brand complimentary
-p.-text More background-colors that can be used to compliment the primary brand palette.
-section.chi-table.-bordered.-mt--3.-mb--3
-  div
-    table.-text(cellpadding='0', cellspacing='0')
-      thead
-        tr
-          th
-            div Color Class
-          th
-            div Value
-          th
-            div Result
-      tbody
-        each val, type in {'navy': '#083176', 'grey': '#3F4145'}
+  h3 Brand complimentary
+  p.-text More background-colors that can be used to compliment the primary brand palette.
+  section.chi-table.-bordered.-mt--3.-mb--3
+    div
+      table.-text(cellpadding='0', cellspacing='0')
+        thead
           tr
-            td(width='25%')
-              code= '-bg--' + type
-            td(width='35%')
-              code= 'background-color:' + val
-            td(width='40%')
-              .-text.-b--1(style=`background-color:${val};height:15px;`)
+            th
+              div Color Class
+            th
+              div Value
+            th
+              div Result
+        tbody
+          each val, type in {'navy': '#083176', 'grey': '#3F4145'}
+            tr
+              td(width='25%')
+                code= '-bg--' + type
+              td(width='35%')
+                code= 'background-color:' + val
+              td(width='40%')
+                .-text.-b--1(style=`background-color:${val};height:15px;`)
 
-h3 Neutral
-p.-text
-  | Neutral background-colors provide low-contrast backgrounds for application containers, cards, and more.
-section.chi-table.-bordered.-mt--3.-mb--3
-  div
-    table.-text(cellpadding='0', cellspacing='0')
-      thead
-        tr
-          th
-            div Color Class
-          th
-            div Value
-          th
-            div Result
-      tbody
-        each val, type in {'grey-20': '#F8F9F9', 'grey-15': '#F4F5F6', 'grey-20': '#EDF0F2', 'grey-25': '#DADEE2', 'grey-30': '#D0D4D9'}
+  h3 Neutral
+  p.-text
+    | Neutral background-colors provide low-contrast backgrounds for application containers, cards, and more.
+  section.chi-table.-bordered.-mt--3.-mb--3
+    div
+      table.-text(cellpadding='0', cellspacing='0')
+        thead
           tr
-            td(width='25%')
-              code= '-bg--' + type
-            td(width='35%')
-              code= 'background-color:' + val
-            td(width='40%')
-              .-text.-b--1(style=`background-color:${val};height:15px;`)
+            th
+              div Color Class
+            th
+              div Value
+            th
+              div Result
+        tbody
+          each val, type in {'grey-20': '#F8F9F9', 'grey-15': '#F4F5F6', 'grey-20': '#EDF0F2', 'grey-25': '#DADEE2', 'grey-30': '#D0D4D9'}
+            tr
+              td(width='25%')
+                code= '-bg--' + type
+              td(width='35%')
+                code= 'background-color:' + val
+              td(width='40%')
+                .-text.-b--1(style=`background-color:${val};height:15px;`)
 
-h3 Semantic
-p.-text
-  | Use semantic background-colors to communicate meaning to users. Examples include displaying alerts, form field
-  | validation, user status, application state and more. Use green (success) for positive, blue (info)
-  | for informative, red (danger) for negative, yellow (warning) for needs attention, and grey (muted)
-  | for neutral. Semantic colors should never be used for decorative purposes.
-section.chi-table.-bordered.-mt--3.-mb--3
-  div
-    table.-text(cellpadding='0', cellspacing='0')
-      thead
-        tr
-          th
-            div Color Class
-          th
-            div Value
-          th
-            div Result
-      tbody
-        each val, type in {'success': '#007E44', 'success-light': '#DBFAEE', 'success-lighter': '#F1FEF8', 'info': '#0075C9', 'info-light': '#F5F9FC', 'info-lighter': '#E0F3FF', 'warning': '#A15C00', 'warning-light': '#FAECD9', 'warning-lighter': '#FFF8ED', 'danger': '#D62015', 'danger-light': '#FFE8E5', 'danger-lighter': '#FFF5F5', 'muted': '#53565A', 'muted-light': '#EDF0F2', 'muted-lighter': '#F8F9F9'}
+  h3 Semantic
+  p.-text
+    | Use semantic background-colors to communicate meaning to users. Examples include displaying alerts, form field
+    | validation, user status, application state and more. Use green (success) for positive, blue (info)
+    | for informative, red (danger) for negative, yellow (warning) for needs attention, and grey (muted)
+    | for neutral. Semantic colors should never be used for decorative purposes.
+  section.chi-table.-bordered.-mt--3.-mb--3
+    div
+      table.-text(cellpadding='0', cellspacing='0')
+        thead
           tr
-            td(width='25%')
-              code= '-bg--' + type
-            td(width='35%')
-              code= 'background-color:' + val
-            td(width='40%')
-              .-text.-b--1(style=`background-color:${val};height:15px;`)
+            th
+              div Color Class
+            th
+              div Value
+            th
+              div Result
+        tbody
+          each val, type in {'success': '#007E44', 'success-light': '#DBFAEE', 'success-lighter': '#F1FEF8', 'info': '#0075C9', 'info-light': '#F5F9FC', 'info-lighter': '#E0F3FF', 'warning': '#A15C00', 'warning-light': '#FAECD9', 'warning-lighter': '#FFF8ED', 'danger': '#D62015', 'danger-light': '#FFE8E5', 'danger-lighter': '#FFF5F5', 'muted': '#53565A', 'muted-light': '#EDF0F2', 'muted-lighter': '#F8F9F9'}
+            tr
+              td(width='25%')
+                code= '-bg--' + type
+              td(width='35%')
+                code= 'background-color:' + val
+              td(width='40%')
+                .-text.-b--1(style=`background-color:${val};height:15px;`)
+
+.-centurylink-only
+  h3 Brand
+  p.-text
+    | Brand background-colors reinforce CenturyLink's brand.
+  section.chi-table.-bordered.-mt--3.-mb--3
+    div
+      table.-text(cellpadding='0', cellspacing='0')
+        thead
+          tr
+            th
+              div Color Class
+            th
+              div Value
+            th
+              div Result
+        tbody
+          each val, type in {'primary': '#0047BB', 'secondary': '#48D597', 'black': '#000000', 'white': '#FFFFFF'}
+            tr
+              td(width='25%')
+                code= '-bg--' + type
+              td(width='35%')
+                code= 'background-color:' + val
+              td(width='40%')
+                .-text.-b--1(style=`background-color:${val};height:15px;`)
+
+  h3 Brand complimentary
+  p.-text More background-colors that can be used to compliment the primary brand palette.
+  section.chi-table.-bordered.-mt--3.-mb--3
+    div
+      table.-text(cellpadding='0', cellspacing='0')
+        thead
+          tr
+            th
+              div Color Class
+            th
+              div Value
+            th
+              div Result
+        tbody
+          each val, type in {'navy': '#083176', 'grey': '#3F4145'}
+            tr
+              td(width='25%')
+                code= '-bg--' + type
+              td(width='35%')
+                code= 'background-color:' + val
+              td(width='40%')
+                .-text.-b--1(style=`background-color:${val};height:15px;`)
+
+  h3 Neutral
+  p.-text
+    | Neutral background-colors provide low-contrast backgrounds for application containers, cards, and more.
+  section.chi-table.-bordered.-mt--3.-mb--3
+    div
+      table.-text(cellpadding='0', cellspacing='0')
+        thead
+          tr
+            th
+              div Color Class
+            th
+              div Value
+            th
+              div Result
+        tbody
+          each val, type in {'grey-20': '#F8F9F9', 'grey-15': '#F4F5F6', 'grey-20': '#EDF0F2', 'grey-25': '#DADEE2', 'grey-30': '#D0D4D9'}
+            tr
+              td(width='25%')
+                code= '-bg--' + type
+              td(width='35%')
+                code= 'background-color:' + val
+              td(width='40%')
+                .-text.-b--1(style=`background-color:${val};height:15px;`)
+
+  h3 Semantic
+  p.-text
+    | Use semantic background-colors to communicate meaning to users. Examples include displaying alerts, form field
+    | validation, user status, application state and more. Use green (success) for positive, blue (info)
+    | for informative, red (danger) for negative, yellow (warning) for needs attention, and grey (muted)
+    | for neutral. Semantic colors should never be used for decorative purposes.
+  section.chi-table.-bordered.-mt--3.-mb--3
+    div
+      table.-text(cellpadding='0', cellspacing='0')
+        thead
+          tr
+            th
+              div Color Class
+            th
+              div Value
+            th
+              div Result
+        tbody
+          each val, type in {'success': '#008000', 'success-light': '#CEF2CE', 'success-lighter': '#E6FAE6', 'info': '#0060FA', 'info-light': '#E6F0FF', 'info-lighter': '#F5F8FC', 'warning': '#946300', 'warning-light': '#F9F5BE', 'warning-lighter': '#FDFBD8', 'danger': '#D81820', 'danger-light': '#FCE8E9', 'danger-lighter': '#FFF5F5', 'muted': '#53565A', 'muted-light': '#EDF0F2', 'muted-lighter': '#F8F9F9'}
+            tr
+              td(width='25%')
+                code= '-bg--' + type
+              td(width='35%')
+                code= 'background-color:' + val
+              td(width='40%')
+                .-text.-b--1(style=`background-color:${val};height:15px;`)
+
 
 h3 None
 p.-text Use to render an element with no background-color.

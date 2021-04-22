@@ -8,7 +8,7 @@
           &:not(:checked) {
             & ~ label {
               &:first-of-type {
-                background-color: $color-grey-10;
+                background-color: $picker-focus-background-color;
               }
             }
           }
@@ -20,7 +20,7 @@
           &:not(:checked) {
             & ~ label {
               &:last-of-type {
-                background-color: $color-grey-10;
+                background-color: $picker-focus-background-color;
               }
             }
           }
@@ -111,8 +111,8 @@
         &:checked {
           &.chi-picker__input {
             & + label {
-              border: solid 0.0625rem $color-border-primary;
-              color: $color-text-primary;
+              border: solid 0.0625rem $picker-checked-border-color;
+              color: $picker-checked-text-color;
               padding-right: 1rem;
 
 

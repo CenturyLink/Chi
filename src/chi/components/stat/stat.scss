@@ -2,7 +2,7 @@
 @import '_global-mixins';
 
 .chi-stat {
-  color: $color-text-base;
+  color: $stat-text-color;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -17,7 +17,7 @@
   &.-active {
     .chi-stat-metric {
       &__title {
-        color: $color-text-primary;
+        color: $stat-active-metric-title;
         font-weight: $font-weight-semi-bold;
       }
     }
@@ -119,14 +119,15 @@
 
   &.-card {
     background-color: $color-background-white;
-    border: 0.0625rem solid rgba($color-black, 0.12);
+    border: 0.0625rem solid $stat-card-border-color;
 
     &.-active {
-      border: 0.0625rem solid $color-border-primary;
-      box-shadow: 0 0 0 0.0625rem $color-border-primary;
+      border: 0.0625rem solid $stat-active-card-border-color;
+      box-shadow: 0 0 0 0.0625rem $stat-active-card-border-color;
     }
   }
 
+  // Portal
   &.-portal {
     background-color: $color-navy-100;
     border: 0 none;

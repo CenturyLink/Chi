@@ -34,6 +34,7 @@ a,
     text-decoration: underline;
   }
 
+  &[disabled],
   &.-disabled {
     opacity: $opacity-40;
     pointer-events: none;
@@ -50,7 +51,7 @@ a,
 
     &::after {
       // sass-lint:disable-all
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23e77528' d='M14.41 7.86H.5a.48.48 0 00-.49.47c0 .27.22.48.49.48h13.93l-2.03 2.06a.47.47 0 00.33.8c.12 0 .24-.05.33-.14l2.81-2.86a.47.47 0 000-.67l-.1-.11-2.71-2.75a.46.46 0 00-.66 0 .47.47 0 000 .67l2.02 2.05z' fill-rule='nonzero'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='#{$link-cta-icon-color}' d='M14.41 7.86H.5a.48.48 0 00-.49.47c0 .27.22.48.49.48h13.93l-2.03 2.06a.47.47 0 00.33.8c.12 0 .24-.05.33-.14l2.81-2.86a.47.47 0 000-.67l-.1-.11-2.71-2.75a.46.46 0 00-.66 0 .47.47 0 000 .67l2.02 2.05z' fill-rule='nonzero'/%3E%3C/svg%3E");
       // sass-lint:enable-all
       background-position: 50% 50%;
       background-repeat: no-repeat;

@@ -257,6 +257,11 @@ small,
 }
 
 // text colors
+.-text--inherit,
+.-icon--inherit {
+  color: inherit !important;
+}
+
 .-text--body,
 .-text--dark {
   color: $color-text-base !important;

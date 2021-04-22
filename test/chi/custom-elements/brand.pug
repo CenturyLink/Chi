@@ -6,39 +6,51 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 - const sizes = ['default', 'xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
-h4 Sizes
-.test-base
+h2 Sizes
+.test-base.-w--100
   .example.-mb--3
     .-p--3
       h3 Base
       each size in sizes
-        div(class=`chi-col -w--12 -p--3`)
-          chi-brand(size=`${size === 'default' ? '' : size}`, data-cy=`brand-base-${size}`)
-          p.-text--bold= '-' + size
+        h4.-mt--4= '-' + size
+        div(class='chi-grid')
+          div(class=`chi-col -w--12 -w-lg--6 -p--3 -d--flex -align-items--center`)
+            chi-brand(logo='lumen', size=`${size === 'default' ? '' : size}`, data-cy=`brand-base-${size}`)
+          div(class=`chi-col -w--12 -w-lg--6 -p--3 -d--flex -align-items--center`)
+            chi-brand(logo='centurylink', size=`${size === 'default' ? '' : size}`, data-cy=`brand-base-${size}`)
 
-.test-inverse
+.test-inverse.-w--100
   .example.-mb--3
     .-p--3
       h3 Inverse
       each size in sizes
-        div(class=`chi-col -w--12 -p--3 -bg--black`)
-          chi-brand(size=`${size === 'default' ? '' : size}`, color='inverse', data-cy=`brand-inverse-${size}`)
-          p.-text--bold.-text--white= '-' + size
+        h4.-mt--4= '-' + size
+        div(class='chi-grid  -bg--black -text--white')
+          div(class=`chi-col -w--12 -w-lg--6 -p--3 -d--flex -align-items--center`)
+            chi-brand(logo='lumen', size=`${size === 'default' ? '' : size}`, color='inverse', data-cy=`brand-inverse-${size}`)
+          div(class=`chi-col -w--12 -w-lg--6 -p--3 -d--flex -align-items--center`)
+            chi-brand(logo='centurylink', size=`${size === 'default' ? '' : size}`, color='inverse', data-cy=`brand-inverse-${size}`)
 
-.test-white
+.test-white.-w--100
   .example.-mb--3
     .-p--3
       h3 White
         each size in sizes
-          div(class=`chi-col -w--12 -p--3 -bg--black`)
-            chi-brand(size=`${size === 'default' ? '' : size}`, color='white', data-cy=`brand-white-${size}`)
-            p.-text--bold.-text--white= '-' + size
+          h4.-mt--4= '-' + size
+          div(class='chi-grid -bg--black -text--white')
+            div(class=`chi-col -w--12 -w-lg--6 -p--3 -d--flex -align-items--center`)
+              chi-brand(logo='lumen', size=`${size === 'default' ? '' : size}`, color='white', data-cy=`brand-white-${size}`)
+            div(class=`chi-col -w--12 -w-lg--6 -p--3 -d--flex -align-items--center`)
+              chi-brand(logo='centurylink', size=`${size === 'default' ? '' : size}`, color='white', data-cy=`brand-white-${size}`)
 
-.test-black
+.test-black.-w--100
   .example.-mb--3
     .-p--3
       h3 Black
         each size in sizes
-          div(class=`chi-col -w--12 -p--3`)
-            chi-brand(size=`${size === 'default' ? '' : size}`, color='black', data-cy=`brand-black-${size}`)
-            p.-text--bold= '-' + size
+          h4.-mt--4= '-' + size
+          div(class='chi-grid')
+            div(class=`chi-col -w--12 -w-lg--6 -p--3 -d--flex -align-items--center`)
+              chi-brand(logo='lumen', size=`${size === 'default' ? '' : size}`, color='black', data-cy=`brand-black-${size}`)
+            div(class=`chi-col -w--12 -w-lg--6 -p--3 -d--flex -align-items--center`)
+              chi-brand(logo='centurylink', size=`${size === 'default' ? '' : size}`, color='black', data-cy=`brand-black-${size}`)

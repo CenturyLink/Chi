@@ -15,13 +15,13 @@
   }
 
   &__internal {
-    background-color: $color-grey-80;
+    background-color: $footer-internal-background-color;
     display: flex;
     justify-content: center;
 
     &-content {
       align-items: center;
-      color: $color-text-white;
+      color: $footer-internal-text-color;
       display: flex;
       flex-direction: column;
       padding: 2rem;
@@ -83,7 +83,7 @@
           background-size: 0.75rem 0.75rem;
           border-color: transparent;
           box-shadow: none;
-          color: $color-text-white;
+          color: $footer-internal-select-text-color;
           font-weight: $font-weight-semi-bold;
           max-width: 7rem;
           position: relative;
@@ -100,9 +100,9 @@
     .chi-footer__copyright {
       align-items: center;
       display: flex;
-      font-size: $font-size-xs;
+      font-size: $footer-copyright-font-size;
       justify-content: center;
-      line-height: 1rem;
+      line-height: $footer-copyright-line-height;
       max-width: 22rem;
       padding-top: 0.75rem;
       text-align: center;
@@ -122,7 +122,7 @@
       width: 100%;
 
       a {
-        color: $color-text-white;
+        color: $footer-internal-link-color;
       }
 
       ul {
@@ -149,13 +149,13 @@
   }
 
   &__external {
-    background-color: $color-grey-15;
+    background-color: $footer-external-background-color;
     display: flex;
     justify-content: center;
 
     &-content {
       align-items: center;
-      color: $color-text-base;
+      color: $footer-external-text-color;
       display: flex;
       flex-direction: column;
       padding: 2rem;
@@ -200,9 +200,9 @@
         width: 100%;
 
         &-title {
-          font-weight: $font-weight-bold;
+          font-weight: $footer-external-title-font-weight;
           padding: 0.25rem 0;
-          text-transform: uppercase;
+          text-transform: $footer-external-title-text-transform;
         }
 
         .chi-col {
@@ -212,7 +212,7 @@
             ul {
               li {
                 a {
-                  color: $color-text-primary;
+                  color: $footer-external-first-column-link-color;
                 }
               }
             }
@@ -240,7 +240,7 @@
             padding: 0.25rem 0;
 
             a {
-              color: $color-text-base;
+              color: $footer-external-link-color;
             }
           }
         }
@@ -259,7 +259,7 @@
         }
 
         a {
-          color: $color-icon-primary;
+          color: $footer-external-social-link-color;
           display: block;
           margin-right: 0.25rem;
           transform: scale(0.875);
@@ -276,10 +276,14 @@
           }
 
           &:hover {
-            color: $color-icon-info;
+            color: $footer-external-social-hover-link-color;
           }
         }
       }
+    }
+
+    & + .chi-footer__internal {
+      box-shadow: 0 -1px 0 $footer-internal-border-top-color;
     }
   }
 }

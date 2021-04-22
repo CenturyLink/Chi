@@ -51,19 +51,19 @@ $sizes: (
       }
 
       & ~ label {
-        color: $color-grey-70;
+        color: $text-input-floating-label-text-color;
         font-size: $label-font-size-relaxed;
         font-weight: $font-weight-normal;
         left: $label-left;
         line-height: 1.5rem;
         margin-bottom: unset;
-        opacity: 0.6;
+        opacity: $text-input-floating-label-opacity;
         position: absolute;
         transition: all 0.2s ease-in-out;
 
         &.-active {
           font-size: $label-font-size;
-          opacity: 0.8;
+          opacity: $text-input-focus-floating-label-opacity;
         }
       }
     }

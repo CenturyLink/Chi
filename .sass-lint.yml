@@ -107,9 +107,7 @@ rules:
     - 2
     - allow-leading-underscore: false
     - convention: 'hyphenatedlowercase'
-  property-sort-order:
-    - 2
-    - order: 'alphabetical'
+  property-sort-order: 0
   property-units:
     - 2
     - global:

@@ -1,7 +1,6 @@
 ---
 title: Text
 description: Use text utility classes to control sizing, color, alignment and more.
-styles: [assets/styles/show-example]
 ---
 -
   var sizes = {
@@ -205,18 +204,20 @@ p.-text
     <p class="-text--warning">-text--warning</p>
     <p class="-text--danger">-text--danger</p>
     <p class="-text--muted">-text--muted</p>
-h3 Brand complimentary
-p.-text More text colors that can be used to compliment the primary brand palette.
-.example.-mb--3
-  .chi-grid.-no-gutter
-    .chi-col.-w--12.-p--1.-d--flex.-justify-content--center.-flex--wrap
-      each type in ['text--navy', 'text--orange']
-        div.-p--1.-p-sm--2.-text--center
-          p.-text(class=`-${type}`)
-            = `-${type}`
-  :code(lang="html")
-    <p class="-text--navy">-text--navy</p>
-    <p class="-text--orange">-text--orange</p>
+
+.-lumen-only
+  h3 Brand complimentary
+  p.-text More text colors that can be used to compliment the primary brand palette.
+  .example.-mb--3
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-p--1.-d--flex.-justify-content--center.-flex--wrap
+        each type in ['text--navy', 'text--orange']
+          div.-p--1.-p-sm--2.-text--center
+            p.-text(class=`-${type}`)
+              = `-${type}`
+    :code(lang="html")
+      <p class="-text--navy">-text--navy</p>
+      <p class="-text--orange">-text--orange</p>
 
 h2 Responsiveness
 h3 Sizes

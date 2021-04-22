@@ -30,8 +30,8 @@ $sizes: (
 
 textarea {
   &.chi-input {
-    border: 0.0625rem solid $color-border-base-dark;
-    color: $color-text-base;
+    border: 0.0625rem solid $textarea-border-color;
+    color: $textarea-text-color;
     display: block;
     font-size: $font-size-base;
     line-height: $line-height-sm;
@@ -43,25 +43,25 @@ textarea {
     width: 100%;
 
     &::placeholder {
-      color: $color-grey-50;
+      color: $textarea-placeholder-text-color;
     }
 
     &:hover,
     &.-hover {
-      border-color: $color-grey-40;
+      border-color: $textarea-hover-border-color;
     }
 
     &:focus,
     &.-focus {
-      border-color: $focus-color;
-      box-shadow: 0 0 0 1px rgba($focus-color, 1);
+      border-color: $textarea-focus-border-color;
+      box-shadow: 0 0 0 1px $textarea-focus-border-color;
     }
 
     &[disabled],
     &.-disabled {
-      background-color: $color-grey-10;
-      border-color: $color-border-base-dark;
-      color: $color-text-muted-light;
+      background-color: $textarea-disabled-background-color;
+      border-color: $textarea-disabled-border-color;
+      color: $textarea-disabled-text-color;
       cursor: not-allowed;
     }
 
@@ -74,7 +74,7 @@ textarea {
 
       &:focus,
       &.-focus {
-        border-color: $focus-color;
+        border-color: $textarea-focus-border-color;
       }
     }
 

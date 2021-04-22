@@ -3,8 +3,8 @@
 
 .chi-header {
   align-items: center;
-  background-color: $color-background-white;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+  background-color: $header-background-color;
+  box-shadow: $header-shadow;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
@@ -18,21 +18,21 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 0.5rem;
+    padding: $header-content-padding-xs;
     position: relative;
     width: 100%;
 
     @include respond-to(sm) {
-      padding: 0 1rem;
+      padding: $header-content-padding-sm;
     }
 
     @include respond-to(lg) {
       display: flex;
-      padding: 0 1.5rem;
+      padding: $header-content-padding-lg;
     }
 
     ~ .chi-header__toolbar {
-      height: 3rem;
+      height: $header-toolbar-height;
 
       &:hover {
         cursor: pointer;
@@ -67,14 +67,14 @@
     }
 
     .chi-header__title {
-      color: $color-text-base;
+      color: $header-content-title-text-color;
       flex: 1 0 auto;
-      font-size: $font-size-lg;
-      font-weight: $font-weight-normal;
-      line-height: $line-height;
+      font-size: $header-content-title-font-size;
+      font-weight: $header-content-title-font-weight;
+      line-height: $header-content-title-line-height;
 
       @include respond-to(lg) {
-        font-size: $font-size-xl;
+        font-size: $header-content-title-lg-font-size;
         margin-right: 1rem;
       }
     }
@@ -131,7 +131,7 @@
 
     &.-collapsed {
       .chi-input__wrapper {
-        background: $color-background-white;
+        background: $header-search-background-color;
         display: flex;
         justify-content: flex-end;
         position: absolute;
@@ -155,11 +155,11 @@
         }
 
         &:hover {
-          border-color: $color-grey-40;
+          border-color: $header-search-hover-border-color;
         }
 
         &:focus {
-          border-color: $focus-color;
+          border-color: $header-search-focus-color;
           cursor: auto;
 
           & ~ .icon-search {
@@ -183,13 +183,13 @@
   }
 
   .chi-impersonation-bar {
-    box-shadow: inset 0 4px 0 0 $color-grey-30;
-    color: $color-text-base;
+    box-shadow: inset 0 4px 0 0 $header-impersonation-background-color;
+    color: $header-impersonation-text-color;
     display: flex;
-    font-size: $font-size-sm;
+    font-size: $header-impersonation-font-size;
     justify-content: center;
     left: 0;
-    line-height: $line-height-lg;
+    line-height: $header-impersonation-line-height;
     position: absolute;
     top: 0;
     width: 100%;
@@ -197,14 +197,14 @@
 
     &__content {
       align-items: center;
-      background-color: $color-grey-30;
+      background-color: $header-impersonation-background-color;
       display: flex;
       justify-content: center;
       padding: 0 0.5rem;
       position: relative;
 
       &::before {
-        background-color: $color-grey-30;
+        background-color: $header-impersonation-background-color;
         content: '';
         display: block;
         height: 1.5rem;
@@ -217,7 +217,7 @@
       }
 
       &::after {
-        background-color: $color-grey-30;
+        background-color: $header-impersonation-background-color;
         content: '';
         display: block;
         height: 1.5rem;
@@ -239,7 +239,7 @@
     }
 
     &__username {
-      font-weight: $font-weight-semi-bold;
+      font-weight: $header-impersonation-username-font-weight;
       margin-right: 0.25rem;
       max-width: 12rem;
       overflow: hidden;
@@ -252,7 +252,7 @@
     align-items: center;
     display: flex;
     flex-direction: row;
-    font-size: $font-size-base;
+    font-size: $header-toolbar-font-size;
     height: 2rem;
     justify-content: space-between;
     margin-top: 0;
@@ -284,7 +284,7 @@
 
         &.chi-dropdown {
           &.-active > a {
-            border-bottom: 0.0625rem solid $color-border-primary;
+            border-bottom-width: 0.0625rem;
             padding-bottom: 0.4375rem;
           }
 
@@ -320,12 +320,12 @@
       padding-top: 0;
 
       & a {
-        color: $color-text-base;
-        font-size: $font-size-xs;
-        font-weight: $font-weight-semi-bold;
+        color: $header-toolbar-link-color;
+        font-size: $header-toolbar-link-font-size;
+        font-weight: $header-toolbar-link-font-weight;
 
         &:hover {
-          color: $color-text-primary;
+          color: $header-toolbar-link-hover-color;
           text-decoration: none;
         }
       }
@@ -347,7 +347,7 @@
           padding-right: 0.25rem;
 
           @include respond-to(md) {
-            border-right: 1px solid $color-border-base;
+            border-right: 1px solid $header-toolbar-border-color;
             padding-right: 0.5rem;
           }
         }
@@ -356,16 +356,17 @@
   }
 
   .chi-header__navbar {
-    background-color: $color-blue-70;
-    color: $color-text-white;
+    background-color: $header-navbar-background-color;
+    border-top: 0.0625rem solid $header-navbar-border-color;
+    color: $header-navbar-text-color;
     display: flex;
     padding: 0 1.5rem;
     width: 100%;
 
     a {
-      color: $color-text-white;
-      font-size: $font-size-xs;
-      font-weight: $font-weight-semi-bold;
+      color: $header-navbar-link-color;
+      font-size: $header-navbar-font-size;
+      font-weight: $header-navbar-font-weight;
     }
 
     .chi-header__navbar-menu {
@@ -376,11 +377,11 @@
       padding: 0;
 
       li {
-        border-right: 0.0625rem solid rgba($color-white, 0.5);
-        line-height: $line-height-sm;
+        border-right: 0.0625rem solid $header-navbar-divider-color;
+        line-height: $header-navbar-menu-line-height;
         padding-left: 0.75rem;
         padding-right: 0.75rem;
-        text-transform: uppercase;
+        text-transform: $header-navbar-menu-text-transform;
         white-space: nowrap;
 
         &:first-child {
@@ -396,7 +397,7 @@
 
     .chi-header__end {
       align-items: center;
-      color: $color-text-white;
+      color: $header-end-text-color;
       flex-grow: 1;
       font-size: 0.75rem;
       justify-content: center;
@@ -432,23 +433,23 @@
             }
 
             > a {
-              font-size: $font-size-base;
-              font-weight: $font-weight-semi-bold;
-              padding: 0.5rem 0;
+              font-size: $header-navbar-tab-xs-link-font-size;
+              font-weight: $header-navbar-tab-xs-link-font-weight;
+              padding: $header-navbar-tab-xs-link-padding;
               position: relative;
             }
 
             &:not(.-active) {
               > a {
                 &:hover {
-                  text-decoration: underline;
+                  text-decoration: $header-navbar-tab-xs-link-hover-text-decoration;
                 }
               }
             }
 
             &.-active {
               > a {
-                padding-bottom: 0.375rem;
+                padding-bottom: $header-navbar-tab-xs-link-active-padding-bottom;
               }
             }
           }
@@ -459,63 +460,67 @@
 
   &,
   &.-md {
-    min-height: 3.5rem;
+    min-height: $header-height;
 
     .chi-header__content {
-      height: 3.5rem;
+      height: $header-height;
     }
 
     .chi-brand {
-      margin: 0 0.5rem;
-      width: 8.75rem;
-
-      @include respond-to(md) {
-        margin: 0 1rem 0 0;
-        width: 8.1875rem;
-      }
-
       @include respond-to(lg) {
         margin: 0 3rem 0 0;
       }
 
-      & > img,
-      & > svg {
-        height: 1.125rem;
+      &:not(.-centurylink) {
+        margin: 0 0.5rem;
+        width: 8.75rem;
 
         @include respond-to(md) {
+          margin: 0 1rem 0 0;
+          width: 8.1875rem;
+        }
+
+        & > img,
+        & > svg {
           height: 1.125rem;
+
+          @include respond-to(md) {
+            height: 1.125rem;
+          }
         }
       }
     }
   }
 
   &.-lg {
-    min-height: 4rem;
+    min-height: $header-lg-height;
 
     .chi-header__content {
-      height: 4rem;
+      height: $header-lg-height;
     }
 
     .chi-brand {
-      margin: 0 0.5rem;
-      width: 9.0625rem;
-
-      @include respond-to(md) {
-        margin: 0 1rem 0 0;
-        width: 9.0625rem;
-      }
-
       @include respond-to(lg) {
         margin: 0 3rem 0 0;
       }
 
-      & > img,
-      & > svg {
-        height: 1.25rem;
+      &:not(.-centurylink) {
+        margin: 0 0.5rem;
         width: 9.0625rem;
 
         @include respond-to(md) {
+          margin: 0 1rem 0 0;
+          width: 9.0625rem;
+        }
+
+        & > img,
+        & > svg {
           height: 1.25rem;
+          width: 9.0625rem;
+
+          @include respond-to(md) {
+            height: 1.25rem;
+          }
         }
       }
     }
@@ -523,29 +528,31 @@
 
   &.-xl {
     @include respond-to(md) {
-      min-height: 6rem;
+      min-height: $header-xl-height;
 
       .chi-header__content {
-        height: 6rem;
-        padding: 0 2rem;
+        height: $header-xl-height;
+        padding: $header-xl-content-padding;
       }
     }
 
     .chi-brand {
-      @include respond-to(md) {
-        margin: 0 1rem 0 0;
-        width: 10rem;
-      }
-
-      @include respond-to(lg) {
-        margin: 0 3rem 0 0;
-      }
-
-      & > img,
-      & > svg {
+      &:not(.-centurylink) {
         @include respond-to(md) {
-          height: 1.37875rem;
+          margin: 0 1rem 0 0;
           width: 10rem;
+        }
+
+        @include respond-to(lg) {
+          margin: 0 3rem 0 0;
+        }
+
+        & > img,
+        & > svg {
+          @include respond-to(md) {
+            height: 1.37875rem;
+            width: 10rem;
+          }
         }
       }
     }
@@ -554,8 +561,8 @@
       min-height: 1rem;
 
       a {
-        font-size: $font-size-base;
-        line-height: $line-height;
+        font-size: $header-xl-navbar-tab-link-font-size;
+        line-height: $header-xl-navbar-tab-link-line-height;
       }
 
       .chi-header__navbar-menu {
@@ -570,7 +577,7 @@
 @media all and (-ms-high-contrast: none) {
   .chi-header__content,
   .chi-header__toolbar ~ .chi-header__content {
-    height: 3.5rem;
+    height: $header-height;
   }
 
   .chi-header {

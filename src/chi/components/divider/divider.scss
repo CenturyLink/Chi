@@ -3,21 +3,21 @@
 
 .chi-divider {
   border: 0;
-  border-top: 0.0625rem solid rgba($color-black, 0.12);
+  border-top: 0.0625rem solid $divider-border-color;
   margin: 0.5rem 0;
 
   &.-inverse {
-    border-top: 0.0625rem solid rgba($color-white, 0.2);
+    border-top: 0.0625rem solid $divider-inverse-border-color;
   }
 
   &.-vertical {
-    border-right: 0.0625rem solid rgba($color-black, 0.12);
+    border-right: 0.0625rem solid $divider-vertical-border-color;
     border-top: 0;
     height: 100%;
     margin: 0 0.5rem;
 
     &.-inverse {
-      border-color: rgba($color-white, 0.2);
+      border-color: $divider-vertical-inverse-border-color;
     }
   }
 
@@ -31,12 +31,12 @@
     text-transform: uppercase;
 
     &::after {
-      border-top: 0.0625rem solid rgba($color-black, 0.12);
+      border-top: 0.0625rem solid $divider-border-color;
       content: '';
     }
 
     &::before {
-      border-top: 0.0625rem solid rgba($color-black, 0.12);
+      border-top: 0.0625rem solid $divider-border-color;
       content: '';
     }
   }

@@ -14,77 +14,77 @@ $avatar-sizes: (
 
 $avatar-colors: (
   grey: (
-    border-color: $color-grey-60,
-    text-color:   $color-grey-70,
+    border-color: $avatar-grey-border-color,
+    text-color:   $avatar-grey-text-color,
   ),
   red: (
-    border-color: $color-red-60,
-    text-color:   $color-red-70,
+    border-color: $avatar-red-border-color,
+    text-color:   $avatar-red-text-color,
   ),
   pink: (
-    border-color: $color-pink-60,
-    text-color:   $color-pink-70,
+    border-color: $avatar-pink-border-color,
+    text-color:   $avatar-pink-text-color,
   ),
   purple: (
-    border-color: $color-purple-60,
-    text-color:   $color-purple-70,
+    border-color: $avatar-purple-border-color,
+    text-color:   $avatar-purple-text-color,
   ),
   indigo: (
-    border-color: $color-indigo-60,
-    text-color:   $color-indigo-70,
+    border-color: $avatar-indigo-border-color,
+    text-color:   $avatar-indigo-text-color,
   ),
   cyan: (
-    border-color: $color-cyan-60,
-    text-color:   $color-cyan-70,
+    border-color: $avatar-cyan-border-color,
+    text-color:   $avatar-cyan-text-color,
   ),
   navy: (
-    border-color: $color-navy-60,
-    text-color:   $color-navy-70,
+    border-color: $avatar-navy-border-color,
+    text-color:   $avatar-navy-text-color,
   ),
   blue: (
-    border-color: $color-blue-60,
-    text-color:   $color-blue-70,
+    border-color: $avatar-blue-border-color,
+    text-color:   $avatar-blue-text-color,
   ),
   teal: (
-    border-color: $color-teal-60,
-    text-color:   $color-teal-70,
+    border-color: $avatar-teal-border-color,
+    text-color:   $avatar-teal-text-color,
   ),
   green: (
-    border-color: $color-green-60,
-    text-color:   $color-green-70,
+    border-color: $avatar-green-border-color,
+    text-color:   $avatar-green-text-color,
   ),
   yellow: (
-    border-color: $color-yellow-60,
-    text-color:   $color-yellow-70,
+    border-color: $avatar-yellow-border-color,
+    text-color:   $avatar-yellow-text-color,
   ),
   orange: (
-    border-color: $color-orange-60,
-    text-color:   $color-orange-70,
+    border-color: $avatar-orange-border-color,
+    text-color:   $avatar-orange-text-color,
   ),
   light: (
-    border-color: $color-border-white,
-    text-color:   $color-text-white,
+    border-color: $avatar-light-border-color,
+    text-color:   $avatar-light-text-color,
   ),
   inverse: (
-    border-color: $color-border-white,
-    text-color:   $color-text-white,
+    border-color: $avatar-inverse-border-color,
+    text-color:   $avatar-inverse-text-color,
   ),
   primary: (
-    border-color: $color-border-primary,
-    text-color:   $color-text-primary,
+    border-color: $avatar-primary-border-color,
+    text-color:   $avatar-primary-text-color,
   ),
   secondary: (
-    border-color: $color-border-secondary,
-    text-color:   $color-text-secondary,
+    border-color: $avatar-secondary-border-color,
+    text-color:   $avatar-secondary-text-color,
   ),
 );
 
 $avatar-default-size: 'md';
 
 .chi-avatar {
-  background-color: $color-grey-20;
+  background-color: $avatar-background-color;
   border-radius: 50%;
-  color: $color-text-base;
+  color: $avatar-text-color;
   display: inline-block;
   font-size: map-get($avatar-sizes, $avatar-default-size) / 2;
   height: map-get($avatar-sizes, $avatar-default-size);

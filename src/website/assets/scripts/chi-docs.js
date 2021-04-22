@@ -160,6 +160,8 @@ onLoad(() => {
   Array.prototype.forEach.call(anchors, function(anchor) {
     const spanContainer = document.createElement('span');
     const anchorLink = document.createElement('a');
+    const paramTheme = window.theme ? `?theme=${window.theme}` : '';
+
     if (anchor.closest(".example")) {
       return;
     } else {
@@ -168,7 +170,7 @@ onLoad(() => {
       spanContainer.appendChild(anchorLink);
       anchorLink.textContent = '#';
       anchorLink.setAttribute('class', '-ml--1');
-      anchorLink.setAttribute('href', '#'+anchor.id);
+      anchorLink.setAttribute('href', paramTheme + '#'+anchor.id);
       anchor.appendChild(spanContainer);
       if (window.location.hash === '#'+anchor.id) {
         window.location.hash = '#';
@@ -222,4 +224,122 @@ onLoad(() => {
   if (drawerAccessibilityAccordion) {
     chi.accordion(drawerAccessibilityAccordion);
   }
+
+  var url = new URL(window.location.href);
+  var urlThemeParam = url.searchParams.get("theme");
+  var themeAssets = {
+    chiCss: document.getElementById('chi-css'),
+    docsCss: document.getElementById('docs-css'),
+    faviconSvg: document.getElementById('favicon-svg'),
+    faviconIco: document.getElementById('favicon-ico')
+  };
+  var themes = {
+    Lumen: {
+      chiCss: '/chi.css',
+      docsCss: '/assets/themes/lumen/docs.css',
+      faviconSvg: '/assets/themes/lumen/images/favicon.svg',
+      faviconIco: '/assets/themes/lumen/images/favicon.ico',
+      trigger: '.theme-trigger-lumen'
+    },
+    CenturyLink: {
+      chiCss: '/chi-centurylink.css',
+      docsCss: '/assets/themes/centurylink/docs.css',
+      faviconSvg: '/assets/themes/centurylink/images/favicon.svg',
+      faviconIco: '/assets/themes/centurylink/images/favicon.ico',
+      trigger: '.theme-trigger-centurylink'
+    }
+  };
+
+  function updateAnchorHrefs() {
+    if (window.theme) {
+      Array.prototype.forEach.call(
+        document.querySelectorAll('.-anchor'), function(anchor) {
+          const anchorLink = anchor.querySelector('a');
+          const paramTheme = window.theme ? `?theme=${window.theme}` : '';
+
+          anchorLink.setAttribute('href', paramTheme + '#'+anchor.id);
+      });
+    }
+  }
+
+  window.switchTheme = function(theme, anchorTarget) {
+    var logoElement = document.getElementById('header-logo');
+    var themeFavicon = anchorTarget.querySelector('img').getAttribute('src');
+    var themeSwitchButtons = document.querySelectorAll('button.-theme-switch');
+
+    window.theme = theme;
+    if (logoElement) {
+      logoElement.logo = theme.toLowerCase();
+      logoElement.parentNode.setAttribute('aria-label', theme);
+      if (theme === 'CenturyLink') {
+        logoElement.color = 'black';
+      } else {
+        if (logoElement.color) {
+          logoElement.removeAttribute('color');
+        }
+      }
+    }
+
+    localStorage.setItem('chiTheme', theme);
+    document.querySelector('html').setAttribute('class', `chi theme-${theme.toLowerCase()}`);
+
+    function replaceAsset(currentAsset, replacementHref) {
+      const replacement = document.createElement('LINK');
+
+      replacement.setAttribute('rel', 'stylesheet');
+      replacement.setAttribute('href', replacementHref);
+      currentAsset.parentNode
+        .insertBefore(replacement, currentAsset.nextSibling);
+      replacement.addEventListener('load', function() {
+        const assetId = currentAsset.getAttribute('id');
+
+        replacement.setAttribute('id', assetId);
+        currentAsset.remove();
+      });
+    }
+
+    Array.prototype.forEach.call(
+      ['chiCss', 'docsCss', 'faviconSvg', 'faviconIco'],
+      function(asset) {
+        if (asset === 'chiCss') {
+          const chiCssElement = document.getElementById('chi-css');
+
+          replaceAsset(chiCssElement, themes[theme][asset]);
+        } else if (asset === 'docsCss') {
+          const docsCssElement = document.getElementById('docs-css');
+
+          replaceAsset(docsCssElement, themes[theme][asset]);
+        } else {
+          themeAssets[asset].setAttribute('href', themes[theme][asset]);
+        }
+      }
+    );
+
+    Array.prototype.forEach.call(
+      themeSwitchButtons,
+      function(button) {
+        const buttonImg = button.querySelector('img.-favicon');
+        const buttonThemeName = button.querySelector('.-theme-name');
+
+        buttonImg.setAttribute('src', themeFavicon);
+        buttonThemeName.innerText = window.theme;
+      }
+    );
+    updateAnchorHrefs()
+  };
+
+  if (urlThemeParam && themes.hasOwnProperty(urlThemeParam)) {
+    switchTheme(urlThemeParam,
+    document.querySelector(themes[urlThemeParam].trigger));
+  } else if (window.localStorage.getItem('chiTheme')) {
+    const localStorageTheme = window.localStorage.getItem('chiTheme');
+
+    switchTheme(localStorageTheme,
+    document.querySelector(themes[localStorageTheme].trigger));
+  } else {
+    switchTheme('Lumen',
+    document.querySelector(themes.Lumen.trigger));
+  }
+
+  chi.dropdown(document.querySelectorAll('.-theme-switch'));
 });

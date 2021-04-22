@@ -1,4 +1,4 @@
-if name === 'css'
+if name === 'css-lumen'
   pre.language-html
     code.language-html
       span.token.tag
@@ -22,6 +22,39 @@ if name === 'css'
           span.token.punctuation.attr-equals =
           span.token.punctuation &quot;
           div.-d--inline-block #{data['dist/chi.css']}
+          span.token.punctuation &quot; 
+        span.token.attr-name crossorigin
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          | anonymous
+          span.token.punctuation &quot;
+        span.token.punctuation &gt;
+
+if name === 'css-centurylink'
+  pre.language-html
+    code.language-html
+      span.token.tag
+        span.token.tag
+          span.token.punctuation &lt;
+          | link 
+        span.token.attr-name rel
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          | stylesheet
+          span.token.punctuation &quot; 
+        span.token.attr-name href
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          | https://assets.ctl.io/chi/3.17.0/chi-centurylink.css
+          span.token.punctuation &quot; 
+          span.token.attr-name integrity
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          div.-d--inline-block #{data['dist/chi-centurylink.css']}
           span.token.punctuation &quot; 
         span.token.attr-name crossorigin
         span.token.attr-value
@@ -64,7 +97,7 @@ if name === 'js'
           | script
         span.token.punctuation &gt;
 
-if name === 'favicon'
+if name === 'favicon-lumen'
   pre.language-html
     code.language-html
       span.token.tag
@@ -87,13 +120,13 @@ if name === 'favicon'
         span.token.attr-value
           span.token.punctuation.attr-equals =
           span.token.punctuation &quot;
-          | https://assets.ctl.io/chi/3.17.0/assets/images/favicon.svg
+          | https://assets.ctl.io/chi/3.17.0/assets/themes/lumen/images/favicon.svg
           span.token.punctuation &quot; 
           span.token.attr-name integrity
           span.token.attr-value
             span.token.punctuation.attr-equals =
             span.token.punctuation &quot;
-            div.-d--inline-block #{data['src/website/assets/images/favicon.svg']}
+            div.-d--inline-block #{data['dist/assets/themes/lumen/images/favicon.svg']}
             span.token.punctuation &quot; 
           span.token.attr-name crossorigin
           span.token.attr-value
@@ -116,13 +149,81 @@ if name === 'favicon'
         span.token.attr-value
           span.token.punctuation.attr-equals =
           span.token.punctuation &quot;
-          | https://assets.ctl.io/chi/3.17.0/assets/images/favicon.ico
+          | https://assets.ctl.io/chi/3.17.0/assets/themes/lumen/images/favicon.ico
           span.token.punctuation &quot; 
           span.token.attr-name integrity
           span.token.attr-value
             span.token.punctuation.attr-equals =
             span.token.punctuation &quot;
-            div.-d--inline-block #{data['src/website/assets/images/favicon.ico']}
+            div.-d--inline-block #{data['dist/assets/themes/lumen/images/favicon.ico']}
+            span.token.punctuation &quot; 
+          span.token.attr-name crossorigin
+          span.token.attr-value
+            span.token.punctuation.attr-equals =
+            span.token.punctuation &quot;
+            | anonymous
+            span.token.punctuation &quot;
+        span.token.punctuation &gt;
+
+if name === 'favicon-centurylink'
+  pre.language-html
+    code.language-html
+      span.token.tag
+        span.token.tag
+          span.token.punctuation &lt;
+          | link 
+        span.token.attr-name rel
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          | icon
+          span.token.punctuation &quot; 
+        span.token.attr-name type
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          | image/svg+xml
+          span.token.punctuation &quot; 
+        span.token.attr-name href
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          | https://assets.ctl.io/chi/3.17.0/assets/themes/centurylink/images/favicon.svg
+          span.token.punctuation &quot; 
+          span.token.attr-name integrity
+          span.token.attr-value
+            span.token.punctuation.attr-equals =
+            span.token.punctuation &quot;
+            div.-d--inline-block #{data['dist/assets/themes/centurylink/images/favicon.svg']}
+            span.token.punctuation &quot; 
+          span.token.attr-name crossorigin
+          span.token.attr-value
+            span.token.punctuation.attr-equals =
+            span.token.punctuation &quot;
+            | anonymous
+            span.token.punctuation &quot;
+        span.token.punctuation &gt;
+      span.token.tag.-d--block
+        span.token.tag
+          span.token.punctuation &lt;
+          | link 
+        span.token.attr-name rel
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          | alternate icon
+          span.token.punctuation &quot; 
+        span.token.attr-name href
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          | https://assets.ctl.io/chi/3.17.0/assets/themes/centurylink/images/favicon.svg
+          span.token.punctuation &quot; 
+          span.token.attr-name integrity
+          span.token.attr-value
+            span.token.punctuation.attr-equals =
+            span.token.punctuation &quot;
+            div.-d--inline-block #{data['dist/assets/themes/centurylink/images/favicon.ico']}
             span.token.punctuation &quot; 
           span.token.attr-name crossorigin
           span.token.attr-value

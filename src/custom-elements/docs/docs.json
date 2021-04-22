@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-04-16T15:29:25",
+  "timestamp": "2021-04-22T11:38:18",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -292,6 +292,23 @@
           "reflectToAttr": true,
           "docs": "to set brand color { black, white, inverse }.",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "logo",
+          "type": "string",
+          "mutable": false,
+          "attr": "logo",
+          "reflectToAttr": true,
+          "docs": "to set logo of brand {lumen, centurylink}.",
+          "docsTags": [],
+          "default": "'lumen'",
           "values": [
             {
               "type": "string"

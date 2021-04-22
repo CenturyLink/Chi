@@ -13,7 +13,7 @@
 
 .chi-time-picker {
   font-size: $font-size-base;
-  width: 14rem;
+  width: $time-picker-width;
 
   &__content {
     display: flex;
@@ -29,7 +29,7 @@
       width: 100%;
 
       &:not(:last-child) {
-        box-shadow: inset -0.0625rem 0 0 0 $color-border-base;
+        box-shadow: inset -0.0625rem 0 0 0 $time-picker-column-border-color;
       }
 
       .chi-time-picker__hour,
@@ -43,23 +43,23 @@
         text-align: center;
 
         &:hover {
-          background-color: $color-background-base-darker;
+          background-color: $time-picker-item-hover-background-color;
         }
 
         &:focus {
-          outline: 0.125rem solid $focus-color;
+          outline: 0.125rem solid $time-picker-item-focus-border-color;
           outline-offset: 0.0625rem;
         }
 
         &.-active {
-          background-color: $color-background-primary;
-          color: $color-text-white;
+          background-color: $time-picker-item-active-background-color;
+          color: $time-picker-item-active-text-color;
           font-weight: $font-weight-semi-bold;
         }
 
         &.-disabled {
-          color: $color-grey-70;
-          opacity: $opacity-40;
+          color: $time-picker-item-disabled-text-color;
+          opacity: $time-picker-item-disabled-opacity;
           pointer-events: none;
         }
       }
