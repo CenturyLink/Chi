@@ -151,7 +151,7 @@ $sizes: (
           color: $picker-checked-checkbox-text-color;
 
           &::before {
-            border: 0.125rem solid $picker-checked-checked-icon-color;
+            border: 0.125rem solid $picker-checked-checkbox-icon-color;
             border-right: 0;
             border-top: 0;
             transform: rotate(-45deg) scale(1);
@@ -163,7 +163,7 @@ $sizes: (
           border: 0.0625rem solid $picker-checked-radio-border-color;
 
           &::before {
-            background-color: $color-background-white;
+            background-color: $picker-checked-radio-icon-color;
             transform: scale(1);
           }
         }

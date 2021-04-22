@@ -110,62 +110,64 @@
 
         &:not(.-introduction) {
           >,
-          .-centurylink-only,
-          .-lumen-only,
+          .-lumen-only >,
+          .-lumen-only > .chi-grid .chi-col,
+          .-centurylink-only >,
+          .-centurylink-only > .chi-grid .chi-col,
           .changelog__version >,
           .chi-tabs-panel >,
           > .chi-grid .chi-col,
           > .chi-epanel {
-            h1,
-            h2,
-            h3,
-            h4,
-            h5,
-            h6 {
-              display: flex;
-              font-weight: $font-weight-semi-bold;
-            }
-
-            h1 {
-              font-size: $font-size-h2;
-              font-weight: $font-weight-extra-bold;
-              line-height: 3rem;
-              margin: 1rem 0;
-            }
-
-            h2 {
-              font-size: $font-size-h3;
-              line-height: 2rem;
-              margin: 1rem 0;
-            }
-
-            h3 {
-              font-size: $font-size-h4;
-              line-height: 2rem;
-              margin: 0.5rem 0;
-
-              > a {
-                cursor: pointer;
+              h1,
+              h2,
+              h3,
+              h4,
+              h5,
+              h6 {
+                display: flex;
+                font-weight: $font-weight-semi-bold;
               }
-            }
 
-            h4 {
-              font-size: $font-size-h5;
-              line-height: 1.5rem;
-              margin: 0.5rem 0;
-            }
+              h1 {
+                font-size: $font-size-h2;
+                font-weight: $font-weight-extra-bold;
+                line-height: 3rem;
+                margin: 1rem 0;
+              }
 
-            h5 {
-              font-size: $font-size-h6;
-              line-height: 1.5rem;
-              margin: 0.5rem 0;
-            }
+              h2 {
+                font-size: $font-size-h3;
+                line-height: 2rem;
+                margin: 1rem 0;
+              }
 
-            h6 {
-              font-size: $font-size-sm;
-              line-height: 1.25rem;
-              margin: 0.5rem 0;
-            }
+              h3 {
+                font-size: $font-size-h4;
+                line-height: 2rem;
+                margin: 0.5rem 0;
+
+                > a {
+                  cursor: pointer;
+                }
+              }
+
+              h4 {
+                font-size: $font-size-h5;
+                line-height: 1.5rem;
+                margin: 0.5rem 0;
+              }
+
+              h5 {
+                font-size: $font-size-h6;
+                line-height: 1.5rem;
+                margin: 0.5rem 0;
+              }
+
+              h6 {
+                font-size: $font-size-sm;
+                line-height: 1.25rem;
+                margin: 0.5rem 0;
+              }
           }
         }
       }
