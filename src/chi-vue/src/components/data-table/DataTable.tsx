@@ -268,10 +268,7 @@ export default class DataTable extends Vue {
   }
 
   calculateNumberOfPages() {
-    const numberOfPages = Math.ceil(this.data.body.length / this.resultsPerPage);
-
-    if (numberOfPages === 0) return 1;
-    return numberOfPages;
+    return Math.max(Math.ceil(this.data.body.length / this.resultsPerPage), 1);
   }
 
   selectAllRows(action: 'select' | 'deselect') {
