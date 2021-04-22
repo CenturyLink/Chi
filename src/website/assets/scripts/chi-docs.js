@@ -256,8 +256,7 @@ onLoad(() => {
         document.querySelectorAll('.-anchor'), function(anchor) {
           const anchorLink = anchor.querySelector('a');
           const paramTheme = window.theme ? `?theme=${window.theme}` : '';
-    
-          console.log(anchorLink);
+
           anchorLink.setAttribute('href', paramTheme + '#'+anchor.id);
       });
     }
