@@ -220,7 +220,18 @@ export default class Pagination extends Vue {
             type="text"
             class={inputClass}
             value={this.currentPage}
-            onChange={(ev: Event) => this._jumpToPage((ev.target as HTMLInputElement).value)}
+            onChange={(ev: Event) => {
+              if (ev.target) {
+                const inputElement = ev.target as HTMLInputElement;
+                const jumpToPage = parseInt(inputElement.value);
+
+                if (jumpToPage >= 1 && jumpToPage <= this.pages) {
+                  this._jumpToPage(inputElement.value);
+                } else {
+                  inputElement.value = String(this.currentPage);
+                }
+              }
+            }}
             aria-label={`Page ${this.currentPage}`}
           />
           {paginationLabel}
