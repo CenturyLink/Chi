@@ -37,7 +37,7 @@ export default class DataTable extends Vue {
   selectedRows: DataTableRow[] = [];
   slicedData: DataTableRow[] = [];
   sortable = false;
-  sortedData?: DataTableRow[];
+  sortedData?: DataTableRow[] = [];
   _serializedDataBody: DataTableRow[] = [];
   _expandable!: boolean;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
@@ -267,15 +267,27 @@ export default class DataTable extends Vue {
     this.emitSelectedRows();
   }
 
+  calculateNumberOfPages() {
+    return Math.max(Math.ceil(this.data.body.length / this.resultsPerPage), 1);
+  }
+
   selectAllRows(action: 'select' | 'deselect') {
+    const numberOfPages = this.calculateNumberOfPages();
+    const data =
+      numberOfPages === 1
+        ? this.sortedData && this.sortedData.length > 0
+          ? this.sortedData
+          : this._serializedDataBody
+        : this.slicedData;
+
     if (action === 'select') {
-      this.slicedData.forEach((row: DataTableRow) => {
+      data.forEach((row: DataTableRow) => {
         if (!this.selectedRows.includes(row)) {
           this.selectedRows.push(row);
         }
       });
     } else {
-      this.slicedData.forEach((row: DataTableRow) => {
+      data.forEach((row: DataTableRow) => {
         const rowIndex = this.selectedRows.indexOf(row);
 
         this.selectedRows.splice(rowIndex, 1);
@@ -494,17 +506,16 @@ export default class DataTable extends Vue {
   }
 
   pagination() {
-    const results = this.data.body.length,
-      pages = this.resultsPerPage === this.data.body.length ? 1 : Math.floor(results / this.resultsPerPage) + 1;
+    const pages = this.calculateNumberOfPages();
 
     return (
       <Pagination
         ref="pagination"
         compact={this.config.style.portal || this.config.pagination.compact}
-        firstLast={this.config.pagination.compact}
+        firstLast={this.config.pagination.firstLast}
         currentPage={this.currentPage}
         pages={pages}
-        results={results}
+        results={this.data.body.length}
         pageSize={!this.config.style.portal}
         pageJumper={this.config.pagination.pageJumper}
       />
@@ -641,11 +652,14 @@ export default class DataTable extends Vue {
 
     (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
       const data = this.sortedData && this.sortedData.length > 0 ? this.sortedData : this._serializedDataBody;
+      const numberOfPages = this.calculateNumberOfPages();
 
-      this.currentPage = ev;
-      this.slicedData = this.sliceData(data);
-      this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, this.slicedData);
-      this.checkSelectAllCheckbox();
+      if (ev >= 1 && ev <= numberOfPages) {
+        this.currentPage = ev;
+        this.slicedData = this.sliceData(data);
+        this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, this.slicedData);
+        this.checkSelectAllCheckbox();
+      }
     });
     window.addEventListener('resize', this.resizeHandler);
   }
