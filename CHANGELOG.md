@@ -1,4 +1,13 @@
 # CHANGELOG
+## 4.0.0 (April 23, 2021)
+### Components
+#### Added
+* Added: Chi now supports Themes. Themes provide the ability to customize all aspects of Chi, including Colors, Grids, Typography, and individual Component styles to better suit your product’s brand.
+* Added: Theme support for the CenturyLink brand.
+### Documentation
+#### Added
+* Added: Chi documentation now includes a Themes drop down to showcase available themes and customize the documentation experience based on the selected theme.
+
 ## 3.17.0 (April 16, 2021)
 ### Components
 #### Added
