@@ -24,15 +24,175 @@ h3 Icons
 .example.-mb--3
   .-p--3.-d--flex.-align-items--center
     .-pr--2
-      button.chi-button.-icon.-flat.-bg--none.-opacity-hover--80(aria-label="Button action")
+      button.chi-button.-lg.-icon.-primary.-flat.-bg--none.-b--transparent.-opacity-hover--80(aria-label="Button action")
         .chi-button__content
-          i.chi-icon.icon-refresh
+          i.chi-icon.-sm--2.icon-refresh
   :code(lang="html")
-    <button class="chi-button -icon -flat -bg--none -opacity-hover--80" aria-label="Button action">
+    <button class="chi-button -lg -icon -primary -flat -bg--none -b--transparent -opacity-hover--80" aria-label="Button action">
       <div class="chi-button__content">
-        <i class="chi-icon icon-refresh"></i>
+        <i class="chi-icon icon-refresh -sm--2"></i>
       </div>
     </button>
+
+h2 Text Input
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-grid
+          .chi-col.-w--12
+            .chi-form__item
+              chi-label(for="example__base") Label
+              chi-text-input(id="example__base" size="lg" value="Base input")
+          .chi-col.-w--12.-mt--2
+            .chi-form__item
+              chi-label(for="example__placeholder") Label
+              chi-text-input(id="example__placeholder" size="lg" placeholder="Placeholder input")
+          .chi-col.-w--12.-mt--2
+            .chi-form__item
+              chi-label(for="example__optional" optional) Label
+              chi-text-input(id="example__optional" size="lg" value="Optional input")
+          .chi-col.-w--12.-mt--2
+            .chi-form__item
+              chi-label(for="example__required" required) Label
+              chi-text-input(id="example__required" size="lg" value="Required input" required)
+          .chi-col.-w--12.-mt--2
+            .chi-form__item
+              chi-label(for="example__disabled") Label
+              chi-text-input(id="example__disabled" size="lg" value="Disabled input" disabled)
+          .chi-col.-w--12.-mt--2
+            .chi-form__item
+              chi-label(for="example__error" required) Label
+              chi-text-input(id="example__error" size="lg" state="danger" value="Error input" required)
+              .chi-label.-status.-danger
+                chi-icon(icon="circle-warning")
+                | Error message text  
+  .example-tabs.-pl--2
+    ul.chi-tabs#text-input-example-base
+      li.-active
+        a(href=`#webcomponent-text-input-base`) Web Component
+      li
+        a(href=`#html-text-input-base`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-text-input-base
+    :code(lang="html")
+      <!-- Base -->
+      <div class="chi-form__item">
+        <chi-label for="example__base">Label</chi-label>
+        <chi-text-input id="example__base" size="lg" value="Base input"></chi-text-input>
+      </div>
+
+      <!-- Placeholder -->
+      <div class="chi-form__item">
+        <chi-label for="example__placeholder">Label</chi-label>
+        <chi-text-input id="example__placeholder" size="lg" placeholder="Placeholder input"></chi-text-input>
+      </div>
+
+      <!-- Optional -->
+      <div class="chi-form__item">
+        <chi-label for="example__optional" optional>Label</chi-label>
+        <chi-text-input id="example__optional" size="lg" value="Optional input"></chi-text-input>
+      </div>
+
+      <!-- Required -->
+      <div class="chi-form__item">
+        <chi-label for="example__required" required>Label</chi-label>
+        <chi-text-input id="example__required" size="lg" value="Required input" required></chi-text-input>
+      </div>
+
+      <!-- Disabled -->
+      <div class="chi-form__item">
+        <chi-label for="example__disabled">Label</chi-label>
+        <chi-text-input id="example__disabled" size="lg" value="Disabled input" disabled></chi-text-input>
+      </div>
+
+      <!-- Error -->
+      <div class="chi-form__item">
+        <chi-label for="example__error" required>Label</chi-label>
+        <chi-text-input id="example__error" size="lg" state="danger" value="Error input" required></chi-text-input>
+        <div class="chi-label -status -danger">
+          <chi-icon icon="circle-warning"></chi-icon>
+          Error message text
+        </div>
+      </div>
+  .chi-tabs-panel#html-text-input-base
+    :code(lang="html")
+      <!-- Base -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__base">Label</label>
+        <input type="text" class="chi-input -lg" id="example__base" value="Base input">
+      </div>
+
+      <!-- Placeholder -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__placeholder">Label</label>
+        <input type="text" class="chi-input -lg" id="example__placeholder" placeholder="Placeholder input">
+      </div>
+
+      <!-- Optional -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__optional">
+          Label
+          <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
+        </label>
+        <input type="text" class="chi-inpu -lg" id="example__optional" value="Optional input">
+      </div>
+
+      <!-- Required -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__required">
+          Label
+          <abbr class="chi-label__required" title="Required field">*</abbr>
+        </label>
+        <input type="text" class="chi-input -lg" id="example__required" value="Required input" required>
+      </div>
+
+      <!-- Disabled -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__disabled">Label</label>
+        <input type="text" class="chi-input -lg" id="example__disabled" value="Disabled input">
+      </div>
+
+      <!-- Error -->
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__error">
+          Label
+          <abbr class="chi-label__required" title="Required field">*</abbr>
+        </label>
+        <input type="text" class="chi-input -lg -danger" id="example__error" value="Error input" required>
+        <div class="chi-label -status -danger">
+          <i class="chi-icon icon-circle-warning -icon--danger"></i>
+          Error message text
+        </div>
+      </div>
+
+h2 Select
+.example.-mb--3
+  .-p--3
+    .chi-form__item(style="max-width:20rem")
+      label.chi-label(for="example-select-base") Label
+      select(class="chi-select -lg -portal", id="example-select-base")
+        option(value="") Select
+        option Option 1
+        option Option 2
+        option Option 3
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example-select-base">Label</label>
+        <select class="chi-select -lg -portal" id="example-select-base">
+          <option value="">Select</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+      </div>
 
 h2 Alerts
 .example.-mb--3
@@ -1929,7 +2089,7 @@ script.
     'DOMContentLoaded',
     function() {
       chi.accordion(document.getElementById('example-portal'));
-      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+      chi.tab(document.querySelectorAll('.chi-grid__container .chi-tabs'));
       chi.popover(document.getElementById('example__help-button'));
       chi.popover(document.getElementById('example__help-button2'));
       chi.popover(document.getElementById('example__help-button3'));

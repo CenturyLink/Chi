@@ -614,6 +614,8 @@ $drawer-header-title-font-weight:           $font-weight-semi-bold;
 
 // Dropdown
 $dropdown-trigger-icon-color:               inherit;
+$dropdown-menu-border-radius:               $border-radius-base;
+$dropdown-menu-shadow:                      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
 $dropdown-menu-background-color:            $color-background-white;
 $dropdown-menu-item-height:                 2rem;
 $dropdown-menu-item-padding-left:           1rem;
@@ -1059,6 +1061,7 @@ $tabs-inverse-item-hover-text-color:        $color-text-secondary;
 
 // Text input
 $text-input-border-color:                   $color-border-base-dark;
+$text-input-border-radius:                  $border-radius-base;
 $text-input-text-color:                     $color-text-base;
 $text-input-placeholder-text-color:         $color-grey-50;
 $text-input-hover-border-color:             $color-grey-40;

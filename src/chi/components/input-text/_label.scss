@@ -43,14 +43,26 @@ label,
     color: $label-status-text-color;
     font-weight: $font-weight-normal;
     margin-top: 0.25rem;
+
+    .chi-icon {
+      margin: 0.125rem 0.375rem 0.125rem 0;
+    }
   }
 
   &.-danger {
     color: $label-status-danger-text-color;
+
+    .chi-icon {
+      color: $color-icon-danger;
+    }
   }
 
   &.-success {
     color: $label-status-success-text-color;
+
+    .chi-icon {
+      color: $color-icon-success;
+    }
   }
 
   .chi-label__required,

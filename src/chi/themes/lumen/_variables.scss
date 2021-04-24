@@ -588,6 +588,8 @@ $drawer-header-title-font-weight:           $font-weight-semi-bold;
 
 // Dropdown
 $dropdown-trigger-icon-color:               inherit;
+$dropdown-menu-border-radius:               $border-radius-base;
+$dropdown-menu-shadow:                      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
 $dropdown-menu-background-color:            $color-background-white;
 $dropdown-menu-item-height:                 2rem;
 $dropdown-menu-item-padding-left:           1rem;
@@ -772,13 +774,13 @@ $modal-footer-min-height:                   4rem;
 $modal-footer-padding:                      1rem;
 
 // Number input
-$number-input-border-color:                 $color-border-base-dark;
+$number-input-border-color:                 $color-border-base;
 $number-input-hover-border-color:           $color-grey-40;
 $number-input-text-color:                   $color-text-base;
 $number-input-danger-border-color:          $color-border-danger;
 $number-input-focus-border-color:           $focus-color;
 $number-input-disabled-background-color:    $color-grey-10;
-$number-input-disabled-border-color:        $color-border-base-dark;
+$number-input-disabled-border-color:        $color-border-base;
 $number-input-disabled-text-color:          $color-text-muted-light;
 
 $number-input-sm-height:                    1.5rem;
@@ -818,7 +820,7 @@ $number-input-expanded-lg-width:            10rem;
 $number-input-expanded-xl-width:            12rem;
 
 $number-input-expanded-button-disabled-background-color: $color-grey-10;
-$number-input-expanded-button-disabled-border-color: $color-border-base-dark;
+$number-input-expanded-button-disabled-border-color: $color-border-base;
 $number-input-expanded-button-disabled-text-color:  $color-text-muted-light;
 $number-input-expanded-button-disabled-icon-color: $color-icon-muted-light;
 $number-input-expanded-button-disabled-opacity: $opacity-100;
@@ -909,7 +911,7 @@ $range-slider-tick-border-color:            $color-border-base-dark;
 // Select
 $select-text-color:                         $color-text-base;
 $select-background-color:                   $color-background-white;
-$select-border-color:                       $color-border-base-dark;
+$select-border-color:                       $color-border-base;
 $select-hover-border-color:                 $color-grey-40;
 $select-focus-border-color:                 $focus-color;
 $select-danger-border-color:                $color-border-danger;
@@ -1027,13 +1029,14 @@ $tabs-inverse-item-active-text-color:       $color-text-white;
 $tabs-inverse-item-hover-text-color:        $color-text-white;
 
 // Text input
-$text-input-border-color:                   $color-border-base-dark;
+$text-input-border-color:                   $color-border-base;
+$text-input-border-radius:                  $border-radius-base;
 $text-input-text-color:                     $color-text-base;
 $text-input-placeholder-text-color:         $color-grey-50;
 $text-input-hover-border-color:             $color-grey-40;
 $text-input-focus-border-color:             $focus-color;
 $text-input-disabled-background-color:      $color-grey-10;
-$text-input-disabled-border-color:          $color-border-base-dark;
+$text-input-disabled-border-color:          $color-border-base;
 $text-input-disabled-text-color:            $color-text-muted-light;
 $text-input-disabled-icon-color:            $color-icon-muted;
 
@@ -1042,14 +1045,14 @@ $text-input-floating-label-opacity:         $opacity-60;
 $text-input-focus-floating-label-opacity:   $opacity-80;
 
 // Textarea
-$textarea-border-color:                     $color-border-base-dark;
+$textarea-border-color:                     $color-border-base;
 $textarea-hover-border-color:               $color-grey-40;
 $textarea-focus-border-color:               $focus-color;
 $textarea-text-color:                       $color-text-base;
 $textarea-placeholder-text-color:           $color-grey-50;
 
 $textarea-disabled-background-color:        $color-grey-10;
-$textarea-disabled-border-color:            $color-border-base-dark;
+$textarea-disabled-border-color:            $color-border-base;
 $textarea-disabled-text-color:              $color-text-muted-light;
 
 // Time picker
