@@ -750,7 +750,7 @@ $marketing-icon-size-md:                    6rem;
 $marketing-icon-size-lg:                    8rem;
 
 // Mobile navigation
-$mobile-nav-background-color:               $color-background-base-darker;
+$mobile-nav-background-color:               $color-grey-10;
 $mobile-nav-width:                          23rem;
 
 $mobile-nav-header-background-color:        $color-background-base;
@@ -760,6 +760,10 @@ $mobile-nav-logout-text-color:              $color-text-primary;
 $mobile-nav-list-item-text-color:           $color-text-base;
 $mobile-nav-list-item-active-text-color:    $color-text-primary;
 $mobile-nav-list-item-expanded-text-color:  $color-text-primary;
+$mobile-nav-list-item-hover-background-color: $color-grey-20;
+$mobile-nav-list-item-hover-text-color:     $color-text-base;
+$mobile-nav-list-item-active-background-color: $color-blue-20;
+$mobile-nav-list-item-icon-size:            1.25rem;
 
 // Modal
 $modal-animated-transition-duration:        0.5s;
@@ -948,13 +952,16 @@ $select-xl-arrow-background-position:       right 1rem center;
 $select-xl-padding:                         0 1.6875rem 0 0.75rem;
 
 // Sidenav
-$sidenav-background-color:                  $color-background-base-darker;
+$sidenav-background-color:                  $color-grey-10;
 $sidenav-border-color:                      transparent;
+$sidenav-item-icon-size:                    1.25rem;
+$sidenav-item-min-height:                   4.5rem;
 $sidenav-item-hover-border-color:           $color-border-secondary-dark;
-$sidenav-item-hover-background-color:       rgba($color-background-base-darkest, 0.5);
+$sidenav-item-hover-background-color:       $color-grey-20;
 $sidenav-item-active-border-color:          $color-border-primary;
-$sidenav-item-active-background-color:      rgba($color-blue-50, 0.12);
-$sidenav-drawer-header-background-color:    $color-background-muted-lighter;
+$sidenav-item-active-background-color:      $color-blue-20;
+$sidenav-drawer-header-background-color:    $color-background-base-dark;
+$sidenav-drawer-close-icon-color:           inherit;
 
 // Spinner
 $spinner-size-xs:                           0.75rem;
