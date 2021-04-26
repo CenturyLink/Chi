@@ -93,6 +93,15 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
     }
   }
 
+  &.-portal {
+    background-image: url('icon-chevron-thin-down-portal.svg');
+  }
+
+  &.-lg,
+  &.-xl {
+    background-size: 1rem;
+  }
+
   &:not([disabled]) {
     &.-danger {
       border-color: $select-danger-border-color;

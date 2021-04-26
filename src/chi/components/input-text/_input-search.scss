@@ -49,17 +49,17 @@
           padding-right: 3.75rem;
 
           &.-sm {
-            padding-right: 3.375rem;
+            padding-right: 3.5rem;
 
             ~ .chi-button,
             ~ chi-button {
               &.-icon {
                 &.-flat {
-                  right: 0.375rem;
+                  right: 0.25rem;
                 }
 
                 &.-close {
-                  right: 1.875rem;
+                  right: 1.75rem;
                   top: 0;
                 }
               }
