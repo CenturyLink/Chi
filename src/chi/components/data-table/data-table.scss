@@ -422,10 +422,10 @@ $sizes: (
   &.-portal {
     .chi-data-table__head {
       @include respond-to(md) {
-        background-color: $color-background-base-darker;
+        background-color: $color-background-muted-lighter;
 
         .chi-data-table__row {
-          background-color: $color-background-base-darker;
+          background-color: $color-background-muted-lighter;
 
           .chi-data-table__cell {
             border-bottom: 0.0625rem solid $color-border-base-dark;
@@ -664,6 +664,24 @@ $sizes: (
               + div {
                 margin-left: 0.5rem;
               }
+            }
+          }
+        }
+      }
+    }
+
+    @each $type in map-keys($sizes) {
+      &.-#{$type} {
+        @include respond-to(md) {
+          .chi-data-table__head {
+            .chi-data-table__cell {
+              padding: map-get(map-get($sizes, $type), padding);
+            }
+          }
+
+          .chi-data-table__body {
+            .chi-data-table__cell {
+              padding: map-get(map-get($sizes, $type), padding);
             }
           }
         }

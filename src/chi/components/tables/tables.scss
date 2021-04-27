@@ -176,7 +176,7 @@ $vertical-alignments: (top, bottom, middle);
     tr {
       th,
       .-th {
-        background-color: $color-background-base-darker;
+        background-color: $color-background-muted-lighter;
 
         &:not([scope='row']) {
           border-bottom: 0.0625rem solid $color-border-base-dark;
