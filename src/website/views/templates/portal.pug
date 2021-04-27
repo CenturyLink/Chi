@@ -194,6 +194,41 @@ h2 Select
         </select>
       </div>
 
+h2 Page Title
+.example.-mb--3
+  .-p--3
+    .-d--flex.-flex--column
+      a.chi-link(href='#')
+        .chi-link__content
+          i.chi-icon.icon-chevron-left.-xs
+          span.-text--md Ticketing
+      .-d--flex.-align-items--center
+        .-text--h3.-text--boldest.-text--navy.-m--0.-br--1.-pr--2
+          | Create Repair Ticket
+        .-text--md.-pl--2
+          | 1-HB23OP (Arizona State University)
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-disabled
+        a(href=`#webcomponent-base`) Web Component
+      li.-active
+        a(href=`#html-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base
+  .chi-tabs-panel.-active#html-base
+    :code(lang="html")
+      <div class="-d--flex -flex--column">
+        <a class="chi-link" href="#">
+          <div class="chi-link__content">
+            <i class="chi-icon icon-chevron-left -xs"></i>
+            <span class="-text--md">Ticketing</span>
+          </div>
+        </a>
+        <div class="-d--flex -align-items--center -mb--4">
+          <div class="-text--h3 -text--boldest -text--navy -m--0 -br--1 -pr--2">Create Repair Ticket</div>
+          <div class="-text--md -pl--2">1-HB23OP (Arizona State University)</div>
+        </div>
+      </div>
+
 h2 Alerts
 .example.-mb--3
   .-p--3
