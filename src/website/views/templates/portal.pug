@@ -2084,6 +2084,20 @@ h2 Picker Group
         </div>
       </fieldset>
 
+h2 Page-level actions
+p.-text
+  | Use to display action buttons at the bottom of the page on full-page forms.
+.example.-mb--3
+  .-p--3
+    .-d--flex.-align-items--center.-justify-content--end.-py--3.-my--2.-bt--1
+      button.chi-button.-primary.-outline.-lg.-uppercase.-px--4.-bg--white Cancel
+      button.chi-button.-primary.-lg.-uppercase.-px--4.-ml--1 Submit
+  :code(lang="html")
+    <div class="-d--flex -align-items--center -justify-content--end -py--3 -my--2 -bt--1">
+      <button class="chi-button -primary -outline -lg -uppercase -px--4 -bg--white">Cancel</button>
+      <button class="chi-button -primary -lg -uppercase -px--4 -ml--1">Submit</button>
+    </div>
+
 script.
   document.addEventListener(
     'DOMContentLoaded',
