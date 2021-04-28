@@ -15,7 +15,7 @@ $sizes: (
     padding: 1rem,
   ),
   xl: (
-    padding: 1.25rem,
+    padding: 1.25rem 1rem,
   )
 );
 
@@ -337,6 +337,20 @@ $sizes: (
 
         &::before {
           display: none;
+        }
+      }
+    }
+  }
+
+  .chi-data-table__row,
+  .chi-data-table__row-child,
+  .chi-data-table__row-grand-child {
+    @each $type in map-keys($sizes) {
+      &.-#{$type} {
+        @include respond-to(md) {
+          .chi-data-table__cell {
+            padding: map-get(map-get($sizes, $type), padding);
+          }
         }
       }
     }
@@ -728,6 +742,16 @@ $sizes: (
       &.-expanded {
         &::before {
           content: '\e974';
+        }
+      }
+
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
+          @include respond-to(md) {
+            .chi-data-table__cell {
+              padding: map-get(map-get($sizes, $type), padding);
+            }
+          }
         }
       }
     }
