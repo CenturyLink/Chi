@@ -639,7 +639,7 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
   .example.-mb--3
     .-p--3
       .chi-card.-portal(style="max-width:20rem;")
-        .chi-card__header.-sm
+        .chi-card__header
           .chi-card__title Title
         .chi-card__content
           .chi-card__caption
@@ -655,7 +655,7 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
     .chi-tabs-panel.-active#html-portal-base
       :code(lang="html")
         <div class="chi-card -portal">
-          <div class="chi-card__header -sm">
+          <div class="chi-card__header">
             <div class="chi-card__title">Title</div>
           </div>
           <div class="chi-card__content">
@@ -667,7 +667,7 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
   .example.-mb--3
     .-p--3
       .chi-card.-portal.-highlight(style="max-width:20rem;")
-        .chi-card__header.-sm
+        .chi-card__header
           .chi-card__title Title
         .chi-card__content
           .chi-card__caption
@@ -683,7 +683,7 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
     .chi-tabs-panel.-active#html-portal-highlight
       :code(lang="html")
         <div class="chi-card -portal -highlight">
-          <div class="chi-card__header -sm">
+          <div class="chi-card__header">
             <div class="chi-card__title">Title</div>
           </div>
           <div class="chi-card__content">
@@ -695,7 +695,7 @@ p.-text Reduce the size of the header and footer by applying the class <code>-sm
   p.-text Use portal themed cards with tabs for organizing Enterprise Portal card content into separate but related views.
   .example.-mb--3
     .-p--3
-      .chi-card.-portal(style="max-width:20rem;")
+      .chi-card.-portal
         .chi-card__tabs
           ul.chi-tabs.-xs
             li.-active
