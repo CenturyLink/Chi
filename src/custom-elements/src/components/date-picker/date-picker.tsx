@@ -1,8 +1,9 @@
 import { Component, Element, Listen, Method, Prop, Watch, h } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
-import { ESCAPE_KEYCODE, DataLocales, DatePickerModes, CHI_TIME_AUTO_SCROLL_DELAY } from '../../constants/constants';
+import { ESCAPE_KEYCODE, CHI_TIME_AUTO_SCROLL_DELAY, DataLocales, DatePickerModes, DateFormats } from '../../constants/constants';
 import dayjs, { Dayjs } from 'dayjs';
 import { TIME_CLASSES } from '../../constants/classes';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 @Component({
   tag: 'chi-date-picker',
@@ -32,7 +33,7 @@ export class DatePicker {
   /**
    * Date format used in the attributes and how it will be shown to the user.
    */
-  @Prop({ reflect: true }) format = 'MM/DD/YYYY';
+  @Prop({ reflect: true }) format: DateFormats = 'MM/DD/YYYY';
 
   /**
    *  to disable chi-date-picker.
@@ -130,11 +131,14 @@ export class DatePicker {
   }
 
   _checkDate() {
-    const minDate = dayjs(this.min);
-    const maxDate = dayjs(this.max);
+    dayjs.locale(this.locale);
+    dayjs.extend(customParseFormat);
+
+    const minDate = dayjs(this.min, this.format);
+    const maxDate = dayjs(this.max, this.format);
 
     const dateValid = (date) => {
-      const inputDate = dayjs(date);
+      const inputDate = dayjs(date, this.format);
 
       return inputDate.isValid() &&
         !this.checkIfExcluded(inputDate) &&
@@ -155,9 +159,9 @@ export class DatePicker {
       this.value = validatedDates.join(',');
       this._input.value = this.value;
     } else {
-      const inputDate = dayjs(this._input.value);
+      const inputDate = dayjs(this._input.value, this.format);
 
-      if (dayjs(this._input.value).isValid() && !this.checkIfExcluded(inputDate)) {
+      if (dayjs(this._input.value, this.format, true).isValid() && !this.checkIfExcluded(inputDate)) {
         if (
           dayjs(inputDate)
             .startOf('day')
@@ -176,7 +180,7 @@ export class DatePicker {
           this.value = this._input.value;
         }
       } else {
-        this.value = dayjs().format('MM/DD/YYYY');
+        this.value = dayjs().format(this.format);
         this._input.value = this.value;
       }
     }
@@ -312,7 +316,7 @@ export class DatePicker {
       excluded-dates={this.excludedDates}
       multiple={this.multiple}
     />;
-    const time = this.mode === 'datetime' ? <chi-time/> : null;
+    const time = this.mode === 'datetime' ? <chi-time /> : null;
     const popoverContent = this.mode === 'datetime' ?
       <div class="-d--flex">
         {date}
@@ -344,7 +348,7 @@ export class DatePicker {
             class={`chi-input
               ${this.active ? '-focus' : ''}`}
             type={`text`}
-            placeholder={this.mode === 'datetime' ? `MM/DD/YYYY, --:-- --` : `MM/DD/YYYY`}
+            placeholder={this.mode === 'datetime' ? `${this.format}, --:-- --` : this.format}
             ref={el => (this._input = el as HTMLInputElement)}
             value={(this.value && this.multiple) ?
                 String(this.value).replace(/,/g, ', ') :

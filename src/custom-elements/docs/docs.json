@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-04-30T04:25:45",
+  "timestamp": "2021-04-30T09:22:21",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -625,7 +625,7 @@
         },
         {
           "name": "format",
-          "type": "string",
+          "type": "\"DD/MM/YYYY\" | \"MM/DD/YYYY\" | \"YYYY/MM/DD\"",
           "mutable": false,
           "attr": "format",
           "reflectToAttr": true,
@@ -634,6 +634,15 @@
           "default": "'MM/DD/YYYY'",
           "values": [
             {
+              "value": "DD/MM/YYYY",
+              "type": "string"
+            },
+            {
+              "value": "MM/DD/YYYY",
+              "type": "string"
+            },
+            {
+              "value": "YYYY/MM/DD",
               "type": "string"
             }
           ],
@@ -879,7 +888,7 @@
         },
         {
           "name": "format",
-          "type": "string",
+          "type": "\"DD/MM/YYYY\" | \"MM/DD/YYYY\" | \"YYYY/MM/DD\"",
           "mutable": false,
           "attr": "format",
           "reflectToAttr": true,
@@ -888,6 +897,15 @@
           "default": "'MM/DD/YYYY'",
           "values": [
             {
+              "value": "DD/MM/YYYY",
+              "type": "string"
+            },
+            {
+              "value": "MM/DD/YYYY",
+              "type": "string"
+            },
+            {
+              "value": "YYYY/MM/DD",
               "type": "string"
             }
           ],

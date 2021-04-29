@@ -2,7 +2,7 @@ import { Component, Element, Listen, Method, Prop, h, Watch } from '@stencil/cor
 import { contains, uuid4 } from '../../utils/utils';
 import { CHI_TIME_AUTO_SCROLL_DELAY,
   ESCAPE_KEYCODE,
-  DatePickerFormats} from '../../constants/constants';
+  TimePickerFormats} from '../../constants/constants';
 import { TIME_CLASSES } from '../../constants/classes';
 
 @Component({
@@ -43,7 +43,7 @@ export class TimePicker {
   /**
    *  To define format of Time Picker.
    */
-  @Prop({ reflect: true }) format: DatePickerFormats = '12hr';
+  @Prop({ reflect: true }) format: TimePickerFormats = '12hr';
 
   /**
    * Indicates whether the time picker popover is open or closed

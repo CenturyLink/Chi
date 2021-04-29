@@ -111,14 +111,13 @@ describe('Date picker', function() {
     cy.get('[data-cy="test-input-combined"]')
       .find('input')
       .clear()
-      .type('12/31/2099')
+      .type('12/31/2100')
       .trigger('change')
       .get('[data-cy="test-input-combined"] input')
       .should('have.value', '12/31/2099');
   });
 
-  it('Date-picker should reset input value to Max if the introduced' +
-    'date is after the max date. ', function() {
+  it('Date-picker should reset input value to Today if the introduced date is invalid. ', function() {
     cy.get('[data-cy="test-input-combined"]')
       .find('input')
       .clear()
