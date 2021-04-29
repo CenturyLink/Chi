@@ -167,17 +167,118 @@ $icon-sizes: (
 
   &.-portal {
     .chi-accordion__item {
-      background-color: $color-background-base-dark;
+      background-color: $color-grey-10;
       border-bottom: 0;
 
       .chi-accordion__trigger {
-        background-color: $color-background-base-darkest;
+        background-color: $color-grey-10;
+        padding: 1.5rem;
+
+        .chi-icon {
+          color: $color-icon-primary;
+        }
+      }
+
+      .chi-accordion__title {
+        font-size: $font-size-xl;
+        line-height: $line-height-lg;
+      }
+
+      .chi-accordion__content {
+        padding: 1.5rem;
+        padding-top: 0;
       }
     }
 
-    .-portal {
-      .chi-accordion__content {
-        border: 0.0625rem solid $color-border-base;
+    .chi-accordion {
+      .chi-accordion__item {
+        background-color: $color-background-white;
+
+        .chi-accordion__title {
+          font-size: $font-size-lg;
+        }
+      }
+
+      .chi-accordion__trigger {
+        background-color: $color-background-white;
+      }
+
+      .chi-accordion {
+        .chi-accordion__item,
+        .chi-accordion__trigger {
+          background-color: $color-grey-10;
+        }
+
+        .chi-accordion {
+          .chi-accordion__item,
+          .chi-accordion__trigger {
+            background-color: $color-background-white;
+          }
+        }
+      }
+    }
+
+    &.-card {
+      .chi-accordion__item {
+        margin-bottom: 1.75rem;
+
+        &:not(.-expanded) {
+          border-bottom: 0.0625rem solid $color-border-base;
+        }
+
+        .chi-accordion__trigger {
+          background-color: $color-background-white;
+          padding: 0.5rem 0;
+
+          .chi-accordion__title {
+            font-size: $font-size-7;
+            font-weight: $font-weight-extra-bold;
+          }
+        }
+
+        .chi-accordion__content {
+          padding: 2rem;
+        }
+
+        .chi-accordion {
+          .chi-accordion__item {
+            background-color: $color-background-white;
+            border: 0;
+            margin-bottom: 0.5rem;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            .chi-accordion__title {
+              font-size: $font-size-lg;
+              font-weight: $font-weight-semi-bold;
+            }
+
+            .chi-accordion__content {
+              padding: 0 1.5rem 1.5rem;
+            }
+          }
+    
+          .chi-accordion__trigger {
+            background-color: $color-background-white;
+            padding: 1.5rem;
+          }
+    
+          .chi-accordion {
+            .chi-accordion__item,
+            .chi-accordion__trigger {
+              background-color: $color-grey-10;
+            }
+    
+            .chi-accordion {
+              .chi-accordion__item,
+              .chi-accordion__trigger {
+                background-color: $color-background-white;
+              }
+            }
+          }
+        }
       }
     }
   }

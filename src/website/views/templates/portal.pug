@@ -1958,6 +1958,7 @@ h2 Drawer
       <script>chi.drawer(document.getElementById('drawer-trigger'));</script>
 
 h2 Accordion
+h3 Base
 .example.-mb--3
   .-p--3
     .chi-accordion.-portal#example-portal
@@ -2048,6 +2049,379 @@ h2 Accordion
         chi.accordion(accordionPortal);
       </script>
 
+h3 Nested Accordions
+.example.-mb--3
+  .-p--3.-p-lg--6
+    .chi-accordion.-portal#example-nested
+      .chi-accordion__item.-expanded
+        button.chi-accordion__trigger
+          .chi-accordion__title
+            | Click me to expand Accordion
+          i.chi-icon.icon-chevron-down
+        .chi-accordion__content
+          .chi-accordion.-portal
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion 1
+                i.chi-icon.icon-chevron-down
+              .chi-accordion__content
+                p.chi-accordion__text Content goes here
+                .chi-accordion.-portal
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion 1.1
+                      i.chi-icon.icon-chevron-down
+                    .chi-accordion__content
+                      p.chi-accordion__text Content goes here
+                      .chi-accordion.-portal
+                        .chi-accordion__item
+                          button.chi-accordion__trigger
+                            .chi-accordion__title
+                              | Accordion 1.1.1
+                            i.chi-icon.icon-chevron-down
+                          .chi-accordion__content
+                            p.chi-accordion__text Content goes here
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion 1.2
+                      i.chi-icon.icon-chevron-down
+                    .chi-accordion__content
+                      p.chi-accordion__text Content goes here
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion 2
+                i.chi-icon.icon-chevron-down
+              .chi-accordion__content
+                p.chi-accordion__text Content goes here
+                .chi-accordion.-portal
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion 2.1
+                      i.chi-icon.icon-chevron-down
+                    .chi-accordion__content
+                      p.chi-accordion__text Content goes here
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-accordion-nested
+      li.-disabled
+        a(href=`#webcomponent-accordion-nested`) Web Component
+      li.-active
+        a(href=`#html-accordion-nested`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-accordion-nested
+  .chi-tabs-panel.-active#html-accordion-nested
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-accordion -portal" id="nested-accordions">
+        <div class="chi-accordion__item">
+          <button class="chi-accordion__trigger">
+            <div class="chi-accordion__title">Click me to expand Accordion</div>
+            <i class="chi-icon icon-chevron-down"></i>
+          </button>
+          <div class="chi-accordion__content">
+            <div class="chi-accordion -portal">
+              <div class="chi-accordion__item">
+                <button class="chi-accordion__trigger">
+                  <div class="chi-accordion__title">Accordion 1</div>
+                  <i class="chi-icon icon-chevron-down"></i>
+                </button>
+                <div class="chi-accordion__content">
+                  <p class="chi-accordion__text">Content goes here</p>
+                  <div class="chi-accordion -portal">
+                    <div class="chi-accordion__item">
+                      <button class="chi-accordion__trigger">
+                        <div class="chi-accordion__title">Accordion 1.1</div>
+                        <i class="chi-icon icon-chevron-down"></i>
+                      </button>
+                      <div class="chi-accordion__content">
+                        <p class="chi-accordion__text">Content goes here</p>
+                        <div class="chi-accordion -portal">
+                          <div class="chi-accordion__item">
+                            <button class="chi-accordion__trigger">
+                              <div class="chi-accordion__title">Accordion 1.1.1</div>
+                              <i class="chi-icon icon-chevron-down"></i>
+                            </button>
+                            <div class="chi-accordion__content">
+                              <p class="chi-accordion__text">Content goes here</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="chi-accordion -portal">
+                    <div class="chi-accordion__item">
+                      <button class="chi-accordion__trigger">
+                        <div class="chi-accordion__title">Accordion 1.2</div>
+                        <i class="chi-icon icon-chevron-down"></i>
+                      </button>
+                      <div class="chi-accordion__content">
+                        <p class="chi-accordion__text">Content goes here</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="chi-accordion__item">
+                <button class="chi-accordion__trigger">
+                  <div class="chi-accordion__title">Accordion 2</div>
+                  <i class="chi-icon icon-chevron-down"></i>
+                </button>
+                <div class="chi-accordion__content">
+                  <p class="chi-accordion__text">Content goes here</p>
+                  <div class="chi-accordion -portal">
+                    <div class="chi-accordion__item">
+                      <button class="chi-accordion__trigger">
+                        <div class="chi-accordion__title">Accordion 2.1</div>
+                        <i class="chi-icon icon-chevron-down"></i>
+                      </button>
+                      <div class="chi-accordion__content">
+                        <p class="chi-accordion__text">Content goes here</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const accordionNested = document.getElementById('nested-accordions');
+
+        chi.accordion(accordionNested);
+      </script>
+
+h3 Card Accordions
+.example.-mb--3
+  .-p--3
+    .chi-accordion.-portal.-card#example-accordion-card
+      .chi-accordion__item
+        button.chi-accordion__trigger
+          i.chi-icon.icon-chevron-down
+          .chi-accordion__title
+            | Accordion 1
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+      .chi-accordion__item.-expanded
+        button.chi-accordion__trigger
+          i.chi-icon.icon-chevron-down
+          .chi-accordion__title
+            | Accordion 2
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+      .chi-accordion__item
+        button.chi-accordion__trigger
+          i.chi-icon.icon-chevron-down
+          .chi-accordion__title
+            | Accordion 3 nested
+        .chi-accordion__content
+          .chi-accordion.-portal
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion 3.1
+                i.chi-icon.icon-chevron-down
+              .chi-accordion__content
+                p.chi-accordion__text Content goes here
+            .chi-accordion__item.-expanded
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion 3.2
+                i.chi-icon.icon-chevron-down
+              .chi-accordion__content
+                .chi-accordion.-portal
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion 3.2.1
+                      i.chi-icon.icon-chevron-down
+                    .chi-accordion__content
+                      p.chi-accordion__text Content goes here
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion 3.2.2
+                      i.chi-icon.icon-chevron-down
+                    .chi-accordion__content
+                      p.chi-accordion__text Content goes here
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion 3.2.3
+                      i.chi-icon.icon-chevron-down
+                    .chi-accordion__content
+                      p.chi-accordion__text Content goes here
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion 3.2.4
+                      i.chi-icon.icon-chevron-down
+                    .chi-accordion__content
+                      p.chi-accordion__text Content goes here
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion 3.3
+                i.chi-icon.icon-chevron-down
+              .chi-accordion__content
+                p.chi-accordion__text Content goes here
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion 3.4
+                i.chi-icon.icon-chevron-down
+              .chi-accordion__content
+                p.chi-accordion__text Content goes here
+      .chi-accordion__item
+        button.chi-accordion__trigger
+          i.chi-icon.icon-chevron-down
+          .chi-accordion__title
+            | Accordion 4
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-card-accordion
+      li.-disabled
+        a(href=`#webcomponent-card-accordion`) Web Component
+      li.-active
+        a(href=`#html-card-accordion`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-card-accordion
+  .chi-tabs-panel.-active#html-card-accordion
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-accordion -portal -card" id="example-accordion-card">
+        <div class="chi-accordion__item">
+          <button class="chi-accordion__trigger">
+            <i class="chi-icon icon-chevron-down"></i>
+            <div class="chi-accordion__title">Accordion 1</div>
+          </button>
+          <div class="chi-accordion__content">
+            <p class="chi-accordion__text">Content goes here</p>
+          </div>
+        </div>
+        <div class="chi-accordion__item -expanded">
+          <button class="chi-accordion__trigger">
+            <i class="chi-icon icon-chevron-down"></i>
+            <div class="chi-accordion__title">Accordion 2</div>
+          </button>
+          <div class="chi-accordion__content">
+            <p class="chi-accordion__text">Content goes here</p>
+          </div>
+        </div>
+        <div class="chi-accordion__item">
+          <button class="chi-accordion__trigger">
+            <i class="chi-icon icon-chevron-down"></i>
+            <div class="chi-accordion__title">Accordion 3 nested</div>
+          </button>
+          <div class="chi-accordion__content">
+            <div class="chi-accordion -portal">
+              <div class="chi-accordion__item">
+                <button class="chi-accordion__trigger">
+                  <i class="chi-icon icon-chevron-down"></i>
+                  <div class="chi-accordion__title">Accordion 3.1</div>
+                </button>
+                <div class="chi-accordion__content">
+                  <p class="chi-accordion__text">Content goes here</p>
+                </div>
+              </div>
+              <div class="chi-accordion__item -expanded">
+                <button class="chi-accordion__trigger">
+                  <i class="chi-icon icon-chevron-down"></i>
+                  <div class="chi-accordion__title">Accordion 3.2</div>
+                </button>
+                <div class="chi-accordion__content">
+                  <div class="chi-accordion -portal">
+                    <div class="chi-accordion__item">
+                      <button class="chi-accordion__trigger">
+                        <i class="chi-icon icon-chevron-down"></i>
+                        <div class="chi-accordion__title">Accordion 3.2.1</div>
+                      </button>
+                      <div class="chi-accordion__content">
+                        <p class="chi-accordion__text">Content goes here</p>
+                      </div>
+                    </div>
+                    <div class="chi-accordion__item">
+                      <button class="chi-accordion__trigger">
+                        <i class="chi-icon icon-chevron-down"></i>
+                        <div class="chi-accordion__title">Accordion 3.2.2</div>
+                      </button>
+                      <div class="chi-accordion__content">
+                        <p class="chi-accordion__text">Content goes here</p>
+                      </div>
+                    </div>
+                    <div class="chi-accordion__item">
+                      <button class="chi-accordion__trigger">
+                        <i class="chi-icon icon-chevron-down"></i>
+                        <div class="chi-accordion__title">Accordion 3.2.3</div>
+                      </button>
+                      <div class="chi-accordion__content">
+                        <p class="chi-accordion__text">Content goes here</p>
+                      </div>
+                    </div>
+                    <div class="chi-accordion__item">
+                      <button class="chi-accordion__trigger">
+                        <i class="chi-icon icon-chevron-down"></i>
+                        <div class="chi-accordion__title">Accordion 3.2.4</div>
+                      </button>
+                      <div class="chi-accordion__content">
+                        <p class="chi-accordion__text">Content goes here</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="chi-accordion__item">
+                <button class="chi-accordion__trigger">
+                  <i class="chi-icon icon-chevron-down"></i>
+                  <div class="chi-accordion__title">Accordion 3.3 nested</div>
+                </button>
+                <div class="chi-accordion__content">
+                  <p class="chi-accordion__text">Content goes here</p>
+                </div>
+              </div>
+              <div class="chi-accordion__item">
+                <button class="chi-accordion__trigger">
+                  <i class="chi-icon icon-chevron-down"></i>
+                  <div class="chi-accordion__title">Accordion 3.4</div>
+                </button>
+                <div class="chi-accordion__content">
+                  <p class="chi-accordion__text">Content goes here</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-accordion__item">
+          <button class="chi-accordion__trigger">
+            <i class="chi-icon icon-chevron-down"></i>
+            <div class="chi-accordion__title">Accordion 4</div>
+          </button>
+          <div class="chi-accordion__content">
+            <p class="chi-accordion__text">Content goes here</p>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        const accordionCard = document.getElementById('example-accordion-card');
+
+        chi.accordion(accordionCard);
+      </script>
+
+
 h2 Picker Group
 .example.-mb--3
   .-p--3
@@ -2103,6 +2477,8 @@ script.
     'DOMContentLoaded',
     function() {
       chi.accordion(document.getElementById('example-portal'));
+      chi.accordion(document.getElementById('example-nested'));
+      chi.accordion(document.getElementById('example-accordion-card'));
       chi.tab(document.querySelectorAll('.chi-grid__container .chi-tabs'));
       chi.popover(document.getElementById('example__help-button'));
       chi.popover(document.getElementById('example__help-button2'));
