@@ -44,7 +44,7 @@ $sidenav-lg-width: 12.5rem;
       align-items: center;
       display: flex;
       flex-direction: column;
-      font-size: $font-size-sm;
+      font-size: $font-size-xs;
       font-weight: $font-weight-semi-bold;
       justify-content: center;
       min-height: 3rem;
@@ -55,6 +55,13 @@ $sidenav-lg-width: 12.5rem;
         display: none;
         line-height: 1rem;
         text-align: center;
+      }
+
+      .chi-icon {
+        font-size: $sidenav-item-icon-size;
+        line-height: $sidenav-item-icon-size;
+        height: $sidenav-item-icon-size;
+        width: $sidenav-item-icon-size;
       }
     }
 
@@ -95,13 +102,22 @@ $sidenav-lg-width: 12.5rem;
       background-color: $sidenav-drawer-header-background-color;
       color: $color-text-base;
       display: flex;
-      height: 4rem;
+      height: 3.5rem;
       padding-left: 1.5rem;
 
       .chi-button {
         &.-close {
+          padding: 0.3125rem;
           right: 1rem;
           top: 1rem;
+
+          .chi-icon {
+            color: $sidenav-drawer-close-icon-color;
+            font-size: 0.75rem;
+            line-height: 0.75rem;
+            height: 0.75rem;
+            width: 0.75rem;
+          }
         }
       }
     }
@@ -345,7 +361,7 @@ $sidenav-lg-width: 12.5rem;
 
     &__list > li {
       > a {
-        min-height: 4rem;
+        min-height: $sidenav-item-min-height;
 
         // sass-lint:disable-block no-universal-selectors
         > *:not(.chi-icon) {
@@ -406,7 +422,7 @@ $sidenav-lg-width: 12.5rem;
         min-height: 4rem;
 
         @include respond-to(lg) {
-          font-size: 0.8125rem;
+          font-size: $font-size-xs;
           padding-left: 0.5rem;
         }
 

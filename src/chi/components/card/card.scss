@@ -226,28 +226,35 @@
   // Portal
 
   &.-portal {
-    background-color: $color-grey-15;
+    background-color: $color-grey-10;
     border: 0;
     border-radius: 0;
 
     .chi-card__header {
       align-items: center;
-      background-color: $color-grey-25;
+      background-color: $color-background-white;
       box-shadow: none;
+      padding: 0.5rem 0;
+    }
+
+    .chi-card__content {
+      padding: 2rem;
     }
 
     .chi-card__title {
-      font-size: $font-size-base;
+      font-size: $font-size-7;
+      font-weight: $font-weight-extra-bold;
     }
 
     .chi-card__tabs {
       align-items: center;
-      background-color: $color-grey-25;
       display: flex;
+      padding: 1rem 2rem 0;
 
       .chi-card__title {
         + .chi-tabs {
           margin-left: 2rem;
+          width: auto;
 
           &::before {
             border-left: 0.0625rem solid $color-grey-50;
@@ -259,6 +266,9 @@
       }
 
       .chi-tabs {
+        border-bottom: 0.125rem solid $color-border-base;
+        width: 100%;
+
         &.-sm {
           height: 2.5rem;
 
@@ -281,7 +291,7 @@
       background-color: $color-background-secondary-light;
 
       .chi-card__header {
-        background-color: $color-cyan-40;
+        background-color: $color-background-white;
       }
     }
   }

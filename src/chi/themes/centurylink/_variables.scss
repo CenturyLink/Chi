@@ -790,6 +790,10 @@ $mobile-nav-logout-text-color:              $color-text-primary;
 $mobile-nav-list-item-text-color:           $color-text-base;
 $mobile-nav-list-item-active-text-color:    $color-text-primary;
 $mobile-nav-list-item-expanded-text-color:  $color-text-primary;
+$mobile-nav-list-item-hover-background-color: $color-grey-20;
+$mobile-nav-list-item-hover-text-color:     $color-text-base;
+$mobile-nav-list-item-active-background-color: inherit;
+$mobile-nav-list-item-icon-size:            1.25rem;
 
 // Modal
 $modal-animated-transition-duration:        0.5s;
@@ -980,11 +984,14 @@ $select-xl-padding:                         0 1.6875rem 0 0.75rem;
 // Sidenav
 $sidenav-background-color:                  $color-background-base;
 $sidenav-border-color:                      $color-border-base;
+$sidenav-item-icon-size:                    1.25rem;
+$sidenav-item-min-height:                   4.5rem;
 $sidenav-item-hover-border-color:           $color-border-dark;
 $sidenav-item-hover-background-color:       $color-background-base-darker;
 $sidenav-item-active-border-color:          $color-border-primary;
 $sidenav-item-active-background-color:      $color-background-primary-light;
 $sidenav-drawer-header-background-color:    $color-background-base;
+$sidenav-drawer-close-icon-color:           inherit;
 
 // Spinner
 $spinner-size-xs:                           0.75rem;

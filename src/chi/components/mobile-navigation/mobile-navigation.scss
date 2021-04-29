@@ -34,7 +34,13 @@
       display: flex;
       justify-content: center;
       min-height: 3.5rem;
-      padding: 0.75rem 3rem 0.5rem;
+      padding: 0.5rem 3rem;
+
+      .chi-button {
+        &.chi-dropdown__trigger {
+          font-size: $font-size-lg;
+        }
+      }
 
       .chi-mobile-nav__header-title {
         font-size: 1rem;
@@ -61,7 +67,27 @@
           &.-icons {
             > li {
               a {
-                padding: 0.75rem 0 0.75rem 3.5rem;
+                line-height: $line-height-md;
+                padding: 0.625rem 0 0.625rem 3.5rem;
+
+                &:hover {
+                  background-color: $mobile-nav-list-item-hover-background-color;
+                }
+
+                & > .chi-icon {
+                  font-size: $mobile-nav-list-item-icon-size;
+                  height: $mobile-nav-list-item-icon-size;
+                  line-height: $mobile-nav-list-item-icon-size;
+                  width: $mobile-nav-list-item-icon-size;
+                }
+              }
+
+              &:not(.-active) {
+                a {
+                  &:hover {
+                    color: $mobile-nav-list-item-hover-text-color;
+                  }
+                }
               }
             }
           }
@@ -83,7 +109,7 @@
     .chi-mobile-nav__user {
       align-items: center;
       background-color: $mobile-nav-user-background-color;
-      border-top: 0.125rem solid $mobile-nav-user-border-color;
+      border-top: 0.0625rem solid $mobile-nav-user-border-color;
       display: flex;
       justify-content: space-between;
       padding: 0.25rem 1rem;
@@ -100,8 +126,11 @@
     }
 
     .chi-mobile-nav__logout {
+      align-items: center;
       color: $mobile-nav-logout-text-color;
-      padding: 0.25rem 1rem;
+      cursor: pointer;
+      display: flex;
+      padding: 0.625rem 1rem 0.625rem 1.625rem;
 
       & > span {
         font-size: 0.875rem;
@@ -109,7 +138,17 @@
       }
 
       .chi-icon {
-        margin-left: 0.5rem;
+        &:first-child {
+          margin-right: 0.875rem;
+        }
+
+        &:last-child {
+          margin-left: 0.5rem;
+        }
+      }
+
+      &:hover {
+        background-color: $mobile-nav-list-item-hover-background-color;
       }
     }
 
@@ -130,6 +169,7 @@
           padding-top: 0.625rem;
 
           &:hover {
+            background-color: $mobile-nav-list-item-hover-background-color;
             text-decoration: none;
           }
         }
@@ -153,6 +193,13 @@
 
             .chi-mobile-nav__list-title {
               font-weight: $font-weight-semi-bold;
+            }
+          }
+
+          .chi-mobile-nav-item-tab {
+            &:hover {
+              background-color: $mobile-nav-list-item-hover-background-color;
+              color: $mobile-nav-list-item-hover-text-color;
             }
           }
 
