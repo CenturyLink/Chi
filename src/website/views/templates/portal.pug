@@ -194,6 +194,121 @@ h2 Select
         </select>
       </div>
 
+h2 Page Title
+h3 Base
+.example.-mb--3
+  .-p--3
+    .-d--flex.-flex--column
+      .-d--flex.-align-items--center
+        .-text--h3.-text--boldest.-text--navy.-m--0.-pr--2
+          | Ticketing
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-pagetitle-base
+      li.-disabled
+        a(href=`#webcomponent-pagetitle-base`) Web Component
+      li.-active
+        a(href=`#html-pagetitle-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-pagetitle-base
+  .chi-tabs-panel.-active#html-pagetitle-base
+    :code(lang="html")
+      <div class="-d--flex -flex--column">
+        <div class="-d--flex -align-items--center -mb--4">
+          <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">Ticketing</div>
+        </div>
+      </div>
+h3 With help
+.example.-mb--3
+  .-p--3
+    .-d--flex.-flex--column
+      .-d--flex.-align-items--center
+        .-text--h3.-text--boldest.-text--navy.-br--1.-m--0.-pr--2
+          | Ticketing
+        a.chi-button.-icon.-flat.-primary.-lg.-bg--none.-b--transparent.-opacity-hover--80(href='#' aria-label='Button action')
+          .chi-button__content
+            i.chi-icon.icon-circle-question-outline
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-pagetitle-help
+      li.-disabled
+        a(href=`#webcomponent-pagetitle-help`) Web Component
+      li.-active
+        a(href=`#html-pagetitle-help`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-pagetitle-help
+  .chi-tabs-panel.-active#html-pagetitle-help
+    :code(lang="html")
+      <div class="-d--flex -flex--column">
+        <div class="-d--flex -align-items--center -mb--4">
+          <div class="-text--h3 -text--boldest -text--navy -br--1 -m--0 -pr--2">Ticketing</div>
+          <a class="chi-button -icon -flat -primary -lg -bg--none -b--transparent -opacity-hover--80" href="#" aria-label="Button action">
+            <div class="chi-button__content"><i class="chi-icon icon-circle-question-outline"></i></div>
+          </a>
+        </div>
+      </div>
+h3 With back link
+.example.-mb--3
+  .-p--3
+    .-d--flex.-flex--column
+      a.chi-link(href='#')
+        .chi-link__content
+          i.chi-icon.icon-chevron-left.-xs
+          span.-text--md Ticketing
+      .-d--flex.-align-items--center
+        .-text--h3.-text--boldest.-text--navy.-m--0.-pr--2
+          | Create Repair Ticket
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-pagetitle-backlink
+      li.-disabled
+        a(href=`#webcomponent-pagetitle-backlink`) Web Component
+      li.-active
+        a(href=`#html-pagetitle-backlink`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-pagetitle-backlink
+  .chi-tabs-panel.-active#html-pagetitle-backlink
+    :code(lang="html")
+      <div class="-d--flex -flex--column">
+        <a class="chi-link" href="#">
+          <div class="chi-link__content">
+            <i class="chi-icon icon-chevron-left -xs"></i>
+            <span class="-text--md">Ticketing</span>
+          </div>
+        </a>
+        <div class="-d--flex -align-items--center -mb--4">
+          <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">Create Repair Ticket</div>
+        </div>
+      </div>
+h3 With back link and subtitle
+.example.-mb--3
+  .-p--3
+    .-d--flex.-flex--column
+      a.chi-link(href='#')
+        .chi-link__content
+          i.chi-icon.icon-chevron-left.-xs
+          span.-text--md Ticketing
+      .-d--flex.-align-items--center
+        .-text--h3.-text--boldest.-text--navy.-m--0.-br--1.-pr--2
+          | Create Repair Ticket
+        .-text--md.-pl--2
+          | 1-HB23OP (Arizona State University)
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-pagetitle-subtitle
+      li.-disabled
+        a(href=`#webcomponent-pagetitle-subtitle`) Web Component
+      li.-active
+        a(href=`#html-pagetitle-subtitle`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-pagetitle-subtitle
+  .chi-tabs-panel.-active#html-pagetitle-subtitle
+    :code(lang="html")
+      <div class="-d--flex -flex--column">
+        <a class="chi-link" href="#">
+          <div class="chi-link__content">
+            <i class="chi-icon icon-chevron-left -xs"></i>
+            <span class="-text--md">Ticketing</span>
+          </div>
+        </a>
+        <div class="-d--flex -align-items--center -mb--4">
+          <div class="-text--h3 -text--boldest -text--navy -m--0 -br--1 -pr--2">Create Repair Ticket</div>
+          <div class="-text--md -pl--2">1-HB23OP (Arizona State University)</div>
+        </div>
+      </div>
+
 h2 Alerts
 .example.-mb--3
   .-p--3
