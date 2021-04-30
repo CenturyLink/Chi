@@ -29,7 +29,7 @@ if (window.attachEvent) {
       };
       window.onload = newOnLoad;
   } else {
-      window.onload = executeOnLoadCallbacks;
+    window.onload = executeOnLoadCallbacks;
   }
 }
 
@@ -64,11 +64,11 @@ function addId(item) {
   processedAnchors.all.push(id);
 }
 
-function enableCopyToClipboardFeature (preElem) {
+function enableCopyToClipboardFeature(preElem) {
 
   const code = preElem.childNodes && preElem.childNodes[0];
 
-  if ( code.nodeName !== 'CODE' || !code.textContent ) {
+  if (code.nodeName !== 'CODE' || !code.textContent) {
     return;
   }
 
@@ -137,9 +137,9 @@ onLoad(() => {
       if (docs && docs.contains(heading)) {
         anchors.push(heading);
       }
-  });
+    });
 
- // Polyfill element.closest IE9+
+  // Polyfill element.closest IE9+
   if (!Element.prototype.matches) {
     Element.prototype.matches = Element.prototype.msMatchesSelector ||
       Element.prototype.webkitMatchesSelector;
@@ -170,11 +170,11 @@ onLoad(() => {
       spanContainer.appendChild(anchorLink);
       anchorLink.textContent = '#';
       anchorLink.setAttribute('class', '-ml--1');
-      anchorLink.setAttribute('href', paramTheme + '#'+anchor.id);
+      anchorLink.setAttribute('href', paramTheme + '#' + anchor.id);
       anchor.appendChild(spanContainer);
-      if (window.location.hash === '#'+anchor.id) {
+      if (window.location.hash === '#' + anchor.id) {
         window.location.hash = '#';
-        window.location.hash = '#'+anchor.id;
+        window.location.hash = '#' + anchor.id;
       }
     }
   });
@@ -202,7 +202,7 @@ onLoad(() => {
       }
     }
 
-    Array.prototype.forEach.call(document.querySelectorAll('article.docs-article > section.chi-grid__container > .chi-tabs-panel'), function (tabContent) {
+    Array.prototype.forEach.call(document.querySelectorAll('article.docs-article > section.chi-grid__container > .chi-tabs-panel'), function(tabContent) {
       if (document.querySelector(`article ${urlHash}`)) {
         tabContent.classList.remove('-active');
       }
@@ -233,19 +233,24 @@ onLoad(() => {
     faviconSvg: document.getElementById('favicon-svg'),
     faviconIco: document.getElementById('favicon-ico')
   };
+  var rootUrl = window.location.hostname === 'assets.ctl.io' ?
+    'https://assets.ctl.io/chi/' + window.chiCurrentVersion + '/' :
+    window.location.hostname === 'assets-dev.ctl.io' ?
+      'https://assets-dev.ctl.io/chi/staging/' : '/';
+
   var themes = {
     Lumen: {
-      chiCss: '/chi.css',
-      docsCss: '/assets/themes/lumen/docs.css',
-      faviconSvg: '/assets/themes/lumen/images/favicon.svg',
-      faviconIco: '/assets/themes/lumen/images/favicon.ico',
+      chiCss: rootUrl + 'chi.css',
+      docsCss: rootUrl + 'assets/themes/lumen/docs.css',
+      faviconSvg: rootUrl + 'assets/themes/lumen/images/favicon.svg',
+      faviconIco: rootUrl + 'assets/themes/lumen/images/favicon.ico',
       trigger: '.theme-trigger-lumen'
     },
     CenturyLink: {
-      chiCss: '/chi-centurylink.css',
-      docsCss: '/assets/themes/centurylink/docs.css',
-      faviconSvg: '/assets/themes/centurylink/images/favicon.svg',
-      faviconIco: '/assets/themes/centurylink/images/favicon.ico',
+      chiCss: rootUrl + 'chi-centurylink.css',
+      docsCss: rootUrl + 'assets/themes/centurylink/docs.css',
+      faviconSvg: rootUrl + 'assets/themes/centurylink/images/favicon.svg',
+      faviconIco: rootUrl + 'assets/themes/centurylink/images/favicon.ico',
       trigger: '.theme-trigger-centurylink'
     }
   };
@@ -257,8 +262,8 @@ onLoad(() => {
           const anchorLink = anchor.querySelector('a');
           const paramTheme = window.theme ? `?theme=${window.theme}` : '';
 
-          anchorLink.setAttribute('href', paramTheme + '#'+anchor.id);
-      });
+          anchorLink.setAttribute('href', paramTheme + '#' + anchor.id);
+        });
     }
   }
 
@@ -330,15 +335,15 @@ onLoad(() => {
 
   if (urlThemeParam && themes.hasOwnProperty(urlThemeParam)) {
     switchTheme(urlThemeParam,
-    document.querySelector(themes[urlThemeParam].trigger));
+      document.querySelector(themes[urlThemeParam].trigger));
   } else if (window.localStorage.getItem('chiTheme')) {
     const localStorageTheme = window.localStorage.getItem('chiTheme');
 
     switchTheme(localStorageTheme,
-    document.querySelector(themes[localStorageTheme].trigger));
+      document.querySelector(themes[localStorageTheme].trigger));
   } else {
     switchTheme('Lumen',
-    document.querySelector(themes.Lumen.trigger));
+      document.querySelector(themes.Lumen.trigger));
   }
 
   chi.dropdown(document.querySelectorAll('.-theme-switch'));

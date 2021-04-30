@@ -7,7 +7,7 @@ import {
   h, Element
 } from '@stencil/core';
 import { TIME_CLASSES, ACTIVE_CLASS, DISABLED_CLASS } from '../../constants/classes';
-import { CHI_TIME_SCROLL_ADJUSTMENT, DatePickerFormats } from '../../constants/constants';
+import { CHI_TIME_SCROLL_ADJUSTMENT, TimePickerFormats } from '../../constants/constants';
 
 @Component({
   tag: 'chi-time',
@@ -28,7 +28,7 @@ export class Time {
   /**
    * To render Time Picker in 24 hours format
    */
-  @Prop({ reflect: true }) format: DatePickerFormats = '12hr';
+  @Prop({ reflect: true }) format: TimePickerFormats = '12hr';
 
   /**
    * To render Minutes and Seconds columns in stepped format

@@ -9,13 +9,14 @@ import {
   h
 } from '@stencil/core';
 import dayjs, { Dayjs } from 'dayjs';
-import { CLASSES, DataLocales } from '../../constants/constants';
+import { CLASSES, DataLocales, DateFormats } from '../../constants/constants';
 import 'dayjs/locale/es';
 import 'dayjs/locale/pt';
 import 'dayjs/locale/fr';
 import 'dayjs/locale/de';
 import 'dayjs/locale/ja';
 import 'dayjs/locale/zh';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 const WEEK_CLASS_PART = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
@@ -48,7 +49,7 @@ export class Date {
   /**
    * Date format used in the attributes and how it will be shown to the user.
    */
-  @Prop({ reflect: true }) format = 'MM/DD/YYYY';
+  @Prop({ reflect: true }) format: DateFormats = 'MM/DD/YYYY';
 
   /**
    * To specify which days of week to disable
@@ -190,6 +191,7 @@ export class Date {
 
   private _initCalendarViewModel(): void {
     dayjs.locale(this.locale);
+    dayjs.extend(customParseFormat);
 
     const week: Dayjs[] = [];
     const startOfWeek = dayjs().startOf('week');

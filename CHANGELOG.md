@@ -1,6 +1,8 @@
 # CHANGELOG
 ## 4.1.0 (April 30, 2021)
 ### Components
+#### Added
+* Added: Date and Date Picker web components now support format customization.
 #### Changed
 * Changed: Lumen and Portal themed form fields now render with a 4px border-radius.
 * Changed: Lumen and Portal themed form field border colors have been lightened.

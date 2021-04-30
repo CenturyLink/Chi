@@ -73,7 +73,7 @@ publish_chi_vue() {
     cd /chi/src/chi-vue
     unbuffer npm run build:component 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
     unbuffer npm pack
-    unbuffer npm login --scope=@centurylinkcloud
+    unbuffer npm login --scope=@centurylink
     unbuffer npm publish
 }
 
@@ -82,7 +82,7 @@ publish_chi_vue_beta() {
     cd /chi/src/chi-vue
     unbuffer npm run build:component 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
     unbuffer npm pack
-    unbuffer npm login --scope=@centurylinkcloud
+    unbuffer npm login --scope=@centurylink
     unbuffer npm publish --tag beta
 }
 
