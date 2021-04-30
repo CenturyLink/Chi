@@ -1,4 +1,41 @@
 # CHANGELOG
+## 4.1.0 (April 30, 2021)
+### Components
+#### Changed
+* Changed: Lumen and Portal themed form fields now render with a 4px border-radius.
+* Changed: Lumen and Portal themed form field border colors have been lightened.
+* Changed: Portal themed Accordion item background-color, padding, font-size, and font-weight have been updated.
+* Changed: Portal themed Card header background-color has been changed to white.
+* Changed: Portal themed Card content background-color and padding have been updated.
+* Changed: Portal themed Cards with tabs now render with a bottom border.
+* Changed: Portal themed Card title font-size and font-weight has been increased.
+* Changed: Portal themed Icon buttons now render base icons 4px larger.
+* Changed: Portal themed Table row colors have been lightened.
+* Changed: Portal themed Table and Data table body now render with a border.
+* Changed: Header navbar menu link font-size has been increased for `-lg` size headers.
+* Changed: Header navbar menu Contact Us link no longer includes an icon.
+* Changed: Header navbar menu link margin has been increased for `-lg` size headers.
+* Changed: Header brand margin-right has been increased for `-lg` size headers.
+* Changed: Header impersonation bar background-color has been lightened.
+* Changed: Mobile nav background-color has been lightened.
+* Changed: Mobile nav item icon size has increased.
+* Changed: Sidenav item icon size has increased.
+* Changed: Sidenav item min-height has increased.
+* Changed: Sidenav background-color has been lightened.
+### Documentation
+#### Added
+* Added: Portal templates for `-lg` size headers.
+* Added: Portal templates for Page Titles.
+* Added: Portal templates for nested and card Accordions.
+* Added: Portal templates for form field states.
+* Added: Portal template for page-level actions.
+#### Changed
+* Changed: Portal Table templates have been updated to reflect new style guidelines.
+* Changed: Portal Accordion templates have been updated to reflect new style guidelines.
+* Changed: Portal Tab templates have been updated to reflect new style guidelines.
+* Changed: Portal Button templates have been updated to reflect new style guidelines.
+* Changed: Portal Pagination templates have been updated to reflect new style guidelines.
+
 ## 4.0.0 (April 23, 2021)
 ### Components
 #### Added

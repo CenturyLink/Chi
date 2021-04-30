@@ -239,6 +239,14 @@
 
     .chi-card__content {
       padding: 2rem;
+
+      .chi-table {
+        &.-portal {
+          &:not(.-bordered) {
+            border: 0.0625rem solid $color-grey-15;
+          }
+        }
+      }
     }
 
     .chi-card__title {
