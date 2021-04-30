@@ -275,6 +275,15 @@
                   }
                 }
               }
+
+              &.-active {
+                a {
+                  &,
+                  &:hover {
+                    background-color: $mobile-nav-list-item-active-background-color;
+                  }
+                }
+              }
             }
           }
         }

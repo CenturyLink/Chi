@@ -225,18 +225,18 @@ $vertical-alignments: (top, bottom, middle);
     tbody {
       tr {
         &:nth-child(even) {
-          background-color: $color-background-primary-lighter;
+          background-color: $color-navy-10;
         }
 
         &.-active {
           td {
-            background-color: $color-background-primary-light;
+            background-color: $color-navy-20;
           }
         }
 
         &:hover,
         &.-hover {
-          background-color: $color-background-primary-light;
+          background-color: $color-navy-20;
         }
 
         td {
@@ -249,7 +249,7 @@ $vertical-alignments: (top, bottom, middle);
       tbody {
         tr {
           &:nth-child(even) {
-            background-color: $color-background-primary-lighter;
+            background-color: $color-navy-10;
           }
 
           &:nth-child(odd) {
@@ -266,7 +266,7 @@ $vertical-alignments: (top, bottom, middle);
         tr {
           &:hover,
           &.-hover {
-            background-color: $table-row-hover-background-color;
+            background-color: $color-navy-20;
           }
         }
       }

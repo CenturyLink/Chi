@@ -329,6 +329,15 @@
       min-width: 30rem;
     }
   }
+
+  // Portal
+  &.-portal {
+    .chi-dropdown__trigger {
+      &::after {
+        color: $color-icon-primary;
+      }
+    }
+  }
 }
 
 .chi-dropdown__hover:hover,

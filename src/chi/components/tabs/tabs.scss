@@ -269,7 +269,7 @@
         }
 
         &:hover {
-          background-color: $color-grey-25;
+          background-color: $color-grey-20;
           color: $color-text-base;
 
           .chi-button {
@@ -486,6 +486,20 @@
       & > a {
         line-height: $line-height-lg;
       }
+    }
+  }
+
+  &.-portal {
+    & > li {
+      & > a {
+        font-size: $font-size-lg;
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    &.-border {
+      border-bottom: 0.125rem solid $color-border-base;
+
     }
   }
 }

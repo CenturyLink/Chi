@@ -112,6 +112,11 @@
         position: absolute;
         top: 0;
         z-index: 1;
+
+        &.-dark {
+          background-color: $color-navy-100;
+          border-color: $color-navy-100;
+        }
       }
     }
 
@@ -509,7 +514,7 @@
         width: 9.0625rem;
 
         @include respond-to(md) {
-          margin: 0 1rem 0 0;
+          margin: 0 3rem 0 0;
           width: 9.0625rem;
         }
 
@@ -521,6 +526,17 @@
           @include respond-to(md) {
             height: 1.25rem;
           }
+        }
+      }
+    }
+
+    .chi-header__navbar {
+      .chi-header__navbar-menu {
+        margin: 0.5rem 0;
+
+        a {
+          font-size: $font-size-base;
+          line-height: 1;
         }
       }
     }
