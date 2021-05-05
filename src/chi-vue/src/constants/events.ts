@@ -19,6 +19,16 @@ export const PAGINATION_EVENTS = {
   PAGE_SIZE: 'chiPageSizeChange',
 };
 
+/* Search Input */
+export const SEARCH_INPUT_EVENTS = {
+  BLUR: 'chiBlur',
+  CHANGE: 'chiChange',
+  CLEAN: 'chiClean',
+  FOCUS: 'chiFocus',
+  INPUT: 'chiInput',
+  SEARCH: 'chiSearch',
+};
+
 /* Tooltip */
 export const TOOLTIP_EVENTS = {
   SHOW: 'chiTooltipShow',

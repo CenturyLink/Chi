@@ -9,7 +9,7 @@ import {
   DISABLED_CLASS,
   ICON_CLASS,
   PAGINATION_CLASSES,
-  inputClass,
+  INPUT_CLASSES,
 } from '@/constants/classes';
 import { PaginationSizes } from '@/constants/types';
 import { PAGINATION_EVENTS } from '@/constants/events';
@@ -163,7 +163,7 @@ export default class Pagination extends Vue {
       ${this.size ? `-text--${this.size}` : ''}
     `}>
         <select
-          class={inputClass}
+          class={INPUT_CLASSES.INPUT}
           onChange={(ev: Event) => {
             this._pageSizeChange((ev.target as HTMLSelectElement).value);
           }}
@@ -189,7 +189,7 @@ export default class Pagination extends Vue {
           </label>
           <input
             class={`
-          ${inputClass}
+          ${INPUT_CLASSES.INPUT}
           ${this.size ? `-${this.size}` : ''}
           `}
             id={this._pageJumperUuid}
@@ -218,7 +218,7 @@ export default class Pagination extends Vue {
         <div class={PAGINATION_CLASSES.JUMPER}>
           <input
             type="text"
-            class={inputClass}
+            class={INPUT_CLASSES.INPUT}
             value={this.currentPage}
             onChange={(ev: Event) => {
               if (ev.target) {

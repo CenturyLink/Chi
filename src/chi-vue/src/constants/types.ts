@@ -1,19 +1,7 @@
+/* GENERAL */
 export const GENERAL_POSITIONS = ['left', 'top', 'right', 'bottom'] as const;
 
-export type DrawerPositions = typeof GENERAL_POSITIONS[number];
-
-export type Backdrop = 'inverse' | '';
-
-export const PAGINATION_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
-
-export type PaginationSizes = typeof PAGINATION_SIZES[number];
-
-export type TooltipPositions = typeof GENERAL_POSITIONS[number];
-
-export const TOOLTIP_COLORS = ['light', ''] as const;
-
-export type TooltipColors = typeof TOOLTIP_COLORS[number];
-
+/* Data Table */
 export const DATA_TABLE_SIZE = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 
 export type DataTableSizes = typeof DATA_TABLE_SIZE[number];
@@ -88,3 +76,24 @@ export interface DataTableConfig {
     pageJumper: boolean;
   };
 }
+
+/* Drawer */
+export type DrawerPositions = typeof GENERAL_POSITIONS[number];
+
+export type Backdrop = 'inverse' | '';
+
+/* Pagination */
+export const PAGINATION_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
+
+export type PaginationSizes = typeof PAGINATION_SIZES[number];
+
+/* Search Input */
+export const SEARCH_INPUT_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
+export type SearchInputSizes = typeof SEARCH_INPUT_SIZES[number];
+
+/* Tooltip */
+export type TooltipPositions = typeof GENERAL_POSITIONS[number];
+
+export const TOOLTIP_COLORS = ['light', ''] as const;
+
+export type TooltipColors = typeof TOOLTIP_COLORS[number];

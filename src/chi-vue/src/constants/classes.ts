@@ -1,5 +1,6 @@
 /* Common */
 export const ACTIVE_CLASS = '-active';
+export const CLOSE_CLASS = '-close';
 export const CLOSED_CLASS = '-closed';
 export const LIGHT_CLASS = '-light';
 export const DISABLED_CLASS = '-disabled';
@@ -18,6 +19,7 @@ export const BACKDROP_CLASSES = {
 
 /* Button */
 export const BUTTON_CLASSES = {
+  BG_NONE: '-bg--none',
   BUTTON: 'chi-button',
   ICON_BUTTON: '-icon',
   CONTENT: 'chi-button__content',
@@ -32,39 +34,6 @@ export const CHECKBOX_CLASSES = {
   checkbox: 'chi-checkbox',
   INPUT: 'chi-checkbox__input',
   LABEL: 'chi-checkbox__label',
-};
-
-/* Drawer */
-export const DRAWER_CLASSES = {
-  DRAWER: 'chi-drawer',
-  HEADER: 'chi-drawer__header',
-  TITLE: 'chi-drawer__title',
-  CONTENT: 'chi-drawer__content',
-};
-
-/* Icon */
-export const ICON_CLASS = 'chi-icon';
-
-/* Pagination */
-export const PAGINATION_CLASSES = {
-  PAGINATION: 'chi-pagination',
-  RESULTS: 'chi-pagination__results',
-  COMPACT: '-compact',
-  CONTENT: 'chi-pagination__content',
-  LABEL: 'chi-pagination__label',
-  PAGE_SIZE: 'chi-pagination__page-size',
-  START: 'chi-pagination__start',
-  CENTER: 'chi-pagination__center',
-  END: 'chi-pagination__end',
-  JUMPER: 'chi-pagination__jumper',
-};
-
-/* Input */
-export const inputClass = 'chi-input';
-
-/* Tooltip */
-export const TOOLTIP_CLASSES = {
-  TOOLTIP_ELEMENT: 'chi-tooltip',
 };
 
 /* Data Table */
@@ -86,6 +55,50 @@ export const DATA_TABLE_CLASSES = {
   STRIPED: '-striped',
   SORTING: '-sorting',
   COMPACT: '-compact',
+};
+
+/* Drawer */
+export const DRAWER_CLASSES = {
+  DRAWER: 'chi-drawer',
+  HEADER: 'chi-drawer__header',
+  TITLE: 'chi-drawer__title',
+  CONTENT: 'chi-drawer__content',
+};
+
+/* Icon */
+export const ICON_CLASS = 'chi-icon';
+
+/* Input */
+export const INPUT_CLASSES = {
+  INPUT: 'chi-input',
+  WRAPPER: 'chi-input__wrapper',
+  ICON: {
+    RIGHT: '-icon--right',
+  },
+};
+
+/* Pagination */
+export const PAGINATION_CLASSES = {
+  PAGINATION: 'chi-pagination',
+  RESULTS: 'chi-pagination__results',
+  COMPACT: '-compact',
+  CONTENT: 'chi-pagination__content',
+  LABEL: 'chi-pagination__label',
+  PAGE_SIZE: 'chi-pagination__page-size',
+  START: 'chi-pagination__start',
+  CENTER: 'chi-pagination__center',
+  END: 'chi-pagination__end',
+  JUMPER: 'chi-pagination__jumper',
+};
+
+/* Search Input */
+export const SEARCH_INPUT_CLASSES = {
+  SEARCH_INPUT: 'chi-search__input',
+};
+
+/* Tooltip */
+export const TOOLTIP_CLASSES = {
+  TOOLTIP_ELEMENT: 'chi-tooltip',
 };
 
 /* Utility Classes */
