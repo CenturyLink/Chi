@@ -1,6 +1,6 @@
 <template>
   <div id="search-input-view">
-    <div style="max-width: 20rem;">
+    <div class="search-input-examples__wrapper">
       <h2>Search Input</h2>
       <h3>sm</h3>
       <SearchInput
@@ -67,4 +67,8 @@ export default class SearchInputView extends Vue {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.search-input-examples__wrapper {
+  max-width: 20rem;
+}
+</style>

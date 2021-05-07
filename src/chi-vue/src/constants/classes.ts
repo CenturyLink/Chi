@@ -1,4 +1,4 @@
-/* Common */
+//#region Common
 export const ACTIVE_CLASS = '-active';
 export const CLOSE_CLASS = '-close';
 export const CLOSED_CLASS = '-closed';
@@ -10,14 +10,16 @@ export const PORTAL_CLASS = '-portal';
 export const TRANSITIONING_CLASS = '-transitioning';
 export const SR_ONLY = '-sr--only';
 export const EXPANDED_CLASS = '-expanded';
+//#endregion
 
-/* Backdrop */
+//#region Backdrop
 export const BACKDROP_CLASSES = {
   BACKDROP: 'chi-backdrop',
   WRAPPER: 'chi-backdrop__wrapper',
 };
+//#endregion
 
-/* Button */
+//#region Button
 export const BUTTON_CLASSES = {
   BG_NONE: '-bg--none',
   BUTTON: 'chi-button',
@@ -25,18 +27,21 @@ export const BUTTON_CLASSES = {
   CONTENT: 'chi-button__content',
   FLAT: '-flat',
 };
+//#endregion
 
-/* Button Group */
+//#region Button Group
 export const BUTTON_GROUP_CLASSES = 'chi-button-group';
+//#endregion
 
-/* Checkbox */
+//#region Checkbox
 export const CHECKBOX_CLASSES = {
   checkbox: 'chi-checkbox',
   INPUT: 'chi-checkbox__input',
   LABEL: 'chi-checkbox__label',
 };
+//#endregion
 
-/* Data Table */
+//#region Data Table
 export const DATA_TABLE_CLASSES = {
   DATA_TABLE: 'chi-data-table',
   HEAD: 'chi-data-table__head',
@@ -56,19 +61,22 @@ export const DATA_TABLE_CLASSES = {
   SORTING: '-sorting',
   COMPACT: '-compact',
 };
+//#endregion
 
-/* Drawer */
+//#region Drawer
 export const DRAWER_CLASSES = {
   DRAWER: 'chi-drawer',
   HEADER: 'chi-drawer__header',
   TITLE: 'chi-drawer__title',
   CONTENT: 'chi-drawer__content',
 };
+//#endregion
 
-/* Icon */
+//#region Icon
 export const ICON_CLASS = 'chi-icon';
+//#endregion
 
-/* Input */
+//#region Input
 export const INPUT_CLASSES = {
   INPUT: 'chi-input',
   WRAPPER: 'chi-input__wrapper',
@@ -76,8 +84,9 @@ export const INPUT_CLASSES = {
     RIGHT: '-icon--right',
   },
 };
+//#endregion
 
-/* Pagination */
+//#region Pagination
 export const PAGINATION_CLASSES = {
   PAGINATION: 'chi-pagination',
   RESULTS: 'chi-pagination__results',
@@ -90,18 +99,21 @@ export const PAGINATION_CLASSES = {
   END: 'chi-pagination__end',
   JUMPER: 'chi-pagination__jumper',
 };
+//#endregion
 
-/* Search Input */
+//#region Search Input
 export const SEARCH_INPUT_CLASSES = {
   SEARCH_INPUT: 'chi-search__input',
 };
+//#endregion
 
-/* Tooltip */
+//#region Tooltip
 export const TOOLTIP_CLASSES = {
   TOOLTIP_ELEMENT: 'chi-tooltip',
 };
+//#endregion
 
-/* Utility Classes */
+//#region Utility Classes
 export const UTILITY_CLASSES = {
   JUSTIFY: {
     START: '-justify-content-md--start',
@@ -116,3 +128,4 @@ export const UTILITY_CLASSES = {
     ABSOLUTE: '-position--absolute',
   },
 };
+//#endregion
