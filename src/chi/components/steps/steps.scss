@@ -189,6 +189,43 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         }
       }
     }
+
+    &.-pending {
+      & > .chi-steps__icon {
+        color: $steps-item-count-icon-color;
+
+        &::after {
+          content: '\e934';
+        }
+      }
+
+      & > .chi-steps__line {
+        border-color: $steps-item-line-border-color;
+      }
+
+      &:last-child {
+        flex-grow: 0;
+      }
+
+      & ~ li {
+        & > .chi-steps__icon {
+          color: $steps-item-count-icon-color;
+
+          &::after {
+            content: '\e934';
+          }
+
+        }
+
+        & > .chi-steps__line {
+          border-color: $steps-item-line-border-color;
+        }
+
+        &:last-child {
+          flex-grow: 0;
+        }
+      }
+    }
   }
 
   & a,
@@ -231,6 +268,28 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         & > .chi-steps__icon {
           &::before {
             color: $steps-inverse-item-active-count-text-color;
+          }
+        }
+
+        & ~ li {
+          & > .chi-steps__icon {
+            color: $steps-inverse-item-count-border-color;
+          }
+
+          & > .chi-steps__line {
+            border-color: $steps-inverse-item-line-border-color;
+          }
+        }
+      }
+
+      &.-pending {
+        & > .chi-steps__line {
+          border-color: $steps-inverse-item-line-border-color;
+        }
+
+        & > .chi-steps__icon {
+          &::after {
+            color: $steps-inverse-item-count-border-color;
           }
         }
 
@@ -373,7 +432,8 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         z-index: 1;
       }
 
-      &.-active {
+      &.-active,
+      &.-pending {
         & > .chi-steps__line {
           border-color: $steps-item-line-border-color;
         }

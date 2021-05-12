@@ -100,6 +100,104 @@ h3 Base
         </li>
       </ul>
 
+h3 Pending
+p.-text
+  | To display pending state, apply the class <code>-pending</code> in the corresponding <code>li</code> tag.
+
+.example.-mb--3
+  .-p--3
+    ul.chi-steps.-pb--2.-p-sm--6
+      each step in steps
+        if step == 'Step 1'
+          li.chi-steps__item.-completed
+            div.chi-steps__icon
+              div.chi-steps__content
+                a.chi-steps__item-title(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 2'
+          li.chi-steps__item.-completed
+            div.chi-steps__icon
+              div.chi-steps__content
+                a.chi-steps__item-title(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 3'
+          li.chi-steps__item.-pending
+            div.chi-steps__icon
+              div.chi-steps__content
+                a.chi-steps__item-title(href='#')= `${step}`
+            div.chi-steps__line
+        else if step == 'Step 5'
+          li.chi-steps__item
+            div.chi-steps__icon
+              div.chi-steps__content
+                a.chi-steps__item-title(href='#')= `${step}`
+        else
+          li.chi-steps__item
+            div.chi-steps__icon
+              div.chi-steps__content
+                a.chi-steps__item-title(href='#')= `${step}`
+            div.chi-steps__line
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base-pending
+      li.-disabled
+        a(
+          href=`#webcomponent-base-pending`
+          role="tab"
+          aria-selected="false"
+          aria-controls="webcomponent-base-pending"
+         ) Web Component
+      li.-active
+        a(
+          href=`#html-base-pending`
+          role="tab"
+          aria-selected="true"
+          aria-controls="html-base-pending"
+         ) HTML Blueprint
+  .chi-tabs-panel#webcomponent-base-pending
+  .chi-tabs-panel.-active#html-base-pending
+    :code(lang="html")
+      <ul class="chi-steps">
+        <li class="chi-steps__item -completed">
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a class="chi-steps__item-title" href="#">Step 1</a>
+            </div>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="chi-steps__item -completed">
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a class="chi-steps__item-title" href="#">Step 2</a>
+            </div>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="chi-steps__item -pending">
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a class="chi-steps__item-title" href="#">Step 3</a>
+            </div>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="chi-steps__item">
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a class="chi-steps__item-title" href="#">Step 4</a>
+            </div>
+          </div>
+          <div class="chi-steps__line"></div>
+        </li>
+        <li class="chi-steps__item">
+          <div class="chi-steps__icon">
+            <div class="chi-steps__content">
+              <a class="chi-steps__item-title" href="#">Step 5</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+
 h3 Horizontal Labels
 p.-text
   | To display steps with horizontal labels, apply the class <code>-horizontal-label</code> to the steps container and

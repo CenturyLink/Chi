@@ -1116,7 +1116,7 @@ h4 Inverse horizontal labels small
                 a(href='#')= `${step}`
               div.chi-steps__line
 
-h4 Base
+h4 Base vertical
 .test-base-vertical
   .example(style="width:900px")
     .-p--3
@@ -1245,7 +1245,7 @@ h4 Base
                   a(href='#')= `${step}`
               div.chi-steps__line
 
-h4 Inverse
+h4 Inverse vertical
 .test-inverse-vertical
   .example(style="width:900px")
     .-p--3
@@ -1374,7 +1374,7 @@ h4 Inverse
                   a(href='#')= `${step}`
               div.chi-steps__line
 
-h4 Horizontal labels
+h4 Horizontal labels vertical
 .test-horizontal-labels-vertical
   .example(style="width:900px")
     .-p--3
@@ -1523,7 +1523,7 @@ h4 Horizontal labels
                 a(href='#')= `${step}`
               div.chi-steps__line
 
-h4 Inverse horizontal labels
+h4 Inverse horizontal labels vertical
 .test-inverse-horizontal-labels-vertical
   .example(style="width:900px")
     .-p--3
@@ -1672,7 +1672,7 @@ h4 Inverse horizontal labels
                 a(href='#')= `${step}`
               div.chi-steps__line
 
-h4 Base small
+h4 Base small vertical
 .test-base-small-vertical
   .example(style="width:900px")
     .-p--3
@@ -1801,7 +1801,7 @@ h4 Base small
                   a(href='#')= `${step}`
               div.chi-steps__line
 
-h4 Inverse small
+h4 Inverse small vertical
 .test-inverse-small-vertical
   .example(style="width:900px")
     .-p--3
@@ -1930,7 +1930,7 @@ h4 Inverse small
                   a(href='#')= `${step}`
               div.chi-steps__line
 
-h4 Horizontal labels small
+h4 Horizontal labels small vertical
 .test-horizontal-labels-small-vertical
   .example(style="width:900px")
     .-p--3
@@ -2079,7 +2079,7 @@ h4 Horizontal labels small
                 a(href='#')= `${step}`
               div.chi-steps__line
 
-h4 Inverse horizontal labels small
+h4 Inverse horizontal labels small vertical
 .test-inverse-horizontal-labels-small-vertical
   .example(style="width:900px")
     .-p--3
@@ -2218,6 +2218,2230 @@ h4 Inverse horizontal labels small
               div.chi-steps__line
           else if step == 'Step 5'
             li.-active
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Base pending
+.test-base-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Inverse pending
+.test-inverse-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Horizontal labels pending
+.test-horizontal-labels-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Inverse horizontal labels pending
+.test-inverse-horizontal-labels-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Base small pending
+.test-base-small-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-sm.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Inverse small pending
+.test-inverse-small-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-sm.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Horizontal labels small pending
+.test-horizontal-labels-small-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-sm.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Inverse horizontal labels small pending
+.test-inverse-horizontal-labels-small-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-sm.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Base vertical pending
+.test-base-vertical-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-vertical.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Inverse vertical pending
+.test-inverse-vertical-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-vertical.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Horizontal labels vertical pending
+.test-horizontal-labels-vertical-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-vertical.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Inverse horizontal labels vertical pending
+.test-inverse-horizontal-labels-vertical-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-vertical.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-vertical.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Base small vertical pending
+.test-base-small-vertical-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-sm.-vertical.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--4.-mb--8
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Inverse small vertical pending
+.test-inverse-small-vertical-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-sm.-vertical.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--4.-mb--8.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li.-pending
+              div.chi-steps__icon
+                div.chi-steps__content
+                  a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Horizontal labels small vertical pending
+.test-horizontal-labels-small-vertical-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-sm.-vertical.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--2.-mb--8.-horizontal-label
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+
+h4 Inverse horizontal labels small vertical pending
+.test-inverse-horizontal-labels-small-vertical-pending
+  .example(style="width:900px")
+    .-p--3
+      ul.chi-steps.-sm.-vertical.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-pending
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+          else
+            li
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+      ul.chi-steps.-sm.-vertical.-p--2.-mb--8.-horizontal-label.-inverse
+        each step in steps
+          if step == 'Step 1'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 2'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 3'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 4'
+            li.-completed
+              div.chi-steps__icon
+              div.chi-steps__content
+                a(href='#')= `${step}`
+              div.chi-steps__line
+          else if step == 'Step 5'
+            li.-pending
               div.chi-steps__icon
               div.chi-steps__content
                 a(href='#')= `${step}`
