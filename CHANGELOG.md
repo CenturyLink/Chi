@@ -1,4 +1,10 @@
 # CHANGELOG
+## 4.2.0 (May 13, 2021)
+### Components
+#### Fixed
+* Fixed: Steps component styles have been improved for base step item.
+* Fixed: Data table Portal child and grand-child rows did not display correct background color when expanded.
+
 ## 4.1.0 (April 30, 2021)
 ### Components
 #### Added
