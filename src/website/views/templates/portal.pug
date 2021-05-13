@@ -1552,17 +1552,23 @@ h2 Data table
                     span.chi-pagination__label 240 Results
                 .chi-pagination__center
                   .chi-pagination__button-group.chi-button-group
-                    a(class=`chi-button -icon -flat -sm -primary`, href='#', aria-label='Previous page')
+                    button.chi-button.-icon.-flat.-primary.-sm(aria-label='First page')
                       .chi-button__content
-                        i(class="chi-icon icon-chevron-left", aria-hidden='true')
+                        i.chi-icon.icon-page-first(aria-hidden='true')
+                    button.chi-button.-icon.-flat.-primary.-sm(aria-label='Previous page')
+                      .chi-button__content
+                        i.chi-icon.icon-chevron-left(aria-hidden='true')
                   .chi-pagination__label
                     strong 2
                     span of
                     strong 3
                   .chi-pagination__button-group.chi-button-group
-                    a(class=`chi-button -icon -flat -sm -primary`, href='#', aria-label='Next page')
+                    button.chi-button.-icon.-flat.-primary.-sm(aria-label='Next page')
                       .chi-button__content
-                        i(class="chi-icon icon-chevron-right", aria-hidden='true')
+                        i.chi-icon.icon-chevron-right(aria-hidden='true')
+                    button.chi-button.-icon.-flat.-primary.-sm(aria-label='Last page')
+                      .chi-button__content
+                        i.chi-icon.icon-page-last(aria-hidden='true')
                 .chi-pagination__end
 
   .example-tabs.-pl--2
@@ -1637,26 +1643,26 @@ h2 Data table
                     </div>
                   </div>
                   <div class="chi-pagination__center">
-                    <div class="chi-pagination__button-group chi-button-group">
-                      <a class="chi-button -icon -flat -sm -primary" href="#" aria-label="Previous page">
-                        <div class="chi-button__content">
-                          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
-                        </div>
-                      </a>
+                      <div class="chi-pagination__button-group chi-button-group">
+                        <button class="chi-button -icon -flat -primary -sm" aria-label="Previous page">
+                          <div class="chi-button__content">
+                            <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                          </div>
+                        </button>
+                      </div>
+                      <div class="chi-pagination__label">
+                        <strong>2</strong>
+                        <span>of</span>
+                        <strong>3</strong>
+                      </div>
+                      <div class="chi-pagination__button-group chi-button-group">
+                        <button class="chi-button -icon -flat -primary -sm" aria-label="Next page">
+                          <div class="chi-button__content">
+                            <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                          </div>
+                        </button>
+                      </div>
                     </div>
-                    <div class="chi-pagination__label">
-                      <strong>2</strong>
-                      <span>of</span>
-                      <strong>3</strong>
-                    </div>
-                    <div class="chi-pagination__button-group chi-button-group">
-                      <a class="chi-button -icon -flat -sm -primary" href="#" aria-label="Next page">
-                        <div class="chi-button__content">
-                          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
                   <div class="chi-pagination__end"></div>
                 </div>
               </nav>
