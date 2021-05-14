@@ -36,13 +36,19 @@ export default class Actions extends Vue {
   mounted() {
     const buttonOpenOnHover = document.getElementById(`ticket-popover-button-${this.$props.id}`);
     const popover = chi.popover(buttonOpenOnHover);
+    let hoverAnimationTimeout: number;
 
     if (buttonOpenOnHover) {
       buttonOpenOnHover.addEventListener('mouseenter', function() {
-        popover.show();
+        hoverAnimationTimeout = setTimeout(() => {
+          popover.show();
+        }, 300);
       });
 
       buttonOpenOnHover.addEventListener('mouseleave', function() {
+        if (hoverAnimationTimeout) {
+          clearTimeout(hoverAnimationTimeout);
+        }
         popover.hide();
       });
     }
