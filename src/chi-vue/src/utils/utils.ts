@@ -1,3 +1,5 @@
+import Vue from 'vue';
+
 export function uuid4() {
   let uuid = '',
     ii;
@@ -31,4 +33,16 @@ export function contains(ancestorElement: HTMLElement, descendantElement: HTMLEl
   } else {
     return contains(ancestorElement, descendantElement.parentElement);
   }
+}
+
+export function findComponent(startComponent: Vue, componentName: string) {
+  let component = null;
+  let parent = startComponent.$parent;
+  while (parent && !component) {
+    if (parent.$options.name === componentName) {
+      component = parent;
+    }
+    parent = parent.$parent;
+  }
+  return component;
 }

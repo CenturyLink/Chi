@@ -44,6 +44,8 @@ export const CHECKBOX_CLASSES = {
 //#region Data Table
 export const DATA_TABLE_CLASSES = {
   DATA_TABLE: 'chi-data-table',
+  TOOLBAR: 'chi-data-table__toolbar',
+  FILTERS: 'chi-data-table__filters',
   HEAD: 'chi-data-table__head',
   BODY: 'chi-data-table__body',
   ROW: 'chi-data-table__row',
@@ -115,10 +117,17 @@ export const TOOLTIP_CLASSES = {
 
 //#region Utility Classes
 export const UTILITY_CLASSES = {
+  ALIGN_ITEMS: {
+    CENTER: '-align-items--center',
+  },
+  ALIGN_SELF: {
+    CENTER: '-align-self--center',
+  },
   JUSTIFY: {
-    START: '-justify-content-md--start',
-    CENTER: '-justify-content-md--center',
-    END: '-justify-content-md--end',
+    CENTER: '-justify-content--center',
+    MD_START: '-justify-content-md--start',
+    MD_CENTER: '-justify-content-md--center',
+    MD_END: '-justify-content-md--end',
   },
   TYPOGRAPHY: {
     TEXT_TRUNCATE: '-text--truncate',

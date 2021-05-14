@@ -2,10 +2,10 @@
   <div id="app">
     <div class="-p--4">
       <DataTableView />
-      <PaginationView />
-      <DrawerView />
-      <TooltipView />
-      <SearchInputView />
+      <!--<PaginationView />-->
+      <!--<DrawerView />-->
+      <!--<TooltipView />-->
+      <!--<SearchInputView />-->
     </div>
   </div>
 </template>

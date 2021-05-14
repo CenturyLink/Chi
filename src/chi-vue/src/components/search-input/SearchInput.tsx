@@ -2,6 +2,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { BUTTON_CLASSES, CLOSE_CLASS, ICON_CLASS, INPUT_CLASSES, SEARCH_INPUT_CLASSES } from '@/constants/classes';
 import { SearchInputSizes } from '@/constants/types';
 import { SEARCH_INPUT_EVENTS } from '@/constants/events';
+import { findComponent } from '@/utils/utils';
 
 @Component
 export default class SearchInput extends Vue {
@@ -10,6 +11,7 @@ export default class SearchInput extends Vue {
   @Prop() name?: string;
   @Prop() placeholder?: string;
   @Prop() value?: string;
+  @Prop() dataTableSearch?: boolean;
 
   cleanButtonVisible = !!(this.$props.value && !this.$props.disabled);
   inputValue = this.$props.value || '';
@@ -29,6 +31,18 @@ export default class SearchInput extends Vue {
     this.cleanButtonVisible = false;
     this.$emit(SEARCH_INPUT_EVENTS.CLEAN);
     (input as HTMLInputElement).focus();
+  }
+
+  mounted() {
+    if (this.$props.dataTableSearch) {
+      const dataTableToolbarComponent = findComponent(this, 'DataTableToolbar');
+
+      if (dataTableToolbarComponent) {
+        // eslint-disable-next-line
+        // @ts-ignore
+        dataTableToolbarComponent._searchComponent = this;
+      }
+    }
   }
 
   render() {

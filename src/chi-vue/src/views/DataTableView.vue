@@ -34,6 +34,13 @@
           </div>
         </div>
       </template>
+      <template #toolbar>
+        <ChiDataTableToolbar>
+          <ChiSearchInput size="lg" :dataTableSearch="true" />
+          <ChiDataTableViews class="-ml--2" />
+          <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
+        </ChiDataTableToolbar>
+      </template>
     </ChiDataTable>
   </div>
 </template>
@@ -43,12 +50,20 @@ import { Component, Vue } from 'vue-property-decorator';
 import DataTable from '../components/data-table/DataTable';
 import Actions from './DataTableTemplates/example-actions.vue';
 import TicketPopover from './DataTableTemplates/example-popover.vue';
+import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
+import SearchInput from '@/components/search-input/SearchInput';
+import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
+import DataTableViews from '@/components/data-table-views/DataTableViews';
 
 @Component({
   components: {
     ChiDataTable: DataTable,
+    ChiSearchInput: SearchInput,
     Actions,
     TicketPopover,
+    ChiDataTableViews: DataTableViews,
+    ChiDataTableToolbar: DataTableToolbar,
+    ChiDataTableFilters: DataTableFilters,
   },
   methods: {
     rowSelect: e => {
@@ -92,6 +107,35 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
           xl: [5, 15, 10, 15, 15, 15, 15, 5],
         },
         resultsPerPage: 10,
+      },
+      toolbar: {
+        filtersData: [
+          {
+            name: 'status',
+            label: '-- Status --',
+            type: 'select',
+            options: [
+              {
+                label: 'Active',
+                value: 'active',
+                selected: false,
+              },
+              {
+                label: 'Inactive',
+                value: 'inactive',
+                selected: false,
+              },
+            ],
+          },
+          {
+            name: 'input',
+            type: 'input',
+          },
+          {
+            name: 'input',
+            type: 'checkbox',
+          },
+        ],
       },
       table: {
         head: {
