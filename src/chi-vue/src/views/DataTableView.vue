@@ -135,6 +135,34 @@ import DataTableViews from '@/components/data-table-views/DataTableViews';
             name: 'input',
             type: 'checkbox',
           },
+          {
+            name: 'status',
+            label: '-- Status --',
+            type: 'select',
+            options: [
+              {
+                label: 'Active',
+                value: 'active',
+                selected: false,
+              },
+              {
+                label: 'Inactive',
+                value: 'inactive',
+                selected: false,
+              },
+            ],
+            advanced: true,
+          },
+          {
+            name: 'input',
+            type: 'input',
+            advanced: true,
+          },
+          {
+            name: 'input',
+            type: 'checkbox',
+            advanced: true,
+          },
         ],
       },
       table: {
