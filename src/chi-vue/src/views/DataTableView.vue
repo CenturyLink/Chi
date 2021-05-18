@@ -1,7 +1,7 @@
 <template>
   <div id="tadataTableVIew">
     <h2>Data Table example</h2>
-    <ChiTable
+    <ChiDataTable
       :data="table"
       :config="config"
       @chiSelectedRowsChange="e => this.rowSelect(e)"
@@ -34,7 +34,7 @@
           </div>
         </div>
       </template>
-    </ChiTable>
+    </ChiDataTable>
   </div>
 </template>
 
@@ -46,7 +46,7 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
 
 @Component({
   components: {
-    ChiTable: DataTable,
+    ChiDataTable: DataTable,
     Actions,
     TicketPopover,
   },
