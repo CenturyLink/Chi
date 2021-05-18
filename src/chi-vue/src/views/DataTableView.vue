@@ -58,12 +58,12 @@ import DataTableViews from '@/components/data-table-views/DataTableViews';
 @Component({
   components: {
     ChiDataTable: DataTable,
+    ChiDataTableToolbar: DataTableToolbar,
     ChiSearchInput: SearchInput,
+    ChiDataTableViews: DataTableViews,
+    ChiDataTableFilters: DataTableFilters,
     Actions,
     TicketPopover,
-    ChiDataTableViews: DataTableViews,
-    ChiDataTableToolbar: DataTableToolbar,
-    ChiDataTableFilters: DataTableFilters,
   },
   methods: {
     rowSelect: e => {
@@ -76,6 +76,9 @@ import DataTableViews from '@/components/data-table-views/DataTableViews';
       console.log(e);
     },
     dataSorting: e => {
+      console.log(e);
+    },
+    filtersChange: e => {
       console.log(e);
     },
   },
@@ -118,26 +121,27 @@ import DataTableViews from '@/components/data-table-views/DataTableViews';
               {
                 label: 'Active',
                 value: 'active',
-                selected: false,
               },
               {
                 label: 'Inactive',
                 value: 'inactive',
-                selected: false,
               },
             ],
+            value: 'active',
           },
           {
             name: 'input',
             type: 'input',
+            value: '',
           },
           {
-            name: 'input',
+            name: 'checkbox',
             type: 'checkbox',
+            checked: false,
           },
           {
-            name: 'status',
-            label: '-- Status --',
+            name: 'statusAdvanced',
+            label: 'Status',
             type: 'select',
             options: [
               {
@@ -152,14 +156,23 @@ import DataTableViews from '@/components/data-table-views/DataTableViews';
               },
             ],
             advanced: true,
+            value: 'active',
           },
           {
-            name: 'input',
+            name: 'inputAdvanced',
+            label: 'Label',
             type: 'input',
             advanced: true,
           },
           {
-            name: 'input',
+            name: 'textareaAdvanced',
+            label: 'textarea',
+            type: 'textarea',
+            advanced: true,
+          },
+          {
+            name: 'checkboxAdvanced',
+            label: 'Checkbox',
             type: 'checkbox',
             advanced: true,
           },

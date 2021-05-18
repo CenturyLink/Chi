@@ -27,8 +27,8 @@ export default class DataTableToolbar extends Vue {
     }
 
     if (this._filters) {
-      this._filters.$on('chiFiltersChange', () => {
-        this.$emit('chiToolbarFiltersChange');
+      this._filters.$on('chiFiltersChange', (ev: Event) => {
+        this.$emit('chiToolbarFiltersChange', ev);
       });
     }
 

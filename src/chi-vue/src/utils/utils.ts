@@ -46,3 +46,24 @@ export function findComponent(startComponent: Vue, componentName: string) {
   }
   return component;
 }
+
+// eslint-disable-next-line
+export function copyObject(src: any) {
+  // eslint-disable-next-line
+  const target: { [index: string]: any } = {};
+
+  for (const prop in src) {
+    if (Object.prototype.hasOwnProperty.call(src, prop)) {
+      target[prop] = src[prop];
+    }
+  }
+
+  return target;
+}
+
+// eslint-disable-next-line
+export function copyArrayOfObjects(originArray: any[]) {
+  return originArray.map(object => {
+    return copyObject(object);
+  });
+}

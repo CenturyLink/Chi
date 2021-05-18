@@ -69,7 +69,7 @@ export interface DataTableConfig {
 export interface DataTableFilter {
   name: string;
   label: string;
-  type: 'select' | 'input' | 'checkbox' | 'template';
+  type: 'select' | 'input' | 'checkbox' | 'textarea' | 'template';
   options?: [
     {
       value: string;
@@ -77,6 +77,8 @@ export interface DataTableFilter {
       selected: true;
     }
   ];
+  value?: string;
+  checked?: boolean;
   defaultValue?: string;
   placeholder: string;
   advanced?: true;
@@ -85,6 +87,7 @@ export interface DataTableFilter {
 export interface DataTableFiltersData {
   filters: DataTableFilter[];
 }
+export type DataTableFormElementFilters = 'select' | 'input' | 'textarea' | 'checkbox';
 export interface DataTableView {
   name: string;
   columns: string[];
