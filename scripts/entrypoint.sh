@@ -11,6 +11,7 @@ mount -t tmpfs tmpfs /chi/src/custom-elements/.stencil
 
 RED='\E[0;31m'
 GREEN='\E[0;32m'
+BLUE='\033[0;34m'
 NC='\E[0m' # No Color
 PREFIX_VUE="$(tput setaf 4)[VUE]$(tput sgr0) "
 
@@ -43,13 +44,20 @@ addheader_custom_elements() {
     done
 }
 
+addheader_vue() {
+    while IFS= read -r line; do
+        echo -e "${BLUE}[VUE]${NC} $line"
+    done
+}
+
 start() {
     cd /chi
     unbuffer npm run start 2>&1 | addheader_chi &
 
     cd /chi/src/chi-vue
     while [ ! -d /chi/dist/js/vue ]; do sleep 1; done
-    unbuffer npm run serve 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/" &
+    unbuffer npm run serve 2>&1 | addheader_vue &
+    unbuffer npm run build:umd
 
     cd /chi/src/custom-elements
     while [ ! -d /chi/dist/js/ce ]; do sleep 1; done
@@ -63,27 +71,10 @@ build() {
     unbuffer npm run build 2>&1 | addheader_custom_elements
     cd /chi/src/chi-vue
     unbuffer npm run build:component 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
+    unbuffer npm run build:umd 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
     cd /chi
     unbuffer npm run sri 2>&1 | addheader_chi
     unbuffer npm run update:boilerplate:assets
-}
-
-publish_chi_vue() {
-    echo 'publish-chi-vue'
-    cd /chi/src/chi-vue
-    unbuffer npm run build:component 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
-    unbuffer npm pack
-    unbuffer npm login --scope=@centurylink
-    unbuffer npm publish
-}
-
-publish_chi_vue_beta() {
-    echo 'publish-chi-vue-beta'
-    cd /chi/src/chi-vue
-    unbuffer npm run build:component 2>&1 | sed "s/^[[:space:]]*..*\$/${PREFIX_VUE}&/"
-    unbuffer npm pack
-    unbuffer npm login --scope=@centurylink
-    unbuffer npm publish --tag beta
 }
 
 test() {
@@ -131,12 +122,6 @@ case ${OPTION} in
         mount -o bind /chi/config/backstop_data/bitmaps_reference/non_responsive /chi/reports/html_report/non_responsive/bitmaps_reference
         mount -o bind /chi/config/backstop_data/bitmaps_reference/responsive /chi/reports/html_report/responsive/bitmaps_reference
         npm run approve
-        ;;
-    publish-chi-vue)
-        publish_chi_vue
-        ;;
-    publish-chi-vue-beta)
-        publish_chi_vue_beta
         ;;
     *)
         exec "$@"
