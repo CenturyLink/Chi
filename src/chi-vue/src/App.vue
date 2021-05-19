@@ -5,6 +5,7 @@
       <PaginationView />
       <DrawerView />
       <TooltipView />
+      <SearchInputView />
     </div>
   </div>
 </template>
@@ -15,13 +16,15 @@ import PaginationView from './views/PaginationView.vue';
 import DrawerView from './views/DrawerView.vue';
 import TooltipView from './views/TooltipView.vue';
 import DataTableView from './views/DataTableView.vue';
+import SearchInputView from './views/SearchInputView.vue';
 
 @Component({
   components: {
-    PaginationView,
-    DrawerView,
-    TooltipView,
     DataTableView,
+    DrawerView,
+    PaginationView,
+    SearchInputView,
+    TooltipView,
   },
 })
 export default class App extends Vue {}

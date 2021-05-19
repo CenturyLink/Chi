@@ -133,7 +133,7 @@ export class SearchInput {
     const searchXIcon = this._cleanButtonVisible ?
       <button class="chi-button -icon -close -sm"
         onClick={() => this._cleanInput()}
-        aria-label="Close">
+        aria-label="Clear">
         <div class="chi-button__content">
           <i class="chi-icon icon-x"></i>
         </div>
