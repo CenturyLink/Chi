@@ -1,53 +1,43 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { DataTableFilter, DataTableFiltersData, DataTableFormElementFilters } from '@/constants/types';
-import { findComponent, uuid4 } from '@/utils/utils';
+import { copyArrayOfObjects, findComponent } from '@/utils/utils';
 import {
   CHECKBOX_CLASSES,
   DATA_TABLE_CLASSES,
+  FORM_CLASSES,
   INPUT_CLASSES,
-  PORTAL_CLASS,
+  SELECT_CLASSES,
   UTILITY_CLASSES,
 } from '@/constants/classes';
-import { copyArrayOfObjects } from '@/utils/utils';
-import { BUTTON_CLASSES } from '@/constants/classes';
+import { getElementFilterData, updateFilterData } from './FilterUtils';
+import { DATA_TABLE_EVENTS } from '@/constants/events';
+import AdvancedFilters from './AdvancedFilters';
+import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 
-Vue.config.ignoredElements = ['chi-popover'];
-// This element ignore is necessary as currently chi-popover is not a
-// Chi Vue component but a web component loaded from an external source
-
-// eslint-disable-next-line
-declare const chi: any;
 @Component
 export default class DataTableFilters extends Vue {
   @Prop() filtersData?: DataTableFiltersData;
 
-  _advancedFilterUuid?: string;
-  _advancedFilterAccordionId?: string;
-  _advancedFilterPopoverId?: string;
-  // eslint-disable-next-line
-  _advancedFiltersAccordion?: any;
   _filtersData?: DataTableFiltersData;
+  _advancedFiltersData?: DataTableFilter[];
+  _advancedFilterComponent?: AdvancedFilters;
 
   beforeCreate() {
     this._filtersData = {
       filters: [],
     };
+    this._advancedFiltersData = [];
   }
 
   created() {
-    this._advancedFilterUuid = uuid4();
+    const advancedFilters = this.$props.filtersData.filter((filter: DataTableFilter) => filter.advanced);
+
     if (this._filtersData) {
       this._filtersData = {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-        // @ts-ignore
         filters: copyArrayOfObjects(this.$props.filtersData),
       };
     }
-    this._validateFiltersData();
-  }
-
-  _validateFiltersData() {
-    console.log('valid');
+    this._advancedFiltersData = copyArrayOfObjects(advancedFilters);
   }
 
   _createSelectFilter(filter: DataTableFilter, index: number) {
@@ -60,16 +50,16 @@ export default class DataTableFilters extends Vue {
     });
 
     return (
+      // Todo - class name needs to be updated once the Toolbar HTML blueprint is available
       <div
-        class={`chi-form__item ${index !== 0 && !filter.advanced ? '-ml--2' : ''} ${
-          !filter.advanced ? 'chi-data-table-filter__select ' : ''
-        }`}>
+        class={`
+          ${FORM_CLASSES.FORM_ITEM} ${index !== 0 && !filter.advanced ? '-ml--2' : ''}
+          ${!filter.advanced ? 'chi-data-table-filter__select ' : ''}`}>
         <select
           aria-label={`Filter by ${filter.label || filter.name}`}
-          class="chi-select -lg"
+          class={`${SELECT_CLASSES.SELECT} -lg`}
           data-filter={filter.name}
-          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select', !!filter.advanced)}>
-          <option>{filter.label || filter.name}</option>
+          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select')}>
           {options}
         </select>
       </div>
@@ -78,12 +68,16 @@ export default class DataTableFilters extends Vue {
 
   _createInputFilter(filter: DataTableFilter, index: number) {
     return (
-      <div class={`chi-form__item ${index !== 0 && !filter.advanced ? 'chi-data-table-filter__input -ml--2' : ''}`}>
+      <div
+        // Todo - class name needs to be updated once the Toolbar HTML blueprint is available
+        class={`
+          ${FORM_CLASSES.FORM_ITEM}
+          ${index !== 0 && !filter.advanced ? 'chi-data-table-filter__input -ml--2' : ''}`}>
         <input
           aria-label={`Filter by ${filter.label || filter.name}`}
           class={`${INPUT_CLASSES.INPUT} -lg`}
           data-filter={filter.name}
-          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'input', !!filter.advanced)}
+          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'input')}
           placeholder={filter.placeholder || null}
           type="text"
         />
@@ -93,13 +87,17 @@ export default class DataTableFilters extends Vue {
 
   _createTextareaFilter(filter: DataTableFilter, index: number) {
     return (
-      <div class={`chi-form__item ${index !== 0 && !filter.advanced ? 'chi-data-table-filter__input -ml--2' : ''}`}>
+      // Todo - class name needs to be updated once the Toolbar HTML blueprint is available
+      <div
+        class={`
+          ${FORM_CLASSES.FORM_ITEM}
+          ${index !== 0 && !filter.advanced ? 'chi-data-table-filter__input -ml--2' : ''}`}>
         <textarea
           aria-label={`Filter by ${filter.label || filter.name}`}
           data-filter={filter.name}
-          class="chi-input -lg"
+          class={`${INPUT_CLASSES.INPUT} -lg`}
           placeholder={filter.placeholder || null}
-          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'textarea', !!filter.advanced)}
+          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'textarea')}
         />
       </div>
     );
@@ -108,9 +106,11 @@ export default class DataTableFilters extends Vue {
   _createCheckboxFilter(filter: DataTableFilter, index: number) {
     return (
       <div
-        class={`chi-form__item ${index !== 0 && !filter.advanced ? '-ml--2' : ''} -d--flex ${
-          UTILITY_CLASSES.JUSTIFY.CENTER
-        }`}>
+        class={`
+          ${FORM_CLASSES.FORM_ITEM}
+          ${index !== 0 && !filter.advanced ? '-ml--2' : ''}
+          ${UTILITY_CLASSES.DISPLAY.FLEX}
+        ${UTILITY_CLASSES.JUSTIFY.CENTER}`}>
         <div class={`${CHECKBOX_CLASSES.checkbox} ${UTILITY_CLASSES.ALIGN_SELF.CENTER}`}>
           <input
             id={`toolbar-filter-checkbox__${filter.name}`}
@@ -119,7 +119,7 @@ export default class DataTableFilters extends Vue {
             type="checkbox"
             class={CHECKBOX_CLASSES.INPUT}
             checked={filter.checked}
-            onChange={(ev: Event) => this._changeFormElementFilter(ev, 'checkbox', !!filter.advanced)}
+            onChange={(ev: Event) => this._changeFormElementFilter(ev, 'checkbox')}
           />
           <label for={`toolbar-filter-checkbox__${filter.name}`} class={CHECKBOX_CLASSES.LABEL}>
             {filter.name}
@@ -129,73 +129,13 @@ export default class DataTableFilters extends Vue {
     );
   }
 
-  _getElementFilterData(
-    ev: Event,
-    elementType: DataTableFormElementFilters
-  ): { name: string; checked?: boolean; value?: string } | void {
-    const element = ev.target as HTMLFormElement;
-    const elementDataset = element.dataset;
-
-    if (elementDataset.filter) {
-      if (elementType === 'checkbox') {
-        const elementChecked = element.checked || false;
-
-        return {
-          name: elementDataset.filter,
-          checked: elementChecked,
-        };
-      } else {
-        const elementValue = element.value || '';
-
-        return {
-          name: elementDataset.filter,
-          value: elementValue,
-        };
-      }
-    }
-  }
-
-  _updateFilterData(newFilterData: { name: string; value?: string; checked?: boolean }, advanced: boolean) {
-    if (this._filtersData && newFilterData) {
-      const currentFilterData = this._filtersData.filters.find(
-        (filter: DataTableFilter) => filter.name === newFilterData.name
-      );
-
-      if (currentFilterData) {
-        const valueData = currentFilterData.type === 'checkbox' ? 'checked' : 'value';
-        const fallbackValue = currentFilterData.type === 'checkbox' ? false : '';
-
-        if (currentFilterData[valueData] !== newFilterData[valueData]) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-          // @ts-ignore
-          currentFilterData[valueData] = newFilterData[valueData] || fallbackValue;
-
-          if (advanced) {
-            const originalFilterData = this.$props.filtersData.find(
-              (originalFilter: DataTableFilter) => originalFilter.name === newFilterData.name
-            );
-            const currentValue = currentFilterData[valueData];
-            const originalValue = originalFilterData[valueData] || fallbackValue;
-
-            if (currentValue !== originalValue) {
-              this._advancedFiltersApplyButtonEnable();
-            } else {
-              this._advancedFiltersApplyButtonDisable();
-            }
-          } else {
-            this._emitFiltersChanged();
-          }
-        }
-      }
-    }
-  }
-
-  _changeFormElementFilter(ev: Event, elementType: 'select' | 'input' | 'textarea' | 'checkbox', advanced: boolean) {
+  _changeFormElementFilter(ev: Event, elementType: DataTableFormElementFilters) {
     if (ev.target) {
-      const newFilterData = this._getElementFilterData(ev, elementType);
+      const newFilterData = getElementFilterData(ev, elementType);
 
-      if (newFilterData) {
-        this._updateFilterData(newFilterData, advanced);
+      if (this._filtersData && newFilterData) {
+        updateFilterData(this._filtersData.filters, newFilterData);
+        this._emitFiltersChanged();
       }
     }
   }
@@ -204,69 +144,57 @@ export default class DataTableFilters extends Vue {
     const dataTableToolbarComponent = findComponent(this, 'DataTableToolbar');
 
     if (dataTableToolbarComponent) {
-      // eslint-disable-next-line
-      // @ts-ignore
-      dataTableToolbarComponent._filters = this;
+      (dataTableToolbarComponent as DataTableToolbar)._filters = this;
     }
-    if (this._advancedFilterAccordionId) {
-      const advancedFiltersAccordion = document.getElementById(this._advancedFilterAccordionId);
+    if (this._advancedFilterComponent) {
+      this._advancedFilterComponent.$on(DATA_TABLE_EVENTS.ADVANCED_FILTERS_CHANGE, this._updateAdvancedFilters);
+    }
+  }
 
-      if (advancedFiltersAccordion) {
-        this._advancedFiltersAccordion = chi.accordion(advancedFiltersAccordion);
+  _updateAdvancedFilters() {
+    if (this._advancedFilterComponent) {
+      const advancedFilters = this._advancedFilterComponent?.advancedFiltersData;
+
+      if (this._filtersData && advancedFilters) {
+        // eslint-disable-next-line
+        const advancedFiltersObject = advancedFilters.reduce((r: any, a) => {
+          r[a.name] = { ...a };
+          return r;
+        }, {});
+
+        this._filtersData.filters
+          .filter((filter: DataTableFilter) => filter.advanced)
+          .forEach((filter: DataTableFilter) => {
+            if (filter.name) {
+              const { checked, value } = advancedFiltersObject[filter.name];
+
+              if (filter.type === 'checkbox') {
+                filter.checked = checked;
+              } else {
+                filter.value = value;
+              }
+            }
+          });
+        this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._filtersData);
       }
     }
   }
 
   _emitFiltersChanged() {
-    this.$emit('chiFiltersChange', this._filtersData);
+    this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._filtersData);
   }
 
-  _locateAdvancedFiltersApplyButton() {
-    return this.$refs.advancedFiltersApplyButton as HTMLButtonElement;
-  }
-
-  _advancedFiltersApplyButtonEnable() {
-    const applyButton = this._locateAdvancedFiltersApplyButton();
-
-    applyButton.disabled = false;
-    applyButton.classList.add('-primary');
-  }
-
-  _advancedFiltersApplyButtonDisable() {
-    const applyButton = this._locateAdvancedFiltersApplyButton();
-
-    applyButton.disabled = true;
-    applyButton.classList.remove('-primary');
-  }
-
-  _toggleAdvancedFiltersPopover() {
-    if (this._advancedFilterPopoverId) {
-      const popover = document.getElementById(this._advancedFilterPopoverId);
-
-      if (popover) {
-        // eslint-disable-next-line
-        // @ts-ignore
-        popover.toggle();
-      }
+  _advancedFilters() {
+    if (this._advancedFiltersData) {
+      return <AdvancedFilters filters-data={this._advancedFiltersData} />;
     }
-  }
-
-  _applyAdvancedFiltersChange() {
-    this._emitFiltersChanged();
-    this._advancedFiltersApplyButtonDisable();
-    this._toggleAdvancedFiltersPopover();
-    this._advancedFiltersAccordion.collapseAll();
+    return null;
   }
 
   render() {
-    const advancedFilterButtonId = `button__${this._advancedFilterUuid}`;
-    const advancedFilterPopoverId = `popover__${this._advancedFilterUuid}`;
-    const advancedFilterAccordionId = `accordion__${this._advancedFilterUuid}`;
     const standardFilters: JSX.Element[] = [];
-    const advancedFilters: JSX.Element[] = [];
+    const advancedFilters = this._advancedFilters();
 
-    this._advancedFilterAccordionId = advancedFilterPopoverId;
-    this._advancedFilterPopoverId = advancedFilterPopoverId;
     this.$props.filtersData.forEach((filter: DataTableFilter, index: number) => {
       const filterElement =
         filter.type === 'select'
@@ -280,72 +208,16 @@ export default class DataTableFilters extends Vue {
           : null;
 
       if (filterElement) {
-        if (filter.advanced) {
-          const accordionItem = (
-            <div class="chi-accordion__item -active">
-              <button class="chi-accordion__trigger">
-                <i class="chi-icon icon-chevron-down" />
-                <div class="chi-accordion__title">{filter.label || filter.name}</div>
-              </button>
-              <div class="chi-accordion__content">{filterElement}</div>
-            </div>
-          );
-          advancedFilters.push(accordionItem);
-        } else {
+        if (!filter.advanced) {
           standardFilters.push(filterElement);
         }
       }
     });
-    const advancedFiltersButton = (
-      <button
-        id={advancedFilterButtonId}
-        onclick={() => this._toggleAdvancedFiltersPopover()}
-        class={`${BUTTON_CLASSES.BUTTON} -portal -icon -primary -flat`}
-        aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-filter" />
-        </div>
-      </button>
-    );
-    const advancedFiltersPopover = (
-      <chi-popover
-        id={advancedFilterPopoverId}
-        position="bottom"
-        reference={`#${advancedFilterButtonId}`}
-        title="Filters"
-        portal
-        drag
-        closable>
-        <div class="chi-accordion -sm" id={advancedFilterAccordionId}>
-          {advancedFilters}
-        </div>
-        <div class="advanced-filters__actions -mt--2">
-          <button
-            onclick={() => this._applyAdvancedFiltersChange()}
-            class={BUTTON_CLASSES.BUTTON}
-            ref="advancedFiltersApplyButton"
-            disabled>
-            APPLY
-          </button>
-          <button onclick={() => this._toggleAdvancedFiltersPopover()} class={`${BUTTON_CLASSES.BUTTON} -ml--2`}>
-            CANCEL
-          </button>
-          <button
-            class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} -primary ${BUTTON_CLASSES.FLAT} -ml--2 -bl--1`}
-            aria-label="Button action">
-            <div class={BUTTON_CLASSES.CONTENT}>
-              <i class="chi-icon icon-reload" />
-            </div>
-          </button>
-        </div>
-      </chi-popover>
-    );
 
     return (
       <div class={DATA_TABLE_CLASSES.FILTERS}>
         {standardFilters}
-        {advancedFiltersButton}
-        {advancedFiltersPopover}
+        {advancedFilters}
       </div>
     );
   }

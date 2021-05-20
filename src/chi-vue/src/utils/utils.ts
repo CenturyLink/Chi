@@ -50,7 +50,7 @@ export function findComponent(startComponent: Vue, componentName: string) {
 // eslint-disable-next-line
 export function copyObject(src: any) {
   // eslint-disable-next-line
-  const target: { [index: string]: any } = {};
+  const target: any = {};
 
   for (const prop in src) {
     if (Object.prototype.hasOwnProperty.call(src, prop)) {

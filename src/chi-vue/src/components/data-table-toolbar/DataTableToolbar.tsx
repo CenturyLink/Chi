@@ -1,40 +1,32 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { findComponent } from '@/utils/utils';
+import { DATA_TABLE_CLASSES } from '@/constants/classes';
 import SearchInput from '../../components/search-input/SearchInput';
 import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
-import DataTableViews from '@/components/data-table-views/DataTableViews';
-import { DATA_TABLE_CLASSES } from '@/constants/classes';
+import DataTable from '../data-table/DataTable';
+import { DATA_TABLE_EVENTS, SEARCH_INPUT_EVENTS } from '@/constants/events';
 
 @Component({})
 export default class DataTableToolbar extends Vue {
   _searchComponent?: SearchInput;
   _filters?: DataTableFilters;
-  _views?: DataTableViews;
 
   mounted() {
     const dataTableComponent = findComponent(this, 'DataTable');
 
     if (dataTableComponent) {
-      // eslint-disable-next-line
-      // @ts-ignore
-      dataTableComponent._toolbarComponent = this;
+      (dataTableComponent as DataTable)._toolbarComponent = this;
     }
 
     if (this._searchComponent) {
-      this._searchComponent.$on('chiSearch', () => {
-        this.$emit('chiToolbarSearch');
+      this._searchComponent.$on(SEARCH_INPUT_EVENTS.SEARCH, (ev: Event) => {
+        this.$emit(DATA_TABLE_EVENTS.TOOLBAR.SEARCH, ev);
       });
     }
 
     if (this._filters) {
-      this._filters.$on('chiFiltersChange', (ev: Event) => {
-        this.$emit('chiToolbarFiltersChange', ev);
-      });
-    }
-
-    if (this._views) {
-      this._views.$on('chiViewsChange', () => {
-        this.$emit('chiToolbarViewsChange');
+      this._filters.$on(DATA_TABLE_EVENTS.FILTERS_CHANGE, (ev: Event) => {
+        this.$emit(DATA_TABLE_EVENTS.TOOLBAR.FILTERS_CHANGE, ev);
       });
     }
   }

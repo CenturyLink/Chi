@@ -1,5 +1,4 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import Pagination from '../pagination/pagination';
 import {
   ACTIVE_CLASS,
   BUTTON_CLASSES,
@@ -23,6 +22,8 @@ import {
   DataTableStyleConfig,
 } from '@/constants/types';
 import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
+import Tooltip from '../tooltip/tooltip';
+import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 
 let dataTableNumber = 0;
@@ -45,7 +46,6 @@ export default class DataTable extends Vue {
   _dataTableId?: string;
   _preventSortOnResize? = false;
   _toolbarComponent?: DataTableToolbar;
-  ribbonVisible = false;
 
   head() {
     const tableHeadCells = [
@@ -129,13 +129,6 @@ export default class DataTable extends Vue {
   toolbar() {
     if (this.$scopedSlots['toolbar']) {
       return <div class="">{this.$scopedSlots['toolbar']({})}</div>;
-    }
-    return null;
-  }
-
-  ribbon() {
-    if (this.ribbonVisible) {
-      return <div class="-bg--info-light -p--2">Ribbon goes here</div>;
     }
     return null;
   }
@@ -431,9 +424,17 @@ export default class DataTable extends Vue {
           cellData = this.$scopedSlots[rowCell.template]!(rowCell.payload);
         }
       } else if (typeof rowCell === 'object' && !!rowCell.value) {
-        cellData = <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{rowCell.value}</div>;
+        cellData = (
+          <Tooltip message={rowCell} class="-w--100">
+            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{rowCell.value}</div>
+          </Tooltip>
+        );
       } else if (typeof rowCell === 'string' || typeof rowCell === 'number') {
-        cellData = <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{rowCell}</div>;
+        cellData = (
+          <Tooltip message={rowCell} class="-w--100">
+            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{rowCell}</div>
+          </Tooltip>
+        );
       } else {
         cellData = null;
       }
@@ -670,22 +671,13 @@ export default class DataTable extends Vue {
       }
     });
     window.addEventListener('resize', this.resizeHandler);
-    if (this._toolbarComponent) {
-      // eslint-disable-next-line @typescript-eslint/no-this-alias
-      const self = this;
-
-      this._toolbarComponent.$on('chiToolbarSearch', () => {
-        self.ribbonVisible = true;
-      });
-
-      this._toolbarComponent.$on('chiToolbarFiltersChange', () => {
-        self.ribbonVisible = true;
-      });
-
-      this._toolbarComponent.$on('chiToolbarViewsChange', () => {
-        self.ribbonVisible = true;
-      });
-    }
+    // Todo - replace with Ribbon management visibility once available
+    // if (this._toolbarComponent) {
+    //   this._toolbarComponent.$on('chiToolbarSearch', (ev: Event) => {
+    //   });
+    //   this._toolbarComponent.$on('chiToolbarFiltersChange', (ev: Event) => {
+    //   });
+    // }
   }
 
   resizeHandler() {
@@ -842,14 +834,12 @@ export default class DataTable extends Vue {
     const classes = this.dataTableClasses(this.config.style, this.sortable),
       head = this.head(),
       toolbar = this.toolbar(),
-      ribbon = this.ribbon(),
       body = this.body(),
       pagination = this.pagination();
 
     return (
       <div class={classes} role="table" ref="dataTable">
         {toolbar}
-        {ribbon}
         {head}
         {body}
         <div class={DATA_TABLE_CLASSES.FOOTER}>{pagination}</div>

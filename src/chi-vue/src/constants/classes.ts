@@ -12,6 +12,16 @@ export const SR_ONLY = '-sr--only';
 export const EXPANDED_CLASS = '-expanded';
 //#endregion
 
+//#region Accordion
+export const ACCORDION_CLASSES = {
+  ACCORDION: 'chi-accordion',
+  CONTENT: 'chi-accordion__content',
+  ITEM: 'chi-accordion__item',
+  TRIGGER: 'chi-accordion__trigger',
+  TITLE: 'chi-accordion__title',
+};
+//#region
+
 //#region Backdrop
 export const BACKDROP_CLASSES = {
   BACKDROP: 'chi-backdrop',
@@ -26,6 +36,7 @@ export const BUTTON_CLASSES = {
   ICON_BUTTON: '-icon',
   CONTENT: 'chi-button__content',
   FLAT: '-flat',
+  PRIMARY: '-primary',
 };
 //#endregion
 
@@ -74,6 +85,12 @@ export const DRAWER_CLASSES = {
 };
 //#endregion
 
+//#region Form
+export const FORM_CLASSES = {
+  FORM_ITEM: 'chi-form__item',
+};
+//#endregion
+
 //#region Icon
 export const ICON_CLASS = 'chi-icon';
 //#endregion
@@ -109,6 +126,12 @@ export const SEARCH_INPUT_CLASSES = {
 };
 //#endregion
 
+//#region Search Input
+export const SELECT_CLASSES = {
+  SELECT: 'chi-select',
+};
+//#endregion
+
 //#region Tooltip
 export const TOOLTIP_CLASSES = {
   TOOLTIP_ELEMENT: 'chi-tooltip',
@@ -122,6 +145,9 @@ export const UTILITY_CLASSES = {
   },
   ALIGN_SELF: {
     CENTER: '-align-self--center',
+  },
+  DISPLAY: {
+    FLEX: '-d--flex',
   },
   JUSTIFY: {
     CENTER: '-justify-content--center',

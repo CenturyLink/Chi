@@ -3,6 +3,7 @@ import { BUTTON_CLASSES, CLOSE_CLASS, ICON_CLASS, INPUT_CLASSES, SEARCH_INPUT_CL
 import { SearchInputSizes } from '@/constants/types';
 import { SEARCH_INPUT_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
+import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 
 @Component
 export default class SearchInput extends Vue {
@@ -38,9 +39,7 @@ export default class SearchInput extends Vue {
       const dataTableToolbarComponent = findComponent(this, 'DataTableToolbar');
 
       if (dataTableToolbarComponent) {
-        // eslint-disable-next-line
-        // @ts-ignore
-        dataTableToolbarComponent._searchComponent = this;
+        (dataTableToolbarComponent as DataTableToolbar)._searchComponent = this;
       }
     }
   }

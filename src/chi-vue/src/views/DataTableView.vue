@@ -35,9 +35,8 @@
         </div>
       </template>
       <template #toolbar>
-        <ChiDataTableToolbar>
+        <ChiDataTableToolbar @chiToolbarFiltersChange="e => filtersChange(e)" @chiToolbarSearch="e => search(e)">
           <ChiSearchInput size="lg" :dataTableSearch="true" />
-          <ChiDataTableViews class="-ml--2" />
           <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
         </ChiDataTableToolbar>
       </template>
@@ -50,17 +49,15 @@ import { Component, Vue } from 'vue-property-decorator';
 import DataTable from '../components/data-table/DataTable';
 import Actions from './DataTableTemplates/example-actions.vue';
 import TicketPopover from './DataTableTemplates/example-popover.vue';
-import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
-import SearchInput from '@/components/search-input/SearchInput';
-import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
-import DataTableViews from '@/components/data-table-views/DataTableViews';
+import DataTableToolbar from '../components/data-table-toolbar/DataTableToolbar';
+import SearchInput from '../components/search-input/SearchInput';
+import DataTableFilters from '../components/data-table-filters/DataTableFilters';
 
 @Component({
   components: {
     ChiDataTable: DataTable,
     ChiDataTableToolbar: DataTableToolbar,
     ChiSearchInput: SearchInput,
-    ChiDataTableViews: DataTableViews,
     ChiDataTableFilters: DataTableFilters,
     Actions,
     TicketPopover,
@@ -76,6 +73,9 @@ import DataTableViews from '@/components/data-table-views/DataTableViews';
       console.log(e);
     },
     dataSorting: e => {
+      console.log(e);
+    },
+    search: e => {
       console.log(e);
     },
     filtersChange: e => {
@@ -115,7 +115,6 @@ import DataTableViews from '@/components/data-table-views/DataTableViews';
         filtersData: [
           {
             name: 'status',
-            label: '-- Status --',
             type: 'select',
             options: [
               {
