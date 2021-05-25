@@ -3,6 +3,7 @@ export const DATA_TABLE_EVENTS = {
   SELECTED_ROWS_CHANGE: 'chiSelectedRowsChange',
   DATA_SORTING: 'chiDataSorting',
   FILTERS_CHANGE: 'chiFiltersChange',
+  COLUMNS_CHANGE: 'chiColumnsChange',
   ADVANCED_FILTERS_CHANGE: 'chiAdvancedFiltersChange',
   TOOLBAR: {
     FILTERS_CHANGE: 'chiToolbarFiltersChange',

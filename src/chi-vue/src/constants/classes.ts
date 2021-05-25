@@ -57,6 +57,7 @@ export const DATA_TABLE_CLASSES = {
   DATA_TABLE: 'chi-data-table',
   TOOLBAR: 'chi-data-table__toolbar',
   FILTERS: 'chi-data-table__filters',
+  COLUMNS: 'chi-data-table__columns',
   HEAD: 'chi-data-table__head',
   BODY: 'chi-data-table__body',
   ROW: 'chi-data-table__row',

@@ -92,8 +92,15 @@ export interface DataTableFilter {
   advanced?: true;
   template?: string;
 }
+export interface DataTableColumn {
+  name: string;
+  label: string;
+}
 export interface DataTableFiltersData {
   filters: DataTableFilter[];
+}
+export interface DataTableColumnsData {
+  columns: DataTableColumn[];
 }
 export type DataTableFormElementFilters = 'select' | 'input' | 'textarea' | 'checkbox';
 export interface DataTableView {
