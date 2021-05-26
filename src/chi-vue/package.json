@@ -1,6 +1,6 @@
 {
   "name": "@centurylink/chi-vue",
-  "version": "0.1.0-beta.1",
+  "version": "0.1.0-beta.2",
   "private": false,
   "main": "dist/@centurylink/chi-vue.common.js",
   "types": "index.d.ts",
@@ -18,7 +18,7 @@
     "prettier:checker": "prettier './{src/**/*(*.ts|*.vue|*.tsx),*.js,tests/**/*(*.js)}' --check"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
     "type": "git",
