@@ -12,7 +12,6 @@ const exportComponent: ComponentLibrary = {
       import(/* webpackChunkName: "data-table-filters" */ '../components/data-table-filters/DataTableFilters'),
     ChiDrawer: () => import(/* webpackChunkName: "drawer" */ '../components/drawer/drawer'),
     ChiPagination: () => import(/* webpackChunkName: "pagination" */ '../components/pagination/pagination'),
-    ChiSearchInput: () => import(/* webpackChunkName: "data-search-input" */ '../components/search-input/SearchInput'),
     ChiTooltip: () => import(/* webpackChunkName: "tooltip" */ '../components/tooltip/tooltip'),
   },
 };
