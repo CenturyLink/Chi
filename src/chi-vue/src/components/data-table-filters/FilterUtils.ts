@@ -3,7 +3,7 @@ import { DataTableFilter, DataTableFormElementFilters } from '@/constants/types'
 export function getElementFilterData(
   ev: Event,
   elementType: DataTableFormElementFilters
-): { name: string; checked?: boolean; value?: string } | void {
+): { name: string; checked?: boolean; value?: string } | null {
   const element = ev.target as HTMLFormElement;
   const elementDataset = element.dataset;
 
@@ -24,6 +24,7 @@ export function getElementFilterData(
       };
     }
   }
+  return null;
 }
 
 export function updateFilterData(

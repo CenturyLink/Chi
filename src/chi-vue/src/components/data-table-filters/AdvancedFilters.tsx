@@ -44,7 +44,10 @@ export default class AdvancedFilters extends Vue {
 
   _changeFormElementFilter(ev: Event, elementType: DataTableFormElementFilters) {
     if (ev.target) {
-      const newFilterData = getElementFilterData(ev, elementType);
+      const newFilterData: { name: string; checked?: boolean; value?: string } | null = getElementFilterData(
+        ev,
+        elementType
+      );
 
       if (newFilterData && this.advancedFiltersData) {
         updateFilterData(this.advancedFiltersData, newFilterData);
@@ -162,7 +165,7 @@ export default class AdvancedFilters extends Vue {
 
   _toggleAdvancedFiltersPopover() {
     if (this._advancedFilterPopoverId) {
-      const popover = document.getElementById(this._advancedFilterPopoverId);
+      const popover = this.$refs.popover;
 
       if (popover) {
         // eslint-disable-next-line
@@ -181,7 +184,7 @@ export default class AdvancedFilters extends Vue {
     const dataTableFiltersComponent = findComponent(this, 'DataTableFilters');
 
     if (this._advancedFilterAccordionId) {
-      const advancedFiltersAccordion = document.getElementById(this._advancedFilterAccordionId);
+      const advancedFiltersAccordion = this.$refs.advancedFiltersAccordion;
 
       if (advancedFiltersAccordion) {
         this._advancedFiltersAccordion = chi.accordion(advancedFiltersAccordion);
@@ -233,14 +236,14 @@ export default class AdvancedFilters extends Vue {
     );
     const advancedFiltersPopover = (
       <chi-popover
-        id={this._advancedFilterPopoverId}
+        ref="popover"
         position="bottom"
         reference={`#${this._advancedFilterButtonId}`}
         title="Filters"
         portal
         drag
         closable>
-        <div class={`${ACCORDION_CLASSES.ACCORDION} -sm`} id={this._advancedFilterAccordionId}>
+        <div class={`${ACCORDION_CLASSES.ACCORDION} -sm`} ref="advancedFiltersAccordion">
           {advancedFilters}
         </div>
         <div class={`advanced-filters__actions -mt--2`}>

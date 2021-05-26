@@ -157,9 +157,9 @@ export default class DataTableFilters extends Vue {
 
       if (this._filtersData && advancedFilters) {
         // eslint-disable-next-line
-        const advancedFiltersObject = advancedFilters.reduce((r: any, a) => {
-          r[a.name] = { ...a };
-          return r;
+        const advancedFiltersObject = advancedFilters.reduce((filtersObject: any, filter) => {
+          filtersObject[filter.name] = { ...filter };
+          return filtersObject;
         }, {});
 
         this._filtersData.filters
