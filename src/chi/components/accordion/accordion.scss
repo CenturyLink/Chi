@@ -116,6 +116,12 @@ $icon-sizes: (
           transform: rotate(180deg);
           transition: transform $animation-duration ease-in-out;
         }
+
+        .icon-plus {
+          &::before {
+            content: '\e974';
+          }
+        }
       }
     }
   }
