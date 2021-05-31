@@ -37,14 +37,20 @@ export interface DataTableRowNestedContent {
 }
 export interface DataTableRow {
   active: boolean;
+  expanded: boolean;
   data: Record<string, any>;
   nestedContent: DataTableRowNestedContent;
-  id: string | number;
+  id: string;
   rowNumber: string;
 }
 export interface DataTableData {
   head: any;
   body: DataTableRow[];
+}
+export interface DataTableSortConfig {
+  key: string;
+  sortBy?: string;
+  direction: 'ascending' | 'descending';
 }
 export interface DataTableConfig {
   columnResize: boolean;
@@ -61,10 +67,12 @@ export interface DataTableConfig {
     xl: number[];
   };
   pagination: {
+    hideOnSinglePage: boolean;
     compact: boolean;
     firstLast: boolean;
     pageJumper: boolean;
   };
+  defaultSort: DataTableSortConfig;
 }
 export interface DataTableFilter {
   name: string;
