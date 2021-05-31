@@ -8,6 +8,8 @@
       @chiPageChange="e => this.pageChange(e)"
       @chiPageSizeChange="e => this.pageSizeChange(e)"
       @chiDataSorting="e => this.dataSorting(e)"
+      @chiRowExpanded="e => this.rowExpanded(e)"
+      @chiRowCollapsed="e => this.rowCollapsed(e)"
     >
       <template #icon="payload">
         <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`"></i>
@@ -89,6 +91,12 @@ import { DataTableRow } from '../constants/types';
     },
     filtersChange: e => {
       console.log(e);
+    },
+    rowExpanded: e => {
+      console.log(`Expanded row: `, e);
+    },
+    rowCollapsed: e => {
+      console.log(`Collapsed row: `, e);
     },
   },
   data: () => {

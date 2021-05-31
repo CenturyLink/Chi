@@ -278,7 +278,11 @@ export default class DataTable extends Vue {
   }
 
   _emitSelectedRows() {
-    this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, this.selectedRows);
+    const selectedRowsData = this._serializedDataBody.filter((row: DataTableRow) => {
+      return this.selectedRows.includes(row.id);
+    });
+
+    this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, selectedRowsData);
   }
 
   selectRow(rowData: DataTableRow) {
@@ -368,10 +372,14 @@ export default class DataTable extends Vue {
   }
 
   toggleRow(id: string) {
+    const rowData = this._serializedDataBody.find((row: DataTableRow) => row.id === id);
+
     if (this.accordionsExpanded.includes(id)) {
       this.accordionsExpanded.splice(this.accordionsExpanded.indexOf(id), 1);
+      this.$emit(DATA_TABLE_EVENTS.EXPANSION.COLLAPSED, rowData);
     } else {
       this.accordionsExpanded.push(id);
+      this.$emit(DATA_TABLE_EVENTS.EXPANSION.EXPANDED, rowData);
     }
   }
 
