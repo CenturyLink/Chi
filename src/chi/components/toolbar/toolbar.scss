@@ -1,0 +1,112 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-toolbar {
+  &__header,
+  &__ribbon {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__header {
+    background-color: $toolbar-header-background-color;
+    padding: 0.5rem;
+
+    .chi-form__item {
+      .chi-select {
+        display: none;
+      }
+    }
+
+    .chi-toolbar__end {
+      .chi-button:not(.chi-toolbar__btn-actions) {
+        display: none;
+      }
+    }
+
+    @include respond-to(md) {
+      padding: 1.5rem;
+
+      .chi-form__item {
+        padding-right: 1rem;
+
+        .chi-select {
+          display: block;
+        }
+
+        + .chi-form__item {
+          padding-left: 1rem;
+        }
+      }
+
+      .chi-toolbar__end {
+        .chi-button:not(.chi-toolbar__btn-actions) {
+          display: block;
+        }
+      }
+    }
+
+    + .chi-toolbar__ribbon {
+      border-top: 0.0625rem solid $toolbar-ribbon-border-color;
+    }
+  }
+
+  &__ribbon {
+    background-color: $toolbar-ribbon-background-color;
+    padding: 0.5rem 1.5rem;
+
+    .chi-divider {
+      height: $toolbar-ribbon-divider-height;
+      margin: 0 1rem;
+    }
+  }
+
+  &__start,
+  &__end {
+    align-items: center;
+    display: flex;
+  }
+
+  &__btn-actions {
+    @include respond-to(md) {
+      display: none;
+    }
+  }
+
+  &__results {
+    font-size: $toolbar-results-font-size;
+    margin-left: 0.5rem;
+
+    .chi-toolbar__label {
+      font-weight: 600;
+    }
+  }
+
+  &.-portal {
+    .chi-toolbar__header {
+      background-color: $color-background-muted-lighter;
+
+      @include respond-to(md) {
+        .chi-form__item {
+          + .chi-form__item {
+            border-left: 0.0625rem solid $color-border-base;
+            height: 2.5rem;
+          }
+        }
+      }
+
+      + .chi-toolbar__ribbon {
+        border-top: 0;
+      }
+    }
+
+    .chi-toolbar__ribbon {
+      background-color: $color-background-primary-light;
+
+      .chi-divider {
+        border-right-color: $color-blue-40;
+      }
+    }
+  }
+}
