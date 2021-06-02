@@ -4,13 +4,15 @@ import { BUTTON_CLASSES, DATA_TABLE_CLASSES, ICON_CLASS, PORTAL_CLASS } from '@/
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { DataTableColumn, DataTableColumnsData } from '@/constants/types';
+import ColumnCustomizationContent from './ColumnCustomizationModalContent';
 
 // eslint-disable-next-line
 declare const chi: any;
 
 @Component
-export default class DataTableFilters extends Vue {
-  @Prop() columnsData?: DataTableColumnsData;
+export default class ColumnCustomization extends Vue {
+  // eslint-disable-next-line
+  @Prop() columnsData?: any;
 
   _columnsData?: DataTableColumnsData;
   _selectedColumns: DataTableColumn[] = [];
@@ -36,13 +38,6 @@ export default class DataTableFilters extends Vue {
   }
 
   _modal() {
-    const availableColumns = this._columnsData?.columns.map((column: DataTableColumn) => {
-      return <div class="-d--block">{column.label || column.name}</div>;
-    });
-    const selectedColumns = () => {
-      return null;
-    };
-
     return (
       <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
@@ -61,16 +56,7 @@ export default class DataTableFilters extends Vue {
               </button>
             </header>
             <div class="chi-modal__content">
-              <div class="chi-grid">
-                <div class="chi-col -w--6">
-                  <div class="-text--bold">Available columns</div>
-                  {availableColumns}
-                </div>
-                <div class="chi-col -w--6">
-                  <div class="-text--bold">Selected columns</div>
-                  {selectedColumns()}
-                </div>
-              </div>
+              <ColumnCustomizationContent columns-data={this.$props.columnsData.columns} />
             </div>
             <footer class="chi-modal__footer">
               <button class="chi-button" data-dismiss="modal">

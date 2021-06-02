@@ -215,6 +215,13 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             {
               name: 'columnC',
               label: 'Column C',
+              locked: true,
+              selected: true,
+            },
+            {
+              name: 'columnC',
+              label: 'Column C',
+              selected: true,
             },
           ],
         },

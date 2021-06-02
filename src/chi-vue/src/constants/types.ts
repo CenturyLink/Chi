@@ -95,7 +95,10 @@ export interface DataTableFilter {
 export interface DataTableColumn {
   name: string;
   label: string;
+  selected: boolean;
+  locked: true;
 }
+
 export interface DataTableFiltersData {
   filters: DataTableFilter[];
 }
