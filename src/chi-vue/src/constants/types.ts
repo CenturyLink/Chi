@@ -66,6 +66,39 @@ export interface DataTableConfig {
     pageJumper: boolean;
   };
 }
+export interface DataTableFilter {
+  name: string;
+  label: string;
+  type: 'select' | 'input' | 'checkbox' | 'textarea' | 'template';
+  options?: [
+    {
+      value: string;
+      label: string;
+      selected: true;
+    }
+  ];
+  value?: string;
+  checked?: boolean;
+  defaultValue?: string;
+  placeholder: string;
+  advanced?: true;
+  template?: string;
+}
+export interface DataTableFiltersData {
+  filters: DataTableFilter[];
+}
+export type DataTableFormElementFilters = 'select' | 'input' | 'textarea' | 'checkbox';
+export interface DataTableView {
+  name: string;
+  columns: string[];
+  searchString: string;
+  filters: DataTableFilter[];
+}
+export interface DataTableViews {
+  views: DataTableView[];
+  defaultView: DataTableView;
+  selectedView: DataTableView;
+}
 //#endregion
 
 //#region Drawer

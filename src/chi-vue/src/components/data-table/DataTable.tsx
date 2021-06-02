@@ -1,6 +1,4 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import Pagination from '../pagination/pagination';
-import Tooltip from '../tooltip/tooltip';
 import {
   ACTIVE_CLASS,
   BUTTON_CLASSES,
@@ -24,6 +22,9 @@ import {
   DataTableStyleConfig,
 } from '@/constants/types';
 import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
+import Tooltip from '../tooltip/tooltip';
+import Pagination from '../pagination/pagination';
+import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 
 let dataTableNumber = 0;
 @Component({})
@@ -44,6 +45,7 @@ export default class DataTable extends Vue {
   _resizeTimer?: number;
   _dataTableId?: string;
   _preventSortOnResize? = false;
+  _toolbarComponent?: DataTableToolbar;
 
   head() {
     const tableHeadCells = [
@@ -124,6 +126,13 @@ export default class DataTable extends Vue {
     );
   }
 
+  toolbar() {
+    if (this.$scopedSlots['toolbar']) {
+      return <div class="">{this.$scopedSlots['toolbar']({})}</div>;
+    }
+    return null;
+  }
+
   generateColumnResize(elem: HTMLElement) {
     const columnHeaders = elem.querySelectorAll(`.${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`);
     let thElm: HTMLElement | null;
@@ -181,9 +190,9 @@ export default class DataTable extends Vue {
   cellAlignment(align: string): string {
     // eslint-disable-next-line
     const alignmentUtilityClasses: any = {
-      left: UTILITY_CLASSES.JUSTIFY.START,
-      center: UTILITY_CLASSES.JUSTIFY.CENTER,
-      right: UTILITY_CLASSES.JUSTIFY.END,
+      left: UTILITY_CLASSES.JUSTIFY.MD_START,
+      center: UTILITY_CLASSES.JUSTIFY.MD_CENTER,
+      right: UTILITY_CLASSES.JUSTIFY.MD_END,
     };
 
     if (align) {
@@ -662,6 +671,13 @@ export default class DataTable extends Vue {
       }
     });
     window.addEventListener('resize', this.resizeHandler);
+    // Todo - replace with Ribbon management visibility once available
+    // if (this._toolbarComponent) {
+    //   this._toolbarComponent.$on('chiToolbarSearch', (ev: Event) => {
+    //   });
+    //   this._toolbarComponent.$on('chiToolbarFiltersChange', (ev: Event) => {
+    //   });
+    // }
   }
 
   resizeHandler() {
@@ -817,11 +833,13 @@ export default class DataTable extends Vue {
   render() {
     const classes = this.dataTableClasses(this.config.style, this.sortable),
       head = this.head(),
+      toolbar = this.toolbar(),
       body = this.body(),
       pagination = this.pagination();
 
     return (
       <div class={classes} role="table" ref="dataTable">
+        {toolbar}
         {head}
         {body}
         <div class={DATA_TABLE_CLASSES.FOOTER}>{pagination}</div>

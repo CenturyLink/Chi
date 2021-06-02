@@ -34,6 +34,12 @@
           </div>
         </div>
       </template>
+      <template #toolbar>
+        <ChiDataTableToolbar @chiToolbarFiltersChange="e => filtersChange(e)" @chiToolbarSearch="e => search(e)">
+          <ChiSearchInput size="lg" :dataTableSearch="true" />
+          <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
+        </ChiDataTableToolbar>
+      </template>
     </ChiDataTable>
   </div>
 </template>
@@ -43,10 +49,16 @@ import { Component, Vue } from 'vue-property-decorator';
 import DataTable from '../components/data-table/DataTable';
 import Actions from './DataTableTemplates/example-actions.vue';
 import TicketPopover from './DataTableTemplates/example-popover.vue';
+import DataTableToolbar from '../components/data-table-toolbar/DataTableToolbar';
+import SearchInput from '../components/search-input/SearchInput';
+import DataTableFilters from '../components/data-table-filters/DataTableFilters';
 
 @Component({
   components: {
     ChiDataTable: DataTable,
+    ChiDataTableToolbar: DataTableToolbar,
+    ChiSearchInput: SearchInput,
+    ChiDataTableFilters: DataTableFilters,
     Actions,
     TicketPopover,
   },
@@ -61,6 +73,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
       console.log(e);
     },
     dataSorting: e => {
+      console.log(e);
+    },
+    search: e => {
+      console.log(e);
+    },
+    filtersChange: e => {
       console.log(e);
     },
   },
@@ -92,6 +110,72 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
           xl: [5, 15, 10, 15, 15, 15, 15, 5],
         },
         resultsPerPage: 10,
+      },
+      toolbar: {
+        filtersData: [
+          {
+            name: 'status',
+            type: 'select',
+            options: [
+              {
+                label: 'Active',
+                value: 'active',
+              },
+              {
+                label: 'Inactive',
+                value: 'inactive',
+              },
+            ],
+            value: 'active',
+          },
+          {
+            name: 'input',
+            type: 'input',
+            value: '',
+          },
+          {
+            name: 'checkbox',
+            type: 'checkbox',
+            checked: false,
+          },
+          {
+            name: 'statusAdvanced',
+            label: 'Status',
+            type: 'select',
+            options: [
+              {
+                label: 'Active',
+                value: 'active',
+                selected: false,
+              },
+              {
+                label: 'Inactive',
+                value: 'inactive',
+                selected: false,
+              },
+            ],
+            advanced: true,
+            value: 'active',
+          },
+          {
+            name: 'inputAdvanced',
+            label: 'Label',
+            type: 'input',
+            advanced: true,
+          },
+          {
+            name: 'textareaAdvanced',
+            label: 'textarea',
+            type: 'textarea',
+            advanced: true,
+          },
+          {
+            name: 'checkboxAdvanced',
+            label: 'Checkbox',
+            type: 'checkbox',
+            advanced: true,
+          },
+        ],
       },
       table: {
         head: {

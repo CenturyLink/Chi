@@ -12,6 +12,16 @@ export const SR_ONLY = '-sr--only';
 export const EXPANDED_CLASS = '-expanded';
 //#endregion
 
+//#region Accordion
+export const ACCORDION_CLASSES = {
+  ACCORDION: 'chi-accordion',
+  CONTENT: 'chi-accordion__content',
+  ITEM: 'chi-accordion__item',
+  TRIGGER: 'chi-accordion__trigger',
+  TITLE: 'chi-accordion__title',
+};
+//#region
+
 //#region Backdrop
 export const BACKDROP_CLASSES = {
   BACKDROP: 'chi-backdrop',
@@ -26,6 +36,7 @@ export const BUTTON_CLASSES = {
   ICON_BUTTON: '-icon',
   CONTENT: 'chi-button__content',
   FLAT: '-flat',
+  PRIMARY: '-primary',
 };
 //#endregion
 
@@ -44,6 +55,8 @@ export const CHECKBOX_CLASSES = {
 //#region Data Table
 export const DATA_TABLE_CLASSES = {
   DATA_TABLE: 'chi-data-table',
+  TOOLBAR: 'chi-data-table__toolbar',
+  FILTERS: 'chi-data-table__filters',
   HEAD: 'chi-data-table__head',
   BODY: 'chi-data-table__body',
   ROW: 'chi-data-table__row',
@@ -69,6 +82,12 @@ export const DRAWER_CLASSES = {
   HEADER: 'chi-drawer__header',
   TITLE: 'chi-drawer__title',
   CONTENT: 'chi-drawer__content',
+};
+//#endregion
+
+//#region Form
+export const FORM_CLASSES = {
+  FORM_ITEM: 'chi-form__item',
 };
 //#endregion
 
@@ -107,6 +126,12 @@ export const SEARCH_INPUT_CLASSES = {
 };
 //#endregion
 
+//#region Search Input
+export const SELECT_CLASSES = {
+  SELECT: 'chi-select',
+};
+//#endregion
+
 //#region Tooltip
 export const TOOLTIP_CLASSES = {
   TOOLTIP_ELEMENT: 'chi-tooltip',
@@ -115,10 +140,20 @@ export const TOOLTIP_CLASSES = {
 
 //#region Utility Classes
 export const UTILITY_CLASSES = {
+  ALIGN_ITEMS: {
+    CENTER: '-align-items--center',
+  },
+  ALIGN_SELF: {
+    CENTER: '-align-self--center',
+  },
+  DISPLAY: {
+    FLEX: '-d--flex',
+  },
   JUSTIFY: {
-    START: '-justify-content-md--start',
-    CENTER: '-justify-content-md--center',
-    END: '-justify-content-md--end',
+    CENTER: '-justify-content--center',
+    MD_START: '-justify-content-md--start',
+    MD_CENTER: '-justify-content-md--center',
+    MD_END: '-justify-content-md--end',
   },
   TYPOGRAPHY: {
     TEXT_TRUNCATE: '-text--truncate',
