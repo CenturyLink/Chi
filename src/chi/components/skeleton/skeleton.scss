@@ -39,10 +39,10 @@ $skeleton-sizes: (
 
   &.-circle,
   &.-square {
-    @each $type in map-keys($skeleton-sizes) {
-      height: 2rem;
-      width: 2rem;
+    height: 2rem;
+    width: 2rem;
 
+    @each $type in map-keys($skeleton-sizes) {
       &.-#{$type} {
         height: map-get($skeleton-sizes, $type);
         width: map-get($skeleton-sizes, $type);

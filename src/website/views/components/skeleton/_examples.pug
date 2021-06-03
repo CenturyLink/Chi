@@ -60,63 +60,84 @@ h3 Square
     :code(lang="html")
       <div class="chi-skeleton -square"></div>
 
+h3 Rounded square
+.example.-mb--3
+  .-p--3.-p-lg--6
+    .chi-skeleton.-square.-rounded
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-square-rounded
+      li.-disabled
+        a(href=`#webcomponent-square-rounded`) Web Component
+      li.-active
+        a(href=`#html-square-rounded`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-square-rounded
+  .chi-tabs-panel.-active#html-square-rounded
+    :code(lang="html")
+      <div class="chi-skeleton -square -rounded"></div>
+
 h3 Sizes
 .example.-mb--3
   .-p--3.-p-lg--6
     .-text--bold -xs
     .chi-grid.-mt--2
+      .chi-col.-w--3
+        .chi-skeleton.-xs
+      .chi-col.-w--3
+        .chi-skeleton.-rounded.-xs
       .chi-col.-w--2
         .chi-skeleton.-circle.-xs
       .chi-col.-w--2
         .chi-skeleton.-square.-xs
-      .chi-col.-w--4
-        .chi-skeleton.-rounded.-xs
-      .chi-col.-w--4
-        .chi-skeleton.-xs
-
+      .chi-col.-w--2
+        .chi-skeleton.-square.-rounded.-xs
     .-text--bold.-mt--2 -sm
     .chi-grid.-mt--2
+      .chi-col.-w--3
+        .chi-skeleton.-sm
+      .chi-col.-w--3
+        .chi-skeleton.-rounded.-sm
       .chi-col.-w--2
         .chi-skeleton.-circle.-sm
       .chi-col.-w--2
         .chi-skeleton.-square.-sm
-      .chi-col.-w--4
-        .chi-skeleton.-rounded.-sm
-      .chi-col.-w--4
-        .chi-skeleton.-sm
-
+      .chi-col.-w--2
+        .chi-skeleton.-square.-rounded.-sm
     .-text--bold.-mt--2 -md
     .chi-grid.-mt--2
+      .chi-col.-w--3
+        .chi-skeleton.-md
+      .chi-col.-w--3
+        .chi-skeleton.-rounded.-md
       .chi-col.-w--2
         .chi-skeleton.-circle.-md
       .chi-col.-w--2
         .chi-skeleton.-square.-md
-      .chi-col.-w--4
-        .chi-skeleton.-rounded.-md
-      .chi-col.-w--4
-        .chi-skeleton.-md
-
+      .chi-col.-w--2
+        .chi-skeleton.-square.-rounded.-md
     .-text--bold.-mt--2 -lg
     .chi-grid.-mt--2
+      .chi-col.-w--3
+        .chi-skeleton.-lg
+      .chi-col.-w--3
+        .chi-skeleton.-rounded.-lg
       .chi-col.-w--2
         .chi-skeleton.-circle.-lg
       .chi-col.-w--2
         .chi-skeleton.-square.-lg
-      .chi-col.-w--4
-        .chi-skeleton.-rounded.-lg
-      .chi-col.-w--4
-        .chi-skeleton.-lg
-
+      .chi-col.-w--2
+        .chi-skeleton.-square.-rounded.-lg
     .-text--bold.-mt--2 -xl
     .chi-grid.-mt--2
+      .chi-col.-w--3
+        .chi-skeleton.-xl
+      .chi-col.-w--3
+        .chi-skeleton.-rounded.-xl
       .chi-col.-w--2
         .chi-skeleton.-circle.-xl
       .chi-col.-w--2
         .chi-skeleton.-square.-xl
-      .chi-col.-w--4
-        .chi-skeleton.-rounded.-xl
-      .chi-col.-w--4
-        .chi-skeleton.-xl
+      .chi-col.-w--2
+        .chi-skeleton.-square.-rounded.-xl
   .example-tabs.-pl--2
     ul.chi-tabs#examples-sizes
       li.-disabled
@@ -127,31 +148,36 @@ h3 Sizes
   .chi-tabs-panel.-active#html-sizes
     :code(lang="html")
       <!-- -xs-->
+      <div class="chi-skeleton -xs"></div>
+      <div class="chi-skeleton -rounded -xs"></div>
       <div class="chi-skeleton -circle -xs"></div>
       <div class="chi-skeleton -square -xs"></div>
-      <div class="chi-skeleton -rounded -xs"></div>
-      <div class="chi-skeleton -xs"></div>
+      <div class="chi-skeleton -square -rounded -xs"></div>
       
       <!-- -sm-->
+      <div class="chi-skeleton -sm"></div>
+      <div class="chi-skeleton -rounded -sm"></div>
       <div class="chi-skeleton -circle -sm"></div>
       <div class="chi-skeleton -square -sm"></div>
-      <div class="chi-skeleton -rounded -sm"></div>
-      <div class="chi-skeleton -sm"></div>
+      <div class="chi-skeleton -square -rounded -sm"></div>
       
       <!-- -md-->
+      <div class="chi-skeleton -md"></div>
+      <div class="chi-skeleton -rounded -md"></div>
       <div class="chi-skeleton -circle -md"></div>
       <div class="chi-skeleton -square -md"></div>
-      <div class="chi-skeleton -rounded -md"></div>
-      <div class="chi-skeleton -md"></div>
+      <div class="chi-skeleton -square -rounded -md"></div>
       
       <!-- -lg-->
+      <div class="chi-skeleton -lg"></div>
+      <div class="chi-skeleton -rounded -lg"></div>
       <div class="chi-skeleton -circle -lg"></div>
       <div class="chi-skeleton -square -lg"></div>
-      <div class="chi-skeleton -rounded -lg"></div>
-      <div class="chi-skeleton -lg"></div>
+      <div class="chi-skeleton -square -rounded -lg"></div>
       
       <!-- -xl-->
+      <div class="chi-skeleton -xl"></div>
+      <div class="chi-skeleton -rounded -xl"></div>
       <div class="chi-skeleton -circle -xl"></div>
       <div class="chi-skeleton -square -xl"></div>
-      <div class="chi-skeleton -rounded -xl"></div>
-      <div class="chi-skeleton -xl"></div>
+      <div class="chi-skeleton -square -rounded -xl"></div>
