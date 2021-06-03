@@ -75,6 +75,56 @@ h3 Rounded square
     :code(lang="html")
       <div class="chi-skeleton -square -rounded"></div>
 
+h3 Complex combination
+.example.-mb--3
+  .-p--3.-p-lg--6
+    button.chi-button#toggle-skeleton Toggle Skeleton
+    .complex-combination-html.-d--none
+      .-text--h2 Lorem ipsum dolor sit amet
+      p.-mw--480
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        | eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        | Ut enim ad minim veniam, quis nostrud exercitation.
+      .-d--flex.-mw--480.-mt--4
+        .chi-avatar
+          i.chi-icon.icon-user
+        .chi-form__item.-flex--grow1.-ml--2
+          input#example__placeholder.chi-input(type='text', placeholder='Placeholder')
+        button.chi-button.-primary.-ml--2 Send
+    .complex-combination-skeleton
+      .-mw--480
+        .chi-skeleton.-mt--2.-w--90
+        .-mt--2
+          .chi-skeleton.-xs.-mt--1
+          .chi-skeleton.-xs.-mt--1.-w--90
+          .chi-skeleton.-xs.-mt--1.-w--50
+        .-d--flex.-mt--4
+          .chi-skeleton.-circle
+          .chi-skeleton.-rounded.-flex--grow1.-ml--2
+          .chi-skeleton.-rounded.-ml--2.-w--15
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-square-rounded
+      li.-disabled
+        a(href=`#webcomponent-square-rounded`) Web Component
+      li.-active
+        a(href=`#html-square-rounded`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-square-rounded
+  .chi-tabs-panel.-active#html-square-rounded
+    :code(lang="html")
+      <div class="-mw--480">
+        <div class="chi-skeleton -mt--2 -w--90"></div>
+        <div class="-mt--2">
+          <div class="chi-skeleton -xs -mt--1"></div>
+          <div class="chi-skeleton -xs -mt--1 -w--90"></div>
+          <div class="chi-skeleton -xs -mt--1 -w--50"></div>
+        </div>
+        <div class="-d--flex -mt--4">
+          <div class="chi-skeleton -circle"></div>
+          <div class="chi-skeleton -rounded -flex--grow1 -ml--2"></div>
+          <div class="chi-skeleton -rounded -ml--2 -w--15"></div>
+        </div>
+      </div>
+
 h3 Sizes
 .example.-mb--3
   .-p--3.-p-lg--6
@@ -181,3 +231,29 @@ h3 Sizes
       <div class="chi-skeleton -circle -xl"></div>
       <div class="chi-skeleton -square -xl"></div>
       <div class="chi-skeleton -square -rounded -xl"></div>
+
+script.
+  const toggleButton = document.querySelector('#toggle-skeleton');
+  const skeletonHtml = document.querySelector('.complex-combination-html');
+  const skeletonSkeleton = document.querySelector('.complex-combination-skeleton');
+  const classToToggle = '-d--none';
+
+  class ToggleSkeleton {
+    _html;
+    _skeleton;
+
+    constructor(button, html, skeleton) {
+      if (button, html, skeleton) {
+        this._html = html;
+        this._skeleton = skeleton;
+        button.addEventListener('click', this.toggleVisibility.bind(this));
+      }
+    }
+
+    toggleVisibility() {
+      this._html.classList.toggle(classToToggle);
+      this._skeleton.classList.toggle(classToToggle);
+    }
+  }
+
+  new ToggleSkeleton(toggleButton, skeletonHtml, skeletonSkeleton);
