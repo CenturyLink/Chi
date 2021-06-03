@@ -564,41 +564,101 @@ h3 Portal with ribbon
   // Drawers
   .chi-backdrop.-closed
     .chi-backdrop__wrapper
-      div#drawer-ctl-0.chi-drawer.-left.-menu.-position--absolute
+      div#drawer-ctl-0.chi-drawer.-left.-portal.-menu.-position--absolute
         .chi-drawer__header
+          span.chi-drawer__title Filters
           button(class='chi-button -icon -close',  aria-label='Close')
             .chi-button__content
               i.chi-icon.icon-x
-        .chi-drawer__content
-          .-px--2.-text
-            | Drawer content here
+        .chi-drawer__content.-px--2.-py--3
+          .chi-form__item.-mb--2
+            label.chi-label(for="example-ba11") Label
+            select(class="chi-select", id="example-ba11")
+              option(value="") Select
+              option Option 1
+              option Option 2
+              option Option 3
+          .chi-form__item.-mb--2
+            label.chi-label(for="example-ba12") Label
+            select(class="chi-select", id="example-ba12")
+              option(value="") Select
+              option Option 1
+              option Option 2
+              option Option 3
+          .chi-form__item.-mb--2
+            label.chi-label(for="example-ba13") Label
+            select(class="chi-select", id="example-ba13")
+              option(value="") Select
+              option Option 1
+              option Option 2
+              option Option 3
+          .chi-form__item.-mb--2
+            label.chi-label(for="example-ba14") Label
+            select(class="chi-select", id="example-ba14")
+              option(value="") Select
+              option Option 1
+              option Option 2
+              option Option 3
+        .-d--flex.-justify-content--center.-pb--2
+          button.chi-button.-primary.-lg.-uppercase.-px--4 Apply
+          button.chi-button.-primary.-outline.-lg.-bg--white.-uppercase.-px--4.-ml--2 Cancel
   .chi-backdrop.-closed
       .chi-backdrop__wrapper
-        div#drawer-1.chi-drawer.-right.-menu.-position--absolute
+        div#drawer-1.chi-drawer.-right.-portal.-menu.-position--absolute
           .chi-drawer__header
+            span.chi-drawer__title Actions
             button(class='chi-button -icon -close', aria-label='Close')
               .chi-button__content
                 i.chi-icon.icon-x
-          .chi-drawer__content
-            .-px--2.-text
-              | Drawer content here
+          .chi-drawer__content.-px--2
+            ul.-no-style
+              li.-text--md Download data
+              .chi-divider
+              li.-text--md Refresh results
+              .chi-divider
   .chi-backdrop.-closed
       .chi-backdrop__wrapper
-        div#drawer-ctl-3.chi-drawer.-bottom.-menu.-position--absolute
-          button(class='chi-button -icon -close', aria-label='Close')
-            .chi-button__content
-              i.chi-icon.icon-x
-          .chi-drawer__content
-            .-py--2
-              ul.chi-tabs.-lg.-vertical.-mt--5
-                li.-active
-                  a(href="#") Item
-                li
-                  a(href="#") Item
-                li
-                  a(href="#") Item
-                li
-                  a(href="#") Item
+        div#drawer-ctl-3.chi-drawer.-bottom.-portal.-menu.-position--absolute
+          .chi-drawer__header
+            span.chi-drawer__title Search
+            button(class='chi-button -icon -close', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x
+            .chi-form__item.-mt--2.-mb--1
+              chi-search-input(id="example__base-5")
+          .chi-drawer__content.-px--2
+            .-d--flex.-justify-content--between.-align-items--center
+              p.-text.-text--bold Recent searches
+              chi-link(size='md' href='#' hreflang='en') Link
+            ul.-no-style
+              li.-d--flex.-align-items--center
+                i.chi-icon.icon-search.-mr--1
+                .-text--md Search 1
+              .chi-divider
+              li.-d--flex.-align-items--center
+                i.chi-icon.icon-search.-mr--1
+                .-text--md Search 2
+              .chi-divider
+              li.-d--flex.-align-items--center
+                i.chi-icon.icon-search.-mr--1
+                .-text--md Search 3
+              .chi-divider
+              li.-d--flex.-align-items--center
+                i.chi-icon.icon-search.-mr--1
+                .-text--md Search 4
+              .chi-divider
+              li.-d--flex.-align-items--center
+                i.chi-icon.icon-search.-mr--1
+                .-text--md Search 5
+              .chi-divider
+              li.-d--flex.-align-items--center
+                i.chi-icon.icon-search.-mr--1
+                .-text--md Search 6
+              .chi-divider
+              li.-d--flex.-align-items--center
+                i.chi-icon.icon-search.-mr--1
+                .-text--md Search 7
+              .chi-divider
 
 script.
   document.addEventListener(
