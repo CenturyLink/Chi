@@ -1,4 +1,9 @@
 # CHANGELOG
+## 4.2.0 (June 4, 2021)
+### Components
+#### Added
+* Added: Skeleton component provides a visual placeholder for asynchronously rendered UI elements.
+
 ## 4.1.2 (May 21, 2021)
 ### Components
 #### Changed
