@@ -238,22 +238,9 @@ script.
   const skeletonSkeleton = document.querySelector('.complex-combination-skeleton');
   const classToToggle = '-d--none';
 
-  class ToggleSkeleton {
-    _html;
-    _skeleton;
-
-    constructor(button, html, skeleton) {
-      if (button, html, skeleton) {
-        this._html = html;
-        this._skeleton = skeleton;
-        button.addEventListener('click', this.toggleVisibility.bind(this));
-      }
-    }
-
-    toggleVisibility() {
-      this._html.classList.toggle(classToToggle);
-      this._skeleton.classList.toggle(classToToggle);
-    }
+  if (toggleButton, skeletonHtml, skeletonSkeleton) {
+    toggleButton.addEventListener('click', function() {
+      skeletonHtml.classList.toggle(classToToggle);
+      skeletonSkeleton.classList.toggle(classToToggle);
+    });
   }
-
-  new ToggleSkeleton(toggleButton, skeletonHtml, skeletonSkeleton);
