@@ -44,10 +44,10 @@
       </template>
       <template #loadingSkeleton>
         <div class="-d--flex -flex--column -w--100">
-          <div style="width: 420px; max-width: 100%; height: 2rem;" class="-skeleton"></div>
-          <div style="width: 960px; max-width: 100%; height: 1rem;" class="-skeleton -mt--2"></div>
-          <div style="width: 1024px; max-width: 100%; height: 1rem;" class="-skeleton -mt--1"></div>
-          <div style="width: 720px; max-width: 100%; height: 1rem;" class="-skeleton -mt--1"></div>
+          <div style="width: 420px;" class="chi-skeleton -mw--100"></div>
+          <div style="width: 960px;" class="chi-skeleton -xs -mw--100 -mt--2"></div>
+          <div style="width: 1024px;" class="chi-skeleton -xs -mw--100 -mt--1"></div>
+          <div style="width: 720px;" class="chi-skeleton -xs -mw--100 -mt--1"></div>
         </div>
       </template>
     </ChiDataTable>
