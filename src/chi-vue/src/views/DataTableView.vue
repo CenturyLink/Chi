@@ -1,6 +1,11 @@
 <template>
   <div id="tadataTableVIew">
     <h2>Data Table example</h2>
+    <ChiDataTableToolbar @chiToolbarFiltersChange="e => filtersChange(e)" @chiToolbarSearch="e => search(e)">
+      <ChiSearchInput size="lg" :dataTableSearch="true" />
+      <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
+      <ChiColumnCustomization :columnsData="toolbar.columnsData" />
+    </ChiDataTableToolbar>
     <ChiDataTable
       :data="table"
       :config="config"
@@ -219,8 +224,19 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               selected: true,
             },
             {
-              name: 'columnC',
-              label: 'Column C',
+              name: 'columnD',
+              label: 'Column D',
+              locked: true,
+              selected: true,
+            },
+            {
+              name: 'columnE',
+              label: 'Column E',
+              selected: true,
+            },
+            {
+              name: 'columnF',
+              label: 'Column F',
               selected: true,
             },
           ],
