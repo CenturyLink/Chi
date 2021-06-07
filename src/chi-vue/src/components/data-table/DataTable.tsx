@@ -65,7 +65,7 @@ export default class DataTable extends Vue {
 
     Object.keys(this.data.head).forEach((column: string) => {
       const label = this.data.head[column].label || this.data.head[column],
-        sortBy = this.data.head[column].sortBy || column,
+        sortBy = this.data.head[column].sortBy,
         sortable = this.data.head[column].sortable,
         alignment = this._cellAlignment(this.data.head[column].align),
         sortIcon = sortable ? (
@@ -786,8 +786,8 @@ export default class DataTable extends Vue {
         if (typeof this.data.head === 'object') {
           switch (this.data.head[column].sortDataType) {
             case 'string':
-              aValue = String(aValue);
-              bValue = String(bValue);
+              aValue = String(aValue).toLowerCase();
+              bValue = String(bValue).toLowerCase();
               break;
             case 'number':
               aValue = Number(aValue);
