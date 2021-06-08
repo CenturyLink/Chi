@@ -31,6 +31,12 @@ export default class DataTableToolbar extends Vue {
         this.$emit(DATA_TABLE_EVENTS.TOOLBAR.FILTERS_CHANGE, ev);
       });
     }
+
+    if (this._columns) {
+      this._columns.$on(DATA_TABLE_EVENTS.COLUMNS_CHANGE, (ev: Event) => {
+        this.$emit(DATA_TABLE_EVENTS.TOOLBAR.COLUMNS_CHANGE, ev);
+      });
+    }
   }
 
   render() {

@@ -1,11 +1,6 @@
 <template>
   <div id="tadataTableVIew">
     <h2>Data Table example</h2>
-    <ChiDataTableToolbar @chiToolbarFiltersChange="e => filtersChange(e)" @chiToolbarSearch="e => search(e)">
-      <ChiSearchInput size="lg" :dataTableSearch="true" />
-      <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
-      <ChiColumnCustomization :columnsData="toolbar.columnsData" />
-    </ChiDataTableToolbar>
     <ChiDataTable
       :data="table"
       :config="config"
@@ -42,7 +37,11 @@
         </div>
       </template>
       <template #toolbar>
-        <ChiDataTableToolbar @chiToolbarFiltersChange="e => filtersChange(e)" @chiToolbarSearch="e => search(e)">
+        <ChiDataTableToolbar
+          @chiToolbarFiltersChange="e => filtersChange(e)"
+          @chiToolbarSearch="e => search(e)"
+          @chiToolbarColumnsChange="e => columnsChange(e)"
+        >
           <ChiSearchInput size="lg" :dataTableSearch="true" />
           <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
           <ChiColumnCustomization :columnsData="toolbar.columnsData" />

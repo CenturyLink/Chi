@@ -6,6 +6,7 @@ export const DATA_TABLE_EVENTS = {
   COLUMNS_CHANGE: 'chiColumnsChange',
   ADVANCED_FILTERS_CHANGE: 'chiAdvancedFiltersChange',
   TOOLBAR: {
+    COLUMNS_CHANGE: 'chiToolbarColumnsChange',
     FILTERS_CHANGE: 'chiToolbarFiltersChange',
     SEARCH: 'chiToolbarSearch',
   },

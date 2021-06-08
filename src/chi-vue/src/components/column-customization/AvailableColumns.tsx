@@ -2,10 +2,11 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { DataTableColumn } from '@/constants/types';
 import { findComponent } from '@/utils/utils';
 import ColumnCustomizationContent from '@/components/column-customization/ColumnCustomizationModalContent';
+import { UTILITY_CLASSES } from '@/constants/classes';
 
 @Component
 export default class ColumnCustomizationAvailableColumns extends Vue {
-  @Prop() data?: DataTableColumn[];
+  @Prop() availableColumns?: DataTableColumn[];
 
   mounted() {
     const columnCustomizationModalContent = findComponent(this, 'ColumnCustomizationContent');
@@ -15,43 +16,17 @@ export default class ColumnCustomizationAvailableColumns extends Vue {
     }
   }
 
-  _emitAvailableOptionsChange() {
-    this.$emit('availableOptionsChange', (this.$refs.select as HTMLSelectElement).selectedOptions);
-  }
-
-  _controlButton(icon: string, action: Function) {
-    const icons = ['chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'];
-
-    if (icons.includes(icon)) {
-      return (
-        <button onclick={() => action()} class="chi-button -icon -flat" aria-label="Button action">
-          <div class="chi-button__content">
-            <i class={`chi-icon icon-${icon}`} />
-          </div>
-        </button>
-      );
-    }
-    return null;
-  }
-
   render() {
-    const options: [] = this.$props.data.map((column: DataTableColumn) => {
+    const options: [] = this.$props.availableColumns.map((column: DataTableColumn) => {
       return <option value={column.name}>{column.label || column.name}</option>;
     });
 
     return (
       <div class="-flex--grow1">
-        <div style="height: 200px;">
-          <div class="-text--bold">Available columns</div>
-          <select
-            available-columns
-            multiple="multiple"
-            onChange={() => this._emitAvailableOptionsChange()}
-            ref="select"
-            style="height: 200px; width: 100%;">
-            {options}
-          </select>
-        </div>
+        <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_BOLD}>Available columns</div>
+        <select available-columns multiple ref="select" style="height: 200px;" class="-w--100">
+          {options}
+        </select>
       </div>
     );
   }

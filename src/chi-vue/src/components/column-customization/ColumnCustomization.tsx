@@ -1,73 +1,129 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { findComponent, copyArrayOfObjects, uuid4 } from '@/utils/utils';
-import { BUTTON_CLASSES, DATA_TABLE_CLASSES, ICON_CLASS, PORTAL_CLASS } from '@/constants/classes';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { findComponent, uuid4 } from '@/utils/utils';
+import {
+  BACKDROP_CLASSES,
+  BUTTON_CLASSES,
+  CLOSED_CLASS,
+  DATA_TABLE_CLASSES,
+  ICON_CLASS,
+  MODAL_CLASSES,
+  PORTAL_CLASS,
+} from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { DataTableColumn, DataTableColumnsData } from '@/constants/types';
 import ColumnCustomizationContent from './ColumnCustomizationModalContent';
+import { checkColumns } from './utils';
 
 // eslint-disable-next-line
 declare const chi: any;
 
 @Component
 export default class ColumnCustomization extends Vue {
+  @Prop() columnsData?: DataTableColumnsData;
+
+  key = 0;
   // eslint-disable-next-line
-  @Prop() columnsData?: any;
-
-  _columnsData?: DataTableColumnsData;
-  _selectedColumns: DataTableColumn[] = [];
+  _chiModal: any;
+  _availableColumns?: DataTableColumn[] = [];
+  _selectedLockedColumns?: DataTableColumn[] = [];
+  _selectedStandardColumns?: DataTableColumn[] = [];
+  _ColumnCustomizationContentComponent?: ColumnCustomizationContent;
+  _selectedData?: DataTableColumn[];
   _modalId?: string;
-
-  beforeCreate() {
-    this._columnsData = {
-      columns: [],
-    };
-  }
-
-  created() {
-    if (this._columnsData) {
-      this._columnsData = {
-        columns: copyArrayOfObjects(this.$props.columnsData.columns),
-      };
-    }
-    this._modalId = `modal-${uuid4()}`;
-  }
-
-  _emitColumnsChanged() {
-    this.$emit(DATA_TABLE_EVENTS.COLUMNS_CHANGE, this._columnsData);
-  }
 
   _modal() {
     return (
-      <div class="chi-backdrop -closed">
-        <div class="chi-backdrop__wrapper">
+      <div class={`${BACKDROP_CLASSES.BACKDROP} ${CLOSED_CLASS}`}>
+        <div class={BACKDROP_CLASSES.WRAPPER}>
           <section
             id={this._modalId}
-            class="chi-modal -portal"
+            class={`${MODAL_CLASSES.MODAL} ${PORTAL_CLASS}`}
             role="dialog"
-            aria-label="Modal description"
+            aria-label="Column Customization"
             aria-modal="true">
-            <header class="chi-modal__header">
-              <h2 class="chi-modal__title">Customize columns</h2>
-              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-x"></i>
+            <header class={MODAL_CLASSES.HEADER}>
+              <h2 class={MODAL_CLASSES.TITLE}>Customize columns</h2>
+              <button class={`${BUTTON_CLASSES.BUTTON} ${ICON_CLASS} -close`} data-dismiss="modal" aria-label="Close">
+                <div class={BUTTON_CLASSES.CONTENT}>
+                  <i class={`${ICON_CLASS} icon-x`}></i>
                 </div>
               </button>
             </header>
-            <div class="chi-modal__content">
-              <ColumnCustomizationContent columns-data={this.$props.columnsData.columns} />
+            <div class={MODAL_CLASSES.CONTENT} key={this.key}>
+              <ColumnCustomizationContent
+                available-columns={this._availableColumns}
+                selected-locked-columns={this._selectedLockedColumns}
+                selected-standard-columns={this._selectedStandardColumns}
+              />
             </div>
-            <footer class="chi-modal__footer">
-              <button class="chi-button" data-dismiss="modal">
+            <footer class={MODAL_CLASSES.FOOTER}>
+              <button
+                ref="saveButton"
+                onclick={this._submitColumnsChange}
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} -lg -uppercase -px--4`}
+                disabled>
+                Save
+              </button>
+              <button
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} -bg--white -uppercase -px--4`}
+                onclick={this._reset}>
+                Reset
+              </button>
+              <button
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} -bg--white -uppercase -px--4`}
+                data-dismiss="modal">
                 Cancel
               </button>
-              <button class="chi-button -primary">Save</button>
             </footer>
           </section>
         </div>
       </div>
     );
+  }
+
+  _reset() {
+    if (this._ColumnCustomizationContentComponent) {
+      this._availableColumns = [];
+      this._selectedLockedColumns = [];
+      this._selectedStandardColumns = [];
+      this._processData();
+      this.key += 1;
+    }
+  }
+
+  _submitColumnsChange() {
+    this.$emit(DATA_TABLE_EVENTS.COLUMNS_CHANGE, this._selectedData);
+    (this.$refs.saveButton as HTMLButtonElement).disabled = true;
+    this._chiModal.hide();
+  }
+
+  beforeCreate() {
+    this._availableColumns = [];
+    this._selectedLockedColumns = [];
+    this._selectedStandardColumns = [];
+  }
+
+  created() {
+    this._processData();
+    this._modalId = `modal-${uuid4()}`;
+  }
+
+  @Watch('columnsData')
+  _processData() {
+    this.$props.columnsData.columns.forEach((column: DataTableColumn) => {
+      if (column.selected && this._selectedLockedColumns && this._selectedStandardColumns) {
+        if (column.locked) {
+          this._selectedLockedColumns.push(column);
+        } else {
+          this._selectedStandardColumns.push(column);
+        }
+      } else {
+        if (this._availableColumns) {
+          this._availableColumns.push(column);
+        }
+      }
+    });
   }
 
   mounted() {
@@ -77,7 +133,17 @@ export default class ColumnCustomization extends Vue {
     if (dataTableToolbarComponent) {
       (dataTableToolbarComponent as DataTableToolbar)._columns = this;
     }
-    chi.modal(modalButton);
+    this._chiModal = chi.modal(modalButton);
+    if (this._ColumnCustomizationContentComponent) {
+      this._ColumnCustomizationContentComponent.$on(DATA_TABLE_EVENTS.COLUMNS_CHANGE, (ev: DataTableColumn[]) => {
+        const originalSelectedColumns = this.columnsData?.columns.filter((column: DataTableColumn) => column.selected);
+
+        this._selectedData = ev;
+        if (originalSelectedColumns) {
+          (this.$refs.saveButton as HTMLButtonElement).disabled = checkColumns(originalSelectedColumns, ev);
+        }
+      });
+    }
   }
 
   render() {

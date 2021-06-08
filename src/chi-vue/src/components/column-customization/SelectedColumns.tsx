@@ -1,38 +1,14 @@
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import { DataTableColumn } from '@/constants/types';
 import './column-customization.scss';
 import { findComponent } from '@/utils/utils';
 import ColumnCustomizationContent from '@/components/column-customization/ColumnCustomizationModalContent';
+import { UTILITY_CLASSES } from '@/constants/classes';
 
 @Component
 export default class ColumnCustomizationSelectedColumns extends Vue {
-  @Prop() data?: DataTableColumn[];
-
-  _lockedColumns?: DataTableColumn[] = [];
-  _standardColumns?: DataTableColumn[] = [];
-
-  beforeCreate() {
-    this._lockedColumns = [];
-    this._standardColumns = [];
-  }
-
-  created() {
-    this._splitOptions();
-  }
-
-  @Watch('data')
-  _splitOptions() {
-    this._lockedColumns = [];
-    this._standardColumns = [];
-    this.$props.data.forEach((column: DataTableColumn) => {
-      if (column.locked) {
-        this._lockedColumns?.push(column);
-      } else {
-        this._standardColumns?.push(column);
-      }
-    });
-    this.$forceUpdate();
-  }
+  @Prop() lockedColumns?: DataTableColumn[];
+  @Prop() standardColumns?: DataTableColumn[];
 
   mounted() {
     const columnCustomizationModalContent = findComponent(this, 'ColumnCustomizationContent');
@@ -41,20 +17,6 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
       (columnCustomizationModalContent as ColumnCustomizationContent)._selectedColumnsComponent = this;
     }
   }
-
-  _emitSelectedOptionsChange() {
-    this.$emit('selectedOptionsChange', (this.$refs.select as HTMLSelectElement).selectedOptions);
-  }
-
-  _moveItem(arr: DataTableColumn[], from: number, to: number) {
-    const item = arr.splice(from, 1);
-
-    arr.splice(to, 0, item[0]);
-  }
-
-  // _moveDown() {
-  //
-  // }
 
   _generateOptions(data: DataTableColumn[]) {
     return data?.map((column: DataTableColumn) => {
@@ -67,17 +29,13 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
   }
 
   render() {
-    const lockedOptions = this._lockedColumns ? this._generateOptions(this._lockedColumns) : null;
-    const standardOptions = this._standardColumns ? this._generateOptions(this._standardColumns) : null;
+    const lockedOptions = this.$props.lockedColumns ? this._generateOptions(this.$props.lockedColumns) : null;
+    const standardOptions = this.$props.standardColumns ? this._generateOptions(this.$props.standardColumns) : null;
 
     return (
       <div>
-        <div class="-text--bold">Selected columns</div>
-        <select
-          multiple
-          onChange={() => this._emitSelectedOptionsChange()}
-          ref="select"
-          style="height: 200px; width: 100%;">
+        <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_BOLD}>Selected columns</div>
+        <select multiple ref="select" style="height: 200px;" class="-w--100">
           {lockedOptions}
           {standardOptions}
         </select>

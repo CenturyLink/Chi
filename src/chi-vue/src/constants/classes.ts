@@ -37,6 +37,13 @@ export const BUTTON_CLASSES = {
   CONTENT: 'chi-button__content',
   FLAT: '-flat',
   PRIMARY: '-primary',
+  OUTLINE: '-outline',
+  SIZES: {
+    SM: '-sm',
+    MD: '-md',
+    LG: '-lg',
+    XL: '-xl',
+  },
 };
 //#endregion
 
@@ -89,6 +96,16 @@ export const DRAWER_CLASSES = {
 //#region Form
 export const FORM_CLASSES = {
   FORM_ITEM: 'chi-form__item',
+};
+//#endregion
+
+//#region Form
+export const MODAL_CLASSES = {
+  FOOTER: 'chi-modal__footer',
+  MODAL: 'chi-modal',
+  HEADER: 'chi-modal__header',
+  CONTENT: 'chi-modal__content',
+  TITLE: 'chi-modal__title',
 };
 //#endregion
 
@@ -150,6 +167,10 @@ export const UTILITY_CLASSES = {
   DISPLAY: {
     FLEX: '-d--flex',
   },
+  FLEX: {
+    FLEX_GROW1: '-flex--grow1',
+    COLUMN: '-flex--column',
+  },
   JUSTIFY: {
     CENTER: '-justify-content--center',
     MD_START: '-justify-content-md--start',
@@ -158,6 +179,7 @@ export const UTILITY_CLASSES = {
   },
   TYPOGRAPHY: {
     TEXT_TRUNCATE: '-text--truncate',
+    TEXT_BOLD: '-text--bold',
   },
   POSITION: {
     RELATIVE: '-position--relative',

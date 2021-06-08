@@ -98,7 +98,9 @@ export interface DataTableColumn {
   selected: boolean;
   locked: true;
 }
-
+export interface DataTableColumnsData {
+  columns: DataTableColumn[];
+}
 export interface DataTableFiltersData {
   filters: DataTableFilter[];
 }
