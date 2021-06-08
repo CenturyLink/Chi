@@ -107,6 +107,7 @@ export interface DataTableViews {
   defaultView: DataTableView;
   selectedView: DataTableView;
 }
+export type DataTableCellAlignment = 'left' | 'center' | 'right';
 //#endregion
 
 //#region Drawer

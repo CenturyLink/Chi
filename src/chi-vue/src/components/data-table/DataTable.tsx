@@ -12,6 +12,7 @@ import {
 import './data-table.scss';
 import { DATA_TABLE_EVENTS, PAGINATION_EVENTS } from '@/constants/events';
 import {
+  DataTableCellAlignment,
   DataTableConfig,
   DataTableData,
   DataTableExpansionIcons,
@@ -20,7 +21,7 @@ import {
   DataTableRowNestedContent,
   DataTableScreenBreakpoints,
   DataTableSortConfig,
-  DataTableStyleConfig,
+  DataTableStyleConfig
 } from '@/constants/types';
 import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
 import Tooltip from '../tooltip/tooltip';
@@ -203,7 +204,7 @@ export default class DataTable extends Vue {
     });
   }
 
-  _cellAlignment(align: 'left' | 'center' | 'right'): string {
+  _cellAlignment(align: DataTableCellAlignment): string {
     const alignmentUtilityClasses: {
       left: string;
       center: string;
