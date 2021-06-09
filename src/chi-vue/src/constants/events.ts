@@ -8,6 +8,10 @@ export const DATA_TABLE_EVENTS = {
     FILTERS_CHANGE: 'chiToolbarFiltersChange',
     SEARCH: 'chiToolbarSearch',
   },
+  EXPANSION: {
+    EXPANDED: 'chiRowExpanded',
+    COLLAPSED: 'chiRowCollapsed',
+  },
 };
 //#endregion
 

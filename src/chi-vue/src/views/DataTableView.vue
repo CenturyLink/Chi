@@ -8,6 +8,8 @@
       @chiPageChange="e => this.pageChange(e)"
       @chiPageSizeChange="e => this.pageSizeChange(e)"
       @chiDataSorting="e => this.dataSorting(e)"
+      @chiRowExpanded="e => this.rowExpanded(e)"
+      @chiRowCollapsed="e => this.rowCollapsed(e)"
     >
       <template #icon="payload">
         <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`"></i>
@@ -40,6 +42,14 @@
           <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
         </ChiDataTableToolbar>
       </template>
+      <template #loadingSkeleton>
+        <div class="-d--flex -flex--column -w--100">
+          <div class="chi-skeleton -w--85 -w-md--75 -w-lg--50"></div>
+          <div class="chi-skeleton -xs -w--90 -w-lg--70 -mt--2"></div>
+          <div class="chi-skeleton -xs -w--95 -w-lg--80 -mt--1"></div>
+          <div class="chi-skeleton -xs -w--55 -w-lg--55 -mt--1"></div>
+        </div>
+      </template>
     </ChiDataTable>
   </div>
 </template>
@@ -52,6 +62,7 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
 import DataTableToolbar from '../components/data-table-toolbar/DataTableToolbar';
 import SearchInput from '../components/search-input/SearchInput';
 import DataTableFilters from '../components/data-table-filters/DataTableFilters';
+import { DataTableRow } from '../constants/types';
 
 @Component({
   components: {
@@ -81,6 +92,12 @@ import DataTableFilters from '../components/data-table-filters/DataTableFilters'
     filtersChange: e => {
       console.log(e);
     },
+    rowExpanded: e => {
+      console.log(`Expanded row: `, e);
+    },
+    rowCollapsed: e => {
+      console.log(`Collapsed row: `, e);
+    },
   },
   data: () => {
     return {
@@ -97,6 +114,7 @@ import DataTableFilters from '../components/data-table-filters/DataTableFilters'
           striped: true,
         },
         pagination: {
+          hideOnSinglePage: true,
           compact: true,
           firstLast: true,
           pageJumper: true,
@@ -110,6 +128,11 @@ import DataTableFilters from '../components/data-table-filters/DataTableFilters'
           xl: [5, 15, 10, 15, 15, 15, 15, 5],
         },
         resultsPerPage: 10,
+        defaultSort: {
+          key: 'ticketId',
+          sortBy: 'id',
+          direction: 'ascending',
+        },
       },
       toolbar: {
         filtersData: [
@@ -198,11 +221,7 @@ import DataTableFilters from '../components/data-table-filters/DataTableFilters'
           {
             id: 'NTM000021063',
             nestedContent: {
-              value: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."`,
+              template: 'loadingSkeleton',
             },
             active: false,
             data: [
@@ -212,7 +231,7 @@ import DataTableFilters from '../components/data-table-filters/DataTableFilters'
               },
               { template: 'ticketId', payload: { id: 'NTM000021063' } },
               { template: 'status', payload: { status: 'active' } },
-              'Colocation',
+              'Colocation A',
               'Internet Advantage',
               '04/05/2018 8:00 AM',
               'SVUJW034781A',
@@ -230,7 +249,7 @@ import DataTableFilters from '../components/data-table-filters/DataTableFilters'
               {},
               { template: 'ticketId', payload: { id: 'NTM000021071' } },
               { template: 'status', payload: { status: 'inactive' } },
-              'Colocation',
+              'Colocation B',
               'Internet Advantage',
               '04/05/2018 8:00 AM',
               'SVUJW034781A',
@@ -251,7 +270,7 @@ import DataTableFilters from '../components/data-table-filters/DataTableFilters'
               '',
               { template: 'ticketId', payload: { id: 'NTM000021064' } },
               { template: 'status', payload: { status: 'inactive' } },
-              'Colocation',
+              'Colocation B',
               'Internet Advantage',
               '04/05/2018 8:00 AM',
               'SVUJW034781A',
@@ -273,7 +292,7 @@ import DataTableFilters from '../components/data-table-filters/DataTableFilters'
               }, // Custom, overwritten Label
               { template: 'ticketId', payload: { id: 'NTM000021065' } },
               { template: 'status', payload: { status: 'active' } },
-              'Colocation',
+              'Colocation C',
               'Internet Advantage',
               '04/05/2018 8:00 AM',
               'SVUJW034781A',
@@ -297,7 +316,7 @@ import DataTableFilters from '../components/data-table-filters/DataTableFilters'
               '',
               { template: 'ticketId', payload: { id: 'NTM000021066' } },
               { template: 'status', payload: { status: 'active' } },
-              'Colocation',
+              'Colocation a',
               'Internet Advantage',
               '04/05/2018 8:00 AM',
               'SVUJW034781A',
@@ -519,7 +538,7 @@ import DataTableFilters from '../components/data-table-filters/DataTableFilters'
               '',
               { template: 'ticketId', payload: { id: 'NTM000021067' } },
               { template: 'status', payload: { status: 'inactive' } },
-              'Colocation',
+              'Colocation b',
               'Internet Advantage',
               '04/05/2018 8:00 AM',
               'SVUJW034781A',
@@ -537,7 +556,7 @@ import DataTableFilters from '../components/data-table-filters/DataTableFilters'
               {},
               { template: 'ticketId', payload: { id: 'NTM000021072' } },
               { template: 'status', payload: { status: 'active' } },
-              'Colocation',
+              'Colocation c',
               'Internet Advantage',
               '04/05/2018 8:00 AM',
               'SVUJW034781A',
@@ -1169,7 +1188,47 @@ import DataTableFilters from '../components/data-table-filters/DataTableFilters'
     };
   },
 })
-export default class DataTableView extends Vue {}
+export default class DataTableView extends Vue {
+  mounted() {
+    setTimeout(() => {
+      const newData = [
+        {
+          template: 'icon',
+          payload: { icon: 'circle-check', color: 'success' },
+        },
+        { template: 'ticketId', payload: { id: 'NTM000021063' } },
+        { template: 'status', payload: { status: 'active' } },
+        'Colocation',
+        'Internet Advantage',
+        '04/05/2018 8:00 AM',
+        'SVUJW034781A',
+        {
+          template: 'actions',
+          payload: { id: 'NTM000021063' },
+          align: 'right',
+        },
+      ];
+      this.$data.table = {
+        ...this.$data.table,
+        body: this.$data.table.body.map((row: DataTableRow, index: number) =>
+          index === 0
+            ? {
+                ...row,
+                nestedContent: {
+                  value: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."`,
+                },
+                data: newData,
+              }
+            : row
+        ),
+      };
+    }, 5000);
+  }
+}
 </script>
 
 <style lang="scss"></style>
