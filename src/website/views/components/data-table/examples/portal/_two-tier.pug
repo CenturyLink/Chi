@@ -1,0 +1,235 @@
+h3 Portal -- Two tier header
+.example.-mb--3
+  .-p--3
+    .chi-card.-portal.-bg--white.-bg-md--grey-15
+      .chi-card__header.-sm
+        .chi-card__title Title
+      .chi-card__content.-p--0
+        .chi-data-table.-portal.-compact
+          .chi-data-table__head
+            .chi-data-table__row
+              button.chi-data-table__cell.-sorting.-active
+                div Location
+                i.chi-icon.-xs.icon-arrow-up
+              button.chi-data-table__cell.-sorting
+                div High Utilization
+                i.chi-icon.-xs.icon-arrow-sort
+              button.chi-data-table__cell.-sorting
+                div Elevated Utilization
+                i.chi-icon.-xs.icon-arrow-sort
+              button.chi-data-table__cell.-sorting
+                div Highest %
+                i.chi-icon.-xs.icon-arrow-sort
+            .chi-data-table__row
+              .chi-data-table__cell
+              .chi-data-table__cell
+                div.-associated Total
+                div.-associated %
+              .chi-data-table__cell
+                div.-associated Total
+                div.-associated %
+              .chi-data-table__cell
+          .chi-data-table__body
+            .chi-data-table__row.-xl
+              .chi-data-table__cell.-key.-bold
+                div Location 1
+              .chi-data-table__cell
+                div.-associated 3
+                div.-associated 98%
+              .chi-data-table__cell
+                div.-associated -
+                div.-associated -
+              .chi-data-table__cell
+                div 98%
+            .chi-data-table__row.-striped.-xl
+              .chi-data-table__cell.-key.-bold
+                div Location 2
+              .chi-data-table__cell
+                div.-associated 1
+                div.-associated 98%
+              .chi-data-table__cell
+                div.-associated 3
+                div.-associated 67%
+              .chi-data-table__cell
+                div 98%
+            .chi-data-table__row.-xl
+              .chi-data-table__cell.-key.-bold
+                div Location 3
+              .chi-data-table__cell
+                div.-associated -
+                div.-associated -
+              .chi-data-table__cell
+                div.-associated 2
+                div.-associated 66
+              .chi-data-table__cell
+                div 66%    
+          .chi-data-table__footer
+            nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
+              .chi-pagination__content
+                .chi-pagination__start
+                  .chi-pagination__results
+                    span.chi-pagination__label 240 Results
+                .chi-pagination__center
+                  .chi-pagination__button-group.chi-button-group
+                    button.chi-button.-icon.-flat.-primary.-sm(aria-label='First page')
+                      .chi-button__content
+                        i.chi-icon.icon-page-first(aria-hidden='true')
+                    button.chi-button.-icon.-flat.-primary.-sm(aria-label='Previous page')
+                      .chi-button__content
+                        i.chi-icon.icon-chevron-left(aria-hidden='true')
+                  .chi-pagination__label
+                    strong 2
+                    span of
+                    strong 3
+                  .chi-pagination__button-group.chi-button-group
+                    button.chi-button.-icon.-flat.-primary.-sm(aria-label='Next page')
+                      .chi-button__content
+                        i.chi-icon.icon-chevron-right(aria-hidden='true')
+                    button.chi-button.-icon.-flat.-primary.-sm(aria-label='Last page')
+                      .chi-button__content
+                        i.chi-icon.icon-page-last(aria-hidden='true')
+                .chi-pagination__end
+
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-two-tier
+      li.-disabled
+        a(href=`#webcomponent-portal-two-tier`) Web Component
+      li.-active
+        a(href=`#html-portal-two-tier`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-two-tier
+  .chi-tabs-panel.-active#html-portal-two-tier
+    :code(lang='html')
+      <div class="chi-card -portal -bg--white -bg-md--grey-15">
+        <div class="chi-card__header -sm">
+          <div class="chi-card__title">Title</div>
+        </div>
+        <div class="chi-card__content -p--0">
+          <div class="chi-data-table -portal -compact">
+            <div class="chi-data-table__head">
+              <div class="chi-data-table__row">
+                <button class="chi-data-table__cell -sorting -active">
+                  <div>Location</div>
+                  <i class="chi-icon icon-arrow-up"></i>
+                </button>
+                <button class="chi-data-table__cell -sorting">
+                  <div>High Utilization</div>
+                  <i class="chi-icon icon-arrow-sort"></i>
+                </button>
+                <button class="chi-data-table__cell -sorting">
+                  <div>Elevated Utilization</div>
+                  <i class="chi-icon icon-arrow-sort"></i>
+                </button>
+                <button class="chi-data-table__cell -sorting">
+                  <div>Highest %</div>
+                  <i class="chi-icon icon-arrow-sort"></i>
+                </button>
+              </div>
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell"></div>
+                <div class="chi-data-table__cell">
+                  <div class="-associated">Total</div>
+                  <div class="-associated">%</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div class="-associated">Total</div>
+                  <div class="-associated">%</div>
+                </div>
+                <div class="chi-data-table__cell"></div>
+              </div>
+            </div>
+            <div class="chi-data-table__body">
+              <div class="chi-data-table__row -xl">
+                <div class="chi-data-table__cell -key -bold">
+                  <div>Location 1</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div class="-associated">3</div>
+                  <div class="-associated">98%</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div class="-associated">-</div>
+                  <div class="-associated">-</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>98%</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row -striped -xl">
+                <div class="chi-data-table__cell -key -bold">
+                  <div>Location 2</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div class="-associated">1</div>
+                  <div class="-associated">98%</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div class="-associated">3</div>
+                  <div class="-associated">67%</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>98%</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row -xl">
+                <div class="chi-data-table__cell -key -bold">
+                  <div>Location 3</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div class="-associated">-</div>
+                  <div class="-associated">-</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div class="-associated">2</div>
+                  <div class="-associated">66</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>66%</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-data-table__footer">
+              <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+                <div class="chi-pagination__content">
+                  <div class="chi-pagination__start">
+                    <div class="chi-pagination__results">
+                      <span class="chi-pagination__label">240 Results</span>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__center">
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <button class="chi-button -icon -flat -primary -sm" aria-label="First page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-page-first" aria-hidden="true"></i>
+                        </div>
+                      </button>
+                      <button class="chi-button -icon -flat -primary -sm" aria-label="Previous page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="chi-pagination__label">
+                      <strong>2</strong>
+                      <span>of</span>
+                      <strong>3</strong>
+                    </div>
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <button class="chi-button -icon -flat -primary -sm" aria-label="Next page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                        </div>
+                      </button>
+                      <button class="chi-button -icon -flat -primary -sm" aria-label="Last page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-page-last" aria-hidden="true"></i>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__end"></div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>

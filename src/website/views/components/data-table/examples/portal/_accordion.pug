@@ -1,0 +1,365 @@
+h3 Portal Accordion
+
+.example.-mb--3
+  .-p--3
+    .chi-card.-portal.-bg--white.-bg-md--grey-15
+      .chi-card__header.-sm
+        .chi-card__title Title
+      .chi-card__content.-p--0
+        #portal-accordion(style="min-height: 13.125rem;")
+          chi-vue-data-table(:config='config', :data='table')
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-accordion
+      li.-disabled
+        a(href=`#webcomponent-portal-accordion`) Web Component
+      li.-active
+        a(href=`#vue-portal-accordion`) Vue
+      li
+        a(href=`#html-portal-accordion`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-accordion
+  .chi-tabs-panel.-active#vue-portal-accordion
+    .chi-tab__description Use <code>nestedContent</code> property to provide data of row accordion content
+    :code(lang='html')
+      <!-- Vue component -->
+      <ChiDataTable :config="config" :data="table"></ChiDataTable>
+
+      <!-- Config and Data -->
+      data: {
+        config: {
+          columnResize: true,
+          activePage: 1,
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: false,
+          },
+          pagination: {
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: 'Name' },
+            id: { label: 'ID' },
+            lastLogin: { label: 'Last Login' },
+          },
+          body: [
+            {
+              id: 'name-1',
+              nestedContent: {
+                  value: "Accordion content",
+              },
+              data: [
+                'Name 1',
+                'name-1',
+                'Dec 18, 2020 3:26 PM',
+              ],
+            },
+            {
+              id: 'name-2',
+              nestedContent: {
+                  value: "Accordion content",
+              },
+              data: [
+                'Name 2',
+                'name-2',
+                'Dec 18, 2020 2:38 AM',
+              ],
+            },
+            {
+              id: 'name-3',
+              nestedContent: {
+                  value: "Accordion content",
+              },
+              data: [
+                'Name 3',
+                'name-3',
+                'Nov 5, 2020 10:15 AM',
+              ],
+            },
+            {
+              id: 'name-4',
+              nestedContent: {
+                  value: "Accordion content",
+              },
+              data: [
+                'Name 4',
+                'name-4',
+                'Dec 18, 2020 3:26 PM',
+              ],
+            },
+            {
+              id: 'name-5',
+              nestedContent: {
+                  value: "Accordion content",
+              },
+              data: [
+                'Name 5',
+                'name-5',
+                'Dec 18, 2020 2:38 AM',
+              ],
+            },
+            {
+              id: 'name-6',
+              nestedContent: {
+                  value: "Accordion content",
+              },
+              data: [
+                'Name 6',
+                'name-6',
+                'Nov 5, 2020 10:15 AM',
+              ],
+            },
+          ]
+        }
+      }
+  .chi-tabs-panel#html-portal-accordion
+    :code(lang="html")
+      <div class="chi-card -portal -bg--white -bg-md--grey-15">
+        <div class="chi-card__header -sm">
+          <div class="chi-card__title">Title</div>
+        </div>
+        <div class="chi-card__content -p--0">
+          <div class="chi-data-table -portal -compact">
+            <div class="chi-data-table__head">
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell -expandable"></div>
+                <div class="chi-data-table__cell">
+                  <div>Name</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>ID</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Last Login</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-data-table__body">
+              <div class="chi-data-table__row -collapsed -xl">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-plus"></i>
+                    </div>
+                  </button>
+                </div>
+                <div class="chi-data-table__cell -key -bold">
+                  <div>Name 1</div>
+                </div>
+                <div class="chi-data-table__cell -key">
+                  <div>name-1</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 3:26 PM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row -expanded -striped -xl">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-minus"></i>
+                    </div>
+                  </button>
+                </div>
+                <div class="chi-data-table__cell -key -bold">
+                  <div>Name 2</div>
+                </div>
+                <div class="chi-data-table__cell -key">
+                  <div>name-2</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row-child -xl">
+                <div class="chi-data-table__cell -expandable"></div>
+                <div class="chi-data-table__cell -key -bold">
+                  <div>Child Name 1</div>
+                </div>
+                <div class="chi-data-table__cell -key">
+                  <div>Child name-1</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Dec 18, 2020 2:38 AM</div>
+                </div>
+              </div>
+              <div class="chi-data-table__row -collapsed -xl">
+                <div class="chi-data-table__cell -expandable">
+                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-plus"></i>
+                    </div>
+                  </button>
+                </div>
+                <div class="chi-data-table__cell -key -bold">
+                  <div>Name 3</div>
+                </div>
+                <div class="chi-data-table__cell -key">
+                  <div>name-3</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Nov 5, 2020 10:15 AM</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-data-table__footer">
+              <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
+                <div class="chi-pagination__content">
+                  <div class="chi-pagination__start">
+                    <div class="chi-pagination__results">
+                      <span class="chi-pagination__label">240 Results</span>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__center">
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <button class="chi-button -icon -flat -primary -sm" aria-label="First page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-page-first" aria-hidden="true"></i>
+                        </div>
+                      </button>
+                      <button class="chi-button -icon -flat -primary -sm" aria-label="Previous page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="chi-pagination__label">
+                      <strong>2</strong>
+                      <span>of</span>
+                      <strong>3</strong>
+                    </div>
+                    <div class="chi-pagination__button-group chi-button-group">
+                      <button class="chi-button -icon -flat -primary -sm" aria-label="Next page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                        </div>
+                      </button>
+                      <button class="chi-button -icon -flat -primary -sm" aria-label="Last page">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-page-last" aria-hidden="true"></i>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="chi-pagination__end"></div>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+script.
+  new Vue({
+    components: {
+      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: true,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: true,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name', key: true, bold: true },
+          id: { label: 'ID', key: true },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            nestedContent: {
+                value: "Accordion content",
+            },
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            nestedContent: {
+                value: "Accordion content",
+            },
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            nestedContent: {
+                value: "Accordion content",
+            },
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            nestedContent: {
+                value: "Accordion content",
+            },
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            nestedContent: {
+                value: "Accordion content",
+            },
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            nestedContent: {
+                value: "Accordion content",
+            },
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }
+  }).$mount('#portal-accordion');
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelector('#example-portal-accordion'));
+    }
+  );
