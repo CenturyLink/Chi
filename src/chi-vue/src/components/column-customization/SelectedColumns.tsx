@@ -10,10 +10,13 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
   @Prop() lockedColumns?: DataTableColumn[];
   @Prop() standardColumns?: DataTableColumn[];
 
+  _ColumnCustomizationContent?: ColumnCustomizationContent;
+
   mounted() {
     const columnCustomizationModalContent = findComponent(this, 'ColumnCustomizationContent');
 
     if (columnCustomizationModalContent) {
+      this._ColumnCustomizationContent = columnCustomizationModalContent as ColumnCustomizationContent;
       (columnCustomizationModalContent as ColumnCustomizationContent)._selectedColumnsComponent = this;
     }
   }
@@ -26,6 +29,12 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
         </option>
       );
     });
+  }
+
+  beforeDestroy() {
+    if (this._ColumnCustomizationContent) {
+      (this._ColumnCustomizationContent as ColumnCustomizationContent)._availableColumnsComponent = undefined;
+    }
   }
 
   render() {

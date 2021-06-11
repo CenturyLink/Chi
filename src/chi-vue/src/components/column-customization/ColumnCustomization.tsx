@@ -66,8 +66,10 @@ export default class ColumnCustomization extends Vue {
                 Save
               </button>
               <button
+                ref="resetButton"
                 class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} -bg--white -uppercase -px--4`}
-                onclick={this._reset}>
+                onclick={this._reset}
+                disabled>
                 Reset
               </button>
               <button
@@ -88,6 +90,8 @@ export default class ColumnCustomization extends Vue {
       this._selectedLockedColumns = [];
       this._selectedStandardColumns = [];
       this._processData();
+      (this.$refs.saveButton as HTMLButtonElement).disabled = true;
+      (this.$refs.resetButton as HTMLButtonElement).disabled = true;
       this.key += 1;
     }
   }
@@ -134,6 +138,14 @@ export default class ColumnCustomization extends Vue {
       (dataTableToolbarComponent as DataTableToolbar)._columns = this;
     }
     this._chiModal = chi.modal(modalButton);
+    this._watchContentComponentChanges();
+  }
+
+  updated() {
+    this._watchContentComponentChanges();
+  }
+
+  _watchContentComponentChanges() {
     if (this._ColumnCustomizationContentComponent) {
       this._ColumnCustomizationContentComponent.$on(DATA_TABLE_EVENTS.COLUMNS_CHANGE, (ev: DataTableColumn[]) => {
         const originalSelectedColumns = this.columnsData?.columns.filter((column: DataTableColumn) => column.selected);
@@ -141,6 +153,7 @@ export default class ColumnCustomization extends Vue {
         this._selectedData = ev;
         if (originalSelectedColumns) {
           (this.$refs.saveButton as HTMLButtonElement).disabled = checkColumns(originalSelectedColumns, ev);
+          (this.$refs.resetButton as HTMLButtonElement).disabled = checkColumns(originalSelectedColumns, ev);
         }
       });
     }

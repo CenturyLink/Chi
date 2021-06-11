@@ -8,11 +8,20 @@ import { UTILITY_CLASSES } from '@/constants/classes';
 export default class ColumnCustomizationAvailableColumns extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
 
+  _ColumnCustomizationContent?: ColumnCustomizationContent;
+
   mounted() {
     const columnCustomizationModalContent = findComponent(this, 'ColumnCustomizationContent');
 
     if (columnCustomizationModalContent) {
+      this._ColumnCustomizationContent = columnCustomizationModalContent as ColumnCustomizationContent;
       (columnCustomizationModalContent as ColumnCustomizationContent)._availableColumnsComponent = this;
+    }
+  }
+
+  beforeDestroy() {
+    if (this._ColumnCustomizationContent) {
+      (this._ColumnCustomizationContent as ColumnCustomizationContent)._availableColumnsComponent = undefined;
     }
   }
 
