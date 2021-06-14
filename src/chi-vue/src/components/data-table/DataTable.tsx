@@ -493,7 +493,11 @@ export default class DataTable extends Vue {
         data-rownumber={bodyRow.rowNumber}
         class={`
         ${rowClass}
-        ${striped ? DATA_TABLE_CLASSES.STRIPED : ''}
+        ${
+          striped && (this.$props.config.style.striped || this.$props.config.style.portal)
+            ? DATA_TABLE_CLASSES.STRIPED
+            : ''
+        }
         ${this.selectedRows.includes(bodyRow.id) || bodyRow.active ? ACTIVE_CLASS : ''}
         ${this.accordionsExpanded.includes(rowId) || bodyRow.expanded ? EXPANDED_CLASS : ''}
         `}
@@ -545,7 +549,7 @@ export default class DataTable extends Vue {
   _pagination() {
     const pages = this._calculateNumberOfPages();
 
-    if (pages === 1 && this.config.pagination.hideOnSinglePage) {
+    if ((pages === 1 && this.config.pagination.hideOnSinglePage) || this.$props.data.body.length === 0) {
       return null;
     } else {
       return (
@@ -586,7 +590,7 @@ export default class DataTable extends Vue {
 
       return data.slice(arrayStartIndex, arrayEndIndex);
     }
-    return [];
+    return data;
   }
 
   detectScreenBreakpoint() {

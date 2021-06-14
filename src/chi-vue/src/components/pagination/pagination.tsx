@@ -242,7 +242,9 @@ export default class Pagination extends Vue {
       this._pagesToRender.push(compactPages);
     } else {
       const _pagesArray: number[] = [];
-      _pagesArray.push(1);
+      if (this.$props.pages !== 1) {
+        _pagesArray.push(1);
+      }
       for (
         let pageIndex = this.currentPage - this._distanceFromCurrent;
         pageIndex <= this.currentPage + this._distanceFromCurrent;
