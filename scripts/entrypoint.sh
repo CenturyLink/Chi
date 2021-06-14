@@ -68,6 +68,18 @@ build() {
     unbuffer npm run update:boilerplate:assets
 }
 
+build_tests() {
+    cd /chi
+    unbuffer npm run build 2>&1 | addheader_chi
+    cd /chi/src/custom-elements
+    unbuffer npm run build 2>&1 | addheader_custom_elements
+    cd /chi/src/chi-vue
+    unbuffer npm run build
+    cd /chi
+    unbuffer npm run sri 2>&1 | addheader_chi
+    unbuffer npm run update:boilerplate:assets
+}
+
 publish_chi_vue() {
     echo 'publish-chi-vue'
     cd /chi/src/chi-vue
@@ -100,6 +112,27 @@ test() {
     unbuffer npm run update:boilerplate:assets
 }
 
+test_vue() {
+    mount -t tmpfs tmpfs /chi/dist
+    build_tests
+    cd /chi
+    echo "The current working directory: $PWD"
+    unbuffer npx gulp serve 2>&1 >/dev/null &
+    unbuffer npx gulp serve:vue 2>&1 >/dev/null &
+    unbuffer rm -rf /chi/reports /chi/test/bitmaps_test
+    mkdir -p /chi/reports/html_report/non_responsive{,_ce}
+    mkdir -p /chi/reports/html_report/responsive
+    mkdir -p /chi/reports/html_report/vue
+
+    cp -a /chi/config/backstop_data/bitmaps_reference/non_responsive /chi/reports/html_report/non_responsive_ce/bitmaps_reference
+    cp -a /chi/config/backstop_data/bitmaps_reference/non_responsive /chi/reports/html_report/non_responsive/bitmaps_reference
+    cp -a /chi/config/backstop_data/bitmaps_reference/responsive /chi/reports/html_report/responsive/bitmaps_reference
+    cp -a /chi/config/backstop_data/bitmaps_reference/vue /chi/reports/html_report/vue/bitmaps_reference
+
+    cd /chi
+    unbuffer npx backstop test --configPath=backstop-vue.json
+}
+
 OPTION=$1
 if [ -z ${OPTION} ]; then
     OPTION='start'
@@ -118,6 +151,9 @@ case ${OPTION} in
         build
         test
         ;;
+    test-vue)
+        test_vue
+        ;;
     test-e2e)
         mount -t tmpfs tmpfs /chi/dist
         build
@@ -126,11 +162,32 @@ case ${OPTION} in
         ./node_modules/.bin/cypress run
         npx gulp serve:stop
         ;;
+    test-e2e-vue)
+        mount -t tmpfs tmpfs /chi/dist
+        build_tests
+        cd /chi
+        echo "The current working directory: $PWD"
+        npx gulp serve 2>&1 >/dev/null &
+                
+        npx gulp serve:vue 2>&1 >/dev/null &
+        cd /chi/src/chi-vue
+        echo "The current working directory: $PWD"
+        ./node_modules/.bin/cypress run
+
+        cd ../..
+        npx gulp serve:stop
+        ;;
     approve)
         cd /chi
         mount -o bind /chi/config/backstop_data/bitmaps_reference/non_responsive /chi/reports/html_report/non_responsive/bitmaps_reference
         mount -o bind /chi/config/backstop_data/bitmaps_reference/responsive /chi/reports/html_report/responsive/bitmaps_reference
         npm run approve
+        ;;
+    approve-vue)
+        cd /chi
+        mount -o bind /chi/config/backstop_data/bitmaps_reference/vue /chi/reports/html_report/vue/bitmaps_reference
+
+        npm run approve:vue
         ;;
     publish-chi-vue)
         publish_chi_vue
