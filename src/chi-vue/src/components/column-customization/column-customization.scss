@@ -1,0 +1,13 @@
+select {
+  option {
+    &.-locked {
+      &::before {
+        content: '\e959';
+        font-family: 'chi' !important;
+        height: 0.75rem;
+        width: 0.75rem;
+        padding: 0 0.5rem;
+      }
+    }
+  }
+}

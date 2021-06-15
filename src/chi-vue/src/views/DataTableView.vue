@@ -37,9 +37,14 @@
         </div>
       </template>
       <template #toolbar>
-        <ChiDataTableToolbar @chiToolbarFiltersChange="e => filtersChange(e)" @chiToolbarSearch="e => search(e)">
+        <ChiDataTableToolbar
+          @chiToolbarFiltersChange="e => filtersChange(e)"
+          @chiToolbarSearch="e => search(e)"
+          @chiToolbarColumnsChange="e => columnsChange(e)"
+        >
           <ChiSearchInput size="lg" :dataTableSearch="true" />
           <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
+          <ChiColumnCustomization :columnsData="toolbar.columnsData" />
         </ChiDataTableToolbar>
       </template>
       <template #loadingSkeleton>
@@ -63,6 +68,7 @@ import DataTableToolbar from '../components/data-table-toolbar/DataTableToolbar'
 import SearchInput from '../components/search-input/SearchInput';
 import DataTableFilters from '../components/data-table-filters/DataTableFilters';
 import { DataTableRow } from '../constants/types';
+import ColumnCustomization from '../components/column-customization/ColumnCustomization';
 
 @Component({
   components: {
@@ -70,6 +76,7 @@ import { DataTableRow } from '../constants/types';
     ChiDataTableToolbar: DataTableToolbar,
     ChiSearchInput: SearchInput,
     ChiDataTableFilters: DataTableFilters,
+    ChiColumnCustomization: ColumnCustomization,
     Actions,
     TicketPopover,
   },
@@ -199,6 +206,40 @@ import { DataTableRow } from '../constants/types';
             advanced: true,
           },
         ],
+        columnsData: {
+          columns: [
+            {
+              name: 'columnA',
+              label: 'Column A',
+            },
+            {
+              name: 'columnB',
+              label: 'Column B',
+            },
+            {
+              name: 'columnC',
+              label: 'Column C',
+              locked: true,
+              selected: true,
+            },
+            {
+              name: 'columnD',
+              label: 'Column D',
+              locked: true,
+              selected: true,
+            },
+            {
+              name: 'columnE',
+              label: 'Column E',
+              selected: true,
+            },
+            {
+              name: 'columnF',
+              label: 'Column F',
+              selected: true,
+            },
+          ],
+        },
       },
       table: {
         head: {

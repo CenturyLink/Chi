@@ -314,3 +314,11 @@
     }
   }
 }
+
+.chi-data-table {
+  chi-popover {
+    &:not(.hydrated) {
+      display: none;
+    }
+  }
+}

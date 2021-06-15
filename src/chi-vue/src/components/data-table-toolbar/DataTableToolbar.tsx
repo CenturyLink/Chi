@@ -3,6 +3,7 @@ import { findComponent } from '@/utils/utils';
 import { DATA_TABLE_CLASSES } from '@/constants/classes';
 import SearchInput from '../../components/search-input/SearchInput';
 import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
+import DataTableColumns from '@/components/column-customization/ColumnCustomization';
 import DataTable from '../data-table/DataTable';
 import { DATA_TABLE_EVENTS, SEARCH_INPUT_EVENTS } from '@/constants/events';
 
@@ -10,6 +11,7 @@ import { DATA_TABLE_EVENTS, SEARCH_INPUT_EVENTS } from '@/constants/events';
 export default class DataTableToolbar extends Vue {
   _searchComponent?: SearchInput;
   _filters?: DataTableFilters;
+  _columns?: DataTableColumns;
 
   mounted() {
     const dataTableComponent = findComponent(this, 'DataTable');
@@ -27,6 +29,12 @@ export default class DataTableToolbar extends Vue {
     if (this._filters) {
       this._filters.$on(DATA_TABLE_EVENTS.FILTERS_CHANGE, (ev: Event) => {
         this.$emit(DATA_TABLE_EVENTS.TOOLBAR.FILTERS_CHANGE, ev);
+      });
+    }
+
+    if (this._columns) {
+      this._columns.$on(DATA_TABLE_EVENTS.COLUMNS_CHANGE, (ev: Event) => {
+        this.$emit(DATA_TABLE_EVENTS.TOOLBAR.COLUMNS_CHANGE, ev);
       });
     }
   }
