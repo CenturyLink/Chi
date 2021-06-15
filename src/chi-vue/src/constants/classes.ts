@@ -185,5 +185,8 @@ export const UTILITY_CLASSES = {
     RELATIVE: '-position--relative',
     ABSOLUTE: '-position--absolute',
   },
+  SIZING: {
+    W100: '-w--100',
+  },
 };
 //#endregion

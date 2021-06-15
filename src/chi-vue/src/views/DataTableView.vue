@@ -238,6 +238,22 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               label: 'Column F',
               selected: true,
             },
+            {
+              name: 'columnG',
+              label: 'Column G',
+            },
+            {
+              name: 'columnH',
+              label: 'Column H',
+            },
+            {
+              name: 'columnI',
+              label: 'Column I',
+            },
+            {
+              name: 'columnJ',
+              label: 'Column J',
+            },
           ],
         },
       },
