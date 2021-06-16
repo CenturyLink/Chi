@@ -21,7 +21,7 @@ p.-text
               option Option 1
               option Option 2
               option Option 3
-          button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+          button#drawer-trigger-filter1.chi-button.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-filter
         .chi-toolbar__end
@@ -34,7 +34,7 @@ p.-text
           button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-settings
-          button.chi-button.chi-toolbar__btn-actions.-portal.-icon.-primary.-flat(aria-label="Button action")
+          button#drawer-trigger-actions1.chi-button.chi-toolbar__btn-actions.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-more-vert
   .example-tabs.-pl--2
@@ -49,30 +49,30 @@ p.-text
       <div class="chi-toolbar">
         <div class="chi-toolbar__header">
           <div class="chi-toolbar__start">
-              <div class="chi-form__item">
-                <chi-search-input size="lg" id="example__base"></chi-search-input>
+            <div class="chi-form__item">
+              <chi-search-input size="lg" id="example__base"></chi-search-input>
+            </div>
+            <div class="chi-form__item">
+              <select class="chi-select -lg -portal" id="example-ba1">
+                <option value="">Select</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <div class="chi-form__item">
+              <select class="chi-select -lg -portal" id="example-ba2">
+                <option value="">Select</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <button class="chi-button -portal -icon -primary -flat chi-drawer__trigger" id="drawer-trigger-b1" data-target="#drawer-1" aria-label="Button action">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-filter"></i>
               </div>
-              <div class="chi-form__item">
-                <select class="chi-select -lg -portal" id="example-ba1">
-                  <option value="">Select</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                </select>
-              </div>
-              <div class="chi-form__item">
-                <select class="chi-select -lg -portal" id="example-ba2">
-                  <option value="">Select</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                </select>
-              </div>
-              <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-filter"></i>
-                </div>
-              </button>
+            </button>
           </div>
           <div class="chi-toolbar__end">
             <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
@@ -89,8 +89,7 @@ p.-text
               <div class="chi-button__content">
                 <i class="chi-icon icon-settings"></i>
               </div>
-            </button>
-            <button class="chi-button chi-toolbar__btn-actions -portal -icon -primary -flat" aria-label="Button action">
+            </button><button class="chi-button chi-toolbar__btn-actions -portal -icon -primary -flat chi-drawer__trigger" id="drawer-trigger-b2" data-target="#drawer-2" aria-label="Button action">
               <div class="chi-button__content">
                 <i class="chi-icon icon-more-vert"></i>
               </div>
@@ -98,6 +97,90 @@ p.-text
           </div>
         </div>
       </div>
+
+      <!-- Drawer -->
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
+          <div class="chi-drawer -left -menu -position--absolute" id="drawer-1">
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">Filters</span>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content -px--2 -py--3">
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba11">Label</label>
+                <select class="chi-select" id="example-ba11">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba12">Label</label>
+                <select class="chi-select" id="example-ba12">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba13">Label</label>
+                <select class="chi-select" id="example-ba13">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba14">Label</label>
+                <select class="chi-select" id="example-ba14">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+            </div>
+            <div class="-d--flex -justify-content--center -pb--2">
+              <button class="chi-button -primary -lg -uppercase -px--4">Apply</button>
+              <button class="chi-button -primary -outline -lg -bg--white -uppercase -px--4 -ml--2">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
+          <div class="chi-drawer -right -menu -position--absolute" id="drawer-2">
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">Actions</span>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content -px--2">
+              <ul class="-no-style">
+                <li class="-text--md">Download data</li>
+                <div class="chi-divider"></div>
+                <li class="-text--md">Refresh results</li>
+                <div class="chi-divider"></div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Javascript -->
+        <script>chi.drawer(document.getElementById('drawer-trigger-b1'));</script>
+        <script>chi.drawer(document.getElementById('drawer-trigger-b2'));</script>
 
 h3 Base with ribbon
 .example.-mb--3
@@ -119,7 +202,7 @@ h3 Base with ribbon
               option Option 1
               option Option 2
               option Option 3
-          button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+          button#drawer-trigger-filter1.chi-button.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-filter
         .chi-toolbar__end
@@ -132,7 +215,7 @@ h3 Base with ribbon
           button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-settings
-          button.chi-button.chi-toolbar__btn-actions.-portal.-icon.-primary.-flat(aria-label="Button action")
+          button#drawer-trigger-actions1.chi-button.chi-toolbar__btn-actions.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-more-vert
       .chi-toolbar__ribbon
@@ -178,7 +261,7 @@ h3 Base with ribbon
                 <option>Option 3</option>
               </select>
             </div>
-            <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
+            <button class="chi-button -portal -icon -primary -flat chi-drawer__trigger" id="drawer-trigger-br1" data-target="#drawer-1" aria-label="Button action">
               <div class="chi-button__content">
                 <i class="chi-icon icon-filter"></i>
               </div>
@@ -200,7 +283,7 @@ h3 Base with ribbon
                 <i class="chi-icon icon-settings"></i>
               </div>
             </button>
-            <button class="chi-button chi-toolbar__btn-actions -portal -icon -primary -flat" aria-label="Button action">
+            <button class="chi-button chi-toolbar__btn-actions -portal -icon -primary -flat chi-drawer__trigger" id="drawer-trigger-br2" data-target="#drawer-2" aria-label="Button action">
               <div class="chi-button__content">
                 <i class="chi-icon icon-more-vert"></i>
               </div>
@@ -211,7 +294,7 @@ h3 Base with ribbon
           <div class="chi-toolbar__start">
             <i class="chi-icon icon-arrow-down -xs"></i>
             <div class="chi-toolbar__results">
-              <span class="chi-toolbar__label">Search Results</span>
+              <span class="chi-toolbar__label">Search Results </span>
               <span>(1-40 of 78)</span>
             </div>
             <div class="chi-divider -vertical"></div>
@@ -227,29 +310,113 @@ h3 Base with ribbon
         </div>
       </div>
 
+      <!-- Drawer -->
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
+          <div class="chi-drawer -left -menu -position--absolute" id="drawer-1">
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">Filters</span>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content -px--2 -py--3">
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba11">Label</label>
+                <select class="chi-select" id="example-ba11">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba12">Label</label>
+                <select class="chi-select" id="example-ba12">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba13">Label</label>
+                <select class="chi-select" id="example-ba13">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba14">Label</label>
+                <select class="chi-select" id="example-ba14">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+            </div>
+            <div class="-d--flex -justify-content--center -pb--2">
+              <button class="chi-button -primary -lg -uppercase -px--4">Apply</button>
+              <button class="chi-button -primary -outline -lg -bg--white -uppercase -px--4 -ml--2">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
+          <div class="chi-drawer -right -menu -position--absolute" id="drawer-2">
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">Actions</span>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content -px--2">
+              <ul class="-no-style">
+                <li class="-text--md">Download data</li>
+                <div class="chi-divider"></div>
+                <li class="-text--md">Refresh results</li>
+                <div class="chi-divider"></div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Javascript -->
+        <script>chi.drawer(document.getElementById('drawer-trigger-br1'));</script>
+        <script>chi.drawer(document.getElementById('drawer-trigger-br2'));</script>
+
 h3 Portal
-p.-text
-  | To render toolbar, use the class <code>chi-toolbar</code>.
 .example.-mb--3
   .-p--3
     .chi-toolbar.-portal
       .chi-toolbar__header
         .chi-toolbar__start
           .chi-form__item
-            chi-search-input(size="lg", id="example__base-2")
+            chi-search-input(portal size="lg" id="example__base-3")
+          .chi-divider.-vertical
           .chi-form__item
             select(class="chi-select -lg -portal", id="example-ba5")
               option(value="") Select
               option Option 1
               option Option 2
               option Option 3
+          .chi-divider.-vertical
           .chi-form__item
             select(class="chi-select -lg -portal", id="example-ba6")
               option(value="") Select
               option Option 1
               option Option 2
               option Option 3
-          button#drawer-trigger-ctl-htt1.chi-button.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-ctl-0', aria-label="Button action")
+          button#drawer-trigger-filter1.chi-button.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-filter
         .chi-toolbar__end
@@ -262,110 +429,10 @@ p.-text
           button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-settings
-          button#drawer-trigger-ph1.chi-button.chi-toolbar__btn-actions.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
+          button#drawer-trigger-actions1.chi-button.chi-toolbar__btn-actions.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-more-vert
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-base
-      li.-disabled
-        a(href=`#webcomponent-base`) Web Component
-      li.-active
-        a(href=`#html-base`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-base
-  .chi-tabs-panel.-active#html-base
-    :code(lang='html')
-      <div class="chi-toolbar -portal">
-        <div class="chi-toolbar__header">
-          <div class="chi-toolbar__start">
-              <div class="chi-form__item">
-                <chi-search-input size="lg" id="example__base-2"></chi-search-input>
-              </div>
-              <div class="chi-form__item">
-                <select class="chi-select -lg -portal" id="example-ba5">
-                  <option value="">Select</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                </select>
-              </div>
-              <div class="chi-form__item">
-                <select class="chi-select -lg -portal" id="example-ba6">
-                  <option value="">Select</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                </select>
-              </div>
-              <button class="chi-button -portal -icon -primary -flat chi-drawer__trigger" id="drawer-trigger-ctl-htt1" data-target="#drawer-ctl-0" aria-label="Button action">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-filter"></i>
-                </div>
-              </button>
-          </div>
-          <div class="chi-toolbar__end">
-            <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-arrow-to-bottom"></i>
-              </div>
-            </button>
-            <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-refresh"></i>
-              </div>
-            </button>
-            <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-settings"></i>
-              </div>
-            </button>
-            <button class="chi-button chi-toolbar__btn-actions -portal -icon -primary -flat chi-drawer__trigger" id="drawer-trigger-ph1" data-target="#drawer-1" aria-label="Button action">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-more-vert"></i>
-              </div>
-            </button>
-          </div>
-        </div>
-      </div>
 
-h3 Portal alt version mobile
-.example.-mb--3
-  .-p--3
-    .chi-toolbar.-portal
-      .chi-toolbar__header
-        .chi-toolbar__start
-          button#drawer-trigger-ph1.chi-button.-portal.-icon.-primary.-flat.-d-md--none.chi-drawer__trigger(data-target='#drawer-ctl-3', aria-label="Button action")
-            .chi-button__content
-              i.chi-icon.icon-search
-          .chi-form__item.-d--none.-d-md--flex
-            chi-search-input(size="lg", id="example__base-3")
-          .chi-form__item
-            select(class="chi-select -lg -portal", id="example-ba7")
-              option(value="") Select
-              option Option 1
-              option Option 2
-              option Option 3
-          .chi-form__item
-            select(class="chi-select -lg -portal", id="example-ba8")
-              option(value="") Select
-              option Option 1
-              option Option 2
-              option Option 3
-          button#drawer-trigger-ctl-htt1.chi-button.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-ctl-0', aria-label="Button action")
-            .chi-button__content
-              i.chi-icon.icon-filter
-        .chi-toolbar__end
-          button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
-            .chi-button__content
-              i.chi-icon.icon-arrow-to-bottom
-          button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
-            .chi-button__content
-              i.chi-icon.icon-refresh
-          button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
-            .chi-button__content
-              i.chi-icon.icon-settings
-          button#drawer-trigger-ph1.chi-button.chi-toolbar__btn-actions.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
-            .chi-button__content
-              i.chi-icon.icon-more-vert
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
       li.-disabled
@@ -378,35 +445,32 @@ h3 Portal alt version mobile
       <div class="chi-toolbar -portal">
         <div class="chi-toolbar__header">
           <div class="chi-toolbar__start">
-            <button class="chi-button -portal -icon -primary -flat -d-md--none chi-drawer__trigger" id="drawer-trigger-ph1" data-target="#drawer-ctl-3" aria-label="Button action">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-search"></i>
-              </div>
-            </button>
-            <div class="chi-form__item -d--none -d-md--flex">
-              <chi-search-input size="lg" id="example__base-3"></chi-search-input>
-            </div>
             <div class="chi-form__item">
-              <select class="chi-select -lg -portal" id="example-ba7">
+              <chi-search-input portal="portal" size="lg" id="example__base-3"></chi-search-input>
+            </div>
+            <div class="chi-divider -vertical"></div>
+            <div class="chi-form__item">
+              <select class="chi-select -lg -portal" id="example-ba5">
                 <option value="">Select</option>
                 <option>Option 1</option>
                 <option>Option 2</option>
                 <option>Option 3</option>
               </select>
             </div>
-              <div class="chi-form__item">
-                <select class="chi-select -lg -portal" id="example-ba8">
-                  <option value="">Select</option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Option 3</option>
-                </select>
+            <div class="chi-divider -vertical"></div>
+            <div class="chi-form__item">
+              <select class="chi-select -lg -portal" id="example-ba6">
+                <option value="">Select</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+            <button class="chi-button -portal -icon -primary -flat chi-drawer__trigger" id="drawer-trigger-bp1" data-target="#drawer-1" aria-label="Button action">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-filter"></i>
               </div>
-              <button class="chi-button -portal -icon -primary -flat chi-drawer__trigger" id="drawer-trigger-ctl-htt1" data-target="#drawer-ctl-0" aria-label="Button action">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-filter"></i>
-                </div>
-              </button>
+            </button>
           </div>
           <div class="chi-toolbar__end">
             <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
@@ -424,14 +488,96 @@ h3 Portal alt version mobile
                 <i class="chi-icon icon-settings"></i>
               </div>
             </button>
-            <button class="chi-button chi-toolbar__btn-actions -portal -icon -primary -flat chi-drawer__trigger" id="drawer-trigger-ph1" data-target="#drawer-1" aria-label="Button action">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-more-vert"></i>
-              </div>
+            <button class="chi-button chi-toolbar__btn-actions -portal -icon -primary -flat chi-drawer__trigger" id="drawer-trigger-bp2" data-target="#drawer-2" aria-label="Button action">
+              <div class="chi-button__content"><i class="chi-icon icon-more-vert"></i></div>
             </button>
           </div>
         </div>
       </div>
+
+      <!-- Drawer -->
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
+          <div class="chi-drawer -left -portal -menu -position--absolute" id="drawer-1">
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">Filters</span>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content -px--2 -py--3">
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba11">Label</label>
+                <select class="chi-select" id="example-ba11">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba12">Label</label>
+                <select class="chi-select" id="example-ba12">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba13">Label</label>
+                <select class="chi-select" id="example-ba13">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba14">Label</label>
+                <select class="chi-select" id="example-ba14">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+            </div>
+            <div class="-d--flex -justify-content--center -pb--2">
+              <button class="chi-button -primary -lg -uppercase -px--4">Apply</button>
+              <button class="chi-button -primary -outline -lg -bg--white -uppercase -px--4 -ml--2">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
+          <div class="chi-drawer -right -portal -menu -position--absolute" id="drawer-2">
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">Actions</span>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content -px--2">
+              <ul class="-no-style">
+                <li class="-text--md">Download data</li>
+                <div class="chi-divider"></div>
+                <li class="-text--md">Refresh results</li>
+                <div class="chi-divider"></div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Javascript -->
+        <script>chi.drawer(document.getElementById('drawer-trigger-bp1'));</script>
+        <script>chi.drawer(document.getElementById('drawer-trigger-bp2'));</script>
 
 h3 Portal with ribbon
 .example.-mb--3
@@ -441,19 +587,21 @@ h3 Portal with ribbon
         .chi-toolbar__start
           .chi-form__item
             chi-search-input(size="lg", id="example__base-4")
+          .chi-divider.-vertical
           .chi-form__item
             select(class="chi-select -lg -portal", id="example-ba9")
               option(value="") Select
               option Option 1
               option Option 2
               option Option 3
+          .chi-divider.-vertical
           .chi-form__item
             select(class="chi-select -lg -portal", id="example-ba10")
               option(value="") Select
               option Option 1
               option Option 2
               option Option 3
-          button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+          button#drawer-trigger-filter1.chi-button.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-filter
         .chi-toolbar__end
@@ -466,7 +614,7 @@ h3 Portal with ribbon
           button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-settings
-          button.chi-button.chi-toolbar__btn-actions.-portal.-icon.-primary.-flat(aria-label="Button action")
+          button#drawer-trigger-actions1.chi-button.chi-toolbar__btn-actions.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-more-vert
       .chi-toolbar__ribbon
@@ -496,6 +644,7 @@ h3 Portal with ribbon
             <div class="chi-form__item">
               <chi-search-input size="lg" id="example__base-4"></chi-search-input>
             </div>
+            <div class="chi-divider -vertical"></div>
             <div class="chi-form__item">
               <select class="chi-select -lg -portal" id="example-ba9">
                 <option value="">Select</option>
@@ -504,6 +653,7 @@ h3 Portal with ribbon
                 <option>Option 3</option>
               </select>
             </div>
+            <div class="chi-divider -vertical"></div>
             <div class="chi-form__item">
               <select class="chi-select -lg -portal" id="example-ba10">
                 <option value="">Select</option>
@@ -512,7 +662,7 @@ h3 Portal with ribbon
                 <option>Option 3</option>
               </select>
             </div>
-            <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
+            <button class="chi-button -portal -icon -primary -flat chi-drawer__trigger" id="drawer-trigger-brp1" data-target="#drawer-1" aria-label="Button action">
               <div class="chi-button__content">
                 <i class="chi-icon icon-filter"></i>
               </div>
@@ -534,7 +684,7 @@ h3 Portal with ribbon
                 <i class="chi-icon icon-settings"></i>
               </div>
             </button>
-            <button class="chi-button chi-toolbar__btn-actions -portal -icon -primary -flat" aria-label="Button action">
+            <button class="chi-button chi-toolbar__btn-actions -portal -icon -primary -flat chi-drawer__trigger" id="drawer-trigger-brp2" data-target="#drawer-2" aria-label="Button action">
               <div class="chi-button__content">
                 <i class="chi-icon icon-more-vert"></i>
               </div>
@@ -545,7 +695,7 @@ h3 Portal with ribbon
           <div class="chi-toolbar__start">
             <i class="chi-icon icon-arrow-down -xs"></i>
             <div class="chi-toolbar__results">
-              <span class="chi-toolbar__label">Search Results</span>
+              <span class="chi-toolbar__label">Search Results </span>
               <span>(1-40 of 78)</span>
             </div>
             <div class="chi-divider -vertical"></div>
@@ -561,10 +711,94 @@ h3 Portal with ribbon
         </div>
       </div>
 
+      <!-- Drawer -->
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
+          <div class="chi-drawer -left -portal -menu -position--absolute" id="drawer-1">
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">Filters</span>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content -px--2 -py--3">
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba11">Label</label>
+                <select class="chi-select" id="example-ba11">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba12">Label</label>
+                <select class="chi-select" id="example-ba12">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba13">Label</label>
+                <select class="chi-select" id="example-ba13">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+              <div class="chi-form__item -mb--2">
+                <label class="chi-label" for="example-ba14">Label</label>
+                <select class="chi-select" id="example-ba14">
+                  <option value="">Select</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+              </div>
+            </div>
+            <div class="-d--flex -justify-content--center -pb--2">
+              <button class="chi-button -primary -lg -uppercase -px--4">Apply</button>
+              <button class="chi-button -primary -outline -lg -bg--white -uppercase -px--4 -ml--2">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chi-backdrop -closed">
+        <div class="chi-backdrop__wrapper">
+          <div class="chi-drawer -right -portal -menu -position--absolute" id="drawer-2">
+            <div class="chi-drawer__header">
+              <span class="chi-drawer__title">Actions</span>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content -px--2">
+              <ul class="-no-style">
+                <li class="-text--md">Download data</li>
+                <div class="chi-divider"></div>
+                <li class="-text--md">Refresh results</li>
+                <div class="chi-divider"></div>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Javascript -->
+        <script>chi.drawer(document.getElementById('drawer-trigger-brp1'));</script>
+        <script>chi.drawer(document.getElementById('drawer-trigger-brp2'));</script>
+
   // Drawers
   .chi-backdrop.-closed
     .chi-backdrop__wrapper
-      div#drawer-ctl-0.chi-drawer.-left.-portal.-menu.-position--absolute
+      div#drawer-1.chi-drawer.-left.-portal.-menu.-position--absolute
         .chi-drawer__header
           span.chi-drawer__title Filters
           button(class='chi-button -icon -close',  aria-label='Close')
@@ -603,62 +837,19 @@ h3 Portal with ribbon
           button.chi-button.-primary.-lg.-uppercase.-px--4 Apply
           button.chi-button.-primary.-outline.-lg.-bg--white.-uppercase.-px--4.-ml--2 Cancel
   .chi-backdrop.-closed
-      .chi-backdrop__wrapper
-        div#drawer-1.chi-drawer.-right.-portal.-menu.-position--absolute
-          .chi-drawer__header
-            span.chi-drawer__title Actions
-            button(class='chi-button -icon -close', aria-label='Close')
-              .chi-button__content
-                i.chi-icon.icon-x
-          .chi-drawer__content.-px--2
-            ul.-no-style
-              li.-text--md Download data
-              .chi-divider
-              li.-text--md Refresh results
-              .chi-divider
-  .chi-backdrop.-closed
-      .chi-backdrop__wrapper
-        div#drawer-ctl-3.chi-drawer.-bottom.-portal.-menu.-position--absolute
-          .chi-drawer__header
-            span.chi-drawer__title Search
-            button(class='chi-button -icon -close', aria-label='Close')
-              .chi-button__content
-                i.chi-icon.icon-x
-            .chi-form__item.-mt--2.-mb--1
-              chi-search-input(id="example__base-5")
-          .chi-drawer__content.-px--2
-            .-d--flex.-justify-content--between.-align-items--center
-              p.-text.-text--bold Recent searches
-              chi-link(size='md' href='#' hreflang='en') Link
-            ul.-no-style
-              li.-d--flex.-align-items--center
-                i.chi-icon.icon-search.-mr--1
-                .-text--md Search 1
-              .chi-divider
-              li.-d--flex.-align-items--center
-                i.chi-icon.icon-search.-mr--1
-                .-text--md Search 2
-              .chi-divider
-              li.-d--flex.-align-items--center
-                i.chi-icon.icon-search.-mr--1
-                .-text--md Search 3
-              .chi-divider
-              li.-d--flex.-align-items--center
-                i.chi-icon.icon-search.-mr--1
-                .-text--md Search 4
-              .chi-divider
-              li.-d--flex.-align-items--center
-                i.chi-icon.icon-search.-mr--1
-                .-text--md Search 5
-              .chi-divider
-              li.-d--flex.-align-items--center
-                i.chi-icon.icon-search.-mr--1
-                .-text--md Search 6
-              .chi-divider
-              li.-d--flex.-align-items--center
-                i.chi-icon.icon-search.-mr--1
-                .-text--md Search 7
-              .chi-divider
+    .chi-backdrop__wrapper
+      div#drawer-2.chi-drawer.-right.-portal.-menu.-position--absolute
+        .chi-drawer__header
+          span.chi-drawer__title Actions
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
+              i.chi-icon.icon-x
+        .chi-drawer__content.-px--2
+          ul.-no-style
+            li.-text--md Download data
+            .chi-divider
+            li.-text--md Refresh results
+            .chi-divider
 
 script.
   document.addEventListener(

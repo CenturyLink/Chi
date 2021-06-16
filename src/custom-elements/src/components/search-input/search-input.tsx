@@ -29,6 +29,10 @@ export class SearchInput {
    */
   @Prop({ reflect: true }) disabled = false;
   /**
+   * To enable portal styling
+   */
+   @Prop({ reflect: true }) portal = false;
+  /**
    * To disable Value attribute mutation
    */
   @Prop({ reflect: true }) preventValueMutation = false;
@@ -143,6 +147,7 @@ export class SearchInput {
       class={`
         chi-button -icon -flat -bg--none
         ${this.size === 'sm' ? '-sm' : ''}
+        ${this.portal ? '-icon--primary' : ''}
         `}
         onClick={() => this.eventSearch.emit(this.value)}
         aria-label="Search">

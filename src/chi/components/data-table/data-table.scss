@@ -716,7 +716,7 @@ $sizes: (
       position: relative;
 
       &::after {
-        color: $color-icon-base;
+        color: $color-text-primary;
         content: '\e920';
         font-family: 'chi';
         font-size: $font-size-lg;
@@ -765,7 +765,7 @@ $sizes: (
     }
 
     .chi-data-table__row {
-      background-color: $color-background-base-darker;
+      background-color: $color-background-muted-lighter;
       border-bottom: 0;
       margin-top: 0.5rem;
       padding: 1rem 3rem 1rem 1rem;
