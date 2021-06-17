@@ -147,12 +147,11 @@ export class SearchInput {
       class={`
         chi-button -icon -flat -bg--none
         ${this.size === 'sm' ? '-sm' : ''}
-        ${this.portal ? '-icon--primary' : ''}
         `}
         onClick={() => this.eventSearch.emit(this.value)}
         aria-label="Search">
           <div class="chi-button__content">
-            <i class="chi-icon icon-search"></i>
+            <i class={`chi-icon icon-search ${this.portal ? '-icon--primary' : ''}`}></i>
           </div>
       </button>;
 

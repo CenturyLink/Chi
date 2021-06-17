@@ -13,38 +13,12 @@
     justify-content: flex-start;
     padding: 0.5rem;
 
-    .chi-form__item {
-      .chi-select {
-        display: none;
-      }
-    }
-
-    .chi-toolbar__end {
-      .chi-button:not(.chi-toolbar__btn-actions) {
-        display: none;
-      }
-    }
-
     @include respond-to(md) {
       justify-content: space-between;
       padding: 1.5rem;
 
       .chi-form__item {
         padding-right: 0.5rem;
-
-        .chi-select {
-          display: block;
-        }
-
-        + .chi-form__item {
-          padding-left: 0.5rem;
-        }
-      }
-
-      .chi-toolbar__end {
-        .chi-button:not(.chi-toolbar__btn-actions) {
-          display: inline-flex;
-        }
       }
     }
 
@@ -70,18 +44,35 @@
     display: flex;
   }
 
-  &__btn-actions {
-    @include respond-to(md) {
-      display: none;
-    }
-  }
-
   &__results {
     font-size: $toolbar-results-font-size;
     margin-left: 0.5rem;
 
     .chi-toolbar__label {
       font-weight: 600;
+    }
+  }
+
+  &__filters,
+  &__actions {
+    display: flex;
+
+    &-desktop {
+      display: none;
+
+      @include respond-to(md) {
+        display: flex;
+
+        .chi-form__item {
+          padding-left: 0.5rem;
+        }
+      }
+    }
+
+    &-mobile {
+      @include respond-to(md) {
+        display: none;
+      }
     }
   }
 
@@ -97,14 +88,10 @@
 
       @include respond-to(md) {
         background-color: $color-background-muted-lighter;
-        
+
         .chi-divider {
           display: block;
           height: 2.5rem;
-
-          + .chi-form__item {
-            padding-left: 0.5rem;
-          }
         }
       }
     }
