@@ -280,19 +280,19 @@ export default class DataTable extends Vue {
 
   _emitSelectedRows() {
     const selectedRowsData = this._serializedDataBody.filter((row: DataTableRow) => {
-      return this.selectedRows.includes(row.id);
+      return this.selectedRows.includes(row.rowId);
     });
 
     this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, selectedRowsData);
   }
 
   selectRow(rowData: DataTableRow) {
-    const rowId = this.selectedRows.find(rowId => rowId === rowData.id);
+    const rowId = this.selectedRows.find(rowId => rowId === rowData.rowId);
 
     if (!rowId) {
-      this.selectedRows.push(rowData.id);
+      this.selectedRows.push(rowData.rowId);
     } else {
-      const indexOfRowId = this.selectedRows.indexOf(rowData.id);
+      const indexOfRowId = this.selectedRows.indexOf(rowData.rowId);
 
       this.selectedRows.splice(indexOfRowId, 1);
     }
@@ -315,13 +315,13 @@ export default class DataTable extends Vue {
 
     if (action === 'select') {
       data.forEach((row: DataTableRow) => {
-        if (!this.selectedRows.includes(row.id)) {
-          this.selectedRows.push(row.id);
+        if (!this.selectedRows.includes(row.rowId)) {
+          this.selectedRows.push(row.rowId);
         }
       });
     } else {
       data.forEach((row: DataTableRow) => {
-        const rowIndex = this.selectedRows.indexOf(row.id);
+        const rowIndex = this.selectedRows.indexOf(row.rowId);
 
         this.selectedRows.splice(rowIndex, 1);
       });
@@ -331,7 +331,7 @@ export default class DataTable extends Vue {
   }
 
   _selectRowCheckbox(selectAll: boolean, rowData: DataTableRow | null = null) {
-    const checkedState = rowData && rowData.rowNumber && this.selectedRows.includes(rowData.id);
+    const checkedState = rowData && rowData.rowNumber && this.selectedRows.includes(rowData.rowId);
 
     if (selectAll || !!rowData) {
       const checkboxId =
@@ -373,7 +373,7 @@ export default class DataTable extends Vue {
   }
 
   toggleRow(id: string) {
-    const rowData = this._serializedDataBody.find((row: DataTableRow) => row.id === id);
+    const rowData = this._serializedDataBody.find((row: DataTableRow) => row.rowId === id);
 
     if (this.accordionsExpanded.includes(id)) {
       this.accordionsExpanded.splice(this.accordionsExpanded.indexOf(id), 1);
@@ -417,7 +417,7 @@ export default class DataTable extends Vue {
     const row = [],
       rowCells = [],
       rowAccordionContent = [],
-      rowId = this._rowId(bodyRow.rowNumber),
+      rowId = this._rowId(bodyRow.id || bodyRow.rowNumber),
       rowClass = rowChild ? DATA_TABLE_CLASSES.ROW_CHILD : DATA_TABLE_CLASSES.ROW;
 
     if (this._expandable) {
@@ -498,7 +498,7 @@ export default class DataTable extends Vue {
             ? DATA_TABLE_CLASSES.STRIPED
             : ''
         }
-        ${this.selectedRows.includes(bodyRow.id) || bodyRow.active ? ACTIVE_CLASS : ''}
+        ${this.selectedRows.includes(bodyRow.rowId) || bodyRow.active ? ACTIVE_CLASS : ''}
         ${this.accordionsExpanded.includes(rowId) || bodyRow.expanded ? EXPANDED_CLASS : ''}
         `}
         role="row">
@@ -563,6 +563,8 @@ export default class DataTable extends Vue {
             results={this.data.body.length}
             pageSize={!this.config.style.portal}
             pageJumper={this.config.pagination.pageJumper}
+            portal={this.config.style.portal}
+            size={this.config.style.portal ? 'sm' : 'md'}
           />
         </div>
       );
@@ -575,7 +577,7 @@ export default class DataTable extends Vue {
     ) as HTMLInputElement;
 
     if (selectAllCheckbox) {
-      const isSelected = (row: DataTableRow) => this.selectedRows.includes(row.id);
+      const isSelected = (row: DataTableRow) => this.selectedRows.includes(row.rowId);
 
       if (this.slicedData) {
         selectAllCheckbox.checked = this.slicedData.every(isSelected);
@@ -623,12 +625,12 @@ export default class DataTable extends Vue {
 
   serializeData() {
     const serializeRow = (row: DataTableRow, rowNumber: number, parentRowId: string | null) => {
-      const rowId = this._rowId(rowNumber);
+      const rowId = this._rowId(row.id || rowNumber);
       const rowN = parentRowId !== null ? `${parentRowId}-${rowNumber}` : String(rowNumber);
       const rowObject = {
         ...row,
         rowNumber: rowN,
-        id: rowId,
+        rowId: rowId,
       };
       let subrowNumber = 0;
 

@@ -24,6 +24,7 @@ export default class Pagination extends Vue {
   @Prop() pages!: number;
   @Prop() pageSize!: number;
   @Prop() pageJumper!: number;
+  @Prop() portal?: boolean;
   @Prop() results!: number;
   @Prop() size!: PaginationSizes;
 
@@ -115,6 +116,7 @@ export default class Pagination extends Vue {
         ${icon ? BUTTON_CLASSES.ICON_BUTTON : ''}
         ${page === this.currentPage ? ACTIVE_CLASS : ''}
         ${this.size ? `-${this.size}` : ''}
+        ${this.$props.portal ? BUTTON_CLASSES.PRIMARY : ''}
         `}
         onClick={(ev: Event) => {
           ev.stopPropagation();
