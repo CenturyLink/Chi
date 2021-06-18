@@ -41,6 +41,7 @@ export interface DataTableRow {
   data: Record<string, any>;
   nestedContent: DataTableRowNestedContent;
   id: string;
+  rowId: string;
   rowNumber: string;
 }
 export interface DataTableData {

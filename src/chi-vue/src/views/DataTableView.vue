@@ -18,7 +18,7 @@
         <TicketPopover :id="payload.id" />
       </template>
       <template #status="payload">
-        <div :class="`chi-badge -${payload.status === 'active' ? 'primary' : ''}`">
+        <div :class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`">
           <span class="-text--truncate">{{ payload.status }}</span>
         </div>
       </template>
