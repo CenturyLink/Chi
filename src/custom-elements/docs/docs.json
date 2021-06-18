@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-06-18T08:30:49",
+  "timestamp": "2021-06-18T13:17:22",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2752,6 +2752,23 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "portal",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "portal",
+          "reflectToAttr": true,
+          "docs": "To enable portal styling",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,

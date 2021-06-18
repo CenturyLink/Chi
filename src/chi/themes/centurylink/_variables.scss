@@ -1111,6 +1111,14 @@ $toggle-switch-checked-thumb-background-color: $color-background-white;
 $toggle-switch-focus-color:                 $focus-color;
 $toggle-switch-disabled-opacity:            $opacity-60;
 
+// Toolbar
+$toolbar-header-background-color:           $color-background-base;
+$toolbar-ribbon-background-color:           $color-background-base;
+$toolbar-ribbon-border-color:               $color-border-base;
+$toolbar-ribbon-divider-height:             1.25rem;
+$toolbar-results-font-size:                 $font-size-md;
+$toolbar-label-font-weight:                 $font-weight-semi-bold;
+
 // Tooltip
 $tooltip-background-color:                  rgba($color-grey-100, 0.95);
 $tooltip-text-color:                        $color-text-white;
