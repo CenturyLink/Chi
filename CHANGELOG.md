@@ -1,4 +1,9 @@
 # CHANGELOG
+## 4.3.0 (June 18, 2021)
+### Components
+#### Added
+* Added: Toolbar component provides the ability of performing actions such as searching for elements and filtering complex structures.
+
 ## 4.2.0 (June 4, 2021)
 ### Components
 #### Added
