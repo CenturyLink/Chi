@@ -315,9 +315,9 @@
   }
 }
 
-.chi-data-table {
-  chi-popover {
-    &:not(.hydrated) {
+chi-popover {
+  &:not(.hydrated) {
+    &:not([active]) {
       display: none;
     }
   }

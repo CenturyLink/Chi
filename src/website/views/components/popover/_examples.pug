@@ -835,7 +835,7 @@ script.
       chi.tab(document.getElementById('examples-portal'));
 
       buttonOpenOnHover.addEventListener('chiMouseEnter', function() {
-        hoverAnimationTimeout = setTimeout(() => {
+        hoverAnimationTimeout = setTimeout(function() {
           popoverOpenOnHover.show();
         }, 300);
       });

@@ -36,10 +36,6 @@ $sizes: (
 select.chi-input { // sass-lint:disable-line force-element-nesting
   appearance: none;
   background-color: $select-background-color;
-  background-image: url('icon-chevron-thin-down.svg');
-  background-position: map-get(map-get($sizes, md), background-position);
-  background-repeat: no-repeat;
-  background-size: 0.75rem;
   border: 0.0625rem solid $select-border-color;
   border-radius: $border-radius-base;
   box-shadow: $select-box-shadow;
@@ -49,9 +45,16 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
   height: map-get(map-get($sizes, md), height);
   line-height: map-get(map-get($sizes, md), line-height);
   outline: none;
-  padding: map-get(map-get($sizes, md), padding);
   transition: background-color 0.12s ease-in, border-color 0.1s ease-in;
   width: 100%;
+
+  &:not([multiple]) {
+    background-image: url('icon-chevron-thin-down.svg');
+    background-position: map-get(map-get($sizes, md), background-position);
+    background-repeat: no-repeat;
+    background-size: 0.75rem;
+    padding: map-get(map-get($sizes, md), padding);
+  }
 
   // sass-lint:disable no-vendor-prefixes
   &::-ms-expand {
