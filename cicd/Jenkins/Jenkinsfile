@@ -10,7 +10,7 @@
 */
 try {
 library(
-      identifier: 'jsl-jenkins-shared-library-local@release/20210415',
+      identifier: 'jsl-jenkins-shared-library-local@release/20210618',
       retriever: modernSCM(
         [
           $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ library(
     ) _
 } catch (Exception Ex) {
 library(
-  identifier: 'jsl-jenkins-shared-library@release/20210415',
+  identifier: 'jsl-jenkins-shared-library@release/20210618',
   retriever: modernSCM(
     [
       $class: 'GitSCMSource',
