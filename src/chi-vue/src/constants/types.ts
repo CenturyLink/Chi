@@ -21,6 +21,7 @@ export const DATA_TABLE_SCREEN_BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as c
 export type DataTableScreenBreakpoints = typeof DATA_TABLE_SCREEN_BREAKPOINTS[number];
 export interface DataTableStyleConfig {
   portal: boolean;
+  compact: boolean;
   bordered: boolean;
   noBorder: boolean;
   hover: boolean;
