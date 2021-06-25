@@ -1,16 +1,528 @@
 script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
-script(src="https://assets-dev.ctl.io/chi/staging/chi-vue/umd/chi-vue.umd.js")
+script(src="https://ffa501f0173abba98f9476d13fde468ee1ac8e93-chi-pr.enterprise.ctl.io/chi-vue/umd/chi-vue.umd.js")
 
-h2 Data Table
+h2 Data Table Base
 h3 Base
 .test-data-table.-p--3.-w--100
   #base
     chi-vue-data-table(data-cy='data-table', :config="config", :data="table")
+    button(@click="update") Update
+h3 Empty
+.test-data-table.-p--3.-w--100
+  #empty
+    chi-vue-data-table(data-cy='data-table-empty', :config="config", :data="table")
+h3 No Border
+.test-data-table.-p--3.-w--100
+  #noBorder
+    chi-vue-data-table(data-cy='data-table-no-border', :config="config", :data="table")
+h3 Striped
+.test-data-table.-p--3.-w--100
+  #striped
+    chi-vue-data-table(data-cy='data-table-striped', :config="config", :data="table")
+h3 Hover
+.test-data-table.-p--3.-w--100
+  #hover
+    chi-vue-data-table(data-cy='data-table-hover', :config="config", :data="table")
+h3 Bordered
+.test-data-table.-p--3.-w--100
+  #bordered
+    chi-vue-data-table(data-cy='data-table-bordered', :config="config", :data="table")
+h3 Active
+.test-data-table.-p--3.-w--100
+  #active
+    chi-vue-data-table(data-cy='data-table-active', :config="config", :data="table")
+h3 Selectable
+.test-data-table.-p--3.-w--100
+  #selectable
+    chi-vue-data-table(data-cy='data-table-selectable', :config="config", :data="table")
+h3 Accordion
+.test-data-table.-p--3.-w--100
+  #accordion
+    chi-vue-data-table(data-cy='data-table-accordion', :config="config", :data="table")
+h3 Sorting
+.test-data-table.-p--3.-w--100
+  #sorting
+    chi-vue-data-table(data-cy='data-table-sorting', :config="config", :data="table")
+      template(#status='payload')
+        div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
+          span.-text--truncate {{ payload.status }}
 
-  script.
-    new Vue({
-      components: {
-        chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+h3 Default Sorting -- Ascending
+.test-data-table.-p--3.-w--100
+  #sortingAsc
+    chi-vue-data-table(data-cy='data-table-sorting-asc', :config="config", :data="table")
+h3 Default Sorting -- Descending
+.test-data-table.-p--3.-w--100
+  #sortingDesc
+    chi-vue-data-table(data-cy='data-table-sorting-desc', :config="config", :data="table")
+h3 Size -xs
+.test-data-table.-p--3.-w--100
+  #sizeXs
+    chi-vue-data-table(data-cy='data-table-xs', :config="config", :data="table")
+h3 Size -sm
+.test-data-table.-p--3.-w--100
+  #sizeSm
+    chi-vue-data-table(data-cy='data-table-sm', :config="config", :data="table")
+h3 Size -md
+.test-data-table.-p--3.-w--100
+  #sizeMd
+    chi-vue-data-table(data-cy='data-table-md', :config="config", :data="table")
+h3 Size -lg
+.test-data-table.-p--3.-w--100
+  #sizeLg
+    chi-vue-data-table(data-cy='data-table-lg', :config="config", :data="table")
+h3 Size -xl
+.test-data-table.-p--3.-w--100
+  #sizeXl
+    chi-vue-data-table(data-cy='data-table-xl', :config="config", :data="table")
+
+script.
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    methods: {
+      update: function(){
+        const newData = ['Updated Name 1', 'name-1', 'Dec 18, 2020 3:26 PM'] 
+        setTimeout(() => {
+          this.$data.table = {
+            ...this.$data.table,
+            body: this.$data.table.body.map((row, index) =>
+              index === 0
+                ? {
+                  ...row, data: newData,
+                  }
+                : row
+                ),
+              };
+            }, 3000);
+          },
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: true,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: ['Name 1', 'name-1', 'Dec 18, 2020 3:26 PM'],
+          },
+          {
+            id: 'name-2',
+            data: ['Name 2', 'name-2', 'Dec 18, 2020 2:38 AM'],
+          },
+          {
+            id: 'name-3',
+            data: ['Name 3', 'name-3', 'Nov 5, 2020 10:15 AM'],
+          },
+          {
+            id: 'name-4',
+            data: ['Name 4', 'name-4', 'Dec 18, 2020 3:26 PM'],
+          },
+          {
+            id: 'name-5',
+            data: ['Name 5', 'name-5', 'Dec 18, 2020 2:38 AM'],
+          },
+          {
+            id: 'name-6',
+            data: ['Name 6', 'name-6', 'Nov 5, 2020 10:15 AM'],
+          },
+        ],
+      },
+    },
+  }).$mount('#base');
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+        noResultsMessage: "No matches found. Please revise search criteria and try again."
+        },
+        table: {
+          head: {
+            name: { label: 'Name' },
+            id: { label: 'ID' },
+            lastLogin: { label: 'Last Login' },
+          },
+          body: []
+        }
+    },
+  }).$mount('#empty');
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: true,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }
+  }).$mount('#noBorder');
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: true,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }
+  }).$mount('#striped');
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: true,
+          size: 'md',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }
+  }).$mount('#hover')
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: true,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }
+  }).$mount("#bordered")
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
       },
       data: {
         config: {
@@ -40,29 +552,967 @@ h3 Base
           body: [
             {
               id: 'name-1',
-              data: ['Name 1', 'name-1', 'Dec 18, 2020 3:26 PM'],
+              data: [
+                'Name 1',
+                'name-1',
+                'Dec 18, 2020 3:26 PM',
+              ],
             },
             {
+              active: true,
               id: 'name-2',
-              data: ['Name 2', 'name-2', 'Dec 18, 2020 2:38 AM'],
+              data: [
+                'Name 2',
+                'name-2',
+                'Dec 18, 2020 2:38 AM',
+              ],
             },
             {
               id: 'name-3',
-              data: ['Name 3', 'name-3', 'Nov 5, 2020 10:15 AM'],
+              data: [
+                'Name 3',
+                'name-3',
+                'Nov 5, 2020 10:15 AM',
+              ],
             },
             {
               id: 'name-4',
-              data: ['Name 4', 'name-4', 'Dec 18, 2020 3:26 PM'],
+              data: [
+                'Name 4',
+                'name-4',
+                'Dec 18, 2020 3:26 PM',
+              ],
             },
             {
               id: 'name-5',
-              data: ['Name 5', 'name-5', 'Dec 18, 2020 2:38 AM'],
+              data: [
+                'Name 5',
+                'name-5',
+                'Dec 18, 2020 2:38 AM',
+              ],
             },
             {
               id: 'name-6',
-              data: ['Name 6', 'name-6', 'Nov 5, 2020 10:15 AM'],
+              data: [
+                'Name 6',
+                'name-6',
+                'Nov 5, 2020 10:15 AM',
+              ],
             },
-          ],
+          ]
+        }
+      }
+  }).$mount("#active")
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
         },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        selectable: true,
+        resultsPerPage: 3,
       },
-    }).$mount('#base');
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }
+  }).$mount("#selectable")
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }
+  }).$mount("#accordion")
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name', sortable: true, sortDataType: 'string' },
+          id: { label: 'ID', sortable: true, sortBy: 'status', sortDataType: 'string' },
+          lastLogin: { label: 'Last Login', sortable: true, sortDatatype: 'date' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              {
+                template: 'status',
+                payload: {
+                  status: 'active'
+                }
+              },
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+                {
+                  template: 'status',
+                  payload: {
+                    status: 'inactive'
+                  }
+              },
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'surname-1',
+            data: [
+              'Surname 1',
+              {
+                template: 'status',
+                payload: {
+                  status: 'active'
+                }
+              },
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'surname-2',
+            data: [
+              'Surname 2',
+                {
+                  template: 'status',
+                  payload: {
+                    status: 'inactive'
+                  }
+              },
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+                {
+                  template: 'status',
+                  payload: {
+                    status: 'active'
+                  }
+              },
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+                {
+                  template: 'status',
+                  payload: {
+                    status: 'active'
+                  }
+              },
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+                {
+                  template: 'status',
+                  payload: {
+                    status: 'inactive'
+                  }
+              },
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+                {
+                  template: 'status',
+                  payload: {
+                    status: 'inactive'
+                  }
+              },
+              new Date('Nov 5, 2020 10:15 AM'),
+            ],
+          },
+        ]
+      }
+    }
+  }).$mount("#sorting")
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        defaultSort: {
+          key: 'name',
+          direction: 'ascending',
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name', sortable: true, sortDataType: 'string' },
+          id: { label: 'ID', sortable: true, sortDataType: 'string' },
+          lastLogin: { label: 'Last Login', sortable: true, sortDatatype: 'date' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }
+  }).$mount("#sortingAsc")
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        defaultSort: {
+          key: 'name',
+          direction: 'descending',
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name', sortable: true, sortDataType: 'string' },
+          id: { label: 'ID', sortable: true, sortDataType: 'string' },
+          lastLogin: { label: 'Last Login', sortable: true, sortDatatype: 'date' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }     
+  }).$mount("#sortingDesc")
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'xs',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }  
+  }).$mount("#sizeXs")   
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'sm',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }  
+  }).$mount("#sizeSm")   
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }  
+  }).$mount("#sizeMd")   
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'lg',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }  
+  }).$mount("#sizeLg")   
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'xl',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [
+          {
+            id: 'name-1',
+            data: [
+              'Name 1',
+              'name-1',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-2',
+            data: [
+              'Name 2',
+              'name-2',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-3',
+            data: [
+              'Name 3',
+              'name-3',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+          {
+            id: 'name-4',
+            data: [
+              'Name 4',
+              'name-4',
+              'Dec 18, 2020 3:26 PM',
+            ],
+          },
+          {
+            id: 'name-5',
+            data: [
+              'Name 5',
+              'name-5',
+              'Dec 18, 2020 2:38 AM',
+            ],
+          },
+          {
+            id: 'name-6',
+            data: [
+              'Name 6',
+              'name-6',
+              'Nov 5, 2020 10:15 AM',
+            ],
+          },
+        ]
+      }
+    }  
+  }).$mount("#sizeXl")   
