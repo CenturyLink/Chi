@@ -1,3 +1,5 @@
+import { DataTableRow } from './types';
+
 //#region Data Table
 export const DATA_TABLE_EVENTS = {
   SELECTED_ROWS_CHANGE: 'chiSelectedRowsChange',
@@ -15,6 +17,15 @@ export const DATA_TABLE_EVENTS = {
     COLLAPSED: 'chiRowCollapsed',
   },
 };
+export interface DataTableSorting {
+  column: string;
+  direction: 'ascending' | 'descending';
+  data: DataTableRow[] | undefined;
+}
+export interface DataTablePageChange {
+  page: number;
+  data: DataTableRow[] | undefined;
+}
 //#endregion
 
 //#region Drawer
