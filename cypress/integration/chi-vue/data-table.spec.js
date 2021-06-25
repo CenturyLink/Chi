@@ -1,9 +1,40 @@
-import {
-  DATA_TABLE_CLASSES,
-  ACTIVE_CLASS,
-  PAGINATION_CLASSES,
-  PORTAL_CLASS
-} from '../../../src/chi-vue/src/constants/classes';
+const ACTIVE_CLASS = '-active';
+const PORTAL_CLASS = '-portal';
+const DATA_TABLE_CLASSES = {
+  DATA_TABLE: 'chi-data-table',
+  TOOLBAR: 'chi-data-table__toolbar',
+  FILTERS: 'chi-data-table__filters',
+  COLUMNS: 'chi-data-table__columns',
+  HEAD: 'chi-data-table__head',
+  BODY: 'chi-data-table__body',
+  ROW: 'chi-data-table__row',
+  ROW_CHILD: 'chi-data-table__row-child',
+  ROW_GRAND_CHILD: 'chi-data-table__row-grand-child',
+  EMPTY: 'chi-data-table__row-empty',
+  CELL: 'chi-data-table__cell',
+  FOOTER: 'chi-data-table__footer',
+  EXPANDABLE: '-expandable',
+  SELECTABLE: '-selectable',
+  PORTAL: '-portal',
+  BORDERED: '-bordered',
+  NO_BORDER: '-no-border',
+  HOVER: '-hover',
+  STRIPED: '-striped',
+  SORTING: '-sorting',
+  COMPACT: '-compact'
+};
+const PAGINATION_CLASSES = {
+  PAGINATION: 'chi-pagination',
+  RESULTS: 'chi-pagination__results',
+  COMPACT: '-compact',
+  CONTENT: 'chi-pagination__content',
+  LABEL: 'chi-pagination__label',
+  PAGE_SIZE: 'chi-pagination__page-size',
+  START: 'chi-pagination__start',
+  CENTER: 'chi-pagination__center',
+  END: 'chi-pagination__end',
+  JUMPER: 'chi-pagination__jumper'
+};
 
 const hasClassAssertion = (el, value) => {
   cy.get(el).should('have.class', value);
