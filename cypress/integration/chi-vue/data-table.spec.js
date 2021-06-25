@@ -863,7 +863,6 @@ describe('Data Table Portal', () => {
 
     it(`should have class .${DATA_TABLE_CLASSES.STRIPED} for even rows`, () => {
       const rows = cy.get('@body').find(`.${DATA_TABLE_CLASSES.ROW}`);
-
       rows.each((row, i) => {
         if (i % 2 === 1) {
           hasClassAssertion(row, DATA_TABLE_CLASSES.STRIPED);
