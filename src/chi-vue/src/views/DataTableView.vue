@@ -117,7 +117,7 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
           noBorder: false,
           bordered: false,
           hover: false,
-          size: 'md',
+          size: 'lg',
           striped: true,
         },
         pagination: {
@@ -128,11 +128,11 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
         },
         selectable: true,
         columnSizes: {
-          xs: [5, 5, 5, 5, 5, 5, 5, 5],
-          sm: [10, 10, 10, 0, 10, 10, 10, 10],
-          md: [5, 15, 15, 0, 15, 15, 15, 5],
-          lg: [5, 15, 15, 0, 15, 15, 15, 5],
-          xl: [5, 15, 10, 15, 15, 15, 15, 5],
+          xs: [5, 5, 5, 5, 5, 5, 5],
+          sm: [10, 10, 10, 0, 10, 10, 10],
+          md: [15, 5, 15, 0, 15, 15, 15],
+          lg: [15, 5, 15, 0, 15, 15, 15],
+          xl: [15, 5, 10, 15, 15, 15, 15],
         },
         resultsPerPage: 10,
         defaultSort: {
@@ -259,8 +259,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
       },
       table: {
         head: {
-          alerts: { label: 'Alerts', align: 'center' },
           ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id', sortDataType: 'string' },
+          alerts: { label: 'Alerts', align: 'center' },
           status: {
             label: 'Status',
             sortable: true,
@@ -268,7 +268,7 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             sortDataType: 'string',
             align: 'center',
           },
-          supportType: { label: 'Support Type', sortable: true, sortDataType: 'string' },
+          supportType: { label: 'Support Type', sortable: true, sortDataType: 'string', key: true },
           servicetype: { label: 'Service Type', sortable: true, sortDataType: 'string' },
           created: { label: 'Created', sortable: true, sortDataType: 'string' },
           productId: { label: 'Product / Service ID', sortable: true, sortDataType: 'string' },
@@ -281,12 +281,13 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               template: 'loadingSkeleton',
             },
             active: false,
+            expanded: true,
             data: [
+              { template: 'ticketId', payload: { id: 'NTM000021063' } },
               {
                 template: 'icon',
                 payload: { icon: 'circle-check', color: 'success' },
               },
-              { template: 'ticketId', payload: { id: 'NTM000021063' } },
               { template: 'status', payload: { status: 'active' } },
               'Colocation A',
               'Internet Advantage',
@@ -303,8 +304,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021071',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021071' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation B',
               'Internet Advantage',
@@ -324,8 +325,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               value: 'asdasdasd',
             },
             data: [
-              '',
               { template: 'ticketId', payload: { id: 'NTM000021064' } },
+              '',
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation B',
               'Internet Advantage',
@@ -342,12 +343,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021065',
             active: false,
             data: [
+              { template: 'ticketId', payload: { id: 'NTM000021065' } },
               {
                 label: 'Alert Column',
                 template: 'icon',
                 payload: { icon: 'warning', color: 'warning' },
-              }, // Custom, overwritten Label
-              { template: 'ticketId', payload: { id: 'NTM000021065' } },
+              },
               { template: 'status', payload: { status: 'active' } },
               'Colocation C',
               'Internet Advantage',
@@ -370,8 +371,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               },
             },
             data: [
-              '',
               { template: 'ticketId', payload: { id: 'NTM000021066' } },
+              '',
               { template: 'status', payload: { status: 'active' } },
               'Colocation a',
               'Internet Advantage',
@@ -395,13 +396,13 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                     active: false,
                     data: [
                       {
+                        template: 'ticketId',
+                        payload: { id: 'NTM0000210661' },
+                      },
+                      {
                         label: 'Alerts',
                         template: 'icon',
                         payload: { icon: 'circle-check', color: 'success' },
-                      },
-                      {
-                        template: 'ticketId',
-                        payload: { id: 'NTM0000210661' },
                       },
                       {
                         template: 'status',
@@ -430,16 +431,16 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                             active: false,
                             data: [
                               {
+                                template: 'ticketId',
+                                payload: { id: 'NTM0000210661' },
+                              },
+                              {
                                 label: 'Alerts',
                                 template: 'icon',
                                 payload: {
                                   icon: 'circle-check',
                                   color: 'success',
                                 },
-                              },
-                              {
-                                template: 'ticketId',
-                                payload: { id: 'NTM0000210661' },
                               },
                               {
                                 template: 'status',
@@ -468,16 +469,16 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                                     active: false,
                                     data: [
                                       {
+                                        template: 'ticketId',
+                                        payload: { id: 'NTM00002106611' },
+                                      },
+                                      {
                                         label: 'Alerts',
                                         template: 'icon',
                                         payload: {
                                           icon: 'circle-check',
                                           color: 'success',
                                         },
-                                      },
-                                      {
-                                        template: 'ticketId',
-                                        payload: { id: 'NTM00002106611' },
                                       },
                                       {
                                         template: 'status',
@@ -500,16 +501,16 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                                     active: false,
                                     data: [
                                       {
+                                        template: 'ticketId',
+                                        payload: { id: 'NTM00002106621' },
+                                      },
+                                      {
                                         label: 'Alerts',
                                         template: 'icon',
                                         payload: {
                                           icon: 'circle-check',
                                           color: 'success',
                                         },
-                                      },
-                                      {
-                                        template: 'ticketId',
-                                        payload: { id: 'NTM00002106621' },
                                       },
                                       {
                                         template: 'status',
@@ -532,16 +533,16 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                             },
                             data: [
                               {
+                                template: 'ticketId',
+                                payload: { id: 'NTM0000210662' },
+                              },
+                              {
                                 label: 'Alerts',
                                 template: 'icon',
                                 payload: {
                                   icon: 'circle-check',
                                   color: 'success',
                                 },
-                              },
-                              {
-                                template: 'ticketId',
-                                payload: { id: 'NTM0000210662' },
                               },
                               {
                                 template: 'status',
@@ -564,13 +565,13 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                     },
                     data: [
                       {
+                        template: 'ticketId',
+                        payload: { id: 'NTM0000210662' },
+                      },
+                      {
                         label: 'Alerts',
                         template: 'icon',
                         payload: { icon: 'circle-check', color: 'success' },
-                      },
-                      {
-                        template: 'ticketId',
-                        payload: { id: 'NTM0000210662' },
                       },
                       {
                         template: 'status',
@@ -592,8 +593,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               },
             },
             data: [
-              '',
               { template: 'ticketId', payload: { id: 'NTM000021067' } },
+              '',
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation b',
               'Internet Advantage',
@@ -610,8 +611,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021072',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021072' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation c',
               'Internet Advantage',
@@ -628,12 +629,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM0000210651',
             active: false,
             data: [
+              { template: 'ticketId', payload: { id: 'NTM0000210651' } },
               {
                 label: 'Alerts',
                 template: 'icon',
                 payload: { icon: 'warning', color: 'warning' },
               },
-              { template: 'ticketId', payload: { id: 'NTM0000210651' } },
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -650,8 +651,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021068',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021068' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -668,8 +669,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021069',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021069' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -686,8 +687,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021070',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021070' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -704,8 +705,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021073',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021073' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -722,8 +723,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021074',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021074' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -740,8 +741,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021075',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021075' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -758,8 +759,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021076',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021076' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -776,8 +777,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021077',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021077' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -794,8 +795,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021078',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021078' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -812,8 +813,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021079',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021079' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -830,8 +831,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021080',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021080' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -848,8 +849,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021081',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021081' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -866,8 +867,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021082',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021082' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -884,8 +885,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021083',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021083' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -902,8 +903,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021084',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021084' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -920,8 +921,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021085',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021085' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -938,8 +939,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021086',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021086' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -956,8 +957,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021087',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021087' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -974,8 +975,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021088',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021088' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -992,8 +993,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021089',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021089' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -1010,8 +1011,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021090',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021090' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -1028,8 +1029,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021091',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021091' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -1046,8 +1047,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021092',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021092' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -1064,8 +1065,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021093',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021093' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -1082,8 +1083,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021094',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021094' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -1100,8 +1101,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021095',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021095' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -1118,8 +1119,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021096',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021096' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -1136,8 +1137,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021097',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021097' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -1154,8 +1155,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021098',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021098' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -1172,8 +1173,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021099',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021099' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -1190,8 +1191,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021100',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021100' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -1208,8 +1209,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021101',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021101' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
               'Internet Advantage',
@@ -1226,8 +1227,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021102',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021102' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
               'Internet Advantage',
@@ -1249,11 +1250,11 @@ export default class DataTableView extends Vue {
   mounted() {
     setTimeout(() => {
       const newData = [
+        { template: 'ticketId', payload: { id: 'NTM000021063' } },
         {
           template: 'icon',
           payload: { icon: 'circle-check', color: 'success' },
         },
-        { template: 'ticketId', payload: { id: 'NTM000021063' } },
         { template: 'status', payload: { status: 'active' } },
         'Colocation',
         'Internet Advantage',

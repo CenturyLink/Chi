@@ -501,12 +501,10 @@ $sizes: (
         }
 
         &-child {
-          &.-expanded {
-            .chi-icon {
-              &.icon-plus,
-              &.icon-minus {
-                color: $color-icon-primary;
-              }
+          .chi-icon {
+            &.icon-plus,
+            &.icon-minus {
+              color: $color-icon-primary;
             }
           }
         }
