@@ -1,5 +1,4 @@
-# FROM nexusprod.corp.intranet:4567/temp_mirror/ubuntu:bionic
-FROM ubuntu:bionic
+FROM nexusprod.corp.intranet:4567/ubuntu:focal
 ARG user=jenkins
 ARG group=jenkins
 ARG uid=1341
