@@ -72,4 +72,5 @@ module.exports = {
     port: 9090,
     https: true,
   },
+  transpileDependencies: ['vuex-module-decorators'],
 };

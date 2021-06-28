@@ -15,7 +15,6 @@ import { DataTableColumn, DataTableColumnsData } from '@/constants/types';
 import ColumnCustomizationContent from './ColumnCustomizationModalContent';
 import { checkColumns } from './utils';
 
-// eslint-disable-next-line
 declare const chi: any;
 
 @Component
@@ -23,7 +22,6 @@ export default class ColumnCustomization extends Vue {
   @Prop() columnsData?: DataTableColumnsData;
 
   key = 0;
-  // eslint-disable-next-line
   _chiModal: any;
   _availableColumns?: DataTableColumn[] = [];
   _selectedLockedColumns?: DataTableColumn[] = [];

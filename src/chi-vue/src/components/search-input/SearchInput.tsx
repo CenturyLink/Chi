@@ -1,5 +1,13 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { BUTTON_CLASSES, CLOSE_CLASS, ICON_CLASS, INPUT_CLASSES, SEARCH_INPUT_CLASSES } from '@/constants/classes';
+import {
+  BUTTON_CLASSES,
+  CLOSE_CLASS,
+  DATA_TABLE_CLASSES,
+  FORM_CLASSES,
+  ICON_CLASS,
+  INPUT_CLASSES,
+  SEARCH_INPUT_CLASSES,
+} from '@/constants/classes';
 import { SearchInputSizes } from '@/constants/types';
 import { SEARCH_INPUT_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
@@ -13,6 +21,7 @@ export default class SearchInput extends Vue {
   @Prop() placeholder?: string;
   @Prop() value?: string;
   @Prop() dataTableSearch?: boolean;
+  @Prop() portal?: boolean;
 
   cleanButtonVisible = !!(this.$props.value && !this.$props.disabled);
   inputValue = this.$props.value || '';
@@ -92,17 +101,25 @@ export default class SearchInput extends Vue {
         onClick={() => this.$emit(SEARCH_INPUT_EVENTS.SEARCH, this.inputValue)}
         aria-label="Search">
         <div class={BUTTON_CLASSES.CONTENT}>
-          <i class={`${ICON_CLASS} icon-search`}></i>
+          <i
+            class={`
+          ${ICON_CLASS} icon-search
+          ${this.portal && '-icon--primary'}
+          `}></i>
         </div>
       </button>
     );
 
-    return (
-      <div class={`${INPUT_CLASSES.WRAPPER} ${INPUT_CLASSES.ICON.RIGHT}`}>
-        {searchInputElement}
-        {searchXIcon}
-        {searchIcon}
+    const formItem = (
+      <div class={FORM_CLASSES.FORM_ITEM}>
+        <div class={`${INPUT_CLASSES.WRAPPER} ${INPUT_CLASSES.ICON.RIGHT}`}>
+          {searchInputElement}
+          {searchXIcon}
+          {searchIcon}
+        </div>
       </div>
     );
+    const toolbar = <div class={DATA_TABLE_CLASSES.SEARCH}>{formItem}</div>;
+    return this.$props.dataTableSearch ? toolbar : formItem;
   }
 }

@@ -34,13 +34,11 @@ export interface DataTableRowNestedContent {
   };
   template: string;
   value: string;
-  // eslint-disable-next-line
   payload: any;
 }
 export interface DataTableRow {
   active: boolean;
   expanded: boolean;
-  // eslint-disable-next-line
   data: Record<string, any>;
   nestedContent: DataTableRowNestedContent;
   id: string;
@@ -103,6 +101,7 @@ export interface DataTableFilter {
   name: string;
   label: string;
   type: 'select' | 'input' | 'checkbox' | 'textarea' | 'template';
+  id: string;
   options?: [
     {
       value: string;

@@ -3,7 +3,7 @@ import { DataTableFilter, DataTableFormElementFilters } from '@/constants/types'
 export function getElementFilterData(
   ev: Event,
   elementType: DataTableFormElementFilters
-): { name: string; checked?: boolean; value?: string } | null {
+): { name: string; checked?: boolean; value?: string; id: string } | null {
   const element = ev.target as HTMLFormElement;
   const elementDataset = element.dataset;
 
@@ -14,6 +14,7 @@ export function getElementFilterData(
       return {
         name: elementDataset.filter,
         checked: elementChecked,
+        id: element.id,
       };
     } else {
       const elementValue = element.value || '';
@@ -21,6 +22,7 @@ export function getElementFilterData(
       return {
         name: elementDataset.filter,
         value: elementValue,
+        id: element.id,
       };
     }
   }
@@ -48,22 +50,13 @@ export function updateFilterData(
   }
 }
 
-export function compareFilters(originalFilters: DataTableFilter[], newFiltersData: DataTableFilter[]) {
-  if (originalFilters && newFiltersData) {
-    return newFiltersData.every((filter: DataTableFilter) => {
-      const originalFilter = originalFilters.find(
-        (originalFilter: DataTableFilter) => originalFilter.name === filter.name
-      );
-
-      if (originalFilter) {
-        const valueData = filter.type === 'checkbox' ? 'checked' : 'value';
-        const fallbackValue = filter.type === 'checkbox' ? false : '';
-        const newValue = filter[valueData] || fallbackValue;
-        const originalValue = originalFilter[valueData] || fallbackValue;
-
-        return newValue === originalValue;
+export function compareFilters(originalFilters: any, newFiltersData: any) {
+  if (Object.keys(originalFilters).length > 0 && Object.keys(newFiltersData).length > 0) {
+    for (const prop in newFiltersData) {
+      if (originalFilters[prop] !== newFiltersData[prop]) {
+        return false;
       }
-      return false;
-    });
+    }
+    return true;
   }
 }
