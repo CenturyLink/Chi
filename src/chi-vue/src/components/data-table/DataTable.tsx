@@ -474,10 +474,6 @@ export default class DataTable extends Vue {
       rowCells.push(this._selectRowCheckbox(false, bodyRow));
     }
 
-    if (this.config.selectable) {
-      rowCells.push(this._selectRowCheckbox(false, bodyRow));
-    }
-
     if (this._expandable) {
       if (bodyRow.nestedContent) {
         if (rowLevel === 'grandChild' || rowLevel === 'child') {
