@@ -1,0 +1,148 @@
+script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
+script(src="../../chi-vue/umd/chi-vue.umd.js")
+
+h2 Pagination
+h3 Base
+.test-pagination.-p--3.-w--100
+    #base
+        chi-vue-pagination(:pages=5 :current-page=3 data-cy="pagination-base")
+h3 Disabled
+.test-pagination.-p--3.-w--100
+    #disabled-previous
+        chi-vue-pagination(:pages=5 :current-page=1 data-cy="pagination-disabled-prev")
+    #disabled-next
+        chi-vue-pagination(:pages=5 :current-page=5 data-cy="pagination-disabled-next")
+h3 Truncation
+.test-pagination.-p--3.-w--100
+    #truncation
+        chi-vue-pagination(:pages=12 :current-page=3 data-cy="pagination-truncation")
+h3 Double Truncation
+.test-pagination.-p--3.-w--100
+    #double-truncation
+        chi-vue-pagination(:pages=12 :current-page=6 data-cy="pagination-double-truncation")
+h3 Results Label
+.test-pagination.-p--3.-w--100
+    #results-label
+        chi-vue-pagination(:pages=12 :current-page=3 :results=240 data-cy="pagination-results-label")
+h3 Page Size
+.test-pagination.-p--3.-w--100
+    #page-size
+        chi-vue-pagination(:pages=12 :current-page=3 :results=240 page-size="true" data-cy="pagination-page-size")
+h3 Page Jumper
+.test-pagination.-p--3.-w--100
+    #page-jumper
+        chi-vue-pagination(:pages=12 :current-page=3 :results=240 page-size="true" page-jumper="true" data-cy="pagination-page-jumper")
+h2 Compact
+h3 Base
+.test-pagination.-p--3.-w--100
+    #compact-base
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" data-cy="pagination-compact-base")
+h3 Compact Page Jumper
+.test-pagination.-p--3.-w--100
+    #compact-page-jumper
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" page-jumper="true" data-cy="pagination-compact-page-jumper")
+h3 First and Last page buttons
+.test-pagination.-p--3.-w--100
+    #compact-first-last
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" page-jumper="true" first-last="true" data-cy="pagination-compact-first-last")
+h3 Additional Sizes
+.test-pagination.-p--3.-w--100
+    #compact-sm
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="sm" data-cy="pagination-compact-sm")
+    #compact-md
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="md" data-cy="pagination-compact-md")
+    #compact-lg
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="lg" data-cy="pagination-compact-lg")
+    #compact-xl
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="xl" data-cy="pagination-compact-xl")
+
+script.
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#base');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#disabled-previous');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#disabled-next');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#truncation');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#double-truncation');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#results-label');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#page-size');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#page-jumper');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#compact-base');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#compact-page-jumper');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#compact-first-last');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#compact-sm');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#compact-md');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#compact-lg');
+
+    new Vue({
+        components: {
+            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+        }
+    }).$mount('#compact-xl');
