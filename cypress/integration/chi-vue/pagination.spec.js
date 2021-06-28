@@ -63,6 +63,13 @@ describe('Pagination', () => {
         .as('currentPage');
       hasClassAssertion('@currentPage', '-active');
     });
+
+    it('should show the correct number of pages', () => {
+      cy.get(`@paginationCenter`)
+        .find('.chi-button-group')
+        .children()
+        .should('have.length', '7');
+    });
   });
 
   describe('disabled', () => {
