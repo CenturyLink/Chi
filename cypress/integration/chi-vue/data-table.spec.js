@@ -1,3 +1,5 @@
+import { hasClassAssertion } from './utils/utils';
+
 const ACTIVE_CLASS = '-active';
 const PORTAL_CLASS = '-portal';
 const DATA_TABLE_CLASSES = {
@@ -34,10 +36,6 @@ const PAGINATION_CLASSES = {
   CENTER: 'chi-pagination__center',
   END: 'chi-pagination__end',
   JUMPER: 'chi-pagination__jumper'
-};
-
-const hasClassAssertion = (el, value) => {
-  cy.get(el).should('have.class', value);
 };
 
 describe('Data Table', () => {
