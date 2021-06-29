@@ -1,4 +1,4 @@
-export const PAGINATION_CLASSES = {
+const PAGINATION_CLASSES = {
   PAGINATION: 'chi-pagination',
   RESULTS: 'chi-pagination__results',
   COMPACT: '-compact',
@@ -38,6 +38,23 @@ describe('Pagination', () => {
         .children()
         .last()
         .as('paginationEnd');
+
+      cy.get(`[data-cy='pagination-base-inverse']`)
+        .children()
+        .first()
+        .as('paginationContentInverse');
+      cy.get('@paginationContent')
+        .children()
+        .first()
+        .as('paginationStartInverse');
+      cy.get('@paginationContentInverse')
+        .children()
+        .eq(1)
+        .as('paginationCenterInverse');
+      cy.get('@paginationContentInverse')
+        .children()
+        .last()
+        .as('paginationEndInverse');
     });
 
     const selectors = [
@@ -48,7 +65,15 @@ describe('Pagination', () => {
       { el: '@paginationContent', class: PAGINATION_CLASSES.CONTENT },
       { el: '@paginationStart', class: PAGINATION_CLASSES.START },
       { el: `@paginationCenter`, class: PAGINATION_CLASSES.CENTER },
-      { el: `@paginationEnd`, class: PAGINATION_CLASSES.END }
+      { el: `@paginationEnd`, class: PAGINATION_CLASSES.END },
+      {
+        el: `[data-cy='pagination-base-inverse']`,
+        class: PAGINATION_CLASSES.PAGINATION
+      },
+      { el: '@paginationContentInverse', class: PAGINATION_CLASSES.CONTENT },
+      { el: '@paginationStartInverse', class: PAGINATION_CLASSES.START },
+      { el: `@paginationCenterInverse`, class: PAGINATION_CLASSES.CENTER },
+      { el: `@paginationEndInverse`, class: PAGINATION_CLASSES.END }
     ];
 
     selectors.forEach(sel => {
@@ -58,144 +83,204 @@ describe('Pagination', () => {
     });
 
     it('should show current page with .active class', () => {
-      cy.get(`[data-cy='pagination-base']`)
-        .find(`[data-page='3']`)
-        .as('currentPage');
-      hasClassAssertion('@currentPage', '-active');
+      const rootSelectors = [
+        `[data-cy='pagination-base']`,
+        `[data-cy='pagination-base-inverse']`
+      ];
+      rootSelectors.forEach(sel => {
+        cy.get(`${sel}`)
+          .find(`[data-page='3']`)
+          .as('currentPage');
+        hasClassAssertion('@currentPage', '-active');
+      });
     });
 
     it('should show the correct number of pages', () => {
-      cy.get(`@paginationCenter`)
-        .find('.chi-button-group')
-        .children()
-        .should('have.length', '7');
+      const centerSelectors = [`@paginationCenter`, `@paginationCenterInverse`];
+      centerSelectors.forEach(sel => {
+        cy.get(`${sel}`)
+          .find('.chi-button-group')
+          .children()
+          .should('have.length', '7');
+      });
     });
   });
 
   describe('disabled', () => {
     it('should have the previous button be disabled', () => {
-      cy.get(`[data-cy='pagination-disabled-prev']`)
-        .find(`.-icon`)
-        .eq(0)
-        .should('have.attr', 'disabled');
+      const prevSelectors = [
+        `[data-cy='pagination-disabled-prev']`,
+        `[data-cy='pagination-disabled-prev-inverse']`
+      ];
+      prevSelectors.forEach(sel => {
+        cy.get(`${sel}`)
+          .find(`.-icon`)
+          .eq(0)
+          .should('have.attr', 'disabled');
+      });
     });
+
     it('should have the next button be disabled', () => {
-      cy.get(`[data-cy='pagination-disabled-next']`)
-        .find(`.-icon`)
-        .eq(1)
-        .should('have.attr', 'disabled');
+      const nextSelectors = [
+        `[data-cy='pagination-disabled-next']`,
+        `[data-cy='pagination-disabled-next-inverse']`
+      ];
+      nextSelectors.forEach(sel => {
+        cy.get(`${sel}`)
+          .find(`.-icon`)
+          .eq(1)
+          .should('have.attr', 'disabled');
+      });
     });
   });
 
   describe('truncation', () => {
     it('should truncate', () => {
-      cy.get(`[data-cy='pagination-truncation']`)
-        .find(`.${PAGINATION_CLASSES.CENTER}`)
-        .children()
-        .contains('...')
-        .should('have.length', 1);
+      const truncationSelectors = [
+        `[data-cy='pagination-truncation']`,
+        `[data-cy='pagination-truncation-inverse']`
+      ];
+      truncationSelectors.forEach(sel => {
+        cy.get(`${sel}`)
+          .find(`.${PAGINATION_CLASSES.CENTER}`)
+          .children()
+          .contains('...')
+          .should('have.length', 1);
+      });
     });
 
     it('should double-truncate', () => {
-      cy.get(`[data-cy='pagination-double-truncation']`)
-        .find(`.${PAGINATION_CLASSES.CENTER}`)
-        .children()
-        .find('div.-disabled:contains(...)')
-        .should('have.length', 2);
+      const doubleTruncationSelectors = [
+        `[data-cy='pagination-double-truncation']`,
+        `[data-cy='pagination-double-truncation-inverse']`
+      ];
+      doubleTruncationSelectors.forEach(sel => {
+        cy.get(`${sel}`)
+          .find(`.${PAGINATION_CLASSES.CENTER}`)
+          .children()
+          .find('div.-disabled:contains(...)')
+          .should('have.length', 2);
+      });
     });
   });
 
   describe('results label', () => {
     it('should show a results label', () => {
-      cy.get(`[data-cy='pagination-results-label']`)
-        .find(`.${PAGINATION_CLASSES.RESULTS}`)
-        .should('contain', '240 results');
+      const selectors = [
+        `[data-cy='pagination-results-label']`,
+        `[data-cy='pagination-results-label-inverse']`
+      ];
+      selectors.forEach(sel => {
+        cy.get(`${sel}`)
+          .find(`.${PAGINATION_CLASSES.RESULTS}`)
+          .should('contain', '240 results');
+      });
     });
   });
 
   describe('page size', () => {
     it('should show a page size', () => {
-      cy.get(`[data-cy='pagination-page-size']`)
-        .find(`.${PAGINATION_CLASSES.PAGE_SIZE}`)
-        .as('pageSize')
-        .should('contain', 'per page');
-      cy.get('@pageSize')
-        .find('select')
-        .should('have.value', '20');
+      const selectors = [
+        `[data-cy='pagination-page-size']`,
+        `[data-cy='pagination-page-size-inverse']`
+      ];
+      selectors.forEach(sel => {
+        cy.get(`${sel}`)
+          .find(`.${PAGINATION_CLASSES.PAGE_SIZE}`)
+          .as('pageSize')
+          .should('contain', 'per page');
+        cy.get('@pageSize')
+          .find('select')
+          .should('have.value', '20');
+      });
     });
   });
 
   describe('page jumper', () => {
     it('should show a page jumper', () => {
-      cy.get(`[data-cy='pagination-page-jumper']`)
-        .find(`.${PAGINATION_CLASSES.JUMPER}`)
-        .as('pageJumper')
-        .should('contain', 'Go to page:');
-      cy.get('@pageJumper')
-        .find('input')
-        .type('2')
-        .should('have.value', '2');
+      const selectors = [
+        `[data-cy='pagination-page-jumper']`,
+        `[data-cy='pagination-page-jumper-inverse']`
+      ];
+      selectors.forEach(sel => {
+        cy.get(`${sel}`)
+          .find(`.${PAGINATION_CLASSES.JUMPER}`)
+          .as('pageJumper')
+          .should('contain', 'Go to page:');
+        cy.get('@pageJumper')
+          .find('input')
+          .type('2')
+          .should('have.value', '2');
+      });
     });
   });
 
   describe('compact', () => {
     describe('base', () => {
       it(`should have class .${PAGINATION_CLASSES.COMPACT}`, () => {
-        cy.get("[data-cy='pagination-compact-base']").should(
-          'have.class',
-          PAGINATION_CLASSES.COMPACT
-        );
+        const selectors = [
+          `[data-cy='pagination-compact-base']`,
+          `[data-cy='pagination-compact-page-jumper-inverse']`
+        ];
+        selectors.forEach(sel => {
+          cy.get(`${sel}`).should('have.class', PAGINATION_CLASSES.COMPACT);
+        });
       });
     });
 
     describe('page jumper', () => {
       it('should show an inline page jumper', () => {
-        cy.get(`[data-cy='pagination-compact-page-jumper']`)
-          .find(`.${PAGINATION_CLASSES.JUMPER}`)
-          .as('pageJumper')
-          .should('contain', 'of');
-        cy.get('@pageJumper').should('contain', 3);
-        cy.get('@pageJumper')
-          .find('input')
-          .type('{backspace}3')
-          .should('have.value', '3');
+        const selectors = [
+          `[data-cy='pagination-compact-page-jumper']`,
+          `[data-cy='pagination-compact-page-jumper-inverse']`
+        ];
+        selectors.forEach(sel => {
+          cy.get(`${sel}`)
+            .find(`.${PAGINATION_CLASSES.JUMPER}`)
+            .as('pageJumper')
+            .should('contain', 'of');
+          cy.get('@pageJumper').should('contain', 3);
+          cy.get('@pageJumper')
+            .find('input')
+            .type('{backspace}3')
+            .should('have.value', '3');
+        });
       });
     });
 
     describe('first and last page buttons', () => {
       it('should show first and last page buttons', () => {
-        cy.get(`[data-cy='pagination-compact-first-last']`)
-          .find("[data-page='1']")
-          .should('have.length', 2);
-        cy.get(`[data-cy='pagination-compact-first-last']`)
-          .find("[data-page='3']")
-          .should('have.length', 2);
+        const selectors = [
+          `[data-cy='pagination-compact-first-last']`,
+          `[data-cy='pagination-compact-first-last-inverse']`
+        ];
+        selectors.forEach(sel => {
+          cy.get(`${sel}`)
+            .find("[data-page='1']")
+            .should('have.length', 2);
+          cy.get(`${sel}`)
+            .find("[data-page='3']")
+            .should('have.length', 2);
+        });
       });
     });
 
     describe('additional sizes', () => {
-      const sizes = [
-        {
-          el: `[data-cy='pagination-compact-sm'] .chi-button`,
-          class: '-sm'
-        },
-        {
-          el: `[data-cy='pagination-compact-md'] .chi-button`,
-          class: '-md'
-        },
-        {
-          el: `[data-cy='pagination-compact-lg'] .chi-button`,
-          class: '-lg'
-        },
-        {
-          el: `[data-cy='pagination-compact-xl'] .chi-button`,
-          class: '-xl'
-        }
-      ];
-
-      sizes.forEach(sel => {
-        it(`should have class .${sel.class}`, () => {
-          hasClassAssertion(sel.el, sel.class);
+      const sizes = ['-sm', '-md', '-lg', '-xl'];
+      sizes.forEach(size => {
+        it(`should have class .${size}`, () => {
+          hasClassAssertion(
+            `[data-cy='pagination-compact${size}'] .chi-button`,
+            size
+          );
+          hasClassAssertion(
+            `[data-cy='pagination-compact-inverse${size}'] .chi-button`,
+            size
+          );
+          hasClassAssertion(
+            `[data-cy='pagination-compact-inverse${size}']`,
+            '-inverse'
+          );
         });
       });
     });

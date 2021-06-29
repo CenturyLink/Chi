@@ -6,45 +6,77 @@ h3 Base
 .test-pagination.-p--3.-w--100
     #base
         chi-vue-pagination(:pages=5 :current-page=3 data-cy="pagination-base")
+.test-pagination.-p--3.-w--100(style="background:#000")
+    #base-inverse
+        chi-vue-pagination(:pages=5 :current-page=3 data-cy="pagination-base-inverse" :inverse="true")
 h3 Disabled
 .test-pagination.-p--3.-w--100
     #disabled-previous
         chi-vue-pagination(:pages=5 :current-page=1 data-cy="pagination-disabled-prev")
     #disabled-next
         chi-vue-pagination(:pages=5 :current-page=5 data-cy="pagination-disabled-next")
+.test-pagination.-p--3.-w--100(style="background:#000")
+    #disabled-previous-inverse
+        chi-vue-pagination(:pages=5 :current-page=1 data-cy="pagination-disabled-prev-inverse" :inverse="true")
+    #disabled-next-inverse
+        chi-vue-pagination(:pages=5 :current-page=5 data-cy="pagination-disabled-next-inverse" :inverse="true")
 h3 Truncation
 .test-pagination.-p--3.-w--100
     #truncation
         chi-vue-pagination(:pages=12 :current-page=3 data-cy="pagination-truncation")
+.test-pagination.-p--3.-w--100(style="background:#000")
+    #truncation-inverse
+        chi-vue-pagination(:pages=12 :current-page=3 data-cy="pagination-truncation-inverse" :inverse="true")
 h3 Double Truncation
 .test-pagination.-p--3.-w--100
     #double-truncation
         chi-vue-pagination(:pages=12 :current-page=6 data-cy="pagination-double-truncation")
+.test-pagination.-p--3.-w--100(style="background:#000")
+    #double-truncation-inverse
+        chi-vue-pagination(:pages=12 :current-page=6 data-cy="pagination-double-truncation-inverse" :inverse="true")
 h3 Results Label
 .test-pagination.-p--3.-w--100
     #results-label
         chi-vue-pagination(:pages=12 :current-page=3 :results=240 data-cy="pagination-results-label")
+.test-pagination.-p--3.-w--100(style="background:#000")
+    #results-label-inverse
+        chi-vue-pagination(:pages=12 :current-page=3 :results=240 data-cy="pagination-results-label-inverse" :inverse="true")
 h3 Page Size
 .test-pagination.-p--3.-w--100
     #page-size
         chi-vue-pagination(:pages=12 :current-page=3 :results=240 page-size="true" data-cy="pagination-page-size")
+.test-pagination.-p--3.-w--100(style="background:#000")
+    #page-size-inverse
+        chi-vue-pagination(:pages=12 :current-page=3 :results=240 page-size="true" data-cy="pagination-page-size-inverse" :inverse="true")
 h3 Page Jumper
 .test-pagination.-p--3.-w--100
     #page-jumper
         chi-vue-pagination(:pages=12 :current-page=3 :results=240 page-size="true" page-jumper="true" data-cy="pagination-page-jumper")
+.test-pagination.-p--3.-w--100(style="background:#000")
+    #page-jumper-inverse
+        chi-vue-pagination(:pages=12 :current-page=3 :results=240 page-size="true" page-jumper="true" data-cy="pagination-page-jumper-inverse" :inverse="true")
 h2 Compact
 h3 Base
 .test-pagination.-p--3.-w--100
     #compact-base
         chi-vue-pagination(:pages=3 :current-page=2 compact="true" data-cy="pagination-compact-base")
+.test-pagination.-p--3.-w--100(style="background:#000")
+    #compact-base-inverse
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" data-cy="pagination-compact-base-inverse" :inverse="true")
 h3 Compact Page Jumper
 .test-pagination.-p--3.-w--100
     #compact-page-jumper
         chi-vue-pagination(:pages=3 :current-page=2 compact="true" page-jumper="true" data-cy="pagination-compact-page-jumper")
+.test-pagination.-p--3.-w--100(style="background:#000")
+    #compact-page-jumper-inverse
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" page-jumper="true" data-cy="pagination-compact-page-jumper-inverse" :inverse="true")
 h3 First and Last page buttons
 .test-pagination.-p--3.-w--100
     #compact-first-last
         chi-vue-pagination(:pages=3 :current-page=2 compact="true" page-jumper="true" first-last="true" data-cy="pagination-compact-first-last")
+.test-pagination.-p--3.-w--100(style="background:#000")
+    #compact-first-last-inverse
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" page-jumper="true" first-last="true" data-cy="pagination-compact-first-last-inverse" :inverse="true")
 h3 Additional Sizes
 .test-pagination.-p--3.-w--100
     #compact-sm
@@ -55,94 +87,52 @@ h3 Additional Sizes
         chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="lg" data-cy="pagination-compact-lg")
     #compact-xl
         chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="xl" data-cy="pagination-compact-xl")
+h3 Additional Sizes (inverse)
+.test-pagination.-p--3.-w--100(style="background:#000")
+    #compact-inverse-sm
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="sm" data-cy="pagination-compact-inverse-sm" :inverse="true")
+    #compact-inverse-md
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="md" data-cy="pagination-compact-inverse-md" :inverse="true")
+    #compact-inverse-lg
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="lg" data-cy="pagination-compact-inverse-lg" :inverse="true")
+    #compact-inverse-xl
+        chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="xl" data-cy="pagination-compact-inverse-xl" :inverse="true")
+
 
 script.
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#base');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#disabled-previous');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#disabled-next');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#truncation');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#double-truncation');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#results-label');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#page-size');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#page-jumper');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#compact-base');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#compact-page-jumper');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#compact-first-last');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#compact-sm');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#compact-md');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#compact-lg');
-
-    new Vue({
-        components: {
-            chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-        }
-    }).$mount('#compact-xl');
+    const components = {
+        chiVuePagination: window['chi-vue'].library.components.ChiPagination
+    };
+    const ids = [
+        "#base",
+        "#base-inverse",
+        '#disabled-previous',
+        '#disabled-next',
+        '#disabled-previous-inverse',
+        '#disabled-next-inverse',
+        '#truncation',
+        '#truncation-inverse',
+        '#double-truncation',
+        '#double-truncation-inverse',
+        '#results-label',
+        '#results-label-inverse',
+        '#page-size',
+        '#page-size-inverse',
+        '#page-jumper',
+        '#page-jumper-inverse',
+        '#compact-base',
+        '#compact-base-inverse',
+        '#compact-page-jumper',
+        '#compact-page-jumper-inverse',
+        '#compact-first-last',
+        '#compact-first-last-inverse',
+        '#compact-sm',
+        '#compact-md',
+        '#compact-lg',
+        '#compact-xl',
+        '#compact-inverse-sm',
+        '#compact-inverse-md',
+        '#compact-inverse-lg',
+        '#compact-inverse-xl',
+    ];
+    ids.forEach(id => new Vue({components}).$mount(id));
