@@ -1,3 +1,5 @@
+import { hasClassAssertion } from './utils/utils';
+
 const ACTIVE_CLASS = '-active';
 const EXPANDED_CLASS = '-expanded';
 const PORTAL_CLASS = '-portal';
@@ -59,10 +61,6 @@ const DATA_TABLE_EVENTS = {
 const PAGINATION_EVENTS = {
   PAGE_CHANGE: 'chiPageChange',
   PAGE_SIZE: 'chiPageSizeChange'
-};
-
-const hasClassAssertion = (el, value) => {
-  cy.get(el).should('have.class', value);
 };
 
 describe('Data Table', () => {
