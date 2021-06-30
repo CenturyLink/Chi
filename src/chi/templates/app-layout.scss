@@ -1,0 +1,41 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-main {
+  background-color: $app-layout-background-color;
+  height: 100%;
+  margin-top: 2.5rem;
+
+  &__title {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    &.-no-back-link {
+      padding-top: 1.5rem;
+    }
+  }
+
+  &__title,
+  &__content {
+    margin: 0 1rem 1rem;
+
+    @include respond-to(sm) {
+      margin: 0 1.5rem 1rem;
+    }
+
+    @include respond-to(md) {
+      margin: 0 2rem 1rem;
+    }
+
+    @include respond-to(lg) {
+      margin: 0 4rem 1rem;
+    }
+  }
+
+  &.-no-margin {
+    .chi-main__content {
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,934 @@
+---
+title: App layout
+description: A collection of application layout page templates built with Page Title, Buttons, Page-level actions and Footer.
+wide_container: true
+---
+
+.-lumen-only
+  h2 Examples
+  p.-text To render application layout, use the class <code>chi-main</code>.
+
+  h3 Base
+  .example.-mb--3
+    .chi-main
+      .chi-main__title.-no-back-link
+        .-d--flex.-flex--column
+          .-d--flex.-align-items--center
+            .-text--h3.-text--boldest.-text--navy.-m--0.-pr--2 App title
+      .chi-main__content
+        h1.-text--h4 App main content area
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      footer.chi-footer
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-dropdown.chi-footer__language
+                a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language")
+                  .chi-button__content
+                    i.chi-icon.icon-globe-network
+                    span English
+                .chi-dropdown__menu.-w--sm.-text--body
+                  a.chi-dropdown__menu-item.-active(href="#")
+                    | English
+                  a.chi-dropdown__menu-item(href="#")
+                    | Español
+                  a.chi-dropdown__menu-item(href="#")
+                    | Português
+                  a.chi-dropdown__menu-item(href="#")
+                    | Français
+                  a.chi-dropdown__menu-item(href="#")
+                    | Deutsch
+                  a.chi-dropdown__menu-item(href="#")
+                    | 简体中文
+                  a.chi-dropdown__menu-item(href="#")
+                    | 日本語
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.lumen.com/en-us/about.html') About Us
+                  li
+                    a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                  li
+                    a(href='https://jobs.lumen.com', target='_blank') Careers
+                  li
+                    a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                  // OneTrust Cookies Settings button start
+                  li
+                    a.optanon-toggle-display(href='#') Cookie Settings
+                  // OneTrust Cookies Settings button end
+                  li
+                    a(href='https://www.centurylink.com/aboutus/legal.html', target='_blank') Legal
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html', target='_blank') Legal Notices
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                  li
+                    a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html', target='_blank') Public Policy
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts', target='_blank') Support
+                  li
+                    a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                  li
+                    a(href='https://assets.centurylink.com/is/content/centurylink/UK-Gender-Pay-Gap-Report-2018?Creativeid=621ee105-c759-4597-b947-de420d1e731c', target='_blank') Gender Pay Gap 2018 (UK)
+                  li
+                    a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                  li
+                    a(href='https://assets.centurylink.com/is/content/centurylink/Modern-Slavery-Statement-2019?Creativeid=fe9a3e89-5681-4142-95fa-5785b3cef63f', target='_blank') Modern Slavery Statement 2019 (UK)
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                .chi-footer__copyright
+                  | &copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
+
+    :code(lang="html")
+      <div class="chi-main">
+        <div class="chi-main__title -no-back-link">
+          <div class="-d--flex -flex--column">
+            <div class="-d--flex -align-items--center">
+              <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">App title</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-main__content">
+          <h1 class="-text--h4">App main content area</h1>
+          <p class="-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <footer class="chi-footer">
+          <div class="chi-footer__content">
+            <div class="chi-footer__internal">
+              <div class="chi-footer__internal-content -mw--1200">
+                <div class="chi-dropdown chi-footer__language">
+                  <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-globe-network"></i>
+                      <span>English</span>
+                    </div>
+                  </a>
+                  <div class="chi-dropdown__menu -w--sm -text--body">
+                    <a class="chi-dropdown__menu-item -active" href="#">English</a>
+                    <a class="chi-dropdown__menu-item" href="#">Español</a>
+                    <a class="chi-dropdown__menu-item" href="#">Português</a>
+                    <a class="chi-dropdown__menu-item" href="#">Français</a>
+                    <a class="chi-dropdown__menu-item" href="#">Deutsch</a>
+                    <a class="chi-dropdown__menu-item" href="#">简体中文</a>
+                    <a class="chi-dropdown__menu-item" href="#">日本語</a>
+                  </div>
+                </div>
+                <div class="chi-footer__links">
+                  <ul>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about.html">About Us</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html">Accessibility</a>
+                    </li>
+                    <li>
+                      <a href="https://jobs.lumen.com" target="_blank">Careers</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/contact-us.html">Contact Us</a>
+                    </li><!-- OneTrust Cookies Settings button start-->
+                    <li>
+                      <a class="optanon-toggle-display" href="#">Cookie Settings</a>
+                    </li><!-- OneTrust Cookies Settings button end-->
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/legal.html" target="_blank">Legal</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html" target="_blank">Legal Notices</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/privacy-notice.html">Privacy</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/company-information/public-policy.html" target="_blank">Public Policy</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts" target="_blank">Support</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/help/en-us/home.html">Canadian Ombudsman</a>
+                    </li>
+                    <li>
+                      <a href="https://assets.centurylink.com/is/content/centurylink/UK-Gender-Pay-Gap-Report-2018?Creativeid=621ee105-c759-4597-b947-de420d1e731c" target="_blank">Gender Pay Gap 2018 (UK)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html">Legal (Latin America)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/de-legal-notices.html">Legal Notices (Germany)</a>
+                    </li>
+                    <li>
+                      <a href="https://assets.centurylink.com/is/content/centurylink/Modern-Slavery-Statement-2019?Creativeid=fe9a3e89-5681-4142-95fa-5785b3cef63f" target="_blank">Modern Slavery Statement 2019 (UK)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html">UK Tax Strategy</a>
+                    </li>
+                  </ul>
+                  <div class="chi-footer__copyright">&copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <script>chi.dropdown(document.getElementById('language-dropdown-button'));</script>
+
+  h3 Base with back link
+  .example.-mb--3
+    .chi-main
+      .chi-main__title
+        .-d--flex.-flex--column
+          a.chi-link(href='#')
+            .chi-link__content
+              i.chi-icon.icon-chevron-left.-xs
+              span.-text--md Back link
+          .-d--flex.-align-items--center
+            .-text--h3.-text--boldest.-text--navy.-m--0.-pr--2 App title
+      .chi-main__content
+        h1.-text--h4 App main content area
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      footer.chi-footer
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-dropdown.chi-footer__language
+                a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language-dropdown-button2" data-position="top-start" aria-label="Select your preferred language")
+                  .chi-button__content
+                    i.chi-icon.icon-globe-network
+                    span English
+                .chi-dropdown__menu.-w--sm.-text--body
+                  a.chi-dropdown__menu-item.-active(href="#")
+                    | English
+                  a.chi-dropdown__menu-item(href="#")
+                    | Español
+                  a.chi-dropdown__menu-item(href="#")
+                    | Português
+                  a.chi-dropdown__menu-item(href="#")
+                    | Français
+                  a.chi-dropdown__menu-item(href="#")
+                    | Deutsch
+                  a.chi-dropdown__menu-item(href="#")
+                    | 简体中文
+                  a.chi-dropdown__menu-item(href="#")
+                    | 日本語
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.lumen.com/en-us/about.html') About Us
+                  li
+                    a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                  li
+                    a(href='https://jobs.lumen.com', target='_blank') Careers
+                  li
+                    a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                  // OneTrust Cookies Settings button start
+                  li
+                    a.optanon-toggle-display(href='#') Cookie Settings
+                  // OneTrust Cookies Settings button end
+                  li
+                    a(href='https://www.centurylink.com/aboutus/legal.html', target='_blank') Legal
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html', target='_blank') Legal Notices
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                  li
+                    a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html', target='_blank') Public Policy
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts', target='_blank') Support
+                  li
+                    a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                  li
+                    a(href='https://assets.centurylink.com/is/content/centurylink/UK-Gender-Pay-Gap-Report-2018?Creativeid=621ee105-c759-4597-b947-de420d1e731c', target='_blank') Gender Pay Gap 2018 (UK)
+                  li
+                    a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                  li
+                    a(href='https://assets.centurylink.com/is/content/centurylink/Modern-Slavery-Statement-2019?Creativeid=fe9a3e89-5681-4142-95fa-5785b3cef63f', target='_blank') Modern Slavery Statement 2019 (UK)
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                .chi-footer__copyright
+                  | &copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
+
+    :code(lang="html")
+      <div class="chi-main">
+        <div class="chi-main__title">
+          <div class="-d--flex -flex--column">
+            <a class="chi-link" href="#">
+              <div class="chi-link__content">
+                <i class="chi-icon icon-chevron-left -xs"></i>
+                <span class="-text--md">Back link</span>
+              </div>
+            </a>
+            <div class="-d--flex -align-items--center">
+              <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">App title</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-main__content">
+          <h1 class="-text--h4">App main content area</h1>
+          <p class="-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <footer class="chi-footer">
+          <div class="chi-footer__content">
+            <div class="chi-footer__internal">
+              <div class="chi-footer__internal-content -mw--1200">
+                <div class="chi-dropdown chi-footer__language">
+                  <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-globe-network"></i>
+                      <span>English</span>
+                    </div>
+                  </a>
+                  <div class="chi-dropdown__menu -w--sm -text--body">
+                    <a class="chi-dropdown__menu-item -active" href="#">English</a>
+                    <a class="chi-dropdown__menu-item" href="#">Español</a>
+                    <a class="chi-dropdown__menu-item" href="#">Português</a>
+                    <a class="chi-dropdown__menu-item" href="#">Français</a>
+                    <a class="chi-dropdown__menu-item" href="#">Deutsch</a>
+                    <a class="chi-dropdown__menu-item" href="#">简体中文</a>
+                    <a class="chi-dropdown__menu-item" href="#">日本語</a>
+                  </div>
+                </div>
+                <div class="chi-footer__links">
+                  <ul>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about.html">About Us</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html">Accessibility</a>
+                    </li>
+                    <li>
+                      <a href="https://jobs.lumen.com" target="_blank">Careers</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/contact-us.html">Contact Us</a>
+                    </li><!-- OneTrust Cookies Settings button start-->
+                    <li>
+                      <a class="optanon-toggle-display" href="#">Cookie Settings</a>
+                    </li><!-- OneTrust Cookies Settings button end-->
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/legal.html" target="_blank">Legal</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html" target="_blank">Legal Notices</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/privacy-notice.html">Privacy</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/company-information/public-policy.html" target="_blank">Public Policy</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts" target="_blank">Support</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/help/en-us/home.html">Canadian Ombudsman</a>
+                    </li>
+                    <li>
+                      <a href="https://assets.centurylink.com/is/content/centurylink/UK-Gender-Pay-Gap-Report-2018?Creativeid=621ee105-c759-4597-b947-de420d1e731c" target="_blank">Gender Pay Gap 2018 (UK)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html">Legal (Latin America)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/de-legal-notices.html">Legal Notices (Germany)</a>
+                    </li>
+                    <li>
+                      <a href="https://assets.centurylink.com/is/content/centurylink/Modern-Slavery-Statement-2019?Creativeid=fe9a3e89-5681-4142-95fa-5785b3cef63f" target="_blank">Modern Slavery Statement 2019 (UK)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html">UK Tax Strategy</a>
+                    </li>
+                  </ul>
+                  <div class="chi-footer__copyright">&copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <script>chi.dropdown(document.getElementById('language-dropdown-button'));</script>
+
+  h3 Base with back link and subtitle
+  .example.-mb--3
+    .chi-main
+      .chi-main__title
+        .-d--flex.-flex--column
+          a.chi-link(href='#')
+            .chi-link__content
+              i.chi-icon.icon-chevron-left.-xs
+              span.-text--md Back link
+          .-d--flex.-align-items--center
+            .-text--h3.-text--boldest.-text--navy.-m--0.-br--1.-pr--2 App title
+            .-text--md.-pl--2 App subtitle
+      .chi-main__content
+        h1.-text--h4 App main content area
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      footer.chi-footer
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-dropdown.chi-footer__language
+                a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language-dropdown-button3" data-position="top-start" aria-label="Select your preferred language")
+                  .chi-button__content
+                    i.chi-icon.icon-globe-network
+                    span English
+                .chi-dropdown__menu.-w--sm.-text--body
+                  a.chi-dropdown__menu-item.-active(href="#")
+                    | English
+                  a.chi-dropdown__menu-item(href="#")
+                    | Español
+                  a.chi-dropdown__menu-item(href="#")
+                    | Português
+                  a.chi-dropdown__menu-item(href="#")
+                    | Français
+                  a.chi-dropdown__menu-item(href="#")
+                    | Deutsch
+                  a.chi-dropdown__menu-item(href="#")
+                    | 简体中文
+                  a.chi-dropdown__menu-item(href="#")
+                    | 日本語
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.lumen.com/en-us/about.html') About Us
+                  li
+                    a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                  li
+                    a(href='https://jobs.lumen.com', target='_blank') Careers
+                  li
+                    a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                  // OneTrust Cookies Settings button start
+                  li
+                    a.optanon-toggle-display(href='#') Cookie Settings
+                  // OneTrust Cookies Settings button end
+                  li
+                    a(href='https://www.centurylink.com/aboutus/legal.html', target='_blank') Legal
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html', target='_blank') Legal Notices
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                  li
+                    a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html', target='_blank') Public Policy
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts', target='_blank') Support
+                  li
+                    a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                  li
+                    a(href='https://assets.centurylink.com/is/content/centurylink/UK-Gender-Pay-Gap-Report-2018?Creativeid=621ee105-c759-4597-b947-de420d1e731c', target='_blank') Gender Pay Gap 2018 (UK)
+                  li
+                    a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                  li
+                    a(href='https://assets.centurylink.com/is/content/centurylink/Modern-Slavery-Statement-2019?Creativeid=fe9a3e89-5681-4142-95fa-5785b3cef63f', target='_blank') Modern Slavery Statement 2019 (UK)
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                .chi-footer__copyright
+                  | &copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
+
+    :code(lang="html")
+      <div class="chi-main">
+        <div class="chi-main__title">
+          <div class="-d--flex -flex--column">
+            <a class="chi-link" href="#">
+              <div class="chi-link__content">
+                <i class="chi-icon icon-chevron-left -xs"></i>
+                <span class="-text--md">Back link</span>
+              </div>
+            </a>
+            <div class="-d--flex -align-items--center">
+              <div class="-text--h3 -text--boldest -text--navy -m--0 -br--1 -pr--2">App title</div>
+              <div class="-text--md -pl--2">App subtitle</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-main__content">
+          <h1 class="-text--h4">App main content area</h1>
+          <p class="-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <footer class="chi-footer">
+          <div class="chi-footer__content">
+            <div class="chi-footer__internal">
+              <div class="chi-footer__internal-content -mw--1200">
+                <div class="chi-dropdown chi-footer__language">
+                  <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-globe-network"></i>
+                      span>English</span>
+                    </div>
+                  </a>
+                  <div class="chi-dropdown__menu -w--sm -text--body">
+                    <a class="chi-dropdown__menu-item -active" href="#">English</a>
+                    <a class="chi-dropdown__menu-item" href="#">Español</a>
+                    <a class="chi-dropdown__menu-item" href="#">Português</a>
+                    <a class="chi-dropdown__menu-item" href="#">Français</a>
+                    <a class="chi-dropdown__menu-item" href="#">Deutsch</a>
+                    <a class="chi-dropdown__menu-item" href="#">简体中文</a>
+                    <a class="chi-dropdown__menu-item" href="#">日本語</a>
+                  </div>
+                </div>
+                <div class="chi-footer__links">
+                  <ul>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about.html">About Us</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html">Accessibility</a>
+                    </li>
+                    <li>
+                      <a href="https://jobs.lumen.com" target="_blank">Careers</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/contact-us.html">Contact Us</a>
+                    </li><!-- OneTrust Cookies Settings button start-->
+                    <li>
+                      <a class="optanon-toggle-display" href="#">Cookie Settings</a>
+                    </li><!-- OneTrust Cookies Settings button end-->
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/legal.html" target="_blank">Legal</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html" target="_blank">Legal Notices</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/privacy-notice.html">Privacy</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/company-information/public-policy.html" target="_blank">Public Policy</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts" target="_blank">Support</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/help/en-us/home.html">Canadian Ombudsman</a>
+                    </li>
+                    <li>
+                      <a href="https://assets.centurylink.com/is/content/centurylink/UK-Gender-Pay-Gap-Report-2018?Creativeid=621ee105-c759-4597-b947-de420d1e731c" target="_blank">Gender Pay Gap 2018 (UK)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html">Legal (Latin America)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/de-legal-notices.html">Legal Notices (Germany)</a>
+                    </li>
+                    <li>
+                      <a href="https://assets.centurylink.com/is/content/centurylink/Modern-Slavery-Statement-2019?Creativeid=fe9a3e89-5681-4142-95fa-5785b3cef63f" target="_blank">Modern Slavery Statement 2019 (UK)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html">UK Tax Strategy</a>
+                    </li>
+                  </ul>
+                  <div class="chi-footer__copyright">&copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <script>chi.dropdown(document.getElementById('language-dropdown-button'));</script>
+
+  h3 Base with back link, subtitle and buttons
+  .example.-mb--3
+    .chi-main
+      .chi-main__title
+        .-d--flex.-flex--column
+          a.chi-link(href='#')
+            .chi-link__content
+              i.chi-icon.icon-chevron-left.-xs
+              span.-text--md Back title
+          .-d--flex.-align-items--center
+            .-text--h3.-text--boldest.-text--navy.-m--0.-br--1.-pr--2 App title
+            .-text--md.-pl--2 App subtitle
+        div
+          button.chi-button.-primary.-lg.-uppercase.-px--4 Primary
+          button.chi-button.-primary.-outline.-lg.-bg--white.-uppercase.-px--4.-ml--1 Secondary
+      .chi-main__content
+        h1.-text--h4 App main content area
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      footer.chi-footer
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-dropdown.chi-footer__language
+                a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language-dropdown-button4" data-position="top-start" aria-label="Select your preferred language")
+                  .chi-button__content
+                    i.chi-icon.icon-globe-network
+                    span English
+                .chi-dropdown__menu.-w--sm.-text--body
+                  a.chi-dropdown__menu-item.-active(href="#")
+                    | English
+                  a.chi-dropdown__menu-item(href="#")
+                    | Español
+                  a.chi-dropdown__menu-item(href="#")
+                    | Português
+                  a.chi-dropdown__menu-item(href="#")
+                    | Français
+                  a.chi-dropdown__menu-item(href="#")
+                    | Deutsch
+                  a.chi-dropdown__menu-item(href="#")
+                    | 简体中文
+                  a.chi-dropdown__menu-item(href="#")
+                    | 日本語
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.lumen.com/en-us/about.html') About Us
+                  li
+                    a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                  li
+                    a(href='https://jobs.lumen.com', target='_blank') Careers
+                  li
+                    a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                  // OneTrust Cookies Settings button start
+                  li
+                    a.optanon-toggle-display(href='#') Cookie Settings
+                  // OneTrust Cookies Settings button end
+                  li
+                    a(href='https://www.centurylink.com/aboutus/legal.html', target='_blank') Legal
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html', target='_blank') Legal Notices
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                  li
+                    a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html', target='_blank') Public Policy
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts', target='_blank') Support
+                  li
+                    a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                  li
+                    a(href='https://assets.centurylink.com/is/content/centurylink/UK-Gender-Pay-Gap-Report-2018?Creativeid=621ee105-c759-4597-b947-de420d1e731c', target='_blank') Gender Pay Gap 2018 (UK)
+                  li
+                    a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                  li
+                    a(href='https://assets.centurylink.com/is/content/centurylink/Modern-Slavery-Statement-2019?Creativeid=fe9a3e89-5681-4142-95fa-5785b3cef63f', target='_blank') Modern Slavery Statement 2019 (UK)
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                .chi-footer__copyright
+                  | &copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
+
+    :code(lang="html")
+      <div class="chi-main">
+        <div class="chi-main__title">
+          <div class="-d--flex -flex--column">
+            <a class="chi-link" href="#">
+              <div class="chi-link__content">
+                <i class="chi-icon icon-chevron-left -xs"></i>
+                <span class="-text--md">Back title</span>
+              </div>
+            </a>
+            <div class="-d--flex -align-items--center">
+              <div class="-text--h3 -text--boldest -text--navy -m--0 -br--1 -pr--2">App title</div>
+              <div class="-text--md -pl--2">App subtitle</div>
+            </div>
+          </div>
+          <div>
+            <button class="chi-button -primary -lg -uppercase -px--4">Primary</button>
+            <button class="chi-button -primary -outline -lg -bg--white -uppercase -px--4 -ml--1">Secondary</button>
+          </div>
+        </div>
+        <div class="chi-main__content">
+          <h1 class="-text--h4">App main content area</h1>
+          <p class="-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <footer class="chi-footer">
+          <div class="chi-footer__content">
+            <div class="chi-footer__internal">
+              <div class="chi-footer__internal-content -mw--1200">
+                <div class="chi-dropdown chi-footer__language">
+                  <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-globe-network"></i>
+                      <span>English</span>
+                    </div>
+                  </a>
+                  <div class="chi-dropdown__menu -w--sm -text--body">
+                    <a class="chi-dropdown__menu-item -active" href="#">English</a>
+                    <a class="chi-dropdown__menu-item" href="#">Español</a>
+                    <a class="chi-dropdown__menu-item" href="#">Português</a>
+                    <a class="chi-dropdown__menu-item" href="#">Français</a>
+                    <a class="chi-dropdown__menu-item" href="#">Deutsch</a>
+                    <a class="chi-dropdown__menu-item" href="#">简体中文</a>
+                    <a class="chi-dropdown__menu-item" href="#">日本語</a>
+                  </div>
+                </div>
+                <div class="chi-footer__links">
+                  <ul>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about.html">About Us</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html">Accessibility</a>
+                    </li>
+                    <li>
+                      <a href="https://jobs.lumen.com" target="_blank">Careers</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/contact-us.html">Contact Us</a>
+                    </li><!-- OneTrust Cookies Settings button start-->
+                    <li>
+                      <a class="optanon-toggle-display" href="#">Cookie Settings</a>
+                    </li><!-- OneTrust Cookies Settings button end-->
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/legal.html" target="_blank">Legal</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html" target="_blank">Legal Notices</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/privacy-notice.html">Privacy</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/company-information/public-policy.html" target="_blank">Public Policy</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts" target="_blank">Support</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/help/en-us/home.html">Canadian Ombudsman</a>
+                    </li>
+                    <li>
+                      <a href="https://assets.centurylink.com/is/content/centurylink/UK-Gender-Pay-Gap-Report-2018?Creativeid=621ee105-c759-4597-b947-de420d1e731c" target="_blank">Gender Pay Gap 2018 (UK)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html">Legal (Latin America)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/de-legal-notices.html">Legal Notices (Germany)</a>
+                    </li>
+                    <li>
+                      <a href="https://assets.centurylink.com/is/content/centurylink/Modern-Slavery-Statement-2019?Creativeid=fe9a3e89-5681-4142-95fa-5785b3cef63f" target="_blank">Modern Slavery Statement 2019 (UK)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html">UK Tax Strategy</a>
+                    </li>
+                  </ul>
+                  <div class="chi-footer__copyright">&copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <script>chi.dropdown(document.getElementById('language-dropdown-button'));</script>
+
+  h3 Base with back link, subtitle, buttons and page-level actions
+  .example.-mb--3
+    .chi-main
+      .chi-main__title
+        .-d--flex.-flex--column
+          a.chi-link(href='#')
+            .chi-link__content
+              i.chi-icon.icon-chevron-left.-xs
+              span.-text--md Back title
+          .-d--flex.-align-items--center
+            .-text--h3.-text--boldest.-text--navy.-m--0.-br--1.-pr--2 App title
+            .-text--md.-pl--2 App subtitle
+        div
+          button.chi-button.-primary.-lg.-uppercase.-px--4 Primary
+          button.chi-button.-primary.-outline.-lg.-bg--white.-uppercase.-px--4.-ml--1 Secondary
+      .chi-main__content
+        h1.-text--h4 App main content area
+        p.-text
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        .-d--flex.-align-items--center.-justify-content--end.-py--3.-my--2.-bt--1
+          button.chi-button.-primary.-outline.-lg.-uppercase.-px--4.-bg--white Cancel
+          button.chi-button.-primary.-lg.-uppercase.-px--4.-ml--1 Submit
+      footer.chi-footer
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-dropdown.chi-footer__language
+                a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language-dropdown-button5" data-position="top-start" aria-label="Select your preferred language")
+                  .chi-button__content
+                    i.chi-icon.icon-globe-network
+                    span English
+                .chi-dropdown__menu.-w--sm.-text--body
+                  a.chi-dropdown__menu-item.-active(href="#")
+                    | English
+                  a.chi-dropdown__menu-item(href="#")
+                    | Español
+                  a.chi-dropdown__menu-item(href="#")
+                    | Português
+                  a.chi-dropdown__menu-item(href="#")
+                    | Français
+                  a.chi-dropdown__menu-item(href="#")
+                    | Deutsch
+                  a.chi-dropdown__menu-item(href="#")
+                    | 简体中文
+                  a.chi-dropdown__menu-item(href="#")
+                    | 日本語
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.lumen.com/en-us/about.html') About Us
+                  li
+                    a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                  li
+                    a(href='https://jobs.lumen.com', target='_blank') Careers
+                  li
+                    a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                  // OneTrust Cookies Settings button start
+                  li
+                    a.optanon-toggle-display(href='#') Cookie Settings
+                  // OneTrust Cookies Settings button end
+                  li
+                    a(href='https://www.centurylink.com/aboutus/legal.html', target='_blank') Legal
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html', target='_blank') Legal Notices
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                  li
+                    a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html', target='_blank') Public Policy
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts', target='_blank') Support
+                  li
+                    a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                  li
+                    a(href='https://assets.centurylink.com/is/content/centurylink/UK-Gender-Pay-Gap-Report-2018?Creativeid=621ee105-c759-4597-b947-de420d1e731c', target='_blank') Gender Pay Gap 2018 (UK)
+                  li
+                    a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                  li
+                    a(href='https://assets.centurylink.com/is/content/centurylink/Modern-Slavery-Statement-2019?Creativeid=fe9a3e89-5681-4142-95fa-5785b3cef63f', target='_blank') Modern Slavery Statement 2019 (UK)
+                  li
+                    a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                .chi-footer__copyright
+                  | &copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
+
+    :code(lang="html")
+      <div class="chi-main">
+        <div class="chi-main__title">
+          <div class="-d--flex -flex--column">
+            <a class="chi-link" href="#">
+              <div class="chi-link__content">
+                <i class="chi-icon icon-chevron-left -xs"></i>
+                <span class="-text--md">Back title</span>
+              </div>
+            </a>
+            <div class="-d--flex -align-items--center">
+              <div class="-text--h3 -text--boldest -text--navy -m--0 -br--1 -pr--2">App title</div>
+              <div class="-text--md -pl--2">App subtitle</div>
+            </div>
+            </div>
+            <div>
+              <button class="chi-button -primary -lg -uppercase -px--4">Primary</button>
+              <button class="chi-button -primary -outline -lg -bg--white -uppercase -px--4 -ml--1">Secondary</button>
+            </div>
+        </div>
+        <div class="chi-main__content">
+          <h1 class="-text--h4">App main content area</h1>
+          <p class="-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <div class="-d--flex -align-items--center -justify-content--end -py--3 -my--2 -bt--1">
+            <button class="chi-button -primary -outline -lg -uppercase -px--4 -bg--white">Cancel</button>
+            <button class="chi-button -primary -lg -uppercase -px--4 -ml--1">Submit</button>
+          </div>
+        </div>
+        <footer class="chi-footer">
+          <div class="chi-footer__content">
+            <div class="chi-footer__internal">
+              <div class="chi-footer__internal-content -mw--1200">
+                <div class="chi-dropdown chi-footer__language">
+                  <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-globe-network"></i>
+                      <span>English</span>
+                    </div>
+                  </a>
+                  <div class="chi-dropdown__menu -w--sm -text--body">
+                    <a class="chi-dropdown__menu-item -active" href="#">English</a>
+                    <a class="chi-dropdown__menu-item" href="#">Español</a>
+                    <a class="chi-dropdown__menu-item" href="#">Português</a>
+                    <a class="chi-dropdown__menu-item" href="#">Français</a>
+                    <a class="chi-dropdown__menu-item" href="#">Deutsch</a>
+                    <a class="chi-dropdown__menu-item" href="#">简体中文</a>
+                    <a class="chi-dropdown__menu-item" href="#">日本語</a>
+                  </div>
+                </div>
+                <div class="chi-footer__links">
+                  <ul>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about.html">About Us</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html">Accessibility</a>
+                    </li>
+                    <li>
+                      <a href="https://jobs.lumen.com" target="_blank">Careers</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/contact-us.html">Contact Us</a>
+                    </li><!-- OneTrust Cookies Settings button start-->
+                    <li>
+                      <a class="optanon-toggle-display" href="#">Cookie Settings</a>
+                    </li><!-- OneTrust Cookies Settings button end-->
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/legal.html" target="_blank">Legal</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html" target="_blank">Legal Notices</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/privacy-notice.html">Privacy</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/company-information/public-policy.html" target="_blank">Public Policy</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts" target="_blank">Support</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/help/en-us/home.html">Canadian Ombudsman</a>
+                    </li>
+                    <li>
+                      <a href="https://assets.centurylink.com/is/content/centurylink/UK-Gender-Pay-Gap-Report-2018?Creativeid=621ee105-c759-4597-b947-de420d1e731c" target="_blank">Gender Pay Gap 2018 (UK)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html">Legal (Latin America)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/de-legal-notices.html">Legal Notices (Germany)</a>
+                    </li>
+                    <li>
+                      <a href="https://assets.centurylink.com/is/content/centurylink/Modern-Slavery-Statement-2019?Creativeid=fe9a3e89-5681-4142-95fa-5785b3cef63f" target="_blank">Modern Slavery Statement 2019 (UK)</a>
+                    </li>
+                    <li>
+                      <a href="https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html">UK Tax Strategy</a>
+                    </li>
+                  </ul>
+                  <div class="chi-footer__copyright">&copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+      <script>chi.dropdown(document.getElementById('language-dropdown-button'));</script>
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+      chi.dropdown(document.getElementById('language-dropdown-button'));
+      chi.dropdown(document.getElementById('language-dropdown-button2'));
+      chi.dropdown(document.getElementById('language-dropdown-button3'));
+      chi.dropdown(document.getElementById('language-dropdown-button4'));
+      chi.dropdown(document.getElementById('language-dropdown-button5'));
+    }
+  );
