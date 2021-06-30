@@ -451,6 +451,7 @@ describe('Data Table', () => {
   describe('accordion', () => {
     it(`should have class .${DATA_TABLE_CLASSES.EXPANDABLE}`, () => {
       const rows = [1, 2, 3];
+
       rows.forEach(rowIndex => {
         cy.get(`[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.ROW}`)
           .eq(rowIndex)
@@ -763,6 +764,7 @@ describe('Data Table', () => {
 
   describe('sizes', () => {
     const sizes = ['-xs', '-sm', '-md', '-lg', '-xl'];
+
     sizes.forEach(size => {
       it(`should have class .${size}`, () => {
         hasClassAssertion(`[data-cy='data-table${size}']`, size);
@@ -822,6 +824,7 @@ describe('Data Table Portal', () => {
 
     it(`should have class .${DATA_TABLE_CLASSES.STRIPED} for even rows`, () => {
       const rows = cy.get('@body').find(`.${DATA_TABLE_CLASSES.ROW}`);
+
       rows.each((row, i) => {
         if (i % 2 === 1) {
           hasClassAssertion(row, DATA_TABLE_CLASSES.STRIPED);
