@@ -299,6 +299,7 @@ describe('Data Table', () => {
 
     it(`should have class .${DATA_TABLE_CLASSES.SELECTABLE}`, () => {
       const rows = [0, 1, 2, 3];
+
       rows.forEach(rowIndex => {
         cy.get(`[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.ROW}`)
           .eq(rowIndex)
@@ -332,6 +333,10 @@ describe('Data Table', () => {
         .then(() => {
           cy.get(`[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.ROW}`).as('rows');
           hasClassAssertion('@rows', ACTIVE_CLASS);
+          cy.get('@rows')
+            .find('input')
+            .as('checkboxes')
+            .should('be.checked');
         });
       cy.get(`[data-cy='data-table-selectable'] .${PAGINATION_CLASSES.PAGINATION}`)
         .find(`.${ICON_BUTTON}`)
@@ -340,18 +345,21 @@ describe('Data Table', () => {
         .click()
         .then(() => {
           cy.get('@rows').should('not.have.class', ACTIVE_CLASS);
+          cy.get('@checkboxes').should('not.be.checked');
         });
       cy.get(`@paginationIcons`)
         .eq(0)
         .click()
         .then(() => {
           hasClassAssertion('@rows', ACTIVE_CLASS);
+          cy.get('@checkboxes').should('be.checked');
         });
       cy.get('@selectables')
         .eq(0)
         .click()
         .then(() => {
           cy.get('@rows').should('not.have.class', ACTIVE_CLASS);
+          cy.get('@checkboxes').should('not.be.checked');
         });
     });
 
@@ -399,6 +407,7 @@ describe('Data Table', () => {
   describe('accordion', () => {
     it(`should have class .${DATA_TABLE_CLASSES.EXPANDABLE}`, () => {
       const rows = [1, 2, 3];
+
       rows.forEach(rowIndex => {
         cy.get(`[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.ROW}`)
           .eq(rowIndex)
@@ -511,20 +520,24 @@ describe('Data Table', () => {
           });
       });
 
-      it(`should sort by status using a custom template`, () => {
-        const indexes = [0, 1, 2];
-        indexes.forEach(index => {
+      function checkSorting(statuses) {
+        statuses.forEach((status, index) => {
           if (index % 2 === 0) {
             cy.get('@rows')
               .eq(index)
-              .should('contain', 'active');
+              .should('contain', status);
           } else {
             cy.get('@rows')
               .eq(index)
-              .should('contain', 'inactive');
+              .should('contain', status);
           }
         });
+      }
 
+      it(`should sort by status using a custom template`, () => {
+        const statuses = ['active', 'inactive', 'active'];
+
+        checkSorting(statuses);
         cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.ROW}`)
           .eq(0)
           .find(`.${DATA_TABLE_CLASSES.CELL}`)
@@ -532,38 +545,21 @@ describe('Data Table', () => {
           .as('idCell')
           .click()
           .then(() => {
-            const actives = [0, 1, 2];
-            actives.forEach(index => {
-              cy.get('@rows')
-                .eq(index)
-                .should('contain', 'active');
-            });
+            const actives = ['active', 'active', 'active'];
+
+            checkSorting(actives);
           });
         cy.get('@idCell')
           .click()
           .then(() => {
-            const inactives = [0, 1, 2];
-            inactives.forEach(index => {
-              cy.get('@rows')
-                .eq(index)
-                .should('contain', 'inactive');
-            });
+            const inactives = ['inactive', 'inactive', 'inactive'];
+
+            checkSorting(inactives);
           });
         cy.get('@idCell')
           .click()
           .then(() => {
-            const indexes = [0, 1, 2];
-            indexes.forEach(index => {
-              if (index % 2 === 0) {
-                cy.get('@rows')
-                  .eq(index)
-                  .should('contain', 'active');
-              } else {
-                cy.get('@rows')
-                  .eq(index)
-                  .should('contain', 'inactive');
-              }
-            });
+            checkSorting(statuses);
           });
       });
 
@@ -665,6 +661,7 @@ describe('Data Table', () => {
 
   describe('sizes', () => {
     const sizes = ['-xs', '-sm', '-md', '-lg', '-xl'];
+
     sizes.forEach(size => {
       it(`should have class .${size}`, () => {
         hasClassAssertion(`[data-cy='data-table${size}']`, size);
@@ -724,6 +721,7 @@ describe('Data Table Portal', () => {
 
     it(`should have class .${DATA_TABLE_CLASSES.STRIPED} for even rows`, () => {
       const rows = cy.get('@body').find(`.${DATA_TABLE_CLASSES.ROW}`);
+
       rows.each((row, i) => {
         if (i % 2 === 1) {
           hasClassAssertion(row, DATA_TABLE_CLASSES.STRIPED);
@@ -764,6 +762,7 @@ describe('Data Table Portal', () => {
   describe('portal accordion', () => {
     it(`should have class .${DATA_TABLE_CLASSES.EXPANDABLE}`, () => {
       const rows = [1, 2, 3];
+
       rows.forEach(rowIndex => {
         cy.get(`[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.ROW}`)
           .eq(rowIndex)
