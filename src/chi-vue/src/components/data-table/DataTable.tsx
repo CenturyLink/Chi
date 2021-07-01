@@ -30,7 +30,6 @@ import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import arraySort from 'array-sort';
-import { defaultConfig } from './default-config';
 
 let dataTableNumber = 0;
 @Component({})
@@ -530,7 +529,7 @@ export default class DataTable extends Vue {
             ? DATA_TABLE_CLASSES.STRIPED
             : ''
         }
-        ${this.$props.config.style.portal ? this.$props.config.style.size : ''}
+        ${this.$props.config.style.portal ? `-${this.$props.config.style.size}` : ''}
         ${this.selectedRows.includes(bodyRow.rowId) || bodyRow.active ? ACTIVE_CLASS : ''}
         ${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}
         `}
@@ -762,7 +761,6 @@ export default class DataTable extends Vue {
 
   mounted() {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
-
     if (dataTableComponent && this.config.columnResize) {
       this._generateColumnResize(dataTableComponent);
     }
@@ -771,26 +769,31 @@ export default class DataTable extends Vue {
       (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_SIZE, (ev: string) => {
         const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
 
-        this.resultsPerPage = ev === 'all' ? this._serializedDataBody.length : parseInt(ev);
+        if (ev === 'all') {
+          this.resultsPerPage = this._serializedDataBody.length;
+        } else {
+          this.resultsPerPage = parseInt(ev);
+        }
         this.slicedData = this.sliceData(data);
         this.$emit(PAGINATION_EVENTS.PAGE_SIZE, this.slicedData);
       });
 
-    (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
-      const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
-      const numberOfPages = this._calculateNumberOfPages();
-      const pageChangeEventData: DataTablePageChange = {
-        page: ev,
-        data: this.slicedData,
-      };
+      (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
+        const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+        const numberOfPages = this._calculateNumberOfPages();
+        const pageChangeEventData: DataTablePageChange = {
+          page: ev,
+          data: this.slicedData,
+        };
 
-      if (ev >= 1 && ev <= numberOfPages) {
-        this.currentPage = ev;
-        this.slicedData = this.sliceData(data);
-        this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
-        this._checkSelectAllCheckbox();
-      }
-    });
+        if (ev >= 1 && ev <= numberOfPages) {
+          this.currentPage = ev;
+          this.slicedData = this.sliceData(data);
+          this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
+          this._checkSelectAllCheckbox();
+        }
+      });
+    }
     window.addEventListener('resize', this.resizeHandler);
     // Todo - replace with Ribbon management visibility once available
     // if (this._toolbarComponent) {
@@ -818,15 +821,11 @@ export default class DataTable extends Vue {
     if (columnData) {
       const columnIndex = Object.keys(this.data.head).indexOf(column);
 
-      const locateData = (data: DataTableRow, sortBy: string | undefined) => {
-        return sortBy && data.data[columnIndex].payload[sortBy]
-          ? data.data[columnIndex].payload[sortBy]
-          : data.data[columnIndex];
-      };
-
       this._sortedData = arraySort(copiedData, function(a, b) {
-        const aData = locateData(a, sortBy);
-        const bData = locateData(b, sortBy);
+        const aData =
+          sortBy && a.data[columnIndex].payload[sortBy] ? a.data[columnIndex].payload[sortBy] : a.data[columnIndex];
+        const bData =
+          sortBy && b.data[columnIndex].payload[sortBy] ? b.data[columnIndex].payload[sortBy] : b.data[columnIndex];
 
         if (columnData.sortDataType === 'number') {
           const aValue = Number(aData);
@@ -839,6 +838,7 @@ export default class DataTable extends Vue {
           const aValue = new Date(aData);
           const bValue = new Date(bData);
 
+          debugger;
           return ascending ? aValue.getTime() - bValue.getTime() : bValue.getTime() - aValue.getTime();
         }
 

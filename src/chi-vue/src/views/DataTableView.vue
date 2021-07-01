@@ -36,6 +36,9 @@
           </div>
         </div>
       </template>
+      <template #date="payload">
+        {{ `${payload.date.getDate()} ${months[payload.date.getMonth()]} ${payload.date.getFullYear()}` }}
+      </template>
       <template #toolbar>
         <ChiDataTableToolbar
           @chiToolbarFiltersChange="e => filtersChange(e)"
@@ -128,11 +131,10 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
         },
         selectable: true,
         columnSizes: {
-          xs: [5, 5, 5, 5, 5, 5, 5],
-          sm: [10, 10, 10, 0, 10, 10, 10],
-          md: [15, 5, 15, 0, 15, 15, 15],
-          lg: [15, 5, 15, 0, 15, 15, 15],
-          xl: [15, 5, 10, 15, 15, 15, 15],
+          sm: [10, 10, 10, 0, 10, 10, 10, 5],
+          md: [15, 10, 15, 0, 15, 15, 15, 5],
+          lg: [15, 10, 15, 0, 15, 15, 15, 5],
+          xl: [15, 10, 10, 15, 15, 15, 15, 5],
         },
         resultsPerPage: 10,
         defaultSort: {
@@ -160,6 +162,7 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
           },
           {
             name: 'input',
+            placeholder: 'Input filter',
             type: 'input',
             value: '',
           },
@@ -259,7 +262,7 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
       },
       table: {
         head: {
-          ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id', sortDataType: 'string' },
+          ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id', sortDataType: 'string', key: true, bold: true },
           alerts: { label: 'Alerts', align: 'center' },
           status: {
             label: 'Status',
@@ -268,9 +271,9 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             sortDataType: 'string',
             align: 'center',
           },
-          supportType: { label: 'Support Type', sortable: true, sortDataType: 'string', key: true },
-          servicetype: { label: 'Service Type', sortable: true, sortDataType: 'string' },
-          created: { label: 'Created', sortable: true, sortDataType: 'string' },
+          string: { label: 'String', sortable: true, sortDataType: 'string', key: true },
+          number: { label: 'Number', sortable: true, sortDataType: 'number' },
+          date: { label: 'Date', sortable: true, sortBy: 'date', sortDataType: 'date' },
           productId: { label: 'Product / Service ID', sortable: true, sortDataType: 'string' },
           actions: { label: ' ', align: 'right', allowOverflow: true },
         },
@@ -281,7 +284,6 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               template: 'loadingSkeleton',
             },
             active: false,
-            expanded: true,
             data: [
               { template: 'ticketId', payload: { id: 'NTM000021063' } },
               {
@@ -290,8 +292,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               },
               { template: 'status', payload: { status: 'active' } },
               'Colocation A',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              0,
+              { template: 'date', payload: { date: new Date('02/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -308,8 +310,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation B',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              1,
+              { template: 'date', payload: { date: new Date('03/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -329,8 +331,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               '',
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation B',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              2,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -351,8 +353,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               },
               { template: 'status', payload: { status: 'active' } },
               'Colocation C',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              3,
+              { template: 'date', payload: { date: new Date('05/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -375,8 +377,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               '',
               { template: 'status', payload: { status: 'active' } },
               'Colocation a',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              4,
+              { template: 'date', payload: { date: new Date('06/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -410,8 +412,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                         align: 'center',
                       },
                       'Colocation',
-                      'Internet Advantage',
-                      '04/05/2018 8:00 AM',
+                      5,
+                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                       'SVUJW034781A',
                       {
                         template: 'actions',
@@ -448,8 +450,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                                 align: 'center',
                               },
                               'Colocation',
-                              'Internet Advantage',
-                              '04/05/2018 8:00 AM',
+                              6,
+                              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                               'SVUJW034781A',
                               {
                                 template: 'actions',
@@ -486,8 +488,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                                         align: 'center',
                                       },
                                       'Colocation',
-                                      'Internet Advantage',
-                                      '04/05/2018 8:00 AM',
+                                      7,
+                                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                                       'SVUJW034781A',
                                       {
                                         template: 'actions',
@@ -518,8 +520,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                                         align: 'center',
                                       },
                                       'Colocation',
-                                      'Internet Advantage',
-                                      '04/05/2018 8:00 AM',
+                                      8,
+                                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                                       'SVUJW034781A',
                                       {
                                         template: 'actions',
@@ -550,8 +552,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                                 align: 'center',
                               },
                               'Colocation',
-                              'Internet Advantage',
-                              '04/05/2018 8:00 AM',
+                              9,
+                              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                               'SVUJW034781A',
                               {
                                 template: 'actions',
@@ -579,8 +581,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                         align: 'center',
                       },
                       'Colocation',
-                      'Internet Advantage',
-                      '04/05/2018 8:00 AM',
+                      10,
+                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                       'SVUJW034781A',
                       {
                         template: 'actions',
@@ -597,8 +599,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               '',
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation b',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              11,
+              { template: 'date', payload: { date: new Date('07/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -615,8 +617,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation c',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              12,
+              { template: 'date', payload: { date: new Date('01/06/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -637,8 +639,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               },
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              13,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -655,8 +657,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              14,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -673,8 +675,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              15,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -691,8 +693,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              16,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -709,8 +711,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              17,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -727,8 +729,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              18,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -745,8 +747,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              19,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -763,8 +765,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              20,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -781,8 +783,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              21,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -799,8 +801,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              22,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -817,8 +819,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              23,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -835,8 +837,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              24,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -853,8 +855,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              25,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -871,8 +873,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              26,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -889,8 +891,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              27,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -907,8 +909,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              28,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -925,8 +927,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              29,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -943,8 +945,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              30,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -961,8 +963,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              31,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -979,8 +981,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              32,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -997,8 +999,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              33,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1015,8 +1017,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              34,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1033,8 +1035,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              35,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1051,8 +1053,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              36,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1069,8 +1071,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              37,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1087,8 +1089,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              38,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1105,8 +1107,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              39,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1123,8 +1125,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              40,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1141,8 +1143,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              41,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1159,8 +1161,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              42,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1177,8 +1179,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              43,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1195,8 +1197,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              44,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1213,8 +1215,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              -0.5,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1231,8 +1233,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              -1,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1243,6 +1245,7 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
           },
         ],
       },
+      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     };
   },
 })
@@ -1257,8 +1260,8 @@ export default class DataTableView extends Vue {
         },
         { template: 'status', payload: { status: 'active' } },
         'Colocation',
-        'Internet Advantage',
-        '04/05/2018 8:00 AM',
+        0,
+        { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
         'SVUJW034781A',
         {
           template: 'actions',
