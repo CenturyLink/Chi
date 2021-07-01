@@ -332,7 +332,7 @@ describe('Data Table', () => {
         .click()
         .then(() => {
           cy.get(`[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.ROW}`).as('rows');
-          hasClassAssertion('@rows', ACTIVE_CLASS);
+          hasClassAssertion('@rows', `${ACTIVE_CLASS}`);
           cy.get('@rows')
             .find('input')
             .as('checkboxes')
@@ -522,7 +522,7 @@ describe('Data Table', () => {
 
       function checkSorting(statuses) {
         statuses.forEach((status, index) => {
-          if (index % 2 === 0) {
+          if (index === 2) {
             cy.get('@rows')
               .eq(index)
               .should('contain', status);
