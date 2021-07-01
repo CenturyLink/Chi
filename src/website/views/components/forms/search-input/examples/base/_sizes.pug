@@ -1,131 +1,132 @@
 h3 Sizes
 
 p.-text
-    | Search inputs supports the following sizes: <code>sm</code>, <code>md</code>,
-    |  <code>lg</code>, <code>xl</code>.
-    | The default size is <code>md</code>.
+  | Search inputs supports the following sizes: <code>sm</code>, <code>md</code>,
+  |  <code>lg</code>, <code>xl</code>.
+  | The default size is <code>md</code>.
 .example.-mb--3
-    .-p--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-grid
-            .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
-                .chi-grid
-                    .chi-col.-w--12.-mb--2
-                        .chi-form__item
-                            chi-search-input(size="sm" value="Sample Text" id="example__size-sm")
-                    .chi-col.-w--12.-mb--2
-                        .chi-form__item
-                            chi-search-input(size="md" value="Sample Text" id="example__size-md")
-                    .chi-col.-w--12.-mb--2
-                        .chi-form__item
-                            chi-search-input(size="lg" value="Sample Text" id="example__size-lg")
-                    .chi-col.-w--12
-                        .chi-form__item
-                            chi-search-input(size="xl" value="Sample Text" id="example__size-xl")
-    .example-tabs.-pl--2
-        ul.chi-tabs#example-input-sizes(role="tablist")
-            li.-active
-                a(
-                    href=`#webcomponent-input-sizes`
-                    role="tab"
-                    aria-selected="true"
-                    aria-controls="webcomponent-input-sizes"
-                ) Web Component
-            li
-                a(href=`#vue-input-sizes`) Vue
-            li
-                a(
-                    href=`#html-input-sizes`
-                    role="tab"
-                    aria-selected="false"
-                    tabindex="-1"
-                    aria-controls="html-input-sizes"
-                ) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-input-sizes
-        :code(lang="html")
-            <div class="chi-form__item">
-                <chi-search-input size="sm" value="Sample Text" id="example__size-sm"></chi-search-input>
+          .chi-col.-w--12.-mb--2
+            .chi-form__item
+              chi-search-input(size="sm" value="Sample Text" id="example__size-sm")
+          .chi-col.-w--12.-mb--2
+            .chi-form__item
+              chi-search-input(size="md" value="Sample Text" id="example__size-md")
+          .chi-col.-w--12.-mb--2
+            .chi-form__item
+              chi-search-input(size="lg" value="Sample Text" id="example__size-lg")
+          .chi-col.-w--12
+            .chi-form__item
+              chi-search-input(size="xl" value="Sample Text" id="example__size-xl")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-input-sizes(role="tablist")
+      li.-active
+        a(
+          href=`#webcomponent-input-sizes`
+          role="tab"
+          aria-selected="true"
+          aria-controls="webcomponent-input-sizes"
+        ) Web Component
+      li
+        a(href=`#vue-input-sizes`) Vue
+      li
+        a(
+          href=`#html-input-sizes`
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="html-input-sizes"
+        ) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-input-sizes
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-search-input size="sm" value="Sample Text" id="example__size-sm"></chi-search-input>
+      </div>
+      <div class="chi-form__item">
+        <chi-search-input size="md" value="Sample Text" id="example__size-md"></chi-search-input>
+      </div>
+      <div class="chi-form__item">
+        <chi-search-input size="lg" value="Sample Text" id="example__size-lg"></chi-search-input>
+      </div>
+      <div class="chi-form__item">
+        <chi-search-input size="xl" value="Sample Text" id="example__size-xl"></chi-search-input>
+      </div>
+  .chi-tabs-panel#vue-input-sizes 
+    :code(lang="html")
+      <div class="chi-form__item">
+        <ChiSearchInput value="Sample Text" size="sm" />
+      </div>
+      <div class="chi-form__item">
+        <ChiSearchInput value="Sample Text" size="md" />
+      </div>
+      <div class="chi-form__item">
+        <ChiSearchInput value="Sample Text" size="lg" />
+      </div>
+      <div class="chi-form__item">
+        <ChiSearchInput value="Sample Text" size="xl" />
+      </div>
+  .chi-tabs-panel#html-input-sizes
+    :code(lang='html')
+      <div class="chi-form__item">
+        <div class="chi-input__wrapper -icon--right">
+          <input class="chi-input chi-search__input -sm" id="example__size-sm" type="search" value="Sample text" aria-label="search input" />
+          <button class="chi-button -icon -flat -sm -bg--none" aria-label="Search">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-search"></i>
             </div>
-            <div class="chi-form__item">
-                <chi-search-input size="md" value="Sample Text" id="example__size-md"></chi-search-input>
+          </button>
+          <button class="chi-button -icon -close -sm" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x"></i>
             </div>
-            <div class="chi-form__item">
-                <chi-search-input size="lg" value="Sample Text" id="example__size-lg"></chi-search-input>
+          </button>
+        </div>
+      </div>
+      <div class="chi-form__item">
+        <div class="chi-input__wrapper -icon--right">
+          <input class="chi-input chi-search__input -md" id="example__size-md" type="search" value="Sample text" aria-label="search input" />
+          <button class="chi-button -icon -flat -md -bg--none" aria-label="Search">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-search"></i>
             </div>
-            <div class="chi-form__item">
-                <chi-search-input size="xl" value="Sample Text" id="example__size-xl"></chi-search-input>
+          </button>
+          <button class="chi-button -icon -close -sm" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x"></i>
             </div>
-    .chi-tabs-panel#vue-input-sizes 
-        :code(lang="html")
-            <!-- Vue component size sm -->
-            <ChiSearchInput value="Sample Text" size="sm"></ChiSearchInput>
-
-            <!-- Vue component size md -->
-            <ChiSearchInput value="Sample Text" size="md"></ChiSearchInput>
-
-            <!-- Vue component size lg -->
-            <ChiSearchInput value="Sample Text" size="lg"></ChiSearchInput>
-
-            <!-- Vue component size xl -->
-            <ChiSearchInput value="Sample Text" size="xl"></ChiSearchInput>
-    .chi-tabs-panel#html-input-sizes
-        :code(lang='html')
-            <div class="chi-form__item">
-                <div class="chi-input__wrapper -icon--right">
-                    <input class="chi-input chi-search__input -sm" id="example__size-sm" type="search" value="Sample text" aria-label="search input" />
-                    <button class="chi-button -icon -flat -sm -bg--none" aria-label="Search">
-                        <div class="chi-button__content">
-                            <i class="chi-icon icon-search"></i>
-                        </div>
-                    </button>
-                    <button class="chi-button -icon -close -sm" aria-label="Close">
-                        <div class="chi-button__content">
-                            <i class="chi-icon icon-x"></i>
-                        </div>
-                    </button>
-                </div>
+          </button>
+        </div>
+      </div>
+      <div class="chi-form__item">
+        <div class="chi-input__wrapper -icon--right">
+          <input class="chi-input chi-search__input -lg" id="example__size-lg" type="search" value="Sample text" aria-label="search input" />
+          <button class="chi-button -icon -flat -lg -bg--none" aria-label="Search">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-search"></i>
             </div>
-            <div class="chi-form__item">
-                <div class="chi-input__wrapper -icon--right">
-                    <input class="chi-input chi-search__input -md" id="example__size-md" type="search" value="Sample text" aria-label="search input" />
-                    <button class="chi-button -icon -flat -md -bg--none" aria-label="Search">
-                        <div class="chi-button__content">
-                            <i class="chi-icon icon-search"></i>
-                        </div>
-                    </button>
-                    <button class="chi-button -icon -close -sm" aria-label="Close">
-                        <div class="chi-button__content">
-                            <i class="chi-icon icon-x"></i>
-                        </div>
-                    </button>
-                </div>
+          </button>
+          <button class="chi-button -icon -close -sm" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x"></i>
             </div>
-            <div class="chi-form__item">
-                <div class="chi-input__wrapper -icon--right">
-                    <input class="chi-input chi-search__input -lg" id="example__size-lg" type="search" value="Sample text" aria-label="search input" />
-                    <button class="chi-button -icon -flat -lg -bg--none" aria-label="Search">
-                        <div class="chi-button__content">
-                            <i class="chi-icon icon-search"></i>
-                        </div>
-                    </button>
-                    <button class="chi-button -icon -close -sm" aria-label="Close">
-                        <div class="chi-button__content">
-                            <i class="chi-icon icon-x"></i>
-                        </div>
-                    </button>
-                </div>
+          </button>
+        </div>
+      </div>
+      <div class="chi-form__item">
+        <div class="chi-input__wrapper -icon--right">
+          <input class="chi-input chi-search__input -xl" id="example__size-xl" type="search" value="Sample text" aria-label="search input" />
+          <button class="chi-button -icon -flat -xl -bg--none" aria-label="Search">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-search"></i>
             </div>
-            <div class="chi-form__item">
-                <div class="chi-input__wrapper -icon--right">
-                    <input class="chi-input chi-search__input -xl" id="example__size-xl" type="search" value="Sample text" aria-label="search input" />
-                    <button class="chi-button -icon -flat -xl -bg--none" aria-label="Search">
-                        <div class="chi-button__content">
-                            <i class="chi-icon icon-search"></i>
-                        </div>
-                    </button>
-                    <button class="chi-button -icon -close -sm" aria-label="Close">
-                        <div class="chi-button__content">
-                            <i class="chi-icon icon-x"></i>
-                        </div>
-                    </button>
-                </div>
+          </button>
+          <button class="chi-button -icon -close -sm" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x"></i>
             </div>
+          </button>
+        </div>
+      </div>

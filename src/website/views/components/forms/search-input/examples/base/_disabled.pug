@@ -1,58 +1,59 @@
 h3 Disabled
 
 p.-text
-    | Use the <code>disabled</code> boolean attribute to prevent users from interacting with a search input.
-    | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
-    | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
+  | Use the <code>disabled</code> boolean attribute to prevent users from interacting with a search input.
+  | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
+  | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
 .example.-mb--3
-    .-p--3
-        .chi-grid
-            .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
-                .chi-form__item
-                    chi-search-input(id="example__disabled" value="Sample text" disabled)
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-search-input(id="example__disabled" value="Sample text" disabled)
 
-    .example-tabs.-pl--2
-        ul.chi-tabs#example-disabled(role="tablist")
-            li.-active
-                a(
-                    href=`#webcomponent-disabled`
-                    role="tab"
-                    aria-selected="true"
-                    aria-controls="webcomponent-disabled"
-                ) Web Component
-            li
-                a(href=`#vue-disabled`) Vue
-            li
-                a(
-                    href=`#html-disabled`
-                    role="tab"
-                    aria-selected="false"
-                    tabindex="-1"
-                    aria-controls="html-disabled"
-                ) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-disabled
-        :code(lang="html")
-            <div class="chi-form__item">
-                <chi-search-input id="example__disabled" value="Sample Text" disabled></chi-search-input>
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-disabled(role="tablist")
+      li.-active
+        a(
+          href=`#webcomponent-disabled`
+          role="tab"
+          aria-selected="true"
+          aria-controls="webcomponent-disabled"
+        ) Web Component
+      li
+        a(href=`#vue-disabled`) Vue
+      li
+        a(
+          href=`#html-disabled`
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="html-disabled"
+        ) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-disabled
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-search-input id="example__disabled" value="Sample Text" disabled></chi-search-input>
+      </div>
+  .chi-tabs-panel#vue-disabled
+    :code(lang="html")
+      <div class="chi-form__item">
+        <ChiSearchInput value="Sample Text" disabled />
+      </div>
+  .chi-tabs-panel#html-disabled
+    :code(lang="html")
+      <div class="chi-form__item">
+        <div class="chi-input__wrapper -icon--right">
+          <input class="chi-input chi-search__input" id="example__disabled" type="search" value="Sample text" disabled="disabled" aria-label="search input" />
+          <button class="chi-button -icon -flat -bg--none" aria-label="Search">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-search"></i>
             </div>
-    .chi-tabs-panel#vue-disabled
-        :code(lang="html")
-            <!-- Vue component -->
-            <ChiSearchInput value="Sample Text" disabled></ChiSearchInput>
-    .chi-tabs-panel#html-disabled
-        :code(lang="html")
-            <div class="chi-form__item">
-                <div class="chi-input__wrapper -icon--right">
-                    <input class="chi-input chi-search__input" id="example__disabled" type="search" value="Sample text" disabled="disabled" aria-label="search input" />
-                    <button class="chi-button -icon -flat -bg--none" aria-label="Search">
-                        <div class="chi-button__content">
-                            <i class="chi-icon icon-search"></i>
-                        </div>
-                    </button>
-                    <button class="chi-button -icon -close -sm" aria-label="Close">
-                        <div class="chi-button__content">
-                            <i class="chi-icon icon-x"></i>
-                        </div>
-                    </button>
-                </div>
+          </button>
+          <button class="chi-button -icon -close -sm" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x"></i>
             </div>
+          </button>
+        </div>
+      </div>
