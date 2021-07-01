@@ -46,7 +46,18 @@ export interface DataTableRow {
   rowNumber: string;
 }
 export interface DataTableData {
-  head: any;
+  head: {
+    [code: string]: {
+      label: string;
+      sortable: boolean;
+      sortBy: string;
+      sortDataType: 'string' | 'number' | 'date' | 'boolean';
+      align: 'left' | 'center' | 'right';
+      allowOverflow: 'visible' | 'hidden';
+      key: boolean;
+      bold: boolean;
+    };
+  };
   body: DataTableRow[];
 }
 export interface DataTableSortConfig {
