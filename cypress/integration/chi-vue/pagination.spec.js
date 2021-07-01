@@ -1,3 +1,5 @@
+const ACTIVE_CLASS = '-active';
+const INVERSE_CLASS = '-inverse';
 const PAGINATION_CLASSES = {
   PAGINATION: 'chi-pagination',
   RESULTS: 'chi-pagination__results',
@@ -91,7 +93,7 @@ describe('Pagination', () => {
         cy.get(`${sel}`)
           .find(`[data-page='3']`)
           .as('currentPage');
-        hasClassAssertion('@currentPage', '-active');
+        hasClassAssertion('@currentPage', `${ACTIVE_CLASS}`);
       });
     });
 
@@ -279,7 +281,7 @@ describe('Pagination', () => {
           );
           hasClassAssertion(
             `[data-cy='pagination-compact-inverse${size}']`,
-            '-inverse'
+            `${INVERSE_CLASS}`
           );
         });
       });

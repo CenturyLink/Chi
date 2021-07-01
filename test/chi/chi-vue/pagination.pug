@@ -9,6 +9,7 @@ h3 Base
 .test-pagination.-p--3.-w--100(style="background:#000")
     #base-inverse
         chi-vue-pagination(:pages=5 :current-page=3 data-cy="pagination-base-inverse" :inverse="true")
+
 h3 Disabled
 .test-pagination.-p--3.-w--100
     #disabled-previous
@@ -20,6 +21,7 @@ h3 Disabled
         chi-vue-pagination(:pages=5 :current-page=1 data-cy="pagination-disabled-prev-inverse" :inverse="true")
     #disabled-next-inverse
         chi-vue-pagination(:pages=5 :current-page=5 data-cy="pagination-disabled-next-inverse" :inverse="true")
+
 h3 Truncation
 .test-pagination.-p--3.-w--100
     #truncation
@@ -27,6 +29,7 @@ h3 Truncation
 .test-pagination.-p--3.-w--100(style="background:#000")
     #truncation-inverse
         chi-vue-pagination(:pages=12 :current-page=3 data-cy="pagination-truncation-inverse" :inverse="true")
+
 h3 Double Truncation
 .test-pagination.-p--3.-w--100
     #double-truncation
@@ -34,6 +37,7 @@ h3 Double Truncation
 .test-pagination.-p--3.-w--100(style="background:#000")
     #double-truncation-inverse
         chi-vue-pagination(:pages=12 :current-page=6 data-cy="pagination-double-truncation-inverse" :inverse="true")
+
 h3 Results Label
 .test-pagination.-p--3.-w--100
     #results-label
@@ -41,6 +45,7 @@ h3 Results Label
 .test-pagination.-p--3.-w--100(style="background:#000")
     #results-label-inverse
         chi-vue-pagination(:pages=12 :current-page=3 :results=240 data-cy="pagination-results-label-inverse" :inverse="true")
+
 h3 Page Size
 .test-pagination.-p--3.-w--100
     #page-size
@@ -48,6 +53,7 @@ h3 Page Size
 .test-pagination.-p--3.-w--100(style="background:#000")
     #page-size-inverse
         chi-vue-pagination(:pages=12 :current-page=3 :results=240 page-size="true" data-cy="pagination-page-size-inverse" :inverse="true")
+
 h3 Page Jumper
 .test-pagination.-p--3.-w--100
     #page-jumper
@@ -55,6 +61,7 @@ h3 Page Jumper
 .test-pagination.-p--3.-w--100(style="background:#000")
     #page-jumper-inverse
         chi-vue-pagination(:pages=12 :current-page=3 :results=240 page-size="true" page-jumper="true" data-cy="pagination-page-jumper-inverse" :inverse="true")
+
 h2 Compact
 h3 Base
 .test-pagination.-p--3.-w--100
@@ -63,6 +70,7 @@ h3 Base
 .test-pagination.-p--3.-w--100(style="background:#000")
     #compact-base-inverse
         chi-vue-pagination(:pages=3 :current-page=2 compact="true" data-cy="pagination-compact-base-inverse" :inverse="true")
+
 h3 Compact Page Jumper
 .test-pagination.-p--3.-w--100
     #compact-page-jumper
@@ -70,6 +78,7 @@ h3 Compact Page Jumper
 .test-pagination.-p--3.-w--100(style="background:#000")
     #compact-page-jumper-inverse
         chi-vue-pagination(:pages=3 :current-page=2 compact="true" page-jumper="true" data-cy="pagination-compact-page-jumper-inverse" :inverse="true")
+
 h3 First and Last page buttons
 .test-pagination.-p--3.-w--100
     #compact-first-last
@@ -77,6 +86,7 @@ h3 First and Last page buttons
 .test-pagination.-p--3.-w--100(style="background:#000")
     #compact-first-last-inverse
         chi-vue-pagination(:pages=3 :current-page=2 compact="true" page-jumper="true" first-last="true" data-cy="pagination-compact-first-last-inverse" :inverse="true")
+
 h3 Additional Sizes
 .test-pagination.-p--3.-w--100
     #compact-sm
@@ -87,6 +97,7 @@ h3 Additional Sizes
         chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="lg" data-cy="pagination-compact-lg")
     #compact-xl
         chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="xl" data-cy="pagination-compact-xl")
+
 h3 Additional Sizes (inverse)
 .test-pagination.-p--3.-w--100(style="background:#000")
     #compact-inverse-sm
@@ -97,7 +108,6 @@ h3 Additional Sizes (inverse)
         chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="lg" data-cy="pagination-compact-inverse-lg" :inverse="true")
     #compact-inverse-xl
         chi-vue-pagination(:pages=3 :current-page=2 compact="true" size="xl" data-cy="pagination-compact-inverse-xl" :inverse="true")
-
 
 script.
     const components = {
