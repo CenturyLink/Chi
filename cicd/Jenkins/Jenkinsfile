@@ -9,28 +9,28 @@
   This section always runs in the master jenkins.
 */
 try {
-  library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20210716',
-        retriever: modernSCM(
-          [
-            $class: 'GitSCMSource',
-            remote: "/app/jenkins/git/jsl-jenkins-shared-library.git",
-            extensions: [[$class: 'WipeWorkspace']]
-          ]
-        )
-      ) _
+library(
+      identifier: 'jsl-jenkins-shared-library-local@release/20210701',
+      retriever: modernSCM(
+        [
+          $class: 'GitSCMSource',
+          remote: "/app/jenkins/git/jsl-jenkins-shared-library.git",
+          extensions: [[$class: 'WipeWorkspace']]
+        ]
+      )
+    ) _
 } catch (Exception Ex) {
-  library(
-    identifier: 'jsl-jenkins-shared-library@release/20210716',
-    retriever: modernSCM(
-      [
-        $class: 'GitSCMSource',
-        remote: "git@github.com:CenturyLink/jsl-jenkins-shared-library.git",
-        credentialsId: 'SCMAUTO_SSH_DEVOPS_PIPELINE',
-        extensions: [[$class: 'WipeWorkspace']]
-      ]
-    )
-  ) _
+library(
+  identifier: 'jsl-jenkins-shared-library@release/202100701',
+  retriever: modernSCM(
+    [
+      $class: 'GitSCMSource',
+      remote: "git@github.com:CenturyLink/jsl-jenkins-shared-library.git",
+      credentialsId: 'SCMAUTO_SSH_DEVOPS_PIPELINE',
+      extensions: [[$class: 'WipeWorkspace']]
+    ]
+  )
+) _
 }
 
 
@@ -217,11 +217,7 @@ pipeline {
             }
             when {
               beforeAgent true
-              allOf {
-                  not {branch PROD_BRANCH}
-                  not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-                  not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              }
+              not { branch 'master' }
             }
             steps {
               script{

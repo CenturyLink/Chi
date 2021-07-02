@@ -15,6 +15,9 @@ RUN apt-get -y update && \
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10
 RUN pip3 install attrdict==2.0.1 pysnow==0.7.17 jsonschema==3.2.0 nose==1.3.7 mock==4.0.3 coverage==5.5
 
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 10
+RUN pip3 install attrdict==2.0.1 pysnow==0.7.17 jsonschema==3.2.0 nose==1.3.7 mock==4.0.3 coverage==5.5
+
 ARG COMP_ACLI=atlassian-cli-9.3.0
 ARG ACLI=atlassian-cli-9.8.0
 ADD https://bobswift.atlassian.net/wiki/download/attachments/16285777/${ACLI}-distribution.zip /opt/${ACLI}.zip
