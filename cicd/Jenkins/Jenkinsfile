@@ -217,11 +217,7 @@ pipeline {
             }
             when {
               beforeAgent true
-              allOf {
-                  not {branch PROD_BRANCH}
-                  not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-                  not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              }
+              not { branch 'master' }
             }
             steps {
               script{
