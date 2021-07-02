@@ -852,6 +852,13 @@ h4 Page Jumper
         a(href=`#vue-page-jump`) Vue
       li
         a(href=`#html-page-jump`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-page-jump
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <chi-pagination pages="3" current-page="2" compact page-jumper></chi-pagination>
+
+      <!-- For dark backgrounds -->
+      <chi-pagination pages="3" current-page="2" compact page-jumper inverse></chi-pagination>
   .chi-tabs-panel#vue-page-jump
     :code(lang="html")
       <!-- For light backgrounds -->
