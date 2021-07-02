@@ -28,6 +28,7 @@ import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants
 import Tooltip from '../tooltip/tooltip';
 import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
+import arraySort from 'array-sort';
 
 let dataTableNumber = 0;
 @Component({})
@@ -69,7 +70,7 @@ export default class DataTable extends Vue {
       const label = this.data.head[column].label || this.data.head[column],
         sortBy = this.data.head[column].sortBy,
         sortable = this.data.head[column].sortable,
-        alignment = this._cellAlignment(this.data.head[column].align),
+        alignment = this._cellAlignment(this.data.head[column].align || 'left'),
         sortIcon = sortable ? (
           <i
             class={`
@@ -527,7 +528,7 @@ export default class DataTable extends Vue {
             ? DATA_TABLE_CLASSES.STRIPED
             : ''
         }
-        ${this.$props.config.style.portal ? this.$props.config.style.size : ''}
+        ${this.$props.config.style.portal ? `-${this.$props.config.style.size}` : ''}
         ${this.selectedRows.includes(bodyRow.rowId) || bodyRow.active ? ACTIVE_CLASS : ''}
         ${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}
         `}
@@ -748,38 +749,35 @@ export default class DataTable extends Vue {
 
   mounted() {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
-
     if (dataTableComponent && this.config.columnResize) {
       this._generateColumnResize(dataTableComponent);
     }
 
-    (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_SIZE, (ev: string) => {
-      const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+    if (this.$refs.pagination) {
+      (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_SIZE, (ev: string) => {
+        const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
 
-      if (ev === 'all') {
-        this.resultsPerPage = this._serializedDataBody.length;
-      } else {
-        this.resultsPerPage = parseInt(ev);
-      }
-      this.slicedData = this.sliceData(data);
-      this.$emit(PAGINATION_EVENTS.PAGE_SIZE, this.slicedData);
-    });
-
-    (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
-      const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
-      const numberOfPages = this._calculateNumberOfPages();
-      const pageChangeEventData: DataTablePageChange = {
-        page: ev,
-        data: this.slicedData,
-      };
-
-      if (ev >= 1 && ev <= numberOfPages) {
-        this.currentPage = ev;
+        this.resultsPerPage = ev === 'all' ? this._serializedDataBody.length : parseInt(ev);
         this.slicedData = this.sliceData(data);
-        this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
-        this._checkSelectAllCheckbox();
-      }
-    });
+        this.$emit(PAGINATION_EVENTS.PAGE_SIZE, this.slicedData);
+      });
+
+      (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
+        const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+        const numberOfPages = this._calculateNumberOfPages();
+        const pageChangeEventData: DataTablePageChange = {
+          page: ev,
+          data: this.slicedData,
+        };
+
+        if (ev >= 1 && ev <= numberOfPages) {
+          this.currentPage = ev;
+          this.slicedData = this.sliceData(data);
+          this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
+          this._checkSelectAllCheckbox();
+        }
+      });
+    }
     window.addEventListener('resize', this.resizeHandler);
     // Todo - replace with Ribbon management visibility once available
     // if (this._toolbarComponent) {
@@ -800,62 +798,38 @@ export default class DataTable extends Vue {
   }
 
   sortData(column: string, direction: string, sortBy: string | undefined) {
-    const columnTitle = Object.keys(this.data.head).find(columnTitle => columnTitle === column),
-      sortDirection = direction === 'ascending' ? 1 : -1;
+    const copiedData = [...this._serializedDataBody];
+    const columnData = this.data.head[column];
+    const ascending: boolean = direction === 'ascending';
 
-    if (columnTitle) {
-      const columnIndex = Object.keys(this.data.head).indexOf(columnTitle);
-      const copiedData = [...this._serializedDataBody];
+    if (columnData) {
+      const columnIndex = Object.keys(this.data.head).indexOf(column);
 
-      this._sortedData = copiedData.sort((a: DataTableRow, b: DataTableRow) => {
-        const aDataColumn = a.data[columnIndex],
-          bDataColumn = b.data[columnIndex];
-        let aValue, bValue;
+      const locateData = (data: DataTableRow, sortBy: string | undefined) => {
+        return sortBy && data.data[columnIndex].payload[sortBy]
+          ? data.data[columnIndex].payload[sortBy]
+          : data.data[columnIndex];
+      };
 
-        if (sortBy) {
-          if (aDataColumn[sortBy]) {
-            aValue = aDataColumn[sortBy];
-          } else if (aDataColumn.payload[sortBy]) {
-            aValue = aDataColumn.payload[sortBy];
-          }
-          if (bDataColumn[sortBy]) {
-            bValue = bDataColumn[sortBy];
-          } else if (bDataColumn.payload[sortBy]) {
-            bValue = bDataColumn.payload[sortBy];
-          }
-        } else {
-          aValue = aDataColumn;
-          bValue = bDataColumn;
+      this._sortedData = arraySort(copiedData, function(a, b) {
+        const aData = locateData(a, sortBy);
+        const bData = locateData(b, sortBy);
+
+        if (columnData.sortDataType === 'number') {
+          const aValue = Number(aData);
+          const bValue = Number(bData);
+
+          return ascending ? aValue - bValue : bValue - aValue;
         }
 
-        if (typeof this.data.head === 'object') {
-          switch (this.data.head[column].sortDataType) {
-            case 'string':
-              aValue = String(aValue).toLowerCase();
-              bValue = String(bValue).toLowerCase();
-              break;
-            case 'number':
-              aValue = Number(aValue);
-              bValue = Number(bValue);
-              break;
-            case 'date':
-              aValue = Date.parse(aDataColumn);
-              bValue = Date.parse(bDataColumn);
-              break;
-          }
+        if (columnData.sortDataType === 'date') {
+          const aValue = new Date(aData);
+          const bValue = new Date(bData);
+
+          return ascending ? aValue.getTime() - bValue.getTime() : bValue.getTime() - aValue.getTime();
         }
 
-        if (!aValue && !bValue) {
-          return 0;
-        }
-        if (!aValue) {
-          return -sortDirection;
-        }
-        if (!bValue) {
-          return sortDirection;
-        }
-
-        return aValue > bValue ? sortDirection : -sortDirection;
+        return ascending ? aData.localeCompare(bData) : bData.localeCompare(aData);
       });
     }
   }
