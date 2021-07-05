@@ -32,7 +32,7 @@ declare const chi: any;
     id: String,
   },
 })
-export default class Actions extends Vue {
+export default class ExamplePopover extends Vue {
   mounted() {
     const buttonOpenOnHover = document.getElementById(`ticket-popover-button-${this.$props.id}`);
     const popover = chi.popover(buttonOpenOnHover);
