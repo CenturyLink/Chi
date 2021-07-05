@@ -36,6 +36,9 @@
           </div>
         </div>
       </template>
+      <template #date="payload">
+        {{ `${payload.date.getDate()} ${months[payload.date.getMonth()]} ${payload.date.getFullYear()}` }}
+      </template>
       <template #toolbar>
         <ChiDataTableToolbar
           @chiToolbarFiltersChange="e => filtersChange(e)"
@@ -117,7 +120,7 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
           noBorder: false,
           bordered: false,
           hover: false,
-          size: 'md',
+          size: 'lg',
           striped: true,
         },
         pagination: {
@@ -128,11 +131,10 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
         },
         selectable: true,
         columnSizes: {
-          xs: [5, 5, 5, 5, 5, 5, 5, 5],
-          sm: [10, 10, 10, 0, 10, 10, 10, 10],
-          md: [5, 15, 15, 0, 15, 15, 15, 5],
-          lg: [5, 15, 15, 0, 15, 15, 15, 5],
-          xl: [5, 15, 10, 15, 15, 15, 15, 5],
+          sm: [10, 10, 10, 0, 10, 10, 10, 5],
+          md: [15, 10, 15, 0, 15, 15, 15, 5],
+          lg: [15, 10, 15, 0, 15, 15, 15, 5],
+          xl: [15, 10, 10, 15, 15, 15, 15, 5],
         },
         resultsPerPage: 10,
         defaultSort: {
@@ -160,6 +162,7 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
           },
           {
             name: 'input',
+            placeholder: 'Input filter',
             type: 'input',
             value: '',
           },
@@ -259,8 +262,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
       },
       table: {
         head: {
+          ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id', sortDataType: 'string', key: true, bold: true },
           alerts: { label: 'Alerts', align: 'center' },
-          ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id', sortDataType: 'string' },
           status: {
             label: 'Status',
             sortable: true,
@@ -268,9 +271,9 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             sortDataType: 'string',
             align: 'center',
           },
-          supportType: { label: 'Support Type', sortable: true, sortDataType: 'string' },
-          servicetype: { label: 'Service Type', sortable: true, sortDataType: 'string' },
-          created: { label: 'Created', sortable: true, sortDataType: 'string' },
+          string: { label: 'String', sortable: true, sortDataType: 'string', key: true },
+          number: { label: 'Number', sortable: true, sortDataType: 'number' },
+          date: { label: 'Date', sortable: true, sortBy: 'date', sortDataType: 'date' },
           productId: { label: 'Product / Service ID', sortable: true, sortDataType: 'string' },
           actions: { label: ' ', align: 'right', allowOverflow: true },
         },
@@ -282,15 +285,15 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             },
             active: false,
             data: [
+              { template: 'ticketId', payload: { id: 'NTM000021063' } },
               {
                 template: 'icon',
                 payload: { icon: 'circle-check', color: 'success' },
               },
-              { template: 'ticketId', payload: { id: 'NTM000021063' } },
               { template: 'status', payload: { status: 'active' } },
               'Colocation A',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              0,
+              { template: 'date', payload: { date: new Date('02/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -303,12 +306,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021071',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021071' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation B',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              1,
+              { template: 'date', payload: { date: new Date('03/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -324,12 +327,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               value: 'asdasdasd',
             },
             data: [
-              '',
               { template: 'ticketId', payload: { id: 'NTM000021064' } },
+              '',
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation B',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              2,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -342,16 +345,16 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021065',
             active: false,
             data: [
+              { template: 'ticketId', payload: { id: 'NTM000021065' } },
               {
                 label: 'Alert Column',
                 template: 'icon',
                 payload: { icon: 'warning', color: 'warning' },
-              }, // Custom, overwritten Label
-              { template: 'ticketId', payload: { id: 'NTM000021065' } },
+              },
               { template: 'status', payload: { status: 'active' } },
               'Colocation C',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              3,
+              { template: 'date', payload: { date: new Date('05/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -370,12 +373,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               },
             },
             data: [
-              '',
               { template: 'ticketId', payload: { id: 'NTM000021066' } },
+              '',
               { template: 'status', payload: { status: 'active' } },
               'Colocation a',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              4,
+              { template: 'date', payload: { date: new Date('06/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -395,13 +398,13 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                     active: false,
                     data: [
                       {
+                        template: 'ticketId',
+                        payload: { id: 'NTM0000210661' },
+                      },
+                      {
                         label: 'Alerts',
                         template: 'icon',
                         payload: { icon: 'circle-check', color: 'success' },
-                      },
-                      {
-                        template: 'ticketId',
-                        payload: { id: 'NTM0000210661' },
                       },
                       {
                         template: 'status',
@@ -409,8 +412,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                         align: 'center',
                       },
                       'Colocation',
-                      'Internet Advantage',
-                      '04/05/2018 8:00 AM',
+                      5,
+                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                       'SVUJW034781A',
                       {
                         template: 'actions',
@@ -430,6 +433,10 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                             active: false,
                             data: [
                               {
+                                template: 'ticketId',
+                                payload: { id: 'NTM0000210661' },
+                              },
+                              {
                                 label: 'Alerts',
                                 template: 'icon',
                                 payload: {
@@ -438,17 +445,13 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                                 },
                               },
                               {
-                                template: 'ticketId',
-                                payload: { id: 'NTM0000210661' },
-                              },
-                              {
                                 template: 'status',
                                 payload: { status: 'active' },
                                 align: 'center',
                               },
                               'Colocation',
-                              'Internet Advantage',
-                              '04/05/2018 8:00 AM',
+                              6,
+                              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                               'SVUJW034781A',
                               {
                                 template: 'actions',
@@ -468,6 +471,10 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                                     active: false,
                                     data: [
                                       {
+                                        template: 'ticketId',
+                                        payload: { id: 'NTM00002106611' },
+                                      },
+                                      {
                                         label: 'Alerts',
                                         template: 'icon',
                                         payload: {
@@ -476,17 +483,13 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                                         },
                                       },
                                       {
-                                        template: 'ticketId',
-                                        payload: { id: 'NTM00002106611' },
-                                      },
-                                      {
                                         template: 'status',
                                         payload: { status: 'active' },
                                         align: 'center',
                                       },
                                       'Colocation',
-                                      'Internet Advantage',
-                                      '04/05/2018 8:00 AM',
+                                      7,
+                                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                                       'SVUJW034781A',
                                       {
                                         template: 'actions',
@@ -500,6 +503,10 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                                     active: false,
                                     data: [
                                       {
+                                        template: 'ticketId',
+                                        payload: { id: 'NTM00002106621' },
+                                      },
+                                      {
                                         label: 'Alerts',
                                         template: 'icon',
                                         payload: {
@@ -508,17 +515,13 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                                         },
                                       },
                                       {
-                                        template: 'ticketId',
-                                        payload: { id: 'NTM00002106621' },
-                                      },
-                                      {
                                         template: 'status',
                                         payload: { status: 'active' },
                                         align: 'center',
                                       },
                                       'Colocation',
-                                      'Internet Advantage',
-                                      '04/05/2018 8:00 AM',
+                                      8,
+                                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                                       'SVUJW034781A',
                                       {
                                         template: 'actions',
@@ -532,6 +535,10 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                             },
                             data: [
                               {
+                                template: 'ticketId',
+                                payload: { id: 'NTM0000210662' },
+                              },
+                              {
                                 label: 'Alerts',
                                 template: 'icon',
                                 payload: {
@@ -540,17 +547,13 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                                 },
                               },
                               {
-                                template: 'ticketId',
-                                payload: { id: 'NTM0000210662' },
-                              },
-                              {
                                 template: 'status',
                                 payload: { status: 'active' },
                                 align: 'center',
                               },
                               'Colocation',
-                              'Internet Advantage',
-                              '04/05/2018 8:00 AM',
+                              9,
+                              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                               'SVUJW034781A',
                               {
                                 template: 'actions',
@@ -564,13 +567,13 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                     },
                     data: [
                       {
+                        template: 'ticketId',
+                        payload: { id: 'NTM0000210662' },
+                      },
+                      {
                         label: 'Alerts',
                         template: 'icon',
                         payload: { icon: 'circle-check', color: 'success' },
-                      },
-                      {
-                        template: 'ticketId',
-                        payload: { id: 'NTM0000210662' },
                       },
                       {
                         template: 'status',
@@ -578,8 +581,8 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
                         align: 'center',
                       },
                       'Colocation',
-                      'Internet Advantage',
-                      '04/05/2018 8:00 AM',
+                      10,
+                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                       'SVUJW034781A',
                       {
                         template: 'actions',
@@ -592,12 +595,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
               },
             },
             data: [
-              '',
               { template: 'ticketId', payload: { id: 'NTM000021067' } },
+              '',
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation b',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              11,
+              { template: 'date', payload: { date: new Date('07/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -610,12 +613,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021072',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021072' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation c',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              12,
+              { template: 'date', payload: { date: new Date('01/06/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -628,16 +631,16 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM0000210651',
             active: false,
             data: [
+              { template: 'ticketId', payload: { id: 'NTM0000210651' } },
               {
                 label: 'Alerts',
                 template: 'icon',
                 payload: { icon: 'warning', color: 'warning' },
               },
-              { template: 'ticketId', payload: { id: 'NTM0000210651' } },
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              13,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -650,12 +653,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021068',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021068' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              14,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -668,12 +671,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021069',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021069' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              15,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -686,12 +689,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021070',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021070' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              16,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -704,12 +707,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021073',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021073' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              17,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -722,12 +725,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021074',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021074' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              18,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -740,12 +743,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021075',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021075' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              19,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -758,12 +761,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021076',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021076' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              20,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -776,12 +779,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021077',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021077' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              21,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -794,12 +797,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021078',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021078' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              22,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -812,12 +815,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021079',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021079' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              23,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -830,12 +833,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021080',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021080' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              24,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -848,12 +851,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021081',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021081' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              25,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -866,12 +869,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021082',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021082' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              26,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -884,12 +887,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021083',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021083' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              27,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -902,12 +905,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021084',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021084' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              28,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -920,12 +923,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021085',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021085' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              29,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -938,12 +941,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021086',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021086' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              30,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -956,12 +959,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021087',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021087' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              31,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -974,12 +977,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021088',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021088' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              32,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -992,12 +995,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021089',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021089' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              33,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1010,12 +1013,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021090',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021090' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              34,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1028,12 +1031,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021091',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021091' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              35,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1046,12 +1049,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021092',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021092' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              36,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1064,12 +1067,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021093',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021093' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              37,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1082,12 +1085,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021094',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021094' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              38,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1100,12 +1103,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021095',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021095' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              39,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1118,12 +1121,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021096',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021096' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              40,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1136,12 +1139,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021097',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021097' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              41,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1154,12 +1157,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021098',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021098' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              42,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1172,12 +1175,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021099',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021099' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              43,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1190,12 +1193,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021100',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021100' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              44,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1208,12 +1211,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021101',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021101' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              -0.5,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1226,12 +1229,12 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
             id: 'NTM000021102',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021102' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              -1,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1242,6 +1245,7 @@ import ColumnCustomization from '../components/column-customization/ColumnCustom
           },
         ],
       },
+      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     };
   },
 })
@@ -1249,15 +1253,15 @@ export default class DataTableView extends Vue {
   mounted() {
     setTimeout(() => {
       const newData = [
+        { template: 'ticketId', payload: { id: 'NTM000021063' } },
         {
           template: 'icon',
           payload: { icon: 'circle-check', color: 'success' },
         },
-        { template: 'ticketId', payload: { id: 'NTM000021063' } },
         { template: 'status', payload: { status: 'active' } },
         'Colocation',
-        'Internet Advantage',
-        '04/05/2018 8:00 AM',
+        0,
+        { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
         'SVUJW034781A',
         {
           template: 'actions',

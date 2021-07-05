@@ -21,6 +21,7 @@ export const DATA_TABLE_SCREEN_BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as c
 export type DataTableScreenBreakpoints = typeof DATA_TABLE_SCREEN_BREAKPOINTS[number];
 export interface DataTableStyleConfig {
   portal: boolean;
+  compact: boolean;
   bordered: boolean;
   noBorder: boolean;
   hover: boolean;
@@ -45,7 +46,18 @@ export interface DataTableRow {
   rowNumber: string;
 }
 export interface DataTableData {
-  head: any;
+  head: {
+    [code: string]: {
+      label: string;
+      sortable?: boolean;
+      sortBy?: string;
+      sortDataType?: 'string' | 'number' | 'date' | 'boolean';
+      align?: 'left' | 'center' | 'right';
+      allowOverflow?: 'visible' | 'hidden';
+      key?: boolean;
+      bold?: boolean;
+    };
+  };
   body: DataTableRow[];
 }
 export interface DataTableSortConfig {

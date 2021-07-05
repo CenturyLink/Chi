@@ -10,6 +10,7 @@ export const PORTAL_CLASS = '-portal';
 export const TRANSITIONING_CLASS = '-transitioning';
 export const SR_ONLY = '-sr--only';
 export const EXPANDED_CLASS = '-expanded';
+export const COLLAPSED_CLASS = '-collapsed';
 //#endregion
 
 //#region Accordion
@@ -69,6 +70,7 @@ export const DATA_TABLE_CLASSES = {
   BODY: 'chi-data-table__body',
   ROW: 'chi-data-table__row',
   ROW_CHILD: 'chi-data-table__row-child',
+  ROW_GRAND_CHILD: 'chi-data-table__row-grand-child',
   EMPTY: 'chi-data-table__row-empty',
   CELL: 'chi-data-table__cell',
   FOOTER: 'chi-data-table__footer',
