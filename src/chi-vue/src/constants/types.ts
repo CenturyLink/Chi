@@ -20,13 +20,13 @@ export type DataTableExpansionIconStyles = typeof DATA_TABLE_EXPANSION_ICON_STYL
 export const DATA_TABLE_SCREEN_BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type DataTableScreenBreakpoints = typeof DATA_TABLE_SCREEN_BREAKPOINTS[number];
 export interface DataTableStyleConfig {
-  portal: boolean;
-  compact: boolean;
-  bordered: boolean;
-  noBorder: boolean;
-  hover: boolean;
-  striped: boolean;
-  size: DataTableSizes;
+  portal?: boolean;
+  compact?: boolean;
+  bordered?: boolean;
+  noBorder?: boolean;
+  hover?: boolean;
+  striped?: boolean;
+  size?: DataTableSizes;
 }
 export interface DataTableRowNestedContent {
   table: {
@@ -44,6 +44,7 @@ export interface DataTableRow {
   id: string;
   rowId: string;
   rowNumber: string;
+  selected?: boolean;
 }
 export interface DataTableData {
   head: {
@@ -66,26 +67,30 @@ export interface DataTableSortConfig {
   direction: 'ascending' | 'descending';
 }
 export interface DataTableConfig {
-  columnResize: boolean;
-  noResultsMessage: string;
-  activePage: number;
-  resultsPerPage: number;
-  style: DataTableStyleConfig;
-  selectable: boolean;
-  columnSizes: {
+  activePage?: number;
+  columnResize?: boolean;
+  columnSizes?: {
     xs: number[];
     sm: number[];
     md: number[];
     lg: number[];
     xl: number[];
   };
+  defaultSort?: DataTableSortConfig;
+  mode?: 'clientside' | 'serverside';
+  noResultsMessage?: string;
   pagination: {
-    hideOnSinglePage: boolean;
-    compact: boolean;
-    firstLast: boolean;
-    pageJumper: boolean;
+    activePage?: number;
+    compact?: boolean;
+    firstLast?: boolean;
+    hideOnSinglePage?: boolean;
+    pages?: number;
+    pageJumper?: boolean;
   };
-  defaultSort: DataTableSortConfig;
+  resultsPerPage?: number;
+  style: DataTableStyleConfig;
+  selectable?: boolean;
+  reserveExpansionSlot?: boolean;
 }
 export interface DataTableFilter {
   name: string;
