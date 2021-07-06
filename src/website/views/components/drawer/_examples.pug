@@ -27,8 +27,8 @@ p.-text
         a(href='#html-interaction') HTML Blueprint
   #webcomponent-interaction.chi-tabs-panel.-active
     .chi-tab__description
-      | Modify the <code>active</code> attribute or property to make the drawer show or hide. The <code>chi-drawer</code>
-      | element also has three public methods to interact with it: <code>show()</code>, <code>hide()</code>,
+      | Modify the <code>active</code> attribute or property to make the drawer show or hide. <code>chi-drawer</code>
+      | also supports three public methods to change its visibility: <code>show()</code>, <code>hide()</code>,
       | <code>toggle()</code>.
     :code(lang="html")
       <!-- Trigger -->
@@ -52,9 +52,9 @@ p.-text
       </script>
   #vue-interaction.chi-tabs-panel
     .chi-tab__description
-      | Modify the <code>active</code> property to make the drawer show or hide. The <code>ChiDrawer</code>
-      | component also has three public methods to interact with it: <code>chiDrawerShow()</code>, <code>chiDrawerHide()</code>,
-      | <code>chiDrawerClickOutside()</code>.
+      | Modify the <code>active</code> property to make the drawer show or hide. <code>ChiDrawer</code>
+      | also supports three public methods to change its visibility: <code>show()</code>, <code>hide()</code>,
+      | <code>toggle()</code>.
     :code(lang="html")
       <!-- Trigger -->
       <button class="chi-button" @click="() => toggleDrawer()">
