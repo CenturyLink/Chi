@@ -739,30 +739,30 @@ ul#chi-tabs--closable.chi-tabs
           });
         </script>
     .chi-tabs-panel#vue-closable 
-    :code(lang="html")
-      <!-- Trigger -->
-      <button class="chi-button" @click="() => toggleDrawer()">
-        <i class="chi-icon -sm--2 icon-menu"></i>
-      </button>
+      :code(lang="html")
+        <!-- Trigger -->
+        <button class="chi-button" @click="() => toggleDrawer()">
+          <i class="chi-icon -sm--2 icon-menu"></i>
+        </button>
 
-      <!-- Vue component -->
-      <ChiDrawer
-        position="left"
-        :active="this.drawerActive"
-        backdrop
-      >
-        <div class="-px--2 -text">Drawer content here</div>
-      </ChiDrawer>
+        <!-- Vue component -->
+        <ChiDrawer
+          position="left"
+          :active="this.drawerActive"
+          backdrop
+        >
+          <div class="-px--2 -text">Drawer content here</div>
+        </ChiDrawer>
 
-      <!-- Data and Methods -->
-      data: {
-        drawerActive : false;
-      },
-      methods: {
-        toggleDrawer() {
-          this.drawerActive = !this.drawerActive;
+        <!-- Data and Methods -->
+        data: {
+          drawerActive : false;
+        },
+        methods: {
+          toggleDrawer() {
+            this.drawerActive = !this.drawerActive;
+          }
         }
-      }
     .chi-tabs-panel#html-closable
       .chi-tab__description
         span.-text--grey
@@ -835,7 +835,10 @@ ul#chi-tabs--closable.chi-tabs
             // or drawer.active = !drawer.active;
           });
         </script>
-    .chi-tabs-panel#vue-nonclosable 
+    .chi-tabs-panel#vue-nonclosable
+      .chi-tab__description
+        | Use the <code>nonClosable</code> property to render Drawer without a close button
+
       :code(lang="html")
         <!-- Trigger -->
         <button class="chi-button" @click="() => toggleDrawer()">
