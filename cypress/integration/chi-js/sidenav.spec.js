@@ -5,7 +5,7 @@ const drawerLiMainMenuTitleSelector = ' .chi-sidenav__drawer-list li span.chi-si
 
 describe('Sidenav', function() {
   before(() => {
-    cy.visit('/tests/js/sidenav.html');
+    cy.visit('tests/js/sidenav.html');
   });
 
   describe('check that click on 1st level opens 2nd-level menu drawer', () => {

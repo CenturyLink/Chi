@@ -1,6 +1,6 @@
 describe('Dropdown', function() {
     before(() => {
-      cy.visit('http://localhost:8000/tests/js/dropdown.html');
+      cy.visit('tests/js/dropdown.html');
       cy.fixture('chidata.json').then(data => {
         this.chidata = data;
       });
