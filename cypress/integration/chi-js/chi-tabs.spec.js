@@ -1,6 +1,6 @@
 describe('Chi Tabs', function() {
   before(() => {
-    cy.visit('/tests/js/tabs.html');
+    cy.visit('tests/js/tabs.html');
   });
 
   describe('horizontal tab contains sliding border', () => {

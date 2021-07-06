@@ -1,7 +1,7 @@
 const accordionSelector = '.chi-accordion';
 describe('Accordion', function() {
   before(() => {
-    cy.visit('/tests/js/accordion.html');
+    cy.visit('tests/js/accordion.html');
   });
 
   describe('Basic expand and collapse should work', () => {
