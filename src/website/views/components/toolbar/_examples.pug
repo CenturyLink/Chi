@@ -24,7 +24,7 @@ p.-text
                   option Option 1
                   option Option 2
                   option Option 3
-              button.chi-button.-icon.-lg.-flat(aria-label='Button action')
+              button.chi-button.-lg.-icon.-flat(id="button-b-filters" aria-label="Filters" data-tooltip="Filters" data-position="top")
                 .chi-button__content
                   i.chi-icon.icon-filter
             .chi-toolbar__filters-mobile
@@ -34,15 +34,15 @@ p.-text
         .chi-toolbar__end
           .chi-toolbar__actions
             .chi-toolbar__actions-desktop
-              button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              button.chi-button.-lg.-icon.-flat(id="button-b-download" aria-label="Download" data-tooltip="Download" data-position="top")
                 .chi-button__content
                   i.chi-icon.icon-arrow-to-bottom
-              button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              button.chi-button.-lg.-icon.-flat(id="button-b-refresh" aria-label="Refresh" data-tooltip="Refresh" data-position="top")
                 .chi-button__content
                   i.chi-icon.icon-refresh
-              button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              button.chi-button.-lg.-icon.-flat(id="button-b-column-customization" aria-label="Column Customization" data-tooltip="Column Customization" data-position="top")
                 .chi-button__content
-                  i.chi-icon.icon-settings
+                  i.chi-icon.icon-table-column-settings
             .chi-toolbar__actions-mobile
               button#drawer-trigger-actions1.chi-button.-lg.-icon.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
                 .chi-button__content
@@ -98,7 +98,7 @@ p.-text
                     <option>Option 3</option>
                   </select>
                 </div>
-                <button class="chi-button -lg -icon -flat" aria-label="Button action">
+                <button class="chi-button -lg -icon -flat" id="button-b-filters" aria-label="Filters" data-tooltip="Filters" data-position="top">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-filter"></i>
                   </div>
@@ -116,19 +116,19 @@ p.-text
           <div class="chi-toolbar__end">
             <div class="chi-toolbar__actions">
               <div class="chi-toolbar__actions-desktop">
-                <button class="chi-button -lg -icon -flat" aria-label="Button action">
+                <button class="chi-button -lg -icon -flat" id="button-b-download" aria-label="Download" data-tooltip="Download" data-position="top">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-arrow-to-bottom"></i>
                   </div>
                 </button>
-                <button class="chi-button -lg -icon -flat" aria-label="Button action">
+                <button class="chi-button -lg -icon -flat" id="button-b-refresh" aria-label="Refresh" data-tooltip="Refresh" data-position="top">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-refresh"></i>
                   </div>
                 </button>
-                <button class="chi-button -lg -icon -flat" aria-label="Button action">
+                <button class="chi-button -lg -icon -flat" id="button-b-column-customization" aria-label="Column Customization" data-tooltip="Column Customization" data-position="top">
                   <div class="chi-button__content">
-                    <i class="chi-icon icon-settings"></i>
+                    <i class="chi-icon icon-table-column-settings"></i>
                   </div>
                 </button>
               </div>
@@ -228,6 +228,10 @@ p.-text
       <script>
         chi.drawer(document.getElementById('drawer-trigger-b1'));
         chi.drawer(document.getElementById('drawer-trigger-b2'));
+        chi.tooltip(document.getElementById('button-b-filters'));
+        chi.tooltip(document.getElementById('button-b-download'));
+        chi.tooltip(document.getElementById('button-b-refresh'));
+        chi.tooltip(document.getElementById('button-b-column-customization'));
       </script>
 
 h3 Base with ribbon
@@ -253,7 +257,7 @@ h3 Base with ribbon
                   option Option 1
                   option Option 2
                   option Option 3
-              button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              button.chi-button.-lg.-icon.-flat(id="button-br-filters" aria-label="Filters" data-tooltip="Filters" data-position="top")
                 .chi-button__content
                   i.chi-icon.icon-filter
             .chi-toolbar__filters-mobile
@@ -263,15 +267,15 @@ h3 Base with ribbon
         .chi-toolbar__end
           .chi-toolbar__actions
             .chi-toolbar__actions-desktop
-              button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              button.chi-button.-lg.-icon.-flat(id="button-br-download" aria-label="Download" data-tooltip="Download" data-position="top")
                 .chi-button__content
                   i.chi-icon.icon-arrow-to-bottom
-              button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              button.chi-button.-lg.-icon.-flat(id="button-br-refresh" aria-label="Refresh" data-tooltip="Refresh" data-position="top")
                 .chi-button__content
                   i.chi-icon.icon-refresh
-              button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              button.chi-button.-lg.-icon.-flat(id="button-br-column-customization" aria-label="Column Customization" data-tooltip="Column Customization" data-position="top")
                 .chi-button__content
-                  i.chi-icon.icon-settings
+                  i.chi-icon.icon-table-column-settings
             .chi-toolbar__actions-mobile
               button#drawer-trigger-actions1.chi-button.-lg.-icon.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
                 .chi-button__content
@@ -339,7 +343,7 @@ h3 Base with ribbon
                     <option>Option 3</option>
                   </select>
                 </div>
-                <button class="chi-button -lg -icon -flat" aria-label="Button action">
+                <button class="chi-button -lg -icon -flat" id="button-br-filters" aria-label="Filters" data-tooltip="Filters" data-position="top">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-filter"></i>
                   </div>
@@ -357,19 +361,19 @@ h3 Base with ribbon
           <div class="chi-toolbar__end">
             <div class="chi-toolbar__actions">
               <div class="chi-toolbar__actions-desktop">
-                <button class="chi-button -lg -icon -flat" aria-label="Button action">
+                <button class="chi-button -lg -icon -flat" id="button-br-download" aria-label="Download" data-tooltip="Download" data-position="top">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-arrow-to-bottom"></i>
                   </div>
                 </button>
-                <button class="chi-button -lg -icon -flat" aria-label="Button action">
+                <button class="chi-button -lg -icon -flat" id="button-br-refresh" aria-label="Refresh" data-tooltip="Refresh" data-position="top">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-refresh"></i>
                   </div>
                 </button>
-                <button class="chi-button -lg -icon -flat" aria-label="Button action">
+                <button class="chi-button -lg -icon -flat" id="button-br-column-customization" aria-label="Column Customization" data-tooltip="Column Customization" data-position="top">
                   <div class="chi-button__content">
-                    <i class="chi-icon icon-settings"></i>
+                    <i class="chi-icon icon-table-column-settings"></i>
                   </div>
                 </button>
               </div>
@@ -487,6 +491,10 @@ h3 Base with ribbon
       <script>
         chi.drawer(document.getElementById('drawer-trigger-br1'));
         chi.drawer(document.getElementById('drawer-trigger-br2'));
+        chi.tooltip(document.getElementById('button-br-filters'));
+        chi.tooltip(document.getElementById('button-br-download'));
+        chi.tooltip(document.getElementById('button-br-refresh'));
+        chi.tooltip(document.getElementById('button-br-column-customization'));
       </script>
 
 .-lumen-only
@@ -514,7 +522,7 @@ h3 Base with ribbon
                     option Option 1
                     option Option 2
                     option Option 3
-                button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+                button.chi-button.-portal.-icon.-primary.-flat(id="button-p-filters" aria-label="Filters" data-tooltip="Filters" data-position="top")
                   .chi-button__content
                     i.chi-icon.icon-filter
               .chi-toolbar__filters-mobile
@@ -524,15 +532,15 @@ h3 Base with ribbon
           .chi-toolbar__end
             .chi-toolbar__actions
               .chi-toolbar__actions-desktop
-                button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+                button.chi-button.-portal.-icon.-primary.-flat(id="button-p-download" aria-label="Download" data-tooltip="Download" data-position="top")
                   .chi-button__content
                     i.chi-icon.icon-arrow-to-bottom
-                button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+                button.chi-button.-portal.-icon.-primary.-flat(id="button-p-refresh" aria-label="Refresh" data-tooltip="Refresh" data-position="top")
                   .chi-button__content
                     i.chi-icon.icon-refresh
-                button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+                button.chi-button.-portal.-icon.-primary.-flat(id="button-p-column-customization" aria-label="Column Customization" data-tooltip="Column Customization" data-position="top")
                   .chi-button__content
-                    i.chi-icon.icon-settings
+                    i.chi-icon.icon-table-column-settings
               .chi-toolbar__actions-mobile
                 button#drawer-trigger-actions1.chi-button.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
                   .chi-button__content
@@ -590,7 +598,7 @@ h3 Base with ribbon
                       <option>Option 3</option>
                     </select>
                   </div>
-                  <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
+                  <button class="chi-button -portal -icon -primary -flat" id="button-p-filters" aria-label="Filters" data-tooltip="Filters" data-position="top">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-filter"></i>
                     </div>
@@ -608,19 +616,19 @@ h3 Base with ribbon
             <div class="chi-toolbar__end">
               <div class="chi-toolbar__actions">
                 <div class="chi-toolbar__actions-desktop">
-                  <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
+                  <button class="chi-button -portal -icon -primary -flat" id="button-p-download" aria-label="Download" data-tooltip="Download" data-position="top">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-arrow-to-bottom"></i>
                     </div>
                   </button>
-                  <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
+                  <button class="chi-button -portal -icon -primary -flat" id="button-p-refresh" aria-label="Refresh" data-tooltip="Refresh" data-position="top">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-refresh"></i>
                     </div>
                   </button>
-                  <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
+                  <button class="chi-button -portal -icon -primary -flat" id="button-p-column-customization" aria-label="Column Customization" data-tooltip="Column Customization" data-position="top">
                     <div class="chi-button__content">
-                      <i class="chi-icon icon-settings"></i>
+                      <i class="chi-icon icon-table-column-settings"></i>
                     </div>
                   </button>
                 </div>
@@ -720,6 +728,10 @@ h3 Base with ribbon
         <script>
           chi.drawer(document.getElementById('drawer-trigger-bp1'));
           chi.drawer(document.getElementById('drawer-trigger-bp2'));
+          chi.tooltip(document.getElementById('button-p-filters'));
+          chi.tooltip(document.getElementById('button-p-download'));
+          chi.tooltip(document.getElementById('button-p-refresh'));
+          chi.tooltip(document.getElementById('button-p-column-customization'));
         </script>
 
   h3 Portal with ribbon
@@ -746,7 +758,7 @@ h3 Base with ribbon
                     option Option 1
                     option Option 2
                     option Option 3
-                button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+                button.chi-button.-portal.-icon.-primary.-flat(id="button-pr-filters" aria-label="Filters" data-tooltip="Filters" data-position="top")
                   .chi-button__content
                     i.chi-icon.icon-filter
               .chi-toolbar__filters-mobile
@@ -756,15 +768,15 @@ h3 Base with ribbon
           .chi-toolbar__end
             .chi-toolbar__actions
               .chi-toolbar__actions-desktop
-                button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+                button.chi-button.-portal.-icon.-primary.-flat(id="button-pr-download" aria-label="Download" data-tooltip="Download" data-position="top")
                   .chi-button__content
                     i.chi-icon.icon-arrow-to-bottom
-                button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+                button.chi-button.-portal.-icon.-primary.-flat(id="button-pr-refresh" aria-label="Refresh" data-tooltip="Refresh" data-position="top")
                   .chi-button__content
                     i.chi-icon.icon-refresh
-                button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+                button.chi-button.-portal.-icon.-primary.-flat(id="button-pr-column-customization" aria-label="Column Customization" data-tooltip="Column Customization" data-position="top")
                   .chi-button__content
-                    i.chi-icon.icon-settings
+                    i.chi-icon.icon-table-column-settings
               .chi-toolbar__actions-mobile
                 button#drawer-trigger-actions1.chi-button.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
                   .chi-button__content
@@ -833,7 +845,7 @@ h3 Base with ribbon
                       <option>Option 3</option>
                     </select>
                   </div>
-                  <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
+                  <button class="chi-button -portal -icon -primary -flat" id="button-pr-filters" aria-label="Filters" data-tooltip="Filters" data-position="top">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-filter"></i>
                     </div>
@@ -851,19 +863,19 @@ h3 Base with ribbon
             <div class="chi-toolbar__end">
               <div class="chi-toolbar__actions">
                 <div class="chi-toolbar__actions-desktop">
-                  <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
+                  <button class="chi-button -portal -icon -primary -flat" id="button-pr-download" aria-label="Download" data-tooltip="Download" data-position="top">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-arrow-to-bottom"></i>
                     </div>
                   </button>
-                  <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
+                  <button class="chi-button -portal -icon -primary -flat" id="button-pr-refresh" aria-label="Refresh" data-tooltip="Refresh" data-position="top">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-refresh"></i>
                     </div>
                   </button>
-                  <button class="chi-button -portal -icon -primary -flat" aria-label="Button action">
+                  <button class="chi-button -portal -icon -primary -flat" id="button-pr-column-customization" aria-label="Column Customization" data-tooltip="Column Customization" data-position="top">
                     <div class="chi-button__content">
-                      <i class="chi-icon icon-settings"></i>
+                      <i class="chi-icon icon-table-column-settings"></i>
                     </div>
                   </button>
                 </div>
@@ -981,6 +993,10 @@ h3 Base with ribbon
         <script>
           chi.drawer(document.getElementById('drawer-trigger-brp1'));
           chi.drawer(document.getElementById('drawer-trigger-brp2'));
+          chi.tooltip(document.getElementById('button-pr-filters'));
+          chi.tooltip(document.getElementById('button-pr-download'));
+          chi.tooltip(document.getElementById('button-pr-refresh'));
+          chi.tooltip(document.getElementById('button-pr-column-customization'));
         </script>
 
   // Drawers
@@ -1050,6 +1066,22 @@ script.
         }
       );
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+      chi.tooltip(document.getElementById('button-b-filters'));
+      chi.tooltip(document.getElementById('button-b-download'));
+      chi.tooltip(document.getElementById('button-b-refresh'));
+      chi.tooltip(document.getElementById('button-b-column-customization'));
+      chi.tooltip(document.getElementById('button-br-filters'));
+      chi.tooltip(document.getElementById('button-br-download'));
+      chi.tooltip(document.getElementById('button-br-refresh'));
+      chi.tooltip(document.getElementById('button-br-column-customization'));
+      chi.tooltip(document.getElementById('button-p-filters'));
+      chi.tooltip(document.getElementById('button-p-download'));
+      chi.tooltip(document.getElementById('button-p-refresh'));
+      chi.tooltip(document.getElementById('button-p-column-customization'));
+      chi.tooltip(document.getElementById('button-pr-filters'));
+      chi.tooltip(document.getElementById('button-pr-download'));
+      chi.tooltip(document.getElementById('button-pr-refresh'));
+      chi.tooltip(document.getElementById('button-pr-column-customization'));
     },
     false
   );
