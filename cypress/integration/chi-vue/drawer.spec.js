@@ -233,5 +233,9 @@ describe('Drawer', () => {
           );
         });
     });
+
+    it.skip('should hide on close button click', () => {});
+
+    it.skip('should hide when clicking outside the drawer', () => {});
   });
 });
