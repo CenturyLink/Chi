@@ -1,6 +1,6 @@
 describe('chi-modal', function() {
   before(() => {
-    cy.visit('/tests/js/modal.html');
+    cy.visit('tests/js/modal.html');
   });
 
   describe('Base Modal should open and close', () => {

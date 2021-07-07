@@ -2,7 +2,7 @@ import { SIDENAV_COMPONENT_SELECTOR } from '../../../src/chi/javascript/componen
 
 describe('enterprise-nav-menu', function() {
   before(() => {
-    cy.visit('http://localhost:8000/tests/js/enterprise-global-nav.html');
+    cy.visit('tests/js/enterprise-global-nav.html');
   });
 
   describe('check that click on 1st level opens 2nd-level menu drawer', () => {
