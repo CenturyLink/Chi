@@ -23,6 +23,7 @@ $padding-vertical: 0.125rem;
   padding: $padding-vertical 0.375rem;
   pointer-events: none;
   transition: opacity 0.2s, transform 0.2s;
+  white-space: normal;
   z-index: $zindex-tooltip;
 
   &.-active {
