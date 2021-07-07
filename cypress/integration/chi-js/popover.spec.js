@@ -1,6 +1,6 @@
 describe('Popover', function() {
   before(() => {
-    cy.visit('/tests/js/popover.html');
+    cy.visit('tests/js/popover.html');
     cy.fixture('chidata.json').then(data => {
       this.chidata = data;
     });

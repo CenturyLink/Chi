@@ -10,7 +10,7 @@
 */
 try {
 library(
-      identifier: 'jsl-jenkins-shared-library-local@release/20210415',
+      identifier: 'jsl-jenkins-shared-library-local@release/20210701',
       retriever: modernSCM(
         [
           $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ library(
     ) _
 } catch (Exception Ex) {
 library(
-  identifier: 'jsl-jenkins-shared-library@release/20210415',
+  identifier: 'jsl-jenkins-shared-library@release/202100701',
   retriever: modernSCM(
     [
       $class: 'GitSCMSource',
@@ -146,7 +146,7 @@ pipeline {
       }
       stage('Static Code Analysis') {
         parallel {
-          stage('Linting') {
+          stage('Linting Standard CHI') {
             agent {
               dockerfile {
                 filename 'Dockerfile'
@@ -165,6 +165,26 @@ pipeline {
               script{
                 jslYarnWrapper('install')
                 jslNpmWrapper('run lint:css')
+              }
+            }
+          }
+          stage('Linting Chi-vue') {
+            agent {
+              dockerfile {
+                filename 'Dockerfile'
+                dir 'cicd/docker/chi-vue'
+                label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
+                // registryUrl DOCKER_REGISTRY
+                // registryCredentialsId DOCKER_CREDENTIALS
+              }
+            }
+            when {
+              beforeAgent true
+              not { branch 'master' }
+            }
+            steps {
+              script{
                 dir ('src/chi-vue') {
                   jslYarnWrapper('install')
                   jslNpmWrapper('run prettier:checker')
@@ -234,7 +254,7 @@ pipeline {
             agent {
               dockerfile {
                 filename 'Dockerfile'
-                dir 'cicd/docker/sonar-scanner'
+                dir 'cicd/docker/chi-vue'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
                 // registryUrl DOCKER_REGISTRY
@@ -675,7 +695,7 @@ pipeline {
         agent {
           dockerfile {
             filename 'Dockerfile'
-            dir 'cicd/docker/sonar-scanner'
+            dir 'cicd/docker/chi-vue'
             label 'Docker-enabled'
             // registryUrl DOCKER_REGISTRY
             // registryCredentialsId DOCKER_LOGIN_CREDENTIALS

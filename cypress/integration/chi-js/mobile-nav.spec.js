@@ -2,7 +2,7 @@ const drawerDropDownItem   = '.chi-mobile-nav__list-item-list ul.chi-tabs li';
 
 describe('mobile-nav-menu', function() {
   before(() => {
-    cy.visit('/tests/js/mobile-nav.html');
+    cy.visit('tests/js/mobile-nav.html');
   });
   describe('mobile-navigation-interaction-trigger button is present', () => {
     it('mobile-navigation-interaction-trigger button should be visible', () => {

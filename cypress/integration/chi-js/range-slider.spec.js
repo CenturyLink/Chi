@@ -17,7 +17,7 @@ function calculateRangeProgress(element) {
 
 describe('Range Slider', () => {
   before(() => {
-    cy.visit('/tests/js/range-slider.html');
+    cy.visit('tests/js/range-slider.html');
   });
 
   it('Base Range Slider', () => {
