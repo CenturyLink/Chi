@@ -55,6 +55,8 @@ h3 Sorting
       template(#status='payload')
         div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
           span.-text--truncate {{ payload.status }}
+      template(#date='payload')
+        span {{ `${payload.date.getDate()} ${months[payload.date.getMonth()]} ${payload.date.getFullYear()}` }}
 
 h3 Default Sorting -- Ascending
 .test-data-table.-p--3.-w--100
@@ -671,10 +673,11 @@ script.
             sortBy: "status",
             sortDataType: "string",
           },
-          lastLogin: {
+          date: {
             label: "Last Login",
             sortable: true,
-            sortDatatype: "date",
+            sortBy: "date",
+            sortDataType: "date",
           },
         },
         body: [
@@ -688,7 +691,12 @@ script.
                   status: "active",
                 },
               },
-              "Dec 18, 2020 3:26 PM",
+              { 
+                template: 'date', 
+                payload: { 
+                  date: new Date('01/06/2018 8:00 AM') 
+                } 
+              },
             ],
           },
           {
@@ -701,7 +709,12 @@ script.
                   status: "inactive",
                 },
               },
-              "Dec 18, 2020 2:38 AM",
+              { 
+                template: 'date', 
+                payload: { 
+                  date: new Date('07/05/2018 8:00 AM') 
+                } 
+              },
             ],
           },
           {
@@ -714,7 +727,7 @@ script.
                   status: "active",
                 },
               },
-              "Dec 18, 2020 3:26 PM",
+              { template: 'date', payload: { date: new Date('04/05/2019 12:04 AM') } },
             ],
           },
           {
@@ -727,7 +740,7 @@ script.
                   status: "inactive",
                 },
               },
-              "Dec 18, 2020 2:38 AM",
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
             ],
           },
           {
@@ -740,7 +753,7 @@ script.
                   status: "active",
                 },
               },
-              "Nov 5, 2020 10:15 AM",
+              { template: 'date', payload: { date: new Date('02/05/2018 8:00 AM') } },
             ],
           },
           {
@@ -753,7 +766,7 @@ script.
                   status: "active",
                 },
               },
-              "Dec 18, 2020 3:26 PM",
+              { template: 'date', payload: { date: new Date('03/05/2017 8:00 AM') } },
             ],
           },
           {
@@ -766,7 +779,7 @@ script.
                   status: "inactive",
                 },
               },
-              "Dec 18, 2020 2:38 AM",
+              { template: 'date', payload: { date: new Date('04/05/2018 9:00 AM') } },
             ],
           },
           {
@@ -779,11 +792,12 @@ script.
                   status: "inactive",
                 },
               },
-              new Date("Nov 5, 2020 10:15 AM"),
+              { template: 'date', payload: { date: new Date('11/09/2018 12:00 AM') } },
             ],
           },
         ],
       },
+      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     },
   }).$mount("#sorting");
 
