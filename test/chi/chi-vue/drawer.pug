@@ -114,11 +114,6 @@ script.
         this.drawerActive = !this.drawerActive;
       }
     },
-    mounted() {
-      if (window.Cypress) {
-        window.showHideDrawer = this;
-      }
-    },
     watch: {
       drawerActive() {
         const events = ["chiDrawerHide","chiDrawerClickOutside"];

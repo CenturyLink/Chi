@@ -126,17 +126,10 @@ describe('Drawer', () => {
   });
 
   describe('show/hide', () => {
-    let drawerComponent;
-
     beforeEach(() => {
       cy.get(`[data-cy="drawer-show-hide-container"]`)
         .find('#openDrawerBtn')
         .as('openDrawerBtn');
-      cy.window()
-        .its('showHideDrawer')
-        .then(showHideDrawer => {
-          drawerComponent = showHideDrawer.$refs.drawer;
-        });
     });
 
     it('should toggle visibility on button click', () => {
@@ -148,46 +141,6 @@ describe('Drawer', () => {
       cy.get('@openDrawerBtn')
         .click()
         .then(() => {
-          cy.get(`[data-cy="drawer-show-hide"]`).should(
-            'not.have.class',
-            `.${ACTIVE_CLASS}`
-          );
-        });
-    });
-
-    it('should hide on close button click', () => {
-      const spy = cy.spy();
-
-      drawerComponent.$on(`${DRAWER_EVENTS.HIDE}`, spy);
-      cy.get('@openDrawerBtn')
-        .click()
-        .then(() => {
-          hasClassAssertion(`[data-cy="drawer-show-hide"]`, `${ACTIVE_CLASS}`);
-        });
-      cy.get(`[data-cy="drawer-show-hide"]`)
-        .find(`button.${CLOSE_CLASS}`)
-        .click()
-        .then(() => {
-          expect(spy).to.be.called;
-          cy.get(`[data-cy="drawer-show-hide"]`).should(
-            'not.have.class',
-            `.${ACTIVE_CLASS}`
-          );
-        });
-    });
-
-    it('should hide when clicking outside the drawer', () => {
-      const spy = cy.spy();
-
-      drawerComponent.$on(`${DRAWER_EVENTS.CLICK_OUTSIDE}`, spy);
-      cy.get('@openDrawerBtn')
-        .click()
-        .then(() => {
-          hasClassAssertion(`[data-cy="drawer-show-hide"]`, `${ACTIVE_CLASS}`);
-        });
-      cy.get(`[data-cy="drawer-show-hide-container"]`)
-        .click()
-        .then(() => {
           expect(spy).to.be.called;
           cy.get(`[data-cy="drawer-show-hide"]`).should(
             'not.have.class',
@@ -206,7 +159,6 @@ describe('Drawer', () => {
         .find(`button.${CLOSE_CLASS}`)
         .click()
         .then(() => {
-          expect(spy).to.be.called;
           cy.get(`[data-cy="drawer-show-hide"]`).should(
             'not.have.class',
             `.${ACTIVE_CLASS}`
@@ -215,9 +167,6 @@ describe('Drawer', () => {
     });
 
     it('should hide when clicking outside the drawer', () => {
-      const spy = cy.spy();
-
-      drawerComponent.$on(`${DRAWER_EVENTS.CLICK_OUTSIDE}`, spy);
       cy.get('@openDrawerBtn')
         .click()
         .then(() => {
@@ -226,16 +175,11 @@ describe('Drawer', () => {
       cy.get(`[data-cy="drawer-show-hide-container"]`)
         .click()
         .then(() => {
-          expect(spy).to.be.called;
           cy.get(`[data-cy="drawer-show-hide"]`).should(
             'not.have.class',
             `.${ACTIVE_CLASS}`
           );
         });
     });
-
-    it.skip('should hide on close button click', () => {});
-
-    it.skip('should hide when clicking outside the drawer', () => {});
   });
 });
