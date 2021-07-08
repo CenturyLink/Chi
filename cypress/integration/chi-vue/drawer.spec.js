@@ -217,7 +217,7 @@ describe('Drawer', () => {
     it('should hide when clicking outside the drawer', () => {
       const spy = cy.spy();
 
-      drawerComponent.$on('chiDrawerClickOutside', spy);
+      drawerComponent.$on(`${DRAWER_EVENTS.CLICK_OUTSIDE}`, spy);
       cy.get('@openDrawerBtn')
         .click()
         .then(() => {
