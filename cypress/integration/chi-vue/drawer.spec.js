@@ -6,6 +6,10 @@ const DRAWER_CLASSES = {
   TITLE: 'chi-drawer__title',
   CONTENT: 'chi-drawer__content'
 };
+const DRAWER_EVENTS = {
+  HIDE: 'chiDrawerHide',
+  CLICK_OUTSIDE: 'chiDrawerClickOutside'
+};
 
 const hasClassAssertion = (el, value) => {
   cy.get(el).should('have.class', value);
@@ -154,7 +158,7 @@ describe('Drawer', () => {
     it('should hide on close button click', () => {
       const spy = cy.spy();
 
-      drawerComponent.$on('chiDrawerHide', spy);
+      drawerComponent.$on(`${DRAWER_EVENTS.HIDE}`, spy);
       cy.get('@openDrawerBtn')
         .click()
         .then(() => {
@@ -175,7 +179,7 @@ describe('Drawer', () => {
     it('should hide when clicking outside the drawer', () => {
       const spy = cy.spy();
 
-      drawerComponent.$on('chiDrawerClickOutside', spy);
+      drawerComponent.$on(`${DRAWER_EVENTS.CLICK_OUTSIDE}`, spy);
       cy.get('@openDrawerBtn')
         .click()
         .then(() => {
