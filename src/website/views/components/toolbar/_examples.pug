@@ -228,10 +228,7 @@ p.-text
       <script>
         chi.drawer(document.getElementById('drawer-trigger-b1'));
         chi.drawer(document.getElementById('drawer-trigger-b2'));
-        chi.tooltip(document.getElementById('button-b-filters'));
-        chi.tooltip(document.getElementById('button-b-download'));
-        chi.tooltip(document.getElementById('button-b-refresh'));
-        chi.tooltip(document.getElementById('button-b-column-customization'));
+        chi.tooltip(document.querySelectorAll('[data-tooltip]'));
       </script>
 
 h3 Base with ribbon
@@ -491,10 +488,7 @@ h3 Base with ribbon
       <script>
         chi.drawer(document.getElementById('drawer-trigger-br1'));
         chi.drawer(document.getElementById('drawer-trigger-br2'));
-        chi.tooltip(document.getElementById('button-br-filters'));
-        chi.tooltip(document.getElementById('button-br-download'));
-        chi.tooltip(document.getElementById('button-br-refresh'));
-        chi.tooltip(document.getElementById('button-br-column-customization'));
+        chi.tooltip(document.querySelectorAll('[data-tooltip]'));
       </script>
 
 .-lumen-only
@@ -728,10 +722,7 @@ h3 Base with ribbon
         <script>
           chi.drawer(document.getElementById('drawer-trigger-bp1'));
           chi.drawer(document.getElementById('drawer-trigger-bp2'));
-          chi.tooltip(document.getElementById('button-p-filters'));
-          chi.tooltip(document.getElementById('button-p-download'));
-          chi.tooltip(document.getElementById('button-p-refresh'));
-          chi.tooltip(document.getElementById('button-p-column-customization'));
+          chi.tooltip(document.querySelectorAll('[data-tooltip]'));
         </script>
 
   h3 Portal with ribbon
@@ -993,10 +984,7 @@ h3 Base with ribbon
         <script>
           chi.drawer(document.getElementById('drawer-trigger-brp1'));
           chi.drawer(document.getElementById('drawer-trigger-brp2'));
-          chi.tooltip(document.getElementById('button-pr-filters'));
-          chi.tooltip(document.getElementById('button-pr-download'));
-          chi.tooltip(document.getElementById('button-pr-refresh'));
-          chi.tooltip(document.getElementById('button-pr-column-customization'));
+          chi.tooltip(document.querySelectorAll('[data-tooltip]'));
         </script>
 
   // Drawers
@@ -1066,22 +1054,7 @@ script.
         }
       );
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-      chi.tooltip(document.getElementById('button-b-filters'));
-      chi.tooltip(document.getElementById('button-b-download'));
-      chi.tooltip(document.getElementById('button-b-refresh'));
-      chi.tooltip(document.getElementById('button-b-column-customization'));
-      chi.tooltip(document.getElementById('button-br-filters'));
-      chi.tooltip(document.getElementById('button-br-download'));
-      chi.tooltip(document.getElementById('button-br-refresh'));
-      chi.tooltip(document.getElementById('button-br-column-customization'));
-      chi.tooltip(document.getElementById('button-p-filters'));
-      chi.tooltip(document.getElementById('button-p-download'));
-      chi.tooltip(document.getElementById('button-p-refresh'));
-      chi.tooltip(document.getElementById('button-p-column-customization'));
-      chi.tooltip(document.getElementById('button-pr-filters'));
-      chi.tooltip(document.getElementById('button-pr-download'));
-      chi.tooltip(document.getElementById('button-pr-refresh'));
-      chi.tooltip(document.getElementById('button-pr-column-customization'));
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
     },
     false
   );
