@@ -81,9 +81,9 @@ h3 Portal Bottom position
 
 h3 Show / Hide Drawer
 .test-drawer.-p--3.-w--100#showHide(data-cy="drawer-show-hide-container")
-  button(id="btn" class="chi-button" @click="() => toggleDrawer()") Click me to open the Drawer
+  button(id="openDrawerBtn" class="chi-button" @click="() => toggleDrawer()") Click me to open the Drawer
   .-position--relative.-w--100(style='height: 300px;')
-    chi-vue-drawer.-position--absolute(data-cy="drawer-show-hide" position='left' :active="this.drawerActive" style="top: 50px")
+    chi-vue-drawer.-position--absolute(ref="drawer" data-cy="drawer-show-hide" position='left' :active="this.drawerActive" style="top: 50px")
       .-px--2 Drawer content here
 
 script.
@@ -112,6 +112,17 @@ script.
     methods: {
       toggleDrawer() {
         this.drawerActive = !this.drawerActive;
+      }
+    },
+    watch: {
+      drawerActive() {
+        const events = ["chiDrawerHide","chiDrawerClickOutside"];
+
+        events.forEach(event => {
+          this.$refs.drawer.$on(event, () => {
+            this.drawerActive = false;
+          });
+        });
       }
     }
   }).$mount("#showHide")

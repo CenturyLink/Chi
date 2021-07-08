@@ -122,15 +122,19 @@ describe('Drawer', () => {
   });
 
   describe('show/hide', () => {
-    it('should toggle visibility on button click', () => {
+    beforeEach(() => {
       cy.get(`[data-cy="drawer-show-hide-container"]`)
-        .find('#btn')
-        .as('btn')
+        .find('#openDrawerBtn')
+        .as('openDrawerBtn');
+    });
+
+    it('should toggle visibility on button click', () => {
+      cy.get('@openDrawerBtn')
         .click()
         .then(() => {
           hasClassAssertion(`[data-cy="drawer-show-hide"]`, `${ACTIVE_CLASS}`);
         });
-      cy.get('@btn')
+      cy.get('@openDrawerBtn')
         .click()
         .then(() => {
           cy.get(`[data-cy="drawer-show-hide"]`).should(
@@ -140,8 +144,37 @@ describe('Drawer', () => {
         });
     });
 
-    it.skip('should hide on close button click', () => {});
+    it('should hide on close button click', () => {
+      cy.get('@openDrawerBtn')
+        .click()
+        .then(() => {
+          hasClassAssertion(`[data-cy="drawer-show-hide"]`, `${ACTIVE_CLASS}`);
+        });
+      cy.get(`[data-cy="drawer-show-hide"]`)
+        .find(`button.${CLOSE_CLASS}`)
+        .click()
+        .then(() => {
+          cy.get(`[data-cy="drawer-show-hide"]`).should(
+            'not.have.class',
+            `.${ACTIVE_CLASS}`
+          );
+        });
+    });
 
-    it.skip('should hide when clicking outside the drawer', () => {});
+    it('should hide when clicking outside the drawer', () => {
+      cy.get('@openDrawerBtn')
+        .click()
+        .then(() => {
+          hasClassAssertion(`[data-cy="drawer-show-hide"]`, `${ACTIVE_CLASS}`);
+        });
+      cy.get(`[data-cy="drawer-show-hide-container"]`)
+        .click()
+        .then(() => {
+          cy.get(`[data-cy="drawer-show-hide"]`).should(
+            'not.have.class',
+            `.${ACTIVE_CLASS}`
+          );
+        });
+    });
   });
 });
