@@ -15,7 +15,7 @@ h3 Portal Empty
 h3 Portal Accordion
 .test-data-table.-p--3.-w--100
   #portalAccordion
-    chi-vue-data-table(data-cy='data-table-portal-accordion', :config="config", :data="table")
+    chi-vue-data-table(ref="portalAccordion" data-cy='data-table-portal-accordion', :config="config", :data="table")
 
 h3 Portal Accordion Child
 .test-data-table.-p--3.-w--100
@@ -198,6 +198,11 @@ script.
         ],
       },
     },
+    mounted(){
+      if (window.Cypress) {
+        window.portalAccordionDataTable = this;
+      }
+    }
   }).$mount("#portalAccordion");
 
   new Vue({

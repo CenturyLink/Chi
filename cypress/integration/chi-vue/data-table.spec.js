@@ -40,6 +40,26 @@ const PAGINATION_CLASSES = {
   END: 'chi-pagination__end',
   JUMPER: 'chi-pagination__jumper'
 };
+const DATA_TABLE_EVENTS = {
+  SELECTED_ROWS_CHANGE: 'chiSelectedRowsChange',
+  DATA_SORTING: 'chiDataSorting',
+  FILTERS_CHANGE: 'chiFiltersChange',
+  COLUMNS_CHANGE: 'chiColumnsChange',
+  ADVANCED_FILTERS_CHANGE: 'chiAdvancedFiltersChange',
+  TOOLBAR: {
+    COLUMNS_CHANGE: 'chiToolbarColumnsChange',
+    FILTERS_CHANGE: 'chiToolbarFiltersChange',
+    SEARCH: 'chiToolbarSearch'
+  },
+  EXPANSION: {
+    EXPANDED: 'chiRowExpanded',
+    COLLAPSED: 'chiRowCollapsed'
+  }
+};
+const PAGINATION_EVENTS = {
+  PAGE_CHANGE: 'chiPageChange',
+  PAGE_SIZE: 'chiPageSizeChange'
+};
 
 const hasClassAssertion = (el, value) => {
   cy.get(el).should('have.class', value);
@@ -106,11 +126,6 @@ describe('Data Table', () => {
         );
       });
 
-      it.skip('should trigger the appropriate event', () => {
-        // TODO: add test once workaround is found.
-        const spy = cy.spy();
-      });
-
       it(`should show label 'per page'`, () => {
         cy.get(`@pagination`)
           .find(`select`)
@@ -121,29 +136,39 @@ describe('Data Table', () => {
       });
 
       it('should trigger next and prev page', () => {
-        cy.get(`@pagination`)
-          .find(`.${ICON_BUTTON}`)
-          .as('paginationIcons')
-          .eq(2)
-          .click()
-          .then(() => {
+        cy.window()
+          .its('baseDataTable')
+          .then(baseDataTable => {
+            const component = baseDataTable.$refs.base;
+            const spy = cy.spy();
+
+            component.$on(`${PAGINATION_EVENTS.PAGE_CHANGE}`, spy);
             cy.get(`@pagination`)
-              .find(`button[data-page='2']`)
-              .eq(0)
-              .as('pageTwoButton');
-            hasClassAssertion(`@pageTwoButton`, `${ACTIVE_CLASS}`);
-            cy.get(`@row`).should('contain', 'Name 4');
-          });
-        cy.get('@paginationIcons')
-          .eq(1)
-          .click()
-          .then(() => {
-            cy.get(`@pagination`)
-              .find(`button[data-page='1']`)
+              .find(`.${ICON_BUTTON}`)
+              .as('paginationIcons')
+              .eq(2)
+              .click()
+              .then(() => {
+                expect(spy).to.be.called;
+                cy.get(`@pagination`)
+                  .find(`button[data-page='2']`)
+                  .eq(0)
+                  .as('pageTwoButton');
+                hasClassAssertion(`@pageTwoButton`, `${ACTIVE_CLASS}`);
+                cy.get(`@row`).should('contain', 'Name 4');
+              });
+            cy.get('@paginationIcons')
               .eq(1)
-              .as('pageOneButton');
-            hasClassAssertion(`@pageOneButton`, `${ACTIVE_CLASS}`);
-            cy.get(`@row`).should('contain', 'Updated Name 1');
+              .click()
+              .then(() => {
+                expect(spy).to.be.called;
+                cy.get(`@pagination`)
+                  .find(`button[data-page='1']`)
+                  .eq(1)
+                  .as('pageOneButton');
+                hasClassAssertion(`@pageOneButton`, `${ACTIVE_CLASS}`);
+                cy.get(`@row`).should('contain', 'Updated Name 1');
+              });
           });
       });
 
@@ -215,21 +240,30 @@ describe('Data Table', () => {
       });
 
       it('should change number of page results', () => {
-        cy.get('@body')
-          .find(`.${DATA_TABLE_CLASSES.ROW}`)
-          .should('have.length', 3);
-        cy.get(`@pagination`)
-          .find(`.${PAGINATION_CLASSES.PAGE_SIZE} select`)
-          .as('pagSelect')
-          .select('40')
-          .then(() => {
-            cy.get(`@pagination`)
-              .find(`button[data-page='2']`)
-              .should('have.attr', 'disabled');
+        cy.window()
+          .its('baseDataTable')
+          .then(baseDataTable => {
+            const component = baseDataTable.$refs.base;
+            const spy = cy.spy();
+
+            component.$on(`${PAGINATION_EVENTS.PAGE_SIZE}`, spy);
             cy.get('@body')
               .find(`.${DATA_TABLE_CLASSES.ROW}`)
-              .should('have.length', 6);
-            cy.get('@pagSelect').should('contain', '40');
+              .should('have.length', 3);
+            cy.get(`@pagination`)
+              .find(`.${PAGINATION_CLASSES.PAGE_SIZE} select`)
+              .as('pagSelect')
+              .select('40')
+              .then(() => {
+                expect(spy).to.be.called;
+                cy.get(`@pagination`)
+                  .find(`button[data-page='2']`)
+                  .should('have.attr', 'disabled');
+                cy.get('@body')
+                  .find(`.${DATA_TABLE_CLASSES.ROW}`)
+                  .should('have.length', 6);
+                cy.get('@pagSelect').should('contain', '40');
+              });
           });
       });
     });
@@ -329,19 +363,23 @@ describe('Data Table', () => {
       });
     });
 
-    it.skip('should trigger the appropriate event', () => {
-      // TODO: add test once workaround is found.
-      const spy = cy.spy();
+    it('should trigger the appropriate event', () => {
+      cy.window()
+        .its('selectableDataTable')
+        .then(selectableDataTable => {
+          const component = selectableDataTable.$refs.selectable;
+          const spy = cy.spy();
 
-      cy.get('body').then(el => {
-        el.on('change', spy);
-      });
-
-      cy.get('@selectables')
-        .eq(0)
-        .click()
-        .then(() => {
-          expect(spy).to.be.called;
+          component.$on(`${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE}`, spy);
+          cy.get('@selectables')
+            .eq(0)
+            .click()
+            .then(() => {
+              expect(spy).to.be.called;
+            });
+          cy.get('@selectables')
+            .eq(0)
+            .click();
         });
     });
 
@@ -448,9 +486,29 @@ describe('Data Table', () => {
       });
     });
 
-    it.skip('should trigger the appropriate event', () => {
-      // TODO: add test once workaround is found.
-      const spy = cy.spy();
+    it('should trigger the appropriate event', () => {
+      cy.window()
+        .its('accordionDataTable')
+        .then(accordionDataTable => {
+          const component = accordionDataTable.$refs.accordion;
+          const spy = cy.spy();
+
+          component.$on(`${DATA_TABLE_EVENTS.EXPANSION.EXPANDED}`, spy);
+          cy.get(`[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.BODY}`)
+            .find(`.${DATA_TABLE_CLASSES.EXPANDABLE} button`)
+            .eq(0)
+            .as('expandableButton')
+            .click()
+            .then(() => {
+              expect(spy).to.be.called;
+            });
+          component.$on(`${DATA_TABLE_EVENTS.EXPANSION.COLLAPSED}`, spy);
+          cy.get('@expandableButton')
+            .click()
+            .then(() => {
+              expect(spy).to.be.called;
+            });
+        });
     });
 
     it(`should have class .${DATA_TABLE_CLASSES.ROW_CHILD}`, () => {
@@ -512,9 +570,27 @@ describe('Data Table', () => {
         );
       });
 
-      it.skip('should trigger the appropriate event', () => {
-        // TODO: add test once workaround is found.
-        const spy = cy.spy();
+      it('should trigger the appropriate event', () => {
+        cy.window()
+          .its('sortingDataTable')
+          .then(sortingDataTable => {
+            const component = sortingDataTable.$refs.sorting;
+            const spy = cy.spy();
+
+            component.$on(`${DATA_TABLE_EVENTS.DATA_SORTING}`, spy);
+            cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.ROW}`)
+              .eq(0)
+              .find(`.${DATA_TABLE_CLASSES.CELL}`)
+              .eq(0)
+              .as('firstCell');
+            for (let i = 1; i <= 3; i++) {
+              cy.get('@firstCell')
+                .click()
+                .then(() => {
+                  expect(spy).to.be.called;
+                });
+            }
+          });
       });
 
       it(`should sort by name with the correct icons`, () => {
@@ -863,9 +939,31 @@ describe('Data Table Portal', () => {
         .click();
     });
 
-    it.skip('should trigger the appropriate event', () => {
-      // TODO: add test once workaround is found.
-      const spy = cy.spy();
+    it('should trigger the appropriate event', () => {
+      cy.window()
+        .its('portalAccordionDataTable')
+        .then(portalAccordionDataTable => {
+          const component = portalAccordionDataTable.$refs.portalAccordion;
+          const spy = cy.spy();
+
+          component.$on(`${DATA_TABLE_EVENTS.EXPANSION.EXPANDED}`, spy);
+          cy.get(
+            `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`
+          )
+            .find(`.${DATA_TABLE_CLASSES.EXPANDABLE} button`)
+            .eq(0)
+            .as('expandableButton')
+            .click()
+            .then(() => {
+              expect(spy).to.be.called;
+            });
+          component.$on(`${DATA_TABLE_EVENTS.EXPANSION.COLLAPSED}`, spy);
+          cy.get('@expandableButton')
+            .click()
+            .then(() => {
+              expect(spy).to.be.called;
+            });
+        });
     });
 
     it(`should have class .${DATA_TABLE_CLASSES.ROW_CHILD}`, () => {

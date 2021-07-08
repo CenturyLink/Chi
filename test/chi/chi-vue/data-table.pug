@@ -5,7 +5,7 @@ h2 Data Table Base
 h3 Base
 .test-data-table.-p--3.-w--100
   #base
-    chi-vue-data-table(data-cy='data-table', :config="config", :data="table")
+    chi-vue-data-table(ref="base" data-cy='data-table', :config="config", :data="table")
     button(@click="update") Update
 
 h3 Empty
@@ -41,17 +41,17 @@ h3 Active
 h3 Selectable
 .test-data-table.-p--3.-w--100
   #selectable
-    chi-vue-data-table(data-cy='data-table-selectable', :config="config", :data="table")
+    chi-vue-data-table(ref="selectable" data-cy='data-table-selectable', :config="config", :data="table")
 
 h3 Accordion
 .test-data-table.-p--3.-w--100
   #accordion
-    chi-vue-data-table(data-cy='data-table-accordion', :config="config", :data="table")
+    chi-vue-data-table(ref="accordion" data-cy='data-table-accordion', :config="config", :data="table")
 
 h3 Sorting
 .test-data-table.-p--3.-w--100
   #sorting
-    chi-vue-data-table(data-cy='data-table-sorting', :config="config", :data="table")
+    chi-vue-data-table(ref="sorting" data-cy='data-table-sorting', :config="config", :data="table")
       template(#status='payload')
         div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
           span.-text--truncate {{ payload.status }}
@@ -168,6 +168,11 @@ script.
           },
         ],
       },
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.baseDataTable = this;
+      }
     },
   }).$mount("#base");
 
@@ -562,6 +567,11 @@ script.
         ],
       },
     },
+    mounted() {
+      if (window.Cypress) {
+        window.selectableDataTable = this;
+      }
+    },
   }).$mount("#selectable");
 
   new Vue({
@@ -638,6 +648,11 @@ script.
           },
         ],
       },
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.accordionDataTable = this;
+      }
     },
   }).$mount("#accordion");
 
@@ -798,6 +813,11 @@ script.
         ],
       },
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.sortingDataTable = this;
+      }
     },
   }).$mount("#sorting");
 
