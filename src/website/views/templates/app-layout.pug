@@ -11,14 +11,13 @@ wide_container: true
   h3 Base
   .example.-mb--3
     .chi-main
-      .chi-main__title.-no-back-link
-        .-d--flex.-flex--column
-          .-d--flex.-align-items--center
+      .chi-main__header
+        .chi-main__header-start
+          .chi-main__title
             .-text--h3.-text--boldest.-text--navy.-m--0.-pr--2 App title
       .chi-main__content
-        h1.-text--h4 App main content area
-        p.-text
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
+          | App content goes here
       footer.chi-footer
         .chi-footer__content
           .chi-footer__internal
@@ -84,16 +83,15 @@ wide_container: true
 
     :code(lang="html")
       <div class="chi-main">
-        <div class="chi-main__title -no-back-link">
-          <div class="-d--flex -flex--column">
-            <div class="-d--flex -align-items--center">
+        <div class="chi-main__header">
+          <div class="chi-main__header-start">
+            <div class="chi-main__title">
               <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">App title</div>
             </div>
           </div>
         </div>
         <div class="chi-main__content">
-          <h1 class="-text--h4">App main content area</h1>
-          <p class="-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <!-- App content goes here -->
         </div>
         <footer class="chi-footer">
           <div class="chi-footer__content">
@@ -182,18 +180,17 @@ wide_container: true
   h3 Base with back link
   .example.-mb--3
     .chi-main
-      .chi-main__title
-        .-d--flex.-flex--column
+      .chi-main__header
+        .chi-main__header-start
           a.chi-link(href='#')
             .chi-link__content
               i.chi-icon.icon-chevron-left.-xs
               span.-text--md Back link
-          .-d--flex.-align-items--center
+          .chi-main__title
             .-text--h3.-text--boldest.-text--navy.-m--0.-pr--2 App title
       .chi-main__content
-        h1.-text--h4 App main content area
-        p.-text
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
+          | App content goes here
       footer.chi-footer
         .chi-footer__content
           .chi-footer__internal
@@ -259,22 +256,21 @@ wide_container: true
 
     :code(lang="html")
       <div class="chi-main">
-        <div class="chi-main__title">
-          <div class="-d--flex -flex--column">
+        <div class="chi-main__header">
+          <div class="chi-main__header-start">
             <a class="chi-link" href="#">
               <div class="chi-link__content">
                 <i class="chi-icon icon-chevron-left -xs"></i>
                 <span class="-text--md">Back link</span>
               </div>
             </a>
-            <div class="-d--flex -align-items--center">
+            <div class="chi-main__title">
               <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">App title</div>
             </div>
           </div>
         </div>
         <div class="chi-main__content">
-          <h1 class="-text--h4">App main content area</h1>
-          <p class="-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <!-- App content goes here -->
         </div>
         <footer class="chi-footer">
           <div class="chi-footer__content">
@@ -363,19 +359,18 @@ wide_container: true
   h3 Base with back link and subtitle
   .example.-mb--3
     .chi-main
-      .chi-main__title
-        .-d--flex.-flex--column
+      .chi-main__header
+        .chi-main__header-start
           a.chi-link(href='#')
             .chi-link__content
               i.chi-icon.icon-chevron-left.-xs
               span.-text--md Back link
-          .-d--flex.-align-items--center
+          .chi-main__title
             .-text--h3.-text--boldest.-text--navy.-m--0.-br--1.-pr--2 App title
             .-text--md.-pl--2 App subtitle
       .chi-main__content
-        h1.-text--h4 App main content area
-        p.-text
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
+          | App content goes here
       footer.chi-footer
         .chi-footer__content
           .chi-footer__internal
@@ -441,23 +436,22 @@ wide_container: true
 
     :code(lang="html")
       <div class="chi-main">
-        <div class="chi-main__title">
-          <div class="-d--flex -flex--column">
+        <div class="chi-main__header">
+          <div class="chi-main__header-start">
             <a class="chi-link" href="#">
               <div class="chi-link__content">
                 <i class="chi-icon icon-chevron-left -xs"></i>
                 <span class="-text--md">Back link</span>
               </div>
             </a>
-            <div class="-d--flex -align-items--center">
+            <div class="chi-main__title">
               <div class="-text--h3 -text--boldest -text--navy -m--0 -br--1 -pr--2">App title</div>
               <div class="-text--md -pl--2">App subtitle</div>
             </div>
           </div>
         </div>
         <div class="chi-main__content">
-          <h1 class="-text--h4">App main content area</h1>
-          <p class="-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <!-- App content goes here -->
         </div>
         <footer class="chi-footer">
           <div class="chi-footer__content">
@@ -546,22 +540,21 @@ wide_container: true
   h3 Base with back link, subtitle and buttons
   .example.-mb--3
     .chi-main
-      .chi-main__title
-        .-d--flex.-flex--column
+      .chi-main__header
+        .chi-main__header-start
           a.chi-link(href='#')
             .chi-link__content
               i.chi-icon.icon-chevron-left.-xs
               span.-text--md Back title
-          .-d--flex.-align-items--center
+          .chi-main__title
             .-text--h3.-text--boldest.-text--navy.-m--0.-br--1.-pr--2 App title
             .-text--md.-pl--2 App subtitle
-        div
+        .chi-main__header-end
           button.chi-button.-primary.-lg.-uppercase.-px--4 Primary
           button.chi-button.-primary.-outline.-lg.-bg--white.-uppercase.-px--4.-ml--1 Secondary
       .chi-main__content
-        h1.-text--h4 App main content area
-        p.-text
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
+          | App content goes here
       footer.chi-footer
         .chi-footer__content
           .chi-footer__internal
@@ -627,27 +620,26 @@ wide_container: true
 
     :code(lang="html")
       <div class="chi-main">
-        <div class="chi-main__title">
-          <div class="-d--flex -flex--column">
+        <div class="chi-main__header">
+          <div class="chi-main__header-start">
             <a class="chi-link" href="#">
               <div class="chi-link__content">
                 <i class="chi-icon icon-chevron-left -xs"></i>
                 <span class="-text--md">Back title</span>
               </div>
             </a>
-            <div class="-d--flex -align-items--center">
+            <div class="chi-main__title">
               <div class="-text--h3 -text--boldest -text--navy -m--0 -br--1 -pr--2">App title</div>
               <div class="-text--md -pl--2">App subtitle</div>
             </div>
           </div>
-          <div>
+          <div class="chi-main__header-end">
             <button class="chi-button -primary -lg -uppercase -px--4">Primary</button>
             <button class="chi-button -primary -outline -lg -bg--white -uppercase -px--4 -ml--1">Secondary</button>
           </div>
         </div>
         <div class="chi-main__content">
-          <h1 class="-text--h4">App main content area</h1>
-          <p class="-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <!-- App content goes here -->
         </div>
         <footer class="chi-footer">
           <div class="chi-footer__content">
@@ -736,22 +728,21 @@ wide_container: true
   h3 Base with back link, subtitle, buttons and page-level actions
   .example.-mb--3
     .chi-main
-      .chi-main__title
-        .-d--flex.-flex--column
+      .chi-main__header
+        .chi-main__header-start
           a.chi-link(href='#')
             .chi-link__content
               i.chi-icon.icon-chevron-left.-xs
               span.-text--md Back title
-          .-d--flex.-align-items--center
+          .chi-main__title
             .-text--h3.-text--boldest.-text--navy.-m--0.-br--1.-pr--2 App title
             .-text--md.-pl--2 App subtitle
-        div
+        .chi-main__header-end
           button.chi-button.-primary.-lg.-uppercase.-px--4 Primary
           button.chi-button.-primary.-outline.-lg.-bg--white.-uppercase.-px--4.-ml--1 Secondary
       .chi-main__content
-        h1.-text--h4 App main content area
-        p.-text
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
+          | App content goes here
         .-d--flex.-align-items--center.-justify-content--end.-py--3.-my--2.-bt--1
           button.chi-button.-primary.-outline.-lg.-uppercase.-px--4.-bg--white Cancel
           button.chi-button.-primary.-lg.-uppercase.-px--4.-ml--1 Submit
@@ -820,27 +811,26 @@ wide_container: true
 
     :code(lang="html")
       <div class="chi-main">
-        <div class="chi-main__title">
-          <div class="-d--flex -flex--column">
+        <div class="chi-main__header">
+          <div class="chi-main__header-start">
             <a class="chi-link" href="#">
               <div class="chi-link__content">
                 <i class="chi-icon icon-chevron-left -xs"></i>
                 <span class="-text--md">Back title</span>
               </div>
             </a>
-            <div class="-d--flex -align-items--center">
+            <div class="chi-main__title">
               <div class="-text--h3 -text--boldest -text--navy -m--0 -br--1 -pr--2">App title</div>
               <div class="-text--md -pl--2">App subtitle</div>
             </div>
             </div>
-            <div>
+            <div class="chi-main__header-end">
               <button class="chi-button -primary -lg -uppercase -px--4">Primary</button>
               <button class="chi-button -primary -outline -lg -bg--white -uppercase -px--4 -ml--1">Secondary</button>
             </div>
         </div>
         <div class="chi-main__content">
-          <h1 class="-text--h4">App main content area</h1>
-          <p class="-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <!-- App content goes here -->
           <div class="-d--flex -align-items--center -justify-content--end -py--3 -my--2 -bt--1">
             <button class="chi-button -primary -outline -lg -uppercase -px--4 -bg--white">Cancel</button>
             <button class="chi-button -primary -lg -uppercase -px--4 -ml--1">Submit</button>
