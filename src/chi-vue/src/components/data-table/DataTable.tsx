@@ -242,7 +242,7 @@ export default class DataTable extends Vue {
     ].join(' ');
   }
 
-  _expansionButton(rowId: string) {
+  _expansionButton(rowData: DataTableRow) {
     const expansionIcons: DataTableExpansionIcons = {
       portal: {
         expanded: 'minus',
@@ -265,14 +265,14 @@ export default class DataTable extends Vue {
       -sm
       `}
         aria-label="Expand row"
-        data-target={`#${rowId}-content`}
-        onClick={() => this.toggleRow(rowId.toString())}>
+        data-target={`#${rowData.rowId}-content`}
+        onClick={() => this.toggleRow(rowData)}>
         <div class={BUTTON_CLASSES.CONTENT}>
           <i
             class={`
           ${ICON_CLASS}
           icon-${
-            this.accordionsExpanded.includes(rowId)
+            this.accordionsExpanded.includes(rowData.rowId)
               ? expansionIcons[iconStyle].expanded
               : expansionIcons[iconStyle].collapsed
           }
@@ -284,10 +284,10 @@ export default class DataTable extends Vue {
     );
   }
 
-  _expansionButtonCell(id: string) {
+  _expansionButtonCell(rowData: DataTableRow) {
     return (
       <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`} role="cell">
-        {this._expansionButton(id)}
+        {this._expansionButton(rowData)}
       </div>
     );
   }
@@ -315,7 +315,7 @@ export default class DataTable extends Vue {
   }
 
   _calculateNumberOfPages() {
-    const serverSide = this.$props.config.mode === 'serverside';
+    const serverSide = this.mode === 'serverside';
     const pages = this.$props.config.pagination.pages;
 
     if (serverSide && pages && typeof pages === 'number') {
@@ -359,7 +359,7 @@ export default class DataTable extends Vue {
         rowData && typeof rowData === 'object' && rowData.rowNumber
           ? `checkbox-select-${this._rowId(rowData.rowNumber)}`
           : selectAll
-          ? `checkbox-select-all-rows`
+          ? `checkbox-${this._dataTableId}-select-all-rows`
           : '';
 
       return (
@@ -393,8 +393,8 @@ export default class DataTable extends Vue {
     }
   }
 
-  toggleRow(id: string) {
-    const rowData = this._serializedDataBody.find((row: DataTableRow) => row.rowId === id);
+  toggleRow(rowData: DataTableRow) {
+    const id = rowData.rowId.toString();
 
     if (this.accordionsExpanded.includes(id)) {
       this.accordionsExpanded.splice(this.accordionsExpanded.indexOf(id), 1);
@@ -455,7 +455,7 @@ export default class DataTable extends Vue {
         if (rowLevel === 'grandChild' || rowLevel === 'child') {
           rowCells.push(<div class="chi-data-table__cell -expandable"></div>);
         } else {
-          rowCells.push(this._expansionButtonCell(rowId));
+          rowCells.push(this._expansionButtonCell(bodyRow));
         }
         rowAccordionContent.push(
           this._rowAccordionContent(bodyRow.nestedContent, rowLevel === 'child' ? 'child' : 'parent')
@@ -502,7 +502,7 @@ export default class DataTable extends Vue {
       }
 
       const rowChildExpansion =
-        rowLevel === 'child' && cellIndex === 0 && bodyRow.nestedContent ? this._expansionButton(rowId) : null;
+        rowLevel === 'child' && cellIndex === 0 && bodyRow.nestedContent ? this._expansionButton(bodyRow) : null;
 
       rowCells.push(
         <div
@@ -540,7 +540,7 @@ export default class DataTable extends Vue {
         }
         ${this.$props.config.style.portal ? `-${this.$props.config.style.size}` : ''}
         ${this.selectedRows.includes(bodyRow.rowId) || bodyRow.active ? ACTIVE_CLASS : ''}
-        ${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}
+        ${this._expandable ? `${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}` : ''}
         `}
         role="row">
         {rowCells}
@@ -592,7 +592,7 @@ export default class DataTable extends Vue {
 
     if (
       (pages === 1 && this.config.pagination.hideOnSinglePage) ||
-      (this.$props.data.body.length === 0 && this.$props.config.mode !== 'serverside')
+      (this.$props.data.body.length === 0 && this.mode === 'clientside')
     ) {
       return null;
     } else {
@@ -703,6 +703,7 @@ export default class DataTable extends Vue {
     let rowNumber = 0;
 
     this._serializedDataBody = [];
+    this.selectedRows = [];
     this._expandable =
       this.$props.config.reserveExpansionSlot ||
       // eslint-disable-next-line
@@ -949,7 +950,7 @@ export default class DataTable extends Vue {
           columnHeadSortButton.removeAttribute('data-sort');
           (sortIcon as HTMLElement).removeAttribute('style');
           columnHeadSortButton.blur();
-          if (this.$props.config.mode !== 'serverside') {
+          if (this.mode === 'clientside') {
             if (this._sortedData) {
               this._sortedData.length = 0;
             }
@@ -996,7 +997,7 @@ export default class DataTable extends Vue {
       pagination = this._pagination();
 
     return (
-      <div class={classes} role="table" ref="dataTable">
+      <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
         {toolbar}
         {head}
         {body}

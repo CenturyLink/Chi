@@ -30,11 +30,6 @@ export const exampleConfig: DataTableConfig = {
     xl: [15, 5, 10, 15, 15, 15, 15, 5],
   },
   resultsPerPage: 10,
-  defaultSort: {
-    key: 'ticketId',
-    sortBy: 'id',
-    direction: 'ascending',
-  },
 };
 
 export const exampleTableHead = {
@@ -56,14 +51,13 @@ export const exampleTableHead = {
 
 export const exampleTablePage1 = [
   {
-    id: 'NTM000021063',
+    id: 'NTN000021063',
     nestedContent: {
       template: 'loadingSkeleton',
     },
     active: false,
-    selected: true,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021063' } },
+      { template: 'ticketId', payload: { id: 'NTN000021063' } },
       {
         template: 'icon',
         payload: { icon: 'circle-check', color: 'success' },
@@ -75,16 +69,16 @@ export const exampleTablePage1 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021063' },
+        payload: { id: 'NTN000021063' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021071',
+    id: 'NTN000021071',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021071' } },
+      { template: 'ticketId', payload: { id: 'NTN000021071' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation B',
@@ -93,19 +87,19 @@ export const exampleTablePage1 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021071' },
+        payload: { id: 'NTN000021071' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021064',
+    id: 'NTN000021064',
     active: false,
     nestedContent: {
       value: 'asdasdasd',
     },
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021064' } },
+      { template: 'ticketId', payload: { id: 'NTN000021064' } },
       '',
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation B',
@@ -114,16 +108,16 @@ export const exampleTablePage1 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021064' },
+        payload: { id: 'NTN000021064' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021065',
+    id: 'NTN000021065',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021065' } },
+      { template: 'ticketId', payload: { id: 'NTN000021065' } },
       {
         label: 'Alert Column',
         template: 'icon',
@@ -136,22 +130,22 @@ export const exampleTablePage1 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021065' },
+        payload: { id: 'NTN000021065' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021066',
+    id: 'NTN000021066',
     active: false,
     nestedContent: {
       template: 'accordionContent',
       payload: {
-        id: 'NTM000021066',
+        id: 'NTN000021066',
       },
     },
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021066' } },
+      { template: 'ticketId', payload: { id: 'NTN000021066' } },
       '',
       { template: 'status', payload: { status: 'active' } },
       'Colocation a',
@@ -160,24 +154,24 @@ export const exampleTablePage1 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021066' },
+        payload: { id: 'NTN000021066' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM0000210662',
+    id: 'NTN0000210662',
     active: false,
     nestedContent: {
       table: {
         data: [
           {
-            id: 'NTM0000210661',
+            id: 'NTN0000210661',
             active: false,
             data: [
               {
                 template: 'ticketId',
-                payload: { id: 'NTM0000210661' },
+                payload: { id: 'NTN0000210661' },
               },
               {
                 label: 'Alerts',
@@ -195,13 +189,13 @@ export const exampleTablePage1 = [
               'SVUJW034781A',
               {
                 template: 'actions',
-                payload: { id: 'NTM0000210661' },
+                payload: { id: 'NTN0000210661' },
                 align: 'right',
               },
             ],
           },
           {
-            id: 'NTM00002106611',
+            id: 'NTN00002106611',
             active: false,
             nestedContent: {
               table: {
@@ -212,7 +206,7 @@ export const exampleTablePage1 = [
                     data: [
                       {
                         template: 'ticketId',
-                        payload: { id: 'NTM0000210661' },
+                        payload: { id: 'NTN0000210661' },
                       },
                       {
                         label: 'Alerts',
@@ -233,7 +227,7 @@ export const exampleTablePage1 = [
                       'SVUJW034781A',
                       {
                         template: 'actions',
-                        payload: { id: 'NTM0000210661' },
+                        payload: { id: 'NTN0000210661' },
                         align: 'right',
                       },
                     ],
@@ -250,7 +244,7 @@ export const exampleTablePage1 = [
                             data: [
                               {
                                 template: 'ticketId',
-                                payload: { id: 'NTM00002106611' },
+                                payload: { id: 'NTN00002106611' },
                               },
                               {
                                 label: 'Alerts',
@@ -271,7 +265,7 @@ export const exampleTablePage1 = [
                               'SVUJW034781A',
                               {
                                 template: 'actions',
-                                payload: { id: 'NTM00002106611' },
+                                payload: { id: 'NTN00002106611' },
                                 align: 'right',
                               },
                             ],
@@ -282,7 +276,7 @@ export const exampleTablePage1 = [
                             data: [
                               {
                                 template: 'ticketId',
-                                payload: { id: 'NTM00002106621' },
+                                payload: { id: 'NTN00002106621' },
                               },
                               {
                                 label: 'Alerts',
@@ -303,7 +297,7 @@ export const exampleTablePage1 = [
                               'SVUJW034781A',
                               {
                                 template: 'actions',
-                                payload: { id: 'NTM00002106621' },
+                                payload: { id: 'NTN00002106621' },
                                 align: 'right',
                               },
                             ],
@@ -314,7 +308,7 @@ export const exampleTablePage1 = [
                     data: [
                       {
                         template: 'ticketId',
-                        payload: { id: 'NTM0000210662' },
+                        payload: { id: 'NTN0000210662' },
                       },
                       {
                         label: 'Alerts',
@@ -335,7 +329,7 @@ export const exampleTablePage1 = [
                       'SVUJW034781A',
                       {
                         template: 'actions',
-                        payload: { id: 'NTM0000210662' },
+                        payload: { id: 'NTN0000210662' },
                         align: 'right',
                       },
                     ],
@@ -346,7 +340,7 @@ export const exampleTablePage1 = [
             data: [
               {
                 template: 'ticketId',
-                payload: { id: 'NTM0000210662' },
+                payload: { id: 'NTN0000210662' },
               },
               {
                 label: 'Alerts',
@@ -364,7 +358,7 @@ export const exampleTablePage1 = [
               'SVUJW034781A',
               {
                 template: 'actions',
-                payload: { id: 'NTM0000210662' },
+                payload: { id: 'NTN0000210662' },
                 align: 'right',
               },
             ],
@@ -373,7 +367,7 @@ export const exampleTablePage1 = [
       },
     },
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021067' } },
+      { template: 'ticketId', payload: { id: 'NTN000021067' } },
       '',
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation b',
@@ -382,16 +376,16 @@ export const exampleTablePage1 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021067' },
+        payload: { id: 'NTN000021067' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021072',
+    id: 'NTN000021072',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021072' } },
+      { template: 'ticketId', payload: { id: 'NTN000021072' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation c',
@@ -400,16 +394,16 @@ export const exampleTablePage1 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021072' },
+        payload: { id: 'NTN000021072' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM0000210651',
+    id: 'NTN0000210651',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM0000210651' } },
+      { template: 'ticketId', payload: { id: 'NTN0000210651' } },
       {
         label: 'Alerts',
         template: 'icon',
@@ -422,16 +416,16 @@ export const exampleTablePage1 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM0000210651' },
+        payload: { id: 'NTN0000210651' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021068',
+    id: 'NTN000021068',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021068' } },
+      { template: 'ticketId', payload: { id: 'NTN000021068' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
@@ -440,16 +434,16 @@ export const exampleTablePage1 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021068' },
+        payload: { id: 'NTN000021068' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021069',
+    id: 'NTN000021069',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021069' } },
+      { template: 'ticketId', payload: { id: 'NTN000021069' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
@@ -458,7 +452,7 @@ export const exampleTablePage1 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021069' },
+        payload: { id: 'NTN000021069' },
         align: 'right',
       },
     ],
@@ -467,10 +461,10 @@ export const exampleTablePage1 = [
 
 export const exampleTablePage2 = [
   {
-    id: 'NTM000021070',
+    id: 'NTN000021070',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021070' } },
+      { template: 'ticketId', payload: { id: 'NTN000021070' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
@@ -479,16 +473,16 @@ export const exampleTablePage2 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021070' },
+        payload: { id: 'NTN000021070' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021073',
+    id: 'NTN000021073',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021073' } },
+      { template: 'ticketId', payload: { id: 'NTN000021073' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
@@ -497,16 +491,16 @@ export const exampleTablePage2 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021073' },
+        payload: { id: 'NTN000021073' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021074',
+    id: 'NTN000021074',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021074' } },
+      { template: 'ticketId', payload: { id: 'NTN000021074' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
@@ -515,16 +509,16 @@ export const exampleTablePage2 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021074' },
+        payload: { id: 'NTN000021074' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021075',
+    id: 'NTN000021075',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021075' } },
+      { template: 'ticketId', payload: { id: 'NTN000021075' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
@@ -533,16 +527,16 @@ export const exampleTablePage2 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021075' },
+        payload: { id: 'NTN000021075' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021076',
+    id: 'NTN000021076',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021076' } },
+      { template: 'ticketId', payload: { id: 'NTN000021076' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
@@ -551,16 +545,16 @@ export const exampleTablePage2 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021076' },
+        payload: { id: 'NTN000021076' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021077',
+    id: 'NTN000021077',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021077' } },
+      { template: 'ticketId', payload: { id: 'NTN000021077' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
@@ -569,16 +563,16 @@ export const exampleTablePage2 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021077' },
+        payload: { id: 'NTN000021077' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021078',
+    id: 'NTN000021078',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021078' } },
+      { template: 'ticketId', payload: { id: 'NTN000021078' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
@@ -587,16 +581,16 @@ export const exampleTablePage2 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021078' },
+        payload: { id: 'NTN000021078' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021079',
+    id: 'NTN000021079',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021079' } },
+      { template: 'ticketId', payload: { id: 'NTN000021079' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
@@ -605,16 +599,16 @@ export const exampleTablePage2 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021079' },
+        payload: { id: 'NTN000021079' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021080',
+    id: 'NTN000021080',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021080' } },
+      { template: 'ticketId', payload: { id: 'NTN000021080' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
@@ -623,16 +617,16 @@ export const exampleTablePage2 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021080' },
+        payload: { id: 'NTN000021080' },
         align: 'right',
       },
     ],
   },
   {
-    id: 'NTM000021081',
+    id: 'NTN000021081',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021081' } },
+      { template: 'ticketId', payload: { id: 'NTN000021081' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
@@ -641,7 +635,7 @@ export const exampleTablePage2 = [
       'SVUJW034781A',
       {
         template: 'actions',
-        payload: { id: 'NTM000021081' },
+        payload: { id: 'NTN000021081' },
         align: 'right',
       },
     ],

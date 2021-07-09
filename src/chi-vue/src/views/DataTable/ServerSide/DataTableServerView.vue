@@ -1,7 +1,13 @@
 <template>
   <div id="tadataTableServerView">
     <h2>Data Table Server Side Pagination</h2>
-    <ChiDataTable :data="table" :config="config" ref="dataTable">
+    <ChiDataTable
+      :data="table"
+      :config="config"
+      ref="dataTable"
+      @chiPageChange="e => pagination(e)"
+      @chiSelectedRowsChange="e => selection(e)"
+    >
       <template #icon="payload">
         <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`"></i>
       </template>
@@ -52,7 +58,7 @@ import SearchInput from '../../../components/search-input/SearchInput';
 import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
 import { exampleConfig, exampleTableHead, exampleTablePage1, exampleTablePage2 } from './fixtures';
-import { DataTablePageChange, DataTableSorting, DATA_TABLE_EVENTS, PAGINATION_EVENTS } from '../../../constants/events';
+import { DataTablePageChange, DataTableSorting } from '../../../constants/events';
 import { DataTableRow } from '../../../constants/types';
 
 @Component({
@@ -81,54 +87,62 @@ export default class DataTableView extends Vue {
     return page === 1 ? exampleTablePage1 : page === 2 ? exampleTablePage2 : null;
   }
 
-  mounted() {
-    (this.$refs.dataTable as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (e: DataTablePageChange) => {
-      // A fake API call to swap the page respective data provided to the Data Table
-      const apiResponsePageData = this.fakeApiCall(e.page);
+  pagination(e: DataTablePageChange) {
+    // A fake API call to swap the page respective data provided to the Data Table
+    const apiResponsePageData = this.fakeApiCall(e.page);
 
-      this.$data.config = {
-        ...this.$data.config,
-        pagination: {
-          ...this.$data.config.pagination,
-          activePage: e.page,
-        },
-      };
-      this.$data.table = {
-        ...this.$data.table,
-        body: apiResponsePageData,
-      };
-    });
-    (this.$refs.dataTable as Vue).$on(DATA_TABLE_EVENTS.DATA_SORTING, (e: DataTableSorting) => {
-      // Perform custom Server Side sorting based on the column and direction data you receive from data table event
-      console.log(e);
-    });
-    (this.$refs.dataTable as Vue).$on(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, (selectedRows: DataTableRow[]) => {
-      const copiedTableBodyData = [...this.$data.table.body];
-      const markRowAsSelected = (levelData: DataTableRow[] | undefined, id: string) => {
-        const dataRow = levelData?.find((row: DataTableRow) => row.id === id);
+    this.$data.config = {
+      ...this.$data.config,
+      pagination: {
+        ...this.$data.config.pagination,
+        activePage: e.page,
+      },
+    };
+    this.$data.table = {
+      ...this.$data.table,
+      body: apiResponsePageData,
+    };
+  }
 
-        if (dataRow) {
-          const nestedRows =
-            dataRow.nestedContent && dataRow.nestedContent.table && dataRow.nestedContent.table.data
-              ? dataRow.nestedContent.table.data
-              : undefined;
+  sorting(e: DataTableSorting) {
+    // Perform custom Server Side sorting based on the column and direction data you receive from data table event
+    console.log(e);
+  }
 
-          dataRow.selected = true;
+  selection(selectedRows: DataTableRow[]) {
+    const copiedTableBodyData = [...this.$data.table.body];
+    const flagRowSelection = (levelData: DataTableRow[], id: string, action: 'select' | 'deselect') => {
+      const dataRow = levelData.find((row: DataTableRow) => row.id === id);
 
-          if (nestedRows) {
-            dataRow.nestedContent.table.data.forEach((subRow: DataTableRow) =>
-              markRowAsSelected(nestedRows, subRow.id)
-            );
-          }
+      if (dataRow) {
+        const nestedRows =
+          dataRow.nestedContent && dataRow.nestedContent.table && dataRow.nestedContent.table.data
+            ? dataRow.nestedContent.table.data
+            : undefined;
+
+        dataRow.selected = action === 'select';
+
+        if (nestedRows) {
+          dataRow.nestedContent.table.data.forEach((subRow: DataTableRow) =>
+            flagRowSelection(nestedRows, subRow.id, action)
+          );
         }
-      };
+      }
+    };
 
-      selectedRows.forEach((row: DataTableRow) => markRowAsSelected(copiedTableBodyData, row.id));
-      this.$data.table = {
-        ...this.$data.table,
-        body: copiedTableBodyData,
-      };
+    copiedTableBodyData.forEach((row: DataTableRow) => {
+      const isSelected = selectedRows?.some((selectedRow: DataTableRow) => selectedRow.id === row.id);
+
+      if (isSelected) {
+        flagRowSelection(copiedTableBodyData, row.id, 'select');
+      } else {
+        flagRowSelection(copiedTableBodyData, row.id, 'deselect');
+      }
     });
+    this.$data.table = {
+      ...this.$data.table,
+      body: copiedTableBodyData,
+    };
   }
 }
 </script>
