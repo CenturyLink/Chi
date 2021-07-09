@@ -6,17 +6,38 @@
   height: 100%;
   margin-top: 2.5rem;
 
-  &__title {
-    align-items: center;
+  &__header {
+    align-items: flex-start;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
 
-    &.-no-back-link {
-      padding-top: 1.5rem;
+    &-start {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-end {
+      margin-top: 1rem;
+
+      @include respond-to(md) {
+        margin-top: 0;
+      }
+    }
+
+    @include respond-to(md) {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
     }
   }
 
-  &__title,
+  &__title {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__header,
   &__content {
     margin: 0 1rem 1rem;
 
