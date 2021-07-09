@@ -1,5 +1,6 @@
 const ACTIVE_CLASS = '-active';
 const INVERSE_CLASS = '-inverse';
+const ICON_BUTTON = '-icon';
 const PAGINATION_CLASSES = {
   PAGINATION: 'chi-pagination',
   RESULTS: 'chi-pagination__results',
@@ -11,6 +12,10 @@ const PAGINATION_CLASSES = {
   CENTER: 'chi-pagination__center',
   END: 'chi-pagination__end',
   JUMPER: 'chi-pagination__jumper'
+};
+const PAGINATION_EVENTS = {
+  PAGE_CHANGE: 'chiPageChange',
+  PAGE_SIZE: 'chiPageSizeChange'
 };
 
 const hasClassAssertion = (el, value) => {
@@ -84,11 +89,12 @@ describe('Pagination', () => {
       });
     });
 
-    it('should show current page with .active class', () => {
+    it(`should show current page with .${ACTIVE_CLASS} class`, () => {
       const rootSelectors = [
         `[data-cy='pagination-base']`,
         `[data-cy='pagination-base-inverse']`
       ];
+
       rootSelectors.forEach(sel => {
         cy.get(`${sel}`)
           .find(`[data-page='3']`)
@@ -99,12 +105,59 @@ describe('Pagination', () => {
 
     it('should show the correct number of pages', () => {
       const centerSelectors = [`@paginationCenter`, `@paginationCenterInverse`];
+
       centerSelectors.forEach(sel => {
         cy.get(`${sel}`)
           .find('.chi-button-group')
           .children()
           .should('have.length', '7');
       });
+    });
+
+    it('should trigger the appropriate event', () => {
+      cy.window()
+        .its('basePagination')
+        .then(basePagination => {
+          const component = basePagination.$refs.base;
+          const spy = cy.spy();
+
+          component.$on(`${PAGINATION_EVENTS.PAGE_CHANGE}`, spy);
+          cy.get(`@paginationCenter`)
+            .find(`.${ICON_BUTTON}`)
+            .as('paginationIcons')
+            .eq(1)
+            .click()
+            .then(() => {
+              expect(spy).to.be.calledOnce;
+            });
+          cy.get(`@paginationCenter`)
+            .find(`.${ICON_BUTTON}`)
+            .as('paginationIcons')
+            .eq(0)
+            .click()
+            .then(() => {
+              expect(spy).to.be.calledTwice;
+            });
+        });
+    });
+
+    it(`should change the current .${ACTIVE_CLASS} class on page change`, () => {
+      cy.get(`[data-cy='pagination-base']`)
+        .find(`[data-page='4']`)
+        .as('fourthPage')
+        .eq(0)
+        .click()
+        .then(() => {
+          hasClassAssertion('@fourthPage', `${ACTIVE_CLASS}`);
+        });
+      cy.get(`[data-cy='pagination-base']`)
+        .find(`[data-page='3']`)
+        .as('thirdPage')
+        .eq(0)
+        .click()
+        .then(() => {
+          hasClassAssertion('@thirdPage', `${ACTIVE_CLASS}`);
+        });
     });
   });
 
@@ -114,9 +167,10 @@ describe('Pagination', () => {
         `[data-cy='pagination-disabled-prev']`,
         `[data-cy='pagination-disabled-prev-inverse']`
       ];
+
       prevSelectors.forEach(sel => {
         cy.get(`${sel}`)
-          .find(`.-icon`)
+          .find(`.${ICON_BUTTON}`)
           .eq(0)
           .should('have.attr', 'disabled');
       });
@@ -127,9 +181,10 @@ describe('Pagination', () => {
         `[data-cy='pagination-disabled-next']`,
         `[data-cy='pagination-disabled-next-inverse']`
       ];
+
       nextSelectors.forEach(sel => {
         cy.get(`${sel}`)
-          .find(`.-icon`)
+          .find(`.${ICON_BUTTON}`)
           .eq(1)
           .should('have.attr', 'disabled');
       });
@@ -142,6 +197,7 @@ describe('Pagination', () => {
         `[data-cy='pagination-truncation']`,
         `[data-cy='pagination-truncation-inverse']`
       ];
+
       truncationSelectors.forEach(sel => {
         cy.get(`${sel}`)
           .find(`.${PAGINATION_CLASSES.CENTER}`)
@@ -156,6 +212,7 @@ describe('Pagination', () => {
         `[data-cy='pagination-double-truncation']`,
         `[data-cy='pagination-double-truncation-inverse']`
       ];
+
       doubleTruncationSelectors.forEach(sel => {
         cy.get(`${sel}`)
           .find(`.${PAGINATION_CLASSES.CENTER}`)
@@ -172,6 +229,7 @@ describe('Pagination', () => {
         `[data-cy='pagination-results-label']`,
         `[data-cy='pagination-results-label-inverse']`
       ];
+
       selectors.forEach(sel => {
         cy.get(`${sel}`)
           .find(`.${PAGINATION_CLASSES.RESULTS}`)
@@ -186,6 +244,7 @@ describe('Pagination', () => {
         `[data-cy='pagination-page-size']`,
         `[data-cy='pagination-page-size-inverse']`
       ];
+
       selectors.forEach(sel => {
         cy.get(`${sel}`)
           .find(`.${PAGINATION_CLASSES.PAGE_SIZE}`)
@@ -196,6 +255,46 @@ describe('Pagination', () => {
           .should('have.value', '20');
       });
     });
+
+    it('should trigger the appropriate event', () => {
+      cy.window()
+        .its('pageSizePagination')
+        .then(pageSizePagination => {
+          const component = pageSizePagination.$refs.pageSize;
+          const spy = cy.spy();
+
+          component.$on(`${PAGINATION_EVENTS.PAGE_SIZE}`, spy);
+          cy.get(`[data-cy='pagination-page-size']`)
+            .find(`.${PAGINATION_CLASSES.PAGE_SIZE} select`)
+            .as('pageSelect')
+            .select('40')
+            .then(() => {
+              expect(spy).to.be.calledOnce;
+            });
+          cy.get(`@pageSelect`)
+            .select('20')
+            .then(() => {
+              expect(spy).to.be.calledTwice;
+            });
+        });
+    });
+
+    it('should change page size on select change', () => {
+      cy.get(`[data-cy='pagination-page-size']`)
+        .find(`.${PAGINATION_CLASSES.PAGE_SIZE} select`)
+        .as('pageSelect')
+        .should('contain', '20');
+      cy.get('@pageSelect')
+        .select('40')
+        .then(() => {
+          cy.get('@pageSelect').should('contain', '40');
+        });
+      cy.get(`@pageSelect`)
+        .select('20')
+        .then(() => {
+          cy.get('@pageSelect').should('contain', '20');
+        });
+    });
   });
 
   describe('page jumper', () => {
@@ -204,6 +303,7 @@ describe('Pagination', () => {
         `[data-cy='pagination-page-jumper']`,
         `[data-cy='pagination-page-jumper-inverse']`
       ];
+
       selectors.forEach(sel => {
         cy.get(`${sel}`)
           .find(`.${PAGINATION_CLASSES.JUMPER}`)
@@ -224,6 +324,7 @@ describe('Pagination', () => {
           `[data-cy='pagination-compact-base']`,
           `[data-cy='pagination-compact-page-jumper-inverse']`
         ];
+
         selectors.forEach(sel => {
           cy.get(`${sel}`).should('have.class', PAGINATION_CLASSES.COMPACT);
         });
@@ -236,6 +337,7 @@ describe('Pagination', () => {
           `[data-cy='pagination-compact-page-jumper']`,
           `[data-cy='pagination-compact-page-jumper-inverse']`
         ];
+
         selectors.forEach(sel => {
           cy.get(`${sel}`)
             .find(`.${PAGINATION_CLASSES.JUMPER}`)
@@ -256,6 +358,7 @@ describe('Pagination', () => {
           `[data-cy='pagination-compact-first-last']`,
           `[data-cy='pagination-compact-first-last-inverse']`
         ];
+
         selectors.forEach(sel => {
           cy.get(`${sel}`)
             .find("[data-page='1']")
@@ -265,10 +368,31 @@ describe('Pagination', () => {
             .should('have.length', 2);
         });
       });
+
+      it('should go to first and last pages on click', () => {
+        cy.get(`[data-cy='pagination-compact-first-last']`)
+          .find("[data-page='1']")
+          .first()
+          .click()
+          .then(() => {
+            cy.get(`[data-cy='pagination-compact-first-last']`)
+              .find(`.${PAGINATION_CLASSES.JUMPER} input`)
+              .as('input')
+              .should('have.value', '1');
+          });
+        cy.get(`[data-cy='pagination-compact-first-last']`)
+          .find("[data-page='3']")
+          .last()
+          .click()
+          .then(() => {
+            cy.get('@input').should('have.value', '3');
+          });
+      });
     });
 
     describe('additional sizes', () => {
       const sizes = ['-sm', '-md', '-lg', '-xl'];
+
       sizes.forEach(size => {
         it(`should have class .${size}`, () => {
           hasClassAssertion(
