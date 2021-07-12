@@ -1,0 +1,133 @@
+script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
+script(src="../../chi-vue/umd/chi-vue.umd.js")
+
+h2 Drawer
+h3 Left Drawer
+.test-drawer.-p--3.-w--100
+  .-position--relative.-w--100(style='height: 300px;')
+    #left
+      chi-vue-drawer.-position--absolute(data-cy="drawer-left" :active='true' position='left')
+        .-px--2 Left positioned Drawer content here
+
+h3 Right Drawer
+.test-drawer.-p--3.-w--100
+  .-position--relative.-w--100(style='height: 300px;')
+    #right
+      chi-vue-drawer.-position--absolute(data-cy="drawer-right" :active='true' position='right')
+        .-px--2 Right positioned Drawer content here
+
+h3 Top Drawer
+.test-drawer.-p--3.-w--100
+  .-position--relative.-w--100(style='height: 500px')
+    #top
+      chi-vue-drawer.-position--absolute(data-cy="drawer-top" :active='true' position='top')
+        .-px--2 Top positioned Drawer content here
+
+h3 Bottom Drawer
+.test-drawer.-p--3.-w--100
+  .-position--relative.-w--100(style='height: 500px;')
+    #bottom
+      chi-vue-drawer.-position--absolute(data-cy="drawer-bottom" :active='true' position='bottom')
+        .-px--2 Bottom positioned Drawer content here
+
+h3 Drawer Title
+.test-drawer.-p--3.-w--100
+  .-position--relative.-w--100(style='height: 300px;')
+    #title
+      chi-vue-drawer.-position--absolute(data-cy="drawer-title" :active='true' position='left' title="Drawer title here")
+        .-px--2 Drawer content here
+
+h3 Non-closable
+.test-drawer.-p--3.-w--100
+  .-position--relative.-w--100(style='height: 300px;')
+    #nonClosable
+      chi-vue-drawer.-position--absolute(data-cy="drawer-non-closable" :active='true' position='left' :non-closable="true")
+        .-px--2 Drawer content here
+
+h3 No Header
+.test-drawer.-p--3.-w--100
+  .-position--relative.-w--100(style='height: 300px;')
+    #noHeader
+      chi-vue-drawer.-position--absolute(data-cy="drawer-no-header" :active='true' position='left' :no-header="true")
+        .-px--2 Drawer content here
+
+h3 Portal Left position
+.test-drawer.-p--3.-w--100
+  .-position--relative.-w--100(style='height: 300px;')
+    #portalLeft
+      chi-vue-drawer.-position--absolute(data-cy="drawer-portal-left" :active='true' position='left' title="Drawer title here" :portal="true")
+        .-px--2 Drawer content here
+
+h3 Portal Right position
+.test-drawer.-p--3.-w--100
+  .-position--relative.-w--100(style='height: 300px;')
+    #portalRight
+      chi-vue-drawer.-position--absolute(data-cy="drawer-portal-right" :active='true' position='right' title="Drawer title here" :portal="true")
+        .-px--2 Drawer content here
+
+h3 Portal Top position
+.test-drawer.-p--3.-w--100
+  .-position--relative.-w--100(style='height: 500px;')
+    #portalTop
+      chi-vue-drawer.-position--absolute(data-cy="drawer-portal-top" :active='true' position='top' title="Drawer title here" :portal="true")
+        .-px--2 Drawer content here
+
+h3 Portal Bottom position
+.test-drawer.-p--3.-w--100
+  .-position--relative.-w--100(style='height: 500px;')
+    #portalBottom
+      chi-vue-drawer.-position--absolute(data-cy="drawer-portal-bottom" :active='true' position='bottom' title="Drawer title here" :portal="true")
+        .-px--2 Drawer content here
+
+h3 Show / Hide Drawer
+.test-drawer.-p--3.-w--100#showHide(data-cy="drawer-show-hide-container")
+  button(id="openDrawerBtn" class="chi-button" @click="() => toggleDrawer()") Click me to open the Drawer
+  .-position--relative.-w--100(style='height: 300px;')
+    chi-vue-drawer.-position--absolute(ref="drawer" data-cy="drawer-show-hide" position='left' :active="this.drawerActive" style="top: 50px")
+      .-px--2 Drawer content here
+
+script.
+  const ids = [
+    "#left",
+    "#right",
+    "#top",
+    "#bottom",
+    "#title",
+    "#nonClosable",
+    "#noHeader",
+    "#portalLeft",
+    "#portalRight",
+    "#portalTop",
+    "#portalBottom",
+  ];
+  ids.forEach(id => new Vue({components: {chiVueDrawer: window['chi-vue'].library.components.ChiDrawer}}).$mount(id));
+
+  new Vue({
+    components: {
+      chiVueDrawer: window['chi-vue'].library.components.ChiDrawer
+    },
+    data: {
+      drawerActive: false
+    },
+    methods: {
+      toggleDrawer() {
+        this.drawerActive = !this.drawerActive;
+      }
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.showHideDrawer = this;
+      }
+    },
+    watch: {
+      drawerActive() {
+        const events = ["chiDrawerHide","chiDrawerClickOutside"];
+
+        events.forEach(event => {
+          this.$refs.drawer.$on(event, () => {
+            this.drawerActive = false;
+          });
+        });
+      }
+    }
+  }).$mount("#showHide")
