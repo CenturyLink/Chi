@@ -9,29 +9,30 @@
   This section always runs in the master jenkins.
 */
 try {
-library(
-      identifier: 'jsl-jenkins-shared-library-local@release/20210701',
-      retriever: modernSCM(
-        [
-          $class: 'GitSCMSource',
-          remote: "/app/jenkins/git/jsl-jenkins-shared-library.git",
-          extensions: [[$class: 'WipeWorkspace']]
-        ]
-      )
-    ) _
+  library(
+        identifier: 'jsl-jenkins-shared-library-local@release/20210714',
+        retriever: modernSCM(
+          [
+            $class: 'GitSCMSource',
+            remote: "/app/jenkins/git/jsl-jenkins-shared-library.git",
+            extensions: [[$class: 'WipeWorkspace']]
+          ]
+        )
+      ) _
 } catch (Exception Ex) {
-library(
-  identifier: 'jsl-jenkins-shared-library@release/202100701',
-  retriever: modernSCM(
-    [
-      $class: 'GitSCMSource',
-      remote: "git@github.com:CenturyLink/jsl-jenkins-shared-library.git",
-      credentialsId: 'SCMAUTO_SSH_DEVOPS_PIPELINE',
-      extensions: [[$class: 'WipeWorkspace']]
-    ]
-  )
-) _
+  library(
+    identifier: 'jsl-jenkins-shared-library@release/20210714',
+    retriever: modernSCM(
+      [
+        $class: 'GitSCMSource',
+        remote: "git@github.com:CenturyLink/jsl-jenkins-shared-library.git",
+        credentialsId: 'SCMAUTO_SSH_DEVOPS_PIPELINE',
+        extensions: [[$class: 'WipeWorkspace']]
+      ]
+    )
+  ) _
 }
+
 
 pipeline {
 
@@ -56,6 +57,7 @@ pipeline {
       GITHUB_TOKEN_CREDENTIALS = 'SCMAUTO_GITHUB'
       GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
       GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
+      DOCKER_CREDENTIALS = 'nexus-secrets'
       AMAZON_CREDENTIALS = 'awsCredentialsPR'
       AMAZON_CREDENTIALS_PR = 'awsCredentials'
       SONARQUBE_CREDENTIALS = 'sonar-credentials'
@@ -75,6 +77,17 @@ pipeline {
       BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
       COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
       PULL_REQUEST="pr-${env.CHANGE_ID}"
+      PROD_BRANCH="master"
+
+      // ServiceNow Variables
+      SERVICE_NOW_CREDENTIALS = 'snow-credentials'
+      SERVICE_NOW_HOST = 'mysupportdesk.service-now.com'
+      DEVOPS_GCR_PREPROD_BRANCH = 'master'
+      DEVOPS_GCR_PREPROD_PAYLOAD = '{"u_implementers": "AC04119,AC59437,AC75080", "u_testers": "AB62977"}'
+
+      RC_TAG_PATTERN =  /(.*##RC##.*)/
+      PROMOTE_TAG_PATTERN =  /(.*##PROMOTE##.*)/
+      DEPLOY_TAG_PATTERN =  /(.*##DEPLOYMENT##.*)/
     }
 
 
@@ -124,18 +137,37 @@ pipeline {
                 echo "COMMIT_ID: ${COMMIT_ID}"
                 echo "PULL_REQUEST: ${PULL_REQUEST}"
                 echo "CHANGE_ID: ${env.CHANGE_ID}"
+                echo "TAG: ${env.TAG_NAME}"                       
             """, label: "Details summary"
-            if ( BRANCH_NAME != "master" && BRANCH_NAME != "pr-*" ) {
+            if ( BRANCH_NAME != PROD_BRANCH && BRANCH_NAME != "pr-*" ) {
               currentBuild.description = "<a href='https://github.com/CenturyLink/Chi/tree/${BRANCH_NAME}'>${BRANCH_NAME}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${BRANCH_NAME}";
-            } else if ( BRANCH_NAME != "master" && BRANCH_NAME == "pr-*" && BRANCH_NAME == "PR-*" ) {
+            } else if ( BRANCH_NAME != PROD_BRANCH && BRANCH_NAME == "pr-*" && BRANCH_NAME == "PR-*" ) {
               currentBuild.description = "<a href='https://github.com/CenturyLink/Chi/pull/${CHANGE_ID}'>PR#${CHANGE_ID}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${PULL_REQUEST}";
             }
           }
         }
       }
+      stage('Promote and Deployment tagging') {
+        when {
+            tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"
+        }
+        steps {
+          script {
+             def tagAttributes = jslGCRGetTagAttributes()
+             echo "Processing ${tagAttributes['tagType']} tag for DevOps ${tagAttributes['gcrNumber']}"             
+             jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
+             def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
+             def currentJob = env.JOB_NAME.toString()
+             def currentBaseName = env.JOB_BASE_NAME.toString()
+             def pathJob = currentJob - currentBaseName
+             echo "Triggering deployment to production job ${pathJob} with tag ${tagName}"
+             jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6)
+          }
+        }
+      }      
       stage('Authorize - Prod only') {
         when {
-          branch 'master'
+          tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
         }
         steps {
           script {
@@ -159,7 +191,11 @@ pipeline {
             }
             when {
               beforeAgent true
-              not { branch 'master' }
+              allOf {
+                  not {branch PROD_BRANCH}
+                  not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+                  not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+              }
             }
             steps {
               script{
@@ -181,7 +217,11 @@ pipeline {
             }
             when {
               beforeAgent true
-              not { branch 'master' }
+              allOf {
+                  not {branch PROD_BRANCH}
+                  not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+                  not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+              }
             }
             steps {
               script{
@@ -192,8 +232,14 @@ pipeline {
                 echo "No full linting implemented in repo"
               }
             }
-          }
+          }          
           stage('DevSecOps') {
+            when {
+                allOf {
+                  not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+                  not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+                }
+            }            
             steps {
               script {
                 jslGitHubSecurityAlert()
@@ -202,8 +248,10 @@ pipeline {
           }
           stage('Package Version') {
             when {
-              beforeAgent true
-              branch 'master'
+              anyOf {
+                branch PROD_BRANCH
+                tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
+              }
             }
             steps {
               script {
@@ -227,6 +275,12 @@ pipeline {
         }
       }
       stage('CE & Vue Build') {
+        when {
+            allOf {
+              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+            }
+        }  
         parallel {
           stage ('Building Custom elements') {
             agent {
@@ -287,6 +341,12 @@ pipeline {
             // registryCredentialsId DOCKER_CREDENTIALS
           }
         }
+        when {
+            allOf {
+              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+            }
+        }          
         steps {
           script {
             dir ('src/chi-vue') {
@@ -301,6 +361,7 @@ pipeline {
             jslNpmWrapper('run build')
             stash name: "DIST-CHI", includes: "dist/**"
             stash name: "NODEMODULES-CHI", includes: "node_modules/**"
+            jslJiraSendBuildInfo()
           }
         }
       }
@@ -315,6 +376,12 @@ pipeline {
             // registryCredentialsId DOCKER_CREDENTIALS
           }
         }
+        when {
+            allOf {
+              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+            }
+        }          
         steps {
           script {
             sh script: """
@@ -324,6 +391,14 @@ pipeline {
         }
       }
       stage ('Tests') {
+        when {
+            beforeAgent true
+            allOf {
+              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+            }
+        }          
         parallel {
           stage ('BackstopJS Responsive Test') {
             agent {
@@ -341,6 +416,7 @@ pipeline {
                 sh """
                   rm -rf dist
                   rm -rf node_modules
+                  rm -rf reports/html_report/responsive
                 """
                 unstash name: "DIST-CHI"
                 unstash name: "NODEMODULES-CHI"
@@ -373,6 +449,7 @@ pipeline {
                 sh """
                   rm -rf dist
                   rm -rf node_modules
+                  rm -rf reports/html_report/non_responsive
                 """
                 unstash name: "DIST-CHI"
                 unstash name: "NODEMODULES-CHI"
@@ -405,6 +482,7 @@ pipeline {
                 sh """
                   rm -rf dist
                   rm -rf node_modules
+                  rm -rf reports/html_report/non_responsive_ce
                 """
                 unstash name: "DIST-CHI"
                 unstash name: "NODEMODULES-CHI"
@@ -457,7 +535,16 @@ pipeline {
                   unstash name: "DIST-CHI-VUE"
                   unstash name: "NODEMODULES-CHI-VUE"
                 }
-                jslNpxWrapper('gulp serve 2>&1 >/dev/null &')
+                def retries = 3
+                while (retries != 0) {
+                  try {
+                    jslNpxWrapper('gulp serve 2>&1 >/dev/null &')
+                    break
+                  } catch (Exception e) {
+                    retries -= 1
+                    echo "failure starting local server // remaining attempts: ${retries}"
+                  }
+                }
                 sh script: """
                   ./node_modules/.bin/cypress run
                 """, label: "Running NPX before adding JSL file, TEST."
@@ -477,6 +564,14 @@ pipeline {
             // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
           }
         }
+        when {
+          beforeAgent true
+          allOf {
+              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+          }
+        }          
         steps {
           script {
             // jslYarnWrapper('install')
@@ -503,6 +598,14 @@ pipeline {
             // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
           }
         }
+        when {
+            beforeAgent true
+            allOf {
+              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+            }        
+        }
         steps {
           script {
             try {
@@ -517,7 +620,7 @@ pipeline {
           }
         }
       }
-      stage('Quality Gate Check'){
+      stage('Quality Gate Check'){                  
         agent {
           dockerfile {
             filename 'Dockerfile'
@@ -527,100 +630,33 @@ pipeline {
             // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
           }
         }
+        when {
+            beforeAgent true
+            allOf {
+              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+            }        
+        }        
         steps {
           script {
             jslQualityGate()
           }
         }
       }
-      stage('Smoke Tests') {
-        when {
-          beforeAgent true
-          allOf {
-            expression{ return currentBuild.currentResult.toLowerCase() == "success" }
-          }
-        }
-        agent {
-          dockerfile {
-            filename 'Dockerfile'
-            dir 'cicd/docker/sonar-scanner'
-            label 'Docker-enabled'
-            // registryUrl DOCKER_REGISTRY
-            // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
-          }
-        }
-        steps {
-          script {
-            // unstash name: "E2E_REPORTS"
-            // def cypress_url = parseIngressUrl()
-            // echo "Deployment is reachable at ${cypress_url}"
-            // jslNpmWrapper('ci')
-            // jslNpmWrapper("run test:smoke:jenkins -- --url ${cypress_url} || echo Smoke Tests failed!")
-            // echo "Smoke Tests completed"
-            // jslPublishTestResults('tests/e2e/reports/*xml')
-            // stash name: "E2E_REPORTS", includes: "tests/e2e/reports/**"
-
-            // def VIDEOS_AVAILABLE = -1
-            // VIDEOS_AVAILABLE = sh(script: "ls tests/e2e/videos/*", returnStatus: true)
-            // if (VIDEOS_AVAILABLE == 0) {
-            //   archiveArtifacts artifacts: 'tests/e2e/videos/**/*'
-            // }
-            // def SCREENSHOTS_AVAILABLE = -1
-            // SCREENSHOTS_AVAILABLE = sh(script: "ls tests/e2e/screenshots/*", returnStatus: true)
-            // if (SCREENSHOTS_AVAILABLE == 0) {
-            //   archiveArtifacts artifacts: 'tests/e2e/screenshots/**/*'
-            echo "Depends on NPX being available for testing on the JSL"
-          }
-        }
-      }
-      stage('Adoption Stats') {
-        agent {
-          dockerfile {
-            filename 'Dockerfile'
-            dir 'cicd/docker/jira'
-            label 'Docker-enabled'
-            // registryUrl DOCKER_REGISTRY
-            // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
-          }
-        }
-        steps {
-          script {
-            try {
-              unstash name: "E2E_REPORTS"
-              jslAdoptionMain('reports/cypress/*xml')
-            } catch (Exception e) {
-              try {
-                sh """
-                  rm -rf reports/ci_report/*
-                """
-                unstash name: "BACKSTOP-CE-CI"
-                unstash name: "BACKSTOP-NON-RES-CI"
-                unstash name: "BACKSTOP-RES-CI"
-                sh """
-                  cat reports/ci_report/responsive/xunit.xml > reports/ci_report/xunitfinal.xml
-                  cat reports/ci_report/non_responsive/xunit.xml >> reports/ci_report/xunitfinal.xml
-                  cat reports/ci_report/non_responsive_ce/xunit.xml >> reports/ci_report/xunitfinal.xml
-                """
-                jslAdoptionMain('reports/ci_report/xunitfinal.xml')
-                echo "No E2E results found, reporting only unit"
-              } catch (Exception exc) {
-                echo "No tests present"
-              }
-            }
-          }
-        }
-      }
       stage('Version check & Publish') {
         when {
           beforeAgent true
-          branch 'master'
-          expression {
-            unstash name: "VERSION_BUMP"
-            def versionBump = readFile file: "version_bump"
-            echo "Publish condition: GIT_BRANCH is _${env.GIT_BRANCH.trim().toLowerCase()}_"
-            echo "Publish condition: currentResult is _${currentBuild.currentResult.toLowerCase()}_"
-            echo "Publish condition: versionBump is _${versionBump.trim()}_"
-            return versionBump.trim() == "yes" && currentBuild.currentResult.toLowerCase() == "success" && ['origin/master', 'origin/main', 'master', 'main'].contains(env.GIT_BRANCH.trim().toLowerCase())
+          allOf {
+              tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
+              expression {
+                unstash name: "VERSION_BUMP"
+                def versionBump = readFile file: "version_bump"
+                echo "Publish condition: GIT_BRANCH is _${env.GIT_BRANCH.trim().toLowerCase()}_"
+                echo "Publish condition: currentResult is _${currentBuild.currentResult.toLowerCase()}_"
+                echo "Publish condition: versionBump is _${versionBump.trim()}_"
+                return versionBump.trim() == "yes" && currentBuild.currentResult.toLowerCase() == "success" && ['origin/master', 'origin/main', 'master', 'main', PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase())
+              }
           }
         }
         stages {
@@ -675,13 +711,13 @@ pipeline {
                   echo "" >> shortCHANGELOG.md
                   sed -n -e "/\$major.\$minor.\$patch/,/\$majorold.\$minorold.\$patchold/ p" CHANGELOG.md | head -n -2 >> shortCHANGELOG.md
                 """
-                VERSION = sh (
+                env.VERSION = sh (
                   script: """
                     cat package.json | grep '"version":' | cut -f4 -d '"'
                   """,
                   returnStdout: true
-                ).trim()
-                jslHubWrapper("release create -F shortCHANGELOG.md v${VERSION}")
+                ).trim()                
+                jslHubWrapper("release create -F shortCHANGELOG.md v${env.VERSION}")
               }
             }
           }
@@ -709,6 +745,7 @@ pipeline {
               // jslNpmWrapper('pack')
               // jslNpmWrapper('login --scope=@centurylink --registry=https://npm.pkg.github.com')
               // jslNpmWrapper('publish')
+              
               jslNpmPublish(false, env.GITHUB_ALTER_CREDENTIALS)
             }
           }
@@ -719,7 +756,12 @@ pipeline {
           stage ('Publish Dev build') {
             when {
               beforeAgent true
-              not { branch 'master' }
+              allOf {
+                not {branch PROD_BRANCH}
+                not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+                not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+                not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+              }
             }
             steps {
               script {
@@ -740,21 +782,32 @@ pipeline {
 }
 PolicyDocument
                 """, label: "Policy.json"
+                
                 jslAwsCliWrapper("s3api create-bucket --bucket ${s3Uri} --acl public-read", 'us-east-1', true)
                 jslAwsCliWrapper("s3api put-bucket-policy --bucket ${s3Uri} --policy file://policy.json", 'us-east-1', true)
                 jslAwsCliWrapper("s3api get-bucket-policy --bucket ${s3Uri}", 'us-east-1', true)
                 jslAwsCliWrapper("s3 cp ./dist s3://${s3Uri} --recursive", 'us-east-1', true)
                 jslAwsCliWrapper("s3 website s3://${s3Uri} --index-document index.html --error-document index.html", 'us-east-1', true)
+                
+
                 // sh "sleep 10m"
                 // jslAwsCliWrapper("s3 rb ${s3Uri} --force", 'us-east-1', true)
                 echo "This will publish dev build to S3"
+                if (env.CHANGE_ID != null) {
+                  echo "Sending Jira Deployment for DEV"
+                  jslDeploymentContractValidationWrite("development")
+                  jslJiraSendDeploymentInfo('development', true)
+                }
               }
             }
           }
-          stage ('Publish Prod Build') {
+          stage ('Publish AssetServer Build') {
             when {
               beforeAgent true
-              branch 'master'
+              anyOf {
+                branch PROD_BRANCH
+                tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
+              }
             }
             agent {
               dockerfile {
@@ -780,7 +833,7 @@ PolicyDocument
                   fi
                 """, label: "Cleaning before pushing to AssetsServer"
                 jslGitHubCloneRepo('ux-chi-AssetsServer')
-                CHECK = sh (
+                env.CHECK = sh (
                   script: """#!/bin/bash
                     VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
                     if [[ -d ux-chi-AssetsServer/chi/\$VERSION ]]
@@ -793,6 +846,8 @@ PolicyDocument
                   """,
                   returnStdout: true
                 ).trim()
+
+                echo "PlaceHolder for ASSET Server Push of CHI version"
                 sh script:"""
                   ls -lah
                   VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
@@ -814,31 +869,147 @@ PRDesc
                   git commit -m "CHI_\$VERSION"
                   git push -f origin CHI_\$VERSION
                 """, label: "Pushing branch to AssetsServer"
-                if ( CHECK == "NO" ) {
+                if ( env.CHECK == "NO" ) {
                   dir ('ux-chi-AssetsServer') {
                     jslHubWrapper('pull-request -F prepared-message.md')
                   }
                 } else {
                   echo "NO PR CREATED THIS TIME; REQUIRES VERSION BUMP"
                 }
+                if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
+                  echo "Sending Jira Deployment for PROD"
+                  jslDeploymentContractValidationWrite("production")
+                  jslJiraSendDeploymentInfo('production')
+                } else {
+                  echo "Sending Jira Deployment for STAGING"
+                  jslDeploymentContractValidationWrite("staging")
+                  jslJiraSendDeploymentInfo('staging')
+                }
               }
             }
           }
         }
       }
+      stage('Smoke Tests') {
+        agent {
+          dockerfile {
+            filename 'Dockerfile'
+            dir 'cicd/docker/sonar-scanner'
+            label 'Docker-enabled'
+            // registryUrl DOCKER_REGISTRY
+            // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
+          }
+        }
+        when {
+          beforeAgent true
+          tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
+        }        
+        steps {
+          script {
+            sh "rm -rf cypress/reports/smokeTests && mkdir -p cypress/reports/smokeTests"
+            if (env.VERSION != null) {
+              echo "Starting SMOKE TESTS with the published release ${env.VERSION}"
+
+              def latestRelease = ""
+              withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITHUB_TOKEN_CREDENTIALS,
+                                usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
+                try {
+                  latestRelease = sh script: """
+                   curl -s -H "Authorization: token \${ACCESS_TOKEN}" "https://api.github.com/repos/CenturyLink/chi/releases/latest" | grep '"name":' | cut -d: -f 2,3 | tr -d '"' | tr -d ','
+                   """, label: 'Getting Latest Release Version', returnStdout: true
+                   latestRelease = latestRelease.trim()
+                } catch (Exception e) {
+                  echo "Error checking chi releases: ${e.getMessage()}"
+                }    
+              }
+              
+              jslGenerateManualTestReport("Version Release", "Check Version", "v${env.VERSION}", (latestRelease == "v${env.VERSION}").toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
+              env.SMOKE_TEST_FAILURE = (latestRelease != "v${env.VERSION}")
+              echo "Smoke Test Failure? ${env.SMOKE_TEST_FAILURE}"
+            } else {
+              echo "SMOKE TESTS hook without release"
+              jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
+            }
+
+            stash name: 'smokeTests', includes:"cypress/reports/smokeTests/**"
+            jslPublishTestResults('cypress/reports/smokeTests/**')
+          }
+        }
+      }
+      stage('Adoption Stats') {
+        agent {
+          dockerfile {
+            filename 'Dockerfile'
+            dir 'cicd/docker/jira'
+            label 'Docker-enabled'
+            // registryUrl DOCKER_REGISTRY
+            // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
+          }
+        }
+        when {
+            beforeAgent true
+            allOf {
+              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+            }        
+        }        
+        steps {
+          script {
+            if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) { 
+              unstash name: "smokeTests"
+              zip zipFile: 'smoke_tests.zip', dir: "cypress/reports/smokeTests"
+              echo "updating DevOpsGCR and adding smoke Tests to Adoption Stats"
+              if (env.SMOKE_TEST_FAILURE != null) {
+                //DevOpsGCR with release Version
+                if (env.SMOKE_TEST_FAILURE == "false") {
+                  echo "release successfully created"
+                  jslGCRDevOpsUpdate('SUCCEEDS', ['smoke_tests.zip'])
+                } else {
+                  echo "failures creating release!"
+                  jslGCRDevOpsUpdate('FAILED', ['smoke_tests.zip'], "SmokeTests failed after release creation")
+                }                                                  
+              } else {
+                echo "DevOpsGCR without release Version (only changes to master)"
+                jslGCRDevOpsUpdate('SUCCEEDS', ['smoke_tests.zip'])
+              }
+
+              jslAdoptionMain('cypress/reports/smokeTests/*.xml')  
+
+            } else {
+              try {
+                sh """
+                  rm -rf reports/ci_report/*
+                """
+                unstash name: "BACKSTOP-CE-CI"
+                unstash name: "BACKSTOP-NON-RES-CI"
+                unstash name: "BACKSTOP-RES-CI"
+                sh """
+                  cat reports/ci_report/responsive/xunit.xml > reports/ci_report/xunitfinal.xml
+                  cat reports/ci_report/non_responsive/xunit.xml >> reports/ci_report/xunitfinal.xml
+                  cat reports/ci_report/non_responsive_ce/xunit.xml >> reports/ci_report/xunitfinal.xml
+                """
+                jslAdoptionMain('reports/ci_report/xunitfinal.xml')
+                echo "No E2E results found, reporting only unit"
+              } catch (Exception exc) {
+                echo "No regression tests present and no AdoptionMain Stats neither DevOps GCR"
+              }
+            }
+          }
+        }
+      }            
     }
     post {
       /*
       https://www.jenkins.io/doc/book/pipeline/syntax/#post
 
       Always post somewhere the watermark:
-  	- md5sum of Jenkinsfile
-  	- Output of the Jenkinsfile checker output
+    - md5sum of Jenkinsfile
+    - Output of the Jenkinsfile checker output
       */
       success {
         jslNotification('success')
         jslGitHubMessage("You can check this PRs instance in https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io", env.CHANGE_ID)
-        cleanWs()
+        cleanWs()  
       }
       failure {
         jslNotification('failure')
