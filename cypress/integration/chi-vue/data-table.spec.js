@@ -26,7 +26,7 @@ const DATA_TABLE_CLASSES = {
   HOVER: '-hover',
   STRIPED: '-striped',
   SORTING: '-sorting',
-  COMPACT: '-compact',
+  COMPACT: '-compact'
 };
 const PAGINATION_CLASSES = {
   PAGINATION: 'chi-pagination',
@@ -38,7 +38,27 @@ const PAGINATION_CLASSES = {
   START: 'chi-pagination__start',
   CENTER: 'chi-pagination__center',
   END: 'chi-pagination__end',
-  JUMPER: 'chi-pagination__jumper',
+  JUMPER: 'chi-pagination__jumper'
+};
+const DATA_TABLE_EVENTS = {
+  SELECTED_ROWS_CHANGE: 'chiSelectedRowsChange',
+  DATA_SORTING: 'chiDataSorting',
+  FILTERS_CHANGE: 'chiFiltersChange',
+  COLUMNS_CHANGE: 'chiColumnsChange',
+  ADVANCED_FILTERS_CHANGE: 'chiAdvancedFiltersChange',
+  TOOLBAR: {
+    COLUMNS_CHANGE: 'chiToolbarColumnsChange',
+    FILTERS_CHANGE: 'chiToolbarFiltersChange',
+    SEARCH: 'chiToolbarSearch'
+  },
+  EXPANSION: {
+    EXPANDED: 'chiRowExpanded',
+    COLLAPSED: 'chiRowCollapsed'
+  }
+};
+const PAGINATION_EVENTS = {
+  PAGE_CHANGE: 'chiPageChange',
+  PAGE_SIZE: 'chiPageSizeChange'
 };
 
 const hasClassAssertion = (el, value) => {
@@ -53,16 +73,16 @@ const DATA_TABLE_EVENTS = {
   TOOLBAR: {
     COLUMNS_CHANGE: 'chiToolbarColumnsChange',
     FILTERS_CHANGE: 'chiToolbarFiltersChange',
-    SEARCH: 'chiToolbarSearch',
+    SEARCH: 'chiToolbarSearch'
   },
   EXPANSION: {
     EXPANDED: 'chiRowExpanded',
-    COLLAPSED: 'chiRowCollapsed',
-  },
+    COLLAPSED: 'chiRowCollapsed'
+  }
 };
 const PAGINATION_EVENTS = {
   PAGE_CHANGE: 'chiPageChange',
-  PAGE_SIZE: 'chiPageSizeChange',
+  PAGE_SIZE: 'chiPageSizeChange'
 };
 
 describe('Data Table', () => {
@@ -100,7 +120,7 @@ describe('Data Table', () => {
       { el: '@body', class: DATA_TABLE_CLASSES.BODY },
       { el: `@row`, class: DATA_TABLE_CLASSES.ROW },
       { el: `@cell`, class: DATA_TABLE_CLASSES.CELL },
-      { el: `@footer`, class: DATA_TABLE_CLASSES.FOOTER },
+      { el: `@footer`, class: DATA_TABLE_CLASSES.FOOTER }
     ];
 
     selectors.forEach(sel => {
@@ -121,7 +141,9 @@ describe('Data Table', () => {
 
     describe('pagination', () => {
       beforeEach(() => {
-        cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`).as('pagination');
+        cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`).as(
+          'pagination'
+        );
       });
 
       it(`should show label 'per page'`, () => {
@@ -284,7 +306,9 @@ describe('Data Table', () => {
     });
 
     it('should have no rows', () => {
-      cy.get(`[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`).should('not.exist');
+      cy.get(
+        `[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+      ).should('not.exist');
     });
 
     it('should have no footer', () => {
@@ -302,31 +326,46 @@ describe('Data Table', () => {
 
   describe('no border', () => {
     it(`should have class .${DATA_TABLE_CLASSES.NO_BORDER}`, () => {
-      hasClassAssertion(`[data-cy='data-table-no-border']`, DATA_TABLE_CLASSES.NO_BORDER);
+      hasClassAssertion(
+        `[data-cy='data-table-no-border']`,
+        DATA_TABLE_CLASSES.NO_BORDER
+      );
     });
   });
 
   describe('striped', () => {
     it(`should have class .${DATA_TABLE_CLASSES.STRIPED}`, () => {
-      hasClassAssertion(`[data-cy='data-table-striped']`, DATA_TABLE_CLASSES.STRIPED);
+      hasClassAssertion(
+        `[data-cy='data-table-striped']`,
+        DATA_TABLE_CLASSES.STRIPED
+      );
     });
   });
 
   describe('hover', () => {
     it(`should have class .${DATA_TABLE_CLASSES.HOVER}`, () => {
-      hasClassAssertion(`[data-cy='data-table-hover']`, DATA_TABLE_CLASSES.HOVER);
+      hasClassAssertion(
+        `[data-cy='data-table-hover']`,
+        DATA_TABLE_CLASSES.HOVER
+      );
     });
   });
 
   describe('bordered', () => {
     it(`should have class .${DATA_TABLE_CLASSES.BORDERED}`, () => {
-      hasClassAssertion(`[data-cy='data-table-bordered']`, DATA_TABLE_CLASSES.BORDERED);
+      hasClassAssertion(
+        `[data-cy='data-table-bordered']`,
+        DATA_TABLE_CLASSES.BORDERED
+      );
     });
   });
 
   describe('active', () => {
     it(`should have class .${ACTIVE_CLASS}`, () => {
-      hasClassAssertion(`[data-cy='data-table-active'] .${DATA_TABLE_CLASSES.ROW}`, ACTIVE_CLASS);
+      hasClassAssertion(
+        `[data-cy='data-table-active'] .${DATA_TABLE_CLASSES.ROW}`,
+        ACTIVE_CLASS
+      );
     });
   });
 
@@ -375,14 +414,18 @@ describe('Data Table', () => {
         .eq(0)
         .click()
         .then(() => {
-          cy.get(`[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.ROW}`).as('rows');
+          cy.get(
+            `[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.ROW}`
+          ).as('rows');
           hasClassAssertion('@rows', `${ACTIVE_CLASS}`);
           cy.get('@rows')
             .find('input')
             .as('checkboxes')
             .should('be.checked');
         });
-      cy.get(`[data-cy='data-table-selectable'] .${PAGINATION_CLASSES.PAGINATION}`)
+      cy.get(
+        `[data-cy='data-table-selectable'] .${PAGINATION_CLASSES.PAGINATION}`
+      )
         .find(`.${ICON_BUTTON}`)
         .as('paginationIcons')
         .eq(1)
@@ -412,7 +455,9 @@ describe('Data Table', () => {
         .eq(1)
         .click()
         .then(() => {
-          cy.get(`[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`)
+          cy.get(
+            `[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+          )
             .eq(0)
             .as('firstRow');
           hasClassAssertion('@firstRow', ACTIVE_CLASS);
@@ -430,7 +475,9 @@ describe('Data Table', () => {
         .eq(1)
         .click()
         .then(() => {
-          cy.get(`[data-cy='data-table-selectable'] .${PAGINATION_CLASSES.PAGINATION}`)
+          cy.get(
+            `[data-cy='data-table-selectable'] .${PAGINATION_CLASSES.PAGINATION}`
+          )
             .find(`.${ICON_BUTTON}`)
             .as('paginationIcons')
             .eq(1)
@@ -440,7 +487,10 @@ describe('Data Table', () => {
         .eq(0)
         .click()
         .then(() => {
-          hasClassAssertion(`[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.ROW}`, ACTIVE_CLASS);
+          hasClassAssertion(
+            `[data-cy='data-table-selectable'] .${DATA_TABLE_CLASSES.ROW}`,
+            ACTIVE_CLASS
+          );
         });
       cy.get('@selectables')
         .eq(1)
@@ -520,7 +570,9 @@ describe('Data Table', () => {
         .find(`.${DATA_TABLE_CLASSES.ROW}`)
         .as('rows')
         .should('not.have.class', `${EXPANDED_CLASS}`);
-      cy.get(`[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`)
+      cy.get(
+        `[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`
+      )
         .eq(0)
         .as('childRowContainer')
         .should('have.css', 'display', 'none');
@@ -531,7 +583,11 @@ describe('Data Table', () => {
         .click()
         .then(() => {
           hasClassAssertion('@rows', `${EXPANDED_CLASS}`);
-          cy.get('@childRowContainer').should('not.have.css', 'display', 'none');
+          cy.get('@childRowContainer').should(
+            'not.have.css',
+            'display',
+            'none'
+          );
         });
       cy.get('@expandableButton')
         .click()
@@ -550,7 +606,10 @@ describe('Data Table', () => {
       });
 
       it(`should have class .${DATA_TABLE_CLASSES.SORTING}`, () => {
-        hasClassAssertion(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.CELL}`, DATA_TABLE_CLASSES.SORTING);
+        hasClassAssertion(
+          `[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.CELL}`,
+          DATA_TABLE_CLASSES.SORTING
+        );
       });
 
       it(`should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {
@@ -709,7 +768,9 @@ describe('Data Table', () => {
         cy.get('@rows')
           .eq(0)
           .should('contain', 'Surname 2');
-        cy.get(`[data-cy='data-table-sorting'] .${PAGINATION_CLASSES.PAGINATION} .${ICON_BUTTON}`)
+        cy.get(
+          `[data-cy='data-table-sorting'] .${PAGINATION_CLASSES.PAGINATION} .${ICON_BUTTON}`
+        )
           .eq(1)
           .click()
           .then(() => {
@@ -717,7 +778,9 @@ describe('Data Table', () => {
               .eq(0)
               .should('contain', 'Name 5');
           });
-        cy.get(`[data-cy='data-table-sorting'] .${PAGINATION_CLASSES.PAGINATION} .${ICON_BUTTON}`)
+        cy.get(
+          `[data-cy='data-table-sorting'] .${PAGINATION_CLASSES.PAGINATION} .${ICON_BUTTON}`
+        )
           .eq(0)
           .click()
           .then(() => {
@@ -747,7 +810,9 @@ describe('Data Table', () => {
 
     describe('default sorting desc', () => {
       it(`should have descending sorting by default`, () => {
-        cy.get(`[data-cy='data-table-sorting-desc'] .${DATA_TABLE_CLASSES.BODY}`)
+        cy.get(
+          `[data-cy='data-table-sorting-desc'] .${DATA_TABLE_CLASSES.BODY}`
+        )
           .find(`.${DATA_TABLE_CLASSES.ROW}`)
           .as('rows')
           .eq(0)
@@ -805,7 +870,7 @@ describe('Data Table Portal', () => {
     const selectors = [
       {
         el: `[data-cy='data-table-portal']`,
-        class: DATA_TABLE_CLASSES.DATA_TABLE,
+        class: DATA_TABLE_CLASSES.DATA_TABLE
       },
       { el: `[data-cy='data-table-portal']`, class: PORTAL_CLASS },
       { el: '@head', class: DATA_TABLE_CLASSES.HEAD },
@@ -813,7 +878,7 @@ describe('Data Table Portal', () => {
       { el: `@row`, class: DATA_TABLE_CLASSES.ROW },
       { el: `@cell`, class: DATA_TABLE_CLASSES.CELL },
       { el: `@footer`, class: DATA_TABLE_CLASSES.FOOTER },
-      { el: `@cell`, class: '-key' },
+      { el: `@cell`, class: '-key' }
     ];
 
     selectors.forEach(sel => {
@@ -850,9 +915,9 @@ describe('Data Table Portal', () => {
     });
 
     it('should have no rows', () => {
-      cy.get(`[data-cy='data-table-portal-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`).should(
-        'not.exist'
-      );
+      cy.get(
+        `[data-cy='data-table-portal-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+      ).should('not.exist');
     });
 
     it('should have no footer', () => {
@@ -873,7 +938,9 @@ describe('Data Table Portal', () => {
       const rows = [1, 2, 3];
 
       rows.forEach(rowIndex => {
-        cy.get(`[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.ROW}`)
+        cy.get(
+          `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.ROW}`
+        )
           .eq(rowIndex)
           .find(`.${DATA_TABLE_CLASSES.CELL}`)
           .eq(0)
@@ -883,14 +950,18 @@ describe('Data Table Portal', () => {
     });
 
     it(`should remain in current page when user input is invalid`, () => {
-      cy.get(`[data-cy='data-table-portal-accordion'] .${PAGINATION_CLASSES.PAGINATION}`)
+      cy.get(
+        `[data-cy='data-table-portal-accordion'] .${PAGINATION_CLASSES.PAGINATION}`
+      )
         .as('pagination')
         .find(`.${PAGINATION_CLASSES.JUMPER} input`)
         .as('pagJumperInput')
         .type('{backspace}abc{enter}')
         .then(() => {
           cy.get('@pagJumperInput').should('have.value', '1');
-          cy.get(`[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`)
+          cy.get(
+            `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`
+          )
             .children()
             .first()
             .as('row')
@@ -924,7 +995,9 @@ describe('Data Table Portal', () => {
           const spy = cy.spy();
 
           component.$on(`${DATA_TABLE_EVENTS.EXPANSION.EXPANDED}`, spy);
-          cy.get(`[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`)
+          cy.get(
+            `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`
+          )
             .find(`.${DATA_TABLE_CLASSES.EXPANDABLE} button`)
             .eq(0)
             .as('expandableButton')
@@ -943,7 +1016,9 @@ describe('Data Table Portal', () => {
           const component = portalAccordionDataTable.$refs.portalAccordion;
           const spy = cy.spy();
 
-          cy.get(`[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`)
+          cy.get(
+            `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`
+          )
             .find(`.${DATA_TABLE_CLASSES.EXPANDABLE} button`)
             .eq(0)
             .as('expandableButton')
@@ -958,7 +1033,9 @@ describe('Data Table Portal', () => {
     });
 
     it(`should have class .${DATA_TABLE_CLASSES.ROW_CHILD}`, () => {
-      cy.get(`[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(
+        `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`
+      )
         .find(`.${DATA_TABLE_CLASSES.ROW_CHILD}`)
         .should('have.length', 3);
     });
@@ -970,22 +1047,32 @@ describe('Data Table Portal', () => {
     });
 
     it(`should expand and collapse first row`, () => {
-      cy.get(`[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(
+        `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`
+      )
         .find(`.${DATA_TABLE_CLASSES.ROW}`)
         .as('rows')
         .should('not.have.class', `${EXPANDED_CLASS}`);
-      cy.get(`[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`)
+      cy.get(
+        `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`
+      )
         .eq(0)
         .as('childRowContainer')
         .should('have.css', 'display', 'none');
-      cy.get(`[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(
+        `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`
+      )
         .find(`.${DATA_TABLE_CLASSES.EXPANDABLE} button`)
         .eq(0)
         .as('expandableButton')
         .click()
         .then(() => {
           hasClassAssertion('@rows', `${EXPANDED_CLASS}`);
-          cy.get('@childRowContainer').should('not.have.css', 'display', 'none');
+          cy.get('@childRowContainer').should(
+            'not.have.css',
+            'display',
+            'none'
+          );
         });
       cy.get('@expandableButton')
         .click()
@@ -997,22 +1084,27 @@ describe('Data Table Portal', () => {
 
   describe('portal accordion child', () => {
     it(`should have two child rows per parent row`, () => {
-      cy.get(`[data-cy='data-table-portal-accordion-child'] .${DATA_TABLE_CLASSES.ROW_CHILD}`).should(
-        'have.length',
-        '6'
-      );
+      cy.get(
+        `[data-cy='data-table-portal-accordion-child'] .${DATA_TABLE_CLASSES.ROW_CHILD}`
+      ).should('have.length', '6');
     });
   });
 
   describe('portal accordion child expanded', () => {
     beforeEach(() => {
-      cy.get(`[data-cy='data-table-portal-accordion-child-expanded'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(
+        `[data-cy='data-table-portal-accordion-child-expanded'] .${DATA_TABLE_CLASSES.BODY}`
+      )
         .find(`.${DATA_TABLE_CLASSES.ROW_CHILD}`)
         .as('childRows');
-      cy.get(`[data-cy='data-table-portal-accordion-child-expanded'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(
+        `[data-cy='data-table-portal-accordion-child-expanded'] .${DATA_TABLE_CLASSES.BODY}`
+      )
         .find(`.${DATA_TABLE_CLASSES.ROW_GRAND_CHILD}`)
         .as('grandchildRows');
-      cy.get(`[data-cy='data-table-portal-accordion-child-expanded'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`)
+      cy.get(
+        `[data-cy='data-table-portal-accordion-child-expanded'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`
+      )
         .eq(0)
         .as('firstRowChildContainer');
     });
@@ -1023,8 +1115,14 @@ describe('Data Table Portal', () => {
     });
 
     it('should have first row be expanded by default', () => {
-      cy.get(`@firstRowChildContainer`).should('not.have.css', 'display', 'none');
-      cy.get(`[data-cy='data-table-portal-accordion-child-expanded'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(`@firstRowChildContainer`).should(
+        'not.have.css',
+        'display',
+        'none'
+      );
+      cy.get(
+        `[data-cy='data-table-portal-accordion-child-expanded'] .${DATA_TABLE_CLASSES.BODY}`
+      )
         .find(`.${DATA_TABLE_CLASSES.ROW}`)
         .eq(0)
         .as('firstRow');
@@ -1032,7 +1130,9 @@ describe('Data Table Portal', () => {
     });
 
     it(`should have two expandable buttons`, () => {
-      cy.get(`[data-cy='data-table-portal-accordion-child-expanded'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(
+        `[data-cy='data-table-portal-accordion-child-expanded'] .${DATA_TABLE_CLASSES.BODY}`
+      )
         .find(`.${DATA_TABLE_CLASSES.EXPANDABLE} button`)
         .eq(0)
         .as('expandableButton')
