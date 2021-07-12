@@ -176,7 +176,7 @@ case ${OPTION} in
         ;;
     approve-vue)
         cd /chi
-        mount -o bind /chi/config/backstop_data/bitmaps_reference/vue /chi/reports/html_report/vue/bitmaps_reference
+        mount -o bind /chi/config/backstop_data/bitmaps_reference/responsive /chi/reports/html_report/vue/bitmaps_reference
 
         npm run approve:vue
         ;;
