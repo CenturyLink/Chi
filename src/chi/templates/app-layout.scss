@@ -1,0 +1,62 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-main {
+  background-color: $app-layout-background-color;
+  height: 100%;
+  margin-top: 2.5rem;
+
+  &__header {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+
+    &-start {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-end {
+      margin-top: 1rem;
+
+      @include respond-to(md) {
+        margin-top: 0;
+      }
+    }
+
+    @include respond-to(md) {
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__header,
+  &__content {
+    margin: 0 1rem 1rem;
+
+    @include respond-to(sm) {
+      margin: 0 1.5rem 1rem;
+    }
+
+    @include respond-to(md) {
+      margin: 0 2rem 1rem;
+    }
+
+    @include respond-to(lg) {
+      margin: 0 4rem 1rem;
+    }
+  }
+
+  &.-no-margin {
+    .chi-main__content {
+      margin: 0;
+    }
+  }
+}
