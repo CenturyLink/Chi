@@ -125,6 +125,7 @@ script.
     },
     updated() {
       const events = ["chiPageChange"];
+
       events.forEach((event) => {
         this.$refs.base.$on(event, (pageNumber) => {
           this.currentPage = pageNumber;
@@ -147,6 +148,7 @@ script.
     },
     updated() {
       const events = ["chiPageSizeChange"];
+
       events.forEach((event) => {
         this.$refs.pageSize.$on(event, (pageSizeNumber) => {
           this.pageSize = pageSizeNumber;
@@ -164,6 +166,7 @@ script.
     },
     updated() {
       const events = ["chiPageChange"];
+
       events.forEach((event) => {
         this.$refs.compactFirstLast.$on(event, (pageNumber) => {
           this.currentPage = pageNumber;

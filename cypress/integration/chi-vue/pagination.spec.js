@@ -114,7 +114,7 @@ describe('Pagination', () => {
       });
     });
 
-    it('should trigger the appropriate event', () => {
+    it(`should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
       cy.window()
         .its('basePagination')
         .then(basePagination => {
@@ -162,7 +162,7 @@ describe('Pagination', () => {
   });
 
   describe('disabled', () => {
-    it('should have the previous button be disabled', () => {
+    it('should have the previous button be disabled when the active page is 1', () => {
       const prevSelectors = [
         `[data-cy='pagination-disabled-prev']`,
         `[data-cy='pagination-disabled-prev-inverse']`
@@ -256,7 +256,7 @@ describe('Pagination', () => {
       });
     });
 
-    it('should trigger the appropriate event', () => {
+    it(`should trigger the ${PAGINATION_EVENTS.PAGE_SIZE} event`, () => {
       cy.window()
         .its('pageSizePagination')
         .then(pageSizePagination => {
@@ -332,7 +332,7 @@ describe('Pagination', () => {
     });
 
     describe('page jumper', () => {
-      it('should show an inline page jumper', () => {
+      it('should show a compact page jumper', () => {
         const selectors = [
           `[data-cy='pagination-compact-page-jumper']`,
           `[data-cy='pagination-compact-page-jumper-inverse']`
@@ -361,11 +361,11 @@ describe('Pagination', () => {
 
         selectors.forEach(sel => {
           cy.get(`${sel}`)
-            .find("[data-page='1']")
-            .should('have.length', 2);
+            .find('.icon-page-first')
+            .should('have.length', 1);
           cy.get(`${sel}`)
-            .find("[data-page='3']")
-            .should('have.length', 2);
+            .find('.icon-page-last')
+            .should('have.length', 1);
         });
       });
 
