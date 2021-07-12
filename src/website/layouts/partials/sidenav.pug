@@ -57,7 +57,7 @@ ul.chi-tabs.-vertical.-lg.-animated
                               a(href=`${rootPath}foundations/accessibility/other`) Other
                             
                 else
-                  -var lumenOnly = section.title === 'Portal' ? ' -lumen-only' : "";
+                  -var lumenOnly = section.title === 'Portal' || section.title ==='App layout' ? ' -lumen-only' : "";
                   li(class=section.path === path ? '-active' + lumenOnly : lumenOnly)
                     a(href=`${rootPath}${section.path}`) #{section.title}
                       if section.title == 'Button'
@@ -100,7 +100,7 @@ ul.chi-tabs.-vertical.-lg.-animated
                             li(class=`${'foundations/accessibility/other' === path ? "-active" : ""}`)
                               a(href=`${rootPath}foundations/accessibility/other`) Other
                 else
-                  -var lumenOnly = section.title === 'Portal' ? ' -lumen-only' : "";
+                  -var lumenOnly = section.title === 'Portal' || section.title ==='App layout' ? ' -lumen-only' : "";
                   li(class=section.path === path ? '-active' + lumenOnly : lumenOnly)
                     a(href=`${rootPath}${section.path}`) #{section.title}
                       if section.title == 'Button'
