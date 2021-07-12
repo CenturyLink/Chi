@@ -5,7 +5,7 @@ h2 Data Table Base
 h3 Base
 .test-data-table.-p--3.-w--100
   #base
-    chi-vue-data-table(data-cy='data-table', :config="config", :data="table")
+    chi-vue-data-table(ref="base" data-cy='data-table', :config="config", :data="table")
     button(@click="update") Update
 
 h3 Empty
@@ -41,20 +41,22 @@ h3 Active
 h3 Selectable
 .test-data-table.-p--3.-w--100
   #selectable
-    chi-vue-data-table(data-cy='data-table-selectable', :config="config", :data="table")
+    chi-vue-data-table(ref="selectable" data-cy='data-table-selectable', :config="config", :data="table")
 
 h3 Accordion
 .test-data-table.-p--3.-w--100
   #accordion
-    chi-vue-data-table(data-cy='data-table-accordion', :config="config", :data="table")
+    chi-vue-data-table(ref="accordion" data-cy='data-table-accordion', :config="config", :data="table")
 
 h3 Sorting
 .test-data-table.-p--3.-w--100
   #sorting
-    chi-vue-data-table(data-cy='data-table-sorting', :config="config", :data="table")
+    chi-vue-data-table(ref="sorting" data-cy='data-table-sorting', :config="config", :data="table")
       template(#status='payload')
         div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
           span.-text--truncate {{ payload.status }}
+      template(#date='payload')
+        span {{ `${payload.date.getDate()} ${months[payload.date.getMonth()]} ${payload.date.getFullYear()}` }}
 
 h3 Default Sorting -- Ascending
 .test-data-table.-p--3.-w--100
@@ -99,6 +101,7 @@ script.
     methods: {
       update: function () {
         const newData = ["Updated Name 1", "name-1", "Dec 18, 2020 3:26 PM"];
+
         setTimeout(() => {
           this.$data.table = {
             ...this.$data.table,
@@ -166,6 +169,11 @@ script.
           },
         ],
       },
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.baseDataTable = this;
+      }
     },
   }).$mount("#base");
 
@@ -560,6 +568,11 @@ script.
         ],
       },
     },
+    mounted() {
+      if (window.Cypress) {
+        window.selectableDataTable = this;
+      }
+    },
   }).$mount("#selectable");
 
   new Vue({
@@ -637,6 +650,11 @@ script.
         ],
       },
     },
+    mounted() {
+      if (window.Cypress) {
+        window.accordionDataTable = this;
+      }
+    },
   }).$mount("#accordion");
 
   new Vue({
@@ -671,10 +689,11 @@ script.
             sortBy: "status",
             sortDataType: "string",
           },
-          lastLogin: {
+          date: {
             label: "Last Login",
             sortable: true,
-            sortDatatype: "date",
+            sortBy: "date",
+            sortDataType: "date",
           },
         },
         body: [
@@ -688,7 +707,12 @@ script.
                   status: "active",
                 },
               },
-              "Dec 18, 2020 3:26 PM",
+              { 
+                template: 'date', 
+                payload: { 
+                  date: new Date('01/06/2018 8:00 AM') 
+                } 
+              },
             ],
           },
           {
@@ -701,7 +725,12 @@ script.
                   status: "inactive",
                 },
               },
-              "Dec 18, 2020 2:38 AM",
+              { 
+                template: 'date', 
+                payload: { 
+                  date: new Date('07/05/2018 8:00 AM') 
+                } 
+              },
             ],
           },
           {
@@ -714,7 +743,7 @@ script.
                   status: "active",
                 },
               },
-              "Dec 18, 2020 3:26 PM",
+              { template: 'date', payload: { date: new Date('04/05/2019 12:04 AM') } },
             ],
           },
           {
@@ -727,7 +756,7 @@ script.
                   status: "inactive",
                 },
               },
-              "Dec 18, 2020 2:38 AM",
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
             ],
           },
           {
@@ -740,7 +769,7 @@ script.
                   status: "active",
                 },
               },
-              "Nov 5, 2020 10:15 AM",
+              { template: 'date', payload: { date: new Date('02/05/2018 8:00 AM') } },
             ],
           },
           {
@@ -753,7 +782,7 @@ script.
                   status: "active",
                 },
               },
-              "Dec 18, 2020 3:26 PM",
+              { template: 'date', payload: { date: new Date('03/05/2017 8:00 AM') } },
             ],
           },
           {
@@ -766,7 +795,7 @@ script.
                   status: "inactive",
                 },
               },
-              "Dec 18, 2020 2:38 AM",
+              { template: 'date', payload: { date: new Date('04/05/2018 9:00 AM') } },
             ],
           },
           {
@@ -779,11 +808,17 @@ script.
                   status: "inactive",
                 },
               },
-              new Date("Nov 5, 2020 10:15 AM"),
+              { template: 'date', payload: { date: new Date('11/09/2018 12:00 AM') } },
             ],
           },
         ],
       },
+      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.sortingDataTable = this;
+      }
     },
   }).$mount("#sorting");
 
