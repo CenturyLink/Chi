@@ -124,12 +124,8 @@ script.
       }
     },
     updated() {
-      const events = ["chiPageChange"];
-
-      events.forEach((event) => {
-        this.$refs.base.$on(event, (pageNumber) => {
-          this.currentPage = pageNumber;
-        });
+      this.$refs.base.$on("chiPageChange", (pageNumber) => {
+        this.currentPage = pageNumber;
       });
     }
   }).$mount("#base");
@@ -147,12 +143,8 @@ script.
       }
     },
     updated() {
-      const events = ["chiPageSizeChange"];
-
-      events.forEach((event) => {
-        this.$refs.pageSize.$on(event, (pageSizeNumber) => {
-          this.pageSize = pageSizeNumber;
-        });
+      this.$refs.pageSize.$on("chiPageSizeChange", (pageSizeNumber) => {
+        this.pageSize = pageSizeNumber;
       });
     }
   }).$mount("#page-size");
@@ -165,12 +157,8 @@ script.
       currentPage: 2
     },
     updated() {
-      const events = ["chiPageChange"];
-
-      events.forEach((event) => {
-        this.$refs.compactFirstLast.$on(event, (pageNumber) => {
-          this.currentPage = pageNumber;
-        });
+      this.$refs.compactFirstLast.$on("chiPageChange", (pageNumber) => {
+        this.currentPage = pageNumber;
       });
     }
   }).$mount("#compact-first-last");
