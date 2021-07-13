@@ -23,6 +23,7 @@ import {
   DataTableScreenBreakpoints,
   DataTableSortConfig,
   DataTableStyleConfig,
+  DataTableModes,
 } from '@/constants/types';
 import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
@@ -315,7 +316,7 @@ export default class DataTable extends Vue {
   }
 
   _calculateNumberOfPages() {
-    const serverSide = this.mode === 'serverside';
+    const serverSide = this.mode === DataTableModes.SERVER;
     const pages = this.$props.config.pagination.pages;
 
     if (serverSide && pages && typeof pages === 'number') {
@@ -584,7 +585,7 @@ export default class DataTable extends Vue {
 
     if (
       (pages === 1 && this.config.pagination.hideOnSinglePage) ||
-      (this.$props.data.body.length === 0 && this.mode === 'clientside')
+      (this.$props.data.body.length === 0 && this.mode === DataTableModes.CLIENT)
     ) {
       return null;
     } else {
@@ -596,7 +597,7 @@ export default class DataTable extends Vue {
             firstLast={this.config.pagination.firstLast}
             currentPage={this.activePage}
             pages={pages}
-            results={this.data.body.length}
+            results={this.config.pagination.results || this.data.body.length}
             pageSize={!this.config.style.portal}
             pageJumper={this.config.pagination.pageJumper}
             portal={this.config.style.portal}
@@ -788,7 +789,7 @@ export default class DataTable extends Vue {
             page: ev,
           };
 
-          if (this.mode === 'clientside') {
+          if (this.mode === DataTableModes.CLIENT) {
             this.activePage = ev;
             this.slicedData = this.sliceData(data);
             pageChangeEventData.data = this.slicedData;
@@ -910,7 +911,7 @@ export default class DataTable extends Vue {
             direction: 'descending',
           };
 
-          if (this.mode === 'clientside') {
+          if (this.mode === DataTableModes.CLIENT) {
             this.sortData(columnName, 'descending', columnSortBy);
             sortingData.data = this._sortedData;
           }
@@ -934,7 +935,7 @@ export default class DataTable extends Vue {
             direction: undefined,
           };
 
-          if (this.mode === 'clientside') {
+          if (this.mode === DataTableModes.CLIENT) {
             sortingData.data = undefined;
           }
 
@@ -942,7 +943,7 @@ export default class DataTable extends Vue {
           columnHeadSortButton.removeAttribute('data-sort');
           (sortIcon as HTMLElement).removeAttribute('style');
           columnHeadSortButton.blur();
-          if (this.mode === 'clientside') {
+          if (this.mode === DataTableModes.CLIENT) {
             if (this._sortedData) {
               this._sortedData.length = 0;
             }
@@ -957,7 +958,7 @@ export default class DataTable extends Vue {
             direction: 'ascending',
           };
 
-          if (this.mode === 'clientside') {
+          if (this.mode === DataTableModes.CLIENT) {
             this.sortData(columnName, 'ascending', columnSortBy);
             sortingData.data = this._sortedData;
           }

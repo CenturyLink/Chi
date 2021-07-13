@@ -34,11 +34,13 @@ export interface DataTableRowNestedContent {
   };
   template: string;
   value: string;
+  // eslint-disable-next-line
   payload: any;
 }
 export interface DataTableRow {
   active: boolean;
   expanded: boolean;
+  // eslint-disable-next-line
   data: Record<string, any>;
   nestedContent: DataTableRowNestedContent;
   id: string;
@@ -66,6 +68,10 @@ export interface DataTableSortConfig {
   sortBy?: string;
   direction: 'ascending' | 'descending';
 }
+export enum DataTableModes {
+  CLIENT = 'clientside',
+  SERVER = 'serverside',
+}
 export interface DataTableConfig {
   activePage?: number;
   columnResize?: boolean;
@@ -86,6 +92,7 @@ export interface DataTableConfig {
     hideOnSinglePage?: boolean;
     pages?: number;
     pageJumper?: boolean;
+    results?: number;
   };
   resultsPerPage?: number;
   style: DataTableStyleConfig;

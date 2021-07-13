@@ -19,6 +19,7 @@ export const exampleConfig: DataTableConfig = {
     hideOnSinglePage: true,
     pages: 2,
     pageJumper: true,
+    results: 20,
   },
   selectable: true,
   reserveExpansionSlot: true,

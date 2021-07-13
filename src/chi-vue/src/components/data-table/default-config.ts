@@ -1,9 +1,9 @@
-import { DataTableConfig } from '@/constants/types';
+import { DataTableConfig, DataTableModes } from '@/constants/types';
 
 export const defaultConfig: DataTableConfig = {
   activePage: 1,
   columnResize: false,
-  mode: 'clientside',
+  mode: DataTableModes.CLIENT,
   noResultsMessage: 'No matches found. Please revise search criteria and try again.',
   pagination: {
     compact: false,

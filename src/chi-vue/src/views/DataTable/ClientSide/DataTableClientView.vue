@@ -74,6 +74,8 @@ import { DataTableRow } from '../../../constants/types';
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
 import { exampleConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
 
+const FAKE_API_RESPONSE_DELAY = 5000;
+
 @Component({
   components: {
     ChiDataTable: DataTable,
@@ -162,7 +164,7 @@ export default class DataTableView extends Vue {
             : row
         ),
       };
-    }, 5000);
+    }, FAKE_API_RESPONSE_DELAY);
   }
 }
 </script>

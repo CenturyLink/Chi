@@ -5,6 +5,7 @@
       :data="table"
       :config="config"
       ref="dataTable"
+      @chiDataSorting="e => sorting(e)"
       @chiPageChange="e => pagination(e)"
       @chiSelectedRowsChange="e => selection(e)"
     >
@@ -133,11 +134,7 @@ export default class DataTableView extends Vue {
     copiedTableBodyData.forEach((row: DataTableRow) => {
       const isSelected = selectedRows?.some((selectedRow: DataTableRow) => selectedRow.id === row.id);
 
-      if (isSelected) {
-        flagRowSelection(copiedTableBodyData, row.id, 'select');
-      } else {
-        flagRowSelection(copiedTableBodyData, row.id, 'deselect');
-      }
+      flagRowSelection(copiedTableBodyData, row.id, isSelected ? 'select' : 'deselect');
     });
     this.$data.table = {
       ...this.$data.table,
