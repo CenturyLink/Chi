@@ -23,12 +23,14 @@ import {
   DataTableScreenBreakpoints,
   DataTableSortConfig,
   DataTableStyleConfig,
+  DataTableModes,
 } from '@/constants/types';
 import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import arraySort from 'array-sort';
+import { defaultConfig } from './default-config';
 
 let dataTableNumber = 0;
 @Component({})
@@ -37,10 +39,12 @@ export default class DataTable extends Vue {
   @Prop() config!: DataTableConfig;
 
   accordionsExpanded: string[] = [];
-  currentPage = this.config.activePage || 1;
-  resultsPerPage = this.config.resultsPerPage || 20;
+  activePage =
+    this.$props.config.pagination.activePage || this.$props.config.activePage || defaultConfig.pagination.activePage;
+  resultsPerPage = this.$props.config.resultsPerPage || defaultConfig.resultsPerPage;
   selectedRows: string[] = [];
   slicedData: DataTableRow[] = [];
+  mode = this.$props.config.mode || defaultConfig.mode;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -239,7 +243,7 @@ export default class DataTable extends Vue {
     ].join(' ');
   }
 
-  _expansionButton(rowId: string) {
+  _expansionButton(rowData: DataTableRow) {
     const expansionIcons: DataTableExpansionIcons = {
       portal: {
         expanded: 'minus',
@@ -262,14 +266,14 @@ export default class DataTable extends Vue {
       -sm
       `}
         aria-label="Expand row"
-        data-target={`#${rowId}-content`}
-        onClick={() => this.toggleRow(rowId.toString())}>
+        data-target={`#${rowData.rowId}-content`}
+        onClick={() => this.toggleRow(rowData)}>
         <div class={BUTTON_CLASSES.CONTENT}>
           <i
             class={`
           ${ICON_CLASS}
           icon-${
-            this.accordionsExpanded.includes(rowId)
+            this.accordionsExpanded.includes(rowData.rowId)
               ? expansionIcons[iconStyle].expanded
               : expansionIcons[iconStyle].collapsed
           }
@@ -281,10 +285,10 @@ export default class DataTable extends Vue {
     );
   }
 
-  _expansionButtonCell(id: string) {
+  _expansionButtonCell(rowData: DataTableRow) {
     return (
       <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`} role="cell">
-        {this._expansionButton(id)}
+        {this._expansionButton(rowData)}
       </div>
     );
   }
@@ -312,6 +316,13 @@ export default class DataTable extends Vue {
   }
 
   _calculateNumberOfPages() {
+    const serverSide = this.mode === DataTableModes.SERVER;
+    const pages = this.$props.config.pagination.pages;
+
+    if (serverSide && pages && typeof pages === 'number') {
+      return pages;
+    }
+
     return Math.max(Math.ceil(this.data.body.length / this.resultsPerPage), 1);
   }
 
@@ -349,7 +360,7 @@ export default class DataTable extends Vue {
         rowData && typeof rowData === 'object' && rowData.rowNumber
           ? `checkbox-select-${this._rowId(rowData.rowNumber)}`
           : selectAll
-          ? `checkbox-select-all-rows`
+          ? `checkbox-${this._dataTableId}-select-all-rows`
           : '';
 
       return (
@@ -383,8 +394,8 @@ export default class DataTable extends Vue {
     }
   }
 
-  toggleRow(id: string) {
-    const rowData = this._serializedDataBody.find((row: DataTableRow) => row.rowId === id);
+  toggleRow(rowData: DataTableRow) {
+    const id = rowData.rowId.toString();
 
     if (this.accordionsExpanded.includes(id)) {
       this.accordionsExpanded.splice(this.accordionsExpanded.indexOf(id), 1);
@@ -445,7 +456,7 @@ export default class DataTable extends Vue {
         if (rowLevel === 'grandChild' || rowLevel === 'child') {
           rowCells.push(<div class="chi-data-table__cell -expandable"></div>);
         } else {
-          rowCells.push(this._expansionButtonCell(rowId));
+          rowCells.push(this._expansionButtonCell(bodyRow));
         }
         rowAccordionContent.push(
           this._rowAccordionContent(bodyRow.nestedContent, rowLevel === 'child' ? 'child' : 'parent')
@@ -484,7 +495,7 @@ export default class DataTable extends Vue {
       }
 
       const rowChildExpansion =
-        rowLevel === 'child' && cellIndex === 0 && bodyRow.nestedContent ? this._expansionButton(rowId) : null;
+        rowLevel === 'child' && cellIndex === 0 && bodyRow.nestedContent ? this._expansionButton(bodyRow) : null;
 
       rowCells.push(
         <div
@@ -522,7 +533,7 @@ export default class DataTable extends Vue {
         }
         ${this.$props.config.style.portal ? `-${this.$props.config.style.size}` : ''}
         ${this.selectedRows.includes(bodyRow.rowId) || bodyRow.active ? ACTIVE_CLASS : ''}
-        ${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}
+        ${this._expandable ? `${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}` : ''}
         `}
         role="row">
         {rowCells}
@@ -572,7 +583,10 @@ export default class DataTable extends Vue {
   _pagination() {
     const pages = this._calculateNumberOfPages();
 
-    if ((pages === 1 && this.config.pagination.hideOnSinglePage) || this.$props.data.body.length === 0) {
+    if (
+      (pages === 1 && this.config.pagination.hideOnSinglePage) ||
+      (this.$props.data.body.length === 0 && this.mode === DataTableModes.CLIENT)
+    ) {
       return null;
     } else {
       return (
@@ -581,9 +595,9 @@ export default class DataTable extends Vue {
             ref="pagination"
             compact={this.config.style.portal || this.config.pagination.compact}
             firstLast={this.config.pagination.firstLast}
-            currentPage={this.currentPage}
+            currentPage={this.activePage}
             pages={pages}
-            results={this.data.body.length}
+            results={this.config.pagination.results || this.data.body.length}
             pageSize={!this.config.style.portal}
             pageJumper={this.config.pagination.pageJumper}
             portal={this.config.style.portal}
@@ -610,8 +624,8 @@ export default class DataTable extends Vue {
 
   sliceData(data: DataTableRow[]): DataTableRow[] {
     if (data.length > this.resultsPerPage) {
-      const arrayStartIndex = (this.currentPage - 1) * this.resultsPerPage,
-        arrayEndIndex = (this.currentPage - 1) * this.resultsPerPage + this.resultsPerPage;
+      const arrayStartIndex = (this.activePage - 1) * this.resultsPerPage,
+        arrayEndIndex = (this.activePage - 1) * this.resultsPerPage + this.resultsPerPage;
 
       return data.slice(arrayStartIndex, arrayEndIndex);
     }
@@ -674,13 +688,19 @@ export default class DataTable extends Vue {
       if (rowObject.expanded && !this.accordionsExpanded.includes(rowObject.rowId)) {
         this.accordionsExpanded.push(rowObject.rowId);
       }
+      if (rowObject.selected && !this.selectedRows.includes(rowObject.rowId)) {
+        this.selectedRows.push(rowObject.rowId);
+      }
       return rowObject;
     };
     let rowNumber = 0;
 
     this._serializedDataBody = [];
-    // eslint-disable-next-line
-    this._expandable = !!this.data.body.find((row: { nestedContent: any }) => row.nestedContent);
+    this.selectedRows = [];
+    this._expandable =
+      this.$props.config.reserveExpansionSlot ||
+      // eslint-disable-next-line
+      !!this.data.body.find((row: { nestedContent: any }) => row.nestedContent);
     this.data.body.forEach(row => {
       this._serializedDataBody.push(serializeRow(row, rowNumber, null));
       rowNumber++;
@@ -715,6 +735,11 @@ export default class DataTable extends Vue {
     this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
   }
 
+  @Watch('config')
+  dataconfigChange() {
+    this.activePage = this.$props.config.pagination.activePage || 1;
+  }
+
   created() {
     this._dataTableId = `dt-${dataTableNumber}`;
     dataTableNumber += 1;
@@ -741,6 +766,7 @@ export default class DataTable extends Vue {
 
   mounted() {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
+
     if (dataTableComponent && this.config.columnResize) {
       this._generateColumnResize(dataTableComponent);
     }
@@ -757,14 +783,17 @@ export default class DataTable extends Vue {
       (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
         const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
         const numberOfPages = this._calculateNumberOfPages();
-        const pageChangeEventData: DataTablePageChange = {
-          page: ev,
-          data: this.slicedData,
-        };
 
         if (ev >= 1 && ev <= numberOfPages) {
-          this.currentPage = ev;
-          this.slicedData = this.sliceData(data);
+          const pageChangeEventData: DataTablePageChange = {
+            page: ev,
+          };
+
+          if (this.mode === DataTableModes.CLIENT) {
+            this.activePage = ev;
+            this.slicedData = this.sliceData(data);
+            pageChangeEventData.data = this.slicedData;
+          }
           this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
           this._checkSelectAllCheckbox();
         }
@@ -880,14 +909,17 @@ export default class DataTable extends Vue {
           const sortingData: DataTableSorting = {
             column: columnName,
             direction: 'descending',
-            data: this._sortedData,
           };
+
+          if (this.mode === DataTableModes.CLIENT) {
+            this.sortData(columnName, 'descending', columnSortBy);
+            sortingData.data = this._sortedData;
+          }
 
           (sortIcon as HTMLElement).style.transform = 'rotate(180deg)';
           columnHeadSortButton.setAttribute('data-sort', 'descending');
-          this.sortData(columnName, 'descending', columnSortBy);
           this.$emit(DATA_TABLE_EVENTS.DATA_SORTING, sortingData);
-          this.currentPage = 1;
+          this.activePage = 1;
           if (this._sortedData) {
             this.slicedData = this.sliceData(this._sortedData);
           }
@@ -898,27 +930,42 @@ export default class DataTable extends Vue {
             sortBy: columnSortBy || columnName,
           };
         } else if (currentSort === 'descending' && this._sortConfig && this._sortConfig.key === columnName) {
+          const sortingData: DataTableSorting = {
+            column: undefined,
+            direction: undefined,
+          };
+
+          if (this.mode === DataTableModes.CLIENT) {
+            sortingData.data = undefined;
+          }
+
           sortIcon.className = `${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.SORT}`;
           columnHeadSortButton.removeAttribute('data-sort');
           (sortIcon as HTMLElement).removeAttribute('style');
           columnHeadSortButton.blur();
-          if (this._sortedData) {
-            this._sortedData.length = 0;
+          if (this.mode === DataTableModes.CLIENT) {
+            if (this._sortedData) {
+              this._sortedData.length = 0;
+            }
+            this.slicedData = this.sliceData(this._serializedDataBody);
           }
-          this.slicedData = this.sliceData(this._serializedDataBody);
+          this.$emit(DATA_TABLE_EVENTS.DATA_SORTING, sortingData);
           columnHeadCell?.classList.remove(ACTIVE_CLASS);
           this._sortConfig = undefined;
         } else {
-          const sortingData = {
+          const sortingData: DataTableSorting = {
             column: columnName,
             direction: 'ascending',
-            sortedData: this._sortedData,
           };
 
+          if (this.mode === DataTableModes.CLIENT) {
+            this.sortData(columnName, 'ascending', columnSortBy);
+            sortingData.data = this._sortedData;
+          }
+
           columnHeadSortButton.setAttribute('data-sort', 'ascending');
-          this.sortData(columnName, 'ascending', columnSortBy);
           this.$emit(DATA_TABLE_EVENTS.DATA_SORTING, sortingData);
-          this.currentPage = 1;
+          this.activePage = 1;
           if (this._sortedData) {
             this.slicedData = this.sliceData(this._sortedData);
           }
@@ -943,7 +990,7 @@ export default class DataTable extends Vue {
       pagination = this._pagination();
 
     return (
-      <div class={classes} role="table" ref="dataTable">
+      <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
         {toolbar}
         {head}
         {body}
