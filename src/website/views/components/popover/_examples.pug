@@ -308,12 +308,18 @@ h3 Open on hover
       <script>
         const buttonOpenOnHover = document.getElementById("button-open-on-hover");
         const popoverOpenOnHover = document.getElementById("popover-open-on-hover");
+        let hoverAnimationTimeout;
 
-        buttonOpenOnHover.addEventListener("chiMouseEnter", function() {
-          popoverOpenOnHover.show();
+        buttonOpenOnHover.addEventListener('chiMouseEnter', function() {
+          hoverAnimationTimeout = setTimeout(() => {
+            popoverOpenOnHover.show();
+          }, 300);
         });
 
-        buttonOpenOnHover.addEventListener("chiMouseLeave", function() {
+        buttonOpenOnHover.addEventListener('chiMouseLeave', function() {
+          if (hoverAnimationTimeout) {
+            clearTimeout(hoverAnimationTimeout);
+          }
           popoverOpenOnHover.hide();
         });
 
@@ -326,10 +332,7 @@ h3 Open on hover
       | Use the available methods to show / hide popover when <code>mouseEnter</code>, <code>mouseLeave</code> or any other event is triggered
     :code(lang="html")
       <button class="chi-button" id="button-open-on-hover" data-target="#popover-open-on-hover">Hover me!</button>
-      <section class="chi-popover" id="popover-open-on-hover" aria-modal="true" role="dialog" aria-label="Popover title">
-        <header class="chi-popover__header">
-          <h2 class="chi-popover__title">Popover title</h2>
-        </header>
+      <section class="chi-popover" id="popover-open-on-hover" aria-modal="true" role="dialog">
         <div class="chi-popover__content">
           <p class="chi-popover__text">Popover content</p>
         </div>
@@ -338,12 +341,18 @@ h3 Open on hover
       <script>
         const buttonOpenOnHover = document.getElementById('button-open-on-hover');
         const popover = chi.popover(buttonOpenOnHover);
+        let hoverAnimationTimeout;
 
         buttonOpenOnHover.addEventListener("mouseenter", function() {
+          hoverAnimationTimeout = setTimeout(() => {
             popover.show();
-          });
+          }, 300);
+        });
 
         buttonOpenOnHover.addEventListener("mouseleave", function() {
+          if (hoverAnimationTimeout) {
+            clearTimeout(hoverAnimationTimeout);
+          }
           popover.hide();
         });
 
@@ -810,6 +819,7 @@ script.
     function () {
       const buttonOpenOnHover = document.getElementById('button-open-on-hover');
       const popoverOpenOnHover = document.getElementById('popover-open-on-hover');
+      let hoverAnimationTimeout;
 
       chi.tab(document.getElementById('examples-default'));
       chi.tab(document.getElementById('examples-titled'));
@@ -825,10 +835,15 @@ script.
       chi.tab(document.getElementById('examples-portal'));
 
       buttonOpenOnHover.addEventListener('chiMouseEnter', function() {
-        popoverOpenOnHover.show();
+        hoverAnimationTimeout = setTimeout(function() {
+          popoverOpenOnHover.show();
+        }, 300);
       });
 
       buttonOpenOnHover.addEventListener('chiMouseLeave', function() {
+        if (hoverAnimationTimeout) {
+          clearTimeout(hoverAnimationTimeout);
+        }
         popoverOpenOnHover.hide();
       });
 

@@ -29,6 +29,10 @@ export class SearchInput {
    */
   @Prop({ reflect: true }) disabled = false;
   /**
+   * To enable portal styling
+   */
+   @Prop({ reflect: true }) portal = false;
+  /**
    * To disable Value attribute mutation
    */
   @Prop({ reflect: true }) preventValueMutation = false;
@@ -133,7 +137,7 @@ export class SearchInput {
     const searchXIcon = this._cleanButtonVisible ?
       <button class="chi-button -icon -close -sm"
         onClick={() => this._cleanInput()}
-        aria-label="Close">
+        aria-label="Clear">
         <div class="chi-button__content">
           <i class="chi-icon icon-x"></i>
         </div>
@@ -147,7 +151,7 @@ export class SearchInput {
         onClick={() => this.eventSearch.emit(this.value)}
         aria-label="Search">
           <div class="chi-button__content">
-            <i class="chi-icon icon-search"></i>
+            <i class={`chi-icon icon-search ${this.portal ? '-icon--primary' : ''}`}></i>
           </div>
       </button>;
 

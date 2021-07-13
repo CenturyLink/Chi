@@ -143,10 +143,13 @@ class Sidenav extends Component {
           });
       });
 
-      sidenavContent.addEventListener('mouseover', () => {
-        if (!sidenavContent.querySelector(':hover')) {
-          this.hideAll();
-        }
+      this._addEventHandler(
+        sidenavContent,
+        'mouseover',
+        () => {
+          if (!sidenavContent.querySelector(':hover')) {
+            this.hideAll();
+          }
       });
     }
   }

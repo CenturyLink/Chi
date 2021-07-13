@@ -23,6 +23,7 @@ const requires = {
   'build-website-views': require('./tasks/build-website-views.js'),
   'build-website': require('./tasks/build-website.js'),
   'copy-chi-ce-scripts': require('./tasks/copy-chi-ce-scripts'),
+  'copy-chi-vue-scripts': require('./tasks/copy-chi-vue-scripts'),
   'sri-chi-assets' : require('./tasks/sri-chi-assets'),
   'build': require('./tasks/build.js'),
   'backstop': require('./tasks/backstop.js'),

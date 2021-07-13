@@ -1,0 +1,107 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-toolbar {
+  &__header,
+  &__ribbon {
+    align-items: center;
+    display: flex;
+  }
+
+  &__header {
+    background-color: $toolbar-header-background-color;
+    justify-content: flex-start;
+    padding: 0.5rem;
+
+    @include respond-to(md) {
+      justify-content: space-between;
+      padding: 1.5rem;
+
+      .chi-form__item {
+        padding-right: 0.5rem;
+      }
+    }
+
+    + .chi-toolbar__ribbon {
+      border-top: 0.0625rem solid $toolbar-ribbon-border-color;
+    }
+  }
+
+  &__ribbon {
+    background-color: $toolbar-ribbon-background-color;
+    justify-content: space-between;
+    padding: 0.5rem 1.5rem;
+
+    .chi-divider {
+      height: $toolbar-ribbon-divider-height;
+      margin: 0 1rem;
+    }
+  }
+
+  &__start,
+  &__end {
+    align-items: center;
+    display: flex;
+  }
+
+  &__results {
+    font-size: $toolbar-results-font-size;
+    margin-left: 0.5rem;
+
+    .chi-toolbar__label {
+      font-weight: 600;
+    }
+  }
+
+  &__filters,
+  &__actions {
+    display: flex;
+
+    &-desktop {
+      display: none;
+
+      @include respond-to(md) {
+        display: flex;
+
+        .chi-form__item {
+          padding-left: 0.5rem;
+        }
+      }
+    }
+
+    &-mobile {
+      @include respond-to(md) {
+        display: none;
+      }
+    }
+  }
+
+  &.-portal {
+    .chi-toolbar__header {
+      .chi-divider {
+        display: none;
+      }
+
+      + .chi-toolbar__ribbon {
+        border-top: 0;
+      }
+
+      @include respond-to(md) {
+        background-color: $color-background-muted-lighter;
+
+        .chi-divider {
+          display: block;
+          height: 2.5rem;
+        }
+      }
+    }
+
+    .chi-toolbar__ribbon {
+      background-color: $color-background-primary-light;
+
+      .chi-divider {
+        border-right-color: $color-blue-40;
+      }
+    }
+  }
+}

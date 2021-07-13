@@ -1,13 +1,15 @@
 <template>
   <div id="tadataTableVIew">
     <h2>Data Table example</h2>
-    <ChiTable
+    <ChiDataTable
       :data="table"
       :config="config"
       @chiSelectedRowsChange="e => this.rowSelect(e)"
       @chiPageChange="e => this.pageChange(e)"
       @chiPageSizeChange="e => this.pageSizeChange(e)"
       @chiDataSorting="e => this.dataSorting(e)"
+      @chiRowExpanded="e => this.rowExpanded(e)"
+      @chiRowCollapsed="e => this.rowCollapsed(e)"
     >
       <template #icon="payload">
         <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`"></i>
@@ -16,7 +18,7 @@
         <TicketPopover :id="payload.id" />
       </template>
       <template #status="payload">
-        <div :class="`chi-badge -${payload.status === 'active' ? 'primary' : ''}`">
+        <div :class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`">
           <span class="-text--truncate">{{ payload.status }}</span>
         </div>
       </template>
@@ -34,7 +36,29 @@
           </div>
         </div>
       </template>
-    </ChiTable>
+      <template #date="payload">
+        {{ `${payload.date.getDate()} ${months[payload.date.getMonth()]} ${payload.date.getFullYear()}` }}
+      </template>
+      <template #toolbar>
+        <ChiDataTableToolbar
+          @chiToolbarFiltersChange="e => filtersChange(e)"
+          @chiToolbarSearch="e => search(e)"
+          @chiToolbarColumnsChange="e => columnsChange(e)"
+        >
+          <ChiSearchInput size="lg" :dataTableSearch="true" />
+          <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
+          <ChiColumnCustomization :columnsData="toolbar.columnsData" />
+        </ChiDataTableToolbar>
+      </template>
+      <template #loadingSkeleton>
+        <div class="-d--flex -flex--column -w--100">
+          <div class="chi-skeleton -w--85 -w-md--75 -w-lg--50"></div>
+          <div class="chi-skeleton -xs -w--90 -w-lg--70 -mt--2"></div>
+          <div class="chi-skeleton -xs -w--95 -w-lg--80 -mt--1"></div>
+          <div class="chi-skeleton -xs -w--55 -w-lg--55 -mt--1"></div>
+        </div>
+      </template>
+    </ChiDataTable>
   </div>
 </template>
 
@@ -43,10 +67,19 @@ import { Component, Vue } from 'vue-property-decorator';
 import DataTable from '../components/data-table/DataTable';
 import Actions from './DataTableTemplates/example-actions.vue';
 import TicketPopover from './DataTableTemplates/example-popover.vue';
+import DataTableToolbar from '../components/data-table-toolbar/DataTableToolbar';
+import SearchInput from '../components/search-input/SearchInput';
+import DataTableFilters from '../components/data-table-filters/DataTableFilters';
+import { DataTableRow } from '../constants/types';
+import ColumnCustomization from '../components/column-customization/ColumnCustomization';
 
 @Component({
   components: {
-    ChiTable: DataTable,
+    ChiDataTable: DataTable,
+    ChiDataTableToolbar: DataTableToolbar,
+    ChiSearchInput: SearchInput,
+    ChiDataTableFilters: DataTableFilters,
+    ChiColumnCustomization: ColumnCustomization,
     Actions,
     TicketPopover,
   },
@@ -63,6 +96,18 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
     dataSorting: e => {
       console.log(e);
     },
+    search: e => {
+      console.log(e);
+    },
+    filtersChange: e => {
+      console.log(e);
+    },
+    rowExpanded: e => {
+      console.log(`Expanded row: `, e);
+    },
+    rowCollapsed: e => {
+      console.log(`Collapsed row: `, e);
+    },
   },
   data: () => {
     return {
@@ -75,28 +120,150 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
           noBorder: false,
           bordered: false,
           hover: false,
-          size: 'md',
+          size: 'lg',
           striped: true,
         },
         pagination: {
+          hideOnSinglePage: true,
           compact: true,
           firstLast: true,
           pageJumper: true,
         },
         selectable: true,
         columnSizes: {
-          xs: [5, 5, 5, 5, 5, 5, 5, 5],
-          sm: [10, 10, 10, 0, 10, 10, 10, 10],
-          md: [5, 15, 15, 0, 15, 15, 15, 5],
-          lg: [5, 15, 15, 0, 15, 15, 15, 5],
-          xl: [5, 15, 10, 15, 15, 15, 15, 5],
+          sm: [10, 10, 10, 0, 10, 10, 10, 5],
+          md: [15, 10, 15, 0, 15, 15, 15, 5],
+          lg: [15, 10, 15, 0, 15, 15, 15, 5],
+          xl: [15, 10, 10, 15, 15, 15, 15, 5],
         },
         resultsPerPage: 10,
+        defaultSort: {
+          key: 'ticketId',
+          sortBy: 'id',
+          direction: 'ascending',
+        },
+      },
+      toolbar: {
+        filtersData: [
+          {
+            name: 'status',
+            type: 'select',
+            options: [
+              {
+                label: 'Active',
+                value: 'active',
+              },
+              {
+                label: 'Inactive',
+                value: 'inactive',
+              },
+            ],
+            value: 'active',
+          },
+          {
+            name: 'input',
+            placeholder: 'Input filter',
+            type: 'input',
+            value: '',
+          },
+          {
+            name: 'checkbox',
+            type: 'checkbox',
+            checked: false,
+          },
+          {
+            name: 'statusAdvanced',
+            label: 'Status',
+            type: 'select',
+            options: [
+              {
+                label: 'Active',
+                value: 'active',
+                selected: false,
+              },
+              {
+                label: 'Inactive',
+                value: 'inactive',
+                selected: false,
+              },
+            ],
+            advanced: true,
+            value: 'active',
+          },
+          {
+            name: 'inputAdvanced',
+            label: 'Label',
+            type: 'input',
+            advanced: true,
+          },
+          {
+            name: 'textareaAdvanced',
+            label: 'textarea',
+            type: 'textarea',
+            advanced: true,
+          },
+          {
+            name: 'checkboxAdvanced',
+            label: 'Checkbox',
+            type: 'checkbox',
+            advanced: true,
+          },
+        ],
+        columnsData: {
+          columns: [
+            {
+              name: 'columnA',
+              label: 'Column A',
+            },
+            {
+              name: 'columnB',
+              label: 'Column B',
+            },
+            {
+              name: 'columnC',
+              label: 'Column C',
+              locked: true,
+              selected: true,
+            },
+            {
+              name: 'columnD',
+              label: 'Column D',
+              locked: true,
+              selected: true,
+            },
+            {
+              name: 'columnE',
+              label: 'Column E',
+              selected: true,
+            },
+            {
+              name: 'columnF',
+              label: 'Column F',
+              selected: true,
+            },
+            {
+              name: 'columnG',
+              label: 'Column G',
+            },
+            {
+              name: 'columnH',
+              label: 'Column H',
+            },
+            {
+              name: 'columnI',
+              label: 'Column I',
+            },
+            {
+              name: 'columnJ',
+              label: 'Column J',
+            },
+          ],
+        },
       },
       table: {
         head: {
+          ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id', sortDataType: 'string', key: true, bold: true },
           alerts: { label: 'Alerts', align: 'center' },
-          ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id', sortDataType: 'string' },
           status: {
             label: 'Status',
             sortable: true,
@@ -104,9 +271,9 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             sortDataType: 'string',
             align: 'center',
           },
-          supportType: { label: 'Support Type', sortable: true, sortDataType: 'string' },
-          servicetype: { label: 'Service Type', sortable: true, sortDataType: 'string' },
-          created: { label: 'Created', sortable: true, sortDataType: 'string' },
+          string: { label: 'String', sortable: true, sortDataType: 'string', key: true },
+          number: { label: 'Number', sortable: true, sortDataType: 'number' },
+          date: { label: 'Date', sortable: true, sortBy: 'date', sortDataType: 'date' },
           productId: { label: 'Product / Service ID', sortable: true, sortDataType: 'string' },
           actions: { label: ' ', align: 'right', allowOverflow: true },
         },
@@ -114,23 +281,19 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
           {
             id: 'NTM000021063',
             nestedContent: {
-              value: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."`,
+              template: 'loadingSkeleton',
             },
             active: false,
             data: [
+              { template: 'ticketId', payload: { id: 'NTM000021063' } },
               {
                 template: 'icon',
                 payload: { icon: 'circle-check', color: 'success' },
               },
-              { template: 'ticketId', payload: { id: 'NTM000021063' } },
               { template: 'status', payload: { status: 'active' } },
-              'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              'Colocation A',
+              0,
+              { template: 'date', payload: { date: new Date('02/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -143,12 +306,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021071',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021071' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
-              'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              'Colocation B',
+              1,
+              { template: 'date', payload: { date: new Date('03/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -164,12 +327,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
               value: 'asdasdasd',
             },
             data: [
-              '',
               { template: 'ticketId', payload: { id: 'NTM000021064' } },
+              '',
               { template: 'status', payload: { status: 'inactive' } },
-              'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              'Colocation B',
+              2,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -182,16 +345,16 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021065',
             active: false,
             data: [
+              { template: 'ticketId', payload: { id: 'NTM000021065' } },
               {
                 label: 'Alert Column',
                 template: 'icon',
                 payload: { icon: 'warning', color: 'warning' },
-              }, // Custom, overwritten Label
-              { template: 'ticketId', payload: { id: 'NTM000021065' } },
+              },
               { template: 'status', payload: { status: 'active' } },
-              'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              'Colocation C',
+              3,
+              { template: 'date', payload: { date: new Date('05/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -210,12 +373,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
               },
             },
             data: [
-              '',
               { template: 'ticketId', payload: { id: 'NTM000021066' } },
+              '',
               { template: 'status', payload: { status: 'active' } },
-              'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              'Colocation a',
+              4,
+              { template: 'date', payload: { date: new Date('06/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -235,13 +398,13 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                     active: false,
                     data: [
                       {
+                        template: 'ticketId',
+                        payload: { id: 'NTM0000210661' },
+                      },
+                      {
                         label: 'Alerts',
                         template: 'icon',
                         payload: { icon: 'circle-check', color: 'success' },
-                      },
-                      {
-                        template: 'ticketId',
-                        payload: { id: 'NTM0000210661' },
                       },
                       {
                         template: 'status',
@@ -249,8 +412,8 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                         align: 'center',
                       },
                       'Colocation',
-                      'Internet Advantage',
-                      '04/05/2018 8:00 AM',
+                      5,
+                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                       'SVUJW034781A',
                       {
                         template: 'actions',
@@ -270,6 +433,10 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                             active: false,
                             data: [
                               {
+                                template: 'ticketId',
+                                payload: { id: 'NTM0000210661' },
+                              },
+                              {
                                 label: 'Alerts',
                                 template: 'icon',
                                 payload: {
@@ -278,17 +445,13 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                                 },
                               },
                               {
-                                template: 'ticketId',
-                                payload: { id: 'NTM0000210661' },
-                              },
-                              {
                                 template: 'status',
                                 payload: { status: 'active' },
                                 align: 'center',
                               },
                               'Colocation',
-                              'Internet Advantage',
-                              '04/05/2018 8:00 AM',
+                              6,
+                              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                               'SVUJW034781A',
                               {
                                 template: 'actions',
@@ -308,6 +471,10 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                                     active: false,
                                     data: [
                                       {
+                                        template: 'ticketId',
+                                        payload: { id: 'NTM00002106611' },
+                                      },
+                                      {
                                         label: 'Alerts',
                                         template: 'icon',
                                         payload: {
@@ -316,17 +483,13 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                                         },
                                       },
                                       {
-                                        template: 'ticketId',
-                                        payload: { id: 'NTM00002106611' },
-                                      },
-                                      {
                                         template: 'status',
                                         payload: { status: 'active' },
                                         align: 'center',
                                       },
                                       'Colocation',
-                                      'Internet Advantage',
-                                      '04/05/2018 8:00 AM',
+                                      7,
+                                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                                       'SVUJW034781A',
                                       {
                                         template: 'actions',
@@ -340,6 +503,10 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                                     active: false,
                                     data: [
                                       {
+                                        template: 'ticketId',
+                                        payload: { id: 'NTM00002106621' },
+                                      },
+                                      {
                                         label: 'Alerts',
                                         template: 'icon',
                                         payload: {
@@ -348,17 +515,13 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                                         },
                                       },
                                       {
-                                        template: 'ticketId',
-                                        payload: { id: 'NTM00002106621' },
-                                      },
-                                      {
                                         template: 'status',
                                         payload: { status: 'active' },
                                         align: 'center',
                                       },
                                       'Colocation',
-                                      'Internet Advantage',
-                                      '04/05/2018 8:00 AM',
+                                      8,
+                                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                                       'SVUJW034781A',
                                       {
                                         template: 'actions',
@@ -372,6 +535,10 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                             },
                             data: [
                               {
+                                template: 'ticketId',
+                                payload: { id: 'NTM0000210662' },
+                              },
+                              {
                                 label: 'Alerts',
                                 template: 'icon',
                                 payload: {
@@ -380,17 +547,13 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                                 },
                               },
                               {
-                                template: 'ticketId',
-                                payload: { id: 'NTM0000210662' },
-                              },
-                              {
                                 template: 'status',
                                 payload: { status: 'active' },
                                 align: 'center',
                               },
                               'Colocation',
-                              'Internet Advantage',
-                              '04/05/2018 8:00 AM',
+                              9,
+                              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                               'SVUJW034781A',
                               {
                                 template: 'actions',
@@ -404,13 +567,13 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                     },
                     data: [
                       {
+                        template: 'ticketId',
+                        payload: { id: 'NTM0000210662' },
+                      },
+                      {
                         label: 'Alerts',
                         template: 'icon',
                         payload: { icon: 'circle-check', color: 'success' },
-                      },
-                      {
-                        template: 'ticketId',
-                        payload: { id: 'NTM0000210662' },
                       },
                       {
                         template: 'status',
@@ -418,8 +581,8 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
                         align: 'center',
                       },
                       'Colocation',
-                      'Internet Advantage',
-                      '04/05/2018 8:00 AM',
+                      10,
+                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                       'SVUJW034781A',
                       {
                         template: 'actions',
@@ -432,12 +595,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
               },
             },
             data: [
-              '',
               { template: 'ticketId', payload: { id: 'NTM000021067' } },
+              '',
               { template: 'status', payload: { status: 'inactive' } },
-              'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              'Colocation b',
+              11,
+              { template: 'date', payload: { date: new Date('07/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -450,12 +613,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021072',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021072' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
-              'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              'Colocation c',
+              12,
+              { template: 'date', payload: { date: new Date('01/06/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -468,16 +631,16 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM0000210651',
             active: false,
             data: [
+              { template: 'ticketId', payload: { id: 'NTM0000210651' } },
               {
                 label: 'Alerts',
                 template: 'icon',
                 payload: { icon: 'warning', color: 'warning' },
               },
-              { template: 'ticketId', payload: { id: 'NTM0000210651' } },
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              13,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -490,12 +653,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021068',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021068' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              14,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -508,12 +671,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021069',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021069' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              15,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -526,12 +689,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021070',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021070' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              16,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -544,12 +707,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021073',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021073' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              17,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -562,12 +725,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021074',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021074' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              18,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -580,12 +743,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021075',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021075' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              19,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -598,12 +761,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021076',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021076' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              20,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -616,12 +779,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021077',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021077' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              21,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -634,12 +797,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021078',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021078' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              22,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -652,12 +815,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021079',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021079' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              23,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -670,12 +833,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021080',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021080' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              24,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -688,12 +851,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021081',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021081' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              25,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -706,12 +869,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021082',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021082' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              26,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -724,12 +887,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021083',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021083' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              27,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -742,12 +905,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021084',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021084' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              28,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -760,12 +923,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021085',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021085' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              29,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -778,12 +941,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021086',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021086' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              30,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -796,12 +959,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021087',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021087' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              31,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -814,12 +977,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021088',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021088' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              32,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -832,12 +995,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021089',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021089' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              33,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -850,12 +1013,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021090',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021090' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              34,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -868,12 +1031,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021091',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021091' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              35,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -886,12 +1049,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021092',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021092' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              36,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -904,12 +1067,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021093',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021093' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              37,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -922,12 +1085,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021094',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021094' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              38,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -940,12 +1103,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021095',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021095' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              39,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -958,12 +1121,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021096',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021096' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              40,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -976,12 +1139,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021097',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021097' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              41,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -994,12 +1157,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021098',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021098' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              42,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1012,12 +1175,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021099',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021099' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              43,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1030,12 +1193,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021100',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021100' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              44,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1048,12 +1211,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021101',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021101' } },
+              {},
               { template: 'status', payload: { status: 'inactive' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              -0.5,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1066,12 +1229,12 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
             id: 'NTM000021102',
             active: false,
             data: [
-              {},
               { template: 'ticketId', payload: { id: 'NTM000021102' } },
+              {},
               { template: 'status', payload: { status: 'active' } },
               'Colocation',
-              'Internet Advantage',
-              '04/05/2018 8:00 AM',
+              -1,
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -1082,10 +1245,51 @@ import TicketPopover from './DataTableTemplates/example-popover.vue';
           },
         ],
       },
+      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     };
   },
 })
-export default class DataTableView extends Vue {}
+export default class DataTableView extends Vue {
+  mounted() {
+    setTimeout(() => {
+      const newData = [
+        { template: 'ticketId', payload: { id: 'NTM000021063' } },
+        {
+          template: 'icon',
+          payload: { icon: 'circle-check', color: 'success' },
+        },
+        { template: 'status', payload: { status: 'active' } },
+        'Colocation',
+        0,
+        { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+        'SVUJW034781A',
+        {
+          template: 'actions',
+          payload: { id: 'NTM000021063' },
+          align: 'right',
+        },
+      ];
+      this.$data.table = {
+        ...this.$data.table,
+        body: this.$data.table.body.map((row: DataTableRow, index: number) =>
+          index === 0
+            ? {
+                ...row,
+                nestedContent: {
+                  value: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."`,
+                },
+                data: newData,
+              }
+            : row
+        ),
+      };
+    }, 5000);
+  }
+}
 </script>
 
 <style lang="scss"></style>

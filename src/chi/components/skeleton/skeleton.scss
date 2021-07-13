@@ -1,0 +1,72 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+$skeleton-base-color: rgba(0, 0, 0, 0.05);
+$skeleton-shine-color: rgba(0, 0, 0, 0.02);
+$skeleton-animation-duration: 2s;
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+
+  100% {
+    background-position: 100rem;
+  }
+}
+
+@mixin background-gradient {
+  background-image: linear-gradient(
+    -45deg,
+    $skeleton-base-color 0,
+    $skeleton-shine-color 4rem,
+    $skeleton-base-color 8rem);
+  background-size: 100rem;
+}
+
+$skeleton-sizes: (
+  xs: 1.25rem,
+  sm: 1.5rem,
+  md: 2rem,
+  lg: 2.5rem,
+  xl: 3rem,
+);
+
+.chi-skeleton {
+  animation: shine $skeleton-animation-duration infinite linear;
+  height: 2rem;
+  @include background-gradient;
+
+  &.-circle,
+  &.-square {
+    height: 2rem;
+    width: 2rem;
+
+    @each $type in map-keys($skeleton-sizes) {
+      &.-#{$type} {
+        height: map-get($skeleton-sizes, $type);
+        width: map-get($skeleton-sizes, $type);
+      }
+    }
+  }
+
+  &.-circle {
+    border-radius: 1rem;
+
+    @each $type in map-keys($skeleton-sizes) {
+      &.-#{$type} {
+        border-radius: map-get($skeleton-sizes, $type) / 2;
+      }
+    }
+  }
+
+  &.-rounded {
+    border-radius: $border-radius-base;
+  }
+
+  @each $type in map-keys($skeleton-sizes) {
+    &.-#{$type} {
+      height: map-get($skeleton-sizes, $type);
+    }
+  }
+}

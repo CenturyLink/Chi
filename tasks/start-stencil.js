@@ -19,7 +19,6 @@ function startStencil(){
 startStencil.description = "Starts stencil watch & compile. ";
 gulp.task('stencil:start', startStencil);
 
-
 const startEs5Params = ['run', 'start.es5'];
 
 function startStencilEs5(){

@@ -2758,6 +2758,23 @@
           "required": false
         },
         {
+          "name": "portal",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "portal",
+          "reflectToAttr": true,
+          "docs": "To enable portal styling",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "preventValueMutation",
           "type": "boolean",
           "mutable": false,

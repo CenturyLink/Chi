@@ -314,3 +314,11 @@
     }
   }
 }
+
+chi-popover {
+  &:not(.hydrated) {
+    &:not([active]) {
+      display: none;
+    }
+  }
+}

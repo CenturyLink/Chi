@@ -1,0 +1,216 @@
+---
+title: Toolbar
+---
+
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+h3 Base
+.test-toolbar-base.-w--100
+  .chi-toolbar
+    .chi-toolbar__header
+      .chi-toolbar__start
+        .chi-toolbar__search
+          .chi-form__item
+            chi-search-input(size="lg", id="example__base")
+        .chi-toolbar__filters
+          .chi-toolbar__filters-desktop
+            .chi-form__item
+              select(class="chi-select -lg", id="example-ba1")
+                option(value="") Select
+                option Option 1
+                option Option 2
+                option Option 3
+            .chi-form__item
+              select(class="chi-select -lg", id="example-ba2")
+                option(value="") Select
+                option Option 1
+                option Option 2
+                option Option 3
+            button.chi-button.-icon.-lg.-flat(aria-label='Button action')
+              .chi-button__content
+                i.chi-icon.icon-filter
+          .chi-toolbar__filters-mobile
+            button#drawer-trigger-filter1.chi-button.-icon.-lg.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-filter
+      .chi-toolbar__end
+        .chi-toolbar__actions
+          .chi-toolbar__actions-desktop
+            button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-arrow-to-bottom
+            button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-refresh
+            button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-table-column-settings
+          .chi-toolbar__actions-mobile
+            button#drawer-trigger-actions1.chi-button.-lg.-icon.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-more-vert
+
+h3 Base and ribbon
+.test-toolbar-base-ribbon.-w--100
+  .chi-toolbar
+    .chi-toolbar__header
+      .chi-toolbar__start
+        .chi-toolbar__search
+          .chi-form__item
+            chi-search-input(size="lg", id="example__base-1")
+        .chi-toolbar__filters
+          .chi-toolbar__filters-desktop
+            .chi-form__item
+              select(class="chi-select -lg", id="example-ba3")
+                option(value="") Select
+                option Option 1
+                option Option 2
+                option Option 3
+            .chi-form__item
+              select(class="chi-select -lg", id="example-ba4")
+                option(value="") Select
+                option Option 1
+                option Option 2
+                option Option 3
+            button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-filter
+          .chi-toolbar__filters-mobile
+            button#drawer-trigger-filter1.chi-button.-lg.-icon.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-filter
+      .chi-toolbar__end
+        .chi-toolbar__actions
+          .chi-toolbar__actions-desktop
+            button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-arrow-to-bottom
+            button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-refresh
+            button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-table-column-settings
+          .chi-toolbar__actions-mobile
+            button#drawer-trigger-actions1.chi-button.-lg.-icon.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-more-vert
+    .chi-toolbar__ribbon
+      .chi-toolbar__start
+        i.chi-icon.icon-arrow-down.-xs
+        .chi-toolbar__results
+          span.chi-toolbar__label Search Results 
+          span (1-40 of 78)
+        .chi-divider.-vertical
+        chi-link(href='#', size='md') Save View
+      .chi-toolbar__end
+        button.chi-button.-lg.-icon.-flat(aria-label="Button action")
+          .chi-button__content
+            i.chi-icon.icon-x
+
+h3 Base Portal
+.test-toolbar-base-portal.-w--100
+  .chi-toolbar.-portal
+    .chi-toolbar__header
+      .chi-toolbar__start
+        .chi-toolbar__search
+          .chi-form__item
+            chi-search-input(portal size="lg" id="example__base-3")
+        .chi-divider.-vertical
+        .chi-toolbar__filters
+          .chi-toolbar__filters-desktop
+            .chi-form__item
+              select(class="chi-select -lg -portal", id="example-ba5")
+                option(value="") Select
+                option Option 1
+                option Option 2
+                option Option 3
+            .chi-form__item
+              select(class="chi-select -lg -portal", id="example-ba6")
+                option(value="") Select
+                option Option 1
+                option Option 2
+                option Option 3
+            button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-filter
+          .chi-toolbar__filters-mobile
+            button#drawer-trigger-filter1.chi-button.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-filter
+      .chi-toolbar__end
+        .chi-toolbar__actions
+          .chi-toolbar__actions-desktop
+            button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-arrow-to-bottom
+            button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-refresh
+            button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-table-column-settings
+          .chi-toolbar__actions-mobile
+            button#drawer-trigger-actions1.chi-button.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-more-vert
+
+h3 Base and ribbon Portal
+.test-toolbar-base-ribbon-portal.-w--100
+  .chi-toolbar.-portal
+    .chi-toolbar__header
+      .chi-toolbar__start
+        .chi-toolbar__search
+          .chi-form__item
+            chi-search-input(portal size="lg", id="example__base-4")
+        .chi-divider.-vertical
+        .chi-toolbar__filters
+          .chi-toolbar__filters-desktop
+            .chi-form__item
+              select(class="chi-select -lg -portal", id="example-ba9")
+                option(value="") Select
+                option Option 1
+                option Option 2
+                option Option 3
+            .chi-form__item
+              select(class="chi-select -lg -portal", id="example-ba10")
+                option(value="") Select
+                option Option 1
+                option Option 2
+                option Option 3
+            button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-filter
+          .chi-toolbar__filters-mobile
+            button#drawer-trigger-filter1.chi-button.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-filter
+      .chi-toolbar__end
+        .chi-toolbar__actions
+          .chi-toolbar__actions-desktop
+            button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-arrow-to-bottom
+            button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-refresh
+            button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-table-column-settings
+          .chi-toolbar__actions-mobile
+            button#drawer-trigger-actions1.chi-button.-portal.-icon.-primary.-flat.chi-drawer__trigger(data-target='#drawer-2', aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-more-vert
+    .chi-toolbar__ribbon
+      .chi-toolbar__start
+        i.chi-icon.icon-arrow-down.-xs
+        .chi-toolbar__results
+          span.chi-toolbar__label Search Results 
+          span (1-40 of 78)
+        .chi-divider.-vertical
+        chi-link(href='#', size='md') Save View
+      .chi-toolbar__end
+        button.chi-button.-portal.-icon.-primary.-flat(aria-label="Button action")
+          .chi-button__content
+            i.chi-icon.icon-x

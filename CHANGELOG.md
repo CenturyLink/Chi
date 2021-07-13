@@ -1,4 +1,24 @@
 # CHANGELOG
+## 4.3.0 (June 18, 2021)
+### Components
+#### Added
+* Added: Toolbar component provides the ability of performing actions such as searching for elements and filtering complex structures.
+
+## 4.2.0 (June 4, 2021)
+### Components
+#### Added
+* Added: Skeleton component provides a visual placeholder for asynchronously rendered UI elements.
+
+## 4.1.2 (May 21, 2021)
+### Components
+#### Changed
+* Changed: Popover component open on hover example now includes a slight delay before showing to reduce unintentional activations.
+#### Fixed
+* Fixed: Sidenav component event listener management has been improved for better performance.
+### Documentation
+#### Changed
+* Changed: Accordion chevron down icon position has been changed for consistency with base example.
+
 ## 4.1.1 (May 13, 2021)
 ### Components
 #### Fixed
