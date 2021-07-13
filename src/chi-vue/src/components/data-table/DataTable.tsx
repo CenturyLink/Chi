@@ -25,7 +25,7 @@ import {
   DataTableStyleConfig,
 } from '@/constants/types';
 import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
-import Tooltip from '../tooltip/tooltip';
+import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import arraySort from 'array-sort';
@@ -486,17 +486,9 @@ export default class DataTable extends Vue {
           cellData = this.$scopedSlots[rowCell.template]!(rowCell.payload);
         }
       } else if (typeof rowCell === 'object' && !!rowCell.value) {
-        cellData = (
-          <Tooltip message={rowCell} class="-w--100">
-            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{rowCell.value}</div>
-          </Tooltip>
-        );
+        cellData = <DataTableTooltip msg={rowCell.value} class="-w--100" />;
       } else if (typeof rowCell === 'string' || typeof rowCell === 'number') {
-        cellData = (
-          <Tooltip message={rowCell} class="-w--100">
-            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{rowCell}</div>
-          </Tooltip>
-        );
+        cellData = <DataTableTooltip msg={rowCell} class="-w--100" />;
       } else {
         cellData = null;
       }
