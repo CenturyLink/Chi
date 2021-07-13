@@ -20,13 +20,13 @@ export type DataTableExpansionIconStyles = typeof DATA_TABLE_EXPANSION_ICON_STYL
 export const DATA_TABLE_SCREEN_BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type DataTableScreenBreakpoints = typeof DATA_TABLE_SCREEN_BREAKPOINTS[number];
 export interface DataTableStyleConfig {
-  portal: boolean;
-  compact: boolean;
-  bordered: boolean;
-  noBorder: boolean;
-  hover: boolean;
-  striped: boolean;
-  size: DataTableSizes;
+  portal?: boolean;
+  compact?: boolean;
+  bordered?: boolean;
+  noBorder?: boolean;
+  hover?: boolean;
+  striped?: boolean;
+  size?: DataTableSizes;
 }
 export interface DataTableRowNestedContent {
   table: {

@@ -18,13 +18,13 @@ export const DATA_TABLE_EVENTS = {
   },
 };
 export interface DataTableSorting {
-  column: string;
-  direction: 'ascending' | 'descending';
-  data: DataTableRow[] | undefined;
+  column: string | undefined;
+  direction: 'ascending' | 'descending' | undefined;
+  data?: DataTableRow[];
 }
 export interface DataTablePageChange {
   page: number;
-  data: DataTableRow[] | undefined;
+  data?: DataTableRow[];
 }
 //#endregion
 
