@@ -769,6 +769,7 @@ export default class DataTable extends Vue {
 
   mounted() {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
+
     if (dataTableComponent && this.config.columnResize) {
       this._generateColumnResize(dataTableComponent);
     }

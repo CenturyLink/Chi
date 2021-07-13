@@ -34,11 +34,13 @@ export interface DataTableRowNestedContent {
   };
   template: string;
   value: string;
+  // eslint-disable-next-line
   payload: any;
 }
 export interface DataTableRow {
   active: boolean;
   expanded: boolean;
+  // eslint-disable-next-line
   data: Record<string, any>;
   nestedContent: DataTableRowNestedContent;
   id: string;
