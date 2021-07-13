@@ -54,3 +54,7 @@ gulp.task('backstop-approve', () => Promise.all([
   backstopjs('approve', { config: 'backstop-responsive.json' }),
   backstopjs('approve', { config: 'backstop-non-responsive.json' })
 ]));
+
+gulp.task('backstop-approve-vue', () => Promise.all([
+  backstopjs('approve', { config: 'backstop-vue.json' })
+]));

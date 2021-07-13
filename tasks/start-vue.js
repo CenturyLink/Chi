@@ -19,7 +19,6 @@ function startVueProcess(){
 startVueProcess.description = "Starts VUE watch & build. ";
 gulp.task('vue:start', startVueProcess);
 
-
 const startVue = ['run', 'serve'];
 
 function startVueServe(){

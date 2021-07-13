@@ -1,0 +1,9 @@
+{
+    "baseUrl": "https://localhost:9090/",
+    "reporter": "junit",
+    "reporterOptions": {
+      "mochaFile": "cypress/reports/cypress-pr.[hash].xml"
+    },
+    "video": false
+  }
+  

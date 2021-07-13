@@ -26,6 +26,28 @@ function serve(done) {
   done();
 }
 
+function serveVue(done) {
+  server.init({
+    server: {
+      baseDir: 'src/chi-vue/dist',
+    },
+    port: 9090,
+    ui: {
+      port: 9091
+    },
+    https: true,
+    ghostMode: false,
+    open: false,
+    middleware: [
+      function (req, res, next) {
+        res.setHeader('cache-control', 'public, max-age=0');
+        next();
+      }
+    ]
+  });
+  done();
+}
+
 function notifyStart(done) {
   server.notify("Compiling, please wait!");
   done();
@@ -55,6 +77,7 @@ notifyEnd.description = 'Notifies the developer ' +
   'compile is ending in the browser window. ';
 
 gulp.task('serve', serve);
+gulp.task('serve:vue', serveVue);
 gulp.task('serve:notify:start', notifyStart);
 gulp.task('serve:notify:end', notifyEnd);
 gulp.task('serve:reload', reload);

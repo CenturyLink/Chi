@@ -8,6 +8,7 @@
   "homepage": "https://assets.ctl.io/chi",
   "scripts": {
     "approve": "gulp backstop-approve",
+    "approve:vue": "gulp backstop-approve-vue",
     "build": "gulp build",
     "ci": "gulp ci",
     "docker": "scripts/docker.sh",
