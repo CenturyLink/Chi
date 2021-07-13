@@ -8,12 +8,12 @@ html(lang="en")
     meta(name="description", content="Chi Tests")
     meta(name="viewport", content="width=device-width, initial-scale=1")
 
-    link(rel="stylesheet", media="all", href="/chi.css")
-    link(rel="stylesheet", media="all", href="/tests/test.css")
+    link(rel="stylesheet", media="all", href="../../chi.css")
+    link(rel="stylesheet", media="all", href="../../tests/test.css")
 
     if styles
       each style in styles
-        link(rel="stylesheet", media="all", href=`/${style}.css`)
+        link(rel="stylesheet", media="all", href=`../../${style}.css`)
 
   body.chi(
     style= background ? `background-color: #${background}`: false
@@ -22,7 +22,7 @@ html(lang="en")
       h1= title
       .tests!= contents
 
-    script(src='/chi-icons.js')
+    script(src='../../chi-icons.js')
     if scripts
       each script in scripts
-        script(type="text/javascript", src=`/${script}.js`)
+        script(type="text/javascript", src=`../../${script}.js`)
