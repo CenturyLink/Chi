@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <div class="-p--4">
-      <DataTableView />
+      <DataTableClientView />
+      <DataTableServerView />
       <PaginationView />
       <DrawerView />
       <TooltipView />
@@ -15,12 +16,14 @@ import { Component, Vue } from 'vue-property-decorator';
 import PaginationView from './views/PaginationView.vue';
 import DrawerView from './views/DrawerView.vue';
 import TooltipView from './views/TooltipView.vue';
-import DataTableView from './views/DataTableView.vue';
+import DataTableClientView from './views/DataTable/ClientSide/DataTableClientView.vue';
+import DataTableServerView from './views/DataTable/ServerSide/DataTableServerView.vue';
 import SearchInputView from './views/SearchInputView.vue';
 
 @Component({
   components: {
-    DataTableView,
+    DataTableClientView,
+    DataTableServerView,
     DrawerView,
     PaginationView,
     SearchInputView,
