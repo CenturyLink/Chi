@@ -1,4 +1,4 @@
-FROM nexusprod.corp.intranet:4567/apps/node:dubnium-buster
+FROM nexusprod.corp.intranet:4567/node:dubnium-buster
 
 LABEL Description="This is a base image, which provides a cypress environment"
 
