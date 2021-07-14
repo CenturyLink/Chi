@@ -332,5 +332,6 @@ export default class AdvancedFilters extends Vue {
     console.log(this._planeAdvancedData);
     await this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...this._planeAdvancedData });
     await this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...this._planeAdvancedData });
+    this._emitAdvancedFiltersChange();
   }
 }

@@ -13,7 +13,7 @@ import {
   SELECT_CLASSES,
   UTILITY_CLASSES,
 } from '@/constants/classes';
-import { compareFilters, getElementFilterData, updateFilterData } from './FilterUtils';
+import { compareFilters, getElementFilterData } from './FilterUtils';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import AdvancedFilters from './AdvancedFilters';
@@ -212,7 +212,6 @@ export default class DataTableFilters extends Vue {
         });
 
         if (this._filtersData && newFilterData) {
-          updateFilterData(this._filtersData.filters, newFilterData);
           this._emitFiltersChanged();
         }
       } else {
@@ -227,23 +226,17 @@ export default class DataTableFilters extends Vue {
     }
   }
 
-  async _changeFormElementFilterMobile(ev: Event, elementType: DataTableFormElementFilters) {
-    if (ev.target) {
-      const newFilterData = getElementFilterData(ev, elementType);
-
-      await this.storeModule.updateFilterConfig({
-        ...this.filterElementValue,
-        ...{
-          [newFilterData?.id?.replace(/-desktop|-mobile/gi, '') || 'no-id']:
-            elementType !== 'checkbox' ? newFilterData?.value : newFilterData?.checked,
-        },
-      });
-
-      if (this._filtersData && newFilterData) {
-        updateFilterData(this._filtersData.filters, newFilterData);
-        this._emitFiltersChanged();
-      }
-    }
+  _getUpdatedFiltersObject() {
+    const filters = this.filterElementValue;
+    return this._filtersData
+      ? this._filtersData.filters.map((filter: DataTableFilter) => {
+          if (filter.id) {
+            const value = filters[filter.id];
+            return { ...filter, ...{ value: value } };
+          }
+          return filter;
+        })
+      : {};
   }
 
   mounted() {
@@ -254,33 +247,15 @@ export default class DataTableFilters extends Vue {
     }
   }
 
-  _updateAdvancedFilters() {
-    if (this._advancedFilterComponent) {
-      const advancedFilters = this.storeModule.advancedFilterData;
-
-      if (this._filtersData && advancedFilters) {
-        this._filtersData.filters
-          .filter((filter: DataTableFilter) => filter.advanced)
-          .forEach((filter: DataTableFilter) => {
-            if (filter.id) {
-              const value = advancedFilters[filter.id];
-              filter.value = value;
-            }
-          });
-        this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._filtersData);
-      }
-    }
-  }
-
   _emitFiltersChanged() {
-    this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this.filterElementValue);
+    this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._getUpdatedFiltersObject());
   }
 
   _advancedFiltersPopOver() {
     if (this._advancedFiltersData) {
       return (
         <AdvancedFilters
-          onChiAdvancedFiltersChange={() => this._updateAdvancedFilters()}
+          onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={false}
           advancedFiltersData={this._advancedFiltersData}
         />
@@ -293,7 +268,7 @@ export default class DataTableFilters extends Vue {
     if (this._advancedFiltersData) {
       return (
         <AdvancedFilters
-          onChiAdvancedFiltersChange={() => this._updateAdvancedFilters()}
+          onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={true}
           advancedFiltersData={this._advancedFiltersData}
         />
@@ -306,8 +281,7 @@ export default class DataTableFilters extends Vue {
     await this.storeModule.updateFilterConfig({
       ...this.filterElementValueLive,
     });
-
-    this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this.filterElementValue);
+    this._emitFiltersChanged();
   }
 
   toggleDrawer() {

@@ -730,8 +730,10 @@ export default class DataTable extends Vue {
   @Watch('data')
   dataChange() {
     this.serializeData();
-    if (this._sortConfig) {
-      this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
+    if (this.mode === DataTableModes.CLIENT) {
+      if (this._sortConfig) {
+        this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
+      }
     }
     this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
   }
