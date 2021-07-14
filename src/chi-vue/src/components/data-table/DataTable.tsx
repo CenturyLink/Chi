@@ -374,6 +374,7 @@ export default class DataTable extends Vue {
               type="checkbox"
               class={CHECKBOX_CLASSES.INPUT}
               id={checkboxId}
+              disabled={rowData?.selectionDisabled}
               onChange={(ev: Event) => {
                 if (selectAll) {
                   this.selectAllRows((ev.target as HTMLInputElement).checked ? 'select' : 'deselect');
