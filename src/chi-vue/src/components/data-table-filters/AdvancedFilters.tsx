@@ -1,186 +1,70 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { copyArrayOfObjects, findComponent, uuid4 } from '@/utils/utils';
-import { DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
 import {
   ACCORDION_CLASSES,
   BUTTON_CLASSES,
+  ICON_CLASS,
   CHECKBOX_CLASSES,
   FORM_CLASSES,
-  ICON_CLASS,
   INPUT_CLASSES,
-  PORTAL_CLASS,
   SELECT_CLASSES,
+  PORTAL_CLASS,
   UTILITY_CLASSES,
 } from '@/constants/classes';
-import { compareFilters, getElementFilterData, updateFilterData } from '@/components/data-table-filters/FilterUtils';
-import { DATA_TABLE_EVENTS } from '@/constants/events';
+import { DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import { compareFilters, getElementFilterData } from './FilterUtils';
+import { findComponent, uuid4 } from '@/utils/utils';
 import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
+import { getModule } from 'vuex-module-decorators';
+import store from '@/store/index';
+import { DATA_TABLE_EVENTS } from '@/constants/events';
 
 Vue.config.ignoredElements = ['chi-popover'];
-// This element ignore is necessary as currently chi-popover is not a
-// Chi Vue component but a web component loaded from an external source
 
-// eslint-disable-next-line
 declare const chi: any;
 @Component
 export default class AdvancedFilters extends Vue {
-  @Prop() filtersData?: DataTableFilter[];
+  @Prop() advancedFiltersData?: DataTableFilter[];
+  @Prop() popoverFilterID?: string;
+  @Prop() filterUniqueID?: string;
+  @Prop() mobile?: boolean;
 
-  advancedFiltersData?: DataTableFilter[] = [];
+  _advancedFiltersAccordion?: HTMLElement;
+  _advancedFilterAccordionId?: string;
   _advancedFilterUuid?: string;
   _advancedFilterButtonId?: string;
   _advancedFilterPopoverId?: string;
-  _advancedFilterAccordionId?: string;
-  // eslint-disable-next-line
-  _advancedFiltersAccordion?: any;
+  storeModule?: any;
+  _planeAdvancedData = {};
 
-  created() {
-    this.advancedFiltersData = copyArrayOfObjects(this.$props.filtersData);
+  get filterElementValue() {
+    return this.storeModule.filterConfig;
+  }
+
+  get filterElementValueLive() {
+    return this.storeModule.filterConfigLive;
+  }
+
+  async created() {
+    this._advancedFilterAccordionId = `accordion__${this.filterUniqueID}`;
     this._advancedFilterUuid = uuid4();
     this._advancedFilterButtonId = `button__${this._advancedFilterUuid}`;
     this._advancedFilterPopoverId = `popover__${this._advancedFilterUuid}`;
-    this._advancedFilterAccordionId = `accordion__${this._advancedFilterUuid}`;
-  }
 
-  _changeFormElementFilter(ev: Event, elementType: DataTableFormElementFilters) {
-    if (ev.target) {
-      const newFilterData: { name: string; checked?: boolean; value?: string } | null = getElementFilterData(
-        ev,
-        elementType
-      );
+    if (!this.storeModule && this.$store) {
+      this.storeModule = getModule(store, this.$store);
 
-      if (newFilterData && this.advancedFiltersData) {
-        updateFilterData(this.advancedFiltersData, newFilterData);
+      if (this.advancedFiltersData) {
+        this._planeAdvancedData = this.advancedFiltersData.reduce((accumulator: any, currentValue: any) => {
+          return {
+            ...accumulator,
+            [currentValue.id]: currentValue.type === 'checkbox' ? false : currentValue.value || '',
+          };
+        }, {});
       }
     }
   }
 
-  _calculateFilterId(filterName: string) {
-    return `${this._advancedFilterPopoverId}_${filterName}`;
-  }
-
-  _createSelectFilter(filter: DataTableFilter, index: number) {
-    const options = filter.options?.map(option => {
-      return (
-        <option value={option.value} selected={filter.value === option.value}>
-          {option.label}
-        </option>
-      );
-    });
-
-    return (
-      <div
-        id={this._calculateFilterId(filter.name)}
-        class={`${FORM_CLASSES.FORM_ITEM} ${index !== 0 && !filter.advanced ? '-ml--2' : ''} ${
-          // Todo
-          !filter.advanced ? 'chi-data-table-filter__select ' : ''
-        }`}>
-        <select
-          aria-label={`Filter by ${filter.label || filter.name}`}
-          class={`${SELECT_CLASSES.SELECT} -lg`}
-          data-filter={filter.name}
-          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select')}>
-          {options}
-        </select>
-      </div>
-    );
-  }
-
-  _createInputFilter(filter: DataTableFilter, index: number) {
-    return (
-      <div
-        id={this._calculateFilterId(filter.name)}
-        // Todo
-        class={`
-          ${FORM_CLASSES.FORM_ITEM}
-          ${index !== 0 && !filter.advanced ? 'chi-data-table-filter__input -ml--2' : ''}`}>
-        <input
-          aria-label={`Filter by ${filter.label || filter.name}`}
-          class={`${INPUT_CLASSES.INPUT} -lg`}
-          data-filter={filter.name}
-          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'input')}
-          placeholder={filter.placeholder || null}
-          type="text"
-          value={filter.value || ''}
-        />
-      </div>
-    );
-  }
-
-  _createTextareaFilter(filter: DataTableFilter, index: number) {
-    return (
-      // Todo
-      <div
-        class={`${FORM_CLASSES.FORM_ITEM} ${
-          index !== 0 && !filter.advanced ? 'chi-data-table-filter__input -ml--2' : ''
-        }`}>
-        <textarea
-          id={this._calculateFilterId(filter.name)}
-          aria-label={`Filter by ${filter.label || filter.name}`}
-          data-filter={filter.name}
-          class={`${INPUT_CLASSES.INPUT} -lg`}
-          placeholder={filter.placeholder || null}
-          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'textarea')}
-          value={filter.value || ''}
-        />
-      </div>
-    );
-  }
-
-  _createCheckboxFilter(filter: DataTableFilter, index: number) {
-    return (
-      <div
-        class={`
-          ${FORM_CLASSES.FORM_ITEM}
-          ${index !== 0 && !filter.advanced ? '-ml--2' : ''}
-          ${UTILITY_CLASSES.DISPLAY.FLEX}
-          ${UTILITY_CLASSES.JUSTIFY.CENTER}`}>
-        <div class={`${CHECKBOX_CLASSES.checkbox} ${UTILITY_CLASSES.ALIGN_SELF.CENTER}`}>
-          <input
-            id={`toolbar-filter-checkbox__${filter.name}`}
-            aria-label={`Filter by ${filter.label || filter.name}`}
-            data-filter={filter.name}
-            type="checkbox"
-            class={CHECKBOX_CLASSES.INPUT}
-            checked={filter.checked}
-            onChange={(ev: Event) => this._changeFormElementFilter(ev, 'checkbox')}
-          />
-          <label for={`toolbar-filter-checkbox__${filter.name}`} class={CHECKBOX_CLASSES.LABEL}>
-            {filter.name}
-          </label>
-        </div>
-      </div>
-    );
-  }
-
-  _emitAdvancedFiltersChange() {
-    this.$emit(DATA_TABLE_EVENTS.ADVANCED_FILTERS_CHANGE);
-  }
-
-  _applyAdvancedFiltersChange() {
-    this._emitAdvancedFiltersChange();
-    this._toggleAdvancedFiltersPopover();
-    this._advancedFiltersAccordion.collapseAll();
-  }
-
-  _toggleAdvancedFiltersPopover() {
-    if (this._advancedFilterPopoverId) {
-      const popover = this.$refs.popover;
-
-      if (popover) {
-        // eslint-disable-next-line
-        // @ts-ignore
-        popover.toggle();
-      }
-    }
-  }
-
-  _resetAdvancedFilters() {
-    this.advancedFiltersData = copyArrayOfObjects(this.$props.filtersData);
-    this._advancedFiltersAccordion.collapseAll();
-  }
-
-  mounted() {
+  async mounted() {
     const dataTableFiltersComponent = findComponent(this, 'DataTableFilters');
 
     if (this._advancedFilterAccordionId) {
@@ -196,19 +80,156 @@ export default class AdvancedFilters extends Vue {
     }
   }
 
+  _calculateFilterId(filterName: string) {
+    return `${this.popoverFilterID}_${filterName}`;
+  }
+
+  _createSelectFilter(filter: DataTableFilter) {
+    const options = filter.options?.map(option => {
+      return (
+        <option value={option.value} selected={filter.value === option.value}>
+          {option.label}
+        </option>
+      );
+    });
+
+    return (
+      <div
+        id={
+          !this.mobile
+            ? `${this._calculateFilterId(filter.name)}-desktop`
+            : `${this._calculateFilterId(filter.name)}-mobile`
+        }
+        class={`${FORM_CLASSES.FORM_ITEM}`}>
+        {this.mobile && (
+          <label for={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`} class={FORM_CLASSES.LABEL}>
+            {filter.label}
+          </label>
+        )}
+        <select
+          aria-label={`Filter by ${filter.label || filter.name}`}
+          id={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
+          value={this.filterElementValueLive[filter.id]}
+          class={`${SELECT_CLASSES.SELECT} ${this.mobile ? '-mb--1' : ''} -lg`}
+          data-filter={filter.name}
+          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select')}>
+          {options}
+        </select>
+      </div>
+    );
+  }
+
+  async _changeFormElementFilter(ev: Event, elementType: DataTableFormElementFilters) {
+    if (ev.target) {
+      const newFilterData: {
+        name: string;
+        checked?: boolean;
+        value?: string;
+        id: string;
+      } | null = getElementFilterData(ev, elementType);
+
+      await this.storeModule.updateFilterConfigLive({
+        ...this.filterElementValueLive,
+        ...{
+          [newFilterData?.id.replace(/-desktop|-mobile/gi, '') || 'no-id']:
+            elementType !== 'checkbox' ? newFilterData?.value : newFilterData?.checked,
+        },
+      });
+    }
+  }
+
+  _createInputFilter(filter: DataTableFilter) {
+    return (
+      <div
+        id={
+          !this.mobile
+            ? `${this._calculateFilterId(filter.name)}-desktop`
+            : `${this._calculateFilterId(filter.name)}-mobile`
+        }
+        class={`
+              ${FORM_CLASSES.FORM_ITEM}`}>
+        {this.mobile && (
+          <label for={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`} class={FORM_CLASSES.LABEL}>
+            {filter.label}
+          </label>
+        )}
+        <input
+          aria-label={`Filter by ${filter.label || filter.name}`}
+          id={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
+          class={`${INPUT_CLASSES.INPUT} ${this.mobile && '-mb--1'} -lg`}
+          data-filter={filter.name}
+          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'input')}
+          placeholder={filter.placeholder || null}
+          type="text"
+          value={this.filterElementValueLive[filter.id]}
+        />
+      </div>
+    );
+  }
+
+  _createTextareaFilter(filter: DataTableFilter) {
+    return (
+      <div class={`${FORM_CLASSES.FORM_ITEM}`}>
+        {this.mobile && (
+          <label for={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`} class={FORM_CLASSES.LABEL}>
+            {filter.label}
+          </label>
+        )}
+        <textarea
+          id={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
+          value={this.filterElementValueLive[filter.id]}
+          aria-label={`Filter by ${filter.label || filter.name}`}
+          data-filter={filter.name}
+          class={`${INPUT_CLASSES.INPUT} ${this.mobile && '-mb--1'} -lg`}
+          placeholder={filter.placeholder || null}
+          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'textarea')}
+        />
+      </div>
+    );
+  }
+
+  _createCheckboxFilter(filter: DataTableFilter) {
+    return (
+      <div
+        class={`
+              ${FORM_CLASSES.FORM_ITEM}
+              ${UTILITY_CLASSES.DISPLAY.FLEX}
+              ${UTILITY_CLASSES.JUSTIFY.CENTER}`}>
+        <div
+          class={[
+            CHECKBOX_CLASSES.checkbox,
+            this.mobile ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} -mb--1` : UTILITY_CLASSES.ALIGN_SELF.CENTER,
+          ]}>
+          <input
+            id={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
+            aria-label={`Filter by ${filter.label || filter.name}`}
+            data-filter={filter.name}
+            type="checkbox"
+            class={`${CHECKBOX_CLASSES.INPUT} ${this.mobile && '-mb--1'}`}
+            checked={this.filterElementValueLive[filter.id]}
+            onChange={(ev: Event) => this._changeFormElementFilter(ev, 'checkbox')}
+          />
+          <label for={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`} class={CHECKBOX_CLASSES.LABEL}>
+            {filter.label}
+          </label>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const advancedFilters: JSX.Element[] = [];
     this.advancedFiltersData &&
-      this.advancedFiltersData.forEach((filter: DataTableFilter, index: number) => {
+      this.advancedFiltersData.forEach((filter: DataTableFilter) => {
         const filterElement =
           filter.type === 'select'
-            ? this._createSelectFilter(filter, index)
+            ? this._createSelectFilter(filter)
             : filter.type === 'input'
-            ? this._createInputFilter(filter, index)
+            ? this._createInputFilter(filter)
             : filter.type === 'checkbox'
-            ? this._createCheckboxFilter(filter, index)
+            ? this._createCheckboxFilter(filter)
             : filter.type === 'textarea'
-            ? this._createTextareaFilter(filter, index)
+            ? this._createTextareaFilter(filter)
             : null;
 
         if (filterElement) {
@@ -221,9 +242,10 @@ export default class AdvancedFilters extends Vue {
               <div class={ACCORDION_CLASSES.CONTENT}>{filterElement}</div>
             </div>
           );
-          advancedFilters.push(accordionItem);
+          this.mobile ? advancedFilters.push(filterElement) : advancedFilters.push(accordionItem);
         }
       });
+
     const advancedFiltersButton = (
       <button
         id={this._advancedFilterButtonId}
@@ -234,54 +256,82 @@ export default class AdvancedFilters extends Vue {
         </div>
       </button>
     );
-    const advancedFiltersPopover = (
-      <chi-popover
-        ref="popover"
-        position="bottom"
-        reference={`#${this._advancedFilterButtonId}`}
-        title="Filters"
-        portal
-        drag
-        closable>
-        <div class={`${ACCORDION_CLASSES.ACCORDION} -sm`} ref="advancedFiltersAccordion">
-          {advancedFilters}
-        </div>
-        <div class={`advanced-filters__actions -mt--2`}>
-          <button
-            onclick={() => this._applyAdvancedFiltersChange()}
-            class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY}`}
-            ref="advancedFiltersApplyButton"
-            disabled={
-              this.advancedFiltersData &&
-              compareFilters &&
-              compareFilters(this.$props.filtersData, this.advancedFiltersData)
-            }>
-            APPLY
-          </button>
-          <button onclick={() => this._toggleAdvancedFiltersPopover()} class={`${BUTTON_CLASSES.BUTTON} -ml--2`}>
-            CANCEL
-          </button>
-          <button
-            class={`
-              ${BUTTON_CLASSES.BUTTON}
-              ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON}
-              ${BUTTON_CLASSES.PRIMARY}
-              ${BUTTON_CLASSES.FLAT} -ml--2 -bl--1`}
-            aria-label="Reset advanced filters"
-            onclick={() => this._resetAdvancedFilters()}>
-            <div class={BUTTON_CLASSES.CONTENT}>
-              <i class={`${ICON_CLASS} icon-reload`} />
-            </div>
-          </button>
-        </div>
-      </chi-popover>
-    );
 
-    return (
+    const advancedFiltersRender = (
       <div>
-        {advancedFiltersButton}
-        {advancedFiltersPopover}
+        {!this.mobile && [
+          advancedFiltersButton,
+          <chi-popover
+            ref="popover"
+            position="bottom"
+            reference={`#${this._advancedFilterButtonId}`}
+            title="Filters"
+            portal
+            drag
+            closable>
+            <div class={`${ACCORDION_CLASSES.ACCORDION} -sm`} ref="advancedFiltersAccordion">
+              {advancedFilters}
+            </div>
+            <div class={`advanced-filters__actions -mt--2`}>
+              <button
+                onclick={() => this._applyAdvancedFiltersChange()}
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY}`}
+                ref="advancedFiltersApplyButton"
+                disabled={
+                  this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
+                }>
+                APPLY
+              </button>
+              <button onclick={() => this._toggleAdvancedFiltersPopover()} class={`${BUTTON_CLASSES.BUTTON} -ml--2`}>
+                CANCEL
+              </button>
+              <button
+                class={`
+                    ${BUTTON_CLASSES.BUTTON} 
+                    ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON}
+                    ${BUTTON_CLASSES.PRIMARY} 
+                    ${BUTTON_CLASSES.FLAT} ${UTILITY_CLASSES.MARGIN.LEFT[1]} -bl--1`}
+                aria-label="Reset advanced filters"
+                onclick={() => this._resetAdvancedFilters()}>
+                <div class={BUTTON_CLASSES.CONTENT}>
+                  <i class={`${ICON_CLASS} icon-reload`} />
+                </div>
+              </button>
+            </div>
+          </chi-popover>,
+        ]}
+        {this.mobile && advancedFilters}
       </div>
     );
+
+    return advancedFiltersRender;
+  }
+
+  _emitAdvancedFiltersChange() {
+    this.$emit(DATA_TABLE_EVENTS.ADVANCED_FILTERS_CHANGE);
+  }
+
+  async _applyAdvancedFiltersChange() {
+    await this.storeModule.updateFilterConfig(this.filterElementValueLive);
+    this._emitAdvancedFiltersChange();
+  }
+
+  _toggleAdvancedFiltersPopover() {
+    if (this._advancedFilterPopoverId) {
+      const popover = this.$refs.popover;
+
+      if (popover) {
+        // eslint-disable-next-line
+        // @ts-ignore
+        popover.toggle();
+      }
+    }
+  }
+
+  async _resetAdvancedFilters() {
+    console.log(this._planeAdvancedData);
+    await this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...this._planeAdvancedData });
+    await this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...this._planeAdvancedData });
+    this._emitAdvancedFiltersChange();
   }
 }
