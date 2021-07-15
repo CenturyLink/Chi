@@ -47,9 +47,7 @@ export function findComponent(startComponent: Vue, componentName: string) {
   return component;
 }
 
-// eslint-disable-next-line
 export function copyObject(src: any) {
-  // eslint-disable-next-line
   const target: any = {};
 
   for (const prop in src) {
@@ -61,7 +59,6 @@ export function copyObject(src: any) {
   return target;
 }
 
-// eslint-disable-next-line
 export function copyArrayOfObjects(originArray: any[]) {
   return originArray.map(object => {
     return copyObject(object);
