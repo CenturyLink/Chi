@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-07-13T17:18:19",
+  "timestamp": "2021-07-15T06:48:11",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1851,9 +1851,26 @@
           "mutable": false,
           "attr": "backlink-href",
           "reflectToAttr": true,
-          "docs": "to set a links destination url.",
+          "docs": "to set a links destination url",
           "docsTags": [],
           "default": "'#'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "mutable": false,
+          "attr": "format",
+          "reflectToAttr": true,
+          "docs": "to set app layout format",
+          "docsTags": [],
+          "default": "'base'",
           "values": [
             {
               "type": "string"
@@ -1870,23 +1887,6 @@
           "reflectToAttr": true,
           "docs": "To define app layout subtitle",
           "docsTags": [],
-          "values": [
-            {
-              "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "type",
-          "type": "string",
-          "mutable": false,
-          "attr": "type",
-          "reflectToAttr": true,
-          "docs": "to set app layout type { base, no-margin }.",
-          "docsTags": [],
-          "default": "'base'",
           "values": [
             {
               "type": "string"

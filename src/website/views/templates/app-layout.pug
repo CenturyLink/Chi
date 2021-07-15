@@ -7,7 +7,7 @@ wide_container: true
 
 .-lumen-only
   h2 Examples
-  p.-text To render application layout, use the class <code>chi-main</code>.
+  p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base
   .example.-mb--3
@@ -95,6 +95,8 @@ wide_container: true
             aria-controls="html-base"
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-base
+      .chi-tab__description
+        | Use the <code>title=""</code> attribute to display a title above the application layout.
       :code(lang="html")
         <chi-main title="App title">
           <!-- App content goes here -->
@@ -365,6 +367,8 @@ wide_container: true
             aria-controls="html-back-link"
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-back-link
+      .chi-tab__description
+        | Use the <code>backlink=""</code> attribute to display a link above the title of the application layout.
       :code(lang="html")
         <chi-main backlink="Back link" title="App title">
           <!-- App content goes here -->
@@ -641,6 +645,8 @@ wide_container: true
             aria-controls="html-subtitle"
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-subtitle
+      .chi-tab__description
+        | Use the <code>subtitle=""</code> attribute to display a subtitle next to the title of the application layout.
       :code(lang="html")
         <chi-main backlink="Back link" title="App title" subtitle="App subtitle">
           <!-- App content goes here -->
@@ -920,6 +926,8 @@ wide_container: true
             aria-controls="html-header-actions"
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-header-actions
+      .chi-tab__description
+        | Add buttons in the header of the application layout by defining <code>slot="header-actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
         <chi-main backlink="Back link" title="App title" subtitle="App subtitle">
           <button class="chi-button -primary -lg -uppercase -px--4" slot="header-actions">Primary</button>
@@ -1207,6 +1215,8 @@ wide_container: true
             aria-controls="html-page-level-actions"
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-page-level-actions
+      .chi-tab__description
+        | Add page-level actions at the bottom of the application layout by defining <code>slot="page-level__actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
         <chi-main backlink="Back link" title="App title" subtitle="App subtitle">
           <button class="chi-button -primary -lg -uppercase -px--4" slot="header-actions">Primary</button>

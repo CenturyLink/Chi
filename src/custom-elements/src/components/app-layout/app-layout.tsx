@@ -1,4 +1,5 @@
 import { Component, Element, Prop, Watch, h, State } from '@stencil/core';
+import { AppLayoutFormats, APP_LAYOUT_FORMATS } from '../../constants/constants';
 
 @Component({
   tag: 'chi-main',
@@ -9,9 +10,9 @@ export class AppLayout {
   @Element() el;
 
   /**
-   *  to set app layout type { base, no-margin }.
+   *  to set app layout format
    */
-  @Prop({ reflect: true }) type = 'base';
+  @Prop({ reflect: true }) format: AppLayoutFormats = 'base';
 
   /**
    *  To define app layout back link
@@ -19,7 +20,7 @@ export class AppLayout {
   @Prop({ reflect: true }) backlink: string;
 
   /**
-   *  to set a links destination url.
+   *  to set a links destination url
    */
   @Prop({ reflect: true }) backlinkHref: string = '#';
 
@@ -41,9 +42,9 @@ export class AppLayout {
 
   private mutationObserver;
 
-  @Watch('type')
+  @Watch('format')
   typeValidation(newValue: string) {
-    if (newValue && !['base', 'no-margin'].includes(newValue)) {
+    if (newValue && !APP_LAYOUT_FORMATS.includes(newValue)) {
       throw new Error(`${newValue} is not a valid type for app layout. Valid values are base or no-margin.`);
     }
   }
@@ -74,7 +75,7 @@ export class AppLayout {
   }
 
   componentWillLoad() {
-    this.typeValidation(this.type);
+    this.typeValidation(this.format);
 
     if (this.el.getAttribute('title')) {
       this.appLayoutTitle = this.el.getAttribute('title');
@@ -103,7 +104,7 @@ export class AppLayout {
 
     return (
       <div class={`chi-main
-        ${this.type ? `-${this.type}` : ''}`}
+        ${this.format ? `-${this.format}` : ''}`}
       >
         <div class="chi-main__header">
           <div class="chi-main__header-start">
