@@ -529,20 +529,21 @@
           }
         }
       }
-    }
-  }
 
-  &.-portal {
-    & > li {
       & > a {
-        font-size: $font-size-lg;
-        font-weight: $font-weight-bold;
+        font-size: $tabs-horizontal-lg-font-size;
+        font-weight: $tabs-horizontal-lg-font-weight;
+        line-height: $tabs-horizontal-lg-line-height;
+        padding: $tabs-horizontal-lg-padding;
+
+        &.chi-dropdown__trigger {
+          padding-right: $tabs-horizontal-lg-trigger-padding-right;
+
+          &::after {
+            top: $tabs-horizontal-lg-trigger-icon-top;
+          }
+        }
       }
-    }
-
-    &.-border {
-      border-bottom: 0.125rem solid $color-border-base;
-
     }
   }
 }

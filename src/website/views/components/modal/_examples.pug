@@ -43,281 +43,665 @@ h3 Base
         Launch demo modal
       </button>
 
-      <!-- Modal -->
-      <div class="chi-backdrop -closed">
-        <div class="chi-backdrop__wrapper">
-          <section id="modal-1" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-            <header class="chi-modal__header">
-              <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-x"></i>
-                </div>
-              </button>
-            </header>
-            <div class="chi-modal__content">
-              <p class="-text -m--0">Modal content</p>
-            </div>
-            <footer class="chi-modal__footer">
-              <button class="chi-button" data-dismiss="modal">Cancel</button>
-              <button class="chi-button -primary">Save</button>
-            </footer>
-          </section>
+        <!-- Modal -->
+        <div class="chi-backdrop -closed">
+          <div class="chi-backdrop__wrapper">
+            <section id="modal-1" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+              <header class="chi-modal__header">
+                <h2 class="chi-modal__title">Modal Title</h2>
+                <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x"></i>
+                  </div>
+                </button>
+              </header>
+              <div class="chi-modal__content">
+                <p class="-text -m--0">Modal content</p>
+              </div>
+              <footer class="chi-modal__footer">
+                <button class="chi-button" data-dismiss="modal">Cancel</button>
+                <button class="chi-button -primary">Save</button>
+              </footer>
+            </section>
+          </div>
         </div>
-      </div>
 
-      <!-- JavaScript -->
-      <script>chi.modal(document.getElementById('modal-trigger-1'));</script>
+        <!-- JavaScript -->
+        <script>chi.modal(document.getElementById('modal-trigger-1'));</script>
 
-h3 Center
-p.-text Modals can also be placed in the middle of the page by applying the class <code>-center</code> to <code>chi-backdrop</code>.
-.example.-mb--3
-  .chi-backdrop.-center.-p--6.-position--relative.-z--0
-    .chi-backdrop__wrapper
-      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.chi-modal__header
-          h2.chi-modal__title Modal Title
-          button(class='chi-button -icon -close', aria-label='Close')
-            .chi-button__content
-              i.chi-icon.icon-x
-        .chi-modal__content
-          p.-text.-m--0 Modal content
-        footer.chi-modal__footer
-          button.chi-button Cancel
-          button.chi-button.-primary Save
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-center-align
-      li.-disabled
-        a(href=`#webcomponent-center-align`) Web Component
-      li.-active
-        a(href=`#html-center-align`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-center-align
-  .chi-tabs-panel.-active#html-center-align
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
-      <!-- Trigger -->
-      <button id="modal-trigger-2" class="chi-button chi-modal__trigger" data-target="#modal-2">
-        Launch center modal
-      </button>
+.-portal-only
+  h3 Base
+  .example.-mb--3(style='position:static')
+    .-p--3
+      .-d--flex.-justify-content--start.-align-items--start
+        button#modal-trigger-portal-1.chi-button.-primary.chi-modal__trigger(data-target='#modal-portal-1')
+          | Click me to open the modal
+    .chi-backdrop.-closed
+      .chi-backdrop__wrapper
+        section.chi-modal#modal-portal-1(role="dialog", aria-label="Modal description", aria-modal="true")
+          header.chi-modal__header
+            h2.chi-modal__title Modal Title
+            button(class='chi-button -icon -close', data-dismiss='modal', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x
+          .chi-modal__content
+            p.-text.-m--0 Modal content
+          footer.chi-modal__footer
+            button.chi-button.-primary.-outline.-uppercase(data-dismiss='modal') Cancel
+            button.chi-button.-primary.-uppercase Save
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-base
+        li.-disabled
+          a(href=`#webcomponent-portal-base`) Web Component
+        li.-active
+          a(href=`#html-portal-base`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-base
+    .chi-tabs-panel.-active#html-portal-base
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang="html")
+        <!-- Trigger -->
+        <button id="modal-trigger-portal-1" class="chi-button chi-modal__trigger" data-target="#modal-portal-1">
+          Launch demo modal
+        </button>
 
-      <!-- Modal -->
-      <div class="chi-backdrop -center -closed">
-        <div class="chi-backdrop__wrapper">
-          <section id="modal-2" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-            <header class="chi-modal__header">
-              <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-x"></i>
-                </div>
-              </button>
-            </header>
-            <div class="chi-modal__content">
-              <p class="-text -m--0">Modal content</p>
-            </div>
-            <footer class="chi-modal__footer">
-              <button class="chi-button" data-dismiss="modal">Cancel</button>
-              <button class="chi-button -primary">Save</button>
-            </footer>
-          </section>
+        <!-- Modal -->
+        <div class="chi-backdrop -closed">
+          <div class="chi-backdrop__wrapper">
+            <section id="modal-portal-1" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+              <header class="chi-modal__header">
+                <h2 class="chi-modal__title">Modal Title</h2>
+                <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x"></i>
+                  </div>
+                </button>
+              </header>
+              <div class="chi-modal__content">
+                <p class="-text -m--0">Modal content</p>
+              </div>
+              <footer class="chi-modal__footer">
+                <button class="chi-button -primary -outline -uppercase" data-dismiss="modal">Cancel</button>
+                <button class="chi-button -primary -uppercase">Save</button>
+              </footer>
+            </section>
+          </div>
         </div>
-      </div>
 
-      <!-- JavaScript -->
-      <script>chi.modal(document.getElementById('modal-trigger-2'));</script>
+        <!-- JavaScript -->
+        <script>chi.modal(document.getElementById('modal-trigger-portal-1'));</script>
 
-h3 Scrollable
-p.-text
-  | Enable scrolling if the height of the modal's content is larger than the modal's content container.
-h4 Requirements
-p.-text
-  | A <code>max-height</code> must be defined on <code>chi-modal__content</code>.
-  | Use max-height utility classes such as <code>-mh--400</code> or <code>-mh--480</code>, or define your own value.
+.-lumen-only.-centurylink-only
+  h3 Center
+  p.-text Modals can also be placed in the middle of the page by applying the class <code>-center</code> to <code>chi-backdrop</code>.
+  .example.-mb--3
+    .chi-backdrop.-center.-p--6.-position--relative.-z--0
+      .chi-backdrop__wrapper
+        section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+          header.chi-modal__header
+            h2.chi-modal__title Modal Title
+            button(class='chi-button -icon -close', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x
+          .chi-modal__content
+            p.-text.-m--0 Modal content
+          footer.chi-modal__footer
+            button.chi-button Cancel
+            button.chi-button.-primary Save
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-center-align
+        li.-disabled
+          a(href=`#webcomponent-center-align`) Web Component
+        li.-active
+          a(href=`#html-center-align`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-center-align
+    .chi-tabs-panel.-active#html-center-align
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang="html")
+        <!-- Trigger -->
+        <button id="modal-trigger-2" class="chi-button chi-modal__trigger" data-target="#modal-2">
+          Launch center modal
+        </button>
 
-.example.-mb--3
-  .chi-backdrop.-p--6.-position--relative.-z--0
-    .chi-backdrop__wrapper
-      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
-        header.chi-modal__header
-          h2.chi-modal__title Modal Title
-          button(class='chi-button -icon -close', aria-label='Close')
-            .chi-button__content
-              i.chi-icon.icon-x
-        .chi-modal__content.-mh--400
-          p.-text.-mt--0
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-          p.-text
-            | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
-          p.-text
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-          p.-text
-            | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
-            | Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ac odio quis sem placerat porta vel nec leo. Phasellus et malesuada nisi.
-          p.-text
-            | Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
-            | Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
-            | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
-            | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
-        footer.chi-modal__footer
-          button.chi-button Cancel
-          button.chi-button.-primary Save
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-scrollable
-      li.-disabled
-        a(href=`#webcomponent-scrollable`) Web Component
-      li.-active
-        a(href=`#html-scrollable`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-scrollable
-  .chi-tabs-panel.-active#html-scrollable
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
-      <!-- Trigger -->
-      <button id="modal-trigger-3" class="chi-button chi-modal__trigger" data-target="#modal-3">
-        Launch scrollable modal
-      </button>
-
-      <!-- Modal -->
-      <div class="chi-backdrop -closed">
-        <div class="chi-backdrop__wrapper">
-          <section id="modal-3" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-            <header class="chi-modal__header">
-              <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-x"></i>
-                </div>
-              </button>
-            </header>
-            <div class="chi-modal__content -mh--400">
-              <p class="-text -mt--0">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-              </p>
-              <p class="-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-              </p>
-              <p class="-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-              </p>
-              <p class="-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-              </p>
-              <p class="-text">
-                Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
-                Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
-                cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
-              </p>
-            </div>
-            <footer class="chi-modal__footer">
-              <button class="chi-button" data-dismiss="modal">Cancel</button>
-              <button class="chi-button -primary">Save</button>
-            </footer>
-          </section>
+        <!-- Modal -->
+        <div class="chi-backdrop -center -closed">
+          <div class="chi-backdrop__wrapper">
+            <section id="modal-2" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+              <header class="chi-modal__header">
+                <h2 class="chi-modal__title">Modal Title</h2>
+                <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x"></i>
+                  </div>
+                </button>
+              </header>
+              <div class="chi-modal__content">
+                <p class="-text -m--0">Modal content</p>
+              </div>
+              <footer class="chi-modal__footer">
+                <button class="chi-button" data-dismiss="modal">Cancel</button>
+                <button class="chi-button -primary">Save</button>
+              </footer>
+            </section>
+          </div>
         </div>
-      </div>
 
-      <!-- JavaScript -->
-      <script>chi.modal(document.getElementById('modal-trigger-3'));</script>
+        <!-- JavaScript -->
+        <script>chi.modal(document.getElementById('modal-trigger-2'));</script>
 
-h3 Scrolling long content
-p.-text
-  | Enable scrolling when modals become too long for the user’s viewport or device, they scroll independent of the page itself.
-.example.-mb--3
-  .chi-backdrop.-p--6.-position--relative.-z--0.-mh--480
-    .chi-backdrop__wrapper
-      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
-        header.chi-modal__header
-          h2.chi-modal__title Modal Title
-          button(class='chi-button -icon -close', aria-label='Close')
-            .chi-button__content
-              i.chi-icon.icon-x
-        .chi-modal__content
-          p.-text.-mt--0
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-          p.-text
-            | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
-          p.-text
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-          p.-text
-            | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
-            | Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ac odio quis sem placerat porta vel nec leo. Phasellus et malesuada nisi.
-          p.-text
-            | Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
-            | Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
-            | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
-            | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
-        footer.chi-modal__footer
-          button.chi-button Cancel
-          button.chi-button.-primary Save
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-scrollable-long
-      li.-disabled
-        a(href=`#webcomponent-scrollable-long`) Web Component
-      li.-active
-        a(href=`#html-scrollable-long`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-scrollable-long
-  .chi-tabs-panel.-active#html-scrollable-long
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
-      <!-- Trigger -->
-      <button id="modal-trigger-4" class="chi-button chi-modal__trigger" data-target="#modal-4">
-        Launch long scrollable modal
-      </button>
+.-portal-only
+  h3 Center
+  p.-text Modals can also be placed in the middle of the page by applying the class <code>-center</code> to <code>chi-backdrop</code>.
+  .example.-mb--3
+    .chi-backdrop.-center.-p--6.-position--relative.-z--0
+      .chi-backdrop__wrapper
+        section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+          header.chi-modal__header
+            h2.chi-modal__title Modal Title
+            button(class='chi-button -icon -close', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x
+          .chi-modal__content
+            p.-text.-m--0 Modal content
+          footer.chi-modal__footer
+            button.chi-button.-primary.-outline Cancel
+            button.chi-button.-primary Save
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-center-align
+        li.-disabled
+          a(href=`#webcomponent-portal-center-align`) Web Component
+        li.-active
+          a(href=`#html-portal-center-align`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-center-align
+    .chi-tabs-panel.-active#html-portal-center-align
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang="html")
+        <!-- Trigger -->
+        <button id="modal-trigger-2" class="chi-button chi-modal__trigger" data-target="#modal-2">
+          Launch center modal
+        </button>
 
-      <!-- Modal -->
-      <div class="chi-backdrop -closed -mh--480">
-        <div class="chi-backdrop__wrapper">
-          <section id="modal-4" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-            <header class="chi-modal__header">
-              <h2 class="chi-modal__title">Modal Title</h2>
-              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-x"></i>
-                </div>
-              </button>
-            </header>
-            <div class="chi-modal__content">
-              <p class="-text -mt--0">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-              </p>
-              <p class="-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-              </p>
-              <p class="-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-              </p>
-              <p class="-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
-              </p>
-              <p class="-text">
-                Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
-                Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
-                cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
-              </p>
-            </div>
-            <footer class="chi-modal__footer">
-              <button class="chi-button" data-dismiss="modal">Cancel</button>
-              <button class="chi-button -primary">Save</button>
-            </footer>
-          </section>
+        <!-- Modal -->
+        <div class="chi-backdrop -center -closed">
+          <div class="chi-backdrop__wrapper">
+            <section id="modal-2" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+              <header class="chi-modal__header">
+                <h2 class="chi-modal__title">Modal Title</h2>
+                <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x"></i>
+                  </div>
+                </button>
+              </header>
+              <div class="chi-modal__content">
+                <p class="-text -m--0">Modal content</p>
+              </div>
+              <footer class="chi-modal__footer">
+                <button class="chi-button" data-dismiss="modal">Cancel</button>
+                <button class="chi-button -primary">Save</button>
+              </footer>
+            </section>
+          </div>
         </div>
-      </div>
 
-      <!-- JavaScript -->
-      <script>chi.modal(document.getElementById('modal-trigger-4'));</script>
+        <!-- JavaScript -->
+        <script>chi.modal(document.getElementById('modal-trigger-2'));</script>
+
+.-lumen-only.-centurylink-only
+  h3 Scrollable
+  p.-text
+    | Enable scrolling if the height of the modal's content is larger than the modal's content container.
+  h4 Requirements
+  p.-text
+    | A <code>max-height</code> must be defined on <code>chi-modal__content</code>.
+    | Use max-height utility classes such as <code>-mh--400</code> or <code>-mh--480</code>, or define your own value.
+
+  .example.-mb--3
+    .chi-backdrop.-p--6.-position--relative.-z--0
+      .chi-backdrop__wrapper
+        section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
+          header.chi-modal__header
+            h2.chi-modal__title Modal Title
+            button(class='chi-button -icon -close', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x
+          .chi-modal__content.-mh--400
+            p.-text.-mt--0
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+            p.-text
+              | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
+            p.-text
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+            p.-text
+              | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
+              | Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ac odio quis sem placerat porta vel nec leo. Phasellus et malesuada nisi.
+            p.-text
+              | Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+              | Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+              | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+              | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+          footer.chi-modal__footer
+            button.chi-button Cancel
+            button.chi-button.-primary Save
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-scrollable
+        li.-disabled
+          a(href=`#webcomponent-scrollable`) Web Component
+        li.-active
+          a(href=`#html-scrollable`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-scrollable
+    .chi-tabs-panel.-active#html-scrollable
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang="html")
+        <!-- Trigger -->
+        <button id="modal-trigger-3" class="chi-button chi-modal__trigger" data-target="#modal-3">
+          Launch scrollable modal
+        </button>
+
+        <!-- Modal -->
+        <div class="chi-backdrop -closed">
+          <div class="chi-backdrop__wrapper">
+            <section id="modal-3" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+              <header class="chi-modal__header">
+                <h2 class="chi-modal__title">Modal Title</h2>
+                <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x"></i>
+                  </div>
+                </button>
+              </header>
+              <div class="chi-modal__content -mh--400">
+                <p class="-text -mt--0">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+                  Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+                  cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+                </p>
+              </div>
+              <footer class="chi-modal__footer">
+                <button class="chi-button" data-dismiss="modal">Cancel</button>
+                <button class="chi-button -primary">Save</button>
+              </footer>
+            </section>
+          </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>chi.modal(document.getElementById('modal-trigger-3'));</script>
+
+.-portal-only
+  h3 Scrollable
+  p.-text
+    | Enable scrolling if the height of the modal's content is larger than the modal's content container.
+  h4 Requirements
+  p.-text
+    | A <code>max-height</code> must be defined on <code>chi-modal__content</code>.
+    | Use max-height utility classes such as <code>-mh--400</code> or <code>-mh--480</code>, or define your own value.
+
+  .example.-mb--3
+    .chi-backdrop.-p--6.-position--relative.-z--0
+      .chi-backdrop__wrapper
+        section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
+          header.chi-modal__header
+            h2.chi-modal__title Modal Title
+            button(class='chi-button -icon -close', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x
+          .chi-modal__content.-mh--400
+            p.-text.-mt--0
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+            p.-text
+              | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
+            p.-text
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+            p.-text
+              | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
+              | Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ac odio quis sem placerat porta vel nec leo. Phasellus et malesuada nisi.
+            p.-text
+              | Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+              | Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+              | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+              | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+          footer.chi-modal__footer
+            button.chi-button.-primary.-outline Cancel
+            button.chi-button.-primary Save
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-scrollable
+        li.-disabled
+          a(href=`#webcomponent-portal-scrollable`) Web Component
+        li.-active
+          a(href=`#html-portal-scrollable`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-scrollable
+    .chi-tabs-panel.-active#html-portal-scrollable
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang="html")
+        <!-- Trigger -->
+        <button id="modal-trigger-3" class="chi-button chi-modal__trigger" data-target="#modal-3">
+          Launch scrollable modal
+        </button>
+
+        <!-- Modal -->
+        <div class="chi-backdrop -closed">
+          <div class="chi-backdrop__wrapper">
+            <section id="modal-3" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+              <header class="chi-modal__header">
+                <h2 class="chi-modal__title">Modal Title</h2>
+                <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x"></i>
+                  </div>
+                </button>
+              </header>
+              <div class="chi-modal__content -mh--400">
+                <p class="-text -mt--0">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+                  Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+                  cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+                </p>
+              </div>
+              <footer class="chi-modal__footer">
+                <button class="chi-button" data-dismiss="modal">Cancel</button>
+                <button class="chi-button -primary">Save</button>
+              </footer>
+            </section>
+          </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>chi.modal(document.getElementById('modal-trigger-3'));</script>
+
+.-lumen-only.-centurylink-only
+  h3 Scrolling long content
+  p.-text
+    | Enable scrolling when modals become too long for the user’s viewport or device, they scroll independent of the page itself.
+  .example.-mb--3
+    .chi-backdrop.-p--6.-position--relative.-z--0.-mh--480
+      .chi-backdrop__wrapper
+        section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
+          header.chi-modal__header
+            h2.chi-modal__title Modal Title
+            button(class='chi-button -icon -close', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x
+          .chi-modal__content
+            p.-text.-mt--0
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+            p.-text
+              | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
+            p.-text
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+            p.-text
+              | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
+              | Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ac odio quis sem placerat porta vel nec leo. Phasellus et malesuada nisi.
+            p.-text
+              | Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+              | Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+              | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+              | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+          footer.chi-modal__footer
+            button.chi-button Cancel
+            button.chi-button.-primary Save
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-scrollable-long
+        li.-disabled
+          a(href=`#webcomponent-scrollable-long`) Web Component
+        li.-active
+          a(href=`#html-scrollable-long`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-scrollable-long
+    .chi-tabs-panel.-active#html-scrollable-long
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang="html")
+        <!-- Trigger -->
+        <button id="modal-trigger-4" class="chi-button chi-modal__trigger" data-target="#modal-4">
+          Launch long scrollable modal
+        </button>
+
+        <!-- Modal -->
+        <div class="chi-backdrop -closed -mh--480">
+          <div class="chi-backdrop__wrapper">
+            <section id="modal-4" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+              <header class="chi-modal__header">
+                <h2 class="chi-modal__title">Modal Title</h2>
+                <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x"></i>
+                  </div>
+                </button>
+              </header>
+              <div class="chi-modal__content">
+                <p class="-text -mt--0">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+                  Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+                  cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+                </p>
+              </div>
+              <footer class="chi-modal__footer">
+                <button class="chi-button" data-dismiss="modal">Cancel</button>
+                <button class="chi-button -primary">Save</button>
+              </footer>
+            </section>
+          </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>chi.modal(document.getElementById('modal-trigger-4'));</script>
+
+.-portal-only
+  h3 Scrolling long content
+  p.-text
+    | Enable scrolling when modals become too long for the user’s viewport or device, they scroll independent of the page itself.
+  .example.-mb--3
+    .chi-backdrop.-p--6.-position--relative.-z--0.-mh--480
+      .chi-backdrop__wrapper
+        section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true", style="margin-top:0;")
+          header.chi-modal__header
+            h2.chi-modal__title Modal Title
+            button(class='chi-button -icon -close', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x
+          .chi-modal__content
+            p.-text.-mt--0
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+            p.-text
+              | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
+            p.-text
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+            p.-text
+              | Integer sed ligula pulvinar, posuere sem nec, varius risus. Vivamus facilisis, eros quis tempus accumsan, nulla ligula aliquam nulla, sed porttitor quam quam auctor diam. Nullam vitae placerat arcu, a suscipit neque.
+              | Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ac odio quis sem placerat porta vel nec leo. Phasellus et malesuada nisi.
+            p.-text
+              | Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+              | Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+              | Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+              | cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+          footer.chi-modal__footer
+            button.chi-button.-primary.-outline Cancel
+            button.chi-button.-primary Save
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-scrollable-long
+        li.-disabled
+          a(href=`#webcomponent-portal-scrollable-long`) Web Component
+        li.-active
+          a(href=`#html-portal-scrollable-long`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-scrollable-long
+    .chi-tabs-panel.-active#html-portal-scrollable-long
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang="html")
+        <!-- Trigger -->
+        <button id="modal-trigger-4" class="chi-button chi-modal__trigger" data-target="#modal-4">
+          Launch long scrollable modal
+        </button>
+
+        <!-- Modal -->
+        <div class="chi-backdrop -closed -mh--480">
+          <div class="chi-backdrop__wrapper">
+            <section id="modal-4" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+              <header class="chi-modal__header">
+                <h2 class="chi-modal__title">Modal Title</h2>
+                <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x"></i>
+                  </div>
+                </button>
+              </header>
+              <div class="chi-modal__content">
+                <p class="-text -mt--0">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at hendrerit lacus. Nunc ornare sollicitudin arcu vitae viverra. Nam in aliquam augue. Nunc dignissim purus sed massa consequat dictum.
+                </p>
+                <p class="-text">
+                  Nam volutpat tellus sapien, ac aliquam nisl mattis id. Etiam laoreet malesuada tristique. Morbi luctus facilisis laoreet. Sed pharetra diam consequat, ultrices sem facilisis, ornare urna. Suspendisse nec mollis massa.
+                  Praesent ipsum purus, euismod quis mattis et, scelerisque in erat. Etiam laoreet dolor non suscipit laoreet. Sed nec mauris vitae ipsum mollis laoreet et sed nisi. In at metus eget neque consequat pellentesque. Aliquam erat volutpat.
+                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Quisque egestas ultricies justo, vel scelerisque justo. Aliquam mollis diam ac ligula feugiat placerat sed iaculis urna. Donec in mi consequat,
+                  cursus ante non, pulvinar eros. Phasellus viverra massa venenatis, pellentesque lectus auctor, condimentum nibh. Donec malesuada magna sed libero tincidunt, id tempus lectus mollis.
+                </p>
+              </div>
+              <footer class="chi-modal__footer">
+                <button class="chi-button" data-dismiss="modal">Cancel</button>
+                <button class="chi-button -primary">Save</button>
+              </footer>
+            </section>
+          </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>chi.modal(document.getElementById('modal-trigger-4'));</script>
+
+.-lumen-only.-centurylink-only
+  h3 With Subtitle
+  .example.-mb--3
+    .chi-backdrop.-p--6.-position--relative.-z--0
+      .chi-backdrop__wrapper
+        section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+          header.chi-modal__header
+            h2.chi-modal__title Modal Title
+            h3.chi-modal__subtitle Modal subtitle
+            button(class='chi-button -icon -close', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x
+          .chi-modal__content
+            p.-text.-m--0 Modal content
+          footer.chi-modal__footer
+            button.chi-button Cancel
+            button.chi-button.-primary Save
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-subtitle
+        li.-disabled
+          a(href=`#webcomponent-subtitle`) Web Component
+        li.-active
+          a(href=`#html-subtitle`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-subtitle
+    .chi-tabs-panel.-active#html-subtitle
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang="html")
+        <!-- Trigger -->
+        <button id="modal-trigger-5" class="chi-button chi-modal__trigger" data-target="#modal-5">
+          Launch modal with subtitle
+        </button>
+
+        <!-- Modal -->
+        <div class="chi-backdrop -closed">
+          <div class="chi-backdrop__wrapper">
+            <section id="modal-5" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+              <header class="chi-modal__header">
+                <h2 class="chi-modal__title">Modal Title</h2>
+                <h3 class="chi-modal__subtitle">Modal subtitle</h3>
+                <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x"></i>
+                  </div>
+                </button>
+              </header>
+              <div class="chi-modal__content">
+                <p class="-text -m--0">Modal content</p>
+              </div>
+              <footer class="chi-modal__footer">
+                <button class="chi-button" data-dismiss="modal">Cancel</button>
+                <button class="chi-button -primary">Save</button>
+              </footer>
+            </section>
+          </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>chi.modal(document.getElementById('modal-trigger-5'));</script>
 
 
 .-lumen-only.-centurylink-only
