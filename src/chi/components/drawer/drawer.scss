@@ -165,6 +165,7 @@ $animation-duration: 0.5s;
   }
 
   &__header {
+    background-color: $drawer-header-background-color;
     min-height: $drawer-header-min-height;
     padding: $drawer-header-padding;
     position: relative;
@@ -185,14 +186,11 @@ $animation-duration: 0.5s;
   .-close {
     position: fixed;
     right: 0.75rem;
-    top: 0.8125rem;
+    top: $drawer-button-close-top;
     z-index: 50;
-  }
 
-  // Portal
-  &.-portal {
-    .chi-drawer__header {
-      background-color: $color-background-secondary;
+    .chi-icon {
+      color: $drawer-button-close-icon-color;
     }
   }
 }

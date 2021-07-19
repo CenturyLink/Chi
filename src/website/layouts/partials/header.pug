@@ -38,14 +38,25 @@ header.chi-header.docs-header.-z--20
     }
   style(type="text/css").
     .theme-lumen a.theme-trigger-lumen.chi-dropdown__menu-item,
+    .theme-portal a.theme-trigger-portal.chi-dropdown__menu-item,
     .theme-centurylink a.theme-trigger-centurylink.chi-dropdown__menu-item{
       background-color: #e6f0ff;
       color: #0047bb;
       font-weight: 600;
     }
     .theme-centurylink .-lumen-only,
-    .theme-lumen .-centurylink-only {
+    .theme-centurylink .-portal-only,
+    .theme-lumen .-centurylink-only,
+    .theme-lumen .-portal-only,
+    .theme-portal .-lumen-only,
+    .theme-portal .-centurylink-only {
       display: none;
+    }
+    .theme-lumen .-lumen-only.-centurylink-only,
+    .theme-centurylink .-lumen-only.-centurylink-only,
+    .theme-lumen .-lumen-only.-portal-only,
+    .theme-portal .-lumen-only.-portal-only {
+      display: block;
     }
     .chi-brand {
       margin: 0;
@@ -97,6 +108,27 @@ header.chi-header.docs-header.-z--20
         height: 1.25rem;
         width: 8.75rem;
       }
+    }
+    .chi.theme-portal .docs-header .chi-header__content .chi-header__start .-chi-search .chi-input {
+      height: 2.5rem !important;
+    }
+    .chi.theme-portal .docs-header .chi-header__content .chi-header__start .-chi-search .chi-icon {
+      color: #0262B9;
+      font-size: 1.25rem;
+      height: 1.25rem;
+      line-height: 1.25rem;
+      top: 0.625rem;
+      width: 1.25rem;
+    }
+    .chi.theme-portal .example .example-tabs .chi-tabs {
+      height: 3rem;
+    }
+    .chi.theme-portal .example .example-tabs .chi-tabs > li > a {
+      line-height: 1.5rem;
+      padding: 0.75rem 0;
+    }
+    .chi.theme-portal .example .example-tabs .chi-tabs > li.-active > a {
+      padding-bottom: 0.625rem;
     }
   nav.chi-header__content
     .chi-header__brand#header-brand

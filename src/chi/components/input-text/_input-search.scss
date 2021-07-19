@@ -13,12 +13,12 @@
 
         &.-flat {
           right: 0.25rem;
-          top: 0;
+          top: $search-input-md-icon-top;
         }
 
         &.-close {
-          right: 2.25rem;
-          top: 0.25rem;
+          right: $search-input-md-close-right;
+          top: $search-input-md-close-top;
         }
       }
     }
@@ -56,11 +56,12 @@
               &.-icon {
                 &.-flat {
                   right: 0.25rem;
+                  top: $search-input-sm-icon-top;
                 }
 
                 &.-close {
-                  right: 1.75rem;
-                  top: 0;
+                  right: $search-input-sm-close-right;
+                  top: $search-input-sm-close-top;
                 }
               }
             }
@@ -70,10 +71,10 @@
             ~ .chi-button,
             ~ chi-button {
               &.-icon {
-                top: 0.25rem;
+                top: $search-input-lg-icon-top;
 
                 &.-close {
-                  top: 0.5rem;
+                  top: $search-input-lg-close-top;
                 }
               }
             }
@@ -83,10 +84,10 @@
             ~ .chi-button,
             ~ chi-button {
               &.-icon {
-                top: 0.5rem;
+                top: $search-input-xl-icon-top;
 
                 &.-close {
-                  top: 0.75rem;
+                  top: $search-input-xl-close-top;
                 }
               }
             }

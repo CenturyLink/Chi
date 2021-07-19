@@ -1,415 +1,619 @@
 h2 Examples
-p.-text
-  | Chi includes three button variants: Solid, Outline, and Flat. Use <code>solid</code>
-  | buttons for high emphasis actions, base or <code>outline</code> buttons for medium
-  | emphasis actions, and <code>flat</code> buttons for low emphasis actions.
-h3 Solid
-.example.-mb--3
-  .chi-grid.-no-gutter
-    .chi-col.-w--12.-w-md--6
-      .-p--3.-d--flex(style="justify-content: center;")
-        each type, val in {Base:'', Primary:'primary', Dark:'dark'}
-          div.-pr--2
-            chi-button(color=type)= val
-    .chi-col.-w--12.-w-md--6
-      .-p--3.-bg--black.-d--flex(style="justify-content: center;")
-        each type, val in {Secondary:'secondary', Light:'light'}
-          div.-pr--2
-            chi-button(color=type)= val
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-default
-      li.-active
-        a(href=`#webcomponent`) Web Component
-      li
-        a(href=`#html`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent
-    :code(lang="html")
-      <!-- For light backgrounds -->
-      <chi-button>Base</chi-button>
-      <chi-button color="primary">Primary</chi-button>
-      <chi-button color="dark">Dark</chi-button>
+.-lumen-only.-centurylink-only
+  p.-text
+    | Chi includes three button variants: Solid, Outline, and Flat. Use <code>solid</code>
+    | buttons for high emphasis actions, base or <code>outline</code> buttons for medium
+    | emphasis actions, and <code>flat</code> buttons for low emphasis actions.
+  h3 Solid
+  .example.-mb--3
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-d--flex(style="justify-content: center;")
+          each type, val in {Base:'', Primary:'primary', Dark:'dark'}
+            div.-pr--2
+              chi-button(color=type)= val
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black.-d--flex(style="justify-content: center;")
+          each type, val in {Secondary:'secondary', Light:'light'}
+            div.-pr--2
+              chi-button(color=type)= val
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-default
+        li.-active
+          a(href=`#webcomponent`) Web Component
+        li
+          a(href=`#html`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent
+      :code(lang="html")
+        <!-- For light backgrounds -->
+        <chi-button>Base</chi-button>
+        <chi-button color="primary">Primary</chi-button>
+        <chi-button color="dark">Dark</chi-button>
 
-      <!-- For dark backgrounds -->
-      <chi-button color="secondary">Secondary</chi-button>
-      <chi-button color="light">Light</chi-button>
-  .chi-tabs-panel#html
-    .chi-tab__description
-      | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
-      | <code>&lt;input&gt;</code> elements.
-    :code(lang="html")
-      <!-- For light backgrounds -->
-      <button class="chi-button">Base</button>
-      <button class="chi-button -primary">Primary</button>
-      <button class="chi-button -dark">Dark</button>
+        <!-- For dark backgrounds -->
+        <chi-button color="secondary">Secondary</chi-button>
+        <chi-button color="light">Light</chi-button>
+    .chi-tabs-panel#html
+      .chi-tab__description
+        | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
+        | <code>&lt;input&gt;</code> elements.
+      :code(lang="html")
+        <!-- For light backgrounds -->
+        <button class="chi-button">Base</button>
+        <button class="chi-button -primary">Primary</button>
+        <button class="chi-button -dark">Dark</button>
 
-      <!-- For dark backgrounds -->
-      <button class="chi-button -secondary">Secondary</button>
-      <button class="chi-button -light">Light</button>
+        <!-- For dark backgrounds -->
+        <button class="chi-button -secondary">Secondary</button>
+        <button class="chi-button -light">Light</button>
 
-      <!-- Button classes can be used on other elements -->
-      <a class="chi-button -primary" href="#" role="button">Link button</a>
-      <input class="chi-button -primary" type="button" value="Input button">
-      <input class="chi-button -primary" type="submit" value="Submit button">
+        <!-- Button classes can be used on other elements -->
+        <a class="chi-button -primary" href="#" role="button">Link button</a>
+        <input class="chi-button -primary" type="button" value="Input button">
+        <input class="chi-button -primary" type="submit" value="Submit button">
 
-h3 Outline
-.example.-mb--3
-  .chi-grid.-no-gutter
-    .chi-col.-w--12.-w-md--6
-      .-p--3.-d--flex(style="justify-content: center;")
-        each type, val in {Primary:'primary', Dark:'dark'}
-          div.-pr--2
-            chi-button(color=type, variant='outline')= val
-    .chi-col.-w--12.-w-md--6
-      .-p--3.-bg--black.-d--flex(style="justify-content: center;")
-        each type, val in {Secondary:'secondary', Light:'light'}
-          div.-pr--2
-            chi-button(color=type, variant='outline')= val
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-outline
-      li.-active
-        a(href=`#webcomponent-outline`) Web Component
-      li
-        a(href=`#html-outline`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-outline
-    :code(lang="html")
-      <!-- For light backgrounds -->
-      <chi-button color="primary" variant="outline">Primary</chi-button>
-      <chi-button color="dark" variant="outline">Dark</chi-button>
+  h3 Outline
+  .example.-mb--3
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-d--flex(style="justify-content: center;")
+          each type, val in {Primary:'primary', Dark:'dark'}
+            div.-pr--2
+              chi-button(color=type, variant='outline')= val
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black.-d--flex(style="justify-content: center;")
+          each type, val in {Secondary:'secondary', Light:'light'}
+            div.-pr--2
+              chi-button(color=type, variant='outline')= val
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-outline
+        li.-active
+          a(href=`#webcomponent-outline`) Web Component
+        li
+          a(href=`#html-outline`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-outline
+      :code(lang="html")
+        <!-- For light backgrounds -->
+        <chi-button color="primary" variant="outline">Primary</chi-button>
+        <chi-button color="dark" variant="outline">Dark</chi-button>
 
-      <!-- For dark backgrounds -->
-      <chi-button color="secondary" variant="outline">Secondary</chi-button>
-      <chi-button color="light" variant="outline">Light</chi-button>
-  .chi-tabs-panel#html-outline
-    .chi-tab__description
-      | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
-      | <code>&lt;input&gt;</code> elements.
-    :code(lang="html")
-      <!-- For light backgrounds -->
-      <button class="chi-button -primary -outline">Primary</button>
-      <button class="chi-button -dark -outline">Dark</button>
+        <!-- For dark backgrounds -->
+        <chi-button color="secondary" variant="outline">Secondary</chi-button>
+        <chi-button color="light" variant="outline">Light</chi-button>
+    .chi-tabs-panel#html-outline
+      .chi-tab__description
+        | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
+        | <code>&lt;input&gt;</code> elements.
+      :code(lang="html")
+        <!-- For light backgrounds -->
+        <button class="chi-button -primary -outline">Primary</button>
+        <button class="chi-button -dark -outline">Dark</button>
 
-      <!-- For dark backgrounds -->
-      <button class="chi-button -secondary -outline">Secondary</button>
-      <button class="chi-button -light -outline">Light</button>
+        <!-- For dark backgrounds -->
+        <button class="chi-button -secondary -outline">Secondary</button>
+        <button class="chi-button -light -outline">Light</button>
 
-      <!-- Button classes can be used on other elements -->
-      <a class="chi-button -primary -outline" href="#" role="button">Link button</a>
-      <input class="chi-button -primary -outline" type="button" value="Input button">
-      <input class="chi-button -primary -outline" type="submit" value="Submit button">
+        <!-- Button classes can be used on other elements -->
+        <a class="chi-button -primary -outline" href="#" role="button">Link button</a>
+        <input class="chi-button -primary -outline" type="button" value="Input button">
+        <input class="chi-button -primary -outline" type="submit" value="Submit button">
 
-h3 Flat
-.example.-mb--3
-  .chi-grid.-no-gutter
-    .chi-col.-w--12.-w-md--6
-      .-p--3.-d--flex(style="justify-content: center;")
-        each type, val in {Base: '', Primary:'primary', Dark:'dark'}
-          div.-pr--2
-            chi-button(color=type, variant='flat')= val
-    .chi-col.-w--12.-w-md--6
-      .-p--3.-bg--black.-d--flex(style="justify-content: center;")
-        each type, val in {Secondary:'secondary', Light:'light'}
-          div.-pr--2
-            chi-button(color=type, variant='flat')= val
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-flat
-      li.-active
-        a(href=`#webcomponent-flat`) Web Component
-      li
-        a(href=`#html-flat`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-flat
-    :code(lang="html")
-      <!-- For light backgrounds -->
-      <chi-button variant="flat">Base</chi-button>
-      <chi-button color="primary" variant="flat">Primary</chi-button>
-      <chi-button color="dark" variant="flat">Dark</chi-button>
+  h3 Flat
+  .example.-mb--3
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-d--flex(style="justify-content: center;")
+          each type, val in {Base: '', Primary:'primary', Dark:'dark'}
+            div.-pr--2
+              chi-button(color=type, variant='flat')= val
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black.-d--flex(style="justify-content: center;")
+          each type, val in {Secondary:'secondary', Light:'light'}
+            div.-pr--2
+              chi-button(color=type, variant='flat')= val
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-flat
+        li.-active
+          a(href=`#webcomponent-flat`) Web Component
+        li
+          a(href=`#html-flat`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-flat
+      :code(lang="html")
+        <!-- For light backgrounds -->
+        <chi-button variant="flat">Base</chi-button>
+        <chi-button color="primary" variant="flat">Primary</chi-button>
+        <chi-button color="dark" variant="flat">Dark</chi-button>
 
-      <!-- For dark backgrounds -->
-      <chi-button color="secondary" variant="flat">Secondary</chi-button>
-      <chi-button color="light" variant="flat">Light</chi-button>
-  .chi-tabs-panel#html-flat
-    .chi-tab__description
-      | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
-      | <code>&lt;input&gt;</code> elements.
-    :code(lang="html")
-      <!-- For light backgrounds -->
-      <button class="chi-button -flat">Base</button>
-      <button class="chi-button -primary -flat">Primary</button>
-      <button class="chi-button -dark -flat">Dark</button>
+        <!-- For dark backgrounds -->
+        <chi-button color="secondary" variant="flat">Secondary</chi-button>
+        <chi-button color="light" variant="flat">Light</chi-button>
+    .chi-tabs-panel#html-flat
+      .chi-tab__description
+        | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
+        | <code>&lt;input&gt;</code> elements.
+      :code(lang="html")
+        <!-- For light backgrounds -->
+        <button class="chi-button -flat">Base</button>
+        <button class="chi-button -primary -flat">Primary</button>
+        <button class="chi-button -dark -flat">Dark</button>
 
-      <!-- For dark backgrounds -->
-      <button class="chi-button -secondary -flat">Secondary</button>
-      <button class="chi-button -light -flat">Light</button>
+        <!-- For dark backgrounds -->
+        <button class="chi-button -secondary -flat">Secondary</button>
+        <button class="chi-button -light -flat">Light</button>
 
-      <!-- Button classes can be used on other elements -->
-      <a class="chi-button -primary -flat" href="#" role="button">Link button</a>
-      <input class="chi-button -primary -flat" type="button" value="Input button">
-      <input class="chi-button -primary -flat" type="submit" value="Submit button">
+        <!-- Button classes can be used on other elements -->
+        <a class="chi-button -primary -flat" href="#" role="button">Link button</a>
+        <input class="chi-button -primary -flat" type="button" value="Input button">
+        <input class="chi-button -primary -flat" type="submit" value="Submit button">
 
-h2 Disabled
-p.-text
-  | Make buttons appear inactive by adding the <code>disabled</code> boolean attribute
-  | or <code>-disabled</code> class.
-.example.-mb--3
-  .-p--3.-d--flex
-    .-pr--2
-      chi-button(color='primary' disabled) Button
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-disabled
-      li.-active
-        a(href=`#webcomponent-disabled`) Web Component
-      li
-        a(href=`#html-disabled`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-disabled
-    :code(lang="html")
-      <chi-button color="primary" disabled>Button</chi-button>
-  .chi-tabs-panel#html-disabled
-    :code(lang="html")
-      <!-- Disabled boolean attribute -->
-      <button class="chi-button -primary" disabled>Button</button>
+  h2 Disabled
+  p.-text
+    | Make buttons appear inactive by adding the <code>disabled</code> boolean attribute
+    | or <code>-disabled</code> class.
+  .example.-mb--3
+    .-p--3.-d--flex
+      .-pr--2
+        chi-button(color='primary' disabled) Button
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-disabled
+        li.-active
+          a(href=`#webcomponent-disabled`) Web Component
+        li
+          a(href=`#html-disabled`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-disabled
+      :code(lang="html")
+        <chi-button color="primary" disabled>Button</chi-button>
+    .chi-tabs-panel#html-disabled
+      :code(lang="html")
+        <!-- Disabled boolean attribute -->
+        <button class="chi-button -primary" disabled>Button</button>
 
-      <!-- Disabled class -->
-      <button class="chi-button -primary -disabled">Button</button>
+        <!-- Disabled class -->
+        <button class="chi-button -primary -disabled">Button</button>
 
-h2 Uppercase
-p.-text
-  | Uppercase buttons style button text with <code>text-transform: uppercase;</code>
-  | to further emphasize button text labels and distinguish them from surrounding content.
-p.-text
-  strong Note: 
-  | Uppercase styled text can cause rendering issues in certain locales.
-.example.-mb--3
-  .-p--3.-d--flex
-    .-pr--2
-      button(class=`chi-button -uppercase`) Button
-    .-pr--2
-      button(class=`chi-button -primary -uppercase`) Button
-    .-pr--2
-      button(class=`chi-button -outline -primary -uppercase`) Button
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-uppercase
-      li.-active
-        a(href=`#webcomponent-uppercase`) Web Component
-      li
-        a(href=`#html-uppercase`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-uppercase
-    :code(lang="html")
-      <chi-button uppercase>Button</chi-button>
-      <chi-button color="primary" uppercase>Button</chi-button>
-      <chi-button color="primary" variant="outline" uppercase>Button</chi-button>
-  .chi-tabs-panel#html-uppercase
-    :code(lang="html")
-      <button class="chi-button -uppercase">Button</button>
-      <button class="chi-button -primary -uppercase">Button</button>
-      <button class="chi-button -primary -outline -uppercase">Button</button>
+  h2 Uppercase
+  p.-text
+    | Uppercase buttons style button text with <code>text-transform: uppercase;</code>
+    | to further emphasize button text labels and distinguish them from surrounding content.
+  p.-text
+    strong Note: 
+    | Uppercase styled text can cause rendering issues in certain locales.
+  .example.-mb--3
+    .-p--3.-d--flex
+      .-pr--2
+        button(class=`chi-button -uppercase`) Button
+      .-pr--2
+        button(class=`chi-button -primary -uppercase`) Button
+      .-pr--2
+        button(class=`chi-button -outline -primary -uppercase`) Button
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-uppercase
+        li.-active
+          a(href=`#webcomponent-uppercase`) Web Component
+        li
+          a(href=`#html-uppercase`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-uppercase
+      :code(lang="html")
+        <chi-button uppercase>Button</chi-button>
+        <chi-button color="primary" uppercase>Button</chi-button>
+        <chi-button color="primary" variant="outline" uppercase>Button</chi-button>
+    .chi-tabs-panel#html-uppercase
+      :code(lang="html")
+        <button class="chi-button -uppercase">Button</button>
+        <button class="chi-button -primary -uppercase">Button</button>
+        <button class="chi-button -primary -outline -uppercase">Button</button>
 
-h2 Fluid
-p.-text
-  | Use Fluid buttons to stretch the full width of the parent container.
-.example.-mb--3
-  .-p--3
-    button(class=`chi-button -fluid -mb--2`) Button
-    button(class=`chi-button -fluid -justify-content--center`) Button
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-fluid
-      li.-active
-        a(href=`#webcomponent-fluid`) Web Component
-      li
-        a(href=`#html-fluid`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-fluid
-    :code(lang="html")
-      <!-- left aligned content -->
-      <chi-button fluid>Button</chi-button>
+  h2 Fluid
+  p.-text
+    | Use Fluid buttons to stretch the full width of the parent container.
+  .example.-mb--3
+    .-p--3
+      button(class=`chi-button -fluid -mb--2`) Button
+      button(class=`chi-button -fluid -justify-content--center`) Button
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-fluid
+        li.-active
+          a(href=`#webcomponent-fluid`) Web Component
+        li
+          a(href=`#html-fluid`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-fluid
+      :code(lang="html")
+        <!-- left aligned content -->
+        <chi-button fluid>Button</chi-button>
 
-      <!-- center aligned content -->
-      <chi-button fluid center>Button</chi-button>
-  .chi-tabs-panel#html-fluid
-    :code(lang="html")
-      <!-- left aligned content -->
-      <button class="chi-button -fluid">Button</button>
+        <!-- center aligned content -->
+        <chi-button fluid center>Button</chi-button>
+    .chi-tabs-panel#html-fluid
+      :code(lang="html")
+        <!-- left aligned content -->
+        <button class="chi-button -fluid">Button</button>
 
-      <!-- center aligned content -->
-      <button class="chi-button -fluid -justify-content--center">Button</button>
+        <!-- center aligned content -->
+        <button class="chi-button -fluid -justify-content--center">Button</button>
 
-h2 Icon buttons
-p.-text
-  | For interfaces with limited space, an Icon button can
-  | be used for common actions such as editing, deleting, closing, etc.
-.example.-mb--3
-  .-p--3
-    chi-button(type='icon', alternative-text="Button action")
-      chi-icon(icon='atom')
-    chi-button.-ml--2(variant='flat', type='icon', alternative-text="Button action")
-      chi-icon(icon='atom')
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-icon
-      li.-active
-        a(href=`#webcomponent-icon`) Web Component
-      li
-        a(href=`#html-icon`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-icon
-    :code(lang="html")
-      <!-- base -->
-      <chi-button type="icon" alternative-text="Button action">
-        <chi-icon icon="atom"></chi-icon>
-      </chi-button>
+.-portal-only
+  p.-text
+    | Use the primary button example for high emphasis actions, secondary button example for medium
+    | emphasis actions, and tertiary button example for low emphasis actions.
+  .example.-mb--3
+    .-p--3.-d--flex.-align-items--center
+      .-pr--2
+        chi-button(color="primary") Primary
+      .-pr--2
+        chi-button Secondary
+      .-pr--2
+        chi-button(size="sm") Tertiary
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-portal-default
+        li.-active
+          a(href=`#webcomponent-portal`) Web Component
+        li
+          a(href=`#html-portal`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal
+      :code(lang="html")
+        <!-- Primary -->
+        <chi-button color="primary">Primary</chi-button>
+        <!-- Secondary -->
+        <chi-button>Secondary</chi-button>
+        <!-- Tertiary -->
+        <chi-button size="sm">Tertiary</chi-button>
+    .chi-tabs-panel#html-portal
+      .chi-tab__description
+        | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
+        | <code>&lt;input&gt;</code> elements.
+      :code(lang="html")
+        <!-- Primary -->
+        <button class="chi-button -primary">Primary</button>
+        <!-- Secondary -->
+        <button class="chi-button">Secondary</button>
+        <!-- Tertiary -->
+        <button class="chi-button -sm">Tertiary</button>
 
-      <!-- flat -->
-      <chi-button variant="flat" type="icon" alternative-text="Button action">
-        <chi-icon icon="atom"></chi-icon>
-      </chi-button>
-  .chi-tabs-panel#html-icon
-    :code(lang="html")
-      <!-- base -->
-      <button class="chi-button -icon" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
+        <!-- Button classes can be used on other elements -->
+        <a class="chi-button -primary" href="#" role="button">Link button</a>
+        <input class="chi-button -primary" type="button" value="Input button">
+        <input class="chi-button -primary" type="submit" value="Submit button">
 
-      <!-- flat -->
-      <button class="chi-button -icon -flat" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
+  h2 Disabled
+  p.-text
+    | Make buttons appear inactive by adding the <code>disabled</code> boolean attribute
+    | or <code>-disabled</code> class.
+  .example.-mb--3
+    .-p--3.-d--flex.-align-items--center
+      .-pr--2
+        chi-button(color="primary", disabled) Primary
+      .-pr--2
+        chi-button(disabled) Secondary
+      .-pr--2
+        chi-button(size="sm", disabled) Tertiary
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-portal-disabled
+        li.-active
+          a(href=`#webcomponent-portal-disabled`) Web Component
+        li
+          a(href=`#html-portal-disabled`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal-disabled
+      :code(lang="html")
+        <!-- Primary -->
+        <chi-button color="primary" disabled>Primary</chi-button>
+        <!-- Secondary -->
+        <chi-button disabled>Secondary</chi-button>
+        <!-- Tertiary -->
+        <chi-button size="sm" disabled>Tertiary</chi-button>
+    .chi-tabs-panel#html-portal-disabled
+      :code(lang="html")
+        <!-- Disabled boolean attribute -->
+        <button class="chi-button -primary" disabled>Primary</button>
+        <button class="chi-button" disabled>Secondary</button>
+        <button class="chi-button -sm" disabled>Tertiary</button>
 
-h3 Labeled icon buttons
-.example.-mb--3
-  .-p--3
-    chi-button
-      chi-icon(icon='atom')
-      span Button
-    chi-button.-mr--2.-ml--2()
-      span Button
-      chi-icon(icon='atom')
-    chi-button
-      chi-icon(icon='atom')
-      span Button
-      chi-icon(icon='atom')
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-labeled
-      li.-active
-        a(href=`#webcomponent-labeled`) Web Component
-      li
-        a(href=`#html-labeled`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-labeled
-    :code(lang="html")
-      <!-- left aligned -->
-      <chi-button>
-        <chi-icon icon="atom"></chi-icon>
-        <span>Button</span>
-      </chi-button>
+        <!-- Disabled class -->
+        <button class="chi-button -primary -disabled">Primary</button>
+        <button class="chi-button -disabled">Secondary</button>
+        <button class="chi-button -sm -disabled">Tertiary</button>
+  
+  h2 Fluid
+  p.-text
+    | Use Fluid buttons to stretch the full width of the parent container.
+  .example.-mb--3
+    .-p--3
+      button(class=`chi-button -primary -fluid -justify-content--center -mb--2`) Primary
+      button(class=`chi-button -fluid -justify-content--center`) Secondary
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-portal-fluid
+        li.-active
+          a(href=`#webcomponent-portal-fluid`) Web Component
+        li
+          a(href=`#html-portal-fluid`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal-fluid
+      :code(lang="html")
+        <chi-button color="primary" fluid center>Primary</chi-button>
+        <chi-button color="primary" variant="outline" fluid center>Secondary</chi-button>
+    .chi-tabs-panel#html-portal-fluid
+      :code(lang="html")
+        <button class="chi-button -primary -fluid -justify-content--center">Primary</button>
+        <button class="chi-button -fluid -justify-content--center">Secondary</button>
 
-      <!-- right aligned -->
-      <chi-button>
-        <span>Button</span>
-        <chi-icon icon="atom"></chi-icon>
-      </chi-button>
+.-lumen-only.-centurylink-only
+  h2 Icon buttons
+  p.-text
+    | For interfaces with limited space, an Icon button can
+    | be used for common actions such as editing, deleting, closing, etc.
+  .example.-mb--3
+    .-p--3
+      chi-button(type='icon', alternative-text="Button action")
+        chi-icon(icon='atom')
+      chi-button.-ml--2(variant='flat', type='icon', alternative-text="Button action")
+        chi-icon(icon='atom')
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-icon
+        li.-active
+          a(href=`#webcomponent-icon`) Web Component
+        li
+          a(href=`#html-icon`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-icon
+      :code(lang="html")
+        <!-- base -->
+        <chi-button type="icon" alternative-text="Button action">
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
 
-      <!-- both sides -->
-      <chi-button>
-        <chi-icon icon="atom"></chi-icon>
-        <span>Button</span>
-        <chi-icon icon="atom"></chi-icon>
-      </chi-button>
-  .chi-tabs-panel#html-labeled
-    :code(lang="html")
-      <!-- left aligned -->
-      <button class="chi-button">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
+        <!-- flat -->
+        <chi-button variant="flat" type="icon" alternative-text="Button action">
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
+    .chi-tabs-panel#html-icon
+      :code(lang="html")
+        <!-- base -->
+        <button class="chi-button -icon" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+
+        <!-- flat -->
+        <button class="chi-button -icon -flat" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+
+.-portal-only
+  h2 Icon buttons
+  p.-text
+    | For interfaces with limited space, an Icon button can
+    | be used for common actions such as editing, deleting, closing, etc.
+  .example.-mb--3
+    .-p--3
+      chi-button.-ml--2(variant='flat', type='icon', alternative-text="Button action")
+        chi-icon(icon='atom')
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-portal-icon
+        li.-active
+          a(href=`#webcomponent-portal-icon`) Web Component
+        li
+          a(href=`#html-portal-icon`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal-icon
+      :code(lang="html")
+        <chi-button variant="flat" type="icon" alternative-text="Button action">
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
+    .chi-tabs-panel#html-portal-icon
+      :code(lang="html")
+        <button class="chi-button -icon -flat" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+
+.-lumen-only.-centurylink-only
+  h3 Labeled icon buttons
+  .example.-mb--3
+    .-p--3
+      chi-button
+        chi-icon(icon='atom')
+        span Button
+      chi-button.-mr--2.-ml--2()
+        span Button
+        chi-icon(icon='atom')
+      chi-button
+        chi-icon(icon='atom')
+        span Button
+        chi-icon(icon='atom')
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-labeled
+        li.-active
+          a(href=`#webcomponent-labeled`) Web Component
+        li
+          a(href=`#html-labeled`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-labeled
+      :code(lang="html")
+        <!-- left aligned -->
+        <chi-button>
+          <chi-icon icon="atom"></chi-icon>
           <span>Button</span>
-        </div>
-      </button>
+        </chi-button>
 
-      <!-- right aligned -->
-      <button class="chi-button">
-        <div class="chi-button__content">
+        <!-- right aligned -->
+        <chi-button>
           <span>Button</span>
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
 
-      <!-- both sides -->
-      <button class="chi-button">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
+        <!-- both sides -->
+        <chi-button>
+          <chi-icon icon="atom"></chi-icon>
           <span>Button</span>
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
+    .chi-tabs-panel#html-labeled
+      :code(lang="html")
+        <!-- left aligned -->
+        <button class="chi-button">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+            <span>Button</span>
+          </div>
+        </button>
 
-h3 Floating icon buttons
-.example.-mb--3
-  .chi-grid.-no-gutter
-    .chi-col.-w--12.-w-md--6
-      .-p--3.-d--flex(style="justify-content: center;")
-        each type, val in {Base:'', Primary:'primary', Dark:'dark'}
-          div.-pr--2
-            chi-button(color=type, type='float', alternative-text="Button action")
-              chi-icon(icon='atom')
-    .chi-col.-w--12.-w-md--6
-      .-p--3.-bg--black.-d--flex(style="justify-content: center;")
-        each type, val in {Secondary:'secondary', Light:'light'}
-          div.-pr--2
-            chi-button(color=type, type='float', alternative-text="Button action")
-              chi-icon(icon='atom')
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-floating-icon
-      li.-active
-        a(href=`#webcomponent-floating-icon`) Web Component
-      li
-        a(href=`#html-floating-icon`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-floating-icon
-    :code(lang="html")
-      <!-- For light backgrounds -->
-      <chi-button type="float" alternative-text="Button action">
-        <chi-icon icon="atom"></chi-icon>
-      </chi-button>
-      <chi-button type="float" color="primary" alternative-text="Button action">
-        <chi-icon icon="atom"></chi-icon>
-      </chi-button>
-      <chi-button type="float" color="dark" alternative-text="Button action">
-        <chi-icon icon="atom"></chi-icon>
-      </chi-button>
+        <!-- right aligned -->
+        <button class="chi-button">
+          <div class="chi-button__content">
+            <span>Button</span>
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
 
-      <!-- For dark backgrounds -->
-      <chi-button type="float" color="secondary" alternative-text="Button action">
-        <chi-icon icon="atom"></chi-icon>
-      </chi-button>
-      <chi-button type="float" color="light" alternative-text="Button action">
-        <chi-icon icon="atom"></chi-icon>
-      </chi-button>
-  .chi-tabs-panel#html-floating-icon
-    :code(lang="html")
-      <!-- For light backgrounds -->
-      <button class="chi-button -float" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
-      <button class="chi-button -primary -float" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
-      <button class="chi-button -dark -float" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
+        <!-- both sides -->
+        <button class="chi-button">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+            <span>Button</span>
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
 
-      <!-- For dark backgrounds -->
-      <button class="chi-button -secondary -float" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
-      <button class="chi-button -light -float" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
+.-portal-only
+  h3 Labeled icon buttons
+  .example.-mb--3
+    .-p--3.-d--flex
+      .-pr--2
+        chi-button(color='primary')
+          chi-icon(icon='atom')
+          span Primary
+      .-pr--2
+        chi-button(color='primary', variant='outline')
+          chi-icon(icon='atom')
+          span Secondary
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-portal-labeled
+        li.-active
+          a(href=`#webcomponent-portal-labeled`) Web Component
+        li
+          a(href=`#html-portal-labeled`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal-labeled
+      :code(lang="html")
+        <chi-button color="primary">
+          <chi-icon icon="atom"></chi-icon>
+          <span>Primary</span>
+        </chi-button>
+        <chi-button>
+          <chi-icon icon="atom"></chi-icon>
+          <span>Secondary</span>
+        </chi-button>
+    .chi-tabs-panel#html-portal-labeled
+      :code(lang="html")
+        <button class="chi-button -primary">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+            <span>Primary</span>
+          </div>
+        </button>
+        <button class="chi-button">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+            <span>Secondary</span>
+          </div>
+        </button>
+
+.-lumen-only.-centurylink-only
+  h3 Floating icon buttons
+  .example.-mb--3
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-d--flex(style="justify-content: center;")
+          each type, val in {Base:'', Primary:'primary', Dark:'dark'}
+            div.-pr--2
+              chi-button(color=type, type='float', alternative-text="Button action")
+                chi-icon(icon='atom')
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black.-d--flex(style="justify-content: center;")
+          each type, val in {Secondary:'secondary', Light:'light'}
+            div.-pr--2
+              chi-button(color=type, type='float', alternative-text="Button action")
+                chi-icon(icon='atom')
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-floating-icon
+        li.-active
+          a(href=`#webcomponent-floating-icon`) Web Component
+        li
+          a(href=`#html-floating-icon`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-floating-icon
+      :code(lang="html")
+        <!-- For light backgrounds -->
+        <chi-button type="float" alternative-text="Button action">
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
+        <chi-button type="float" color="primary" alternative-text="Button action">
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
+        <chi-button type="float" color="dark" alternative-text="Button action">
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
+
+        <!-- For dark backgrounds -->
+        <chi-button type="float" color="secondary" alternative-text="Button action">
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
+        <chi-button type="float" color="light" alternative-text="Button action">
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
+    .chi-tabs-panel#html-floating-icon
+      :code(lang="html")
+        <!-- For light backgrounds -->
+        <button class="chi-button -float" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+        <button class="chi-button -primary -float" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+        <button class="chi-button -dark -float" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+
+        <!-- For dark backgrounds -->
+        <button class="chi-button -secondary -float" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+        <button class="chi-button -light -float" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+
+.-portal-only
+  h3 Floating icon buttons
+  .example.-mb--3
+    .-p--3.-d--flex
+      div.-pr--2
+        chi-button(color='primary', type='float', alternative-text="Button action")
+          chi-icon(icon='atom')
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-portal-floating-icon
+        li.-active
+          a(href=`#webcomponent-portal-floating-icon`) Web Component
+        li
+          a(href=`#html-portal-floating-icon`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal-floating-icon
+      :code(lang="html")
+        <chi-button type="float" color="primary" alternative-text="Button action">
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
+    .chi-tabs-panel#html-portal-floating-icon
+      :code(lang="html")
+        <button class="chi-button -primary -float" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
 
 h3 Close icon button
 .example.-mb--3
@@ -432,107 +636,226 @@ h3 Close icon button
         </div>
       </button>
 
-h2 Danger
-p.-text
-  | For special cases, such as styling a destructive action in an application (e.g. Delete Account),
-  | a Danger button may be used.
-.example.-mb--3
-  .-p--3
-      chi-button.-mr--2(color='danger')= 'Danger'
-      chi-button.-mr--2(variant='outline', color='danger')= 'Danger'
-      chi-button(variant='flat', color='danger')= 'Danger'
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-danger
-      li.-active
-        a(href=`#webcomponent-danger`) Web Component
-      li
-        a(href='#html-danger') HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-danger
-    :code(lang="html")
-      <chi-button color="danger">Danger</chi-button>
-      <chi-button color="danger" variant="outline">Danger</chi-button>
-      <chi-button color="danger" variant="flat">Danger</chi-button>
-  .chi-tabs-panel#html-danger
-    :code(lang="html")
-      <button class="chi-button -danger">Danger</button>
-      <button class="chi-button -danger -outline">Danger</button>
-      <button class="chi-button -danger -flat">Danger</button>
+.-lumen-only.-centurylink-only
+  h2 Danger
+  p.-text
+    | For special cases, such as styling a destructive action in an application (e.g. Delete Account),
+    | a Danger button may be used.
+  .example.-mb--3
+    .-p--3
+        chi-button.-mr--2(color='danger')= 'Danger'
+        chi-button.-mr--2(variant='outline', color='danger')= 'Danger'
+        chi-button(variant='flat', color='danger')= 'Danger'
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-danger
+        li.-active
+          a(href=`#webcomponent-danger`) Web Component
+        li
+          a(href='#html-danger') HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-danger
+      :code(lang="html")
+        <chi-button color="danger">Danger</chi-button>
+        <chi-button color="danger" variant="outline">Danger</chi-button>
+        <chi-button color="danger" variant="flat">Danger</chi-button>
+    .chi-tabs-panel#html-danger
+      :code(lang="html")
+        <button class="chi-button -danger">Danger</button>
+        <button class="chi-button -danger -outline">Danger</button>
+        <button class="chi-button -danger -flat">Danger</button>
 
-h2 Sizes
-p.-text
-  | Buttons support the following sizes: Small (sm), Medium (md), Large (lg), and Extra Large (xl).
-.example.-mb--3
-  .-p--3
-    each size in ['sm', 'md', 'lg', 'xl']
-      p.-text--bold.-pl--2= size
+.-portal-only
+  h2 Danger
+  p.-text
+    | For special cases, such as styling a destructive action in an application (e.g. Delete Account),
+    | a Danger button may be used.
+  .example.-mb--3
+    .-p--3
+        chi-button.-mr--2(color='danger')= 'Button'
+        chi-button.-mr--2(variant='outline', color='danger')= 'Button'
+        chi-button(variant='outline', color='danger', size='sm')= 'Button'
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-portal-danger
+        li.-active
+          a(href=`#webcomponent-portal-danger`) Web Component
+        li
+          a(href='#html-portal-danger') HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal-danger
+      :code(lang="html")
+        <chi-button color="danger">Button</chi-button>
+        <chi-button color="danger" variant="outline">Button</chi-button>
+        <chi-button color="danger" variant="outline" size="sm">Button</chi-button>
+    .chi-tabs-panel#html-portal-danger
+      :code(lang="html")
+        <button class="chi-button -danger">Button</button>
+        <button class="chi-button -danger -outline">Button</button>
+        <button class="chi-button -danger -outline -sm">Button</button>
+
+.-lumen-only.-centurylink-only
+  h2 Sizes
+  p.-text
+    | Buttons support the following sizes: Small (sm), Medium (md), Large (lg), and Extra Large (xl).
+  .example.-mb--3
+    .-p--3
+      each size in ['sm', 'md', 'lg', 'xl']
+        p.-text--bold.-pl--2= size
+        div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
+          chi-button(size=size)= 'Button'
+          chi-button.-ml--2(size=size, type='icon', alternative-text="Button action")
+            chi-icon(icon='atom')
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-sizes
+        li.-active
+          a(href=`#webcomponent-sizes`) Web Component
+        li
+          a(href='#html-sizes') HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-sizes
+      :code(lang="html")
+        <!-- sm -->
+        <chi-button size="sm">Button</chi-button>
+        <chi-button type="icon" size="sm" alternative-text="Button action">
+          <chi-icon icon="atom" />
+        </chi-button>
+
+        <!-- md -->
+        <chi-button size="md">Button</chi-button>
+        <chi-button type="icon" size="md" alternative-text="Button action">
+          <chi-icon icon="atom" />
+        </chi-button>
+
+        <!-- lg -->
+        <chi-button size="lg">Button</chi-button>
+        <chi-button type="icon" size="lg" alternative-text="Button action">
+          <chi-icon icon="atom" />
+        </chi-button>
+
+        <!-- xl -->
+        <chi-button size="xl">Button</chi-button>
+        <chi-button type="icon" size="xl" alternative-text="Button action">
+          <chi-icon icon="atom" />
+        </chi-button>
+    .chi-tabs-panel#html-sizes
+      :code(lang="html")
+        <!-- sm -->
+        <button class="chi-button -sm">Button</button>
+        <button class="chi-button -sm -icon" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+
+        <!-- md -->
+        <button class="chi-button -md">Button</button>
+        <button class="chi-button -md -icon" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+
+        <!-- lg -->
+        <button class="chi-button -lg">Button</button>
+        <button class="chi-button -lg -icon" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+
+        <!-- xl -->
+        <button class="chi-button -xl">Button</button>
+        <button class="chi-button -xl -icon" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+
+.-portal-only
+  h2 Sizes
+  p.-text
+    | Buttons support the following sizes: Small (sm), Medium (md), and Large (lg).
+  .example.-mb--3
+    .-p--3
+      p.-text--bold.-pl--2 sm
       div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
-        chi-button(size=size)= 'Button'
-        chi-button.-ml--2(size=size, type='icon', alternative-text="Button action")
-          chi-icon(icon='atom')
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-sizes
-      li.-active
-        a(href=`#webcomponent-sizes`) Web Component
-      li
-        a(href='#html-sizes') HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-sizes
-    :code(lang="html")
-      <!-- sm -->
-      <chi-button size="sm">Button</chi-button>
-      <chi-button type="icon" size="sm" alternative-text="Button action">
-        <chi-icon icon="atom" />
-      </chi-button>
+        .-pr--2
+          chi-button(size='sm', color='primary')= 'Button'
+        .-pr--2
+          chi-button(size='sm')= 'Button'
+        .-pr--2
+          chi-button(size='sm', variant='flat', type='icon', alternative-text="Button action")
+            chi-icon(icon='atom')
+      p.-text--bold.-pl--2 md
+      div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
+        .-pr--2
+          chi-button(size='md', color='primary', uppercase)= 'Button'
+        .-pr--2
+          chi-button(size='md', uppercase)= 'Button'
+        .-pr--2
+          chi-button(size='md', variant='flat', type='icon', alternative-text="Button action")
+            chi-icon(icon='atom')
+      p.-text--bold.-pl--2 lg
+      div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
+        .-pr--2
+          chi-button(size='lg', color='primary', uppercase)= 'Button'
+        .-pr--2
+          chi-button(size='lg', uppercase)= 'Button'
+        .-pr--2
+          chi-button(size='lg', variant='flat', type='icon', alternative-text="Button action")
+            chi-icon(icon='atom')
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-sizes
+        li.-active
+          a(href=`#webcomponent-sizes`) Web Component
+        li
+          a(href='#html-sizes') HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-sizes
+      :code(lang="html")
+        <!-- sm -->
+        <chi-button color="primary" size="sm">Button</chi-button>
+        <chi-button size="sm">Button</chi-button>
+        <chi-button type="icon" variant="flat" size="sm" alternative-text="Button action">
+          <chi-icon icon="atom" />
+        </chi-button>
 
-      <!-- md -->
-      <chi-button size="md">Button</chi-button>
-      <chi-button type="icon" size="md" alternative-text="Button action">
-        <chi-icon icon="atom" />
-      </chi-button>
+        <!-- md -->
+        <chi-button color="primary" size="md">Button</chi-button>
+        <chi-button size="md">Button</chi-button>
+        <chi-button type="icon" variant="flat" size="md" alternative-text="Button action">
+          <chi-icon icon="atom" />
+        </chi-button>
 
-      <!-- lg -->
-      <chi-button size="lg">Button</chi-button>
-      <chi-button type="icon" size="lg" alternative-text="Button action">
-        <chi-icon icon="atom" />
-      </chi-button>
+        <!-- lg -->
+        <chi-button color="primary" size="lg">Button</chi-button>
+        <chi-button size="lg">Button</chi-button>
+        <chi-button type="icon" variant="flat" size="lg" alternative-text="Button action">
+          <chi-icon icon="atom" />
+        </chi-button>
+    .chi-tabs-panel#html-sizes
+      :code(lang="html")
+        <!-- sm -->
+        <button class="chi-button -primary -sm">Button</button>
+        <button class="chi-button -sm">Button</button>
+        <button class="chi-button -flat -sm -icon" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
 
-      <!-- xl -->
-      <chi-button size="xl">Button</chi-button>
-      <chi-button type="icon" size="xl" alternative-text="Button action">
-        <chi-icon icon="atom" />
-      </chi-button>
-  .chi-tabs-panel#html-sizes
-    :code(lang="html")
-      <!-- sm -->
-      <button class="chi-button -sm">Button</button>
-      <button class="chi-button -sm -icon" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
+        <!-- md -->
+        <button class="chi-button -primary -md">Button</button>
+        <button class="chi-button -md">Button</button>
+        <button class="chi-button -flat -md -icon" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
 
-      <!-- md -->
-      <button class="chi-button -md">Button</button>
-      <button class="chi-button -md -icon" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
-
-      <!-- lg -->
-      <button class="chi-button -lg">Button</button>
-      <button class="chi-button -lg -icon" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
-
-      <!-- xl -->
-      <button class="chi-button -xl">Button</button>
-      <button class="chi-button -xl -icon" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-atom"></i>
-        </div>
-      </button>
+        <!-- lg -->
+        <button class="chi-button -primary -lg">Button</button>
+        <button class="chi-button -lg">Button</button>
+        <button class="chi-button -flat -lg -icon" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
 
 script.
   document.addEventListener(

@@ -1,362 +1,598 @@
 h2 Examples
-p.-text
-  | Stat components are designed to render in combination with Chi's
-  | <a href="../../foundations/grid">Grid component</a>. Grid provides Stats with responsive
-  | capabilities that enable them to stack on smaller viewports.
+.-lumen-only.-centurylink-only
+  p.-text
+    | Stat components are designed to render in combination with Chi's
+    | <a href="../../foundations/grid">Grid component</a>. Grid provides Stats with responsive
+    | capabilities that enable them to stack on smaller viewports.
 
-h3 Base
-p.-text
-  | To display a Stat, apply the class <code>chi-stat</code> to a <code>div</code>
-  | or use an <code>a</code> tag to render as a link.
-.example.-mb--3
-  .-p--3
-    .chi-grid
-      .chi-col.-w--6.-w-lg--3
+.-lumen-only.-centurylink-only
+  h3 Base
+  p.-text
+    | To display a Stat, apply the class <code>chi-stat</code> to a <code>div</code>
+    | or use an <code>a</code> tag to render as a link.
+  .example.-mb--3
+    .-p--3
+      .chi-grid
+        .chi-col.-w--6.-w-lg--3
+          .chi-stat
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__title
+                  | Base stat
+                .chi-stat-metric__value
+                  | 1
+        .chi-col.-w--6.-w-lg--3
+          .chi-stat.-disabled
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__title
+                  | Disabled stat
+                .chi-stat-metric__value
+                  | 10
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-base
+        li.-disabled
+          a(href=`#webcomponent-base`) Web Component
+        li.-active
+          a(href=`#html-base`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-base
+    .chi-tabs-panel.-active#html-base
+      :code(lang="html")
+        <!-- Base -->
+        <div class="chi-stat">
+          <div class="chi-stat__content">
+            <div class="chi-stat-metric">
+              <div class="chi-stat-metric__title">Base stat</div>
+              <div class="chi-stat-metric__value">1</div>
+            </div>
+          </div>
+        </div>
+        <!-- Disabled -->
+        <div class="chi-stat -disabled">
+          <div class="chi-stat__content">
+            <div class="chi-stat-metric">
+              <div class="chi-stat-metric__title">Disabled stat</div>
+              <div class="chi-stat-metric__value">10</div>
+            </div>
+          </div>
+        </div>
+
+  h3 Stat Card
+  p.-text
+    | When using Stats as menu items, use the class <code>-active</code> to indicate which Stat item is currently active.
+  .example.-mb--3
+    .-p--3
+      .chi-grid
+        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
+          .chi-stat.-card
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__title
+                  | Stat card
+                .chi-stat-metric__value
+                  | 1
+        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
+          .chi-stat.-card.-active
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__title
+                  | Active stat card
+                .chi-stat-metric__value
+                  | 100
+        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
+          .chi-stat.-card
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__title
+                  | Stat card
+                .chi-stat-metric__value
+                  | 10
+        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
+          .chi-stat.-card
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__title
+                  | Stat card
+                .chi-stat-metric__value
+                  | 1000
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-card
+        li.-disabled
+          a(href=`#webcomponent-card`) Web Component
+        li.-active
+          a(href=`#html-card`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-card
+    .chi-tabs-panel.-active#html-card
+      :code(lang="html")
+        <div class="chi-grid">
+          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
+            <div class="chi-stat -card">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__title">Stat card</div>
+                  <div class="chi-stat-metric__value">1</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
+            <div class="chi-stat -card -active">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__title">Active stat card</div>
+                  <div class="chi-stat-metric__value">100</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
+            <div class="chi-stat -card">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__title">Stat card</div>
+                  <div class="chi-stat-metric__value">10</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
+            <div class="chi-stat -card">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__title">Stat card</div>
+                  <div class="chi-stat-metric__value">1000</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  h3 Center Aligned
+  p.-text
+    | Apply <code>-center</code> to center align a Stat.
+  .example.-mb--3
+    .-p--3
+      .chi-grid
+        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
+          .chi-stat.-card.-center
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__title
+                  | Stat card
+                .chi-stat-metric__value
+                  | 1
+        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
+          .chi-stat.-card.-center.-active
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__title
+                  | Active stat card
+                .chi-stat-metric__value
+                  | 100
+        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
+          .chi-stat.-card.-center
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__title
+                  | Stat card
+                .chi-stat-metric__value
+                  | 10
+        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
+          .chi-stat.-card.-center
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__title
+                  | Stat card
+                .chi-stat-metric__value
+                  | 1000
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-align-center
+        li.-disabled
+          a(href=`#webcomponent-align-center`) Web Component
+        li.-active
+          a(href=`#html-align-center`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-align-center
+    .chi-tabs-panel.-active#html-align-center
+      :code(lang="html")
+        <div class="chi-grid">
+          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
+            <div class="chi-stat -card -center">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__title">Stat card</div>
+                  <div class="chi-stat-metric__value">1</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
+            <div class="chi-stat -card -center -active">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__title">Active stat card</div>
+                  <div class="chi-stat-metric__value">100</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
+            <div class="chi-stat -card -center">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__title">Stat card</div>
+                  <div class="chi-stat-metric__value">10</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
+            <div class="chi-stat -card -center">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__title">Stat card</div>
+                  <div class="chi-stat-metric__value">1000</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+.-portal-only
+  h3 Base
+  p.-text
+    | Use the Base stat for home and dashboard KPIs.
+  .example.-mb--3
+    .-p--3.-overflow--auto
+      .chi-stat__wrapper
+        .chi-stat
+          .chi-stat__body
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__value
+                  | 1
+                .chi-stat-metric__title
+                  | High Utilization
+              .chi-stat-submetric
+                .chi-stat-submetric__value
+                  | 16
+                .chi-stat-submetric__title
+                  | Elevated
+        .chi-stat
+          .chi-stat__body
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__value
+                  | 1
+                .chi-stat-metric__title
+                  | Critical Performing
+              .chi-stat-submetric
+                .chi-stat-submetric__value
+                  | 21
+                .chi-stat-submetric__title
+                  | Impacted
+        .chi-stat.-active
+          .chi-stat__body
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__value
+                  | 2
+                .chi-stat-metric__title
+                  | Services Down
+              .chi-stat-submetric
+                .chi-stat-submetric__value
+                  | 47
+                .chi-stat-submetric__title
+                  | Up
+        .chi-stat
+          .chi-stat__body
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__value
+                  | 3
+                .chi-stat-metric__title
+                  | Scheduled Maintenance
+              .chi-stat-submetric
+                .chi-stat-submetric__value
+                  | 1
+                .chi-stat-submetric__title
+                  | Planned
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-base
+        li.-disabled
+          a(href=`#webcomponent-portal-base`) Web Component
+        li.-active
+          a(href=`#html-portal-base`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-base
+    .chi-tabs-panel.-active#html-portal-base
+      :code(lang="html")
+        <div class="-overflow--auto">
+          <div class="chi-stat__wrapper">
+            <div class="chi-stat">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">1</div>
+                  <div class="chi-stat-metric__title">High Utilization</div>
+                </div>
+                <div class="chi-stat-submetric">
+                  <div class="chi-stat-submetric__value">16</div>
+                  <div class="chi-stat-submetric__title">Elevated</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">1</div>
+                  <div class="chi-stat-metric__title">Critical Performing</div>
+                </div>
+                <div class="chi-stat-submetric">
+                  <div class="chi-stat-submetric__value">21</div>
+                  <div class="chi-stat-submetric__title">Impacted</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat -active">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">2</div>
+                  <div class="chi-stat-metric__title">Services Down</div>
+                </div>
+                <div class="chi-stat-submetric">
+                  <div class="chi-stat-submetric__value">47</div>
+                  <div class="chi-stat-submetric__title">Up</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">3</div>
+                  <div class="chi-stat-metric__title">Scheduled Maintenance</div>
+                </div>
+                <div class="chi-stat-submetric">
+                  <div class="chi-stat-submetric__value">1</div>
+                  <div class="chi-stat-submetric__title">Planned</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  h3 Base with Background Icons
+  p.-text
+    | Use <code>chi-stat-background-icon</code> to define background icons for Portal Stat components.
+  .example.-mb--3
+    .-p--3.-overflow--auto
+      .chi-stat__wrapper
         .chi-stat
           .chi-stat__content
             .chi-stat-metric
-              .chi-stat-metric__title
-                | Base stat
               .chi-stat-metric__value
                 | 1
-      .chi-col.-w--6.-w-lg--3
-        .chi-stat.-disabled
+              .chi-stat-metric__title
+                | High Utilization
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 16
+              .chi-stat-submetric__title
+                | Elevated
+            .chi-stat-background-icon
+              i.chi-icon.icon-file
+        .chi-stat.-active
           .chi-stat__content
             .chi-stat-metric
-              .chi-stat-metric__title
-                | Disabled stat
-              .chi-stat-metric__value
-                | 10
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-base
-      li.-disabled
-        a(href=`#webcomponent-base`) Web Component
-      li.-active
-        a(href=`#html-base`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-base
-  .chi-tabs-panel.-active#html-base
-    :code(lang="html")
-      <!-- Base -->
-      <div class="chi-stat">
-        <div class="chi-stat__content">
-          <div class="chi-stat-metric">
-            <div class="chi-stat-metric__title">Base stat</div>
-            <div class="chi-stat-metric__value">1</div>
-          </div>
-        </div>
-      </div>
-      <!-- Disabled -->
-      <div class="chi-stat -disabled">
-        <div class="chi-stat__content">
-          <div class="chi-stat-metric">
-            <div class="chi-stat-metric__title">Disabled stat</div>
-            <div class="chi-stat-metric__value">10</div>
-          </div>
-        </div>
-      </div>
-
-h3 Stat Card
-p.-text
-  | When using Stats as menu items, use the class <code>-active</code> to indicate which Stat item is currently active.
-.example.-mb--3
-  .-p--3
-    .chi-grid
-      .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-        .chi-stat.-card
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__title
-                | Stat card
               .chi-stat-metric__value
                 | 1
-      .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-        .chi-stat.-card.-active
+              .chi-stat-metric__title
+                | Critical Performing
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 21
+              .chi-stat-submetric__title
+                | Impacted
+            .chi-stat-background-icon
+              i.chi-icon.icon-warning
+        .chi-stat
           .chi-stat__content
             .chi-stat-metric
-              .chi-stat-metric__title
-                | Active stat card
               .chi-stat-metric__value
-                | 100
-      .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-        .chi-stat.-card
+                | 2
+              .chi-stat-metric__title
+                | Services Down
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 47
+              .chi-stat-submetric__title
+                | Up
+            .chi-stat-background-icon
+              i.chi-icon.icon-map-marker
+        .chi-stat
           .chi-stat__content
             .chi-stat-metric
-              .chi-stat-metric__title
-                | Stat card
               .chi-stat-metric__value
-                | 10
-      .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-        .chi-stat.-card
-          .chi-stat__content
-            .chi-stat-metric
+                | 3
               .chi-stat-metric__title
-                | Stat card
-              .chi-stat-metric__value
-                | 1000
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-card
-      li.-disabled
-        a(href=`#webcomponent-card`) Web Component
-      li.-active
-        a(href=`#html-card`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-card
-  .chi-tabs-panel.-active#html-card
-    :code(lang="html")
-      <div class="chi-grid">
-        <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-          <div class="chi-stat -card">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__title">Stat card</div>
-                <div class="chi-stat-metric__value">1</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-          <div class="chi-stat -card -active">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__title">Active stat card</div>
-                <div class="chi-stat-metric__value">100</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-          <div class="chi-stat -card">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__title">Stat card</div>
-                <div class="chi-stat-metric__value">10</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-          <div class="chi-stat -card">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__title">Stat card</div>
-                <div class="chi-stat-metric__value">1000</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-h3 Center Aligned
-p.-text
-  | Apply <code>-center</code> to center align a Stat.
-.example.-mb--3
-  .-p--3
-    .chi-grid
-      .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-        .chi-stat.-card.-center
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__title
-                | Stat card
-              .chi-stat-metric__value
+                | Scheduled Maintenance
+            .chi-stat-submetric
+              .chi-stat-submetric__value
                 | 1
-      .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-        .chi-stat.-card.-center.-active
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__title
-                | Active stat card
-              .chi-stat-metric__value
-                | 100
-      .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-        .chi-stat.-card.-center
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__title
-                | Stat card
-              .chi-stat-metric__value
-                | 10
-      .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-        .chi-stat.-card.-center
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__title
-                | Stat card
-              .chi-stat-metric__value
-                | 1000
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-align-center
-      li.-disabled
-        a(href=`#webcomponent-align-center`) Web Component
-      li.-active
-        a(href=`#html-align-center`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-align-center
-  .chi-tabs-panel.-active#html-align-center
-    :code(lang="html")
-      <div class="chi-grid">
-        <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-          <div class="chi-stat -card -center">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__title">Stat card</div>
-                <div class="chi-stat-metric__value">1</div>
+              .chi-stat-submetric__title
+                | Planned
+            .chi-stat-background-icon
+              i.chi-icon.icon-mail
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-icons
+        li.-disabled
+          a(href=`#webcomponent-portal-icons`) Web Component
+        li.-active
+          a(href=`#html-portal-icons`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-icons
+    .chi-tabs-panel.-active#html-portal-icons
+      :code(lang="html")
+        <div class="-overflow--auto">
+          <div class="chi-stat__wrapper">
+            <div class="chi-stat -center">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">1</div>
+                  <div class="chi-stat-metric__title">High Utilization</div>
+                </div>
+                <div class="chi-stat-background-icon">
+                  <i class="chi-icon icon-file"></i>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat -center">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">1</div>
+                  <div class="chi-stat-metric__title">Critical Performing</div>
+                </div>
+                <div class="chi-stat-background-icon">
+                  <i class="chi-icon icon-warning"></i>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat -center -active">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">2</div>
+                  <div class="chi-stat-metric__title">Services Down</div>
+                </div>
+                <div class="chi-stat-background-icon">
+                  <i class="chi-icon icon-map-marker"></i>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat -center">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">3</div>
+                  <div class="chi-stat-metric__title">Scheduled Maintenance</div>
+                </div>
+                <div class="chi-stat-background-icon">
+                  <i class="chi-icon icon-mail"></i>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-          <div class="chi-stat -card -center -active">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__title">Active stat card</div>
-                <div class="chi-stat-metric__value">100</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-          <div class="chi-stat -card -center">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__title">Stat card</div>
-                <div class="chi-stat-metric__value">10</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-          <div class="chi-stat -card -center">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__title">Stat card</div>
-                <div class="chi-stat-metric__value">1000</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-.-lumen-only
-  h3 Portal Compact
+  h3 Compact
   p.-text
-    | Apply <code>-portal</code> and <code>-compact</code> to easily theme a Stat for portal dashboards where vertical space is limited.
+    | Use <code>-compact</code> when vertical space is limited.
   .example.-mb--3
-    .-p--3(style="overflow-x: auto;height:10rem")
-      div(style="width: 1220px;")
-        .chi-grid
-          .chi-col.-w--2
-            .chi-stat.-portal.-compact
-              .chi-stat__content
-                .chi-stat-metric
-                  .chi-stat-metric__title
-                    | Utilization
-                  .chi-label__help
-                    button.chi-button.-icon.-sm.-flat.-light(id="example__help-button" aria-label="Help" data-target="#example__help-popover" data-position="bottom")
-                      i.chi-icon.icon-circle-info-outline
-                .chi-stat-submetric
-                  .chi-stat-submetric__value
-                    | 4
-                  .chi-stat-submetric__title
-                    | High
-                .chi-stat-submetric
-                  .chi-stat-submetric__value
-                    | 16
-                  .chi-stat-submetric__title
-                    | Elevated
-          .chi-col.-w--2
-            .chi-stat.-portal.-compact
-              .chi-stat__content
-                .chi-stat-metric
-                  .chi-stat-metric__title
-                    | Performance
-                  .chi-label__help
-                    button.chi-button.-icon.-sm.-flat.-light(id="example__help-button2" aria-label="Help" data-target="#example__help-popover2" data-position="bottom")
-                      i.chi-icon.icon-circle-info-outline
-                .chi-stat-submetric
-                  .chi-stat-submetric__value
-                    | 0
-                  .chi-stat-submetric__title
-                    | Critical
-                .chi-stat-submetric
-                  .chi-stat-submetric__value
-                    | 1
-                  .chi-stat-submetric__title
-                    | Impacted
-          .chi-col.-w--2
-            .chi-stat.-portal.-compact.-active
-              .chi-stat__content
-                .chi-stat-metric
-                  .chi-stat-metric__title
-                    | Status
-                  .chi-label__help
-                    button.chi-button.-icon.-sm.-flat.-light(id="example__help-button3" aria-label="Help" data-target="#example__help-popover3" data-position="bottom")
-                      i.chi-icon.icon-circle-info-outline
-                .chi-stat-submetric
-                  .chi-stat-submetric__value
-                    | 12
-                  .chi-stat-submetric__title
-                    | Down
-                .chi-stat-submetric
-                  .chi-stat-submetric__value
-                    | 333
-                  .chi-stat-submetric__title
-                    | Up
-          .chi-col.-w--2
-            .chi-stat.-portal.-compact
-              .chi-stat__content
-                .chi-stat-metric
-                  .chi-stat-metric__title
-                    | Threshold Alerts
-                  .chi-label__help
-                    button.chi-button.-icon.-sm.-flat.-light(id="example__help-button4" aria-label="Help" data-target="#example__help-popover4" data-position="bottom")
-                      i.chi-icon.icon-circle-info-outline
-                .chi-stat-submetric
-                  .chi-stat-submetric__value
-                    | 0
-                  .chi-stat-submetric__title
-                    | Warnings
-                .chi-stat-submetric
-                  .chi-stat-submetric__value
-                    | 0
-                  .chi-stat-submetric__title
-                    | Watches
-          .chi-col.-w--2
-            .chi-stat.-portal.-compact
-              .chi-stat__content
-                .chi-stat-metric
-                  .chi-stat-metric__title
-                    | Repair Tickets
-                  .chi-label__help
-                    button.chi-button.-icon.-sm.-flat.-light(id="example__help-button5" aria-label="Help" data-target="#example__help-popover5" data-position="bottom")
-                      i.chi-icon.icon-circle-info-outline
-                .chi-stat-submetric
-                  .chi-stat-submetric__value
-                    | 2
-                  .chi-stat-submetric__title
-                    | Active
-                .chi-stat-submetric
-                  .chi-stat-submetric__value
-                    | 1
-                  .chi-stat-submetric__title
-                    | Closed
-          .chi-col.-w--2
-            .chi-stat.-portal.-compact
-              .chi-stat__content
-                .chi-stat-metric
-                  .chi-stat-metric__title
-                    | Sch Maintenance
-                  .chi-label__help
-                    button.chi-button.-icon.-sm.-flat.-light(id="example__help-button6" aria-label="Help" data-target="#example__help-popover6" data-position="bottom")
-                      i.chi-icon.icon-circle-info-outline
-                .chi-stat-submetric
-                  .chi-stat-submetric__value
-                    | 2
-                  .chi-stat-submetric__title
-                    | In Progress
-                .chi-stat-submetric
-                  .chi-stat-submetric__value
-                    | 2
-                  .chi-stat-submetric__title
-                    | Upcoming
+    .-p--3.-overflow--auto
+      .chi-stat
+        .chi-stat.-compact
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__title
+                | Utilization
+              .chi-label__help
+                button.chi-button.-icon.-sm.-flat.-light(id="example__help-button" aria-label="Help" data-target="#example__help-popover" data-position="bottom")
+                  i.chi-icon.icon-circle-info-outline
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 4
+              .chi-stat-submetric__title
+                | High
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 16
+              .chi-stat-submetric__title
+                | Elevated
+        .chi-stat.-compact
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__title
+                | Performance
+              .chi-label__help
+                button.chi-button.-icon.-sm.-flat.-light(id="example__help-button2" aria-label="Help" data-target="#example__help-popover2" data-position="bottom")
+                  i.chi-icon.icon-circle-info-outline
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 0
+              .chi-stat-submetric__title
+                | Critical
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 1
+              .chi-stat-submetric__title
+                | Impacted
+        .chi-stat.-compact.-active
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__title
+                | Status
+              .chi-label__help
+                button.chi-button.-icon.-sm.-flat.-light(id="example__help-button3" aria-label="Help" data-target="#example__help-popover3" data-position="bottom")
+                  i.chi-icon.icon-circle-info-outline
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 12
+              .chi-stat-submetric__title
+                | Down
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 333
+              .chi-stat-submetric__title
+                | Up
+        .chi-stat.-compact
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__title
+                | Threshold Alerts
+              .chi-label__help
+                button.chi-button.-icon.-sm.-flat.-light(id="example__help-button4" aria-label="Help" data-target="#example__help-popover4" data-position="bottom")
+                  i.chi-icon.icon-circle-info-outline
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 0
+              .chi-stat-submetric__title
+                | Warnings
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 0
+              .chi-stat-submetric__title
+                | Watches
+        .chi-stat.-compact
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__title
+                | Repair Tickets
+              .chi-label__help
+                button.chi-button.-icon.-sm.-flat.-light(id="example__help-button5" aria-label="Help" data-target="#example__help-popover5" data-position="bottom")
+                  i.chi-icon.icon-circle-info-outline
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 2
+              .chi-stat-submetric__title
+                | Active
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 1
+              .chi-stat-submetric__title
+                | Closed
+        .chi-stat.-compact
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__title
+                | Sch Maintenance
+              .chi-label__help
+                button.chi-button.-icon.-sm.-flat.-light(id="example__help-button6" aria-label="Help" data-target="#example__help-popover6" data-position="bottom")
+                  i.chi-icon.icon-circle-info-outline
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 2
+              .chi-stat-submetric__title
+                | In Progress
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 2
+              .chi-stat-submetric__title
+                | Upcoming
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-base
         li.-disabled
@@ -371,9 +607,9 @@ p.-text
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
-        <div class="chi-grid">
-          <div class="chi-col -w--2">
-            <div class="chi-stat -portal -compact">
+        <div class="-overflow--auto">
+          <div class="chi-stat__wrapper">
+            <div class="chi-stat -compact">
               <div class="chi-stat__content">
                 <div class="chi-stat-metric">
                   <div class="chi-stat-metric__title">Utilization</div>
@@ -391,9 +627,7 @@ p.-text
                 </div>
               </div>
             </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="chi-stat -portal -compact">
+            <div class="chi-stat -compact">
               <div class="chi-stat__content">
                 <div class="chi-stat-metric">
                   <div class="chi-stat-metric__title">Performance</div>
@@ -411,9 +645,7 @@ p.-text
                 </div>
               </div>
             </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="chi-stat -portal -compact -active">
+            <div class="chi-stat -compact -active">
               <div class="chi-stat__content">
                 <div class="chi-stat-metric">
                   <div class="chi-stat-metric__title">Status</div>
@@ -431,9 +663,7 @@ p.-text
                 </div>
               </div>
             </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="chi-stat -portal -compact">
+            <div class="chi-stat -compact">
               <div class="chi-stat__content">
                 <div class="chi-stat-metric">
                   <div class="chi-stat-metric__title">Threshold Alerts</div>
@@ -451,9 +681,7 @@ p.-text
                 </div>
               </div>
             </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="chi-stat -portal -compact">
+            <div class="chi-stat -compact">
               <div class="chi-stat__content">
                 <div class="chi-stat-metric">
                   <div class="chi-stat-metric__title">Repair Tickets</div>
@@ -471,9 +699,7 @@ p.-text
                 </div>
               </div>
             </div>
-          </div>
-          <div class="chi-col -w--2">
-            <div class="chi-stat -portal -compact">
+            <div class="chi-stat -compact">
               <div class="chi-stat__content">
                 <div class="chi-stat-metric">
                   <div class="chi-stat-metric__title">Sch Maintenance</div>
@@ -559,241 +785,6 @@ p.-text
       p.chi-popover__text
         | Helpful information goes here.
 
-  h3 Portal
-  p.-text
-    | Apply <code>-portal</code> to easily theme a Stat for portal dashboards.
-  .example.-mb--3
-    .-p--3
-      .chi-grid
-        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-          .chi-stat.-portal.-center
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 1
-                .chi-stat-metric__title
-                  | High Utilization
-              .chi-stat-submetric
-                .chi-stat-submetric__value
-                  | 16
-                .chi-stat-submetric__title
-                  | Elevated
-        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-          .chi-stat.-portal.-center
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 1
-                .chi-stat-metric__title
-                  | Critical Performing
-              .chi-stat-submetric
-                .chi-stat-submetric__value
-                  | 21
-                .chi-stat-submetric__title
-                  | Impacted
-        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-          .chi-stat.-portal.-center.-active
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 2
-                .chi-stat-metric__title
-                  | Services Down
-              .chi-stat-submetric
-                .chi-stat-submetric__value
-                  | 47
-                .chi-stat-submetric__title
-                  | Up
-        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-          .chi-stat.-portal.-center
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 3
-                .chi-stat-metric__title
-                  | Scheduled Maintenance
-              .chi-stat-submetric
-                .chi-stat-submetric__value
-                  | 1
-                .chi-stat-submetric__title
-                  | Planned
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-base
-        li.-disabled
-          a(href=`#webcomponent-portal-base`) Web Component
-        li.-active
-          a(href=`#html-portal-base`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-portal-base
-    .chi-tabs-panel.-active#html-portal-base
-      :code(lang="html")
-        <div class="chi-grid">
-          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-            <div class="chi-stat -portal -center">
-              <div class="chi-stat__content">
-                <div class="chi-stat-metric">
-                  <div class="chi-stat-metric__value">1</div>
-                  <div class="chi-stat-metric__title">High Utilization</div>
-                </div>
-                <div class="chi-stat-submetric">
-                  <div class="chi-stat-submetric__value">16</div>
-                  <div class="chi-stat-submetric__title">Elevated</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-            <div class="chi-stat -portal -center">
-              <div class="chi-stat__content">
-                <div class="chi-stat-metric">
-                  <div class="chi-stat-metric__value">1</div>
-                  <div class="chi-stat-metric__title">Critical Performing</div>
-                </div>
-                <div class="chi-stat-submetric">
-                  <div class="chi-stat-submetric__value">21</div>
-                  <div class="chi-stat-submetric__title">Impacted</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-            <div class="chi-stat -portal -center -active">
-              <div class="chi-stat__content">
-                <div class="chi-stat-metric">
-                  <div class="chi-stat-metric__value">2</div>
-                  <div class="chi-stat-metric__title">Services Down</div>
-                </div>
-                <div class="chi-stat-submetric">
-                  <div class="chi-stat-submetric__value">47</div>
-                  <div class="chi-stat-submetric__title">Up</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-            <div class="chi-stat -portal -center">
-              <div class="chi-stat__content">
-                <div class="chi-stat-metric">
-                  <div class="chi-stat-metric__value">3</div>
-                  <div class="chi-stat-metric__title">Scheduled Maintenance</div>
-                </div>
-                <div class="chi-stat-submetric">
-                  <div class="chi-stat-submetric__value">1</div>
-                  <div class="chi-stat-submetric__title">Planned</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-  h3 Portal with Background Icons
-  p.-text
-    | Use <code>chi-stat-background-icon</code> to define background icons for Portal Stat components.
-  .example.-mb--3
-    .-p--3
-      .chi-grid
-        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-          .chi-stat.-portal.-center
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | $21,000
-                .chi-stat-metric__title
-                  | Outstanding Invoices
-              .chi-stat-background-icon
-                i.chi-icon.icon-file
-        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-          .chi-stat.-portal.-center.-active
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 8
-                .chi-stat-metric__title
-                  | Active Tickets
-              .chi-stat-background-icon
-                i.chi-icon.icon-warning
-        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-          .chi-stat.-portal.-center
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 115
-                .chi-stat-metric__title
-                  | Active Orders
-              .chi-stat-background-icon
-                i.chi-icon.icon-map-marker
-        .chi-col.-w--6.-w-lg--3.-pb--2.-pb-lg--0
-          .chi-stat.-portal.-center
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 5
-                .chi-stat-metric__title
-                  | New Alerts
-              .chi-stat-background-icon
-                i.chi-icon.icon-mail
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-icons
-        li.-disabled
-          a(href=`#webcomponent-portal-icons`) Web Component
-        li.-active
-          a(href=`#html-portal-icons`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-portal-icons
-    .chi-tabs-panel.-active#html-portal-icons
-      :code(lang="html")
-        <div class="chi-grid">
-          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-            <div class="chi-stat -portal -center">
-              <div class="chi-stat__content">
-                <div class="chi-stat-metric">
-                  <div class="chi-stat-metric__value">1</div>
-                  <div class="chi-stat-metric__title">High Utilization</div>
-                </div>
-                <div class="chi-stat-background-icon">
-                  <i class="chi-icon icon-file"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-            <div class="chi-stat -portal -center">
-              <div class="chi-stat__content">
-                <div class="chi-stat-metric">
-                  <div class="chi-stat-metric__value">1</div>
-                  <div class="chi-stat-metric__title">Critical Performing</div>
-                </div>
-                <div class="chi-stat-background-icon">
-                  <i class="chi-icon icon-warning"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-            <div class="chi-stat -portal -center -active">
-              <div class="chi-stat__content">
-                <div class="chi-stat-metric">
-                  <div class="chi-stat-metric__value">2</div>
-                  <div class="chi-stat-metric__title">Services Down</div>
-                </div>
-                <div class="chi-stat-background-icon">
-                  <i class="chi-icon icon-map-marker"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-col -w--6 -w-lg--3 -pb--2 -pb-lg--0">
-            <div class="chi-stat -portal -center">
-              <div class="chi-stat__content">
-                <div class="chi-stat-metric">
-                  <div class="chi-stat-metric__value">3</div>
-                  <div class="chi-stat-metric__title">Scheduled Maintenance</div>
-                </div>
-                <div class="chi-stat-background-icon">
-                  <i class="chi-icon icon-mail"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 script.
   document.addEventListener(
     'DOMContentLoaded',

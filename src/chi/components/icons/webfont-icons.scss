@@ -1,4 +1,15 @@
-$icon-sizes: (xs: 0.75rem, sm: 1rem, sm--2: 1.25rem, sm--3: 1.5rem, md: 2rem, lg: 4rem, xl: 6rem, xxl: 8rem);
+@import '_global-mixins';
+@import '_global-variables';
+
+$icon-sizes: (
+  xs: $icon-size-xs,
+  sm: $icon-size-sm,
+  sm--2: $icon-size-sm2,
+  sm--3: $icon-size-sm3,
+  md: $icon-size-md,
+  lg: $icon-size-lg,
+  xl: $icon-size-xl,
+  xxl: $icon-size-xxl);
 
 i {
   &[class^='icon-'],
@@ -7,7 +18,7 @@ i {
     -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
     -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
     font-family: 'chi' !important;
-    font-size: 1rem;
+    font-size: $icon-size-base;
     font-style: normal;
     font-variant: normal;
     font-weight: $font-weight-normal;
@@ -17,8 +28,8 @@ i {
 
     @each $type in map-keys($icon-sizes) {
       &.-#{$type} {
-        font-size: map-get($icon-sizes, $type);
-        line-height: map-get($icon-sizes, $type);
+        font-size: map-get($icon-sizes, $type) !important;
+        line-height: map-get($icon-sizes, $type) !important;
       }
     }
   }

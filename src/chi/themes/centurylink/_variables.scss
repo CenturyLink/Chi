@@ -22,7 +22,6 @@ $color-grey-25:     #dadee2;
 $color-grey-20:     #edf0f2;
 $color-grey-15:     #f4f5f6;
 $color-grey-10:     #f8f9f9;
-
 $color-red-100:     #471819;
 $color-red-90:      #691518;
 $color-red-80:      #8f0e13;
@@ -34,7 +33,6 @@ $color-red-40:      #fc9094;
 $color-red-30:      #fcc7c9;
 $color-red-20:      #fce8e9;
 $color-red-10:      #fff5f5;
-
 $color-pink-100:    #451726;
 $color-pink-90:     #661430;
 $color-pink-80:     #8c0e38;
@@ -45,7 +43,6 @@ $color-pink-40:     #fa8eb2;
 $color-pink-30:     #fcc7d9;
 $color-pink-20:     #fce8ef;
 $color-pink-10:     #fcf5f7;
-
 $color-purple-100:  #371c52;
 $color-purple-90:   #4d2378;
 $color-purple-80:   #642b9e;
@@ -56,7 +53,6 @@ $color-purple-40:   #cda3f7;
 $color-purple-30:   #e2cdf7;
 $color-purple-20:   #f2ebfa;
 $color-purple-10:   #faf7fc;
-
 $color-indigo-100:  #222261;
 $color-indigo-90:   #2b2b94;
 $color-indigo-80:   #3939bd;
@@ -67,7 +63,6 @@ $color-indigo-40:   #adadff;
 $color-indigo-30:   #d1d1ff;
 $color-indigo-20:   #ededff;
 $color-indigo-10:   #f7f7ff;
-
 $color-navy-100:    #083176;
 $color-navy-90:     #08379b;
 $color-navy-80:     #0047bb;
@@ -78,7 +73,6 @@ $color-navy-40:     #88b6f9;
 $color-navy-30:     #c0d7fa;
 $color-navy-20:     #e6f0ff;
 $color-navy-10:     #f5f8fc;
-
 $color-blue-100:    #001238;
 $color-blue-90:     #001e60;
 $color-blue-80:     #00308a;
@@ -90,7 +84,6 @@ $color-blue-40:     #8cb6f5;
 $color-blue-30:     #c0d7fa;
 $color-blue-20:     #e6f0ff;
 $color-blue-10:     #f5f8fc;
-
 $color-cyan-100:    #0c2b3b;
 $color-cyan-90:     #093d57;
 $color-cyan-80:     #064e73;
@@ -102,10 +95,8 @@ $color-cyan-30:     #b0def5;
 $color-cyan-20:     #e1f2fa;
 $color-cyan-15:     #e1f2fa;
 $color-cyan-10:     #f2f9fc;
-
 $color-bright-blue-50:  #3a8ddd; // CenturyLink Bright Blue
 $color-teal-blue-40:  #02bcb2; // CenturyLink Teal Blue
-
 $color-teal-100:    #082b2e;
 $color-teal-90:     #063b40;
 $color-teal-80:     #074c52;
@@ -117,7 +108,6 @@ $color-teal-40:     #1eb9c7;
 $color-teal-30:     #abdce0;
 $color-teal-20:     #d7f2f5;
 $color-teal-10:     #edf9fa;
-
 $color-mint-100:    #0a2e1e;
 $color-mint-90:     #094028;
 $color-mint-80:     #075433;
@@ -129,7 +119,6 @@ $color-mint-40:     #48d597; // CenturyLink Mint Green
 $color-mint-30:     #abe0c9;
 $color-mint-20:     #daf5e9;
 $color-mint-10:     #edfaf3;
-
 $color-green-100:   #0a2b0a;
 $color-green-90:    #093d09;
 $color-green-80:    #0b4f0b;
@@ -141,7 +130,6 @@ $color-green-35:    #6fd16f; // CenturyLink Kiwi Green
 $color-green-30:    #a7dba7;
 $color-green-20:    #cef2ce;
 $color-green-10:    #e6fae6;
-
 $color-yellow-100:  #3d2900;
 $color-yellow-90:   #523600;
 $color-yellow-80:   #664400;
@@ -154,7 +142,6 @@ $color-yellow-35:   #f9f162; // CenturyLink Lemon Yellow
 $color-yellow-30:   #f6ed79;
 $color-yellow-20:   #f9f5be;
 $color-yellow-10:   #fdfbd8;
-
 $color-orange-100:  #5b2600;
 $color-orange-90:   #723204;
 $color-orange-80:   #974308;
@@ -165,11 +152,9 @@ $color-orange-40:   #f79950;
 $color-orange-30:   #facaa8;
 $color-orange-20:   #fde7d8;
 $color-orange-10:   #fef6f0;
-
 $color-black:       #000000;
 $color-white:       #ffffff;
 // sass-lint:enable no-color-hex
-
 
 // Text color
 $color-text-base:                     $color-grey-100;
@@ -194,6 +179,7 @@ $color-text-code:                     $color-mint-60;
 
 // Icon color
 $color-icon-base:                     $color-grey-100;
+$color-icon-body:                     $color-grey-80;
 $color-icon-primary:                  $color-blue-70;
 $color-icon-primary-dark:             $color-blue-90;
 $color-icon-secondary:                $color-mint-40;
@@ -303,34 +289,102 @@ $accordion-item-border-color:               $color-border-base-dark;
 $accordion-item-disabled-text-color:        $color-text-muted-light;
 $accordion-item-disabled-opacity:           $opacity-60;
 $accordion-item-title-text-color:           $color-text-base;
-$accordion-item-title-font-size:            $font-size-md;
 $accordion-item-title-font-weight:          $font-weight-semi-bold;
+$accordion-item-trigger-icon-color:         inherit;
+$accordion-item-level-2-background-color:   $color-background-base;
+$accordion-item-level-3-background-color:   $color-background-base;
+$accordion-item-level-4-background-color:   $color-background-base;
+$accordion-item-level-5-background-color:   $color-background-base;
+$accordion-sm-item-font-size:               $font-size-sm;
+$accordion-sm-item-line-height:             1rem;
+$accordion-sm-item-padding:                 0.5rem 1rem;
+$accordion-sm-item-icon-size:               0.75rem;
+$accordion-sm-item-content-padding:         1rem;
+$accordion-md-item-font-size:               $font-size-md;
+$accordion-md-item-line-height:             1.25rem;
+$accordion-md-item-padding:                 0.625rem 1rem;
+$accordion-md-item-icon-size:               1rem;
+$accordion-md-item-content-padding:         1rem;
+$accordion-lg-item-font-size:               $font-size-lg;
+$accordion-lg-item-line-height:             1.5rem;
+$accordion-lg-item-padding:                 0.75rem 1rem;
+$accordion-lg-item-icon-size:               1rem;
+$accordion-lg-item-content-padding:         1rem;
+$accordion-xl-item-font-size:               $font-size-xl;
+$accordion-xl-item-line-height:             1.75rem;
+$accordion-xl-item-padding:                 0.875rem 1rem;
+$accordion-xl-item-icon-size:               1rem;
+$accordion-xl-item-content-padding:         1rem;
 
 // Alert
 $alert-background-color:                    $color-background-white;
+$alert-accent-border-color:                 $color-text-base;
 $alert-border-color:                        $color-border-base-dark;
 $alert-title-text-color:                    $color-text-base;
+$alert-banner-title-text-color:             $color-text-base;
 $alert-text-color:                          $color-text-base;
+$alert-icon-color:                          $color-text-base;
+$alert-close-icon-color:                    $color-text-base;
 $alert-success-accent-border-color:         $color-icon-success;
+$alert-success-border-color:                $color-border-base-dark;
 $alert-success-title-text-color:            $color-text-success;
 $alert-success-icon-color:                  $color-icon-success;
-$alert-success-background-color:            $color-background-success-light;
+$alert-success-banner-background-color:     $color-background-success-light;
+$alert-success-bubble-background-color:     $color-background-white;
 $alert-danger-accent-border-color:          $color-icon-danger;
+$alert-danger-border-color:                 $color-border-base-dark;
 $alert-danger-title-text-color:             $color-text-danger;
 $alert-danger-icon-color:                   $color-icon-danger;
-$alert-danger-background-color:             $color-background-danger-light;
+$alert-danger-banner-background-color:      $color-background-danger-light;
+$alert-danger-bubble-background-color:      $color-background-white;
 $alert-warning-accent-border-color:         $color-icon-warning;
+$alert-warning-border-color:                $color-border-base-dark;
 $alert-warning-title-text-color:            $color-text-warning;
 $alert-warning-icon-color:                  $color-icon-warning;
-$alert-warning-background-color:            $color-background-warning-light;
+$alert-warning-banner-background-color:     $color-background-warning-light;
+$alert-warning-bubble-background-color:     $color-background-white;
 $alert-info-accent-border-color:            $color-icon-info;
+$alert-info-border-color:                   $color-border-base-dark;
 $alert-info-title-text-color:               $color-text-info;
 $alert-info-icon-color:                     $color-icon-info;
-$alert-info-background-color:               $color-background-info-light;
+$alert-info-banner-background-color:        $color-background-info-light;
+$alert-info-bubble-background-color:        $color-background-white;
 $alert-muted-accent-border-color:           $color-icon-muted;
+$alert-muted-border-color:                  $color-border-base-dark;
 $alert-muted-title-text-color:              $color-text-muted;
 $alert-muted-icon-color:                    $color-icon-muted;
-$alert-muted-background-color:              $color-background-muted-light;
+$alert-muted-banner-background-color:       $color-background-muted-light;
+$alert-muted-bubble-background-color:       $color-background-white;
+$alert-md-padding:                          0.8125rem 1.5rem;
+$alert-md-banner-padding:                   0.875rem 1.5rem;
+$alert-md-icon-size:                        1rem;
+$alert-md-icon-margin-y:                    0.125rem;
+$alert-md-icon-margin-right:                1rem;
+$alert-md-text-padding-top:                 0;
+$alert-md-text-font-size:                   $font-size-base;
+$alert-md-text-line-height:                 $line-height;
+$alert-md-title-font-size:                  $font-size-base;
+$alert-md-title-font-weight:                $font-weight-semi-bold;
+$alert-md-title-line-height:                $line-height;
+$alert-md-title-margin-bottom:              0;
+$alert-lg-padding:                          1.0625rem 1.5rem;
+$alert-lg-banner-padding:                   1.125rem 1.5rem;
+$alert-lg-icon-size:                        1.25rem;
+$alert-lg-text-padding-top:                 0.125rem;
+$alert-lg-title-font-size:                  $font-size-lg;
+$alert-lg-title-font-weight:                $font-weight-semi-bold;
+$alert-lg-title-line-height:                $line-height-lg;
+$alert-lg-title-margin-bottom:              0;
+$alert-sm-padding:                          0.5625rem 1.5rem;
+$alert-sm-banner-padding:                   0.625rem 1.5rem;
+$alert-sm-icon-size:                        1rem;
+$alert-sm-text-padding-top:                 0.125rem;
+$alert-sm-title-font-size:                  $font-size-base;
+$alert-sm-text-font-size:                   $font-size-sm;
+$alert-sm-text-line-height:                 $line-height-sm;
+
+// App layout
+$app-layout-background-color:               $color-background-base;
 
 // Avatar
 $avatar-background-color:                   $color-grey-20;
@@ -439,17 +493,18 @@ $button-solid-text-color:                   $color-text-base;
 $button-solid-icon-color:                   $color-icon-base;
 $button-solid-hover-background-color:       $color-grey-20;
 $button-solid-hover-border-color:           $color-border-base-dark;
+$button-solid-hover-text-color:             $color-text-base;
 $button-solid-focus-background-color:       $color-grey-20;
 $button-solid-focus-border-color:           $color-border-base-dark;
 $button-solid-focus-outline:                $focus-color;
 $button-solid-active-background-color:      $color-grey-25;
 $button-solid-active-border-color:          rgba($color-grey-70, 0.2);
+$button-solid-active-text-color:             $color-text-base;
 $button-solid-disabled-background-color:    $color-background-base-dark;
 $button-solid-disabled-border-color:        $color-border-base-dark;
 $button-solid-disabled-text-color:          $color-text-muted-light;
 $button-solid-disabled-icon-color:          $color-icon-muted;
 $button-solid-disabled-opacity:             $opacity-100;
-
 $button-outline-background-color:           transparent;
 $button-outline-border-color:               $color-border-base-dark;
 $button-outline-icon-color:                 $color-icon-base;
@@ -462,11 +517,11 @@ $button-outline-disabled-border-color:      $color-border-base-dark;
 $button-outline-disabled-text-color:        $color-text-muted-light;
 $button-outline-disabled-icon-color:        $color-icon-muted;
 $button-outline-disabled-opacity:           $opacity-100;
-
 $button-flat-background-color:              transparent;
 $button-flat-border-color:                  transparent;
 $button-flat-hover-background-color:        rgba($color-grey-70, 0.1);
 $button-flat-hover-border-color:            transparent;
+$button-flat-hover-icon-opacity:            $opacity-100;
 $button-flat-active-background-color:       rgba($color-grey-70, 0.2);
 $button-flat-active-border-color:           transparent;
 $button-flat-focus-background-color:        transparent;
@@ -477,11 +532,13 @@ $button-flat-disabled-border-color:         transparent;
 $button-flat-disabled-text-color:           $color-text-muted-light;
 $button-flat-disabled-icon-color:           $color-icon-muted;
 $button-flat-disabled-opacity:              $opacity-60;
-
+$button-flat-text-color:                    inherit;
 $button-float-border-color:                 $color-grey-40;
+$button-float-padding:                      0.6875rem;
 $button-close-background-color:             transparent;
 $button-close-border-color:                 transparent;
 $button-close-icon-color:                   $color-text-base;
+$button-close-hover-icon-opacity:           $opacity-100;
 
 $button-primary-solid-background-color:     $color-background-primary;
 $button-primary-solid-border-color:         $color-border-primary;
@@ -553,13 +610,74 @@ $button-light-flat-text-color:              $color-text-white;
 $button-light-flat-hover-text-color:        $color-grey-25;
 $button-light-flat-active-text-color:       $color-grey-40;
 
+$button-sm-font-size:                       $font-size-xs;
+$button-sm-line-height:                     $line-height-sm;
+$button-sm-padding:                         0.25rem 0.5rem;
+$button-sm-text-transform:                  none;
+$button-icon-sm-font-size:                  0.75rem;
+$button-icon-sm-line-height:                0.75rem;
+$button-icon-sm-padding:                    0.375rem;
+$button-icon-sm-height:                     0.75rem;
+$button-icon-sm-width:                      0.75rem;
+
+$button-md-font-size:                       $font-size-base;
+$button-md-line-height:                     $line-height-sm;
+$button-md-padding:                         0.5rem 1rem;
+$button-md-text-transform:                  none;
+$button-icon-md-font-size:                  1rem;
+$button-icon-md-line-height:                1rem;
+$button-icon-md-padding:                    0.5rem;
+$button-icon-md-height:                     1rem;
+$button-icon-md-width:                      1rem;
+
+$button-lg-font-size:                       $font-size-base;
+$button-lg-line-height:                     $line-height-md;
+$button-lg-padding:                         0.625rem 1.5rem;
+$button-lg-text-transform:                  none;
+$button-icon-lg-font-size:                  1rem;
+$button-icon-lg-line-height:                1rem;
+$button-icon-lg-padding:                    0.75rem;
+$button-icon-lg-height:                     1rem;
+$button-icon-lg-width:                      1rem;
+
+$button-xl-font-size:                       $font-size-base;
+$button-xl-line-height:                     $line-height-md;
+$button-xl-padding:                         0.875rem 1.5rem;
+$button-xl-text-transform:                  none;
+$button-icon-xl-font-size:                  1rem;
+$button-icon-xl-line-height:                1rem;
+$button-icon-xl-padding:                    1rem;
+$button-icon-xl-height:                     1rem;
+$button-icon-xl-width:                      1rem;
+
+// Button group
+$button-group-horizontal-sm-padding:        0.5rem;
+$button-group-horizontal-sm-icon-padding:   0.375rem;
+$button-group-horizontal-md-padding:        1rem;
+$button-group-horizontal-md-icon-padding:   0.5rem;
+$button-group-horizontal-lg-padding:        1.5rem;
+$button-group-horizontal-lg-icon-padding:   0.75rem;
+$button-group-horizontal-xl-padding:        1.5rem;
+$button-group-horizontal-xl-icon-padding:   1rem;
+
+$button-group-vertical-sm-padding:          0.25rem;
+$button-group-vertical-sm-icon-padding:     0.375rem;
+$button-group-vertical-md-padding:          0.5rem;
+$button-group-vertical-md-icon-padding:     0.5rem;
+$button-group-vertical-lg-padding:          0.625rem;
+$button-group-vertical-lg-icon-padding:     0.75rem;
+$button-group-vertical-xl-padding:          0.875rem;
+$button-group-vertical-xl-icon-padding:     1rem;
+
 // Card
 $card-background-color:                     $color-background-white;
-$card-border-color:                         rgba($color-black, 0.12);
+$card-border:                               0.0625rem solid rgba($color-black, 0.12);
 $card-active-border-color:                  $color-border-primary;
 $card-active-title-text-color:              $color-text-primary;
 $card-active-icon-color:                    $color-text-primary;
+$card-header-background-color:              transparent;
 $card-header-border-color:                  rgba($color-black, 0.12);
+$card-header-box-shadow:                    inset 0 -1px 0 0 $card-header-border-color;
 $card-header-padding:                       1rem;
 $card-header-sm-padding:                    0.5rem 1rem;
 $card-header-min-height:                    2rem;
@@ -568,6 +686,13 @@ $card-footer-padding:                       1rem;
 $card-footer-min-height:                    2rem;
 $card-empty-border-color:                   rgba($color-black, 0.12);
 $card-empty-icon-color:                     $color-text-muted-light;
+$card-content-padding:                      1rem;
+$card-tabs-padding:                         0 1rem;
+$card-tabs-border-bottom:                   none;
+
+$card-title-font-size:                      $font-size-lg;
+$card-title-font-weight:                    $font-weight-semi-bold;
+$card-title-line-height:                    $line-height-lg;
 
 // Checkbox
 $checkbox-background-color:                 $color-background-white;
@@ -607,13 +732,30 @@ $divider-vertical-inverse-border-color:     rgba($color-white, 0.2);
 $drawer-width:                              18.75rem;
 $drawer-height:                             18.75rem;
 $drawer-background-color:                   $color-background-white;
+$drawer-header-background-color:            transparent;
+$drawer-button-close-top:                   0.8125rem;
+$drawer-button-close-icon-color:            inherit;
 $drawer-header-min-height:                  3.5rem;
 $drawer-header-padding:                     1rem;
 $drawer-header-title-font-size:             1rem;
 $drawer-header-title-font-weight:           $font-weight-semi-bold;
 
 // Dropdown
+$dropdown-button-text-color:                inherit;
+$dropdown-button-border-color:              $color-border-base-dark;
+$dropdown-button-hover-background-color:    $color-grey-20;
+$dropdown-button-hover-border-color:        $color-border-base-dark;
+$dropdown-button-active-background-color:   $color-grey-25;
+$dropdown-button-active-border-color:       rgba($color-grey-70, 0.2);
+
 $dropdown-trigger-icon-color:               inherit;
+$dropdown-trigger-icon-margin-left:         0.375rem;
+$dropdown-trigger-text-transform:           none;
+$dropdown-trigger-sm-padding:               0.25rem 0.5rem;
+$dropdown-trigger-md-padding:               0.5rem 1rem;
+$dropdown-trigger-lg-padding:               0.625rem 1.5rem;
+$dropdown-trigger-xl-padding:               0.875rem 1.5rem;
+
 $dropdown-menu-border-radius:               $border-radius-base;
 $dropdown-menu-shadow:                      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
 $dropdown-menu-background-color:            $color-background-white;
@@ -681,6 +823,7 @@ $footer-internal-text-color:                $color-text-muted;
 $footer-internal-select-text-color:         $color-text-muted;
 $footer-copyright-font-size:                $font-size-xs;
 $footer-copyright-line-height:              1rem;
+$footer-dropdown-arrow-icon-color:          inherit;
 $footer-internal-link-color:                $color-text-muted;
 $footer-external-background-color:          $color-background-white;
 $footer-external-text-color:                $color-text-base;
@@ -721,7 +864,6 @@ $header-toolbar-link-color:                 $color-text-base;
 $header-toolbar-link-hover-color:           $color-text-primary;
 $header-toolbar-link-font-size:             $font-size-xs;
 $header-toolbar-link-font-weight:           $font-weight-semi-bold;
-
 $header-navbar-background-color:            $color-background-white;
 $header-navbar-border-color:                rgba($color-black, 0.12);
 $header-navbar-text-color:                  $color-text-base;
@@ -731,7 +873,6 @@ $header-navbar-font-weight:                 $font-weight-semi-bold;
 $header-navbar-divider-color:               rgba($color-black, 0.12);
 $header-navbar-menu-text-transform:         uppercase;
 $header-navbar-menu-line-height:            $line-height-sm;
-
 $header-end-text-color:                     $color-text-base;
 $header-navbar-tab-xs-height:               2rem;
 $header-navbar-tab-xs-link-font-size:       $font-size-base;
@@ -739,7 +880,6 @@ $header-navbar-tab-xs-link-font-weight:     $font-weight-semi-bold;
 $header-navbar-tab-xs-link-padding:         0.5rem 0;
 $header-navbar-tab-xs-link-active-padding-bottom:  0.375rem;
 $header-navbar-tab-xs-link-hover-text-decoration:  underline;
-
 $header-height:                             3.5rem;
 $header-lg-height:                          4rem;
 $header-xl-height:                          6rem;
@@ -748,6 +888,8 @@ $header-xl-navbar-tab-link-font-size:       $font-size-base;
 $header-xl-navbar-tab-link-line-height:     $line-height;
 
 // Icons
+$icon-color:                                inherit;
+$icon-size-base:                            1rem;
 $icon-size-xs:                              0.75rem;
 $icon-size-sm:                              1rem;
 $icon-size-sm2:                             1.25rem;
@@ -773,7 +915,6 @@ $link-cta-icon-color:                       $color-icon-primary;
 $marketing-icon-primary-color:              $color-icon-primary;
 $marketing-icon-secondary-color:            $color-icon-primary;
 $marketing-icon-shadow-color:               $color-icon-secondary;
-
 $marketing-icon-size-xs:                    4.5rem;
 $marketing-icon-size-sm:                    5rem;
 $marketing-icon-size-md:                    6rem;
@@ -782,32 +923,43 @@ $marketing-icon-size-lg:                    8rem;
 // Mobile navigation
 $mobile-nav-background-color:               $color-background-base;
 $mobile-nav-width:                          23rem;
-
 $mobile-nav-header-background-color:        $color-background-base;
+$mobile-nav-header-button-top:              0.75rem;
 $mobile-nav-user-background-color:          $color-background-base;
 $mobile-nav-user-border-color:              $color-border-base;
+$mobile-nav-drawer-close-icon-color:        $color-icon-base;
 $mobile-nav-logout-text-color:              $color-text-primary;
 $mobile-nav-list-item-text-color:           $color-text-base;
 $mobile-nav-list-item-active-text-color:    $color-text-primary;
-$mobile-nav-list-item-expanded-text-color:  $color-text-primary;
+$mobile-nav-list-item-expanded-text-color:  $color-text-base;
 $mobile-nav-list-item-hover-background-color: $color-grey-20;
 $mobile-nav-list-item-hover-text-color:     $color-text-base;
 $mobile-nav-list-item-active-background-color: inherit;
+$mobile-nav-list-item-active-border-color:  $color-border-primary;
 $mobile-nav-list-item-icon-size:            1.25rem;
+$mobile-nav-list-item-trigger-icon-color:   $color-icon-base;
+$mobile-nav-list-item-active-trigger-icon-color:  $color-icon-primary;
+$mobile-nav-list-item-title-font-weight:    $font-weight-normal;
 
 // Modal
 $modal-animated-transition-duration:        0.5s;
 $modal-background-color:                    $color-background-white;
 $modal-box-shadow:                          0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
 $modal-max-width:                           600px;
+$modal-close-top:                           0.8125rem;
+$modal-header-background-color:             transparent;
 $modal-header-box-shadow:                   inset 0 -1px 0 0 rgba($color-black, 0.12);
 $modal-header-min-height:                   3.5rem;
 $modal-header-padding:                      1rem;
 $modal-footer-box-shadow:                   inset 0 1px 0 0 rgba($color-black, 0.12);
 $modal-footer-min-height:                   4rem;
 $modal-footer-padding:                      1rem;
+$modal-back-link-color:                     $color-icon-body;
+$modal-close-icon-color:                    $color-icon-body;
 
 // Number input
+$number-input-arrow-icon-color:             $color-icon-base;
+$number-input-disabled-arrow-icon-color:    $color-icon-base;
 $number-input-border-color:                 $color-border-base-dark;
 $number-input-hover-border-color:           $color-grey-40;
 $number-input-text-color:                   $color-text-base;
@@ -822,36 +974,79 @@ $number-input-sm-width:                     5.5rem;
 $number-input-sm-line-height:               $line-height-sm;
 $number-input-sm-font-size:                 $font-size-xs;
 $number-input-sm-padding:                   0.1875rem 1.25rem 0.1875rem 0.4375rem;
+$number-input-sm-button-height:             0.5rem;
+$number-input-sm-button-right:              0.1875rem;
+$number-input-sm-button-top:                0.1875rem;
+$number-input-sm-button-bottom:             0.1875rem;
+$number-input-sm-button-icon-background-size: 0.375rem;
 
 $number-input-md-height:                    2rem;
 $number-input-md-width:                     5.5rem;
 $number-input-md-line-height:               $line-height-sm;
 $number-input-md-font-size:                 $font-size-md;
 $number-input-md-padding:                   0.4375rem 1.375rem 0.4375rem 0.4375rem;
+$number-input-md-button-height:             0.6875rem;
+$number-input-md-button-width:              1rem;
+$number-input-md-button-right:              0.25rem;
+$number-input-md-button-top:                0.25rem;
+$number-input-md-button-bottom:             0.25rem;
+$number-input-md-button-icon-background-size: 0.5rem;
 
 $number-input-lg-height:                    2.5rem;
 $number-input-lg-width:                     5.5rem;
 $number-input-lg-line-height:               $line-height-md;
 $number-input-lg-font-size:                 $font-size-md;
 $number-input-lg-padding:                   0.5625rem 1.8125rem 0.5625rem 0.4375rem;
+$number-input-lg-button-height:             0.875rem;
+$number-input-lg-button-width:              1.25rem;
+$number-input-lg-button-right:              0.3125rem;
+$number-input-lg-button-top:                0.3125rem;
+$number-input-lg-button-bottom:             0.3125rem;
+$number-input-lg-button-icon-background-size: 0.5rem;
 
 $number-input-xl-height:                    3rem;
 $number-input-xl-width:                     5.5rem;
 $number-input-xl-line-height:               $line-height-lg;
 $number-input-xl-font-size:                 $font-size-md;
 $number-input-xl-padding:                   0.6875rem 1.8125rem 0.6875rem 0.4375rem;
+$number-input-xl-button-height:             1rem;
+$number-input-xl-button-width:              1.5rem;
+$number-input-xl-button-right:              0.3125rem;
+$number-input-xl-button-top:                0.3125rem;
+$number-input-xl-button-bottom:             0.3125rem;
+$number-input-xl-button-icon-background-size: 0.625rem;
 
 $number-input-button-background-color:      $color-background-white;
 $number-input-button-border-color:          $color-border-base-dark;
+$number-input-button-border-radius:         0;
 $number-input-button-hover-background-color:  $color-background-base-dark;
 $number-input-button-active-background-color: $color-background-base-darker;
 $number-input-button-disabled-background-color: $color-background-base-dark;
 $number-input-button-disabled-opacity:      $opacity-60;
 
 $number-input-expanded-sm-width:            6rem;
+$number-input-expanded-sm-button-font-size: 0.75rem;
+$number-input-expanded-sm-button-height:    1.5rem;
+$number-input-expanded-sm-button-padding:   0.3125rem;
+$number-input-expanded-sm-button-icon-size: 0.75rem;
+
 $number-input-expanded-md-width:            8rem;
+$number-input-expanded-md-button-font-size: 0.875rem;
+$number-input-expanded-md-button-height:    2rem;
+$number-input-expanded-md-button-padding:   0.4375rem;
+$number-input-expanded-md-button-icon-size: 1rem;
+
 $number-input-expanded-lg-width:            10rem;
+$number-input-expanded-lg-button-font-size: 0.875rem;
+$number-input-expanded-lg-button-height:    2.5rem;
+$number-input-expanded-lg-button-padding:   0.6875rem;
+$number-input-expanded-lg-button-icon-size: 1rem;
+
 $number-input-expanded-xl-width:            12rem;
+$number-input-expanded-xl-button-font-size: 0.875rem;
+$number-input-expanded-xl-button-height:    3rem;
+$number-input-expanded-xl-button-padding:   0.9375rem;
+$number-input-expanded-xl-button-icon-size: 1rem;
 
 $number-input-expanded-button-disabled-background-color: $color-grey-10;
 $number-input-expanded-button-disabled-border-color: $color-border-base-dark;
@@ -864,6 +1059,7 @@ $pagination-results-text-color:             $color-text-muted-light;
 $pagination-jumper-text-color:              $color-text-muted-light;
 $pagination-page-size-text-color:           $color-text-muted-light;
 $pagination-compact-label-text-color:       $color-text-base;
+$pagination-label-page-font-weight:         $font-weight-semi-bold;
 
 $pagination-inverse-text-color:             $color-text-white;
 $pagination-inverse-results-text-color:     $color-grey-40;
@@ -879,6 +1075,7 @@ $pagination-inverse-compact-label-text-color: $color-text-white;
 // Picker
 $picker-background-color:                   $color-background-white;
 $picker-border-color:                       $color-border-base-dark;
+$picker-icon-color:                         inherit;
 $picker-checkbox-border-color:              $color-grey-40;
 $picker-checkbox-text-color:                $color-grey-40;
 $picker-checkbox-icon-color:                $color-grey-50;
@@ -903,6 +1100,34 @@ $picker-focus-background-color:             $color-grey-10;
 // Picker group
 $picker-group-hover-background-color:       $color-background-base-dark;
 $picker-group-active-background-color:      $color-background-base-darker;
+
+$picker-group-sm-font-size:                 0.75rem;
+$picker-group-sm-line-height:               1rem;
+$picker-group-sm-min-height:                1.5rem;
+$picker-group-sm-padding:                   0.1875rem 0.5rem 0.1875rem 0.4375rem;
+$picker-group-sm-padding-hover:             0.4375rem;
+$picker-group-sm-padding-checked:           0.5rem;
+
+$picker-group-md-font-size:                 0.875rem;
+$picker-group-md-line-height:               1rem;
+$picker-group-md-min-height:                2rem;
+$picker-group-md-padding:                   0.4375rem 1rem 0.4375rem 0.9375rem;
+$picker-group-md-padding-hover:             0.9375rem;
+$picker-group-md-padding-checked:           1rem;
+
+$picker-group-lg-font-size:                 0.875rem;
+$picker-group-lg-line-height:               1.25rem;
+$picker-group-lg-min-height:                2.5rem;
+$picker-group-lg-padding:                   0.5625rem 1.5rem 0.5625rem 1.4375rem;
+$picker-group-lg-padding-hover:             1.4375rem;
+$picker-group-lg-padding-checked:           1.5rem;
+
+$picker-group-xl-font-size:                 0.875rem;
+$picker-group-xl-line-height:               1.25rem;
+$picker-group-xl-min-height:                3rem;
+$picker-group-xl-padding:                   0.8125rem 1.5rem 0.8125rem 1.4375rem;
+$picker-group-xl-padding-hover:             1.4375rem;
+$picker-group-xl-padding-checked:           1.5rem;
 
 // Popover
 $popover-background-color:                  $color-background-white;
@@ -942,9 +1167,22 @@ $range-slider-disabled-opacity:             $opacity-60;
 $range-slider-focus-color:                  $focus-color;
 $range-slider-tick-border-color:            $color-border-base-dark;
 
+// Search input
+$search-input-sm-icon-top:                  0;
+$search-input-sm-close-top:                 0;
+$search-input-sm-close-right:               1.75rem;
+$search-input-md-icon-top:                  0;
+$search-input-md-close-top:                 0.25rem;
+$search-input-md-close-right:               2.25rem;
+$search-input-lg-icon-top:                  0.25rem;
+$search-input-lg-close-top:                 0.5rem;
+$search-input-xl-icon-top:                  0.5rem;
+$search-input-xl-close-top:                 0.75rem;
+
 // Select
 $select-text-color:                         $color-text-base;
 $select-background-color:                   $color-background-white;
+$select-background-image:                   url('icon-chevron-thin-down.svg');
 $select-border-color:                       $color-border-base-dark;
 $select-hover-border-color:                 $color-grey-40;
 $select-focus-border-color:                 $focus-color;
@@ -970,28 +1208,36 @@ $select-md-padding:                         0 1.6875rem 0 0.75rem;
 $select-lg-height:                          2.5rem;
 $select-lg-font-size:                       $font-size-base;
 $select-lg-line-height:                     $line-height-md;
-$select-lg-arrow-background-size:           0.75rem;
+$select-lg-arrow-background-size:           1rem;
 $select-lg-arrow-background-position:       right 1rem center;
 $select-lg-padding:                         0 1.6875rem 0 0.75rem;
 
 $select-xl-height:                          3rem;
 $select-xl-font-size:                       $font-size-base;
 $select-xl-line-height:                     $line-height-md;
-$select-xl-arrow-background-size:           0.75rem;
+$select-xl-arrow-background-size:           1rem;
 $select-xl-arrow-background-position:       right 1rem center;
 $select-xl-padding:                         0 1.6875rem 0 0.75rem;
 
 // Sidenav
 $sidenav-background-color:                  $color-background-base;
 $sidenav-border-color:                      $color-border-base;
+$sidenav-item-icon-color:                   inherit;
 $sidenav-item-icon-size:                    1.25rem;
 $sidenav-item-min-height:                   4.5rem;
+$sidenav-item-trigger-icon-color:           inherit;
 $sidenav-item-hover-border-color:           $color-border-dark;
 $sidenav-item-hover-background-color:       $color-background-base-darker;
 $sidenav-item-active-border-color:          $color-border-primary;
 $sidenav-item-active-background-color:      $color-background-primary-light;
 $sidenav-drawer-header-background-color:    $color-background-base;
 $sidenav-drawer-close-icon-color:           inherit;
+$sidenav-item-title-font-weight:            $font-weight-normal;
+$sidenav-item-expanded-background-color:    $color-background-white;
+$sidenav-item-expanded-box-shadow:          none;
+$sidenav-item-active-expanded-background-color: $color-background-white;
+$sidenav-drawer-tab-active-background-color: $color-background-primary-light;
+$sidenav-drawer-tab-active-box-shadow:      inset 0.125rem 0 0 $color-border-primary;
 
 // Spinner
 $spinner-size-xs:                           0.75rem;
@@ -1004,11 +1250,56 @@ $spinner-size-xl:                           6rem;
 $spinner-size-xxl:                          8rem;
 
 // Stat
+$stat-background-color:                     transparent;
+$stat-background-icon-color:                inherit;
+$stat-background-icon-opacity:              0.1;
+$stat-active-background-color:              transparent;
+$stat-active-background-icon-opacity:       0.1;
+$stat-active-background-icon-color:         inherit;
+$stat-active-text-color:                    $color-text-base;
+$stat-border:                               none;
+$stat-text-align:                           left;
 $stat-text-color:                           $color-text-base;
-$stat-active-metric-title:                  $color-text-primary;
+$stat-min-height:                           0;
+$stat-min-width:                            0;
+$stat-active-metric-title-color:            $color-text-primary;
+$stat-active-metric-value-color:            $color-text-base;
 $stat-card-background-color:                $color-background-white;
 $stat-card-border-color:                    rgba($color-black, 0.12);
 $stat-active-card-border-color:             $color-border-primary;
+$stat-content-align-items:                  flex-start;
+
+$stat-metric-value-color:                   inherit;
+$stat-metric-title-font-size:               $font-size-base;
+$stat-metric-title-font-weight:             $font-weight-normal;
+$stat-metric-title-line-height:             $line-height-sm;
+$stat-metric-title-text-transform:          none;
+$stat-metric-title-width:                   100%;
+$stat-metric-value-font-size:               2.5rem;
+$stat-metric-value-font-weight:             $font-weight-normal;
+$stat-metric-value-line-height:             3rem;
+
+$stat-active-submetric-text-color:          inherit;
+$stat-submetric-text-color:                 inherit;
+$stat-submetric-justify-content:            flex-start;
+
+$stat-active-notch-border-color:            transparent;
+$stat-active-notch-display:                 none;
+
+$stat-compact-border:                       0.0625rem solid $stat-card-border-color;
+$stat-compact-active-border:                0.0625rem solid $stat-active-card-border-color;
+$stat-compact-active-box-shadow:            0 0 0 0.0625rem $stat-active-card-border-color;
+$stat-compact-max-width:                    none;
+$stat-compact-min-height:                   5.5rem;
+$stat-compact-min-width:                    10.5rem;
+$stat-compact-title-font-size:              $font-size-xs;
+$stat-compact-title-font-weight:            $font-weight-base;
+$stat-compact-title-line-height:            $line-height-sm;
+$stat-compact-submetric-color:              $color-text-base;
+$stat-compact-submetric-font-size:          $font-size-base;
+$stat-compact-submetric-font-weight:        $font-weight-bold;
+$stat-compact-active-title-color:           $color-text-primary;
+$stat-compact-active-submetric-title-color: $color-text-base;
 
 // Steps
 $steps-item-line-border-color:              $color-border-muted;
@@ -1062,9 +1353,46 @@ $table-fixed-header-striped-row-hover-background-color: $color-background-muted-
 $table-fixed-header-bordered-row-cell-border-color: $color-border-base-light;
 
 // Tabs
+$tabs-icon-color:                           inherit;
 $tabs-inverse-item-active-border-color:     $color-border-secondary;
 $tabs-inverse-item-active-text-color:       $color-text-secondary;
 $tabs-inverse-item-hover-text-color:        $color-text-secondary;
+
+$tabs-horizontal-border-bottom:             0.0625rem solid $color-border-base;
+
+$tabs-horizontal-lg-font-size:              $font-size-base;
+$tabs-horizontal-lg-font-weight:            $font-weight-semi-bold;
+$tabs-horizontal-lg-height:                 4rem;
+$tabs-horizontal-lg-line-height:            $line-height-lg;
+$tabs-horizontal-lg-padding:                1.25rem 0;
+$tabs-horizontal-lg-active-padding-bottom:  1.125rem;
+$tabs-horizontal-lg-trigger-icon-top:       1.5rem;
+$tabs-horizontal-lg-trigger-padding-right:  1.5rem;
+
+$tabs-horizontal-md-font-size:              $font-size-base;
+$tabs-horizontal-md-font-weight:            $font-weight-semi-bold;
+$tabs-horizontal-md-height:                 3.5rem;
+$tabs-horizontal-md-padding:                1.25rem 0;
+$tabs-horizontal-md-active-padding-bottom:  1.125rem;
+$tabs-horizontal-md-trigger-icon-top:       1.25rem;
+$tabs-horizontal-md-trigger-padding-right:  1.5rem;
+
+$tabs-horizontal-sm-font-size:              $font-size-base;
+$tabs-horizontal-sm-font-weight:            $font-weight-bold;
+$tabs-horizontal-sm-height:                 3rem;
+$tabs-horizontal-sm-padding:                1rem 0;
+$tabs-horizontal-sm-active-padding-bottom:  0.875rem;
+$tabs-horizontal-sm-trigger-icon-top:       1rem;
+$tabs-horizontal-sm-trigger-padding-right:  1.5rem;
+
+$tabs-horizontal-xs-font-size:              $font-size-base;
+$tabs-horizontal-xs-font-weight:            $font-weight-semi-bold;
+$tabs-horizontal-xs-height:                 2.5rem;
+$tabs-horizontal-xs-padding:                0.8125rem 0 0.6875rem 0;
+$tabs-horizontal-xs-active-padding-bottom:  0.5625rem;
+$tabs-horizontal-xs-trigger-icon-top:       0.8125rem;
+$tabs-horizontal-xs-trigger-padding-right:  1.25rem;
+
 
 // Text input
 $text-input-border-color:                   $color-border-base-dark;
@@ -1077,10 +1405,91 @@ $text-input-disabled-background-color:      $color-grey-10;
 $text-input-disabled-border-color:          $color-border-base-dark;
 $text-input-disabled-text-color:            $color-text-muted-light;
 $text-input-disabled-icon-color:            $color-icon-muted;
+$text-input-spinner-color:                  $color-icon-muted;
 
 $text-input-floating-label-text-color:      $color-text-muted;
 $text-input-floating-label-opacity:         $opacity-60;
 $text-input-focus-floating-label-opacity:   $opacity-80;
+
+$text-input-sm-height:                      1.5rem;
+$text-input-sm-font-size:                   0.75rem;
+$text-input-sm-line-height:                 0.75rem;
+$text-input-sm-padding:                     0.3125rem 0.5rem;
+$text-input-sm-iconleft-padding-left:       1.6875rem;
+$text-input-sm-iconright-padding-right:     1.6875rem;
+$text-input-sm-iconleft-left:               0.5rem;
+$text-input-sm-iconright-right:             0.5rem;
+$text-input-sm-icon-height:                 0.75rem;
+$text-input-sm-icon-padding:                0.375rem;
+$text-input-sm-icon-width:                  0.75rem;
+$text-input-sm-icon-top:                    0.375rem;
+$text-input-sm-spinner-right:               0.75rem;
+
+$text-input-md-height:                      2rem;
+$text-input-md-font-size:                   $font-size-base;
+$text-input-md-line-height:                 $line-height-sm;
+$text-input-md-padding:                     0.4375rem 0.75rem;
+$text-input-md-iconleft-padding-left:       1.9375rem;
+$text-input-md-iconright-padding-right:     1.9375rem;
+$text-input-md-iconleft-left:               0.5rem;
+$text-input-md-iconright-right:             0.5rem;
+$text-input-md-icon-height:                 1rem;
+$text-input-md-icon-padding:                0.5rem;
+$text-input-md-icon-width:                  1rem;
+$text-input-md-icon-top:                    0.5rem;
+$text-input-md-spinner-right:               0.75rem;
+
+$text-input-lg-height:                      2.5rem;
+$text-input-lg-font-size:                   0.875rem;
+$text-input-lg-line-height:                 1.25rem;
+$text-input-lg-padding:                     0.5625rem 0.75rem;
+$text-input-lg-iconleft-padding-left:       2.4375rem;
+$text-input-lg-iconright-padding-right:     2.4375rem;
+$text-input-lg-iconleft-left:               0.75rem;
+$text-input-lg-iconright-right:             0.75rem;
+$text-input-lg-icon-height:                 1rem;
+$text-input-lg-icon-padding:                0.75rem;
+$text-input-lg-icon-width:                  1rem;
+$text-input-lg-icon-top:                    0.75rem;
+$text-input-lg-spinner-right:               0.625rem;
+
+$text-input-xl-height:                      3rem;
+$text-input-xl-font-size:                   0.875rem;
+$text-input-xl-line-height:                 1.5rem;
+$text-input-xl-padding:                     0.6875rem 0.75rem;
+$text-input-xl-iconleft-padding-left:       2.4375rem;
+$text-input-xl-iconright-padding-right:     2.4375rem;
+$text-input-xl-iconleft-left:               0.75rem;
+$text-input-xl-iconright-right:             0.75rem;
+$text-input-xl-icon-height:                 1rem;
+$text-input-xl-icon-padding:                1rem;
+$text-input-xl-icon-width:                  1rem;
+$text-input-xl-icon-top:                    1rem;
+$text-input-xl-spinner-right:               0.75rem;
+
+$text-input-md-floating-label-bottom:       0.5rem;
+$text-input-md-floating-label-focus-bottom: 0.9375rem;
+$text-input-md-floating-label-font-size:    0.875rem;
+$text-input-md-floating-label-focus-font-size: 0.75rem;
+$text-input-md-floating-label-line-height:  0.75rem;
+$text-input-md-floating-label-padding-bottom:  0.15625rem;
+$text-input-md-floating-label-padding-top:  0.96875rem;
+
+$text-input-lg-floating-label-bottom:       0.5rem;
+$text-input-lg-floating-label-focus-bottom: 0.9375rem;
+$text-input-lg-floating-label-font-size:    0.875rem;
+$text-input-lg-floating-label-focus-font-size: 0.75rem;
+$text-input-lg-floating-label-line-height:  0.75rem;
+$text-input-lg-floating-label-padding-bottom:  0.15625rem;
+$text-input-lg-floating-label-padding-top:  0.96875rem;
+
+$text-input-xl-floating-label-bottom:        0.75rem;
+$text-input-xl-floating-label-focus-bottom: 1.1875rem;
+$text-input-xl-floating-label-font-size:    0.875rem;
+$text-input-xl-floating-label-focus-font-size: 0.75rem;
+$text-input-xl-floating-label-line-height:  1.5rem;
+$text-input-xl-floating-label-padding-bottom:  0.25rem;
+$text-input-xl-floating-label-padding-top:  1.125rem;
 
 // Textarea
 $textarea-border-color:                     $color-border-base-dark;
@@ -1088,10 +1497,45 @@ $textarea-hover-border-color:               $color-grey-40;
 $textarea-focus-border-color:               $focus-color;
 $textarea-text-color:                       $color-text-base;
 $textarea-placeholder-text-color:           $color-grey-50;
-
 $textarea-disabled-background-color:        $color-grey-10;
 $textarea-disabled-border-color:            $color-border-base-dark;
 $textarea-disabled-text-color:              $color-text-muted-light;
+$textarea-sm-icon-size:                     0.75rem;
+$textarea-sm-icon-top:                      0.375rem;
+$textarea-sm-icon-left:                     0.5rem;
+$textarea-sm-icon-padding:                  1.6875rem;
+$textarea-sm-icon-right:                    0.5rem;
+$textarea-sm-font-size:                     0.75rem;
+$textarea-sm-line-height:                   1rem;
+$textarea-sm-min-height:                    3.5rem;
+$textarea-sm-padding:                       0.1875rem 0.4375rem;
+$textarea-md-icon-size:                     1rem;
+$textarea-md-icon-top:                      0.5rem;
+$textarea-md-icon-left:                     0.5rem;
+$textarea-md-icon-padding:                  1.9375rem;
+$textarea-md-icon-right:                    0.7rem;
+$textarea-md-font-size:                     0.875rem;
+$textarea-md-line-height:                   1rem;
+$textarea-md-min-height:                    4rem;
+$textarea-md-padding:                       0.4375rem 0.6875rem;
+$textarea-lg-icon-size:                     1rem;
+$textarea-lg-icon-top:                      0.75rem;
+$textarea-lg-icon-left:                     0.7rem;
+$textarea-lg-icon-padding:                  1.9375rem;
+$textarea-lg-icon-right:                    1rem;
+$textarea-lg-font-size:                     0.875rem;
+$textarea-lg-line-height:                   1.25rem;
+$textarea-lg-min-height:                    5.5rem;
+$textarea-lg-padding:                       0.5rem 0.6875rem;
+$textarea-xl-icon-size:                     1rem;
+$textarea-xl-icon-top:                      1rem;
+$textarea-xl-icon-left:                     1rem;
+$textarea-xl-icon-padding:                  2.4375rem;
+$textarea-xl-icon-right:                    1rem;
+$textarea-xl-font-size:                     0.875rem;
+$textarea-xl-line-height:                   1.25rem;
+$textarea-xl-min-height:                    7rem;
+$textarea-xl-padding:                       0.75rem 0.625rem;
 
 // Time picker
 $time-picker-width:                         14rem;
@@ -1110,6 +1554,20 @@ $toggle-switch-checked-background-color:    $color-background-primary;
 $toggle-switch-checked-thumb-background-color: $color-background-white;
 $toggle-switch-focus-color:                 $focus-color;
 $toggle-switch-disabled-opacity:            $opacity-60;
+$toggle-switch-sm-thumb-border-radius:      0.75rem;
+$toggle-switch-sm-thumb-height:             1.5rem;
+$toggle-switch-sm-thumb-line-height:        $line-height-lg;
+$toggle-switch-sm-thumb-width:              3rem;
+$toggle-switch-sm-thumb-after-height:       1.25rem;
+$toggle-switch-sm-thumb-after-width:        1.25rem;
+$toggle-switch-sm-checked-thumb-after-left: 1.625rem;
+$toggle-switch-xs-thumb-border-radius:      0.5rem;
+$toggle-switch-xs-thumb-height:             1rem;
+$toggle-switch-xs-thumb-line-height:        $line-height-sm;
+$toggle-switch-xs-thumb-width:              2rem;
+$toggle-switch-xs-thumb-after-height:       0.75rem;
+$toggle-switch-xs-thumb-after-width:        0.75rem;
+$toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 
 // Toolbar
 $toolbar-header-background-color:           $color-background-base;
@@ -1120,12 +1578,14 @@ $toolbar-results-font-size:                 $font-size-md;
 $toolbar-label-font-weight:                 $font-weight-semi-bold;
 
 // Tooltip
-$tooltip-background-color:                  rgba($color-grey-100, 0.95);
-$tooltip-text-color:                        $color-text-white;
-$tooltip-max-width:                         20rem;
 $tooltip-light-background-color:            rgba($color-white, 0.96);
 $tooltip-light-text-color:                  $color-text-base;
 $tooltip-light-box-shadow:                  0 4px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 20px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
-
-// App layout
-$app-layout-background-color:               $color-background-base;
+$tooltip-dark-background-color:             rgba($color-grey-100, 0.95);
+$tooltip-dark-text-color:                   $color-text-white;
+$tooltip-dark-box-shadow:                   none;
+$tooltip-background-color:                  $tooltip-dark-background-color;
+$tooltip-text-color:                        $tooltip-dark-text-color;
+$tooltip-box-shadow:                        $tooltip-dark-box-shadow;
+$tooltip-font-weight:                       $font-weight-semi-bold;
+$tooltip-max-width:                         20rem;

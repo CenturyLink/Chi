@@ -95,18 +95,18 @@ p.-text
 .example.-mb--3
   .chi-grid.-no-gutter
     .chi-col.-w--12.-w-md--6.-p--1.-d--flex.-justify-content--center
-      each color in ['icon--body', 'icon--primary', 'icon--grey']
-        div(class=`chi-icon -md -${color} -m--1`)
+      each color in ['', 'icon--body', 'icon--primary', 'icon--grey']
+        div(class=`chi-icon -${color} -m--1`)
           svg
             use(xlink:href='#icon-atom')
     .chi-col.-w--12.-w-md--6.-bg--black.-p--1.-d--flex.-justify-content--center
       each color in ['icon--secondary', 'icon--light']
         if (color === 'icon--secondary')
-          div(class=`chi-icon -md -icon--secondary -m--1`)
+          div(class=`chi-icon -icon--secondary -m--1`)
             svg
               use(xlink:href='#icon-atom')
         else if (color === 'icon--light')
-          div(class=`chi-icon -md -icon--light -m--1`)
+          div(class=`chi-icon -icon--light -m--1`)
             svg
               use(xlink:href='#icon-atom')
   .example-tabs.-pl--2
@@ -118,21 +118,21 @@ p.-text
   #webcomponent-colors.chi-tabs-panel.-active
     :code(lang="html")
       <!-- For light backgrounds -->
-      <chi-icon icon="atom" size="md"></chi-icon>
-      <chi-icon icon="atom" size="md" color="primary"></chi-icon>
-      <chi-icon icon="atom" size="md" color="grey"></chi-icon>
+      <chi-icon icon="atom"></chi-icon>
+      <chi-icon icon="atom" color="primary"></chi-icon>
+      <chi-icon icon="atom" color="grey"></chi-icon>
       <!-- For dark backgrounds -->
-      <chi-icon icon="atom" size="md" color="secondary"></chi-icon>
-      <chi-icon icon="atom" size="md" color="light"></chi-icon>
+      <chi-icon icon="atom" color="secondary"></chi-icon>
+      <chi-icon icon="atom" color="light"></chi-icon>
   #webfont-color.chi-tabs-panel
     :code(lang="html")
       <!-- For light backgrounds -->
-      <i class="chi-icon icon-atom -md"></i>
-      <i class="chi-icon icon-atom -md -icon--primary"></i>
-      <i class="chi-icon icon-atom -md -icon--grey"></i>
+      <i class="chi-icon icon-atom"></i>
+      <i class="chi-icon icon-atom -icon--primary"></i>
+      <i class="chi-icon icon-atom -icon--grey"></i>
       <!-- For dark backgrounds -->
-      <i class="chi-icon icon-atom -md -icon--secondary"></i>
-      <i class="chi-icon icon-atom -md -icon--light"></i>
+      <i class="chi-icon icon-atom -icon--secondary"></i>
+      <i class="chi-icon icon-atom -icon--light"></i>
 h4 Semantic
 p.-text
   | Use semantic colors to communicate meaning to users. Examples include displaying alerts, form field
@@ -143,7 +143,7 @@ p.-text
   .chi-grid
     .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
       each color in ['icon--success', 'icon--info', 'icon--warning', 'icon--danger', 'icon--muted']
-        div(class=`chi-icon -md -${color} -m--1`)
+        div(class=`chi-icon -${color} -m--1`)
           svg
             use(xlink:href='#icon-atom')
   .example-tabs.-pl--2
@@ -154,18 +154,18 @@ p.-text
         a(href='#html-colors-semantic') HTML Blueprint
   #webcomponent-colors-semantic.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-icon icon="atom" size="md" color="success"></chi-icon>
-      <chi-icon icon="atom" size="md" color="info"></chi-icon>
-      <chi-icon icon="atom" size="md" color="warning"></chi-icon>
-      <chi-icon icon="atom" size="md" color="danger"></chi-icon>
-      <chi-icon icon="atom" size="md" color="muted"></chi-icon>
+      <chi-icon icon="atom" color="success"></chi-icon>
+      <chi-icon icon="atom" color="info"></chi-icon>
+      <chi-icon icon="atom" color="warning"></chi-icon>
+      <chi-icon icon="atom" color="danger"></chi-icon>
+      <chi-icon icon="atom" color="muted"></chi-icon>
   #html-colors-semantic.chi-tabs-panel
     :code(lang="html")
-      <i class="chi-icon icon-atom -md -icon--success"></i>
-      <i class="chi-icon icon-atom -md -icon--info"></i>
-      <i class="chi-icon icon-atom -md -icon--warning"></i>
-      <i class="chi-icon icon-atom -md -icon--danger"></i>
-      <i class="chi-icon icon-atom -md -icon--muted"></i>
+      <i class="chi-icon icon-atom -icon--success"></i>
+      <i class="chi-icon icon-atom -icon--info"></i>
+      <i class="chi-icon icon-atom -icon--warning"></i>
+      <i class="chi-icon icon-atom -icon--danger"></i>
+      <i class="chi-icon icon-atom -icon--muted"></i>
 
 .-lumen-only
   h4 Brand complimentary
@@ -175,7 +175,7 @@ p.-text
     .chi-grid.-no-gutter
       .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
         each color in ['icon--navy', 'icon--orange']
-          div(class=`chi-icon -md -${color} -m--1`)
+          div(class=`chi-icon -${color} -m--1`)
             svg
               use(xlink:href='#icon-atom')
     .example-tabs.-pl--2
@@ -186,12 +186,12 @@ p.-text
           a(href='#html-colors-brand-complimentary') HTML Blueprint
     #webcomponent-colors-brand-complimentary.chi-tabs-panel.-active
       :code(lang="html")
-        <chi-icon icon="atom" size="md" color="navy"></chi-icon>
-        <chi-icon icon="atom" size="md" color="orange"></chi-icon>
+        <chi-icon icon="atom" color="navy"></chi-icon>
+        <chi-icon icon="atom" color="orange"></chi-icon>
     #html-colors-brand-complimentary.chi-tabs-panel
       :code(lang="html")
-        <i class="chi-icon icon-atom -md -icon--navy"></i>
-        <i class="chi-icon icon-atom -md -icon--orange"></i>
+        <i class="chi-icon icon-atom -icon--navy"></i>
+        <i class="chi-icon icon-atom -icon--orange"></i>
 
 h3 Icons
 .chi-grid.icon-library.-pt--2.-pb--6

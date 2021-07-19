@@ -3,28 +3,28 @@
 
 $sizes: (
   sm: (
-    font-size: 0.75rem,
-    line-height: 1rem,
-    min-height: 3.5rem,
-    padding: 0.1875rem 0.4375rem
+    font-size: $textarea-sm-font-size,
+    line-height: $textarea-sm-line-height,
+    min-height: $textarea-sm-min-height,
+    padding: $textarea-sm-padding
   ),
   md: (
-    font-size: 0.875rem,
-    line-height: 1rem,
-    min-height: 4rem,
-    padding: 0.4375rem 0.6875rem
+    font-size: $textarea-md-font-size,
+    line-height: $textarea-md-line-height,
+    min-height: $textarea-md-min-height,
+    padding: $textarea-md-padding
   ),
   lg: (
-    font-size: 0.875rem,
-    line-height: 1.25rem,
-    min-height: 5.5rem,
-    padding: 0.5rem 0.6875rem
+    font-size: $textarea-lg-font-size,
+    line-height: $textarea-lg-line-height,
+    min-height: $textarea-lg-min-height,
+    padding: $textarea-lg-padding
   ),
   xl: (
-    font-size: 0.875rem,
-    line-height: 1.25rem,
-    min-height: 7rem,
-    padding: 0.75rem 0.625rem
+    font-size: $textarea-xl-font-size,
+    line-height: $textarea-xl-line-height,
+    min-height: $textarea-xl-min-height,
+    padding: $textarea-xl-padding
   )
 );
 
@@ -35,9 +35,9 @@ textarea {
     display: block;
     font-size: $font-size-base;
     line-height: $line-height-sm;
-    min-height: 4rem;
+    min-height: $textarea-md-min-height;
     outline: none;
-    padding: 0.4375rem 0.6875rem;
+    padding: $textarea-md-padding;
     resize: none;
     transition: all 0.15s ease-in-out;
     width: 100%;

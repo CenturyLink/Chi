@@ -2,27 +2,27 @@ $border: 0.0625rem;
 
 $sizes: (
   sm: (
-    padding: 0.5rem,
+    padding: $button-group-horizontal-sm-padding,
     icons: (
-      padding: 0.375rem
+      padding: $button-group-horizontal-sm-icon-padding
     )
   ),
   md: (
-    padding: 1rem,
+    padding: $button-group-horizontal-md-padding,
     icons: (
-      padding: 0.5rem
+      padding: $button-group-horizontal-md-icon-padding
     )
   ),
   lg: (
-    padding: 1.5rem,
+    padding: $button-group-horizontal-lg-padding,
     icons: (
-      padding: 0.75rem
+      padding: $button-group-horizontal-lg-icon-padding
     )
   ),
   xl: (
-    padding: 1.5rem,
+    padding: $button-group-horizontal-xl-padding,
     icons: (
-      padding: 1rem
+      padding: $button-group-horizontal-xl-icon-padding
     )
   )
 );
@@ -37,10 +37,10 @@ $sizes: (
         border-right-width: 0;
 
         &:not(:last-child) {
-          padding-right: 1rem;
+          padding-right: $button-group-horizontal-md-padding;
 
           &.-icon {
-            padding-right: 0.5rem;
+            padding-right: $button-group-horizontal-md-icon-padding;
           }
         }
 

@@ -522,204 +522,366 @@ h3 Icons
 
       <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
-h2 Sizes
-p.-text
-  | Picker groups support the following sizes: <code>-sm</code>, <code>-md</code>,
-  |  <code>-lg</code>, <code>-xl</code>.
-  | The default size is <code>-md</code>.
+.-lumen-only.-centurylink-only
+  h2 Sizes
+  p.-text
+    | Picker groups support the following sizes: <code>-sm</code>, <code>-md</code>,
+    |  <code>-lg</code>, <code>-xl</code>.
+    | The default size is <code>-md</code>.
 
-.example.-mb--3
-  .-p--3
-    each size in ['sm', 'md', 'lg', 'xl']
-      .chi-grid.-no-gutter
-        .chi-col.-w--12.-w-xl--2.-d--flex.-align-items--center
-          strong= '-' + size
-        .chi-col.-w--12.-w-md--6.-w-xl--5.-my--2
-          fieldset
-            legend.chi-label Select an option
-            .chi-picker-group
-              .chi-picker-group__content
-                each i in [1, 2, 3]
-                  input.chi-picker__input(type="radio", name=`unique-name-${size}`, id=`unique-id-${size}${i}`, checked=(i === 1))
-                  label(for=`unique-id-${size}${i}`, class=`-${size}`)
-                    = 'Option ' + `${i}`
-        .chi-col.-w--12.-w-md--6.-w-xl--5.-my--2
-          fieldset
-            legend.chi-label Select an option
-            .chi-picker-group
-              .chi-picker-group__content
-                each i in [4, 5, 6]
-                  input.chi-picker__input(type="radio", name=`unique-name-${size}-icon`, id=`unique-id-${size}${i}`, checked=(i === 4))
-                  label(for=`unique-id-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
-                    span.-sr--only= 'Option ' + `${i}`
-                    if size === 'sm'
-                      i.chi-icon.icon-atom.-xs
-                    else
-                      i.chi-icon.icon-atom.-sm
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-sizes
-      li.-disabled
-        a(href=`#webcomponent-sizes`) Web Component
-      li.-active
-        a(href=`#html-sizes`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-sizes
-  .chi-tabs-panel.-active#html-sizes
-    :code(lang='html')
-      <!-- sm -->
-      <fieldset>
-        <legend class="chi-label">Select an option</legend>
-        <div class="chi-picker-group">
-          <div class="chi-picker-group__content">
-            <input class="chi-picker__input" type="radio" name="unique-name-sm" id="unique-id-sm1" checked>
-            <label class="-sm" for="unique-id-sm1">Option 1</label>
-            <input class="chi-picker__input" type="radio" name="unique-name-sm" id="unique-id-sm2">
-            <label class="-sm" for="unique-id-sm2">Option 2</label>
-            <input class="chi-picker__input" type="radio" name="unique-name-sm" id="unique-id-sm3">
-            <label class="-sm" for="unique-id-sm3">Option 3</label>
+  .example.-mb--3
+    .-p--3
+      each size in ['sm', 'md', 'lg', 'xl']
+        .chi-grid.-no-gutter
+          .chi-col.-w--12.-w-xl--2.-d--flex.-align-items--center
+            strong= '-' + size
+          .chi-col.-w--12.-w-md--6.-w-xl--5.-my--2
+            fieldset
+              legend.chi-label Select an option
+              .chi-picker-group
+                .chi-picker-group__content
+                  each i in [1, 2, 3]
+                    input.chi-picker__input(type="radio", name=`unique-name-${size}`, id=`unique-id-${size}${i}`, checked=(i === 1))
+                    label(for=`unique-id-${size}${i}`, class=`-${size}`)
+                      = 'Option ' + `${i}`
+          .chi-col.-w--12.-w-md--6.-w-xl--5.-my--2
+            fieldset
+              legend.chi-label Select an option
+              .chi-picker-group
+                .chi-picker-group__content
+                  each i in [4, 5, 6]
+                    input.chi-picker__input(type="radio", name=`unique-name-${size}-icon`, id=`unique-id-${size}${i}`, checked=(i === 4))
+                    label(for=`unique-id-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
+                      span.-sr--only= 'Option ' + `${i}`
+                      if size === 'sm'
+                        i.chi-icon.icon-atom.-xs
+                      else
+                        i.chi-icon.icon-atom.-sm
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-sizes
+        li.-disabled
+          a(href=`#webcomponent-sizes`) Web Component
+        li.-active
+          a(href=`#html-sizes`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-sizes
+    .chi-tabs-panel.-active#html-sizes
+      :code(lang='html')
+        <!-- sm -->
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-sm" id="unique-id-sm1" checked>
+              <label class="-sm" for="unique-id-sm1">Option 1</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-sm" id="unique-id-sm2">
+              <label class="-sm" for="unique-id-sm2">Option 2</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-sm" id="unique-id-sm3">
+              <label class="-sm" for="unique-id-sm3">Option 3</label>
+            </div>
           </div>
-        </div>
-      </fieldset>
+        </fieldset>
 
-      <fieldset>
-        <legend class="chi-label">Select an option</legend>
-        <div class="chi-picker-group">
-          <div class="chi-picker-group__content">
-            <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm4" checked>
-            <label class="-sm" for="unique-id-sm4">
-              <span class="-sr--only">Option 1</span>
-              <i class="chi-icon icon-atom -xs"></i>
-            </label>
-            <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm5">
-            <label class="-sm" for="unique-id-sm5">
-              <span class="-sr--only">Option 2</span>
-              <i class="chi-icon icon-atom -xs"></i>
-            </label>
-            <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm6">
-            <label class="-sm" for="unique-id-sm6">
-              <span class="-sr--only">Option 3</span>
-              <i class="chi-icon icon-atom -xs"></i>
-            </label>
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm4" checked>
+              <label class="-sm" for="unique-id-sm4">
+                <span class="-sr--only">Option 1</span>
+                <i class="chi-icon icon-atom -xs"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm5">
+              <label class="-sm" for="unique-id-sm5">
+                <span class="-sr--only">Option 2</span>
+                <i class="chi-icon icon-atom -xs"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm6">
+              <label class="-sm" for="unique-id-sm6">
+                <span class="-sr--only">Option 3</span>
+                <i class="chi-icon icon-atom -xs"></i>
+              </label>
+            </div>
           </div>
-        </div>
-      </fieldset>
-      <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+        </fieldset>
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
-      <!-- md -->
-      <fieldset>
-        <legend class="chi-label">Select an option</legend>
-        <div class="chi-picker-group">
-          <div class="chi-picker-group__content">
-            <input class="chi-picker__input" type="radio" name="unique-name-md" id="unique-id-md1" checked>
-            <label class="-md" for="unique-id-md1">Option 1</label>
-            <input class="chi-picker__input" type="radio" name="unique-name-md" id="unique-id-md2">
-            <label class="-md" for="unique-id-md2">Option 2</label>
-            <input class="chi-picker__input" type="radio" name="unique-name-md" id="unique-id-md3">
-            <label class="-md" for="unique-id-md3">Option 3</label>
+        <!-- md -->
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-md" id="unique-id-md1" checked>
+              <label class="-md" for="unique-id-md1">Option 1</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-md" id="unique-id-md2">
+              <label class="-md" for="unique-id-md2">Option 2</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-md" id="unique-id-md3">
+              <label class="-md" for="unique-id-md3">Option 3</label>
+            </div>
           </div>
-        </div>
-      </fieldset>
+        </fieldset>
 
-      <fieldset>
-        <legend class="chi-label">Select an option</legend>
-        <div class="chi-picker-group">
-          <div class="chi-picker-group__content">
-            <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md4" checked>
-            <label class="-md" for="unique-id-md4">
-              <span class="-sr--only">Option 1</span>
-              <i class="chi-icon icon-atom -sm"></i>
-            </label>
-            <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md5">
-            <label class="-md" for="unique-id-md5">
-              <span class="-sr--only">Option 2</span>
-              <i class="chi-icon icon-atom -sm"></i>
-            </label>
-            <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md6">
-            <label class="-md" for="unique-id-md6">
-              <span class="-sr--only">Option 3</span>
-              <i class="chi-icon icon-atom -sm"></i>
-            </label>
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md4" checked>
+              <label class="-md" for="unique-id-md4">
+                <span class="-sr--only">Option 1</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md5">
+              <label class="-md" for="unique-id-md5">
+                <span class="-sr--only">Option 2</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md6">
+              <label class="-md" for="unique-id-md6">
+                <span class="-sr--only">Option 3</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+            </div>
           </div>
-        </div>
-      </fieldset>
-      <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+        </fieldset>
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
-      <!-- lg -->
-      <fieldset>
-        <legend class="chi-label">Select an option</legend>
-        <div class="chi-picker-group">
-          <div class="chi-picker-group__content">
-            <input class="chi-picker__input" type="radio" name="unique-name-lg" id="unique-id-lg1" checked>
-            <label class="-lg" for="unique-id-lg1">Option 1</label>
-            <input class="chi-picker__input" type="radio" name="unique-name-lg" id="unique-id-lg2">
-            <label class="-lg" for="unique-id-lg2">Option 2</label>
-            <input class="chi-picker__input" type="radio" name="unique-name-lg" id="unique-id-lg3">
-            <label class="-lg" for="unique-id-lg3">Option 3</label>
+        <!-- lg -->
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-lg" id="unique-id-lg1" checked>
+              <label class="-lg" for="unique-id-lg1">Option 1</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-lg" id="unique-id-lg2">
+              <label class="-lg" for="unique-id-lg2">Option 2</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-lg" id="unique-id-lg3">
+              <label class="-lg" for="unique-id-lg3">Option 3</label>
+            </div>
           </div>
-        </div>
-      </fieldset>
+        </fieldset>
 
-      <fieldset>
-        <legend class="chi-label">Select an option</legend>
-        <div class="chi-picker-group">
-          <div class="chi-picker-group__content">
-            <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg4" checked>
-            <label class="-lg" for="unique-id-lg4">
-              <span class="-sr--only">Option 1</span>
-              <i class="chi-icon icon-atom -sm"></i>
-            </label>
-            <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg5">
-            <label class="-lg" for="unique-id-lg5">
-              <span class="-sr--only">Option 2</span>
-              <i class="chi-icon icon-atom -sm"></i>
-            </label>
-            <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg6">
-            <label class="-lg" for="unique-id-lg6">
-              <span class="-sr--only">Option 3</span>
-              <i class="chi-icon icon-atom -sm"></i>
-            </label>
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg4" checked>
+              <label class="-lg" for="unique-id-lg4">
+                <span class="-sr--only">Option 1</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg5">
+              <label class="-lg" for="unique-id-lg5">
+                <span class="-sr--only">Option 2</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg6">
+              <label class="-lg" for="unique-id-lg6">
+                <span class="-sr--only">Option 3</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+            </div>
           </div>
-        </div>
-      </fieldset>
-      <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+        </fieldset>
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
-      <!-- xl -->
-      <fieldset>
-        <legend class="chi-label">Select an option</legend>
-        <div class="chi-picker-group">
-          <div class="chi-picker-group__content">
-            <input class="chi-picker__input" type="radio" name="unique-name-xl" id="unique-id-xl1" checked>
-            <label class="-xl" for="unique-id-xl1">Option 1</label>
-            <input class="chi-picker__input" type="radio" name="unique-name-xl" id="unique-id-xl2">
-            <label class="-xl" for="unique-id-xl2">Option 2</label>
-            <input class="chi-picker__input" type="radio" name="unique-name-xl" id="unique-id-xl3">
-            <label class="-xl" for="unique-id-xl3">Option 3</label>
+        <!-- xl -->
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-xl" id="unique-id-xl1" checked>
+              <label class="-xl" for="unique-id-xl1">Option 1</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-xl" id="unique-id-xl2">
+              <label class="-xl" for="unique-id-xl2">Option 2</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-xl" id="unique-id-xl3">
+              <label class="-xl" for="unique-id-xl3">Option 3</label>
+            </div>
           </div>
-        </div>
-      </fieldset>
+        </fieldset>
 
-      <fieldset>
-        <legend class="chi-label">Select an option</legend>
-        <div class="chi-picker-group">
-          <div class="chi-picker-group__content">
-            <input class="chi-picker__input" type="radio" name="unique-name-xl-icon" id="unique-id-xl4" checked>
-            <label class="-xl" for="unique-id-xl4">
-              <span class="-sr--only">Option 1</span>
-              <i class="chi-icon icon-atom -sm"></i>
-            </label>
-            <input class="chi-picker__input" type="radio" name="unique-name-xl-icon" id="unique-id-xl5">
-            <label class="-xl" for="unique-id-xl5">
-              <span class="-sr--only">Option 2</span>
-              <i class="chi-icon icon-atom -sm"></i>
-            </label>
-            <input class="chi-picker__input" type="radio" name="unique-name-xl-icon" id="unique-id-xl6">
-            <label class="-xl" for="unique-id-xl6">
-              <span class="-sr--only">Option 3</span>
-              <i class="chi-icon icon-atom -sm"></i>
-            </label>
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-xl-icon" id="unique-id-xl4" checked>
+              <label class="-xl" for="unique-id-xl4">
+                <span class="-sr--only">Option 1</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-xl-icon" id="unique-id-xl5">
+              <label class="-xl" for="unique-id-xl5">
+                <span class="-sr--only">Option 2</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-xl-icon" id="unique-id-xl6">
+              <label class="-xl" for="unique-id-xl6">
+                <span class="-sr--only">Option 3</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+            </div>
           </div>
-        </div>
-      </fieldset>
-      <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+        </fieldset>
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+
+.-portal-only
+  h2 Sizes
+  p.-text
+    | Picker groups support the following sizes: <code>-sm</code>, <code>-md</code>,
+    |  <code>-lg</code>.
+    | The default size is <code>-md</code>.
+
+  .example.-mb--3
+    .-p--3
+      each size in ['sm', 'md', 'lg']
+        .chi-grid.-no-gutter
+          .chi-col.-w--12.-w-xl--2.-d--flex.-align-items--center
+            strong= '-' + size
+          .chi-col.-w--12.-w-md--6.-w-xl--5.-my--2
+            fieldset
+              legend.chi-label Select an option
+              .chi-picker-group
+                .chi-picker-group__content
+                  each i in [1, 2, 3]
+                    input.chi-picker__input(type="radio", name=`unique-name-portal-${size}`, id=`unique-id-portal-${size}${i}`, checked=(i === 1))
+                    label(for=`unique-id-portal-${size}${i}`, class=`-${size}`)
+                      = 'Option ' + `${i}`
+          .chi-col.-w--12.-w-md--6.-w-xl--5.-my--2
+            fieldset
+              legend.chi-label Select an option
+              .chi-picker-group
+                .chi-picker-group__content
+                  each i in [4, 5, 6]
+                    input.chi-picker__input(type="radio", name=`unique-name-portal-${size}-icon`, id=`unique-id-portal-${size}${i}`, checked=(i === 4))
+                    label(for=`unique-id-portal-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
+                      span.-sr--only= 'Option ' + `${i}`
+                      if size === 'sm'
+                        i.chi-icon.icon-atom.-xs
+                      else
+                        i.chi-icon.icon-atom.-sm
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-sizes
+        li.-disabled
+          a(href=`#webcomponent-portal-sizes`) Web Component
+        li.-active
+          a(href=`#html-portal-sizes`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-sizes
+    .chi-tabs-panel.-active#html-portal-sizes
+      :code(lang='html')
+        <!-- sm -->
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-sm" id="unique-id-sm1" checked>
+              <label class="-sm" for="unique-id-sm1">Option 1</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-sm" id="unique-id-sm2">
+              <label class="-sm" for="unique-id-sm2">Option 2</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-sm" id="unique-id-sm3">
+              <label class="-sm" for="unique-id-sm3">Option 3</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm4" checked>
+              <label class="-sm" for="unique-id-sm4">
+                <span class="-sr--only">Option 1</span>
+                <i class="chi-icon icon-atom -xs"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm5">
+              <label class="-sm" for="unique-id-sm5">
+                <span class="-sr--only">Option 2</span>
+                <i class="chi-icon icon-atom -xs"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm6">
+              <label class="-sm" for="unique-id-sm6">
+                <span class="-sr--only">Option 3</span>
+                <i class="chi-icon icon-atom -xs"></i>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+
+        <!-- md -->
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-md" id="unique-id-md1" checked>
+              <label class="-md" for="unique-id-md1">Option 1</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-md" id="unique-id-md2">
+              <label class="-md" for="unique-id-md2">Option 2</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-md" id="unique-id-md3">
+              <label class="-md" for="unique-id-md3">Option 3</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md4" checked>
+              <label class="-md" for="unique-id-md4">
+                <span class="-sr--only">Option 1</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md5">
+              <label class="-md" for="unique-id-md5">
+                <span class="-sr--only">Option 2</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md6">
+              <label class="-md" for="unique-id-md6">
+                <span class="-sr--only">Option 3</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+
+        <!-- lg -->
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-lg" id="unique-id-lg1" checked>
+              <label class="-lg" for="unique-id-lg1">Option 1</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-lg" id="unique-id-lg2">
+              <label class="-lg" for="unique-id-lg2">Option 2</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-lg" id="unique-id-lg3">
+              <label class="-lg" for="unique-id-lg3">Option 3</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg4" checked>
+              <label class="-lg" for="unique-id-lg4">
+                <span class="-sr--only">Option 1</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg5">
+              <label class="-lg" for="unique-id-lg5">
+                <span class="-sr--only">Option 2</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+              <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg6">
+              <label class="-lg" for="unique-id-lg6">
+                <span class="-sr--only">Option 3</span>
+                <i class="chi-icon icon-atom -sm"></i>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
 script.
   document.addEventListener(

@@ -113,11 +113,11 @@
             & + label {
               border: solid 0.0625rem $picker-checked-border-color;
               color: $picker-checked-text-color;
-              padding-right: 1rem;
+              padding-right: $picker-group-md-padding-checked;
 
 
               @include respond-to(md) {
-                padding-right: 0.9375rem;
+                padding-right: $picker-group-md-padding-hover;
               }
 
               @each $type in map-keys($sizes) {
@@ -127,7 +127,7 @@
               }
 
               &:last-of-type {
-                padding-right: 1rem;
+                padding-right: $picker-group-md-padding-checked;
 
                 @each $type in map-keys($sizes) {
                   &.-#{$type} {
@@ -139,7 +139,7 @@
               & + input + label {
                 border-left-width: 0.0625rem;
                 border-top-width: 0;
-                padding-left: 0.9375rem;
+                padding-left: $picker-group-md-padding-hover;
 
                 @each $type in map-keys($sizes) {
                   &.-#{$type} {
@@ -150,7 +150,7 @@
                 @include respond-to(md) {
                   border-left-width: 0;
                   border-top-width: 0.0625rem;
-                  padding-left: 1rem;
+                  padding-left: $picker-group-md-padding-checked;
                 }
               }
             }

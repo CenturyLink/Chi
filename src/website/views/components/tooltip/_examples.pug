@@ -1,136 +1,248 @@
-h2 Examples
-h3 Base
-p.-text
-  | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then
-  | initialize it with the chi.tooltip factory method.
-.example.-mb--3
-  .-p--3
-    button(data-tooltip='Your tooltip text on a button').chi-button Hover me to see tooltip
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-base
-      li.-disabled
-        a(href=`#webcomponent-base`) Web Component
-      li.-active
-        a(href=`#html-base`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-base
-  .chi-tabs-panel.-active#html-base
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang='html')
-      <button id="tooltip-1" class="chi-button" data-tooltip="Your tooltip text on a button">Hover me to see tooltip</button>
+.-lumen-only.-centurylink-only
+  h2 Examples
+  h3 Base
+  p.-text
+    | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then
+    | initialize it with the chi.tooltip factory method.
+  .example.-mb--3
+    .-p--3
+      button(data-tooltip='Your tooltip text on a button').chi-button Hover me to see tooltip
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-base
+        li.-disabled
+          a(href=`#webcomponent-base`) Web Component
+        li.-active
+          a(href=`#html-base`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-base
+    .chi-tabs-panel.-active#html-base
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <button id="tooltip-1" class="chi-button" data-tooltip="Your tooltip text on a button">Hover me to see tooltip</button>
 
-      <script>chi.tooltip(document.getElementById('tooltip-1'));</script>
+        <script>chi.tooltip(document.getElementById('tooltip-1'));</script>
 
-h3 Light
-p.-text
-  | Use light tooltips for rendering tooltips on dark backgrounds. To use, apply the <code>data-tooltip-color="light"</code> attribute to the Tooltip trigger element.
-.example.-bg--black.-mb--3
-  .-p--3
-    button.-outline.-light(data-tooltip='Your tooltip text on a button' data-tooltip-color='light').chi-button Hover me to see tooltip
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-light
-      li.-disabled
-        a(href=`#webcomponent-light`) Web Component
-      li.-active
-        a(href=`#html-light`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-light
-  .chi-tabs-panel.-active#html-light
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang='html')
-      <button id="tooltip-2" class="chi-button -outline -light" data-tooltip="Your tooltip text on a button" data-tooltip-color="light">Hover me to see tooltip</button>
+  h3 Light
+  p.-text
+    | Use light tooltips for rendering tooltips on dark backgrounds. To use, apply the <code>data-tooltip-color="light"</code> attribute to the Tooltip trigger element.
+  .example.-bg--black.-mb--3
+    .-p--3
+      button.-outline.-light(data-tooltip='Your tooltip text on a button' data-tooltip-color='light').chi-button Hover me to see tooltip
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-light
+        li.-disabled
+          a(href=`#webcomponent-light`) Web Component
+        li.-active
+          a(href=`#html-light`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-light
+    .chi-tabs-panel.-active#html-light
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <button id="tooltip-2" class="chi-button -outline -light" data-tooltip="Your tooltip text on a button" data-tooltip-color="light">Hover me to see tooltip</button>
 
-      <script>chi.tooltip(document.getElementById('tooltip-2'));</script>
+        <script>chi.tooltip(document.getElementById('tooltip-2'));</script>
 
-h3 Tooltip on disabled buttons
-p.-text
-  | When a button element is in disabled state, <code>mouseenter</code> and <code>mouseleave</code> events
-  | are not being triggered. Wrap the disabled button in a <code>span</code> element, providing the attribute <code>data-tooltip=""</code>
-  | to achieve the same behavior
-.example.-mb--3
-  .-p--3
-    span#tooltip-disabled-button(data-tooltip='Tooltip message for a disabled button')
-      button(disabled).chi-button Hover me to see tooltip
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-disabled
-      li.-disabled
-        a(href=`#webcomponent-light`) Web Component
-      li.-active
-        a(href=`#html-light`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-disabled
-  .chi-tabs-panel.-active#html-disabled
-    :code(lang='html')
-      <span data-tooltip="Tooltip message for a disabled button" id="tooltip-disabled-button">
-        <button class="chi-button" disabled>Hover me to see tooltip</button>
-      </span>
+  h3 Tooltip on disabled buttons
+  p.-text
+    | When a button element is in disabled state, <code>mouseenter</code> and <code>mouseleave</code> events
+    | are not being triggered. Wrap the disabled button in a <code>span</code> element, providing the attribute <code>data-tooltip=""</code>
+    | to achieve the same behavior
+  .example.-mb--3
+    .-p--3
+      span#tooltip-disabled-button(data-tooltip='Tooltip message for a disabled button')
+        button(disabled).chi-button Hover me to see tooltip
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-disabled
+        li.-disabled
+          a(href=`#webcomponent-light`) Web Component
+        li.-active
+          a(href=`#html-light`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-disabled
+    .chi-tabs-panel.-active#html-disabled
+      :code(lang='html')
+        <span data-tooltip="Tooltip message for a disabled button" id="tooltip-disabled-button">
+          <button class="chi-button" disabled>Hover me to see tooltip</button>
+        </span>
 
-      <script>chi.tooltip(document.getElementById('tooltip-disabled-button'));</script>
+        <script>chi.tooltip(document.getElementById('tooltip-disabled-button'));</script>
 
-h3 Positioning
-p.-text
-  | By default, tooltip's position on top of an element. To alter position, use
-  | the <code>data-position</code> attribute. Valid values are <code>top</code>,
-  | <code>right</code>, <code>bottom</code>, <code>left</code>. You can pass an array
-  | of Elements and initialize all at once.
-.example.-mb--3
-  .-p--3
-    button(data-tooltip='Your top tooltip text').chi-button.-mr--2.-mb--2.-mb-md--0 Top Tooltip
-    button(data-tooltip='Your right tooltip text', data-position='right').chi-button.-mr--2.-mb--2.-mb-md--0 Right Tooltip
-    button(data-tooltip='Your bottom tooltip text', data-position='bottom').chi-button.-mr--2.-mb--2.-mb-md--0 Bottom Tooltip
-    button(data-tooltip='Your left tooltip text', data-position='left').chi-button.-mr--2.-mb--2.-mb-md--0 Left Tooltip
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-positioning
-      li.-disabled
-        a(href=`#webcomponent-positioning`) Web Component
-      li.-active
-        a(href=`#html-positioning`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-positioning
-  .chi-tabs-panel.-active#html-positioning
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang='html')
-      <button class="chi-button" data-tooltip="Your top tooltip text">Top Tooltip</button>
-      <button class="chi-button" data-tooltip="Your right tooltip text" data-position="right">Right Tooltip</button>
-      <button class="chi-button" data-tooltip="Your bottom tooltip text" data-position="bottom">Bottom Tooltip</button>
-      <button class="chi-button" data-tooltip="Your left tooltip text" data-position="left">Left Tooltip</button>
+  h3 Positioning
+  p.-text
+    | By default, tooltip's position on top of an element. To alter position, use
+    | the <code>data-position</code> attribute. Valid values are <code>top</code>,
+    | <code>right</code>, <code>bottom</code>, <code>left</code>. You can pass an array
+    | of Elements and initialize all at once.
+  .example.-mb--3
+    .-p--3
+      button(data-tooltip='Your top tooltip text').chi-button.-mr--2.-mb--2.-mb-md--0 Top Tooltip
+      button(data-tooltip='Your right tooltip text', data-position='right').chi-button.-mr--2.-mb--2.-mb-md--0 Right Tooltip
+      button(data-tooltip='Your bottom tooltip text', data-position='bottom').chi-button.-mr--2.-mb--2.-mb-md--0 Bottom Tooltip
+      button(data-tooltip='Your left tooltip text', data-position='left').chi-button.-mr--2.-mb--2.-mb-md--0 Left Tooltip
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-positioning
+        li.-disabled
+          a(href=`#webcomponent-positioning`) Web Component
+        li.-active
+          a(href=`#html-positioning`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-positioning
+    .chi-tabs-panel.-active#html-positioning
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <button class="chi-button" data-tooltip="Your top tooltip text">Top Tooltip</button>
+        <button class="chi-button" data-tooltip="Your right tooltip text" data-position="right">Right Tooltip</button>
+        <button class="chi-button" data-tooltip="Your bottom tooltip text" data-position="bottom">Bottom Tooltip</button>
+        <button class="chi-button" data-tooltip="Your left tooltip text" data-position="left">Left Tooltip</button>
 
-      <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
-h3 Long Tooltips
-p.-text
-  | Long Tooltips will be truncated on the fourth line. To display text beyond four lines,
-  | use the <a href="../../components/popover">Popover</a> component.
-.example.-mb--3
-  .-p--3
-    button(data-tooltip='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. ' +
-    'Curabitur varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, ' +
-    'maximus faucibus suscipit nibh.').chi-button.-mr--2.-mb--2.-mb-md--0 Hover me to see tooltip
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-long
-      li.-disabled
-        a(href=`#webcomponent-long`) Web Component
-      li.-active
-        a(href=`#html-long`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-long
-  .chi-tabs-panel.-active#html-long
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang='html')
-      <button class="chi-button" data-tooltip="Lorem ipsum...">Hover me to see tooltip</button>
+  h3 Long Tooltips
+  p.-text
+    | Long Tooltips will be truncated on the fourth line. To display text beyond four lines,
+    | use the <a href="../../components/popover">Popover</a> component.
+  .example.-mb--3
+    .-p--3
+      button(data-tooltip='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. ' +
+      'Curabitur varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, ' +
+      'maximus faucibus suscipit nibh.').chi-button.-mr--2.-mb--2.-mb-md--0 Hover me to see tooltip
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-long
+        li.-disabled
+          a(href=`#webcomponent-long`) Web Component
+        li.-active
+          a(href=`#html-long`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-long
+    .chi-tabs-panel.-active#html-long
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <button class="chi-button" data-tooltip="Lorem ipsum...">Hover me to see tooltip</button>
 
-      <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+
+.-portal-only
+  h2 Examples
+  h3 Base
+  p.-text
+    | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then
+    | initialize it with the chi.tooltip factory method.
+  .example.-mb--3
+    .-p--3
+      button(data-tooltip='Your tooltip text on a button').chi-button.-primary.-outline Hover me to see tooltip
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-base
+        li.-disabled
+          a(href=`#webcomponent-portal-base`) Web Component
+        li.-active
+          a(href=`#html-portal-base`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-base
+    .chi-tabs-panel.-active#html-portal-base
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <button id="portal-tooltip-1" class="chi-button -primary -outline" data-tooltip="Your tooltip text on a button">Hover me to see tooltip</button>
+
+        <script>chi.tooltip(document.getElementById('portal-tooltip-1'));</script>
+
+  h3 Tooltip on disabled buttons
+  p.-text
+    | When a button element is in disabled state, <code>mouseenter</code> and <code>mouseleave</code> events
+    | are not being triggered. Wrap the disabled button in a <code>span</code> element, providing the attribute <code>data-tooltip=""</code>
+    | to achieve the same behavior
+  .example.-mb--3
+    .-p--3
+      span#portal-tooltip-disabled-button(data-tooltip='Tooltip message for a disabled button')
+        button(disabled).chi-button.-primary.-outline Hover me to see tooltip
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-disabled
+        li.-disabled
+          a(href=`#webcomponent-portal-light`) Web Component
+        li.-active
+          a(href=`#html-portal-light`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-disabled
+    .chi-tabs-panel.-active#html-portal-disabled
+      :code(lang='html')
+        <span data-tooltip="Tooltip message for a disabled button" id="portal-tooltip-disabled-button">
+          <button class="chi-button -primary -outline" disabled>Hover me to see tooltip</button>
+        </span>
+
+        <script>chi.tooltip(document.getElementById('portal-tooltip-disabled-button'));</script>
+
+  h3 Positioning
+  p.-text
+    | By default, tooltip's position on top of an element. To alter position, use
+    | the <code>data-position</code> attribute. Valid values are <code>top</code>,
+    | <code>right</code>, <code>bottom</code>, <code>left</code>. You can pass an array
+    | of Elements and initialize all at once.
+  .example.-mb--3
+    .-p--3
+      button(data-tooltip='Your top tooltip text').chi-button.-primary.-outline.-mr--2.-mb--2.-mb-md--0 Top Tooltip
+      button(data-tooltip='Your right tooltip text', data-position='right').chi-button.-primary.-outline.-mr--2.-mb--2.-mb-md--0 Right Tooltip
+      button(data-tooltip='Your bottom tooltip text', data-position='bottom').chi-button.-primary.-outline.-mr--2.-mb--2.-mb-md--0 Bottom Tooltip
+      button(data-tooltip='Your left tooltip text', data-position='left').chi-button.-primary.-outline.-mr--2.-mb--2.-mb-md--0 Left Tooltip
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-positioning
+        li.-disabled
+          a(href=`#webcomponent-portal-positioning`) Web Component
+        li.-active
+          a(href=`#html-portal-positioning`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-positioning
+    .chi-tabs-panel.-active#html-portal-positioning
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <button class="chi-button -primary -outline" data-tooltip="Your top tooltip text">Top Tooltip</button>
+        <button class="chi-button -primary -outline" data-tooltip="Your right tooltip text" data-position="right">Right Tooltip</button>
+        <button class="chi-button -primary -outline" data-tooltip="Your bottom tooltip text" data-position="bottom">Bottom Tooltip</button>
+        <button class="chi-button -primary -outline" data-tooltip="Your left tooltip text" data-position="left">Left Tooltip</button>
+
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+
+  h3 Long Tooltips
+  p.-text
+    | Long Tooltips will be truncated on the fourth line. To display text beyond four lines,
+    | use the <a href="../../components/popover">Popover</a> component.
+  .example.-mb--3
+    .-p--3
+      button(data-tooltip='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. ' +
+      'Curabitur varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, ' +
+      'maximus faucibus suscipit nibh.').chi-button.-primary.-outline.-mr--2.-mb--2.-mb-md--0 Hover me to see tooltip
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-long
+        li.-disabled
+          a(href=`#webcomponent-portal-long`) Web Component
+        li.-active
+          a(href=`#html-portal-long`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-long
+    .chi-tabs-panel.-active#html-portal-long
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <button class="chi-button -primary -outline" data-tooltip="Lorem ipsum...">Hover me to see tooltip</button>
+
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
 script.
   document.addEventListener(

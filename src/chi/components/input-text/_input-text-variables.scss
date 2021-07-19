@@ -1,47 +1,47 @@
 
 $sizes: (
   sm: (
-    height: 1.5rem,
-    font-size: 0.75rem,
-    line-height: 0.75rem,
-    padding: 0.3125rem 0.5rem,
+    height: $text-input-sm-height,
+    font-size: $text-input-sm-font-size,
+    line-height: $text-input-sm-line-height,
+    padding: $text-input-sm-padding,
     icons: (
-      height: 0.75rem,
-      padding: 0.375rem,
-      width: 0.75rem,
+      height: $text-input-sm-icon-height,
+      padding: $text-input-sm-icon-padding,
+      width: $text-input-sm-icon-width,
     )
   ),
   md: (
-    height: 2rem,
-    font-size: $font-size-base,
-    line-height: $line-height-sm,
-    padding: 0.4375rem 0.75rem,
+    height: $text-input-md-height,
+    font-size: $text-input-md-font-size,
+    line-height: $text-input-md-line-height,
+    padding: $text-input-md-padding,
     icons: (
-      height: 1rem,
-      padding: 0.5rem,
-      width: 1rem,
+      height: $text-input-md-icon-height,
+      padding: $text-input-md-icon-padding,
+      width: $text-input-md-icon-width,
     )
   ),
   lg: (
-    height: 2.5rem,
-    font-size: 0.875rem,
-    line-height: 1.25rem,
-    padding: 0.5625rem 0.75rem,
+    height: $text-input-lg-height,
+    font-size: $text-input-lg-font-size,
+    line-height: $text-input-lg-line-height,
+    padding: $text-input-lg-padding,
     icons: (
-      height: 1rem,
-      padding: 0.75rem,
-      width: 1rem,
+      height: $text-input-lg-icon-height,
+      padding: $text-input-lg-icon-padding,
+      width: $text-input-lg-icon-width,
     )
   ),
   xl: (
-    height: 3rem,
-    font-size: 0.875rem,
-    line-height: 1.5rem,
-    padding: 0.6875rem 0.75rem,
+    height: $text-input-xl-height,
+    font-size: $text-input-xl-font-size,
+    line-height: $text-input-xl-line-height,
+    padding: $text-input-xl-padding,
     icons: (
-      height: 1rem,
-      padding: 1rem,
-      width: 1rem,
+      height: $text-input-xl-icon-height,
+      padding: $text-input-xl-icon-padding,
+      width: $text-input-xl-icon-width,
     )
   )
 );

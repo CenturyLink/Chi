@@ -1,39 +1,39 @@
 $sizes: (
   sm: (
-    height: 0.75rem,
-    top: 0.375rem,
-    width: 0.75rem,
-    left: 0.5rem,
-    padding-left: 1.6875rem,
-    right: 0.5rem,
-    padding-right: 1.6875rem,
+    height: $textarea-sm-icon-size,
+    top: $textarea-sm-icon-top,
+    width: $textarea-sm-icon-size,
+    left: $textarea-sm-icon-left,
+    padding-left: $textarea-sm-icon-padding,
+    right: $textarea-sm-icon-right,
+    padding-right: $textarea-sm-icon-padding,
   ),
   md: (
-    height: 1rem,
-    top: 0.5rem,
-    width: 1rem,
-    left: 0.5rem,
-    padding-left: 1.9375rem,
-    right: 0.5rem,
-    padding-right: 1.9375rem,
+    height: $textarea-md-icon-size,
+    top: $textarea-md-icon-top,
+    width: $textarea-md-icon-size,
+    left: $textarea-md-icon-left,
+    padding-left: $textarea-md-icon-padding,
+    right: $textarea-md-icon-right,
+    padding-right: $textarea-md-icon-padding,
   ),
   lg: (
-    height: 1rem,
-    top: 0.75rem,
-    width: 1rem,
-    left: 0.7rem,
-    padding-left: 1.9375rem,
-    right: 0.7rem,
-    padding-right: 1.9375rem,
+    height: $textarea-lg-icon-size,
+    top: $textarea-lg-icon-top,
+    width: $textarea-lg-icon-size,
+    left: $textarea-lg-icon-left,
+    padding-left: $textarea-lg-icon-padding,
+    right: $textarea-lg-icon-right,
+    padding-right: $textarea-lg-icon-padding,
   ),
   xl: (
-    height: 1rem,
-    top: 1rem,
-    width: 1rem,
-    left: 1rem,
-    padding-left: 2.4375rem,
-    right: 1rem,
-    padding-right: 2.4375rem,
+    height: $textarea-xl-icon-size,
+    top: $textarea-xl-icon-top,
+    width: $textarea-xl-icon-size,
+    left: $textarea-xl-icon-left,
+    padding-left: $textarea-xl-icon-padding,
+    right: $textarea-xl-icon-right,
+    padding-right: $textarea-xl-icon-padding,
   )
 );
 
@@ -42,10 +42,10 @@ $sizes: (
     &.chi-input {
       & ~ .chi-icon,
       & ~ chi-icon {
-        height: 1rem;
+        height: $textarea-md-icon-size;
         position: absolute;
-        top: 0.5rem;
-        width: 1rem;
+        top: $textarea-md-icon-top;
+        width: $textarea-md-icon-size;
       }
 
       @each $type in map-keys($sizes) {
@@ -72,12 +72,12 @@ $sizes: (
   &.-icon--left {
     textarea {
       &.chi-input {
-        padding-left: 1.9375rem;
+        padding-left: $textarea-md-icon-padding;
 
         & ~ .chi-icon,
         & ~ chi-icon {
           &:first-of-type {
-            left: 0.5rem;
+            left: $textarea-md-icon-left;
           }
         }
 
@@ -100,12 +100,12 @@ $sizes: (
   &.-icon--right {
     textarea {
       &.chi-input {
-        padding-right: 1.9375rem;
+        padding-right: $textarea-md-icon-padding;
 
         & ~ .chi-icon,
         & ~ chi-icon {
           &:last-of-type {
-            right: 0.5rem;
+            right: $textarea-md-icon-right;
           }
         }
 

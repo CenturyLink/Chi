@@ -245,7 +245,10 @@
 
     .chi-button {
       &.-close {
-        color: $color-grey-100;
+        &,
+        .chi-icon {
+          color: $color-grey-100;
+        }
       }
     }
 

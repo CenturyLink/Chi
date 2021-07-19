@@ -358,7 +358,7 @@ export class DatePicker {
             }}
             disabled={this.disabled}
           />
-          <chi-icon icon="date" color="muted"></chi-icon>
+          <chi-icon icon="date"></chi-icon>
         </div>
         {!this.disabled && chiPopover}
       </div>
