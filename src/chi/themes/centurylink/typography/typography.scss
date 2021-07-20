@@ -446,7 +446,7 @@ small,
 @each $type in map-keys($heading-sizes) {
   .-text--#{$type} {
     font-size: map-get(map-get($heading-sizes, $type), font-size) !important;
-    font-weight: map-get(map-get($heading-sizes, $type), font-weight) !important;
+    font-weight: map-get(map-get($heading-sizes, $type), font-weight);
     line-height: map-get(map-get($heading-sizes, $type), line-height) !important;
     margin: map-get(map-get($heading-sizes, $type), margin) !important;
   }
@@ -458,7 +458,7 @@ small,
     @each $type in map-keys($heading-sizes) {
       .-text-#{$screen-size}--#{$type} {
         font-size: map-get(map-get($heading-sizes, $type), font-size) !important;
-        font-weight: map-get(map-get($heading-sizes, $type), font-weight) !important;
+        font-weight: map-get(map-get($heading-sizes, $type), font-weight);
         line-height: map-get(map-get($heading-sizes, $type), line-height) !important;
         margin: map-get(map-get($heading-sizes, $type), margin) !important;
       }

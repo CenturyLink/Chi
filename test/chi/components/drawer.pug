@@ -46,20 +46,6 @@ each side in sides
               .chi-drawer__content
                 .-px--2.-text Drawer content here
 
-  div(class=`test-${side}-portal -mb--3`)
-    div(style='width: 20rem')
-      .-text--h2= `Drawer / Portal / ${side}`
-      .-position--relative(style="height:20rem")
-        .chi-drawer.-portal.-active.-position--absolute(class=`-${side}`)
-          .chi-drawer__header
-            span.chi-drawer__title
-              | Drawer title here
-            button.chi-button.-icon.-close(aria-label='Close')
-              .chi-button__content
-                i.chi-icon.icon-x
-          .chi-drawer__content
-            .-px--2.-text Drawer content here
-
 div(class=`test-non-closable -mb--3 example -mb--3`)
   div(style='width: 320px')
     .-text--h2= `Drawer / Non closable`

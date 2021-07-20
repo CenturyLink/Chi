@@ -193,9 +193,15 @@
     min-height: $stat-compact-min-height;
     min-width: $stat-compact-min-width;
 
+    .chi-stat__content {
+      align-items: flex-start;
+    }
+
     .chi-stat-metric {
       display: flex;
+      flex-direction: row;
       margin-bottom: 0.5rem;
+      text-align: left;
       z-index: auto;
 
       &__title {

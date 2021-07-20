@@ -57,7 +57,7 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
   width: 100%;
 
   &:not([multiple]) {
-    background-image: url('icon-chevron-thin-down.svg');
+    background-image: $select-background-image;
     background-position: map-get(map-get($sizes, md), background-position);
     background-repeat: no-repeat;
     background-size: 0.75rem;

@@ -220,9 +220,11 @@
           }
 
           .chi-mobile-nav-item-tab {
-            &:hover {
-              background-color: $mobile-nav-list-item-hover-background-color;
-              color: $mobile-nav-list-item-hover-text-color;
+            &:not(.-active) {
+              &:hover {
+                background-color: $mobile-nav-list-item-hover-background-color;
+                color: $mobile-nav-list-item-hover-text-color;
+              }
             }
           }
 
