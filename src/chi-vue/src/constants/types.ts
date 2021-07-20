@@ -45,6 +45,7 @@ export interface DataTableRow {
   rowId: string;
   rowNumber: string;
   selected?: boolean;
+  selectionDisabled?: boolean;
 }
 export interface DataTableData {
   head: {
