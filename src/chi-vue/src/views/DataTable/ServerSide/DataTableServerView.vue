@@ -8,6 +8,8 @@
       @chiDataSorting="e => sorting(e)"
       @chiPageChange="e => pagination(e)"
       @chiSelectedRowsChange="e => selection(e)"
+      @chiRowSelected="e => rowSelected(e)"
+      @chiRowDeselected="e => rowDeselected(e)"
     >
       <template #icon="payload">
         <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`"></i>
@@ -86,6 +88,14 @@ import { DataTableRow } from '../../../constants/types';
 export default class DataTableView extends Vue {
   fakeApiCall(page: number) {
     return page === 1 ? exampleTablePage1 : page === 2 ? exampleTablePage2 : null;
+  }
+
+  rowSelected(rowData: DataTableRow) {
+    console.log('Row selected', rowData);
+  }
+
+  rowDeselected(rowData: DataTableRow) {
+    console.log('Row deselected', rowData);
   }
 
   pagination(e: DataTablePageChange) {
