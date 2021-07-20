@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20210714',
+        identifier: 'jsl-jenkins-shared-library-local@release/20210716',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-    identifier: 'jsl-jenkins-shared-library@release/20210714',
+    identifier: 'jsl-jenkins-shared-library@release/20210716',
     retriever: modernSCM(
       [
         $class: 'GitSCMSource',
@@ -652,10 +652,7 @@ pipeline {
               expression {
                 unstash name: "VERSION_BUMP"
                 def versionBump = readFile file: "version_bump"
-                echo "Publish condition: GIT_BRANCH is _${env.GIT_BRANCH.trim().toLowerCase()}_"
-                echo "Publish condition: currentResult is _${currentBuild.currentResult.toLowerCase()}_"
-                echo "Publish condition: versionBump is _${versionBump.trim()}_"
-                return versionBump.trim() == "yes" && currentBuild.currentResult.toLowerCase() == "success" && ['origin/master', 'origin/main', 'master', 'main', PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase())
+                return versionBump.trim() == "yes" && currentBuild.currentResult.toLowerCase() == "success"
               }
           }
         }

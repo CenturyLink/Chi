@@ -18,6 +18,7 @@ export const exampleConfig = {
   },
   selectable: true,
   columnSizes: {
+    xs: [5, 5, 5, 0, 5, 5, 5, 5],
     sm: [10, 10, 10, 0, 10, 10, 10, 5],
     md: [15, 5, 15, 0, 15, 15, 15, 5],
     lg: [15, 5, 15, 0, 15, 15, 15, 5],
@@ -36,6 +37,8 @@ export const exampleToolbar = {
     {
       name: 'status',
       type: 'select',
+      id: 'myoption1',
+      label: 'Selector',
       options: [
         {
           label: 'Active',
@@ -53,16 +56,21 @@ export const exampleToolbar = {
       placeholder: 'Input filter',
       type: 'input',
       value: '',
+      id: 'myoption2',
+      label: 'Input Filter',
     },
     {
       name: 'checkbox',
       type: 'checkbox',
       checked: false,
+      id: 'myoption3',
+      label: 'Checkbox',
     },
     {
       name: 'statusAdvanced',
       label: 'Status',
       type: 'select',
+      id: 'myoption4',
       options: [
         {
           label: 'Active',
@@ -81,18 +89,20 @@ export const exampleToolbar = {
     {
       name: 'inputAdvanced',
       label: 'Label',
-      type: 'input',
+      id: 'myoption5',
       advanced: true,
     },
     {
       name: 'textareaAdvanced',
       label: 'textarea',
+      id: 'myoption6',
       type: 'textarea',
       advanced: true,
     },
     {
       name: 'checkboxAdvanced',
-      label: 'Checkbox',
+      id: 'myoption7',
+      label: 'Advanced Checkbox',
       type: 'checkbox',
       advanced: true,
     },

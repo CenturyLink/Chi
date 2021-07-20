@@ -26,26 +26,6 @@
   }
 }
 
-.chi-data-table__toolbar {
-  background: #F8F9F9;
-  display: flex;
-  padding: 1rem;
-
-  .chi-data-table__filters,
-  .chi-data-table__views {
-    .chi-form__item {
-      &.chi-data-table-filter__select,
-      &.chi-data-table-filter__input {
-        width: 14rem;
-      }
-    }
-  }
-
-  .chi-data-table__filters {
-    display: flex;
-  }
-}
-
 .chi-data-table__cell {
   white-space: nowrap;
   overflow: hidden;

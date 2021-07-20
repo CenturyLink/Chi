@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-06-30T07:55:05",
+  "timestamp": "2021-07-16T17:04:49",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1803,6 +1803,89 @@
           "attr": "target",
           "reflectToAttr": true,
           "docs": "to set target of a link.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/app-layout/app-layout.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-main",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "backlink",
+          "type": "string",
+          "mutable": false,
+          "attr": "backlink",
+          "reflectToAttr": true,
+          "docs": "To define app layout back link",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "backlinkHref",
+          "type": "string",
+          "mutable": false,
+          "attr": "backlink-href",
+          "reflectToAttr": true,
+          "docs": "to set a links destination url",
+          "docsTags": [],
+          "default": "'#'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "format",
+          "type": "string",
+          "mutable": false,
+          "attr": "format",
+          "reflectToAttr": true,
+          "docs": "to set app layout format",
+          "docsTags": [],
+          "default": "'base'",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "subtitle",
+          "type": "string",
+          "mutable": false,
+          "attr": "subtitle",
+          "reflectToAttr": true,
+          "docs": "To define app layout subtitle",
           "docsTags": [],
           "values": [
             {

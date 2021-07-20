@@ -10,6 +10,7 @@ import {
   BUTTON_CLASSES,
   ICON_CLASS,
   TRANSITIONING_CLASS,
+  DISABLED_SCROLL,
 } from '@/constants/classes';
 import { DRAWER_EVENTS } from '@/constants/events';
 import { ThreeStepsAnimation } from '@/utils/ThreeStepsAnimation';
@@ -51,6 +52,7 @@ export default class Drawer extends Vue {
           this.animationClasses.push(TRANSITIONING_CLASS);
           this.backdropAnimationClasses.length = 0;
           this.backdropAnimationClasses.push(TRANSITIONING_CLASS, CLOSED_CLASS);
+          document.body.classList.add(DISABLED_SCROLL);
         },
         () => {
           this.animationClasses.length = 0;
@@ -95,6 +97,7 @@ export default class Drawer extends Vue {
           this.animationClasses.push('');
           this.backdropAnimationClasses.length = 0;
           this.backdropAnimationClasses.push(CLOSED_CLASS);
+          document.body.classList.remove(DISABLED_SCROLL);
           this.$emit(DRAWER_EVENTS.HIDDEN);
         },
         ANIMATION_DURATION.MEDIUM

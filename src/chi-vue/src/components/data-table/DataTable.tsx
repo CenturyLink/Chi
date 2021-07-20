@@ -302,16 +302,34 @@ export default class DataTable extends Vue {
   }
 
   selectRow(rowData: DataTableRow) {
-    const rowId = this.selectedRows.find(rowId => rowId === rowData.rowId);
+    const selectedRow = this.selectedRows.find(rowId => rowId === rowData.rowId);
+    const newRowData = {
+      ...rowData,
+      selected: true,
+    };
 
-    if (!rowId) {
+    if (!selectedRow) {
       this.selectedRows.push(rowData.rowId);
-    } else {
+    }
+
+    this.$emit(DATA_TABLE_EVENTS.SELECTED_ROW, newRowData);
+    this._emitSelectedRows();
+  }
+
+  deselectRow(rowData: DataTableRow) {
+    const selectedRow = this.selectedRows.find(rowId => rowId === rowData.rowId);
+    const newRowData = {
+      ...rowData,
+      selected: false,
+    };
+
+    if (selectedRow) {
       const indexOfRowId = this.selectedRows.indexOf(rowData.rowId);
 
       this.selectedRows.splice(indexOfRowId, 1);
     }
 
+    this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
 
@@ -380,7 +398,11 @@ export default class DataTable extends Vue {
                   this.selectAllRows((ev.target as HTMLInputElement).checked ? 'select' : 'deselect');
                 } else {
                   if (rowData) {
-                    this.selectRow(rowData);
+                    if (ev.target && (ev.target as HTMLInputElement).checked) {
+                      this.selectRow(rowData);
+                    } else {
+                      this.deselectRow(rowData);
+                    }
                   }
                 }
               }}
@@ -469,7 +491,6 @@ export default class DataTable extends Vue {
 
     let cellIndex = 0;
 
-    // eslint-disable-next-line
     bodyRow.data.forEach((rowCell: any) => {
       const columnSettings = this.data.head[Object.keys(this.data.head)[cellIndex]],
         alignment = this._cellAlignment(rowCell.align ? rowCell.align : columnSettings.align || null),
@@ -534,7 +555,11 @@ export default class DataTable extends Vue {
         }
         ${this.$props.config.style.portal ? `-${this.$props.config.style.size}` : ''}
         ${this.selectedRows.includes(bodyRow.rowId) || bodyRow.active ? ACTIVE_CLASS : ''}
-        ${this._expandable ? `${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}` : ''}
+        ${
+          this._expandable && bodyRow.nestedContent
+            ? `${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}`
+            : ''
+        }
         `}
         role="row">
         {rowCells}
@@ -700,7 +725,6 @@ export default class DataTable extends Vue {
     this.selectedRows = [];
     this._expandable =
       this.$props.config.reserveExpansionSlot ||
-      // eslint-disable-next-line
       !!this.data.body.find((row: { nestedContent: any }) => row.nestedContent);
     this.data.body.forEach(row => {
       this._serializedDataBody.push(serializeRow(row, rowNumber, null));
@@ -709,7 +733,6 @@ export default class DataTable extends Vue {
   }
 
   dataToRender() {
-    // eslint-disable-next-line
     let dataToRender: Record<string, any>;
 
     if (this.slicedData && this.slicedData.length > 0) {
@@ -730,8 +753,10 @@ export default class DataTable extends Vue {
   @Watch('data')
   dataChange() {
     this.serializeData();
-    if (this._sortConfig) {
-      this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
+    if (this.mode === DataTableModes.CLIENT) {
+      if (this._sortConfig) {
+        this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
+      }
     }
     this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
   }

@@ -34,13 +34,11 @@ export interface DataTableRowNestedContent {
   };
   template: string;
   value: string;
-  // eslint-disable-next-line
   payload: any;
 }
 export interface DataTableRow {
   active: boolean;
   expanded: boolean;
-  // eslint-disable-next-line
   data: Record<string, any>;
   nestedContent: DataTableRowNestedContent;
   id: string;
@@ -104,6 +102,7 @@ export interface DataTableFilter {
   name: string;
   label: string;
   type: 'select' | 'input' | 'checkbox' | 'textarea' | 'template';
+  id: string;
   options?: [
     {
       value: string;
@@ -165,6 +164,6 @@ export type SearchInputSizes = typeof SEARCH_INPUT_SIZES[number];
 
 //#region Tooltip
 export type TooltipPositions = typeof GENERAL_POSITIONS[number];
-export const TOOLTIP_COLORS = ['light', ''] as const;
+export const TOOLTIP_COLORS = ['light', 'base'] as const;
 export type TooltipColors = typeof TOOLTIP_COLORS[number];
 //#endregion
