@@ -11,7 +11,7 @@ import { Instance as PopoverInstance } from '@popperjs/core/lib/types';
 @Component
 export default class Tooltip extends Vue {
   @Prop() message!: string;
-  @Prop({ default: '' }) color?: TooltipColors;
+  @Prop({ default: 'base' }) color?: TooltipColors;
   @Prop({ default: 'top' }) position?: TooltipPositions;
 
   _tooltipElement?: JSX.Element;
