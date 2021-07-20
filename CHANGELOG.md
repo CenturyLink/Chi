@@ -1,4 +1,11 @@
 # CHANGELOG
+## 4.4.0 (July 15, 2021)
+### Components
+#### Added
+* Added: Application layout web component and html blueprint templates.
+#### Fixed
+* Fixed: Tooltip component text wrapping has been improved to support long text cases.
+
 ## 4.3.0 (June 18, 2021)
 ### Components
 #### Added

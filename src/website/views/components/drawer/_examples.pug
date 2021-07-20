@@ -22,11 +22,13 @@ p.-text
       li.-active
         a(href='#webcomponent-interaction') Web Component
       li
+        a(href='#vue-interaction') Vue
+      li
         a(href='#html-interaction') HTML Blueprint
   #webcomponent-interaction.chi-tabs-panel.-active
     .chi-tab__description
-      | Modify the <code>active</code> attribute or property to make the drawer show or hide. The <code>chi-drawer</code>
-      | element also has three public methods to interact with it: <code>show()</code>, <code>hide()</code>,
+      | Modify the <code>active</code> attribute or property to make the drawer show or hide. <code>chi-drawer</code>
+      | also supports three public methods to change its visibility: <code>show()</code>, <code>hide()</code>,
       | <code>toggle()</code>.
     :code(lang="html")
       <!-- Trigger -->
@@ -48,6 +50,35 @@ p.-text
           // or drawer.active = !drawer.active;
         });
       </script>
+  #vue-interaction.chi-tabs-panel
+    .chi-tab__description
+      | Modify the <code>active</code> property to make the drawer show or hide. <code>ChiDrawer</code>
+      | also supports three public methods to change its visibility: <code>show()</code>, <code>hide()</code>,
+      | <code>toggle()</code>.
+    :code(lang="html")
+      <!-- Trigger -->
+      <button class="chi-button" @click="() => toggleDrawer()">
+        <i class="chi-icon -sm--2 icon-menu"></i>
+      </button>
+
+      <!-- Vue component -->
+      <ChiDrawer
+        position="left"
+        :active="this.drawerActive"
+        backdrop
+      >
+        <div class="-px--2 -text">Drawer content here</div>
+      </ChiDrawer>
+
+      <!-- Data and Methods -->
+      data: {
+        drawerActive : false;
+      },
+      methods: {
+        toggleDrawer() {
+          this.drawerActive = !this.drawerActive;
+        }
+      }
   #html-interaction.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
@@ -110,6 +141,8 @@ ul#chi-tabs--drawer.chi-tabs
         li.-active
           a(href=`#webcomponent`) Web Component
         li
+          a(href=`#vue-left`) Vue
+        li
           a(href=`#html`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent
       :code(lang="html")
@@ -132,6 +165,31 @@ ul#chi-tabs--drawer.chi-tabs
             // or drawer.active = !drawer.active;
           });
         </script>
+    .chi-tabs-panel#vue-left 
+      :code(lang="html")
+        <!-- Trigger -->
+        <button class="chi-button" @click="() => toggleDrawer()">
+          <i class="chi-icon -sm--2 icon-menu"></i>
+        </button>
+
+        <!-- Vue component -->
+        <ChiDrawer
+          position="left"
+          :active="this.drawerActive"
+          backdrop
+        >
+          <div class="-px--2 -text">Drawer content here</div>
+        </ChiDrawer>
+
+        <!-- Data and Methods -->
+        data: {
+          drawerActive : false;
+        },
+        methods: {
+          toggleDrawer() {
+            this.drawerActive = !this.drawerActive;
+          }
+        }
     .chi-tabs-panel#html
       .chi-tab__description
         span.-text--grey
@@ -176,6 +234,8 @@ ul#chi-tabs--drawer.chi-tabs
         li.-active
           a(href=`#webcomponent-right`) Web Component
         li
+          a(href=`#vue-right`) Vue
+        li
           a(href=`#html-right`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-right
       :code(lang="html")
@@ -198,6 +258,31 @@ ul#chi-tabs--drawer.chi-tabs
             // or drawer.active = !drawer.active;
           });
         </script>
+    .chi-tabs-panel#vue-right
+      :code(lang="html")
+        <!-- Trigger -->
+        <button class="chi-button" @click="() => toggleDrawer()">
+          <i class="chi-icon -sm--2 icon-menu"></i>
+        </button>
+
+        <!-- Vue component -->
+        <ChiDrawer
+          position="right"
+          :active="this.drawerActive"
+          backdrop
+        >
+          <div class="-px--2 -text">Drawer content here</div>
+        </ChiDrawer>
+
+        <!-- Data and Methods -->
+        data: {
+          drawerActive : false;
+        },
+        methods: {
+          toggleDrawer() {
+            this.drawerActive = !this.drawerActive;
+          }
+        }
     .chi-tabs-panel#html-right
       .chi-tab__description
         span.-text--grey
@@ -242,6 +327,8 @@ ul#chi-tabs--drawer.chi-tabs
         li.-active
           a(href=`#webcomponent-top`) Web Component
         li
+          a(href=`#vue-top`) Vue
+        li
           a(href=`#html-top`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-top
       :code(lang="html")
@@ -264,6 +351,31 @@ ul#chi-tabs--drawer.chi-tabs
             // or drawer.active = !drawer.active;
           });
         </script>
+    .chi-tabs-panel#vue-top 
+      :code(lang="html")
+        <!-- Trigger -->
+        <button class="chi-button" @click="() => toggleDrawer()">
+          <i class="chi-icon -sm--2 icon-menu"></i>
+        </button>
+
+        <!-- Vue component -->
+        <ChiDrawer
+          position="top"
+          :active="this.drawerActive"
+          backdrop
+        >
+          <div class="-px--2 -text">Drawer content here</div>
+        </ChiDrawer>
+
+        <!-- Data and Methods -->
+        data: {
+          drawerActive : false;
+        },
+        methods: {
+          toggleDrawer() {
+            this.drawerActive = !this.drawerActive;
+          }
+        }
     .chi-tabs-panel#html-top
       .chi-tab__description
         span.-text--grey
@@ -308,6 +420,8 @@ ul#chi-tabs--drawer.chi-tabs
         li.-active
           a(href=`#webcomponent-bottom`) Web Component
         li
+          a(href=`#vue-bottom`) Vue
+        li
           a(href=`#html-bottom`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-bottom
       :code(lang="html")
@@ -330,6 +444,31 @@ ul#chi-tabs--drawer.chi-tabs
             // or drawer.active = !drawer.active;
           });
         </script>
+    .chi-tabs-panel#vue-bottom
+      :code(lang="html")
+        <!-- Trigger -->
+        <button class="chi-button" @click="() => toggleDrawer()">
+          <i class="chi-icon -sm--2 icon-menu"></i>
+        </button>
+
+        <!-- Vue component -->
+        <ChiDrawer
+          position="bottom"
+          :active="this.drawerActive"
+          backdrop
+        >
+          <div class="-px--2 -text">Drawer content here</div>
+        </ChiDrawer>
+
+        <!-- Data and Methods -->
+        data: {
+          drawerActive : false;
+        },
+        methods: {
+          toggleDrawer() {
+            this.drawerActive = !this.drawerActive;
+          }
+        }
     .chi-tabs-panel#html-bottom
       .chi-tab__description
         span.-text--grey
@@ -373,6 +512,8 @@ p.-text
       li.-active
         a(href=`#webcomponent-backdrop`) Web Component
       li
+        a(href=`#vue-backdrop`) Vue
+      li
         a(href=`#html-backdrop`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-backdrop
     :code(lang="html")
@@ -395,6 +536,31 @@ p.-text
           // or drawer.active = !drawer.active;
         });
       </script>
+  .chi-tabs-panel#vue-backdrop
+    :code(lang="html")
+      <!-- Trigger -->
+      <button class="chi-button" @click="() => toggleDrawer()">
+        <i class="chi-icon -sm--2 icon-menu"></i>
+      </button>
+
+      <!-- Vue component -->
+      <ChiDrawer
+        position="bottom"
+        :active="this.drawerActive"
+        backdrop
+      >
+        <div class="-px--2 -text">Drawer content here</div>
+      </ChiDrawer>
+
+      <!-- Data and Methods -->
+      data: {
+        drawerActive : false;
+      },
+      methods: {
+        toggleDrawer() {
+          this.drawerActive = !this.drawerActive;
+        }
+      }
   .chi-tabs-panel#html-backdrop
     .chi-tab__description
       span.-text--grey
@@ -440,6 +606,8 @@ h3 Titled
       li.-active
         a(href='#webcomponent-titled') Web Component
       li
+        a(href='#vue-titled') Vue
+      li
         a(href='#html-titled') HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-titled
     :code(lang="html")
@@ -462,6 +630,32 @@ h3 Titled
           // or drawer.active = !drawer.active;
         });
       </script>
+  .chi-tabs-panel#vue-titled 
+    :code(lang="html")
+      <!-- Trigger -->
+      <button class="chi-button" @click="() => toggleDrawer()">
+        <i class="chi-icon -sm--2 icon-menu"></i>
+      </button>
+
+      <!-- Vue component -->
+      <ChiDrawer
+        position="left"
+        :active="this.drawerActive"
+        title="Drawer title here" 
+        backdrop
+      >
+        <div class="-px--2 -text">Drawer content here</div>
+      </ChiDrawer>
+
+      <!-- Data and Methods -->
+      data: {
+        drawerActive : false;
+      },
+      methods: {
+        toggleDrawer() {
+          this.drawerActive = !this.drawerActive;
+        }
+      }
   .chi-tabs-panel#html-titled
     .chi-tab__description
       span.-text--grey
@@ -520,6 +714,8 @@ ul#chi-tabs--closable.chi-tabs
         li.-active
           a(href=`#webcomponent-closable`) Web Component
         li
+          a(href=`#vue-closable`) Vue
+        li
           a(href=`#html-closable`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-closable
       :code(lang="html")
@@ -542,6 +738,31 @@ ul#chi-tabs--closable.chi-tabs
             // or drawer.active = !drawer.active;
           });
         </script>
+    .chi-tabs-panel#vue-closable 
+      :code(lang="html")
+        <!-- Trigger -->
+        <button class="chi-button" @click="() => toggleDrawer()">
+          <i class="chi-icon -sm--2 icon-menu"></i>
+        </button>
+
+        <!-- Vue component -->
+        <ChiDrawer
+          position="left"
+          :active="this.drawerActive"
+          backdrop
+        >
+          <div class="-px--2 -text">Drawer content here</div>
+        </ChiDrawer>
+
+        <!-- Data and Methods -->
+        data: {
+          drawerActive : false;
+        },
+        methods: {
+          toggleDrawer() {
+            this.drawerActive = !this.drawerActive;
+          }
+        }
     .chi-tabs-panel#html-closable
       .chi-tab__description
         span.-text--grey
@@ -587,6 +808,8 @@ ul#chi-tabs--closable.chi-tabs
         li.-active
           a(href=`#webcomponent-nonclosable`) Web Component
         li
+          a(href=`#vue-nonclosable`) Vue
+        li
           a(href=`#html-nonclosable`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-nonclosable
       .chi-tab__description
@@ -612,6 +835,35 @@ ul#chi-tabs--closable.chi-tabs
             // or drawer.active = !drawer.active;
           });
         </script>
+    .chi-tabs-panel#vue-nonclosable
+      .chi-tab__description
+        | Use the <code>nonClosable</code> property to render Drawer without a close button
+
+      :code(lang="html")
+        <!-- Trigger -->
+        <button class="chi-button" @click="() => toggleDrawer()">
+          <i class="chi-icon -sm--2 icon-menu"></i>
+        </button>
+
+        <!-- Vue component -->
+        <ChiDrawer
+          position="left"
+          :active="this.drawerActive"
+          :nonClosable="true"
+          backdrop
+        >
+          <div class="-px--2 -text">Drawer content here</div>
+        </ChiDrawer>
+
+        <!-- Data and Methods -->
+        data: {
+          drawerActive : false;
+        },
+        methods: {
+          toggleDrawer() {
+            this.drawerActive = !this.drawerActive;
+          }
+        }
     .chi-tabs-panel#html-nonclosable
       .chi-tab__description
         span.-text--grey
@@ -660,6 +912,8 @@ ul#chi-tabs--header.chi-tabs
         li.-active
           a(href=`#webcomponent-header`) Web Component
         li
+          a(href=`#vue-header`) Vue
+        li
           a(href=`#html-header`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-header
       :code(lang="html")
@@ -682,6 +936,31 @@ ul#chi-tabs--header.chi-tabs
             // or drawer.active = !drawer.active;
           });
         </script>
+    .chi-tabs-panel#vue-header 
+      :code(lang="html")
+        <!-- Trigger -->
+        <button class="chi-button" @click="() => toggleDrawer()">
+          <i class="chi-icon -sm--2 icon-menu"></i>
+        </button>
+
+        <!-- Vue component -->
+        <ChiDrawer
+          position="left"
+          :active="this.drawerActive"
+          backdrop
+        >
+          <div class="-px--2 -text">Drawer content here</div>
+        </ChiDrawer>
+
+        <!-- Data and Methods -->
+        data: {
+          drawerActive : false;
+        },
+        methods: {
+          toggleDrawer() {
+            this.drawerActive = !this.drawerActive;
+          }
+        }
     .chi-tabs-panel#html-header
       .chi-tab__description
         span.-text--grey
@@ -727,6 +1006,8 @@ ul#chi-tabs--header.chi-tabs
         li.-active
           a(href=`#webcomponent-headerless`) Web Component
         li
+          a(href=`#vue-headerless`) Vue
+        li
           a(href=`#html-headerless`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-headerless
       :code(lang="html")
@@ -749,6 +1030,32 @@ ul#chi-tabs--header.chi-tabs
             // or drawer.active = !drawer.active;
           });
         </script>
+    .chi-tabs-panel#vue-headerless
+      :code(lang="html")
+        <!-- Trigger -->
+        <button class="chi-button" @click="() => toggleDrawer()">
+          <i class="chi-icon -sm--2 icon-menu"></i>
+        </button>
+
+        <!-- Vue component -->
+        <ChiDrawer
+          position="left"
+          :active="this.drawerActive"
+          :noHeader="true"
+          backdrop
+        >
+          <div class="-px--2 -text">Drawer content here</div>
+        </ChiDrawer>
+
+        <!-- Data and Methods -->
+        data: {
+          drawerActive : false;
+        },
+        methods: {
+          toggleDrawer() {
+            this.drawerActive = !this.drawerActive;
+          }
+        }
     .chi-tabs-panel#html-headerless
       .chi-tab__description
         span.-text--grey
@@ -793,6 +1100,8 @@ ul#chi-tabs--header.chi-tabs
         li.-active
           a(href=`#webcomponent-portal`) Web Component
         li
+          a(href=`#vue-portal`) Vue
+        li
           a(href=`#html-portal`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal
       .chi-tab__description
@@ -815,7 +1124,35 @@ ul#chi-tabs--header.chi-tabs
             // or drawer.active = !drawer.active;
           });
         </script>
+    .chi-tabs-panel#vue-portal
+      .chi-tab__description
+        | Use the property <code>portal</code> to enable portal styling.
+      :code(lang="html")
+        <!-- Trigger -->
+        <button class="chi-button" @click="() => toggleDrawer()">
+          <i class="chi-icon -sm--2 icon-menu"></i>
+        </button>
 
+        <!-- Vue component -->
+        <ChiDrawer
+          position="bottom"
+          title="Drawer title here"
+          :active="this.drawerActive"
+          :portal="true"
+          backdrop
+        >
+          <div class="-px--2 -text">Drawer content here</div>
+        </ChiDrawer>
+
+        <!-- Data and Methods -->
+        data: {
+          drawerActive : false;
+        },
+        methods: {
+          toggleDrawer() {
+            this.drawerActive = !this.drawerActive;
+          }
+        }
     .chi-tabs-panel#html-portal
       .chi-tab__description
         | Use the class <code>-portal</code> to enable portal styling.

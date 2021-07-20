@@ -291,8 +291,10 @@ export default class DataTableFilters extends Vue {
   render() {
     const standardFilters: JSX.Element[] = [];
     const standardFiltersMobile: JSX.Element[] = [];
-    const advancedFiltersPopOver = this._advancedFiltersPopOver();
-    const advancedFilters = this._advancedFiltersFileds();
+    const advancedFiltersPopOver =
+      this._advancedFiltersData && this._advancedFiltersData.length > 0 ? this._advancedFiltersPopOver() : null;
+    const advancedFilters =
+      this._advancedFiltersData && this._advancedFiltersData.length > 0 ? this._advancedFiltersFileds() : null;
 
     this.$props.filtersData.forEach((filter: DataTableFilter) => {
       const filterElement =
