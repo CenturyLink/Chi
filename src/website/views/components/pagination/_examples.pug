@@ -17,6 +17,8 @@ h3 Base
       li.-active
         a(href=`#webcomponent-base`) Web Component
       li
+        a(href=`#vue-base`) Vue
+      li
         a(href=`#html-base`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-base
     :code(lang="html")
@@ -25,6 +27,13 @@ h3 Base
 
       <!-- For dark backgrounds -->
       <chi-pagination pages="5" current-page="3" inverse></chi-pagination>
+  .chi-tabs-panel#vue-base
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <ChiPagination :pages="5" :currentPage="3" />
+
+      <!-- For dark backgrounds -->
+      <ChiPagination :pages="5" :currentPage="3" :inverse="true" />
   .chi-tabs-panel#html-base
     .chi-tab__description
       .-text Use the class <code>chi-pagination</code> to render a pagination component.
@@ -58,7 +67,7 @@ h3 Base
 
       <!-- For dark backgrounds -->
       <nav class="chi-pagination -inverse" role="navigation" aria-label="Pagination">
-       <div class="chi-pagination__content">
+        <div class="chi-pagination__content">
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
@@ -107,6 +116,8 @@ h3 Disabled
       li.-active
         a(href=`#webcomponent-disabled`) Web Component
       li
+        a(href=`#vue-disabled`) Vue
+      li
         a(href=`#html-disabled`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-disabled
     .chi-tab__description
@@ -120,6 +131,18 @@ h3 Disabled
       <!-- For dark backgrounds -->
       <chi-pagination pages="5" current-page="1" inverse></chi-pagination>
       <chi-pagination pages="5" current-page="5" inverse></chi-pagination>
+  .chi-tabs-panel#vue-disabled
+    .chi-tab__description
+      code ChiPagination
+      | automatically disables previous / next pages if current page is first or last
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <ChiPagination :pages="5" :currentPage="1" />
+      <ChiPagination :pages="5" :currentPage="5" />
+
+      <!-- For dark backgrounds -->
+      <ChiPagination :pages="5" :currentPage="1" :inverse="true" />
+      <ChiPagination :pages="5" :currentPage="5" :inverse="true" />
   .chi-tabs-panel#html-disabled
     .chi-tab__description
       .-text Add the attribute <code>disabled</code> to any button to render in a disabled state.
@@ -193,6 +216,8 @@ p.-text When the number of pages exceeds the recommended 7 page limit, an ellips
       li.-active
         a(href=`#webcomponent-truncation`) Web Component
       li
+        a(href=`#vue-truncation`) Vue
+      li
         a(href=`#html-truncation`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-truncation
     :code(lang="html")
@@ -201,6 +226,13 @@ p.-text When the number of pages exceeds the recommended 7 page limit, an ellips
 
       <!-- For dark backgrounds -->
       <chi-pagination pages="12" current-page="3" inverse></chi-pagination>
+  .chi-tabs-panel#vue-truncation
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <ChiPagination :pages="12" :currentPage="3" />
+
+      <!-- For dark backgrounds -->
+      <ChiPagination :pages="12" :currentPage="3" :inverse="true" />
   .chi-tabs-panel#html-truncation
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -276,6 +308,8 @@ p.-text Use double truncation when the current page is separated by 5 or more pa
       li.-active
         a(href=`#webcomponent-double-truncation`) Web Component
       li
+        a(href=`#vue-double-truncation`) Vue
+      li
         a(href=`#html-double-truncation`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-double-truncation
     :code(lang="html")
@@ -284,6 +318,13 @@ p.-text Use double truncation when the current page is separated by 5 or more pa
 
       <!-- For dark backgrounds -->
       <chi-pagination pages="12" curent-page="6" inverse></chi-pagination>
+  .chi-tabs-panel#vue-double-truncation
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <ChiPagination :pages="12" :currentPage="6" />
+
+      <!-- For dark backgrounds -->
+      <ChiPagination :pages="12" :currentPage="6" :inverse="true" />
   .chi-tabs-panel#html-double-truncation
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -363,6 +404,8 @@ p.-text Add a label to indicate the total number of results.
       li.-active
         a(href=`#webcomponent-results-label`) Web Component
       li
+        a(href=`#vue-results-label`) Vue
+      li
         a(href=`#html-results-label`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-results-label
     :code(lang="html")
@@ -371,6 +414,13 @@ p.-text Add a label to indicate the total number of results.
 
       <!-- For light backgrounds -->
       <chi-pagination pages="12" current-page="3" results="240" inverse></chi-pagination>
+  .chi-tabs-panel#vue-results-label
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <ChiPagination :pages="12" :currentPage="3" :results="240" />
+
+      <!-- For light backgrounds -->
+      <ChiPagination :pages="12" :currentPage="3" :results="240" :inverse="true" />
   .chi-tabs-panel#html-results-label
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -454,6 +504,8 @@ p.-text Allow users to configure the number of result items per page.
       li.-active
         a(href=`#webcomponent-page-items`) Web Component
       li
+        a(href=`#vue-page-items`) Vue
+      li
         a(href=`#html-page-items`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-page-items
     :code(lang="html")
@@ -462,6 +514,13 @@ p.-text Allow users to configure the number of result items per page.
 
       <!-- For dark backgrounds -->
       <chi-pagination pages="12" results="240" current-page="3" page-size inverse></chi-pagination>
+  .chi-tabs-panel#vue-page-items
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <ChiPagination :pages="12" :results="240" :currentPage="3" :pageSize="true" />
+
+      <!-- For dark backgrounds -->
+      <ChiPagination :pages="12" :results="240" :currentPage="3" :pageSize="true" :inverse="true" />
   .chi-tabs-panel#html-page-items
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -567,6 +626,8 @@ p.-text Add a page jumper to allow users to jump to a specific page of results.
       li.-active
         a(href=`#webcomponent-page-jumper`) Web Component
       li
+        a(href=`#vue-page-jumper`) Vue
+      li
         a(href=`#html-page-jumper`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-page-jumper
     :code(lang="hmtl")
@@ -575,6 +636,13 @@ p.-text Add a page jumper to allow users to jump to a specific page of results.
 
       <!-- For dark backgrounds -->
       <chi-pagination pages="12" results="240" current-page="3" page-size page-jumper inverse></chi-pagination>
+  .chi-tabs-panel#vue-page-jumper
+    :code(lang="hmtl")
+      <!-- For light backgrounds -->
+      <ChiPagination :pages="12" :results="240" :currentPage="3" :pageSize="true" :pageJumper="true" />
+
+      <!-- For dark backgrounds -->
+      <ChiPagination :pages="12" :results="240" :currentPage="3" :pageSize="true" :pageJumper="true" />
   .chi-tabs-panel#html-page-jumper
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -593,7 +661,7 @@ p.-text Add a page jumper to allow users to jump to a specific page of results.
                 <option value="80">80</option>
                 <option value="all">All</option>
               </select>
-             <span class="chi-pagination__label">per page</span>
+              <span class="chi-pagination__label">per page</span>
             </div>
           </div>
           <div class="chi-pagination__center">
@@ -642,7 +710,7 @@ p.-text Add a page jumper to allow users to jump to a specific page of results.
                 <option value="80">80</option>
                 <option value="all">All</option>
               </select>
-             <span class="chi-pagination__label">per page</span>
+              <span class="chi-pagination__label">per page</span>
             </div>
           </div>
           <div class="chi-pagination__center">
@@ -690,6 +758,8 @@ h4 Base
       li.-active
         a(href=`#webcomponent-compact`) Web Component
       li
+        a(href=`#vue-compact`) Vue
+      li
         a(href=`#html-compact`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-compact
     :code(lang="html")
@@ -698,6 +768,13 @@ h4 Base
 
       <!-- For dark backgrounds -->
       <chi-pagination pages="3" current-page="2" compact inverse></chi-pagination>
+  .chi-tabs-panel#vue-compact
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <ChiPagination :pages="3" :currentPage="2" :compact="true" />
+
+      <!-- For dark backgrounds -->
+      <ChiPagination :pages="3" :currentPage="2" :compact="true" :inverse="true" />
   .chi-tabs-panel#html-compact
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -731,7 +808,7 @@ h4 Base
 
       <!-- For dark backgrounds -->
       <nav class="chi-pagination -compact -inverse" role="navigation" aria-label="Pagination">
-       <div class="chi-pagination__content">
+        <div class="chi-pagination__content">
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
@@ -772,6 +849,8 @@ h4 Page Jumper
       li.-active
         a(href=`#webcomponent-page-jump`) Web Component
       li
+        a(href=`#vue-page-jump`) Vue
+      li
         a(href=`#html-page-jump`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-page-jump
     :code(lang="html")
@@ -780,6 +859,13 @@ h4 Page Jumper
 
       <!-- For dark backgrounds -->
       <chi-pagination pages="3" current-page="2" compact page-jumper inverse></chi-pagination>
+  .chi-tabs-panel#vue-page-jump
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <ChiPagination :pages="3" :currentPage="2" :compact="true" :pageJumper="true" />
+
+      <!-- For dark backgrounds -->
+      <ChiPagination :pages="3" :currentPage="2" :compact="true" :pageJumper="true" :inverse="true" />
   .chi-tabs-panel#html-page-jump
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -815,7 +901,7 @@ h4 Page Jumper
 
       <!-- For dark backgrounds -->
       <nav class="chi-pagination -compact -inverse" role="navigation" aria-label="Pagination">
-       <div class="chi-pagination__content">
+        <div class="chi-pagination__content">
           <div class="chi-pagination__start"></div>
           <div class="chi-pagination__center">
             <div class="chi-pagination__button-group chi-button-group">
@@ -858,6 +944,8 @@ h4 First and Last page buttons
       li.-active
         a(href=`#webcomponent-first-last`) Web Component
       li
+        a(href=`#vue-first-last`) Vue
+      li
         a(href=`#html-first-last`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-first-last
     :code(lang="html")
@@ -866,6 +954,13 @@ h4 First and Last page buttons
 
       <!-- For dark backgrounds -->
       <chi-pagination pages="3" current-page="2" compact page-jumper first-last inverse></chi-pagination>
+  .chi-tabs-panel#vue-first-last
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <ChiPagination :pages="3" :currentPage="2" :compact="true" :pageJumper="true" :firstLast="true" />
+
+      <!-- For dark backgrounds -->
+      <ChiPagination :pages="3" :currentPage="2" :compact="true" :pageJumper="true" :firstLast="true" :inverse="true" />
   .chi-tabs-panel#html-first-last
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -965,6 +1060,8 @@ p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code
       li.-active
         a(href=`#webcomponent-sizes`) Web Component
       li
+        a(href=`#vue-sizes`) Vue
+      li
         a(href=`#html-sizes`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-sizes
     :code(lang="html")
@@ -979,6 +1076,19 @@ p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code
       <chi-pagination pages="5" current-page="3" size="md" inverse></chi-pagination>
       <chi-pagination pages="5" current-page="3" size="lg" inverse></chi-pagination>
       <chi-pagination pages="5" current-page="3" size="xl" inverse></chi-pagination>
+  .chi-tabs-panel#vue-sizes
+    :code(lang="html")
+      <!-- For light backgrounds -->
+      <ChiPagination :pages="5" :currentPage="3" size="sm" />
+      <ChiPagination :pages="5" :currentPage="3" size="md" />
+      <ChiPagination :pages="5" :currentPage="3" size="lg" />
+      <ChiPagination :pages="5" :currentPage="3" size="xl" />
+
+      <!-- For dark backgrounds -->
+      <ChiPagination :pages="5" :currentPage="3" size="sm" :inverse="true" />
+      <ChiPagination :pages="5" :currentPage="3" size="md" :inverse="true" />
+      <ChiPagination :pages="5" :currentPage="3" size="lg" :inverse="true" />
+      <ChiPagination :pages="5" :currentPage="3" size="xl" :inverse="true" />
   .chi-tabs-panel#html-sizes
     :code(lang="html")
       <!-- For light backgrounds -->
@@ -1200,8 +1310,8 @@ p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code
       </nav>
 
 script.
-    document.addEventListener(
-    'DOMContentLoaded',
-    function() {
-      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-    });
+  document.addEventListener(
+  'DOMContentLoaded',
+  function() {
+    chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+  });
