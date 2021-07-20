@@ -60,8 +60,8 @@ ul.chi-tabs.-vertical.-lg.-animated
                               a(href=`${rootPath}foundations/accessibility/other`) Other
                             
                 else
-                  -var lumenOnly = section.title === 'Portal' ? ' -lumen-only' : "";
-                  li(class=section.path === path ? '-active' + lumenOnly : lumenOnly)
+                  -var portalOnly = section.title === 'Portal' || section.title ==='App layout' ? ' -portal-only' : "";
+                  li(class=section.path === path ? '-active' + portalOnly : portalOnly)
                     a(href=`${rootPath}${section.path}`) #{section.title}
                       if section.title == 'Button'
                         .-sr--only component
@@ -103,8 +103,8 @@ ul.chi-tabs.-vertical.-lg.-animated
                             li(class=`${'foundations/accessibility/other' === path ? "-active" : ""}`)
                               a(href=`${rootPath}foundations/accessibility/other`) Other
                 else
-                  -var lumenOnly = section.title === 'Portal' ? ' -lumen-only' : "";
-                  li(class=section.path === path ? '-active' + lumenOnly : lumenOnly)
+                  -var portalOnly = section.title === 'Portal' || section.title ==='App layout' ? ' -portal-only' : "";
+                  li(class=section.path === path ? '-active' + portalOnly : portalOnly)
                     a(href=`${rootPath}${section.path}`) #{section.title}
                       if section.title == 'Button'
                         .-sr--only component
