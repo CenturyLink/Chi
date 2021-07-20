@@ -1,3 +1,6 @@
+script(src='https://cdn.jsdelivr.net/npm/vue@2.6.11')
+script(src='../../../chi-vue/umd/chi-vue.umd.js')
+
 h2 Examples
 h3 Base
 .example.-mb--3
@@ -6,7 +9,7 @@ h3 Base
       .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-form__item
           chi-search-input(id="example__base")
-          
+
   .example-tabs.-pl--2
     ul.chi-tabs#example-base(role="tablist")
       li.-active
@@ -15,7 +18,9 @@ h3 Base
           role="tab"
           aria-selected="true"
           aria-controls="webcomponent-base"
-         ) Web Component
+        ) Web Component
+      li
+        a(href=`#vue-base`) Vue
       li
         a(
           href=`#html-base`
@@ -23,11 +28,16 @@ h3 Base
           aria-selected="false"
           tabindex="-1"
           aria-controls="html-base"
-         ) HTML Blueprint
+        ) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-base
     :code(lang="html")
       <div class="chi-form__item">
         <chi-search-input id="example__base"></chi-search-input>
+      </div>
+  .chi-tabs-panel#vue-base
+    :code(lang="html")
+      <div class="chi-form__item">
+        <ChiSearchInput />
       </div>
   .chi-tabs-panel#html-base
     :code(lang="html")
@@ -46,7 +56,7 @@ h3 Base
           </button>
         </div>
       </div>
-      
+
 h3 Disabled
 p.-text
   | Use the <code>disabled</code> boolean attribute to prevent users from interacting with a search input.
@@ -67,7 +77,9 @@ p.-text
           role="tab"
           aria-selected="true"
           aria-controls="webcomponent-disabled"
-         ) Web Component
+        ) Web Component
+      li
+        a(href=`#vue-disabled`) Vue
       li
         a(
           href=`#html-disabled`
@@ -75,11 +87,16 @@ p.-text
           aria-selected="false"
           tabindex="-1"
           aria-controls="html-disabled"
-         ) HTML Blueprint
+        ) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-disabled
     :code(lang="html")
       <div class="chi-form__item">
         <chi-search-input id="example__disabled" value="Sample Text" disabled></chi-search-input>
+      </div>
+  .chi-tabs-panel#vue-disabled
+    :code(lang="html")
+      <div class="chi-form__item">
+        <ChiSearchInput value="Sample Text" disabled />
       </div>
   .chi-tabs-panel#html-disabled
     :code(lang="html")
@@ -99,7 +116,7 @@ p.-text
         </div>
       </div>
 
-h2 Sizes
+h3 Sizes
 p.-text
   | Search inputs supports the following sizes: <code>sm</code>, <code>md</code>,
   |  <code>lg</code>, <code>xl</code>.
@@ -111,16 +128,16 @@ p.-text
         .chi-grid
           .chi-col.-w--12.-mb--2
             .chi-form__item
-              chi-search-input(size="sm", value="Sample Text", id="example__size-sm")
+              chi-search-input(size="sm" value="Sample Text" id="example__size-sm")
           .chi-col.-w--12.-mb--2
             .chi-form__item
-              chi-search-input(size="md", value="Sample Text", id="example__size-md")
+              chi-search-input(size="md" value="Sample Text" id="example__size-md")
           .chi-col.-w--12.-mb--2
             .chi-form__item
-              chi-search-input(size="lg", value="Sample Text", id="example__size-lg")
+              chi-search-input(size="lg" value="Sample Text" id="example__size-lg")
           .chi-col.-w--12
             .chi-form__item
-              chi-search-input(size="xl", value="Sample Text", id="example__size-xl")
+              chi-search-input(size="xl" value="Sample Text" id="example__size-xl")
   .example-tabs.-pl--2
     ul.chi-tabs#example-input-sizes(role="tablist")
       li.-active
@@ -129,7 +146,9 @@ p.-text
           role="tab"
           aria-selected="true"
           aria-controls="webcomponent-input-sizes"
-         ) Web Component
+        ) Web Component
+      li
+        a(href=`#vue-input-sizes`) Vue
       li
         a(
           href=`#html-input-sizes`
@@ -137,7 +156,7 @@ p.-text
           aria-selected="false"
           tabindex="-1"
           aria-controls="html-input-sizes"
-         ) HTML Blueprint
+        ) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-input-sizes
     :code(lang="html")
       <div class="chi-form__item">
@@ -151,6 +170,20 @@ p.-text
       </div>
       <div class="chi-form__item">
         <chi-search-input size="xl" value="Sample Text" id="example__size-xl"></chi-search-input>
+      </div>
+  .chi-tabs-panel#vue-input-sizes 
+    :code(lang="html")
+      <div class="chi-form__item">
+        <ChiSearchInput value="Sample Text" size="sm" />
+      </div>
+      <div class="chi-form__item">
+        <ChiSearchInput value="Sample Text" size="md" />
+      </div>
+      <div class="chi-form__item">
+        <ChiSearchInput value="Sample Text" size="lg" />
+      </div>
+      <div class="chi-form__item">
+        <ChiSearchInput value="Sample Text" size="xl" />
       </div>
   .chi-tabs-panel#html-input-sizes
     :code(lang='html')
