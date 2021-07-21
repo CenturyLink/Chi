@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-07-20T03:11:28",
+  "timestamp": "2021-07-21T01:08:40",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2464,12 +2464,12 @@
           "required": false
         },
         {
-          "name": "portal",
+          "name": "modal",
           "type": "boolean",
           "mutable": false,
-          "attr": "portal",
+          "attr": "modal",
           "reflectToAttr": true,
-          "docs": "To define portal style of the Popover",
+          "docs": "To define modal style of the Popover",
           "docsTags": [],
           "values": [
             {

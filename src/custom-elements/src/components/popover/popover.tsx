@@ -18,7 +18,7 @@ import {
   ESCAPE_KEYCODE
 } from '../../constants/constants';
 import Popper, { Placement } from 'popper.js';
-import { POPOVER_CLASSES, PORTAL_CLASS } from '../../constants/classes';
+import { POPOVER_CLASSES } from '../../constants/classes';
 
 @Component({
   tag: 'chi-popover',
@@ -56,9 +56,9 @@ export class Popover {
   @Prop({ reflect: true }) reference: string;
 
   /**
-   * To define portal style of the Popover
+   * To define modal style of the Popover
    */
-  @Prop({ reflect: true }) portal: boolean;
+  @Prop({ reflect: true }) modal: boolean;
 
   /**
    * Prevents closing the popover when clicking out of its bounds
@@ -466,7 +466,7 @@ export class Popover {
           ${this._reference && this._reference.classList.contains('chi-input') ? POPOVER_CLASSES.INPUT : ''}
           ${this.closable ? POPOVER_CLASSES.CLOSABLE : ''}
           ${this.drag ? POPOVER_CLASSES.DRAGGABLE : ''}
-          ${this.portal ? PORTAL_CLASS : ''}
+          ${this.modal ? POPOVER_CLASSES.MODAL : ''}
         `}
         ref={el => (this._popoverElement = el as HTMLElement)}
         onClick={() => this.preventAutoClose()}

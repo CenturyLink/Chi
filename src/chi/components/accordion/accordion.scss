@@ -268,5 +268,14 @@ $sizes: (
         }
       }
     }
+
+    &.-sm {
+      .chi-accordion__item {
+        .chi-accordion__title {
+          font-size: $font-size-base;
+          font-weight: $font-weight-semi-bold;
+        }
+      }
+    }
   }
 }

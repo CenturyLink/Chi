@@ -1124,6 +1124,9 @@ $popover-box-shadow:                        0 8px 10px 1px rgba(0, 0, 0, 0.14), 
 $popover-text-color:                        $color-text-base;
 $popover-max-width:                         18rem;
 $popover-arrow-size:                        0.75rem;
+$popover-modal-background-color:            $modal-background-color;
+$popover-modal-header-background-color:     $modal-header-background-color;
+$popover-modal-close-icon-color:            $modal-close-icon-color;
 
 // Progress
 $progress-background-color:                 $color-grey-20;
