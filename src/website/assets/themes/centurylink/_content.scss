@@ -220,6 +220,15 @@
         }
       }
 
+      .-no-example-code-snippet {
+        .chi-tab__description {
+          background-color: $color-grey-15;
+          font-size: $font-size-base;
+          line-height: $line-height;
+          padding: 1rem 1rem 0 1rem;
+        }
+      }
+
       .example-opacity {
         background: linear-gradient(45deg, rgba(36, 37, 38, 0.1) 25%, transparent 0),
         linear-gradient(-45deg, rgba(36, 37, 38, 0.1) 25%, transparent 0),

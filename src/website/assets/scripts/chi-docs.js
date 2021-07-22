@@ -256,8 +256,8 @@ onLoad(() => {
     Portal: {
       chiCss: rootUrl + 'chi-portal.css',
       docsCss: rootUrl + 'assets/themes/portal/docs.css',
-      faviconSvg: rootUrl + 'assets/themes/portal/images/favicon.svg',
-      faviconIco: rootUrl + 'assets/themes/portal/images/favicon.ico',
+      faviconSvg: rootUrl + 'assets/themes/lumen/images/favicon.svg',
+      faviconIco: rootUrl + 'assets/themes/lumen/images/favicon.ico',
       trigger: '.theme-trigger-portal'
     }
   };
