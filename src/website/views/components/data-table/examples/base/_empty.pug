@@ -1,0 +1,115 @@
+h3 Empty
+
+.example.-mb--3
+  .-p--3
+    #empty(style="min-height: 5.2rem;")
+      chi-vue-data-table(:config='config', :data='table')
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-empty
+      li.-disabled
+        a(href=`#webcomponent-empty`) Web Component
+      li.-active
+        a(href=`#vue-empty`) Vue
+      li
+        a(href=`#html-empty`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-empty
+  .chi-tabs-panel.-active#vue-empty
+    .chi-tab__description Use <code>noResultsMessage</code> config to customize the empty data message
+    :code(lang='html')
+      <!-- Vue component -->
+      <ChiDataTable :config="config" :data="table"></ChiDataTable>
+
+      <!-- Config and Data -->
+      data: {
+        config: {
+          columnResize: true,
+          noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+          activePage: 1,
+          style: {
+            portal: false,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: false,
+          },
+          pagination: {
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: 'Name' },
+            id: { label: 'ID' },
+            lastLogin: { label: 'Last Login' },
+          },
+          body: []
+        }
+      }
+  .chi-tabs-panel#html-empty
+    :code(lang="html")
+      <div class="chi-data-table">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <div>Name</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>ID</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Last Login</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row-empty">
+            <div>No matches found. Please revise search criteria and try again.</div>
+          </div>
+        </div>
+      </div>
+
+script.
+  new Vue({
+    components: {
+      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: true,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [],
+      }
+    }
+  }).$mount('#empty');
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelector('#example-empty'));
+    }
+  );
