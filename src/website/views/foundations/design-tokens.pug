@@ -500,8 +500,8 @@ description: Design tokens are used in place of hard-coded values to maintain co
   }
 
   var portalIconColor = {
-    'base':           {hex: '#3F4145', contrast: '10.2:1'},
-    'primary':        {hex: '#0075C9', contrast: '4.8:1'},
+    'base':           {hex: '#0262B9', contrast: '6.1:1'},
+    'primary':        {hex: '#0262B9', contrast: '6.1:1'},
     'secondary':      {hex: '#38C6F4', contrast: '10.6:1'},
     'secondary-dark': {hex: '#0C9ED9', contrast: '3:1'},
     'success':        {hex: '#009054', contrast: '4.1:1'},
@@ -763,7 +763,7 @@ description: Design tokens are used in place of hard-coded values to maintain co
 
 h2 Color
 h3 Text
-section.chi-table.-xs.-mt--2.-mb--4
+section.chi-table.-xs.-mt--2.-mb--4.-lumen--show
   div
     table.-text
       thead
@@ -776,7 +776,7 @@ section.chi-table.-xs.-mt--2.-mb--4
             div Example
           th
             div Contrast
-      tbody.-lumen-only
+      tbody
         each value, index in lumenTextColor
           tr
             td(width='35%')
@@ -800,7 +800,20 @@ section.chi-table.-xs.-mt--2.-mb--4
                       | 20px+ text only
                     if index === 'primary-alt'
                       | White backgrounds only
-      tbody.-portal-only
+section.chi-table.-xs.-mt--2.-mb--4.-portal--show
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+          th
+            div Contrast
+      tbody
         each value, index in portalTextColor
           tr
             td(width='35%')
@@ -824,7 +837,20 @@ section.chi-table.-xs.-mt--2.-mb--4
                       | 20px+ text only
                     if index === 'primary-alt'
                       | White backgrounds only
-      tbody.-centurylink-only
+section.chi-table.-xs.-mt--2.-mb--4.-centurylink--show
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+          th
+            div Contrast
+      tbody
         each value, index in centurylinkTextColor
           tr
             td(width='35%')
@@ -847,8 +873,9 @@ section.chi-table.-xs.-mt--2.-mb--4
                     if index === 'secondary-dark'
                       | 20px+ text only
 
+
 h3 Icon
-section.chi-table.-xs.-mt--2.-mb--4
+section.chi-table.-xs.-mt--2.-mb--4.-lumen--show
   div
     table.-text
       thead
@@ -861,7 +888,7 @@ section.chi-table.-xs.-mt--2.-mb--4
             div Example
           th
             div Contrast
-      tbody.-lumen-only
+      tbody
         each value, index in lumenIconColor
           tr
             td(width='35%')
@@ -879,7 +906,20 @@ section.chi-table.-xs.-mt--2.-mb--4
               div.-text
                 i.chi-icon.icon-check.-xs.-icon--success.-mr--1
                 span=value.contrast
-      tbody.-portal-only
+section.chi-table.-xs.-mt--2.-mb--4.-portal--show
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+          th
+            div Contrast
+      tbody
         each value, index in portalIconColor
           tr
             td(width='35%')
@@ -897,7 +937,20 @@ section.chi-table.-xs.-mt--2.-mb--4
               div.-text
                 i.chi-icon.icon-check.-xs.-icon--success.-mr--1
                 span=value.contrast
-      tbody.-centurylink-only
+section.chi-table.-xs.-mt--2.-mb--4.-centurylink--show
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+          th
+            div Contrast
+      tbody
         each value, index in centurylinkIconColor
           tr
             td(width='35%')
@@ -917,7 +970,7 @@ section.chi-table.-xs.-mt--2.-mb--4
                 span=value.contrast
 
 h3 Background
-section.chi-table.-xs.-mt--2.-mb--4
+section.chi-table.-xs.-mt--2.-mb--4.-lumen--show
   div
     table.-text
       thead
@@ -930,7 +983,7 @@ section.chi-table.-xs.-mt--2.-mb--4
             div Example
           th
             div Contrast
-      tbody.-lumen-only
+      tbody
         each value, index in lumenBackgroundColor
           tr
             td(width='35%')
@@ -946,7 +999,20 @@ section.chi-table.-xs.-mt--2.-mb--4
               div.-text
                 i.chi-icon.icon-check.-xs.-icon--success.-mr--1
                 span=value.contrast
-      tbody.-portal-only
+section.chi-table.-xs.-mt--2.-mb--4.-portal--show
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+          th
+            div Contrast
+      tbody
         each value, index in portalBackgroundColor
           tr
             td(width='35%')
@@ -962,25 +1028,7 @@ section.chi-table.-xs.-mt--2.-mb--4
               div.-text
                 i.chi-icon.icon-check.-xs.-icon--success.-mr--1
                 span=value.contrast
-      tbody.-centurylink-only
-        each value, index in centurylinkBackgroundColor
-          tr
-            td(width='35%')
-              code=`$color-background-${index}`
-            td(width='25%')
-              div.-text=value.hex
-            td(width='20%')
-              if index === 'base' || index === 'white'
-                div.-text.-rounded.-w--80.-s--1(style=`height:1rem;background-color:${value.hex};`)
-              else
-                div.-text.-rounded.-w--80(style=`height:1rem;background-color:${value.hex};`)
-            td(width='20%')
-              div.-text
-                i.chi-icon.icon-check.-xs.-icon--success.-mr--1
-                span=value.contrast
-
-h3 Border
-section.chi-table.-xs.-mt--2.-mb--4
+section.chi-table.-xs.-mt--2.-mb--4.-centurylink--show
   div
     table.-text
       thead
@@ -993,7 +1041,38 @@ section.chi-table.-xs.-mt--2.-mb--4
             div Example
           th
             div Contrast
-      tbody.-lumen-only
+      tbody
+          each value, index in centurylinkBackgroundColor
+            tr
+              td(width='35%')
+                code=`$color-background-${index}`
+              td(width='25%')
+                div.-text=value.hex
+              td(width='20%')
+                if index === 'base' || index === 'white'
+                  div.-text.-rounded.-w--80.-s--1(style=`height:1rem;background-color:${value.hex};`)
+                else
+                  div.-text.-rounded.-w--80(style=`height:1rem;background-color:${value.hex};`)
+              td(width='20%')
+                div.-text
+                  i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                  span=value.contrast
+
+h3 Border
+section.chi-table.-xs.-mt--2.-mb--4.-lumen--show
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+          th
+            div Contrast
+      tbody
         each value, index in lumenBorderColor
           tr
             td(width='35%')
@@ -1008,7 +1087,20 @@ section.chi-table.-xs.-mt--2.-mb--4
                 div.-text.-rounded.-w--80(style=`height:1rem;border:1px solid ${value.hex};`)
             td(width='20%')
               div.-text —
-      tbody.-portal-only
+section.chi-table.-xs.-mt--2.-mb--4.-portal--show
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+          th
+            div Contrast
+      tbody
         each value, index in portalBorderColor
           tr
             td(width='35%')
@@ -1023,7 +1115,20 @@ section.chi-table.-xs.-mt--2.-mb--4
                 div.-text.-rounded.-w--80(style=`height:1rem;border:1px solid ${value.hex};`)
             td(width='20%')
               div.-text —
-      tbody.-centurylink-only
+section.chi-table.-xs.-mt--2.-mb--4.-centurylink--show
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example
+          th
+            div Contrast
+      tbody
         each value, index in centurylinkBorderColor
           tr
             td(width='35%')
@@ -1040,7 +1145,7 @@ section.chi-table.-xs.-mt--2.-mb--4
               div.-text —
 
 h3 Color System
-section.chi-table.-xs.-mt--2.-mb--4
+section.chi-table.-xs.-mt--2.-mb--4.-lumen--show
   div
     table.-text
       thead
@@ -1051,7 +1156,7 @@ section.chi-table.-xs.-mt--2.-mb--4
             div Value
           th
             div Example
-      tbody.-lumen-only
+      tbody
         each value, index in lumenSystemColor
           tr
             td(width='35%')
@@ -1063,7 +1168,18 @@ section.chi-table.-xs.-mt--2.-mb--4
                 div.-text.-rounded.-w--100.-w-lg--60.-s--1(style=`height:1rem;background-color:${value.hex};`)
               else
                 div.-text.-rounded.-w--100.-w-lg--60(style=`height:1rem;background-color:${value.hex};`)
-      tbody.-portal-only
+section.chi-table.-xs.-mt--2.-mb--4.-portal--show
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example 
+      tbody
         each value, index in portalSystemColor
           tr
             td(width='35%')
@@ -1075,7 +1191,18 @@ section.chi-table.-xs.-mt--2.-mb--4
                 div.-text.-rounded.-w--100.-w-lg--60.-s--1(style=`height:1rem;background-color:${value.hex};`)
               else
                 div.-text.-rounded.-w--100.-w-lg--60(style=`height:1rem;background-color:${value.hex};`)
-      tbody.-centurylink-only
+section.chi-table.-xs.-mt--2.-mb--4.-centurylink--show
+  div
+    table.-text
+      thead
+        tr.-text--grey
+          th
+            div Token
+          th
+            div Value
+          th
+            div Example 
+      tbody
         each value, index in centurylinkSystemColor
           tr
             td(width='35%')

@@ -1,8 +1,5 @@
 h2 Examples
 h3 Base
-p.-text
-  | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then
-  | initialize it with the chi.tooltip factory method.
 .example.-mb--3
   .-p--3
     button(data-tooltip='Your tooltip text on a button').chi-button Hover me to see tooltip
@@ -22,6 +19,9 @@ p.-text
       </Tooltip>
   .chi-tabs-panel#html-base
     .chi-tab__description
+      | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then
+      | initialize it with the chi.tooltip factory method.
+    .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
@@ -31,10 +31,10 @@ p.-text
 
       <script>chi.tooltip(document.getElementById('tooltip-1'));</script>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h3 Light
   p.-text
-    | Use light tooltips for rendering tooltips on dark backgrounds. To use, apply the <code>data-tooltip-color="light"</code> attribute to the Tooltip trigger element.
+    | Use light tooltips for rendering tooltips on dark backgrounds. 
   .example.-bg--black.-mb--3
     .-p--3
       button.-outline.-light(data-tooltip='Your tooltip text on a button' data-tooltip-color='light').chi-button Hover me to see tooltip
@@ -54,6 +54,8 @@ p.-text
         </Tooltip>
     .chi-tabs-panel#html-light
       .chi-tab__description
+        | To use, apply the <code>data-tooltip-color="light"</code> attribute to the Tooltip trigger element.
+      .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
@@ -64,10 +66,6 @@ p.-text
         <script>chi.tooltip(document.getElementById('tooltip-2'));</script>
 
 h3 Tooltip on disabled buttons
-p.-text
-  | When a button element is in disabled state, <code>mouseenter</code> and <code>mouseleave</code> events
-  | are not being triggered. Wrap the disabled button in a <code>span</code> element, providing the attribute <code>data-tooltip=""</code>
-  | to achieve the same behavior
 .example.-mb--3
   .-p--3
     span#tooltip-disabled-button(data-tooltip='Tooltip message for a disabled button')
@@ -89,6 +87,15 @@ p.-text
         </span>
       </Tooltip>
   .chi-tabs-panel#html-disabled
+    .chi-tab__description
+      | When a button element is in disabled state, <code>mouseenter</code> and <code>mouseleave</code> events
+      | are not being triggered. Wrap the disabled button in a <code>span</code> element, providing the attribute <code>data-tooltip=""</code>
+      | to achieve the same behavior.
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang='html')
       <span data-tooltip="Tooltip message for a disabled button" id="tooltip-disabled-button">
         <button class="chi-button" disabled>Hover me to see tooltip</button>
@@ -97,11 +104,6 @@ p.-text
       <script>chi.tooltip(document.getElementById('tooltip-disabled-button'));</script>
 
 h3 Positioning
-p.-text
-  | By default, tooltip's position on top of an element. To alter position, use
-  | the <code>data-position</code> attribute. Valid values are <code>top</code>,
-  | <code>right</code>, <code>bottom</code>, <code>left</code>. You can pass an array
-  | of Elements and initialize all at once.
 .example.-mb--3
   .-p--3
     button(data-tooltip='Your top tooltip text').chi-button.-mr--2.-mb--2.-mb-md--0 Top Tooltip
@@ -132,6 +134,11 @@ p.-text
         <button class="chi-button">Bottom Tooltip</button>
       </Tooltip>
   .chi-tabs-panel#html-positioning
+    .chi-tab__description
+      | By default, tooltip's position on top of an element. To alter position, use
+      | the <code>data-position</code> attribute. Valid values are <code>top</code>,
+      | <code>right</code>, <code>bottom</code>, <code>left</code>. You can pass an array
+      | of Elements and initialize all at once.
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.

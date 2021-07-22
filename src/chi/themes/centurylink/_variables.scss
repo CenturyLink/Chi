@@ -1031,24 +1031,28 @@ $number-input-button-disabled-opacity:      $opacity-60;
 
 $number-input-expanded-sm-width:            6rem;
 $number-input-expanded-sm-button-font-size: 0.75rem;
+$number-input-expanded-sm-button-line-height: $button-sm-line-height;
 $number-input-expanded-sm-button-height:    1.5rem;
 $number-input-expanded-sm-button-padding:   0.3125rem;
 $number-input-expanded-sm-button-icon-size: 0.75rem;
 
 $number-input-expanded-md-width:            8rem;
 $number-input-expanded-md-button-font-size: 0.875rem;
+$number-input-expanded-md-button-line-height: $button-md-line-height;
 $number-input-expanded-md-button-height:    2rem;
 $number-input-expanded-md-button-padding:   0.4375rem;
 $number-input-expanded-md-button-icon-size: 1rem;
 
 $number-input-expanded-lg-width:            10rem;
 $number-input-expanded-lg-button-font-size: 0.875rem;
+$number-input-expanded-lg-button-line-height: $button-lg-line-height;
 $number-input-expanded-lg-button-height:    2.5rem;
 $number-input-expanded-lg-button-padding:   0.6875rem;
 $number-input-expanded-lg-button-icon-size: 1rem;
 
 $number-input-expanded-xl-width:            12rem;
 $number-input-expanded-xl-button-font-size: 0.875rem;
+$number-input-expanded-xl-button-line-height: $button-xl-line-height;
 $number-input-expanded-xl-button-height:    3rem;
 $number-input-expanded-xl-button-padding:   0.9375rem;
 $number-input-expanded-xl-button-icon-size: 1rem;
@@ -1229,7 +1233,7 @@ $select-xl-padding:                         0 1.6875rem 0 0.75rem;
 
 // Sidenav
 $sidenav-background-color:                  $color-background-base;
-$sidenav-border-color:                      $color-border-base;
+$sidenav-border-right:                      0.0625rem solid $color-border-base;
 $sidenav-item-icon-color:                   inherit;
 $sidenav-item-icon-size:                    1.25rem;
 $sidenav-item-min-height:                   4.5rem;

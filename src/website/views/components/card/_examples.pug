@@ -1,4 +1,4 @@
-.-lumen-only.-centurylink-only
+.-portal--hide
   h2 Examples
   p.-text
     | To display a card, use the class <code>chi-card</code>.
@@ -634,7 +634,7 @@
         </div>
 
 
-.-portal-only
+.-portal--show
   h2 Examples
   p.-text
     | To display a card, use the class <code>chi-card</code>.
@@ -658,30 +658,6 @@
         <div class="chi-card">
           <div class="chi-card__content">
             <div class="chi-card__caption">This is a card</div>
-          </div>
-        </div>
-
-  h3 Empty
-  p.-text
-    | Render an empty state card with the class <code>-empty</code>.
-  .example.-mb--3
-    .-p--3
-      .chi-card.-empty(style="max-width:20rem;")
-        .chi-card__content
-          .chi-card__caption
-            | This is an empty card
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-empty
-        li.-disabled
-          a(href=`#webcomponent-portal-empty`) Web Component
-        li.-active
-          a(href=`#html-portal-empty`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-portal-empty
-    .chi-tabs-panel.-active#html-portal-empty
-      :code(lang="html")
-        <div class="chi-card -empty">
-          <div class="chi-card__content">
-            <div class="chi-card__caption">This is an empty card</div>
           </div>
         </div>
 
@@ -784,6 +760,30 @@
           </div>
           <div class="chi-card__content">
             <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
+          </div>
+        </div>
+
+  h3 Empty
+  p.-text
+    | Render an empty state card with the class <code>-empty</code>.
+  .example.-mb--3
+    .-p--3
+      .chi-card.-empty(style="max-width:20rem;")
+        .chi-card__content
+          .chi-card__caption
+            | This is an empty card
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-empty
+        li.-disabled
+          a(href=`#webcomponent-portal-empty`) Web Component
+        li.-active
+          a(href=`#html-portal-empty`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-empty
+    .chi-tabs-panel.-active#html-portal-empty
+      :code(lang="html")
+        <div class="chi-card -empty">
+          <div class="chi-card__content">
+            <div class="chi-card__caption">This is an empty card</div>
           </div>
         </div>
 

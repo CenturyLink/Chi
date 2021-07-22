@@ -55,6 +55,7 @@ $expanded-sizes: (
   sm: (
     width: $number-input-expanded-sm-width,
     btn-font-size: $number-input-expanded-sm-button-font-size,
+    btn-line-height: $number-input-expanded-sm-button-line-height,
     btn-height: $number-input-expanded-sm-button-height,
     btn-padding: $number-input-expanded-sm-button-padding,
     icon-font-size: $number-input-expanded-sm-button-icon-size,
@@ -65,6 +66,7 @@ $expanded-sizes: (
   md: (
     width: $number-input-expanded-md-width,
     btn-font-size: $number-input-expanded-md-button-font-size,
+    btn-line-height: $number-input-expanded-md-button-line-height,
     btn-height: $number-input-expanded-md-button-height,
     btn-padding: $number-input-expanded-md-button-padding,
     icon-font-size: $number-input-expanded-md-button-icon-size,
@@ -75,6 +77,7 @@ $expanded-sizes: (
   lg: (
     width: $number-input-expanded-lg-width,
     btn-font-size: $number-input-expanded-lg-button-font-size,
+    btn-line-height: $number-input-expanded-lg-button-line-height,
     btn-height: $number-input-expanded-lg-button-height,
     btn-padding: $number-input-expanded-lg-button-padding,
     icon-font-size: $number-input-expanded-lg-button-icon-size,
@@ -85,6 +88,7 @@ $expanded-sizes: (
   xl: (
     width: $number-input-expanded-xl-width,
     btn-font-size: $number-input-expanded-xl-button-font-size,
+    btn-line-height: $number-input-expanded-xl-button-line-height,
     btn-height: $number-input-expanded-xl-button-height,
     btn-padding: $number-input-expanded-xl-button-padding,
     icon-font-size: $number-input-expanded-xl-button-icon-size,
@@ -297,6 +301,7 @@ $expanded-sizes: (
               & ~ button {
                 font-size: map-get($values, btn-font-size);
                 height: map-get($values, btn-height);
+                line-height: map-get($values, btn-line-height);
                 padding: map-get($values, btn-padding);
 
                 .chi-icon {

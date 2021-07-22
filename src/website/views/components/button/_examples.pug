@@ -1,5 +1,5 @@
 h2 Examples
-.-lumen-only.-centurylink-only
+.-portal--hide
   p.-text
     | Chi includes three button variants: Solid, Outline, and Flat. Use <code>solid</code>
     | buttons for high emphasis actions, base or <code>outline</code> buttons for medium
@@ -231,7 +231,7 @@ h2 Examples
         <!-- center aligned content -->
         <button class="chi-button -fluid -justify-content--center">Button</button>
 
-.-portal-only
+.-portal--show
   p.-text
     | Use the primary button example for high emphasis actions, secondary button example for medium
     | emphasis actions, and tertiary button example for low emphasis actions.
@@ -334,7 +334,7 @@ h2 Examples
         <button class="chi-button -primary -fluid -justify-content--center">Primary</button>
         <button class="chi-button -fluid -justify-content--center">Secondary</button>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h2 Icon buttons
   p.-text
     | For interfaces with limited space, an Icon button can
@@ -378,7 +378,7 @@ h2 Examples
           </div>
         </button>
 
-.-portal-only
+.-portal--show
   h2 Icon buttons
   p.-text
     | For interfaces with limited space, an Icon button can
@@ -406,7 +406,7 @@ h2 Examples
           </div>
         </button>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h3 Labeled icon buttons
   .example.-mb--3
     .-p--3
@@ -473,7 +473,7 @@ h2 Examples
           </div>
         </button>
 
-.-portal-only
+.-portal--show
   h3 Labeled icon buttons
   .example.-mb--3
     .-p--3.-d--flex
@@ -516,7 +516,7 @@ h2 Examples
           </div>
         </button>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h3 Floating icon buttons
   .example.-mb--3
     .chi-grid.-no-gutter
@@ -589,7 +589,7 @@ h2 Examples
           </div>
         </button>
 
-.-portal-only
+.-portal--show
   h3 Floating icon buttons
   .example.-mb--3
     .-p--3.-d--flex
@@ -636,7 +636,7 @@ h3 Close icon button
         </div>
       </button>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h2 Danger
   p.-text
     | For special cases, such as styling a destructive action in an application (e.g. Delete Account),
@@ -663,7 +663,7 @@ h3 Close icon button
         <button class="chi-button -danger -outline">Danger</button>
         <button class="chi-button -danger -flat">Danger</button>
 
-.-portal-only
+.-portal--show
   h2 Danger
   p.-text
     | For special cases, such as styling a destructive action in an application (e.g. Delete Account),
@@ -690,7 +690,7 @@ h3 Close icon button
         <button class="chi-button -danger -outline">Button</button>
         <button class="chi-button -danger -outline -sm">Button</button>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h2 Sizes
   p.-text
     | Buttons support the following sizes: Small (sm), Medium (md), Large (lg), and Extra Large (xl).
@@ -767,7 +767,7 @@ h3 Close icon button
           </div>
         </button>
 
-.-portal-only
+.-portal--show
   h2 Sizes
   p.-text
     | Buttons support the following sizes: Small (sm), Medium (md), and Large (lg).
@@ -801,12 +801,12 @@ h3 Close icon button
           chi-button(size='lg', variant='flat', type='icon', alternative-text="Button action")
             chi-icon(icon='atom')
     .example-tabs.-pl--2
-      ul.chi-tabs#examples-sizes
+      ul.chi-tabs#examples-portal-sizes
         li.-active
-          a(href=`#webcomponent-sizes`) Web Component
+          a(href=`#webcomponent-portal-sizes`) Web Component
         li
-          a(href='#html-sizes') HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-sizes
+          a(href='#html-portal-sizes') HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal-sizes
       :code(lang="html")
         <!-- sm -->
         <chi-button color="primary" size="sm">Button</chi-button>
@@ -828,7 +828,7 @@ h3 Close icon button
         <chi-button type="icon" variant="flat" size="lg" alternative-text="Button action">
           <chi-icon icon="atom" />
         </chi-button>
-    .chi-tabs-panel#html-sizes
+    .chi-tabs-panel#html-portal-sizes
       :code(lang="html")
         <!-- sm -->
         <button class="chi-button -primary -sm">Button</button>

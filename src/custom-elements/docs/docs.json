@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-07-21T01:08:40",
+  "timestamp": "2021-07-22T00:58:04",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1423,7 +1423,7 @@
       "props": [
         {
           "name": "color",
-          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "type": "\"danger\" | \"dark\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
@@ -1432,6 +1432,10 @@
           "values": [
             {
               "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "dark",
               "type": "string"
             },
             {
@@ -3226,7 +3230,7 @@
         },
         {
           "name": "iconLeftColor",
-          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "type": "\"danger\" | \"dark\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "icon-left-color",
           "reflectToAttr": true,
@@ -3235,6 +3239,10 @@
           "values": [
             {
               "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "dark",
               "type": "string"
             },
             {
@@ -3299,7 +3307,7 @@
         },
         {
           "name": "iconRightColor",
-          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "type": "\"danger\" | \"dark\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "icon-right-color",
           "reflectToAttr": true,
@@ -3308,6 +3316,10 @@
           "values": [
             {
               "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "dark",
               "type": "string"
             },
             {
@@ -3668,7 +3680,7 @@
         },
         {
           "name": "iconLeftColor",
-          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "type": "\"danger\" | \"dark\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "icon-left-color",
           "reflectToAttr": true,
@@ -3677,6 +3689,10 @@
           "values": [
             {
               "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "dark",
               "type": "string"
             },
             {
@@ -3741,7 +3757,7 @@
         },
         {
           "name": "iconRightColor",
-          "type": "\"danger\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
+          "type": "\"danger\" | \"dark\" | \"grey\" | \"info\" | \"light\" | \"muted\" | \"navy\" | \"orange\" | \"primary\" | \"secondary\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "icon-right-color",
           "reflectToAttr": true,
@@ -3750,6 +3766,10 @@
           "values": [
             {
               "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "dark",
               "type": "string"
             },
             {

@@ -11,7 +11,7 @@ $sidenav-lg-width: 12.5rem;
 
   &__content {
     background-color: $sidenav-background-color;
-    border-right: 0.0625rem solid $sidenav-border-color;
+    border-right: $sidenav-border-right;
     height: 100%;
     position: relative;
     z-index: $zindex-fixed + 2;

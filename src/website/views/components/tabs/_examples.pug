@@ -1,7 +1,7 @@
 h2 Examples
 #exampleHashTarget.-position--fixed-top.-sr--only
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h3 Horizontal
   ul#chi-tabs--menu.chi-tabs(
     role="tablist"
@@ -97,10 +97,10 @@ h2 Examples
             </li>
             <li role="tab">
               <a
-                href="#horizontal-base-3
+                href="#horizontal-base-3"
                 aria-selected="false"
                 tabindex="-1"
-                aria-controls="horizontal-base-3"">Tab Link</a>
+                aria-controls="horizontal-base-3">Tab Link</a>
             </li>
           </ul>
 
@@ -400,7 +400,7 @@ h2 Examples
 
           <script>chi.tab(document.getElementById('example-vertical-inverse'));</script>
 
-.-portal-only
+.-portal--show
   h3 Base
   .example.-mb--3
     .-p--3.-bg--grey-20
@@ -492,7 +492,7 @@ h2 Examples
 
         <script>chi.tab(document.getElementById('example-horizontal-base'));</script>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h2 Keep default link behavior
   p.-text
     | By default, Chi JavaScript enabled tabs will ignore default link behavior.
@@ -590,7 +590,7 @@ h2 Examples
 
         <script>chi.tab(document.getElementById('example-tabs-2'));</script>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h2 Tabbed navigation bar
 
   p.-text
@@ -700,7 +700,7 @@ h2 Examples
           chi.navigation(navigationElem);
         </script>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h3 Components contained
   p.-text
     | As navigation component is built from other primitive Chi components, most of the components behavior
@@ -775,7 +775,7 @@ h2 Examples
 
         <script>chi.navigation(document.getElementById('navigation-components-contained'));</script>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h3 Wait for animations
   p.-text
     | Browsers stop any execution of JavaScript as soon as a link is clicked and it starts to fetch the destination URL.
@@ -903,7 +903,7 @@ h2 Examples
             );
           </script>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h2 Icons
   h3 Horizontal tabs with icons
   ul#chi-tabs--menu-horizontal-icons.chi-tabs
@@ -1003,7 +1003,7 @@ h2 Examples
             </li>
           </ul>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h3 Vertical tabs with icons
   ul#chi-tabs--menu-vertical-icons.chi-tabs
     li.-active
@@ -1306,7 +1306,7 @@ h2 Examples
             </li>
           </ul>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h2 Bordered
   ul#chi-tabs--menu-bordered.chi-tabs
     li.-active
@@ -1359,7 +1359,7 @@ h2 Examples
           </li>
         </ul>
 
-.-portal-only
+.-portal--show
   h3 Bordered
   .example.-mb--3
     .-p--3.-bg--grey-20
@@ -1438,10 +1438,10 @@ h2 Examples
           </li>
           <li role="tab">
             <a
-              href="#horizontal-bordered-3
+              href="#horizontal-bordered-3"
               aria-selected="false"
               tabindex="-1"
-              aria-controls="horizontal-bordered-3"">Tab Link</a>
+              aria-controls="horizontal-bordered-3">Tab Link</a>
           </li>
         </ul>
 
@@ -1451,7 +1451,7 @@ h2 Examples
 
         <script>chi.tab(document.getElementById('example-horizontal-bordered'));</script>
 
-.-lumen-only.-centurylink-only
+.-portal--hide
   h2 Additional Sizes
 
   h3 Horizontal
@@ -1726,12 +1726,12 @@ h2 Examples
           </li>
         </ul>
 
-.-portal-only
-  h3 Vertical tabs with icons and description
+.-portal--show
+  h3 Vertical Tree Tabs
   .example.-mb--3
     .-p--3
       .-p--3
-        ul.chi-tabs.-vertical.-icons.-list.-portal.-lg
+        ul.chi-tabs.-vertical.-icons.-list.-tree.-lg
           li.-active
             a.chi-tabs_item(href='#')
               i.chi-icon.icon-atom
@@ -1793,15 +1793,15 @@ h2 Examples
                 .chi-button__content
                   i.chi-icon.icon-more-vert
     .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-size-large
+      ul.chi-tabs#example-tree-size-large
         li.-disabled
-          a(href=`#webcomponent-portal-size-large`) Web Component
+          a(href=`#webcomponent-tree-size-large`) Web Component
         li.-active
-          a(href=`#html--portal-size-large`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-portal-size-large(role="tabpanel")
-    .chi-tabs-panel.-active#html-portal-size-large(role="tabpanel")
+          a(href=`#html--tree-size-large`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-tree-size-large(role="tabpanel")
+    .chi-tabs-panel.-active#html-tree-size-large(role="tabpanel")
       :code(lang='html')
-        <ul class="chi-tabs -vertical -icons -list -portal -lg">
+        <ul class="chi-tabs -vertical -icons -list -tree -lg">
           <li class="-active">
             <a class="chi-tabs_item" href="#">
               <i class="chi-icon icon-atom"></i>
@@ -1928,7 +1928,7 @@ script.
       chi.tab(document.getElementById('example-sizes-h'));
       chi.tab(document.getElementById('example-sizes-v'));
       chi.tab(document.getElementById('example-size-large'));
-      chi.tab(document.getElementById('example-portal-size-large'));
+      chi.tab(document.getElementById('example-tree-size-large'));
       chi.tab(document.getElementById('example-icon-base'));
       chi.tab(document.getElementById('example-icon-inverse'));
       chi.tab(document.getElementById('example-icon-vertical-base'));

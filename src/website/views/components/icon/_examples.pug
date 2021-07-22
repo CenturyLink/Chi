@@ -91,11 +91,11 @@ p.-text
   | Easily change an icons color using the examples below.
 h4 Brand
 p.-text
-  | Brand icon colors reinforce Lumen's brand. Use primary and secondary as accents and base, grey, dark, and light as neutrals.
+  | Brand icon colors reinforce Lumen's brand.
 .example.-mb--3
   .chi-grid.-no-gutter
     .chi-col.-w--12.-w-md--6.-p--1.-d--flex.-justify-content--center
-      each color in ['', 'icon--body', 'icon--primary', 'icon--grey']
+      each color in ['', 'icon--primary', 'icon--dark', 'icon--grey']
         div(class=`chi-icon -${color} -m--1`)
           svg
             use(xlink:href='#icon-atom')
@@ -120,6 +120,7 @@ p.-text
       <!-- For light backgrounds -->
       <chi-icon icon="atom"></chi-icon>
       <chi-icon icon="atom" color="primary"></chi-icon>
+      <chi-icon icon="atom" color="dark"></chi-icon>
       <chi-icon icon="atom" color="grey"></chi-icon>
       <!-- For dark backgrounds -->
       <chi-icon icon="atom" color="secondary"></chi-icon>
@@ -129,6 +130,7 @@ p.-text
       <!-- For light backgrounds -->
       <i class="chi-icon icon-atom"></i>
       <i class="chi-icon icon-atom -icon--primary"></i>
+      <i class="chi-icon icon-atom -icon--dark"></i>
       <i class="chi-icon icon-atom -icon--grey"></i>
       <!-- For dark backgrounds -->
       <i class="chi-icon icon-atom -icon--secondary"></i>
@@ -167,7 +169,7 @@ p.-text
       <i class="chi-icon icon-atom -icon--danger"></i>
       <i class="chi-icon icon-atom -icon--muted"></i>
 
-.-lumen-only
+.-centurylink--hide
   h4 Brand complimentary
   p.-text
     | More icon colors that can be used to compliment the primary brand palette.

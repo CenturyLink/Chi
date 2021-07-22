@@ -44,20 +44,46 @@ header.chi-header.docs-header.-z--20
       color: #0047bb;
       font-weight: 600;
     }
-    .theme-centurylink .-lumen-only,
-    .theme-centurylink .-portal-only,
-    .theme-lumen .-centurylink-only,
-    .theme-lumen .-portal-only,
-    .theme-portal .-lumen-only,
-    .theme-portal .-centurylink-only {
-      display: none;
-    }
-    .theme-lumen .-lumen-only.-centurylink-only,
-    .theme-centurylink .-lumen-only.-centurylink-only,
-    .theme-lumen .-lumen-only.-portal-only,
-    .theme-portal .-lumen-only.-portal-only {
+
+    .-lumen--show,
+    .-centurylink--show,
+    .-portal--show {
       display: block;
     }
+
+    .-lumen--hide,
+    .-centurylink--hide,
+    .-portal--hide {
+      display: none;
+    }
+
+    .theme-centurylink .-lumen--show,
+    .theme-centurylink .-portal--show,
+    .theme-centurylink .-centurylink--hide {
+      display: none;
+    }
+
+    .theme-lumen .-portal--show,
+    .theme-lumen .-centurylink--show,
+    .theme-lumen .-lumen--hide {
+      display: none;
+    }
+
+    .theme-portal .-lumen--show,
+    .theme-portal .-centurylink--show,
+    .theme-portal .-portal--hide {
+      display: none;
+    }
+
+    .theme-portal .-lumen--hide,
+    .theme-portal .-centurylink--hide,
+    .theme-centurylink .-portal--hide,
+    .theme-centurylink .-lumen--hide,
+    .theme-lumen .-portal--hide,
+    .theme-lumen .-centurylink--hide {
+      display: block;
+    }
+
     .chi-brand {
       margin: 0;
     }
