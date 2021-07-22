@@ -39,8 +39,9 @@ function buildStyles(source, dest) {
 function buildWebsiteStyles() {
   const centurylink = buildStyles('src/website/assets/themes/centurylink', 'dist/assets/themes/centurylink');
   const lumen = buildStyles('src/website/assets/themes/lumen', 'dist/assets/themes/lumen');
+  const portal = buildStyles('src/website/assets/themes/portal', 'dist/assets/themes/portal');
 
-  return merge(centurylink, lumen);
+  return merge(centurylink, lumen, portal);
 }
 
 buildWebsiteStyles.description = 'Builds Chi CSS library. Returns a stream.';
