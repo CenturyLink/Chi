@@ -64,6 +64,39 @@ if name === 'css-centurylink'
           span.token.punctuation &quot;
         span.token.punctuation &gt;
 
+if name === 'css-portal'
+  pre.language-html
+    code.language-html
+      span.token.tag
+        span.token.tag
+          span.token.punctuation &lt;
+          | link 
+        span.token.attr-name rel
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          | stylesheet
+          span.token.punctuation &quot; 
+        span.token.attr-name href
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          | https://assets.ctl.io/chi/4.4.0/chi-portal.css
+          span.token.punctuation &quot; 
+          span.token.attr-name integrity
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          div.-d--inline-block #{data['dist/chi-portal.css']}
+          span.token.punctuation &quot; 
+        span.token.attr-name crossorigin
+        span.token.attr-value
+          span.token.punctuation.attr-equals =
+          span.token.punctuation &quot;
+          | anonymous
+          span.token.punctuation &quot;
+        span.token.punctuation &gt;
+
 if name === 'js'
   pre.language-html
     code.language-html
