@@ -1151,19 +1151,23 @@ describe('Server Side Data Table', () => {
     });
 
     it('should render new data when going to page two', () => {
-      cy.get('@paginationIcons')
+      cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`)
+        .children()
+        .first()
+        .children()
+        .eq(1)
+        .find(`.${ICON_BUTTON}`)
+        .as('paginationIcons')
         .eq(2)
         .click()
         .then(() => {
-          cy.wait(2000);
-          cy.get('@row').should('contain', 'Name 4');
+          cy.get(`[data-cy='data-table']`).should('contain', 'Name 4');
         });
-      cy.get('@paginationIcons')
-        .eq(1)
+      cy.get(`@paginationIcons`)
+        .eq(0)
         .click()
         .then(() => {
-          cy.wait(2000);
-          cy.get(`@row`).should('contain', 'Name 1');
+          cy.get(`[data-cy='data-table']`).should('contain', 'Name 1');
         });
     });
 
@@ -1372,19 +1376,24 @@ describe('Server Side Data Table', () => {
       });
 
       it('should render new data when going to page two', () => {
-        cy.get('@paginationIcons')
+        cy.get(`[data-cy='data-table-portal']`)
+          .find(`.${PAGINATION_CLASSES.PAGINATION}`)
+          .children()
+          .first()
+          .children()
+          .eq(1)
+          .find(`.${ICON_BUTTON}`)
+          .as('paginationIcons')
           .eq(2)
           .click()
           .then(() => {
-            cy.wait(2000);
-            cy.get('@row').should('contain', 'Name 4');
+            cy.get(`[data-cy='data-table-portal']`).should('contain', 'Name 4');
           });
-        cy.get('@paginationIcons')
-          .eq(1)
+        cy.get(`@paginationIcons`)
+          .eq(0)
           .click()
           .then(() => {
-            cy.wait(2000);
-            cy.get(`@row`).should('contain', 'Name 1');
+            cy.get(`[data-cy='data-table-portal']`).should('contain', 'Name 1');
           });
       });
 
