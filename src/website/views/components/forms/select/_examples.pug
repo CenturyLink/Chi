@@ -224,153 +224,301 @@ p.-text
         <div class="chi-label -status">Optional input message</div>
       </div>
 
-h3 Error
-p.-text
-  | Use the <code>-danger</code> state to provide feedback to users when a selection has not been made.
-  | Once a selection has been made, the state must be removed. To meet accessibility requirements,
-  | danger inputs must include an error message explaining the failure and/or how to correct it.
-.example.-mb--3
-  .-p--3
-    .chi-form__item(style="max-width:20rem")
-      label.chi-label(for="example-er1")
-        | Label
-        abbr.chi-label__required(title="Required field") *
-      select(class="chi-select -danger", id="example-er1" required)
-        option(value="") Select
-        option Option 1
-        option Option 2
-        option Option 3
-      .chi-label.-status.-danger Please select an option.
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-error
-      li.-disabled
-        a(href=`#webcomponent-error`) Web Component
-      li.-active
-        a(href=`#html-error`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-error
-  .chi-tabs-panel.-active#html-error
-    :code(lang="html")
-      <div class="chi-form__item">
-        <label class="chi-label" for="example-er1">
-          Label
-          <abbr class="chi-label__required" title="Required field">*</abbr>
-        </label>
-        <select class="chi-select -danger" id="example-er1" required>
-          <option value="">Select</option>
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
-        </select>
-        <div class="chi-label -status -danger">Please select an option.</div>
-      </div>
+.-portal--hide
+  h3 Error
+  p.-text
+    | Use the <code>-danger</code> state to provide feedback to users when a selection has not been made.
+    | Once a selection has been made, the state must be removed. To meet accessibility requirements,
+    | danger inputs must include an error message explaining the failure and/or how to correct it.
+  .example.-mb--3
+    .-p--3
+      .chi-form__item(style="max-width:20rem")
+        label.chi-label(for="example-er1")
+          | Label
+          abbr.chi-label__required(title="Required field") *
+        select(class="chi-select -danger", id="example-er1" required)
+          option(value="") Select
+          option Option 1
+          option Option 2
+          option Option 3
+        .chi-label.-status.-danger Please select an option.
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-error
+        li.-disabled
+          a(href=`#webcomponent-error`) Web Component
+        li.-active
+          a(href=`#html-error`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-error
+    .chi-tabs-panel.-active#html-error
+      :code(lang="html")
+        <div class="chi-form__item">
+          <label class="chi-label" for="example-er1">
+            Label
+            <abbr class="chi-label__required" title="Required field">*</abbr>
+          </label>
+          <select class="chi-select -danger" id="example-er1" required>
+            <option value="">Select</option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+          <div class="chi-label -status -danger">Please select an option.</div>
+        </div>
 
-h3 Sizes
-p.-text
-  | Selects support the following sizes: <code>-sm</code>, <code>-md</code>,
-  |  <code>-lg</code>, <code>-xl</code>. The default size is <code>-md</code>.
-.example.-mb--3
-  .-p--3
-    each size in ['-sm', '-md', '-lg', '-xl']
-      div(class=`-p--2`)
-        .chi-form__item(style="max-width:20rem")
-          label.chi-label(for=`example-size${size}`) Label
-          select(class=`chi-select ${size}`, id=`example-size${size}`)
-            option(selected disabled hidden)=`${size} Select`
-            option Option 1
-            option Option 2
-            option Option 3
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-sizes
-      li.-disabled
-        a(href=`#webcomponent-sizes`) Web Component
-      li.-active
-        a(href=`#html-sizes`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-sizes
-  .chi-tabs-panel.-active#html-sizes
-    :code(lang='html')
-      <!-- sm -->
-      <div class="chi-form__item">
-        <label class="chi-label" for="example-size-sm">Label</label>
-        <select class="chi-select -sm" id="example-size-sm">
-          <option>-sm Select</option>
-        </select>
-      </div>
+.-portal--show
+  h3 Error
+  p.-text
+    | Use the <code>-danger</code> state to provide feedback to users when a selection has not been made.
+    | Once a selection has been made, the state must be removed. To meet accessibility requirements,
+    | danger inputs must include an error message explaining the failure and/or how to correct it.
+  .example.-mb--3
+    .-p--3
+      .chi-form__item(style="max-width:20rem")
+        label.chi-label(for="example-portal-er1")
+          | Label
+          abbr.chi-label__required(title="Required field") *
+        select(class="chi-select -danger", id="example-portal-er1" required)
+          option(value="") Select
+          option Option 1
+          option Option 2
+          option Option 3
+        .chi-label.-status.-danger
+          i.chi-icon.icon-circle-warning.-icon--danger
+          | Please select an option.
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-error
+        li.-disabled
+          a(href=`#webcomponent-portal-error`) Web Component
+        li.-active
+          a(href=`#html-portal-error`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-error
+    .chi-tabs-panel.-active#html-portal-error
+      :code(lang="html")
+        <div class="chi-form__item">
+          <label class="chi-label" for="example-portal-er1">
+            Label
+            <abbr class="chi-label__required" title="Required field">*</abbr>
+          </label>
+          <select class="chi-select -danger" id="example-portal-er1" required>
+            <option value="">Select</option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+          <div class="chi-label -status -danger">
+            <i class="chi-icon icon-circle-warning -icon--danger"></i>
+            Please select an option.
+          </div>
+        </div>
 
-      <!-- md -->
-      <div class="chi-form__item">
-        <label class="chi-label" for="example-size-md">Label</label>
-        <select class="chi-select -md" id="example-size-md">
-          <option>-md Select</option>
-        </select>
-      </div>
+.-portal--hide
+  h3 Sizes
+  p.-text
+    | Selects support the following sizes: <code>-sm</code>, <code>-md</code>,
+    |  <code>-lg</code>, <code>-xl</code>. The default size is <code>-md</code>.
+  .example.-mb--3
+    .-p--3
+      each size in ['-sm', '-md', '-lg', '-xl']
+        div(class=`-p--2`)
+          .chi-form__item(style="max-width:20rem")
+            label.chi-label(for=`example-size${size}`) Label
+            select(class=`chi-select ${size}`, id=`example-size${size}`)
+              option(selected disabled hidden)=`${size} Select`
+              option Option 1
+              option Option 2
+              option Option 3
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-sizes
+        li.-disabled
+          a(href=`#webcomponent-sizes`) Web Component
+        li.-active
+          a(href=`#html-sizes`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-sizes
+    .chi-tabs-panel.-active#html-sizes
+      :code(lang='html')
+        <!-- sm -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="example-size-sm">Label</label>
+          <select class="chi-select -sm" id="example-size-sm">
+            <option>-sm Select</option>
+          </select>
+        </div>
 
-      <!-- lg -->
-      <div class="chi-form__item">
-        <label class="chi-label" for="example-size-lg">Label</label>
-        <select class="chi-select -lg" id="example-size-lg">
-          <option>-lg Select</option>
-        </select>
-      </div>
+        <!-- md -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="example-size-md">Label</label>
+          <select class="chi-select -md" id="example-size-md">
+            <option>-md Select</option>
+          </select>
+        </div>
 
-      <!-- xl -->
-      <div class="chi-form__item">
-        <label class="chi-label" for="example-size-xl">Label</label>
-        <select class="chi-select -xl" id="example-size-xl">
-          <option>-xl Select</option>
-        </select>
-      </div>
+        <!-- lg -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="example-size-lg">Label</label>
+          <select class="chi-select -lg" id="example-size-lg">
+            <option>-lg Select</option>
+          </select>
+        </div>
 
-h3 Floating labels
-p.-text
-  | Floating labels are a solution to keep the placeholder visible when no label is attached to the select.
-  | Chi only supports floating labels on <code>-lg</code> and <code>-xl</code> selects.
+        <!-- xl -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="example-size-xl">Label</label>
+          <select class="chi-select -xl" id="example-size-xl">
+            <option>-xl Select</option>
+          </select>
+        </div>
 
-.example.-mb--3
-  .-p--3
-    each size in ['-lg', '-xl']
-      div(class=`chi-col -w--12 -p--2`)
-        .chi-input__wrapper.-floating-label(style="max-width:20rem")
-          select.chi-select(class=`${size}`, id=`#floating-label-select${size}`)
-            option
-            option Option 1
-            option Option 2
-            option Option 3
-          label(for=`#floating-label-select${size}`) Placeholder text
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-label-floating
-      li.-disabled
-        a(href=`#webcomponent-label-floating`) Web Component
-      li.-active
-        a(href=`#html-label-floating`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-label-floating
-  .chi-tabs-panel.-active#html-label-floating
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../../getting-started/installation">Chi.js</a>.
-    :code(lang='html')
-      <div id="floating-label-lg" class="chi-input__wrapper -floating-label">
-        <select class="chi-select -lg" id="floating-label-select-lg">
-          <option></option>
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
-        </select>
-        <label for="floating-label-select-lg">Placeholder text</label>
-      </div>
+.-portal--show
+  h3 Sizes
+  p.-text
+    | Selects support the following sizes: <code>-sm</code>, <code>-md</code>,
+    |  <code>-lg</code>. The default size is <code>-md</code>.
+  .example.-mb--3
+    .-p--3
+      each size in ['-sm', '-md', '-lg']
+        div(class=`-p--2`)
+          .chi-form__item(style="max-width:20rem")
+            label.chi-label(for=`example-portal-size${size}`) Label
+            select(class=`chi-select ${size}`, id=`example-portal-size${size}`)
+              option(selected disabled hidden)=`${size} Select`
+              option Option 1
+              option Option 2
+              option Option 3
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-sizes
+        li.-disabled
+          a(href=`#webcomponent-portal-sizes`) Web Component
+        li.-active
+          a(href=`#html-portal-sizes`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-sizes
+    .chi-tabs-panel.-active#html-portal-sizes
+      :code(lang='html')
+        <!-- sm -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="example-portal-size-sm">Label</label>
+          <select class="chi-select -sm" id="example-portal-size-sm">
+            <option>-sm Select</option>
+          </select>
+        </div>
 
-      <div id="floating-label-xl" class="chi-input__wrapper -floating-label">
-        <select class="chi-select -xl" id="floating-label-select-xl">
-          <option></option>
-          <option>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
-        </select>
-        <label for="floating-label-select-xl">Placeholder text</label>
-      </div>
+        <!-- md -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="example-portal-size-md">Label</label>
+          <select class="chi-select -md" id="example-portal-size-md">
+            <option>-md Select</option>
+          </select>
+        </div>
 
-      <script>chi.floatingLabel(document.querySelectorAll('.-floating-label'));</script>
+        <!-- lg -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="example-portal-size-lg">Label</label>
+          <select class="chi-select -lg" id="example-portal-size-lg">
+            <option>-lg Select</option>
+          </select>
+        </div>
+
+.-portal--hide
+  h3 Floating labels
+  p.-text
+    | Floating labels are a solution to keep the placeholder visible when no label is attached to the select.
+    | Chi only supports floating labels on <code>-lg</code> and <code>-xl</code> selects.
+  .example.-mb--3
+    .-p--3
+      each size in ['-lg', '-xl']
+        div(class=`chi-col -w--12 -p--2`)
+          .chi-input__wrapper.-floating-label(style="max-width:20rem")
+            select.chi-select(class=`${size}`, id=`#floating-label-select${size}`)
+              option
+              option Option 1
+              option Option 2
+              option Option 3
+            label(for=`#floating-label-select${size}`) Placeholder text
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-label-floating
+        li.-disabled
+          a(href=`#webcomponent-label-floating`) Web Component
+        li.-active
+          a(href=`#html-label-floating`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-label-floating
+    .chi-tabs-panel.-active#html-label-floating
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <div id="floating-label-lg" class="chi-input__wrapper -floating-label">
+          <select class="chi-select -lg" id="floating-label-select-lg">
+            <option></option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+          <label for="floating-label-select-lg">Placeholder text</label>
+        </div>
+
+        <div id="floating-label-xl" class="chi-input__wrapper -floating-label">
+          <select class="chi-select -xl" id="floating-label-select-xl">
+            <option></option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+          <label for="floating-label-select-xl">Placeholder text</label>
+        </div>
+
+        <script>chi.floatingLabel(document.querySelectorAll('.-floating-label'));</script>
+
+.-portal--show
+  h3 Floating labels
+  p.-text
+    | Floating labels are a solution to keep the placeholder visible when no label is attached to the select.
+  .example.-mb--3
+    .-p--3
+      each size in ['-md', '-lg']
+        div(class=`chi-col -w--12 -p--2`)
+          .chi-input__wrapper.-floating-label(style="max-width:20rem")
+            select.chi-select(class=`${size}`, id=`#floating-label-portal-select${size}`)
+              option
+              option Option 1
+              option Option 2
+              option Option 3
+            label(for=`#floating-label-portal-select${size}`) Placeholder text
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-label-floating
+        li.-disabled
+          a(href=`#webcomponent-portal-label-floating`) Web Component
+        li.-active
+          a(href=`#html-portal-label-floating`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-label-floating
+    .chi-tabs-panel.-active#html-portal-label-floating
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <div id="floating-label-md" class="chi-input__wrapper -floating-label">
+          <select class="chi-select -md" id="floating-label-portal-select-md">
+            <option></option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+          <label for="floating-label-portal-select-md">Placeholder text</label>
+        </div>
+
+        <div id="floating-label-lg" class="chi-input__wrapper -floating-label">
+          <select class="chi-select -lg" id="floating-label-portal-select-lg">
+            <option></option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+          <label for="floating-label-portal-select-lg">Placeholder text</label>
+        </div>
+
+        <script>chi.floatingLabel(document.querySelectorAll('.-floating-label'));</script>
 
 script.
   document.addEventListener(

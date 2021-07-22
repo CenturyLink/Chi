@@ -146,6 +146,11 @@ $avatar-default-size: 'md';
       &.-transparent {
         background-color: transparent;
       }
+
+      & > i,
+      &.chi-icon > svg {
+        color: map-get(map-get($avatar-colors, $color), text-color);
+      }
     }
 
     @each $type in map-keys($avatar-sizes) {

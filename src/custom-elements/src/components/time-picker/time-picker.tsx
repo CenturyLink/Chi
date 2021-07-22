@@ -201,7 +201,7 @@ export class TimePicker {
             value={this.value}
             disabled={this.disabled}
           />
-          <chi-icon icon="circle-clock-outline" color="muted"></chi-icon>
+          <chi-icon icon="circle-clock-outline"></chi-icon>
         </div>
         {!this.disabled && chiPopover}
       </div>

@@ -1,35 +1,47 @@
 @import '_global-variables';
+@import '_variables';
 @import '_global-mixins';
+@import '_mixins';
 
 $states: (
   success: (
-    border-left-color: $alert-success-accent-border-color,
+    accent-border-color: $alert-success-accent-border-color,
+    border-color: $alert-success-border-color,
+    banner-background-color: $alert-success-banner-background-color,
+    bubble-background-color: $alert-success-bubble-background-color,
     color: $alert-success-icon-color,
-    background-color: $alert-success-background-color,
     title-color: $alert-success-title-text-color
   ),
   danger: (
-    border-left-color: $alert-danger-accent-border-color,
+    accent-border-color: $alert-danger-accent-border-color,
+    border-color: $alert-danger-border-color,
     color: $alert-danger-icon-color,
-    background-color: $alert-danger-background-color,
+    bubble-background-color: $alert-danger-bubble-background-color,
+    banner-background-color: $alert-danger-banner-background-color,
     title-color: $alert-danger-title-text-color
   ),
   warning: (
-    border-left-color: $alert-warning-accent-border-color,
+    accent-border-color: $alert-warning-accent-border-color,
+    border-color: $alert-warning-border-color,
     color: $alert-warning-icon-color,
-    background-color: $alert-warning-background-color,
+    bubble-background-color: $alert-warning-bubble-background-color,
+    banner-background-color: $alert-warning-banner-background-color,
     title-color: $alert-warning-title-text-color
   ),
   info: (
-    border-left-color: $alert-info-accent-border-color,
+    accent-border-color: $alert-info-accent-border-color,
+    border-color: $alert-info-border-color,
     color: $alert-info-icon-color,
-    background-color: $alert-info-background-color,
+    bubble-background-color: $alert-info-bubble-background-color,
+    banner-background-color: $alert-info-banner-background-color,
     title-color: $alert-info-title-text-color
   ),
   muted: (
-    border-left-color: $alert-muted-accent-border-color,
+    accent-border-color: $alert-muted-accent-border-color,
+    border-color: $alert-muted-border-color,
     color: $alert-muted-icon-color,
-    background-color: $alert-muted-background-color,
+    bubble-background-color: $alert-muted-bubble-background-color,
+    banner-background-color: $alert-muted-banner-background-color,
     title-color: $alert-muted-title-text-color
   )
 );
@@ -45,18 +57,18 @@ $states: (
   font-family: $font-family-base;
   font-size: $font-size-base;
   line-height: $line-height;
-  padding: 0.8125rem 1.5rem;
+  padding: $alert-md-padding;
   position: relative;
   text-align: left;
 
   &:not(.-banner) {
     &::before {
-      background-color: $alert-text-color;
+      background-color: $alert-accent-border-color;
       content: '';
-      height: 100%;
+      height: calc(100% + 0.125rem);
       left: -0.0625rem;
       position: absolute;
-      top: 0;
+      top: -0.0625rem;
       width: 0.25rem;
     }
   }
@@ -78,41 +90,52 @@ $states: (
     }
   }
 
+  .chi-alert__icon,
+  > chi-icon .chi-icon { // sass-lint:disable-line force-element-nesting
+    color: $alert-icon-color;
+  }
+
   > .chi-icon,
   > chi-icon .chi-icon, // sass-lint:disable-line force-element-nesting
   .chi-alert__icon {
     &:not(.icon-x) {
       flex-shrink: 0;
-      font-size: 1rem;
-      height: 1rem;
-      margin-bottom: 0.125rem;
-      margin-right: 1rem;
-      margin-top: 0.125rem;
-      width: 1rem;
+      font-size: $alert-md-icon-size;
+      height: $alert-md-icon-size;
+      margin-bottom: $alert-md-icon-margin-y;
+      margin-right: $alert-md-icon-margin-right;
+      margin-top: $alert-md-icon-margin-y;
+      width: $alert-md-icon-size;
     }
   }
 
   .chi-alert__text,
   p,
   .-text {
-    font-size: $font-size-base;
-    line-height: $line-height;
+    font-size: $alert-md-text-font-size;
+    line-height: $alert-md-text-line-height;
     margin: 0;
     word-break: break-word;
   }
 
+  .chi-alert__text {
+    padding-top: $alert-md-text-padding-top;
+  }
+
   @each $state in map-keys($states) {
     &.-#{$state} {
+      background-color: map-get(map-get($states, $state), bubble-background-color);
+      border-color: map-get(map-get($states, $state), border-color);
       color: $alert-text-color;
 
       &:not(.-banner) {
         &::before {
-          background-color: map-get(map-get($states, $state), border-left-color);
+          background-color: map-get(map-get($states, $state), accent-border-color);
         }
       }
 
       &.-banner {
-        background-color: map-get(map-get($states, $state), background-color);
+        background-color: map-get(map-get($states, $state), banner-background-color);
       }
 
       .chi-alert__icon,
@@ -137,10 +160,11 @@ $states: (
     width: 100%;
 
     .chi-alert__title {
-      font-size: $font-size-base;
-      font-weight: $font-weight-semi-bold;
-      line-height: $line-height;
-      margin-bottom: 0;
+      color: $alert-title-text-color;
+      font-size: $alert-md-title-font-size;
+      font-weight: $alert-md-title-font-weight;
+      line-height: $alert-md-title-line-height;
+      margin-bottom: $alert-md-title-margin-bottom;
       margin-top: 0;
       word-break: break-word;
 
@@ -176,6 +200,7 @@ $states: (
       transform: initial;
 
       .chi-icon {
+        color: $alert-close-icon-color;
         font-size: 0.75rem;
         height: 0.75rem;
         line-height: 0.75rem;
@@ -185,16 +210,16 @@ $states: (
   }
 
   &.-lg {
-    padding: 1.0625rem 1.5rem;
+    padding: $alert-lg-padding;
 
     > .chi-icon,
     > chi-icon .chi-icon, // sass-lint:disable-line force-element-nesting
     .chi-alert__icon {
       &:not(.icon-x) {
-        font-size: 1.25rem;
-        height: 1.25rem;
-        line-height: 1.25rem;
-        width: 1.25rem;
+        font-size: $alert-lg-icon-size;
+        height: $alert-lg-icon-size;
+        line-height: $alert-lg-icon-size;
+        width: $alert-lg-icon-size;
       }
     }
 
@@ -215,10 +240,10 @@ $states: (
 
     .chi-alert__content {
       .chi-alert__title {
-        font-size: $font-size-lg;
-        font-weight: $font-weight-semi-bold;
-        line-height: $line-height-lg;
-        margin-bottom: 0;
+        font-size: $alert-lg-title-font-size;
+        font-weight: $alert-lg-title-font-weight;
+        line-height: $alert-lg-title-line-height;
+        margin-bottom: $alert-lg-title-margin-bottom;
 
         + .chi-alert__text {
           margin-top: 0.375rem;
@@ -226,7 +251,7 @@ $states: (
       }
 
       .chi-alert__text {
-        padding-top: 0.125rem;
+        padding-top: $alert-lg-text-padding-top;
       }
 
       .chi-alert__actions {
@@ -245,10 +270,22 @@ $states: (
   }
 
   &.-sm {
-    padding: 0.5625rem 1.5rem;
+    padding: $alert-sm-padding;
+
+    > .chi-icon,
+    > chi-icon .chi-icon, // sass-lint:disable-line force-element-nesting
+    .chi-alert__icon {
+      &:not(.icon-x) {
+        font-size: $alert-sm-icon-size;
+        height: $alert-sm-icon-size;
+        line-height: $alert-sm-icon-size;
+        width: $alert-sm-icon-size;
+      }
+    }
 
     .chi-alert__content {
       .chi-alert__title {
+        font-size: $alert-sm-title-font-size;
         margin-bottom: 0;
 
         + .chi-alert__text {
@@ -258,9 +295,9 @@ $states: (
       }
 
       .chi-alert__text {
-        font-size: $font-size-sm;
-        line-height: $line-height-sm;
-        padding-top: 0.125rem;
+        font-size: $alert-sm-text-font-size;
+        line-height: $alert-sm-text-line-height;
+        padding-top: $alert-sm-text-padding-top;
       }
 
       .chi-alert__actions {

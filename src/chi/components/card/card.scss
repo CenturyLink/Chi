@@ -3,7 +3,7 @@
 
 .chi-card {
   background-color: $card-background-color;
-  border: 0.0625rem solid $card-border-color;
+  border: $card-border;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -19,7 +19,7 @@
     flex-direction: column;
     font-size: $font-size-base;
     line-height: $line-height;
-    padding: 1rem;
+    padding: $card-content-padding;
 
     .chi-card__title {
       font-size: $font-size-lg;
@@ -69,7 +69,8 @@
   }
 
   &__header {
-    box-shadow: inset 0 -1px 0 0 $card-header-border-color;
+    background-color: $card-header-background-color;
+    box-shadow: $card-header-box-shadow;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -100,9 +101,9 @@
   }
 
   .chi-card__title {
-    font-size: $font-size-lg;
-    font-weight: $font-weight-semi-bold;
-    line-height: $line-height-lg;
+    font-size: $card-title-font-size;
+    font-weight: $card-title-font-weight;
+    line-height: $card-title-line-height;
     margin: 0;
   }
 
@@ -144,7 +145,11 @@
   }
 
   &__tabs {
-    padding: 0 1rem;
+    padding: $card-tabs-padding;
+
+    .chi-tabs {
+      border-bottom: $card-tabs-border-bottom;
+    }
   }
 
   &.-active {
@@ -223,84 +228,11 @@
     }
   }
 
-  // Portal
-
-  &.-portal {
-    background-color: $color-grey-10;
-    border: 0;
-    border-radius: 0;
+  &.-highlight {
+    background-color: $color-background-secondary-light;
 
     .chi-card__header {
-      align-items: center;
       background-color: $color-background-white;
-      box-shadow: none;
-      padding: 0.5rem 0;
-    }
-
-    .chi-card__content {
-      padding: 2rem;
-
-      .chi-table {
-        &.-portal {
-          &:not(.-bordered) {
-            border: 0.0625rem solid $color-grey-15;
-          }
-        }
-      }
-    }
-
-    .chi-card__title {
-      font-size: $font-size-7;
-      font-weight: $font-weight-extra-bold;
-    }
-
-    .chi-card__tabs {
-      align-items: center;
-      display: flex;
-      padding: 1rem 2rem 0;
-
-      .chi-card__title {
-        + .chi-tabs {
-          margin-left: 2rem;
-          width: auto;
-
-          &::before {
-            border-left: 0.0625rem solid $color-grey-50;
-            content: '';
-            left: -1rem;
-            position: relative;
-          }
-        }
-      }
-
-      .chi-tabs {
-        border-bottom: 0.125rem solid $color-border-base;
-        width: 100%;
-
-        &.-sm {
-          height: 2.5rem;
-
-          >li {
-            >a {
-              padding: 0.75rem 0;
-            }
-
-            &.-active {
-              >a {
-                padding-bottom: 0.625rem;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    &.-highlight {
-      background-color: $color-background-secondary-light;
-
-      .chi-card__header {
-        background-color: $color-background-white;
-      }
     }
   }
 }

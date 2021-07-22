@@ -26,7 +26,6 @@
       "postInteractionWait": "",
       "selectors": [
         "test-accordion-base",
-        "test-accordion-portal",
         "test-accordion-sizes"
       ],
       "selectorExpansion": true,
@@ -426,10 +425,7 @@
         ".test-card-header-footer-small",
         ".test-card-empty",
         ".test-card-active",
-        ".test-card-no-border",
-        ".test-card-portal-base",
-        ".test-card-portal-highlight",
-        ".test-card-portal-base-tabs"
+        ".test-card-no-border"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -597,11 +593,7 @@
         ".test-backdrop-inverse-left",
         ".test-backdrop-inverse-left-headed",
         ".test-backdrop-inverse-left-with-title",
-        ".test-non-closable",
-        ".test-top-portal",
-        ".test-right-portal",
-        ".test-bottom-portal",
-        ".test-left-portal"
+        ".test-non-closable"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -1142,8 +1134,8 @@
         ".test-more-left-end",
         ".test-with-custom-content",
         ".test-closable",
-        ".test-portal",
-        ".test-portal-draggable"
+        ".test-modal",
+        ".test-modal-draggable"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -1317,14 +1309,10 @@
         ".test-card",
         ".test-card-active",
         ".test-card-center",
-        ".test-portal",
-        ".test-portal-active",
-        ".test-portal-center",
-        ".test-portal-center-active",
-        ".test-portal-background-icon",
-        ".test-portal-background-icon-active",
-        ".test-portal-compact",
-        ".test-portal-compact-active"
+        ".test-background-icon",
+        ".test-background-icon-active",
+        ".test-compact",
+        ".test-compact-active"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -1461,7 +1449,7 @@
         ".test-vertical-inverse",
         ".test-vertical-icons-inverse",
         ".test-vertical-icons-description",
-        ".test-vertical-icons-portal"
+        ".test-vertical-tree-tabs"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -1521,9 +1509,7 @@
       "postInteractionWait": "",
       "selectors": [
         ".test-toolbar-base",
-        ".test-toolbar-base-ribbon",
-        ".test-toolbar-base-portal",
-        ".test-toolbar-base-ribbon-portal"
+        ".test-toolbar-base-ribbon"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,

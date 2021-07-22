@@ -7,6 +7,7 @@ $sizes: (
     font-size: $select-sm-font-size,
     line-height: $select-sm-line-height,
     background-position: $select-sm-arrow-background-position,
+    background-size: $select-sm-arrow-background-size,
     padding: $select-sm-padding,
   ),
   md: (
@@ -14,6 +15,7 @@ $sizes: (
     font-size: $select-md-font-size,
     line-height: $select-md-line-height,
     background-position: $select-md-arrow-background-position,
+    background-size: $select-md-arrow-background-size,
     padding: $select-md-padding,
   ),
   lg: (
@@ -21,6 +23,7 @@ $sizes: (
     font-size: $select-lg-font-size,
     line-height: $select-lg-line-height,
     background-position: $select-lg-arrow-background-position,
+    background-size: $select-lg-arrow-background-size,
     padding: $select-lg-padding,
   ),
   xl: (
@@ -28,6 +31,7 @@ $sizes: (
     font-size: $select-xl-font-size,
     line-height: $select-xl-line-height,
     background-position: $select-xl-arrow-background-position,
+    background-size: $select-xl-arrow-background-size,
     padding: $select-xl-padding,
   )
 );
@@ -36,6 +40,10 @@ $sizes: (
 select.chi-input { // sass-lint:disable-line force-element-nesting
   appearance: none;
   background-color: $select-background-color;
+  background-image: $select-background-image;
+  background-position: map-get(map-get($sizes, md), background-position);
+  background-repeat: no-repeat;
+  background-size: $select-md-arrow-background-size;
   border: 0.0625rem solid $select-border-color;
   border-radius: $border-radius-base;
   box-shadow: $select-box-shadow;
@@ -49,7 +57,7 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
   width: 100%;
 
   &:not([multiple]) {
-    background-image: url('icon-chevron-thin-down.svg');
+    background-image: $select-background-image;
     background-position: map-get(map-get($sizes, md), background-position);
     background-repeat: no-repeat;
     background-size: 0.75rem;
@@ -88,20 +96,12 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
   @each $type in map-keys($sizes) {
     &.-#{$type} {
       background-position: map-get(map-get($sizes, $type), background-position);
+      background-size: map-get(map-get($sizes, $type), background-size);
       font-size: map-get(map-get($sizes, $type), font-size);
       height: map-get(map-get($sizes, $type), height);
       line-height: map-get(map-get($sizes, $type), line-height);
       padding: map-get(map-get($sizes, $type), padding);
     }
-  }
-
-  &.-portal {
-    background-image: url('icon-chevron-thin-down-portal.svg');
-  }
-
-  &.-lg,
-  &.-xl {
-    background-size: 1rem;
   }
 
   &:not([disabled]) {

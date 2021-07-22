@@ -140,99 +140,184 @@ p.-text
         <button class="chi-button">Button</button>
       </div>
 
-h2 Sizes
-p.-text
-  | Button groups support the following sizes: <code>-sm</code>, <code>-md</code>,
-  |  <code>-lg</code>, <code>-xl</code>.
-  | The default size is <code>-md</code>.
+.-portal--hide
+  h2 Sizes
+  p.-text
+    | Button groups support the following sizes: <code>-sm</code>, <code>-md</code>,
+    |  <code>-lg</code>, <code>-xl</code>.
+    | The default size is <code>-md</code>.
 
-h3 Horizontal
-.example.-mb--3
-  .-px--3.-pt--0.-pb--3
-    each size in ['sm', 'md', 'lg', 'xl']
-      p.-text--bold= '-' + size
-      .-d--flex.-flex--wrap
-        .chi-button-group
-          button(class=`chi-button -${size}`) Button
-          button(class=`chi-button -${size}`) Button
-          button(class=`chi-button -${size}`) Button
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-size-horizontal
-      li.-disabled
-        a(href=`#webcomponent-size-horizontal`) Web Component
-      li.-active
-        a(href=`#html-size-horizontal`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-size-horizontal
-  .chi-tabs-panel.-active#html-size-horizontal
-    :code(lang='html')
-      <!-- sm -->
-      <div class="chi-button-group">
-        <button class="chi-button -sm">Button</button>
-        <button class="chi-button -sm">Button</button>
-        <button class="chi-button -sm">Button</button>
-      </div>
-      <!-- md -->
-      <div class="chi-button-group">
-        <button class="chi-button -md">Button</button>
-        <button class="chi-button -md">Button</button>
-        <button class="chi-button -md">Button</button>
-      </div>
-      <!-- lg -->
-      <div class="chi-button-group">
-        <button class="chi-button -lg">Button</button>
-        <button class="chi-button -lg">Button</button>
-        <button class="chi-button -lg">Button</button>
-      </div>
-      <!-- xl -->
-      <div class="chi-button-group">
-        <button class="chi-button -xl">Button</button>
-        <button class="chi-button -xl">Button</button>
-        <button class="chi-button -xl">Button</button>
-      </div>
+  h3 Horizontal
+  .example.-mb--3
+    .-px--3.-pt--0.-pb--3
+      each size in ['sm', 'md', 'lg', 'xl']
+        p.-text--bold= '-' + size
+        .-d--flex.-flex--wrap
+          .chi-button-group
+            button(class=`chi-button -${size}`) Button
+            button(class=`chi-button -${size}`) Button
+            button(class=`chi-button -${size}`) Button
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-size-horizontal
+        li.-disabled
+          a(href=`#webcomponent-size-horizontal`) Web Component
+        li.-active
+          a(href=`#html-size-horizontal`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-size-horizontal
+    .chi-tabs-panel.-active#html-size-horizontal
+      :code(lang='html')
+        <!-- sm -->
+        <div class="chi-button-group">
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm">Button</button>
+        </div>
+        <!-- md -->
+        <div class="chi-button-group">
+          <button class="chi-button -md">Button</button>
+          <button class="chi-button -md">Button</button>
+          <button class="chi-button -md">Button</button>
+        </div>
+        <!-- lg -->
+        <div class="chi-button-group">
+          <button class="chi-button -lg">Button</button>
+          <button class="chi-button -lg">Button</button>
+          <button class="chi-button -lg">Button</button>
+        </div>
+        <!-- xl -->
+        <div class="chi-button-group">
+          <button class="chi-button -xl">Button</button>
+          <button class="chi-button -xl">Button</button>
+          <button class="chi-button -xl">Button</button>
+        </div>
 
-h3 Vertical
-.example.-mb--3
-  .-px--3.-pt--0.-pb--3
-    each size in ['sm', 'md', 'lg', 'xl']
-      p.-text--bold= '-' + size
-      .-d--flex.-flex--wrap
-        .chi-button-group.-vertical.-fluid(style="width:12rem")
-          button(class=`chi-button -${size}`) Button
-          button(class=`chi-button -${size}`) Button
-          button(class=`chi-button -${size}`) Button
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-size-vertical
-      li.-disabled
-        a(href=`#webcomponent-size-vertical`) Web Component
-      li.-active
-        a(href=`#html-size-vertical`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-size-vertical
-  .chi-tabs-panel.-active#html-size-vertical
-    :code(lang="html")
-      <!-- sm -->
-      <div class="chi-button-group -vertical -fluid">
-        <button class="chi-button -sm">Button</button>
-        <button class="chi-button -sm">Button</button>
-        <button class="chi-button -sm">Button</button>
-      </div>
-      <!-- md -->
-      <div class="chi-button-group -vertical -fluid">
-        <button class="chi-button -md">Button</button>
-        <button class="chi-button -md">Button</button>
-        <button class="chi-button -md">Button</button>
-      </div>
-      <!-- lg -->
-      <div class="chi-button-group -vertical -fluid">
-        <button class="chi-button -lg">Button</button>
-        <button class="chi-button -lg">Button</button>
-        <button class="chi-button -lg">Button</button>
-      </div>
-      <!-- xl -->
-      <div class="chi-button-group -vertical -fluid">
-        <button class="chi-button -xl">Button</button>
-        <button class="chi-button -xl">Button</button>
-        <button class="chi-button -xl">Button</button>
-      </div>
+  h3 Vertical
+  .example.-mb--3
+    .-px--3.-pt--0.-pb--3
+      each size in ['sm', 'md', 'lg', 'xl']
+        p.-text--bold= '-' + size
+        .-d--flex.-flex--wrap
+          .chi-button-group.-vertical.-fluid(style="width:12rem")
+            button(class=`chi-button -${size}`) Button
+            button(class=`chi-button -${size}`) Button
+            button(class=`chi-button -${size}`) Button
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-size-vertical
+        li.-disabled
+          a(href=`#webcomponent-size-vertical`) Web Component
+        li.-active
+          a(href=`#html-size-vertical`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-size-vertical
+    .chi-tabs-panel.-active#html-size-vertical
+      :code(lang="html")
+        <!-- sm -->
+        <div class="chi-button-group -vertical -fluid">
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm">Button</button>
+        </div>
+        <!-- md -->
+        <div class="chi-button-group -vertical -fluid">
+          <button class="chi-button -md">Button</button>
+          <button class="chi-button -md">Button</button>
+          <button class="chi-button -md">Button</button>
+        </div>
+        <!-- lg -->
+        <div class="chi-button-group -vertical -fluid">
+          <button class="chi-button -lg">Button</button>
+          <button class="chi-button -lg">Button</button>
+          <button class="chi-button -lg">Button</button>
+        </div>
+        <!-- xl -->
+        <div class="chi-button-group -vertical -fluid">
+          <button class="chi-button -xl">Button</button>
+          <button class="chi-button -xl">Button</button>
+          <button class="chi-button -xl">Button</button>
+        </div>
+
+.-portal--show
+  h2 Sizes
+  p.-text
+    | Button groups support the following sizes: <code>-sm</code>, <code>-md</code>,
+    |  <code>-lg</code>.
+    | The default size is <code>-md</code>.
+
+  h3 Horizontal
+  .example.-mb--3
+    .-px--3.-pt--0.-pb--3
+      each size in ['sm', 'md', 'lg']
+        p.-text--bold= '-' + size
+        .-d--flex.-flex--wrap
+          .chi-button-group
+            button(class=`chi-button -${size}`) Button
+            button(class=`chi-button -${size}`) Button
+            button(class=`chi-button -${size}`) Button
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-size-horizontal
+        li.-disabled
+          a(href=`#webcomponent-portal-size-horizontal`) Web Component
+        li.-active
+          a(href=`#html-portal-size-horizontal`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-size-horizontal
+    .chi-tabs-panel.-active#html-portal-size-horizontal
+      :code(lang='html')
+        <!-- sm -->
+        <div class="chi-button-group">
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm">Button</button>
+        </div>
+        <!-- md -->
+        <div class="chi-button-group">
+          <button class="chi-button -md">Button</button>
+          <button class="chi-button -md">Button</button>
+          <button class="chi-button -md">Button</button>
+        </div>
+        <!-- lg -->
+        <div class="chi-button-group">
+          <button class="chi-button -lg">Button</button>
+          <button class="chi-button -lg">Button</button>
+          <button class="chi-button -lg">Button</button>
+        </div>
+
+  h3 Vertical
+  .example.-mb--3
+    .-px--3.-pt--0.-pb--3
+      each size in ['sm', 'md', 'lg']
+        p.-text--bold= '-' + size
+        .-d--flex.-flex--wrap
+          .chi-button-group.-vertical.-fluid(style="width:12rem")
+            button(class=`chi-button -${size}`) Button
+            button(class=`chi-button -${size}`) Button
+            button(class=`chi-button -${size}`) Button
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-size-vertical
+        li.-disabled
+          a(href=`#webcomponent-portal-size-vertical`) Web Component
+        li.-active
+          a(href=`#html-portal-size-vertical`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-size-vertical
+    .chi-tabs-panel.-active#html-portal-size-vertical
+      :code(lang="html")
+        <!-- sm -->
+        <div class="chi-button-group -vertical -fluid">
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm">Button</button>
+        </div>
+        <!-- md -->
+        <div class="chi-button-group -vertical -fluid">
+          <button class="chi-button -md">Button</button>
+          <button class="chi-button -md">Button</button>
+          <button class="chi-button -md">Button</button>
+        </div>
+        <!-- lg -->
+        <div class="chi-button-group -vertical -fluid">
+          <button class="chi-button -lg">Button</button>
+          <button class="chi-button -lg">Button</button>
+          <button class="chi-button -lg">Button</button>
+        </div>
+
 
 h2 Hybrid buttons
 p.-text
@@ -291,64 +376,117 @@ p.-text
         </button>
       </div>
 
-h3 Hybrid buttons sizes
-p.-text
-  | Hybrid buttons support the following sizes: <code>-sm</code>, <code>-md</code>,
-  |  <code>-lg</code>, <code>-xl</code>.
-  | The default size is <code>-md</code>.
-.example.-mb--3
-  .-p--2
-    each size in ['sm', 'md', 'lg', 'xl']
-      .chi-button-group.-m--1
-        button(class=`chi-button -${size}`) Button
-        button(class=`chi-button -${size} -icon`, aria-label="Button action")
-          .chi-button__content
-            i.chi-icon.icon-atom
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-hybrid-sizes
-      li.-disabled
-        a(href=`#webcomponent-hybrid-sizes`) Web Component
-      li.-active
-        a(href=`#html-hybrid-sizes`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-hybrid-sizes
-  .chi-tabs-panel.-active#html-hybrid-sizes
-    :code(lang='html')
-      <!-- sm -->
-      <div class="chi-button-group">
-        <button class="chi-button -sm">Button</button>
-        <button class="chi-button -sm -icon" aria-label="Button action">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-atom"></i>
-          </div>
-        </button>
-      </div>
-      <!-- md -->
-      <div class="chi-button-group">
-        <button class="chi-button -md">Button</button>
-        <button class="chi-button -md -icon" aria-label="Button action">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-atom"></i>
-          </div>
-        </button>
-      </div>
-      <!-- lg -->
-      <div class="chi-button-group">
-        <button class="chi-button -lg">Button</button>
-        <button class="chi-button -lg -icon" aria-label="Button action">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-atom"></i>
-          </div>
-        </button>
-      </div>
-      <!-- xl -->
-      <div class="chi-button-group">
-        <button class="chi-button -xl">Button</button>
-        <button class="chi-button -xl -icon" aria-label="Button action">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-atom"></i>
-          </div>
-        </button>
-      </div>
+.-portal--hide
+  h3 Hybrid buttons sizes
+  p.-text
+    | Hybrid buttons support the following sizes: <code>-sm</code>, <code>-md</code>,
+    |  <code>-lg</code>, <code>-xl</code>.
+    | The default size is <code>-md</code>.
+  .example.-mb--3
+    .-p--2
+      each size in ['sm', 'md', 'lg', 'xl']
+        .chi-button-group.-m--1
+          button(class=`chi-button -${size}`) Button
+          button(class=`chi-button -${size} -icon`, aria-label="Button action")
+            .chi-button__content
+              i.chi-icon.icon-atom
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-hybrid-sizes
+        li.-disabled
+          a(href=`#webcomponent-hybrid-sizes`) Web Component
+        li.-active
+          a(href=`#html-hybrid-sizes`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-hybrid-sizes
+    .chi-tabs-panel.-active#html-hybrid-sizes
+      :code(lang='html')
+        <!-- sm -->
+        <div class="chi-button-group">
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm -icon" aria-label="Button action">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-atom"></i>
+            </div>
+          </button>
+        </div>
+        <!-- md -->
+        <div class="chi-button-group">
+          <button class="chi-button -md">Button</button>
+          <button class="chi-button -md -icon" aria-label="Button action">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-atom"></i>
+            </div>
+          </button>
+        </div>
+        <!-- lg -->
+        <div class="chi-button-group">
+          <button class="chi-button -lg">Button</button>
+          <button class="chi-button -lg -icon" aria-label="Button action">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-atom"></i>
+            </div>
+          </button>
+        </div>
+        <!-- xl -->
+        <div class="chi-button-group">
+          <button class="chi-button -xl">Button</button>
+          <button class="chi-button -xl -icon" aria-label="Button action">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-atom"></i>
+            </div>
+          </button>
+        </div>
+
+.-portal--show
+  h3 Hybrid buttons sizes
+  p.-text
+    | Hybrid buttons support the following sizes: <code>-sm</code>, <code>-md</code>,
+    |  <code>-lg</code>.
+    | The default size is <code>-md</code>.
+  .example.-mb--3
+    .-p--2
+      each size in ['sm', 'md', 'lg']
+        .chi-button-group.-m--1
+          button(class=`chi-button -${size}`) Button
+          button(class=`chi-button -${size} -icon`, aria-label="Button action")
+            .chi-button__content
+              i.chi-icon.icon-atom
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-hybrid-sizes
+        li.-disabled
+          a(href=`#webcomponent-portal-hybrid-sizes`) Web Component
+        li.-active
+          a(href=`#html-portal-hybrid-sizes`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-hybrid-sizes
+    .chi-tabs-panel.-active#html-portal-hybrid-sizes
+      :code(lang='html')
+        <!-- sm -->
+        <div class="chi-button-group">
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm -icon" aria-label="Button action">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-atom"></i>
+            </div>
+          </button>
+        </div>
+        <!-- md -->
+        <div class="chi-button-group">
+          <button class="chi-button -md">Button</button>
+          <button class="chi-button -md -icon" aria-label="Button action">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-atom"></i>
+            </div>
+          </button>
+        </div>
+        <!-- lg -->
+        <div class="chi-button-group">
+          <button class="chi-button -lg">Button</button>
+          <button class="chi-button -lg -icon" aria-label="Button action">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-atom"></i>
+            </div>
+          </button>
+        </div>
+
 
 script.
   document.addEventListener(

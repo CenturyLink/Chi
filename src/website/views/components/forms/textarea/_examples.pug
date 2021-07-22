@@ -562,74 +562,133 @@ h3 Left + Right Aligned
         </div>
       </div>
 
-h2 Sizes
-p.-text
-  | Textareas support the following sizes: <code>sm</code>, <code>md</code>,
-  |  <code>lg</code>, <code>xl</code>.
-  | The default size is <code>md</code>.
-.example.-mb--3
-  .-p--3
-    .chi-grid
-      .chi-col.-w--12.-w-sm--8.-w-md--6
-        .chi-grid
-          .chi-col.-w--12.-mb--2
-            .chi-form__item
-              chi-label(for="example__sm") Label
-              chi-textarea(size="sm", id="example__sm") Sample text
-          .chi-col.-w--12.-mb--2
-            .chi-form__item
-              chi-label(for="example__md") Label
-              chi-textarea(size="md", id="example__md") Sample text
-          .chi-col.-w--12.-mb--2
-            .chi-form__item
-              chi-label(for="example__lg") Label
-              chi-textarea(size="lg", id="example__lg") Sample text
-          .chi-col.-w--12
-            .chi-form__item
-              chi-label(for="example__xl") Label
-              chi-textarea(size="xl", id="example__xl") Sample text
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-sizes
-      li.-active
-        a(href=`#webcomponent-sizes`) Web Component
-      li
-        a(href=`#html-sizes`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-sizes
-    :code(lang="html")
-      <div class="chi-form__item">
-        <chi-label for="example__sm">Label</chi-label>
-        <chi-textarea size="sm" id="example__sm">Sample text</chi-textarea>
-      </div>
-      <div class="chi-form__item">
-        <chi-label for="example__md">Label</chi-label>
-        <chi-textarea size="md" id="example__md">Sample text</chi-textarea>
-      </div>
-      <div class="chi-form__item">
-        <chi-label for="example__lg">Label</chi-label>
-        <chi-textarea size="lg" id="example__lg">Sample text</chi-textarea>
-      </div>
-      <div class="chi-form__item">
-        <chi-label for="example__xl">Label</chi-label>
-        <chi-textarea size="xl" id="example__xl">Sample text</chi-textarea>
-      </div>
-  .chi-tabs-panel#html-sizes
-    :code(lang='html')
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__sm">Label</label>
-        <textarea class="chi-input -sm" id="example__sm">Sample text</textarea>
-      </div>
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__md">Label</label>
-        <textarea class="chi-input -md" id="example__md">Sample text</textarea>
-      </div>
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__lg">Label</label>
-        <textarea class="chi-input -lg" id="example__lg">Sample text</textarea>
-      </div>
-      <div class="chi-form__item">
-        <label class="chi-label" for="example__xl">Label</label>
-        <textarea class="chi-input -xl" id="example__xl">Sample text</textarea>
-      </div>
+.-portal--hide
+  h2 Sizes
+  p.-text
+    | Textareas support the following sizes: <code>sm</code>, <code>md</code>,
+    |  <code>lg</code>, <code>xl</code>.
+    | The default size is <code>md</code>.
+  .example.-mb--3
+    .-p--3
+      .chi-grid
+        .chi-col.-w--12.-w-sm--8.-w-md--6
+          .chi-grid
+            .chi-col.-w--12.-mb--2
+              .chi-form__item
+                chi-label(for="example__sm") Label
+                chi-textarea(size="sm", id="example__sm") Sample text
+            .chi-col.-w--12.-mb--2
+              .chi-form__item
+                chi-label(for="example__md") Label
+                chi-textarea(size="md", id="example__md") Sample text
+            .chi-col.-w--12.-mb--2
+              .chi-form__item
+                chi-label(for="example__lg") Label
+                chi-textarea(size="lg", id="example__lg") Sample text
+            .chi-col.-w--12
+              .chi-form__item
+                chi-label(for="example__xl") Label
+                chi-textarea(size="xl", id="example__xl") Sample text
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-sizes
+        li.-active
+          a(href=`#webcomponent-sizes`) Web Component
+        li
+          a(href=`#html-sizes`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-sizes
+      :code(lang="html")
+        <div class="chi-form__item">
+          <chi-label for="example__sm">Label</chi-label>
+          <chi-textarea size="sm" id="example__sm">Sample text</chi-textarea>
+        </div>
+        <div class="chi-form__item">
+          <chi-label for="example__md">Label</chi-label>
+          <chi-textarea size="md" id="example__md">Sample text</chi-textarea>
+        </div>
+        <div class="chi-form__item">
+          <chi-label for="example__lg">Label</chi-label>
+          <chi-textarea size="lg" id="example__lg">Sample text</chi-textarea>
+        </div>
+        <div class="chi-form__item">
+          <chi-label for="example__xl">Label</chi-label>
+          <chi-textarea size="xl" id="example__xl">Sample text</chi-textarea>
+        </div>
+    .chi-tabs-panel#html-sizes
+      :code(lang='html')
+        <div class="chi-form__item">
+          <label class="chi-label" for="example__sm">Label</label>
+          <textarea class="chi-input -sm" id="example__sm">Sample text</textarea>
+        </div>
+        <div class="chi-form__item">
+          <label class="chi-label" for="example__md">Label</label>
+          <textarea class="chi-input -md" id="example__md">Sample text</textarea>
+        </div>
+        <div class="chi-form__item">
+          <label class="chi-label" for="example__lg">Label</label>
+          <textarea class="chi-input -lg" id="example__lg">Sample text</textarea>
+        </div>
+        <div class="chi-form__item">
+          <label class="chi-label" for="example__xl">Label</label>
+          <textarea class="chi-input -xl" id="example__xl">Sample text</textarea>
+        </div>
+
+.-portal--show
+  h2 Sizes
+  p.-text
+    | Textareas support the following sizes: <code>sm</code>, <code>md</code>,
+    |  <code>lg</code>.
+    | The default size is <code>md</code>.
+  .example.-mb--3
+    .-p--3
+      .chi-grid
+        .chi-col.-w--12.-w-sm--8.-w-md--6
+          .chi-grid
+            .chi-col.-w--12.-mb--2
+              .chi-form__item
+                chi-label(for="example__sm") Label
+                chi-textarea(size="sm", id="example__sm") Sample text
+            .chi-col.-w--12.-mb--2
+              .chi-form__item
+                chi-label(for="example__md") Label
+                chi-textarea(size="md", id="example__md") Sample text
+            .chi-col.-w--12.-mb--2
+              .chi-form__item
+                chi-label(for="example__lg") Label
+                chi-textarea(size="lg", id="example__lg") Sample text
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-sizes
+        li.-active
+          a(href=`#webcomponent-portal-sizes`) Web Component
+        li
+          a(href=`#html-portal-sizes`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal-sizes
+      :code(lang="html")
+        <div class="chi-form__item">
+          <chi-label for="example__sm">Label</chi-label>
+          <chi-textarea size="sm" id="example__sm">Sample text</chi-textarea>
+        </div>
+        <div class="chi-form__item">
+          <chi-label for="example__md">Label</chi-label>
+          <chi-textarea size="md" id="example__md">Sample text</chi-textarea>
+        </div>
+        <div class="chi-form__item">
+          <chi-label for="example__lg">Label</chi-label>
+          <chi-textarea size="lg" id="example__lg">Sample text</chi-textarea>
+        </div>
+    .chi-tabs-panel#html-portal-sizes
+      :code(lang='html')
+        <div class="chi-form__item">
+          <label class="chi-label" for="example__sm">Label</label>
+          <textarea class="chi-input -sm" id="example__sm">Sample text</textarea>
+        </div>
+        <div class="chi-form__item">
+          <label class="chi-label" for="example__md">Label</label>
+          <textarea class="chi-input -md" id="example__md">Sample text</textarea>
+        </div>
+        <div class="chi-form__item">
+          <label class="chi-label" for="example__lg">Label</label>
+          <textarea class="chi-input -lg" id="example__lg">Sample text</textarea>
+        </div>
 
 script.
     document.addEventListener(

@@ -252,6 +252,13 @@ onLoad(() => {
       faviconSvg: rootUrl + 'assets/themes/centurylink/images/favicon.svg',
       faviconIco: rootUrl + 'assets/themes/centurylink/images/favicon.ico',
       trigger: '.theme-trigger-centurylink'
+    },
+    Portal: {
+      chiCss: rootUrl + 'chi-portal.css',
+      docsCss: rootUrl + 'assets/themes/portal/docs.css',
+      faviconSvg: rootUrl + 'assets/themes/portal/images/favicon.svg',
+      faviconIco: rootUrl + 'assets/themes/portal/images/favicon.ico',
+      trigger: '.theme-trigger-portal'
     }
   };
 
@@ -274,11 +281,13 @@ onLoad(() => {
 
     window.theme = theme;
     if (logoElement) {
-      logoElement.logo = theme.toLowerCase();
       logoElement.parentNode.setAttribute('aria-label', theme);
       if (theme === 'CenturyLink') {
+        logoElement.logo = theme.toLowerCase();
         logoElement.color = 'black';
       } else {
+        logoElement.logo = 'lumen';
+
         if (logoElement.color) {
           logoElement.removeAttribute('color');
         }

@@ -6,7 +6,7 @@
 }
 
 .chi-modal {
-  background-color: $color-background-white;
+  background-color: $modal-background-color;
   box-shadow: $modal-box-shadow;
   max-width: $modal-max-width;
   min-width: 0;
@@ -17,6 +17,7 @@
   width: 100%;
 
   &__header {
+    background-color: $modal-header-background-color;
     box-shadow: $modal-header-box-shadow;
     min-height: $modal-header-min-height;
     padding: $modal-header-padding;
@@ -53,6 +54,7 @@
         align-items: center;
         background-color: transparent;
         border: 0;
+        color: $modal-back-link-color;
         cursor: pointer;
         display: flex;
         left: 1rem;
@@ -118,7 +120,11 @@
   .-close {
     position: absolute;
     right: 0.75rem;
-    top: 0.8125rem;
+    top: $modal-close-top;
+
+    .chi-icon {
+      color: $modal-close-icon-color;
+    }
   }
 
   &.-active {
@@ -142,34 +148,5 @@
 
   .-closed {
     display: none;
-  }
-
-  // Portal
-
-  &.-portal {
-    background-color: $color-grey-15;
-    box-shadow: 0 3px 6px rgba($color-black, 0.25);
-
-    .chi-modal__header {
-      background-color: $color-background-secondary;
-      box-shadow: none;
-      color: $color-text-base;
-
-      .chi-modal__back {
-        color: $color-text-base;
-      }
-
-      .chi-modal__title {
-        font-weight: $font-weight-semi-bold;
-      }
-    }
-
-    .chi-modal__footer {
-      box-shadow: none;
-    }
-
-    .-close {
-      color: $color-text-base;
-    }
   }
 }

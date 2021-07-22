@@ -217,74 +217,108 @@ p.-text
       <button id='popover-1' class="chi-button" data-popover-content='<header class="chi-popover__header"><h2 class="chi-popover__title">Popover title</h2></header><div class="chi-popover__content"><p class="chi-popover__text">Popover content</p></div>'>Popover</button>
       <script>chi.popover(document.getElementById('popover-1'));</script>
 
-h3 Portal
-.example.-mb--3
-  .-p--3(style='height: 155px')
-    .-position--relative
-      chi-popover#example-portal-popover(
-        portal
-        closable
-        title="Popover title"
-        active
-        prevent-auto-hide)
-        | Popover content
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-portal
-      li.-active
-        a(href=`#webcomponent-portal`) Web Component
-      li
-        a(href=`#html-portal`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-portal
-    .chi-tab__description
-      | Use the <code>portal</code> attribute to provide portal style to the Popover.
-    :code(lang="html")
-      <chi-popover title="Popover title" portal closable active>Popover content</chi-popover>
-  .chi-tabs-panel#html-portal
-    :code(lang="html")
-      <!-- Put the following code anywere in the DOM, e.g. at the end of the DOM -->
-      <section class="chi-popover -portal -active" aria-modal="true" role="dialog" aria-label="Popover title">
-        <button class="chi-button -sm -icon -close" aria-label="Close">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-x"></i>
+.-portal--show
+  h3 Inline Modal
+  .example.-mb--3
+    .-p--3(style='height: 155px')
+      .-position--relative
+        chi-popover#example-modal-popover(
+          modal
+          closable
+          title="Popover title"
+          active
+          prevent-auto-hide)
+          | Popover content
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-modal
+        li.-active
+          a(href=`#webcomponent-modal`) Web Component
+        li
+          a(href=`#html-modal`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-modal
+      .chi-tab__description
+        | Use the <code>modal</code> attribute to style a Popover as an inline Modal.
+      :code(lang="html")
+        <chi-popover title="Popover title" modal closable active>Popover content</chi-popover>
+    .chi-tabs-panel#html-modal
+      :code(lang="html")
+        <!-- Put the following code anywere in the DOM, e.g. at the end of the DOM -->
+        <section class="chi-popover -modal -active" aria-modal="true" role="dialog" aria-label="Popover title">
+          <button class="chi-button -sm -icon -close" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x"></i>
+            </div>
+          </button>
+          <header class="chi-popover__header">
+            <h2 class="chi-popover__title">Popover title</h2>
+          </header>
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Popover content</p>
           </div>
-        </button>
-        <header class="chi-popover__header">
-          <h2 class="chi-popover__title">Popover title</h2>
-        </header>
-        <div class="chi-popover__content">
-          <p class="chi-popover__text">Popover content</p>
-        </div>
-      </section>
+        </section>
 
-h3 Draggable popover
-.example.-mb--3
-  .-p--3
-    chi-button#example-draggable-button Click me!
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-draggable
-      li.-active
-        a(href=`#webcomponent-draggable`) Web Component
-      li.-disabled
-        a(href=`#html-draggable`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-draggable
-    .chi-tab__description
-      | Use the <code>reference</code> attribute with a
-      | CSS selector to properly reference an element.
-    :code(lang="html")
-      <chi-button id="example-draggable-button">Click me!</chi-button>
+.-portal--hide
+  h3 Draggable popover
+  .example.-mb--3
+    .-p--3
+      chi-button#example-draggable-button Click me!
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-draggable
+        li.-active
+          a(href=`#webcomponent-draggable`) Web Component
+        li.-disabled
+          a(href=`#html-draggable`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-draggable
+      .chi-tab__description
+        | Use the <code>reference</code> attribute with a
+        | CSS selector to properly reference an element.
+      :code(lang="html")
+        <chi-button id="example-draggable-button">Click me!</chi-button>
 
-      <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
-      <chi-popover id="example-draggable-popover" title="Draggable Popover" reference="#example-draggable-button" drag portal closable>Popover content</chi-popover>
+        <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
+        <chi-popover id="example-draggable-popover" title="Draggable Popover" reference="#example-draggable-button" drag portal closable>Popover content</chi-popover>
 
-      <script>
-        document.querySelector("#example-draggable-button")
-          .addEventListener("click", function() {
-            var popoverElem = document.querySelector("#example-draggable-popover");
+        <script>
+          document.querySelector("#example-draggable-button")
+            .addEventListener("click", function() {
+              var popoverElem = document.querySelector("#example-draggable-popover");
 
-            popoverElem.toggle();
-        });
-      </script>
-  .chi-tabs-panel#html-draggable
+              popoverElem.toggle();
+          });
+        </script>
+    .chi-tabs-panel#html-draggable
+
+
+.-portal--show
+  h3 Draggable popover
+  .example.-mb--3
+    .-p--3
+      chi-button#example-modal-draggable-button Click me!
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-modal-draggable
+        li.-active
+          a(href=`#webcomponent-modal-draggable`) Web Component
+        li.-disabled
+          a(href=`#html-modal-draggable`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-modal-draggable
+      .chi-tab__description
+        | Use the <code>reference</code> attribute with a
+        | CSS selector to properly reference an element.
+      :code(lang="html")
+        <chi-button id="example-modal-draggable-button">Click me!</chi-button>
+
+        <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
+        <chi-popover id="example-modal-draggable-popover" title="Draggable Popover" reference="#example-modal-draggable-button" drag modal closable>Popover content</chi-popover>
+
+        <script>
+          document.querySelector("#example-modal-draggable-button")
+            .addEventListener("click", function() {
+              var popoverElem = document.querySelector("#example-modal-draggable-popover");
+
+              popoverElem.toggle();
+          });
+        </script>
+    .chi-tabs-panel#html-modal-draggable
 
 h3 Open on hover
 .example.-mb--3
@@ -810,7 +844,10 @@ h3 Popover with custom content
         <div class="chi-popover__arrow"></div>
       </section>
 
-chi-popover#example-draggable-popover(title="Draggable Popover" portal reference="#example-draggable-button" closable drag)
+chi-popover#example-draggable-popover(title="Draggable Popover" reference="#example-draggable-button" closable drag)
+  | Popover content
+
+chi-popover#example-modal-draggable-popover(title="Draggable Popover" modal reference="#example-modal-draggable-button" closable drag)
   | Popover content
 
 script.
@@ -832,7 +869,8 @@ script.
       chi.tab(document.getElementById('examples-hover'));
       chi.tab(document.getElementById('examples-close-button'));
       chi.tab(document.getElementById('examples-draggable'));
-      chi.tab(document.getElementById('examples-portal'));
+      chi.tab(document.getElementById('examples-modal-draggable'));
+      chi.tab(document.getElementById('examples-modal'));
 
       buttonOpenOnHover.addEventListener('chiMouseEnter', function() {
         hoverAnimationTimeout = setTimeout(function() {
@@ -871,7 +909,8 @@ script.
         {button: '#example-6-auto-hide-button',     popover: '#example-6-auto-hide-popover',    action: "toggle"},
         {button: '#example-6-no-auto-hide-button',  popover: '#example-6-no-auto-hide-popover', action: "toggle"},
         {button: '#button-example-popover-closable-1',  popover: '#popover-example-popover-closable-1', action: "toggle"},
-        {button: '#example-draggable-button',  popover: '#example-draggable-popover', action: "toggle"}
+        {button: '#example-draggable-button',  popover: '#example-draggable-popover', action: "toggle"},
+        {button: '#example-modal-draggable-button',  popover: '#example-modal-draggable-popover', action: "toggle"}
       ];
 
       Array.prototype.forEach.call(popovers, function(popover){

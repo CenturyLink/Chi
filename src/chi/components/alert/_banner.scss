@@ -3,18 +3,18 @@
     background-color: $alert-background-color;
     border: 0;
     box-shadow: none;
-    padding: 0.875rem 1.5rem;
+    padding: $alert-md-banner-padding;
 
     .chi-alert__title {
-      color: $alert-title-text-color;
+      color: $alert-banner-title-text-color;
     }
 
     &.-sm {
-      padding: 0.625rem 1.5rem;
+      padding: $alert-sm-banner-padding;
     }
 
     &.-lg {
-      padding: 1.125rem 1.5rem;
+      padding: $alert-lg-banner-padding;
     }
   }
 }

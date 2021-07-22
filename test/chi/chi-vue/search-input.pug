@@ -1,0 +1,52 @@
+script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
+script(src="../../chi-vue/umd/chi-vue.umd.js")
+
+.chi
+  .-p--3
+    h2 Search Input - Tests
+    #app
+      h3 Base
+      chi-vue-search-input(data-cy="base-search-input-test")
+      h3 Disabled
+      chi-vue-search-input(data-cy="disabled-search-input-test", disabled)
+
+      h3 Size -sm
+      chi-vue-search-input(data-cy="sm-search-input-test", size="sm")
+
+      h3 Size -md
+      chi-vue-search-input(data-cy="md-search-input-test", size="md")
+
+      h3 Size -lg
+      chi-vue-search-input(data-cy="lg-search-input-test", size="lg")
+
+      h3 Size -xl
+      chi-vue-search-input(data-cy="xl-search-input-test", size="xl")
+
+      h3 Attrs
+      chi-vue-search-input(data-cy="attrs-search-input-test", name="test", placeholder="test", portal="true")
+
+      h3 Delete value function
+      chi-vue-search-input(data-cy="delete-value-search-input-test", value="test")
+
+      h3 Chi events trigger
+      chi-vue-search-input(data-cy="chi-events-trigger-search-input-test", ref="testEvents")
+
+script.
+
+  new Vue({
+    components: {
+      ChiVueSearchInput: window["chi-vue"].library.components.ChiSearchInput
+    },
+    data: {
+      event: false
+    },
+    mounted() {
+      if (window.Cypress) {
+        const events = ["eventExampleChiBlur","eventExampleChiChange", "eventExampleChiClean", "eventExampleChiFocus" ,"eventExampleChiInput", "eventExampleChiSearch"];
+
+        events.forEach((event) => {
+           window[event] = this;
+        })
+      }
+    },
+  }).$mount("#app")

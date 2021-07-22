@@ -1,0 +1,169 @@
+@import '../../../../chi/_global-variables';
+@import '../../../../chi/_global-mixins';
+
+.docs-container {
+  .-non-doc {
+    .docs-article {
+      .chi-grid__container {
+        &.-introduction {
+          padding-top: 14rem;
+          text-align: center;
+          @include respond-to(lg) {
+            padding-top: 0;
+            text-align: left;
+          }
+
+          .docs-titlebar__title {
+            display: flex;
+            font-size: $font-size-h2;
+            font-weight: $font-weight-bold;
+            justify-content: center;
+            line-height: 2.5rem;
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            @include respond-to(lg) {
+              font-size: 3rem;
+              justify-content: flex-start;
+              line-height: 4rem;
+              margin-bottom: 1.5rem;
+              padding-left: 0;
+              padding-right: 0;
+            }
+          }
+
+          .docs-titlebar__description {
+            color: $color-grey-80;
+            display: flex;
+            font-size: $font-size-base;
+            font-weight: $font-weight-normal;
+            justify-content: center;
+            line-height: 1.25rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            @include respond-to(lg) {
+              font-size: 1.125rem;
+              justify-content: flex-start;
+              line-height: 1.5rem;
+              margin: 0 0 1rem;
+              padding-left: 0;
+              padding-right: 0;
+            }
+          }
+
+          .docs-titlebar__buttons {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            margin: 2rem 0;
+            @include respond-to(sm) {
+              flex-direction: row;
+              justify-content: center;
+            }
+            @include respond-to(lg) {
+              justify-content: flex-start;
+              margin: 3rem 0;
+            }
+
+            .chi-button {
+              display: flex;
+              justify-content: center;
+              width: 80%;
+              @include respond-to(sm) {
+                display: inline-flex;
+                width: auto;
+              }
+            }
+          }
+
+          // Introduction hero graphic
+          .introduction-graphic {
+            left: calc(50% - 8rem);
+            position: absolute;
+            top: -13rem;
+            transform: scale(0.4);
+            @include respond-to(lg) {
+              left: 0;
+              position: relative;
+              top: 0;
+              transform: scale(1);
+            }
+
+            .shape--1 {
+              border: 0.25rem solid $color-cyan-40;
+              height: 9rem;
+              left: 18rem;
+              position: absolute;
+              top: -7rem;
+              width: 9rem;
+            }
+
+            .shape--2 {
+              border: 0.25rem solid $color-cyan-50;
+              height: 7rem;
+              left: 5rem;
+              position: absolute;
+              top: 4rem;
+              width: 7rem;
+            }
+
+            .shape--3 {
+              height: 8rem;
+              left: 28rem;
+              position: absolute;
+              top: 5rem;
+              width: 8rem;
+
+              &::before {
+                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='128' width='128'><polygon fill='#{$color-grey-15}' stroke='#{$color-blue-70}' stroke-width='4' points='50 15, 100 100, 0 100'/></svg>");
+                background-repeat: no-repeat;
+                content: '';
+                display: block;
+                height: 8rem;
+                width: 8rem;
+              }
+            }
+
+            .shape--4 {
+              border: 0.25rem solid $color-cyan-40;
+              border-radius: 4.5rem;
+              height: 7rem;
+              left: 16rem;
+              position: absolute;
+              top: 13rem;
+              width: 7rem;
+            }
+
+            .shape--5 {
+              height: 14rem;
+              left: 0;
+              position: absolute;
+              top: 16rem;
+              width: 14rem;
+
+              &::before {
+                background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110' height='224' width='224'><polygon fill='#{$color-grey-15}' stroke='#{$color-blue-70}' stroke-width='2' points='50 15, 100 100, 0 100'/></svg>");
+                background-repeat: no-repeat;
+                content: '';
+                display: block;
+                height: 14rem;
+                width: 14rem;
+              }
+            }
+
+            .shape--6 {
+              border: 0.25rem solid $color-cyan-50;
+              border-radius: 4.5rem;
+              height: 9rem;
+              left: 30rem;
+              position: absolute;
+              top: 20rem;
+              width: 9rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

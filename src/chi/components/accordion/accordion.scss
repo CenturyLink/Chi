@@ -5,32 +5,33 @@ $animation-duration: 0.2s;
 
 $sizes: (
   sm: (
-    font-size: $font-size-sm,
-    line-height: 1rem,
-    padding: 0.5rem 1rem,
+    font-size: $accordion-sm-item-font-size,
+    icon-size: $accordion-sm-item-icon-size,
+    line-height: $accordion-sm-item-line-height,
+    padding: $accordion-sm-item-padding,
+    content-padding: $accordion-sm-item-content-padding,
   ),
   md: (
-    font-size: $font-size-md,
-    line-height: 1.25rem,
-    padding: 0.625rem 1rem,
+    font-size: $accordion-md-item-font-size,
+    icon-size: $accordion-md-item-icon-size,
+    line-height: $accordion-md-item-line-height,
+    padding: $accordion-md-item-padding,
+    content-padding: $accordion-md-item-content-padding,
   ),
   lg: (
-    font-size: $font-size-lg,
-    line-height: 1.5rem,
-    padding: 0.75rem 1rem,
+    font-size: $accordion-lg-item-font-size,
+    icon-size: $accordion-lg-item-icon-size,
+    line-height: $accordion-lg-item-line-height,
+    padding: $accordion-lg-item-padding,
+    content-padding: $accordion-lg-item-content-padding,
   ),
   xl: (
-    font-size: $font-size-xl,
-    line-height: 1.75rem,
-    padding: 0.875rem 1rem,
+    font-size: $accordion-xl-item-font-size,
+    icon-size: $accordion-xl-item-icon-size,
+    line-height: $accordion-xl-item-line-height,
+    padding: $accordion-xl-item-padding,
+    content-padding: $accordion-xl-item-content-padding,
   )
-);
-
-$icon-sizes: (
-  sm: 0.75rem,
-  md: 1rem,
-  lg: 1rem,
-  xl: 1rem,
 );
 
 .chi-accordion {
@@ -48,7 +49,7 @@ $icon-sizes: (
       border: 0;
       cursor: pointer;
       display: flex;
-      padding: 0.625rem 1rem;
+      padding: $accordion-md-item-padding;
       width: 100%;
 
       &[disabled],
@@ -59,7 +60,13 @@ $icon-sizes: (
       }
 
       .chi-icon {
-        + .chi-accordion__title {
+        color: $accordion-item-trigger-icon-color;
+        font-size: $accordion-md-item-icon-size;
+        height: $accordion-md-item-icon-size;
+        line-height: $accordion-md-item-icon-size;
+        width: $accordion-md-item-icon-size;
+
+        & + .chi-accordion__title {
           margin-left: 1rem;
         }
       }
@@ -69,9 +76,9 @@ $icon-sizes: (
         color: $accordion-item-title-text-color;
         display: flex;
         flex-grow: 1;
-        font-size: $accordion-item-title-font-size;
+        font-size: $accordion-md-item-font-size;
         font-weight: $accordion-item-title-font-weight;
-        line-height: 1.25rem;
+        line-height: $accordion-md-item-line-height;
         text-align: left;
 
         + .chi-icon {
@@ -87,7 +94,7 @@ $icon-sizes: (
     .chi-accordion__content {
       display: none;
       overflow: hidden;
-      padding: 1rem;
+      padding: $accordion-md-item-content-padding;
       transition: height 0.075s ease-out;
 
       .chi-accordion__text,
@@ -147,17 +154,17 @@ $icon-sizes: (
             line-height: map-get(map-get($sizes, $type), line-height);
           }
         }
-      }
-    }
-  }
 
-  @each $type in map-keys($icon-sizes) {
-    &.-#{$type} {
-      & .chi-icon {
-        font-size: map-get($icon-sizes, $type);
-        height: map-get($icon-sizes, $type);
-        line-height: map-get($icon-sizes, $type);
-        width: map-get($icon-sizes, $type);
+        .chi-accordion__content {
+          padding: map-get(map-get($sizes, $type), content-padding);
+        }
+      }
+
+      .chi-icon {
+        font-size: map-get(map-get($sizes, $type), icon-size);
+        height: map-get(map-get($sizes, $type), icon-size);
+        line-height: map-get(map-get($sizes, $type), icon-size);
+        width: map-get(map-get($sizes, $type), icon-size);
       }
     }
   }
@@ -171,119 +178,102 @@ $icon-sizes: (
     }
   }
 
-  &.-portal {
-    .chi-accordion__item {
-      background-color: $color-grey-10;
-      border-bottom: 0;
-
-      .chi-accordion__trigger {
-        background-color: $color-grey-10;
-        padding: 1.5rem;
-
-        .chi-icon {
-          color: $color-icon-primary;
-        }
-      }
-
-      .chi-accordion__title {
-        font-size: $font-size-xl;
-        line-height: $line-height-lg;
-      }
-
-      .chi-accordion__content {
-        padding: 1.5rem;
-        padding-top: 0;
-      }
+  .chi-accordion {
+    .chi-accordion__trigger,
+    .chi-accordion__content {
+      background-color: $accordion-item-level-2-background-color;
     }
 
     .chi-accordion {
-      .chi-accordion__item {
-        background-color: $color-background-white;
+      .chi-accordion__trigger,
+      .chi-accordion__content {
+        background-color: $accordion-item-level-3-background-color;
+      }
 
-        .chi-accordion__title {
-          font-size: $font-size-lg;
+      .chi-accordion {
+        .chi-accordion__trigger,
+        .chi-accordion__content {
+          background-color: $accordion-item-level-4-background-color;
         }
+
+        .chi-accordion {
+          .chi-accordion__trigger,
+          .chi-accordion__content {
+            background-color: $accordion-item-level-5-background-color;
+          }
+        }
+      }
+    }
+  }
+
+  &.-card {
+    .chi-accordion__item {
+      margin-bottom: 1.75rem;
+
+      &:not(.-expanded) {
+        border-bottom: 0.0625rem solid $color-border-base;
       }
 
       .chi-accordion__trigger {
         background-color: $color-background-white;
+        padding: 0.5rem 0;
+
+        .chi-accordion__title {
+          font-size: $font-size-7;
+          font-weight: $font-weight-extra-bold;
+        }
+      }
+
+      .chi-accordion__content {
+        padding: 2rem;
       }
 
       .chi-accordion {
-        .chi-accordion__item,
+        .chi-accordion__item {
+          background-color: $color-background-white;
+          border: 0;
+          margin-bottom: 0.5rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .chi-accordion__title {
+            font-size: $font-size-lg;
+            font-weight: $font-weight-semi-bold;
+          }
+
+          .chi-accordion__content {
+            padding: 0 1.5rem 1.5rem;
+          }
+        }
+
         .chi-accordion__trigger {
-          background-color: $color-grey-10;
+          background-color: $color-background-white;
+          padding: 1.5rem;
         }
 
         .chi-accordion {
           .chi-accordion__item,
           .chi-accordion__trigger {
-            background-color: $color-background-white;
-          }
-        }
-      }
-    }
-
-    &.-card {
-      .chi-accordion__item {
-        margin-bottom: 1.75rem;
-
-        &:not(.-expanded) {
-          border-bottom: 0.0625rem solid $color-border-base;
-        }
-
-        .chi-accordion__trigger {
-          background-color: $color-background-white;
-          padding: 0.5rem 0;
-
-          .chi-accordion__title {
-            font-size: $font-size-7;
-            font-weight: $font-weight-extra-bold;
-          }
-        }
-
-        .chi-accordion__content {
-          padding: 2rem;
-        }
-
-        .chi-accordion {
-          .chi-accordion__item {
-            background-color: $color-background-white;
-            border: 0;
-            margin-bottom: 0.5rem;
-
-            &:last-child {
-              margin-bottom: 0;
-            }
-
-            .chi-accordion__title {
-              font-size: $font-size-lg;
-              font-weight: $font-weight-semi-bold;
-            }
-
-            .chi-accordion__content {
-              padding: 0 1.5rem 1.5rem;
-            }
-          }
-
-          .chi-accordion__trigger {
-            background-color: $color-background-white;
-            padding: 1.5rem;
+            background-color: $color-grey-10;
           }
 
           .chi-accordion {
             .chi-accordion__item,
             .chi-accordion__trigger {
-              background-color: $color-grey-10;
-            }
-
-            .chi-accordion {
-              .chi-accordion__item,
-              .chi-accordion__trigger {
-                background-color: $color-background-white;
-              }
+              background-color: $color-background-white;
             }
           }
+        }
+      }
+    }
+
+    &.-sm {
+      .chi-accordion__item {
+        .chi-accordion__title {
+          font-size: $font-size-base;
+          font-weight: $font-weight-semi-bold;
         }
       }
     }
