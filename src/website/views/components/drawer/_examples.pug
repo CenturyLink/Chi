@@ -732,7 +732,11 @@ ul#chi-tabs--closable.chi-tabs
             // or drawer.active = !drawer.active;
           });
         </script>
-    .chi-tabs-panel#vue-closable 
+    .chi-tabs-panel#vue-closable
+      .chi-tab__description
+        | Drawer visibility depends on the prop <code>active</code>.
+        | Chi Vue Drawer component does not automatically hide when the close button is clicked as prop mutation is an anti-pattern in Vue.
+        | Use the events <code>chiDrawerHide</code> and <code>chiDrawerClickOutside</code> to set <code>active</code> to false and hide the Drawer.
       :code(lang="html")
         <!-- Trigger -->
         <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
@@ -743,7 +747,8 @@ ul#chi-tabs--closable.chi-tabs
         <ChiDrawer
           position="left"
           :active="this.drawerActive"
-          :noHeader="true"
+          @chiDrawerHide="() => (this.drawerActive = false)"
+          @chiDrawerClickOutside="() => (this.drawerActive = false)"
           backdrop
         >
           <div class="-p--2 -pt--6 -text">Drawer content here</div>
@@ -830,7 +835,7 @@ ul#chi-tabs--closable.chi-tabs
         </script>
     .chi-tabs-panel#vue-nonclosable
       .chi-tab__description
-        | Use the <code>nonClosable</code> property to render Drawer without a close button
+        | Use the prop <code>nonClosable</code> to render Drawer without a close button
 
       :code(lang="html")
         <!-- Trigger -->

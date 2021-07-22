@@ -65,12 +65,12 @@
         <div class="chi-header__end">
           <div class="-d--none -d-lg--flex">
             <ChiTooltip message="Notifications">
-            <button class="chi-button -flat -icon" aria-label="Notifcations">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-bell-outline" aria-hidden="true"></i>
-                <div class="chi-badge -primary -xs">2</div>
-              </div>
-            </button>
+              <button class="chi-button -flat -icon" aria-label="Notifcations">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-bell-outline" aria-hidden="true"></i>
+                  <div class="chi-badge -primary -xs">2</div>
+                </div>
+              </button>
             </ChiTooltip>
             <ChiTooltip message="Support">
               <button class="chi-button -flat -icon" aria-label="Support">
