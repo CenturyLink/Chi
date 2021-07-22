@@ -1155,12 +1155,14 @@ describe('Server Side Data Table', () => {
         .eq(2)
         .click()
         .then(() => {
+          cy.wait(2000);
           cy.get('@row').should('contain', 'Name 4');
         });
       cy.get('@paginationIcons')
         .eq(1)
         .click()
         .then(() => {
+          cy.wait(2000);
           cy.get(`@row`).should('contain', 'Name 1');
         });
     });
