@@ -14,9 +14,9 @@ h3 Base
   .chi-tabs-panel#webcomponent-base
   .chi-tabs-panel.-active#vue-base
     :code(lang='html')
-      <Tooltip message="Your tooltip text on a button">
+      <ChiTooltip message="Your tooltip text on a button">
         <button class="chi-button">Hover me to see tooltip</button>
-      </Tooltip>
+      </ChiTooltip>
   .chi-tabs-panel#html-base
     .chi-tab__description
       | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then
@@ -49,9 +49,9 @@ h3 Base
     .chi-tabs-panel#webcomponent-light
     .chi-tabs-panel.-active#vue-light
       :code(lang='html')
-        <Tooltip message="Your tooltip text on a button" color="light">
+        <ChiTooltip message="Your tooltip text on a button" color="light">
           <button class="chi-button -outline -light">Hover me to see tooltip</button>
-        </Tooltip>
+        </ChiTooltip>
     .chi-tabs-panel#html-light
       .chi-tab__description
         | To use, apply the <code>data-tooltip-color="light"</code> attribute to the Tooltip trigger element.
@@ -81,11 +81,11 @@ h3 Tooltip on disabled buttons
   .chi-tabs-panel#webcomponent-disabled
   .chi-tabs-panel.-active#vue-disabled
     :code(lang='html')
-      <Tooltip message="Tooltip message for a disabled button">
+      <ChiTooltip message="Tooltip message for a disabled button">
         <span>
           <button class="chi-button" disabled>Hover me to see tooltip</button>
         </span>
-      </Tooltip>
+      </ChiTooltip>
   .chi-tabs-panel#html-disabled
     .chi-tab__description
       | When a button element is in disabled state, <code>mouseenter</code> and <code>mouseleave</code> events
@@ -121,18 +121,18 @@ h3 Positioning
   .chi-tabs-panel#webcomponent-positioning
   .chi-tabs-panel.-active#vue-positioning
     :code(lang='html')
-      <Tooltip message="Your top tooltip text" position="top">
+      <ChiTooltip message="Your top tooltip text" position="top">
         <button class="chi-button">Top Tooltip</button>
-      </Tooltip>
-      <Tooltip message="Your left tooltip text" position="left">
-        <button class="chi-button">Left Tooltip</button>
-      </Tooltip>
-      <Tooltip message="Your right tooltip text" position="right">
+      </ChiTooltip>
+      <ChiTooltip message="Your right tooltip text" position="right">
         <button class="chi-button">Right Tooltip</button>
-      </Tooltip>
-      <Tooltip message="Your bottom tooltip text" position="bottom">
+      </ChiTooltip>
+      <ChiTooltip message="Your bottom tooltip text" position="bottom">
         <button class="chi-button">Bottom Tooltip</button>
-      </Tooltip>
+      </ChiTooltip>
+      <ChiTooltip message="Your left tooltip text" position="left">
+        <button class="chi-button">Left Tooltip</button>
+      </ChiTooltip>
   .chi-tabs-panel#html-positioning
     .chi-tab__description
       | By default, tooltip's position on top of an element. To alter position, use
@@ -172,9 +172,9 @@ p.-text
   .chi-tabs-panel#webcomponent-long
   .chi-tabs-panel.-active#vue-long
     :code(lang='html')
-      <Tooltip message="Lorem ipsum...">
+      <ChiTooltip message="Lorem ipsum...">
         <button class="chi-button">Hover me to see tooltip</button>
-      </Tooltip>
+      </ChiTooltip>
   .chi-tabs-panel#html-long
     .chi-tab__description
       span.-text--grey
@@ -190,7 +190,9 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
+      setTimeout(function() {
+        chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+      }, 1000);
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
     }
   );
