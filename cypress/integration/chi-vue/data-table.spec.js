@@ -1151,7 +1151,8 @@ describe('Server Side Data Table', () => {
     });
 
     it('should render new data when going to page two', () => {
-      cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`)
+      cy.get(`[data-cy='data-table']`)
+        .find(`.${PAGINATION_CLASSES.PAGINATION}`)
         .children()
         .first()
         .children()
