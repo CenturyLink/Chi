@@ -237,20 +237,21 @@
     }
   }
 
-  &.-portal {
+  &.-modal {
+    background-color: $popover-modal-background-color;
+
     .chi-popover__header {
-      background-color: $color-background-secondary;
+      background-color: $popover-modal-header-background-color;
       padding-bottom: 1rem;
     }
 
     .chi-button {
       &.-close {
-        color: $color-grey-100;
+        &,
+        .chi-icon {
+          color: $popover-modal-close-icon-color;
+        }
       }
-    }
-
-    .chi-popover__content {
-      background-color: $color-grey-15;
     }
 
     &.-closable {

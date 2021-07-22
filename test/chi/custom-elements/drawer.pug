@@ -32,13 +32,6 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
             chi-drawer(position=side title="Drawer title here" backdrop=version.backdrop active collapsible data-cy=`${version.testClass}${side}-with-title` prevent-auto-hide)
               .-px--2.-text Drawer content here
 
-    div(class=`test-${side}-portal -mb--3 example`)
-      div(style='width: 20rem')
-        .-text--h2= `Drawer / Portal / ${side}`
-        .-position--relative.-z--0(style="height:20rem")
-          chi-drawer(position=side title='Drawer title here' portal active prevent-auto-hide)
-            .-px--2.-text Drawer content here
-
   div(class=`test-non-closable -mb--3 example`)
     div(style='width: 320px;')
       .-text--h2= `Drawer / Non closable`

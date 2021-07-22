@@ -189,7 +189,7 @@ export class TextInput {
     };
     const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
     const iconRight = (this.iconRight && !this.spinner) && <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
-    const spinner = this.spinner && <chi-spinner size={spinnerSizeMapping[this.size] || 'sm'} color="muted" />;
+    const spinner = this.spinner && <chi-spinner size={spinnerSizeMapping[this.size] || 'sm'} />;
 
     const input = this.iconLeft || this.iconRight || this.spinner ?
       <div class={`chi-input__wrapper ${iconClasses}`}>

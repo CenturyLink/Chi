@@ -25,6 +25,17 @@
     + .chi-toolbar__ribbon {
       border-top: 0.0625rem solid $toolbar-ribbon-border-color;
     }
+
+    .chi-divider {
+      &.-vertical {
+        display: none;
+
+        @include respond-to(md) {
+          display: block;
+          height: $toolbar-header-divider-height;
+        }
+      }
+    }
   }
 
   &__ribbon {
@@ -33,6 +44,7 @@
     padding: 0.5rem 1.5rem;
 
     .chi-divider {
+      border-color: $toolbar-ribbon-divider-border-color;
       height: $toolbar-ribbon-divider-height;
       margin: 0 1rem;
     }
@@ -72,35 +84,6 @@
     &-mobile {
       @include respond-to(md) {
         display: none;
-      }
-    }
-  }
-
-  &.-portal {
-    .chi-toolbar__header {
-      .chi-divider {
-        display: none;
-      }
-
-      + .chi-toolbar__ribbon {
-        border-top: 0;
-      }
-
-      @include respond-to(md) {
-        background-color: $color-background-muted-lighter;
-
-        .chi-divider {
-          display: block;
-          height: 2.5rem;
-        }
-      }
-    }
-
-    .chi-toolbar__ribbon {
-      background-color: $color-background-primary-light;
-
-      .chi-divider {
-        border-right-color: $color-blue-40;
       }
     }
   }

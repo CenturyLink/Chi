@@ -414,6 +414,8 @@ $icon-sizes: (
       margin: 0 0.5rem;
 
       strong {
+        font-weight: $pagination-label-page-font-weight;
+
         &:first-child {
           margin-right: 0.5rem;
         }

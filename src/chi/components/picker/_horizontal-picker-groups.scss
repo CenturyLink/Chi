@@ -2,36 +2,36 @@ $border: 0.0625rem;
 
 $sizes: (
   sm: (
-    font-size: 0.75rem,
-    line-height: 1rem,
-    min-height: 1.5rem,
-    padding: (0.25rem - $border) 0.5rem (0.25rem - $border) (0.5rem - $border),
-        padding_hover: (0.5rem - $border),
-        padding_checked: 0.5rem
+    font-size: $picker-group-sm-font-size,
+    line-height: $picker-group-sm-line-height,
+    min-height: $picker-group-sm-min-height,
+    padding: $picker-group-sm-padding,
+    padding_hover: $picker-group-sm-padding-hover,
+    padding_checked: $picker-group-sm-padding-checked
   ),
   md: (
-    font-size: 0.875rem,
-    line-height: 1rem,
-    min-height: 2rem,
-    padding: (0.5rem - $border) 1rem (0.5rem - $border) (1rem - $border),
-        padding_hover: (1rem - $border),
-        padding_checked: 1rem
+    font-size: $picker-group-md-font-size,
+    line-height: $picker-group-md-line-height,
+    min-height: $picker-group-md-min-height,
+    padding: $picker-group-md-padding,
+    padding_hover: $picker-group-md-padding-hover,
+    padding_checked: $picker-group-md-padding-checked
   ),
   lg: (
-    font-size: 0.875rem,
-    line-height: 1.25rem,
-    min-height: 2.5rem,
-    padding: (0.625rem - $border) 1.5rem (0.625rem - $border) (1.5rem - $border),
-        padding_hover: (1.5rem - $border),
-        padding_checked: 1.5rem
+    font-size: $picker-group-lg-font-size,
+    line-height: $picker-group-lg-line-height,
+    min-height: $picker-group-lg-min-height,
+    padding: $picker-group-lg-padding,
+    padding_hover: $picker-group-lg-padding-hover,
+    padding_checked: $picker-group-lg-padding-checked
   ),
   xl: (
-    font-size: 0.875rem,
-    line-height: 1.25rem,
-    min-height: 3rem,
-    padding: (0.875rem - $border) 1.5rem (0.875rem - $border) (1.5rem - $border),
-        padding_hover: (1.5rem - $border),
-        padding_checked: 1.5rem
+    font-size: $picker-group-xl-font-size,
+    line-height: $picker-group-xl-line-height,
+    min-height: $picker-group-xl-min-height,
+    padding: $picker-group-xl-padding,
+    padding_hover: $picker-group-xl-padding-hover,
+    padding_checked: $picker-group-xl-padding-checked
   )
 );
 
@@ -43,6 +43,10 @@ $sizes: (
   &__content {
     display: flex;
     width: 100%;
+
+    .chi-icon {
+      color: $picker-icon-color;
+    }
   }
 
   input {
@@ -59,13 +63,13 @@ $sizes: (
           box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
           cursor: pointer;
           display: flex;
-          font-size: $font-size-base;
+          font-size: $picker-group-md-font-size;
           font-weight: $font-weight-semi-bold;
           justify-content: space-between;
-          line-height: 1rem;
+          line-height: $picker-group-md-line-height;
           margin-bottom: 0;
-          min-height: 2rem;
-          padding: (0.5rem - $border) 1rem (0.5rem - $border) (1rem - $border);
+          min-height: $picker-group-md-min-height;
+          padding: $picker-group-md-padding;
           transition: border-color 0.2s, box-shadow 0.2s;
 
           @each $type in map-keys($sizes) {
@@ -134,7 +138,7 @@ $sizes: (
             box-shadow: inset 0 0 0 0.0625rem $picker-checked-border-color;
             color: $picker-checked-text-color;
             font-weight: $font-weight-semi-bold;
-            padding-right: 0.9375rem;
+            padding-right: $picker-group-md-padding-hover;
 
             @each $type in map-keys($sizes) {
               &.-#{$type} {
@@ -144,7 +148,7 @@ $sizes: (
 
             & + input + label {
               border-left-width: 0;
-              padding-left: 1rem;
+              padding-left: $picker-group-md-padding-checked;
 
               @each $type in map-keys($sizes) {
                 &.-#{$type} {
@@ -175,29 +179,11 @@ $sizes: (
       &[type='radio'] {
         &:last-of-type {
           &:checked + label {
-            padding-right: 1rem;
+            padding-right: $picker-group-md-padding-checked;
 
             @each $type in map-keys($sizes) {
               &.-#{$type} {
                 padding-right: map-get(map-get($sizes, $type), padding_checked);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  // Portal
-  &.-portal {
-    input {
-      &[type='radio'] {
-        &.chi-picker__input {
-          &:not(:checked) {
-            & + label {
-              &:hover {
-                background-color: $color-background-base;
-                color: $color-text-primary;
               }
             }
           }

@@ -9,14 +9,14 @@ p.-text
   .-position--relative.-z--0.-overflow--hidden(style='height:20rem;')
     .-p--3
       .-d--flex.-align-items--center
-        button.chi-button.-icon#drawer-trigger(aria-label="Toggle drawer")
+        button.chi-button.-icon.-flat#drawer-trigger(aria-label="Toggle drawer")
           .chi-button__content
             i.chi-icon.icon-menu.-sm--2
         b.-ml--2 Click menu button to open Drawer
       each i in [1, 2]
         p.-text.-mb--3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-    chi-drawer#interactive-drawer(position="left" backdrop)
-      .-px--2.-text Drawer content here
+    chi-drawer#interactive-drawer(position="left" backdrop no-header)
+      .-p--2.-pt--6.-text Drawer content here
   .example-tabs.-pl--2
     ul#examples-interaction.chi-tabs
       li.-active
@@ -32,13 +32,13 @@ p.-text
       | <code>toggle()</code>.
     :code(lang="html")
       <!-- Trigger -->
-      <chi-button id="drawer-trigger" type="icon">
+      <chi-button id="drawer-trigger" variant="flat" type="icon">
         <chi-icon icon="menu" size="sm--2"></chi-icon>
       </chi-button>
 
       <!-- Drawer -->
-      <chi-drawer id="interactive-drawer" position="left" backdrop>
-        <div class="-px--2 -text">Drawer content here</div>
+      <chi-drawer id="interactive-drawer" position="left" backdrop no-header>
+        <div class="-p--2 -pt--6 -text">Drawer content here</div>
       </chi-drawer>
 
       <!-- JavaScript -->
@@ -57,7 +57,7 @@ p.-text
       | <code>toggle()</code>.
     :code(lang="html")
       <!-- Trigger -->
-      <button class="chi-button" @click="() => toggleDrawer()">
+      <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
         <i class="chi-icon -sm--2 icon-menu"></i>
       </button>
 
@@ -65,9 +65,10 @@ p.-text
       <ChiDrawer
         position="left"
         :active="this.drawerActive"
+        :noHeader="true"
         backdrop
       >
-        <div class="-px--2 -text">Drawer content here</div>
+        <div class="-p--2 -pt--6 -text">Drawer content here</div>
       </ChiDrawer>
 
       <!-- Data and Methods -->
@@ -91,7 +92,7 @@ p.-text
       | element passed as a parameter. You must use the trigger element as the parameter.
     :code(lang="html")
       <!-- Trigger -->
-      <button id="drawer-trigger-1" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-1" aria-label="Toggle navigation">
+      <button id="drawer-trigger-1" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-1" aria-label="Toggle navigation">
         <div class="chi-button__content">
           <i class="chi-icon -sm--2 icon-menu"></i>
         </div>
@@ -101,15 +102,13 @@ p.-text
       <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
           <div id="drawer-1" class="chi-drawer -left">
-            <div class="chi-drawer__header">
-              <button class="chi-button -icon -close" aria-label="Close">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-x"></i>
-                </div>
-              </button>
-            </div>
+            <button class="chi-button -icon -close" aria-label="Close">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-x"></i>
+              </div>
+            </button>
             <div class="chi-drawer__content">
-              <div class="-px--2 -text">Drawer content here</div>
+              <div class="-p--2 -pt--6 -text">Drawer content here</div>
             </div>
           </div>
         </div>
@@ -134,8 +133,8 @@ ul#chi-tabs--drawer.chi-tabs
       .-p--3
         each i in [1, 2, 3]
           .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-      chi-drawer(position='left' active prevent-auto-hide)
-        .-px--2.-text Drawer content here
+      chi-drawer(position='left' active prevent-auto-hide no-header)
+        .-p--2.-pt--6.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default
         li.-active
@@ -147,13 +146,13 @@ ul#chi-tabs--drawer.chi-tabs
     .chi-tabs-panel.-active#webcomponent
       :code(lang="html")
         <!-- Trigger -->
-        <chi-button id="drawer-trigger-2" type="icon">
+        <chi-button id="drawer-trigger-2" variant="flat" type="icon">
           <chi-icon icon="menu" size="sm--2"></chi-icon>
         </chi-button>
 
         <!-- Drawer -->
-        <chi-drawer id="interactive-drawer-2" position="left">
-          <div class="-px--2 -text">Drawer content here</div>
+        <chi-drawer id="interactive-drawer-2" position="left" no-header>
+          <div class="-p--2 -pt--6 -text">Drawer content here</div>
         </chi-drawer>
 
         <!-- JavaScript -->
@@ -168,7 +167,7 @@ ul#chi-tabs--drawer.chi-tabs
     .chi-tabs-panel#vue-left 
       :code(lang="html")
         <!-- Trigger -->
-        <button class="chi-button" @click="() => toggleDrawer()">
+        <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
           <i class="chi-icon -sm--2 icon-menu"></i>
         </button>
 
@@ -176,9 +175,10 @@ ul#chi-tabs--drawer.chi-tabs
         <ChiDrawer
           position="left"
           :active="this.drawerActive"
+          :noHeader="true"
           backdrop
         >
-          <div class="-px--2 -text">Drawer content here</div>
+          <div class="-p--2 -pt--6 -text">Drawer content here</div>
         </ChiDrawer>
 
         <!-- Data and Methods -->
@@ -198,7 +198,7 @@ ul#chi-tabs--drawer.chi-tabs
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
         <!-- Trigger -->
-        <button id="drawer-trigger-3" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-3" aria-label="Toggle navigation">
+        <button id="drawer-trigger-3" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-3" aria-label="Toggle navigation">
           <div class="chi-button__content">
             <i class="chi-icon -sm--2 icon-menu"></i>
           </div>
@@ -206,15 +206,13 @@ ul#chi-tabs--drawer.chi-tabs
 
         <!-- Drawer -->
         <div id="drawer-3" class="chi-drawer -left">
-          <div class="chi-drawer__header">
-            <button class="chi-button -icon -close" aria-label="Close">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </div>
+          <button class="chi-button -icon -close" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x"></i>
+            </div>
+          </button>
           <div class="chi-drawer__content">
-            <div class="-px--2 -text">Drawer content here</div>
+            <div class="-p--2 -pt--6 -text">Drawer content here</div>
           </div>
         </div>
 
@@ -227,8 +225,8 @@ ul#chi-tabs--drawer.chi-tabs
       .-p--3
         each i in [1, 2, 3]
           .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-      chi-drawer(position='right' active prevent-auto-hide)
-        .-px--2.-text Drawer content here
+      chi-drawer(position='right' active prevent-auto-hide no-header)
+        .-p--2.-pt--6.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default-right
         li.-active
@@ -240,13 +238,13 @@ ul#chi-tabs--drawer.chi-tabs
     .chi-tabs-panel.-active#webcomponent-right
       :code(lang="html")
         <!-- Trigger -->
-        <chi-button id="drawer-trigger-4" type="icon">
+        <chi-button id="drawer-trigger-4" variant="flat" type="icon">
           <chi-icon icon="menu" size="sm--2"></chi-icon>
         </chi-button>
 
         <!-- Drawer -->
-        <chi-drawer id="interactive-drawer-4" position="right">
-          <div class="-px--2 -text">Drawer content here</div>
+        <chi-drawer id="interactive-drawer-4" position="right" no-header>
+          <div class="-p--2 -pt--6 -text">Drawer content here</div>
         </chi-drawer>
 
         <!-- JavaScript -->
@@ -261,7 +259,7 @@ ul#chi-tabs--drawer.chi-tabs
     .chi-tabs-panel#vue-right
       :code(lang="html")
         <!-- Trigger -->
-        <button class="chi-button" @click="() => toggleDrawer()">
+        <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
           <i class="chi-icon -sm--2 icon-menu"></i>
         </button>
 
@@ -269,9 +267,10 @@ ul#chi-tabs--drawer.chi-tabs
         <ChiDrawer
           position="right"
           :active="this.drawerActive"
+          :noHeader="true"
           backdrop
         >
-          <div class="-px--2 -text">Drawer content here</div>
+          <div class="-p--2 -pt--6 -text">Drawer content here</div>
         </ChiDrawer>
 
         <!-- Data and Methods -->
@@ -291,7 +290,7 @@ ul#chi-tabs--drawer.chi-tabs
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
         <!-- Trigger -->
-        <button id="drawer-trigger-5" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-5" aria-label="Toggle navigation">
+        <button id="drawer-trigger-5" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-5" aria-label="Toggle navigation">
           <div class="chi-button__content">
             <i class="chi-icon -sm--2 icon-menu"></i>
           </div>
@@ -299,15 +298,13 @@ ul#chi-tabs--drawer.chi-tabs
 
         <!-- Drawer -->
         <div id="drawer-5" class="chi-drawer -right">
-          <div class="chi-drawer__header">
-            <button class="chi-button -icon -close" aria-label="Close">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </div>
+          <button class="chi-button -icon -close" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x"></i>
+            </div>
+          </button>
           <div class="chi-drawer__content">
-            <div class="-px--2 -text">Drawer content here</div>
+            <div class="-p--2 -pt--6 -text">Drawer content here</div>
           </div>
         </div>
 
@@ -320,8 +317,8 @@ ul#chi-tabs--drawer.chi-tabs
       .-p--3
         each i in [1, 2, 3]
           .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-      chi-drawer(position='top' active prevent-auto-hide)
-        .-px--2.-text Drawer content here
+      chi-drawer(position='top' active prevent-auto-hide no-header)
+        .-p--2.-pt--6.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default-top
         li.-active
@@ -333,13 +330,13 @@ ul#chi-tabs--drawer.chi-tabs
     .chi-tabs-panel.-active#webcomponent-top
       :code(lang="html")
         <!-- Trigger -->
-        <chi-button id="drawer-trigger-6" type="icon">
+        <chi-button id="drawer-trigger-6" variant="flat" type="icon">
           <chi-icon icon="menu" size="sm--2"></chi-icon>
         </chi-button>
 
         <!-- Drawer -->
-        <chi-drawer id="interactive-drawer-6" position="top">
-          <div class="-px--2 -text">Drawer content here</div>
+        <chi-drawer id="interactive-drawer-6" position="top" no-header>
+          <div class="-p--2 -pt--6 -text">Drawer content here</div>
         </chi-drawer>
 
         <!-- JavaScript -->
@@ -354,7 +351,7 @@ ul#chi-tabs--drawer.chi-tabs
     .chi-tabs-panel#vue-top 
       :code(lang="html")
         <!-- Trigger -->
-        <button class="chi-button" @click="() => toggleDrawer()">
+        <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
           <i class="chi-icon -sm--2 icon-menu"></i>
         </button>
 
@@ -362,9 +359,10 @@ ul#chi-tabs--drawer.chi-tabs
         <ChiDrawer
           position="top"
           :active="this.drawerActive"
+          :noHeader="true"
           backdrop
         >
-          <div class="-px--2 -text">Drawer content here</div>
+          <div class="-p--2 -pt--6 -text">Drawer content here</div>
         </ChiDrawer>
 
         <!-- Data and Methods -->
@@ -384,7 +382,7 @@ ul#chi-tabs--drawer.chi-tabs
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
         <!-- Trigger -->
-        <button id="drawer-trigger-7" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-7" aria-label="Toggle navigation">
+        <button id="drawer-trigger-7" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-7" aria-label="Toggle navigation">
           <div class="chi-button__content">
             <i class="chi-icon -sm--2 icon-menu"></i>
           </div>
@@ -392,15 +390,13 @@ ul#chi-tabs--drawer.chi-tabs
 
         <!-- Drawer -->
         <div id="drawer-7" class="chi-drawer -top">
-          <div class="chi-drawer__header">
-            <button class="chi-button -icon -close" aria-label="Close">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </div>
+          <button class="chi-button -icon -close" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x"></i>
+            </div>
+          </button>
           <div class="chi-drawer__content">
-            <div class="-px--2 -text">Drawer content here</div>
+            <div class="-p--2 -pt--6 -text">Drawer content here</div>
           </div>
         </div>
 
@@ -413,8 +409,8 @@ ul#chi-tabs--drawer.chi-tabs
       .-p--3
         each i in [1, 2, 3]
           .-text.-mb--1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-      chi-drawer(position='bottom' active prevent-auto-hide)
-        .-px--2.-text Drawer content here
+      chi-drawer(position='bottom' active prevent-auto-hide no-header)
+        .-p--2.-pt--6.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-default-bottom
         li.-active
@@ -426,13 +422,13 @@ ul#chi-tabs--drawer.chi-tabs
     .chi-tabs-panel.-active#webcomponent-bottom
       :code(lang="html")
         <!-- Trigger -->
-        <chi-button id="drawer-trigger-8" type="icon">
+        <chi-button id="drawer-trigger-8" variant="flat" type="icon">
           <chi-icon icon="menu" size="sm--2"></chi-icon>
         </chi-button>
 
         <!-- Drawer -->
-        <chi-drawer id="interactive-drawer-8" position="bottom">
-          <div class="-px--2 -text">Drawer content here</div>
+        <chi-drawer id="interactive-drawer-8" position="bottom" no-header>
+          <div class="-p--2 -pt--6 -text">Drawer content here</div>
         </chi-drawer>
 
         <!-- JavaScript -->
@@ -447,7 +443,7 @@ ul#chi-tabs--drawer.chi-tabs
     .chi-tabs-panel#vue-bottom
       :code(lang="html")
         <!-- Trigger -->
-        <button class="chi-button" @click="() => toggleDrawer()">
+        <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
           <i class="chi-icon -sm--2 icon-menu"></i>
         </button>
 
@@ -455,9 +451,10 @@ ul#chi-tabs--drawer.chi-tabs
         <ChiDrawer
           position="bottom"
           :active="this.drawerActive"
+          :noHeader="true"
           backdrop
         >
-          <div class="-px--2 -text">Drawer content here</div>
+          <div class="-p--2 -pt--6 -text">Drawer content here</div>
         </ChiDrawer>
 
         <!-- Data and Methods -->
@@ -477,7 +474,7 @@ ul#chi-tabs--drawer.chi-tabs
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
         <!-- Trigger -->
-        <button id="drawer-trigger-9" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-9" aria-label="Toggle navigation">
+        <button id="drawer-trigger-9" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-9" aria-label="Toggle navigation">
           <div class="chi-button__content">
             <i class="chi-icon -sm--2 icon-menu"></i>
           </div>
@@ -485,15 +482,13 @@ ul#chi-tabs--drawer.chi-tabs
 
         <!-- Drawer -->
         <div id="drawer-9" class="chi-drawer -bottom">
-          <div class="chi-drawer__header">
-            <button class="chi-button -icon -close" aria-label="Close">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-x"></i>
-              </div>
-            </button>
-          </div>
+          <button class="chi-button -icon -close" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x"></i>
+            </div>
+          </button>
           <div class="chi-drawer__content">
-            <div class="-px--2 -text">Drawer content here</div>
+            <div class="-p--2 -pt--6 -text">Drawer content here</div>
           </div>
         </div>
 
@@ -505,8 +500,8 @@ p.-text
   | An optional backdrop can be added to focus the users attention on drawer content.
 .example.-mb--3.-overflow--hidden
   .-position--relative.-z--0.-overflow--hidden(style="height:30rem;")
-    chi-drawer(position='bottom' backdrop active prevent-auto-hide)
-      .-px--2.-text Drawer content here
+    chi-drawer(position='bottom' backdrop active prevent-auto-hide no-header)
+      .-p--2.-pt--6.-text Drawer content here
   .example-tabs.-pl--2
     ul.chi-tabs#examples-backdrop
       li.-active
@@ -518,13 +513,13 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-backdrop
     :code(lang="html")
       <!-- Trigger -->
-      <chi-button id="drawer-trigger-10" type="icon">
+      <chi-button id="drawer-trigger-10" variant="flat" type="icon">
         <chi-icon icon="menu" size="sm--2"></chi-icon>
       </chi-button>
 
       <!-- Drawer -->
-      <chi-drawer id="interactive-drawer-10" position="bottom" backdrop>
-        <div class="-px--2 -text">Drawer content here</div>
+      <chi-drawer id="interactive-drawer-10" position="bottom" backdrop no-header>
+        <div class="-p--2 -pt--6 -text">Drawer content here</div>
       </chi-drawer>
 
       <!-- JavaScript -->
@@ -539,7 +534,7 @@ p.-text
   .chi-tabs-panel#vue-backdrop
     :code(lang="html")
       <!-- Trigger -->
-      <button class="chi-button" @click="() => toggleDrawer()">
+      <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
         <i class="chi-icon -sm--2 icon-menu"></i>
       </button>
 
@@ -547,9 +542,10 @@ p.-text
       <ChiDrawer
         position="bottom"
         :active="this.drawerActive"
+        :noHeader="true"
         backdrop
       >
-        <div class="-px--2 -text">Drawer content here</div>
+        <div class="-p--2 -pt--6 -text">Drawer content here</div>
       </ChiDrawer>
 
       <!-- Data and Methods -->
@@ -569,7 +565,7 @@ p.-text
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <!-- Trigger -->
-      <button id="drawer-trigger-11" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-11" aria-label="Toggle navigation">
+      <button id="drawer-trigger-11" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-11" aria-label="Toggle navigation">
         <div class="chi-button__content">
           <i class="chi-icon -sm--2 icon-menu"></i>
         </div>
@@ -579,15 +575,13 @@ p.-text
       <div class="chi-backdrop -closed">
         <div class="chi-backdrop__wrapper">
           <div id="drawer-11" class="chi-drawer -bottom">
-            <div class="chi-drawer__header">
-              <button class="chi-button -icon -close" aria-label="Close">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-x"></i>
-                </div>
-              </button>
-            </div>
+            <button class="chi-button -icon -close" aria-label="Close">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-x"></i>
+              </div>
+            </button>
             <div class="chi-drawer__content">
-              <div class="-px--2 -text">Drawer content here</div>
+              <div class="-p--2 -pt--6 -text">Drawer content here</div>
             </div>
           </div>
         </div>
@@ -600,7 +594,7 @@ h3 Titled
 .example.-mb--3.-overflow--hidden
   .-position--relative.-z--0.-overflow--hidden(style="height:30rem;")
     chi-drawer(position='left' title='Drawer title here' backdrop active prevent-auto-hide)
-      .-px--2.-text Drawer content here
+      .-p--2.-text Drawer content here
   .example-tabs.-pl--2
     ul#examples-titled.chi-tabs
       li.-active
@@ -612,13 +606,13 @@ h3 Titled
   .chi-tabs-panel.-active#webcomponent-titled
     :code(lang="html")
       <!-- Trigger -->
-      <chi-button id="drawer-trigger-12" type="icon">
+      <chi-button id="drawer-trigger-12" variant="flat" type="icon">
         <chi-icon icon="menu" size="sm--2"></chi-icon>
       </chi-button>
 
       <!-- Drawer -->
       <chi-drawer id="interactive-drawer-12" position="left" title="Drawer title here" backdrop>
-        <div class="-px--2 -text">Drawer content here</div>
+        <div class="-p--2 -text">Drawer content here</div>
       </chi-drawer>
 
       <!-- JavaScript -->
@@ -633,7 +627,7 @@ h3 Titled
   .chi-tabs-panel#vue-titled 
     :code(lang="html")
       <!-- Trigger -->
-      <button class="chi-button" @click="() => toggleDrawer()">
+      <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
         <i class="chi-icon -sm--2 icon-menu"></i>
       </button>
 
@@ -644,7 +638,7 @@ h3 Titled
         title="Drawer title here" 
         backdrop
       >
-        <div class="-px--2 -text">Drawer content here</div>
+        <div class="-p--2 -text">Drawer content here</div>
       </ChiDrawer>
 
       <!-- Data and Methods -->
@@ -664,7 +658,7 @@ h3 Titled
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <!-- Trigger -->
-      <button id="drawer-trigger-13" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-13" aria-label="Toggle navigation">
+      <button id="drawer-trigger-13" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-13" aria-label="Toggle navigation">
         <div class="chi-button__content">
           <i class="chi-icon -sm--2 icon-menu"></i>
         </div>
@@ -685,7 +679,7 @@ h3 Titled
               </button>
             </div>
             <div class="chi-drawer__content">
-              <div class="-px--2 -text">Drawer content here</div>
+              <div class="-p--2 -text">Drawer content here</div>
             </div>
           </div>
         </div>
@@ -707,8 +701,8 @@ ul#chi-tabs--closable.chi-tabs
 #chi-tabs--closable-with.chi-tabs-panel.-active
   .example.-mb--3.-overflow--hidden
     .-position--relative.-z--0.-overflow--hidden(style="height:15rem;")
-      chi-drawer(position='left' active backdrop prevent-auto-hide)
-        .-px--2.-text Drawer content here
+      chi-drawer(position='left' active backdrop prevent-auto-hide no-header)
+        .-p--2.-pt--6.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-closable
         li.-active
@@ -720,13 +714,13 @@ ul#chi-tabs--closable.chi-tabs
     .chi-tabs-panel.-active#webcomponent-closable
       :code(lang="html")
         <!-- Trigger -->
-        <chi-button id="drawer-trigger-14" type="icon">
+        <chi-button id="drawer-trigger-14" variant="flat" type="icon">
           <chi-icon icon="menu" size="sm--2"></chi-icon>
         </chi-button>
 
         <!-- Drawer -->
-        <chi-drawer id="interactive-drawer-14" position="left" backdrop>
-          <div class="-px--2 -text">Drawer content here</div>
+        <chi-drawer id="interactive-drawer-14" position="left" backdrop no-header>
+          <div class="-p--2 -pt--6 -text">Drawer content here</div>
         </chi-drawer>
 
         <!-- JavaScript -->
@@ -741,7 +735,7 @@ ul#chi-tabs--closable.chi-tabs
     .chi-tabs-panel#vue-closable 
       :code(lang="html")
         <!-- Trigger -->
-        <button class="chi-button" @click="() => toggleDrawer()">
+        <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
           <i class="chi-icon -sm--2 icon-menu"></i>
         </button>
 
@@ -749,9 +743,10 @@ ul#chi-tabs--closable.chi-tabs
         <ChiDrawer
           position="left"
           :active="this.drawerActive"
+          :noHeader="true"
           backdrop
         >
-          <div class="-px--2 -text">Drawer content here</div>
+          <div class="-p--2 -pt--6 -text">Drawer content here</div>
         </ChiDrawer>
 
         <!-- Data and Methods -->
@@ -771,7 +766,7 @@ ul#chi-tabs--closable.chi-tabs
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
         <!-- Trigger -->
-        <button id="drawer-trigger-15" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-15" aria-label="Toggle navigation">
+        <button id="drawer-trigger-15" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-15" aria-label="Toggle navigation">
           <div class="chi-button__content">
             <i class="chi-icon -sm--2 icon-menu"></i>
           </div>
@@ -781,15 +776,13 @@ ul#chi-tabs--closable.chi-tabs
         <div class="chi-backdrop -closed">
           <div class="chi-backdrop__wrapper">
             <div id="drawer-15" class="chi-drawer -left">
-              <div class="chi-drawer__header">
-                <button class="chi-button -icon -close" aria-label="Close">
-                  <div class="chi-button__content">
-                    <i class="chi-icon icon-x"></i>
-                  </div>
-                </button>
-              </div>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x"></i>
+                </div>
+              </button>
               <div class="chi-drawer__content">
-                <div class="-px--2 -text">Drawer content here</div>
+                <div class="-p--2 -pt--6 -text">Drawer content here</div>
               </div>
             </div>
           </div>
@@ -801,8 +794,8 @@ ul#chi-tabs--closable.chi-tabs
 #chi-tabs--closable-without.chi-tabs-panel
   .example.-mb--3.-overflow--hidden
     .-position--relative.-z--0.-overflow--hidden(style="height:15rem;")
-      chi-drawer(position='left' active backdrop non-closable prevent-auto-hide)
-        .-px--2.-text Drawer content here
+      chi-drawer(position='left' active backdrop non-closable prevent-auto-hide no-header)
+        .-p--2.-pt--6.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-nonclosable
         li.-active
@@ -817,13 +810,13 @@ ul#chi-tabs--closable.chi-tabs
 
       :code(lang="html")
         <!-- Trigger -->
-        <chi-button id="drawer-trigger-16" type="icon">
+        <chi-button id="drawer-trigger-16" variant="flat" type="icon">
           <chi-icon icon="menu" size="sm--2"></chi-icon>
         </chi-button>
 
         <!-- Drawer -->
-        <chi-drawer id="interactive-drawer-16" position="left" backdrop non-closable>
-          <div class="-px--2 -text">Drawer content here</div>
+        <chi-drawer id="interactive-drawer-16" position="left" backdrop non-closable no-header>
+          <div class="-p--2 -pt--6 -text">Drawer content here</div>
         </chi-drawer>
 
         <!-- JavaScript -->
@@ -841,7 +834,7 @@ ul#chi-tabs--closable.chi-tabs
 
       :code(lang="html")
         <!-- Trigger -->
-        <button class="chi-button" @click="() => toggleDrawer()">
+        <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
           <i class="chi-icon -sm--2 icon-menu"></i>
         </button>
 
@@ -850,9 +843,10 @@ ul#chi-tabs--closable.chi-tabs
           position="left"
           :active="this.drawerActive"
           :nonClosable="true"
+          :noHeader="true"
           backdrop
         >
-          <div class="-px--2 -text">Drawer content here</div>
+          <div class="-p--2 -pt--6 -text">Drawer content here</div>
         </ChiDrawer>
 
         <!-- Data and Methods -->
@@ -872,7 +866,7 @@ ul#chi-tabs--closable.chi-tabs
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
         <!-- Trigger -->
-        <button id="drawer-trigger-17" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-17" aria-label="Toggle navigation">
+        <button id="drawer-trigger-17" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-17" aria-label="Toggle navigation">
           <div class="chi-button__content">
             <i class="chi-icon -sm--2 icon-menu"></i>
           </div>
@@ -882,9 +876,8 @@ ul#chi-tabs--closable.chi-tabs
         <div class="chi-backdrop -closed">
           <div class="chi-backdrop__wrapper">
             <div id="drawer-17" class="chi-drawer -left">
-              <div class="chi-drawer__header"></div>
               <div class="chi-drawer__content">
-                <div class="-px--2 -text">Drawer content here</div>
+                <div class="-p--2 -pt--6 -text">Drawer content here</div>
               </div>
             </div>
           </div>
@@ -904,9 +897,9 @@ ul#chi-tabs--header.chi-tabs
     a(href='#chi-tabs--header-without') No header
 #chi-tabs--header-with.chi-tabs-panel.-active
   .example.-mb--3.-overflow--hidden
-    .-position--relative.-z--0.-overflow--hidden(style="height:15rem;")
-      chi-drawer(position='left' active backdrop prevent-auto-hide)
-        .-px--2.-text Drawer content here
+    .-position--relative.-z--0.-overflow--hidden(style="height:30rem;")
+      chi-drawer(position='bottom' title='Drawer title here' active backdrop prevent-auto-hide)
+        .-p--2.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-header
         li.-active
@@ -918,13 +911,13 @@ ul#chi-tabs--header.chi-tabs
     .chi-tabs-panel.-active#webcomponent-header
       :code(lang="html")
         <!-- Trigger -->
-        <chi-button id="drawer-trigger-18" type="icon">
+        <chi-button id="drawer-trigger-18" variant="flat" type="icon">
           <chi-icon icon="menu" size="sm--2"></chi-icon>
         </chi-button>
 
         <!-- Drawer -->
-        <chi-drawer id="interactive-drawer-18" position="left" backdrop>
-          <div class="-px--2 -text">Drawer content here</div>
+        <chi-drawer id="interactive-drawer-18" title="Drawer title here" position="bottom" backdrop>
+          <div class="-p--2 -text">Drawer content here</div>
         </chi-drawer>
 
         <!-- JavaScript -->
@@ -939,17 +932,18 @@ ul#chi-tabs--header.chi-tabs
     .chi-tabs-panel#vue-header 
       :code(lang="html")
         <!-- Trigger -->
-        <button class="chi-button" @click="() => toggleDrawer()">
+        <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
           <i class="chi-icon -sm--2 icon-menu"></i>
         </button>
 
         <!-- Vue component -->
         <ChiDrawer
-          position="left"
+          position="bottom"
           :active="this.drawerActive"
+          title="Drawer title here"
           backdrop
         >
-          <div class="-px--2 -text">Drawer content here</div>
+          <div class="-p--2 -text">Drawer content here</div>
         </ChiDrawer>
 
         <!-- Data and Methods -->
@@ -969,7 +963,7 @@ ul#chi-tabs--header.chi-tabs
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
         <!-- Trigger -->
-        <button id="drawer-trigger-19" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-19" aria-label="Toggle navigation">
+        <button id="drawer-trigger-19" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-19" aria-label="Toggle navigation">
           <div class="chi-button__content">
             <i class="chi-icon -sm--2 icon-menu"></i>
           </div>
@@ -978,8 +972,11 @@ ul#chi-tabs--header.chi-tabs
         <!-- Drawer -->
         <div class="chi-backdrop -closed">
           <div class="chi-backdrop__wrapper">
-            <div id="drawer-19" class="chi-drawer -left">
+            <div id="drawer-19" class="chi-drawer -bottom">
               <div class="chi-drawer__header">
+                <span class="chi-drawer__title">
+                  Drawer title here
+                </span>
                 <button class="chi-button -icon -close" aria-label="Close">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-x"></i>
@@ -987,7 +984,7 @@ ul#chi-tabs--header.chi-tabs
                 </button>
               </div>
               <div class="chi-drawer__content">
-                <div class="-px--2 -text">Drawer content here</div>
+                <div class="-p--2 -text">Drawer content here</div>
               </div>
             </div>
           </div>
@@ -998,9 +995,9 @@ ul#chi-tabs--header.chi-tabs
 
 #chi-tabs--header-without.chi-tabs-panel
   .example.-mb--3.-overflow--hidden
-    .-position--relative.-z--0.-overflow--hidden(style="height:15rem;")
-      chi-drawer(position='left' active backdrop no-header prevent-auto-hide)
-        .-px--2.-text Drawer content here
+    .-position--relative.-z--0.-overflow--hidden(style="height:30rem;")
+      chi-drawer(position='bottom' active backdrop no-header prevent-auto-hide)
+        .-p--2.-text Drawer content here
     .example-tabs.-pl--2
       ul.chi-tabs#examples-headerless
         li.-active
@@ -1012,13 +1009,13 @@ ul#chi-tabs--header.chi-tabs
     .chi-tabs-panel.-active#webcomponent-headerless
       :code(lang="html")
         <!-- Trigger -->
-        <chi-button id="drawer-trigger-20" type="icon">
+        <chi-button id="drawer-trigger-20" variant="flat" type="icon">
           <chi-icon icon="menu" size="sm--2"></chi-icon>
         </chi-button>
 
         <!-- Drawer -->
-        <chi-drawer id="interactive-drawer-20" position="left" backdrop no-header>
-          <div class="-px--2 -text">Drawer content here</div>
+        <chi-drawer id="interactive-drawer-20" position="bottom" backdrop no-header>
+          <div class="-p--2 -text">Drawer content here</div>
         </chi-drawer>
 
         <!-- JavaScript -->
@@ -1033,18 +1030,18 @@ ul#chi-tabs--header.chi-tabs
     .chi-tabs-panel#vue-headerless
       :code(lang="html")
         <!-- Trigger -->
-        <button class="chi-button" @click="() => toggleDrawer()">
+        <button class="chi-button -flat -icon" @click="() => toggleDrawer()">
           <i class="chi-icon -sm--2 icon-menu"></i>
         </button>
 
         <!-- Vue component -->
         <ChiDrawer
-          position="left"
+          position="bottom"
           :active="this.drawerActive"
           :noHeader="true"
           backdrop
         >
-          <div class="-px--2 -text">Drawer content here</div>
+          <div class="-p--2 -text">Drawer content here</div>
         </ChiDrawer>
 
         <!-- Data and Methods -->
@@ -1064,7 +1061,7 @@ ul#chi-tabs--header.chi-tabs
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
         <!-- Trigger -->
-        <button id="drawer-trigger-21" class="chi-button -icon chi-drawer__trigger" data-target="#drawer-21" aria-label="Toggle navigation">
+        <button id="drawer-trigger-21" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-21" aria-label="Toggle navigation">
           <div class="chi-button__content">
             <i class="chi-icon -sm--2 icon-menu"></i>
           </div>
@@ -1073,107 +1070,12 @@ ul#chi-tabs--header.chi-tabs
         <!-- Drawer -->
         <div class="chi-backdrop -closed">
           <div class="chi-backdrop__wrapper">
-            <div id="drawer-21" class="chi-drawer -left">
+            <div id="drawer-21" class="chi-drawer -bottom">
               <button class="chi-button -icon -close" aria-label="Close">
                 <div class="chi-button__content">
                   <i class="chi-icon icon-x"></i>
                 </div>
               </button>
-              <div class="chi-drawer__content">
-                <div class="-px--2 -text">Drawer content here</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- JavaScript -->
-        <script>chi.drawer(document.getElementById('drawer-trigger-21'));</script>
-
-.-lumen-only
-  h3 Portal
-  .example.-mb--3.-overflow--hidden
-    .-position--relative.-z--0.-overflow--hidden(style="height:30rem;")
-      chi-drawer(position='bottom' title='Drawer title here' portal active backdrop prevent-auto-hide)
-        .-p--2.-text Drawer content here
-    .example-tabs.-pl--2
-      ul.chi-tabs#examples-portal
-        li.-active
-          a(href=`#webcomponent-portal`) Web Component
-        li
-          a(href=`#vue-portal`) Vue
-        li
-          a(href=`#html-portal`) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-portal
-      .chi-tab__description
-        | Use the attribute <code>portal</code> to enable portal styling.
-      :code(lang="html")
-        <!-- Trigger -->
-        <chi-button id="drawer-trigger-22" color="primary">Launch demo drawer</chi-button>
-
-        <!-- Drawer -->
-        <chi-drawer id="interactive-drawer-22" position="bottom" title="Drawer title here" portal backdrop prevent-auto-hide>
-          <div class="-p--2 -text">Drawer content here</div>
-        </chi-drawer>
-
-        <!-- JavaScript -->
-        <script>
-          var drawer = document.getElementById('interactive-drawer-22');
-          var drawerTrigger = document.getElementById('drawer-trigger-22');
-          drawerTrigger.addEventListener('click', function(){
-            drawer.toggle();
-            // or drawer.active = !drawer.active;
-          });
-        </script>
-    .chi-tabs-panel#vue-portal
-      .chi-tab__description
-        | Use the property <code>portal</code> to enable portal styling.
-      :code(lang="html")
-        <!-- Trigger -->
-        <button class="chi-button" @click="() => toggleDrawer()">
-          <i class="chi-icon -sm--2 icon-menu"></i>
-        </button>
-
-        <!-- Vue component -->
-        <ChiDrawer
-          position="bottom"
-          title="Drawer title here"
-          :active="this.drawerActive"
-          :portal="true"
-          backdrop
-        >
-          <div class="-px--2 -text">Drawer content here</div>
-        </ChiDrawer>
-
-        <!-- Data and Methods -->
-        data: {
-          drawerActive : false;
-        },
-        methods: {
-          toggleDrawer() {
-            this.drawerActive = !this.drawerActive;
-          }
-        }
-    .chi-tabs-panel#html-portal
-      .chi-tab__description
-        | Use the class <code>-portal</code> to enable portal styling.
-      :code(lang="html")
-        <!-- Trigger -->
-        <button id="drawer-trigger-23" class="chi-button -primary chi-drawer__trigger" data-target="#drawer-23">Launch demo drawer</button>
-
-        <!-- Drawer -->
-        <div class="chi-backdrop -closed">
-          <div class="chi-backdrop__wrapper">
-            <div id="drawer-23" class="chi-drawer -bottom -portal">
-              <div class="chi-drawer__header">
-                <span class="chi-drawer__title">
-                  Drawer title here
-                </span>
-                <button class="chi-button -icon -close" aria-label="Close">
-                  <div class="chi-button__content">
-                    <i class="chi-icon icon-x"></i>
-                  </div>
-                </button>
-              </div>
               <div class="chi-drawer__content">
                 <div class="-p--2 -text">Drawer content here</div>
               </div>
@@ -1182,7 +1084,7 @@ ul#chi-tabs--header.chi-tabs
         </div>
 
         <!-- JavaScript -->
-        <script>chi.drawer(document.getElementById('drawer-trigger-23'));</script>
+        <script>chi.drawer(document.getElementById('drawer-trigger-21'));</script>
 
 script.
   document.addEventListener(

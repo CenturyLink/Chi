@@ -6,23 +6,32 @@ $label-font-size: 0.75rem;
 $label-font-size-relaxed: 0.875rem;
 $label-left: 0.6875rem + 0.0625rem;
 $sizes: (
+  md: (
+    label-bottom: $text-input-md-floating-label-focus-bottom,
+    label-bottom-relaxed: $text-input-md-floating-label-bottom,
+    label-font-size: $text-input-md-floating-label-focus-font-size,
+    label-font-size-relaxed: $text-input-md-floating-label-font-size,
+    label-line-height: $text-input-md-floating-label-line-height,
+    padding-bottom: $text-input-md-floating-label-padding-bottom,
+    padding-top: $text-input-md-floating-label-padding-top
+  ),
   lg: (
-    label-bottom: 0.9375rem,
-    label-bottom-relaxed: 0.5rem,
-    label-font-size: 0.75rem,
-    label-font-size-relaxed: 0.875rem,
-    label-line-height: 0.75rem,
-    padding-bottom: 0.15625rem,
-    padding-top: 0.96875rem
+    label-bottom: $text-input-lg-floating-label-focus-bottom,
+    label-bottom-relaxed: $text-input-lg-floating-label-bottom,
+    label-font-size: $text-input-lg-floating-label-focus-font-size,
+    label-font-size-relaxed: $text-input-lg-floating-label-font-size,
+    label-line-height: $text-input-lg-floating-label-line-height,
+    padding-bottom: $text-input-lg-floating-label-padding-bottom,
+    padding-top: $text-input-lg-floating-label-padding-top
   ),
   xl: (
-    label-bottom: 1.1875rem,
-    label-bottom-relaxed: 0.75rem,
-    label-font-size: 0.75rem,
-    label-font-size-relaxed: 0.875rem,
-    label-line-height: 1.5rem,
-    padding-bottom: 0.25rem,
-    padding-top: 1.125rem,
+    label-bottom: $text-input-xl-floating-label-focus-bottom,
+    label-bottom-relaxed: $text-input-xl-floating-label-bottom,
+    label-font-size: $text-input-xl-floating-label-focus-font-size,
+    label-font-size-relaxed: $text-input-xl-floating-label-font-size,
+    label-line-height: $text-input-xl-floating-label-line-height,
+    padding-bottom: $text-input-xl-floating-label-padding-bottom,
+    padding-top: $text-input-xl-floating-label-padding-top,
   )
 );
 
@@ -30,6 +39,9 @@ $sizes: (
   &.-floating-label {
     & > input,
     & > select {
+      padding-bottom: $text-input-md-floating-label-padding-bottom;
+      padding-top: $text-input-md-floating-label-padding-top;
+
       @each $type in map-keys($sizes) {
         &.-#{$type} {
           padding-bottom: map-get(map-get($sizes, $type), padding-bottom);
@@ -51,6 +63,7 @@ $sizes: (
       }
 
       & ~ label {
+        bottom: $text-input-md-floating-label-bottom;
         color: $text-input-floating-label-text-color;
         font-size: $label-font-size-relaxed;
         font-weight: $font-weight-normal;
@@ -58,10 +71,12 @@ $sizes: (
         line-height: 1.5rem;
         margin-bottom: unset;
         opacity: $text-input-floating-label-opacity;
+        pointer-events: none;
         position: absolute;
         transition: all 0.2s ease-in-out;
 
         &.-active {
+          bottom: $text-input-md-floating-label-focus-bottom;
           font-size: $label-font-size;
           opacity: $text-input-focus-floating-label-opacity;
         }

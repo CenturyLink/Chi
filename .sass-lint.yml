@@ -55,9 +55,7 @@ rules:
   leading-zero:
     - 2
     - include: true
-  max-file-line-count:
-    - 2
-    - length: 1500
+  max-file-line-count: 0
   max-line-length:
     - 2
     - length: 120

@@ -52,6 +52,7 @@
         position: relative;
 
         & > .chi-icon {
+          color: inherit;
           left: 1.5rem;
           position: absolute;
         }
@@ -234,7 +235,7 @@
     }
   }
 
-  &.-portal {
+  &.-tree {
     > li {
       .chi-tabs_item {
         padding-left: 2.25rem;
@@ -251,7 +252,7 @@
           &.-icon {
             position: absolute;
             right: 0.5rem;
-            top: calc(50% - 1rem);
+            top: 0;
 
             .chi-icon {
               opacity: 0;
@@ -386,7 +387,7 @@
 }
 
 @mixin tabs-not-vertical {
-  height: 3.5rem;
+  height: $tabs-horizontal-md-height;
 
   &.-icons {
     & > li {
@@ -401,6 +402,7 @@
         position: relative;
 
         .chi-icon {
+          color: inherit;
           left: 0;
           position: absolute;
         }
@@ -409,7 +411,7 @@
   }
 
   &.-border {
-    border-bottom: 0.0625rem solid $color-border-base-dark;
+    border-bottom: $tabs-horizontal-border-bottom;
 
     & > li {
       &.chi-sliding-border {
@@ -424,8 +426,18 @@
     }
 
     & > a {
+      font-size: $tabs-horizontal-md-font-size;
+      font-weight: $tabs-horizontal-md-font-weight;
       line-height: $line-height-sm;
-      padding: 1.25rem 0;
+      padding: $tabs-horizontal-md-padding;
+
+      &.chi-dropdown__trigger {
+        padding-right: $tabs-horizontal-md-trigger-padding-right;
+
+        &::after {
+          top: $tabs-horizontal-md-trigger-icon-top;
+        }
+      }
     }
 
     &.chi-sliding-border {
@@ -438,41 +450,61 @@
   &:not(.-sliding) > li {
     &.-active > a {
       border-bottom: 0.125rem solid $color-border-primary;
-      padding-bottom: 1.125rem;
+      padding-bottom: $tabs-horizontal-md-active-padding-bottom;
     }
   }
 
   &.-xs {
-    height: 2.5rem;
+    height: $tabs-horizontal-xs-height;
 
     & > li {
       &.-active > a {
-        padding-bottom: 0.5625rem;
+        padding-bottom: $tabs-horizontal-xs-active-padding-bottom;
       }
 
       & > a {
-        padding: 0.8125rem 0 0.6875rem 0;
+        font-size: $tabs-horizontal-xs-font-size;
+        font-weight: $tabs-horizontal-xs-font-weight;
+        padding: $tabs-horizontal-xs-padding;
+
+        &.chi-dropdown__trigger {
+          padding-right: $tabs-horizontal-xs-trigger-padding-right;
+
+          &::after {
+            top: $tabs-horizontal-xs-trigger-icon-top;
+          }
+        }
       }
     }
   }
 
   &.-sm {
-    height: 3rem;
+    height: $tabs-horizontal-sm-height;
 
     & > li {
       &.-active > a {
-        padding-bottom: 0.875rem;
+        padding-bottom: $tabs-horizontal-sm-active-padding-bottom;
       }
 
       & > a {
+        font-size: $tabs-horizontal-sm-font-size;
+        font-weight: $tabs-horizontal-sm-font-weight;
         line-height: $line-height-sm;
-        padding: 1rem 0;
+        padding: $tabs-horizontal-sm-padding;
+
+        &.chi-dropdown__trigger {
+          padding-right: $tabs-horizontal-sm-trigger-padding-right;
+
+          &::after {
+            top: $tabs-horizontal-sm-trigger-icon-top;
+          }
+        }
       }
     }
   }
 
   &.-lg {
-    height: 4rem;
+    height: $tabs-horizontal-lg-height;
 
     & > li:not(.chi-sliding-border) {
       &:not(:first-child) {
@@ -480,11 +512,37 @@
       }
 
       &.-active > a {
-        padding-bottom: 1.125rem;
+        padding-bottom: $tabs-horizontal-lg-active-padding-bottom;
       }
 
       & > a {
-        line-height: $line-height-lg;
+        font-size: $tabs-horizontal-lg-font-size;
+        font-weight: $tabs-horizontal-lg-font-weight;
+        line-height: $tabs-horizontal-lg-line-height;
+        padding: $tabs-horizontal-lg-padding;
+
+        &.chi-dropdown__trigger {
+          padding-right: $tabs-horizontal-lg-trigger-padding-right;
+
+          &::after {
+            top: $tabs-horizontal-lg-trigger-icon-top;
+          }
+        }
+      }
+
+      & > a {
+        font-size: $tabs-horizontal-lg-font-size;
+        font-weight: $tabs-horizontal-lg-font-weight;
+        line-height: $tabs-horizontal-lg-line-height;
+        padding: $tabs-horizontal-lg-padding;
+
+        &.chi-dropdown__trigger {
+          padding-right: $tabs-horizontal-lg-trigger-padding-right;
+
+          &::after {
+            top: $tabs-horizontal-lg-trigger-icon-top;
+          }
+        }
       }
     }
   }

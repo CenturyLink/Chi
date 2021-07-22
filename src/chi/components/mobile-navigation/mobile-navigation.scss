@@ -40,6 +40,12 @@
         &.chi-dropdown__trigger {
           font-size: $font-size-lg;
         }
+
+        &.-close {
+          .chi-icon {
+            color: $mobile-nav-drawer-close-icon-color;
+          }
+        }
       }
 
       .chi-mobile-nav__header-title {
@@ -51,7 +57,7 @@
 
       .-close,
       .-back {
-        top: 0.75rem;
+        top: $mobile-nav-header-button-top;
       }
 
       .-back {
@@ -185,6 +191,23 @@
               }
             }
           }
+
+          &:not(.-expanded) {
+            & > a {
+              &,
+              &:hover {
+                background-color: $mobile-nav-list-item-active-background-color;
+                box-shadow: inset 0.125rem 0 0 $mobile-nav-list-item-active-border-color;
+              }
+            }
+          }
+
+          &.-expanded {
+            .-active {
+              background-color: $mobile-nav-list-item-active-background-color;
+              box-shadow: inset 0.125rem 0 0 $mobile-nav-list-item-active-border-color;
+            }
+          }
         }
 
         &.-expanded {
@@ -197,9 +220,11 @@
           }
 
           .chi-mobile-nav-item-tab {
-            &:hover {
-              background-color: $mobile-nav-list-item-hover-background-color;
-              color: $mobile-nav-list-item-hover-text-color;
+            &:not(.-active) {
+              &:hover {
+                background-color: $mobile-nav-list-item-hover-background-color;
+                color: $mobile-nav-list-item-hover-text-color;
+              }
             }
           }
 
@@ -213,7 +238,7 @@
         align-items: center;
         display: flex;
         font-size: 0.875rem;
-        font-weight: $font-weight-normal;
+        font-weight: $mobile-nav-list-item-title-font-weight;
       }
 
       &-item-list {
@@ -260,6 +285,7 @@
                   position: relative;
 
                   &::after {
+                    color: $mobile-nav-list-item-trigger-icon-color;
                     content: '\e920';
                     display: block;
                     font-family: 'chi';
@@ -281,6 +307,12 @@
                   &,
                   &:hover {
                     background-color: $mobile-nav-list-item-active-background-color;
+                  }
+
+                  &.chi-drawer__subitem-list-trigger {
+                    &::after {
+                      color: $mobile-nav-list-item-active-trigger-icon-color;
+                    }
                   }
                 }
               }
@@ -313,6 +345,7 @@
                   position: relative;
 
                   &::after {
+                    color: $mobile-nav-list-item-trigger-icon-color;
                     content: '\e91e';
                     display: block;
                     font-family: 'chi';
@@ -325,6 +358,18 @@
                     top: 0.75rem;
                     transition: 0.2s;
                     width: 0.75rem;
+                  }
+                }
+              }
+
+              &.-active {
+                &:not(.-expanded) {
+                  a {
+                    &.chi-drawer__subitem-list-trigger {
+                      &::after {
+                        color: $mobile-nav-list-item-active-trigger-icon-color;
+                      }
+                    }
                   }
                 }
               }

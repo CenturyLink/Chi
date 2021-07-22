@@ -80,11 +80,11 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                     )
                     button.chi-button.-icon(tabindex='-1', aria-label='Decrease')
                       .chi-button__content
-                        .chi-icon(class={[`-${size}`]: size != 'default'})
+                        .chi-icon
                           svg(aria-hidden="true")
                             use(xlink:href='#icon-minus')
                     button.chi-button.-icon(tabindex='-1', aria-label='Increase')
                       .chi-button__content
-                        .chi-icon(class={[`-${size}`]: size != 'default'})
+                        .chi-icon
                           svg(aria-hidden="true")
                             use(xlink:href='#icon-plus')

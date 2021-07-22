@@ -10,11 +10,12 @@ $padding-vertical: 0.125rem;
   -webkit-font-smoothing: antialiased;
   background: $tooltip-background-color;
   border-radius: $border-radius;
+  box-shadow: $tooltip-box-shadow;
   color: $tooltip-text-color;
   display: block;
   font-family: $font-family-base;
   font-size: $font-size-xs;
-  font-weight: $font-weight-semi-bold;
+  font-weight: $tooltip-font-weight;
   line-height: $line-height-sm;
   max-height: $line-height-sm * $multi-line-ellipsis-max + $padding-vertical * 2;
   max-width: $tooltip-max-width;
@@ -34,5 +35,11 @@ $padding-vertical: 0.125rem;
     background: $tooltip-light-background-color;
     box-shadow: $tooltip-light-box-shadow;
     color: $tooltip-light-text-color;
+  }
+
+  &.-dark {
+    background: $tooltip-dark-background-color;
+    box-shadow: $tooltip-dark-box-shadow;
+    color: $tooltip-dark-text-color;
   }
 }

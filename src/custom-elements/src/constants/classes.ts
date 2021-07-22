@@ -1,7 +1,6 @@
 /* Common */
 export const ACTIVE_CLASS = '-active';
 export const DISABLED_CLASS = '-disabled';
-export const PORTAL_CLASS = '-portal';
 
 /* Time */
 export const TIME_CLASSES = {
@@ -25,6 +24,7 @@ export const POPOVER_CLASSES = {
   FOOTER: 'chi-popover__footer',
   HEADER: 'chi-popover__header',
   INPUT: 'chi-popover__input',
+  MODAL: '-modal',
   NO_ARROW: '-no-arrow',
   POPOVER: 'chi-popover',
   TEXT: 'chi-popover__text',
