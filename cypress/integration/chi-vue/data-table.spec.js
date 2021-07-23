@@ -1150,27 +1150,27 @@ describe('Server Side Data Table', () => {
         .as('paginationIcons');
     });
 
-    it.skip('should render new data when going to page two', () => {
-      cy.get(`[data-cy='data-table']`)
-        .find(`.${PAGINATION_CLASSES.PAGINATION}`)
-        .children()
-        .first()
-        .children()
-        .eq(1)
-        .find(`.${ICON_BUTTON}`)
-        .as('paginationIcons')
-        .eq(2)
-        .click()
-        .then(() => {
-          cy.get(`[data-cy='data-table']`).should('contain', 'Name 4');
-        });
-      cy.get(`@paginationIcons`)
-        .eq(0)
-        .click()
-        .then(() => {
-          cy.get(`[data-cy='data-table']`).should('contain', 'Name 1');
-        });
-    });
+    // it.skip('should render new data when going to page two', () => {
+    //   cy.get(`[data-cy='data-table']`)
+    //     .find(`.${PAGINATION_CLASSES.PAGINATION}`)
+    //     .children()
+    //     .first()
+    //     .children()
+    //     .eq(1)
+    //     .find(`.${ICON_BUTTON}`)
+    //     .as('paginationIcons')
+    //     .eq(2)
+    //     .click()
+    //     .then(() => {
+    //       cy.get(`[data-cy='data-table']`).should('contain', 'Name 4');
+    //     });
+    //   cy.get(`@paginationIcons`)
+    //     .eq(0)
+    //     .click()
+    //     .then(() => {
+    //       cy.get(`[data-cy='data-table']`).should('contain', 'Name 1');
+    //     });
+    // });
 
     it(`should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
       cy.window()
@@ -1376,27 +1376,27 @@ describe('Server Side Data Table', () => {
           .as('paginationIcons');
       });
 
-      it.skip('should render new data when going to page two', () => {
-        cy.get(`[data-cy='data-table-portal']`)
-          .find(`.${PAGINATION_CLASSES.PAGINATION}`)
-          .children()
-          .first()
-          .children()
-          .eq(1)
-          .find(`.${ICON_BUTTON}`)
-          .as('paginationIcons')
-          .eq(2)
-          .click()
-          .then(() => {
-            cy.get(`[data-cy='data-table-portal']`).should('contain', 'Name 4');
-          });
-        cy.get(`@paginationIcons`)
-          .eq(0)
-          .click()
-          .then(() => {
-            cy.get(`[data-cy='data-table-portal']`).should('contain', 'Name 1');
-          });
-      });
+      // it.skip('should render new data when going to page two', () => {
+      //   cy.get(`[data-cy='data-table-portal']`)
+      //     .find(`.${PAGINATION_CLASSES.PAGINATION}`)
+      //     .children()
+      //     .first()
+      //     .children()
+      //     .eq(1)
+      //     .find(`.${ICON_BUTTON}`)
+      //     .as('paginationIcons')
+      //     .eq(2)
+      //     .click()
+      //     .then(() => {
+      //       cy.get(`[data-cy='data-table-portal']`).should('contain', 'Name 4');
+      //     });
+      //   cy.get(`@paginationIcons`)
+      //     .eq(0)
+      //     .click()
+      //     .then(() => {
+      //       cy.get(`[data-cy='data-table-portal']`).should('contain', 'Name 1');
+      //     });
+      // });
 
       it(`should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
         cy.window()
