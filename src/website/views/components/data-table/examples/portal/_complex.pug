@@ -1,0 +1,1607 @@
+h3 Complex
+.example.-mb--3
+  .-p--3
+    .chi-card.-portal.-bg--white.-bg-md--grey-15
+      .chi-card__header.-sm
+        .chi-card__title Title
+      .chi-card__content.-p--0
+        #complex
+          chi-vue-data-table(
+            :config="config",
+            :data="table",
+          )
+            template(#status="payload")
+              div(
+                :class="`chi-badge -xs ${payload.status === 'active' ? '-success -bg--success-light -text--success' : ''}`"
+              )
+                span.-text--truncate {{ payload.status }}
+            template(#name="payload")
+              chi-popover-example(:name="payload.name", :id="payload.id")
+            template(#actions="payload")
+              chi-dropdown-example(:id="payload.id")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-complex
+      li.-disabled
+        a(href=`#webcomponent-portal-complex`) Web Component
+      li.-active
+        a(href=`#vue-portal-complex`) Vue
+      li.-disabled
+        a(href=`#html-portal-complex`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-complex
+  .chi-tabs-panel.-active#vue-portal-complex
+    .chi-tab__description.-p--2
+      | Create reusable Vue components based on your needs and use them as custom templates for Data Table cells and row accordions
+    .-d--flex.-no-gutter.-bt--1
+      .-bg--grey-20.-pt--3.-br--1(style="width: 14rem;")
+        ul#example-vertical-base.chi-tabs.-vertical(role='tablist' aria-label='chi-tabs-vertical-base')
+          li.-active
+            a(href='#vertical-base-1' role='tab' aria-selected='true' aria-controls='vertical-base-1') ExampleDataTable.vue
+          li
+            a(href='#vertical-base-2' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-2') ExamplePopover.vue
+          li
+            a(href='#vertical-base-3' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-3') ExampleDropdown.vue
+        script.
+          chi.tab(document.getElementById('example-vertical-base'));
+      .-flex--grow1
+        #vertical-base-1.chi-tabs-panel.-active(role='tabpanel')
+          :code(lang='html')
+            <!-- Vue component -->
+            <ChiDataTable :config="config" :data="table">
+              <template #status="payload">
+                <div :class="`chi-badge -xs ${payload.status === 'active'
+                  ? '-success -bg--success-light -text--success' : ''}`">
+                  <span class="-text--truncate">
+                    {{ payload.status }}
+                  </span>
+                </div>
+              </template>
+              <template #name="payload">
+                <ExamplePopover :name="payload.name" :id="payload.id" />
+              </template>
+              <template #actions="payload">
+                <ExampleDropdown :id="payload.id" />
+              </template>
+            </ChiDataTable>
+
+            <!-- imports -->
+            import ExamplePopover from './ExamplePopover.vue';
+            import ExampleDropdown from './ExampleDropdown.vue';
+
+            <!-- Config and Data -->
+            data: {
+              config: {
+                columnResize: false,
+                activePage: 1,
+                selectable: true,
+                style: {
+                  portal: true,
+                  noBorder: false,
+                  bordered: false,
+                  hover: false,
+                  size: 'md',
+                  striped: false,
+                },
+                pagination: {
+                  compact: false,
+                  firstLast: true,
+                  pageJumper: true,
+                },
+                resultsPerPage: 3,
+              },
+              table: {
+                head: {
+                  name: { label: 'Name', sortable: true, sortDataType: 'string', key: true, bold: true },
+                  status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string' },
+                  lastLogin: { label: 'Last Login', key: true },
+                  actions: { label: 'Actions', align: 'right' },
+                },
+                body: [
+                  {
+                    expanded: true,
+                    id: "name-1",
+                    data: [
+                      { template: "name", payload: { name: "Name 1", id: "name-1" } },
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 3:26 PM",
+                      {
+                        template: "actions",
+                        payload: { id: "name-1" },
+                      },
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-0",
+                            data: [
+                              "Child 1 Name 1",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {}
+                            ],
+                            nestedContent: {
+                              table: {
+                                data: [
+                                  {
+                                    id: "name-1-0-0",
+                                    data: [
+                                      "Grand Child 1 Name 1",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                  {
+                                    id: "name-1-0-1",
+                                    data: [
+                                      "Grand Child 2 Name 1",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                          {
+                            id: "name-1-1",
+                            data: [
+                              "Child 2 Name 1",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {}
+                            ],
+                            nestedContent: {
+                              table: {
+                                data: [
+                                  {
+                                    id: "name-1-1-0",
+                                    data: [
+                                      "Grand Child 1 Name 1",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                  {
+                                    id: "name-1-1-1",
+                                    data: [
+                                      "Grand Child 2 Name 1",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    id: "name-2",
+                    data: [
+                      { template: "name", payload: { name: "Name 2", id: "name-2" } },
+                      {
+                        template: "status",
+                        payload: { status: "Inactive" },
+                      },
+                      "Dec 18, 2020 3:26 PM",
+                      {
+                        template: "actions",
+                        payload: { id: "name-2" },
+                      },
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-2-0",
+                            data: [
+                              "Child 1 Name 2",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                            nestedContent: {
+                              table: {
+                                data: [
+                                  {
+                                    id: "name-1-0",
+                                    data: [
+                                      "Grand Child 1 Name 2",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                  {
+                                    id: "name-1-1",
+                                    data: [
+                                      "Grand Child 2 Name 2",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                          {
+                            id: "name-2-1",
+                            data: [
+                              "Child 2 Name 2",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                            nestedContent: {
+                              table: {
+                                data: [
+                                  {
+                                    id: "name-1-0",
+                                    data: [
+                                      "Grand Child 1 Name 2",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                  {
+                                    id: "name-1-1",
+                                    data: [
+                                      "Grand Child 2 Name 2",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    id: "name-3",
+                    data: [
+                      {
+                        template: "name",
+                        payload: {
+                          name: "Name 3",
+                          id: "name-3",
+                        },
+                      },
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 3:26 PM",
+                      {
+                        template: "actions",
+                        payload: {
+                          id: "name-3",
+                        },
+                      },
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-3-0",
+                            data: [
+                              "Child 1 Name 3",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                            nestedContent: {
+                              table: {
+                                data: [
+                                  {
+                                    id: "name-1-0",
+                                    data: [
+                                      "Grand Child 1 Name 3",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                  {
+                                    id: "name-1-1",
+                                    data: [
+                                      "Grand Child 2 Name 3",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                          {
+                            id: "name-3-1",
+                            data: [
+                              "Child 2 Name 3",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                            nestedContent: {
+                              table: {
+                                data: [
+                                  {
+                                    id: "name-1-0",
+                                    data: [
+                                      "Grand Child 1 Name 3",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                  {
+                                    id: "name-1-1",
+                                    data: [
+                                      "Grand Child 2 Name 3",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    id: "name-4",
+                    data: [
+                      {
+                        template: "name",
+                        payload: {
+                          name: "Name 4",
+                          id: "name-4",
+                        },
+                      },
+                      {
+                        template: "status",
+                        payload: { status: "inactive" },
+                      },
+                      "Dec 18, 2020 3:26 PM",
+                      {
+                        template: "actions",
+                        payload: {
+                          id: "name-4",
+                        },
+                      },
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-4-0",
+                            data: [
+                              "Child 1 Name 4",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                            nestedContent: {
+                              table: {
+                                data: [
+                                  {
+                                    id: "name-1-0",
+                                    data: [
+                                      "Grand Child 1 Name 4",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                  {
+                                    id: "name-1-1",
+                                    data: [
+                                      "Grand Child 2 Name 4",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                          {
+                            id: "name-4-1",
+                            data: [
+                              "Child 2 Name 4",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                            nestedContent: {
+                              table: {
+                                data: [
+                                  {
+                                    id: "name-1-0",
+                                    data: [
+                                      "Grand Child 1 Name 4",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                  {
+                                    id: "name-1-1",
+                                    data: [
+                                      "Grand Child 2 Name 4",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    id: "name-5",
+                    data: [
+                      {
+                        template: "name",
+                        payload: {
+                          name: "Name 5",
+                          id: "name-5",
+                        },
+                      },
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 3:26 PM",
+                      {
+                        template: "actions",
+                        payload: {
+                          id: "name-5",
+                        },
+                      },
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-5-0",
+                            data: [
+                              "Child 1 Name 5",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                            nestedContent: {
+                              table: {
+                                data: [
+                                  {
+                                    id: "name-1-0",
+                                    data: [
+                                      "Grand Child 1 Name 5",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                  {
+                                    id: "name-1-1",
+                                    data: [
+                                      "Grand Child 2 Name 5",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                          {
+                            id: "name-5-1",
+                            data: [
+                              "Child 2 Name 5",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                            nestedContent: {
+                              table: {
+                                data: [
+                                  {
+                                    id: "name-1-0",
+                                    data: [
+                                      "Grand Child 1 Name 5",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                  {
+                                    id: "name-1-1",
+                                    data: [
+                                      "Grand Child 2 Name 5",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    id: "name-6",
+                    data: [
+                      {
+                        template: "name",
+                        payload: {
+                          name: "Name 6",
+                          id: "name-6",
+                        },
+                      },
+                      {
+                        template: "status",
+                        payload: { status: "inactive" },
+                      },
+                      "Dec 18, 2020 3:26 PM",
+                      {
+                        template: "actions",
+                        payload: {
+                          id: "name-6",
+                        },
+                      },
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-6-0",
+                            data: [
+                              "Child 1 Name 6",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                            nestedContent: {
+                              table: {
+                                data: [
+                                  {
+                                    id: "name-1-0",
+                                    data: [
+                                      "Grand Child 1 Name 6",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                  {
+                                    id: "name-1-1",
+                                    data: [
+                                      "Grand Child 2 Name 6",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                          {
+                            id: "name-6-1",
+                            data: [
+                              "Child 2 Name 6",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                            nestedContent: {
+                              table: {
+                                data: [
+                                  {
+                                    id: "name-1-0",
+                                    data: [
+                                      "Grand Child 1 Name 6",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                  {
+                                    id: "name-1-1",
+                                    data: [
+                                      "Grand Child 2 Name 6",
+                                      {
+                                        template: "status",
+                                        payload: { status: "active" },
+                                      },
+                                      "Dec 18, 2020 2:38 AM",
+                                      {},
+                                    ],
+                                  },
+                                ],
+                              },
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+            }
+        #vertical-base-2.chi-tabs-panel(role='tabpanel')
+          :code(lang='html')
+            <!-- Template -->
+            <template>
+              <div class="-text--truncate">
+                <a
+                  :id="`ticket-popover-button-${id}`"
+                  href="#"
+                  :data-target="`#ticket-popover-${id}`"
+                  position="top-start">
+                  {{id}}
+                </a>
+                <section
+                  class="chi-popover"
+                  :id="`ticket-popover-${id}`"
+                  aria-modal="true"
+                  role="dialog"
+                  aria-label="Popover title"
+                >
+                  <header class="chi-popover__header">
+                    <h2 class="chi-popover__title">{{ id }}</h2>
+                  </header>
+                  <div class="chi-popover__content">
+                    <p class="chi-popover__text">Content for {{ id }}</p>
+                  </div>
+                </section>
+              </div>
+            </template>
+
+            <!-- Mounted -->
+            mounted() {
+              const buttonOpenOnHover = document.getElementById(`ticket-popover-button-${this.$props.id}`);
+              const popover = chi.popover(buttonOpenOnHover);
+              let hoverAnimationTimeout: number;
+
+              if (buttonOpenOnHover) {
+                buttonOpenOnHover.addEventListener('mouseenter', function() {
+                  hoverAnimationTimeout = setTimeout(() => {
+                    popover.show();
+                  }, 300);
+                });
+
+                buttonOpenOnHover.addEventListener('mouseleave', function() {
+                  if (hoverAnimationTimeout) {
+                    clearTimeout(hoverAnimationTimeout);
+                  }
+                  popover.hide();
+                });
+              }
+            }
+        #vertical-base-3.chi-tabs-panel(role='tabpanel')
+          :code(lang='html')
+            <!-- Template -->
+            <template>
+              <div class="chi-dropdown">
+                <button ref="dropdownTrigger" class="chi-button -icon -flat -bg--none -opacity-hover--80">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-more-vert"></i>
+                  </div>
+                </button>
+                <div class="chi-dropdown__menu">
+                  <a class="chi-dropdown__menu-item" href="#">
+                    <span><i class="chi-icon icon-edit -sm -icon--primary" /></span>
+                    <span>Edit</span>
+                  </a>
+                  <a class="chi-dropdown__menu-item" href="#">
+                    <span><i class="chi-icon icon-delete -sm -icon--primary" /></span>
+                    <span>Delete</span>
+                  </a>
+                </div>
+              </div>
+            </template>
+
+            <!-- mounted -->
+            mounted() {
+              chi.dropdown(this.$refs.dropdownTrigger);
+            }
+  .chi-tabs-panel#html-portal-complex
+
+script.
+  const namePopover = Vue.component('namepopover', {
+    props: ['name', 'id'],
+    popoverAnimationTimeout: null,
+    mounted() {
+      const buttonOpenOnHover = document.getElementById(`name-popover-button-${this.id}`);
+      const popover = window.chi.popover(buttonOpenOnHover);
+      let hoverAnimationTimeout;
+
+      if (buttonOpenOnHover) {
+        buttonOpenOnHover.addEventListener('mouseenter', function () {
+          hoverAnimationTimeout = setTimeout(() => {
+            popover.show();
+          }, 300);
+        });
+
+        buttonOpenOnHover.addEventListener('mouseleave', function () {
+          if (hoverAnimationTimeout) {
+            clearTimeout(hoverAnimationTimeout);
+          }
+          popover.hide();
+        });
+      }
+    },
+    template: `<div class="-text--truncate">
+      <a :id="'name-popover-button-'+this.id" href="#" :data-target="'#name-popover-'+this.id" position="top-start">{{this.name}}</a>
+      <section class="chi-popover" :id="'name-popover-'+this.id" aria-modal="true" role="dialog" aria-label={this.name}>
+        <div class="chi-popover__content">
+          {{this.name}}
+        </div>
+      </section>
+      </div>`,
+  });
+  const actionsDropdown = Vue.component('actionsdropdown', {
+    props: ['id'],
+    mounted() {
+      window.chi.dropdown(document.getElementById(`action-button-${this.id}`));
+    },
+    template: `<div class="chi-dropdown -position--absolute">
+      <button :id="'action-button-'+this.id" class="chi-button -icon -primary -flat -bg--none -opacity-hover--80">
+        <div class="chi-button__content">
+          <i class="chi-icon icon-more-vert"></i>
+        </div>
+      </button>
+      <div class="chi-dropdown__menu">
+        <a class="chi-dropdown__menu-item" href="#">
+          <span><chi-icon icon="edit" size="sm" color="primary"></chi-icon></span>
+          <span>Edit {{this.id}}</span>
+        </a>
+        <a class="chi-dropdown__menu-item" href="#">
+          <span><chi-icon icon="delete" size="sm" color="primary"></chi-icon></span>
+          <span>Delete {{this.id}}</span>
+        </a>
+      </div>
+    </div>`,
+  });
+
+  new Vue({
+    components: {
+      chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+      ChiPopoverExample: namePopover,
+      ChiDropdownExample: actionsDropdown,
+    },
+    data: {
+      config: {
+        columnResize: false,
+        activePage: 1,
+        selectable: true,
+        style: {
+          portal: true,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: true,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name', sortable: true, sortDataType: 'string', key: true, bold: true },
+          status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string' },
+          lastLogin: { label: 'Last Login', key: true },
+          actions: { label: 'Actions', align: 'right' },
+        },
+        body: [
+          {
+            expanded: true,
+            id: "name-1",
+            data: [
+              { template: "name", payload: { name: "Name 1", id: "name-1" } },
+              {
+                template: "status",
+                payload: { status: "active" },
+              },
+              "Dec 18, 2020 3:26 PM",
+              {
+                template: "actions",
+                payload: { id: "name-1" },
+              },
+            ],
+            nestedContent: {
+              table: {
+                data: [
+                  {
+                    id: "name-1-0",
+                    data: [
+                      "Child 1 Name 1",
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 2:38 AM",
+                      {}
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-0-0",
+                            data: [
+                              "Grand Child 1 Name 1",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                          {
+                            id: "name-1-0-1",
+                            data: [
+                              "Grand Child 2 Name 1",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    id: "name-1-1",
+                    data: [
+                      "Child 2 Name 1",
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 2:38 AM",
+                      {}
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-1-0",
+                            data: [
+                              "Grand Child 1 Name 1",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                          {
+                            id: "name-1-1-1",
+                            data: [
+                              "Grand Child 2 Name 1",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+          {
+            id: "name-2",
+            data: [
+              { template: "name", payload: { name: "Name 2", id: "name-2" } },
+              {
+                template: "status",
+                payload: { status: "Inactive" },
+              },
+              "Dec 18, 2020 3:26 PM",
+              {
+                template: "actions",
+                payload: { id: "name-2" },
+              },
+            ],
+            nestedContent: {
+              table: {
+                data: [
+                  {
+                    id: "name-2-0",
+                    data: [
+                      "Child 1 Name 2",
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 2:38 AM",
+                      {},
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-0",
+                            data: [
+                              "Grand Child 1 Name 2",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                          {
+                            id: "name-1-1",
+                            data: [
+                              "Grand Child 2 Name 2",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    id: "name-2-1",
+                    data: [
+                      "Child 2 Name 2",
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 2:38 AM",
+                      {},
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-0",
+                            data: [
+                              "Grand Child 1 Name 2",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                          {
+                            id: "name-1-1",
+                            data: [
+                              "Grand Child 2 Name 2",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+          {
+            id: "name-3",
+            data: [
+              {
+                template: "name",
+                payload: {
+                  name: "Name 3",
+                  id: "name-3",
+                },
+              },
+              {
+                template: "status",
+                payload: { status: "active" },
+              },
+              "Dec 18, 2020 3:26 PM",
+              {
+                template: "actions",
+                payload: {
+                  id: "name-3",
+                },
+              },
+            ],
+            nestedContent: {
+              table: {
+                data: [
+                  {
+                    id: "name-3-0",
+                    data: [
+                      "Child 1 Name 3",
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 2:38 AM",
+                      {},
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-0",
+                            data: [
+                              "Grand Child 1 Name 3",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                          {
+                            id: "name-1-1",
+                            data: [
+                              "Grand Child 2 Name 3",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    id: "name-3-1",
+                    data: [
+                      "Child 2 Name 3",
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 2:38 AM",
+                      {},
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-0",
+                            data: [
+                              "Grand Child 1 Name 3",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                          {
+                            id: "name-1-1",
+                            data: [
+                              "Grand Child 2 Name 3",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+          {
+            id: "name-4",
+            data: [
+              {
+                template: "name",
+                payload: {
+                  name: "Name 4",
+                  id: "name-4",
+                },
+              },
+              {
+                template: "status",
+                payload: { status: "inactive" },
+              },
+              "Dec 18, 2020 3:26 PM",
+              {
+                template: "actions",
+                payload: {
+                  id: "name-4",
+                },
+              },
+            ],
+            nestedContent: {
+              table: {
+                data: [
+                  {
+                    id: "name-4-0",
+                    data: [
+                      "Child 1 Name 4",
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 2:38 AM",
+                      {},
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-0",
+                            data: [
+                              "Grand Child 1 Name 4",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                          {
+                            id: "name-1-1",
+                            data: [
+                              "Grand Child 2 Name 4",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    id: "name-4-1",
+                    data: [
+                      "Child 2 Name 4",
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 2:38 AM",
+                      {},
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-0",
+                            data: [
+                              "Grand Child 1 Name 4",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                          {
+                            id: "name-1-1",
+                            data: [
+                              "Grand Child 2 Name 4",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+          {
+            id: "name-5",
+            data: [
+              {
+                template: "name",
+                payload: {
+                  name: "Name 5",
+                  id: "name-5",
+                },
+              },
+              {
+                template: "status",
+                payload: { status: "active" },
+              },
+              "Dec 18, 2020 3:26 PM",
+              {
+                template: "actions",
+                payload: {
+                  id: "name-5",
+                },
+              },
+            ],
+            nestedContent: {
+              table: {
+                data: [
+                  {
+                    id: "name-5-0",
+                    data: [
+                      "Child 1 Name 5",
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 2:38 AM",
+                      {},
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-0",
+                            data: [
+                              "Grand Child 1 Name 5",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                          {
+                            id: "name-1-1",
+                            data: [
+                              "Grand Child 2 Name 5",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    id: "name-5-1",
+                    data: [
+                      "Child 2 Name 5",
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 2:38 AM",
+                      {},
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-0",
+                            data: [
+                              "Grand Child 1 Name 5",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                          {
+                            id: "name-1-1",
+                            data: [
+                              "Grand Child 2 Name 5",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+          {
+            id: "name-6",
+            data: [
+              {
+                template: "name",
+                payload: {
+                  name: "Name 6",
+                  id: "name-6",
+                },
+              },
+              {
+                template: "status",
+                payload: { status: "inactive" },
+              },
+              "Dec 18, 2020 3:26 PM",
+              {
+                template: "actions",
+                payload: {
+                  id: "name-6",
+                },
+              },
+            ],
+            nestedContent: {
+              table: {
+                data: [
+                  {
+                    id: "name-6-0",
+                    data: [
+                      "Child 1 Name 6",
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 2:38 AM",
+                      {},
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-0",
+                            data: [
+                              "Grand Child 1 Name 6",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                          {
+                            id: "name-1-1",
+                            data: [
+                              "Grand Child 2 Name 6",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                  {
+                    id: "name-6-1",
+                    data: [
+                      "Child 2 Name 6",
+                      {
+                        template: "status",
+                        payload: { status: "active" },
+                      },
+                      "Dec 18, 2020 2:38 AM",
+                      {},
+                    ],
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "name-1-0",
+                            data: [
+                              "Grand Child 1 Name 6",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                          {
+                            id: "name-1-1",
+                            data: [
+                              "Grand Child 2 Name 6",
+                              {
+                                template: "status",
+                                payload: { status: "active" },
+                              },
+                              "Dec 18, 2020 2:38 AM",
+                              {},
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
+    },
+  }).$mount('#complex');
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelector('#example-portal-complex'));
+    }
+  );
