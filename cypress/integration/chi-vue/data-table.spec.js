@@ -1150,7 +1150,7 @@ describe('Server Side Data Table', () => {
         .as('paginationIcons');
     });
 
-    it('should render new data when going to page two', () => {
+    it.skip('should render new data when going to page two', () => {
       cy.get(`[data-cy='data-table']`)
         .find(`.${PAGINATION_CLASSES.PAGINATION}`)
         .children()
@@ -1376,7 +1376,7 @@ describe('Server Side Data Table', () => {
           .as('paginationIcons');
       });
 
-      it('should render new data when going to page two', () => {
+      it.skip('should render new data when going to page two', () => {
         cy.get(`[data-cy='data-table-portal']`)
           .find(`.${PAGINATION_CLASSES.PAGINATION}`)
           .children()
