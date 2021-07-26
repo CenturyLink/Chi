@@ -1,6 +1,151 @@
-h2 Web Component
-h3 Properties
-.chi-card.-align--center.-empty
-  .chi-card__content
-    .chi-card__caption
-      | Web component coming soon
+h2 Chi Vue
+h3 Props
+
+h4 Search Input
+p.-text
+  | Please visit Search input dedicated documentation page <a href="../forms/search-input/#props">here</a>
+
+h4 Filters
+section.chi-table.chi-table__options.-bordered.-my--3
+  div(style='overflow-x:auto;')
+    table.-text(cellpadding='0' cellspacing='0')
+      thead
+        tr
+          th
+            div Property
+          th
+            div Description
+          th
+            div Type
+          th
+            div Default
+      tbody
+        tr
+          td
+            div
+              code filtersData
+          td
+            div To define filters in the toolbar.
+          td
+            div
+              code DataTableFilters[]
+          td
+            div
+              code undefined
+
+h4 Column customization
+section.chi-table.chi-table__options.-bordered.-my--3
+  div(style='overflow-x:auto;')
+    table.-text(cellpadding='0' cellspacing='0')
+      thead
+        tr
+          th
+            div Property
+          th
+            div Description
+          th
+            div Type
+          th
+            div Default
+      tbody
+        tr
+          td
+            div
+              code columnsData
+          td
+            div To define columns for customization.
+          td
+            div
+              code DataTableColumns[]
+          td
+            div
+              code undefined
+
+h3 Interfaces and types
+section.chi-table.chi-table__options.-bordered.-my--3
+  div(style='overflow-x:auto;')
+    table.-types(cellpadding='0' cellspacing='0')
+      thead
+        tr
+          th
+            div Name
+          th
+            div Interface
+      tbody
+        tr
+          td
+            div
+              code DataTableFilter
+          td.-p--0
+            pre.-mb--0.
+              {
+                name: <code>string</code>;
+                label: <code>string</code>;
+                type: <code>'select' | 'input' | 'checkbox' | 'textarea'</code>;
+                id: <code>string</code>;
+                options?: [
+                  {
+                    value: <code>string</code>;
+                    label: <code>string</code>;
+                    selected: <code>true</code>;
+                  }
+                ];
+                value?: <code>string</code>;
+                checked?: <code>boolean</code>;
+                defaultValue?: <code>string</code>;
+                placeholder: <code>string</code>;
+                advanced?:<code>true</code>;
+              }
+        tr
+          td
+            div
+              code DataTableColumn
+          td.-p--0
+            pre.-mb--0.
+             {
+                name: <code>string</code>;
+                label: <code>string</code>;
+                selected: <code>boolean</code>;
+                locked: <code>true</code>;
+              }
+
+h3 Events
+section.chi-table.chi-table__options.-bordered.-my--3
+  div(style='overflow-x:auto;')
+    table.-text(cellpadding='0' cellspacing='0')
+      thead
+        tr
+          th
+            div Event
+          th
+            div Description
+          th
+            div Type
+      tbody
+        tr
+          td
+            div
+              code chiToolbarFiltersChange
+          td
+            div To change the filter options of your data table.
+          td
+            div
+              code DataTableFilters[]
+        tr
+          td
+            div
+              code chiToolbarSearch
+          td
+            div To make a search in your data table
+          td
+            div
+              code string
+        tr
+          td
+            div
+              code chiToolbarColumnsChange
+          td
+            div To change the configuration of the columns of your table
+          td
+            div
+              code DataTableColumns[]
