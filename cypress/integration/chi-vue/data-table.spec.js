@@ -1135,49 +1135,58 @@ describe('Server Side Data Table', () => {
     cy.visit('tests/chi-vue/server-side.html');
   });
 
-  describe('pagination', () => {
+  describe('server side pagination', () => {
     beforeEach(() => {
-      cy.get(`[data-cy='data-table']`)
+      cy.get(`[data-cy='data-table-server-side']`)
         .children()
         .eq(1)
         .as('body')
         .children()
         .first()
         .as('row');
-      cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`)
+      cy.get(
+        `[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`
+      )
         .as('pagination')
         .find(`.${ICON_BUTTON}`)
         .as('paginationIcons');
     });
 
-    // it.skip('should render new data when going to page two', () => {
-    //   cy.get(`[data-cy='data-table']`)
-    //     .find(`.${PAGINATION_CLASSES.PAGINATION}`)
-    //     .children()
-    //     .first()
-    //     .children()
-    //     .eq(1)
-    //     .find(`.${ICON_BUTTON}`)
-    //     .as('paginationIcons')
-    //     .eq(2)
-    //     .click()
-    //     .then(() => {
-    //       cy.get(`[data-cy='data-table']`).should('contain', 'Name 4');
-    //     });
-    //   cy.get(`@paginationIcons`)
-    //     .eq(0)
-    //     .click()
-    //     .then(() => {
-    //       cy.get(`[data-cy='data-table']`).should('contain', 'Name 1');
-    //     });
-    // });
+    it('should render new data when going to page two', () => {
+      cy.get(`[data-cy='data-table-server-side']`)
+        .find(`.${PAGINATION_CLASSES.PAGINATION}`)
+        .children()
+        .first()
+        .children()
+        .eq(1)
+        .find(`.${ICON_BUTTON}`)
+        .as('paginationIcons')
+        .eq(2)
+        .click()
+        .then(() => {
+          cy.get(`[data-cy='data-table-server-side']`).should(
+            'contain',
+            'Name 4'
+          );
+        });
+      cy.get(`@paginationIcons`)
+        .eq(0)
+        .click()
+        .then(() => {
+          cy.get(`[data-cy='data-table-server-side']`).should(
+            'contain',
+            'Name 1'
+          );
+        });
+    });
 
     it(`should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
       cy.window()
-        .its('dataTableExample')
-        .then(dataTableExample => {
+        .its('dataTableServerSideExample')
+        .then(dataTableServerSideExample => {
           const spy = cy.spy();
-          const dataTableRef = dataTableExample.$refs.dataTableRef;
+          const dataTableRef =
+            dataTableServerSideExample.$refs.dataTableServerSideRef;
 
           dataTableRef.$on(`${PAGINATION_EVENTS.PAGE_CHANGE}`, spy);
           cy.get('@paginationIcons')
@@ -1196,26 +1205,27 @@ describe('Server Side Data Table', () => {
     });
   });
 
-  describe('selection', () => {
+  describe('server side selection', () => {
     beforeEach(() => {
-      cy.get(`[data-cy='data-table']`)
+      cy.get(`[data-cy='data-table-server-side']`)
         .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
         .as('selectables');
     });
 
     it(`should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
       cy.window()
-        .its('dataTableExample')
-        .then(dataTableExample => {
+        .its('dataTableServerSideExample')
+        .then(dataTableServerSideExample => {
           const spy = cy.spy();
-          const dataTableRef = dataTableExample.$refs.dataTableRef;
+          const dataTableRef =
+            dataTableServerSideExample.$refs.dataTableServerSideRef;
 
           dataTableRef.$on(`${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE}`, spy);
           cy.get('@selectables')
             .eq(1)
             .click()
             .then(() => {
-              isSelected([dataTableExample.table.body[0]]);
+              isSelected([dataTableServerSideExample.table.body[0]]);
               expect(spy).to.be.calledWith([
                 {
                   active: false,
@@ -1242,7 +1252,7 @@ describe('Server Side Data Table', () => {
             .eq(1)
             .click()
             .then(() => {
-              isNotSelected([dataTableExample.table.body[0]]);
+              isNotSelected([dataTableServerSideExample.table.body[0]]);
             });
         });
     });
@@ -1253,7 +1263,7 @@ describe('Server Side Data Table', () => {
         .click()
         .then(() => {
           cy.get(
-            `[data-cy='data-table'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+            `[data-cy='data-table-server-side'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
           )
             .eq(0)
             .as('firstRow');
@@ -1268,15 +1278,15 @@ describe('Server Side Data Table', () => {
     });
   });
 
-  describe('sorting', () => {
+  describe('server side sorting', () => {
     it('should sort by status in asc and desc', () => {
       const statuses = ['active', 'inact', 'active'];
 
-      cy.get(`[data-cy='data-table'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(`[data-cy='data-table-server-side'] .${DATA_TABLE_CLASSES.BODY}`)
         .find(`.${DATA_TABLE_CLASSES.ROW}`)
         .as('rows');
       checkStatusSorting(statuses);
-      cy.get(`[data-cy='data-table'] .${DATA_TABLE_CLASSES.ROW}`)
+      cy.get(`[data-cy='data-table-server-side'] .${DATA_TABLE_CLASSES.ROW}`)
         .eq(0)
         .find(`.${DATA_TABLE_CLASSES.CELL}`)
         .eq(3)
@@ -1294,7 +1304,9 @@ describe('Server Side Data Table', () => {
 
           checkStatusSorting(inactives);
         });
-      cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`)
+      cy.get(
+        `[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`
+      )
         .as('pagination')
         .find(`.${ICON_BUTTON}`)
         .as('paginationIcons')
@@ -1323,13 +1335,16 @@ describe('Server Side Data Table', () => {
     it(`should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {
       it('should sort by status in asc and desc', () => {
         cy.window()
-          .its('dataTableExample')
-          .then(dataTableExample => {
+          .its('dataTableServerSideExample')
+          .then(dataTableServerSideExample => {
             const spy = cy.spy();
-            const dataTableRef = dataTableExample.$refs.dataTableRef;
+            const dataTableRef =
+              dataTableServerSideExample.$refs.dataTableServerSideRef;
 
             dataTableRef.$on(`${DATA_TABLE_EVENTS.DATA_SORTING}`, spy);
-            cy.get(`[data-cy='data-table'] .${DATA_TABLE_CLASSES.ROW}`)
+            cy.get(
+              `[data-cy='data-table-server-side'] .${DATA_TABLE_CLASSES.ROW}`
+            )
               .eq(0)
               .find(`.${DATA_TABLE_CLASSES.CELL}`)
               .eq(3)
@@ -1359,9 +1374,9 @@ describe('Server Side Data Table', () => {
       cy.visit('tests/chi-vue/server-side-portal.html');
     });
 
-    describe('pagination', () => {
+    describe('server side pagination', () => {
       beforeEach(() => {
-        cy.get(`[data-cy='data-table-portal']`)
+        cy.get(`[data-cy='data-table-server-side-portal']`)
           .children()
           .eq(1)
           .as('body')
@@ -1369,42 +1384,49 @@ describe('Server Side Data Table', () => {
           .first()
           .as('row');
         cy.get(
-          `[data-cy='data-table-portal'] .${PAGINATION_CLASSES.PAGINATION}`
+          `[data-cy='data-table-server-side-portal'] .${PAGINATION_CLASSES.PAGINATION}`
         )
           .as('pagination')
           .find(`.${ICON_BUTTON}`)
           .as('paginationIcons');
       });
 
-      // it.skip('should render new data when going to page two', () => {
-      //   cy.get(`[data-cy='data-table-portal']`)
-      //     .find(`.${PAGINATION_CLASSES.PAGINATION}`)
-      //     .children()
-      //     .first()
-      //     .children()
-      //     .eq(1)
-      //     .find(`.${ICON_BUTTON}`)
-      //     .as('paginationIcons')
-      //     .eq(2)
-      //     .click()
-      //     .then(() => {
-      //       cy.get(`[data-cy='data-table-portal']`).should('contain', 'Name 4');
-      //     });
-      //   cy.get(`@paginationIcons`)
-      //     .eq(0)
-      //     .click()
-      //     .then(() => {
-      //       cy.get(`[data-cy='data-table-portal']`).should('contain', 'Name 1');
-      //     });
-      // });
+      it('should render new data when going to page two (portal)', () => {
+        cy.get(`[data-cy='data-table-server-side-portal']`)
+          .find(`.${PAGINATION_CLASSES.PAGINATION}`)
+          .children()
+          .first()
+          .children()
+          .eq(1)
+          .find(`.${ICON_BUTTON}`)
+          .as('paginationIcons')
+          .eq(2)
+          .click()
+          .then(() => {
+            cy.get(`[data-cy='data-table-server-side-portal']`).should(
+              'contain',
+              'Name 4'
+            );
+          });
+        cy.get(`@paginationIcons`)
+          .eq(0)
+          .click()
+          .then(() => {
+            cy.get(`[data-cy='data-table-server-side-portal']`).should(
+              'contain',
+              'Name 1'
+            );
+          });
+      });
 
       it(`should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
         cy.window()
-          .its('dataTablePortalExample')
-          .then(dataTablePortalExample => {
+          .its('dataTableServerSidePortalExample')
+          .then(dataTableServerSidePortalExample => {
             const spy = cy.spy();
             const dataTableRef =
-              dataTablePortalExample.$refs.dataTablePortalRef;
+              dataTableServerSidePortalExample.$refs
+                .dataTableServerSidePortalRef;
 
             dataTableRef.$on(`${PAGINATION_EVENTS.PAGE_CHANGE}`, spy);
             cy.get('@paginationIcons')
@@ -1423,27 +1445,28 @@ describe('Server Side Data Table', () => {
       });
     });
 
-    describe('selection', () => {
+    describe('server side selection', () => {
       beforeEach(() => {
-        cy.get(`[data-cy='data-table-portal']`)
+        cy.get(`[data-cy='data-table-server-side-portal']`)
           .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
           .as('selectables');
       });
 
       it(`should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
         cy.window()
-          .its('dataTablePortalExample')
-          .then(dataTablePortalExample => {
+          .its('dataTableServerSidePortalExample')
+          .then(dataTableServerSidePortalExample => {
             const spy = cy.spy();
             const dataTableRef =
-              dataTablePortalExample.$refs.dataTablePortalRef;
+              dataTableServerSidePortalExample.$refs
+                .dataTableServerSidePortalRef;
 
             dataTableRef.$on(`${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE}`, spy);
             cy.get('@selectables')
               .eq(1)
               .click()
               .then(() => {
-                isSelected([dataTablePortalExample.table.body[0]]);
+                isSelected([dataTableServerSidePortalExample.table.body[0]]);
                 expect(spy).to.be.calledWith([
                   {
                     active: false,
@@ -1470,7 +1493,7 @@ describe('Server Side Data Table', () => {
               .eq(1)
               .click()
               .then(() => {
-                isNotSelected([dataTablePortalExample.table.body[0]]);
+                isNotSelected([dataTableServerSidePortalExample.table.body[0]]);
               });
           });
       });
@@ -1481,7 +1504,7 @@ describe('Server Side Data Table', () => {
           .click()
           .then(() => {
             cy.get(
-              `[data-cy='data-table-portal'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+              `[data-cy='data-table-server-side-portal'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
             )
               .eq(0)
               .as('firstRow');
@@ -1497,12 +1520,13 @@ describe('Server Side Data Table', () => {
 
       it('should automatically select nested rows', () => {
         cy.window()
-          .its('dataTablePortalExample')
-          .then(dataTablePortalExample => {
+          .its('dataTableServerSidePortalExample')
+          .then(dataTableServerSidePortalExample => {
             const spy = cy.spy();
             const dataTableRef =
-              dataTablePortalExample.$refs.dataTablePortalRef;
-            const parent = dataTablePortalExample.table.body[2];
+              dataTableServerSidePortalExample.$refs
+                .dataTableServerSidePortalRef;
+            const parent = dataTableServerSidePortalExample.table.body[2];
             const child = parent.nestedContent.table.data[0];
             const grandchild = child.nestedContent.table.data[0];
 
@@ -1528,12 +1552,13 @@ describe('Server Side Data Table', () => {
           .eq(3)
           .click();
         cy.window()
-          .its('dataTablePortalExample')
-          .then(dataTablePortalExample => {
+          .its('dataTableServerSidePortalExample')
+          .then(dataTableServerSidePortalExample => {
             const spy = cy.spy();
             const dataTableRef =
-              dataTablePortalExample.$refs.dataTablePortalRef;
-            const parent = dataTablePortalExample.table.body[2];
+              dataTableServerSidePortalExample.$refs
+                .dataTableServerSidePortalRef;
+            const parent = dataTableServerSidePortalExample.table.body[2];
             const child = parent.nestedContent.table.data[0];
             const grandchild = child.nestedContent.table.data[0];
 
@@ -1549,15 +1574,19 @@ describe('Server Side Data Table', () => {
       });
     });
 
-    describe('sorting', () => {
+    describe('server side sorting', () => {
       it('should sort by status in asc and desc', () => {
         const statuses = ['active', 'inact', 'active'];
 
-        cy.get(`[data-cy='data-table-portal'] .${DATA_TABLE_CLASSES.BODY}`)
+        cy.get(
+          `[data-cy='data-table-server-side-portal'] .${DATA_TABLE_CLASSES.BODY}`
+        )
           .find(`.${DATA_TABLE_CLASSES.ROW}`)
           .as('rows');
         checkStatusSorting(statuses);
-        cy.get(`[data-cy='data-table-portal'] .${DATA_TABLE_CLASSES.ROW}`)
+        cy.get(
+          `[data-cy='data-table-server-side-portal'] .${DATA_TABLE_CLASSES.ROW}`
+        )
           .eq(0)
           .find(`.${DATA_TABLE_CLASSES.CELL}`)
           .eq(3)
@@ -1576,7 +1605,7 @@ describe('Server Side Data Table', () => {
             checkStatusSorting(inactives);
           });
         cy.get(
-          `[data-cy='data-table-portal'] .${PAGINATION_CLASSES.PAGINATION}`
+          `[data-cy='data-table-server-side-portal'] .${PAGINATION_CLASSES.PAGINATION}`
         )
           .as('pagination')
           .find(`.${ICON_BUTTON}`)
@@ -1606,14 +1635,17 @@ describe('Server Side Data Table', () => {
       it(`should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {
         it('should sort by status in asc and desc', () => {
           cy.window()
-            .its('dataTablePortalExample')
-            .then(dataTablePortalExample => {
+            .its('dataTableServerSidePortalExample')
+            .then(dataTableServerSidePortalExample => {
               const spy = cy.spy();
               const dataTableRef =
-                dataTablePortalExample.$refs.dataTablePortalRef;
+                dataTableServerSidePortalExample.$refs
+                  .dataTableServerSidePortalRef;
 
               dataTableRef.$on(`${DATA_TABLE_EVENTS.DATA_SORTING}`, spy);
-              cy.get(`[data-cy='data-table-portal'] .${DATA_TABLE_CLASSES.ROW}`)
+              cy.get(
+                `[data-cy='data-table-server-side-portal'] .${DATA_TABLE_CLASSES.ROW}`
+              )
                 .eq(0)
                 .find(`.${DATA_TABLE_CLASSES.CELL}`)
                 .eq(3)

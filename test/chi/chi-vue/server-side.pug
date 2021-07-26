@@ -4,8 +4,8 @@ script(src="../../chi-vue/umd/chi-vue.umd.js")
 h2 Data Table Server Side
 
 .test-data-table.-p--3.-w--100
-  #base
-    chi-vue-data-table(data-cy='data-table' ref="dataTableRef" :config="config", :data="table")
+  #base-server-side
+    chi-vue-data-table(data-cy='data-table-server-side' ref="dataTableServerSideRef" :config="config", :data="table")
       template(#status='payload')
         div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
           span.-text--truncate {{ payload.status }}
@@ -203,19 +203,19 @@ script.
     },
     mounted() {
       if (window.Cypress) {
-        window.dataTableExample = this;
+        window.dataTableServerSideExample = this;
       }
     },
     updated() {
-      this.$refs.dataTableRef.$on("chiPageChange", (e) => {
+      this.$refs.dataTableServerSideRef.$on("chiPageChange", (e) => {
         this.pagination(e);
       });
-      this.$refs.dataTableRef.$on("chiSelectedRowsChange", (e) => {
+      this.$refs.dataTableServerSideRef.$on("chiSelectedRowsChange", (e) => {
         this.selection(e);
       });
-      this.$refs.dataTableRef.$on("chiDataSorting", (e) => {
+      this.$refs.dataTableServerSideRef.$on("chiDataSorting", (e) => {
         this.sortData(e);
-      })
+      });
     },
     data: {
       config: {
@@ -259,4 +259,4 @@ script.
       },
       sortedData: []
     },
-  }).$mount("#base");
+  }).$mount("#base-server-side");

@@ -4,8 +4,8 @@ script(src="../../chi-vue/umd/chi-vue.umd.js")
 h2 Data Table Server Side (Portal)
 
 .test-data-table.-p--3.-w--100
-  #basePortal
-    chi-vue-data-table(data-cy='data-table-portal' ref="dataTablePortalRef" :config="config", :data="table")
+  #base-server-side-portal
+    chi-vue-data-table(data-cy='data-table-server-side-portal' ref="dataTableServerSidePortalRef" :config="config", :data="table")
       template(#status='payload')
         div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
           span.-text--truncate {{ payload.status }}
@@ -230,17 +230,17 @@ script.
     },
     mounted() {
       if (window.Cypress) {
-        window.dataTablePortalExample = this;
+        window.dataTableServerSidePortalExample = this;
       }
     },
     updated() {
-      this.$refs.dataTablePortalRef.$on("chiPageChange", (e) => {
+      this.$refs.dataTableServerSidePortalRef.$on("chiPageChange", (e) => {
         this.pagination(e);
       });
-      this.$refs.dataTablePortalRef.$on("chiSelectedRowsChange", (e) => {
+      this.$refs.dataTableServerSidePortalRef.$on("chiSelectedRowsChange", (e) => {
         this.selection(e);
       });
-      this.$refs.dataTablePortalRef.$on("chiDataSorting", (e) => {
+      this.$refs.dataTableServerSidePortalRef.$on("chiDataSorting", (e) => {
         this.sortData(e);
       })
     },
@@ -286,4 +286,4 @@ script.
       },
       sortedData: []
     },
-  }).$mount("#basePortal");
+  }).$mount("#base-server-side-portal");
