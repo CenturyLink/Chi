@@ -92,6 +92,7 @@ const isNotSelected = elements => {
 describe('Data Table', () => {
   before(() => {
     cy.visit('tests/chi-vue/data-table.html');
+    cy.wait(2000);
   });
 
   describe('base', () => {
@@ -817,6 +818,7 @@ describe('Data Table', () => {
 describe('Data Table Portal', () => {
   before(() => {
     cy.visit('tests/chi-vue/data-table.html');
+    cy.wait(2000);
   });
 
   describe('portal', () => {
@@ -1133,6 +1135,7 @@ describe('Data Table Portal', () => {
 describe('Server Side Data Table', () => {
   before(() => {
     cy.visit('tests/chi-vue/data-table.html');
+    cy.wait(2000);
   });
 
   describe('server side pagination', () => {
@@ -1353,6 +1356,7 @@ describe('Server Side Data Table', () => {
 describe('Server Side Data Table Portal', () => {
   before(() => {
     cy.visit('tests/chi-vue/data-table.html');
+    cy.wait(2000);
   });
 
   describe('server side pagination', () => {
