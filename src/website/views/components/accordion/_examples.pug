@@ -1170,7 +1170,7 @@ p.-text To render accordion, use the class <code>chi-accordion</code>.
     .chi-tabs-panel#webcomponent-accordion-truncated
     .chi-tabs-panel.-active#html-accordion-truncated
       :code(lang="html")
-        <div class="chi-accordion -truncated">
+        <div class="chi-accordion -truncated" id="example-truncated">
           <div class="chi-accordion__item">
             <button class="chi-accordion__trigger">
               <i class="chi-icon icon-chevron-down"></i>
@@ -1181,6 +1181,12 @@ p.-text To render accordion, use the class <code>chi-accordion</code>.
             </div>
           </div>
         </div>
+
+        <script>
+          const accordionTruncated = document.getElementById('example-truncated');
+
+          chi.accordion(accordionTruncated);
+        </script>
 
 .-portal--show
   h3 Truncated

@@ -23,7 +23,7 @@ export class Brand {
   @Prop({ reflect: true }) size: string;
 
   /**
-   *  to set logo of brand {lumen, centurylink}.
+   *  to set logo of brand { lumen, centurylink }.
    */
   @Prop({ reflect: true }) logo: string = 'lumen';
 
