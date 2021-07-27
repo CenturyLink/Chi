@@ -2,6 +2,14 @@
 @import '_global-mixins';
 
 $sizes: (
+  xs: (
+    height: $select-xs-height,
+    font-size: $select-xs-font-size,
+    line-height: $select-xs-line-height,
+    background-position: $select-xs-arrow-background-position,
+    background-size: $select-xs-arrow-background-size,
+    padding: $select-xs-padding,
+  ),
   sm: (
     height: $select-sm-height,
     font-size: $select-sm-font-size,

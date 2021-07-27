@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-07-22T14:59:19",
+  "timestamp": "2021-07-27T01:25:19",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -471,7 +471,7 @@
           "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
-          "docs": "to set button size { sm, md, lg, xl }.",
+          "docs": "to set button size { xs, sm, md, lg, xl }.",
           "docsTags": [],
           "values": [
             {
@@ -2880,7 +2880,7 @@
         },
         {
           "name": "size",
-          "type": "\"lg\" | \"md\" | \"sm\" | \"xl\"",
+          "type": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
           "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
@@ -2902,6 +2902,10 @@
             },
             {
               "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
               "type": "string"
             }
           ],
@@ -3434,7 +3438,7 @@
         },
         {
           "name": "size",
-          "type": "\"lg\" | \"md\" | \"sm\" | \"xl\"",
+          "type": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
           "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
@@ -3456,6 +3460,10 @@
             },
             {
               "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
               "type": "string"
             }
           ],
@@ -3867,7 +3875,7 @@
         },
         {
           "name": "size",
-          "type": "\"lg\" | \"md\" | \"sm\" | \"xl\"",
+          "type": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
           "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
@@ -3889,6 +3897,10 @@
             },
             {
               "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
               "type": "string"
             }
           ],

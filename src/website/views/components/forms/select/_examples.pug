@@ -142,7 +142,7 @@ p.-text
       .chi-label__wrapper
         label.chi-label(for="example-he1") Label
         .chi-label__help
-          button.chi-button.-icon.-sm.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
+          button.chi-button.-icon.-xs.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
             i.chi-icon.icon-circle-info-outline
           section.chi-popover.chi-popover--top(id="example__help-popover" aria-modal="true" role="dialog")
             .chi-popover__content
@@ -171,7 +171,7 @@ p.-text
         <div class="chi-label__wrapper">
           <label class="chi-label" for="example-he1">Label</label>
           <div class="chi-label__help">
-            <button class="chi-button -icon -sm -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
+            <button class="chi-button -icon -xs -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
               <i class="chi-icon icon-circle-info-outline"></i>
             </button>
             <section class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top">
@@ -314,11 +314,11 @@ p.-text
 .-portal--hide
   h3 Sizes
   p.-text
-    | Selects support the following sizes: <code>-sm</code>, <code>-md</code>,
+    | Selects support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
     |  <code>-lg</code>, <code>-xl</code>. The default size is <code>-md</code>.
   .example.-mb--3
     .-p--3
-      each size in ['-sm', '-md', '-lg', '-xl']
+      each size in ['-xs', '-sm', '-md', '-lg', '-xl']
         div(class=`-p--2`)
           .chi-form__item(style="max-width:20rem")
             label.chi-label(for=`example-size${size}`) Label
@@ -336,6 +336,14 @@ p.-text
     .chi-tabs-panel#webcomponent-sizes
     .chi-tabs-panel.-active#html-sizes
       :code(lang='html')
+        <!-- xs -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="example-size-xs">Label</label>
+          <select class="chi-select -xs" id="example-size-xs">
+            <option>-xs Select</option>
+          </select>
+        </div>
+
         <!-- sm -->
         <div class="chi-form__item">
           <label class="chi-label" for="example-size-sm">Label</label>
@@ -371,15 +379,15 @@ p.-text
 .-portal--show
   h3 Sizes
   p.-text
-    | Selects support the following sizes: <code>-sm</code>, <code>-md</code>,
+    | Selects support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
     |  <code>-lg</code>. The default size is <code>-md</code>.
   .example.-mb--3
     .-p--3
-      each size in ['-sm', '-md', '-lg']
+      each size in ['-xs', '-sm', '-md', '-lg']
         div(class=`-p--2`)
           .chi-form__item(style="max-width:20rem")
-            label.chi-label(for=`example-portal-size${size}`) Label
-            select(class=`chi-select ${size}`, id=`example-portal-size${size}`)
+            label.chi-label(for=`example-size${size}`) Label
+            select(class=`chi-select ${size}`, id=`example-size${size}`)
               option(selected disabled hidden)=`${size} Select`
               option Option 1
               option Option 2
@@ -393,29 +401,38 @@ p.-text
     .chi-tabs-panel#webcomponent-portal-sizes
     .chi-tabs-panel.-active#html-portal-sizes
       :code(lang='html')
+        <!-- xs -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="example-size-xs">Label</label>
+          <select class="chi-select -xs" id="example-size-xs">
+            <option>-xs Select</option>
+          </select>
+        </div>
+
         <!-- sm -->
         <div class="chi-form__item">
-          <label class="chi-label" for="example-portal-size-sm">Label</label>
-          <select class="chi-select -sm" id="example-portal-size-sm">
+          <label class="chi-label" for="example-size-sm">Label</label>
+          <select class="chi-select -sm" id="example-size-sm">
             <option>-sm Select</option>
           </select>
         </div>
 
         <!-- md -->
         <div class="chi-form__item">
-          <label class="chi-label" for="example-portal-size-md">Label</label>
-          <select class="chi-select -md" id="example-portal-size-md">
+          <label class="chi-label" for="example-size-md">Label</label>
+          <select class="chi-select -md" id="example-size-md">
             <option>-md Select</option>
           </select>
         </div>
 
         <!-- lg -->
         <div class="chi-form__item">
-          <label class="chi-label" for="example-portal-size-lg">Label</label>
-          <select class="chi-select -lg" id="example-portal-size-lg">
+          <label class="chi-label" for="example-size-lg">Label</label>
+          <select class="chi-select -lg" id="example-size-lg">
             <option>-lg Select</option>
           </select>
         </div>
+
 
 .-portal--hide
   h3 Floating labels

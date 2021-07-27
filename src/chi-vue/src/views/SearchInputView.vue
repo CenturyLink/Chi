@@ -2,7 +2,7 @@
   <div id="search-input-view">
     <div class="search-input-examples__wrapper">
       <h2>Search Input</h2>
-      <h3>sm</h3>
+      <h3>xs</h3>
       <SearchInput
         @chiInput="ev => input(ev)"
         @chiChange="ev => change(ev)"
@@ -11,8 +11,10 @@
         @chiBlur="ev => blur(ev)"
         @chiSearch="ev => search(ev)"
         class="-mt--2"
-        size="sm"
+        size="xs"
       />
+      <h3>sm</h3>
+      <SearchInput class="-mt--2" size="sm" />
       <h3>md</h3>
       <SearchInput class="-mt--2" size="md" />
       <h3>lg</h3>

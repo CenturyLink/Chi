@@ -12,32 +12,32 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 - const dateMin = '11/19/2018';
 - const date2 = '01/24/2019';
 
-.test-active(data-cy="test-active")
+.test-active.-py--2(data-cy="test-active")
   span.-text--h2 Active
   .-position--relative
     chi-date(value=date1)
 
-.test-combined(data-cy="test-combined")
+.test-combined.-py--2(data-cy="test-combined")
   span.-text--h2 Combined
   .-position--relative
     chi-date(value=date1, min=dateMin)
 
-.test-input-combined-icon(data-cy="test-input-combined")
+.test-input-combined-icon.-py--2(data-cy="test-input-combined")
   span.-text--h2 Input Popover Combined w/ icon
   .-position--relative(style="height: 18rem; width:14rem;")
     chi-date-picker(data-cy="test-input-combined-picker" value=date2, min=date2, active)
 
-.test-disabled(data-cy="test-disabled")
+.test-disabled.-py--2(data-cy="test-disabled")
   span.-text--h2 Disabled date picker
   .-position--relative(style="width:14rem;")
     chi-date-picker(disabled)
 
-.test-multiple(data-cy="test-multiple-selection")
+.test-multiple.-py--2(data-cy="test-multiple-selection")
   span.-text--h2 Multiple Dates selection
   .-position--relative(style="width:14rem;")
     chi-date(value='11/28/2018, 11/29/2018, 11/30/2018', multiple)
 
-.test-multiple-picker(data-cy="test-multiple-picker")
+.test-multiple-picker.-py--2(data-cy="test-multiple-picker")
   span.-text--h2 Date Picker multiple dates
   .-position--relative(style="width:14rem;")
     chi-date-picker(data-cy="test-multiple-picker-calendar" multiple)

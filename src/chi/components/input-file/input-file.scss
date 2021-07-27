@@ -2,6 +2,12 @@
 @import '_global-mixins';
 
 $sizes: (
+  xs: (
+    height: $file-input-xs-height,
+    width: $file-input-xs-width,
+    font-size: $file-input-xs-font-size,
+    line-height: $file-input-xs-line-height,
+  ),
   sm: (
     height: $file-input-sm-height,
     width: $file-input-sm-width,

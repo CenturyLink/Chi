@@ -9,6 +9,7 @@ $sizes: (
   md: (
     label-bottom: $text-input-md-floating-label-focus-bottom,
     label-bottom-relaxed: $text-input-md-floating-label-bottom,
+    label-left-relaxed: $text-input-md-floating-label-left,
     label-font-size: $text-input-md-floating-label-focus-font-size,
     label-font-size-relaxed: $text-input-md-floating-label-font-size,
     label-line-height: $text-input-md-floating-label-line-height,
@@ -18,6 +19,7 @@ $sizes: (
   lg: (
     label-bottom: $text-input-lg-floating-label-focus-bottom,
     label-bottom-relaxed: $text-input-lg-floating-label-bottom,
+    label-left-relaxed: $text-input-lg-floating-label-left,
     label-font-size: $text-input-lg-floating-label-focus-font-size,
     label-font-size-relaxed: $text-input-lg-floating-label-font-size,
     label-line-height: $text-input-lg-floating-label-line-height,
@@ -27,6 +29,7 @@ $sizes: (
   xl: (
     label-bottom: $text-input-xl-floating-label-focus-bottom,
     label-bottom-relaxed: $text-input-xl-floating-label-bottom,
+    label-left-relaxed: $text-input-xl-floating-label-left,
     label-font-size: $text-input-xl-floating-label-focus-font-size,
     label-font-size-relaxed: $text-input-xl-floating-label-font-size,
     label-line-height: $text-input-xl-floating-label-line-height,
@@ -49,6 +52,7 @@ $sizes: (
 
           & ~ label {
             bottom: map-get(map-get($sizes, $type), label-bottom-relaxed);
+            left: map-get(map-get($sizes, $type), label-left-relaxed);
             pointer-events: none;
 
             &.-active {
@@ -67,7 +71,7 @@ $sizes: (
         color: $text-input-floating-label-text-color;
         font-size: $label-font-size-relaxed;
         font-weight: $font-weight-normal;
-        left: $label-left;
+        left: $text-input-md-floating-label-left;
         line-height: 1.5rem;
         margin-bottom: unset;
         opacity: $text-input-floating-label-opacity;

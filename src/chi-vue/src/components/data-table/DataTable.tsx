@@ -627,7 +627,7 @@ export default class DataTable extends Vue {
             pageSize={!this.config.style.portal}
             pageJumper={this.config.pagination.pageJumper}
             portal={this.config.style.portal}
-            size={this.config.style.portal ? 'sm' : 'md'}
+            size={this.config.style.portal ? 'xs' : 'md'}
           />
         </div>
       );
