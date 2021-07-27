@@ -1,4 +1,12 @@
 $sizes: (
+  xs: (
+    height: $text-input-xs-icon-height,
+    top: $text-input-xs-icon-top,
+    width: $text-input-xs-icon-width,
+    spinner: (
+      right: $text-input-xs-spinner-right,
+    ),
+  ),
   sm: (
     height: $text-input-sm-icon-height,
     top: $text-input-sm-icon-top,
@@ -96,6 +104,17 @@ $sizes: (
     .chi-input {
       padding-left: $text-input-md-iconleft-padding-left;
 
+      &.-xs {
+        padding-left: $text-input-xs-iconleft-padding-left;
+
+        & ~ .chi-icon,
+        & ~ chi-icon {
+          &:first-of-type {
+            left: $text-input-xs-iconleft-left;
+          }
+        }
+      }
+
       &.-sm {
         padding-left: $text-input-sm-iconleft-padding-left;
 
@@ -111,14 +130,24 @@ $sizes: (
         padding-left: $text-input-md-iconleft-padding-left;
       }
 
-      &.-lg,
-      &.-xl {
+      &.-lg {
         padding-left: $text-input-lg-iconleft-padding-left;
 
         & ~ .chi-icon,
         & ~ chi-icon {
           &:first-of-type {
             left: $text-input-lg-iconleft-left;
+          }
+        }
+      }
+
+      &.-xl {
+        padding-left: $text-input-xl-iconleft-padding-left;
+
+        & ~ .chi-icon,
+        & ~ chi-icon {
+          &:first-of-type {
+            left: $text-input-xl-iconleft-left;
           }
         }
       }
@@ -137,6 +166,17 @@ $sizes: (
       &.chi-input {
         padding-right: $text-input-md-iconright-padding-right;
 
+        &.-xs {
+          padding-right: $text-input-xs-iconright-padding-right;
+
+          & ~ .chi-icon,
+          & ~ chi-icon {
+            &:last-of-type {
+              right: $text-input-xs-iconright-right;
+            }
+          }
+        }
+
         &.-sm {
           padding-right: $text-input-sm-iconright-padding-right;
 
@@ -152,14 +192,24 @@ $sizes: (
           padding-right: $text-input-md-iconright-padding-right;
         }
 
-        &.-lg,
-        &.-xl {
+        &.-lg {
           padding-right: $text-input-lg-iconright-padding-right;
 
           & ~ .chi-icon,
           & ~ chi-icon {
             &:last-of-type {
               right: $text-input-lg-iconright-right;
+            }
+          }
+        }
+
+        &.-xl {
+          padding-right: $text-input-xl-iconright-padding-right;
+
+          & ~ .chi-icon,
+          & ~ chi-icon {
+            &:last-of-type {
+              right: $text-input-xl-iconright-right;
             }
           }
         }

@@ -1003,17 +1003,17 @@ h2 Examples
           </nav>
 
   h3 Additional Sizes
-  p.-text Pagination supports the following sizes: <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
+  p.-text Pagination supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
   .example.-mb--3
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
         .-p--3
-          each size in ['sm', 'md', 'lg', 'xl']
+          each size in ['xs', 'sm', 'md', 'lg', 'xl']
             p.-text--bold=`-${size}`
             chi-pagination(pages="5" current-page="3" size=size)
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
-          each size in ['sm', 'md', 'lg', 'xl']
+          each size in ['xs', 'sm', 'md', 'lg', 'xl']
             p.-text--bold.-text--white=`-${size}`
             chi-pagination(pages="5" current-page="3" size=size inverse)
     .example-tabs.-pl--2
@@ -1027,12 +1027,14 @@ h2 Examples
     .chi-tabs-panel.-active#webcomponent-sizes
       :code(lang="html")
         <!-- For light backgrounds -->
+        <chi-pagination pages="5" current-page="3" size="xs"></chi-pagination>
         <chi-pagination pages="5" current-page="3" size="sm"></chi-pagination>
         <chi-pagination pages="5" current-page="3" size="md"></chi-pagination>
         <chi-pagination pages="5" current-page="3" size="lg"></chi-pagination>
         <chi-pagination pages="5" current-page="3" size="xl"></chi-pagination>
 
         <!-- For dark backgrounds -->
+        <chi-pagination pages="5" current-page="3" size="xs" inverse></chi-pagination>
         <chi-pagination pages="5" current-page="3" size="sm" inverse></chi-pagination>
         <chi-pagination pages="5" current-page="3" size="md" inverse></chi-pagination>
         <chi-pagination pages="5" current-page="3" size="lg" inverse></chi-pagination>
@@ -1040,12 +1042,14 @@ h2 Examples
     .chi-tabs-panel#vue-sizes
       :code(lang="html")
         <!-- For light backgrounds -->
+        <ChiPagination :pages="5" :currentPage="3" size="xs" />
         <ChiPagination :pages="5" :currentPage="3" size="sm" />
         <ChiPagination :pages="5" :currentPage="3" size="md" />
         <ChiPagination :pages="5" :currentPage="3" size="lg" />
         <ChiPagination :pages="5" :currentPage="3" size="xl" />
 
         <!-- For dark backgrounds -->
+        <ChiPagination :pages="5" :currentPage="3" size="xs" :inverse="true" />
         <ChiPagination :pages="5" :currentPage="3" size="sm" :inverse="true" />
         <ChiPagination :pages="5" :currentPage="3" size="md" :inverse="true" />
         <ChiPagination :pages="5" :currentPage="3" size="lg" :inverse="true" />
@@ -1222,7 +1226,7 @@ h2 Examples
     .chi-grid.-no-gutter
       .chi-col.-w--12
         .-p--3
-          chi-pagination(pages="3" current-page="2" size="sm" compact first-last)
+          chi-pagination(pages="3" current-page="2" size="xs" compact first-last)
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-compact
         li.-active
@@ -1234,13 +1238,13 @@ h2 Examples
     .chi-tabs-panel.-active#webcomponent-portal-compact
       :code(lang="html")
         <!-- For light backgrounds -->
-        <chi-pagination pages="3" current-page="2" compact first-last></chi-pagination>
+        <chi-pagination pages="3" current-page="2" size="xs" compact first-last></chi-pagination>
 
         <!-- For dark backgrounds -->
-        <chi-pagination pages="3" current-page="2" compact inverse></chi-pagination>
+        <chi-pagination pages="3" current-page="2" size="xs" compact inverse></chi-pagination>
     .chi-tabs-panel#vue-portal-compact
       :code(lang="html")
-        <ChiPagination :pages="3" :currentPage="2" :compact="true" :firstLast="true" />
+        <ChiPagination :pages="3" :currentPage="2" :compact="true" :firstLast="true" size="xs" />
     .chi-tabs-panel#html-portal-compact
       :code(lang="html")
         <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
@@ -1248,7 +1252,7 @@ h2 Examples
             <div class="chi-pagination__start"></div>
             <div class="chi-pagination__center">
               <div class="chi-pagination__button-group chi-button-group">
-                <button class="chi-button -icon -flat -sm" aria-label="Previous page" type="button">
+                <button class="chi-button -icon -flat -xs" aria-label="Previous page" type="button">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                   </div>
@@ -1260,7 +1264,7 @@ h2 Examples
                 <strong>3</strong>
               </div>
               <div class="chi-pagination__button-group chi-button-group">
-                <button class="chi-button -icon -flat -sm" aria-label="Next page" type="button">
+                <button class="chi-button -icon -flat -xs" aria-label="Next page" type="button">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                   </div>
@@ -1277,7 +1281,7 @@ h2 Examples
     .chi-grid.-no-gutter
       .chi-col.-w--12
         .-p--3
-          chi-pagination(pages="12" current-page="3" size="sm" results="240" compact first-last)
+          chi-pagination(pages="12" current-page="3" size="xs" results="240" compact first-last)
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-results-label
         li.-active
@@ -1288,10 +1292,10 @@ h2 Examples
           a(href=`#html-portal-results-label`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-results-label
       :code(lang="html")
-        <chi-pagination pages="12" current-page="3" results="240"></chi-pagination>
+        <chi-pagination pages="12" current-page="3" results="240" size="xs"></chi-pagination>
     .chi-tabs-panel#vue-portal-results-label
       :code(lang="html")
-        <ChiPagination :pages="3" :results="240" :currentPage="2" :compact="true" :firstLast="true" />
+        <ChiPagination :pages="3" :results="240" :currentPage="2" :compact="true" :firstLast="true" size="xs" />
     .chi-tabs-panel#html-portal-results-label
       :code(lang="html")
         <nav class="chi-pagination -compact" role="navigation" aria-label="Pagination">
@@ -1303,7 +1307,7 @@ h2 Examples
             </div>
             <div class="chi-pagination__center">
               <div class="chi-pagination__button-group chi-button-group">
-                <button class="chi-button -icon -flat -sm" aria-label="Previous page" type="button">
+                <button class="chi-button -icon -flat -xs" aria-label="Previous page" type="button">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                   </div>
@@ -1315,7 +1319,7 @@ h2 Examples
                 <strong>12</strong>
               </div>
               <div class="chi-pagination__button-group chi-button-group">
-                <button class="chi-button -icon -flat -sm" aria-label="Next page" type="button">
+                <button class="chi-button -icon -flat -xs" aria-label="Next page" type="button">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                   </div>

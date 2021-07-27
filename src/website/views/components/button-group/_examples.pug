@@ -143,14 +143,14 @@ p.-text
 .-portal--hide
   h2 Sizes
   p.-text
-    | Button groups support the following sizes: <code>-sm</code>, <code>-md</code>,
+    | Button groups support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
     |  <code>-lg</code>, <code>-xl</code>.
     | The default size is <code>-md</code>.
 
   h3 Horizontal
   .example.-mb--3
     .-px--3.-pt--0.-pb--3
-      each size in ['sm', 'md', 'lg', 'xl']
+      each size in ['xs', 'sm', 'md', 'lg', 'xl']
         p.-text--bold= '-' + size
         .-d--flex.-flex--wrap
           .chi-button-group
@@ -166,6 +166,12 @@ p.-text
     .chi-tabs-panel#webcomponent-size-horizontal
     .chi-tabs-panel.-active#html-size-horizontal
       :code(lang='html')
+        <!-- xs -->
+        <div class="chi-button-group">
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm">Button</button>
+        </div>
         <!-- sm -->
         <div class="chi-button-group">
           <button class="chi-button -sm">Button</button>
@@ -194,7 +200,7 @@ p.-text
   h3 Vertical
   .example.-mb--3
     .-px--3.-pt--0.-pb--3
-      each size in ['sm', 'md', 'lg', 'xl']
+      each size in ['xs', 'sm', 'md', 'lg', 'xl']
         p.-text--bold= '-' + size
         .-d--flex.-flex--wrap
           .chi-button-group.-vertical.-fluid(style="width:12rem")
@@ -210,6 +216,12 @@ p.-text
     .chi-tabs-panel#webcomponent-size-vertical
     .chi-tabs-panel.-active#html-size-vertical
       :code(lang="html")
+        <!-- xs -->
+        <div class="chi-button-group -vertical -fluid">
+          <button class="chi-button -xs">Button</button>
+          <button class="chi-button -xs">Button</button>
+          <button class="chi-button -xs">Button</button>
+        </div>
         <!-- sm -->
         <div class="chi-button-group -vertical -fluid">
           <button class="chi-button -sm">Button</button>
@@ -238,14 +250,14 @@ p.-text
 .-portal--show
   h2 Sizes
   p.-text
-    | Button groups support the following sizes: <code>-sm</code>, <code>-md</code>,
+    | Button groups support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
     |  <code>-lg</code>.
     | The default size is <code>-md</code>.
 
   h3 Horizontal
   .example.-mb--3
     .-px--3.-pt--0.-pb--3
-      each size in ['sm', 'md', 'lg']
+      each size in ['xs', 'sm', 'md', 'lg']
         p.-text--bold= '-' + size
         .-d--flex.-flex--wrap
           .chi-button-group
@@ -261,6 +273,12 @@ p.-text
     .chi-tabs-panel#webcomponent-portal-size-horizontal
     .chi-tabs-panel.-active#html-portal-size-horizontal
       :code(lang='html')
+        <!-- xs -->
+        <div class="chi-button-group">
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm">Button</button>
+          <button class="chi-button -sm">Button</button>
+        </div>
         <!-- sm -->
         <div class="chi-button-group">
           <button class="chi-button -sm">Button</button>
@@ -283,7 +301,7 @@ p.-text
   h3 Vertical
   .example.-mb--3
     .-px--3.-pt--0.-pb--3
-      each size in ['sm', 'md', 'lg']
+      each size in ['xs', 'sm', 'md', 'lg']
         p.-text--bold= '-' + size
         .-d--flex.-flex--wrap
           .chi-button-group.-vertical.-fluid(style="width:12rem")
@@ -299,6 +317,12 @@ p.-text
     .chi-tabs-panel#webcomponent-portal-size-vertical
     .chi-tabs-panel.-active#html-portal-size-vertical
       :code(lang="html")
+        <!-- xs -->
+        <div class="chi-button-group -vertical -fluid">
+          <button class="chi-button -xs">Button</button>
+          <button class="chi-button -xs">Button</button>
+          <button class="chi-button -xs">Button</button>
+        </div>
         <!-- sm -->
         <div class="chi-button-group -vertical -fluid">
           <button class="chi-button -sm">Button</button>
@@ -350,7 +374,6 @@ p.-text
 
 p.-text
   | Hybrid buttons also support fluid rendering.
-
 .example.-mb--3
   .-p--3
     .chi-button-group.-fluid
@@ -379,12 +402,13 @@ p.-text
 .-portal--hide
   h3 Hybrid buttons sizes
   p.-text
-    | Hybrid buttons support the following sizes: <code>-sm</code>, <code>-md</code>,
-    |  <code>-lg</code>, <code>-xl</code>.
-    | The default size is <code>-md</code>.
+    | Hybrid buttons support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
+    |  <code>lg</code>, <code>xl</code>.
+    | The default size is <code>md</code>.
   .example.-mb--3
-    .-p--2
-      each size in ['sm', 'md', 'lg', 'xl']
+    .-p--2.-d--flex.-flex--column
+      each size in ['xs', 'sm', 'md', 'lg', 'xl']
+        p.-text--bold.-pl--1.-mb--0= '-' + size
         .chi-button-group.-m--1
           button(class=`chi-button -${size}`) Button
           button(class=`chi-button -${size} -icon`, aria-label="Button action")
@@ -399,6 +423,15 @@ p.-text
     .chi-tabs-panel#webcomponent-hybrid-sizes
     .chi-tabs-panel.-active#html-hybrid-sizes
       :code(lang='html')
+        <!-- xs -->
+        <div class="chi-button-group">
+          <button class="chi-button -xs">Button</button>
+          <button class="chi-button -xs -icon" aria-label="Button action">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-atom"></i>
+            </div>
+          </button>
+        </div>
         <!-- sm -->
         <div class="chi-button-group">
           <button class="chi-button -sm">Button</button>
@@ -439,12 +472,13 @@ p.-text
 .-portal--show
   h3 Hybrid buttons sizes
   p.-text
-    | Hybrid buttons support the following sizes: <code>-sm</code>, <code>-md</code>,
-    |  <code>-lg</code>.
-    | The default size is <code>-md</code>.
+    | Hybrid buttons support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
+    |  <code>lg</code>.
+    | The default size is <code>md</code>.
   .example.-mb--3
-    .-p--2
-      each size in ['sm', 'md', 'lg']
+    .-p--2.-d--flex.-flex--column
+      each size in ['xs', 'sm', 'md', 'lg']
+        p.-text--bold.-pl--1.-mb--0= '-' + size
         .chi-button-group.-m--1
           button(class=`chi-button -${size}`) Button
           button(class=`chi-button -${size} -icon`, aria-label="Button action")
@@ -459,6 +493,15 @@ p.-text
     .chi-tabs-panel#webcomponent-portal-hybrid-sizes
     .chi-tabs-panel.-active#html-portal-hybrid-sizes
       :code(lang='html')
+        <!-- xs -->
+        <div class="chi-button-group">
+          <button class="chi-button -xs">Button</button>
+          <button class="chi-button -xs -icon" aria-label="Button action">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-atom"></i>
+            </div>
+          </button>
+        </div>
         <!-- sm -->
         <div class="chi-button-group">
           <button class="chi-button -sm">Button</button>
@@ -486,7 +529,6 @@ p.-text
             </div>
           </button>
         </div>
-
 
 script.
   document.addEventListener(

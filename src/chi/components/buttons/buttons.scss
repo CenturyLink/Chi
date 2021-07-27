@@ -72,6 +72,19 @@ $button-colors: (
 $border: 0.0625rem;
 
 $sizes: (
+  xs: (
+    font-size: $button-xs-font-size,
+    line-height: $button-xs-line-height,
+    padding: $button-xs-padding,
+    text-transform: $button-xs-text-transform,
+    icons: (
+      height: $button-icon-xs-height,
+      padding: $button-icon-xs-padding,
+      width: $button-icon-xs-width,
+      line-height: $button-icon-xs-line-height,
+      font-size: $button-icon-xs-font-size,
+    )
+  ),
   sm: (
     font-size: $button-sm-font-size,
     line-height: $button-sm-line-height,
@@ -411,6 +424,7 @@ $sizes: (
 
             &.-icon {
               padding: map-get(map-get(map-get($sizes, $type), icons), padding);
+              line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
             }
           }
         }

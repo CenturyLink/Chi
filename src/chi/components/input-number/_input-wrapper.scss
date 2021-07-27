@@ -2,6 +2,17 @@
 @import '../../_global-mixins';
 
 $sizes: (
+  xs: (
+    height: $number-input-xs-height,
+    line-height: $number-input-xs-line-height,
+    font-size: $number-input-xs-font-size,
+    padding: $number-input-xs-padding,
+    btn-height: $number-input-xs-button-height,
+    right: $number-input-xs-button-right,
+    top: $number-input-xs-button-top,
+    bottom: $number-input-xs-button-bottom,
+    background-size: $number-input-xs-button-icon-background-size
+  ),
   sm: (
     height: $number-input-sm-height,
     line-height: $number-input-sm-line-height,
@@ -52,6 +63,17 @@ $sizes: (
 );
 
 $expanded-sizes: (
+  xs: (
+    width: $number-input-expanded-xs-width,
+    btn-font-size: $number-input-expanded-xs-button-font-size,
+    btn-line-height: $number-input-expanded-xs-button-line-height,
+    btn-height: $number-input-expanded-xs-button-height,
+    btn-padding: $number-input-expanded-xs-button-padding,
+    icon-font-size: $number-input-expanded-xs-button-icon-size,
+    icon-height: $number-input-expanded-xs-button-icon-size,
+    icon-line-height: $number-input-expanded-xs-button-icon-size,
+    icon-width: $number-input-expanded-xs-button-icon-size
+  ),
   sm: (
     width: $number-input-expanded-sm-width,
     btn-font-size: $number-input-expanded-sm-button-font-size,

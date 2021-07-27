@@ -135,7 +135,7 @@ export class SearchInput {
     />;
 
     const searchXIcon = this._cleanButtonVisible ?
-      <button class="chi-button -icon -close -sm"
+      <button class="chi-button -icon -close -xs"
         onClick={() => this._cleanInput()}
         aria-label="Clear">
         <div class="chi-button__content">
@@ -146,7 +146,7 @@ export class SearchInput {
     const searchIcon = <button
       class={`
         chi-button -icon -flat -bg--none
-        ${this.size === 'sm' ? '-sm' : ''}
+        ${this.size ? `-${this.size}` : ''}
         `}
         onClick={() => this.eventSearch.emit(this.value)}
         aria-label="Search">

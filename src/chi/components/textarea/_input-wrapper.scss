@@ -1,4 +1,13 @@
 $sizes: (
+  xs: (
+    height: $textarea-xs-icon-size,
+    top: $textarea-xs-icon-top,
+    width: $textarea-xs-icon-size,
+    left: $textarea-xs-icon-left,
+    padding-left: $textarea-xs-icon-padding,
+    right: $textarea-xs-icon-right,
+    padding-right: $textarea-xs-icon-padding,
+  ),
   sm: (
     height: $textarea-sm-icon-size,
     top: $textarea-sm-icon-top,

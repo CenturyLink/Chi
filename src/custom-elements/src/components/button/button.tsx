@@ -29,7 +29,7 @@ export class Button {
   @Prop({ reflect: true }) color: string;
 
   /**
-   *  to set button size { sm, md, lg, xl }.
+   *  to set button size { xs, sm, md, lg, xl }.
    */
   @Prop({ reflect: true }) size: string;
 
@@ -70,8 +70,8 @@ export class Button {
 
   @Watch('size')
   sizeValidation(newValue: string) {
-    if (newValue && !['', 'sm', 'md', 'lg', 'xl'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid size for button. Valid values are sm, md, lg, xl, ''. `);
+    if (newValue && !['', 'xs', 'sm', 'md', 'lg', 'xl'].includes(newValue)) {
+      throw new Error(`${newValue} is not a valid size for button. Valid values are xs, sm, md, lg, xl, ''. `);
     }
   }
 

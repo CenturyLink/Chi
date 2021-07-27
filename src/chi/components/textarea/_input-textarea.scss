@@ -2,6 +2,12 @@
 @import '_global-mixins';
 
 $sizes: (
+  xs: (
+    font-size: $textarea-xs-font-size,
+    line-height: $textarea-xs-line-height,
+    min-height: $textarea-xs-min-height,
+    padding: $textarea-xs-padding
+  ),
   sm: (
     font-size: $textarea-sm-font-size,
     line-height: $textarea-sm-line-height,

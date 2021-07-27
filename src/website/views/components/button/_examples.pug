@@ -242,7 +242,7 @@ h2 Examples
       .-pr--2
         chi-button Secondary
       .-pr--2
-        chi-button(size="sm") Tertiary
+        chi-button(size="xs") Tertiary
     .example-tabs.-pl--2
       ul.chi-tabs#examples-portal-default
         li.-active
@@ -256,7 +256,7 @@ h2 Examples
         <!-- Secondary -->
         <chi-button>Secondary</chi-button>
         <!-- Tertiary -->
-        <chi-button size="sm">Tertiary</chi-button>
+        <chi-button size="xs">Tertiary</chi-button>
     .chi-tabs-panel#html-portal
       .chi-tab__description
         | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
@@ -267,7 +267,7 @@ h2 Examples
         <!-- Secondary -->
         <button class="chi-button">Secondary</button>
         <!-- Tertiary -->
-        <button class="chi-button -sm">Tertiary</button>
+        <button class="chi-button -xs">Tertiary</button>
 
         <!-- Button classes can be used on other elements -->
         <a class="chi-button -primary" href="#" role="button">Link button</a>
@@ -285,7 +285,7 @@ h2 Examples
       .-pr--2
         chi-button(disabled) Secondary
       .-pr--2
-        chi-button(size="sm", disabled) Tertiary
+        chi-button(size="xs", disabled) Tertiary
     .example-tabs.-pl--2
       ul.chi-tabs#examples-portal-disabled
         li.-active
@@ -299,7 +299,7 @@ h2 Examples
         <!-- Secondary -->
         <chi-button disabled>Secondary</chi-button>
         <!-- Tertiary -->
-        <chi-button size="sm" disabled>Tertiary</chi-button>
+        <chi-button size="xs" disabled>Tertiary</chi-button>
     .chi-tabs-panel#html-portal-disabled
       :code(lang="html")
         <!-- Disabled boolean attribute -->
@@ -310,7 +310,7 @@ h2 Examples
         <!-- Disabled class -->
         <button class="chi-button -primary -disabled">Primary</button>
         <button class="chi-button -disabled">Secondary</button>
-        <button class="chi-button -sm -disabled">Tertiary</button>
+        <button class="chi-button -xs -disabled">Tertiary</button>
   
   h2 Fluid
   p.-text
@@ -672,7 +672,7 @@ h3 Close icon button
     .-p--3
         chi-button.-mr--2(color='danger')= 'Button'
         chi-button.-mr--2(variant='outline', color='danger')= 'Button'
-        chi-button(variant='outline', color='danger', size='sm')= 'Button'
+        chi-button(variant='outline', color='danger', size='xs')= 'Button'
     .example-tabs.-pl--2
       ul.chi-tabs#examples-portal-danger
         li.-active
@@ -683,20 +683,21 @@ h3 Close icon button
       :code(lang="html")
         <chi-button color="danger">Button</chi-button>
         <chi-button color="danger" variant="outline">Button</chi-button>
-        <chi-button color="danger" variant="outline" size="sm">Button</chi-button>
+        <chi-button color="danger" variant="outline" size="xs">Button</chi-button>
     .chi-tabs-panel#html-portal-danger
       :code(lang="html")
         <button class="chi-button -danger">Button</button>
         <button class="chi-button -danger -outline">Button</button>
-        <button class="chi-button -danger -outline -sm">Button</button>
+        <button class="chi-button -danger -outline -xs">Button</button>
 
 .-portal--hide
   h2 Sizes
   p.-text
-    | Buttons support the following sizes: Small (sm), Medium (md), Large (lg), and Extra Large (xl).
+    | Buttons support the following sizes: Extra Small (xs), Small (sm), Medium (md), Large (lg), and Extra Large (xl).
+    | The default size is <code>md</code>.
   .example.-mb--3
     .-p--3
-      each size in ['sm', 'md', 'lg', 'xl']
+      each size in ['xs', 'sm', 'md', 'lg', 'xl']
         p.-text--bold.-pl--2= size
         div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
           chi-button(size=size)= 'Button'
@@ -710,22 +711,28 @@ h3 Close icon button
           a(href='#html-sizes') HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-sizes
       :code(lang="html")
+        <!-- xs -->
+        <chi-button size="xs">Button</chi-button>
+        <chi-button type="icon" size="xs" alternative-text="Button action">
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
+
         <!-- sm -->
         <chi-button size="sm">Button</chi-button>
         <chi-button type="icon" size="sm" alternative-text="Button action">
-          <chi-icon icon="atom" />
+          <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- md -->
         <chi-button size="md">Button</chi-button>
         <chi-button type="icon" size="md" alternative-text="Button action">
-          <chi-icon icon="atom" />
+          <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- lg -->
         <chi-button size="lg">Button</chi-button>
         <chi-button type="icon" size="lg" alternative-text="Button action">
-          <chi-icon icon="atom" />
+          <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- xl -->
@@ -735,6 +742,14 @@ h3 Close icon button
         </chi-button>
     .chi-tabs-panel#html-sizes
       :code(lang="html")
+        <!-- xs -->
+        <button class="chi-button -xs">Button</button>
+        <button class="chi-button -xs -icon" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+
         <!-- sm -->
         <button class="chi-button -sm">Button</button>
         <button class="chi-button -sm -icon" aria-label="Button action">
@@ -770,36 +785,20 @@ h3 Close icon button
 .-portal--show
   h2 Sizes
   p.-text
-    | Buttons support the following sizes: Small (sm), Medium (md), and Large (lg).
+    | Buttons support the following sizes: Extra Small (xs), Small (sm), Medium (md), and Large (lg).
+    | The default size is <code>md</code>.
   .example.-mb--3
     .-p--3
-      p.-text--bold.-pl--2 sm
-      div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
-        .-pr--2
-          chi-button(size='sm', color='primary')= 'Button'
-        .-pr--2
-          chi-button(size='sm')= 'Button'
-        .-pr--2
-          chi-button(size='sm', variant='flat', type='icon', alternative-text="Button action")
-            chi-icon(icon='atom')
-      p.-text--bold.-pl--2 md
-      div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
-        .-pr--2
-          chi-button(size='md', color='primary', uppercase)= 'Button'
-        .-pr--2
-          chi-button(size='md', uppercase)= 'Button'
-        .-pr--2
-          chi-button(size='md', variant='flat', type='icon', alternative-text="Button action")
-            chi-icon(icon='atom')
-      p.-text--bold.-pl--2 lg
-      div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
-        .-pr--2
-          chi-button(size='lg', color='primary', uppercase)= 'Button'
-        .-pr--2
-          chi-button(size='lg', uppercase)= 'Button'
-        .-pr--2
-          chi-button(size='lg', variant='flat', type='icon', alternative-text="Button action")
-            chi-icon(icon='atom')
+      each size in ['xs', 'sm', 'md', 'lg']
+        p.-text--bold.-pl--2= size
+        div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
+          .-pr--2
+            chi-button(size=`${size}`, color='primary')= 'Button'
+          .-pr--2
+            chi-button(size=`${size}`)= 'Button'
+          .-pr--2
+            chi-button(size=`${size}`, variant='flat', type='icon', alternative-text="Button action")
+              chi-icon(icon='atom')
     .example-tabs.-pl--2
       ul.chi-tabs#examples-portal-sizes
         li.-active
@@ -808,28 +807,44 @@ h3 Close icon button
           a(href='#html-portal-sizes') HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-sizes
       :code(lang="html")
+        <!-- xs -->
+        <chi-button color="primary" size="xs">Button</chi-button>
+        <chi-button size="xs">Button</chi-button>
+        <chi-button type="icon" variant="flat" size="xs" alternative-text="Button action">
+          <chi-icon icon="atom"></chi-icon>
+        </chi-button>
+
         <!-- sm -->
         <chi-button color="primary" size="sm">Button</chi-button>
         <chi-button size="sm">Button</chi-button>
         <chi-button type="icon" variant="flat" size="sm" alternative-text="Button action">
-          <chi-icon icon="atom" />
+          <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- md -->
         <chi-button color="primary" size="md">Button</chi-button>
         <chi-button size="md">Button</chi-button>
         <chi-button type="icon" variant="flat" size="md" alternative-text="Button action">
-          <chi-icon icon="atom" />
+          <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- lg -->
         <chi-button color="primary" size="lg">Button</chi-button>
         <chi-button size="lg">Button</chi-button>
         <chi-button type="icon" variant="flat" size="lg" alternative-text="Button action">
-          <chi-icon icon="atom" />
+          <chi-icon icon="atom"></chi-icon>
         </chi-button>
     .chi-tabs-panel#html-portal-sizes
       :code(lang="html")
+        <!-- xs -->
+        <button class="chi-button -primary -xs">Button</button>
+        <button class="chi-button -xs">Button</button>
+        <button class="chi-button -flat -xs -icon" aria-label="Button action">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-atom"></i>
+          </div>
+        </button>
+
         <!-- sm -->
         <button class="chi-button -primary -sm">Button</button>
         <button class="chi-button -sm">Button</button>

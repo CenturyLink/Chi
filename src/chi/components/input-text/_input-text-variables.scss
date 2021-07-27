@@ -1,5 +1,16 @@
 
 $sizes: (
+  xs: (
+    height: $text-input-xs-height,
+    font-size: $text-input-xs-font-size,
+    line-height: $text-input-xs-line-height,
+    padding: $text-input-xs-padding,
+    icons: (
+      height: $text-input-xs-icon-height,
+      padding: $text-input-xs-icon-padding,
+      width: $text-input-xs-icon-width,
+    )
+  ),
   sm: (
     height: $text-input-sm-height,
     font-size: $text-input-sm-font-size,

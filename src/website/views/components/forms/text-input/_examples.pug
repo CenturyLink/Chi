@@ -549,91 +549,53 @@ h3 Inline Inputs
         </div>
       </div>
 
-.-portal--hide
-  h3 Floating Label
-  p.-text
-    | Use floating labels to keep the placeholder visible when no label is attached to the input.
-    | <strong>Note:</strong> Chi only supports floating labels on <code>-lg</code> and <code>-xl</code> inputs.
-  .example.-mb--3
-    .-p--3
-      .chi-grid
-        .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
-          .chi-grid
-            each size in ['lg', 'xl']
-              div(class=`chi-col -w--12 -mb--2`)
-                .chi-input__wrapper.-floating-label
-                  input(type="text", class=`chi-input -${size}`, id=`floating-label-${size}`)
-                  label(for=`floating-label-${size}`) Placeholder text
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-input-floating-label
-        li.-disabled
-          a(href=`#webcomponent-input-floating-label`) Web Component
-        li.-active
-          a(href=`#html-input-floating-label`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-input-floating-label
-    .chi-tabs-panel.-active#html-input-floating-label
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../../getting-started/installation">Chi.js</a>.
-      :code(lang='html')
-        <div class="chi-input__wrapper -floating-label">
-          <input class="chi-input -lg" type="text" id="floating-label-lg">
-          <label for="floating-label-lg">Placeholder text</label>
-        </div>
 
-        <div class="chi-input__wrapper -floating-label">
-          <input class="chi-input -xl" type="text" id="floating-label-xl">
-          <label for="floating-label-xl">Placeholder text</label>
-        </div>
+h3 Floating Label
+p.-text
+  | Use floating labels to keep the placeholder visible when no label is attached to the input.
+  | <strong>Note:</strong> Chi only supports floating labels on <code>-md</code>, <code>-lg</code> and <code>-xl</code> inputs.
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-grid
+          each size in ['md','lg', 'xl']
+            div(class=`chi-col -w--12 -mb--2`)
+              .chi-input__wrapper.-floating-label
+                input(type="text", class=`chi-input -${size}`, id=`floating-label-${size}`)
+                label(for=`floating-label-${size}`) Placeholder text
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-input-floating-label
+      li.-disabled
+        a(href=`#webcomponent-input-floating-label`) Web Component
+      li.-active
+        a(href=`#html-input-floating-label`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-input-floating-label
+  .chi-tabs-panel.-active#html-input-floating-label
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../../getting-started/installation">Chi.js</a>.
+    :code(lang='html')
+      <div class="chi-input__wrapper -floating-label">
+        <input class="chi-input -md" type="text" id="floating-label-md">
+        <label for="floating-label-md">Placeholder text</label>
+      </div>
 
-        <script>
-          chi.floatingLabel(document.querySelectorAll('.-floating-label'));
-        </script>
+      <div class="chi-input__wrapper -floating-label">
+        <input class="chi-input -lg" type="text" id="floating-label-lg">
+        <label for="floating-label-lg">Placeholder text</label>
+      </div>
 
-.-portal--show
-  h3 Floating Label
-  p.-text
-    | Use floating labels to keep the placeholder visible when no label is attached to the input.
-    | <strong>Note:</strong> floating labels are only supported on <code>-md</code> and <code>-lg</code> inputs.
-  .example.-mb--3
-    .-p--3
-      .chi-grid
-        .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
-          .chi-grid
-            each size in ['md', 'lg']
-              div(class=`chi-col -w--12 -mb--2`)
-                .chi-input__wrapper.-floating-label
-                  input(type="text", class=`chi-input -${size}`, id=`floating-label-portal-${size}`)
-                  label(for=`floating-label-portal-${size}`) Placeholder text
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-input-floating-label
-        li.-disabled
-          a(href=`#webcomponent-portal-input-floating-label`) Web Component
-        li.-active
-          a(href=`#html-portal-input-floating-label`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-portal-input-floating-label
-    .chi-tabs-panel.-active#html-portal-input-floating-label
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../../getting-started/installation">Chi.js</a>.
-      :code(lang='html')
-        <div class="chi-input__wrapper -floating-label">
-          <input class="chi-input -md" type="text" id="floating-label-portal-md">
-          <label for="floating-label-portal-md">Placeholder text</label>
-        </div>
+      <div class="chi-input__wrapper -floating-label">
+        <input class="chi-input -xl" type="text" id="floating-label-xl">
+        <label for="floating-label-xl">Placeholder text</label>
+      </div>
 
-        <div class="chi-input__wrapper -floating-label">
-          <input class="chi-input -lg" type="text" id="floating-label-portal-lg">
-          <label for="floating-label-portal-lg">Placeholder text</label>
-        </div>
-
-        <script>
-          chi.floatingLabel(document.querySelectorAll('.-floating-label'));
-        </script>
+      <script>
+        chi.floatingLabel(document.querySelectorAll('.-floating-label'));
+      </script>
 
 .-portal--hide
   h2 Icons
@@ -646,7 +608,6 @@ h3 Inline Inputs
             chi-label(for="example__icon-left-aligned") Label
             chi-text-input(
               icon-left='search',
-              icon-left-color='muted',
               value="Sample Text"
               id="example__icon-left-aligned"
             )
@@ -660,7 +621,7 @@ h3 Inline Inputs
       :code(lang="html")
         <div class="chi-form__item">
           <chi-label for="example__icon-left-aligned">Label</chi-label>
-          <chi-text-input icon-left="search" icon-left-color="muted" value="Sample Text" id="example__icon-left-aligned"></chi-text-input>
+          <chi-text-input icon-left="search" value="Sample Text" id="example__icon-left-aligned"></chi-text-input>
         </div>
     .chi-tabs-panel#html-input-icon-left
       :code(lang="html")
@@ -668,7 +629,7 @@ h3 Inline Inputs
           <label class="chi-label" for="example__icon-left-aligned">Label</label>
           <div class="chi-input__wrapper -icon--left">
             <input type="text" class="chi-input" value="Sample text" id="example__icon-left-aligned">
-            <i class="chi-icon icon-search -icon--muted"></i>
+            <i class="chi-icon icon-search"></i>
             </div>
           </div>
         </div>
@@ -682,7 +643,6 @@ h3 Inline Inputs
             chi-label(for="example__icon-right-aligned") Label
             chi-text-input(
               icon-right='search',
-              icon-right-color='muted',
               value="Sample Text"
               id="example__icon-right-aligned"
             )
@@ -696,7 +656,7 @@ h3 Inline Inputs
       :code(lang="html")
         <div class="chi-form__item">
           <chi-label for="example__icon-right-aligned">Label</chi-label>
-          <chi-text-input icon-right="search" icon-right-color="muted" value="Sample Text" id="example__icon-right-aligned"></chi-text-input>
+          <chi-text-input icon-right="search" value="Sample Text" id="example__icon-right-aligned"></chi-text-input>
         </div>
     .chi-tabs-panel#html-input-icon-right
       :code(lang="html")
@@ -704,7 +664,7 @@ h3 Inline Inputs
           <label class="chi-label" for="example__icon-right-aligned">Label</label>
           <div class="chi-input__wrapper -icon--right">
             <input type="text" class="chi-input" value="Sample text" id="example__icon-right-aligned">
-            <i class="chi-icon icon-search -icon--muted"></i>
+            <i class="chi-icon icon-search"></i>
           </div>
         </div>
 
@@ -717,9 +677,8 @@ h3 Inline Inputs
             chi-label(for="example__icon-left-right-aligned") Label
             chi-text-input(
               icon-left='search',
-              icon-left-color='muted',
               icon-right='check',
-              icon-right-color='muted',
+              icon-right-color='success',
               value="Sample Text"
               id="example__icon-left-right-aligned"
             )
@@ -733,7 +692,7 @@ h3 Inline Inputs
       :code(lang="html")
         <div class="chi-form__item">
           <chi-label for="example__icon-left-right-aligned">Label</chi-label>
-          <chi-text-input icon-left="search" icon-left-color="muted" icon-right="check" icon-right-color="muted" value="Sample Text" id="example__icon-left-right-aligned"></chi-text-input>
+          <chi-text-input icon-left="search" icon-right="check" icon-right-color="success" value="Sample Text" id="example__icon-left-right-aligned"></chi-text-input>
         </div>
     .chi-tabs-panel#html-input-icon-left-right
       :code(lang="html")
@@ -741,7 +700,7 @@ h3 Inline Inputs
           <label class="chi-label" for="example__icon-left-right-aligned">Label</label>
           <div class="chi-input__wrapper -icon--left -icon--right">
             <input type="text" class="chi-input" value="Sample text" id="example__icon-left-right-aligned">
-            <i class="chi-icon icon-search -icon--muted"></i>
+            <i class="chi-icon icon-search"></i>
             <i class="chi-icon icon-check -icon--success"></i>
           </div>
         </div>
@@ -770,7 +729,7 @@ h3 Inline Inputs
       :code(lang="html")
         <div class="chi-form__item">
           <chi-label for="example__portal-icon-left-aligned">Label</chi-label>
-          <chi-text-input icon-left="search" icon-left-color="muted" value="Sample Text" id="example__portal-icon-left-aligned"></chi-text-input>
+          <chi-text-input icon-left="search" value="Sample Text" id="example__portal-icon-left-aligned"></chi-text-input>
         </div>
     .chi-tabs-panel#html-portal-input-icon-left
       :code(lang="html")
@@ -856,30 +815,19 @@ h3 Inline Inputs
 .-portal--hide
   h2 Sizes
   p.-text
-    | Text inputs supports the following sizes: <code>sm</code>, <code>md</code>,
-    |  <code>lg</code>, <code>xl</code>.
+    | Text inputs supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
+    |  <code>lg</code>, and <code>xl</code>.
     | The default size is <code>md</code>.
   .example.-mb--3
     .-p--3
       .chi-grid
         .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
           .chi-grid
-            .chi-col.-w--12.-mb--2
-              .chi-form__item
-                chi-label(for="example__size-sm") Label
-                chi-text-input(size="sm", value="Sample Text", id="example__size-sm")
-            .chi-col.-w--12.-mb--2
-              .chi-form__item
-                chi-label(for="example__size-md") Label
-                chi-text-input(size="md", value="Sample Text", id="example__size-md")
-            .chi-col.-w--12.-mb--2
-              .chi-form__item
-                chi-label(for="example__size-lg") Label
-                chi-text-input(size="lg", value="Sample Text", id="example__size-lg")
-            .chi-col.-w--12
-              .chi-form__item
-                chi-label(for="example__size-xl") Label
-                chi-text-input(size="xl", value="Sample Text", id="example__size-xl")
+            each size in ['xs', 'sm', 'md', 'lg', 'xl']
+              .chi-col.-w--12.-mb--2
+                .chi-form__item
+                  chi-label(for=`example__size-${size}`) Label
+                  chi-text-input(size=`${size}`, value="Sample Text", id=`example__size-${size}`)
     .example-tabs.-pl--2
       ul.chi-tabs#example-input-sizes
         li.-active
@@ -888,6 +836,10 @@ h3 Inline Inputs
           a(href=`#html-input-sizes`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-input-sizes
       :code(lang="html")
+        <div class="chi-form__item">
+          <chi-label for="example__size-xs">Label</chi-label>
+          <chi-text-input size="xs" id="example__size-xs"></chi-text-input>
+        </div>
         <div class="chi-form__item">
           <chi-label for="example__size-sm">Label</chi-label>
           <chi-text-input size="sm" id="example__size-sm"></chi-text-input>
@@ -908,6 +860,10 @@ h3 Inline Inputs
       :code(lang='html')
         <div class="chi-form__item">
           <label class="chi-label" for="example__size-sm">Label</label>
+          <input type="text" class="chi-input -xs" id="example__size-sm">
+        </div>
+        <div class="chi-form__item">
+          <label class="chi-label" for="example__size-sm">Label</label>
           <input type="text" class="chi-input -sm" id="example__size-sm">
         </div>
         <div class="chi-form__item">
@@ -926,26 +882,19 @@ h3 Inline Inputs
 .-portal--show
   h2 Sizes
   p.-text
-    | Text inputs supports the following sizes: <code>sm</code>, <code>md</code>,
-    |  and <code>lg</code>.
+    | Text inputs supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
+    |  <code>lg</code>.
     | The default size is <code>md</code>.
   .example.-mb--3
     .-p--3
       .chi-grid
         .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
           .chi-grid
-            .chi-col.-w--12.-mb--2
-              .chi-form__item
-                chi-label(for="example__portal-size-sm") Label
-                chi-text-input(size="sm", value="Sample Text", id="example__portal-size-sm")
-            .chi-col.-w--12.-mb--2
-              .chi-form__item
-                chi-label(for="example__portal-size-md") Label
-                chi-text-input(size="md", value="Sample Text", id="example__portal-size-md")
-            .chi-col.-w--12.-mb--2
-              .chi-form__item
-                chi-label(for="example__portal-size-lg") Label
-                chi-text-input(size="lg", value="Sample Text", id="example__portal-size-lg")
+            each size in ['xs', 'sm', 'md', 'lg']
+              .chi-col.-w--12.-mb--2
+                .chi-form__item
+                  chi-label(for=`example__size-${size}`) Label
+                  chi-text-input(size=`${size}`, value="Sample Text", id=`example__size-${size}`)
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-input-sizes
         li.-active
@@ -955,31 +904,40 @@ h3 Inline Inputs
     .chi-tabs-panel.-active#webcomponent-portal-input-sizes
       :code(lang="html")
         <div class="chi-form__item">
-          <chi-label for="example__portal-size-sm">Label</chi-label>
-          <chi-text-input size="sm" id="example__portal-size-sm"></chi-text-input>
+          <chi-label for="example__size-xs">Label</chi-label>
+          <chi-text-input size="xs" id="example__size-xs"></chi-text-input>
         </div>
         <div class="chi-form__item">
-          <chi-label for="example__portal-size-md">Label</chi-label>
-          <chi-text-input size="md" id="example__portal-size-md"></chi-text-input>
+          <chi-label for="example__size-sm">Label</chi-label>
+          <chi-text-input size="sm" id="example__size-sm"></chi-text-input>
         </div>
         <div class="chi-form__item">
-          <chi-label for="example__portal-size-lg">Label</chi-label>
-          <chi-text-input size="lg" id="example__portal-size-lg"></chi-text-input>
+          <chi-label for="example__size-md">Label</chi-label>
+          <chi-text-input size="md" id="example__size-md"></chi-text-input>
+        </div>
+        <div class="chi-form__item">
+          <chi-label for="example__size-lg">Label</chi-label>
+          <chi-text-input size="lg" id="example__size-lg"></chi-text-input>
         </div>
     .chi-tabs-panel#html-portal-input-sizes
       :code(lang='html')
         <div class="chi-form__item">
-          <label class="chi-label" for="example__portal-size-sm">Label</label>
-          <input type="text" class="chi-input -sm" id="example__portal-size-sm">
+          <label class="chi-label" for="example__size-sm">Label</label>
+          <input type="text" class="chi-input -xs" id="example__size-sm">
         </div>
         <div class="chi-form__item">
-          <label class="chi-label" for="example__portal-size-md">Label</label>
-          <input type="text" class="chi-input -md" id="example__portal-size-md">
+          <label class="chi-label" for="example__size-sm">Label</label>
+          <input type="text" class="chi-input -sm" id="example__size-sm">
         </div>
         <div class="chi-form__item">
-          <label class="chi-label" for="example__portal-size-lg">Label</label>
-          <input type="text" class="chi-input -lg" id="example__portal-size-lg">
+          <label class="chi-label" for="example__size-md">Label</label>
+          <input type="text" class="chi-input -md" id="example__size-md">
         </div>
+        <div class="chi-form__item">
+          <label class="chi-label" for="example__size-lg">Label</label>
+          <input type="text" class="chi-input -lg" id="example__size-lg">
+        </div>
+
 
 script.
   document.addEventListener(
