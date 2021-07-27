@@ -27,7 +27,7 @@ export class ToggleSwitch {
   @Prop({ reflect: true, mutable: true }) checked = false;
 
   /**
-   * OPTIONAL. Size of the label. {xs,sm}.
+   * OPTIONAL. Size of the label. { xs, sm }.
    */
   @Prop({ reflect: true }) size: string;
 

@@ -13,7 +13,7 @@ let loadedIcons = 0;
 export class Icon {
 
   /**
-   * OPTIONAL. Color of the icon.
+   * OPTIONAL. Color of the Icon.
    */
   @Prop({ reflect: true }) color?: IconColors;
 

@@ -548,8 +548,8 @@ h3 Icons
               .chi-picker-group
                 .chi-picker-group__content
                   each i in [4, 5, 6]
-                    input.chi-picker__input(type="radio", name=`unique-name-portal-${size}-icon`, id=`unique-id-portal-${size}${i}`, checked=(i === 4))
-                    label(for=`unique-id-portal-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
+                    input.chi-picker__input(type="radio", name=`unique-name-portal-${size}-icon`, id=`unique-id-portal-icon-${size}${i}`, checked=(i === 4))
+                    label(for=`unique-id-portal-icon-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
                       span.-sr--only= 'Option ' + `${i}`
                       if size === 'sm'
                         i.chi-icon.icon-atom.-xs
@@ -761,8 +761,8 @@ h3 Icons
               .chi-picker-group
                 .chi-picker-group__content
                   each i in [4, 5, 6]
-                    input.chi-picker__input(type="radio", name=`unique-name-portal-${size}-icon`, id=`unique-id-portal-${size}${i}`, checked=(i === 4))
-                    label(for=`unique-id-portal-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
+                    input.chi-picker__input(type="radio", name=`unique-name-portal-${size}-icon`, id=`unique-id-portal-icon-${size}${i}`, checked=(i === 4))
+                    label(for=`unique-id-portal-icon-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
                       span.-sr--only= 'Option ' + `${i}`
                       if size === 'sm'
                         i.chi-icon.icon-atom.-xs

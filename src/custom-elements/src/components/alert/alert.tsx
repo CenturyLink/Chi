@@ -25,7 +25,7 @@ export class Alert {
   @Prop({ reflect: true }) color: AlertColors;
 
   /**
-   *  to avoid necessity of adding <chi-icon> to alert markup.
+   *  to avoid the necessity of adding <chi-icon> to alert markup.
    */
   @Prop({ reflect: true }) icon: string;
 

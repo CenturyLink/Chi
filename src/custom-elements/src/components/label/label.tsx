@@ -15,7 +15,7 @@ export class Label {
    */
   @Prop({ reflect: true }) for: string;
   /**
-   * OPTIONAL. Size of the label. {xs,sm, md, lg, xl}.
+   * OPTIONAL. Size of the label. { xs, sm, md, lg, xl }.
    */
   @Prop({ reflect: true }) size = 'md';
   /**

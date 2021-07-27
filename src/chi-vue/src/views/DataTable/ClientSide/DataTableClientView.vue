@@ -47,7 +47,8 @@
         >
           <template v-slot:start>
             <ChiSearchInput :portal="true" size="lg" :dataTableSearch="true" />
-            <ChiDataTableFilters :portal="true" :filtersData="toolbar.filtersData" class="-ml--2" />
+            <div class="chi-divider -vertical"></div>
+            <ChiDataTableFilters :portal="true" :filtersData="toolbar.filtersData" />
           </template>
           <template v-slot:end>
             <div class="chi-toolbar__actions-desktop">
@@ -91,7 +92,7 @@ import { DataTableRow } from '../../../constants/types';
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
 import { exampleConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
 
-const FAKE_API_RESPONSE_DELAY = 5000;
+const MOCK_API_RESPONSE_DELAY = 5000;
 
 @Component({
   components: {
@@ -181,7 +182,7 @@ export default class DataTableView extends Vue {
             : row
         ),
       };
-    }, FAKE_API_RESPONSE_DELAY);
+    }, MOCK_API_RESPONSE_DELAY);
   }
 }
 </script>

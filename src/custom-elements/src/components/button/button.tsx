@@ -44,7 +44,7 @@ export class Button {
   @Prop({ reflect: true }) uppercase = false;
 
   /**
-   *  to center align the text .
+   *  to center align the text.
    */
   @Prop({ reflect: true }) center = false;
 
