@@ -171,3 +171,13 @@ pre[class*="language-"] {
     font-weight: $font-weight-normal;
 	}
 }
+
+table {
+  &.-types {
+    pre {
+      code {
+        color: $color-cyan-70;
+      }
+    }
+  }
+}

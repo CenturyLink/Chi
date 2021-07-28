@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-07-27T01:25:19",
+  "timestamp": "2021-07-27T16:49:13",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -87,7 +87,7 @@
           "mutable": false,
           "attr": "icon",
           "reflectToAttr": true,
-          "docs": "to avoid necessity of adding <chi-icon> to alert markup.",
+          "docs": "to avoid the necessity of adding <chi-icon> to alert markup.",
           "docsTags": [],
           "values": [
             {
@@ -306,7 +306,7 @@
           "mutable": false,
           "attr": "logo",
           "reflectToAttr": true,
-          "docs": "to set logo of brand {lumen, centurylink}.",
+          "docs": "to set logo of brand { lumen, centurylink }.",
           "docsTags": [],
           "default": "'lumen'",
           "values": [
@@ -388,7 +388,7 @@
           "mutable": false,
           "attr": "center",
           "reflectToAttr": true,
-          "docs": "to center align the text .",
+          "docs": "to center align the text.",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -1427,7 +1427,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "OPTIONAL. Color of the icon.",
+          "docs": "OPTIONAL. Color of the Icon.",
           "docsTags": [],
           "values": [
             {
@@ -1641,7 +1641,7 @@
           "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
-          "docs": "OPTIONAL. Size of the label. {xs,sm, md, lg, xl}.",
+          "docs": "OPTIONAL. Size of the label. { xs, sm, md, lg, xl }.",
           "docsTags": [],
           "default": "'md'",
           "values": [
@@ -1741,7 +1741,7 @@
           "mutable": false,
           "attr": "href",
           "reflectToAttr": true,
-          "docs": "to set a links destination url.",
+          "docs": "to set a link's destination url.",
           "docsTags": [],
           "default": "'#'",
           "values": [
@@ -1758,7 +1758,7 @@
           "mutable": false,
           "attr": "hreflang",
           "reflectToAttr": true,
-          "docs": "to set the language of a links destination url.",
+          "docs": "to set the language of a link's destination url.",
           "docsTags": [],
           "values": [
             {
@@ -3162,7 +3162,7 @@
           "mutable": false,
           "attr": "size",
           "reflectToAttr": true,
-          "docs": "OPTIONAL. Size of the label. {xs,sm}.",
+          "docs": "OPTIONAL. Size of the label. { xs, sm }.",
           "docsTags": [],
           "values": [
             {

@@ -78,9 +78,10 @@ h2 Examples
         <!-- Vue component -->
         <ChiDataTableToolbar>
           <template v-slot:start>
-            <ChiSearchInput :portal="true" size="lg" :dataTableSearch="true" />
+            <ChiSearchInput :dataTableSearch="true" />
+            <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
-            <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
+            <ChiDataTableFilters :filtersData="toolbar.filtersData" />
           </template>
           <template v-slot:end>
             <!-- To enable customization of columns, use Column Customization sub-module of Toolbar by providing it with respective data -->
@@ -346,8 +347,8 @@ h2 Examples
                 </div>
               </div>
               <div class="-d--flex -justify-content--center -pb--2">
-                <button class="chi-button -primary -uppercase -px--4">Apply</button>
-                <button class="chi-button -primary -outline -bg--white -uppercase -px--4 -ml--2">Cancel</button>
+                <button class="chi-button -primary">Apply</button>
+                <button class="chi-button -ml--2">Cancel</button>
               </div>
             </div>
           </div>
@@ -604,8 +605,8 @@ h2 Examples
                 </div>
               </div>
               <div class="-d--flex -justify-content--center -pb--2">
-                <button class="chi-button -primary -uppercase -px--4">Apply</button>
-                <button class="chi-button -primary -outline -bg--white -uppercase -px--4 -ml--2">Cancel</button>
+                <button class="chi-button -primary">Apply</button>
+                <button class="chi-button -ml--2">Cancel</button>
               </div>
             </div>
           </div>
@@ -649,18 +650,18 @@ h2 Examples
           .chi-toolbar__start
             .chi-toolbar__search
               .chi-form__item
-                chi-search-input(portal size="lg" id="example__base-3")
+                chi-search-input(id="example__base-3")
             .chi-divider.-vertical
             .chi-toolbar__filters
               .chi-toolbar__filters-desktop
                 .chi-form__item
-                  select(class="chi-select -lg", id="example-ba5")
+                  select(class="chi-select", id="example-ba5")
                     option(value="") Select
                     option Option 1
                     option Option 2
                     option Option 3
                 .chi-form__item
-                  select(class="chi-select -lg", id="example-ba6")
+                  select(class="chi-select", id="example-ba6")
                     option(value="") Select
                     option Option 1
                     option Option 2
@@ -720,7 +721,8 @@ h2 Examples
         <!-- Vue component -->
         <ChiDataTableToolbar>
           <template v-slot:start>
-            <ChiSearchInput :portal="true" size="lg" :dataTableSearch="true" />
+            <ChiSearchInput :dataTableSearch="true" />
+            <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
             <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
           </template>
@@ -869,14 +871,14 @@ h2 Examples
             <div class="chi-toolbar__start">
               <div class="chi-toolbar__search">
                 <div class="chi-form__item">
-                  <chi-search-input portal="portal" size="lg" id="example__base-3"></chi-search-input>
+                  <chi-search-input id="example__base-3"></chi-search-input>
                 </div>
               </div>
               <div class="chi-divider -vertical"></div>
               <div class="chi-toolbar__filters">
                 <div class="chi-toolbar__filters-desktop">
                   <div class="chi-form__item">
-                    <select class="chi-select -lg" id="example-ba5">
+                    <select class="chi-select" id="example-ba5">
                       <option value="">Select</option>
                       <option>Option 1</option>
                       <option>Option 2</option>
@@ -884,7 +886,7 @@ h2 Examples
                     </select>
                   </div>
                   <div class="chi-form__item">
-                    <select class="chi-select -lg" id="example-ba6">
+                    <select class="chi-select" id="example-ba6">
                       <option value="">Select</option>
                       <option>Option 1</option>
                       <option>Option 2</option>
@@ -988,8 +990,8 @@ h2 Examples
                 </div>
               </div>
               <div class="-d--flex -justify-content--center -pb--2">
-                <button class="chi-button -primary -lg -uppercase -px--4 -no-hover">Apply</button>
-                <button class="chi-button -primary -outline -lg -bg--white -uppercase -px--4 -ml--2 -no-hover">Cancel</button>
+                <button class="chi-button -primary">Apply</button>
+                <button class="chi-button -ml--2">Cancel</button>
               </div>
             </div>
           </div>
@@ -1032,18 +1034,18 @@ h2 Examples
           .chi-toolbar__start
             .chi-toolbar__search
               .chi-form__item
-                chi-search-input(portal size="lg", id="example__base-4")
+                chi-search-input(id="example__base-4")
             .chi-divider.-vertical
             .chi-toolbar__filters
               .chi-toolbar__filters-desktop
                 .chi-form__item
-                  select(class="chi-select -lg", id="example-ba9")
+                  select(class="chi-select", id="example-ba9")
                     option(value="") Select
                     option Option 1
                     option Option 2
                     option Option 3
                 .chi-form__item
-                  select(class="chi-select -lg", id="example-ba10")
+                  select(class="chi-select", id="example-ba10")
                     option(value="") Select
                     option Option 1
                     option Option 2
@@ -1109,14 +1111,14 @@ h2 Examples
             <div class="chi-toolbar__start">
               <div class="chi-toolbar__search">
                 <div class="chi-form__item">
-                  <chi-search-input portal="portal" size="lg" id="example__base-4"></chi-search-input>
+                  <chi-search-input id="example__base-4"></chi-search-input>
                 </div>
               </div>
               <div class="chi-divider -vertical"></div>
               <div class="chi-toolbar__filters">
                 <div class="chi-toolbar__filters-desktop">
                   <div class="chi-form__item">
-                    <select class="chi-select -lg" id="example-ba9">
+                    <select class="chi-select" id="example-ba9">
                       <option value="">Select</option>
                       <option>Option 1</option>
                       <option>Option 2</option>
@@ -1124,7 +1126,7 @@ h2 Examples
                     </select>
                   </div>
                   <div class="chi-form__item">
-                    <select class="chi-select -lg" id="example-ba10">
+                    <select class="chi-select" id="example-ba10">
                       <option value="">Select</option>
                       <option>Option 1</option>
                       <option>Option 2</option>
@@ -1246,8 +1248,8 @@ h2 Examples
                 </div>
               </div>
               <div class="-d--flex -justify-content--center -pb--2">
-                <button class="chi-button -primary -lg -uppercase -px--4 -no-hover">Apply</button>
-                <button class="chi-button -primary -outline -lg -bg--white -uppercase -px--4 -ml--2 -no-hover">Cancel</button>
+                <button class="chi-button -primary">Apply</button>
+                <button class="chi-button -ml--2">Cancel</button>
               </div>
             </div>
           </div>
@@ -1282,8 +1284,7 @@ h2 Examples
           chi.tooltip(document.querySelectorAll('[data-tooltip]'));
         </script>
 
-  // Drawers
-
+// Drawers
 .chi-backdrop.-closed
   .chi-backdrop__wrapper
     div#drawer-1.chi-drawer.-left.-menu.-position--absolute
@@ -1322,8 +1323,8 @@ h2 Examples
             option Option 2
             option Option 3
       .-d--flex.-justify-content--center.-pb--2
-        button.chi-button.-primary.-lg.-uppercase.-px--4 Apply
-        button.chi-button.-primary.-outline.-lg.-bg--white.-uppercase.-px--4.-ml--2 Cancel
+        button.chi-button.-primary Apply
+        button.chi-button.-ml--2 Cancel
 .chi-backdrop.-closed
   .chi-backdrop__wrapper
     div#drawer-2.chi-drawer.-right.-menu.-position--absolute

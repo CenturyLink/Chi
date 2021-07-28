@@ -11,12 +11,12 @@ export class Link {
   @Element() el: HTMLElement;
 
   /**
-   *  to set a links destination url.
+   *  to set a link's destination url.
    */
   @Prop({ reflect: true }) href: string = '#';
 
   /**
-   *  to set the language of a links destination url.
+   *  to set the language of a link's destination url.
    */
   @Prop({ reflect: true }) hreflang: string;
 
