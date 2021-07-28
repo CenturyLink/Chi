@@ -1,0 +1,215 @@
+@import '_global-mixins';
+@import '_global-variables';
+
+$sizes: (
+  xs: (
+    font-size: $font-size-xs,
+    line-height: $line-height-sm
+  ),
+  sm: (
+    font-size: $font-size-sm,
+    line-height: $line-height
+  ),
+  md: (
+    font-size: $font-size-base,
+    line-height: $line-height-lg
+  ),
+  lg: (
+    font-size: $font-size-lg,
+    line-height: $line-height-lg
+  ),
+  xl: (
+    font-size: $font-size-xl,
+    line-height: $line-height-xl
+  )
+);
+
+$heading-sizes: (
+  h1: (
+    font-size: $font-size-h1,
+    font-weight: $font-weight-bold,
+    line-height: 4rem,
+    margin: 2rem 0
+  ),
+  h2: (
+    font-size: $font-size-h2,
+    font-weight: $font-weight-bold,
+    line-height: 3rem,
+    margin: 1rem 0
+  ),
+  h3: (
+    font-size: $font-size-h3,
+    font-weight: $font-weight-semi-bold,
+    line-height: 2rem,
+    margin: 1rem 0
+  ),
+  h4: (
+    font-size: $font-size-h4,
+    font-weight: $font-weight-semi-bold,
+    line-height: 2rem,
+    margin: 0.5rem 0
+  ),
+  h5: (
+    font-size: $font-size-h5,
+    font-weight: $font-weight-semi-bold,
+    line-height: $line-height-lg,
+    margin: 0.5rem 0
+  ),
+  h6: (
+    font-size: $font-size-h6,
+    font-weight: $font-weight-semi-bold,
+    line-height: $line-height-lg,
+    margin: 0.5rem 0
+  )
+);
+
+$alignments: (justify, center, left, right);
+$decorations: (no-decoration, line-through, underline);
+$transforms: (lowercase, uppercase, capitalize);
+
+// decorations
+@each $type in $decorations {
+  .-text--#{$type} {
+    text-decoration: #{$type} !important;
+  }
+}
+
+// line heights
+@for $index from 1 through 9 {
+  .-lh--#{$index} {
+    line-height: ($index / 2) + rem !important;
+  }
+}
+
+// responsive line heights
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @for $index from 1 through 9 {
+      .-lh-#{$screen-size}--#{$index} {
+        line-height: ($index / 2) + rem !important;
+      }
+    }
+  }
+}
+
+// text alignments
+@each $type in $alignments {
+  .-text--#{$type} {
+    text-align: #{$type} !important;
+  }
+}
+
+// responsive text alignments
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @each $type in $alignments {
+      .-text-#{$screen-size}--#{$type} {
+        text-align: #{$type} !important;
+      }
+    }
+  }
+}
+
+// text base size
+.-text {
+  font-size: $font-size-base;
+  line-height: $line-height;
+}
+
+// text sizes
+@each $type in map-keys($sizes) {
+  .-text--#{$type} {
+    font-size: map-get(map-get($sizes, $type), font-size) !important;
+    line-height: map-get(map-get($sizes, $type), line-height) !important;
+  }
+}
+
+// responsive text sizes
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @each $type in map-keys($sizes) {
+      .-text-#{$screen-size}--#{$type} {
+        font-size: map-get(map-get($sizes, $type), font-size) !important;
+        line-height: map-get(map-get($sizes, $type), line-height) !important;
+      }
+    }
+  }
+}
+
+// heading tag sizes
+@each $type in map-keys($heading-sizes) {
+  #{$type} {
+    font-size: map-get(map-get($heading-sizes, $type), font-size);
+    font-weight: map-get(map-get($heading-sizes, $type), font-weight);
+    line-height: map-get(map-get($heading-sizes, $type), line-height);
+    margin: map-get(map-get($heading-sizes, $type), margin);
+  }
+}
+
+// text heading sizes
+@each $type in map-keys($heading-sizes) {
+  .-text--#{$type} {
+    font-size: map-get(map-get($heading-sizes, $type), font-size) !important;
+    font-weight: map-get(map-get($heading-sizes, $type), font-weight);
+    line-height: map-get(map-get($heading-sizes, $type), line-height);
+    margin: map-get(map-get($heading-sizes, $type), margin) !important;
+  }
+}
+
+// responsive text heading sizes
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @each $type in map-keys($heading-sizes) {
+      .-text-#{$screen-size}--#{$type} {
+        font-size: map-get(map-get($heading-sizes, $type), font-size) !important;
+        font-weight: map-get(map-get($heading-sizes, $type), font-weight);
+        line-height: map-get(map-get($heading-sizes, $type), line-height);
+        margin: map-get(map-get($heading-sizes, $type), margin) !important;
+      }
+    }
+  }
+}
+
+// text transform
+@each $type in $transforms {
+  .-text--#{$type} {
+    text-transform: #{$type} !important;
+  }
+}
+
+// text weight
+.-text--thin {
+  font-weight: $font-weight-light !important;
+}
+
+.-text--normal {
+  font-weight: $font-weight-normal !important;
+}
+
+.-text--semi-bold {
+  font-weight: $font-weight-semi-bold !important;
+}
+
+.-text--bold {
+  font-weight: $font-weight-bold !important;
+}
+
+.-text--bolder {
+  font-weight: $font-weight-extra-bold !important;
+}
+
+.-text--boldest {
+  font-weight: $font-weight-black !important;
+}
+
+// text white-space
+.-text--nowrap {
+  white-space: nowrap !important;
+}
+
+// text overflow
+.-text--truncate {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}

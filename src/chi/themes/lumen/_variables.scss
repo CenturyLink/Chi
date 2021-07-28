@@ -752,10 +752,11 @@ $dropdown-button-active-border-color:       rgba($color-grey-70, 0.2);
 $dropdown-trigger-icon-color:               inherit;
 $dropdown-trigger-icon-margin-left:         0.375rem;
 $dropdown-trigger-text-transform:           none;
-$dropdown-trigger-sm-padding:               0.25rem 0.5rem;
-$dropdown-trigger-md-padding:               0.5rem 1rem;
-$dropdown-trigger-lg-padding:               0.625rem 1.5rem;
-$dropdown-trigger-xl-padding:               0.875rem 1.5rem;
+$dropdown-trigger-xs-padding:               0.1875rem 0.5rem;
+$dropdown-trigger-sm-padding:               0.4375rem 0.75rem;
+$dropdown-trigger-md-padding:               0.5625rem 1rem;
+$dropdown-trigger-lg-padding:               0.8125rem 1.5rem;
+$dropdown-trigger-xl-padding:               1.0625rem 2rem;
 
 $dropdown-menu-border-radius:               $border-radius-base;
 $dropdown-menu-shadow:                      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);

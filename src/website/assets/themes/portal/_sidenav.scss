@@ -68,6 +68,18 @@
         right: 1rem;
       }
     }
+
+    .chi-button__content {
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .-theme-name {
+      overflow: hidden;
+      text-align: left;
+      text-overflow: ellipsis;
+      width: calc(100% - 2.25rem);
+    }
   }
 
   // Desktop sidenav

@@ -108,6 +108,7 @@ p.-text
     <p class="-text -lh--7">-lh--7</p>
     <p class="-text -lh--8">-lh--8</p>
     <p class="-text -lh--9">-lh--9</p>
+
 h2 Text alignment
 p.-text Change text alignment to justified, left, center, or right.
 .example.-mb--3
@@ -121,33 +122,49 @@ p.-text Change text alignment to justified, left, center, or right.
       <p class="-text--left">This text will render as left aligned</p>
       <p class="-text--center">This text will render as center aligned</p>
       <p class="-text--right">This text will render as right aligned</p>
+
+h2 Text decoration
+p.-text Change text decoration to no-decoration, underline, or line-through.
+.example.-mb--3
+  .-m--3
+    p.-text.-text--no-decoration This text will render with no decoration
+    p.-text.-text--underline This text will render with an underline
+    p.-text.-text--line-through This text will render with a line through
+  :code(lang="html")
+      <p class="-text--no-decoration">This text will render with no decoration</p>
+      <p class="-text--underline">This text will render with an underline</p>
+      <p class="-text--line-through">This text will render with a line through</p>
+
 h2 Text transform
-p.-text Change text transform to lowercase, uppercase, or capitalized.
+p.-text Change text transform to lowercase, uppercase, or capitalize.
 .example.-mb--3
   .-m--3
     p.-text.-text--lowercase This text will render as lowercase
     p.-text.-text--uppercase This text will render as uppercase
-    p.-text.-text--capitalized This text will render as capitalized
+    p.-text.-text--capitalize This text will render as capitalize
   :code(lang="html")
       <p class="-text--lowercase">This text will render as lowercase</p>
       <p class="-text--uppercase">This text will render as uppercase</p>
-      <p class="-text--capitalized">This text will render as capitalized</p>
+      <p class="-text--capitalize">This text will render as capitalize</p>
 
 h2 Text weight
-p.-text Change text weight to thin, normal, bold, bolder, or boldest.
+p.-text Change text weight to thin, normal, semi-bold, bold, bolder, or boldest.
 .example.-mb--3
   .-m--3
     p.-text.-text--thin This text will render as thin
     p.-text.-text--normal This text will render as normal
+    p.-text.-text--semi-bold This text will render as semi-bold
     p.-text.-text--bold This text will render as bold
     p.-text.-text--bolder This text will render as bolder
     p.-text.-text--boldest This text will render as boldest
   :code(lang="html")
       <p class="-text--thin">This text will render as thin</p>
       <p class="-text--normal">This text will render as normal</p>
+      <p class="-text--semi-bold">This text will render as semi-bold</p>
       <p class="-text--bold">This text will render as bold</p>
       <p class="-text--bolder">This text will render as bolder</p>
       <p class="-text--boldest">This text will render as boldest</p>
+
 h2 Text wrapping
 p.-text Prevent text wrapping with nowrap or control overflow with truncate.
 .example.-mb--3
