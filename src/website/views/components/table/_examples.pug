@@ -15,8 +15,8 @@ h3 Hover
 p.-text Enable a hover state by applying the modifier class <code>-hover</code>.
 :example(lang="html"):html-beautify:pug include ./_hover.pug
 
-.-lumen--show
-  h3 Portal theme
+.-portal--show
+  h3 Portal
   p.-text
     | Enable portal styling by applying class <code>-portal</code>.
     | To display a row in active / selected state, apply class <code>-active</code> to the <code>tr</code>.
@@ -112,151 +112,303 @@ h3 Size -xl
 p.-text Render a <strong>-xl</strong> size by applying the modifier class <code>-xl</code>.
 :example(lang="html"):html-beautify:pug include ./_row-xl.pug
 
-h2 Selectable
-:example(lang="html")
-  <table class="chi-table">
-    <thead>
-        <tr>
-            <th>
-              <div class="chi-checkbox">
-                <input class="chi-checkbox__input" type="checkbox" id="chk-1" />
-                <label class="chi-checkbox__label" for="chk-1">
-                  <div class="-sr--only">Label</div>
-                </label>
-              </div>
-            </th>
-            <th class="-sorted -ascending">
-                <div>Name</div>
-            </th>
-            <th>ID</th>
-            <th>Last Login</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="-active">
-            <td>
-              <div class="chi-checkbox">
-                <input class="chi-checkbox__input" type="checkbox" id="chk-1-01" checked="checked" />
-                <label class="chi-checkbox__label" for="chk-1-01">
-                  <div class="-sr--only">Label</div>
-                </label>
-              </div>
-            </td>
-            <td>Name 1</td>
-            <td>name-1</td>
-            <td>Dec 18, 2020 3:26 PM</td>
-        </tr>
-        <tr>
-            <td>
-              <div class="chi-checkbox">
-                <input class="chi-checkbox__input" type="checkbox" id="chk-1-02" />
-                <label class="chi-checkbox__label" for="chk-1-02">
-                  <div class="-sr--only">Label</div>
-                </label>
-              </div>
-            </td>
-            <td>Name 2</td>
-            <td>name-2</td>
-            <td>Dec 18, 2020 2:38 AM</td>
-        </tr>
-        <tr>
-            <td>
-              <div class="chi-checkbox">
-                <input class="chi-checkbox__input" type="checkbox" id="chk-1-03" />
-                <label class="chi-checkbox__label" for="chk-1-03">
+.-portal--hide
+  h2 Selectable
+  :example(lang="html")
+    <table class="chi-table">
+      <thead>
+          <tr>
+              <th>
+                <div class="chi-checkbox">
+                  <input class="chi-checkbox__input" type="checkbox" id="chk-1" />
+                  <label class="chi-checkbox__label" for="chk-1">
                     <div class="-sr--only">Label</div>
-                </label>
-              </div>
-            </td>
-            <td>Name 3</td>
-            <td>name-3</td>
-            <td>Nov 5, 2020 10:15 AM</td>
-        </tr>
-    </tbody>
-  </table>
+                  </label>
+                </div>
+              </th>
+              <th class="-sorted -ascending">
+                  <div>Name</div>
+              </th>
+              <th>ID</th>
+              <th>Last Login</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr class="-active">
+              <td>
+                <div class="chi-checkbox">
+                  <input class="chi-checkbox__input" type="checkbox" id="chk-1-01" checked="checked" />
+                  <label class="chi-checkbox__label" for="chk-1-01">
+                    <div class="-sr--only">Label</div>
+                  </label>
+                </div>
+              </td>
+              <td>Name 1</td>
+              <td>name-1</td>
+              <td>Dec 18, 2020 3:26 PM</td>
+          </tr>
+          <tr>
+              <td>
+                <div class="chi-checkbox">
+                  <input class="chi-checkbox__input" type="checkbox" id="chk-1-02" />
+                  <label class="chi-checkbox__label" for="chk-1-02">
+                    <div class="-sr--only">Label</div>
+                  </label>
+                </div>
+              </td>
+              <td>Name 2</td>
+              <td>name-2</td>
+              <td>Dec 18, 2020 2:38 AM</td>
+          </tr>
+          <tr>
+              <td>
+                <div class="chi-checkbox">
+                  <input class="chi-checkbox__input" type="checkbox" id="chk-1-03" />
+                  <label class="chi-checkbox__label" for="chk-1-03">
+                      <div class="-sr--only">Label</div>
+                  </label>
+                </div>
+              </td>
+              <td>Name 3</td>
+              <td>name-3</td>
+              <td>Nov 5, 2020 10:15 AM</td>
+          </tr>
+      </tbody>
+    </table>
 
-h2 Scrollable
-p.-text
-  | If the <code>section</code> height is smaller than the <code>table</code>
-  | height, the <code>table</code> header will be fixed positioned and
-  | content will scroll. Tables must be wrapped in a
-  | <code>&lt;section class="chi-table -fixed--header"&gt;</code>
-:example(lang="html"):html-beautify:pug
-  include ./_common.pug
-  section.chi-table.-fixed--header(style="height: 150px")
-    div
-      table
-        thead
-          tr
-            th
-              div Name
-            th
-              div ID
-            th
-              div Last Login
-        tbody
-          +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')
-          +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
-          +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
+.-portal--show
+  h2 Selectable
+  :example(lang="html")
+    <table class="chi-table -portal">
+      <thead>
+          <tr>
+              <th>
+                <div class="chi-checkbox">
+                  <input class="chi-checkbox__input" type="checkbox" id="chk-1" />
+                  <label class="chi-checkbox__label" for="chk-1">
+                    <div class="-sr--only">Label</div>
+                  </label>
+                </div>
+              </th>
+              <th class="-sorted -ascending">
+                  <div>Name</div>
+              </th>
+              <th>ID</th>
+              <th>Last Login</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr class="-active">
+              <td>
+                <div class="chi-checkbox">
+                  <input class="chi-checkbox__input" type="checkbox" id="chk-1-01" checked="checked" />
+                  <label class="chi-checkbox__label" for="chk-1-01">
+                    <div class="-sr--only">Label</div>
+                  </label>
+                </div>
+              </td>
+              <td>Name 1</td>
+              <td>name-1</td>
+              <td>Dec 18, 2020 3:26 PM</td>
+          </tr>
+          <tr>
+              <td>
+                <div class="chi-checkbox">
+                  <input class="chi-checkbox__input" type="checkbox" id="chk-1-02" />
+                  <label class="chi-checkbox__label" for="chk-1-02">
+                    <div class="-sr--only">Label</div>
+                  </label>
+                </div>
+              </td>
+              <td>Name 2</td>
+              <td>name-2</td>
+              <td>Dec 18, 2020 2:38 AM</td>
+          </tr>
+          <tr>
+              <td>
+                <div class="chi-checkbox">
+                  <input class="chi-checkbox__input" type="checkbox" id="chk-1-03" />
+                  <label class="chi-checkbox__label" for="chk-1-03">
+                      <div class="-sr--only">Label</div>
+                  </label>
+                </div>
+              </td>
+              <td>Name 3</td>
+              <td>name-3</td>
+              <td>Nov 5, 2020 10:15 AM</td>
+          </tr>
+      </tbody>
+    </table>
 
-h2 Two tier table header
-:example(lang="html"):html-beautify:pug
-  include ./_common.pug
-  table.chi-table
-    colgroup
-      col
-    colgroup(span='2')
-    colgroup(span='2')
-    colgroup
-      col
-    thead
-      tr
-        th.-sorted.-descending
-          div Location
-        th(colspan='2', scope='colgroup') High Utilization
-        th(colspan='2', scope='colgroup') Elevated Utilization
-        th.-sorted.-descending
-          div Highest %
-      tr
-        th(scope='col')
-        th(scope='col').-sorted.-descending
-          div Total
-        th(scope='col').-sorted.-descending
-          div %
-        th(scope='col').-sorted.-descending
-          div Total
-        th(scope='col').-sorted.-descending
-          div %
-        th(scope='col')
-    tbody
-      tr
-        td.-text--normal(scope='row') Location 1
-        td 3
-        td 98%
-        td —
-        td —
-        td 98%
-      tr
-        td.-text--normal(scope='row') Location 2
-        td 1
-        td 98%
-        td 3
-        td 67%
-        td 98%
-      tr
-        td.-text--normal(scope='row') Location 3
-        td —
-        td —
-        td 2
-        td 66%
-        td 66%
-      tr
-        td.-text--normal(scope='row') Location 4
-        td —
-        td —
-        td 1
-        td 66%
-        td 66%
+.-portal--hide
+  h2 Scrollable
+  p.-text
+    | If the <code>section</code> height is smaller than the <code>table</code>
+    | height, the <code>table</code> header will be fixed positioned and
+    | content will scroll. Tables must be wrapped in a
+    | <code>&lt;section class="chi-table -fixed--header"&gt;</code>
+  :example(lang="html"):html-beautify:pug
+    include ./_common.pug
+    section.chi-table.-fixed--header(style="height: 150px")
+      div
+        table
+          thead
+            tr
+              th
+                div Name
+              th
+                div ID
+              th
+                div Last Login
+          tbody
+            +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')
+            +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
+            +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
+
+.-portal--show
+  h2 Scrollable
+  p.-text
+    | If the <code>section</code> height is smaller than the <code>table</code>
+    | height, the <code>table</code> header will be fixed positioned and
+    | content will scroll. Tables must be wrapped in a
+    | <code>&lt;section class="chi-table -fixed--header"&gt;</code>
+  :example(lang="html"):html-beautify:pug
+    include ./_common.pug
+    section.chi-table.-portal.-fixed--header(style="height: 150px")
+      div
+        table
+          thead
+            tr
+              th
+                div Name
+              th
+                div ID
+              th
+                div Last Login
+          tbody
+            +tr('Name 1', 'name-1', 'Dec 18, 2020 3:26 PM')
+            +tr('Name 2', 'name-2', 'Dec 18, 2020 2:38 AM')
+            +tr('Name 3', 'name-3', 'Nov 5, 2020 10:15 AM')
+
+.-portal--hide
+  h2 Two tier table header
+  :example(lang="html"):html-beautify:pug
+    include ./_common.pug
+    table.chi-table
+      colgroup
+        col
+      colgroup(span='2')
+      colgroup(span='2')
+      colgroup
+        col
+      thead
+        tr
+          th.-sorted.-descending
+            div Location
+          th(colspan='2', scope='colgroup') High Utilization
+          th(colspan='2', scope='colgroup') Elevated Utilization
+          th.-sorted.-descending
+            div Highest %
+        tr
+          th(scope='col')
+          th(scope='col').-sorted.-descending
+            div Total
+          th(scope='col').-sorted.-descending
+            div %
+          th(scope='col').-sorted.-descending
+            div Total
+          th(scope='col').-sorted.-descending
+            div %
+          th(scope='col')
+      tbody
+        tr
+          td.-text--normal(scope='row') Location 1
+          td 3
+          td 98%
+          td —
+          td —
+          td 98%
+        tr
+          td.-text--normal(scope='row') Location 2
+          td 1
+          td 98%
+          td 3
+          td 67%
+          td 98%
+        tr
+          td.-text--normal(scope='row') Location 3
+          td —
+          td —
+          td 2
+          td 66%
+          td 66%
+        tr
+          td.-text--normal(scope='row') Location 4
+          td —
+          td —
+          td 1
+          td 66%
+          td 66%
+
+.-portal--show
+  h2 Two tier table header
+  :example(lang="html"):html-beautify:pug
+    include ./_common.pug
+    table.chi-table.-portal
+      colgroup
+        col
+      colgroup(span='2')
+      colgroup(span='2')
+      colgroup
+        col
+      thead
+        tr
+          th.-sorted.-descending
+            div Location
+          th(colspan='2', scope='colgroup') High Utilization
+          th(colspan='2', scope='colgroup') Elevated Utilization
+          th.-sorted.-descending
+            div Highest %
+        tr
+          th(scope='col')
+          th(scope='col').-sorted.-descending
+            div Total
+          th(scope='col').-sorted.-descending
+            div %
+          th(scope='col').-sorted.-descending
+            div Total
+          th(scope='col').-sorted.-descending
+            div %
+          th(scope='col')
+      tbody
+        tr
+          td.-text--normal(scope='row') Location 1
+          td 3
+          td 98%
+          td —
+          td —
+          td 98%
+        tr
+          td.-text--normal(scope='row') Location 2
+          td 1
+          td 98%
+          td 3
+          td 67%
+          td 98%
+        tr
+          td.-text--normal(scope='row') Location 3
+          td —
+          td —
+          td 2
+          td 66%
+          td 66%
+        tr
+          td.-text--normal(scope='row') Location 4
+          td —
+          td —
+          td 1
+          td 66%
+          td 66%
 
 //h2 Table with header cells in the top row and first column
 //:example(lang="html"):html-beautify:pug

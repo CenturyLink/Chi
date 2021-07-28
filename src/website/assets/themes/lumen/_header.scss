@@ -83,6 +83,7 @@
         }
 
         .chi-input {
+          height: 2.5rem !important;
           width: 100%;
         }
 
@@ -90,7 +91,7 @@
           color: $color-grey-50;
           position: absolute;
           right: 0.75rem;
-          top: 0.5rem;
+          top: 0.75rem;
         }
 
         .algolia-autocomplete {

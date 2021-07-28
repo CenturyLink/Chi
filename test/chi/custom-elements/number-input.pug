@@ -4,7 +4,7 @@ title: Number input
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-each size in ['default', 'sm', 'md', 'lg', 'xl']
+each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   div(class=`test-${size}`)
     span.-text--h2= `Text Input / ${size}`
     table(cellpadding='0', cellspacing='0', width='600px')
@@ -18,7 +18,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                 .chi-form__item.-row
                     chi-number-input(disabled=(state==='disabled'), data-cy='test-base' size=size, state=state, inputstyle=style)
 
-each size in ['default', 'sm', 'md', 'lg', 'xl']
+each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   div(class=`test-expanded-svg-${size}`)
     span.-text--h2= `Text Input Expanded SVG / ${size}`
     table(cellpadding='0', cellspacing='0', width='600px')

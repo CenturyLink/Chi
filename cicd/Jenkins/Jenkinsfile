@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20210716',
+        identifier: 'jsl-jenkins-shared-library-local@release/20210727',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -972,7 +972,7 @@ PRDesc
 
               jslAdoptionMain('cypress/reports/smokeTests/*.xml')  
 
-            } else {
+            } else {              
               try {
                 sh """
                   rm -rf reports/ci_report/*
@@ -985,11 +985,15 @@ PRDesc
                   cat reports/ci_report/non_responsive/xunit.xml >> reports/ci_report/xunitfinal.xml
                   cat reports/ci_report/non_responsive_ce/xunit.xml >> reports/ci_report/xunitfinal.xml
                 """
-                jslAdoptionMain('reports/ci_report/xunitfinal.xml')
                 echo "No E2E results found, reporting only unit"
               } catch (Exception exc) {
                 echo "No regression tests present and no AdoptionMain Stats neither DevOps GCR"
+                sh """
+                  mkdir -p reports/ci_report 
+                  touch reports/ci_report/xunitfinal.xml
+                """
               }
+              jslAdoptionMain('reports/ci_report/xunitfinal.xml')
             }
           }
         }

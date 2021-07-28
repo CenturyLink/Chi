@@ -12,7 +12,7 @@
         }
 
         &.-flat {
-          right: 0.25rem;
+          right: 0;
           top: $search-input-md-icon-top;
         }
 
@@ -48,6 +48,25 @@
         &.chi-search__input {
           padding-right: 3.75rem;
 
+          &.-xs {
+            padding-right: 3.5rem;
+
+            ~ .chi-button,
+            ~ chi-button {
+              &.-icon {
+                &.-flat {
+                  right: 0.25rem;
+                  top: $search-input-xs-icon-top;
+                }
+
+                &.-close {
+                  right: $search-input-xs-close-right;
+                  top: $search-input-xs-close-top;
+                }
+              }
+            }
+          }
+
           &.-sm {
             padding-right: 3.5rem;
 
@@ -74,6 +93,7 @@
                 top: $search-input-lg-icon-top;
 
                 &.-close {
+                  right: $search-input-lg-close-right;
                   top: $search-input-lg-close-top;
                 }
               }
@@ -87,6 +107,7 @@
                 top: $search-input-xl-icon-top;
 
                 &.-close {
+                  right: $search-input-xl-close-right;
                   top: $search-input-xl-close-top;
                 }
               }

@@ -2,25 +2,29 @@
 @import '_global-mixins';
 
 $sizes: (
+  xs: (
+    background-position: right 0.5rem center,
+  ),
   sm: (
     background-position: right 0.5rem center,
   ),
   md: (
-    background-position: right 0.5rem center,
+    background-position: right 1rem center,
   ),
   lg: (
     background-position: right 1rem center,
   ),
   xl: (
-    background-position: right 1rem center,
+    background-position: right 1.25rem center,
   )
 );
 
 $icon-sizes: (
-  sm: 0.75rem,
+  xs: 0.75rem,
+  sm: 1rem,
   md: 1rem,
   lg: 1rem,
-  xl: 1rem,
+  xl: 1.25rem,
 );
 
 .chi-pagination {
@@ -37,36 +41,7 @@ $icon-sizes: (
         justify-content: center;
 
         &:not(.-icon) {
-          &,
-          &.-md {
-            &,
-            &:hover,
-            &.-hover,
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus {
-              &,
-              &+.chi-button:not(.-icon) {
-                min-width: 2rem;
-                padding-left: 0.5625rem;
-                padding-right: 0.5625rem;
-              }
-            }
-
-            &:hover,
-            &.-hover {
-              &+.chi-button:focus {
-                &:not(.-icon) {
-                  border-left: 0;
-                  padding-left: 0.5625rem;
-                  padding-right: 0.5625rem;
-                }
-              }
-            }
-          }
-
-          &.-sm {
+          &.-xs {
             &,
             &:hover,
             &.-hover,
@@ -94,7 +69,36 @@ $icon-sizes: (
             }
           }
 
-          &.-lg {
+          &.-sm {
+            &,
+            &:hover,
+            &.-hover,
+            &:active,
+            &.-active,
+            &:focus,
+            &.-focus {
+              &,
+              &+.chi-button:not(.-icon) {
+                min-width: 2rem;
+                padding-left: 0.5625rem;
+                padding-right: 0.5625rem;
+              }
+            }
+
+            &:hover,
+            &.-hover {
+              &+.chi-button:focus {
+                &:not(.-icon) {
+                  border-left: 0;
+                  padding-left: 0.5625rem;
+                  padding-right: 0.5625rem;
+                }
+              }
+            }
+          }
+
+          &,
+          &.-md {
             &,
             &:hover,
             &.-hover,
@@ -122,7 +126,7 @@ $icon-sizes: (
             }
           }
 
-          &.-xl {
+          &.-lg {
             &,
             &:hover,
             &.-hover,
@@ -133,6 +137,34 @@ $icon-sizes: (
               &,
               &+.chi-button:not(.-icon) {
                 min-width: 3rem;
+                padding-left: 0.9375rem;
+                padding-right: 0.9375rem;
+              }
+            }
+
+            &:hover,
+            &.-hover {
+              &+.chi-button:focus {
+                &:not(.-icon) {
+                  border-left: 0;
+                  padding-left: 0.9375rem;
+                  padding-right: 0.9375rem;
+                }
+              }
+            }
+          }
+
+          &.-xl {
+            &,
+            &:hover,
+            &.-hover,
+            &:active,
+            &.-active,
+            &:focus,
+            &.-focus {
+              &,
+              &+.chi-button:not(.-icon) {
+                min-width: 3.5rem;
                 padding-left: 0.9375rem;
                 padding-right: 0.9375rem;
               }
@@ -354,9 +386,8 @@ $icon-sizes: (
         box-shadow: none;
         font-size: 0.875rem;
         font-weight: 600;
-        height: 32px;
-        padding: 8px;
-        width: 54px;
+        padding: 0.5rem;
+        width: 4.5rem;
 
         &:hover {
           background-color: rgba(83, 86, 90, 0.1);

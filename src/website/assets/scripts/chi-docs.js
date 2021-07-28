@@ -336,7 +336,7 @@ onLoad(() => {
         const buttonThemeName = button.querySelector('.-theme-name');
 
         buttonImg.setAttribute('src', themeFavicon);
-        buttonThemeName.innerText = window.theme;
+        buttonThemeName.innerText = anchorTarget.dataset.theme;
       }
     );
     updateAnchorHrefs()

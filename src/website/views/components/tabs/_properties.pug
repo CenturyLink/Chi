@@ -44,7 +44,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
               code= 'false'
           td
             div
-              | Makes the browser wait for the sliding border to move to the clicked link before following links.
+              | Makes the browser wait for the sliding border to move to the clicked link.
               | It only works with common links.
 
 h3 Preventing memory leaks
@@ -62,7 +62,7 @@ p.-text
   span.chi-badge.-dark.-sm.-mr--1
     span Tip
   | It is safe to call the tab method more than once, as it will return any previously created tabs component
-  | associated to the trigger.
+  | associated with the trigger.
 :code(lang="javascript")
   var elem = document.getElementById('example-tabs');
   var tabComponent = chi.tab(elem);

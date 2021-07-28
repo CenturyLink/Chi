@@ -1,6 +1,12 @@
 $border: 0.0625rem;
 
 $sizes: (
+  xs: (
+    padding: $button-group-horizontal-xs-padding,
+    icons: (
+      padding: $button-group-horizontal-xs-icon-padding
+    )
+  ),
   sm: (
     padding: $button-group-horizontal-sm-padding,
     icons: (

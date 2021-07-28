@@ -1,6 +1,14 @@
 $border: 0.0625rem;
 
 $sizes: (
+  xs: (
+    font-size: $picker-group-xs-font-size,
+    line-height: $picker-group-xs-line-height,
+    min-height: $picker-group-xs-min-height,
+    padding: $picker-group-xs-padding,
+    padding_hover: $picker-group-xs-padding-hover,
+    padding_checked: $picker-group-xs-padding-checked
+  ),
   sm: (
     font-size: $picker-group-sm-font-size,
     line-height: $picker-group-sm-line-height,

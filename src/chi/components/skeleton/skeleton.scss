@@ -25,22 +25,22 @@ $skeleton-animation-duration: 2s;
 }
 
 $skeleton-sizes: (
-  xs: 1.25rem,
-  sm: 1.5rem,
-  md: 2rem,
-  lg: 2.5rem,
-  xl: 3rem,
+  xs: $skeleton-xs-size,
+  sm: $skeleton-sm-size,
+  md: $skeleton-md-size,
+  lg: $skeleton-lg-size,
+  xl: $skeleton-xl-size,
 );
 
 .chi-skeleton {
   animation: shine $skeleton-animation-duration infinite linear;
-  height: 2rem;
+  height: $skeleton-md-size;
   @include background-gradient;
 
   &.-circle,
   &.-square {
-    height: 2rem;
-    width: 2rem;
+    height: $skeleton-md-size;
+    width: $skeleton-md-size;
 
     @each $type in map-keys($skeleton-sizes) {
       &.-#{$type} {

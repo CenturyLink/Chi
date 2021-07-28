@@ -41,7 +41,19 @@
 
   &__trigger {
     padding: $dropdown-trigger-md-padding;
-    text-transform: $dropdown-trigger-text-transform;
+
+    &,
+    &.-xs,
+    &.-sm,
+    &.-md,
+    &.-lg,
+    &.-xl {
+      text-transform: $dropdown-trigger-text-transform;
+    }
+
+    &.-xs {
+      padding: $dropdown-trigger-xs-padding;
+    }
 
     &.-sm {
       padding: $dropdown-trigger-sm-padding;
@@ -88,13 +100,16 @@
         width: 0.75rem;
       }
 
-      &.-lg::after {
-        height: 1.5rem;
-        line-height: 1.7rem;
-        margin-left: 1rem;
+      &.-lg,
+      &.-xl {
+        &::after {
+          height: 1.5rem;
+          line-height: 1.7rem;
+          margin-left: 0.75rem;
+        }
       }
 
-      &.-sm::after {
+      &.-xs::after {
         font-size: 0.625rem;
         height: 1rem;
         margin-left: 0.25rem;
@@ -136,14 +151,17 @@
         width: 0.75rem;
       }
 
-      &.-lg::before {
-        height: 1.5rem;
-        line-height: 1.7rem;
-        margin-right: 1rem;
+      &.-lg,
+      &.-xl {
+        &::before {
+          height: 1.5rem;
+          line-height: 1.7rem;
+          margin-right: 0.75rem;
+        }
       }
 
-      &.-sm::before {
-        font-size: 0.5rem;
+      &.-xs::before {
+        font-size: 0.625rem;
         height: 1rem;
         margin-right: 0.25rem;
       }

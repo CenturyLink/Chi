@@ -4,539 +4,270 @@ p.-text
   | Group expansion panels using the attribute <code>data-chi-epanel-group="name-of-the-group"</code>.
   | This will enable panels to work together as a sequential form. When a panel is activated,
   | the previous expanding panels will get the done state and the next will get the pending state.
+.example.-mb--3#example3
+  .-p--3.-p-lg--6.-bg--grey-10
+    .-mw--720.-mx--auto
+      .chi-epanel.-active(data-chi-epanel-group='example3')
+        .chi-epanel__header
+          .chi-epanel__number 1.
+          .chi-epanel__title Panel title
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 1.<br />
+                | (e.g.) a package selection
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content in expansion panel (e.g. a form to select a product package)
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-.-portal--hide
-  .example.-mb--3#example3
-    .-p--3.-p-lg--6.-bg--grey-10
-      .-mw--720.-mx--auto
-        .chi-epanel.-active(data-chi-epanel-group='example3')
-          .chi-epanel__header
-            .chi-epanel__number 1.
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 1.<br />
-                  | (e.g.) a package selection
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select a product package)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel(data-chi-epanel-group='example3')
+        .chi-epanel__header
+          .chi-epanel__number 2.
+          .chi-epanel__title Panel title
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 2.<br />
+                | (e.g.) shipping address
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-        .chi-epanel(data-chi-epanel-group='example3')
-          .chi-epanel__header
-            .chi-epanel__number 2.
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 2.<br />
-                  | (e.g.) shipping address
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel(data-chi-epanel-group='example3')
+        .chi-epanel__header
+          .chi-epanel__number 3.
+          .chi-epanel__title Panel title
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 3.<br />
+                | (e.g.) installation date
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-        .chi-epanel(data-chi-epanel-group='example3')
-          .chi-epanel__header
-            .chi-epanel__number 3.
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 3.<br />
-                  | (e.g.) installation date
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
-
-        .chi-epanel(data-chi-epanel-group='example3')
-          .chi-epanel__header
-            .chi-epanel__number 4.
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 4.<br />
-                  | (e.g.) payment method
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter payment method)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='done').-primary Finish
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-base
-        li.-active
-          a(href='#web-example-base') Web Component
-        li
-          a(href='#html-example-base') HTML Blueprint
-    #web-example-base.chi-tabs-panel.-active
-      :code(lang="html")
-        <chi-expansion-panel step="1" title="Panel title" state="active">
-          <div slot="active">
-            <div class="chi-epanel__subtitle">
-              Optional subtitle
-            </div>
-            <p class="chi-epanel__text">
-              Content in expansion panel (e.g. a form to select a product package)
-            </p>
+      .chi-epanel(data-chi-epanel-group='example3')
+        .chi-epanel__header
+          .chi-epanel__number 4.
+          .chi-epanel__title Panel title
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 4.<br />
+                | (e.g.) payment method
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content in expansion panel (e.g. a form to enter payment method)
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='done').-primary Finish
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-base
+      li.-active
+        a(href='#web-example-base') Web Component
+      li
+        a(href='#html-example-base') HTML Blueprint
+  #web-example-base.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-expansion-panel step="1" title="Panel title" state="active">
+        <div slot="active">
+          <div class="chi-epanel__subtitle">
+            Optional subtitle
           </div>
-          <div slot="footer">
-            <chi-button size="lg" color="primary">
-              Continue
-            </chi-button>
-          </div>
-        </chi-expansion-panel>
-        <chi-expansion-panel step="2" title="Panel title"></chi-expansion-panel>
-        <chi-expansion-panel step="3" title="Panel title"></chi-expansion-panel>
-        <chi-expansion-panel step="4" title="Panel title"></chi-expansion-panel>
-    #html-example-base.chi-tabs-panel
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../getting-started/installation">Chi.js</a>.
-      :code(lang="html")
-        <!-- JavaScript -->
-        <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example3"]'));</script>
+          <p class="chi-epanel__text">
+            Content in expansion panel (e.g. a form to select a product package)
+          </p>
+        </div>
+        <div slot="footer">
+          <chi-button color="primary">
+            Continue
+          </chi-button>
+        </div>
+      </chi-expansion-panel>
+      <chi-expansion-panel step="2" title="Panel title"></chi-expansion-panel>
+      <chi-expansion-panel step="3" title="Panel title"></chi-expansion-panel>
+      <chi-expansion-panel step="4" title="Panel title"></chi-expansion-panel>
+  #html-example-base.chi-tabs-panel
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <!-- JavaScript -->
+      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example3"]'));</script>
 
-        <!-- HTML -->
-        <div class="chi-epanel -active" data-chi-epanel-group="example3">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">1.</div>
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 1.<br />
-                  (e.g.) a package selection
-                </div>
+      <!-- HTML -->
+      <div class="chi-epanel -active" data-chi-epanel-group="example3">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__number">1.</div>
+          <div class="chi-epanel__title">Panel title</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 1.<br />
+                (e.g.) a package selection
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="chi-epanel" data-chi-epanel-group="example3">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">2.</div>
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 2.<br />
-                  (e.g.) shipping address
-                </div>
+      <div class="chi-epanel" data-chi-epanel-group="example3">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__number">2.</div>
+          <div class="chi-epanel__title">Panel title</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 2.<br />
+                (e.g.) shipping address
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter shipping address)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter shipping address)</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="chi-epanel" data-chi-epanel-group="example3">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">3.</div>
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 3.<br />
-                  (e.g.) installation date
-                </div>
+      <div class="chi-epanel" data-chi-epanel-group="example3">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__number">3.</div>
+          <div class="chi-epanel__title">Panel title</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 3.<br />
+                (e.g.) installation date
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select installation date)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="done">Continue</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select installation date)</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="done">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="chi-epanel" data-chi-epanel-group="example3">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">4.</div>
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 4.<br />
-                  (e.g.) payment method
-                </div>
+      <div class="chi-epanel" data-chi-epanel-group="example3">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__number">4.</div>
+          <div class="chi-epanel__title">Panel title</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 4.<br />
+                (e.g.) payment method
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter payment method)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Finish</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter payment method)</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Finish</button>
               </div>
             </div>
           </div>
         </div>
-
-.-portal--show
-  .example.-mb--3#example-portal-3
-    .-p--3.-p-lg--6.-bg--grey-10
-      .-mw--720.-mx--auto
-        .chi-epanel.-active(data-chi-epanel-group='example-portal-3')
-          .chi-epanel__header
-            .chi-epanel__number 1.
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 1.<br />
-                  | (e.g.) a package selection
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select a product package)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-
-        .chi-epanel(data-chi-epanel-group='example-portal-3')
-          .chi-epanel__header
-            .chi-epanel__number 2.
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 2.<br />
-                  | (e.g.) shipping address
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-
-        .chi-epanel(data-chi-epanel-group='example-portal-3')
-          .chi-epanel__header
-            .chi-epanel__number 3.
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 3.<br />
-                  | (e.g.) installation date
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-
-        .chi-epanel(data-chi-epanel-group='example-portal-3')
-          .chi-epanel__header
-            .chi-epanel__number 4.
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 4.<br />
-                  | (e.g.) payment method
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter payment method)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='done') Finish
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-base
-        li.-active
-          a(href='#web-example-portal-base') Web Component
-        li
-          a(href='#html-example-portal-base') HTML Blueprint
-    #web-example-portal-base.chi-tabs-panel.-active
-      :code(lang="html")
-        <chi-expansion-panel step="1" title="Panel title" state="active">
-          <div slot="active">
-            <div class="chi-epanel__subtitle">
-              Optional subtitle
-            </div>
-            <p class="chi-epanel__text">
-              Content in expansion panel (e.g. a form to select a product package)
-            </p>
-          </div>
-          <div slot="footer">
-            <chi-button color="primary">
-              Continue
-            </chi-button>
-          </div>
-        </chi-expansion-panel>
-        <chi-expansion-panel step="2" title="Panel title"></chi-expansion-panel>
-        <chi-expansion-panel step="3" title="Panel title"></chi-expansion-panel>
-        <chi-expansion-panel step="4" title="Panel title"></chi-expansion-panel>
-    #html-example-portal-base.chi-tabs-panel
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../getting-started/installation">Chi.js</a>.
-      :code(lang="html")
-        <!-- JavaScript -->
-        <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example3"]'));</script>
-
-        <!-- HTML -->
-        <div class="chi-epanel -active" data-chi-epanel-group="example3">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">1.</div>
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 1.<br />
-                  (e.g.) a package selection
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="chi-epanel" data-chi-epanel-group="example3">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">2.</div>
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 2.<br />
-                  (e.g.) shipping address
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter shipping address)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="chi-epanel" data-chi-epanel-group="example3">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">3.</div>
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 3.<br />
-                  (e.g.) installation date
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select installation date)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="done">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="chi-epanel" data-chi-epanel-group="example3">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">4.</div>
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 4.<br />
-                  (e.g.) payment method
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter payment method)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Finish</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      </div>
 
 h3 States
 p.-text
@@ -548,1678 +279,840 @@ p.-text
 p.-text
   | The four examples below differ only by state. Thanks to the state support and two internal hiding utility
   | classes we can represent the different states of the same content changing only the property.
+.example.-mb--3
+  .-p--3.-p-lg--6
+    .-mw--720.-mx--auto
+      .chi-epanel.-done(data-chi-epanel-group='example7')
+        .chi-epanel__header
+          .chi-epanel__number 1.
+          .chi-epanel__title Done state
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 1.<br />
+                | (e.g.) a package selection
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content in expansion panel (e.g. a form to select a product package)
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-.-portal--hide
-  .example.-mb--3
-    .-p--3.-p-lg--6
-      .-mw--720.-mx--auto
-        .chi-epanel.-done(data-chi-epanel-group='example7')
-          .chi-epanel__header
-            .chi-epanel__number 1.
-            .chi-epanel__title Done state
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 1.<br />
-                  | (e.g.) a package selection
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select a product package)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-active(data-chi-epanel-group='example7')
+        .chi-epanel__header
+          .chi-epanel__number 2.
+          .chi-epanel__title Active state
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 2.<br />
+                | (e.g.) shipping address
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-        .chi-epanel.-active(data-chi-epanel-group='example7')
-          .chi-epanel__header
-            .chi-epanel__number 2.
-            .chi-epanel__title Active state
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 2.<br />
-                  | (e.g.) shipping address
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-pending(data-chi-epanel-group='example7')
+        .chi-epanel__header
+          .chi-epanel__number 3.
+          .chi-epanel__title Pending state
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 3.<br />
+                | (e.g.) installation date
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-        .chi-epanel.-pending(data-chi-epanel-group='example7')
-          .chi-epanel__header
-            .chi-epanel__number 3.
-            .chi-epanel__title Pending state
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 3.<br />
-                  | (e.g.) installation date
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-disabled(data-chi-epanel-group='example7')
+        .chi-epanel__header
+          .chi-epanel__number 4.
+          .chi-epanel__title Disabled state
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 4.<br />
+                | (e.g.) payment method
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content in expansion panel (e.g. a form to enter payment method)
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='done').-primary Finish
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-default-states
+      li.-active
+        a(href=`#webcomponent-states`) Web Component
+      li
+        a(href=`#html-states`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-states
+    :code(lang="html")
+      <!-- Done state -->
+      <chi-expansion-panel step="1" title="Done panel" state="done">
+        <div slot="done">
+          Use this area to present<br />
+          a read-only summary of what the user<br />
+          entered or selected in step 1.<br />
+          (e.g.) a package selection
+        </div>
+        <div slot="change">
+          <chi-button color="primary" variant="flat">
+            Change
+          </chi-button>
+        </div>
+      </chi-expansion-panel>
 
-        .chi-epanel.-disabled(data-chi-epanel-group='example7')
-          .chi-epanel__header
-            .chi-epanel__number 4.
-            .chi-epanel__title Disabled state
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 4.<br />
-                  | (e.g.) payment method
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter payment method)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='done').-primary Finish
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-default-states
-        li.-active
-          a(href=`#webcomponent-states`) Web Component
-        li
-          a(href=`#html-states`) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-states
-      :code(lang="html")
-        <!-- Done state -->
-        <chi-expansion-panel step="1" title="Done panel" state="done">
-          <div slot="done">
-            Use this area to present<br />
-            a read-only summary of what the user<br />
-            entered or selected in step 1.<br />
-            (e.g.) a package selection
+      <!-- Active state -->
+      <chi-expansion-panel step="2" title="Active panel" state="active">
+        <div slot="active">
+          <div class="chi-epanel__subtitle">
+            Optional subtitle
           </div>
-          <div slot="change">
-            <chi-button color="primary" variant="flat">
-              Change
-            </chi-button>
-          </div>
-        </chi-expansion-panel>
+          <p class="chi-epanel__text">
+            Content in expansion panel (e.g. a form to enter shipping address)
+          </p>
+        </div>
+        <div slot="footer">
+          <chi-button color="primary">
+            Continue
+          </chi-button>
+        </div>
+      </chi-expansion-panel>
 
-        <!-- Active state -->
-        <chi-expansion-panel step="2" title="Active panel" state="active">
-          <div slot="active">
-            <div class="chi-epanel__subtitle">
-              Optional subtitle
-            </div>
-            <p class="chi-epanel__text">
-              Content in expansion panel (e.g. a form to enter shipping address)
-            </p>
-          </div>
-          <div slot="footer">
-            <chi-button size="lg" color="primary">
-              Continue
-            </chi-button>
-          </div>
-        </chi-expansion-panel>
+      <!-- Pending state -->
+      <chi-expansion-panel step="3" title="Pending panel"></chi-expansion-panel>
 
-        <!-- Pending state -->
-        <chi-expansion-panel step="3" title="Pending panel"></chi-expansion-panel>
+      <!-- Disabled state -->
+      <chi-expansion-panel step="4" title="Disabled panel" state="disabled"></chi-expansion-panel>
+  .chi-tabs-panel#html-states
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <!-- JavaScript -->
+      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example7"]'));</script>
 
-        <!-- Disabled state -->
-        <chi-expansion-panel step="4" title="Disabled panel" state="disabled"></chi-expansion-panel>
-    .chi-tabs-panel#html-states
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../getting-started/installation">Chi.js</a>.
-      :code(lang="html")
-        <!-- JavaScript -->
-        <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example7"]'));</script>
-
-        <!-- HTML -->
-        <!-- Done state -->
-        <div class="chi-epanel -done" data-chi-epanel-group="example7">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">1.</div>
-            <div class="chi-epanel__title">Done state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 1.<br />
-                  (e.g.) a package selection
-                </div>
+      <!-- HTML -->
+      <!-- Done state -->
+      <div class="chi-epanel -done" data-chi-epanel-group="example7">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__number">1.</div>
+          <div class="chi-epanel__title">Done state</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 1.<br />
+                (e.g.) a package selection
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Active state -->
-        <div class="chi-epanel -active" data-chi-epanel-group="example7">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">2.</div>
-            <div class="chi-epanel__title">Active state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 2.<br />
-                  (e.g.) shipping address
-                </div>
+      <!-- Active state -->
+      <div class="chi-epanel -active" data-chi-epanel-group="example7">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__number">2.</div>
+          <div class="chi-epanel__title">Active state</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 2.<br />
+                (e.g.) shipping address
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter shipping address)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter shipping address)</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Pending state -->
-        <div class="chi-epanel -pending" data-chi-epanel-group="example7">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">3.</div>
-            <div class="chi-epanel__title">Pending state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 3.<br />
-                  (e.g.) installation date
-                </div>
+      <!-- Pending state -->
+      <div class="chi-epanel -pending" data-chi-epanel-group="example7">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__number">3.</div>
+          <div class="chi-epanel__title">Pending state</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 3.<br />
+                (e.g.) installation date
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select installation date)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="done">Continue</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select installation date)</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="done">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Disabled state -->
-        <div class="chi-epanel -disabled" data-chi-epanel-group="example7">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">4.</div>
-            <div class="chi-epanel__title">Done state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 4.<br />
-                  (e.g.) payment method
-                </div>
+      <!-- Disabled state -->
+      <div class="chi-epanel -disabled" data-chi-epanel-group="example7">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__number">4.</div>
+          <div class="chi-epanel__title">Done state</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 4.<br />
+                (e.g.) payment method
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter payment method)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Finish</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter payment method)</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Finish</button>
               </div>
             </div>
           </div>
         </div>
-
-.-portal--show
-  .example.-mb--3
-    .-p--3.-p-lg--6
-      .-mw--720.-mx--auto
-        .chi-epanel.-done(data-chi-epanel-group='example-portal-7')
-          .chi-epanel__header
-            .chi-epanel__number 1.
-            .chi-epanel__title Done state
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 1.<br />
-                  | (e.g.) a package selection
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select a product package)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-
-        .chi-epanel.-active(data-chi-epanel-group='example-portal-7')
-          .chi-epanel__header
-            .chi-epanel__number 2.
-            .chi-epanel__title Active state
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 2.<br />
-                  | (e.g.) shipping address
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-
-        .chi-epanel.-pending(data-chi-epanel-group='example-portal-7')
-          .chi-epanel__header
-            .chi-epanel__number 3.
-            .chi-epanel__title Pending state
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 3.<br />
-                  | (e.g.) installation date
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-
-        .chi-epanel.-disabled(data-chi-epanel-group='example-portal-7')
-          .chi-epanel__header
-            .chi-epanel__number 4.
-            .chi-epanel__title Disabled state
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 4.<br />
-                  | (e.g.) payment method
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter payment method)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='done') Finish
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-default-states
-        li.-active
-          a(href=`#webcomponent-portal-states`) Web Component
-        li
-          a(href=`#html-portal-states`) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-portal-states
-      :code(lang="html")
-        <!-- Done state -->
-        <chi-expansion-panel step="1" title="Done panel" state="done">
-          <div slot="done">
-            Use this area to present<br />
-            a read-only summary of what the user<br />
-            entered or selected in step 1.<br />
-            (e.g.) a package selection
-          </div>
-          <div slot="change">
-            <chi-button color="primary" size="sm" variant="flat">
-              Change
-            </chi-button>
-          </div>
-        </chi-expansion-panel>
-
-        <!-- Active state -->
-        <chi-expansion-panel step="2" title="Active panel" state="active">
-          <div slot="active">
-            <div class="chi-epanel__subtitle">
-              Optional subtitle
-            </div>
-            <p class="chi-epanel__text">
-              Content in expansion panel (e.g. a form to enter shipping address)
-            </p>
-          </div>
-          <div slot="footer">
-            <chi-button color="primary">
-              Continue
-            </chi-button>
-          </div>
-        </chi-expansion-panel>
-
-        <!-- Pending state -->
-        <chi-expansion-panel step="3" title="Pending panel"></chi-expansion-panel>
-
-        <!-- Disabled state -->
-        <chi-expansion-panel step="4" title="Disabled panel" state="disabled"></chi-expansion-panel>
-    .chi-tabs-panel#html-portal-states
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../getting-started/installation">Chi.js</a>.
-      :code(lang="html")
-        <!-- JavaScript -->
-        <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example7"]'));</script>
-
-        <!-- HTML -->
-        <!-- Done state -->
-        <div class="chi-epanel -done" data-chi-epanel-group="example7">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">1.</div>
-            <div class="chi-epanel__title">Done state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 1.<br />
-                  (e.g.) a package selection
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Active state -->
-        <div class="chi-epanel -active" data-chi-epanel-group="example7">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">2.</div>
-            <div class="chi-epanel__title">Active state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 2.<br />
-                  (e.g.) shipping address
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter shipping address)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pending state -->
-        <div class="chi-epanel -pending" data-chi-epanel-group="example7">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">3.</div>
-            <div class="chi-epanel__title">Pending state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 3.<br />
-                  (e.g.) installation date
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select installation date)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="done">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Disabled state -->
-        <div class="chi-epanel -disabled" data-chi-epanel-group="example7">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">4.</div>
-            <div class="chi-epanel__title">Done state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 4.<br />
-                  (e.g.) payment method
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter payment method)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Finish</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
 
 h3 No step number
 p.-text Step numbering is optional and can be easily omitted.
+.example.-mb--3#example8
+  .-p--3.-p-lg--6.-bg--grey-10
+    .-mw--720.-mx--auto
+      .chi-epanel.-no-step.-active(data-chi-epanel-group='example8')
+        .chi-epanel__header
+          .chi-epanel__title Panel title
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 1.<br />
+                | (e.g.) a package selection
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content in expansion panel (e.g. a form to select a product package)
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-.-portal--hide
-  .example.-mb--3#example8
-    .-p--3.-p-lg--6.-bg--grey-10
-      .-mw--720.-mx--auto
-        .chi-epanel.-no-step.-active(data-chi-epanel-group='example8')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 1.<br />
-                  | (e.g.) a package selection
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select a product package)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-no-step(data-chi-epanel-group='example8')
+        .chi-epanel__header
+          .chi-epanel__title Panel title
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 2.<br />
+                | (e.g.) shipping address
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-        .chi-epanel.-no-step(data-chi-epanel-group='example8')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 2.<br />
-                  | (e.g.) shipping address
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-no-step(data-chi-epanel-group='example8')
+        .chi-epanel__header
+          .chi-epanel__title Panel title
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 3.<br />
+                | (e.g.) installation date
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-        .chi-epanel.-no-step(data-chi-epanel-group='example8')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 3.<br />
-                  | (e.g.) installation date
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
-
-        .chi-epanel.-no-step(data-chi-epanel-group='example8')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 4.<br />
-                  | (e.g.) payment method
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter payment method)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='done').-primary Finish
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-group-panel
-        li.-active
-          a(href='#web-no-step-numbers') Web Component
-        li
-          a(href='#html-no-step-numbers') HTML Blueprint
-    #web-no-step-numbers.chi-tabs-panel.-active
-      .chi-tab__description
-        | Step numbering can be omitted by removing the <code>step</code> property.
-      :code(lang="html")
-        <chi-expansion-panel title="Panel title" state="active">
-          <div slot="active">
-            <div class="chi-epanel__subtitle">
-              Optional subtitle
-            </div>
-            <p class="chi-epanel__text">
-              Content in expansion panel (e.g. a form to select a product package)
-            </p>
+      .chi-epanel.-no-step(data-chi-epanel-group='example8')
+        .chi-epanel__header
+          .chi-epanel__title Panel title
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 4.<br />
+                | (e.g.) payment method
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content in expansion panel (e.g. a form to enter payment method)
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='done').-primary Finish
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-group-panel
+      li.-active
+        a(href='#web-no-step-numbers') Web Component
+      li
+        a(href='#html-no-step-numbers') HTML Blueprint
+  #web-no-step-numbers.chi-tabs-panel.-active
+    .chi-tab__description
+      | Step numbering can be omitted by removing the <code>step</code> property.
+    :code(lang="html")
+      <chi-expansion-panel title="Panel title" state="active">
+        <div slot="active">
+          <div class="chi-epanel__subtitle">
+            Optional subtitle
           </div>
-          <div slot="footer">
-            <chi-button size="lg" color="primary">
-              Continue
-            </chi-button>
-          </div>
-        </chi-expansion-panel>
-        <chi-expansion-panel title="Panel title"></chi-expansion-panel>
-        <chi-expansion-panel title="Panel title"></chi-expansion-panel>
-        <chi-expansion-panel title="Panel title"></chi-expansion-panel>
-    #html-no-step-numbers.chi-tabs-panel
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../getting-started/installation">Chi.js</a>.
-        | <br>
-        | <br>
-        | Step numbering can be omitted by applying <code>-no-step</code> to <code>chi-epanel</code>
-        | and removing <code>chi-epanel__number</code>.
-      :code(lang="html")
-        <!-- JavaScript -->
-        <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example8"]'));</script>
+          <p class="chi-epanel__text">
+            Content in expansion panel (e.g. a form to select a product package)
+          </p>
+        </div>
+        <div slot="footer">
+          <chi-button color="primary">
+            Continue
+          </chi-button>
+        </div>
+      </chi-expansion-panel>
+      <chi-expansion-panel title="Panel title"></chi-expansion-panel>
+      <chi-expansion-panel title="Panel title"></chi-expansion-panel>
+      <chi-expansion-panel title="Panel title"></chi-expansion-panel>
+  #html-no-step-numbers.chi-tabs-panel
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+      | <br>
+      | <br>
+      | Step numbering can be omitted by applying <code>-no-step</code> to <code>chi-epanel</code>
+      | and removing <code>chi-epanel__number</code>.
+    :code(lang="html")
+      <!-- JavaScript -->
+      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example8"]'));</script>
 
-        <!-- HTML -->
-        <div class="chi-epanel -no-step -active" data-chi-epanel-group="example8">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse -ml--0">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 1.<br />
-                  (e.g.) a package selection
-                </div>
+      <!-- HTML -->
+      <div class="chi-epanel -no-step -active" data-chi-epanel-group="example8">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title">Panel title</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse -ml--0">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 1.<br />
+                (e.g.) a package selection
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="chi-epanel -no-step" data-chi-epanel-group="example8">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse -ml--0">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 2.<br />
-                  (e.g.) shipping address
-                </div>
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example8">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title">Panel title</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse -ml--0">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 2.<br />
+                (e.g.) shipping address
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter shipping address)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter shipping address)</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="chi-epanel -no-step" data-chi-epanel-group="example8">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse -ml--0">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 3.<br />
-                  (e.g.) installation date
-                </div>
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example8">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title">Panel title</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse -ml--0">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 3.<br />
+                (e.g.) installation date
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select installation date)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="done">Continue</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select installation date)</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="done">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="chi-epanel -no-step" data-chi-epanel-group="example8">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse -ml--0">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 4.<br />
-                  (e.g.) payment method
-                </div>
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example8">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title">Panel title</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse -ml--0">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 4.<br />
+                (e.g.) payment method
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter payment method)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Finish</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter payment method)</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Finish</button>
               </div>
             </div>
           </div>
         </div>
-
-.-portal--show
-  .example.-mb--3#example-portal-8
-    .-p--3.-p-lg--6.-bg--grey-10
-      .-mw--720.-mx--auto
-        .chi-epanel.-no-step.-active(data-chi-epanel-group='example-portal-8')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 1.<br />
-                  | (e.g.) a package selection
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select a product package)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-
-        .chi-epanel.-no-step(data-chi-epanel-group='example-portal-8')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 2.<br />
-                  | (e.g.) shipping address
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='next').-primary Continue
-
-        .chi-epanel.-no-step(data-chi-epanel-group='example-portal-8')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 3.<br />
-                  | (e.g.) installation date
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='next').-primary Continue
-
-        .chi-epanel.-no-step(data-chi-epanel-group='example-portal-8')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 4.<br />
-                  | (e.g.) payment method
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter payment method)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='done').-primary Finish
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-group-panel
-        li.-active
-          a(href='#web-portal-no-step-numbers') Web Component
-        li
-          a(href='#html-portal-no-step-numbers') HTML Blueprint
-    #web-portal-no-step-numbers.chi-tabs-panel.-active
-      .chi-tab__description
-        | Step numbering can be omitted by removing the <code>step</code> property.
-      :code(lang="html")
-        <chi-expansion-panel title="Panel title" state="active">
-          <div slot="active">
-            <div class="chi-epanel__subtitle">
-              Optional subtitle
-            </div>
-            <p class="chi-epanel__text">
-              Content in expansion panel (e.g. a form to select a product package)
-            </p>
-          </div>
-          <div slot="footer">
-            <chi-button color="primary">
-              Continue
-            </chi-button>
-          </div>
-        </chi-expansion-panel>
-        <chi-expansion-panel title="Panel title"></chi-expansion-panel>
-        <chi-expansion-panel title="Panel title"></chi-expansion-panel>
-        <chi-expansion-panel title="Panel title"></chi-expansion-panel>
-    #html-portal-no-step-numbers.chi-tabs-panel
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../getting-started/installation">Chi.js</a>.
-        | <br>
-        | <br>
-        | Step numbering can be omitted by applying <code>-no-step</code> to <code>chi-epanel</code>
-        | and removing <code>chi-epanel__number</code>.
-      :code(lang="html")
-        <!-- JavaScript -->
-        <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example8"]'));</script>
-
-        <!-- HTML -->
-        <div class="chi-epanel -no-step -active" data-chi-epanel-group="example8">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse -ml--0">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 1.<br />
-                  (e.g.) a package selection
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select a product package)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="chi-epanel -no-step" data-chi-epanel-group="example8">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse -ml--0">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 2.<br />
-                  (e.g.) shipping address
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter shipping address)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="chi-epanel -no-step" data-chi-epanel-group="example8">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse -ml--0">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 3.<br />
-                  (e.g.) installation date
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to select installation date)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="done">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="chi-epanel -no-step" data-chi-epanel-group="example8">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__title">Panel title</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse -ml--0">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 4.<br />
-                  (e.g.) payment method
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter payment method)</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Finish</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
 
 h3 Bordered
 p.-text
   | Use bordered to apply borders to panels and contain them in card styled boxes.
+.example.-mb--3
+  .-p--3.-p-lg--6.-bg--grey-10
+    .-mw--720.-mx--auto
+      .chi-epanel.-bordered.-active(data-chi-epanel-group='example9')
+        .chi-epanel__header
+          .chi-epanel__title Panel title
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 1.
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content goes here
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-.-portal--hide
-  .example.-mb--3
-    .-p--3.-p-lg--6.-bg--grey-10
-      .-mw--720.-mx--auto
-        .chi-epanel.-bordered.-active(data-chi-epanel-group='example9')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 1.
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-bordered(data-chi-epanel-group='example9')
+        .chi-epanel__header
+          .chi-epanel__title Panel title
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 2.
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content goes here
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-        .chi-epanel.-bordered(data-chi-epanel-group='example9')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 2.
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-bordered(data-chi-epanel-group='example9')
+        .chi-epanel__header
+          .chi-epanel__title Panel title
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 3.
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content goes here
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-        .chi-epanel.-bordered(data-chi-epanel-group='example9')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 3.
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-bordered.-disabled(data-chi-epanel-group='example9')
+        .chi-epanel__header
+          .chi-epanel__title Panel title
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Use this area to present<br />
+                | a read-only summary of what the user<br />
+                | entered or selected in step 4.
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content goes here
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='done').-primary Finish
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-bordered-states
+      li.-active
+        a(href=`#webcomponent-bordered-states`) Web Component
+      li
+        a(href=`#html-bordered-states`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-bordered-states
+    .chi-tab__description
+      | To render bordered panels, apply the property <code>bordered</code>.
+    :code(lang="html")
+      <!-- Done state -->
+      <chi-expansion-panel title="Done panel" bordered state="done">
+        <div slot="done">
+          Use this area to present<br />
+          a read-only summary of what the user<br />
+          entered or selected in step 1.
+        </div>
+        <div slot="change">
+          <chi-button color="primary" variant="flat">
+            Change
+          </chi-button>
+        </div>
+      </chi-expansion-panel>
 
-        .chi-epanel.-bordered.-disabled(data-chi-epanel-group='example9')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 4.
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='done').-primary Finish
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-bordered-states
-        li.-active
-          a(href=`#webcomponent-bordered-states`) Web Component
-        li
-          a(href=`#html-bordered-states`) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-bordered-states
-      .chi-tab__description
-        | To render bordered panels, apply the property <code>bordered</code>.
-      :code(lang="html")
-        <!-- Done state -->
-        <chi-expansion-panel title="Done panel" bordered state="done">
-          <div slot="done">
-            Use this area to present<br />
-            a read-only summary of what the user<br />
-            entered or selected in step 1.
+      <!-- Active state -->
+      <chi-expansion-panel title="Active panel" bordered state="active">
+        <div slot="active">
+          <div class="chi-epanel__subtitle">
+            Optional subtitle
           </div>
-          <div slot="change">
-            <chi-button color="primary" variant="flat">
-              Change
-            </chi-button>
-          </div>
-        </chi-expansion-panel>
+          <p class="chi-epanel__text">
+            Content goes here
+          </p>
+        </div>
+        <div slot="footer">
+          <chi-button color="primary">
+            Continue
+          </chi-button>
+        </div>
+      </chi-expansion-panel>
 
-        <!-- Active state -->
-        <chi-expansion-panel title="Active panel" bordered state="active">
-          <div slot="active">
-            <div class="chi-epanel__subtitle">
-              Optional subtitle
-            </div>
-            <p class="chi-epanel__text">
-              Content goes here
-            </p>
-          </div>
-          <div slot="footer">
-            <chi-button size="lg" color="primary">
-              Continue
-            </chi-button>
-          </div>
-        </chi-expansion-panel>
+      <!-- Pending state -->
+      <chi-expansion-panel title="Pending panel" bordered></chi-expansion-panel>
 
-        <!-- Pending state -->
-        <chi-expansion-panel title="Pending panel" bordered></chi-expansion-panel>
+      <!-- Disabled state -->
+      <chi-expansion-panel title="Disabled panel" bordered state="disabled"></chi-expansion-panel>
+  .chi-tabs-panel#html-bordered-states
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+      | <br><br>
+      | To render bordered panels, apply the class <code>-bordered</code>.
+    :code(lang="html")
+      <!-- JavaScript -->
+      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example9"]'));</script>
 
-        <!-- Disabled state -->
-        <chi-expansion-panel title="Disabled panel" bordered state="disabled"></chi-expansion-panel>
-    .chi-tabs-panel#html-bordered-states
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../getting-started/installation">Chi.js</a>.
-        | <br><br>
-        | To render bordered panels, apply the class <code>-bordered</code>.
-      :code(lang="html")
-        <!-- JavaScript -->
-        <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example9"]'));</script>
-
-        <!-- HTML -->
-        <!-- Done state -->
-        <div class="chi-epanel -bordered -done" data-chi-epanel-group="example9">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">1.</div>
-            <div class="chi-epanel__title">Done state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 1.
-                </div>
+      <!-- HTML -->
+      <!-- Done state -->
+      <div class="chi-epanel -bordered -done" data-chi-epanel-group="example9">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__number">1.</div>
+          <div class="chi-epanel__title">Done state</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 1.
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content goes here</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content goes here</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Active state -->
-        <div class="chi-epanel -bordered -active" data-chi-epanel-group="example9">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">2.</div>
-            <div class="chi-epanel__title">Active state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 2.
-                </div>
+      <!-- Active state -->
+      <div class="chi-epanel -bordered -active" data-chi-epanel-group="example9">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__number">2.</div>
+          <div class="chi-epanel__title">Active state</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 2.
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content goes here</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content goes here</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Pending state -->
-        <div class="chi-epanel -bordered -pending" data-chi-epanel-group="example9">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">3.</div>
-            <div class="chi-epanel__title">Pending state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 3.
-                </div>
+      <!-- Pending state -->
+      <div class="chi-epanel -bordered -pending" data-chi-epanel-group="example9">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__number">3.</div>
+          <div class="chi-epanel__title">Pending state</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 3.
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content goes here</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="done">Continue</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content goes here</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="done">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Disabled state -->
-        <div class="chi-epanel -bordered -disabled" data-chi-epanel-group="example9">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">4.</div>
-            <div class="chi-epanel__title">Done state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 4.
-                </div>
+      <!-- Disabled state -->
+      <div class="chi-epanel -bordered -disabled" data-chi-epanel-group="example9">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__number">4.</div>
+          <div class="chi-epanel__title">Done state</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Use this area to present<br />
+                a read-only summary of what the user<br />
+                entered or selected in step 4.
               </div>
             </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
-            </div>
           </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content goes here</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Finish</button>
-                </div>
+          <div class="chi-epanel__action -done--only">
+            <button class="chi-button -primary -flat" data-chi-epanel-action="active">Change</button>
+          </div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content goes here</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Finish</button>
               </div>
             </div>
           </div>
         </div>
-.-portal--show
-  .example.-mb--3
-    .-p--3.-p-lg--6.-bg--grey-10
-      .-mw--720.-mx--auto
-        .chi-epanel.-bordered.-active(data-chi-epanel-group='example-portal-9')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 1.
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-
-        .chi-epanel.-bordered(data-chi-epanel-group='example-portal-9')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 2.
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-
-        .chi-epanel.-bordered(data-chi-epanel-group='example-portal-9')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 3.
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-
-        .chi-epanel.-bordered.-disabled(data-chi-epanel-group='example-portal-9')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present<br />
-                  | a read-only summary of what the user<br />
-                  | entered or selected in step 4.
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='done') Finish
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-bordered-states
-        li.-active
-          a(href=`#webcomponent-portal-bordered-states`) Web Component
-        li
-          a(href=`#html-portal-bordered-states`) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-portal-bordered-states
-      .chi-tab__description
-        | To render bordered panels, apply the property <code>bordered</code>.
-      :code(lang="html")
-        <!-- Done state -->
-        <chi-expansion-panel title="Done panel" bordered state="done">
-          <div slot="done">
-            Use this area to present<br />
-            a read-only summary of what the user<br />
-            entered or selected in step 1.
-          </div>
-          <div slot="change">
-            <chi-button color="primary" variant="flat" size="sm">
-              Change
-            </chi-button>
-          </div>
-        </chi-expansion-panel>
-
-        <!-- Active state -->
-        <chi-expansion-panel title="Active panel" bordered state="active">
-          <div slot="active">
-            <div class="chi-epanel__subtitle">
-              Optional subtitle
-            </div>
-            <p class="chi-epanel__text">
-              Content goes here
-            </p>
-          </div>
-          <div slot="footer">
-            <chi-button color="primary">
-              Continue
-            </chi-button>
-          </div>
-        </chi-expansion-panel>
-
-        <!-- Pending state -->
-        <chi-expansion-panel title="Pending panel" bordered></chi-expansion-panel>
-
-        <!-- Disabled state -->
-        <chi-expansion-panel title="Disabled panel" bordered state="disabled"></chi-expansion-panel>
-    .chi-tabs-panel#html-portal-bordered-states
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../getting-started/installation">Chi.js</a>.
-        | <br><br>
-        | To render bordered panels, apply the class <code>-bordered</code>.
-      :code(lang="html")
-        <!-- JavaScript -->
-        <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example9"]'));</script>
-
-        <!-- HTML -->
-        <!-- Done state -->
-        <div class="chi-epanel -bordered -done" data-chi-epanel-group="example9">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">1.</div>
-            <div class="chi-epanel__title">Done state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 1.
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content goes here</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Active state -->
-        <div class="chi-epanel -bordered -active" data-chi-epanel-group="example9">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">2.</div>
-            <div class="chi-epanel__title">Active state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 2.
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content goes here</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pending state -->
-        <div class="chi-epanel -bordered -pending" data-chi-epanel-group="example9">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">3.</div>
-            <div class="chi-epanel__title">Pending state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 3.
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content goes here</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="done">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Disabled state -->
-        <div class="chi-epanel -bordered -disabled" data-chi-epanel-group="example9">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__number">4.</div>
-            <div class="chi-epanel__title">Done state</div>
-            <div class="chi-epanel__content">
-              <div class="chi-epanel__collapse">
-                <div class="-done--only">
-                  Use this area to present<br />
-                  a read-only summary of what the user<br />
-                  entered or selected in step 4.
-                </div>
-              </div>
-            </div>
-            <div class="chi-epanel__action -done--only">
-              <button class="chi-button -primary -flat -sm" data-chi-epanel-action="active">Change</button>
-            </div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content goes here</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Finish</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
 
 h3 Accordion mode
 p.-text
@@ -2349,244 +1242,125 @@ p.-text
 
 h3 Free mode
 p.-text
-  | In this mode there is no automated action triggered when an element activates
+  | In this mode there is no automated action triggered when an element activates,
   | so you will need to manage all custom behavior.
-.-portal--hide
-  .example.-mb--3#example5
-    .-p--3.-p-lg--6.-bg--grey-10
-      .-mw--720.-mx--auto
-        .chi-epanel.-no-step.-active(data-chi-epanel-group='example5')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='toggle') Panel 1
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
-        .chi-epanel.-no-step(data-chi-epanel-group='example5')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='toggle') Panel 2
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
-        .chi-epanel.-no-step(data-chi-epanel-group='example5')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='toggle') Panel 3
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-lg(data-chi-epanel-action='next').-primary Continue
-        .chi-epanel.-no-step(data-chi-epanel-group='example5')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='toggle') Panel 4
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-lg(data-chi-epanel-action='previous') Previous
-    .example-tabs.-pl--2
-      ul#chi-tabs-e5.chi-tabs
-        li.-disabled
-          a(href='#chi-tabs-e5-web') Web Component
-        li.-active
-          a(href='#chi-tabs-e5-html') HTML Blueprint
-    #chi-tabs-e5-web.chi-tabs-panel
-    #chi-tabs-e5-html.chi-tabs-panel.-active
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../getting-started/installation">Chi.js</a>.
-      :code(lang="html")
-        <div class="chi-epanel -no-step -active" data-chi-epanel-group="example5">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 1</div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content goes here</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
+.example.-mb--3#example5
+  .-p--3.-p-lg--6.-bg--grey-10
+    .-mw--720.-mx--auto
+      .chi-epanel.-no-step.-active(data-chi-epanel-group='example5')
+        .chi-epanel__header
+          .chi-epanel__title(data-chi-epanel-action='toggle') Panel 1
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content goes here
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-no-step(data-chi-epanel-group='example5')
+        .chi-epanel__header
+          .chi-epanel__title(data-chi-epanel-action='toggle') Panel 2
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content goes here
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-no-step(data-chi-epanel-group='example5')
+        .chi-epanel__header
+          .chi-epanel__title(data-chi-epanel-action='toggle') Panel 3
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content goes here
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-no-step(data-chi-epanel-group='example5')
+        .chi-epanel__header
+          .chi-epanel__title(data-chi-epanel-action='toggle') Panel 4
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content goes here
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+  .example-tabs.-pl--2
+    ul#chi-tabs-e5.chi-tabs
+      li.-disabled
+        a(href='#chi-tabs-e5-web') Web Component
+      li.-active
+        a(href='#chi-tabs-e5-html') HTML Blueprint
+  #chi-tabs-e5-web.chi-tabs-panel
+  #chi-tabs-e5-html.chi-tabs-panel.-active
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-epanel -no-step -active" data-chi-epanel-group="example5">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 1</div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content goes here</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="chi-epanel -no-step" data-chi-epanel-group="example5">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 2</div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content goes here</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -lg" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -lg -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example5">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 2</div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content goes here</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- JavaScript -->
-        <script>
-          chi.expansionPanel(
-            document.querySelectorAll('[data-chi-epanel-group="example5"]'),
-            {mode: 'free'}
-          );
-        </script>
-.-portal--show
-  .example.-mb--3#example-portal-5
-    .-p--3.-p-lg--6.-bg--grey-10
-      .-mw--720.-mx--auto
-        .chi-epanel.-no-step.-active(data-chi-epanel-group='example-portal-5')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='toggle') Panel 1
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action='active') Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-        .chi-epanel.-no-step(data-chi-epanel-group='example-portal-5')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='toggle') Panel 2
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action='active') Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-        .chi-epanel.-no-step(data-chi-epanel-group='example-portal-5')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='toggle') Panel 3
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action='active') Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-outline(data-chi-epanel-action='previous') Previous
-                  button.chi-button.-primary(data-chi-epanel-action='next') Continue
-        .chi-epanel.-no-step(data-chi-epanel-group='example-portal-5')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='toggle') Panel 4
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat.-sm(data-chi-epanel-action='active') Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary(data-chi-epanel-action='previous') Previous
-    .example-tabs.-pl--2
-      ul#chi-tabs-portal-e5.chi-tabs
-        li.-disabled
-          a(href='#chi-tabs-portal-e5-web') Web Component
-        li.-active
-          a(href='#chi-tabs-portal-e5-html') HTML Blueprint
-    #chi-tabs-portal-e5-web.chi-tabs-panel
-    #chi-tabs-portal-e5-html.chi-tabs-panel.-active
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../getting-started/installation">Chi.js</a>.
-      :code(lang="html")
-        <div class="chi-epanel -no-step -active" data-chi-epanel-group="example5">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 1</div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content goes here</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="chi-epanel -no-step" data-chi-epanel-group="example5">
-          <div class="chi-epanel__header">
-            <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 2</div>
-          </div>
-          <div class="chi-epanel__collapse">
-            <div class="-active--only">
-              <div class="chi-epanel__body">
-                <div class="chi-epanel__content">
-                  <div class="chi-epanel__subtitle">Optional subtitle</div>
-                  <p class="chi-epanel__text">Content goes here</p>
-                </div>
-                <div class="chi-epanel__footer -justify-content--end">
-                  <button class="chi-button -primary -outline" data-chi-epanel-action="previous">Previous</button>
-                  <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- JavaScript -->
-        <script>
-          chi.expansionPanel(
-            document.querySelectorAll('[data-chi-epanel-group="example5"]'),
-            {mode: 'free'}
-          );
-        </script>
+      <!-- JavaScript -->
+      <script>
+        chi.expansionPanel(
+          document.querySelectorAll('[data-chi-epanel-group="example5"]'),
+          {mode: 'free'}
+        );
+      </script>
 
 h3 Custom mode
 p.-text

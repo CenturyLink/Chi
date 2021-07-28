@@ -1,6 +1,6 @@
 h2 Examples
 p.-text
-  | A dropdown must be associated to an activator, commonly a button, which, at the time of being clicked, expands
+  | A dropdown must be associated with an activator, commonly a button, which, at the time of being clicked, expands
   | the dropdown. Activator and dropdown should be contained in a div with a <code>chi-dropdown</code> class, or otherwise, the
   | activator must reference the dropdown with a <code>data-target</code> attribute.
   | Use the <code>chi-dropdown__trigger</code> class on your activator button to make the chevron appear.
@@ -810,21 +810,21 @@ h3 Toggle Switch
         legend.chi-dropdown__menu-item Configure options
         .chi-dropdown__menu-item
           .chi-form__item
-            label.chi-switch(for="toggle-mail")
+            label.chi-switch.-xs(for="toggle-mail")
               input(type="checkbox", class="chi-switch__input", id="toggle-mail")
               span(class="chi-switch__content")
                 span.chi-switch__thumb
               span.chi-switch__label Email notifications
         .chi-dropdown__menu-item
           .chi-form__item
-            label.chi-switch(for="toggle-tlf")
+            label.chi-switch.-xs(for="toggle-tlf")
               input(type="checkbox", class="chi-switch__input", id="toggle-tlf")
               span(class="chi-switch__content")
                 span.chi-switch__thumb
               span.chi-switch__label Phone notifications
         .chi-dropdown__menu-item
           .chi-form__item
-            label.chi-switch(for="toggle-app")
+            label.chi-switch.-xs(for="toggle-app")
               input(type="checkbox", class="chi-switch__input", id="toggle-app")
               span(class="chi-switch__content")
                 span.chi-switch__thumb
@@ -843,7 +843,7 @@ h3 Toggle Switch
           <legend class="chi-dropdown__menu-item">Configure options</legend>
           <div class="chi-dropdown__menu-item">
             <div class="chi-form__item">
-              <label class="chi-switch" for="toggle-mail">
+              <label class="chi-switch -xs" for="toggle-mail">
                 <input type="checkbox" class="chi-switch__input" id="toggle-mail">
                 <span class="chi-switch__content">
                   <span class="chi-switch__thumb"></span>
@@ -854,7 +854,7 @@ h3 Toggle Switch
           </div>
           <div class="chi-dropdown__menu-item">
             <div class="chi-form__item">
-              <label class="chi-switch" for="toggle-tlf">
+              <label class="chi-switch -xs" for="toggle-tlf">
                 <input type="checkbox" class="chi-switch__input" id="toggle-tlf">
                 <span class="chi-switch__content">
                   <span class="chi-switch__thumb"></span>
@@ -865,7 +865,7 @@ h3 Toggle Switch
           </div>
           <div class="chi-dropdown__menu-item">
             <div class="chi-form__item">
-              <label class="chi-switch" for="toggle-app">
+              <label class="chi-switch -xs" for="toggle-app">
                 <input type="checkbox" class="chi-switch__input" id="toggle-mail">
                 <span class="chi-switch__content">
                   <span class="chi-switch__thumb"></span>

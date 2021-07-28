@@ -91,65 +91,19 @@ h3 Disabled
       });
       </script>
 
-.-portal--hide
-  h2 Sizes
-  p.-text
-    | File inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
-    |  <code>-lg</code>, <code>-xl</code>.
-    | The default size is <code>-md</code>.
-  .example.-mb--3
-    .-p--3
-      .-p--2
-        input.chi-file-input(type="file", class="-sm", id="file02", aria-label="Choose file")
-        label(for="file02") No file chosen
-      .-p--2
-        input.chi-file-input(type="file", class="-md", id="file03", aria-label="Choose file")
-        label(for="file03") No file chosen
-      .-p--2
-        input.chi-file-input(type="file", class="-lg", id="file04", aria-label="Choose file")
-        label(for="file04") No file chosen
-      .-p--2
-        input.chi-file-input(type="file", class="-xl", id="file05", aria-label="Choose file")
-        label(for="file05") No file chosen
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-sizes
-        li.-disabled
-          a(href=`#webcomponent-sizes`) Web Component
-        li.-active
-          a(href=`#html-sizes`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-sizes
-    .chi-tabs-panel.-active#html-sizes
-      :code(lang='html')
-        <!-- -sm -->
-        <input type="file" class="chi-file-input -sm" id="file02" aria-label="Choose file">
-        <label for="file02">No file chosen</label>
-        <!-- -md -->
-        <input type="file" class="chi-file-input -md" id="file03" aria-label="Choose file">
-        <label for="file03">No file chosen</label>
-        <!-- -lg -->
-        <input type="file" class="chi-file-input -lg" id="file04" aria-label="Choose file">
-        <label for="file04">No file chosen</label>
-        <!-- -xl -->
-        <input type="file" class="chi-file-input -xl" id="file05" aria-label="Choose file">
-        <label for="file05">No file chosen</label>
-
 .-portal--show
   h2 Sizes
   p.-text
-    | File inputs supports a full spectrum of sizes: <code>-sm</code>, <code>-md</code>,
-    |  <code>-lg</code>, <code>-xl</code>.
+    | File inputs support sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
+    |  <code>-lg</code>.
     | The default size is <code>-md</code>.
   .example.-mb--3
     .-p--3
-      .-p--2
-        input.chi-file-input(type="file", class="-sm", id="portal-file02", aria-label="Choose file")
-        label(for="portal-file02") No file chosen
-      .-p--2
-        input.chi-file-input(type="file", class="-md", id="portal-file03", aria-label="Choose file")
-        label(for="portal-file03") No file chosen
-      .-p--2
-        input.chi-file-input(type="file", class="-lg", id="portal-file04", aria-label="Choose file")
-        label(for="portal-file04") No file chosen
+      each size in ['xs', 'sm', 'md', 'lg']
+        .-p--2
+          p.-text--bold.-mt--0= '-' + size
+          input.chi-file-input(type="file", class=`-${size}`, id=`example-file-${size}`, aria-label="Choose file")
+          label(for=`example-file-${size}`) No file chosen
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-sizes
         li.-disabled
@@ -159,15 +113,56 @@ h3 Disabled
     .chi-tabs-panel#webcomponent-portal-sizes
     .chi-tabs-panel.-active#html-portal-sizes
       :code(lang='html')
+        <!-- -xs -->
+        <input type="file" class="chi-file-input -xs" id="example-file-xs" aria-label="Choose file">
+        <label for="example-file-xs">No file chosen</label>
         <!-- -sm -->
-        <input type="file" class="chi-file-input -sm" id="portal-file02" aria-label="Choose file">
-        <label for="portal-file02">No file chosen</label>
+        <input type="file" class="chi-file-input -sm" id="example-file-sm" aria-label="Choose file">
+        <label for="example-file-sm">No file chosen</label>
         <!-- -md -->
-        <input type="file" class="chi-file-input -md" id="portal-file03" aria-label="Choose file">
-        <label for="portal-file03">No file chosen</label>
+        <input type="file" class="chi-file-input -md" id="example-file-md" aria-label="Choose file">
+        <label for="example-file-md">No file chosen</label>
         <!-- -lg -->
-        <input type="file" class="chi-file-input -lg" id="portal-file04" aria-label="Choose file">
-        <label for="portal-file04">No file chosen</label>
+        <input type="file" class="chi-file-input -lg" id="example-file-lg" aria-label="Choose file">
+        <label for="example-file-lg">No file chosen</label>
+
+.-portal--hide
+  h2 Sizes
+  p.-text
+    | File inputs support sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
+    |  <code>-lg</code>, <code>-xl</code>.
+    | The default size is <code>-md</code>.
+  .example.-mb--3
+    .-p--3
+      each size in ['xs', 'sm', 'md', 'lg', 'xl']
+        .-p--2
+          p.-text--bold.-mt--0= '-' + size
+          input.chi-file-input(type="file", class=`-${size}`, id=`example-file-${size}`, aria-label="Choose file")
+          label(for=`example-file-${size}`) No file chosen
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-sizes
+        li.-disabled
+          a(href=`#webcomponent-sizes`) Web Component
+        li.-active
+          a(href=`#html-sizes`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-sizes
+    .chi-tabs-panel.-active#html-sizes
+      :code(lang='html')
+        <!-- -xs -->
+        <input type="file" class="chi-file-input -xs" id="example-file-xs" aria-label="Choose file">
+        <label for="example-file-xs">No file chosen</label>
+        <!-- -sm -->
+        <input type="file" class="chi-file-input -sm" id="example-file-sm" aria-label="Choose file">
+        <label for="example-file-sm">No file chosen</label>
+        <!-- -md -->
+        <input type="file" class="chi-file-input -md" id="example-file-md" aria-label="Choose file">
+        <label for="example-file-md">No file chosen</label>
+        <!-- -lg -->
+        <input type="file" class="chi-file-input -lg" id="example-file-lg" aria-label="Choose file">
+        <label for="example-file-lg">No file chosen</label>
+        <!-- -xl -->
+        <input type="file" class="chi-file-input -xl" id="example-file-xl" aria-label="Choose file">
+        <label for="example-file-xl">No file chosen</label>
 
 script
   include ../../../../../chi/components/input-file/input-file.js

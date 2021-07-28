@@ -1,4 +1,33 @@
 # CHANGELOG
+## 5.0.0 (July 28, 2021)
+### Components
+#### Added
+* Added: Theme support for Lumen Enterprise Portal.
+* Added: Data Table Vue component.
+* Added: Pagination Vue component.
+* Added: Drawer Vue component.
+* Added: Tooltip Vue component.
+* Added: Search Input Vue component.
+* Added: Toolbar Vue component.
+* Added: Text utility for text decorations including underline and line-through text.
+* Added: Text utility for semi-bold text weight.
+#### Changed
+* Changed: Theming components with the class `-portal` is no longer supported. To render portal themed components, please use the new Chi theme Lumen Enterprise Portal.
+* Changed: Form components (buttons, inputs, etc.) now render 8px taller. Form size values have been updated to the following:  xs:24px, sm:32px, md:40px (base), lg:48px, xl:56px.
+* Changed: Sidenav hover and active styles have been improved.
+* Changed: Mobile navigation styles have been improved to reflect Sidenav changes.
+* Changed: Stat component structure has changed to support min and max widths.
+#### Fixed
+* Fixed: Sidenav Open on Hover bug which caused the drawer to close abruptly.
+### Documentation
+#### Added
+* Added: Chi Vue instructions to installation page.
+* Added: Chi Vue interactive documentation examples.
+#### Changed
+* Changed: Portal templates page has been removed. All templates can now be accessed on individual component pages when the active theme is set to Lumen Enterprise Portal.
+#### Fixed
+* Fixed: Various spelling and grammatical errors in documentation text.
+
 ## 4.4.0 (July 15, 2021)
 ### Components
 #### Added

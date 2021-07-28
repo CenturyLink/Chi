@@ -86,7 +86,7 @@ import { DataTableRow } from '../../../constants/types';
   },
 })
 export default class DataTableView extends Vue {
-  fakeApiCall(page: number) {
+  mockApiCall(page: number) {
     return page === 1 ? exampleTablePage1 : page === 2 ? exampleTablePage2 : null;
   }
 
@@ -99,8 +99,8 @@ export default class DataTableView extends Vue {
   }
 
   pagination(e: DataTablePageChange) {
-    // A fake API call to swap the page respective data provided to the Data Table
-    const apiResponsePageData = this.fakeApiCall(e.page);
+    // A mock API call to swap the page respective data provided to the Data Table
+    const apiResponsePageData = this.mockApiCall(e.page);
 
     this.$data.config = {
       ...this.$data.config,

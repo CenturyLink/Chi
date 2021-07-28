@@ -199,7 +199,7 @@ p.-text
       .chi-label__wrapper
         legend.chi-label Select an option
         .chi-label__help
-          button.chi-button.-icon.-sm.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
+          button.chi-button.-icon.-xs.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
             i.chi-icon.icon-circle-info-outline
           section.chi-popover.chi-popover--top(id="example__help-popover" aria-modal="true" role="dialog")
             .chi-popover__content
@@ -229,7 +229,7 @@ p.-text
         <div class="chi-label__wrapper">
           <legend class="chi-label">Select an option</legend>
           <div class="chi-label__help">
-            <button class="chi-button -icon -sm -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
+            <button class="chi-button -icon -xs -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
               <i class="chi-icon icon-circle-info-outline"></i>
             </button>
             <section class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top">
@@ -525,35 +525,33 @@ h3 Icons
 .-portal--hide
   h2 Sizes
   p.-text
-    | Picker groups support the following sizes: <code>-sm</code>, <code>-md</code>,
+    | Picker groups support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
     |  <code>-lg</code>, <code>-xl</code>.
     | The default size is <code>-md</code>.
 
   .example.-mb--3
-    .-p--3
-      each size in ['sm', 'md', 'lg', 'xl']
-        .chi-grid.-no-gutter
-          .chi-col.-w--12.-w-xl--2.-d--flex.-align-items--center
-            strong= '-' + size
-          .chi-col.-w--12.-w-md--6.-w-xl--5.-my--2
-            fieldset
-              legend.chi-label Select an option
-              .chi-picker-group
-                .chi-picker-group__content
-                  each i in [1, 2, 3]
-                    input.chi-picker__input(type="radio", name=`unique-name-${size}`, id=`unique-id-${size}${i}`, checked=(i === 1))
-                    label(for=`unique-id-${size}${i}`, class=`-${size}`)
-                      = 'Option ' + `${i}`
-          .chi-col.-w--12.-w-md--6.-w-xl--5.-my--2
+    .-p--3.-d--flex.-flex--column
+      each size in ['xs', 'sm', 'md', 'lg', 'xl']
+        strong= '-' + size
+        .-py--2
+          fieldset
+            legend.chi-label Select an option
+            .chi-picker-group
+              .chi-picker-group__content
+                each i in [1, 2, 3]
+                  input.chi-picker__input(type="radio", name=`unique-name-${size}`, id=`unique-id-${size}${i}`, checked=(i === 1))
+                  label(for=`unique-id-${size}${i}`, class=`-${size}`)
+                    = 'Option ' + `${i}`
+          .-py--2
             fieldset
               legend.chi-label Select an option
               .chi-picker-group
                 .chi-picker-group__content
                   each i in [4, 5, 6]
-                    input.chi-picker__input(type="radio", name=`unique-name-${size}-icon`, id=`unique-id-${size}${i}`, checked=(i === 4))
-                    label(for=`unique-id-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
+                    input.chi-picker__input(type="radio", name=`unique-name-${size}-icon`, id=`unique-id-icon-${size}${i}`, checked=(i === 4))
+                    label(for=`unique-id-icon-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
                       span.-sr--only= 'Option ' + `${i}`
-                      if size === 'sm'
+                      if size === 'xs'
                         i.chi-icon.icon-atom.-xs
                       else
                         i.chi-icon.icon-atom.-sm
@@ -566,6 +564,21 @@ h3 Icons
     .chi-tabs-panel#webcomponent-sizes
     .chi-tabs-panel.-active#html-sizes
       :code(lang='html')
+        <!-- xs -->
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-xs" id="unique-id-xs1" checked>
+              <label class="-xs" for="unique-id-xs1">Option 1</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-xs" id="unique-id-xs2">
+              <label class="-xs" for="unique-id-xs2">Option 2</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-xs" id="unique-id-xs3">
+              <label class="-xs" for="unique-id-xs3">Option 3</label>
+            </div>
+          </div>
+        </fieldset>
+
         <!-- sm -->
         <fieldset>
           <legend class="chi-label">Select an option</legend>
@@ -725,35 +738,33 @@ h3 Icons
 .-portal--show
   h2 Sizes
   p.-text
-    | Picker groups support the following sizes: <code>-sm</code>, <code>-md</code>,
+    | Picker groups support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
     |  <code>-lg</code>.
     | The default size is <code>-md</code>.
 
   .example.-mb--3
-    .-p--3
-      each size in ['sm', 'md', 'lg']
-        .chi-grid.-no-gutter
-          .chi-col.-w--12.-w-xl--2.-d--flex.-align-items--center
-            strong= '-' + size
-          .chi-col.-w--12.-w-md--6.-w-xl--5.-my--2
-            fieldset
-              legend.chi-label Select an option
-              .chi-picker-group
-                .chi-picker-group__content
-                  each i in [1, 2, 3]
-                    input.chi-picker__input(type="radio", name=`unique-name-portal-${size}`, id=`unique-id-portal-${size}${i}`, checked=(i === 1))
-                    label(for=`unique-id-portal-${size}${i}`, class=`-${size}`)
-                      = 'Option ' + `${i}`
-          .chi-col.-w--12.-w-md--6.-w-xl--5.-my--2
+    .-p--3.-d--flex.-flex--column
+      each size in ['xs', 'sm', 'md', 'lg']
+        strong= '-' + size
+        .-py--2
+          fieldset
+            legend.chi-label Select an option
+            .chi-picker-group
+              .chi-picker-group__content
+                each i in [1, 2, 3]
+                  input.chi-picker__input(type="radio", name=`unique-name-portal-${size}`, id=`unique-id-portal-${size}${i}`, checked=(i === 1))
+                  label(for=`unique-id-portal-${size}${i}`, class=`-${size}`)
+                    = 'Option ' + `${i}`
+          .-py--2
             fieldset
               legend.chi-label Select an option
               .chi-picker-group
                 .chi-picker-group__content
                   each i in [4, 5, 6]
-                    input.chi-picker__input(type="radio", name=`unique-name-portal-${size}-icon`, id=`unique-id-portal-${size}${i}`, checked=(i === 4))
-                    label(for=`unique-id-portal-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
+                    input.chi-picker__input(type="radio", name=`unique-name-portal-${size}-icon`, id=`unique-id-portal-icon-${size}${i}`, checked=(i === 4))
+                    label(for=`unique-id-portal-icon-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
                       span.-sr--only= 'Option ' + `${i}`
-                      if size === 'sm'
+                      if size === 'xs'
                         i.chi-icon.icon-atom.-xs
                       else
                         i.chi-icon.icon-atom.-sm
@@ -766,6 +777,21 @@ h3 Icons
     .chi-tabs-panel#webcomponent-portal-sizes
     .chi-tabs-panel.-active#html-portal-sizes
       :code(lang='html')
+        <!-- xs -->
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-xs" id="unique-id-xs1" checked>
+              <label class="-xs" for="unique-id-xs1">Option 1</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-xs" id="unique-id-xs2">
+              <label class="-xs" for="unique-id-xs2">Option 2</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-xs" id="unique-id-xs3">
+              <label class="-xs" for="unique-id-xs3">Option 3</label>
+            </div>
+          </div>
+        </fieldset>
+
         <!-- sm -->
         <fieldset>
           <legend class="chi-label">Select an option</legend>
@@ -882,6 +908,7 @@ h3 Icons
           </div>
         </fieldset>
         <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
+
 
 script.
   document.addEventListener(

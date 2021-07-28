@@ -163,7 +163,7 @@ p.-text
 
 h3 Reference element
 p.-text
-  | A reference element can be setup for advanced positioning.
+  | A reference element can be set up for advanced positioning.
   | The popover will be positioned relative to this element.
 .example.-mb--3
   .-p--3
@@ -183,7 +183,7 @@ p.-text
     :code(lang="html")
       <chi-button id="example-3-button">Click me!</chi-button>
 
-      <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
+      <!-- put the following code anywhere in the DOM, e.g. at the end of the DOM -->
       <chi-popover id="example-3-popover" position="top" title="Popover title" variant="text" arrow reference="#example-3-button" position="top" active></chi-popover>
 
       <script>
@@ -202,7 +202,7 @@ p.-text
     :code(lang="html")
       <!-- Method 1 - Data Target -->
       <button class="chi-button" id="popover-1b" data-target="#popover-in-html">Popover</button>
-      <!-- Put the following code anywere in the DOM, e.g. at the end of the DOM -->
+      <!-- Put the following code anywhere in the DOM, e.g. at the end of the DOM -->
       <section class="chi-popover" id="popover-in-html" aria-modal="true" role="dialog" aria-label="Popover title">
         <header class="chi-popover__header">
           <h2 class="chi-popover__title">Popover title</h2>
@@ -242,9 +242,9 @@ p.-text
         <chi-popover title="Popover title" modal closable active>Popover content</chi-popover>
     .chi-tabs-panel#html-modal
       :code(lang="html")
-        <!-- Put the following code anywere in the DOM, e.g. at the end of the DOM -->
+        <!-- Put the following code anywhere in the DOM, e.g. at the end of the DOM -->
         <section class="chi-popover -modal -active" aria-modal="true" role="dialog" aria-label="Popover title">
-          <button class="chi-button -sm -icon -close" aria-label="Close">
+          <button class="chi-button -xs -icon -close" aria-label="Close">
             <div class="chi-button__content">
               <i class="chi-icon icon-x"></i>
             </div>
@@ -275,7 +275,7 @@ p.-text
       :code(lang="html")
         <chi-button id="example-draggable-button">Click me!</chi-button>
 
-        <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
+        <!-- put the following code anywhere in the DOM, e.g. at the end of the DOM -->
         <chi-popover id="example-draggable-popover" title="Draggable Popover" reference="#example-draggable-button" drag portal closable>Popover content</chi-popover>
 
         <script>
@@ -307,7 +307,7 @@ p.-text
       :code(lang="html")
         <chi-button id="example-modal-draggable-button">Click me!</chi-button>
 
-        <!-- put the following code anywere in the DOM, e.g. at the end of the DOM -->
+        <!-- put the following code anywhere in the DOM, e.g. at the end of the DOM -->
         <chi-popover id="example-modal-draggable-popover" title="Draggable Popover" reference="#example-modal-draggable-button" drag modal closable>Popover content</chi-popover>
 
         <script>
@@ -434,7 +434,7 @@ h3 Close button
     :code(lang="html")
       <button class="chi-button" id="button-example-popover-closable-html" data-target="#popover-example-popover-closable-html">Popover</button>
       <section class="chi-popover -closable" id="popover-example-popover-closable-html" aria-modal="true" role="dialog" aria-label="Popover title">
-        <button class="chi-button -sm -icon -close" id="close-popover-button" aria-label="Close">
+        <button class="chi-button -xs -icon -close" id="close-popover-button" aria-label="Close">
           <div class="chi-button__content">
             <i class="chi-icon icon-x"></i>
           </div>

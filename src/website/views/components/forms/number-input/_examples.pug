@@ -175,7 +175,7 @@ p.-text
       .chi-label__wrapper
         chi-label(for='unique-id-he1') Label
         .chi-label__help
-          chi-button(id='example__help-button' type='icon' size='sm' variant='flat' alternative-text="Help")
+          chi-button(id='example__help-button' type='icon' size='xs' variant='flat' alternative-text="Help")
             chi-icon(icon='circle-info-outline')
           chi-popover(id='example__help-popover' position='top' variant='text' arrow reference='#example__help-button')
             | Helpful information goes here.
@@ -191,7 +191,7 @@ p.-text
       <div class="chi-label__wrapper">
         <chi-label for="unique-id-he1">Label</chi-label>
         <div class="chi-label__help">
-          <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help">
+          <chi-button id="example__help-button" type="icon" size="xs" variant="flat" alternative-text="Help">
             <chi-icon icon="circle-info-outline"></chi-icon>
           </chi-button>
           <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button">
@@ -221,7 +221,7 @@ p.-text
         <div class="chi-label__wrapper">
           <label class="chi-label" for="unique-id-he1">Label</label>
           <div class="chi-label__help">
-            <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help">
+            <div class="chi-button -icon -flat -xs" id="example__help-button" data-target="#example__help-popover" aria-label="Help">
               <div class="chi-button__content">
                 <i class="chi-icon icon-circle-info-outline"></i>
               </div>
@@ -328,14 +328,14 @@ p.-text
 .-portal--hide
   h3 Sizes
   p.-text
-    | Number inputs support the following sizes: <code>sm</code>, <code>md</code>,
+    | Number inputs support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
     |  <code>lg</code>, <code>xl</code>. The default size is <code>md</code>.
   .example.-mb--3
     .-p--3
-      .chi-grid.-no-gutter
-        each size in ['sm', 'md', 'lg', 'xl']
-          .chi-col.-w--12.-w-sm--6.-w-lg--3.-my--2.-align--bottom
-            .chi-form__item.-inline.-mr--3
+      .-d--flex.-flex--column
+        each size in ['xs', 'sm', 'md', 'lg', 'xl']
+          .-py--2
+            .chi-form__item
               chi-label(for=`example-3-${size}`) Label
               chi-number-input(size=`${size}`, id=`example-3-${size}`)
     .example-tabs.-pl--2
@@ -346,6 +346,10 @@ p.-text
           a(href=`#html-sizes`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-sizes
       :code(lang="html")
+        <!-- xs -->
+        <chi-label for="example-3-xs">Label</chi-label>
+        <chi-number-input size="xs" id="example-3-xs"></chi-number-input>
+
         <!-- sm -->
         <chi-label for="example-3-sm">Label</chi-label>
         <chi-number-input size="sm" id="example-3-sm"></chi-number-input>
@@ -368,6 +372,17 @@ p.-text
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
+        <!-- xs -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="input-example-xs">Label</label>
+          <div class="chi-number-input -xs">
+            <input id="input-example-xs" type="number" class="chi-input" value="0" aria-label="Input Label">
+            <button aria-label="Decrease"></button>
+            <button aria-label="Increase"></button>
+          </div>
+        </div>
+        <script>chi.numberInput(document.getElementById('input-example-xs'));</script>
+
         <!-- sm -->
         <div class="chi-form__item">
           <label class="chi-label" for="input-example-sm">Label</label>
@@ -415,14 +430,14 @@ p.-text
 .-portal--show
   h3 Sizes
   p.-text
-    | Number inputs support the following sizes: <code>sm</code>, <code>md</code>,
+    | Number inputs support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
     |  <code>lg</code>. The default size is <code>md</code>.
   .example.-mb--3
     .-p--3
-      .chi-grid.-no-gutter
-        each size in ['sm', 'md', 'lg']
-          .chi-col.-w--12.-w-sm--6.-w-lg--3.-my--2.-align--bottom
-            .chi-form__item.-inline.-mr--3
+      .-d--flex.-flex--column
+        each size in ['xs', 'sm', 'md', 'lg']
+          .-py--2
+            .chi-form__item
               chi-label(for=`example-3-${size}`) Label
               chi-number-input(size=`${size}`, id=`example-3-${size}`)
     .example-tabs.-pl--2
@@ -433,6 +448,10 @@ p.-text
           a(href=`#html-portal-sizes`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-sizes
       :code(lang="html")
+        <!-- xs -->
+        <chi-label for="example-3-xs">Label</chi-label>
+        <chi-number-input size="xs" id="example-3-xs"></chi-number-input>
+
         <!-- sm -->
         <chi-label for="example-3-sm">Label</chi-label>
         <chi-number-input size="sm" id="example-3-sm"></chi-number-input>
@@ -451,6 +470,17 @@ p.-text
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
+        <!-- xs -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="input-example-xs">Label</label>
+          <div class="chi-number-input -xs">
+            <input id="input-example-xs" type="number" class="chi-input" value="0" aria-label="Input Label">
+            <button aria-label="Decrease"></button>
+            <button aria-label="Increase"></button>
+          </div>
+        </div>
+        <script>chi.numberInput(document.getElementById('input-example-xs'));</script>
+
         <!-- sm -->
         <div class="chi-form__item">
           <label class="chi-label" for="input-example-sm">Label</label>
@@ -680,14 +710,14 @@ p.-text
 .-portal--hide
   h3 Sizes
   p.-text
-    | Expanded number inputs support the following sizes: <code>sm</code>, <code>md</code>,
+    | Expanded number inputs support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
     |  <code>lg</code>, <code>xl</code>. The default size is <code>md</code>.
   .example.-mb--3
     .-p--3
-      .chi-grid.-no-gutter
-        each size in ['sm', 'md', 'lg', 'xl']
-          .chi-col.-w--12.-w-sm--6.-w-lg--4.-w-xl--3.-my--2.-align--bottom
-            .chi-form__item.-inline.-mr--3
+      .-d--flex.-flex--column
+        each size in ['xs', 'sm', 'md', 'lg', 'xl']
+          .-py--2
+            .chi-form__item
               chi-label(for=`example-5-${size}`) Label
               chi-number-input(expanded=true, size=`${size}`, class='-mr--2', id=`example-5-${size}`)
     .example-tabs.-pl--2
@@ -698,6 +728,10 @@ p.-text
           a(href=`#html-expanded-sizes`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-expanded-sizes
       :code(lang="html")
+        <!-- xs -->
+        <chi-label for="example-6-xs">Label</chi-label>
+        <chi-number-input expanded size="xs" id="example-6-xs"></chi-number-input>
+
         <!-- sm -->
         <chi-label for="example-6-sm">Label</chi-label>
         <chi-number-input expanded size="sm" id="example-6-sm"></chi-number-input>
@@ -720,6 +754,22 @@ p.-text
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
+        <!-- xs -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="input-example-expanded-xs">Label</label>
+          <div class="chi-number-input -expanded -xs">
+            <input id="input-example-expanded-xs" class="chi-input" type="number" value="0" aria-label="Input Label">
+            <button class="chi-button -icon" aria-label="Decrease">
+              <div class="chi-button__content"><i class="chi-icon icon-minus"></i></div>
+            </button>
+            <button class="chi-button -icon" aria-label="Increase">
+              <div class="chi-button__content"><i class="chi-icon icon-plus"></i>
+            </div>
+            </button>
+          </div>
+        </div>
+        <script>chi.numberInput(document.getElementById('input-example-expanded-xs'));</script>
+
         <!-- sm -->
         <div class="chi-form__item">
           <label class="chi-label" for="input-example-expanded-sm">Label</label>
@@ -784,14 +834,14 @@ p.-text
 .-portal--show
   h3 Sizes
   p.-text
-    | Expanded number inputs support the following sizes: <code>sm</code>, <code>md</code>,
+    | Expanded number inputs support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
     |  <code>lg</code>. The default size is <code>md</code>.
   .example.-mb--3
     .-p--3
-      .chi-grid.-no-gutter
-        each size in ['sm', 'md', 'lg']
-          .chi-col.-w--12.-w-sm--6.-w-lg--4.-w-xl--3.-my--2.-align--bottom
-            .chi-form__item.-inline.-mr--3
+      .-d--flex.-flex--column
+        each size in ['xs', 'sm', 'md', 'lg']
+          .-py--2
+            .chi-form__item
               chi-label(for=`example-5-${size}`) Label
               chi-number-input(expanded=true, size=`${size}`, class='-mr--2', id=`example-5-${size}`)
     .example-tabs.-pl--2
@@ -802,6 +852,10 @@ p.-text
           a(href=`#html-portal-expanded-sizes`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-expanded-sizes
       :code(lang="html")
+        <!-- xs -->
+        <chi-label for="example-6-xs">Label</chi-label>
+        <chi-number-input expanded size="xs" id="example-6-xs"></chi-number-input>
+
         <!-- sm -->
         <chi-label for="example-6-sm">Label</chi-label>
         <chi-number-input expanded size="sm" id="example-6-sm"></chi-number-input>
@@ -820,6 +874,22 @@ p.-text
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
+        <!-- xs -->
+        <div class="chi-form__item">
+          <label class="chi-label" for="input-example-expanded-xs">Label</label>
+          <div class="chi-number-input -expanded -xs">
+            <input id="input-example-expanded-xs" class="chi-input" type="number" value="0" aria-label="Input Label">
+            <button class="chi-button -icon" aria-label="Decrease">
+              <div class="chi-button__content"><i class="chi-icon icon-minus"></i></div>
+            </button>
+            <button class="chi-button -icon" aria-label="Increase">
+              <div class="chi-button__content"><i class="chi-icon icon-plus"></i>
+            </div>
+            </button>
+          </div>
+        </div>
+        <script>chi.numberInput(document.getElementById('input-example-expanded-xs'));</script>
+
         <!-- sm -->
         <div class="chi-form__item">
           <label class="chi-label" for="input-example-expanded-sm">Label</label>

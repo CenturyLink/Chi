@@ -66,7 +66,7 @@ section.chi-table.chi-table__methods.-bordered.-my--3
 
 h3 Preventing memory leaks
 p.-text
-  | Accordion component has a dispose function to free the all resources attached to the element, such as event listeners
+  | Accordion component has a dispose function to free all the resources attached to the element, such as event listeners
   | and object data. You should call this method when you want to remove the component.
 :code(lang="javascript")
   var elem = document.getElementById('accordion-1');
@@ -76,7 +76,7 @@ p.-text
 
 p.-text
   | It is safe to call the <code>accordion</code> method more than once, as it will return any previously created accordion component
-  | associated to the element.
+  | associated with the element.
 :code(lang="javascript")
   var elem = document.getElementById('accordion-2');
   var accordion = chi.accordion(elem);

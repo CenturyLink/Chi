@@ -9,34 +9,42 @@ chi-button:not(.hydrated) {
   animation: shine $animation-duration infinite linear;
   display: inline-flex;
   font-size: 0;
-  height: 2rem;
+  height: $skeleton-md-size;
   width: 6rem;
 
+  &[size='xs'] {
+    height: $skeleton-xs-size;
+  }
+
   &[size='sm'] {
-    height: 1.5rem;
+    height: $skeleton-sm-size;
   }
 
   &[size='lg'] {
-    height: 2.5rem;
+    height: $skeleton-lg-size;
   }
 
   &[size='xl'] {
-    height: 3rem;
+    height: $skeleton-xl-size;
   }
 
   &[type='icon'] {
-    width: 2rem;
+    width: $skeleton-md-size;
+
+    &[size='xs'] {
+      width: $skeleton-xs-size;
+    }
 
     &[size='sm'] {
-      width: 1.5rem;
+      width: $skeleton-sm-size;
     }
 
     &[size='lg'] {
-      width: 2.5rem;
+      width: $skeleton-lg-size;
     }
 
     &[size='xl'] {
-      width: 3rem;
+      width: $skeleton-xl-size;
     }
   }
 

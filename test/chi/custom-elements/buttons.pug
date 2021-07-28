@@ -4,7 +4,7 @@ title: Buttons
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-each size in ['default', 'sm', 'md', 'lg', 'xl']
+each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   each type in ['solid', 'outline', 'flat', 'fluid', 'uppercase']
     div(class={
       [`test-${type}`]: size === 'default',
@@ -106,7 +106,7 @@ each size in ['default', 'sm', 'md', 'lg', 'xl']
                   chi-button(type='float', class=`-mx--2 -m--1`, color=style, disabled= state === 'disabled', extra-class=`-${state}`, alternative-text="Button action")
                     chi-icon(icon='atom')
 
-each size in ['default', 'sm', 'md', 'lg', 'xl']
+each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   div(class={
     [`test-${type}`]: size === 'default',
     [`test-${type}-${size}`]: size !== 'default'
