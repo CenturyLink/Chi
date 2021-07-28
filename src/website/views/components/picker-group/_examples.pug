@@ -539,8 +539,8 @@ h3 Icons
             .chi-picker-group
               .chi-picker-group__content
                 each i in [1, 2, 3]
-                  input.chi-picker__input(type="radio", name=`unique-name-portal-${size}`, id=`unique-id-portal-${size}${i}`, checked=(i === 1))
-                  label(for=`unique-id-portal-${size}${i}`, class=`-${size}`)
+                  input.chi-picker__input(type="radio", name=`unique-name-${size}`, id=`unique-id-${size}${i}`, checked=(i === 1))
+                  label(for=`unique-id-${size}${i}`, class=`-${size}`)
                     = 'Option ' + `${i}`
           .-py--2
             fieldset
@@ -548,10 +548,10 @@ h3 Icons
               .chi-picker-group
                 .chi-picker-group__content
                   each i in [4, 5, 6]
-                    input.chi-picker__input(type="radio", name=`unique-name-portal-${size}-icon`, id=`unique-id-portal-icon-${size}${i}`, checked=(i === 4))
-                    label(for=`unique-id-portal-icon-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
+                    input.chi-picker__input(type="radio", name=`unique-name-${size}-icon`, id=`unique-id-icon-${size}${i}`, checked=(i === 4))
+                    label(for=`unique-id-icon-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
                       span.-sr--only= 'Option ' + `${i}`
-                      if size === 'sm'
+                      if size === 'xs'
                         i.chi-icon.icon-atom.-xs
                       else
                         i.chi-icon.icon-atom.-sm
@@ -764,7 +764,7 @@ h3 Icons
                     input.chi-picker__input(type="radio", name=`unique-name-portal-${size}-icon`, id=`unique-id-portal-icon-${size}${i}`, checked=(i === 4))
                     label(for=`unique-id-portal-icon-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
                       span.-sr--only= 'Option ' + `${i}`
-                      if size === 'sm'
+                      if size === 'xs'
                         i.chi-icon.icon-atom.-xs
                       else
                         i.chi-icon.icon-atom.-sm
