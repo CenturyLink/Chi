@@ -233,8 +233,8 @@ onLoad(() => {
     faviconSvg: document.getElementById('favicon-svg'),
     faviconIco: document.getElementById('favicon-ico')
   };
-  var rootUrl = window.location.hostname === 'assets.ctl.io' ?
-    'https://assets.ctl.io/chi/' + window.chiCurrentVersion + '/' :
+  var rootUrl = ['assets.ctl.io', 'lib.lumen.com'].includes(window.location.hostname) ?
+    'https://' + window.location.hostname + '/chi/' + window.chiCurrentVersion + '/' :
     window.location.hostname === 'assets-dev.ctl.io' ?
       'https://assets-dev.ctl.io/chi/staging/' : '/';
 
