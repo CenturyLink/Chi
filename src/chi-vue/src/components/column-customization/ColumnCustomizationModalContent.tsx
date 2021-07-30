@@ -57,7 +57,7 @@ export default class ColumnCustomizationContent extends Vue {
       return (
         <button
           onclick={() => action()}
-          class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT}`}
+          class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.NO_HOVER}`}
           aria-label={ariaLabel}>
           <div class={BUTTON_CLASSES.CONTENT}>
             <i class={`${ICON_CLASS} icon-${icon}`} />

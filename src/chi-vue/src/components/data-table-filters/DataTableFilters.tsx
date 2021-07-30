@@ -106,7 +106,6 @@ export default class DataTableFilters extends Vue {
           ${SELECT_CLASSES.SELECT}
           ${this.portal && PORTAL_CLASS}
           ${mobile && '-mb--1'}
-          -lg
           `}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select', mobile || false)}>
@@ -130,7 +129,7 @@ export default class DataTableFilters extends Vue {
           aria-label={`Filter by ${filter.label || filter.name}`}
           id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
           value={!mobile ? this.filterElementValue[filter.id] : this.filterElementValueLive[filter.id]}
-          class={`${INPUT_CLASSES.INPUT} ${mobile && '-mb--1'} -lg`}
+          class={`${INPUT_CLASSES.INPUT} ${mobile && '-mb--1'}`}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'input', mobile || false)}
           placeholder={filter.placeholder || null}
@@ -153,7 +152,7 @@ export default class DataTableFilters extends Vue {
           value={!mobile ? this.filterElementValue[filter.id] : this.filterElementValueLive[filter.id]}
           id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
           data-filter={filter.name}
-          class={`${INPUT_CLASSES.INPUT} ${mobile && '-mb--1'} -lg`}
+          class={`${INPUT_CLASSES.INPUT} ${mobile && '-mb--1'}`}
           placeholder={filter.placeholder || null}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'textarea', mobile || false)}
         />
@@ -363,12 +362,12 @@ export default class DataTableFilters extends Vue {
                 disabled={
                   this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
                 }
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -uppercase`}>
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${UTILITY_CLASSES.PADDING.X[4]} -uppercase`}>
                 Apply
               </button>
               <button
                 onClick={() => this.toggleDrawer()}
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.LG} ${BUTTON_CLASSES.OUTLINE} ${UTILITY_CLASSES.PADDING.X[4]} ${UTILITY_CLASSES.MARGIN.LEFT[2]} -bg--white -uppercase`}>
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${UTILITY_CLASSES.PADDING.X[4]} ${UTILITY_CLASSES.MARGIN.LEFT[2]} -bg--white -uppercase`}>
                 Cancel
               </button>
             </div>

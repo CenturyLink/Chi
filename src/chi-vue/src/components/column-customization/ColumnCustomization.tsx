@@ -162,7 +162,7 @@ export default class ColumnCustomization extends Vue {
       <button
         ref="modalButton"
         data-target={`#${this._modalId}`}
-        class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT}`}>
+        class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.NO_HOVER}`}>
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-table-column-settings`} />
         </div>

@@ -38,6 +38,7 @@ export const BUTTON_CLASSES = {
   ICON_BUTTON: '-icon',
   CONTENT: 'chi-button__content',
   FLAT: '-flat',
+  NO_HOVER: '-no-hover',
   PRIMARY: '-primary',
   OUTLINE: '-outline',
   SIZES: {

@@ -48,10 +48,6 @@ $sizes: (
 select.chi-input { // sass-lint:disable-line force-element-nesting
   appearance: none;
   background-color: $select-background-color;
-  background-image: $select-background-image;
-  background-position: map-get(map-get($sizes, md), background-position);
-  background-repeat: no-repeat;
-  background-size: $select-md-arrow-background-size;
   border: 0.0625rem solid $select-border-color;
   border-radius: $border-radius-base;
   box-shadow: $select-box-shadow;
@@ -68,7 +64,7 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
     background-image: $select-background-image;
     background-position: map-get(map-get($sizes, md), background-position);
     background-repeat: no-repeat;
-    background-size: 0.75rem;
+    background-size: $select-md-arrow-background-size;
     padding: map-get(map-get($sizes, md), padding);
   }
 

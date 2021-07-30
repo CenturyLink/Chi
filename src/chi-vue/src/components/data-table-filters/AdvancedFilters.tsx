@@ -250,7 +250,7 @@ export default class AdvancedFilters extends Vue {
       <button
         id={this._advancedFilterButtonId}
         onclick={() => this._toggleAdvancedFiltersPopover()}
-        class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT}`}>
+        class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.NO_HOVER}`}>
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-filter`} />
         </div>
@@ -266,13 +266,13 @@ export default class AdvancedFilters extends Vue {
             position="bottom"
             reference={`#${this._advancedFilterButtonId}`}
             title="Filters"
-            portal
+            modal
             drag
             closable>
             <div class={`${ACCORDION_CLASSES.ACCORDION} -sm`} ref="advancedFiltersAccordion">
               {advancedFilters}
             </div>
-            <div class={`advanced-filters__actions -mt--2`}>
+            <div class={`advanced-filters__actions ${UTILITY_CLASSES.DISPLAY.FLEX} -mt--2`}>
               <button
                 onclick={() => this._applyAdvancedFiltersChange()}
                 class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY}`}
@@ -285,12 +285,14 @@ export default class AdvancedFilters extends Vue {
               <button onclick={() => this._toggleAdvancedFiltersPopover()} class={`${BUTTON_CLASSES.BUTTON} -ml--2`}>
                 CANCEL
               </button>
+              <div class="chi-divider -vertical -ml--2"></div>
               <button
                 class={`
                     ${BUTTON_CLASSES.BUTTON} 
                     ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON}
                     ${BUTTON_CLASSES.PRIMARY} 
-                    ${BUTTON_CLASSES.FLAT} ${UTILITY_CLASSES.MARGIN.LEFT[1]} -bl--1`}
+                    ${BUTTON_CLASSES.FLAT}
+                    ${BUTTON_CLASSES.NO_HOVER}`}
                 aria-label="Reset advanced filters"
                 onclick={() => this._resetAdvancedFilters()}>
                 <div class={BUTTON_CLASSES.CONTENT}>
@@ -329,7 +331,6 @@ export default class AdvancedFilters extends Vue {
   }
 
   async _resetAdvancedFilters() {
-    console.log(this._planeAdvancedData);
     await this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...this._planeAdvancedData });
     await this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...this._planeAdvancedData });
     this._emitAdvancedFiltersChange();
