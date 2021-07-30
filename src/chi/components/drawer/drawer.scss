@@ -164,11 +164,28 @@ $animation-duration: 0.5s;
     // sass-lint:enable property-units
   }
 
+  .-close {
+    position: fixed;
+    right: 0.75rem;
+    top: $drawer-button-close-top;
+    z-index: 50;
+
+    .chi-icon {
+      color: $drawer-close-icon-color;
+    }
+  }
+
   &__header {
     background-color: $drawer-header-background-color;
     min-height: $drawer-header-min-height;
     padding: $drawer-header-padding;
     position: relative;
+
+    .-close {
+      .chi-icon {
+        color: $drawer-header-close-icon-color;
+      }
+    }
   }
 
   &__title {
@@ -181,17 +198,6 @@ $animation-duration: 0.5s;
   &__content {
     flex-grow: 1;
     overflow: auto;
-  }
-
-  .-close {
-    position: fixed;
-    right: 0.75rem;
-    top: $drawer-button-close-top;
-    z-index: 50;
-
-    .chi-icon {
-      color: $drawer-button-close-icon-color;
-    }
   }
 }
 
