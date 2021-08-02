@@ -6,7 +6,6 @@ import {
   FORM_CLASSES,
   INPUT_CLASSES,
   SELECT_CLASSES,
-  PORTAL_CLASS,
   UTILITY_CLASSES,
 } from '@/constants/classes';
 import { DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
@@ -250,7 +249,7 @@ export default class AdvancedFilters extends Vue {
       <button
         id={this._advancedFilterButtonId}
         onclick={() => this._toggleAdvancedFiltersPopover()}
-        class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.NO_HOVER}`}>
+        class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT}`}>
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-filter`} />
         </div>
@@ -289,10 +288,8 @@ export default class AdvancedFilters extends Vue {
               <button
                 class={`
                     ${BUTTON_CLASSES.BUTTON} 
-                    ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON}
-                    ${BUTTON_CLASSES.PRIMARY} 
-                    ${BUTTON_CLASSES.FLAT}
-                    ${BUTTON_CLASSES.NO_HOVER}`}
+                    ${BUTTON_CLASSES.ICON_BUTTON}
+                    ${BUTTON_CLASSES.FLAT}`}
                 aria-label="Reset advanced filters"
                 onclick={() => this._resetAdvancedFilters()}>
                 <div class={BUTTON_CLASSES.CONTENT}>

@@ -116,7 +116,6 @@ export default class Pagination extends Vue {
         ${icon ? BUTTON_CLASSES.ICON_BUTTON : ''}
         ${page === this.currentPage ? ACTIVE_CLASS : ''}
         ${this.size ? `-${this.size}` : ''}
-        ${this.$props.portal ? BUTTON_CLASSES.PRIMARY : ''}
         `}
         onClick={(ev: Event) => {
           ev.stopPropagation();

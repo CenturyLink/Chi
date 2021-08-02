@@ -334,7 +334,7 @@ export default class DataTableFilters extends Vue {
         </div>
         <div class={`${DATA_TABLE_CLASSES.FILTERS}-mobile`}>
           <button
-            class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT} ${DRAWER_CLASSES.TRIGGER}`}
+            class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT} ${DRAWER_CLASSES.TRIGGER}`}
             onclick={() => this.toggleDrawer()}
             data-target={this._drawerID}
             aria-label="Open Drawer">
@@ -362,12 +362,10 @@ export default class DataTableFilters extends Vue {
                 disabled={
                   this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
                 }
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${UTILITY_CLASSES.PADDING.X[4]} -uppercase`}>
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY}`}>
                 Apply
               </button>
-              <button
-                onClick={() => this.toggleDrawer()}
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${UTILITY_CLASSES.PADDING.X[4]} ${UTILITY_CLASSES.MARGIN.LEFT[2]} -bg--white -uppercase`}>
+              <button onClick={() => this.toggleDrawer()} class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.SIZES.XS}`}>
                 Cancel
               </button>
             </div>

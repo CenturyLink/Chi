@@ -42,6 +42,7 @@ export const BUTTON_CLASSES = {
   PRIMARY: '-primary',
   OUTLINE: '-outline',
   SIZES: {
+    XS: '-xs',
     SM: '-sm',
     MD: '-md',
     LG: '-lg',

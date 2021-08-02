@@ -59,19 +59,19 @@ export default class ColumnCustomization extends Vue {
               <button
                 ref="saveButton"
                 onclick={this._submitColumnsChange}
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} -lg -uppercase -px--4`}
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY}`}
                 disabled>
                 Save
               </button>
               <button
                 ref="resetButton"
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} -bg--white -uppercase -px--4`}
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE}`}
                 onclick={this._reset}
                 disabled>
                 Reset
               </button>
               <button
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} -bg--white -uppercase -px--4`}
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE}`}
                 data-dismiss="modal">
                 Cancel
               </button>
@@ -162,7 +162,7 @@ export default class ColumnCustomization extends Vue {
       <button
         ref="modalButton"
         data-target={`#${this._modalId}`}
-        class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.NO_HOVER}`}>
+        class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT}`}>
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-table-column-settings`} />
         </div>

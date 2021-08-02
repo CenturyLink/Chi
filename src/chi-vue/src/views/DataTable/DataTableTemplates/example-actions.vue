@@ -1,6 +1,6 @@
 <template>
   <div class="chi-dropdown">
-    <button ref="dropdownTrigger" class="chi-button -icon -flat -bg--none -opacity-hover--80">
+    <button ref="dropdownTrigger" class="chi-button -icon -flat -primary">
       <div class="chi-button__content">
         <i class="chi-icon icon-more-vert"></i>
       </div>

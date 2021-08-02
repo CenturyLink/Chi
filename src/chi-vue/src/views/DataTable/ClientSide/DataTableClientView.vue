@@ -56,7 +56,7 @@
             </div>
             <div :class="`chi-toolbar__actions-mobile`">
               <button
-                class="chi-button -portal -icon -primary -flat chi-drawer__trigger"
+                class="chi-button -icon -flat chi-drawer__trigger"
                 data-target="#drawer-2"
                 aria-label="Column Customization Open"
               >
