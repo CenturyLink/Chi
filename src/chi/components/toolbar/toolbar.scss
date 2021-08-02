@@ -36,6 +36,14 @@
         }
       }
     }
+
+    .chi-toolbar__start {
+      .chi-toolbar__filters {
+        .chi-popover {
+          max-width: 21rem;
+        }
+      }
+    }
   }
 
   &__ribbon {

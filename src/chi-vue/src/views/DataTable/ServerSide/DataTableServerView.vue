@@ -10,6 +10,8 @@
       @chiSelectedRowsChange="e => selection(e)"
       @chiRowSelected="e => rowSelected(e)"
       @chiRowDeselected="e => rowDeselected(e)"
+      @chiSelectAll="e => selectAll(e)"
+      @chiDeselectAll="e => deselectAll(e)"
     >
       <template #icon="payload">
         <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`"></i>
@@ -118,6 +120,14 @@ export default class DataTableView extends Vue {
   sorting(e: DataTableSorting) {
     // Perform custom Server Side sorting based on the column and direction data you receive from data table event
     console.log(e);
+  }
+
+  selectAll(e: DataTableRow[]) {
+    console.log('Select All', e);
+  }
+
+  deselectAll(e: DataTableRow[]) {
+    console.log('Deselect All', e);
   }
 
   selection(selectedRows: DataTableRow[]) {

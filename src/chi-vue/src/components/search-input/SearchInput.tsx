@@ -82,7 +82,7 @@ export default class SearchInput extends Vue {
       <button
         class={`${BUTTON_CLASSES.BUTTON}
         ${BUTTON_CLASSES.ICON_BUTTON}
-        ${CLOSE_CLASS} -sm`}
+        ${CLOSE_CLASS} -xs`}
         onClick={() => this._cleanInput()}
         aria-label="Clear">
         <div class={BUTTON_CLASSES.CONTENT}>
