@@ -64,7 +64,7 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
     background-image: $select-background-image;
     background-position: map-get(map-get($sizes, md), background-position);
     background-repeat: no-repeat;
-    background-size: $select-md-arrow-background-size;
+    background-size: 0.75rem;
     padding: map-get(map-get($sizes, md), padding);
   }
 
