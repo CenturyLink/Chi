@@ -12,6 +12,7 @@ export const TRANSITIONING_CLASS = '-transitioning';
 export const SR_ONLY = '-sr--only';
 export const EXPANDED_CLASS = '-expanded';
 export const COLLAPSED_CLASS = '-collapsed';
+export const ONE_LINK_TX = 'OneLinkTx';
 //#endregion
 
 //#region Accordion
@@ -38,9 +39,11 @@ export const BUTTON_CLASSES = {
   ICON_BUTTON: '-icon',
   CONTENT: 'chi-button__content',
   FLAT: '-flat',
+  NO_HOVER: '-no-hover',
   PRIMARY: '-primary',
   OUTLINE: '-outline',
   SIZES: {
+    XS: '-xs',
     SM: '-sm',
     MD: '-md',
     LG: '-lg',

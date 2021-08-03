@@ -7,6 +7,7 @@ import {
   DATA_TABLE_CLASSES,
   EXPANDED_CLASS,
   ICON_CLASS,
+  ONE_LINK_TX,
   SR_ONLY,
   UTILITY_CLASSES,
 } from '@/constants/classes';
@@ -144,7 +145,7 @@ export default class DataTable extends Vue {
     });
 
     return (
-      <div class={DATA_TABLE_CLASSES.HEAD} role="row">
+      <div class={`${DATA_TABLE_CLASSES.HEAD} ${ONE_LINK_TX}`} role="row">
         <div class={DATA_TABLE_CLASSES.ROW}>{tableHeadCells}</div>
       </div>
     );
@@ -355,16 +356,20 @@ export default class DataTable extends Vue {
 
     if (action === 'select') {
       data.forEach((row: DataTableRow) => {
-        if (!this.selectedRows.includes(row.rowId)) {
+        if (!this.selectedRows.includes(row.rowId) && !row.selectionDisabled) {
           this.selectedRows.push(row.rowId);
         }
       });
+
+      this.$emit(DATA_TABLE_EVENTS.SELECTED_ALL, this.slicedData);
     } else {
       data.forEach((row: DataTableRow) => {
         const rowIndex = this.selectedRows.indexOf(row.rowId);
 
         this.selectedRows.splice(rowIndex, 1);
       });
+
+      this.$emit(DATA_TABLE_EVENTS.DESELECTED_ALL, this.slicedData);
     }
 
     this._emitSelectedRows();
@@ -587,7 +592,7 @@ export default class DataTable extends Vue {
 
       let i = 0;
       tableBodyRows = dataToRender.map((bodyRow: DataTableRow) => {
-        const striped = !(i % 2 === 0);
+        const striped = !(i % 2 === 0) && this.$props.config.style.striped;
 
         i++;
 
@@ -953,7 +958,7 @@ export default class DataTable extends Vue {
           this._sortConfig = {
             key: columnName,
             direction: 'descending',
-            sortBy: columnSortBy || columnName,
+            sortBy: columnSortBy || undefined,
           };
         } else if (currentSort === 'descending' && this._sortConfig && this._sortConfig.key === columnName) {
           const sortingData: DataTableSorting = {
@@ -999,7 +1004,7 @@ export default class DataTable extends Vue {
           this._sortConfig = {
             key: columnName,
             direction: 'ascending',
-            sortBy: columnSortBy || columnName,
+            sortBy: columnSortBy || undefined,
           };
         }
       }
