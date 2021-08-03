@@ -8,7 +8,7 @@ export const exampleConfig = {
     bordered: false,
     hover: false,
     size: 'lg',
-    striped: true,
+    striped: false,
   },
   pagination: {
     hideOnSinglePage: true,
