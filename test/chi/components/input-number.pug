@@ -51,10 +51,10 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
                     )
                     button.chi-button.-icon(tabindex='-1', aria-label='Decrease')
                       .chi-button__content
-                        i.chi-icon.icon-minus
+                        i.chi-icon.icon-minus(aria-hidden="true")
                     button.chi-button.-icon(tabindex='-1', aria-label='Increase')
                       .chi-button__content
-                        i.chi-icon.icon-plus
+                        i.chi-icon.icon-plus(aria-hidden="true")
 
 each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   div(class=`test-expanded-svg-${size}`)

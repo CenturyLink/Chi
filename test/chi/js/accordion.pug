@@ -7,13 +7,13 @@ script(src=`../../js/chi.js`)
   .chi-accordion__item(data-cy='item-1')
     button.chi-accordion__trigger
       .chi-accordion__title Accordion 1
-      i.chi-icon.icon-chevron-down
+      i.chi-icon.icon-chevron-down(aria-hidden="true")
     .chi-accordion__content
       p.chi-accordion__text Content goes here
   .chi-accordion__item.-expanded(data-cy='item-2')
     button.chi-accordion__trigger
       .chi-accordion__title Accordion 2
-      i.chi-icon.icon-chevron-down
+      i.chi-icon.icon-chevron-down(aria-hidden="true")
     .chi-accordion__content
       p.chi-accordion__text Content goes here
 
@@ -21,47 +21,47 @@ script(src=`../../js/chi.js`)
   .chi-accordion__item(data-cy='nested-item-1')
     button.chi-accordion__trigger(data-cy='nested-btn-1')
       .chi-accordion__title Click me to expand Accordion
-      i.chi-icon.icon-chevron-down
+      i.chi-icon.icon-chevron-down(aria-hidden="true")
     .chi-accordion__content
       .chi-accordion.-portal
         .chi-accordion__item(data-cy='item-1')
           button.chi-accordion__trigger
             .chi-accordion__title Accordion 1
-            i.chi-icon.icon-chevron-down
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
           .chi-accordion__content
             p.chi-accordion__text Content goes here
             .chi-accordion.-portal
               .chi-accordion__item
                 button.chi-accordion__trigger
                   .chi-accordion__title Accordion 1.1
-                  i.chi-icon.icon-chevron-down
+                  i.chi-icon.icon-chevron-down(aria-hidden="true")
                 .chi-accordion__content
                   p.chi-accordion__text Content goes here
                   .chi-accordion.-portal
                     .chi-accordion__item
                       button.chi-accordion__trigger
                         .chi-accordion__title Accordion 1.1.1
-                        i.chi-icon.icon-chevron-down
+                        i.chi-icon.icon-chevron-down(aria-hidden="true")
                       .chi-accordion__content
                         p.chi-accordion__text Content goes here
             .chi-accordion.-portal
               .chi-accordion__item
                 button.chi-accordion__trigger
                   .chi-accordion__title Accordion 1.2
-                  i.chi-icon.icon-chevron-down
+                  i.chi-icon.icon-chevron-down(aria-hidden="true")
                 .chi-accordion__content
                   p.chi-accordion__text Content goes here
         .chi-accordion__item(data-cy='item-2')
           button.chi-accordion__trigger
             .chi-accordion__title Accordion 2
-            i.chi-icon.icon-chevron-down
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
           .chi-accordion__content
             p.chi-accordion__text Content goes here
             .chi-accordion.-portal
               .chi-accordion__item
                 button.chi-accordion__trigger
                   .chi-accordion__title Accordion 2.1
-                  i.chi-icon.icon-chevron-down
+                  i.chi-icon.icon-chevron-down(aria-hidden="true")
                 .chi-accordion__content
                   p.chi-accordion__text Content goes here
 
@@ -74,25 +74,25 @@ button#hide-accordion.chi-button Hide item 3
   .chi-accordion__item.-expanded
     button.chi-accordion__trigger
       .chi-accordion__title Accordion
-      i.chi-icon.icon-chevron-down
+      i.chi-icon.icon-chevron-down(aria-hidden="true")
     .chi-accordion__content
       .chi-accordion.-portal
         #invividual-accordion-item-1.chi-accordion__item
           button.chi-accordion__trigger
             .chi-accordion__title Accordion item 1
-            i.chi-icon.icon-chevron-down
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
           .chi-accordion__content
             p.chi-accordion__text Content of Accordion item 1
         #invividual-accordion-item-2.chi-accordion__item
           button.chi-accordion__trigger
             .chi-accordion__title Accordion item 2
-            i.chi-icon.icon-chevron-down
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
           .chi-accordion__content
             p.chi-accordion__text Content of Accordion item 2
         #invividual-accordion-item-3.chi-accordion__item
           button.chi-accordion__trigger
             .chi-accordion__title Accordion item 3
-            i.chi-icon.icon-chevron-down
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
           .chi-accordion__content
             p.chi-accordion__text Content of Accordion item 3
 
@@ -103,52 +103,52 @@ button#collapse-all.chi-button Collapse all
   .chi-accordion__item.-expanded
     button.chi-accordion__trigger
       .chi-accordion__title Accordion
-      i.chi-icon.icon-chevron-down
+      i.chi-icon.icon-chevron-down(aria-hidden="true")
     .chi-accordion__content
       .chi-accordion.-portal
         .chi-accordion__item
           button.chi-accordion__trigger
             .chi-accordion__title Accordion item 1
-            i.chi-icon.icon-chevron-down
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
           .chi-accordion__content
             p.chi-accordion__text Content of Accordion item 1
             .chi-accordion.-portal
               .chi-accordion__item
                 button.chi-accordion__trigger
                   .chi-accordion__title Accordion item 1.1
-                  i.chi-icon.icon-chevron-down
+                  i.chi-icon.icon-chevron-down(aria-hidden="true")
                 .chi-accordion__content
                   p.chi-accordion__text Content of Accordion item 1.1
               .chi-accordion__item
                 button.chi-accordion__trigger
                   .chi-accordion__title Accordion item 1.2
-                  i.chi-icon.icon-chevron-down
+                  i.chi-icon.icon-chevron-down(aria-hidden="true")
                 .chi-accordion__content
                   p.chi-accordion__text Content of Accordion item 1.2
         .chi-accordion__item
           button.chi-accordion__trigger
             .chi-accordion__title Accordion item 2
-            i.chi-icon.icon-chevron-down
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
           .chi-accordion__content
             p.chi-accordion__text Content of Accordion item 2
             .chi-accordion.-portal
               .chi-accordion__item
                 button.chi-accordion__trigger
                   .chi-accordion__title Accordion item 2.1
-                  i.chi-icon.icon-chevron-down
+                  i.chi-icon.icon-chevron-down(aria-hidden="true")
                 .chi-accordion__content
                   p.chi-accordion__text Content of Accordion item 2.1
               .chi-accordion__item
                 button.chi-accordion__trigger
                   .chi-accordion__title Accordion item 2.2
-                  i.chi-icon.icon-chevron-down
+                  i.chi-icon.icon-chevron-down(aria-hidden="true")
                 .chi-accordion__content
                   p.chi-accordion__text Content of Accordion item 2.2
 
 #disabled-accordion.chi-accordion.-portal.-w--75
   .chi-accordion__item
     button.chi-accordion__trigger.-disabled
-      i.chi-icon.icon-chevron-down
+      i.chi-icon.icon-chevron-down(aria-hidden="true")
       .chi-accordion__title Accordion 1
     .chi-accordion__content
       p.chi-accordion__text Content goes here
