@@ -297,7 +297,7 @@
       &::before {
         color: $color-icon-success;
         content: '\e91b';
-        font-family: 'chi';
+        font-family: $font-family-icon;
         font-size: 1rem;
         left: 0;
         margin-right: 1rem;
