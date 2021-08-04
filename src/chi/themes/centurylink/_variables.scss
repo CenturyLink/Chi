@@ -1327,47 +1327,72 @@ $spinner-size-xl:                           6rem;
 $spinner-size-xxl:                          8rem;
 
 // Stat
-$stat-background-color:                     transparent;
-$stat-background-icon-color:                inherit;
-$stat-background-icon-opacity:              0.1;
-$stat-active-background-color:              transparent;
-$stat-active-background-icon-opacity:       0.1;
-$stat-active-background-icon-color:         inherit;
-$stat-active-text-color:                    $color-text-base;
-$stat-border:                               none;
+$stat-primary-background-color:             $color-background-primary;
+$stat-primary-active-background-color:      $color-background-secondary;
+$stat-primary-background-icon-color:        $color-icon-white;
+$stat-primary-active-background-icon-color: $color-icon-base;
+$stat-primary-background-icon-opacity:      0.2;
+$stat-primary-active-background-icon-opacity: 0.2;
+$stat-primary-text-color:                   $color-text-white;
+$stat-primary-active-text-color:            $color-text-base;
+$stat-primary-active-metric-title-color:    $color-text-base;
+$stat-primary-metric-value-color:           $color-navy-30;
+$stat-primary-active-metric-value-color:    $color-text-base;
+$stat-primary-active-submetric-text-color:  $color-text-base;
+$stat-primary-submetric-text-color:         $color-navy-30;
+$stat-primary-active-notch-border-color:    $color-background-secondary;
+$stat-primary-active-notch-display:         block;
+$stat-primary-border:                       none;
+$stat-primary-active-border:                none;
+
+$stat-background-color:                     $color-background-white;
+$stat-background-icon-color:                $color-icon-muted-light;
+$stat-background-icon-opacity:              0.3;
+$stat-background-icon-left:                 auto;
+$stat-background-icon-right:                0;
+$stat-background-icon-icon-left:            0;
+$stat-active-background-color:              $color-background-white;
+$stat-active-background-icon-opacity:       0.3;
+$stat-active-background-icon-color:         $color-icon-primary;
+$stat-active-box-shadow:                    0 0 0 0.0625rem $color-border-primary;
+$stat-active-text-color:                    $color-text-primary;
+$stat-border:                               0.0625rem solid $color-border-base;
+$stat-active-border:                        0.0625rem solid $color-border-primary;
 $stat-text-align:                           left;
 $stat-text-color:                           $color-text-base;
-$stat-min-height:                           0;
-$stat-min-width:                            0;
+$stat-max-width:                            33rem;
+$stat-min-height:                           5.625rem;
+$stat-min-width:                            16.5rem;
+$stat-padding:                              1rem;
 $stat-active-metric-title-color:            $color-text-primary;
 $stat-active-metric-value-color:            $color-text-base;
 $stat-card-background-color:                $color-background-white;
 $stat-card-border-color:                    rgba($color-black, 0.12);
 $stat-active-card-border-color:             $color-border-primary;
-$stat-content-align-items:                  flex-start;
+$stat-content-align-items:                  center;
 
-$stat-metric-value-color:                   inherit;
+$stat-metric-align-items:                   flex-start;
 $stat-metric-title-font-size:               $font-size-base;
-$stat-metric-title-font-weight:             $font-weight-normal;
+$stat-metric-title-font-weight:             $font-weight-semi-bold;
 $stat-metric-title-line-height:             $line-height-sm;
-$stat-metric-title-text-transform:          none;
-$stat-metric-title-width:                   100%;
-$stat-metric-value-font-size:               2.5rem;
-$stat-metric-value-font-weight:             $font-weight-normal;
-$stat-metric-value-line-height:             3rem;
+$stat-metric-title-text-transform:          uppercase;
+$stat-metric-title-width:                   50%;
+$stat-metric-value-color:                   $color-text-base;
+$stat-metric-value-font-size:               2rem;
+$stat-metric-value-font-weight:             $font-weight-semi-bold;
+$stat-metric-value-line-height:             2.5rem;
 
-$stat-active-submetric-text-color:          inherit;
-$stat-submetric-text-color:                 inherit;
+$stat-active-submetric-text-color:          $color-text-base;
+$stat-submetric-text-color:                 $color-text-muted;
 $stat-submetric-justify-content:            flex-start;
 
 $stat-active-notch-border-color:            transparent;
 $stat-active-notch-display:                 none;
 
-$stat-compact-border:                       0.0625rem solid $stat-card-border-color;
-$stat-compact-active-border:                0.0625rem solid $stat-active-card-border-color;
-$stat-compact-active-box-shadow:            0 0 0 0.0625rem $stat-active-card-border-color;
-$stat-compact-max-width:                    none;
-$stat-compact-min-height:                   5.5rem;
+$stat-compact-active-box-shadow:            0 0 0 0.0625rem $color-border-primary;
+$stat-compact-content-padding:              0.5rem 0.75rem;
+$stat-compact-max-width:                    21rem;
+$stat-compact-min-height:                   5rem;
 $stat-compact-min-width:                    10.5rem;
 $stat-compact-title-font-size:              $font-size-xs;
 $stat-compact-title-font-weight:            $font-weight-base;
@@ -1377,6 +1402,13 @@ $stat-compact-submetric-font-size:          $font-size-base;
 $stat-compact-submetric-font-weight:        $font-weight-bold;
 $stat-compact-active-title-color:           $color-text-primary;
 $stat-compact-active-submetric-title-color: $color-text-base;
+
+$stat-compact-primary-text-color:           $color-navy-30;
+$stat-compact-primary-submetric-text-color: $color-text-white;
+$stat-compact-primary-metric-font-weight:   $font-weight-semi-bold;
+$stat-compact-primary-active-submetric-text-color: $color-text-base;
+
+$stat-sm-min-height:                        5rem;
 
 // Steps
 $steps-item-line-border-color:              $color-border-muted;
