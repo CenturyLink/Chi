@@ -16,7 +16,7 @@ h3 Country/Region
           each val, type in {ar:'Argentina', au:'Australia', br:'Brazil', co:'Colombia', de:'Germany', hk:'Hong Kong', in:'India', jp:'Japan', mx:'Mexico', sg:'Singapore', gb:'United Kingdom', us:'United States'}
             tr
               td.-w--20
-                i(class=`chi-flag-icon icon-${type}`)
+                i(class=`chi-flag-icon icon-${type}`, aria-hidden='true')
               td
                 p.-m--0=val
               td
@@ -31,18 +31,18 @@ h3 Country/Region
   #webcomponent-base.chi-tabs-panel
   #webfont-base.chi-tabs-panel.-active
     :code(lang="html")
-      <i class="chi-flag-icon icon-ar"></i>
-      <i class="chi-flag-icon icon-au"></i>
-      <i class="chi-flag-icon icon-br"></i>
-      <i class="chi-flag-icon icon-co"></i>
-      <i class="chi-flag-icon icon-de"></i>
-      <i class="chi-flag-icon icon-hk"></i>
-      <i class="chi-flag-icon icon-in"></i>
-      <i class="chi-flag-icon icon-jp"></i>
-      <i class="chi-flag-icon icon-mx"></i>
-      <i class="chi-flag-icon icon-sg"></i>
-      <i class="chi-flag-icon icon-gb"></i>
-      <i class="chi-flag-icon icon-us"></i>
+      <i class="chi-flag-icon icon-ar" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-au" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-br" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-co" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-de" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-hk" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-in" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-jp" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-mx" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-sg" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-gb" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-us" aria-hidden="true"></i>
 
 h3 Sizes
 p.-text
@@ -53,7 +53,7 @@ p.-text
     .-d--flex.-align-items--end
       each size in ['xs', 'sm']
         div.-p--2.-m--1
-          i(class=`chi-flag-icon icon-us -${size}`)
+          i(class=`chi-flag-icon icon-us -${size}`, aria-hidden='true')
           p.-text.-text--center.-mb--0= size
   .example-tabs.-pl--2
     ul.chi-tabs#example-sizes
@@ -65,9 +65,9 @@ p.-text
   #webfont-sizes.chi-tabs-panel.-active
     :code(lang="html")
       <!-- -xs : 18x12px -->
-      <i class="chi-flag-icon icon-us -xs"></i>
+      <i class="chi-flag-icon icon-us -xs" aria-hidden="true"></i>
       <!-- -sm : 24x16px -->
-      <i class="chi-flag-icon icon-us -sm"></i>
+      <i class="chi-flag-icon icon-us -sm" aria-hidden="true"></i>
 
 script.
   document.addEventListener(
