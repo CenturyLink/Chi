@@ -10,11 +10,11 @@ script(src='../../js/chi.js')
         ul.chi-sidenav__list
           li.-active
             a(href='#drawer-0-1')
-              i.chi-icon.icon-atom
+              i.chi-icon.icon-atom(aria-hidden="true")
               span Active Item
           li
             a(href='#drawer-0-2')
-              i.chi-icon.icon-atom
+              i.chi-icon.icon-atom(aria-hidden="true")
               span Menu Item
     .chi-sidenav__drawers
       #drawer-0-1.chi-drawer.-animated.-left
@@ -22,7 +22,7 @@ script(src='../../js/chi.js')
           .chi-drawer__title Menu item 1
           button.chi-button.-icon.-close(aria-label='Close')
             .chi-button__content
-              i.chi-icon.icon-x
+              i.chi-icon.icon-x(aria-hidden="true")
         .chi-drawer__content
           ul.chi-sidenav__drawer-list
             li
@@ -57,18 +57,18 @@ script(src='../../js/chi.js')
               a(href='#exampleHashTarget')
                 span.chi-sidenav__title
                   | Title C
-                  i.chi-icon.icon-external-link.-xs
+                  i.chi-icon.icon-external-link.-xs(aria-hidden="true")
             li
               a(href='#exampleHashTarget')
                 span.chi-sidenav__title
                   | Title D
-                  i.chi-icon.icon-external-link.-xs
+                  i.chi-icon.icon-external-link.-xs(aria-hidden="true")
       #drawer-0-2.chi-drawer.-animated.-left
         .chi-drawer__header
           .chi-drawer__title Menu item 2
           button.chi-button.-icon.-close(aria-label='Close')
             .chi-button__content
-              i.chi-icon.icon-x
+              i.chi-icon.icon-x(aria-hidden="true")
         .chi-drawer__content
           ul.chi-sidenav__drawer-list
             li
@@ -103,12 +103,12 @@ script(src='../../js/chi.js')
               a(href='#exampleHashTarget')
                 span.chi-sidenav__title
                   | Title G
-                  i.chi-icon.icon-external-link.-xs
+                  i.chi-icon.icon-external-link.-xs(aria-hidden="true")
             li
               a(href='#exampleHashTarget')
                 span.chi-sidenav__title
                   | Title H
-                  i.chi-icon.icon-external-link.-xs
+                  i.chi-icon.icon-external-link.-xs(aria-hidden="true")
 
   script.
     chi.sidenav(document.getElementById('sidenav-0'));

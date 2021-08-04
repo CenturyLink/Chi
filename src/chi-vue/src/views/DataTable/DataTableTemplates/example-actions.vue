@@ -2,16 +2,16 @@
   <div class="chi-dropdown">
     <button ref="dropdownTrigger" class="chi-button -icon -flat -bg--none -opacity-hover--80">
       <div class="chi-button__content">
-        <i class="chi-icon icon-more-vert"></i>
+        <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
       </div>
     </button>
     <div class="chi-dropdown__menu">
       <a class="chi-dropdown__menu-item" href="#">
-        <span><i class="chi-icon -sm -icon--primary icon-edit"/></span>
+        <span><i class="chi-icon -sm -icon--primary icon-edit" aria-hidden="true"/></span>
         <span>Edit</span>
       </a>
       <a class="chi-dropdown__menu-item" href="#">
-        <span><i class="chi-icon -sm -icon--primary icon-delete"/></span>
+        <span><i class="chi-icon -sm -icon--primary icon-delete" aria-hidden="true"/></span>
         <span>Delete</span>
       </a>
     </div>

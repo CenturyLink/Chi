@@ -143,7 +143,7 @@ p.-text
         label.chi-label(for="example-he1") Label
         .chi-label__help
           button.chi-button.-icon.-xs.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
-            i.chi-icon.icon-circle-info-outline
+            i.chi-icon.icon-circle-info-outline(aria-hidden="true")
           section.chi-popover.chi-popover--top(id="example__help-popover" aria-modal="true" role="dialog")
             .chi-popover__content
               p.chi-popover__text
@@ -172,7 +172,7 @@ p.-text
           <label class="chi-label" for="example-he1">Label</label>
           <div class="chi-label__help">
             <button class="chi-button -icon -xs -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
-              <i class="chi-icon icon-circle-info-outline"></i>
+              <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
             </button>
             <section class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top">
               <div class="chi-popover__content">
@@ -283,7 +283,7 @@ p.-text
           option Option 2
           option Option 3
         .chi-label.-status.-danger
-          i.chi-icon.icon-circle-warning.-icon--danger
+          i.chi-icon.icon-circle-warning.-icon--danger(aria-hidden="true")
           | Please select an option.
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-error
@@ -306,7 +306,7 @@ p.-text
             <option>Option 3</option>
           </select>
           <div class="chi-label -status -danger">
-            <i class="chi-icon icon-circle-warning -icon--danger"></i>
+            <i class="chi-icon icon-circle-warning -icon--danger" aria-hidden="true"></i>
             Please select an option.
           </div>
         </div>

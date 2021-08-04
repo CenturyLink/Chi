@@ -42,7 +42,7 @@ class Header extends React.Component {
 									aria-label="Toggle navigation"
 								>
 									<div className="chi-button__content">
-										<i className="chi-icon -sm--2 icon-menu"></i>
+										<i className="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
 									</div>
 								</button>
 							</div>
@@ -102,11 +102,11 @@ class Header extends React.Component {
 									</button>
 									<div className="chi-dropdown__menu -w--sm">
 										<a className="chi-dropdown__menu-item" href="#">
-											<i className="chi-icon icon-user"></i>
+											<i className="chi-icon icon-user" aria-hidden="true"></i>
 											<span>Item 1</span>
 										</a>
 										<a className="chi-dropdown__menu-item" href="#">
-											<i className="chi-icon icon-logout"></i>
+											<i className="chi-icon icon-logout" aria-hidden="true"></i>
 											<span>Item 2</span>
 										</a>
 									</div>
@@ -121,11 +121,11 @@ class Header extends React.Component {
 									</button>
 									<div className="chi-dropdown__menu -w--sm">
 										<a className="chi-dropdown__menu-item" href="#">
-											<i className="chi-icon icon-user"></i>
+											<i className="chi-icon icon-user" aria-hidden="true"></i>
 											<span>Item 1</span>
 										</a>
 										<a className="chi-dropdown__menu-item" href="#">
-											<i className="chi-icon icon-logout"></i>
+											<i className="chi-icon icon-logout" aria-hidden="true"></i>
 											<span>Item 2</span></a
 										>
 									</div>
@@ -151,7 +151,7 @@ class Header extends React.Component {
 								<li>
 									<a href="#" target="_blank">
 										Contact Us
-											<i className="chi-icon icon-chevron-right -xs"></i>
+											<i className="chi-icon icon-chevron-right -xs" aria-hidden="true"></i>
 									</a>
 								</li>
 							</ul>
@@ -165,7 +165,7 @@ class Header extends React.Component {
 							<div className="chi-drawer__header">
 								<button className="chi-button -icon -close" aria-label="Close">
 									<div className="chi-button__content">
-										<i className="chi-icon icon-x"></i>
+										<i className="chi-icon icon-x" aria-hidden="true"></i>
 									</div>
 								</button>
 							</div>

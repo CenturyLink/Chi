@@ -19,17 +19,17 @@ h2 App Basic Sign In
           .chi-header__end
             a.chi-button.-flat.-icon.-dark.-no-hover(href="#")
               .chi-button__content
-                i.chi-icon.icon-circle-question-outline
+                i.chi-icon.icon-circle-question-outline(aria-hidden="true")
       .chi-app__body.-px-sm--2.-py-sm--4.-d--flex.-justify-content--center
         .-pb--2.-w--100.-mw--480
           .chi-card.-b--0.-bg--none
             .chi-card__content.-text--center.-px--4.-px-sm--6.-pb--4
               h2.-text--normal Sign In
               .chi-input__wrapper.-floating-label.-pt--2#aemail
-                input(type='email', class='chi-input -xl', id='email')
+                input(type='email' class='chi-input -xl' id='email')
                 label(for='email') Email
               .chi-input__wrapper.-floating-label.-pt--1#apassword
-                input(type='password', class='chi-input -xl', id='password')
+                input(type='password' class='chi-input -xl' id='password')
                 label(for='password') Password
               .-d--flex.-pt--3.-pt-sm--4.-justify-content--between.-align-items--center.-flex--column.-flex-sm--row
                 a.-text.-mb--2.-mb-sm--0(href="#") Forgot email or password?
@@ -48,7 +48,7 @@ h2 App Basic Sign In
           <div class="chi-header__end">
             <a class="chi-button -flat -icon -dark -no-hover" href="#">
               <div class="chi-button__content">
-                <i class="chi-icon icon-circle-question-outline"></i>
+                <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
               </div>
             </a>
           </div>
@@ -93,14 +93,14 @@ h2 App Basic Sign In - Error
           .chi-header__end
             a.chi-button.-flat.-icon.-dark.-no-hover(href="#")
               .chi-button__content
-                i.chi-icon.icon-circle-question-outline
+                i.chi-icon.icon-circle-question-outline(aria-hidden="true")
       .chi-app__body.-px-sm--2.-py-sm--4.-d--flex.-justify-content--center
         .-pb--2.-w--100.-mw--480
           .chi-card.-b--0.-bg--none
             .chi-card__content.-text--center.-px--4.-px-sm--6.-pb--4
               h2.-text--normal Sign In
               .chi-alert.-danger.-center(role="alert")
-                i.chi-icon.icon-circle-warning.-icon--danger
+                i.chi-icon.icon-circle-warning.-icon--danger(aria-hidden="true")
                 | Invalid email or password
               .chi-input__wrapper.-floating-label.-pt--2#aemail2
                 input(type='email', class='chi-input -xl', id='email2')
@@ -125,7 +125,7 @@ h2 App Basic Sign In - Error
           <div class="chi-header__end">
             <a class="chi-button -flat -icon -dark -no-hover" href="#">
               <div class="chi-button__content">
-                <i class="chi-icon icon-circle-question-outline"></i>
+                <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
               </div>
             </a>
           </div>
@@ -137,7 +137,7 @@ h2 App Basic Sign In - Error
             <div class="chi-card__content -text--center -px--4 -px-sm--6 -pb--4">
               <h2 class="-text--normal">Sign In</h2>
               <div class="chi-alert -danger -center" role="alert">
-                <i class="chi-alert__icon chi-icon icon-circle-warning"></i>
+                <i class="chi-alert__icon chi-icon icon-circle-warning" aria-hidden="true"></i>
                 <div class="chi-alert__content">
                   <p class="chi-alert__text">Invalid email or password</p>
                 </div>

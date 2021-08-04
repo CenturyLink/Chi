@@ -139,7 +139,7 @@ export class SearchInput {
         onClick={() => this._cleanInput()}
         aria-label="Clear">
         <div class="chi-button__content">
-          <i class="chi-icon icon-x"></i>
+          <i class="chi-icon icon-x" aria-hidden="true"></i>
         </div>
       </button> : null;
 
@@ -151,7 +151,7 @@ export class SearchInput {
         onClick={() => this.eventSearch.emit(this.value)}
         aria-label="Search">
           <div class="chi-button__content">
-            <i class={`chi-icon icon-search ${this.portal ? '-icon--primary' : ''}`}></i>
+            <i class={`chi-icon icon-search ${this.portal ? '-icon--primary' : ''}`} aria-hidden="true"></i>
           </div>
       </button>;
 
