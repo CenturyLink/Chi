@@ -14,7 +14,7 @@
       @chiDeselectAll="e => deselectAll(e)"
     >
       <template #icon="payload">
-        <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`"></i>
+        <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
       </template>
       <template #ticketId="payload">
         <TicketPopover :id="payload.id" />
@@ -29,7 +29,7 @@
       </template>
       <template #accordionContent="payload">
         <div class="chi-alert -success" role="alert">
-          <i class="chi-alert__icon chi-icon icon-circle-check"></i>
+          <i class="chi-alert__icon chi-icon icon-circle-check" aria-hidden="true"></i>
           <div class="chi-alert__content">
             <p class="chi-alert__text">
               Custom content rendered by the provided template. ID:

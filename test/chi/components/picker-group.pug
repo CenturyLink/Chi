@@ -25,17 +25,17 @@ title: Picker group
     .chi-picker-group__content
       input.chi-picker__input(type="radio", name='radios', id=`ib-radio1`)
       label(for=`ib-radio1`)
-        i.chi-icon.icon-atom.-sm
+        i.chi-icon.icon-atom.-sm(aria-hidden="true")
         span Radio1
       input.chi-picker__input(type="radio", name='radios', id=`ib-radio2`)
       label(for=`ib-radio2`)
         span Radio2
-        i.chi-icon.icon-atom.-sm
+        i.chi-icon.icon-atom.-sm(aria-hidden="true")
       input.chi-picker__input(type="radio", name='radios', id=`ib-radio3`)
       label(for=`ib-radio3`)
-        i.chi-icon.icon-atom.-sm
+        i.chi-icon.icon-atom.-sm(aria-hidden="true")
         span Radio3
-        i.chi-icon.icon-atom.-sm
+        i.chi-icon.icon-atom.-sm(aria-hidden="true")
 
 .test-with-icons
   h3 Icons
@@ -46,7 +46,7 @@ title: Picker group
           input.chi-picker__input(type="radio", name='radios', id=`ic-${type}`)
           label(for=`ic-${type}`)
             span.-sr--only Button action
-            i.chi-icon.icon-atom.-sm
+            i.chi-icon.icon-atom.-sm(aria-hidden="true")
 
 .test-fluid(style='width: 700px;')
   h3 Fluid
@@ -96,6 +96,6 @@ title: Picker group
               label(for=`ig-i-${type}-${size}`, class=`-${size}`)
                 span.-sr--only Button action
                 if size === 'sm'
-                  i.chi-icon.icon-atom.-xs
+                  i.chi-icon.icon-atom.-xs(aria-hidden="true")
                 else
-                  i.chi-icon.icon-atom.-sm
+                  i.chi-icon.icon-atom.-sm(aria-hidden="true")

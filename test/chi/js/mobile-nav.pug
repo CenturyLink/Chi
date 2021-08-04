@@ -5,7 +5,7 @@ script(src='../../js/chi.js')
 
 button#mobile-navigation-interaction-trigger.chi-button.-icon(data-target='#mobile-navigation-example')
   .chi-button__content
-    i.chi-icon.icon-menu.-sm--2
+    i.chi-icon.icon-menu.-sm--2(aria-hidden="true")
 #mobile-navigation-example.chi-mobile-nav
   .chi-backdrop.-closed.-position--absolute
     .chi-backdrop__wrapper
@@ -16,7 +16,7 @@ button#mobile-navigation-interaction-trigger.chi-button.-icon(data-target='#mobi
               button#button-site-menu2.chi-button.-flat.chi-dropdown__trigger.-animate.-no-hover.-b--transparent(data-target='dropdown-2-menu') Cloud Application Manager
               button.chi-button.-icon.-close(aria-label='Close')
                 .chi-button__content
-                  i.chi-icon.icon-x
+                  i.chi-icon.icon-x(aria-hidden="true")
             .chi-mobile-nav__dropdown
               #dropdown-2-menu.chi-dropdown__menu.-list.chi-mobile-nav__dropdown-content
                 a.chi-dropdown__menu-item.-h--auto.-active(href='#')
@@ -32,43 +32,43 @@ button#mobile-navigation-interaction-trigger.chi-button.-icon(data-target='#mobi
               .chi-mobile-nav__user
                 .chi-mobile-nav__user-name
                   span Alessandro Ray
-                  i.chi-icon.-xs.icon-user
+                  i.chi-icon.-xs.icon-user(aria-hidden="true")
                 button#button-user-menu2.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate.-no-hover.-b--transparent(data-target='dropdown-3-menu') Menu
               .chi-mobile-nav__dropdown
                 #dropdown-3-menu.chi-dropdown__menu.chi-mobile-nav__dropdown-content
                   a.chi-dropdown__menu-item(href='#')
-                    i.chi-icon.icon-user
+                    i.chi-icon.icon-user(aria-hidden="true")
                     span Item 1
                   a.chi-dropdown__menu-item(href='#')
-                    i.chi-icon.icon-logout
+                    i.chi-icon.icon-logout(aria-hidden="true")
                     span Item 2
               ul.chi-tabs.-vertical.-icons
                 li.-active
                   a(href='#second-level-1')
-                    i.chi-icon.icon-atom
+                    i.chi-icon.icon-atom(aria-hidden="true")
                     span Toggle me
                 li
                   a(href='#tab-link')
-                    i.chi-icon.icon-atom
+                    i.chi-icon.icon-atom(aria-hidden="true")
                     span Tab link
                 li
                   a(href='#tab-link')
-                    i.chi-icon.icon-atom
+                    i.chi-icon.icon-atom(aria-hidden="true")
                     span Tab link
               .chi-divider
               .chi-mobile-nav__logout
                 span Logout
-                i.chi-icon.-xs.icon-logout
+                i.chi-icon.-xs.icon-logout(aria-hidden="true")
         .chi-mobile-nav__drawers
           #second-level-1.chi-drawer.-right.-position--absolute
             .chi-drawer__header.chi-mobile-nav__header
               button.chi-button.-flat.-icon.-no-hover.-back(aria-label='Back')
                 .chi-button__content
-                  i.chi-icon.icon-chevron-left
+                  i.chi-icon.icon-chevron-left(aria-hidden="true")
               .chi-mobile-nav__header-title Inventory
               button.chi-button.-icon.-close(aria-label='Close')
                 .chi-button__content
-                  i.chi-icon.icon-x
+                  i.chi-icon.icon-x(aria-hidden="true")
             .chi-drawer__content.chi-mobile-nav__content
               ul.chi-mobile-nav__list
                 li

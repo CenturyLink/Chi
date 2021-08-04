@@ -791,9 +791,9 @@ section.chi-table.-xs.-mt--2.-mb--4.-lumen--show
             td(width='20%')
               div.-text
                 if index === 'secondary-dark' || index === 'primary-alt'
-                  i.chi-icon.icon-warning.-xs.-icon--warning.-mr--1
+                  i.chi-icon.icon-warning.-xs.-icon--warning.-mr--1(aria-hidden="true")
                 else
-                  i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                  i.chi-icon.icon-check.-xs.-icon--success.-mr--1(aria-hidden="true")
                 span=value.contrast
                   div.-text--sm.-text--muted.-lh--2
                     if index === 'secondary-dark'
@@ -828,9 +828,9 @@ section.chi-table.-xs.-mt--2.-mb--4.-portal--show
             td(width='20%')
               div.-text
                 if index === 'secondary-dark' || index === 'primary-alt'
-                  i.chi-icon.icon-warning.-xs.-icon--warning.-mr--1
+                  i.chi-icon.icon-warning.-xs.-icon--warning.-mr--1(aria-hidden="true")
                 else
-                  i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                  i.chi-icon.icon-check.-xs.-icon--success.-mr--1(aria-hidden="true")
                 span=value.contrast
                   div.-text--sm.-text--muted.-lh--2
                     if index === 'secondary-dark'
@@ -865,9 +865,9 @@ section.chi-table.-xs.-mt--2.-mb--4.-centurylink--show
             td(width='20%')
               div.-text
                 if index === 'secondary-dark'
-                  i.chi-icon.icon-warning.-xs.-icon--warning.-mr--1
+                  i.chi-icon.icon-warning.-xs.-icon--warning.-mr--1(aria-hidden="true")
                 else
-                  i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                  i.chi-icon.icon-check.-xs.-icon--success.-mr--1(aria-hidden="true")
                 span=value.contrast
                   div.-text--sm.-text--muted.-lh--2
                     if index === 'secondary-dark'
@@ -898,13 +898,13 @@ section.chi-table.-xs.-mt--2.-mb--4.-lumen--show
             td(width='20%')
               if index === 'white' || index === 'secondary'
                 div.-text--lg.-lh--1.-rounded.-d--inline-block(style=`background-color:#000;padding:2px;color:${value.hex};`)
-                  i.chi-icon.icon-circle
+                  i.chi-icon.icon-circle(aria-hidden="true")
               else
                 div.-text--lg.-lh--1(style=`color:${value.hex};`)
-                  i.chi-icon.icon-circle
+                  i.chi-icon.icon-circle(aria-hidden="true")
             td(width='20%')
               div.-text
-                i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                i.chi-icon.icon-check.-xs.-icon--success.-mr--1(aria-hidden="true")
                 span=value.contrast
 section.chi-table.-xs.-mt--2.-mb--4.-portal--show
   div
@@ -929,13 +929,13 @@ section.chi-table.-xs.-mt--2.-mb--4.-portal--show
             td(width='20%')
               if index === 'white' || index === 'secondary'
                 div.-text--lg.-lh--1.-rounded.-d--inline-block(style=`background-color:#000;padding:2px;`)
-                  i.chi-icon.icon-circle(style=`color:${value.hex};`)
+                  i.chi-icon.icon-circle(style=`color:${value.hex};`, aria-hidden="true")
               else
                 div.-text--lg.-lh--1
-                  i.chi-icon.icon-circle(style=`color:${value.hex};`)
+                  i.chi-icon.icon-circle(style=`color:${value.hex};`, aria-hidden="true")
             td(width='20%')
               div.-text
-                i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                i.chi-icon.icon-check.-xs.-icon--success.-mr--1(aria-hidden="true")
                 span=value.contrast
 section.chi-table.-xs.-mt--2.-mb--4.-centurylink--show
   div
@@ -960,13 +960,13 @@ section.chi-table.-xs.-mt--2.-mb--4.-centurylink--show
             td(width='20%')
               if index === 'white' || index === 'secondary'
                 div.-text--lg.-lh--1.-rounded.-d--inline-block(style=`background-color:#000;padding:2px;color:${value.hex};`)
-                  i.chi-icon.icon-circle
+                  i.chi-icon.icon-circle(aria-hidden="true")
               else
                 div.-text--lg.-lh--1(style=`color:${value.hex};`)
-                  i.chi-icon.icon-circle
+                  i.chi-icon.icon-circle(aria-hidden="true")
             td(width='20%')
               div.-text
-                i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                i.chi-icon.icon-check.-xs.-icon--success.-mr--1(aria-hidden="true")
                 span=value.contrast
 
 h3 Background
@@ -997,7 +997,7 @@ section.chi-table.-xs.-mt--2.-mb--4.-lumen--show
                 div.-text.-rounded.-w--80(style=`height:1rem;background-color:${value.hex};`)
             td(width='20%')
               div.-text
-                i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                i.chi-icon.icon-check.-xs.-icon--success.-mr--1(aria-hidden="true")
                 span=value.contrast
 section.chi-table.-xs.-mt--2.-mb--4.-portal--show
   div
@@ -1026,7 +1026,7 @@ section.chi-table.-xs.-mt--2.-mb--4.-portal--show
                 div.-text.-rounded.-w--80(style=`height:1rem;background-color:${value.hex};`)
             td(width='20%')
               div.-text
-                i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                i.chi-icon.icon-check.-xs.-icon--success.-mr--1(aria-hidden="true")
                 span=value.contrast
 section.chi-table.-xs.-mt--2.-mb--4.-centurylink--show
   div
@@ -1055,7 +1055,7 @@ section.chi-table.-xs.-mt--2.-mb--4.-centurylink--show
                   div.-text.-rounded.-w--80(style=`height:1rem;background-color:${value.hex};`)
               td(width='20%')
                 div.-text
-                  i.chi-icon.icon-check.-xs.-icon--success.-mr--1
+                  i.chi-icon.icon-check.-xs.-icon--success.-mr--1(aria-hidden="true")
                   span=value.contrast
 
 h3 Border

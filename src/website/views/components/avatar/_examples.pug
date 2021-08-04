@@ -35,7 +35,7 @@ p.-text
       each icon in iconExamples
         .chi-col.-w--2.-w-sm--1
           .chi-avatar
-            i(class=`chi-icon icon-${icon}`)
+            i(class=`chi-icon icon-${icon}`, aria-hidden='true')
   .example-tabs.-pl--2
     ul.chi-tabs#example-icon
       li.-disabled
@@ -46,7 +46,7 @@ p.-text
   .chi-tabs-panel.-active#html-icon
     :code(lang="html")
       <div class="chi-avatar">
-        <i class="chi-icon icon-user"></i>
+        <i class="chi-icon icon-user" aria-hidden="true"></i>
       </div>
 
 h3 Initial avatars
@@ -126,7 +126,7 @@ ul#chi-tabs--colors.chi-tabs
           if (color !== 'secondary')
             .chi-col.-w--2.-text--center
               div(class=`chi-avatar -${color}`)
-                i.chi-icon.icon-user
+                i.chi-icon.icon-user(aria-hidden="true")
               p.-text= color
     .example-tabs.-pl--2
       ul.chi-tabs#example-icon-color
@@ -138,43 +138,43 @@ ul#chi-tabs--colors.chi-tabs
     .chi-tabs-panel.-active#html-icon-color
       :code(lang="html")
         <div class="chi-avatar -grey">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -red">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -pink">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -purple">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -indigo">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -navy">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -blue">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -cyan">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -teal">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -green">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -yellow">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -orange">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -primary">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
 
 h3 Light and transparent background
@@ -189,10 +189,10 @@ p.-text
         div.chi-avatar.-secondary.-transparent AA
       .chi-col.-w--3.-text--center
         div.chi-avatar.-light
-          i.chi-icon.icon-user
+          i.chi-icon.icon-user(aria-hidden="true")
       .chi-col.-w--3.-text--center
         div.chi-avatar.-secondary.-transparent
-          i.chi-icon.icon-user
+          i.chi-icon.icon-user(aria-hidden="true")
   .example-tabs.-pl--2
     ul.chi-tabs#example-transparent
       li.-disabled
@@ -206,10 +206,10 @@ p.-text
         <div class="chi-avatar -light">AA</div>
         <div class="chi-avatar -secondary -transparent">AA</div>
         <div class="chi-avatar -light">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -secondary -transparent">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
       </div>
 
@@ -258,7 +258,7 @@ ul#chi-tabs--sizes.chi-tabs
         each size in sizes
           div(class=`chi-col -w--${columnWidths[size][0]} -w-lg--${columnWidths[size][1]} -w-xl--${columnWidths[size][2]} -text--center`)
             div(class=`chi-avatar -${size}`)
-              i.chi-icon.icon-user
+              i.chi-icon.icon-user(aria-hidden="true")
             p.-text= size
     .example-tabs.-pl--2
       ul.chi-tabs#example-size-icon
@@ -270,28 +270,28 @@ ul#chi-tabs--sizes.chi-tabs
     .chi-tabs-panel.-active#html-size-icon
       :code(lang="html")
         <div class="chi-avatar -xs">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -sm">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -sm--2">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -sm--3">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -md">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -lg">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -xl">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
         <div class="chi-avatar -xxl">
-          <i class="chi-icon icon-user"></i>
+          <i class="chi-icon icon-user" aria-hidden="true"></i>
         </div>
   #sizedImages.chi-tabs-panel
     .-p--3

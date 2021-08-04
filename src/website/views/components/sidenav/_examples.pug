@@ -21,7 +21,7 @@ h2 Examples
               each val in menuItems
                 li(class=`${val === active.menuItem ? '-active' : ''}`)
                   a(href=`#drawer-${example}-${val}`)
-                    i.chi-icon.icon-atom
+                    i.chi-icon.icon-atom(aria-hidden="true")
                     span=val === active.menuItem ? 'Active Item' : 'Menu Item'
         .chi-sidenav__drawers
           each val1 in menuItems
@@ -30,7 +30,7 @@ h2 Examples
                 .chi-drawer__title= 'Menu item ' + val1
                 button(class='chi-button -icon -close', aria-label='Close')
                   .chi-button__content
-                    i.chi-icon.icon-x
+                    i.chi-icon.icon-x(aria-hidden="true")
               .chi-drawer__content
                 ul.chi-sidenav__drawer-list
                   each val2, index in drawerMenuItems
@@ -51,7 +51,7 @@ h2 Examples
                         a(href=`#exampleHashTarget`)
                           span.chi-sidenav__title
                             =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                            i.chi-icon.icon-external-link.-xs
+                            i.chi-icon.icon-external-link.-xs(aria-hidden="true")
       .-flex--grow1.-p--3.-pb--4
         each val2 in [1,2,3,4]
           p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -75,13 +75,13 @@ h2 Examples
               <ul class="chi-sidenav__list">
                 <li class="-active">
                   <a href="#drawer-0-1">
-                    <i class="chi-icon icon-atom"></i>
+                    <i class="chi-icon icon-atom" aria-hidden="true"></i>
                     <span>Active Item</span>
                   </a>
                 </li>
                 <li>
                   <a href="#drawer-0-2">
-                    <i class="chi-icon icon-atom"></i>
+                    <i class="chi-icon icon-atom" aria-hidden="true"></i>
                     <span>Menu Item</span>
                   </a>
                 </li>
@@ -93,7 +93,7 @@ h2 Examples
               <div class="chi-drawer__header">
                 <div class="chi-drawer__title">Menu item 1</div>
                 <button class="chi-button -icon -close" aria-label="Close">
-                  <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                  <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
                 </button>
               </div>
               <div class="chi-drawer__content">
@@ -150,7 +150,7 @@ h2 Examples
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title C
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -158,7 +158,7 @@ h2 Examples
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title D
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -169,7 +169,7 @@ h2 Examples
               <div class="chi-drawer__header">
                 <div class="chi-drawer__title">Menu item 2</div>
                 <button class="chi-button -icon -close" aria-label="Close">
-                  <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                  <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
                 </button>
               </div>
               <div class="chi-drawer__content">
@@ -226,7 +226,7 @@ h2 Examples
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title G
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -234,7 +234,7 @@ h2 Examples
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title H
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -259,7 +259,7 @@ h3 Open on hover
             each val in menuItems
               li(class=`${val === active.menuItem ? '-active' : ''}`)
                 a(href=`#drawer-${example}-${val}`)
-                  i.chi-icon.icon-atom
+                  i.chi-icon.icon-atom(aria-hidden="true")
                   span=val === active.menuItem ? 'Active Item' : 'Menu Item'
       .chi-sidenav__drawers
         each val1 in menuItems
@@ -268,7 +268,7 @@ h3 Open on hover
               .chi-drawer__title= 'Menu item ' + val1
               button(class='chi-button -icon -close', aria-label='Close')
                 .chi-button__content
-                  i.chi-icon.icon-x
+                  i.chi-icon.icon-x(aria-hidden="true")
             .chi-drawer__content
               ul.chi-sidenav__drawer-list
                 each val2, index in drawerMenuItems
@@ -289,7 +289,7 @@ h3 Open on hover
                       a(href=`#exampleHashTarget`)
                         span.chi-sidenav__title
                           =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                          i.chi-icon.icon-external-link.-xs
+                          i.chi-icon.icon-external-link.-xs(aria-hidden="true")
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4]
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -313,13 +313,13 @@ h3 Open on hover
             <ul class="chi-sidenav__list">
               <li class="-active">
                 <a href="#drawer-1-1">
-                  <i class="chi-icon icon-atom"></i>
+                  <i class="chi-icon icon-atom" aria-hidden="true"></i>
                   <span>Active Item</span>
                 </a>
               </li>
               <li>
                 <a href="#drawer-1-2">
-                  <i class="chi-icon icon-atom"></i>
+                  <i class="chi-icon icon-atom" aria-hidden="true"></i>
                   <span>Menu Item</span>
                 </a>
               </li>
@@ -331,7 +331,7 @@ h3 Open on hover
             <div class="chi-drawer__header">
               <div class="chi-drawer__title">Menu item 1</div>
               <button class="chi-button -icon -close" aria-label="Close">
-                <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
               </button>
             </div>
             <div class="chi-drawer__content">
@@ -388,7 +388,7 @@ h3 Open on hover
                   <a href="#exampleHashTarget">
                     <span class="chi-sidenav__title">
                       Title C
-                      <i class="chi-icon icon-external-link -xs"></i>
+                      <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                     </span>
                   </a>
                 </li>
@@ -396,7 +396,7 @@ h3 Open on hover
                   <a href="#exampleHashTarget">
                     <span class="chi-sidenav__title">
                       Title D
-                      <i class="chi-icon icon-external-link -xs"></i>
+                      <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                     </span>
                   </a>
                 </li>
@@ -407,7 +407,7 @@ h3 Open on hover
             <div class="chi-drawer__header">
               <div class="chi-drawer__title">Menu item 2</div>
               <button class="chi-button -icon -close" aria-label="Close">
-                <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
               </button>
             </div>
             <div class="chi-drawer__content">
@@ -464,7 +464,7 @@ h3 Open on hover
                   <a href="#exampleHashTarget">
                     <span class="chi-sidenav__title">
                       Title G
-                      <i class="chi-icon icon-external-link -xs"></i>
+                      <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                     </span>
                   </a>
                 </li>
@@ -472,7 +472,7 @@ h3 Open on hover
                   <a href="#exampleHashTarget">
                     <span class="chi-sidenav__title">
                       Title H
-                      <i class="chi-icon icon-external-link -xs"></i>
+                      <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                     </span>
                   </a>
                 </li>
@@ -511,7 +511,7 @@ h3 Open on hover
               each val in menuItems
                 li(class=`${val===active.menuItem ? '-active':''}`)
                   a(href=`#drawer-${example}-${val}`)
-                    i.chi-icon.icon-atom
+                    i.chi-icon.icon-atom(aria-hidden="true")
                     span=val===active.menuItem ? 'Active Item' : 'Menu Item'
         .chi-sidenav__drawers
           each val1 in menuItems
@@ -520,7 +520,7 @@ h3 Open on hover
                 .chi-drawer__title= 'Menu item ' + val1
                 button(class='chi-button -icon -close', aria-label='Close')
                   .chi-button__content
-                    i.chi-icon.icon-x
+                    i.chi-icon.icon-x(aria-hidden="true")
               .chi-drawer__content
                 ul.chi-sidenav__drawer-list
                   each val2, index in drawerMenuItems
@@ -533,15 +533,15 @@ h3 Open on hover
                             li
                               a(class=`chi-sidenav__drawer-item-tab ${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active' : ''}`, href='#exampleHashTarget') Sub tab A
                             li
-                              a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab B
+                              a(class='chi-sidenav__drawer-item-tab' href='#exampleHashTarget') Sub tab B
                             li
-                              a(class='chi-sidenav__drawer-item-tab', href='#exampleHashTarget') Sub tab C
+                              a(class='chi-sidenav__drawer-item-tab' href='#exampleHashTarget') Sub tab C
                     else
                       li(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
                         a(href=`#exampleHashTarget`)
                           span.chi-sidenav__title
                             =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                            i.chi-icon.icon-external-link.-xs
+                            i.chi-icon.icon-external-link.-xs(aria-hidden="true")
       .-flex--grow1.-p--3.-pb--4
         each val2 in [1,2,3,4]
           p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -565,13 +565,13 @@ h3 Open on hover
               <ul class="chi-sidenav__list">
                 <li class="-active">
                   <a href="#drawer-0-1">
-                    <i class="chi-icon icon-atom"></i>
+                    <i class="chi-icon icon-atom" aria-hidden="true"></i>
                     <span>Active Item</span>
                   </a>
                 </li>
                 <li>
                   <a href="#drawer-0-2">
-                    <i class="chi-icon icon-atom"></i>
+                    <i class="chi-icon icon-atom" aria-hidden="true"></i>
                     <span>Menu Item</span>
                   </a>
                 </li>
@@ -583,7 +583,7 @@ h3 Open on hover
               <div class="chi-drawer__header">
                 <div class="chi-drawer__title">Menu item 1</div>
                 <button class="chi-button -icon -close" aria-label="Close">
-                  <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                  <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
                 </button>
               </div>
               <div class="chi-drawer__content">
@@ -640,7 +640,7 @@ h3 Open on hover
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title C
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -648,7 +648,7 @@ h3 Open on hover
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title D
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -659,7 +659,7 @@ h3 Open on hover
               <div class="chi-drawer__header">
                 <div class="chi-drawer__title">Menu item 2</div>
                 <button class="chi-button -icon -close" aria-label="Close">
-                  <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                  <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
                 </button>
               </div>
               <div class="chi-drawer__content">
@@ -716,7 +716,7 @@ h3 Open on hover
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title G
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -724,7 +724,7 @@ h3 Open on hover
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title H
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -748,7 +748,7 @@ h3 Open on hover
               each val in menuItems
                 li(class=`${val===active.menuItem ? '-active':''}`)
                   a(href=`#drawer-${example}-${val}`)
-                    i.chi-icon.icon-atom
+                    i.chi-icon.icon-atom(aria-hidden="true")
                     span=val===active.menuItem ? 'Active Item' : 'Menu Item'
         .chi-sidenav__drawers
           each val1 in menuItems
@@ -757,7 +757,7 @@ h3 Open on hover
                 .chi-drawer__title= 'Menu item ' + val1
                 button(class='chi-button -icon -close', aria-label='Close')
                   .chi-button__content
-                    i.chi-icon.icon-x
+                    i.chi-icon.icon-x(aria-hidden="true")
               .chi-drawer__content
                 ul.chi-sidenav__drawer-list
                   each val2, index in drawerMenuItems
@@ -778,7 +778,7 @@ h3 Open on hover
                         a(href=`#exampleHashTarget`)
                           span.chi-sidenav__title
                             =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                            i.chi-icon.icon-external-link.-xs
+                            i.chi-icon.icon-external-link.-xs(aria-hidden="true")
       .-flex--grow1.-p--3.-pb--4
         each val2 in [1,2,3,4]
           p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -802,13 +802,13 @@ h3 Open on hover
               <ul class="chi-sidenav__list">
                 <li class="-active">
                   <a href="#drawer-0-1">
-                    <i class="chi-icon icon-atom"></i>
+                    <i class="chi-icon icon-atom" aria-hidden="true"></i>
                     <span>Active Item</span>
                   </a>
                 </li>
                 <li>
                   <a href="#drawer-0-2">
-                    <i class="chi-icon icon-atom"></i>
+                    <i class="chi-icon icon-atom" aria-hidden="true"></i>
                     <span>Menu Item</span>
                   </a>
                 </li>
@@ -820,7 +820,7 @@ h3 Open on hover
               <div class="chi-drawer__header">
                 <div class="chi-drawer__title">Menu item 1</div>
                 <button class="chi-button -icon -close" aria-label="Close">
-                  <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                  <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
                 </button>
               </div>
               <div class="chi-drawer__content">
@@ -877,7 +877,7 @@ h3 Open on hover
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title C
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -885,7 +885,7 @@ h3 Open on hover
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title D
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -896,7 +896,7 @@ h3 Open on hover
               <div class="chi-drawer__header">
                 <div class="chi-drawer__title">Menu item 2</div>
                 <button class="chi-button -icon -close" aria-label="Close">
-                  <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                  <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
                 </button>
               </div>
               <div class="chi-drawer__content">
@@ -953,7 +953,7 @@ h3 Open on hover
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title G
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -961,7 +961,7 @@ h3 Open on hover
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title H
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -985,7 +985,7 @@ h3 Open on hover
               each val in menuItems
                 li(class=`${val===active.menuItem ? '-active':''}`)
                   a(href=`#drawer-${example}-${val}`)
-                    i.chi-icon.icon-atom
+                    i.chi-icon.icon-atom(aria-hidden="true")
                     span=val===active.menuItem ? 'Active Item' : 'Menu Item'
         .chi-sidenav__drawers
           each val1 in menuItems
@@ -994,7 +994,7 @@ h3 Open on hover
                 .chi-drawer__title= 'Menu item ' + val1
                 button(class='chi-button -icon -close', aria-label='Close')
                   .chi-button__content
-                    i.chi-icon.icon-x
+                    i.chi-icon.icon-x(aria-hidden="true")
               .chi-drawer__content
                 ul.chi-sidenav__drawer-list
                   each val2, index in drawerMenuItems
@@ -1015,7 +1015,7 @@ h3 Open on hover
                         a(href=`#exampleHashTarget`)
                           span.chi-sidenav__title
                             =`Title ${String.fromCharCode(val2.charCodeAt(0) + (drawerMenuItems.length * (val1 - 1)))}`
-                            i.chi-icon.icon-external-link.-xs
+                            i.chi-icon.icon-external-link.-xs(aria-hidden="true")
       .-flex--grow1.-p--3.-pb--4
         each val2 in [1,2,3,4]
           p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -1039,13 +1039,13 @@ h3 Open on hover
               <ul class="chi-sidenav__list">
                 <li class="-active">
                   <a href="#drawer-0-1">
-                    <i class="chi-icon icon-atom"></i>
+                    <i class="chi-icon icon-atom" aria-hidden="true"></i>
                     <span>Active Item</span>
                   </a>
                 </li>
                 <li>
                   <a href="#drawer-0-2">
-                    <i class="chi-icon icon-atom"></i>
+                    <i class="chi-icon icon-atom" aria-hidden="true"></i>
                     <span>Menu Item</span>
                   </a>
                 </li>
@@ -1057,7 +1057,7 @@ h3 Open on hover
               <div class="chi-drawer__header">
                 <div class="chi-drawer__title">Menu item 1</div>
                 <button class="chi-button -icon -close" aria-label="Close">
-                  <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                  <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
                 </button>
               </div>
               <div class="chi-drawer__content">
@@ -1114,7 +1114,7 @@ h3 Open on hover
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title C
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -1122,7 +1122,7 @@ h3 Open on hover
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title D
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -1133,7 +1133,7 @@ h3 Open on hover
               <div class="chi-drawer__header">
                 <div class="chi-drawer__title">Menu item 2</div>
                 <button class="chi-button -icon -close" aria-label="Close">
-                  <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                  <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
                 </button>
               </div>
               <div class="chi-drawer__content">
@@ -1190,7 +1190,7 @@ h3 Open on hover
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title G
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>
@@ -1198,7 +1198,7 @@ h3 Open on hover
                     <a href="#exampleHashTarget">
                       <span class="chi-sidenav__title">
                         Title H
-                        <i class="chi-icon icon-external-link -xs"></i>
+                        <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                       </span>
                     </a>
                   </li>

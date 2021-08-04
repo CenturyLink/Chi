@@ -27,7 +27,7 @@ div(class=`test-base`, style='width: 40rem;')
           .chi-drawer__title= 'Menu item 1'
           button(class='chi-button -icon -close', aria-label='Close')
             .chi-button__content
-              i.chi-icon.icon-x
+              i.chi-icon.icon-x(aria-hidden="true")
         .chi-drawer__content
           ul.chi-sidenav__drawer-list
             each val2, index in drawerMenuItems
@@ -73,7 +73,7 @@ each size in sizes
             .chi-drawer__title= 'Menu item 1'
             button(class='chi-button -icon -close', aria-label='Close')
               .chi-button__content
-                i.chi-icon.icon-x
+                i.chi-icon.icon-x(aria-hidden="true")
           .chi-drawer__content
             ul.chi-sidenav__drawer-list
               each val2, index in drawerMenuItems

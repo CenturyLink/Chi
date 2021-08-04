@@ -200,7 +200,7 @@ p.-text
         legend.chi-label Select an option
         .chi-label__help
           button.chi-button.-icon.-xs.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
-            i.chi-icon.icon-circle-info-outline
+            i.chi-icon.icon-circle-info-outline(aria-hidden="true")
           section.chi-popover.chi-popover--top(id="example__help-popover" aria-modal="true" role="dialog")
             .chi-popover__content
               p.chi-popover__text
@@ -230,7 +230,7 @@ p.-text
           <legend class="chi-label">Select an option</legend>
           <div class="chi-label__help">
             <button class="chi-button -icon -xs -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
-              <i class="chi-icon icon-circle-info-outline"></i>
+              <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
             </button>
             <section class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top">
               <div class="chi-popover__content">
@@ -425,19 +425,19 @@ h3 Texts and icons
       legend.chi-label Select an option
       .chi-picker-group.-fluid(style="max-width:21rem;")
         .chi-picker-group__content
-          input.chi-picker__input(type="radio", name='unique-name-ti', id=`unique-id-ti1`, checked)
+          input.chi-picker__input(type="radio" name='unique-name-ti', id=`unique-id-ti1`, checked)
           label(for=`unique-id-ti1`)
-            i.chi-icon.icon-atom.-sm
+            i.chi-icon.icon-atom.-sm(aria-hidden="true")
             span Radio1
-          input.chi-picker__input(type="radio", name='unique-name-ti', id=`unique-id-ti2`)
+          input.chi-picker__input(type="radio" name='unique-name-ti', id=`unique-id-ti2`)
           label(for=`unique-id-ti2`)
             span Radio2
-            i.chi-icon.icon-atom.-sm
-          input.chi-picker__input(type="radio", name='unique-name-ti', id=`unique-id-ti3`)
+            i.chi-icon.icon-atom.-sm(aria-hidden="true")
+          input.chi-picker__input(type="radio" name='unique-name-ti', id=`unique-id-ti3`)
           label(for=`unique-id-ti3`)
-            i.chi-icon.icon-atom.-sm
+            i.chi-icon.icon-atom.-sm(aria-hidden="true")
             span Radio3
-            i.chi-icon.icon-atom.-sm
+            i.chi-icon.icon-atom.-sm(aria-hidden="true")
   .example-tabs.-pl--2
     ul.chi-tabs#example-text-and-icons
       li.-disabled
@@ -453,19 +453,19 @@ h3 Texts and icons
           <div class="chi-picker-group__content">
             <input class="chi-picker__input" type="radio" name="unique-name-ti" id="unique-id-ti1" checked>
             <label for="unique-id-ti1">
-              <i class="chi-icon icon-atom -sm"></i>
+              <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               <span>Radio1</span>
             </label>
             <input class="chi-picker__input" type="radio" name="unique-name-ti" id="unique-id-ti2">
             <label for="unique-id-ti2">
               <span>Radio2</span>
-              <i class="chi-icon icon-atom -sm"></i>
+              <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
             </label>
             <input class="chi-picker__input" type="radio" name="unique-name-ti" id="unique-id-ti3">
             <label for="unique-id-ti3">
-              <i class="chi-icon icon-atom -sm"></i>
+              <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               <span>Radio3</span>
-              <i class="chi-icon icon-atom -sm"></i>
+              <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
             </label>
           </div>
         </div>
@@ -479,10 +479,10 @@ h3 Icons
       .chi-picker-group
         .chi-picker-group__content
           each i in [1, 2, 3]
-            input.chi-picker__input(type="radio", name='unique-name-ic', id=`unique-id-ic${i}`, checked=(i === 1))
+            input.chi-picker__input(type="radio" name='unique-name-ic', id=`unique-id-ic${i}`, checked=(i === 1))
             label(for=`unique-id-ic${i}`, data-tooltip=`Option ${i}`, data-position="bottom")
               span.-sr--only= 'Option ' + `${i}`
-              i.chi-icon.icon-atom.-sm
+              i.chi-icon.icon-atom.-sm(aria-hidden="true")
   .example-tabs.-pl--2
     ul.chi-tabs#example-icons
       li.-disabled
@@ -504,17 +504,17 @@ h3 Icons
             <input class="chi-picker__input" type="radio" name="unique-name-ic" id="unique-id-ic1" checked>
             <label for="unique-id-ic1" data-tooltip="Option 1" data-position="bottom">
               <span class="-sr--only">Option 1</span>
-              <i class="chi-icon icon-atom -sm"></i>
+              <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
             </label>
             <input class="chi-picker__input" type="radio" name="unique-name-ic" id="unique-id-ic2">
             <label for="unique-id-ic2" data-tooltip="Option 2" data-position="bottom">
               <span class="-sr--only">Option 2</span>
-              <i class="chi-icon icon-atom -sm"></i>
+              <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
             </label>
             <input class="chi-picker__input" type="radio" name="unique-name-ic" id="unique-id-ic3">
             <label for="unique-id-ic3" data-tooltip="Option 3" data-position="bottom">
               <span class="-sr--only">Option 3</span>
-              <i class="chi-icon icon-atom -sm"></i>
+              <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
             </label>
           </div>
         </div>
@@ -552,9 +552,9 @@ h3 Icons
                     label(for=`unique-id-icon-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
                       span.-sr--only= 'Option ' + `${i}`
                       if size === 'xs'
-                        i.chi-icon.icon-atom.-xs
+                        i.chi-icon.icon-atom.-xs(aria-hidden="true")
                       else
-                        i.chi-icon.icon-atom.-sm
+                        i.chi-icon.icon-atom.-sm(aria-hidden="true")
     .example-tabs.-pl--2
       ul.chi-tabs#example-sizes
         li.-disabled
@@ -601,17 +601,17 @@ h3 Icons
               <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm4" checked>
               <label class="-sm" for="unique-id-sm4">
                 <span class="-sr--only">Option 1</span>
-                <i class="chi-icon icon-atom -xs"></i>
+                <i class="chi-icon icon-atom -xs" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm5">
               <label class="-sm" for="unique-id-sm5">
                 <span class="-sr--only">Option 2</span>
-                <i class="chi-icon icon-atom -xs"></i>
+                <i class="chi-icon icon-atom -xs" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm6">
               <label class="-sm" for="unique-id-sm6">
                 <span class="-sr--only">Option 3</span>
-                <i class="chi-icon icon-atom -xs"></i>
+                <i class="chi-icon icon-atom -xs" aria-hidden="true"></i>
               </label>
             </div>
           </div>
@@ -640,17 +640,17 @@ h3 Icons
               <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md4" checked>
               <label class="-md" for="unique-id-md4">
                 <span class="-sr--only">Option 1</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md5">
               <label class="-md" for="unique-id-md5">
                 <span class="-sr--only">Option 2</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md6">
               <label class="-md" for="unique-id-md6">
                 <span class="-sr--only">Option 3</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
             </div>
           </div>
@@ -679,17 +679,17 @@ h3 Icons
               <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg4" checked>
               <label class="-lg" for="unique-id-lg4">
                 <span class="-sr--only">Option 1</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg5">
               <label class="-lg" for="unique-id-lg5">
                 <span class="-sr--only">Option 2</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg6">
               <label class="-lg" for="unique-id-lg6">
                 <span class="-sr--only">Option 3</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
             </div>
           </div>
@@ -718,17 +718,17 @@ h3 Icons
               <input class="chi-picker__input" type="radio" name="unique-name-xl-icon" id="unique-id-xl4" checked>
               <label class="-xl" for="unique-id-xl4">
                 <span class="-sr--only">Option 1</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-xl-icon" id="unique-id-xl5">
               <label class="-xl" for="unique-id-xl5">
                 <span class="-sr--only">Option 2</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-xl-icon" id="unique-id-xl6">
               <label class="-xl" for="unique-id-xl6">
                 <span class="-sr--only">Option 3</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
             </div>
           </div>
@@ -765,9 +765,9 @@ h3 Icons
                     label(for=`unique-id-portal-icon-${size}${i}`, class=`-${size}`, data-tooltip=`Option ${i}`, data-position="bottom")
                       span.-sr--only= 'Option ' + `${i}`
                       if size === 'xs'
-                        i.chi-icon.icon-atom.-xs
+                        i.chi-icon.icon-atom.-xs(aria-hidden="true")
                       else
-                        i.chi-icon.icon-atom.-sm
+                        i.chi-icon.icon-atom.-sm(aria-hidden="true")
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-sizes
         li.-disabled
@@ -814,17 +814,17 @@ h3 Icons
               <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm4" checked>
               <label class="-sm" for="unique-id-sm4">
                 <span class="-sr--only">Option 1</span>
-                <i class="chi-icon icon-atom -xs"></i>
+                <i class="chi-icon icon-atom -xs" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm5">
               <label class="-sm" for="unique-id-sm5">
                 <span class="-sr--only">Option 2</span>
-                <i class="chi-icon icon-atom -xs"></i>
+                <i class="chi-icon icon-atom -xs" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-sm-icon" id="unique-id-sm6">
               <label class="-sm" for="unique-id-sm6">
                 <span class="-sr--only">Option 3</span>
-                <i class="chi-icon icon-atom -xs"></i>
+                <i class="chi-icon icon-atom -xs" aria-hidden="true"></i>
               </label>
             </div>
           </div>
@@ -853,17 +853,17 @@ h3 Icons
               <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md4" checked>
               <label class="-md" for="unique-id-md4">
                 <span class="-sr--only">Option 1</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md5">
               <label class="-md" for="unique-id-md5">
                 <span class="-sr--only">Option 2</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md6">
               <label class="-md" for="unique-id-md6">
                 <span class="-sr--only">Option 3</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
             </div>
           </div>
@@ -892,17 +892,17 @@ h3 Icons
               <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg4" checked>
               <label class="-lg" for="unique-id-lg4">
                 <span class="-sr--only">Option 1</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg5">
               <label class="-lg" for="unique-id-lg5">
                 <span class="-sr--only">Option 2</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
               <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg6">
               <label class="-lg" for="unique-id-lg6">
                 <span class="-sr--only">Option 3</span>
-                <i class="chi-icon icon-atom -sm"></i>
+                <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
               </label>
             </div>
           </div>

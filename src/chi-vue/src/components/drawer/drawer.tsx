@@ -156,7 +156,7 @@ export default class Drawer extends Vue {
         onClick={() => this.$emit(DRAWER_EVENTS.HIDE)}
         aria-label="Close">
         <div class={`${BUTTON_CLASSES.CONTENT}`}>
-          <i class={`${ICON_CLASS} icon-x`}></i>
+          <i class={`${ICON_CLASS} icon-x`} aria-hidden="true"></i>
         </div>
       </button>
     );

@@ -269,11 +269,11 @@ class DatePicker extends Component {
     calendar.innerHTML = `
     <div class="chi-datepicker__month-row">
       <div class="prev">
-        <i class="chi-icon icon-chevron-left -sm"></i>
+        <i class="chi-icon icon-chevron-left -sm" aria=hidden="true"></i>
       </div>
       <div class="chi-datepicker__month"></div>
       <div class="next">
-        <i class="chi-icon icon-chevron-right -sm"></i>
+        <i class="chi-icon icon-chevron-right -sm" aria=hidden="true"></i>
       </div>
     </div>
     <div class="chi-datepicker__day-names">

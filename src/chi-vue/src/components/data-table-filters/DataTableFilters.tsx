@@ -340,7 +340,7 @@ export default class DataTableFilters extends Vue {
             data-target={this._drawerID}
             aria-label="Open Drawer">
             <div class={BUTTON_CLASSES.CONTENT}>
-              <i class={`${ICON_CLASS} icon-filter`}></i>
+              <i class={`${ICON_CLASS} icon-filter`} aria-hidden="true"></i>
             </div>
           </button>
         </div>
