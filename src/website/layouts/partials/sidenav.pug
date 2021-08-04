@@ -37,7 +37,7 @@ ul.chi-tabs.-vertical.-lg.-animated
                       .chi-accordion__item.-bg--none.-expanded
                         button.chi-accordion__trigger
                           .chi-accordion__title #{section.title}
-                          i.chi-icon.icon-chevron-down.-xs
+                          i.chi-icon.icon-chevron-down.-xs(aria-hidden="true")
                         .chi-accordion__content.-p--0
                           ul.chi-tabs__subtabs
                             li(class=`${'foundations/accessibility/overview' === path ? "-active" : ""}`)
@@ -81,7 +81,7 @@ ul.chi-tabs.-vertical.-lg.-animated
                       .chi-accordion__item.-bg--none
                         button.chi-accordion__trigger
                           .chi-accordion__title #{section.title}
-                          i.chi-icon.icon-chevron-down.-xs
+                          i.chi-icon.icon-chevron-down.-xs(aria-hidden="true")
                         .chi-accordion__content.-p--0
                           ul.chi-tabs__subtabs
                             li(class=`${'foundations/accessibility/overview' === path ? "-active" : ""}`)

@@ -60,7 +60,7 @@ export default class ColumnCustomizationContent extends Vue {
           class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT}`}
           aria-label={ariaLabel}>
           <div class={BUTTON_CLASSES.CONTENT}>
-            <i class={`${ICON_CLASS} icon-${icon}`} />
+            <i class={`${ICON_CLASS} icon-${icon}`} aria-hidden="true" />
           </div>
         </button>
       );

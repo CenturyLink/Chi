@@ -70,7 +70,7 @@ function checkChiCurrentVersion(currentVersion) {
     fillDropdown();
     newVersionMessage.setAttribute("class", "chi-alert -banner -center -warning -w--100");
     newVersionMessage.setAttribute("role", "alert");
-    newVersionMessage.innerHTML = '<i class="chi-icon chi-alert__icon icon-warning -icon--warning"></i><div class="chi-alert__content"><p class="chi-alert__text">A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/'+currentVersion+'">Learn more &#8250;</a></p>';
+    newVersionMessage.innerHTML = '<i class="chi-icon chi-alert__icon icon-warning -icon--warning" aria-hidden="true"></i><div class="chi-alert__content"><p class="chi-alert__text">A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/'+currentVersion+'">Learn more &#8250;</a></p>';
     while (chiVersionCheckSelector.childNodes.length > 0) {
       chiVersionCheckSelector.removeChild(chiVersionCheckSelector.firstChild);
     }

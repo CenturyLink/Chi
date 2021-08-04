@@ -44,7 +44,7 @@ export default class ColumnCustomization extends Vue {
               <h2 class={MODAL_CLASSES.TITLE}>Customize columns</h2>
               <button class={`${BUTTON_CLASSES.BUTTON} ${ICON_CLASS} -close`} data-dismiss="modal" aria-label="Close">
                 <div class={BUTTON_CLASSES.CONTENT}>
-                  <i class={`${ICON_CLASS} icon-x`}></i>
+                  <i class={`${ICON_CLASS} icon-x`} aria-hidden="true"></i>
                 </div>
               </button>
             </header>
@@ -164,7 +164,7 @@ export default class ColumnCustomization extends Vue {
         data-target={`#${this._modalId}`}
         class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT}`}>
         <div class={BUTTON_CLASSES.CONTENT}>
-          <i class={`${ICON_CLASS} icon-table-column-settings`} />
+          <i class={`${ICON_CLASS} icon-table-column-settings`} aria-hidden="true" />
         </div>
       </button>
     );
