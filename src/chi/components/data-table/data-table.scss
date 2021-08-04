@@ -716,7 +716,7 @@ $sizes: (
       &::after {
         color: $color-text-primary;
         content: '\e920';
-        font-family: 'chi';
+        font-family: $font-family-icon;
         font-size: $font-size-lg;
         height: 1rem;
         position: absolute;
@@ -735,7 +735,7 @@ $sizes: (
         &::before {
           color: $color-icon-primary;
           content: '\e97d';
-          font-family: 'chi';
+          font-family: $font-family-icon;
           font-weight: $font-weight-normal;
           position: absolute;
 

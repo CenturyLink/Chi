@@ -17,7 +17,7 @@ i {
     /* use !important to prevent issues with browser extensions that change fonts */
     -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
     -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
-    font-family: 'chi' !important;
+    font-family: $font-family-icon !important;
     font-size: $icon-size-base;
     font-style: normal;
     font-variant: normal;
