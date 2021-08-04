@@ -95,7 +95,7 @@ export class AppLayout {
   }
 
   render() {
-    const applayoutBackLink = this.backlink && <a class="chi-link" href={this.backlinkHref}><div class="chi-link__content"><i class="chi-icon icon-chevron-left -xs"></i><span class="-text--md">{this.backlink}</span></div></a>;
+    const applayoutBackLink = this.backlink && <a class="chi-link" href={this.backlinkHref}><div class="chi-link__content"><i class="chi-icon icon-chevron-left -xs" aria-hidden="true"></i><span class="-text--md">{this.backlink}</span></div></a>;
     const appLayoutTitle = this.appLayoutTitle && <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">{this.appLayoutTitle}</div>;
     const applayoutSubTitle = this.subtitle && <div class="-text--md -pl--2 -bl--1">{this.subtitle}</div>;
     const appLayoutHeaderActions = this.appLayoutHeaderActions && <div class="chi-main__header-end"><slot name="header-actions"></slot></div>;

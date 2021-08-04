@@ -20,7 +20,7 @@ h2 Sizes
       .chi-col.-w--1.-o--1.-d--flex.-align-items--center
         h4= size
       .chi-col.-w--2.-d--flex.-align-items--center
-        i(class=`chi-icon icon-atom -${size}`)
+        i(class=`chi-icon icon-atom -${size}`, aria-hidden='true')
 
 h2 Single icon SVG
 .test-single-svg
@@ -34,7 +34,7 @@ h2 Single icon
 .test-single
   .chi-grid
     .chi-col.-w--2.-d--flex.-align-items--center
-      i(class=`chi-icon icon-atom`)
+      i(class=`chi-icon icon-atom`, aria-hidden='true')
 
 h2 Colors SVG
 .test-colors-svg
@@ -54,7 +54,7 @@ h2 Colors
       .chi-col.-w--1.-o--1.-d--flex.-align-items--center
         h4= color
       .chi-col.-w--2.-d--flex.-align-items--center
-        i(class=`chi-icon icon-atom -lg -icon--${color}`)
+        i(class=`chi-icon icon-atom -lg -icon--${color}`, aria-hidden='true')
 
 h2 Icons SVG
 .test-icons-svg
@@ -71,5 +71,5 @@ h2 Icons
   .chi-grid(data-cy='icon-list')
     each name in icons
       .chi-col.-w--2.-o--1.-text--center
-        i.chi-icon.-sm(class=`icon-${name}`)
+        i.chi-icon.-sm(class=`icon-${name}`, aria-hidden="true")
         h4= 'icon-' + name
