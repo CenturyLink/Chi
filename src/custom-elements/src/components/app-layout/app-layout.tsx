@@ -36,6 +36,8 @@ export class AppLayout {
 
   @State() appLayoutHeaderActions: boolean;
 
+  @State() appLayoutHelpIcon: boolean;
+
   @State() appLayoutPageLevelActions: boolean;
 
   @State() appLayoutFooter: boolean;
@@ -81,6 +83,10 @@ export class AppLayout {
       this.appLayoutTitle = this.el.getAttribute('title');
     }
 
+    if (this.el.querySelector("[slot=help-icon]")) {
+      this.appLayoutHelpIcon = true;
+    }
+
     if (this.el.querySelector("[slot=header-actions]")) {
       this.appLayoutHeaderActions = true;
     }
@@ -95,9 +101,10 @@ export class AppLayout {
   }
 
   render() {
-    const applayoutBackLink = this.backlink && <a class="chi-link" href={this.backlinkHref}><div class="chi-link__content"><i class="chi-icon icon-chevron-left -xs" aria-hidden="true"></i><span class="-text--md">{this.backlink}</span></div></a>;
-    const appLayoutTitle = this.appLayoutTitle && <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">{this.appLayoutTitle}</div>;
-    const applayoutSubTitle = this.subtitle && <div class="-text--md -pl--2 -bl--1">{this.subtitle}</div>;
+    const appLayoutBackLink = this.backlink && <a class="chi-link" href={this.backlinkHref}><div class="chi-link__content"><i class="chi-icon icon-chevron-left -xs"></i><span class="-text--md">{this.backlink}</span></div></a>;
+    const appLayoutHelpIcon = this.appLayoutHelpIcon && <slot name="help-icon"></slot>;
+    const appLayoutTitle = this.appLayoutTitle && <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">{this.appLayoutTitle}{appLayoutHelpIcon}</div>;
+    const appLayoutSubTitle = this.subtitle && <div class="-text--md -pl--2 -bl--1">{this.subtitle}</div>;
     const appLayoutHeaderActions = this.appLayoutHeaderActions && <div class="chi-main__header-end"><slot name="header-actions"></slot></div>;
     const appLayoutPageLevelActions = this.appLayoutPageLevelActions && <div class="-d--flex -align-items--center -justify-content--end -py--3 -my--2 -bt--1"><slot name="page-level__actions"></slot></div>;
     const appLayoutFooter = this.appLayoutFooter && <slot name="footer"></slot>;
@@ -108,10 +115,10 @@ export class AppLayout {
       >
         <div class="chi-main__header">
           <div class="chi-main__header-start">
-            {applayoutBackLink}
+            {appLayoutBackLink}
             <div class="chi-main__title">
               {appLayoutTitle}
-              {applayoutSubTitle}
+              {appLayoutSubTitle}
             </div>
           </div>
           {appLayoutHeaderActions}
