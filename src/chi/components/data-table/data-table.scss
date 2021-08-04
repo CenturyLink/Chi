@@ -3,19 +3,19 @@
 
 $sizes: (
   xs: (
-    padding: 0.25rem,
+    padding: 0.25rem
   ),
   sm: (
-    padding: 0.5rem,
+    padding: 0.5rem
   ),
   md: (
-    padding: 0.75rem 1rem,
+    padding: 0.75rem 1rem
   ),
   lg: (
-    padding: 1rem,
+    padding: 1rem
   ),
   xl: (
-    padding: 1.25rem 1rem,
+    padding: 1.25rem 1rem
   )
 );
 
@@ -716,7 +716,7 @@ $sizes: (
       &::after {
         color: $color-text-primary;
         content: '\e920';
-        font-family: 'chi';
+        font-family: $font-family-icon;
         font-size: $font-size-lg;
         height: 1rem;
         position: absolute;
@@ -735,7 +735,7 @@ $sizes: (
         &::before {
           color: $color-icon-primary;
           content: '\e97d';
-          font-family: 'chi';
+          font-family: $font-family-icon;
           font-weight: $font-weight-normal;
           position: absolute;
 

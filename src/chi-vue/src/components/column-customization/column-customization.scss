@@ -23,7 +23,7 @@ select {
 
             &::before {
               content: '\e959';
-              font-family: 'chi' !important;
+              font-family: $font-family-icon !important;
               font-size: 0.75rem;
               height: 0.75rem;
               width: 0.75rem;

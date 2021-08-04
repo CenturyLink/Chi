@@ -3,19 +3,19 @@
 
 $sizes: (
   xs: (
-    padding: 0.5rem,
+    padding: 0.5rem
   ),
   sm: (
-    padding: 0.75rem 1rem,
+    padding: 0.75rem 1rem
   ),
   md: (
-    padding: 1rem,
+    padding: 1rem
   ),
   lg: (
-    padding: 1.25rem 1rem,
+    padding: 1.25rem 1rem
   ),
   xl: (
-    padding: 1.5rem,
+    padding: 1.5rem
   )
 );
 
@@ -32,7 +32,6 @@ $vertical-alignments: (top, bottom, middle);
 
   @each $type in map-keys($sizes) {
     &.-#{$type} {
-
       & th {
         padding: map-get(map-get($sizes, $type), padding);
       }
@@ -74,7 +73,6 @@ $vertical-alignments: (top, bottom, middle);
 
     @each $type in map-keys($sizes) {
       &.-#{$type} {
-
         & th {
           padding: map-get(map-get($sizes, $type), padding) !important;
         }
@@ -107,7 +105,7 @@ $vertical-alignments: (top, bottom, middle);
         &::after {
           background-image: none;
           content: '\e921';
-          font-family: 'chi';
+          font-family: $font-family-icon;
           font-size: $font-size-xs;
           font-weight: $font-weight-normal;
           height: 1rem;
@@ -163,7 +161,8 @@ $vertical-alignments: (top, bottom, middle);
           background-color: $table-row-active-cell-background-color;
 
           &:first-child {
-            border-left: 0.25rem solid $table-row-active-cell-accent-border-color;
+            border-left: 0.25rem solid
+              $table-row-active-cell-accent-border-color;
             padding-left: 0.75rem;
           }
         }
@@ -310,7 +309,8 @@ $vertical-alignments: (top, bottom, middle);
         tr {
           &:last-child {
             th {
-              border-bottom: 0.0625rem solid $table-bordered-header-cell-border-color;
+              border-bottom: 0.0625rem solid
+                $table-bordered-header-cell-border-color;
             }
           }
         }
@@ -470,7 +470,8 @@ $vertical-alignments: (top, bottom, middle);
 
     &.-bordered {
       &::before {
-        border: 0.0625rem solid $table-fixed-header-bordered-row-cell-border-color;
+        border: 0.0625rem solid
+          $table-fixed-header-bordered-row-cell-border-color;
         border-left-width: 0;
       }
 
@@ -479,12 +480,14 @@ $vertical-alignments: (top, bottom, middle);
       }
 
       th > div {
-        border-left: 0.0625rem solid $table-fixed-header-bordered-row-cell-border-color;
+        border-left: 0.0625rem solid
+          $table-fixed-header-bordered-row-cell-border-color;
         padding-left: 0.9375rem;
       }
 
       td {
-        border: 0.0625rem solid $table-fixed-header-bordered-row-cell-border-color;
+        border: 0.0625rem solid
+          $table-fixed-header-bordered-row-cell-border-color;
         border-right-width: 0;
         border-top-width: 0;
         padding: 1rem 1rem 0.9375rem 0.9375rem;
@@ -513,7 +516,6 @@ $vertical-alignments: (top, bottom, middle);
     @include respond-to($screen-size) {
       @each $type in $vertical-alignments {
         .-valign-#{$screen-size}--#{$type} {
-
           vertical-align: #{$type};
         }
       }

@@ -90,7 +90,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       &::after {
         color: $steps-item-line-border-color;
         content: '\e934';
-        font-family: 'chi';
+        font-family: $font-family-icon;
         font-size: 1.5rem;
         position: absolute;
       }
@@ -459,7 +459,6 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 
   @each $breakpoint in $breakpoints {
     &.-labels-#{$breakpoint}--hide {
-
       & li,
       & .chi-steps__item {
         > .chi-steps__icon {
@@ -492,7 +491,11 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
 // sass-lint:disable-all
 /* IE10+ CSS hack */
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .chi-steps > li.chi-steps__item > .chi-steps__icon > .chi-steps__content > a.chi-steps__item-title {
+  .chi-steps
+    > li.chi-steps__item
+    > .chi-steps__icon
+    > .chi-steps__content
+    > a.chi-steps__item-title {
     width: auto;
   }
 
@@ -541,12 +544,12 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   }
 
   .chi-steps div.chi-steps__icon::before,
-  .chi-steps.-horizontal-label div.chi-steps__icon::before  {
+  .chi-steps.-horizontal-label div.chi-steps__icon::before {
     left: 0.25rem;
     position: relative;
   }
 
-  .chi-steps.-horizontal-label div.chi-steps__icon::before  {
+  .chi-steps.-horizontal-label div.chi-steps__icon::before {
     left: 0.25rem;
     position: relative;
   }
@@ -575,12 +578,17 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     left: -4.5rem;
   }
 
-  .chi-steps.-vertical.-horizontal-label li.-completed div.chi-steps__icon::after {
+  .chi-steps.-vertical.-horizontal-label
+    li.-completed
+    div.chi-steps__icon::after {
     right: 0rem;
   }
 
   .chi-steps.-vertical.-horizontal-label li.-active div.chi-steps__icon::after,
-  .chi-steps.-vertical.-horizontal-label li.-active ~ li div.chi-steps__icon::after {
+  .chi-steps.-vertical.-horizontal-label
+    li.-active
+    ~ li
+    div.chi-steps__icon::after {
     right: -0.5rem;
   }
 
@@ -619,12 +627,19 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     left: -0.5rem;
   }
 
-  .chi-steps.-vertical.-horizontal-label.-sm li.-active div.chi-steps__icon::after,
-  .chi-steps.-vertical.-horizontal-label.-sm li.-active ~ li div.chi-steps__icon::after {
+  .chi-steps.-vertical.-horizontal-label.-sm
+    li.-active
+    div.chi-steps__icon::after,
+  .chi-steps.-vertical.-horizontal-label.-sm
+    li.-active
+    ~ li
+    div.chi-steps__icon::after {
     right: -0.25rem;
   }
 
-  .chi-steps.-vertical.-horizontal-label.-sm li.-completed div.chi-steps__icon::after {
+  .chi-steps.-vertical.-horizontal-label.-sm
+    li.-completed
+    div.chi-steps__icon::after {
     right: 0rem;
   }
 }
@@ -636,7 +651,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   }
 
   .chi-steps li.-active div.chi-steps__icon::after,
-  .chi-steps.-inverse li.-active div.chi-steps__icon::after{
+  .chi-steps.-inverse li.-active div.chi-steps__icon::after {
     font-size: 1.4rem;
   }
 
