@@ -370,8 +370,6 @@ wide_container: true
             aria-controls="html-help-icon"
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-help-icon
-      .chi-tab__description
-        | Use the <code>title=""</code> attribute to display a title above the application layout.
       :code(lang="html")
         <chi-main title="App title">
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
@@ -480,12 +478,16 @@ wide_container: true
               <div class="chi-main__title">
                 <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">
                   App title
-                  <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
-                    <chi-icon icon="circle-question-outline"></chi-icon>
-                  </chi-button>
-                  <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button">
-                    Popover content.
-                  </chi-popover>
+                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                    <div class="chi-popover__content">
+                      <p class="chi-popover__text">Popover content.</p>
+                    </div>
+                  </section>
                 </div>
               </div>
             </div>
@@ -671,8 +673,6 @@ wide_container: true
             aria-controls="html-help-icon-lumen"
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-help-icon-lumen
-      .chi-tab__description
-        | Use the <code>title=""</code> attribute to display a title above the application layout.
       :code(lang="html")
         <chi-main title="App title">
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon" class="-ml--1">
@@ -781,12 +781,16 @@ wide_container: true
               <div class="chi-main__title">
                 <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">
                   App title
-                  <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon" class="-ml--1">
-                    <chi-icon icon="circle-question-outline"></chi-icon>
-                  </chi-button>
-                  <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button">
-                    Popover content.
-                  </chi-popover>
+                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                    <div class="chi-popover__content">
+                      <p class="chi-popover__text">Popover content.</p>
+                    </div>
+                  </section>
                 </div>
               </div>
             </div>
@@ -2378,8 +2382,6 @@ wide_container: true
             aria-controls="html-centurylink-help-icon"
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-centurylink-help-icon
-      .chi-tab__description
-        | Use the <code>title=""</code> attribute to display a title above the application layout.
       :code(lang="html")
         <chi-main title="App title">
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon" class="-ml--1">
@@ -2488,12 +2490,16 @@ wide_container: true
               <div class="chi-main__title">
                 <div class="-text--h3 -text--boldest -m--0 -pr--2">
                   App title
-                  <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon" class="-ml--1">
-                    <chi-icon icon="circle-question-outline"></chi-icon>
-                  </chi-button>
-                  <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button">
-                    Popover content.
-                  </chi-popover>
+                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                    <div class="chi-popover__content">
+                      <p class="chi-popover__text">Popover content.</p>
+                    </div>
+                  </section>
                 </div>
               </div>
             </div>
