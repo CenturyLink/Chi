@@ -4,144 +4,125 @@ title: Stat
 
 .test-base
   h3 Base
-  .chi-stat(style="width: 12rem")
-    .chi-stat__content
-      .chi-stat-metric
-        .chi-stat-metric__title
-          | Base stat
-        .chi-stat-metric__value
-          | 1
+  .chi-stat
+    .chi-stat__item
+      .chi-stat__content
+        .chi-stat-metric
+          .chi-stat-metric__title
+            | Base stat
+          .chi-stat-metric__value
+            | 1
 .test-disabled
   h3 Disabled
-  .chi-stat.-disabled(style="width: 12rem")
-    .chi-stat__content
-      .chi-stat-metric
-        .chi-stat-metric__title
-          | Disabled stat
-        .chi-stat-metric__value
-          | 1
+  .chi-stat
+    .chi-stat__item.-disabled
+      .chi-stat__content
+        .chi-stat-metric
+          .chi-stat-metric__title
+            | Disabled stat
+          .chi-stat-metric__value
+            | 1
 .test-active
   h3 Active
-  .chi-stat.-active(style="width: 12rem")
-    .chi-stat__content
-      .chi-stat-metric
-        .chi-stat-metric__title
-          | Active stat
-        .chi-stat-metric__value
-          | 1
+  .chi-stat
+    .chi-stat__item.-active
+      .chi-stat__content
+        .chi-stat-metric
+          .chi-stat-metric__title
+            | Active stat
+          .chi-stat-metric__value
+            | 1
 .test-center
   h3 Center Aligned
-  .chi-stat.-center(style="width: 12rem")
-    .chi-stat__content
-      .chi-stat-metric
-        .chi-stat-metric__title
-          | Centered stat
-        .chi-stat-metric__value
-          | 1
-.test-active
-  h3 Card
-  .chi-stat.-card(style="width: 12rem")
-    .chi-stat__content
-      .chi-stat-metric
-        .chi-stat-metric__title
-          | Card stat
-        .chi-stat-metric__value
-          | 1
-.test-card-active
-  h3 Card Active
-  .chi-stat.-card.-active(style="width: 12rem")
-    .chi-stat__content
-      .chi-stat-metric
-        .chi-stat-metric__title
-          | Active card stat
-        .chi-stat-metric__value
-          | 1
-.test-card-center
-  h3 Center Aligned Card
-  .chi-stat.-card.-center(style="width: 12rem")
-    .chi-stat__content
-      .chi-stat-metric
-        .chi-stat-metric__title
-          | Center card stat
-        .chi-stat-metric__value
-          | 1
+  .chi-stat.-center
+    .chi-stat__item
+      .chi-stat__content
+        .chi-stat-metric
+          .chi-stat-metric__title
+            | Centered stat
+          .chi-stat-metric__value
+            | 1
 .test-background-icon
-  h3 Background Icon Card
-  .chi-stat(style="width: 12rem")
-    .chi-stat__content
-      .chi-stat-metric
-        .chi-stat-metric__value
-          | 1
-        .chi-stat-metric__title
-          | Metric title
-      .chi-stat-submetric
-        .chi-stat-submetric__value
-          | 1
-        .chi-stat-submetric__title
-          | Submetric title
-      .chi-stat-background-icon
-        i.chi-icon.icon-logo-centurylink(aria-hidden="true")
+  h3 Background Icon
+  .chi-stat
+    .chi-stat__item
+      .chi-stat__content
+        .chi-stat-metric
+          .chi-stat-metric__value
+            | 1
+          .chi-stat-metric__title
+            | Metric title
+        .chi-stat-submetric
+          .chi-stat-submetric__value
+            | 1
+          .chi-stat-submetric__title
+            | Submetric title
+        .chi-stat-background-icon
+          i.chi-icon.icon-logo-centurylink
 .test-background-icon-active
-  h3 Background Icon Active Card
-  .chi-stat.-active(style="width: 12rem")
-    .chi-stat__content
-      .chi-stat-metric
-        .chi-stat-metric__value
-          | 1
-        .chi-stat-metric__title
-          | Metric title
-      .chi-stat-submetric
-        .chi-stat-submetric__value
-          | 1
-        .chi-stat-submetric__title
-          | Submetric title
-      .chi-stat-background-icon
-        i.chi-icon.icon-logo-centurylink(aria-hidden="true")
+  h3 Background Icon Active
+  .chi-stat
+    .chi-stat__item.-active
+      .chi-stat__content
+        .chi-stat-metric
+          .chi-stat-metric__value
+            | 1
+          .chi-stat-metric__title
+            | Metric title
+        .chi-stat-submetric
+          .chi-stat-submetric__value
+            | 1
+          .chi-stat-submetric__title
+            | Submetric title
+        .chi-stat-background-icon
+          i.chi-icon.icon-logo-centurylink
 .test-compact
-  h3 Compact Card
-  .chi-stat.-compact(style="width: 12rem")
-    .chi-stat__content
-      .chi-stat-metric
-        .chi-stat-metric__title
-          | Metric title
-        .chi-label__help
-          button.chi-button.-icon.-xs.-flat.-light(id="example__help-button" aria-label="Help" data-target="#example__help-popover" data-position="bottom")
-            i.chi-icon.icon-circle-info-outline(aria-hidden="true")
-          section.chi-popover.chi-popover--bottom(id="example__help-popover" aria-modal="true" role="dialog")
-            .chi-popover__content
-              p.chi-popover__text
-                | Helpful information goes here.
-      .chi-stat-submetric
-        .chi-stat-submetric__value
-          | 1
-        .chi-stat-submetric__title
-          | Submetric title
-      .chi-stat-submetric
-        .chi-stat-submetric__value
-          | 2
-        .chi-stat-submetric__title
-          | Submetric title
+  h3 Compact
+  .chi-stat.-compact
+    .chi-stat__item
+      .chi-stat__content
+        .chi-stat-metric
+          .chi-stat-metric__title
+            | Metric title
+          .chi-label__help
+            button.chi-button.-icon.-xs.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover" data-position="bottom")
+              i.chi-icon.icon-circle-info-outline
+            section.chi-popover.chi-popover--bottom(id="example__help-popover" aria-modal="true" role="dialog")
+              .chi-popover__content
+                p.chi-popover__text
+                  | Helpful information goes here.
+        .chi-stat-submetric
+          .chi-stat-submetric__value
+            | 1
+          .chi-stat-submetric__title
+            | Submetric title
+        .chi-stat-submetric
+          .chi-stat-submetric__value
+            | 2
+          .chi-stat-submetric__title
+            | Submetric title
 .test-compact-active
-  h3 Compact Active Card
-  .chi-stat.-compact.-active(style="width: 12rem")
-    .chi-stat__content
-      .chi-stat-metric
-        .chi-stat-metric__title
-          | Metric title
-        .chi-label__help
-          button.chi-button.-icon.-xs.-flat.-light(id="example__help-button2" aria-label="Help" data-target="#example__help-popover" data-position="bottom")
-            i.chi-icon.icon-circle-info-outline(aria-hidden="true")
-          section.chi-popover.chi-popover--bottom(id="example__help-popover2" aria-modal="true" role="dialog")
-            .chi-popover__content
-              p.chi-popover__text
-                | Helpful information goes here.
-      .chi-stat-submetric
-        .chi-stat-submetric__value
-          | 1
-        .chi-stat-submetric__title
-          | Submetric title
-      .chi-stat-submetric
-        .chi-stat-submetric__value
-          | 2
-        .chi-stat-submetric__title
-          | Submetric title
+  h3 Compact Active
+  .chi-stat.-compact
+    .chi-stat__item.-active
+      .chi-stat__content
+        .chi-stat-metric
+          .chi-stat-metric__title
+            | Metric title
+          .chi-label__help
+            button.chi-button.-icon.-xs.-flat(id="example__help-button2" aria-label="Help" data-target="#example__help-popover" data-position="bottom")
+              i.chi-icon.icon-circle-info-outline
+            section.chi-popover.chi-popover--bottom(id="example__help-popover2" aria-modal="true" role="dialog")
+              .chi-popover__content
+                p.chi-popover__text
+                  | Helpful information goes here.
+        .chi-stat-submetric
+          .chi-stat-submetric__value
+            | 1
+          .chi-stat-submetric__title
+            | Submetric title
+        .chi-stat-submetric
+          .chi-stat-submetric__value
+            | 2
+          .chi-stat-submetric__title
+            | Submetric title
