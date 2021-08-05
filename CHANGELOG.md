@@ -1,4 +1,22 @@
 # CHANGELOG
+## 5.1.0 (August 5, 2021)
+### Components
+#### Added
+* Added: Application layout web component and HTML blueprint templates now support optional help icon.
+* Added: Data Table Vue component now supports `chiSelectAll` and `chiDeselectAll`.
+#### Changed
+* Changed: Stat component has been improved to support new portal theme designs.
+* Changed: Drawer close icon color has been changed from black to blue for portal-themed drawers.
+* Changed: Icons used for decoration or visual styling now include an aria-hidden=“true” attribute for accessibility.
+* Changed: Portal-themed data table striping is now an optional style. 
+#### Fixed
+* Fixed: Text utility bug which caused margin on text headings to take precedence over margin utility classes.
+* Fixed: Dropdown bug which caused dropdown menu item text to inherit the color and font-weight of its parent container.
+* Fixed: Icon webfont was returning an ‘Unexpected missing generic font family’ bug in sonar.
+### Documentation
+#### Changed
+* Changed: Footer component links have been updated with new URLs.
+
 ## 5.0.0 (July 28, 2021)
 ### Components
 #### Added
