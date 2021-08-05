@@ -77,6 +77,82 @@ h2 Examples
           </div>
         </div>
 
+  h3 Center
+  .example.-mb--3
+    .-p--3
+      .chi-stat.-center
+        .chi-stat__item
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__value
+                | 1
+              .chi-stat-metric__title
+                | High Utilization
+        .chi-stat__item
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__value
+                | 1
+              .chi-stat-metric__title
+                | Critical Performing
+        .chi-stat__item.-active
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__value
+                | 2
+              .chi-stat-metric__title
+                | Services Down
+        .chi-stat__item
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__value
+                | 3
+              .chi-stat-metric__title
+                | Scheduled Maintenance
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-center
+        li.-disabled
+          a(href=`#webcomponent-center`) Web Component
+        li.-active
+          a(href=`#html-center`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-center
+    .chi-tabs-panel.-active#html-center
+      :code(lang="html")
+        <div class="chi-stat -center">
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">1</div>
+                <div class="chi-stat-metric__title">High Utilization</div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">1</div>
+                <div class="chi-stat-metric__title">Critical Performing</div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item -active">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">2</div>
+                <div class="chi-stat-metric__title">Services Down</div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">3</div>
+                <div class="chi-stat-metric__title">Scheduled Maintenance</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
   h3 Primary
   p.-text
     | Use the Primary stat for home and dashboard KPIs where more visual emphasis is needed.
@@ -251,82 +327,6 @@ h2 Examples
           </div>
         </div>
 
-  h3 Center
-  .example.-mb--3
-    .-p--3
-      .chi-stat.-center
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 1
-              .chi-stat-metric__title
-                | High Utilization
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 1
-              .chi-stat-metric__title
-                | Critical Performing
-        .chi-stat__item.-active
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 2
-              .chi-stat-metric__title
-                | Services Down
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 3
-              .chi-stat-metric__title
-                | Scheduled Maintenance
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-center
-        li.-disabled
-          a(href=`#webcomponent-center`) Web Component
-        li.-active
-          a(href=`#html-center`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-center
-    .chi-tabs-panel.-active#html-center
-      :code(lang="html")
-        <div class="chi-stat -center">
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">High Utilization</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">Critical Performing</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item -active">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">2</div>
-                <div class="chi-stat-metric__title">Services Down</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">3</div>
-                <div class="chi-stat-metric__title">Scheduled Maintenance</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
   h3 Compact
   p.-text
     | Use <code>-compact</code> when vertical space is limited.
@@ -442,13 +442,13 @@ h2 Examples
               .chi-stat-submetric__title
                 | Upcoming
     .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-compact-base
+      ul.chi-tabs#example-compact-base
         li.-disabled
-          a(href=`#webcomponent-portal-compact-base`) Web Component
+          a(href=`#webcomponent-compact-base`) Web Component
         li.-active
-          a(href=`#html-portal-compact-base`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-portal-compact-base
-    .chi-tabs-panel.-active#html-portal-compact-base
+          a(href=`#html-compact-base`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-compact-base
+    .chi-tabs-panel.-active#html-compact-base
       .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
@@ -461,7 +461,9 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__title">Utilization</div>
                 <div class="chi-label__help">
-                  <button class="chi-button -icon -sm -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover" data-position="bottom"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></button>
+                  <button class="chi-button -icon -xs -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover" data-position="bottom" aria-describedby="example__help-popover">
+                    <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
               <div class="chi-stat-submetric">
@@ -479,7 +481,9 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__title">Performance</div>
                 <div class="chi-label__help">
-                  <button class="chi-button -icon -sm -flat" id="example__help-button2" aria-label="Help" data-target="#example__help-popover2" data-position="bottom"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></button>
+                  <button class="chi-button -icon -xs -flat" id="example__help-button2" aria-label="Help" data-target="#example__help-popover2" data-position="bottom" aria-describedby="example__help-popover2">
+                    <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
               <div class="chi-stat-submetric">
@@ -497,7 +501,9 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__title">Status</div>
                 <div class="chi-label__help">
-                  <button class="chi-button -icon -sm -flat" id="example__help-button3" aria-label="Help" data-target="#example__help-popover3" data-position="bottom"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></button>
+                  <button class="chi-button -icon -xs -flat" id="example__help-button3" aria-label="Help" data-target="#example__help-popover3" data-position="bottom" aria-describedby="example__help-popover3">
+                    <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
               <div class="chi-stat-submetric">
@@ -515,7 +521,9 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__title">Threshold Alerts</div>
                 <div class="chi-label__help">
-                  <button class="chi-button -icon -sm -flat" id="example__help-button4" aria-label="Help" data-target="#example__help-popover4" data-position="bottom"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></button>
+                  <button class="chi-button -icon -xs -flat" id="example__help-button4" aria-label="Help" data-target="#example__help-popover4" data-position="bottom" aria-describedby="example__help-popover4">
+                    <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
               <div class="chi-stat-submetric">
@@ -533,7 +541,9 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__title">Repair Tickets</div>
                 <div class="chi-label__help">
-                  <button class="chi-button -icon -sm -flat" id="example__help-button5" aria-label="Help" data-target="#example__help-popover5" data-position="bottom"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></button>
+                  <button class="chi-button -icon -xs -flat" id="example__help-button5" aria-label="Help" data-target="#example__help-popover5" data-position="bottom" aria-describedby="example__help-popover5">
+                    <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
               <div class="chi-stat-submetric">
@@ -551,7 +561,9 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__title">Sch Maintenance</div>
                 <div class="chi-label__help">
-                  <button class="chi-button -icon -sm -flat" id="example__help-button6" aria-label="Help" data-target="#example__help-popover6" data-position="bottom"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></button>
+                  <button class="chi-button -icon -xs -flat" id="example__help-button6" aria-label="Help" data-target="#example__help-popover6" data-position="bottom" aria-describedby="example__help-popover6">
+                    <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
               <div class="chi-stat-submetric">
@@ -605,152 +617,6 @@ h2 Examples
           chi.popover(document.getElementById('example__help-button5'));
           chi.popover(document.getElementById('example__help-button6'));
         </script>
-
-  h3 Additional Sizes
-  .example.-mb--3
-    .-p--3
-      .-p--2
-        p.-text.-text--bold md (base)
-        .chi-stat
-          .chi-stat__item
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 1
-                .chi-stat-metric__title
-                  | High Utilization
-          .chi-stat__item
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 1
-                .chi-stat-metric__title
-                  | Critical Performing
-          .chi-stat__item.-active
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 2
-                .chi-stat-metric__title
-                  | Services Down
-          .chi-stat__item
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 3
-                .chi-stat-metric__title
-                  | Scheduled Maintenance
-        
-        p.-text.-text--bold sm
-        .chi-stat.-sm
-          .chi-stat__item
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 1
-                .chi-stat-metric__title
-                  | High Utilization
-          .chi-stat__item
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 1
-                .chi-stat-metric__title
-                  | Critical Performing
-          .chi-stat__item.-active
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 2
-                .chi-stat-metric__title
-                  | Services Down
-          .chi-stat__item
-            .chi-stat__content
-              .chi-stat-metric
-                .chi-stat-metric__value
-                  | 3
-                .chi-stat-metric__title
-                  | Maintenance
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-sizes
-        li.-disabled
-          a(href=`#webcomponent-sizes`) Web Component
-        li.-active
-          a(href=`#html-sizes`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-sizes
-    .chi-tabs-panel.-active#html-sizes
-      :code(lang="html")
-        <-- md -->
-        <div class="chi-stat -md">
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">High Utilization</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">Critical Performing</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item -active">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">2</div>
-                <div class="chi-stat-metric__title">Services Down</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">3</div>
-                <div class="chi-stat-metric__title">Maintenance</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <-- sm -->
-        <div class="chi-stat -sm">
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">High Utilization</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">Critical Performing</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item -active">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">2</div>
-                <div class="chi-stat-metric__title">Services Down</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">3</div>
-                <div class="chi-stat-metric__title">Maintenance</div>
-              </div>
-            </div>
-          </div>
-        </div>
 
 .-portal--show
   h3 Primary
@@ -936,12 +802,16 @@ h2 Examples
     .chi-tabs-panel#webcomponent-primary-portal-icons
     .chi-tabs-panel.-active#html-primary-portal-icons
       :code(lang="html")
-        <div class="chi-stat">
+        <div class="chi-stat -primary">
           <div class="chi-stat__item">
             <div class="chi-stat__content">
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__value">1</div>
                 <div class="chi-stat-metric__title">High Utilization</div>
+              </div>
+              <div class="chi-stat-submetric">
+                <div class="chi-stat-submetric__value">16</div>
+                <div class="chi-stat-submetric__title">Elevated</div>
               </div>
               <div class="chi-stat-background-icon">
                 <i class="chi-icon icon-file" aria-hidden="true"></i>
@@ -954,6 +824,10 @@ h2 Examples
                 <div class="chi-stat-metric__value">1</div>
                 <div class="chi-stat-metric__title">Critical Performing</div>
               </div>
+              <div class="chi-stat-submetric">
+                <div class="chi-stat-submetric__value">21</div>
+                <div class="chi-stat-submetric__title">Impacted</div>
+              </div>
               <div class="chi-stat-background-icon">
                 <i class="chi-icon icon-warning" aria-hidden="true"></i>
               </div>
@@ -965,6 +839,10 @@ h2 Examples
                 <div class="chi-stat-metric__value">2</div>
                 <div class="chi-stat-metric__title">Services Down</div>
               </div>
+              <div class="chi-stat-submetric">
+                <div class="chi-stat-submetric__value">47</div>
+                <div class="chi-stat-submetric__title">Up</div>
+              </div>
               <div class="chi-stat-background-icon">
                 <i class="chi-icon icon-map-marker" aria-hidden="true"></i>
               </div>
@@ -975,6 +853,10 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__value">3</div>
                 <div class="chi-stat-metric__title">Scheduled Maintenance</div>
+              </div>
+              <div class="chi-stat-submetric">
+                <div class="chi-stat-submetric__value">1</div>
+                <div class="chi-stat-submetric__title">Planned</div>
               </div>
               <div class="chi-stat-background-icon">
                 <i class="chi-icon icon-mail" aria-hidden="true"></i>
@@ -1231,7 +1113,9 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__title">Utilization</div>
                 <div class="chi-label__help">
-                  <button class="chi-button -icon -sm -flat -light" id="example__help-button" aria-label="Help" data-target="#example__help-popover" data-position="bottom"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></button>
+                  <button class="chi-button -icon -xs -flat" id="example__portal-help-button" aria-label="Help" data-target="#example__portal-help-popover" data-position="bottom" aria-describedby="example__portal-help-popover">
+                    <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
               <div class="chi-stat-submetric">
@@ -1249,7 +1133,9 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__title">Performance</div>
                 <div class="chi-label__help">
-                  <button class="chi-button -icon -sm -flat -light" id="example__help-button2" aria-label="Help" data-target="#example__help-popover2" data-position="bottom"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></button>
+                  <button class="chi-button -icon -xs -flat" id="example__portal-help-button2" aria-label="Help" data-target="#example__portal-help-popover2" data-position="bottom" aria-describedby="example__portal-help-popover2">
+                    <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
               <div class="chi-stat-submetric">
@@ -1267,7 +1153,9 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__title">Status</div>
                 <div class="chi-label__help">
-                  <button class="chi-button -icon -sm -flat -light" id="example__help-button3" aria-label="Help" data-target="#example__help-popover3" data-position="bottom"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></button>
+                  <button class="chi-button -icon -xs -flat" id="example__portal-help-button3" aria-label="Help" data-target="#example__portal-help-popover3" data-position="bottom" aria-describedby="example__portal-help-popover3">
+                    <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
               <div class="chi-stat-submetric">
@@ -1285,7 +1173,9 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__title">Threshold Alerts</div>
                 <div class="chi-label__help">
-                  <button class="chi-button -icon -sm -flat -light" id="example__help-button4" aria-label="Help" data-target="#example__help-popover4" data-position="bottom"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></button>
+                  <button class="chi-button -icon -xs -flat" id="example__portal-help-button4" aria-label="Help" data-target="#example__portal-help-popover4" data-position="bottom" aria-describedby="example__portal-help-popover4">
+                    <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
               <div class="chi-stat-submetric">
@@ -1303,7 +1193,9 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__title">Repair Tickets</div>
                 <div class="chi-label__help">
-                  <button class="chi-button -icon -sm -flat -light" id="example__help-button5" aria-label="Help" data-target="#example__help-popover5" data-position="bottom"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></button>
+                  <button class="chi-button -icon -xs -flat" id="example__portal-help-button5" aria-label="Help" data-target="#example__portal-help-popover5" data-position="bottom" aria-describedby="example__portal-help-popover5">
+                    <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
               <div class="chi-stat-submetric">
@@ -1321,7 +1213,9 @@ h2 Examples
               <div class="chi-stat-metric">
                 <div class="chi-stat-metric__title">Sch Maintenance</div>
                 <div class="chi-label__help">
-                  <button class="chi-button -icon -sm -flat -light" id="example__help-button6" aria-label="Help" data-target="#example__help-popover6" data-position="bottom"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></button>
+                  <button class="chi-button -icon -xs -flat" id="example__portal-help-button6" aria-label="Help" data-target="#example__portal-help-popover6" data-position="bottom" aria-describedby="example__portal-help-popover6">
+                    <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                  </button>
                 </div>
               </div>
               <div class="chi-stat-submetric">
