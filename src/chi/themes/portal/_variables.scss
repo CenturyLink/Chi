@@ -743,7 +743,7 @@ $drawer-header-title-font-size:             1rem;
 $drawer-header-title-font-weight:           $font-weight-semi-bold;
 
 // Dropdown
-$dropdown-button-text-color:                inherit;
+$dropdown-button-text-color:                $color-text-base;
 $dropdown-button-border-color:              $color-border-base-dark;
 $dropdown-button-hover-background-color:    $color-grey-20;
 $dropdown-button-hover-border-color:        $color-border-base-dark;
@@ -1389,7 +1389,7 @@ $stat-compact-primary-submetric-text-color: $color-text-white;
 $stat-compact-primary-metric-font-weight:   $font-weight-semi-bold;
 $stat-compact-primary-active-submetric-text-color: $color-text-base;
 
-$stat-sm-min-height:                        6rem;
+$stat-sm-min-height:                        6.5rem;
 
 // Steps
 $steps-item-line-border-color:              $color-border-muted;

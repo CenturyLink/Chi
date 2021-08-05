@@ -47,7 +47,7 @@
         flex-direction: column;
         width: 100%;
         z-index: 2;
-    
+
         &__title {
           font-size: $stat-metric-title-font-size;
           font-weight: $stat-metric-title-font-weight;
@@ -55,7 +55,7 @@
           text-transform: $stat-metric-title-text-transform;
           width: $stat-metric-title-width;
         }
-    
+
         &__value {
           color: $stat-metric-value-color;
           font-size: $stat-metric-value-font-size;
@@ -67,7 +67,7 @@
           width: 100%;
         }
       }
-    
+
       .chi-stat-submetric {
         color: $stat-submetric-text-color;
         display: flex;
@@ -76,14 +76,14 @@
         justify-content: $stat-submetric-justify-content;
         width: 100%;
         z-index: 2;
-    
+
         &__value {
           + .chi-stat-submetric__title {
             padding-left: 0.25rem;
           }
         }
       }
-    
+
       .chi-stat-background-icon {
         bottom: 0;
         height: 3.5rem;
@@ -94,7 +94,7 @@
         right: $stat-background-icon-right;
         width: 3.5rem;
         z-index: 1;
-    
+
         > .chi-icon {
           color: $stat-background-icon-color;
           font-size: 4.5rem;
