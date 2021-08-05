@@ -2,243 +2,292 @@
 @import '_global-mixins';
 
 .chi-stat {
-  background-color: $stat-background-color;
-  border: $stat-border;
-  border-radius: $border-radius-base;
-  color: $stat-text-color;
+  align-items: stretch;
   display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: $stat-min-height;
-  min-width: $stat-min-width;
-  position: relative;
-  text-align: $stat-text-align;
-  text-decoration: none;
-  width: 100%;
-  word-wrap: break-word;
+  flex-wrap: nowrap;
+  gap: 1.5rem; // sass-lint:disable-line no-misspelled-properties
+  overflow-y: hidden;
+  overflow-x: auto;
+  padding: $stat-padding;
 
-  &:hover {
+  .chi-stat__item {
+    background-color: $stat-background-color;
+    border: $stat-border;
+    border-radius: $border-radius-base;
+    color: $stat-text-color;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    max-width: $stat-max-width;
+    min-height: $stat-min-height;
+    min-width: $stat-min-width;
+    position: relative;
+    text-align: $stat-text-align;
     text-decoration: none;
-  }
-
-  &.-active {
-    background-color: $stat-active-background-color;
-    color: $stat-active-text-color;
-
-    .chi-stat-metric {
-      &__title {
-        color: $stat-active-metric-title-color;
-        font-weight: $font-weight-semi-bold;
-      }
-
-      &__value {
-        color: $stat-active-metric-value-color;
-      }
-    }
-
-    .chi-stat-submetric {
-      color: $stat-active-submetric-text-color;
-    }
-
-    .chi-stat-background-icon {
-      opacity: $stat-active-background-icon-opacity;
-
-      & > .chi-icon {
-        color: $stat-active-background-icon-color;
-      }
-    }
-
-    &::after {
-      border-color: $stat-active-notch-border-color;
-      border-left-color: transparent;
-      border-style: solid;
-      border-top-color: transparent;
-      border-width: 0.5rem;
-      bottom: -0.45rem;
-      content: '';
-      display: $stat-active-notch-display;
-      left: calc(50% - 0.375rem);
-      position: absolute;
-      transform: rotate(45deg);
-    }
-  }
-
-  &.-center {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-
-    .chi-stat-metric,
-    .chi-stat-submetric {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .chi-stat-submetric {
-      flex-direction: row;
-    }
-
-    .chi-stat-background-icon {
-      left: 0;
-      right: auto;
-
-      > .chi-icon {
-        left: -1rem;
-        position: relative;
-      }
-    }
-  }
-
-  &.-disabled {
-    opacity: 0.45;
-    pointer-events: none;
-  }
-
-  &__body {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
     width: 100%;
-  }
+    word-wrap: break-word;
 
-  &__content {
-    align-items: $stat-content-align-items;
-    display: flex;
-    flex-direction: column;
-    font-size: $font-size-base;
-    height: 100%;
-    line-height: $line-height;
-    padding: 1rem;
-    width: 100%;
-  }
-
-  .chi-stat-metric {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    z-index: 2;
-
-    &__title {
-      font-size: $stat-metric-title-font-size;
-      font-weight: $stat-metric-title-font-weight;
-      line-height: $stat-metric-title-line-height;
-      text-transform: $stat-metric-title-text-transform;
-      width: $stat-metric-title-width;
+    &:hover {
+      text-decoration: none;
     }
-
-    &__value {
-      color: $stat-metric-value-color;
-      font-size: $stat-metric-value-font-size;
-      font-weight: $stat-metric-value-font-weight;
-      line-height: $stat-metric-value-line-height;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      width: 100%;
-    }
-  }
-
-  .chi-stat-submetric {
-    color: $stat-submetric-text-color;
-    display: flex;
-    flex-direction: row;
-    font-size: $font-size-sm;
-    justify-content: $stat-submetric-justify-content;
-    z-index: 2;
-
-    &__value {
-      + .chi-stat-submetric__title {
-        padding-left: 0.25rem;
-      }
-    }
-  }
-
-  .chi-stat-background-icon {
-    bottom: 0;
-    height: 3.5rem;
-    opacity: $stat-background-icon-opacity;
-    overflow: hidden;
-    position: absolute;
-    right: 0;
-    width: 3.5rem;
-    z-index: 1;
-
-    > .chi-icon {
-      color: $stat-background-icon-color;
-      font-size: 4.5rem;
-      height: 4.5rem;
-      line-height: 4.5rem;
-      width: 4.5rem;
-    }
-  }
-
-  &.-card {
-    background-color: $color-background-white;
-    border: 0.0625rem solid $stat-card-border-color;
-
-    &.-active {
-      border: 0.0625rem solid $stat-active-card-border-color;
-      box-shadow: 0 0 0 0.0625rem $stat-active-card-border-color;
-    }
-  }
-
-  &.-compact {
-    border: $stat-compact-border;
-    max-width: $stat-compact-max-width;
-    min-height: $stat-compact-min-height;
-    min-width: $stat-compact-min-width;
 
     .chi-stat__content {
-      align-items: flex-start;
-    }
-
-    .chi-stat-metric {
+      align-items: $stat-content-align-items;
       display: flex;
-      flex-direction: row;
-      margin-bottom: 0.5rem;
-      text-align: left;
-      z-index: auto;
-
-      &__title {
-        font-size: $stat-compact-title-font-size;
-        font-weight: $stat-compact-title-font-weight;
-        line-height: $stat-compact-title-line-height;
-        width: 100%;
-      }
-    }
-
-    .chi-stat-submetric {
-      color: $stat-compact-submetric-color;
-      font-size: $stat-compact-submetric-font-size;
-      font-weight: $stat-compact-submetric-font-weight;
-      z-index: auto;
-    }
-
-    &.-active {
-      border: $stat-compact-active-border;
-      box-shadow: $stat-compact-active-box-shadow;
+      flex-direction: column;
+      font-size: $font-size-base;
+      height: 100%;
+      line-height: $line-height;
+      padding: 1rem;
+      width: 100%;
 
       .chi-stat-metric {
+        align-items: $stat-metric-align-items;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        z-index: 2;
+
         &__title {
-          color: $stat-compact-active-title-color;
+          font-size: $stat-metric-title-font-size;
+          font-weight: $stat-metric-title-font-weight;
+          line-height: $stat-metric-title-line-height;
+          text-transform: $stat-metric-title-text-transform;
+          width: $stat-metric-title-width;
+        }
+
+        &__value {
+          color: $stat-metric-value-color;
+          font-size: $stat-metric-value-font-size;
+          font-weight: $stat-metric-value-font-weight;
+          line-height: $stat-metric-value-line-height;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 100%;
         }
       }
 
       .chi-stat-submetric {
-        color: $stat-compact-active-submetric-title-color;
+        color: $stat-submetric-text-color;
+        display: flex;
+        flex-direction: row;
+        font-size: $font-size-sm;
+        justify-content: $stat-submetric-justify-content;
+        width: 100%;
+        z-index: 2;
+
+        &__value {
+          + .chi-stat-submetric__title {
+            padding-left: 0.25rem;
+          }
+        }
       }
 
-      .chi-label__help {
-        .chi-button {
-          &.-flat {
-            &.-icon {
-              &.-light {
-                color: $stat-compact-active-title-color;
+      .chi-stat-background-icon {
+        bottom: 0;
+        height: 3.5rem;
+        left: $stat-background-icon-left;
+        opacity: $stat-background-icon-opacity;
+        overflow: hidden;
+        position: absolute;
+        right: $stat-background-icon-right;
+        width: 3.5rem;
+        z-index: 1;
+
+        > .chi-icon {
+          color: $stat-background-icon-color;
+          font-size: 4.5rem;
+          height: 4.5rem;
+          left: $stat-background-icon-icon-left;
+          line-height: 4.5rem;
+          position: relative;
+          width: 4.5rem;
+        }
+      }
+    }
+
+    &.-active {
+      background-color: $stat-active-background-color;
+      border: $stat-active-border;
+      box-shadow: $stat-active-box-shadow;
+      color: $stat-active-text-color;
+
+      .chi-stat-metric {
+        &__title {
+          color: $stat-active-metric-title-color;
+          font-weight: $font-weight-semi-bold;
+        }
+
+        &__value {
+          color: $stat-active-metric-value-color;
+        }
+      }
+
+      .chi-stat-submetric {
+        color: $stat-active-submetric-text-color;
+      }
+
+      .chi-stat-background-icon {
+        opacity: $stat-active-background-icon-opacity;
+
+        & > .chi-icon {
+          color: $stat-active-background-icon-color;
+        }
+      }
+
+      &::after {
+        border-color: $stat-active-notch-border-color;
+        border-left-color: transparent;
+        border-style: solid;
+        border-top-color: transparent;
+        border-width: 0.5rem;
+        bottom: -0.45rem;
+        content: '';
+        display: $stat-active-notch-display;
+        left: calc(50% - 0.375rem);
+        position: absolute;
+        transform: rotate(45deg);
+      }
+    }
+
+    &.-disabled {
+      opacity: 0.45;
+      pointer-events: none;
+    }
+  }
+
+  &.-sm {
+    .chi-stat__item {
+      min-height: $stat-sm-min-height;
+      min-width: 10.5rem;
+      max-width: 21rem;
+
+      .chi-stat-metric__title {
+        font-size: 0.75rem;
+        font-weight: $font-weight-bold;
+        max-width: 15rem;
+        width: 100%;
+      }
+
+      .chi-stat-submetric {
+        font-size: 0.75rem;
+      }
+
+      .chi-stat__content {
+        justify-content: center;
+        padding: 0.5rem;
+      }
+
+      .chi-stat-metric {
+        & + .chi-stat-submetric {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  &.-center {
+    .chi-stat__item {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+
+      .chi-stat-metric,
+      .chi-stat-submetric {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .chi-stat-submetric {
+        flex-direction: row;
+      }
+
+      .chi-stat-background-icon {
+        left: 0;
+        right: auto;
+
+        & > .chi-icon {
+          left: -1rem;
+          position: relative;
+        }
+      }
+    }
+  }
+
+  &.-compact {
+    .chi-stat__item {
+      max-width: $stat-compact-max-width;
+      min-height: $stat-compact-min-height;
+      min-width: $stat-compact-min-width;
+
+      .chi-stat__content {
+        align-items: flex-start;
+        padding: $stat-compact-content-padding;
+
+        .chi-stat-background-icon {
+          height: 3rem;
+          left: auto;
+          right: 0;
+          width: 3rem;
+
+          > .chi-icon {
+            font-size: 4rem;
+            height: 4rem;
+            left: 0;
+            line-height: 4rem;
+            width: 4rem;
+          }
+        }
+      }
+
+      .chi-stat-metric {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 0.375rem;
+        text-align: left;
+        z-index: auto;
+
+        &__title {
+          font-size: $stat-compact-title-font-size;
+          font-weight: $stat-compact-title-font-weight;
+          line-height: $stat-compact-title-line-height;
+          width: 100%;
+        }
+      }
+
+      .chi-stat-submetric {
+        color: $stat-compact-submetric-color;
+        font-size: $stat-compact-submetric-font-size;
+        font-weight: $stat-compact-submetric-font-weight;
+        justify-content: flex-start;
+        z-index: auto;
+      }
+
+      &.-active {
+        box-shadow: $stat-compact-active-box-shadow;
+
+        .chi-stat-metric {
+          &__title {
+            color: $stat-compact-active-title-color;
+          }
+        }
+
+        .chi-stat-submetric {
+          color: $stat-compact-active-submetric-title-color;
+        }
+
+        .chi-label__help {
+          .chi-button {
+            &.-flat {
+              &.-icon {
+                .chi-icon {
+                  color: $stat-compact-active-title-color;
+                }
               }
             }
           }
@@ -247,9 +296,107 @@
     }
   }
 
-  &__wrapper {
-    display: flex;
-    gap: 1.5rem; // sass-lint:disable-line no-misspelled-properties
-    padding: 1rem 0;
+  &.-primary {
+    .chi-stat__item {
+      background-color: $stat-primary-background-color;
+      border: $stat-primary-border;
+      color: $stat-primary-text-color;
+
+      .chi-stat-metric {
+        &__value {
+          color: $stat-primary-metric-value-color;
+        }
+      }
+
+      .chi-stat-submetric {
+        color: $stat-primary-submetric-text-color;
+      }
+
+      .chi-stat-background-icon {
+        opacity: $stat-primary-background-icon-opacity;
+
+        > .chi-icon {
+          color: $stat-primary-background-icon-color;
+        }
+      }
+
+      .chi-label__help {
+        .chi-button {
+          &.-flat {
+            &.-icon {
+              .chi-icon {
+                color: $stat-primary-text-color;
+              }
+            }
+          }
+        }
+      }
+
+      &.-active {
+        background-color: $stat-primary-active-background-color;
+        border: $stat-primary-active-border;
+        box-shadow: none;
+        color: $stat-primary-active-text-color;
+
+        .chi-stat-metric {
+          &__title {
+            color: $stat-primary-active-metric-title-color;
+          }
+
+          &__value {
+            color: $stat-primary-active-metric-value-color;
+          }
+        }
+
+        .chi-stat-submetric {
+          color: $stat-primary-active-submetric-text-color;
+        }
+
+        .chi-stat-background-icon {
+          opacity: $stat-primary-active-background-icon-opacity;
+
+          & > .chi-icon {
+            color: $stat-primary-active-background-icon-color;
+          }
+        }
+
+        &::after {
+          border-color: $stat-primary-active-notch-border-color;
+          display: $stat-primary-active-notch-display;
+        }
+      }
+    }
+
+    &.-compact {
+      .chi-stat__item {
+        color: $stat-compact-primary-text-color;
+
+        .chi-stat-metric__title {
+          font-weight: $stat-compact-primary-metric-font-weight;
+        }
+
+        .chi-stat-submetric {
+          color: $stat-compact-primary-submetric-text-color;
+        }
+
+        &.-active {
+          .chi-stat-submetric {
+            color: $stat-compact-primary-active-submetric-text-color;
+          }
+        }
+      }
+
+      .chi-label__help {
+        .chi-button {
+          &.-flat {
+            &.-icon {
+              .chi-icon {
+                color: $stat-compact-primary-text-color;
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
