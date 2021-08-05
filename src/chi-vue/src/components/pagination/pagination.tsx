@@ -70,7 +70,7 @@ export default class Pagination extends Vue {
     this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageToGo);
   }
 
-  _jumpToPage(jumpTo: string) {
+  _jumpToPage(jumpTo: number) {
     this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, jumpTo);
   }
 
@@ -197,7 +197,7 @@ export default class Pagination extends Vue {
             id={this._pageJumperUuid}
             type="text"
             value=""
-            onChange={(ev: Event) => this._jumpToPage((ev.target as HTMLInputElement).value)}
+            onChange={(ev: Event) => this._jumpToPage(Number((ev.target as HTMLInputElement).value))}
           />
         </div>
       ) : null;
@@ -228,7 +228,7 @@ export default class Pagination extends Vue {
                 const jumpToPage = parseInt(inputElement.value);
 
                 if (jumpToPage >= 1 && jumpToPage <= this.pages) {
-                  this._jumpToPage(inputElement.value);
+                  this._jumpToPage(Number(inputElement.value));
                 } else {
                   inputElement.value = String(this.currentPage);
                 }

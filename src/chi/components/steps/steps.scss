@@ -90,7 +90,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       &::after {
         color: $steps-item-line-border-color;
         content: '\e934';
-        font-family: 'chi';
+        font-family: $font-family-icon;
         font-size: 1.5rem;
         position: absolute;
       }

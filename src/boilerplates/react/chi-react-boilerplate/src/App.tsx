@@ -41,7 +41,7 @@ class App extends React.Component {
                     aria-label="Close"
                   >
                     <div className="chi-button__content">
-                      <i className="chi-icon icon-x"></i>
+                      <i className="chi-icon icon-x" aria-hidden="true"></i>
                     </div>
                   </button>
                 </header>

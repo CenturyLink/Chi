@@ -277,7 +277,7 @@
       &::after {
         content: '\e976';
         display: flex;
-        font-family: 'chi' !important;
+        font-family: $font-family-icon !important;
         height: 1.5rem;
         justify-content: center;
         left: 50%;

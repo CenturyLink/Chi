@@ -150,7 +150,7 @@ $sidenav-lg-width: 12.5rem;
                     color: $sidenav-item-trigger-icon-color;
                     content: '\e91e';
                     display: block;
-                    font-family: 'chi';
+                    font-family: $font-family-icon;
                     font-size: $font-size-xs;
                     font-weight: $font-weight-normal;
                     height: 1rem;

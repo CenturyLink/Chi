@@ -67,7 +67,7 @@
       &::before {
         content: '\e91f';
         display: block;
-        font-family: 'chi';
+        font-family: $font-family-icon;
         font-size: 1rem;
         font-weight: $font-weight-normal;
         height: 1rem;

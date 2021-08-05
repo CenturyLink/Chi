@@ -245,6 +245,6 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
                 .chi-form__item
                   .chi-label__wrapper
                     +label(size)
-                    i.chi-icon.icon-circle-info-outline.-icon--muted
+                    i.chi-icon.icon-circle-info-outline.-icon--muted(aria-hidden="true")
                   .chi-input__wrapper
                     +input(style, state, size, disabled, id='example')

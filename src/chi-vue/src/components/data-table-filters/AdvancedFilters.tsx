@@ -236,7 +236,7 @@ export default class AdvancedFilters extends Vue {
           const accordionItem = (
             <div class={ACCORDION_CLASSES.ITEM}>
               <button class={ACCORDION_CLASSES.TRIGGER}>
-                <i class={`${ICON_CLASS} icon-chevron-down`} />
+                <i class={`${ICON_CLASS} icon-chevron-down`} aria-hidden="true" />
                 <div class={`${ACCORDION_CLASSES.TITLE}`}>{filter.label || filter.name}</div>
               </button>
               <div class={ACCORDION_CLASSES.CONTENT}>{filterElement}</div>
@@ -252,7 +252,7 @@ export default class AdvancedFilters extends Vue {
         onclick={() => this._toggleAdvancedFiltersPopover()}
         class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT}`}>
         <div class={BUTTON_CLASSES.CONTENT}>
-          <i class={`${ICON_CLASS} icon-filter`} />
+          <i class={`${ICON_CLASS} icon-filter`} aria-hidden="true" />
         </div>
       </button>
     );
@@ -294,7 +294,7 @@ export default class AdvancedFilters extends Vue {
                 aria-label="Reset advanced filters"
                 onclick={() => this._resetAdvancedFilters()}>
                 <div class={BUTTON_CLASSES.CONTENT}>
-                  <i class={`${ICON_CLASS} icon-reload`} />
+                  <i class={`${ICON_CLASS} icon-reload`} aria-hidden="true" />
                 </div>
               </button>
             </div>
@@ -329,7 +329,6 @@ export default class AdvancedFilters extends Vue {
   }
 
   async _resetAdvancedFilters() {
-    console.log(this._planeAdvancedData);
     await this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...this._planeAdvancedData });
     await this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...this._planeAdvancedData });
     this._emitAdvancedFiltersChange();

@@ -11,21 +11,21 @@ p.-text
   .chi-grid.-no-gutter
     .chi-col.-w--12.-w-md--6.-p--1.-d--flex.-justify-content--center
       each color in ['icon--dark', 'icon--primary', 'icon--grey']
-        i(class=`chi-icon icon-atom -md -${color} -m--1`)
+        i(class=`chi-icon icon-atom -md -${color} -m--1`, aria-hidden='true')
     .chi-col.-w--12.-w-md--6.-bg--black.-p--1.-d--flex.-justify-content--center
       each color in ['icon--secondary', 'icon--light']
         if (color === 'icon--secondary')
-          i(class=`chi-icon icon-atom -md -icon--secondary -m--1`)
+          i(class=`chi-icon icon-atom -md -icon--secondary -m--1`, aria-hidden='true')
         else if (color === 'icon--light')
-          i(class=`chi-icon icon-atom -md -icon--light -m--1`)
+          i(class=`chi-icon icon-atom -md -icon--light -m--1`, aria-hidden='true')
   :code(lang="html")
     <!-- For light backgrounds -->
-    <i class="chi-icon icon-atom -md -icon--dark"></i>
-    <i class="chi-icon icon-atom -md -icon--primary"></i>
-    <i class="chi-icon icon-atom -md -icon--grey"></i>
+    <i class="chi-icon icon-atom -md -icon--dark" aria-hidden="true"></i>
+    <i class="chi-icon icon-atom -md -icon--primary" aria-hidden="true"></i>
+    <i class="chi-icon icon-atom -md -icon--grey" aria-hidden="true"></i>
     <!-- For dark backgrounds -->
-    <i class="chi-icon icon-atom -md -icon--secondary"></i>
-    <i class="chi-icon icon-atom -md -icon--light"></i>
+    <i class="chi-icon icon-atom -md -icon--secondary" aria-hidden="true"></i>
+    <i class="chi-icon icon-atom -md -icon--light" aria-hidden="true"></i>
 h3 Semantic
 p.-text
   | Use semantic text colors to communicate meaning to users. Examples include displaying alerts, form field
@@ -36,13 +36,13 @@ p.-text
   .chi-grid.-no-gutter
     .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
       each color in ['icon--success', 'icon--info', 'icon--warning', 'icon--danger', 'icon--muted']
-        i(class=`chi-icon icon-atom -md -${color} -m--1`)
+        i(class=`chi-icon icon-atom -md -${color} -m--1`, aria-hidden='true')
   :code(lang="html")
-    <i class="chi-icon icon-atom -md -icon--success"></i>
-    <i class="chi-icon icon-atom -md -icon--info"></i>
-    <i class="chi-icon icon-atom -md -icon--warning"></i>
-    <i class="chi-icon icon-atom -md -icon--danger"></i>
-    <i class="chi-icon icon-atom -md -icon--muted"></i>
+    <i class="chi-icon icon-atom -md -icon--success" aria-hidden="true"></i>
+    <i class="chi-icon icon-atom -md -icon--info" aria-hidden="true"></i>
+    <i class="chi-icon icon-atom -md -icon--warning" aria-hidden="true"></i>
+    <i class="chi-icon icon-atom -md -icon--danger" aria-hidden="true"></i>
+    <i class="chi-icon icon-atom -md -icon--muted" aria-hidden="true"></i>
 
 .-lumen--show
   h3 Brand complimentary
@@ -52,10 +52,10 @@ p.-text
     .chi-grid.-no-gutter
       .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
         each color in ['icon--navy', 'icon--orange']
-          i(class=`chi-icon icon-atom -md -${color} -m--1`)
+          i(class=`chi-icon icon-atom -md -${color} -m--1`, aria-hidden='true')
     :code(lang="html")
-      <i class="chi-icon icon-atom -md -icon--navy"></i>
-      <i class="chi-icon icon-atom -md -icon--orange"></i>
+      <i class="chi-icon icon-atom -md -icon--navy" aria-hidden="true"></i>
+      <i class="chi-icon icon-atom -md -icon--orange" aria-hidden="true"></i>
 
 h2 Background-color
 p.-text

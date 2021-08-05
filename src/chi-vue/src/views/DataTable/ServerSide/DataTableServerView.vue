@@ -10,9 +10,11 @@
       @chiSelectedRowsChange="e => selection(e)"
       @chiRowSelected="e => rowSelected(e)"
       @chiRowDeselected="e => rowDeselected(e)"
+      @chiSelectAll="e => selectAll(e)"
+      @chiDeselectAll="e => deselectAll(e)"
     >
       <template #icon="payload">
-        <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`"></i>
+        <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
       </template>
       <template #ticketId="payload">
         <TicketPopover :id="payload.id" />
@@ -27,7 +29,7 @@
       </template>
       <template #accordionContent="payload">
         <div class="chi-alert -success" role="alert">
-          <i class="chi-alert__icon chi-icon icon-circle-check"></i>
+          <i class="chi-alert__icon chi-icon icon-circle-check" aria-hidden="true"></i>
           <div class="chi-alert__content">
             <p class="chi-alert__text">
               Custom content rendered by the provided template. ID:
@@ -118,6 +120,14 @@ export default class DataTableView extends Vue {
   sorting(e: DataTableSorting) {
     // Perform custom Server Side sorting based on the column and direction data you receive from data table event
     console.log(e);
+  }
+
+  selectAll(e: DataTableRow[]) {
+    console.log('Select All', e);
+  }
+
+  deselectAll(e: DataTableRow[]) {
+    console.log('Deselect All', e);
   }
 
   selection(selectedRows: DataTableRow[]) {

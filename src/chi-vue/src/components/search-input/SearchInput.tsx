@@ -86,7 +86,7 @@ export default class SearchInput extends Vue {
         onClick={() => this._cleanInput()}
         aria-label="Clear">
         <div class={BUTTON_CLASSES.CONTENT}>
-          <i class={`${ICON_CLASS} icon-x`}></i>
+          <i class={`${ICON_CLASS} icon-x`} aria-hidden="true"></i>
         </div>
       </button>
     ) : null;
@@ -105,7 +105,8 @@ export default class SearchInput extends Vue {
             class={`
           ${ICON_CLASS} icon-search
           ${this.portal && '-icon--primary'}
-          `}></i>
+          `}
+            aria-hidden="true"></i>
         </div>
       </button>
     );

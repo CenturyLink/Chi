@@ -38,7 +38,7 @@ export class AppHome {
                   aria-label="Close"
                 >
                   <div class="chi-button__content">
-                    <i class="chi-icon icon-x"></i>
+                    <i class="chi-icon icon-x" aria-hidden="true"></i>
                   </div>
                 </button>
               </header>

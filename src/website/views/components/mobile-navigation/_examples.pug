@@ -6,7 +6,7 @@ h3 Interaction
       .-d--flex.-align-items--center
         button.chi-button.-icon.-flat#mobile-navigation-interaction-trigger(data-target="#mobile-navigation-example")
           .chi-button__content
-            i.chi-icon.icon-menu.-sm--2
+            i.chi-icon.icon-menu.-sm--2(aria-hidden="true")
         b.-ml--2 Click menu button to open Mobile navigation
       each i in [1, 2]
         p.-text.-mb--3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
@@ -20,7 +20,7 @@ h3 Interaction
                   button.chi-button.-flat.chi-dropdown__trigger.-animate.-no-hover.-b--transparent(id="button-site-menu2", data-target="dropdown-2-menu") Cloud Application Manager
                   button.chi-button.-icon.-close(aria-label='Close')
                     .chi-button__content
-                      i.chi-icon.icon-x
+                      i.chi-icon.icon-x(aria-hidden="true")
                 .chi-mobile-nav__dropdown
                   .chi-dropdown__menu.-list.chi-mobile-nav__dropdown-content#dropdown-2-menu
                     a.chi-dropdown__menu-item.-h--auto.-active(href="#")
@@ -36,43 +36,43 @@ h3 Interaction
                   .chi-mobile-nav__user
                     .chi-mobile-nav__user-name
                       span Alessandro Ray
-                      i.chi-icon.-xs.icon-user
+                      i.chi-icon.-xs.icon-user(aria-hidden="true")
                     button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate.-no-hover.-b--transparent(id="button-user-menu2", data-target="dropdown-3-menu") Menu
                   .chi-mobile-nav__dropdown
                     .chi-dropdown__menu.chi-mobile-nav__dropdown-content#dropdown-3-menu
                       a.chi-dropdown__menu-item(href="#")
-                        i.chi-icon.icon-user
+                        i.chi-icon.icon-user(aria-hidden="true")
                         span Item 1
                       a.chi-dropdown__menu-item(href="#")
-                        i.chi-icon.icon-logout
+                        i.chi-icon.icon-logout(aria-hidden="true")
                         span Item 2
                   ul.chi-tabs.-vertical.-icons
                     li.-active
                       a(href='#second-level-1')
-                        i.chi-icon.icon-atom
+                        i.chi-icon.icon-atom(aria-hidden="true")
                         span Toggle me
                     li
                       a(href='#tab-link')
-                        i.chi-icon.icon-atom
+                        i.chi-icon.icon-atom(aria-hidden="true")
                         span Tab link
                     li
                       a(href='#tab-link')
-                        i.chi-icon.icon-atom
+                        i.chi-icon.icon-atom(aria-hidden="true")
                         span Tab link
                   .chi-divider
                   .chi-mobile-nav__logout
-                    i.chi-icon.icon-logout
+                    i.chi-icon.icon-logout(aria-hidden="true")
                     span Sign out
             .chi-mobile-nav__drawers
               .chi-drawer.-right.-position--absolute#second-level-1
                 .chi-drawer__header.chi-mobile-nav__header
                   button.chi-button.-flat.-icon.-no-hover.-back(aria-label='Back')
                     .chi-button__content
-                      i.chi-icon.icon-chevron-left
+                      i.chi-icon.icon-chevron-left(aria-hidden="true")
                   .chi-mobile-nav__header-title Inventory
                   button.chi-button.-icon.-close(aria-label='Close')
                     .chi-button__content
-                      i.chi-icon.icon-x
+                      i.chi-icon.icon-x(aria-hidden="true")
                 .chi-drawer__content.chi-mobile-nav__content
                   ul.chi-mobile-nav__list
                     li
@@ -117,7 +117,7 @@ h3 Interaction
       <!-- Trigger -->
       <button class="chi-button -icon -flat" id="mobile-navigation-interaction-trigger" data-target="#mobile-navigation-example">
         <div class="chi-button__content">
-          <i class="chi-icon icon-menu -sm--2"></i>
+          <i class="chi-icon icon-menu -sm--2" aria-hidden="true"></i>
         </div>
       </button>
 
@@ -131,7 +131,7 @@ h3 Interaction
                   <div class="chi-drawer__header chi-mobile-nav__header">
                     <button class="chi-button -flat chi-dropdown__trigger -animate -no-hover -b--transparent" id="button-site-menu2" data-target="dropdown-2-menu">Cloud Application Manager</button>
                     <button class="chi-button -icon -close" aria-label="Close">
-                      <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                      <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
                     </button>
                   </div>
                   <div class="chi-mobile-nav__dropdown">
@@ -143,28 +143,28 @@ h3 Interaction
                   </div>
                   <div class="chi-drawer__content chi-mobile-nav__content">
                     <div class="chi-mobile-nav__user">
-                      <div class="chi-mobile-nav__user-name"><span>Alessandro Ray</span><i class="chi-icon -xs icon-user"></i></div>
+                      <div class="chi-mobile-nav__user-name"><span>Alessandro Ray</span><i class="chi-icon -xs icon-user" aria-hidden="true"></i></div>
                       <button class="chi-button -flat chi-dropdown__trigger -px--1 -animate -no-hover -b--transparent" id="button-user-menu2" data-target="dropdown-3-menu">Menu</button>
                     </div>
                     <div class="chi-mobile-nav__dropdown">
                       <div class="chi-dropdown__menu chi-mobile-nav__dropdown-content" id="dropdown-3-menu">
-                        <a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-user"></i><span>Item 1</span></a><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-logout"></i><span>Item 2</span></a>
+                        <a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-user" aria-hidden="true"></i><span>Item 1</span></a><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-logout" aria-hidden="true"></i><span>Item 2</span></a>
                       </div>
                     </div>
                     <ul class="chi-tabs -vertical -icons">
                       <li class="-active">
-                        <a href="#second-level-1"><i class="chi-icon icon-atom"></i><span>Toggle me</span></a>
+                        <a href="#second-level-1"><i class="chi-icon icon-atom" aria-hidden="true"></i><span>Toggle me</span></a>
                       </li>
                       <li>
-                        <a href="#tab-link"><i class="chi-icon icon-atom"></i><span>Tab link</span></a>
+                        <a href="#tab-link"><i class="chi-icon icon-atom" aria-hidden="true"></i><span>Tab link</span></a>
                       </li>
                       <li>
-                        <a href="#tab-link"><i class="chi-icon icon-atom"></i><span>Tab link</span></a>
+                        <a href="#tab-link"><i class="chi-icon icon-atom" aria-hidden="true"></i><span>Tab link</span></a>
                       </li>
                     </ul>
                     <div class="chi-divider"></div>
                     <div class="chi-mobile-nav__logout">
-                      <i class="chi-icon icon-logout"></i>
+                      <i class="chi-icon icon-logout" aria-hidden="true"></i>
                       <span>Sign out</span>
                     </div>
                   </div>
@@ -174,11 +174,11 @@ h3 Interaction
                 <div class="chi-drawer -right -position--absolute" id="second-level-1">
                   <div class="chi-drawer__header chi-mobile-nav__header">
                     <button class="chi-button -flat -icon -no-hover -back" aria-label="Back">
-                      <div class="chi-button__content"><i class="chi-icon icon-chevron-left"></i></div>
+                      <div class="chi-button__content"><i class="chi-icon icon-chevron-left" aria-hidden="true"></i></div>
                     </button>
                     <div class="chi-mobile-nav__header-title">Inventory</div>
                     <button class="chi-button -icon -close" aria-label="Close">
-                      <div class="chi-button__content"><i class="chi-icon icon-x"></i></div>
+                      <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
                     </button>
                   </div>
                   <div class="chi-drawer__content chi-mobile-nav__content">

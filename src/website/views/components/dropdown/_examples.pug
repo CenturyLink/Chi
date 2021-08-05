@@ -484,24 +484,24 @@ p.-text
       .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
         .chi-dropdown__menu.-active
           a.chi-dropdown__menu-item(href='#')
-            i.chi-icon.icon-file-outline
+            i.chi-icon.icon-file-outline(aria-hidden="true")
             = "New"
           a.chi-dropdown__menu-item.-disabled(href='http://www.centurylink.com')
-            i.chi-icon.icon-arrow-to-bottom
+            i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
             = "Save"
           .chi-divider
           a.chi-dropdown__menu-item(href='#')
-            i.chi-icon.icon-mail
+            i.chi-icon.icon-mail(aria-hidden="true")
             = "Send"
           a.chi-dropdown__menu-item.-active(href='#')
-            i.chi-icon.icon-cart
+            i.chi-icon.icon-cart(aria-hidden="true")
             = "Buy"
           a.chi-dropdown__menu-item(href='#')
-            i.chi-icon.icon-users
+            i.chi-icon.icon-users(aria-hidden="true")
             = "Share"
           .chi-divider
           a.chi-dropdown__menu-item(href='#')
-            i.chi-icon.icon-logout
+            i.chi-icon.icon-logout(aria-hidden="true")
             = "Logout"
     .example-tabs.-pl--2
       ul.chi-tabs#example-states-icons
@@ -514,24 +514,24 @@ p.-text
       :code(lang="html")
         <div class="chi-dropdown__menu">
           <a class="chi-dropdown__menu-item" href="#">
-            <i class="chi-icon icon-file-outline"></i>New
+            <i class="chi-icon icon-file-outline" aria-hidden="true"></i>New
           </a>
           <a class="chi-dropdown__menu-item -disabled" href="#">
-            <i class="chi-icon icon-arrow-to-bottom"></i>Save
+            <i class="chi-icon icon-arrow-to-bottom" aria-hidden="true"></i>Save
           </a>
           <div class="chi-divider"></div>
           <a class="chi-dropdown__menu-item" href="#">
-            <i class="chi-icon icon-mail"></i>Send
+            <i class="chi-icon icon-mail" aria-hidden="true"></i>Send
           </a>
           <a class="chi-dropdown__menu-item -active" href="#">
-            <i class="chi-icon icon-cart"></i>Buy
+            <i class="chi-icon icon-cart" aria-hidden="true"></i>Buy
           </a>
           <a class="chi-dropdown__menu-item" href="#">
-            <i class="chi-icon icon-users"></i>Share
+            <i class="chi-icon icon-users" aria-hidden="true"></i>Share
           </a>
           <div class="chi-divider"></div>
           <a class="chi-dropdown__menu-item" href="#">
-            <i class="chi-icon icon-logout"></i>Logout
+            <i class="chi-icon icon-logout" aria-hidden="true"></i>Logout
           </a>
         </div>
 
@@ -545,7 +545,7 @@ p.-text
       .chi-dropdown__menu.-active
         .chi-input__wrapper.-icon--left.chi-dropdown__menu-item(role="search")
           input(type="text", class="chi-input", placeholder="Search", aria-label="Search")
-          i.chi-icon.icon-search
+          i.chi-icon.icon-search(aria-hidden="true")
         a.chi-dropdown__menu-item(href='#') Item 1
         a.chi-dropdown__menu-item(href='#') Item 2
         a.chi-dropdown__menu-item(href='#') Item 3
@@ -562,7 +562,7 @@ p.-text
       <div class="chi-dropdown__menu">
         <div class="chi-input__wrapper -icon--left chi-dropdown__menu-item" role="search">
           <input class="chi-input" type="text" placeholder="Search" aria-label="Search">
-          <i class="chi-icon icon-search"></i>
+          <i class="chi-icon icon-search" aria-hidden="true"></i>
         </div>
         <a class="chi-dropdown__menu-item" href="#">Item 1</a>
         <a class="chi-dropdown__menu-item" href="#">Item 2</a>
@@ -637,25 +637,25 @@ h4 With Icons
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox1b")
             label(for="checkbox1b", class="chi-checkbox__label")
-              i.chi-icon.icon-logo-centurylink
+              i.chi-icon.icon-logo-centurylink(aria-hidden="true")
               | Item 1
         .chi-dropdown__menu-item
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox2b", disabled)
             label(for="checkbox2b", class="chi-checkbox__label")
-              i.chi-icon.icon-logo-centurylink
+              i.chi-icon.icon-logo-centurylink(aria-hidden="true")
               | Item 2
         .chi-dropdown__menu-item
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox3b", checked)
             label(for="checkbox3b", class="chi-checkbox__label")
-              i.chi-icon.icon-logo-centurylink
+              i.chi-icon.icon-logo-centurylink(aria-hidden="true")
               | Item 3
         .chi-dropdown__menu-item
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox4b")
             label(for="checkbox4b", class="chi-checkbox__label")
-              i.chi-icon.icon-logo-centurylink
+              i.chi-icon.icon-logo-centurylink(aria-hidden="true")
               | Item 4
   .example-tabs.-pl--2
     ul.chi-tabs#example-checkbox-icons
@@ -671,7 +671,7 @@ h4 With Icons
           <div class="chi-checkbox">
             <input class="chi-checkbox__input" type="checkbox" id="checkbox1">
             <label class="chi-checkbox__label" for="checkbox1">
-              <i class="chi-icon icon-logo-centurylink"></i>
+              <i class="chi-icon icon-logo-centurylink" aria-hidden="true"></i>
               Item 1
             </label>
           </div>
@@ -680,7 +680,7 @@ h4 With Icons
           <div class="chi-checkbox">
             <input class="chi-checkbox__input" type="checkbox" id="checkbox2" disabled>
             <label class="chi-checkbox__label" for="checkbox2">
-              <i class="chi-icon icon-logo-centurylink"></i>
+              <i class="chi-icon icon-logo-centurylink" aria-hidden="true"></i>
               Item 2
             </label>
           </div>
@@ -689,7 +689,7 @@ h4 With Icons
           <div class="chi-checkbox">
             <input class="chi-checkbox__input" type="checkbox" id="checkbox3" checked>
             <label class="chi-checkbox__label" for="checkbox3">
-              <i class="chi-icon icon-logo-centurylink"></i>
+              <i class="chi-icon icon-logo-centurylink" aria-hidden="true"></i>
               Item 3
             </label>
           </div>
@@ -698,7 +698,7 @@ h4 With Icons
           <div class="chi-checkbox">
             <input class="chi-checkbox__input" type="checkbox" id="checkbox4">
             <label class="chi-checkbox__label" for="checkbox4">
-              <i class="chi-icon icon-logo-centurylink"></i>
+              <i class="chi-icon icon-logo-centurylink" aria-hidden="true"></i>
               Item 4
             </label>
           </div>

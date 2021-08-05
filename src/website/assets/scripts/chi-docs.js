@@ -236,7 +236,9 @@ onLoad(() => {
   var rootUrl = window.location.hostname === 'assets.ctl.io' ?
     'https://assets.ctl.io/chi/' + window.chiCurrentVersion + '/' :
     window.location.hostname === 'assets-dev.ctl.io' ?
-      'https://assets-dev.ctl.io/chi/staging/' : '/';
+      'https://assets-dev.ctl.io/chi/staging/' : 
+    window.location.hostname === 'lib.lumen.com' ?
+      'https://lib.lumen.com/chi/' + window.chiCurrentVersion + '/' : '/';
 
   var themes = {
     Lumen: {
