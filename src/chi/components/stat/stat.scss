@@ -400,3 +400,13 @@
     }
   }
 }
+
+/* IE11 CSS hack */
+// sass-lint:disable-block no-vendor-prefixes
+@media all and (-ms-high-contrast: none) {
+  .chi-stat {
+    &__item:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
+}
