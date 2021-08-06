@@ -157,6 +157,24 @@ export const exampleToolbar = {
       },
     ],
   },
+  viewsData: [
+    {
+      id: 'id1',
+      name: 'save-view-1',
+      label: 'Save View 1',
+      columns: [],
+      searchString: 'abc',
+      filters: [],
+    },
+    {
+      id: 'id2',
+      name: 'save-view-2',
+      label: 'Save View 2',
+      columns: [],
+      searchString: 'abcde',
+      filters: [],
+    },
+  ],
 };
 
 export const exampleTableHead = {

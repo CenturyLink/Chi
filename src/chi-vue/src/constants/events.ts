@@ -15,12 +15,20 @@ export const DATA_TABLE_EVENTS = {
     COLUMNS_CHANGE: 'chiToolbarColumnsChange',
     FILTERS_CHANGE: 'chiToolbarFiltersChange',
     SEARCH: 'chiToolbarSearch',
+    VIEWS_CHANGE: 'chiToolbarViewsChange',
+    VIEWS_EDIT: 'chiToolbarViewsEdit',
   },
   EXPANSION: {
     EXPANDED: 'chiRowExpanded',
     COLLAPSED: 'chiRowCollapsed',
   },
 };
+
+export const DATA_TABLE_VIEWS_EVENTS = {
+  VIEWS_CHANGE: 'chiViewsChange',
+  VIEWS_EDIT: 'chiViewsEdit',
+};
+
 export interface DataTableSorting {
   column: string | undefined;
   direction: 'ascending' | 'descending' | undefined;

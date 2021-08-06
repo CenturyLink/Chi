@@ -44,9 +44,12 @@
           @chiToolbarFiltersChange="e => filtersChange(e)"
           @chiToolbarSearch="e => search(e)"
           @chiToolbarColumnsChange="e => columnsChange(e)"
+          @chiToolbarViewsChange="e => viewsChange(e)"
         >
           <template v-slot:start>
             <ChiSearchInput :portal="true" size="lg" :dataTableSearch="true" />
+            <div class="chi-divider -vertical"></div>
+            <ChiDataTableViews :views="toolbar.viewsData" />
             <div class="chi-divider -vertical"></div>
             <ChiDataTableFilters :portal="true" :filtersData="toolbar.filtersData" />
           </template>
@@ -91,6 +94,7 @@ import DataTableFilters from '../../../components/data-table-filters/DataTableFi
 import { DataTableRow } from '../../../constants/types';
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
 import { exampleConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
+import DataTableViews from '../../../components/data-table-views/DataTableViews';
 
 const MOCK_API_RESPONSE_DELAY = 5000;
 
@@ -103,6 +107,7 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     ChiColumnCustomization: ColumnCustomization,
     Actions,
     TicketPopover,
+    ChiDataTableViews: DataTableViews,
   },
   methods: {
     rowSelect: e => {
@@ -121,6 +126,9 @@ const MOCK_API_RESPONSE_DELAY = 5000;
       console.log(e);
     },
     filtersChange: e => {
+      console.log(e);
+    },
+    viewsChange: e => {
       console.log(e);
     },
     rowExpanded: e => {

@@ -134,8 +134,10 @@ export interface DataTableColumnsData {
 }
 export type DataTableFormElementFilters = 'select' | 'input' | 'textarea' | 'checkbox';
 export interface DataTableView {
+  id: string;
   name: string;
-  columns: string[];
+  label: string;
+  columns: DataTableColumn[];
   searchString: string;
   filters: DataTableFilter[];
 }
