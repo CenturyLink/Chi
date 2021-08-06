@@ -159,17 +159,17 @@ export const exampleToolbar = {
   },
   viewsData: [
     {
-      id: 'id1',
-      name: 'save-view-1',
-      label: 'Save View 1',
+      id: 'view-1',
+      name: 'view-1',
+      label: 'View 1',
       columns: [],
       searchString: 'abc',
       filters: [],
     },
     {
-      id: 'id2',
-      name: 'save-view-2',
-      label: 'Save View 2',
+      id: 'view-2',
+      name: 'view-2',
+      label: 'View 2',
       columns: [],
       searchString: 'abcde',
       filters: [],

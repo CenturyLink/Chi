@@ -10,6 +10,10 @@ h2 Examples
               .chi-form__item
                 chi-search-input(id="example__base")
             .chi-divider.-vertical
+            .chi-form__item
+              select(class="chi-select", id="example-views")
+                option(value="") View
+            .chi-divider.-vertical
             .chi-toolbar__filters
               .chi-toolbar__filters-desktop
                 .chi-form__item
@@ -79,6 +83,9 @@ h2 Examples
         <ChiDataTableToolbar>
           <template v-slot:start>
             <ChiSearchInput :dataTableSearch="true" />
+            <div class="chi-divider -vertical"></div>
+            <!-- To render views, use Views sub-module of Toolbar -->
+            <ChiDataTableViews />
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
             <ChiDataTableFilters :filtersData="toolbar.filtersData" />
@@ -652,6 +659,10 @@ h2 Examples
               .chi-form__item
                 chi-search-input(id="example__base-3")
             .chi-divider.-vertical
+            .chi-form__item
+              select(class="chi-select", id="example-views-portal")
+                option(value="") View
+            .chi-divider.-vertical
             .chi-toolbar__filters
               .chi-toolbar__filters-desktop
                 .chi-form__item
@@ -722,6 +733,9 @@ h2 Examples
         <ChiDataTableToolbar>
           <template v-slot:start>
             <ChiSearchInput :dataTableSearch="true" />
+            <div class="chi-divider -vertical"></div>
+            <!-- To render views, use Views sub-module of Toolbar -->
+            <ChiDataTableViews />
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
             <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
