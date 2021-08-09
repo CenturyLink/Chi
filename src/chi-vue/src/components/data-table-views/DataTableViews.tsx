@@ -1,6 +1,10 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { DataTableView } from '@/constants/types';
-import { FORM_CLASSES, SELECT_CLASSES } from '@/constants/classes';
+import {
+  DATA_TABLE_CLASSES,
+  FORM_CLASSES,
+  SELECT_CLASSES,
+} from '@/constants/classes';
 import { DATA_TABLE_VIEWS_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '../data-table-toolbar/DataTableToolbar';
@@ -29,34 +33,25 @@ export default class DataTableViews extends Vue {
   }
 
   render() {
+    let viewsContent: JSX.Element;
     if (!this.views || !this.views.length) {
-      return (
-        <div
-          class={`
-        ${FORM_CLASSES.FORM_ITEM}`}
+      viewsContent = (
+        <select
+          aria-label={`Select a View`}
+          id='data-table-views'
+          selected='View'
+          class={`${SELECT_CLASSES.SELECT} -lg`}
+          onChange={(ev: Event) => this._emitViewsChanged(ev)}
         >
-          <select
-            aria-label={`Select a View`}
-            id='data-table-views'
-            selected='View'
-            class={`${SELECT_CLASSES.SELECT} -lg`}
-            onChange={(ev: Event) => this._emitViewsChanged(ev)}
-          >
-            <option>View</option>
-          </select>
-        </div>
+          <option>View</option>
+        </select>
       );
-    }
+    } else {
+      const options = this.views?.map((view: DataTableView) => {
+        return <option value={view.name}>{view.label || view.name}</option>;
+      });
 
-    const options = this.views?.map((view: DataTableView) => {
-      return <option value={view.name}>{view.label || view.name}</option>;
-    });
-
-    return (
-      <div
-        class={`
-      ${FORM_CLASSES.FORM_ITEM}`}
-      >
+      viewsContent = (
         <select
           aria-label={`Select a View`}
           id='data-table-views'
@@ -70,6 +65,14 @@ export default class DataTableViews extends Vue {
         >
           {options}
         </select>
+      );
+    }
+
+    return (
+      <div class={DATA_TABLE_CLASSES.VIEWS}>
+        <div class={`${DATA_TABLE_CLASSES.VIEWS}-desktop`}>
+          <div class={`${FORM_CLASSES.FORM_ITEM}`}>{viewsContent}</div>
+        </div>
       </div>
     );
   }
