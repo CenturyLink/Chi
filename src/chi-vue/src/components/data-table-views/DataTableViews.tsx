@@ -40,7 +40,6 @@ export default class DataTableViews extends Vue {
         <select
           aria-label={`Select a View`}
           id='data-table-views'
-          selected='View'
           class={`${SELECT_CLASSES.SELECT} -lg`}
           onChange={(ev: Event) => this._emitViewsChanged(ev)}
         >
