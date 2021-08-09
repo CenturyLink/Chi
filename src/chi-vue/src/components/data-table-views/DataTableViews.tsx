@@ -13,7 +13,7 @@ import DataTableToolbar from '../data-table-toolbar/DataTableToolbar';
 export default class DataTableViews extends Vue {
   @Prop() views?: DataTableView[];
   @Prop() defaultView?: string;
-  @Prop() selectedView?: string;
+  _selectedView?: string;
 
   mounted(): void {
     const dataTableToolbarComponent = findComponent(this, 'DataTableToolbar');
@@ -27,6 +27,7 @@ export default class DataTableViews extends Vue {
     const value = (ev.target as HTMLFormElement).value;
     this.views?.forEach((view: DataTableView) => {
       if (view.id === value) {
+        this._selectedView = view.id;
         this.$emit(DATA_TABLE_EVENTS.VIEWS_CHANGE, view);
       }
     });

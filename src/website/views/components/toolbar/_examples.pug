@@ -13,7 +13,7 @@ h2 Examples
             .chi-toolbar__views
               .chi-toolbar__views-desktop
                 .chi-form__item
-                  select(class="chi-select", id="example-views")
+                  select(class="chi-select", id="example-views-1")
                     option(value="view-1") View 1
                     option(value="view-2") View 2
             .chi-divider.-vertical
@@ -231,9 +231,42 @@ h2 Examples
                 {
                   id: 'view-1',
                   label: 'View 1',
-                  columns: [],
+                  columns: [
+                    {
+                      name: 'columnA',
+                      label: 'Column A',
+                    },
+                    {
+                      name: 'columnB',
+                      label: 'Column B',
+                    },
+                    {
+                      name: 'columnC',
+                      label: 'Column C',
+                      locked: true,
+                      selected: true,
+                    },
+                  ],
                   searchString: 'abc',
-                  filters: [],
+                  filters: [
+                    {
+                      name: 'status',
+                      type: 'select',
+                      id: 'myoption1',
+                      label: 'Selector',
+                      options: [
+                        {
+                          label: 'Active',
+                          value: 'active',
+                        },
+                        {
+                          label: 'Inactive',
+                          value: 'inactive',
+                        },
+                      ],
+                      value: 'active',
+                    },
+                  ],
                 },
                 {
                   id: 'view-2',
@@ -261,7 +294,7 @@ h2 Examples
               <div class="chi-toolbar__views">
                 <div class="chi-toolbar__views-desktop">
                   <div class="chi-form__item">
-                    <select class="chi-select" id="example-views">
+                    <select class="chi-select" id="example-views-1">
                       <option>View 1</option>
                       <option>View 2</option>
                     </select>
@@ -433,7 +466,7 @@ h2 Examples
             .chi-toolbar__views
               .chi-toolbar__views-desktop
                 .chi-form__item
-                  select(class="chi-select", id="example-views-ribbon")
+                  select(class="chi-select", id="example-views-2")
                     option(value="view-1") View 1
                     option(value="view-2") View 2
             .chi-divider.-vertical
@@ -519,7 +552,7 @@ h2 Examples
               <div class="chi-toolbar__views">
                 <div class="chi-toolbar__views-desktop">
                   <div class="chi-form__item">
-                    <select class="chi-select" id="example-views-ribbon">
+                    <select class="chi-select" id="example-views-2">
                       <option>View 1</option>
                       <option>View 2</option>
                     </select>
@@ -710,7 +743,7 @@ h2 Examples
             .chi-toolbar__views
               .chi-toolbar__views-desktop
                 .chi-form__item
-                  select(class="chi-select", id="example-views-portal")
+                  select(class="chi-select", id="example-views-3")
                     option(value="view-1") View 1
                     option(value="view-2") View 2
             .chi-divider.-vertical
@@ -929,9 +962,42 @@ h2 Examples
                 {
                   id: 'view-1',
                   label: 'View 1',
-                  columns: [],
+                  columns: [
+                    {
+                      name: 'columnA',
+                      label: 'Column A',
+                    },
+                    {
+                      name: 'columnB',
+                      label: 'Column B',
+                    },
+                    {
+                      name: 'columnC',
+                      label: 'Column C',
+                      locked: true,
+                      selected: true,
+                    },
+                  ],
                   searchString: 'abc',
-                  filters: [],
+                  filters: [
+                    {
+                      name: 'status',
+                      type: 'select',
+                      id: 'myoption1',
+                      label: 'Selector',
+                      options: [
+                        {
+                          label: 'Active',
+                          value: 'active',
+                        },
+                        {
+                          label: 'Inactive',
+                          value: 'inactive',
+                        },
+                      ],
+                      value: 'active',
+                    },
+                  ],
                 },
                 {
                   id: 'view-2',
@@ -959,7 +1025,7 @@ h2 Examples
               <div class="chi-toolbar__views">
                 <div class="chi-toolbar__views-desktop">
                   <div class="chi-form__item">
-                    <select class="chi-select" id="example-views-portal">
+                    <select class="chi-select" id="example-views-3">
                       <option>View 1</option>
                       <option>View 2</option>
                     </select>
@@ -1131,7 +1197,7 @@ h2 Examples
             .chi-toolbar__views
               .chi-toolbar__views-desktop
                 .chi-form__item
-                  select(class="chi-select", id="example-views-portal-ribbon")
+                  select(class="chi-select", id="example-views-4")
                     option(value="view-1") View 1
                     option(value="view-2") View 2
             .chi-divider.-vertical
@@ -1217,7 +1283,7 @@ h2 Examples
               <div class="chi-toolbar__views">
                 <div class="chi-toolbar__views-desktop">
                   <div class="chi-form__item">
-                    <select class="chi-select" id="example-views-portal-ribbon">
+                    <select class="chi-select" id="example-views-4">
                       <option>View 1</option>
                       <option>View 2</option>
                     </select>

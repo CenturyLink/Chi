@@ -49,7 +49,7 @@
           <template v-slot:start>
             <ChiSearchInput :portal="true" size="lg" :dataTableSearch="true" />
             <div class="chi-divider -vertical"></div>
-            <ChiDataTableViews :views="toolbar.viewsData" />
+            <ChiDataTableViews :views="toolbar.viewsData" :defaultView="'view-2'" />
             <div class="chi-divider -vertical"></div>
             <ChiDataTableFilters :portal="true" :filtersData="toolbar.filtersData" />
           </template>
