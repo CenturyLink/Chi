@@ -160,7 +160,6 @@ export const exampleToolbar = {
   viewsData: [
     {
       id: 'view-1',
-      name: 'view-1',
       label: 'View 1',
       columns: [],
       searchString: 'abc',
@@ -168,7 +167,6 @@ export const exampleToolbar = {
     },
     {
       id: 'view-2',
-      name: 'view-2',
       label: 'View 2',
       columns: [],
       searchString: 'abcde',

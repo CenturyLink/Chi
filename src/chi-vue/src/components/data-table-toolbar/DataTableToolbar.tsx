@@ -5,7 +5,7 @@ import SearchInput from '../../components/search-input/SearchInput';
 import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
 import DataTableColumns from '@/components/column-customization/ColumnCustomization';
 import DataTable from '../data-table/DataTable';
-import { DATA_TABLE_EVENTS, DATA_TABLE_VIEWS_EVENTS, SEARCH_INPUT_EVENTS } from '@/constants/events';
+import { DATA_TABLE_EVENTS, SEARCH_INPUT_EVENTS } from '@/constants/events';
 import DataTableViews from '../data-table-views/DataTableViews';
 
 @Component({})
@@ -41,7 +41,7 @@ export default class DataTableToolbar extends Vue {
     }
 
     if (this._views) {
-      this._views.$on(DATA_TABLE_VIEWS_EVENTS.VIEWS_CHANGE, (ev: Event) => {
+      this._views.$on(DATA_TABLE_EVENTS.VIEWS_CHANGE, (ev: Event) => {
         this.$emit(DATA_TABLE_EVENTS.TOOLBAR.VIEWS_CHANGE, ev);
       });
     }

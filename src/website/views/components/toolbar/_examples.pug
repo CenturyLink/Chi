@@ -10,9 +10,12 @@ h2 Examples
               .chi-form__item
                 chi-search-input(id="example__base")
             .chi-divider.-vertical
-            .chi-form__item
-              select(class="chi-select", id="example-views")
-                option(value="") View
+            .chi-toolbar__views
+              .chi-toolbar__views-desktop
+                .chi-form__item
+                  select(class="chi-select", id="example-views")
+                    option(value="view-1") View 1
+                    option(value="view-2") View 2
             .chi-divider.-vertical
             .chi-toolbar__filters
               .chi-toolbar__filters-desktop
@@ -85,7 +88,7 @@ h2 Examples
             <ChiSearchInput :dataTableSearch="true" />
             <div class="chi-divider -vertical"></div>
             <!-- To render views, use Views sub-module of Toolbar -->
-            <ChiDataTableViews />
+            <ChiDataTableViews :views="toolbar.viewsData" />
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
             <ChiDataTableFilters :filtersData="toolbar.filtersData" />
@@ -223,7 +226,23 @@ h2 Examples
                     label: 'Column J',
                   },
                 ],
-              }
+              },
+              viewsData: [
+                {
+                  id: 'view-1',
+                  label: 'View 1',
+                  columns: [],
+                  searchString: 'abc',
+                  filters: [],
+                },
+                {
+                  id: 'view-2',
+                  label: 'View 2',
+                  columns: [],
+                  searchString: 'abcde',
+                  filters: [],
+                },
+              ],
             };
           };
         };
@@ -236,6 +255,17 @@ h2 Examples
               <div class="chi-toolbar__search">
                 <div class="chi-form__item">
                     <chi-search-input id="example__base"></chi-search-input>
+                </div>
+              </div>
+              <div class="chi-divider -vertical"></div>
+              <div class="chi-toolbar__views">
+                <div class="chi-toolbar__views-desktop">
+                  <div class="chi-form__item">
+                    <select class="chi-select" id="example-views">
+                      <option>View 1</option>
+                      <option>View 2</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div class="chi-divider -vertical"></div>
@@ -400,6 +430,13 @@ h2 Examples
               .chi-form__item
                 chi-search-input(id="example__base-1")
             .chi-divider.-vertical
+            .chi-toolbar__views
+              .chi-toolbar__views-desktop
+                .chi-form__item
+                  select(class="chi-select", id="example-views-ribbon")
+                    option(value="view-1") View 1
+                    option(value="view-2") View 2
+            .chi-divider.-vertical
             .chi-toolbar__filters
               .chi-toolbar__filters-desktop
                 .chi-form__item
@@ -476,6 +513,17 @@ h2 Examples
               <div class="chi-toolbar__search">
                 <div class="chi-form__item">
                   <chi-search-input id="example__base-1"></chi-search-input>
+                </div>
+              </div>
+              <div class="chi-divider -vertical"></div>
+              <div class="chi-toolbar__views">
+                <div class="chi-toolbar__views-desktop">
+                  <div class="chi-form__item">
+                    <select class="chi-select" id="example-views-ribbon">
+                      <option>View 1</option>
+                      <option>View 2</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div class="chi-divider -vertical"></div>
@@ -659,9 +707,12 @@ h2 Examples
               .chi-form__item
                 chi-search-input(id="example__base-3")
             .chi-divider.-vertical
-            .chi-form__item
-              select(class="chi-select", id="example-views-portal")
-                option(value="") View
+            .chi-toolbar__views
+              .chi-toolbar__views-desktop
+                .chi-form__item
+                  select(class="chi-select", id="example-views-portal")
+                    option(value="view-1") View 1
+                    option(value="view-2") View 2
             .chi-divider.-vertical
             .chi-toolbar__filters
               .chi-toolbar__filters-desktop
@@ -735,7 +786,7 @@ h2 Examples
             <ChiSearchInput :dataTableSearch="true" />
             <div class="chi-divider -vertical"></div>
             <!-- To render views, use Views sub-module of Toolbar -->
-            <ChiDataTableViews />
+            <ChiDataTableViews :views="toolbar.viewsData" />
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
             <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
@@ -873,7 +924,23 @@ h2 Examples
                     label: 'Column J',
                   },
                 ],
-              }
+              },
+              viewsData: [
+                {
+                  id: 'view-1',
+                  label: 'View 1',
+                  columns: [],
+                  searchString: 'abc',
+                  filters: [],
+                },
+                {
+                  id: 'view-2',
+                  label: 'View 2',
+                  columns: [],
+                  searchString: 'abcde',
+                  filters: [],
+                },
+              ],
             };
           };
         };
@@ -886,6 +953,17 @@ h2 Examples
               <div class="chi-toolbar__search">
                 <div class="chi-form__item">
                   <chi-search-input id="example__base-3"></chi-search-input>
+                </div>
+              </div>
+              <div class="chi-divider -vertical"></div>
+              <div class="chi-toolbar__views">
+                <div class="chi-toolbar__views-desktop">
+                  <div class="chi-form__item">
+                    <select class="chi-select" id="example-views-portal">
+                      <option>View 1</option>
+                      <option>View 2</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div class="chi-divider -vertical"></div>
@@ -1050,6 +1128,13 @@ h2 Examples
               .chi-form__item
                 chi-search-input(id="example__base-4")
             .chi-divider.-vertical
+            .chi-toolbar__views
+              .chi-toolbar__views-desktop
+                .chi-form__item
+                  select(class="chi-select", id="example-views-portal-ribbon")
+                    option(value="view-1") View 1
+                    option(value="view-2") View 2
+            .chi-divider.-vertical
             .chi-toolbar__filters
               .chi-toolbar__filters-desktop
                 .chi-form__item
@@ -1126,6 +1211,17 @@ h2 Examples
               <div class="chi-toolbar__search">
                 <div class="chi-form__item">
                   <chi-search-input id="example__base-4"></chi-search-input>
+                </div>
+              </div>
+              <div class="chi-divider -vertical"></div>
+              <div class="chi-toolbar__views">
+                <div class="chi-toolbar__views-desktop">
+                  <div class="chi-form__item">
+                    <select class="chi-select" id="example-views-portal-ribbon">
+                      <option>View 1</option>
+                      <option>View 2</option>
+                    </select>
+                  </div>
                 </div>
               </div>
               <div class="chi-divider -vertical"></div>

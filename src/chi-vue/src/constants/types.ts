@@ -135,17 +135,12 @@ export interface DataTableColumnsData {
 export type DataTableFormElementFilters = 'select' | 'input' | 'textarea' | 'checkbox';
 export interface DataTableView {
   id: string;
-  name: string;
   label: string;
-  columns: DataTableColumn[];
-  searchString: string;
-  filters: DataTableFilter[];
+  searchString?: string;
+  filters?: DataTableFilter[];
+  columns?: DataTableColumn[];
 }
-export interface DataTableViews {
-  views: DataTableView[];
-  defaultView: DataTableView;
-  selectedView: DataTableView;
-}
+
 export type DataTableCellAlignment = 'left' | 'center' | 'right';
 //#endregion
 
