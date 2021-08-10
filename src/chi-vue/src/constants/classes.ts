@@ -120,6 +120,16 @@ export const MODAL_CLASSES = {
 };
 //#endregion
 
+//#region Generic
+export const GENERIC_SIZE_CLASSES = {
+  XS: '-xs',
+  SM: '-sm',
+  MD: '-md',
+  LG: '-lg',
+  XL: '-xl',
+};
+//#endregion
+
 //#region Icon
 export const ICON_CLASS = 'chi-icon';
 //#endregion
