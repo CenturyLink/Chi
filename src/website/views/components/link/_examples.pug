@@ -170,7 +170,7 @@ p.-text
   | <code>prev</code>, and more.
 .example.-mb--3
   .-p--3.-text
-    chi-link(href='#' rel='noopener') Link
+    chi-link(href='#' rel='noopener noreferrer') Link
   .example-tabs.-pl--2
     ul.chi-tabs#example-rel
       li.-active
@@ -179,10 +179,10 @@ p.-text
         a(href=`#html-rel`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-rel
     :code(lang="html")
-      <chi-link href="#" rel="noopener">Link</chi-link>
+      <chi-link href="#" rel="noopener noreferrer">Link</chi-link>
   .chi-tabs-panel#html-rel
     :code(lang="html")
-      <a class="chi-link" href="#" rel="noopener">Link</a>
+      <a class="chi-link" href="#" rel="noopener noreferrer">Link</a>
 
 h3 Download
 p.-text
