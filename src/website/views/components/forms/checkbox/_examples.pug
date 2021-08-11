@@ -58,7 +58,7 @@ p.-text
   .-p--3
     .chi-form__item
       .chi-checkbox
-        input(type="checkbox" class="chi-checkbox__input" id="checkbox-ind1" indeterminate)
+        input(type="checkbox" class="chi-checkbox__input" id="checkbox-ind1")
         label(for="checkbox-ind1" class="chi-checkbox__label") Checkbox
 
   .example-tabs.-pl--2
@@ -72,7 +72,7 @@ p.-text
     :code(lang="html")
       <div class="chi-form__item">
         <div class="chi-checkbox">
-          <input type="checkbox" class="chi-checkbox__input" id="checkbox-ind1">
+          <input type="checkbox" class="chi-checkbox__input -indeterminate" id="checkbox-ind1">
           <label class="chi-checkbox__label" for="checkbox-ind1">Checkbox</label>
         </div>
       </div>
@@ -82,7 +82,7 @@ p.-text
         var checkbox = document.getElementById('checkbox-ind1');
         
         checkbox.indeterminate = true;
-        checkbox.addClass("-indeterminate");
+        checkbox.classList.add("-indeterminate");
       </script>
 
 h3 Disabled
@@ -545,6 +545,6 @@ script.
       var checkbox = document.getElementById("checkbox-ind1");
       
       checkbox.indeterminate = true;
-      checkbox.addClass("-indeterminate");
+      checkbox.classList.add("-indeterminate");
     }
   );
