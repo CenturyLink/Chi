@@ -3,7 +3,7 @@ title: Checkbox
 ---
 
 .test-states
-  each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
+  each state, index in ['default', 'hover', 'focus', 'checked', 'indeterminate', 'disabled']
     h5= `Checkbox / ${state}`
     .chi-form__item.-row.-mb--1
       .chi-checkbox
@@ -11,7 +11,7 @@ title: Checkbox
           type="checkbox"
           id=`checkbox-${index}`
           class={
-            [`-${state}`]: state == 'focus'
+            [`-${state}`]: state == 'focus' || state == 'indeterminate'
           }
           checked=state=='checked' ? 'checked' : false
           disabled=state=='disabled' ? 'disabled' : false
@@ -20,7 +20,7 @@ title: Checkbox
 
 h2 Checkbox List
 .test-states
-  each state, index in ['default', 'hover', 'focus', 'checked', 'disabled']
+  each state, index in ['default', 'hover', 'focus', 'checked', 'indeterminate', 'disabled']
     h5= `Checkbox / ${state}`
     ul.chi-form__item.-list(style="max-width:20rem")
       each element in [1, 2, 3, 4, 5]
@@ -28,11 +28,25 @@ h2 Checkbox List
           .chi-checkbox
             input.chi-checkbox__input(
             type="checkbox"
-            id=`checkbox--${element}`
+            id=`checkbox--${element}--${state}`
             class={
-              [`-${state}`]: state == 'focus'
+              [`-${state}`]: state == 'focus' || state == 'indeterminate'
             }
             checked=state == 'checked' ? 'checked' : false
             disabled=state == 'disabled' ? 'disabled' : false
             )
             label.chi-checkbox__label(for=`checkbox--${element}`)= `Checkbox-${element}`
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      var checkbox = document.getElementById("checkbox-4");
+      var checkboxList = ["checkbox--1--indeterminate", "checkbox--2--indeterminate", "checkbox--3--indeterminate", "checkbox--4--indeterminate", "checkbox--5--indeterminate"];
+
+      checkbox.indeterminate = true;
+      checkboxList.forEach((el) => {
+        document.getElementById(el).indeterminate = true;
+      });
+    }
+  );
