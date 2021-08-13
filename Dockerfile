@@ -16,10 +16,11 @@ RUN wget https://www.slimjet.com/chrome/download-chrome.php?file=files%2F71.0.35
  && apt-get clean \
  && rm ./google-chrome-stable_current_amd64.deb
 
-RUN mkdir /tmp/{chi,custom-elements,chi-vue}
+RUN mkdir /tmp/{chi,custom-elements,chi-vue,documentation}
 COPY package_chi.json /tmp/chi/package.json
 COPY package_custom-elements.json /tmp/custom-elements/package.json
 COPY package_vue.json /tmp/chi-vue/package.json
+COPY package_documentation.json /tmp/documentation/package.json
 
 RUN  cd /tmp/chi \
  && yarn install \
@@ -27,8 +28,13 @@ RUN  cd /tmp/chi \
  && yarn install \
  && cd /tmp/chi-vue \
  && yarn install \
+ && cd /tmp/documentation \
+ && yarn install \
+  --prefer-offline \
+  --frozen-lockfile \
+  --non-interactive \
+  --production=false \
  && yarn cache clean
-
 
 COPY entrypoint.sh /
 ENTRYPOINT ["/tini", "--", "/entrypoint.sh"]

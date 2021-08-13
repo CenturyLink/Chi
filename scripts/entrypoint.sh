@@ -3,6 +3,7 @@
 mount -o bind /tmp/chi/node_modules /chi/node_modules
 mount -o bind /tmp/custom-elements/node_modules /chi/src/custom-elements/node_modules
 mount -o bind /tmp/chi-vue/node_modules /chi/src/chi-vue/node_modules
+mount -o bind /tmp/documentation/node_modules /chi/src/documentation/node_modules
 
 mount -t tmpfs tmpfs /chi/src/custom-elements/.stencil
 #mkdir /tmp/dist
@@ -50,9 +51,19 @@ addheader_vue() {
     done
 }
 
+addheader_docs() {
+    while IFS= read -r line; do
+        echo -e "${GREEN}[DOCS]${NC} $line"
+    done
+}
+
 start() {
     cd /chi
     unbuffer npm run start 2>&1 | addheader_chi &
+
+    cd /chi/src/documentation
+    echo -e "Documentation"
+    unbuffer npm run dev 2>&1 | addheader_docs &
 
     cd /chi/src/chi-vue
     while [ ! -d /chi/dist/js/vue ]; do sleep 1; done
