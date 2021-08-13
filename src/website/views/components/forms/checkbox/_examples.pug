@@ -51,14 +51,14 @@ p.-text
 
 h3 Indeterminate
 p.-text
-  | Use the <code>indeterminate</code> property to set the default value of
-  | a checkbox to indeterminate and then set the class <code>-indeterminate</code> to style.
+  | A checkbox cannot be set to <code>indeterminate</code> state by an HTML attribute - it must be set by JavaScript.
+  | Use the class <code>-indeterminate</code> to achieve the corresponding style of the checkbox.
 
 .example.-mb--3
   .-p--3
     .chi-form__item
       .chi-checkbox
-        input(type="checkbox" class="chi-checkbox__input" id="checkbox-ind1")
+        input(type="checkbox" class="chi-checkbox__input -indeterminate" id="checkbox-ind1")
         label(for="checkbox-ind1" class="chi-checkbox__label") Checkbox
 
   .example-tabs.-pl--2
@@ -82,7 +82,6 @@ p.-text
         var checkbox = document.getElementById('checkbox-ind1');
         
         checkbox.indeterminate = true;
-        checkbox.classList.add("-indeterminate");
       </script>
 
 h3 Disabled
@@ -545,6 +544,5 @@ script.
       var checkbox = document.getElementById("checkbox-ind1");
       
       checkbox.indeterminate = true;
-      checkbox.classList.add("-indeterminate");
     }
   );

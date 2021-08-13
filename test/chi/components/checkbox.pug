@@ -41,10 +41,8 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      var checkbox = document.getElementById("checkbox-4");
-      var checkboxList = ["checkbox--1--indeterminate", "checkbox--2--indeterminate", "checkbox--3--indeterminate", "checkbox--4--indeterminate", "checkbox--5--indeterminate"];
+      var checkboxList = ["checkbox-4", "checkbox--1--indeterminate", "checkbox--2--indeterminate", "checkbox--3--indeterminate", "checkbox--4--indeterminate", "checkbox--5--indeterminate"];
 
-      checkbox.indeterminate = true;
       checkboxList.forEach((el) => {
         document.getElementById(el).indeterminate = true;
       });
