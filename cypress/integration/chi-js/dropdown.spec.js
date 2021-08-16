@@ -80,7 +80,7 @@ describe('Dropdown', function() {
               .should('have.class', '-active')
               .click().then(() => {
                 cy.get(getValue).find('+.chi-dropdown__menu')
-                .should('not.be.visible')
+                .should('not.be.visible');
               });
           });
         });

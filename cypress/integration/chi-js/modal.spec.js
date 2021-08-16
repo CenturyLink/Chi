@@ -15,7 +15,7 @@ describe('chi-modal', function() {
 
     it(`modal should be closed when we click close button`, () => {
       cy.get("#modal-1 button.-close")
-        .click()
+        .click();
       cy.get("#modal-1").should('not.be.visible');
     });
 
@@ -23,7 +23,7 @@ describe('chi-modal', function() {
       cy.get('button#modal-trigger-1')
         .click();
       cy.get("#modal-1-cancel")
-        .click()
+        .click();
       cy.get("#modal-1-cancel").should('not.be.visible');
     });
   });

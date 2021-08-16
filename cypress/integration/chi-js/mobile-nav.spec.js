@@ -127,7 +127,7 @@ describe('mobile-nav-menu', function() {
         .find('.-close')
         .click()
         .parents('.chi-drawer')
-        .should('not.have.class', '-active')
+        .should('not.have.class', '-active');
     });
   });
 

@@ -57,8 +57,8 @@ describe('Drawer', function() {
       .find('.chi-drawer')
       .should('be.visible')
       .click(100, 0, { force: true })
-      .should('not.match', '[active]')
-      cy.get('[data-cy="test-click-outside"]')
+      .should('not.match', '[active]');
+    cy.get('[data-cy="test-click-outside"]')
       .find('.chi-drawer')
       .should('not.be.visible');
   });
