@@ -61,7 +61,7 @@ describe('enterprise-nav-menu', function() {
                 .within(() => {
                   cy.get('.-icon.-close')
                     .click()
-                    .parent('.chi-drawer')
+                    .parents('.chi-drawer')
                     .should('not.have.class', '-active')
                   ;
                 });

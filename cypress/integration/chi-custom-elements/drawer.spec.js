@@ -58,8 +58,9 @@ describe('Drawer', function() {
       .should('be.visible')
       .click(100, 0, { force: true })
       .should('not.match', '[active]')
+      cy.get('[data-cy="test-click-outside"]')
       .find('.chi-drawer')
-      .should('not.be.visible')
+      .should('not.be.visible');
   });
 
   it('Should close when clicking the close button. ', function() {

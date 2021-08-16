@@ -49,7 +49,7 @@ describe('Sidenav', function() {
                 .within(() => {
                   cy.get('.-icon.-close')
                     .click()
-                    .parent('.chi-drawer')
+                    .parents('.chi-drawer')
                     .should('not.have.class', '-active');
                 });
             });

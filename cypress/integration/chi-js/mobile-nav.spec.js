@@ -126,7 +126,7 @@ describe('mobile-nav-menu', function() {
       cy.get('.chi-mobile-nav__first-level-content')
         .find('.-close')
         .click()
-        .parent('.chi-drawer')
+        .parents('.chi-drawer')
         .should('not.have.class', '-active')
     });
   });
@@ -163,7 +163,7 @@ describe('mobile-nav-menu', function() {
       cy.get(drawerDropDownItem)
         .contains('Sub tab A')
         .click()
-        .parent('.chi-drawer')
+        .parents('.chi-drawer')
         .should('not.have.class', '-active');
     });
   });
@@ -191,7 +191,7 @@ describe('mobile-nav-menu', function() {
       cy.get('#second-level-1')
         .find('.-close')
         .click()
-        .parent('.chi-drawer')
+        .parents('.chi-drawer')
         .should('not.have.class', '-active');
     });
   });
@@ -204,9 +204,8 @@ describe('mobile-nav-menu', function() {
         .should('be.visible')
         .should('not.have.class','-closed')
         .click()
-        .should('have.class','-closed')
-        .children('.chi-drawer')
-        .should('not.have.class', '-active');
+        .should('have.class','-closed');
+      cy.get('.chi-drawer').should('not.have.class', '-active');
     });
   });
 })
