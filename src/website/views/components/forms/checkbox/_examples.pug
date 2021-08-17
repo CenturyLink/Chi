@@ -49,6 +49,41 @@ p.-text
         </div>
       </div>
 
+h3 Indeterminate
+p.-text
+  | A checkbox cannot be set to <code>indeterminate</code> state by an HTML attribute - it must be set by JavaScript.
+  | Use the class <code>-indeterminate</code> to achieve the corresponding style of the checkbox.
+
+.example.-mb--3
+  .-p--3
+    .chi-form__item
+      .chi-checkbox
+        input(type="checkbox" class="chi-checkbox__input -indeterminate" id="checkbox-ind1")
+        label(for="checkbox-ind1" class="chi-checkbox__label") Checkbox
+
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-indeterminate
+      li.-disabled
+        a(href=`#webcomponent-indeterminate`) Web Component
+      li.-active
+        a(href=`#html-indeterminate`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-indeterminate
+  .chi-tabs-panel.-active#html-indeterminate
+    :code(lang="html")
+      <div class="chi-form__item">
+        <div class="chi-checkbox">
+          <input type="checkbox" class="chi-checkbox__input -indeterminate" id="checkbox-ind1">
+          <label class="chi-checkbox__label" for="checkbox-ind1">Checkbox</label>
+        </div>
+      </div>
+
+      <!-- JavaScript -->
+      <script>
+        var checkbox = document.getElementById('checkbox-ind1');
+        
+        checkbox.indeterminate = true;
+      </script>
+
 h3 Disabled
 p.-text
   | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
@@ -505,5 +540,9 @@ script.
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
       chi.popover(document.getElementById('example__help-button'));
+
+      var checkbox = document.getElementById("checkbox-ind1");
+      
+      checkbox.indeterminate = true;
     }
   );
