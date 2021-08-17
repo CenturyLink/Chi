@@ -42,7 +42,6 @@ export default class DataTableViews extends Vue {
           <div class={`${FORM_CLASSES.FORM_ITEM}`}>
             <select
               aria-label={`Select a View`}
-              id="data-table-views"
               class={`${SELECT_CLASSES.SELECT} ${GENERIC_SIZE_CLASSES.LG}`}
               onChange={(ev: Event) => this._emitViewsChanged(ev)}>
               {!this.views || !this.views.length ? <option>View</option> : options}
