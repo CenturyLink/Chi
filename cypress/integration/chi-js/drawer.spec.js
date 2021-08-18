@@ -32,9 +32,9 @@ describe('chi-drawer', function() {
     it('Click on X button closes the Drawer and check for other functionalities', () => {
       cy.get('#drawer-5')
         .find('.-close')
-        .click().then(() => {
-          cy.get('.chi-drawer').should("not.be.visible");
-        });
+        .click()
+        .parents('.chi-drawer')
+        .should('not.be.visible');
     });
   });
 
@@ -48,9 +48,9 @@ describe('chi-drawer', function() {
     it('Click on X button closes the Drawer', () => {
       cy.get('#drawer-7')
         .find('.-close')
-        .click().then(() => {
-          cy.get('.chi-drawer').should("not.be.visible");
-        });
+        .click()
+        .parents('.chi-drawer')
+        .should('not.be.visible');
     });
   });
 
@@ -64,9 +64,9 @@ describe('chi-drawer', function() {
     it('Click on X button closes the Drawer', () => {
       cy.get('#drawer-9')
         .find('.-close')
-        .click().then(() => {
-          cy.get('.chi-drawer').should("not.be.visible");
-        });
+        .click()
+        .parents('.chi-drawer')
+        .should('not.be.visible');
     });
   });
 
@@ -84,9 +84,9 @@ describe('chi-drawer', function() {
     it('Click on X button closes the Drawer', () => {
       cy.get('#drawer-11')
         .find('.-close')
-        .click().then(() => {
-          cy.get('.chi-drawer').should("not.be.visible");
-        });
+        .click()
+        .parents('.chi-drawer')
+        .should('not.be.visible');
     });
   });
 
@@ -101,9 +101,9 @@ describe('chi-drawer', function() {
     it('Click on X button closes the Drawer', () => {
       cy.get('#drawer-13')
         .find('.-close')
-        .click().then(() => {
-          cy.get('.chi-drawer').should("not.be.visible");
-        });
+        .click()
+        .parents('.chi-drawer')
+        .should('not.be.visible');
     });
   });
 
@@ -120,9 +120,9 @@ describe('chi-drawer', function() {
     it('Click on X button closes the Drawer', () => {
       cy.get('#drawer-23')
         .find('.-close')
-        .click().then(() => {
-          cy.get('.chi-drawer').should("not.be.visible");
-        });
+        .click()
+        .parents('.chi-drawer')
+        .should('not.be.visible');
     });
   });
 });
