@@ -68,6 +68,7 @@ export const CHECKBOX_CLASSES = {
 export const DATA_TABLE_CLASSES = {
   DATA_TABLE: 'chi-data-table',
   TOOLBAR: 'chi-toolbar',
+  VIEWS: 'chi-toolbar__views',
   FILTERS: 'chi-toolbar__filters',
   ACTIONS: 'chi-toolbar__actions',
   COLUMNS: 'chi-data-table__columns',
@@ -116,6 +117,16 @@ export const MODAL_CLASSES = {
   HEADER: 'chi-modal__header',
   CONTENT: 'chi-modal__content',
   TITLE: 'chi-modal__title',
+};
+//#endregion
+
+//#region Generic
+export const GENERIC_SIZE_CLASSES = {
+  XS: '-xs',
+  SM: '-sm',
+  MD: '-md',
+  LG: '-lg',
+  XL: '-xl',
 };
 //#endregion
 

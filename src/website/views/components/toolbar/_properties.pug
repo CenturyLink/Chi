@@ -5,6 +5,46 @@ h4 Search Input
 p.-text
   | Please visit Search input dedicated documentation page <a href="../forms/search-input/#props">here</a>
 
+h4 Views 
+section.chi-table.chi-table__options.-bordered.-my--3 
+  div(style='overflow-x:auto;')
+    table.-text(cellpadding='0' cellspacing='0')
+      thead 
+        tr 
+          th
+            div Property
+          th
+            div Description
+          th
+            div Type
+          th
+            div Default
+      tbody
+        tr
+          td
+            div
+              code views
+          td
+            div To define views in the toolbar.
+          td
+            div
+              code DataTableView[]
+          td
+            div
+              | []
+        tr
+          td
+            div
+              code defaultView
+          td
+            div To define the default view in the toolbar.
+          td
+            div
+              code string
+          td
+            div
+              | undefined
+
 h4 Filters
 section.chi-table.chi-table__options.-bordered.-my--3
   div(style='overflow-x:auto;')
@@ -108,6 +148,19 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 selected: <code>boolean</code>;
                 locked: <code>true</code>;
               }
+        tr
+          td
+            div
+              code DataTableView
+          td.-p--0
+            pre.-mb--0.
+             {
+                id: <code>string</code>;
+                label: <code>string</code>;
+                searchString?: <code>string</code>;
+                columns?: <code>DataTableColumn[]</code>;
+                filters?: <code>DataTableFilter[]</code>;
+              }
 
 h3 Events
 section.chi-table.chi-table__options.-bordered.-my--3
@@ -127,7 +180,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
             div
               code chiToolbarFiltersChange
           td
-            div To change the filter options of your data table.
+            div To user has changed the filter options of the data table
           td
             div
               code DataTableFilters[]
@@ -136,7 +189,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
             div
               code chiToolbarSearch
           td
-            div To make a search in your data table
+            div The user has made a search in the data table
           td
             div
               code string
@@ -145,7 +198,16 @@ section.chi-table.chi-table__options.-bordered.-my--3
             div
               code chiToolbarColumnsChange
           td
-            div To change the configuration of the columns of your table
+            div The user has changed the configuration of the columns
           td
             div
               code DataTableColumns[]
+        tr
+          td
+            div
+              code chiToolbarViewsChange
+          td
+            div The user has selected a view
+          td
+            div
+              code DataTableView
