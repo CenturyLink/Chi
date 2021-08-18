@@ -41,6 +41,11 @@ export class Link {
   @Prop({ reflect: true }) download: string;
 
   /**
+   *  to remove a link's underline on hover.
+   */
+  @Prop({ reflect: true }) noHoverUnderline = false;
+
+  /**
    *  to set the relationship between the current page and the linked page.
    */
   @Prop({ reflect: true }) rel: string;
@@ -74,7 +79,8 @@ export class Link {
       <a class={`chi-link
           ${this.cta ? '-cta' : ''}
           ${this.disabled ? '-disabled' : ''}
-          ${this.size ? `-${this.size}` : ''}`}
+          ${this.size ? `-${this.size}` : ''}
+          ${this.noHoverUnderline ? `-no-hover-underline` : ''}`}
           href={this.href}
           hreflang={this.hreflang}
           target={this.target}
