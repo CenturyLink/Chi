@@ -1,5 +1,5 @@
 <template>
-  <div class="chi-dropdown">
+  <div class="chi-dropdown -w--100">
     <button id="theme-switcher" class="-theme-switch chi-button -fluid chi-dropdown__trigger">
       <div class="chi-button__content -flex--column">
         <span class="-d--flex -w--100 -mr--0 -text--normal -text--sm"
@@ -11,10 +11,10 @@
               class="-favicon"
               width="16"
               height="16"
-              src="../assets/themes/lumen/images/favicon.svg"
+              :src="'/themes/'+this.$store.state.themes.theme+'/images/favicon.svg'"
             />
           </div>
-          <div class="-theme-name">Lumen Enterprise Portal</div>
+          <div class="-theme-name">{{themes[this.$store.state.themes.theme].label}}</div>
         </div>
       </div>
     </button>
@@ -23,36 +23,36 @@
       x-placement="bottom-start">
       <a
 
-        v-bind:class="[theme === 'centurylink' ? '-active' : '', 'theme-trigger-centurylink', 'chi-dropdown__menu-item']"
+        v-bind:class="[this.$store.state.themes.theme === 'centurylink' ? '-active' : '', 'theme-trigger-centurylink', 'chi-dropdown__menu-item']"
         href="#"
         @click="setTheme('centurylink')"
         ><img
           class="-mr--1"
           width="16"
           height="16"
-          src="../assets/themes/centurylink/images/favicon.svg"
+          src="/themes/centurylink/images/favicon.svg"
         />
         <div class="-theme-name">CenturyLink</div></a
       ><a
-        v-bind:class="[theme === 'lumen' ? '-active' : '', 'theme-trigger-lumen', 'chi-dropdown__menu-item']"
+        v-bind:class="[this.$store.state.themes.theme === 'lumen' ? '-active' : '', 'theme-trigger-lumen', 'chi-dropdown__menu-item']"
         href="#"
         @click="setTheme('lumen')"
         ><img
           class="-mr--1"
           width="16"
           height="16"
-          src="../assets/themes/lumen/images/favicon.svg"
+          src="/themes/lumen/images/favicon.svg"
         />
         <div class="-theme-name">Lumen</div></a
       ><a
-        v-bind:class="[theme === 'portal' ? '-active' : '', 'theme-trigger-portal', 'chi-dropdown__menu-item']"
+        v-bind:class="[this.$store.state.themes.theme === 'portal' ? '-active' : '', 'theme-trigger-portal', 'chi-dropdown__menu-item']"
         href="#"
         @click="setTheme('portal')"
         ><img
           class="-mr--1"
           width="16"
           height="16"
-          src="../assets/themes/lumen/images/favicon.svg"
+          src="/themes/lumen/images/favicon.svg"
         />
         <div class="-theme-name">Lumen Enterprise Portal</div></a
       >
@@ -61,20 +61,20 @@
 </template>
 
 <script lang="ts">
-import { getModule } from 'vuex-module-decorators';
-import store, { STORE_KEY } from '../store/index';
 import { Themes } from '../models/models';
+import { THEMES } from '../constants/constants';
 
 declare const chi: any;
 
 export default {
   created() {
-    this.theme = this.$store.state.theme;
-    this.storeModule = getModule(store, this.$store);
+    this.theme = this.$store.state.themes.theme;
+    this.themes = THEMES;
   },
   methods: {
-    async setTheme(theme: Themes) {
-      await this.storeModule.updateTheme(theme);
+    setTheme(theme: Themes) {
+      this.$store.commit('themes/set', theme);
+      console.log(this.$store.state.themes.theme);
     },
   },
   mounted() {
@@ -85,5 +85,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

@@ -115,7 +115,7 @@
 <script lang="ts">
   import { getModule } from 'vuex-module-decorators';
   import store from '../store/index';
-  import ThemeSwitcher from './_theme-switcher.vue';
+  import ThemeSwitcher from './ThemeSwitcher.vue';
 
   export default {
     components: {

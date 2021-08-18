@@ -1,6 +1,7 @@
-<template lang="pug">
-  div
-    | Index
+<template>
+  <div>
+    {{this.$store.state.themes.theme}}
+  </div>
 </template>
 
 <script lang="ts">
