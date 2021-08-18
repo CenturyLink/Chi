@@ -32,131 +32,151 @@ export const exampleConfig = {
   },
 };
 
-export const exampleToolbar = {
-  filtersData: [
-    {
-      name: 'status',
-      type: 'select',
-      id: 'myoption1',
-      label: 'Selector',
-      options: [
-        {
-          label: 'Active',
-          value: 'active',
-        },
-        {
-          label: 'Inactive',
-          value: 'inactive',
-        },
-      ],
-      value: 'active',
-    },
-    {
-      name: 'input',
-      placeholder: 'Input filter',
-      type: 'input',
-      value: '',
-      id: 'myoption2',
-      label: 'Input Filter',
-    },
-    {
-      name: 'checkbox',
-      type: 'checkbox',
-      checked: false,
-      id: 'myoption3',
-      label: 'Checkbox',
-    },
-    {
-      name: 'statusAdvanced',
-      label: 'Status',
-      type: 'select',
-      id: 'myoption4',
-      options: [
-        {
-          label: 'Active',
-          value: 'active',
-          selected: false,
-        },
-        {
-          label: 'Inactive',
-          value: 'inactive',
-          selected: false,
-        },
-      ],
-      advanced: true,
-      value: 'active',
-    },
-    {
-      name: 'inputAdvanced',
-      label: 'Label',
-      id: 'myoption5',
-      advanced: true,
-    },
-    {
-      name: 'textareaAdvanced',
-      label: 'textarea',
-      id: 'myoption6',
-      type: 'textarea',
-      advanced: true,
-    },
-    {
-      name: 'checkboxAdvanced',
-      id: 'myoption7',
-      label: 'Advanced Checkbox',
-      type: 'checkbox',
-      advanced: true,
-    },
-  ],
-  columnsData: {
-    columns: [
+const exampleColumns = [
+  {
+    name: 'columnA',
+    label: 'Column A',
+  },
+  {
+    name: 'columnB',
+    label: 'Column B',
+  },
+  {
+    name: 'columnC',
+    label: 'Column C',
+    locked: true,
+    selected: true,
+  },
+  {
+    name: 'columnD',
+    label: 'Column D',
+    locked: true,
+    selected: true,
+  },
+  {
+    name: 'columnE',
+    label: 'Column E',
+    selected: true,
+  },
+  {
+    name: 'columnF',
+    label: 'Column F',
+    selected: true,
+  },
+  {
+    name: 'columnG',
+    label: 'Column G',
+  },
+  {
+    name: 'columnH',
+    label: 'Column H',
+  },
+  {
+    name: 'columnI',
+    label: 'Column I',
+  },
+  {
+    name: 'columnJ',
+    label: 'Column J',
+  },
+];
+
+const exampleFilters = [
+  {
+    name: 'status',
+    type: 'select',
+    id: 'myoption1',
+    label: 'Selector',
+    options: [
       {
-        name: 'columnA',
-        label: 'Column A',
+        label: 'Active',
+        value: 'active',
       },
       {
-        name: 'columnB',
-        label: 'Column B',
-      },
-      {
-        name: 'columnC',
-        label: 'Column C',
-        locked: true,
-        selected: true,
-      },
-      {
-        name: 'columnD',
-        label: 'Column D',
-        locked: true,
-        selected: true,
-      },
-      {
-        name: 'columnE',
-        label: 'Column E',
-        selected: true,
-      },
-      {
-        name: 'columnF',
-        label: 'Column F',
-        selected: true,
-      },
-      {
-        name: 'columnG',
-        label: 'Column G',
-      },
-      {
-        name: 'columnH',
-        label: 'Column H',
-      },
-      {
-        name: 'columnI',
-        label: 'Column I',
-      },
-      {
-        name: 'columnJ',
-        label: 'Column J',
+        label: 'Inactive',
+        value: 'inactive',
       },
     ],
+    value: 'active',
   },
+  {
+    name: 'input',
+    placeholder: 'Input filter',
+    type: 'input',
+    value: '',
+    id: 'myoption2',
+    label: 'Input Filter',
+  },
+  {
+    name: 'checkbox',
+    type: 'checkbox',
+    checked: false,
+    id: 'myoption3',
+    label: 'Checkbox',
+  },
+  {
+    name: 'statusAdvanced',
+    label: 'Status',
+    type: 'select',
+    id: 'myoption4',
+    options: [
+      {
+        label: 'Active',
+        value: 'active',
+        selected: false,
+      },
+      {
+        label: 'Inactive',
+        value: 'inactive',
+        selected: false,
+      },
+    ],
+    advanced: true,
+    value: 'active',
+  },
+  {
+    name: 'inputAdvanced',
+    label: 'Label',
+    id: 'myoption5',
+    advanced: true,
+  },
+  {
+    name: 'textareaAdvanced',
+    label: 'textarea',
+    id: 'myoption6',
+    type: 'textarea',
+    advanced: true,
+  },
+  {
+    name: 'checkboxAdvanced',
+    id: 'myoption7',
+    label: 'Advanced Checkbox',
+    type: 'checkbox',
+    advanced: true,
+  },
+];
+
+export const exampleToolbar = {
+  filtersData: exampleFilters,
+  columnsData: {
+    columns: exampleColumns,
+  },
+  viewsData: [
+    {
+      id: 'view-1',
+      label: 'View 1',
+      columns: exampleColumns,
+      searchString: 'abc',
+      filters: exampleFilters,
+    },
+    {
+      id: 'view-2',
+      label: 'View 2',
+      columns: [],
+      searchString: 'abcde',
+      filters: [],
+    },
+  ],
 };
 
 export const exampleTableHead = {
