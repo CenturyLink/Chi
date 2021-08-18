@@ -22,9 +22,9 @@ describe('chi-modal', function() {
     it(`modal should be closed when we click cancel button`, () => {
       cy.get('button#modal-trigger-1')
         .click();
-      cy.get("#modal-1-cancel")
-        .click();
-      cy.get("#modal-1-cancel").should('not.be.visible');
+      cy.get("#modal-1-cancel").click().then(() => {
+        cy.get("#modal-1").should('not.be.visible');
+      });
     });
   });
 

@@ -204,8 +204,10 @@ describe('mobile-nav-menu', function() {
         .should('be.visible')
         .should('not.have.class','-closed')
         .click()
-        .should('have.class','-closed');
-      cy.get('.chi-drawer').should('not.have.class', '-active');
+        .should('have.class','-closed')
+        .children()
+        .find('.chi-drawer')
+        .should('not.have.class', '-active')
     });
   });
 })
