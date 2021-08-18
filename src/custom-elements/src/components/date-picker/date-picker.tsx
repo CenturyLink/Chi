@@ -4,6 +4,7 @@ import { ESCAPE_KEYCODE, CHI_TIME_AUTO_SCROLL_DELAY, DataLocales, DatePickerMode
 import dayjs, { Dayjs } from 'dayjs';
 import { TIME_CLASSES } from '../../constants/classes';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import { ChiStates, CHI_STATES } from '../../constants/states';
 
 @Component({
   tag: 'chi-date-picker',
@@ -64,6 +65,10 @@ export class DatePicker {
    * To allow the user to select multiple dates
    */
   @Prop({ reflect: true }) multiple = false;
+  /**
+   * To define state color of Date Picker
+   */
+  @Prop({ reflect: true }) state: ChiStates;
 
   @Element() el: HTMLElement;
 
@@ -72,6 +77,15 @@ export class DatePicker {
 
   excludedWeekdaysArray = [];
   excludedDatesArray = [];
+
+  @Watch('state')
+  stateValidation(newValue: ChiStates) {
+    const validValues = CHI_STATES.join(', ');
+
+    if (newValue && !CHI_STATES.includes(newValue)) {
+      throw new Error(`${newValue} is not a valid state for date picker. If provided, valid values are: ${validValues}. `);
+    }
+  }
 
   @Watch('excludedDates')
   updateExcludedDates() {
@@ -281,6 +295,7 @@ export class DatePicker {
   };
 
   componentWillLoad(): void {
+    this.stateValidation(this.state);
     this.updateExcludedDates();
     this.updateExcludedWeekdays();
     this._onFocusIn = this._onFocusIn.bind(this);
@@ -346,7 +361,9 @@ export class DatePicker {
           <input
             id={`${this._uuid}-control`}
             class={`chi-input
-              ${this.active ? '-focus' : ''}`}
+              ${this.active ? '-focus' : ''}
+              ${this.state ? `-${this.state}` : ''}`
+            }
             type={`text`}
             placeholder={this.mode === 'datetime' ? `${this.format}, --:-- --` : this.format}
             ref={el => (this._input = el as HTMLInputElement)}
