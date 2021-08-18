@@ -68,7 +68,7 @@ export class DatePicker {
   /**
    * To define state color of Date Picker
    */
-  @Prop({ reflect: true }) state: ChiStates;
+  @Prop({ reflect: true }) state?: ChiStates;
 
   @Element() el: HTMLElement;
 
