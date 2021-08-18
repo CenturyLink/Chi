@@ -191,4 +191,10 @@ describe('Date picker', function() {
       .find('[data-date="03/29/2021"]')
       .should('have.class', '-active');
   });
+
+  it('Should have -danger class when danger state is provided', () => {
+    cy.get('[data-cy="test-input-error"]')
+      .find('input')
+      .should('have.class', '-danger');
+  })
 });
