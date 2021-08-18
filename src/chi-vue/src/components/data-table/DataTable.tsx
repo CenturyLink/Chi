@@ -725,11 +725,17 @@ export default class DataTable extends Vue {
   }
 
   serializeData() {
-    const serializeRow = (row: DataTableRow, rowNumber: number, parentRowId: string | null) => {
+    const serializeRow = (
+      row: DataTableRow,
+      rowNumber: number,
+      parent: DataTableRow | undefined,
+      parentRowId: string | null
+    ) => {
       const rowId = this._rowId(row.id || rowNumber);
       const rowN = parentRowId !== null ? `${parentRowId}-${rowNumber}` : String(rowNumber);
       const rowObject = {
         ...row,
+        parent: parent,
         rowNumber: rowN,
         rowId: rowId,
       };
@@ -741,8 +747,8 @@ export default class DataTable extends Vue {
         row.nestedContent.table.data
       ) {
         // eslint-disable-next-line
-        row.nestedContent.table.data = row.nestedContent.table.data.map((row: any) => {
-          const serialized = serializeRow(row, subrowNumber, rowN);
+        row.nestedContent.table.data = row.nestedContent.table.data.map((subRow: any) => {
+          const serialized = serializeRow(subRow, subrowNumber, row, rowN);
 
           subrowNumber++;
           return serialized;
@@ -765,7 +771,7 @@ export default class DataTable extends Vue {
       this.$props.config.reserveExpansionSlot ||
       !!this.data.body.find((row: { nestedContent: any }) => row.nestedContent);
     this.data.body.forEach(row => {
-      this._serializedDataBody.push(serializeRow(row, rowNumber, null));
+      this._serializedDataBody.push(serializeRow(row, rowNumber, undefined, null));
       rowNumber++;
     });
   }
@@ -833,6 +839,7 @@ export default class DataTable extends Vue {
   mounted() {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
 
+    debugger;
     if (dataTableComponent && this.config.columnResize) {
       this._generateColumnResize(dataTableComponent);
     }

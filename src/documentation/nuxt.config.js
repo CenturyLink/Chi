@@ -23,7 +23,12 @@ export default {
         type: 'text/css',
         href: 'https://assets.ctl.io/chi/5.1.0/assets/themes/portal/docs.css'
       },
-    ]
+    ],
+    script: [
+      {
+        src: 'https://assets.ctl.io/chi/5.1.0/js/chi.js'
+      }
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

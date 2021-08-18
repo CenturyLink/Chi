@@ -10,6 +10,8 @@
     ],
     "esModuleInterop": true,
     "allowJs": true,
+    "jsx": "react",
+    "jsxFactory": "h",
     "sourceMap": true,
     "strict": true,
     "noEmit": true,
