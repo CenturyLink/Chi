@@ -193,6 +193,9 @@ p.-text
       chi-label(for='date-error')
         | Date
       chi-date-picker(id="date-error" state="danger")
+    .chi-label.-status.-danger
+      chi-icon(icon='circle-warning')
+      |         Please select a date.
   .example-tabs.-pl--2
     ul.chi-tabs#example-with-error
       li.-active
@@ -203,6 +206,10 @@ p.-text
     :code(lang="html",style="height:20rem")
       <chi-label for="date-error">Date</chi-label>
       <chi-date-picker id="date-error" state="danger"></chi-date-picker>
+      <div class="chi-label -status -danger">
+        <chi-icon icon="circle-warning"></chi-icon>
+        Please select a date.
+      </div>
   #html-with-error.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
@@ -215,6 +222,10 @@ p.-text
         <div class="chi-input__wrapper -icon--right">
           <input id="datepicker-error" type="text" class="chi-input -danger" placeholder="MM/DD/YYYY">
           <i class="chi-icon icon-date" aria-hidden="true"></i>
+        </div>
+        <div class="chi-label -status -danger">
+          <i class="chi-icon circle-warning" aria-hidden="true"></i>
+          Please select a date.
         </div>
       </div>
 

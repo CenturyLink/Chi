@@ -1,5 +1,7 @@
 /// <reference types="Cypress" />
 
+const DANGER_CLASS = '-danger';
+
 const clickDate = '11/14/2018';
 const clickDate2 = '01/26/2019';
 const thisMonthName = /November\s*2018/;
@@ -192,9 +194,9 @@ describe('Date picker', function() {
       .should('have.class', '-active');
   });
 
-  it('Should have -danger class when danger state is provided', () => {
+  it(`Should have ${DANGER_CLASS} class when danger state is provided`, () => {
     cy.get('[data-cy="test-input-error"]')
       .find('input')
-      .should('have.class', '-danger');
-  })
+      .should('have.class', `${DANGER_CLASS}`);
+  });
 });
