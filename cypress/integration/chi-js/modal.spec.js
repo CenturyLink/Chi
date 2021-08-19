@@ -15,18 +15,16 @@ describe('chi-modal', function() {
 
     it(`modal should be closed when we click close button`, () => {
       cy.get("#modal-1 button.-close")
-        .click()
-        .find('#modal-1')
-        .should('be.not.visible');
+        .click();
+      cy.get("#modal-1").should('not.be.visible');
     });
 
     it(`modal should be closed when we click cancel button`, () => {
       cy.get('button#modal-trigger-1')
         .click();
-      cy.get("#modal-1-cancel")
-        .click()
-        .find('#modal-1')
-        .should('be.not.visible');
+      cy.get("#modal-1-cancel").click().then(() => {
+        cy.get("#modal-1").should('not.be.visible');
+      });
     });
   });
 

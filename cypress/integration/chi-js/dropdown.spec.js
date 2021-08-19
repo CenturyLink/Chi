@@ -78,9 +78,10 @@ describe('Dropdown', function() {
               .find('+.chi-dropdown__menu')
               .should('be.visible')
               .should('have.class', '-active')
-              .click()
-              .find('+.chi-dropdown__menu')
-              .should('be.not.visible')
+              .click().then(() => {
+                cy.get(getValue).find('+.chi-dropdown__menu')
+                .should('not.be.visible');
+              });
           });
         });
     });
