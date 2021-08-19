@@ -92,10 +92,9 @@ const isNotSelected = elements => {
 describe('Data Table', () => {
   before(() => {
     cy.visit('tests/chi-vue/data-table.html');
-    cy.wait(2000);
   });
 
-  describe('base', () => {
+  describe('Base', () => {
     beforeEach(() => {
       cy.get(`[data-cy='data-table']`)
         .children()
@@ -134,24 +133,23 @@ describe('Data Table', () => {
       });
     });
 
-    it('should update data successfully', () => {
+    it('Should update data successfully', () => {
       cy.get('button')
         .contains('Update')
         .click()
         .then(() => {
-          cy.wait(3000);
           cy.get('@row').should('contain', 'Updated Name 1');
         });
     });
 
-    describe('pagination', () => {
+    describe('Pagination', () => {
       beforeEach(() => {
         cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`).as(
           'pagination'
         );
       });
 
-      it(`should show label 'per page'`, () => {
+      it(`Should show label 'per page'`, () => {
         cy.get(`@pagination`)
           .find(`select`)
           .should('contain', '20');
@@ -160,7 +158,7 @@ describe('Data Table', () => {
           .should('contain', 'per page');
       });
 
-      it('should trigger next and prev page', () => {
+      it('Should trigger next and prev page', () => {
         cy.window()
           .its('baseDataTable')
           .then(baseDataTable => {
@@ -197,7 +195,7 @@ describe('Data Table', () => {
           });
       });
 
-      it('should jump page correctly on input', () => {
+      it('Should jump page correctly on input', () => {
         cy.get(`@pagination`)
           .find(`.${PAGINATION_CLASSES.JUMPER} input`)
           .as('pagJumperInput')
@@ -218,7 +216,7 @@ describe('Data Table', () => {
         // TODO: add -active class check once it's fixed.
       });
 
-      it('should change page correctly on page number click', () => {
+      it('Should change page correctly on page number click', () => {
         cy.get(`@pagination`)
           .find(`button[data-page='2']`)
           .eq(0)
@@ -239,7 +237,7 @@ describe('Data Table', () => {
           });
       });
 
-      it('should go to first and last pages', () => {
+      it('Should go to first and last pages', () => {
         cy.get(`@pagination`)
           .find(`.${ICON_BUTTON}`)
           .as('paginationIcons')
@@ -264,7 +262,7 @@ describe('Data Table', () => {
           });
       });
 
-      it('should change number of page results', () => {
+      it('Should change number of page results', () => {
         cy.window()
           .its('baseDataTable')
           .then(baseDataTable => {
@@ -294,8 +292,8 @@ describe('Data Table', () => {
     });
   });
 
-  describe('empty', () => {
-    it(`should have class .${DATA_TABLE_CLASSES.EMPTY}`, () => {
+  describe('Empty', () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.EMPTY}`, () => {
       cy.get(`[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY}`)
         .children()
         .first()
@@ -303,28 +301,28 @@ describe('Data Table', () => {
       hasClassAssertion(`@empty`, DATA_TABLE_CLASSES.EMPTY);
     });
 
-    it(`should show default message when it is empty`, () => {
+    it(`Should show default message when it is empty`, () => {
       cy.get(`[data-cy='data-table-empty']`).should(
         'contain',
         'No matches found. Please revise search criteria and try again.'
       );
     });
 
-    it('should have no rows', () => {
+    it('Should have no rows', () => {
       cy.get(
         `[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
       ).should('not.exist');
     });
 
-    it('should have no footer', () => {
+    it('Should have no footer', () => {
       cy.get(`[data-cy='data-table-empty']`)
         .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
         .should('not.exist');
     });
   });
 
-  describe('no border', () => {
-    it(`should have class .${DATA_TABLE_CLASSES.NO_BORDER}`, () => {
+  describe('No border', () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.NO_BORDER}`, () => {
       hasClassAssertion(
         `[data-cy='data-table-no-border']`,
         DATA_TABLE_CLASSES.NO_BORDER
@@ -332,8 +330,8 @@ describe('Data Table', () => {
     });
   });
 
-  describe('striped', () => {
-    it(`should have class .${DATA_TABLE_CLASSES.STRIPED}`, () => {
+  describe('Striped', () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.STRIPED}`, () => {
       hasClassAssertion(
         `[data-cy='data-table-striped']`,
         DATA_TABLE_CLASSES.STRIPED
@@ -341,8 +339,8 @@ describe('Data Table', () => {
     });
   });
 
-  describe('hover', () => {
-    it(`should have class .${DATA_TABLE_CLASSES.HOVER}`, () => {
+  describe('Hover', () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.HOVER}`, () => {
       hasClassAssertion(
         `[data-cy='data-table-hover']`,
         DATA_TABLE_CLASSES.HOVER
@@ -350,8 +348,8 @@ describe('Data Table', () => {
     });
   });
 
-  describe('bordered', () => {
-    it(`should have class .${DATA_TABLE_CLASSES.BORDERED}`, () => {
+  describe('Bordered', () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.BORDERED}`, () => {
       hasClassAssertion(
         `[data-cy='data-table-bordered']`,
         DATA_TABLE_CLASSES.BORDERED
@@ -359,8 +357,8 @@ describe('Data Table', () => {
     });
   });
 
-  describe('active', () => {
-    it(`should have class .${ACTIVE_CLASS}`, () => {
+  describe('Active', () => {
+    it(`Should have class .${ACTIVE_CLASS}`, () => {
       hasClassAssertion(
         `[data-cy='data-table-active'] .${DATA_TABLE_CLASSES.ROW}`,
         ACTIVE_CLASS
@@ -368,14 +366,14 @@ describe('Data Table', () => {
     });
   });
 
-  describe('selectable', () => {
+  describe('Selectable', () => {
     beforeEach(() => {
       cy.get(`[data-cy='data-table-selectable']`)
         .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
         .as('selectables');
     });
 
-    it(`should have class .${DATA_TABLE_CLASSES.SELECTABLE}`, () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.SELECTABLE}`, () => {
       const rows = [0, 1, 2, 3];
 
       rows.forEach(rowIndex => {
@@ -388,7 +386,7 @@ describe('Data Table', () => {
       });
     });
 
-    it(`should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
+    it(`Should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
       cy.window()
         .its('selectableDataTable')
         .then(selectableDataTable => {
@@ -408,7 +406,7 @@ describe('Data Table', () => {
         });
     });
 
-    it('should select and deselect all rows', () => {
+    it('Should select and deselect all rows', () => {
       cy.get('@selectables')
         .eq(0)
         .click()
@@ -449,7 +447,7 @@ describe('Data Table', () => {
         });
     });
 
-    it('should select and deselect a row', () => {
+    it('Should select and deselect a row', () => {
       cy.get('@selectables')
         .eq(1)
         .click()
@@ -469,7 +467,7 @@ describe('Data Table', () => {
         });
     });
 
-    it('should keep selected row on page change', () => {
+    it('Should keep selected row on page change', () => {
       cy.get('@selectables')
         .eq(1)
         .click()
@@ -497,8 +495,8 @@ describe('Data Table', () => {
     });
   });
 
-  describe('accordion', () => {
-    it(`should have class .${DATA_TABLE_CLASSES.EXPANDABLE}`, () => {
+  describe('Accordion', () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.EXPANDABLE}`, () => {
       const rows = [1, 2, 3];
 
       rows.forEach(rowIndex => {
@@ -511,7 +509,7 @@ describe('Data Table', () => {
       });
     });
 
-    it(`should trigger the ${DATA_TABLE_EVENTS.EXPANSION.EXPANDED} event`, () => {
+    it(`Should trigger the ${DATA_TABLE_EVENTS.EXPANSION.EXPANDED} event`, () => {
       cy.window()
         .its('accordionDataTable')
         .then(accordionDataTable => {
@@ -531,7 +529,7 @@ describe('Data Table', () => {
         });
     });
 
-    it(`should trigger the ${DATA_TABLE_EVENTS.EXPANSION.COLLAPSED} event`, () => {
+    it(`Should trigger the ${DATA_TABLE_EVENTS.EXPANSION.COLLAPSED} event`, () => {
       cy.window()
         .its('accordionDataTable')
         .then(accordionDataTable => {
@@ -552,19 +550,19 @@ describe('Data Table', () => {
         });
     });
 
-    it(`should have class .${DATA_TABLE_CLASSES.ROW_CHILD}`, () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.ROW_CHILD}`, () => {
       cy.get(`[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.BODY}`)
         .find(`.${DATA_TABLE_CLASSES.ROW_CHILD}`)
         .should('have.length', 3);
     });
 
-    it(`should have collapsed content`, () => {
+    it(`Should have collapsed content`, () => {
       cy.get(`[data-cy='data-table-accordion']`)
         .find(`.${DATA_TABLE_CLASSES.ROW_CHILD}`)
         .should('contain', 'Accordion content');
     });
 
-    it(`should expand and collapse first row`, () => {
+    it(`Should expand and collapse first row`, () => {
       cy.get(`[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.BODY}`)
         .find(`.${DATA_TABLE_CLASSES.ROW}`)
         .as('rows')
@@ -596,22 +594,22 @@ describe('Data Table', () => {
     });
   });
 
-  describe('sorting', () => {
-    describe('base', () => {
+  describe('Sorting', () => {
+    describe('Base', () => {
       beforeEach(() => {
         cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.BODY}`)
           .find(`.${DATA_TABLE_CLASSES.ROW}`)
           .as('rows');
       });
 
-      it(`should have class .${DATA_TABLE_CLASSES.SORTING}`, () => {
+      it(`Should have class .${DATA_TABLE_CLASSES.SORTING}`, () => {
         hasClassAssertion(
           `[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.CELL}`,
           DATA_TABLE_CLASSES.SORTING
         );
       });
 
-      it(`should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {
+      it(`Should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {
         cy.window()
           .its('sortingDataTable')
           .then(sortingDataTable => {
@@ -634,7 +632,7 @@ describe('Data Table', () => {
           });
       });
 
-      it(`should sort by name with the correct icons`, () => {
+      it(`Should sort by name with the correct icons`, () => {
         cy.get('@rows')
           .eq(0)
           .should('contain', 'Name 1');
@@ -676,7 +674,7 @@ describe('Data Table', () => {
           });
       });
 
-      it(`should sort by status using a custom template`, () => {
+      it(`Should sort by status using a custom template`, () => {
         const statuses = ['active', 'inact', 'active'];
 
         checkStatusSorting(statuses);
@@ -705,7 +703,7 @@ describe('Data Table', () => {
           });
       });
 
-      it(`should sort by date`, () => {
+      it(`Should sort by date`, () => {
         const dates = ['6 Jan 2018', '5 Jul 2018', '5 Apr 2019'];
 
         checkDateSorting(dates);
@@ -734,7 +732,7 @@ describe('Data Table', () => {
           });
       });
 
-      it(`should sort correctly on page change`, () => {
+      it(`Should sort correctly on page change`, () => {
         cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.ROW}`)
           .eq(0)
           .find(`.${DATA_TABLE_CLASSES.CELL}`)
@@ -769,8 +767,8 @@ describe('Data Table', () => {
       });
     });
 
-    describe('default sorting asc', () => {
-      it(`should have ascending sorting by default`, () => {
+    describe('Default sorting asc', () => {
+      it(`Should have ascending sorting by default`, () => {
         cy.get(`[data-cy='data-table-sorting-asc'] .${DATA_TABLE_CLASSES.BODY}`)
           .find(`.${DATA_TABLE_CLASSES.ROW}`)
           .as('rows')
@@ -785,8 +783,8 @@ describe('Data Table', () => {
       });
     });
 
-    describe('default sorting desc', () => {
-      it(`should have descending sorting by default`, () => {
+    describe('Default sorting desc', () => {
+      it(`Should have descending sorting by default`, () => {
         cy.get(
           `[data-cy='data-table-sorting-desc'] .${DATA_TABLE_CLASSES.BODY}`
         )
@@ -804,11 +802,11 @@ describe('Data Table', () => {
     });
   });
 
-  describe('sizes', () => {
+  describe('Sizes', () => {
     const sizes = ['-xs', '-sm', '-md', '-lg', '-xl'];
 
     sizes.forEach(size => {
-      it(`should have class .${size}`, () => {
+      it(`Should have class .${size}`, () => {
         hasClassAssertion(`[data-cy='data-table${size}']`, size);
       });
     });
@@ -818,10 +816,9 @@ describe('Data Table', () => {
 describe('Data Table Portal', () => {
   before(() => {
     cy.visit('tests/chi-vue/data-table.html');
-    cy.wait(2000);
   });
 
-  describe('portal', () => {
+  describe('Portal', () => {
     beforeEach(() => {
       cy.get(`[data-cy='data-table-portal']`)
         .children()
@@ -865,7 +862,7 @@ describe('Data Table Portal', () => {
       });
     });
 
-    it(`should have class .${DATA_TABLE_CLASSES.STRIPED} for even rows`, () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.STRIPED} for even rows`, () => {
       const rows = cy.get('@body').find(`.${DATA_TABLE_CLASSES.ROW}`);
 
       rows.each((row, i) => {
@@ -876,8 +873,8 @@ describe('Data Table Portal', () => {
     });
   });
 
-  describe('portal empty', () => {
-    it(`should have class .${DATA_TABLE_CLASSES.EMPTY}`, () => {
+  describe('Portal empty', () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.EMPTY}`, () => {
       cy.get(`[data-cy='data-table-portal-empty'] .${DATA_TABLE_CLASSES.BODY}`)
         .children()
         .first()
@@ -885,28 +882,28 @@ describe('Data Table Portal', () => {
       hasClassAssertion(`@portalEmpty`, DATA_TABLE_CLASSES.EMPTY);
     });
 
-    it(`should show the message 'No matches found. Please revise search criteria and try again.' when it is empty`, () => {
+    it(`Should show the message 'No matches found. Please revise search criteria and try again.' when it is empty`, () => {
       cy.get(`[data-cy='data-table-portal-empty']`).should(
         'contain',
         'No matches found. Please revise search criteria and try again.'
       );
     });
 
-    it('should have no rows', () => {
+    it('Should have no rows', () => {
       cy.get(
         `[data-cy='data-table-portal-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
       ).should('not.exist');
     });
 
-    it('should have no footer', () => {
+    it('Should have no footer', () => {
       cy.get(`[data-cy='data-table-portal-empty']`)
         .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
         .should('not.exist');
     });
   });
 
-  describe('portal accordion', () => {
-    it(`should have class .${DATA_TABLE_CLASSES.EXPANDABLE}`, () => {
+  describe('Portal accordion', () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.EXPANDABLE}`, () => {
       const rows = [1, 2, 3];
 
       rows.forEach(rowIndex => {
@@ -921,7 +918,7 @@ describe('Data Table Portal', () => {
       });
     });
 
-    it(`should remain in current page when user input is invalid`, () => {
+    it(`Should remain in current page when user input is invalid`, () => {
       cy.get(
         `[data-cy='data-table-portal-accordion'] .${PAGINATION_CLASSES.PAGINATION}`
       )
@@ -959,7 +956,7 @@ describe('Data Table Portal', () => {
         .click();
     });
 
-    it(`should trigger the ${DATA_TABLE_EVENTS.EXPANSION.EXPANDED} event`, () => {
+    it(`Should trigger the ${DATA_TABLE_EVENTS.EXPANSION.EXPANDED} event`, () => {
       cy.window()
         .its('portalAccordionDataTable')
         .then(portalAccordionDataTable => {
@@ -981,7 +978,7 @@ describe('Data Table Portal', () => {
         });
     });
 
-    it(`should trigger the ${DATA_TABLE_EVENTS.EXPANSION.COLLAPSED} event`, () => {
+    it(`Should trigger the ${DATA_TABLE_EVENTS.EXPANSION.COLLAPSED} event`, () => {
       cy.window()
         .its('portalAccordionDataTable')
         .then(portalAccordionDataTable => {
@@ -1004,7 +1001,7 @@ describe('Data Table Portal', () => {
         });
     });
 
-    it(`should have class .${DATA_TABLE_CLASSES.ROW_CHILD}`, () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.ROW_CHILD}`, () => {
       cy.get(
         `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`
       )
@@ -1012,13 +1009,13 @@ describe('Data Table Portal', () => {
         .should('have.length', 3);
     });
 
-    it(`should have collapsed content`, () => {
+    it(`Should have collapsed content`, () => {
       cy.get(`[data-cy='data-table-portal-accordion']`)
         .find(`.${DATA_TABLE_CLASSES.ROW_CHILD}`)
         .should('contain', 'Accordion content');
     });
 
-    it(`should expand and collapse first row`, () => {
+    it(`Should expand and collapse first row`, () => {
       cy.get(
         `[data-cy='data-table-portal-accordion'] .${DATA_TABLE_CLASSES.BODY}`
       )
@@ -1054,15 +1051,15 @@ describe('Data Table Portal', () => {
     });
   });
 
-  describe('portal accordion child', () => {
-    it(`should have two child rows per parent row`, () => {
+  describe('Portal accordion child', () => {
+    it(`Should have two child rows per parent row`, () => {
       cy.get(
         `[data-cy='data-table-portal-accordion-child'] .${DATA_TABLE_CLASSES.ROW_CHILD}`
       ).should('have.length', '6');
     });
   });
 
-  describe('portal accordion child expanded', () => {
+  describe('Portal accordion child expanded', () => {
     beforeEach(() => {
       cy.get(
         `[data-cy='data-table-portal-accordion-child-expanded'] .${DATA_TABLE_CLASSES.BODY}`
@@ -1081,12 +1078,12 @@ describe('Data Table Portal', () => {
         .as('firstRowChildContainer');
     });
 
-    it(`should have class .${DATA_TABLE_CLASSES.ROW_CHILD} and .${DATA_TABLE_CLASSES.ROW_GRAND_CHILD}`, () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.ROW_CHILD} and .${DATA_TABLE_CLASSES.ROW_GRAND_CHILD}`, () => {
       cy.get(`@childRows`).should('have.length', 5);
       cy.get(`@grandchildRows`).should('have.length', 1);
     });
 
-    it('should have first row be expanded by default', () => {
+    it('Should have first row be expanded by default', () => {
       cy.get(`@firstRowChildContainer`).should(
         'not.have.css',
         'display',
@@ -1101,7 +1098,7 @@ describe('Data Table Portal', () => {
       hasClassAssertion('@firstRow', `${EXPANDED_CLASS}`);
     });
 
-    it(`should have two expandable buttons`, () => {
+    it(`Should have two expandable buttons`, () => {
       cy.get(
         `[data-cy='data-table-portal-accordion-child-expanded'] .${DATA_TABLE_CLASSES.BODY}`
       )
@@ -1125,7 +1122,7 @@ describe('Data Table Portal', () => {
         });
     });
 
-    it('should have 2-level collapsed content', () => {
+    it('Should have 2-level collapsed content', () => {
       cy.get(`@childRows`).should('contain', 'Child Name 1');
       cy.get(`@grandchildRows`).should('contain', 'Grand-child Name 1');
     });
@@ -1135,10 +1132,9 @@ describe('Data Table Portal', () => {
 describe('Server Side Data Table', () => {
   before(() => {
     cy.visit('tests/chi-vue/data-table.html');
-    cy.wait(2000);
   });
 
-  describe('server side pagination', () => {
+  describe('Server side pagination', () => {
     beforeEach(() => {
       cy.get(`[data-cy='data-table-server-side']`)
         .children()
@@ -1155,7 +1151,7 @@ describe('Server Side Data Table', () => {
         .as('paginationIcons');
     });
 
-    it('should render new data when going to page two', () => {
+    it('Should render new data when going to page two', () => {
       cy.get(`[data-cy='data-table-server-side']`)
         .find(`.${PAGINATION_CLASSES.PAGINATION}`)
         .children()
@@ -1183,7 +1179,7 @@ describe('Server Side Data Table', () => {
         });
     });
 
-    it(`should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
+    it(`Should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
       cy.window()
         .its('dataTableServerSideExample')
         .then(dataTableServerSideExample => {
@@ -1208,14 +1204,14 @@ describe('Server Side Data Table', () => {
     });
   });
 
-  describe('server side selection', () => {
+  describe('Server side selection', () => {
     beforeEach(() => {
       cy.get(`[data-cy='data-table-server-side']`)
         .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
         .as('selectables');
     });
 
-    it(`should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
+    it(`Should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
       cy.window()
         .its('dataTableServerSideExample')
         .then(dataTableServerSideExample => {
@@ -1240,7 +1236,7 @@ describe('Server Side Data Table', () => {
         });
     });
 
-    it('should select and deselect a row', () => {
+    it('Should select and deselect a row', () => {
       cy.get('@selectables')
         .eq(1)
         .click()
@@ -1261,8 +1257,8 @@ describe('Server Side Data Table', () => {
     });
   });
 
-  describe('server side sorting', () => {
-    it('should sort by status in asc and desc', () => {
+  describe('Server side sorting', () => {
+    it('Should sort by status in asc and desc', () => {
       const statuses = ['active', 'inact', 'active'];
 
       cy.get(`[data-cy='data-table-server-side'] .${DATA_TABLE_CLASSES.BODY}`)
@@ -1315,8 +1311,8 @@ describe('Server Side Data Table', () => {
         });
     });
 
-    it(`should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {
-      it('should sort by status in asc and desc', () => {
+    it(`Should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {
+      it('Should sort by status in asc and desc', () => {
         cy.window()
           .its('dataTableServerSideExample')
           .then(dataTableServerSideExample => {
@@ -1356,10 +1352,9 @@ describe('Server Side Data Table', () => {
 describe('Server Side Data Table Portal', () => {
   before(() => {
     cy.visit('tests/chi-vue/data-table.html');
-    cy.wait(2000);
   });
 
-  describe('server side pagination', () => {
+  describe('Server side pagination', () => {
     beforeEach(() => {
       cy.get(`[data-cy='data-table-server-side-portal']`)
         .children()
@@ -1376,7 +1371,7 @@ describe('Server Side Data Table Portal', () => {
         .as('paginationIcons');
     });
 
-    it('should render new data when going to page two (portal)', () => {
+    it('Should render new data when going to page two (portal)', () => {
       cy.get(`[data-cy='data-table-server-side-portal']`)
         .find(`.${PAGINATION_CLASSES.PAGINATION}`)
         .children()
@@ -1404,7 +1399,7 @@ describe('Server Side Data Table Portal', () => {
         });
     });
 
-    it(`should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
+    it(`Should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
       cy.window()
         .its('dataTableServerSidePortalExample')
         .then(dataTableServerSidePortalExample => {
@@ -1429,14 +1424,14 @@ describe('Server Side Data Table Portal', () => {
     });
   });
 
-  describe('server side selection', () => {
+  describe('Server side selection', () => {
     beforeEach(() => {
       cy.get(`[data-cy='data-table-server-side-portal']`)
         .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
         .as('selectables');
     });
 
-    it(`should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
+    it(`Should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
       cy.window()
         .its('dataTableServerSidePortalExample')
         .then(dataTableServerSidePortalExample => {
@@ -1463,7 +1458,7 @@ describe('Server Side Data Table Portal', () => {
         });
     });
 
-    it('should select and deselect a row', () => {
+    it('Should select and deselect a row', () => {
       cy.get('@selectables')
         .eq(1)
         .click()
@@ -1483,7 +1478,7 @@ describe('Server Side Data Table Portal', () => {
         });
     });
 
-    it('should automatically select nested rows', () => {
+    it('Should automatically select nested rows', () => {
       cy.window()
         .its('dataTableServerSidePortalExample')
         .then(dataTableServerSidePortalExample => {
@@ -1511,7 +1506,7 @@ describe('Server Side Data Table Portal', () => {
         });
     });
 
-    it('should automatically deselect nested rows', () => {
+    it('Should automatically deselect nested rows', () => {
       cy.get('@selectables')
         .eq(3)
         .click();
@@ -1537,8 +1532,8 @@ describe('Server Side Data Table Portal', () => {
     });
   });
 
-  describe('server side sorting', () => {
-    it('should sort by status in asc and desc', () => {
+  describe('Server side sorting', () => {
+    it('Should sort by status in asc and desc', () => {
       const statuses = ['active', 'inact', 'active'];
 
       cy.get(
@@ -1595,8 +1590,8 @@ describe('Server Side Data Table Portal', () => {
         });
     });
 
-    it(`should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {
-      it('should sort by status in asc and desc', () => {
+    it(`Should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {
+      it('Should sort by status in asc and desc', () => {
         cy.window()
           .its('dataTableServerSidePortalExample')
           .then(dataTableServerSidePortalExample => {
