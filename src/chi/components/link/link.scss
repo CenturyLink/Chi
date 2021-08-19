@@ -92,6 +92,12 @@ a,
     }
   }
 
+  &.-no-hover-underline {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
   @each $size in map-keys($sizes) {
     &.-#{$size} {
       font-size: map-get(map-get($sizes, $size), font-size);

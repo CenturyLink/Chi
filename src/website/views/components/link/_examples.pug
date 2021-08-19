@@ -36,6 +36,25 @@ p.-text
     :code(lang="html")
       <a class="chi-link -disabled" href="#">Link</a>
 
+h3 No Underline on Hover
+p.-text
+  | Use to remove a link's underline on hover.
+.example.-mb--3
+  .-p--3.-text
+    chi-link(href='#' no-hover-underline) Link
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-no-hover-underline
+      li.-active
+        a(href=`#webcomponent-no-hover-underline`) Web Component
+      li
+        a(href=`#html-no-hover-underline`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-no-hover-underline
+    :code(lang="html")
+      <chi-link href="#" no-hover-underline>Link</chi-link>
+  .chi-tabs-panel#html-no-hover-underline
+    :code(lang="html")
+      <a class="chi-link -no-hover-underline" href="#">Link</a>
+
 h3 CTA
 p.-text
   | Call to action (CTA) links are prominent links used primarily on marketing web pages
