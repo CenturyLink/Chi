@@ -22,7 +22,6 @@
       class="chi-dropdown__menu"
       x-placement="bottom-start">
       <a
-
         v-bind:class="[this.$store.state.themes.theme === 'centurylink' ? '-active' : '', 'theme-trigger-centurylink', 'chi-dropdown__menu-item']"
         href="#"
         @click="setTheme('centurylink')"
@@ -63,26 +62,25 @@
 <script lang="ts">
 import { Themes } from '../models/models';
 import { THEMES } from '../constants/constants';
+import { Component, Vue } from 'vue-property-decorator';
 
 declare const chi: any;
 
-export default {
-  created() {
-    this.theme = this.$store.state.themes.theme;
-    this.themes = THEMES;
-  },
-  methods: {
-    setTheme(theme: Themes) {
-      this.$store.commit('themes/set', theme);
-      console.log(this.$store.state.themes.theme);
-    },
-  },
+@Component({})
+export default class ThemeSwitcher extends Vue {
+  theme: Themes = this.$store.state.themes.theme;
+  themes = THEMES;
+
+  setTheme(theme: Themes) {
+    this.$store.commit('themes/set', theme);
+  }
+
   mounted() {
     const themeSwitcher = document.getElementById('theme-switcher');
 
     chi.dropdown(themeSwitcher);
-  },
-};
+  }
+}
 </script>
 
 <style></style>

@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    | Accordion
+    <TitleBar title="Accordion" description="Accordion is used to toggle between hiding and showing content." />
     <Examples />
 </template>
 

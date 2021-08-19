@@ -1,18 +1,33 @@
 <template lang="pug">
-  div
-    | Example
-    <Example1 />
+  .chi-grid__container.-pt--3
+    #examplesTab
+      h2 Examples
+      div(v-if="['portal', 'lumen'].includes($store.state.themes.theme)")
+        h3 Portal & Lumen examples
+        <Base />
+      div(v-if="$store.state.themes.theme === 'centurylink'")
+        h3 CenturyLink examples
 </template>
 
 <script lang="ts">
-  import Example1 from './_example1.vue';
+import { Component, Vue } from 'vue-property-decorator';
+import Base from './_base.vue';
+import { Themes } from '~/models/models';
 
-  export default {
-    components: {
-      Example1,
-    },
+declare const chi: any;
 
-    mounted() {
-    }
-  };
+@Component({
+  components: {
+    Base,
+  },
+})
+export default class BaseExample extends Vue {
+  theme = this.$store.state.themes.theme;
+
+  mounted() {
+    // const accordionBase = document.getElementById('example-base');
+
+    // chi.accordion(accordionBase);
+  }
+}
 </script>
