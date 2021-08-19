@@ -40,14 +40,15 @@ describe('Popover', function() {
   describe('Autohide and NoAutohide should work', function() {
     it('popover should hide when click out side when preventAutoHide set to false', () => {
       cy.get('[data-cy="auto-hide"]')
-        .find('[data-cy="popover-6"]')
+        .find('[data-cy="popover-6"]').as('popover')
         .click()
         .parent()
         .find('.chi-popover#chi-popover-14')
-        .should('have.class', '-active')
-        .click(500, 0, { force: true })
-        .find('.chi-popover#chi-popover-14')
-        .should('not.have.class', '-active');
+        .should('have.class', '-active');
+      cy.get("@popover")
+        .click().then(() => {
+          cy.get('.chi-popover#chi-popover-14').should('not.have.class', '-active');
+        }); 
     });
 
     it('popover should not hide when click out side when preventAutoHide set to true', () => {
