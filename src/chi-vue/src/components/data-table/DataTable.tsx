@@ -303,6 +303,43 @@ export default class DataTable extends Vue {
     this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, selectedRowsData);
   }
 
+  _checkIndeterminate(rowData: DataTableRow) {
+    let parent = rowData.parent;
+
+    while (parent) {
+      const parentCheck = document.querySelector(
+        `#checkbox-select-${this._rowId(parent.rowNumber)}`
+      ) as HTMLInputElement;
+      const children = parent.nestedContent.table.data;
+      const childrenSelected = [];
+
+      children?.forEach(row => {
+        const childCheck = document.querySelector(`#checkbox-select-${this._rowId(row.rowNumber)}`) as HTMLInputElement;
+
+        if (childCheck.checked) {
+          childrenSelected.push(row);
+        }
+      });
+
+      if (childrenSelected.length === 0) {
+        parentCheck.checked = false;
+        parentCheck.classList.remove('-indeterminate');
+        this.deselectRow(parent);
+      } else if (children.length === childrenSelected.length) {
+        parentCheck.checked = true;
+        parentCheck.classList.remove('-indeterminate');
+        this.selectRow(parent);
+      } else {
+        parentCheck.checked = false;
+        parentCheck.classList.add('-indeterminate');
+      }
+
+      parent = parent.parent;
+    }
+
+    this._checkSelectAllCheckbox();
+  }
+
   selectRow(rowData: DataTableRow) {
     const selectedRow = this.selectedRows.find(rowId => rowId === rowData.rowId);
     const newRowData = {
@@ -315,6 +352,7 @@ export default class DataTable extends Vue {
     }
 
     this.$emit(DATA_TABLE_EVENTS.SELECTED_ROW, newRowData);
+    this._checkIndeterminate(newRowData);
     this._emitSelectedRows();
   }
 
@@ -332,6 +370,7 @@ export default class DataTable extends Vue {
     }
 
     this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
+    this._checkIndeterminate(newRowData);
     this._emitSelectedRows();
   }
 
@@ -373,6 +412,7 @@ export default class DataTable extends Vue {
       this.$emit(DATA_TABLE_EVENTS.DESELECTED_ALL, this.slicedData);
     }
 
+    this._checkSelectAllCheckbox();
     this._emitSelectedRows();
   }
 
@@ -401,6 +441,13 @@ export default class DataTable extends Vue {
               disabled={rowData?.selectionDisabled}
               onChange={(ev: Event) => {
                 if (selectAll) {
+                  const isSelected = (row: DataTableRow) => this.selectedRows.includes(row.rowId);
+
+                  if (this.slicedData.some(isSelected) && !this.slicedData.every(isSelected)) {
+                    (ev.target as HTMLInputElement).indeterminate = true;
+                    (ev.target as HTMLInputElement).checked = false;
+                  }
+
                   this.selectAllRows((ev.target as HTMLInputElement).checked ? 'select' : 'deselect');
                 } else {
                   if (rowData) {
@@ -680,9 +727,21 @@ export default class DataTable extends Vue {
     if (selectAllCheckbox) {
       const isSelected = (row: DataTableRow) => this.selectedRows.includes(row.rowId);
 
-      if (this.slicedData) {
-        selectAllCheckbox.checked = this.slicedData.every(isSelected);
+      if (this.slicedData.every(isSelected)) {
+        selectAllCheckbox.checked = true;
+        selectAllCheckbox.indeterminate = false;
+        selectAllCheckbox.classList.remove('-indeterminate');
+        return;
+      } else if (this.slicedData.some(isSelected)) {
+        selectAllCheckbox.checked = false;
+        selectAllCheckbox.indeterminate = true;
+        selectAllCheckbox.classList.add('-indeterminate');
+        return;
       }
+
+      selectAllCheckbox.checked = false;
+      selectAllCheckbox.indeterminate = false;
+      selectAllCheckbox.classList.remove('-indeterminate');
     }
   }
 
@@ -725,13 +784,19 @@ export default class DataTable extends Vue {
   }
 
   serializeData() {
-    const serializeRow = (row: DataTableRow, rowNumber: number, parentRowId: string | null) => {
+    const serializeRow = (
+      row: DataTableRow,
+      rowNumber: number,
+      parent: DataTableRow | undefined,
+      parentRowId: string | null
+    ) => {
       const rowId = this._rowId(row.id || rowNumber);
       const rowN = parentRowId !== null ? `${parentRowId}-${rowNumber}` : String(rowNumber);
       const rowObject = {
         ...row,
+        parent,
         rowNumber: rowN,
-        rowId: rowId,
+        rowId,
       };
       let subrowNumber = 0;
 
@@ -741,8 +806,8 @@ export default class DataTable extends Vue {
         row.nestedContent.table.data
       ) {
         // eslint-disable-next-line
-        row.nestedContent.table.data = row.nestedContent.table.data.map((row: any) => {
-          const serialized = serializeRow(row, subrowNumber, rowN);
+        row.nestedContent.table.data = row.nestedContent.table.data.map((subRow: DataTableRow) => {
+          const serialized = serializeRow(subRow, subrowNumber, rowObject, rowN);
 
           subrowNumber++;
           return serialized;
@@ -765,7 +830,7 @@ export default class DataTable extends Vue {
       this.$props.config.reserveExpansionSlot ||
       !!this.data.body.find((row: { nestedContent: any }) => row.nestedContent);
     this.data.body.forEach(row => {
-      this._serializedDataBody.push(serializeRow(row, rowNumber, null));
+      this._serializedDataBody.push(serializeRow(row, rowNumber, undefined, null));
       rowNumber++;
     });
   }

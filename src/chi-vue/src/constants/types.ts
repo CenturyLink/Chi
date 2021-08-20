@@ -42,6 +42,7 @@ export interface DataTableRow {
   data: Record<string, any>;
   nestedContent: DataTableRowNestedContent;
   id: string;
+  parent?: DataTableRow;
   rowId: string;
   rowNumber: string;
   selected?: boolean;
