@@ -4,7 +4,7 @@
     <ChiDataTable
       :data="table"
       :config="config"
-      @chiSelectedRowsChange="e => this.rowSelect(e)"
+      @chiSelectedRowsChange="e => this.chiSelectedRowsChange(e)"
       @chiPageChange="e => this.pageChange(e)"
       @chiPageSizeChange="e => this.pageSizeChange(e)"
       @chiDataSorting="e => this.dataSorting(e)"
@@ -41,10 +41,11 @@
       </template>
       <template #toolbar>
         <ChiDataTableToolbar
-          @chiToolbarFiltersChange="e => filtersChange(e)"
-          @chiToolbarSearch="e => search(e)"
-          @chiToolbarColumnsChange="e => columnsChange(e)"
-          @chiToolbarViewsChange="e => viewsChange(e)"
+          @chiToolbarFiltersChange="e => chiToolbarFiltersChange(e)"
+          @chiToolbarSearch="e => chiToolbarSearch(e)"
+          @chiToolbarColumnsChange="e => chiToolbarColumnsChange(e)"
+          @chiToolbarColumnsReset="e => chiToolbarColumnsReset(e)"
+          @chiToolbarViewsChange="e => chiToolbarViewsChange(e)"
         >
           <template v-slot:start>
             <ChiSearchInput :portal="true" size="lg" :dataTableSearch="true" />
@@ -55,7 +56,10 @@
           </template>
           <template v-slot:end>
             <div class="chi-toolbar__actions-desktop">
-              <ChiColumnCustomization :columnsData="toolbar.columnsData" />
+              <ChiColumnCustomization
+                @chiColumnsReset="e => chiToolbarColumnsReset(e)"
+                :columnsData="toolbar.columnsData"
+              />
             </div>
             <div :class="`chi-toolbar__actions-mobile`">
               <button
@@ -110,32 +114,41 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     ChiDataTableViews: DataTableViews,
   },
   methods: {
-    rowSelect: e => {
-      console.log(e);
+    chiToolbarColumnsChange: e => {
+      console.log('chiToolbarColumnsChange', e);
+    },
+    chiToolbarColumnsReset: e => {
+      console.log('chiToolbarColumnsReset', e);
+    },
+    chiColumnsReset: e => {
+      console.log('chiColumnsReset', e);
+    },
+    chiSelectedRowsChange: e => {
+      console.log('chiRowSelect', e);
     },
     pageChange: e => {
-      console.log(e);
+      console.log('chiPageChange', e);
     },
     pageSizeChange: e => {
-      console.log(e);
+      console.log('chiPageSizeChange', e);
     },
     dataSorting: e => {
-      console.log(e);
+      console.log('chiDataSorting', e);
     },
-    search: e => {
-      console.log(e);
+    chiToolbarSearch: e => {
+      console.log('chiToolbarSearch', e);
     },
-    filtersChange: e => {
-      console.log(e);
+    chiToolbarFiltersChange: e => {
+      console.log('chiToolbarFiltersChange', e);
     },
-    viewsChange: e => {
-      console.log(e);
+    chiToolbarViewsChange: e => {
+      console.log('chiToolbarViewsChange', e);
     },
     rowExpanded: e => {
-      console.log(`Expanded row: `, e);
+      console.log('chiRowExpanded', e);
     },
     rowCollapsed: e => {
-      console.log(`Collapsed row: `, e);
+      console.log('chiRowCollapsed', e);
     },
   },
   data: () => {

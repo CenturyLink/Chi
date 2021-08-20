@@ -1769,6 +1769,23 @@
           "required": false
         },
         {
+          "name": "noHoverUnderline",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "no-hover-underline",
+          "reflectToAttr": true,
+          "docs": "to remove a link's underline on hover.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "rel",
           "type": "string",
           "mutable": false,

@@ -49,6 +49,13 @@ i {
 
 .icon-arrow-long-down::before {
   content: '\e9df';
+
+.icon-copy::before {
+  content: '\e9da';
+}
+
+.icon-chat-outline::before {
+  content: '\e9db';
 }
 
 .icon-circle-slash::before {
