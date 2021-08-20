@@ -35,6 +35,14 @@ i {
   }
 }
 
+.icon-copy::before {
+  content: '\e9da';
+}
+
+.icon-chat-outline::before {
+  content: '\e9db';
+}
+
 .icon-circle-slash::before {
   content: '\e9d8';
 }
