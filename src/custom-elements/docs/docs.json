@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-08-17T19:06:38",
+  "timestamp": "2021-08-19T15:00:01",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1763,6 +1763,23 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "noHoverUnderline",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "no-hover-underline",
+          "reflectToAttr": true,
+          "docs": "to remove a link's underline on hover.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,
