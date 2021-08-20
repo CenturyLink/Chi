@@ -10,10 +10,12 @@ export const DATA_TABLE_EVENTS = {
   DATA_SORTING: 'chiDataSorting',
   FILTERS_CHANGE: 'chiFiltersChange',
   COLUMNS_CHANGE: 'chiColumnsChange',
+  COLUMNS_RESET: 'chiColumnsReset',
   ADVANCED_FILTERS_CHANGE: 'chiAdvancedFiltersChange',
   VIEWS_CHANGE: 'chiViewsChange',
   TOOLBAR: {
     COLUMNS_CHANGE: 'chiToolbarColumnsChange',
+    COLUMNS_RESET: 'chiToolbarColumnsReset',
     FILTERS_CHANGE: 'chiToolbarFiltersChange',
     SEARCH: 'chiToolbarSearch',
     VIEWS_CHANGE: 'chiToolbarViewsChange',
