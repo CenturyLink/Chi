@@ -56,6 +56,7 @@ export default class DataTable extends Vue {
   _sortConfig?: DataTableSortConfig;
   _serializedDataBody: DataTableRow[] = [];
   _toolbarComponent?: DataTableToolbar;
+  _paginationListenersAdded = false;
 
   _head() {
     const tableHeadCells = [
@@ -611,6 +612,38 @@ export default class DataTable extends Vue {
     return <div class={DATA_TABLE_CLASSES.BODY}>{tableBodyRows}</div>;
   }
 
+  _addPaginationEventListener() {
+    if (this.$refs.pagination && !this._paginationListenersAdded) {
+      (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_SIZE, (ev: string) => {
+        const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+
+        this.resultsPerPage = ev === 'all' ? this._serializedDataBody.length : parseInt(ev);
+        this.slicedData = this.sliceData(data);
+        this.$emit(PAGINATION_EVENTS.PAGE_SIZE, this.slicedData);
+      });
+
+      (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
+        const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+        const numberOfPages = this._calculateNumberOfPages();
+
+        if (ev >= 1 && ev <= numberOfPages) {
+          const pageChangeEventData: DataTablePageChange = {
+            page: ev,
+          };
+
+          if (this.mode === DataTableModes.CLIENT) {
+            this.activePage = ev;
+            this.slicedData = this.sliceData(data);
+            pageChangeEventData.data = this.slicedData;
+          }
+          this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
+          this._checkSelectAllCheckbox();
+        }
+      });
+      this._paginationListenersAdded = true;
+    }
+  }
+
   _pagination() {
     const pages = this._calculateNumberOfPages();
 
@@ -804,42 +837,12 @@ export default class DataTable extends Vue {
       this._generateColumnResize(dataTableComponent);
     }
 
-    if (this.$refs.pagination) {
-      (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_SIZE, (ev: string) => {
-        const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
-
-        this.resultsPerPage = ev === 'all' ? this._serializedDataBody.length : parseInt(ev);
-        this.slicedData = this.sliceData(data);
-        this.$emit(PAGINATION_EVENTS.PAGE_SIZE, this.slicedData);
-      });
-
-      (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
-        const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
-        const numberOfPages = this._calculateNumberOfPages();
-
-        if (ev >= 1 && ev <= numberOfPages) {
-          const pageChangeEventData: DataTablePageChange = {
-            page: ev,
-          };
-
-          if (this.mode === DataTableModes.CLIENT) {
-            this.activePage = ev;
-            this.slicedData = this.sliceData(data);
-            pageChangeEventData.data = this.slicedData;
-          }
-          this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
-          this._checkSelectAllCheckbox();
-        }
-      });
-    }
+    this._addPaginationEventListener();
     window.addEventListener('resize', this.resizeHandler);
-    // Todo - replace with Ribbon management visibility once available
-    // if (this._toolbarComponent) {
-    //   this._toolbarComponent.$on('chiToolbarSearch', (ev: Event) => {
-    //   });
-    //   this._toolbarComponent.$on('chiToolbarFiltersChange', (ev: Event) => {
-    //   });
-    // }
+  }
+
+  updated() {
+    this._addPaginationEventListener();
   }
 
   resizeHandler() {
