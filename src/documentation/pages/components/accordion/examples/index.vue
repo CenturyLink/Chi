@@ -12,7 +12,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Base from './_base.vue';
-import { Themes } from '~/models/models';
 
 declare const chi: any;
 
@@ -25,9 +24,6 @@ export default class BaseExample extends Vue {
   theme = this.$store.state.themes.theme;
 
   mounted() {
-    // const accordionBase = document.getElementById('example-base');
-
-    // chi.accordion(accordionBase);
   }
 }
 </script>

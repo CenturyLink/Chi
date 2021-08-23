@@ -50,9 +50,13 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    // With Options
+    ['nuxt-highlightjs', {
+      style: 'github'
+    }]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
-}
+};
