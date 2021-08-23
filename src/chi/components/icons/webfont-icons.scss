@@ -35,6 +35,22 @@ i {
   }
 }
 
+.icon-arrow-long-up::before {
+  content: '\e9dc';
+}
+
+.icon-arrow-long-right::before {
+  content: '\e9dd';
+}
+
+.icon-arrow-long-left::before {
+  content: '\e9de';
+}
+
+.icon-arrow-long-down::before {
+  content: '\e9df';
+}
+
 .icon-copy::before {
   content: '\e9da';
 }
