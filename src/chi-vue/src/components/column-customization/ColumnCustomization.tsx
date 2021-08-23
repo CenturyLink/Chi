@@ -57,23 +57,35 @@ export default class ColumnCustomization extends Vue {
             </div>
             <footer class={MODAL_CLASSES.FOOTER}>
               <button
+                ref="resetButton"
+                class={`
+                  ${BUTTON_CLASSES.BUTTON}
+                  ${PORTAL_CLASS}
+                  ${BUTTON_CLASSES.ICON_BUTTON}
+                  ${BUTTON_CLASSES.PRIMARY}
+                  ${BUTTON_CLASSES.FLAT}
+                  ${BUTTON_CLASSES.SIZES.LG}
+                  -bg--white
+                  -uppercase
+                  -px--4`}
+                onclick={this._reset}
+                disabled>
+                <div class="chi-button__content">
+                  <i aria-hidden="true" class="chi-icon icon-reload"></i>
+                </div>
+              </button>
+              <div class="chi-divider -vertical"></div>
+              <button
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} -bg--white -uppercase -px--4 -ml--1`}
+                data-dismiss="modal">
+                Cancel
+              </button>
+              <button
                 ref="saveButton"
                 onclick={this._submitColumnsChange}
                 class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} -lg -uppercase -px--4`}
                 disabled>
                 Save
-              </button>
-              <button
-                ref="resetButton"
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} -bg--white -uppercase -px--4`}
-                onclick={this._reset}
-                disabled>
-                Reset
-              </button>
-              <button
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} -bg--white -uppercase -px--4`}
-                data-dismiss="modal">
-                Cancel
               </button>
             </footer>
           </section>
@@ -92,6 +104,10 @@ export default class ColumnCustomization extends Vue {
       (this.$refs.resetButton as HTMLButtonElement).disabled = true;
       this.key += 1;
     }
+    this.$emit(DATA_TABLE_EVENTS.COLUMNS_RESET, [
+      ...(this._selectedLockedColumns || []),
+      ...(this._selectedStandardColumns || []),
+    ]);
   }
 
   _submitColumnsChange() {
