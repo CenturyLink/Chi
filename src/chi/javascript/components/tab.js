@@ -110,7 +110,7 @@ class Tab extends Component {
     }
 
     return;
-  };
+  }
 
   getActiveTab () {
     return this._elem.querySelector(
