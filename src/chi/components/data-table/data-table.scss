@@ -19,680 +19,28 @@ $sizes: (
   )
 );
 
-.chi-data-table {
-  border-collapse: collapse;
-  display: block;
-  font-size: $font-size-base;
-  line-height: $line-height-sm;
-  overflow-x: auto;
-  overflow-y: hidden;
-  width: 100%;
+@mixin dataTable($print: false) {
+  .chi-data-table {
+    border-collapse: collapse;
+    display: block;
+    font-size: $font-size-base;
+    line-height: $line-height-sm;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
 
-  @include respond-to(md) {
-    display: flex;
-    flex-direction: column;
-  }
-
-  label {
-    margin-bottom: 0;
-  }
-
-  @each $type in map-keys($sizes) {
-    &.-#{$type} {
-      @include respond-to(md) {
-        .chi-data-table__head {
-          .chi-data-table__cell {
-            padding: map-get(map-get($sizes, $type), padding);
-          }
-        }
-
-        .chi-data-table__body {
-          .chi-data-table__cell {
-            padding: map-get(map-get($sizes, $type), padding);
-          }
-        }
-      }
-    }
-  }
-
-  &__head {
-    display: none;
-
-    @include respond-to(md) {
-      background-color: $color-background-white;
-      display: block;
-    }
-
-    .chi-data-table__cell {
-      @include respond-to(md) {
-        border-bottom: 0.125rem solid $color-border-base-dark;
-        display: flex;
-        font-weight: $font-weight-semi-bold;
-        padding: 0.75rem 1rem;
-        position: relative;
-
-        .chi-icon {
-          margin-left: 0.5rem;
-        }
-
-        &.-sorting {
-          background-color: transparent;
-          border-left: 0;
-          border-right: 0;
-          border-top: 0;
-
-          .chi-icon {
-            opacity: $opacity-60;
-          }
-
-          &:hover,
-          &:focus {
-            cursor: pointer;
-
-            .chi-icon {
-              opacity: $opacity-100;
-            }
-          }
-
-          &.-active {
-            .chi-icon {
-              opacity: $opacity-100;
-            }
-
-            &.-descending {
-              .chi-icon {
-                transform: rotate(180deg);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &__body {
-    @include respond-to(md) {
+    @include setMdStyle($print) {
       display: flex;
       flex-direction: column;
     }
 
-    .chi-data-table__row {
-      &.-expanded {
-        @include respond-to(md) {
-          font-weight: $font-weight-semi-bold;
-        }
-
-        .chi-data-table__cell {
-          border-bottom-color: transparent;
-        }
-      }
-    }
-
-    .chi-data-table__cell {
-      display: flex;
-      padding: 0.25rem 0.75rem;
-
-      @include respond-to(md) {
-        border-bottom: 0.0625rem solid $color-border-base-light;
-        padding: 0.75rem 1rem;
-        word-break: break-word;
-      }
-
-      .-text--truncate {
-        cursor: pointer;
-      }
-
-      &::before {
-        content: attr(data-label);
-        display: block;
-        font-weight: $font-weight-semi-bold;
-        min-width: 10rem;
-
-        @include respond-to(md) {
-          display: none;
-        }
-      }
-    }
-  }
-
-  &__footer {
-    @include respond-to(md) {
-      background-color: $color-background-white;
-      padding: 1.5rem 1rem;
-    }
-  }
-
-  &__row {
-    background-color: $color-background-white;
-    border-bottom: 0.0625rem solid $color-border-base-light;
-    display: block;
-    padding: 1rem 0;
-
-    @include respond-to(md) {
-      border: 0;
-      display: flex;
-      flex-direction: row;
-      padding: 0;
-    }
-
-    &.-striped {
-      background-color: $color-background-muted-lighter;
-    }
-
-    &.-active {
-      background-color: $color-background-primary-light;
-      box-shadow: inset 0.125rem 0 0 $color-border-primary;
-    }
-
-    &.-selected {
-      background-color: $color-background-primary-light;
-    }
-
-    &.-expanded {
-      background-color: $color-background-primary-light;
-      border-bottom: 0;
-      box-shadow: inset 0.25rem 0 0 $color-border-primary;
-
-      .chi-data-table__cell {
-        &.-expandable {
-          .icon-chevron-right {
-            transform: rotate(90deg);
-            transition: transform 0.2s ease-in-out;
-          }
-        }
-      }
-    }
-
-    &-empty {
-      background-color: $color-background-base;
-      font-style: italic;
-      padding: 0.75rem 1rem;
-      text-align: center;
-    }
-
-    &-child,
-    &-grand-child {
-      background-color: $color-background-primary-light;
-      box-shadow: inset 0.25rem 0 0 $color-border-primary;
-
-      @include respond-to(md) {
-        display: flex;
-        flex-direction: row;
-      }
-    }
-
-    &-child {
-      &.-container {
-        padding: 0.75rem;
-
-        @include respond-to(md) {
-          background-color: $color-background-primary-lighter;
-          padding: 1.5rem 2rem;
-        }
-      }
-    }
-
-    &-grand-child {
-      font-size: $font-size-xs;
-      line-height: 0.875rem;
-
-      @include respond-to(md) {
-        line-height: $line-height-sm;
-      }
-    }
-  }
-
-  &__cell {
-    .chi-icon {
-      color: $color-icon-base;
-    }
-
-    @include respond-to(md) {
-      align-items: center;
-      flex-basis: 0%;
-      flex-grow: 1;
-      flex-shrink: 1;
-      justify-content: flex-start;
-    }
-
-    &.-selectable,
-    &.-expandable {
-      @include respond-to(md) {
-        flex-grow: 0;
-      }
-
-      .chi-icon {
-        &.icon-plus,
-        &.icon-minus {
-          color: $color-icon-primary;
-        }
-      }
-
-      &::before {
-        display: none;
-      }
-    }
-
-    .chi-button {
-      &.-flat {
-        &.-icon {
-          padding: 0.0625rem;
-
-          &.-active,
-          &.-hover,
-          &:active,
-          &:hover {
-            background-color: transparent;
-            border-color: transparent;
-            box-shadow: none;
-            padding: 0.0625rem;
-          }
-        }
-      }
-    }
-
-    &.-expandable {
-      display: none;
-
-      @include respond-to(md) {
-        display: flex;
-        flex-basis: 3rem;
-      }
-    }
-
-    &.-selectable {
-      display: none;
-
-      @include respond-to(md) {
-        display: flex;
-        flex-basis: 3rem;
-
-        .chi-checkbox__label {
-          padding-left: 1rem;
-        }
-      }
-    }
-
-    & .-associated {
-      &:first-child {
-        margin-right: 1rem;
-      }
-
-      &::before {
-        content: attr(data-label);
-        display: inline-block;
-        font-weight: $font-weight-semi-bold;
-        margin-right: 0.5rem;
-      }
-
-      @include respond-to(md) {
-        display: flex;
-        flex-basis: 0%;
-        flex-grow: 1;
-        flex-shrink: 1;
-
-        &:first-child {
-          margin-right: 0.5rem;
-        }
-
-        &::before {
-          display: none;
-        }
-      }
-    }
-  }
-
-  .chi-data-table__row,
-  .chi-data-table__row-child,
-  .chi-data-table__row-grand-child {
-    @each $type in map-keys($sizes) {
-      &.-#{$type} {
-        @include respond-to(md) {
-          .chi-data-table__cell {
-            padding: map-get(map-get($sizes, $type), padding);
-          }
-        }
-      }
-    }
-  }
-
-  &.-no-border {
-    .chi-data-table__head,
-    .chi-data-table__body {
-      .chi-data-table__cell {
-        @include respond-to(md) {
-          border: 0;
-        }
-      }
-    }
-  }
-
-  &.-hover {
-    .chi-data-table__body {
-      .chi-data-table__row {
-        &:hover,
-        &.-hover {
-          @include respond-to(md) {
-            background-color: $color-background-base-dark;
-
-            &.-active,
-            &.-selected,
-            &.-expanded {
-              background-color: $color-background-primary-light;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &.-bordered {
-    .chi-data-table__body {
-      .chi-data-table__row {
-        .chi-data-table__cell {
-          border: 0.0625rem solid $color-border-base-dark;
-          border-bottom-width: 0;
-
-          &:last-child {
-            border-bottom-width: 0.0625rem;
-          }
-        }
-      }
-    }
-
-    @include respond-to(md) {
-      .chi-data-table__head,
-      .chi-data-table__body {
-        .chi-data-table__row {
-          .chi-data-table__cell {
-            border: 0.0625rem solid $color-border-base-dark;
-            border-right-width: 0;
-
-            &:last-of-type {
-              border-right-width: 0.0625rem;
-            }
-          }
-        }
-      }
-
-      .chi-data-table__head {
-        .chi-data-table__row {
-          .chi-data-table__cell {
-            border-bottom: 0.125rem solid $color-border-base-dark;
-          }
-        }
-      }
-
-      .chi-data-table__body {
-        .chi-data-table__row {
-          .chi-data-table__cell {
-            border-top-width: 0;
-          }
-        }
-      }
-    }
-  }
-
-  &.-portal {
-    .chi-data-table__head {
-      @include respond-to(md) {
-        background-color: $color-background-muted-lighter;
-
-        .chi-data-table__row {
-          background-color: $color-background-muted-lighter;
-
-          .chi-data-table__cell {
-            border-bottom: 0.0625rem solid $color-border-base-dark;
-          }
-
-          &:last-child {
-            .chi-data-table__cell {
-              border-bottom: 0;
-            }
-          }
-        }
-      }
-    }
-
-    &:not(.-bordered) {
-      .chi-data-table__body {
-        @include respond-to(md) {
-          border: 0.0625rem solid $color-grey-15;
-        }
-      }
-    }
-
-    .chi-data-table__body {
-      .chi-data-table__row {
-        @include respond-to(md) {
-          background-color: $color-background-base;
-        }
-
-        &-empty {
-          border: 0.0625rem solid $color-background-base-darker;
-          text-align: left;
-        }
-
-        &.-striped {
-          @include respond-to(md) {
-            background-color: $color-navy-10;
-          }
-        }
-
-        &.-active {
-          background-color: $color-navy-20;
-          box-shadow: inset 0.25rem 0 0 $color-border-primary;
-        }
-
-        &:hover,
-        &.-hover {
-          @include respond-to(md) {
-            background-color: $color-navy-20;
-          }
-        }
-
-        &.-expanded {
-          background-color: $color-background-base-darker;
-
-          @include respond-to(md) {
-            background-color: $color-navy-20;
-            display: flex;
-          }
-        }
-
-        &-child {
-          .chi-icon {
-            &.icon-plus,
-            &.icon-minus {
-              color: $color-icon-primary;
-            }
-          }
-        }
-      }
-
-      .chi-data-table__row,
-      .chi-data-table__row-child,
-      .chi-data-table__row-grand-child {
-        .chi-data-table__cell {
-          @include respond-to(md) {
-            border-bottom: 0;
-          }
-        }
-      }
-    }
-
-    .chi-data-table__footer {
-      display: none;
-
-      @include respond-to(md) {
-        background-color: $color-grey-10;
-        display: block;
-        padding: 0.5rem 1rem;
-
-        .chi-pagination__content {
-          .chi-pagination__center {
-            align-items: center;
-
-            .chi-button {
-              &.-icon {
-                &.-flat {
-                  &:hover {
-                    background-color: transparent;
-                    border: 0.0625rem solid transparent;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    &.-no-border {
-      .chi-data-table__head,
-      .chi-data-table__body {
-        .chi-data-table__cell {
-          @include respond-to(md) {
-            border: 0;
-          }
-        }
-      }
-    }
-
-    &.-hover {
-      .chi-data-table__body {
-        .chi-data-table__row {
-          &:hover,
-          &.-hover {
-            @include respond-to(md) {
-              background-color: $color-background-primary-light;
-
-              &.-active,
-              &.-selected,
-              &.-expanded {
-                background-color: $color-background-primary-light;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    &.-bordered {
-      .chi-data-table__body {
-        .chi-data-table__row {
-          border-bottom: 0.0625rem solid $color-border-base-dark;
-
-          .chi-data-table__cell {
-            border: 0.0625rem solid $color-border-base-dark;
-            border-bottom-width: 0;
-          }
-
-          & + .chi-data-table__row {
-            .chi-data-table__cell {
-              &:first-child {
-                border-top-width: 0;
-              }
-            }
-          }
-        }
-      }
-
-      @include respond-to(md) {
-        .chi-data-table__head,
-        .chi-data-table__body {
-          .chi-data-table__row {
-            .chi-data-table__cell {
-              border: 0.0625rem solid $color-border-base-dark;
-              border-right-width: 0;
-
-              &:last-of-type {
-                border-right-width: 0.0625rem;
-              }
-            }
-          }
-        }
-
-        .chi-data-table__head {
-          .chi-data-table__row {
-            .chi-data-table__cell {
-              border-bottom: 0.125rem solid $color-border-base-dark;
-            }
-          }
-        }
-
-        .chi-data-table__body {
-          .chi-data-table__row {
-            border-bottom: 0;
-
-            .chi-data-table__cell {
-              border-top-width: 0;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  &.-compact {
-    .chi-data-table__body {
-      .chi-data-table__cell {
-        padding: 0;
-
-        @include respond-to(md) {
-          border-bottom: 0.0625rem solid $color-border-base-light;
-          padding: 0.75rem 1rem;
-        }
-
-        &.-key {
-          &::before {
-            display: none;
-          }
-
-          &.-bold {
-            font-weight: $font-weight-semi-bold;
-
-            @include respond-to(md) {
-              font-weight: $font-weight-normal;
-            }
-          }
-
-          + .-key {
-            margin-top: 0.5rem;
-
-            @include respond-to(md) {
-              margin-top: 0;
-            }
-          }
-        }
-
-        &:not(.-key) {
-          display: none;
-
-          @include respond-to(md) {
-            display: flex;
-          }
-        }
-
-        .chi-button {
-          &.-expand {
-            display: none;
-
-            @include respond-to(md) {
-              display: block;
-
-              + div {
-                margin-left: 0.5rem;
-              }
-            }
-          }
-        }
-      }
+    label {
+      margin-bottom: 0;
     }
 
     @each $type in map-keys($sizes) {
       &.-#{$type} {
-        @include respond-to(md) {
+        @include setMdStyle($print) {
           .chi-data-table__head {
             .chi-data-table__cell {
               padding: map-get(map-get($sizes, $type), padding);
@@ -708,226 +56,54 @@ $sizes: (
       }
     }
 
-    .chi-data-table__row,
-    .chi-data-table__row-child,
-    .chi-data-table__row-grand-child {
-      position: relative;
-
-      &::after {
-        color: $color-text-primary;
-        content: '\e920';
-        font-family: $font-family-icon;
-        font-size: $font-size-lg;
-        height: 1rem;
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-0.5rem);
-        width: 0.75rem;
-
-        @include respond-to(md) {
-          display: none;
-        }
-      }
-
-      &.-collapsed,
-      &.-expanded {
-        &::before {
-          color: $color-icon-primary;
-          content: '\e97d';
-          font-family: $font-family-icon;
-          font-weight: $font-weight-normal;
-          position: absolute;
-
-          @include respond-to(md) {
-            display: none;
-          }
-        }
-      }
-
-      &.-expanded {
-        &::before {
-          content: '\e974';
-        }
-      }
-
-      @each $type in map-keys($sizes) {
-        &.-#{$type} {
-          @include respond-to(md) {
-            .chi-data-table__cell {
-              padding: map-get(map-get($sizes, $type), padding);
-            }
-          }
-        }
-      }
-    }
-
-    .chi-data-table__row {
-      background-color: $color-background-muted-lighter;
-      border-bottom: 0;
-      margin-top: 0.5rem;
-      padding: 1rem 3rem 1rem 1rem;
-
-      @include respond-to(md) {
-        background-color: transparent;
-        margin-top: 0;
-        padding: 0;
-      }
-
-      &.-active,
-      &.-expanded {
-        background-color: $color-background-primary-light;
-
-        .chi-data-table__cell {
-          &.-key {
-            &.-bold {
-              @include respond-to(md) {
-                font-weight: $font-weight-semi-bold;
-              }
-            }
-          }
-        }
-      }
-
-      &.-collapsed,
-      &.-expanded {
-        padding-left: 3rem;
-
-        &::before {
-          font-size: $font-size-xs;
-          height: 1rem;
-          left: 1rem;
-          top: 1rem;
-          width: 0.75rem;
-        }
-
-        @include respond-to(md) {
-          padding-left: 0;
-        }
-      }
-
-      &-child,
-      &-grand-child {
-        background-color: $color-background-base-darker;
-        padding: 0.75rem 3rem;
-
-        @include respond-to(md) {
-          background-color: $color-navy-20;
-          padding: 0;
-        }
-
-        &.-collapsed,
-        &.-expanded {
-          padding-left: 5rem;
-
-          &::before {
-            font-size: $font-size-xs;
-            height: 1rem;
-            left: 3rem;
-            top: 0.7rem;
-            width: 0.75rem;
-          }
-
-          @include respond-to(md) {
-            padding-left: 0;
-          }
-        }
-      }
-
-      &-grand-child {
-        padding-left: 5rem;
-
-        @include respond-to(md) {
-          padding-left: 0;
-
-          .chi-data-table__cell {
-            &.-key {
-              &.-bold {
-                > div {
-                  margin-left: 1.5rem;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-@media print {
-  .chi-data-table {
-    border-collapse: collapse;
-    font-size: $font-size-base;
-    line-height: $line-height-sm;
-    overflow-x: auto;
-    overflow-y: hidden;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
-    label {
-      margin-bottom: 0;
-    }
-
-    @each $type in map-keys($sizes) {
-      &.-#{$type} {
-        .chi-data-table__head {
-          .chi-data-table__cell {
-            padding: map-get(map-get($sizes, $type), padding);
-          }
-        }
-
-        .chi-data-table__body {
-          .chi-data-table__cell {
-            padding: map-get(map-get($sizes, $type), padding);
-          }
-        }
-      }
-    }
-
     &__head {
-      background-color: $color-background-white;
-      display: block;
+      display: none;
+
+      @include setMdStyle($print) {
+        background-color: $color-background-white;
+        display: block;
+      }
 
       .chi-data-table__cell {
-        border-bottom: 0.125rem solid $color-border-base-dark;
-        display: flex;
-        font-weight: $font-weight-semi-bold;
-        padding: 0.75rem 1rem;
-        position: relative;
-
-        .chi-icon {
-          margin-left: 0.5rem;
-        }
-
-        &.-sorting {
-          background-color: transparent;
-          border-left: 0;
-          border-right: 0;
-          border-top: 0;
+        @include setMdStyle($print) {
+          border-bottom: 0.125rem solid $color-border-base-dark;
+          display: flex;
+          font-weight: $font-weight-semi-bold;
+          padding: 0.75rem 1rem;
+          position: relative;
 
           .chi-icon {
-            opacity: $opacity-60;
+            margin-left: 0.5rem;
           }
 
-          &:hover,
-          &:focus {
-            cursor: pointer;
+          &.-sorting {
+            background-color: transparent;
+            border-left: 0;
+            border-right: 0;
+            border-top: 0;
 
             .chi-icon {
-              opacity: $opacity-100;
-            }
-          }
-
-          &.-active {
-            .chi-icon {
-              opacity: $opacity-100;
+              opacity: $opacity-60;
             }
 
-            &.-descending {
+            &:hover,
+            &:focus {
+              cursor: pointer;
+
               .chi-icon {
-                transform: rotate(180deg);
+                opacity: $opacity-100;
+              }
+            }
+
+            &.-active {
+              .chi-icon {
+                opacity: $opacity-100;
+              }
+
+              &.-descending {
+                .chi-icon {
+                  transform: rotate(180deg);
+                }
               }
             }
           }
@@ -936,12 +112,16 @@ $sizes: (
     }
 
     &__body {
-      display: flex;
-      flex-direction: column;
+      @include setMdStyle($print) {
+        display: flex;
+        flex-direction: column;
+      }
 
       .chi-data-table__row {
         &.-expanded {
-          font-weight: $font-weight-semi-bold;
+          @include setMdStyle($print) {
+            font-weight: $font-weight-semi-bold;
+          }
 
           .chi-data-table__cell {
             border-bottom-color: transparent;
@@ -951,9 +131,13 @@ $sizes: (
 
       .chi-data-table__cell {
         display: flex;
-        border-bottom: 0.0625rem solid $color-border-base-light;
-        padding: 0.75rem 1rem;
-        word-break: break-word;
+        padding: 0.25rem 0.75rem;
+
+        @include setMdStyle($print) {
+          border-bottom: 0.0625rem solid $color-border-base-light;
+          padding: 0.75rem 1rem;
+          word-break: break-word;
+        }
 
         .-text--truncate {
           cursor: pointer;
@@ -961,26 +145,36 @@ $sizes: (
 
         &::before {
           content: attr(data-label);
+          display: block;
           font-weight: $font-weight-semi-bold;
           min-width: 10rem;
 
-          display: none;
+          @include setMdStyle($print) {
+            display: none;
+          }
         }
       }
     }
 
     &__footer {
-      background-color: $color-background-white;
-      padding: 1.5rem 1rem;
+      @include setMdStyle($print) {
+        background-color: $color-background-white;
+        padding: 1.5rem 1rem;
+      }
     }
 
     &__row {
       background-color: $color-background-white;
+      border-bottom: 0.0625rem solid $color-border-base-light;
+      display: block;
+      padding: 1rem 0;
 
-      border: 0;
-      display: flex;
-      flex-direction: row;
-      padding: 0;
+      @include setMdStyle($print) {
+        border: 0;
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+      }
 
       &.-striped {
         background-color: $color-background-muted-lighter;
@@ -1022,20 +216,30 @@ $sizes: (
         background-color: $color-background-primary-light;
         box-shadow: inset 0.25rem 0 0 $color-border-primary;
 
-        display: flex;
-        flex-direction: row;
+        @include setMdStyle($print) {
+          display: flex;
+          flex-direction: row;
+        }
       }
 
       &-child {
         &.-container {
-          background-color: $color-background-primary-lighter;
-          padding: 1.5rem 2rem;
+          padding: 0.75rem;
+
+          @include setMdStyle($print) {
+            background-color: $color-background-primary-lighter;
+            padding: 1.5rem 2rem;
+          }
         }
       }
 
       &-grand-child {
         font-size: $font-size-xs;
-        line-height: $line-height-sm;
+        line-height: 0.875rem;
+
+        @include setMdStyle($print) {
+          line-height: $line-height-sm;
+        }
       }
     }
 
@@ -1044,15 +248,19 @@ $sizes: (
         color: $color-icon-base;
       }
 
-      align-items: center;
-      flex-basis: 0%;
-      flex-grow: 1;
-      flex-shrink: 1;
-      justify-content: flex-start;
+      @include setMdStyle($print) {
+        align-items: center;
+        flex-basis: 0%;
+        flex-grow: 1;
+        flex-shrink: 1;
+        justify-content: flex-start;
+      }
 
       &.-selectable,
       &.-expandable {
-        flex-grow: 0;
+        @include setMdStyle($print) {
+          flex-grow: 0;
+        }
 
         .chi-icon {
           &.icon-plus,
@@ -1085,16 +293,24 @@ $sizes: (
       }
 
       &.-expandable {
-        display: flex;
-        flex-basis: 3rem;
+        display: none;
+
+        @include setMdStyle($print) {
+          display: flex;
+          flex-basis: 3rem;
+        }
       }
 
       &.-selectable {
-        display: flex;
-        flex-basis: 3rem;
+        display: none;
 
-        .chi-checkbox__label {
-          padding-left: 1rem;
+        @include setMdStyle($print) {
+          display: flex;
+          flex-basis: 3rem;
+
+          .chi-checkbox__label {
+            padding-left: 1rem;
+          }
         }
       }
 
@@ -1110,17 +326,19 @@ $sizes: (
           margin-right: 0.5rem;
         }
 
-        display: flex;
-        flex-basis: 0%;
-        flex-grow: 1;
-        flex-shrink: 1;
+        @include setMdStyle($print) {
+          display: flex;
+          flex-basis: 0%;
+          flex-grow: 1;
+          flex-shrink: 1;
 
-        &:first-child {
-          margin-right: 0.5rem;
-        }
+          &:first-child {
+            margin-right: 0.5rem;
+          }
 
-        &::before {
-          display: none;
+          &::before {
+            display: none;
+          }
         }
       }
     }
@@ -1130,8 +348,10 @@ $sizes: (
     .chi-data-table__row-grand-child {
       @each $type in map-keys($sizes) {
         &.-#{$type} {
-          .chi-data-table__cell {
-            padding: map-get(map-get($sizes, $type), padding);
+          @include setMdStyle($print) {
+            .chi-data-table__cell {
+              padding: map-get(map-get($sizes, $type), padding);
+            }
           }
         }
       }
@@ -1141,7 +361,9 @@ $sizes: (
       .chi-data-table__head,
       .chi-data-table__body {
         .chi-data-table__cell {
-          border: 0;
+          @include setMdStyle($print) {
+            border: 0;
+          }
         }
       }
     }
@@ -1151,12 +373,14 @@ $sizes: (
         .chi-data-table__row {
           &:hover,
           &.-hover {
-            background-color: $color-background-base-dark;
+            @include setMdStyle($print) {
+              background-color: $color-background-base-dark;
 
-            &.-active,
-            &.-selected,
-            &.-expanded {
-              background-color: $color-background-primary-light;
+              &.-active,
+              &.-selected,
+              &.-expanded {
+                background-color: $color-background-primary-light;
+              }
             }
           }
         }
@@ -1177,32 +401,34 @@ $sizes: (
         }
       }
 
-      .chi-data-table__head,
-      .chi-data-table__body {
-        .chi-data-table__row {
-          .chi-data-table__cell {
-            border: 0.0625rem solid $color-border-base-dark;
-            border-right-width: 0;
+      @include setMdStyle($print) {
+        .chi-data-table__head,
+        .chi-data-table__body {
+          .chi-data-table__row {
+            .chi-data-table__cell {
+              border: 0.0625rem solid $color-border-base-dark;
+              border-right-width: 0;
 
-            &:last-of-type {
-              border-right-width: 0.0625rem;
+              &:last-of-type {
+                border-right-width: 0.0625rem;
+              }
             }
           }
         }
-      }
 
-      .chi-data-table__head {
-        .chi-data-table__row {
-          .chi-data-table__cell {
-            border-bottom: 0.125rem solid $color-border-base-dark;
+        .chi-data-table__head {
+          .chi-data-table__row {
+            .chi-data-table__cell {
+              border-bottom: 0.125rem solid $color-border-base-dark;
+            }
           }
         }
-      }
 
-      .chi-data-table__body {
-        .chi-data-table__row {
-          .chi-data-table__cell {
-            border-top-width: 0;
+        .chi-data-table__body {
+          .chi-data-table__row {
+            .chi-data-table__cell {
+              border-top-width: 0;
+            }
           }
         }
       }
@@ -1210,18 +436,20 @@ $sizes: (
 
     &.-portal {
       .chi-data-table__head {
-        background-color: $color-background-muted-lighter;
-
-        .chi-data-table__row {
+        @include setMdStyle($print) {
           background-color: $color-background-muted-lighter;
 
-          .chi-data-table__cell {
-            border-bottom: 0.0625rem solid $color-border-base-dark;
-          }
+          .chi-data-table__row {
+            background-color: $color-background-muted-lighter;
 
-          &:last-child {
             .chi-data-table__cell {
-              border-bottom: 0;
+              border-bottom: 0.0625rem solid $color-border-base-dark;
+            }
+
+            &:last-child {
+              .chi-data-table__cell {
+                border-bottom: 0;
+              }
             }
           }
         }
@@ -1229,13 +457,17 @@ $sizes: (
 
       &:not(.-bordered) {
         .chi-data-table__body {
-          border: 0.0625rem solid $color-grey-15;
+          @include setMdStyle($print) {
+            border: 0.0625rem solid $color-grey-15;
+          }
         }
       }
 
       .chi-data-table__body {
         .chi-data-table__row {
-          background-color: $color-background-base;
+          @include setMdStyle($print) {
+            background-color: $color-background-base;
+          }
 
           &-empty {
             border: 0.0625rem solid $color-background-base-darker;
@@ -1243,7 +475,9 @@ $sizes: (
           }
 
           &.-striped {
-            background-color: $color-navy-10;
+            @include setMdStyle($print) {
+              background-color: $color-navy-10;
+            }
           }
 
           &.-active {
@@ -1253,12 +487,18 @@ $sizes: (
 
           &:hover,
           &.-hover {
-            background-color: $color-navy-20;
+            @include setMdStyle($print) {
+              background-color: $color-navy-20;
+            }
           }
 
           &.-expanded {
-            background-color: $color-navy-20;
-            display: flex;
+            background-color: $color-background-base-darker;
+
+            @include setMdStyle($print) {
+              background-color: $color-navy-20;
+              display: flex;
+            }
           }
 
           &-child {
@@ -1275,26 +515,32 @@ $sizes: (
         .chi-data-table__row-child,
         .chi-data-table__row-grand-child {
           .chi-data-table__cell {
-            border-bottom: 0;
+            @include setMdStyle($print) {
+              border-bottom: 0;
+            }
           }
         }
       }
 
       .chi-data-table__footer {
-        background-color: $color-grey-10;
-        display: block;
-        padding: 0.5rem 1rem;
+        display: none;
 
-        .chi-pagination__content {
-          .chi-pagination__center {
-            align-items: center;
+        @include setMdStyle($print) {
+          background-color: $color-grey-10;
+          display: block;
+          padding: 0.5rem 1rem;
 
-            .chi-button {
-              &.-icon {
-                &.-flat {
-                  &:hover {
-                    background-color: transparent;
-                    border: 0.0625rem solid transparent;
+          .chi-pagination__content {
+            .chi-pagination__center {
+              align-items: center;
+
+              .chi-button {
+                &.-icon {
+                  &.-flat {
+                    &:hover {
+                      background-color: transparent;
+                      border: 0.0625rem solid transparent;
+                    }
                   }
                 }
               }
@@ -1307,7 +553,9 @@ $sizes: (
         .chi-data-table__head,
         .chi-data-table__body {
           .chi-data-table__cell {
-            border: 0;
+            @include setMdStyle($print) {
+              border: 0;
+            }
           }
         }
       }
@@ -1317,12 +565,14 @@ $sizes: (
           .chi-data-table__row {
             &:hover,
             &.-hover {
-              background-color: $color-background-primary-light;
-
-              &.-active,
-              &.-selected,
-              &.-expanded {
+              @include setMdStyle($print) {
                 background-color: $color-background-primary-light;
+
+                &.-active,
+                &.-selected,
+                &.-expanded {
+                  background-color: $color-background-primary-light;
+                }
               }
             }
           }
@@ -1349,34 +599,36 @@ $sizes: (
           }
         }
 
-        .chi-data-table__head,
-        .chi-data-table__body {
-          .chi-data-table__row {
-            .chi-data-table__cell {
-              border: 0.0625rem solid $color-border-base-dark;
-              border-right-width: 0;
+        @include setMdStyle($print) {
+          .chi-data-table__head,
+          .chi-data-table__body {
+            .chi-data-table__row {
+              .chi-data-table__cell {
+                border: 0.0625rem solid $color-border-base-dark;
+                border-right-width: 0;
 
-              &:last-of-type {
-                border-right-width: 0.0625rem;
+                &:last-of-type {
+                  border-right-width: 0.0625rem;
+                }
               }
             }
           }
-        }
 
-        .chi-data-table__head {
-          .chi-data-table__row {
-            .chi-data-table__cell {
-              border-bottom: 0.125rem solid $color-border-base-dark;
+          .chi-data-table__head {
+            .chi-data-table__row {
+              .chi-data-table__cell {
+                border-bottom: 0.125rem solid $color-border-base-dark;
+              }
             }
           }
-        }
 
-        .chi-data-table__body {
-          .chi-data-table__row {
-            border-bottom: 0;
+          .chi-data-table__body {
+            .chi-data-table__row {
+              border-bottom: 0;
 
-            .chi-data-table__cell {
-              border-top-width: 0;
+              .chi-data-table__cell {
+                border-top-width: 0;
+              }
             }
           }
         }
@@ -1386,8 +638,12 @@ $sizes: (
     &.-compact {
       .chi-data-table__body {
         .chi-data-table__cell {
-          border-bottom: 0.0625rem solid $color-border-base-light;
-          padding: 0.75rem 1rem;
+          padding: 0;
+
+          @include setMdStyle($print) {
+            border-bottom: 0.0625rem solid $color-border-base-light;
+            padding: 0.75rem 1rem;
+          }
 
           &.-key {
             &::before {
@@ -1395,24 +651,40 @@ $sizes: (
             }
 
             &.-bold {
-              font-weight: $font-weight-normal;
+              font-weight: $font-weight-semi-bold;
+
+              @include setMdStyle($print) {
+                font-weight: $font-weight-normal;
+              }
             }
 
             + .-key {
-              margin-top: 0;
+              margin-top: 0.5rem;
+
+              @include setMdStyle($print) {
+                margin-top: 0;
+              }
             }
           }
 
           &:not(.-key) {
-            display: flex;
+            display: none;
+
+            @include setMdStyle($print) {
+              display: flex;
+            }
           }
 
           .chi-button {
             &.-expand {
-              display: block;
+              display: none;
 
-              + div {
-                margin-left: 0.5rem;
+              @include setMdStyle($print) {
+                display: block;
+
+                + div {
+                  margin-left: 0.5rem;
+                }
               }
             }
           }
@@ -1421,15 +693,17 @@ $sizes: (
 
       @each $type in map-keys($sizes) {
         &.-#{$type} {
-          .chi-data-table__head {
-            .chi-data-table__cell {
-              padding: map-get(map-get($sizes, $type), padding);
+          @include setMdStyle($print) {
+            .chi-data-table__head {
+              .chi-data-table__cell {
+                padding: map-get(map-get($sizes, $type), padding);
+              }
             }
-          }
 
-          .chi-data-table__body {
-            .chi-data-table__cell {
-              padding: map-get(map-get($sizes, $type), padding);
+            .chi-data-table__body {
+              .chi-data-table__cell {
+                padding: map-get(map-get($sizes, $type), padding);
+              }
             }
           }
         }
@@ -1452,7 +726,9 @@ $sizes: (
           transform: translateY(-0.5rem);
           width: 0.75rem;
 
-          display: none;
+          @include setMdStyle($print) {
+            display: none;
+          }
         }
 
         &.-collapsed,
@@ -1464,7 +740,9 @@ $sizes: (
             font-weight: $font-weight-normal;
             position: absolute;
 
-            display: none;
+            @include setMdStyle($print) {
+              display: none;
+            }
           }
         }
 
@@ -1476,18 +754,26 @@ $sizes: (
 
         @each $type in map-keys($sizes) {
           &.-#{$type} {
-            .chi-data-table__cell {
-              padding: map-get(map-get($sizes, $type), padding);
+            @include setMdStyle($print) {
+              .chi-data-table__cell {
+                padding: map-get(map-get($sizes, $type), padding);
+              }
             }
           }
         }
       }
 
       .chi-data-table__row {
+        background-color: $color-background-muted-lighter;
         border-bottom: 0;
-        background-color: transparent;
-        margin-top: 0;
-        padding: 0;
+        margin-top: 0.5rem;
+        padding: 1rem 3rem 1rem 1rem;
+
+        @include setMdStyle($print) {
+          background-color: transparent;
+          margin-top: 0;
+          padding: 0;
+        }
 
         &.-active,
         &.-expanded {
@@ -1496,7 +782,9 @@ $sizes: (
           .chi-data-table__cell {
             &.-key {
               &.-bold {
-                font-weight: $font-weight-semi-bold;
+                @include setMdStyle($print) {
+                  font-weight: $font-weight-semi-bold;
+                }
               }
             }
           }
@@ -1514,13 +802,20 @@ $sizes: (
             width: 0.75rem;
           }
 
-          padding-left: 0;
+          @include setMdStyle($print) {
+            padding-left: 0;
+          }
         }
 
         &-child,
         &-grand-child {
-          background-color: $color-navy-20;
-          padding: 0;
+          background-color: $color-background-base-darker;
+          padding: 0.75rem 3rem;
+
+          @include setMdStyle($print) {
+            background-color: $color-navy-20;
+            padding: 0;
+          }
 
           &.-collapsed,
           &.-expanded {
@@ -1534,18 +829,24 @@ $sizes: (
               width: 0.75rem;
             }
 
-            padding-left: 0;
+            @include setMdStyle($print) {
+              padding-left: 0;
+            }
           }
         }
 
         &-grand-child {
-          padding-left: 0;
+          padding-left: 5rem;
 
-          .chi-data-table__cell {
-            &.-key {
-              &.-bold {
-                > div {
-                  margin-left: 1.5rem;
+          @include setMdStyle($print) {
+            padding-left: 0;
+
+            .chi-data-table__cell {
+              &.-key {
+                &.-bold {
+                  > div {
+                    margin-left: 1.5rem;
+                  }
                 }
               }
             }
@@ -1554,4 +855,10 @@ $sizes: (
       }
     }
   }
+}
+
+@include dataTable(false);
+
+@media print {
+  @include dataTable(true);
 }

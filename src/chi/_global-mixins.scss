@@ -4,34 +4,62 @@
   @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
 }
 
+@mixin setMdStyle($print) {
+  @if ($print) {
+    @content;
+  } @else {
+    @include respond-to(md) {
+      @content;
+    }
+  }
+}
+
 @mixin respond-to($media, $only: false) {
   @if $media == xs {
-    @media only screen and (max-width: $sm-breakpoint - 1) { @content; }
+    @media only screen and (max-width: $sm-breakpoint - 1) {
+      @content;
+    }
   } @else if $media == sm {
     @if $only {
-      @media only screen and (min-width: $sm-breakpoint) and (max-width: $md-breakpoint - 1) { @content; }
+      @media only screen and (min-width: $sm-breakpoint) and (max-width: $md-breakpoint - 1) {
+        @content;
+      }
     } @else {
-      @media only screen and (min-width: $sm-breakpoint) { @content; }
+      @media only screen and (min-width: $sm-breakpoint) {
+        @content;
+      }
     }
   } @else if $media == md {
     @if $only == true {
-      @media only screen and (min-width: $md-breakpoint) and (max-width: $lg-breakpoint - 1) { @content; }
+      @media only screen and (min-width: $md-breakpoint) and (max-width: $lg-breakpoint - 1) {
+        @content;
+      }
     } @else {
-      @media only screen and (min-width: $md-breakpoint) { @content; }
+      @media only screen and (min-width: $md-breakpoint) {
+        @content;
+      }
     }
   } @else if $media == lg {
     @if $only {
-      @media only screen and (min-width: $lg-breakpoint) and (max-width: $xl-breakpoint - 1) { @content; }
+      @media only screen and (min-width: $lg-breakpoint) and (max-width: $xl-breakpoint - 1) {
+        @content;
+      }
     } @else {
-      @media only screen and (min-width: $lg-breakpoint) { @content; }
+      @media only screen and (min-width: $lg-breakpoint) {
+        @content;
+      }
     }
   } @else if $media == xl {
-    @media only screen and (min-width: $xl-breakpoint) { @content; }
+    @media only screen and (min-width: $xl-breakpoint) {
+      @content;
+    }
   }
 }
 
 @mixin respond-to-only($media) {
-  @include respond-to($media, true) { @content };
+  @include respond-to($media, true) {
+    @content;
+  }
 }
 
 @mixin remove-anchor-style {
