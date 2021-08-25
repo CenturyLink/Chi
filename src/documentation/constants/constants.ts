@@ -12,3 +12,19 @@ export const THEMES = {
     favicon: '',
   },
 };
+
+export const standardComponentPageTabs = [
+  {
+    active: true,
+    id: 'examples',
+    label: 'Examples',
+  },
+  {
+    id: 'properties',
+    label: 'Properties',
+  },
+  {
+    id: 'accessibility',
+    label: 'Accessibility',
+  },
+];

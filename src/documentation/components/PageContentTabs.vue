@@ -1,38 +1,39 @@
-<template lang="pug">
-  .chi-grid__container
-    nav.docs-tabs
-      ul.chi-tabs#viewtabs
-        li
-          a Examples
-        li
-          a Properties
-        li
-          a Accessibility
-        //- - var tabNumber = 0
-        //- each title, tab in tabs
-        //-   if tabNumber == 0
-        //-     li.-active
-        //-       a(href=`#${title}`) #{tab}
-        //-   else
-        //-     li
-        //-       a(href=`#${title}`) #{tab}
-        //-   - tabNumber++
+<template>
+  <div class="chi-grid__container">
+    <nav class="docs-tabs">
+      <ul class="chi-tabs -animated" id="page-content-tabs">
+        <li :class="[tab.active ? '-active' : '']" v-for="tab in tabs" :key="tab.id">
+          <a :href="'#'+tab.id">
+            {{ tab.label }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { Themes } from '~/models/models';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Themes } from '../models/models';
+import { TabsInterface } from '../models/models';
 
 declare const chi: any;
 
 @Component({})
-export default class BaseExample extends Vue {
+export default class PageContentTabs extends Vue {
+  @Prop() tabs?: TabsInterface[];
+
   theme: Themes = this.$store.state.themes.theme;
+  chiTabs: any;
 
   mounted() {
-    // const accordionBase = document.getElementById('example-base');
+    const chiTabs = document.getElementById('page-content-tabs');
 
-    // chi.accordion(accordionBase);
+    this.chiTabs = chi.tab(chiTabs);
+  }
+
+  beforeDestroy() {
+    this.chiTabs.dispose();
   }
 }
 </script>
