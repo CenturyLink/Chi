@@ -44,10 +44,6 @@
   @include respond-to($media, true) { @content };
 }
 
-@mixin respond-to-only($media) {
-  @include respond-to($media, true) { @content };
-}
-
 @mixin remove-anchor-style {
   color: $color-text-base;
 
