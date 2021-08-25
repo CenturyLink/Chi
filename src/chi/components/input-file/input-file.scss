@@ -41,16 +41,14 @@ $sizes: (
     position: absolute;
 
     & + label {
-      & {
-        align-items: center;
-        display: flex;
-        font-size: $font-size-base;
-        font-weight: $font-weight-normal;
-        line-height: $line-height-sm;
-        margin-bottom: 0;
-        pointer-events: none;
-        position: relative;
-      }
+      align-items: center;
+      display: flex;
+      font-size: $font-size-base;
+      font-weight: $font-weight-normal;
+      line-height: $line-height-sm;
+      margin-bottom: 0;
+      pointer-events: none;
+      position: relative;
 
       &::before {
         align-items: center;
