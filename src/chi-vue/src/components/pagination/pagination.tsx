@@ -141,8 +141,14 @@ export default class Pagination extends Vue {
     );
   }
 
+  beforeMount() {
+    this._pageJumperUuid = `${uuid4()}__page-jumper`;
+  }
+
   mounted() {
-    this._pageJumperUuid = this.$el.id ? `${this.$el.id}__page-jumper` : `${uuid4()}__page-jumper`;
+    if (this.$el.id) {
+      this._pageJumperUuid = `${this.$el.id}__page-jumper`;
+    }
   }
 
   render() {
