@@ -1,47 +1,45 @@
 <template lang="pug">
-  <div>
-    <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-      div(slot="example")
-        .chi-accordion#example-base
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-              .chi-accordion__title
-                | Accordion 1
-            .chi-accordion__content
-              p.chi-accordion__text Content goes here
-          .chi-accordion__item.-expanded
-            button.chi-accordion__trigger
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-              .chi-accordion__title
-                | Accordion 2
-            .chi-accordion__content
-              p.chi-accordion__text Content goes here
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-              .chi-accordion__title
-                | Accordion 3
-            .chi-accordion__content
-              p.chi-accordion__text Content goes here
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-              .chi-accordion__title
-                | Accordion 4
-            .chi-accordion__content
-              p.chi-accordion__text Content goes here
-      pre.language-html(slot="code-webcomponent")
-        <pre class="language-html">
-          <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-        </pre>
-      pre.language-html(slot="code-htmlblueprint")
-        <JSNeeded slot="tab-description" />
-        <pre class="language-html">
-          <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-        </pre>
-    </ComponentExample>
-  </div>
+  <ComponentExample title="Base" id="base_portal" :tabs="exampleTabs">
+    div(slot="example")
+      .chi-accordion#example-portal-base
+        .chi-accordion__item
+          button.chi-accordion__trigger
+            .chi-accordion__title
+              | Accordion 1
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
+        .chi-accordion__item.-expanded
+          button.chi-accordion__trigger
+            .chi-accordion__title
+              | Accordion 2
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
+        .chi-accordion__item
+          button.chi-accordion__trigger
+            .chi-accordion__title
+              | Accordion 3
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
+        .chi-accordion__item
+          button.chi-accordion__trigger
+            .chi-accordion__title
+              | Accordion 4
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
+    div(slot="code-webcomponent")
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+      </pre>
+    div(slot="code-htmlblueprint")
+      <pre class="language-html">
+        <JSNeeded />
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
@@ -66,8 +64,7 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: `Web component code snippet`,
-        htmlblueprint: `
-<div class="chi-accordion" id="example-portal-base">
+        htmlblueprint: `<div class="chi-accordion" id="example-portal-base">
   <div class="chi-accordion__item">
     <button class="chi-accordion__trigger">
       <div class="chi-accordion__title">Accordion 1</div>
@@ -104,22 +101,22 @@ declare const chi: any;
       <p class="chi-accordion__text">Content goes here</p>
     </div>
   </div>
-</div>
+  </div>
 
-<script>
+  <script>
   const accordionBase = document.getElementById('example-portal-base');
 
   chi.accordion(accordionBase);
-<\/script>`,
+  <//script>`,
       }
     }
   }
 })
-export default class BaseExample extends Vue {
+export default class BasePortalExample extends Vue {
   mounted() {
-    const accordionBase = document.getElementById('example-base');
+    const accordionPortalBase = document.getElementById('example-portal-base');
 
-    chi.accordion(accordionBase);
+    chi.accordion(accordionPortalBase);
   }
 }
 </script>

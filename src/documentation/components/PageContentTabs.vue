@@ -31,9 +31,5 @@ export default class PageContentTabs extends Vue {
 
     this.chiTabs = chi.tab(chiTabs);
   }
-
-  beforeDestroy() {
-    this.chiTabs.dispose();
-  }
 }
 </script>
