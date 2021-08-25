@@ -3,19 +3,19 @@
 
 $sizes: (
   xs: (
-    background-position: right 0.5rem center,
+    background-position: right 0.5rem center
   ),
   sm: (
-    background-position: right 0.5rem center,
+    background-position: right 0.5rem center
   ),
   md: (
-    background-position: right 1rem center,
+    background-position: right 1rem center
   ),
   lg: (
-    background-position: right 1rem center,
+    background-position: right 1rem center
   ),
   xl: (
-    background-position: right 1.25rem center,
+    background-position: right 1.25rem center
   )
 );
 
@@ -24,504 +24,515 @@ $icon-sizes: (
   sm: 1rem,
   md: 1rem,
   lg: 1rem,
-  xl: 1.25rem,
+  xl: 1.25rem
 );
 
-.chi-pagination {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  font-size: $font-size-base;
-  justify-content: center;
-  line-height: $line-height;
+@mixin pagination($print: false) {
+  .chi-pagination {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: $font-size-base;
+    justify-content: center;
+    line-height: $line-height;
 
-  .chi-button-group {
-    &:not(.-vertical) {
-      .chi-button {
-        justify-content: center;
+    .chi-button-group {
+      &:not(.-vertical) {
+        .chi-button {
+          justify-content: center;
 
-        &:not(.-icon) {
-          &.-xs {
-            &,
-            &:hover,
-            &.-hover,
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus {
+          &:not(.-icon) {
+            &.-xs {
               &,
-              &+.chi-button:not(.-icon) {
-                min-width: 1.5rem;
-                padding-left: 0.4375rem;
-                padding-right: 0.4375rem;
-              }
-            }
-
-            &:hover,
-            &.-hover {
-              &+.chi-button:focus {
-                &:not(.-icon) {
-                  border-left: 0;
+              &:hover,
+              &.-hover,
+              &:active,
+              &.-active,
+              &:focus,
+              &.-focus {
+                &,
+                & + .chi-button:not(.-icon) {
+                  min-width: 1.5rem;
                   padding-left: 0.4375rem;
                   padding-right: 0.4375rem;
                 }
               }
-            }
-          }
 
-          &.-sm {
-            &,
-            &:hover,
-            &.-hover,
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus {
-              &,
-              &+.chi-button:not(.-icon) {
-                min-width: 2rem;
-                padding-left: 0.5625rem;
-                padding-right: 0.5625rem;
+              &:hover,
+              &.-hover {
+                & + .chi-button:focus {
+                  &:not(.-icon) {
+                    border-left: 0;
+                    padding-left: 0.4375rem;
+                    padding-right: 0.4375rem;
+                  }
+                }
               }
             }
 
-            &:hover,
-            &.-hover {
-              &+.chi-button:focus {
-                &:not(.-icon) {
-                  border-left: 0;
+            &.-sm {
+              &,
+              &:hover,
+              &.-hover,
+              &:active,
+              &.-active,
+              &:focus,
+              &.-focus {
+                &,
+                & + .chi-button:not(.-icon) {
+                  min-width: 2rem;
                   padding-left: 0.5625rem;
                   padding-right: 0.5625rem;
                 }
               }
-            }
-          }
 
-          &,
-          &.-md {
-            &,
-            &:hover,
-            &.-hover,
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus {
-              &,
-              &+.chi-button:not(.-icon) {
-                min-width: 2.5rem;
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
+              &:hover,
+              &.-hover {
+                & + .chi-button:focus {
+                  &:not(.-icon) {
+                    border-left: 0;
+                    padding-left: 0.5625rem;
+                    padding-right: 0.5625rem;
+                  }
+                }
               }
             }
 
-            &:hover,
-            &.-hover {
-              &+.chi-button:focus {
-                &:not(.-icon) {
-                  border-left: 0;
+            &,
+            &.-md {
+              &,
+              &:hover,
+              &.-hover,
+              &:active,
+              &.-active,
+              &:focus,
+              &.-focus {
+                &,
+                & + .chi-button:not(.-icon) {
+                  min-width: 2.5rem;
                   padding-left: 0.75rem;
                   padding-right: 0.75rem;
                 }
               }
-            }
-          }
 
-          &.-lg {
-            &,
-            &:hover,
-            &.-hover,
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus {
-              &,
-              &+.chi-button:not(.-icon) {
-                min-width: 3rem;
-                padding-left: 0.9375rem;
-                padding-right: 0.9375rem;
+              &:hover,
+              &.-hover {
+                & + .chi-button:focus {
+                  &:not(.-icon) {
+                    border-left: 0;
+                    padding-left: 0.75rem;
+                    padding-right: 0.75rem;
+                  }
+                }
               }
             }
 
-            &:hover,
-            &.-hover {
-              &+.chi-button:focus {
-                &:not(.-icon) {
-                  border-left: 0;
+            &.-lg {
+              &,
+              &:hover,
+              &.-hover,
+              &:active,
+              &.-active,
+              &:focus,
+              &.-focus {
+                &,
+                & + .chi-button:not(.-icon) {
+                  min-width: 3rem;
                   padding-left: 0.9375rem;
                   padding-right: 0.9375rem;
                 }
               }
-            }
-          }
 
-          &.-xl {
-            &,
-            &:hover,
-            &.-hover,
-            &:active,
-            &.-active,
-            &:focus,
-            &.-focus {
-              &,
-              &+.chi-button:not(.-icon) {
-                min-width: 3.5rem;
-                padding-left: 0.9375rem;
-                padding-right: 0.9375rem;
+              &:hover,
+              &.-hover {
+                & + .chi-button:focus {
+                  &:not(.-icon) {
+                    border-left: 0;
+                    padding-left: 0.9375rem;
+                    padding-right: 0.9375rem;
+                  }
+                }
               }
             }
 
-            &:hover,
-            &.-hover {
-              &+.chi-button:focus {
-                &:not(.-icon) {
-                  border-left: 0;
+            &.-xl {
+              &,
+              &:hover,
+              &.-hover,
+              &:active,
+              &.-active,
+              &:focus,
+              &.-focus {
+                &,
+                & + .chi-button:not(.-icon) {
+                  min-width: 3.5rem;
                   padding-left: 0.9375rem;
                   padding-right: 0.9375rem;
+                }
+              }
+
+              &:hover,
+              &.-hover {
+                & + .chi-button:focus {
+                  &:not(.-icon) {
+                    border-left: 0;
+                    padding-left: 0.9375rem;
+                    padding-right: 0.9375rem;
+                  }
                 }
               }
             }
           }
         }
       }
-    }
 
-    .chi-button {
-      &.-active {
-        box-shadow: none;
-      }
-
-      &.-flat {
-        &.-hover,
-        &:hover {
-          border-color: transparent;
-        }
-
+      .chi-button {
         &.-active {
-          background-color: transparent;
-          border-color: $color-text-primary;
           box-shadow: none;
-          color: $color-text-primary;
         }
 
-        &.-light {
+        &.-flat {
+          &.-hover,
           &:hover {
-            border-color: $color-border-base-dark;
+            border-color: transparent;
           }
 
           &.-active {
-            border-color: $color-border-secondary;
-            color: $color-text-secondary;
+            background-color: transparent;
+            border-color: $color-text-primary;
+            box-shadow: none;
+            color: $color-text-primary;
+          }
+
+          &.-light {
+            &:hover {
+              border-color: $color-border-base-dark;
+            }
+
+            &.-active {
+              border-color: $color-border-secondary;
+              color: $color-text-secondary;
+            }
           }
         }
       }
-    }
 
-    @each $type in map-keys($icon-sizes) {
-      .chi-button {
-        &.-#{$type} {
-
-          &,
-          &:hover,
-          &:active,
-          &:focus {
-            & .chi-icon {
-              font-size: map-get($icon-sizes, $type);
-              height: map-get($icon-sizes, $type);
-              line-height: map-get($icon-sizes, $type);
-              width: map-get($icon-sizes, $type);
+      @each $type in map-keys($icon-sizes) {
+        .chi-button {
+          &.-#{$type} {
+            &,
+            &:hover,
+            &:active,
+            &:focus {
+              & .chi-icon {
+                font-size: map-get($icon-sizes, $type);
+                height: map-get($icon-sizes, $type);
+                line-height: map-get($icon-sizes, $type);
+                width: map-get($icon-sizes, $type);
+              }
             }
           }
         }
       }
     }
-  }
 
-  &__content {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    @include respond-to(md) {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    .chi-pagination__start {
+    &__content {
       align-items: center;
       display: flex;
-      flex-basis: 0%;
-      flex-grow: 1;
-      flex-shrink: 1;
+      flex-direction: column;
+      width: 100%;
 
-      > div:first-child {
-        @include respond-to(md) {
-          margin-left: 0;
+      @include setMdStyle($print) {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .chi-pagination__start {
+        align-items: center;
+        display: flex;
+        flex-basis: 0%;
+        flex-grow: 1;
+        flex-shrink: 1;
+
+        > div:first-child {
+          @include setMdStyle($print) {
+            margin-left: 0;
+          }
+        }
+      }
+
+      .chi-pagination__center {
+        display: flex;
+        justify-content: center;
+      }
+
+      .chi-pagination__end {
+        align-items: center;
+        display: flex;
+        flex-basis: 0%;
+        flex-grow: 1;
+        flex-shrink: 1;
+        justify-content: flex-end;
+
+        > div:last-child {
+          @include setMdStyle($print) {
+            margin-right: 0;
+          }
         }
       }
     }
 
-    .chi-pagination__center {
+    &__pages {
+      display: flex;
+      font-weight: 600;
+      margin: 0 1rem;
+    }
+
+    &__results {
+      align-items: center;
+      color: $pagination-results-text-color;
       display: flex;
       justify-content: center;
+      margin: 0.5rem;
+
+      @include setMdStyle($print) {
+        height: 100%;
+        justify-content: flex-start;
+        margin: 0 0.5rem;
+      }
+
+      & + .chi-pagination__page-size {
+        border-left: 0.0625rem solid rgba(0, 0, 0, 0.12);
+        padding-left: 0.5rem;
+      }
+
+      @include setMdStyle($print) {
+        & + .chi-pagination__button-group {
+          margin-left: 0.5rem;
+        }
+      }
     }
 
-    .chi-pagination__end {
+    &__button-group {
+      align-items: center;
+      margin: 0.5rem;
+
+      @include setMdStyle($print) {
+        margin: 0;
+      }
+
+      & + .chi-pagination__jumper {
+        @include setMdStyle($print) {
+          margin-left: 1rem;
+        }
+      }
+    }
+
+    &__jumper {
       align-items: center;
       display: flex;
-      flex-basis: 0%;
-      flex-grow: 1;
-      flex-shrink: 1;
-      justify-content: flex-end;
+      margin: 0.5rem;
 
-      > div:last-child {
-        @include respond-to(md) {
-          margin-right: 0;
-        }
-      }
-    }
-  }
-
-  &__pages {
-    display: flex;
-    font-weight: 600;
-    margin: 0 1rem;
-  }
-
-  &__results {
-    align-items: center;
-    color: $pagination-results-text-color;
-    display: flex;
-    justify-content: center;
-    margin: 0.5rem;
-
-    @include respond-to(md) {
-      height: 100%;
-      justify-content: flex-start;
-      margin: 0 0.5rem;
-    }
-
-    & + .chi-pagination__page-size {
-      border-left: 0.0625rem solid rgba(0, 0, 0, 0.12);
-      padding-left: 0.5rem;
-    }
-
-    @include respond-to(md) {
-      & + .chi-pagination__button-group {
-        margin-left: 0.5rem;
-      }
-    }
-  }
-
-  &__button-group {
-    align-items: center;
-    margin: 0.5rem;
-
-    @include respond-to(md) {
-      margin: 0;
-    }
-
-    & + .chi-pagination__jumper {
-      @include respond-to(md) {
-        margin-left: 1rem;
-      }
-    }
-  }
-
-  &__jumper {
-    align-items: center;
-    display: flex;
-    margin: 0.5rem;
-
-    @include respond-to(md) {
-      margin: 0 0.5rem;
-    }
-
-    .chi-pagination__label {
-      color: $pagination-jumper-text-color;
-      font-weight: $font-weight-normal;
-      margin-bottom: 0;
-      margin-right: 0.5rem;
-    }
-
-    .chi-input {
-      &,
-      &.-md {
-        &[type='text'] {
-          padding-left: 0.25rem;
-          padding-right: 0.25rem;
-          text-align: center;
-          width: 3rem;
-        }
+      @include setMdStyle($print) {
+        margin: 0 0.5rem;
       }
 
-      &.-sm {
-        &[type='text'] {
-          width: 2.5rem;
-        }
+      .chi-pagination__label {
+        color: $pagination-jumper-text-color;
+        font-weight: $font-weight-normal;
+        margin-bottom: 0;
+        margin-right: 0.5rem;
       }
-
-      &.-lg {
-        &[type='text'] {
-          width: 4rem;
-        }
-      }
-    }
-  }
-
-  &__page-size {
-    align-items: center;
-    display: flex;
-    margin: 0.5rem;
-
-    @include respond-to(md) {
-      margin: 0 0.5rem;
-    }
-
-    select {
-      &.chi-input {
-        background-color: transparent;
-        border: 0.0625rem solid transparent;
-        border-radius: $border-radius;
-        box-shadow: none;
-        font-size: 0.875rem;
-        font-weight: 600;
-        padding: 0.5rem;
-        width: 4.5rem;
-
-        &:hover {
-          background-color: rgba(83, 86, 90, 0.1);
-        }
-      }
-    }
-
-    .chi-pagination__label {
-      color: $pagination-page-size-text-color;
-      margin-left: 0.25rem;
-    }
-  }
-
-  &__label {
-    align-items: center;
-    display: flex;
-  }
-
-  &.-compact {
-    .chi-pagination__jumper {
-      margin: 0 0.5rem;
 
       .chi-input {
         &,
-        &.-sm,
         &.-md {
           &[type='text'] {
             padding-left: 0.25rem;
             padding-right: 0.25rem;
-            width: 2.0625rem;
+            text-align: center;
+            width: 3rem;
           }
         }
 
-        &.-lg {
+        &.-sm {
           &[type='text'] {
             width: 2.5rem;
           }
         }
 
-        &.-xl {
+        &.-lg {
           &[type='text'] {
-            width: 3rem;
+            width: 4rem;
           }
         }
-
-        & + .chi-pagination__label {
-          margin-left: 0.5rem;
-          margin-right: 0;
-        }
       }
     }
 
-    .chi-pagination__label {
-      color: $pagination-compact-label-text-color;
-      margin: 0 0.5rem;
+    &__page-size {
+      align-items: center;
+      display: flex;
+      margin: 0.5rem;
 
-      strong {
-        font-weight: $pagination-label-page-font-weight;
-
-        &:first-child {
-          margin-right: 0.5rem;
-        }
-
-        &:last-child {
-          margin-left: 0.5rem;
-        }
+      @include setMdStyle($print) {
+        margin: 0 0.5rem;
       }
-    }
 
-    .chi-pagination__start {
-      .chi-pagination__results {
-        .chi-pagination__label {
-          margin-left: 0;
-        }
-      }
-    }
-  }
-
-  &.-inverse {
-    color: $pagination-inverse-text-color;
-
-    .chi-pagination__results,
-    .chi-pagination__label {
-      color: $pagination-inverse-results-text-color;
-    }
-
-    .chi-pagination__results {
-      & + .chi-pagination__page-size {
-        border-left-color: $pagination-inverse-page-size-divider;
-      }
-    }
-
-    .chi-pagination__page-size {
       select {
         &.chi-input {
-          // sass-lint:disable-all
-          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' version='1.1' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.097 10.66l6.005-6.216.58-.6 1.162 1.201-.58.601-6.568 6.798-.58.601-.648-.67-.069-.067L.601 5.741 0 5.161 1.202 4l.6.58 6.295 6.08z' fill='%23FFFFFF' fill-rule='evenodd'/%3E%3C/svg%3E%0A");
-          // sass-lint:enable-all
-          background-position: map-get(map-get($sizes, md), background-position);
-          background-repeat: no-repeat;
-          background-size: 0.75rem 0.75rem;
-          color: $pagination-inverse-page-size-select-text-color;
+          background-color: transparent;
+          border: 0.0625rem solid transparent;
+          border-radius: $border-radius;
+          box-shadow: none;
+          font-size: 0.875rem;
+          font-weight: 600;
+          padding: 0.5rem;
+          width: 4.5rem;
 
           &:hover {
-            border: 0.0625rem solid $pagination-inverse-page-size-select-hover-border-color;
-            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
-          }
-
-          option {
-            color: $pagination-inverse-page-size-select-option-text-color;
+            background-color: rgba(83, 86, 90, 0.1);
           }
         }
+      }
+
+      .chi-pagination__label {
+        color: $pagination-page-size-text-color;
+        margin-left: 0.25rem;
       }
     }
 
-    .chi-input {
-      &[type='text'] {
-        background-color: transparent;
-
-        &:not(:focus) {
-          border-color: $pagination-inverse-input-border-color;
-          color: $pagination-inverse-input-text-color;
-        }
-
-        &:focus {
-          background-color: $pagination-inverse-input-focus-background-color;
-        }
-      }
+    &__label {
+      align-items: center;
+      display: flex;
     }
 
     &.-compact {
+      .chi-pagination__jumper {
+        margin: 0 0.5rem;
+
+        .chi-input {
+          &,
+          &.-sm,
+          &.-md {
+            &[type='text'] {
+              padding-left: 0.25rem;
+              padding-right: 0.25rem;
+              width: 2.0625rem;
+            }
+          }
+
+          &.-lg {
+            &[type='text'] {
+              width: 2.5rem;
+            }
+          }
+
+          &.-xl {
+            &[type='text'] {
+              width: 3rem;
+            }
+          }
+
+          & + .chi-pagination__label {
+            margin-left: 0.5rem;
+            margin-right: 0;
+          }
+        }
+      }
+
       .chi-pagination__label {
-        color: $pagination-inverse-compact-label-text-color;
+        color: $pagination-compact-label-text-color;
+        margin: 0 0.5rem;
+
+        strong {
+          font-weight: $pagination-label-page-font-weight;
+
+          &:first-child {
+            margin-right: 0.5rem;
+          }
+
+          &:last-child {
+            margin-left: 0.5rem;
+          }
+        }
+      }
+
+      .chi-pagination__start {
+        .chi-pagination__results {
+          .chi-pagination__label {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
+    &.-inverse {
+      color: $pagination-inverse-text-color;
+
+      .chi-pagination__results,
+      .chi-pagination__label {
+        color: $pagination-inverse-results-text-color;
+      }
+
+      .chi-pagination__results {
+        & + .chi-pagination__page-size {
+          border-left-color: $pagination-inverse-page-size-divider;
+        }
+      }
+
+      .chi-pagination__page-size {
+        select {
+          &.chi-input {
+            // sass-lint:disable-all
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' version='1.1' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.097 10.66l6.005-6.216.58-.6 1.162 1.201-.58.601-6.568 6.798-.58.601-.648-.67-.069-.067L.601 5.741 0 5.161 1.202 4l.6.58 6.295 6.08z' fill='%23FFFFFF' fill-rule='evenodd'/%3E%3C/svg%3E%0A");
+            // sass-lint:enable-all
+            background-position: map-get(
+              map-get($sizes, md),
+              background-position
+            );
+            background-repeat: no-repeat;
+            background-size: 0.75rem 0.75rem;
+            color: $pagination-inverse-page-size-select-text-color;
+
+            &:hover {
+              border: 0.0625rem solid
+                $pagination-inverse-page-size-select-hover-border-color;
+              box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04);
+            }
+
+            option {
+              color: $pagination-inverse-page-size-select-option-text-color;
+            }
+          }
+        }
+      }
+
+      .chi-input {
+        &[type='text'] {
+          background-color: transparent;
+
+          &:not(:focus) {
+            border-color: $pagination-inverse-input-border-color;
+            color: $pagination-inverse-input-text-color;
+          }
+
+          &:focus {
+            background-color: $pagination-inverse-input-focus-background-color;
+          }
+        }
+      }
+
+      &.-compact {
+        .chi-pagination__label {
+          color: $pagination-inverse-compact-label-text-color;
+        }
       }
     }
   }
+}
+
+@include pagination(false);
+
+@media print {
+  @include pagination(true);
 }
