@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="chi-header -portal -navbar -position--fixed-top">
-      <nav class="chi-header__content">
+      <nav class="chi-header__content" aria-label="Header primary navigation">
         <div class="chi-header__brand">
           <a class="chi-brand" href="#" aria-label="Lumen">
             <svg
@@ -120,7 +120,7 @@
           </div>
         </div>
       </nav>
-      <nav class="chi-header__navbar">
+      <nav class="chi-header__navbar" aria-label="Header secondary navigation">
         <div class="chi-header__start">
           <div class="-d--none -d-lg--flex">
             <ul class="chi-tabs -inverse -xs">

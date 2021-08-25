@@ -182,6 +182,55 @@ p.-text
       <chi-date-picker id="date-excluded-days-dates" excluded-weekdays="0, 6" excluded-dates="01/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020"></chi-date-picker>
   #html-excluded-days-dates.chi-tabs-panel
 
+h3 Error
+p.-text
+  | Use the <code>danger</code> state to provide feedback to users when date fails to validate.
+  | To meet accessibility requirements, danger date picker must include an error message explaining the
+  | failure and/or how to correct it.
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 14rem;")
+      chi-label(for='date-error')
+        | Date
+      chi-date-picker(id="date-error" state="danger")
+    .chi-label.-status.-danger
+      chi-icon(icon='circle-warning')
+      | Please select a date.
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-with-error
+      li.-active
+        a(href=`#webcomponent-with-error`) Web Component
+      li
+        a(href=`#html-with-error`) HTML Blueprint
+  #webcomponent-with-error.chi-tabs-panel.-active
+    :code(lang="html",style="height:20rem")
+      <chi-label for="date-error">Date</chi-label>
+      <chi-date-picker id="date-error" state="danger"></chi-date-picker>
+      <div class="chi-label -status -danger">
+        <chi-icon icon="circle-warning"></chi-icon>
+        Please select a date.
+      </div>
+  #html-with-error.chi-tabs-panel
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="datepicker-error">Date</label>
+        <div class="chi-input__wrapper -icon--right">
+          <input id="datepicker-error" type="text" class="chi-input -danger" placeholder="MM/DD/YYYY">
+          <i class="chi-icon icon-date" aria-hidden="true"></i>
+        </div>
+        <div class="chi-label -status -danger">
+          <i class="chi-icon circle-warning" aria-hidden="true"></i>
+          Please select a date.
+        </div>
+      </div>
+
+      <script>chi.datePicker(document.getElementById('datepicker-error'));</script>
+
 h3 Date Time
 p.-text
 .example.-mb--3
