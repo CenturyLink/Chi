@@ -102,7 +102,7 @@ h3 Portal Header
 h3 Portal Header with Navbar
 .test-header-tab-navbar.-w--100
   header.chi-header.-portal.-navbar
-    nav.chi-header__content
+    nav.chi-header__content(aria-label='Header primary navigation')
       .chi-header__brand
         a.chi-brand(href='#', aria-label='Lumen')
           svg(viewBox='0 0 145 20', xmlns='http://www.w3.org/2000/svg', aria-hidden='true')
@@ -150,7 +150,7 @@ h3 Portal Header with Navbar
               a.chi-dropdown__menu-item(href="#")
                 i.chi-icon.icon-logout(aria-hidden="true")
                 span Item 2
-    nav.chi-header__navbar
+    nav.chi-header__navbar(aria-label='Header secondary navigation')
       .chi-header__end
         .-d--none.-d-lg--flex
           ul.chi-header__navbar-menu

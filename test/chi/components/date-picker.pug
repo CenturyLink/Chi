@@ -185,6 +185,11 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
         svg
           use(xlink:href="#icon-date")
 
+.test-input-error.-py--2
+  span.-text--h2 Input Popover Error
+  .-position--relative(style="height: 18rem; width:14rem;")
+    input#datepicker-3.chi-input.-danger.-load__datepicker(type="text", placeholder="MM/DD/YYYY")
+
 .test-disabled.-py--2
   span.-text--h2 Disabled date picker
   .-position--relative(style="width:14rem;")
@@ -242,9 +247,18 @@ script.
           min: '01/24/2019'
         }
       );
+      chi.datePicker(
+        document.getElementById('datepicker-3'),
+        {
+          date: '01/24/2019',
+          min: '01/24/2019'
+        }
+      );
 
       document.getElementById('datepicker-1').focus();
       document.getElementById('datepicker-2').focus();
+      document.getElementById('datepicker-3').focus();
+      document.getElementById('datepicker-3').blur();
       document.getElementById('datepicker-2').blur();
 
     }

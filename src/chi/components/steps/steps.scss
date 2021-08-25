@@ -641,8 +641,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
   }
 
   .chi-steps.-horizontal-label div.chi-steps__icon::before,
-  .chi-steps.-horizontal-label li.-active div.chi-steps__icon::before,
-  .chi-steps.-horizontal-label div.chi-steps__icon::before {
+  .chi-steps.-horizontal-label li.-active div.chi-steps__icon::before {
     position: absolute;
   }
 
