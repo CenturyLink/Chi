@@ -2,21 +2,12 @@
 @import '_global-mixins';
 
 .chi-grid {
-  &__container {
-    @include respond-to(md) {
-      margin: 0 ($base-unit * 3);
-    }
-    margin: 0 ($base-unit * 2);
-  }
-
-  & {
-    @include respond-to(md) {
-      margin: 0 ($base-unit * -1.5);
-    }
-    display: flex;
-    flex: 1 0 auto;
-    flex-wrap: wrap;
-    margin: 0 ($base-unit * -1);
+  display: flex;
+  flex: 1 0 auto;
+  flex-wrap: wrap;
+  margin: 0 ($base-unit * -1);
+  @include respond-to(md) {
+    margin: 0 ($base-unit * -1.5);
   }
 
   &.-no-gutter {
@@ -25,6 +16,13 @@
     & > .chi-col {
       padding: 0;
     }
+  }
+
+  &__container {
+    @include respond-to(md) {
+      margin: 0 ($base-unit * 3);
+    }
+    margin: 0 ($base-unit * 2);
   }
 
   // Vertical Alignment
@@ -43,15 +41,13 @@
 }
 
 .chi-col {
-  & {
-    @include respond-to(md) {
-      padding: 0 ($base-unit * 1.5);
-    }
-    flex: 1 0 0%;
-    max-width: 100%;
-    min-width: (100% / 12);
-    padding: 0 $base-unit;
-    position: relative;
+  flex: 1 0 0%;
+  max-width: 100%;
+  min-width: (100% / 12);
+  padding: 0 $base-unit;
+  position: relative;
+  @include respond-to(md) {
+    padding: 0 ($base-unit * 1.5);
   }
 
   // Stacking (on XS Viewports)

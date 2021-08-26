@@ -14,7 +14,7 @@ class Header extends React.Component {
 		return (
 			<div>
 				<header className="chi-header -portal -navbar -position--fixed-top">
-					<nav className="chi-header__content">
+					<nav className="chi-header__content" aria-label="Header primary navigation">
 						<div className="chi-header__brand">
 							<a className="chi-brand" href="#" aria-label="Lumen">
 								<svg
@@ -133,7 +133,7 @@ class Header extends React.Component {
 							</div>
 						</div>
 					</nav>
-					<nav className="chi-header__navbar">
+					<nav className="chi-header__navbar" aria-label="Header secondary navigation">
 						<div className="chi-header__start">
 							<div className="-d--none -d-lg--flex">
 								<ul className="chi-tabs -inverse -xs">
