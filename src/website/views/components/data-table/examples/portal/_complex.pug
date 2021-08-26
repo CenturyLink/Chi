@@ -817,7 +817,7 @@ h3 Complex
             <!-- Template -->
             <template>
               <div class="chi-dropdown">
-                <button ref="dropdownTrigger" class="chi-button -icon -flat -bg--none -opacity-hover--80">
+                <button ref="dropdownTrigger" class="chi-button -icon -flat" aria-label="More options">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
                   </div>
@@ -880,7 +880,7 @@ script.
       window.chi.dropdown(document.getElementById(`action-button-${this.id}`));
     },
     template: `<div class="chi-dropdown -position--absolute">
-      <button :id="'action-button-'+this.id" class="chi-button -icon -primary -flat -bg--none -opacity-hover--80">
+      <button :id="'action-button-'+this.id" class="chi-button -icon -primary -flat" aria-label="More options">
         <div class="chi-button__content">
           <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
         </div>

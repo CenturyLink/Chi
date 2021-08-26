@@ -215,7 +215,8 @@ $vertical-alignments: (top, bottom, middle);
     thead {
       tr {
         &:last-child {
-          th {
+          th,
+          .-th {
             border-bottom: 0;
           }
         }

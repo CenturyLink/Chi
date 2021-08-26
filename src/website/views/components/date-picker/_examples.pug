@@ -256,7 +256,9 @@ p.-text Use the attribute <code>multiple</code> to allow the user to select mult
 .example.-mb--3
   .-p--3
     div(style="max-width: 14rem;")
-      chi-date-picker(multiple)
+      chi-label(for='date-multiple')
+        | Date
+      chi-date-picker(id='date-multiple' multiple)
   .example-tabs.-pl--2
     ul.chi-tabs#example-multiple-date-picker(role="tablist")
       li.-active
