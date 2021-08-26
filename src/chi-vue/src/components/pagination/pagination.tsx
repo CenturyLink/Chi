@@ -192,7 +192,7 @@ export default class Pagination extends Vue {
           ${PAGINATION_CLASSES.JUMPER}
         ${this.size ? `-text--${this.size}` : ''}
     `}>
-          <label class={PAGINATION_CLASSES.LABEL} htmlFor={this._pageJumperUuid}>
+          <label class={PAGINATION_CLASSES.LABEL} for={this._pageJumperUuid}>
             Go to page:
           </label>
           <input
