@@ -119,55 +119,55 @@ describe('Pagination', () => {
           .should('have.length', '7');
       });
     });
+  });
 
-    it.skip(`should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
-      cy.window()
-        .its('basePagination')
-        .then(basePagination => {
-          const component = basePagination.$refs.base;
-          const spy = cy.spy();
+  describe('active', () => {
+    it(`should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
+      const spy = cy.spy();
 
-          component.$on(`${PAGINATION_EVENTS.PAGE_CHANGE}`, spy);
-          cy.get(`@paginationCenter`)
-            .find(`.${ICON_BUTTON}`)
-            .as('paginationIcons')
-            .eq(1)
-            .click()
-            .then(() => {
-              expect(spy).to.be.calledOnce;
-            });
-          cy.get(`@paginationCenter`)
-            .find(`.${ICON_BUTTON}`)
-            .as('paginationIcons')
-            .eq(0)
-            .click()
-            .then(() => {
-              expect(spy).to.be.calledTwice;
-            });
-        });
-    });
+      cy.get('body').then(el => {
+        el.on(PAGINATION_EVENTS.PAGE_CHANGE, spy);
+      });
 
-    it.skip(`should change the current .${ACTIVE_CLASS} class on page change`, () => {
-      cy.get(`[data-cy='pagination-base']`)
-        .find(`[data-page='2']`)
-        .first()
-        .as('secondPage')
+      cy.get(`[data-cy='pagination-active']`)
+        .find(`.${ICON_BUTTON}`)
+        .as('paginationIcons')
+        .eq(1)
         .click()
         .then(() => {
-          hasClassAssertion('@secondPage', `${ACTIVE_CLASS}`);
+          expect(spy).to.be.calledOnce;
         });
-      cy.get(`[data-cy='pagination-base']`)
-        .find(`[data-page='1']`)
-        .as('firstPage')
+      cy.get(`[data-cy='pagination-active']`)
+        .find(`.${ICON_BUTTON}`)
+        .as('paginationIcons')
         .eq(0)
         .click()
         .then(() => {
-          hasClassAssertion('@firstPage', `${ACTIVE_CLASS}`);
+          expect(spy).to.be.calledTwice;
+        });
+    });
+
+    it(`should change the current .${ACTIVE_CLASS} class on page change`, () => {
+      cy.get(`[data-cy='pagination-active']`)
+        .find(`[data-page='4']`)
+        .first()
+        .as('fourthPage')
+        .click()
+        .then(() => {
+          hasClassAssertion('@fourthPage', `${ACTIVE_CLASS}`);
+        });
+      cy.get(`[data-cy='pagination-active']`)
+        .find(`[data-page='3']`)
+        .last()
+        .as('thirdPage')
+        .click()
+        .then(() => {
+          hasClassAssertion('@thirdPage', `${ACTIVE_CLASS}`);
         });
     });
   });
 
-  describe.skip('disabled', () => {
+  describe('disabled', () => {
     it('should have the previous button be disabled when the active page is 1', () => {
       const prevSelectors = [
         `[data-cy='pagination-disabled-prev']`,
@@ -262,26 +262,24 @@ describe('Pagination', () => {
       });
     });
 
-    it.skip(`should trigger the ${PAGINATION_EVENTS.PAGE_SIZE} event`, () => {
-      cy.window()
-        .its('pageSizePagination')
-        .then(pageSizePagination => {
-          const component = pageSizePagination.$refs.pageSize;
-          const spy = cy.spy();
+    it(`should trigger the ${PAGINATION_EVENTS.PAGE_SIZE} event`, () => {
+      const spy = cy.spy();
 
-          component.$on(`${PAGINATION_EVENTS.PAGE_SIZE}`, spy);
-          cy.get(`[data-cy='pagination-page-size']`)
-            .find(`.${PAGINATION_CLASSES.PAGE_SIZE} select`)
-            .as('pageSelect')
-            .select('40')
-            .then(() => {
-              expect(spy).to.be.calledOnce;
-            });
-          cy.get(`@pageSelect`)
-            .select('20')
-            .then(() => {
-              expect(spy).to.be.calledTwice;
-            });
+      cy.get('body').then(el => {
+        el.on(PAGINATION_EVENTS.PAGE_SIZE, spy);
+      });
+
+      cy.get(`[data-cy='pagination-page-size']`)
+        .find(`.${PAGINATION_CLASSES.PAGE_SIZE} select`)
+        .as('pageSelect')
+        .select('40')
+        .then(() => {
+          expect(spy).to.be.calledOnce;
+        });
+      cy.get(`@pageSelect`)
+        .select('20')
+        .then(() => {
+          expect(spy).to.be.calledTwice;
         });
     });
 
@@ -376,23 +374,24 @@ describe('Pagination', () => {
         });
       });
 
-      it.skip('should go to first and last pages on click', () => {
+      it('should go to first and last pages on click', () => {
         cy.get(`[data-cy='pagination-compact-first-last']`)
           .find("[data-page='1']")
           .first()
           .click()
           .then(() => {
             cy.get(`[data-cy='pagination-compact-first-last']`)
-              .find(`.${PAGINATION_CLASSES.JUMPER} input`)
-              .as('input')
-              .should('have.value', '1');
+              .find(`.${PAGINATION_CLASSES.LABEL}`)
+              .should('contain', '1of3');
           });
         cy.get(`[data-cy='pagination-compact-first-last']`)
           .find("[data-page='3']")
           .last()
           .click()
           .then(() => {
-            cy.get('@input').should('have.value', '3');
+            cy.get(`[data-cy='pagination-compact-first-last']`)
+              .find(`.${PAGINATION_CLASSES.LABEL}`)
+              .should('contain', '3of3');
           });
       });
     });

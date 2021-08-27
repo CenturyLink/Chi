@@ -21,10 +21,27 @@ h4 Active
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
         .-p--3
-          chi-pagination(pages="5" current-page="3" data-cy="pagination-active")
+          chi-pagination(pages="5" current-page="3" data-cy="pagination-active" id="pagination-active")
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
           chi-pagination(pages="5" current-page="3" inverse data-cy="pagination-active-inverse")
+
+h4 Disabled
+.test-disabled.-w--100
+  .example
+    .chi-grid.-no-gutter
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          chi-pagination(pages="5" current-page="1" data-cy="pagination-disabled-prev")
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          chi-pagination(pages="5" current-page="1" inverse data-cy="pagination-disabled-prev-inverse")
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          chi-pagination(pages="5" current-page="5" data-cy="pagination-disabled-next")
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          chi-pagination(pages="5" current-page="5" inverse data-cy="pagination-disabled-next-inverse")
 
 h4 Truncation
 .test-truncation.-w--100
@@ -109,7 +126,7 @@ h4 Compact / First and Last buttons
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
         .-p--3
-          chi-pagination(pages="3" current-page="2" compact first-last data-cy='pagination-compact-first-last')
+          chi-pagination(pages="3" current-page="2" compact first-last data-cy='pagination-compact-first-last' id='pagination-compact-first-last')
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
           chi-pagination(pages="3" current-page="2" compact first-last inverse data-cy='pagination-compact-first-last-inverse')
@@ -128,3 +145,13 @@ h4 Sizes
           each size in ['sm', 'md', 'lg', 'xl']
             p.-text--bold.-text--white=`-${size}`
             chi-pagination(pages="5" current-page="3" size=size inverse data-cy=`pagination-compact-inverse-${size}`)
+
+script.
+  const selectors = ["#pagination-active", "#pagination-compact-first-last"];
+
+  selectors.forEach(sel => {
+    document.querySelector(sel)
+        .addEventListener("chiPageChange", (ev) => {
+          document.querySelector(sel).currentPage = ev.detail;
+      });
+  });
