@@ -1,4 +1,19 @@
 # CHANGELOG
+## 5.2.0 (August 27, 2021)
+### Components
+#### Added
+* Added: Checkbox component now supports indeterminate state.
+* Added: Toolbar Vue component now supports `ChiDataTableViews` submodule.
+* Added: Link component now supports no underline style on hover.
+* Added: Toolbar Vue component `ChiColumnCustomization` submodule now supports `chiColumnsReset` event emission.
+* Added: Icons `icon-chat-outline` and `icon-copy`.
+* Added: Date Picker component now supports `success`, `warning` and `danger` states.
+#### Changed
+* Changed: Link component CTA style has been improved to support new Lumen Enterprise Portal theme designs.
+### Documentation
+#### Fixed
+* Fixed: Accessibility errors in Lumen Enterprise Portal theme documentation.
+
 ## 5.1.0 (August 5, 2021)
 ### Components
 #### Added
