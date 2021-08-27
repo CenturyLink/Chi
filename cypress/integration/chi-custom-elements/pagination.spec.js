@@ -4,7 +4,7 @@ const ACTIVE_CLASS = '-active';
 const INVERSE_ATTR = 'inverse';
 const ICON_BUTTON = '-icon';
 const PAGINATION_CLASSES = {
-  PAGINATION: 'sc-chi-pagination-h',
+  PAGINATION: 'chi-pagination',
   RESULTS: 'chi-pagination__results',
   COMPACT: '-compact',
   CONTENT: 'chi-pagination__content',
@@ -34,6 +34,8 @@ describe('Pagination', () => {
       cy.get(`[data-cy='pagination-base']`)
         .children()
         .first()
+        .as('paginationNav');
+      cy.get('@paginationNav')
         .children()
         .first()
         .as('paginationContent');
@@ -53,10 +55,12 @@ describe('Pagination', () => {
       cy.get(`[data-cy='pagination-base-inverse']`)
         .children()
         .first()
+        .as('paginationNavInverse');
+      cy.get('@paginationNavInverse')
         .children()
         .first()
         .as('paginationContentInverse');
-      cy.get('@paginationContent')
+      cy.get('@paginationContentInverse')
         .children()
         .first()
         .as('paginationStartInverse');
@@ -72,7 +76,7 @@ describe('Pagination', () => {
 
     const selectors = [
       {
-        el: `[data-cy='pagination-base']`,
+        el: '@paginationNav',
         class: PAGINATION_CLASSES.PAGINATION
       },
       { el: '@paginationContent', class: PAGINATION_CLASSES.CONTENT },
@@ -80,7 +84,7 @@ describe('Pagination', () => {
       { el: `@paginationCenter`, class: PAGINATION_CLASSES.CENTER },
       { el: `@paginationEnd`, class: PAGINATION_CLASSES.END },
       {
-        el: `[data-cy='pagination-base-inverse']`,
+        el: '@paginationNavInverse',
         class: PAGINATION_CLASSES.PAGINATION
       },
       { el: '@paginationContentInverse', class: PAGINATION_CLASSES.CONTENT },
