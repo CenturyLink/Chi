@@ -10,10 +10,10 @@ h4 Base
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
         .-p--3
-          chi-pagination(pages="5")
+          chi-pagination(pages="5" data-cy="pagination-base")
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
-          chi-pagination(pages="5" inverse)
+          chi-pagination(pages="5" inverse data-cy="pagination-base-inverse")
 
 h4 Active
 .test-active.-w--100
@@ -21,10 +21,10 @@ h4 Active
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
         .-p--3
-          chi-pagination(pages="5" current-page="3")
+          chi-pagination(pages="5" current-page="3" data-cy="pagination-active")
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
-          chi-pagination(pages="5" current-page="3" inverse)
+          chi-pagination(pages="5" current-page="3" inverse data-cy="pagination-active-inverse")
 
 h4 Truncation
 .test-truncation.-w--100
@@ -32,10 +32,10 @@ h4 Truncation
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
         .-p--3
-          chi-pagination(pages="12" current-page="3")
+          chi-pagination(pages="12" current-page="3" data-cy="pagination-truncation")
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
-          chi-pagination(pages="12" current-page="3" inverse)
+          chi-pagination(pages="12" current-page="3" inverse data-cy="pagination-truncation-inverse")
 
 h4 Double Truncation
 .test-double-truncation.-w--100
@@ -43,10 +43,10 @@ h4 Double Truncation
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
         .-p--3
-          chi-pagination(pages="12" current-page="5")
+          chi-pagination(pages="12" current-page="6" data-cy='pagination-double-truncation')
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
-          chi-pagination(pages="12" current-page="3" inverse)
+          chi-pagination(pages="12" current-page="6" inverse data-cy='pagination-double-truncation-inverse')
 
 h4 Results Label
 .test-results-label.-w--100
@@ -54,10 +54,10 @@ h4 Results Label
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
         .-p--3
-          chi-pagination(pages="12" current-page="5" results="240")
+          chi-pagination(pages="12" current-page="5" results="240" data-cy='pagination-results-label')
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
-          chi-pagination(pages="12" current-page="5" results="240" inverse)
+          chi-pagination(pages="12" current-page="5" results="240" inverse data-cy='pagination-results-label-inverse')
 
 h4 Page Size
 .test-page-size.-w--100
@@ -65,10 +65,10 @@ h4 Page Size
     .chi-grid.-no-gutter
       .chi-col.-w--12
         .-p--3.-mb--4
-          chi-pagination(pages="12" current-page="5" results="240" page-size)
+          chi-pagination(pages="12" current-page="5" results="240" page-size data-cy='pagination-page-size')
       .chi-col.-w--12
         .-p--3.-bg--black.-mb--4
-          chi-pagination(pages="12" current-page="5" results="240" page-size inverse)
+          chi-pagination(pages="12" current-page="5" results="240" page-size inverse data-cy='pagination-page-size-inverse')
 
 h4 Page Jumper
 .test-page-jumper.-w--100
@@ -76,10 +76,10 @@ h4 Page Jumper
     .chi-grid.-no-gutter
       .chi-col.-w--12
         .-p--3.-mb--4
-          chi-pagination(pages="12" current-page="5" results="240" page-size page-jumper)
+          chi-pagination(pages="12" current-page="5" results="240" page-size page-jumper data-cy='pagination-page-jumper')
       .chi-col.-w--12
         .-p--3.-bg--black.-mb--4
-          chi-pagination(pages="12" current-page="5" results="240" page-size page-jumper inverse)
+          chi-pagination(pages="12" current-page="5" results="240" page-size page-jumper inverse data-cy='pagination-page-jumper-inverse')
 
 h4 Compact / Base
 .test-compact-base.-w--100
@@ -87,10 +87,10 @@ h4 Compact / Base
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
         .-p--3
-          chi-pagination(pages="3" current-page="2" compact)
+          chi-pagination(pages="3" current-page="2" compact data-cy='pagination-compact-base')
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
-          chi-pagination(pages="3" current-page="2" compact inverse)
+          chi-pagination(pages="3" current-page="2" compact inverse data-cy='pagination-compact-base-inverse')
 
 h4 Compact / Page Jumper
 .test-compact-jumper.-w--100
@@ -98,10 +98,10 @@ h4 Compact / Page Jumper
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
         .-p--3
-          chi-pagination(pages="3" current-page="2" compact page-jumper)
+          chi-pagination(pages="3" current-page="2" compact page-jumper data-cy='pagination-compact-page-jumper')
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
-          chi-pagination(pages="3" current-page="2" compact page-jumper inverse)
+          chi-pagination(pages="3" current-page="2" compact page-jumper inverse data-cy='pagination-compact-page-jumper-inverse')
 
 h4 Compact / First and Last buttons
 .test-compact-first-last-buttons.-w--100
@@ -109,10 +109,10 @@ h4 Compact / First and Last buttons
     .chi-grid.-no-gutter
       .chi-col.-w--12.-w-md--6
         .-p--3
-          chi-pagination(pages="3" current-page="2" compact first-last)
+          chi-pagination(pages="3" current-page="2" compact first-last data-cy='pagination-compact-first-last')
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
-          chi-pagination(pages="3" current-page="2" compact first-last inverse)
+          chi-pagination(pages="3" current-page="2" compact first-last inverse data-cy='pagination-compact-first-last-inverse')
 
 h4 Sizes
 .test-sizes.-w--100
@@ -122,9 +122,9 @@ h4 Sizes
         .-p--3
           each size in ['sm', 'md', 'lg', 'xl']
             p.-text--bold=`-${size}`
-            chi-pagination(pages="5" current-page="3" size=size)
+            chi-pagination(pages="5" current-page="3" size=size data-cy=`pagination-compact-${size}`)
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
           each size in ['sm', 'md', 'lg', 'xl']
             p.-text--bold.-text--white=`-${size}`
-            chi-pagination(pages="5" current-page="3" size=size inverse)
+            chi-pagination(pages="5" current-page="3" size=size inverse data-cy=`pagination-compact-inverse-${size}`)
