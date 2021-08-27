@@ -11,19 +11,16 @@ import { _changeOrder } from '@/components/column-customization/utils';
 @Component
 export default class ColumnCustomizationContent extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
-  @Prop() selectedLockedColumns?: DataTableColumn[];
   @Prop() selectedStandardColumns?: DataTableColumn[];
 
   key = 0;
   _availableColumns?: DataTableColumn[] = [];
-  _selectedLockedColumns?: DataTableColumn[] = [];
   _selectedStandardColumns?: DataTableColumn[] = [];
   _availableColumnsComponent?: AvailableColumns;
   _selectedColumnsComponent?: SelectedColumns;
 
   beforeCreate() {
     this._availableColumns = [];
-    this._selectedLockedColumns = [];
     this._selectedStandardColumns = [];
   }
 
@@ -36,7 +33,6 @@ export default class ColumnCustomizationContent extends Vue {
   @Watch('selectedStandardColumns')
   _processData() {
     this._availableColumns = copyArrayOfObjects(this.$props.availableColumns);
-    this._selectedLockedColumns = copyArrayOfObjects(this.$props.selectedLockedColumns);
     this._selectedStandardColumns = copyArrayOfObjects(this.$props.selectedStandardColumns);
   }
 
@@ -72,7 +68,6 @@ export default class ColumnCustomizationContent extends Vue {
     if (
       this._availableColumnsComponent &&
       this._selectedColumnsComponent &&
-      this._selectedLockedColumns &&
       this._selectedStandardColumns &&
       this._availableColumns
     ) {
@@ -102,8 +97,8 @@ export default class ColumnCustomizationContent extends Vue {
   }
 
   _emitSelectedColumnsChange() {
-    if (this._selectedLockedColumns && this._selectedStandardColumns) {
-      const eventData = [...this._selectedLockedColumns, ...this._selectedStandardColumns];
+    if (this._selectedStandardColumns) {
+      const eventData = [...this._selectedStandardColumns];
 
       this.$emit(DATA_TABLE_EVENTS.COLUMNS_CHANGE, eventData);
     }
@@ -113,7 +108,6 @@ export default class ColumnCustomizationContent extends Vue {
     if (
       this._availableColumnsComponent &&
       this._selectedColumnsComponent &&
-      this._selectedLockedColumns &&
       this._selectedStandardColumns &&
       this._availableColumns
     ) {
@@ -190,10 +184,7 @@ export default class ColumnCustomizationContent extends Vue {
           </div>
         </div>
         <div class={UTILITY_CLASSES.FLEX.FLEX_GROW1}>
-          <SelectedColumns
-            locked-columns={this._selectedLockedColumns}
-            standard-columns={this._selectedStandardColumns}
-          />
+          <SelectedColumns standard-columns={this._selectedStandardColumns} />
         </div>
         <div class={`-px--1 ${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>
           <div class={`${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.FLEX.COLUMN}`}>

@@ -7,7 +7,6 @@ import { UTILITY_CLASSES } from '@/constants/classes';
 
 @Component
 export default class ColumnCustomizationSelectedColumns extends Vue {
-  @Prop() lockedColumns?: DataTableColumn[];
   @Prop() standardColumns?: DataTableColumn[];
 
   _ColumnCustomizationContent?: ColumnCustomizationContent;
@@ -38,14 +37,12 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
   }
 
   render() {
-    const lockedOptions = this.$props.lockedColumns ? this._generateOptions(this.$props.lockedColumns) : null;
     const standardOptions = this.$props.standardColumns ? this._generateOptions(this.$props.standardColumns) : null;
 
     return (
       <div>
         <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_BOLD}>Selected columns</div>
         <select class={`chi-select selected-columns ${UTILITY_CLASSES.SIZING.W100}`} ref="select" multiple>
-          {lockedOptions}
           {standardOptions}
         </select>
       </div>
