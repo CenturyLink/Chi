@@ -17,6 +17,7 @@ const dayToReturn =
     : '0' + dateObject.getDate().toString();
 const today =
   monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
+const chiDateChange = 'chiDateChange';
 
 describe('Date picker', function() {
   beforeEach(() => {
@@ -27,7 +28,7 @@ describe('Date picker', function() {
     const spy = cy.spy();
 
     cy.get('[data-cy="test-active"]').then(el => {
-      el.on('chiDateChange', spy);
+      el.on(chiDateChange, spy);
     });
 
     cy.get('[data-cy="test-active"]')
@@ -38,6 +39,24 @@ describe('Date picker', function() {
       .then(() => {
         expect(spy).to.be.called;
         expect(spy.getCall(0).args[0].detail).to.equal(clickDate);
+      });
+  });
+
+  it(`Changing the input's date value emits the ${chiDateChange} event`, function() {
+    const date = '12/02/2021';
+    const spy = cy.spy();
+
+    cy.get('[data-cy="test-input-combined-picker"]').then(el => {
+      el.on(chiDateChange, spy);
+    });
+
+    cy.get('[data-cy="test-input-combined-picker"]')
+      .find('input')
+      .clear()
+      .type(`${date}{Enter}`)
+      .then(() => {
+        expect(spy).to.be.called;
+        expect(spy.getCall(0).args[0].detail).to.equal(date);
       });
   });
 
