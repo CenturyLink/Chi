@@ -1,4 +1,4 @@
-import { Component, Element, Listen, Method, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Listen, Method, Prop, Watch, h, Event, EventEmitter } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
 import { ESCAPE_KEYCODE, CHI_TIME_AUTO_SCROLL_DELAY, DataLocales, DatePickerModes, DateFormats } from '../../constants/constants';
 import dayjs, { Dayjs } from 'dayjs';
@@ -69,6 +69,11 @@ export class DatePicker {
    * To define state color of Date Picker
    */
   @Prop({ reflect: true }) state?: ChiStates;
+
+  /**
+   * Date change value event
+   */
+  @Event({ eventName: 'chiDateChange' }) eventChange: EventEmitter;
 
   @Element() el: HTMLElement;
 
@@ -172,6 +177,7 @@ export class DatePicker {
       });
       this.value = validatedDates.join(',');
       this._input.value = this.value;
+      this.eventChange.emit(this.value);
     } else {
       const inputDate = dayjs(this._input.value, this.format);
 
@@ -183,6 +189,7 @@ export class DatePicker {
         ) {
           this.value = this.min;
           this._input.value = this.min;
+          this.eventChange.emit(this.value);
         } else if (
           dayjs(inputDate)
             .startOf('day')
@@ -190,12 +197,15 @@ export class DatePicker {
         ) {
           this.value = this.max;
           this._input.value = this.max;
+          this.eventChange.emit(this.value);
         } else {
           this.value = this._input.value;
+          this.eventChange.emit(this.value);
         }
       } else {
         this.value = dayjs().format(this.format);
         this._input.value = this.value;
+        this.eventChange.emit(this.value);
       }
     }
   }
