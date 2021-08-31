@@ -141,8 +141,8 @@ export default class Pagination extends Vue {
     );
   }
 
-  mounted() {
-    this._pageJumperUuid = this.$el.id ? `${this.$el.id}__page-jumper` : `${uuid4()}__page-jumper`;
+  beforeMount() {
+    this._pageJumperUuid = `${uuid4()}__page-jumper`;
   }
 
   render() {
@@ -186,7 +186,7 @@ export default class Pagination extends Vue {
           ${PAGINATION_CLASSES.JUMPER}
         ${this.size ? `-text--${this.size}` : ''}
     `}>
-          <label class={PAGINATION_CLASSES.LABEL} htmlFor={this._pageJumperUuid}>
+          <label class={PAGINATION_CLASSES.LABEL} for={this._pageJumperUuid}>
             Go to page:
           </label>
           <input
