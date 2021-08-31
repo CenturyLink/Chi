@@ -145,12 +145,6 @@ export default class Pagination extends Vue {
     this._pageJumperUuid = `${uuid4()}__page-jumper`;
   }
 
-  mounted() {
-    if (this.$el.id) {
-      this._pageJumperUuid = `${this.$el.id}__page-jumper`;
-    }
-  }
-
   render() {
     this._pagesToRender = [];
     this.calculateDistanceFromCurrent();
