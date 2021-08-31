@@ -38,9 +38,7 @@ export default class ColumnCustomizationAvailableColumns extends Vue {
   render() {
     const options: [] = this.$props.availableColumns.map((column: DataTableColumn) => {
       return (
-        <option
-          onClick={this.changeSelectRowsState}
-          value={column.name}>
+        <option onClick={this.changeSelectRowsState} value={column.name}>
           {column.label || column.name}
         </option>
       );
