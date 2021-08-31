@@ -234,6 +234,12 @@ export class DatePicker {
     return Promise.resolve(this.value);
   }
 
+  @Listen('bubbledChiDateChange')
+  _handleBubbledDateChange(ev) {
+    ev.stopImmediatePropagation();
+    this.eventChange.emit(ev.detail);
+  }
+
   @Listen('chiDateChange')
   handleDateChange(ev) {
     ev.stopPropagation();
