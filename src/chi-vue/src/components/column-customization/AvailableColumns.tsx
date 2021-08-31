@@ -25,9 +25,25 @@ export default class ColumnCustomizationAvailableColumns extends Vue {
     }
   }
 
+  changeSelectRowsState() {
+    const selectButton = document.querySelector('.icon-chevron-right')?.parentElement
+      ?.parentElement as HTMLButtonElement;
+    const deselectButton = document.querySelector('.icon-chevron-left')?.parentElement
+      ?.parentElement as HTMLButtonElement;
+
+    selectButton.disabled = false;
+    deselectButton.disabled = false;
+  }
+
   render() {
     const options: [] = this.$props.availableColumns.map((column: DataTableColumn) => {
-      return <option value={column.name}>{column.label || column.name}</option>;
+      return (
+        <option
+          onClick={this.changeSelectRowsState}
+          value={column.name}>
+          {column.label || column.name}
+        </option>
+      );
     });
 
     return (

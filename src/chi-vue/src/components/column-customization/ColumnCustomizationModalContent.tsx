@@ -29,7 +29,6 @@ export default class ColumnCustomizationContent extends Vue {
   }
 
   @Watch('availableColumns')
-  @Watch('selectedLockedColumns')
   @Watch('selectedStandardColumns')
   _processData() {
     this._availableColumns = copyArrayOfObjects(this.$props.availableColumns);

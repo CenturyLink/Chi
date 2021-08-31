@@ -23,7 +23,12 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
   _generateOptions(data: DataTableColumn[]) {
     return data?.map((column: DataTableColumn) => {
       return (
-        <option value={column.name} class={column.locked ? '-locked' : ''} disabled={column.locked}>
+        <option
+          onClick={() => {
+            this.changeSelectRowsState(column);
+          }}
+          value={column.name}
+          class={column.locked ? '-locked' : ''}>
           {column.label || column.name}
         </option>
       );
@@ -34,6 +39,24 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
     if (this._ColumnCustomizationContent) {
       (this._ColumnCustomizationContent as ColumnCustomizationContent)._availableColumnsComponent = undefined;
     }
+  }
+
+  changeSelectRowsState(column: DataTableColumn) {
+    const selectButton = document.querySelector('.icon-chevron-right')?.parentElement
+      ?.parentElement as HTMLButtonElement;
+    const deselectButton = document.querySelector('.icon-chevron-left')?.parentElement
+      ?.parentElement as HTMLButtonElement;
+
+    if (selectButton && deselectButton) {
+      if (column.locked) {
+        selectButton.disabled = true;
+        deselectButton.disabled = true;
+        return;
+      }
+    }
+
+    selectButton.disabled = false;
+    deselectButton.disabled = false;
   }
 
   render() {
