@@ -39,6 +39,7 @@ describe('Date picker', function() {
       .then(() => {
         expect(spy).to.be.called;
         expect(spy.getCall(0).args[0].detail).to.equal(clickDate);
+        expect(spy.getCall(0).args[0].target.nodeName).to.equal('CHI-DATE');
       });
   });
 
@@ -55,8 +56,32 @@ describe('Date picker', function() {
       .clear()
       .type(`${date}{Enter}`)
       .then(() => {
-        expect(spy).to.be.called;
+        expect(spy).to.be.calledOnce;
         expect(spy.getCall(0).args[0].detail).to.equal(date);
+        expect(spy.getCall(0).args[0].target.nodeName).to.equal(
+          'CHI-DATE-PICKER'
+        );
+      });
+  });
+
+  it(`Changing the date through chi-date selection emits the ${chiDateChange} event from chi-date-picker`, function() {
+    const date = '01/30/2019';
+    const spy = cy.spy();
+
+    cy.get('[data-cy="test-input-combined-picker"]').then(el => {
+      el.on(chiDateChange, spy);
+    });
+
+    cy.get('[data-cy="test-input-combined-picker"]')
+      .find('chi-date')
+      .find(`[data-date="${date}"]`)
+      .click()
+      .then(() => {
+        expect(spy).to.be.calledOnce;
+        expect(spy.getCall(0).args[0].detail).to.equal(date);
+        expect(spy.getCall(0).args[0].target.nodeName).to.equal(
+          'CHI-DATE-PICKER'
+        );
       });
   });
 

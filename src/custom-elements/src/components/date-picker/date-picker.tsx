@@ -165,6 +165,10 @@ export class DatePicker {
         !inputDate.startOf('day').isAfter(dayjs(maxDate).startOf('day'));
     };
 
+    if (this._input.value === this.value) {
+      return;
+    }
+
     if (this.multiple) {
       const inputDates = this._input.value.replace(/ /g, '')
         .split(',');
@@ -234,14 +238,13 @@ export class DatePicker {
     return Promise.resolve(this.value);
   }
 
-  @Listen('bubbledChiDateChange')
-  _handleBubbledDateChange(ev) {
-    ev.stopImmediatePropagation();
-    this.eventChange.emit(ev.detail);
-  }
-
   @Listen('chiDateChange')
   handleDateChange(ev) {
+    if (ev.target.nodeName === 'CHI-DATE') {
+      ev.preventDefault();
+      ev.stopImmediatePropagation();
+      this.eventChange.emit(ev.detail);
+    }
     ev.stopPropagation();
     this._input.value = ev.detail;
     if (this.mode === 'datetime') {

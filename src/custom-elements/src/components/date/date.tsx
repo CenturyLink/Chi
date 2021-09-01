@@ -164,11 +164,8 @@ export class Date {
   /**
    * Date change value event
    */
-   @Event({ eventName: 'chiDateChange', bubbles: false })
+   @Event({ eventName: 'chiDateChange', cancelable: true })
    eventChange: EventEmitter;
- 
-   @Event({ eventName: 'bubbledChiDateChange'})
-   _bubbledEventChange: EventEmitter;
 
   _vm: {
     dates: Dayjs[];
@@ -283,7 +280,6 @@ export class Date {
 
     this.value = currentValues.filter(value => value !== formattedDate).join(',');
     this.eventChange.emit(this.value);
-    this._bubbledEventChange.emit(this.value);
   }
 
   selectDate(day: Dayjs) {
@@ -295,7 +291,6 @@ export class Date {
       this.setDate(formattedDate);
     }
     this.eventChange.emit(this.value);
-    this._bubbledEventChange.emit(this.value);
   }
 
   checkIfExcluded(day: Dayjs) {
