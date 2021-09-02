@@ -7,6 +7,7 @@ import { UTILITY_CLASSES } from '@/constants/classes';
 @Component
 export default class ColumnCustomizationAvailableColumns extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
+  @Prop() handleSelectColumn?: (column: DataTableColumn) => void;
 
   _ColumnCustomizationContent?: ColumnCustomizationContent;
 
@@ -25,20 +26,18 @@ export default class ColumnCustomizationAvailableColumns extends Vue {
     }
   }
 
-  changeSelectRowsState() {
-    const selectButton = document.querySelector('.icon-chevron-right')?.parentElement
-      ?.parentElement as HTMLButtonElement;
-    const deselectButton = document.querySelector('.icon-chevron-left')?.parentElement
-      ?.parentElement as HTMLButtonElement;
-
-    selectButton.disabled = false;
-    deselectButton.disabled = false;
+  _triggerSelectRowState(column: DataTableColumn) {
+    this.$props.handleSelectColumn(column);
   }
 
   render() {
     const options: [] = this.$props.availableColumns.map((column: DataTableColumn) => {
       return (
-        <option onClick={this.changeSelectRowsState} value={column.name}>
+        <option
+          onClick={() => {
+            this._triggerSelectRowState(column);
+          }}
+          value={column.name}>
           {column.label || column.name}
         </option>
       );

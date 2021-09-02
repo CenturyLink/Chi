@@ -18,6 +18,7 @@ export default class ColumnCustomizationContent extends Vue {
   _selectedStandardColumns?: DataTableColumn[] = [];
   _availableColumnsComponent?: AvailableColumns;
   _selectedColumnsComponent?: SelectedColumns;
+  _isSelectedColumnLocked = false;
 
   beforeCreate() {
     this._availableColumns = [];
@@ -53,7 +54,8 @@ export default class ColumnCustomizationContent extends Vue {
         <button
           onclick={() => action()}
           class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT}`}
-          aria-label={ariaLabel}>
+          aria-label={ariaLabel}
+          disabled={this._checkButtonRowDisabled(icon)}>
           <div class={BUTTON_CLASSES.CONTENT}>
             <i class={`${ICON_CLASS} icon-${icon}`} aria-hidden="true" />
           </div>
@@ -165,6 +167,34 @@ export default class ColumnCustomizationContent extends Vue {
     }
   }
 
+  _handleSelectColumn() {
+    const columnsSelected: string[] = [];
+    const filterSelectedColumns: DataTableColumn[] = [];
+
+    if (this._selectedStandardColumns) {
+      Array.from((this._selectedColumnsComponent?.$refs.select as HTMLSelectElement).selectedOptions).forEach(
+        (option: HTMLOptionElement) => {
+          columnsSelected.push(option.value);
+        }
+      );
+
+      columnsSelected.forEach((columnSelected: string) => {
+        this._selectedStandardColumns?.forEach((standardColumn: DataTableColumn) => {
+          if (columnSelected === standardColumn.name) {
+            filterSelectedColumns.push(standardColumn);
+          }
+        });
+      });
+    }
+
+    this._isSelectedColumnLocked = filterSelectedColumns.some((column: DataTableColumn) => column.locked);
+    this.$forceUpdate();
+  }
+
+  _checkButtonRowDisabled(icon: string): boolean {
+    return this._isSelectedColumnLocked && icon === 'chevron-left';
+  }
+
   render() {
     const selectButton = this._controlButton('chevron-right', this._select);
     const deselectButton = this._controlButton('chevron-left', this._deselect);
@@ -174,7 +204,10 @@ export default class ColumnCustomizationContent extends Vue {
     return (
       <div class={UTILITY_CLASSES.DISPLAY.FLEX} key={this.key}>
         <div class={UTILITY_CLASSES.FLEX.FLEX_GROW1}>
-          <AvailableColumns available-columns={this._availableColumns} />
+          <AvailableColumns
+            available-columns={this._availableColumns}
+            handle-select-column={this._handleSelectColumn}
+          />
         </div>
         <div class={`-px--1 ${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>
           <div class={`${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.FLEX.COLUMN}`}>
@@ -183,7 +216,10 @@ export default class ColumnCustomizationContent extends Vue {
           </div>
         </div>
         <div class={UTILITY_CLASSES.FLEX.FLEX_GROW1}>
-          <SelectedColumns standard-columns={this._selectedStandardColumns} />
+          <SelectedColumns
+            standard-columns={this._selectedStandardColumns}
+            handle-select-column={this._handleSelectColumn}
+          />
         </div>
         <div class={`-px--1 ${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>
           <div class={`${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.FLEX.COLUMN}`}>

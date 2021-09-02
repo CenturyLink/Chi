@@ -8,6 +8,7 @@ import { UTILITY_CLASSES } from '@/constants/classes';
 @Component
 export default class ColumnCustomizationSelectedColumns extends Vue {
   @Prop() standardColumns?: DataTableColumn[];
+  @Prop() handleSelectColumn?: (column: DataTableColumn) => void;
 
   _ColumnCustomizationContent?: ColumnCustomizationContent;
 
@@ -25,7 +26,7 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
       return (
         <option
           onClick={() => {
-            this.changeSelectRowsState(column);
+            this._triggerSelectRowState(column);
           }}
           value={column.name}
           class={column.locked ? '-locked' : ''}>
@@ -41,22 +42,8 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
     }
   }
 
-  changeSelectRowsState(column: DataTableColumn) {
-    const selectButton = document.querySelector('.icon-chevron-right')?.parentElement
-      ?.parentElement as HTMLButtonElement;
-    const deselectButton = document.querySelector('.icon-chevron-left')?.parentElement
-      ?.parentElement as HTMLButtonElement;
-
-    if (selectButton && deselectButton) {
-      if (column.locked) {
-        selectButton.disabled = true;
-        deselectButton.disabled = true;
-        return;
-      }
-    }
-
-    selectButton.disabled = false;
-    deselectButton.disabled = false;
+  _triggerSelectRowState(column: DataTableColumn) {
+    this.$props.handleSelectColumn(column);
   }
 
   render() {
