@@ -80,6 +80,7 @@ export const DATA_TABLE_CLASSES = {
   ROW_GRAND_CHILD: 'chi-data-table__row-grand-child',
   EMPTY: 'chi-data-table__row-empty',
   CELL: 'chi-data-table__cell',
+  CELL_NON_TRUNCATION: 'chi-data-table__cell--non-truncation',
   FOOTER: 'chi-data-table__footer',
   EXPANDABLE: '-expandable',
   SELECTABLE: '-selectable',

@@ -70,8 +70,6 @@ $sizes: (
         font-weight: $font-weight-semi-bold;
         padding: 0.75rem 1rem;
         position: relative;
-        overflow: initial;
-        white-space: normal;
         
         .chi-icon {
           margin-left: 0.5rem;
@@ -108,6 +106,14 @@ $sizes: (
             }
           }
         }
+      }
+    }
+
+    .chi-data-table__cell--non-truncation {
+      @include respond-to(md) {
+        overflow: initial;
+        white-space: normal;
+        padding: .75rem 0;
       }
     }
   }
