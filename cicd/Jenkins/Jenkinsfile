@@ -1044,13 +1044,17 @@ PolicyDocument
 def isVersionBump() {
   try {
     unstash name: "VERSION_BUMP"
-    def versionBump = readFile file: "version_bump"
-    echo "Publish condition: GIT_BRANCH is _${env.GIT_BRANCH.trim().toLowerCase()}_"
-    echo "Publish condition: currentResult is _${currentBuild.currentResult.toLowerCase()}_"
-    echo "Publish condition: versionBump is _${versionBump.trim()}_"
-    return versionBump.trim() == "yes" && currentBuild.currentResult.toLowerCase() == "success" && ['origin/master', 'origin/main', 'master', 'main', PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase())
-    } catch (Exception e) {
-      echo "Exception: ${e.getMessage()}"
-      return false
-    }
+  } catch (Exception e) {
+    echo "No VERSION_BUMP done"
+    return false
+  }
+  def versionBump = readFile file: "version_bump"
+  echo "Publish condition: GIT_BRANCH is _${env.GIT_BRANCH.trim().toLowerCase()}_"
+  echo "Publish condition: currentResult is _${currentBuild.currentResult.toLowerCase()}_"
+  echo "Publish condition: versionBump is _${versionBump.trim()}_"
+  def isVersionBumpResult = true
+  isVersionBumpResult = isVersionBumpResult && versionBump.trim() == "yes"
+  isVersionBumpResult = isVersionBumpResult && currentBuild.currentResult.toLowerCase() == "success"
+  isVersionBumpResult = isVersionBumpResult && ( ['origin/master', 'origin/main', 'master', 'main', PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase()) || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1))
+  return isVersionBumpResult
 }
