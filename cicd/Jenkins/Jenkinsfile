@@ -256,19 +256,27 @@ pipeline {
             }
             steps {
               script {
+                // sh(script: """
+                //     set +x
+                //     git whatchanged -1 --format=oneline
+                //     git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
+                //     rm -rf version_bump
+                //     if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
+                //       echo -n "yes" > version_bump
+                //     else
+                //       echo -n "no" > version_bump
+                //     fi
+                //     cat version_bump
+                //     echo "All good."
+                // """, label: "Package version validation")
                 sh(script: """
                     set +x
-                    git whatchanged -1 --format=oneline
-                    git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
                     rm -rf version_bump
-                    if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
-                      echo -n "yes" > version_bump
-                    else
-                      echo -n "no" > version_bump
-                    fi
+                    echo -n "yes" > version_bump
                     cat version_bump
                     echo "All good."
                 """, label: "Package version validation")
+
                 stash name: "VERSION_BUMP", includes: "version_bump"
               }
             }
