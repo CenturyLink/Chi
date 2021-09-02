@@ -117,7 +117,7 @@ export default class DataTable extends Vue {
             ${cellWidth === 0 ? 'display: none;' : ''}
             ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
             `}>
-          <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{label}</div>
+          <div class={this.config.truncation ? UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE : ''}>{label}</div>
           {sortIcon}
         </button>
       );
@@ -132,7 +132,7 @@ export default class DataTable extends Vue {
             ${cellWidth === 0 ? 'display: none;' : ''}
             ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
             `}>
-          <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{label}</div>
+          <div class={this.config.truncation ? UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE : ''}>{label}</div>
         </div>
       );
 

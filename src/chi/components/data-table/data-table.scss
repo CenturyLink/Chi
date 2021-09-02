@@ -70,7 +70,9 @@ $sizes: (
         font-weight: $font-weight-semi-bold;
         padding: 0.75rem 1rem;
         position: relative;
-
+        overflow: initial;
+        white-space: normal;
+        
         .chi-icon {
           margin-left: 0.5rem;
         }
