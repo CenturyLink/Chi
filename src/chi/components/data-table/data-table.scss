@@ -72,7 +72,9 @@ $sizes: (
         position: relative;
         white-space: normal;
         text-align: start;
-        
+        overflow: initial;
+        min-width: 1rem;
+
         .chi-icon {
           margin-left: 0.5rem;
         }
