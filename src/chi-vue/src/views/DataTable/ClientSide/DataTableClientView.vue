@@ -1,6 +1,6 @@
 <template>
   <div id="tadataTableClientView">
-    <h2>Data Table Client Side</h2>
+    <h2>Data Table</h2>
     <ChiDataTable
       :data="table"
       :config="config"
