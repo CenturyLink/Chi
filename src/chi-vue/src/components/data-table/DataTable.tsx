@@ -101,7 +101,7 @@ export default class DataTable extends Vue {
         <button
           aria-label={`Sort Column ${label}`}
           class={`${DATA_TABLE_CLASSES.CELL}
-            ${!this.config.truncation ? DATA_TABLE_CLASSES.CELL_NON_TRUNCATION : ''}
+            ${this.config.truncation ? DATA_TABLE_CLASSES.TRUNCATED : ''}
             ${alignment}
             ${sortable ? DATA_TABLE_CLASSES.SORTING : ''}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
@@ -126,7 +126,7 @@ export default class DataTable extends Vue {
         <div
           aria-label={label}
           class={`${DATA_TABLE_CLASSES.CELL}
-            ${!this.config.truncation ? DATA_TABLE_CLASSES.CELL_NON_TRUNCATION : ''}
+            ${this.config.truncation ? DATA_TABLE_CLASSES.TRUNCATED : ''}
             ${alignment}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={label}
