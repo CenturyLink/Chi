@@ -22,6 +22,7 @@ cp ${REPO_PATH}/Dockerfile ${TMPDIR}/
 cp ${REPO_PATH}/package.json ${TMPDIR}/package_chi.json
 cp ${REPO_PATH}/src/custom-elements/package.json ${TMPDIR}/package_custom-elements.json
 cp ${REPO_PATH}/src/chi-vue/package.json ${TMPDIR}/package_vue.json
+cp ${REPO_PATH}/src/documentation/package.json ${TMPDIR}/package_documentation.json
 cp ${REPO_PATH}/scripts/entrypoint.sh ${TMPDIR}/
 
 pushd "${TMPDIR}"  > /dev/null
@@ -44,6 +45,11 @@ fi
 if [ ! -d "${REPO_PATH}/src/chi-vue/node_modules" ]
 then
   mkdir ${REPO_PATH}/src/chi-vue/node_modules 2>/dev/null || die "${REPO_PATH}/src/chi-vue/node_modules must exists and be a directory"
+fi
+
+if [ ! -d "${REPO_PATH}/src/documentation/node_modules" ]
+then
+  mkdir ${REPO_PATH}/src/documentation/node_modules 2>/dev/null || die "${REPO_PATH}/src/documentation/node_modules must exists and be a directory"
 fi
 
 if [ "x$1" = "xstart" ]; then
