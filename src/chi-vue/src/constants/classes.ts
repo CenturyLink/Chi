@@ -13,6 +13,7 @@ export const SR_ONLY = '-sr--only';
 export const EXPANDED_CLASS = '-expanded';
 export const COLLAPSED_CLASS = '-collapsed';
 export const ONE_LINK_TX = 'OneLinkTx';
+export const INDETERMINATE_CLASS = '-indeterminate';
 //#endregion
 
 //#region Accordion

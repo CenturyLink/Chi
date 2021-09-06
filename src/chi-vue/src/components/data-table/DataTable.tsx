@@ -10,6 +10,7 @@ import {
   ONE_LINK_TX,
   SR_ONLY,
   UTILITY_CLASSES,
+  INDETERMINATE_CLASS,
 } from '@/constants/classes';
 import './data-table.scss';
 import { DataTablePageChange, DataTableSorting, DATA_TABLE_EVENTS, PAGINATION_EVENTS } from '@/constants/events';
@@ -311,9 +312,9 @@ export default class DataTable extends Vue {
         `#checkbox-select-${this._rowId(parent.rowNumber)}`
       ) as HTMLInputElement;
       const children = parent.nestedContent.table.data;
-      const childrenSelected = [];
+      const childrenSelected: DataTableRow[] = [];
 
-      children?.forEach(row => {
+      children?.forEach((row: DataTableRow) => {
         const childCheck = document.querySelector(`#checkbox-select-${this._rowId(row.rowNumber)}`) as HTMLInputElement;
 
         if (childCheck.checked) {
@@ -322,16 +323,9 @@ export default class DataTable extends Vue {
       });
 
       if (childrenSelected.length === 0) {
-        parentCheck.checked = false;
-        parentCheck.classList.remove('-indeterminate');
-        this.deselectRow(parent);
-      } else if (children.length === childrenSelected.length) {
-        parentCheck.checked = true;
-        parentCheck.classList.remove('-indeterminate');
-        this.selectRow(parent);
+        parentCheck.classList.remove(INDETERMINATE_CLASS);
       } else {
-        parentCheck.checked = false;
-        parentCheck.classList.add('-indeterminate');
+        parentCheck.classList.add(INDETERMINATE_CLASS);
       }
 
       parent = parent.parent;
@@ -351,8 +345,8 @@ export default class DataTable extends Vue {
       this.selectedRows.push(rowData.rowId);
     }
 
-    this.$emit(DATA_TABLE_EVENTS.SELECTED_ROW, newRowData);
     this._checkIndeterminate(newRowData);
+    this.$emit(DATA_TABLE_EVENTS.SELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
 
@@ -369,8 +363,8 @@ export default class DataTable extends Vue {
       this.selectedRows.splice(indexOfRowId, 1);
     }
 
-    this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._checkIndeterminate(newRowData);
+    this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
 
@@ -727,21 +721,23 @@ export default class DataTable extends Vue {
     if (selectAllCheckbox) {
       const isSelected = (row: DataTableRow) => this.selectedRows.includes(row.rowId);
 
-      if (this.slicedData.every(isSelected)) {
-        selectAllCheckbox.checked = true;
-        selectAllCheckbox.indeterminate = false;
-        selectAllCheckbox.classList.remove('-indeterminate');
-        return;
-      } else if (this.slicedData.some(isSelected)) {
-        selectAllCheckbox.checked = false;
-        selectAllCheckbox.indeterminate = true;
-        selectAllCheckbox.classList.add('-indeterminate');
-        return;
-      }
+      if (this.slicedData) {
+        if (this.slicedData.every(isSelected)) {
+          selectAllCheckbox.checked = true;
+          selectAllCheckbox.indeterminate = false;
+          selectAllCheckbox.classList.remove(INDETERMINATE_CLASS);
+          return;
+        } else if (this.slicedData.some(isSelected) && !this.slicedData.every(isSelected)) {
+          selectAllCheckbox.checked = false;
+          selectAllCheckbox.indeterminate = true;
+          selectAllCheckbox.classList.add(INDETERMINATE_CLASS);
+          return;
+        }
 
-      selectAllCheckbox.checked = false;
-      selectAllCheckbox.indeterminate = false;
-      selectAllCheckbox.classList.remove('-indeterminate');
+        selectAllCheckbox.checked = false;
+        selectAllCheckbox.indeterminate = false;
+        selectAllCheckbox.classList.remove(INDETERMINATE_CLASS);
+      }
     }
   }
 
