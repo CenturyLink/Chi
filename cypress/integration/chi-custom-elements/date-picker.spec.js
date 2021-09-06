@@ -17,28 +17,80 @@ const dayToReturn =
     : '0' + dateObject.getDate().toString();
 const today =
   monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
+const chiDateChange = 'chiDateChange';
 
 describe('Date picker', function() {
+  const chiDatePicker = 'CHI-DATE-PICKER';
+
   beforeEach(() => {
     cy.visit('tests/custom-elements/date-picker.html');
   });
 
-  it('Clicking on a day emits an event. ', function() {
-    const spy = cy.spy();
-
-    cy.get('[data-cy="test-active"]').then(el => {
-      el.on('chiDateChange', spy);
+  describe(chiDateChange, () => {
+    beforeEach(() => {
+      cy.get('[data-cy="test-input-combined-picker"]').as('picker');
     });
 
-    cy.get('[data-cy="test-active"]')
-      .find('chi-date')
-      .should('have.class', 'hydrated')
-      .find(`[data-date="${clickDate}"]`)
-      .click()
-      .then(() => {
-        expect(spy).to.be.called;
-        expect(spy.getCall(0).args[0].detail).to.equal(clickDate);
+    it(`Clicking on a day emits the ${chiDateChange} event`, function() {
+      const spy = cy.spy();
+
+      cy.get('[data-cy="test-active"]').then(el => {
+        el.on(chiDateChange, spy);
       });
+
+      cy.get('[data-cy="test-active"]')
+        .find('chi-date')
+        .should('have.class', 'hydrated')
+        .find(`[data-date="${clickDate}"]`)
+        .click()
+        .then(() => {
+          expect(spy).to.be.calledOnce;
+          expect(spy.getCall(0).args[0].detail).to.equal(clickDate);
+          expect(spy.getCall(0).args[0].target.nodeName).to.equal('CHI-DATE');
+        });
+    });
+
+    it(`Changing the input's date value emits the ${chiDateChange} event`, function() {
+      const date = '12/02/2021';
+      const spy = cy.spy();
+
+      cy.get('@picker').then(el => {
+        el.on(chiDateChange, spy);
+      });
+
+      cy.get('@picker')
+        .find('input')
+        .clear()
+        .type(`${date}{Enter}`)
+        .then(() => {
+          expect(spy).to.be.calledOnce;
+          expect(spy.getCall(0).args[0].detail).to.equal(date);
+          expect(spy.getCall(0).args[0].target.nodeName).to.equal(
+            chiDatePicker
+          );
+        });
+    });
+
+    it(`Changing the date through chi-date selection emits the ${chiDateChange} event from chi-date-picker`, function() {
+      const date = '01/30/2019';
+      const spy = cy.spy();
+
+      cy.get('@picker').then(el => {
+        el.on(chiDateChange, spy);
+      });
+
+      cy.get('@picker')
+        .find('chi-date')
+        .find(`[data-date="${date}"]`)
+        .click()
+        .then(() => {
+          expect(spy).to.be.calledOnce;
+          expect(spy.getCall(0).args[0].detail).to.equal(date);
+          expect(spy.getCall(0).args[0].target.nodeName).to.equal(
+            chiDatePicker
+          );
+        });
+    });
   });
 
   it('Clicking on next month shows next month. ', function() {
