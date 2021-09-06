@@ -8,7 +8,7 @@ export const exampleConfig = {
     bordered: false,
     hover: false,
     size: 'lg',
-    striped: false,
+    striped: true,
   },
   pagination: {
     hideOnSinglePage: true,
@@ -203,7 +203,7 @@ export const exampleTableBody = [
       template: 'loadingSkeleton',
     },
     active: false,
-    selectionDisabled: true,
+    selectionDisabled: false,
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021063' } },
       {

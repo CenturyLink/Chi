@@ -2,7 +2,7 @@
   <div id="app">
     <div class="-p--4">
       <DataTableClientView />
-      <DataTableServerView />
+      <DataTableServerView class="-mt--10" />
       <PaginationView />
       <DrawerView />
       <TooltipView />
