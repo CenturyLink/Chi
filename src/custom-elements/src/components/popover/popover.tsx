@@ -55,6 +55,8 @@ export class Popover {
    */
   @Prop({ reflect: true }) reference: string;
 
+  // TODO: To be removed when all µApp's Chi version is higher than v5.0
+
   /**
    * To define portal style of the Popover
    */
