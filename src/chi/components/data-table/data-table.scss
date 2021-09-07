@@ -712,22 +712,18 @@ $sizes: (
     .chi-data-table__row-child,
     .chi-data-table__row-grand-child {
       position: relative;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.89 7.823l-6.732 6.963L4.331 16l7.292-7.542.677-.654L4.215 0 3 1.172l6.89 6.65z' fill='%230262b9' fill-rule='evenodd'/%3E%3C/svg%3E");
+      background-position: right .75rem center;
+      background-repeat: no-repeat;
+      background-size: 1rem;
+      z-index: 1;
 
-      &::after {
-        color: $color-text-primary;
-        content: '\e920';
-        font-family: $font-family-icon;
-        font-size: $font-size-lg;
-        height: 1rem;
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        transform: translateY(-0.5rem);
-        width: 0.75rem;
-
-        @include respond-to(md) {
-          display: none;
-        }
+      @include respond-to(md) {
+        background-image: none;
+        background-position: initial;
+        background-repeat: initial;
+        background-size: initial;
+        z-index: initial;
       }
 
       &.-collapsed,
@@ -766,7 +762,7 @@ $sizes: (
       background-color: $color-background-muted-lighter;
       border-bottom: 0;
       margin-top: 0.5rem;
-      padding: 1rem 3rem 1rem 1rem;
+      padding: 1rem;
 
       @include respond-to(md) {
         background-color: transparent;
@@ -809,7 +805,7 @@ $sizes: (
       &-child,
       &-grand-child {
         background-color: $color-background-base-darker;
-        padding: 0.75rem 3rem;
+        padding: 0.75rem 1rem 0.75rem 3rem;
 
         @include respond-to(md) {
           background-color: $color-navy-20;

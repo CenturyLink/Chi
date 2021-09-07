@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-08-31T17:32:22",
+  "timestamp": "2021-09-07T14:20:15",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1099,7 +1099,17 @@
           "docsTags": []
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "event": "chiDateChange",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Date change value event",
+          "docsTags": []
+        }
+      ],
       "styles": [],
       "slots": [],
       "dependents": [],
