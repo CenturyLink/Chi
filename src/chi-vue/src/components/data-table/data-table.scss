@@ -27,10 +27,12 @@
 }
 
 .chi-data-table__cell {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
+// TODO: To be removed when all µApp's Chi version is higher than v5.0
 
 @mixin respond-to($media, $only: false) {
   @if $media == xs {
@@ -85,20 +87,20 @@ $font-weight-semi-bold: 600;
         border-bottom: 0.125rem solid $color-border-base-dark;
         display: flex;
         font-weight: $font-weight-semi-bold;
+        min-width: 1rem;
+        overflow: initial;
         padding: 0.75rem 1rem;
         position: relative;
-        white-space: normal;
         text-align: start;
-        overflow: initial;
-        min-width: 1rem;
+        white-space: normal;
       }
     }
 
     .-truncated {
       @include respond-to(md) {
-        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
   }
