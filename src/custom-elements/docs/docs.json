@@ -2536,6 +2536,22 @@
           "required": false
         },
         {
+          "name": "portal",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "portal",
+          "reflectToAttr": true,
+          "docs": "To define portal style of the Popover",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "position",
           "type": "\"auto\" | \"auto-end\" | \"auto-start\" | \"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
           "mutable": false,

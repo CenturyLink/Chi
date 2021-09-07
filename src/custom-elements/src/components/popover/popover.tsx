@@ -55,6 +55,13 @@ export class Popover {
    */
   @Prop({ reflect: true }) reference: string;
 
+  // TODO: To be removed when all µApp's Chi version is higher than v5.0
+
+  /**
+   * To define portal style of the Popover
+   */
+   @Prop({ reflect: true }) portal: boolean;
+
   /**
    * To define modal style of the Popover
    */
@@ -466,6 +473,7 @@ export class Popover {
           ${this._reference && this._reference.classList.contains('chi-input') ? POPOVER_CLASSES.INPUT : ''}
           ${this.closable ? POPOVER_CLASSES.CLOSABLE : ''}
           ${this.drag ? POPOVER_CLASSES.DRAGGABLE : ''}
+          ${this.portal ? '-portal' : ''}
           ${this.modal ? POPOVER_CLASSES.MODAL : ''}
         `}
         ref={el => (this._popoverElement = el as HTMLElement)}
