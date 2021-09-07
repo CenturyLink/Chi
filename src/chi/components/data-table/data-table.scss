@@ -19,6 +19,10 @@ $sizes: (
   )
 );
 
+$bg-url: 'data:image/svg+xml,%3Csvg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath';
+$bg-url: $bg-url + ' d="M9.89 7.823l-6.732 6.963L4.331 16l7.292-7.542.677-.654L4.215 0 3 1.172l6.89 6.65z"';
+$bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
+
 .chi-data-table {
   border-collapse: collapse;
   display: block;
@@ -712,8 +716,8 @@ $sizes: (
     .chi-data-table__row-child,
     .chi-data-table__row-grand-child {
       position: relative;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.89 7.823l-6.732 6.963L4.331 16l7.292-7.542.677-.654L4.215 0 3 1.172l6.89 6.65z' fill='%230262b9' fill-rule='evenodd'/%3E%3C/svg%3E");
-      background-position: right .75rem center;
+      background-image: url($bg-url);
+      background-position: right 0.75rem center;
       background-repeat: no-repeat;
       background-size: 1rem;
       z-index: 1;
