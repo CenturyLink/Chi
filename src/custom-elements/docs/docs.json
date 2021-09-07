@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-08-27T15:57:22",
+  "timestamp": "2021-09-06T11:40:44",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1099,7 +1099,17 @@
           "docsTags": []
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "event": "chiDateChange",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Date change value event",
+          "docsTags": []
+        }
+      ],
       "styles": [],
       "slots": [],
       "dependents": [],
@@ -2516,6 +2526,22 @@
           "attr": "modal",
           "reflectToAttr": true,
           "docs": "To define modal style of the Popover",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "portal",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "portal",
+          "reflectToAttr": true,
+          "docs": "To define portal style of the Popover",
           "docsTags": [],
           "values": [
             {

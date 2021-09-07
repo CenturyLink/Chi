@@ -164,7 +164,8 @@ export class Date {
   /**
    * Date change value event
    */
-  @Event({ eventName: 'chiDateChange' }) eventChange: EventEmitter;
+   @Event({ eventName: 'chiDateChange', cancelable: true })
+   eventChange: EventEmitter;
 
   _vm: {
     dates: Dayjs[];
