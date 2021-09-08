@@ -4,7 +4,7 @@
   @return to-upper-case(str-slice($string, 1, 1)) + str-slice($string, 2);
 }
 
-@mixin setMdStyle($print) {
+@mixin set-md-style($print) {
   @if ($print) {
     @content;
   } @else {

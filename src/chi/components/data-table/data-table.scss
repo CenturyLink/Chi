@@ -19,7 +19,7 @@ $sizes: (
   )
 );
 
-@mixin dataTable($print: false) {
+@mixin data-table($print: false) {
   .chi-data-table {
     border-collapse: collapse;
     display: block;
@@ -29,7 +29,7 @@ $sizes: (
     overflow-y: hidden;
     width: 100%;
 
-    @include setMdStyle($print) {
+    @include set-md-style($print) {
       display: flex;
       flex-direction: column;
     }
@@ -40,7 +40,7 @@ $sizes: (
 
     @each $type in map-keys($sizes) {
       &.-#{$type} {
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           .chi-data-table__head {
             .chi-data-table__cell {
               padding: map-get(map-get($sizes, $type), padding);
@@ -59,13 +59,13 @@ $sizes: (
     &__head {
       display: none;
 
-      @include setMdStyle($print) {
+      @include set-md-style($print) {
         background-color: $color-background-white;
         display: block;
       }
 
       .chi-data-table__cell {
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           border-bottom: 0.125rem solid $color-border-base-dark;
           display: flex;
           font-weight: $font-weight-semi-bold;
@@ -112,14 +112,14 @@ $sizes: (
     }
 
     &__body {
-      @include setMdStyle($print) {
+      @include set-md-style($print) {
         display: flex;
         flex-direction: column;
       }
 
       .chi-data-table__row {
         &.-expanded {
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             font-weight: $font-weight-semi-bold;
           }
 
@@ -133,7 +133,7 @@ $sizes: (
         display: flex;
         padding: 0.25rem 0.75rem;
 
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           border-bottom: 0.0625rem solid $color-border-base-light;
           padding: 0.75rem 1rem;
           word-break: break-word;
@@ -149,7 +149,7 @@ $sizes: (
           font-weight: $font-weight-semi-bold;
           min-width: 10rem;
 
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             display: none;
           }
         }
@@ -157,7 +157,7 @@ $sizes: (
     }
 
     &__footer {
-      @include setMdStyle($print) {
+      @include set-md-style($print) {
         background-color: $color-background-white;
         padding: 1.5rem 1rem;
       }
@@ -169,7 +169,7 @@ $sizes: (
       display: block;
       padding: 1rem 0;
 
-      @include setMdStyle($print) {
+      @include set-md-style($print) {
         border: 0;
         display: flex;
         flex-direction: row;
@@ -216,7 +216,7 @@ $sizes: (
         background-color: $color-background-primary-light;
         box-shadow: inset 0.25rem 0 0 $color-border-primary;
 
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           display: flex;
           flex-direction: row;
         }
@@ -226,7 +226,7 @@ $sizes: (
         &.-container {
           padding: 0.75rem;
 
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             background-color: $color-background-primary-lighter;
             padding: 1.5rem 2rem;
           }
@@ -237,7 +237,7 @@ $sizes: (
         font-size: $font-size-xs;
         line-height: 0.875rem;
 
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           line-height: $line-height-sm;
         }
       }
@@ -248,7 +248,7 @@ $sizes: (
         color: $color-icon-base;
       }
 
-      @include setMdStyle($print) {
+      @include set-md-style($print) {
         align-items: center;
         flex-basis: 0%;
         flex-grow: 1;
@@ -258,7 +258,7 @@ $sizes: (
 
       &.-selectable,
       &.-expandable {
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           flex-grow: 0;
         }
 
@@ -295,7 +295,7 @@ $sizes: (
       &.-expandable {
         display: none;
 
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           display: flex;
           flex-basis: 3rem;
         }
@@ -304,7 +304,7 @@ $sizes: (
       &.-selectable {
         display: none;
 
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           display: flex;
           flex-basis: 3rem;
 
@@ -326,7 +326,7 @@ $sizes: (
           margin-right: 0.5rem;
         }
 
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           display: flex;
           flex-basis: 0%;
           flex-grow: 1;
@@ -348,7 +348,7 @@ $sizes: (
     .chi-data-table__row-grand-child {
       @each $type in map-keys($sizes) {
         &.-#{$type} {
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             .chi-data-table__cell {
               padding: map-get(map-get($sizes, $type), padding);
             }
@@ -361,7 +361,7 @@ $sizes: (
       .chi-data-table__head,
       .chi-data-table__body {
         .chi-data-table__cell {
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             border: 0;
           }
         }
@@ -373,7 +373,7 @@ $sizes: (
         .chi-data-table__row {
           &:hover,
           &.-hover {
-            @include setMdStyle($print) {
+            @include set-md-style($print) {
               background-color: $color-background-base-dark;
 
               &.-active,
@@ -401,7 +401,7 @@ $sizes: (
         }
       }
 
-      @include setMdStyle($print) {
+      @include set-md-style($print) {
         .chi-data-table__head,
         .chi-data-table__body {
           .chi-data-table__row {
@@ -436,7 +436,7 @@ $sizes: (
 
     &.-portal {
       .chi-data-table__head {
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           background-color: $color-background-muted-lighter;
 
           .chi-data-table__row {
@@ -457,7 +457,7 @@ $sizes: (
 
       &:not(.-bordered) {
         .chi-data-table__body {
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             border: 0.0625rem solid $color-grey-15;
           }
         }
@@ -465,7 +465,7 @@ $sizes: (
 
       .chi-data-table__body {
         .chi-data-table__row {
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             background-color: $color-background-base;
           }
 
@@ -475,7 +475,7 @@ $sizes: (
           }
 
           &.-striped {
-            @include setMdStyle($print) {
+            @include set-md-style($print) {
               background-color: $color-navy-10;
             }
           }
@@ -487,7 +487,7 @@ $sizes: (
 
           &:hover,
           &.-hover {
-            @include setMdStyle($print) {
+            @include set-md-style($print) {
               background-color: $color-navy-20;
             }
           }
@@ -495,7 +495,7 @@ $sizes: (
           &.-expanded {
             background-color: $color-background-base-darker;
 
-            @include setMdStyle($print) {
+            @include set-md-style($print) {
               background-color: $color-navy-20;
               display: flex;
             }
@@ -515,7 +515,7 @@ $sizes: (
         .chi-data-table__row-child,
         .chi-data-table__row-grand-child {
           .chi-data-table__cell {
-            @include setMdStyle($print) {
+            @include set-md-style($print) {
               border-bottom: 0;
             }
           }
@@ -525,7 +525,7 @@ $sizes: (
       .chi-data-table__footer {
         display: none;
 
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           background-color: $color-grey-10;
           display: block;
           padding: 0.5rem 1rem;
@@ -553,7 +553,7 @@ $sizes: (
         .chi-data-table__head,
         .chi-data-table__body {
           .chi-data-table__cell {
-            @include setMdStyle($print) {
+            @include set-md-style($print) {
               border: 0;
             }
           }
@@ -565,7 +565,7 @@ $sizes: (
           .chi-data-table__row {
             &:hover,
             &.-hover {
-              @include setMdStyle($print) {
+              @include set-md-style($print) {
                 background-color: $color-background-primary-light;
 
                 &.-active,
@@ -599,7 +599,7 @@ $sizes: (
           }
         }
 
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           .chi-data-table__head,
           .chi-data-table__body {
             .chi-data-table__row {
@@ -640,7 +640,7 @@ $sizes: (
         .chi-data-table__cell {
           padding: 0;
 
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             border-bottom: 0.0625rem solid $color-border-base-light;
             padding: 0.75rem 1rem;
           }
@@ -653,7 +653,7 @@ $sizes: (
             &.-bold {
               font-weight: $font-weight-semi-bold;
 
-              @include setMdStyle($print) {
+              @include set-md-style($print) {
                 font-weight: $font-weight-normal;
               }
             }
@@ -661,7 +661,7 @@ $sizes: (
             + .-key {
               margin-top: 0.5rem;
 
-              @include setMdStyle($print) {
+              @include set-md-style($print) {
                 margin-top: 0;
               }
             }
@@ -670,7 +670,7 @@ $sizes: (
           &:not(.-key) {
             display: none;
 
-            @include setMdStyle($print) {
+            @include set-md-style($print) {
               display: flex;
             }
           }
@@ -679,7 +679,7 @@ $sizes: (
             &.-expand {
               display: none;
 
-              @include setMdStyle($print) {
+              @include set-md-style($print) {
                 display: block;
 
                 + div {
@@ -693,7 +693,7 @@ $sizes: (
 
       @each $type in map-keys($sizes) {
         &.-#{$type} {
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             .chi-data-table__head {
               .chi-data-table__cell {
                 padding: map-get(map-get($sizes, $type), padding);
@@ -726,7 +726,7 @@ $sizes: (
           transform: translateY(-0.5rem);
           width: 0.75rem;
 
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             display: none;
           }
         }
@@ -740,7 +740,7 @@ $sizes: (
             font-weight: $font-weight-normal;
             position: absolute;
 
-            @include setMdStyle($print) {
+            @include set-md-style($print) {
               display: none;
             }
           }
@@ -754,7 +754,7 @@ $sizes: (
 
         @each $type in map-keys($sizes) {
           &.-#{$type} {
-            @include setMdStyle($print) {
+            @include set-md-style($print) {
               .chi-data-table__cell {
                 padding: map-get(map-get($sizes, $type), padding);
               }
@@ -769,7 +769,7 @@ $sizes: (
         margin-top: 0.5rem;
         padding: 1rem 3rem 1rem 1rem;
 
-        @include setMdStyle($print) {
+        @include set-md-style($print) {
           background-color: transparent;
           margin-top: 0;
           padding: 0;
@@ -782,7 +782,7 @@ $sizes: (
           .chi-data-table__cell {
             &.-key {
               &.-bold {
-                @include setMdStyle($print) {
+                @include set-md-style($print) {
                   font-weight: $font-weight-semi-bold;
                 }
               }
@@ -802,7 +802,7 @@ $sizes: (
             width: 0.75rem;
           }
 
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             padding-left: 0;
           }
         }
@@ -812,7 +812,7 @@ $sizes: (
           background-color: $color-background-base-darker;
           padding: 0.75rem 3rem;
 
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             background-color: $color-navy-20;
             padding: 0;
           }
@@ -829,7 +829,7 @@ $sizes: (
               width: 0.75rem;
             }
 
-            @include setMdStyle($print) {
+            @include set-md-style($print) {
               padding-left: 0;
             }
           }
@@ -838,7 +838,7 @@ $sizes: (
         &-grand-child {
           padding-left: 5rem;
 
-          @include setMdStyle($print) {
+          @include set-md-style($print) {
             padding-left: 0;
 
             .chi-data-table__cell {
@@ -857,8 +857,8 @@ $sizes: (
   }
 }
 
-@include dataTable(false);
+@include data-table(false);
 
 @media print {
-  @include dataTable(true);
+  @include data-table(true);
 }
