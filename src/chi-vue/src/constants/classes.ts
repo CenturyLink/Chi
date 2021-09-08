@@ -90,6 +90,7 @@ export const DATA_TABLE_CLASSES = {
   STRIPED: '-striped',
   SORTING: '-sorting',
   COMPACT: '-compact',
+  TRUNCATED: '-truncated',
 };
 //#endregion
 

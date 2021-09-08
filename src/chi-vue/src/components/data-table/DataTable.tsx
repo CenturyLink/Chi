@@ -101,6 +101,7 @@ export default class DataTable extends Vue {
         <button
           aria-label={`Sort Column ${label}`}
           class={`${DATA_TABLE_CLASSES.CELL}
+            ${this.config.truncation ? DATA_TABLE_CLASSES.TRUNCATED : ''}
             ${alignment}
             ${sortable ? DATA_TABLE_CLASSES.SORTING : ''}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
@@ -117,7 +118,7 @@ export default class DataTable extends Vue {
             ${cellWidth === 0 ? 'display: none;' : ''}
             ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
             `}>
-          <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{label}</div>
+          <div class={this.config.truncation ? UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE : ''}>{label}</div>
           {sortIcon}
         </button>
       );
@@ -125,6 +126,7 @@ export default class DataTable extends Vue {
         <div
           aria-label={label}
           class={`${DATA_TABLE_CLASSES.CELL}
+            ${this.config.truncation ? DATA_TABLE_CLASSES.TRUNCATED : ''}
             ${alignment}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={label}
@@ -132,7 +134,7 @@ export default class DataTable extends Vue {
             ${cellWidth === 0 ? 'display: none;' : ''}
             ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
             `}>
-          <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{label}</div>
+          <div class={this.config.truncation ? UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE : ''}>{label}</div>
         </div>
       );
 
