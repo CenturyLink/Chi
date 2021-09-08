@@ -26,7 +26,8 @@ const DATA_TABLE_CLASSES = {
   HOVER: '-hover',
   STRIPED: '-striped',
   SORTING: '-sorting',
-  COMPACT: '-compact'
+  COMPACT: '-compact',
+  TRUNCATED: '-truncated'
 };
 const PAGINATION_CLASSES = {
   PAGINATION: 'chi-pagination',
@@ -59,6 +60,11 @@ const DATA_TABLE_EVENTS = {
 const PAGINATION_EVENTS = {
   PAGE_CHANGE: 'chiPageChange',
   PAGE_SIZE: 'chiPageSizeChange'
+};
+const UTILITY_CLASSES = {
+  TYPOGRAPHY: {
+    TEXT_TRUNCATE: '-text--truncate'
+  }
 };
 
 const hasClassAssertion = (el, value) => {
@@ -289,6 +295,49 @@ describe('Data Table', () => {
               });
           });
       });
+    });
+
+    describe('Default (non-truncation)', () => {
+      it(`Should not have head cells with class .${DATA_TABLE_CLASSES.TRUNCATED}`, () => {
+        cy.get(
+          `[data-cy='data-table'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
+        ).should('not.have.class', DATA_TABLE_CLASSES.TRUNCATED);
+      });
+
+      it(`Should not contain class .${UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} within the head cells`, () => {
+        cy.get(
+          `[data-cy='data-table'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
+        )
+          .children()
+          .should('not.have.class', UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE);
+      });
+    });
+  });
+
+  describe('Truncation', () => {
+    it(`Should have head cells with class .${DATA_TABLE_CLASSES.TRUNCATED}`, () => {
+      cy.get(
+        `[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
+      ).as('cells');
+      hasClassAssertion(`@cells`, DATA_TABLE_CLASSES.TRUNCATED);
+    });
+
+    it(`Should not have body cells with class .${DATA_TABLE_CLASSES.TRUNCATED}`, () => {
+      cy.get(
+        `[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.CELL}`
+      ).should('not.have.class', DATA_TABLE_CLASSES.TRUNCATED);
+    });
+
+    it(`Should contain class .${UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} within the head cells`, () => {
+      cy.get(
+        `[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
+      )
+        .children()
+        .as('innerCells');
+      hasClassAssertion(
+        `@innerCells`,
+        UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE
+      );
     });
   });
 
