@@ -73,6 +73,11 @@ h3 Default Sorting -- Descending
   #sortingDesc
     chi-vue-data-table(data-cy='data-table-sorting-desc', :config="config", :data="table")
 
+h3 Remove Sort
+.test-data-table.-p--3.-w--100
+  #sortingRemoveSort
+    chi-vue-data-table(data-cy='data-table-sorting-remove-sort', :config="config", :data="table")
+
 h3 Size -xs
 .test-data-table.-p--3.-w--100
   #sizeXs
@@ -1031,6 +1036,70 @@ script.
       },
     },
   }).$mount("#sortingDesc");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+        removeSort: true,
+      },
+      table: {
+        head: {
+          name: { label: "Name", sortable: true, sortDataType: "string" },
+          id: { label: "ID", sortable: true, sortDataType: "string" },
+          lastLogin: {
+            label: "Last Login",
+            sortable: true,
+            sortDatatype: "date",
+          },
+        },
+        body: [
+          {
+            id: "name-2",
+            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
+          },
+          {
+            id: "name-1",
+            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-3",
+            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
+          },
+          {
+            id: "name-4",
+            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-5",
+            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
+          },
+          {
+            id: "name-6",
+            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
+          },
+        ],
+      },
+    },
+  }).$mount("#sortingRemoveSort");
 
   new Vue({
     components: {

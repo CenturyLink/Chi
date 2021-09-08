@@ -678,6 +678,7 @@ describe('Data Table', () => {
                   expect(spy).to.be.called;
                 });
             }
+            cy.reload();
           });
       });
 
@@ -713,14 +714,7 @@ describe('Data Table', () => {
               .eq(0)
               .should('contain', 'Surname 2');
           });
-        cy.get('@firstCell')
-          .click()
-          .then(() => {
-            cy.get('@rows')
-              .eq(0)
-              .should('contain', 'Name 1');
-            hasClassAssertion('@sortIcon', `${ARROW_SORT_CLASS}`);
-          });
+        cy.reload();
       });
 
       it(`Should sort by status using a custom template`, () => {
@@ -745,11 +739,7 @@ describe('Data Table', () => {
 
             checkStatusSorting(inactives);
           });
-        cy.get('@idCell')
-          .click()
-          .then(() => {
-            checkStatusSorting(statuses);
-          });
+        cy.reload();
       });
 
       it(`Should sort by date`, () => {
@@ -774,11 +764,7 @@ describe('Data Table', () => {
 
             checkDateSorting(datesDesc);
           });
-        cy.get('@dateCell')
-          .click()
-          .then(() => {
-            checkDateSorting(dates);
-          });
+        cy.reload();
       });
 
       it(`Should sort correctly on page change`, () => {
@@ -847,6 +833,56 @@ describe('Data Table', () => {
         cy.get('@rows')
           .eq(2)
           .should('contain', 'Name 4');
+      });
+    });
+
+    describe('Remove Sort', () => {
+      it(`Should sort by name with all 3 steps`, () => {
+        cy.get(
+          `[data-cy='data-table-sorting-remove-sort'] .${DATA_TABLE_CLASSES.BODY}`
+        )
+          .find(`.${DATA_TABLE_CLASSES.ROW}`)
+          .as('rows')
+          .eq(0)
+          .should('contain', 'Name 2');
+        cy.get(
+          `[data-cy='data-table-sorting-remove-sort'] .${DATA_TABLE_CLASSES.ROW}`
+        )
+          .eq(0)
+          .find(`.${DATA_TABLE_CLASSES.CELL}`)
+          .eq(0)
+          .as('firstCell')
+          .find(`.${ICON_CLASS}`)
+          .as('sortIcon');
+        hasClassAssertion('@sortIcon', `${ARROW_SORT_CLASS}`);
+        cy.get('@firstCell')
+          .click()
+          .then(() => {
+            hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
+            cy.get('@rows')
+              .eq(0)
+              .should('contain', 'Name 1');
+            cy.get('@sortIcon').should('have.css', 'transform', 'none');
+          });
+        cy.get('@firstCell')
+          .click()
+          .then(() => {
+            hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
+            cy.get('@sortIcon')
+              .should('have.attr', 'style')
+              .should('contain', 'transform: rotate(180deg);');
+            cy.get('@rows')
+              .eq(0)
+              .should('contain', 'Name 6');
+          });
+        cy.get('@firstCell')
+          .click()
+          .then(() => {
+            cy.get('@rows')
+              .eq(0)
+              .should('contain', 'Name 2');
+            hasClassAssertion('@sortIcon', `${ARROW_SORT_CLASS}`);
+          });
       });
     });
   });
@@ -1353,11 +1389,7 @@ describe('Server Side Data Table', () => {
 
           checkStatusSorting(inactives);
         });
-      cy.get('@idCell')
-        .click()
-        .then(() => {
-          checkStatusSorting(statuses);
-        });
+      cy.reload();
     });
 
     it(`Should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {
@@ -1632,11 +1664,7 @@ describe('Server Side Data Table Portal', () => {
 
           checkStatusSorting(inactives);
         });
-      cy.get('@idCell')
-        .click()
-        .then(() => {
-          checkStatusSorting(statuses);
-        });
+      cy.reload();
     });
 
     it(`Should trigger the ${DATA_TABLE_EVENTS.DATA_SORTING} event`, () => {

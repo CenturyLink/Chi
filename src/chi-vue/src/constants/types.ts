@@ -54,7 +54,6 @@ export interface DataTableData {
       sortable?: boolean;
       sortBy?: string;
       sortDataType?: 'string' | 'number' | 'date' | 'boolean';
-      unsortedSortStep?: boolean;
       align?: 'left' | 'center' | 'right';
       allowOverflow?: 'visible' | 'hidden';
       key?: boolean;
@@ -83,6 +82,7 @@ export interface DataTableConfig {
     xl: number[];
   };
   defaultSort?: DataTableSortConfig;
+  removeSort?: boolean;
   mode?: 'clientside' | 'serverside';
   noResultsMessage?: string;
   pagination: {
