@@ -54,6 +54,7 @@ export default class DataTable extends Vue {
   _sortable = false;
   _sortedData?: DataTableRow[] = [];
   _sortConfig?: DataTableSortConfig;
+  _unsortedSortStep? = false;
   _serializedDataBody: DataTableRow[] = [];
   _toolbarComponent?: DataTableToolbar;
   _paginationListenersAdded = false;
@@ -967,7 +968,12 @@ export default class DataTable extends Vue {
             direction: 'descending',
             sortBy: columnSortBy || undefined,
           };
-        } else if (currentSort === 'descending' && this._sortConfig && this._sortConfig.key === columnName) {
+        } else if (
+          this.data.head[columnName].unsortedSortStep &&
+          currentSort === 'descending' &&
+          this._sortConfig &&
+          this._sortConfig.key === columnName
+        ) {
           const sortingData: DataTableSorting = {
             column: undefined,
             direction: undefined,
