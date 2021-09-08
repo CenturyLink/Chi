@@ -97,6 +97,7 @@ export interface DataTableConfig {
   style: DataTableStyleConfig;
   selectable?: boolean;
   reserveExpansionSlot?: boolean;
+  truncation?: boolean;
 }
 export interface DataTableFilter {
   name: string;

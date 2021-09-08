@@ -72,8 +72,12 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
         border-bottom: 0.125rem solid $color-border-base-dark;
         display: flex;
         font-weight: $font-weight-semi-bold;
+        min-width: 1rem;
+        overflow: initial;
         padding: 0.75rem 1rem;
         position: relative;
+        text-align: start;
+        white-space: normal;
 
         .chi-icon {
           margin-left: 0.5rem;
@@ -110,6 +114,14 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
             }
           }
         }
+      }
+    }
+
+    .-truncated {
+      @include respond-to(md) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
   }
