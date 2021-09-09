@@ -653,12 +653,10 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
   &.-compact {
     .chi-data-table__body {
       .chi-data-table__cell {
-        cursor: pointer;
         padding: 0;
 
         @include respond-to(md) {
           border-bottom: 0.0625rem solid $color-border-base-light;
-          cursor: auto;
           padding: 0.75rem 1rem;
         }
 
@@ -672,14 +670,6 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
 
             @include respond-to(md) {
               font-weight: $font-weight-normal;
-            }
-          }
-
-          + .-key {
-            padding-top: 0.5rem;
-
-            @include respond-to(md) {
-              padding-top: 0.75rem;
             }
           }
         }
