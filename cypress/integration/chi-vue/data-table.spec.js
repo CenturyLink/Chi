@@ -807,7 +807,7 @@ describe('Data Table', () => {
         cy.get(`[data-cy='data-table-sorting-asc'] .${DATA_TABLE_CLASSES.BODY}`)
           .find(`.${DATA_TABLE_CLASSES.ROW}`)
           .as('rows')
-          .eq(0)
+          .first()
           .should('contain', 'active');
         cy.get('@rows')
           .eq(1)
@@ -815,7 +815,7 @@ describe('Data Table', () => {
         cy.get('@rows')
           .eq(2)
           .should('contain', 'active');
-        cy.get("@rows").should("have.length", 3);
+        cy.get('@rows').should('have.length', 3);
       });
     });
 
@@ -844,14 +844,14 @@ describe('Data Table', () => {
         )
           .find(`.${DATA_TABLE_CLASSES.ROW}`)
           .as('rows')
-          .eq(0)
+          .first()
           .should('contain', 'Name 2');
         cy.get(
           `[data-cy='data-table-sorting-unsorted'] .${DATA_TABLE_CLASSES.ROW}`
         )
-          .eq(0)
+          .first()
           .find(`.${DATA_TABLE_CLASSES.CELL}`)
-          .eq(0)
+          .first()
           .as('firstCell')
           .find(`.${ICON_CLASS}`)
           .as('sortIcon');
@@ -861,7 +861,7 @@ describe('Data Table', () => {
           .then(() => {
             hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
             cy.get('@rows')
-              .eq(0)
+              .first()
               .should('contain', 'Name 1');
             cy.get('@sortIcon').should('have.css', 'transform', 'none');
           });
@@ -873,14 +873,14 @@ describe('Data Table', () => {
               .should('have.attr', 'style')
               .should('contain', 'transform: rotate(180deg);');
             cy.get('@rows')
-              .eq(0)
+              .first()
               .should('contain', 'Name 6');
           });
         cy.get('@firstCell')
           .click()
           .then(() => {
             cy.get('@rows')
-              .eq(0)
+              .first()
               .should('contain', 'Name 2');
             hasClassAssertion('@sortIcon', `${ARROW_SORT_CLASS}`);
           });
