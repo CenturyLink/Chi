@@ -11,10 +11,8 @@ h3 Complex
             :data="table",
           )
             template(#status="payload")
-              div(
-                :class="`chi-badge -xs ${payload.status === 'active' ? '-success -bg--success-light -text--success' : ''}`"
-              )
-                span.-text--truncate {{ payload.status }}
+              i(:class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true")
+              span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.status }}
             template(#name="payload")
               chi-popover-example(:name="payload.name", :id="payload.id")
             template(#actions="payload")
@@ -48,12 +46,10 @@ h3 Complex
             <!-- Vue component -->
             <ChiDataTable :config="config" :data="table">
               <template #status="payload">
-                <div :class="`chi-badge -xs ${payload.status === 'active'
-                  ? '-success -bg--success-light -text--success' : ''}`">
-                  <span class="-text--truncate">
-                    {{ payload.status }}
-                  </span>
-                </div>
+                <i class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
+                <span class="-text--truncate" style="padding-left: 0.5rem;">
+                  {{ payload.status }}
+                </span>
               </template>
               <template #name="payload">
                 <ExamplePopover :name="payload.name" :id="payload.id" />
@@ -103,7 +99,7 @@ h3 Complex
                       { template: "name", payload: { name: "Name 1", id: "name-1" } },
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
                       "18 Dec 2020 3:26 p.m.",
                       {
@@ -120,7 +116,7 @@ h3 Complex
                               "Child 1 Name 1",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -137,7 +133,7 @@ h3 Complex
                                       "Grand Child 1 Name 1",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -152,7 +148,7 @@ h3 Complex
                                       "Grand Child 2 Name 1",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -171,7 +167,7 @@ h3 Complex
                               "Child 2 Name 1",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -188,7 +184,7 @@ h3 Complex
                                       "Grand Child 3 Name 1",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -203,7 +199,7 @@ h3 Complex
                                       "Grand Child 4 Name 1",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -226,7 +222,7 @@ h3 Complex
                       { template: "name", payload: { name: "Name 2", id: "name-2" } },
                       {
                         template: "status",
-                        payload: { status: "Inactive" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
                       "18 Dec 2020 3:26 p.m.",
                       {
@@ -243,7 +239,7 @@ h3 Complex
                               "Child 1 Name 2",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -260,7 +256,7 @@ h3 Complex
                                       "Grand Child 1 Name 2",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -275,7 +271,7 @@ h3 Complex
                                       "Grand Child 2 Name 2",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -294,7 +290,7 @@ h3 Complex
                               "Child 2 Name 2",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -311,7 +307,7 @@ h3 Complex
                                       "Grand Child 3 Name 2",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -326,7 +322,7 @@ h3 Complex
                                       "Grand Child 4 Name 2",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -355,7 +351,7 @@ h3 Complex
                       },
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
                       "18 Dec 2020 3:26 p.m.",
                       {
@@ -374,7 +370,7 @@ h3 Complex
                               "Child 1 Name 3",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -391,7 +387,7 @@ h3 Complex
                                       "Grand Child 1 Name 3",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -406,7 +402,7 @@ h3 Complex
                                       "Grand Child 2 Name 3",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -425,7 +421,7 @@ h3 Complex
                               "Child 2 Name 3",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -442,7 +438,7 @@ h3 Complex
                                       "Grand Child 3 Name 3",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -457,7 +453,7 @@ h3 Complex
                                       "Grand Child 4 Name 3",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -486,7 +482,7 @@ h3 Complex
                       },
                       {
                         template: "status",
-                        payload: { status: "inactive" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
                       "18 Dec 2020 3:26 p.m.",
                       {
@@ -505,7 +501,7 @@ h3 Complex
                               "Child 1 Name 4",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -522,7 +518,7 @@ h3 Complex
                                       "Grand Child 1 Name 4",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -537,7 +533,7 @@ h3 Complex
                                       "Grand Child 2 Name 4",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -556,7 +552,7 @@ h3 Complex
                               "Child 2 Name 4",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -573,7 +569,7 @@ h3 Complex
                                       "Grand Child 3 Name 4",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -588,7 +584,7 @@ h3 Complex
                                       "Grand Child 4 Name 4",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -617,7 +613,7 @@ h3 Complex
                       },
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
                       "18 Dec 2020 3:26 p.m.",
                       {
@@ -636,7 +632,7 @@ h3 Complex
                               "Child 1 Name 5",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -653,7 +649,7 @@ h3 Complex
                                       "Grand Child 1 Name 5",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -668,7 +664,7 @@ h3 Complex
                                       "Grand Child 2 Name 5",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -687,7 +683,7 @@ h3 Complex
                               "Child 2 Name 5",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -704,7 +700,7 @@ h3 Complex
                                       "Grand Child 3 Name 5",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -719,7 +715,7 @@ h3 Complex
                                       "Grand Child 4 Name 5",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -748,7 +744,7 @@ h3 Complex
                       },
                       {
                         template: "status",
-                        payload: { status: "inactive" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
                       "18 Dec 2020 3:26 p.m.",
                       {
@@ -767,7 +763,7 @@ h3 Complex
                               "Child 1 Name 6",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -784,7 +780,7 @@ h3 Complex
                                       "Grand Child 1 Name 6",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -799,7 +795,7 @@ h3 Complex
                                       "Grand Child 2 Name 6",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -818,7 +814,7 @@ h3 Complex
                               "Child 2 Name 6",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -835,7 +831,7 @@ h3 Complex
                                       "Grand Child 3 Name 6",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -850,7 +846,7 @@ h3 Complex
                                       "Grand Child 4 Name 6",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
                                       "18 Dec 2020 2:38 a.m.",
                                       {
@@ -1047,7 +1043,7 @@ script.
               { template: "name", payload: { name: "Name 1", id: "name-1" } },
               {
                 template: "status",
-                payload: { status: "active" },
+                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
               },
               "18 Dec 2020 3:26 p.m.",
               {
@@ -1064,7 +1060,7 @@ script.
                       "Child 1 Name 1",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
                       "18 Dec 2020 2:38 a.m.",
                       {
@@ -1081,7 +1077,7 @@ script.
                               "Grand Child 1 Name 1",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1096,7 +1092,7 @@ script.
                               "Grand Child 2 Name 1",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1115,7 +1111,7 @@ script.
                       "Child 2 Name 1",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
                       "18 Dec 2020 2:38 a.m.",
                       {
@@ -1132,7 +1128,7 @@ script.
                               "Grand Child 3 Name 1",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1147,7 +1143,7 @@ script.
                               "Grand Child 4 Name 1",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1170,7 +1166,7 @@ script.
               { template: "name", payload: { name: "Name 2", id: "name-2" } },
               {
                 template: "status",
-                payload: { status: "Inactive" },
+                payload: { status: "Due", icon: 'warning', color: 'warning' },
               },
               "18 Dec 2020 3:26 p.m.",
               {
@@ -1187,7 +1183,7 @@ script.
                       "Child 1 Name 2",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
                       "18 Dec 2020 2:38 a.m.",
                       {
@@ -1204,7 +1200,7 @@ script.
                               "Grand Child 1 Name 2",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1219,7 +1215,7 @@ script.
                               "Grand Child 2 Name 2",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1238,7 +1234,7 @@ script.
                       "Child 2 Name 2",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
                       "18 Dec 2020 2:38 a.m.",
                       {
@@ -1255,7 +1251,7 @@ script.
                               "Grand Child 3 Name 2",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1270,7 +1266,7 @@ script.
                               "Grand Child 4 Name 2",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1299,7 +1295,7 @@ script.
               },
               {
                 template: "status",
-                payload: { status: "active" },
+                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
               },
               "18 Dec 2020 3:26 p.m.",
               {
@@ -1318,7 +1314,7 @@ script.
                       "Child 1 Name 3",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
                       "18 Dec 2020 2:38 a.m.",
                       {
@@ -1335,7 +1331,7 @@ script.
                               "Grand Child 1 Name 3",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1350,7 +1346,7 @@ script.
                               "Grand Child 2 Name 3",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1369,7 +1365,7 @@ script.
                       "Child 2 Name 3",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
                       "18 Dec 2020 2:38 a.m.",
                       {
@@ -1386,7 +1382,7 @@ script.
                               "Grand Child 3 Name 3",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1401,7 +1397,7 @@ script.
                               "Grand Child 4 Name 3",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1430,7 +1426,7 @@ script.
               },
               {
                 template: "status",
-                payload: { status: "inactive" },
+                payload: { status: "Due", icon: 'warning', color: 'warning' },
               },
               "18 Dec 2020 3:26 p.m.",
               {
@@ -1449,7 +1445,7 @@ script.
                       "Child 1 Name 4",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
                       "18 Dec 2020 2:38 a.m.",
                       {
@@ -1466,7 +1462,7 @@ script.
                               "Grand Child 1 Name 4",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1481,7 +1477,7 @@ script.
                               "Grand Child 2 Name 4",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1500,7 +1496,7 @@ script.
                       "Child 2 Name 4",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
                       "18 Dec 2020 2:38 a.m.",
                       {
@@ -1517,7 +1513,7 @@ script.
                               "Grand Child 3 Name 4",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1532,7 +1528,7 @@ script.
                               "Grand Child 4 Name 4",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1561,7 +1557,7 @@ script.
               },
               {
                 template: "status",
-                payload: { status: "active" },
+                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
               },
               "18 Dec 2020 3:26 p.m.",
               {
@@ -1580,7 +1576,7 @@ script.
                       "Child 1 Name 5",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
                       "18 Dec 2020 2:38 a.m.",
                       {
@@ -1597,7 +1593,7 @@ script.
                               "Grand Child 1 Name 5",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1612,7 +1608,7 @@ script.
                               "Grand Child 2 Name 5",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1631,7 +1627,7 @@ script.
                       "Child 2 Name 5",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
                       "18 Dec 2020 2:38 a.m.",
                       {
@@ -1648,7 +1644,7 @@ script.
                               "Grand Child 3 Name 5",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1663,7 +1659,7 @@ script.
                               "Grand Child 4 Name 5",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1692,7 +1688,7 @@ script.
               },
               {
                 template: "status",
-                payload: { status: "inactive" },
+                payload: { status: "Due", icon: 'warning', color: 'warning' },
               },
               "18 Dec 2020 3:26 p.m.",
               {
@@ -1711,7 +1707,7 @@ script.
                       "Child 1 Name 6",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
                       "18 Dec 2020 2:38 a.m.",
                       {
@@ -1728,7 +1724,7 @@ script.
                               "Grand Child 1 Name 6",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1743,7 +1739,7 @@ script.
                               "Grand Child 2 Name 6",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1762,7 +1758,7 @@ script.
                       "Child 2 Name 6",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
                       "18 Dec 2020 2:38 a.m.",
                       {
@@ -1779,7 +1775,7 @@ script.
                               "Grand Child 3 Name 6",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
@@ -1794,7 +1790,7 @@ script.
                               "Grand Child 4 Name 6",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
                               "18 Dec 2020 2:38 a.m.",
                               {
