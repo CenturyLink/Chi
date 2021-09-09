@@ -43,7 +43,9 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
   }
 
   _triggerSelectRowState(column: DataTableColumn) {
-    this.$props.handleSelectColumn(column);
+    if (this.handleSelectColumn) {
+      this.handleSelectColumn(column);
+    }
   }
 
   render() {

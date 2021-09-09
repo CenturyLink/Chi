@@ -50,12 +50,18 @@ export default class ColumnCustomizationContent extends Vue {
         : '';
 
     if (icons.includes(icon)) {
+      let refButton = 'buttonRows';
+
+      if (icon === 'chevron-left') {
+        refButton = 'buttonDeselect';
+      }
+
       return (
         <button
+          ref={refButton}
           onclick={() => action()}
           class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT}`}
-          aria-label={ariaLabel}
-          disabled={this._checkButtonRowDisabled(icon)}>
+          aria-label={ariaLabel}>
           <div class={BUTTON_CLASSES.CONTENT}>
             <i class={`${ICON_CLASS} icon-${icon}`} aria-hidden="true" />
           </div>
@@ -188,11 +194,7 @@ export default class ColumnCustomizationContent extends Vue {
     }
 
     this._isSelectedColumnLocked = filterSelectedColumns.some((column: DataTableColumn) => column.locked);
-    this.$forceUpdate();
-  }
-
-  _checkButtonRowDisabled(icon: string): boolean {
-    return this._isSelectedColumnLocked && icon === 'chevron-left';
+    (this.$refs.buttonDeselect as HTMLButtonElement).disabled = this._isSelectedColumnLocked;
   }
 
   render() {
