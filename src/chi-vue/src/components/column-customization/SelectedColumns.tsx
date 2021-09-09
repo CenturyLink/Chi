@@ -4,11 +4,11 @@ import './column-customization.scss';
 import { findComponent } from '@/utils/utils';
 import ColumnCustomizationContent from '@/components/column-customization/ColumnCustomizationModalContent';
 import { UTILITY_CLASSES } from '@/constants/classes';
+import { DATA_TABLE_EVENTS } from '@/constants/events';
 
 @Component
 export default class ColumnCustomizationSelectedColumns extends Vue {
   @Prop() standardColumns?: DataTableColumn[];
-  @Prop() handleSelectColumn?: (column: DataTableColumn) => void;
 
   _ColumnCustomizationContent?: ColumnCustomizationContent;
 
@@ -25,9 +25,7 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
     return data?.map((column: DataTableColumn) => {
       return (
         <option
-          onClick={() => {
-            this._triggerSelectRowState(column);
-          }}
+          onClick={() => this._triggerSelectRowState()}
           value={column.name}
           class={column.locked ? '-locked' : ''}>
           {column.label || column.name}
@@ -42,10 +40,8 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
     }
   }
 
-  _triggerSelectRowState(column: DataTableColumn) {
-    if (this.handleSelectColumn) {
-      this.handleSelectColumn(column);
-    }
+  _triggerSelectRowState() {
+    this.$emit(DATA_TABLE_EVENTS.TOOLBAR.COLUMNS_SELECTED);
   }
 
   render() {

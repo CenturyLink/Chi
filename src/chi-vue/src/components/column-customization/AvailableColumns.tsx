@@ -3,11 +3,11 @@ import { DataTableColumn } from '@/constants/types';
 import { findComponent } from '@/utils/utils';
 import ColumnCustomizationContent from '@/components/column-customization/ColumnCustomizationModalContent';
 import { UTILITY_CLASSES } from '@/constants/classes';
+import { DATA_TABLE_EVENTS } from '@/constants/events';
 
 @Component
 export default class ColumnCustomizationAvailableColumns extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
-  @Prop() handleSelectColumn?: (column: DataTableColumn) => void;
 
   _ColumnCustomizationContent?: ColumnCustomizationContent;
 
@@ -26,23 +26,9 @@ export default class ColumnCustomizationAvailableColumns extends Vue {
     }
   }
 
-  _triggerSelectRowState(column: DataTableColumn) {
-    if (this.handleSelectColumn) {
-      this.handleSelectColumn(column);
-    }
-  }
-
   render() {
     const options: [] = this.$props.availableColumns.map((column: DataTableColumn) => {
-      return (
-        <option
-          onClick={() => {
-            this._triggerSelectRowState(column);
-          }}
-          value={column.name}>
-          {column.label || column.name}
-        </option>
-      );
+      return <option value={column.name}>{column.label || column.name}</option>;
     });
 
     return (
