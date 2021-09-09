@@ -205,7 +205,8 @@ $sizes: (
         width: map-get(map-get(map-get($sizes, $type), icons), width);
       }
 
-      &.-icon {
+      &.-icon,
+      &.-float {
         padding: map-get(map-get(map-get($sizes, $type), icons), padding);
       }
     }
@@ -245,7 +246,7 @@ $sizes: (
     box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24),
     0 6px 10px 0 rgba(0, 0, 0, 0.14),
     0 1px 16px 0 rgba(0, 0, 0, 0.12);
-    padding: $button-float-padding;
+    padding: $button-icon-md-padding;
     transition: box-shadow 0.15s ease-in, background-color 0.15s ease-in;
 
     &:active,
@@ -253,11 +254,6 @@ $sizes: (
       box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2),
       0 8px 10px 1px rgba(0, 0, 0, 0.14),
       0 2px 14px 1px rgba(0, 0, 0, 0.12);
-    }
-
-    .chi-icon {
-      height: $button-icon-md-height;
-      width: $button-icon-md-width;
     }
 
     &[disabled],
