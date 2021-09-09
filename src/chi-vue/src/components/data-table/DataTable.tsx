@@ -968,7 +968,7 @@ export default class DataTable extends Vue {
             sortBy: columnSortBy || undefined,
           };
         } else if (
-          this.config.removeSort &&
+          this.config.unsorted &&
           currentSort === 'descending' &&
           this._sortConfig &&
           this._sortConfig.key === columnName

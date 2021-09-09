@@ -836,17 +836,17 @@ describe('Data Table', () => {
       });
     });
 
-    describe('Remove Sort', () => {
+    describe('Unsorted', () => {
       it(`Should sort by name with all 3 steps`, () => {
         cy.get(
-          `[data-cy='data-table-sorting-remove-sort'] .${DATA_TABLE_CLASSES.BODY}`
+          `[data-cy='data-table-sorting-unsorted'] .${DATA_TABLE_CLASSES.BODY}`
         )
           .find(`.${DATA_TABLE_CLASSES.ROW}`)
           .as('rows')
           .eq(0)
           .should('contain', 'Name 2');
         cy.get(
-          `[data-cy='data-table-sorting-remove-sort'] .${DATA_TABLE_CLASSES.ROW}`
+          `[data-cy='data-table-sorting-unsorted'] .${DATA_TABLE_CLASSES.ROW}`
         )
           .eq(0)
           .find(`.${DATA_TABLE_CLASSES.CELL}`)

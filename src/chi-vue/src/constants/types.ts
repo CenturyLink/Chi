@@ -82,7 +82,7 @@ export interface DataTableConfig {
     xl: number[];
   };
   defaultSort?: DataTableSortConfig;
-  removeSort?: boolean;
+  unsorted?: boolean;
   mode?: 'clientside' | 'serverside';
   noResultsMessage?: string;
   pagination: {

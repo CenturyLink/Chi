@@ -73,10 +73,10 @@ h3 Default Sorting -- Descending
   #sortingDesc
     chi-vue-data-table(data-cy='data-table-sorting-desc', :config="config", :data="table")
 
-h3 Remove Sort
+h3 Unsorted
 .test-data-table.-p--3.-w--100
-  #sortingRemoveSort
-    chi-vue-data-table(data-cy='data-table-sorting-remove-sort', :config="config", :data="table")
+  #sortingUnsorted
+    chi-vue-data-table(data-cy='data-table-sorting-unsorted', :config="config", :data="table")
 
 h3 Size -xs
 .test-data-table.-p--3.-w--100
@@ -1059,7 +1059,7 @@ script.
           pageJumper: true,
         },
         resultsPerPage: 3,
-        removeSort: true,
+        unsorted: true,
       },
       table: {
         head: {
@@ -1099,7 +1099,7 @@ script.
         ],
       },
     },
-  }).$mount("#sortingRemoveSort");
+  }).$mount("#sortingUnsorted");
 
   new Vue({
     components: {
