@@ -27,7 +27,81 @@
 }
 
 .chi-data-table__cell {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// TODO: To be removed when all µApp's Chi version is higher than v5.0
+
+@mixin respond-to($media, $only: false) {
+  @if $media == xs {
+    @media only screen and (max-width: $sm-breakpoint - 1) {
+      @content;
+    }
+  } @else if $media == sm {
+    @if $only {
+      @media only screen and (min-width: $sm-breakpoint) and (max-width: $md-breakpoint - 1) {
+        @content;
+      }
+    } @else {
+      @media only screen and (min-width: $sm-breakpoint) {
+        @content;
+      }
+    }
+  } @else if $media == md {
+    @if $only == true {
+      @media only screen and (min-width: $md-breakpoint) and (max-width: $lg-breakpoint - 1) {
+        @content;
+      }
+    } @else {
+      @media only screen and (min-width: $md-breakpoint) {
+        @content;
+      }
+    }
+  } @else if $media == lg {
+    @if $only {
+      @media only screen and (min-width: $lg-breakpoint) and (max-width: $xl-breakpoint - 1) {
+        @content;
+      }
+    } @else {
+      @media only screen and (min-width: $lg-breakpoint) {
+        @content;
+      }
+    }
+  } @else if $media == xl {
+    @media only screen and (min-width: $xl-breakpoint) {
+      @content;
+    }
+  }
+}
+
+$md-breakpoint: 768px;
+$color-border-base-dark: #d0d4d9;
+$font-weight-semi-bold: 600;
+
+.chi-data-table {
+  &__head {
+    .chi-data-table__cell {
+      @include respond-to(md) {
+        border-bottom: 0.125rem solid $color-border-base-dark;
+        display: flex;
+        font-weight: $font-weight-semi-bold;
+        min-width: 1rem;
+        overflow: initial;
+        padding: 0.75rem 1rem;
+        position: relative;
+        text-align: start;
+        white-space: normal;
+      }
+    }
+
+    .-truncated {
+      @include respond-to(md) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
 }
