@@ -808,13 +808,14 @@ describe('Data Table', () => {
           .find(`.${DATA_TABLE_CLASSES.ROW}`)
           .as('rows')
           .eq(0)
-          .should('contain', 'Name 1');
+          .should('contain', 'active');
         cy.get('@rows')
           .eq(1)
-          .should('contain', 'Name 2');
+          .should('contain', 'active');
         cy.get('@rows')
           .eq(2)
-          .should('contain', 'Name 3');
+          .should('contain', 'active');
+        cy.get("@rows").should("have.length", 3);
       });
     });
 
