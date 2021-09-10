@@ -13,7 +13,7 @@ button#mobile-navigation-interaction-trigger.chi-button.-icon(data-target='#mobi
         .-position--relative
           .chi-mobile-nav__first-level-content.-w--100
             .chi-drawer__header.chi-mobile-nav__header
-              button#button-site-menu2.chi-button.-flat.chi-dropdown__trigger.-animate.-no-hover.-b--transparent(data-target='dropdown-2-menu') Cloud Application Manager
+              button#button-site-menu2.chi-button.-flat.chi-dropdown__trigger.-animate.-no-hover.-b--transparent(data-target='dropdown-2-menu') Control Center
               button.chi-button.-icon.-close(aria-label='Close')
                 .chi-button__content
                   i.chi-icon.icon-x(aria-hidden="true")
@@ -32,8 +32,7 @@ button#mobile-navigation-interaction-trigger.chi-button.-icon(data-target='#mobi
               .chi-mobile-nav__user
                 .chi-mobile-nav__user-name
                   span Alessandro Ray
-                  i.chi-icon.-xs.icon-user(aria-hidden="true")
-                button#button-user-menu2.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate.-no-hover.-b--transparent(data-target='dropdown-3-menu') Menu
+                button#button-user-menu2.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate.-no-hover.-b--transparent.-text--normal(data-target='dropdown-3-menu') Menu
               .chi-mobile-nav__dropdown
                 #dropdown-3-menu.chi-dropdown__menu.chi-mobile-nav__dropdown-content
                   a.chi-dropdown__menu-item(href='#')
@@ -56,9 +55,19 @@ button#mobile-navigation-interaction-trigger.chi-button.-icon(data-target='#mobi
                     i.chi-icon.icon-atom(aria-hidden="true")
                     span Tab link
               .chi-divider
-              .chi-mobile-nav__logout
-                span Logout
-                i.chi-icon.-xs.icon-logout(aria-hidden="true")
+              ul.chi-tabs.-vertical.-icons
+                li
+                  a.-text--primary(href='#tab-link')
+                    i.chi-icon.icon-user(aria-hidden="true")
+                    span My Profile
+                li
+                  a.-text--primary(href='#tab-link')
+                    i.chi-icon.icon-bell-settings-outline(aria-hidden="true")
+                    span Notification Settings
+                li
+                  a.-text--primary(href='#tab-link')
+                    i.chi-icon.icon-logout(aria-hidden="true")
+                    span Sign Out
         .chi-mobile-nav__drawers
           #second-level-1.chi-drawer.-right.-position--absolute
             .chi-drawer__header.chi-mobile-nav__header

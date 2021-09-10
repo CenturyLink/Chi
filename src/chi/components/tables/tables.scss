@@ -267,7 +267,7 @@ $vertical-alignments: (top, bottom, middle);
         tr {
           &:hover,
           &.-hover {
-            background-color: $color-navy-20;
+            background-color: $table-row-hover-background-color;
           }
         }
       }
