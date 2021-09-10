@@ -949,6 +949,12 @@ export default class DataTable extends Vue {
           return ascending ? aValue.getTime() - bValue.getTime() : bValue.getTime() - aValue.getTime();
         }
 
+        if (aData.payload && bData.payload && aData.template && bData.template) {
+          return ascending
+            ? aData.payload[aData.template].localeCompare(bData.payload[bData.template])
+            : bData.payload[bData.template].localeCompare(aData.payload[aData.template]);
+        }
+
         return ascending ? aData.localeCompare(bData) : bData.localeCompare(aData);
       });
     }
@@ -1028,7 +1034,12 @@ export default class DataTable extends Vue {
             direction: 'descending',
             sortBy: columnSortBy || undefined,
           };
-        } else if (currentSort === 'descending' && this._sortConfig && this._sortConfig.key === columnName) {
+        } else if (
+          this.config.unsorted &&
+          currentSort === 'descending' &&
+          this._sortConfig &&
+          this._sortConfig.key === columnName
+        ) {
           const sortingData: DataTableSorting = {
             column: undefined,
             direction: undefined,

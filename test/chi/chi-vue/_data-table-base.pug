@@ -67,11 +67,21 @@ h3 Default Sorting -- Ascending
 .test-data-table.-p--3.-w--100
   #sortingAsc
     chi-vue-data-table(data-cy='data-table-sorting-asc', :config="config", :data="table")
+      template(#status='payload')
+        div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
+          span.-text--truncate {{ payload.status }}
+      template(#date='payload')
+        span {{ `${payload.date.getDate()} ${months[payload.date.getMonth()]} ${payload.date.getFullYear()}` }}
 
 h3 Default Sorting -- Descending
 .test-data-table.-p--3.-w--100
   #sortingDesc
     chi-vue-data-table(data-cy='data-table-sorting-desc', :config="config", :data="table")
+
+h3 Unsorted
+.test-data-table.-p--3.-w--100
+  #sortingUnsorted
+    chi-vue-data-table(data-cy='data-table-sorting-unsorted', :config="config", :data="table")
 
 h3 Size -xs
 .test-data-table.-p--3.-w--100
@@ -915,7 +925,8 @@ script.
           striped: false,
         },
         defaultSort: {
-          key: "name",
+          key: "id",
+          sortBy: "string",
           direction: "ascending",
         },
         pagination: {
@@ -928,40 +939,137 @@ script.
       table: {
         head: {
           name: { label: "Name", sortable: true, sortDataType: "string" },
-          id: { label: "ID", sortable: true, sortDataType: "string" },
-          lastLogin: {
+          id: {
+            label: "ID",
+            sortable: true,
+            sortBy: "status",
+            sortDataType: "string",
+          },
+          date: {
             label: "Last Login",
             sortable: true,
-            sortDatatype: "date",
+            sortBy: "date",
+            sortDataType: "date",
           },
         },
         body: [
           {
             id: "name-1",
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+            data: [
+              "Name 1",
+              {
+                template: "status",
+                payload: {
+                  status: "active",
+                },
+              },
+              { 
+                template: 'date', 
+                payload: { 
+                  date: new Date('01/06/2018 8:00 AM') 
+                } 
+              },
+            ],
           },
           {
             id: "name-2",
-            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
+            data: [
+              "Name 2",
+              {
+                template: "status",
+                payload: {
+                  status: "inact",
+                },
+              },
+              { 
+                template: 'date', 
+                payload: { 
+                  date: new Date('07/05/2018 8:00 AM') 
+                } 
+              },
+            ],
+          },
+          {
+            id: "surname-1",
+            data: [
+              "Surname 1",
+              {
+                template: "status",
+                payload: {
+                  status: "active",
+                },
+              },
+              { template: 'date', payload: { date: new Date('04/05/2019 12:04 AM') } },
+            ],
+          },
+          {
+            id: "surname-2",
+            data: [
+              "Surname 2",
+              {
+                template: "status",
+                payload: {
+                  status: "inact",
+                },
+              },
+              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+            ],
           },
           {
             id: "name-3",
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
+            data: [
+              "Name 3",
+              {
+                template: "status",
+                payload: {
+                  status: "active",
+                },
+              },
+              { template: 'date', payload: { date: new Date('02/05/2018 8:00 AM') } },
+            ],
           },
           {
             id: "name-4",
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
+            data: [
+              "Name 4",
+              {
+                template: "status",
+                payload: {
+                  status: "active",
+                },
+              },
+              { template: 'date', payload: { date: new Date('03/05/2017 8:00 AM') } },
+            ],
           },
           {
             id: "name-5",
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
+            data: [
+              "Name 5",
+              {
+                template: "status",
+                payload: {
+                  status: "inact",
+                },
+              },
+              { template: 'date', payload: { date: new Date('04/05/2018 9:00 AM') } },
+            ],
           },
           {
             id: "name-6",
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
+            data: [
+              "Name 6",
+              {
+                template: "status",
+                payload: {
+                  status: "inact",
+                },
+              },
+              { template: 'date', payload: { date: new Date('11/09/2018 12:00 AM') } },
+            ],
           },
         ],
       },
+      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     },
   }).$mount("#sortingAsc");
 
@@ -1031,6 +1139,70 @@ script.
       },
     },
   }).$mount("#sortingDesc");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        activePage: 1,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+        unsorted: true,
+      },
+      table: {
+        head: {
+          name: { label: "Name", sortable: true, sortDataType: "string" },
+          id: { label: "ID", sortable: true, sortDataType: "string" },
+          lastLogin: {
+            label: "Last Login",
+            sortable: true,
+            sortDatatype: "date",
+          },
+        },
+        body: [
+          {
+            id: "name-2",
+            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
+          },
+          {
+            id: "name-1",
+            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-3",
+            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
+          },
+          {
+            id: "name-4",
+            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-5",
+            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
+          },
+          {
+            id: "name-6",
+            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
+          },
+        ],
+      },
+    },
+  }).$mount("#sortingUnsorted");
 
   new Vue({
     components: {
