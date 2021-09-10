@@ -3,7 +3,6 @@ import { DataTableColumn } from '@/constants/types';
 import { findComponent } from '@/utils/utils';
 import ColumnCustomizationContent from '@/components/column-customization/ColumnCustomizationModalContent';
 import { UTILITY_CLASSES } from '@/constants/classes';
-import { DATA_TABLE_EVENTS } from '@/constants/events';
 
 @Component
 export default class ColumnCustomizationAvailableColumns extends Vue {
