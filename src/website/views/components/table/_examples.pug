@@ -410,37 +410,178 @@ p.-text Render a <strong>-xl</strong> size by applying the modifier class <code>
           td 66%
           td 66%
 
-//h2 Table with header cells in the top row and first column
-//:example(lang="html"):html-beautify:pug
-//  include ./_common.pug
-//  table.chi-table
-//    tr
-//      td.-th
-//      th(scope="col") ABQ1
-//      th(scope="col") ABY1
-//      th(scope="col") AKN4
-//      th(scope="col") ANT1
-//    tr
-//      th(scope="row") ABQ1
-//      td 52
-//      td 52
-//      td 52
-//      td 52
-//    tr
-//      th(scope="row") ABY1
-//      td 42
-//      td 42
-//      td 42
-//      td 42
-//    tr
-//      th(scope="row") AKN4
-//      td 127
-//      td 127
-//      td 127
-//      td 127
-//    tr
-//      th(scope="row") ANT1
-//      td 21
-//      td 21
-//      td 21
-//      td 21
+.-portal--show
+  h2 Table with header cells in the top row and first column
+  :example(lang="html"):html-beautify:pug
+    .chi-card
+      .chi-card__header
+        .chi-card__title Title
+      .chi-card__content.-p--0
+        .-p--2
+          .chi-picker-group
+            .chi-picker-group__content
+              input#unique-id-ba1.chi-picker__input(type='radio' name='unique-name-ba' checked='checked')
+              label(for='unique-id-ba1') Option 1
+              input#unique-id-ba2.chi-picker__input(type='radio' name='unique-name-ba')
+              label(for='unique-id-ba2') Option 2
+              input#unique-id-ba3.chi-picker__input(type='radio' name='unique-name-ba')
+              label(for='unique-id-ba3') Option 3
+        .-overflow--auto
+          table.chi-table.-bordered.-striped.-xs.-text--center
+            tbody
+              tr
+                td.-th
+                th(scope='col') ABQ1
+                th(scope='col') ABY1
+                th(scope='col') AKN4
+                th(scope='col') ANT1
+                th(scope='col') ANT2
+                th(scope='col') ATL12
+                th(scope='col') ATL14
+                th(scope='col') AUS1
+                th(scope='col') AUS3
+                th(scope='col') BCH1
+                th(scope='col') BER1
+              tr
+                th(scope='row') ABQ1
+                td.-bg--info-light 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+              tr
+                th(scope='row') ABY1
+                td 42
+                td 42
+                td 42
+                td 42
+                td 42
+                td 42
+                td 42
+                td 42
+                td 42
+                td 42
+                td 42
+              tr
+                th(scope='row') AKN4
+                td 127
+                td 127
+                td 127
+                td 127
+                td 127
+                td 127
+                td 127
+                td 127
+                td 127
+                td 127
+                td 127
+              tr
+                th(scope='row') ANT1
+                td 21
+                td 21
+                td 21
+                td.-bg--danger-lighter.-b--1.-b--danger 52
+                td 21
+                td 21
+                td 21
+                td 21
+                td 21
+                td 21
+                td 21
+              tr
+                th(scope='row') ANT2
+                td 136
+                td 136
+                td 136
+                td 136
+                td 136
+                td 136
+                td 136
+                td 136
+                td 136
+                td.-bg--warning-lighter.-b--1.-b--warning 180
+                td 136
+              tr
+                th(scope='row') ATL12
+                td 164
+                td 164
+                td 164
+                td 164
+                td 164
+                td 164
+                td 164
+                td 164
+                td 164
+                td 164
+                td 164
+              tr
+                th(scope='row') ATL14
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+              tr
+                th(scope='row') AUS1
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+                td 52
+              tr
+                th(scope='row') AUS3
+                td 32
+                td 32
+                td 32
+                td 32
+                td 32
+                td 32
+                td 32
+                td 32
+                td 32
+                td 32
+                td 32
+              tr
+                th(scope='row') BCH1
+                td 21
+                td 21
+                td 21
+                td 21
+                td 21
+                td 21
+                td 21
+                td 21
+                td 21
+                td 21
+                td 21
+              tr
+                th(scope='row') BER1
+                td 31
+                td 31
+                td 31
+                td 31
+                td 31
+                td 31
+                td 31
+                td 31
+                td 31
+                td 31
+                td 31
