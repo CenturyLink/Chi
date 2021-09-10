@@ -1,4 +1,23 @@
 # CHANGELOG
+## 5.3.0 (September 10, 2021)
+### Components
+#### Added
+* Added: Floating icon button now supports sizes.
+* Added: Date picker web component now supports retargeting of events.
+#### Changed
+* Changed: Data table Vue component sort behavior has been improved by allowing sorting only by ascending or descending.
+* Changed: Data table Vue component mobile version has been improved to support click action on chevron element.
+* Changed: Data table Vue component header has been improved to support text wrapping.
+#### Fixed
+* Fixed: Accessibility error in Data table vue component due to missing id on pagination.
+### Documentation
+#### Changed
+* Changed: Data table complex example has removed current badges from status column and replaced with status column illustrated in portal style guide.
+* Changed: Data table complex example has included action buttons in all rows, not just parent rows.
+* Changed: Icons in icon button and floating icon button have been updated to icon-edit and icon-chat respectively.
+#### Fixed
+* Fixed: Data table documentation examples have improved date format.
+
 ## 5.2.0 (August 27, 2021)
 ### Components
 #### Added
