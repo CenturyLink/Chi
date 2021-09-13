@@ -24,7 +24,7 @@ export default class ColumnCustomization extends Vue {
   key = 0;
   _chiModal: any;
   _availableColumns?: DataTableColumn[] = [];
-  _selectedStandardColumns?: DataTableColumn[] = [];
+  _selectedColumns?: DataTableColumn[] = [];
   _ColumnCustomizationContentComponent?: ColumnCustomizationContent;
   _selectedData?: DataTableColumn[];
   _modalId?: string;
@@ -50,7 +50,7 @@ export default class ColumnCustomization extends Vue {
             <div class={MODAL_CLASSES.CONTENT} key={this.key}>
               <ColumnCustomizationContent
                 available-columns={this._availableColumns}
-                selected-standard-columns={this._selectedStandardColumns}
+                selected-standard-columns={this._selectedColumns}
               />
             </div>
             <footer class={MODAL_CLASSES.FOOTER}>
@@ -95,13 +95,13 @@ export default class ColumnCustomization extends Vue {
   _reset() {
     if (this._ColumnCustomizationContentComponent) {
       this._availableColumns = [];
-      this._selectedStandardColumns = [];
+      this._selectedColumns = [];
       this._processData();
       (this.$refs.saveButton as HTMLButtonElement).disabled = true;
       (this.$refs.resetButton as HTMLButtonElement).disabled = true;
       this.key += 1;
     }
-    this.$emit(DATA_TABLE_EVENTS.COLUMNS_RESET, [...(this._selectedStandardColumns || [])]);
+    this.$emit(DATA_TABLE_EVENTS.COLUMNS_RESET, [...(this._selectedColumns || [])]);
   }
 
   _submitColumnsChange() {
@@ -112,7 +112,7 @@ export default class ColumnCustomization extends Vue {
 
   beforeCreate() {
     this._availableColumns = [];
-    this._selectedStandardColumns = [];
+    this._selectedColumns = [];
   }
 
   created() {
@@ -123,8 +123,8 @@ export default class ColumnCustomization extends Vue {
   @Watch('columnsData')
   _processData() {
     this.$props.columnsData.columns.forEach((column: DataTableColumn) => {
-      if (column.selected && this._selectedStandardColumns) {
-        this._selectedStandardColumns.push(column);
+      if (column.selected && this._selectedColumns) {
+        this._selectedColumns.push(column);
       } else {
         if (this._availableColumns) {
           this._availableColumns.push(column);
