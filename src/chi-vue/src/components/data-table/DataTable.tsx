@@ -746,9 +746,7 @@ export default class DataTable extends Vue {
     check.checked = checked;
     check.indeterminate = indeterminate;
 
-    if (checked) {
-      check.classList.remove(INDETERMINATE_CLASS);
-    } else if (!checked && indeterminate) {
+    if (!checked && indeterminate) {
       check.classList.add(INDETERMINATE_CLASS);
     } else {
       check.classList.remove(INDETERMINATE_CLASS);
