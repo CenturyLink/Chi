@@ -748,10 +748,10 @@ export default class DataTable extends Vue {
 
     if (checked) {
       check.classList.remove(INDETERMINATE_CLASS);
-    } else if (!checked && !indeterminate) {
-      check.classList.remove(INDETERMINATE_CLASS);
-    } else {
+    } else if (!checked && indeterminate) {
       check.classList.add(INDETERMINATE_CLASS);
+    } else {
+      check.classList.remove(INDETERMINATE_CLASS);
     }
   }
 
@@ -811,9 +811,10 @@ export default class DataTable extends Vue {
       let subrowNumber = 0;
 
       if (
+        !!row.nestedContent &&
         typeof row.nestedContent === 'object' &&
         typeof row.nestedContent.table === 'object' &&
-        !!row.nestedContent.table.data
+        row.nestedContent.table.data
       ) {
         // eslint-disable-next-line
         row.nestedContent.table.data = row.nestedContent.table.data.map((subRow: DataTableRow) => {
