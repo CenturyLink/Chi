@@ -307,13 +307,18 @@ export default class DataTable extends Vue {
   }
 
   _checkIndeterminate(rowData: DataTableRow) {
+    this._checkParentState(rowData);
+    this._checkSelectAllCheckbox();
+  }
+
+  _checkParentState(rowData: DataTableRow) {
     let parent = rowData.parent;
 
     while (parent) {
       const parentCheck = document.querySelector(
         `#checkbox-select-${this._rowId(parent.rowNumber)}`
       ) as HTMLInputElement;
-      const children = parent.nestedContent.table.data;
+      const children = parent.nestedContent?.table.data;
       const childrenSelected: DataTableRow[] = [];
 
       children?.forEach((row: DataTableRow) => {
@@ -325,15 +330,15 @@ export default class DataTable extends Vue {
       });
 
       if (childrenSelected.length === 0) {
-        parentCheck.classList.remove(INDETERMINATE_CLASS);
+        this._changeCheckboxState(parentCheck, false, false);
+      } else if (children.length === childrenSelected.length) {
+        this._changeCheckboxState(parentCheck, true, false);
       } else {
-        parentCheck.classList.add(INDETERMINATE_CLASS);
+        this._changeCheckboxState(parentCheck, false, true);
       }
 
       parent = parent.parent;
     }
-
-    this._checkSelectAllCheckbox();
   }
 
   selectRow(rowData: DataTableRow) {
@@ -444,7 +449,11 @@ export default class DataTable extends Vue {
                     (ev.target as HTMLInputElement).checked = false;
                   }
 
-                  this.selectAllRows((ev.target as HTMLInputElement).checked ? 'select' : 'deselect');
+                  this.selectAllRows(
+                    !(ev.target as HTMLInputElement).indeterminate && (ev.target as HTMLInputElement).checked
+                      ? 'select'
+                      : 'deselect'
+                  );
                 } else {
                   if (rowData) {
                     if (ev.target && (ev.target as HTMLInputElement).checked) {
@@ -723,23 +732,26 @@ export default class DataTable extends Vue {
     if (selectAllCheckbox) {
       const isSelected = (row: DataTableRow) => this.selectedRows.includes(row.rowId);
 
-      if (this.slicedData) {
-        if (this.slicedData.every(isSelected)) {
-          selectAllCheckbox.checked = true;
-          selectAllCheckbox.indeterminate = false;
-          selectAllCheckbox.classList.remove(INDETERMINATE_CLASS);
-          return;
-        } else if (this.slicedData.some(isSelected) && !this.slicedData.every(isSelected)) {
-          selectAllCheckbox.checked = false;
-          selectAllCheckbox.indeterminate = true;
-          selectAllCheckbox.classList.add(INDETERMINATE_CLASS);
-          return;
-        }
-
-        selectAllCheckbox.checked = false;
-        selectAllCheckbox.indeterminate = false;
-        selectAllCheckbox.classList.remove(INDETERMINATE_CLASS);
+      if (this.slicedData?.every(isSelected)) {
+        this._changeCheckboxState(selectAllCheckbox, true, false);
+      } else if (this.slicedData?.some(isSelected)) {
+        this._changeCheckboxState(selectAllCheckbox, false, true);
+      } else {
+        this._changeCheckboxState(selectAllCheckbox, false, false);
       }
+    }
+  }
+
+  _changeCheckboxState(check: HTMLInputElement, checked: boolean, indeterminate: boolean) {
+    check.checked = checked;
+    check.indeterminate = indeterminate;
+
+    if (checked) {
+      check.classList.remove(INDETERMINATE_CLASS);
+    } else if (!checked && !indeterminate) {
+      check.classList.remove(INDETERMINATE_CLASS);
+    } else {
+      check.classList.add(INDETERMINATE_CLASS);
     }
   }
 
@@ -801,7 +813,7 @@ export default class DataTable extends Vue {
       if (
         typeof row.nestedContent === 'object' &&
         typeof row.nestedContent.table === 'object' &&
-        row.nestedContent.table.data
+        !!row.nestedContent.table.data
       ) {
         // eslint-disable-next-line
         row.nestedContent.table.data = row.nestedContent.table.data.map((subRow: DataTableRow) => {
