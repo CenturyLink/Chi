@@ -64,7 +64,7 @@ import DataTableFilters from '../../../components/data-table-filters/DataTableFi
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
 import { exampleConfig, exampleTableHead, exampleTablePage1, exampleTablePage2 } from './fixtures';
 import { DataTablePageChange, DataTableSorting } from '../../../constants/events';
-import { DataTableRow } from '../../../constants/types';
+import { DataTableRow, DataTableRowNestedContent } from '../../../constants/types';
 
 @Component({
   components: {
@@ -84,11 +84,19 @@ import { DataTableRow } from '../../../constants/types';
         body: exampleTablePage1,
       },
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      sortedData: [],
     };
   },
 })
 export default class DataTableView extends Vue {
   mockApiCall(page: number) {
+    if (this.$data.sortedData && this.$data.sortedData.length) {
+      return page === 1
+        ? this.$data.sortedData.slice(0, this.$data.config.resultsPerPage)
+        : page === 2
+        ? this.$data.sortedData.slice(this.$data.config.resultsPerPage)
+        : null;
+    }
     return page === 1 ? exampleTablePage1 : page === 2 ? exampleTablePage2 : null;
   }
 
@@ -120,6 +128,47 @@ export default class DataTableView extends Vue {
   sorting(e: DataTableSorting) {
     // Perform custom Server Side sorting based on the column and direction data you receive from data table event
     console.log(e);
+    if (!e.direction) {
+      this.$data.sortedData = [];
+
+      const apiResponsePageData = this.mockApiCall(this.$data.config.pagination.activePage);
+
+      this.$data.table = {
+        ...this.$data.table,
+        body: [...apiResponsePageData],
+      };
+    } else {
+      const columnIndex = Object.keys(this.$data.table.head).indexOf(e.column);
+      const copiedTableBodyData = [...exampleTablePage1].concat(exampleTablePage2);
+
+      copiedTableBodyData.sort((a, b) => {
+        let keyA: any;
+        let keyB: any;
+
+        if (typeof a.data[columnIndex] === 'object') {
+          const payloadA = (a.data[columnIndex] as DataTableRowNestedContent).payload;
+          const payloadB = (b.data[columnIndex] as DataTableRowNestedContent).payload;
+
+          keyA = payloadA[Object.keys(payloadA)[0]];
+          keyB = payloadB[Object.keys(payloadB)[0]];
+        } else {
+          keyA = a.data[columnIndex];
+          keyB = b.data[columnIndex];
+        }
+
+        if (e.direction === 'ascending') {
+          return keyA < keyB ? -1 : keyA > keyB ? 1 : 0;
+        } else {
+          return keyA < keyB ? 1 : keyA > keyB ? -1 : 0;
+        }
+      });
+
+      this.$data.sortedData = copiedTableBodyData;
+      this.$data.table = {
+        ...this.$data.table,
+        body: this.$data.sortedData.slice(0, this.$data.config.resultsPerPage),
+      };
+    }
   }
 
   selectAll(e: DataTableRow[]) {
