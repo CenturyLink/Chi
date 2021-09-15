@@ -534,6 +534,17 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
             border-bottom: 0;
           }
         }
+
+        .chi-icon {
+          &.icon-plus,
+          &.icon-minus {
+            font-size: $font-size-xs;
+
+            &:hover {
+              font-size: $font-size-xs;
+            }
+          }
+        }
       }
     }
 
@@ -848,7 +859,7 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
             &.-key {
               &.-bold {
                 > div {
-                  margin-left: 1.5rem;
+                  margin-left: 1.8rem;
                 }
               }
             }
