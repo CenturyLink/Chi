@@ -128,7 +128,7 @@ export default class DataTableView extends Vue {
   sorting(e: DataTableSorting) {
     // Perform custom Server Side sorting based on the column and direction data you receive from data table event
     console.log(e);
-    if (!e.direction) {
+    if (!e.direction || !e.column) {
       this.$data.sortedData = [];
 
       const apiResponsePageData = this.mockApiCall(this.$data.config.pagination.activePage);
