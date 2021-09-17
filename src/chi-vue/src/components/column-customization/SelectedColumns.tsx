@@ -49,7 +49,7 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
 
     return (
       <div>
-        <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_BOLD}>Selected columns</div>
+        <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_BOLD}>Selected Columns</div>
         <select class={`chi-select selected-columns ${UTILITY_CLASSES.SIZING.W100}`} ref="select" multiple>
           {standardOptions}
         </select>

@@ -40,8 +40,8 @@ export default class ColumnCustomization extends Vue {
             aria-label="Column Customization"
             aria-modal="true">
             <header class={MODAL_CLASSES.HEADER}>
-              <h2 class={MODAL_CLASSES.TITLE}>Customize columns</h2>
-              <button class={`${BUTTON_CLASSES.BUTTON} ${ICON_CLASS} -close`} data-dismiss="modal" aria-label="Close">
+              <h2 class={MODAL_CLASSES.TITLE}>Customize Columns</h2>
+              <button class={`${BUTTON_CLASSES.BUTTON} -icon -close`} data-dismiss="modal" aria-label="Close">
                 <div class={BUTTON_CLASSES.CONTENT}>
                   <i class={`${ICON_CLASS} icon-x`} aria-hidden="true"></i>
                 </div>
