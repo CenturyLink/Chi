@@ -32,7 +32,7 @@ export default class ColumnCustomizationAvailableColumns extends Vue {
 
     return (
       <div class="-flex--grow1">
-        <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_BOLD}>Available columns</div>
+        <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_BOLD}>Available Columns</div>
         <select class={`chi-select available-columns ${UTILITY_CLASSES.SIZING.W100}`} multiple ref="select">
           {options}
         </select>

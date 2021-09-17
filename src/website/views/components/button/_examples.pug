@@ -500,13 +500,9 @@ h2 Examples
   .example.-mb--3
     .-p--3.-d--flex
       .-pr--2
-        chi-button(color='primary')
-          chi-icon(icon='atom')
-          span Primary
-      .-pr--2
-        chi-button(color='primary', variant='outline')
-          chi-icon(icon='atom')
-          span Secondary
+        chi-button(size='xs')
+          chi-icon(icon='edit')
+          span Edit
     .example-tabs.-pl--2
       ul.chi-tabs#examples-portal-labeled
         li.-active
@@ -515,26 +511,16 @@ h2 Examples
           a(href=`#html-portal-labeled`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-labeled
       :code(lang="html")
-        <chi-button color="primary">
-          <chi-icon icon="atom"></chi-icon>
-          <span>Primary</span>
-        </chi-button>
-        <chi-button>
-          <chi-icon icon="atom"></chi-icon>
-          <span>Secondary</span>
+        <chi-button size="xs">
+          <chi-icon icon="edit"></chi-icon>
+          <span>Edit</span>
         </chi-button>
     .chi-tabs-panel#html-portal-labeled
       :code(lang="html")
-        <button class="chi-button -primary">
+        <button class="chi-button -xs">
           <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
-            <span>Primary</span>
-          </div>
-        </button>
-        <button class="chi-button">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
-            <span>Secondary</span>
+            <i class="chi-icon icon-edit" aria-hidden="true"></i>
+            <span>Edit</span>
           </div>
         </button>
 
