@@ -274,18 +274,6 @@ export default class AdvancedFilters extends Vue {
             </div>
             <div class={`advanced-filters__actions -mt--2`}>
               <button
-                onclick={() => this._applyAdvancedFiltersChange()}
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY}`}
-                ref="advancedFiltersApplyButton"
-                disabled={
-                  this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
-                }>
-                APPLY
-              </button>
-              <button onclick={() => this._toggleAdvancedFiltersPopover()} class={`${BUTTON_CLASSES.BUTTON} -ml--2`}>
-                CANCEL
-              </button>
-              <button
                 class={`
                     ${BUTTON_CLASSES.BUTTON} 
                     ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON}
@@ -296,6 +284,18 @@ export default class AdvancedFilters extends Vue {
                 <div class={BUTTON_CLASSES.CONTENT}>
                   <i class={`${ICON_CLASS} icon-reload`} aria-hidden="true" />
                 </div>
+              </button>
+              <button onclick={() => this._toggleAdvancedFiltersPopover()} class={`${BUTTON_CLASSES.BUTTON} -ml--2`}>
+                CANCEL
+              </button>
+              <button
+                onclick={() => this._applyAdvancedFiltersChange()}
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} -ml--2`}
+                ref="advancedFiltersApplyButton"
+                disabled={
+                  this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
+                }>
+                APPLY
               </button>
             </div>
           </chi-popover>,
