@@ -30,6 +30,7 @@ export default class ColumnCustomization extends Vue {
   _selectedData?: DataTableColumn[];
   _modalId?: string;
   _chiMajorVersion = 5;
+  _previousSelected?: DataTableColumn[];
 
   _modal() {
     return (
@@ -43,7 +44,10 @@ export default class ColumnCustomization extends Vue {
             aria-modal="true">
             <header class={MODAL_CLASSES.HEADER}>
               <h2 class={MODAL_CLASSES.TITLE}>Customize Columns</h2>
-              <button class={`${BUTTON_CLASSES.BUTTON} -icon -close`} data-dismiss="modal" aria-label="Close">
+              <button
+                class={`${BUTTON_CLASSES.BUTTON} -icon -close`}
+                onclick={this._cancelColumnsChange}
+                aria-label="Close">
                 <div class={BUTTON_CLASSES.CONTENT}>
                   <i class={`${ICON_CLASS} icon-x`} aria-hidden="true"></i>
                 </div>
@@ -51,9 +55,9 @@ export default class ColumnCustomization extends Vue {
             </header>
             <div class={MODAL_CLASSES.CONTENT} key={this.key}>
               <ColumnCustomizationContent
+               version={this._chiMajorVersion}
                 available-columns={this._availableColumns}
-                selected-standard-columns={this._selectedColumns}
-                version={this._chiMajorVersion}
+                selected-columns={this._selectedColumns}
               />
             </div>
             <footer class={MODAL_CLASSES.FOOTER}>
@@ -84,7 +88,7 @@ export default class ColumnCustomization extends Vue {
                       : ''
                   }
                 `}
-                data-dismiss="modal">
+                onclick={this._cancelColumnsChange}>
                 Cancel
               </button>
               <button
@@ -109,18 +113,45 @@ export default class ColumnCustomization extends Vue {
     if (this._ColumnCustomizationContentComponent) {
       this._availableColumns = [];
       this._selectedColumns = [];
+      this._selectedData = this.columnsData?.columns.filter((column: DataTableColumn) => column.selected);
       this._processData();
-      (this.$refs.saveButton as HTMLButtonElement).disabled = true;
+      (this.$refs.saveButton as HTMLButtonElement).disabled = false;
       (this.$refs.resetButton as HTMLButtonElement).disabled = true;
       this.key += 1;
     }
-    this.$emit(DATA_TABLE_EVENTS.COLUMNS_RESET, [...(this._selectedColumns || [])]);
   }
 
   _submitColumnsChange() {
+    this._previousSelected = this._selectedData;
     this.$emit(DATA_TABLE_EVENTS.COLUMNS_CHANGE, this._selectedData);
     (this.$refs.saveButton as HTMLButtonElement).disabled = true;
     this._chiModal.hide();
+  }
+
+  _cancelColumnsChange() {
+    const originalSelectedColumns = this.columnsData?.columns.filter((column: DataTableColumn) => column.selected);
+
+    if (this._previousSelected) {
+      this._selectedData = this._previousSelected;
+      this._selectedColumns = this._selectedData;
+      this._availableColumns = this._availableColumns?.filter(
+        (columnAvailable: DataTableColumn) =>
+          !this._selectedColumns?.some(
+            (columnSelected: DataTableColumn) => columnAvailable.name === columnSelected.name
+          )
+      );
+
+      if (originalSelectedColumns) {
+        (this.$refs.resetButton as HTMLButtonElement).disabled = checkColumns(
+          originalSelectedColumns,
+          this._previousSelected
+        );
+      }
+    }
+
+    (this.$refs.saveButton as HTMLButtonElement).disabled = true;
+    this._chiModal.hide();
+    this.key += 1;
   }
 
   beforeCreate() {
@@ -166,9 +197,13 @@ export default class ColumnCustomization extends Vue {
       this._ColumnCustomizationContentComponent.$on(DATA_TABLE_EVENTS.COLUMNS_CHANGE, (ev: DataTableColumn[]) => {
         const originalSelectedColumns = this.columnsData?.columns.filter((column: DataTableColumn) => column.selected);
 
+        if (!this._previousSelected) {
+          this._previousSelected = originalSelectedColumns;
+        }
+
         this._selectedData = ev;
-        if (originalSelectedColumns) {
-          (this.$refs.saveButton as HTMLButtonElement).disabled = checkColumns(originalSelectedColumns, ev);
+        if (this._previousSelected && originalSelectedColumns) {
+          (this.$refs.saveButton as HTMLButtonElement).disabled = checkColumns(this._previousSelected, ev);
           (this.$refs.resetButton as HTMLButtonElement).disabled = checkColumns(originalSelectedColumns, ev);
         }
       });
