@@ -71,40 +71,41 @@ p.-text
     :code(lang="html")
       <div class="chi-divider -label">or</div>
 
-h2 Additional Sizes
-p.-text
-  | Use border top <a href="../../utilities/border">utilities</a> such as
-  | <code>-bt--1</code>, <code>-bt--2</code>, <code>-bt--3</code>, or <code>-bt--4</code> to customize a dividers size.
-.example.-mb--3
-  .-p--3
-    p.-text.-m--0
-      | -bt--1
-    .chi-divider.-bt--1
-  .-p--3
-    p.-text.-m--0
-      | -bt--2
-    .chi-divider.-bt--2
-  .-p--3
-    p.-text.-m--0
-      | -bt--3
-    .chi-divider.-bt--3
-  .-p--3
-    p.-text.-m--0
-      | -bt--4
-    .chi-divider.-bt--4
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-sizes
-      li.-disabled
-        a(href=`#webcomponent-sizes`) Web Component
-      li.-active
-        a(href=`#html-sizes`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-sizes
-  .chi-tabs-panel.-active#html-sizes
-    :code(lang="html")
-      <div class="chi-divider -bt--1"></div>
-      <div class="chi-divider -bt--2"></div>
-      <div class="chi-divider -bt--3"></div>
-      <div class="chi-divider -bt--4"></div>
+.-portal--hide
+  h2 Additional Sizes
+  p.-text
+    | Use border top <a href="../../utilities/border">utilities</a> such as
+    | <code>-bt--1</code>, <code>-bt--2</code>, <code>-bt--3</code>, or <code>-bt--4</code> to customize a dividers size.
+  .example.-mb--3
+    .-p--3
+      p.-text.-m--0
+        | -bt--1
+      .chi-divider.-bt--1
+    .-p--3
+      p.-text.-m--0
+        | -bt--2
+      .chi-divider.-bt--2
+    .-p--3
+      p.-text.-m--0
+        | -bt--3
+      .chi-divider.-bt--3
+    .-p--3
+      p.-text.-m--0
+        | -bt--4
+      .chi-divider.-bt--4
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-sizes
+        li.-disabled
+          a(href=`#webcomponent-sizes`) Web Component
+        li.-active
+          a(href=`#html-sizes`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-sizes
+    .chi-tabs-panel.-active#html-sizes
+      :code(lang="html")
+        <div class="chi-divider -bt--1"></div>
+        <div class="chi-divider -bt--2"></div>
+        <div class="chi-divider -bt--3"></div>
+        <div class="chi-divider -bt--4"></div>
 
 script.
   document.addEventListener(

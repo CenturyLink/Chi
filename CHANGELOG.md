@@ -1,4 +1,27 @@
 # CHANGELOG
+## 5.3.1 (September 17, 2021)
+### Components
+#### Changed
+* Changed: Popover content container now supports scrolling overflow.
+* Changed: Popover inline modal max-width has been increased to support wider content.
+* Changed: Popover inline modal background color has been changed for portal theme.
+* Changed: Popover drag icon has been updated.
+* Changed: Data table grand-child row alignment has been improved.
+* Changed: Data table column customization modal select title casing has been improved.
+* Changed: Data table column customization modal footer buttons have been rearranged for consistency with other modals.
+* Changed: Dropdown menu item spacing between text and icons has been reduced.
+* Changed: Column Customization Vue component now supports reordering of locked columns.
+#### Fixed
+* Fixed: Popover bug which caused the top-left and top-right corners to render sharp instead of rounded if a header was present.
+* Fixed: Data table column customization modal close icon button rendered with incorrect padding due to a missing `-icon` class.
+### Documentation
+#### Changed
+* Changed: Dropdown menu item examples now render truncated text in tooltips.
+* Changed: Code snippet copy to clipboard button size has been changed.
+* Changed: Portal theme labeled icon button examples have been updated.
+* Changed: Portal theme divider examples have been updated.
+* Changed: Portal theme picker group examples have been updated.
+
 ## 5.3.0 (September 10, 2021)
 ### Components
 #### Added

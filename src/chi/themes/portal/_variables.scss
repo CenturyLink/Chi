@@ -1173,11 +1173,12 @@ $picker-group-xl-padding-checked:           2rem;
 $popover-background-color:                  $color-background-white;
 $popover-box-shadow:                        0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
 $popover-text-color:                        $color-text-base;
-$popover-max-width:                         18rem;
+$popover-max-width:                         20rem;
 $popover-arrow-size:                        0.75rem;
-$popover-modal-background-color:            $modal-background-color;
+$popover-modal-background-color:            $popover-background-color;
 $popover-modal-header-background-color:     $modal-header-background-color;
 $popover-modal-close-icon-color:            $modal-close-icon-color;
+$popover-drag-icon-color:                   $color-icon-white;
 
 // Progress
 $progress-background-color:                 $color-grey-20;

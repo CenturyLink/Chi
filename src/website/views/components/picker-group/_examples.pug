@@ -340,44 +340,45 @@ h3 Fluid
         </div>
       </fieldset>
 
-h3 Alignment
-p.-text
-  | Picker group text is centered by default. However, this behavior can change by applying the modifiers
-  | <code>-align--left</code> or <code>-align--right</code>.
-.example.-mb--3
-  .-p--3
-    fieldset
-      legend.chi-label Select an option
-      .chi-picker-group.-fluid
-        .chi-picker-group__content
-          input.chi-picker__input(type="radio", name='unique-name-al', id='unique-id-al1', checked)
-          label.-align--left(for='unique-id-al1') Option 1
-          input.chi-picker__input(type="radio", name='unique-name-al', id='unique-id-al2')
-          label(for='unique-id-al2') Option 2
-          input.chi-picker__input(type="radio", name='unique-name-al', id='unique-id-al3')
-          label.-align--right(for='unique-id-al3') Option 3
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-alignment
-      li.-disabled
-        a(href=`#webcomponent-alignment`) Web Component
-      li.-active
-        a(href=`#html-alignment`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-alignment
-  .chi-tabs-panel.-active#html-alignment
-    :code(lang='html')
-      <fieldset>
-        <legend class="chi-label">Select an option</legend>
-        <div class="chi-picker-group -fluid">
-          <div class="chi-picker-group__content">
-            <input class="chi-picker__input" type="radio" name="unique-name-al" id="unique-id-al1" checked>
-            <label class="-align--left" for="unique-id-al1">Option 1</label>
-            <input class="chi-picker__input" type="radio" name="unique-name-al" id="unique-id-al2">
-            <label for="unique-id-al2">Option 2</label>
-            <input class="chi-picker__input" type="radio" name="unique-name-al" id="unique-id-al3">
-            <label class="-align--right" for="unique-id-al3">Option 3</label>
+.-portal--hide
+  h3 Alignment
+  p.-text
+    | Picker group text is centered by default. However, this behavior can change by applying the modifiers
+    | <code>-align--left</code> or <code>-align--right</code>.
+  .example.-mb--3
+    .-p--3
+      fieldset
+        legend.chi-label Select an option
+        .chi-picker-group.-fluid
+          .chi-picker-group__content
+            input.chi-picker__input(type="radio", name='unique-name-al', id='unique-id-al1', checked)
+            label.-align--left(for='unique-id-al1') Option 1
+            input.chi-picker__input(type="radio", name='unique-name-al', id='unique-id-al2')
+            label(for='unique-id-al2') Option 2
+            input.chi-picker__input(type="radio", name='unique-name-al', id='unique-id-al3')
+            label.-align--right(for='unique-id-al3') Option 3
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-alignment
+        li.-disabled
+          a(href=`#webcomponent-alignment`) Web Component
+        li.-active
+          a(href=`#html-alignment`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-alignment
+    .chi-tabs-panel.-active#html-alignment
+      :code(lang='html')
+        <fieldset>
+          <legend class="chi-label">Select an option</legend>
+          <div class="chi-picker-group -fluid">
+            <div class="chi-picker-group__content">
+              <input class="chi-picker__input" type="radio" name="unique-name-al" id="unique-id-al1" checked>
+              <label class="-align--left" for="unique-id-al1">Option 1</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-al" id="unique-id-al2">
+              <label for="unique-id-al2">Option 2</label>
+              <input class="chi-picker__input" type="radio" name="unique-name-al" id="unique-id-al3">
+              <label class="-align--right" for="unique-id-al3">Option 3</label>
+            </div>
           </div>
-        </div>
-      </fieldset>
+        </fieldset>
 
 h3 Disable Fluidity
 p.-text

@@ -543,9 +543,11 @@ p.-text
   .-p--3(style="background-color:#eee;")
     .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
       .chi-dropdown__menu.-active
-        .chi-input__wrapper.-icon--left.chi-dropdown__menu-item(role="search")
-          input(type="text", class="chi-input", placeholder="Search", aria-label="Search")
-          i.chi-icon.icon-search(aria-hidden="true")
+        .chi-input__wrapper.-icon--right
+          input.chi-input.chi-search__input.-sm(type='search' placeholder='Search' aria-label='search input')
+          button.chi-button.-icon.-flat.-sm.-bg--none(aria-label='Search')
+            .chi-button__content
+              i.chi-icon.icon-search(aria-hidden='true')
         a.chi-dropdown__menu-item(href='#') Item 1
         a.chi-dropdown__menu-item(href='#') Item 2
         a.chi-dropdown__menu-item(href='#') Item 3
@@ -560,9 +562,11 @@ p.-text
   .chi-tabs-panel.-active#html-search
     :code(lang="html")
       <div class="chi-dropdown__menu">
-        <div class="chi-input__wrapper -icon--left chi-dropdown__menu-item" role="search">
-          <input class="chi-input" type="text" placeholder="Search" aria-label="Search">
-          <i class="chi-icon icon-search" aria-hidden="true"></i>
+        <div class="chi-input__wrapper -icon--right">
+          <input class="chi-input chi-search__input -sm" type="search" placeholder="Search" aria-label="search input" />
+          <button class="chi-button -icon -flat -sm -bg--none" aria-label="Search">
+            <div class="chi-button__content"><i class="chi-icon icon-search" aria-hidden="true"></i></div>
+          </button>
         </div>
         <a class="chi-dropdown__menu-item" href="#">Item 1</a>
         <a class="chi-dropdown__menu-item" href="#">Item 2</a>
@@ -912,7 +916,7 @@ p.-text
     .chi-dropdown__menu.-active(style="width:10rem")
       a.chi-dropdown__menu-item(href='#') Item 1
       a.chi-dropdown__menu-item(href='#') Item 2
-      a.chi-dropdown__menu-item(href='#')
+      a.chi-dropdown__menu-item(id='example-truncated-menu-item' href='#' data-tooltip='Item 3 with truncated longer text')
         .-flex--ellipsis Item 3 with truncated longer text
       a.chi-dropdown__menu-item(href='#') Item 4
   .example-tabs.-pl--2
@@ -932,6 +936,9 @@ p.-text
         </a>
         <a class="chi-dropdown__menu-item" href="#">Item 4</a>
       </div>
+
+      <!-- Tooltip for truncated text -->
+      <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
 h4 Flexible height
 p.-text Add the class <code>-h--auto</code> to set menu item height to auto.
@@ -963,5 +970,6 @@ script.
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
       chi.dropdown(document.querySelectorAll('.chi-dropdown .chi-button'))
       chi.dropdown(document.getElementById('dropdown-2'));
+      chi.tooltip(document.getElementById('example-truncated-menu-item'));
     }
   );
