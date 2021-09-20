@@ -11,26 +11,20 @@
         chi-alert.-m--2(color='warning', icon='warning', size='lg', title="Warning", closable)
           | This is a large closable warning alert
     div(slot='code-webcomponent')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | Use attribute <code>closable</code> to render a close button that allows users to dismiss an alert.
           br
           | Use attribute <code>mutable</code> to remove alert once close buttons is clicked.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
     div(slot='code-htmlblueprint')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | Use the class <code>-close</code>
           | and insert a close button <code>chi-alert__close-button</code>.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 

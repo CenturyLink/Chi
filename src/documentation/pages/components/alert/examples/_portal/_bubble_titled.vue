@@ -10,24 +10,18 @@
           chi-alert.-m--2(color=type, icon=val, title=type)
             =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
     div(slot='code-webcomponent')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | Use the <code>title=""</code> attribute to display a title above the alert text.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
     div(slot='code-htmlblueprint')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | Use <code>chi-alert__title</code> to add a title to an Alert.
           | To override the title color, apply a text color utility class.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 

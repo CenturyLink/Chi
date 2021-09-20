@@ -8,23 +8,17 @@
           chi-alert.-m--2(type='toast', icon=val, color=type)
             =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
     div(slot='code-webcomponent')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | To use a toast alert, set the <code>type</code> attribute to <code>toast</code>.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
     div(slot='code-htmlblueprint')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | To use a toast alert, apply the class <code>-toast</code>.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 

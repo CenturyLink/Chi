@@ -9,23 +9,17 @@
       chi-alert.-m--2(type='banner', icon='circle-warning', color='danger', center)
         | This is a centered danger alert
   div(slot='code-webcomponent')
-    <div class="chi-tab__description">
-      <span>
+    .chi-tab__description
+      span
         | Use the attribute <code>center</code> to center the content of a Banner Alert.
-      </span>
-    </div>
-    <pre class="language-html">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
+    pre.language-html
+      code(v-highlight="$data.codeSnippets.webcomponent" class="html")
   div(slot='code-htmlblueprint')
-    <div class="chi-tab__description">
-      <span>
+    .chi-tab__description
+      span
         | Apply the class <code>-center</code> to center the content of a Banner Alert.
-      </span>
-    </div>
-    <pre class="language-html">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
+    pre.language-html
+      code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
 </ComponentExample>
 </template>
 

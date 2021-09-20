@@ -18,23 +18,17 @@
         chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg', title='Success')
           | This is a large success alert
     div(slot='code-webcomponent')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
     div(slot='code-htmlblueprint')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 

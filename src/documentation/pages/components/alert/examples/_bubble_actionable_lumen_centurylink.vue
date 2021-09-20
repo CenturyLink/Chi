@@ -7,25 +7,19 @@
           chi-button(slot="chi-alert__actions") Secondary action
           chi-button(slot="chi-alert__actions", color='primary') Primary action
     div(slot='code-webcomponent')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | Add buttons to an alert by defining <code>slot="chi-alert__actions"</code> on each <code>chi-button</code>.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
     div(slot='code-htmlblueprint')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | While <code>chi-alert__actions</code> can be added to any Alert, alert actions are best suited for default or Titled alerts with the size class <code>-lg</code>.
           br
           | Large Alerts have extra <code>chi-alert</code> padding, a larger <code>chi-alert__icon</code>, and a larger <code>chi-alert__close-button</code>.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 

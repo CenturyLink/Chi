@@ -4,32 +4,26 @@
       .-p--1
         p.-text--bold.-ml--2 sm
         chi-alert.-m--2(color='success', icon='circle-check', size='sm')
-            | This is a small success alert
+          | This is a small success alert
         chi-alert.-m--2(color='success', icon='circle-check', size='sm', title="Success")
-            | This is a small success alert
+          | This is a small success alert
         p.-text--bold.-ml--2 md (default)
         chi-alert.-m--2(color='success', icon='circle-check')
             | This is a success alert
         chi-alert.-m--2(color='success', icon='circle-check', title="Success")
             | This is a success alert
     div(slot='code-webcomponent')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code> and <code>md</code>.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
     div(slot='code-htmlblueprint')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code> and <code>-md</code>.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 

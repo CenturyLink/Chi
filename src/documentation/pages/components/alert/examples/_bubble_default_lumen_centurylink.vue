@@ -8,30 +8,24 @@
           chi-alert.-m--2(color=type, icon=val)
             = `This is ${type === "info" ? "an" : "a"} ${type} alert`
     div(slot='code-webcomponent')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | To render an alert use the tag <code>chi-alert</code>.
           | Use the color attribute to define a semantic color that corresponds to the meaning
           | or value state of your alert. Supported colors include <code>success</code>, <code>danger</code>, <code>warning</code>,
           | <code>info</code>, and <code>muted</code>. If no color is defined, alerts will default to the base style which uses the body
           | text color. This is useful for displaying neutral alerts with no specific value state.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.webcomponent" class="html")
     div(slot='code-htmlblueprint')
-      <div class="chi-tab__description">
-        <span>
+      .chi-tab__description
+        span
           | To render an alert, use the class <code>chi-alert</code>. Apply a semantic color class that corresponds to the meaning
           | or value state of your alert. Supported classes include <code>-success</code>, <code>-danger</code>, <code>-warning</code>,
           | <code>-info</code>, and <code>-muted</code>. If no class is defined, alerts will default to the base style which uses the body
           | text color. This is useful for displaying neutral alerts with no specific value state.
-        </span>
-      </div>
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+      pre.language-html
+        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
   </ComponentExample>
 </template>
 

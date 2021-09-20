@@ -8,13 +8,11 @@
         chi-alert.-m--2(color=type, icon=val, type='banner')
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   div(slot='code-webcomponent')
-    <pre class="language-html">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
+    pre.language-html
+      code(v-highlight="$data.codeSnippets.webcomponent" class="html")
   div(slot='code-htmlblueprint')
-    <pre class="language-html">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
+    pre.language-html
+      code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
 </ComponentExample>
 </template>
 
