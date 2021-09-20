@@ -3,9 +3,9 @@
     div(slot='example')
       .-p--1.-bg--grey-20
         chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", closable)
-            | This is a large closable alert
-            chi-button(slot="chi-alert__actions") Secondary action
-            chi-button(slot="chi-alert__actions", color='primary') Primary action
+          | This is a large closable alert
+          chi-button(slot="chi-alert__actions") Secondary action
+          chi-button(slot="chi-alert__actions", color='primary') Primary action
     div(slot='code-webcomponent')
       .chi-tab__description
         span

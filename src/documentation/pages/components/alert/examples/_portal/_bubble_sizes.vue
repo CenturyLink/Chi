@@ -9,9 +9,9 @@
           | This is a small success alert
         p.-text--bold.-ml--2 md (default)
         chi-alert.-m--2(color='success', icon='circle-check')
-            | This is a success alert
+          | This is a success alert
         chi-alert.-m--2(color='success', icon='circle-check', title="Success")
-            | This is a success alert
+          | This is a success alert
     div(slot='code-webcomponent')
       .chi-tab__description
         span
