@@ -1,26 +1,26 @@
 <template lang="pug">
-    <ComponentExample title="Truncated" id="truncated" :tabs="exampleTabs">
-      div(slot="example-description")
-        p.-text Truncate long accordion titles by adding the class <code>-truncated</code> to <code>chi-accordion</code>.
-      div(slot="example").-p--3.-p-lg--6
-        .chi-accordion.-truncated#example-truncated
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-              .chi-accordion__title
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex
-            .chi-accordion__content
-              p.chi-accordion__text Content goes here
-      div(slot="code-webcomponent")
-        <pre class="language-html">
-          <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-        </pre>
-      div(slot="code-htmlblueprint")
-        <JSNeeded slot="tab-description" />
-        <pre class="language-html">
-          <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-        </pre>
-    </ComponentExample>
+  <ComponentExample title="Truncated" id="truncated" :tabs="exampleTabs">
+    div(slot="example-description")
+      p.-text Truncate long accordion titles by adding the class <code>-truncated</code> to <code>chi-accordion</code>.
+    div(slot="example").-p--3.-p-lg--6
+      .chi-accordion.-truncated#example-truncated
+        .chi-accordion__item
+          button.chi-accordion__trigger
+            i.chi-icon.icon-chevron-down(aria-hidden="true")
+            .chi-accordion__title
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex
+          .chi-accordion__content
+            p.chi-accordion__text Content goes here
+    div(slot="code-webcomponent")
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+      </pre>
+    div(slot="code-htmlblueprint")
+      <JSNeeded slot="tab-description" />
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
