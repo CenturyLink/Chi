@@ -8,6 +8,7 @@ import {
   SELECT_CLASSES,
   PORTAL_CLASS,
   UTILITY_CLASSES,
+  GENERIC_SIZE_CLASSES,
 } from '@/constants/classes';
 import { DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
@@ -17,6 +18,7 @@ import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
 import { getModule } from 'vuex-module-decorators';
 import store from '@/store/index';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
+import { detectChiVersion } from '@/utils/utils';
 
 Vue.config.ignoredElements = ['chi-popover'];
 
@@ -35,6 +37,7 @@ export default class AdvancedFilters extends Vue {
   _advancedFilterPopoverId?: string;
   storeModule?: any;
   _planeAdvancedData = {};
+  _chiMajorVersion = 5;
 
   get filterElementValue() {
     return this.storeModule.filterConfig;
@@ -110,7 +113,9 @@ export default class AdvancedFilters extends Vue {
           aria-label={`Filter by ${filter.label || filter.name}`}
           id={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
           value={this.filterElementValueLive[filter.id]}
-          class={`${SELECT_CLASSES.SELECT} ${this.mobile ? '-mb--1' : ''} -lg`}
+          class={`${SELECT_CLASSES.SELECT} ${this.mobile ? '-mb--1' : ''} ${
+            this._chiMajorVersion === 4 ? GENERIC_SIZE_CLASSES.LG : ''
+          }`}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select')}>
           {options}
@@ -156,7 +161,9 @@ export default class AdvancedFilters extends Vue {
         <input
           aria-label={`Filter by ${filter.label || filter.name}`}
           id={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
-          class={`${INPUT_CLASSES.INPUT} ${this.mobile && '-mb--1'} -lg`}
+          class={`${INPUT_CLASSES.INPUT} ${this.mobile && '-mb--1'} ${
+            this._chiMajorVersion === 4 ? GENERIC_SIZE_CLASSES.LG : ''
+          }`}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'input')}
           placeholder={filter.placeholder || null}
@@ -180,7 +187,9 @@ export default class AdvancedFilters extends Vue {
           value={this.filterElementValueLive[filter.id]}
           aria-label={`Filter by ${filter.label || filter.name}`}
           data-filter={filter.name}
-          class={`${INPUT_CLASSES.INPUT} ${this.mobile && '-mb--1'} -lg`}
+          class={`${INPUT_CLASSES.INPUT} ${this.mobile && '-mb--1'} ${
+            this._chiMajorVersion === 4 ? GENERIC_SIZE_CLASSES.LG : ''
+          }`}
           placeholder={filter.placeholder || null}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'textarea')}
         />
@@ -217,6 +226,10 @@ export default class AdvancedFilters extends Vue {
     );
   }
 
+  beforeMount() {
+    this._chiMajorVersion = Number(detectChiVersion()?.split('.')[0]);
+  }
+
   render() {
     const advancedFilters: JSX.Element[] = [];
     this.advancedFiltersData &&
@@ -236,8 +249,8 @@ export default class AdvancedFilters extends Vue {
           const accordionItem = (
             <div class={ACCORDION_CLASSES.ITEM}>
               <button class={ACCORDION_CLASSES.TRIGGER}>
-                <i class={`${ICON_CLASS} icon-chevron-down`} aria-hidden="true" />
                 <div class={`${ACCORDION_CLASSES.TITLE}`}>{filter.label || filter.name}</div>
+                <i class={`${ICON_CLASS} icon-chevron-down`} aria-hidden="true" />
               </button>
               <div class={ACCORDION_CLASSES.CONTENT}>{filterElement}</div>
             </div>
@@ -250,7 +263,11 @@ export default class AdvancedFilters extends Vue {
       <button
         id={this._advancedFilterButtonId}
         onclick={() => this._toggleAdvancedFiltersPopover()}
-        class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT}`}>
+        class={`
+          ${BUTTON_CLASSES.BUTTON}
+          ${BUTTON_CLASSES.ICON_BUTTON}
+          ${BUTTON_CLASSES.FLAT}
+          ${this._chiMajorVersion === 4 ? `${PORTAL_CLASS} ${BUTTON_CLASSES.PRIMARY}` : ''}`}>
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-filter`} aria-hidden="true" />
         </div>
@@ -266,31 +283,45 @@ export default class AdvancedFilters extends Vue {
             position="bottom"
             reference={`#${this._advancedFilterButtonId}`}
             title="Filters"
-            portal
+            portal={this._chiMajorVersion === 4}
+            modal={this._chiMajorVersion === 5}
             drag
             closable>
             <div class={`${ACCORDION_CLASSES.ACCORDION} -sm`} ref="advancedFiltersAccordion">
               {advancedFilters}
             </div>
-            <div class={`advanced-filters__actions -mt--2`}>
+            <div class={`advanced-filters__actions ${UTILITY_CLASSES.DISPLAY.FLEX} -mt--2`}>
               <button
                 class={`
-                    ${BUTTON_CLASSES.BUTTON} 
-                    ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON}
-                    ${BUTTON_CLASSES.PRIMARY} 
-                    ${BUTTON_CLASSES.FLAT} ${UTILITY_CLASSES.MARGIN.LEFT[1]} -bl--1`}
+                  ${BUTTON_CLASSES.BUTTON} 
+                  ${BUTTON_CLASSES.ICON_BUTTON}
+                  ${BUTTON_CLASSES.FLAT}
+                  ${this._chiMajorVersion === 4 ? PORTAL_CLASS + ' ' + BUTTON_CLASSES.PRIMARY : ''}`}
                 aria-label="Reset advanced filters"
-                onclick={() => this._resetAdvancedFilters()}>
+                onclick={() => this._resetAdvancedFilters()}
+                disabled={
+                  this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
+                }>
                 <div class={BUTTON_CLASSES.CONTENT}>
                   <i class={`${ICON_CLASS} icon-reload`} aria-hidden="true" />
                 </div>
               </button>
-              <button onclick={() => this._toggleAdvancedFiltersPopover()} class={`${BUTTON_CLASSES.BUTTON} -ml--2`}>
+              <div class="chi-divider -vertical -mr--2"></div>
+              <button
+                onclick={() => this._toggleAdvancedFiltersPopover()}
+                class={`
+                ${BUTTON_CLASSES.BUTTON}
+                ${this._chiMajorVersion === 4 ? UTILITY_CLASSES.PADDING.X[4] : ''}
+                `}>
                 CANCEL
               </button>
               <button
                 onclick={() => this._applyAdvancedFiltersChange()}
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} -ml--2`}
+                class={`
+                  ${BUTTON_CLASSES.BUTTON}
+                  ${BUTTON_CLASSES.PRIMARY}
+                  ${this._chiMajorVersion === 4 ? UTILITY_CLASSES.PADDING.X[4] : ''} -ml--2
+                  `}
                 ref="advancedFiltersApplyButton"
                 disabled={
                   this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
