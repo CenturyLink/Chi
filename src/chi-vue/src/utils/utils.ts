@@ -64,3 +64,17 @@ export function copyArrayOfObjects(originArray: any[]) {
     return copyObject(object);
   });
 }
+
+export function detectChiVersion() {
+  const chiCssLink = document.querySelector("link[rel='stylesheet'][href*='/chi/']");
+
+  if (chiCssLink) {
+    const hrefAttribute = chiCssLink.getAttribute('href');
+
+    if (hrefAttribute) {
+      const version = hrefAttribute.match(/\d+\.\d+\.\d+/);
+
+      return version ? version[0] : null;
+    }
+  }
+}
