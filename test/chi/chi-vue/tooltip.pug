@@ -1,0 +1,56 @@
+script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
+script(src="../../chi-vue/umd/chi-vue.umd.js")
+
+h2 Tooltip
+h3 Base
+.test-tooltip.-p--3.-w--100
+  chi-vue-tooltip(id="base" data-cy="tooltip-base" message='Your tooltip text on a button' ref="baseTooltipRef")
+    button.chi-button Hover me to see tooltip
+
+h3 Disabled
+.test-tooltip.-p--3.-w--100
+  chi-vue-tooltip(id="disabled" data-cy="tooltip-disabled" message='Your tooltip text on a disabled button')
+    span
+      button.chi-button(disabled) Hover me to see tooltip
+
+h3 Positioning
+.test-tooltip.-p--10.-w--100#positioning(data-cy="tooltip-positioning" style='display: flex;flex-direction: row;')
+  chi-vue-tooltip(message='Your top tooltip text' position='top')
+    button.chi-button Top
+  chi-vue-tooltip(message='Your right tooltip text' position='right')
+    button.chi-button Right
+  chi-vue-tooltip(message='Your bottom tooltip text' position='bottom')
+    button.chi-button Bottom
+  chi-vue-tooltip(message='Your left tooltip text' position='left')
+    button.chi-button Left
+
+h3 Long Tooltips
+.test-tooltip.-p--10.-w--100
+  chi-vue-tooltip(id="long" data-cy="tooltip-long"
+  message='Lorem ipsum dolor sit amet, consectetur adipiscing elit, \
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris  \
+        nisi ut aliquip ex ea commodo consequat.')
+    button.chi-button Hover me to see tooltip
+
+script.
+  new Vue({
+    components: {
+      chiVueTooltip: window["chi-vue"].library.components.ChiTooltip,
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.baseTooltipExample = this;
+      }
+    }
+  }).$mount("#base");
+
+  const ids = ['#disabled', '#positioning', '#long'];
+  
+  ids.forEach(id => {
+    new Vue({
+      components: {
+        chiVueTooltip: window["chi-vue"].library.components.ChiTooltip,
+      },
+    }).$mount(id);
+  });
