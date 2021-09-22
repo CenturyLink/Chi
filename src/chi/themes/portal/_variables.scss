@@ -920,6 +920,12 @@ $link-cta-icon:                             '\e904';
 $link-cta-icon-color:                       $color-orange-50;
 $link-cta-icon-size:                        1rem;
 $link-cta-text-transform:                   none;
+$link-cta-position-left:                    0;
+$link-cta-hover-position-left:              0.375rem;
+$link-cta-padding-left:                     2rem;
+$link-cta-position-right:                   auto;
+$link-cta-hover-position-right:             auto;
+$link-cta-padding-right:                    0;
 
 // Marketing icon
 $marketing-icon-primary-color:              $color-icon-primary-dark;
