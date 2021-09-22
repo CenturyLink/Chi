@@ -98,6 +98,7 @@
   }
 
   & .chi-popover__footer {
+    display: flex;
     padding: 1rem;
 
     & chi-button,
@@ -105,6 +106,13 @@
       & + chi-button,
       & + .chi-button {
         margin-left: 0.5rem;
+      }
+    }
+
+    .chi-divider {
+      &.-vertical {
+        margin-right: 1rem;
+        min-height: 2.5rem;
       }
     }
   }

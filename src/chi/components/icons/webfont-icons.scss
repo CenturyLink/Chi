@@ -35,6 +35,18 @@ i {
   }
 }
 
+.icon-bookmark-outline::before {
+  content: '\e9e0';
+}
+
+.icon-bookmark::before {
+  content: '\e9e1';
+}
+
+.icon-reset::before {
+  content: '\e9e2';
+}
+
 .icon-arrow-long-up::before {
   content: '\e9dc';
 }

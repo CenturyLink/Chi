@@ -858,34 +858,35 @@ h3 Destructive action confirmation
           .chi-accordion.-sm#example-base
             .chi-accordion__item.-expanded
               button.chi-accordion__trigger
-                i.chi-icon.icon-chevron-down(aria-hidden='true')
                 .chi-accordion__title
                   | Accordion 1
+                i.chi-icon.icon-chevron-down(aria-hidden='true')
               .chi-accordion__content
                 p.chi-accordion__text Filter content goes here
             .chi-accordion__item
               button.chi-accordion__trigger
-                i.chi-icon.icon-chevron-down(aria-hidden="true")
                 .chi-accordion__title
                   | Accordion 2
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
               .chi-accordion__content
                 p.chi-accordion__text Filter content goes here
             .chi-accordion__item
               button.chi-accordion__trigger
-                i.chi-icon.icon-chevron-down(aria-hidden="true")
                 .chi-accordion__title
                   | Accordion 3
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
               .chi-accordion__content
                 p.chi-accordion__text Filter content goes here
             .chi-accordion__item
               button.chi-accordion__trigger
-                i.chi-icon.icon-chevron-down(aria-hidden="true")
                 .chi-accordion__title
                   | Accordion 4
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
               .chi-accordion__content
                 p.chi-accordion__text Filter content goes here
-          chi-button(slot="chi-popover__footer" variant='flat' type='icon' alternative-text='Clear filters' data-tooltip='Clear filters')
-            chi-icon(icon='reload')
+          chi-button(slot="chi-popover__footer" variant='flat' type='icon' alternative-text='Clear all filters' data-tooltip='Clear all filters')
+            chi-icon(icon='reset')
+          .chi-divider.-vertical(slot="chi-popover__footer")
           chi-button(slot="chi-popover__footer") Cancel
           chi-button(slot="chi-popover__footer" color='primary') Apply
     .example-tabs.-pl--2
@@ -900,41 +901,46 @@ h3 Destructive action confirmation
           <button class="chi-button -flat -primary -sm -no-hover -px--0 -mb--1 -text--normal" id="example-expand-all">Expand All</button>
           <div class="chi-accordion -sm" id="example-base">
             <div class="chi-accordion__item -expanded">
-              <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+              <button class="chi-accordion__trigger">
                 <div class="chi-accordion__title">Accordion 1</div>
+                <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
               </button>
               <div class="chi-accordion__content">
                 <p class="chi-accordion__text">Filter content goes here</p>
               </div>
             </div>
             <div class="chi-accordion__item">
-              <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+              <button class="chi-accordion__trigger">
                 <div class="chi-accordion__title">Accordion 2</div>
+                <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
               </button>
               <div class="chi-accordion__content">
                 <p class="chi-accordion__text">Filter content goes here</p>
               </div>
             </div>
             <div class="chi-accordion__item">
-              <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+              <button class="chi-accordion__trigger">
                 <div class="chi-accordion__title">Accordion 3</div>
+                <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
               </button>
               <div class="chi-accordion__content">
                 <p class="chi-accordion__text">Filter content goes here</p>
               </div>
             </div>
             <div class="chi-accordion__item">
-              <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+              <button class="chi-accordion__trigger">
                 <div class="chi-accordion__title">Accordion 4</div>
+                <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
               </button>
               <div class="chi-accordion__content">
                 <p class="chi-accordion__text">Filter content goes here</p>
               </div>
             </div>
           </div>
-          <chi-button slot="chi-popover__footer" variant="flat" type="icon" alternative-text="Clear filters" data-tooltip="Clear filters">
-            <chi-icon icon="reload"></chi-icon>
+          <chi-button slot="chi-popover__footer" variant="flat" type="icon" alternative-text="Clear all filters" data-tooltip="Clear all filters">
+            <chi-icon icon="reset"></chi-icon>
           </chi-button>
+          <div class="chi-divider -vertical" slot="chi-popover__footer"></div>
           <chi-button slot="chi-popover__footer">Cancel</chi-button>
           <chi-button slot="chi-popover__footer" color="primary">Apply</chi-button>
         </chi-popover>
@@ -966,32 +972,36 @@ h3 Destructive action confirmation
             <button class="chi-button -flat -primary -sm -no-hover -px--0 -mb--1 -text--normal" id="example-expand-all">Expand All</button>
             <div class="chi-accordion -sm" id="example-base">
               <div class="chi-accordion__item -expanded">
-                <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                <button class="chi-accordion__trigger">
                   <div class="chi-accordion__title">Accordion 1</div>
+                  <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
                 </button>
                 <div class="chi-accordion__content">
                   <p class="chi-accordion__text">Filter content goes here</p>
                 </div>
               </div>
               <div class="chi-accordion__item">
-                <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                <button class="chi-accordion__trigger">
                   <div class="chi-accordion__title">Accordion 2</div>
+                  <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
                 </button>
                 <div class="chi-accordion__content">
                   <p class="chi-accordion__text">Filter content goes here</p>
                 </div>
               </div>
               <div class="chi-accordion__item">
-                <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                <button class="chi-accordion__trigger">
                   <div class="chi-accordion__title">Accordion 3</div>
+                  <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
                 </button>
                 <div class="chi-accordion__content">
                   <p class="chi-accordion__text">Filter content goes here</p>
                 </div>
               </div>
               <div class="chi-accordion__item">
-                <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                <button class="chi-accordion__trigger">
                   <div class="chi-accordion__title">Accordion 4</div>
+                  <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
                 </button>
                 <div class="chi-accordion__content">
                   <p class="chi-accordion__text">Filter content goes here</p>
@@ -1002,9 +1012,10 @@ h3 Destructive action confirmation
           <div class="chi-popover__footer">
             <button class="chi-button -icon -flat" aria-label="Clear filters" data-tooltip="Clear filters">
               <div class="chi-button__content">
-                <i class="chi-icon icon-reload" aria-hidden="true"></i>
+                <i class="chi-icon icon-reset" aria-hidden="true"></i>
               </div>
             </button>
+            <div class="chi-divider -vertical"></div>
             <button class="chi-button">Cancel</button>
             <button class="chi-button -primary">Apply</button>
           </div>
@@ -1045,6 +1056,7 @@ script.
       chi.tab(document.getElementById('examples-position'));
       chi.tab(document.getElementById('examples-reference'));
       chi.tab(document.getElementById('examples-custom-content'));
+      chi.tab(document.getElementById('examples-advanced-filters'));
       chi.tab(document.getElementById('examples-positioning'));
       chi.tab(document.getElementById('examples-interaction'));
       chi.tab(document.getElementById('examples-autohide-true'));
