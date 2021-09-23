@@ -1,5 +1,5 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import { findComponent, uuid4 } from '@/utils/utils';
+import { detectMajorChiVersion, findComponent, uuid4 } from '@/utils/utils';
 import {
   BACKDROP_CLASSES,
   BUTTON_CLASSES,
@@ -14,7 +14,6 @@ import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { DataTableColumn, DataTableColumnsData } from '@/constants/types';
 import ColumnCustomizationContent from './ColumnCustomizationModalContent';
 import { checkColumns } from './utils';
-import { detectChiVersion } from '@/utils/utils';
 
 declare const chi: any;
 
@@ -174,7 +173,7 @@ export default class ColumnCustomization extends Vue {
   }
 
   beforeMount() {
-    this._chiMajorVersion = Number(detectChiVersion()?.split('.')[0]);
+    this._chiMajorVersion = detectMajorChiVersion();
   }
 
   render() {

@@ -65,16 +65,19 @@ export function copyArrayOfObjects(originArray: any[]) {
   });
 }
 
-export function detectChiVersion() {
+export function detectMajorChiVersion(): number {
   const chiCssLink = document.querySelector("link[rel='stylesheet'][href*='/chi/']");
+  const fallbackVersion = 5;
 
   if (chiCssLink) {
     const hrefAttribute = chiCssLink.getAttribute('href');
 
     if (hrefAttribute) {
       const version = hrefAttribute.match(/\d+\.\d+\.\d+/);
+      const majorVersion = version && version[0]?.split('.')[0];
 
-      return version ? version[0] : null;
+      return Number(majorVersion || fallbackVersion);
     }
   }
+  return fallbackVersion;
 }
