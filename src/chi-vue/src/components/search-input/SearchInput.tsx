@@ -12,7 +12,7 @@ import { SearchInputSizes } from '@/constants/types';
 import { SEARCH_INPUT_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
-import { detectChiVersion } from '@/utils/utils';
+import { detectMajorChiVersion } from '@/utils/utils';
 
 @Component
 export default class SearchInput extends Vue {
@@ -56,7 +56,7 @@ export default class SearchInput extends Vue {
   }
 
   beforeMount() {
-    this._chiMajorVersion = Number(detectChiVersion()?.split('.')[0]);
+    this._chiMajorVersion = detectMajorChiVersion();
   }
 
   render() {

@@ -21,7 +21,7 @@ import AdvancedFilters from './AdvancedFilters';
 import Drawer from '../drawer/drawer';
 import store, { STORE_KEY } from '@/store';
 import { getModule } from 'vuex-module-decorators';
-import { detectChiVersion } from '@/utils/utils';
+import { detectMajorChiVersion } from '@/utils/utils';
 import './filters.scss';
 
 @Component
@@ -296,7 +296,7 @@ export default class DataTableFilters extends Vue {
   }
 
   beforeMount() {
-    this._chiMajorVersion = Number(detectChiVersion()?.split('.')[0]);
+    this._chiMajorVersion = detectMajorChiVersion();
   }
 
   render() {
@@ -379,7 +379,7 @@ export default class DataTableFilters extends Vue {
                 ${BUTTON_CLASSES.PRIMARY}
                 ${
                   this._chiMajorVersion === 4
-                    ? BUTTON_CLASSES.SIZES.LG + ' ' + UTILITY_CLASSES.PADDING.X[4] + ' ' + '-uppercase'
+                    ? `${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -uppercase`
                     : ''
                 }
                 `}>
@@ -393,13 +393,7 @@ export default class DataTableFilters extends Vue {
                 ${UTILITY_CLASSES.MARGIN.LEFT[2]}
                 ${
                   this._chiMajorVersion === 4
-                    ? BUTTON_CLASSES.PRIMARY +
-                      ' ' +
-                      BUTTON_CLASSES.SIZES.LG +
-                      ' ' +
-                      UTILITY_CLASSES.PADDING.X[4] +
-                      ' ' +
-                      '-bg--white -uppercase'
+                    ? `${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -bg--white -uppercase`
                     : ''
                 }
                 `}>

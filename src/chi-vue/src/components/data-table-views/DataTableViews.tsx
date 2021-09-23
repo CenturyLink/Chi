@@ -4,7 +4,7 @@ import { DATA_TABLE_CLASSES, FORM_CLASSES, GENERIC_SIZE_CLASSES, SELECT_CLASSES 
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '../data-table-toolbar/DataTableToolbar';
-import { detectChiVersion } from '@/utils/utils';
+import { detectMajorChiVersion } from '@/utils/utils';
 
 @Component
 export default class DataTableViews extends Vue {
@@ -30,7 +30,7 @@ export default class DataTableViews extends Vue {
   }
 
   beforeMount() {
-    this._chiMajorVersion = Number(detectChiVersion()?.split('.')[0]);
+    this._chiMajorVersion = detectMajorChiVersion();
   }
 
   render() {

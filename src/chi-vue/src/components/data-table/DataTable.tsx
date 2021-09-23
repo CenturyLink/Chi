@@ -32,7 +32,7 @@ import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
-import { detectChiVersion } from '@/utils/utils';
+import { detectMajorChiVersion } from '@/utils/utils';
 
 let dataTableNumber = 0;
 @Component({})
@@ -794,7 +794,7 @@ export default class DataTable extends Vue {
   }
 
   beforeMount() {
-    this._chiMajorVersion = Number(detectChiVersion()?.split('.')[0]);
+    this._chiMajorVersion = detectMajorChiVersion();
     this.detectScreenBreakpoint();
   }
 

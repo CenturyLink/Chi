@@ -18,7 +18,7 @@ import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
 import { getModule } from 'vuex-module-decorators';
 import store from '@/store/index';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
-import { detectChiVersion } from '@/utils/utils';
+import { detectMajorChiVersion } from '@/utils/utils';
 
 Vue.config.ignoredElements = ['chi-popover'];
 
@@ -227,7 +227,7 @@ export default class AdvancedFilters extends Vue {
   }
 
   beforeMount() {
-    this._chiMajorVersion = Number(detectChiVersion()?.split('.')[0]);
+    this._chiMajorVersion = detectMajorChiVersion();
   }
 
   render() {
@@ -296,7 +296,7 @@ export default class AdvancedFilters extends Vue {
                   ${BUTTON_CLASSES.BUTTON} 
                   ${BUTTON_CLASSES.ICON_BUTTON}
                   ${BUTTON_CLASSES.FLAT}
-                  ${this._chiMajorVersion === 4 ? PORTAL_CLASS + ' ' + BUTTON_CLASSES.PRIMARY : ''}`}
+                  ${this._chiMajorVersion === 4 ? `${PORTAL_CLASS} ${BUTTON_CLASSES.PRIMARY}` : ''}`}
                 aria-label="Reset advanced filters"
                 onclick={() => this._resetAdvancedFilters()}
                 disabled={
