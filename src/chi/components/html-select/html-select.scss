@@ -57,6 +57,7 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
   height: map-get(map-get($sizes, md), height);
   line-height: map-get(map-get($sizes, md), line-height);
   outline: none;
+  text-overflow: ellipsis;
   transition: background-color 0.12s ease-in, border-color 0.1s ease-in;
   width: 100%;
 
@@ -64,7 +65,7 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
     background-image: $select-background-image;
     background-position: map-get(map-get($sizes, md), background-position);
     background-repeat: no-repeat;
-    background-size: 0.75rem;
+    background-size: map-get(map-get($sizes, md), background-size);
     padding: map-get(map-get($sizes, md), padding);
   }
 
