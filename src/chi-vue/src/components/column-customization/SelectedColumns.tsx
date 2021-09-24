@@ -19,6 +19,10 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
       this._ColumnCustomizationContent = columnCustomizationModalContent as ColumnCustomizationContent;
       (columnCustomizationModalContent as ColumnCustomizationContent)._selectedColumnsComponent = this;
     }
+
+    if (this._ColumnCustomizationContent?._preSelection) {
+      (this.$refs.select as HTMLSelectElement).value = this._ColumnCustomizationContent._preSelection.value;
+    }
   }
 
   _generateOptions(data: DataTableColumn[]) {
@@ -50,7 +54,7 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
     return (
       <div>
         <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_BOLD}>Selected Columns</div>
-        <select class={`chi-select selected-columns ${UTILITY_CLASSES.SIZING.W100}`} ref="select" multiple>
+        <select class={`chi-select selected-columns`} ref="select" multiple>
           {standardOptions}
         </select>
       </div>

@@ -9,11 +9,14 @@ select {
         align-items: center;
         display: flex;
         height: 1.5rem;
+        white-space: normal;
+        word-break: break-all;
       }
 
       &.available-columns,
       &.selected-columns {
         height: 12.5rem;
+        width: 14rem;
       }
 
       &.selected-columns {
