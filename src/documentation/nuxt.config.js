@@ -27,6 +27,12 @@ export default {
     script: [
       {
         src: 'https://assets.ctl.io/chi/5.1.0/js/chi.js'
+      },
+      {
+        src: 'https://assets.ctl.io/chi/5.1.0/js/ce/ux-chi-ce/ux-chi-ce.esm.js'
+      },
+      {
+        src: 'https://assets.ctl.io/chi/5.1.0/js/ce/ux-chi-ce/ux-chi-ce.js'
       }
     ],
   },
