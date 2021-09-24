@@ -2,7 +2,7 @@
   <ComponentExample title="Disabled" id="disabled_portal" :tabs="exampleTabs">
     div(slot="example-description")
       p.-text Make Accordions appear inactive by adding the class <code>-disabled</code> or the attribute <code>disabled</code> to Accordion trigger
-    div(slot="example")
+    div(slot="example").-p--3.-p-lg--6
       .chi-accordion
         .chi-accordion__item
           button.chi-accordion__trigger.-disabled

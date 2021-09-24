@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Expand / Collapse all Accordion items" id="expand_collapse_portal" :tabs="exampleTabs">
-    div(slot="example")
+    div(slot="example").-p--3.-p-lg--6
       button(@click="expandAll").chi-button.-primary.-outline#expand-all-portal Expand all
       button(@click="collapseAll").chi-button.-primary.-outline.-ml--1#collapse-all-portal Collapse all
       .chi-accordion.-mt--2#expand-collapse-portal

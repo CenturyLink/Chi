@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs">
-    div(slot="example")
+    div(slot="example").-p--3.-p-lg--6
       each size in ['sm', 'md', 'lg', 'xl']
         p.-text--bold.-pl--2= size
           div(class=`chi-accordion -${size}` id=`example-size-${size}`)

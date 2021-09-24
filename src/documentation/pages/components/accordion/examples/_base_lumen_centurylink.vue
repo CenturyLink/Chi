@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example")
+    div(slot="example").-p--3.-p-lg--6
       .chi-accordion#example-base
         .chi-accordion__item
           button.chi-accordion__trigger

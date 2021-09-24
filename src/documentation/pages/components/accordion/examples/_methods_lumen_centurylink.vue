@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Show / Hide / Toggle of individual items of Accordion" id="methods_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example")
+    div(slot="example").-p--3.-p-lg--6
       button(@click="toggleOne").chi-button#toggle-accordion-1 Toggle item 1
       button(@click="toggleTwo").chi-button.-ml--1#toggle-accordion-2 Toggle item 2
       .chi-accordion.-mt--2#individual-accordion-items
