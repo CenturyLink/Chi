@@ -10,6 +10,7 @@ import {
   ONE_LINK_TX,
   SR_ONLY,
   UTILITY_CLASSES,
+  INDETERMINATE_CLASS,
 } from '@/constants/classes';
 import './data-table.scss';
 import { DataTablePageChange, DataTableSorting, DATA_TABLE_EVENTS, PAGINATION_EVENTS } from '@/constants/events';
@@ -305,6 +306,41 @@ export default class DataTable extends Vue {
     this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, selectedRowsData);
   }
 
+  _checkIndeterminate(rowData: DataTableRow) {
+    this._checkParentState(rowData);
+    this._checkSelectAllCheckbox();
+  }
+
+  _checkParentState(rowData: DataTableRow) {
+    let parent = rowData.parent;
+
+    while (parent) {
+      const parentCheck = document.querySelector(
+        `#checkbox-select-${this._rowId(parent.rowNumber)}`
+      ) as HTMLInputElement;
+      const children = parent.nestedContent?.table.data;
+      const childrenSelected: DataTableRow[] = [];
+
+      children?.forEach((row: DataTableRow) => {
+        const childCheck = document.querySelector(`#checkbox-select-${this._rowId(row.rowNumber)}`) as HTMLInputElement;
+
+        if (childCheck.checked) {
+          childrenSelected.push(row);
+        }
+      });
+
+      if (childrenSelected.length === 0) {
+        this._changeCheckboxState(parentCheck, false, false);
+      } else if (children.length === childrenSelected.length) {
+        this._changeCheckboxState(parentCheck, true, false);
+      } else {
+        this._changeCheckboxState(parentCheck, false, true);
+      }
+
+      parent = parent.parent;
+    }
+  }
+
   selectRow(rowData: DataTableRow) {
     const selectedRow = this.selectedRows.find(rowId => rowId === rowData.rowId);
     const newRowData = {
@@ -316,6 +352,7 @@ export default class DataTable extends Vue {
       this.selectedRows.push(rowData.rowId);
     }
 
+    this._checkIndeterminate(newRowData);
     this.$emit(DATA_TABLE_EVENTS.SELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
@@ -333,6 +370,7 @@ export default class DataTable extends Vue {
       this.selectedRows.splice(indexOfRowId, 1);
     }
 
+    this._checkIndeterminate(newRowData);
     this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
@@ -375,6 +413,7 @@ export default class DataTable extends Vue {
       this.$emit(DATA_TABLE_EVENTS.DESELECTED_ALL, this.slicedData);
     }
 
+    this._checkSelectAllCheckbox();
     this._emitSelectedRows();
   }
 
@@ -403,7 +442,18 @@ export default class DataTable extends Vue {
               disabled={rowData?.selectionDisabled}
               onChange={(ev: Event) => {
                 if (selectAll) {
-                  this.selectAllRows((ev.target as HTMLInputElement).checked ? 'select' : 'deselect');
+                  const isSelected = (row: DataTableRow) => this.selectedRows.includes(row.rowId);
+
+                  if (this.slicedData.some(isSelected) && !this.slicedData.every(isSelected)) {
+                    (ev.target as HTMLInputElement).indeterminate = true;
+                    (ev.target as HTMLInputElement).checked = false;
+                  }
+
+                  this.selectAllRows(
+                    !(ev.target as HTMLInputElement).indeterminate && (ev.target as HTMLInputElement).checked
+                      ? 'select'
+                      : 'deselect'
+                  );
                 } else {
                   if (rowData) {
                     if (ev.target && (ev.target as HTMLInputElement).checked) {
@@ -682,9 +732,24 @@ export default class DataTable extends Vue {
     if (selectAllCheckbox) {
       const isSelected = (row: DataTableRow) => this.selectedRows.includes(row.rowId);
 
-      if (this.slicedData) {
-        selectAllCheckbox.checked = this.slicedData.every(isSelected);
+      if (this.slicedData?.every(isSelected)) {
+        this._changeCheckboxState(selectAllCheckbox, true, false);
+      } else if (this.slicedData?.some(isSelected)) {
+        this._changeCheckboxState(selectAllCheckbox, false, true);
+      } else {
+        this._changeCheckboxState(selectAllCheckbox, false, false);
       }
+    }
+  }
+
+  _changeCheckboxState(check: HTMLInputElement, checked: boolean, indeterminate: boolean) {
+    check.checked = checked;
+    check.indeterminate = indeterminate;
+
+    if (!checked && indeterminate) {
+      check.classList.add(INDETERMINATE_CLASS);
+    } else {
+      check.classList.remove(INDETERMINATE_CLASS);
     }
   }
 
@@ -727,24 +792,31 @@ export default class DataTable extends Vue {
   }
 
   serializeData() {
-    const serializeRow = (row: DataTableRow, rowNumber: number, parentRowId: string | null) => {
+    const serializeRow = (
+      row: DataTableRow,
+      rowNumber: number,
+      parent: DataTableRow | undefined,
+      parentRowId: string | null
+    ) => {
       const rowId = this._rowId(row.id || rowNumber);
       const rowN = parentRowId !== null ? `${parentRowId}-${rowNumber}` : String(rowNumber);
       const rowObject = {
         ...row,
+        parent,
         rowNumber: rowN,
-        rowId: rowId,
+        rowId,
       };
       let subrowNumber = 0;
 
       if (
+        !!row.nestedContent &&
         typeof row.nestedContent === 'object' &&
         typeof row.nestedContent.table === 'object' &&
         row.nestedContent.table.data
       ) {
         // eslint-disable-next-line
-        row.nestedContent.table.data = row.nestedContent.table.data.map((row: any) => {
-          const serialized = serializeRow(row, subrowNumber, rowN);
+        row.nestedContent.table.data = row.nestedContent.table.data.map((subRow: DataTableRow) => {
+          const serialized = serializeRow(subRow, subrowNumber, rowObject, rowN);
 
           subrowNumber++;
           return serialized;
@@ -767,7 +839,7 @@ export default class DataTable extends Vue {
       this.$props.config.reserveExpansionSlot ||
       !!this.data.body.find((row: { nestedContent: any }) => row.nestedContent);
     this.data.body.forEach(row => {
-      this._serializedDataBody.push(serializeRow(row, rowNumber, null));
+      this._serializedDataBody.push(serializeRow(row, rowNumber, undefined, null));
       rowNumber++;
     });
   }
