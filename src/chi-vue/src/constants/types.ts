@@ -95,6 +95,7 @@ export interface DataTableConfig {
     pageJumper?: boolean;
     results?: number;
   };
+  hierarchicalSelection?: boolean;
   resultsPerPage?: number;
   style: DataTableStyleConfig;
   selectable?: boolean;

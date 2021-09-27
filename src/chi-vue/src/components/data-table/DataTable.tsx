@@ -307,11 +307,11 @@ export default class DataTable extends Vue {
   }
 
   _checkIndeterminate(rowData: DataTableRow) {
-    this._checkParentState(rowData);
+    this._checkRowIndeterminateState(rowData);
     this._checkSelectAllCheckbox();
   }
 
-  _checkParentState(rowData: DataTableRow) {
+  _checkRowIndeterminateState(rowData: DataTableRow) {
     let parent = rowData.parent;
 
     while (parent) {
@@ -331,14 +331,47 @@ export default class DataTable extends Vue {
 
       if (childrenSelected.length === 0) {
         this._changeCheckboxState(parentCheck, false, false);
-      } else if (children.length === childrenSelected.length) {
+        this.deselectRow(parent);
+      } else if (children.length === childrenSelected.length && this.config.hierarchicalSelection) {
         this._changeCheckboxState(parentCheck, true, false);
+        this.selectRow(parent);
       } else {
         this._changeCheckboxState(parentCheck, false, true);
       }
 
       parent = parent.parent;
     }
+
+    if (!parent) {
+      const parentCheck = document.querySelector(
+        `#checkbox-select-${this._rowId(rowData.rowNumber)}`
+      ) as HTMLInputElement;
+      const children = rowData?.nestedContent?.table?.data;
+
+      if (parentCheck.classList.contains(INDETERMINATE_CLASS)) {
+        this._checkChildrenRowState(children, false);
+        this._changeCheckboxState(parentCheck, false, false);
+        this.deselectRow(rowData);
+      } else {
+        this._checkChildrenRowState(children, parentCheck.checked);
+      }
+    }
+  }
+
+  _checkChildrenRowState(children: DataTableRow[], select: boolean) {
+    children?.forEach((row: DataTableRow) => {
+      const checkbox = document.querySelector(`#checkbox-select-${this._rowId(row?.rowNumber)}`) as HTMLInputElement;
+
+      checkbox.checked = select;
+
+      if (checkbox.classList.contains(INDETERMINATE_CLASS) && !select) {
+        this._changeCheckboxState(checkbox, false, select);
+      }
+
+      if (row.nestedContent?.table?.data) {
+        this._checkChildrenRowState(row.nestedContent?.table?.data, select);
+      }
+    });
   }
 
   selectRow(rowData: DataTableRow) {
@@ -400,14 +433,19 @@ export default class DataTable extends Vue {
         if (!this.selectedRows.includes(row.rowId) && !row.selectionDisabled) {
           this.selectedRows.push(row.rowId);
         }
+
+        this._checkChildrenRowState(row.nestedContent?.table?.data, true);
       });
 
       this.$emit(DATA_TABLE_EVENTS.SELECTED_ALL, this.slicedData);
     } else {
       data.forEach((row: DataTableRow) => {
         const rowIndex = this.selectedRows.indexOf(row.rowId);
+        const checkbox = document.querySelector(`#checkbox-select-${this._rowId(row?.rowNumber)}`) as HTMLInputElement;
 
         this.selectedRows.splice(rowIndex, 1);
+        this._changeCheckboxState(checkbox, false, false);
+        this._checkChildrenRowState(row.nestedContent?.table?.data, false);
       });
 
       this.$emit(DATA_TABLE_EVENTS.DESELECTED_ALL, this.slicedData);
@@ -427,6 +465,7 @@ export default class DataTable extends Vue {
           : selectAll
           ? `checkbox-${this._dataTableId}-select-all-rows`
           : '';
+      const selectAllRef = selectAll ? 'selectAllRef' : '';
 
       return (
         <div
@@ -439,6 +478,7 @@ export default class DataTable extends Vue {
               type="checkbox"
               class={CHECKBOX_CLASSES.INPUT}
               id={checkboxId}
+              ref={selectAllRef}
               disabled={rowData?.selectionDisabled}
               onChange={(ev: Event) => {
                 if (selectAll) {
@@ -725,9 +765,7 @@ export default class DataTable extends Vue {
   }
 
   _checkSelectAllCheckbox() {
-    const selectAllCheckbox = document.querySelector(
-      `.${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL} input`
-    ) as HTMLInputElement;
+    const selectAllCheckbox = this.$refs.selectAllRef as HTMLInputElement;
 
     if (selectAllCheckbox) {
       const isSelected = (row: DataTableRow) => this.selectedRows.includes(row.rowId);
@@ -902,6 +940,9 @@ export default class DataTable extends Vue {
       this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
     }
     this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
+
+    this.config.hierarchicalSelection =
+      this.config.hierarchicalSelection === undefined ? true : this.config.hierarchicalSelection;
   }
 
   mounted() {
