@@ -16,6 +16,7 @@ export const DATA_TABLE_EVENTS = {
   TOOLBAR: {
     COLUMNS_CHANGE: 'chiToolbarColumnsChange',
     COLUMNS_RESET: 'chiToolbarColumnsReset',
+    COLUMNS_SELECTED: 'chiToolbarColumnsSelected',
     FILTERS_CHANGE: 'chiToolbarFiltersChange',
     SEARCH: 'chiToolbarSearch',
     VIEWS_CHANGE: 'chiToolbarViewsChange',

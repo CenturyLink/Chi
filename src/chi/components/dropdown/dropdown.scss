@@ -245,7 +245,7 @@
 
       .chi-icon,
       .chi-flag-icon {
-        margin-right: 1rem;
+        margin-right: 0.75rem;
       }
 
       &:not(.-active) {
@@ -325,7 +325,7 @@
           margin-right: 0;
 
           &::before {
-            margin-right: 1rem;
+            margin-right: 0.75rem;
           }
         }
       }
@@ -337,10 +337,10 @@
           &.chi-checkbox__input {
             & + label {
               &.chi-checkbox__label {
-                padding-left: 2rem;
+                padding-left: 1.75rem;
 
                 &::before {
-                  margin-right: 1rem;
+                  margin-right: 0.75rem;
                 }
               }
             }
@@ -355,7 +355,7 @@
           &.chi-radio__input {
             & + label {
               &.chi-radio__label {
-                padding-left: 2rem;
+                padding-left: 1.75rem;
               }
             }
           }

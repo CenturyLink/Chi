@@ -1,4 +1,46 @@
 # CHANGELOG
+## 5.3.1 (September 17, 2021)
+### Components
+#### Changed
+* Changed: Popover content container now supports scrolling overflow.
+* Changed: Popover inline modal max-width has been increased to support wider content.
+* Changed: Popover inline modal background color has been changed for portal theme.
+* Changed: Popover drag icon has been updated.
+* Changed: Data table grand-child row alignment has been improved.
+* Changed: Data table column customization modal select title casing has been improved.
+* Changed: Data table column customization modal footer buttons have been rearranged for consistency with other modals.
+* Changed: Dropdown menu item spacing between text and icons has been reduced.
+* Changed: Column Customization Vue component now supports reordering of locked columns.
+#### Fixed
+* Fixed: Popover bug which caused the top-left and top-right corners to render sharp instead of rounded if a header was present.
+* Fixed: Data table column customization modal close icon button rendered with incorrect padding due to a missing `-icon` class.
+### Documentation
+#### Changed
+* Changed: Dropdown menu item examples now render truncated text in tooltips.
+* Changed: Code snippet copy to clipboard button size has been changed.
+* Changed: Portal theme labeled icon button examples have been updated.
+* Changed: Portal theme divider examples have been updated.
+* Changed: Portal theme picker group examples have been updated.
+
+## 5.3.0 (September 10, 2021)
+### Components
+#### Added
+* Added: Floating icon button now supports sizes.
+* Added: Date picker web component now supports retargeting of events.
+#### Changed
+* Changed: Data table Vue component sort behavior has been improved by allowing sorting only by ascending or descending.
+* Changed: Data table Vue component mobile version has been improved to support click action on chevron element.
+* Changed: Data table Vue component header has been improved to support text wrapping.
+#### Fixed
+* Fixed: Accessibility error in Data table vue component due to missing id on pagination.
+### Documentation
+#### Changed
+* Changed: Data table complex example has removed current badges from status column and replaced with status column illustrated in portal style guide.
+* Changed: Data table complex example has included action buttons in all rows, not just parent rows.
+* Changed: Icons in icon button and floating icon button have been updated to icon-edit and icon-chat respectively.
+#### Fixed
+* Fixed: Data table documentation examples have improved date format.
+
 ## 5.2.0 (August 27, 2021)
 ### Components
 #### Added

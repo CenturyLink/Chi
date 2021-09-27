@@ -219,6 +219,9 @@ p.-text
 
 .-portal--show
   h3 Inline Modal
+  p.-text
+    | Use Inline Modals to imitate the style of a Modal and the behavior of a Popover. This is useful for advanced
+    | filtering in Data Tables.
   .example.-mb--3
     .-p--3(style='height: 155px')
       .-position--relative
@@ -287,7 +290,6 @@ p.-text
           });
         </script>
     .chi-tabs-panel#html-draggable
-
 
 .-portal--show
   h3 Draggable popover
@@ -801,9 +803,11 @@ p.-text
         });
       </script>
 
-h3 Popover with custom content
+h2 Popover with custom content
 .-text.-mb--3
   | Popovers can be used to display any kind of custom content (even other components).
+
+h3 Destructive action confirmation
 .example.-mb--3
   .-p--3(style='height: 185px')
     .-position--relative
@@ -844,6 +848,181 @@ h3 Popover with custom content
         <div class="chi-popover__arrow"></div>
       </section>
 
+.-portal--show
+  h3 Table filtering
+  .example.-mb--3
+    .-p--3(style='height: 485px')
+      .-position--relative
+        chi-popover(position='top' title='Filter' variant='custom' modal drag closable active prevent-auto-hide)
+          button.chi-button(class='-flat -primary -sm -no-hover -px--0 -mb--1 -text--normal' id='example-expand-all') Expand All
+          .chi-accordion.-sm#example-base
+            .chi-accordion__item.-expanded
+              button.chi-accordion__trigger
+                i.chi-icon.icon-chevron-down(aria-hidden='true')
+                .chi-accordion__title
+                  | Accordion 1
+              .chi-accordion__content
+                p.chi-accordion__text Filter content goes here
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+                .chi-accordion__title
+                  | Accordion 2
+              .chi-accordion__content
+                p.chi-accordion__text Filter content goes here
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+                .chi-accordion__title
+                  | Accordion 3
+              .chi-accordion__content
+                p.chi-accordion__text Filter content goes here
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+                .chi-accordion__title
+                  | Accordion 4
+              .chi-accordion__content
+                p.chi-accordion__text Filter content goes here
+          chi-button(slot="chi-popover__footer" variant='flat' type='icon' alternative-text='Clear filters' data-tooltip='Clear filters')
+            chi-icon(icon='reload')
+          chi-button(slot="chi-popover__footer") Cancel
+          chi-button(slot="chi-popover__footer" color='primary') Apply
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-advanced-filters
+        li.-active
+          a(href=`#webcomponent-advanced-filters`) Web Component
+        li
+          a(href=`#html-advanced-filters`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-advanced-filters
+      :code(lang="html")
+        <chi-popover position="top" title="Filter" variant="custom" modal drag closable active prevent-auto-hide>
+          <button class="chi-button -flat -primary -sm -no-hover -px--0 -mb--1 -text--normal" id="example-expand-all">Expand All</button>
+          <div class="chi-accordion -sm" id="example-base">
+            <div class="chi-accordion__item -expanded">
+              <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                <div class="chi-accordion__title">Accordion 1</div>
+              </button>
+              <div class="chi-accordion__content">
+                <p class="chi-accordion__text">Filter content goes here</p>
+              </div>
+            </div>
+            <div class="chi-accordion__item">
+              <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                <div class="chi-accordion__title">Accordion 2</div>
+              </button>
+              <div class="chi-accordion__content">
+                <p class="chi-accordion__text">Filter content goes here</p>
+              </div>
+            </div>
+            <div class="chi-accordion__item">
+              <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                <div class="chi-accordion__title">Accordion 3</div>
+              </button>
+              <div class="chi-accordion__content">
+                <p class="chi-accordion__text">Filter content goes here</p>
+              </div>
+            </div>
+            <div class="chi-accordion__item">
+              <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                <div class="chi-accordion__title">Accordion 4</div>
+              </button>
+              <div class="chi-accordion__content">
+                <p class="chi-accordion__text">Filter content goes here</p>
+              </div>
+            </div>
+          </div>
+          <chi-button slot="chi-popover__footer" variant="flat" type="icon" alternative-text="Clear filters" data-tooltip="Clear filters">
+            <chi-icon icon="reload"></chi-icon>
+          </chi-button>
+          <chi-button slot="chi-popover__footer">Cancel</chi-button>
+          <chi-button slot="chi-popover__footer" color="primary">Apply</chi-button>
+        </chi-popover>
+
+        <script>
+          const accordionBase = document.getElementById('example-base');
+          const expandAll = document.getElementById("example-expand-all");
+
+          chi.accordion(accordionBase);
+
+          expandAll.addEventListener("click", () => {
+            expandAccordion.expandAll();
+          });
+
+          chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+        </script>
+    .chi-tabs-panel#html-advanced-filters
+      :code(lang="html")
+        <section class="chi-popover -active -closable -draggable -modal" aria-modal="true" role="dialog" aria-label="Popover title">
+          <button class="chi-button -xs -icon -close" aria-label="Close">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-x" aria-hidden="true"></i>
+            </div>
+          </button>
+          <header class="chi-popover__header">
+            <h2 class="chi-popover__title">Popover title</h2>
+          </header>
+          <div class="chi-popover__content">
+            <button class="chi-button -flat -primary -sm -no-hover -px--0 -mb--1 -text--normal" id="example-expand-all">Expand All</button>
+            <div class="chi-accordion -sm" id="example-base">
+              <div class="chi-accordion__item -expanded">
+                <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                  <div class="chi-accordion__title">Accordion 1</div>
+                </button>
+                <div class="chi-accordion__content">
+                  <p class="chi-accordion__text">Filter content goes here</p>
+                </div>
+              </div>
+              <div class="chi-accordion__item">
+                <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                  <div class="chi-accordion__title">Accordion 2</div>
+                </button>
+                <div class="chi-accordion__content">
+                  <p class="chi-accordion__text">Filter content goes here</p>
+                </div>
+              </div>
+              <div class="chi-accordion__item">
+                <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                  <div class="chi-accordion__title">Accordion 3</div>
+                </button>
+                <div class="chi-accordion__content">
+                  <p class="chi-accordion__text">Filter content goes here</p>
+                </div>
+              </div>
+              <div class="chi-accordion__item">
+                <button class="chi-accordion__trigger"><i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                  <div class="chi-accordion__title">Accordion 4</div>
+                </button>
+                <div class="chi-accordion__content">
+                  <p class="chi-accordion__text">Filter content goes here</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-popover__footer">
+            <button class="chi-button -icon -flat" aria-label="Clear filters" data-tooltip="Clear filters">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-reload" aria-hidden="true"></i>
+              </div>
+            </button>
+            <button class="chi-button">Cancel</button>
+            <button class="chi-button -primary">Apply</button>
+          </div>
+        </section>
+
+        <script>
+          const accordionBase = document.getElementById('example-base');
+          const expandAll = document.getElementById("example-expand-all");
+
+          chi.accordion(accordionBase);
+
+          expandAll.addEventListener("click", () => {
+            expandAccordion.expandAll();
+          });
+
+          chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+        </script>
+
 chi-popover#example-draggable-popover(title="Draggable Popover" reference="#example-draggable-button" closable drag)
   | Popover content
 
@@ -856,6 +1035,9 @@ script.
     function () {
       const buttonOpenOnHover = document.getElementById('button-open-on-hover');
       const popoverOpenOnHover = document.getElementById('popover-open-on-hover');
+      const accordionBase = document.getElementById('example-base');
+      const expandAccordion = chi.accordion(document.getElementById("example-base"));
+      const expandAll = document.getElementById("example-expand-all");
       let hoverAnimationTimeout;
 
       chi.tab(document.getElementById('examples-default'));
@@ -871,6 +1053,7 @@ script.
       chi.tab(document.getElementById('examples-draggable'));
       chi.tab(document.getElementById('examples-modal-draggable'));
       chi.tab(document.getElementById('examples-modal'));
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
 
       buttonOpenOnHover.addEventListener('chiMouseEnter', function() {
         hoverAnimationTimeout = setTimeout(function() {
@@ -887,6 +1070,12 @@ script.
 
       buttonOpenOnHover.addEventListener('click', function() {
         popoverOpenOnHover.toggle();
+      });
+
+      chi.accordion(accordionBase);
+
+      expandAll.addEventListener("click", () => {
+        expandAccordion.expandAll();
       });
 
       var popovers = [
