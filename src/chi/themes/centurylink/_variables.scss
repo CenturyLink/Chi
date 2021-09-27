@@ -1262,35 +1262,35 @@ $select-xs-font-size:                       $font-size-xs;
 $select-xs-line-height:                     $line-height-sm;
 $select-xs-arrow-background-size:           0.75rem;
 $select-xs-arrow-background-position:       right 0.5rem center;
-$select-xs-padding:                         0 1.6875rem 0 0.75rem;
+$select-xs-padding:                         0 1.6875rem 0 0.5rem;
 
 $select-sm-height:                          2rem;
 $select-sm-font-size:                       $font-size-base;
 $select-sm-line-height:                     $line-height-sm;
 $select-sm-arrow-background-size:           0.75rem;
-$select-sm-arrow-background-position:       right 0.5rem center;
+$select-sm-arrow-background-position:       right 0.75rem center;
 $select-sm-padding:                         0 1.6875rem 0 0.75rem;
 
 $select-md-height:                          2.5rem;
 $select-md-font-size:                       $font-size-base;
 $select-md-line-height:                     $line-height-md;
 $select-md-arrow-background-size:           1rem;
-$select-md-arrow-background-position:       right 1rem center;
-$select-md-padding:                         0 1.6875rem 0 0.75rem;
+$select-md-arrow-background-position:       right 0.75rem center;
+$select-md-padding:                         0 2.25rem 0 0.75rem;
 
 $select-lg-height:                          3rem;
 $select-lg-font-size:                       $font-size-base;
 $select-lg-line-height:                     $line-height-md;
 $select-lg-arrow-background-size:           1rem;
 $select-lg-arrow-background-position:       right 1rem center;
-$select-lg-padding:                         0 1.6875rem 0 0.75rem;
+$select-lg-padding:                         0 2.5rem 0 1rem;
 
 $select-xl-height:                          3.5rem;
 $select-xl-font-size:                       $font-size-lg;
 $select-xl-line-height:                     $line-height-md;
 $select-xl-arrow-background-size:           1rem;
 $select-xl-arrow-background-position:       right 1rem center;
-$select-xl-padding:                         0 1.6875rem 0 0.75rem;
+$select-xl-padding:                         0 2.75rem 0 1rem;
 
 // Sidenav
 $sidenav-background-color:                  $color-background-base;
