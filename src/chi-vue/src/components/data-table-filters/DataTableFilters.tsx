@@ -7,6 +7,7 @@ import {
   DATA_TABLE_CLASSES,
   DRAWER_CLASSES,
   FORM_CLASSES,
+  GENERIC_SIZE_CLASSES,
   ICON_CLASS,
   INPUT_CLASSES,
   PORTAL_CLASS,
@@ -20,6 +21,8 @@ import AdvancedFilters from './AdvancedFilters';
 import Drawer from '../drawer/drawer';
 import store, { STORE_KEY } from '@/store';
 import { getModule } from 'vuex-module-decorators';
+import { detectMajorChiVersion } from '@/utils/utils';
+import './filters.scss';
 
 @Component
 export default class DataTableFilters extends Vue {
@@ -32,6 +35,7 @@ export default class DataTableFilters extends Vue {
   _drawerID?: string;
   drawerActive?: boolean = false;
   storeModule?: any;
+  _chiMajorVersion = 5;
 
   beforeCreate() {
     this._filtersData = {
@@ -103,10 +107,9 @@ export default class DataTableFilters extends Vue {
           id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
           value={!mobile ? this.filterElementValue[filter.id] : this.filterElementValueLive[filter.id]}
           class={`
-          ${SELECT_CLASSES.SELECT}
-          ${this.portal && PORTAL_CLASS}
-          ${mobile && '-mb--1'}
-          -lg
+            ${SELECT_CLASSES.SELECT}
+            ${mobile && '-mb--1'}
+            ${this._chiMajorVersion === 4 ? `${GENERIC_SIZE_CLASSES.LG} ${this.portal && PORTAL_CLASS}` : ''}
           `}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select', mobile || false)}>
@@ -130,7 +133,10 @@ export default class DataTableFilters extends Vue {
           aria-label={`Filter by ${filter.label || filter.name}`}
           id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
           value={!mobile ? this.filterElementValue[filter.id] : this.filterElementValueLive[filter.id]}
-          class={`${INPUT_CLASSES.INPUT} ${mobile && '-mb--1'} -lg`}
+          class={`
+            ${INPUT_CLASSES.INPUT}
+            ${mobile && '-mb--1'}
+            ${this._chiMajorVersion === 4 ? GENERIC_SIZE_CLASSES.LG : ''}`}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'input', mobile || false)}
           placeholder={filter.placeholder || null}
@@ -153,7 +159,7 @@ export default class DataTableFilters extends Vue {
           value={!mobile ? this.filterElementValue[filter.id] : this.filterElementValueLive[filter.id]}
           id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
           data-filter={filter.name}
-          class={`${INPUT_CLASSES.INPUT} ${mobile && '-mb--1'} -lg`}
+          class={`${INPUT_CLASSES.INPUT} ${mobile && '-mb--1'} ${GENERIC_SIZE_CLASSES.LG}`}
           placeholder={filter.placeholder || null}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'textarea', mobile || false)}
         />
@@ -288,6 +294,10 @@ export default class DataTableFilters extends Vue {
     this.drawerActive = !this.drawerActive;
   }
 
+  beforeMount() {
+    this._chiMajorVersion = detectMajorChiVersion();
+  }
+
   render() {
     const standardFilters: JSX.Element[] = [];
     const standardFiltersMobile: JSX.Element[] = [];
@@ -359,17 +369,33 @@ export default class DataTableFilters extends Vue {
             <div
               class={`${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.JUSTIFY.CENTER} ${UTILITY_CLASSES.PADDING.Y[2]}`}>
               <button
+                onClick={() => this.toggleDrawer()}
+                class={`
+                ${BUTTON_CLASSES.BUTTON}
+                ${
+                  this._chiMajorVersion === 4
+                    ? `${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -bg--white -uppercase`
+                    : ''
+                }
+                `}>
+                Cancel
+              </button>
+              <button
                 onClick={() => this.applyChanges()}
                 disabled={
                   this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
                 }
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -uppercase`}>
+                class={`
+                ${BUTTON_CLASSES.BUTTON}
+                ${BUTTON_CLASSES.PRIMARY}
+                ${UTILITY_CLASSES.MARGIN.LEFT[2]}
+                ${
+                  this._chiMajorVersion === 4
+                    ? `${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -uppercase`
+                    : ''
+                }
+                `}>
                 Apply
-              </button>
-              <button
-                onClick={() => this.toggleDrawer()}
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.LG} ${BUTTON_CLASSES.OUTLINE} ${UTILITY_CLASSES.PADDING.X[4]} ${UTILITY_CLASSES.MARGIN.LEFT[2]} -bg--white -uppercase`}>
-                Cancel
               </button>
             </div>
           </div>

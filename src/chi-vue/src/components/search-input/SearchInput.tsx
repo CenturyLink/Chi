@@ -12,6 +12,7 @@ import { SearchInputSizes } from '@/constants/types';
 import { SEARCH_INPUT_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
+import { detectMajorChiVersion } from '@/utils/utils';
 
 @Component
 export default class SearchInput extends Vue {
@@ -25,6 +26,7 @@ export default class SearchInput extends Vue {
 
   cleanButtonVisible = !!(this.$props.value && !this.$props.disabled);
   inputValue = this.$props.value || '';
+  _chiMajorVersion = 5;
 
   _handleValueInput(ev: Event) {
     const newValue = (ev.target as HTMLInputElement).value;
@@ -51,6 +53,10 @@ export default class SearchInput extends Vue {
         (dataTableToolbarComponent as DataTableToolbar)._searchComponent = this;
       }
     }
+  }
+
+  beforeMount() {
+    this._chiMajorVersion = detectMajorChiVersion();
   }
 
   render() {
@@ -82,7 +88,8 @@ export default class SearchInput extends Vue {
       <button
         class={`${BUTTON_CLASSES.BUTTON}
         ${BUTTON_CLASSES.ICON_BUTTON}
-        ${CLOSE_CLASS} -sm`}
+        ${CLOSE_CLASS}
+        ${this._chiMajorVersion === 4 ? '-sm' : '-xs'}`}
         onClick={() => this._cleanInput()}
         aria-label="Clear">
         <div class={BUTTON_CLASSES.CONTENT}>
@@ -96,7 +103,7 @@ export default class SearchInput extends Vue {
         class={`
         ${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON}
         ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.BG_NONE}
-        ${this.$props.size === 'sm' ? '-sm' : ''}
+        ${this._chiMajorVersion === 4 && this.$props.size === 'sm' ? `-${this.$props.size}` : this.$props.size || ''}
         `}
         onClick={() => this.$emit(SEARCH_INPUT_EVENTS.SEARCH, this.inputValue)}
         aria-label="Search">
@@ -121,6 +128,7 @@ export default class SearchInput extends Vue {
       </div>
     );
     const toolbar = <div class={DATA_TABLE_CLASSES.SEARCH}>{formItem}</div>;
+
     return this.$props.dataTableSearch ? toolbar : formItem;
   }
 }

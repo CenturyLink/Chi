@@ -1,0 +1,12 @@
+.chi-toolbar {
+  &__header {
+    // To-do remove once PF fully migrates 5.X
+    .chi-toolbar__start {
+      .chi-toolbar__filters {
+        .chi-popover {
+          max-width: 22.5rem;
+        }
+      }
+    }
+  }
+}
