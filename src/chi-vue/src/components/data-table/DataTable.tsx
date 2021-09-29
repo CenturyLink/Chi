@@ -33,6 +33,7 @@ import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
+import { detectMajorChiVersion } from '@/utils/utils';
 
 let dataTableNumber = 0;
 @Component({})
@@ -58,6 +59,7 @@ export default class DataTable extends Vue {
   _serializedDataBody: DataTableRow[] = [];
   _toolbarComponent?: DataTableToolbar;
   _paginationListenersAdded = false;
+  _chiMajorVersion = 5;
 
   _head() {
     const tableHeadCells = [
@@ -268,7 +270,11 @@ export default class DataTable extends Vue {
       ${BUTTON_CLASSES.ICON_BUTTON}
       ${BUTTON_CLASSES.FLAT}
       -expand
-      -sm
+      ${
+        this._chiMajorVersion === 4 // To be removed
+          ? '-sm'
+          : '-xs'
+      }
       `}
         aria-label="Expand row"
         data-target={`#${rowData.rowId}-content`}
@@ -724,6 +730,7 @@ export default class DataTable extends Vue {
           };
 
           if (this.mode === DataTableModes.CLIENT) {
+            this.accordionsExpanded.length = 0;
             this.activePage = ev;
             this.slicedData = this.sliceData(data);
             pageChangeEventData.data = this.slicedData;
@@ -733,6 +740,8 @@ export default class DataTable extends Vue {
         }
       });
       this._paginationListenersAdded = true;
+    } else {
+      this._paginationListenersAdded = false;
     }
   }
 
@@ -897,6 +906,7 @@ export default class DataTable extends Vue {
   }
 
   beforeMount() {
+    this._chiMajorVersion = detectMajorChiVersion();
     this.detectScreenBreakpoint();
   }
 
