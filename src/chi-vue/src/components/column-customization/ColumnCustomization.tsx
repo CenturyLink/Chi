@@ -65,7 +65,7 @@ export default class ColumnCustomization extends Vue {
                   ${BUTTON_CLASSES.FLAT}
                   ${
                     this._chiMajorVersion === 4
-                      ? `${PORTAL_CLASS} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.LG} -bg--white -uppercase -px--4`
+                      ? `${PORTAL_CLASS} ${BUTTON_CLASSES.PRIMARY} -bg--white -uppercase -px--4`
                       : ''
                   }`}
                 onclick={this._reset}
@@ -78,9 +78,11 @@ export default class ColumnCustomization extends Vue {
               <button
                 class={`
                   ${BUTTON_CLASSES.BUTTON}
-                  ${BUTTON_CLASSES.PRIMARY}
-                  ${BUTTON_CLASSES.OUTLINE}
-                  ${this._chiMajorVersion === 4 ? `${BUTTON_CLASSES.SIZES.LG} -bg--white -uppercase -px--4 -ml--1` : ''}
+                  ${
+                    this._chiMajorVersion === 4
+                      ? `${BUTTON_CLASSES.SIZES.LG} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} -bg--white -uppercase -px--4 -ml--1`
+                      : ''
+                  }
                 `}
                 data-dismiss="modal">
                 Cancel
@@ -90,12 +92,8 @@ export default class ColumnCustomization extends Vue {
                 onclick={this._submitColumnsChange}
                 class={`
                   ${BUTTON_CLASSES.BUTTON}
-
-                  ${
-                    this._chiMajorVersion === 4
-                      ? `${BUTTON_CLASSES.PRIMARY} ${GENERIC_SIZE_CLASSES.LG} -uppercase -px--4`
-                      : ''
-                  }
+                  ${BUTTON_CLASSES.PRIMARY}
+                  ${this._chiMajorVersion === 4 ? `${GENERIC_SIZE_CLASSES.LG} -uppercase -px--4` : ''}
                   `}
                 disabled>
                 Save

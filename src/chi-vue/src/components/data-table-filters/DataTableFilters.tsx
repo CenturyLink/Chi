@@ -369,26 +369,9 @@ export default class DataTableFilters extends Vue {
             <div
               class={`${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.JUSTIFY.CENTER} ${UTILITY_CLASSES.PADDING.Y[2]}`}>
               <button
-                onClick={() => this.applyChanges()}
-                disabled={
-                  this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
-                }
-                class={`
-                ${BUTTON_CLASSES.BUTTON}
-                ${BUTTON_CLASSES.PRIMARY}
-                ${
-                  this._chiMajorVersion === 4
-                    ? `${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -uppercase`
-                    : ''
-                }
-                `}>
-                Apply
-              </button>
-              <button
                 onClick={() => this.toggleDrawer()}
                 class={`
                 ${BUTTON_CLASSES.BUTTON}
-                ${UTILITY_CLASSES.MARGIN.LEFT[2]}
                 ${
                   this._chiMajorVersion === 4
                     ? `${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -bg--white -uppercase`
@@ -396,6 +379,23 @@ export default class DataTableFilters extends Vue {
                 }
                 `}>
                 Cancel
+              </button>
+              <button
+                onClick={() => this.applyChanges()}
+                disabled={
+                  this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
+                }
+                class={`
+                ${BUTTON_CLASSES.BUTTON}
+                ${BUTTON_CLASSES.PRIMARY}
+                ${UTILITY_CLASSES.MARGIN.LEFT[2]}
+                ${
+                  this._chiMajorVersion === 4
+                    ? `${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -uppercase`
+                    : ''
+                }
+                `}>
+                Apply
               </button>
             </div>
           </div>

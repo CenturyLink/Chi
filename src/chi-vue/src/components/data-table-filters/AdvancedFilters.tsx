@@ -114,7 +114,7 @@ export default class AdvancedFilters extends Vue {
           id={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
           value={this.filterElementValueLive[filter.id]}
           class={`${SELECT_CLASSES.SELECT} ${this.mobile ? '-mb--1' : ''} ${
-            this._chiMajorVersion === 4 ? GENERIC_SIZE_CLASSES.LG : ''
+            this._chiMajorVersion === 4 ? `${GENERIC_SIZE_CLASSES.LG} ${PORTAL_CLASS}` : ''
           }`}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select')}>
@@ -287,7 +287,9 @@ export default class AdvancedFilters extends Vue {
             modal={this._chiMajorVersion === 5}
             drag
             closable>
-            <div class={`${ACCORDION_CLASSES.ACCORDION} -sm`} ref="advancedFiltersAccordion">
+            <div
+              class={`${ACCORDION_CLASSES.ACCORDION} ${this._chiMajorVersion === 4 ? PORTAL_CLASS : ''} -sm`}
+              ref="advancedFiltersAccordion">
               {advancedFilters}
             </div>
             <div class={`advanced-filters__actions ${UTILITY_CLASSES.DISPLAY.FLEX} -mt--2`}>
