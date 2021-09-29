@@ -650,6 +650,8 @@ export default class DataTable extends Vue {
         }
       });
       this._paginationListenersAdded = true;
+    } else {
+      this._paginationListenersAdded = false;
     }
   }
 

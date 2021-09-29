@@ -107,10 +107,9 @@ export default class DataTableFilters extends Vue {
           id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
           value={!mobile ? this.filterElementValue[filter.id] : this.filterElementValueLive[filter.id]}
           class={`
-          ${SELECT_CLASSES.SELECT}
-          ${this.portal && PORTAL_CLASS}
-          ${mobile && '-mb--1'}
-          ${this._chiMajorVersion === 4 ? GENERIC_SIZE_CLASSES.LG : ''}
+            ${SELECT_CLASSES.SELECT}
+            ${mobile && '-mb--1'}
+            ${this._chiMajorVersion === 4 ? `${GENERIC_SIZE_CLASSES.LG} ${this.portal && PORTAL_CLASS}` : ''}
           `}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select', mobile || false)}>
@@ -160,7 +159,7 @@ export default class DataTableFilters extends Vue {
           value={!mobile ? this.filterElementValue[filter.id] : this.filterElementValueLive[filter.id]}
           id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
           data-filter={filter.name}
-          class={`${INPUT_CLASSES.INPUT} ${mobile && '-mb--1'} -lg`}
+          class={`${INPUT_CLASSES.INPUT} ${mobile && '-mb--1'} ${GENERIC_SIZE_CLASSES.LG}`}
           placeholder={filter.placeholder || null}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'textarea', mobile || false)}
         />
@@ -389,11 +388,10 @@ export default class DataTableFilters extends Vue {
                 onClick={() => this.toggleDrawer()}
                 class={`
                 ${BUTTON_CLASSES.BUTTON}
-                ${BUTTON_CLASSES.OUTLINE}
                 ${UTILITY_CLASSES.MARGIN.LEFT[2]}
                 ${
                   this._chiMajorVersion === 4
-                    ? `${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -bg--white -uppercase`
+                    ? `${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -bg--white -uppercase`
                     : ''
                 }
                 `}>

@@ -311,7 +311,11 @@ export default class AdvancedFilters extends Vue {
                 onclick={() => this._toggleAdvancedFiltersPopover()}
                 class={`
                 ${BUTTON_CLASSES.BUTTON}
-                ${this._chiMajorVersion === 4 ? UTILITY_CLASSES.PADDING.X[4] : ''}
+                ${
+                  this._chiMajorVersion === 4
+                    ? `${UTILITY_CLASSES.PADDING.X[4]} -primary -outline ${GENERIC_SIZE_CLASSES.LG} -bg--white`
+                    : ''
+                }
                 `}>
                 CANCEL
               </button>
@@ -320,7 +324,9 @@ export default class AdvancedFilters extends Vue {
                 class={`
                   ${BUTTON_CLASSES.BUTTON}
                   ${BUTTON_CLASSES.PRIMARY}
-                  ${this._chiMajorVersion === 4 ? UTILITY_CLASSES.PADDING.X[4] : ''} -ml--2
+                  ${
+                    this._chiMajorVersion === 4 ? `${GENERIC_SIZE_CLASSES.LG} ${UTILITY_CLASSES.PADDING.X[4]}` : ''
+                  } -ml--2
                   `}
                 ref="advancedFiltersApplyButton"
                 disabled={

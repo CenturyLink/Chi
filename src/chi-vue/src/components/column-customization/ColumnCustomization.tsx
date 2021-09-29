@@ -5,6 +5,7 @@ import {
   BUTTON_CLASSES,
   CLOSED_CLASS,
   DATA_TABLE_CLASSES,
+  GENERIC_SIZE_CLASSES,
   ICON_CLASS,
   MODAL_CLASSES,
   PORTAL_CLASS,
@@ -90,7 +91,11 @@ export default class ColumnCustomization extends Vue {
                 class={`
                   ${BUTTON_CLASSES.BUTTON}
 
-                  ${this._chiMajorVersion === 4 ? `${BUTTON_CLASSES.PRIMARY} -lg -uppercase -px--4` : ''}
+                  ${
+                    this._chiMajorVersion === 4
+                      ? `${BUTTON_CLASSES.PRIMARY} ${GENERIC_SIZE_CLASSES.LG} -uppercase -px--4`
+                      : ''
+                  }
                   `}
                 disabled>
                 Save
