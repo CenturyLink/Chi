@@ -55,7 +55,7 @@ export default class ColumnCustomization extends Vue {
             </header>
             <div class={MODAL_CLASSES.CONTENT} key={this.key}>
               <ColumnCustomizationContent
-               version={this._chiMajorVersion}
+                version={this._chiMajorVersion}
                 available-columns={this._availableColumns}
                 selected-columns={this._selectedColumns}
               />
