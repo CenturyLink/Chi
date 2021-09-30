@@ -11,12 +11,13 @@ import { _changeOrder } from '@/components/column-customization/utils';
 @Component
 export default class ColumnCustomizationContent extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
-  @Prop() selectedStandardColumns?: DataTableColumn[];
   @Prop() version?: number;
+  @Prop() selectedColumns?: DataTableColumn[];
 
   key = 0;
   _availableColumns?: DataTableColumn[] = [];
   _selectedColumns?: DataTableColumn[] = [];
+  _preSelection?: HTMLOptionElement;
   _availableColumnsComponent?: AvailableColumns;
   _selectedColumnsComponent?: SelectedColumns;
   _canMoveColumnLocked = false;
@@ -31,10 +32,10 @@ export default class ColumnCustomizationContent extends Vue {
   }
 
   @Watch('availableColumns')
-  @Watch('selectedStandardColumns')
+  @Watch('selectedColumns')
   _processData() {
     this._availableColumns = copyArrayOfObjects(this.$props.availableColumns);
-    this._selectedColumns = copyArrayOfObjects(this.$props.selectedStandardColumns);
+    this._selectedColumns = copyArrayOfObjects(this.$props.selectedColumns);
   }
 
   _controlButton(icon: string, action: Function) {
@@ -153,6 +154,7 @@ export default class ColumnCustomizationContent extends Vue {
         const columnName = option.value;
 
         option.selected = false;
+        this._preSelection = option;
         if (columnName && columns) {
           const columnData = columns.find(columnData => columnData.name === columnName);
 
