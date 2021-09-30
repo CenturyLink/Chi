@@ -51,27 +51,6 @@ export class AppLayout {
     }
   }
 
-  connectedCallback() {
-    const observerTarget = this.el;
-    const mutationObserverConfig = {
-      attributes: true,
-      attributeOldValue: true,
-      attributeFilter: ['title']
-    };
-
-    if (!this.mutationObserver) {
-      const subscriberCallback = (mutations) => {
-        mutations.forEach((mutation) => {
-          this.appLayoutTitle = mutation.target.title;
-        });
-      };
-
-      this.mutationObserver = new MutationObserver(subscriberCallback);
-    }
-
-    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
-  }
-
   disconnectedCallback() {
     this.mutationObserver.disconnect();
   }
@@ -81,6 +60,7 @@ export class AppLayout {
 
     if (this.el.getAttribute('title')) {
       this.appLayoutTitle = this.el.getAttribute('title');
+      this.el.removeAttribute('title');
     }
 
     if (this.el.querySelector("[slot=help-icon]")) {
