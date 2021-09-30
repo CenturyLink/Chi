@@ -42,8 +42,6 @@ export class AppLayout {
 
   @State() appLayoutFooter: boolean;
 
-  private mutationObserver;
-
   @Watch('format')
   typeValidation(newValue: string) {
     if (newValue && !APP_LAYOUT_FORMATS.includes(newValue)) {
@@ -51,8 +49,11 @@ export class AppLayout {
     }
   }
 
-  disconnectedCallback() {
-    this.mutationObserver.disconnect();
+  connectedCallback() {
+    if (this.el.getAttribute('title')) {
+      this.appLayoutTitle = this.el.getAttribute('title');
+      this.el.removeAttribute('title');
+    }
   }
 
   componentWillLoad() {
