@@ -12,6 +12,7 @@ import { _changeOrder } from '@/components/column-customization/utils';
 export default class ColumnCustomizationContent extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
   @Prop() selectedStandardColumns?: DataTableColumn[];
+  @Prop() version?: number;
 
   key = 0;
   _availableColumns?: DataTableColumn[] = [];
@@ -60,7 +61,12 @@ export default class ColumnCustomizationContent extends Vue {
         <button
           ref={refButton}
           onclick={() => action()}
-          class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT}`}
+          class={`
+            ${BUTTON_CLASSES.BUTTON}
+            ${BUTTON_CLASSES.ICON_BUTTON}
+            ${BUTTON_CLASSES.FLAT}
+            ${this.$props.version === 4 ? `${BUTTON_CLASSES.PRIMARY} ${PORTAL_CLASS}` : ''}
+          `}
           aria-label={ariaLabel}>
           <div class={BUTTON_CLASSES.CONTENT}>
             <i class={`${ICON_CLASS} icon-${icon}`} aria-hidden="true" />

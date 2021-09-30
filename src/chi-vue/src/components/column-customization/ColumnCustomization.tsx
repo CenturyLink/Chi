@@ -1,10 +1,11 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import { findComponent, uuid4 } from '@/utils/utils';
+import { detectMajorChiVersion, findComponent, uuid4 } from '@/utils/utils';
 import {
   BACKDROP_CLASSES,
   BUTTON_CLASSES,
   CLOSED_CLASS,
   DATA_TABLE_CLASSES,
+  GENERIC_SIZE_CLASSES,
   ICON_CLASS,
   MODAL_CLASSES,
   PORTAL_CLASS,
@@ -28,6 +29,7 @@ export default class ColumnCustomization extends Vue {
   _ColumnCustomizationContentComponent?: ColumnCustomizationContent;
   _selectedData?: DataTableColumn[];
   _modalId?: string;
+  _chiMajorVersion = 5;
 
   _modal() {
     return (
@@ -51,6 +53,7 @@ export default class ColumnCustomization extends Vue {
               <ColumnCustomizationContent
                 available-columns={this._availableColumns}
                 selected-standard-columns={this._selectedColumns}
+                version={this._chiMajorVersion}
               />
             </div>
             <footer class={MODAL_CLASSES.FOOTER}>
@@ -58,30 +61,40 @@ export default class ColumnCustomization extends Vue {
                 ref="resetButton"
                 class={`
                   ${BUTTON_CLASSES.BUTTON}
-                  ${PORTAL_CLASS}
                   ${BUTTON_CLASSES.ICON_BUTTON}
-                  ${BUTTON_CLASSES.PRIMARY}
                   ${BUTTON_CLASSES.FLAT}
-                  ${BUTTON_CLASSES.SIZES.LG}
-                  -bg--white
-                  -uppercase
-                  -px--4`}
+                  ${
+                    this._chiMajorVersion === 4
+                      ? `${PORTAL_CLASS} ${BUTTON_CLASSES.PRIMARY} -bg--white -uppercase -px--4`
+                      : ''
+                  }`}
                 onclick={this._reset}
                 disabled>
                 <div class="chi-button__content">
                   <i aria-hidden="true" class="chi-icon icon-reload"></i>
                 </div>
               </button>
-              <div class="chi-divider -vertical"></div>
+              <div class="chi-divider -vertical -mr--2"></div>
               <button
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} -bg--white -uppercase -px--4 -ml--1`}
+                class={`
+                  ${BUTTON_CLASSES.BUTTON}
+                  ${
+                    this._chiMajorVersion === 4
+                      ? `${BUTTON_CLASSES.SIZES.LG} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} -bg--white -uppercase -px--4 -ml--1`
+                      : ''
+                  }
+                `}
                 data-dismiss="modal">
                 Cancel
               </button>
               <button
                 ref="saveButton"
                 onclick={this._submitColumnsChange}
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} -lg -uppercase -px--4`}
+                class={`
+                  ${BUTTON_CLASSES.BUTTON}
+                  ${BUTTON_CLASSES.PRIMARY}
+                  ${this._chiMajorVersion === 4 ? `${GENERIC_SIZE_CLASSES.LG} -uppercase -px--4` : ''}
+                  `}
                 disabled>
                 Save
               </button>
@@ -162,12 +175,20 @@ export default class ColumnCustomization extends Vue {
     }
   }
 
+  beforeMount() {
+    this._chiMajorVersion = detectMajorChiVersion();
+  }
+
   render() {
     const modalButton = (
       <button
         ref="modalButton"
         data-target={`#${this._modalId}`}
-        class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT}`}>
+        class={`
+          ${BUTTON_CLASSES.BUTTON}
+          ${BUTTON_CLASSES.ICON_BUTTON}
+          ${BUTTON_CLASSES.FLAT}
+          ${this._chiMajorVersion === 4 ? `${PORTAL_CLASS} ${BUTTON_CLASSES.PRIMARY}` : ''}`}>
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-table-column-settings`} aria-hidden="true" />
         </div>
