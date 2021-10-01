@@ -1,4 +1,23 @@
 # CHANGELOG
+## 5.4.0 (September 30, 2021)
+### Components
+#### Added
+* Added: Column customization Chi Vue component options now maintain selected state when reordering.
+* Added: Chi Vue components now render conditionally based on the used version of Chi.
+* Added: Icons `icon-bookmark-outline`, `icon-bookmark` and `icon-reset`.
+#### Changed
+* Changed: CTA link arrow placement has changed from right to left in Lumen Enterprise Portal theme.
+#### Fixed
+* Fixed: App layout web component title attribute issue which caused showing browser default tooltip element.
+* Fixed: Column customization Chi Vue component ordering issue which caused wrong positioning of first and last items.
+* Fixed: Select component now truncates long texts.
+* Fixed: Data table gran-child position has been improved for better alignment with child row.
+### Documentation
+#### Changed
+* Changed: Accordion chevrons placement in table filtering popover example have changed from left to right.
+#### Fixed
+* Fixed: Background-color utility classes are now visible in Lumen Enterprise Portal theme.
+
 ## 5.3.1 (September 17, 2021)
 ### Components
 #### Changed
@@ -32,7 +51,7 @@
 * Changed: Data table Vue component mobile version has been improved to support click action on chevron element.
 * Changed: Data table Vue component header has been improved to support text wrapping.
 #### Fixed
-* Fixed: Accessibility error in Data table vue component due to missing id on pagination.
+* Fixed: Accessibility error in Data table Vue component due to missing id on pagination.
 ### Documentation
 #### Changed
 * Changed: Data table complex example has removed current badges from status column and replaced with status column illustrated in portal style guide.
