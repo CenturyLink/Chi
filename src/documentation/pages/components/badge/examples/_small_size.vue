@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     h4 Small
-    <ComponentExample id="small_size_lumen_centurylink" :tabs="exampleTabs">
+    <ComponentExample id="small_size_lumen_centurylink" :tabs="exampleTabs" :padding="'-p--0'">
       div(slot="example")
         .-p--2
           chi-badge(size='sm', class='-m--1')= 'Badge'
@@ -60,7 +60,7 @@ declare const chi: any;
     };
   }
 })
-export default class SmallSizeExample extends Vue {
+export default class SmallSize extends Vue {
   mounted() {
     chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
   }

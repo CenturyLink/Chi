@@ -33,5 +33,5 @@ import TextTransform from './_text_transform.vue';
     TextTransform
   }
 })
-export default class BadgeExamples extends Vue {}
+export default class Examples extends Vue {}
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Icon badges"id="icon_badges_lumen_centurylink" :tabs="exampleTabs">
+  <ComponentExample title="Icon badges"id="icon_badges_lumen_centurylink" :tabs="exampleTabs" :padding="'-p--0'">
     div(slot="example-description")
       p.-text Icons can be placed before, after, or on both sides of text.
     div(slot="example")
@@ -119,7 +119,7 @@ declare const chi: any;
     };
   }
 })
-export default class IconBadgesExample extends Vue {
+export default class IconBadges extends Vue {
   mounted() {
     chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
   }

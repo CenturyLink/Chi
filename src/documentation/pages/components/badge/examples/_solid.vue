@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Solid" id="solid_lumen_centurylink" :tabs="exampleTabs">
+  <ComponentExample title="Solid" id="solid_lumen_centurylink" :tabs="exampleTabs" :padding="'-p--0'">
     div(slot="example")
       .chi-grid.-no-gutter
         .chi-col.-w--12
@@ -97,7 +97,7 @@ declare const chi: any;
     };
   }
 })
-export default class SolidExample extends Vue {
+export default class Solid extends Vue {
   mounted() {
     chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
   }
