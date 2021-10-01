@@ -42,8 +42,6 @@ export class AppLayout {
 
   @State() appLayoutFooter: boolean;
 
-  private mutationObserver;
-
   @Watch('format')
   typeValidation(newValue: string) {
     if (newValue && !APP_LAYOUT_FORMATS.includes(newValue)) {
@@ -52,28 +50,10 @@ export class AppLayout {
   }
 
   connectedCallback() {
-    const observerTarget = this.el;
-    const mutationObserverConfig = {
-      attributes: true,
-      attributeOldValue: true,
-      attributeFilter: ['title']
-    };
-
-    if (!this.mutationObserver) {
-      const subscriberCallback = (mutations) => {
-        mutations.forEach((mutation) => {
-          this.appLayoutTitle = mutation.target.title;
-        });
-      };
-
-      this.mutationObserver = new MutationObserver(subscriberCallback);
+    if (this.el.getAttribute('title')) {
+      this.appLayoutTitle = this.el.getAttribute('title');
+      this.el.removeAttribute('title');
     }
-
-    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
-  }
-
-  disconnectedCallback() {
-    this.mutationObserver.disconnect();
   }
 
   componentWillLoad() {
@@ -81,6 +61,7 @@ export class AppLayout {
 
     if (this.el.getAttribute('title')) {
       this.appLayoutTitle = this.el.getAttribute('title');
+      this.el.removeAttribute('title');
     }
 
     if (this.el.querySelector("[slot=help-icon]")) {
