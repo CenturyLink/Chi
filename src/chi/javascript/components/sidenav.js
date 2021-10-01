@@ -2,6 +2,7 @@ import { Component } from "../core/component";
 import { Util } from "../core/util.js";
 import { chi } from "../core/chi";
 import { Drawer, EVENTS as DRAWER_EVENTS } from "./drawer";
+import { Accordion } from "../components/accordion";
 
 const COMPONENT_SELECTOR = '.chi-sidenav';
 const COMPONENT_TYPE = "sidenav";
@@ -15,6 +16,8 @@ const DRAWER_LINKLIST_CLASS = "chi-sidenav__drawer-list";
 const DRAWER_ITEM_LIST_CLASS = "chi-sidenav__drawer-item-list";
 const DRAWER_ITEM_TAB_CLASS = "chi-sidenav__drawer-item-tab";
 const DRAWER_SUBITEM_TRIGGER_CLASS = "chi-drawer__subitem-list-trigger";
+const ACCORDION_CLASS = "chi-accordion";
+const ACCORDION_ITEM_CLASS = "chi-accordion__item";
 const OPEN_ON_HOVER_DELAY = 300;
 const DEFAULT_CONFIG = {
   animated: true,
@@ -28,6 +31,7 @@ class Sidenav extends Component {
     let self = this;
     this._drawersContainer = this._elem.querySelector('.' + SIDENAV_DRAWERS_CLASS);
     this._drawers = [];
+    this._accordions = [];
     this._clickOnComponent = false;
     this._autocloseTimeoutId = null;
     this._menuItemAnimation = null;
@@ -79,11 +83,21 @@ class Sidenav extends Component {
       this._elem.querySelectorAll('.' + LINKLIST_CLASS + '>li>a'),
       function (menuItemLink) {
         const drawerElem = Util.getTarget(menuItemLink);
+
         if (Util.checkHasClass(drawerElem, DRAWER_CLASS)) {
           const drawer = Drawer.factory(menuItemLink, {
             persistOnClick: true
           });
+          const drawerAccordionElem = drawerElem
+            .querySelector(`.${ACCORDION_CLASS}`);
           const index = previousDrawers.indexOf(drawer);
+
+          if (drawerAccordionElem) {
+            const accordion = Accordion.factory(drawerAccordionElem, { expansionMode: 'single' });
+
+            self._accordions.push(accordion);
+            self._initAccordionActivators(accordion);
+          }
           if (index === -1) {
             self._drawers.push(drawer);
           } else {
@@ -96,6 +110,104 @@ class Sidenav extends Component {
     previousDrawers.forEach(function (drawer) {
       drawer.dispose();
     });
+  }
+
+  _activateAccordionAnchor(anchor, accordion) {
+    const activeItem = this._getActiveAccordionAnchor();
+    const ancestorAccordionItems = [];
+
+    if (activeItem) {
+      Util.removeClass(activeItem, chi.classes.ACTIVE);
+    }
+
+    if (anchor) {
+      const activeAccordionItems = this._getActiveAccordionItems();
+
+      Util.addClass(anchor, chi.classes.ACTIVE);
+      this.hideAll();
+
+      for (
+        let cur = anchor;
+        cur && !Util.hasClass(cur, SIDENAV_DRAWERS_CLASS);
+        cur = cur.parentNode
+      ) {
+        if (Util.hasClass(cur, ACCORDION_ITEM_CLASS)) {
+          const activeSiblings = cur.parentNode.querySelector(`.${ACCORDION_ITEM_CLASS}.${chi.classes.ACTIVE}`);
+
+          ancestorAccordionItems.push(cur);
+          if (activeSiblings) {
+            Array.prototype.forEach.call(
+              activeSiblings,
+              activeItem => {
+                Util.removeClass(activeItem, chi.classes.ACTIVE);
+              }
+            );
+          }
+          Util.addClass(cur, chi.classes.ACTIVE);
+        } else if (Util.hasClass(cur, DRAWER_CLASS)) {
+          const associatedMenuItem = this.getAssociatedMenuItem(cur.getAttribute('id'));
+
+          this.activateMenuItem(associatedMenuItem.parentNode);
+        }
+      }
+
+      if (activeAccordionItems) {
+        Array.prototype.forEach.call(
+          activeAccordionItems,
+          (item) => {
+            if (!ancestorAccordionItems.includes(item)) {
+              Util.removeClass(item, chi.classes.ACTIVE);
+              accordion.hide(item);
+            }
+          }
+        );
+      }
+
+      Array.prototype.forEach.call(
+        this._accordions,
+        (accordionInstance) => {
+          if (accordionInstance !== accordion) {
+            accordionInstance.collapseAll();
+          }
+        }
+      );
+    }
+  }
+
+  _getActiveAccordionAnchor() {
+    const activeItem = this._elem.querySelector(`.${SIDENAV_DRAWERS_CLASS} .${DRAWER_CLASS} .${ACCORDION_CLASS} .${ACCORDION_ITEM_CLASS} a.${chi.classes.ACTIVE}`);
+
+    if (activeItem) {
+      return activeItem;
+    }
+    return null;
+  }
+
+  _getActiveAccordionItems() {
+    const activeAccordionItems = this._elem
+      .querySelectorAll(`.${SIDENAV_DRAWERS_CLASS} .${DRAWER_CLASS} .${ACCORDION_CLASS} .${ACCORDION_ITEM_CLASS}.${chi.classes.ACTIVE}`);
+
+    if (activeAccordionItems) {
+      return activeAccordionItems;
+    }
+    return null;
+  }
+
+  _initAccordionActivators(accordion) {
+    const accordionElem = accordion._elem;
+
+    if (accordionElem) {
+      const activators = accordionElem.querySelectorAll('a');
+  
+      Array.prototype.forEach.call(
+        activators,
+        (anchor) => {
+          anchor.addEventListener('click', () => {
+            this._activateAccordionAnchor(anchor, accordion);
+          });
+        }
+      );
+    }
   }
 
   _resetDrawerAnimation() {
@@ -241,6 +353,12 @@ class Sidenav extends Component {
     );
   }
 
+  getAssociatedMenuItem(drawerId) {
+    return this._elem.querySelector(
+      'ul.' + LINKLIST_CLASS + '>li a[href="#' + drawerId + '"'
+    );
+  }
+
   getSelectedMenuItem() {
     return this._elem.querySelector(
       'ul.' + LINKLIST_CLASS + '>li a.' + chi.classes.ACTIVE
@@ -380,6 +498,7 @@ class Sidenav extends Component {
     }
   }
 
+  // Legacy
   toggleDrawerItemList(drawerMenuItem) {
     const activeDrawerMenuItem = this.getDrawerActiveMenuItem();
     const drawerMenuItemList = drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
@@ -506,13 +625,14 @@ class Sidenav extends Component {
     if (activator && drawer.id) {
       menuItemLink = this._getMenuItemLink(drawer);
       menuItem = menuItemLink.parentNode;
-      if (drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) === null ||
-        Util.checkHasClass(activator, DRAWER_ITEM_TAB_CLASS)) {
-        this.close(menuItemLink);
-      }
 
       if (drawerMenuItem) {
         const drawerMenuItemList = drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
+
+        if (drawerMenuItem.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`) === null ||
+          Util.checkHasClass(activator, DRAWER_ITEM_TAB_CLASS)) {
+          this.close(menuItemLink);
+        }
 
         if (drawerMenuItemList) {
           if (Util.checkHasClass(activator, SIDENAV_TITLE_CLASS) ||
@@ -596,6 +716,7 @@ class Sidenav extends Component {
     this._drawersContainer = null;
     this._clickOnComponent = null;
     this._autocloseTimeoutId = null;
+    this._accordions.forEach(accordion => accordion.dispose());
     this._removeEventHandlers();
   }
 
