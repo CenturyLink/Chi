@@ -25,7 +25,24 @@ export default class ColumnCustomizationAvailableColumns extends Vue {
     }
   }
 
+  _sortAvailableColumns() {
+    this.$props.availableColumns.sort((a: DataTableColumn, b: DataTableColumn) => {
+      const firstValue = a.label.toLowerCase(),
+        secondValue = b.label.toLowerCase();
+
+      if (firstValue < secondValue) {
+        return -1;
+      }
+      if (firstValue > secondValue) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
   render() {
+    this._sortAvailableColumns();
+
     const options: [] = this.$props.availableColumns.map((column: DataTableColumn) => {
       return <option value={column.name}>{column.label || column.name}</option>;
     });
