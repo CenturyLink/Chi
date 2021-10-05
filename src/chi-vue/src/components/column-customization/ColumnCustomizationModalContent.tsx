@@ -226,10 +226,8 @@ export default class ColumnCustomizationContent extends Vue {
       Array.from(selectElement.selectedOptions).includes(option)
     );
 
-    this._canMoveUp = selectedIndex !== 0;
-    this._canMoveDown = selectedIndex !== selectElement.length - 1;
-    (this.$refs.buttonMoveUp as HTMLButtonElement).disabled = !this._canMoveUp;
-    (this.$refs.buttonMoveDown as HTMLButtonElement).disabled = !this._canMoveDown;
+    (this.$refs.buttonMoveUp as HTMLButtonElement).disabled = selectedIndex === 0;
+    (this.$refs.buttonMoveDown as HTMLButtonElement).disabled = selectedIndex === selectElement.length - 1;
   }
 
   render() {
