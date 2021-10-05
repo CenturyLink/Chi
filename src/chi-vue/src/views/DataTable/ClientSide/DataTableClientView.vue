@@ -4,7 +4,8 @@
     <ChiDataTable
       :data="table"
       :config="config"
-      @chiSelectedRowsChange="e => this.chiSelectedRowsChange(e)"
+      @chiRowSelected="e => this.chiRowSelected(e)"
+      @chiRowDeselected="e => this.chiRowDeselected(e)"
       @chiPageChange="e => this.pageChange(e)"
       @chiPageSizeChange="e => this.pageSizeChange(e)"
       @chiDataSorting="e => this.dataSorting(e)"
@@ -123,8 +124,11 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     chiColumnsReset: e => {
       console.log('chiColumnsReset', e);
     },
-    chiSelectedRowsChange: e => {
-      console.log('chiRowSelect', e);
+    chiRowSelected: e => {
+      console.log('chiRowSelected', e);
+    },
+    chiRowDeselected: e => {
+      console.log('chiRowDeselected', e);
     },
     pageChange: e => {
       console.log('chiPageChange', e);

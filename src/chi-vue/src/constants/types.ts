@@ -45,7 +45,7 @@ export interface DataTableRow {
   parent?: DataTableRow;
   rowId: string;
   rowNumber: string;
-  selected?: boolean;
+  selected?: boolean | 'indeterminate';
   selectionDisabled?: boolean;
 }
 export interface DataTableData {
@@ -95,7 +95,7 @@ export interface DataTableConfig {
     pageJumper?: boolean;
     results?: number;
   };
-  hierarchicalSelection?: boolean;
+  treeSelection?: boolean;
   resultsPerPage?: number;
   style: DataTableStyleConfig;
   selectable?: boolean;

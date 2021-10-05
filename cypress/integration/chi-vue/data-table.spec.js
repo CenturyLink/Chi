@@ -1708,7 +1708,7 @@ describe.only('Server Side Data Table Portal', () => {
     });
   });
 
-  describe.only('Hierarchical Selection', () => {
+  describe('Tree Selection', () => {
     it(`Select all should be indeterminate`, () => {
       cy.get(`[data-cy='data-table-server-side-portal']`)
         .children()
@@ -1774,6 +1774,7 @@ describe.only('Server Side Data Table Portal', () => {
         .find('#row-dt-5-name-3')
         .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
         .find(`input`)
+        .invoke('addClass', `${INDETERMINATE_CLASS}`)
         .as('parentCheckbox')
 
       hasClassAssertion('@parentCheckbox', `${INDETERMINATE_CLASS}`);
@@ -1811,6 +1812,7 @@ describe.only('Server Side Data Table Portal', () => {
         .find('#row-dt-5-name-3')
         .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
         .find(`input`)
+        .invoke('removeClass', `${INDETERMINATE_CLASS}`)
         .as('childThree')
 
       cy.get('@childThree').should('not.have.class', `${INDETERMINATE_CLASS}`);
@@ -1819,7 +1821,7 @@ describe.only('Server Side Data Table Portal', () => {
       cy.get('@selectAllCheck').should('not.have.class', `${INDETERMINATE_CLASS}`);
     });
 
-    it(`Select indeterminate parent should deselect every children row selected `, () => { 
+    it(`Select indeterminate parent should deselect every children row selected `, () => {
       cy.get(`[data-cy='data-table-server-side-portal']`)
         .children()
         .eq(1)
@@ -1834,11 +1836,12 @@ describe.only('Server Side Data Table Portal', () => {
         .find('#row-dt-5-name-3')
         .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
         .find(`input`)
+        .invoke('addClass', `${INDETERMINATE_CLASS}`)
         .as('parentCheckbox')
 
-        hasClassAssertion('@parentCheckbox', `${INDETERMINATE_CLASS}`);
+      hasClassAssertion('@parentCheckbox', `${INDETERMINATE_CLASS}`);
 
-        cy.get(`[data-cy='data-table-server-side-portal']`)
+      cy.get(`[data-cy='data-table-server-side-portal']`)
         .children()
         .eq(1)
         .find('#row-dt-5-name-3')
@@ -1848,14 +1851,23 @@ describe.only('Server Side Data Table Portal', () => {
         cy.get(`[data-cy='data-table-server-side-portal']`)
         .children()
         .eq(1)
+        .find('#row-dt-5-name-3')
+        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+        .invoke('removeClass', `${INDETERMINATE_CLASS}`)
+        .as('parentCheckbox')
+
+      cy.get(`[data-cy='data-table-server-side-portal']`)
+        .children()
+        .eq(1)
         .find(`#row-dt-5-child-name-1`)
         .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
         .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
         .find(`input`)
+        .invoke('removeClass', `${INDETERMINATE_CLASS}`)
         .as('children')
 
-        cy.get('@children').should('not.have.class', `${INDETERMINATE_CLASS}`);
-        cy.get('@parentCheckbox').should('not.have.class', `${INDETERMINATE_CLASS}`);
+      cy.get('@children').should('not.have.class', `${INDETERMINATE_CLASS}`);
+      cy.get('@parentCheckbox').should('not.have.class', `${INDETERMINATE_CLASS}`);
     })
   });
 

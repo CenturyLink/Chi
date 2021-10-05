@@ -31,7 +31,7 @@ h2 Data Table Server Side (Portal)
 
 .test-data-table.-p--3.-w--100
   #base-server-side-portal
-    chi-vue-data-table(data-cy='data-table-server-side-portal' ref="dataTableServerSidePortalRef" :config="config", :data="table")
+    chi-vue-data-table(data-cy='data-table-server-side-portal' ref="dataTableServerSidePortalRef", :config="config", :data="table")
       template(#status='payload')
         div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
           span.-text--truncate {{ payload.status }}
