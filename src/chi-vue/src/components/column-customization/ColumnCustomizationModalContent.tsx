@@ -27,6 +27,8 @@ export default class ColumnCustomizationContent extends Vue {
   beforeCreate() {
     this._availableColumns = [];
     this._selectedColumns = [];
+    this._canMoveUp = true;
+    this._canMoveDown = true;
   }
 
   created() {
@@ -64,13 +66,9 @@ export default class ColumnCustomizationContent extends Vue {
         refButton = 'buttonMoveDown';
       }
 
-      let isDisabled;
-      if (icon === 'chevron-up') {
-        isDisabled = !this._canMoveUp;
-      } else if (icon === 'chevron-down') {
-        isDisabled = !this._canMoveDown;
-      } else {
-        isDisabled = false;
+      let isDisabled = false;
+      if ((icon === 'chevron-up' && !this._canMoveUp) || (icon === 'chevron-down' && !this._canMoveDown)) {
+        isDisabled = true;
       }
 
       return (
