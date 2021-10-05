@@ -21,6 +21,8 @@ export default class ColumnCustomizationContent extends Vue {
   _availableColumnsComponent?: AvailableColumns;
   _selectedColumnsComponent?: SelectedColumns;
   _canMoveColumnLocked = false;
+  _canMoveUp = true;
+  _canMoveDown = true;
 
   beforeCreate() {
     this._availableColumns = [];
@@ -56,10 +58,24 @@ export default class ColumnCustomizationContent extends Vue {
 
       if (icon === 'chevron-left') {
         refButton = 'buttonDeselect';
+      } else if (icon === 'chevron-up') {
+        refButton = 'buttonMoveUp';
+      } else if (icon === 'chevron-down') {
+        refButton = 'buttonMoveDown';
+      }
+
+      let isDisabled;
+      if (icon === 'chevron-up') {
+        isDisabled = !this._canMoveUp;
+      } else if (icon === 'chevron-down') {
+        isDisabled = !this._canMoveDown;
+      } else {
+        isDisabled = false;
       }
 
       return (
         <button
+          disabled={isDisabled}
           ref={refButton}
           onclick={() => action()}
           class={`
@@ -160,8 +176,11 @@ export default class ColumnCustomizationContent extends Vue {
 
           if (columnData) {
             const index = columns.indexOf(columnData);
+            const newIndex = index + (direction === 'up' ? -1 : 1);
 
-            _changeOrder(columns, index, index + (direction === 'up' ? -1 : 1));
+            this._canMoveUp = newIndex !== 0;
+            this._canMoveDown = newIndex !== columns.length - 1;
+            _changeOrder(columns, index, newIndex);
           }
         }
       }
@@ -201,6 +220,16 @@ export default class ColumnCustomizationContent extends Vue {
 
     this._canMoveColumnLocked = filterSelectedColumns.some((column: DataTableColumn) => column.locked);
     (this.$refs.buttonDeselect as HTMLButtonElement).disabled = this._canMoveColumnLocked;
+
+    const selectElement = this._selectedColumnsComponent?.$refs.select as HTMLSelectElement;
+    const selectedIndex = Array.from(selectElement.options).findIndex(option =>
+      Array.from(selectElement.selectedOptions).includes(option)
+    );
+
+    this._canMoveUp = selectedIndex !== 0;
+    this._canMoveDown = selectedIndex !== selectElement.length - 1;
+    (this.$refs.buttonMoveUp as HTMLButtonElement).disabled = !this._canMoveUp;
+    (this.$refs.buttonMoveDown as HTMLButtonElement).disabled = !this._canMoveDown;
   }
 
   render() {
