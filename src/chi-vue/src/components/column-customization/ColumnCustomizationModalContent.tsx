@@ -60,6 +60,7 @@ export default class ColumnCustomizationContent extends Vue {
 
       return (
         <button
+          disabled={icon === 'chevron-left' && !this._canMoveColumnLocked ? true : false}
           ref={refButton}
           onclick={() => action()}
           class={`
@@ -104,6 +105,9 @@ export default class ColumnCustomizationContent extends Vue {
         this._availableColumns = newAvailableColumns;
       }
     }
+    this._canMoveColumnLocked = !(this._selectedColumns as DataTableColumn[]).some(
+      (column: DataTableColumn) => column.locked
+    );
     this.key += 1;
     this._emitSelectedColumnsChange();
   }
@@ -141,6 +145,7 @@ export default class ColumnCustomizationContent extends Vue {
         );
         this._selectedColumns = newSelectedStandardColumns;
       }
+      this._canMoveColumnLocked = !this._selectedColumns.some((column: DataTableColumn) => column.locked);
       this.key += 1;
       this._emitSelectedColumnsChange();
     }
@@ -167,6 +172,7 @@ export default class ColumnCustomizationContent extends Vue {
       }
     );
     this._selectedColumns = columns;
+    this._canMoveColumnLocked = !this._selectedColumns.some((column: DataTableColumn) => column.locked);
     this.key += 1;
     this._emitSelectedColumnsChange();
   }
@@ -199,8 +205,9 @@ export default class ColumnCustomizationContent extends Vue {
       });
     }
 
-    this._canMoveColumnLocked = filterSelectedColumns.some((column: DataTableColumn) => column.locked);
-    (this.$refs.buttonDeselect as HTMLButtonElement).disabled = this._canMoveColumnLocked;
+    (this.$refs.buttonDeselect as HTMLButtonElement).disabled = filterSelectedColumns.some(
+      (column: DataTableColumn) => column.locked
+    );
   }
 
   render() {
