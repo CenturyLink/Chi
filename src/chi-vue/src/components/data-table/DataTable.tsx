@@ -48,6 +48,7 @@ export default class DataTable extends Vue {
   selectedRows: string[] = [];
   slicedData: DataTableRow[] = [];
   mode = this.$props.config.mode || defaultConfig.mode;
+  treeSelection = this.$props.config.treeSelection || defaultConfig.treeSelection;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -324,13 +325,13 @@ export default class DataTable extends Vue {
       const children = parent.nestedContent?.table.data;
       const isSelected = (row: DataTableRow) => this.selectedRows.includes(row.rowId);
 
-      if (children?.every(isSelected) && this.config.treeSelection) {
-        this._selectCheck(parent);
+      if (children?.every(isSelected) && this.treeSelection) {
+        this._addInSelectedRows(parent);
         parent.selected = true;
       } else if (children?.some(isSelected)) {
         parent.selected = 'indeterminate';
       } else {
-        this._deselectCheck(parent);
+        this._removeInSelectedRows(parent);
         parent.selected = false;
       }
 
@@ -341,10 +342,10 @@ export default class DataTable extends Vue {
       const children = rowData?.nestedContent?.table?.data;
 
       if (rowData.selected) {
-        this._selectCheck(rowData);
+        this._addInSelectedRows(rowData);
         this._checkChildrenRowState(children, true);
       } else {
-        this._deselectCheck(rowData);
+        this._removeInSelectedRows(rowData);
         this._checkChildrenRowState(children, false);
       }
     }
@@ -352,7 +353,7 @@ export default class DataTable extends Vue {
 
   _checkChildrenRowState(children: DataTableRow[], select: boolean | 'indeterminate') {
     children?.forEach((row: DataTableRow) => {
-      select ? this._selectCheck(row) : this._deselectCheck(row);
+      select ? this._addInSelectedRows(row) : this._removeInSelectedRows(row);
 
       row.selected = select;
 
@@ -368,7 +369,7 @@ export default class DataTable extends Vue {
       selected: true,
     };
 
-    this._selectCheck(rowData);
+    this._addInSelectedRows(rowData);
     this._checkIndeterminate(newRowData);
     this.$emit(DATA_TABLE_EVENTS.SELECTED_ROW, newRowData);
     this._emitSelectedRows();
@@ -380,13 +381,13 @@ export default class DataTable extends Vue {
       selected: false,
     };
 
-    this._deselectCheck(rowData);
+    this._removeInSelectedRows(rowData);
     this._checkIndeterminate(newRowData);
     this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
 
-  _selectCheck(rowData: DataTableRow) {
+  _addInSelectedRows(rowData: DataTableRow) {
     const selectedRow = this.selectedRows.find(rowId => rowId === rowData.rowId);
 
     if (!selectedRow) {
@@ -396,7 +397,7 @@ export default class DataTable extends Vue {
     rowData.selected = true;
   }
 
-  _deselectCheck(rowData: DataTableRow) {
+  _removeInSelectedRows(rowData: DataTableRow) {
     const selectedRow = this.selectedRows.find(rowId => rowId === rowData.rowId);
 
     if (selectedRow) {
@@ -441,7 +442,7 @@ export default class DataTable extends Vue {
       this.$emit(DATA_TABLE_EVENTS.SELECTED_ALL, this.slicedData);
     } else {
       data.forEach((row: DataTableRow) => {
-        this._deselectCheck(row);
+        this._removeInSelectedRows(row);
         row.selected = false;
         this._checkChildrenRowState(row.nestedContent?.table?.data, false);
       });
@@ -454,8 +455,7 @@ export default class DataTable extends Vue {
   }
 
   _selectRowCheckbox(selectAll: boolean, rowData: DataTableRow | null = null) {
-    const checkedState = rowData && rowData.rowNumber && this.selectedRows.includes(rowData.rowId) && rowData.selected;
-    const indeterminateState = rowData && rowData.rowNumber && rowData.selected === 'indeterminate';
+    const checkboxState = rowData && rowData.rowNumber && this.selectedRows.includes(rowData.rowId) && rowData.selected;
 
     if (selectAll || !!rowData) {
       const checkboxId =
@@ -495,19 +495,18 @@ export default class DataTable extends Vue {
                   );
                 } else {
                   if (rowData) {
-                    const select = ev.target as HTMLInputElement;
+                    const checkboxInput = ev.target as HTMLInputElement;
 
-                    if (select?.classList.contains(INDETERMINATE_CLASS) || !select?.checked) {
+                    if (checkboxInput?.classList.contains(INDETERMINATE_CLASS) || !checkboxInput?.checked) {
                       this.deselectRow(rowData);
-                      select.checked = false;
+                      checkboxInput.checked = false;
                     } else {
                       this.selectRow(rowData);
                     }
                   }
                 }
               }}
-              checked={checkedState}
-              indeterminate={indeterminateState}
+              checked={checkboxState}
             />
             <label class={CHECKBOX_CLASSES.LABEL} for={checkboxId}>
               <div class={SR_ONLY}>Select row {checkboxId}</div>
@@ -782,7 +781,6 @@ export default class DataTable extends Vue {
         selectAllCheckbox.classList.add(INDETERMINATE_CLASS);
       } else {
         selectAllCheckbox.classList.remove(INDETERMINATE_CLASS);
-        selectAllCheckbox.classList.remove(INDETERMINATE_CLASS);
       }
     }
   }
@@ -889,7 +887,23 @@ export default class DataTable extends Vue {
       dataToRender = this._serializedDataBody;
     }
 
+    this._checkInitialSelections(dataToRender);
+
     return dataToRender;
+  }
+
+  _checkInitialSelections(selections: Record<string, any>) {
+    selections.forEach((row: DataTableRow) => {
+      if (row.nestedContent?.table?.data) {
+        const children = row.nestedContent.table.data;
+
+        children.forEach((childRow: DataTableRow) => {
+          this._checkRowIndeterminateState(childRow);
+        });
+      }
+    });
+
+    this._checkSelectAllCheckbox();
   }
 
   beforeMount() {
@@ -937,8 +951,6 @@ export default class DataTable extends Vue {
       this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
     }
     this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
-
-    this.config.treeSelection = this.config.treeSelection === undefined ? true : this.config.treeSelection;
   }
 
   mounted() {
