@@ -464,7 +464,7 @@ export default class DataTable extends Vue {
           : selectAll
           ? `checkbox-${this._dataTableId}-select-all-rows`
           : '';
-      const selectAllRef = selectAll ? 'selectAllRef' : '';
+      const selectAllRef = selectAll ? 'selectAllRef' : null;
 
       return (
         <div
