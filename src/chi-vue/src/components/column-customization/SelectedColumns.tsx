@@ -29,6 +29,7 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
     return data?.map((column: DataTableColumn) => {
       return (
         <option
+          disabled={column.locked}
           onClick={() => this._triggerSelectRowState()}
           value={column.name}
           class={column.locked ? '-locked' : ''}>
