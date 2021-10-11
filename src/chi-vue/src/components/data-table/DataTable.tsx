@@ -26,6 +26,7 @@ import {
   DataTableSortConfig,
   DataTableStyleConfig,
   DataTableModes,
+  CheckboxState,
 } from '@/constants/types';
 import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
@@ -326,12 +327,12 @@ export default class DataTable extends Vue {
       const isSelected = (row: DataTableRow) => this.selectedRows.includes(row.rowId);
 
       if (children?.every(isSelected) && this.treeSelection) {
-        this._addInSelectedRows(parent);
+        this._addToSelectedRows(parent);
         parent.selected = true;
       } else if (children?.some(isSelected)) {
         parent.selected = 'indeterminate';
       } else {
-        this._removeInSelectedRows(parent);
+        this._removeFromSelectedRows(parent);
         parent.selected = false;
       }
 
@@ -342,10 +343,10 @@ export default class DataTable extends Vue {
       const children = rowData?.nestedContent?.table?.data;
 
       if (rowData.selected) {
-        this._addInSelectedRows(rowData);
+        this._addToSelectedRows(rowData);
         this._checkChildrenRowState(children, true);
       } else {
-        this._removeInSelectedRows(rowData);
+        this._removeFromSelectedRows(rowData);
         this._checkChildrenRowState(children, false);
       }
     }
@@ -353,7 +354,7 @@ export default class DataTable extends Vue {
 
   _checkChildrenRowState(children: DataTableRow[], select: boolean | 'indeterminate') {
     children?.forEach((row: DataTableRow) => {
-      select ? this._addInSelectedRows(row) : this._removeInSelectedRows(row);
+      select ? this._addToSelectedRows(row) : this._removeFromSelectedRows(row);
 
       row.selected = select;
 
@@ -369,7 +370,7 @@ export default class DataTable extends Vue {
       selected: true,
     };
 
-    this._addInSelectedRows(rowData);
+    this._addToSelectedRows(rowData);
     this._checkIndeterminate(newRowData);
     this.$emit(DATA_TABLE_EVENTS.SELECTED_ROW, newRowData);
     this._emitSelectedRows();
@@ -381,13 +382,13 @@ export default class DataTable extends Vue {
       selected: false,
     };
 
-    this._removeInSelectedRows(rowData);
+    this._removeFromSelectedRows(rowData);
     this._checkIndeterminate(newRowData);
     this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
 
-  _addInSelectedRows(rowData: DataTableRow) {
+  _addToSelectedRows(rowData: DataTableRow) {
     const selectedRow = this.selectedRows.find(rowId => rowId === rowData.rowId);
 
     if (!selectedRow) {
@@ -397,7 +398,7 @@ export default class DataTable extends Vue {
     rowData.selected = true;
   }
 
-  _removeInSelectedRows(rowData: DataTableRow) {
+  _removeFromSelectedRows(rowData: DataTableRow) {
     const selectedRow = this.selectedRows.find(rowId => rowId === rowData.rowId);
 
     if (selectedRow) {
@@ -442,7 +443,7 @@ export default class DataTable extends Vue {
       this.$emit(DATA_TABLE_EVENTS.SELECTED_ALL, this.slicedData);
     } else {
       data.forEach((row: DataTableRow) => {
-        this._removeInSelectedRows(row);
+        this._removeFromSelectedRows(row);
         row.selected = false;
         this._checkChildrenRowState(row.nestedContent?.table?.data, false);
       });
@@ -455,7 +456,11 @@ export default class DataTable extends Vue {
   }
 
   _selectRowCheckbox(selectAll: boolean, rowData: DataTableRow | null = null) {
-    const checkboxState = rowData && rowData.rowNumber && this.selectedRows.includes(rowData.rowId) && rowData.selected;
+    let checkboxState: CheckboxState = false;
+
+    if (rowData && rowData.rowId && this.selectedRows.includes(rowData.rowId)) {
+      if (rowData.selected !== undefined && rowData.selected !== null) checkboxState = rowData.selected;
+    }
 
     if (selectAll || !!rowData) {
       const checkboxId =
@@ -507,6 +512,7 @@ export default class DataTable extends Vue {
                 }
               }}
               checked={checkboxState}
+              indeterminate={checkboxState}
             />
             <label class={CHECKBOX_CLASSES.LABEL} for={checkboxId}>
               <div class={SR_ONLY}>Select row {checkboxId}</div>
@@ -857,12 +863,15 @@ export default class DataTable extends Vue {
         });
       }
 
+      this._checkIndeterminate(row);
+
       if (rowObject.expanded && !this.accordionsExpanded.includes(rowObject.rowId)) {
         this.accordionsExpanded.push(rowObject.rowId);
       }
       if (rowObject.selected && !this.selectedRows.includes(rowObject.rowId)) {
         this.selectedRows.push(rowObject.rowId);
       }
+
       return rowObject;
     };
     let rowNumber = 0;
@@ -889,23 +898,7 @@ export default class DataTable extends Vue {
       dataToRender = this._serializedDataBody;
     }
 
-    this._checkInitialSelections(dataToRender);
-
     return dataToRender;
-  }
-
-  _checkInitialSelections(selections: Record<string, any>) {
-    selections.forEach((row: DataTableRow) => {
-      if (row.nestedContent?.table?.data) {
-        const children = row.nestedContent.table.data;
-
-        children.forEach((childRow: DataTableRow) => {
-          this._checkRowIndeterminateState(childRow);
-        });
-      }
-    });
-
-    this._checkSelectAllCheckbox();
   }
 
   beforeMount() {

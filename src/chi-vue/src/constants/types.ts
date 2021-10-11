@@ -45,7 +45,7 @@ export interface DataTableRow {
   parent?: DataTableRow;
   rowId: string;
   rowNumber: string;
-  selected?: boolean | 'indeterminate';
+  selected?: CheckboxState;
   selectionDisabled?: boolean;
 }
 export interface DataTableData {
@@ -145,6 +145,7 @@ export interface DataTableView {
   columns?: DataTableColumn[];
 }
 
+export type CheckboxState = boolean | 'indeterminate';
 export type DataTableCellAlignment = 'left' | 'center' | 'right';
 //#endregion
 
