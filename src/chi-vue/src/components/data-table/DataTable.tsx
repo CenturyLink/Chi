@@ -707,35 +707,37 @@ export default class DataTable extends Vue {
   }
 
   _addPaginationEventListener() {
-    if (this.$refs.pagination && !this._paginationListenersAdded) {
-      (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_SIZE, (ev: string) => {
-        const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+    if (this.$refs.pagination) {
+      if (!this._paginationListenersAdded) {
+        (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_SIZE, (ev: string) => {
+          const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
 
-        this.resultsPerPage = ev === 'all' ? this._serializedDataBody.length : parseInt(ev);
-        this.slicedData = this.sliceData(data);
-        this.$emit(PAGINATION_EVENTS.PAGE_SIZE, this.slicedData);
-      });
+          this.resultsPerPage = ev === 'all' ? this._serializedDataBody.length : parseInt(ev);
+          this.slicedData = this.sliceData(data);
+          this.$emit(PAGINATION_EVENTS.PAGE_SIZE, this.slicedData);
+        });
 
-      (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
-        const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
-        const numberOfPages = this._calculateNumberOfPages();
+        (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
+          const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+          const numberOfPages = this._calculateNumberOfPages();
 
-        if (ev >= 1 && ev <= numberOfPages) {
-          const pageChangeEventData: DataTablePageChange = {
-            page: ev,
-          };
+          if (ev >= 1 && ev <= numberOfPages) {
+            const pageChangeEventData: DataTablePageChange = {
+              page: ev,
+            };
 
-          if (this.mode === DataTableModes.CLIENT) {
-            this.accordionsExpanded.length = 0;
-            this.activePage = ev;
-            this.slicedData = this.sliceData(data);
-            pageChangeEventData.data = this.slicedData;
+            if (this.mode === DataTableModes.CLIENT) {
+              this.accordionsExpanded.length = 0;
+              this.activePage = ev;
+              this.slicedData = this.sliceData(data);
+              pageChangeEventData.data = this.slicedData;
+            }
+            this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
+            this._checkSelectAllCheckbox();
           }
-          this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
-          this._checkSelectAllCheckbox();
-        }
-      });
-      this._paginationListenersAdded = true;
+        });
+        this._paginationListenersAdded = true;
+      }
     } else {
       this._paginationListenersAdded = false;
     }
