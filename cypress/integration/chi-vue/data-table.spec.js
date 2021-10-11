@@ -178,7 +178,7 @@ describe('Data Table', () => {
               .eq(2)
               .click()
               .then(() => {
-                expect(spy).to.be.called;
+                expect(spy).to.be.calledOnce;
                 cy.get(`@pagination`)
                   .find(`button[data-page='2']`)
                   .eq(0)
@@ -190,7 +190,7 @@ describe('Data Table', () => {
               .eq(1)
               .click()
               .then(() => {
-                expect(spy).to.be.called;
+                expect(spy).to.be.calledTwice;
                 cy.get(`@pagination`)
                   .find(`button[data-page='1']`)
                   .eq(1)
@@ -208,18 +208,24 @@ describe('Data Table', () => {
           .type('2{enter}')
           .then(() => {
             cy.get(`@row`).should('contain', 'Name 4');
+            cy.get(`@pagination`)
+              .find(`button[data-page='2']`)
+              .as('secondPageBtn');
+            hasClassAssertion('@secondPageBtn', ACTIVE_CLASS);
           });
         cy.get('@pagJumperInput')
           .type('{backspace}1{enter}')
           .then(() => {
             cy.get(`@row`).should('contain', 'Updated Name 1');
+            cy.get(`@pagination`)
+              .find(`button[data-page='1']`)
+              .as('firstPageBtn');
+            hasClassAssertion('@firstPageBtn', ACTIVE_CLASS);
           });
         cy.get('@pagJumperInput').type('{backspace}');
-        cy.get(`@pagination`)
-          .find(`button[data-page='1']`)
+        cy.get(`@firstPageBtn`)
           .eq(1)
           .click();
-        // TODO: add -active class check once it's fixed.
       });
 
       it('Should change page correctly on page number click', () => {
