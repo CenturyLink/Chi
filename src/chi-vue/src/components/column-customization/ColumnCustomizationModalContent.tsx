@@ -39,10 +39,10 @@ export default class ColumnCustomizationContent extends Vue {
   @Watch('selectedColumns')
   _processData() {
     this._availableColumns = copyArrayOfObjects(this.$props.availableColumns);
-    this._selectedColumns = copyArrayOfObjects(this.$props.selectedColumns).sort(this._sortByLocked);
+    this._selectedColumns = copyArrayOfObjects(this.$props.selectedColumns).sort(this.sortByLocked);
   }
 
-  _sortByLocked = (a: DataTableColumn, b: DataTableColumn): number => {
+  sortByLocked = (a: DataTableColumn, b: DataTableColumn): number => {
     if (a.locked && !b.locked) {
       return -1;
     }
@@ -163,7 +163,7 @@ export default class ColumnCustomizationContent extends Vue {
             }
           }
         );
-        this._selectedColumns = newSelectedStandardColumns;
+        this._selectedColumns = newSelectedStandardColumns.sort(this.sortByLocked);
       }
       this.key += 1;
       this._emitSelectedColumnsChange();
