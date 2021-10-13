@@ -72,6 +72,7 @@ export enum DataTableModes {
   SERVER = 'serverside',
 }
 export interface DataTableConfig {
+  activePage?: number;
   columnResize?: boolean;
   columnSizes?: {
     xs: number[];
