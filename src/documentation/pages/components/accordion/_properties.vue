@@ -21,7 +21,7 @@
                   code= 'hide() => void'
               td
                 div
-                  | Hides the Accordion or individual Accordion item (if provided)
+                  | Hides the accordion or individual accordion item (if provided)
               td
                 div
                   | Type: void
@@ -31,7 +31,7 @@
                   code= 'show() => void'
               td
                 div
-                  | Shows the Accordion or individual Accordion item (if provided)
+                  | Shows the accordion or individual accordion item (if provided)
               td
                 div
                   | Type: void
@@ -41,7 +41,7 @@
                   code= 'toggle() => void'
               td
                 div
-                  | Toggles active state (show/hide) of the Accordion of Accordion item (if provided)
+                  | Toggles active state (show/hide) of the accordion or accordion item (if provided)
               td
                 div
                   | Type: void
@@ -51,7 +51,7 @@
                   code= 'expandAll() => void'
               td
                 div
-                  | Expands all the Accordion items
+                  | Expands all the accordion items
               td
                 div
                   | Type: void
@@ -61,7 +61,7 @@
                   code= 'collapseAll() => void'
               td
                 div
-                  | Collapses all the Accordion items
+                  | Collapses all the accordion items
               td
                 div
                   | Type: void
