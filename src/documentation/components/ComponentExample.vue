@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="-anchor" :id="id">
+    <h3 v-if="!!title" class="-anchor" :id="id">
       {{title}}
       <span>
         <a class="-ml--1" :href="'?theme='+$store.state.themes.theme+'#'+id">#</a>
@@ -8,9 +8,7 @@
     </h3>
     <slot name="example-description"></slot>
     <div class="example -mb--3">
-      <div class="-p--3 -p-lg--6">
-        <slot name="example"></slot>
-      </div>
+      <slot name="example"></slot>
       <div class="example-tabs -pl--2">
         <ul class="chi-tabs -animated" :id="'code-snippet-tabs'+id" role="tabs">
           <li :class="[tab.active ? '-active' : '', tab.disabled ? '-disabled' : '']" v-for="tab in tabs" :key="tab.id">
@@ -32,11 +30,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { TabsInterface } from '../models/models';
 
 declare const chi: any;
-
-interface codeSnippet {
-  id: string;
-  code: string;
-}
 
 @Component({})
 export default class ComponentExample extends Vue {

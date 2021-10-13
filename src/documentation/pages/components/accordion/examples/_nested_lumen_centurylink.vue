@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Nested" id="nested_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example")
+    div(slot="example").-p--3.-p-lg--6
       .chi-accordion#example-nested
         .chi-accordion__item
           button.chi-accordion__trigger

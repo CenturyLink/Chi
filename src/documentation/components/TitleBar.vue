@@ -10,7 +10,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Themes } from '../models/models';
 import { TabsInterface } from '../models/models';
-import PageContentTabs from './PageContentTabs.vue';
 
 declare const chi: any;
 

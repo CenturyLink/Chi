@@ -1,11 +1,11 @@
 import { DataTableConfig, DataTableModes } from '@/constants/types';
 
 export const defaultConfig: DataTableConfig = {
-  activePage: 1,
   columnResize: false,
   mode: DataTableModes.CLIENT,
   noResultsMessage: 'No matches found. Please revise search criteria and try again.',
   pagination: {
+    activePage: 1,
     compact: false,
     firstLast: false,
     hideOnSinglePage: false,
