@@ -2,7 +2,7 @@
   <ComponentExample title="Truncated" id="truncated" :tabs="exampleTabs">
     div(slot="example-description")
       p.-text Truncate long accordion titles by adding the class <code>-truncated</code> to <code>chi-accordion</code>.
-    div(slot="example")
+    div(slot="example").-p--3.-p-lg--6
       .chi-accordion.-truncated#example-truncated
         .chi-accordion__item
           button.chi-accordion__trigger
