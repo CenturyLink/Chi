@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Sizes" id="sizes_portal" :tabs="exampleTabs">
-    div(slot="example")
+    div(slot="example").-p--3.-p-lg--6
       each size in ['sm', 'md']
         p.-text--bold.-pl--2= size
           div(class=`chi-accordion -${size}` id=`portal-example-size-${size}`)
