@@ -35,6 +35,30 @@ i {
   }
 }
 
+.icon-ticket-wrench-multiple::before {
+  content: '\e9e8';
+}
+
+.icon-hand-gear::before {
+  content: '\e9e3';
+}
+
+.icon-list-alt::before {
+  content: '\e9e4';
+}
+
+.icon-inbox-multiple::before {
+  content: '\e9e5';
+}
+
+.icon-unlock::before {
+  content: '\e9e6';
+}
+
+.icon-unlock-outline::before {
+  content: '\e9e7';
+}
+
 .icon-bookmark-outline::before {
   content: '\e9e0';
 }
