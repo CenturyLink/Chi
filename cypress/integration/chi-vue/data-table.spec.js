@@ -1439,7 +1439,7 @@ describe('Server Side Data Table', () => {
   });
 });
 
-describe.only('Server Side Data Table Portal', () => {
+describe('Server Side Data Table Portal', () => {
   before(() => {
     cy.visit('tests/chi-vue/data-table.html');
   });
@@ -1641,7 +1641,7 @@ describe.only('Server Side Data Table Portal', () => {
     });
   });
 
-  describe.only('Tree Selection', () => {
+  describe('Tree Selection', () => {
     it(`Select all checkbox should check every row`, () => {
       cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
