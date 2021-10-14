@@ -2,6 +2,10 @@
 @import '_global-variables';
 
 $sizes: (
+  2xs: (
+    font-size: $font-size-2xs,
+    line-height: $line-height-sm
+  ),
   xs: (
     font-size: $font-size-xs,
     line-height: $line-height-sm
