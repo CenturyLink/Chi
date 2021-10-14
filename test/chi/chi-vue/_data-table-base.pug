@@ -108,14 +108,18 @@ h3 Size -xl
   #sizeXl
     chi-vue-data-table(data-cy='data-table-xl', :config="config", :data="table")
 
-h2 Data Table Server Side
-
+h3 Data Table Server Side
 .test-data-table.-p--3.-w--100
   #base-server-side
     chi-vue-data-table(data-cy='data-table-server-side' ref="dataTableServerSideRef" :config="config", :data="table")
       template(#status='payload')
         div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
           span.-text--truncate {{ payload.status }}
+
+h3 Data Table indeterminate selection
+.test-data-table.-p--3.-w--100
+  #indeterminate
+    chi-vue-data-table(data-cy='data-table-indeterminate-selection', :config="config", :data="table")
 
 script.
   new Vue({
@@ -1747,3 +1751,102 @@ script.
       sortedData: []
     },
   }).$mount("#base-server-side");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    methods: {
+      update: function () {
+        const newData = ["Updated Name 1", "name-1", "Dec 18, 2020 3:26 PM"];
+
+        setTimeout(() => {
+          this.$data.table = {
+            ...this.$data.table,
+            body: this.$data.table.body.map((row, index) =>
+              index === 0
+                ? {
+                  ...row,
+                  data: newData,
+                  }
+                : row
+            ),
+          };
+        }, 3000);
+      },
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: true,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+        selectable: true,
+        treeSelection: true,
+      },
+      table: {
+        head: {
+          name: { label: "Name" },
+          id: { label: "ID" },
+          lastLogin: { label: "Last Login" },
+        },
+        body: [
+          {
+            id: "name-1",
+            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: 'NTM00002106611',
+            nestedContent: {
+              table: {
+                data: [
+                  {
+                    id: 'a',
+                    data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+                  },
+                  {
+                    id: 'bbb',
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: 'ba',
+                            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+                          },
+                          {
+                            id: 'bb',
+                            active: false,
+                            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+                          },
+                        ],
+                      },
+                    },
+                    data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+                  },
+                ],
+              },
+            },
+            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+          },
+        ],
+      }
+    },
+
+    mounted() {
+      if (window.Cypress) {
+        window.indeterminateTable = this;
+      }
+    },
+  }).$mount("#indeterminate");

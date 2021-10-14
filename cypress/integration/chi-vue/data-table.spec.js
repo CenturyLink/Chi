@@ -1547,79 +1547,6 @@ describe.only('Server Side Data Table Portal', () => {
             });
         });
     });
-
-    it('Should select and deselect a row', () => {
-      cy.get('@selectables')
-        .eq(1)
-        .click()
-        .then(() => {
-          cy.get(
-            `[data-cy='data-table-server-side-portal'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
-          )
-            .eq(0)
-            .as('firstRow');
-          hasClassAssertion('@firstRow', ACTIVE_CLASS);
-        });
-      cy.get('@selectables')
-        .eq(1)
-        .click()
-        .then(() => {
-          cy.get('@firstRow').should('not.have.class', ACTIVE_CLASS);
-        });
-    });
-
-    it('Should automatically select nested rows', () => {
-      cy.window()
-        .its('dataTableServerSidePortalExample')
-        .then(dataTableServerSidePortalExample => {
-          const spy = cy.spy();
-          const dataTableRef =
-            dataTableServerSidePortalExample.$refs.dataTableServerSidePortalRef;
-          const parent = dataTableServerSidePortalExample.table.body[2];
-          const child = parent.nestedContent.table.data[0];
-          const grandchild = child.nestedContent.table.data[0];
-
-          dataTableRef.$on(`${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE}`, spy);
-          cy.get('@selectables')
-            .eq(3)
-            .click()
-            .then(() => {
-              expect(spy).to.be.called;
-              isSelected([parent, child, grandchild]);
-            });
-          cy.get('@selectables')
-            .eq(3)
-            .click()
-            .then(() => {
-              expect(spy).to.be.called;
-            });
-        });
-    });
-
-    it('Should automatically deselect nested rows', () => {
-      cy.get('@selectables')
-        .eq(3)
-        .click();
-      cy.window()
-        .its('dataTableServerSidePortalExample')
-        .then(dataTableServerSidePortalExample => {
-          const spy = cy.spy();
-          const dataTableRef =
-            dataTableServerSidePortalExample.$refs.dataTableServerSidePortalRef;
-          const parent = dataTableServerSidePortalExample.table.body[2];
-          const child = parent.nestedContent.table.data[0];
-          const grandchild = child.nestedContent.table.data[0];
-
-          dataTableRef.$on(`${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE}`, spy);
-          cy.get('@selectables')
-            .eq(3)
-            .click()
-            .then(() => {
-              expect(spy).to.be.called;
-              isNotSelected([parent, child, grandchild]);
-            });
-        });
-    });
   });
 
   describe('Server side sorting', () => {
@@ -1714,167 +1641,178 @@ describe.only('Server Side Data Table Portal', () => {
     });
   });
 
-  describe('Tree Selection', () => {
-    it(`Select all should be indeterminate`, () => {
-      cy.get(`[data-cy='data-table-server-side-portal']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-5-name-1')
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click();
-      cy.get(`[data-cy='data-table-server-side-portal']`)
+  describe.only('Tree Selection', () => {
+    it(`Select all checkbox should check every row`, () => {
+      cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(0)
         .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .find(`input`)
+        .click()
+        .then(() => {
+          cy.get(
+            `[data-cy='data-table-indeterminate-selection'] .${DATA_TABLE_CLASSES.ROW}`
+          ).as('rows');
+          hasClassAssertion('@rows', `${ACTIVE_CLASS}`);
+          cy.get('@rows')
+            .find('input')
+            .as('checkboxes')
+            .should('be.checked');
+        });
+    });
+
+    it(`Deselect all checkbox should deselect every row`, () => {
+      cy.get(`[data-cy='data-table-indeterminate-selection']`)
+        .children()
+        .eq(0)
+        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+        .click()
+        .then(() => {
+          cy.get(
+            `[data-cy='data-table-indeterminate-selection'] .${DATA_TABLE_CLASSES.ROW}`
+          ).as('rows');
+          cy.get('@rows')
+            .find('input')
+            .as('checkboxes')
+            .should('not.be.checked');
+        });
+    });
+
+    it(`Select one row should indeterminate select all checkbox`, () => {
+      cy.get(`[data-cy='data-table-indeterminate-selection']`)
+        .children()
+        .eq(0)
+        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+        .find('input')
         .as('selectAllCheckbox')
+
+      cy.get(`[data-cy='data-table-indeterminate-selection']`)
+        .children()
+        .eq(1)
+        .find('#row-dt-20-name-1')
+        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+        .click();
 
       hasClassAssertion('@selectAllCheckbox', `${INDETERMINATE_CLASS}`);
     });
 
-    it(`Select parent should select every children and grand children`, () => {
-      cy.get(`[data-cy='data-table-server-side-portal']`)
+    it(`Select all checkbox while it's indeterminate should deselect every row`, () => {
+      cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
-        .eq(1)
-        .find('#row-dt-5-name-3')
+        .eq(0)
         .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click();
-
-      cy.get(`[data-cy='data-table-server-side-portal']`)
-        .children()
-        .eq(1)
-        .find(`#row-dt-5-child-name-1`)
-        .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .find(`input`)
-        .should('be.checked')
-      cy.get(`[data-cy='data-table-server-side-portal']`)
-        .children()
-        .eq(1)
-        .find(`#row-dt-5-grandchild-name-1-0`)
-        .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .find(`input`)
-        .should('be.checked')
+        .click()
+        .then(() => {
+          cy.get(
+            `[data-cy='data-table-indeterminate-selection'] .${DATA_TABLE_CLASSES.ROW}`
+          ).as('rows');
+          cy.get('@rows')
+            .find('input')
+            .as('checkboxes')
+            .should('not.be.checked');
+        });
     });
 
     it(`Select child should indeterminate parent`, () => {
-      cy.get(`[data-cy='data-table-server-side-portal']`)
+      cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(1)
-        .find('#row-dt-5-name-3')
+        .find('#row-dt-20-NTM00002106611')
+        .find(`.${DATA_TABLE_CLASSES.EXPANDABLE}`)
+        .find('button')
+        .click();
+
+      cy.get(`[data-cy='data-table-indeterminate-selection']`)
+        .children()
+        .eq(1)
+        .find('#row-dt-20-NTM00002106611-content')
+        .find('#row-dt-20-a')
         .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
         .click();
 
-      cy.get(`[data-cy='data-table-server-side-portal']`)
+      cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(1)
-        .find(`#row-dt-5-child-name-1`)
-        .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
+        .find('#row-dt-20-NTM00002106611')
         .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click();
-
-      cy.get(`[data-cy='data-table-server-side-portal']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-5-name-3')
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .find(`input`)
-        .invoke('addClass', `${INDETERMINATE_CLASS}`)
+        .find('input')
         .as('parentCheckbox')
 
       hasClassAssertion('@parentCheckbox', `${INDETERMINATE_CLASS}`);
     });
 
-    it(`Select all indeterminate should deselect every row selected and deselect itself`, () => {
-      cy.get(`[data-cy='data-table-server-side-portal']`)
-        .children()
-        .eq(0)
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click();
-      cy.get(`[data-cy='data-table-server-side-portal']`)
-        .children()
-        .eq(0)
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .find(`input`)
-        .as('selectAllCheck')
-      cy.get(`[data-cy='data-table-server-side-portal']`)
+    it(`Select indeterminate parent should deselect every row`, () => {
+      cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(1)
-        .find('#row-dt-5-name-1')
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .find(`input`)
-        .as('childOne')
-      cy.get(`[data-cy='data-table-server-side-portal']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-5-name-2')
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .find(`input`)
-        .as('childTwo')
-      cy.get(`[data-cy='data-table-server-side-portal']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-5-name-3')
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .find(`input`)
-        .invoke('removeClass', `${INDETERMINATE_CLASS}`)
-        .as('childThree')
-
-      cy.get('@childThree').should('not.have.class', `${INDETERMINATE_CLASS}`);
-      cy.get('@childOne').should('not.have.class', `${INDETERMINATE_CLASS}`);
-      cy.get('@childTwo').should('not.have.class', `${INDETERMINATE_CLASS}`);
-      cy.get('@selectAllCheck').should('not.have.class', `${INDETERMINATE_CLASS}`);
-    });
-
-    it(`Select indeterminate parent should deselect every children row selected `, () => {
-      cy.get(`[data-cy='data-table-server-side-portal']`)
-        .children()
-        .eq(1)
-        .find(`#row-dt-5-child-name-1`)
-        .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click();
-
-      cy.get(`[data-cy='data-table-server-side-portal']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-5-name-3')
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .find(`input`)
-        .invoke('addClass', `${INDETERMINATE_CLASS}`)
-        .as('parentCheckbox')
-
-      hasClassAssertion('@parentCheckbox', `${INDETERMINATE_CLASS}`);
-
-      cy.get(`[data-cy='data-table-server-side-portal']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-5-name-3')
+        .find('#row-dt-20-NTM00002106611')
         .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
         .click()
+        .then(() => {
+          cy.get(
+            `[data-cy='data-table-indeterminate-selection'] .${DATA_TABLE_CLASSES.ROW}`
+          ).as('rows');
+          cy.get('@rows')
+            .find('input')
+            .as('checkboxes')
+            .should('not.be.checked');
+        });
+    });
 
-        cy.get(`[data-cy='data-table-server-side-portal']`)
+    it(`Select parent should select every children and grand children`, () => {
+      cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(1)
-        .find('#row-dt-5-name-3')
+        .find('#row-dt-20-NTM00002106611')
         .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .invoke('removeClass', `${INDETERMINATE_CLASS}`)
-        .as('parentCheckbox')
+        .click()
+        .then(() => {
+          cy.get(`[data-cy='data-table-indeterminate-selection']`)
+          .children()
+          .eq(1)
+          .find('#row-dt-20-NTM00002106611-content')
+          .find('#row-dt-20-a')
+          .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+          .find('input')
+          .should('be.checked');
 
-      cy.get(`[data-cy='data-table-server-side-portal']`)
+          cy.get(`[data-cy='data-table-indeterminate-selection']`)
+          .children()
+          .eq(1)
+          .find('#row-dt-20-NTM00002106611-content')
+          .find('#row-dt-20-bbb')
+          .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+          .find('input')
+          .should('be.checked');
+        });
+    });
+
+    it(`Select parent checked should deselect every children and grand children`, () => {
+      cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(1)
-        .find(`#row-dt-5-child-name-1`)
-        .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
+        .find('#row-dt-20-NTM00002106611')
         .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .find(`input`)
-        .invoke('removeClass', `${INDETERMINATE_CLASS}`)
-        .as('children')
+        .click()
+        .then(() => {
+          cy.get(`[data-cy='data-table-indeterminate-selection']`)
+          .children()
+          .eq(1)
+          .find('#row-dt-20-NTM00002106611-content')
+          .find('#row-dt-20-a')
+          .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+          .find('input')
+          .should('not.be.checked');
 
-      cy.get('@children').should('not.have.class', `${INDETERMINATE_CLASS}`);
-      cy.get('@parentCheckbox').should('not.have.class', `${INDETERMINATE_CLASS}`);
-    })
+          cy.get(`[data-cy='data-table-indeterminate-selection']`)
+          .children()
+          .eq(1)
+          .find('#row-dt-20-NTM00002106611-content')
+          .find('#row-dt-20-bbb')
+          .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+          .find('input')
+          .should('not.be.checked');
+        });
+    });
   });
 
 
