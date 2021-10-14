@@ -9,6 +9,7 @@ export default class ColumnCustomizationAvailableColumns extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
 
   _ColumnCustomizationContent?: ColumnCustomizationContent;
+  _sortedColumns?: DataTableColumn[] = [];
 
   mounted() {
     const columnCustomizationModalContent = findComponent(this, 'ColumnCustomizationContent');
@@ -19,14 +20,34 @@ export default class ColumnCustomizationAvailableColumns extends Vue {
     }
   }
 
+  created() {
+    this._sortAvailableColumns();
+  }
+
   beforeDestroy() {
     if (this._ColumnCustomizationContent) {
       (this._ColumnCustomizationContent as ColumnCustomizationContent)._availableColumnsComponent = undefined;
     }
   }
 
+  _sortAvailableColumns() {
+    this._sortedColumns = [...this.$props.availableColumns];
+    this._sortedColumns.sort((a: DataTableColumn, b: DataTableColumn) => {
+      const firstValue = a.label.toLowerCase(),
+        secondValue = b.label.toLowerCase();
+
+      if (firstValue < secondValue) {
+        return -1;
+      }
+      if (firstValue > secondValue) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
   render() {
-    const options: [] = this.$props.availableColumns.map((column: DataTableColumn) => {
+    const options = this._sortedColumns?.map((column: DataTableColumn) => {
       return <option value={column.name}>{column.label || column.name}</option>;
     });
 
