@@ -884,11 +884,13 @@ h3 Destructive action confirmation
                 i.chi-icon.icon-chevron-down(aria-hidden="true")
               .chi-accordion__content
                 p.chi-accordion__text Filter content goes here
-          chi-button(slot="chi-popover__footer" variant='flat' type='icon' alternative-text='Clear all filters' data-tooltip='Clear all filters')
-            chi-icon(icon='reset')
-          .chi-divider.-vertical(slot="chi-popover__footer")
-          chi-button(slot="chi-popover__footer") Cancel
-          chi-button(slot="chi-popover__footer" color='primary') Apply
+          button.chi-button.-flat.-icon.-xs.-py--0(slot='chi-popover__footer' data-tooltip='Clear all filters')
+            .chi-button__content.-flex--column.-align-items--center
+              i.chi-icon.icon-reset.-sm--2.-mr--0
+              span.-text--uppercase.-text--primary.-text--2xs Clear
+          .chi-divider.-vertical(slot='chi-popover__footer')
+          chi-button(slot='chi-popover__footer') Cancel
+          chi-button(slot='chi-popover__footer' color='primary') Apply
     .example-tabs.-pl--2
       ul.chi-tabs#examples-advanced-filters
         li.-active
@@ -937,9 +939,12 @@ h3 Destructive action confirmation
               </div>
             </div>
           </div>
-          <chi-button slot="chi-popover__footer" variant="flat" type="icon" alternative-text="Clear all filters" data-tooltip="Clear all filters">
-            <chi-icon icon="reset"></chi-icon>
-          </chi-button>
+          <button class="chi-button -flat -icon -xs -py--0" slot="chi-popover__footer" data-tooltip="Clear all filters">
+            <div class="chi-button__content -flex--column -align-items--center">
+              <i class="chi-icon icon-reset -sm--2 -mr--0"></i>
+              <span class="-text--uppercase -text--primary -text--2xs">Clear</span>
+            </div>
+          </button>
           <div class="chi-divider -vertical" slot="chi-popover__footer"></div>
           <chi-button slot="chi-popover__footer">Cancel</chi-button>
           <chi-button slot="chi-popover__footer" color="primary">Apply</chi-button>
@@ -1010,9 +1015,10 @@ h3 Destructive action confirmation
             </div>
           </div>
           <div class="chi-popover__footer">
-            <button class="chi-button -icon -flat" aria-label="Clear filters" data-tooltip="Clear filters">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-reset" aria-hidden="true"></i>
+            <button class="chi-button -flat -icon -xs -py--0" data-tooltip="Clear all filters">
+              <div class="chi-button__content -flex--column -align-items--center">
+                <i class="chi-icon icon-reset -sm--2 -mr--0"></i>
+                <span class="-text--uppercase -text--primary -text--2xs">Clear</span>
               </div>
             </button>
             <div class="chi-divider -vertical"></div>
