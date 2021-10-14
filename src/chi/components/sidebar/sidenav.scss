@@ -161,6 +161,27 @@ $sidenav-lg-width: 12.5rem;
       }
 
       .chi-accordion {
+        > a {
+          font-size: 0.875rem;
+          padding: 0.625rem 1.5rem;
+
+          &.-active {
+            background-color: $sidenav-drawer-tab-active-background-color;
+            box-shadow: $sidenav-drawer-tab-active-box-shadow;
+            color: $color-text-primary;
+            font-weight: $font-weight-semi-bold;
+
+            &:hover {
+              background-color: $sidenav-drawer-tab-active-background-color;
+            }
+          }
+
+          &:hover {
+            background-color: $sidenav-item-hover-background-color;
+            text-decoration: none;
+          }
+        }
+
         .chi-accordion__item {
           background-color: transparent;
           margin-bottom: 0;

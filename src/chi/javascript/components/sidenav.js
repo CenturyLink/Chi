@@ -68,14 +68,14 @@ class Sidenav extends Component {
       Util.checkAddClass(this._elem, chi.classes.ANIMATED);
     }
 
-    this.singleLevelMenuItems();
-    this.syncDrawers();
+    this._singleLevelMenuItems();
+    this._syncDrawers();
     this._configureAutoClose();
     this._initDrawersOnHover();
     this._initSubtabTriggers();
   }
 
-  syncDrawers() {
+  _syncDrawers() {
     const previousDrawers = this._drawers.slice(0);
     const self = this;
 
@@ -175,7 +175,7 @@ class Sidenav extends Component {
   }
 
   _getActiveAccordionAnchor() {
-    const activeItem = this._elem.querySelector(`.${SIDENAV_DRAWERS_CLASS} .${DRAWER_CLASS} .${ACCORDION_CLASS} .${ACCORDION_ITEM_CLASS} a.${chi.classes.ACTIVE}`);
+    const activeItem = this._elem.querySelector(`.${SIDENAV_DRAWERS_CLASS} .${DRAWER_CLASS} .${ACCORDION_CLASS} a.${chi.classes.ACTIVE}`);
 
     if (activeItem) {
       return activeItem;
@@ -279,7 +279,7 @@ class Sidenav extends Component {
     )
   }
 
-  singleLevelMenuItems() {
+  _singleLevelMenuItems() {
     Array.prototype.forEach.call(
       this._elem.querySelectorAll(`nav > ul.${LINKLIST_CLASS} > li`),
       (singleLevelMenuItem) => {
