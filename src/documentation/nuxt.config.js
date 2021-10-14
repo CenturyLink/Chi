@@ -1,3 +1,5 @@
+import { CHI_VERSION } from "./constants/configs";
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -16,17 +18,23 @@ export default {
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href: 'https://assets.ctl.io/chi/5.1.0/chi-portal.css'
+        href: `https://assets.ctl.io/chi/${CHI_VERSION}/chi-portal.css`
       },
       {
         rel: 'stylesheet',
         type: 'text/css',
-        href: 'https://assets.ctl.io/chi/5.1.0/assets/themes/portal/docs.css'
-      }
+        href: `https://assets.ctl.io/chi/${CHI_VERSION}/assets/themes/portal/docs.css`
+      },
     ],
     script: [
       {
-        src: 'https://assets.ctl.io/chi/5.1.0/js/chi.js'
+        src: `https://assets.ctl.io/chi/${CHI_VERSION}/js/chi.js`,
+      },
+      {
+        src: `https://assets.ctl.io/chi/${CHI_VERSION}/js/ce/ux-chi-ce/ux-chi-ce.esm.js`,
+      },
+      {
+        src: `https://assets.ctl.io/chi/${CHI_VERSION}/js/ce/ux-chi-ce/ux-chi-ce.js`,
       }
     ]
   },

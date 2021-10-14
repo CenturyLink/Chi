@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base_portal" :tabs="exampleTabs">
-    div(slot="example")
+    div(slot="example").-p--3.-p-lg--6
       .chi-accordion#example-portal-base
         .chi-accordion__item
           button.chi-accordion__trigger

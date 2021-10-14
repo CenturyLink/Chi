@@ -1,7 +1,6 @@
 export const exampleConfig = {
   columnResize: true,
   noResultsMessage: 'No matches found. Please revise search criteria and try again.',
-  activePage: 1,
   style: {
     portal: true,
     noBorder: false,
@@ -11,6 +10,7 @@ export const exampleConfig = {
     striped: true,
   },
   pagination: {
+    activePage: 1,
     hideOnSinglePage: true,
     compact: true,
     firstLast: true,
