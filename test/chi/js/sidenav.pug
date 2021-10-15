@@ -3,8 +3,9 @@ title: Sidenav
 ---
 script(src='../../js/chi.js')
 
+h3 Legacy Sidenav HTML markup
 .enterprise-nav-menu.chi(style='height: 35rem;')
-  aside#sidenav-0.chi-sidenav.-h--75
+  aside#sidenav-0.chi-sidenav.-h--75(data-cy="sidenav-legacy")
     .chi-sidenav__content
       nav
         ul.chi-sidenav__list
@@ -110,6 +111,7 @@ script(src='../../js/chi.js')
                   | Title H
                   i.chi-icon.icon-external-link.-xs(aria-hidden="true")
 
+h3 Sidenav Accordion implementation
 aside#sidenav-1.chi-sidenav.-flex--shrink0.-animated
   .chi-sidenav__content
     nav
@@ -316,6 +318,6 @@ aside#sidenav-1.chi-sidenav.-flex--shrink0.-animated
               | External 4
               i.chi-icon.icon-external-link.-xs(aria-hidden='true')
 
-  script.
-    chi.sidenav(document.getElementById('sidenav-0'));
-    chi.sidenav(document.getElementById('sidenav-1'));
+script.
+  chi.sidenav(document.getElementById('sidenav-0'));
+    //- chi.sidenav(document.getElementById('sidenav-1'));
