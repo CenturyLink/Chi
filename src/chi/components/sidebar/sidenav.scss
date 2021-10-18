@@ -144,14 +144,14 @@ $sidenav-lg-width: 12.5rem;
           color: $color-text-primary;
 
           .chi-sidenav__title {
-            font-weight: 600;
+            font-weight: $font-weight-semi-bold;
           }
         }
 
         span {
           &.chi-sidenav__title {
             display: flex;
-            font-weight: 400;
+            font-weight: $font-weight-normal;
           }
 
           .chi-icon {
@@ -162,7 +162,7 @@ $sidenav-lg-width: 12.5rem;
 
       .chi-accordion {
         > a {
-          font-size: 0.875rem;
+          font-size: $font-size-md;
           padding: 0.625rem 1.5rem;
 
           &.-active {
@@ -219,8 +219,8 @@ $sidenav-lg-width: 12.5rem;
               position: relative;
 
               .chi-accordion__title {
-                font-size: 0.875rem;
-                font-weight: 400;
+                font-size: $font-size-md;
+                font-weight: $font-weight-normal;
                 line-height: $sidenav-item-title-line-height;
 
                 + .chi-icon {
@@ -240,8 +240,8 @@ $sidenav-lg-width: 12.5rem;
                 padding: 0;
 
                 a {
-                  font-size: 0.875rem;
-                  font-weight: 400;
+                  font-size: $font-size-md;
+                  font-weight: $font-weight-normal;
                   padding: 0.625rem 3rem;
                 }
 
@@ -252,12 +252,12 @@ $sidenav-lg-width: 12.5rem;
                         padding: 0.625rem 3rem;
 
                         .chi-accordion__title {
-                          font-size: 0.875rem;
+                          font-size: $font-size-md;
                         }
 
                         + .chi-accordion__content {
                           a {
-                            font-size: 0.8125rem;
+                            font-size: $font-size-md;
                             padding: 0.625rem 4rem;
                           }
                         }
@@ -281,7 +281,6 @@ $sidenav-lg-width: 12.5rem;
 
                 > .chi-accordion__title {
                   color: $color-text-primary;
-                  font-weight: 600;
                 }
 
                 &:hover {
@@ -300,7 +299,6 @@ $sidenav-lg-width: 12.5rem;
 
                 > .chi-accordion__title {
                   color: $color-text-base;
-                  font-weight: 600;
                 }
 
                 &:hover {
@@ -311,6 +309,22 @@ $sidenav-lg-width: 12.5rem;
               }
             }
           }
+        }
+      }
+
+      > .chi-accordion {
+        > .chi-accordion__item {
+          > button {
+            &.chi-accordion__trigger {
+              > .chi-accordion__title {
+                font-weight: $font-weight-semi-bold;
+              }
+            }
+          }
+        }
+
+        > a {
+          font-weight: $font-weight-semi-bold;
         }
       }
 
@@ -631,7 +645,7 @@ $sidenav-lg-width: 12.5rem;
     .chi-sidenav__list > li {
       > a {
         flex-direction: row;
-        font-size: 0.875rem;
+        font-size: $font-size-md;
         justify-content: flex-start;
         min-height: 3rem;
         padding-left: 1.5rem;

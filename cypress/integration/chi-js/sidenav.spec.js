@@ -1,17 +1,21 @@
 const drawerLiTitleSelector = ' .chi-sidenav__drawer-list li div.chi-sidenav__title';
 const drawerDropDownTitle   = '.chi-sidenav__drawer-item-list ul.chi-tabs li a';
 const drawerLiMainMenuTitleSelector = ' .chi-sidenav__drawer-list li span.chi-sidenav__title';
-const LEGACY_SIDENAV_SELECTOR = '[data-cy="sidenav-legacy"]';
 
 describe('Sidenav', function() {
   before(() => {
     cy.visit('tests/js/sidenav.html');
   });
 
+  beforeEach(() => {
+    cy.get('[data-cy="sidenav-legacy"]')
+      .as('legacySidenavSelector');
+  });
+
   describe('check that click on 1st level opens 2nd-level menu drawer', () => {
     [/^Active Item$/, /^Menu Item$/].forEach(menuText => {
       it(`check "${menuText}" opens 2nd-level menu drawer`, () => {
-        cy.get(LEGACY_SIDENAV_SELECTOR).within(() => {
+        cy.get('@legacySidenavSelector').within(() => {
           cy.get('.chi-sidenav__list li')
             .contains(menuText)
             .as('firstLevelElement');
@@ -32,7 +36,7 @@ describe('Sidenav', function() {
   describe('check that click on "X" in menu drawer closes drawer', () => {
     [/^Active Item$/, /^Menu Item$/].forEach(menuText => {
       it(`check "${menuText}" drawer closes on "X"`, () => {
-        cy.get(LEGACY_SIDENAV_SELECTOR).within(() => {
+        cy.get('@legacySidenavSelector').within(() => {
           cy.get('.chi-sidenav__list li')
             .contains(menuText)
             .as('firstLevelElement');
@@ -61,7 +65,7 @@ describe('Sidenav', function() {
   describe('check that click on 1st level opens the drawer and click on empty space in menu container closes it', () => {
     [/^Active Item$/, /^Menu Item$/].forEach(menuText => {
       it(`check "${menuText}" clicked outside drawer closes it`, () => {
-        cy.get(LEGACY_SIDENAV_SELECTOR).within(() => {
+        cy.get('@legacySidenavSelector').within(() => {
           cy.get('.chi-sidenav__list li')
             .contains(menuText)
             .as('firstLevelElement');
@@ -96,7 +100,7 @@ describe('Sidenav', function() {
       }
       dropdownItems.forEach(element => {
         it(`check "${menuText}" >   "${element}" should open Dropdown`, () => {
-          cy.get(LEGACY_SIDENAV_SELECTOR).within(() => {
+          cy.get('@legacySidenavSelector').within(() => {
             cy.get('.chi-sidenav__list li')
               .contains(menuText)
               .as('firstLevelElement');
@@ -133,7 +137,7 @@ describe('Sidenav', function() {
       }
       dropdownItems.forEach(element => {
         it(`check "${menuText}" >   "${element}" should open Dropdown`, () => {
-          cy.get(LEGACY_SIDENAV_SELECTOR).within(() => {
+          cy.get('[data-cy="sidenav-legacy"]').within(() => {
             cy.get('.chi-sidenav__list li')
               .contains(menuText)
               .as('firstLevelElement');
@@ -173,7 +177,7 @@ describe('Sidenav', function() {
         '-verify that when clicking on Title C Drawer should close and ActiveItems has -active class',
       () => {
         let menuText = /^Active Item$/;
-        cy.get(LEGACY_SIDENAV_SELECTOR).within(() => {
+        cy.get('[data-cy="sidenav-legacy"]').within(() => {
           cy.get('.chi-sidenav__list li')
             .contains(menuText)
             .as('firstLevelElement');

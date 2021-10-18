@@ -23,25 +23,25 @@ h3 -md
             .chi-drawer__content
               .chi-accordion
                 each val2, index in drawerMenuItems
-                  .chi-accordion__item(class=`${val === active.menuItem && val1 === active.drawerMenuItem && val2 === active.drawerMenuItem ? '-active' : ''}`)
+                  .chi-accordion__item(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active' : ''}`)
                     button.chi-accordion__trigger
-                      .chi-accordion__title=`Item-${val2}`
+                      .chi-accordion__title=`Item ${val2}`
                       i.chi-icon.icon-chevron-down(aria-hidden="true")
                     .chi-accordion__content
                       .chi-accordion
                         each val3, index in drawerMenuItems
-                          .chi-accordion__item(class=`${val === active.menuItem && val1 === active.drawerMenuItem && val2 === active.drawerMenuItem && val3 === active.drawerMenuItem ? '-active' : ''}`)
+                          .chi-accordion__item(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem && val3 === active.drawerMenuItem ? '-active' : ''}`)
                             button.chi-accordion__trigger
-                              .chi-accordion__title=`Item-${val2}-${val3}`
+                              .chi-accordion__title=`Item ${val2}.${val3}`
                               i.chi-icon.icon-chevron-down(aria-hidden="true")
                             .chi-accordion__content
                               each val4 in drawerMenuItems
-                                a(href=`#exampleHashTarget` class=`${val === active.menuItem && val1 === active.drawerMenuItem && val2 === active.drawerMenuItem && val3 === active.drawerMenuItem && val4 === active.drawerMenuItem ? '-active' : ''}`)
+                                a(href=`#exampleHashTarget` class=`${val1 === active.menuItem && val2 === active.drawerMenuItem && val3 === active.drawerMenuItem && val4 === active.drawerMenuItem ? '-active' : ''}`)
                                   span
-                                    =`Item-${val2}-${val3}-${val4}`
+                                    =`Item ${val2}.${val3}.${val4}`
                 a(href=`#exampleHashTarget`)
                   span
-                    =`External ${val1}`
+                    | External
                     i.chi-icon.icon-external-link.-xs(aria-hidden="true")
     .-flex--grow1.-p--3.-pb--4
       each val2 in [1,2,3,4]
@@ -105,181 +105,86 @@ h3 -md
               <div class="chi-accordion">
                 <div class="chi-accordion__item">
                   <button class="chi-accordion__trigger">
-                    <div class="chi-accordion__title">Item-1</div>
+                    <div class="chi-accordion__title">Item 1</div>
                     <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
                   </button>
                   <div class="chi-accordion__content">
                     <div class="chi-accordion">
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-1-1</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 1.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-1-1-1</span>
+                            <span>Item 1.1.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-1-1-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-1-3</span>
+                            <span>Item 1.1.2</span>
                           </a>
                         </div>
                       </div>
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-1-2</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 1.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-1-2-1</span>
+                            <span>Item 1.2.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-1-2-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-2-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-1-3</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-3-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-3-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-3-3</span>
+                            <span>Item 1.2.2</span>
                           </a>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="chi-accordion__item">
+                <div class="chi-accordion__item -active">
                   <button class="chi-accordion__trigger">
-                    <div class="chi-accordion__title">Item-2</div>
+                    <div class="chi-accordion__title">Item 2</div>
                     <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
                   </button>
                   <div class="chi-accordion__content">
                     <div class="chi-accordion">
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-2-1</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 2.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-2-1-1</span>
+                            <span>Item 2.1.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-2-1-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-1-3</span>
+                            <span>Item 2.1.2</span>
                           </a>
                         </div>
                       </div>
-                      <div class="chi-accordion__item">
+                      <div class="chi-accordion__item -active">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-2-2</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 2.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-2-2-1</span>
+                            <span>Item 2.2.1</span>
                           </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-2-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-2-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-2-3</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-3-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-3-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-3-3</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="chi-accordion__item">
-                  <button class="chi-accordion__trigger">
-                    <div class="chi-accordion__title">Item-3</div>
-                    <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                  </button>
-                  <div class="chi-accordion__content">
-                    <div class="chi-accordion">
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-3-1</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-1-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-1-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-1-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-3-2</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-2-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-2-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-2-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-3-3</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-3-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-3-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-3-3</span>
+                          <a class="-active" href="#exampleHashTarget">
+                            <span>Item 2.2.2</span>
                           </a>
                         </div>
                       </div>
@@ -287,7 +192,9 @@ h3 -md
                   </div>
                 </div>
                 <a href="#exampleHashTarget">
-                  <span>External 1 <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
+                  <span>
+                    External
+                    <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                   </span>
                 </a>
               </div>
@@ -306,59 +213,42 @@ h3 -md
               <div class="chi-accordion">
                 <div class="chi-accordion__item">
                   <button class="chi-accordion__trigger">
-                    <div class="chi-accordion__title">Item-1</div>
+                    <div class="chi-accordion__title">Item 1</div>
                     <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
                   </button>
                   <div class="chi-accordion__content">
                     <div class="chi-accordion">
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-1-1</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 1.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-1-1-1</span>
+                            <span>Item 1.1.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-1-1-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-1-3</span>
+                            <span>Item 1.1.2</span>
                           </a>
                         </div>
                       </div>
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-1-2</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 1.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-1-2-1</span>
+                            <span>Item 1.2.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-1-2-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-2-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-1-3</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-3-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-3-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-3-3</span>
+                            <span>Item 1.2.2</span>
                           </a>
                         </div>
                       </div>
@@ -367,120 +257,42 @@ h3 -md
                 </div>
                 <div class="chi-accordion__item">
                   <button class="chi-accordion__trigger">
-                    <div class="chi-accordion__title">Item-2</div>
+                    <div class="chi-accordion__title">Item 2</div>
                     <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
                   </button>
                   <div class="chi-accordion__content">
                     <div class="chi-accordion">
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-2-1</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 2.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-2-1-1</span>
+                            <span>Item 2.1.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-2-1-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-1-3</span>
+                            <span>Item 2.1.2</span>
                           </a>
                         </div>
                       </div>
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-2-2</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 2.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-2-2-1</span>
+                            <span>Item 2.2.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-2-2-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-2-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-2-3</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-3-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-3-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-3-3</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="chi-accordion__item">
-                  <button class="chi-accordion__trigger">
-                    <div class="chi-accordion__title">Item-3</div>
-                    <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                  </button>
-                  <div class="chi-accordion__content">
-                    <div class="chi-accordion">
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-3-1</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-1-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-1-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-1-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-3-2</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-2-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-2-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-2-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-3-3</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-3-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-3-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-3-3</span>
+                            <span>Item 2.2.2</span>
                           </a>
                         </div>
                       </div>
@@ -488,7 +300,9 @@ h3 -md
                   </div>
                 </div>
                 <a href="#exampleHashTarget">
-                  <span>External 2 <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
+                  <span>
+                    External
+                    <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                   </span>
                 </a>
               </div>
@@ -507,59 +321,42 @@ h3 -md
               <div class="chi-accordion">
                 <div class="chi-accordion__item">
                   <button class="chi-accordion__trigger">
-                    <div class="chi-accordion__title">Item-1</div>
+                    <div class="chi-accordion__title">Item 1</div>
                     <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
                   </button>
                   <div class="chi-accordion__content">
                     <div class="chi-accordion">
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-1-1</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 1.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-1-1-1</span>
+                            <span>Item 1.1.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-1-1-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-1-3</span>
+                            <span>Item 1.1.2</span>
                           </a>
                         </div>
                       </div>
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-1-2</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 1.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-1-2-1</span>
+                            <span>Item 1.2.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-1-2-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-2-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-1-3</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-3-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-3-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-3-3</span>
+                            <span>Item 1.2.2</span>
                           </a>
                         </div>
                       </div>
@@ -568,120 +365,42 @@ h3 -md
                 </div>
                 <div class="chi-accordion__item">
                   <button class="chi-accordion__trigger">
-                    <div class="chi-accordion__title">Item-2</div>
+                    <div class="chi-accordion__title">Item 2</div>
                     <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
                   </button>
                   <div class="chi-accordion__content">
                     <div class="chi-accordion">
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-2-1</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 2.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-2-1-1</span>
+                            <span>Item 2.1.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-2-1-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-1-3</span>
+                            <span>Item 2.1.2</span>
                           </a>
                         </div>
                       </div>
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-2-2</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 2.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-2-2-1</span>
+                            <span>Item 2.2.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-2-2-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-2-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-2-3</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-3-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-3-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-3-3</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="chi-accordion__item">
-                  <button class="chi-accordion__trigger">
-                    <div class="chi-accordion__title">Item-3</div>
-                    <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                  </button>
-                  <div class="chi-accordion__content">
-                    <div class="chi-accordion">
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-3-1</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-1-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-1-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-1-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-3-2</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-2-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-2-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-2-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-3-3</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-3-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-3-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-3-3</span>
+                            <span>Item 2.2.2</span>
                           </a>
                         </div>
                       </div>
@@ -689,7 +408,9 @@ h3 -md
                   </div>
                 </div>
                 <a href="#exampleHashTarget">
-                  <span>External 3 <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
+                  <span>
+                    External
+                    <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                   </span>
                 </a>
               </div>
@@ -708,59 +429,42 @@ h3 -md
               <div class="chi-accordion">
                 <div class="chi-accordion__item">
                   <button class="chi-accordion__trigger">
-                    <div class="chi-accordion__title">Item-1</div>
+                    <div class="chi-accordion__title">Item 1</div>
                     <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
                   </button>
                   <div class="chi-accordion__content">
                     <div class="chi-accordion">
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-1-1</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 1.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-1-1-1</span>
+                            <span>Item 1.1.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-1-1-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-1-3</span>
+                            <span>Item 1.1.2</span>
                           </a>
                         </div>
                       </div>
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-1-2</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 1.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-1-2-1</span>
+                            <span>Item 1.2.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-1-2-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-2-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-1-3</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-3-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-3-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-1-3-3</span>
+                            <span>Item 1.2.2</span>
                           </a>
                         </div>
                       </div>
@@ -769,120 +473,42 @@ h3 -md
                 </div>
                 <div class="chi-accordion__item">
                   <button class="chi-accordion__trigger">
-                    <div class="chi-accordion__title">Item-2</div>
+                    <div class="chi-accordion__title">Item 2</div>
                     <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
                   </button>
                   <div class="chi-accordion__content">
                     <div class="chi-accordion">
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-2-1</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 2.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-2-1-1</span>
+                            <span>Item 2.1.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-2-1-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-1-3</span>
+                            <span>Item 2.1.2</span>
                           </a>
                         </div>
                       </div>
                       <div class="chi-accordion__item">
                         <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-2-2</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                          <div class="chi-accordion__title">Item 2.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
                         </button>
                         <div class="chi-accordion__content">
                           <a href="#exampleHashTarget">
-                            <span>Item-2-2-1</span>
+                            <span>Item 2.2.1</span>
                           </a>
                           <a href="#exampleHashTarget">
-                            <span>Item-2-2-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-2-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-2-3</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-3-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-3-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-2-3-3</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="chi-accordion__item">
-                  <button class="chi-accordion__trigger">
-                    <div class="chi-accordion__title">Item-3</div>
-                    <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                  </button>
-                  <div class="chi-accordion__content">
-                    <div class="chi-accordion">
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-3-1</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-1-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-1-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-1-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-3-2</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-2-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-2-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-2-3</span>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="chi-accordion__item">
-                        <button class="chi-accordion__trigger">
-                          <div class="chi-accordion__title">Item-3-3</div>
-                          <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="chi-accordion__content">
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-3-1</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-3-2</span>
-                          </a>
-                          <a href="#exampleHashTarget">
-                            <span>Item-3-3-3</span>
+                            <span>Item 2.2.2</span>
                           </a>
                         </div>
                       </div>
@@ -890,7 +516,9 @@ h3 -md
                   </div>
                 </div>
                 <a href="#exampleHashTarget">
-                  <span>External 4 <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
+                  <span>
+                    External
+                    <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
                   </span>
                 </a>
               </div>
