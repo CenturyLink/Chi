@@ -1642,7 +1642,7 @@ describe('Server Side Data Table Portal', () => {
   });
 
   describe('Tree Selection', () => {
-    it(`Select all checkbox should check every row`, () => {
+    it(`Select all checkbox should check all the rows on the page`, () => {
       cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(0)
@@ -1660,7 +1660,7 @@ describe('Server Side Data Table Portal', () => {
         });
     });
 
-    it(`Deselect all checkbox should deselect every row`, () => {
+    it(`Deselect all checkbox should deselect all the rows`, () => {
       cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(0)
@@ -1695,7 +1695,7 @@ describe('Server Side Data Table Portal', () => {
       hasClassAssertion('@selectAllCheckbox', `${INDETERMINATE_CLASS}`);
     });
 
-    it(`Select all checkbox while it's indeterminate should deselect every row`, () => {
+    it(`Select all checkbox while it's indeterminate should deselect all the rows`, () => {
       cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(0)
@@ -1712,7 +1712,7 @@ describe('Server Side Data Table Portal', () => {
         });
     });
 
-    it(`Select child should indeterminate parent`, () => {
+    it(`Selecting child row should set indeterminate state on parent row`, () => {
       cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(1)
@@ -1740,7 +1740,7 @@ describe('Server Side Data Table Portal', () => {
       hasClassAssertion('@parentCheckbox', `${INDETERMINATE_CLASS}`);
     });
 
-    it(`Select indeterminate parent should deselect every row`, () => {
+    it(`Clicking parent row checkbox in indeterminate state should deselect all the child rows`, () => {
       cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(1)
@@ -1758,7 +1758,7 @@ describe('Server Side Data Table Portal', () => {
         });
     });
 
-    it(`Select parent should select every children and grand children`, () => {
+    it(`Clicking parent row checkbox should select all the child and grand-child rows`, () => {
       cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(1)
@@ -1786,7 +1786,7 @@ describe('Server Side Data Table Portal', () => {
         });
     });
 
-    it(`Select parent checked should deselect every children and grand children`, () => {
+    it(`Clicking parent row in checked state should deselect all the child and grand-child rows`, () => {
       cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(1)

@@ -349,14 +349,14 @@ export default class DataTable extends Vue {
     this._checkSelectAllCheckbox();
   }
 
-  _checkChildrenRowState(children: DataTableRow[], select: boolean | 'indeterminate') {
+  _checkChildRowState(children: DataTableRow[], select: boolean | 'indeterminate') {
     children?.forEach((row: DataTableRow) => {
       select ? this._addToSelectedRows(row) : this._removeFromSelectedRows(row);
 
       row.selected = select;
 
       if (row.nestedContent?.table?.data) {
-        this._checkChildrenRowState(row.nestedContent?.table?.data, select);
+        this. _checkChildRowState(row.nestedContent?.table?.data, select);
       }
     });
   }
@@ -853,7 +853,6 @@ export default class DataTable extends Vue {
         typeof row.nestedContent.table === 'object' &&
         row.nestedContent.table.data
       ) {
-        // eslint-disable-next-line
         row.nestedContent.table.data = row.nestedContent.table.data.map((subRow: DataTableRow) => {
           const serialized = serializeRow(subRow, subrowNumber, rowObject, rowN);
 
