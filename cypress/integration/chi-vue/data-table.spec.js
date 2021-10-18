@@ -1677,7 +1677,7 @@ describe('Server Side Data Table Portal', () => {
         });
     });
 
-    it(`Select one row should indeterminate select all checkbox`, () => {
+    it(`Select one row should set indeterminate state on select all checkbox`, () => {
       cy.get(`[data-cy='data-table-indeterminate-selection']`)
         .children()
         .eq(0)
