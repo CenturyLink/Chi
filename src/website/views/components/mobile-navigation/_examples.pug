@@ -1,3 +1,12 @@
+- var example=0;
+- var menuItems=['1', '2', '3', '4'];
+- var drawerMenuItems=['1', '2'];
+-
+  var active = {
+    menuItem: '1',
+    drawerMenuItem: '2'
+  };
+
 h2 Examples
 h3 Interaction
 .example.-mb--3.-overflow--hidden
@@ -51,6 +60,10 @@ h3 Interaction
                         i.chi-icon.icon-atom(aria-hidden="true")
                         span Toggle me
                     li
+                      a(href='#second-level-2')
+                        i.chi-icon.icon-atom(aria-hidden="true")
+                        span Toggle me
+                    li
                       a(href='#tab-link')
                         i.chi-icon.icon-atom(aria-hidden="true")
                         span Tab link
@@ -73,47 +86,35 @@ h3 Interaction
                         i.chi-icon.icon-logout(aria-hidden="true")
                         span Sign Out
             .chi-mobile-nav__drawers
-              .chi-drawer.-right.-position--absolute#second-level-1
-                .chi-drawer__header.chi-mobile-nav__header
-                  button.chi-button.-flat.-icon.-no-hover.-back(aria-label='Back')
-                    .chi-button__content
-                      i.chi-icon.icon-chevron-left(aria-hidden="true")
-                  .chi-mobile-nav__header-title Inventory
-                  button.chi-button.-icon.-close(aria-label='Close')
-                    .chi-button__content
-                      i.chi-icon.icon-x(aria-hidden="true")
-                .chi-drawer__content.chi-mobile-nav__content
-                  ul.chi-mobile-nav__list
-                    li
-                      a(href='#')
-                        .chi-mobile-nav__list-title Title A
-                      .chi-mobile-nav__list-item-list
-                        ul.chi-tabs.-vertical.-sm
-                          li
-                            a.chi-mobile-nav-item-tab Sub tab A
-                          li
-                            a.chi-mobile-nav-item-tab Sub tab B
-                    li
-                      a(href='#')
-                        .chi-mobile-nav__list-title Title B
-                      .chi-mobile-nav__list-item-list
-                        ul.chi-tabs.-vertical.-sm
-                          li
-                            a.chi-mobile-nav-item-tab Sub tab A
-                          li
-                            a.chi-mobile-nav-item-tab Sub tab B
-                    li.-active.-expanded
-                      a(href='#')
-                        .chi-mobile-nav__list-title Title C
-                      .chi-mobile-nav__list-item-list
-                        ul.chi-tabs.-vertical.-sm
-                          li
-                            a.chi-mobile-nav-item-tab.-active Sub tab A
-                          li
-                            a.chi-mobile-nav-item-tab Sub tab B
-                    li
-                      a(href='#tab-link')
-                        .chi-mobile-nav__list-title Single level
+              each drawerNumber in [1, 2]
+                .chi-drawer.-right.-position--absolute(id=`second-level-${drawerNumber}`)
+                  .chi-drawer__header.chi-mobile-nav__header
+                    button.chi-button.-flat.-icon.-no-hover.-back(aria-label='Back')
+                      .chi-button__content
+                        i.chi-icon.icon-chevron-left(aria-hidden="true")
+                    .chi-mobile-nav__header-title Inventory
+                    button.chi-button.-icon.-close(aria-label='Close')
+                      .chi-button__content
+                        i.chi-icon.icon-x(aria-hidden="true")
+                  .chi-drawer__content.chi-mobile-nav__content
+                    .chi-accordion
+                      each item, index in drawerMenuItems
+                        .chi-accordion__item(class=`${drawerNumber === 1 && item === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                          button.chi-accordion__trigger
+                            .chi-accordion__title=`Item ${item}`
+                            i.chi-icon.icon-chevron-down(aria-hidden="true")
+                          .chi-accordion__content
+                            .chi-accordion
+                              each item2, index in drawerMenuItems
+                                .chi-accordion__item(class=`${drawerNumber === 1 && item === active.drawerMenuItem && item2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                                  button.chi-accordion__trigger
+                                    .chi-accordion__title=`Item ${item}.${item2}`
+                                    i.chi-icon.icon-chevron-down(aria-hidden="true")
+                                  .chi-accordion__content
+                                    each item3 in drawerMenuItems
+                                      a(href=`#exampleHashTarget` class=`${drawerNumber === 1 && item === active.drawerMenuItem && item2 === active.drawerMenuItem && item3 === active.drawerMenuItem ? '-active' : ''}`)
+                                        span
+                                          =`Item ${item}.${item2}.${item3}`
   .example-tabs.-pl--2
     ul.chi-tabs#examples-interaction
       li.-disabled
@@ -132,42 +133,98 @@ h3 Interaction
 
       <!-- Mobile Navigation -->
       <div class="chi-mobile-nav" id="mobile-navigation-example">
-        <div class="chi-backdrop -closed -position--absolute">
+        <div class="chi-backdrop -position--absolute -animated -closed">
           <div class="chi-backdrop__wrapper">
             <div class="chi-drawer -left -animated chi-mobile-nav__first-level -position--absolute">
               <div class="-position--relative">
                 <div class="chi-mobile-nav__first-level-content -w--100">
                   <div class="chi-drawer__header chi-mobile-nav__header">
-                    <button class="chi-button -flat chi-dropdown__trigger -animate -no-hover -b--transparent" id="button-site-menu2" data-target="dropdown-2-menu">Control Center</button>
+                    <button
+                      class="chi-button -flat chi-dropdown__trigger -animate -no-hover -b--transparent"
+                      id="button-site-menu2"
+                      data-target="dropdown-2-menu"
+                    >
+                      Control Center
+                    </button>
                     <button class="chi-button -icon -close" aria-label="Close">
-                      <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
+                      <div class="chi-button__content">
+                        <i class="chi-icon icon-x" aria-hidden="true"></i>
+                      </div>
                     </button>
                   </div>
                   <div class="chi-mobile-nav__dropdown">
-                    <div class="chi-dropdown__menu -list chi-mobile-nav__dropdown-content" id="dropdown-2-menu">
-                      <a class="chi-dropdown__menu-item -h--auto -active" href="#"><span class="chi-dropdown__menu-item_title">App name</span><span class="chi-dropdown__menu-item_text">App description</span></a>
-                      <a class="chi-dropdown__menu-item -h--auto" href="#"><span class="chi-dropdown__menu-item_title">App name 2</span><span class="chi-dropdown__menu-item_text">App description</span></a>
-                      <a class="chi-dropdown__menu-item -h--auto" href="#"><span class="chi-dropdown__menu-item_title">App name 3</span><span class="chi-dropdown__menu-item_text">App description</span></a>
+                    <div
+                      class="chi-dropdown__menu -list chi-mobile-nav__dropdown-content"
+                      id="dropdown-2-menu"
+                    >
+                      <a class="chi-dropdown__menu-item -h--auto -active" href="#">
+                        <span class="chi-dropdown__menu-item_title">App name</span>
+                        <span class="chi-dropdown__menu-item_text">
+                          App description
+                        </span>
+                      </a>
+                      <a class="chi-dropdown__menu-item -h--auto" href="#">
+                        <span class="chi-dropdown__menu-item_title">App name 2</span>
+                        <span class="chi-dropdown__menu-item_text">
+                          App description
+                        </span>
+                      </a>
+                      <a class="chi-dropdown__menu-item -h--auto" href="#">
+                        <span class="chi-dropdown__menu-item_title">App name 3</span>
+                        <span class="chi-dropdown__menu-item_text">
+                          App description
+                        </span>
+                      </a>
                     </div>
                   </div>
                   <div class="chi-drawer__content chi-mobile-nav__content">
                     <div class="chi-mobile-nav__user">
-                      <div class="chi-mobile-nav__user-name"><span>Alessandro Ray</span></div>
-                      <button class="chi-button -flat chi-dropdown__trigger -px--1 -animate -no-hover -b--transparent -text--normal" id="button-user-menu2" data-target="dropdown-3-menu">Menu</button>
+                      <div class="chi-mobile-nav__user-name">
+                        <span>Alessandro Ray</span>
+                      </div>
+                      <button
+                        class="chi-button -flat chi-dropdown__trigger -px--1 -animate -no-hover -b--transparent -text--normal"
+                        id="button-user-menu2"
+                        data-target="dropdown-3-menu"
+                      >
+                        Menu
+                      </button>
                     </div>
                     <div class="chi-mobile-nav__dropdown">
-                      <div class="chi-dropdown__menu chi-mobile-nav__dropdown-content" id="dropdown-3-menu">
-                        <a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-user" aria-hidden="true"></i><span>Item 1</span></a><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-logout" aria-hidden="true"></i><span>Item 2</span></a>
+                      <div
+                        class="chi-dropdown__menu chi-mobile-nav__dropdown-content"
+                        id="dropdown-3-menu"
+                      >
+                        <a class="chi-dropdown__menu-item" href="#">
+                          <i class="chi-icon icon-user" aria-hidden="true"></i>
+                          <span>Item 1</span>
+                        </a>
+                        <a class="chi-dropdown__menu-item" href="#">
+                          <i class="chi-icon icon-logout" aria-hidden="true"></i>
+                          <span>Item 2</span>
+                        </a>
                       </div>
                     </div>
                     <ul class="chi-tabs -vertical -icons">
-                      <li class="-active">
-                        <a href="#second-level-1">
+                      <li class="">
+                        <a
+                          href="#second-level-1"
+                          class=" chi-drawer__subitem-list-trigger"
+                        >
                           <i class="chi-icon icon-atom" aria-hidden="true"></i>
                           <span>Toggle me</span>
                         </a>
                       </li>
-                      <li>
+                      <li class="">
+                        <a
+                          href="#second-level-2"
+                          class=" chi-drawer__subitem-list-trigger"
+                        >
+                          <i class="chi-icon icon-atom" aria-hidden="true"></i>
+                          <span>Toggle me</span>
+                        </a>
+                      </li>
+                      <li class=" -active">
                         <a href="#tab-link">
                           <i class="chi-icon icon-atom" aria-hidden="true"></i>
                           <span>Tab link</span>
@@ -190,7 +247,10 @@ h3 Interaction
                       </li>
                       <li>
                         <a class="-text--primary" href="#tab-link">
-                          <i class="chi-icon icon-bell-settings-outline" aria-hidden="true"></i>
+                          <i
+                            class="chi-icon icon-bell-settings-outline"
+                            aria-hidden="true"
+                          ></i>
                           <span>Notification Settings</span>
                         </a>
                       </li>
@@ -205,57 +265,242 @@ h3 Interaction
                 </div>
               </div>
               <div class="chi-mobile-nav__drawers">
-                <div class="chi-drawer -right -position--absolute" id="second-level-1">
+                <div
+                  class="chi-drawer -right -position--absolute"
+                  id="second-level-1"
+                >
                   <div class="chi-drawer__header chi-mobile-nav__header">
-                    <button class="chi-button -flat -icon -no-hover -back" aria-label="Back">
-                      <div class="chi-button__content"><i class="chi-icon icon-chevron-left" aria-hidden="true"></i></div>
+                    <button
+                      class="chi-button -flat -icon -no-hover -back"
+                      aria-label="Back"
+                    >
+                      <div class="chi-button__content">
+                        <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                      </div>
                     </button>
                     <div class="chi-mobile-nav__header-title">Inventory</div>
                     <button class="chi-button -icon -close" aria-label="Close">
-                      <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
+                      <div class="chi-button__content">
+                        <i class="chi-icon icon-x" aria-hidden="true"></i>
+                      </div>
                     </button>
                   </div>
                   <div class="chi-drawer__content chi-mobile-nav__content">
-                    <ul class="chi-mobile-nav__list">
-                      <li>
-                        <a href="#">
-                          <div class="chi-mobile-nav__list-title">Title A</div>
-                        </a>
-                        <div class="chi-mobile-nav__list-item-list">
-                          <ul class="chi-tabs -vertical -sm">
-                            <li><a class="chi-mobile-nav-item-tab">Sub tab A</a></li>
-                            <li><a class="chi-mobile-nav-item-tab">Sub tab B</a></li>
-                          </ul>
+                    <div class="chi-accordion">
+                      <div class="chi-accordion__item -expanded">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content" style="">
+                          <div class="chi-accordion">
+                            <div class="chi-accordion__item">
+                              <button class="chi-accordion__trigger">
+                                <div class="chi-accordion__title">Item 1.1</div>
+                                <i
+                                  class="chi-icon icon-chevron-down"
+                                  aria-hidden="true"
+                                ></i>
+                              </button>
+                              <div class="chi-accordion__content" style="">
+                                <a href="#exampleHashTarget" class="">
+                                  <span>Item 1.1.1</span>
+                                </a>
+                                <a href="#exampleHashTarget">
+                                  <span>Item 1.1.2</span>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="chi-accordion__item">
+                              <button class="chi-accordion__trigger">
+                                <div class="chi-accordion__title">Item 1.2</div>
+                                <i
+                                  class="chi-icon icon-chevron-down"
+                                  aria-hidden="true"
+                                ></i>
+                              </button>
+                              <div class="chi-accordion__content" style="">
+                                <a href="#exampleHashTarget">
+                                  <span>Item 1.2.1</span>
+                                </a>
+                                <a href="#exampleHashTarget">
+                                  <span>Item 1.2.2</span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <div class="chi-mobile-nav__list-title">Title B</div>
-                        </a>
-                        <div class="chi-mobile-nav__list-item-list">
-                          <ul class="chi-tabs -vertical -sm">
-                            <li><a class="chi-mobile-nav-item-tab">Sub tab A</a></li>
-                            <li><a class="chi-mobile-nav-item-tab">Sub tab B</a></li>
-                          </ul>
+                      </div>
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content" style="">
+                          <div class="chi-accordion">
+                            <div class="chi-accordion__item">
+                              <button class="chi-accordion__trigger">
+                                <div class="chi-accordion__title">Item 2.1</div>
+                                <i
+                                  class="chi-icon icon-chevron-down"
+                                  aria-hidden="true"
+                                ></i>
+                              </button>
+                              <div class="chi-accordion__content" style="">
+                                <a href="#exampleHashTarget">
+                                  <span>Item 2.1.1</span>
+                                </a>
+                                <a href="#exampleHashTarget">
+                                  <span>Item 2.1.2</span>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="chi-accordion__item">
+                              <button class="chi-accordion__trigger">
+                                <div class="chi-accordion__title">Item 2.2</div>
+                                <i
+                                  class="chi-icon icon-chevron-down"
+                                  aria-hidden="true"
+                                ></i>
+                              </button>
+                              <div class="chi-accordion__content" style="">
+                                <a href="#exampleHashTarget" class="">
+                                  <span>Item 2.2.1</span>
+                                </a>
+                                <a class="" href="#exampleHashTarget">
+                                  <span>Item 2.2.2</span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </li>
-                      <li class="-active -expanded">
-                        <a href="#">
-                          <div class="chi-mobile-nav__list-title">Title C</div>
-                        </a>
-                        <div class="chi-mobile-nav__list-item-list">
-                          <ul class="chi-tabs -vertical -sm">
-                            <li><a class="chi-mobile-nav-item-tab -active">Sub tab A</a></li>
-                            <li><a class="chi-mobile-nav-item-tab">Sub tab B</a></li>
-                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="chi-drawer -right -position--absolute"
+                  id="second-level-2"
+                >
+                  <div class="chi-drawer__header chi-mobile-nav__header">
+                    <button
+                      class="chi-button -flat -icon -no-hover -back"
+                      aria-label="Back"
+                    >
+                      <div class="chi-button__content">
+                        <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
+                      </div>
+                    </button>
+                    <div class="chi-mobile-nav__header-title">Inventory</div>
+                    <button class="chi-button -icon -close" aria-label="Close">
+                      <div class="chi-button__content">
+                        <i class="chi-icon icon-x" aria-hidden="true"></i>
+                      </div>
+                    </button>
+                  </div>
+                  <div class="chi-drawer__content chi-mobile-nav__content">
+                    <div class="chi-accordion">
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content" style="">
+                          <div class="chi-accordion">
+                            <div class="chi-accordion__item">
+                              <button class="chi-accordion__trigger">
+                                <div class="chi-accordion__title">Item 1.1</div>
+                                <i
+                                  class="chi-icon icon-chevron-down"
+                                  aria-hidden="true"
+                                ></i>
+                              </button>
+                              <div class="chi-accordion__content" style="">
+                                <a href="#exampleHashTarget" class="">
+                                  <span>Item 1.1.1</span>
+                                </a>
+                                <a href="#exampleHashTarget">
+                                  <span>Item 1.1.2</span>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="chi-accordion__item">
+                              <button class="chi-accordion__trigger">
+                                <div class="chi-accordion__title">Item 1.2</div>
+                                <i
+                                  class="chi-icon icon-chevron-down"
+                                  aria-hidden="true"
+                                ></i>
+                              </button>
+                              <div class="chi-accordion__content" style="">
+                                <a href="#exampleHashTarget">
+                                  <span>Item 1.2.1</span>
+                                </a>
+                                <a href="#exampleHashTarget">
+                                  <span>Item 1.2.2</span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </li>
-                      <li>
-                        <a href="#tab-link">
-                          <div class="chi-mobile-nav__list-title">Single level</div>
-                        </a>
-                      </li>
-                    </ul>
+                      </div>
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content" style="">
+                          <div class="chi-accordion">
+                            <div class="chi-accordion__item">
+                              <button class="chi-accordion__trigger">
+                                <div class="chi-accordion__title">Item 2.1</div>
+                                <i
+                                  class="chi-icon icon-chevron-down"
+                                  aria-hidden="true"
+                                ></i>
+                              </button>
+                              <div class="chi-accordion__content" style="">
+                                <a href="#exampleHashTarget">
+                                  <span>Item 2.1.1</span>
+                                </a>
+                                <a href="#exampleHashTarget">
+                                  <span>Item 2.1.2</span>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="chi-accordion__item">
+                              <button class="chi-accordion__trigger">
+                                <div class="chi-accordion__title">Item 2.2</div>
+                                <i
+                                  class="chi-icon icon-chevron-down"
+                                  aria-hidden="true"
+                                ></i>
+                              </button>
+                              <div class="chi-accordion__content" style="">
+                                <a href="#exampleHashTarget">
+                                  <span>Item 2.2.1</span>
+                                </a>
+                                <a href="#exampleHashTarget">
+                                  <span>Item 2.2.2</span>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
