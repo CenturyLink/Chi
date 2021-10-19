@@ -177,20 +177,14 @@ class Sidenav extends Component {
   _getActiveAccordionAnchor() {
     const activeItem = this._elem.querySelector(`.${SIDENAV_DRAWERS_CLASS} .${DRAWER_CLASS} .${ACCORDION_CLASS} a.${chi.classes.ACTIVE}`);
 
-    if (activeItem) {
-      return activeItem;
-    }
-    return null;
+    return activeItem || null;
   }
 
   _getActiveAccordionItems() {
     const activeAccordionItems = this._elem
       .querySelectorAll(`.${SIDENAV_DRAWERS_CLASS} .${DRAWER_CLASS} .${ACCORDION_CLASS} .${ACCORDION_ITEM_CLASS}.${chi.classes.ACTIVE}`);
 
-    if (activeAccordionItems) {
-      return activeAccordionItems;
-    }
-    return null;
+    return activeAccordionItems || null;
   }
 
   _initAccordionActivators(accordion) {
