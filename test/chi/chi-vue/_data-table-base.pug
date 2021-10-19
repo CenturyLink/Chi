@@ -119,7 +119,7 @@ h3 Data Table Server Side
 h3 Data Table indeterminate selection
 .test-data-table.-p--3.-w--100
   #indeterminate
-    chi-vue-data-table(data-cy='data-table-indeterminate-selection', :config="config", :data="table")
+    chi-vue-data-table(data-cy='data-table-indeterminate-selection', ref="indeterminateRef" :config="config", :data="table")
 
 script.
   new Vue({
@@ -633,7 +633,7 @@ script.
         body: [
           {
             id: "name-1",
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"]
           },
           {
             id: "name-2",
@@ -1806,18 +1806,22 @@ script.
           {
             id: "name-1",
             data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+            selected: true,
           },
           {
             id: 'NTM00002106611',
+            expanded: true,
             nestedContent: {
               table: {
                 data: [
                   {
                     id: 'a',
                     data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+                    selected: true,
                   },
                   {
                     id: 'bbb',
+                    expanded: true,
                     nestedContent: {
                       table: {
                         data: [

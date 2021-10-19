@@ -1640,180 +1640,202 @@ describe('Server Side Data Table Portal', () => {
       });
     });
   });
+});
 
-  describe('Tree Selection', () => {
-    it(`Select all checkbox should check all the rows on the page`, () => {
-      cy.get(`[data-cy='data-table-indeterminate-selection']`)
-        .children()
-        .eq(0)
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click()
-        .then(() => {
-          cy.get(
-            `[data-cy='data-table-indeterminate-selection'] .${DATA_TABLE_CLASSES.ROW}`
-          ).as('rows');
-          hasClassAssertion('@rows', `${ACTIVE_CLASS}`);
-          cy.get('@rows')
-            .find('input')
-            .as('checkboxes')
-            .should('be.checked');
-        });
-    });
+describe.only('Tree Selection', () => {
+  before(() => {
+    cy.visit('tests/chi-vue/data-table.html');
+  });
+  it(`Select all is indeterminate by default when one row is selected`, () => {
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(0)
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .find('input')
+      .as('selectAllCheckbox')
 
-    it(`Deselect all checkbox should deselect all the rows`, () => {
-      cy.get(`[data-cy='data-table-indeterminate-selection']`)
-        .children()
-        .eq(0)
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click()
-        .then(() => {
-          cy.get(
-            `[data-cy='data-table-indeterminate-selection'] .${DATA_TABLE_CLASSES.ROW}`
-          ).as('rows');
-          cy.get('@rows')
-            .find('input')
-            .as('checkboxes')
-            .should('not.be.checked');
-        });
-    });
-
-    it(`Select one row should set indeterminate state on select all checkbox`, () => {
-      cy.get(`[data-cy='data-table-indeterminate-selection']`)
-        .children()
-        .eq(0)
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .find('input')
-        .as('selectAllCheckbox')
-
-      cy.get(`[data-cy='data-table-indeterminate-selection']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-20-name-1')
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click();
-
-      hasClassAssertion('@selectAllCheckbox', `${INDETERMINATE_CLASS}`);
-    });
-
-    it(`Select all checkbox while it's indeterminate should deselect all the rows`, () => {
-      cy.get(`[data-cy='data-table-indeterminate-selection']`)
-        .children()
-        .eq(0)
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click()
-        .then(() => {
-          cy.get(
-            `[data-cy='data-table-indeterminate-selection'] .${DATA_TABLE_CLASSES.ROW}`
-          ).as('rows');
-          cy.get('@rows')
-            .find('input')
-            .as('checkboxes')
-            .should('not.be.checked');
-        });
-    });
-
-    it(`Selecting child row should set indeterminate state on parent row`, () => {
-      cy.get(`[data-cy='data-table-indeterminate-selection']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-20-NTM00002106611')
-        .find(`.${DATA_TABLE_CLASSES.EXPANDABLE}`)
-        .find('button')
-        .click();
-
-      cy.get(`[data-cy='data-table-indeterminate-selection']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-20-NTM00002106611-content')
-        .find('#row-dt-20-a')
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click();
-
-      cy.get(`[data-cy='data-table-indeterminate-selection']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-20-NTM00002106611')
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .find('input')
-        .as('parentCheckbox')
-
-      hasClassAssertion('@parentCheckbox', `${INDETERMINATE_CLASS}`);
-    });
-
-    it(`Clicking parent row checkbox in indeterminate state should deselect all the child rows`, () => {
-      cy.get(`[data-cy='data-table-indeterminate-selection']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-20-NTM00002106611')
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click()
-        .then(() => {
-          cy.get(
-            `[data-cy='data-table-indeterminate-selection'] .${DATA_TABLE_CLASSES.ROW}`
-          ).as('rows');
-          cy.get('@rows')
-            .find('input')
-            .as('checkboxes')
-            .should('not.be.checked');
-        });
-    });
-
-    it(`Clicking parent row checkbox should select all the child and grand-child rows`, () => {
-      cy.get(`[data-cy='data-table-indeterminate-selection']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-20-NTM00002106611')
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click()
-        .then(() => {
-          cy.get(`[data-cy='data-table-indeterminate-selection']`)
-          .children()
-          .eq(1)
-          .find('#row-dt-20-NTM00002106611-content')
-          .find('#row-dt-20-a')
-          .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-          .find('input')
-          .should('be.checked');
-
-          cy.get(`[data-cy='data-table-indeterminate-selection']`)
-          .children()
-          .eq(1)
-          .find('#row-dt-20-NTM00002106611-content')
-          .find('#row-dt-20-bbb')
-          .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-          .find('input')
-          .should('be.checked');
-        });
-    });
-
-    it(`Clicking parent row in checked state should deselect all the child and grand-child rows`, () => {
-      cy.get(`[data-cy='data-table-indeterminate-selection']`)
-        .children()
-        .eq(1)
-        .find('#row-dt-20-NTM00002106611')
-        .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-        .click()
-        .then(() => {
-          cy.get(`[data-cy='data-table-indeterminate-selection']`)
-          .children()
-          .eq(1)
-          .find('#row-dt-20-NTM00002106611-content')
-          .find('#row-dt-20-a')
-          .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-          .find('input')
-          .should('not.be.checked');
-
-          cy.get(`[data-cy='data-table-indeterminate-selection']`)
-          .children()
-          .eq(1)
-          .find('#row-dt-20-NTM00002106611-content')
-          .find('#row-dt-20-bbb')
-          .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
-          .find('input')
-          .should('not.be.checked');
-        });
-    });
+    hasClassAssertion('@selectAllCheckbox', `${INDETERMINATE_CLASS}`);
   });
 
+  it(`Parent is indeterminate by default when child is selected`, () => {
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(1)
+      .find('#row-dt-20-NTM00002106611')
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .find('input')
+      .as('parentCheckbox')
 
+    hasClassAssertion('@parentCheckbox', `${INDETERMINATE_CLASS}`);
+  });
+
+  it(`Select all checkbox should check all the rows on the page`, () => {
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(0)
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .click()
+
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(0)
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .click()
+      .then(() => {
+        cy.get(
+          `[data-cy='data-table-indeterminate-selection'] .${DATA_TABLE_CLASSES.ROW}`
+        ).as('rows');
+        hasClassAssertion('@rows', `${ACTIVE_CLASS}`);
+        cy.get('@rows')
+          .find('input')
+          .as('checkboxes')
+          .should('be.checked');
+      });
+  });
+
+  it(`Deselect all checkbox should deselect all the rows`, () => {
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(0)
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .click()
+      .then(() => {
+        cy.get(
+          `[data-cy='data-table-indeterminate-selection'] .${DATA_TABLE_CLASSES.ROW}`
+        ).as('rows');
+        cy.get('@rows')
+          .find('input')
+          .as('checkboxes')
+          .should('not.be.checked');
+      });
+  });
+
+  it(`Select one row should set indeterminate state on select all checkbox`, () => {
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(0)
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .find('input')
+      .as('selectAllCheckbox')
+
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(1)
+      .find('#row-dt-20-name-1')
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .click();
+
+    hasClassAssertion('@selectAllCheckbox', `${INDETERMINATE_CLASS}`);
+  });
+
+  it(`Select all checkbox while it's indeterminate should deselect all the rows`, () => {
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(0)
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .click()
+      .then(() => {
+        cy.get(
+          `[data-cy='data-table-indeterminate-selection'] .${DATA_TABLE_CLASSES.ROW}`
+        ).as('rows');
+        cy.get('@rows')
+          .find('input')
+          .as('checkboxes')
+          .should('not.be.checked');
+      });
+  });
+
+  it(`Selecting child row should set indeterminate state on parent row`, () => {
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(1)
+      .find('#row-dt-20-NTM00002106611-content')
+      .find('#row-dt-20-a')
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .click();
+
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(1)
+      .find('#row-dt-20-NTM00002106611')
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .find('input')
+      .as('parentCheckbox')
+
+    hasClassAssertion('@parentCheckbox', `${INDETERMINATE_CLASS}`);
+  });
+
+  it(`Clicking parent row checkbox in indeterminate state should deselect all the child rows`, () => {
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(1)
+      .find('#row-dt-20-NTM00002106611')
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .click()
+      .then(() => {
+        cy.get(
+          `[data-cy='data-table-indeterminate-selection'] .${DATA_TABLE_CLASSES.ROW}`
+        ).as('rows');
+        cy.get('@rows')
+          .find('input')
+          .as('checkboxes')
+          .should('not.be.checked');
+      });
+  });
+
+  it(`Clicking parent row checkbox should select all the child and grand-child rows`, () => {
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(1)
+      .find('#row-dt-20-NTM00002106611')
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .click()
+      .then(() => {
+        cy.get(`[data-cy='data-table-indeterminate-selection']`)
+          .children()
+          .eq(1)
+          .find('#row-dt-20-NTM00002106611-content')
+          .find('#row-dt-20-a')
+          .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+          .find('input')
+          .should('be.checked');
+
+        cy.get(`[data-cy='data-table-indeterminate-selection']`)
+          .children()
+          .eq(1)
+          .find('#row-dt-20-NTM00002106611-content')
+          .find('#row-dt-20-bbb')
+          .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+          .find('input')
+          .should('be.checked');
+      });
+  });
+
+  it(`Clicking parent row in checked state should deselect all the child and grand-child rows`, () => {
+    cy.get(`[data-cy='data-table-indeterminate-selection']`)
+      .children()
+      .eq(1)
+      .find('#row-dt-20-NTM00002106611')
+      .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+      .click()
+      .then(() => {
+        cy.get(`[data-cy='data-table-indeterminate-selection']`)
+          .children()
+          .eq(1)
+          .find('#row-dt-20-NTM00002106611-content')
+          .find('#row-dt-20-a')
+          .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+          .find('input')
+          .should('not.be.checked');
+
+        cy.get(`[data-cy='data-table-indeterminate-selection']`)
+          .children()
+          .eq(1)
+          .find('#row-dt-20-NTM00002106611-content')
+          .find('#row-dt-20-bbb')
+          .find(`.${DATA_TABLE_CLASSES.CHECKBOX}`)
+          .find('input')
+          .should('not.be.checked');
+      });
+  });
 });

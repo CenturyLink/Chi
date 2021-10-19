@@ -338,15 +338,13 @@ export default class DataTable extends Vue {
 
         if (rowData.selected) {
           this._addToSelectedRows(rowData);
-          this._checkChildrenRowState(children, true);
+          this._checkChildRowState(children, true);
         } else {
           this._removeFromSelectedRows(rowData);
-          this._checkChildrenRowState(children, false);
+          this._checkChildRowState(children, false);
         }
       }
     }
-
-    this._checkSelectAllCheckbox();
   }
 
   _checkChildRowState(children: DataTableRow[], select: boolean | 'indeterminate') {
@@ -356,7 +354,7 @@ export default class DataTable extends Vue {
       row.selected = select;
 
       if (row.nestedContent?.table?.data) {
-        this. _checkChildRowState(row.nestedContent?.table?.data, select);
+        this._checkChildRowState(row.nestedContent?.table?.data, select);
       }
     });
   }
@@ -369,6 +367,7 @@ export default class DataTable extends Vue {
 
     this._addToSelectedRows(rowData);
     this._checkRowIndeterminateState(newRowData);
+    this._checkSelectAllCheckbox();
     this.$emit(DATA_TABLE_EVENTS.SELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
@@ -381,6 +380,7 @@ export default class DataTable extends Vue {
 
     this._removeFromSelectedRows(rowData);
     this._checkRowIndeterminateState(newRowData);
+    this._checkSelectAllCheckbox();
     this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
@@ -432,14 +432,14 @@ export default class DataTable extends Vue {
         if (!this.selectedRows.includes(row.rowId) && !row.selectionDisabled) {
           this._addToSelectedRows(row);
         }
-        this._checkChildrenRowState(row.nestedContent?.table?.data, true);
+        this._checkChildRowState(row.nestedContent?.table?.data, true);
       });
 
       this.$emit(DATA_TABLE_EVENTS.SELECTED_ALL, this.slicedData);
     } else {
       data.forEach((row: DataTableRow) => {
         this._removeFromSelectedRows(row);
-        this._checkChildrenRowState(row.nestedContent?.table?.data, false);
+        this._checkChildRowState(row.nestedContent?.table?.data, false);
       });
 
       this.$emit(DATA_TABLE_EVENTS.DESELECTED_ALL, this.slicedData);
@@ -676,6 +676,12 @@ export default class DataTable extends Vue {
       );
     }
 
+    if (bodyRow.selected && bodyRow.selected !== 'indeterminate' && !this.selectedRows.includes(bodyRow.rowId)) {
+      this.selectedRows.push(bodyRow.rowId);
+      this._checkRowIndeterminateState(bodyRow);
+    }
+
+    this._checkSelectAllCheckbox();
     return row;
   }
 
@@ -861,13 +867,8 @@ export default class DataTable extends Vue {
         });
       }
 
-      this._checkRowIndeterminateState(row);
-
       if (rowObject.expanded && !this.accordionsExpanded.includes(rowObject.rowId)) {
         this.accordionsExpanded.push(rowObject.rowId);
-      }
-      if (rowObject.selected && !this.selectedRows.includes(rowObject.rowId)) {
-        this.selectedRows.push(rowObject.rowId);
       }
 
       return rowObject;
