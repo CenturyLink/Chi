@@ -64,6 +64,36 @@ section.chi-table.chi-table__methods.-bordered.-my--3
             div
               | Type: void
 
+
+p.-text Accordion accepts the following configurations to customize its behavior.
+section.chi-table.chi-table__options.-bordered.-my--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Config
+          th
+            div Description
+          th
+            div Type
+          th
+            div Default
+      tbody
+        tr
+          td
+            div
+              code= 'expansionMode'
+          td
+            div
+              | To customize simultaneous expansion behavior of accordion items
+          td
+            div
+              code= '"multiple" | "single"'
+          td
+            div
+              code= 'multiple'
+
 h3 Preventing memory leaks
 p.-text
   | Accordion component has a dispose function to free all the resources attached to the element, such as event listeners

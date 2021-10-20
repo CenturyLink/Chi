@@ -1,0 +1,534 @@
+h3 Open on hover
+- example=2
+.example.-mb--3
+  .-d--flex.-overflow--hidden
+    aside.chi-sidenav.-flex--shrink0#example-open-on-hover
+      .chi-sidenav__content
+        nav
+          ul.chi-sidenav__list
+            each val in menuItems
+              li(class=`${val === active.menuItem ? '-active' : ''}`)
+                a(href=`#drawer-${example}-${val}`)
+                  i.chi-icon.icon-atom(aria-hidden="true")
+                  span=val === active.menuItem ? 'Active Item' : 'Menu Item'
+      .chi-sidenav__drawers
+        each val1 in menuItems
+          .chi-drawer.-animated.-left(id=`drawer-${example}-${val1}`)
+            .chi-drawer__header
+              .chi-drawer__title= 'Menu item ' + val1
+              button(class='chi-button -icon -close' aria-label='Close')
+                .chi-button__content
+                  i.chi-icon.icon-x(aria-hidden="true")
+            .chi-drawer__content
+              .chi-accordion
+                each val2, index in drawerMenuItems
+                  .chi-accordion__item(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                    button.chi-accordion__trigger
+                      .chi-accordion__title=`Item ${val2}`
+                      i.chi-icon.icon-chevron-down(aria-hidden="true")
+                    .chi-accordion__content
+                      .chi-accordion
+                        each val3, index in drawerMenuItems
+                          .chi-accordion__item(class=`${val1 === active.menuItem && val2 === active.drawerMenuItem && val3 === active.drawerMenuItem ? '-active -expanded' : ''}`)
+                            button.chi-accordion__trigger
+                              .chi-accordion__title=`Item ${val2}.${val3}`
+                              i.chi-icon.icon-chevron-down(aria-hidden="true")
+                            .chi-accordion__content
+                              each val4 in drawerMenuItems
+                                a(href=`#exampleHashTarget` class=`${val1 === active.menuItem && val2 === active.drawerMenuItem && val3 === active.drawerMenuItem && val4 === active.drawerMenuItem ? '-active' : ''}`)
+                                  span
+                                    =`Item ${val2}.${val3}.${val4}`
+                a(href=`#exampleHashTarget`)
+                  span
+                    | External
+                    i.chi-icon.icon-external-link.-xs(aria-hidden="true")
+    .-flex--grow1.-p--3.-pb--4
+      each val2 in [1,2,3,4]
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  .example-tabs.-pl--2
+    ul.chi-tabs#examples-open-on-hover-tabs
+      li.-disabled
+        a(href='#examples-open-on-hover-web') Web Component
+      li.-active
+        a(href='#examples-open-on-hover-html') HTML Blueprint
+  .chi-tabs-panel#examples-open-on-hover-web
+  .chi-tabs-panel.-active#examples-open-on-hover-html
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <aside class="chi-sidenav" id="sidenav-1">
+        <div class="chi-sidenav__content">
+          <nav>
+            <ul class="chi-sidenav__list">
+              <li class="-active">
+                <a href="#drawer-2-1" class="">
+                  <i class="chi-icon icon-atom" aria-hidden="true"></i>
+                  <span>Active Item</span>
+                </a>
+              </li>
+              <li>
+                <a href="#drawer-2-2">
+                  <i class="chi-icon icon-atom" aria-hidden="true"></i>
+                  <span>Menu Item</span>
+                </a>
+              </li>
+              <li>
+                <a href="#drawer-2-3">
+                  <i class="chi-icon icon-atom" aria-hidden="true"></i>
+                  <span>Menu Item</span>
+                </a>
+              </li>
+              <li>
+                <a href="#drawer-2-4">
+                  <i class="chi-icon icon-atom" aria-hidden="true"></i>
+                  <span>Menu Item</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="chi-sidenav__drawers">
+          <div class="chi-drawer -animated -left" id="drawer-2-1">
+            <div class="chi-drawer__header">
+              <div class="chi-drawer__title">Menu item 1</div>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x" aria-hidden="true"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content">
+              <div class="chi-accordion">
+                <div class="chi-accordion__item">
+                  <button class="chi-accordion__trigger">
+                    <div class="chi-accordion__title">Item 1</div>
+                    <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="chi-accordion__content">
+                    <div class="chi-accordion">
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 1.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.1.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.1.2</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 1.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.2.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.2.2</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="chi-accordion__item -active">
+                  <button class="chi-accordion__trigger">
+                    <div class="chi-accordion__title">Item 2</div>
+                    <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="chi-accordion__content">
+                    <div class="chi-accordion">
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 2.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.1.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.1.2</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="chi-accordion__item -active">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 2.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.2.1</span>
+                          </a>
+                          <a class="-active" href="#exampleHashTarget">
+                            <span>Item 2.2.2</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a href="#exampleHashTarget">
+                  <span>
+                    External
+                    <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="chi-drawer -left -animated" id="drawer-2-2">
+            <div class="chi-drawer__header">
+              <div class="chi-drawer__title">Menu item 2</div>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x" aria-hidden="true"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content">
+              <div class="chi-accordion">
+                <div class="chi-accordion__item">
+                  <button class="chi-accordion__trigger">
+                    <div class="chi-accordion__title">Item 1</div>
+                    <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="chi-accordion__content">
+                    <div class="chi-accordion">
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 1.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.1.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.1.2</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 1.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.2.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.2.2</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="chi-accordion__item">
+                  <button class="chi-accordion__trigger">
+                    <div class="chi-accordion__title">Item 2</div>
+                    <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="chi-accordion__content">
+                    <div class="chi-accordion">
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 2.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.1.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.1.2</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 2.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.2.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.2.2</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a href="#exampleHashTarget">
+                  <span>
+                    External
+                    <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="chi-drawer -left -animated" id="drawer-2-3">
+            <div class="chi-drawer__header">
+              <div class="chi-drawer__title">Menu item 3</div>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x" aria-hidden="true"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content">
+              <div class="chi-accordion">
+                <div class="chi-accordion__item">
+                  <button class="chi-accordion__trigger">
+                    <div class="chi-accordion__title">Item 1</div>
+                    <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="chi-accordion__content">
+                    <div class="chi-accordion">
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 1.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.1.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.1.2</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 1.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.2.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.2.2</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="chi-accordion__item">
+                  <button class="chi-accordion__trigger">
+                    <div class="chi-accordion__title">Item 2</div>
+                    <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="chi-accordion__content">
+                    <div class="chi-accordion">
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 2.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.1.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.1.2</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 2.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.2.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.2.2</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a href="#exampleHashTarget">
+                  <span>
+                    External
+                    <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="chi-drawer -left -animated" id="drawer-2-4">
+            <div class="chi-drawer__header">
+              <div class="chi-drawer__title">Menu item 4</div>
+              <button class="chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x" aria-hidden="true"></i>
+                </div>
+              </button>
+            </div>
+            <div class="chi-drawer__content">
+              <div class="chi-accordion">
+                <div class="chi-accordion__item">
+                  <button class="chi-accordion__trigger">
+                    <div class="chi-accordion__title">Item 1</div>
+                    <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="chi-accordion__content">
+                    <div class="chi-accordion">
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 1.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.1.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.1.2</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 1.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.2.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 1.2.2</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="chi-accordion__item">
+                  <button class="chi-accordion__trigger">
+                    <div class="chi-accordion__title">Item 2</div>
+                    <i class="chi-icon icon-chevron-down" aria-hidden="true"></i>
+                  </button>
+                  <div class="chi-accordion__content">
+                    <div class="chi-accordion">
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 2.1</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.1.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.1.2</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="chi-accordion__item">
+                        <button class="chi-accordion__trigger">
+                          <div class="chi-accordion__title">Item 2.2</div>
+                          <i
+                            class="chi-icon icon-chevron-down"
+                            aria-hidden="true"
+                          ></i>
+                        </button>
+                        <div class="chi-accordion__content">
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.2.1</span>
+                          </a>
+                          <a href="#exampleHashTarget">
+                            <span>Item 2.2.2</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a href="#exampleHashTarget">
+                  <span>
+                    External
+                    <i class="chi-icon icon-external-link -xs" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <script>
+        chi.sidenav(document.getElementById('sidenav-1'), {
+          openOnHover: true,
+          autoClose: true
+        });
+      </script>
