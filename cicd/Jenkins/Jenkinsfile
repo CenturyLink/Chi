@@ -648,6 +648,7 @@ pipeline {
               dockerfile {
                 filename 'Dockerfile'
                 dir 'cicd/docker/qualitygate'
+                label 'Docker-enabled'
               }
           }        
           when {
