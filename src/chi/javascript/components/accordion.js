@@ -8,7 +8,9 @@ const COMPONENT_ITEM_CLASS = 'chi-accordion__item';
 const TRIGGER_CLASS = 'chi-accordion__trigger';
 const CONTENT_CLASS = 'chi-accordion__content';
 const CHILD_ACCORDION_CLASS = 'chi-accordion__child';
-const DEFAULT_CONFIG = {};
+const DEFAULT_CONFIG = {
+  expansionMode: 'multiple'
+};
 const EVENTS = {
   SHOW: 'chi.accordion.show',
   HIDE: 'chi.accordion.hide'
@@ -103,6 +105,14 @@ class Accordion extends Component {
           contentElem.style.removeProperty('opacity');
         }, EXPAND_ANIMATION_DURATION
       );
+    }
+
+    if (this._config.expansionMode === 'single') {
+      const activeSibling = accordionItem.parentNode.querySelector(`.${COMPONENT_ITEM_CLASS}.${chi.classes.EXPANDED}`);
+
+      if (activeSibling) {
+        this.hide(activeSibling);
+      }
     }
   }
 
