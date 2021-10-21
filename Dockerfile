@@ -28,8 +28,8 @@ RUN  cd /tmp/chi \
  && yarn install \
  && cd /tmp/chi-vue \
  && yarn install \
- && cd /tmp/documentation \
- && yarn install \
+#  && cd /tmp/documentation \
+#  && yarn install \
   --prefer-offline \
   --frozen-lockfile \
   --non-interactive \
