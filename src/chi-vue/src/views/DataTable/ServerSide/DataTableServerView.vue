@@ -33,7 +33,7 @@
           <div class="chi-alert__content">
             <p class="chi-alert__text">
               Custom content rendered by the provided template. ID:
-              <b>{{ payload.id }}</b>
+              <strong>{{ payload.id }}</strong>
             </p>
           </div>
         </div>

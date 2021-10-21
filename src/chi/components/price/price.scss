@@ -8,7 +8,7 @@ $sizes: (
     sup: (
       font-size: 0.6875rem,
       line-height: 0.6875rem,
-      top: 0,
+      top: 0.125rem,
     )
   ),
   md: (
@@ -17,7 +17,7 @@ $sizes: (
     sup: (
       font-size: 0.875rem,
       line-height: 0.875rem,
-      top: -0.125rem,
+      top: 0.125rem,
     )
   ),
   lg: (
@@ -26,20 +26,23 @@ $sizes: (
     sup: (
       font-size: 1.125rem,
       line-height: 1.125rem,
-      top: -0.25rem,
+      top: 0.375rem,
     )
   )
 );
 
 .chi-price {
+  align-items: flex-start;
+  display: flex;
   font-size: 2rem;
   font-weight: $font-weight-semi-bold;
+  line-height: 2rem;
+  position: relative;
 
   & sup {
     font-size: 0.875rem;
     line-height: 0.875rem;
-    top: -0.125rem;
-    vertical-align: super;
+    top: 0.125rem;
   }
 
   @each $type in map-keys($sizes) {
@@ -55,9 +58,3 @@ $sizes: (
     }
   }
 }
-
-// sass-lint:disable-all
-_:-ms-lang(x), .chi-price sup, .chi-price.-sm sup, .chi-price.-md sup, .chi-price.-lg sup {
-  top: 0.25rem;
-}
-// sass-lint:enable-all

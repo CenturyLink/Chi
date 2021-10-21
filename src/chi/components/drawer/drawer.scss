@@ -4,19 +4,16 @@
 $animation-duration: 0.5s;
 
 .chi-drawer {
-
-  & {
-    background-color: $drawer-background-color;
-    box-shadow: 0 0 25px 10px rgba($color-black, 0.15);
-    display: none;
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: auto;
-    pointer-events: auto;
-    position: fixed;
-    transform: translate(0, 0);
-    z-index: $zindex-fixed;
-  }
+  background-color: $drawer-background-color;
+  box-shadow: 0 0 25px 10px rgba($color-black, 0.15);
+  display: none;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  pointer-events: auto;
+  position: fixed;
+  transform: translate(0, 0);
+  z-index: $zindex-fixed;
 
   &.-active {
     display: flex;

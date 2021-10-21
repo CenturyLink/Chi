@@ -1,4 +1,80 @@
 # CHANGELOG
+## 5.4.0 (September 30, 2021)
+### Components
+#### Added
+* Added: Column customization Chi Vue component options now maintain selected state when reordering.
+* Added: Chi Vue components now render conditionally based on the used version of Chi.
+* Added: Icons `icon-bookmark-outline`, `icon-bookmark` and `icon-reset`.
+#### Changed
+* Changed: CTA link arrow placement has changed from right to left in Lumen Enterprise Portal theme.
+#### Fixed
+* Fixed: App layout web component title attribute issue which caused showing browser default tooltip element.
+* Fixed: Column customization Chi Vue component ordering issue which caused wrong positioning of first and last items.
+* Fixed: Select component now truncates long texts.
+* Fixed: Data table gran-child position has been improved for better alignment with child row.
+### Documentation
+#### Changed
+* Changed: Accordion chevrons placement in table filtering popover example have changed from left to right.
+#### Fixed
+* Fixed: Background-color utility classes are now visible in Lumen Enterprise Portal theme.
+
+## 5.3.1 (September 17, 2021)
+### Components
+#### Changed
+* Changed: Popover content container now supports scrolling overflow.
+* Changed: Popover inline modal max-width has been increased to support wider content.
+* Changed: Popover inline modal background color has been changed for portal theme.
+* Changed: Popover drag icon has been updated.
+* Changed: Data table grand-child row alignment has been improved.
+* Changed: Data table column customization modal select title casing has been improved.
+* Changed: Data table column customization modal footer buttons have been rearranged for consistency with other modals.
+* Changed: Dropdown menu item spacing between text and icons has been reduced.
+* Changed: Column Customization Vue component now supports reordering of locked columns.
+#### Fixed
+* Fixed: Popover bug which caused the top-left and top-right corners to render sharp instead of rounded if a header was present.
+* Fixed: Data table column customization modal close icon button rendered with incorrect padding due to a missing `-icon` class.
+### Documentation
+#### Changed
+* Changed: Dropdown menu item examples now render truncated text in tooltips.
+* Changed: Code snippet copy to clipboard button size has been changed.
+* Changed: Portal theme labeled icon button examples have been updated.
+* Changed: Portal theme divider examples have been updated.
+* Changed: Portal theme picker group examples have been updated.
+
+## 5.3.0 (September 10, 2021)
+### Components
+#### Added
+* Added: Floating icon button now supports sizes.
+* Added: Date picker web component now supports retargeting of events.
+#### Changed
+* Changed: Data table Vue component sort behavior has been improved by allowing sorting only by ascending or descending.
+* Changed: Data table Vue component mobile version has been improved to support click action on chevron element.
+* Changed: Data table Vue component header has been improved to support text wrapping.
+#### Fixed
+* Fixed: Accessibility error in Data table Vue component due to missing id on pagination.
+### Documentation
+#### Changed
+* Changed: Data table complex example has removed current badges from status column and replaced with status column illustrated in portal style guide.
+* Changed: Data table complex example has included action buttons in all rows, not just parent rows.
+* Changed: Icons in icon button and floating icon button have been updated to icon-edit and icon-chat respectively.
+#### Fixed
+* Fixed: Data table documentation examples have improved date format.
+
+## 5.2.0 (August 27, 2021)
+### Components
+#### Added
+* Added: Checkbox component now supports indeterminate state.
+* Added: Toolbar Vue component now supports `ChiDataTableViews` submodule.
+* Added: Link component now supports no underline style on hover.
+* Added: Toolbar Vue component `ChiColumnCustomization` submodule now supports `chiColumnsReset` event emission.
+* Added: Icons `icon-chat-outline` and `icon-copy`.
+* Added: Date Picker component now supports `success`, `warning` and `danger` states.
+#### Changed
+* Changed: Link component CTA style has been improved to support new Lumen Enterprise Portal theme designs.
+### Documentation
+#### Fixed
+* Fixed: Accessibility errors in Lumen Enterprise Portal theme documentation.
+
 ## 5.1.0 (August 5, 2021)
 ### Components
 #### Added

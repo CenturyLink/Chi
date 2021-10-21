@@ -23,7 +23,6 @@ section.chi-table.chi-table__options.-bordered.-my--3
           td.-p--0
             pre.-mb--0.
               {
-                activePage?: <code>number</code>;
                 columnResize?: <code>boolean</code>;
                 columnSizes?: {
                   xs: <code>number[]</code>;
@@ -33,6 +32,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
                   xl: <code>number[]</code>;
                 };
                 defaultSort?: <code>DataTableSortConfig</code>;
+                unsorted?: <code>boolean</code>;
                 mode?: <code>'clientside' | 'serverside'</code>;
                 noResultsMessage?: <code>string</code>;
                 pagination: {
@@ -48,6 +48,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 style: <code>DataTableStyleConfig</code>;
                 selectable?: <code>boolean</code>;
                 reserveExpansionSlot?: <code>boolean</code>;
+                truncation?: <code>boolean</code>;
               }
           td
             div undefined

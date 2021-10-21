@@ -341,10 +341,10 @@ h2 Examples
     | be used for common actions such as editing, deleting, closing, etc.
   .example.-mb--3
     .-p--3
-      chi-button(type='icon', alternative-text="Button action")
-        chi-icon(icon='atom')
-      chi-button.-ml--2(variant='flat', type='icon', alternative-text="Button action")
-        chi-icon(icon='atom')
+      chi-button(type='icon' alternative-text='Edit' data-tooltip='Edit')
+        chi-icon(icon='edit')
+      chi-button.-ml--2(variant='flat' type='icon' alternative-text='Edit' data-tooltip='Edit')
+        chi-icon(icon='edit')
     .example-tabs.-pl--2
       ul.chi-tabs#examples-icon
         li.-active
@@ -354,29 +354,40 @@ h2 Examples
     .chi-tabs-panel.-active#webcomponent-icon
       :code(lang="html")
         <!-- base -->
-        <chi-button type="icon" alternative-text="Button action">
-          <chi-icon icon="atom"></chi-icon>
+        <chi-button type="icon" alternative-text="Edit" data-tooltip="Edit">
+          <chi-icon icon="edit"></chi-icon>
         </chi-button>
 
         <!-- flat -->
-        <chi-button variant="flat" type="icon" alternative-text="Button action">
-          <chi-icon icon="atom"></chi-icon>
+        <chi-button variant="flat" type="icon" alternative-text="Edit" data-tooltip="Edit">
+          <chi-icon icon="edit"></chi-icon>
         </chi-button>
+
+        <!-- Tooltip -->
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
     .chi-tabs-panel#html-icon
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
         <!-- base -->
-        <button class="chi-button -icon" aria-label="Button action">
+        <button class="chi-button -icon" aria-label="Edit" data-tooltip="Edit">
           <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
+            <i class="chi-icon icon-edit" aria-hidden="true"></i>
           </div>
         </button>
 
         <!-- flat -->
-        <button class="chi-button -icon -flat" aria-label="Button action">
+        <button class="chi-button -icon -flat" aria-label="Edit" data-tooltip="Edit">
           <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
+            <i class="chi-icon icon-edit" aria-hidden="true"></i>
           </div>
         </button>
+
+        <!-- Tooltip -->
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
 .-portal--show
   h2 Icon buttons
@@ -385,8 +396,8 @@ h2 Examples
     | be used for common actions such as editing, deleting, closing, etc.
   .example.-mb--3
     .-p--3
-      chi-button.-ml--2(variant='flat', type='icon', alternative-text="Button action")
-        chi-icon(icon='atom')
+      chi-button.-ml--2(variant='flat' type='icon' alternative-text='Edit' data-tooltip='Edit')
+        chi-icon(icon='edit')
     .example-tabs.-pl--2
       ul.chi-tabs#examples-portal-icon
         li.-active
@@ -395,16 +406,27 @@ h2 Examples
           a(href=`#html-portal-icon`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-icon
       :code(lang="html")
-        <chi-button variant="flat" type="icon" alternative-text="Button action">
-          <chi-icon icon="atom"></chi-icon>
+        <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Edit">
+          <chi-icon icon="edit"></chi-icon>
         </chi-button>
+
+        <!-- Tooltip -->
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
     .chi-tabs-panel#html-portal-icon
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
-        <button class="chi-button -icon -flat" aria-label="Button action">
+        <button class="chi-button -icon -flat" aria-label="Button action" data-tooltip="Edit">
           <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
+            <i class="chi-icon icon-edit" aria-hidden="true"></i>
           </div>
         </button>
+
+        <!-- Tooltip -->
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
 .-portal--hide
   h3 Labeled icon buttons
@@ -478,13 +500,9 @@ h2 Examples
   .example.-mb--3
     .-p--3.-d--flex
       .-pr--2
-        chi-button(color='primary')
-          chi-icon(icon='atom')
-          span Primary
-      .-pr--2
-        chi-button(color='primary', variant='outline')
-          chi-icon(icon='atom')
-          span Secondary
+        chi-button(size='xs')
+          chi-icon(icon='edit')
+          span Edit
     .example-tabs.-pl--2
       ul.chi-tabs#examples-portal-labeled
         li.-active
@@ -493,45 +511,26 @@ h2 Examples
           a(href=`#html-portal-labeled`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-labeled
       :code(lang="html")
-        <chi-button color="primary">
-          <chi-icon icon="atom"></chi-icon>
-          <span>Primary</span>
-        </chi-button>
-        <chi-button>
-          <chi-icon icon="atom"></chi-icon>
-          <span>Secondary</span>
+        <chi-button size="xs">
+          <chi-icon icon="edit"></chi-icon>
+          <span>Edit</span>
         </chi-button>
     .chi-tabs-panel#html-portal-labeled
       :code(lang="html")
-        <button class="chi-button -primary">
+        <button class="chi-button -xs">
           <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
-            <span>Primary</span>
-          </div>
-        </button>
-        <button class="chi-button">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
-            <span>Secondary</span>
+            <i class="chi-icon icon-edit" aria-hidden="true"></i>
+            <span>Edit</span>
           </div>
         </button>
 
 .-portal--hide
   h3 Floating icon buttons
   .example.-mb--3
-    .chi-grid.-no-gutter
-      .chi-col.-w--12.-w-md--6
-        .-p--3.-d--flex(style="justify-content: center;")
-          each type, val in {Base:'', Primary:'primary', Dark:'dark'}
-            div.-pr--2
-              chi-button(color=type, type='float', alternative-text="Button action")
-                chi-icon(icon='atom')
-      .chi-col.-w--12.-w-md--6
-        .-p--3.-bg--black.-d--flex(style="justify-content: center;")
-          each type, val in {Secondary:'secondary', Light:'light'}
-            div.-pr--2
-              chi-button(color=type, type='float', alternative-text="Button action")
-                chi-icon(icon='atom')
+    .-p--3.-d--flex
+      div.-pr--2
+        chi-button(color='primary' type='float' size='xl' alternative-text='Chat with Support' data-tooltip='Chat with Support')
+          chi-icon(icon='chat')
     .example-tabs.-pl--2
       ul.chi-tabs#examples-floating-icon
         li.-active
@@ -540,52 +539,19 @@ h2 Examples
           a(href=`#html-floating-icon`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-floating-icon
       :code(lang="html")
-        <!-- For light backgrounds -->
-        <chi-button type="float" alternative-text="Button action">
-          <chi-icon icon="atom"></chi-icon>
-        </chi-button>
-        <chi-button type="float" color="primary" alternative-text="Button action">
-          <chi-icon icon="atom"></chi-icon>
-        </chi-button>
-        <chi-button type="float" color="dark" alternative-text="Button action">
-          <chi-icon icon="atom"></chi-icon>
-        </chi-button>
-
-        <!-- For dark backgrounds -->
-        <chi-button type="float" color="secondary" alternative-text="Button action">
-          <chi-icon icon="atom"></chi-icon>
-        </chi-button>
-        <chi-button type="float" color="light" alternative-text="Button action">
-          <chi-icon icon="atom"></chi-icon>
+        <chi-button type="float" color="primary" size="xl" alternative-text="Chat with Support" data-tooltip="Chat with Support">
+          <chi-icon icon="chat"></chi-icon>
         </chi-button>
     .chi-tabs-panel#html-floating-icon
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
-        <!-- For light backgrounds -->
-        <button class="chi-button -float" aria-label="Button action">
+        <button class="chi-button -primary -xl -float" aria-label="Chat with Support" data-tooltip="Chat with Support">
           <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
-          </div>
-        </button>
-        <button class="chi-button -primary -float" aria-label="Button action">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
-          </div>
-        </button>
-        <button class="chi-button -dark -float" aria-label="Button action">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
-          </div>
-        </button>
-
-        <!-- For dark backgrounds -->
-        <button class="chi-button -secondary -float" aria-label="Button action">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
-          </div>
-        </button>
-        <button class="chi-button -light -float" aria-label="Button action">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
+            <i class="chi-icon icon-chat" aria-hidden="true"></i>
           </div>
         </button>
 
@@ -594,8 +560,8 @@ h2 Examples
   .example.-mb--3
     .-p--3.-d--flex
       div.-pr--2
-        chi-button(color='primary', type='float', alternative-text="Button action")
-          chi-icon(icon='atom')
+        chi-button(color='primary' type='float' size='lg' alternative-text='Chat with Support' data-tooltip='Chat with Support')
+          chi-icon(icon='chat')
     .example-tabs.-pl--2
       ul.chi-tabs#examples-portal-floating-icon
         li.-active
@@ -604,16 +570,27 @@ h2 Examples
           a(href=`#html-portal-floating-icon`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-floating-icon
       :code(lang="html")
-        <chi-button type="float" color="primary" alternative-text="Button action">
-          <chi-icon icon="atom"></chi-icon>
+        <chi-button type="float" color="primary" size="lg" alternative-text="Chat with Support" data-tooltip="Chat with Support">
+          <chi-icon icon="chat"></chi-icon>
         </chi-button>
+
+        <!-- Tooltip -->
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
     .chi-tabs-panel#html-portal-floating-icon
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
-        <button class="chi-button -primary -float" aria-label="Button action">
+        <button class="chi-button -primary -lg -float" aria-label="Chat with Support" data-tooltip="Chat with Support">
           <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
+            <i class="chi-icon icon-chat" aria-hidden="true"></i>
           </div>
         </button>
+
+        <!-- Tooltip -->
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 
 h3 Close icon button
 .example.-mb--3
@@ -701,7 +678,7 @@ h3 Close icon button
         p.-text--bold.-pl--2= size
         div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
           chi-button(size=size)= 'Button'
-          chi-button.-ml--2(size=size, type='icon', alternative-text="Button action")
+          chi-button.-ml--2(size=size type='icon' alternative-text='Button action' data-tooltip='Button action' data-position='bottom')
             chi-icon(icon='atom')
     .example-tabs.-pl--2
       ul.chi-tabs#examples-sizes
@@ -713,38 +690,41 @@ h3 Close icon button
       :code(lang="html")
         <!-- xs -->
         <chi-button size="xs">Button</chi-button>
-        <chi-button type="icon" size="xs" alternative-text="Button action">
+        <chi-button type="icon" size="xs" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- sm -->
         <chi-button size="sm">Button</chi-button>
-        <chi-button type="icon" size="sm" alternative-text="Button action">
+        <chi-button type="icon" size="sm" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- md -->
         <chi-button size="md">Button</chi-button>
-        <chi-button type="icon" size="md" alternative-text="Button action">
+        <chi-button type="icon" size="md" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- lg -->
         <chi-button size="lg">Button</chi-button>
-        <chi-button type="icon" size="lg" alternative-text="Button action">
+        <chi-button type="icon" size="lg" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- xl -->
         <chi-button size="xl">Button</chi-button>
-        <chi-button type="icon" size="xl" alternative-text="Button action">
+        <chi-button type="icon" size="xl" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom" />
         </chi-button>
+
+        <!-- Icon button tooltip -->
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
     .chi-tabs-panel#html-sizes
       :code(lang="html")
         <!-- xs -->
         <button class="chi-button -xs">Button</button>
-        <button class="chi-button -xs -icon" aria-label="Button action">
+        <button class="chi-button -xs -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
@@ -752,7 +732,7 @@ h3 Close icon button
 
         <!-- sm -->
         <button class="chi-button -sm">Button</button>
-        <button class="chi-button -sm -icon" aria-label="Button action">
+        <button class="chi-button -sm -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
@@ -760,7 +740,7 @@ h3 Close icon button
 
         <!-- md -->
         <button class="chi-button -md">Button</button>
-        <button class="chi-button -md -icon" aria-label="Button action">
+        <button class="chi-button -md -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
@@ -768,7 +748,7 @@ h3 Close icon button
 
         <!-- lg -->
         <button class="chi-button -lg">Button</button>
-        <button class="chi-button -lg -icon" aria-label="Button action">
+        <button class="chi-button -lg -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
@@ -776,12 +756,14 @@ h3 Close icon button
 
         <!-- xl -->
         <button class="chi-button -xl">Button</button>
-        <button class="chi-button -xl -icon" aria-label="Button action">
+        <button class="chi-button -xl -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
         </button>
 
+        <!-- Icon button tooltip -->
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 .-portal--show
   h2 Sizes
   p.-text
@@ -797,7 +779,7 @@ h3 Close icon button
           .-pr--2
             chi-button(size=`${size}`)= 'Button'
           .-pr--2
-            chi-button(size=`${size}`, variant='flat', type='icon', alternative-text="Button action")
+            chi-button(size=`${size}` variant='flat' type='icon' alternative-text='Button action' data-tooltip='Button action' data-position='bottom')
               chi-icon(icon='atom')
     .example-tabs.-pl--2
       ul.chi-tabs#examples-portal-sizes
@@ -810,36 +792,39 @@ h3 Close icon button
         <!-- xs -->
         <chi-button color="primary" size="xs">Button</chi-button>
         <chi-button size="xs">Button</chi-button>
-        <chi-button type="icon" variant="flat" size="xs" alternative-text="Button action">
+        <chi-button type="icon" variant="flat" size="xs" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- sm -->
         <chi-button color="primary" size="sm">Button</chi-button>
         <chi-button size="sm">Button</chi-button>
-        <chi-button type="icon" variant="flat" size="sm" alternative-text="Button action">
+        <chi-button type="icon" variant="flat" size="sm" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- md -->
         <chi-button color="primary" size="md">Button</chi-button>
         <chi-button size="md">Button</chi-button>
-        <chi-button type="icon" variant="flat" size="md" alternative-text="Button action">
+        <chi-button type="icon" variant="flat" size="md" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom"></chi-icon>
         </chi-button>
 
         <!-- lg -->
         <chi-button color="primary" size="lg">Button</chi-button>
         <chi-button size="lg">Button</chi-button>
-        <chi-button type="icon" variant="flat" size="lg" alternative-text="Button action">
+        <chi-button type="icon" variant="flat" size="lg" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
           <chi-icon icon="atom"></chi-icon>
         </chi-button>
+
+        <!-- Icon button tooltip -->
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
     .chi-tabs-panel#html-portal-sizes
       :code(lang="html")
         <!-- xs -->
         <button class="chi-button -primary -xs">Button</button>
         <button class="chi-button -xs">Button</button>
-        <button class="chi-button -flat -xs -icon" aria-label="Button action">
+        <button class="chi-button -flat -xs -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
@@ -848,7 +833,7 @@ h3 Close icon button
         <!-- sm -->
         <button class="chi-button -primary -sm">Button</button>
         <button class="chi-button -sm">Button</button>
-        <button class="chi-button -flat -sm -icon" aria-label="Button action">
+        <button class="chi-button -flat -sm -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
@@ -857,7 +842,7 @@ h3 Close icon button
         <!-- md -->
         <button class="chi-button -primary -md">Button</button>
         <button class="chi-button -md">Button</button>
-        <button class="chi-button -flat -md -icon" aria-label="Button action">
+        <button class="chi-button -flat -md -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
@@ -866,16 +851,19 @@ h3 Close icon button
         <!-- lg -->
         <button class="chi-button -primary -lg">Button</button>
         <button class="chi-button -lg">Button</button>
-        <button class="chi-button -flat -lg -icon" aria-label="Button action">
+        <button class="chi-button -flat -lg -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>
         </button>
 
+        <!-- Icon button tooltip -->
+        <script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));</script>
 script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
     }
   );

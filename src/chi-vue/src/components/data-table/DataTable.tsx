@@ -32,6 +32,7 @@ import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
+import { detectMajorChiVersion } from '@/utils/utils';
 
 let dataTableNumber = 0;
 @Component({})
@@ -56,6 +57,8 @@ export default class DataTable extends Vue {
   _sortConfig?: DataTableSortConfig;
   _serializedDataBody: DataTableRow[] = [];
   _toolbarComponent?: DataTableToolbar;
+  _paginationListenersAdded = false;
+  _chiMajorVersion = 5;
 
   _head() {
     const tableHeadCells = [
@@ -100,6 +103,7 @@ export default class DataTable extends Vue {
         <button
           aria-label={`Sort Column ${label}`}
           class={`${DATA_TABLE_CLASSES.CELL}
+            ${this.config.truncation ? DATA_TABLE_CLASSES.TRUNCATED : ''}
             ${alignment}
             ${sortable ? DATA_TABLE_CLASSES.SORTING : ''}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
@@ -116,7 +120,7 @@ export default class DataTable extends Vue {
             ${cellWidth === 0 ? 'display: none;' : ''}
             ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
             `}>
-          <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{label}</div>
+          <div class={this.config.truncation ? UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE : ''}>{label}</div>
           {sortIcon}
         </button>
       );
@@ -124,6 +128,7 @@ export default class DataTable extends Vue {
         <div
           aria-label={label}
           class={`${DATA_TABLE_CLASSES.CELL}
+            ${this.config.truncation ? DATA_TABLE_CLASSES.TRUNCATED : ''}
             ${alignment}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={label}
@@ -131,7 +136,7 @@ export default class DataTable extends Vue {
             ${cellWidth === 0 ? 'display: none;' : ''}
             ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
             `}>
-          <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}>{label}</div>
+          <div class={this.config.truncation ? UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE : ''}>{label}</div>
         </div>
       );
 
@@ -264,7 +269,11 @@ export default class DataTable extends Vue {
       ${BUTTON_CLASSES.ICON_BUTTON}
       ${BUTTON_CLASSES.FLAT}
       -expand
-      -sm
+      ${
+        this._chiMajorVersion === 4 // To be removed
+          ? '-sm'
+          : '-xs'
+      }
       `}
         aria-label="Expand row"
         data-target={`#${rowData.rowId}-content`}
@@ -611,6 +620,43 @@ export default class DataTable extends Vue {
     return <div class={DATA_TABLE_CLASSES.BODY}>{tableBodyRows}</div>;
   }
 
+  _addPaginationEventListener() {
+    if (this.$refs.pagination) {
+      if (!this._paginationListenersAdded) {
+        (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_SIZE, (ev: string) => {
+          const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+
+          this.resultsPerPage = ev === 'all' ? this._serializedDataBody.length : parseInt(ev);
+          this.slicedData = this.sliceData(data);
+          this.$emit(PAGINATION_EVENTS.PAGE_SIZE, this.slicedData);
+        });
+
+        (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
+          const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+          const numberOfPages = this._calculateNumberOfPages();
+
+          if (ev >= 1 && ev <= numberOfPages) {
+            const pageChangeEventData: DataTablePageChange = {
+              page: ev,
+            };
+
+            if (this.mode === DataTableModes.CLIENT) {
+              this.accordionsExpanded.length = 0;
+              this.activePage = ev;
+              this.slicedData = this.sliceData(data);
+              pageChangeEventData.data = this.slicedData;
+            }
+            this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
+            this._checkSelectAllCheckbox();
+          }
+        });
+        this._paginationListenersAdded = true;
+      }
+    } else {
+      this._paginationListenersAdded = false;
+    }
+  }
+
   _pagination() {
     const pages = this._calculateNumberOfPages();
 
@@ -752,6 +798,7 @@ export default class DataTable extends Vue {
   }
 
   beforeMount() {
+    this._chiMajorVersion = detectMajorChiVersion();
     this.detectScreenBreakpoint();
   }
 
@@ -763,7 +810,9 @@ export default class DataTable extends Vue {
         this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
       }
     }
-    this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
+    this.slicedData = this.sliceData(
+      this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody
+    );
   }
 
   @Watch('config')
@@ -802,42 +851,12 @@ export default class DataTable extends Vue {
       this._generateColumnResize(dataTableComponent);
     }
 
-    if (this.$refs.pagination) {
-      (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_SIZE, (ev: string) => {
-        const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
-
-        this.resultsPerPage = ev === 'all' ? this._serializedDataBody.length : parseInt(ev);
-        this.slicedData = this.sliceData(data);
-        this.$emit(PAGINATION_EVENTS.PAGE_SIZE, this.slicedData);
-      });
-
-      (this.$refs.pagination as Vue).$on(PAGINATION_EVENTS.PAGE_CHANGE, (ev: number) => {
-        const data = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
-        const numberOfPages = this._calculateNumberOfPages();
-
-        if (ev >= 1 && ev <= numberOfPages) {
-          const pageChangeEventData: DataTablePageChange = {
-            page: ev,
-          };
-
-          if (this.mode === DataTableModes.CLIENT) {
-            this.activePage = ev;
-            this.slicedData = this.sliceData(data);
-            pageChangeEventData.data = this.slicedData;
-          }
-          this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
-          this._checkSelectAllCheckbox();
-        }
-      });
-    }
+    this._addPaginationEventListener();
     window.addEventListener('resize', this.resizeHandler);
-    // Todo - replace with Ribbon management visibility once available
-    // if (this._toolbarComponent) {
-    //   this._toolbarComponent.$on('chiToolbarSearch', (ev: Event) => {
-    //   });
-    //   this._toolbarComponent.$on('chiToolbarFiltersChange', (ev: Event) => {
-    //   });
-    // }
+  }
+
+  updated() {
+    this._addPaginationEventListener();
   }
 
   resizeHandler() {
@@ -879,6 +898,12 @@ export default class DataTable extends Vue {
           const bValue = new Date(bData);
 
           return ascending ? aValue.getTime() - bValue.getTime() : bValue.getTime() - aValue.getTime();
+        }
+
+        if (aData.payload && bData.payload && aData.template && bData.template) {
+          return ascending
+            ? aData.payload[aData.template].localeCompare(bData.payload[bData.template])
+            : bData.payload[bData.template].localeCompare(aData.payload[aData.template]);
         }
 
         return ascending ? aData.localeCompare(bData) : bData.localeCompare(aData);
@@ -960,7 +985,12 @@ export default class DataTable extends Vue {
             direction: 'descending',
             sortBy: columnSortBy || undefined,
           };
-        } else if (currentSort === 'descending' && this._sortConfig && this._sortConfig.key === columnName) {
+        } else if (
+          this.config.unsorted &&
+          currentSort === 'descending' &&
+          this._sortConfig &&
+          this._sortConfig.key === columnName
+        ) {
           const sortingData: DataTableSorting = {
             column: undefined,
             direction: undefined,

@@ -27,6 +27,15 @@ h3 Portal -- Accordion Expanded -- Child Expanded
   #portalAccordionChildExpanded
     chi-vue-data-table(data-cy='data-table-portal-accordion-child-expanded', :config="config", :data="table")
 
+h2 Data Table Server Side (Portal)
+
+.test-data-table.-p--3.-w--100
+  #base-server-side-portal
+    chi-vue-data-table(data-cy='data-table-server-side-portal' ref="dataTableServerSidePortalRef" :config="config", :data="table")
+      template(#status='payload')
+        div(:class="`chi-badge ${payload.status === 'active' ? '-primary' : ''}`")
+          span.-text--truncate {{ payload.status }}
+
 script.
   new Vue({
     components: {
@@ -35,7 +44,6 @@ script.
     data: {
       config: {
         columnResize: true,
-        activePage: 1,
         style: {
           portal: true,
           noBorder: false,
@@ -45,6 +53,7 @@ script.
           striped: true,
         },
         pagination: {
+          activePage: 1,
           compact: false,
           firstLast: false,
           pageJumper: true,
@@ -96,7 +105,6 @@ script.
         columnResize: true,
         noResultsMessage:
           "No matches found. Please revise search criteria and try again.",
-        activePage: 1,
         style: {
           portal: true,
           noBorder: false,
@@ -106,6 +114,7 @@ script.
           striped: true,
         },
         pagination: {
+          activePage: 1,
           compact: false,
           firstLast: false,
           pageJumper: true,
@@ -130,7 +139,6 @@ script.
     data: {
       config: {
         columnResize: true,
-        activePage: 1,
         style: {
           portal: true,
           noBorder: false,
@@ -140,6 +148,7 @@ script.
           striped: false,
         },
         pagination: {
+          activePage: 1,
           compact: false,
           firstLast: false,
           pageJumper: true,
@@ -212,7 +221,6 @@ script.
     data: {
       config: {
         columnResize: true,
-        activePage: 1,
         style: {
           portal: true,
           noBorder: false,
@@ -222,6 +230,7 @@ script.
           striped: false,
         },
         pagination: {
+          activePage: 1,
           compact: false,
           firstLast: false,
           pageJumper: true,
@@ -403,7 +412,6 @@ script.
     data: {
       config: {
         columnResize: true,
-        activePage: 1,
         style: {
           portal: true,
           noBorder: false,
@@ -413,6 +421,7 @@ script.
           striped: false,
         },
         pagination: {
+          activePage: 1,
           compact: false,
           firstLast: false,
           pageJumper: true,
@@ -594,3 +603,279 @@ script.
       },
     },
   }).$mount("#portalAccordionChildExpanded");
+
+  const page1Portal = [
+    {
+      id: "name-1",
+      active: false,
+      nestedContent: {
+        value: "Accordion content",
+      },
+      data: [
+        "Name 1",
+        {
+          template: "status",
+          payload: {
+            status: "active",
+          },
+        },
+        "Dec 18, 2020 3:26 PM"
+      ],
+    },
+    {
+      id: "name-2",
+      active: false,
+      data: [
+        "Name 2",
+        {
+          template: "status",
+          payload: {
+            status: "inact",
+          },
+        },
+        "Dec 18, 2020 2:38 AM" 
+      ],
+    },
+    {
+      id: "name-3",
+      active: false,
+      nestedContent: {
+        table: {
+          data: [
+            {
+              id: "child-name-1",
+              nestedContent: {
+                table: {
+                  data: [
+                    {
+                      id: "grandchild-name-1-0",
+                      data: [
+                        "Grand-child Name 1",
+                        "grandchild-name-1-0",
+                        "Dec 18, 2020 2:38 AM",
+                      ],
+                    },
+                  ],
+                },
+              },
+              expanded: false,
+              data: [
+                "Child Name 1",
+                "child-name-1",
+                "Dec 18, 2020 3:26 PM",
+              ],
+            },
+          ],
+        },
+      },
+      expanded: true,
+      data: [
+        "Name 3",
+        {
+          template: "status",
+          payload: {
+            status: "active",
+          },
+        },
+        "Nov 5, 2020 10:15 AM"
+      ],
+    },
+  ];
+
+  const page2Portal = [
+    {
+      id: "name-4",
+      active: false,
+      data: [
+        "Name 4",
+        {
+          template: "status",
+          payload: {
+            status: "active",
+          },
+        },
+        "Dec 18, 2020 3:26 PM"
+      ],
+    },
+    {
+      id: "name-5",
+      active: false,
+      nestedContent: {
+        value: "Accordion content",
+      },
+      data: [
+        "Name 5", 
+        {
+          template: "status",
+          payload: {
+            status: "inact",
+          },
+        },
+        "Dec 18, 2020 2:38 AM"
+      ],
+    },
+    {
+      id: "name-6",
+      active: false,
+      data: [
+        "Name 6",
+        {
+          template: "status",
+          payload: {
+            status: "inact",
+          },
+        },
+        "Nov 5, 2020 10:15 AM"
+      ],
+    },
+  ];
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    methods: {
+      fakeApiCall(page) {
+        if(this.$data.sortedData.length){
+          return page === 1 ? this.sortedData.slice(0, this.$data.config.resultsPerPage) : page === 2 ? this.sortedData.slice(this.$data.config.resultsPerPage) : null
+        }
+        return page === 1 ? page1Portal : page === 2 ? page2Portal : null;
+      },
+      pagination(e) {
+        const apiResponsePageData = this.fakeApiCall(Number(e.page));
+
+        this.$data.config = {
+          ...this.$data.config,
+          pagination: {
+            ...this.$data.config.pagination,
+            activePage: Number(e.page),
+          },
+        };
+        this.$data.table = {
+          ...this.$data.table,
+          body: apiResponsePageData
+        };
+      },
+      selection(selectedRows) {
+        const copiedTableBodyData = [...this.$data.table.body];
+        const flagRowSelection = (levelData, id, action) => {
+          const dataRow = levelData.find((row) => row.id === id);
+
+          if (dataRow) {
+            const nestedRows =
+              dataRow.nestedContent && dataRow.nestedContent.table && dataRow.nestedContent.table.data
+                ? dataRow.nestedContent.table.data
+                : undefined;
+
+            dataRow.selected = action === 'select';
+
+            if (nestedRows) {
+              dataRow.nestedContent.table.data.forEach((subRow) =>
+                flagRowSelection(nestedRows, subRow.id, action)
+              );
+            }
+          }
+        };
+
+        copiedTableBodyData.forEach((row) => {
+          const isSelected = selectedRows?.some((selectedRow) => selectedRow.id === row.id);
+
+          flagRowSelection(copiedTableBodyData, row.id, isSelected ? 'select' : 'deselect');
+        });
+        this.$data.table = {
+          ...this.$data.table,
+          body: copiedTableBodyData,
+        };
+      },
+      sortData(e) {
+        if(!e.direction){
+          this.sortedData = [];
+
+          const apiResponsePageData = this.fakeApiCall(this.config.pagination.activePage);
+
+          this.table = {
+            ...this.table,
+            body: [...apiResponsePageData],
+          };
+        } else{
+          const columnIndex = Object.keys(this.table.head).indexOf(e.column);
+          const copiedTableBodyData = [...page1Portal].concat(page2Portal);
+
+          copiedTableBodyData.sort((a, b) => {
+            const statusA = a.data[columnIndex].payload.status;
+            const statusB = b.data[columnIndex].payload.status;
+
+            if(e.direction === "ascending"){
+              return ((statusA < statusB) ? -1 : ((statusA > statusB) ? 1 : 0));
+            } else{
+              return ((statusA < statusB) ? 1 : ((statusA > statusB) ? -1 : 0));
+            }
+          });
+
+          this.sortedData = copiedTableBodyData;
+          this.table = {
+            ...this.table,
+            body:  this.sortedData.slice(0, this.config.resultsPerPage),
+          };
+        }
+      }
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.dataTableServerSidePortalExample = this;
+      }
+    },
+    updated() {
+      this.$refs.dataTableServerSidePortalRef.$on("chiPageChange", (e) => {
+        this.pagination(e);
+      });
+      this.$refs.dataTableServerSidePortalRef.$on("chiSelectedRowsChange", (e) => {
+        this.selection(e);
+      });
+      this.$refs.dataTableServerSidePortalRef.$on("chiDataSorting", (e) => {
+        this.sortData(e);
+      })
+    },
+    data: {
+      config: {
+        columnResize: true,
+        mode: 'serverside',
+        noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+        style: {
+          portal: true,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'lg',
+          striped: true,
+        },
+        pagination: {
+          activePage: 1,
+          compact: true,
+          firstLast: true,
+          hideOnSinglePage: true,
+          pages: 2,
+          pageJumper: true,
+        },
+        selectable: true,
+        reserveExpansionSlot: true,
+        columnSizes: {
+          xs: [10, 10, 10, 0, 10, 10, 10, 5],
+          sm: [10, 10, 10, 0, 10, 10, 10, 5],
+          md: [15, 5, 15, 0, 15, 15, 15, 5],
+          lg: [15, 5, 15, 0, 15, 15, 15, 5],
+          xl: [15, 5, 10, 15, 15, 15, 15, 5],
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: "Name" },
+          id: { label: "ID", sortable: true, sortBy: "status", sortDataType: "string", },
+          lastLogin: { label: "Last Login" },
+        },
+        body: page1Portal
+      },
+      sortedData: []
+    },
+  }).$mount("#base-server-side-portal");

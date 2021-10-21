@@ -517,7 +517,6 @@ $button-flat-disabled-icon-color:           $color-icon-muted;
 $button-flat-disabled-opacity:              $opacity-60;
 $button-flat-text-color:                    inherit;
 $button-float-border-color:                 $color-grey-40;
-$button-float-padding:                      0.5625rem;
 $button-close-background-color:             transparent;
 $button-close-border-color:                 transparent;
 $button-close-icon-color:                   $color-icon-primary;
@@ -756,8 +755,8 @@ $dropdown-trigger-text-transform:           none;
 $dropdown-trigger-xs-padding:               0.1875rem 0.5rem;
 $dropdown-trigger-sm-padding:               0.4375rem 0.75rem;
 $dropdown-trigger-md-padding:               0.5625rem 1rem;
-$dropdown-trigger-lg-padding:               0.8125rem 1.5rem;
-$dropdown-trigger-xl-padding:               1.0625rem 2rem;
+$dropdown-trigger-lg-padding:               0.6875rem 1.5rem;
+$dropdown-trigger-xl-padding:               0.9375rem 2rem;
 
 $dropdown-menu-border-radius:               $border-radius-base;
 $dropdown-menu-shadow:                      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
@@ -917,7 +916,16 @@ $label-help-icon-color:                     $color-icon-primary;
 $label-help-hover-icon-color:               $color-icon-primary;
 
 // Link
+$link-cta-icon:                             '\e904';
 $link-cta-icon-color:                       $color-orange-50;
+$link-cta-icon-size:                        1rem;
+$link-cta-text-transform:                   none;
+$link-cta-position-left:                    0;
+$link-cta-hover-position-left:              0.375rem;
+$link-cta-padding-left:                     1.5rem;
+$link-cta-position-right:                   auto;
+$link-cta-hover-position-right:             auto;
+$link-cta-padding-right:                    0;
 
 // Marketing icon
 $marketing-icon-primary-color:              $color-icon-primary-dark;
@@ -1171,11 +1179,12 @@ $picker-group-xl-padding-checked:           2rem;
 $popover-background-color:                  $color-background-white;
 $popover-box-shadow:                        0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
 $popover-text-color:                        $color-text-base;
-$popover-max-width:                         18rem;
+$popover-max-width:                         20rem;
 $popover-arrow-size:                        0.75rem;
-$popover-modal-background-color:            $modal-background-color;
+$popover-modal-background-color:            $popover-background-color;
 $popover-modal-header-background-color:     $modal-header-background-color;
 $popover-modal-close-icon-color:            $modal-close-icon-color;
+$popover-drag-icon-color:                   $color-icon-white;
 
 // Progress
 $progress-background-color:                 $color-grey-20;
@@ -1242,13 +1251,13 @@ $select-xs-font-size:                       $font-size-xs;
 $select-xs-line-height:                     $line-height-sm;
 $select-xs-arrow-background-size:           0.75rem;
 $select-xs-arrow-background-position:       right 0.5rem center;
-$select-xs-padding:                         0 1.6875rem 0 0.75rem;
+$select-xs-padding:                         0 1.6875rem 0 0.5rem;
 
 $select-sm-height:                          2rem;
 $select-sm-font-size:                       $font-size-base;
 $select-sm-line-height:                     $line-height-sm;
 $select-sm-arrow-background-size:           0.75rem;
-$select-sm-arrow-background-position:       right 0.5rem center;
+$select-sm-arrow-background-position:       right 0.75rem center;
 $select-sm-padding:                         0 1.6875rem 0 0.75rem;
 
 $select-md-height:                          2.5rem;
@@ -1256,21 +1265,21 @@ $select-md-font-size:                       $font-size-base;
 $select-md-line-height:                     $line-height-md;
 $select-md-arrow-background-size:           1rem;
 $select-md-arrow-background-position:       right 1rem center;
-$select-md-padding:                         0 1.6875rem 0 0.75rem;
+$select-md-padding:                         0 2.25rem 0 0.75rem;
 
 $select-lg-height:                          3rem;
 $select-lg-font-size:                       $font-size-base;
 $select-lg-line-height:                     $line-height-md;
 $select-lg-arrow-background-size:           1rem;
 $select-lg-arrow-background-position:       right 1rem center;
-$select-lg-padding:                         0 1.6875rem 0 0.75rem;
+$select-lg-padding:                         0 2.5rem 0 1rem;
 
 $select-xl-height:                          3.5rem;
 $select-xl-font-size:                       $font-size-lg;
 $select-xl-line-height:                     $line-height-md;
 $select-xl-arrow-background-size:           1rem;
 $select-xl-arrow-background-position:       right 1rem center;
-$select-xl-padding:                         0 1.6875rem 0 0.75rem;
+$select-xl-padding:                         0 2.75rem 0 1rem;
 
 // Sidenav
 $sidenav-background-color:                  $color-grey-10;
@@ -1285,7 +1294,8 @@ $sidenav-item-active-border-color:          $color-border-primary;
 $sidenav-item-active-background-color:      $color-blue-20;
 $sidenav-drawer-header-background-color:    $color-background-base-dark;
 $sidenav-drawer-close-icon-color:           $color-icon-primary;
-$sidenav-item-title-font-weight:            $font-weight-semi-bold;
+$sidenav-item-title-font-weight:            $font-weight-normal;
+$sidenav-item-title-line-height:            1.25rem;
 $sidenav-item-expanded-background-color:    $color-background-white;
 $sidenav-item-expanded-box-shadow:          none;
 $sidenav-item-active-expanded-background-color: $color-background-white;

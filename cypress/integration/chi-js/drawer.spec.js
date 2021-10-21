@@ -15,7 +15,7 @@ describe('chi-drawer', function() {
       cy.get('#drawer-1')
         .find('.-close')
         .click()
-        .parent('.chi-drawer')
+        .parents('.chi-drawer')
         .should('not.be.visible')
         .should('not.have.class', '-active');
     });
@@ -33,7 +33,7 @@ describe('chi-drawer', function() {
       cy.get('#drawer-5')
         .find('.-close')
         .click()
-        .parent('.chi-drawer')
+        .parents('.chi-drawer')
         .should('not.be.visible');
     });
   });
@@ -49,7 +49,7 @@ describe('chi-drawer', function() {
       cy.get('#drawer-7')
         .find('.-close')
         .click()
-        .parent('.chi-drawer')
+        .parents('.chi-drawer')
         .should('not.be.visible');
     });
   });
@@ -65,7 +65,7 @@ describe('chi-drawer', function() {
       cy.get('#drawer-9')
         .find('.-close')
         .click()
-        .parent('.chi-drawer')
+        .parents('.chi-drawer')
         .should('not.be.visible');
     });
   });
@@ -85,7 +85,7 @@ describe('chi-drawer', function() {
       cy.get('#drawer-11')
         .find('.-close')
         .click()
-        .parent('.chi-drawer')
+        .parents('.chi-drawer')
         .should('not.be.visible');
     });
   });
@@ -102,7 +102,7 @@ describe('chi-drawer', function() {
       cy.get('#drawer-13')
         .find('.-close')
         .click()
-        .parent('.chi-drawer')
+        .parents('.chi-drawer')
         .should('not.be.visible');
     });
   });
@@ -121,7 +121,7 @@ describe('chi-drawer', function() {
       cy.get('#drawer-23')
         .find('.-close')
         .click()
-        .parent('.chi-drawer')
+        .parents('.chi-drawer')
         .should('not.be.visible');
     });
   });

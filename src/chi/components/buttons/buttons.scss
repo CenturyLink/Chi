@@ -140,55 +140,200 @@ $sizes: (
 );
 
 .chi-button {
-  & {
+  align-items: center;
+  background-color: $button-solid-background-color;
+  border: $border solid $button-solid-border-color;
+  border-radius: $border-radius;
+  box-shadow: $button-solid-box-shadow;
+  color: $button-solid-text-color;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: $button-md-font-size;
+  font-weight: $font-weight-semi-bold;
+  line-height: $button-md-line-height;
+  padding: $button-md-padding;
+  text-align: center;
+  text-transform: $button-md-text-transform;
+  transition: background-color 0.12s ease-in, border-color 0.1s ease-in, color 0.12s ease-in;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &[disabled],
+  &.-disabled {
+    @include button-disabled;
+  }
+
+  .chi-icon,
+  .chi-spinner {
+    color: $button-solid-icon-color;
+    font-size: $button-icon-md-font-size;
+    height: $button-icon-md-height;
+    line-height: $button-icon-md-line-height;
+    width: $button-icon-md-width;
+  }
+
+  &__content {
     align-items: center;
-    background-color: $button-solid-background-color;
-    border: $border solid $button-solid-border-color;
-    border-radius: $border-radius;
-    box-shadow: $button-solid-box-shadow;
-    color: $button-solid-text-color;
-    cursor: pointer;
     display: inline-flex;
-    font-size: $button-md-font-size;
-    font-weight: $font-weight-semi-bold;
-    line-height: $button-md-line-height;
-    padding: $button-md-padding;
-    text-align: center;
-    text-transform: $button-md-text-transform;
-    transition: background-color 0.12s ease-in, border-color 0.1s ease-in, color 0.12s ease-in;
-    vertical-align: middle;
-    white-space: nowrap;
+    justify-content: center;
+
+    & > :not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  @each $type in map-keys($sizes) {
+    &.-#{$type} {
+      font-size: map-get(map-get($sizes, $type), font-size);
+      line-height: map-get(map-get($sizes, $type), line-height);
+      padding: map-get(map-get($sizes, $type), padding);
+      text-transform: map-get(map-get($sizes, $type), text-transform);
+
+      .chi-icon {
+        height: map-get(map-get(map-get($sizes, $type), icons), height);
+        width: map-get(map-get(map-get($sizes, $type), icons), width);
+
+        &[class^='icon-'],
+        &[class*=' icon-'] {
+          font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
+          line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
+        }
+      }
+
+      .chi-spinner {
+        height: map-get(map-get(map-get($sizes, $type), icons), height);
+        width: map-get(map-get(map-get($sizes, $type), icons), width);
+      }
+
+      &.-icon,
+      &.-float {
+        padding: map-get(map-get(map-get($sizes, $type), icons), padding);
+      }
+    }
+  }
+
+  &:hover,
+  &.-hover {
+    background-color: $button-solid-hover-background-color;
+    border: $border solid $button-solid-hover-border-color;
+    color: $button-solid-hover-text-color;
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.-focus {
+    border: $border solid $button-solid-focus-border-color;
+    outline: 0.125rem solid $button-solid-focus-outline;
+    outline-offset: 0.0625rem;
+    z-index: $zindex-prominent;
+  }
+
+  &:active,
+  &.-active {
+    background-color: $button-solid-active-background-color;
+    border: $border solid $button-solid-active-border-color;
+    color: $button-solid-active-text-color;
+    outline: none;
+  }
+
+  &.-icon {
+    padding: $button-icon-md-padding;
+  }
+
+  &.-float {
+    border-color: $button-float-border-color;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14),
+    0 1px 16px 0 rgba(0, 0, 0, 0.12);
+    padding: $button-icon-md-padding;
+    transition: box-shadow 0.15s ease-in, background-color 0.15s ease-in;
+
+    &:active,
+    &.-active {
+      box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14),
+      0 2px 14px 1px rgba(0, 0, 0, 0.12);
+    }
 
     &[disabled],
     &.-disabled {
       @include button-disabled;
     }
+  }
 
-    .chi-icon,
-    .chi-spinner {
-      color: $button-solid-icon-color;
-      font-size: $button-icon-md-font-size;
-      height: $button-icon-md-height;
-      line-height: $button-icon-md-line-height;
-      width: $button-icon-md-width;
+  &.-fluid:not(.-float) {
+    width: 100%;
+  }
+
+  &.-uppercase {
+    text-transform: uppercase;
+  }
+
+  &.-close {
+
+    &,
+    .chi-icon {
+      color: $button-close-icon-color;
     }
 
-    &__content {
-      align-items: center;
-      display: inline-flex;
-      justify-content: center;
+    &,
+    &:hover,
+    &.-hover,
+    &:active,
+    &.-active {
+      background-color: $button-close-background-color;
+      border-color: $button-close-border-color;
+      box-shadow: none;
+    }
 
-      & > :not(:last-child) {
-        margin-right: 0.5rem;
+    &:hover {
+      opacity: $button-close-hover-icon-opacity;
+    }
+  }
+
+  &.-outline {
+    background-color: $button-outline-background-color;
+    border: $border solid $button-outline-border-color;
+
+    &:hover,
+    &.-hover {
+      background-color: $button-outline-hover-background-color;
+      border-color: $button-outline-hover-border-color;
+    }
+
+    &:active,
+    &.-active {
+      border-color: $button-outline-active-border-color;
+    }
+
+
+    &[disabled],
+    &.-disabled {
+      background-color: $button-outline-disabled-background-color;
+      border-color: $button-outline-disabled-border-color;
+      box-shadow: none;
+      color: $button-outline-disabled-text-color;
+      opacity: $opacity-100;
+      pointer-events: $button-outline-disabled-opacity;
+
+      & .chi-icon {
+        color: $button-outline-disabled-icon-color;
+        opacity: $button-outline-disabled-opacity;
       }
     }
+  }
+
+  &.-flat {
+    background-color: $button-flat-background-color;
+    border: $border solid $button-flat-border-color;
+    box-shadow: none;
+    color: $button-flat-text-color;
 
     @each $type in map-keys($sizes) {
       &.-#{$type} {
         font-size: map-get(map-get($sizes, $type), font-size);
         line-height: map-get(map-get($sizes, $type), line-height);
-        padding: map-get(map-get($sizes, $type), padding);
-        text-transform: map-get(map-get($sizes, $type), text-transform);
 
         .chi-icon {
           height: map-get(map-get(map-get($sizes, $type), icons), height);
@@ -205,135 +350,18 @@ $sizes: (
           height: map-get(map-get(map-get($sizes, $type), icons), height);
           width: map-get(map-get(map-get($sizes, $type), icons), width);
         }
-
-        &.-icon {
-          padding: map-get(map-get(map-get($sizes, $type), icons), padding);
-        }
       }
     }
 
     &:hover,
     &.-hover {
-      background-color: $button-solid-hover-background-color;
-      border: $border solid $button-solid-hover-border-color;
-      color: $button-solid-hover-text-color;
-      text-decoration: none;
-    }
-
-    &:focus,
-    &.-focus {
-      border: $border solid $button-solid-focus-border-color;
-      outline: 0.125rem solid $button-solid-focus-outline;
-      outline-offset: 0.0625rem;
-      z-index: $zindex-prominent;
-    }
-
-    &:active,
-    &.-active {
-      background-color: $button-solid-active-background-color;
-      border: $border solid $button-solid-active-border-color;
-      color: $button-solid-active-text-color;
-      outline: none;
-    }
-
-    &.-icon {
-      padding: $button-icon-md-padding;
-    }
-
-    &.-float {
-      border-color: $button-float-border-color;
-      border-radius: 50%;
-      box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.24),
-      0 6px 10px 0 rgba(0, 0, 0, 0.14),
-      0 1px 16px 0 rgba(0, 0, 0, 0.12);
-      padding: $button-float-padding;
-      transition: box-shadow 0.15s ease-in, background-color 0.15s ease-in;
-
-      &:active,
-      &.-active {
-        box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2),
-        0 8px 10px 1px rgba(0, 0, 0, 0.14),
-        0 2px 14px 1px rgba(0, 0, 0, 0.12);
-      }
-
-      .chi-icon {
-        height: $button-icon-md-height;
-        width: $button-icon-md-width;
-      }
-
-      &[disabled],
-      &.-disabled {
-        @include button-disabled;
-      }
-    }
-
-    &.-fluid:not(.-float) {
-      width: 100%;
-    }
-
-    &.-uppercase {
-      text-transform: uppercase;
-    }
-
-    &.-close {
-
-      &,
-      .chi-icon {
-        color: $button-close-icon-color;
-      }
-
-      &,
-      &:hover,
-      &.-hover,
-      &:active,
-      &.-active {
-        background-color: $button-close-background-color;
-        border-color: $button-close-border-color;
-        box-shadow: none;
-      }
-
-      &:hover {
-        opacity: $button-close-hover-icon-opacity;
-      }
-    }
-
-    &.-outline {
-      background-color: $button-outline-background-color;
-      border: $border solid $button-outline-border-color;
-
-      &:hover,
-      &.-hover {
-        background-color: $button-outline-hover-background-color;
-        border-color: $button-outline-hover-border-color;
-      }
-
-      &:active,
-      &.-active {
-        border-color: $button-outline-active-border-color;
-      }
-
-
-      &[disabled],
-      &.-disabled {
-        background-color: $button-outline-disabled-background-color;
-        border-color: $button-outline-disabled-border-color;
-        box-shadow: none;
-        color: $button-outline-disabled-text-color;
-        opacity: $opacity-100;
-        pointer-events: $button-outline-disabled-opacity;
-
-        & .chi-icon {
-          color: $button-outline-disabled-icon-color;
-          opacity: $button-outline-disabled-opacity;
-        }
-      }
-    }
-
-    &.-flat {
-      background-color: $button-flat-background-color;
-      border: $border solid $button-flat-border-color;
+      background-color: $button-flat-hover-background-color;
+      border: $border solid $button-flat-hover-border-color;
       box-shadow: none;
-      color: $button-flat-text-color;
+
+      .chi-icon {
+        opacity: $button-flat-hover-icon-opacity;
+      }
 
       @each $type in map-keys($sizes) {
         &.-#{$type} {
@@ -357,102 +385,69 @@ $sizes: (
           }
         }
       }
+    }
 
-      &:hover,
-      &.-hover {
-        background-color: $button-flat-hover-background-color;
-        border: $border solid $button-flat-hover-border-color;
-        box-shadow: none;
+    &:active,
+    &.-active {
+      background-color: $button-flat-active-background-color;
+      border: $border solid $button-flat-active-border-color;
 
-        .chi-icon {
-          opacity: $button-flat-hover-icon-opacity;
-        }
-
-        @each $type in map-keys($sizes) {
-          &.-#{$type} {
-            font-size: map-get(map-get($sizes, $type), font-size);
-            line-height: map-get(map-get($sizes, $type), line-height);
-
-            .chi-icon {
-              height: map-get(map-get(map-get($sizes, $type), icons), height);
-              width: map-get(map-get(map-get($sizes, $type), icons), width);
-
-              &[class^='icon-'],
-              &[class*=' icon-'] {
-                font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
-                line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
-              }
-            }
-
-            .chi-spinner {
-              height: map-get(map-get(map-get($sizes, $type), icons), height);
-              width: map-get(map-get(map-get($sizes, $type), icons), width);
-            }
-          }
-        }
+      &.-icon {
+        padding: $button-icon-md-padding;
       }
 
-      &:active,
-      &.-active {
-        background-color: $button-flat-active-background-color;
-        border: $border solid $button-flat-active-border-color;
+      @each $type in map-keys($sizes) {
+        &.-#{$type} {
+          font-size: map-get(map-get($sizes, $type), font-size);
+          line-height: map-get(map-get($sizes, $type), line-height);
 
-        &.-icon {
-          padding: $button-icon-md-padding;
-        }
+          .chi-icon {
+            height: map-get(map-get(map-get($sizes, $type), icons), height);
+            width: map-get(map-get(map-get($sizes, $type), icons), width);
 
-        @each $type in map-keys($sizes) {
-          &.-#{$type} {
-            font-size: map-get(map-get($sizes, $type), font-size);
-            line-height: map-get(map-get($sizes, $type), line-height);
-
-            .chi-icon {
-              height: map-get(map-get(map-get($sizes, $type), icons), height);
-              width: map-get(map-get(map-get($sizes, $type), icons), width);
-
-              &[class^='icon-'],
-              &[class*=' icon-'] {
-                font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
-                line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
-              }
-            }
-
-            .chi-spinner {
-              height: map-get(map-get(map-get($sizes, $type), icons), height);
-              width: map-get(map-get(map-get($sizes, $type), icons), width);
-            }
-
-            &.-icon {
-              padding: map-get(map-get(map-get($sizes, $type), icons), padding);
+            &[class^='icon-'],
+            &[class*=' icon-'] {
+              font-size: map-get(map-get(map-get($sizes, $type), icons), font-size);
               line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
             }
           }
-        }
-      }
 
-      &[disabled],
-      &.-disabled {
-        background-color: $button-flat-disabled-background-color;
-        border-color: $button-flat-disabled-border-color;
-        opacity: $button-flat-disabled-opacity;
+          .chi-spinner {
+            height: map-get(map-get(map-get($sizes, $type), icons), height);
+            width: map-get(map-get(map-get($sizes, $type), icons), width);
+          }
 
-        & .chi-icon {
-          opacity: $button-flat-disabled-opacity;
-        }
-      }
-
-      &.-no-hover {
-        &:hover,
-        &.-hover,
-        &:active,
-        &.-active {
-          background-color: transparent;
-          border-color: transparent;
-          box-shadow: none;
+          &.-icon {
+            padding: map-get(map-get(map-get($sizes, $type), icons), padding);
+            line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
+          }
         }
       }
     }
+
+    &[disabled],
+    &.-disabled {
+      background-color: $button-flat-disabled-background-color;
+      border-color: $button-flat-disabled-border-color;
+      opacity: $button-flat-disabled-opacity;
+
+      & .chi-icon {
+        opacity: $button-flat-disabled-opacity;
+      }
+    }
+
+    &.-no-hover {
+      &:hover,
+      &.-hover,
+      &:active,
+      &.-active {
+        background-color: transparent;
+        border-color: transparent;
+        box-shadow: none;
+      }
+    }
   }
+
 
   @each $color in map-keys($button-colors) {
     &.-#{$color} {

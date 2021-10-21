@@ -37,10 +37,11 @@
       }
     }
 
+    // To-do remove once PF fully migrates 5.X
     .chi-toolbar__start {
       .chi-toolbar__filters {
         .chi-popover {
-          max-width: 21rem;
+          max-width: 22.5rem;
         }
       }
     }
@@ -74,7 +75,8 @@
   }
 
   &__filters,
-  &__actions {
+  &__actions,
+  &__views {
     display: flex;
 
     &-desktop {

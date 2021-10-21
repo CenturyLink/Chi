@@ -15,6 +15,7 @@
   max-width: $popover-max-width;
   opacity: 0;
   position: absolute;
+  text-align: left;
   top: 0;
   z-index: $zindex-popover;
 
@@ -32,6 +33,8 @@
   }
 
   & .chi-popover__header {
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
     padding: 1rem 1rem 0;
 
     & .chi-popover__title {
@@ -66,6 +69,7 @@
   }
 
   & .chi-popover__content {
+    overflow: auto;
     padding: 0.5rem 1rem;
 
     & .chi-popover__title {
@@ -94,6 +98,7 @@
   }
 
   & .chi-popover__footer {
+    display: flex;
     padding: 1rem;
 
     & chi-button,
@@ -101,6 +106,13 @@
       & + chi-button,
       & + .chi-button {
         margin-left: 0.5rem;
+      }
+    }
+
+    .chi-divider {
+      &.-vertical {
+        margin-right: 1rem;
+        min-height: 2.5rem;
       }
     }
   }
@@ -239,10 +251,17 @@
 
   &.-modal {
     background-color: $popover-modal-background-color;
+    max-width: 22.5rem;
 
     .chi-popover__header {
       background-color: $popover-modal-header-background-color;
       padding-bottom: 1rem;
+    }
+
+    .chi-popover__content {
+      & + .chi-popover__footer {
+        padding-top: 1rem;
+      }
     }
 
     .chi-button {
@@ -269,30 +288,27 @@
     }
   }
 
+  .chi-popover__content {
+    max-height: 32rem;
+  }
+
   &.-draggable {
     .chi-popover__header {
       cursor: move;
 
-      &::before,
-      &::after {
-        content: '\e976';
-        display: flex;
-        font-family: $font-family-icon !important;
-        height: 1.5rem;
-        justify-content: center;
-        left: 50%;
-        opacity: 0.3;
-        position: absolute;
-        transform: translateX(-50%);
-        width: 1.5rem;
-      }
-
-      &::after {
-        top: 0;
-      }
-
       &::before {
+        // sass-lint:disable-all
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 48 8'%3E%3Cpath fill='#{$popover-drag-icon-color}' fill-rule='evenodd' d='M3 1H1v2h2V1zm6 0h2v2H9V1zm8 0h2v2h-2V1zm10 0h-2v2h2V1zM13 1h2v2h-2V1zm10 0h-2v2h2V1zm6 0h2v2h-2V1zM11 5H9v2h2V5zm6 0h2v2h-2V5zm10 0h-2v2h2V5zM13 5h2v2h-2V5zm10 0h-2v2h2V5zm6 0h2v2h-2V5zM5 1h2v2H5V1zM3 5H1v2h2V5zm2 0h2v2H5V5zm38-4h-2v2h2V1zm2 0h2v2h-2V1zm-2 4h-2v2h2V5zm2 0h2v2h-2V5zM35 1h-2v2h2V1zm2 0h2v2h-2V1zm-2 4h-2v2h2V5zm2 0h2v2h-2V5z' clip-rule='evenodd'/%3E%3C/svg%3E");
+        // sass-lint:enable-all
+        background-repeat: no-repeat;
+        content: '';
+        display: block;
+        height: 1rem;
+        left: calc(50% - 1.5rem);
+        opacity: $opacity-60;
+        position: absolute;
         top: 0.3rem;
+        width: 3rem;
       }
     }
   }

@@ -11,10 +11,8 @@ h3 Complex
             :data="table",
           )
             template(#status="payload")
-              div(
-                :class="`chi-badge -xs ${payload.status === 'active' ? '-success -bg--success-light -text--success' : ''}`"
-              )
-                span.-text--truncate {{ payload.status }}
+              i(:class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true")
+              span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.status }}
             template(#name="payload")
               chi-popover-example(:name="payload.name", :id="payload.id")
             template(#actions="payload")
@@ -48,12 +46,10 @@ h3 Complex
             <!-- Vue component -->
             <ChiDataTable :config="config" :data="table">
               <template #status="payload">
-                <div :class="`chi-badge -xs ${payload.status === 'active'
-                  ? '-success -bg--success-light -text--success' : ''}`">
-                  <span class="-text--truncate">
-                    {{ payload.status }}
-                  </span>
-                </div>
+                <i class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
+                <span class="-text--truncate" style="padding-left: 0.5rem;">
+                  {{ payload.status }}
+                </span>
               </template>
               <template #name="payload">
                 <ExamplePopover :name="payload.name" :id="payload.id" />
@@ -71,7 +67,6 @@ h3 Complex
             data: {
               config: {
                 columnResize: false,
-                activePage: 1,
                 selectable: true,
                 style: {
                   portal: true,
@@ -82,15 +77,21 @@ h3 Complex
                   striped: true,
                 },
                 pagination: {
+                  activePage: 1,
                   compact: false,
                   firstLast: true,
                   pageJumper: true,
                 },
                 resultsPerPage: 3,
+                defaultSort: {
+                  key: 'name',
+                  sortBy: 'string',
+                  direction: 'ascending',
+                },
               },
               table: {
                 head: {
-                  name: { label: 'Name', sortable: true, sortDataType: 'string', key: true, bold: true },
+                  name: { label: 'Name', sortable: true, sortBy: 'name', sortDataType: 'string', key: true, bold: true },
                   status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string' },
                   lastLogin: { label: 'Last Login', key: true },
                   actions: { label: 'Actions', align: 'right' },
@@ -103,9 +104,9 @@ h3 Complex
                       { template: "name", payload: { name: "Name 1", id: "name-1" } },
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
-                      "Dec 18, 2020 3:26 PM",
+                      "18 Dec 2020 3:26 p.m.",
                       {
                         template: "actions",
                         payload: { id: "name-1" },
@@ -115,41 +116,50 @@ h3 Complex
                       table: {
                         data: [
                           {
-                            id: "name-1-0",
+                            id: "child-1-name-1",
                             data: [
                               "Child 1 Name 1",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {}
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "child-1-name-1" },
+                              },
                             ],
                             nestedContent: {
                               table: {
                                 data: [
                                   {
-                                    id: "name-1-0-0",
+                                    id: "grandchild-1-name-1",
                                     data: [
                                       "Grand Child 1 Name 1",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-1-name-1" },
+                                      },
                                     ],
                                   },
                                   {
-                                    id: "name-1-0-1",
+                                    id: "grandchild-2-name-1",
                                     data: [
                                       "Grand Child 2 Name 1",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-2-name-1" },
+                                      },
                                     ],
                                   },
                                 ],
@@ -157,41 +167,50 @@ h3 Complex
                             },
                           },
                           {
-                            id: "name-1-1",
+                            id: "child-2-name-1",
                             data: [
                               "Child 2 Name 1",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {}
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "child-2-name-1" },
+                              },
                             ],
                             nestedContent: {
                               table: {
                                 data: [
                                   {
-                                    id: "name-1-1-0",
+                                    id: "grandchild-3-name-1",
                                     data: [
-                                      "Grand Child 1 Name 1",
+                                      "Grand Child 3 Name 1",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-3-name-1" },
+                                      },
                                     ],
                                   },
                                   {
-                                    id: "name-1-1-1",
+                                    id: "grandchild-4-name-1",
                                     data: [
-                                      "Grand Child 2 Name 1",
+                                      "Grand Child 4 Name 1",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-4-name-1" },
+                                      },
                                     ],
                                   },
                                 ],
@@ -208,9 +227,9 @@ h3 Complex
                       { template: "name", payload: { name: "Name 2", id: "name-2" } },
                       {
                         template: "status",
-                        payload: { status: "Inactive" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
-                      "Dec 18, 2020 3:26 PM",
+                      "18 Dec 2020 3:26 p.m.",
                       {
                         template: "actions",
                         payload: { id: "name-2" },
@@ -220,41 +239,50 @@ h3 Complex
                       table: {
                         data: [
                           {
-                            id: "name-2-0",
+                            id: "child-1-name-2",
                             data: [
                               "Child 1 Name 2",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "child-1-name-2" },
+                              },
                             ],
                             nestedContent: {
                               table: {
                                 data: [
                                   {
-                                    id: "name-1-0",
+                                    id: "grandchild-1-name-2",
                                     data: [
                                       "Grand Child 1 Name 2",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-1-name-2" },
+                                      },
                                     ],
                                   },
                                   {
-                                    id: "name-1-1",
+                                    id: "grandchild-2-name-2",
                                     data: [
                                       "Grand Child 2 Name 2",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-2-name-2" },
+                                      },
                                     ],
                                   },
                                 ],
@@ -262,41 +290,50 @@ h3 Complex
                             },
                           },
                           {
-                            id: "name-2-1",
+                            id: "child-2-name-2",
                             data: [
                               "Child 2 Name 2",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "child-2-name-2" },
+                              },
                             ],
                             nestedContent: {
                               table: {
                                 data: [
                                   {
-                                    id: "name-1-0",
+                                    id: "grandchild-3-name-2",
                                     data: [
-                                      "Grand Child 1 Name 2",
+                                      "Grand Child 3 Name 2",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-3-name-2" },
+                                      },
                                     ],
                                   },
                                   {
-                                    id: "name-1-1",
+                                    id: "grandchild-4-name-2",
                                     data: [
-                                      "Grand Child 2 Name 2",
+                                      "Grand Child 4 Name 2",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-4-name-2" },
+                                      },
                                     ],
                                   },
                                 ],
@@ -319,9 +356,9 @@ h3 Complex
                       },
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
-                      "Dec 18, 2020 3:26 PM",
+                      "18 Dec 2020 3:26 p.m.",
                       {
                         template: "actions",
                         payload: {
@@ -333,41 +370,50 @@ h3 Complex
                       table: {
                         data: [
                           {
-                            id: "name-3-0",
+                            id: "child-1-name-3",
                             data: [
                               "Child 1 Name 3",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "child-1-name-3" },
+                              },
                             ],
                             nestedContent: {
                               table: {
                                 data: [
                                   {
-                                    id: "name-1-0",
+                                    id: "grandchild-1-name-3",
                                     data: [
                                       "Grand Child 1 Name 3",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-1-name-3" },
+                                      },
                                     ],
                                   },
                                   {
-                                    id: "name-1-1",
+                                    id: "grandchild-2-name-3",
                                     data: [
                                       "Grand Child 2 Name 3",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-2-name-3" },
+                                      },
                                     ],
                                   },
                                 ],
@@ -375,41 +421,50 @@ h3 Complex
                             },
                           },
                           {
-                            id: "name-3-1",
+                            id: "child-2-name-3",
                             data: [
                               "Child 2 Name 3",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "child-2-name-3" },
+                              },
                             ],
                             nestedContent: {
                               table: {
                                 data: [
                                   {
-                                    id: "name-1-0",
+                                    id: "grandchild-3-name-3",
                                     data: [
-                                      "Grand Child 1 Name 3",
+                                      "Grand Child 3 Name 3",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-3-name-3" },
+                                      },
                                     ],
                                   },
                                   {
-                                    id: "name-1-1",
+                                    id: "grandchild-4-name-3",
                                     data: [
-                                      "Grand Child 2 Name 3",
+                                      "Grand Child 4 Name 3",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-4-name-3" },
+                                      },
                                     ],
                                   },
                                 ],
@@ -432,9 +487,9 @@ h3 Complex
                       },
                       {
                         template: "status",
-                        payload: { status: "inactive" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
-                      "Dec 18, 2020 3:26 PM",
+                      "18 Dec 2020 3:26 p.m.",
                       {
                         template: "actions",
                         payload: {
@@ -446,41 +501,50 @@ h3 Complex
                       table: {
                         data: [
                           {
-                            id: "name-4-0",
+                            id: "child-1-name-4",
                             data: [
                               "Child 1 Name 4",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "child-1-name-4" },
+                              },
                             ],
                             nestedContent: {
                               table: {
                                 data: [
                                   {
-                                    id: "name-1-0",
+                                    id: "grandchild-1-name-4",
                                     data: [
                                       "Grand Child 1 Name 4",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-1-name-4" },
+                                      },
                                     ],
                                   },
                                   {
-                                    id: "name-1-1",
+                                    id: "grandchild-2-name-4",
                                     data: [
                                       "Grand Child 2 Name 4",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-2-name-4" },
+                                      },
                                     ],
                                   },
                                 ],
@@ -488,41 +552,50 @@ h3 Complex
                             },
                           },
                           {
-                            id: "name-4-1",
+                            id: "child-2-name-4",
                             data: [
                               "Child 2 Name 4",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "child-2-name-4" },
+                              },
                             ],
                             nestedContent: {
                               table: {
                                 data: [
                                   {
-                                    id: "name-1-0",
+                                    id: "grandchild-3-name-4",
                                     data: [
-                                      "Grand Child 1 Name 4",
+                                      "Grand Child 3 Name 4",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-3-name-4" },
+                                      },
                                     ],
                                   },
                                   {
-                                    id: "name-1-1",
+                                    id: "grandchild-4-name-4",
                                     data: [
-                                      "Grand Child 2 Name 4",
+                                      "Grand Child 4 Name 4",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-4-name-4" },
+                                      },
                                     ],
                                   },
                                 ],
@@ -545,9 +618,9 @@ h3 Complex
                       },
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
-                      "Dec 18, 2020 3:26 PM",
+                      "18 Dec 2020 3:26 p.m.",
                       {
                         template: "actions",
                         payload: {
@@ -559,41 +632,50 @@ h3 Complex
                       table: {
                         data: [
                           {
-                            id: "name-5-0",
+                            id: "child-1-name-5",
                             data: [
                               "Child 1 Name 5",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "child-1-name-5" },
+                              },
                             ],
                             nestedContent: {
                               table: {
                                 data: [
                                   {
-                                    id: "name-1-0",
+                                    id: "grandchild-1-name-5",
                                     data: [
                                       "Grand Child 1 Name 5",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-1-name-5" },
+                                      },
                                     ],
                                   },
                                   {
-                                    id: "name-1-1",
+                                    id: "grandchild-2-name-5",
                                     data: [
                                       "Grand Child 2 Name 5",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-2-name-5" },
+                                      },
                                     ],
                                   },
                                 ],
@@ -601,41 +683,50 @@ h3 Complex
                             },
                           },
                           {
-                            id: "name-5-1",
+                            id: "child-2-name-5",
                             data: [
                               "Child 2 Name 5",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "child-2-name-5" },
+                              },
                             ],
                             nestedContent: {
                               table: {
                                 data: [
                                   {
-                                    id: "name-1-0",
+                                    id: "grandchild-3-name-5",
                                     data: [
-                                      "Grand Child 1 Name 5",
+                                      "Grand Child 3 Name 5",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-3-name-5" },
+                                      },
                                     ],
                                   },
                                   {
-                                    id: "name-1-1",
+                                    id: "grandchild-4-name-5",
                                     data: [
-                                      "Grand Child 2 Name 5",
+                                      "Grand Child 4 Name 5",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-4-name-5" },
+                                      },
                                     ],
                                   },
                                 ],
@@ -658,9 +749,9 @@ h3 Complex
                       },
                       {
                         template: "status",
-                        payload: { status: "inactive" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
-                      "Dec 18, 2020 3:26 PM",
+                      "18 Dec 2020 3:26 p.m.",
                       {
                         template: "actions",
                         payload: {
@@ -672,41 +763,50 @@ h3 Complex
                       table: {
                         data: [
                           {
-                            id: "name-6-0",
+                            id: "child-1-name-6",
                             data: [
                               "Child 1 Name 6",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "child-1-name-6" },
+                              },
                             ],
                             nestedContent: {
                               table: {
                                 data: [
                                   {
-                                    id: "name-1-0",
+                                    id: "grandchild-1-name-6",
                                     data: [
                                       "Grand Child 1 Name 6",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-1-name-6" },
+                                      },
                                     ],
                                   },
                                   {
-                                    id: "name-1-1",
+                                    id: "grandchild-2-name-6",
                                     data: [
                                       "Grand Child 2 Name 6",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-2-name-6" },
+                                      },
                                     ],
                                   },
                                 ],
@@ -714,41 +814,50 @@ h3 Complex
                             },
                           },
                           {
-                            id: "name-6-1",
+                            id: "child-2-name-6",
                             data: [
                               "Child 2 Name 6",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "child-2-name-6" },
+                              },
                             ],
                             nestedContent: {
                               table: {
                                 data: [
                                   {
-                                    id: "name-1-0",
+                                    id: "grandchild-3-name-6",
                                     data: [
-                                      "Grand Child 1 Name 6",
+                                      "Grand Child 3 Name 6",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-3-name-6" },
+                                      },
                                     ],
                                   },
                                   {
-                                    id: "name-1-1",
+                                    id: "grandchild-4-name-6",
                                     data: [
-                                      "Grand Child 2 Name 6",
+                                      "Grand Child 4 Name 6",
                                       {
                                         template: "status",
-                                        payload: { status: "active" },
+                                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                                       },
-                                      "Dec 18, 2020 2:38 AM",
-                                      {},
+                                      "18 Dec 2020 2:38 a.m.",
+                                      {
+                                        template: "actions",
+                                        payload: { id: "grandchild-4-name-6" },
+                                      },
                                     ],
                                   },
                                 ],
@@ -817,7 +926,7 @@ h3 Complex
             <!-- Template -->
             <template>
               <div class="chi-dropdown">
-                <button ref="dropdownTrigger" class="chi-button -icon -flat -bg--none -opacity-hover--80">
+                <button ref="dropdownTrigger" class="chi-button -icon -flat" aria-label="More options">
                   <div class="chi-button__content">
                     <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
                   </div>
@@ -880,7 +989,7 @@ script.
       window.chi.dropdown(document.getElementById(`action-button-${this.id}`));
     },
     template: `<div class="chi-dropdown -position--absolute">
-      <button :id="'action-button-'+this.id" class="chi-button -icon -primary -flat -bg--none -opacity-hover--80">
+      <button :id="'action-button-'+this.id" class="chi-button -icon -primary -flat" aria-label="More options">
         <div class="chi-button__content">
           <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
         </div>
@@ -907,7 +1016,6 @@ script.
     data: {
       config: {
         columnResize: false,
-        activePage: 1,
         selectable: true,
         style: {
           portal: true,
@@ -918,15 +1026,21 @@ script.
           striped: true,
         },
         pagination: {
+          activePage: 1,
           compact: false,
           firstLast: true,
           pageJumper: true,
         },
         resultsPerPage: 3,
+        defaultSort: {
+          key: 'name',
+          sortBy: 'string',
+          direction: 'ascending',
+        },
       },
       table: {
         head: {
-          name: { label: 'Name', sortable: true, sortDataType: 'string', key: true, bold: true },
+          name: { label: 'Name', sortable: true, sortBy: 'name', sortDataType: 'string', key: true, bold: true },
           status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string' },
           lastLogin: { label: 'Last Login', key: true },
           actions: { label: 'Actions', align: 'right' },
@@ -939,9 +1053,9 @@ script.
               { template: "name", payload: { name: "Name 1", id: "name-1" } },
               {
                 template: "status",
-                payload: { status: "active" },
+                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
               },
-              "Dec 18, 2020 3:26 PM",
+              "18 Dec 2020 3:26 p.m.",
               {
                 template: "actions",
                 payload: { id: "name-1" },
@@ -951,41 +1065,50 @@ script.
               table: {
                 data: [
                   {
-                    id: "name-1-0",
+                    id: "child-1-name-1",
                     data: [
                       "Child 1 Name 1",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
-                      "Dec 18, 2020 2:38 AM",
-                      {}
+                      "18 Dec 2020 2:38 a.m.",
+                      {
+                        template: "actions",
+                        payload: { id: "child-1-name-1" },
+                      },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "name-1-0-0",
+                            id: "grandchild-1-name-1",
                             data: [
                               "Grand Child 1 Name 1",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-1-name-1" },
+                              },
                             ],
                           },
                           {
-                            id: "name-1-0-1",
+                            id: "grandchild-2-name-1",
                             data: [
                               "Grand Child 2 Name 1",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-2-name-1" },
+                              },
                             ],
                           },
                         ],
@@ -993,41 +1116,50 @@ script.
                     },
                   },
                   {
-                    id: "name-1-1",
+                    id: "child-2-name-1",
                     data: [
                       "Child 2 Name 1",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
-                      "Dec 18, 2020 2:38 AM",
-                      {}
+                      "18 Dec 2020 2:38 a.m.",
+                      {
+                        template: "actions",
+                        payload: { id: "child-2-name-1" },
+                      },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "name-1-1-0",
+                            id: "grandchild-3-name-1",
                             data: [
-                              "Grand Child 1 Name 1",
+                              "Grand Child 3 Name 1",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-3-name-1" },
+                              },
                             ],
                           },
                           {
-                            id: "name-1-1-1",
+                            id: "grandchild-4-name-1",
                             data: [
-                              "Grand Child 2 Name 1",
+                              "Grand Child 4 Name 1",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-4-name-1" },
+                              },
                             ],
                           },
                         ],
@@ -1044,9 +1176,9 @@ script.
               { template: "name", payload: { name: "Name 2", id: "name-2" } },
               {
                 template: "status",
-                payload: { status: "Inactive" },
+                payload: { status: "Due", icon: 'warning', color: 'warning' },
               },
-              "Dec 18, 2020 3:26 PM",
+              "18 Dec 2020 3:26 p.m.",
               {
                 template: "actions",
                 payload: { id: "name-2" },
@@ -1056,41 +1188,50 @@ script.
               table: {
                 data: [
                   {
-                    id: "name-2-0",
+                    id: "child-1-name-2",
                     data: [
                       "Child 1 Name 2",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
-                      "Dec 18, 2020 2:38 AM",
-                      {},
+                      "18 Dec 2020 2:38 a.m.",
+                      {
+                        template: "actions",
+                        payload: { id: "child-1-name-2" },
+                      },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "name-1-0",
+                            id: "grandchild-1-name-2",
                             data: [
                               "Grand Child 1 Name 2",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-1-name-2" },
+                              },
                             ],
                           },
                           {
-                            id: "name-1-1",
+                            id: "grandchild-2-name-2",
                             data: [
                               "Grand Child 2 Name 2",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-2-name-2" },
+                              },
                             ],
                           },
                         ],
@@ -1098,41 +1239,50 @@ script.
                     },
                   },
                   {
-                    id: "name-2-1",
+                    id: "child-2-name-2",
                     data: [
                       "Child 2 Name 2",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
-                      "Dec 18, 2020 2:38 AM",
-                      {},
+                      "18 Dec 2020 2:38 a.m.",
+                      {
+                        template: "actions",
+                        payload: { id: "child-2-name-2" },
+                      },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "name-1-0",
+                            id: "grandchild-3-name-2",
                             data: [
-                              "Grand Child 1 Name 2",
+                              "Grand Child 3 Name 2",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-3-name-2" },
+                              },
                             ],
                           },
                           {
-                            id: "name-1-1",
+                            id: "grandchild-4-name-2",
                             data: [
-                              "Grand Child 2 Name 2",
+                              "Grand Child 4 Name 2",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-4-name-2" },
+                              },
                             ],
                           },
                         ],
@@ -1155,9 +1305,9 @@ script.
               },
               {
                 template: "status",
-                payload: { status: "active" },
+                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
               },
-              "Dec 18, 2020 3:26 PM",
+              "18 Dec 2020 3:26 p.m.",
               {
                 template: "actions",
                 payload: {
@@ -1169,41 +1319,50 @@ script.
               table: {
                 data: [
                   {
-                    id: "name-3-0",
+                    id: "child-1-name-3",
                     data: [
                       "Child 1 Name 3",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
-                      "Dec 18, 2020 2:38 AM",
-                      {},
+                      "18 Dec 2020 2:38 a.m.",
+                      {
+                        template: "actions",
+                        payload: { id: "child-1-name-3" },
+                      },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "name-1-0",
+                            id: "grandchild-1-name-3",
                             data: [
                               "Grand Child 1 Name 3",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-1-name-3" },
+                              },
                             ],
                           },
                           {
-                            id: "name-1-1",
+                            id: "grandchild-2-name-3",
                             data: [
                               "Grand Child 2 Name 3",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-2-name-3" },
+                              },
                             ],
                           },
                         ],
@@ -1211,41 +1370,50 @@ script.
                     },
                   },
                   {
-                    id: "name-3-1",
+                    id: "child-2-name-3",
                     data: [
                       "Child 2 Name 3",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
-                      "Dec 18, 2020 2:38 AM",
-                      {},
+                      "18 Dec 2020 2:38 a.m.",
+                      {
+                        template: "actions",
+                        payload: { id: "child-2-name-3" },
+                      },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "name-1-0",
+                            id: "grandchild-3-name-3",
                             data: [
-                              "Grand Child 1 Name 3",
+                              "Grand Child 3 Name 3",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-3-name-3" },
+                              },
                             ],
                           },
                           {
-                            id: "name-1-1",
+                            id: "grandchild-4-name-3",
                             data: [
-                              "Grand Child 2 Name 3",
+                              "Grand Child 4 Name 3",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-4-name-3" },
+                              },
                             ],
                           },
                         ],
@@ -1268,9 +1436,9 @@ script.
               },
               {
                 template: "status",
-                payload: { status: "inactive" },
+                payload: { status: "Due", icon: 'warning', color: 'warning' },
               },
-              "Dec 18, 2020 3:26 PM",
+              "18 Dec 2020 3:26 p.m.",
               {
                 template: "actions",
                 payload: {
@@ -1282,41 +1450,50 @@ script.
               table: {
                 data: [
                   {
-                    id: "name-4-0",
+                    id: "child-1-name-4",
                     data: [
                       "Child 1 Name 4",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
-                      "Dec 18, 2020 2:38 AM",
-                      {},
+                      "18 Dec 2020 2:38 a.m.",
+                      {
+                        template: "actions",
+                        payload: { id: "child-1-name-4" },
+                      },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "name-1-0",
+                            id: "grandchild-1-name-4",
                             data: [
                               "Grand Child 1 Name 4",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-1-name-4" },
+                              },
                             ],
                           },
                           {
-                            id: "name-1-1",
+                            id: "grandchild-2-name-4",
                             data: [
                               "Grand Child 2 Name 4",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-2-name-4" },
+                              },
                             ],
                           },
                         ],
@@ -1324,41 +1501,50 @@ script.
                     },
                   },
                   {
-                    id: "name-4-1",
+                    id: "child-2-name-4",
                     data: [
                       "Child 2 Name 4",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
-                      "Dec 18, 2020 2:38 AM",
-                      {},
+                      "18 Dec 2020 2:38 a.m.",
+                      {
+                        template: "actions",
+                        payload: { id: "child-2-name-4" },
+                      },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "name-1-0",
+                            id: "grandchild-3-name-4",
                             data: [
-                              "Grand Child 1 Name 4",
+                              "Grand Child 3 Name 4",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-3-name-4" },
+                              },
                             ],
                           },
                           {
-                            id: "name-1-1",
+                            id: "grandchild-4-name-4",
                             data: [
-                              "Grand Child 2 Name 4",
+                              "Grand Child 4 Name 4",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-4-name-4" },
+                              },
                             ],
                           },
                         ],
@@ -1381,9 +1567,9 @@ script.
               },
               {
                 template: "status",
-                payload: { status: "active" },
+                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
               },
-              "Dec 18, 2020 3:26 PM",
+              "18 Dec 2020 3:26 p.m.",
               {
                 template: "actions",
                 payload: {
@@ -1395,41 +1581,50 @@ script.
               table: {
                 data: [
                   {
-                    id: "name-5-0",
+                    id: "child-1-name-5",
                     data: [
                       "Child 1 Name 5",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
-                      "Dec 18, 2020 2:38 AM",
-                      {},
+                      "18 Dec 2020 2:38 a.m.",
+                      {
+                        template: "actions",
+                        payload: { id: "child-1-name-5" },
+                      },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "name-1-0",
+                            id: "grandchild-1-name-5",
                             data: [
                               "Grand Child 1 Name 5",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-1-name-5" },
+                              },
                             ],
                           },
                           {
-                            id: "name-1-1",
+                            id: "grandchild-2-name-5",
                             data: [
                               "Grand Child 2 Name 5",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-2-name-5" },
+                              },
                             ],
                           },
                         ],
@@ -1437,41 +1632,50 @@ script.
                     },
                   },
                   {
-                    id: "name-5-1",
+                    id: "child-2-name-5",
                     data: [
                       "Child 2 Name 5",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                       },
-                      "Dec 18, 2020 2:38 AM",
-                      {},
+                      "18 Dec 2020 2:38 a.m.",
+                      {
+                        template: "actions",
+                        payload: { id: "child-2-name-5" },
+                      },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "name-1-0",
+                            id: "grandchild-3-name-5",
                             data: [
-                              "Grand Child 1 Name 5",
+                              "Grand Child 3 Name 5",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-3-name-5" },
+                              },
                             ],
                           },
                           {
-                            id: "name-1-1",
+                            id: "grandchild-4-name-5",
                             data: [
-                              "Grand Child 2 Name 5",
+                              "Grand Child 4 Name 5",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Overdue", icon: "circle-alert", color: "danger" },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-4-name-5" },
+                              },
                             ],
                           },
                         ],
@@ -1494,9 +1698,9 @@ script.
               },
               {
                 template: "status",
-                payload: { status: "inactive" },
+                payload: { status: "Due", icon: 'warning', color: 'warning' },
               },
-              "Dec 18, 2020 3:26 PM",
+              "18 Dec 2020 3:26 p.m.",
               {
                 template: "actions",
                 payload: {
@@ -1508,41 +1712,50 @@ script.
               table: {
                 data: [
                   {
-                    id: "name-6-0",
+                    id: "child-1-name-6",
                     data: [
                       "Child 1 Name 6",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
-                      "Dec 18, 2020 2:38 AM",
-                      {},
+                      "18 Dec 2020 2:38 a.m.",
+                      {
+                        template: "actions",
+                        payload: { id: "child-1-name-6" },
+                      },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "name-1-0",
+                            id: "grandchild-1-name-6",
                             data: [
                               "Grand Child 1 Name 6",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-1-name-6" },
+                              },
                             ],
                           },
                           {
-                            id: "name-1-1",
+                            id: "grandchild-2-name-6",
                             data: [
                               "Grand Child 2 Name 6",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-2-name-6" },
+                              },
                             ],
                           },
                         ],
@@ -1550,41 +1763,50 @@ script.
                     },
                   },
                   {
-                    id: "name-6-1",
+                    id: "child-2-name-6",
                     data: [
                       "Child 2 Name 6",
                       {
                         template: "status",
-                        payload: { status: "active" },
+                        payload: { status: "Due", icon: 'warning', color: 'warning' },
                       },
-                      "Dec 18, 2020 2:38 AM",
-                      {},
+                      "18 Dec 2020 2:38 a.m.",
+                      {
+                        template: "actions",
+                        payload: { id: "child-2-name-6" },
+                      },
                     ],
                     nestedContent: {
                       table: {
                         data: [
                           {
-                            id: "name-1-0",
+                            id: "grandchild-3-name-6",
                             data: [
-                              "Grand Child 1 Name 6",
+                              "Grand Child 3 Name 6",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-3-name-6" },
+                              },
                             ],
                           },
                           {
-                            id: "name-1-1",
+                            id: "grandchild-4-name-6",
                             data: [
-                              "Grand Child 2 Name 6",
+                              "Grand Child 4 Name 6",
                               {
                                 template: "status",
-                                payload: { status: "active" },
+                                payload: { status: "Due", icon: 'warning', color: 'warning' },
                               },
-                              "Dec 18, 2020 2:38 AM",
-                              {},
+                              "18 Dec 2020 2:38 a.m.",
+                              {
+                                template: "actions",
+                                payload: { id: "grandchild-4-name-6" },
+                              },
                             ],
                           },
                         ],

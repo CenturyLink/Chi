@@ -1,10 +1,10 @@
 <template>
   <div id="tadataTableClientView">
-    <h2>Data Table Client Side</h2>
+    <h2>Data Table</h2>
     <ChiDataTable
       :data="table"
       :config="config"
-      @chiSelectedRowsChange="e => this.rowSelect(e)"
+      @chiSelectedRowsChange="e => this.chiSelectedRowsChange(e)"
       @chiPageChange="e => this.pageChange(e)"
       @chiPageSizeChange="e => this.pageSizeChange(e)"
       @chiDataSorting="e => this.dataSorting(e)"
@@ -31,7 +31,7 @@
           <div class="chi-alert__content">
             <p class="chi-alert__text">
               Custom content rendered by the provided template. ID:
-              <b>{{ payload.id }}</b>
+              <strong>{{ payload.id }}</strong>
             </p>
           </div>
         </div>
@@ -41,18 +41,25 @@
       </template>
       <template #toolbar>
         <ChiDataTableToolbar
-          @chiToolbarFiltersChange="e => filtersChange(e)"
-          @chiToolbarSearch="e => search(e)"
-          @chiToolbarColumnsChange="e => columnsChange(e)"
+          @chiToolbarFiltersChange="e => chiToolbarFiltersChange(e)"
+          @chiToolbarSearch="e => chiToolbarSearch(e)"
+          @chiToolbarColumnsChange="e => chiToolbarColumnsChange(e)"
+          @chiToolbarColumnsReset="e => chiToolbarColumnsReset(e)"
+          @chiToolbarViewsChange="e => chiToolbarViewsChange(e)"
         >
           <template v-slot:start>
-            <ChiSearchInput :portal="true" size="lg" :dataTableSearch="true" />
+            <ChiSearchInput :portal="true" :dataTableSearch="true" />
+            <div class="chi-divider -vertical"></div>
+            <ChiDataTableViews :views="toolbar.viewsData" defaultView="view-2" />
             <div class="chi-divider -vertical"></div>
             <ChiDataTableFilters :portal="true" :filtersData="toolbar.filtersData" />
           </template>
           <template v-slot:end>
             <div class="chi-toolbar__actions-desktop">
-              <ChiColumnCustomization :columnsData="toolbar.columnsData" />
+              <ChiColumnCustomization
+                @chiColumnsReset="e => chiToolbarColumnsReset(e)"
+                :columnsData="toolbar.columnsData"
+              />
             </div>
             <div :class="`chi-toolbar__actions-mobile`">
               <button
@@ -91,6 +98,7 @@ import DataTableFilters from '../../../components/data-table-filters/DataTableFi
 import { DataTableRow } from '../../../constants/types';
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
 import { exampleConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
+import DataTableViews from '../../../components/data-table-views/DataTableViews';
 
 const MOCK_API_RESPONSE_DELAY = 5000;
 
@@ -103,31 +111,44 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     ChiColumnCustomization: ColumnCustomization,
     Actions,
     TicketPopover,
+    ChiDataTableViews: DataTableViews,
   },
   methods: {
-    rowSelect: e => {
-      console.log(e);
+    chiToolbarColumnsChange: e => {
+      console.log('chiToolbarColumnsChange', e);
+    },
+    chiToolbarColumnsReset: e => {
+      console.log('chiToolbarColumnsReset', e);
+    },
+    chiColumnsReset: e => {
+      console.log('chiColumnsReset', e);
+    },
+    chiSelectedRowsChange: e => {
+      console.log('chiRowSelect', e);
     },
     pageChange: e => {
-      console.log(e);
+      console.log('chiPageChange', e);
     },
     pageSizeChange: e => {
-      console.log(e);
+      console.log('chiPageSizeChange', e);
     },
     dataSorting: e => {
-      console.log(e);
+      console.log('chiDataSorting', e);
     },
-    search: e => {
-      console.log(e);
+    chiToolbarSearch: e => {
+      console.log('chiToolbarSearch', e);
     },
-    filtersChange: e => {
-      console.log(e);
+    chiToolbarFiltersChange: e => {
+      console.log('chiToolbarFiltersChange', e);
+    },
+    chiToolbarViewsChange: e => {
+      console.log('chiToolbarViewsChange', e);
     },
     rowExpanded: e => {
-      console.log(`Expanded row: `, e);
+      console.log('chiRowExpanded', e);
     },
     rowCollapsed: e => {
-      console.log(`Collapsed row: `, e);
+      console.log('chiRowCollapsed', e);
     },
   },
   data: () => {

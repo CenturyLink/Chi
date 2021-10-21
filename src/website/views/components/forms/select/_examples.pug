@@ -321,8 +321,8 @@ p.-text
       each size in ['-xs', '-sm', '-md', '-lg', '-xl']
         div(class=`-p--2`)
           .chi-form__item(style="max-width:20rem")
-            label.chi-label(for=`example-size${size}`) Label
-            select(class=`chi-select ${size}`, id=`example-size${size}`)
+            label.chi-label(for=`example-size-${size}`) Label
+            select(class=`chi-select ${size}`, id=`example-size-${size}`)
               option(selected disabled hidden)=`${size} Select`
               option Option 1
               option Option 2
@@ -386,8 +386,8 @@ p.-text
       each size in ['-xs', '-sm', '-md', '-lg']
         div(class=`-p--2`)
           .chi-form__item(style="max-width:20rem")
-            label.chi-label(for=`example-size${size}`) Label
-            select(class=`chi-select ${size}`, id=`example-size${size}`)
+            label.chi-label(for=`example-portal-size-${size}`) Label
+            select(class=`chi-select ${size}`, id=`example-portal-size-${size}`)
               option(selected disabled hidden)=`${size} Select`
               option Option 1
               option Option 2

@@ -19,7 +19,7 @@ section.chi-table.chi-table__methods.-bordered.-my--3
               code= 'hide() => void'
           td
             div
-              | Hides the Accordion or individual Accordion item (if provided)
+              | Hides the accordion or individual accordion item (if provided)
           td
             div
               | Type: void
@@ -29,7 +29,7 @@ section.chi-table.chi-table__methods.-bordered.-my--3
               code= 'show() => void'
           td
             div
-              | Shows the Accordion or individual Accordion item (if provided)
+              | Shows the accordion or individual accordion item (if provided)
           td
             div
               | Type: void
@@ -39,7 +39,7 @@ section.chi-table.chi-table__methods.-bordered.-my--3
               code= 'toggle() => void'
           td
             div
-              | Toggles active state (show/hide) of the Accordion of Accordion item (if provided)
+              | Toggles active state (show/hide) of the accordion or accordion item (if provided)
           td
             div
               | Type: void
@@ -49,7 +49,7 @@ section.chi-table.chi-table__methods.-bordered.-my--3
               code= 'expandAll() => void'
           td
             div
-              | Expands all the Accordion items
+              | Expands all the accordion items
           td
             div
               | Type: void
@@ -59,10 +59,40 @@ section.chi-table.chi-table__methods.-bordered.-my--3
               code= 'collapseAll() => void'
           td
             div
-              | Collapses all the Accordion items
+              | Collapses all the accordion items
           td
             div
               | Type: void
+
+
+p.-text Accordion accepts the following configurations to customize its behavior.
+section.chi-table.chi-table__options.-bordered.-my--3
+  div
+    table.-text(cellpadding='0', cellspacing='0')
+      thead
+        tr
+          th
+            div Config
+          th
+            div Description
+          th
+            div Type
+          th
+            div Default
+      tbody
+        tr
+          td
+            div
+              code= 'expansionMode'
+          td
+            div
+              | To customize simultaneous expansion behavior of accordion items
+          td
+            div
+              code= '"multiple" | "single"'
+          td
+            div
+              code= 'multiple'
 
 h3 Preventing memory leaks
 p.-text

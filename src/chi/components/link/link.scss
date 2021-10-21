@@ -44,25 +44,25 @@ a,
   &.-cta {
     align-self: flex-start;
     font-weight: $font-weight-semi-bold;
-    padding-right: 2rem;
+    padding-left: $link-cta-padding-left;
+    padding-right: $link-cta-padding-right;
     position: relative;
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: $link-cta-text-transform;
     transition: all 0.2s ease-in;
 
     &::after {
-      // sass-lint:disable-all
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='#{$link-cta-icon-color}' d='M14.41 7.86H.5a.48.48 0 00-.49.47c0 .27.22.48.49.48h13.93l-2.03 2.06a.47.47 0 00.33.8c.12 0 .24-.05.33-.14l2.81-2.86a.47.47 0 000-.67l-.1-.11-2.71-2.75a.46.46 0 00-.66 0 .47.47 0 000 .67l2.02 2.05z' fill-rule='nonzero'/%3E%3C/svg%3E");
-      // sass-lint:enable-all
-      background-position: 50% 50%;
-      background-repeat: no-repeat;
-      background-size: 100%;
-      content: '';
+      color: $link-cta-icon-color;
+      content: $link-cta-icon;
+      font-family: $font-family-icon;
+      font-size: $link-cta-icon-size;
+      font-weight: normal;
       height: 100%;
+      left: $link-cta-position-left;
       position: absolute;
-      right: 0.375rem;
+      right: $link-cta-position-right;
       top: 0;
-      transition: right 0.2s ease-in;
+      transition: left 0.2s ease-in, right 0.2s ease-in;
       width: 1.5rem;
     }
 
@@ -70,7 +70,8 @@ a,
       color: $color-navy-100;
 
       &::after {
-        right: 0;
+        left: $link-cta-hover-position-left;
+        right: $link-cta-hover-position-right;
       }
     }
   }
@@ -89,6 +90,12 @@ a,
 
     & > :not(:last-child) {
       margin-right: 0.5rem;
+    }
+  }
+
+  &.-no-hover-underline {
+    &:hover {
+      text-decoration: none;
     }
   }
 

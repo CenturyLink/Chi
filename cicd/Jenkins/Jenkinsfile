@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@demo',
+        identifier: 'jsl-jenkins-shared-library-local@release/20211014',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-    identifier: 'jsl-jenkins-shared-library@demo',
+    identifier: 'jsl-jenkins-shared-library@release/20211014',
     retriever: modernSCM(
       [
         $class: 'GitSCMSource',
@@ -54,8 +54,7 @@ pipeline {
       //  QUALITY_GATE_CREDENTIALS Credentials to gather all the contract validation gates expected to be crossed.
       //  PROJECT_MAL The MAL of the project
 
-      // GITHUB_TOKEN_CREDENTIALS = 'SCMAUTO_GITHUB'
-      GITHUB_TOKEN_CREDENTIALS = 'atienzajulian'
+      GITHUB_TOKEN_CREDENTIALS = 'SCMAUTO_GITHUB'
       GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
       GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
       DOCKER_CREDENTIALS = 'nexus-secrets'
@@ -79,11 +78,10 @@ pipeline {
       COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
       PULL_REQUEST="pr-${env.CHANGE_ID}"
       PROD_BRANCH="master"
-      SCAN_BRANCH="master"
 
       // ServiceNow Variables
       SERVICE_NOW_CREDENTIALS = 'snow-credentials'
-      SERVICE_NOW_HOST = 'mysupportdeskdev.service-now.com'
+      SERVICE_NOW_HOST = 'mysupportdesk.service-now.com'
       DEVOPS_GCR_PREPROD_PAYLOAD = '{"u_implementers": "AC04119,AC59437,AC75080", "u_testers": "AB62977"}'
 
       RC_TAG_PATTERN =  /(.*##RC##.*)/
@@ -166,7 +164,7 @@ pipeline {
           }
         }
       }
-      stage('Authorize release - Prod only') {
+      stage('Authorize - Prod only') {
         when {
           tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
         }
@@ -256,27 +254,19 @@ pipeline {
             }
             steps {
               script {
-                // sh(script: """
-                //     set +x
-                //     git whatchanged -1 --format=oneline
-                //     git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
-                //     rm -rf version_bump
-                //     if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
-                //       echo -n "yes" > version_bump
-                //     else
-                //       echo -n "no" > version_bump
-                //     fi
-                //     cat version_bump
-                //     echo "All good."
-                // """, label: "Package version validation")
                 sh(script: """
                     set +x
+                    git whatchanged -1 --format=oneline
+                    git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
                     rm -rf version_bump
-                    echo -n "yes" > version_bump
+                    if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
+                      echo -n "yes" > version_bump
+                    else
+                      echo -n "no" > version_bump
+                    fi
                     cat version_bump
                     echo "All good."
                 """, label: "Package version validation")
-
                 stash name: "VERSION_BUMP", includes: "version_bump"
               }
             }
@@ -653,6 +643,46 @@ pipeline {
           }
         }
       }
+      stage('QualityGate1') {
+          agent {
+              dockerfile {
+                filename 'Dockerfile'
+                dir 'cicd/docker/qualitygate'
+                label 'Docker-enabled'
+              }
+          }
+          when {
+              beforeAgent true
+              allOf {
+                not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+                not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+                not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+              }
+          }
+          steps {
+              script {
+                  def isTestAvailable = true
+                  try {
+                    unstash name: "BACKSTOP-NON-RES-CI"
+                  } catch (Exception e) {
+                    echo "No BACKSTOP-NON-RES-CI tests: ${e.getMessage()}"
+                    isTestAvailable = false
+                  }
+                  if (isTestAvailable) {
+                    echo "QualityGate1-Unit"
+                    jslCheckQualityGates('reports/ci_report/non_responsive/xunit.xml', 'QualityGate1-Unit')
+                  }
+                  echo "QualityGate1-StaticCodeAnalysis"
+                  jslAdoptionSonarStats('sonarqubeStats.json')
+                  jslCheckSonarQualityGate('cicd/qgatethresholds/qgate1-sonar.json', 'sonarqubeStats.json')
+                  if ("${currentBuild.currentResult}" != "UNSTABLE") {
+                    jslCheckQualityGates('sonarqubeStats.json', 'QualityGate1-StaticCodeAnalysis', 'sonarqubestats', 'cicd/qgatethresholds/qgate1-sonar.json')
+                  } else {
+                    echo "skipping CheckQualityGate of StaticCodeAnalysis: jslCheckSonarQualityGate failed"
+                  }
+              }
+          }
+      }
       stage('Version check & Publish') {
         when {
           beforeAgent true
@@ -721,8 +751,7 @@ pipeline {
                   """,
                   returnStdout: true
                 ).trim()
-                echo "VERSION is ${env.VERSION}"
-                //jslHubWrapper("release create -F shortCHANGELOG.md v${env.VERSION}")
+                jslHubWrapper("release create -F shortCHANGELOG.md v${env.VERSION}")
               }
             }
           }
@@ -751,7 +780,7 @@ pipeline {
               // jslNpmWrapper('login --scope=@centurylink --registry=https://npm.pkg.github.com')
               // jslNpmWrapper('publish')
 
-              //jslNpmPublish(false, env.GITHUB_ALTER_CREDENTIALS)
+              jslNpmPublish(false, env.GITHUB_ALTER_CREDENTIALS)
             }
           }
         }
@@ -788,11 +817,11 @@ pipeline {
 PolicyDocument
                 """, label: "Policy.json"
 
-                // jslAwsCliWrapper("s3api create-bucket --bucket ${s3Uri} --acl public-read", 'us-east-1', true)
-                // jslAwsCliWrapper("s3api put-bucket-policy --bucket ${s3Uri} --policy file://policy.json", 'us-east-1', true)
-                // jslAwsCliWrapper("s3api get-bucket-policy --bucket ${s3Uri}", 'us-east-1', true)
-                // jslAwsCliWrapper("s3 cp ./dist s3://${s3Uri} --recursive", 'us-east-1', true)
-                // jslAwsCliWrapper("s3 website s3://${s3Uri} --index-document index.html --error-document index.html", 'us-east-1', true)
+                jslAwsCliWrapper("s3api create-bucket --bucket ${s3Uri} --acl public-read", 'us-east-1', true)
+                jslAwsCliWrapper("s3api put-bucket-policy --bucket ${s3Uri} --policy file://policy.json", 'us-east-1', true)
+                jslAwsCliWrapper("s3api get-bucket-policy --bucket ${s3Uri}", 'us-east-1', true)
+                jslAwsCliWrapper("s3 cp ./dist s3://${s3Uri} --recursive", 'us-east-1', true)
+                jslAwsCliWrapper("s3 website s3://${s3Uri} --index-document index.html --error-document index.html", 'us-east-1', true)
 
 
                 // sh "sleep 10m"
@@ -837,7 +866,7 @@ PolicyDocument
                     rm -rf ${WORKSPACE}/ux-chi-AssetsServer
                   fi
                 """, label: "Cleaning before pushing to AssetsServer"
-                //jslGitHubCloneRepo('ux-chi-AssetsServer')
+                jslGitHubCloneRepo('ux-chi-AssetsServer')
                 env.CHECK = sh (
                   script: """#!/bin/bash
                     VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
@@ -853,36 +882,34 @@ PolicyDocument
                 ).trim()
 
                 echo "PlaceHolder for ASSET Server Push of CHI version"
-//                 sh script:"""
-//                   ls -lah
-//                   VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
-//                   echo \${VERSION}
-//                   cat << PRDesc > ux-chi-AssetsServer/prepared-message.md
-// This PR is for CHI \${VERSION}
+                sh script:"""
+                  ls -lah
+                  VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
+                  echo \${VERSION}
+                  cat << PRDesc > ux-chi-AssetsServer/prepared-message.md
+This PR is for CHI \${VERSION}
 
-// You can check staging in https://assets-dev.ctl.io/chi/staging
-// PRDesc
-//                   mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
-//                   cp -R ${WORKSPACE}/dist/* ${WORKSPACE}/ux-chi-AssetsServer/chi/latest/
-//                   mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/\$VERSION
-//                   cd ${WORKSPACE}/ux-chi-AssetsServer
-//                   git checkout -b "CHI_\$VERSION"
-//                   git add ${WORKSPACE}/ux-chi-AssetsServer/chi/\$VERSION
-//                   git add ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
-//                   git config user.email "scmauto@lumen.com"
-//                   git config user.name "SCMAUTO"
-//                   git commit -m "CHI_\$VERSION"
-//                   git push -f origin CHI_\$VERSION
-//                 """, label: "Pushing branch to AssetsServer"
-//                 if ( env.CHECK == "NO" ) {
-//                   dir ('ux-chi-AssetsServer') {
-//                     jslHubWrapper('pull-request -F prepared-message.md')
-//                   }
-//                 } else {
-//                   echo "NO PR CREATED THIS TIME; REQUIRES VERSION BUMP"
-//                 }
-
-
+You can check staging in https://assets-dev.ctl.io/chi/staging
+PRDesc
+                  mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
+                  cp -R ${WORKSPACE}/dist/* ${WORKSPACE}/ux-chi-AssetsServer/chi/latest/
+                  mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/\$VERSION
+                  cd ${WORKSPACE}/ux-chi-AssetsServer
+                  git checkout -b "CHI_\$VERSION"
+                  git add ${WORKSPACE}/ux-chi-AssetsServer/chi/\$VERSION
+                  git add ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
+                  git config user.email "scmauto@lumen.com"
+                  git config user.name "SCMAUTO"
+                  git commit -m "CHI_\$VERSION"
+                  git push -f origin CHI_\$VERSION
+                """, label: "Pushing branch to AssetsServer"
+                if ( env.CHECK == "NO" ) {
+                  dir ('ux-chi-AssetsServer') {
+                    jslHubWrapper('pull-request -F prepared-message.md')
+                  }
+                } else {
+                  echo "NO PR CREATED THIS TIME; REQUIRES VERSION BUMP"
+                }
                 if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
                   def previousDeploymentCommit = jslGCRTagCommit('DEPLOYMENT', 2)
                   def changeLog = jslAuditChangelog(true, env.GIT_COMMIT, previousDeploymentCommit)
@@ -933,14 +960,12 @@ PolicyDocument
                   echo "Error checking chi releases: ${e.getMessage()}"
                 }
               }
-              // Force successful Smoke TEST for DEMO
-              latestRelease = "v${env.VERSION}"
 
               jslGenerateManualTestReport("Version Release", "Check Version", "v${env.VERSION}", (latestRelease == "v${env.VERSION}").toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
               env.SMOKE_TEST_FAILURE = (latestRelease != "v${env.VERSION}")
-              echo "SMOKE TEST FAILURE is ${env.SMOKE_TEST_FAILURE}"
+              echo "Smoke Test Failure? ${env.SMOKE_TEST_FAILURE}"
             } else {
-              echo "SMOKE TESTS hook without release"
+              echo "Smoke Test hook without release"
               jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
             }
 
@@ -1013,6 +1038,7 @@ PolicyDocument
               }
               jslAdoptionMain('reports/ci_report/xunitfinal.xml')
             }
+
           }
         }
       }
@@ -1027,16 +1053,16 @@ PolicyDocument
       */
       success {
         jslNotification('success')
-        // jslGitHubMessage("You can check this PRs instance in https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io", env.CHANGE_ID)
-        cleanWs()
+        jslGitHubMessage("You can check this PRs instance in https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io", env.CHANGE_ID)
+        // cleanWs()
       }
       failure {
         jslNotification('failure')
-        cleanWs()
+        // cleanWs()
       }
       unstable {
         jslNotification('unstable')
-        cleanWs()
+        // cleanWs()
       }
   }
 }

@@ -105,6 +105,10 @@ $monday-starting-week: (
     width: calc(100% * 5 / 7);
 
     &-row {
+      align-items: center;
+      display: flex;
+      height: 2.5rem;
+
       .prev,
       .next {
         text-align: center;
@@ -131,12 +135,6 @@ $monday-starting-week: (
   &__day-names {
     display: flex;
     flex-wrap: wrap;
-  }
-
-  &__month-row {
-    align-items: center;
-    display: flex;
-    height: 2.5rem;
   }
 
   &.-week-starts-on-sun {

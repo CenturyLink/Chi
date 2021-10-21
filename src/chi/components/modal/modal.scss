@@ -50,19 +50,17 @@
     }
 
     .chi-modal__back {
-      & {
-        align-items: center;
-        background-color: transparent;
-        border: 0;
-        color: $modal-back-link-color;
-        cursor: pointer;
-        display: flex;
-        left: 1rem;
-        outline: none;
-        padding: 0;
-        position: absolute;
-        top: 1.25rem;
-      }
+      align-items: center;
+      background-color: transparent;
+      border: 0;
+      color: $modal-back-link-color;
+      cursor: pointer;
+      display: flex;
+      left: 1rem;
+      outline: none;
+      padding: 0;
+      position: absolute;
+      top: 1.25rem;
 
       &::before {
         content: '\e91f';
