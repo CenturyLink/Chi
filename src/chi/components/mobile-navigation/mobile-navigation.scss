@@ -341,12 +341,14 @@
           display: block;
 
           &.-active {
-            // background-color: $mobile-nav-list-item-active-text-color;
+            background-color: $mobile-nav-list-item-active-background-color;
             box-shadow: $mobile-nav-list-item-active-box-shadow;
             color: $color-text-primary;
           }
 
           span {
+            font-weight: $font-weight-normal;
+
             .chi-icon {
               margin-left: 0.5rem;
             }
@@ -355,6 +357,8 @@
 
         .chi-accordion {
           > a {
+            color: $color-text-base;
+            display: block;
             font-size: $font-size-md;
             padding: 0.625rem 1.5rem;
 
@@ -370,7 +374,7 @@
             }
 
             &:hover {
-              background-color: $mobile-nav-list-item-active-background-color;
+              background-color: $mobile-nav-list-item-hover-background-color;
               text-decoration: none;
             }
           }
@@ -382,9 +386,7 @@
 
             .chi-accordion__content {
               a {
-                color: $color-text-base;
                 display: block;
-                // font-weight: $mobile-nav-item-title-font-weight;
 
                 &.-active {
                   background-color: $mobile-nav-list-item-active-background-color;
@@ -414,7 +416,6 @@
                 .chi-accordion__title {
                   font-size: $font-size-md;
                   font-weight: $font-weight-normal;
-                  // line-height: $mobile-nav-item-title-line-height;
 
                   + .chi-icon {
                     font-size: $font-size-xs;
@@ -518,6 +519,10 @@
 
           > a {
             font-weight: $font-weight-semi-bold;
+
+            span {
+              font-weight: $font-weight-semi-bold;
+            }
           }
         }
 

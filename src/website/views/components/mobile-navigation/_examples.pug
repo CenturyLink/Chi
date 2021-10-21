@@ -115,6 +115,14 @@ h3 Interaction
                                       a(href=`#exampleHashTarget` class=`${drawerNumber === 1 && item === active.drawerMenuItem && item2 === active.drawerMenuItem && item3 === active.drawerMenuItem ? '-active' : ''}`)
                                         span
                                           =`Item ${item}.${item2}.${item3}`
+                                    a(href=`#exampleHashTarget`)
+                                      span
+                                        | External
+                                        i.chi-icon.icon-external-link.-xs(aria-hidden="true")
+                      a(href=`#exampleHashTarget`)
+                        span
+                          | External
+                          i.chi-icon.icon-external-link.-xs(aria-hidden="true")
   .example-tabs.-pl--2
     ul.chi-tabs#examples-interaction
       li.-disabled
