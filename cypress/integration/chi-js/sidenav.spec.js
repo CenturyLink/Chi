@@ -1,4 +1,3 @@
-import { SIDENAV_COMPONENT_SELECTOR } from '../../../src/chi/javascript/components/sidenav';
 const drawerLiTitleSelector =
   ' .chi-sidenav__drawer-list li div.chi-sidenav__title';
 const drawerDropDownTitle = '.chi-sidenav__drawer-item-list ul.chi-tabs li a';
