@@ -224,4 +224,52 @@ describe('Sidenav', () => {
         hasClassAssertion('@fourthLevelFirstItem', ACTIVE_CLASS);
       });
   });
+
+  it('Check that previous active menu item gets deselected after selecting another menu item (fourth level)', () => {
+    cy.reload();
+    cy.get('@list')
+      .first()
+      .find('a')
+      .as('firstLevelFirstItem')
+      .invoke('attr', 'href')
+      .then(href => {
+        cy.get('@firstLevelFirstItem').click();
+        cy.get(href)
+          .contains('Accordion A')
+          .parent(`.${ACCORDION_CLASSES.ITEM}`)
+          .as('thirdLevelFirstItem')
+          .click()
+          .contains('Title 3')
+          .as('fourthLevelFirstItem')
+          .click();
+        hasClassAssertion('@fourthLevelFirstItem', ACTIVE_CLASS);
+      });
+    cy.get('@list')
+      .eq(1)
+      .find('a')
+      .as('firstLevelSecondItem')
+      .invoke('attr', 'href')
+      .then(href => {
+        cy.get('@firstLevelSecondItem').click();
+        cy.get(href)
+          .find(`.${ACCORDION_CLASSES.ITEM}`)
+          .first()
+          .as('secondLevelSecondItem')
+          .click();
+        cy.get(href)
+          .contains('Accordion A')
+          .parent(`.${ACCORDION_CLASSES.ITEM}`)
+          .as('thirdLevelSecondItem')
+          .click()
+          .contains('Title 3')
+          .as('fourthLevelSecondItem')
+          .click();
+        hasClassAssertion('@secondLevelSecondItem', EXPANDED_CLASS);
+        hasClassAssertion('@thirdLevelSecondItem', EXPANDED_CLASS);
+        hasClassAssertion('@fourthLevelSecondItem', ACTIVE_CLASS);
+        cy.get('@firstLevelFirstItem').click();
+        cy.get('@thirdLevelFirstItem').should('not.have.class', EXPANDED_CLASS);
+        cy.get('@fourthLevelFirstItem').should('not.have.class', ACTIVE_CLASS);
+      });
+  });
 });
