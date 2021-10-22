@@ -1,226 +1,207 @@
-const ACTIVE_CLASS = '-active';
-const CLOSE_CLASS = '-close';
-const EXPANDED_CLASS = '-expanded';
-const ACCORDION_CLASSES = {
-  ITEM: 'chi-accordion__item',
-  CONTENT: 'chi-accordion__content'
-};
+import { SIDENAV_COMPONENT_SELECTOR } from '../../../src/chi/javascript/components/sidenav';
+const drawerLiTitleSelector =
+  ' .chi-sidenav__drawer-list li div.chi-sidenav__title';
+const drawerDropDownTitle = '.chi-sidenav__drawer-item-list ul.chi-tabs li a';
+const drawerLiMainMenuTitleSelector =
+  ' .chi-sidenav__drawer-list li span.chi-sidenav__title';
 
-const hasClassAssertion = (el, value) => {
-  cy.get(el).should('have.class', value);
-};
-
-describe('Sidenav', () => {
+describe('Sidenav', function() {
   before(() => {
     cy.visit('tests/js/sidenav.html');
   });
 
-  beforeEach(() => {
-    cy.get('[data-cy="sidenav"]')
-      .find('.chi-sidenav__list')
-      .children()
-      .as('list');
-  });
-
-  it('check that click on 1st level opens 2nd-level menu drawer', () => {
-    cy.get('@list').each(menuItem => {
-      cy.get(menuItem)
-        .find('a')
-        .as('firstLevelItem')
-        .should('have.attr', 'href');
-      cy.get('@firstLevelItem').should('not.have.class', ACTIVE_CLASS);
-      cy.get('@firstLevelItem')
-        .invoke('attr', 'href')
-        .then(href => {
-          cy.get('@firstLevelItem')
-            .click()
-            .then(() => {
-              hasClassAssertion('@firstLevelItem', ACTIVE_CLASS);
-              hasClassAssertion(href, ACTIVE_CLASS);
-              cy.get(href).should('be.visible');
+  describe('check that click on 1st level opens 2nd-level menu drawer', () => {
+    [/^Active Item$/, /^Menu Item$/].forEach(menuText => {
+      it(`check "${menuText}" opens 2nd-level menu drawer`, () => {
+        cy.get("[data-cy='sidenav-legacy']").within(() => {
+          cy.get('.chi-sidenav__list li')
+            .contains(menuText)
+            .as('firstLevelElement');
+          cy.get('@firstLevelElement')
+            .should('have.attr', 'href')
+            .then(href => {
+              cy.get('' + href).as('drawer');
+              cy.get('@firstLevelElement')
+                .click()
+                .wait(550);
+              cy.get(`${href}.-active`).should('be.visible');
             });
         });
-    });
-  });
-
-  it('check that click on "X" in menu drawer closes drawer', () => {
-    cy.get('@list').each(menuItem => {
-      cy.get(menuItem)
-        .find('a')
-        .as('firstLevelItem')
-        .invoke('attr', 'href')
-        .then(href => {
-          cy.get('@firstLevelItem')
-            .click()
-            .then(() => {
-              hasClassAssertion(href, ACTIVE_CLASS);
-              cy.get(href).should('be.visible');
-            });
-          cy.get(href)
-            .find(`.${CLOSE_CLASS}`)
-            .click()
-            .then(() => {
-              cy.get(href).should('not.have.class', ACTIVE_CLASS);
-              cy.get(href).should('not.be.visible');
-            });
-        });
-    });
-  });
-
-  it('check that click outside an opened drawer closes it', () => {
-    cy.get('@list').each(menuItem => {
-      cy.get(menuItem)
-        .find('a')
-        .as('firstLevelItem')
-        .invoke('attr', 'href')
-        .then(href => {
-          cy.get('@firstLevelItem')
-            .click()
-            .then(() => {
-              hasClassAssertion(href, ACTIVE_CLASS);
-              cy.get(href).should('be.visible');
-            });
-          cy.get('h3')
-            .last()
-            .click()
-            .then(() => {
-              cy.get(href).should('not.have.class', ACTIVE_CLASS);
-              cy.get(href).should('not.be.visible');
-            });
-        });
-    });
-  });
-
-  it('Should show 3rd level drop-downs by default on 1st level menu click for the first menu item', () => {
-    cy.get('@list')
-      .first()
-      .find('a')
-      .as('firstLevelItem')
-      .invoke('attr', 'href')
-      .then(href => {
-        cy.get('@firstLevelItem').click();
-        cy.get(href)
-          .find(`.${ACCORDION_CLASSES.ITEM}.${ACTIVE_CLASS}`)
-          .should('have.length', 2);
-        cy.get(href)
-          .find(`.${ACCORDION_CLASSES.ITEM}`)
-          .first()
-          .as('secondLevelItem');
-        hasClassAssertion('@secondLevelItem', EXPANDED_CLASS);
       });
-  });
-
-  it('Click on 2nd level menus should open 3rd level drop-downs', () => {
-    cy.get('@list').each((menuItem, index) => {
-      if (index !== 0) {
-        cy.get(menuItem)
-          .find('a')
-          .as('firstLevelItem')
-          .invoke('attr', 'href')
-          .then(href => {
-            cy.get('@firstLevelItem').click();
-            cy.get(href)
-              .find(`.${ACCORDION_CLASSES.ITEM}`)
-              .first()
-              .as('secondLevelItem')
-              .find(`.${ACCORDION_CLASSES.CONTENT}`)
-              .first()
-              .as('secondLevelItemContent')
-              .should('not.be.visible');
-            cy.get('@secondLevelItem')
-              .click()
-              .then(() => {
-                hasClassAssertion('@secondLevelItem', EXPANDED_CLASS);
-                cy.get('@secondLevelItemContent').should('be.visible');
-              });
-          });
-      }
     });
   });
 
-  it('Click on the 3rd level dropdown should close the existing opened dropdown and should expand current one', () => {
-    cy.reload();
-    cy.get('@list').each((menuItem, index) => {
-      if (index !== 0) {
-        cy.get(menuItem)
-          .find('a')
-          .as('firstLevelItem')
-          .invoke('attr', 'href')
-          .then(href => {
-            cy.get('@firstLevelItem').click();
-            cy.get(href)
-              .find(`.${ACCORDION_CLASSES.ITEM}`)
-              .first()
-              .as('secondLevelItem')
-              .click();
-            cy.get('@secondLevelItem')
-              .contains('Accordion A')
-              .parent(`.${ACCORDION_CLASSES.ITEM}`)
-              .as('firstThirdLevelItem')
-              .click()
-              .then(() => {
-                hasClassAssertion('@firstThirdLevelItem', EXPANDED_CLASS);
-                cy.get('@firstThirdLevelItem')
-                  .find(`.${ACCORDION_CLASSES.CONTENT}`)
-                  .first()
-                  .as('firstThirdLevelItemContent')
-                  .should('be.visible');
-                cy.get('@secondLevelItem')
-                  .contains('Accordion B')
-                  .parent(`.${ACCORDION_CLASSES.ITEM}`)
-                  .as('lastThirdLevelItem')
+  describe('check that click on "X" in menu drawer closes drawer', () => {
+    [/^Active Item$/, /^Menu Item$/].forEach(menuText => {
+      it(`check "${menuText}" drawer closes on "X"`, () => {
+        cy.get("[data-cy='sidenav-legacy']").within(() => {
+          cy.get('.chi-sidenav__list li')
+            .contains(menuText)
+            .as('firstLevelElement');
+
+          cy.get('@firstLevelElement')
+            .should('have.attr', 'href')
+            .then(href => {
+              cy.get('' + href).as('drawer');
+              cy.get('@firstLevelElement')
+                .click()
+                .wait(550);
+              cy.get(`${href}.-active`)
+                .should('be.visible')
+                .within(() => {
+                  cy.get('.-icon.-close')
+                    .click()
+                    .parents('.chi-drawer')
+                    .should('not.have.class', '-active');
+                });
+            });
+        });
+      });
+    });
+  });
+
+  describe('check that click on 1st level opens the drawer and click on empty space in menu container closes it', () => {
+    [/^Active Item$/, /^Menu Item$/].forEach(menuText => {
+      it(`check "${menuText}" clicked outside drawer closes it`, () => {
+        cy.get("[data-cy='sidenav-legacy']").within(() => {
+          cy.get('.chi-sidenav__list li')
+            .contains(menuText)
+            .as('firstLevelElement');
+
+          cy.get('@firstLevelElement')
+            .should('have.attr', 'href')
+            .then(href => {
+              cy.get('' + href).as('drawer');
+              cy.get('@firstLevelElement')
+                .click()
+                .wait(550);
+              cy.get(`${href}.-active`).should('be.visible');
+              cy.get('.chi-sidenav__content')
+                .first()
+                .click()
+                .wait(250);
+              cy.get('' + href)
+                .should('not.have.class', '-active')
+                .should('not.be.visible');
+            });
+        });
+      });
+    });
+  });
+
+  describe('Click on 2nd level menus should open 3rd level drop-downs', () => {
+    [/^Active Item$/, /^Menu Item$/].forEach(menuText => {
+      var dropdownItems = [];
+      if (menuText == '/^Active Item$/') {
+        dropdownItems = ['Title A', 'Title B'];
+      } else {
+        dropdownItems = ['Title E', 'Title F'];
+      }
+      dropdownItems.forEach(element => {
+        it(`check "${menuText}" >   "${element}" should open Dropdown`, () => {
+          cy.get("[data-cy='sidenav-legacy']").within(() => {
+            cy.get('.chi-sidenav__list li')
+              .contains(menuText)
+              .as('firstLevelElement');
+            cy.get('@firstLevelElement')
+              .should('have.attr', 'href')
+              .then(href => {
+                cy.get('' + href).as('drawer');
+                cy.get('@firstLevelElement')
                   .click()
-                  .then(() => {
-                    cy.get('@firstThirdLevelItem').should(
-                      'not.have.class',
-                      EXPANDED_CLASS
-                    );
-                    cy.get('@firstThirdLevelItemContent').should(
-                      'not.be.visible'
-                    );
-                    hasClassAssertion('@lastThirdLevelItem', EXPANDED_CLASS);
-                    cy.get('@lastThirdLevelItem')
-                      .find(`.${ACCORDION_CLASSES.CONTENT}`)
-                      .first()
-                      .should('be.visible');
-                  });
+                  .wait(550);
+                cy.get(`${href}.-active`).should('be.visible');
+                cy.get(href + drawerLiTitleSelector)
+                  .contains(element)
+                  .click()
+                  .parents('li')
+                  .should('have.class', '-expanded')
+                  .find(drawerDropDownTitle)
+                  .contains(/^Sub tab A$/)
+                  .should('be.visible');
               });
           });
-      }
+        });
+      });
     });
   });
 
-  it('Check that menu items remain active for currently open site, while browsing through navigation', () => {
-    cy.reload();
-    cy.get('@list')
-      .first()
-      .find('a')
-      .as('firstLevelFirstItem')
-      .invoke('attr', 'href')
-      .then(href => {
-        cy.get('@firstLevelFirstItem').click();
-        cy.get(href)
-          .contains('Accordion A')
-          .parent(`.${ACCORDION_CLASSES.ITEM}`)
-          .click()
-          .contains('Title 3')
-          .as('fourthLevelFirstItem')
-          .click();
-        hasClassAssertion('@fourthLevelFirstItem', ACTIVE_CLASS);
+  describe('Click on the 3rd level dropdown should close the existing opened dropdown and should expand current one', () => {
+    [/^Active Item$/, /^Menu Item$/].forEach(menuText => {
+      var dropdownItems = [];
+      if (menuText == '/^Active Item$/') {
+        dropdownItems = ['Title A', 'Title B'];
+      } else {
+        dropdownItems = ['Title E', 'Title F'];
+      }
+      dropdownItems.forEach(element => {
+        it(`check "${menuText}" >   "${element}" should open Dropdown`, () => {
+          cy.get("[data-cy='sidenav-legacy']").within(() => {
+            cy.get('.chi-sidenav__list li')
+              .contains(menuText)
+              .as('firstLevelElement');
+            cy.get('@firstLevelElement')
+              .should('have.attr', 'href')
+              .then(href => {
+                cy.get('' + href).as('drawer');
+                cy.get('@firstLevelElement')
+                  .click()
+                  .wait(550);
+                cy.get(`${href}.-active`).should('be.visible');
+                cy.get(href + drawerLiTitleSelector)
+                  .contains(element)
+                  .click()
+                  .parents('li')
+                  .should('have.class', '-expanded')
+                  .find(drawerDropDownTitle)
+                  .contains(/^Sub tab A$/)
+                  .should('be.visible');
+                cy.get(href + ' ul.chi-sidenav__drawer-list')
+                  .children('.-expanded')
+                  .should('have.length', 1);
+              });
+          });
+        });
       });
-    cy.get('@list')
-      .eq(1)
-      .find('a')
-      .as('firstLevelSecondItem')
-      .invoke('attr', 'href')
-      .then(href => {
-        cy.get('@firstLevelSecondItem').click();
-        cy.get(href)
-          .find(`.${ACCORDION_CLASSES.ITEM}`)
-          .first()
-          .click();
-        cy.get('@firstLevelFirstItem').click();
-        hasClassAssertion('@fourthLevelFirstItem', ACTIVE_CLASS);
-      });
+    });
+  });
+
+  describe('Check that menu items remain active for currently open site, while browsing through navigation', () => {
+    it(
+      'Scenario:\n' +
+        '- open website at "/", and give menu 2000ms time to load\n' +
+        '- click "ActiveItems" > "Title C"\n' +
+        '- verify that "ActiveItems" > "Title C" is visible"\n' +
+        '- verify that "ActiveItems" > "Title C" has classes "-active" "' +
+        '-verify that when clicking on Title C Drawer should close and ActiveItems has -active class',
+      () => {
+        let menuText = /^Active Item$/;
+        cy.get("[data-cy='sidenav-legacy']").within(() => {
+          cy.get('.chi-sidenav__list li')
+            .contains(menuText)
+            .as('firstLevelElement');
+          cy.get('@firstLevelElement')
+            .should('have.attr', 'href')
+            .then(href => {
+              cy.get('' + href).as('drawer');
+              cy.get('@firstLevelElement')
+                .click({ force: true })
+                .wait(550);
+              cy.get(href + drawerLiMainMenuTitleSelector)
+                .contains(/^Title C$/)
+                .as('secondLevelElement')
+                .click()
+                .parents('li')
+                .should('have.class', '-active');
+              cy.get('' + href)
+                .should('not.have.class', '-active')
+                .should('not.be.visible');
+              cy.get('@firstLevelElement')
+                .parents('li')
+                .should('have.class', '-active');
+            });
+        });
+      }
+    );
   });
 });
