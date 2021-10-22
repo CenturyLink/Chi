@@ -5,6 +5,7 @@ const ACCORDION_CLASSES = {
   ITEM: 'chi-accordion__item',
   CONTENT: 'chi-accordion__content'
 };
+const SIDENAV_LIST_CLASS = 'chi-sidenav__list';
 
 const hasClassAssertion = (el, value) => {
   cy.get(el).should('have.class', value);
@@ -17,7 +18,7 @@ describe('Sidenav', () => {
 
   beforeEach(() => {
     cy.get('[data-cy="sidenav"]')
-      .find('.chi-sidenav__list')
+      .find(`.${SIDENAV_LIST_CLASS}`)
       .children()
       .as('list');
   });
@@ -138,7 +139,7 @@ describe('Sidenav', () => {
     });
   });
 
-  it('Click on the 3rd level dropdown should close the existing opened dropdown and should expand current one', () => {
+  it('Click on the 3rd level accordion item should close the existing opened accordion item and should expand current one', () => {
     cy.reload();
     cy.get('@list').each((menuItem, index) => {
       if (index !== 0) {
