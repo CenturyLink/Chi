@@ -21,6 +21,14 @@ describe('Sidenav', () => {
       .find(`.${SIDENAV_LIST_CLASS}`)
       .children()
       .as('list');
+    cy.get('@list')
+      .first()
+      .find('a')
+      .as('firstLevelFirstItem');
+    cy.get('@list')
+      .eq(1)
+      .find('a')
+      .as('firstLevelSecondItem');
   });
 
   it('check that click on 1st level opens 2nd-level menu drawer', () => {
@@ -93,13 +101,10 @@ describe('Sidenav', () => {
   });
 
   it('Should show 3rd level drop-downs by default on 1st level menu click for the first menu item', () => {
-    cy.get('@list')
-      .first()
-      .find('a')
-      .as('firstLevelItem')
+    cy.get('@firstLevelFirstItem')
       .invoke('attr', 'href')
       .then(href => {
-        cy.get('@firstLevelItem').click();
+        cy.get('@firstLevelFirstItem').click();
         cy.get(href)
           .find(`.${ACCORDION_CLASSES.ITEM}.${ACTIVE_CLASS}`)
           .should('have.length', 2);
@@ -193,10 +198,7 @@ describe('Sidenav', () => {
 
   it('Check that menu items remain active for currently open site, while browsing through navigation', () => {
     cy.reload();
-    cy.get('@list')
-      .first()
-      .find('a')
-      .as('firstLevelFirstItem')
+    cy.get('@firstLevelFirstItem')
       .invoke('attr', 'href')
       .then(href => {
         cy.get('@firstLevelFirstItem').click();
@@ -209,10 +211,7 @@ describe('Sidenav', () => {
           .click();
         hasClassAssertion('@fourthLevelFirstItem', ACTIVE_CLASS);
       });
-    cy.get('@list')
-      .eq(1)
-      .find('a')
-      .as('firstLevelSecondItem')
+    cy.get('@firstLevelSecondItem')
       .invoke('attr', 'href')
       .then(href => {
         cy.get('@firstLevelSecondItem').click();
@@ -225,12 +224,9 @@ describe('Sidenav', () => {
       });
   });
 
-  it('Check that previous active menu item gets deselected after selecting another menu item (fourth level)', () => {
+  it('Check that previously active fourth level menu item gets deselected after selecting another fourth level menu item', () => {
     cy.reload();
-    cy.get('@list')
-      .first()
-      .find('a')
-      .as('firstLevelFirstItem')
+    cy.get('@firstLevelFirstItem')
       .invoke('attr', 'href')
       .then(href => {
         cy.get('@firstLevelFirstItem').click();
@@ -244,10 +240,7 @@ describe('Sidenav', () => {
           .click();
         hasClassAssertion('@fourthLevelFirstItem', ACTIVE_CLASS);
       });
-    cy.get('@list')
-      .eq(1)
-      .find('a')
-      .as('firstLevelSecondItem')
+    cy.get('@firstLevelSecondItem')
       .invoke('attr', 'href')
       .then(href => {
         cy.get('@firstLevelSecondItem').click();
