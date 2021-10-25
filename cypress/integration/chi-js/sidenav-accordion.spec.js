@@ -40,13 +40,13 @@ describe('Sidenav', () => {
       cy.get('@firstLevelItem').should('not.have.class', ACTIVE_CLASS);
       cy.get('@firstLevelItem')
         .invoke('attr', 'href')
-        .then(href => {
+        .then(drawerSelector => {
           cy.get('@firstLevelItem')
             .click()
             .then(() => {
               hasClassAssertion('@firstLevelItem', ACTIVE_CLASS);
-              hasClassAssertion(href, ACTIVE_CLASS);
-              cy.get(href).should('be.visible');
+              hasClassAssertion(drawerSelector, ACTIVE_CLASS);
+              cy.get(drawerSelector).should('be.visible');
             });
         });
     });
@@ -58,19 +58,19 @@ describe('Sidenav', () => {
         .find('a')
         .as('firstLevelItem')
         .invoke('attr', 'href')
-        .then(href => {
+        .then(drawerSelector => {
           cy.get('@firstLevelItem')
             .click()
             .then(() => {
-              hasClassAssertion(href, ACTIVE_CLASS);
-              cy.get(href).should('be.visible');
+              hasClassAssertion(drawerSelector, ACTIVE_CLASS);
+              cy.get(drawerSelector).should('be.visible');
             });
-          cy.get(href)
+          cy.get(drawerSelector)
             .find(`.${CLOSE_CLASS}`)
             .click()
             .then(() => {
-              cy.get(href).should('not.have.class', ACTIVE_CLASS);
-              cy.get(href).should('not.be.visible');
+              cy.get(drawerSelector).should('not.have.class', ACTIVE_CLASS);
+              cy.get(drawerSelector).should('not.be.visible');
             });
         });
     });
@@ -82,33 +82,33 @@ describe('Sidenav', () => {
         .find('a')
         .as('firstLevelItem')
         .invoke('attr', 'href')
-        .then(href => {
+        .then(drawerSelector => {
           cy.get('@firstLevelItem')
             .click()
             .then(() => {
-              hasClassAssertion(href, ACTIVE_CLASS);
-              cy.get(href).should('be.visible');
+              hasClassAssertion(drawerSelector, ACTIVE_CLASS);
+              cy.get(drawerSelector).should('be.visible');
             });
           cy.get('h3')
             .last()
             .click()
             .then(() => {
-              cy.get(href).should('not.have.class', ACTIVE_CLASS);
-              cy.get(href).should('not.be.visible');
+              cy.get(drawerSelector).should('not.have.class', ACTIVE_CLASS);
+              cy.get(drawerSelector).should('not.be.visible');
             });
         });
     });
   });
 
-  it('Should show 3rd level drop-downs by default on 1st level menu click for the first menu item', () => {
+  it('Should show 3rd level accordions by default on 1st level menu click for the first menu item', () => {
     cy.get('@firstLevelFirstItem')
       .invoke('attr', 'href')
-      .then(href => {
+      .then(drawerSelector => {
         cy.get('@firstLevelFirstItem').click();
-        cy.get(href)
+        cy.get(drawerSelector)
           .find(`.${ACCORDION_CLASSES.ITEM}.${ACTIVE_CLASS}`)
           .should('have.length', 2);
-        cy.get(href)
+        cy.get(drawerSelector)
           .find(`.${ACCORDION_CLASSES.ITEM}`)
           .first()
           .as('secondLevelItem');
@@ -116,16 +116,16 @@ describe('Sidenav', () => {
       });
   });
 
-  it('Click on 2nd level menus should open 3rd level drop-downs', () => {
+  it('Click on 2nd level menus should open 3rd level accordions', () => {
     cy.get('@list').each((menuItem, index) => {
       if (index !== 0) {
         cy.get(menuItem)
           .find('a')
           .as('firstLevelItem')
           .invoke('attr', 'href')
-          .then(href => {
+          .then(drawerSelector => {
             cy.get('@firstLevelItem').click();
-            cy.get(href)
+            cy.get(drawerSelector)
               .find(`.${ACCORDION_CLASSES.ITEM}`)
               .first()
               .as('secondLevelItem')
@@ -152,9 +152,9 @@ describe('Sidenav', () => {
           .find('a')
           .as('firstLevelItem')
           .invoke('attr', 'href')
-          .then(href => {
+          .then(drawerSelector => {
             cy.get('@firstLevelItem').click();
-            cy.get(href)
+            cy.get(drawerSelector)
               .find(`.${ACCORDION_CLASSES.ITEM}`)
               .first()
               .as('secondLevelItem')
@@ -200,9 +200,9 @@ describe('Sidenav', () => {
     cy.reload();
     cy.get('@firstLevelFirstItem')
       .invoke('attr', 'href')
-      .then(href => {
+      .then(drawerSelector => {
         cy.get('@firstLevelFirstItem').click();
-        cy.get(href)
+        cy.get(drawerSelector)
           .contains('Accordion A')
           .parent(`.${ACCORDION_CLASSES.ITEM}`)
           .click()
@@ -213,9 +213,9 @@ describe('Sidenav', () => {
       });
     cy.get('@firstLevelSecondItem')
       .invoke('attr', 'href')
-      .then(href => {
+      .then(drawerSelector => {
         cy.get('@firstLevelSecondItem').click();
-        cy.get(href)
+        cy.get(drawerSelector)
           .find(`.${ACCORDION_CLASSES.ITEM}`)
           .first()
           .click();
@@ -228,9 +228,9 @@ describe('Sidenav', () => {
     cy.reload();
     cy.get('@firstLevelFirstItem')
       .invoke('attr', 'href')
-      .then(href => {
+      .then(drawerSelector => {
         cy.get('@firstLevelFirstItem').click();
-        cy.get(href)
+        cy.get(drawerSelector)
           .contains('Accordion A')
           .parent(`.${ACCORDION_CLASSES.ITEM}`)
           .as('thirdLevelFirstItem')
@@ -242,14 +242,14 @@ describe('Sidenav', () => {
       });
     cy.get('@firstLevelSecondItem')
       .invoke('attr', 'href')
-      .then(href => {
+      .then(drawerSelector => {
         cy.get('@firstLevelSecondItem').click();
-        cy.get(href)
+        cy.get(drawerSelector)
           .find(`.${ACCORDION_CLASSES.ITEM}`)
           .first()
           .as('secondLevelSecondItem')
           .click();
-        cy.get(href)
+        cy.get(drawerSelector)
           .contains('Accordion A')
           .parent(`.${ACCORDION_CLASSES.ITEM}`)
           .as('thirdLevelSecondItem')
