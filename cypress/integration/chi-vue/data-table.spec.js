@@ -1403,6 +1403,15 @@ describe('Server Side Data Table', () => {
   });
 
   describe('Server side sorting', () => {
+    beforeEach(() => {
+      cy.get(
+        `[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`
+      )
+        .as('pagination')
+        .find(`.${ICON_BUTTON}`)
+        .as('paginationIcons');
+    });
+
     it('Should sort by status in asc and desc', () => {
       const statuses = ['active', 'inact', 'active'];
 
@@ -1428,12 +1437,7 @@ describe('Server Side Data Table', () => {
 
           checkStatusSorting(inactives);
         });
-      cy.get(
-        `[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`
-      )
-        .as('pagination')
-        .find(`.${ICON_BUTTON}`)
-        .as('paginationIcons')
+      cy.get('@paginationIcons')
         .eq(2)
         .click()
         .then(() => {
