@@ -322,6 +322,7 @@ export default class DataTable extends Vue {
       this.selectedRows.push(rowData.rowId);
     }
 
+    this._checkSelectAllCheckbox();
     this.$emit(DATA_TABLE_EVENTS.SELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
@@ -339,6 +340,7 @@ export default class DataTable extends Vue {
       this.selectedRows.splice(indexOfRowId, 1);
     }
 
+    this._checkSelectAllCheckbox();
     this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
@@ -645,9 +647,9 @@ export default class DataTable extends Vue {
               this.activePage = ev;
               this.slicedData = this.sliceData(data);
               pageChangeEventData.data = this.slicedData;
+              this._checkSelectAllCheckbox();
             }
             this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
-            this._checkSelectAllCheckbox();
           }
         });
         this._paginationListenersAdded = true;
@@ -686,8 +688,8 @@ export default class DataTable extends Vue {
   }
 
   _checkSelectAllCheckbox() {
-    const selectAllCheckbox = document.querySelector(
-      `.${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL} input`
+    const selectAllCheckbox = (this.$el as HTMLElement).querySelector(
+      `.${DATA_TABLE_CLASSES.HEAD} #checkbox-${this._dataTableId}-select-all-rows`
     ) as HTMLInputElement;
 
     if (selectAllCheckbox) {
@@ -813,6 +815,10 @@ export default class DataTable extends Vue {
     this.slicedData = this.sliceData(
       this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody
     );
+
+    if (this.mode === DataTableModes.SERVER) {
+      this._checkSelectAllCheckbox();
+    }
   }
 
   @Watch('config')
