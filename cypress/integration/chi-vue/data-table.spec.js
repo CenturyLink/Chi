@@ -1391,6 +1391,14 @@ describe('Server Side Data Table', () => {
             .find('input')
             .should('not.be.checked');
         });
+
+      cy.get('@paginationIcons')
+        .first()
+        .click();
+
+      cy.get('@selectAll')
+        .click()
+        .click();
     });
   });
 
