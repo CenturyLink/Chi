@@ -647,6 +647,7 @@ export default class DataTable extends Vue {
               this.activePage = ev;
               this.slicedData = this.sliceData(data);
               pageChangeEventData.data = this.slicedData;
+              this._checkSelectAllCheckbox();
             }
             this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
           }
@@ -656,7 +657,6 @@ export default class DataTable extends Vue {
     } else {
       this._paginationListenersAdded = false;
     }
-    this._checkSelectAllCheckbox();
   }
 
   _pagination() {
@@ -688,8 +688,8 @@ export default class DataTable extends Vue {
   }
 
   _checkSelectAllCheckbox() {
-    const selectAllCheckbox = document.getElementById(
-      `checkbox-${this._dataTableId}-select-all-rows`
+    const selectAllCheckbox = (this.$el as HTMLElement).querySelector(
+      `.${DATA_TABLE_CLASSES.HEAD} #checkbox-${this._dataTableId}-select-all-rows`
     ) as HTMLInputElement;
 
     if (selectAllCheckbox) {
@@ -815,6 +815,10 @@ export default class DataTable extends Vue {
     this.slicedData = this.sliceData(
       this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody
     );
+
+    if (this.mode === DataTableModes.SERVER) {
+      this._checkSelectAllCheckbox();
+    }
   }
 
   @Watch('config')
