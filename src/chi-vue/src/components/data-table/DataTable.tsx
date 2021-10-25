@@ -322,6 +322,7 @@ export default class DataTable extends Vue {
       this.selectedRows.push(rowData.rowId);
     }
 
+    this._checkSelectAllCheckbox();
     this.$emit(DATA_TABLE_EVENTS.SELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
@@ -339,6 +340,7 @@ export default class DataTable extends Vue {
       this.selectedRows.splice(indexOfRowId, 1);
     }
 
+    this._checkSelectAllCheckbox();
     this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._emitSelectedRows();
   }
@@ -647,7 +649,6 @@ export default class DataTable extends Vue {
               pageChangeEventData.data = this.slicedData;
             }
             this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
-            this._checkSelectAllCheckbox();
           }
         });
         this._paginationListenersAdded = true;
@@ -655,6 +656,7 @@ export default class DataTable extends Vue {
     } else {
       this._paginationListenersAdded = false;
     }
+    this._checkSelectAllCheckbox();
   }
 
   _pagination() {
@@ -686,8 +688,8 @@ export default class DataTable extends Vue {
   }
 
   _checkSelectAllCheckbox() {
-    const selectAllCheckbox = document.querySelector(
-      `.${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL} input`
+    const selectAllCheckbox = document.getElementById(
+      `checkbox-${this._dataTableId}-select-all-rows`
     ) as HTMLInputElement;
 
     if (selectAllCheckbox) {
