@@ -292,7 +292,7 @@
                     font-size: 0.75rem;
                     font-weight: normal;
                     height: 1rem;
-                    line-height: 1.2rem;
+                    line-height: 1.25rem;
                     position: absolute;
                     right: 1.5rem;
                     top: 0.75rem;
@@ -336,6 +336,196 @@
       }
 
       .chi-drawer__content {
+        a {
+          color: $color-text-base;
+          display: block;
+
+          &.-active {
+            background-color: $mobile-nav-list-item-active-background-color;
+            box-shadow: $mobile-nav-list-item-active-box-shadow;
+            color: $color-text-primary;
+          }
+
+          span {
+            font-weight: $font-weight-normal;
+
+            .chi-icon {
+              margin-left: 0.5rem;
+            }
+          }
+        }
+
+        .chi-accordion {
+          > a {
+            color: $color-text-base;
+            display: block;
+            font-size: $font-size-md;
+            padding: 0.625rem 1.5rem;
+
+            &.-active {
+              background-color: $mobile-nav-list-item-active-background-color;
+              box-shadow: $mobile-nav-list-item-active-box-shadow;
+              color: $color-text-primary;
+              font-weight: $font-weight-semi-bold;
+
+              &:hover {
+                background-color: $mobile-nav-list-item-active-background-color;
+              }
+            }
+
+            &:hover {
+              background-color: $mobile-nav-list-item-hover-background-color;
+              text-decoration: none;
+            }
+          }
+
+          .chi-accordion__item {
+            background-color: transparent;
+            border-bottom: 0;
+            margin-bottom: 0;
+
+            .chi-accordion__content {
+              a {
+                display: block;
+
+                &.-active {
+                  background-color: $mobile-nav-list-item-active-background-color;
+                  box-shadow: $mobile-nav-list-item-active-box-shadow;
+                  color: $color-text-primary;
+                  font-weight: $font-weight-semi-bold;
+
+                  &:hover {
+                    background-color: $mobile-nav-list-item-active-background-color;
+                    text-decoration: none;
+                  }
+                }
+
+                &:hover {
+                  background-color: $mobile-nav-list-item-hover-background-color;
+                  text-decoration: none;
+                }
+              }
+            }
+
+            button {
+              &.chi-accordion__trigger {
+                background-color: transparent;
+                padding: 0.625rem 1.5rem;
+                position: relative;
+
+                .chi-accordion__title {
+                  font-size: $font-size-md;
+                  font-weight: $font-weight-normal;
+
+                  + .chi-icon {
+                    font-size: $font-size-xs;
+                    font-weight: $font-weight-normal;
+                    height: 1rem;
+                    line-height: 1.25rem;
+                    position: absolute;
+                    right: 1.5rem;
+                    top: 0.75rem;
+                    transition: 0.2s;
+                    width: 0.75rem;
+                  }
+                }
+
+                + .chi-accordion__content {
+                  padding: 0;
+
+                  a {
+                    font-size: $font-size-md;
+                    font-weight: $font-weight-normal;
+                    padding: 0.625rem 3rem;
+                  }
+
+                  > .chi-accordion {
+                    > .chi-accordion__item {
+                      > button {
+                        &.chi-accordion__trigger {
+                          padding: 0.625rem 3rem;
+
+                          .chi-accordion__title {
+                            font-size: $font-size-md;
+                          }
+
+                          + .chi-accordion__content {
+                            a {
+                              font-size: $font-size-md;
+                              padding: 0.625rem 4rem;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+
+                &:hover {
+                  background-color: $mobile-nav-list-item-hover-background-color;
+                }
+              }
+            }
+
+            &.-active {
+              > button {
+                &.chi-accordion__trigger {
+                  background-color: $mobile-nav-list-item-active-background-color;
+                  box-shadow: $mobile-nav-list-item-active-box-shadow;
+
+                  > .chi-accordion__title {
+                    color: $color-text-primary;
+                  }
+
+                  &:hover {
+                    background: $mobile-nav-list-item-active-background-color;
+                    box-shadow: inset 0.125rem 0 0 $color-border-primary;
+                  }
+                }
+              }
+            }
+
+            &.-expanded {
+              > button {
+                &.chi-accordion__trigger {
+                  background-color: $mobile-nav-list-item-expanded-background-color;
+                  box-shadow: none;
+
+                  > .chi-accordion__title {
+                    color: $color-text-base;
+                  }
+
+                  &:hover {
+                    background-color: $mobile-nav-list-item-hover-background-color;
+                    box-shadow: none;
+                    text-decoration: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        > .chi-accordion {
+          > .chi-accordion__item {
+            > button {
+              &.chi-accordion__trigger {
+                > .chi-accordion__title {
+                  font-weight: $font-weight-semi-bold;
+                }
+              }
+            }
+          }
+
+          > a {
+            font-weight: $font-weight-semi-bold;
+
+            span {
+              font-weight: $font-weight-semi-bold;
+            }
+          }
+        }
+
         ul {
           &.chi-mobile-nav__list {
             li {
@@ -352,7 +542,7 @@
                     font-size: 0.75rem;
                     font-weight: normal;
                     height: 1rem;
-                    line-height: 1.2rem;
+                    line-height: 1.25rem;
                     position: absolute;
                     right: 1.5rem;
                     top: 0.75rem;
