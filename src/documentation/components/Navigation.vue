@@ -9,6 +9,7 @@
         <ul class="chi-tabs__subtabs">
           <li><NuxtLink to="/components/accordion">Accordion</NuxtLink></li>
           <li><NuxtLink to="/components/badge">Badge</NuxtLink></li>
+          <li><NuxtLink to="/components/file-input">File input</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/alert">Alert</NuxtLink></li>
           <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
