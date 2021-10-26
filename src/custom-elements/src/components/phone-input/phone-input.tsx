@@ -272,7 +272,7 @@ export class ChiPhoneInput {
     return (
       <div class={`${PHONE_INPUT_CLASSES.PHONE_INPUT}`}>
         {country}
-        <div>{textInput}</div>
+        {textInput}
       </div>
     );
   }

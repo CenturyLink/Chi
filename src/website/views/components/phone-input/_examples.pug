@@ -2,8 +2,9 @@ h2 Examples
 h3 Base
 .example.-mb--3
   .-p--3
-    chi-label(for="phone-input-base") Phone Number
-    chi-phone-input(id="phone-input-base")
+    div(style="max-width: 18rem;")
+      chi-label(for="phone-input-base") Phone Number
+      chi-phone-input(id="phone-input-base")
 
   .example-tabs.-pl--2
     ul.chi-tabs
@@ -24,8 +25,9 @@ p.-text
   | disappears when a value is entered.
 .example.-mb--3
   .-p--3
-    chi-label(for="phone-input-placeholder") Phone Number
-    chi-phone-input(id="phone-input-placeholder" placeholder="e.g. (123) 456-7890")
+    div(style="max-width: 18rem;")
+      chi-label(for="phone-input-placeholder") Phone Number
+      chi-phone-input(id="phone-input-placeholder" placeholder="e.g. (123) 456-7890")
 
   .example-tabs.-pl--2
     ul.chi-tabs
@@ -44,8 +46,9 @@ p.-text
   | Use the <code>defaultCountry</code> attribute to set a default two-letter country code. Defaults to "US".
 .example.-mb--3
   .-p--3
-    chi-label(for="phone-input-default-country") Phone Number
-    chi-phone-input(id="phone-input-default-country" default-country="US")
+    div(style="max-width: 18rem;")
+      chi-label(for="phone-input-default-country") Phone Number
+      chi-phone-input(id="phone-input-default-country" default-country="US")
 
   .example-tabs.-pl--2
     ul.chi-tabs
@@ -65,8 +68,9 @@ p.-text
   | Disabled phone inputs can not receive any browsing events such as prefix selection, mouse clicks or focus.
 .example.-mb--3
   .-p--3
-    chi-label(for="phone-input-disabled") Phone Number
-    chi-phone-input(id="phone-input-disabled" disabled="true")
+    div(style="max-width: 18rem;")
+      chi-label(for="phone-input-disabled") Phone Number
+      chi-phone-input(id="phone-input-disabled" disabled="true")
 
   .example-tabs.-pl--2
     ul.chi-tabs
@@ -87,9 +91,10 @@ p.-text
   | failure and/or how to correct it.
 .example.-mb--3
   .-p--3
-    chi-label(for="phone-input-error") Phone Number
-    chi-phone-input(id="phone-input-error" state="danger")
-    div.chi-label.-status.-danger Invalid phone number
+    div(style="max-width: 18rem;")
+      chi-label(for="phone-input-error") Phone Number
+      chi-phone-input(id="phone-input-error" state="danger")
+      div.chi-label.-status.-danger Invalid phone number
 
   .example-tabs.-pl--2
     ul.chi-tabs
@@ -112,21 +117,22 @@ p.-text
     | Phone input supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
   .example.-mb--3
     .-p--3
-      .-mb--2.chi-form__item
-        chi-label(for="phone-input-xs") xs
-        chi-phone-input(id="phone-input-xs" size="xs")
-      .-mb--2.chi-form__item
-        chi-label(for="phone-input-sm") sm
-        chi-phone-input(id="phone-input-sm" size="sm")
-      .-mb--2.chi-form__item
-        chi-label(for="phone-input-md") md
-        chi-phone-input(id="phone-input-md" size="md")
-      .-mb--2.chi-form__item
-        chi-label(for="phone-input-lg") lg
-        chi-phone-input(id="phone-input-lg" size="lg")
-      .chi-form__item
-        chi-label(for="phone-input-xl") xl
-        chi-phone-input(id="phone-input-xl" size="xl")
+      div(style="max-width: 18rem;")
+        .-mb--2.chi-form__item
+          chi-label(for="phone-input-xs") xs
+          chi-phone-input(id="phone-input-xs" size="xs")
+        .-mb--2.chi-form__item
+          chi-label(for="phone-input-sm") sm
+          chi-phone-input(id="phone-input-sm" size="sm")
+        .-mb--2.chi-form__item
+          chi-label(for="phone-input-md") md
+          chi-phone-input(id="phone-input-md" size="md")
+        .-mb--2.chi-form__item
+          chi-label(for="phone-input-lg") lg
+          chi-phone-input(id="phone-input-lg" size="lg")
+        .chi-form__item
+          chi-label(for="phone-input-xl") xl
+          chi-phone-input(id="phone-input-xl" size="xl")
 
     .example-tabs.-pl--2
       ul.chi-tabs
@@ -159,18 +165,19 @@ p.-text
     | Phone input supports the following sizes: <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
   .example.-mb--3
     .-p--3
-      .-mb--2.chi-form__item
-        chi-label(for="phone-input-portal-sm") sm
-        chi-phone-input(id="phone-input-portal-sm" size="sm")
-      .-mb--2.chi-form__item
-        chi-label(for="phone-input-portal-md") md
-        chi-phone-input(id="phone-input-portal-md" size="md")
-      .-mb--2.chi-form__item
-        chi-label(for="phone-input-portal-lg") lg
-        chi-phone-input(id="phone-input-portal-lg" size="lg")
-      .chi-form__item
-        chi-label(for="phone-input-portal-xl") xl
-        chi-phone-input(id="phone-input-portal-xl" size="xl")
+      div(style="max-width: 18rem;")
+        .-mb--2.chi-form__item
+          chi-label(for="phone-input-portal-sm") sm
+          chi-phone-input(id="phone-input-portal-sm" size="sm")
+        .-mb--2.chi-form__item
+          chi-label(for="phone-input-portal-md") md
+          chi-phone-input(id="phone-input-portal-md" size="md")
+        .-mb--2.chi-form__item
+          chi-label(for="phone-input-portal-lg") lg
+          chi-phone-input(id="phone-input-portal-lg" size="lg")
+        .chi-form__item
+          chi-label(for="phone-input-portal-xl") xl
+          chi-phone-input(id="phone-input-portal-xl" size="xl")
 
     .example-tabs.-pl--2
       ul.chi-tabs

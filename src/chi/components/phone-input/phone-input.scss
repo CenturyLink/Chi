@@ -8,11 +8,27 @@
   .chi-dropdown {
     margin-right: 0.5rem;
 
-    .chi-dropdown__menu {
+    &__menu {
       min-width: 14rem;
 
-      .chi-dropdown__menu-content {
-        margin-top: 0.5rem;
+      chi-search-input {
+        .chi-input__wrapper {
+          margin-left: 0.5rem;
+          margin-right: 0.5rem;
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        &:not(:first-child) {
+          margin-top: 0.5rem;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      &-content {
         max-height: 12rem;
         overflow-y: auto;
 
