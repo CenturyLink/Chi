@@ -1,0 +1,195 @@
+h2 Examples
+h3 Base
+.example.-mb--3
+  .-p--3
+    chi-label(for="phone-input-base") Phone Number
+    chi-phone-input(id="phone-input-base")
+
+  .example-tabs.-pl--2
+    ul.chi-tabs
+      li.-active
+        a(href='#phone-input-wc-base') Web Component
+      li.-disabled
+        a(href='#phone-input-html-base') HTML Blueprint
+  #phone-input-wc-base.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="phone-input-base">Phone Number</chi-label>
+      <chi-phone-input id="phone-input-base"></chi-phone-input>
+  #phone-input-html-base.chi-tabs-panel
+
+h3 Placeholder
+p.-text
+  | Use the <code>placeholder</code> attribute to provide users with an example of the type of data
+  | that can be entered into a Phone input. <strong>Note:</strong> Placeholder text is not persistent and visually
+  | disappears when a value is entered.
+.example.-mb--3
+  .-p--3
+    chi-label(for="phone-input-placeholder") Phone Number
+    chi-phone-input(id="phone-input-placeholder" placeholder="e.g. (123) 456-7890")
+
+  .example-tabs.-pl--2
+    ul.chi-tabs
+      li.-active
+        a(href='#phone-input-wc-placeholder') Web Component
+      li.-disabled
+        a(href='#phone-input-html-placeholder') HTML Blueprint
+  #phone-input-wc-placeholder.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="phone-input-placeholder">Phone Number</chi-label>
+      <chi-phone-input id="phone-input-placeholder" placeholder="e.g. (123) 456-7890"></chi-phone-input>
+  #phone-input-html-placeholder.chi-tabs-panel
+
+h3 Default Country
+p.-text
+  | Use the <code>defaultCountry</code> attribute to set a default two-letter country code. Defaults to "US".
+.example.-mb--3
+  .-p--3
+    chi-label(for="phone-input-default-country") Phone Number
+    chi-phone-input(id="phone-input-default-country" default-country="US")
+
+  .example-tabs.-pl--2
+    ul.chi-tabs
+      li.-active
+        a(href='#phone-input-wc-default-country') Web Component
+      li.-disabled
+        a(href='#phone-input-html-default-country') HTML Blueprint
+  #phone-input-wc-default-country.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="phone-input-default-country">Phone Number</chi-label>
+      <chi-phone-input id="phone-input-default-country" defaultCountry="US"></chi-phone-input>
+  #phone-input-html-default-country.chi-tabs-panel
+
+h3 Disabled
+p.-text
+  | Use the <code>disabled</code> boolean attribute to prevent users from interacting with the phone input.
+  | Disabled phone inputs can not receive any browsing events such as prefix selection, mouse clicks or focus.
+.example.-mb--3
+  .-p--3
+    chi-label(for="phone-input-disabled") Phone Number
+    chi-phone-input(id="phone-input-disabled" disabled="true")
+
+  .example-tabs.-pl--2
+    ul.chi-tabs
+      li.-active
+        a(href='#phone-input-wc-disabled') Web Component
+      li.-disabled
+        a(href='#phone-input-html-disabled') HTML Blueprint
+  #phone-input-wc-disabled.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="phone-input-disabled">Phone Number</chi-label>
+      <chi-phone-input id="phone-input-disabled" disabled></chi-phone-input>
+  #phone-input-html-disabled.chi-tabs-panel
+
+h3 Error
+p.-text
+  | Use the <code>danger</code> state to provide feedback to users when phone number fails to validate.
+  | To meet accessibility requirements, phone input must include an error message explaining the
+  | failure and/or how to correct it.
+.example.-mb--3
+  .-p--3
+    chi-label(for="phone-input-error") Phone Number
+    chi-phone-input(id="phone-input-error" state="danger")
+    div.chi-label.-status.-danger Invalid phone number
+
+  .example-tabs.-pl--2
+    ul.chi-tabs
+      li.-active
+        a(href='#phone-input-wc-error') Web Component
+      li.-disabled
+        a(href='#phone-input-html-error') HTML Blueprint
+  #phone-input-wc-error.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="phone-input-error">Phone Number</chi-label>
+      <chi-phone-input id="phone-input-error" state="danger"></chi-phone-input>
+      <div class="chi-label -status -danger">
+        Invalid phone number
+      </div>
+  #phone-input-html-error.chi-tabs-panel
+
+.-portal--hide
+  h3 Sizes
+  p.-text 
+    | Phone input supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
+  .example.-mb--3
+    .-p--3
+      .-mb--2.chi-form__item
+        chi-label(for="phone-input-xs") xs
+        chi-phone-input(id="phone-input-xs" size="xs")
+      .-mb--2.chi-form__item
+        chi-label(for="phone-input-sm") sm
+        chi-phone-input(id="phone-input-sm" size="sm")
+      .-mb--2.chi-form__item
+        chi-label(for="phone-input-md") md
+        chi-phone-input(id="phone-input-md" size="md")
+      .-mb--2.chi-form__item
+        chi-label(for="phone-input-lg") lg
+        chi-phone-input(id="phone-input-lg" size="lg")
+      .chi-form__item
+        chi-label(for="phone-input-xl") xl
+        chi-phone-input(id="phone-input-xl" size="xl")
+
+    .example-tabs.-pl--2
+      ul.chi-tabs
+        li.-active
+          a(href='#phone-input-wc-sizes-portal') Web Component
+        li.-disabled
+          a(href='#phone-input-html-sizes-portal') HTML Blueprint
+    #phone-input-wc-sizes-portal.chi-tabs-panel.-active
+      :code(lang="html")
+        <!-- xs -->
+        <chi-label for="phone-input-xs">xs</chi-label>
+        <chi-phone-input id="phone-input-xs" size="xs"></chi-phone-input>    
+        <!-- sm -->
+        <chi-label for="phone-input-sm">sm</chi-label>
+        <chi-phone-input id="phone-input-sm" size="sm"></chi-phone-input>    
+        <!-- md -->
+        <chi-label for="phone-input-md">md</chi-label>
+        <chi-phone-input id="phone-input-md" size="md"></chi-phone-input>
+        <!-- lg -->
+        <chi-label for="phone-input-lg">lg</chi-label>
+        <chi-phone-input id="phone-input-lg" size="lg"></chi-phone-input>
+        <!-- xl -->
+        <chi-label for="phone-input-xl">xl</chi-label>
+        <chi-phone-input id="phone-input-xl" size="xl"></chi-phone-input>
+    #phone-input-html-sizes-portal.chi-tabs-panel
+
+.-portal--show
+  h3 Sizes
+  p.-text 
+    | Phone input supports the following sizes: <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
+  .example.-mb--3
+    .-p--3
+      .-mb--2.chi-form__item
+        chi-label(for="phone-input-portal-sm") sm
+        chi-phone-input(id="phone-input-portal-sm" size="sm")
+      .-mb--2.chi-form__item
+        chi-label(for="phone-input-portal-md") md
+        chi-phone-input(id="phone-input-portal-md" size="md")
+      .-mb--2.chi-form__item
+        chi-label(for="phone-input-portal-lg") lg
+        chi-phone-input(id="phone-input-portal-lg" size="lg")
+      .chi-form__item
+        chi-label(for="phone-input-portal-xl") xl
+        chi-phone-input(id="phone-input-portal-xl" size="xl")
+
+    .example-tabs.-pl--2
+      ul.chi-tabs
+        li.-active
+          a(href='#phone-input-wc-sizes-portal') Web Component
+        li.-disabled
+          a(href='#phone-input-html-sizes-portal') HTML Blueprint
+    #phone-input-wc-sizes-portal.chi-tabs-panel.-active
+      :code(lang="html")
+        <!-- sm -->
+        <chi-label for="phone-input-sm">sm</chi-label>
+        <chi-phone-input id="phone-input-sm" size="sm"></chi-phone-input>    
+        <!-- md -->
+        <chi-label for="phone-input-md">md</chi-label>
+        <chi-phone-input id="phone-input-md" size="md"></chi-phone-input>
+        <!-- lg -->
+        <chi-label for="phone-input-lg">lg</chi-label>
+        <chi-phone-input id="phone-input-lg" size="lg"></chi-phone-input>
+        <!-- xl -->
+        <chi-label for="phone-input-xl">xl</chi-label>
+        <chi-phone-input id="phone-input-xl" size="xl"></chi-phone-input>
+    #phone-input-html-sizes-portal.chi-tabs-panel

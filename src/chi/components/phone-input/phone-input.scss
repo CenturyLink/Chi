@@ -1,0 +1,26 @@
+@import '_variables';
+
+.chi-phone-input {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  .chi-dropdown {
+    margin-right: 0.5rem;
+
+    .chi-dropdown__menu {
+      min-width: 14rem;
+
+      .chi-dropdown__menu-content {
+        margin-top: 0.5rem;
+        max-height: 12rem;
+        overflow-y: auto;
+
+        .chi-phone-input__code {
+          color: $color-text-muted;
+          margin-left: 0.25rem;
+        }
+      }
+    }
+  }
+}

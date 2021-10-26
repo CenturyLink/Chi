@@ -1,0 +1,29 @@
+---
+title: Phone Input
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+.test-base.-py--2
+  chi-label(for=`phone-input-base`) Phone Number
+  chi-phone-input(id="phone-input-base" data-cy='phone-input-base' placeholder="Phone Number")
+
+.test-default-country.-py--2
+  chi-label(for=`phone-input-default-country`) Phone Number 
+  chi-phone-input(id="phone-input-default-country" default-country='US' data-cy='phone-input-default-country')
+
+.test-disabled.-py--2 
+  chi-label(for=`phone-input-disabled`) Phone Number
+  chi-phone-input(id="phone-input-disabled" disabled="true" data-cy='phone-input-disabled' )
+
+.test-sizes
+  each size in ['sm', 'md', 'lg', 'xl']
+    .-py--1
+      chi-label(for=`phone-input-${size}`) Phone Number
+      chi-phone-input(id=`phone-input-${size}` size=`${size}` data-cy=`phone-input-${size}`)
+
+.test-state 
+  each state in ['danger', 'warning', 'success']
+    .-py--1 
+      chi-label(for=`phone-input-${state}-state`) Phone Number
+      chi-phone-input(id=`phone-input-${state}-state` data-cy=`phone-input-${state}-state` placeholder="Phone Number" state=`${state}`)

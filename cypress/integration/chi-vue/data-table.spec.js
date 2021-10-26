@@ -1244,14 +1244,7 @@ describe('Server Side Data Table', () => {
     });
 
     it('Should render new data when going to page two', () => {
-      cy.get(`[data-cy='data-table-server-side']`)
-        .find(`.${PAGINATION_CLASSES.PAGINATION}`)
-        .children()
-        .first()
-        .children()
-        .eq(1)
-        .find(`.${ICON_BUTTON}`)
-        .as('paginationIcons')
+      cy.get('@paginationIcons')
         .eq(2)
         .click()
         .then(() => {
@@ -1301,6 +1294,15 @@ describe('Server Side Data Table', () => {
       cy.get(`[data-cy='data-table-server-side']`)
         .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
         .as('selectables');
+      cy.get(
+        `[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`
+      )
+        .as('pagination')
+        .find(`.${ICON_BUTTON}`)
+        .as('paginationIcons');
+      cy.get('@selectables')
+        .eq(0)
+        .as('selectAll');
     });
 
     it(`Should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
@@ -1347,9 +1349,69 @@ describe('Server Side Data Table', () => {
           cy.get('@firstRow').should('not.have.class', ACTIVE_CLASS);
         });
     });
+
+    it('Should maintain "select all rows" checkbox after going to page two and then back to page one', () => {
+      cy.get('@selectAll').click();
+      cy.get('@paginationIcons')
+        .eq(2)
+        .click();
+      cy.get('@paginationIcons')
+        .eq(0)
+        .click()
+        .then(() => {
+          cy.get('@selectAll')
+            .find('input')
+            .should('be.checked');
+        });
+      cy.get('@selectAll').click();
+    });
+
+    it('Should not maintain "select all rows" checkbox after going to page two', () => {
+      cy.get('@selectAll').click();
+      cy.get('@paginationIcons')
+        .eq(2)
+        .click()
+        .then(() => {
+          cy.get('@selectAll')
+            .find('input')
+            .should('not.be.checked');
+        });
+    });
+
+    it('Should not maintain "select all rows" checkbox after deselecting a row', () => {
+      cy.get('@selectables')
+        .eq(0)
+        .as('selectAll')
+        .click();
+      cy.get('@selectables')
+        .eq(1)
+        .click()
+        .then(() => {
+          cy.get('@selectAll')
+            .find('input')
+            .should('not.be.checked');
+        });
+
+      cy.get('@paginationIcons')
+        .first()
+        .click();
+
+      cy.get('@selectAll')
+        .click()
+        .click();
+    });
   });
 
   describe('Server side sorting', () => {
+    beforeEach(() => {
+      cy.get(
+        `[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`
+      )
+        .as('pagination')
+        .find(`.${ICON_BUTTON}`)
+        .as('paginationIcons');
+    });
+
     it('Should sort by status in asc and desc', () => {
       const statuses = ['active', 'inact', 'active'];
 
@@ -1375,12 +1437,7 @@ describe('Server Side Data Table', () => {
 
           checkStatusSorting(inactives);
         });
-      cy.get(
-        `[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`
-      )
-        .as('pagination')
-        .find(`.${ICON_BUTTON}`)
-        .as('paginationIcons')
+      cy.get('@paginationIcons')
         .eq(2)
         .click()
         .then(() => {
