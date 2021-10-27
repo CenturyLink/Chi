@@ -124,7 +124,7 @@ export default class PropertiesGenerator extends Vue {
     return data;
   }
 
-  async mounted() {
+  async created() {
     const docs = await this.getDocs();
     const component = docs?.components?.find(
       (component: {tag: string}) => component.tag === this.tag

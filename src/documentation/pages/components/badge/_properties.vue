@@ -1,10 +1,7 @@
 <template lang="pug">
   div
-    h2 Properties
-    .chi-card.-align--center.-empty
-      .chi-card__content
-        .chi-card__caption
-          | Properties guidelines coming soon
+    h2 Web Component
+    <PropertiesGenerator tag="chi-badge" />
 </template>
 
 <script lang="ts">
