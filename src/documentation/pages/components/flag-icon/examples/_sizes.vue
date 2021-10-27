@@ -44,18 +44,15 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `
-      <!-- -xs : 18x12px -->
-      <i class="chi-flag-icon icon-us -xs" aria-hidden="true"></i>
-      <!-- -sm : 24x16px -->
-      <i class="chi-flag-icon icon-us -sm" aria-hidden="true"></i>`
+        htmlblueprint: `<!-- -xs : 18x12px -->
+<i class="chi-flag-icon icon-us -xs" aria-hidden="true"></i>
+<!-- -sm : 24x16px -->
+<i class="chi-flag-icon icon-us -sm" aria-hidden="true"></i>`
       }
     };
   }
 })
 export default class SizesExample extends Vue {
-  mounted() {
-    chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-  }
+  mounted() {}
 }
 </script>

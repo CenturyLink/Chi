@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Country/Region" id="area_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example", class="example -b--0")
-       section.chi-table.-bordered
+    div(slot="example")
+       section.chi-table
         div
           table
             thead
@@ -55,26 +55,23 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `
-      <i class="chi-flag-icon icon-ar" aria-hidden="true"></i>
-      <i class="chi-flag-icon icon-au" aria-hidden="true"></i>
-      <i class="chi-flag-icon icon-br" aria-hidden="true"></i>
-      <i class="chi-flag-icon icon-co" aria-hidden="true"></i>
-      <i class="chi-flag-icon icon-de" aria-hidden="true"></i>
-      <i class="chi-flag-icon icon-hk" aria-hidden="true"></i>
-      <i class="chi-flag-icon icon-in" aria-hidden="true"></i>
-      <i class="chi-flag-icon icon-jp" aria-hidden="true"></i>
-      <i class="chi-flag-icon icon-mx" aria-hidden="true"></i>
-      <i class="chi-flag-icon icon-sg" aria-hidden="true"></i>
-      <i class="chi-flag-icon icon-gb" aria-hidden="true"></i>
-      <i class="chi-flag-icon icon-us" aria-hidden="true"></i>`
+        htmlblueprint: `<i class="chi-flag-icon icon-ar" aria-hidden="true"></i>
+<i class="chi-flag-icon icon-au" aria-hidden="true"></i>
+<i class="chi-flag-icon icon-br" aria-hidden="true"></i>
+<i class="chi-flag-icon icon-co" aria-hidden="true"></i>
+<i class="chi-flag-icon icon-de" aria-hidden="true"></i>
+<i class="chi-flag-icon icon-hk" aria-hidden="true"></i>
+<i class="chi-flag-icon icon-in" aria-hidden="true"></i>
+<i class="chi-flag-icon icon-jp" aria-hidden="true"></i>
+<i class="chi-flag-icon icon-mx" aria-hidden="true"></i>
+<i class="chi-flag-icon icon-sg" aria-hidden="true"></i>
+<i class="chi-flag-icon icon-gb" aria-hidden="true"></i>
+<i class="chi-flag-icon icon-us" aria-hidden="true"></i>`
       }
     };
   }
 })
 export default class SolidExample extends Vue {
-  mounted() {
-    chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-  }
+  mounted() {}
 }
 </script>
