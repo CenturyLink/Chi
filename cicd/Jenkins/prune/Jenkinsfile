@@ -1,0 +1,33 @@
+try {
+  library(
+    identifier: 'jsl-jenkins-shared-library-local@release/20211005',
+    retriever: modernSCM(
+      [
+        $class: 'GitSCMSource',
+        remote: "/app/jenkins/git/jsl-jenkins-shared-library.git",
+        extensions: [
+          [$class: 'WipeWorkspace']
+        ]
+      ]
+    )
+  ) _
+} catch (Exception Ex) {
+  library(
+    identifier: 'jsl-jenkins-shared-library@release/20211005',
+    retriever: modernSCM(
+      [
+        $class: 'GitSCMSource',
+        remote: "https://github.com/CenturyLink/jsl-jenkins-shared-library.git",
+        credentialsId: 'GITHUB_APP_CREDENTIALS',
+        extensions: [
+          [$class: 'WipeWorkspace']
+        ]
+      ]
+    )
+  ) _
+}
+
+jslPipelinePortalFrameworkMicroappPruneJob(
+  projectName: 'ux-chi',
+  dockerRepo: 'chi'
+)
