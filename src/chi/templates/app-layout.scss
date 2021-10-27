@@ -5,6 +5,8 @@
   background-color: $app-layout-background-color;
   height: 100%;
   margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
 
   &__header {
     align-items: flex-start;
@@ -35,6 +37,10 @@
     align-items: center;
     display: flex;
     justify-content: flex-start;
+  }
+
+  &__content {
+    flex-grow: 1;
   }
 
   &__header,
