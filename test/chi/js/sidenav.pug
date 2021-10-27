@@ -3,8 +3,9 @@ title: Sidenav
 ---
 script(src='../../js/chi.js')
 
+h3 Legacy Sidenav HTML markup
 .enterprise-nav-menu.chi(style='height: 35rem;')
-  aside#sidenav-0.chi-sidenav.-h--75
+  aside#sidenav-0.chi-sidenav.-h--75(data-cy="sidenav-legacy")
     .chi-sidenav__content
       nav
         ul.chi-sidenav__list
@@ -110,5 +111,213 @@ script(src='../../js/chi.js')
                   | Title H
                   i.chi-icon.icon-external-link.-xs(aria-hidden="true")
 
-  script.
-    chi.sidenav(document.getElementById('sidenav-0'));
+h3 Sidenav Accordion implementation
+aside#sidenav-1.chi-sidenav.-flex--shrink0.-animated
+  .chi-sidenav__content
+    nav
+      ul.chi-sidenav__list
+        li.-active
+          a(href='#drawer-2-1')
+            i.chi-icon.icon-atom(aria-hidden='true')
+            span Active Item
+        li
+          a(href='#drawer-2-2')
+            i.chi-icon.icon-atom(aria-hidden='true')
+            span Menu Item
+        li
+          a(href='#drawer-2-3')
+            i.chi-icon.icon-atom(aria-hidden='true')
+            span Menu Item
+        li
+          a(href='#drawer-2-4')
+            i.chi-icon.icon-atom(aria-hidden='true')
+            span Menu Item
+  .chi-sidenav__drawers
+    #drawer-2-1.chi-drawer.-animated.-left
+      .chi-drawer__header
+        .chi-drawer__title Menu item 1
+        button.chi-button.-icon.-close(aria-label='Close')
+          .chi-button__content
+            i.chi-icon.icon-x(aria-hidden='true')
+      .chi-drawer__content
+        .chi-accordion
+          .chi-accordion__item.-active.-expanded
+            button.chi-accordion__trigger
+              .chi-accordion__title Title 1
+              i.chi-icon.icon-chevron-down(aria-hidden='true')
+            .chi-accordion__content
+              .chi-accordion
+                .chi-accordion__item
+                  button.chi-accordion__trigger
+                    .chi-accordion__title Accordion A
+                    i.chi-icon.icon-chevron-down(aria-hidden='true')
+                  .chi-accordion__content
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 1
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 2
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 3
+                .chi-accordion__item.-active.-expanded
+                  button.chi-accordion__trigger
+                    .chi-accordion__title Accordion B
+                    i.chi-icon.icon-chevron-down(aria-hidden='true')
+                  .chi-accordion__content
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 1
+                    a.-active(href='#exampleHashTarget')
+                      span
+                        | Title 2
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 3
+          a(href='#exampleHashTarget')
+            span
+              | External 1
+              i.chi-icon.icon-external-link.-xs(aria-hidden='true')
+    #drawer-2-2.chi-drawer.-left.-animated
+      .chi-drawer__header
+        .chi-drawer__title Menu item 2
+        button.chi-button.-icon.-close(aria-label='Close')
+          .chi-button__content
+            i.chi-icon.icon-x(aria-hidden='true')
+      .chi-drawer__content
+        .chi-accordion
+          .chi-accordion__item
+            button.chi-accordion__trigger
+              .chi-accordion__title Title 2
+              i.chi-icon.icon-chevron-down(aria-hidden='true')
+            .chi-accordion__content
+              .chi-accordion
+                .chi-accordion__item
+                  button.chi-accordion__trigger
+                    .chi-accordion__title Accordion A
+                    i.chi-icon.icon-chevron-down(aria-hidden='true')
+                  .chi-accordion__content
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 1
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 2
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 3
+                .chi-accordion__item
+                  button.chi-accordion__trigger
+                    .chi-accordion__title Accordion B
+                    i.chi-icon.icon-chevron-down(aria-hidden='true')
+                  .chi-accordion__content
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 1
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 2
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 3
+          a(href='#exampleHashTarget')
+            span
+              | External 2
+              i.chi-icon.icon-external-link.-xs(aria-hidden='true')
+    #drawer-2-3.chi-drawer.-left.-animated
+      .chi-drawer__header
+        .chi-drawer__title Menu item 3
+        button.chi-button.-icon.-close(aria-label='Close')
+          .chi-button__content
+            i.chi-icon.icon-x(aria-hidden='true')
+      .chi-drawer__content
+        .chi-accordion
+          .chi-accordion__item
+            button.chi-accordion__trigger
+              .chi-accordion__title Title 3
+              i.chi-icon.icon-chevron-down(aria-hidden='true')
+            .chi-accordion__content
+              .chi-accordion
+                .chi-accordion__item
+                  button.chi-accordion__trigger
+                    .chi-accordion__title Accordion A
+                    i.chi-icon.icon-chevron-down(aria-hidden='true')
+                  .chi-accordion__content
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 1
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 2
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 3
+                .chi-accordion__item
+                  button.chi-accordion__trigger
+                    .chi-accordion__title Accordion B
+                    i.chi-icon.icon-chevron-down(aria-hidden='true')
+                  .chi-accordion__content
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 1
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 2
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 3
+          a(href='#exampleHashTarget')
+            span
+              | External 3
+              i.chi-icon.icon-external-link.-xs(aria-hidden='true')
+    #drawer-2-4.chi-drawer.-left.-animated
+      .chi-drawer__header
+        .chi-drawer__title Menu item 4
+        button.chi-button.-icon.-close(aria-label='Close')
+          .chi-button__content
+            i.chi-icon.icon-x(aria-hidden='true')
+      .chi-drawer__content
+        .chi-accordion
+          .chi-accordion__item
+            button.chi-accordion__trigger
+              .chi-accordion__title Title 4
+              i.chi-icon.icon-chevron-down(aria-hidden='true')
+            .chi-accordion__content
+              .chi-accordion
+                .chi-accordion__item
+                  button.chi-accordion__trigger
+                    .chi-accordion__title Accordion A
+                    i.chi-icon.icon-chevron-down(aria-hidden='true')
+                  .chi-accordion__content
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 1
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 2
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 3
+                .chi-accordion__item
+                  button.chi-accordion__trigger
+                    .chi-accordion__title Accordion B
+                    i.chi-icon.icon-chevron-down(aria-hidden='true')
+                  .chi-accordion__content
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 1
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 2
+                    a(href='#exampleHashTarget')
+                      span
+                        | Title 3
+          a(href='#exampleHashTarget')
+            span
+              | External 4
+              i.chi-icon.icon-external-link.-xs(aria-hidden='true')
+
+script.
+  chi.sidenav(document.getElementById('sidenav-0'));
+    chi.sidenav(document.getElementById('sidenav-1'));

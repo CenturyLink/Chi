@@ -3,6 +3,7 @@ import { Util } from '../core/util.js';
 import { chi } from '../core/chi';
 import { Drawer, DRAWER_ANIMATION_DURATION } from './drawer';
 import { Dropdown } from './dropdown';
+import { Accordion } from './accordion';
 
 const CHI_TABS_CLASS = 'chi-tabs';
 const COMPONENT_TYPE = 'mobilenav';
@@ -14,6 +15,7 @@ const DRAWER_ITEM_LIST_CLASS = 'chi-mobile-nav__list-item-list';
 const DRAWER_ITEM_TAB_CLASS = 'chi-mobile-nav-item-tab';
 const DRAWER_ITEM_LIST_EXPANDED = '-expanded';
 const DRAWER_NAV_LIST = 'chi-mobile-nav__list';
+const MOBILE_NAV_CONTENT = 'chi-mobile-nav__content';
 const DRAWER_SUBITEM_LIST_TRIGGER_CLASS = 'chi-drawer__subitem-list-trigger';
 const DROPDOWN_TRIGGER = 'chi-dropdown__trigger';
 const FIRST_LEVEL_DRAWER_CLASS = 'chi-mobile-nav__first-level';
@@ -21,6 +23,8 @@ const FIRST_LEVEL_DRAWER_CONTENT_CLASS = 'chi-mobile-nav__first-level-content';
 const MOBILENAV_DRAWERS_CLASS = 'chi-mobile-nav__drawers';
 const MOBILENAV_LIST_TITLE = 'chi-mobile-nav__list-title';
 const SECOND_LEVEL_SHOWN_CLASS = '-second-level-shown';
+const ACCORDION_CLASS = 'chi-accordion';
+const ACCORDION_ITEM_CLASS = "chi-accordion__item";
 
 class MobileNav extends Component {
   constructor(elem) {
@@ -29,6 +33,7 @@ class MobileNav extends Component {
     this._firstLevelDrawer = null;
     this._drawers = [];
     this._dropdowns = [];
+    this._accordions = [];
     this._menuItemAnimation = null;
 
     this._initFirstLevelDrawer();
@@ -144,6 +149,15 @@ class MobileNav extends Component {
       this._drawers,
       (drawer) => {
         const drawerMenuItems = drawer.querySelectorAll(`.${DRAWER_CONTENT_CLASS} .${DRAWER_NAV_LIST} > li > a`);
+        const drawerAccordionElem = drawer
+          .querySelector(`.${DRAWER_CONTENT_CLASS} .${ACCORDION_CLASS}`);
+
+        if (drawerAccordionElem) {
+          const accordion = Accordion.factory(drawerAccordionElem, { expansionMode: 'single' });
+
+          this._accordions.push(accordion);
+          this._initAccordionActivators(accordion);
+        }
 
         Array.prototype.forEach.call(
           drawerMenuItems,
@@ -157,6 +171,23 @@ class MobileNav extends Component {
         );
       }
     );
+  }
+
+  _initAccordionActivators(accordion) {
+    const accordionElem = accordion._elem;
+
+    if (accordionElem) {
+      const activators = accordionElem.querySelectorAll('a');
+  
+      Array.prototype.forEach.call(
+        activators,
+        (anchor) => {
+          anchor.addEventListener('click', () => {
+            this._activateAccordionAnchor(anchor, accordion);
+          });
+        }
+      );
+    }
   }
 
   _getActiveFirstLevelItem() {
@@ -179,6 +210,7 @@ class MobileNav extends Component {
     const currentlyActiveMenuItem = this._getActiveFirstLevelItem();
     const menuItemToActivate = menuItem.parentNode;
     const drawerId = menuItem.getAttribute('href');
+
     const menuItemDrawer = drawerId[0] === '#' ?
       this._drawersContainer.querySelector(`.${DRAWER_CLASS}${menuItem.getAttribute('href')}`) :
       null;
@@ -191,12 +223,15 @@ class MobileNav extends Component {
       if (currentlyActiveMenuItem) {
         Util.removeClass(currentlyActiveMenuItem, chi.classes.ACTIVE);
       }
+
       Util.addClass(menuItemToActivate, chi.classes.ACTIVE);
       this.hide();
     }
 
     if (!menuItemDrawer) {
+      // legacy
       const menuItemToClose = this._drawersContainer.querySelector(`.${DRAWER_CLASS} .${DRAWER_CONTENT_CLASS} .${DRAWER_NAV_LIST} li.${chi.classes.ACTIVE}`);
+      const accordionMenuItemToClose = this._getActiveAccordionAnchor();
 
       if (menuItemToClose) {
         const menuItemList = menuItemToClose.querySelector(`.${DRAWER_ITEM_LIST_CLASS}`);
@@ -214,7 +249,26 @@ class MobileNav extends Component {
           }
         }
       }
+
+      if (accordionMenuItemToClose) {
+        this._deactivateAccordionItemAncestors(accordionMenuItemToClose);
+      }
     }
+  }
+
+  _deactivateAccordionItemAncestors(anchor) {
+    for (
+      let cur = anchor;
+      cur && !Util.hasClass(cur, MOBILENAV_DRAWERS_CLASS);
+      cur = cur.parentNode
+    ) {
+      if (Util.hasClass(cur, ACCORDION_ITEM_CLASS)) {
+        Util.removeClass(cur, chi.classes.ACTIVE);
+        Util.removeClass(cur, chi.classes.EXPANDED);
+      }
+    }
+
+    Util.removeClass(anchor, chi.classes.ACTIVE);
   }
 
   _closeTabsList(menuItem) {
@@ -271,6 +325,92 @@ class MobileNav extends Component {
       _removeSecondLevelActive();
       Util.addClass(menuItem, chi.classes.ACTIVE);
     }
+  }
+
+  _getActiveAccordionItems() {
+    const activeAccordionItems = this._drawersContainer
+      .querySelectorAll(`.${DRAWER_CLASS} .${ACCORDION_CLASS} .${ACCORDION_ITEM_CLASS}.${chi.classes.ACTIVE}`);
+
+    return activeAccordionItems || null;
+  }
+
+  _getActiveAccordionAnchor() {
+    const activeItem = this._drawersContainer.querySelector(`.${DRAWER_CLASS} .${ACCORDION_CLASS} a.${chi.classes.ACTIVE}`);
+
+    return activeItem || null;
+  }
+
+  _getAssociatedMenuItem(drawerId) {
+    return this._firstLevelDrawer._drawerElem.querySelector(
+      'ul > li a[href="#' + drawerId + '"'
+    );
+  }
+
+  _deactivatePreviousAccordionAnchor(anchor, accordion) {
+    const ancestorAccordionItems = [];
+
+    if (anchor) {
+      const activeAccordionItems = this._getActiveAccordionItems();
+
+      Util.addClass(anchor, chi.classes.ACTIVE);
+      this._hideMobileNav();
+
+      for (
+        let cur = anchor;
+        cur && !Util.hasClass(cur, MOBILENAV_DRAWERS_CLASS);
+        cur = cur.parentNode
+      ) {
+        if (Util.hasClass(cur, ACCORDION_ITEM_CLASS)) {
+          const activeSiblings = cur.parentNode.querySelector(`.${ACCORDION_ITEM_CLASS}.${chi.classes.ACTIVE}`);
+
+          ancestorAccordionItems.push(cur);
+          if (activeSiblings) {
+            Array.prototype.forEach.call(
+              activeSiblings,
+              activeItem => {
+                Util.removeClass(activeItem, chi.classes.ACTIVE);
+              }
+            );
+          }
+          Util.addClass(cur, chi.classes.ACTIVE);
+        } else if (Util.hasClass(cur, DRAWER_CLASS)) {
+          const associatedMenuItem = this._getAssociatedMenuItem(cur.getAttribute('id'));
+
+          this._activateFirstLevelMenuItem(associatedMenuItem);
+        }
+      }
+
+      if (activeAccordionItems) {
+        Array.prototype.forEach.call(
+          activeAccordionItems,
+          (item) => {
+            if (!ancestorAccordionItems.includes(item)) {
+              Util.removeClass(item, chi.classes.ACTIVE);
+              accordion.hide(item);
+            }
+          }
+        );
+      }
+
+      Array.prototype.forEach.call(
+        this._accordions,
+        (accordionInstance) => {
+          if (accordionInstance !== accordion) {
+            accordionInstance.collapseAll();
+          }
+        }
+      );
+    }
+  }
+
+  _activateAccordionAnchor(anchor, accordion) {
+    const activeItem = this._getActiveAccordionAnchor();
+
+    if (activeItem) {
+      Util.removeClass(activeItem, chi.classes.ACTIVE);
+    }
+
+    this._deactivatePreviousAccordionAnchor(anchor, accordion);
   }
 
   _handleClickOnSecondLevelDrawer(e) {

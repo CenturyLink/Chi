@@ -948,6 +948,7 @@ $mobile-nav-logout-text-color:              $color-text-primary;
 $mobile-nav-list-item-text-color:           $color-text-base;
 $mobile-nav-list-item-active-text-color:    $color-text-primary;
 $mobile-nav-list-item-expanded-text-color:  $color-text-base;
+$mobile-nav-list-item-expanded-background-color:  $color-background-base;
 $mobile-nav-list-item-hover-background-color: $color-grey-20;
 $mobile-nav-list-item-hover-text-color:     $color-text-base;
 $mobile-nav-list-item-active-background-color: $color-blue-20;
@@ -956,6 +957,7 @@ $mobile-nav-list-item-icon-size:            1.25rem;
 $mobile-nav-list-item-trigger-icon-color:   $color-icon-base;
 $mobile-nav-list-item-active-trigger-icon-color:  $color-icon-primary;
 $mobile-nav-list-item-title-font-weight:    $font-weight-normal;
+$mobile-nav-list-item-active-box-shadow:    inset 0.125rem 0 0 $color-border-primary;
 
 // Modal
 $modal-animated-transition-duration:        0.5s;
@@ -1295,6 +1297,7 @@ $sidenav-item-active-background-color:      $color-blue-20;
 $sidenav-drawer-header-background-color:    $color-background-base-dark;
 $sidenav-drawer-close-icon-color:           inherit;
 $sidenav-item-title-font-weight:            $font-weight-normal;
+$sidenav-item-title-line-height:            1.25rem;
 $sidenav-item-expanded-background-color:    $color-background-white;
 $sidenav-item-expanded-box-shadow:          none;
 $sidenav-item-active-expanded-background-color: $color-background-white;
