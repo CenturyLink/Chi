@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20211014',
+        identifier: 'jsl-jenkins-shared-library-local@release/20211025',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-    identifier: 'jsl-jenkins-shared-library@release/20211014',
+    identifier: 'jsl-jenkins-shared-library@release/20211025',
     retriever: modernSCM(
       [
         $class: 'GitSCMSource',
@@ -58,6 +58,8 @@ pipeline {
       GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
       GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
       DOCKER_CREDENTIALS = 'nexus-secrets'
+      KUBE_CREDENTIALS = 'kube-secret'
+      KUBE_CREDENTIALS_TEST = 'kube-secret-test'
       AMAZON_CREDENTIALS = 'awsCredentialsPR'
       AMAZON_CREDENTIALS_PR = 'awsCredentials'
       SONARQUBE_CREDENTIALS = 'sonar-credentials'
@@ -73,10 +75,15 @@ pipeline {
       // Add
       PROJECT_NAME = 'ux-chi'
       PROJECT_MAL = "chi"
+      DOCKER_REPO = 'chi'
 
       BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
       COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
       PULL_REQUEST="pr-${env.CHANGE_ID}"
+      IMAGE_NAME = "${env.PROJECT_NAME}"
+      IMAGE_TAG = "${env.PULL_REQUEST}"
+      KUBE_DOCKER_SECRET_NAME = "${env.PROJECT_NAME}-${env.PULL_REQUEST}"
+      KUBE_DOCKER_SECRET_NAME_TEST = "${env.PROJECT_NAME}-${env.BRANCH_NAME}"
       PROD_BRANCH="master"
 
       // ServiceNow Variables
@@ -836,6 +843,37 @@ PolicyDocument
               }
             }
           }
+          stage ('Publish Dev build to k8s') {
+            when {
+              beforeAgent true
+              allOf {
+                not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+                not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+                not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+              }
+            }
+            steps {
+              script {
+                sh "rm -rf dist"
+                unstash name: "DIST-CHI"
+                jslBuildAndPushToNexus('./cicd/docker/nginx/Dockerfile')
+
+                def chiManifest = 'chiManifest.yml'
+                def chiManifestFile = "./${chiManifest}"
+                sh "rm -rf ${chiManifestFile}"
+                jslGenerateManifestForSimpleNginx(chiManifestFile)
+                jslDeployK8s(chiManifestFile)
+                archiveArtifacts artifacts: chiManifest, fingerprint: true
+
+                echo "This will publish dev build to K8s"
+                if (env.CHANGE_ID != null) {
+                  echo "Sending Jira Deployment for DEV"
+                  jslDeploymentContractValidationWrite("development")
+                  jslJiraSendDeploymentInfo('development', true)
+                }
+              }
+            }
+          }
           stage ('Publish AssetServer Build') {
             when {
               beforeAgent true
@@ -1054,7 +1092,7 @@ PRDesc
       */
       success {
         jslNotification('success')
-        jslGitHubMessage("You can check this PRs instance in https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io", env.CHANGE_ID)
+        jslGitHubMessage("You can check this PRs instance in https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io (external) and in https://nginx-${BRANCH_NAME == 'master' ? BRANCH_NAME : PULL_REQUEST}-ux-chi.kubeodc-test.corp.intranet/ (internal)", env.CHANGE_ID)
         // cleanWs()
       }
       failure {
