@@ -45,38 +45,35 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `
-        <input type="file" class="chi-file-input" id="unique-id-di1" aria-label="Choose file" disabled>
-        <label for="unique-id-di1">No file chosen</label>
+        htmlblueprint: `<input type="file" class="chi-file-input" id="unique-id-di1" aria-label="Choose file" disabled>
+<label for="unique-id-di1">No file chosen</label>
 
-        <script>
-        var inputFiles = document.querySelectorAll('input[type="file"].chi-file-input');
+<script>
+var inputFiles = document.querySelectorAll('input[type="file"].chi-file-input');
 
-        Array.prototype.forEach.call(inputFiles, function(input) {
-          var label = input.nextElementSibling;
+Array.prototype.forEach.call(inputFiles, function(input) {
+  var label = input.nextElementSibling;
 
-          input.addEventListener('change', function(e) {
-            var fileName = '';
+  input.addEventListener('change', function(e) {
+    var fileName = '';
 
-            if (this.files && this.files.length > 1) {
-              fileName = this.files.length + ' files selected';
-            } else {
-              fileName = e.target.value.split('\\').pop();
-            }
+    if (this.files && this.files.length > 1) {
+      fileName = this.files.length + ' files selected';
+    } else {
+      fileName = e.target.value.split('\\').pop();
+    }
 
-            if (fileName) {
-              label.innerHTML = fileName;
-            }
-          });
-        });
-        <\/script>`
+    if (fileName) {
+      label.innerHTML = fileName;
+    }
+  });
+});
+<\/script>`
       }
     };
   }
 })
 export default class DisabledExample extends Vue {
-  mounted() {
-    chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-  }
+  mounted() {}
 }
 </script>

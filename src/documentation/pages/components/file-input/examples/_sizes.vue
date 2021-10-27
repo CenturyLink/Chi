@@ -44,29 +44,26 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `
-        <!-- -xs -->
-        <input type="file" class="chi-file-input -xs" id="example-file-xs" aria-label="Choose file">
-        <label for="example-file-xs">No file chosen</label>
-        <!-- -sm -->
-        <input type="file" class="chi-file-input -sm" id="example-file-sm" aria-label="Choose file">
-        <label for="example-file-sm">No file chosen</label>
-        <!-- -md -->
-        <input type="file" class="chi-file-input -md" id="example-file-md" aria-label="Choose file">
-        <label for="example-file-md">No file chosen</label>
-        <!-- -lg -->
-        <input type="file" class="chi-file-input -lg" id="example-file-lg" aria-label="Choose file">
-        <label for="example-file-lg">No file chosen</label>
-        <!-- -xl -->
-        <input type="file" class="chi-file-input -xl" id="example-file-xl" aria-label="Choose file">
-        <label for="example-file-xl">No file chosen</label>`
+        htmlblueprint: `<!-- -xs -->
+<input type="file" class="chi-file-input -xs" id="example-file-xs" aria-label="Choose file">
+<label for="example-file-xs">No file chosen</label>
+<!-- -sm -->
+<input type="file" class="chi-file-input -sm" id="example-file-sm" aria-label="Choose file">
+<label for="example-file-sm">No file chosen</label>
+<!-- -md -->
+<input type="file" class="chi-file-input -md" id="example-file-md" aria-label="Choose file">
+<label for="example-file-md">No file chosen</label>
+<!-- -lg -->
+<input type="file" class="chi-file-input -lg" id="example-file-lg" aria-label="Choose file">
+<label for="example-file-lg">No file chosen</label>
+<!-- -xl -->
+<input type="file" class="chi-file-input -xl" id="example-file-xl" aria-label="Choose file">
+<label for="example-file-xl">No file chosen</label>`
       }
     };
   }
 })
 export default class SizesExample extends Vue {
-  mounted() {
-    chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-  }
+  mounted() {}
 }
 </script>
