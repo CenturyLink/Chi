@@ -8,7 +8,9 @@
     </h3>
     <slot name="example-description"></slot>
     <div class="example -mb--3">
-      <slot name="example"></slot>
+      <div :class="padding || '-p--3 -p-lg--6'">
+        <slot name="example"></slot>
+      </div>
       <div class="example-tabs -pl--2">
         <ul class="chi-tabs -animated" :id="'code-snippet-tabs'+id" role="tabs">
           <li :class="[tab.active ? '-active' : '', tab.disabled ? '-disabled' : '']" v-for="tab in tabs" :key="tab.id">
@@ -36,6 +38,7 @@ export default class ComponentExample extends Vue {
   @Prop() id?: string;
   @Prop() title?: string;
   @Prop() tabs?: TabsInterface[];
+  @Prop() padding?: string;
 
   chiTabs: any;
 
