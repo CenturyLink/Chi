@@ -1,4 +1,4 @@
-import { Component, Element, Prop, Watch, h, State } from '@stencil/core';
+import { Component, Element, Prop, Watch, h, State, Event, EventEmitter } from '@stencil/core';
 import { AppLayoutFormats, APP_LAYOUT_FORMATS } from '../../constants/constants';
 
 @Component({
@@ -22,7 +22,7 @@ export class AppLayout {
   /**
    *  to set a links destination url
    */
-  @Prop({ reflect: true }) backlinkHref: string = '#';
+  @Prop({ reflect: true }) backlinkHref: string;
 
   /**
    *  To define app layout subtitle
@@ -41,6 +41,11 @@ export class AppLayout {
   @State() appLayoutPageLevelActions: boolean;
 
   @State() appLayoutFooter: boolean;
+
+  /**
+   * The user has clicked the backlink
+   */
+  @Event({ eventName: 'chiBacklinkClick' }) eventBacklinkClick: EventEmitter;
 
   @Watch('format')
   typeValidation(newValue: string) {
@@ -81,8 +86,12 @@ export class AppLayout {
     }
   }
 
+  _handlerBacklinkClick() {
+    this.eventBacklinkClick.emit();
+  }
+
   render() {
-    const appLayoutBackLink = this.backlink && <a class="chi-link" href={this.backlinkHref}><div class="chi-link__content"><i class="chi-icon icon-chevron-left -xs"></i><span class="-text--md">{this.backlink}</span></div></a>;
+    const appLayoutBackLink = this.backlink && <a class="chi-link" onClick={() => this._handlerBacklinkClick()} href={this.backlinkHref}><div class="chi-link__content"><i class="chi-icon icon-chevron-left -xs"></i><span class="-text--md">{this.backlink}</span></div></a>;
     const appLayoutHelpIcon = this.appLayoutHelpIcon && <slot name="help-icon"></slot>;
     const appLayoutTitle = this.appLayoutTitle && <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">{this.appLayoutTitle}{appLayoutHelpIcon}</div>;
     const appLayoutSubTitle = this.subtitle && <div class="-text--md -pl--2 -bl--1">{this.subtitle}</div>;
