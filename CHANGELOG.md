@@ -1,4 +1,25 @@
 # CHANGELOG
+## 5.5.0 (October 28, 2021)
+### Components
+#### Added
+* Added: App layout web component `chiBacklinkClick` event emission.
+* Added: Mobile nav now supports 4th level of navigation.
+* Added: Text utility classes now support `-text--2xs` which renders text with an 11px font-size.
+* Added: Icons `icon-ticket-wrench-multiple`, `icon-hand-gear`, `icon-list-alt`, `icon-inbox-multiple`, `icon-unlock`, and `icon-unlock-outline`.
+* Added: Sidenav now supports 4th level of navigation.
+* Added: Column customization Chi Vue component now supports automatic alphabetical order of available columns.
+#### Changed
+* Changed: Column customization Chi Vue component reset and cancel behavior has been changed for better UI/UX consistency.
+#### Fixed
+* Fixed: Data table select all checkbox state issue in server-side mode.
+* Fixed: Dropdown trigger button issue which rendered incorrect padding in `-lg` and `-xl` sizes.
+* Fixed: Data table `chiPageChange` event emission has been improved in server-side mode.
+### Documentation
+#### Added
+* Added: Sidenav properties page now includes respective `configs` and `methods`.
+#### Changed
+* Changed: Advanced Filters Popover has changed clear filters button for better UX.
+
 ## 5.4.0 (September 30, 2021)
 ### Components
 #### Added
