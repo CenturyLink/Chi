@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-10-21T16:37:08",
+  "timestamp": "2021-10-28T09:24:03",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1909,7 +1909,6 @@
           "reflectToAttr": true,
           "docs": "to set a links destination url",
           "docsTags": [],
-          "default": "'#'",
           "values": [
             {
               "type": "string"
@@ -1953,7 +1952,17 @@
         }
       ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "chiBacklinkClick",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "The user has clicked the backlink",
+          "docsTags": []
+        }
+      ],
       "styles": [],
       "slots": [],
       "dependents": [],

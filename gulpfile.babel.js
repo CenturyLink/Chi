@@ -22,6 +22,7 @@ const requires = {
   'build-website-styles': require('./tasks/build-website-styles.js'),
   'build-website-views': require('./tasks/build-website-views.js'),
   'build-website': require('./tasks/build-website.js'),
+  'copy-chi-ce-docs-scripts': require('./tasks/copy-chi-ce-docs-scripts'),
   'copy-chi-ce-scripts': require('./tasks/copy-chi-ce-scripts'),
   'copy-chi-vue-scripts': require('./tasks/copy-chi-vue-scripts'),
   'sri-chi-assets' : require('./tasks/sri-chi-assets'),
