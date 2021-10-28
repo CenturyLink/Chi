@@ -8,7 +8,7 @@
     </h3>
     <slot name="example-description"></slot>
     <div class="example -mb--3">
-      <div :class="padding || '-p--3 -p-lg--6'">
+      <div :class="padding || '-p--3'">
         <slot name="example"></slot>
       </div>
       <div class="example-tabs -pl--2">
