@@ -1,9 +1,8 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base_lumen_centurylink" :tabs="exampleTabs">
     div(slot="example")
-      .-p--3
-        input.chi-file-input(type="file", id="file01", aria-label="Choose file")
-        label(for="file01") No file chosen
+      input.chi-file-input(type="file", id="file01", aria-label="Choose file")
+      label(for="file01") No file chosen
     div(slot="code-webcomponent")
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

@@ -1,13 +1,12 @@
 <template lang="pug">
 <ComponentExample title="Disabled" id="disabled_lumen_centurylink" :tabs="exampleTabs">
   div(slot='example')
-    .-p--3
-      input#unique-id-di1.chi-file-input(
-        type='file',
-        aria-label='Choose file',
-        disabled
-      )
-      label(for='unique-id-di1') No file chosen
+    input#unique-id-di1.chi-file-input(
+      type='file',
+      aria-label='Choose file',
+      disabled
+    )
+    label(for='unique-id-di1') No file chosen
   div(slot='code-webcomponent')
     <pre class="language-html">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
