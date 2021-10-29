@@ -24,8 +24,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-declare const chi: any;
-
 @Component({
   data: () => {
     return {
