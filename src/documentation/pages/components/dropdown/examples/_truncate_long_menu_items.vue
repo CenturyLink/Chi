@@ -1,0 +1,69 @@
+<template lang="pug">
+  div
+    h4 Truncate long menu-items
+    <ComponentExample id="truncate_long_menu_items" :tabs="exampleTabs" backgroundColor="#eee">
+      div(slot="example-description")
+        p.-text 
+          | Wrap the menu-item content in a div with the class <code>-flex--ellipsis</code> to truncate long strings.
+      div(slot="example")
+        .chi-dropdown__menu.-active(style="width:10rem")
+          a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+          a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+          a.chi-dropdown__menu-item(id='example-truncated-menu-item' href='#exampleLink' data-tooltip='Item 3 with truncated longer text')
+            .-flex--ellipsis Item 3 with truncated longer text
+          a.chi-dropdown__menu-item(href='#exampleLink') Item 4
+      div(slot="code-webcomponent")
+        <pre class="language-html">
+          <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+        </pre>
+      div(slot="code-htmlblueprint")
+        <pre class="language-html">
+          <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+        </pre>
+    </ComponentExample>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+declare const chi: any;
+
+@Component({
+  data: () => {
+    return {
+      string: 'String',
+      exampleTabs: [
+        {
+          disabled: true,
+          id: 'webcomponent',
+          label: 'Web component'
+        },
+        {
+          active: true,
+          id: 'htmlblueprint',
+          label: 'HTML blueprint'
+        }
+      ],
+      codeSnippets: {
+        webcomponent: `Web component code snippet`,
+        htmlblueprint: `<div class="chi-dropdown__menu" style="width:10rem">
+  <a class="chi-dropdown__menu-item" href="#">Item 1</a>
+  <a class="chi-dropdown__menu-item" href="#">Item 2</a>
+  <a class="chi-dropdown__menu-item" href="#">
+    <div class="-flex--ellipsis" data-tooltip="Item 3 with truncated longer text">Item 3 with truncated longer text</div>
+  </a>
+  <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+</div>
+
+<!-- Tooltip for truncated text -->
+<\script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`
+      }
+    };
+  }
+})
+export default class TruncateLongMenuItemsExample extends Vue {
+  mounted() {
+    chi.tooltip(document.getElementById('example-truncated-menu-item'));
+  }
+}
+</script>
