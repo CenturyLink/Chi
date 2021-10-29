@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20211025',
+        identifier: 'jsl-jenkins-shared-library-local@release/20211028',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-    identifier: 'jsl-jenkins-shared-library@release/20211025',
+    identifier: 'jsl-jenkins-shared-library@release/20211028',
     retriever: modernSCM(
       [
         $class: 'GitSCMSource',
@@ -657,16 +657,15 @@ pipeline {
                 dir 'cicd/docker/qualitygate'
                 label 'Docker-enabled'
               }
-          }        
+          }
           when {
               beforeAgent true
-              expression { return false }  // skipping until QG1 is fixed
-              // allOf {
-              //   not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              //   not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-              //   not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-              // }
-          }          
+              allOf {
+                not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+                not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+                not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+              }
+          }
           steps {
               script {
                   def isTestAvailable = true
@@ -680,17 +679,17 @@ pipeline {
                     echo "QualityGate1-Unit"
                     jslCheckQualityGates('reports/ci_report/non_responsive/xunit.xml', 'QualityGate1-Unit')
                   }
-                  echo "QualityGate1-StaticCodeAnalysis"                    
+                  echo "QualityGate1-StaticCodeAnalysis"
                   jslAdoptionSonarStats('sonarqubeStats.json')
                   jslCheckSonarQualityGate('cicd/qgatethresholds/qgate1-sonar.json', 'sonarqubeStats.json')
                   if ("${currentBuild.currentResult}" != "UNSTABLE") {
                     jslCheckQualityGates('sonarqubeStats.json', 'QualityGate1-StaticCodeAnalysis', 'sonarqubestats', 'cicd/qgatethresholds/qgate1-sonar.json')
                   } else {
                     echo "skipping CheckQualityGate of StaticCodeAnalysis: jslCheckSonarQualityGate failed"
-                  }                  
+                  }
               }
           }
-      }      
+      }
       stage('Version check & Publish') {
         when {
           beforeAgent true
