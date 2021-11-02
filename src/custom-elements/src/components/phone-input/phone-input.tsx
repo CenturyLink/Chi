@@ -112,19 +112,19 @@ export class ChiPhoneInput {
 
   @Watch('_prefixLiteral')
   changedPrefix(): void {
-    let code: CountryCallingCode;
-
     if (this._prefixLiteral) {
-      code = this._prefixLiteral.trim().substr(1);
-    } else if (this.defaultCountry && isSupportedCountry(this.defaultCountry)) {
-      code = getCountryCallingCode(this.defaultCountry as CountryCode);
-    }
-    const selectedCountry: Country = this._countries.find(
-      country => country.dialCode === code
-    );
+      const code: CountryCallingCode = this._prefixLiteral.trim().substr(1);
+      const selectedCountry: Country = this._countries.find(
+        country => country.dialCode === code
+      );
 
-    if (selectedCountry) {
-      this._country = selectedCountry;
+      if (selectedCountry) {
+        this._country = selectedCountry;
+      }
+    } else if (this.defaultCountry && isSupportedCountry(this.defaultCountry)) {
+      this._country = this._countries.find(
+        country => country.countryAbbr === this.defaultCountry
+      );
     }
   }
 
@@ -180,9 +180,9 @@ export class ChiPhoneInput {
   };
 
   prefixChangeHandler(country: Country): void {
+    this._prefixLiteral = `+${country.dialCode}`;
     this._country = country;
     this._search = '';
-    this._prefixLiteral = `+${country.dialCode}`;
     this.chiChange.emit(`${this._prefixLiteral}${this._suffix}`);
     this._dropdownActive = false;
   }
@@ -213,7 +213,11 @@ export class ChiPhoneInput {
         {filteredCountries.map(country => (
           <a
             href="javascript:void(0);"
-            class={`${DROPDOWN_CLASSES.MENU_ITEM}`}
+            class={`${DROPDOWN_CLASSES.MENU_ITEM} ${
+              this._country.countryAbbr === country.countryAbbr
+                ? ACTIVE_CLASS
+                : ''
+            }`}
             onClick={() => this.prefixChangeHandler(country)}
           >
             <span>{country.name}</span>
