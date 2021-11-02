@@ -59,7 +59,7 @@ declare const chi: any;
     };
   }
 })
-export default class AnimateExample extends Vue {
+export default class Animate extends Vue {
   mounted() {
     chi.dropdown(document.getElementById('dropdown-animate'));
   }

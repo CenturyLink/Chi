@@ -53,7 +53,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class StatesExample extends Vue {
+export default class States extends Vue {
   mounted() {}
 }
 </script>

@@ -250,7 +250,7 @@ declare const chi: any;
     };
   }
 })
-export default class PositioningExample extends Vue {
+export default class Positioning extends Vue {
   mounted() {
     chi.dropdown(
       document.querySelectorAll('.chi-dropdown .chi-dropdown__trigger')

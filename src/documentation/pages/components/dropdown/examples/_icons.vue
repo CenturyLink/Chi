@@ -84,7 +84,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class IconsExample extends Vue {
+export default class Icons extends Vue {
   mounted() {}
 }
 </script>

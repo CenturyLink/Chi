@@ -58,7 +58,7 @@ declare const chi: any;
     };
   }
 })
-export default class HoverExample extends Vue {
+export default class Hover extends Vue {
   mounted() {}
 }
 </script>

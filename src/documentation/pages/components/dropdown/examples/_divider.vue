@@ -54,7 +54,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class DividerExample extends Vue {
+export default class Divider extends Vue {
   mounted() {}
 }
 </script>

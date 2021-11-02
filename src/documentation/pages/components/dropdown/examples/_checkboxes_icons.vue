@@ -103,7 +103,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class CheckboxesIconsExample extends Vue {
+export default class CheckboxesIcons extends Vue {
   mounted() {}
 }
 </script>

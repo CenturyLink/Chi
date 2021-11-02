@@ -86,7 +86,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class RadioButtonsExample extends Vue {
+export default class RadioButtons extends Vue {
   mounted() {}
 }
 </script>

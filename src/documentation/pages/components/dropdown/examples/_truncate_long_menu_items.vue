@@ -61,7 +61,7 @@ declare const chi: any;
     };
   }
 })
-export default class TruncateLongMenuItemsExample extends Vue {
+export default class TruncateLongMenuItems extends Vue {
   mounted() {
     chi.tooltip(document.getElementById('example-truncated-menu-item'));
   }

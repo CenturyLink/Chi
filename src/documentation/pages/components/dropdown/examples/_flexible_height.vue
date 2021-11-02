@@ -50,7 +50,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class FlexibleHeightExample extends Vue {
+export default class FlexibleHeight extends Vue {
   mounted() {}
 }
 </script>

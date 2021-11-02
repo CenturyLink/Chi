@@ -59,7 +59,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class RangeInputExample extends Vue {
+export default class RangeInput extends Vue {
   mounted() {}
 }
 </script>

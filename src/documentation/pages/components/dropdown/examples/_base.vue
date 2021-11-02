@@ -59,7 +59,7 @@ declare const chi: any;
     };
   }
 })
-export default class BaseExample extends Vue {
+export default class Base extends Vue {
   mounted() {
     chi.dropdown(document.getElementById('dropdown-1'));
   }

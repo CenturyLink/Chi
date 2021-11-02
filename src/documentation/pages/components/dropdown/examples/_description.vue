@@ -69,7 +69,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class DescriptionExample extends Vue {
+export default class Description extends Vue {
   mounted() {}
 }
 </script>

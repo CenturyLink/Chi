@@ -59,7 +59,7 @@ declare const chi: any;
     };
   }
 })
-export default class DataTargetExample extends Vue {
+export default class DataTarget extends Vue {
   mounted() {
     chi.dropdown(document.getElementById('dropdown-2'));
   }

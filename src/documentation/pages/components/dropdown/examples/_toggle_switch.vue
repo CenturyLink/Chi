@@ -101,7 +101,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class ToggleSwitchExample extends Vue {
+export default class ToggleSwitch extends Vue {
   mounted() {}
 }
 </script>

@@ -64,7 +64,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class SearchBoxExample extends Vue {
+export default class SearchBox extends Vue {
   mounted() {}
 }
 </script>
