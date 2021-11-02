@@ -56,9 +56,5 @@ declare const chi: any;
     };
   }
 })
-export default class TextTransform extends Vue {
-  mounted() {
-    chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-  }
-}
+export default class TextTransform extends Vue {}
 </script>

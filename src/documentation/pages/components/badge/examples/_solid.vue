@@ -97,9 +97,5 @@ declare const chi: any;
     };
   }
 })
-export default class Solid extends Vue {
-  mounted() {
-    chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-  }
-}
+export default class Solid extends Vue {}
 </script>

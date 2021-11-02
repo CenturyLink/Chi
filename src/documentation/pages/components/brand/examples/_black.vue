@@ -73,9 +73,5 @@ declare const chi: any;
     }
   }
 })
-export default class Black extends Vue {
-  mounted() {
-    chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-  }
-}
+export default class Black extends Vue {}
 </script>
