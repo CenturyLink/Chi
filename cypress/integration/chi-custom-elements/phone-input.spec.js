@@ -1,3 +1,4 @@
+const ACTIVE_CLASS = '-active';
 const DANGER_CLASS = '-danger';
 const WARNING_CLASS = '-warning';
 const SUCCESS_CLASS = '-success';
@@ -252,6 +253,17 @@ describe('Phone Input', () => {
         .find(`.chi-dropdown`)
         .find('button')
         .should('have.text', '+1');
+    });
+
+    it(`Should show the default country with ${ACTIVE_CLASS} class`, () => {
+      cy.get(`[data-cy='phone-input-default-country']`)
+        .find(`.chi-dropdown`)
+        .as('trigger')
+        .click()
+        .contains('United States')
+        .as('US');
+      hasClassAssertion('@US', ACTIVE_CLASS);
+      cy.get('@trigger').click();
     });
   });
 
