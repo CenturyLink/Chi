@@ -201,27 +201,27 @@ export class ChiPhoneInput {
         }}
       ></chi-search-input>
     );
+    const filteredCountries = this._countries.filter(country => {
+      return (
+        country.name.toLowerCase().indexOf(this._search.toLowerCase()) > -1 ||
+        country.dialCode.indexOf(this._search) > -1 ||
+        ('+' + country.dialCode).indexOf(this._search) > -1
+      );
+    });
     const countries = (
       <div class={`${DROPDOWN_CLASSES.MENU_CONTENT}`}>
-        {this._countries
-          .filter(country => {
-            return (
-              country.name.toLowerCase().indexOf(this._search.toLowerCase()) >
-              -1
-            );
-          })
-          .map(country => (
-            <a
-              href="javascript:void(0);"
-              class={`${DROPDOWN_CLASSES.MENU_ITEM}`}
-              onClick={() => this.prefixChangeHandler(country)}
-            >
-              <span>{country.name}</span>
-              <span
-                class={`${PHONE_INPUT_CLASSES.CODE}`}
-              >{`+${country.dialCode}`}</span>
-            </a>
-          ))}
+        {filteredCountries.map(country => (
+          <a
+            href="javascript:void(0);"
+            class={`${DROPDOWN_CLASSES.MENU_ITEM}`}
+            onClick={() => this.prefixChangeHandler(country)}
+          >
+            <span>{country.name}</span>
+            <span
+              class={`${PHONE_INPUT_CLASSES.CODE}`}
+            >{`+${country.dialCode}`}</span>
+          </a>
+        ))}
       </div>
     );
 
