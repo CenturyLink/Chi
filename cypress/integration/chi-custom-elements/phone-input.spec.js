@@ -124,7 +124,7 @@ describe('Phone Input', () => {
         });
     });
 
-    it('Should search a country successfully', () => {
+    it('Should search a country by name successfully', () => {
       cy.get(`@dropdownTrigger`)
         .click()
         .find('input')
@@ -143,6 +143,37 @@ describe('Phone Input', () => {
           cy.get('@countryCodes')
             .children()
             .should('have.length', 1);
+          cy.get('@countryCodes')
+            .children()
+            .should('contain', 'Afghanistan');
+        });
+      cy.get('@searchInput').clear();
+      cy.get('@dropdownTrigger').click();
+    });
+
+    it('Should search a country by dial code successfully', () => {
+      cy.get(`@dropdownTrigger`)
+        .click()
+        .find('input')
+        .as('searchInput')
+        .type('+93{Enter}')
+        .then(() => {
+          cy.get('@base')
+            .find('.chi-dropdown__menu-content')
+            .as('countryCodes')
+            .children()
+            .should('have.length', 1);
+          cy.get('@countryCodes')
+            .children()
+            .should('contain', 'Afghanistan');
+        });
+      cy.get('@searchInput').clear();
+      cy.get('@searchInput')
+        .type('93{Enter}')
+        .then(() => {
+          cy.get('@countryCodes')
+            .children()
+            .should('have.length', 3);
           cy.get('@countryCodes')
             .children()
             .should('contain', 'Afghanistan');
