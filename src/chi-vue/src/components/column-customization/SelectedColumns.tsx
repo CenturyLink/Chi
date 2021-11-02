@@ -28,11 +28,7 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
   _generateOptions(data: DataTableColumn[]) {
     return data?.map((column: DataTableColumn) => {
       return (
-        <option
-          disabled={column.locked}
-          onClick={() => this._triggerSelectRowState()}
-          value={column.name}
-          class={column.locked ? '-locked' : ''}>
+        <option disabled={column.locked} value={column.name} class={column.locked ? '-locked' : ''}>
           {column.label || column.name}
         </option>
       );
@@ -45,17 +41,24 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
     }
   }
 
-  _triggerSelectRowState() {
-    this.$emit(DATA_TABLE_EVENTS.TOOLBAR.COLUMNS_SELECTED);
-  }
-
   render() {
     const standardOptions = this.$props.standardColumns ? this._generateOptions(this.$props.standardColumns) : null;
 
     return (
       <div>
         <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_BOLD}>Selected Columns</div>
-        <select class={`chi-select selected-columns`} ref="select" multiple>
+        <select
+          class={`chi-select selected-columns`}
+          ref="select"
+          multiple
+          onchange={(e: Event) =>
+            this.$emit(
+              DATA_TABLE_EVENTS.COLUMNS_SELECTED,
+              Array.from((e.target as HTMLSelectElement).selectedOptions).map(
+                (option: HTMLOptionElement) => option.value
+              )
+            )
+          }>
           {standardOptions}
         </select>
       </div>

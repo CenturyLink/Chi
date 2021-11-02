@@ -14,11 +14,11 @@ export default class ColumnCustomizationContent extends Vue {
   @Prop() version?: number;
   @Prop() selectedColumns?: DataTableColumn[];
 
-  canMoveUp = true;
-  canMoveDown = true;
+  selectedColumnsNames: Array<string> = [];
+  areAvailableColumnsSelected = false;
   key = 0;
-  _availableColumns?: DataTableColumn[] = [];
-  _selectedColumns?: DataTableColumn[] = [];
+  _availableColumns: DataTableColumn[] = [];
+  _selectedColumns: DataTableColumn[] = [];
   _preSelection?: HTMLOptionElement;
   _availableColumnsComponent?: AvailableColumns;
   _selectedColumnsComponent?: SelectedColumns;
@@ -71,9 +71,42 @@ export default class ColumnCustomizationContent extends Vue {
         refButton = 'buttonMoveUp';
       } else if (icon === 'chevron-down') {
         refButton = 'buttonMoveDown';
+      } else {
+        refButton = 'buttonSelect';
       }
 
-      const isDisabled = (icon === 'chevron-up' && !this.canMoveUp) || (icon === 'chevron-down' && !this.canMoveDown);
+      const canMove = (direction: string): boolean => {
+        const lastLockedColumnIndex = this._selectedColumns.filter(column => column.locked).length - 1;
+        const selectedOptionsNames = this._selectedColumns.map((column: DataTableColumn) => column.name);
+        const firstSelectedOptionIndex = selectedOptionsNames.indexOf(this.selectedColumnsNames[0]);
+        const lastSelectedOptionIndex = selectedOptionsNames.indexOf(
+          this.selectedColumnsNames[this.selectedColumnsNames.length - 1]
+        );
+
+        if (direction === 'up') {
+          return (
+            this.selectedColumnsNames.length > 0 &&
+            firstSelectedOptionIndex !== lastLockedColumnIndex + 1 &&
+            lastSelectedOptionIndex !== lastLockedColumnIndex + 1
+          );
+        } else if (direction === 'down') {
+          return (
+            this.selectedColumnsNames.length > 0 &&
+            firstSelectedOptionIndex !== this._selectedColumns.length - 1 &&
+            lastSelectedOptionIndex !== this._selectedColumns.length - 1
+          );
+        } else if (direction === 'left') {
+          return this.selectedColumnsNames.length > 0;
+        } else {
+          return this.areAvailableColumnsSelected;
+        }
+      };
+
+      const isDisabled =
+        (icon === 'chevron-up' && !canMove('up')) ||
+        (icon === 'chevron-down' && !canMove('down')) ||
+        (icon === 'chevron-right' && !canMove('right')) ||
+        (icon === 'chevron-left' && !canMove('left'));
 
       return (
         <button
@@ -124,6 +157,7 @@ export default class ColumnCustomizationContent extends Vue {
     }
     this.key += 1;
     this._emitSelectedColumnsChange();
+    this._resetCurrentlySelectedColumns();
   }
 
   _emitSelectedColumnsChange() {
@@ -161,28 +195,37 @@ export default class ColumnCustomizationContent extends Vue {
       }
       this.key += 1;
       this._emitSelectedColumnsChange();
+      this._resetCurrentlySelectedColumns();
     }
+  }
+
+  _resetCurrentlySelectedColumns(): void {
+    this.areAvailableColumnsSelected = false;
+    this.selectedColumnsNames = [];
+    this._preSelection &&
+    this._selectedColumns.map((column: DataTableColumn) => column.name).indexOf(this._preSelection.value) !== -1
+      ? this.selectedColumnsNames.push(this._preSelection.value)
+      : null;
   }
 
   _move(direction: 'up' | 'down') {
     const columns = this._selectedColumns ? [...this._selectedColumns] : [];
 
+    this.selectedColumnsNames = [];
     Array.from((this._selectedColumnsComponent?.$refs.select as HTMLSelectElement).selectedOptions).forEach(
       (option: HTMLOptionElement) => {
         const columnName = option.value;
 
         option.selected = false;
         this._preSelection = option;
+        this.selectedColumnsNames.push(option.value);
         if (columnName && columns) {
           const columnData = columns.find(columnData => columnData.name === columnName);
 
           if (columnData) {
             const index = columns.indexOf(columnData);
             const newIndex = index + (direction === 'up' ? -1 : 1);
-            const lastLockedColumnIndex = columns.filter(column => column.locked).length - 1;
 
-            this.canMoveUp = newIndex !== lastLockedColumnIndex + 1;
-            this.canMoveDown = newIndex !== columns.length - 1;
             _changeOrder(columns, index, newIndex);
           }
         }
@@ -201,35 +244,6 @@ export default class ColumnCustomizationContent extends Vue {
     }
   }
 
-  _handleSelectColumn() {
-    const columnsSelected: string[] = [];
-    const filterSelectedColumns: DataTableColumn[] = [];
-
-    if (this._selectedColumns) {
-      Array.from((this._selectedColumnsComponent?.$refs.select as HTMLSelectElement).selectedOptions).forEach(
-        (option: HTMLOptionElement) => {
-          columnsSelected.push(option.value);
-        }
-      );
-
-      columnsSelected.forEach((columnSelected: string) => {
-        this._selectedColumns?.forEach((standardColumn: DataTableColumn) => {
-          if (columnSelected === standardColumn.name) {
-            filterSelectedColumns.push(standardColumn);
-          }
-        });
-      });
-    }
-
-    const selectElement = this._selectedColumnsComponent?.$refs.select as HTMLSelectElement;
-    const selectedOptionIndex = Array.from(selectElement.options).indexOf(selectElement.selectedOptions[0]);
-    const lastLockedColumnIndex =
-      (this._selectedColumns as DataTableColumn[]).filter(column => column.locked).length - 1;
-
-    (this.$refs.buttonMoveUp as HTMLButtonElement).disabled = selectedOptionIndex === lastLockedColumnIndex + 1;
-    (this.$refs.buttonMoveDown as HTMLButtonElement).disabled = selectedOptionIndex === selectElement.length - 1;
-  }
-
   render() {
     const selectButton = this._controlButton('chevron-right', this._select);
     const deselectButton = this._controlButton('chevron-left', this._deselect);
@@ -239,7 +253,10 @@ export default class ColumnCustomizationContent extends Vue {
     return (
       <div class={UTILITY_CLASSES.DISPLAY.FLEX} key={this.key}>
         <div class={UTILITY_CLASSES.FLEX.FLEX_GROW1}>
-          <AvailableColumns available-columns={this._availableColumns} />
+          <AvailableColumns
+            available-columns={this._availableColumns}
+            onChiAvailableColumnsSelected={() => (this.areAvailableColumnsSelected = true)}
+          />
         </div>
         <div class={`-px--1 ${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>
           <div class={`${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.FLEX.COLUMN}`}>
@@ -249,7 +266,9 @@ export default class ColumnCustomizationContent extends Vue {
         </div>
         <div class={UTILITY_CLASSES.FLEX.FLEX_GROW1}>
           <SelectedColumns
-            onChiToolbarColumnsSelected={this._handleSelectColumn}
+            onChiColumnsSelected={(selectedColumnsNames: Array<string>) =>
+              (this.selectedColumnsNames = selectedColumnsNames)
+            }
             standard-columns={this._selectedColumns}
           />
         </div>

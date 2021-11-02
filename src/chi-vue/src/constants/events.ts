@@ -11,6 +11,8 @@ export const DATA_TABLE_EVENTS = {
   FILTERS_CHANGE: 'chiFiltersChange',
   COLUMNS_CHANGE: 'chiColumnsChange',
   COLUMNS_RESET: 'chiColumnsReset',
+  COLUMNS_SELECTED: 'chiColumnsSelected',
+  AVAILABLE_COLUMNS_SELECTED: 'chiAvailableColumnsSelected',
   ADVANCED_FILTERS_CHANGE: 'chiAdvancedFiltersChange',
   VIEWS_CHANGE: 'chiViewsChange',
   TOOLBAR: {

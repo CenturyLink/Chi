@@ -3,6 +3,7 @@ import { DataTableColumn } from '@/constants/types';
 import { findComponent } from '@/utils/utils';
 import ColumnCustomizationContent from '@/components/column-customization/ColumnCustomizationModalContent';
 import { UTILITY_CLASSES } from '@/constants/classes';
+import { DATA_TABLE_EVENTS } from '@/constants/events';
 
 @Component
 export default class ColumnCustomizationAvailableColumns extends Vue {
@@ -54,7 +55,11 @@ export default class ColumnCustomizationAvailableColumns extends Vue {
     return (
       <div>
         <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_BOLD}>Available Columns</div>
-        <select class={`chi-select available-columns`} multiple ref="select">
+        <select
+          class={`chi-select available-columns`}
+          multiple
+          ref="select"
+          onchange={() => this.$emit(DATA_TABLE_EVENTS.AVAILABLE_COLUMNS_SELECTED)}>
           {options}
         </select>
       </div>
