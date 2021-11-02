@@ -321,13 +321,6 @@ describe('Data Table', () => {
   });
 
   describe('Truncation', () => {
-    it(`Should have head cells with class .${DATA_TABLE_CLASSES.TRUNCATED}`, () => {
-      cy.get(
-        `[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
-      ).as('cells');
-      hasClassAssertion(`@cells`, DATA_TABLE_CLASSES.TRUNCATED);
-    });
-
     it(`Should not have body cells with class .${DATA_TABLE_CLASSES.TRUNCATED}`, () => {
       cy.get(
         `[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.CELL}`
@@ -338,12 +331,8 @@ describe('Data Table', () => {
       cy.get(
         `[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
       )
-        .children()
-        .as('innerCells');
-      hasClassAssertion(
-        `@innerCells`,
-        UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE
-      );
+        .find(`.${UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}`)
+        .should('exist');
     });
   });
 
