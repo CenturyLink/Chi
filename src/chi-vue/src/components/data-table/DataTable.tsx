@@ -103,7 +103,6 @@ export default class DataTable extends Vue {
         <button
           aria-label={`Sort Column ${label}`}
           class={`${DATA_TABLE_CLASSES.CELL}
-            ${this.config.truncation ? DATA_TABLE_CLASSES.TRUNCATED : ''}
             ${alignment}
             ${sortable ? DATA_TABLE_CLASSES.SORTING : ''}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
@@ -120,7 +119,7 @@ export default class DataTable extends Vue {
             ${cellWidth === 0 ? 'display: none;' : ''}
             ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
             `}>
-          <div class={this.config.truncation ? UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE : ''}>{label}</div>
+          {this.config.truncation ? <DataTableTooltip msg={label} header /> : label}
           {sortIcon}
         </button>
       );
@@ -128,7 +127,6 @@ export default class DataTable extends Vue {
         <div
           aria-label={label}
           class={`${DATA_TABLE_CLASSES.CELL}
-            ${this.config.truncation ? DATA_TABLE_CLASSES.TRUNCATED : ''}
             ${alignment}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={label}
@@ -136,7 +134,7 @@ export default class DataTable extends Vue {
             ${cellWidth === 0 ? 'display: none;' : ''}
             ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
             `}>
-          <div class={this.config.truncation ? UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE : ''}>{label}</div>
+          {this.config.truncation ? <DataTableTooltip msg={label} header /> : label}
         </div>
       );
 
@@ -696,7 +694,7 @@ export default class DataTable extends Vue {
       const isSelected = (row: DataTableRow) => this.selectedRows.includes(row.rowId);
 
       if (this.slicedData) {
-        selectAllCheckbox.checked = this.slicedData.every(isSelected);
+        selectAllCheckbox.checked = this.slicedData.every(isSelected) && this.slicedData.length !== 0;
       }
     }
   }
