@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Inverse" id="inverse" :tabs="exampleTabs" padding="-">
+  <ComponentExample title="Inverse" id="inverse" :tabs="exampleTabs" padding="-p--0">
     div(slot="example-description")
       p.-text Use the <code>-inverse</code> class to render dividers on dark backgrounds.
     div(slot="example")
