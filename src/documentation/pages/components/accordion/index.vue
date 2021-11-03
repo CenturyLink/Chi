@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import Examples from './examples/index.vue';
 import PageContentTabs from '../../../components/PageContentTabs.vue';
 import Properties from './_properties.vue';
@@ -23,16 +23,15 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     Accessibility,
     Examples,
     PageContentTabs,
-    Properties,
+    Properties
   },
   data: () => {
     return {
-      pageTabs: standardComponentPageTabs,
-    }
-  },
+      pageTabs: standardComponentPageTabs
+    };
+  }
 })
 export default class Accordion extends Vue {
-  mounted() {
-  }
+  mounted() {}
 }
 </script>

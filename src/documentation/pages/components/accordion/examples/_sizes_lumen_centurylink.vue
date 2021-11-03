@@ -36,13 +36,13 @@ declare const chi: any;
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
+          label: 'HTML blueprint'
+        }
       ],
       codeSnippets: {
         webcomponent: `Web component code snippet`,
@@ -104,9 +104,9 @@ declare const chi: any;
   chi.accordion(document.getElementById('example-size-md'));
   chi.accordion(document.getElementById('example-size-lg'));
   chi.accordion(document.getElementById('example-size-xl'));
-<\/script>`,
+<\/script>`
       }
-    }
+    };
   }
 })
 export default class SizesLumenCenturyLink extends Vue {

@@ -56,7 +56,7 @@ declare const chi: any;
       <p class="chi-accordion__text">Content goes here</p>
     </div>
   </div>
-<//div>`
+</div>`
       }
     };
   }

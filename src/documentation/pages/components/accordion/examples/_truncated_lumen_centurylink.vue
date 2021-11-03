@@ -36,13 +36,13 @@ declare const chi: any;
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
+          label: 'HTML blueprint'
+        }
       ],
       codeSnippets: {
         webcomponent: `Web component code snippet`,
@@ -62,9 +62,9 @@ declare const chi: any;
   const accordionTruncated = document.getElementById('example-truncated');
 
   chi.accordion(accordionTruncated);
-<\/script>`,
+<\/script>`
       }
-    }
+    };
   }
 })
 export default class TruncatedLumenCenturyLink extends Vue {

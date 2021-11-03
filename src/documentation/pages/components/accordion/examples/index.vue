@@ -57,8 +57,8 @@ import SizesPortal from './_portal/_sizes.vue';
     TruncatedLumenCenturyLink,
     TruncatedPortal,
     SizesLumenCenturyLink,
-    SizesPortal,
-  },
+    SizesPortal
+  }
 })
 export default class AccordionExamples extends Vue {}
 </script>

@@ -116,17 +116,14 @@
 </template>
 
 <script lang="ts">
-  import { getModule } from 'vuex-module-decorators';
-  import * as store from '../store/index';
-  import ThemeSwitcher from './ThemeSwitcher.vue';
+import ThemeSwitcher from './ThemeSwitcher.vue';
 
-  export default {
-    components: {
-      ThemeSwitcher,
-    },
-    mounted() {
-    }
-  };
+export default {
+  components: {
+    ThemeSwitcher
+  },
+  mounted() {}
+};
 </script>
 
 <style>
