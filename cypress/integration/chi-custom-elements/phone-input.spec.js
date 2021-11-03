@@ -125,6 +125,17 @@ describe('Phone Input', () => {
         });
     });
 
+    it(`Should show a selected country with ${ACTIVE_CLASS} class`, () => {
+      cy.get(`@dropdownTrigger`)
+        .click()
+        .contains('Jamaica')
+        .as('Jamaica')
+        .click()
+        .then(() => {
+          hasClassAssertion('@Jamaica', ACTIVE_CLASS);
+        });
+    });
+
     it('Should search a country by name successfully', () => {
       cy.get(`@dropdownTrigger`)
         .click()
