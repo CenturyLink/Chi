@@ -3,8 +3,9 @@
     h2 Examples
     p.-text To display a card, use the class <code>chi-card</code>.
 
+    <Base />
+
     div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-      <Base />
       <ActiveLumenCenturylink />
       <NoBorderLumenCenturylink />
       <Empty />
@@ -26,7 +27,6 @@
       <HeaderFooterSmallLumenCenturylink />
 
     div(v-if="$store.state.themes.theme === 'portal'")
-      <Base />
       <Header />
       <HighlightPortal />
       <WithTabsPortal />
@@ -85,5 +85,5 @@ import WithTabsPortal from './_portal/_with_tabs.vue';
     WithTabsPortal
   }
 })
-export default class CardExamples extends Vue {}
+export default class Examples extends Vue {}
 </script>
