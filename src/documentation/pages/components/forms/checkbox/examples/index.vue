@@ -17,7 +17,6 @@
     <Grid />
     <Inline />
     <CheckboxList />
-
 </template>
 
 <script lang="ts">
@@ -51,5 +50,5 @@ import CheckboxList from './_checkbox_list.vue';
     CheckboxList
   }
 })
-export default class CheckboxExamples extends Vue {}
+export default class Examples extends Vue {}
 </script>
