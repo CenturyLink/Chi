@@ -1,8 +1,8 @@
 <template lang="pug">
-  <ComponentExample title="Truncated" id="truncated" :tabs="exampleTabs">
+  <ComponentExample title="Truncated" id="truncated_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
     div(slot="example-description")
       p.-text Truncate long accordion titles by adding the class <code>-truncated</code> to <code>chi-accordion</code>.
-    div(slot="example").-p--3.-p-lg--6
+    div(slot="example")
       .chi-accordion.-truncated#example-truncated
         .chi-accordion__item
           button.chi-accordion__trigger
@@ -67,7 +67,7 @@ declare const chi: any;
     }
   }
 })
-export default class TruncatedExample extends Vue {
+export default class TruncatedLumenCenturyLink extends Vue {
   mounted() {
     chi.accordion(document.getElementById('example-truncated'));
   }

@@ -60,7 +60,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class AdditionalSizesLumenCenturylink extends Vue {
+export default class AdditionalSizesLumenCenturyLink extends Vue {
   mounted() {}
 }
 </script>

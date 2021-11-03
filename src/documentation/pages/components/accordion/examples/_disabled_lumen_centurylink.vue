@@ -1,8 +1,8 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs">
+  <ComponentExample title="Disabled" id="disabled_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
     div(slot="example-description")
       p.-text Make Accordions appear inactive by adding the class <code>-disabled</code> or the attribute <code>disabled</code> to Accordion trigger
-    div(slot="example").-p--3.-p-lg--6
+    div(slot="example")
       .chi-accordion
         .chi-accordion__item
           button.chi-accordion__trigger.-disabled
@@ -61,5 +61,5 @@ declare const chi: any;
     }
   }
 })
-export default class DisabledExample extends Vue {}
+export default class DisabledLumenCenturyLink extends Vue {}
 </script>

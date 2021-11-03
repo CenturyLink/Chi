@@ -1,6 +1,6 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes_portal" :tabs="exampleTabs">
-    div(slot="example").-p--3.-p-lg--6
+  <ComponentExample title="Sizes" id="sizes_portal" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
+    div(slot="example")
       each size in ['sm', 'md']
         p.-text--bold.-pl--2= size
           div(class=`chi-accordion -${size}` id=`portal-example-size-${size}`)
@@ -36,13 +36,13 @@ declare const chi: any;
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
+          label: 'HTML blueprint'
+        }
       ],
       codeSnippets: {
         webcomponent: `Web component code snippet`,
@@ -76,12 +76,12 @@ declare const chi: any;
 <script>
   chi.accordion(document.getElementById('portal-example-size-sm'));
   chi.accordion(document.getElementById('portal-example-size-md'));
-<\/script>`,
+<\/script>`
       }
-    }
+    };
   }
 })
-export default class SizesExample extends Vue {
+export default class SizesPortal extends Vue {
   mounted() {
     chi.accordion(document.getElementById('portal-example-size-sm'));
     chi.accordion(document.getElementById('portal-example-size-md'));

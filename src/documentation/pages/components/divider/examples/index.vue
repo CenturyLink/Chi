@@ -9,8 +9,7 @@
     <Label />
 
     div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-      <AdditionalSizesLumenCenturylink />
-
+      <AdditionalSizesLumenCenturyLink />
 </template>
 
 <script lang="ts">
@@ -19,7 +18,7 @@ import Base from './_base.vue';
 import Vertical from './_vertical.vue';
 import Inverse from './_inverse.vue';
 import Label from './_label.vue';
-import AdditionalSizesLumenCenturylink from './_additional_sizes_lumen_centurylink.vue';
+import AdditionalSizesLumenCenturyLink from './_additional_sizes_lumen_centurylink.vue';
 
 @Component({
   components: {
@@ -27,8 +26,8 @@ import AdditionalSizesLumenCenturylink from './_additional_sizes_lumen_centuryli
     Vertical,
     Inverse,
     Label,
-    AdditionalSizesLumenCenturylink
+    AdditionalSizesLumenCenturyLink
   }
 })
-export default class DividerExamples extends Vue {}
+export default class Examples extends Vue {}
 </script>
