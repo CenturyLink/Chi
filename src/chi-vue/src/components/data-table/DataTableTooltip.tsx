@@ -6,7 +6,7 @@ import { UTILITY_CLASSES } from '@/constants/classes';
 @Component({})
 export default class DataTableTooltip extends Vue {
   @Prop() msg!: string;
-  @Prop({ default: false }) header?: boolean;
+  @Prop() header?: boolean;
 
   tooltip = false;
 
