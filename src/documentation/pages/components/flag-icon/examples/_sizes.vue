@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes_lumen_centurylink" :tabs="exampleTabs">
+  <ComponentExample title="Sizes" id="sizes" padding="-p--0" :tabs="exampleTabs">
     div(slot="example-description")
       p.-text Flag icons support the following sizes: <code>-xs</code>, <code>-sm</code>.
         | By default, flag icons render at 24x16px (<code>-sm</code>).
@@ -50,7 +50,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class SizesExample extends Vue {
+export default class Sizes extends Vue {
   mounted() {}
 }
 </script>

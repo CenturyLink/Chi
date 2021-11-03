@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Country/Region" id="area_lumen_centurylink" :tabs="exampleTabs">
+  <ComponentExample title="Country/Region" id="country_region" padding="-p--0" :tabs="exampleTabs">
     div(slot="example")
        section.chi-table
         div
@@ -69,7 +69,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class SolidExample extends Vue {
+export default class CountryRegion extends Vue {
   mounted() {}
 }
 </script>

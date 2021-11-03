@@ -2,20 +2,20 @@
   div
     h2 Examples
     div
-      <Area />
+      <CountryRegion />
       <Sizes />     
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Area from './_area.vue';
+import CountryRegion from './_country_region.vue';
 import Sizes from './_sizes.vue';
 
 @Component({
   components: {
-    Area,
+    CountryRegion,
     Sizes,
   }
 })
-export default class FlagIconExamples extends Vue {}
+export default class Examples extends Vue {}
 </script>
