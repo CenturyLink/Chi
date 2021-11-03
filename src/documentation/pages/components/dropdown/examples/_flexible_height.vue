@@ -1,7 +1,6 @@
 <template lang="pug">
   div
-    h4 Flexible height
-    <ComponentExample id="flexible_height" :tabs="exampleTabs" backgroundColor="#eee">
+    <ComponentExample title="Flexible height" titleSize="h4" id="flexible_height" :tabs="exampleTabs" backgroundColor="#eee">
       div(slot="example-description")
         p.-text Add the class <code>-h--auto</code> to set menu item height to auto.
       div(slot="example")

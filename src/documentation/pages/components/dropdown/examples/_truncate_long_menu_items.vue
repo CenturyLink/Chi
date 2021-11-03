@@ -1,7 +1,6 @@
 <template lang="pug">
   div
-    h4 Truncate long menu-items
-    <ComponentExample id="truncate_long_menu_items" :tabs="exampleTabs" backgroundColor="#eee">
+    <ComponentExample title="Truncate long menu-items" titleSize="h4" id="truncate_long_menu_items" :tabs="exampleTabs" backgroundColor="#eee">
       div(slot="example-description")
         p.-text 
           | Wrap the menu-item content in a div with the class <code>-flex--ellipsis</code> to truncate long strings.

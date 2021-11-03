@@ -1,7 +1,6 @@
 <template lang="pug">
   div
-    h4 With Icons
-    <ComponentExample id="checkboxes_icons" :tabs="exampleTabs" backgroundColor="#eee">
+    <ComponentExample title="With Icons" titleSize="h4" id="checkboxes_icons" :tabs="exampleTabs" backgroundColor="#eee">
       div(slot="example")
         .chi-col.-w--10.-w-sm--6.-w-md--7.-w-lg--5.-w-xl--3
           .chi-dropdown__menu.-active
