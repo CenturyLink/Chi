@@ -1,6 +1,16 @@
 <template>
   <div>
-    <h3 v-if="!!title" class="-anchor" :id="id">
+    <h4 v-if="titleSize === 'h4'" class="-anchor" :id="id">
+      {{ title }}
+      <span>
+        <a
+          class="-ml--1"
+          :href="'?theme=' + $store.state.themes.theme + '#' + id"
+          >#</a
+        >
+      </span>
+    </h4>
+    <h3 v-else class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
@@ -67,6 +77,7 @@ declare const chi: any;
 export default class ComponentExample extends Vue {
   @Prop() id?: string;
   @Prop() title?: string;
+  @Prop() titleSize?: 'h3' | 'h4';
   @Prop() tabs?: TabsInterface[];
   @Prop() padding?: string;
   @Prop() backgroundColor?: string;
