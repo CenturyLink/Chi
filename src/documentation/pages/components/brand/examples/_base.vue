@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs" :padding="'-p--0'">
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs" padding="-p--0">
     div(slot="example-description")
       p.-text
         | The base logo is used on white or light-colored backgrounds that provide sufficient contrast.
@@ -22,8 +22,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {

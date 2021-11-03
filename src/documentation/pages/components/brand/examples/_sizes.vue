@@ -1,7 +1,7 @@
 <template lang="pug">
 -  var sizes = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
-  <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs" :padding="'-p--0'">
+  <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs" padding="-p--0">
     div(slot="example-description")
       p.-text
         | Brand supports the following sizes: <code>xs</code>, <code>sm</code>,
@@ -36,8 +36,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {

@@ -1,7 +1,6 @@
 <template lang="pug">
   div
-    h4 Small
-    <ComponentExample id="small_size_lumen_centurylink" :tabs="exampleTabs" :padding="'-p--0'">
+    <ComponentExample title="Small" titleSize="h4" id="small_size" :tabs="exampleTabs" padding="-p--0">
       div(slot="example")
         .-p--2
           chi-badge(size='sm', class='-m--1')= 'Badge'
@@ -23,8 +22,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {

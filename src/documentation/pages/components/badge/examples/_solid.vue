@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Solid" id="solid_lumen_centurylink" :tabs="exampleTabs" :padding="'-p--0'">
+  <ComponentExample title="Solid" id="solid" :tabs="exampleTabs" padding="-p--0">
     div(slot="example")
       .chi-grid.-no-gutter
         .chi-col.-w--12
@@ -32,8 +32,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {

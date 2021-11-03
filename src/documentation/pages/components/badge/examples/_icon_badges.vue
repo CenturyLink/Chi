@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Icon badges"id="icon_badges_lumen_centurylink" :tabs="exampleTabs" :padding="'-p--0'">
+  <ComponentExample title="Icon badges" id="icon_badges" :tabs="exampleTabs" padding="-p--0">
     div(slot="example-description")
       p.-text Icons can be placed before, after, or on both sides of text.
     div(slot="example")
@@ -36,8 +36,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Text transform" id="text_transform_lumen_centurylink" :tabs="exampleTabs" :padding="'-p--0'">
+  <ComponentExample title="Text transform" id="text_transform" :tabs="exampleTabs" padding="-p--0">
     div(slot="example")
       .-p--2
         chi-badge(text-transform='uppercase', class='-m--1')= 'Badge'
@@ -21,8 +21,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {
