@@ -194,7 +194,7 @@ describe('Phone Input', () => {
       cy.get('@dropdownTrigger').click();
     });
 
-    it('Should reset country codes after a search', () => {
+    it('Should maintain the filtered state of the selected country code after a search', () => {
       cy.get(`@dropdownTrigger`)
         .click()
         .find('input')
@@ -214,9 +214,13 @@ describe('Phone Input', () => {
       cy.get('@dropdownTrigger')
         .click()
         .then(() => {
+          cy.get('@searchInput').should('have.value', 'franc');
           cy.get('@countryCodes')
             .children()
-            .should('have.length', 235);
+            .should('have.length', 1);
+          cy.get('@base')
+            .find('.-close')
+            .click();
         });
       cy.get('@dropdownTrigger').click();
     });
@@ -233,7 +237,7 @@ describe('Phone Input', () => {
       hasClassAssertion('@trigger', `-${SIZES.md}`);
     });
 
-    it('Should format the phone number as you type as long as the it is valid', () => {
+    it('Should format the phone number as you type as long as it is valid', () => {
       cy.get(`@dropdownTrigger`)
         .click()
         .find('.chi-dropdown__menu-item')
