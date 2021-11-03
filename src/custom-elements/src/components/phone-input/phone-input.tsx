@@ -140,11 +140,9 @@ export class ChiPhoneInput {
   }
 
   _closeDropdown = (): void => {
-    if (this._clickedOnComponent) {
-      this._clickedOnComponent = false;
-    } else {
-      this._dropdownActive = false;
-    }
+    this._clickedOnComponent
+      ? (this._clickedOnComponent = false)
+      : (this._dropdownActive = false);
   };
 
   _suffixInputChangeHandler = (event: Event): void => {
@@ -157,11 +155,9 @@ export class ChiPhoneInput {
       this._isNumberInvalid = true;
       this.chiNumberInvalid.emit();
     }
-    if (this._suffix && this._suffix.trim()) {
-      this.chiChange.emit(`${this._prefixLiteral}${this._suffix}`);
-    } else {
-      this.chiChange.emit('');
-    }
+    this._suffix && this._suffix.trim()
+      ? this.chiChange.emit(`${this._prefixLiteral}${this._suffix}`)
+      : this.chiChange.emit('');
   };
 
   _inputHandler = (event: Event): void => {
@@ -172,11 +168,9 @@ export class ChiPhoneInput {
     this._suffix = this._country
       ? new AsYouType(this._country.countryAbbr).input(value)
       : value;
-    if (this._suffix && this._suffix.trim()) {
-      this.chiInput.emit(`${this._prefixLiteral}${this._suffix}`);
-    } else {
-      this.chiInput.emit('');
-    }
+    this._suffix && this._suffix.trim()
+      ? this.chiInput.emit(`${this._prefixLiteral}${this._suffix}`)
+      : this.chiInput.emit('');
   };
 
   prefixChangeHandler(country: Country): void {
