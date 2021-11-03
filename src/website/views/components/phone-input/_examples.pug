@@ -167,6 +167,9 @@ p.-text
     .-p--3
       div(style="max-width: 18rem;")
         .-mb--2.chi-form__item
+          chi-label(for="phone-input-portal-xs") xs
+          chi-phone-input(id="phone-input-portal-xs" size="xs")
+        .-mb--2.chi-form__item
           chi-label(for="phone-input-portal-sm") sm
           chi-phone-input(id="phone-input-portal-sm" size="sm")
         .-mb--2.chi-form__item
@@ -175,9 +178,6 @@ p.-text
         .-mb--2.chi-form__item
           chi-label(for="phone-input-portal-lg") lg
           chi-phone-input(id="phone-input-portal-lg" size="lg")
-        .chi-form__item
-          chi-label(for="phone-input-portal-xl") xl
-          chi-phone-input(id="phone-input-portal-xl" size="xl")
 
     .example-tabs.-pl--2
       ul.chi-tabs
@@ -187,6 +187,9 @@ p.-text
           a(href='#phone-input-html-sizes-portal') HTML Blueprint
     #phone-input-wc-sizes-portal.chi-tabs-panel.-active
       :code(lang="html")
+        <!-- xs -->
+        <chi-label for="phone-input-xs">xs</chi-label>
+        <chi-phone-input id="phone-input-xs" size="xs"></chi-phone-input>  
         <!-- sm -->
         <chi-label for="phone-input-sm">sm</chi-label>
         <chi-phone-input id="phone-input-sm" size="sm"></chi-phone-input>    
@@ -196,7 +199,4 @@ p.-text
         <!-- lg -->
         <chi-label for="phone-input-lg">lg</chi-label>
         <chi-phone-input id="phone-input-lg" size="lg"></chi-phone-input>
-        <!-- xl -->
-        <chi-label for="phone-input-xl">xl</chi-label>
-        <chi-phone-input id="phone-input-xl" size="xl"></chi-phone-input>
     #phone-input-html-sizes-portal.chi-tabs-panel

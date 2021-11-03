@@ -176,12 +176,11 @@ export class ChiPhoneInput {
   prefixChangeHandler(country: Country): void {
     this._prefixLiteral = `+${country.dialCode}`;
     this._country = country;
-    this._search = '';
     this.chiChange.emit(`${this._prefixLiteral}${this._suffix}`);
     this._dropdownActive = false;
   }
 
-  _renderCountry(): JSX.Element {
+  _renderDropdown(): JSX.Element {
     const searchInput = (
       <chi-search-input
         size="sm"
@@ -252,7 +251,7 @@ export class ChiPhoneInput {
   }
 
   render(): JSX.Element {
-    const country = this._renderCountry();
+    const dropdown = this._renderDropdown();
     const textInput = (
       <chi-text-input
         id={`${this._uuid}`}
@@ -269,7 +268,7 @@ export class ChiPhoneInput {
 
     return (
       <div class={`${PHONE_INPUT_CLASSES.PHONE_INPUT}`}>
-        {country}
+        {dropdown}
         {textInput}
       </div>
     );
