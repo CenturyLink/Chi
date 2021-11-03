@@ -1,9 +1,23 @@
 <template>
   <div>
-    <h3 v-if="!!title" class="-anchor" :id="id">
-      {{title}}
+    <h4 v-if="titleSize === 'h4'" class="-anchor" :id="id">
+      {{ title }}
       <span>
-        <a class="-ml--1" :href="'?theme='+$store.state.themes.theme+'#'+id">#</a>
+        <a
+          class="-ml--1"
+          :href="'?theme=' + $store.state.themes.theme + '#' + id"
+          >#</a
+        >
+      </span>
+    </h4>
+    <h3 v-else class="-anchor" :id="id">
+      {{ title }}
+      <span>
+        <a
+          class="-ml--1"
+          :href="'?theme=' + $store.state.themes.theme + '#' + id"
+          >#</a
+        >
       </span>
     </h3>
     <slot name="example-description"></slot>
@@ -12,16 +26,39 @@
         <slot name="example"></slot>
       </div>
       <div class="example-tabs -pl--2">
-        <ul class="chi-tabs -animated" :id="'code-snippet-tabs'+id" role="tabs">
-          <li :class="[tab.active ? '-active' : '', tab.disabled ? '-disabled' : '']" v-for="tab in tabs" :key="tab.id">
-            <a role="tab" :aria-controls="'#example-'+'-'+id+'-'+tab.id" :aria-selected="tab.active ? true : false" :href="'#example-'+'-'+id+'-'+tab.id" :tabindex="tab.disabled ? -1 : null">
+        <ul
+          class="chi-tabs -animated"
+          :id="'code-snippet-tabs' + id"
+          role="tabs"
+        >
+          <li
+            :class="[
+              tab.active ? '-active' : '',
+              tab.disabled ? '-disabled' : ''
+            ]"
+            v-for="tab in tabs"
+            :key="tab.id"
+          >
+            <a
+              role="tab"
+              :aria-controls="'#example-' + '-' + id + '-' + tab.id"
+              :aria-selected="tab.active ? true : false"
+              :href="'#example-' + '-' + id + '-' + tab.id"
+              :tabindex="tab.disabled ? -1 : null"
+            >
               {{ tab.label }}
             </a>
           </li>
         </ul>
       </div>
-      <div :class="['chi-tabs-panel', tab.active ? '-active' : '']" v-for="tab in tabs" :key="tab.id" :id="'example-'+'-'+id+'-'+tab.id" role="tabpanel">
-        <slot :name="'code-'+tab.id"></slot>
+      <div
+        :class="['chi-tabs-panel', tab.active ? '-active' : '']"
+        v-for="tab in tabs"
+        :key="tab.id"
+        :id="'example-' + '-' + id + '-' + tab.id"
+        role="tabpanel"
+      >
+        <slot :name="'code-' + tab.id"></slot>
       </div>
     </div>
   </div>
@@ -37,13 +74,16 @@ declare const chi: any;
 export default class ComponentExample extends Vue {
   @Prop() id?: string;
   @Prop() title?: string;
+  @Prop() titleSize?: 'h3' | 'h4';
   @Prop() tabs?: TabsInterface[];
   @Prop() padding?: string;
 
   chiTabs: any;
 
   mounted() {
-    const chiTabs = document.getElementById('code-snippet-tabs'+this.$props.id);
+    const chiTabs = document.getElementById(
+      'code-snippet-tabs' + this.$props.id
+    );
 
     this.chiTabs = chi.tab(chiTabs);
   }
