@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Header with Title" id="header_title_lumen_centurylink" padding=" " :tabs="exampleTabs">
+  <ComponentExample title="Header with Title" id="header_title" padding="-p--0" :tabs="exampleTabs">
     div(slot="example")
       .-p--3(style='background-color:#eee;')
         header.chi-header

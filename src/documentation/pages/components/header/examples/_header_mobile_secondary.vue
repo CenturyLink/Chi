@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Header with mobile secondary menu" id="header_mobile_sec_lumen_centurylink" padding=" " :tabs="exampleTabs">
+  <ComponentExample title="Header with mobile secondary menu" id="header_mobile_secondary" padding="-p--0" :tabs="exampleTabs">
     div(slot="example")
       .-p--3(style='background-color:#eee;')
         header.chi-header

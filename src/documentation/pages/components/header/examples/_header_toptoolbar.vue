@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Header with top toolbar" id="header_toolbar_lumen_centurylink" padding=" " :tabs="exampleTabs">
+  <ComponentExample title="Header with top toolbar" id="header_toolbar" padding="-p--0" :tabs="exampleTabs">
     div(slot="example")
       .-p--3(style='background-color:#eee;')
         header.chi-header
@@ -139,7 +139,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class HeaderTitleButtons extends Vue {
+export default class HeaderTopToolBar extends Vue {
   mounted() {}
 }
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Header with Title and Buttons" id="header_title_buttons_lumen_centurylink" padding=" " :tabs="exampleTabs">
+  <ComponentExample title="Header with Title and Buttons" id="header_title_buttons" padding="-p--0" :tabs="exampleTabs">
     div(slot="example")
       .-p--3(style='background-color:#eee;')
         header.chi-header
@@ -32,8 +32,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {

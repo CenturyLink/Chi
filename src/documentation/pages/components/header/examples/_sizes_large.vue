@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Large" id="size_large_lumen_centurylink" padding=" " :tabs="exampleTabs">
+  <ComponentExample title="Large" id="size_large" padding="-p--0" :tabs="exampleTabs">
     div(slot="example")
       .-p--3(style='background-color:#eee;')
         header.chi-header.-lg

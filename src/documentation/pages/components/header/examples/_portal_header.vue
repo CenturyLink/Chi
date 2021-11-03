@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Portal Header" id="portal_header_lumen_centurylink" padding=" " :tabs="exampleTabs">
+  <ComponentExample title="Portal Header" id="portal_header" padding="-p--0" :tabs="exampleTabs">
     div(slot="example")
       .-p--3(style='background-color:#eee;')
         header.chi-header.-portal

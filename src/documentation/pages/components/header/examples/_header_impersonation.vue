@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Header with Impersonation Bar" id="header_impersonation_lumen_centurylink" padding=" " :tabs="exampleTabs">
+  <ComponentExample title="Header with Impersonation Bar" id="header_impersonation" padding="-p--0" :tabs="exampleTabs">
     div(slot="example")
       .-p--3(style='background-color:#eee;')
         header.chi-header.-portal.-impersonation
