@@ -44,7 +44,6 @@ div
     <BubbleSizesPortal />
     <BubbleClosablePortal />
     <BubbleActionable />
-
 </template>
 
 <script lang="ts">

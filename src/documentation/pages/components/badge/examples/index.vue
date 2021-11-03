@@ -11,7 +11,6 @@
       <IconBadges />
       <AdditionalSizes />
       <TextTransform />
-
 </template>
 
 <script lang="ts">

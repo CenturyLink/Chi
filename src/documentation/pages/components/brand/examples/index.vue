@@ -13,7 +13,6 @@
       <White />
       <Black />
       <Sizes />
-
 </template>
 
 <script lang="ts">
