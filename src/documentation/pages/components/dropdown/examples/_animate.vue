@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Animate" id="animate" :tabs="exampleTabs">
+  <ComponentExample title="Animate" id="animated" :tabs="exampleTabs">
     div(slot="example-description")
       p.-text Triggers can be animated by applying the <code>-animate</code> class.
     div(slot="example")
@@ -59,7 +59,7 @@ declare const chi: any;
     };
   }
 })
-export default class Animate extends Vue {
+export default class Animated extends Vue {
   mounted() {
     chi.dropdown(document.getElementById('dropdown-animate'));
   }

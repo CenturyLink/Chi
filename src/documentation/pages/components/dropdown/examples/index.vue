@@ -7,32 +7,32 @@
       | activator must reference the dropdown with a <code>data-target</code> attribute.
       | Use the <code>chi-dropdown__trigger</code> class on your activator button to make the chevron appear.
 
-    <Base />
-    <DataTarget />
-    <Hover />
-    <Animate />
-    <Positioning />
+    div
+      <Base />
+      <DataTarget />
+      <Hover />
+      <Animated />
+      <Positioning />
 
-    h2 Menu
-    <States />
-    <Description />
-    <Divider />
-    <Icons />
-    <SearchBox />
+      h2 Menu
+      <States />
+      <Description />
+      <Divider />
+      <Icons />
+      <SearchBox />
 
-    h3 Checkboxes
-    <CheckboxesBase />
-    <CheckboxesIcons />
+      h3 Checkboxes
+      <CheckboxesBase />
+      <CheckboxesIcons />
 
-    <RadioButtons />
-    <RangeInput />
-    <ToggleSwitch />
-    <PlainText />
+      <RadioButtons />
+      <RangeInput />
+      <ToggleSwitch />
+      <PlainText />
 
-    h3 Helpers
-    <TruncateLongMenuItems />
-    <FlexibleHeight />
-
+      h3 Helpers
+      <TruncateLongMenuItems />
+      <FlexibleHeight />
 </template>
 
 <script lang="ts">
@@ -40,7 +40,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import Base from './_base.vue';
 import DataTarget from './_data_target.vue';
 import Hover from './_hover.vue';
-import Animate from './_animate.vue';
+import Animated from './_animate.vue';
 import Positioning from './_positioning.vue';
 import States from './_states.vue';
 import Description from './_description.vue';
@@ -58,7 +58,7 @@ import FlexibleHeight from './_flexible_height.vue';
 
 @Component({
   components: {
-    Animate,
+    Animated,
     Base,
     CheckboxesBase,
     CheckboxesIcons,
@@ -78,7 +78,7 @@ import FlexibleHeight from './_flexible_height.vue';
     TruncateLongMenuItems
   }
 })
-export default class DropdownExamples extends Vue {
+export default class Examples extends Vue {
   mounted() {}
 }
 </script>
