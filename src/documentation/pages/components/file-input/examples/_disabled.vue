@@ -1,5 +1,5 @@
 <template lang="pug">
-<ComponentExample title="Disabled" id="disabled_lumen_centurylink" :tabs="exampleTabs">
+<ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs">
   div(slot='example')
     input#unique-id-di1.chi-file-input(
       type='file',
@@ -23,8 +23,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {
@@ -72,7 +70,7 @@ Array.prototype.forEach.call(inputFiles, function(input) {
     };
   }
 })
-export default class DisabledExample extends Vue {
+export default class Disabled extends Vue {
   mounted() {}
 }
 </script>

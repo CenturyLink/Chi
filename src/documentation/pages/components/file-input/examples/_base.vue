@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base_lumen_centurylink" :tabs="exampleTabs">
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
     div(slot="example")
       input.chi-file-input(type="file", id="file01", aria-label="Choose file")
       label(for="file01") No file chosen
@@ -19,8 +19,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {
@@ -67,7 +65,7 @@ Array.prototype.forEach.call(inputFiles, function(input) {
     };
   }
 })
-export default class BaseExample extends Vue {
+export default class Base extends Vue {
   mounted() {}
 }
 </script>

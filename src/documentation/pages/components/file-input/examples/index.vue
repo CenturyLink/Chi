@@ -23,5 +23,5 @@ import Sizes from './_sizes.vue';
     Sizes,
   }
 })
-export default class FileInputExamples extends Vue {}
+export default class Examples extends Vue {}
 </script>

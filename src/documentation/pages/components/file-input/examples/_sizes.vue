@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes_lumen_centurylink" :tabs="exampleTabs">
+  <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs">
     div(slot="example-description")
       p.-text File inputs support sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>, 
         | <code>-lg</code>, <code>-xl</code>. The default size is <code>-md</code>.
@@ -22,8 +22,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {
@@ -62,7 +60,7 @@ declare const chi: any;
     };
   }
 })
-export default class SizesExample extends Vue {
+export default class Sizes extends Vue {
   mounted() {}
 }
 </script>
