@@ -1,8 +1,8 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled_portal" :tabs="exampleTabs">
+  <ComponentExample title="Disabled" id="disabled_portal" :tabs="exampleTabs" padding="-p--3 p-lg--6">
     div(slot="example-description")
       p.-text Make Accordions appear inactive by adding the class <code>-disabled</code> or the attribute <code>disabled</code> to Accordion trigger
-    div(slot="example").-p--3.-p-lg--6
+    div(slot="example")
       .chi-accordion
         .chi-accordion__item
           button.chi-accordion__trigger.-disabled
@@ -36,13 +36,13 @@ declare const chi: any;
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
+          label: 'HTML blueprint'
+        }
       ],
       codeSnippets: {
         webcomponent: `Web component code snippet`,
@@ -56,10 +56,10 @@ declare const chi: any;
       <p class="chi-accordion__text">Content goes here</p>
     </div>
   </div>
-</div>`,
+</div>`
       }
-    }
+    };
   }
 })
-export default class DisabledExample extends Vue {}
+export default class DisabledPortal extends Vue {}
 </script>

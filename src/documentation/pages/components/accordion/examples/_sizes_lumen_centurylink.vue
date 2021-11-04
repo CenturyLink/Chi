@@ -1,6 +1,6 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs">
-    div(slot="example").-p--3.-p-lg--6
+  <ComponentExample title="Sizes" id="sizes_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
+    div(slot="example")
       each size in ['sm', 'md', 'lg', 'xl']
         p.-text--bold.-pl--2= size
           div(class=`chi-accordion -${size}` id=`example-size-${size}`)
@@ -36,13 +36,13 @@ declare const chi: any;
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
+          label: 'HTML blueprint'
+        }
       ],
       codeSnippets: {
         webcomponent: `Web component code snippet`,
@@ -104,12 +104,12 @@ declare const chi: any;
   chi.accordion(document.getElementById('example-size-md'));
   chi.accordion(document.getElementById('example-size-lg'));
   chi.accordion(document.getElementById('example-size-xl'));
-<\/script>`,
+<\/script>`
       }
-    }
+    };
   }
 })
-export default class SizesExample extends Vue {
+export default class SizesLumenCenturyLink extends Vue {
   mounted() {
     chi.accordion(document.getElementById('example-size-sm'));
     chi.accordion(document.getElementById('example-size-md'));

@@ -1,6 +1,6 @@
 <template lang="pug">
-  <ComponentExample title="Card" id="card" :tabs="exampleTabs">
-    div(slot="example").-p--3.-p-lg--6
+  <ComponentExample title="Card" id="card_portal" :tabs="exampleTabs" padding="-p--3 p-lg--6">
+    div(slot="example")
       .chi-accordion.-card#example-portal-card
         .chi-accordion__item
           button.chi-accordion__trigger
@@ -55,13 +55,13 @@ declare const chi: any;
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
+          label: 'HTML blueprint'
+        }
       ],
       codeSnippets: {
         webcomponent: `Web component code snippet`,
@@ -108,12 +108,12 @@ declare const chi: any;
   const accordionCard = document.getElementById('example-portal-card');
 
   chi.accordion(accordionCard);
-<\/script>`,
+<\/script>`
       }
-    }
+    };
   }
 })
-export default class BaseExample extends Vue {
+export default class CardPortal extends Vue {
   mounted() {
     const accordionCard = document.getElementById('example-portal-card');
 

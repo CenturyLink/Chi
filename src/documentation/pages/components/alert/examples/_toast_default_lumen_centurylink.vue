@@ -141,7 +141,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class ToastDefault extends Vue {
+export default class ToastDefaultLumenCenturyLink extends Vue {
   mounted() {}
 }
 </script>
