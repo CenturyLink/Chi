@@ -101,7 +101,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class BubbleClosable extends Vue {
+export default class BubbleClosableLumenCenturyLink extends Vue {
   mounted() {}
 }
 </script>

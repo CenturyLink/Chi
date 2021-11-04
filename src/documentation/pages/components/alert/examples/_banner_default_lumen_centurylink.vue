@@ -105,7 +105,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class BannerDefault extends Vue {
+export default class BannerDefaultLumenCenturyLink extends Vue {
   mounted() {}
 }
 </script>
