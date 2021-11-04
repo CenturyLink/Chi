@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Additional Sizes" id="additional_sizes_lumen_centurylink" :tabs="exampleTabs">
+  <ComponentExample title="Additional Sizes" id="sizes_lumen_centurylink" :tabs="exampleTabs">
     div(slot="example-description")
       p.-text
         | Use border top <a href="../../utilities/border">utilities</a> such as
@@ -60,7 +60,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class AdditionalSizesLumenCenturyLink extends Vue {
+export default class SizesLumenCenturyLink extends Vue {
   mounted() {}
 }
 </script>
