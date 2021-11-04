@@ -10,7 +10,11 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 .test-default-country.-py--2
   chi-label(for=`phone-input-default-country`) Phone Number 
-  chi-phone-input(id="phone-input-default-country" default-country='US' data-cy='phone-input-default-country')
+  chi-phone-input(id="phone-input-default-country" default-country='CA' data-cy='phone-input-default-country')
+
+.test-value.-py--2
+  chi-label(for=`phone-input-value`) Phone Number 
+  chi-phone-input(id="phone-input-value" default-country='CA' value="+1-6045551212" data-cy='phone-input-value')
 
 .test-disabled.-py--2 
   chi-label(for=`phone-input-disabled`) Phone Number

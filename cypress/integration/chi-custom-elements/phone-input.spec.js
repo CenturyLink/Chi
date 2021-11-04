@@ -55,6 +55,7 @@ describe('Phone Input', () => {
         .click()
         .then(() => {
           expect(spy).to.be.calledOnce;
+          expect(spy.getCall(0).args[0].detail).to.equal('+213-');
         });
     });
 
@@ -66,9 +67,10 @@ describe('Phone Input', () => {
       });
 
       cy.get('@phoneInput')
-        .type('123456789{Enter}')
+        .type('684123456{Enter}')
         .then(() => {
           expect(spy).to.be.calledOnce;
+          expect(spy.getCall(0).args[0].detail).to.equal('+213-684123456');
           cy.get('@phoneInput').clear();
         });
     });
@@ -104,11 +106,13 @@ describe('Phone Input', () => {
         .type('1{Enter}')
         .then(() => {
           expect(spy).to.be.calledOnce;
+          expect(spy.getCall(0).args[0].detail).to.equal('+46-1');
         });
       cy.get('@phoneInput')
         .clear()
         .then(() => {
           expect(spy).to.be.calledTwice;
+          expect(spy.getCall(1).args[0].detail).to.equal('+46-');
         });
     });
 
@@ -260,6 +264,25 @@ describe('Phone Input', () => {
           cy.get('@phoneInput').clear();
         });
     });
+
+    it('Should update value when prefix changes', () => {
+      cy.get(`@dropdownTrigger`)
+        .click()
+        .find('.chi-dropdown__menu-item')
+        .first()
+        .click()
+        .then(() => {
+          cy.get('@base').should('have.attr', 'value', '+358-');
+        });
+    });
+
+    it('Should update value when suffix changes', () => {
+      cy.get('@phoneInput')
+        .type('829323{Enter}')
+        .then(() => {
+          cy.get('@base').should('have.attr', 'value', '+358-829323');
+        });
+    });
   });
 
   describe('Default Country', () => {
@@ -275,10 +298,21 @@ describe('Phone Input', () => {
         .find(`.chi-dropdown`)
         .as('trigger')
         .click()
-        .contains('United States')
-        .as('US');
-      hasClassAssertion('@US', ACTIVE_CLASS);
+        .contains('Canada')
+        .as('CA');
+      hasClassAssertion('@CA', ACTIVE_CLASS);
       cy.get('@trigger').click();
+    });
+  });
+
+  describe('Value present', () => {
+    it('Should have a suffix set based on its value', () => {
+      cy.get(`[data-cy='phone-input-value']`)
+        .as('valueExample')
+        .should('have.attr', 'value', '+1-6045551212');
+      cy.get(`@valueExample`)
+        .find('input[type="tel"]')
+        .should('have.value', '(604) 555-1212');
     });
   });
 

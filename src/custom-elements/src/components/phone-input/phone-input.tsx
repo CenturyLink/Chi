@@ -11,7 +11,6 @@ import {
 } from '@stencil/core';
 import {
   AsYouType,
-  CountryCallingCode,
   CountryCode,
   getCountries,
   getCountryCallingCode,
@@ -56,6 +55,11 @@ export class ChiPhoneInput {
    */
   @Prop({ reflect: true }) state?: ChiStates;
   /**
+   * To define value of Phone input
+   */
+  @Prop({ mutable: true, reflect: true }) value = '';
+
+  /**
    * Triggered when an alteration to the element's value is committed by the user
    */
   @Event({ eventName: 'chiChange' }) chiChange: EventEmitter<string>;
@@ -73,7 +77,7 @@ export class ChiPhoneInput {
   @Element() el: HTMLElement;
 
   @State() _isNumberInvalid = false;
-  @State() _prefixLiteral: string;
+  @State() _prefix: string;
   @State() _suffix = '';
   @State() _dropdownActive = false;
   @State() _search = '';
@@ -101,7 +105,7 @@ export class ChiPhoneInput {
       }
     );
     document.addEventListener('click', this._closeDropdown);
-    this.changedPrefix();
+    this.initCountry();
     this.stateValidation(this.state);
     this._uuid = this.el.id ? this.el.id : `dp-${uuid4()}`;
   }
@@ -110,21 +114,18 @@ export class ChiPhoneInput {
     document.removeEventListener('click', this._closeDropdown);
   }
 
-  @Watch('_prefixLiteral')
-  changedPrefix(): void {
-    if (this._prefixLiteral) {
-      const code: CountryCallingCode = this._prefixLiteral.trim().substr(1);
-      const selectedCountry: Country = this._countries.find(
-        country => country.dialCode === code
-      );
-
-      if (selectedCountry) {
-        this._country = selectedCountry;
-      }
-    } else if (this.defaultCountry && isSupportedCountry(this.defaultCountry)) {
+  initCountry(): void {
+    if (isSupportedCountry(this.defaultCountry)) {
       this._country = this._countries.find(
         country => country.countryAbbr === this.defaultCountry
       );
+      this._prefix = `+${this._country.dialCode}`;
+
+      if (this.value) {
+        this._suffix = new AsYouType(this._country.countryAbbr).input(
+          this.value.substring(this.value.indexOf('-') + 1)
+        );
+      }
     }
   }
 
@@ -155,29 +156,30 @@ export class ChiPhoneInput {
       this._isNumberInvalid = true;
       this.chiNumberInvalid.emit();
     }
-    this._suffix && this._suffix.trim()
-      ? this.chiChange.emit(`${this._prefixLiteral}${this._suffix}`)
-      : this.chiChange.emit('');
+    this.value = this.getValue();
+    this.chiChange.emit(this.value);
   };
 
   _inputHandler = (event: Event): void => {
     event.stopPropagation();
-    const value = (event.target as HTMLInputElement).value;
-
     this._isNumberInvalid = false;
-    this._suffix = this._country
-      ? new AsYouType(this._country.countryAbbr).input(value)
-      : value;
-    this._suffix && this._suffix.trim()
-      ? this.chiInput.emit(`${this._prefixLiteral}${this._suffix}`)
-      : this.chiInput.emit('');
+    this._suffix = new AsYouType(this._country.countryAbbr).input(
+      (event.target as HTMLInputElement).value
+    );
+    this.value = this.getValue();
+    this.chiInput.emit(this.value);
   };
 
   prefixChangeHandler(country: Country): void {
-    this._prefixLiteral = `+${country.dialCode}`;
+    this._prefix = `+${country.dialCode}`;
     this._country = country;
-    this.chiChange.emit(`${this._prefixLiteral}${this._suffix}`);
+    this.value = this.getValue();
+    this.chiChange.emit(this.value);
     this._dropdownActive = false;
+  }
+
+  getValue() {
+    return `${this._prefix}-${this._suffix.replace(/[- )(]/g, '')}`;
   }
 
   _renderDropdown(): JSX.Element {
