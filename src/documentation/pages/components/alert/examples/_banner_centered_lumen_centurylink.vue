@@ -55,7 +55,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class BannerCentered extends Vue {
+export default class BannerCenteredLumenCenturyLink extends Vue {
   mounted() {}
 }
 </script>

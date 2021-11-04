@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    <TitleBar title="Accordion" description="Accordion is used to toggle between hiding and showing content." :tabs="pageTabs" />
+    <TitleBar title="Divider" description="Dividers are lines that render a break or separation between content." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
         <Examples />
@@ -31,7 +31,7 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     };
   }
 })
-export default class Accordion extends Vue {
+export default class Divider extends Vue {
   mounted() {}
 }
 </script>

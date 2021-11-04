@@ -148,7 +148,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class ToastSizes extends Vue {
+export default class ToastSizesLumenCenturyLink extends Vue {
   mounted() {}
 }
 </script>
