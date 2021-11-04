@@ -1,6 +1,8 @@
-const drawerLiTitleSelector = ' .chi-sidenav__drawer-list li div.chi-sidenav__title';
-const drawerDropDownTitle   = '.chi-sidenav__drawer-item-list ul.chi-tabs li a';
-const drawerLiMainMenuTitleSelector = ' .chi-sidenav__drawer-list li span.chi-sidenav__title';
+const drawerLiTitleSelector =
+  ' .chi-sidenav__drawer-list li div.chi-sidenav__title';
+const drawerDropDownTitle = '.chi-sidenav__drawer-item-list ul.chi-tabs li a';
+const drawerLiMainMenuTitleSelector =
+  ' .chi-sidenav__drawer-list li span.chi-sidenav__title';
 
 describe('Sidenav', function() {
   before(() => {
@@ -8,8 +10,7 @@ describe('Sidenav', function() {
   });
 
   beforeEach(() => {
-    cy.get('[data-cy="sidenav-legacy"]')
-      .as('legacySidenavSelector');
+    cy.get('[data-cy="sidenav-legacy"]').as('legacySidenavSelector');
   });
 
   describe('check that click on 1st level opens 2nd-level menu drawer', () => {
@@ -40,7 +41,7 @@ describe('Sidenav', function() {
           cy.get('.chi-sidenav__list li')
             .contains(menuText)
             .as('firstLevelElement');
-            
+
           cy.get('@firstLevelElement')
             .should('have.attr', 'href')
             .then(href => {
@@ -79,6 +80,7 @@ describe('Sidenav', function() {
                 .wait(550);
               cy.get(`${href}.-active`).should('be.visible');
               cy.get('.chi-sidenav__content')
+                .first()
                 .click()
                 .wait(250);
               cy.get('' + href)
@@ -137,7 +139,7 @@ describe('Sidenav', function() {
       }
       dropdownItems.forEach(element => {
         it(`check "${menuText}" >   "${element}" should open Dropdown`, () => {
-          cy.get('[data-cy="sidenav-legacy"]').within(() => {
+          cy.get('@legacySidenavSelector').within(() => {
             cy.get('.chi-sidenav__list li')
               .contains(menuText)
               .as('firstLevelElement');
@@ -177,7 +179,7 @@ describe('Sidenav', function() {
         '-verify that when clicking on Title C Drawer should close and ActiveItems has -active class',
       () => {
         let menuText = /^Active Item$/;
-        cy.get('[data-cy="sidenav-legacy"]').within(() => {
+        cy.get('@legacySidenavSelector').within(() => {
           cy.get('.chi-sidenav__list li')
             .contains(menuText)
             .as('firstLevelElement');

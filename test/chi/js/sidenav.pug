@@ -112,7 +112,7 @@ h3 Legacy Sidenav HTML markup
                   i.chi-icon.icon-external-link.-xs(aria-hidden="true")
 
 h3 Sidenav Accordion implementation
-aside#sidenav-1.chi-sidenav.-flex--shrink0.-animated
+aside#sidenav-1.chi-sidenav.-flex--shrink0.-animated(data-cy="sidenav")
   .chi-sidenav__content
     nav
       ul.chi-sidenav__list
@@ -320,4 +320,4 @@ aside#sidenav-1.chi-sidenav.-flex--shrink0.-animated
 
 script.
   chi.sidenav(document.getElementById('sidenav-0'));
-    chi.sidenav(document.getElementById('sidenav-1'));
+  chi.sidenav(document.getElementById('sidenav-1'));

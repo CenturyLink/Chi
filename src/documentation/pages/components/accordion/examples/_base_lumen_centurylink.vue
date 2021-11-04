@@ -1,6 +1,6 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example").-p--3.-p-lg--6
+  <ComponentExample title="Base" id="base_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
+    div(slot="example")
       .chi-accordion#example-base
         .chi-accordion__item
           button.chi-accordion__trigger
@@ -55,13 +55,13 @@ declare const chi: any;
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
+          label: 'HTML blueprint'
+        }
       ],
       codeSnippets: {
         webcomponent: `Web component code snippet`,
@@ -108,12 +108,12 @@ declare const chi: any;
   const accordionBase = document.getElementById('example-base');
 
   chi.accordion(accordionBase);
-  <\/script>`,
+  <\/script>`
       }
-    }
+    };
   }
 })
-export default class BaseExample extends Vue {
+export default class BaseLumenCenturyLink extends Vue {
   mounted() {
     const accordionBase = document.getElementById('example-base');
 
