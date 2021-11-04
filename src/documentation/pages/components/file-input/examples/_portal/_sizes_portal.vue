@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs">
+  <ComponentExample title="Sizes" id="sizes_portal" :tabs="exampleTabs">
     div(slot="example-description")
       p.-text File inputs support sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>, 
         | <code>-lg</code>. The default size is <code>-md</code>.
