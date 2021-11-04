@@ -1,6 +1,6 @@
 <template lang="pug">
-  <ComponentExample title="Nested" id="nested_portal" :tabs="exampleTabs">
-    div(slot="example").-p--3.-p-lg--6
+  <ComponentExample title="Nested" id="nested_portal" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
+    div(slot="example")
       .chi-accordion#example-portal-nested
         .chi-accordion__item
           button.chi-accordion__trigger
@@ -79,13 +79,13 @@ declare const chi: any;
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
+          label: 'HTML blueprint'
+        }
       ],
       codeSnippets: {
         webcomponent: `Web component code snippet`,
@@ -168,12 +168,12 @@ declare const chi: any;
   const accordionNested = document.getElementById('example-portal-nested');
 
   chi.accordion(accordionNested);
-<//script>`,
+<//script>`
       }
-    }
+    };
   }
 })
-export default class NestedExample extends Vue {
+export default class NestedPortal extends Vue {
   mounted() {
     const accordionNested = document.getElementById('example-portal-nested');
 

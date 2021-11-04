@@ -1,6 +1,9 @@
 <template>
   <div class="chi-dropdown -w--100">
-    <button id="theme-switcher" class="-theme-switch chi-button -fluid chi-dropdown__trigger">
+    <button
+      id="theme-switcher"
+      class="-theme-switch chi-button -fluid chi-dropdown__trigger"
+    >
       <div class="chi-button__content -flex--column">
         <span class="-d--flex -w--100 -mr--0 -text--normal -text--sm"
           >Theme</span
@@ -11,18 +14,26 @@
               class="-favicon"
               width="16"
               height="16"
-              :src="'/themes/'+this.$store.state.themes.theme+'/images/favicon.svg'"
+              :src="
+                '/themes/' +
+                  this.$store.state.themes.theme +
+                  '/images/favicon.svg'
+              "
             />
           </div>
-          <div class="-theme-name">{{themes[this.$store.state.themes.theme].label}}</div>
+          <div class="-theme-name">
+            {{ themes[this.$store.state.themes.theme].label }}
+          </div>
         </div>
       </div>
     </button>
-    <div
-      class="chi-dropdown__menu"
-      x-placement="bottom-start">
+    <div class="chi-dropdown__menu" x-placement="bottom-start">
       <a
-        v-bind:class="[this.$store.state.themes.theme === 'centurylink' ? '-active' : '', 'theme-trigger-centurylink', 'chi-dropdown__menu-item']"
+        v-bind:class="[
+          this.$store.state.themes.theme === 'centurylink' ? '-active' : '',
+          'theme-trigger-centurylink',
+          'chi-dropdown__menu-item'
+        ]"
         href="#"
         @click="setTheme('centurylink')"
         ><img
@@ -33,7 +44,11 @@
         />
         <div class="-theme-name">CenturyLink</div></a
       ><a
-        v-bind:class="[this.$store.state.themes.theme === 'lumen' ? '-active' : '', 'theme-trigger-lumen', 'chi-dropdown__menu-item']"
+        v-bind:class="[
+          this.$store.state.themes.theme === 'lumen' ? '-active' : '',
+          'theme-trigger-lumen',
+          'chi-dropdown__menu-item'
+        ]"
         href="#"
         @click="setTheme('lumen')"
         ><img
@@ -44,7 +59,11 @@
         />
         <div class="-theme-name">Lumen</div></a
       ><a
-        v-bind:class="[this.$store.state.themes.theme === 'portal' ? '-active' : '', 'theme-trigger-portal', 'chi-dropdown__menu-item']"
+        v-bind:class="[
+          this.$store.state.themes.theme === 'portal' ? '-active' : '',
+          'theme-trigger-portal',
+          'chi-dropdown__menu-item'
+        ]"
         href="#"
         @click="setTheme('portal')"
         ><img

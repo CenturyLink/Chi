@@ -1,6 +1,6 @@
 <template lang="pug">
-  <ComponentExample title="Expand / Collapse all Accordion items" id="expand_collapse_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example").-p--3.-p-lg--6
+  <ComponentExample title="Expand / Collapse all Accordion items" id="expand_collapse_all_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
+    div(slot="example")
       button(@click="expandAll").chi-button#expand-all Expand all
       button(@click="collapseAll").chi-button.-ml--1#collapse-all Collapse all
       .chi-accordion.-mt--2#expand-collapse
@@ -80,13 +80,13 @@ declare const chi: any;
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
+          label: 'HTML blueprint'
+        }
       ],
       codeSnippets: {
         webcomponent: `Web component code snippet`,
@@ -176,12 +176,12 @@ declare const chi: any;
   collapseAll.addEventListener("click", () => {
     expandCollapseAccordion.collapseAll();
   });
-<\/script>`,
+<\/script>`
       }
-    }
+    };
   }
 })
-export default class ExpandAllExample extends Vue {
+export default class ExpandCollapseAllLumenCenturyLink extends Vue {
   accordion: any;
 
   expandAll() {

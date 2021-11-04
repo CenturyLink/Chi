@@ -30,6 +30,7 @@ export const exampleConfig = {
     sortBy: 'id',
     direction: 'ascending',
   },
+  truncation: true,
 };
 
 const exampleColumns = [

@@ -55,7 +55,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class BubbleCentered extends Vue {
+export default class BubbleCenteredLumenCenturyLink extends Vue {
   mounted() {}
 }
 </script>

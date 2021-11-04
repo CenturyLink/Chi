@@ -124,7 +124,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class BannerSizes extends Vue {
+export default class BannerSizesLumenCenturyLink extends Vue {
   mounted() {}
 }
 </script>
