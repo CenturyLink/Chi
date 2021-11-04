@@ -1,30 +1,29 @@
 <template lang="pug">
   <ComponentExample title="Toggle Switch" id="toggle_switch" :tabs="exampleTabs" backgroundColor="#eee">
-    div(slot="example")
-      .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
-        .chi-dropdown__menu.-active
-          legend.chi-dropdown__menu-item Configure options
-          .chi-dropdown__menu-item
-            .chi-form__item
-              label.chi-switch.-xs(for="toggle-mail")
-                input(type="checkbox", class="chi-switch__input", id="toggle-mail")
-                span(class="chi-switch__content")
-                  span.chi-switch__thumb
-                span.chi-switch__label Email notifications
-          .chi-dropdown__menu-item
-            .chi-form__item
-              label.chi-switch.-xs(for="toggle-tlf")
-                input(type="checkbox", class="chi-switch__input", id="toggle-tlf")
-                span(class="chi-switch__content")
-                  span.chi-switch__thumb
-                span.chi-switch__label Phone notifications
-          .chi-dropdown__menu-item
-            .chi-form__item
-              label.chi-switch.-xs(for="toggle-app")
-                input(type="checkbox", class="chi-switch__input", id="toggle-app")
-                span(class="chi-switch__content")
-                  span.chi-switch__thumb
-                span.chi-switch__label App notifications
+    .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4(slot="example")
+      .chi-dropdown__menu.-active
+        legend.chi-dropdown__menu-item Configure options
+        .chi-dropdown__menu-item
+          .chi-form__item
+            label.chi-switch.-xs(for="toggle-mail")
+              input(type="checkbox", class="chi-switch__input", id="toggle-mail")
+              span(class="chi-switch__content")
+                span.chi-switch__thumb
+              span.chi-switch__label Email notifications
+        .chi-dropdown__menu-item
+          .chi-form__item
+            label.chi-switch.-xs(for="toggle-tlf")
+              input(type="checkbox", class="chi-switch__input", id="toggle-tlf")
+              span(class="chi-switch__content")
+                span.chi-switch__thumb
+              span.chi-switch__label Phone notifications
+        .chi-dropdown__menu-item
+          .chi-form__item
+            label.chi-switch.-xs(for="toggle-app")
+              input(type="checkbox", class="chi-switch__input", id="toggle-app")
+              span(class="chi-switch__content")
+                span.chi-switch__thumb
+              span.chi-switch__label App notifications
     div(slot="code-webcomponent")
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

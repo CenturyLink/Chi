@@ -2,14 +2,13 @@
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
     div(slot="example-description")
       p.-text Trigger and dropdown enclosed in the same div.
-    div(slot="example")
-      .chi-dropdown
-        button.chi-button.chi-dropdown__trigger#dropdown-1 Dropdown, click me
-        .chi-dropdown__menu
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 4
+    .chi-dropdown(slot="example")
+      button.chi-button.chi-dropdown__trigger#dropdown-1 Dropdown, click me
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 4
     div(slot="code-webcomponent")
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

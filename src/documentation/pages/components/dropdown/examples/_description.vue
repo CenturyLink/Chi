@@ -1,20 +1,19 @@
 <template lang="pug">
   <ComponentExample title="Description" id="description" :tabs="exampleTabs" backgroundColor="#eee">
-    div(slot="example")
-      .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
-        .chi-dropdown__menu.-active.-list
-          a.chi-dropdown__menu-item(href='#exampleLink')
-            span.chi-dropdown__menu-item_title Item
-            span.chi-dropdown__menu-item_text Item description
-          a.chi-dropdown__menu-item.-active(href='#exampleLink')
-            span.chi-dropdown__menu-item_title Active item
-            span.chi-dropdown__menu-item_text Item description
-          a.chi-dropdown__menu-item.-disabled(href='#exampleLink')
-            span.chi-dropdown__menu-item_title Disabled item
-            span.chi-dropdown__menu-item_text Item description
-          a.chi-dropdown__menu-item.-hover(href='#exampleLink')
-            span.chi-dropdown__menu-item_title Hovered item
-            span.chi-dropdown__menu-item_text Item description
+    .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4(slot="example")
+      .chi-dropdown__menu.-active.-list
+        a.chi-dropdown__menu-item(href='#exampleLink')
+          span.chi-dropdown__menu-item_title Item
+          span.chi-dropdown__menu-item_text Item description
+        a.chi-dropdown__menu-item.-active(href='#exampleLink')
+          span.chi-dropdown__menu-item_title Active item
+          span.chi-dropdown__menu-item_text Item description
+        a.chi-dropdown__menu-item.-disabled(href='#exampleLink')
+          span.chi-dropdown__menu-item_title Disabled item
+          span.chi-dropdown__menu-item_text Item description
+        a.chi-dropdown__menu-item.-hover(href='#exampleLink')
+          span.chi-dropdown__menu-item_title Hovered item
+          span.chi-dropdown__menu-item_text Item description
     div(slot="code-webcomponent")
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

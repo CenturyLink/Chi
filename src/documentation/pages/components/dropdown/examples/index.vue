@@ -7,32 +7,31 @@
       | activator must reference the dropdown with a <code>data-target</code> attribute.
       | Use the <code>chi-dropdown__trigger</code> class on your activator button to make the chevron appear.
 
-    div
-      <Base />
-      <DataTarget />
-      <Hover />
-      <Animated />
-      <Positioning />
+    <Base />
+    <DataTarget />
+    <Hover />
+    <Animated />
+    <Positioning />
 
-      h2 Menu
-      <States />
-      <Description />
-      <Divider />
-      <Icons />
-      <SearchBox />
+    h2 Menu
+    <States />
+    <Description />
+    <Divider />
+    <Icons />
+    <SearchBox />
 
-      h3 Checkboxes
-      <CheckboxesBase />
-      <CheckboxesIcons />
+    h3 Checkboxes
+    <CheckboxesBase />
+    <CheckboxesIcons />
 
-      <RadioButtons />
-      <RangeInput />
-      <ToggleSwitch />
-      <PlainText />
+    <RadioButtons />
+    <RangeInput />
+    <ToggleSwitch />
+    <PlainText />
 
-      h3 Helpers
-      <TruncateLongMenuItems />
-      <FlexibleHeight />
+    h3 Helpers
+    <TruncateLongMenuItems />
+    <FlexibleHeight />
 </template>
 
 <script lang="ts">

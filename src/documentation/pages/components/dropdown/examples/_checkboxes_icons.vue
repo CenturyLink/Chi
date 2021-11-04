@@ -1,33 +1,32 @@
 <template lang="pug">
   div
     <ComponentExample title="With Icons" titleSize="h4" id="checkboxes_icons" :tabs="exampleTabs" backgroundColor="#eee">
-      div(slot="example")
-        .chi-col.-w--10.-w-sm--6.-w-md--7.-w-lg--5.-w-xl--3
-          .chi-dropdown__menu.-active
-            .chi-dropdown__menu-item
-              .chi-checkbox
-                input(type="checkbox", class="chi-checkbox__input", id="checkbox1b")
-                label(for="checkbox1b", class="chi-checkbox__label")
-                  i.chi-icon.icon-logo-centurylink(aria-hidden="true")
-                  | Item 1
-            .chi-dropdown__menu-item
-              .chi-checkbox
-                input(type="checkbox", class="chi-checkbox__input", id="checkbox2b", disabled)
-                label(for="checkbox2b", class="chi-checkbox__label")
-                  i.chi-icon.icon-logo-centurylink(aria-hidden="true")
-                  | Item 2
-            .chi-dropdown__menu-item
-              .chi-checkbox
-                input(type="checkbox", class="chi-checkbox__input", id="checkbox3b", checked)
-                label(for="checkbox3b", class="chi-checkbox__label")
-                  i.chi-icon.icon-logo-centurylink(aria-hidden="true")
-                  | Item 3
-            .chi-dropdown__menu-item
-              .chi-checkbox
-                input(type="checkbox", class="chi-checkbox__input", id="checkbox4b")
-                label(for="checkbox4b", class="chi-checkbox__label")
-                  i.chi-icon.icon-logo-centurylink(aria-hidden="true")
-                  | Item 4
+      .chi-col.-w--10.-w-sm--6.-w-md--7.-w-lg--5.-w-xl--3(slot="example")
+        .chi-dropdown__menu.-active
+          .chi-dropdown__menu-item
+            .chi-checkbox
+              input(type="checkbox", class="chi-checkbox__input", id="checkbox1b")
+              label(for="checkbox1b", class="chi-checkbox__label")
+                i.chi-icon.icon-logo-centurylink(aria-hidden="true")
+                | Item 1
+          .chi-dropdown__menu-item
+            .chi-checkbox
+              input(type="checkbox", class="chi-checkbox__input", id="checkbox2b", disabled)
+              label(for="checkbox2b", class="chi-checkbox__label")
+                i.chi-icon.icon-logo-centurylink(aria-hidden="true")
+                | Item 2
+          .chi-dropdown__menu-item
+            .chi-checkbox
+              input(type="checkbox", class="chi-checkbox__input", id="checkbox3b", checked)
+              label(for="checkbox3b", class="chi-checkbox__label")
+                i.chi-icon.icon-logo-centurylink(aria-hidden="true")
+                | Item 3
+          .chi-dropdown__menu-item
+            .chi-checkbox
+              input(type="checkbox", class="chi-checkbox__input", id="checkbox4b")
+              label(for="checkbox4b", class="chi-checkbox__label")
+                i.chi-icon.icon-logo-centurylink(aria-hidden="true")
+                | Item 4
       div(slot="code-webcomponent")
         <pre class="language-html">
           <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

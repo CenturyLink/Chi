@@ -4,13 +4,12 @@
       p.-text
         | Menu items support the following states: <code>initial</code>, <code>active</code>, <code>disabled</code> and
         | <code>hover</code>.
-    div(slot="example")
-      .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
-        .chi-dropdown__menu.-active
-          a.chi-dropdown__menu-item(href='#exampleLink') Item
-          a.chi-dropdown__menu-item.-active(href='#exampleLink') Active item
-          a.chi-dropdown__menu-item.-disabled(href='#exampleLink') Disabled item
-          a.chi-dropdown__menu-item.-hover(href='#exampleLink') Hovered item
+    .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4(slot="example")
+      .chi-dropdown__menu.-active
+        a.chi-dropdown__menu-item(href='#exampleLink') Item
+        a.chi-dropdown__menu-item.-active(href='#exampleLink') Active item
+        a.chi-dropdown__menu-item.-disabled(href='#exampleLink') Disabled item
+        a.chi-dropdown__menu-item.-hover(href='#exampleLink') Hovered item
     div(slot="code-webcomponent")
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

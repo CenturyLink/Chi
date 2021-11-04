@@ -4,13 +4,12 @@
       div(slot="example-description")
         p.-text 
           | Wrap the menu-item content in a div with the class <code>-flex--ellipsis</code> to truncate long strings.
-      div(slot="example")
-        .chi-dropdown__menu.-active(style="width:10rem")
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-          a.chi-dropdown__menu-item(id='example-truncated-menu-item' href='#exampleLink' data-tooltip='Item 3 with truncated longer text')
-            .-flex--ellipsis Item 3 with truncated longer text
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 4
+      .chi-dropdown__menu.-active(style="width:10rem" slot="example")
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+        a.chi-dropdown__menu-item(id='example-truncated-menu-item' href='#exampleLink' data-tooltip='Item 3 with truncated longer text')
+          .-flex--ellipsis Item 3 with truncated longer text
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 4
       div(slot="code-webcomponent")
         <pre class="language-html">
           <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

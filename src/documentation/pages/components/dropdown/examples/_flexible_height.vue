@@ -3,11 +3,10 @@
     <ComponentExample title="Flexible height" titleSize="h4" id="flexible_height" :tabs="exampleTabs" backgroundColor="#eee">
       div(slot="example-description")
         p.-text Add the class <code>-h--auto</code> to set menu item height to auto.
-      div(slot="example")
-        .chi-dropdown__menu.-active(style="width:10rem")
-          a.chi-dropdown__menu-item(href="#exampleLink") Item 1
-          .chi-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          a.chi-dropdown__menu-item(href="#exampleLink") Item 2
+      .chi-dropdown__menu.-active(slot="example" style="width:10rem")
+        a.chi-dropdown__menu-item(href="#exampleLink") Item 1
+        .chi-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        a.chi-dropdown__menu-item(href="#exampleLink") Item 2
       div(slot="code-webcomponent")
         <pre class="language-html">
           <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

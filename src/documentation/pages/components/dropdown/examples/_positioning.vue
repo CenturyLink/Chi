@@ -7,98 +7,97 @@
         | <code>initial</code>, <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code>,
         | <code>top-start</code>, <code>top-end</code>, <code>right-start</code>, <code>right-end</code>,
         | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>, <code>left-end</code>.
-    div(slot="example")
-      .chi-grid.-no-gutter.-px-xl--3
-        .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
-          div.-p--1
-            .chi-dropdown
-              button#dropdown-top-start.chi-button.chi-dropdown__trigger(data-position="top-start") Top start
-              .chi-dropdown__menu(style="width: 15rem;")
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-          div.-p--1
-            .chi-dropdown
-              button#dropdown-top.chi-button.chi-dropdown__trigger(data-position="top") Top
-              .chi-dropdown__menu(style="width: 15rem;")
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-          div.-p--1
-            .chi-dropdown
-              button#dropdown-top-end.chi-button.chi-dropdown__trigger(data-position="top-end") Top end
-              .chi-dropdown__menu(style="width: 15rem;")
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-        .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-flex--wrap
-          div.-p--1.-py-sm--3
-            .chi-dropdown
-              button#dropdown-left-start.chi-button.chi-dropdown__trigger(data-position="left-start") Left start
-              .chi-dropdown__menu(style="width: 15rem;")
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-          div.-p--1.-py-sm--3
-            .chi-dropdown
-              button#dropdown-left.chi-button.chi-dropdown__trigger(data-position="left") Left
-              .chi-dropdown__menu(style="width: 15rem;")
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-          div.-p--1.-py-sm--3
-            .chi-dropdown
-              button#dropdown-left-end.chi-button.chi-dropdown__trigger(data-position="left-end") Left end
-              .chi-dropdown__menu(style="width: 15rem;")
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-        .chi-col.-d--none.-w--12.-w-sm--4.-d-sm--flex.-flex-sm--column.-justify-content-sm--center.-align-items-sm--center
-          div.-w--75.-text.-text--muted.-text--center.-lh--2 Click buttons to see Dropdown positions
-        .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-align-items-sm--end.-flex--wrap
-          div.-p--1.-py-sm--3
-            .chi-dropdown
-              button#dropdown-right-start.chi-button.chi-dropdown__trigger(data-position="right-start") Right start
-              .chi-dropdown__menu(style="width: 15rem;")
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-          div.-p--1.-py-sm--3
-            .chi-dropdown
-              button#dropdown-right.chi-button.chi-dropdown__trigger(data-position="right") Right
-              .chi-dropdown__menu(style="width: 15rem;")
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-          div.-p--1.-py-sm--3
-            .chi-dropdown
-              button#dropdown-right-end.chi-button.chi-dropdown__trigger(data-position="right-end") Right end
-              .chi-dropdown__menu(style="width: 15rem;")
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-        .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
-          div.-p--1
-            .chi-dropdown
-              button#dropdown-bottom-start.chi-button.chi-dropdown__trigger(data-position="bottom-start") Bottom start
-              .chi-dropdown__menu(style="width: 15rem;")
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-          div.-p--1
-            .chi-dropdown
-              button#dropdown-bottom.chi-button.chi-dropdown__trigger(data-position="bottom") Bottom
-              .chi-dropdown__menu(style="width: 15rem;")
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-          div.-p--1
-            .chi-dropdown
-              button#dropdown-bottom-end.chi-button.chi-dropdown__trigger(data-position="bottom-end") Bottom end
-              .chi-dropdown__menu(style="width: 15rem;")
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-                a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+    .chi-grid.-no-gutter.-px-xl--3(slot="example")
+      .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
+        div.-p--1
+          .chi-dropdown
+            button#dropdown-top-start.chi-button.chi-dropdown__trigger(data-position="top-start") Top start
+            .chi-dropdown__menu(style="width: 15rem;")
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+        div.-p--1
+          .chi-dropdown
+            button#dropdown-top.chi-button.chi-dropdown__trigger(data-position="top") Top
+            .chi-dropdown__menu(style="width: 15rem;")
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+        div.-p--1
+          .chi-dropdown
+            button#dropdown-top-end.chi-button.chi-dropdown__trigger(data-position="top-end") Top end
+            .chi-dropdown__menu(style="width: 15rem;")
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+      .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-flex--wrap
+        div.-p--1.-py-sm--3
+          .chi-dropdown
+            button#dropdown-left-start.chi-button.chi-dropdown__trigger(data-position="left-start") Left start
+            .chi-dropdown__menu(style="width: 15rem;")
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+        div.-p--1.-py-sm--3
+          .chi-dropdown
+            button#dropdown-left.chi-button.chi-dropdown__trigger(data-position="left") Left
+            .chi-dropdown__menu(style="width: 15rem;")
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+        div.-p--1.-py-sm--3
+          .chi-dropdown
+            button#dropdown-left-end.chi-button.chi-dropdown__trigger(data-position="left-end") Left end
+            .chi-dropdown__menu(style="width: 15rem;")
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+      .chi-col.-d--none.-w--12.-w-sm--4.-d-sm--flex.-flex-sm--column.-justify-content-sm--center.-align-items-sm--center
+        div.-w--75.-text.-text--muted.-text--center.-lh--2 Click buttons to see Dropdown positions
+      .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-align-items-sm--end.-flex--wrap
+        div.-p--1.-py-sm--3
+          .chi-dropdown
+            button#dropdown-right-start.chi-button.chi-dropdown__trigger(data-position="right-start") Right start
+            .chi-dropdown__menu(style="width: 15rem;")
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+        div.-p--1.-py-sm--3
+          .chi-dropdown
+            button#dropdown-right.chi-button.chi-dropdown__trigger(data-position="right") Right
+            .chi-dropdown__menu(style="width: 15rem;")
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+        div.-p--1.-py-sm--3
+          .chi-dropdown
+            button#dropdown-right-end.chi-button.chi-dropdown__trigger(data-position="right-end") Right end
+            .chi-dropdown__menu(style="width: 15rem;")
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+      .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
+        div.-p--1
+          .chi-dropdown
+            button#dropdown-bottom-start.chi-button.chi-dropdown__trigger(data-position="bottom-start") Bottom start
+            .chi-dropdown__menu(style="width: 15rem;")
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+        div.-p--1
+          .chi-dropdown
+            button#dropdown-bottom.chi-button.chi-dropdown__trigger(data-position="bottom") Bottom
+            .chi-dropdown__menu(style="width: 15rem;")
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+        div.-p--1
+          .chi-dropdown
+            button#dropdown-bottom-end.chi-button.chi-dropdown__trigger(data-position="bottom-end") Bottom end
+            .chi-dropdown__menu(style="width: 15rem;")
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+              a.chi-dropdown__menu-item(href='#exampleLink') Item 3
     div(slot="code-webcomponent")
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

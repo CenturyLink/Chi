@@ -1,26 +1,25 @@
 <template lang="pug">
   <ComponentExample title="Radio Buttons" id="radio_buttons" :tabs="exampleTabs" backgroundColor="#eee">
-    div(slot="example")
-      .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
-        .chi-dropdown__menu.-active
-          fieldset
-            legend.chi-dropdown__menu-item Select an option
-            .chi-dropdown__menu-item
-              .chi-radio
-                input(class="chi-radio__input", type="radio", name="radios", id="radio1")
-                label.chi-radio__label(for="radio1") Radio Button 1
-            .chi-dropdown__menu-item
-              .chi-radio
-                input(class="chi-radio__input", type="radio", name="radios", id="radio2", disabled)
-                label.chi-radio__label(for="radio2") Disabled Radio Button 2
-            .chi-dropdown__menu-item
-              .chi-radio
-                input(class="chi-radio__input", type="radio", name="radios", id="radio3")
-                label.chi-radio__label(for="radio3") Radio Button 3
-            .chi-dropdown__menu-item
-              .chi-radio
-                input(class="chi-radio__input", type="radio", name="radios", id="radio4")
-                label.chi-radio__label(for="radio4") Radio Button 4
+    .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4(slot="example")
+      .chi-dropdown__menu.-active
+        fieldset
+          legend.chi-dropdown__menu-item Select an option
+          .chi-dropdown__menu-item
+            .chi-radio
+              input(class="chi-radio__input", type="radio", name="radios", id="radio1")
+              label.chi-radio__label(for="radio1") Radio Button 1
+          .chi-dropdown__menu-item
+            .chi-radio
+              input(class="chi-radio__input", type="radio", name="radios", id="radio2", disabled)
+              label.chi-radio__label(for="radio2") Disabled Radio Button 2
+          .chi-dropdown__menu-item
+            .chi-radio
+              input(class="chi-radio__input", type="radio", name="radios", id="radio3")
+              label.chi-radio__label(for="radio3") Radio Button 3
+          .chi-dropdown__menu-item
+            .chi-radio
+              input(class="chi-radio__input", type="radio", name="radios", id="radio4")
+              label.chi-radio__label(for="radio4") Radio Button 4
     div(slot="code-webcomponent")
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

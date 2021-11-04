@@ -4,13 +4,12 @@
       p.-text 
         | Dropdown on hover is only supported when trigger and dropdown elements are enclosed in the same div.
         | Use the <code>chi-dropdown__hover</code> class to achieve this.
-    div(slot="example")
-      .chi-dropdown.chi-dropdown__hover
-        button.chi-button.chi-dropdown__trigger Dropdown component
-        .chi-dropdown__menu
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+    .chi-dropdown.chi-dropdown__hover(slot="example")
+      button.chi-button.chi-dropdown__trigger Dropdown component
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 3
     div(slot="code-webcomponent")
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

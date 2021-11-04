@@ -3,14 +3,13 @@
     div(slot="example-description")
       p.-text 
         | Several menu items can be arranged together by using a divider. Use the <code>chi-divider</code> component.
-    div(slot="example")
-      .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
-        .chi-dropdown__menu.-active
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 1
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 2
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-          .chi-divider
-          a.chi-dropdown__menu-item(href='#exampleLink') Item 4
+    .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3(slot="example")
+      .chi-dropdown__menu.-active
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 1
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 2
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 3
+        .chi-divider
+        a.chi-dropdown__menu-item(href='#exampleLink') Item 4
     div(slot="code-webcomponent")
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

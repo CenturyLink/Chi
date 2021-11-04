@@ -1,16 +1,15 @@
 <template lang="pug">
   <ComponentExample title="Range Input" id="range_input" :tabs="exampleTabs" backgroundColor="#eee">
-    div(slot="example")
-      .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
-        .chi-dropdown__menu.-active
-          .chi-dropdown__menu-item
-            span.-text.-mr--2 200GB
-            input.chi-input(type="range", aria-label="Range description")
-            span.-text.-ml--2 5TB
-          .chi-divider
-          legend.chi-dropdown__menu-item Select range
-          .chi-dropdown__menu-item
-            input.chi-input(type="range", aria-label="Range description")
+    .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4(slot="example")
+      .chi-dropdown__menu.-active
+        .chi-dropdown__menu-item
+          span.-text.-mr--2 200GB
+          input.chi-input(type="range", aria-label="Range description")
+          span.-text.-ml--2 5TB
+        .chi-divider
+        legend.chi-dropdown__menu-item Select range
+        .chi-dropdown__menu-item
+          input.chi-input(type="range", aria-label="Range description")
     div(slot="code-webcomponent")
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
