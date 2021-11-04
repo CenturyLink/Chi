@@ -124,7 +124,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class BubbleSizes extends Vue {
+export default class BubbleSizesLumenCenturyLink extends Vue {
   mounted() {}
 }
 </script>
