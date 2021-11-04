@@ -52,7 +52,7 @@ if (process.env.PRODUCTION) {
   }),
   new webpack.BannerPlugin(copyright)];
 } else {
- webpackConfig.devtool = 'eval';
+//  webpackConfig.devtool = 'eval';
   webpackConfig.plugins = [new webpack.SourceMapDevToolPlugin({
     filename: '[file].map',
     append: null,
