@@ -101,7 +101,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class BannerClosable extends Vue {
+export default class BannerClosableLumenCenturyLink extends Vue {
   mounted() {}
 }
 </script>

@@ -2,8 +2,12 @@
   <div class="chi-grid__container">
     <nav class="docs-tabs">
       <ul class="chi-tabs -animated" id="page-content-tabs">
-        <li :class="[tab.active ? '-active' : '']" v-for="tab in tabs" :key="tab.id">
-          <a :href="'#'+tab.id">
+        <li
+          :class="[tab.active ? '-active' : '']"
+          v-for="tab in tabs"
+          :key="tab.id"
+        >
+          <a :href="'#' + tab.id">
             {{ tab.label }}
           </a>
         </li>
