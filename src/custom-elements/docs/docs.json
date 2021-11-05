@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-10-26T07:47:42",
+  "timestamp": "2021-11-05T10:24:31",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -3545,6 +3545,23 @@
             }
           ],
           "optional": true,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "To define value of Phone input",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
           "required": false
         }
       ],
