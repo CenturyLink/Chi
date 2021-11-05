@@ -84,7 +84,7 @@ import { THEMES, defaultCss, defaultDocsCss } from '../constants/constants';
 import { Component, Vue } from 'vue-property-decorator';
 
 declare const chi: any;
-interface AssetsToReplace {
+interface AssetToReplace {
   type: 'css' | 'docsCss';
   id: string;
 }
@@ -114,9 +114,9 @@ export default class ThemeSwitcher extends Vue {
 
   setTheme(theme: Themes): void {
     const brandLogo = document.getElementById('header-logo') as any;
-    const assetsToReplace : AssetsToReplace[] = [{type: 'css', id: 'chi-css'}, {type: 'docsCss', id: 'chi-docs-css'}];
+    const assetsToReplace : AssetToReplace[] = [{type: 'css', id: 'chi-css'}, {type: 'docsCss', id: 'chi-docs-css'}];
 
-    assetsToReplace.forEach((asset: { type: 'css' | 'docsCss', id: string }) => {
+    assetsToReplace.forEach((asset: AssetToReplace) => {
       const currentAsset = document.getElementById(asset.id);
       const replacementAsset = document.createElement('LINK');
       const replacementHref = THEMES[theme][asset.type];
@@ -128,7 +128,7 @@ export default class ThemeSwitcher extends Vue {
           currentAsset.parentNode
             .insertBefore(replacementAsset, currentAsset.nextSibling);
         }
-        replacementAsset.addEventListener('load', function() {
+        replacementAsset.addEventListener('load', () => {
           replacementAsset.setAttribute('id', asset.id);
           currentAsset.remove();
         });
