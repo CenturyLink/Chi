@@ -166,14 +166,15 @@
           button#version-dropdown.chi-button.-flat.-px--1.chi-dropdown__trigger.-animate(
             data-position='bottom-end',
             aria-label='Toggle Chi version'
-          ) v5.4.0
+          ) v5.5.0
           #versionDropdown.chi-dropdown__menu(
             style='width: 10rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(76px, 40px, 0px)',
             x-placement='bottom-end'
           )
             a.chi-dropdown__menu-item.-active(
-              href='https://assets.ctl.io/chi/5.4.0'
-            ) v5.4.0       
+              href='https://assets.ctl.io/chi/5.5.0'
+            ) v5.5.0
+            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.4.0') v5.4.0       
             a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.3.1') v5.3.1
             a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.3.0') v5.3.0
             a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.2.0') v5.2.0
