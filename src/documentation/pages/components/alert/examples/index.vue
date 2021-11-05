@@ -44,7 +44,6 @@ div
     <BubbleSizesPortal />
     <BubbleClosablePortal />
     <BubbleActionable />
-
 </template>
 
 <script lang="ts">
@@ -88,5 +87,5 @@ import BubbleClosablePortal from './_portal/_bubble_closable.vue';
     BubbleClosablePortal
   }
 })
-export default class AlertExamples extends Vue {}
+export default class Examples extends Vue {}
 </script>
