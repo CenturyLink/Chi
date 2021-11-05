@@ -140,6 +140,18 @@ describe('Phone Input', () => {
         });
     });
 
+    it(`Should focus on the search input when dropdown menu opens`, () => {
+      cy.get(`@dropdownTrigger`)
+        .click()
+        .then(() => {
+          cy.focused().should('have.attr', 'type', 'search');
+          cy.focused()
+            .parents('chi-phone-input')
+            .should('have.id', 'phone-input-base');
+        });
+      cy.get(`@dropdownTrigger`).click();
+    });
+
     it('Should search a country by name successfully', () => {
       cy.get(`@dropdownTrigger`)
         .click()
@@ -305,7 +317,7 @@ describe('Phone Input', () => {
     });
   });
 
-  describe('Value present', () => {
+  describe('Default value', () => {
     it('Should have a suffix set based on its value', () => {
       cy.get(`[data-cy='phone-input-value']`)
         .as('valueExample')
