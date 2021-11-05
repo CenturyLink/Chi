@@ -105,8 +105,8 @@ export class ChiPhoneInput {
       }
     );
     document.addEventListener('click', this._closeDropdown);
-    this.initCountry();
     this.stateValidation(this.state);
+    this._initCountry();
     this._uuid = this.el.id ? this.el.id : `dp-${uuid4()}`;
   }
 
@@ -114,7 +114,18 @@ export class ChiPhoneInput {
     document.removeEventListener('click', this._closeDropdown);
   }
 
-  initCountry(): void {
+  @Watch('state')
+  stateValidation(state: ChiStates): void {
+    const validValues = CHI_STATES.join(', ');
+
+    if (state && !CHI_STATES.includes(state)) {
+      throw new Error(
+        `${state} is not a valid state for phone input. If provided, valid values are: ${validValues}. `
+      );
+    }
+  }
+
+  _initCountry(): void {
     if (isSupportedCountry(this.defaultCountry)) {
       this._country = this._countries.find(
         country => country.countryAbbr === this.defaultCountry
@@ -129,23 +140,6 @@ export class ChiPhoneInput {
     }
   }
 
-  @Watch('state')
-  stateValidation(newValue: ChiStates): void {
-    const validValues = CHI_STATES.join(', ');
-
-    if (newValue && !CHI_STATES.includes(newValue)) {
-      throw new Error(
-        `${newValue} is not a valid state for phone input. If provided, valid values are: ${validValues}. `
-      );
-    }
-  }
-
-  _closeDropdown = (): void => {
-    this._clickedOnComponent
-      ? (this._clickedOnComponent = false)
-      : (this._dropdownActive = false);
-  };
-
   _suffixInputChangeHandler = (event: Event): void => {
     event.stopPropagation();
     this._suffix = (event.target as HTMLInputElement).value;
@@ -156,7 +150,7 @@ export class ChiPhoneInput {
       this._isNumberInvalid = true;
       this.chiNumberInvalid.emit();
     }
-    this.value = this.getValue();
+    this.value = this._getValue();
     this.chiChange.emit(this.value);
   };
 
@@ -166,19 +160,36 @@ export class ChiPhoneInput {
     this._suffix = new AsYouType(this._country.countryAbbr).input(
       (event.target as HTMLInputElement).value
     );
-    this.value = this.getValue();
+    this.value = this._getValue();
     this.chiInput.emit(this.value);
   };
 
-  prefixChangeHandler(country: Country): void {
+  _prefixChangeHandler(country: Country): void {
     this._prefix = `+${country.dialCode}`;
     this._country = country;
-    this.value = this.getValue();
+    this.value = this._getValue();
     this.chiChange.emit(this.value);
     this._dropdownActive = false;
   }
 
-  getValue() {
+  _dropdownTriggerHandler(): void {
+    this._dropdownActive = !this._dropdownActive;
+    if (this._dropdownActive) {
+      setTimeout(() => {
+        (this.el.querySelector(
+          'input[type=search]'
+        ) as HTMLInputElement).focus();
+      }, 50);
+    }
+  }
+
+  _closeDropdown = (): void => {
+    this._clickedOnComponent
+      ? (this._clickedOnComponent = false)
+      : (this._dropdownActive = false);
+  };
+
+  _getValue(): string {
     return `${this._prefix}-${this._suffix.replace(/[- )(]/g, '')}`;
   }
 
@@ -213,7 +224,7 @@ export class ChiPhoneInput {
                 ? ACTIVE_CLASS
                 : ''
             }`}
-            onClick={() => this.prefixChangeHandler(country)}
+            onClick={() => this._prefixChangeHandler(country)}
           >
             <span>{country.name}</span>
             <span
@@ -227,16 +238,12 @@ export class ChiPhoneInput {
     return (
       <div
         class={`${DROPDOWN_CLASSES.DROPDOWN}`}
-        onClick={(): void => {
-          this._clickedOnComponent = true;
-        }}
+        onClick={() => (this._clickedOnComponent = true)}
       >
         <button
           disabled={this.disabled}
           class={`${BUTTON_CLASSES.BUTTON} ${DROPDOWN_CLASSES.TRIGGER} -${this.size}`}
-          onClick={(): void => {
-            this._dropdownActive = !this._dropdownActive;
-          }}
+          onClick={() => this._dropdownTriggerHandler()}
         >
           {this._country ? <span>{`+${this._country.dialCode}`}</span> : 'US'}
         </button>
