@@ -1,19 +1,19 @@
 const ACTIVE_CLASS = '-active';
 const DANGER_CLASS = '-danger';
-const WARNING_CLASS = '-warning';
-const SUCCESS_CLASS = '-success';
+const FLOATING_LABEL = '-floating-label';
 const PHONE_INPUT_EVENTS = {
   CHI_CHANGE: 'chiChange',
   CHI_INPUT: 'chiInput',
   CHI_NUMBER_INVALID: 'chiNumberInvalid'
 };
-const FLOATING_LABEL = '-floating-label';
 const SIZES = {
   sm: 'sm',
   md: 'md',
   lg: 'lg',
   xl: 'xl'
 };
+const SUCCESS_CLASS = '-success';
+const WARNING_CLASS = '-warning';
 
 const hasClassAssertion = (el, value) => {
   cy.get(el).should('have.class', value);
@@ -149,7 +149,11 @@ describe('Phone Input', () => {
             .parents('chi-phone-input')
             .should('have.id', 'phone-input-base');
         });
-      cy.get(`@dropdownTrigger`).click();
+      cy.get(`@dropdownTrigger`)
+        .click()
+        .then(() => {
+          cy.focused().should('not.have.attr', 'type', 'search');
+        });
     });
 
     it('Should search a country by name successfully', () => {
@@ -210,7 +214,7 @@ describe('Phone Input', () => {
       cy.get('@dropdownTrigger').click();
     });
 
-    it('Should maintain the filtered state of the selected country code after a search', () => {
+    it('Should maintain the filtered state of the selected country after a search', () => {
       cy.get(`@dropdownTrigger`)
         .click()
         .find('input')
@@ -362,7 +366,7 @@ describe('Phone Input', () => {
     const states = [DANGER_CLASS, WARNING_CLASS, SUCCESS_CLASS];
 
     states.forEach(state => {
-      it(`Should have class ${state}`, () => {
+      it(`Should have ${state} class`, () => {
         cy.get(`[data-cy='phone-input${state}-state']`)
           .children()
           .first()

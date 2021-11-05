@@ -35,21 +35,21 @@ import { Country } from '../../constants/types';
 })
 export class ChiPhoneInput {
   /**
-   * To disable Phone input
-   */
-  @Prop({ reflect: true }) disabled = false;
-  /**
    * To set a default country as a two letter ISO country code
    */
   @Prop({ reflect: true }) defaultCountry: CountryCode = 'US';
   /**
-   * To define size of Phone input
+   * To disable Phone input
    */
-  @Prop({ reflect: true }) size: TextInputSizes = 'md';
+  @Prop({ reflect: true }) disabled = false;
   /**
    * To define placeholder of Phone input
    */
   @Prop({ reflect: true }) placeholder?: string;
+  /**
+   * To define size of Phone input
+   */
+  @Prop({ reflect: true }) size: TextInputSizes = 'md';
   /**
    * To define state color of Phone input
    */
@@ -64,28 +64,27 @@ export class ChiPhoneInput {
    */
   @Event({ eventName: 'chiChange' }) chiChange: EventEmitter<string>;
   /**
+   * Triggered when the user changed the element's value but did not commit the change yet
+   */
+  @Event({ eventName: 'chiInput' }) chiInput: EventEmitter<string>;
+  /**
    * Triggered when the element's value committed by the user is an invalid phone number for the selected prefix
    */
   @Event({ eventName: 'chiNumberInvalid' }) chiNumberInvalid: EventEmitter<
     void
   >;
-  /**
-   * Triggered when the user changed the element's value but did not commit the change yet
-   */
-  @Event({ eventName: 'chiInput' }) chiInput: EventEmitter<string>;
 
   @Element() el: HTMLElement;
 
+  @State() _clickedOnComponent = false;
+  @State() _countries: Country[] = [];
+  @State() _country: Country;
+  @State() _isDropdownActive = false;
   @State() _isNumberInvalid = false;
   @State() _prefix: string;
-  @State() _suffix = '';
-  @State() _dropdownActive = false;
   @State() _search = '';
-  @State() _country: Country;
-
-  _countries: Country[] = [];
-  _clickedOnComponent = false;
-  _uuid: string;
+  @State() _suffix = '';
+  @State() _uuid: string;
 
   componentWillLoad(): void {
     const countryObjs = country.countryList();
@@ -169,12 +168,12 @@ export class ChiPhoneInput {
     this._country = country;
     this.value = this._getValue();
     this.chiChange.emit(this.value);
-    this._dropdownActive = false;
+    this._isDropdownActive = false;
   }
 
   _dropdownTriggerHandler(): void {
-    this._dropdownActive = !this._dropdownActive;
-    if (this._dropdownActive) {
+    this._isDropdownActive = !this._isDropdownActive;
+    if (this._isDropdownActive) {
       setTimeout(() => {
         (this.el.querySelector(
           'input[type=search]'
@@ -186,7 +185,7 @@ export class ChiPhoneInput {
   _closeDropdown = (): void => {
     this._clickedOnComponent
       ? (this._clickedOnComponent = false)
-      : (this._dropdownActive = false);
+      : (this._isDropdownActive = false);
   };
 
   _getValue(): string {
@@ -199,12 +198,8 @@ export class ChiPhoneInput {
         size="sm"
         placeholder="Search"
         value={this._search}
-        onChiInput={(ev): void => {
-          this._search = (ev.target as HTMLInputElement).value;
-        }}
-        onChiClean={(): void => {
-          this._search = '';
-        }}
+        onChiInput={e => (this._search = (e.target as HTMLInputElement).value)}
+        onChiClean={() => (this._search = '')}
       ></chi-search-input>
     );
     const filteredCountries = this._countries.filter(country => {
@@ -245,11 +240,11 @@ export class ChiPhoneInput {
           class={`${BUTTON_CLASSES.BUTTON} ${DROPDOWN_CLASSES.TRIGGER} -${this.size}`}
           onClick={() => this._dropdownTriggerHandler()}
         >
-          {this._country ? <span>{`+${this._country.dialCode}`}</span> : 'US'}
+          <span>{`+${this._country.dialCode}`}</span>
         </button>
         <div
           class={`${DROPDOWN_CLASSES.MENU} ${
-            this._dropdownActive ? ACTIVE_CLASS : ''
+            this._isDropdownActive ? ACTIVE_CLASS : ''
           }`}
         >
           {searchInput}

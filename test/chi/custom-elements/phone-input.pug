@@ -21,13 +21,13 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
   chi-phone-input(id="phone-input-disabled" disabled="true" data-cy='phone-input-disabled' )
 
 .test-sizes
-  each size in ['sm', 'md', 'lg', 'xl']
+  each size in ['xs', 'sm', 'md', 'lg', 'xl']
     .-py--1
       chi-label(for=`phone-input-${size}`) Phone Number
       chi-phone-input(id=`phone-input-${size}` size=`${size}` data-cy=`phone-input-${size}`)
 
 .test-state 
-  each state in ['danger', 'warning', 'success']
+  each state in ['danger', 'success', 'warning']
     .-py--1 
       chi-label(for=`phone-input-${state}-state`) Phone Number
       chi-phone-input(id=`phone-input-${state}-state` data-cy=`phone-input-${state}-state` placeholder="Phone Number" state=`${state}`)
