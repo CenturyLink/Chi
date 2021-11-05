@@ -1,6 +1,7 @@
+
 <template lang="pug">
   div
-    <TitleBar title="Badge" description="Badges are inline elements used to label, categorize, or organize a list of items." :tabs="pageTabs" />
+    <TitleBar title="Flag icon" description="Use Flag icon to render Lumen country/region flag icons in your project." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
         <Examples />
@@ -11,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import Examples from './examples/index.vue';
 import PageContentTabs from '../../../components/PageContentTabs.vue';
 import Properties from './_properties.vue';
@@ -23,15 +24,16 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     Accessibility,
     Examples,
     PageContentTabs,
-    Properties
+    Properties,
   },
   data: () => {
     return {
-      pageTabs: standardComponentPageTabs
-    };
-  }
+      pageTabs: standardComponentPageTabs,
+    }
+  },
 })
-export default class Badge extends Vue {
-  mounted() {}
+export default class FlagIcon extends Vue {
+  mounted() {
+  }
 }
 </script>
