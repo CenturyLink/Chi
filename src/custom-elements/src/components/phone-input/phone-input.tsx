@@ -57,7 +57,7 @@ export class ChiPhoneInput {
   /**
    * To define value of Phone input
    */
-  @Prop({ mutable: true, reflect: true }) value = '';
+  @Prop({ mutable: true, reflect: true }) value: string;
 
   /**
    * Triggered when an alteration to the element's value is committed by the user
@@ -80,7 +80,6 @@ export class ChiPhoneInput {
   @State() _countries: Country[] = [];
   @State() _country: Country;
   @State() _isDropdownActive = false;
-  @State() _isNumberInvalid = false;
   @State() _prefix: string;
   @State() _search = '';
   @State() _suffix = '';
@@ -135,18 +134,26 @@ export class ChiPhoneInput {
         this._suffix = new AsYouType(this._country.countryAbbr).input(
           this.value.substring(this.value.indexOf('-') + 1)
         );
+
+        const valuePrefix = this.value.substring(0, this.value.indexOf('-'));
+
+        if (valuePrefix !== this._prefix) {
+          throw new Error(
+            `Country code prefix of the provided value (${valuePrefix}) does not match the provided default country's prefix (${this._prefix}).`
+          );
+        }
       }
+    } else {
+      throw new Error(
+        `${this.defaultCountry} is not a valid country for phone input.`
+      );
     }
   }
 
   _suffixInputChangeHandler = (event: Event): void => {
     event.stopPropagation();
     this._suffix = (event.target as HTMLInputElement).value;
-    if (
-      this._country &&
-      !isValidPhoneNumber(this._suffix, this._country.countryAbbr)
-    ) {
-      this._isNumberInvalid = true;
+    if (!isValidPhoneNumber(this._suffix, this._country.countryAbbr)) {
       this.chiNumberInvalid.emit();
     }
     this.value = this._getValue();
@@ -155,7 +162,6 @@ export class ChiPhoneInput {
 
   _inputHandler = (event: Event): void => {
     event.stopPropagation();
-    this._isNumberInvalid = false;
     this._suffix = new AsYouType(this._country.countryAbbr).input(
       (event.target as HTMLInputElement).value
     );
@@ -167,8 +173,8 @@ export class ChiPhoneInput {
     this._prefix = `+${country.dialCode}`;
     this._country = country;
     this.value = this._getValue();
-    this.chiChange.emit(this.value);
     this._isDropdownActive = false;
+    this.chiChange.emit(this.value);
   }
 
   _dropdownTriggerHandler(): void {
