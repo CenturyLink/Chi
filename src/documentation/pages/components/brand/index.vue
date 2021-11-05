@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    <TitleBar title="Badge" description="Badges are inline elements used to label, categorize, or organize a list of items." :tabs="pageTabs" />
+    <TitleBar title="Brand" description="Use brand to display brand logos in your project." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
         <Examples />
@@ -12,26 +12,27 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Examples from './examples/index.vue';
 import PageContentTabs from '../../../components/PageContentTabs.vue';
 import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
+import Examples from './examples/index.vue';
 import { standardComponentPageTabs } from '../../../constants/constants';
 
 @Component({
   components: {
     Accessibility,
-    Examples,
     PageContentTabs,
-    Properties
+    Properties,
+    Examples
   },
   data: () => {
     return {
-      pageTabs: standardComponentPageTabs
-    };
-  }
+      pageTabs: standardComponentPageTabs,
+    }
+  },
 })
-export default class Badge extends Vue {
-  mounted() {}
+export default class Brand extends Vue {
+  mounted() {
+  }
 }
 </script>
