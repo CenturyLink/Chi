@@ -123,6 +123,16 @@ export class ChiPhoneInput {
     }
   }
 
+  @Watch('value')
+  valueChanged(newValue: string, oldValue: string): void {
+    if (newValue !== oldValue) {
+      this.value = newValue;
+      this._suffix = new AsYouType(this._country.countryAbbr).input(
+        this.value.substring(this.value.indexOf('-') + 1)
+      );
+    }
+  }
+
   _initCountry(): void {
     if (isSupportedCountry(this.defaultCountry)) {
       this._country = this._countries.find(
@@ -169,7 +179,8 @@ export class ChiPhoneInput {
     this.chiInput.emit(this.value);
   };
 
-  _prefixChangeHandler(country: Country): void {
+  _prefixChangeHandler(event: Event, country: Country): void {
+    event.preventDefault();
     this._prefix = `+${country.dialCode}`;
     this._country = country;
     this.value = this._getValue();
@@ -204,7 +215,9 @@ export class ChiPhoneInput {
         size="sm"
         placeholder="Search"
         value={this._search}
-        onChiInput={e => (this._search = (e.target as HTMLInputElement).value)}
+        onChiInput={(e: Event) =>
+          (this._search = (e.target as HTMLInputElement).value)
+        }
         onChiClean={() => (this._search = '')}
       ></chi-search-input>
     );
@@ -219,13 +232,13 @@ export class ChiPhoneInput {
       <div class={`${DROPDOWN_CLASSES.MENU_CONTENT}`}>
         {filteredCountries.map(country => (
           <a
-            href="javascript:void(0);"
+            href="#"
             class={`${DROPDOWN_CLASSES.MENU_ITEM} ${
               this._country.countryAbbr === country.countryAbbr
                 ? ACTIVE_CLASS
                 : ''
             }`}
-            onClick={() => this._prefixChangeHandler(country)}
+            onClick={(e: Event) => this._prefixChangeHandler(e, country)}
           >
             <span>{country.name}</span>
             <span
