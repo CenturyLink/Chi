@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  <Wrapper>
     h2 Examples
     p.-text To render accordion, use the class <code>chi-accordion</code>.
 
@@ -21,6 +21,7 @@
       <DisabledPortal />
       <TruncatedPortal />
       <SizesPortal />
+  </Wrapper>
 </template>
 
 <script lang="ts">
@@ -57,7 +58,7 @@ import SizesPortal from './_portal/_sizes.vue';
     TruncatedLumenCenturyLink,
     TruncatedPortal,
     SizesLumenCenturyLink,
-    SizesPortal
+    SizesPortal,
   }
 })
 export default class Examples extends Vue {}
