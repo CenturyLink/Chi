@@ -1,5 +1,5 @@
 <template lang="pug">
-  <Wrapper>
+  div
     h2 Examples
     p.-text To render accordion, use the class <code>chi-accordion</code>.
 
@@ -21,7 +21,6 @@
       <DisabledPortal />
       <TruncatedPortal />
       <SizesPortal />
-  </Wrapper>
 </template>
 
 <script lang="ts">

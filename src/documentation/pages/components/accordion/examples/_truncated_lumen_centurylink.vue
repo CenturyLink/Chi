@@ -1,22 +1,19 @@
 <template lang="pug">
   <ComponentExample title="Truncated" id="truncated_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
-    div(slot="example-description")
-      p.-text Truncate long accordion titles by adding the class <code>-truncated</code> to <code>chi-accordion</code>.
-    div(slot="example")
-      .chi-accordion.-truncated#example-truncated
-        .chi-accordion__item
-          button.chi-accordion__trigger
-            i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__title
-              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex
-          .chi-accordion__content
-            p.chi-accordion__text Content goes here
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
+    p.-text(slot="example-description") Truncate long accordion titles by adding the class <code>-truncated</code> to <code>chi-accordion</code>.
+    .chi-accordion.-truncated#example-truncated(slot="example")
+      .chi-accordion__item
+        button.chi-accordion__trigger
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+          .chi-accordion__title
+            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus enim. Nulla facilisi. Donec tortor elit, finibus ut lacus vel, elementum accumsan ex
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     div(slot="code-htmlblueprint")
-      <JSNeeded slot="tab-description" />
+      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
