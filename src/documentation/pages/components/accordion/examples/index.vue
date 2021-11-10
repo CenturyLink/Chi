@@ -60,5 +60,5 @@ import SizesPortal from './_portal/_sizes.vue';
     SizesPortal
   }
 })
-export default class AccordionExamples extends Vue {}
+export default class Examples extends Vue {}
 </script>
