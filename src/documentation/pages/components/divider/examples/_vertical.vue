@@ -1,21 +1,18 @@
 <template lang="pug">
   <ComponentExample title="Vertical" id="vertical" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text To render a vertical divider, apply <code>-vertical</code> and ensure the parent container has a height specified.
-    div(slot="example" style="height:72px").-text.-d--flex.-align-items--center
+    p.-text(slot="example-description") To render a vertical divider, apply <code>-vertical</code> and ensure the parent container has a height specified.
+    .-text.-d--flex.-align-items--center(slot="example" style="height:72px")
       | Option
       .chi-divider.-vertical
       | Option
       .chi-divider.-vertical
       | Option
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

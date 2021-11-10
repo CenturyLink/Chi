@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Sizes" titleSize="h4" id="banner_sizes_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
-    div(slot='example')
+    <Wrapper slot='example'>
       p.-text--bold.-ml--2 sm
       chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='sm')
         | This is a small success alert
@@ -16,18 +16,21 @@
         | This is a large success alert
       chi-alert.-m--2(type='banner', icon='circle-check', color='success', size='lg', title='Success')
         | This is a large success alert
-    div(slot='code-webcomponent')
+    </Wrapper>
+    <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         span
           | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
       pre.language-html
         code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    div(slot='code-htmlblueprint')
+    </Wrapper>
+    <Wrapper slot='code-htmlblueprint'>
       .chi-tab__description
         span
           | Use size classes to customize the size of an alert. Supported size classes are <code>-sm</code>, <code>-md</code>, and <code>-lg</code>.
       pre.language-html
         code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
+    </Wrapper>
   </ComponentExample>
 </template>
 

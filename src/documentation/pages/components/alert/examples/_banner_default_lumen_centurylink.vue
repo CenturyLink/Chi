@@ -1,17 +1,20 @@
 <template lang="pug">
 <ComponentExample title="Default" titleSize="h4" id="banner_default_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
-  div(slot='example')
+  <Wrapper slot='example'>
     chi-alert.-m--2(type='banner', icon='circle-info')
       | This is a base alert
     each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(color=type, icon=val, type='banner')
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
-  div(slot='code-webcomponent')
+  </Wrapper>
+  <Wrapper slot='code-webcomponent'>
     pre.language-html
       code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-  div(slot='code-htmlblueprint')
+  </Wrapper>
+  <Wrapper slot='code-htmlblueprint'>
     pre.language-html
       code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
+  </Wrapper>
 </ComponentExample>
 </template>
 

@@ -1,26 +1,25 @@
 <template lang="pug">
   <ComponentExample title="Outline" id="outline" :tabs="exampleTabs" padding="-p--0">
-    div(slot="example")
-      .chi-grid.-no-gutter
-        .chi-col.-w--12
-          .-p--2.-text--center
-            chi-badge(class='-m--1', color='primary', variant='outline')= 'Primary'
-            chi-badge(class='-m--1', color='success', variant='outline')= 'Success'
-            chi-badge(class='-m--1', color='warning', variant='outline')= 'Warning'
-            chi-badge(class='-m--1', color='danger', variant='outline')= 'Danger'
-            chi-badge(class='-m--1', color='dark', variant='outline')= 'Dark'
-            chi-badge(class='-m--1', color='muted', variant='outline')= 'Muted'
-        .chi-col.-w--12
-          .-p--2.-bg--black.-text--center
-            chi-badge(class='-m--1', color='secondary', variant='outline')= 'Secondary'
-            chi-badge(class='-m--1', color='light', variant='outline')= 'Light'
-      
-    div(slot="code-webcomponent").chi-tab__description
+    .chi-grid.-no-gutter(slot="example")
+      .chi-col.-w--12
+        .-p--2.-text--center
+          chi-badge(class='-m--1', color='primary', variant='outline')= 'Primary'
+          chi-badge(class='-m--1', color='success', variant='outline')= 'Success'
+          chi-badge(class='-m--1', color='warning', variant='outline')= 'Warning'
+          chi-badge(class='-m--1', color='danger', variant='outline')= 'Danger'
+          chi-badge(class='-m--1', color='dark', variant='outline')= 'Dark'
+          chi-badge(class='-m--1', color='muted', variant='outline')= 'Muted'
+      .chi-col.-w--12
+        .-p--2.-bg--black.-text--center
+          chi-badge(class='-m--1', color='secondary', variant='outline')= 'Secondary'
+          chi-badge(class='-m--1', color='light', variant='outline')= 'Light'
+
+    .chi-tab__description(slot="code-webcomponent")
       | To remove solid background and keep its colored border, set the <code>variant</code> attribute value to <code>outline</code>.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    div(slot="code-htmlblueprint").chi-tab__description
+    .chi-tab__description(slot="code-htmlblueprint")
       | To remove solid background and keep its colored border, apply the class <code>-outline</code>.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>

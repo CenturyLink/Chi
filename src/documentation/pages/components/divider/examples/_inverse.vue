@@ -1,18 +1,14 @@
 <template lang="pug">
   <ComponentExample title="Inverse" id="inverse" :tabs="exampleTabs" padding="-p--0">
-    div(slot="example-description")
-      p.-text Use the <code>-inverse</code> class to render dividers on dark backgrounds.
-    div(slot="example")
-      .-p--3(style="background-color:#000;border-radius:.15em .15em 0 0;")
-        .chi-divider.-inverse
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description") Use the <code>-inverse</code> class to render dividers on dark backgrounds.
+    .-p--3(style="background-color:#000;border-radius:.15em .15em 0 0;" slot="example")
+      .chi-divider.-inverse
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

@@ -1,33 +1,31 @@
 <template lang="pug">
   <ComponentExample title="Icon badges" id="icon_badges" :tabs="exampleTabs" padding="-p--0">
-    div(slot="example-description")
-      p.-text Icons can be placed before, after, or on both sides of text.
-    div(slot="example")
-      .-p--2
-        chi-badge(class='-m--1')
-          chi-icon(icon='plus', size='xs')
-          span Badge
-        chi-badge(class='-m--1')
-          span Badge
-          chi-icon(icon='x', size='xs')
-        chi-badge(class='-m--1', variant='flat', color='success')
-          chi-icon(icon='circle')
-          span Active
-        chi-badge(class='-m--1', variant='flat', color='warning')
-          chi-icon(icon='circle-clock')
-          span Away
-        chi-badge(class='-m--1', variant='flat', color='danger')
-          chi-icon(icon='circle-minus')
-          span Do not Disturb
-        chi-badge(class='-m--1', variant='flat', color='muted')
-          chi-icon(icon='circle')
-          span Offline
-      
-    div(slot="code-webcomponent").chi-tab__description
+    p.-text(slot="example-description") Icons can be placed before, after, or on both sides of text.
+    .-p--2(slot="example")
+      chi-badge(class='-m--1')
+        chi-icon(icon='plus', size='xs')
+        span Badge
+      chi-badge(class='-m--1')
+        span Badge
+        chi-icon(icon='x', size='xs')
+      chi-badge(class='-m--1', variant='flat', color='success')
+        chi-icon(icon='circle')
+        span Active
+      chi-badge(class='-m--1', variant='flat', color='warning')
+        chi-icon(icon='circle-clock')
+        span Away
+      chi-badge(class='-m--1', variant='flat', color='danger')
+        chi-icon(icon='circle-minus')
+        span Do not Disturb
+      chi-badge(class='-m--1', variant='flat', color='muted')
+        chi-icon(icon='circle')
+        span Offline
+
+    .chi-tab__description(slot="code-webcomponent")
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    div(slot="code-htmlblueprint").chi-tab__description
+    .chi-tab__description(slot="code-htmlblueprint")
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>

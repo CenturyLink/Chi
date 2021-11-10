@@ -1,25 +1,24 @@
 <template lang="pug">
   <ComponentExample title="Flat" id="flat" :tabs="exampleTabs" padding="-p--0">
-    div(slot="example")
-      .chi-grid.-no-gutter
-        .chi-col.-w--12
-          .-p--2.-text--center
-            chi-badge(class='-m--1', color='primary', variant='flat')= 'Primary'
-            chi-badge(class='-m--1', color='success', variant='flat')= 'Success'
-            chi-badge(class='-m--1', color='warning', variant='flat')= 'Warning'
-            chi-badge(class='-m--1', color='danger', variant='flat')= 'Danger'
-            chi-badge(class='-m--1', color='dark', variant='flat')= 'Dark'
-            chi-badge(class='-m--1', color='muted', variant='flat')= 'Muted'
-        .chi-col.-w--12
-          .-p--2.-bg--black.-text--center
-            chi-badge(class='-m--1', color='secondary', variant='flat')= 'Secondary'
-            chi-badge(class='-m--1', color='light', variant='flat')= 'Light'
-    div(slot="code-webcomponent").chi-tab__description
+    .chi-grid.-no-gutter(slot="example")
+      .chi-col.-w--12
+        .-p--2.-text--center
+          chi-badge(class='-m--1', color='primary', variant='flat')= 'Primary'
+          chi-badge(class='-m--1', color='success', variant='flat')= 'Success'
+          chi-badge(class='-m--1', color='warning', variant='flat')= 'Warning'
+          chi-badge(class='-m--1', color='danger', variant='flat')= 'Danger'
+          chi-badge(class='-m--1', color='dark', variant='flat')= 'Dark'
+          chi-badge(class='-m--1', color='muted', variant='flat')= 'Muted'
+      .chi-col.-w--12
+        .-p--2.-bg--black.-text--center
+          chi-badge(class='-m--1', color='secondary', variant='flat')= 'Secondary'
+          chi-badge(class='-m--1', color='light', variant='flat')= 'Light'
+    .chi-tab__description(slot="code-webcomponent")
       | To render a badge without background and border, set the <code>variant</code> attribute value to <code>flat</code>.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    div(slot="code-htmlblueprint").chi-tab__description
+    .chi-tab__description(slot="code-htmlblueprint")
       | To render a badge without background and border, apply the class <code>-flat</code>.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
