@@ -18,7 +18,9 @@
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
+    "all-country-data": "^0.1.1",
     "dayjs": "1.8.29",
+    "libphonenumber-js": "^1.9.34",
     "popper.js": "^1.15.0"
   },
   "devDependencies": {
