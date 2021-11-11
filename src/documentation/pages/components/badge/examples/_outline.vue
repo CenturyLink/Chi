@@ -14,16 +14,20 @@
           chi-badge(class='-m--1', color='secondary', variant='outline')= 'Secondary'
           chi-badge(class='-m--1', color='light', variant='outline')= 'Light'
 
-    .chi-tab__description(slot="code-webcomponent")
-      | To remove solid background and keep its colored border, set the <code>variant</code> attribute value to <code>outline</code>.
+    <Wrapper slot="code-webcomponent">
+      .chi-tab__description
+        | To remove solid background and keep its colored border, set the <code>variant</code> attribute value to <code>outline</code>.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    .chi-tab__description(slot="code-htmlblueprint")
-      | To remove solid background and keep its colored border, apply the class <code>-outline</code>.
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      .chi-tab__description
+        | To remove solid background and keep its colored border, apply the class <code>-outline</code>.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 

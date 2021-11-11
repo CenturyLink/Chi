@@ -1,7 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Vertical" id="vertical" :tabs="exampleTabs">
+  <ComponentExample title="Vertical" id="vertical" :tabs="exampleTabs" padding="-p--0">
     p.-text(slot="example-description") To render a vertical divider, apply <code>-vertical</code> and ensure the parent container has a height specified.
-    .-text.-d--flex.-align-items--center(slot="example" style="height:72px")
+    .-p--3.-text.-d--flex.-align-items--center(slot="example" style="height:72px")
       | Option
       .chi-divider.-vertical
       | Option

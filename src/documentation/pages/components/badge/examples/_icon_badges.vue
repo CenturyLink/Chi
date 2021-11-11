@@ -1,7 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Icon badges" id="icon_badges" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Icon badges" id="icon_badges" :tabs="exampleTabs" padding="-p--2">
     p.-text(slot="example-description") Icons can be placed before, after, or on both sides of text.
-    .-p--2(slot="example")
+    <Wrapper slot="example">
       chi-badge(class='-m--1')
         chi-icon(icon='plus', size='xs')
         span Badge
@@ -20,15 +20,13 @@
       chi-badge(class='-m--1', variant='flat', color='muted')
         chi-icon(icon='circle')
         span Offline
-
-    .chi-tab__description(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    .chi-tab__description(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

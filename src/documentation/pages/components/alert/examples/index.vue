@@ -9,7 +9,7 @@ div
 
   <BubbleDefault />
 
-  <Wrapper v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)">
+  <div v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)">
     <BubbleCenteredLumenCenturyLink />
     <BubbleTitled />
     <BubbleSizesLumenCenturyLink />
@@ -38,14 +38,14 @@ div
     <ToastDefaultLumenCenturyLink />
     <ToastTitledLumenCenturyLink />
     <ToastSizesLumenCenturyLink />
-  </Wrapper>
+  </div>
 
-  <Wrapper v-if='$store.state.themes.theme === "portal"'>
+  <div v-if='$store.state.themes.theme === "portal"'>
     <BubbleTitled />
     <BubbleSizesPortal />
     <BubbleClosablePortal />
     <BubbleActionable />
-  </Wrapper>
+  </div>
 </template>
 
 <script lang="ts">

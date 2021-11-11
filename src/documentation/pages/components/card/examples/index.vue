@@ -5,7 +5,7 @@
 
     <Base />
 
-    <Wrapper v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)">
+    <div v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)">
       <ActiveLumenCenturylink />
       <NoBorderLumenCenturylink />
       <Empty />
@@ -25,14 +25,14 @@
       <HeaderSmallLumenCenturylink />
       <HeaderFooterLumenCenturylink />
       <HeaderFooterSmallLumenCenturylink />
-    </Wrapper>
+    </div>
 
-    <Wrapper v-if="$store.state.themes.theme === 'portal'">
+    <div v-if="$store.state.themes.theme === 'portal'">
       <Header />
       <HighlightPortal />
       <WithTabsPortal />
       <Empty />
-    </Wrapper>
+    </div>
 </template>
 
 <script lang="ts">

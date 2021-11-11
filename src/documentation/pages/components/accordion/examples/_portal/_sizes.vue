@@ -1,5 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Sizes" id="sizes_portal" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
+    p.-text(slot="example-description") Accordion supports the following sizes: <code>sm</code>, <code>md</code> (default).
     each size in ['sm', 'md']
       <Wrapper slot="example">
         p.-text--bold.-pl--2= size

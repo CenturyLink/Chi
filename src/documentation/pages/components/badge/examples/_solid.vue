@@ -14,18 +14,22 @@
         .-p--2.-bg--black.-text--center
           chi-badge(class='-m--1', color='secondary')= 'Secondary'
           chi-badge(class='-m--1', color='light')= 'Light'
-    .chi-tab__description(slot="code-webcomponent")
-      | To display a badge, use the tag <code>&lt;chi-badge&gt;</code>.
-      | A contextual color (e.g. <code>primary</code>) can be defined on the <code>color</code> attribute to provide alternate styling.
+    <Wrapper slot="code-webcomponent">
+      .chi-tab__description
+        | To display a badge, use the tag <code>&lt;chi-badge&gt;</code>.
+        | A contextual color (e.g. <code>primary</code>) can be defined on the <code>color</code> attribute to provide alternate styling.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    .chi-tab__description(slot="code-htmlblueprint")
-      | To display a badge, use the class <code>chi-badge</code>.
-      | A contextual class (e.g. <code>-primary</code>) can be applied to provide alternate styling.
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      .chi-tab__description
+        | To display a badge, use the class <code>chi-badge</code>.
+        | A contextual class (e.g. <code>-primary</code>) can be applied to provide alternate styling.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 

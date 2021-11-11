@@ -1,5 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Sizes" id="sizes_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
+    p.-text(slot="example-description") Accordion supports the following sizes: <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
     each size in ['sm', 'md', 'lg', 'xl']
       <Wrapper slot="example">
         p.-text--bold.-pl--2= size

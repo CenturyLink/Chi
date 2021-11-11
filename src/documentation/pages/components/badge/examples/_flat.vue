@@ -13,16 +13,20 @@
         .-p--2.-bg--black.-text--center
           chi-badge(class='-m--1', color='secondary', variant='flat')= 'Secondary'
           chi-badge(class='-m--1', color='light', variant='flat')= 'Light'
-    .chi-tab__description(slot="code-webcomponent")
-      | To render a badge without background and border, set the <code>variant</code> attribute value to <code>flat</code>.
+    <Wrapper slot="code-webcomponent">
+      .chi-tab__description
+        | To render a badge without background and border, set the <code>variant</code> attribute value to <code>flat</code>.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    .chi-tab__description(slot="code-htmlblueprint")
-      | To render a badge without background and border, apply the class <code>-flat</code>.
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      .chi-tab__description
+        | To render a badge without background and border, apply the class <code>-flat</code>.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
