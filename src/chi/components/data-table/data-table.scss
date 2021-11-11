@@ -531,6 +531,23 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           }
         }
       }
+
+      fieldset {
+        .chi-data-table__row {
+          .chi-data-table__cell {
+            &.-selectable {
+              .chi-radio {
+                .chi-radio__label {
+                  &::after {
+                    top: 0.43125rem;
+                    left: 0.312rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
     .chi-data-table__footer {

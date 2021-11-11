@@ -96,7 +96,7 @@ export interface DataTableConfig {
   };
   resultsPerPage?: number;
   style: DataTableStyleConfig;
-  selectable?: boolean;
+  selectable?: boolean | 'radio';
   reserveExpansionSlot?: boolean;
   truncation?: boolean;
 }
