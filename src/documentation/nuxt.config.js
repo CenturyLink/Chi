@@ -15,16 +15,6 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      {
-        rel: 'stylesheet',
-        type: 'text/css',
-        href: `https://assets.ctl.io/chi/${CHI_VERSION}/chi-portal.css`
-      },
-      {
-        rel: 'stylesheet',
-        type: 'text/css',
-        href: `https://assets.ctl.io/chi/${CHI_VERSION}/assets/themes/portal/docs.css`
-      },
     ],
     script: [
       {
