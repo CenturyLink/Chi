@@ -38,7 +38,7 @@ export default class AdvancedFilters extends Vue {
   storeModule?: any;
   _planeAdvancedData = {};
   _chiMajorVersion = 5;
-  _isExpanded = false;
+  isExpanded = false;
 
   get filterElementValue() {
     return this.storeModule.filterConfig;
@@ -288,10 +288,12 @@ export default class AdvancedFilters extends Vue {
             modal={this._chiMajorVersion === 5}
             drag
             closable>
-            <div class="-mb--1">
-              <a onclick={(event: any) => this._expandCollapseAccordions(event)}>
-                {this._isExpanded === true ? 'Collapse all' : 'Expand all'}
-              </a>
+            <div class={`${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}>
+              <button
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.SM} ${BUTTON_CLASSES.NO_HOVER} ${UTILITY_CLASSES.PADDING.X[0]} ${UTILITY_CLASSES.TYPOGRAPHY.TEXT_NORMAL}`}
+                onclick={(event: any) => this._expandCollapseAccordions(event)}>
+                {this.isExpanded ? 'Collapse All' : 'Expand All'}
+              </button>
             </div>
             <div
               class={`${ACCORDION_CLASSES.ACCORDION} ${this._chiMajorVersion === 4 ? PORTAL_CLASS : ''} -sm`}
@@ -382,9 +384,8 @@ export default class AdvancedFilters extends Vue {
   private _expandCollapseAccordions(event: any) {
     event.preventDefault();
     if (this._advancedFiltersAccordion) {
-      this._isExpanded ? this._advancedFiltersAccordion.collapseAll() : this._advancedFiltersAccordion.expandAll();
-      this._isExpanded = !this._isExpanded;
-      this.$forceUpdate();
+      this.isExpanded ? this._advancedFiltersAccordion.collapseAll() : this._advancedFiltersAccordion.expandAll();
+      this.isExpanded = !this.isExpanded;
     }
   }
 }
