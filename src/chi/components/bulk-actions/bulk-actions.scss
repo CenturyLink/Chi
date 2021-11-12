@@ -1,0 +1,105 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-bulk-actions {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.5rem;
+
+  @include respond-to(md) {
+    background-color: $bulk-actions-background-color;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 0.5rem 1.5rem;
+  }
+
+  .chi-divider {
+    &.-vertical {
+      display: none;
+
+      @include respond-to(md) {
+        display: block;
+        height: $toolbar-header-divider-height;
+      }
+    }
+  }
+
+  &__start,
+  &__end {
+    align-items: center;
+    display: flex;
+  }
+
+  &__end {
+    display: none;
+
+    @include respond-to(md) {
+      display: block;
+    }
+  }
+
+  &__top,
+  .chi-bulk-actions__buttons-mobile {
+    background-color: $bulk-actions-background-color;
+    display: flex;
+    left: 0;
+    position: fixed;
+    width: 100%;
+
+    @include respond-to(md) {
+      display: none;
+    }
+  }
+
+  &__top {
+    justify-content: space-between;
+    padding: 1.375rem 1rem;
+    top: 0;
+
+    .chi-link {
+      color: #242526;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__results {
+    display: none;
+    font-size: $toolbar-results-font-size;
+
+    @include respond-to(md) {
+      display: flex;
+    }
+
+    .chi-bulk-actions__label {
+      font-weight: 600;
+    }
+  }
+
+  &__buttons {
+    &-mobile {
+      bottom: 0;
+      justify-content: space-evenly;
+      padding: 0.75rem 1rem;
+
+      .chi-button {
+        .chi-icon {
+          color: #3f4145;
+        }
+      }
+    }
+
+    &-desktop {
+      display: none;
+
+      @include respond-to(md) {
+        display: flex;
+      }
+    }
+  }
+}
+
+
