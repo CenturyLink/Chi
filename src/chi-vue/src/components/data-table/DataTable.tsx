@@ -450,7 +450,7 @@ export default class DataTable extends Vue {
           : '';
       const radioButtonName = `radio-buttons-${this._dataTableId}`;
 
-      if (headRow || rowData?.parent) {
+      if (headRow || rowData?.parentRowId) {
         return <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.SELECTABLE}`}></div>;
       } else {
         return (
@@ -797,19 +797,14 @@ export default class DataTable extends Vue {
   }
 
   serializeData() {
-    const serializeRow = (
-      row: DataTableRow,
-      rowNumber: number,
-      parent: DataTableRow | undefined,
-      parentRowId: string | null
-    ) => {
+    const serializeRow = (row: DataTableRow, rowNumber: number, parentRowId: string | null) => {
       const rowId = this._rowId(row.id || rowNumber);
       const rowN = parentRowId !== null ? `${parentRowId}-${rowNumber}` : String(rowNumber);
       const rowObject = {
         ...row,
         rowNumber: rowN,
         rowId: rowId,
-        parent,
+        parentRowId,
       };
       let subrowNumber = 0;
 
@@ -819,8 +814,8 @@ export default class DataTable extends Vue {
         row.nestedContent.table.data
       ) {
         // eslint-disable-next-line
-        row.nestedContent.table.data = row.nestedContent.table.data.map((row: any) => {
-          const serialized = serializeRow(row, subrowNumber, rowObject, rowN);
+        row.nestedContent.table.data = row.nestedContent.table.data.map((row: DataTableRow) => {
+          const serialized = serializeRow(row, subrowNumber, rowN);
 
           subrowNumber++;
           return serialized;
@@ -844,7 +839,7 @@ export default class DataTable extends Vue {
       this.$props.config.reserveExpansionSlot ||
       !!this.data.body.find((row: { nestedContent: any }) => row.nestedContent);
     this.data.body.forEach(row => {
-      this._serializedDataBody.push(serializeRow(row, rowNumber, undefined, null));
+      this._serializedDataBody.push(serializeRow(row, rowNumber, null));
       rowNumber++;
     });
   }

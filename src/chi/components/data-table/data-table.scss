@@ -156,7 +156,7 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
         &.-selectable {
           .chi-radio {
             .chi-radio__label {
-              position: static;
+              bottom: 1rem;
             }
           }
         }
@@ -541,7 +541,7 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           &.-selectable {
             .chi-radio {
               .chi-radio__label {
-                position: static;
+                bottom: 1rem;
 
                 &::after {
                   left: 0.312rem;

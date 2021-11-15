@@ -594,7 +594,7 @@ describe('Data Table', () => {
 
     it(`Should not have class .${RADIO_CLASSES.RADIO} when it is a child`, () => {
       cy.get(`[data-cy='data-table-radio']`)
-        .find('.chi-data-table__row-child')
+        .find(`.${DATA_TABLE_CLASSES.ROW_CHILD}`)
         .find(`.${DATA_TABLE_CLASSES.CELL}`)
         .first()
         .should('not.have.class', RADIO_CLASSES.RADIO);
