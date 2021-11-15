@@ -10,7 +10,7 @@ div
   <BubbleDefault />
 
   div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-    <BubbleCenteredLumenCenturylink />
+    <BubbleCenteredLumenCenturyLink />
     <BubbleTitled />
     <BubbleSizesLumenCenturyLink />
     <BubbleClosableLumenCenturyLink />
@@ -44,12 +44,11 @@ div
     <BubbleSizesPortal />
     <BubbleClosablePortal />
     <BubbleActionable />
-
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import BubbleCenteredLumenCenturylink from './_bubble_centered_lumen_centurylink.vue';
+import BubbleCenteredLumenCenturyLink from './_bubble_centered_lumen_centurylink.vue';
 import BubbleSizesLumenCenturyLink from './_bubble_sizes_lumen_centurylink.vue';
 import BubbleClosableLumenCenturyLink from './_bubble_closable_lumen_centurylink.vue';
 import BubbleActionable from './_bubble_actionable.vue';
@@ -70,7 +69,7 @@ import BubbleClosablePortal from './_portal/_bubble_closable.vue';
 @Component({
   components: {
     BubbleDefault,
-    BubbleCenteredLumenCenturylink,
+    BubbleCenteredLumenCenturyLink,
     BubbleTitled,
     BubbleSizesLumenCenturyLink,
     BubbleClosableLumenCenturyLink,
@@ -88,5 +87,5 @@ import BubbleClosablePortal from './_portal/_bubble_closable.vue';
     BubbleClosablePortal
   }
 })
-export default class AlertExamples extends Vue {}
+export default class Examples extends Vue {}
 </script>

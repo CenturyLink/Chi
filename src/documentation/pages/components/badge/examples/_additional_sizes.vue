@@ -17,5 +17,5 @@ import ExtraSmallSize from './_extra_small_size.vue';
     ExtraSmallSize
   }
 })
-export default class AdditionalSizesExamples extends Vue {}
+export default class AdditionalSizes extends Vue {}
 </script>
