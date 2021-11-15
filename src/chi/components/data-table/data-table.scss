@@ -152,6 +152,14 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
         border-bottom: 0.0625rem solid $color-border-base-light;
         padding: 0.75rem 1rem;
         word-break: break-word;
+
+        &.-selectable {
+          .chi-radio {
+            .chi-radio__label {
+              position: static;
+            }
+          }
+        }
       }
 
       &::before {
@@ -529,19 +537,14 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           @include respond-to(md) {
             border-bottom: 0;
           }
-        }
-      }
 
-      fieldset {
-        .chi-data-table__row {
-          .chi-data-table__cell {
-            &.-selectable {
-              .chi-radio {
-                .chi-radio__label {
-                  &::after {
-                    top: 0.43125rem;
-                    left: 0.312rem;
-                  }
+          &.-selectable {
+            .chi-radio {
+              .chi-radio__label {
+                position: static;
+
+                &::after {
+                  left: 0.312rem;
                 }
               }
             }

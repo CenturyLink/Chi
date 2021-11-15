@@ -583,12 +583,22 @@ describe('Data Table', () => {
         cy.get(`[data-cy='data-table-radio'] .${DATA_TABLE_CLASSES.ROW}`)
           .eq(rowIndex)
           .find(`.${DATA_TABLE_CLASSES.CELL}`)
-          .eq(0)
-          .find(`.${RADIO_CLASSES.RADIO}`)
-          .as('row');
-        hasClassAssertion(`@row`, RADIO_CLASSES.RADIO);
+          .first()
+          .children()
+          .first()
+          .as('rowRadio');
+
+        hasClassAssertion(`@rowRadio`, RADIO_CLASSES.RADIO);
       });
     });
+
+    it(`Should not have class .${RADIO_CLASSES.RADIO} when it is a child`, () => {
+      cy.get(`[data-cy='data-table-radio']`)
+        .find('.chi-data-table__row-child')
+        .find(`.${DATA_TABLE_CLASSES.CELL}`)
+        .first()
+        .should('not.have.class', RADIO_CLASSES.RADIO);
+    })
 
     it(`Should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
       cy.window()

@@ -44,6 +44,7 @@ export interface DataTableRow {
   id: string;
   rowId: string;
   rowNumber: string;
+  parent: DataTableRow | undefined;
   selected?: boolean;
   selectionDisabled?: boolean;
 }

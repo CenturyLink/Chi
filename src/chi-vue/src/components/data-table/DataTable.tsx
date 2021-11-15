@@ -63,8 +63,11 @@ export default class DataTable extends Vue {
 
   _head() {
     const tableHeadCells = [
-      this.config.selectable && this.config.selectable !== 'radio' ? this._selectRowCheckbox(true) : null,
-      this.config.selectable === 'radio' ? this._radioButton(true) : null,
+      this.config.selectable
+        ? this.config.selectable === 'radio'
+          ? this._radioButton(true)
+          : this._selectRowCheckbox(true)
+        : null,
       this._expandable ? (
         <div
           class={`
@@ -319,7 +322,7 @@ export default class DataTable extends Vue {
     };
 
     if (this.config.selectable === 'radio') {
-      this.selectedRows = [];
+      this.selectedRows.length = 0;
     }
 
     if (!selectedRow) {
@@ -447,7 +450,7 @@ export default class DataTable extends Vue {
           : '';
       const radioButtonName = `radio-buttons-${this._dataTableId}`;
 
-      if (headRow) {
+      if (headRow || rowData?.parent) {
         return <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.SELECTABLE}`}></div>;
       } else {
         return (
@@ -464,7 +467,7 @@ export default class DataTable extends Vue {
                 }}
                 checked={checkedState}
               />
-              <label class={RADIO_CLASSES.LABEL} for={radioButtonId} style="position: static;">
+              <label class={RADIO_CLASSES.LABEL} for={radioButtonId}>
                 <div class={SR_ONLY}>Select row {radioButtonId}</div>
               </label>
             </div>
@@ -527,10 +530,10 @@ export default class DataTable extends Vue {
           ? DATA_TABLE_CLASSES.ROW_CHILD
           : DATA_TABLE_CLASSES.ROW;
 
-    if (this.config.selectable && this.config.selectable !== 'radio') {
-      rowCells.push(this._selectRowCheckbox(false, bodyRow));
-    } else if (this.config.selectable === 'radio') {
-      rowCells.push(this._radioButton(false, bodyRow));
+    if (this.config.selectable) {
+      rowCells.push(
+        this.config.selectable === 'radio' ? this._radioButton(false, bodyRow) : this._selectRowCheckbox(false, bodyRow)
+      );
     }
 
     if (this._expandable) {
@@ -794,13 +797,19 @@ export default class DataTable extends Vue {
   }
 
   serializeData() {
-    const serializeRow = (row: DataTableRow, rowNumber: number, parentRowId: string | null) => {
+    const serializeRow = (
+      row: DataTableRow,
+      rowNumber: number,
+      parent: DataTableRow | undefined,
+      parentRowId: string | null
+    ) => {
       const rowId = this._rowId(row.id || rowNumber);
       const rowN = parentRowId !== null ? `${parentRowId}-${rowNumber}` : String(rowNumber);
       const rowObject = {
         ...row,
         rowNumber: rowN,
         rowId: rowId,
+        parent,
       };
       let subrowNumber = 0;
 
@@ -811,7 +820,7 @@ export default class DataTable extends Vue {
       ) {
         // eslint-disable-next-line
         row.nestedContent.table.data = row.nestedContent.table.data.map((row: any) => {
-          const serialized = serializeRow(row, subrowNumber, rowN);
+          const serialized = serializeRow(row, subrowNumber, rowObject, rowN);
 
           subrowNumber++;
           return serialized;
@@ -835,7 +844,7 @@ export default class DataTable extends Vue {
       this.$props.config.reserveExpansionSlot ||
       !!this.data.body.find((row: { nestedContent: any }) => row.nestedContent);
     this.data.body.forEach(row => {
-      this._serializedDataBody.push(serializeRow(row, rowNumber, null));
+      this._serializedDataBody.push(serializeRow(row, rowNumber, undefined, null));
       rowNumber++;
     });
   }
