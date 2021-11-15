@@ -154,10 +154,6 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
         word-break: break-word;
       }
 
-      .-text--truncate {
-        cursor: pointer;
-      }
-
       &::before {
         content: attr(data-label);
         display: block;

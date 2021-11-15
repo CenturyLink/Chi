@@ -1,0 +1,42 @@
+@import '_variables';
+
+.chi-phone-input {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  .chi-dropdown {
+    margin-right: 0.5rem;
+
+    &__menu {
+      min-width: 20rem;
+
+      chi-search-input {
+        .chi-input__wrapper {
+          margin-left: 0.5rem;
+          margin-right: 0.5rem;
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        &:not(:first-child) {
+          margin-top: 0.5rem;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      &-content {
+        max-height: 12rem;
+        overflow-y: auto;
+
+        .chi-phone-input__code {
+          color: $color-text-muted;
+          margin-left: 0.25rem;
+        }
+      }
+    }
+  }
+}

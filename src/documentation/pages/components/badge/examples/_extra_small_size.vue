@@ -1,7 +1,6 @@
 <template lang="pug">
   div
-    h4 Extra small
-    <ComponentExample id="extrasmall_size_lumen_centurylink" :tabs="exampleTabs">
+    <ComponentExample title="Extra small" titleSize="h4" id="extrasmall_size" :tabs="exampleTabs" padding="-p--0">
       div(slot="example")
         .-p--2
           chi-badge(size='xs', class='-m--1')= 'Badge'
@@ -23,8 +22,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {
@@ -60,9 +57,5 @@ declare const chi: any;
     };
   }
 })
-export default class ExtraSmallExample extends Vue {
-  mounted() {
-    chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-  }
-}
+export default class ExtraSmall extends Vue {}
 </script>
