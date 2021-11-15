@@ -291,7 +291,7 @@ export default class AdvancedFilters extends Vue {
             <div class={`${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}>
               <button
                 class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.SM} ${BUTTON_CLASSES.NO_HOVER} ${UTILITY_CLASSES.PADDING.X[0]} ${UTILITY_CLASSES.TYPOGRAPHY.TEXT_NORMAL}`}
-                onclick={(event: any) => this._expandCollapseAccordions(event)}>
+                onclick={(event: Event) => this._expandCollapseAccordions(event)}>
                 {this.isExpanded ? 'Collapse All' : 'Expand All'}
               </button>
             </div>
@@ -381,7 +381,7 @@ export default class AdvancedFilters extends Vue {
     this._emitAdvancedFiltersChange();
   }
 
-  private _expandCollapseAccordions(event: any) {
+  private _expandCollapseAccordions(event: Event) {
     event.preventDefault();
     if (this._advancedFiltersAccordion) {
       this.isExpanded ? this._advancedFiltersAccordion.collapseAll() : this._advancedFiltersAccordion.expandAll();
