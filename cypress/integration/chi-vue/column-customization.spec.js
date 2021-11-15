@@ -10,6 +10,15 @@ const DOWN_COLUMN_ICON = 'icon-chevron-down';
 const AVAILABLE_COLUMNS_CLASS = 'available-columns';
 const SELECTED_COLUMNS_CLASS = 'selected-columns';
 const LOCKED_CLASS = '-locked';
+const BUTTON_CLASS = 'chi-button';
+const MODAL_CLASSES = {
+  FOOTER: 'chi-modal__footer',
+  MODAL: 'chi-modal',
+  HEADER: 'chi-modal__header',
+  CONTENT: 'chi-modal__content',
+  TITLE: 'chi-modal__title'
+};
+const BOLD_TEXT_CLASS = '-text--bold';
 
 const hasClassAssertion = (el, value) => {
   cy.get(el).should('have.class', value);
@@ -22,22 +31,22 @@ describe('Column Customization', () => {
 
   beforeEach(() => {
     cy.get('[data-cy="column-customization-base"]')
-      .find('.chi-button')
+      .find(`.${BUTTON_CLASS}`)
       .first()
       .as('columnsBtn');
     cy.get('[data-cy="column-customization-base"]')
-      .find('.chi-modal')
+      .find(`.${MODAL_CLASSES.MODAL}`)
       .as('modal');
     cy.get('@modal')
-      .find('.chi-modal__content')
+      .find(`.${MODAL_CLASSES.CONTENT}`)
       .as('modalContent');
     cy.get('@modal')
-      .find('.chi-button')
+      .find(`.${BUTTON_CLASS}`)
       .contains('Save')
       .as('saveBtn');
     cy.get('@modal')
-      .find('.chi-modal__footer')
-      .find('.chi-button')
+      .find(`.${MODAL_CLASSES.FOOTER}`)
+      .find(`.${BUTTON_CLASS}`)
       .first()
       .as('resetBtn');
     cy.get('@modal')
@@ -50,19 +59,19 @@ describe('Column Customization', () => {
       .as('availableColumns');
     cy.get('@modal')
       .find(`.${UP_COLUMN_ICON}`)
-      .parents(`.chi-button`)
+      .parents(`.${BUTTON_CLASS}`)
       .as('moveUpBtn');
     cy.get('@modal')
       .find(`.${DOWN_COLUMN_ICON}`)
-      .parents(`.chi-button`)
+      .parents(`.${BUTTON_CLASS}`)
       .as('moveDownBtn');
     cy.get('@modal')
       .find(`.${RIGHT_COLUMN_ICON}`)
-      .parents(`.chi-button`)
+      .parents(`.${BUTTON_CLASS}`)
       .as('moveRightBtn');
     cy.get('@modal')
       .find(`.${LEFT_COLUMN_ICON}`)
-      .parents(`.chi-button`)
+      .parents(`.${BUTTON_CLASS}`)
       .as('moveLeftBtn');
     cy.get('@modal')
       .find(`.${CLOSE_CLASS}`)
@@ -79,11 +88,11 @@ describe('Column Customization', () => {
 
   it(`should have .${AVAILABLE_COLUMNS_CLASS} and .${SELECTED_COLUMNS_CLASS} with 'multiple' attribute`, () => {
     cy.get('@modalContent')
-      .find('.-text--bold')
+      .find(`.${BOLD_TEXT_CLASS}`)
       .first()
       .should('have.text', 'Available Columns');
     cy.get('@modalContent')
-      .find('.-text--bold')
+      .find(`.${BOLD_TEXT_CLASS}`)
       .last()
       .should('have.text', 'Selected Columns');
     cy.get('@modalContent')
@@ -102,8 +111,8 @@ describe('Column Customization', () => {
   it('should show the SAVE and RESET buttons as disabled by default', () => {
     cy.get('@saveBtn').should('have.attr', 'disabled');
     cy.get('@modal')
-      .find('.chi-modal__footer')
-      .find('.chi-button')
+      .find(`.${MODAL_CLASSES.FOOTER}`)
+      .find(`.${BUTTON_CLASS}`)
       .first()
       .should('have.attr', 'disabled');
   });
@@ -131,7 +140,7 @@ describe('Column Customization', () => {
 
   it('should close the modal via CANCEL and X buttons', () => {
     cy.get('@modal')
-      .find('.chi-button')
+      .find(`.${BUTTON_CLASS}`)
       .contains('Cancel')
       .click()
       .then(() => {
@@ -243,7 +252,7 @@ describe('Column Customization', () => {
     it.skip(`should show all move buttons as disabled by default`, () => {
       cy.get('@columnsBtn').click();
       cy.get('@modalContent')
-        .find(`.chi-button`)
+        .find(`.${BUTTON_CLASS}`)
         .should('have.attr', 'disabled');
       cy.get('@closeBtn').click();
     });
@@ -260,22 +269,22 @@ describe('Column Customization', () => {
 
     it.skip(`should show the move up button as disabled when selecting the first column in selected columns (no locked)`, () => {
       cy.get('[data-cy="column-customization-no-locked"]')
-        .find('.chi-button')
+        .find(`.${BUTTON_CLASS}`)
         .first()
         .click();
       cy.get('[data-cy="column-customization-no-locked"]')
-        .find('.chi-modal')
+        .find(`.${MODAL_CLASSES.MODAL}`)
         .find('select')
         .last()
         .select('columnE')
         .then(() => {
           cy.get('@modal')
             .find(`.${UP_COLUMN_ICON}`)
-            .parents(`.chi-button`)
+            .parents(`.${BUTTON_CLASS}`)
             .should('have.attr', 'disabled');
         });
       cy.get('[data-cy="column-customization-no-locked"]')
-        .find('.chi-modal')
+        .find(`.${MODAL_CLASSES.MODAL}`)
         .find(`.${CLOSE_CLASS}`)
         .click();
     });
@@ -415,7 +424,7 @@ describe('Column Customization', () => {
         .click()
         .then(() => {
           cy.get('@modalContent')
-            .find(`.chi-button`)
+            .find(`.${BUTTON_CLASS}`)
             .should('have.attr', 'disabled');
         });
       cy.get('@closeBtn').click();
