@@ -20,8 +20,8 @@ import { standardComponentPageTabs } from '../../../constants/constants';
 
 @Component({
   components: {
-    Examples,
     Accessibility,
+    Examples,
     PageContentTabs,
     Properties
   },
@@ -31,7 +31,7 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     };
   }
 })
-export default class Accordion extends Vue {
+export default class Badge extends Vue {
   mounted() {}
 }
 </script>
