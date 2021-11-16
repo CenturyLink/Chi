@@ -30,7 +30,7 @@ export default class AdvancedFilters extends Vue {
   @Prop() filterUniqueID?: string;
   @Prop() mobile?: boolean;
 
-  _advancedFiltersAccordion?: HTMLElement;
+  _advancedFiltersAccordion?: any;
   _advancedFilterAccordionId?: string;
   _advancedFilterUuid?: string;
   _advancedFilterButtonId?: string;
@@ -38,6 +38,7 @@ export default class AdvancedFilters extends Vue {
   storeModule?: any;
   _planeAdvancedData = {};
   _chiMajorVersion = 5;
+  isExpanded = false;
 
   get filterElementValue() {
     return this.storeModule.filterConfig;
@@ -287,6 +288,13 @@ export default class AdvancedFilters extends Vue {
             modal={this._chiMajorVersion === 5}
             drag
             closable>
+            <div class={`${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}>
+              <button
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.SM} ${BUTTON_CLASSES.NO_HOVER} ${UTILITY_CLASSES.PADDING.X[0]} ${UTILITY_CLASSES.TYPOGRAPHY.TEXT_NORMAL}`}
+                onclick={(event: Event) => this._expandCollapseAccordions(event)}>
+                {this.isExpanded ? 'Collapse All' : 'Expand All'}
+              </button>
+            </div>
             <div
               class={`${ACCORDION_CLASSES.ACCORDION} ${this._chiMajorVersion === 4 ? PORTAL_CLASS : ''} -sm`}
               ref="advancedFiltersAccordion">
@@ -371,5 +379,13 @@ export default class AdvancedFilters extends Vue {
     await this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...this._planeAdvancedData });
     await this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...this._planeAdvancedData });
     this._emitAdvancedFiltersChange();
+  }
+
+  private _expandCollapseAccordions(event: Event) {
+    event.preventDefault();
+    if (this._advancedFiltersAccordion) {
+      this.isExpanded ? this._advancedFiltersAccordion.collapseAll() : this._advancedFiltersAccordion.expandAll();
+      this.isExpanded = !this.isExpanded;
+    }
   }
 }
