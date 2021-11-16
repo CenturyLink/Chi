@@ -6,6 +6,7 @@ export const GENERAL_POSITIONS = ['left', 'top', 'right', 'bottom'] as const;
 export const DATA_TABLE_SIZE = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type DataTableSizes = typeof DATA_TABLE_SIZE[number];
 export const DATA_TABLE_EXPANSION_ICON_STYLES = ['portal', 'base'] as const;
+export type DataTableRowLevel = 'parent' | 'child' | 'grandChild';
 export interface DataTableExpansionIcons {
   portal: {
     expanded: string;
@@ -44,7 +45,6 @@ export interface DataTableRow {
   id: string;
   rowId: string;
   rowNumber: string;
-  parentRowId: string | null;
   selected?: boolean;
   selectionDisabled?: boolean;
 }

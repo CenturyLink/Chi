@@ -26,6 +26,7 @@ import {
   DataTableSortConfig,
   DataTableStyleConfig,
   DataTableModes,
+  DataTableRowLevel,
 } from '@/constants/types';
 import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
@@ -440,7 +441,7 @@ export default class DataTable extends Vue {
     }
   }
 
-  _radioButton(headRow: boolean, rowLevel: string = '', rowData: DataTableRow | null = null) {
+  _radioButton(headRow: boolean, rowLevel: DataTableRowLevel | '' = '', rowData: DataTableRow | null = null) {
     const checkedState = rowData && rowData.rowNumber && this.selectedRows.includes(rowData.rowId);
 
     if (rowData || headRow) {
@@ -518,7 +519,7 @@ export default class DataTable extends Vue {
     return `row-${this._dataTableId}-${id}`;
   }
 
-  row(bodyRow: DataTableRow, rowLevel: 'parent' | 'child' | 'grandChild' = 'parent', striped = false) {
+  row(bodyRow: DataTableRow, rowLevel: DataTableRowLevel = 'parent', striped = false) {
     const row = [],
       rowCells = [],
       rowAccordionContent = [],
