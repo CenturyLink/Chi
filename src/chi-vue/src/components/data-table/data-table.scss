@@ -30,6 +30,36 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  &.-selectable {
+    .chi-radio {
+      .chi-radio__label {
+        bottom: 1rem;
+      }
+    }
+  }
+}
+
+.chi-data-table {
+  &.-portal {
+    .chi-data-table__body {
+      .chi-data-table__row {
+        .chi-data-table__cell {
+          &.-selectable {
+            .chi-radio {
+              .chi-radio__label {
+                bottom: 1rem;
+
+                &::after {
+                  left: 0.312rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 // TODO: To be removed when all µApp's Chi version is higher than v5.0
