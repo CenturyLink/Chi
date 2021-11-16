@@ -103,7 +103,7 @@ export interface DataTableConfig {
 export interface DataTableFilter {
   name: string;
   label: string;
-  type: 'select' | 'input' | 'checkbox' | 'textarea' | 'template' | 'custom';
+  type: 'select' | 'input' | 'checkbox' | 'textarea' | 'template';
   id: string;
   options?: [
     {
@@ -118,6 +118,10 @@ export interface DataTableFilter {
   placeholder: string;
   advanced?: true;
   template?: string;
+}
+export interface DataTableCustomFilter {
+  template: string;
+  label: string;
 }
 export interface DataTableColumn {
   name: string;

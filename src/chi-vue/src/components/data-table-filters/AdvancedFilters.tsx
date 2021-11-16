@@ -10,7 +10,7 @@ import {
   UTILITY_CLASSES,
   GENERIC_SIZE_CLASSES,
 } from '@/constants/classes';
-import { DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
+import { DataTableCustomFilter, DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { compareFilters, getElementFilterData } from './FilterUtils';
 import { findComponent, uuid4 } from '@/utils/utils';
@@ -29,7 +29,8 @@ export default class AdvancedFilters extends Vue {
   @Prop() popoverFilterID?: string;
   @Prop() filterUniqueID?: string;
   @Prop() mobile?: boolean;
-  @Prop() customSlots?: any;
+  @Prop() slots?: { [key: string]: any[] };
+  @Prop() customFilters?: DataTableCustomFilter[];
 
   _advancedFiltersAccordion?: HTMLElement;
   _advancedFilterAccordionId?: string;
@@ -231,21 +232,24 @@ export default class AdvancedFilters extends Vue {
     this._chiMajorVersion = detectMajorChiVersion();
   }
 
-  _createCustomFilter(filter: DataTableFilter) {
+  _createCustomFilter(filter: DataTableCustomFilter) {
     return (
       <div class={`${FORM_CLASSES.FORM_ITEM}`}>
         {this.mobile && (
-          <label for={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`} class={FORM_CLASSES.LABEL}>
+          <label
+            for={this.mobile ? `${filter.template}-mobile` : `${filter.template}-desktop`}
+            class={FORM_CLASSES.LABEL}>
             {filter.label}
           </label>
         )}
-        {this.customSlots[filter.name]}
+        {this.slots && this.slots[filter.template]}
       </div>
     );
   }
 
   render() {
     const advancedFilters: JSX.Element[] = [];
+
     this.advancedFiltersData &&
       this.advancedFiltersData.forEach((filter: DataTableFilter) => {
         const filterElement =
@@ -257,8 +261,6 @@ export default class AdvancedFilters extends Vue {
             ? this._createCheckboxFilter(filter)
             : filter.type === 'textarea'
             ? this._createTextareaFilter(filter)
-            : filter.type === 'custom'
-            ? this._createCustomFilter(filter)
             : null;
 
         if (filterElement) {
@@ -289,6 +291,22 @@ export default class AdvancedFilters extends Vue {
         </div>
       </button>
     );
+
+    this.customFilters &&
+      this.customFilters.forEach((filter: DataTableCustomFilter) => {
+        const customFilter = this._createCustomFilter(filter);
+        const accordionItem = (
+          <div class={ACCORDION_CLASSES.ITEM}>
+            <button class={ACCORDION_CLASSES.TRIGGER}>
+              <div class={`${ACCORDION_CLASSES.TITLE}`}>{filter.label || filter.template}</div>
+              <i class={`${ICON_CLASS} icon-chevron-down`} aria-hidden="true" />
+            </button>
+            <div class={ACCORDION_CLASSES.CONTENT}>{customFilter}</div>
+          </div>
+        );
+
+        this.mobile ? advancedFilters.push(customFilter) : advancedFilters.push(accordionItem);
+      });
 
     const advancedFiltersRender = (
       <div>

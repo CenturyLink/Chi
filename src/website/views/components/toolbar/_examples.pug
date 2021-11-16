@@ -91,7 +91,7 @@ h2 Examples
             <ChiDataTableViews :views="toolbar.viewsData" />
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
-            <ChiDataTableFilters :filtersData="toolbar.filtersData">
+            <ChiDataTableFilters :filtersData="toolbar.filtersData" :customFilters="toolbar.customFiltersData" class="-ml--2">
               <template v-slot:customAdvanced>
                 <chi-date-picker />
               </template>
@@ -108,6 +108,16 @@ h2 Examples
 
         <!-- Example Data -->
         data: () => {
+          const customFilters = [
+            {
+              template: 'customAdvanced',
+              label: 'Custom 1',
+            },
+            {
+              template: 'customAdvanced2',
+              label: 'Custom 2',
+            },
+          ];
           const filters = [
             {
               name: 'status',
@@ -181,20 +191,6 @@ h2 Examples
               type: 'checkbox',
               advanced: true,
             },
-            {
-              name: 'customAdvanced',
-              label: 'custom',
-              id: 'myoption8',
-              type: 'custom',
-              advanced: true,
-            },
-            {
-              name: 'customAdvanced2',
-              label: 'custom 2',
-              id: 'myoption9',
-              type: 'custom',
-              advanced: true,
-            },
           ];
           const columns = [
             {
@@ -247,6 +243,7 @@ h2 Examples
 
           return {
             toolbar: {
+              customFiltersData: customFilters,
               filtersData: filters,
               columnsData: {
                 columns: columns
@@ -813,7 +810,7 @@ h2 Examples
             <ChiDataTableViews :views="toolbar.viewsData" />
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
-            <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2">
+            <ChiDataTableFilters :filtersData="toolbar.filtersData" :customFilters="toolbar.customFiltersData" class="-ml--2">
               <template v-slot:customAdvanced>
                 <chi-date-picker />
               </template>
@@ -830,6 +827,16 @@ h2 Examples
 
         <!-- Example Data -->
         data: () => {
+          const customFilters = [
+            {
+              template: 'customAdvanced',
+              label: 'Custom 1',
+            },
+            {
+              template: 'customAdvanced2',
+              label: 'Custom 2',
+            },
+          ];
           const filters = [
             {
               name: 'status',
@@ -903,20 +910,6 @@ h2 Examples
               type: 'checkbox',
               advanced: true,
             },
-            {
-              name: 'customAdvanced',
-              label: 'custom',
-              id: 'myoption8',
-              type: 'custom',
-              advanced: true,
-            },
-            {
-              name: 'customAdvanced2',
-              label: 'custom 2',
-              id: 'myoption9',
-              type: 'custom',
-              advanced: true,
-            },
           ];
           const columns = [
             {
@@ -969,6 +962,7 @@ h2 Examples
 
           return {
             toolbar: {
+              customFiltersData: customFilters,
               filtersData: filters,
               columnsData: {
                 columns: columns

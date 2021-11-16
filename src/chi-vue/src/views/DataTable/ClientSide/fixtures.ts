@@ -155,23 +155,21 @@ const exampleFilters = [
     type: 'checkbox',
     advanced: true,
   },
+];
+
+const customFilters = [
   {
-    name: 'customAdvanced',
+    template: 'customAdvanced',
     label: 'Custom 1',
-    id: 'myoption8',
-    type: 'custom',
-    advanced: true,
   },
   {
-    name: 'customAdvanced2',
+    template: 'customAdvanced2',
     label: 'Custom 2',
-    id: 'myoption9',
-    type: 'custom',
-    advanced: true,
   },
 ];
 
 export const exampleToolbar = {
+  customFilters: customFilters,
   filtersData: exampleFilters,
   columnsData: {
     columns: exampleColumns,
