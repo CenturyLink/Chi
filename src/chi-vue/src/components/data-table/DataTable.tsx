@@ -440,7 +440,7 @@ export default class DataTable extends Vue {
     }
   }
 
-  _radioButton(headRow: boolean, rowData: DataTableRow | null = null) {
+  _radioButton(headRow: boolean, rowLevel: string = '', rowData: DataTableRow | null = null) {
     const checkedState = rowData && rowData.rowNumber && this.selectedRows.includes(rowData.rowId);
 
     if (rowData || headRow) {
@@ -450,7 +450,7 @@ export default class DataTable extends Vue {
           : '';
       const radioButtonName = `radio-buttons-${this._dataTableId}`;
 
-      if (headRow || rowData?.parentRowId) {
+      if (headRow || rowLevel !== 'parent') {
         return <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.SELECTABLE}`}></div>;
       } else {
         return (
@@ -532,7 +532,9 @@ export default class DataTable extends Vue {
 
     if (this.config.selectable) {
       rowCells.push(
-        this.config.selectable === 'radio' ? this._radioButton(false, bodyRow) : this._selectRowCheckbox(false, bodyRow)
+        this.config.selectable === 'radio'
+          ? this._radioButton(false, rowLevel, bodyRow)
+          : this._selectRowCheckbox(false, bodyRow)
       );
     }
 
@@ -669,7 +671,7 @@ export default class DataTable extends Vue {
       return (
         <div class={DATA_TABLE_CLASSES.BODY}>
           <fieldset>
-            <legend class="-sr--only">Select row</legend>
+            <legend class={SR_ONLY}>Select row</legend>
             {tableBodyRows}
           </fieldset>
         </div>
@@ -804,7 +806,6 @@ export default class DataTable extends Vue {
         ...row,
         rowNumber: rowN,
         rowId: rowId,
-        parentRowId,
       };
       let subrowNumber = 0;
 
@@ -813,7 +814,6 @@ export default class DataTable extends Vue {
         typeof row.nestedContent.table === 'object' &&
         row.nestedContent.table.data
       ) {
-        // eslint-disable-next-line
         row.nestedContent.table.data = row.nestedContent.table.data.map((row: DataTableRow) => {
           const serialized = serializeRow(row, subrowNumber, rowN);
 
