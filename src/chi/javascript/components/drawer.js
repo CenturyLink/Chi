@@ -3,8 +3,7 @@ import { Util } from '../core/util.js';
 import { chi } from '../core/chi';
 
 const ANIMATION_DURATION = 500;
-const CLASS_DRAWER = 'chi-drawer';
-const CLOSE_TRIGGER_SELECTOR = `.${CLASS_DRAWER} > .-close, .${CLASS_DRAWER} > .chi-drawer__header > .-close`;
+const CLOSE_TRIGGER_SELECTOR = `.-close`;
 const COMPONENT_SELECTOR = '.chi-drawer__trigger';
 const COMPONENT_TYPE = 'drawer';
 const DISABLE_SCROLL = '-disable-scroll';
@@ -24,9 +23,7 @@ const DEFAULT_CONFIG = {
 };
 
 class Drawer extends Component {
-
   constructor(elem, config) {
-
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._shown = Util.hasClass(elem, chi.classes.ACTIVE);
     this._transitioning = false;
@@ -111,6 +108,7 @@ class Drawer extends Component {
 
   _locateCloseButton() {
     const closeButtons = this._drawerElem.querySelectorAll(CLOSE_TRIGGER_SELECTOR);
+
     if (closeButtons) {
       return closeButtons[0];
     } else {
