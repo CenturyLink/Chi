@@ -52,7 +52,14 @@
             <div class="chi-divider -vertical"></div>
             <ChiDataTableViews :views="toolbar.viewsData" defaultView="view-2" />
             <div class="chi-divider -vertical"></div>
-            <ChiDataTableFilters :portal="true" :filtersData="toolbar.filtersData" />
+            <ChiDataTableFilters :portal="true" :filtersData="toolbar.filtersData">
+              <template #customAdvanced>
+                <chi-date-picker />
+              </template>
+              <template #customAdvanced2>
+                <chi-button color="dark">Dark Button</chi-button>
+              </template>
+            </ChiDataTableFilters>
           </template>
           <template v-slot:end>
             <div class="chi-toolbar__actions-desktop">

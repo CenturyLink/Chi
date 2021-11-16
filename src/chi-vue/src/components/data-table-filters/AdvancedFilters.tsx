@@ -29,6 +29,7 @@ export default class AdvancedFilters extends Vue {
   @Prop() popoverFilterID?: string;
   @Prop() filterUniqueID?: string;
   @Prop() mobile?: boolean;
+  @Prop() customSlots?: any;
 
   _advancedFiltersAccordion?: HTMLElement;
   _advancedFilterAccordionId?: string;
@@ -230,6 +231,19 @@ export default class AdvancedFilters extends Vue {
     this._chiMajorVersion = detectMajorChiVersion();
   }
 
+  _createCustomFilter(filter: DataTableFilter) {
+    return (
+      <div class={`${FORM_CLASSES.FORM_ITEM}`}>
+        {this.mobile && (
+          <label for={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`} class={FORM_CLASSES.LABEL}>
+            {filter.label}
+          </label>
+        )}
+        {this.customSlots[filter.name]}
+      </div>
+    );
+  }
+
   render() {
     const advancedFilters: JSX.Element[] = [];
     this.advancedFiltersData &&
@@ -243,6 +257,8 @@ export default class AdvancedFilters extends Vue {
             ? this._createCheckboxFilter(filter)
             : filter.type === 'textarea'
             ? this._createTextareaFilter(filter)
+            : filter.type === 'custom'
+            ? this._createCustomFilter(filter)
             : null;
 
         if (filterElement) {

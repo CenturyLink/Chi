@@ -91,7 +91,14 @@ h2 Examples
             <ChiDataTableViews :views="toolbar.viewsData" />
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
-            <ChiDataTableFilters :filtersData="toolbar.filtersData" />
+            <ChiDataTableFilters :filtersData="toolbar.filtersData">
+              <template v-slot:customAdvanced>
+                <chi-date-picker />
+              </template>
+              <template v-slot:customAdvanced2>
+                <chi-button>Button</chi-button>
+              </template>
+            </ChiDataTableFilters>
           </template>
           <template v-slot:end>
             <!-- To enable customization of columns, use Column Customization sub-module of Toolbar by providing it with respective data -->
@@ -172,6 +179,20 @@ h2 Examples
               id: 'myoption7',
               label: 'Advanced Checkbox',
               type: 'checkbox',
+              advanced: true,
+            },
+            {
+              name: 'customAdvanced',
+              label: 'custom',
+              id: 'myoption8',
+              type: 'custom',
+              advanced: true,
+            },
+            {
+              name: 'customAdvanced2',
+              label: 'custom 2',
+              id: 'myoption9',
+              type: 'custom',
               advanced: true,
             },
           ];
@@ -792,7 +813,14 @@ h2 Examples
             <ChiDataTableViews :views="toolbar.viewsData" />
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
-            <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
+            <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2">
+              <template v-slot:customAdvanced>
+                <chi-date-picker />
+              </template>
+              <template v-slot:customAdvanced2>
+                <chi-button>Button</chi-button>
+              </template>
+            </ChiDataTableFilters>
           </template>
           <template v-slot:end>
             <!-- To enable customization of columns, use Column Customization sub-module of Toolbar by providing it with respective data -->
@@ -873,6 +901,20 @@ h2 Examples
               id: 'myoption7',
               label: 'Advanced Checkbox',
               type: 'checkbox',
+              advanced: true,
+            },
+            {
+              name: 'customAdvanced',
+              label: 'custom',
+              id: 'myoption8',
+              type: 'custom',
+              advanced: true,
+            },
+            {
+              name: 'customAdvanced2',
+              label: 'custom 2',
+              id: 'myoption9',
+              type: 'custom',
               advanced: true,
             },
           ];

@@ -155,6 +155,20 @@ const exampleFilters = [
     type: 'checkbox',
     advanced: true,
   },
+  {
+    name: 'customAdvanced',
+    label: 'Custom 1',
+    id: 'myoption8',
+    type: 'custom',
+    advanced: true,
+  },
+  {
+    name: 'customAdvanced2',
+    label: 'Custom 2',
+    id: 'myoption9',
+    type: 'custom',
+    advanced: true,
+  },
 ];
 
 export const exampleToolbar = {

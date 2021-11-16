@@ -264,19 +264,21 @@ export default class DataTableFilters extends Vue {
           onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={false}
           advancedFiltersData={this._advancedFiltersData}
+          customSlots={this.$slots}
         />
       );
     }
     return null;
   }
 
-  _advancedFiltersFileds() {
+  _advancedFiltersFields() {
     if (this._advancedFiltersData) {
       return (
         <AdvancedFilters
           onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={true}
           advancedFiltersData={this._advancedFiltersData}
+          customSlots={this.$slots}
         />
       );
     }
@@ -304,7 +306,7 @@ export default class DataTableFilters extends Vue {
     const advancedFiltersPopOver =
       this._advancedFiltersData && this._advancedFiltersData.length > 0 ? this._advancedFiltersPopOver() : null;
     const advancedFilters =
-      this._advancedFiltersData && this._advancedFiltersData.length > 0 ? this._advancedFiltersFileds() : null;
+      this._advancedFiltersData && this._advancedFiltersData.length > 0 ? this._advancedFiltersFields() : null;
 
     this.$props.filtersData.forEach((filter: DataTableFilter) => {
       const filterElement =
