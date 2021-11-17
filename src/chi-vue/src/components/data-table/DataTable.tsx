@@ -26,7 +26,7 @@ import {
   DataTableSortConfig,
   DataTableStyleConfig,
   DataTableModes,
-  DataTableRowLevel,
+  DataTableRowLevels,
 } from '@/constants/types';
 import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
@@ -64,11 +64,13 @@ export default class DataTable extends Vue {
 
   _head() {
     const tableHeadCells = [
-      this.config.selectable
-        ? this.config.selectable === 'radio'
-          ? this._radioButton(true)
-          : this._selectRowCheckbox(true)
-        : null,
+      this.config.selectable ? (
+        this.config.selectable === 'radio' ? (
+          <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.SELECTABLE}`}></div>
+        ) : (
+          this._selectRowCheckbox(true)
+        )
+      ) : null,
       this._expandable ? (
         <div
           class={`
@@ -441,17 +443,17 @@ export default class DataTable extends Vue {
     }
   }
 
-  _radioButton(headRow: boolean, rowLevel: DataTableRowLevel | '' = '', rowData: DataTableRow | null = null) {
+  _radioButton(rowLevel: DataTableRowLevels, rowData: DataTableRow | null = null) {
     const checkedState = rowData && rowData.rowNumber && this.selectedRows.includes(rowData.rowId);
 
-    if (rowData || headRow) {
+    if (rowData) {
       const radioButtonId =
         rowData && typeof rowData === 'object' && rowData.rowNumber
           ? `radio-button-${this._rowId(rowData.rowNumber)}`
           : '';
       const radioButtonName = `radio-buttons-${this._dataTableId}`;
 
-      if (headRow || rowLevel !== 'parent') {
+      if (rowLevel !== 'parent') {
         return <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.SELECTABLE}`}></div>;
       } else {
         return (
@@ -519,7 +521,7 @@ export default class DataTable extends Vue {
     return `row-${this._dataTableId}-${id}`;
   }
 
-  row(bodyRow: DataTableRow, rowLevel: DataTableRowLevel = 'parent', striped = false) {
+  row(bodyRow: DataTableRow, rowLevel: DataTableRowLevels = 'parent', striped = false) {
     const row = [],
       rowCells = [],
       rowAccordionContent = [],
@@ -534,7 +536,7 @@ export default class DataTable extends Vue {
     if (this.config.selectable) {
       rowCells.push(
         this.config.selectable === 'radio'
-          ? this._radioButton(false, rowLevel, bodyRow)
+          ? this._radioButton(rowLevel, bodyRow)
           : this._selectRowCheckbox(false, bodyRow)
       );
     }
