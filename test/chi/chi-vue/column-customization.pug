@@ -1,0 +1,136 @@
+script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
+script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(src=`../../js/chi.js`)
+
+h2 Column Customization
+h3 Base
+.test-column-customization.-p--3.-w--100
+  chi-vue-column-customization(id="base" data-cy="column-customization-base" ref="baseColumnCustomizationRef" :columns-data="columnsData")
+
+h3 No Locked Columns
+.test-column-customization.-p--3.-w--100
+  chi-vue-column-customization(id="no-locked" data-cy="column-customization-no-locked" :columns-data="columnsData")
+
+script.
+  const exampleColumns = [
+    {
+      name: 'columnE',
+      label: 'Column E',
+      selected: true,
+    },
+    {
+      name: 'columnB',
+      label: 'Column B',
+    },
+    {
+      name: 'columnA',
+      label: 'Column A',
+    },
+    {
+      name: 'columnC',
+      label: 'Column C',
+      locked: true,
+      selected: true,
+    },
+    {
+      name: 'columnD',
+      label: 'Column D',
+      locked: true,
+      selected: true,
+    },
+    {
+      name: 'columnF',
+      label: 'Column F',
+      selected: true,
+    },
+    {
+      name: 'columnJ',
+      label: 'Column J',
+    },
+    {
+      name: 'columnG',
+      label: 'Column G',
+    },
+    {
+      name: 'columnI',
+      label: 'Column I',
+    },
+    {
+      name: 'columnH',
+      label: 'Column H',
+    },
+  ];
+
+  new Vue({
+    components: {
+      chiVueColumnCustomization: window["chi-vue"].library.components.ChiColumnCustomization,
+    },
+    data: {
+      columnsData: {
+        columns: exampleColumns,
+      },
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.baseColumnCustomizationExample = this;
+      }
+    }
+  }).$mount("#base");
+
+  const exampleColumnsWithoutLocked = [
+    {
+      name: 'columnE',
+      label: 'Column E',
+      selected: true,
+    },
+    {
+      name: 'columnB',
+      label: 'Column B',
+    },
+    {
+      name: 'columnA',
+      label: 'Column A',
+    },
+    {
+      name: 'columnC',
+      label: 'Column C',
+      selected: true,
+    },
+    {
+      name: 'columnD',
+      label: 'Column D',
+      selected: true,
+    },
+    {
+      name: 'columnF',
+      label: 'Column F',
+      selected: true,
+    },
+    {
+      name: 'columnJ',
+      label: 'Column J',
+    },
+    {
+      name: 'columnG',
+      label: 'Column G',
+    },
+    {
+      name: 'columnI',
+      label: 'Column I',
+    },
+    {
+      name: 'columnH',
+      label: 'Column H',
+    },
+  ];
+
+  new Vue({
+    components: {
+      chiVueColumnCustomization: window["chi-vue"].library.components.ChiColumnCustomization,
+    },
+    data: {
+      columnsData: {
+        columns: exampleColumnsWithoutLocked,
+      },
+    }
+  }).$mount("#no-locked");
