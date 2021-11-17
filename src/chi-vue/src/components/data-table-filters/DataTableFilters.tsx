@@ -1,6 +1,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import {
-  DataTableCustomFilter,
+  DataTableCustomItem,
   DataTableFilter,
   DataTableFiltersData,
   DataTableFormElementFilters,
@@ -32,7 +32,7 @@ import './filters.scss';
 @Component
 export default class DataTableFilters extends Vue {
   @Prop() filtersData?: DataTableFiltersData;
-  @Prop() customFilters?: DataTableCustomFilter[];
+  @Prop() customItems?: DataTableCustomItem[];
   @Prop() portal?: boolean;
 
   _filtersData?: DataTableFiltersData;
@@ -270,7 +270,7 @@ export default class DataTableFilters extends Vue {
           onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={false}
           advancedFiltersData={this._advancedFiltersData}
-          customFilters={this.customFilters}
+          customItems={this.customItems}
           slots={this.$slots}
         />
       );
@@ -285,7 +285,7 @@ export default class DataTableFilters extends Vue {
           onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={true}
           advancedFiltersData={this._advancedFiltersData}
-          customFilters={this.customFilters}
+          customItems={this.customItems}
           slots={this.$slots}
         />
       );

@@ -91,7 +91,7 @@ h2 Examples
             <ChiDataTableViews :views="toolbar.viewsData" />
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
-            <ChiDataTableFilters :filtersData="toolbar.filtersData" :customFilters="toolbar.customFiltersData" class="-ml--2">
+            <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
               <template v-slot:customAdvanced>
                 <chi-date-picker />
               </template>
@@ -108,7 +108,7 @@ h2 Examples
 
         <!-- Example Data -->
         data: () => {
-          const customFilters = [
+          const customItems = [
             {
               template: 'customAdvanced',
               label: 'Custom 1',
@@ -243,7 +243,7 @@ h2 Examples
 
           return {
             toolbar: {
-              customFiltersData: customFilters,
+              customItemsData: customItems,
               filtersData: filters,
               columnsData: {
                 columns: columns
@@ -810,7 +810,7 @@ h2 Examples
             <ChiDataTableViews :views="toolbar.viewsData" />
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
-            <ChiDataTableFilters :filtersData="toolbar.filtersData" :customFilters="toolbar.customFiltersData" class="-ml--2">
+            <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
               <template v-slot:customAdvanced>
                 <chi-date-picker />
               </template>
@@ -827,7 +827,7 @@ h2 Examples
 
         <!-- Example Data -->
         data: () => {
-          const customFilters = [
+          const customItems = [
             {
               template: 'customAdvanced',
               label: 'Custom 1',
@@ -962,7 +962,7 @@ h2 Examples
 
           return {
             toolbar: {
-              customFiltersData: customFilters,
+              customItemsData: customItems,
               filtersData: filters,
               columnsData: {
                 columns: columns

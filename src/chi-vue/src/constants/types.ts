@@ -119,7 +119,7 @@ export interface DataTableFilter {
   advanced?: true;
   template?: string;
 }
-export interface DataTableCustomFilter {
+export interface DataTableCustomItem {
   template: string;
   label: string;
 }

@@ -157,7 +157,7 @@ const exampleFilters = [
   },
 ];
 
-const customFilters = [
+const customItems = [
   {
     template: 'customAdvanced',
     label: 'Custom 1',
@@ -169,7 +169,7 @@ const customFilters = [
 ];
 
 export const exampleToolbar = {
-  customFilters: customFilters,
+  customItems: customItems,
   filtersData: exampleFilters,
   columnsData: {
     columns: exampleColumns,
