@@ -873,6 +873,7 @@ export default class DataTable extends Vue {
       if (this._sortConfig) {
         this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
       }
+      this.activePage = 1;
     }
     this.slicedData = this.sliceData(
       this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody

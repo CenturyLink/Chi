@@ -4,14 +4,20 @@ script(src="../../chi-vue/umd/chi-vue.umd.js")
 h2 Data Table Base
 h3 Base
 .test-data-table.-p--3.-w--100
-  #base
+  #base(data-cy='data-table-container')
     chi-vue-data-table(ref="base" data-cy='data-table', :config="config", :data="table")
+    button(@click="update") Update
+
+h3 Base Compact
+.test-data-table.-p--3.-w--100
+  #base-compact(data-cy='data-table-compact-container')
+    chi-vue-data-table(data-cy='data-table-compact', :config="config", :data="table")
     button(@click="update") Update
 
 h3 Truncation
 .test-data-table.-p--3.-w--100
   #truncation
-    chi-vue-data-table(ref="base" data-cy='data-table-truncation', :config="config", :data="table")
+    chi-vue-data-table(data-cy='data-table-truncation', :config="config", :data="table")
 
 h3 Empty
 .test-data-table.-p--3.-w--100
@@ -123,6 +129,33 @@ h2 Data Table Server Side
           span.-text--truncate {{ payload.status }}
 
 script.
+  const exampleBody = [
+    {
+      id: "name-1",
+      data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+    },
+    {
+      id: "name-2",
+      data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
+    },
+    {
+      id: "name-3",
+      data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
+    },
+    {
+      id: "name-4",
+      data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
+    },
+    {
+      id: "name-5",
+      data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
+    },
+    {
+      id: "name-6",
+      data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
+    },
+  ];
+
   new Vue({
     components: {
       chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
@@ -171,32 +204,7 @@ script.
           id: { label: "ID" },
           lastLogin: { label: "Last Login" },
         },
-        body: [
-          {
-            id: "name-1",
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-2",
-            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-3",
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
-          },
-          {
-            id: "name-4",
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-5",
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-6",
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
-          },
-        ],
+        body: exampleBody,
       },
     },
     mounted() {
@@ -205,6 +213,54 @@ script.
       }
     },
   }).$mount("#base");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    methods: {
+      update: function () {
+        this.$data.table = {
+          ...this.$data.table,
+          body: [
+            {
+              id: "updated-name-1",
+              data: ["Updated Name 1", "updated-name-1", "Dec 18, 2020 3:26 PM"],
+            }
+          ]
+        };
+      },
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          hideOnSinglePage: false,
+          compact: true,
+          firstLast: true,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: "Name" },
+          id: { label: "ID" },
+          lastLogin: { label: "Last Login" },
+        },
+        body: exampleBody,
+      },
+    },
+  }).$mount("#base-compact");
 
   new Vue({
     components: {
@@ -238,32 +294,7 @@ script.
           superLastLogin: { label: "Last Login Super Last Login lorem ipsum dolor sit amet"},
           megaSuperLastLogin: { label: "Last Login Super Last Login Mega Super Last Login"}
         },
-        body: [
-          {
-            id: "name-1",
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-2",
-            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-3",
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-4",
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-5",
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-6",
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM"],
-          },
-        ],
+        body: exampleBody,
       },
     },
   }).$mount("#truncation");
@@ -334,32 +365,7 @@ script.
           id: { label: "ID" },
           lastLogin: { label: "Last Login" },
         },
-        body: [
-          {
-            id: "name-1",
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-2",
-            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-3",
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
-          },
-          {
-            id: "name-4",
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-5",
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-6",
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
-          },
-        ],
+        body: exampleBody,
       },
     },
   }).$mount("#noBorder");
@@ -393,32 +399,7 @@ script.
           id: { label: "ID" },
           lastLogin: { label: "Last Login" },
         },
-        body: [
-          {
-            id: "name-1",
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-2",
-            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-3",
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
-          },
-          {
-            id: "name-4",
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-5",
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-6",
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
-          },
-        ],
+        body: exampleBody,
       },
     },
   }).$mount("#striped");
@@ -452,32 +433,7 @@ script.
           id: { label: "ID" },
           lastLogin: { label: "Last Login" },
         },
-        body: [
-          {
-            id: "name-1",
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-2",
-            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-3",
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
-          },
-          {
-            id: "name-4",
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-5",
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-6",
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
-          },
-        ],
+        body: exampleBody,
       },
     },
   }).$mount("#hover");
@@ -511,32 +467,7 @@ script.
           id: { label: "ID" },
           lastLogin: { label: "Last Login" },
         },
-        body: [
-          {
-            id: "name-1",
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-2",
-            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-3",
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
-          },
-          {
-            id: "name-4",
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-5",
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-6",
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
-          },
-        ],
+        body: exampleBody,
       },
     },
   }).$mount("#bordered");
@@ -631,32 +562,7 @@ script.
           id: { label: "ID" },
           lastLogin: { label: "Last Login" },
         },
-        body: [
-          {
-            id: "name-1",
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-2",
-            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-3",
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
-          },
-          {
-            id: "name-4",
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-5",
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-6",
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
-          },
-        ],
+        body: exampleBody,
       },
     },
     mounted() {
