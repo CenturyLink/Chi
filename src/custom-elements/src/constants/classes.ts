@@ -2,6 +2,18 @@
 export const ACTIVE_CLASS = '-active';
 export const DISABLED_CLASS = '-disabled';
 
+export const BUTTON_CLASSES = {
+  BUTTON: 'chi-button'
+};
+
+export const DROPDOWN_CLASSES = {
+  DROPDOWN: 'chi-dropdown',
+  TRIGGER: 'chi-dropdown__trigger',
+  MENU: 'chi-dropdown__menu',
+  MENU_CONTENT: 'chi-dropdown__menu-content',
+  MENU_ITEM: 'chi-dropdown__menu-item'
+};
+
 /* Time */
 export const TIME_CLASSES = {
   TIME: 'chi-time-picker',
@@ -13,7 +25,12 @@ export const TIME_CLASSES = {
   SECONDS: 'chi-time-picker__seconds',
   SECOND: 'chi-time-picker__second',
   PERIODS: 'chi-time-picker__periods',
-  PERIOD: 'chi-time-picker__period',
+  PERIOD: 'chi-time-picker__period'
+};
+
+export const PHONE_INPUT_CLASSES = {
+  PHONE_INPUT: 'chi-phone-input',
+  CODE: 'chi-phone-input__code'
 };
 
 export const POPOVER_CLASSES = {

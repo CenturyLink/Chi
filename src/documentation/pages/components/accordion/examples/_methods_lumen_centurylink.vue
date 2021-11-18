@@ -1,6 +1,6 @@
 <template lang="pug">
-  <ComponentExample title="Show / Hide / Toggle of individual items of Accordion" id="methods_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example").-p--3.-p-lg--6
+  <ComponentExample title="Show / Hide / Toggle of individual items of Accordion" id="methods_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
+    div(slot="example")
       button(@click="toggleOne").chi-button#toggle-accordion-1 Toggle item 1
       button(@click="toggleTwo").chi-button.-ml--1#toggle-accordion-2 Toggle item 2
       .chi-accordion.-mt--2#individual-accordion-items
@@ -50,13 +50,13 @@ declare const chi: any;
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
+          label: 'HTML blueprint'
+        }
       ],
       codeSnippets: {
         webcomponent: `Web component code snippet`,
@@ -106,22 +106,28 @@ declare const chi: any;
   toggleAccordionTwo.addEventListener("click", () => {
     individualAccordions.toggle(document.getElementById("invividual-accordion-item-2"));
   });
-<\/script>`,
+<\/script>`
       }
-    }
+    };
   }
 })
-export default class MethodsExample extends Vue {
+export default class MethodsLumenCenturyLink extends Vue {
   individualAccordions: any;
 
   toggleOne() {
-    this.individualAccordions.toggle(this.$refs['invividual-accordion-item-1'] as HTMLElement);
+    this.individualAccordions.toggle(this.$refs[
+      'invividual-accordion-item-1'
+    ] as HTMLElement);
   }
   toggleTwo() {
-    this.individualAccordions.toggle(this.$refs['invividual-accordion-item-2'] as HTMLElement);
+    this.individualAccordions.toggle(this.$refs[
+      'invividual-accordion-item-2'
+    ] as HTMLElement);
   }
   mounted() {
-    const accordionMethods = document.getElementById('individual-accordion-items');
+    const accordionMethods = document.getElementById(
+      'individual-accordion-items'
+    );
 
     this.individualAccordions = chi.accordion(accordionMethods);
   }

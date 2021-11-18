@@ -30,6 +30,14 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  &.-selectable {
+    .chi-radio {
+      .chi-radio__label {
+        position: initial;
+      }
+    }
+  }
 }
 
 // TODO: To be removed when all µApp's Chi version is higher than v5.0

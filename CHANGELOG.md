@@ -1,4 +1,10 @@
 # CHANGELOG
+## 5.6.0 (November 11, 2021)
+### Components
+#### Added
+* Added: International phone input web component.
+* Added: Data table header cells now support conditional rendering of tooltip.
+
 ## 5.5.0 (October 28, 2021)
 ### Components
 #### Added

@@ -1,6 +1,9 @@
 <template>
   <div class="chi-dropdown -w--100">
-    <button id="theme-switcher" class="-theme-switch chi-button -fluid chi-dropdown__trigger">
+    <button
+      ref="switcher"
+      class="-theme-switch chi-button -fluid chi-dropdown__trigger"
+    >
       <div class="chi-button__content -flex--column">
         <span class="-d--flex -w--100 -mr--0 -text--normal -text--sm"
           >Theme</span
@@ -11,18 +14,26 @@
               class="-favicon"
               width="16"
               height="16"
-              :src="'/themes/'+this.$store.state.themes.theme+'/images/favicon.svg'"
+              :src="
+                '/themes/' +
+                  this.$store.state.themes.theme +
+                  '/images/favicon.svg'
+              "
             />
           </div>
-          <div class="-theme-name">{{themes[this.$store.state.themes.theme].label}}</div>
+          <div class="-theme-name">
+            {{ themes[this.$store.state.themes.theme].label }}
+          </div>
         </div>
       </div>
     </button>
-    <div
-      class="chi-dropdown__menu"
-      x-placement="bottom-start">
+    <div class="chi-dropdown__menu" x-placement="bottom-start">
       <a
-        v-bind:class="[this.$store.state.themes.theme === 'centurylink' ? '-active' : '', 'theme-trigger-centurylink', 'chi-dropdown__menu-item']"
+        v-bind:class="[
+          this.$store.state.themes.theme === 'centurylink' ? '-active' : '',
+          'theme-trigger-centurylink',
+          'chi-dropdown__menu-item'
+        ]"
         href="#"
         @click="setTheme('centurylink')"
         ><img
@@ -33,7 +44,11 @@
         />
         <div class="-theme-name">CenturyLink</div></a
       ><a
-        v-bind:class="[this.$store.state.themes.theme === 'lumen' ? '-active' : '', 'theme-trigger-lumen', 'chi-dropdown__menu-item']"
+        v-bind:class="[
+          this.$store.state.themes.theme === 'lumen' ? '-active' : '',
+          'theme-trigger-lumen',
+          'chi-dropdown__menu-item'
+        ]"
         href="#"
         @click="setTheme('lumen')"
         ><img
@@ -44,7 +59,11 @@
         />
         <div class="-theme-name">Lumen</div></a
       ><a
-        v-bind:class="[this.$store.state.themes.theme === 'portal' ? '-active' : '', 'theme-trigger-portal', 'chi-dropdown__menu-item']"
+        v-bind:class="[
+          this.$store.state.themes.theme === 'portal' ? '-active' : '',
+          'theme-trigger-portal',
+          'chi-dropdown__menu-item'
+        ]"
         href="#"
         @click="setTheme('portal')"
         ><img
@@ -61,24 +80,68 @@
 
 <script lang="ts">
 import { Themes } from '../models/models';
-import { THEMES } from '../constants/constants';
+import { THEMES, defaultCss, defaultDocsCss } from '../constants/constants';
 import { Component, Vue } from 'vue-property-decorator';
 
 declare const chi: any;
+interface AssetToReplace {
+  type: 'css' | 'docsCss';
+  id: string;
+}
 
-@Component({})
+@Component({
+  head() {
+    return {
+      link: [
+        {
+          rel: 'stylesheet',
+          id: 'chi-css',
+          type: 'text/css',
+          href: defaultCss
+        },
+        {
+          rel: 'stylesheet',
+          type: 'text/css',
+          id: 'chi-docs-css',
+          href: defaultDocsCss
+        },
+      ],
+    }
+  }
+})
 export default class ThemeSwitcher extends Vue {
-  theme: Themes = this.$store.state.themes.theme;
   themes = THEMES;
 
-  setTheme(theme: Themes) {
+  setTheme(theme: Themes): void {
+    const brandLogo = document.getElementById('header-logo') as any;
+    const assetsToReplace : AssetToReplace[] = [{type: 'css', id: 'chi-css'}, {type: 'docsCss', id: 'chi-docs-css'}];
+
+    assetsToReplace.forEach((asset: AssetToReplace) => {
+      const currentAsset = document.getElementById(asset.id);
+      const replacementAsset = document.createElement('LINK');
+      const replacementHref = THEMES[theme][asset.type];
+
+      if (currentAsset && replacementAsset) {
+        replacementAsset.setAttribute('rel', 'stylesheet');
+        replacementAsset.setAttribute('href', replacementHref);
+        if (currentAsset.parentNode) {
+          currentAsset.parentNode
+            .insertBefore(replacementAsset, currentAsset.nextSibling);
+        }
+        replacementAsset.addEventListener('load', () => {
+          replacementAsset.setAttribute('id', asset.id);
+          currentAsset.remove();
+        });
+      }
+    });
+    brandLogo.logo = theme === 'centurylink' ? 'centurylink' : 'lumen';
     this.$store.commit('themes/set', theme);
   }
 
   mounted() {
-    const themeSwitcher = document.getElementById('theme-switcher');
+    const themeSwitcherElement = this.$refs.switcher as HTMLElement;
 
-    chi.dropdown(themeSwitcher);
+    chi.dropdown(themeSwitcherElement);
   }
 }
 </script>

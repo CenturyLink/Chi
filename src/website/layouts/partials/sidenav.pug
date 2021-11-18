@@ -63,7 +63,7 @@ ul.chi-tabs.-vertical.-lg.-animated
                   -var portalOnly = section.title === 'Portal' || section.title ==='App layout' ? ' -portal-only' : "";
                   li(class=section.path === path ? '-active' + portalOnly : portalOnly)
                     a(href=`${rootPath}${section.path}`) #{section.title}
-                      if section.title == 'Button'
+                      if section.title == 'Button' || section.title == 'Link'
                         .-sr--only component
       else
         li
@@ -106,7 +106,7 @@ ul.chi-tabs.-vertical.-lg.-animated
                   -var portalOnly = section.title === 'Portal' || section.title ==='App layout' ? ' -portal-only' : "";
                   li(class=section.path === path ? '-active' + portalOnly : portalOnly)
                     a(href=`${rootPath}${section.path}`) #{section.title}
-                      if section.title == 'Button'
+                      if section.title == 'Button' || section.title == 'Link'
                         .-sr--only component
     else
       li
