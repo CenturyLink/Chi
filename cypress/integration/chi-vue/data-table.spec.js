@@ -29,6 +29,9 @@ const DATA_TABLE_CLASSES = {
   COMPACT: '-compact',
   TRUNCATED: '-truncated'
 };
+const RADIO_CLASSES = {
+  RADIO: 'chi-radio',
+}
 const PAGINATION_CLASSES = {
   PAGINATION: 'chi-pagination',
   RESULTS: 'chi-pagination__results',
@@ -589,6 +592,114 @@ describe('Data Table', () => {
         .eq(1)
         .click();
     });
+  });
+
+  describe('Radio selection', () => {
+    beforeEach(() => {
+      cy.get(`[data-cy='data-table-radio']`)
+        .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
+        .find(`.${RADIO_CLASSES.RADIO}`)
+        .as('radios');
+    });
+
+    it(`Should have class .${RADIO_CLASSES.RADIO}`, () => {
+      const rows = [1, 2, 3];
+
+      rows.forEach(rowIndex => {
+        cy.get(`[data-cy='data-table-radio'] .${DATA_TABLE_CLASSES.ROW}`)
+          .eq(rowIndex)
+          .find(`.${DATA_TABLE_CLASSES.CELL}`)
+          .first()
+          .children()
+          .first()
+          .as('rowRadio');
+
+        hasClassAssertion(`@rowRadio`, RADIO_CLASSES.RADIO);
+      });
+    });
+
+    it(`Should not have class .${RADIO_CLASSES.RADIO} when it is a child`, () => {
+      cy.get(`[data-cy='data-table-radio']`)
+        .find(`.${DATA_TABLE_CLASSES.ROW_CHILD}`)
+        .find(`.${DATA_TABLE_CLASSES.CELL}`)
+        .first()
+        .should('not.have.class', RADIO_CLASSES.RADIO);
+    })
+
+    it(`Should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
+      cy.window()
+        .its('radioDataTable')
+        .then(radioDataTable => {
+          const component = radioDataTable.$refs.radio;
+          const spy = cy.spy();
+
+          component.$on(`${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE}`, spy);
+          cy.get('@radios')
+            .eq(0)
+            .click()
+            .then(() => {
+              expect(spy).to.be.called;
+            });
+          cy.get('@radios')
+            .eq(0)
+            .click();
+        });
+    });
+
+    it('Should select a row', () => {
+      cy.get('@radios')
+        .eq(1)
+        .click()
+        .then(() => {
+          cy.get(
+            `[data-cy='data-table-radio'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+          )
+            .eq(1)
+            .find('input')
+            .should('be.checked');
+        });
+    });
+
+    it('Should check that the previous radio is not selected after selecting another row', () => {
+      cy.get('@radios')
+        .eq(0)
+        .click()
+        .then(() => {
+          cy.get(
+            `[data-cy='data-table-radio'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+          )
+            .eq(1)
+            .find('input')
+            .should('not.be.checked');
+        });
+    });
+
+    it('Should keep selected row on page change', () => {
+      cy.get('@radios')
+        .eq(1)
+        .click()
+        .then(() => {
+          cy.get(
+            `[data-cy='data-table-radio'] .${PAGINATION_CLASSES.PAGINATION}`
+          )
+            .find(`.${ICON_BUTTON}`)
+            .as('paginationIcons')
+            .eq(1)
+            .click();
+        });
+      cy.get('@paginationIcons')
+        .eq(0)
+        .click()
+        .then(() => {
+          cy.get(
+            `[data-cy='data-table-radio'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+          )
+            .eq(1)
+            .find('input')
+            .should('be.checked');
+        });
+    });
+
   });
 
   describe('Accordion', () => {
