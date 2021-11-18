@@ -6,6 +6,7 @@ export const GENERAL_POSITIONS = ['left', 'top', 'right', 'bottom'] as const;
 export const DATA_TABLE_SIZE = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type DataTableSizes = typeof DATA_TABLE_SIZE[number];
 export const DATA_TABLE_EXPANSION_ICON_STYLES = ['portal', 'base'] as const;
+export type DataTableRowLevels = 'parent' | 'child' | 'grandChild';
 export interface DataTableExpansionIcons {
   portal: {
     expanded: string;
@@ -96,7 +97,7 @@ export interface DataTableConfig {
   };
   resultsPerPage?: number;
   style: DataTableStyleConfig;
-  selectable?: boolean;
+  selectable?: boolean | 'radio';
   reserveExpansionSlot?: boolean;
   truncation?: boolean;
 }
