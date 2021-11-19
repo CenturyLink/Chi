@@ -10,6 +10,8 @@
       @chiDataSorting="e => this.dataSorting(e)"
       @chiRowExpanded="e => this.rowExpanded(e)"
       @chiRowCollapsed="e => this.rowCollapsed(e)"
+      @chiRowSelected="e => this.rowSelected(e)"
+      @chiRowDeselected="e => this.rowDeselected(e)"
     >
       <template #icon="payload">
         <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
@@ -156,6 +158,12 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     },
     rowCollapsed: e => {
       console.log('chiRowCollapsed', e);
+    },
+    rowSelected(rowData: DataTableRow) {
+      console.log('chiRowSelected', rowData);
+    },
+    rowDeselected(rowData: DataTableRow) {
+      console.log('chiRowDeselected', rowData);
     },
     dateChangeHandler: e => {
       console.log('dateChangeHandler', e);
