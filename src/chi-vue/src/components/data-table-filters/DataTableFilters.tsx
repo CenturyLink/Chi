@@ -28,6 +28,7 @@ import store, { STORE_KEY } from '@/store';
 import { getModule } from 'vuex-module-decorators';
 import { detectMajorChiVersion } from '@/utils/utils';
 import './filters.scss';
+import { VNode } from 'vue';
 
 @Component
 export default class DataTableFilters extends Vue {
@@ -263,6 +264,17 @@ export default class DataTableFilters extends Vue {
     this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._getUpdatedFiltersObject());
   }
 
+  getCustomItemsSlots(): { [key: string]: VNode[] | undefined }[] {
+    const customItemsSlots: { [key: string]: VNode[] | undefined }[] = [];
+
+    this.customItems?.forEach((item: DataTableCustomItem) => {
+      if (this.$slots[item.template]) {
+        customItemsSlots.push({ [item.template]: this.$slots[item.template] });
+      }
+    });
+    return customItemsSlots;
+  }
+
   _advancedFiltersPopOver() {
     if (this._advancedFiltersData) {
       return (
@@ -270,9 +282,9 @@ export default class DataTableFilters extends Vue {
           onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={false}
           advancedFiltersData={this._advancedFiltersData}
-          customItems={this.customItems}
-          slots={this.$slots}
-        />
+          customItems={this.customItems}>
+          {this.getCustomItemsSlots()}
+        </AdvancedFilters>
       );
     }
     return null;
@@ -285,9 +297,9 @@ export default class DataTableFilters extends Vue {
           onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={true}
           advancedFiltersData={this._advancedFiltersData}
-          customItems={this.customItems}
-          slots={this.$slots}
-        />
+          customItems={this.customItems}>
+          {this.getCustomItemsSlots()}
+        </AdvancedFilters>
       );
     }
     return null;

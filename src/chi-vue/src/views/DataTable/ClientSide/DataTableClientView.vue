@@ -54,10 +54,10 @@
             <div class="chi-divider -vertical"></div>
             <ChiDataTableFilters :portal="true" :filtersData="toolbar.filtersData" :customItems="toolbar.customItems">
               <template #customAdvanced>
-                <chi-date-picker />
+                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
               </template>
               <template #customAdvanced2>
-                <chi-button color="dark">Dark Button</chi-button>
+                <chi-time-picker @chiTimeChange="e => timeChangeHandler(e)" />
               </template>
             </ChiDataTableFilters>
           </template>
@@ -156,6 +156,12 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     },
     rowCollapsed: e => {
       console.log('chiRowCollapsed', e);
+    },
+    dateChangeHandler: e => {
+      console.log('dateChangeHandler', e);
+    },
+    timeChangeHandler: e => {
+      console.log('timeChangeHandler', e);
     },
   },
   data: () => {

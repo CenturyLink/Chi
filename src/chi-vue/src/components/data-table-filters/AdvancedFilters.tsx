@@ -29,7 +29,6 @@ export default class AdvancedFilters extends Vue {
   @Prop() popoverFilterID?: string;
   @Prop() filterUniqueID?: string;
   @Prop() mobile?: boolean;
-  @Prop() slots?: { [key: string]: any[] };
   @Prop() customItems?: DataTableCustomItem[];
 
   _advancedFiltersAccordion?: any;
@@ -234,6 +233,8 @@ export default class AdvancedFilters extends Vue {
   }
 
   _createCustomItem(filter: DataTableCustomItem) {
+    const customItemsSlots = this.$scopedSlots && this.$scopedSlots.default && this.$scopedSlots.default(null);
+
     return (
       <div class={`${FORM_CLASSES.FORM_ITEM}`}>
         {this.mobile && (
@@ -243,7 +244,7 @@ export default class AdvancedFilters extends Vue {
             {filter.label}
           </label>
         )}
-        {this.slots && this.slots[filter.template]}
+        {customItemsSlots?.map((item: { [key: string]: any }) => item[filter.template])}
       </div>
     );
   }

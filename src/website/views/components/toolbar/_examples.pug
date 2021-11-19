@@ -92,11 +92,11 @@ h2 Examples
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
             <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
-              <template v-slot:customAdvanced>
-                <chi-date-picker />
+              <template #customAdvanced>
+                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
               </template>
-              <template v-slot:customAdvanced2>
-                <chi-button>Button</chi-button>
+              <template #customAdvanced2>
+                <chi-time-picker @chiTimeChange="e => timeChangeHandler(e)" />
               </template>
             </ChiDataTableFilters>
           </template>
@@ -811,11 +811,11 @@ h2 Examples
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
             <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
-              <template v-slot:customAdvanced>
-                <chi-date-picker />
+              <template #customAdvanced>
+                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
               </template>
-              <template v-slot:customAdvanced2>
-                <chi-button>Button</chi-button>
+              <template #customAdvanced2>
+                <chi-time-picker @chiTimeChange="e => timeChangeHandler(e)" />
               </template>
             </ChiDataTableFilters>
           </template>
