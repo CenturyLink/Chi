@@ -249,7 +249,7 @@ describe('Column Customization', () => {
   });
 
   describe('Move Buttons', () => {
-    it.skip(`Should show all move buttons as disabled by default`, () => {
+    it(`Should show all move buttons as disabled by default`, () => {
       cy.get('@columnsBtn').click();
       cy.get('@modalContent')
         .find(`.${BUTTON_CLASS}`)
@@ -257,7 +257,7 @@ describe('Column Customization', () => {
       cy.get('@closeBtn').click();
     });
 
-    it.skip(`Should show the move up button as disabled when selecting the first clickable column in selected columns`, () => {
+    it(`Should show the move up button as disabled when selecting the first clickable column in selected columns`, () => {
       cy.get('@columnsBtn').click();
       cy.get('@selectedColumns')
         .select('columnE')
@@ -267,7 +267,7 @@ describe('Column Customization', () => {
       cy.get('@closeBtn').click();
     });
 
-    it.skip(`Should show the move up button as disabled when selecting the first column in selected columns (no locked)`, () => {
+    it(`Should show the move up button as disabled when selecting the first column in selected columns (no locked)`, () => {
       cy.get('[data-cy="column-customization-no-locked"]')
         .find(`.${BUTTON_CLASS}`)
         .first()
@@ -289,7 +289,7 @@ describe('Column Customization', () => {
         .click();
     });
 
-    it.skip(`Should show the move down button as disabled when selecting the last column in selected columns`, () => {
+    it(`Should show the move down button as disabled when selecting the last column in selected columns`, () => {
       cy.get('@columnsBtn').click();
       cy.get('@selectedColumns')
         .select('columnF')
@@ -299,7 +299,7 @@ describe('Column Customization', () => {
       cy.get('@closeBtn').click();
     });
 
-    it.skip(`Should show both the move up and down buttons as disabled when selecting the first and last columns in selected columns`, () => {
+    it(`Should show both the move up and down buttons as disabled when selecting the first and last columns in selected columns`, () => {
       cy.get('@columnsBtn').click();
       cy.get('@selectedColumns')
         .select(['columnE', 'columnF'])
@@ -341,7 +341,7 @@ describe('Column Customization', () => {
       cy.get('@closeBtn').click();
     });
 
-    it.skip(`Should show both the move up and down buttons as disabled when selecting the only column left in selected columns`, () => {
+    it(`Should show both the move up and down buttons as disabled when selecting the only column left in selected columns`, () => {
       cy.get('@columnsBtn').click();
       cy.get('@selectedColumns').select('columnE');
       cy.get('@moveLeftBtn').click();
@@ -354,7 +354,7 @@ describe('Column Customization', () => {
       cy.get('@closeBtn').click();
     });
 
-    it.skip(`Should show both the move up and down buttons as disabled when there are no clickable columns in selected columns`, () => {
+    it(`Should show both the move up and down buttons as disabled when there are no clickable columns in selected columns`, () => {
       cy.get('@columnsBtn').click();
       cy.get('@selectedColumns').select(['columnE', 'columnF']);
       cy.get('@moveLeftBtn')
@@ -366,7 +366,7 @@ describe('Column Customization', () => {
       cy.get('@closeBtn').click();
     });
 
-    it.skip(`Should show the move right button as disabled when there are no clickable columns in available columns`, () => {
+    it(`Should show the move right button as disabled when there are no clickable columns in available columns`, () => {
       cy.get('@columnsBtn').click();
       cy.get('@availableColumns').select([
         'columnA',
@@ -384,7 +384,7 @@ describe('Column Customization', () => {
       cy.get('@closeBtn').click();
     });
 
-    it.skip(`Should show the move right button as disabled when deselecting an available column after moving it to selected columns`, () => {
+    it(`Should show the move right button as disabled when deselecting an available column after moving it to selected columns`, () => {
       cy.get('@columnsBtn').click();
       cy.get('@availableColumns').select('columnA');
       cy.get('@moveRightBtn')
@@ -395,7 +395,7 @@ describe('Column Customization', () => {
       cy.get('@closeBtn').click();
     });
 
-    it.skip(`Should show the move left button as disabled when deselecting a selected column after moving it to available columns`, () => {
+    it(`Should show the move left button as disabled when deselecting a selected column after moving it to available columns`, () => {
       cy.get('@columnsBtn').click();
       cy.get('@selectedColumns').select('columnE');
       cy.get('@moveLeftBtn')
@@ -406,7 +406,7 @@ describe('Column Customization', () => {
       cy.get('@closeBtn').click();
     });
 
-    it.skip('Should disable all move buttons upon reordering and deselecting', () => {
+    it('Should disable all move buttons upon reordering and deselecting', () => {
       cy.get('@columnsBtn').click();
       cy.get('@availableColumns').select('columnA');
       cy.get('@moveRightBtn').click();
