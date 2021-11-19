@@ -4,7 +4,7 @@ import { chi } from '../core/chi';
 
 const ANIMATION_DURATION = 500;
 const CLASS_DRAWER = 'chi-drawer';
-const CLOSE_TRIGGER_SELECTOR = `.${CLASS_DRAWER} > .-close, .${CLASS_DRAWER} > .chi-drawer__header > .-close`;
+const CLOSE_TRIGGER_SELECTOR = `.-close`;
 const COMPONENT_SELECTOR = '.chi-drawer__trigger';
 const COMPONENT_TYPE = 'drawer';
 const DISABLE_SCROLL = '-disable-scroll';
@@ -24,9 +24,7 @@ const DEFAULT_CONFIG = {
 };
 
 class Drawer extends Component {
-
   constructor(elem, config) {
-
     super(elem, Util.extend(DEFAULT_CONFIG, config));
     this._shown = Util.hasClass(elem, chi.classes.ACTIVE);
     this._transitioning = false;
