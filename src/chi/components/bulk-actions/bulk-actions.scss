@@ -10,7 +10,7 @@
   @include respond-to(md) {
     background-color: $bulk-actions-background-color;
     justify-content: space-between;
-    padding: 0.5rem 1rem 0.5rem 1.5rem;
+    padding: 0.25rem 0.875rem 0.25rem 1.5rem;
   }
 
   .chi-divider {
@@ -18,8 +18,9 @@
       display: none;
 
       @include respond-to(md) {
+        border-right-color: $bulk-actions-divider-border-right-color;
         display: block;
-        height: $toolbar-header-divider-height;
+        height: $bulk-actions-divider-height;
       }
     }
   }
@@ -57,8 +58,8 @@
     top: 0;
 
     .chi-link {
-      color: #242526;
-      font-weight: 600;
+      color: $bulk-actions-link-color;
+      font-weight: $bulk-actions-link-font-weight;
 
       &:hover {
         text-decoration: none;
@@ -68,14 +69,15 @@
 
   &__results {
     display: none;
-    font-size: $toolbar-results-font-size;
 
     @include respond-to(md) {
       display: flex;
+      font-size: $bulk-actions-results-font-size;
     }
 
     .chi-bulk-actions__label {
-      font-weight: 600;
+      font-weight: $bulk-actions-label-font-weight;
+      margin-right: 1rem;
     }
   }
 
@@ -87,7 +89,7 @@
 
       .chi-button {
         .chi-icon {
-          color: #3f4145;
+          color: $bulk-actions-button-icon-color;
         }
       }
     }
@@ -96,7 +98,17 @@
       display: none;
 
       @include respond-to(md) {
+        align-items: center;
         display: flex;
+
+        > chi-button,
+        > .chi-button {
+          margin-right: 1rem;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
       }
     }
   }
