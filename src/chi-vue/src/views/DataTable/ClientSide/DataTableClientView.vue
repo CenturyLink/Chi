@@ -56,10 +56,15 @@
             <div class="chi-divider -vertical"></div>
             <ChiDataTableFilters :portal="true" :filtersData="toolbar.filtersData" :customItems="toolbar.customItems">
               <template #customAdvanced>
-                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
+                <div class="chi-form__item">
+                  <chi-label for="input-1">City</chi-label>
+                  <chi-text-input id="input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+                  <chi-label for="input-2">Zip Code</chi-label>
+                  <chi-text-input id="input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+                </div>
               </template>
               <template #customAdvanced2>
-                <chi-time-picker @chiTimeChange="e => timeChangeHandler(e)" />
+                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
               </template>
             </ChiDataTableFilters>
           </template>
@@ -168,8 +173,11 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     dateChangeHandler: e => {
       console.log('dateChangeHandler', e);
     },
-    timeChangeHandler: e => {
-      console.log('timeChangeHandler', e);
+    inputOneChangeHandler: e => {
+      console.log('inputOneChangeHandler', e);
+    },
+    inputTwoChangeHandler: e => {
+      console.log('inputTwoChangeHandler', e);
     },
   },
   data: () => {

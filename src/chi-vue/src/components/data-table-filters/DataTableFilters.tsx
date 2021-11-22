@@ -4,6 +4,7 @@ import {
   DataTableFilter,
   DataTableFiltersData,
   DataTableFormElementFilters,
+  SlotMap,
 } from '@/constants/types';
 import { copyArrayOfObjects, findComponent, uuid4 } from '@/utils/utils';
 import {
@@ -28,7 +29,6 @@ import store, { STORE_KEY } from '@/store';
 import { getModule } from 'vuex-module-decorators';
 import { detectMajorChiVersion } from '@/utils/utils';
 import './filters.scss';
-import { VNode } from 'vue';
 
 @Component
 export default class DataTableFilters extends Vue {
@@ -264,8 +264,8 @@ export default class DataTableFilters extends Vue {
     this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._getUpdatedFiltersObject());
   }
 
-  getCustomItemsSlots(): { [key: string]: VNode[] | undefined }[] {
-    const customItemsSlots: { [key: string]: VNode[] | undefined }[] = [];
+  getCustomItemsSlots(): SlotMap[] {
+    const customItemsSlots: SlotMap[] = [];
 
     this.customItems?.forEach((item: DataTableCustomItem) => {
       if (this.$slots[item.template]) {
@@ -277,13 +277,15 @@ export default class DataTableFilters extends Vue {
 
   _advancedFiltersPopOver() {
     if (this._advancedFiltersData) {
+      const customItemsSlots = this.getCustomItemsSlots();
+
       return (
         <AdvancedFilters
           onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={false}
           advancedFiltersData={this._advancedFiltersData}
           customItems={this.customItems}>
-          {this.getCustomItemsSlots()}
+          {customItemsSlots}
         </AdvancedFilters>
       );
     }
@@ -292,13 +294,15 @@ export default class DataTableFilters extends Vue {
 
   _advancedFiltersFields() {
     if (this._advancedFiltersData) {
+      const customItemsSlots = this.getCustomItemsSlots();
+
       return (
         <AdvancedFilters
           onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={true}
           advancedFiltersData={this._advancedFiltersData}
           customItems={this.customItems}>
-          {this.getCustomItemsSlots()}
+          {customItemsSlots}
         </AdvancedFilters>
       );
     }

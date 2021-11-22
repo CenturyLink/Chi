@@ -92,11 +92,16 @@ h2 Examples
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
             <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
-              <template #customAdvanced>
-                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
+              <template v-slot:customAdvanced>
+                <div class="chi-form__item">
+                  <chi-label for="input-1">City</chi-label>
+                  <chi-text-input id="input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+                  <chi-label for="input-2">Zip Code</chi-label>
+                  <chi-text-input id="input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+                </div>
               </template>
-              <template #customAdvanced2>
-                <chi-time-picker @chiTimeChange="e => timeChangeHandler(e)" />
+              <template v-slot:customAdvanced2>
+                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
               </template>
             </ChiDataTableFilters>
           </template>
@@ -811,11 +816,16 @@ h2 Examples
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
             <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
-              <template #customAdvanced>
-                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
+              <template v-slot:customAdvanced>
+                <div class="chi-form__item">
+                  <chi-label for="input-1">City</chi-label>
+                  <chi-text-input id="input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+                  <chi-label for="input-2">Zip Code</chi-label>
+                  <chi-text-input id="input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+                </div>
               </template>
-              <template #customAdvanced2>
-                <chi-time-picker @chiTimeChange="e => timeChangeHandler(e)" />
+              <template v-slot:customAdvanced2>
+                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
               </template>
             </ChiDataTableFilters>
           </template>
