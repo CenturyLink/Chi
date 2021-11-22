@@ -77,6 +77,73 @@
           </template>
         </ChiDataTableToolbar>
       </template>
+      <template v-if="bulkActionConfig.selectedRowCount > 0 && bulkActionConfig.showBulkActions" #bulkActions>
+        <ChiDataTableBulkActions
+          :selectedRowCount="bulkActionConfig.selectedRowCount"
+          :bulkActionButtons="bulkActionConfig.bulkActionButtons"
+          @showSelectedOnly="showSelectedOnlyRow"
+        >
+          <template v-slot:start>
+            <div class="chi-bulk-actions__buttons">
+              <div class="chi-bulk-actions__buttons-mobile">
+                <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Edit" name="edit">
+                  <chi-icon icon="edit" name="edit"></chi-icon>
+                </chi-button>
+                <chi-button
+                  variant="flat"
+                  type="icon"
+                  alternative-text="Button action"
+                  data-tooltip="Compose"
+                  name="compose"
+                >
+                  <chi-icon icon="compose" name="compose"></chi-icon>
+                </chi-button>
+                <chi-button
+                  variant="flat"
+                  type="icon"
+                  alternative-text="Button action"
+                  data-tooltip="Delete"
+                  name="delete"
+                >
+                  <chi-icon icon="delete" name="delete"></chi-icon>
+                </chi-button>
+                <chi-button
+                  variant="flat"
+                  type="icon"
+                  alternative-text="Button action"
+                  data-tooltip="Print"
+                  name="print"
+                >
+                  <chi-icon icon="print" name="print"></chi-icon>
+                </chi-button>
+              </div>
+              <div class="chi-bulk-actions__buttons-desktop">
+                <chi-button size="xs" name="download">
+                  <chi-icon icon="arrow-to-bottom" name="download"></chi-icon>
+                  <span> Download </span>
+                </chi-button>
+                <chi-button size="xs" name="compose">
+                  <chi-icon icon="arrow-to-bottom" name="compose"></chi-icon>
+                  <span> Compose </span>
+                </chi-button>
+                <chi-button size="xs" name="delete">
+                  <chi-icon icon="arrow-to-bottom" name="delete"></chi-icon>
+                  <span> Delete </span>
+                </chi-button>
+                <chi-button size="xs" name="print">
+                  <chi-icon icon="arrow-to-bottom" name="print"></chi-icon>
+                  <span> Print </span>
+                </chi-button>
+              </div>
+            </div>
+          </template>
+          <template v-slot:end>
+            <div class="chi-bulk-actions__end">
+              <chi-button type="close" @click="() => toggleCloseBulkActions(false)"></chi-button>
+            </div>
+          </template>
+        </ChiDataTableBulkActions>
+      </template>
       <template #loadingSkeleton>
         <div class="-d--flex -flex--column -w--100">
           <div class="chi-skeleton -w--85 -w-md--75 -w-lg--50"></div>
@@ -94,12 +161,13 @@ import { Component, Vue } from 'vue-property-decorator';
 import DataTable from '../../../components/data-table/DataTable';
 import Actions from '../DataTableTemplates/example-actions.vue';
 import TicketPopover from '../DataTableTemplates/example-popover.vue';
+import DataTableBulkActions from '../../../components/data-table-bulk-actions/DataTableBulkActions';
 import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar';
 import SearchInput from '../../../components/search-input/SearchInput';
 import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
 import { DataTableRow } from '../../../constants/types';
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
-import { exampleConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
+import { exampleConfig, exampleToolbar, exampleTableHead, exampleTableBody, bulkActionConfig } from './fixtures';
 import DataTableViews from '../../../components/data-table-views/DataTableViews';
 
 const MOCK_API_RESPONSE_DELAY = 5000;
@@ -109,6 +177,7 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     ChiDataTable: DataTable,
     ChiDataTableToolbar: DataTableToolbar,
     ChiSearchInput: SearchInput,
+    ChiDataTableBulkActions: DataTableBulkActions,
     ChiDataTableFilters: DataTableFilters,
     ChiColumnCustomization: ColumnCustomization,
     Actions,
@@ -125,8 +194,25 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     chiColumnsReset: e => {
       console.log('chiColumnsReset', e);
     },
-    chiSelectedRowsChange: e => {
-      console.log('chiRowSelect', e);
+    chiSelectedRowsChange(data) {
+      console.log('chiRowSelect', data);
+      this.$data.bulkActionConfig.showBulkActions = true;
+      this.$data.bulkActionConfig.slicedData = data.slicedData;
+      this.$data.bulkActionConfig.selectedRow = data.selectedRowsData;
+      this.$data.bulkActionConfig.selectedRowCount = data.selectedRowsData.length;
+    },
+    showSelectedOnlyRow(isSelectedOnly) {
+      if (isSelectedOnly) {
+        this.$data.table = {
+          head: exampleTableHead,
+          body: this.$data.bulkActionConfig.selectedRow,
+        };
+      } else {
+        this.$data.table = {
+          head: exampleTableHead,
+          body: this.$data.bulkActionConfig.slicedData,
+        };
+      }
     },
     pageChange: e => {
       console.log('chiPageChange', e);
@@ -158,6 +244,9 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     rowDeselected(rowData: DataTableRow) {
       console.log('chiRowDeselected', rowData);
     },
+    toggleCloseBulkActions() {
+      this.$data.bulkActionConfig.showBulkActions = false;
+    },
   },
   data: () => {
     return {
@@ -167,6 +256,7 @@ const MOCK_API_RESPONSE_DELAY = 5000;
         head: exampleTableHead,
         body: exampleTableBody,
       },
+      bulkActionConfig: bulkActionConfig,
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     };
   },

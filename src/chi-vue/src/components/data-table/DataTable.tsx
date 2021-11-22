@@ -32,6 +32,7 @@ import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
+import DataTableBulkActions from '../data-table-bulk-actions/DataTableBulkActions';
 import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
 import { detectMajorChiVersion } from '@/utils/utils';
@@ -59,6 +60,7 @@ export default class DataTable extends Vue {
   _sortConfig?: DataTableSortConfig;
   _serializedDataBody: DataTableRow[] = [];
   _toolbarComponent?: DataTableToolbar;
+  _bulkActionsComponent?: DataTableBulkActions;
   _paginationListenersAdded = false;
   _chiMajorVersion = 5;
 
@@ -165,6 +167,13 @@ export default class DataTable extends Vue {
   _toolbar() {
     if (this.$scopedSlots['toolbar']) {
       return <div class="">{this.$scopedSlots['toolbar']({})}</div>;
+    }
+    return null;
+  }
+
+  _bulkAction() {
+    if (this.$scopedSlots['bulkActions']) {
+      return <div class="">{this.$scopedSlots['bulkActions']({})}</div>;
     }
     return null;
   }
@@ -314,7 +323,16 @@ export default class DataTable extends Vue {
       return this.selectedRows.includes(row.rowId);
     });
 
-    this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, selectedRowsData);
+    for (const i in selectedRowsData) {
+      selectedRowsData[i].selected = true;
+    }
+
+    const data = {
+      selectedRowsData: selectedRowsData,
+      slicedData: this.slicedData,
+    };
+
+    this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, data);
   }
 
   selectRow(rowData: DataTableRow) {
@@ -1116,12 +1134,14 @@ export default class DataTable extends Vue {
     const classes = this._dataTableClasses(this.config.style, this._sortable),
       head = this._head(),
       toolbar = this._toolbar(),
+      bulkaction = this._bulkAction(),
       body = this._body(),
       pagination = this._pagination();
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
         {toolbar}
+        {bulkaction}
         {head}
         {body}
         {pagination}

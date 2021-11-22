@@ -25,6 +25,17 @@ export const ACCORDION_CLASSES = {
 };
 //#region
 
+export const BULK_ACTIONS_CLASSES = {
+  BULK_ACTIONS: 'chi-bulk-actions',
+  BULK_ACTIONS_START: 'chi-bulk-actions__start',
+  BULK_ACTIONS_RESULTS: 'chi-bulk-actions__results',
+  BULK_ACTIONS_LABELS: 'chi-bulk-actions__label',
+  BULK_ACTIONS_END: 'chi-bulk-actions__end',
+  BULK_ACTIONS_BUTTONS: 'chi-bulk-actions__buttons',
+  BULK_ACTIONS_BUTTONS_MOBILE: 'chi-bulk-actions__buttons-mobile',
+  BULK_ACTIONS_BUTTONS_DESKTOP: 'chi-bulk-actions__buttons-desktop',
+};
+
 //#region Backdrop
 export const BACKDROP_CLASSES = {
   BACKDROP: 'chi-backdrop',

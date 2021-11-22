@@ -33,6 +33,14 @@ export const exampleConfig = {
   truncation: true,
 };
 
+export const bulkActionConfig = {
+  selectedRowCount: 0,
+  bulkActionButtons: ['Download', 'Compose', 'Delete', 'Print'],
+  selectedRow: [],
+  showBulkActions: true,
+  slicedData: [],
+};
+
 const exampleColumns = [
   {
     name: 'columnA',
