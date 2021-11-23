@@ -1,0 +1,45 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-carousel {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+
+  &__wrapper {
+    transition-property: transform;
+    transition-duration: 0.35s;
+    width: fit-content;
+  }
+
+  .chi-carousel__control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    &.-previous,
+    &.-next {
+      chi-button {
+        button {
+          &.chi-button {
+            &.-float {
+              border: 0;
+            }
+          }
+        }
+      }
+    }
+
+    &.-previous {
+      left: 0;
+    }
+
+    &.-next {
+      right: 0;
+    }
+  }
+
+  &__dots {
+    left: 50%;
+  }
+}

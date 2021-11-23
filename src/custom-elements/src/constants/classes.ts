@@ -6,6 +6,12 @@ export const BUTTON_CLASSES = {
   BUTTON: 'chi-button'
 };
 
+export const CAROUSEL_CLASSES = {
+  CAROUSEL: 'chi-carousel',
+  WRAPPER: 'chi-carousel__wrapper',
+  CONTROL: 'chi-carousel__control'
+};
+
 export const DROPDOWN_CLASSES = {
   DROPDOWN: 'chi-dropdown',
   TRIGGER: 'chi-dropdown__trigger',
