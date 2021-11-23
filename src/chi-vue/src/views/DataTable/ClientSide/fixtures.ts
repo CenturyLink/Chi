@@ -34,11 +34,10 @@ export const exampleConfig = {
 };
 
 export const bulkActionConfig = {
-  selectedRowCount: 0,
-  bulkActionButtons: ['Download', 'Compose', 'Delete', 'Print'],
   selectedRow: [],
   showBulkActions: true,
   slicedData: [],
+  selectedRowIds: [],
 };
 
 const exampleColumns = [

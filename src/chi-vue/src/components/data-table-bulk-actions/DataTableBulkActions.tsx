@@ -4,8 +4,9 @@ import { BULK_ACTIONS_CLASSES, CHECKBOX_CLASSES, FORM_CLASSES } from '@/constant
 import DataTable from '../data-table/DataTable';
 
 @Component({})
-export default class DataTableToolbar extends Vue {
-  @Prop() selectedRowCount: any;
+export default class DataTableBulkActions extends Vue {
+  @Prop() selectedRowCount!: number;
+
   _selectedRows(e: any) {
     this.$emit('showSelectedOnly', e.srcElement.checked);
   }
@@ -13,7 +14,7 @@ export default class DataTableToolbar extends Vue {
     const dataTableComponent = findComponent(this, 'DataTable');
 
     if (dataTableComponent) {
-      (dataTableComponent as DataTable)._toolbarComponent = this;
+      (dataTableComponent as DataTable)._bulkActionsComponent = this;
     }
   }
 
@@ -22,19 +23,21 @@ export default class DataTableToolbar extends Vue {
       <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS}`}>
         <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_START}`}>
           <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_RESULTS}`}>
-            <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_LABELS}`}>Actions ({this.selectedRowCount} Selected)</div>
+            <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_LABELS}`}>
+              {`${BULK_ACTIONS_CLASSES.ACTIONS}`} ({this.selectedRowCount} {`${BULK_ACTIONS_CLASSES.SELECTED}`})
+            </div>
             <div class={`${FORM_CLASSES.FORM_ITEM}`}>
               <div class={`${CHECKBOX_CLASSES.checkbox}`}>
                 <input
-                  id="checkbox-ba1"
+                  id={`${BULK_ACTIONS_CLASSES.CHECK_BOX}`}
                   class={`${CHECKBOX_CLASSES.INPUT}`}
                   type="checkbox"
                   onclick={(e: Event) => {
                     this._selectedRows(e);
                   }}
                 />
-                <label class={`${CHECKBOX_CLASSES.LABEL}`} for="checkbox-ba1">
-                  Show Selected Only
+                <label class={`${CHECKBOX_CLASSES.LABEL}`} for={`${BULK_ACTIONS_CLASSES.CHECK_BOX}`}>
+                  {`${BULK_ACTIONS_CLASSES.SHOW_SELECTED}`}
                 </label>
               </div>
             </div>

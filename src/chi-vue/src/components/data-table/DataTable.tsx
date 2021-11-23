@@ -330,6 +330,7 @@ export default class DataTable extends Vue {
     const data = {
       selectedRowsData: selectedRowsData,
       slicedData: this.slicedData,
+      selectedRowIds: this.selectedRows,
     };
 
     this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, data);

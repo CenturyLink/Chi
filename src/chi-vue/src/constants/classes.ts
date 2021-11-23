@@ -34,6 +34,10 @@ export const BULK_ACTIONS_CLASSES = {
   BULK_ACTIONS_BUTTONS: 'chi-bulk-actions__buttons',
   BULK_ACTIONS_BUTTONS_MOBILE: 'chi-bulk-actions__buttons-mobile',
   BULK_ACTIONS_BUTTONS_DESKTOP: 'chi-bulk-actions__buttons-desktop',
+  SHOW_SELECTED: 'Show Selected Only',
+  CHECK_BOX: 'checkbox-ba1',
+  ACTIONS: 'Actions',
+  SELECTED: 'Selected',
 };
 
 //#region Backdrop
