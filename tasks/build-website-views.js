@@ -68,7 +68,7 @@ function buildWebsiteViews () {
           sortBy: collectionSorter(['Overview'])
         },
         'Templates': {
-          pattern: 'templates/**/*.pug',
+          pattern: ['templates/**/*.pug', '!components/**/_*.pug'],
           sortBy: collectionSorter(['Overview'])
         }
       }))
