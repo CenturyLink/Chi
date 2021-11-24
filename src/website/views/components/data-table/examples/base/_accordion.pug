@@ -134,11 +134,11 @@ h3 Accordion
           </div>
         </div>
         <div class="chi-data-table__body">
-          <div class="chi-data-table__row">
+          <div class="chi-data-table__row -expanded">
             <div class="chi-data-table__cell -expandable">
               <button class="chi-button -icon -flat -sm" aria-label="Expand row">
                 <div class="chi-button__content">
-                  <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
+                  <i class="chi-icon icon-chevron-up" aria-hidden="true"></i>
                 </div>
               </button>
             </div>
@@ -152,7 +152,8 @@ h3 Accordion
               <div>18 Dec 2020 3:26 p.m. </div>
             </div>
           </div>
-          <div class="chi-data-table__row -expanded">
+          <div role="row" class="chi-data-table__row-child -p--2">Accordion content</div>
+          <div class="chi-data-table__row">
             <div class="chi-data-table__cell -expandable">
               <button class="chi-button -icon -flat -sm" aria-label="Expand row">
                 <div class="chi-button__content">
@@ -169,9 +170,6 @@ h3 Accordion
             <div class="chi-data-table__cell" data-label="Last Login">
               <div>18 Dec 2020 2:38 a.m. </div>
             </div>
-          </div>
-          <div class="chi-data-table__row-child -container">
-            <div>Accordion content</div>
           </div>
           <div class="chi-data-table__row">
             <div class="chi-data-table__cell -expandable">
@@ -197,7 +195,7 @@ h3 Accordion
             <div class="chi-pagination__content">
               <div class="chi-pagination__start">
                 <div class="chi-pagination__results">
-                  <span class="chi-pagination__label">240 results</span>
+                  <span class="chi-pagination__label">6 results</span>
                 </div>
                 <div class="chi-pagination__page-size">
                   <div class="chi-dropdown">
@@ -222,11 +220,6 @@ h3 Accordion
                   </button>
                   <button class="chi-button -flat" aria-label="Page 1">1</button>
                   <button class="chi-button -flat" aria-label="Page 2">2</button>
-                  <button class="chi-button -flat -active" aria-label="Page 3">3</button>
-                  <button class="chi-button -flat" aria-label="Page 4">4</button>
-                  <button class="chi-button -flat" aria-label="Page 5">5</button>
-                  <div class="chi-button -flat" aria-hidden="true" disabled>...</div>
-                  <button class="chi-button -flat" aria-label="Page 12">12</button>
                   <button class="chi-button -icon -flat" aria-label="Next page">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
@@ -244,7 +237,6 @@ h3 Accordion
           </nav>
         </div>
       </div>
-
 script.
   new Vue({
     components: {

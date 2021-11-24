@@ -143,11 +143,11 @@ h3 Accordion
               </div>
             </div>
             <div class="chi-data-table__body">
-              <div class="chi-data-table__row -collapsed -xl">
+              <div class="chi-data-table__row -expanded -xl">
                 <div class="chi-data-table__cell -expandable">
                   <button class="chi-button -icon -flat -sm" aria-label="Expand row">
                     <div class="chi-button__content">
-                      <i class="chi-icon icon-plus" aria-hidden="true"></i>
+                      <i class="chi-icon icon-minus" aria-hidden="true"></i>
                     </div>
                   </button>
                 </div>
@@ -161,11 +161,12 @@ h3 Accordion
                   <div>18 Dec 2020 3:26 p.m.</div>
                 </div>
               </div>
-              <div class="chi-data-table__row -expanded -striped -xl">
+              <div role="row" class="chi-data-table__row-child -p--2">Accordion content</div>
+              <div class="chi-data-table__row -collapsed -striped -xl">
                 <div class="chi-data-table__cell -expandable">
                   <button class="chi-button -icon -flat -sm" aria-label="Expand row">
                     <div class="chi-button__content">
-                      <i class="chi-icon icon-minus" aria-hidden="true"></i>
+                      <i class="chi-icon icon-plus" aria-hidden="true"></i>
                     </div>
                   </button>
                 </div>
@@ -174,18 +175,6 @@ h3 Accordion
                 </div>
                 <div class="chi-data-table__cell -key">
                   <div>name-2</div>
-                </div>
-                <div class="chi-data-table__cell">
-                  <div>18 Dec 2020 2:38 a.m.</div>
-                </div>
-              </div>
-              <div class="chi-data-table__row-child -xl">
-                <div class="chi-data-table__cell -expandable"></div>
-                <div class="chi-data-table__cell -key -bold">
-                  <div>Child Name 1</div>
-                </div>
-                <div class="chi-data-table__cell -key">
-                  <div>Child name-1</div>
                 </div>
                 <div class="chi-data-table__cell">
                   <div>18 Dec 2020 2:38 a.m.</div>
@@ -215,7 +204,7 @@ h3 Accordion
                 <div class="chi-pagination__content">
                   <div class="chi-pagination__start">
                     <div class="chi-pagination__results">
-                      <span class="chi-pagination__label">240 Results</span>
+                      <span class="chi-pagination__label">6 Results</span>
                     </div>
                   </div>
                   <div class="chi-pagination__center">
@@ -232,9 +221,9 @@ h3 Accordion
                       </button>
                     </div>
                     <div class="chi-pagination__label">
-                      <strong>2</strong>
+                      <strong>1</strong>
                       <span>of</span>
-                      <strong>3</strong>
+                      <strong>2</strong>
                     </div>
                     <div class="chi-pagination__button-group chi-button-group">
                       <button class="chi-button -icon -flat -primary -sm" aria-label="Next page">
