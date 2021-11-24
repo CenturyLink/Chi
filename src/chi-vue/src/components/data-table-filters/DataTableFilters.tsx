@@ -4,7 +4,6 @@ import {
   DataTableFilter,
   DataTableFiltersData,
   DataTableFormElementFilters,
-  SlotMap,
 } from '@/constants/types';
 import { copyArrayOfObjects, findComponent, uuid4 } from '@/utils/utils';
 import {
@@ -264,15 +263,15 @@ export default class DataTableFilters extends Vue {
     this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._getUpdatedFiltersObject());
   }
 
-  getCustomItemsSlots(): SlotMap[] {
-    const customItemsSlots: SlotMap[] = [];
-
-    this.customItems?.forEach((item: DataTableCustomItem) => {
-      if (this.$slots[item.template]) {
-        customItemsSlots.push({ [item.template]: this.$slots[item.template] });
+  getCustomItemsSlots() {
+    return this.customItems?.reduce((accumulator: any, currentValue: DataTableCustomItem) => {
+      if (this.$slots[currentValue.template]) {
+        return {
+          ...accumulator,
+          [currentValue.template]: this.$slots[currentValue.template],
+        };
       }
-    });
-    return customItemsSlots;
+    }, []);
   }
 
   _advancedFiltersPopOver() {

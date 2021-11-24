@@ -173,7 +173,3 @@ export type TooltipPositions = typeof GENERAL_POSITIONS[number];
 export const TOOLTIP_COLORS = ['light', 'base'] as const;
 export type TooltipColors = typeof TOOLTIP_COLORS[number];
 //#endregion
-
-//#region Filters
-export type SlotMap = { [key: string]: VNode[] | undefined };
-//#endregion

@@ -233,10 +233,10 @@ export default class AdvancedFilters extends Vue {
   }
 
   _createCustomItem(filter: DataTableCustomItem) {
-    const customItemsSlots = this.$scopedSlots && this.$scopedSlots.default && this.$scopedSlots.default(null);
-    const customItemSlot: any = customItemsSlots?.find(item =>
-      Object.prototype.hasOwnProperty.call(item, filter.template)
-    );
+    const customItemSlot =
+      this.$scopedSlots &&
+      this.$scopedSlots.default &&
+      this.$scopedSlots.default(null)?.find(item => Object.prototype.hasOwnProperty.call(item, filter.template));
 
     return (
       <div class={`${FORM_CLASSES.FORM_ITEM}`}>
@@ -247,7 +247,7 @@ export default class AdvancedFilters extends Vue {
             {filter.label}
           </label>
         )}
-        {customItemSlot && customItemSlot[filter.template]}
+        {customItemSlot && customItemSlot[filter.template as keyof typeof customItemSlot]}
       </div>
     );
   }
