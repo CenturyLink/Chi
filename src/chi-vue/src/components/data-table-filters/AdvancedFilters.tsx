@@ -234,9 +234,8 @@ export default class AdvancedFilters extends Vue {
 
   _createCustomItem(filter: DataTableCustomItem) {
     const customItemSlot =
-      this.$scopedSlots &&
-      this.$scopedSlots.default &&
-      this.$scopedSlots.default(null)?.find(item => Object.prototype.hasOwnProperty.call(item, filter.template));
+      this.$scopedSlots?.default &&
+      this.$scopedSlots.default(null)?.find(item => item[filter.template as keyof typeof item]);
 
     return (
       <div class={`${FORM_CLASSES.FORM_ITEM}`}>
