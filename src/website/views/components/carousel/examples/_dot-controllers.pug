@@ -3,12 +3,14 @@ h3 Dot controller
   .-p--3
     chi-carousel(dots)
       .-d--flex.-p--1(slot="items")
-        .-ml--1(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);")
-        .-ml--1(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);")
-        .-ml--1(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);")
-        .-ml--1(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);")
-        .-ml--1(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);")
-        .-ml--1(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);")
+        .-ml--1.-text--white(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);") 1
+        .-ml--1.-text--white(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);") 2
+        .-ml--1.-text--white(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);") 3
+        .-ml--1.-text--white(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);") 4
+        .-ml--1.-text--white(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);") 5
+        .-ml--1.-text--white(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);") 6
+        .-ml--1.-text--white(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);") 7
+        .-ml--1.-text--white(style="height: 10rem; width: 14rem; background:rgba(0,0,0,0.8);") 8
   .example-tabs.-pl--2
     ul.chi-tabs#example-accordion-base
       li.-disabled
@@ -24,38 +26,5 @@ h3 Dot controller
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <chi-carousel>
-        <div class="chi-stat" slot="items">
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">High Utilization</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item" >
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">Critical Performing</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item -active" >
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">2</div>
-                <div class="chi-stat-metric__title">Services Down</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item" >
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">3</div>
-                <div class="chi-stat-metric__title">Scheduled Maintenance</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- ITEMS -->
       </chi-carousel>

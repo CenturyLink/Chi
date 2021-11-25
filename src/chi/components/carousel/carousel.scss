@@ -40,6 +40,27 @@
   }
 
   &__dots {
-    left: 50%;
+    display: flex;
+    justify-content: center;
+
+    .chi-carousel__dot {
+      background-color: $carousel-dot-background-color;
+      border-radius: 1rem;
+      display: block;
+      height: 1rem;
+      margin-left: 0.5rem;
+      width: 1rem;
+
+      &.-active {
+        background-color: $carousel-dot-active-background-color;
+      }
+
+      &:not(.-active) {
+        &:hover {
+          background-color: $carousel-dot-hover-background-color;
+          cursor: pointer;
+        }
+      }
+    }
   }
 }

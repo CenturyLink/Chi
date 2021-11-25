@@ -1,18 +1,13 @@
 import { Component, Element, Prop, State, h } from '@stencil/core';
-import { CAROUSEL_CLASSES } from '../../constants/classes';
+import { ACTIVE_CLASS, CAROUSEL_CLASSES } from '../../constants/classes';
 
 @Component({
   tag: 'chi-carousel',
   styleUrl: 'carousel.scss',
   scoped: true
 })
-
 export class Carousel {
   @Element() el: HTMLElement;
-  /**
-   * To define number of pages to render
-   */
-  @Prop() pages: number;
   /**
    * To render Carousel with dot controllers
    */
@@ -21,34 +16,72 @@ export class Carousel {
    *  Page
    */
   @State() page = 0;
+  /**
+   *  Number of pages
+   */
+  @State() numberOfPages = 0;
 
   private scrollLength?: number;
   private wrapper?: HTMLElement;
-  private numberOfPages?: number;
-  private elementWidth?: number;
   private wrapperWidth?: number;
+  private scrollBreakpoints = {};
 
   calculateWidth(element: HTMLElement) {
     return element.offsetWidth;
   }
 
-  componentWillLoad() {
-    this.elementWidth = this.calculateWidth(this.el);
-    this.wrapperWidth = this.calculateWidth(this.wrapper);
-    this.numberOfPages = Math.floor(this.elementWidth / this.wrapperWidth);
-    console.log(this.numberOfPages);
+  connectedCallback() {
+    this.scrollLength = this.calculateWidth(this.el);
   }
+
+  componentDidLoad() {
+    const wrapperWidth = this.calculateWidth(this.wrapper);
+    const fullScrollLength = this.calculateWidth(this.el);
+
+    this.wrapperWidth = wrapperWidth;
+    this.numberOfPages = Math.ceil(wrapperWidth / fullScrollLength);
+
+    const remainder = wrapperWidth - (fullScrollLength * this.numberOfPages)
+
+    for (let page = 0; page < this.numberOfPages; page++) {
+      this.scrollBreakpoints[page] =
+        (page + 1) * fullScrollLength > wrapperWidth ?
+          (page * fullScrollLength * -1) - remainder :
+          page * fullScrollLength * -1;
+    }
+  }
+
+  componentWillLoad() {}
 
   componentWillUpdate() {}
 
   prevPage() {
-    this.scrollLength = this.calculateWidth(this.el);
-    this.page += 1;
+    // const fullScrollLength = this.calculateWidth(this.el);
+
+    // this.scrollLength = fullScrollLength;
+    this.page -= 1;
   }
 
   nextPage() {
-    this.scrollLength = this.calculateWidth(this.el);
-    this.page -= 1;
+    // const fullScrollLength = this.calculateWidth(this.el);
+    // const currentScroll = this.page * this.scrollLength;
+
+    // this.wrapperWidth = this.calculateWidth(this.wrapper);
+
+    // const remainingScroll = this.wrapperWidth - (currentScroll) - fullScrollLength;
+
+    // this.scrollLength = remainingScroll > fullScrollLength ? fullScrollLength : remainingScroll;
+    this.page += 1;
+  }
+
+  goToPage(page: number) {
+    // const fullScrollLength = this.calculateWidth(this.el);
+    // const currentScroll = this.page * this.scrollLength;
+    // const remainingScroll = currentScroll === 0 ? fullScrollLength : this.wrapperWidth % (currentScroll + fullScrollLength); // Wrong condition
+
+    // this.wrapperWidth = this.calculateWidth(this.wrapper);
+    // this.scrollLength = remainingScroll > fullScrollLength ? fullScrollLength : remainingScroll;
+    this.page = page;
   }
 
   render() {
@@ -58,21 +91,27 @@ export class Carousel {
         </chi-button>
       </div>;
     const nextButton = <div class={`${CAROUSEL_CLASSES.CONTROL} -next -z--10`}>
-        <chi-button type="float" alternative-text="Carousel next" onClick={() => this.nextPage()}>
+        <chi-button class="chi-carousel__control -next -z--10" type="float" alternative-text="Carousel next" onClick={() => this.nextPage()} disabled={(this.page) === this.numberOfPages - 1}>
           <chi-icon icon="chevron-right"></chi-icon>
         </chi-button>
       </div>;
     const items = <slot name="items"></slot>;
     const dotControllers = this.dots ?
       <div class="chi-carousel__dots">
-        {Array(this.numberOfPages).fill(0).map(() => <div>o</div>)}
+        {Array(this.numberOfPages).fill(0).map((_, i) => {
+          return <span
+            onClick={() => {
+              this.goToPage(i);
+            }}
+            class={`chi-carousel__dot ${(this.page) === i ? ACTIVE_CLASS : ''}`}
+            ></span>;
+        })}
       </div> : null;
 
-    console.log(this.wrapperWidth);
     return <div class={`${CAROUSEL_CLASSES.CAROUSEL} -z--0`}>
       <div
         class={CAROUSEL_CLASSES.WRAPPER}
-        style={{transform: `translateX(${this.page*this.scrollLength}px)`}}
+        style={{transform: `translateX(${this.scrollBreakpoints[this.page]}px)`}}
         ref={el => this.wrapper = el}>
         {items}
       </div>
