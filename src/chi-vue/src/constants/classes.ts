@@ -177,6 +177,8 @@ export const SEARCH_INPUT_CLASSES = {
 //#region Search Input
 export const SELECT_CLASSES = {
   SELECT: 'chi-select',
+  SELECTED_COLUMNS: 'selected-columns',
+  AVAILABLE_COLUMNS: 'available-columns',
 };
 //#endregion
 

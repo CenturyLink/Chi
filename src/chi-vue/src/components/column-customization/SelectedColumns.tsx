@@ -3,7 +3,7 @@ import { DataTableColumn } from '@/constants/types';
 import './column-customization.scss';
 import { findComponent } from '@/utils/utils';
 import ColumnCustomizationContent from '@/components/column-customization/ColumnCustomizationModalContent';
-import { UTILITY_CLASSES } from '@/constants/classes';
+import { SELECT_CLASSES, UTILITY_CLASSES } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 
 @Component
@@ -48,7 +48,7 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
       <div>
         <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_BOLD}>Selected Columns</div>
         <select
-          class={`chi-select selected-columns`}
+          class={`${SELECT_CLASSES.SELECT} ${SELECT_CLASSES.SELECTED_COLUMNS}`}
           ref="select"
           multiple
           onchange={(e: Event) =>

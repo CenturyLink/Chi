@@ -2,8 +2,8 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { DataTableColumn } from '@/constants/types';
 import { findComponent } from '@/utils/utils';
 import ColumnCustomizationContent from '@/components/column-customization/ColumnCustomizationModalContent';
-import { UTILITY_CLASSES } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
+import { SELECT_CLASSES, UTILITY_CLASSES } from '@/constants/classes';
 
 @Component
 export default class ColumnCustomizationAvailableColumns extends Vue {
@@ -56,7 +56,7 @@ export default class ColumnCustomizationAvailableColumns extends Vue {
       <div>
         <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_BOLD}>Available Columns</div>
         <select
-          class={`chi-select available-columns`}
+          class={`${SELECT_CLASSES.SELECT} ${SELECT_CLASSES.AVAILABLE_COLUMNS}`}
           multiple
           ref="select"
           onchange={() => this.$emit(DATA_TABLE_EVENTS.AVAILABLE_COLUMNS_SELECTED)}>
