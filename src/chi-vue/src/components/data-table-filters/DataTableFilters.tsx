@@ -1,5 +1,10 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { DataTableFilter, DataTableFiltersData, DataTableFormElementFilters } from '@/constants/types';
+import {
+  DataTableCustomItem,
+  DataTableFilter,
+  DataTableFiltersData,
+  DataTableFormElementFilters,
+} from '@/constants/types';
 import { copyArrayOfObjects, findComponent, uuid4 } from '@/utils/utils';
 import {
   BUTTON_CLASSES,
@@ -22,11 +27,13 @@ import Drawer from '../drawer/drawer';
 import store, { STORE_KEY } from '@/store';
 import { getModule } from 'vuex-module-decorators';
 import { detectMajorChiVersion } from '@/utils/utils';
+import { ScopedSlotChildren } from 'vue/types/vnode';
 import './filters.scss';
 
 @Component
 export default class DataTableFilters extends Vue {
   @Prop() filtersData?: DataTableFiltersData;
+  @Prop() customItems?: DataTableCustomItem[];
   @Prop() portal?: boolean;
 
   _filtersData?: DataTableFiltersData;
@@ -257,27 +264,46 @@ export default class DataTableFilters extends Vue {
     this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._getUpdatedFiltersObject());
   }
 
+  getCustomItemsSlots() {
+    return this.customItems?.reduce((accumulator, currentValue) => {
+      if (this.$slots[currentValue.template]) {
+        return {
+          ...accumulator,
+          [currentValue.template]: this.$slots[currentValue.template],
+        };
+      }
+    }, {} as { [key: string]: ScopedSlotChildren } | undefined);
+  }
+
   _advancedFiltersPopOver() {
     if (this._advancedFiltersData) {
+      const customItemsSlots = this.getCustomItemsSlots();
+
       return (
         <AdvancedFilters
           onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={false}
           advancedFiltersData={this._advancedFiltersData}
-        />
+          customItems={this.customItems}>
+          {customItemsSlots}
+        </AdvancedFilters>
       );
     }
     return null;
   }
 
-  _advancedFiltersFileds() {
+  _advancedFiltersFields() {
     if (this._advancedFiltersData) {
+      const customItemsSlots = this.getCustomItemsSlots();
+
       return (
         <AdvancedFilters
           onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={true}
           advancedFiltersData={this._advancedFiltersData}
-        />
+          customItems={this.customItems}>
+          {customItemsSlots}
+        </AdvancedFilters>
       );
     }
     return null;
@@ -304,7 +330,7 @@ export default class DataTableFilters extends Vue {
     const advancedFiltersPopOver =
       this._advancedFiltersData && this._advancedFiltersData.length > 0 ? this._advancedFiltersPopOver() : null;
     const advancedFilters =
-      this._advancedFiltersData && this._advancedFiltersData.length > 0 ? this._advancedFiltersFileds() : null;
+      this._advancedFiltersData && this._advancedFiltersData.length > 0 ? this._advancedFiltersFields() : null;
 
     this.$props.filtersData.forEach((filter: DataTableFilter) => {
       const filterElement =

@@ -91,7 +91,19 @@ h2 Examples
             <ChiDataTableViews :views="toolbar.viewsData" />
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
-            <ChiDataTableFilters :filtersData="toolbar.filtersData" />
+            <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
+              <template v-slot:customAdvanced>
+                <div class="chi-form__item">
+                  <chi-label for="input-1">City</chi-label>
+                  <chi-text-input id="input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+                  <chi-label for="input-2">Zip Code</chi-label>
+                  <chi-text-input id="input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+                </div>
+              </template>
+              <template v-slot:customAdvanced2>
+                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
+              </template>
+            </ChiDataTableFilters>
           </template>
           <template v-slot:end>
             <!-- To enable customization of columns, use Column Customization sub-module of Toolbar by providing it with respective data -->
@@ -101,6 +113,16 @@ h2 Examples
 
         <!-- Example Data -->
         data: () => {
+          const customItems = [
+            {
+              template: 'customAdvanced',
+              label: 'Custom 1',
+            },
+            {
+              template: 'customAdvanced2',
+              label: 'Custom 2',
+            },
+          ];
           const filters = [
             {
               name: 'status',
@@ -226,6 +248,7 @@ h2 Examples
 
           return {
             toolbar: {
+              customItemsData: customItems,
               filtersData: filters,
               columnsData: {
                 columns: columns
@@ -792,7 +815,19 @@ h2 Examples
             <ChiDataTableViews :views="toolbar.viewsData" />
             <div class="chi-divider -vertical"></div>
             <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
-            <ChiDataTableFilters :filtersData="toolbar.filtersData" class="-ml--2" />
+            <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
+              <template v-slot:customAdvanced>
+                <div class="chi-form__item">
+                  <chi-label for="input-1">City</chi-label>
+                  <chi-text-input id="input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+                  <chi-label for="input-2">Zip Code</chi-label>
+                  <chi-text-input id="input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+                </div>
+              </template>
+              <template v-slot:customAdvanced2>
+                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
+              </template>
+            </ChiDataTableFilters>
           </template>
           <template v-slot:end>
             <!-- To enable customization of columns, use Column Customization sub-module of Toolbar by providing it with respective data -->
@@ -802,6 +837,16 @@ h2 Examples
 
         <!-- Example Data -->
         data: () => {
+          const customItems = [
+            {
+              template: 'customAdvanced',
+              label: 'Custom 1',
+            },
+            {
+              template: 'customAdvanced2',
+              label: 'Custom 2',
+            },
+          ];
           const filters = [
             {
               name: 'status',
@@ -927,6 +972,7 @@ h2 Examples
 
           return {
             toolbar: {
+              customItemsData: customItems,
               filtersData: filters,
               columnsData: {
                 columns: columns
