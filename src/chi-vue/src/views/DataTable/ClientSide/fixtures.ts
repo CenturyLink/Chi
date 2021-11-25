@@ -157,7 +157,19 @@ const exampleFilters = [
   },
 ];
 
+const customItems = [
+  {
+    template: 'customAdvanced',
+    label: 'Custom 1',
+  },
+  {
+    template: 'customAdvanced2',
+    label: 'Custom 2',
+  },
+];
+
 export const exampleToolbar = {
+  customItems: customItems,
   filtersData: exampleFilters,
   columnsData: {
     columns: exampleColumns,
