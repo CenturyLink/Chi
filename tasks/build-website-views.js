@@ -46,7 +46,7 @@ function buildWebsiteViews () {
   const promise = new Promise((resolve, reject) => {
     metalsmith(Folders.ROOT)
       .source(Paths.src.PAGES)
-      .use(metalsmithPlugins.ignore('components/**/_*.pug'))
+      .use(metalsmithPlugins.ignore(['components/**/_*.pug', 'templates/**/_*.pug']))
       .destination(Folders.DIST)
       .clean(false)
 
@@ -68,7 +68,7 @@ function buildWebsiteViews () {
           sortBy: collectionSorter(['Overview'])
         },
         'Templates': {
-          pattern: ['templates/**/*.pug', '!components/**/_*.pug'],
+          pattern: ['templates/**/*.pug', '!templates/**/_*.pug'],
           sortBy: collectionSorter(['Overview'])
         }
       }))
