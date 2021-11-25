@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20211111',
+        identifier: 'jsl-jenkins-shared-library-local@release/20211123',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,16 +21,16 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-    identifier: 'jsl-jenkins-shared-library@release/20211111',
-    retriever: modernSCM(
-      [
-        $class: 'GitSCMSource',
-        remote: "git@github.com:CenturyLink/jsl-jenkins-shared-library.git",
-        credentialsId: 'SCMAUTO_SSH_DEVOPS_PIPELINE',
-        extensions: [[$class: 'WipeWorkspace']]
-      ]
-    )
-  ) _
+        identifier: 'jsl-jenkins-shared-library@release/20211123',
+        retriever: modernSCM(
+          [
+            $class: 'GitSCMSource',
+            remote: "https://github.com/CenturyLink/jsl-jenkins-shared-library.git",
+            credentialsId: 'SCMAUTO_GITHUB',
+            extensions: [[$class: 'WipeWorkspace']]
+          ]
+        )
+      ) _
 }
 
 
@@ -841,11 +841,6 @@ PolicyDocument
                 // sh "sleep 10m"
                 // jslAwsCliWrapper("s3 rb ${s3Uri} --force", 'us-east-1', true)
                 echo "This will publish dev build to S3"
-                if (env.CHANGE_ID != null) {
-                  echo "Sending Jira Deployment for DEV"
-                  jslDeploymentContractValidationWrite("development")
-                  jslJiraSendDeploymentInfo('development', true)
-                }
               }
             }
           }
@@ -1099,15 +1094,19 @@ PRDesc
       success {
         jslNotification('success')
         jslGitHubMessage("You can check this PRs instance in https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io (external) and in https://nginx-${BRANCH_NAME == 'master' ? BRANCH_NAME : PULL_REQUEST}-ux-chi.kubeodc-test.corp.intranet/ (internal)", env.CHANGE_ID)
-        // cleanWs()
       }
       failure {
-        jslNotification('failure')
-        // cleanWs()
+        script {
+          def drivenByTag =  env.TAG_NAME && (env.TAG_NAME  =~ env.RC_TAG_PATTERN || env.TAG_NAME  =~ env.PROMOTE_TAG_PATTERN || env.TAG_NAME  =~ env.DEPLOY_TAG_PATTERN)
+          if (drivenByTag || env.GCR_NUMBER) {
+            echo "DEVOPS GCR WILL BE CLOSED. Please review your backout plan!!!"
+            jslGCRDevOpsFallbackUpdate("The job ${env.BUILD_URL} failed unexpectly")
+          }
+          jslNotification('failure')
+        }
       }
       unstable {
         jslNotification('unstable')
-        // cleanWs()
       }
   }
 }
