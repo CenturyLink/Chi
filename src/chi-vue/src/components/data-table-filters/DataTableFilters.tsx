@@ -27,6 +27,7 @@ import Drawer from '../drawer/drawer';
 import store, { STORE_KEY } from '@/store';
 import { getModule } from 'vuex-module-decorators';
 import { detectMajorChiVersion } from '@/utils/utils';
+import { ScopedSlotChildren } from 'vue/types/vnode';
 import './filters.scss';
 
 @Component
@@ -264,14 +265,14 @@ export default class DataTableFilters extends Vue {
   }
 
   getCustomItemsSlots() {
-    return this.customItems?.reduce((accumulator: any, currentValue: DataTableCustomItem) => {
+    return this.customItems?.reduce((accumulator, currentValue) => {
       if (this.$slots[currentValue.template]) {
         return {
           ...accumulator,
           [currentValue.template]: this.$slots[currentValue.template],
         };
       }
-    }, []);
+    }, {} as { [key: string]: ScopedSlotChildren } | undefined);
   }
 
   _advancedFiltersPopOver() {

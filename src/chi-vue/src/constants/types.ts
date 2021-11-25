@@ -1,5 +1,3 @@
-import { VNode } from 'vue';
-
 //#region GENERAL
 export const GENERAL_POSITIONS = ['left', 'top', 'right', 'bottom'] as const;
 //#endregion
