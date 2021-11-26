@@ -120,6 +120,10 @@ export interface DataTableFilter {
   advanced?: true;
   template?: string;
 }
+export interface DataTableCustomItem {
+  template: string;
+  label: string;
+}
 export interface DataTableColumn {
   name: string;
   label: string;
