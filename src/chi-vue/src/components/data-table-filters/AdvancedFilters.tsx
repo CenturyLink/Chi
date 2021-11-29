@@ -10,7 +10,7 @@ import {
   UTILITY_CLASSES,
   GENERIC_SIZE_CLASSES,
 } from '@/constants/classes';
-import { DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
+import { DataTableCustomItem, DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { compareFilters, getElementFilterData } from './FilterUtils';
 import { findComponent, uuid4 } from '@/utils/utils';
@@ -29,6 +29,7 @@ export default class AdvancedFilters extends Vue {
   @Prop() popoverFilterID?: string;
   @Prop() filterUniqueID?: string;
   @Prop() mobile?: boolean;
+  @Prop() customItems?: DataTableCustomItem[];
 
   _advancedFiltersAccordion?: any;
   _advancedFilterAccordionId?: string;
@@ -231,8 +232,28 @@ export default class AdvancedFilters extends Vue {
     this._chiMajorVersion = detectMajorChiVersion();
   }
 
+  _createCustomItem(filter: DataTableCustomItem) {
+    const customItemSlot =
+      this.$scopedSlots?.default &&
+      this.$scopedSlots.default(null)?.find(item => item[filter.template as keyof typeof item]);
+
+    return (
+      <div class={`${FORM_CLASSES.FORM_ITEM}`}>
+        {this.mobile && (
+          <label
+            for={this.mobile ? `${filter.template}-mobile` : `${filter.template}-desktop`}
+            class={FORM_CLASSES.LABEL}>
+            {filter.label}
+          </label>
+        )}
+        {customItemSlot && customItemSlot[filter.template as keyof typeof customItemSlot]}
+      </div>
+    );
+  }
+
   render() {
     const advancedFilters: JSX.Element[] = [];
+
     this.advancedFiltersData &&
       this.advancedFiltersData.forEach((filter: DataTableFilter) => {
         const filterElement =
@@ -274,6 +295,22 @@ export default class AdvancedFilters extends Vue {
         </div>
       </button>
     );
+
+    this.customItems &&
+      this.customItems.forEach((filter: DataTableCustomItem) => {
+        const customItem = this._createCustomItem(filter);
+        const accordionItem = (
+          <div class={ACCORDION_CLASSES.ITEM}>
+            <button class={ACCORDION_CLASSES.TRIGGER}>
+              <div class={`${ACCORDION_CLASSES.TITLE}`}>{filter.label || filter.template}</div>
+              <i class={`${ICON_CLASS} icon-chevron-down`} aria-hidden="true" />
+            </button>
+            <div class={ACCORDION_CLASSES.CONTENT}>{customItem}</div>
+          </div>
+        );
+
+        this.mobile ? advancedFilters.push(customItem) : advancedFilters.push(accordionItem);
+      });
 
     const advancedFiltersRender = (
       <div>
