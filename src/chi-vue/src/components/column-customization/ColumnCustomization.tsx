@@ -15,6 +15,8 @@ import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { DataTableColumn, DataTableColumnsData } from '@/constants/types';
 import ColumnCustomizationContent from './ColumnCustomizationModalContent';
 import { checkColumns } from './utils';
+import { getModule } from 'vuex-module-decorators';
+import store from '@/store';
 
 declare const chi: any;
 
@@ -31,6 +33,7 @@ export default class ColumnCustomization extends Vue {
   _modalId?: string;
   _chiMajorVersion = 5;
   _previousSelected?: DataTableColumn[];
+  storeModule?: any;
 
   _modal() {
     return (
@@ -124,6 +127,7 @@ export default class ColumnCustomization extends Vue {
   _submitColumnsChange() {
     this._previousSelected = this._selectedData;
     this.$emit(DATA_TABLE_EVENTS.COLUMNS_CHANGE, this._selectedData);
+    this.storeModule.updateColumns(this._selectedData);
     (this.$refs.saveButton as HTMLButtonElement).disabled = true;
     this._chiModal.hide();
   }
@@ -162,6 +166,11 @@ export default class ColumnCustomization extends Vue {
   created() {
     this._processData();
     this._modalId = `modal-${uuid4()}`;
+    if (!this.storeModule && this.$store) {
+      this.storeModule = getModule(store, this.$store);
+    }
+
+    this.storeModule.updateColumns(this.columnsData?.columns);
   }
 
   @Watch('columnsData')

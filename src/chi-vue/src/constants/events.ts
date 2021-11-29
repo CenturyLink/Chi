@@ -74,3 +74,11 @@ export const TOOLTIP_EVENTS = {
   HIDDEN: 'chiTooltipHidden',
 };
 //#endregion
+
+//#view Toolbar
+export const VIEW_EVENTS = {
+  CLOSE: 'chiCloseViewToolbar',
+  NEW_VIEW: 'chiSaveNewView',
+  MODIFY_VIEW: 'chiModifyView',
+};
+//#endview

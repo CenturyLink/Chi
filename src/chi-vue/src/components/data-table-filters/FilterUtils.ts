@@ -1,4 +1,4 @@
-import { DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
+import { DataTableFilter, DataTableFormElementFilters, DataTableView } from '@/constants/types';
 
 export function getElementFilterData(
   ev: Event,
@@ -59,4 +59,24 @@ export function compareFilters(originalFilters: any, newFiltersData: any) {
     }
     return true;
   }
+}
+
+export function plainFilterData(filters: DataTableFilter[]) {
+  return filters.reduce((accumulator: any, currentValue: any) => {
+    return { ...accumulator, [currentValue.id]: currentValue.type === 'checkbox' ? false : currentValue.value || '' };
+  }, {});
+}
+
+export function plainViewData(views: DataTableView[]) {
+  return views.reduce((accumulator: any, current: DataTableView) => {
+    return {
+      ...accumulator,
+      [current.id]: {
+        columns: current.columns,
+        filters: current.filters,
+        label: current.label,
+        searchString: current.searchString,
+      },
+    };
+  }, {});
 }

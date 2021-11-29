@@ -11,6 +11,8 @@ import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '../data-table-toolbar/DataTableToolbar';
 import { detectMajorChiVersion } from '@/utils/utils';
+import { getModule } from 'vuex-module-decorators';
+import store from '@/store';
 
 @Component
 export default class DataTableViews extends Vue {
@@ -19,6 +21,21 @@ export default class DataTableViews extends Vue {
 
   _selectedView?: string;
   _chiMajorVersion = 5;
+  storeModule?: any;
+
+  get currentSelectedView() {
+    return this.storeModule.currentViewId;
+  }
+
+  get viewData() {
+    return this.storeModule.viewsData;
+  }
+
+  created() {
+    if (!this.storeModule && this.$store) {
+      this.storeModule = getModule(store, this.$store);
+    }
+  }
 
   mounted(): void {
     const dataTableToolbarComponent = findComponent(this, 'DataTableToolbar');

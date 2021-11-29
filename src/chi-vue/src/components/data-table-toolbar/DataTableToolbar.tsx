@@ -7,6 +7,7 @@ import DataTableColumns from '@/components/column-customization/ColumnCustomizat
 import DataTable from '../data-table/DataTable';
 import { DATA_TABLE_EVENTS, SEARCH_INPUT_EVENTS } from '@/constants/events';
 import DataTableViews from '../data-table-views/DataTableViews';
+import DataTableViewsToolbar from '../data-table-views/DataTableViewsToolbar';
 
 @Component({})
 export default class DataTableToolbar extends Vue {
@@ -14,6 +15,7 @@ export default class DataTableToolbar extends Vue {
   _filters?: DataTableFilters;
   _columns?: DataTableColumns;
   _views?: DataTableViews;
+  _viewsToolbar?: DataTableViewsToolbar;
 
   mounted() {
     const dataTableComponent = findComponent(this, 'DataTable');
@@ -57,6 +59,7 @@ export default class DataTableToolbar extends Vue {
           <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__start`}>{this.$slots.start}</div>
           <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__end`}>{this.$slots.end}</div>
         </div>
+        {this.$slots.saveview}
       </div>
     );
   }

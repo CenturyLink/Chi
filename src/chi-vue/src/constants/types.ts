@@ -48,6 +48,20 @@ export interface DataTableRow {
   selected?: boolean;
   selectionDisabled?: boolean;
 }
+
+export interface DataView {
+  id: string;
+  label: string;
+  searchString?: string;
+  columns?: DataTableColumn[];
+  filters?: [];
+}
+
+export interface ViewFormData {
+  text: string;
+  checkbox: boolean;
+}
+
 export interface DataTableData {
   head: {
     [code: string]: {

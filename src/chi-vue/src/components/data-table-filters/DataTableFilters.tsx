@@ -19,12 +19,12 @@ import {
   SELECT_CLASSES,
   UTILITY_CLASSES,
 } from '@/constants/classes';
-import { compareFilters, getElementFilterData } from './FilterUtils';
+import { compareFilters, getElementFilterData, plainFilterData } from './FilterUtils';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import AdvancedFilters from './AdvancedFilters';
 import Drawer from '../drawer/drawer';
-import store, { STORE_KEY } from '@/store';
+import store from '@/store';
 import { getModule } from 'vuex-module-decorators';
 import { detectMajorChiVersion } from '@/utils/utils';
 import { ScopedSlotChildren } from 'vue/types/vnode';
@@ -32,7 +32,7 @@ import './filters.scss';
 
 @Component
 export default class DataTableFilters extends Vue {
-  @Prop() filtersData?: DataTableFiltersData;
+  @Prop() filtersData?: DataTableFilter[];
   @Prop() customItems?: DataTableCustomItem[];
   @Prop() portal?: boolean;
 
@@ -52,14 +52,9 @@ export default class DataTableFilters extends Vue {
   }
 
   async created() {
-    const isModuleRegistered = Object.keys(this.$store.state).includes(STORE_KEY);
     this._drawerID = `drawer_${uuid4()}`;
 
-    if (!isModuleRegistered) {
-      this.$store.registerModule(STORE_KEY, store);
-    }
-
-    if (!this.storeModule && this.$store) {
+    if (this.$store) {
       this.storeModule = getModule(store, this.$store);
     }
 
@@ -73,9 +68,7 @@ export default class DataTableFilters extends Vue {
 
     this._advancedFiltersData = copyArrayOfObjects(advancedFilters);
 
-    const plainFiltersData = this.$props.filtersData.reduce((accumulator: any, currentValue: any) => {
-      return { ...accumulator, [currentValue.id]: currentValue.type === 'checkbox' ? false : currentValue.value || '' };
-    }, {});
+    const plainFiltersData = this.filtersData !== undefined ? plainFilterData(this.filtersData) : [];
 
     await this.storeModule.updateFilterConfig(plainFiltersData);
     await this.storeModule.updateFilterConfigLive(plainFiltersData);
@@ -261,7 +254,10 @@ export default class DataTableFilters extends Vue {
   }
 
   _emitFiltersChanged() {
-    this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._getUpdatedFiltersObject());
+    const updatedFilters = this._getUpdatedFiltersObject();
+
+    this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, updatedFilters);
+    this.storeModule.updateFilters(updatedFilters);
   }
 
   getCustomItemsSlots() {

@@ -13,6 +13,8 @@ import { SEARCH_INPUT_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { detectMajorChiVersion } from '@/utils/utils';
+import { getModule } from 'vuex-module-decorators';
+import store from '@/store';
 
 @Component
 export default class SearchInput extends Vue {
@@ -27,13 +29,14 @@ export default class SearchInput extends Vue {
   cleanButtonVisible = !!(this.$props.value && !this.$props.disabled);
   inputValue = this.$props.value || '';
   _chiMajorVersion = 5;
+  storeModule?: any;
 
   _handleValueInput(ev: Event) {
     const newValue = (ev.target as HTMLInputElement).value;
 
     this.inputValue = newValue;
     this.cleanButtonVisible = newValue !== '';
-    this.$emit(SEARCH_INPUT_EVENTS.INPUT, newValue);
+    this.storeModule.updateSearchQuery(newValue);
   }
 
   _cleanInput() {
@@ -43,6 +46,12 @@ export default class SearchInput extends Vue {
     this.cleanButtonVisible = false;
     this.$emit(SEARCH_INPUT_EVENTS.CLEAN);
     (input as HTMLInputElement).focus();
+  }
+
+  created() {
+    if (!this.storeModule && this.$store) {
+      this.storeModule = getModule(store, this.$store);
+    }
   }
 
   mounted() {

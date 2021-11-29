@@ -20,7 +20,7 @@ import store from '@/store/index';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { detectMajorChiVersion } from '@/utils/utils';
 
-Vue.config.ignoredElements = ['chi-popover'];
+Vue.config.ignoredElements = [/^chi-*/];
 
 declare const chi: any;
 @Component

@@ -87,6 +87,15 @@
               </button>
             </div>
           </template>
+          <template v-slot:saveview>
+            <ChiDataTableViewsToolbar
+              :view="toolbar.viewsData.find(item => item.id === 'view-2')"
+              :defualrViewId="'view-2'"
+              @chiCloseViewToolbar="e => chiCloseView(e)"
+              @chiSaveNewView="e => chiSaveViewNew(e)"
+              @chiModifyView="e => chiSaveViewModify(e)"
+            ></ChiDataTableViewsToolbar>
+          </template>
         </ChiDataTableToolbar>
       </template>
       <template #loadingSkeleton>
@@ -113,6 +122,7 @@ import { DataTableRow } from '../../../constants/types';
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
 import { exampleConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
 import DataTableViews from '../../../components/data-table-views/DataTableViews';
+import DataTableViewsToolbar from '../../../components/data-table-views/DataTableViewsToolbar';
 
 const MOCK_API_RESPONSE_DELAY = 5000;
 
@@ -126,8 +136,18 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     Actions,
     TicketPopover,
     ChiDataTableViews: DataTableViews,
+    ChiDataTableViewsToolbar: DataTableViewsToolbar,
   },
   methods: {
+    chiSaveViewNew: e => {
+      console.log('chiSaveViewNew', e);
+    },
+    chiSaveViewModify: e => {
+      console.log('chiSaveViewModify', e);
+    },
+    chiCloseView: e => {
+      console.log('ChiCloseView', e);
+    },
     chiToolbarColumnsChange: e => {
       console.log('chiToolbarColumnsChange', e);
     },

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import Vuex from 'vuex';
-import ChiVue from '@/store';
+import ChiVue, { STORE_KEY } from '@/store';
 
 Vue.config.productionTip = false;
 Vue.use(Vuex);
@@ -9,7 +9,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {},
   modules: {
-    ChiVue,
+    [STORE_KEY]: ChiVue,
   },
 });
 
