@@ -1,0 +1,60 @@
+h3 Custom controllers
+.example.-mb--3
+  .-p--3
+    style(type="text/css").
+      button.examplePreviousButton,
+      button.exampleNextButton {
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        display: flex;
+        justify-content: center;
+        opacity: 0.5;
+        height: 100%;
+        width: 100%;
+      }
+
+      button.examplePreviousButton:hover,
+      button.exampleNextButton:hover {
+        cursor: pointer;
+        opacity: 1;
+      }
+
+    chi-carousel(single)
+      button.examplePreviousButton(slot="previous")
+        i.chi-icon.icon-chevron-left.-sm--2(aria-hidden="true")
+      button.exampleNextButton(slot="next")
+        i.chi-icon.icon-chevron-right.-sm--2(aria-hidden="true")
+      each i in [0, 1, 2, 3, 4, 5, 6, 7, 8]
+        .chi-carousel__item.-text--xl.-d--flex.-align-items--center.-justify-content--center.-bg--grey-15.-b--1(style="height: 20rem; box-sizing: border-box;", slot="items")= `View ${i + 1}`
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-accordion-base
+      li.-disabled
+        a(href=`#webcomponent-accordion-base`) Web Component
+      li.-active
+        a(href=`#html-accordion-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-accordion-base
+  .chi-tabs-panel.-active#html-accordion-base
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <chi-carousel single>
+        <button class="examplePreviousButton" slot="previous">
+          <i class="chi-icon icon-chevron-left -sm--2" aria-hidden="true"></i>
+        </button>
+        <button class="exampleNextButton" slot="next">
+          <i class="chi-icon icon-chevron-right -sm--2" aria-hidden="true"></i>
+        </button>
+        <div class="chi-carousel__item" slot="items">View 1</div>
+        <div class="chi-carousel__item" slot="items">View 2</div>
+        <div class="chi-carousel__item" slot="items">View 3</div>
+        <div class="chi-carousel__item" slot="items">View 4</div>
+        <div class="chi-carousel__item" slot="items">View 5</div>
+        <div class="chi-carousel__item" slot="items">View 6</div>
+        <div class="chi-carousel__item" slot="items">View 7</div>
+        <div class="chi-carousel__item" slot="items">View 8</div>
+        <div class="chi-carousel__item" slot="items">View 9</div>
+      </chi-carousel>

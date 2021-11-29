@@ -1,5 +1,7 @@
 import { Component, Element, Prop, State, h } from '@stencil/core';
-import { ACTIVE_CLASS, CAROUSEL_CLASSES } from '../../constants/classes';
+import { ACTIVE_CLASS, CAROUSEL_CLASSES, TRANSITIONING_CLASS, UTILITY_CLASSES } from '../../constants/classes';
+import { ANIMATION_DURATION } from '../../constants/constants';
+import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 
 @Component({
   tag: 'chi-carousel',
@@ -13,105 +15,190 @@ export class Carousel {
    */
   @Prop() dots: boolean;
   /**
-   *  Page
+   * To render Carousel with a single item per view
    */
-  @State() page = 0;
+  @Prop() single: boolean;
   /**
-   *  Number of pages
+   *  View
    */
-  @State() numberOfPages = 0;
+  @State() view = 0;
+  /**
+   *  Number of views
+   */
+  @State() numberOfViews = 0;
+  @State() customPrevButton: boolean;
+  @State() customNextButton: boolean;
 
-  private scrollLength?: number;
   private wrapper?: HTMLElement;
-  private wrapperWidth?: number;
-  private scrollBreakpoints = {};
+  private scrollBreakpoints = {
+    0: 50
+  };
+  private fullScrollLength: number;
+  private animation: ThreeStepsAnimation;
+  private _animationClasses: string;
+  private resizeHandler = () => {
+    this.fullScrollLength = this.calculateWidth(this.el);
+
+    const wrapperWidth = this.calculateWidth(this.wrapper);
+
+    this.numberOfViews = Math.ceil(wrapperWidth / this.fullScrollLength);
+
+    const remainder = wrapperWidth - (this.fullScrollLength * this.numberOfViews);
+
+    this._applySizeToItems();
+    this.calculateScrollBreakpoints(this.fullScrollLength, wrapperWidth, remainder);
+    console.log(this.scrollBreakpoints);
+  };
 
   calculateWidth(element: HTMLElement) {
     return element.offsetWidth;
   }
 
+  calculateScrollBreakpoints(fullScrollLength: number, wrapperWidth: number, remainder: number) {
+    for (let view = 0; view < this.numberOfViews; view++) {
+      this.scrollBreakpoints[view+1] =
+        (view + 1) * fullScrollLength > wrapperWidth ?
+          (view * fullScrollLength * -1) - remainder :
+          view * fullScrollLength * -1;
+
+      if (view === this.numberOfViews-1) {
+        this.scrollBreakpoints[this.numberOfViews + 1] = (view * fullScrollLength * -1) - remainder - 50;
+      }
+    }
+  }
+
   connectedCallback() {
-    this.scrollLength = this.calculateWidth(this.el);
+    this.customPrevButton = !!this.el.querySelector('[slot="previous"]');
+    this.customNextButton = !!this.el.querySelector('[slot="next"]');
   }
 
   componentDidLoad() {
-    const wrapperWidth = this.calculateWidth(this.wrapper);
     const fullScrollLength = this.calculateWidth(this.el);
-
-    this.wrapperWidth = wrapperWidth;
-    this.numberOfPages = Math.ceil(wrapperWidth / fullScrollLength);
-
-    const remainder = wrapperWidth - (fullScrollLength * this.numberOfPages)
-
-    for (let page = 0; page < this.numberOfPages; page++) {
-      this.scrollBreakpoints[page] =
-        (page + 1) * fullScrollLength > wrapperWidth ?
-          (page * fullScrollLength * -1) - remainder :
-          page * fullScrollLength * -1;
+    
+    this.fullScrollLength = fullScrollLength;
+    if (this.single) {
+      this._applySizeToItems();
     }
+
+    const wrapperWidth = this.calculateWidth(this.wrapper);
+
+    this.numberOfViews = Math.ceil(wrapperWidth / fullScrollLength);
+
+    const remainder = wrapperWidth - (fullScrollLength * this.numberOfViews);
+
+    this.calculateScrollBreakpoints(this.fullScrollLength, wrapperWidth, remainder);
+    window.addEventListener('resize', this.resizeHandler.bind(this));
   }
 
   componentWillLoad() {}
 
   componentWillUpdate() {}
 
-  prevPage() {
-    // const fullScrollLength = this.calculateWidth(this.el);
-
-    // this.scrollLength = fullScrollLength;
-    this.page -= 1;
+  componentWillOnload() {
+    // Remove event listener here
+    // window.removeEventListener();
   }
 
-  nextPage() {
-    // const fullScrollLength = this.calculateWidth(this.el);
-    // const currentScroll = this.page * this.scrollLength;
+  prevView() {
+    if (this.animation && !this.animation.isStopped()) {
+      this.animation.stop();
+    }
 
-    // this.wrapperWidth = this.calculateWidth(this.wrapper);
-
-    // const remainingScroll = this.wrapperWidth - (currentScroll) - fullScrollLength;
-
-    // this.scrollLength = remainingScroll > fullScrollLength ? fullScrollLength : remainingScroll;
-    this.page += 1;
+    this.animation = ThreeStepsAnimation.animationFactory(
+      () => {
+        this._animationClasses = `${TRANSITIONING_CLASS}`;
+      },
+      () => {
+        this.view -= 1;
+      },
+      () => {
+        if (this.view === -1) {
+          this.view = 0;
+        }
+        this._animationClasses = '';
+      },
+      ANIMATION_DURATION.SHORT
+    );
   }
 
-  goToPage(page: number) {
-    // const fullScrollLength = this.calculateWidth(this.el);
-    // const currentScroll = this.page * this.scrollLength;
-    // const remainingScroll = currentScroll === 0 ? fullScrollLength : this.wrapperWidth % (currentScroll + fullScrollLength); // Wrong condition
+  nextView() {
+    if (this.animation && !this.animation.isStopped()) {
+      this.animation.stop();
+    }
 
-    // this.wrapperWidth = this.calculateWidth(this.wrapper);
-    // this.scrollLength = remainingScroll > fullScrollLength ? fullScrollLength : remainingScroll;
-    this.page = page;
+    this.animation = ThreeStepsAnimation.animationFactory(
+      () => {
+        this._animationClasses = `${TRANSITIONING_CLASS}`;
+      },
+      () => {
+        this.view += 1;
+      },
+      () => {
+        if (this.view === this.numberOfViews) {
+          this.view = this.numberOfViews - 1;
+        }
+        this._animationClasses = '';
+      },
+      ANIMATION_DURATION.SHORT
+    );
+  }
+
+  _applySizeToItems() {
+    const carouselItems = this.el.querySelectorAll(`.${CAROUSEL_CLASSES.ITEM}`);
+
+    carouselItems?.forEach((item: HTMLElement) => {
+      item.style.width = `${this.fullScrollLength}px`;
+    });
+  }
+
+  _goToView(view: number) {
+    this.view = view;
   }
 
   render() {
-    const prevButton = <div class={`${CAROUSEL_CLASSES.CONTROL} -previous -z--10`}>
-        <chi-button type="float" alternative-text="Carousel next" onChiClick={() => this.prevPage()} disabled={this.page === 0}>
-          <chi-icon icon="chevron-left"></chi-icon>
-        </chi-button>
+    const prevButton = <div class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.PREVIOUS} -z--10`} onClick={() => this.prevView()}>
+        {
+          this.customPrevButton ?
+          <slot name="previous"></slot> :
+          <chi-button size="sm" type="float" alternative-text="Carousel next">
+            <chi-icon icon="chevron-left"></chi-icon>
+          </chi-button>
+        }
       </div>;
-    const nextButton = <div class={`${CAROUSEL_CLASSES.CONTROL} -next -z--10`}>
-        <chi-button class="chi-carousel__control -next -z--10" type="float" alternative-text="Carousel next" onClick={() => this.nextPage()} disabled={(this.page) === this.numberOfPages - 1}>
+    const nextButton = <div class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.NEXT} -z--10`} onClick={() => this.nextView()}>
+      {
+        this.customNextButton ?
+        <slot name="next"></slot> :
+        <chi-button size="sm" type="float" alternative-text="Carousel next">
           <chi-icon icon="chevron-right"></chi-icon>
         </chi-button>
+      }
       </div>;
     const items = <slot name="items"></slot>;
     const dotControllers = this.dots ?
-      <div class="chi-carousel__dots">
-        {Array(this.numberOfPages).fill(0).map((_, i) => {
+      <div class={CAROUSEL_CLASSES.DOTS}>
+        {Array(this.numberOfViews).fill(0).map((_, i) => {
           return <span
             onClick={() => {
-              this.goToPage(i);
+              this._goToView(i);
             }}
-            class={`chi-carousel__dot ${(this.page) === i ? ACTIVE_CLASS : ''}`}
+            class={`
+              ${CAROUSEL_CLASSES.DOT}
+              ${this.view === i ||
+              (this.view === -1 && i === 0) ||
+              (this.view === this.numberOfViews && i === this.numberOfViews -1) ? ACTIVE_CLASS : ''}`}
             ></span>;
         })}
       </div> : null;
 
     return <div class={`${CAROUSEL_CLASSES.CAROUSEL} -z--0`}>
       <div
-        class={CAROUSEL_CLASSES.WRAPPER}
-        style={{transform: `translateX(${this.scrollBreakpoints[this.page]}px)`}}
+        class={`
+          ${CAROUSEL_CLASSES.WRAPPER}
+          ${this._animationClasses}
+          ${this.single ? UTILITY_CLASSES.DISPLAY.FLEX : ''}
+        `}
+        style={{transform: `translateX(${this.scrollBreakpoints[this.view + 1]}px)`}}
         ref={el => this.wrapper = el}>
         {items}
       </div>

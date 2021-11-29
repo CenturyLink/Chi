@@ -13,9 +13,12 @@
   }
 
   .chi-carousel__control {
+    align-items: center;
+    display: flex;
+    height: 100%;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
+    width: 20%;
 
     &.-previous,
     &.-next {
@@ -32,10 +35,12 @@
 
     &.-previous {
       left: 0;
+      justify-content: start;
     }
 
     &.-next {
       right: 0;
+      justify-content: end;
     }
   }
 

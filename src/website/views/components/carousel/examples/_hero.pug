@@ -1,10 +1,9 @@
-h3 Base
+h3 Hero
 .example.-mb--3
   .-p--3
     chi-carousel(single)
-      each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info', success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
-        chi-alert.chi-carousel__item(color=type, icon=val, slot="items", title=type)
-          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+      each i in [0, 1, 2, 3, 4, 5, 6, 7, 8]
+        .chi-carousel__item.-text--xl.-d--flex.-align-items--center.-justify-content--center.-bg--grey-15.-b--1(style="height: 20rem; box-sizing: border-box;", slot="items")= `View ${i + 1}`
   .example-tabs.-pl--2
     ul.chi-tabs#example-accordion-base
       li.-disabled
