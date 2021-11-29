@@ -1,4 +1,4 @@
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import { findComponent } from '@/utils/utils';
 import { DATA_TABLE_CLASSES, PORTAL_CLASS } from '@/constants/classes';
 import SearchInput from '../../components/search-input/SearchInput';
@@ -10,6 +10,8 @@ import DataTableViews from '../data-table-views/DataTableViews';
 
 @Component({})
 export default class DataTableToolbar extends Vue {
+  @Prop() ribbon?: boolean;
+
   _searchComponent?: SearchInput;
   _filters?: DataTableFilters;
   _columns?: DataTableColumns;
@@ -53,7 +55,7 @@ export default class DataTableToolbar extends Vue {
   render() {
     return (
       <div class={`${DATA_TABLE_CLASSES.TOOLBAR} ${PORTAL_CLASS}`}>
-        <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__header`}>
+        <div class={this.ribbon ? `${DATA_TABLE_CLASSES.TOOLBAR}__ribbon` : `${DATA_TABLE_CLASSES.TOOLBAR}__header`}>
           <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__start`}>{this.$slots.start}</div>
           <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__end`}>{this.$slots.end}</div>
         </div>

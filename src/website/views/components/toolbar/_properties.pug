@@ -1,6 +1,34 @@
 h2 Chi Vue
 h3 Props
 
+h4 Toolbar 
+section.chi-table.chi-table__options.-bordered.-my--3 
+  div(style='overflow-x:auto;')
+    table.-text(cellpadding='0' cellspacing='0')
+      thead 
+        tr 
+          th
+            div Property
+          th
+            div Description
+          th
+            div Type
+          th
+            div Default
+      tbody
+        tr
+          td
+            div
+              code ribbon
+          td
+            div To define a ribbon as toolbar.
+          td
+            div
+              code boolean
+          td
+            div
+              | false
+
 h4 Search Input
 p.-text
   | Please visit Search input dedicated documentation page <a href="../forms/search-input/#props">here</a>
@@ -142,7 +170,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
               code DataTableColumn
           td.-p--0
             pre.-mb--0.
-             {
+              {
                 name: <code>string</code>;
                 label: <code>string</code>;
                 selected: <code>boolean</code>;
@@ -154,7 +182,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
               code DataTableView
           td.-p--0
             pre.-mb--0.
-             {
+              {
                 id: <code>string</code>;
                 label: <code>string</code>;
                 searchString?: <code>string</code>;
