@@ -16,11 +16,10 @@ h2 Examples
             .chi-divider.-vertical
             chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' :custom-items='toolbar.customItemsData')
               template(v-slot:custom-one='')
-                .chi-form__item
-                  chi-label(for='input-1') City
-                  chi-text-input#input-1
-                  chi-label(for='input-2') Zip Code
-                  chi-text-input#input-2
+                chi-label(for='input-1') City
+                chi-text-input#input-1
+                chi-label(for='input-2') Zip Code
+                chi-text-input#input-2
               template(v-slot:custom-two='')
                 chi-date-picker
           template(v-slot:end='')
@@ -429,19 +428,18 @@ h2 Examples
             .chi-divider.-vertical
             chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' :custom-items='toolbar.customItemsData')
               template(v-slot:custom-one='')
-                .chi-form__item
-                  chi-label(for='input-1') City
-                  chi-text-input#input-1
-                  chi-label(for='input-2') Zip Code
-                  chi-text-input#input-2
+                chi-label(for='input-3') City
+                chi-text-input#input-3
+                chi-label(for='input-4') Zip Code
+                chi-text-input#input-4
               template(v-slot:custom-two='')
                 chi-date-picker
           template(v-slot:end='')
             chi-vue-tooltip(message="Download")
-              chi-button(type="icon" variant="flat")
+              chi-button(type="icon" variant="flat" alternative-text="Download")
                 i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
             chi-vue-tooltip(message="Refresh")
-              chi-button(type="icon" variant="flat")
+              chi-button(type="icon" variant="flat" alternative-text="Refresh")
                 i.chi-icon.icon-refresh(aria-hidden="true")
             chi-vue-column-customization(:columns-data='toolbar.columnsData')
       #baseRibbon
@@ -454,7 +452,7 @@ h2 Examples
             .chi-divider.-vertical
             chi-link(href='#' size='md') Save View
           template(v-slot:end='')
-            chi-button(type="icon" variant="flat")
+            chi-button(type="icon" variant="flat" alternative-text="Close")
               i.chi-icon.icon-x(aria-hidden="true")
     .example-tabs.-pl--2
       ul.chi-tabs#example-base-ribbon(role="tablist")
@@ -900,11 +898,10 @@ h2 Examples
             .chi-divider.-vertical
             chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' :custom-items='toolbar.customItemsData')
               template(v-slot:custom-one='')
-                .chi-form__item
-                  chi-label(for='input-1') City
-                  chi-text-input#input-1
-                  chi-label(for='input-2') Zip Code
-                  chi-text-input#input-2
+                chi-label(for='input-5') City
+                chi-text-input#input-5
+                chi-label(for='input-6') Zip Code
+                chi-text-input#input-6
               template(v-slot:custom-two='')
                 chi-date-picker
           template(v-slot:end='')
@@ -1313,19 +1310,18 @@ h2 Examples
             .chi-divider.-vertical
             chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' :custom-items='toolbar.customItemsData')
               template(v-slot:custom-one='')
-                .chi-form__item
-                  chi-label(for='input-1') City
-                  chi-text-input#input-1
-                  chi-label(for='input-2') Zip Code
-                  chi-text-input#input-2
+                chi-label(for='input-7') City
+                chi-text-input#input-7
+                chi-label(for='input-8') Zip Code
+                chi-text-input#input-8
               template(v-slot:custom-two='')
                 chi-date-picker
           template(v-slot:end='')
             chi-vue-tooltip(message="Download")
-              chi-button(type="icon" variant="flat")
+              chi-button(type="icon" variant="flat" alternative-text="Download")
                 i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
             chi-vue-tooltip(message="Refresh")
-              chi-button(type="icon" variant="flat")
+              chi-button(type="icon" variant="flat" alternative-text="Refresh")
                 i.chi-icon.icon-refresh(aria-hidden="true")
             chi-vue-column-customization(:columns-data='toolbar.columnsData')
       #baseRibbonPortal
@@ -1338,7 +1334,7 @@ h2 Examples
             .chi-divider.-vertical
             chi-link(href='#' size='md') Save View
           template(v-slot:end='')
-            chi-button(type="icon" variant="flat")
+            chi-button(type="icon" variant="flat" alternative-text="Close")
               i.chi-icon.icon-x(aria-hidden="true")
     .example-tabs.-pl--2
       ul.chi-tabs#example-base-ribbon(role="tablist")
@@ -1847,80 +1843,6 @@ script.
       label: 'Custom 2',
     },
   ];
-  const filters = [
-    {
-      name: 'status',
-      type: 'select',
-      id: 'myoption1',
-      label: 'Selector',
-      options: [
-        {
-          label: 'Active',
-          value: 'active',
-        },
-        {
-          label: 'Inactive',
-          value: 'inactive',
-        },
-      ],
-      value: 'active',
-    },
-    {
-      name: 'input',
-      placeholder: 'Input filter',
-      type: 'input',
-      value: '',
-      id: 'myoption2',
-      label: 'Input Filter',
-    },
-    {
-      name: 'checkbox',
-      type: 'checkbox',
-      checked: false,
-      id: 'myoption3',
-      label: 'Checkbox',
-    },
-    {
-      name: 'statusAdvanced',
-      label: 'Status',
-      type: 'select',
-      id: 'myoption4',
-      options: [
-        {
-          label: 'Active',
-          value: 'active',
-          selected: false,
-        },
-        {
-          label: 'Inactive',
-          value: 'inactive',
-          selected: false,
-        },
-      ],
-      advanced: true,
-      value: 'active',
-    },
-    {
-      name: 'inputAdvanced',
-      label: 'Label',
-      id: 'myoption5',
-      advanced: true,
-    },
-    {
-      name: 'textareaAdvanced',
-      label: 'textarea',
-      id: 'myoption6',
-      type: 'textarea',
-      advanced: true,
-    },
-    {
-      name: 'checkboxAdvanced',
-      id: 'myoption7',
-      label: 'Advanced Checkbox',
-      type: 'checkbox',
-      advanced: true,
-    },
-  ];
   const columns = [
     {
       name: 'columnA',
@@ -1969,22 +1891,6 @@ script.
       label: 'Column J',
     },
   ];
-  const views = [
-    {
-      id: 'view-1',
-      label: 'View 1',
-      columns: columns,
-      searchString: 'abc',
-      filters: filters
-    },
-    {
-      id: 'view-2',
-      label: 'View 2',
-      columns: [],
-      searchString: 'abcde',
-      filters: [],
-    },
-  ];
   const ids = ['#base', '#baseWithRibbon', '#baseRibbon', '#basePortal', '#baseWithRibbonPortal', '#baseRibbonPortal']
 
   ids.forEach((id) => {
@@ -2003,11 +1909,99 @@ script.
       data: {
         toolbar: {
           customItemsData: customItems,
-          filtersData: filters,
+          filtersData: [
+            {
+              name: 'status',
+              type: 'select',
+              id: `myoption-${Math.random()}`,
+              label: 'Selector',
+              options: [
+                {
+                  label: 'Active',
+                  value: 'active',
+                },
+                {
+                  label: 'Inactive',
+                  value: 'inactive',
+                },
+              ],
+              value: 'active',
+            },
+            {
+              name: 'input',
+              placeholder: 'Input filter',
+              type: 'input',
+              value: '',
+              id: `myoption-${Math.random()}`,
+              label: 'Input Filter',
+            },
+            {
+              name: 'checkbox',
+              type: 'checkbox',
+              checked: false,
+              id: `myoption-${Math.random()}`,
+              label: 'Checkbox',
+            },
+            {
+              name: 'statusAdvanced',
+              label: 'Status',
+              type: 'select',
+              id: `myoption-${Math.random()}`,
+              options: [
+                {
+                  label: 'Active',
+                  value: 'active',
+                  selected: false,
+                },
+                {
+                  label: 'Inactive',
+                  value: 'inactive',
+                  selected: false,
+                },
+              ],
+              advanced: true,
+              value: 'active',
+            },
+            {
+              name: 'inputAdvanced',
+              label: 'Label',
+              id: `myoption-${Math.random()}`,
+              advanced: true,
+            },
+            {
+              name: 'textareaAdvanced',
+              label: 'textarea',
+              id: `myoption-${Math.random()}`,
+              type: 'textarea',
+              advanced: true,
+            },
+            {
+              name: 'checkboxAdvanced',
+              id: `myoption-${Math.random()}`,
+              label: 'Advanced Checkbox',
+              type: 'checkbox',
+              advanced: true,
+            },
+          ],
           columnsData: {
             columns: columns
           },
-          viewsData: views
+          viewsData: [
+            {
+              id: `view-${Math.random()}`,
+              label: 'View 1',
+              columns: columns,
+              searchString: 'abc',
+              filters: []
+            },
+            {
+              id: `view-${Math.random()}`,
+              label: 'View 2',
+              columns: [],
+              searchString: 'abcde',
+              filters: [],
+            },
+          ]
         }
       }
     }).$mount(id);

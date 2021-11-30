@@ -62,6 +62,7 @@ export default class ColumnCustomization extends Vue {
             </div>
             <footer class={MODAL_CLASSES.FOOTER}>
               <button
+                aria-label="Reset Columns"
                 ref="resetButton"
                 class={`
                   ${BUTTON_CLASSES.BUTTON}
@@ -217,6 +218,7 @@ export default class ColumnCustomization extends Vue {
   render() {
     const modalButton = (
       <button
+        aria-label="Column Customization"
         ref="modalButton"
         data-target={`#${this._modalId}`}
         class={`

@@ -283,6 +283,7 @@ export default class AdvancedFilters extends Vue {
 
     const advancedFiltersButton = (
       <button
+        aria-label="Advanced Filters"
         id={this._advancedFilterButtonId}
         onclick={() => this._toggleAdvancedFiltersPopover()}
         class={`
