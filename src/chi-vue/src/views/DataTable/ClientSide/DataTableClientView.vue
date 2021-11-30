@@ -10,6 +10,8 @@
       @chiDataSorting="e => this.dataSorting(e)"
       @chiRowExpanded="e => this.rowExpanded(e)"
       @chiRowCollapsed="e => this.rowCollapsed(e)"
+      @chiRowSelected="e => this.rowSelected(e)"
+      @chiRowDeselected="e => this.rowDeselected(e)"
     >
       <template #icon="payload">
         <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
@@ -52,7 +54,19 @@
             <div class="chi-divider -vertical"></div>
             <ChiDataTableViews :views="toolbar.viewsData" defaultView="view-2" />
             <div class="chi-divider -vertical"></div>
-            <ChiDataTableFilters :portal="true" :filtersData="toolbar.filtersData" />
+            <ChiDataTableFilters :portal="true" :filtersData="toolbar.filtersData" :customItems="toolbar.customItems">
+              <template #customAdvanced>
+                <div class="chi-form__item">
+                  <chi-label for="input-1">City</chi-label>
+                  <chi-text-input id="input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+                  <chi-label for="input-2">Zip Code</chi-label>
+                  <chi-text-input id="input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+                </div>
+              </template>
+              <template #customAdvanced2>
+                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
+              </template>
+            </ChiDataTableFilters>
           </template>
           <template v-slot:end>
             <div class="chi-toolbar__actions-desktop">
@@ -149,6 +163,21 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     },
     rowCollapsed: e => {
       console.log('chiRowCollapsed', e);
+    },
+    rowSelected(rowData: DataTableRow) {
+      console.log('chiRowSelected', rowData);
+    },
+    rowDeselected(rowData: DataTableRow) {
+      console.log('chiRowDeselected', rowData);
+    },
+    dateChangeHandler: e => {
+      console.log('dateChangeHandler', e);
+    },
+    inputOneChangeHandler: e => {
+      console.log('inputOneChangeHandler', e);
+    },
+    inputTwoChangeHandler: e => {
+      console.log('inputTwoChangeHandler', e);
     },
   },
   data: () => {

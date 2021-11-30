@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-10-28T09:24:03",
+  "timestamp": "2021-11-24T12:51:13",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2454,6 +2454,1165 @@
       "dependencyGraph": {}
     },
     {
+      "filePath": "src/components/phone-input/phone-input.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-phone-input",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "defaultCountry",
+          "type": "\"AC\" | \"AD\" | \"AE\" | \"AF\" | \"AG\" | \"AI\" | \"AL\" | \"AM\" | \"AO\" | \"AR\" | \"AS\" | \"AT\" | \"AU\" | \"AW\" | \"AX\" | \"AZ\" | \"BA\" | \"BB\" | \"BD\" | \"BE\" | \"BF\" | \"BG\" | \"BH\" | \"BI\" | \"BJ\" | \"BL\" | \"BM\" | \"BN\" | \"BO\" | \"BQ\" | \"BR\" | \"BS\" | \"BT\" | \"BW\" | \"BY\" | \"BZ\" | \"CA\" | \"CC\" | \"CD\" | \"CF\" | \"CG\" | \"CH\" | \"CI\" | \"CK\" | \"CL\" | \"CM\" | \"CN\" | \"CO\" | \"CR\" | \"CU\" | \"CV\" | \"CW\" | \"CX\" | \"CY\" | \"CZ\" | \"DE\" | \"DJ\" | \"DK\" | \"DM\" | \"DO\" | \"DZ\" | \"EC\" | \"EE\" | \"EG\" | \"EH\" | \"ER\" | \"ES\" | \"ET\" | \"FI\" | \"FJ\" | \"FK\" | \"FM\" | \"FO\" | \"FR\" | \"GA\" | \"GB\" | \"GD\" | \"GE\" | \"GF\" | \"GG\" | \"GH\" | \"GI\" | \"GL\" | \"GM\" | \"GN\" | \"GP\" | \"GQ\" | \"GR\" | \"GT\" | \"GU\" | \"GW\" | \"GY\" | \"HK\" | \"HN\" | \"HR\" | \"HT\" | \"HU\" | \"ID\" | \"IE\" | \"IL\" | \"IM\" | \"IN\" | \"IO\" | \"IQ\" | \"IR\" | \"IS\" | \"IT\" | \"JE\" | \"JM\" | \"JO\" | \"JP\" | \"KE\" | \"KG\" | \"KH\" | \"KI\" | \"KM\" | \"KN\" | \"KP\" | \"KR\" | \"KW\" | \"KY\" | \"KZ\" | \"LA\" | \"LB\" | \"LC\" | \"LI\" | \"LK\" | \"LR\" | \"LS\" | \"LT\" | \"LU\" | \"LV\" | \"LY\" | \"MA\" | \"MC\" | \"MD\" | \"ME\" | \"MF\" | \"MG\" | \"MH\" | \"MK\" | \"ML\" | \"MM\" | \"MN\" | \"MO\" | \"MP\" | \"MQ\" | \"MR\" | \"MS\" | \"MT\" | \"MU\" | \"MV\" | \"MW\" | \"MX\" | \"MY\" | \"MZ\" | \"NA\" | \"NC\" | \"NE\" | \"NF\" | \"NG\" | \"NI\" | \"NL\" | \"NO\" | \"NP\" | \"NR\" | \"NU\" | \"NZ\" | \"OM\" | \"PA\" | \"PE\" | \"PF\" | \"PG\" | \"PH\" | \"PK\" | \"PL\" | \"PM\" | \"PR\" | \"PS\" | \"PT\" | \"PW\" | \"PY\" | \"QA\" | \"RE\" | \"RO\" | \"RS\" | \"RU\" | \"RW\" | \"SA\" | \"SB\" | \"SC\" | \"SD\" | \"SE\" | \"SG\" | \"SH\" | \"SI\" | \"SJ\" | \"SK\" | \"SL\" | \"SM\" | \"SN\" | \"SO\" | \"SR\" | \"SS\" | \"ST\" | \"SV\" | \"SX\" | \"SY\" | \"SZ\" | \"TA\" | \"TC\" | \"TD\" | \"TG\" | \"TH\" | \"TJ\" | \"TK\" | \"TL\" | \"TM\" | \"TN\" | \"TO\" | \"TR\" | \"TT\" | \"TV\" | \"TW\" | \"TZ\" | \"UA\" | \"UG\" | \"US\" | \"UY\" | \"UZ\" | \"VA\" | \"VC\" | \"VE\" | \"VG\" | \"VI\" | \"VN\" | \"VU\" | \"WF\" | \"WS\" | \"XK\" | \"YE\" | \"YT\" | \"ZA\" | \"ZM\" | \"ZW\"",
+          "mutable": false,
+          "attr": "default-country",
+          "reflectToAttr": true,
+          "docs": "To set a default country as a two letter ISO country code",
+          "docsTags": [],
+          "default": "'US'",
+          "values": [
+            {
+              "value": "AC",
+              "type": "string"
+            },
+            {
+              "value": "AD",
+              "type": "string"
+            },
+            {
+              "value": "AE",
+              "type": "string"
+            },
+            {
+              "value": "AF",
+              "type": "string"
+            },
+            {
+              "value": "AG",
+              "type": "string"
+            },
+            {
+              "value": "AI",
+              "type": "string"
+            },
+            {
+              "value": "AL",
+              "type": "string"
+            },
+            {
+              "value": "AM",
+              "type": "string"
+            },
+            {
+              "value": "AO",
+              "type": "string"
+            },
+            {
+              "value": "AR",
+              "type": "string"
+            },
+            {
+              "value": "AS",
+              "type": "string"
+            },
+            {
+              "value": "AT",
+              "type": "string"
+            },
+            {
+              "value": "AU",
+              "type": "string"
+            },
+            {
+              "value": "AW",
+              "type": "string"
+            },
+            {
+              "value": "AX",
+              "type": "string"
+            },
+            {
+              "value": "AZ",
+              "type": "string"
+            },
+            {
+              "value": "BA",
+              "type": "string"
+            },
+            {
+              "value": "BB",
+              "type": "string"
+            },
+            {
+              "value": "BD",
+              "type": "string"
+            },
+            {
+              "value": "BE",
+              "type": "string"
+            },
+            {
+              "value": "BF",
+              "type": "string"
+            },
+            {
+              "value": "BG",
+              "type": "string"
+            },
+            {
+              "value": "BH",
+              "type": "string"
+            },
+            {
+              "value": "BI",
+              "type": "string"
+            },
+            {
+              "value": "BJ",
+              "type": "string"
+            },
+            {
+              "value": "BL",
+              "type": "string"
+            },
+            {
+              "value": "BM",
+              "type": "string"
+            },
+            {
+              "value": "BN",
+              "type": "string"
+            },
+            {
+              "value": "BO",
+              "type": "string"
+            },
+            {
+              "value": "BQ",
+              "type": "string"
+            },
+            {
+              "value": "BR",
+              "type": "string"
+            },
+            {
+              "value": "BS",
+              "type": "string"
+            },
+            {
+              "value": "BT",
+              "type": "string"
+            },
+            {
+              "value": "BW",
+              "type": "string"
+            },
+            {
+              "value": "BY",
+              "type": "string"
+            },
+            {
+              "value": "BZ",
+              "type": "string"
+            },
+            {
+              "value": "CA",
+              "type": "string"
+            },
+            {
+              "value": "CC",
+              "type": "string"
+            },
+            {
+              "value": "CD",
+              "type": "string"
+            },
+            {
+              "value": "CF",
+              "type": "string"
+            },
+            {
+              "value": "CG",
+              "type": "string"
+            },
+            {
+              "value": "CH",
+              "type": "string"
+            },
+            {
+              "value": "CI",
+              "type": "string"
+            },
+            {
+              "value": "CK",
+              "type": "string"
+            },
+            {
+              "value": "CL",
+              "type": "string"
+            },
+            {
+              "value": "CM",
+              "type": "string"
+            },
+            {
+              "value": "CN",
+              "type": "string"
+            },
+            {
+              "value": "CO",
+              "type": "string"
+            },
+            {
+              "value": "CR",
+              "type": "string"
+            },
+            {
+              "value": "CU",
+              "type": "string"
+            },
+            {
+              "value": "CV",
+              "type": "string"
+            },
+            {
+              "value": "CW",
+              "type": "string"
+            },
+            {
+              "value": "CX",
+              "type": "string"
+            },
+            {
+              "value": "CY",
+              "type": "string"
+            },
+            {
+              "value": "CZ",
+              "type": "string"
+            },
+            {
+              "value": "DE",
+              "type": "string"
+            },
+            {
+              "value": "DJ",
+              "type": "string"
+            },
+            {
+              "value": "DK",
+              "type": "string"
+            },
+            {
+              "value": "DM",
+              "type": "string"
+            },
+            {
+              "value": "DO",
+              "type": "string"
+            },
+            {
+              "value": "DZ",
+              "type": "string"
+            },
+            {
+              "value": "EC",
+              "type": "string"
+            },
+            {
+              "value": "EE",
+              "type": "string"
+            },
+            {
+              "value": "EG",
+              "type": "string"
+            },
+            {
+              "value": "EH",
+              "type": "string"
+            },
+            {
+              "value": "ER",
+              "type": "string"
+            },
+            {
+              "value": "ES",
+              "type": "string"
+            },
+            {
+              "value": "ET",
+              "type": "string"
+            },
+            {
+              "value": "FI",
+              "type": "string"
+            },
+            {
+              "value": "FJ",
+              "type": "string"
+            },
+            {
+              "value": "FK",
+              "type": "string"
+            },
+            {
+              "value": "FM",
+              "type": "string"
+            },
+            {
+              "value": "FO",
+              "type": "string"
+            },
+            {
+              "value": "FR",
+              "type": "string"
+            },
+            {
+              "value": "GA",
+              "type": "string"
+            },
+            {
+              "value": "GB",
+              "type": "string"
+            },
+            {
+              "value": "GD",
+              "type": "string"
+            },
+            {
+              "value": "GE",
+              "type": "string"
+            },
+            {
+              "value": "GF",
+              "type": "string"
+            },
+            {
+              "value": "GG",
+              "type": "string"
+            },
+            {
+              "value": "GH",
+              "type": "string"
+            },
+            {
+              "value": "GI",
+              "type": "string"
+            },
+            {
+              "value": "GL",
+              "type": "string"
+            },
+            {
+              "value": "GM",
+              "type": "string"
+            },
+            {
+              "value": "GN",
+              "type": "string"
+            },
+            {
+              "value": "GP",
+              "type": "string"
+            },
+            {
+              "value": "GQ",
+              "type": "string"
+            },
+            {
+              "value": "GR",
+              "type": "string"
+            },
+            {
+              "value": "GT",
+              "type": "string"
+            },
+            {
+              "value": "GU",
+              "type": "string"
+            },
+            {
+              "value": "GW",
+              "type": "string"
+            },
+            {
+              "value": "GY",
+              "type": "string"
+            },
+            {
+              "value": "HK",
+              "type": "string"
+            },
+            {
+              "value": "HN",
+              "type": "string"
+            },
+            {
+              "value": "HR",
+              "type": "string"
+            },
+            {
+              "value": "HT",
+              "type": "string"
+            },
+            {
+              "value": "HU",
+              "type": "string"
+            },
+            {
+              "value": "ID",
+              "type": "string"
+            },
+            {
+              "value": "IE",
+              "type": "string"
+            },
+            {
+              "value": "IL",
+              "type": "string"
+            },
+            {
+              "value": "IM",
+              "type": "string"
+            },
+            {
+              "value": "IN",
+              "type": "string"
+            },
+            {
+              "value": "IO",
+              "type": "string"
+            },
+            {
+              "value": "IQ",
+              "type": "string"
+            },
+            {
+              "value": "IR",
+              "type": "string"
+            },
+            {
+              "value": "IS",
+              "type": "string"
+            },
+            {
+              "value": "IT",
+              "type": "string"
+            },
+            {
+              "value": "JE",
+              "type": "string"
+            },
+            {
+              "value": "JM",
+              "type": "string"
+            },
+            {
+              "value": "JO",
+              "type": "string"
+            },
+            {
+              "value": "JP",
+              "type": "string"
+            },
+            {
+              "value": "KE",
+              "type": "string"
+            },
+            {
+              "value": "KG",
+              "type": "string"
+            },
+            {
+              "value": "KH",
+              "type": "string"
+            },
+            {
+              "value": "KI",
+              "type": "string"
+            },
+            {
+              "value": "KM",
+              "type": "string"
+            },
+            {
+              "value": "KN",
+              "type": "string"
+            },
+            {
+              "value": "KP",
+              "type": "string"
+            },
+            {
+              "value": "KR",
+              "type": "string"
+            },
+            {
+              "value": "KW",
+              "type": "string"
+            },
+            {
+              "value": "KY",
+              "type": "string"
+            },
+            {
+              "value": "KZ",
+              "type": "string"
+            },
+            {
+              "value": "LA",
+              "type": "string"
+            },
+            {
+              "value": "LB",
+              "type": "string"
+            },
+            {
+              "value": "LC",
+              "type": "string"
+            },
+            {
+              "value": "LI",
+              "type": "string"
+            },
+            {
+              "value": "LK",
+              "type": "string"
+            },
+            {
+              "value": "LR",
+              "type": "string"
+            },
+            {
+              "value": "LS",
+              "type": "string"
+            },
+            {
+              "value": "LT",
+              "type": "string"
+            },
+            {
+              "value": "LU",
+              "type": "string"
+            },
+            {
+              "value": "LV",
+              "type": "string"
+            },
+            {
+              "value": "LY",
+              "type": "string"
+            },
+            {
+              "value": "MA",
+              "type": "string"
+            },
+            {
+              "value": "MC",
+              "type": "string"
+            },
+            {
+              "value": "MD",
+              "type": "string"
+            },
+            {
+              "value": "ME",
+              "type": "string"
+            },
+            {
+              "value": "MF",
+              "type": "string"
+            },
+            {
+              "value": "MG",
+              "type": "string"
+            },
+            {
+              "value": "MH",
+              "type": "string"
+            },
+            {
+              "value": "MK",
+              "type": "string"
+            },
+            {
+              "value": "ML",
+              "type": "string"
+            },
+            {
+              "value": "MM",
+              "type": "string"
+            },
+            {
+              "value": "MN",
+              "type": "string"
+            },
+            {
+              "value": "MO",
+              "type": "string"
+            },
+            {
+              "value": "MP",
+              "type": "string"
+            },
+            {
+              "value": "MQ",
+              "type": "string"
+            },
+            {
+              "value": "MR",
+              "type": "string"
+            },
+            {
+              "value": "MS",
+              "type": "string"
+            },
+            {
+              "value": "MT",
+              "type": "string"
+            },
+            {
+              "value": "MU",
+              "type": "string"
+            },
+            {
+              "value": "MV",
+              "type": "string"
+            },
+            {
+              "value": "MW",
+              "type": "string"
+            },
+            {
+              "value": "MX",
+              "type": "string"
+            },
+            {
+              "value": "MY",
+              "type": "string"
+            },
+            {
+              "value": "MZ",
+              "type": "string"
+            },
+            {
+              "value": "NA",
+              "type": "string"
+            },
+            {
+              "value": "NC",
+              "type": "string"
+            },
+            {
+              "value": "NE",
+              "type": "string"
+            },
+            {
+              "value": "NF",
+              "type": "string"
+            },
+            {
+              "value": "NG",
+              "type": "string"
+            },
+            {
+              "value": "NI",
+              "type": "string"
+            },
+            {
+              "value": "NL",
+              "type": "string"
+            },
+            {
+              "value": "NO",
+              "type": "string"
+            },
+            {
+              "value": "NP",
+              "type": "string"
+            },
+            {
+              "value": "NR",
+              "type": "string"
+            },
+            {
+              "value": "NU",
+              "type": "string"
+            },
+            {
+              "value": "NZ",
+              "type": "string"
+            },
+            {
+              "value": "OM",
+              "type": "string"
+            },
+            {
+              "value": "PA",
+              "type": "string"
+            },
+            {
+              "value": "PE",
+              "type": "string"
+            },
+            {
+              "value": "PF",
+              "type": "string"
+            },
+            {
+              "value": "PG",
+              "type": "string"
+            },
+            {
+              "value": "PH",
+              "type": "string"
+            },
+            {
+              "value": "PK",
+              "type": "string"
+            },
+            {
+              "value": "PL",
+              "type": "string"
+            },
+            {
+              "value": "PM",
+              "type": "string"
+            },
+            {
+              "value": "PR",
+              "type": "string"
+            },
+            {
+              "value": "PS",
+              "type": "string"
+            },
+            {
+              "value": "PT",
+              "type": "string"
+            },
+            {
+              "value": "PW",
+              "type": "string"
+            },
+            {
+              "value": "PY",
+              "type": "string"
+            },
+            {
+              "value": "QA",
+              "type": "string"
+            },
+            {
+              "value": "RE",
+              "type": "string"
+            },
+            {
+              "value": "RO",
+              "type": "string"
+            },
+            {
+              "value": "RS",
+              "type": "string"
+            },
+            {
+              "value": "RU",
+              "type": "string"
+            },
+            {
+              "value": "RW",
+              "type": "string"
+            },
+            {
+              "value": "SA",
+              "type": "string"
+            },
+            {
+              "value": "SB",
+              "type": "string"
+            },
+            {
+              "value": "SC",
+              "type": "string"
+            },
+            {
+              "value": "SD",
+              "type": "string"
+            },
+            {
+              "value": "SE",
+              "type": "string"
+            },
+            {
+              "value": "SG",
+              "type": "string"
+            },
+            {
+              "value": "SH",
+              "type": "string"
+            },
+            {
+              "value": "SI",
+              "type": "string"
+            },
+            {
+              "value": "SJ",
+              "type": "string"
+            },
+            {
+              "value": "SK",
+              "type": "string"
+            },
+            {
+              "value": "SL",
+              "type": "string"
+            },
+            {
+              "value": "SM",
+              "type": "string"
+            },
+            {
+              "value": "SN",
+              "type": "string"
+            },
+            {
+              "value": "SO",
+              "type": "string"
+            },
+            {
+              "value": "SR",
+              "type": "string"
+            },
+            {
+              "value": "SS",
+              "type": "string"
+            },
+            {
+              "value": "ST",
+              "type": "string"
+            },
+            {
+              "value": "SV",
+              "type": "string"
+            },
+            {
+              "value": "SX",
+              "type": "string"
+            },
+            {
+              "value": "SY",
+              "type": "string"
+            },
+            {
+              "value": "SZ",
+              "type": "string"
+            },
+            {
+              "value": "TA",
+              "type": "string"
+            },
+            {
+              "value": "TC",
+              "type": "string"
+            },
+            {
+              "value": "TD",
+              "type": "string"
+            },
+            {
+              "value": "TG",
+              "type": "string"
+            },
+            {
+              "value": "TH",
+              "type": "string"
+            },
+            {
+              "value": "TJ",
+              "type": "string"
+            },
+            {
+              "value": "TK",
+              "type": "string"
+            },
+            {
+              "value": "TL",
+              "type": "string"
+            },
+            {
+              "value": "TM",
+              "type": "string"
+            },
+            {
+              "value": "TN",
+              "type": "string"
+            },
+            {
+              "value": "TO",
+              "type": "string"
+            },
+            {
+              "value": "TR",
+              "type": "string"
+            },
+            {
+              "value": "TT",
+              "type": "string"
+            },
+            {
+              "value": "TV",
+              "type": "string"
+            },
+            {
+              "value": "TW",
+              "type": "string"
+            },
+            {
+              "value": "TZ",
+              "type": "string"
+            },
+            {
+              "value": "UA",
+              "type": "string"
+            },
+            {
+              "value": "UG",
+              "type": "string"
+            },
+            {
+              "value": "US",
+              "type": "string"
+            },
+            {
+              "value": "UY",
+              "type": "string"
+            },
+            {
+              "value": "UZ",
+              "type": "string"
+            },
+            {
+              "value": "VA",
+              "type": "string"
+            },
+            {
+              "value": "VC",
+              "type": "string"
+            },
+            {
+              "value": "VE",
+              "type": "string"
+            },
+            {
+              "value": "VG",
+              "type": "string"
+            },
+            {
+              "value": "VI",
+              "type": "string"
+            },
+            {
+              "value": "VN",
+              "type": "string"
+            },
+            {
+              "value": "VU",
+              "type": "string"
+            },
+            {
+              "value": "WF",
+              "type": "string"
+            },
+            {
+              "value": "WS",
+              "type": "string"
+            },
+            {
+              "value": "XK",
+              "type": "string"
+            },
+            {
+              "value": "YE",
+              "type": "string"
+            },
+            {
+              "value": "YT",
+              "type": "string"
+            },
+            {
+              "value": "ZA",
+              "type": "string"
+            },
+            {
+              "value": "ZM",
+              "type": "string"
+            },
+            {
+              "value": "ZW",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": true,
+          "docs": "To disable Phone input",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "mutable": false,
+          "attr": "placeholder",
+          "reflectToAttr": true,
+          "docs": "To define placeholder of Phone input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "size",
+          "type": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
+          "mutable": false,
+          "attr": "size",
+          "reflectToAttr": true,
+          "docs": "To define size of Phone input",
+          "docsTags": [],
+          "default": "'md'",
+          "values": [
+            {
+              "value": "lg",
+              "type": "string"
+            },
+            {
+              "value": "md",
+              "type": "string"
+            },
+            {
+              "value": "sm",
+              "type": "string"
+            },
+            {
+              "value": "xl",
+              "type": "string"
+            },
+            {
+              "value": "xs",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "state",
+          "type": "\"danger\" | \"success\" | \"warning\"",
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": true,
+          "docs": "To define state color of Phone input",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": true,
+          "docs": "To define value of Phone input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiChange",
+          "detail": "string",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when an alteration to the element's value is committed by the user",
+          "docsTags": []
+        },
+        {
+          "event": "chiInput",
+          "detail": "string",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user changed the element's value but did not commit the change yet",
+          "docsTags": []
+        },
+        {
+          "event": "chiNumberInvalid",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the element's value committed by the user is an invalid phone number for the selected prefix",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-search-input",
+        "chi-text-input"
+      ],
+      "dependencyGraph": {
+        "chi-phone-input": [
+          "chi-search-input",
+          "chi-text-input"
+        ],
+        "chi-text-input": [
+          "chi-icon",
+          "chi-spinner"
+        ]
+      }
+    },
+    {
       "filePath": "src/components/popover/popover.tsx",
       "encapsulation": "scoped",
       "tag": "chi-popover",
@@ -3066,9 +4225,15 @@
       ],
       "styles": [],
       "slots": [],
-      "dependents": [],
+      "dependents": [
+        "chi-phone-input"
+      ],
       "dependencies": [],
-      "dependencyGraph": {}
+      "dependencyGraph": {
+        "chi-phone-input": [
+          "chi-search-input"
+        ]
+      }
     },
     {
       "filePath": "src/components/spinner/spinner.tsx",
@@ -3710,7 +4875,9 @@
       ],
       "styles": [],
       "slots": [],
-      "dependents": [],
+      "dependents": [
+        "chi-phone-input"
+      ],
       "dependencies": [
         "chi-icon",
         "chi-spinner"
@@ -3719,6 +4886,9 @@
         "chi-text-input": [
           "chi-icon",
           "chi-spinner"
+        ],
+        "chi-phone-input": [
+          "chi-text-input"
         ]
       }
     },

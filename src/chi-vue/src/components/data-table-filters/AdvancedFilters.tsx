@@ -10,7 +10,7 @@ import {
   UTILITY_CLASSES,
   GENERIC_SIZE_CLASSES,
 } from '@/constants/classes';
-import { DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
+import { DataTableCustomItem, DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { compareFilters, getElementFilterData } from './FilterUtils';
 import { findComponent, uuid4 } from '@/utils/utils';
@@ -29,8 +29,9 @@ export default class AdvancedFilters extends Vue {
   @Prop() popoverFilterID?: string;
   @Prop() filterUniqueID?: string;
   @Prop() mobile?: boolean;
+  @Prop() customItems?: DataTableCustomItem[];
 
-  _advancedFiltersAccordion?: HTMLElement;
+  _advancedFiltersAccordion?: any;
   _advancedFilterAccordionId?: string;
   _advancedFilterUuid?: string;
   _advancedFilterButtonId?: string;
@@ -38,6 +39,7 @@ export default class AdvancedFilters extends Vue {
   storeModule?: any;
   _planeAdvancedData = {};
   _chiMajorVersion = 5;
+  isExpanded = false;
 
   get filterElementValue() {
     return this.storeModule.filterConfig;
@@ -230,8 +232,28 @@ export default class AdvancedFilters extends Vue {
     this._chiMajorVersion = detectMajorChiVersion();
   }
 
+  _createCustomItem(filter: DataTableCustomItem) {
+    const customItemSlot =
+      this.$scopedSlots?.default &&
+      this.$scopedSlots.default(null)?.find(item => item[filter.template as keyof typeof item]);
+
+    return (
+      <div class={`${FORM_CLASSES.FORM_ITEM}`}>
+        {this.mobile && (
+          <label
+            for={this.mobile ? `${filter.template}-mobile` : `${filter.template}-desktop`}
+            class={FORM_CLASSES.LABEL}>
+            {filter.label}
+          </label>
+        )}
+        {customItemSlot && customItemSlot[filter.template as keyof typeof customItemSlot]}
+      </div>
+    );
+  }
+
   render() {
     const advancedFilters: JSX.Element[] = [];
+
     this.advancedFiltersData &&
       this.advancedFiltersData.forEach((filter: DataTableFilter) => {
         const filterElement =
@@ -274,6 +296,22 @@ export default class AdvancedFilters extends Vue {
       </button>
     );
 
+    this.customItems &&
+      this.customItems.forEach((filter: DataTableCustomItem) => {
+        const customItem = this._createCustomItem(filter);
+        const accordionItem = (
+          <div class={ACCORDION_CLASSES.ITEM}>
+            <button class={ACCORDION_CLASSES.TRIGGER}>
+              <div class={`${ACCORDION_CLASSES.TITLE}`}>{filter.label || filter.template}</div>
+              <i class={`${ICON_CLASS} icon-chevron-down`} aria-hidden="true" />
+            </button>
+            <div class={ACCORDION_CLASSES.CONTENT}>{customItem}</div>
+          </div>
+        );
+
+        this.mobile ? advancedFilters.push(customItem) : advancedFilters.push(accordionItem);
+      });
+
     const advancedFiltersRender = (
       <div>
         {!this.mobile && [
@@ -287,6 +325,13 @@ export default class AdvancedFilters extends Vue {
             modal={this._chiMajorVersion === 5}
             drag
             closable>
+            <div class={`${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}>
+              <button
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.SM} ${BUTTON_CLASSES.NO_HOVER} ${UTILITY_CLASSES.PADDING.X[0]} ${UTILITY_CLASSES.TYPOGRAPHY.TEXT_NORMAL}`}
+                onclick={(event: Event) => this._expandCollapseAccordions(event)}>
+                {this.isExpanded ? 'Collapse All' : 'Expand All'}
+              </button>
+            </div>
             <div
               class={`${ACCORDION_CLASSES.ACCORDION} ${this._chiMajorVersion === 4 ? PORTAL_CLASS : ''} -sm`}
               ref="advancedFiltersAccordion">
@@ -371,5 +416,13 @@ export default class AdvancedFilters extends Vue {
     await this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...this._planeAdvancedData });
     await this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...this._planeAdvancedData });
     this._emitAdvancedFiltersChange();
+  }
+
+  private _expandCollapseAccordions(event: Event) {
+    event.preventDefault();
+    if (this._advancedFiltersAccordion) {
+      this.isExpanded ? this._advancedFiltersAccordion.collapseAll() : this._advancedFiltersAccordion.expandAll();
+      this.isExpanded = !this.isExpanded;
+    }
   }
 }

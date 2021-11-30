@@ -64,6 +64,14 @@ export const CHECKBOX_CLASSES = {
 };
 //#endregion
 
+//#region Radio
+export const RADIO_CLASSES = {
+  RADIO: 'chi-radio',
+  INPUT: 'chi-radio__input',
+  LABEL: 'chi-radio__label',
+};
+//#endregion
+
 //#region Data Table
 export const DATA_TABLE_CLASSES = {
   DATA_TABLE: 'chi-data-table',
@@ -202,6 +210,7 @@ export const UTILITY_CLASSES = {
   },
   TYPOGRAPHY: {
     TEXT_TRUNCATE: '-text--truncate',
+    TEXT_NORMAL: '-text--normal',
     TEXT_BOLD: '-text--bold',
   },
   POSITION: {
@@ -217,6 +226,7 @@ export const UTILITY_CLASSES = {
     3: '-p--3',
     4: '-p--4',
     X: {
+      0: '-px--0',
       1: '-px--1',
       2: '-px--2',
       3: '-px--3',
