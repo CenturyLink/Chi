@@ -96,6 +96,10 @@
               :selectedRowCount="bulkActionConfig.selectedRowIds.length"
               @showSelectedOnly="showSelectedOnlyRow"
             >
+              <template v-slot:top>
+                <chi-link href="#">Select all</chi-link>
+                <chi-link href="#">Clear</chi-link>
+              </template>
               <template v-slot:start>
                 <div class="chi-bulk-actions__buttons">
                   <div class="chi-bulk-actions__buttons-mobile -z--40">

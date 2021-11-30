@@ -1,6 +1,6 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { findComponent } from '@/utils/utils';
-import { BULK_ACTIONS_CLASSES, CHECKBOX_CLASSES, FORM_CLASSES } from '@/constants/classes';
+import { BULK_ACTIONS_CLASSES, CHECKBOX_CLASSES, FORM_CLASSES, UTILITY_CLASSES } from '@/constants/classes';
 import DataTable from '../data-table/DataTable';
 
 @Component({})
@@ -21,6 +21,7 @@ export default class DataTableBulkActions extends Vue {
   render() {
     return (
       <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS}`}>
+        <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_TOP} ${UTILITY_CLASSES.Z_INDEX.Z_40}`}>{this.$slots.top}</div>
         <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_START}`}>
           <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_RESULTS}`}>
             <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_LABELS}`}>

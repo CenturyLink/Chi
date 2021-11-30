@@ -27,6 +27,7 @@ export const ACCORDION_CLASSES = {
 
 export const BULK_ACTIONS_CLASSES = {
   BULK_ACTIONS: 'chi-bulk-actions',
+  BULK_ACTIONS_TOP: 'chi-bulk-actions__top',
   BULK_ACTIONS_START: 'chi-bulk-actions__start',
   BULK_ACTIONS_RESULTS: 'chi-bulk-actions__results',
   BULK_ACTIONS_LABELS: 'chi-bulk-actions__label',
@@ -203,6 +204,9 @@ export const TOOLTIP_CLASSES = {
 
 //#region Utility Classes
 export const UTILITY_CLASSES = {
+  Z_INDEX: {
+    Z_40: '-z--40',
+  },
   ALIGN_ITEMS: {
     CENTER: '-align-items--center',
   },
