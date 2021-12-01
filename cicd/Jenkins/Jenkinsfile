@@ -135,20 +135,27 @@ pipeline {
       stage('Summary') {
         steps {
           script {
-            sh script: """
-                echo "PROJECT_NAME: ${PROJECT_NAME}"
-                echo "GIT_BRANCH: ${GIT_BRANCH}"
-                echo "GIT_COMMIT: ${GIT_COMMIT}"
-                echo "BRANCH_NAME: ${BRANCH_NAME}"
-                echo "COMMIT_ID: ${COMMIT_ID}"
-                echo "PULL_REQUEST: ${PULL_REQUEST}"
-                echo "CHANGE_ID: ${env.CHANGE_ID}"
-                echo "TAG: ${env.TAG_NAME}"
-            """, label: "Details summary"
+            def chivueProjectJson = readJSON file: 'src/chi-vue/package.json', returnPojo: true;
+            env.CHIVUE_PACKAGE_SCOPE = chivueProjectJson['name'].split('/')[0].replaceFirst("@", "")
+            env.GITHUB_ORGANIZATION = jslGitGetRepoOwner()
+
+            echo """
+            PROJECT_NAME: ${env.PROJECT_NAME}
+            GIT_BRANCH: ${env.GIT_BRANCH}
+            GIT_COMMIT: ${env.GIT_COMMIT}
+            BRANCH_NAME: ${env.BRANCH_NAME}
+            COMMIT_ID: ${env.COMMIT_ID}
+            PULL_REQUEST: ${env.PULL_REQUEST}
+            CHANGE_ID: ${env.CHANGE_ID}
+            TAG: ${env.TAG_NAME}
+
+            CHIVUE_PACKAGE_SCOPE: ${env.CHIVUE_PACKAGE_SCOPE}
+            GITHUB_ORGANIZATION: ${env.GITHUB_ORGANIZATION}
+            """
             if ( BRANCH_NAME != PROD_BRANCH && BRANCH_NAME != "pr-*" ) {
-              currentBuild.description = "<a href='https://github.com/CenturyLink/Chi/tree/${BRANCH_NAME}'>${BRANCH_NAME}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${BRANCH_NAME}";
+              currentBuild.description = "<a href='https://github.com/${env.GITHUB_ORGANIZATION}/Chi/tree/${BRANCH_NAME}'>${BRANCH_NAME}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${BRANCH_NAME}";
             } else if ( BRANCH_NAME != PROD_BRANCH && BRANCH_NAME == "pr-*" && BRANCH_NAME == "PR-*" ) {
-              currentBuild.description = "<a href='https://github.com/CenturyLink/Chi/pull/${CHANGE_ID}'>PR#${CHANGE_ID}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${PULL_REQUEST}";
+              currentBuild.description = "<a href='https://github.com/${env.GITHUB_ORGANIZATION}/Chi/pull/${CHANGE_ID}'>PR#${CHANGE_ID}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${PULL_REQUEST}";
             }
           }
         }
@@ -986,7 +993,7 @@ PRDesc
                                 usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
                 try {
                   latestRelease = sh script: """
-                   curl -s -H "Authorization: token \${ACCESS_TOKEN}" "https://api.github.com/repos/CenturyLink/chi/releases/latest" | grep '"name":' | cut -d: -f 2,3 | tr -d '"' | tr -d ','
+                   curl -s -H "Authorization: token \${ACCESS_TOKEN}" "https://api.github.com/repos/${env.GITHUB_ORGANIZATION}/chi/releases/latest" | grep '"name":' | cut -d: -f 2,3 | tr -d '"' | tr -d ','
                    """, label: 'Getting Latest Release Version', returnStdout: true
                    latestRelease = latestRelease.trim()
                 } catch (Exception e) {

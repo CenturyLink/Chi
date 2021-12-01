@@ -81,3 +81,5 @@ export function detectMajorChiVersion(): number {
   }
   return fallbackVersion;
 }
+
+export const EventBus = new Vue();

@@ -1,0 +1,261 @@
+script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
+script(src="https://unpkg.com/vuex@3.6.2/dist/vuex.js")
+script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+script(src='../../js/chi.js')
+
+.-p--3
+  #base
+    chi-vue-toolbar(ref="toolbarRef" data-cy="toolbar-base")
+      template(v-slot:start='')
+        chi-vue-search-input(:data-table-search='true')
+        chi-vue-data-table-views(:views='toolbar.viewsData')
+        chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' :custom-items='toolbar.customItemsData')
+          template(v-slot:custom-one='')
+            chi-label(for='input-1') City
+            chi-text-input#input-1
+            chi-label(for='input-2') Zip Code
+            chi-text-input#input-2
+          template(v-slot:custom-two='')
+            chi-date-picker
+      template(v-slot:end='')
+        chi-vue-column-customization(:columns-data='toolbar.columnsData')
+
+  #noAdvancedFilters
+    chi-vue-toolbar(data-cy="toolbar-no-advanced-filters")
+      template(v-slot:start='')
+        chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData')
+      template(v-slot:end='')
+        chi-vue-column-customization(:columns-data='toolbar.columnsData')
+
+script.
+  const store = new Vuex.Store({});
+  const customItems = [
+    {
+      template: 'custom-one',
+      label: 'Custom 1',
+    },
+    {
+      template: 'custom-two',
+      label: 'Custom 2',
+    },
+  ];
+  const filters = [
+    {
+      name: 'status',
+      type: 'select',
+      id: 'myoption1',
+      label: 'Selector',
+      options: [
+        {
+          label: 'Active',
+          value: 'active',
+        },
+        {
+          label: 'Inactive',
+          value: 'inactive',
+        },
+      ],
+      value: 'active',
+    },
+    {
+      name: 'input',
+      placeholder: 'Input filter',
+      type: 'input',
+      value: '',
+      id: 'myoption2',
+      label: 'Input Filter',
+    },
+    {
+      name: 'checkbox',
+      type: 'checkbox',
+      checked: false,
+      id: 'myoption3',
+      label: 'Checkbox',
+    },
+    {
+      name: 'statusAdvanced',
+      label: 'Status',
+      type: 'select',
+      id: 'myoption4',
+      options: [
+        {
+          label: 'Active',
+          value: 'active',
+          selected: false,
+        },
+        {
+          label: 'Inactive',
+          value: 'inactive',
+          selected: false,
+        },
+      ],
+      advanced: true,
+      value: 'active',
+    },
+    {
+      name: 'inputAdvanced',
+      label: 'Label',
+      id: 'myoption5',
+      advanced: true,
+    },
+    {
+      name: 'textareaAdvanced',
+      label: 'Textarea',
+      id: 'myoption6',
+      type: 'textarea',
+      advanced: true,
+    },
+    {
+      name: 'checkboxAdvanced',
+      id: 'myoption7',
+      label: 'Advanced Checkbox',
+      type: 'checkbox',
+      advanced: true,
+    },
+  ];
+  const columns = [
+    {
+      name: 'columnA',
+      label: 'Column A',
+    },
+    {
+      name: 'columnB',
+      label: 'Column B',
+    },
+    {
+      name: 'columnC',
+      label: 'Column C',
+      locked: true,
+      selected: true,
+    },
+    {
+      name: 'columnD',
+      label: 'Column D',
+      locked: true,
+      selected: true,
+    },
+    {
+      name: 'columnE',
+      label: 'Column E',
+      selected: true,
+    },
+    {
+      name: 'columnF',
+      label: 'Column F',
+      selected: true,
+    },
+    {
+      name: 'columnG',
+      label: 'Column G',
+    },
+    {
+      name: 'columnH',
+      label: 'Column H',
+    },
+    {
+      name: 'columnI',
+      label: 'Column I',
+    },
+    {
+      name: 'columnJ',
+      label: 'Column J',
+    },
+  ];
+  const views = [
+    {
+      id: 'view-1',
+      label: 'View 1',
+      columns: columns,
+      searchString: 'abc',
+      filters: filters
+    },
+    {
+      id: 'view-2',
+      label: 'View 2',
+      columns: [],
+      searchString: 'abcde',
+      filters: [],
+    },
+  ];
+
+  new Vue({
+    store,
+    components: {
+      chiVueToolbar: window["chi-vue"].library.components.ChiDataTableToolbar,
+      chiVueColumnCustomization:
+        window["chi-vue"].library.components.ChiColumnCustomization,
+      chiVueSearchInput: window["chi-vue"].library.components.ChiSearchInput,
+      chiVueDataTableFilters:
+        window["chi-vue"].library.components.ChiDataTableFilters,
+      chiVueDataTableViews: window["chi-vue"].library.components.ChiDataTableViews
+    },
+    mounted(){
+      if (window.Cypress) {
+        window.toolbarExample = this;
+      }
+    },
+    data: {
+      toolbar: {
+        customItemsData: customItems,
+        filtersData: filters,
+        columnsData: {
+          columns: columns
+        },
+        viewsData: views
+      }
+    }
+  }).$mount("#base");
+
+  new Vue({
+    store,
+    components: {
+      chiVueToolbar: window["chi-vue"].library.components.ChiDataTableToolbar,
+      chiVueColumnCustomization:
+        window["chi-vue"].library.components.ChiColumnCustomization,
+      chiVueDataTableFilters:
+        window["chi-vue"].library.components.ChiDataTableFilters,
+    },
+    data: {
+      toolbar: {
+        filtersData: [
+          {
+            name: 'status',
+            type: 'select',
+            id: 'myoption100',
+            label: 'Selector',
+            options: [
+              {
+                label: 'Active',
+                value: 'active',
+              },
+              {
+                label: 'Inactive',
+                value: 'inactive',
+              },
+            ],
+            value: 'active',
+          },
+          {
+            name: 'input',
+            placeholder: 'Input filter',
+            type: 'input',
+            value: '',
+            id: 'myoption101',
+            label: 'Input Filter',
+          },
+          {
+            name: 'checkbox',
+            type: 'checkbox',
+            checked: false,
+            id: 'myoption102',
+            label: 'Checkbox',
+          },
+        ],
+        columnsData: {
+          columns: columns
+        },
+      }
+    }
+  }).$mount("#noAdvancedFilters");

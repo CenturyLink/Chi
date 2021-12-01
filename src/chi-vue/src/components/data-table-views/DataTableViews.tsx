@@ -8,7 +8,7 @@ import {
   SELECT_CLASSES,
 } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
-import { findComponent } from '@/utils/utils';
+import { EventBus, findComponent } from '@/utils/utils';
 import DataTableToolbar from '../data-table-toolbar/DataTableToolbar';
 import { detectMajorChiVersion } from '@/utils/utils';
 
@@ -25,6 +25,7 @@ export default class DataTableViews extends Vue {
 
     if (dataTableToolbarComponent) {
       (dataTableToolbarComponent as DataTableToolbar)._views = this;
+      EventBus.$emit('viewsMounted');
     }
   }
 
