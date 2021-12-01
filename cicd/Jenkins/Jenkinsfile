@@ -54,8 +54,8 @@ pipeline {
       //  QUALITY_GATE_CREDENTIALS Credentials to gather all the contract validation gates expected to be crossed.
       //  PROJECT_MAL The MAL of the project
 
-      // GITHUB_TOKEN_SHELL_CREDENTIALS = 'allyourbotsarebelongtous-token'
-      // GITHUB_SSH_SHELL_CREDENTIALS = 'allyourbotsarebelongtous'
+      GITHUB_TOKEN_SHELL_CREDENTIALS = 'allyourbotsarebelongtous-token'
+      GITHUB_SSH_SHELL_CREDENTIALS = 'allyourbotsarebelongtous'
       GITHUB_TOKEN_CREDENTIALS = 'SCMAUTO_GITHUB'
       GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
       GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
@@ -70,7 +70,7 @@ pipeline {
       JIRA_CREDENTIALS = 'jira-credentials'
       MSTEAMS_CREDENTIALS = 'TEAMS-SECRET'
       QUALITY_GATE_CREDENTIALS = 'CRUMBS-FILE'
-      // JIRA_TICKET_AUTO_PR = 'jira-ticket-auto-pr'
+      JIRA_TICKET_AUTO_PR = 'jira-ticket-auto-pr'
       //Deployment control credentialsId
       AUTHORIZED_USERS = ''
       DEPLOY_AUTH_TOKEN = ''
@@ -98,9 +98,9 @@ pipeline {
       RC_TAG_PATTERN =  /(.*##RC##.*)/
       PROMOTE_TAG_PATTERN =  /(.*##PROMOTE##.*)/
       DEPLOY_TAG_PATTERN =  /(.*##DEPLOYMENT##.*)/
-      // DOCKER_REGISTRY = 'https://nexusprod.corp.intranet:4567'
-      // DOCKER_BASE_PATH = "nexusprod.corp.intranet:4567/pomicroappbase"
-      // DOCKER_IMAGE_NODE_SHELL = "${env.DOCKER_BASE_PATH}/node12:1.0.2"
+      DOCKER_REGISTRY = 'https://nexusprod.corp.intranet:4567'
+      DOCKER_BASE_PATH = "nexusprod.corp.intranet:4567/pomicroappbase"
+      DOCKER_IMAGE_NODE_SHELL = "${env.DOCKER_BASE_PATH}/node12:1.0.2"
     }
 
 
