@@ -286,9 +286,19 @@ pipeline {
                       echo -n "no" > version_bump
                     fi
                     cat version_bump
+                    git diff HEAD~2 src/chi-vue/package.json | grep '"version":' || echo No chi-vue package.json changes
+                    rm -rf version_bump_chi_vue
+                    if [ \$(git diff HEAD~2 src/chi-vue/package.json | grep '"version":' | wc -l) -eq 2 ]; then
+                      echo -n "yes" > version_bump_vue_chi
+                      echo "change in chi-vue"
+                    else
+                      echo -n "no" > version_bump_vue_chi
+                      echo "no change in chi-vue"
+                    fi
                     echo "All good."
                 """, label: "Package version validation")
-                stash name: "VERSION_BUMP", includes: "version_bump"
+                stash name: "VERSION_BUMP_CHI", includes: "version_bump"
+                stash name: "VERSION_BUMP_VUE_CHI", includes: "version_bump_vue_chi"
               }
             }
           }
