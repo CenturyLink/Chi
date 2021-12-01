@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Checkbox List" id="checkbox_list" :tabs="exampleTabs">
-    p.-text   (slot="example-description")
+    p.-text(slot="example-description")
       | Checkbox lists are used to wrap a series of checkboxes in a list.
       | To render a series of checkboxes in a list, apply the class <code>-list</code> to <code>chi-form__item</code>.
     <Wrapper slot="example">

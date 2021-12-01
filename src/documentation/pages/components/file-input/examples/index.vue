@@ -4,15 +4,14 @@
     p.-text(slot="example-description") To render a file input, apply the class <code>chi-file-input</code>
       | to an <code>input type="file"</code> and add a label next to it.
 
+    <Base />
+    <Disabled />
+
     <Wrapper v-if="$store.state.themes.theme === 'portal'">
-      <Base />
-      <Disabled />
       <SizesPortal />
     </Wrapper>
 
     <Wrapper v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)">
-      <Base />
-      <Disabled />  
       <Sizes />
     </Wrapper>
 </template>

@@ -36,12 +36,14 @@ export default {
     container.__head = head;
     container.__tail = tail;
     
-    let tpl = document.createDocumentFragment();
+    const tpl = document.createDocumentFragment();
+
     tpl.appendChild(head);
 
     Array.from(container.childNodes)
       .forEach(node => {
-        let notFrChild = !node.hasOwnProperty('__isFragmentChild__');
+        const notFrChild = !node.hasOwnProperty('__isFragmentChild__');
+
         tpl.appendChild(node);
         if (notFrChild) {
             freeze(node, 'parentNode', container);
@@ -52,21 +54,21 @@ export default {
     tpl.appendChild(tail);
 
     if (this.html) {
-      let template = document.createElement('template');
+      const template = document.createElement('template');
+
       template.innerHTML = this.html;
       Array.from(template.content.childNodes).forEach(node => {      
         tpl.appendChild(node);
       });
     }
 
-    let next = container.nextSibling;
+    const next = container.nextSibling;
+
     parent.insertBefore(tpl, container, true);
     parent.removeChild(container);
     freeze(container, 'parentNode', parent);
     freeze(container, 'nextSibling', next);
-    if (next) {
-      freeze(next, 'previousSibling', container);
-    }
+    if (next) freeze(next, 'previousSibling', container);
 
     container.__isMounted = true;
   },
