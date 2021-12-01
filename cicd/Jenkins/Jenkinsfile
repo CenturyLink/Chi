@@ -985,6 +985,7 @@ PRDesc
           }
         }
       }
+      
       stage('Smoke Tests') {
         agent {
           dockerfile {
@@ -1001,36 +1002,11 @@ PRDesc
         }
         steps {
           script {
-            sh "rm -rf cypress/reports/smokeTests && mkdir -p cypress/reports/smokeTests"
-            if (env.VERSION != null) {
-              echo "Starting SMOKE TESTS with the published release ${env.VERSION}"
-
-              def latestRelease = ""
-              withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITHUB_TOKEN_CREDENTIALS,
-                                usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
-                try {
-                  latestRelease = sh script: """
-                   curl -s -H "Authorization: token \${ACCESS_TOKEN}" "https://api.github.com/repos/${env.GITHUB_ORGANIZATION}/chi/releases/latest" | grep '"name":' | cut -d: -f 2,3 | tr -d '"' | tr -d ','
-                   """, label: 'Getting Latest Release Version', returnStdout: true
-                   latestRelease = latestRelease.trim()
-                } catch (Exception e) {
-                  echo "Error checking chi releases: ${e.getMessage()}"
-                }
-              }
-
-              jslGenerateManualTestReport("Version Release", "Check Version", "v${env.VERSION}", (latestRelease == "v${env.VERSION}").toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
-              env.SMOKE_TEST_FAILURE = (latestRelease != "v${env.VERSION}")
-              echo "Smoke Test Failure? ${env.SMOKE_TEST_FAILURE}"
-            } else {
-              echo "Smoke Test hook without release"
-              jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
-            }
-
-            stash name: 'smokeTests', includes:"cypress/reports/smokeTests/**"
-            jslPublishTestResults('cypress/reports/smokeTests/**')
+            runSmokeTests()
           }
         }
       }
+      
       stage('Create PR') {
         agent {
             dockerfile {
@@ -1150,6 +1126,36 @@ PRDesc
         jslNotification('unstable')
       }
   }
+}
+
+def runSmokeTests() {
+  sh "rm -rf cypress/reports/smokeTests && mkdir -p cypress/reports/smokeTests"
+  if (env.VERSION != null) {
+    echo "Starting SMOKE TESTS with the published release ${env.VERSION}"
+
+    def latestRelease = ""
+    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITHUB_TOKEN_CREDENTIALS,
+                      usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
+      try {
+        latestRelease = sh script: """
+          curl -s -H "Authorization: token \${ACCESS_TOKEN}" "https://api.github.com/repos/${env.GITHUB_ORGANIZATION}/chi/releases/latest" | grep '"name":' | cut -d: -f 2,3 | tr -d '"' | tr -d ','
+          """, label: 'Getting Latest Release Version', returnStdout: true
+          latestRelease = latestRelease.trim()
+      } catch (Exception e) {
+        echo "Error checking chi releases: ${e.getMessage()}"
+      }
+    }
+
+    jslGenerateManualTestReport("Version Release", "Check Version", "v${env.VERSION}", (latestRelease == "v${env.VERSION}").toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
+    env.SMOKE_TEST_FAILURE = (latestRelease != "v${env.VERSION}")
+    echo "Smoke Test Failure? ${env.SMOKE_TEST_FAILURE}"
+  } else {
+    echo "Smoke Test hook without release"
+    jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
+  }
+
+  stash name: 'smokeTests', includes:"cypress/reports/smokeTests/**"
+  jslPublishTestResults('cypress/reports/smokeTests/**')
 }
 
 def isVersionBump() {
