@@ -1017,17 +1017,12 @@ PRDesc
         }
         steps {
           script {
-            sh(script: """
-            echo "test"
-            """)
-            /*
             try {
-              // createPRInShellVueChi()
-              // createPRInShellChi()
+              createPRInShellVueChi()
+              createPRInShellChi()
             } catch (Exception e) {
               echo "The creation of PRs in the shell failed"
             }
-            */
           }
         }
       }
@@ -1174,4 +1169,190 @@ def isVersionBump() {
   isVersionBumpResult = isVersionBumpResult && currentBuild.currentResult.toLowerCase() == "success"
   isVersionBumpResult = isVersionBumpResult && ( ['origin/master', 'origin/main', 'master', 'main', PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase()) || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1))
   return isVersionBumpResult
+}
+
+def createBranchChiVue() {
+  withCredentials([usernamePassword(credentialsId: env.GITHUB_TOKEN_CREDENTIALS, usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN')]){
+    def projectJson = readJSON file: 'src/chi-vue/package.json', returnPojo: true;
+    def version = projectJson["version"];
+    def versionReturn = projectJson["version"];
+    sh(script: """
+      set +x
+      rm -rf po-enterprise-shell
+      git config credential.helper  "!f() {echo username=${USERNAME}; echo password=${ACCESS_TOKEN}; }"
+      git config --global user.email "cicdint0@lumen.com"
+      git clone https://\${USERNAME}:\${ACCESS_TOKEN}@github.com/CenturyLink/po-enterprise-shell.git
+    """, label: "Cloning shell", returnStdout: true)
+    def shellJson = readJSON file: 'po-enterprise-shell/package.json', returnPojo: true;
+    if (shellJson["dependencies"]["@centurylink/chi-vue"] != null) {
+      sh(script: """
+        cd po-enterprise-shell
+        git fetch -p
+        git branch -D chi-vue-new-version-${version} || echo "Branch was not there"
+        git push origin --delete chi-vue-new-version-${version} || echo "Branch was not there"
+        git checkout -b chi-vue-new-version-${version}
+        git push -u origin chi-vue-new-version-${version}
+      """, label: "Creating PR for chi vue", returnStdout: true)
+    }
+    return versionReturn
+  }
+}
+
+def createBranchChi() {
+  withCredentials([usernamePassword(credentialsId: env.GITHUB_TOKEN_CREDENTIALS, usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN')]){
+    def projectJson = readJSON file: 'package.json', returnPojo: true;
+    def version = projectJson["version"];
+    sh(script: """
+      set +x
+      rm -rf po-enterprise-shell
+      git config credential.helper  "!f() {echo username=${USERNAME}; echo password=${ACCESS_TOKEN}; }"
+      git config --global user.email "cicdint0@lumen.com"
+      git clone https://\${USERNAME}:\${ACCESS_TOKEN}@github.com/CenturyLink/po-enterprise-shell.git
+    """, label: "Cloning shell", returnStdout: true)
+    sh (script: """
+      cd po-enterprise-shell
+      git fetch -p
+      git branch -D chi-new-version-${version} || echo "Branch was not there"
+      git push origin --delete chi-new-version-${version} || echo "Branch was not there"
+      git checkout -b chi-new-version-${version}
+      git push -u origin chi-new-version-${version}
+    """, label: "Creating PR for Chi", returnStdout: true)
+    return version
+  }
+}
+
+def deleteShellFolder() {
+  sh(script: """
+  rm -rf po-enterprise-shell
+  """)
+}
+
+def pushBranchChiVue(version) {
+  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITHUB_TOKEN_CREDENTIALS,
+                   usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
+    sh(script: """
+        set +x
+        git config credential.helper  "!f() {echo username=${env.USERNAME}; echo password=${env.ACCESS_TOKEN}; }"
+        git config --global user.email "cicdint0@lumen.com"
+        cd po-enterprise-shell
+        git status
+        git add package-lock.json package.json
+        git commit -m "New version on ${env.PROJECT_NAME}: ${version}"
+        git push https://\${USERNAME}:\${ACCESS_TOKEN}@github.com/CenturyLink/po-enterprise-shell.git
+        """, returnStdout: true, label: 'pushBranchChiVue')
+  }
+}
+
+def pushBranchChi(version) {
+  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITHUB_TOKEN_CREDENTIALS,
+                    usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
+  sh(script: """
+    set +x
+    git config credential.helper "!f() {echo username=${env.USERNAME}; echo password=${env.ACCESS_TOKEN}; }"
+    git config --global user.email "cicdint0@lumen.com"
+    cd po-enterprise-shell
+    git status
+    git add .env
+    git commit -m "New Chi version: ${version}"
+    git push https://\${USERNAME}:\${ACCESS_TOKEN}@github.com/CenturyLink/po-enterprise-shell.git
+  """, returnStdout: true)
+  }
+}
+
+def updateChiVueOnShell() {
+  def shellJson = readJSON file: 'po-enterprise-shell/package.json', returnPojo: true;
+  def projectJson = readJSON file: 'src/chi-vue/package.json', returnPojo: true;
+  def version = projectJson["version"];
+  if (version != null && version != "" && shellJson["dependencies"]["@centurylink/chi-vue"] != null) {
+    shellJson["dependencies"]["@centurylink/chi-vue"] = version
+    writeJSON file: 'po-enterprise-shell/package2.json', json: shellJson
+
+    sh(script: """
+    export CHANGED_VERSION=${version}
+    sh run_parser.sh
+    """, returnStdout: true)
+    sh(script: """
+    ls -l
+    ls -l po-enterprise-shell
+    rm po-enterprise-shell/package.json po-enterprise-shell/package2.json
+    mv po-enterprise-shell/package3.json po-enterprise-shell/package.json
+    """, returnStdout: true)
+    return true
+
+
+  }
+  return false
+}
+
+def updateChiOnShell() {
+  def projectJson = readJSON file: 'package.json', returnPojo: true;
+  def version = projectJson["version"]
+  sh(script: """
+  ls -l
+  echo "${version}"
+  awk -F= -v version=${version} -f parser_env_shell.awk po-enterprise-shell/.env > po-enterprise-shell/.env2
+  cat po-enterprise-shell/.env2
+  rm po-enterprise-shell/.env
+  mv po-enterprise-shell/.env2 po-enterprise-shell/.env
+  """, returnStdout: true)
+}
+
+def createPRInShellVueChi() {
+  unstash name: "VERSION_BUMP_VUE_CHI"
+  def changed = readFile file: "version_bump_vue_chi"
+  if (changed.trim() == "yes") {
+    def result = false
+    def version = ""
+    version = createBranchChiVue()
+
+    result = updateChiVueOnShell()
+    if (result) {
+      dir("po-enterprise-shell") {
+        jslNpmWrapper("install", env.GITHUB_TOKEN_SHELL_CREDENTIALS)
+      }
+      pushBranchChiVue(version)
+      if (version != "") {
+        configFileProvider([configFile(fileId: 'jira-ticket-auto-pr', variable: 'configFileJira')]) {
+          def props = readProperties file: "$configFileJira"
+          def ticket = props['ticket']
+          def titleName = "${ticket} Update chi-vue to version ${version}"
+          def bodyString = "Update ${env.PROJECT_NAME} version to ${version}"
+          def headName = "chi-vue-new-version-${version}"
+          def baseName = "master"
+          def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS
+          def repoPR = "po-enterprise-shell"
+          jslGitHubPRCreate(titleName, bodyString, headName, baseName, githubCredentials, repoPR)
+        }
+      }
+    }
+    deleteShellFolder()
+  }
+}
+
+def createPRInShellChi() {
+  unstash name: "VERSION_BUMP_CHI"
+  def changed = readFile file: "version_bump"
+  if (changed.trim() == "yes") {
+    def result = false
+    def version = ""
+    version = createBranchChi()
+    result = updateChiOnShell()
+    if (result) {
+      pushBranchChi(version)
+      if (version != "") {
+        configFileProvider([configFile(fileId: 'jira-ticket-auto-pr', variable: 'configFileJira')]) {
+          def props = readProperties file: "$configFileJira"
+          def ticket = props['ticket']
+          def titleName = "${ticket} Update chi version to ${version}"
+          def bodyString = "Update chi version to ${version}"
+          def headName = "chi-new-version-${version}"
+          def baseName = "master"
+          def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS
+          def repoPR = "po-enterprise-shell"
+          jslGitHubPRCreate(titleName, bodyString, headName, baseName, githubCredentials, repoPR)
+        }
+      }
+    }
+  }
+  deleteShellFolder()
 }
