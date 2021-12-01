@@ -1031,6 +1031,30 @@ PRDesc
           }
         }
       }
+      stage('Create PR') {
+        agent {
+            dockerfile {
+              filename 'Dockerfile'
+              dir 'cicd/docker/autopr'
+              label 'Docker-enabled'
+            }
+        }
+        steps {
+          script {
+            sh(script: """
+            echo "test"
+            """)
+            /*
+            try {
+              // createPRInShellVueChi()
+              // createPRInShellChi()
+            } catch (Exception e) {
+              echo "The creation of PRs in the shell failed"
+            }
+            */
+          }
+        }
+      }
       stage('Adoption Stats') {
         agent {
           dockerfile {
