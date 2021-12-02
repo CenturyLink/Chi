@@ -1,34 +1,30 @@
 <template lang="pug">
   <ComponentExample title="With tabs" id="with_tabs_portal" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text Use portal themed cards with tabs for organizing Enterprise Portal card content into separate but related views.
-    div(slot="example")
-      .chi-card
-        .chi-card__tabs
-          ul.chi-tabs
-            li.-active
-              a(href='#tab1') Active Tab
-            li
-              a(href='#tab2') Tab Link
-            li
-              a(href='#tab3') Tab Link
-        .chi-card__content.chi-tabs-panel.-active(id="tab1" role="tabpanel") 
-          .chi-card__caption
-            | Tab 1 content
-        .chi-card__content.chi-tabs-panel(id="tab2" role="tabpanel") 
-          .chi-card__caption
-            | Tab 2 content
-        .chi-card__content.chi-tabs-panel(id="tab3" role="tabpanel") 
-          .chi-card__caption
-            | Tab 3 content
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description") Use portal themed cards with tabs for organizing Enterprise Portal card content into separate but related views.
+    .chi-card(slot="example")
+      .chi-card__tabs
+        ul.chi-tabs
+          li.-active
+            a(href='#tab1') Active Tab
+          li
+            a(href='#tab2') Tab Link
+          li
+            a(href='#tab3') Tab Link
+      .chi-card__content.chi-tabs-panel.-active(id="tab1" role="tabpanel") 
+        .chi-card__caption
+          | Tab 1 content
+      .chi-card__content.chi-tabs-panel(id="tab2" role="tabpanel") 
+        .chi-card__caption
+          | Tab 2 content
+      .chi-card__content.chi-tabs-panel(id="tab3" role="tabpanel") 
+        .chi-card__caption
+          | Tab 3 content
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

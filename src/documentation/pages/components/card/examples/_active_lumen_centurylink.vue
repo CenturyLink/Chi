@@ -1,20 +1,16 @@
 <template lang="pug">
   <ComponentExample title="Active" id="active_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text Render an active state card with the class <code>-active</code>.
-    div(slot="example")
-      .chi-card.-active(style="max-width:20rem;")
-        .chi-card__content
-          .chi-card__caption
-            | This is an active card
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description") Render an active state card with the class <code>-active</code>.
+    .chi-card.-active(style="max-width:20rem;" slot="example")
+      .chi-card__content
+        .chi-card__caption
+          | This is an active card
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

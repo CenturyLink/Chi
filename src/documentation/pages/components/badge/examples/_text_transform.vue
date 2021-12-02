@@ -1,21 +1,25 @@
 <template lang="pug">
-  <ComponentExample title="Text transform" id="text_transform" :tabs="exampleTabs" padding="-p--0">
-    div(slot="example")
-      .-p--2
-        chi-badge(text-transform='uppercase', class='-m--1')= 'Badge'
-        chi-badge(text-transform='lowercase', class='-m--1')= 'BADGE'
-        chi-badge(text-transform='capitalized', class='-m--1')= 'badge'
-    div(slot="code-webcomponent").chi-tab__description
-      | Set the <code>text-transform</code> attribute to <code>uppercase</code> to render badges in uppercase,
-      | <code>lowercase</code> to render badges in lowercase and <code>capitalized</code> to render badges as capitalized.
+  <ComponentExample title="Text transform" id="text_transform" :tabs="exampleTabs" padding="-p--2">
+    <Wrapper slot="example">
+      chi-badge(text-transform='uppercase', class='-m--1')= 'Badge'
+      chi-badge(text-transform='lowercase', class='-m--1')= 'BADGE'
+      chi-badge(text-transform='capitalized', class='-m--1')= 'badge'
+    </Wrapper>
+    <Wrapper slot="code-webcomponent">
+      .chi-tab__description
+        | Set the <code>text-transform</code> attribute to <code>uppercase</code> to render badges in uppercase,
+        | <code>lowercase</code> to render badges in lowercase and <code>capitalized</code> to render badges as capitalized.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    div(slot="code-htmlblueprint").chi-tab__description
-      | Use the <code>-text--uppercase</code> text utility class to render badges in all uppercase. <code>-text--lowercase</code> and <code>-text--capitalized</code> are also supported.
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      .chi-tab__description
+        | Use the <code>-text--uppercase</code> text utility class to render badges in all uppercase. <code>-text--lowercase</code> and <code>-text--capitalized</code> are also supported.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
