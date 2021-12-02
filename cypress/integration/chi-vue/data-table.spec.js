@@ -256,31 +256,6 @@ describe('Data Table', () => {
           });
       });
 
-      it('Should show the correct active page (Page 1) after data is updated to a single row', () => {
-        cy.get(
-          `[data-cy='data-table-compact'] .${PAGINATION_CLASSES.PAGINATION}`
-        )
-          .find(`button[data-page='2']`)
-          .first()
-          .click();
-        cy.get(`[data-cy='data-table-compact-container']`)
-          .find('button')
-          .contains('Update')
-          .click()
-          .then(() => {
-            cy.get(`[data-cy='data-table-compact']`)
-              .find(`.${DATA_TABLE_CLASSES.BODY}`)
-              .children()
-              .should('have.length', '1');
-            cy.get(
-              `[data-cy='data-table-compact'] .${PAGINATION_CLASSES.JUMPER}`
-            )
-              .children()
-              .first()
-              .should('have.value', '1');
-          });
-      });
-
       it('Should go to first and last pages', () => {
         cy.get(`@pagination`)
           .find(`.${ICON_BUTTON}`)
