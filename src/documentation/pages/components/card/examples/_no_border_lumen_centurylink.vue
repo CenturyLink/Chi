@@ -1,20 +1,17 @@
 <template lang="pug">
   <ComponentExample title="No Border" id="no_border_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text Render a card without a border using the class <code>-no-border</code>.
+    p.-text(slot="example-description") Render a card without a border using the class <code>-no-border</code>.
     div(slot="example")
       .chi-card.-no-border(style="max-width:20rem;")
         .chi-card__content
           .chi-card__caption
             | This is a card with no border
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

@@ -1,24 +1,20 @@
 <template lang="pug">
   <ComponentExample title="Required" id="required" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text   
-        | Use the <code>required</code> boolean attribute to indicate which checkboxes must be completed before submitting a form.
-        | This is useful for ensuring users accept a Terms of Service, Privacy Policy, or other legal requirement.
-    div(slot="example")
-      .chi-form__item
-        .chi-checkbox
-          input(type="checkbox" class="chi-checkbox__input" id="checkbox-re1")
-          label(for="checkbox-re1" class="chi-checkbox__label")
-            | I accept the Terms of Service
-            abbr.chi-label__required(title="Required field") *
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description")   
+      | Use the <code>required</code> boolean attribute to indicate which checkboxes must be completed before submitting a form.
+      | This is useful for ensuring users accept a Terms of Service, Privacy Policy, or other legal requirement.
+    .chi-form__item(slot="example")
+      .chi-checkbox
+        input(type="checkbox" class="chi-checkbox__input" id="checkbox-re1")
+        label(for="checkbox-re1" class="chi-checkbox__label")
+          | I accept the Terms of Service
+          abbr.chi-label__required(title="Required field") *
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

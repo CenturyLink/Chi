@@ -1,23 +1,19 @@
 <template lang="pug">
   <ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text   
-        | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
-        | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
-        | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
-    div(slot="example")
-      .chi-form__item
-        .chi-checkbox
-          input(type="checkbox" class="chi-checkbox__input" id="checkbox-di1" disabled)
-          label(for="checkbox-di1" class="chi-checkbox__label") Checkbox
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description")
+      | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
+      | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
+      | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
+    .chi-form__item(slot="example")
+      .chi-checkbox
+        input(type="checkbox" class="chi-checkbox__input" id="checkbox-di1" disabled)
+        label(for="checkbox-di1" class="chi-checkbox__label") Checkbox
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

@@ -1,25 +1,27 @@
 <template lang="pug">
   <ComponentExample title="Sizes" id="sizes_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
-    div(slot="example")
-      each size in ['sm', 'md', 'lg', 'xl']
+    p.-text(slot="example-description") Accordion supports the following sizes: <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
+    each size in ['sm', 'md', 'lg', 'xl']
+      <Wrapper slot="example">
         p.-text--bold.-pl--2= size
-          div(class=`chi-accordion -${size}` id=`example-size-${size}`)
-            .chi-accordion__item
-              button.chi-accordion__trigger
-                i.chi-icon.icon-chevron-down(aria-hidden="true")
-                .chi-accordion__title
-                  | Accordion
-              .chi-accordion__content
-                p.chi-accordion__text Content goes here
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <JSNeeded slot="tab-description" />
+        div(class=`chi-accordion -${size}` id=`example-size-${size}`)
+          .chi-accordion__item
+            button.chi-accordion__trigger
+              i.chi-icon.icon-chevron-down(aria-hidden="true")
+              .chi-accordion__title
+                | Accordion
+            .chi-accordion__content
+              p.chi-accordion__text Content goes here
+      </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
