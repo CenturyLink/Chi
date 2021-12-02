@@ -1,23 +1,26 @@
 <template lang="pug">
   <ComponentExample title="Default" titleSize="h4" id="toast_default_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
-    div(slot='example')
+    <Wrapper slot='example'>
       chi-alert.-m--2(type='toast', icon='circle-info')
         | This is a base alert
       each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
         chi-alert.-m--2(type='toast', icon=val, color=type)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
-    div(slot='code-webcomponent')
+    </Wrapper>
+    <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         span
           | To use a toast alert, set the <code>type</code> attribute to <code>toast</code>.
       pre.language-html
         code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    div(slot='code-htmlblueprint')
+    </Wrapper>
+    <Wrapper slot='code-htmlblueprint'>
       .chi-tab__description
         span
           | To use a toast alert, apply the class <code>-toast</code>.
       pre.language-html
         code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
+    </Wrapper>
   </ComponentExample>
 </template>
 

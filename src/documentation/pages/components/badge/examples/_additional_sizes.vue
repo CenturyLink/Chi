@@ -1,9 +1,9 @@
 <template lang="pug">
-  div
+  <Wrapper>
     h3 Additional Sizes
-    div
-      <SmallSize />
-      <ExtraSmallSize />
+    <SmallSize />
+    <ExtraSmallSize />
+  </Wrapper>
 </template>
 
 <script lang="ts">

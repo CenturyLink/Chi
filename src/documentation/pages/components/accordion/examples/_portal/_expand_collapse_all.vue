@@ -1,69 +1,68 @@
 <template lang="pug">
   <ComponentExample title="Expand / Collapse all Accordion items" id="expand_collapse_all_portal" :tabs="exampleTabs" padding="-p--3 p-lg--6">
-    div(slot="example")
-      button(@click="expandAll").chi-button.-primary.-outline#expand-all-portal Expand all
-      button(@click="collapseAll").chi-button.-primary.-outline.-ml--1#collapse-all-portal Collapse all
-      .chi-accordion.-mt--2#expand-collapse-portal
-        .chi-accordion__item.-expanded
-          button.chi-accordion__trigger
-            .chi-accordion__title
-              | Accordion
-            i.chi-icon.icon-chevron-down(aria-hidden="true")
-          .chi-accordion__content
-            .chi-accordion
-              .chi-accordion__item
-                button.chi-accordion__trigger
-                  .chi-accordion__title
-                    | Accordion item 1
-                  i.chi-icon.icon-chevron-down(aria-hidden="true")
-                .chi-accordion__content
-                  p.chi-accordion__text Content of Accordion item 1
-                  .chi-accordion
-                    .chi-accordion__item
-                      button.chi-accordion__trigger
-                        .chi-accordion__title
-                          | Accordion item 1.1
-                        i.chi-icon.icon-chevron-down(aria-hidden="true")
-                      .chi-accordion__content
-                        p.chi-accordion__text Content of Accordion item 1.1
-                    .chi-accordion__item
-                      button.chi-accordion__trigger
-                        .chi-accordion__title
-                          | Accordion item 1.2
-                        i.chi-icon.icon-chevron-down(aria-hidden="true")
-                      .chi-accordion__content
-                        p.chi-accordion__text Content of Accordion item 1.2
-              .chi-accordion__item
-                button.chi-accordion__trigger
-                  .chi-accordion__title
-                    | Accordion item 2
-                  i.chi-icon.icon-chevron-down(aria-hidden="true")
-                .chi-accordion__content
-                  p.chi-accordion__text Content of Accordion item 2
-                  .chi-accordion
-                    .chi-accordion__item
-                      button.chi-accordion__trigger
-                        .chi-accordion__title
-                          | Accordion item 2.1
-                        i.chi-icon.icon-chevron-down(aria-hidden="true")
-                      .chi-accordion__content
-                        p.chi-accordion__text Content of Accordion item 2.1
-                    .chi-accordion__item
-                      button.chi-accordion__trigger
-                        .chi-accordion__title
-                          | Accordion item 2.2
-                        i.chi-icon.icon-chevron-down(aria-hidden="true")
-                      .chi-accordion__content
-                        p.chi-accordion__text Content of Accordion item 2.2
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <JSNeeded slot="tab-description" />
+    button(@click="expandAll" slot="example").chi-button.-primary.-outline#expand-all-portal Expand all
+    button(@click="collapseAll" slot="example").chi-button.-primary.-outline.-ml--1#collapse-all-portal Collapse all
+    .chi-accordion.-mt--2#expand-collapse-portal(slot="example")
+      .chi-accordion__item.-expanded
+        button.chi-accordion__trigger
+          .chi-accordion__title
+            | Accordion
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+        .chi-accordion__content
+          .chi-accordion
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion item 1
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+              .chi-accordion__content
+                p.chi-accordion__text Content of Accordion item 1
+                .chi-accordion
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion item 1.1
+                      i.chi-icon.icon-chevron-down(aria-hidden="true")
+                    .chi-accordion__content
+                      p.chi-accordion__text Content of Accordion item 1.1
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion item 1.2
+                      i.chi-icon.icon-chevron-down(aria-hidden="true")
+                    .chi-accordion__content
+                      p.chi-accordion__text Content of Accordion item 1.2
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion item 2
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+              .chi-accordion__content
+                p.chi-accordion__text Content of Accordion item 2
+                .chi-accordion
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion item 2.1
+                      i.chi-icon.icon-chevron-down(aria-hidden="true")
+                    .chi-accordion__content
+                      p.chi-accordion__text Content of Accordion item 2.1
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      .chi-accordion__title
+                        | Accordion item 2.2
+                      i.chi-icon.icon-chevron-down(aria-hidden="true")
+                    .chi-accordion__content
+                      p.chi-accordion__text Content of Accordion item 2.2
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 

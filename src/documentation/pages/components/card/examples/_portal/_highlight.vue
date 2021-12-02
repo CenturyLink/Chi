@@ -1,21 +1,18 @@
 <template lang="pug">
   <ComponentExample title="Highlight" id="highlight_portal" :tabs="exampleTabs">
-    div(slot="example")
-      .chi-card.-highlight(style="max-width:20rem;")
-        .chi-card__header
-          .chi-card__title Title
-        .chi-card__content
-          .chi-card__caption
-            | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
-            | Ut felis magna, facilisis ut malesuada nec.
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    .chi-card.-highlight(style="max-width:20rem;" slot="example")
+      .chi-card__header
+        .chi-card__title Title
+      .chi-card__content
+        .chi-card__caption
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
