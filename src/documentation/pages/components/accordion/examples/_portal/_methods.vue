@@ -1,39 +1,38 @@
 <template lang="pug">
   <ComponentExample title="Show / Hide / Toggle of individual items of Accordion" id="methods_portal" :tabs="exampleTabs" padding="-p--3 p-lg--6">
-    div(slot="example")
-      button(@click="toggleOne").chi-button.-outline.-primary#toggle-accordion-portal-1 Toggle item 1
-      button(@click="toggleTwo").chi-button.-outline.-primary.-ml--1#toggle-accordion-portal-2 Toggle item 2
-      .chi-accordion.-mt--2#individual-portal-accordion-items
-        .chi-accordion__item.-expanded
-          button.chi-accordion__trigger
-            .chi-accordion__title
-              | Accordion
-            i.chi-icon.icon-chevron-down(aria-hidden="true")
-          .chi-accordion__content
-            .chi-accordion
-              .chi-accordion__item(ref="invividual-portal-accordion-item-1")
-                button.chi-accordion__trigger
-                  .chi-accordion__title
-                    | Accordion item 1
-                  i.chi-icon.icon-chevron-down(aria-hidden="true")
-                .chi-accordion__content
-                  p.chi-accordion__text Content of Accordion item 1
-              .chi-accordion__item(ref="invividual-portal-accordion-item-2")
-                button.chi-accordion__trigger
-                  .chi-accordion__title
-                    | Accordion item 2
-                  i.chi-icon.icon-chevron-down(aria-hidden="true")
-                .chi-accordion__content
-                  p.chi-accordion__text Content of Accordion item 2
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <JSNeeded slot="tab-description" />
+    button(@click="toggleOne", slot="example").chi-button.-outline.-primary#toggle-accordion-portal-1 Toggle item 1
+    button(@click="toggleTwo", slot="example").chi-button.-outline.-primary.-ml--1#toggle-accordion-portal-2 Toggle item 2
+    .chi-accordion.-mt--2#individual-portal-accordion-items(slot="example")
+      .chi-accordion__item.-expanded
+        button.chi-accordion__trigger
+          .chi-accordion__title
+            | Accordion
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+        .chi-accordion__content
+          .chi-accordion
+            .chi-accordion__item(ref="invividual-portal-accordion-item-1")
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion item 1
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+              .chi-accordion__content
+                p.chi-accordion__text Content of Accordion item 1
+            .chi-accordion__item(ref="invividual-portal-accordion-item-2")
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion item 2
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+              .chi-accordion__content
+                p.chi-accordion__text Content of Accordion item 2
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
