@@ -1,68 +1,67 @@
 <template lang="pug">
   <ComponentExample title="Nested" id="nested_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
-    div(slot="example")
-      .chi-accordion#example-nested
-        .chi-accordion__item
-          button.chi-accordion__trigger
-            i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__title
-              | Click me to expand Accordion
-          .chi-accordion__content
-            .chi-accordion
-              .chi-accordion__item
-                button.chi-accordion__trigger
-                  i.chi-icon.icon-chevron-down(aria-hidden="true")
-                  .chi-accordion__title
-                    | Accordion 1
-                .chi-accordion__content
-                  p.chi-accordion__text Content goes here
-                  .chi-accordion
-                    .chi-accordion__item
-                      button.chi-accordion__trigger
-                        i.chi-icon.icon-chevron-down(aria-hidden="true")
-                        .chi-accordion__title
-                          | Accordion 1.1
-                      .chi-accordion__content
-                        p.chi-accordion__text Content goes here
-                        .chi-accordion
-                          .chi-accordion__item
-                            button.chi-accordion__trigger
-                              i.chi-icon.icon-chevron-down(aria-hidden="true")
-                              .chi-accordion__title
-                                | Accordion 1.1.1
-                            .chi-accordion__content
-                              p.chi-accordion__text Content goes here
-                    .chi-accordion__item
-                      button.chi-accordion__trigger
-                        i.chi-icon.icon-chevron-down(aria-hidden="true")
-                        .chi-accordion__title
-                          | Accordion 1.2
-                      .chi-accordion__content
-                        p.chi-accordion__text Content goes here
-              .chi-accordion__item
-                button.chi-accordion__trigger
-                  i.chi-icon.icon-chevron-down(aria-hidden="true")
-                  .chi-accordion__title
-                    | Accordion 2
-                .chi-accordion__content
-                  p.chi-accordion__text Content goes here
-                  .chi-accordion
-                    .chi-accordion__item
-                      button.chi-accordion__trigger
-                        i.chi-icon.icon-chevron-down(aria-hidden="true")
-                        .chi-accordion__title
-                          | Accordion 2.1
-                      .chi-accordion__content
-                        p.chi-accordion__text Content goes here
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <JSNeeded slot="tab-description" />
+    .chi-accordion#example-nested(slot="example")
+      .chi-accordion__item
+        button.chi-accordion__trigger
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+          .chi-accordion__title
+            | Click me to expand Accordion
+        .chi-accordion__content
+          .chi-accordion
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+                .chi-accordion__title
+                  | Accordion 1
+              .chi-accordion__content
+                p.chi-accordion__text Content goes here
+                .chi-accordion
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      i.chi-icon.icon-chevron-down(aria-hidden="true")
+                      .chi-accordion__title
+                        | Accordion 1.1
+                    .chi-accordion__content
+                      p.chi-accordion__text Content goes here
+                      .chi-accordion
+                        .chi-accordion__item
+                          button.chi-accordion__trigger
+                            i.chi-icon.icon-chevron-down(aria-hidden="true")
+                            .chi-accordion__title
+                              | Accordion 1.1.1
+                          .chi-accordion__content
+                            p.chi-accordion__text Content goes here
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      i.chi-icon.icon-chevron-down(aria-hidden="true")
+                      .chi-accordion__title
+                        | Accordion 1.2
+                    .chi-accordion__content
+                      p.chi-accordion__text Content goes here
+            .chi-accordion__item
+              button.chi-accordion__trigger
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+                .chi-accordion__title
+                  | Accordion 2
+              .chi-accordion__content
+                p.chi-accordion__text Content goes here
+                .chi-accordion
+                  .chi-accordion__item
+                    button.chi-accordion__trigger
+                      i.chi-icon.icon-chevron-down(aria-hidden="true")
+                      .chi-accordion__title
+                        | Accordion 2.1
+                    .chi-accordion__content
+                      p.chi-accordion__text Content goes here
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 

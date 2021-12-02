@@ -1,22 +1,18 @@
 <template lang="pug">
   <ComponentExample title="Inverse" id="inverse" :tabs="exampleTabs" padding="-p--0">
-    div(slot="example-description")
-      p.-text
-        | The inverse logo is used on black or dark-colored backgrounds that provide sufficient contrast.
-    div(slot="example")
-      .-p--3.-bg--black.-d--flex.-justify-content--around.-align-items--center
-        chi-link(href="#", alternative-text="Lumen")
-          chi-brand(logo='lumen', color='inverse')
-        chi-link(href="#", alternative-text="CenturyLink")
-          chi-brand(logo='centurylink', color='inverse')
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description")
+      | The inverse logo is used on black or dark-colored backgrounds that provide sufficient contrast.
+    .-p--3.-bg--black.-d--flex.-justify-content--around.-align-items--center(slot="example")
+      chi-link(href="#", alternative-text="Lumen")
+        chi-brand(logo='lumen', color='inverse')
+      chi-link(href="#", alternative-text="CenturyLink")
+        chi-brand(logo='centurylink', color='inverse')
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

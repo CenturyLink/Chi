@@ -3,14 +3,12 @@
     h2 Examples
     p.-text To render a divider, apply the class <code>chi-divider</code> to an <code>hr</code> or <code>div</code> tag.
 
-    div
-      <Base />
-      <Vertical />
-      <Inverse />
-      <Label />
+    <Base />
+    <Vertical />
+    <Inverse />
+    <Label />
 
-    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-      <SizesLumenCenturyLink />
+    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
 </template>
 
 <script lang="ts">

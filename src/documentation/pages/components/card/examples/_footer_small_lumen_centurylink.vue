@@ -1,23 +1,19 @@
 <template lang="pug">
   <ComponentExample title="Footer Small" id="footer_small_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text Apply the class <code>-sm</code> on <code>chi-card__footer</code> to reduce its padding.
-    div(slot="example")
-      .chi-card(style="max-width:20rem;")
-        .chi-card__content
-          .chi-card__caption
-            | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
-            | Ut felis magna, facilisis ut malesuada nec.
-        .chi-card__footer.-sm
-          a.-text(href="#exampleLink") Action
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description") Apply the class <code>-sm</code> on <code>chi-card__footer</code> to reduce its padding.
+    .chi-card(style="max-width:20rem;" slot="example")
+      .chi-card__content
+        .chi-card__caption
+          | Aenean pretium massa sed vehicula porta. Phasellus id metus felis.
+          | Ut felis magna, facilisis ut malesuada nec.
+      .chi-card__footer.-sm
+        a.-text(href="#exampleLink") Action
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

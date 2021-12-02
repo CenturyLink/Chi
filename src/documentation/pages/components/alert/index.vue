@@ -31,7 +31,5 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     };
   }
 })
-export default class Alert extends Vue {
-  mounted() {}
-}
+export default class Alert extends Vue {}
 </script>

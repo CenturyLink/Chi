@@ -1,18 +1,18 @@
 <template lang="pug">
   <ComponentExample title="Actionable" titleSize="h4" id="banner_actionable_lumen_centurylink" padding="-p--0" :tabs="exampleTabs">
-    div(slot='example')
-      .-p--1.-bg--grey-20
-        chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", closable)
-          | This is a large closable alert
-          chi-button(slot="chi-alert__actions") Secondary action
-          chi-button(slot="chi-alert__actions", color='primary') Primary action
-    div(slot='code-webcomponent')
+    .-p--1.-bg--grey-20(slot='example')
+      chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", closable)
+        | This is a large closable alert
+        chi-button(slot="chi-alert__actions") Secondary action
+        chi-button(slot="chi-alert__actions", color='primary') Primary action
+    <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         span
           | Add buttons to an alert by defining <code>slot="chi-alert__actions"</code> on each <code>chi-button</code>.
       pre.language-html
         code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    div(slot='code-htmlblueprint')
+    </Wrapper>
+    <Wrapper slot='code-htmlblueprint'>
       .chi-tab__description
         span
           | While <code>chi-alert__actions</code> can be added to any Alert, alert actions are best suited for default or Titled alerts with the size class <code>-lg</code>.
@@ -20,6 +20,7 @@
           | Large Alerts have extra <code>chi-alert</code> padding, a larger <code>chi-alert__icon</code>, and a larger <code>chi-alert__close-button</code>.
       pre.language-html
         code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
+    </Wrapper>
   </ComponentExample>
 </template>
 

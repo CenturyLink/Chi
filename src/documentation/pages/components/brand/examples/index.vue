@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  <Wrapper>
     h2 Examples
     p.-text
       | The Brand component is primarily used in application headers to showcase
@@ -7,12 +7,12 @@
       | placed in a <code>chi-link</code> to facilitate this use case, but note,
       | placing in a <code>chi-link</code> tag is not required.
 
-    div
-      <Base />
-      <Inverse />
-      <White />
-      <Black />
-      <Sizes />
+    <Base />
+    <Inverse />
+    <White />
+    <Black />
+    <Sizes />
+  </Wrapper>
 </template>
 
 <script lang="ts">

@@ -1,22 +1,20 @@
 <template lang="pug">
   <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text File inputs support sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>, 
-        | <code>-lg</code>, <code>-xl</code>. The default size is <code>-md</code>.
-    div(slot="example")
+    p.-text(slot="example-description") File inputs support sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>, 
+      | <code>-lg</code>, <code>-xl</code>. The default size is <code>-md</code>.
+    <Wrapper slot="example">
       each size in ['xs', 'sm', 'md', 'lg', 'xl']
         .-p--2
           p.-text--bold.-mt--0= '-' + size
           input.chi-file-input(type="file", class=`-${size}`, id=`example-file-${size}`, aria-label="Choose file")
           label(for=`example-file-${size}`) No file chosen
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>  
+    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>  
   </ComponentExample>
 </template>
 
