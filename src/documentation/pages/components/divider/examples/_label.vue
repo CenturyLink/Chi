@@ -1,20 +1,16 @@
 <template lang="pug">
   <ComponentExample title="Label" id="label" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text
-        | Add text to a divider and apply the class <code>-label</code> to include a label.
-        | This method is especially useful for login and sign up forms.
-        | Label text size can be changed by applying text utility classes such as <code>-text</code>, <code>-text--sm</code>, or <code>-text--lg</code>.
-    div(slot="example")
-      .chi-divider.-text.-label or
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description")
+      | Add text to a divider and apply the class <code>-label</code> to include a label.
+      | This method is especially useful for login and sign up forms.
+      | Label text size can be changed by applying text utility classes such as <code>-text</code>, <code>-text--sm</code>, or <code>-text--lg</code>.
+    .chi-divider.-text.-label(slot="example") or
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

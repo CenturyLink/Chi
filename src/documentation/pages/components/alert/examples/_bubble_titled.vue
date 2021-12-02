@@ -1,26 +1,28 @@
 <template lang="pug">
   <ComponentExample title="Titled" titleSize="h4" id="bubble_titled" padding="-p--1" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text The title will automatically get colored based on the alerts semantic color class.
-    div(slot='example')
+    p.-text(slot="example-description") The title will automatically get colored based on the alerts semantic color class.
+    <Wrapper slot='example'>
       chi-alert(icon='circle-info', title="Base").-m--2
         | This is a base alert
       each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
         chi-alert.-m--2(color=type, icon=val, title=type)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
-    div(slot='code-webcomponent')
+    </Wrapper>
+    <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         span
           | Use the <code>title=""</code> attribute to display a title above the alert text.
       pre.language-html
         code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    div(slot='code-htmlblueprint')
+    </Wrapper>
+    <Wrapper slot='code-htmlblueprint'>
       .chi-tab__description
         span
           | Use <code>chi-alert__title</code> to add a title to an Alert.
           | To override the title color, apply a text color utility class.
       pre.language-html
         code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
+    </Wrapper>
   </ComponentExample>
 </template>
 

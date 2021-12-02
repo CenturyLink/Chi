@@ -57,7 +57,7 @@ import SizesPortal from './_portal/_sizes.vue';
     TruncatedLumenCenturyLink,
     TruncatedPortal,
     SizesLumenCenturyLink,
-    SizesPortal
+    SizesPortal,
   }
 })
 export default class Examples extends Vue {}

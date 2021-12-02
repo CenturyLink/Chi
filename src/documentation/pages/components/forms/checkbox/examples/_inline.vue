@@ -1,9 +1,8 @@
 <template lang="pug">
   <ComponentExample title="Inline" id="inline" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text   
-        | Apply the class <code>-inline</code> to <code>chi-form__item</code> to display two or more checkboxes in one row.
-    div(slot="example")
+    p.-text(slot="example-description")
+      | Apply the class <code>-inline</code> to <code>chi-form__item</code> to display two or more checkboxes in one row.
+    <Wrapper slot="example">
       legend.chi-label Select options
       .chi-form__item.-inline
         .chi-checkbox
@@ -13,14 +12,13 @@
         .chi-checkbox
           input(type="checkbox", class="chi-checkbox__input", id="checkbox-in2")
           label(for="checkbox-in2", class="chi-checkbox__label") Option 2
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

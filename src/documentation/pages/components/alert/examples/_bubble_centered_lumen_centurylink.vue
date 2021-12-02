@@ -1,24 +1,24 @@
 <template lang="pug">
   <ComponentExample title="Centered" titleSize="h4" id="bubble_centered_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text 
-        |  <strong>Note:</strong> Use sparingly. Centered Bubble alerts should only be used to render brief messages on centered forms
-        |  such as those found on Sign In and Sign Up screens. Centered alerts do not support titles.
-    div(slot='example')
-      chi-alert.-m--2(color='danger', icon='circle-warning', center)
-        | This is a centered danger alert
-    div(slot='code-webcomponent')
+    p.-text(slot="example-description")
+      |  <strong>Note:</strong> Use sparingly. Centered Bubble alerts should only be used to render brief messages on centered forms
+      |  such as those found on Sign In and Sign Up screens. Centered alerts do not support titles.
+    chi-alert.-m--2(color='danger', icon='circle-warning', center, slot='example')
+      | This is a centered danger alert
+    <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         span
           | Use the attribute <code>center</code> to center the content of a Bubble Alert.
       pre.language-html
         code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    div(slot='code-htmlblueprint')
+    </Wrapper>
+    <Wrapper slot='code-htmlblueprint'>
       .chi-tab__description
         span
           | Apply the class <code>-center</code> to center the content of a Bubble Alert.
       pre.language-html
         code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
+    </Wrapper>
   </ComponentExample>
 </template>
 

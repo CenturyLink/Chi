@@ -1,32 +1,35 @@
 <template lang="pug">
   <ComponentExample title="Solid" id="solid" :tabs="exampleTabs" padding="-p--0">
-    div(slot="example")
-      .chi-grid.-no-gutter
-        .chi-col.-w--12
-          .-p--2.-text--center
-            chi-badge(class='-m--1')= 'Base'
-            chi-badge(class='-m--1', color='primary')= 'Primary'
-            chi-badge(class='-m--1', color='success')= 'Success'
-            chi-badge(class='-m--1', color='warning')= 'Warning'
-            chi-badge(class='-m--1', color='danger')= 'Danger'
-            chi-badge(class='-m--1', color='dark')= 'Dark'
-            chi-badge(class='-m--1', color='muted')= 'Muted'          
-        .chi-col.-w--12
-          .-p--2.-bg--black.-text--center
-            chi-badge(class='-m--1', color='secondary')= 'Secondary'
-            chi-badge(class='-m--1', color='light')= 'Light'
-    div(slot="code-webcomponent").chi-tab__description
-      | To display a badge, use the tag <code>&lt;chi-badge&gt;</code>.
-      | A contextual color (e.g. <code>primary</code>) can be defined on the <code>color</code> attribute to provide alternate styling.
+    .chi-grid.-no-gutter(slot="example")
+      .chi-col.-w--12
+        .-p--2.-text--center
+          chi-badge(class='-m--1')= 'Base'
+          chi-badge(class='-m--1', color='primary')= 'Primary'
+          chi-badge(class='-m--1', color='success')= 'Success'
+          chi-badge(class='-m--1', color='warning')= 'Warning'
+          chi-badge(class='-m--1', color='danger')= 'Danger'
+          chi-badge(class='-m--1', color='dark')= 'Dark'
+          chi-badge(class='-m--1', color='muted')= 'Muted'          
+      .chi-col.-w--12
+        .-p--2.-bg--black.-text--center
+          chi-badge(class='-m--1', color='secondary')= 'Secondary'
+          chi-badge(class='-m--1', color='light')= 'Light'
+    <Wrapper slot="code-webcomponent">
+      .chi-tab__description
+        | To display a badge, use the tag <code>&lt;chi-badge&gt;</code>.
+        | A contextual color (e.g. <code>primary</code>) can be defined on the <code>color</code> attribute to provide alternate styling.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    div(slot="code-htmlblueprint").chi-tab__description
-      | To display a badge, use the class <code>chi-badge</code>.
-      | A contextual class (e.g. <code>-primary</code>) can be applied to provide alternate styling.
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      .chi-tab__description
+        | To display a badge, use the class <code>chi-badge</code>.
+        | A contextual class (e.g. <code>-primary</code>) can be applied to provide alternate styling.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
