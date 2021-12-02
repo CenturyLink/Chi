@@ -1,7 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text Trigger and dropdown enclosed in the same div.
+    p.-text(slot="example-description") Trigger and dropdown enclosed in the same div.
     .chi-dropdown(slot="example")
       button.chi-button.chi-dropdown__trigger#dropdown-1 Dropdown, click me
       .chi-dropdown__menu
@@ -9,15 +8,17 @@
         a.chi-dropdown__menu-item(href='#exampleLink') Item 2
         a.chi-dropdown__menu-item(href='#exampleLink') Item 3
         a.chi-dropdown__menu-item(href='#exampleLink') Item 4
-    div(slot="code-webcomponent")
+    <Wrapper slot="code-webcomponent">
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    div(slot="code-htmlblueprint")
-      <JSNeeded slot="tab-description" />
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 

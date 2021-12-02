@@ -1,8 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Data-target" id="data_target" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text Dropdown referenced by a <code>data-target</code> attribute in the activator.
-    div(slot="example")
+    p.-text(slot="example-description") Dropdown referenced by a <code>data-target</code> attribute in the activator.
+    <Wrapper slot="example">
       button.chi-button.chi-dropdown__trigger(id="dropdown-2" data-target="#dropdown-2-menu") Dropdown component
       p.-text There is no need for proximity between elements.
       #dropdown-2-menu.chi-dropdown__menu
@@ -10,15 +9,18 @@
         a.chi-dropdown__menu-item(href='#exampleLink') Item 2
         a.chi-dropdown__menu-item(href='#exampleLink') Item 3
         a.chi-dropdown__menu-item(href='#exampleLink') Item 4
-    div(slot="code-webcomponent")
+    </Wrapper>
+    <Wrapper slot="code-webcomponent">      
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    div(slot="code-htmlblueprint")
-      <JSNeeded slot="tab-description" />
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 

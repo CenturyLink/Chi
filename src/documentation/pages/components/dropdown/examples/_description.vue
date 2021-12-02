@@ -14,14 +14,16 @@
         a.chi-dropdown__menu-item.-hover(href='#exampleLink')
           span.chi-dropdown__menu-item_title Hovered item
           span.chi-dropdown__menu-item_text Item description
-    div(slot="code-webcomponent")
+    <Wrapper slot="code-webcomponent">      
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    div(slot="code-htmlblueprint")
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
@@ -68,7 +70,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Description extends Vue {
-  mounted() {}
-}
+export default class Description extends Vue {}
 </script>

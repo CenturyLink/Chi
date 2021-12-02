@@ -1,24 +1,25 @@
 <template lang="pug">
   <ComponentExample title="Hover" id="base" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text 
-        | Dropdown on hover is only supported when trigger and dropdown elements are enclosed in the same div.
-        | Use the <code>chi-dropdown__hover</code> class to achieve this.
+    p.-text(slot="example-description") 
+      | Dropdown on hover is only supported when trigger and dropdown elements are enclosed in the same div.
+      | Use the <code>chi-dropdown__hover</code> class to achieve this.
     .chi-dropdown.chi-dropdown__hover(slot="example")
       button.chi-button.chi-dropdown__trigger Dropdown component
       .chi-dropdown__menu
         a.chi-dropdown__menu-item(href='#exampleLink') Item 1
         a.chi-dropdown__menu-item(href='#exampleLink') Item 2
         a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-    div(slot="code-webcomponent")
+    <Wrapper slot="code-webcomponent">      
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    div(slot="code-htmlblueprint")
-      <JSNeeded slot="tab-description" />
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
@@ -57,7 +58,5 @@ declare const chi: any;
     };
   }
 })
-export default class Hover extends Vue {
-  mounted() {}
-}
+export default class Hover extends Vue {}
 </script>

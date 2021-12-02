@@ -24,16 +24,17 @@
               span(class="chi-switch__content")
                 span.chi-switch__thumb
               span.chi-switch__label App notifications
-    div(slot="code-webcomponent")
+    <Wrapper slot="code-webcomponent">      
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    div(slot="code-htmlblueprint")
-      <JSNeeded slot="tab-description" />
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
       <pre class="language-html">
-      
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
@@ -100,7 +101,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class ToggleSwitch extends Vue {
-  mounted() {}
-}
+export default class ToggleSwitch extends Vue {}
 </script>

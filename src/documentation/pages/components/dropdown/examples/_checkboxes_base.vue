@@ -1,33 +1,34 @@
 <template lang="pug">
-  div
-    <ComponentExample title="Base" titleSize="h4" id="checkboxes_base" :tabs="exampleTabs" backgroundColor="#eee">
-      .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3(slot="example")
-        .chi-dropdown__menu.-active
-          .chi-dropdown__menu-item
-            .chi-checkbox
-              input(type="checkbox", class="chi-checkbox__input", id="checkbox1")
-              label(for="checkbox1", class="chi-checkbox__label") Item 1
-          .chi-dropdown__menu-item
-            .chi-checkbox
-              input(type="checkbox", class="chi-checkbox__input", id="checkbox2", disabled)
-              label(for="checkbox2", class="chi-checkbox__label") Item 2
-          .chi-dropdown__menu-item
-            .chi-checkbox
-              input(type="checkbox", class="chi-checkbox__input", id="checkbox3", checked)
-              label(for="checkbox3", class="chi-checkbox__label") Item 3
-          .chi-dropdown__menu-item
-            .chi-checkbox
-              input(type="checkbox", class="chi-checkbox__input", id="checkbox4")
-              label(for="checkbox4", class="chi-checkbox__label") Item 4
-      div(slot="code-webcomponent")
-        <pre class="language-html">
-          <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-        </pre>
-      div(slot="code-htmlblueprint")
-        <pre class="language-html">
-          <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-        </pre>
-    </ComponentExample>
+  <ComponentExample title="Base" titleSize="h4" id="checkboxes_base" :tabs="exampleTabs" backgroundColor="#eee">
+    .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3(slot="example")
+      .chi-dropdown__menu.-active
+        .chi-dropdown__menu-item
+          .chi-checkbox
+            input(type="checkbox", class="chi-checkbox__input", id="checkbox1")
+            label(for="checkbox1", class="chi-checkbox__label") Item 1
+        .chi-dropdown__menu-item
+          .chi-checkbox
+            input(type="checkbox", class="chi-checkbox__input", id="checkbox2", disabled)
+            label(for="checkbox2", class="chi-checkbox__label") Item 2
+        .chi-dropdown__menu-item
+          .chi-checkbox
+            input(type="checkbox", class="chi-checkbox__input", id="checkbox3", checked)
+            label(for="checkbox3", class="chi-checkbox__label") Item 3
+        .chi-dropdown__menu-item
+          .chi-checkbox
+            input(type="checkbox", class="chi-checkbox__input", id="checkbox4")
+            label(for="checkbox4", class="chi-checkbox__label") Item 4
+    <Wrapper slot="code-webcomponent">
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+      </pre>
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+    </Wrapper>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
@@ -81,7 +82,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class CheckboxesBase extends Vue {
-  mounted() {}
-}
+export default class CheckboxesBase extends Vue {}
 </script>

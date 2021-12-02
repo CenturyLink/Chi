@@ -1,8 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Divider" id="divider" :tabs="exampleTabs" backgroundColor="#eee">
-    div(slot="example-description")
-      p.-text 
-        | Several menu items can be arranged together by using a divider. Use the <code>chi-divider</code> component.
+    p.-text(slot="example-description") 
+      | Several menu items can be arranged together by using a divider. Use the <code>chi-divider</code> component.
     .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3(slot="example")
       .chi-dropdown__menu.-active
         a.chi-dropdown__menu-item(href='#exampleLink') Item 1
@@ -10,14 +9,16 @@
         a.chi-dropdown__menu-item(href='#exampleLink') Item 3
         .chi-divider
         a.chi-dropdown__menu-item(href='#exampleLink') Item 4
-    div(slot="code-webcomponent")
+    <Wrapper slot="code-webcomponent">      
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    div(slot="code-htmlblueprint")
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
@@ -53,7 +54,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Divider extends Vue {
-  mounted() {}
-}
+export default class Divider extends Vue {}
 </script>

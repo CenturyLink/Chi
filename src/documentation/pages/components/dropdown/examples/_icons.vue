@@ -1,8 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Icons" id="icons" :tabs="exampleTabs" backgroundColor="#eee">
-    div(slot="example-description")
-      p.-text 
-        | Dropdown component has been developed to support Chi icons in the menu items.
+    p.-text(slot="example-description")
+      | Dropdown component has been developed to support Chi icons in the menu items.
     .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3(slot="example")
       .chi-dropdown__menu.-active
         a.chi-dropdown__menu-item(href='#exampleLink')
@@ -25,14 +24,16 @@
         a.chi-dropdown__menu-item(href='#exampleLink')
           i.chi-icon.icon-logout(aria-hidden="true")
           = "Logout"
-    div(slot="code-webcomponent")
+    <Wrapper slot="code-webcomponent">      
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
-    div(slot="code-htmlblueprint")
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
@@ -83,7 +84,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Icons extends Vue {
-  mounted() {}
-}
+export default class Icons extends Vue {}
 </script>
