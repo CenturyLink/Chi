@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="example-wrapper">
     <h4 v-if="titleSize === 'h4'" class="-anchor" :id="id">
       {{ title }}
       <span>

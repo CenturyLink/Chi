@@ -1,23 +1,23 @@
 <template lang="pug">
 <ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs">
-  div(slot='example')
+  <Wrapper slot='example'>
     input#unique-id-di1.chi-file-input(
       type='file',
       aria-label='Choose file',
       disabled
     )
     label(for='unique-id-di1') No file chosen
-  div(slot='code-webcomponent')
-    <pre class="language-html">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-  div(slot='code-htmlblueprint').chi-tab__description.-text--grey
+  </Wrapper>
+  <pre class="language-html" slot='code-webcomponent'>
+    <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+  </pre>
+  .chi-tab__description.-text--grey(slot='code-htmlblueprint')
     | This HTML Blueprint requires JavaScript to update the label
     | content once a file or files have been selected.
     | You may use your own JavaScript solution, or use Chi's example below.
     <pre class="language-html">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>  
+    </pre>
 </ComponentExample>
 </template>
 
