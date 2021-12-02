@@ -1,22 +1,18 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base" :tabs="exampleTabs" padding="-p--0">
-    div(slot="example-description")
-      p.-text
-        | The base logo is used on white or light-colored backgrounds that provide sufficient contrast.
-    div(slot="example")
-      .-p--3.-d--flex.-justify-content--around.-align-items--center
-        chi-link(href="#", alternative-text="Lumen")
-          chi-brand(logo='lumen')
-        chi-link(href="#", alternative-text="CenturyLink")
-          chi-brand(logo='centurylink')
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description")
+      | The base logo is used on white or light-colored backgrounds that provide sufficient contrast.
+    .-p--3.-d--flex.-justify-content--around.-align-items--center(slot="example")
+      chi-link(href="#", alternative-text="Lumen")
+        chi-brand(logo='lumen')
+      chi-link(href="#", alternative-text="CenturyLink")
+        chi-brand(logo='centurylink')
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

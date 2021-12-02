@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Country/Region" id="country_region" padding="-p--0" :tabs="exampleTabs">
     div(slot="example")
-       section.chi-table
+       section.chi-table.-bordered
         div
           table
             thead
@@ -73,3 +73,28 @@ export default class CountryRegion extends Vue {
   mounted() {}
 }
 </script>
+
+<style scoped>
+  section.chi-table.-bordered table {
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  section.chi-table.-bordered table td {
+    padding: 1rem;
+    border: .0625rem solid #d0d4d9;
+  }
+  section.chi-table.-bordered table tr:first-child th {
+    border-top: 0;
+  }
+  section.chi-table.-bordered table tr td:first-child,
+  section.chi-table.-bordered table tr th:first-child {
+    border-left: 0;
+  }
+  section.chi-table.-bordered table tr:last-child td {
+    border-bottom: 0;
+  }
+  section.chi-table.-bordered table tr td:last-child,
+  section.chi-table.-bordered table tr th:last-child {
+    border-right: 0;
+  }
+</style>

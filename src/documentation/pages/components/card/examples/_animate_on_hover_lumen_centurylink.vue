@@ -1,49 +1,45 @@
 <template lang="pug">
   <ComponentExample title="Animate on Hover" id="animate_on_hover_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text Animate a card on hover by applying the class <code>-hover--animate</code>.
-    div(slot="example")
-      .chi-grid
-        .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
-          .chi-card.-align--center.-hover--animate
-            .chi-card__content
-              .chi-card__title Title
-              i.chi-icon.chi-card__icon.-sm--3(class="icon-atom" aria-hidden="true")
-              .chi-card__caption
-                span.-text--sm Meta Label
-                span.-text--xs.-text--grey Sublabel
-        .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
-          .chi-card.-align--center.-hover--animate
-            .chi-card__content
-              .chi-card__title Title
-              i.chi-icon.chi-card__icon.-sm--3(class="icon-atom" aria-hidden="true")
-              .chi-card__caption
-                span.-text--sm Meta Label
-                span.-text--xs.-text--grey Sublabel
-        .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
-          .chi-card.-align--center.-hover--animate
-            .chi-card__content
-              .chi-card__title Title
-              i.chi-icon.chi-card__icon.-sm--3(class="icon-atom" aria-hidden="true")
-              .chi-card__caption
-                span.-text--sm Meta Label
-                span.-text--xs.-text--grey Sublabel
-        .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
-          .chi-card.-active.-align--center.-hover--animate
-            .chi-card__content
-              .chi-card__title Title
-              i.chi-icon.chi-card__icon.-sm--3.chi-card__icon(class="icon-atom" aria-hidden="true")
-              .chi-card__caption
-                span.-text--sm Meta Label
-                span.-text--xs.-text--grey Sublabel
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description") Animate a card on hover by applying the class <code>-hover--animate</code>.
+    .chi-grid(slot="example")
+      .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
+        .chi-card.-align--center.-hover--animate
+          .chi-card__content
+            .chi-card__title Title
+            i.chi-icon.chi-card__icon.-sm--3(class="icon-atom" aria-hidden="true")
+            .chi-card__caption
+              span.-text--sm Meta Label
+              span.-text--xs.-text--grey Sublabel
+      .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
+        .chi-card.-align--center.-hover--animate
+          .chi-card__content
+            .chi-card__title Title
+            i.chi-icon.chi-card__icon.-sm--3(class="icon-atom" aria-hidden="true")
+            .chi-card__caption
+              span.-text--sm Meta Label
+              span.-text--xs.-text--grey Sublabel
+      .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
+        .chi-card.-align--center.-hover--animate
+          .chi-card__content
+            .chi-card__title Title
+            i.chi-icon.chi-card__icon.-sm--3(class="icon-atom" aria-hidden="true")
+            .chi-card__caption
+              span.-text--sm Meta Label
+              span.-text--xs.-text--grey Sublabel
+      .chi-col.-w--6.-w-md--4.-w-lg--3.-mb--3.-mb-lg--0
+        .chi-card.-active.-align--center.-hover--animate
+          .chi-card__content
+            .chi-card__title Title
+            i.chi-icon.chi-card__icon.-sm--3.chi-card__icon(class="icon-atom" aria-hidden="true")
+            .chi-card__caption
+              span.-text--sm Meta Label
+              span.-text--xs.-text--grey Sublabel
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
