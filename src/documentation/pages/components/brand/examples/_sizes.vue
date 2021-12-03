@@ -2,35 +2,31 @@
 -  var sizes = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 
   <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs" padding="-p--0">
-    div(slot="example-description")
-      p.-text
-        | Brand supports the following sizes: <code>xs</code>, <code>sm</code>,
-        | <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
-        | The default size is <code>md</code>.
-    div(slot="example")
-      .chi-grid.-no-gutter.-overflow--auto
-        .chi-col.-w--12
-          .-p--3
-            each size in sizes
-              div(class=`chi-col -w--12 -pb--2`)
-                p.-text--bold= size
-                chi-link(href="#", alternative-text="Lumen")
-                  chi-brand(logo='lumen', size=size)
-        .chi-col.-w--12
-          .-p--3
-            each size in sizes
-              div(class=`chi-col -w--12 -pb--2`)
-                p.-text--bold= size
-                chi-link(href="#", alternative-text="CenturyLink")
-                  chi-brand(logo='centurylink', size=size)
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description")
+      | Brand supports the following sizes: <code>xs</code>, <code>sm</code>,
+      | <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
+      | The default size is <code>md</code>.
+    .chi-grid.-no-gutter.-overflow--auto(slot="example")
+      .chi-col.-w--12
+        .-p--3
+          each size in sizes
+            div(class=`chi-col -w--12 -pb--2`)
+              p.-text--bold= size
+              chi-link(href="#", alternative-text="Lumen")
+                chi-brand(logo='lumen', size=size)
+      .chi-col.-w--12
+        .-p--3
+          each size in sizes
+            div(class=`chi-col -w--12 -pb--2`)
+              p.-text--bold= size
+              chi-link(href="#", alternative-text="CenturyLink")
+                chi-brand(logo='centurylink', size=size)
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

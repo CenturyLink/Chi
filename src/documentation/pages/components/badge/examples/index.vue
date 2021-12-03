@@ -4,13 +4,12 @@
     p.-text Chi includes three badge variants: Solid, Outline, and Flat. Use <code>solid</code> badges for high emphasis,
       | base or <code>outline</code> badges for medium emphasis, and <code>flat</code> badges for low emphasis.
 
-    div
-      <Solid />
-      <Outline />
-      <Flat />
-      <IconBadges />
-      <AdditionalSizes />
-      <TextTransform />
+    <Solid />
+    <Outline />
+    <Flat />
+    <IconBadges />
+    <AdditionalSizes />
+    <TextTransform />
 </template>
 
 <script lang="ts">

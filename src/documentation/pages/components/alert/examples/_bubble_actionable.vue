@@ -1,17 +1,17 @@
 <template lang="pug">
   <ComponentExample title="Actionable" titleSize="h4" id="bubble_actionable" padding="-p--1" :tabs="exampleTabs">
-    div(slot='example')
-      chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable)
-        | This is a large closable success alert
-        chi-button(slot="chi-alert__actions") Secondary action
-        chi-button(slot="chi-alert__actions", color='primary') Primary action
-    div(slot='code-webcomponent')
+    chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable, slot='example')
+      | This is a large closable success alert
+      chi-button(slot="chi-alert__actions") Secondary action
+      chi-button(slot="chi-alert__actions", color='primary') Primary action
+    <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         span
           | Add buttons to an alert by defining <code>slot="chi-alert__actions"</code> on each <code>chi-button</code>.
       pre.language-html
         code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    div(slot='code-htmlblueprint')
+    </Wrapper>
+    <Wrapper slot='code-htmlblueprint'>
       .chi-tab__description
         span
           | While <code>chi-alert__actions</code> can be added to any Alert, alert actions are best suited for default or Titled alerts with the size class <code>-lg</code>.
@@ -19,6 +19,7 @@
           | Large Alerts have extra <code>chi-alert</code> padding, a larger <code>chi-alert__icon</code>, and a larger <code>chi-alert__close-button</code>.
       pre.language-html
         code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
+    </Wrapper>
   </ComponentExample>
 </template>
 
