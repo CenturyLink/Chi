@@ -1,20 +1,16 @@
 <template lang="pug">
   <ComponentExample title="Titled" id="titled_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text Add a title to a card by applying the class <code>chi-card__title</code>.
-    div(slot="example")
-      .chi-card(style="max-width:20rem;")
-        .chi-card__content
-          .chi-card__title Title
-          .chi-card__caption This is a titled card
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description") Add a title to a card by applying the class <code>chi-card__title</code>.
+    .chi-card(style="max-width:20rem;" slot="example")
+      .chi-card__content
+        .chi-card__title Title
+        .chi-card__caption This is a titled card
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

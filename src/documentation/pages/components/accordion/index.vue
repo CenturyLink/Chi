@@ -31,7 +31,5 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     };
   }
 })
-export default class Accordion extends Vue {
-  mounted() {}
-}
+export default class Accordion extends Vue {}
 </script>

@@ -1,10 +1,9 @@
 <template lang="pug">
   <ComponentExample title="Checkbox List" id="checkbox_list" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text   
-        | Checkbox lists are used to wrap a series of checkboxes in a list.
-        | To render a series of checkboxes in a list, apply the class <code>-list</code> to <code>chi-form__item</code>.
-    div(slot="example")
+    p.-text(slot="example-description")
+      | Checkbox lists are used to wrap a series of checkboxes in a list.
+      | To render a series of checkboxes in a list, apply the class <code>-list</code> to <code>chi-form__item</code>.
+    <Wrapper slot="example">
       legend.chi-label Select options
       ul.chi-form__item.-list(style="max-width:20rem")
         li.chi-form__item
@@ -27,14 +26,13 @@
           .chi-checkbox
             input(type="checkbox", class="chi-checkbox__input", id="checkbox-li5")
             label(for="checkbox-li5", class="chi-checkbox__label") Option 5
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

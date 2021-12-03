@@ -1,25 +1,23 @@
 <template lang="pug">
   <ComponentExample title="Disabled" id="disabled_lumen_centurylink" :tabs="exampleTabs" padding="-p--3 -p-lg--6">
-    div(slot="example-description")
-      p.-text Make Accordions appear inactive by adding the class <code>-disabled</code> or the attribute <code>disabled</code> to Accordion trigger
-    div(slot="example")
-      .chi-accordion
-        .chi-accordion__item
-          button.chi-accordion__trigger.-disabled
-            i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__title
-              | Accordion 1
-          .chi-accordion__content
-            p.chi-accordion__text Content goes here
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <JSNeeded slot="tab-description" />
+    p.-text(slot="example-description") Make Accordions appear inactive by adding the class <code>-disabled</code> or the attribute <code>disabled</code> to Accordion trigger
+    .chi-accordion(slot="example")
+      .chi-accordion__item
+        button.chi-accordion__trigger.-disabled
+          i.chi-icon.icon-chevron-down(aria-hidden="true")
+          .chi-accordion__title
+            | Accordion 1
+        .chi-accordion__content
+          p.chi-accordion__text Content goes here
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
