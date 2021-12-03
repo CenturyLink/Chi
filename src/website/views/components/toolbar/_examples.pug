@@ -1523,6 +1523,7 @@ h2 Examples
               .chi-checkbox
                 input#checkbox-ba1.chi-checkbox__input(type='checkbox')
                 label.chi-checkbox__label(for='checkbox-ba1') Show Selected Only
+          .chi-divider.-vertical
           .chi-bulk-actions__buttons
             .chi-bulk-actions__buttons-mobile
               chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Edit')
@@ -1534,7 +1535,6 @@ h2 Examples
               chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Print')
                 chi-icon(icon='print')
             .chi-bulk-actions__buttons-desktop
-              .chi-divider.-vertical
               chi-button(size='xs')
                 chi-icon(icon='arrow-to-bottom')
                 span Download
@@ -1616,7 +1616,7 @@ h2 Examples
                   </button>
                 </div>
                 <div class="chi-toolbar__filters-mobile">
-                  <button class="chi-button -icon -flat chi-drawer__trigger" id="drawer-trigger-brp1" data-target="#drawer-1" aria-label="Button action">
+                  <button class="chi-button -icon -flat chi-drawer__trigger" id="drawer-trigger-brbap1" data-target="#drawer-1" aria-label="Button action">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-filter" aria-hidden="true"></i>
                     </div>
@@ -1644,7 +1644,7 @@ h2 Examples
                   </button>
                 </div>
                 <div class="chi-toolbar__actions-mobile">
-                  <button class="chi-button -icon -flat chi-drawer__trigger" id="drawer-trigger-brp2" data-target="#drawer-2" aria-label="Button action">
+                  <button class="chi-button -icon -flat chi-drawer__trigger" id="drawer-trigger-brbap2" data-target="#drawer-2" aria-label="Button action">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
                     </div>
@@ -1687,40 +1687,64 @@ h2 Examples
                 </div>
               </div>
             </div>
+            <div class="chi-divider -vertical"></div>
             <div class="chi-bulk-actions__buttons">
               <div class="chi-bulk-actions__buttons-mobile">
-                <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Edit">
-                  <chi-icon icon="edit"></chi-icon>
-                </chi-button>
-                <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Compose">
-                  <chi-icon icon="compose"></chi-icon>
-                </chi-button>
-                <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Delete">
-                  <chi-icon icon="delete"></chi-icon>
-                </chi-button>
-                <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Print">
-                  <chi-icon icon="print"></chi-icon>
-                </chi-button>
+                <button class="chi-button -icon -flat" aria-label="Button action" data-tooltip="Edit">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-edit" aria-hidden="true"></i>
+                  </div>
+                </button>
+                <button class="chi-button -icon -flat" aria-label="Button action" data-tooltip="Compose">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-compose" aria-hidden="true"></i>
+                  </div>
+                </button>
+                <button class="chi-button -icon -flat" aria-label="Button action" data-tooltip="Delete">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-delete" aria-hidden="true"></i>
+                  </div>
+                </button>
+                <button class="chi-button -icon -flat" aria-label="Button action" data-tooltip="Print">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-print" aria-hidden="true"></i>
+                  </div>
+                </button>
               </div>
               <div class="chi-bulk-actions__buttons-desktop">
-                <div class="chi-divider -vertical"></div>
-                <chi-button size="xs">
-                  <chi-icon icon="arrow-to-bottom"></chi-icon><span>Download</span>
-                </chi-button>
-                <chi-button size="xs">
-                  <chi-icon icon="compose"></chi-icon><span>Compose</span>
-                </chi-button>
-                <chi-button size="xs">
-                  <chi-icon icon="delete"></chi-icon><span>Delete</span>
-                </chi-button>
-                <chi-button size="xs">
-                  <chi-icon icon="print"></chi-icon><span>Print</span>
-                </chi-button>
+                <button class="chi-button -xs">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-arrow-to-bottom" aria-hidden="true"></i>
+                    <span>Download</span>
+                  </div>
+                </button>
+                <button class="chi-button -xs">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-compose" aria-hidden="true"></i>
+                    <span>Compose</span>
+                  </div>
+                </button>
+                <button class="chi-button -xs">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-delete" aria-hidden="true"></i>
+                    <span>Delete</span>
+                  </div>
+                </button>
+                <button class="chi-button -xs">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-print" aria-hidden="true"></i>
+                    <span>Print</span>
+                  </div>
+                </button>
               </div>
             </div>
           </div>
           <div class="chi-bulk-actions__end">
-            <chi-button type="close"></chi-button>
+            <button class="chi-button -icon -flat" aria-label="Button action">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x" aria-hidden="true"></i>
+                </div>
+              </button>
           </div>
         </div>
 
@@ -1806,8 +1830,8 @@ h2 Examples
 
         <!-- Javascript -->
         <script>
-          chi.drawer(document.getElementById('drawer-trigger-brp1'));
-          chi.drawer(document.getElementById('drawer-trigger-brp2'));
+          chi.drawer(document.getElementById('drawer-trigger-brbap1'));
+          chi.drawer(document.getElementById('drawer-trigger-brbap2'));
           chi.tooltip(document.querySelectorAll('[data-tooltip]'));
         </script>
 
