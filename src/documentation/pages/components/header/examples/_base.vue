@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base" padding="-p--0" :tabs="exampleTabs">
-    div(slot="example")
+    <Wrapper slot="example">
       .-p--3(style='background-color:#eee;')
         header.chi-header
           nav.chi-header__content
@@ -11,14 +11,15 @@
                   path(d='M106.330232 1.71966316c0-.94108421-.572874-1.47287369-1.677516-1.47287369H89.1060842c-1.1043263 0-1.6771789.53178948-1.6771789 1.47287369v1.42565263l17.2648737-.0345579c1.063579-.00001052 1.636453-.49107368 1.636453-1.39109473', fill='#0C9ED9')
             .chi-header__start
             .chi-header__end
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
+    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <Wrapper slot="code-htmlblueprint">
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>          
+      </pre>
+    </Wrapper>          
   </ComponentExample>
 </template>
 

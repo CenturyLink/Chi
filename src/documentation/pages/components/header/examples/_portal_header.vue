@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Portal Header" id="portal_header" padding="-p--0" :tabs="exampleTabs">
-    div(slot="example")
+    <Wrapper slot="example">
       .-p--3(style='background-color:#eee;')
         header.chi-header.-portal
           nav.chi-header__content
@@ -54,18 +54,16 @@
                     a.chi-dropdown__menu-item(href="#")
                       i.chi-icon.icon-logout(aria-hidden="true")
                       span Item 2
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint").chi-tab__description.-text--grey
-      | This HTML Blueprint requires JavaScript.
-      | You may use your own solution, or use Chi's vanilla JavaScript solution,
-      | <a href="../../getting-started/installation">Chi.js</a>.
-      // The installation path needs to be updated once it is implemented
+    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>          
+      </pre>
+    </Wrapper>          
   </ComponentExample>
 </template>
 

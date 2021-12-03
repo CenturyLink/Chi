@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Medium (Base)" id="size_medium_centurylink" padding="-p--0" :tabs="exampleTabs">
-    div(slot="example")
+    <Wrapper slot="example">
       .-p--3(style='background-color:#eee;')
         header.chi-header
           nav.chi-header__content
@@ -29,14 +29,15 @@
                 li
                   a(href='#' target='_blank')
                     | Contact Us
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
+    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <Wrapper slot="code-htmlblueprint">
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>          
+      </pre>
+    </Wrapper>          
   </ComponentExample>
 </template>
 

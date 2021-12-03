@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Header with Title, Buttons, and Collapsible Search" id="header_collapse_search" padding="-p--0" :tabs="exampleTabs">
-    div(slot="example")
+    <Wrapper slot="example">
       .-p--3(style='background-color:#eee;')
         header.chi-header
           nav.chi-header__content
@@ -24,14 +24,15 @@
                       i.chi-icon.icon-search(aria-hidden="true")
                 a.chi-button.-flat(href="#") Login
                 a.chi-button.-primary.-ml--1(href="#") Sign Up
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
+    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <Wrapper slot="code-htmlblueprint">
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>          
+      </pre>
+    </Wrapper>          
   </ComponentExample>
 </template>
 
