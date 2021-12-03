@@ -26,6 +26,7 @@
     "directory": "src/chi-vue"
   },
   "dependencies": {
+    "@centurylink/webpack-dts-plugin": "file:webpack-dts-plugin-1.0.1-npm.tgz",
     "@popperjs/core": "^2.5.4",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",

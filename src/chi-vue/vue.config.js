@@ -1,5 +1,6 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const dtsPluginWebpack = require('@centurylink/webpack-dts-plugin');
 const path = require('path');
 const ASSET_PATH = '/';
 
@@ -53,6 +54,25 @@ module.exports = {
 
       default:
     }
+    const configDts = {
+      compilationOptions: {
+        preferredConfigPath: './tsconfig.json',
+      },
+      outPut: {
+        outPutFile: 'types.d.ts',
+      },
+      entries: [
+        {
+          filePath: './src/constants/types.ts',
+          noCheck: false,
+          output: {
+            inlineDeclareGlobals: false,
+            sortNodes: true,
+          },
+        },
+      ],
+    };
+    config.plugins.push(new dtsPluginWebpack(configDts.entries, configDts.compilationOptions, configDts.outPut));
   },
   css: {
     extract: process.env.VUE_APP_MODE === 'prod',
