@@ -33,9 +33,9 @@
         content: '';
         display: block;
         height: 1rem;
-        top: 0.1rem;
         left: 0;
         position: absolute;
+        top: 0.125rem;
         transition: background-color 0.2s ease-in-out;
         width: 1rem;
       }
@@ -45,9 +45,9 @@
         content: '';
         display: block;
         height: 0.625rem;
-        top: 0.3rem;
         left: 0.1875rem;
         position: absolute;
+        top: 0.3125rem;
         transform: scale(0);
         transition: background-image 0.2s ease-in-out, transform 0.2s ease-in-out;
         width: 0.625rem;
