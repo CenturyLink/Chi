@@ -29,6 +29,47 @@
     }
   }
 
+  @include respond-to-only(xs) {
+    &.-mobile-bottom {
+      padding: 0;
+
+      .chi-backdrop__wrapper {
+        justify-content: flex-end;
+        margin-bottom: 0;
+        min-height: calc(100% - 1rem);
+
+        .chi-modal {
+          bottom: 0;
+          top: inherit;
+
+          &.-animated {
+            transition-property: bottom;
+
+            &:not(.-active) {
+              bottom: -1000px;
+            }
+          }
+
+          &__footer {
+            flex-direction: column;
+
+            .chi-button,
+            chi-button {
+              justify-content: center;
+              width: 100%;
+
+              & + .chi-button,
+              & + chi-button {
+                margin-left: 0;
+                margin-top: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   &.-animated {
     transition: background-color 0.5s cubic-bezier(0.38, 0.52, 0.37, 1);
 
