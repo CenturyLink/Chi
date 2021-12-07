@@ -1,9 +1,8 @@
 <template lang="pug">
   <ComponentExample title="Stacked" id="stacked" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text   
-        | Group checkboxes in <code>chi-form__item</code> for easy stacking.
-    div(slot="example")
+    p.-text(slot="example-description")
+      | Group checkboxes in <code>chi-form__item</code> for easy stacking.
+    <Wrapper slot="example">
       legend.chi-label Select options
       .chi-form__item
         .chi-checkbox
@@ -13,14 +12,13 @@
         .chi-checkbox
           input(type="checkbox" class="chi-checkbox__input" id="checkbox-st2")
           label(for="checkbox-st2" class="chi-checkbox__label") Option 2
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

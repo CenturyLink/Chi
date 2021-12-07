@@ -1,12 +1,12 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    div(slot="example")
+    <Wrapper slot="example">
       input.chi-file-input(type="file", id="file01", aria-label="Choose file")
       label(for="file01") No file chosen
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
+    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     div(slot="code-htmlblueprint").chi-tab__description.-text--grey
       | This HTML Blueprint requires JavaScript to update the label
       | content once a file or files have been selected.
