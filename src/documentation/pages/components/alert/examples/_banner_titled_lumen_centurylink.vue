@@ -1,27 +1,29 @@
 <template lang="pug">
   <ComponentExample title="Titled" titleSize="h4" id="banner_titled_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text
-        | The title will automatically get colored based on the alerts semantic color class.
-        | To override the title color, apply a text color utility class.
-    div(slot='example')
+    p.-text(slot="example-description")
+      | The title will automatically get colored based on the alerts semantic color class.
+      | To override the title color, apply a text color utility class.
+    <Wrapper slot='example'>
       chi-alert.-m--2(type='banner', icon='circle-info', title="Base")
         | This is a base alert
       each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
         chi-alert.-m--2(color=type, type='banner', icon=val, title=type)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
-    div(slot='code-webcomponent')
+    </Wrapper>
+    <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         span
           | Use <code>title=""</code> attribute to add a title to an Alert.
       pre.language-html
         code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    div(slot='code-htmlblueprint')
+    </Wrapper>
+    <Wrapper slot='code-htmlblueprint'>
       .chi-tab__description
         span
           | Use <code>chi-alert__title</code> class to add a title to an Alert.
       pre.language-html
         code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
+    </Wrapper>
   </ComponentExample>
 </template>
 

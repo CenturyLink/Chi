@@ -1,30 +1,28 @@
 <template lang="pug">
   <ComponentExample title="Help" id="help" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text   
-        | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
-        | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
-    div(slot="example")
-      .chi-form__item
-        .chi-checkbox
-          input(type="checkbox" class="chi-checkbox__input" id="checkbox-he1")
-          label(for="checkbox-he1" class="chi-checkbox__label") Checkbox
-          .chi-label__help
-            button.chi-button.-icon.-xs.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
-              i.chi-icon.icon-circle-info-outline(aria-hidden="true")
-            section.chi-popover.chi-popover--top(id="example__help-popover" aria-modal="true" role="dialog")
-              .chi-popover__content
-                p.chi-popover__text
-                  | Helpful information goes here.
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <JSNeeded slot="tab-description" />
+    p.-text(slot="example-description")
+      | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
+      | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
+    .chi-form__item(slot="example")
+      .chi-checkbox
+        input(type="checkbox" class="chi-checkbox__input" id="checkbox-he1")
+        label(for="checkbox-he1" class="chi-checkbox__label") Checkbox
+        .chi-label__help
+          button.chi-button.-icon.-xs.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
+            i.chi-icon.icon-circle-info-outline(aria-hidden="true")
+          section.chi-popover.chi-popover--top(id="example__help-popover" aria-modal="true" role="dialog")
+            .chi-popover__content
+              p.chi-popover__text
+                | Helpful information goes here.
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 

@@ -70,6 +70,7 @@ pipeline {
       //Deployment control credentialsId
       AUTHORIZED_USERS = ''
       DEPLOY_AUTH_TOKEN = ''
+      NEXUS_NPM_CREDENTIALS = 'nexus-npm-secret'
 
       // Custom project variables
       // Add
@@ -135,21 +136,7 @@ pipeline {
       stage('Summary') {
         steps {
           script {
-            sh script: """
-                echo "PROJECT_NAME: ${PROJECT_NAME}"
-                echo "GIT_BRANCH: ${GIT_BRANCH}"
-                echo "GIT_COMMIT: ${GIT_COMMIT}"
-                echo "BRANCH_NAME: ${BRANCH_NAME}"
-                echo "COMMIT_ID: ${COMMIT_ID}"
-                echo "PULL_REQUEST: ${PULL_REQUEST}"
-                echo "CHANGE_ID: ${env.CHANGE_ID}"
-                echo "TAG: ${env.TAG_NAME}"
-            """, label: "Details summary"
-            if ( BRANCH_NAME != PROD_BRANCH && BRANCH_NAME != "pr-*" ) {
-              currentBuild.description = "<a href='https://github.com/CenturyLink/Chi/tree/${BRANCH_NAME}'>${BRANCH_NAME}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${BRANCH_NAME}";
-            } else if ( BRANCH_NAME != PROD_BRANCH && BRANCH_NAME == "pr-*" && BRANCH_NAME == "PR-*" ) {
-              currentBuild.description = "<a href='https://github.com/CenturyLink/Chi/pull/${CHANGE_ID}'>PR#${CHANGE_ID}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${PULL_REQUEST}";
-            }
+            printSummary()
           }
         }
       }
@@ -769,25 +756,39 @@ pipeline {
           beforeAgent true
           branch 'chi-vue'
         }
-        agent {
-          dockerfile {
-            filename 'Dockerfile'
-            dir 'cicd/docker/chi-vue'
-            label 'Docker-enabled'
-            // registryUrl DOCKER_REGISTRY
-            // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
+        parallel {
+          stage('to GitHub') {
+            agent {
+              dockerfile {
+                filename 'Dockerfile'
+                dir 'cicd/docker/chi-vue'
+                label 'Docker-enabled'
+              }
+            }
+            steps {
+              script {
+                dir('src/chi-vue') {
+                  jslYarnWrapper('install')
+                  jslNpmWrapper('run build:component')
+                  jslNpmPublish(false, env.GITHUB_ALTER_CREDENTIALS)
+                }
+              }
+            }
           }
-        }
-        steps {
-          script {
-            dir('src/chi-vue') {
-              jslYarnWrapper('install')
-              jslNpmWrapper('run build:component')
-              // jslNpmWrapper('pack')
-              // jslNpmWrapper('login --scope=@centurylink --registry=https://npm.pkg.github.com')
-              // jslNpmWrapper('publish')
-
-              jslNpmPublish(false, env.GITHUB_ALTER_CREDENTIALS)
+          stage('to Nexus') {
+            agent {
+              dockerfile {
+                filename 'Dockerfile'
+                dir 'cicd/docker/chi-vue'
+                label 'Docker-enabled'
+              }
+            }
+            steps {
+              script {
+                dir('src/chi-vue') {
+                  chiVueNexusPublish()
+                }
+              }
             }
           }
         }
@@ -986,7 +987,7 @@ PRDesc
                                 usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
                 try {
                   latestRelease = sh script: """
-                   curl -s -H "Authorization: token \${ACCESS_TOKEN}" "https://api.github.com/repos/CenturyLink/chi/releases/latest" | grep '"name":' | cut -d: -f 2,3 | tr -d '"' | tr -d ','
+                   curl -s -H "Authorization: token \${ACCESS_TOKEN}" "https://api.github.com/repos/${env.GITHUB_ORGANIZATION}/chi/releases/latest" | grep '"name":' | cut -d: -f 2,3 | tr -d '"' | tr -d ','
                    """, label: 'Getting Latest Release Version', returnStdout: true
                    latestRelease = latestRelease.trim()
                 } catch (Exception e) {
@@ -1120,4 +1121,68 @@ def isVersionBump() {
   isVersionBumpResult = isVersionBumpResult && currentBuild.currentResult.toLowerCase() == "success"
   isVersionBumpResult = isVersionBumpResult && ( ['origin/master', 'origin/main', 'master', 'main', PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase()) || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1))
   return isVersionBumpResult
+}
+
+def chiVueNexusPublish() {
+    jslYarnWrapper('install')
+    jslNpmWrapper('run build:component')
+    // skipping errors temporarily to allow existing publishing on GitHub
+    try {
+      configFileProvider([configFile(fileId: 'NEXUS_NPMRC', targetLocation: '.npmrc', variable: 'NEXUS_NPMRC'),
+                          configFile(fileId: 'INTERNAL_CERT_CHAIN', targetLocation: 'internal-ca.pem', variable: 'INTERNAL_CERT_CHAIN')]) {
+        sh "sed -i -e 's/\"name\": \"@centurylink/\"name\": \"@chi/g' package.json"
+        def commitJson = readJSON file: "package.json"
+        def versionExists = ''
+        try {
+            versionExists = npmNexusWrapper("info ${commitJson.name}@${commitJson.version} version")
+        } catch (Exception e) {
+            echo "package not found, first time publish? Error message: ${e.getMessage()}"
+        }
+        echo "package.json version '${commitJson.version}', version found on repo '${versionExists}'"
+        if (versionExists.trim() != commitJson.version) {
+            npmNexusWrapper("publish --verbose --access restricted")
+        } else {
+            echo "version ${commitJson.version} is already published, skipping"
+        }
+        sh "sed -i -e 's/\"name\": \"@chi/\"name\": \"@centurylink/g' package.json"
+      }
+    } catch (Exception e) {
+      echo "An error ocurred while publishing chi-vue to Nexus: ${e.getMessage()}"
+    }
+}
+
+def npmNexusWrapper(def args) {
+	withCredentials([string(credentialsId: NEXUS_NPM_CREDENTIALS, variable: 'NEXUS_TOKEN')]) {
+    def output = sh script: """
+        set +x
+        export NEXUS_TOKEN=${NEXUS_TOKEN}
+        npm ${args}
+    """, label: "npm ${args}", returnStdout: true
+    return output
+  }
+}
+
+def printSummary() {
+  def chivueProjectJson = readJSON file: 'src/chi-vue/package.json', returnPojo: true;
+  env.CHIVUE_PACKAGE_SCOPE = chivueProjectJson['name'].split('/')[0].replaceFirst("@", "")
+  env.GITHUB_ORGANIZATION = jslGitGetRepoOwner()
+
+  echo """
+  PROJECT_NAME: ${env.PROJECT_NAME}
+  GIT_BRANCH: ${env.GIT_BRANCH}
+  GIT_COMMIT: ${env.GIT_COMMIT}
+  BRANCH_NAME: ${env.BRANCH_NAME}
+  COMMIT_ID: ${env.COMMIT_ID}
+  PULL_REQUEST: ${env.PULL_REQUEST}
+  CHANGE_ID: ${env.CHANGE_ID}
+  TAG: ${env.TAG_NAME}
+
+  CHIVUE_PACKAGE_SCOPE: ${env.CHIVUE_PACKAGE_SCOPE}
+  GITHUB_ORGANIZATION: ${env.GITHUB_ORGANIZATION}
+  """
+  if ( BRANCH_NAME != PROD_BRANCH && BRANCH_NAME != "pr-*" ) {
+    currentBuild.description = "<a href='https://github.com/${env.GITHUB_ORGANIZATION}/Chi/tree/${BRANCH_NAME}'>${BRANCH_NAME}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${BRANCH_NAME}";
+  } else if ( BRANCH_NAME != PROD_BRANCH && BRANCH_NAME == "pr-*" && BRANCH_NAME == "PR-*" ) {
+    currentBuild.description = "<a href='https://github.com/${env.GITHUB_ORGANIZATION}/Chi/pull/${CHANGE_ID}'>PR#${CHANGE_ID}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${PULL_REQUEST}";
+  }
 }
