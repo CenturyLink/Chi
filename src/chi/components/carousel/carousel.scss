@@ -2,14 +2,18 @@
 @import '_global-mixins';
 
 .chi-carousel {
-  overflow-x: hidden;
   position: relative;
   width: 100%;
 
-  &__wrapper {
-    transition-property: transform;
-    transition-duration: 0.35s;
-    width: fit-content;
+  &__content {
+    overflow: hidden;
+    width: 100%;
+
+    .chi-carousel__wrapper {
+      transition-property: transform;
+      transition-duration: 0.35s;
+      width: fit-content;
+    }
   }
 
   .chi-carousel__control {

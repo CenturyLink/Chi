@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-11-29T14:58:06",
+  "timestamp": "2021-12-09T07:41:24",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -611,16 +611,16 @@
           "required": false
         },
         {
-          "name": "pages",
-          "type": "number",
+          "name": "single",
+          "type": "boolean",
           "mutable": false,
-          "attr": "pages",
+          "attr": "single",
           "reflectToAttr": false,
-          "docs": "To define number of pages to render",
+          "docs": "To render Carousel with a single item per view",
           "docsTags": [],
           "values": [
             {
-              "type": "number"
+              "type": "boolean"
             }
           ],
           "optional": false,

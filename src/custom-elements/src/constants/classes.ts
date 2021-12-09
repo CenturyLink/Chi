@@ -14,6 +14,7 @@ export const BUTTON_CLASSES = {
 export const CAROUSEL_CLASSES = {
   CAROUSEL: 'chi-carousel',
   ITEM: 'chi-carousel__item',
+  CONTENT: 'chi-carousel__content',
   WRAPPER: 'chi-carousel__wrapper',
   CONTROL: 'chi-carousel__control',
   PREVIOUS: '-previous',

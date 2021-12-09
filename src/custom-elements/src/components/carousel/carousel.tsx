@@ -192,15 +192,17 @@ export class Carousel {
       </div> : null;
 
     return <div class={`${CAROUSEL_CLASSES.CAROUSEL} -z--0`}>
-      <div
-        class={`
-          ${CAROUSEL_CLASSES.WRAPPER}
-          ${this._animationClasses}
-          ${this.single ? UTILITY_CLASSES.DISPLAY.FLEX : ''}
-        `}
-        style={{transform: `translateX(${this.scrollBreakpoints[this.view + 1]}px)`}}
-        ref={el => this.wrapper = el}>
-        {items}
+      <div class={CAROUSEL_CLASSES.CONTENT}>
+        <div
+          class={`
+            ${CAROUSEL_CLASSES.WRAPPER}
+            ${this._animationClasses}
+            ${this.single ? UTILITY_CLASSES.DISPLAY.FLEX : ''}
+          `}
+          style={{transform: `translateX(${this.scrollBreakpoints[this.view + 1]}px)`}}
+          ref={el => this.wrapper = el}>
+          {items}
+        </div>
       </div>
       {prevButton}
       {nextButton}
