@@ -153,88 +153,10 @@ h2 Examples
           </div>
         </div>
 
-  h3 Primary
-  p.-text
-    | Use the Primary stat for home and dashboard KPIs where more visual emphasis is needed.
-  .example.-mb--3
-    .-p--3
-      .chi-stat.-primary
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 1
-              .chi-stat-metric__title
-                | High Utilization
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 1
-              .chi-stat-metric__title
-                | Critical Performing
-        .chi-stat__item.-active
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 2
-              .chi-stat-metric__title
-                | Services Down
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 3
-              .chi-stat-metric__title
-                | Scheduled Maintenance
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-primary
-        li.-disabled
-          a(href=`#webcomponent-primary`) Web Component
-        li.-active
-          a(href=`#html-primary`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-primary
-    .chi-tabs-panel.-active#html-primary
-      :code(lang="html")
-        <div class="chi-stat -primary">
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">High Utilization</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">Critical Performing</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item -active">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">2</div>
-                <div class="chi-stat-metric__title">Services Down</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">3</div>
-                <div class="chi-stat-metric__title">Scheduled Maintenance</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
   h3 Background Icons
   .example.-mb--3
     .-p--3
-      .chi-stat.-primary
+      .chi-stat
         .chi-stat__item
           .chi-stat__content
             .chi-stat-metric
@@ -272,15 +194,15 @@ h2 Examples
             .chi-stat-background-icon
               i.chi-icon.icon-mail(aria-hidden="true")
     .example-tabs.-pl--2
-      ul.chi-tabs#example-primary-icons
+      ul.chi-tabs#example-base-icons
         li.-disabled
-          a(href=`#webcomponent-primary-icons`) Web Component
+          a(href=`#webcomponent-base-icons`) Web Component
         li.-active
-          a(href=`#html-primary-icons`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-primary-icons
-    .chi-tabs-panel.-active#html-primary-icons
+          a(href=`#html-base-icons`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-base-icons
+    .chi-tabs-panel.-active#html-base-icons
       :code(lang="html")
-        <div class="chi-stat -primary">
+        <div class="chi-stat">
           <div class="chi-stat__item">
             <div class="chi-stat__content">
               <div class="chi-stat-metric">
@@ -619,306 +541,82 @@ h2 Examples
         </script>
 
 .-portal--show
-  h3 Primary
-  p.-text
-    | Use the Primary stat for home and dashboard KPIs where more visual emphasis is needed.
+  h3 Base
   .example.-mb--3
     .-p--3
-      .chi-stat.-primary
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 1
-              .chi-stat-metric__title
-                | High Utilization
-            .chi-stat-submetric
-              .chi-stat-submetric__value
-                | 16
-              .chi-stat-submetric__title
-                | Elevated
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 1
-              .chi-stat-metric__title
-                | Critical Performing
-            .chi-stat-submetric
-              .chi-stat-submetric__value
-                | 21
-              .chi-stat-submetric__title
-                | Impacted
+      .chi-stat
         .chi-stat__item.-active
           .chi-stat__content
             .chi-stat-metric
               .chi-stat-metric__value
-                | 2
+                | ALL
               .chi-stat-metric__title
-                | Services Down
-            .chi-stat-submetric
-              .chi-stat-submetric__value
-                | 47
-              .chi-stat-submetric__title
-                | Up
+                | Services
         .chi-stat__item
           .chi-stat__content
             .chi-stat-metric
               .chi-stat-metric__value
-                | 3
+                | 366
               .chi-stat-metric__title
-                | Scheduled Maintenance
-            .chi-stat-submetric
-              .chi-stat-submetric__value
-                | 1
-              .chi-stat-submetric__title
-                | Planned
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-primary
-        li.-disabled
-          a(href=`#webcomponent-portal-primary`) Web Component
-        li.-active
-          a(href=`#html-portal-primary`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-portal-primary
-    .chi-tabs-panel.-active#html-portal-primary
-      :code(lang="html")
-        <div class="chi-stat -primary">
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">High Utilization</div>
-              </div>
-              <div class="chi-stat-submetric">
-                <div class="chi-stat-submetric__value">16</div>
-                <div class="chi-stat-submetric__title">Elevated</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">Critical Performing</div>
-              </div>
-              <div class="chi-stat-submetric">
-                <div class="chi-stat-submetric__value">21</div>
-                <div class="chi-stat-submetric__title">Impacted</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item -active">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">2</div>
-                <div class="chi-stat-metric__title">Services Down</div>
-              </div>
-              <div class="chi-stat-submetric">
-                <div class="chi-stat-submetric__value">47</div>
-                <div class="chi-stat-submetric__title">Up</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">3</div>
-                <div class="chi-stat-metric__title">Scheduled Maintenance</div>
-              </div>
-              <div class="chi-stat-submetric">
-                <div class="chi-stat-submetric__value">1</div>
-                <div class="chi-stat-submetric__title">Planned</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-  h3 Background Icons
-  .example.-mb--3
-    .-p--3
-      .chi-stat.-primary
+                | Communications
+              .chi-label__help
+                button.chi-button.-icon.-xs.-flat(id="example__portal-base-help-button2" aria-label="Help" data-target="#example__portal-base-help-popover2" data-position="bottom")
+                  i.chi-icon.icon-circle-info-outline(aria-hidden="true")
         .chi-stat__item
           .chi-stat__content
             .chi-stat-metric
               .chi-stat-metric__value
-                | 1
+                | 932
               .chi-stat-metric__title
-                | High Utilization
+                | Hybrid & Cloud IT
             .chi-stat-submetric
               .chi-stat-submetric__value
-                | 16
+                | 0
               .chi-stat-submetric__title
-                | Elevated
-            .chi-stat-background-icon
-              i.chi-icon.icon-file(aria-hidden="true")
-        .chi-stat__item.-active
+                | Recently Closed
+            .chi-label__help
+              button.chi-button.-icon.-xs.-flat(id="example__portal-base-help-button3" aria-label="Help" data-target="#example__portal-base-help-popover3" data-position="bottom")
+                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
+        .chi-stat__item
           .chi-stat__content
             .chi-stat-metric
               .chi-stat-metric__value
-                | 1
+                | 301
               .chi-stat-metric__title
-                | Critical Performing
+                | Managed & IT Services
             .chi-stat-submetric
               .chi-stat-submetric__value
-                | 21
+                | 6
               .chi-stat-submetric__title
-                | Impacted
-            .chi-stat-background-icon
-              i.chi-icon.icon-warning(aria-hidden="true")
+                | Recently Closed
+            .chi-label__help
+              button.chi-button.-icon.-xs.-flat(id="example__portal-base-help-button4" aria-label="Help" data-target="#example__portal-base-help-popover4" data-position="bottom")
+                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
+        .chi-stat__item
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__value
+                | 100
+              .chi-stat-metric__title
+                | Networking & Cloud IT
+            .chi-label__help
+              button.chi-button.-icon.-xs.-flat(id="example__portal-base-help-button5" aria-label="Help" data-target="#example__portal-base-help-popover5" data-position="bottom")
+                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
         .chi-stat__item
           .chi-stat__content
             .chi-stat-metric
               .chi-stat-metric__value
                 | 2
               .chi-stat-metric__title
-                | Services Down
+                | Security
             .chi-stat-submetric
               .chi-stat-submetric__value
-                | 47
+                | 0
               .chi-stat-submetric__title
-                | Up
-            .chi-stat-background-icon
-              i.chi-icon.icon-map-marker(aria-hidden="true")
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 3
-              .chi-stat-metric__title
-                | Scheduled Maintenance
-            .chi-stat-submetric
-              .chi-stat-submetric__value
-                | 1
-              .chi-stat-submetric__title
-                | Planned
-            .chi-stat-background-icon
-              i.chi-icon.icon-mail(aria-hidden="true")
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-primary-portal-icons
-        li.-disabled
-          a(href=`#webcomponent-primary-portal-icons`) Web Component
-        li.-active
-          a(href=`#html-primary-portal-icons`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-primary-portal-icons
-    .chi-tabs-panel.-active#html-primary-portal-icons
-      :code(lang="html")
-        <div class="chi-stat -primary">
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">High Utilization</div>
-              </div>
-              <div class="chi-stat-submetric">
-                <div class="chi-stat-submetric__value">16</div>
-                <div class="chi-stat-submetric__title">Elevated</div>
-              </div>
-              <div class="chi-stat-background-icon">
-                <i class="chi-icon icon-file" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item -active">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">Critical Performing</div>
-              </div>
-              <div class="chi-stat-submetric">
-                <div class="chi-stat-submetric__value">21</div>
-                <div class="chi-stat-submetric__title">Impacted</div>
-              </div>
-              <div class="chi-stat-background-icon">
-                <i class="chi-icon icon-warning" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">2</div>
-                <div class="chi-stat-metric__title">Services Down</div>
-              </div>
-              <div class="chi-stat-submetric">
-                <div class="chi-stat-submetric__value">47</div>
-                <div class="chi-stat-submetric__title">Up</div>
-              </div>
-              <div class="chi-stat-background-icon">
-                <i class="chi-icon icon-map-marker" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">3</div>
-                <div class="chi-stat-metric__title">Scheduled Maintenance</div>
-              </div>
-              <div class="chi-stat-submetric">
-                <div class="chi-stat-submetric__value">1</div>
-                <div class="chi-stat-submetric__title">Planned</div>
-              </div>
-              <div class="chi-stat-background-icon">
-                <i class="chi-icon icon-mail" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-
-  h3 Secondary
-  p.-text
-    | Use the Base stat for home and dashboard KPIs.
-  .example.-mb--3
-    .-p--3
-      .chi-stat.-sm
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 1
-              .chi-stat-metric__title
-                | High Utilization
-            .chi-stat-submetric
-              .chi-stat-submetric__value
-                | 16
-              .chi-stat-submetric__title
-                | Elevated
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 1
-              .chi-stat-metric__title
-                | Critical Performing
-            .chi-stat-submetric
-              .chi-stat-submetric__value
-                | 21
-              .chi-stat-submetric__title
-                | Impacted
-        .chi-stat__item.-active
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 2
-              .chi-stat-metric__title
-                | Services Down
-            .chi-stat-submetric
-              .chi-stat-submetric__value
-                | 47
-              .chi-stat-submetric__title
-                | Up
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 3
-              .chi-stat-metric__title
-                | Scheduled Maintenance
-            .chi-stat-submetric
-              .chi-stat-submetric__value
-                | 1
-              .chi-stat-submetric__title
-                | Planned
+                | Recently Closed
+            .chi-label__help
+              button.chi-button.-icon.-xs.-flat(id="example__portal-base-help-button6" aria-label="Help" data-target="#example__portal-base-help-popover6" data-position="bottom")
+                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-base
         li.-disabled
@@ -927,57 +625,508 @@ h2 Examples
           a(href=`#html-portal-base`) HTML Blueprint
     .chi-tabs-panel#webcomponent-portal-base
     .chi-tabs-panel.-active#html-portal-base
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../../getting-started/installation">Chi.js</a>.
       :code(lang="html")
-        <div class="chi-stat -sm">
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">High Utilization</div>
-              </div>
-              <div class="chi-stat-submetric">
-                <div class="chi-stat-submetric__value">16</div>
-                <div class="chi-stat-submetric__title">Elevated</div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-stat__item">
-            <div class="chi-stat__content">
-              <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">1</div>
-                <div class="chi-stat-metric__title">Critical Performing</div>
-              </div>
-              <div class="chi-stat-submetric">
-                <div class="chi-stat-submetric__value">21</div>
-                <div class="chi-stat-submetric__title">Impacted</div>
-              </div>
-            </div>
-          </div>
+        <div class="chi-stat">
           <div class="chi-stat__item -active">
             <div class="chi-stat__content">
               <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">2</div>
-                <div class="chi-stat-metric__title">Services Down</div>
-              </div>
-              <div class="chi-stat-submetric">
-                <div class="chi-stat-submetric__value">47</div>
-                <div class="chi-stat-submetric__title">Up</div>
+                <div class="chi-stat-metric__value">ALL</div>
+                <div class="chi-stat-metric__title">Services</div>
               </div>
             </div>
           </div>
           <div class="chi-stat__item">
             <div class="chi-stat__content">
               <div class="chi-stat-metric">
-                <div class="chi-stat-metric__value">3</div>
-                <div class="chi-stat-metric__title">Scheduled Maintenance</div>
+                <div class="chi-stat-metric__value">366</div>
+                <div class="chi-stat-metric__title">Communications</div>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-base-help-button2" aria-label="Help" data-target="#example__portal-base-help-popover2" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">932</div>
+                <div class="chi-stat-metric__title">Hybrid & Cloud IT</div>
               </div>
               <div class="chi-stat-submetric">
-                <div class="chi-stat-submetric__value">1</div>
-                <div class="chi-stat-submetric__title">Planned</div>
+                <div class="chi-stat-submetric__value">0</div>
+                <div class="chi-stat-submetric__title">Recently Closed</div>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-base-help-button3" aria-label="Help" data-target="#example__portal-base-help-popover3" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">301</div>
+                <div class="chi-stat-metric__title">Managed & IT Services</div>
+              </div>
+              <div class="chi-stat-submetric">
+                <div class="chi-stat-submetric__value">6</div>
+                <div class="chi-stat-submetric__title">Recently Closed</div>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-base-help-button4" aria-label="Help" data-target="#example__portal-base-help-popover4" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">100</div>
+                <div class="chi-stat-metric__title">Networking & Cloud IT</div>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-base-help-button5" aria-label="Help" data-target="#example__portal-base-help-popover5" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">2</div>
+                <div class="chi-stat-metric__title">Security</div>
+              </div>
+              <div class="chi-stat-submetric">
+                <div class="chi-stat-submetric__value">0</div>
+                <div class="chi-stat-submetric__title">Recently Closed</div>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-base-help-button6" aria-label="Help" data-target="#example__portal-base-help-popover6" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
               </div>
             </div>
           </div>
         </div>
+
+        <section class="chi-popover chi-popover--bottom" id="example__portal-base-help-popover2" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+        <section class="chi-popover chi-popover--bottom" id="example__portal-base-help-popover3" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+        <section class="chi-popover chi-popover--bottom" id="example__portal-base-help-popover4" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+        <section class="chi-popover chi-popover--bottom" id="example__portal-base-help-popover5" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+        <section class="chi-popover chi-popover--bottom" id="example__portal-base-help-popover6" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+
+        <script>
+          chi.popover(document.getElementById('example__portal-base-help-button2'));
+          chi.popover(document.getElementById('example__portal-base-help-button3'));
+          chi.popover(document.getElementById('example__portal-base-help-button4'));
+          chi.popover(document.getElementById('example__portal-base-help-button5'));
+          chi.popover(document.getElementById('example__portal-base-help-button6'));
+        </script>
+
+  h3 Background Icons
+  .example.-mb--3
+    .-p--3
+      .chi-stat
+        .chi-stat__item.-active
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__value
+                | ALL
+              .chi-stat-metric__title
+                | Services
+        .chi-stat__item
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__value
+                | 366
+              .chi-stat-metric__title
+                | Communications
+            .chi-stat-background-icon
+              chi-marketing-icon(icon="platform-voice-unified-communications")
+            .chi-label__help
+              button.chi-button.-icon.-xs.-flat(id="example__portal-bgicons-help-button2" aria-label="Help" data-target="#example__portal-bgicons-help-popover2" data-position="bottom")
+                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
+        .chi-stat__item
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__value
+                | 932
+              .chi-stat-metric__title
+                | Hybrid & Cloud IT
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 0
+              .chi-stat-submetric__title
+                | Recently Closed
+            .chi-stat-background-icon
+              chi-marketing-icon(icon="platform-it-agility-hybrid-cloud")
+            .chi-label__help
+              button.chi-button.-icon.-xs.-flat(id="example__portal-bgicons-help-button3" aria-label="Help" data-target="#example__portal-bgicons-help-popover3" data-position="bottom")
+                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
+        .chi-stat__item
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__value
+                | 301
+              .chi-stat-metric__title
+                | Managed & IT Services
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 6
+              .chi-stat-submetric__title
+                | Recently Closed
+            .chi-stat-background-icon
+              chi-marketing-icon(icon="business-support-ticket")
+            .chi-label__help
+              button.chi-button.-icon.-xs.-flat(id="example__portal-bgicons-help-button4" aria-label="Help" data-target="#example__portal-bgicons-help-popover4" data-position="bottom")
+                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
+        .chi-stat__item
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__value
+                | 100
+              .chi-stat-metric__title
+                | Networking & Cloud IT
+            .chi-stat-background-icon
+              chi-marketing-icon(icon="platform-adaptive-networking")
+            .chi-label__help
+              button.chi-button.-icon.-xs.-flat(id="example__portal-bgicons-help-button5" aria-label="Help" data-target="#example__portal-bgicons-help-popover5" data-position="bottom")
+                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
+        .chi-stat__item
+          .chi-stat__content
+            .chi-stat-metric
+              .chi-stat-metric__value
+                | 2
+              .chi-stat-metric__title
+                | Security
+            .chi-stat-submetric
+              .chi-stat-submetric__value
+                | 0
+              .chi-stat-submetric__title
+                | Recently Closed
+            .chi-stat-background-icon
+              chi-marketing-icon(icon="platform-connected-security")
+            .chi-label__help
+              button.chi-button.-icon.-xs.-flat(id="example__portal-bgicons-help-button6" aria-label="Help" data-target="#example__portal-bgicons-help-popover6" data-position="bottom")
+                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-base-portal-icons
+        li.-active
+          a(href=`#webcomponent-base-portal-icons`) Web Component
+        li
+          a(href=`#html-base-portal-icons`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-base-portal-icons
+      :code(lang="html")
+        <div class="chi-stat">
+          <div class="chi-stat__item -active">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">ALL</div>
+                <div class="chi-stat-metric__title">Services</div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">366</div>
+                <div class="chi-stat-metric__title">Communications</div>
+              </div>
+              <div class="chi-stat-background-icon">
+                <chi-marketing-icon icon="platform-voice-unified-communications"></chi-marketing-icon>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-bgicons-help-button2" aria-label="Help" data-target="#example__portal-bgicons-help-popover2" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">932</div>
+                <div class="chi-stat-metric__title">Hybrid & Cloud IT</div>
+              </div>
+              <div class="chi-stat-submetric">
+                <div class="chi-stat-submetric__value">0</div>
+                <div class="chi-stat-submetric__title">Recently Closed</div>
+              </div>
+              <div class="chi-stat-background-icon">
+                <chi-marketing-icon icon="platform-it-agility-hybrid-cloud"></chi-marketing-icon>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-bgicons-help-button3" aria-label="Help" data-target="#example__portal-bgicons-help-popover3" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">301</div>
+                <div class="chi-stat-metric__title">Managed & IT Services</div>
+              </div>
+              <div class="chi-stat-submetric">
+                <div class="chi-stat-submetric__value">6</div>
+                <div class="chi-stat-submetric__title">Recently Closed</div>
+              </div>
+              <div class="chi-stat-background-icon">
+                <chi-marketing-icon icon="business-support-ticket"></chi-marketing-icon>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-bgicons-help-button4" aria-label="Help" data-target="#example__portal-bgicons-help-popover4" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">100</div>
+                <div class="chi-stat-metric__title">Networking & Cloud IT</div>
+              </div>
+              <div class="chi-stat-background-icon">
+                <chi-marketing-icon icon="platform-adaptive-networking"></chi-marketing-icon>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-bgicons-help-button5" aria-label="Help" data-target="#example__portal-bgicons-help-popover5" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">2</div>
+                <div class="chi-stat-metric__title">Security</div>
+              </div>
+              <div class="chi-stat-submetric">
+                <div class="chi-stat-submetric__value">0</div>
+                <div class="chi-stat-submetric__title">Recently Closed</div>
+              </div>
+              <div class="chi-stat-background-icon">
+                <chi-marketing-icon icon="platform-connected-security"></chi-marketing-icon>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-bgicons-help-button6" aria-label="Help" data-target="#example__portal-bgicons-help-popover6" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="chi-popover chi-popover--bottom" id="example__portal-bgicons-help-popover2" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+        <section class="chi-popover chi-popover--bottom" id="example__portal-bgicons-help-popover3" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+        <section class="chi-popover chi-popover--bottom" id="example__portal-bgicons-help-popover4" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+        <section class="chi-popover chi-popover--bottom" id="example__portal-bgicons-help-popover5" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+        <section class="chi-popover chi-popover--bottom" id="example__portal-bgicons-help-popover6" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+
+        <script>
+          chi.popover(document.getElementById('example__portal-bgicons-help-button2'));
+          chi.popover(document.getElementById('example__portal-bgicons-help-button3'));
+          chi.popover(document.getElementById('example__portal-bgicons-help-button4'));
+          chi.popover(document.getElementById('example__portal-bgicons-help-button5'));
+          chi.popover(document.getElementById('example__portal-bgicons-help-button6'));
+        </script>
+    .chi-tabs-panel#html-base-portal-icons
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../../getting-started/installation">Chi.js</a>.
+      :code(lang="html")
+        <div class="chi-stat">
+          <div class="chi-stat__item -active">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">ALL</div>
+                <div class="chi-stat-metric__title">Services</div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">366</div>
+                <div class="chi-stat-metric__title">Communications</div>
+              </div>
+              <div class="chi-stat-background-icon">
+                <i class="chi-icon icon-file" aria-hidden="true"></i>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-bgicons-help-button2" aria-label="Help" data-target="#example__portal-bgicons-help-popover2" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">932</div>
+                <div class="chi-stat-metric__title">Hybrid & Cloud IT</div>
+              </div>
+              <div class="chi-stat-submetric">
+                <div class="chi-stat-submetric__value">0</div>
+                <div class="chi-stat-submetric__title">Recently Closed</div>
+              </div>
+              <div class="chi-stat-background-icon">
+                <i class="chi-icon icon-warning" aria-hidden="true"></i>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-bgicons-help-button3" aria-label="Help" data-target="#example__portal-bgicons-help-popover3" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">301</div>
+                <div class="chi-stat-metric__title">Managed & IT Services</div>
+              </div>
+              <div class="chi-stat-submetric">
+                <div class="chi-stat-submetric__value">6</div>
+                <div class="chi-stat-submetric__title">Recently Closed</div>
+              </div>
+              <div class="chi-stat-background-icon">
+                <i class="chi-icon icon-map-marker" aria-hidden="true"></i>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-bgicons-help-button4" aria-label="Help" data-target="#example__portal-bgicons-help-popover4" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">100</div>
+                <div class="chi-stat-metric__title">Networking & Cloud IT</div>
+              </div>
+              <div class="chi-stat-background-icon">
+                <i class="chi-icon icon-mail" aria-hidden="true"></i>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-bgicons-help-button5" aria-label="Help" data-target="#example__portal-bgicons-help-popover5" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="chi-stat__item">
+            <div class="chi-stat__content">
+              <div class="chi-stat-metric">
+                <div class="chi-stat-metric__value">2</div>
+                <div class="chi-stat-metric__title">Security</div>
+              </div>
+              <div class="chi-stat-submetric">
+                <div class="chi-stat-submetric__value">0</div>
+                <div class="chi-stat-submetric__title">Recently Closed</div>
+              </div>
+              <div class="chi-stat-background-icon">
+                <i class="chi-icon icon-file" aria-hidden="true"></i>
+              </div>
+              <div class="chi-label__help">
+                <button class="chi-button -icon -xs -flat" id="example__portal-bgicons-help-button6" aria-label="Help" data-target="#example__portal-bgicons-help-popover6" data-position="bottom">
+                  <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="chi-popover chi-popover--bottom" id="example__portal-bgicons-help-popover2" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+        <section class="chi-popover chi-popover--bottom" id="example__portal-bgicons-help-popover3" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+        <section class="chi-popover chi-popover--bottom" id="example__portal-bgicons-help-popover4" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+        <section class="chi-popover chi-popover--bottom" id="example__portal-bgicons-help-popover5" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+        <section class="chi-popover chi-popover--bottom" id="example__portal-bgicons-help-popover6" aria-modal="true" role="dialog">
+          <div class="chi-popover__content">
+            <p class="chi-popover__text">Helpful information goes here.</p>
+          </div>
+        </section>
+
+        <script>
+          chi.popover(document.getElementById('example__portal-bgicons-help-button2'));
+          chi.popover(document.getElementById('example__portal-bgicons-help-button3'));
+          chi.popover(document.getElementById('example__portal-bgicons-help-button4'));
+          chi.popover(document.getElementById('example__portal-bgicons-help-button5'));
+          chi.popover(document.getElementById('example__portal-bgicons-help-button6'));
+        </script>
+
 
   h3 Compact
   p.-text
@@ -1320,6 +1469,47 @@ section.chi-popover.chi-popover--bottom(id="example__portal-help-popover6" aria-
     p.chi-popover__text
       | Helpful information goes here.
 
+section.chi-popover.chi-popover--bottom(id="example__portal-base-help-popover2" aria-modal="true" role="dialog")
+  .chi-popover__content
+    p.chi-popover__text
+      | Helpful information goes here.
+section.chi-popover.chi-popover--bottom(id="example__portal-base-help-popover3" aria-modal="true" role="dialog")
+  .chi-popover__content
+    p.chi-popover__text
+      | Helpful information goes here.
+section.chi-popover.chi-popover--bottom(id="example__portal-base-help-popover4" aria-modal="true" role="dialog")
+  .chi-popover__content
+    p.chi-popover__text
+      | Helpful information goes here.
+section.chi-popover.chi-popover--bottom(id="example__portal-base-help-popover5" aria-modal="true" role="dialog")
+  .chi-popover__content
+    p.chi-popover__text
+      | Helpful information goes here.
+section.chi-popover.chi-popover--bottom(id="example__portal-base-help-popover6" aria-modal="true" role="dialog")
+  .chi-popover__content
+    p.chi-popover__text
+      | Helpful information goes here.
+
+section.chi-popover.chi-popover--bottom(id="example__portal-bgicons-help-popover2" aria-modal="true" role="dialog")
+  .chi-popover__content
+    p.chi-popover__text
+      | Helpful information goes here.
+section.chi-popover.chi-popover--bottom(id="example__portal-bgicons-help-popover3" aria-modal="true" role="dialog")
+  .chi-popover__content
+    p.chi-popover__text
+      | Helpful information goes here.
+section.chi-popover.chi-popover--bottom(id="example__portal-bgicons-help-popover4" aria-modal="true" role="dialog")
+  .chi-popover__content
+    p.chi-popover__text
+      | Helpful information goes here.
+section.chi-popover.chi-popover--bottom(id="example__portal-bgicons-help-popover5" aria-modal="true" role="dialog")
+  .chi-popover__content
+    p.chi-popover__text
+      | Helpful information goes here.
+section.chi-popover.chi-popover--bottom(id="example__portal-bgicons-help-popover6" aria-modal="true" role="dialog")
+  .chi-popover__content
+    p.chi-popover__text
+      | Helpful information goes here.
 
 script.
   document.addEventListener(
@@ -1338,5 +1528,17 @@ script.
       chi.popover(document.getElementById('example__portal-help-button5'));
       chi.popover(document.getElementById('example__help-button6'));
       chi.popover(document.getElementById('example__portal-help-button6'));
+
+      chi.popover(document.getElementById('example__portal-base-help-button2'));
+      chi.popover(document.getElementById('example__portal-base-help-button3'));
+      chi.popover(document.getElementById('example__portal-base-help-button4'));
+      chi.popover(document.getElementById('example__portal-base-help-button5'));
+      chi.popover(document.getElementById('example__portal-base-help-button6'));
+
+      chi.popover(document.getElementById('example__portal-bgicons-help-button2'));
+      chi.popover(document.getElementById('example__portal-bgicons-help-button3'));
+      chi.popover(document.getElementById('example__portal-bgicons-help-button4'));
+      chi.popover(document.getElementById('example__portal-bgicons-help-button5'));
+      chi.popover(document.getElementById('example__portal-bgicons-help-button6'));
     }
   );
