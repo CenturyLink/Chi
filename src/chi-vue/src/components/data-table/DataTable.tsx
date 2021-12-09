@@ -173,7 +173,7 @@ export default class DataTable extends Vue {
 
   _bulkAction() {
     if (this.$scopedSlots['bulkActions']) {
-      return <div class="">{this.$scopedSlots['bulkActions']({})}</div>;
+      return <div>{this.$scopedSlots['bulkActions']({})}</div>;
     }
     return null;
   }
@@ -323,17 +323,7 @@ export default class DataTable extends Vue {
       return this.selectedRows.includes(row.rowId);
     });
 
-    for (const i in selectedRowsData) {
-      selectedRowsData[i].selected = true;
-    }
-
-    const data = {
-      selectedRowsData: selectedRowsData,
-      slicedData: this.slicedData,
-      selectedRowIds: this.selectedRows,
-    };
-
-    this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, data);
+    this.$emit(DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE, selectedRowsData);
   }
 
   selectRow(rowData: DataTableRow) {
@@ -931,11 +921,38 @@ export default class DataTable extends Vue {
     this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
   }
 
+  _showSelectedRows(isSelected: boolean) {
+    const selectedRow = this._serializedDataBody.filter((row: DataTableRow) => {
+      return this.selectedRows.includes(row.rowId);
+    });
+
+    for (const i in selectedRow) {
+      selectedRow[i].selected = true;
+    }
+
+    if (isSelected) {
+      this.slicedData = selectedRow;
+    } else {
+      const selectedRowsData = this.sliceData(this._sortedData || this._serializedDataBody);
+      const selectedRowIds = this.selectedRows;
+      for (const i in selectedRowsData) {
+        selectedRowsData[i].selected = selectedRowIds.includes(selectedRowsData[i].rowId);
+      }
+      this.slicedData = selectedRowsData;
+    }
+  }
+
   mounted() {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
 
     if (dataTableComponent && this.config.columnResize) {
       this._generateColumnResize(dataTableComponent);
+    }
+
+    if (this._bulkActionsComponent) {
+      (this._bulkActionsComponent as Vue).$on('chiShowSelectedOnly', (isSelected: boolean) => {
+        this._showSelectedRows(isSelected);
+      });
     }
 
     this._addPaginationEventListener();

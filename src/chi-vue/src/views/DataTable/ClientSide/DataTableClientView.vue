@@ -90,60 +90,11 @@
         </ChiDataTableToolbar>
       </template>
       <template #bulkActions>
-        <transition name="slide-fade">
-          <div v-show="bulkActionConfig.selectedRowIds.length > 0 && bulkActionConfig.showBulkActions">
-            <ChiDataTableBulkActions
-              :selectedRowCount="bulkActionConfig.selectedRowIds.length"
-              @showSelectedOnly="showSelectedOnlyRow"
-            >
-              <template v-slot:top>
-                <chi-link href="#">Select all</chi-link>
-                <chi-link href="#">Clear</chi-link>
-              </template>
-              <template v-slot:start>
-                <div class="chi-bulk-actions__buttons">
-                  <div class="chi-bulk-actions__buttons-mobile -z--40">
-                    <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Edit">
-                      <chi-icon icon="edit"></chi-icon>
-                    </chi-button>
-                    <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Compose">
-                      <chi-icon icon="compose"></chi-icon>
-                    </chi-button>
-                    <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Delete">
-                      <chi-icon icon="delete"></chi-icon>
-                    </chi-button>
-                    <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Print">
-                      <chi-icon icon="print"></chi-icon>
-                    </chi-button>
-                  </div>
-                  <div class="chi-bulk-actions__buttons-desktop">
-                    <chi-button size="xs">
-                      <chi-icon icon="arrow-to-bottom"></chi-icon>
-                      <span> Download </span>
-                    </chi-button>
-                    <chi-button size="xs">
-                      <chi-icon icon="arrow-to-bottom"></chi-icon>
-                      <span> Compose </span>
-                    </chi-button>
-                    <chi-button size="xs">
-                      <chi-icon icon="arrow-to-bottom"></chi-icon>
-                      <span> Delete </span>
-                    </chi-button>
-                    <chi-button size="xs">
-                      <chi-icon icon="arrow-to-bottom"></chi-icon>
-                      <span> Print </span>
-                    </chi-button>
-                  </div>
-                </div>
-              </template>
-              <template v-slot:end>
-                <div class="chi-bulk-actions__end">
-                  <chi-button type="close" @click="() => toggleCloseBulkActions()"></chi-button>
-                </div>
-              </template>
-            </ChiDataTableBulkActions>
-          </div>
-        </transition>
+        <ChiDataTableBulkActions
+          :bulkActionConfig="bulkActionConfig"
+          @chiShowSelectedOnly="e => chiShowSelectedOnly(e)"
+        >
+        </ChiDataTableBulkActions>
       </template>
       <template #loadingSkeleton>
         <div class="-d--flex -flex--column -w--100">
@@ -196,28 +147,14 @@ const MOCK_API_RESPONSE_DELAY = 5000;
       console.log('chiColumnsReset', e);
     },
     chiSelectedRowsChange(data) {
-      this.$data.bulkActionConfig.showBulkActions = true;
-      this.$data.bulkActionConfig.slicedData = data.slicedData;
-      this.$data.bulkActionConfig.selectedRow = data.selectedRowsData;
-      this.$data.bulkActionConfig.selectedRowIds = data.selectedRowIds;
+      this.$data.bulkActionConfig = {
+        ...this.$data.bulkActionConfig,
+        showBulkActions: true,
+        selectedRow: data,
+      };
     },
-    showSelectedOnlyRow(isSelectedOnly) {
-      if (isSelectedOnly) {
-        this.$data.table = {
-          head: exampleTableHead,
-          body: this.$data.bulkActionConfig.selectedRow,
-        };
-      } else {
-        const selectedRowsData = this.$data.bulkActionConfig.slicedData;
-        const selectedRowIds = this.$data.bulkActionConfig.selectedRowIds;
-        for (const i in selectedRowsData) {
-          selectedRowsData[i].selected = selectedRowIds.includes(selectedRowsData[i].rowId);
-        }
-        this.$data.table = {
-          head: exampleTableHead,
-          body: selectedRowsData,
-        };
-      }
+    chiShowSelectedOnly: e => {
+      console.log('chiColumnsReset', e);
     },
     pageChange: e => {
       console.log('chiPageChange', e);
@@ -249,9 +186,6 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     rowDeselected(rowData: DataTableRow) {
       console.log('chiRowDeselected', rowData);
     },
-    toggleCloseBulkActions() {
-      this.$data.bulkActionConfig.showBulkActions = false;
-    },
     dateChangeHandler: e => {
       console.log('dateChangeHandler', e);
     },
@@ -270,7 +204,7 @@ const MOCK_API_RESPONSE_DELAY = 5000;
         head: exampleTableHead,
         body: exampleTableBody,
       },
-      bulkActionConfig: bulkActionConfig,
+      bulkActionConfig,
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     };
   },
