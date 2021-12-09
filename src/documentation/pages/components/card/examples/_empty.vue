@@ -1,20 +1,16 @@
 <template lang="pug">
   <ComponentExample title="Empty" id="empty" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text Render an empty state card with the class <code>-empty</code>.
-    div(slot="example")
-      .chi-card.-empty(style="max-width:20rem;")
-        .chi-card__content
-          .chi-card__caption
-            | This is an empty card
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    p.-text(slot="example-description") Render an empty state card with the class <code>-empty</code>.
+    .chi-card.-empty(style="max-width:20rem;" slot="example")
+      .chi-card__content
+        .chi-card__caption
+          | This is an empty card
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
