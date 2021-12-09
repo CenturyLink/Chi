@@ -11,6 +11,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "export:types": "npm i && npm run build && npm pack",
     "build:component": "vue-cli-service build --mode prod.component --target lib src/build/component-library.ts --formats commonjs --name @centurylink/chi-vue",
     "build:umd": "vue-cli-service build --mode prod.component --target lib src/build/component-library.ts --formats umd --dest umd",
     "lint": "vue-cli-service lint",
