@@ -44,7 +44,6 @@
     background-color: $bulk-actions-background-color;
     display: flex;
     left: 0;
-    position: fixed;
     width: 100%;
     z-index: 1;
 
@@ -55,16 +54,12 @@
 
   &__top {
     justify-content: space-between;
-    padding: 1.375rem 1rem;
+    padding: 0.75rem 1rem;
+    position: fixed;
     top: 0;
 
-    .chi-link {
-      color: $bulk-actions-link-color;
-      font-weight: $bulk-actions-link-font-weight;
-
-      &:hover {
-        text-decoration: none;
-      }
+    .chi-button {
+      text-transform: none;
     }
   }
 
@@ -87,6 +82,7 @@
       bottom: 0;
       justify-content: space-evenly;
       padding: 0.75rem 1rem;
+      position: fixed;
 
       .chi-button {
         .chi-icon {

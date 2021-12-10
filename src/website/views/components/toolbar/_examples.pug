@@ -1448,7 +1448,7 @@ h2 Examples
 
   h3 Base with ribbon and bulk actions
   .example.-mb--3
-    .-p--3
+    .-p--3.-position--relative
       .chi-toolbar
         .chi-toolbar__header
           .chi-toolbar__start
@@ -1513,9 +1513,9 @@ h2 Examples
               .chi-button__content
                 i.chi-icon.icon-x(aria-hidden="true")
       .chi-bulk-actions
-        .chi-bulk-actions__top
-          chi-link(href='#') Select all
-          chi-link(href='#') Clear
+        .chi-bulk-actions__top.-position--absolute
+          chi-button(variant='flat') Select all
+          chi-button(variant='flat') Cancel
         .chi-bulk-actions__start
           .chi-bulk-actions__results
             .chi-bulk-actions__label Actions (10 Selected)
@@ -1525,7 +1525,7 @@ h2 Examples
                 label.chi-checkbox__label(for='checkbox-ba1') Show Selected Only
           .chi-divider.-vertical
           .chi-bulk-actions__buttons
-            .chi-bulk-actions__buttons-mobile
+            .chi-bulk-actions__buttons-mobile.-position--absolute
               chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Edit')
                 chi-icon(icon='edit')
               chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Compose')
@@ -1674,8 +1674,8 @@ h2 Examples
         </div>
         <div class="chi-bulk-actions">
           <div class="chi-bulk-actions__top">
-            <chi-link href="#">Select all</chi-link>
-            <chi-link href="#">Clear</chi-link>
+            <button class="chi-button -flat">Select all</button>
+            <button class="chi-button -flat">Cancel</button>
           </div>
           <div class="chi-bulk-actions__start">
             <div class="chi-bulk-actions__results">
