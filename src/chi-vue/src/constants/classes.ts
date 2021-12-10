@@ -10,6 +10,7 @@ export const PORTAL_CLASS = '-portal';
 export const TRANSITIONING_CLASS = '-transitioning';
 export const SR_ONLY = '-sr--only';
 export const EXPANDED_CLASS = '-expanded';
+export const HOLQ = '-expanded';
 //#endregion
 
 //#region Backdrop
