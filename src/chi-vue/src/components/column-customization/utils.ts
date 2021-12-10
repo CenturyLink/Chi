@@ -14,6 +14,7 @@ export const checkColumns = (originalData: DataTableColumn[], newData: DataTable
 };
 
 export const _changeOrder = (arr: any[], oldIndex: number, newIndex: number) => {
-  arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
+  var a = 0;
+  arr.splice(newIndex, a, arr.splice(oldIndex, 1)[a]);
   return arr;
 };
