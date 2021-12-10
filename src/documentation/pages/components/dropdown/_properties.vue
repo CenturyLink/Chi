@@ -2,6 +2,8 @@
   div
     h2 JavaScript
 
+    h3.mt--2 Properties
+
     h3.mt--2 Methods
     section.chi-table.chi-table__methods.-bordered.-my--3
       div

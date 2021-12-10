@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Plain Text" id="plain_text" :tabs="exampleTabs" backgroundColor="#eee">
+  <ComponentExample title="Plain Text" id="plain_text" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     p.-text(slot="example-description") Use a <code>span</code> tag to include text without rendering as a link.
     .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3(slot="example")
       .chi-dropdown__menu.-active

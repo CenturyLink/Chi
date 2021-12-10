@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Range Input" id="range_input" :tabs="exampleTabs" backgroundColor="#eee">
+  <ComponentExample title="Range Input" id="range_input" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4(slot="example")
       .chi-dropdown__menu.-active
         .chi-dropdown__menu-item

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Search box" id="search_box" :tabs="exampleTabs" backgroundColor="#eee">
+  <ComponentExample title="Search box" id="search_box" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     p.-text(slot="example-description")
       | This search box is a special kind of text input prepared to be located on top of the menu-item. It has slightly
       | smaller padding at the sides.

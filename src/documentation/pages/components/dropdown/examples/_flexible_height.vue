@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Flexible height" titleSize="h4" id="flexible_height" :tabs="exampleTabs" backgroundColor="#eee">
+  <ComponentExample title="Flexible height" titleSize="h4" id="flexible_height" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     p.-text(slot="example-description") Add the class <code>-h--auto</code> to set menu item height to auto.
     .chi-dropdown__menu.-active(slot="example" style="width:10rem")
       a.chi-dropdown__menu-item(href="#exampleLink") Item 1

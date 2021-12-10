@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Description" id="description" :tabs="exampleTabs" backgroundColor="#eee">
+  <ComponentExample title="Description" id="description" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4(slot="example")
       .chi-dropdown__menu.-active.-list
         a.chi-dropdown__menu-item(href='#exampleLink')

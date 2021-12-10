@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base" titleSize="h4" id="checkboxes_base" :tabs="exampleTabs" backgroundColor="#eee">
+  <ComponentExample title="Base" titleSize="h4" id="checkboxes_base" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3(slot="example")
       .chi-dropdown__menu.-active
         .chi-dropdown__menu-item
@@ -80,6 +80,11 @@ import { Component, Vue } from 'vue-property-decorator';
 </div>`
       }
     };
+  },
+  computed: {
+    additionalClasses() {
+      return { 'background-color': '#eee' };
+    }
   }
 })
 export default class CheckboxesBase extends Vue {}

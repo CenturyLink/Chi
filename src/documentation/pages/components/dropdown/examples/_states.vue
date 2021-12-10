@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Menu item states" id="states" :tabs="exampleTabs" backgroundColor="#eee">
+  <ComponentExample title="Menu item states" id="states" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     p.-text(slot="example-description")
       | Menu items support the following states: <code>initial</code>, <code>active</code>, <code>disabled</code> and
       | <code>hover</code>.

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Toggle Switch" id="toggle_switch" :tabs="exampleTabs" backgroundColor="#eee">
+  <ComponentExample title="Toggle Switch" id="toggle_switch" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4(slot="example")
       .chi-dropdown__menu.-active
         legend.chi-dropdown__menu-item Configure options

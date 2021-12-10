@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="With Icons" titleSize="h4" id="checkboxes_icons" :tabs="exampleTabs" backgroundColor="#eee">
+  <ComponentExample title="With Icons" titleSize="h4" id="checkboxes_icons" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     .chi-col.-w--10.-w-sm--6.-w-md--7.-w-lg--5.-w-xl--3(slot="example")
       .chi-dropdown__menu.-active
         .chi-dropdown__menu-item

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Icons" id="icons" :tabs="exampleTabs" backgroundColor="#eee">
+  <ComponentExample title="Icons" id="icons" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     p.-text(slot="example-description")
       | Dropdown component has been developed to support Chi icons in the menu items.
     .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3(slot="example")

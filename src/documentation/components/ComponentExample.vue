@@ -22,10 +22,7 @@
     </h3>
     <slot name="example-description"></slot>
     <div class="example -mb--3">
-      <div
-        :class="padding || '-p--3'"
-        :style="'backgroundColor:' + backgroundColor || '#fff'"
-      >
+      <div :class="[padding || '-p--3', additionalClasses]">
         <slot name="example"></slot>
       </div>
       <div class="example-tabs -pl--2">
@@ -80,7 +77,7 @@ export default class ComponentExample extends Vue {
   @Prop() titleSize?: 'h3' | 'h4';
   @Prop() tabs?: TabsInterface[];
   @Prop() padding?: string;
-  @Prop() backgroundColor?: string;
+  @Prop() additionalClasses?: string;
 
   chiTabs: any;
 

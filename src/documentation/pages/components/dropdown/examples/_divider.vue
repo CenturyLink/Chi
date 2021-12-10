@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Divider" id="divider" :tabs="exampleTabs" backgroundColor="#eee">
+  <ComponentExample title="Divider" id="divider" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     p.-text(slot="example-description") 
       | Several menu items can be arranged together by using a divider. Use the <code>chi-divider</code> component.
     .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3(slot="example")

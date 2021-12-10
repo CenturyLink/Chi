@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Truncate long menu-items" titleSize="h4" id="truncate_long_menu_items" :tabs="exampleTabs" backgroundColor="#eee">
+  <ComponentExample title="Truncate long menu-items" titleSize="h4" id="truncate_long_menu_items" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     p.-text(slot="example-description") 
       | Wrap the menu-item content in a div with the class <code>-flex--ellipsis</code> to truncate long strings.
     .chi-dropdown__menu.-active(style="width:10rem" slot="example")
