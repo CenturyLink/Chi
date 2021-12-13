@@ -13,7 +13,7 @@
     <pre class="language-html">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>
-  </Wrapper>          
+  </Wrapper>
 </ComponentExample>
 </template>
 
