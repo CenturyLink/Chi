@@ -9,20 +9,20 @@ h2 Examples
     .-p--3
       #base
         chi-vue-toolbar
-          template(v-slot:start='')
+          template(v-slot:start)
             chi-vue-search-input(:data-table-search='true')
             .chi-divider.-vertical
             chi-vue-data-table-views(:views='toolbar.viewsData')
             .chi-divider.-vertical
             chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' :custom-items='toolbar.customItemsData')
-              template(v-slot:custom-one='')
+              template(v-slot:custom-one)
                 chi-label(for='input-1') City
                 chi-text-input#input-1
                 chi-label(for='input-2') Zip Code
                 chi-text-input#input-2
-              template(v-slot:custom-two='')
+              template(v-slot:custom-two)
                 chi-date-picker
-          template(v-slot:end='')
+          template(v-slot:end)
             chi-vue-column-customization(:columns-data='toolbar.columnsData')
     .example-tabs.-pl--2
       ul.chi-tabs#example-base(role="tablist")
@@ -420,21 +420,21 @@ h2 Examples
   .example.-mb--3
     .-p--3
       #baseWithRibbon
-        chi-vue-toolbar
-          template(v-slot:start='')
+        chi-vue-toolbar(:ribbon="true")
+          template(v-slot:start)
             chi-vue-search-input(:data-table-search='true')
             .chi-divider.-vertical
             chi-vue-data-table-views(:views='toolbar.viewsData')
             .chi-divider.-vertical
             chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' :custom-items='toolbar.customItemsData')
-              template(v-slot:custom-one='')
+              template(v-slot:custom-one)
                 chi-label(for='input-3') City
                 chi-text-input#input-3
                 chi-label(for='input-4') Zip Code
                 chi-text-input#input-4
-              template(v-slot:custom-two='')
+              template(v-slot:custom-two)
                 chi-date-picker
-          template(v-slot:end='')
+          template(v-slot:end)
             chi-vue-tooltip(message="Download")
               chi-button(type="icon" variant="flat" alternative-text="Download")
                 i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
@@ -442,16 +442,14 @@ h2 Examples
               chi-button(type="icon" variant="flat" alternative-text="Refresh")
                 i.chi-icon.icon-refresh(aria-hidden="true")
             chi-vue-column-customization(:columns-data='toolbar.columnsData')
-      #baseRibbon
-        chi-vue-toolbar(:ribbon="true")
-          template(v-slot:start='')
+          template(v-slot:[startribbon])
             i.chi-icon.icon-arrow-down.-xs(aria-hidden="true")
             .chi-toolbar__results
               span.chi-toolbar__label Search Results 
               span (1-40 of 78)
             .chi-divider.-vertical
             chi-link(href='#' size='md') Save View
-          template(v-slot:end='')
+          template(v-slot:[endribbon])
             chi-button(type="icon" variant="flat" alternative-text="Close")
               i.chi-icon.icon-x(aria-hidden="true")
     .example-tabs.-pl--2
@@ -483,7 +481,7 @@ h2 Examples
       .chi-tab__description Use the slots <code>start</code> to add elements to the left side area of the Toolbar Header and the <code>end</code> - to the right side.
       :code(lang='html')
         <!-- Vue component -->
-        <ChiDataTableToolbar>
+        <ChiDataTableToolbar :ribbon="true">
           <template v-slot:start>
             <ChiSearchInput :dataTableSearch="true"></ChiSearchInput>
             <div class="chi-divider -vertical"></div>
@@ -515,9 +513,7 @@ h2 Examples
             <!-- To enable customization of columns, use Column Customization sub-module of Toolbar by providing it with respective data -->
             <ChiColumnCustomization :columnsData="toolbar.columnsData"></ChiColumnCustomization>
           </template>
-        </ChiDataTableToolbar>
-        <ChiDataTableToolbar :ribbon="true">
-          <template v-slot:start="">
+          <template v-slot:startRibbon>
             <i class="chi-icon icon-arrow-down -xs" aria-hidden="true"></i>
             <div class="chi-toolbar__results">
               <span class="chi-toolbar__label">Search Results </span><span>(1-40 of 78)</span>
@@ -525,7 +521,7 @@ h2 Examples
             <div class="chi-divider -vertical"></div>
             <chi-link href="#" size="md">Save View</chi-link>
           </template>
-          <template v-slot:end="">
+          <template v-slot:endRibbon>
             <chi-button type="icon" variant="flat">
               <i class="chi-icon icon-x" aria-hidden="true"></i>
             </chi-button>
@@ -891,20 +887,20 @@ h2 Examples
     .-p--3
       #basePortal
         chi-vue-toolbar
-          template(v-slot:start='')   
+          template(v-slot:start)   
             chi-vue-search-input(:data-table-search='true')
             .chi-divider.-vertical
             chi-vue-data-table-views(:views='toolbar.viewsData')
             .chi-divider.-vertical
             chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' :custom-items='toolbar.customItemsData')
-              template(v-slot:custom-one='')
+              template(v-slot:custom-one)
                 chi-label(for='input-5') City
                 chi-text-input#input-5
                 chi-label(for='input-6') Zip Code
                 chi-text-input#input-6
-              template(v-slot:custom-two='')
+              template(v-slot:custom-two)
                 chi-date-picker
-          template(v-slot:end='')
+          template(v-slot:end)
             chi-vue-column-customization(:columns-data='toolbar.columnsData')
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal(role="tablist")
@@ -1302,21 +1298,21 @@ h2 Examples
   .example.-mb--3
     .-p--3
       #baseWithRibbonPortal
-        chi-vue-toolbar
-          template(v-slot:start='')
+        chi-vue-toolbar(:ribbon="true")
+          template(v-slot:start)
             chi-vue-search-input(:data-table-search='true')
             .chi-divider.-vertical
             chi-vue-data-table-views(:views='toolbar.viewsData')
             .chi-divider.-vertical
             chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' :custom-items='toolbar.customItemsData')
-              template(v-slot:custom-one='')
+              template(v-slot:custom-one)
                 chi-label(for='input-7') City
                 chi-text-input#input-7
                 chi-label(for='input-8') Zip Code
                 chi-text-input#input-8
-              template(v-slot:custom-two='')
+              template(v-slot:custom-two)
                 chi-date-picker
-          template(v-slot:end='')
+          template(v-slot:end)
             chi-vue-tooltip(message="Download")
               chi-button(type="icon" variant="flat" alternative-text="Download")
                 i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
@@ -1324,16 +1320,14 @@ h2 Examples
               chi-button(type="icon" variant="flat" alternative-text="Refresh")
                 i.chi-icon.icon-refresh(aria-hidden="true")
             chi-vue-column-customization(:columns-data='toolbar.columnsData')
-      #baseRibbonPortal
-        chi-vue-toolbar(:ribbon="true")
-          template(v-slot:start='')
+          template(v-slot:[startribbon])
             i.chi-icon.icon-arrow-down.-xs(aria-hidden="true")
             .chi-toolbar__results
               span.chi-toolbar__label Search Results 
               span (1-40 of 78)
             .chi-divider.-vertical
             chi-link(href='#' size='md') Save View
-          template(v-slot:end='')
+          template(v-slot:[endribbon])
             chi-button(type="icon" variant="flat" alternative-text="Close")
               i.chi-icon.icon-x(aria-hidden="true")
     .example-tabs.-pl--2
@@ -1365,7 +1359,7 @@ h2 Examples
       .chi-tab__description Use the slots <code>start</code> to add elements to the left side area of the Toolbar Header and the <code>end</code> - to the right side.
       :code(lang='html')
         <!-- Vue component -->
-        <ChiDataTableToolbar>
+        <ChiDataTableToolbar :ribbon="true">
           <template v-slot:start>
             <ChiSearchInput :dataTableSearch="true"></ChiSearchInput>
             <div class="chi-divider -vertical"></div>
@@ -1397,9 +1391,7 @@ h2 Examples
             <!-- To enable customization of columns, use Column Customization sub-module of Toolbar by providing it with respective data -->
             <ChiColumnCustomization :columnsData="toolbar.columnsData"></ChiColumnCustomization>
           </template>
-        </ChiDataTableToolbar>
-        <ChiDataTableToolbar :ribbon="true">
-          <template v-slot:start="">
+          <template v-slot:startRibbon>
             <i class="chi-icon icon-arrow-down -xs" aria-hidden="true"></i>
             <div class="chi-toolbar__results">
               <span class="chi-toolbar__label">Search Results </span><span>(1-40 of 78)</span>
@@ -1407,7 +1399,7 @@ h2 Examples
             <div class="chi-divider -vertical"></div>
             <chi-link href="#" size="md">Save View</chi-link>
           </template>
-          <template v-slot:end="">
+          <template v-slot:endRibbon>
             <chi-button type="icon" variant="flat">
               <i class="chi-icon icon-x" aria-hidden="true"></i>
             </chi-button>
@@ -1891,7 +1883,7 @@ script.
       label: 'Column J',
     },
   ];
-  const ids = ['#base', '#baseWithRibbon', '#baseRibbon', '#basePortal', '#baseWithRibbonPortal', '#baseRibbonPortal']
+  const ids = ['#base', '#baseWithRibbon', '#basePortal', '#baseWithRibbonPortal']
 
   ids.forEach((id) => {
     new Vue({
@@ -1907,6 +1899,8 @@ script.
         chiVueTooltip: window["chi-vue"].library.components.ChiTooltip
       },
       data: {
+        startribbon: "startRibbon",
+        endribbon: "endRibbon",
         toolbar: {
           customItemsData: customItems,
           filtersData: [

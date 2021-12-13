@@ -55,10 +55,16 @@ export default class DataTableToolbar extends Vue {
   render() {
     return (
       <div class={`${DATA_TABLE_CLASSES.TOOLBAR} ${PORTAL_CLASS}`}>
-        <div class={this.ribbon ? `${DATA_TABLE_CLASSES.TOOLBAR}__ribbon` : `${DATA_TABLE_CLASSES.TOOLBAR}__header`}>
+        <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__header`}>
           <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__start`}>{this.$slots.start}</div>
           <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__end`}>{this.$slots.end}</div>
         </div>
+        {this.ribbon && (
+          <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__ribbon`}>
+            <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__start`}>{this.$slots.startRibbon}</div>
+            <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__end`}>{this.$slots.endRibbon}</div>
+          </div>
+        )}
       </div>
     );
   }
