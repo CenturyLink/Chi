@@ -468,6 +468,16 @@ $badge-muted-icon-color:                    $color-icon-white;
 $badge-flat-muted-text-color:               $color-text-muted;
 $badge-flat-muted-icon-color:               $color-icon-muted;
 
+// Bulk actions
+$bulk-actions-background-color:             $color-background-secondary;
+$bulk-actions-link-color:                   $color-text-base;
+$bulk-actions-link-font-weight:             $font-weight-semi-bold;
+$bulk-actions-results-font-size:            $font-size-md;
+$bulk-actions-label-font-weight:            $font-weight-semi-bold;
+$bulk-actions-divider-height:               1.25rem;
+$bulk-actions-divider-border-right-color:   $color-blue-30;
+$bulk-actions-button-icon-color:            $color-grey-80;
+
 // Button
 $button-solid-background-color:             $color-background-white;
 $button-solid-border-color:                 $color-border-base-dark;
@@ -1322,24 +1332,6 @@ $spinner-size-xl:                           6rem;
 $spinner-size-xxl:                          8rem;
 
 // Stat
-$stat-primary-background-color:             $color-navy-100;
-$stat-primary-active-background-color:      $color-cyan-40;
-$stat-primary-background-icon-color:        $color-cyan-50;
-$stat-primary-active-background-icon-color: $color-cyan-50;
-$stat-primary-background-icon-opacity:      0.3;
-$stat-primary-active-background-icon-opacity: 0.5;
-$stat-primary-text-color:                   $color-text-white;
-$stat-primary-active-text-color:            $color-text-base;
-$stat-primary-active-metric-title-color:    $color-text-base;
-$stat-primary-metric-value-color:           $color-navy-30;
-$stat-primary-active-metric-value-color:    $color-text-base;
-$stat-primary-active-submetric-text-color:  $color-text-base;
-$stat-primary-submetric-text-color:         $color-navy-30;
-$stat-primary-active-notch-border-color:    $color-cyan-40;
-$stat-primary-active-notch-display:         block;
-$stat-primary-border:                       none;
-$stat-primary-active-border:                none;
-
 $stat-background-color:                     $color-background-white;
 $stat-background-icon-color:                $color-icon-muted-light;
 $stat-background-icon-opacity:              0.3;
@@ -1352,6 +1344,7 @@ $stat-active-background-icon-color:         $color-icon-primary;
 $stat-active-box-shadow:                    0 0 0 0.0625rem $color-border-primary;
 $stat-active-text-color:                    $color-text-primary;
 $stat-border:                               0.0625rem solid $color-border-base;
+$stat-hover-border:                         0.0625rem solid $color-border-base;
 $stat-active-border:                        0.0625rem solid $color-border-primary;
 $stat-text-align:                           left;
 $stat-text-color:                           $color-text-base;
@@ -1365,6 +1358,8 @@ $stat-card-background-color:                $color-background-white;
 $stat-card-border-color:                    rgba($color-black, 0.12);
 $stat-active-card-border-color:             $color-border-primary;
 $stat-content-align-items:                  center;
+$stat-content-justify-content:              flex-start;
+$stat-content-padding:                      1rem;
 
 $stat-metric-align-items:                   flex-start;
 $stat-metric-title-font-size:               $font-size-base;
@@ -1380,10 +1375,9 @@ $stat-metric-value-line-height:             2.5rem;
 $stat-active-submetric-text-color:          $color-text-base;
 $stat-submetric-text-color:                 $color-text-muted;
 $stat-submetric-justify-content:            flex-start;
-
+$stat-submetric-font-size:                  $font-size-sm;
 $stat-active-notch-border-color:            transparent;
 $stat-active-notch-display:                 none;
-
 $stat-compact-active-box-shadow:            0 0 0 0.0625rem $color-border-primary;
 $stat-compact-content-padding:              0.5rem 0.75rem;
 $stat-compact-max-width:                    21rem;
@@ -1397,13 +1391,6 @@ $stat-compact-submetric-font-size:          $font-size-base;
 $stat-compact-submetric-font-weight:        $font-weight-bold;
 $stat-compact-active-title-color:           $color-text-primary;
 $stat-compact-active-submetric-title-color: $color-text-base;
-
-$stat-compact-primary-text-color:           $color-navy-30;
-$stat-compact-primary-submetric-text-color: $color-text-white;
-$stat-compact-primary-metric-font-weight:   $font-weight-semi-bold;
-$stat-compact-primary-active-submetric-text-color: $color-text-base;
-
-$stat-sm-min-height:                        5rem;
 
 // Steps
 $steps-item-line-border-color:              $color-border-muted;
