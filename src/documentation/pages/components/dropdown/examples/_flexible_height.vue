@@ -39,7 +39,7 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: `Web component code snippet`,
-        htmlblueprint: `<div class="chi-dropdown__menu" style="width:10rem">
+        htmlblueprint: `<div class="chi-dropdown__menu">
   <a class="chi-dropdown__menu-item" href="#">Item 1</a>
   <div class="chi-dropdown__menu-item -h--auto -py--1">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
   <a class="chi-dropdown__menu-item" href="#">Item 2</a>
