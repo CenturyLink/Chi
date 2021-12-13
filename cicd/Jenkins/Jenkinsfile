@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20211123',
+        identifier: 'jsl-jenkins-shared-library-local@release/20211130',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-        identifier: 'jsl-jenkins-shared-library@release/20211123',
+        identifier: 'jsl-jenkins-shared-library@release/20211130',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -1091,9 +1091,10 @@ PRDesc
       }
       failure {
         script {
-          def drivenByTag =  env.TAG_NAME && (env.TAG_NAME  =~ env.RC_TAG_PATTERN || env.TAG_NAME  =~ env.PROMOTE_TAG_PATTERN || env.TAG_NAME  =~ env.DEPLOY_TAG_PATTERN)
-          if (drivenByTag || env.GCR_NUMBER) {
-            echo "DEVOPS GCR WILL BE CLOSED. Please review your backout plan!!!"
+          def gcrInProgress = env.TAG_NAME==null?env.GCR_NUMBER:env.TAG_NAME
+          if (gcrInProgress) {
+            echo "DEVOPS GCR of ${gcrInProgress} will be updated as cancelled / backed out. Please review your backout plan!!!"
+            env.DEVOPS_GCR_PREPROD_BRANCH = 'master'
             jslGCRDevOpsFallbackUpdate("The job ${env.BUILD_URL} failed unexpectly")
           }
           jslNotification('failure')
