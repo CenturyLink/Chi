@@ -7,7 +7,7 @@
       .chi-dropdown__menu.-active
         .chi-input__wrapper.-icon--right
           input.chi-input.chi-search__input.-sm(type='search' placeholder='Search' aria-label='search input')
-          button.chi-button.-icon.-flat.-sm.-bg--none(aria-label='Search')
+          button.chi-button.-icon.-flat.-sm(aria-label='Search')
             .chi-button__content
               i.chi-icon.icon-search(aria-hidden='true')
         a.chi-dropdown__menu-item(href='#exampleLink') Item 1
@@ -51,7 +51,7 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<div class="chi-dropdown__menu">
   <div class="chi-input__wrapper -icon--right">
     <input class="chi-input chi-search__input -sm" type="search" placeholder="Search" aria-label="search input" />
-    <button class="chi-button -icon -flat -sm -bg--none" aria-label="Search">
+    <button class="chi-button -icon -flat -sm" aria-label="Search">
       <div class="chi-button__content"><i class="chi-icon icon-search" aria-hidden="true"></i></div>
     </button>
   </div>
