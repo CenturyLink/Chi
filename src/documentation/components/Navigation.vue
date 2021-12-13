@@ -16,6 +16,7 @@
           <li><NuxtLink to="/components/card">Card</NuxtLink></li>
           <li><NuxtLink to="/components/forms/checkbox">Checkbox</NuxtLink></li>
           <li><NuxtLink to="/components/divider">Divider</NuxtLink></li>
+          <li><NuxtLink to="/components/dropdown">Dropdown</NuxtLink></li>
           <li><NuxtLink to="/components/file-input">File input</NuxtLink></li>
           <li><NuxtLink to="/components/flag-icon">Flag icon</NuxtLink></li>
           <li><NuxtLink to="/components/header">Header</NuxtLink></li>
@@ -31,9 +32,8 @@
           <li><NuxtLink to="/components/button-group">Button group</NuxtLink></li> -->
           <!-- <li><NuxtLink to="/components/data-table">Data table</NuxtLink></li> -->
           <!-- <li><NuxtLink to="/components/date-picker">Date picker</NuxtLink></li> -->
-          <!-- <li><NuxtLink to="/components/drawer">Drawer</NuxtLink></li>
-          <li><NuxtLink to="/components/dropdown">Dropdown</NuxtLink></li>
-          <li>
+          <!-- <li><NuxtLink to="/components/drawer">Drawer</NuxtLink></li> -->
+          <!-- <li>
             <NuxtLink to="/components/expansion-panel">Expansion panel</NuxtLink>
           </li>
           <li><NuxtLink to="/components/footer">Footer</NuxtLink></li>
@@ -118,7 +118,6 @@
 
 <script lang="ts">
 import ThemeSwitcher from './ThemeSwitcher.vue';
-
 export default {
   components: {
     ThemeSwitcher
