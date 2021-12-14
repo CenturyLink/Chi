@@ -1892,17 +1892,21 @@ h2 Examples
           .chi-divider
 
 script.
-  document.addEventListener(
-    'DOMContentLoaded',
-    function() {
-      Array.prototype.forEach.call(
-        document.getElementsByClassName("chi-drawer__trigger"),
-        function (el) {
-          chi.drawer(el);
-        }
-      );
-      chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
-    },
-    false
-  );
+  if(document.readyState !== 'loading') {
+    init();
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      init();
+    });
+  }
+
+  function init(){
+    chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+    Array.prototype.forEach.call(
+      document.getElementsByClassName("chi-drawer__trigger"),
+      function (el) {
+        chi.drawer(el);
+      }
+    );
+    chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+  }
