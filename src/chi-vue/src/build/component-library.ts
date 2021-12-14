@@ -8,7 +8,9 @@ const exportComponent: ComponentLibrary = {
       import(/* webpackChunkName: "column-customization" */ '../components/column-customization/ColumnCustomization'),
     ChiDataTable: () => import(/* webpackChunkName: "data-table" */ '../components/data-table/DataTable'),
     ChiDataTableBulkActions: () =>
-      import(/* webpackChunkName: "data-table-bulk-actions" */ '../components/data-table-bulk-actions/DataTableBulkActions'),
+      import(
+        /* webpackChunkName: "data-table-bulk-actions" */ '../components/data-table-bulk-actions/DataTableBulkActions'
+      ),
     ChiDataTableToolbar: () =>
       import(/* webpackChunkName: "data-table-toolbar" */ '../components/data-table-toolbar/DataTableToolbar'),
     ChiDataTableFilters: () =>
