@@ -2,77 +2,44 @@ h3 Base
 .example.-mb--3
   .-p--3
     chi-carousel
-      .chi-stat(slot="items")
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 1
-              .chi-stat-metric__title
-                | High Utilization
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 2
-              .chi-stat-metric__title
-                | Critical Performing
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 3
-              .chi-stat-metric__title
-                | Services Down
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 4
-              .chi-stat-metric__title
-                | Scheduled Maintenance
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 5
-              .chi-stat-metric__title
-                | High Utilization
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 6
-              .chi-stat-metric__title
-                | Critical Performing
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 7
-              .chi-stat-metric__title
-                | Services Down
-        .chi-stat__item
-          .chi-stat__content
-            .chi-stat-metric
-              .chi-stat-metric__value
-                | 8
-              .chi-stat-metric__title
-                | Scheduled Maintenance
+      .-d--flex(slot="items")
+        each item in [1, 2, 3, 4, 5, 6, 7, 8]
+          .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;")
+            .-w--100.-h--100.-bg--grey-15.-d--flex.-align-items--center.-justify-content--center= item
   .example-tabs.-pl--2
     ul.chi-tabs#example-accordion-base
-      li.-disabled
-        a(href=`#webcomponent-accordion-base`) Web Component
       li.-active
+        a(href=`#webcomponent-accordion-base`) Web Component
+      li.-disabled
         a(href=`#html-accordion-base`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-accordion-base
-  .chi-tabs-panel.-active#html-accordion-base
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
+  .chi-tabs-panel.-active#webcomponent-accordion-base
     :code(lang="html")
       <chi-carousel>
-        <!-- ITEMS -->
+        <div class="-d--flex" slot="items">
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 1 -->
+          </div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 2 -->
+          <</div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 3 -->
+          <</div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 4 -->
+          <</div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 5 -->
+          <</div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 6 -->
+          <</div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 7 -->
+          <</div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 8 -->
+          <</div>
+        </div>
       </chi-carousel>
+  .chi-tabs-panel#html-accordion-base

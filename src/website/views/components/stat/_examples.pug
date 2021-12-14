@@ -1419,6 +1419,145 @@ h2 Examples
           chi.popover(document.getElementById('example__portal-help-button6'));
         </script>
 
+  h3 Carousel
+  .example.-mb--3
+    .-p--3
+      chi-carousel
+        .chi-stat(slot="items")
+          .chi-stat__item
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__value
+                  | 1
+                .chi-stat-metric__title
+                  | High Utilization
+          .chi-stat__item
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__value
+                  | 2
+                .chi-stat-metric__title
+                  | Critical Performing
+          .chi-stat__item
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__value
+                  | 3
+                .chi-stat-metric__title
+                  | Services Down
+          .chi-stat__item
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__value
+                  | 4
+                .chi-stat-metric__title
+                  | Scheduled Maintenance
+          .chi-stat__item
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__value
+                  | 5
+                .chi-stat-metric__title
+                  | High Utilization
+          .chi-stat__item
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__value
+                  | 6
+                .chi-stat-metric__title
+                  | Critical Performing
+          .chi-stat__item
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__value
+                  | 7
+                .chi-stat-metric__title
+                  | Services Down
+          .chi-stat__item
+            .chi-stat__content
+              .chi-stat-metric
+                .chi-stat-metric__value
+                  | 8
+                .chi-stat-metric__title
+                  | Scheduled Maintenance
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-compact-base
+        li.-active
+          a(href=`#webcomponent-portal-compact-base`) Web Component
+        li.-disabled
+          a(href=`#html-portal-compact-base`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal-compact-base
+      :code(lang="html")
+        <chi-carousel>
+          <div class="chi-stat" slot="items">
+            <div class="chi-stat__item">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">1</div>
+                  <div class="chi-stat-metric__title">High Utilization</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat__item">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">2</div>
+                  <div class="chi-stat-metric__title">Critical Performing</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat__item">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">3</div>
+                  <div class="chi-stat-metric__title">Services Down</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat__item">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">4</div>
+                  <div class="chi-stat-metric__title">Scheduled Maintenance</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat__item">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">5</div>
+                  <div class="chi-stat-metric__title">High Utilization</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat__item">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">6</div>
+                  <div class="chi-stat-metric__title">Critical Performing</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat__item">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">7</div>
+                  <div class="chi-stat-metric__title">Services Down</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-stat__item">
+              <div class="chi-stat__content">
+                <div class="chi-stat-metric">
+                  <div class="chi-stat-metric__value">8</div>
+                  <div class="chi-stat-metric__title">Scheduled Maintenance</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </chi-carousel>
+    .chi-tabs-panel#html-portal-compact-base
+
 section.chi-popover.chi-popover--bottom(id="example__help-popover" aria-modal="true" role="dialog")
   .chi-popover__content
     p.chi-popover__text

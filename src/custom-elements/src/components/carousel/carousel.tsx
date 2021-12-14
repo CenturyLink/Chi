@@ -1,4 +1,4 @@
-import { Component, Element, Prop, State, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core';
 import { ACTIVE_CLASS, CAROUSEL_CLASSES, TRANSITIONING_CLASS, UTILITY_CLASSES } from '../../constants/classes';
 import { ANIMATION_DURATION } from '../../constants/constants';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
@@ -28,6 +28,10 @@ export class Carousel {
   @State() numberOfViews = 0;
   @State() customPrevButton: boolean;
   @State() customNextButton: boolean;
+  /**
+   * Triggered when the user navigates to another view
+   */
+  @Event() chiViewChange: EventEmitter<number>;
 
   private wrapper?: HTMLElement;
   private scrollBreakpoints = {
@@ -47,7 +51,6 @@ export class Carousel {
 
     this._applySizeToItems();
     this.calculateScrollBreakpoints(this.fullScrollLength, wrapperWidth, remainder);
-    console.log(this.scrollBreakpoints);
   };
 
   calculateWidth(element: HTMLElement) {
@@ -104,21 +107,27 @@ export class Carousel {
       this.animation.stop();
     }
 
-    this.animation = ThreeStepsAnimation.animationFactory(
-      () => {
-        this._animationClasses = `${TRANSITIONING_CLASS}`;
-      },
-      () => {
-        this.view -= 1;
-      },
-      () => {
-        if (this.view === -1) {
-          this.view = 0;
-        }
-        this._animationClasses = '';
-      },
-      ANIMATION_DURATION.SHORT
-    );
+    if (this.view >= -1) {
+      this.animation = ThreeStepsAnimation.animationFactory(
+        () => {
+          this._animationClasses = `${TRANSITIONING_CLASS}`;
+        },
+        () => {
+          if (this.view >= 0) {
+            this.view = this.view - 1;
+          }
+        },
+        () => {
+          if (this.view === -1) {
+            this.view = 0;
+          } else {
+            this._animationClasses = '';
+            this.chiViewChange.emit(this.view - 1);
+          }
+        },
+        ANIMATION_DURATION.SHORT
+      );
+    }
   }
 
   nextView() {
@@ -131,13 +140,17 @@ export class Carousel {
         this._animationClasses = `${TRANSITIONING_CLASS}`;
       },
       () => {
-        this.view += 1;
+        if (this.view < this.numberOfViews) {
+          this.view = this.view + 1;
+        }
       },
       () => {
         if (this.view === this.numberOfViews) {
           this.view = this.numberOfViews - 1;
+        } else {
+          this.chiViewChange.emit(this.view + 1);
+          this._animationClasses = '';
         }
-        this._animationClasses = '';
       },
       ANIMATION_DURATION.SHORT
     );
@@ -153,10 +166,11 @@ export class Carousel {
 
   _goToView(view: number) {
     this.view = view;
+    this.chiViewChange.emit(view);
   }
 
   render() {
-    const prevButton = <div class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.PREVIOUS} -z--10`} onClick={() => this.prevView()}>
+    const prevButton = <div class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.PREVIOUS}`} onClick={() => this.prevView()}>
         {
           this.customPrevButton ?
           <slot name="previous"></slot> :
@@ -165,7 +179,7 @@ export class Carousel {
           </chi-button>
         }
       </div>;
-    const nextButton = <div class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.NEXT} -z--10`} onClick={() => this.nextView()}>
+    const nextButton = <div class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.NEXT}`} onClick={() => this.nextView()}>
       {
         this.customNextButton ?
         <slot name="next"></slot> :
@@ -191,7 +205,7 @@ export class Carousel {
         })}
       </div> : null;
 
-    return <div class={`${CAROUSEL_CLASSES.CAROUSEL} -z--0`}>
+    return <div class={`${CAROUSEL_CLASSES.CAROUSEL}`}>
       <div class={CAROUSEL_CLASSES.CONTENT}>
         <div
           class={`

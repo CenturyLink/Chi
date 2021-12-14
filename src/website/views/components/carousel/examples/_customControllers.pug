@@ -1,4 +1,6 @@
 h3 Custom controllers
+p.-text
+  | Use <code>slot="previous"</code> and <code>slot="next"</code> to provide custom controllers to carousel
 .example.-mb--3
   .-p--3
     style(type="text/css").
@@ -25,21 +27,15 @@ h3 Custom controllers
         i.chi-icon.icon-chevron-left.-sm--2(aria-hidden="true")
       button.exampleNextButton(slot="next")
         i.chi-icon.icon-chevron-right.-sm--2(aria-hidden="true")
-      each i in [0, 1, 2, 3, 4, 5, 6, 7, 8]
-        .chi-carousel__item.-text--xl.-d--flex.-align-items--center.-justify-content--center.-bg--grey-15.-b--1(style="height: 20rem; box-sizing: border-box;", slot="items")= `View ${i + 1}`
+      each i in [1, 2, 3, 4, 5, 6, 7, 8]
+        .chi-carousel__item.-text--xl.-d--flex.-align-items--center.-justify-content--center.-bg--grey-15(style="height: 20rem; box-sizing: border-box;", slot="items")= i
   .example-tabs.-pl--2
     ul.chi-tabs#example-accordion-base
-      li.-disabled
-        a(href=`#webcomponent-accordion-base`) Web Component
       li.-active
+        a(href=`#webcomponent-accordion-base`) Web Component
+      li.-disabled
         a(href=`#html-accordion-base`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-accordion-base
-  .chi-tabs-panel.-active#html-accordion-base
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
+  .chi-tabs-panel.-active#webcomponent-accordion-base
     :code(lang="html")
       <chi-carousel single>
         <button class="examplePreviousButton" slot="previous">
@@ -56,5 +52,26 @@ h3 Custom controllers
         <div class="chi-carousel__item" slot="items">View 6</div>
         <div class="chi-carousel__item" slot="items">View 7</div>
         <div class="chi-carousel__item" slot="items">View 8</div>
-        <div class="chi-carousel__item" slot="items">View 9</div>
       </chi-carousel>
+
+      <!-- Style custom controllers according to your design requirements -->
+      <style type="text/css">
+        button.examplePreviousButton,
+        button.exampleNextButton {
+          align-items: center;
+          background-color: transparent;
+          border: none;
+          display: flex;
+          height: 100%;
+          justify-content: center;
+          opacity: 0.5;
+          width: 100%;
+        }
+
+        button.examplePreviousButton:hover,
+        button.exampleNextButton:hover {
+          cursor: pointer;
+          opacity: 1;
+        }
+      </style>
+  .chi-tabs-panel#html-accordion-base

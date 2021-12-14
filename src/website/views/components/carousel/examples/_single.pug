@@ -1,13 +1,13 @@
-h3 Dot controllers
+h3 Single element per view
 p.-text
-  | Use the attribute <code>dots</code> to render carousel with dot controller
+  | Use the attribute <code>single</code> to render single item per view
 .example.-mb--3
   .-p--3
-    chi-carousel(dots)
-      .-d--flex(slot="items")
-        each item in [1, 2, 3, 4, 5, 6, 7, 8]
-          .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;")
-            .-w--100.-h--100.-bg--grey-15.-d--flex.-align-items--center.-justify-content--center= item
+    chi-carousel(single)
+      each item in [1,2,3,4,5,6,7,8]
+        .chi-carousel__item.-p--1(style="height: 10rem;" slot="items")
+          .-w--100.-h--100.-bg--grey-15.-d--flex.-align-items--center.-justify-content--center
+            =item
   .example-tabs.-pl--2
     ul.chi-tabs#example-accordion-base
       li.-active
@@ -16,7 +16,7 @@ p.-text
         a(href=`#html-accordion-base`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-accordion-base
     :code(lang="html")
-      <chi-carousel dots>
+      <chi-carousel single>
         <div class="-d--flex" slot="items">
           <div class="chi-carousel__item -p--1">
             <!-- Custom item 1 -->

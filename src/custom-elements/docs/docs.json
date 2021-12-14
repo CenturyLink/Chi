@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-12-09T07:41:24",
+  "timestamp": "2021-12-14T19:16:27",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -628,7 +628,17 @@
         }
       ],
       "methods": [],
-      "events": [],
+      "events": [
+        {
+          "event": "chiViewChange",
+          "detail": "number",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user navigates to another view",
+          "docsTags": []
+        }
+      ],
       "styles": [],
       "slots": [],
       "dependents": [],
