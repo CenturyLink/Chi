@@ -1,0 +1,77 @@
+h3 Portal -- Accordion Expanded -- Child Expanded
+.test-accordion-expanded-portal.-p--3.-w--100
+  .chi-data-table.-portal.-compact
+    .chi-data-table__head
+      .chi-data-table__row
+        .chi-data-table__cell.-expandable
+        .chi-data-table__cell
+          div Name
+        .chi-data-table__cell
+          div ID
+        .chi-data-table__cell
+          div Last Login
+    .chi-data-table__body
+      .chi-data-table__row.-expanded.-md
+        .chi-data-table__cell.-expandable
+           button.chi-button.-icon.-flat.-xs.-expand(aria-label='Expand row')
+            .chi-button__content
+              i.chi-icon.icon-minus(aria-hidden='true')
+        .chi-data-table__cell.-key.-bold
+          div Name 1
+        .chi-data-table__cell.-key
+          div name-1
+        .chi-data-table__cell
+          div Dec 18, 2020 3:26 PM
+      .chi-data-table__row-child.-collapsed.-md
+        .chi-data-table__cell.-expandable
+        .chi-data-table__cell.-key.-bold
+          button.chi-button.-icon.-flat.-xs.-expand(aria-label='Expand row')
+            .chi-button__content
+              i.chi-icon.icon-plus(aria-hidden='true')
+          div Child Name 1
+        .chi-data-table__cell.-key
+          div child-name-1
+        .chi-data-table__cell
+          div Dec 18, 2020 3:26 PM
+      .chi-data-table__row.-collapsed.-md
+        .chi-data-table__cell.-expandable
+          button.chi-button.-icon.-flat.-xs.-expand(aria-label='Expand row')
+            .chi-button__content
+              i.chi-icon.icon-plus(aria-hidden='true')
+        .chi-data-table__cell.-key.-bold
+          div Name 2
+        .chi-data-table__cell.-key
+          div name-2
+        .chi-data-table__cell
+          div Dec 18, 2020 2:38 AM
+      .chi-data-table__row.-collapsed.-md
+        .chi-data-table__cell.-expandable
+          button.chi-button.-icon.-flat.-xs.-expand(aria-label='Expand row')
+            .chi-button__content
+              i.chi-icon.icon-plus(aria-hidden='true')
+        .chi-data-table__cell.-key.-bold
+          div Name 3
+        .chi-data-table__cell.-key
+          div name-3
+        .chi-data-table__cell
+          div Nov 5, 2020 10:15 AM
+    .chi-data-table__footer
+      nav.chi-pagination.-compact(role='navigation' aria-label='Pagination')
+        .chi-pagination__content
+          .chi-pagination__start
+            .chi-pagination__results.-text--xs
+              span.chi-pagination__label 6 results
+          .chi-pagination__center
+            .chi-button-group
+              button.chi-button.-icon.-flat.-xs.-primary(aria-label='Previous page' disabled)
+                .chi-button__content
+                  i.chi-icon.icon-chevron-left(aria-hidden='true')
+              .chi-pagination__jumper
+                input.chi-input(type="text", aria-label='Page 1' value="1")
+                .chi-pagination__label
+                  <span>of</span>
+                  <strong>2</strong>
+              button.chi-button.-icon.-flat.-xs.-primary(aria-label='Next page')
+                .chi-button__content
+                  i.chi-icon.icon-chevron-right(aria-hidden='true')
+          .chi-pagination__end

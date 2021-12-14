@@ -1,0 +1,106 @@
+h2 Data Table Server Side
+.test-server-side.-p--3.-w--100
+  .chi-data-table.-lg.-striped
+    .chi-data-table__head
+      .chi-data-table__row
+        .chi-data-table__cell.-selectable.-position--relative
+          .chi-checkbox
+            input#checkbox-ba1.chi-checkbox__input(type='checkbox')
+            label.chi-checkbox__label(for='checkbox-ba1')
+              .-sr--only Label
+          .-position--absolute.resize-handle(style="top: 0px; right: 0px; bottom: 0px; width: 1rem; cursor: col-resize;")
+        .chi-data-table__cell.-expandable.-position--relative
+          .-position--absolute.resize-handle(style="top: 0px; right: 0px; bottom: 0px; width: 1rem; cursor: col-resize;")
+        .chi-data-table__cell.-justify-content-md--start.-flex-basis--15.-position--relative
+          div Name
+        .chi-data-table__cell.-justify-content-md--start.-flex-basis--5.-position--relative
+          div ID
+          i.chi-icon.-xs.icon-arrow-sort(aria-hidden='true')
+        .chi-data-table__cell.-justify-content-md--start.-flex-basis--10.-position--relative
+          div Last Login
+    .chi-data-table__body
+      .chi-data-table__row.collapsed
+        .chi-data-table__cell.-selectable
+          .chi-checkbox
+            input#checkbox-ba2.chi-checkbox__input(type='checkbox')
+            label.chi-checkbox__label(for='checkbox-ba2')
+              .-sr--only Label
+        .chi-data-table__cell.-expandable
+          button.chi-button.-icon.-flat.-xs.-expand(aria-label='Expand row')
+            .chi-button__content
+              i.chi-icon.icon-chevron-right(aria-hidden='true')
+        .chi-data-table__cell(data-label='Name').-flex-basis--15.-key
+          div Name 1
+        .chi-data-table__cell(data-label='ID').-flex-basis--5
+          .chi-badge.-primary
+            span.-text--truncate 
+             | active
+        .chi-data-table__cell(data-label='Last Login').-flex-basis--10
+          div Dec 18, 2020 3:26 PM
+      .chi-data-table__row.-striped
+        .chi-data-table__cell.-selectable
+          .chi-checkbox
+            input#checkbox-ba3.chi-checkbox__input(type='checkbox')
+            label.chi-checkbox__label(for='checkbox-ba3')
+              .-sr--only Label
+        .chi-data-table__cell.-expandable
+        .chi-data-table__cell(data-label='Name').-flex-basis--15.-key
+          div Name 2
+        .chi-data-table__cell(data-label='ID').-flex-basis--5
+          .chi-badge
+            span.-text--truncate 
+             | inact
+        .chi-data-table__cell(data-label='Last Login').-flex-basis--10
+          div Dec 18, 2020 2:38 AM
+      .chi-data-table__row.collapsed
+        .chi-data-table__cell.-selectable
+          .chi-checkbox
+            input#checkbox-ba4.chi-checkbox__input(type='checkbox')
+            label.chi-checkbox__label(for='checkbox-ba4')
+              .-sr--only Label
+        .chi-data-table__cell.-expandable
+          button.chi-button.-icon.-flat.-xs.-expand(aria-label='Expand row')
+            .chi-button__content
+              i.chi-icon.icon-chevron-right(aria-hidden='true')
+        .chi-data-table__cell(data-label='Name').-flex-basis--15.-key
+          div Name 3
+        .chi-data-table__cell(data-label='ID').-flex-basis--5
+          .chi-badge.-primary
+            span.-text--truncate 
+             | active
+        .chi-data-table__cell(data-label='Last Login').-flex-basis--10
+          div Nov 5, 2020 10:15 AM
+    .chi-data-table__footer
+      nav.chi-pagination(role='navigation' aria-label='Pagination')
+        .chi-pagination__content
+          .chi-pagination__start
+            .chi-pagination__results.-text--md
+              span.chi-pagination__label 3 results
+            .chi-pagination__page-size.-text--md
+              select.chi-input
+                option(value="20") 20
+                option(value="40") 40
+                option(value="60") 60
+                option(value="80") 20
+                option(value="all") All
+              span.chi-pagination__label per page
+          .chi-pagination__center
+            .chi-button-group
+              button.chi-button.-icon.-flat.-md(aria-label='First page' disabled)
+                .chi-button__content
+                  i.chi-icon.icon-page-first
+              button.chi-button.-icon.-flat.-md(aria-label='Previous page' disabled)
+                .chi-button__content
+                  i.chi-icon.icon-chevron-left(aria-hidden='true')
+              button.chi-button.-flat.-active.-md(aria-label='Page 1') 1
+              button.chi-button.-flat(aria-label='Page 2') 2
+              button.chi-button.-icon.-flat(aria-label='Next page')
+                .chi-button__content
+                  i.chi-icon.icon-chevron-right(aria-hidden='true')
+              button.chi-button.-icon.-flat.-md(aria-label='First page')
+                .chi-button__content
+                  i.chi-icon.icon-page-last
+          .chi-pagination__end
+            .chi-pagination__jumper.-text--md
+              label.chi-pagination__label(for='jumper-input-1') Go to page:
+              input#jumper-input-1.chi-input.-md(type='text')

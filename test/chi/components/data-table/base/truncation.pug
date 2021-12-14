@@ -1,0 +1,63 @@
+h3 Truncation
+.test-truncation.-p--3.-w--100
+  .chi-data-table
+    .chi-data-table__head
+      .chi-data-table__row
+        .chi-data-table__cell
+          div Name
+        .chi-data-table__cell
+          div ID
+        .chi-data-table__cell
+          div(style="max-width: fit-content; width: calc(100% - 20px);")
+            .-text--truncate 
+              | Last Login lorem ipsum dolor sit amet lorem ipsum dolor sit ameeeeeet
+    .chi-data-table__body
+      .chi-data-table__row
+        .chi-data-table__cell(data-label='Name')
+          div Name 1
+        .chi-data-table__cell(data-label='ID')
+          div name-1
+        .chi-data-table__cell(data-label='Last Login')
+          div Dec 18, 2020 3:26 PM
+      .chi-data-table__row
+        .chi-data-table__cell(data-label='Name')
+          div Name 2
+        .chi-data-table__cell(data-label='ID')
+          div name-2
+        .chi-data-table__cell(data-label='Last Login')
+          div Dec 18, 2020 2:38 AM
+      .chi-data-table__row
+        .chi-data-table__cell(data-label='Name')
+          div Name 3
+        .chi-data-table__cell(data-label='ID')
+          div name-3
+        .chi-data-table__cell(data-label='Last Login')
+          div Nov 5, 2020 10:15 AM
+    .chi-data-table__footer
+      nav.chi-pagination(role='navigation' aria-label='Pagination')
+        .chi-pagination__content
+          .chi-pagination__start
+            .chi-pagination__results.-text--md
+              span.chi-pagination__label 6 results
+            .chi-pagination__page-size.-text--md
+              select.chi-input
+                option(value="20") 20
+                option(value="40") 40
+                option(value="60") 60
+                option(value="80") 20
+                option(value="all") All
+              span.chi-pagination__label per page
+          .chi-pagination__center
+            .chi-button-group
+              button.chi-button.-icon.-flat.-md(aria-label='Previous page' disabled)
+                .chi-button__content
+                  i.chi-icon.icon-chevron-left(aria-hidden='true')
+              button.chi-button.-flat.-active.-md(aria-label='Page 1') 1
+              button.chi-button.-flat(aria-label='Page 2') 2
+              button.chi-button.-icon.-flat(aria-label='Next page')
+                .chi-button__content
+                  i.chi-icon.icon-chevron-right(aria-hidden='true')
+          .chi-pagination__end
+            .chi-pagination__jumper.-text--md
+              label.chi-pagination__label(for='jumper-input-1') Go to page:
+              input#jumper-input-1.chi-input.-md(type='text')

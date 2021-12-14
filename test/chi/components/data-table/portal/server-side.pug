@@ -1,0 +1,112 @@
+h2 Data Table Server Side (Portal)
+.test-server-side-portal.-p--3.-w--100
+  .chi-data-table.-portal.-compact.-striped.-sorting
+    .chi-data-table__head
+      .chi-data-table__row
+        .chi-data-table__cell.-selectable
+          .chi-checkbox
+            input#checkbox-ba1.chi-checkbox__input(type='checkbox')
+            label.chi-checkbox__label(for='checkbox-ba1')
+              .-sr--only Label
+        .chi-data-table__cell.-expandable
+        .chi-data-table__cell.-justify-content-md--start.-flex-basis--15.-position--relative
+          div Name
+        .chi-data-table__cell.-justify-content-md--start.-flex-basis--5.-position--relative
+          div ID
+          i.chi-icon.-xs.icon-arrow-sort(aria-hidden='true')
+        .chi-data-table__cell.-justify-content-md--start.-flex-basis--10.-position--relative
+          div Last Login
+    .chi-data-table__body
+      .chi-data-table__row.-lg.-collapsed
+        .chi-data-table__cell.-selectable
+          .chi-checkbox
+            input#checkbox-ba2.chi-checkbox__input(type='checkbox')
+            label.chi-checkbox__label(for='checkbox-ba2')
+              .-sr--only Label
+        .chi-data-table__cell.-expandable
+          button.chi-button.-icon.-flat.-xs.-expand(aria-label='Expand row')
+            .chi-button__content
+              i.chi-icon.icon-plus(aria-hidden='true')
+        .chi-data-table__cell(data-label='Name').-flex-basis--15.-key
+          div Name 1
+        .chi-data-table__cell(data-label='ID').-flex-basis--5
+          .chi-badge.-primary
+            span.-text--truncate 
+             | active
+        .chi-data-table__cell(data-label='Last Login').-flex-basis--10
+          div Dec 18, 2020 3:26 PM
+      .chi-data-table__row.-lg.-striped
+        .chi-data-table__cell.-selectable
+          .chi-checkbox
+            input#checkbox-ba3.chi-checkbox__input(type='checkbox')
+            label.chi-checkbox__label(for='checkbox-ba3')
+              .-sr--only Label
+        .chi-data-table__cell.-expandable
+        .chi-data-table__cell(data-label='Name').-flex-basis--15.-key
+          div Name 2
+        .chi-data-table__cell(data-label='ID').-flex-basis--5
+          .chi-badge
+            span.-text--truncate 
+             | inact
+        .chi-data-table__cell(data-label='Last Login').-flex-basis--10
+          div Dec 18, 2020 2:38 AM
+      .chi-data-table__row.-lg.-expanded
+        .chi-data-table__cell.-selectable
+          .chi-checkbox
+            input#checkbox-ba4.chi-checkbox__input(type='checkbox')
+            label.chi-checkbox__label(for='checkbox-ba4')
+              .-sr--only Label
+        .chi-data-table__cell.-expandable
+          button.chi-button.-icon.-flat.-xs.-expand(aria-label='Expand row')
+            .chi-button__content
+              i.chi-icon.icon-minus(aria-hidden='true')
+        .chi-data-table__cell(data-label='Name').-flex-basis--15.-key
+          div Name 3
+        .chi-data-table__cell(data-label='ID').-flex-basis--5
+          .chi-badge.-primary
+            span.-text--truncate 
+             | active
+        .chi-data-table__cell(data-label='Last Login').-flex-basis--10
+          div Nov 5, 2020 10:15 AM
+      .chi-data-table__row-child.-lg.-collapsed
+        .chi-data-table__cell.-selectable
+          .chi-checkbox
+            input#checkbox-ba2.chi-checkbox__input(type='checkbox')
+            label.chi-checkbox__label(for='checkbox-ba2')
+              .-sr--only Label
+        .chi-data-table__cell.-expandable
+        .chi-data-table__cell(data-label='Name').-flex-basis--15.-key
+          button.chi-button.-icon.-flat.-xs.-expand(aria-label='Expand row')
+            .chi-button__content
+              i.chi-icon.icon-plus(aria-hidden='true')
+          div Child Name 1
+        .chi-data-table__cell(data-label='ID').-flex-basis--5
+          div child-name-1
+        .chi-data-table__cell(data-label='Last Login').-flex-basis--10
+          div Dec 18, 2020 3:26 PM
+    .chi-data-table__footer
+      nav.chi-pagination.-compact(role='navigation' aria-label='Pagination')
+        .chi-pagination__content
+          .chi-pagination__start
+            .chi-pagination__results.-text--xs
+              span.chi-pagination__label 3 results
+          .chi-pagination__center
+            .chi-button-group
+              button.chi-button.-icon.-flat.-xs.-primary(aria-label='Previous page' disabled)
+                .chi-button__content
+                  i.chi-icon.icon-page-first(aria-hidden='true')
+              button.chi-button.-icon.-flat.-xs.-primary(aria-label='Previous page' disabled)
+                .chi-button__content
+                  i.chi-icon.icon-chevron-left(aria-hidden='true')
+              .chi-pagination__jumper
+                input.chi-input(type="text", aria-label='Page 1' value="1")
+                .chi-pagination__label
+                  <span>of</span>
+                  <strong>2</strong>
+              button.chi-button.-icon.-flat.-xs.-primary(aria-label='Next page')
+                .chi-button__content
+                  i.chi-icon.icon-chevron-right(aria-hidden='true')
+              button.chi-button.-icon.-flat.-xs.-primary(aria-label='Next page')
+                .chi-button__content
+                  i.chi-icon.icon-page-last(aria-hidden='true')
+          .chi-pagination__end
