@@ -1,4 +1,4 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import { findComponent } from '@/utils/utils';
 import { DATA_TABLE_CLASSES, PORTAL_CLASS } from '@/constants/classes';
 import SearchInput from '../../components/search-input/SearchInput';
@@ -57,12 +57,6 @@ export default class DataTableToolbar extends Vue {
           <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__start`}>{this.$slots.start}</div>
           <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__end`}>{this.$slots.end}</div>
         </div>
-        {(this.$slots.startRibbon || this.$slots.endRibbon) && (
-          <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__ribbon`}>
-            <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__start`}>{this.$slots.startRibbon}</div>
-            <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__end`}>{this.$slots.endRibbon}</div>
-          </div>
-        )}
       </div>
     );
   }
