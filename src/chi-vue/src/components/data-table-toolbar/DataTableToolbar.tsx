@@ -10,8 +10,6 @@ import DataTableViews from '../data-table-views/DataTableViews';
 
 @Component({})
 export default class DataTableToolbar extends Vue {
-  @Prop() ribbon?: boolean;
-
   _searchComponent?: SearchInput;
   _filters?: DataTableFilters;
   _columns?: DataTableColumns;
@@ -59,7 +57,7 @@ export default class DataTableToolbar extends Vue {
           <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__start`}>{this.$slots.start}</div>
           <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__end`}>{this.$slots.end}</div>
         </div>
-        {this.ribbon && (
+        {(this.$slots.startRibbon || this.$slots.endRibbon) && (
           <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__ribbon`}>
             <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__start`}>{this.$slots.startRibbon}</div>
             <div class={`${DATA_TABLE_CLASSES.TOOLBAR}__end`}>{this.$slots.endRibbon}</div>
