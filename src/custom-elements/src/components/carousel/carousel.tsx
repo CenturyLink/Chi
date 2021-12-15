@@ -3,6 +3,8 @@ import { ACTIVE_CLASS, CAROUSEL_CLASSES, TRANSITIONING_CLASS, UTILITY_CLASSES } 
 import { ANIMATION_DURATION } from '../../constants/constants';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 
+const CAROUSEL_BOUNCE_DISTANCE = 25;
+
 @Component({
   tag: 'chi-carousel',
   styleUrl: 'carousel.scss',
@@ -35,7 +37,7 @@ export class Carousel {
 
   private wrapper?: HTMLElement;
   private scrollBreakpoints = {
-    0: 50
+    0: CAROUSEL_BOUNCE_DISTANCE
   };
   private fullScrollLength: number;
   private animation: ThreeStepsAnimation;
@@ -67,7 +69,7 @@ export class Carousel {
           view * fullScrollLength * -1;
 
       if (view === this.numberOfViews-1) {
-        this.scrollBreakpoints[this.numberOfViews + 1] = (view * fullScrollLength * -1) - remainder - 50;
+        this.scrollBreakpoints[this.numberOfViews + 1] = (view * fullScrollLength * -1) - remainder - CAROUSEL_BOUNCE_DISTANCE;
       }
     }
   }
@@ -94,10 +96,6 @@ export class Carousel {
     this.calculateScrollBreakpoints(this.fullScrollLength, wrapperWidth, remainder);
     window.addEventListener('resize', this.resizeHandler);
   }
-
-  componentWillLoad() {}
-
-  componentWillUpdate() {}
 
   componentWillOnload() {
     window.removeEventListener('resize', this.resizeHandler);
