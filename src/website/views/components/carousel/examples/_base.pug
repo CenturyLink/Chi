@@ -1,0 +1,45 @@
+h3 Base
+.example.-mb--3
+  .-p--3
+    chi-carousel
+      .-d--flex(slot="items")
+        each item in [1, 2, 3, 4, 5, 6, 7, 8]
+          .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;")
+            .-w--100.-h--100.-bg--grey-15.-d--flex.-align-items--center.-justify-content--center= item
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-accordion-base
+      li.-active
+        a(href=`#webcomponent-accordion-base`) Web Component
+      li.-disabled
+        a(href=`#html-accordion-base`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-accordion-base
+    :code(lang="html")
+      <chi-carousel>
+        <div class="-d--flex" slot="items">
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 1 -->
+          </div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 2 -->
+          <</div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 3 -->
+          <</div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 4 -->
+          <</div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 5 -->
+          <</div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 6 -->
+          <</div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 7 -->
+          <</div>
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 8 -->
+          <</div>
+        </div>
+      </chi-carousel>
+  .chi-tabs-panel#html-accordion-base
