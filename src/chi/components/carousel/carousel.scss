@@ -56,14 +56,19 @@
 
     .chi-carousel__dot {
       background-color: $carousel-dot-background-color;
-      border-radius: 1rem;
+      border: 0.0625rem solid $color-border-primary;
+      border-radius: $carousel-dot-size / 2;
       display: block;
-      height: 1rem;
-      margin-left: 0.5rem;
-      width: 1rem;
+      height: $carousel-dot-size;
+      transition: all 0.2s ease-in;
+      width: $carousel-dot-size;
 
       &.-active {
         background-color: $carousel-dot-active-background-color;
+      }
+
+      &:not(:first-child) {
+        margin-left: 0.5rem;
       }
 
       &:not(.-active) {

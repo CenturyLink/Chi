@@ -49,7 +49,9 @@ export class Carousel {
 
     const remainder = wrapperWidth - (this.fullScrollLength * this.numberOfViews);
 
-    this._applySizeToItems();
+    if (this.single) {
+      this._applySizeToItems();
+    }
     this.calculateScrollBreakpoints(this.fullScrollLength, wrapperWidth, remainder);
   };
 
@@ -90,7 +92,7 @@ export class Carousel {
     const remainder = wrapperWidth - (fullScrollLength * this.numberOfViews);
 
     this.calculateScrollBreakpoints(this.fullScrollLength, wrapperWidth, remainder);
-    window.addEventListener('resize', this.resizeHandler.bind(this));
+    window.addEventListener('resize', this.resizeHandler);
   }
 
   componentWillLoad() {}
@@ -98,8 +100,7 @@ export class Carousel {
   componentWillUpdate() {}
 
   componentWillOnload() {
-    // Remove event listener here
-    // window.removeEventListener();
+    window.removeEventListener('resize', this.resizeHandler);
   }
 
   prevView() {

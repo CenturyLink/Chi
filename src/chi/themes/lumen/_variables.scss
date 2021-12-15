@@ -236,6 +236,18 @@ $color-background-dark:               $color-grey-100;
 $color-background-white:              $color-white;
 $color-background-black:              $color-black;
 
+// Icons
+$icon-color:                                inherit;
+$icon-size-base:                            1rem;
+$icon-size-xs:                              0.75rem;
+$icon-size-sm:                              1rem;
+$icon-size-sm2:                             1.25rem;
+$icon-size-sm3:                             1.5rem;
+$icon-size-md:                              2rem;
+$icon-size-lg:                              4rem;
+$icon-size-xl:                              6rem;
+$icon-size-xxl:                             8rem;
+
 // Link color
 $link-color: $color-text-primary;
 
@@ -705,9 +717,10 @@ $card-title-font-weight:                    $font-weight-semi-bold;
 $card-title-line-height:                    $line-height-lg;
 
 // Carousel
-$carousel-dot-background-color:             $color-background-muted-light;
-$carousel-dot-hover-background-color:       $color-background-muted;
+$carousel-dot-background-color:             transparent;
+$carousel-dot-hover-background-color:       $color-background-primary;
 $carousel-dot-active-background-color:      $color-background-primary;
+$carousel-dot-size:                         $icon-size-xs;
 
 // Checkbox
 $checkbox-background-color:                 $color-background-white;
@@ -908,18 +921,6 @@ $header-xl-height:                          6rem;
 $header-xl-content-padding:                 0 2rem;
 $header-xl-navbar-tab-link-font-size:       $font-size-lg;
 $header-xl-navbar-tab-link-line-height:     $line-height;
-
-// Icons
-$icon-color:                                inherit;
-$icon-size-base:                            1rem;
-$icon-size-xs:                              0.75rem;
-$icon-size-sm:                              1rem;
-$icon-size-sm2:                             1.25rem;
-$icon-size-sm3:                             1.5rem;
-$icon-size-md:                              2rem;
-$icon-size-lg:                              4rem;
-$icon-size-xl:                              6rem;
-$icon-size-xxl:                             8rem;
 
 // Label
 $label-status-text-color:                   $color-text-muted;
