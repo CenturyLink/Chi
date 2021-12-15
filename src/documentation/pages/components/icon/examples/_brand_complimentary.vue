@@ -1,15 +1,13 @@
 <template lang="pug">
-<ComponentExample title="Brand complimentary" titleSize="h4" id="brand_complimentary" padding="-p--0" :tabs="exampleTabs">
+<ComponentExample title="Brand complimentary" titleSize="h4" padding="-p--0" id="brand_complimentary" :tabs="exampleTabs">
   p.-text(slot="example-description")
     | More icon colors that can be used to compliment the primary brand palette.
-  <Wrapper slot="example">
-    .chi-grid.-no-gutter
-      .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
-        each color in ['icon--navy', 'icon--orange']
-          div(class=`chi-icon -${color} -m--1`)
-            svg
-              use(xlink:href='#icon-atom')
-  </Wrapper>
+  .chi-grid.-no-gutter(slot="example")
+    .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
+      each color in ['icon--navy', 'icon--orange']
+        div(class=`chi-icon -${color} -m--1`)
+          svg
+            use(xlink:href='#icon-atom')
   <Wrapper slot="code-webcomponent">
     <pre class="language-html">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -50,7 +48,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class BrandComplimentary extends Vue {
-  mounted() {}
-}
+export default class BrandComplimentary extends Vue {}
 </script>

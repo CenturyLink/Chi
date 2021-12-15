@@ -6,14 +6,12 @@
     | By default, icons render at 16x16px (<code>sm</code>). Two alternate small values are available for
     | specific app scenarios. Use <code>sm--2</code> for displaying 20px icons within a 40px container
     | (e.g. large button), and <code>sm--3</code> for displaying 24px icons within a 48px container.
-  <Wrapper slot="example">
-    .-p--3
-      .chi-grid.-align-items--end
-        each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
-          div.-p--2.-m--1
-            chi-icon(icon="atom", size=size)
-            p.-text.-text--center= size
-  </Wrapper>
+  .-p--3(slot="example")
+    .chi-grid.-align-items--end
+      each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
+        div.-p--2.-m--1
+          chi-icon(icon="atom", size=size)
+          p.-text.-text--center= size
   <Wrapper slot="code-webcomponent">
     <pre class="language-html">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -82,7 +80,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class Sizes extends Vue {
-  mounted() {}
-}
+export default class Sizes extends Vue {}
 </script>

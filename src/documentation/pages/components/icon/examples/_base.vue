@@ -1,9 +1,7 @@
 <template lang="pug">
 <ComponentExample title="Base" id="base" padding="-p--0" :tabs="exampleTabs">
-  <Wrapper slot="example">
-    .-p--3
-      chi-icon(icon='atom')
-  </Wrapper>
+  .-p--3(slot="example")
+    chi-icon(icon='atom')
   <Wrapper slot="code-webcomponent">
     <pre class="language-html">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -42,7 +40,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class Base extends Vue {
-  mounted() {}
-}
+export default class Base extends Vue {}
 </script>

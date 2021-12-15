@@ -19,7 +19,5 @@ import { Component, Vue } from 'vue-property-decorator';
     return {};
   },
 })
-export default class Icons extends Vue {
-  mounted() {}
-}
+export default class Icons extends Vue {}
 </script>
