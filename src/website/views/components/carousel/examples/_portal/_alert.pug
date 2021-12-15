@@ -1,0 +1,34 @@
+h3 Alert
+.example.-mb--3
+  .-p--3
+    chi-carousel(single)
+      each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info', success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+        .-p--1.chi-carousel__item(slot="items")
+          chi-alert(color=type, icon=val, title=type)
+            =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-accordion-base
+      li.-disabled
+        a(href=`#webcomponent-accordion-base`) Web Component
+      li.-active
+        a(href=`#html-accordion-base`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-accordion-base
+    :code(lang="html")
+      <chi-carousel single>
+        <div class="-p--1 chi-carousel__item" slot="items">
+          <chi-alert color="success" icon="circle-check" title="success">This is a success alert</chi-alert>
+        </div>
+        <div class="-p--1 chi-carousel__item" slot="items">
+          <chi-alert color="danger" icon="circle-warning" title="danger">This is a danger alert</chi-alert>
+        </div>
+        <div class="-p--1 chi-carousel__item" slot="items">
+          <chi-alert color="warning" icon="warning" title="warning">This is a warning alert</chi-alert>
+        </div>
+        <div class="-p--1 chi-carousel__item" slot="items">
+          <chi-alert color="info" icon="circle-info" title="info">This is an info alert</chi-alert>
+        </div>
+        <div class="-p--1 chi-carousel__item" slot="items">
+          <chi-alert color="muted" icon="circle-info" title="muted">This is a muted alert</chi-alert>
+        </div>
+      </chi-carousel>
+  .chi-tabs-panel#html-accordion-base
