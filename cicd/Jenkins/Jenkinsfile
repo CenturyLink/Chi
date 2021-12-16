@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20211130',
+        identifier: 'jsl-jenkins-shared-library-local@release/20211215',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-        identifier: 'jsl-jenkins-shared-library@release/20211130',
+        identifier: 'jsl-jenkins-shared-library@release/20211215',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -154,7 +154,7 @@ pipeline {
              def currentBaseName = env.JOB_BASE_NAME.toString()
              def pathJob = currentJob - currentBaseName
              echo "Triggering deployment to production job ${pathJob} with tag ${tagName}"
-             jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6)
+             jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 20)
           }
         }
       }
