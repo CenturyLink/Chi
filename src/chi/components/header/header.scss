@@ -459,6 +459,25 @@
             }
           }
         }
+
+        li {
+          .chi-dropdown {
+            .chi-dropdown__trigger {
+              align-items: center;
+              display: flex;
+              padding: 0.25rem 0;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    .chi-dropdown__menu {
+      .chi-dropdown__menu-item {
+        color: $color-text-base;
+        font-size: $font-size-base;
+        font-weight: $font-weight-base;
       }
     }
   }
@@ -492,6 +511,18 @@
           @include respond-to(md) {
             height: 1.125rem;
           }
+        }
+      }
+    }
+
+    .chi-header__navbar {
+      .chi-header__navbar-menu {
+        margin: 0.25rem 0;
+
+        a {
+          display: flex;
+          font-size: $font-size-xs;
+          line-height: $line-height-sm;
         }
       }
     }
@@ -531,13 +562,9 @@
     }
 
     .chi-header__navbar {
-      .chi-header__navbar-menu {
-        margin: 0.5rem 0;
-
-        a {
-          font-size: $font-size-base;
-          line-height: 1;
-        }
+      a {
+        font-size: $font-size-base;
+        line-height: $line-height-sm;
       }
     }
   }
@@ -583,6 +610,29 @@
 
       .chi-header__navbar-menu {
         margin: 0.625rem 0;
+      }
+
+      .chi-tabs {
+        li {
+          @include respond-to(xl) {
+            &:not(:first-child) {
+              margin-left: 3.5rem;
+            }
+          }
+
+          .chi-dropdown {
+            .chi-dropdown__trigger {
+              padding: 0.75rem 0;
+            }
+          }
+        }
+      }
+
+      .chi-dropdown__menu {
+        .chi-dropdown__menu-item {
+          font-size: $font-size-lg;
+          height: 2.5rem;
+        }
       }
     }
   }

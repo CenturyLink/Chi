@@ -1902,7 +1902,9 @@ script.
         }
       );
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
-      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+      setTimeout(() => {
+        chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+      }, 1000);
     },
     false
   );
