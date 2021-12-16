@@ -21,7 +21,7 @@ export class Badge {
   @Prop({ reflect: true }) color: string;
 
   /**
-   *  to transform the badge text { uppercase, lowercase, capitalized }.
+   *  to transform the badge text { uppercase, lowercase, capitalize }.
    */
   @Prop({ reflect: true }) textTransform: string;
 
