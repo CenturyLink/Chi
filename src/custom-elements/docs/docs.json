@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-12-14T17:30:12",
+  "timestamp": "2021-12-15T19:24:43",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -241,7 +241,7 @@
           "mutable": false,
           "attr": "text-transform",
           "reflectToAttr": true,
-          "docs": "to transform the badge text { uppercase, lowercase, capitalized }.",
+          "docs": "to transform the badge text { uppercase, lowercase, capitalize }.",
           "docsTags": [],
           "values": [
             {
@@ -565,6 +565,7 @@
       "slots": [],
       "dependents": [
         "chi-alert",
+        "chi-carousel",
         "chi-popover"
       ],
       "dependencies": [
@@ -577,8 +578,81 @@
         "chi-alert": [
           "chi-button"
         ],
+        "chi-carousel": [
+          "chi-button"
+        ],
         "chi-popover": [
           "chi-button"
+        ]
+      }
+    },
+    {
+      "filePath": "src/components/carousel/carousel.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-carousel",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "dots",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "dots",
+          "reflectToAttr": false,
+          "docs": "To render Carousel with dot controllers",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "single",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "single",
+          "reflectToAttr": false,
+          "docs": "To render Carousel with a single item per view",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiViewChange",
+          "detail": "number",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user navigates to another view",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-button",
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-carousel": [
+          "chi-button",
+          "chi-icon"
+        ],
+        "chi-button": [
+          "chi-icon"
         ]
       }
     },
@@ -1573,6 +1647,7 @@
       "dependents": [
         "chi-alert",
         "chi-button",
+        "chi-carousel",
         "chi-date",
         "chi-date-picker",
         "chi-drawer",
@@ -1587,6 +1662,9 @@
           "chi-icon"
         ],
         "chi-button": [
+          "chi-icon"
+        ],
+        "chi-carousel": [
           "chi-icon"
         ],
         "chi-date": [
