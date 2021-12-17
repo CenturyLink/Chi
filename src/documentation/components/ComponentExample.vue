@@ -21,11 +21,11 @@
       </span>
     </h3>
     <slot name="example-description"></slot>
-    <div class="example -mb--3">
+    <div :class="['-mb--3', { example: tabs }]">
       <div :class="[padding || '-p--3', additionalClasses]">
         <slot name="example"></slot>
       </div>
-      <div class="example-tabs -pl--2">
+      <div v-if="tabs" class="example-tabs -pl--2">
         <ul
           class="chi-tabs -animated"
           :id="'code-snippet-tabs' + id"
@@ -86,7 +86,9 @@ export default class ComponentExample extends Vue {
       'code-snippet-tabs' + this.$props.id
     );
 
-    this.chiTabs = chi.tab(chiTabs);
+    if (chiTabs) {
+      this.chiTabs = chi.tab(chiTabs);
+    }
   }
 }
 </script>

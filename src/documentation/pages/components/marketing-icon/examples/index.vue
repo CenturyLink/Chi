@@ -10,18 +10,20 @@
 
     <Base />
     <Sizes />
-
+    <Icons />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Base from './_base.vue';
 import Sizes from './_sizes.vue';
+import Icons from './_icons.vue';
 
 @Component({
   components: {
     Base,
-    Sizes
+    Sizes,
+    Icons
   }
 })
 export default class Examples extends Vue {}
