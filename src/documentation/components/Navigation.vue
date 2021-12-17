@@ -19,6 +19,7 @@
           <li><NuxtLink to="/components/dropdown">Dropdown</NuxtLink></li>
           <li><NuxtLink to="/components/file-input">File input</NuxtLink></li>
           <li><NuxtLink to="/components/flag-icon">Flag icon</NuxtLink></li>
+          <li><NuxtLink to="/components/modal">Modal</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
           <li><NuxtLink to="/components/breadcrumb">Breadcrumb</NuxtLink></li>
@@ -43,7 +44,6 @@
           <li>
             <NuxtLink to="/components/mobile-navigation">Mobile navigation</NuxtLink>
           </li>
-          <li><NuxtLink to="/components/modal">Modal</NuxtLink></li>
           <li>
             <NuxtLink to="/components/forms/number-input">Number input</NuxtLink>
           </li>
