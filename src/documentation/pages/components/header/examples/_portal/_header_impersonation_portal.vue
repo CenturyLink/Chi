@@ -67,8 +67,7 @@
               li
                 a(href='#' target='_blank') Help
               li
-                a(href='#' target='_blank')
-                  | Contact Us
+                a(href='#' target='_blank') Contact Us
     <Wrapper slot="code-webcomponent">
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

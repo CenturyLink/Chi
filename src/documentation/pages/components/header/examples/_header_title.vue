@@ -61,5 +61,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class HeaderTitleFile extends Vue {}
+export default class HeaderTitle extends Vue {}
 </script>

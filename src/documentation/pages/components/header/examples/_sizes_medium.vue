@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Medium (Base)" id="size_medium" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
+  <ComponentExample title="Medium (Base)" titleSize="h4" id="size_medium" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
     .-p--3(slot="example")
       header.chi-header
         nav.chi-header__content
@@ -19,8 +19,7 @@
               li
                 a(href='#' target='_blank') Help
               li
-                a(href='#' target='_blank')
-                  | Contact Us
+                a(href='#' target='_blank') Contact Us
     <Wrapper slot="code-webcomponent">
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

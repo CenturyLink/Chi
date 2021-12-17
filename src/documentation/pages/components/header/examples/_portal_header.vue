@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Portal Header" id="portal_header" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
     .-p--3(slot="example")
-      header.chi-header.-portal
+      header.chi-header.-lg
         nav.chi-header__content
           .chi-header__brand
             a.chi-brand(href="#", aria-label="Lumen")
@@ -90,7 +90,7 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<header class="chi-header -portal">
+        htmlblueprint: `<header class="chi-header -lg">
   <nav class="chi-header__content">
     <div class="chi-header__brand">
       <a class="chi-brand" href="#" aria-label="Lumen">

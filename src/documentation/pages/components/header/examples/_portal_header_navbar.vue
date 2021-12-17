@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Portal Header with Navbar" id="portal_header_navbar" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
     .-p--3(slot="example")
-      header.chi-header.-portal.-navbar
+      header.chi-header.-lg.-navbar
         nav.chi-header__content(aria-label='Header primary navigation')
           .chi-header__brand
             a.chi-brand(href="#", aria-label="Lumen")
@@ -72,8 +72,7 @@
               li
                 a(href='#' target='_blank') Help
               li
-                a(href='#' target='_blank')
-                  | Contact Us
+                a(href='#' target='_blank') Contact Us
     <Wrapper slot="code-webcomponent">
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -110,7 +109,7 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<header class="chi-header -portal -navbar">
+        htmlblueprint: `<header class="chi-header -lg -navbar">
   <nav class="chi-header__content" aria-label="Header primary navigation">
     <div class="chi-header__brand">
       <a class="chi-brand" href="#" aria-label="Lumen">

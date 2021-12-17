@@ -13,7 +13,7 @@
 
     <Wrapper v-if="$store.state.themes.theme === 'lumen'">
       <Base />
-      <HeaderTitleFile />
+      <HeaderTitle />
       <PortalHeader />
       <PortalHeaderNavbar />
       <HeaderImpersonation />
@@ -51,7 +51,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import Base from './_base.vue';
 import BasePortal from './_portal/_base_header_portal.vue';
 import BaseCenturylink from './_centurylink/_base_centurylink.vue';
-import HeaderTitleFile from './_header_title_file.vue';
+import HeaderTitle from './_header_title.vue';
 import PortalHeader from './_portal_header.vue';
 import PortalHeaderNavbar from './_portal_header_navbar.vue';
 import HeaderImpersonation from './_header_impersonation.vue';
@@ -77,7 +77,7 @@ import SizesXLargeCenturylink from './_centurylink/_sizes_xlarge_centurylink.vue
     Base,
     BasePortal,
     BaseCenturylink,
-    HeaderTitleFile,
+    HeaderTitle,
     PortalHeader,
     PortalHeaderNavbar,
     HeaderImpersonation,

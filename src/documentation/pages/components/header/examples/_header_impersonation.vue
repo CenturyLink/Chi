@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Header with Impersonation Bar" id="header_impersonation" padding="-p--0" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
     .-p--3(slot="example")
-      header.chi-header.-portal.-impersonation
+      header.chi-header.-lg.-impersonation
         .chi-impersonation-bar
           .chi-impersonation-bar__content
             span.chi-impersonation-bar__label Signed in as:
@@ -98,7 +98,7 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<header class="chi-header">
+        htmlblueprint: `<header class="chi-header -lg -impersonation">
   <nav class="chi-header__toolbar">
     <div class="chi-header__start">
       <ul class="chi-tabs">

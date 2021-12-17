@@ -23,8 +23,8 @@
                   i.chi-icon.-sm--2.icon-menu(aria-hidden="true")
           .chi-header__end
             .-d--none.-d-lg--flex
-              a.chi-button.-flat(href="#", style='text-transform: none') Item
-              a.chi-button.-flat.-ml--1(href="#", style='text-transform: none') Item
+              a.chi-button.-flat(href="#") Item
+              a.chi-button.-flat.-ml--1(href="#") Item
         .chi-divider.-m--0.-w--100.-d--flex.-d-lg--none
         nav.chi-header__toolbar.-d--flex.-d-lg--none#drawer-trigger-ctl-ms3.chi-drawer__trigger(data-target='#drawer-ctl-3')
           .chi-header__start
