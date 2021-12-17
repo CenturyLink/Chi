@@ -1,22 +1,22 @@
 <template lang="pug">
-<ComponentExample title="Base" id="base" padding="-p--0" additionalClasses="position:static" :tabs="exampleTabs">
+<ComponentExample title="Base" id="base" padding="-p--0" additionalClasses="-position--static" :tabs="exampleTabs">
   .-p--3(slot="example")
     .-d--flex.-justify-content--start.-align-items--start
       button#modal-trigger-1.chi-button.-primary.chi-modal__trigger(data-target='#modal-1')
         | Click me to open the modal
-  .chi-backdrop.-closed
-    .chi-backdrop__wrapper
-      section.chi-modal#modal-1(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.chi-modal__header
-          h2.chi-modal__title Modal Title
-          button(class='chi-button -icon -close', data-dismiss='modal', aria-label='Close')
-            .chi-button__content
-              i.chi-icon.icon-x(aria-hidden="true")
-        .chi-modal__content
-          p.-text.-m--0 Modal content
-        footer.chi-modal__footer
-          button.chi-button(data-dismiss='modal') Cancel
-          button.chi-button.-primary Save
+    .chi-backdrop.-closed
+      .chi-backdrop__wrapper
+        section.chi-modal#modal-1(role="dialog", aria-label="Modal description", aria-modal="true")
+          header.chi-modal__header
+            h2.chi-modal__title Modal Title
+            button(class='chi-button -icon -close', data-dismiss='modal', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x(aria-hidden="true")
+          .chi-modal__content
+            p.-text.-m--0 Modal content
+          footer.chi-modal__footer
+            button.chi-button(data-dismiss='modal') Cancel
+            button.chi-button.-primary Save
   <Wrapper slot="code-webcomponent">
     <pre class="language-html">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -91,7 +91,7 @@ export default class Base extends Vue {
 
   mounted() {
     const openModalPopup = document.getElementById('modal-trigger-1');
-    // chi.modal(openModalPopup);
+    chi.modal(openModalPopup);
   }
   
 }
