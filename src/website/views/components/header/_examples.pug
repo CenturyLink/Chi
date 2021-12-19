@@ -81,7 +81,7 @@ p.-text
   h3 Portal Header
   .example.-mb--3
     .-p--3(style='background-color:#eee;')
-      header.chi-header.-portal
+      header.chi-header.-lg
         nav.chi-header__content
           .chi-header__brand
             a.chi-brand(href="#", aria-label="Lumen")
@@ -147,7 +147,7 @@ p.-text
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang='html')
-        <header class="chi-header -portal">
+        <header class="chi-header -lg">
           <nav class="chi-header__content">
             <div class="chi-header__brand">
               <a class="chi-brand" href="#" aria-label="Lumen">
@@ -255,7 +255,7 @@ p.-text
   h3 Portal Header with Navbar
   .example.-mb--3
     .-p--3(style='background-color:#eee;')
-      header.chi-header.-portal.-navbar
+      header.chi-header.-lg.-navbar
         nav.chi-header__content(aria-label='Header primary navigation')
           .chi-header__brand
             a.chi-brand(href="#", aria-label="Lumen")
@@ -338,7 +338,7 @@ p.-text
     .chi-tabs-panel#webcomponent-tabs-navbar
     .chi-tabs-panel.-active#html-tabs-navbar
       :code(lang="html")
-        <header class="chi-header -portal -navbar">
+        <header class="chi-header -lg -navbar">
           <nav class="chi-header__content" aria-label="Header primary navigation">
             <div class="chi-header__brand">
               <a class="chi-brand" href="#" aria-label="Lumen">
@@ -469,7 +469,7 @@ p.-text
   h3 Header with Impersonation Bar
   .example.-mb--3
     .-p--3(style='background-color:#eee;')
-      header.chi-header.-portal.-impersonation
+      header.chi-header.-lg.-impersonation
         .chi-impersonation-bar
           .chi-impersonation-bar__content
             span.chi-impersonation-bar__label Signed in as:
@@ -530,20 +530,20 @@ p.-text
                     i.chi-icon.icon-logout(aria-hidden="true")
                     span Item 2
     .example-tabs.-pl--2
-      ul.chi-tabs#example-enterprise-portal-impersonation
+      ul.chi-tabs#example-lumen-portal-impersonation
         li.-disabled
-          a(href=`#webcomponent-enterprise-portal-impersonation`) Web Component
+          a(href=`#webcomponent-lumen-portal-impersonation`) Web Component
         li.-active
-          a(href=`#html-enterprise-portal-impersonation`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-enterprise-portal-impersonation
-    .chi-tabs-panel.-active#html-enterprise-portal-impersonation
+          a(href=`#html-lumen-portal-impersonation`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-lumen-portal-impersonation
+    .chi-tabs-panel.-active#html-lumen-portal-impersonation
       .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
           | You may use your own solution, or use Chi's vanilla JavaScript solution,
           | <a href="../../getting-started/installation">Chi.js</a>.
       :code(lang='html')
-        <header class="chi-header -portal -impersonation">
+        <header class="chi-header -lg -impersonation">
           <div class="chi-impersonation-bar">
             <div class="chi-impersonation-bar__content">
               <span class="chi-impersonation-bar__label">Signed in as:</span>
@@ -1281,6 +1281,29 @@ p.-text
           .chi-header__end
         nav.chi-header__navbar
           .chi-header__start
+            .-d--none.-d-lg--flex
+              ul.chi-tabs.-inverse.-sm
+                li
+                  .chi-dropdown.chi-dropdown__hover
+                    a.chi-dropdown__trigger.-text--uppercase(href='#') Categories
+                    .chi-dropdown__menu.-w--lg
+                      a.chi-dropdown__menu-item(href='#') Category 1
+                      a.chi-dropdown__menu-item(href='#') Category 2
+                      a.chi-dropdown__menu-item(href='#') Category 3
+                li
+                  .chi-dropdown.chi-dropdown__hover
+                    a.chi-dropdown__trigger.-text--uppercase(href='#') Solutions
+                    .chi-dropdown__menu.-w--lg
+                      a.chi-dropdown__menu-item(href='#') Solution 1
+                      a.chi-dropdown__menu-item(href='#') Solution 2
+                      a.chi-dropdown__menu-item(href='#') Solution 3
+                li
+                  .chi-dropdown.chi-dropdown__hover
+                    a.chi-dropdown__trigger.-text--uppercase(href='#') Resources
+                    .chi-dropdown__menu.-w--lg
+                      a.chi-dropdown__menu-item(href='#') Resource 1
+                      a.chi-dropdown__menu-item(href='#') Resource 2
+                      a.chi-dropdown__menu-item(href='#') Resource 3
           .chi-header__end
             ul.chi-header__navbar-menu
               li
@@ -1310,7 +1333,42 @@ p.-text
             <div class="chi-header__end"></div>
           </nav>
           <nav class="chi-header__navbar">
-            <div class="chi-header__start"></div>
+            <div class="chi-header__start">
+              <div class="-d--none -d-lg--flex">
+                <ul class="chi-tabs -inverse -sm">
+                  <li>
+                    <div class="chi-dropdown chi-dropdown__hover">
+                      <a id="header-dropdown-example-1" class="chi-dropdown__trigger -text--uppercase" href="#">Categories</a>
+                      <div class="chi-dropdown__menu -w--lg">
+                        <a class="chi-dropdown__menu-item" href="#">Category 1</a>
+                        <a class="chi-dropdown__menu-item" href="#">Category 2</a>
+                        <a class="chi-dropdown__menu-item" href="#">Category 3</a>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="chi-dropdown chi-dropdown__hover">
+                      <a id="header-dropdown-example-2" class="chi-dropdown__trigger -text--uppercase" href="#">Solutions</a>
+                      <div class="chi-dropdown__menu -w--lg">
+                        <a class="chi-dropdown__menu-item" href="#">Solution 1</a>
+                        <a class="chi-dropdown__menu-item" href="#">Solution 2</a>
+                        <a class="chi-dropdown__menu-item" href="#">Solution 3</a>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="chi-dropdown chi-dropdown__hover">
+                      <a id="header-dropdown-example-3" class="chi-dropdown__trigger -text--uppercase" href="#">Resources</a>
+                      <div class="chi-dropdown__menu -w--lg">
+                        <a class="chi-dropdown__menu-item" href="#">Resource 1</a>
+                        <a class="chi-dropdown__menu-item" href="#">Resource 2</a>
+                        <a class="chi-dropdown__menu-item" href="#">Resource 3</a>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
             <div class="chi-header__end">
               <ul class="chi-header__navbar-menu">
                 <li>
@@ -2226,7 +2284,7 @@ p.-text
                 path(d='M106.330232 1.71966316c0-.94108421-.572874-1.47287369-1.677516-1.47287369H89.1060842c-1.1043263 0-1.6771789.53178948-1.6771789 1.47287369v1.42565263l17.2648737-.0345579c1.063579-.00001052 1.636453-.49107368 1.636453-1.39109473', fill='#0C9ED9')
           .chi-header__start
             .-d--flex.-d-lg--none
-              button#drawer-trigger-pib1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Toggle navigation")
+              button#drawer-trigger-portal-pib1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-portal-1', aria-label="Toggle navigation")
                 .chi-button__content
                   i.chi-icon.-sm--2.icon-menu(aria-hidden="true")
             .chi-dropdown.-d--none.-d-lg--flex
@@ -2278,13 +2336,13 @@ p.-text
                 a(href='#' target='_blank')
                   | Contact Us
     .example-tabs.-pl--2
-      ul.chi-tabs#example-size-lg
+      ul.chi-tabs#example-portal-size-lg
         li.-disabled
-          a(href=`#webcomponent-size-lg`) Web Component
+          a(href=`#webcomponent-portal-size-lg`) Web Component
         li.-active
-          a(href=`#html-size-lg`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-size-lg
-    .chi-tabs-panel.-active#html-size-lg
+          a(href=`#html-portal-size-lg`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-size-lg
+    .chi-tabs-panel.-active#html-portal-size-lg
       .chi-tab__description
         span.-text--grey
           | This HTML Blueprint requires JavaScript.
@@ -2380,7 +2438,7 @@ p.-text
                 path(d='M106.330232 1.71966316c0-.94108421-.572874-1.47287369-1.677516-1.47287369H89.1060842c-1.1043263 0-1.6771789.53178948-1.6771789 1.47287369v1.42565263l17.2648737-.0345579c1.063579-.00001052 1.636453-.49107368 1.636453-1.39109473', fill='#0C9ED9')
           .chi-header__start
             .-d--flex.-d-lg--none
-              button#drawer-trigger-pib2.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Toggle navigation")
+              button#drawer-trigger-pib2.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-portal-1', aria-label="Toggle navigation")
                 .chi-button__content
                   i.chi-icon.-sm--2.icon-menu(aria-hidden="true")
             .chi-dropdown.-d--none.-d-lg--flex
@@ -2535,13 +2593,13 @@ p.-text
 
   .chi-backdrop.-closed
     .chi-backdrop__wrapper
-      div#drawer-1.chi-drawer.-left.-menu.-position--absolute
+      div#drawer-portal-1.chi-drawer.-left.-menu.-position--absolute
         .chi-drawer__header
           button(class='chi-button -icon -close', aria-label='Close')
             .chi-button__content
               i.chi-icon.icon-x(aria-hidden="true")
         .chi-drawer__content
-          .-px--2.-text
+          .-px--2.-pt--2.-text
             | Drawer content here
 
 script.
@@ -2573,6 +2631,7 @@ script.
       chi.tooltip(document.getElementById('button-impersonation-support'));
 
       chi.drawer(document.getElementById('drawer-trigger-pib1'));
+      chi.drawer(document.getElementById('drawer-trigger-portal-pib1'));
       chi.dropdown(document.getElementById('button-portal-site-menu'));
       chi.dropdown(document.getElementById('button-portal-user-menu'));
       chi.dropdown(document.getElementById('button-portal-eid-menu'));
