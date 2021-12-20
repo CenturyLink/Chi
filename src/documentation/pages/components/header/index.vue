@@ -1,6 +1,6 @@
 <template lang="pug">
-  <div>
-    <TitleBar title="Marketing icon" description="Use Marketing icon to render Lumen marketing icons in your project." :tabs="pageTabs" />
+  div
+    <TitleBar title="Header" description="Headers are used to render consistent Lumen branded headers." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
         <Examples />
@@ -8,7 +8,6 @@
         <Properties />
       .chi-tabs-panel#accessibility
         <Accessibility />
-  </div>
 </template>
 
 <script lang="ts">
@@ -21,8 +20,8 @@ import { standardComponentPageTabs } from '../../../constants/constants';
 
 @Component({
   components: {
-    Accessibility,
     Examples,
+    Accessibility,
     PageContentTabs,
     Properties
   },
@@ -32,5 +31,7 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     };
   }
 })
-export default class MarketingIcon extends Vue {}
+export default class Header extends Vue {
+  mounted() {}
+}
 </script>
