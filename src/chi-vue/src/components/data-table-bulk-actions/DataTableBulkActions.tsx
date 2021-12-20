@@ -19,8 +19,16 @@ export default class DataTableBulkActions extends Vue {
 
   showBulkActions?: boolean = true;
 
-  _selectedRows(e: any) {
+  _emitSelectedRows(e: any) {
     this.$emit('chiShowSelectedOnly', e.srcElement.checked);
+  }
+
+  _emitSelectedAll(e: Event) {
+    this.$emit('chiMobileSelectedAll', e);
+  }
+
+  _emitClear(e: Event) {
+    this.$emit('chiMobileClear', e);
   }
 
   mounted() {
@@ -31,7 +39,7 @@ export default class DataTableBulkActions extends Vue {
     }
   }
 
-  toggleCloseBulkActions() {
+  toggleBulkActions() {
     this.$props.bulkActionConfig.selectedRow = false;
   }
 
@@ -41,8 +49,20 @@ export default class DataTableBulkActions extends Vue {
         {this.$props.bulkActionConfig.selectedRow.length > 0 && this.$props.bulkActionConfig.selectedRow && (
           <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS}`}>
             <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_TOP} ${UTILITY_CLASSES.Z_INDEX.Z_40}`}>
-              <chi-link href="#">Select all</chi-link>
-              <chi-link href="#">Clear</chi-link>
+              <chi-link
+                href="#"
+                onclick={(e: Event) => {
+                  this._emitSelectedAll(e);
+                }}>
+                Select all
+              </chi-link>
+              <chi-link
+                href="#"
+                onclick={(e: Event) => {
+                  this._emitClear(e);
+                }}>
+                Clear
+              </chi-link>
             </div>
             <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_START}`}>
               <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_RESULTS}`}>
@@ -52,16 +72,14 @@ export default class DataTableBulkActions extends Vue {
                 <div class={`${FORM_CLASSES.FORM_ITEM}`}>
                   <div class={`${CHECKBOX_CLASSES.checkbox}`}>
                     <input
-                      id={`checkbox-ba${this.bulkActionConfig.selectedRow.length}`}
+                      id={`checkbox-ba${this.bulkActionConfig.tableId}`}
                       class={`${CHECKBOX_CLASSES.INPUT}`}
                       type="checkbox"
                       onclick={(e: Event) => {
-                        this._selectedRows(e);
+                        this._emitSelectedRows(e);
                       }}
                     />
-                    <label
-                      class={`${CHECKBOX_CLASSES.LABEL}`}
-                      for={`checkbox-ba${this.bulkActionConfig.selectedRow.length}`}>
+                    <label class={`${CHECKBOX_CLASSES.LABEL}`} for={`checkbox-ba${this.bulkActionConfig.tableId}`}>
                       Show Selected Only
                     </label>
                   </div>
@@ -135,7 +153,7 @@ export default class DataTableBulkActions extends Vue {
               <button
                 aria-label="Close"
                 class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${CLOSE_CLASS}`}
-                onClick={() => this.toggleCloseBulkActions()}>
+                onClick={() => this.toggleBulkActions()}>
                 <div class={`${BUTTON_CLASSES.CONTENT} ${BUTTON_CLASSES.ICON_BUTTON} ${CLOSE_CLASS}`}>
                   <i class={`${ICON_CLASS} ${ICON_CLASSES.ICON_X}`}></i>
                 </div>

@@ -173,7 +173,7 @@ export default class DataTable extends Vue {
 
   _bulkAction() {
     if (this.$scopedSlots['bulkActions']) {
-      return <div>{this.$scopedSlots['bulkActions']({})}</div>;
+      return this.$scopedSlots['bulkActions']({});
     }
     return null;
   }

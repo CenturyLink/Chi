@@ -35,9 +35,6 @@ export const exampleConfig = {
 
 export const bulkActionConfig = {
   selectedRow: [],
-  showBulkActions: true,
-  slicedData: [],
-  selectedRowIds: [],
 };
 
 const exampleColumns = [

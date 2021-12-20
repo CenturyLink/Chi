@@ -93,6 +93,8 @@
         <ChiDataTableBulkActions
           :bulkActionConfig="bulkActionConfig"
           @chiShowSelectedOnly="e => chiShowSelectedOnly(e)"
+          @chiMobileSelectedAll="e => chiMobileSelectedAll(e)"
+          @chiMobileClear="e => chiMobileClear(e)"
         >
         </ChiDataTableBulkActions>
       </template>
@@ -155,6 +157,12 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     },
     chiShowSelectedOnly: e => {
       console.log('chiColumnsReset', e);
+    },
+    chiMobileSelectedAll: e => {
+      console.log('chiMobileSelectedAll', e);
+    },
+    chiMobileClear: e => {
+      console.log('chiMobileClear', e);
     },
     pageChange: e => {
       console.log('chiPageChange', e);
