@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  <Wrapper>
     h3 Overview
     p.-text 
       | Chi icons are a collection of high-quality vector icons designed by Lumen for use in consumer, enterprise, and internal applications.
@@ -35,6 +35,7 @@
       <Semantic />
       <Icons />
     </Wrapper>
+  </Wrapper>
 </template>
 
 <script lang="ts">
