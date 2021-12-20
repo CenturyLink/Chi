@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  <Wrapper>
     <TitleBar title="Marketing icon" description="Use Marketing icon to render Lumen marketing icons in your project." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
@@ -8,6 +8,7 @@
         <Properties />
       .chi-tabs-panel#accessibility
         <Accessibility />
+  </Wrapper>
 </template>
 
 <script lang="ts">

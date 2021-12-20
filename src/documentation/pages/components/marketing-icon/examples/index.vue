@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  <Wrapper>
     h2 Overview
     p.-text
       | Chi Marketing Icons are a collection of high-quality vector icons designed by Lumen for use in consumer, enterprise, and internal applications.
@@ -11,6 +11,7 @@
     <Base />
     <Sizes />
     <Icons />
+  </Wrapper>
 </template>
 
 <script lang="ts">
