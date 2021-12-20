@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  <Wrapper>
     <TitleBar title="Modal" description="Modals are windows used for displaying prompts and subtasks without losing context of the parent application." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
@@ -8,6 +8,7 @@
         <Properties />
       .chi-tabs-panel#accessibility
         <Accessibility />
+  </Wrapper>
 </template>
 
 <script lang="ts">
@@ -31,7 +32,5 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     };
   }
 })
-export default class Modal extends Vue {
-  mounted() {}
-}
+export default class Modal extends Vue {}
 </script>

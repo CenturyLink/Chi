@@ -6,7 +6,7 @@
         | Click me to open the modal
     .chi-backdrop.-closed
       .chi-backdrop__wrapper
-        section.chi-modal#modal-1(role="dialog", aria-label="Modal description", aria-modal="true")
+        section.chi-modal#modal-1(role="dialog", aria-label="Modal description", aria-modal="true", style="top: 4rem;")
           header.chi-modal__header
             h2.chi-modal__title Modal Title
             button(class='chi-button -icon -close', data-dismiss='modal', aria-label='Close')

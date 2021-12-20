@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  <Wrapper>
     h2 Examples
     p.-text
       | Modals are composed of several parts. To render a modal, include a modal backdrop, modal header, modal body,
@@ -32,6 +32,7 @@
       <Alert />
       <MultiStep />
     </Wrapper>
+  </Wrapper>
 </template>
 
 <script lang="ts">
