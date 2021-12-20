@@ -236,6 +236,18 @@ $color-background-dark:               $color-grey-100;
 $color-background-white:              $color-white;
 $color-background-black:              $color-black;
 
+// Icons
+$icon-color:                                inherit;
+$icon-size-base:                            1rem;
+$icon-size-xs:                              0.75rem;
+$icon-size-sm:                              1rem;
+$icon-size-sm2:                             1.25rem;
+$icon-size-sm3:                             1.5rem;
+$icon-size-md:                              2rem;
+$icon-size-lg:                              4rem;
+$icon-size-xl:                              6rem;
+$icon-size-xxl:                             8rem;
+
 // Link color
 $link-color: $color-text-primary;
 
@@ -704,6 +716,12 @@ $card-title-font-size:                      $font-size-lg;
 $card-title-font-weight:                    $font-weight-semi-bold;
 $card-title-line-height:                    $line-height-lg;
 
+// Carousel
+$carousel-dot-background-color:             transparent;
+$carousel-dot-hover-background-color:       $color-background-primary;
+$carousel-dot-active-background-color:      $color-background-primary;
+$carousel-dot-size:                         $icon-size-xs;
+
 // Checkbox
 $checkbox-background-color:                 $color-background-white;
 $checkbox-border-color:                     $color-grey-40;
@@ -904,18 +922,6 @@ $header-xl-content-padding:                 0 2rem;
 $header-xl-navbar-tab-link-font-size:       $font-size-lg;
 $header-xl-navbar-tab-link-line-height:     $line-height;
 
-// Icons
-$icon-color:                                inherit;
-$icon-size-base:                            1rem;
-$icon-size-xs:                              0.75rem;
-$icon-size-sm:                              1rem;
-$icon-size-sm2:                             1.25rem;
-$icon-size-sm3:                             1.5rem;
-$icon-size-md:                              2rem;
-$icon-size-lg:                              4rem;
-$icon-size-xl:                              6rem;
-$icon-size-xxl:                             8rem;
-
 // Label
 $label-status-text-color:                   $color-text-muted;
 $label-status-danger-text-color:            $color-text-danger;
@@ -972,6 +978,7 @@ $mobile-nav-list-item-active-box-shadow:    inset 0.125rem 0 0 $color-border-pri
 // Modal
 $modal-animated-transition-duration:        0.5s;
 $modal-background-color:                    $color-background-white;
+$modal-border-radius:                       $border-radius-base;
 $modal-box-shadow:                          0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
 $modal-max-width:                           600px;
 $modal-close-top:                           0.5rem;

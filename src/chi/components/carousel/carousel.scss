@@ -1,0 +1,82 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-carousel {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+
+  &__content {
+    overflow: hidden;
+    width: 100%;
+
+    .chi-carousel__wrapper {
+      transition-duration: 0.35s;
+      transition-property: transform;
+      width: fit-content;
+    }
+  }
+
+  .chi-carousel__control {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 20%;
+    z-index: 10;
+
+    &.-previous,
+    &.-next {
+      chi-button {
+        button {
+          &.chi-button {
+            &.-float {
+              border: 0;
+            }
+          }
+        }
+      }
+    }
+
+    &.-previous {
+      left: 0;
+      justify-content: start;
+    }
+
+    &.-next {
+      right: 0;
+      justify-content: end;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+
+    .chi-carousel__dot {
+      background-color: $carousel-dot-background-color;
+      border: 0.0625rem solid $color-border-primary;
+      border-radius: $carousel-dot-size / 2;
+      display: block;
+      height: $carousel-dot-size;
+      transition: all 0.2s ease-in;
+      width: $carousel-dot-size;
+
+      &.-active {
+        background-color: $carousel-dot-active-background-color;
+      }
+
+      &:not(:first-child) {
+        margin-left: 0.5rem;
+      }
+
+      &:not(.-active) {
+        &:hover {
+          background-color: $carousel-dot-hover-background-color;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
