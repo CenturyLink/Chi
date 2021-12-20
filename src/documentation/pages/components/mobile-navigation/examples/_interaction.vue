@@ -576,15 +576,8 @@ declare const chi: any;
 })
 export default class Interaction extends Vue {
   mounted() {
-    document.addEventListener(
-      'DOMContentLoaded',
-      function() {
-        chi.mobilenav(
-          document.querySelector('#mobile-navigation-interaction-trigger')
-        );
-        chi.tab(document.querySelector('#examples-interaction'));
-      },
-      false
+    chi.mobilenav(
+      document.querySelector('#mobile-navigation-interaction-trigger')
     );
   }
 }

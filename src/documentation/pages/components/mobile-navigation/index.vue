@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  <div>
     <TitleBar title="Mobile navigation" description="Mobile navigation adds a responsive multi-level navigation menu to your project." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
@@ -8,6 +8,7 @@
         <Properties />
       .chi-tabs-panel#accessibility
         <Accessibility />
+  </div>
 </template>
 
 <script lang="ts">
