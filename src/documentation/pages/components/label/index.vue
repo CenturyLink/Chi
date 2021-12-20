@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  <Wrapper>
     <TitleBar title="Label" description="Use Label together with form control elements like input, select, checkbox, etc." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
@@ -8,6 +8,7 @@
         <Properties />
       .chi-tabs-panel#accessibility
         <Accessibility />
+  </Wrapper>
 </template>
 
 <script lang="ts">

@@ -7,8 +7,7 @@
       chi-number-input#number-input
       chi-label.-mt--1(for='chi-date-picker') Label
       chi-date-picker#chi-date-picker
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">   
+    <Wrapper slot="code-webcomponent">
       .chi-tab__description
         | Associate <code>chi-label</code> with supported form-control web components 
       <pre class="language-html">

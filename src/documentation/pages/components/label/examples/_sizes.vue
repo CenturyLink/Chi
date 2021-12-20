@@ -4,16 +4,9 @@
       | Label supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>. 
       | The default size is <code>md</code>.
     <Wrapper slot="example">
-      chi-label(for="input-4", size='xs') Label
-      input#input-4-control.-sr--only
-      chi-label(for="input-5", size='sm') Label
-      input#input-5-control.-sr--only
-      chi-label(for="input-6", size='md') Label
-      input#input-6-control.-sr--only
-      chi-label(for="input-7", size='lg') Label
-      input#input-7-control.-sr--only
-      chi-label(for="input-8", size='xl') Label
-      input#input-8-control.-sr--only
+      each size, index in ['xs', 'sm', 'md', 'lg', 'xl']
+        chi-label(for=`input-${index}`, size=size) Label
+        input.-sr--only(id=`input-${index}`)
     </Wrapper>
     <Wrapper slot="code-webcomponent">    
       <pre class="language-html">
