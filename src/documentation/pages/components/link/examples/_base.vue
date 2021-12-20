@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
     <Wrapper slot="example">
-        <chi-link href="#">Link</chi-link>
+      <chi-link href="#">Link</chi-link>
     </Wrapper>
     <Wrapper slot="code-webcomponent">
       <pre class="language-html">
