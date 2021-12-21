@@ -1,5 +1,5 @@
 <template lang="pug">
-<ComponentExample title="Inverse Backdrop" padding="-p--0" id="inverse_backdrop" :tabs="exampleTabs">
+<ComponentExample title="Inverse Backdrop" padding="-p--0" id="inverse-backdrop" :tabs="exampleTabs">
   p.-text(slot="example-description")
     | Invert a modals backdrop by applying the class <code>-inverse.</code>
   .chi-backdrop.-inverse.-p--6.-position--relative.-z--0(slot="example")
@@ -31,8 +31,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {

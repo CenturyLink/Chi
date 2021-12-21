@@ -1,5 +1,5 @@
 <template lang="pug">
-<ComponentExample title="Scrolling long content" id="scrolling_long_content" padding="-p--0" :tabs="exampleTabs">
+<ComponentExample title="Scrolling long content" id="scrolling-long-content" padding="-p--0" :tabs="exampleTabs">
   p.-text(slot="example-description")
     | Enable scrolling when modals become too long for the user’s viewport or device, they scroll independent of the page itself.
   .chi-backdrop.-p--6.-position--relative.-z--0.-mh--480(slot="example")
@@ -44,8 +44,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {

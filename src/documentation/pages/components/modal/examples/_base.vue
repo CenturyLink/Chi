@@ -88,11 +88,8 @@ declare const chi: any;
   },
 })
 export default class Base extends Vue {
-
   mounted() {
-    const openModalPopup = document.getElementById('modal-trigger-1');
-    chi.modal(openModalPopup);
-  }
-  
+    chi.modal(document.getElementById('modal-trigger-1'));
+  }  
 }
 </script>

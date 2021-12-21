@@ -1,5 +1,5 @@
 <template lang="pug">
-<ComponentExample title="With Subtitle" id="with_subtitle" padding="-p--0" :tabs="exampleTabs">
+<ComponentExample title="With Subtitle" id="with-subtitle" padding="-p--0" :tabs="exampleTabs">
   .chi-backdrop.-p--6.-position--relative.-z--0(slot="example")
     .chi-backdrop__wrapper
       section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
@@ -30,8 +30,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {

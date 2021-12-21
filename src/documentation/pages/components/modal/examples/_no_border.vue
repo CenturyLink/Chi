@@ -1,5 +1,5 @@
 <template lang="pug">
-<ComponentExample title="No Border" id="no_border" padding="-p--0" :tabs="exampleTabs">
+<ComponentExample title="No Border" id="no-border" padding="-p--0" :tabs="exampleTabs">
   p.-text(slot="example-description")
     | Disable header or footer borders by applying the class <code>-no-border</code> to <code>chi-modal__header</code>
     | or <code>chi-modal__footer</code>.
@@ -32,8 +32,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {

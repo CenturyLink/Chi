@@ -1,5 +1,5 @@
 <template lang="pug">
-  <Wrapper>
+  div
     <TitleBar title="Modal" description="Modals are windows used for displaying prompts and subtasks without losing context of the parent application." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
@@ -8,7 +8,6 @@
         <Properties />
       .chi-tabs-panel#accessibility
         <Accessibility />
-  </Wrapper>
 </template>
 
 <script lang="ts">

@@ -1,5 +1,5 @@
 <template lang="pug">
-<ComponentExample title="Multi-step" id="multi_step" padding="-p--0" :tabs="exampleTabs">
+<ComponentExample title="Multi-step" id="multi-step" padding="-p--0" :tabs="exampleTabs">
   p.-text(slot="example-description")
     | For multi-step modals, ensure the class <code>-centered</code> is applied to <code>chi-modal__title</code>.
     | This will provide sufficient real estate on the left side to store a back button <code>chi-modal__back</code>.
@@ -32,8 +32,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {
