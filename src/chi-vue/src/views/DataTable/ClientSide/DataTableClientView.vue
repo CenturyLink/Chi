@@ -96,6 +96,42 @@
           @chiMobileSelectedAll="e => chiMobileSelectedAll(e)"
           @chiMobileClear="e => chiMobileClear(e)"
         >
+          <template v-slot:start>
+            <div class="chi-bulk-actions__buttons">
+              <div class="chi-bulk-actions__buttons-mobile -z--40">
+                <chi-button variant="flat" type="icon" aria-label="Edit">
+                  <chi-icon icon="edit"></chi-icon>
+                </chi-button>
+                <chi-button variant="flat" type="icon" aria-label="Compose">
+                  <chi-icon icon="compose"></chi-icon>
+                </chi-button>
+                <chi-button variant="flat" type="icon" aria-label="Delete">
+                  <chi-icon icon="delete"></chi-icon>
+                </chi-button>
+                <chi-button variant="flat" type="icon" aria-label="Print">
+                  <chi-icon icon="print"></chi-icon>
+                </chi-button>
+              </div>
+              <div class="chi-bulk-actions__buttons-desktop">
+                <chi-button size="xs" aria-label="Download">
+                  <chi-icon icon="arrow-to-bottom"></chi-icon>
+                  <span> Download </span>
+                </chi-button>
+                <chi-button size="xs" aria-label="Compose">
+                  <chi-icon icon="arrow-to-bottom"></chi-icon>
+                  <span> Compose </span>
+                </chi-button>
+                <chi-button size="xs" aria-label="Delete">
+                  <chi-icon icon="arrow-to-bottom"></chi-icon>
+                  <span> Delete </span>
+                </chi-button>
+                <chi-button size="xs" aria-label="Print">
+                  <chi-icon icon="arrow-to-bottom"></chi-icon>
+                  <span> Print </span>
+                </chi-button>
+              </div>
+            </div>
+          </template>
         </ChiDataTableBulkActions>
       </template>
       <template #loadingSkeleton>
