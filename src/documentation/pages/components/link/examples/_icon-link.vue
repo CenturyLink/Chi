@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Icon Link" id="icon-link" :tabs="exampleTabs">
+  <ComponentExample title="Icon Link" id="icon-link" :tabs="exampleTabs" additionalClasses="-text">
     p.-text(slot="example-description")
       | Use icon links to render icons inside link tags. <strong>Note:</strong> All icon links without text labels 
       | must define a label in the <code>alternative-text</code> attribute for accessibility.

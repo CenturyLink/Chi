@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Hreflang" id="hreflang" :tabs="exampleTabs">
+  <ComponentExample title="Hreflang" id="hreflang" :tabs="exampleTabs" additionalClasses="-text">
     p.-text(slot="example-description")
       | Use to set the language of the link.
     <Wrapper slot="example">

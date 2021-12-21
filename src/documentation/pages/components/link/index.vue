@@ -1,5 +1,5 @@
 <template lang="pug">
-  <Wrapper>
+  div
     <TitleBar title="Link" description="Use Links to navigate between pages, locations within the same page, and more." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
@@ -8,7 +8,6 @@
         <Properties />
       .chi-tabs-panel#accessibility
         <Accessibility />
-  </Wrapper>
 </template>
 
 <script lang="ts">

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Additional Sizes" id="additional-sizes" :tabs="exampleTabs">
+  <ComponentExample title="Additional Sizes" id="additional-sizes" :tabs="exampleTabs" additionalClasses="-text">
     p.-text(slot="example-description")
       | Links support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>. 
       | By default, links inherit the font-size of their parent element.

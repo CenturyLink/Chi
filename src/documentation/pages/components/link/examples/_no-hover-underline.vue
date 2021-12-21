@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="No Underline on Hover" id="noHoverUnderline" :tabs="exampleTabs">
+  <ComponentExample title="No Underline on Hover" id="noHoverUnderline" :tabs="exampleTabs" additionalClasses="-text">
     p.-text(slot="example-description")
       | Use to remove a link's underline on hover.
     <Wrapper slot="example">

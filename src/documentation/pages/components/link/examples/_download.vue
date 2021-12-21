@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Download" id="download" :tabs="exampleTabs">
+  <ComponentExample title="Download" id="download" :tabs="exampleTabs" additionalClasses="-text">
     p.-text(slot="example-description")
       | Use download to prompt users to save a page or document instead of navigating to it. 
       | The download attribute accepts an optional value used to name the file. 

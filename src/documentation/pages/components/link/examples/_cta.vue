@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="CTA" id="cta" :tabs="exampleTabs">
+  <ComponentExample title="CTA" id="cta" :tabs="exampleTabs" additionalClasses="-text">
     p.-text(slot="example-description")
       | Call to action (CTA) links are prominent links used primarily on marketing web pages to encourage 
       | users to perform a specific action (e.g. Get started, Learn more). Use <a href="#additional-sizes">link sizes</a> to render CTA links 

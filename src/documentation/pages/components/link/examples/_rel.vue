@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Rel" id="rel" :tabs="exampleTabs">
+  <ComponentExample title="Rel" id="rel" :tabs="exampleTabs" additionalClasses="-text">
     p.-text(slot="example-description")
       | Use rel to set the relationship between the current page and the linked page. Rel supports all HTML a attribute values. 
       | Examples include: <code>alternate</code>, <code>external</code>, <code>next</code>, <code>nofollow</code>, <code>noreferrer</code>, <code>noopener</code>, <code>prev</code>, and more.

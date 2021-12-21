@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs" additionalClasses="-text">
     <Wrapper slot="example">
       <chi-link href="#">Link</chi-link>
     </Wrapper>

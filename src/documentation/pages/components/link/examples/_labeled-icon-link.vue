@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Labeled Icon Link" id="labeled-icon-link" :tabs="exampleTabs">
+  <ComponentExample title="Labeled Icon Link" id="labeled-icon-link" :tabs="exampleTabs" additionalClasses="-text">
     p.-text(slot="example-description")
       | Use labeled icon links to render both text and icons inside link tags.
     <Wrapper slot="example">

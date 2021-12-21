@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs">
+  <ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs" additionalClasses="-text">
     p.-text(slot="example-description")
       | Make links appear inactive by adding the <code>disabled</code> boolean attribute or <code>-disabled</code> class.
     <Wrapper slot="example">
