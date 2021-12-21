@@ -1,5 +1,5 @@
 <template lang="pug">
-<ComponentExample title="Brand complimentary" titleSize="h4" padding="-p--0" id="brand_complimentary" :tabs="exampleTabs">
+<ComponentExample title="Brand complimentary" titleSize="h4" padding="-p--0" id="brand-complimentary" :tabs="exampleTabs">
   p.-text(slot="example-description")
     | More icon colors that can be used to compliment the primary brand palette.
   .chi-grid.-no-gutter(slot="example")
