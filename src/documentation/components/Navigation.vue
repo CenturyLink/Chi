@@ -19,6 +19,8 @@
           <li><NuxtLink to="/components/dropdown">Dropdown</NuxtLink></li>
           <li><NuxtLink to="/components/file-input">File input</NuxtLink></li>
           <li><NuxtLink to="/components/flag-icon">Flag icon</NuxtLink></li>
+          <li><NuxtLink to="/components/header">Header</NuxtLink></li>
+          <li><NuxtLink to="/components/label">Label</NuxtLink></li>
           <li>
             <NuxtLink to="/components/mobile-navigation"
               >Mobile navigation</NuxtLink
