@@ -13,10 +13,13 @@
     <SizesPortal v-if="$store.state.themes.theme === 'portal'" />
 
     h2 Expanded version
+
     <BaseExpanded />
     <DisabledExpanded />
     <MinMaxStepExpanded />
     <ErrorExpanded />
+    <SizesExpandedLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
+    <SizesExpandedPortal v-if="$store.state.themes.theme === 'portal'" />
 </template>
 
 <script lang="ts">
@@ -33,7 +36,9 @@ import SizesPortal from './_portal/_sizes.vue';
 import BaseExpanded from './_base-expanded.vue';
 import DisabledExpanded from './_disabled-expanded.vue';
 import MinMaxStepExpanded from './_min-max-step-expanded.vue';
-import ErrorExpanded from './_error-expanded.vue'
+import ErrorExpanded from './_error-expanded.vue';
+import SizesExpandedLumenCenturyLink from './_sizes-expanded_lumen_century_link.vue';
+import SizesExpandedPortal from './_portal/_sizes-expanded.vue';
 
 @Component({
   components: {
@@ -49,7 +54,9 @@ import ErrorExpanded from './_error-expanded.vue'
     BaseExpanded,
     DisabledExpanded,
     MinMaxStepExpanded,
-    ErrorExpanded
+    ErrorExpanded,
+    SizesExpandedPortal,
+    SizesExpandedLumenCenturyLink
   }
 })
 export default class Examples extends Vue {}

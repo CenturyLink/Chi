@@ -1,5 +1,5 @@
 <template lang="pug">
-  <div>
+  div
     <TitleBar title="Number input" description="Number inputs are used to increase or decrease numeric values." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
@@ -8,7 +8,6 @@
         <Properties />
       .chi-tabs-panel#accessibility
         <Accessibility />
-  </div>
 </template>
 
 <script lang="ts">
