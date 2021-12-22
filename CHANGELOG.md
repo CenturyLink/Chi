@@ -1,4 +1,25 @@
 # CHANGELOG
+## 5.7.0 (December 16, 2021)
+### Components
+#### Added
+* Added: Carousel web component for sequentially displaying and switching between slides with any type of elements.
+* Added: Modal component now supports bottom position for mobile views.
+* Added: Data table filters sub-module now supports rendering of custom content inside advanced filters popover.
+* Added: Data table component now supports bulk actions.
+* Added: Data table filters sub-module now supports expand/collapse functionality of accordions in advanced filters popover.
+* Added: Data table Vue component now supports row selection with radio buttons.
+#### Changed
+* Changed: Lumen and Portal themed modals now render with a 4px border-radius.
+* Changed: Header component styles to better align with lumen.com.
+* Changed: Stat component design for the portal theme.
+* Changed: Footer component code snippet links to target lumen.com URLs.
+#### Fixed
+* Fixed: Checkbox component issue of rendering multi-line label.
+* Fixed: Drawer component close button issue caused after using the dispose method.
+### Documentation
+#### Added
+* Added: App Layout documentation page now includes respective properties and events.
+
 ## 5.6.0 (November 11, 2021)
 ### Components
 #### Added

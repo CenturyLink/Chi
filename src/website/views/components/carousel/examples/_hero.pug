@@ -1,0 +1,23 @@
+h3 Hero
+.example.-mb--3
+  .-p--3
+    chi-carousel(single)
+      each i in [0, 1, 2, 3, 4, 5, 6, 7, 8]
+        .chi-carousel__item.-text--xl.-d--flex.-align-items--center.-justify-content--center.-bg--grey-15.-b--1(style="height: 20rem; box-sizing: border-box;", slot="items")= `View ${i + 1}`
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-accordion-base
+      li.-disabled
+        a(href=`#webcomponent-accordion-base`) Web Component
+      li.-active
+        a(href=`#html-accordion-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-accordion-base
+  .chi-tabs-panel.-active#html-accordion-base
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <chi-carousel>
+        <!-- ITEMS -->
+      </chi-carousel>
