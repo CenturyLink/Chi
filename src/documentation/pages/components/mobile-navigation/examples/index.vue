@@ -1,9 +1,8 @@
 <template lang="pug">
-  <Wrapper>
+  div
     h2 Examples
 
     <Interaction />
-  </Wrapper>
 </template>
 
 <script lang="ts">
