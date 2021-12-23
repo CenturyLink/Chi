@@ -1,23 +1,26 @@
 <template lang="pug">
-  div
-    <ComponentExample title="Extra small" titleSize="h4" id="extrasmall_size" :tabs="exampleTabs" padding="-p--0">
-      div(slot="example")
-        .-p--2
-          chi-badge(size='xs', class='-m--1')= 'Badge'
-          chi-badge(size='xs', class='-m--1', variant='flat')
-            chi-icon(icon='atom')
-            span Badge
-      div(slot="code-webcomponent").chi-tab__description
+  <ComponentExample title="Extra small" titleSize="h4" id="extrasmall_size" :tabs="exampleTabs" padding="-p--2">
+    <Wrapper slot="example">
+      chi-badge(size='xs', class='-m--1')= 'Badge'
+      chi-badge(size='xs', class='-m--1', variant='flat')
+        chi-icon(icon='atom')
+        span Badge
+    </Wrapper>
+    <Wrapper slot="code-webcomponent">
+      .chi-tab__description
         | Set the attribute <code>size</code> to <code>xs</code> to render even smaller badges.
-        <pre class="language-html">
-          <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-        </pre>
-      div(slot="code-htmlblueprint").chi-tab__description
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+      </pre>
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      .chi-tab__description
         | Use the <code>-xs</code> modifier class to render even smaller badges.
-        <pre class="language-html">
-          <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-        </pre>
-    </ComponentExample>
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+    </Wrapper>
+  </ComponentExample>
 </template>
 
 <script lang="ts">

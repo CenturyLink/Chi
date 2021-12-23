@@ -379,7 +379,7 @@ h2 Text Transform
   .-p--2
     chi-badge(text-transform='uppercase', class='-m--1')= 'Badge'
     chi-badge(text-transform='lowercase', class='-m--1')= 'BADGE'
-    chi-badge(text-transform='capitalized', class='-m--1')= 'badge'
+    chi-badge(text-transform='capitalize', class='-m--1')= 'badge'
   .example-tabs.-pl--2
     ul.chi-tabs#example-text-transformation
       li.-active
@@ -389,14 +389,14 @@ h2 Text Transform
   .chi-tabs-panel.-active#webcomponent-text-transformation
     .chi-tab__description
       | Set the <code>text-transform</code> attribute to <code>uppercase</code> to render badges in uppercase,
-      | <code>lowercase</code> to render badges in lowercase and <code>capitalized</code> to render badges as capitalized.
+      | <code>lowercase</code> to render badges in lowercase and <code>capitalize</code> to render badges as capitalized.
     :code(lang="html")
       <chi-badge text-transform="uppercase">Badge</chi-badge>
       <chi-badge text-transform="lowercase">BADGE</chi-badge>
-      <chi-badge text-transform="capitalized">badge</chi-badge>
+      <chi-badge text-transform="capitalize">badge</chi-badge>
   .chi-tabs-panel#html-text-transformation
     .chi-tab__description
-      | Use the <code>-text--uppercase</code> text utility class to render badges in all uppercase. <code>-text--lowercase</code> and <code>-text--capitalized</code> are also supported.
+      | Use the <code>-text--uppercase</code> text utility class to render badges in all uppercase. <code>-text--lowercase</code> and <code>-text--capitalize</code> are also supported.
     :code(lang="html")
       <div class="chi-badge -text--uppercase">
         <span>Badge</span>
@@ -404,7 +404,7 @@ h2 Text Transform
       <div class="chi-badge -text--lowercase">
         <span>Badge</span>
       </div>
-      <div class="chi-badge -text--capitalized">
+      <div class="chi-badge -text--capitalize">
         <span>Badge</span>
       </div>
 

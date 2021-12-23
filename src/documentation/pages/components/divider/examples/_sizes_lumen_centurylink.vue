@@ -1,10 +1,9 @@
 <template lang="pug">
   <ComponentExample title="Additional Sizes" id="sizes_lumen_centurylink" :tabs="exampleTabs">
-    div(slot="example-description")
-      p.-text
-        | Use border top <a href="../../utilities/border">utilities</a> such as
-        | <code>-bt--1</code>, <code>-bt--2</code>, <code>-bt--3</code>, or <code>-bt--4</code> to customize a dividers size.
-    div(slot="example")
+    p.-text(slot="example-description")
+      | Use border top <a href="../../utilities/border">utilities</a> such as
+      | <code>-bt--1</code>, <code>-bt--2</code>, <code>-bt--3</code>, or <code>-bt--4</code> to customize a dividers size.
+    <Wrapper slot="example">
       p.-text.-m--0
         | -bt--1
       .chi-divider.-bt--1
@@ -20,14 +19,13 @@
       p.-text.-m--0
         | -bt--4
       .chi-divider.-bt--4
-    div(slot="code-webcomponent")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    div(slot="code-htmlblueprint")
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

@@ -1,12 +1,13 @@
 <template lang="pug">
   <ComponentExample title="Default" titleSize="h4" id="bubble_default" padding="-p--1" :tabs="exampleTabs">
-    div(slot='example')
+    <Wrapper slot='example'>
       chi-alert.-m--2(icon='circle-info')
         | This is a base alert
       each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
         chi-alert.-m--2(color=type, icon=val)
           = `This is ${type === "info" ? "an" : "a"} ${type} alert`
-    div(slot='code-webcomponent')
+    </Wrapper>
+    <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         span
           | To render an alert use the tag <code>chi-alert</code>.
@@ -16,7 +17,8 @@
           | text color. This is useful for displaying neutral alerts with no specific value state.
       pre.language-html
         code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    div(slot='code-htmlblueprint')
+    </Wrapper>
+    <Wrapper slot='code-htmlblueprint'>
       .chi-tab__description
         span
           | To render an alert, use the class <code>chi-alert</code>. Apply a semantic color class that corresponds to the meaning
@@ -25,6 +27,7 @@
           | text color. This is useful for displaying neutral alerts with no specific value state.
       pre.language-html
         code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
+    </Wrapper>
   </ComponentExample>
 </template>
 

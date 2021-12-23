@@ -236,6 +236,18 @@ $color-background-dark:               $color-grey-100;
 $color-background-white:              $color-white;
 $color-background-black:              $color-black;
 
+// Icons
+$icon-color:                                $color-icon-base;
+$icon-size-base:                            1rem;
+$icon-size-xs:                              0.75rem;
+$icon-size-sm:                              1rem;
+$icon-size-sm2:                             1.25rem;
+$icon-size-sm3:                             1.5rem;
+$icon-size-md:                              2rem;
+$icon-size-lg:                              4rem;
+$icon-size-xl:                              6rem;
+$icon-size-xxl:                             8rem;
+
 // Link color
 $link-color: $color-text-primary;
 
@@ -468,6 +480,16 @@ $badge-muted-icon-color:                    $color-icon-white;
 $badge-flat-muted-text-color:               $color-text-muted;
 $badge-flat-muted-icon-color:               $color-icon-muted;
 
+// Bulk actions
+$bulk-actions-background-color:             $color-background-secondary;
+$bulk-actions-link-color:                   $color-text-base;
+$bulk-actions-link-font-weight:             $font-weight-semi-bold;
+$bulk-actions-results-font-size:            $font-size-md;
+$bulk-actions-label-font-weight:            $font-weight-semi-bold;
+$bulk-actions-divider-height:               1.25rem;
+$bulk-actions-divider-border-right-color:   $color-blue-30;
+$bulk-actions-button-icon-color:            $color-grey-80;
+
 // Button
 $button-solid-background-color:             $color-background-white;
 $button-solid-border-color:                 $color-border-primary;
@@ -694,6 +716,12 @@ $card-title-font-size:                      $font-size-7;
 $card-title-font-weight:                    $font-weight-extra-bold;
 $card-title-line-height:                    $line-height-lg;
 
+// Carousel
+$carousel-dot-background-color:             transparent;
+$carousel-dot-hover-background-color:       $color-background-primary;
+$carousel-dot-active-background-color:      $color-background-primary;
+$carousel-dot-size:                         $icon-size-xs;
+
 // Checkbox
 $checkbox-background-color:                 $color-background-white;
 $checkbox-border-color:                     $color-grey-40;
@@ -894,18 +922,6 @@ $header-xl-content-padding:                 0 2rem;
 $header-xl-navbar-tab-link-font-size:       $font-size-base;
 $header-xl-navbar-tab-link-line-height:     $line-height;
 
-// Icons
-$icon-color:                                $color-icon-base;
-$icon-size-base:                            1rem;
-$icon-size-xs:                              0.75rem;
-$icon-size-sm:                              1rem;
-$icon-size-sm2:                             1.25rem;
-$icon-size-sm3:                             1.5rem;
-$icon-size-md:                              2rem;
-$icon-size-lg:                              4rem;
-$icon-size-xl:                              6rem;
-$icon-size-xxl:                             8rem;
-
 // Label
 $label-status-text-color:                   $color-text-muted;
 $label-status-danger-text-color:            $color-text-danger;
@@ -962,6 +978,7 @@ $mobile-nav-list-item-active-box-shadow:    inset 0.125rem 0 0 $color-border-pri
 // Modal
 $modal-animated-transition-duration:        0.5s;
 $modal-background-color:                    $color-grey-10;
+$modal-border-radius:                       $border-radius-base;
 $modal-box-shadow:                          0 24px 38px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12), 0 11px 15px -7px rgba(0, 0, 0, 0.2);
 $modal-close-top:                           0.5rem;
 $modal-max-width:                           600px;
@@ -1322,24 +1339,6 @@ $spinner-size-xl:                           6rem;
 $spinner-size-xxl:                          8rem;
 
 // Stat
-$stat-primary-background-color:             $color-navy-100;
-$stat-primary-active-background-color:      $color-cyan-40;
-$stat-primary-background-icon-color:        $color-cyan-50;
-$stat-primary-active-background-icon-color: $color-cyan-50;
-$stat-primary-background-icon-opacity:      0.3;
-$stat-primary-active-background-icon-opacity: 0.5;
-$stat-primary-text-color:                   $color-text-white;
-$stat-primary-active-text-color:            $color-text-base;
-$stat-primary-active-metric-title-color:    $color-text-base;
-$stat-primary-metric-value-color:           $color-navy-30;
-$stat-primary-active-metric-value-color:    $color-text-base;
-$stat-primary-active-submetric-text-color:  $color-text-base;
-$stat-primary-submetric-text-color:         $color-navy-30;
-$stat-primary-active-notch-border-color:    $color-cyan-40;
-$stat-primary-active-notch-display:         block;
-$stat-primary-border:                       none;
-$stat-primary-active-border:                none;
-
 $stat-background-color:                     $color-background-white;
 $stat-background-icon-color:                $color-blue-40;
 $stat-background-icon-opacity:              0.3;
@@ -1352,12 +1351,13 @@ $stat-active-background-icon-color:         $color-cyan-50;
 $stat-active-box-shadow:                    none;
 $stat-active-text-color:                    $color-text-base;
 $stat-border:                               0.0625rem solid $color-border-base-dark;
+$stat-hover-border:                         0.0625rem solid $color-border-secondary;
 $stat-active-border:                        0.0625rem solid transparent;
 $stat-text-align:                           center;
 $stat-text-color:                           $color-text-primary;
-$stat-max-width:                            33rem;
-$stat-min-height:                           7.5rem;
-$stat-min-width:                            16.5rem;
+$stat-max-width:                            21rem;
+$stat-min-height:                           6.5rem;
+$stat-min-width:                            10.5rem;
 $stat-padding:                              1rem;
 $stat-active-metric-title-color:            $color-text-base;
 $stat-active-metric-value-color:            $color-text-base;
@@ -1365,21 +1365,24 @@ $stat-card-background-color:                $color-background-white;
 $stat-card-border-color:                    rgba($color-black, 0.12);
 $stat-active-card-border-color:             $color-border-primary;
 $stat-content-align-items:                  center;
+$stat-content-justify-content:              center;
+$stat-content-padding:                      0.5rem;
 
 $stat-metric-align-items:                   center;
-$stat-metric-title-font-size:               $font-size-base;
-$stat-metric-title-font-weight:             $font-weight-semi-bold;
+$stat-metric-title-font-size:               $font-size-xs;
+$stat-metric-title-font-weight:             $font-weight-bold;
 $stat-metric-title-line-height:             $line-height-sm;
 $stat-metric-title-text-transform:          uppercase;
-$stat-metric-title-width:                   50%;
+$stat-metric-title-width:                   80%;
 $stat-metric-value-color:                   $color-navy-100;
 $stat-metric-value-font-size:               2rem;
-$stat-metric-value-font-weight:             $font-weight-semi-bold;
+$stat-metric-value-font-weight:             $font-weight-bold;
 $stat-metric-value-line-height:             2.5rem;
 
 $stat-active-submetric-text-color:          $color-text-base;
 $stat-submetric-text-color:                 $color-text-base;
 $stat-submetric-justify-content:            center;
+$stat-submetric-font-size:                  $font-size-xs;
 $stat-active-notch-border-color:            $color-cyan-40;
 $stat-active-notch-display:                 block;
 $stat-compact-active-box-shadow:            none;
@@ -1395,13 +1398,6 @@ $stat-compact-submetric-font-size:          $font-size-base;
 $stat-compact-submetric-font-weight:        $font-weight-bold;
 $stat-compact-active-title-color:           $color-text-base;
 $stat-compact-active-submetric-title-color: $color-text-base;
-
-$stat-compact-primary-text-color:           $color-navy-30;
-$stat-compact-primary-submetric-text-color: $color-text-white;
-$stat-compact-primary-metric-font-weight:   $font-weight-semi-bold;
-$stat-compact-primary-active-submetric-text-color: $color-text-base;
-
-$stat-sm-min-height:                        6.5rem;
 
 // Steps
 $steps-item-line-border-color:              $color-border-muted;
@@ -1704,7 +1700,7 @@ $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 // Toolbar
 $toolbar-header-background-color:           $color-grey-10;
 $toolbar-header-divider-height:             2.5rem;
-$toolbar-ribbon-background-color:           $color-background-primary-light;
+$toolbar-ribbon-background-color:           $color-blue-30;
 $toolbar-ribbon-border-color:               transparent;
 $toolbar-ribbon-divider-border-color:       $color-blue-40;
 $toolbar-ribbon-divider-height:             1.25rem;
