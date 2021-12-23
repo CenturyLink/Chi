@@ -1,5 +1,5 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import { detectMajorChiVersion, EventBus, findComponent, uuid4 } from '@/utils/utils';
+import { detectMajorChiVersion, findComponent, uuid4 } from '@/utils/utils';
 import {
   BACKDROP_CLASSES,
   BUTTON_CLASSES,
@@ -183,7 +183,6 @@ export default class ColumnCustomization extends Vue {
 
     if (dataTableToolbarComponent) {
       (dataTableToolbarComponent as DataTableToolbar)._columns = this;
-      EventBus.$emit('columnsMounted');
     }
     this._chiModal = chi.modal(modalButton);
     this._watchContentComponentChanges();

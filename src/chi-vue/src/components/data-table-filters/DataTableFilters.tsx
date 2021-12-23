@@ -5,7 +5,7 @@ import {
   DataTableFiltersData,
   DataTableFormElementFilters,
 } from '@/constants/types';
-import { copyArrayOfObjects, EventBus, findComponent, uuid4 } from '@/utils/utils';
+import { copyArrayOfObjects, findComponent, uuid4 } from '@/utils/utils';
 import {
   BUTTON_CLASSES,
   CHECKBOX_CLASSES,
@@ -257,7 +257,6 @@ export default class DataTableFilters extends Vue {
 
     if (dataTableToolbarComponent) {
       (dataTableToolbarComponent as DataTableToolbar)._filters = this;
-      EventBus.$emit('filtersMounted');
     }
   }
 

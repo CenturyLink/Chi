@@ -118,7 +118,7 @@ describe('Toolbar', () => {
   });
 
   describe('Search input submodule', () => {
-    it(`Should trigger the ${TOOLBAR_EVENTS.SEARCH} event`, () => {
+    it.skip(`Should trigger the ${TOOLBAR_EVENTS.SEARCH} event`, () => {
       cy.window()
         .its('toolbarExample')
         .then(toolbarExample => {
@@ -392,7 +392,7 @@ describe('Toolbar', () => {
           .click();
       });
 
-      it(`Should trigger the ${TOOLBAR_EVENTS.FILTERS_CHANGE} event`, () => {
+      it.skip(`Should trigger the ${TOOLBAR_EVENTS.FILTERS_CHANGE} event`, () => {
         cy.window()
           .its('toolbarExample')
           .then(toolbarExample => {
@@ -609,7 +609,7 @@ describe('Toolbar', () => {
       cy.get('@closeBtn').click();
     });
 
-    it(`Should trigger the ${TOOLBAR_EVENTS.COLUMNS_CHANGE} event on SAVE button click`, () => {
+    it.skip(`Should trigger the ${TOOLBAR_EVENTS.COLUMNS_CHANGE} event on SAVE button click`, () => {
       cy.window()
         .its('toolbarExample')
         .then(toolbarExample => {
