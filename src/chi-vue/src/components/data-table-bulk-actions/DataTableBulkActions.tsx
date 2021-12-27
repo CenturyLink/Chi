@@ -9,25 +9,28 @@ import {
   ICON_CLASS,
   UTILITY_CLASSES,
 } from '@/constants/classes';
+import { DataTableConfig } from '@/constants/types';
 import DataTable from '../data-table/DataTable';
 import { ICON_CLASSES } from '@/constants/icons';
 
 @Component({})
 export default class DataTableBulkActions extends Vue {
-  @Prop() bulkActionConfig!: any;
+  @Prop() config!: DataTableConfig;
 
   showBulkActions?: boolean = true;
 
   _emitSelectedRows(e: any) {
-    this.$emit('chiShowSelectedOnly', e.srcElement.checked);
+    this.$emit('chiShowSelectedRowsOnly', e.srcElement.checked);
   }
 
   _emitSelectedAll(e: Event) {
+    e.preventDefault();
     this.$emit('chiMobileSelectedAll', e);
   }
 
-  _emitClear(e: Event) {
-    this.$emit('chiMobileClear', e);
+  _emitCancel(e: Event) {
+    e.preventDefault();
+    this.$emit('chiMobileCancel', e);
   }
 
   mounted() {
@@ -39,26 +42,26 @@ export default class DataTableBulkActions extends Vue {
   }
 
   toggleBulkActions() {
-    this.$props.bulkActionConfig.selectedRow = false;
+    this.$props.config.selectedRow = 0;
   }
 
   render() {
     return (
       <transition name="slide-fade">
-        {this.$props.bulkActionConfig.selectedRow.length > 0 && this.$props.bulkActionConfig.selectedRow && (
+        {this.$props.config.selectedRow > 0 && (
           <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS}`}>
             <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_TOP} ${UTILITY_CLASSES.Z_INDEX.Z_40}`}>
               <chi-link
                 href="#"
-                onclick={(e: Event) => {
+                onClick={(e: Event) => {
                   this._emitSelectedAll(e);
                 }}>
                 Select all
               </chi-link>
               <chi-link
                 href="#"
-                onclick={(e: Event) => {
-                  this._emitClear(e);
+                onClick={(e: Event) => {
+                  this._emitCancel(e);
                 }}>
                 Cancel
               </chi-link>
@@ -66,19 +69,19 @@ export default class DataTableBulkActions extends Vue {
             <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_START}`}>
               <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_RESULTS}`}>
                 <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_LABELS}`}>
-                  Actions ({this.bulkActionConfig.selectedRow.length} Selected)
+                  Actions ({this.config.selectedRow} Selected)
                 </div>
                 <div class={`${FORM_CLASSES.FORM_ITEM}`}>
                   <div class={`${CHECKBOX_CLASSES.checkbox}`}>
                     <input
-                      id={`checkbox-ba${this.bulkActionConfig.tableId}`}
+                      id={`checkbox-ba${this.config.tableId}`}
                       class={`${CHECKBOX_CLASSES.INPUT}`}
                       type="checkbox"
-                      onclick={(e: Event) => {
+                      onClick={(e: Event) => {
                         this._emitSelectedRows(e);
                       }}
                     />
-                    <label class={`${CHECKBOX_CLASSES.LABEL}`} for={`checkbox-ba${this.bulkActionConfig.tableId}`}>
+                    <label class={`${CHECKBOX_CLASSES.LABEL}`} for={`checkbox-ba${this.config.tableId}`}>
                       Show Selected Only
                     </label>
                   </div>

@@ -91,10 +91,10 @@
       </template>
       <template #bulkActions>
         <ChiDataTableBulkActions
-          :bulkActionConfig="bulkActionConfig"
-          @chiShowSelectedOnly="e => chiShowSelectedOnly(e)"
+          :config="config"
+          @chiShowSelectedRowsOnly="e => chiShowSelectedRowsOnly(e)"
           @chiMobileSelectedAll="e => chiMobileSelectedAll(e)"
-          @chiMobileClear="e => chiMobileClear(e)"
+          @chiMobileCancel="e => chiMobileCancel(e)"
         >
           <template v-slot:start>
             <div class="chi-bulk-actions__buttons">
@@ -157,7 +157,7 @@ import SearchInput from '../../../components/search-input/SearchInput';
 import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
 import { DataTableRow } from '../../../constants/types';
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
-import { exampleConfig, exampleToolbar, exampleTableHead, exampleTableBody, bulkActionConfig } from './fixtures';
+import { exampleConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
 import DataTableViews from '../../../components/data-table-views/DataTableViews';
 
 const MOCK_API_RESPONSE_DELAY = 5000;
@@ -185,20 +185,16 @@ const MOCK_API_RESPONSE_DELAY = 5000;
       console.log('chiColumnsReset', e);
     },
     chiSelectedRowsChange(data) {
-      this.$data.bulkActionConfig = {
-        ...this.$data.bulkActionConfig,
-        showBulkActions: true,
-        selectedRow: data,
-      };
+      this.$data.config.selectedRow = data.length;
     },
-    chiShowSelectedOnly: e => {
+    chiShowSelectedRowsOnly: e => {
       console.log('chiColumnsReset', e);
     },
     chiMobileSelectedAll: e => {
       console.log('chiMobileSelectedAll', e);
     },
-    chiMobileClear: e => {
-      console.log('chiMobileClear', e);
+    chiMobileCancel: e => {
+      console.log('chiMobileCancel', e);
     },
     pageChange: e => {
       console.log('chiPageChange', e);
@@ -248,7 +244,6 @@ const MOCK_API_RESPONSE_DELAY = 5000;
         head: exampleTableHead,
         body: exampleTableBody,
       },
-      bulkActionConfig,
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     };
   },

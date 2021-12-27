@@ -31,10 +31,8 @@ export const exampleConfig = {
     direction: 'ascending',
   },
   truncation: true,
-};
-
-export const bulkActionConfig = {
-  selectedRow: [],
+  selectedRow: 0,
+  showBulkAction: false,
 };
 
 const exampleColumns = [

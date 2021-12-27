@@ -62,6 +62,7 @@ export default class DataTable extends Vue {
   _toolbarComponent?: DataTableToolbar;
   _bulkActionsComponent?: DataTableBulkActions;
   _paginationListenersAdded = false;
+  _showSelectedRowsOnly = false;
   _chiMajorVersion = 5;
 
   _head() {
@@ -372,7 +373,9 @@ export default class DataTable extends Vue {
       return pages;
     }
 
-    return Math.max(Math.ceil(this.data.body.length / this.resultsPerPage), 1);
+    const bodyLength = !this._showSelectedRowsOnly ? this.data.body.length : this.selectedRows.length;
+
+    return Math.max(Math.ceil(bodyLength / this.resultsPerPage), 1);
   }
 
   selectAllRows(action: 'select' | 'deselect') {
@@ -717,6 +720,12 @@ export default class DataTable extends Vue {
               this.accordionsExpanded.length = 0;
               this.activePage = ev;
               this.slicedData = this.sliceData(data);
+              if (this._showSelectedRowsOnly) {
+                const data = this._serializedDataBody.filter((row: DataTableRow) => {
+                  return this.selectedRows.some(r => r === row.rowId);
+                });
+                this.slicedData = this.sliceData(data);
+              }
               pageChangeEventData.data = this.slicedData;
               this._checkSelectAllCheckbox();
             }
@@ -747,7 +756,11 @@ export default class DataTable extends Vue {
             firstLast={this.config.pagination.firstLast}
             currentPage={this.activePage}
             pages={pages}
-            results={this.config.pagination.results || this.data.body.length}
+            results={
+              this.config.pagination.results || !this._showSelectedRowsOnly
+                ? this.data.body.length
+                : this.selectedRows.length
+            }
             pageSize={!this.config.style.portal}
             pageJumper={this.config.pagination.pageJumper}
             portal={this.config.style.portal}
@@ -922,23 +935,26 @@ export default class DataTable extends Vue {
   }
 
   _showSelectedRows(isSelected: boolean) {
-    const selectedRow = this._serializedDataBody.filter((row: DataTableRow) => {
-      return this.selectedRows.includes(row.rowId);
+    const data = this._serializedDataBody.filter((row: DataTableRow) => {
+      return this.selectedRows.some(r => r === row.rowId);
     });
 
-    for (const i in selectedRow) {
-      selectedRow[i].selected = true;
+    this.activePage = 1;
+    this.slicedData = this.sliceData(data);
+
+    if (this.selectedRows.length > 10) {
+      const pageChangeEventData: DataTablePageChange = {
+        page: 1,
+      };
+      pageChangeEventData.data = this.slicedData;
+      this._checkSelectAllCheckbox();
+      this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
     }
 
-    if (isSelected) {
-      this.slicedData = selectedRow;
-    } else {
-      const selectedRowsData = this.sliceData(this._sortedData || this._serializedDataBody);
-      const selectedRowIds = this.selectedRows;
-      for (const i in selectedRowsData) {
-        selectedRowsData[i].selected = selectedRowIds.includes(selectedRowsData[i].rowId);
-      }
-      this.slicedData = selectedRowsData;
+    this._showSelectedRowsOnly = isSelected;
+
+    if (!isSelected) {
+      this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
     }
   }
 
@@ -950,7 +966,7 @@ export default class DataTable extends Vue {
     }
 
     if (this._bulkActionsComponent) {
-      (this._bulkActionsComponent as Vue).$on('chiShowSelectedOnly', (isSelected: boolean) => {
+      (this._bulkActionsComponent as Vue).$on('chiShowSelectedRowsOnly', (isSelected: boolean) => {
         this._showSelectedRows(isSelected);
       });
     }
