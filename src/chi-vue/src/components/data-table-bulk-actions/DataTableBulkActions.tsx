@@ -13,6 +13,8 @@ import { DataTableConfig } from '@/constants/types';
 import DataTable from '../data-table/DataTable';
 import { ICON_CLASSES } from '@/constants/icons';
 
+let dataTableNumber = 0;
+
 @Component({})
 export default class DataTableBulkActions extends Vue {
   @Prop() config!: DataTableConfig;
@@ -31,6 +33,10 @@ export default class DataTableBulkActions extends Vue {
   _emitCancel(e: Event) {
     e.preventDefault();
     this.$emit('chiMobileCancel', e);
+  }
+
+  created() {
+    dataTableNumber += 1;
   }
 
   mounted() {
@@ -74,14 +80,16 @@ export default class DataTableBulkActions extends Vue {
                 <div class={`${FORM_CLASSES.FORM_ITEM}`}>
                   <div class={`${CHECKBOX_CLASSES.checkbox}`}>
                     <input
-                      id={`checkbox-ba${this.config.tableId}`}
+                      id={`checkbox-ba${dataTableNumber}-${this.config.selectedRow}`}
                       class={`${CHECKBOX_CLASSES.INPUT}`}
                       type="checkbox"
                       onClick={(e: Event) => {
                         this._emitSelectedRows(e);
                       }}
                     />
-                    <label class={`${CHECKBOX_CLASSES.LABEL}`} for={`checkbox-ba${this.config.tableId}`}>
+                    <label
+                      class={`${CHECKBOX_CLASSES.LABEL}`}
+                      for={`checkbox-ba${dataTableNumber}-${this.config.selectedRow}`}>
                       Show Selected Only
                     </label>
                   </div>

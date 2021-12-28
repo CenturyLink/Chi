@@ -101,7 +101,6 @@ export interface DataTableConfig {
   reserveExpansionSlot?: boolean;
   truncation?: boolean;
   selectedRow: number;
-  tableId?: number;
 }
 export interface DataTableFilter {
   name: string;
