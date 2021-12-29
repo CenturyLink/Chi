@@ -1,5 +1,5 @@
 <template lang="pug">
-  <div>
+  div
     h2 Examples
 
     <Base />
@@ -8,13 +8,10 @@
     <Value />
     <Disabled />
     <Error />
-    <div v-if="$store.state.themes.theme === 'portal'">
+    div(v-if="$store.state.themes.theme === 'portal'")
       <SizesPortal />
-    </div>
-    <div v-else>
+    div(v-else)
       <SizesLumenCenturyLink />
-    </div>
-  </div>
 </template>
 
 <script lang="ts">

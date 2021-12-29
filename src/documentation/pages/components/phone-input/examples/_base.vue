@@ -11,7 +11,6 @@
       </pre>
     </Wrapper>
     <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>

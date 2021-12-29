@@ -1,5 +1,5 @@
 <template lang="pug">
-  <div>
+  div
     <TitleBar title="Phone Input" description="Use a phone input to add an international phone number." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
@@ -8,7 +8,6 @@
         <Properties />
       .chi-tabs-panel#accessibility
         <Accessibility />
-  </div>
 </template>
 
 <script lang="ts">
