@@ -22,6 +22,7 @@
           <li><NuxtLink to="/components/header">Header</NuxtLink></li>
           <li><NuxtLink to="/components/label">Label</NuxtLink></li>
           <li><NuxtLink to="/components/marketing-icon">Marketing icon</NuxtLink></li>
+          <li><NuxtLink to="/components/pagination">Pagination</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
           <li><NuxtLink to="/components/breadcrumb">Breadcrumb</NuxtLink></li>
@@ -50,7 +51,6 @@
           <li>
             <NuxtLink to="/components/forms/number-input">Number input</NuxtLink>
           </li>
-          <li><NuxtLink to="/components/pagination">Pagination</NuxtLink></li>
           <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
           <li><NuxtLink to="/components/picker-group">Picker group</NuxtLink></li>
           <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
