@@ -4,16 +4,12 @@
       | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
       | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
       | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
-    <Wrapper slot="example">
-      .chi-form__item
-        chi-label(for="example-2") Label
-        chi-number-input(disabled=true)#example-2
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">    
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    .chi-form__item(slot="example")
+      chi-label(for="example-2") Label
+      chi-number-input(disabled=true)#example-2
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded /> 
       <pre class="language-html">

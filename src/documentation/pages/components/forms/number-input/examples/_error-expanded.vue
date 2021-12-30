@@ -4,17 +4,13 @@
       | Use <code>danger</code> to provide feedback to users when input data fails to validate.
       | To meet accessibility requirements, danger inputs must include an error message explaining the
       | failure and/or how to correct it.
-    <Wrapper slot="example">
-      .chi-form__item
-        chi-label(for="unique-id-eer1") Quantity
-        chi-number-input#unique-id-eer1(inputstyle="danger", expanded)
-        .chi-label.-status.-danger Please enter a quantity.
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">    
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    .chi-form__item(slot="example")
+      chi-label(for="unique-id-eer1") Quantity
+      chi-number-input#unique-id-eer1(inputstyle="danger", expanded)
+      .chi-label.-status.-danger Please enter a quantity.   
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded /> 
       <pre class="language-html">

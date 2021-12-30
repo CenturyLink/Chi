@@ -2,16 +2,12 @@
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | An initial value is optional. If an initial value is not provided, <code>0</code> will be taken as default.
-    <Wrapper slot="example">
-      .chi-form__item
-        chi-label(for="example-1") Label
-        chi-number-input#example-1
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">    
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    .chi-form__item(slot="example")
+      chi-label(for="example-1") Label
+      chi-number-input#example-1    
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded /> 
       <pre class="language-html">

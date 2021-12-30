@@ -2,17 +2,13 @@
   <ComponentExample title="Message" id="message" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Add a message below an input to store descriptions, validation feedback, and other helpful information.
-    <Wrapper slot="example">
-      .chi-form__item
-        chi-label(for="unique-id-me1") Label
-        chi-number-input#unique-id-me1
-        .chi-label.-status Optional input message
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">    
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    .chi-form__item(slot="example")
+      chi-label(for="unique-id-me1") Label
+      chi-number-input#unique-id-me1
+      .chi-label.-status Optional input message
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded /> 
       <pre class="language-html">

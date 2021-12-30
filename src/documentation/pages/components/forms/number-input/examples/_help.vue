@@ -3,22 +3,18 @@
     p.-text(slot="example-description")
       | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover.
       | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
-    <Wrapper slot="example">
-      .chi-form__item
-        .chi-label__wrapper
-          chi-label(for='unique-id-he1') Label
-          .chi-label__help
-            chi-button(id='example__help-button' type='icon' size='xs' variant='flat' alternative-text="Help" @click="$refs.popover.toggle()")
-              chi-icon(icon='circle-info-outline')
-            chi-popover(ref="popover" id='example__help-popover' position='top' variant='text' arrow reference='#example__help-button')
-              | Helpful information goes here.
-        chi-number-input#unique-id-he1
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">    
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    .chi-form__item(slot="example")
+      .chi-label__wrapper
+        chi-label(for='unique-id-he1') Label
+        .chi-label__help
+          chi-button(id='example__help-button' type='icon' size='xs' variant='flat' alternative-text="Help" @click="$refs.popover.toggle()")
+            chi-icon(icon='circle-info-outline')
+          chi-popover(ref="popover" id='example__help-popover' position='top' variant='text' arrow reference='#example__help-button')
+            | Helpful information goes here.
+      chi-number-input#unique-id-he1
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded /> 
       <pre class="language-html">

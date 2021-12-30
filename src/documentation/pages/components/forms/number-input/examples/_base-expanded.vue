@@ -1,15 +1,11 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base-expanded" :tabs="exampleTabs">
-    <Wrapper slot="example">
-      .chi-form__item
-        chi-label(for="example-4") Label
-        chi-number-input(expanded=true)#example-4
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">    
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    .chi-form__item(slot="example")
+      chi-label(for="example-4") Label
+      chi-number-input(expanded=true)#example-4
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded /> 
       <pre class="language-html">

@@ -3,19 +3,15 @@
     p.-text(slot="example-description")
       | Number inputs support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
       |  <code>lg</code>. The default size is <code>md</code>.
-    <Wrapper slot="example">
-      .-d--flex.-flex--column
-        each size in ['xs', 'sm', 'md', 'lg']
-          .-py--2
-            .chi-form__item
-              chi-label(for=`example-portal-sizes-${size}`) Label
-              chi-number-input(size=`${size}`, id=`example-portal-sizes-${size}`)
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">    
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    .-d--flex.-flex--column(slot="example")
+      each size in ['xs', 'sm', 'md', 'lg']
+        .-py--2
+          .chi-form__item
+            chi-label(for=`example-portal-sizes-${size}`) Label
+            chi-number-input(size=`${size}`, id=`example-portal-sizes-${size}`)
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded /> 
       <pre class="language-html">

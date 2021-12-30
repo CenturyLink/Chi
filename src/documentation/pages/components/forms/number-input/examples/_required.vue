@@ -7,16 +7,12 @@
       | will automatically render a red asterisk. <strong>Note:</strong> For HTML Blueprint implementations,
       | the <code>required</code> attribute is not supported on the label. Please use the alternate method
       | specified below for rendering a red asterisk within the label. 
-    <Wrapper slot="example">
-      .chi-form__item
-        chi-label(for="unique-id-re1" required) Label
-        chi-number-input#unique-id-re1(required)
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">    
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    .chi-form__item(slot="example")
+      chi-label(for="unique-id-re1" required) Label
+      chi-number-input#unique-id-re1(required) 
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded /> 
       <pre class="language-html">
