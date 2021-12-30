@@ -2,31 +2,25 @@
   <ComponentExample title="Sizes" id="sizes_portal" :tabs="exampleTabs">
     p.-text(slot="example-description") 
       | Phone input supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code> (default), and <code>lg</code>.
-    <Wrapper slot="example">
-      div(style="max-width: 18rem;")
-        .-mb--2.chi-form__item
-          chi-label(for="phone-input-portal-xs") xs
-          chi-phone-input(id="phone-input-portal-xs" size="xs")
-        .-mb--2.chi-form__item
-          chi-label(for="phone-input-portal-sm") sm
-          chi-phone-input(id="phone-input-portal-sm" size="sm")
-        .-mb--2.chi-form__item
-          chi-label(for="phone-input-portal-md") md
-          chi-phone-input(id="phone-input-portal-md" size="md")
-        .-mb--2.chi-form__item
-          chi-label(for="phone-input-portal-lg") lg
-          chi-phone-input(id="phone-input-portal-lg" size="lg")
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    div(style="max-width: 18rem;" slot="example")
+      .-mb--2.chi-form__item
+        chi-label(for="phone-input-portal-xs") xs
+        chi-phone-input(id="phone-input-portal-xs" size="xs")
+      .-mb--2.chi-form__item
+        chi-label(for="phone-input-portal-sm") sm
+        chi-phone-input(id="phone-input-portal-sm" size="sm")
+      .-mb--2.chi-form__item
+        chi-label(for="phone-input-portal-md") md
+        chi-phone-input(id="phone-input-portal-md" size="md")
+      .-mb--2.chi-form__item
+        chi-label(for="phone-input-portal-lg") lg
+        chi-phone-input(id="phone-input-portal-lg" size="lg")
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

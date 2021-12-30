@@ -2,21 +2,15 @@
   <ComponentExample title="Default Country" id="default-country" :tabs="exampleTabs">
     p.-text(slot="example-description") 
       | Use the <code>default-country</code> attribute to set a default two-letter country code. Defaults to "US".
-    <Wrapper slot="example">
-      div(style="max-width: 18rem;")
-        chi-label(for="phone-input-default-country") Phone Number
-        chi-phone-input(id="phone-input-default-country" default-country="US")
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    div(style="max-width: 18rem;" slot="example")
+      chi-label(for="phone-input-default-country") Phone Number
+      chi-phone-input(id="phone-input-default-country" default-country="US")
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

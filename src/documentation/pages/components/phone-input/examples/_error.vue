@@ -3,23 +3,17 @@
     p.-text(slot="example-description") 
       | Use the <code>danger</code> state to provide feedback to users when phone number fails to validate.
       | To meet accessibility requirements, phone input must include an error message explaining the
-      | failure and/or how to correct it.
-    <Wrapper slot="example">
-      div(style="max-width: 18rem;")
-        chi-label(for="phone-input-error") Phone Number
-        chi-phone-input(id="phone-input-error" state="danger")
-        div.chi-label.-status.-danger Invalid phone number
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+      | failure and/or how to correct it.    
+    div(style="max-width: 18rem;" slot="example")
+      chi-label(for="phone-input-error") Phone Number
+      chi-phone-input(id="phone-input-error" state="danger")
+      div.chi-label.-status.-danger Invalid phone number
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

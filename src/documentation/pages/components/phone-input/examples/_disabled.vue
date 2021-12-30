@@ -3,21 +3,15 @@
     p.-text(slot="example-description") 
       | Use the <code>disabled</code> boolean attribute to prevent users from interacting with the phone input.
       | Disabled phone inputs can not receive any browsing events such as prefix selection, mouse clicks or focus.
-    <Wrapper slot="example">
-      div(style="max-width: 18rem;")
-        chi-label(for="phone-input-disabled") Phone Number
-        chi-phone-input(id="phone-input-disabled" disabled="true")
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    div(style="max-width: 18rem;" slot="example")
+      chi-label(for="phone-input-disabled") Phone Number
+      chi-phone-input(id="phone-input-disabled" disabled="true")
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
