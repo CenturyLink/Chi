@@ -1042,7 +1042,7 @@ describe('Data Table', () => {
         .as('popovers');
     });
 
-    it('Should toggle info popover and show the provided data', () => {
+    it('Should toggle info popover and show the provided title and content', () => {
       cy.get('@popoverTriggers').should('not.have.attr', ACTIVE_ATTR);
       cy.get('@popoverTriggers')
         .first()
@@ -1068,7 +1068,35 @@ describe('Data Table', () => {
         });
     });
 
-    it('Should open info popover without sorting when header cell is sortable', () => {
+    it('Should open info popover with custom template', () => {
+      cy.get('@popoverTriggers').should('not.have.attr', ACTIVE_ATTR);
+      cy.get('@popoverTriggers')
+        .last()
+        .click({ force: true })
+        .then(() => {
+          cy.get('@popovers')
+            .last()
+            .should('have.attr', ACTIVE_ATTR);
+          cy.get('@popovers')
+            .last()
+            .should('contain', 'Status');
+          cy.get('@popovers')
+            .last()
+            .find(`.${ICON_CLASS}`)
+            .should('have.length', 2);
+          cy.get('@popovers')
+            .last()
+            .should('contain', 'Due');
+          cy.get('@popovers')
+            .last()
+            .should('contain', 'Overdue');
+        });
+      cy.get('@popoverTriggers')
+        .last()
+        .click({ force: true });
+    });
+
+    it('Should not sort when clicking on info icon in a sortable header cell', () => {
       cy.get('@popoverTriggers').should('not.have.attr', ACTIVE_ATTR);
       cy.get(`[data-cy='data-table-description'] .${DATA_TABLE_CLASSES.BODY}`)
         .find(`.${DATA_TABLE_CLASSES.ROW}`)
@@ -1081,18 +1109,14 @@ describe('Data Table', () => {
         .then(() => {
           cy.get('@popovers')
             .last()
-            .as('popover')
             .should('have.attr', ACTIVE_ATTR);
-          cy.get('@popovers')
-            .last()
-            .should('contain', 'ID');
-          cy.get('@popovers')
-            .last()
-            .should('contain', 'This is ID description');
           cy.get('@rows')
             .first()
             .should('contain', 'Name 2');
         });
+      cy.get('@popoverTriggers')
+        .last()
+        .click({ force: true });
     });
   });
 });

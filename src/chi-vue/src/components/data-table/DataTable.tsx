@@ -7,6 +7,7 @@ import {
   DATA_TABLE_CLASSES,
   EXPANDED_CLASS,
   ICON_CLASS,
+  INFO_ICON_CLASS,
   ONE_LINK_TX,
   RADIO_CLASSES,
   SR_ONLY,
@@ -27,6 +28,7 @@ import {
   DataTableStyleConfig,
   DataTableModes,
   DataTableRowLevels,
+  DataTableColumnDescription,
 } from '@/constants/types';
 import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
@@ -74,6 +76,21 @@ export default class DataTable extends Vue {
     }
   }
 
+  _getDescription(description: string | DataTableColumnDescription) {
+    const template = (description as DataTableColumnDescription).template;
+
+    if (template) {
+      const getDescriptionSlot = this.$scopedSlots[template];
+
+      if (getDescriptionSlot) {
+        return getDescriptionSlot((description as DataTableColumnDescription).payload);
+      }
+    }
+    return (description as DataTableColumnDescription).content
+      ? (description as DataTableColumnDescription).content
+      : description;
+  }
+
   _head() {
     const tableHeadCells = [
       this.config.selectable ? (
@@ -103,11 +120,10 @@ export default class DataTable extends Vue {
             variant="flat"
             type="icon"
             alternative-text="Info icon"
-            data-tooltip="Info icon"
             onclick={() => {
               this._toggleInfoPopover(infoPopoverId);
             }}>
-            <i class={`${ICON_CLASS} icon-circle-info-outline`} aria-hidden="true"></i>
+            <i class={`${ICON_CLASS} ${INFO_ICON_CLASS}`} aria-hidden="true"></i>
           </chi-button>
         ) : null,
         infoPopover = this.data.head[column].description ? (
@@ -115,29 +131,30 @@ export default class DataTable extends Vue {
             ref={infoPopoverId}
             reference={`#${infoPopoverId}`}
             position="top"
-            title={this.data.head[column].description?.title}
+            title={(this.data.head[column].description as DataTableColumnDescription).title}
             portal={this._chiMajorVersion === 4}
-            modal={this._chiMajorVersion === 5}
-            closable>
-            <div>{this.data.head[column].description?.content}</div>
+            modal={this._chiMajorVersion === 5}>
+            <div>{this._getDescription(this.data.head[column].description as string | DataTableColumnDescription)}</div>
           </chi-popover>
         ) : null,
         sortBy = this.data.head[column].sortBy,
         sortable = this.data.head[column].sortable,
         alignment = this._cellAlignment(this.data.head[column].align || 'left'),
         sortIcon = sortable ? (
-          <i
-            class={`
+          <chi-button variant="flat" type="icon" alternative-text="Sort icon">
+            <i
+              class={`
               ${ICON_CLASS} -xs ${
-              this._sortConfig &&
-              (this._sortConfig.key === this.data.head[column].sortBy || this._sortConfig.key === column)
-                ? DATA_TABLE_SORT_ICONS.ARROW
-                : DATA_TABLE_SORT_ICONS.SORT
-            }`}
-            style={`${
-              this._sortConfig && this._sortConfig.direction === 'descending' ? 'transform: rotate(180deg)' : ''
-            }`}
-          />
+                this._sortConfig &&
+                (this._sortConfig.key === this.data.head[column].sortBy || this._sortConfig.key === column)
+                  ? DATA_TABLE_SORT_ICONS.ARROW
+                  : DATA_TABLE_SORT_ICONS.SORT
+              }`}
+              style={`${
+                this._sortConfig && this._sortConfig.direction === 'descending' ? 'transform: rotate(180deg)' : ''
+              }`}
+            />
+          </chi-button>
         ) : (
           ''
         ),
@@ -1025,10 +1042,7 @@ export default class DataTable extends Vue {
       columnHeadCell,
       columnHeadSortButton;
 
-    if (
-      (element && element.classList.contains('icon-circle-info-outline')) ||
-      element.classList.contains(BUTTON_CLASSES.BUTTON)
-    ) {
+    if ((element && element.classList.contains(INFO_ICON_CLASS)) || element.querySelector(`.${INFO_ICON_CLASS}`)) {
       e.preventDefault();
       return false;
     }

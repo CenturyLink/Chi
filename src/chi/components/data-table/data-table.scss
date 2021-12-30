@@ -28,8 +28,8 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
   display: block;
   font-size: $font-size-base;
   line-height: $line-height-sm;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-x: initial;
+  overflow-y: initial;
   width: 100%;
 
   @include respond-to(md) {
@@ -79,11 +79,7 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
         text-align: start;
         white-space: normal;
 
-        button {
-          outline: none;
-        }
-
-        .chi-icon {
+        .chi-button {
           margin-left: 0.5rem;
         }
 
@@ -92,8 +88,6 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           border-left: 0;
           border-right: 0;
           border-top: 0;
-          color: inherit;
-          text-decoration: none;
 
           .icon-arrow-up,
           .icon-arrow-down,

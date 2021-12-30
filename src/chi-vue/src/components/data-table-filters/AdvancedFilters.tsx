@@ -20,7 +20,15 @@ import store from '@/store/index';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { detectMajorChiVersion } from '@/utils/utils';
 
-Vue.config.ignoredElements = ['chi-date-picker', 'chi-popover', 'chi-text-input', 'chi-label', 'chi-button'];
+Vue.config.ignoredElements = [
+  'chi-date-picker',
+  'chi-popover',
+  'chi-text-input',
+  'chi-label',
+  'chi-button',
+  'chi-time-picker',
+  'chi-number-input',
+];
 
 declare const chi: any;
 @Component

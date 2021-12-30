@@ -59,11 +59,19 @@ export interface DataTableData {
       allowOverflow?: 'visible' | 'hidden';
       key?: boolean;
       bold?: boolean;
-      description?: { title: string; content: string };
+      description?: string | DataTableColumnDescription;
     };
   };
   body: DataTableRow[];
 }
+
+export interface DataTableColumnDescription {
+  title?: string;
+  content?: string;
+  template?: string;
+  payload?: any;
+}
+
 export interface DataTableSortConfig {
   key: string;
   sortBy?: string;

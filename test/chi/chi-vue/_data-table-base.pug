@@ -125,6 +125,12 @@ h3 Description
 .test-data-table.-p--3.-w--100
   #description
     chi-vue-data-table(ref="base" data-cy='data-table-description', :config="config", :data="table")
+      template(#statusdesc='payload')
+        i(:class="`chi-icon icon-${payload.due.icon} -icon--${payload.due.color}`" aria-hidden="true")
+        span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.due.status }}
+        br
+        i(:class="`chi-icon icon-${payload.overdue.icon} -icon--${payload.overdue.color}`" aria-hidden="true")
+        span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.overdue.status }}
 
 h2 Data Table Server Side
 
@@ -766,7 +772,7 @@ script.
       },
       table: {
         head: {
-          name: { label: "Name", sortable: true, sortDataType: "string"},
+          name: { label: "Name", sortable: true, sortDataType: "string" },
           id: {
             label: "ID",
             sortable: true,
@@ -1523,7 +1529,13 @@ script.
       table: {
         head: {
           name: { label: "Name", description: { title: "Name", content: "This is Name description"} },
-          id: { label: "ID", sortable: true, description: { title: "ID", content: "This is ID description"}  },
+          status: { label: 'Status', sortable: true, description: { title: 'Status', template: 'statusdesc', 
+            payload: { 
+              overdue: { status: "Overdue", icon: "circle-alert", color: "danger" }, 
+              due: { status: "Due", icon: 'warning', color: 'warning' }
+              } 
+            }
+          },
           lastLogin: { label: "Last Login" },
         },
         body: [

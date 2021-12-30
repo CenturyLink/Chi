@@ -141,6 +141,7 @@ export const GENERIC_SIZE_CLASSES = {
 
 //#region Icon
 export const ICON_CLASS = 'chi-icon';
+export const INFO_ICON_CLASS = 'icon-circle-info-outline';
 //#endregion
 
 //#region Input

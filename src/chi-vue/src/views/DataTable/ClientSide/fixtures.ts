@@ -155,6 +155,15 @@ const exampleFilters = [
     type: 'checkbox',
     advanced: true,
   },
+  {
+    name: 'input',
+    placeholder: 'Input filter',
+    type: 'input',
+    value: '',
+    id: 'myoption8',
+    label: 'Input',
+    advanced: true,
+  },
 ];
 
 const customItems = [
@@ -165,6 +174,18 @@ const customItems = [
   {
     template: 'customAdvanced2',
     label: 'Custom 2',
+  },
+  {
+    template: 'customAdvanced3',
+    label: 'Custom 3',
+  },
+  {
+    template: 'customAdvanced4',
+    label: 'Custom 4',
+  },
+  {
+    template: 'customAdvanced5',
+    label: 'Custom 5',
   },
 ];
 
