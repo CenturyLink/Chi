@@ -193,8 +193,20 @@ export const exampleToolbar = {
 };
 
 export const exampleTableHead = {
-  ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id', sortDataType: 'string', key: true, bold: true },
-  alerts: { label: 'Alerts', align: 'center' },
+  ticketId: {
+    label: 'Ticket ID',
+    sortable: true,
+    sortBy: 'id',
+    sortDataType: 'string',
+    key: true,
+    bold: true,
+    description: { title: 'Ticket ID', content: 'This is content for ticket id' },
+  },
+  alerts: {
+    label: 'Alerts',
+    align: 'center',
+    description: { title: 'Alerts', content: 'This is content for alerts' },
+  },
   status: {
     label: 'Status',
     sortable: true,

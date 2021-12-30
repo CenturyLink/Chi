@@ -79,6 +79,10 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
         text-align: start;
         white-space: normal;
 
+        button {
+          outline: none;
+        }
+
         .chi-icon {
           margin-left: 0.5rem;
         }
@@ -88,8 +92,12 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           border-left: 0;
           border-right: 0;
           border-top: 0;
+          color: inherit;
+          text-decoration: none;
 
-          .chi-icon {
+          .icon-arrow-up,
+          .icon-arrow-down,
+          .icon-arrow-sort {
             opacity: $opacity-60;
           }
 
@@ -97,18 +105,24 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           &:focus {
             cursor: pointer;
 
-            .chi-icon {
+            .icon-arrow-up,
+            .icon-arrow-down,
+            .icon-arrow-sort {
               opacity: $opacity-100;
             }
           }
 
           &.-active {
-            .chi-icon {
+            .icon-arrow-up,
+            .icon-arrow-down,
+            .icon-arrow-sort {
               opacity: $opacity-100;
             }
 
             &.-descending {
-              .chi-icon {
+              .icon-arrow-up,
+              .icon-arrow-down,
+              .icon-arrow-sort {
                 transform: rotate(180deg);
               }
             }

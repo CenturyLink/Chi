@@ -36,6 +36,8 @@ import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
 import { detectMajorChiVersion } from '@/utils/utils';
 
+Vue.config.ignoredElements = ['chi-popover'];
+
 let dataTableNumber = 0;
 @Component({})
 export default class DataTable extends Vue {
@@ -62,6 +64,16 @@ export default class DataTable extends Vue {
   _paginationListenersAdded = false;
   _chiMajorVersion = 5;
 
+  _toggleInfoPopover(infoPopoverRef: string) {
+    const popover = this.$refs[infoPopoverRef];
+
+    if (popover) {
+      // eslint-disable-next-line
+      // @ts-ignore
+      popover.toggle();
+    }
+  }
+
   _head() {
     const tableHeadCells = [
       this.config.selectable ? (
@@ -83,7 +95,33 @@ export default class DataTable extends Vue {
     let cellIndex = 0;
 
     Object.keys(this.data.head).forEach((column: string) => {
-      const label = this.data.head[column].label || this.data.head[column],
+      const infoPopoverId = `info-popover-${dataTableNumber}-${column}`,
+        label = this.data.head[column].label || this.data.head[column],
+        infoIcon = this.data.head[column].description ? (
+          <chi-button
+            id={infoPopoverId}
+            variant="flat"
+            type="icon"
+            alternative-text="Info icon"
+            data-tooltip="Info icon"
+            onclick={() => {
+              this._toggleInfoPopover(infoPopoverId);
+            }}>
+            <i class={`${ICON_CLASS} icon-circle-info-outline`} aria-hidden="true"></i>
+          </chi-button>
+        ) : null,
+        infoPopover = this.data.head[column].description ? (
+          <chi-popover
+            ref={infoPopoverId}
+            reference={`#${infoPopoverId}`}
+            position="top"
+            title={this.data.head[column].description?.title}
+            portal={this._chiMajorVersion === 4}
+            modal={this._chiMajorVersion === 5}
+            closable>
+            <div>{this.data.head[column].description?.content}</div>
+          </chi-popover>
+        ) : null,
         sortBy = this.data.head[column].sortBy,
         sortable = this.data.head[column].sortable,
         alignment = this._cellAlignment(this.data.head[column].align || 'left'),
@@ -108,7 +146,7 @@ export default class DataTable extends Vue {
             ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
             : null;
       const sortableColumnHead = (
-        <button
+        <div
           aria-label={`Sort Column ${label}`}
           class={`${DATA_TABLE_CLASSES.CELL}
             ${alignment}
@@ -128,8 +166,9 @@ export default class DataTable extends Vue {
             ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
             `}>
           {this.config.truncation ? <DataTableTooltip msg={label} header /> : label}
+          {infoIcon}
           {sortIcon}
-        </button>
+        </div>
       );
       const nonSortableColumnHead = (
         <div
@@ -143,10 +182,12 @@ export default class DataTable extends Vue {
             ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
             `}>
           {this.config.truncation ? <DataTableTooltip msg={label} header /> : label}
+          {infoIcon}
         </div>
       );
 
       tableHeadCells.push(sortable ? sortableColumnHead : nonSortableColumnHead);
+      if (infoPopover) tableHeadCells.push(infoPopover as JSX.Element);
 
       if (this.data.head[column].sortable && !this._sortable) {
         this._sortable = true;
@@ -984,9 +1025,17 @@ export default class DataTable extends Vue {
       columnHeadCell,
       columnHeadSortButton;
 
+    if (
+      (element && element.classList.contains('icon-circle-info-outline')) ||
+      element.classList.contains(BUTTON_CLASSES.BUTTON)
+    ) {
+      e.preventDefault();
+      return false;
+    }
+
     if (element) {
       while (element && !element.classList.contains(DATA_TABLE_CLASSES.HEAD)) {
-        if (element.nodeName === 'BUTTON') {
+        if (element.classList.contains(DATA_TABLE_CLASSES.SORTING)) {
           columnHeadSortButton = element;
         }
 
@@ -1002,9 +1051,9 @@ export default class DataTable extends Vue {
       const columnName = columnHeadSortButton.dataset.column,
         currentSort = this._sortConfig && this._sortConfig.direction,
         columnSortBy = columnHeadSortButton.dataset.sortBy,
-        sortIcon = columnHeadSortButton.querySelector(`i.${ICON_CLASS}`),
+        sortIcon = columnHeadSortButton.querySelector(`i.-xs.${ICON_CLASS}`),
         headSortColumnIcons = (this.$refs.dataTable as HTMLElement).querySelectorAll(
-          `.${DATA_TABLE_CLASSES.HEAD} i.${ICON_CLASS}`
+          `.${DATA_TABLE_CLASSES.HEAD} i.-xs.${ICON_CLASS}`
         );
 
       headSortColumnIcons.forEach(sortIcon => {
@@ -1016,7 +1065,7 @@ export default class DataTable extends Vue {
             if (element.classList.contains(DATA_TABLE_CLASSES.CELL) && element.classList.contains(ACTIVE_CLASS)) {
               element.classList.remove(ACTIVE_CLASS);
             }
-            if (element.nodeName === 'BUTTON') {
+            if (element.classList.contains(DATA_TABLE_CLASSES.SORTING)) {
               element.removeAttribute('data-sort');
             }
 

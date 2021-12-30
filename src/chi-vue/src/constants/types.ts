@@ -59,6 +59,7 @@ export interface DataTableData {
       allowOverflow?: 'visible' | 'hidden';
       key?: boolean;
       bold?: boolean;
+      description?: { title: string; content: string };
     };
   };
   body: DataTableRow[];

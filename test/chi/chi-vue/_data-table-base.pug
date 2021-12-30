@@ -1,5 +1,7 @@
 script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
 script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 h2 Data Table Base
 h3 Base
@@ -118,6 +120,11 @@ h3 Size -xl
 .test-data-table.-p--3.-w--100
   #sizeXl
     chi-vue-data-table(data-cy='data-table-xl', :config="config", :data="table")
+
+h3 Description
+.test-data-table.-p--3.-w--100
+  #description
+    chi-vue-data-table(ref="base" data-cy='data-table-description', :config="config", :data="table")
 
 h2 Data Table Server Side
 
@@ -759,7 +766,7 @@ script.
       },
       table: {
         head: {
-          name: { label: "Name", sortable: true, sortDataType: "string" },
+          name: { label: "Name", sortable: true, sortDataType: "string"},
           id: {
             label: "ID",
             sortable: true,
@@ -1489,6 +1496,65 @@ script.
       },
     },
   }).$mount("#sizeXl");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "xl",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: "Name", description: { title: "Name", content: "This is Name description"} },
+          id: { label: "ID", sortable: true, description: { title: "ID", content: "This is ID description"}  },
+          lastLogin: { label: "Last Login" },
+        },
+        body: [
+          {
+            id: "name-2",
+            data: ["Name 2", "name-2", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-1",
+            data: ["Name 1", "name-1", "Dec 18, 2020 2:38 AM"],
+          },
+          {
+            id: "name-3",
+            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
+          },
+          {
+            id: "name-4",
+            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-5",
+            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
+          },
+          {
+            id: "name-6",
+            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
+          },
+        ],
+      },
+    },
+  }).$mount("#description");
 
   const page1 = [
     {
