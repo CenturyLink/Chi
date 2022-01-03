@@ -100,7 +100,6 @@ export interface DataTableConfig {
   selectable?: boolean | 'radio';
   reserveExpansionSlot?: boolean;
   truncation?: boolean;
-  selectedRow: number;
 }
 export interface DataTableFilter {
   name: string;

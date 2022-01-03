@@ -31,8 +31,6 @@ export const exampleConfig = {
     direction: 'ascending',
   },
   truncation: true,
-  selectedRow: 0,
-  showBulkAction: false,
 };
 
 const exampleColumns = [

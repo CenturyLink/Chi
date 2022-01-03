@@ -31,7 +31,6 @@ export const exampleConfig: DataTableConfig = {
     xl: [15, 5, 10, 15, 15, 15, 15, 5],
   },
   resultsPerPage: 10,
-  selectedRow: 0,
 };
 
 export const exampleTableHead = {

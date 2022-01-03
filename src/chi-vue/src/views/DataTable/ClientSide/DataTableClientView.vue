@@ -12,6 +12,7 @@
       @chiRowCollapsed="e => this.rowCollapsed(e)"
       @chiRowSelected="e => this.rowSelected(e)"
       @chiRowDeselected="e => this.rowDeselected(e)"
+      @chiMobileCancel="e => this.chiMobileCancel(e)"
     >
       <template #icon="payload">
         <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
@@ -90,49 +91,42 @@
         </ChiDataTableToolbar>
       </template>
       <template #bulkActions>
-        <ChiDataTableBulkActions
-          :config="config"
-          @chiShowSelectedRowsOnly="e => chiShowSelectedRowsOnly(e)"
-          @chiMobileSelectedAll="e => chiMobileSelectedAll(e)"
-          @chiMobileCancel="e => chiMobileCancel(e)"
-        >
-          <template v-slot:start>
-            <div class="chi-bulk-actions__buttons">
-              <div class="chi-bulk-actions__buttons-mobile -z--40">
-                <chi-button variant="flat" type="icon" aria-label="Edit">
-                  <chi-icon icon="edit"></chi-icon>
-                </chi-button>
-                <chi-button variant="flat" type="icon" aria-label="Compose">
-                  <chi-icon icon="compose"></chi-icon>
-                </chi-button>
-                <chi-button variant="flat" type="icon" aria-label="Delete">
-                  <chi-icon icon="delete"></chi-icon>
-                </chi-button>
-                <chi-button variant="flat" type="icon" aria-label="Print">
-                  <chi-icon icon="print"></chi-icon>
-                </chi-button>
-              </div>
-              <div class="chi-bulk-actions__buttons-desktop">
-                <chi-button size="xs" aria-label="Download">
-                  <chi-icon icon="arrow-to-bottom"></chi-icon>
-                  <span> Download </span>
-                </chi-button>
-                <chi-button size="xs" aria-label="Compose">
-                  <chi-icon icon="arrow-to-bottom"></chi-icon>
-                  <span> Compose </span>
-                </chi-button>
-                <chi-button size="xs" aria-label="Delete">
-                  <chi-icon icon="arrow-to-bottom"></chi-icon>
-                  <span> Delete </span>
-                </chi-button>
-                <chi-button size="xs" aria-label="Print">
-                  <chi-icon icon="arrow-to-bottom"></chi-icon>
-                  <span> Print </span>
-                </chi-button>
-              </div>
-            </div>
-          </template>
-        </ChiDataTableBulkActions>
+        <div class="chi-bulk-actions__buttons -pl--3">
+          <div
+            :class="`${showBottomNavOnMobileView === false ? '-d--none' : 'chi-bulk-actions__buttons-mobile -z--40'}`"
+          >
+            <chi-button variant="flat" type="icon" aria-label="Edit">
+              <chi-icon icon="edit"></chi-icon>
+            </chi-button>
+            <chi-button variant="flat" type="icon" aria-label="Compose">
+              <chi-icon icon="compose"></chi-icon>
+            </chi-button>
+            <chi-button variant="flat" type="icon" aria-label="Delete">
+              <chi-icon icon="delete"></chi-icon>
+            </chi-button>
+            <chi-button variant="flat" type="icon" aria-label="Print">
+              <chi-icon icon="print"></chi-icon>
+            </chi-button>
+          </div>
+          <div class="chi-bulk-actions__buttons-desktop">
+            <chi-button size="xs" aria-label="Download">
+              <chi-icon icon="arrow-to-bottom"></chi-icon>
+              <span> Download </span>
+            </chi-button>
+            <chi-button size="xs" aria-label="Compose">
+              <chi-icon icon="arrow-to-bottom"></chi-icon>
+              <span> Compose </span>
+            </chi-button>
+            <chi-button size="xs" aria-label="Delete">
+              <chi-icon icon="arrow-to-bottom"></chi-icon>
+              <span> Delete </span>
+            </chi-button>
+            <chi-button size="xs" aria-label="Print">
+              <chi-icon icon="arrow-to-bottom"></chi-icon>
+              <span> Print </span>
+            </chi-button>
+          </div>
+        </div>
       </template>
       <template #loadingSkeleton>
         <div class="-d--flex -flex--column -w--100">
@@ -193,7 +187,8 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     chiMobileSelectedAll: e => {
       console.log('chiMobileSelectedAll', e);
     },
-    chiMobileCancel: e => {
+    chiMobileCancel(e) {
+      this.$data.showBottomNavOnMobileView = false;
       console.log('chiMobileCancel', e);
     },
     pageChange: e => {
@@ -245,6 +240,7 @@ const MOCK_API_RESPONSE_DELAY = 5000;
         body: exampleTableBody,
       },
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      showBottomNavOnMobileView: true,
     };
   },
 })

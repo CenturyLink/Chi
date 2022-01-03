@@ -173,10 +173,13 @@ export default class DataTable extends Vue {
   }
 
   _bulkAction() {
-    if (this.$scopedSlots['bulkActions']) {
-      return this.$scopedSlots['bulkActions']({});
-    }
-    return null;
+    const bulkActionSlot = this.$scopedSlots['bulkActions'] ? this.$scopedSlots['bulkActions']({}) : null;
+
+    return (
+      <DataTableBulkActions selectedRows={this.selectedRows.length}>
+        <template slot="start">{bulkActionSlot}</template>
+      </DataTableBulkActions>
+    );
   }
 
   _generateColumnResize(elem: HTMLElement) {
@@ -935,12 +938,12 @@ export default class DataTable extends Vue {
   }
 
   _showSelectedRows(isSelected: boolean) {
-    const data = this._serializedDataBody.filter((row: DataTableRow) => {
+    const sliceData = this._serializedDataBody.filter((row: DataTableRow) => {
       return this.selectedRows.some(r => r === row.rowId);
     });
 
     this.activePage = 1;
-    this.slicedData = this.sliceData(data);
+    this.slicedData = this.sliceData(sliceData);
 
     if (this.selectedRows.length > 10) {
       const pageChangeEventData: DataTablePageChange = {
@@ -968,6 +971,10 @@ export default class DataTable extends Vue {
     if (this._bulkActionsComponent) {
       (this._bulkActionsComponent as Vue).$on('chiShowSelectedRowsOnly', (isSelected: boolean) => {
         this._showSelectedRows(isSelected);
+      });
+
+      (this._bulkActionsComponent as Vue).$on('chiMobileCancel', (e: Event) => {
+        this.$emit('chiMobileCancel', e);
       });
     }
 

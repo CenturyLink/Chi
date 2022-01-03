@@ -9,7 +9,6 @@ import {
   ICON_CLASS,
   UTILITY_CLASSES,
 } from '@/constants/classes';
-import { DataTableConfig } from '@/constants/types';
 import DataTable from '../data-table/DataTable';
 import { ICON_CLASSES } from '@/constants/icons';
 
@@ -17,9 +16,10 @@ let dataTableNumber = 0;
 
 @Component({})
 export default class DataTableBulkActions extends Vue {
-  @Prop() config!: DataTableConfig;
+  @Prop() selectedRows!: number;
 
   showBulkActions?: boolean = true;
+  showTopBottomNavOnMobileView?: boolean = true;
 
   _emitSelectedRows(e: any) {
     this.$emit('chiShowSelectedRowsOnly', e.srcElement.checked);
@@ -32,6 +32,7 @@ export default class DataTableBulkActions extends Vue {
 
   _emitCancel(e: Event) {
     e.preventDefault();
+    this.showTopBottomNavOnMobileView = false;
     this.$emit('chiMobileCancel', e);
   }
 
@@ -48,39 +49,41 @@ export default class DataTableBulkActions extends Vue {
   }
 
   toggleBulkActions() {
-    this.$props.config.selectedRow = 0;
+    this.$props.selectedRows = 0;
   }
 
   render() {
+    const startSlot = this.$scopedSlots['start'] ? this.$scopedSlots['start']({}) : null;
+
     return (
       <transition name="slide-fade">
-        {this.$props.config.selectedRow > 0 && (
+        {this.$props.selectedRows > 0 && (
           <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS}`}>
-            <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_TOP} ${UTILITY_CLASSES.Z_INDEX.Z_40}`}>
-              <chi-link
-                href="#"
-                onClick={(e: Event) => {
-                  this._emitSelectedAll(e);
-                }}>
-                Select all
-              </chi-link>
-              <chi-link
-                href="#"
-                onClick={(e: Event) => {
-                  this._emitCancel(e);
-                }}>
-                Cancel
-              </chi-link>
-            </div>
+            {this.showTopBottomNavOnMobileView && (
+              <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_TOP} ${UTILITY_CLASSES.Z_INDEX.Z_40}`}>
+                <chi-link
+                  href="#"
+                  onClick={(e: Event) => {
+                    this._emitSelectedAll(e);
+                  }}>
+                  Select all
+                </chi-link>
+                <chi-link
+                  href="#"
+                  onClick={(e: Event) => {
+                    this._emitCancel(e);
+                  }}>
+                  Cancel
+                </chi-link>
+              </div>
+            )}
             <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_START}`}>
               <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_RESULTS}`}>
-                <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_LABELS}`}>
-                  Actions ({this.config.selectedRow} Selected)
-                </div>
+                <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_LABELS}`}>Actions ({this.selectedRows} Selected)</div>
                 <div class={`${FORM_CLASSES.FORM_ITEM}`}>
                   <div class={`${CHECKBOX_CLASSES.checkbox}`}>
                     <input
-                      id={`checkbox-ba${dataTableNumber}-${this.config.selectedRow}`}
+                      id={`checkbox-ba${dataTableNumber}-${this.selectedRows}`}
                       class={`${CHECKBOX_CLASSES.INPUT}`}
                       type="checkbox"
                       onClick={(e: Event) => {
@@ -89,14 +92,14 @@ export default class DataTableBulkActions extends Vue {
                     />
                     <label
                       class={`${CHECKBOX_CLASSES.LABEL}`}
-                      for={`checkbox-ba${dataTableNumber}-${this.config.selectedRow}`}>
+                      for={`checkbox-ba${dataTableNumber}-${this.selectedRows}`}>
                       Show Selected Only
                     </label>
                   </div>
                 </div>
               </div>
+              {startSlot}
             </div>
-            <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_START}`}>{this.$slots.start}</div>
             <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_END}`}>
               <button
                 aria-label="Close"

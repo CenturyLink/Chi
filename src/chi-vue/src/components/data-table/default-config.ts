@@ -22,5 +22,4 @@ export const defaultConfig: DataTableConfig = {
     size: 'md',
   },
   selectable: false,
-  selectedRow: 0,
 };
