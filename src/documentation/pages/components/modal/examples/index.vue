@@ -6,7 +6,7 @@
       | and modal footer (optional).
       | By default modals are aligned to the top of the page.
 
-    <Wrapper v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)">
+    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
       <Base />
       <Center />
       h3 Scrollable
@@ -19,9 +19,8 @@
       <NoBorder />
       <MultiStep />
       <Simple />
-    </Wrapper>
 
-    <Wrapper v-if="$store.state.themes.theme === 'portal'">
+    div(v-if="$store.state.themes.theme === 'portal'")
       <Base />
       <Center />
        h3 Scrollable
@@ -31,7 +30,6 @@
       <ScrollLong />
       <Alert />
       <MultiStep />
-    </Wrapper>
   </Wrapper>
 </template>
 
