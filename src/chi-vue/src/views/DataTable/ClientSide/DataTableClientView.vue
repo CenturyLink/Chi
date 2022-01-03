@@ -64,7 +64,17 @@
                 </div>
               </template>
               <template #customAdvanced2>
-                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
+                <chi-date-picker id="date-picker" @chiDateChange="e => dateChangeHandler(e)" />
+              </template>
+              <template #customAdvanced3>
+                <chi-time-picker />
+              </template>
+              <template #customAdvanced4>
+                <chi-number-input />
+              </template>
+              <template #customAdvanced5>
+                <input type="file" class="chi-file-input" id="file01" aria-label="Choose file" />
+                <label for="file01">No file chosen</label>
               </template>
             </ChiDataTableFilters>
           </template>
