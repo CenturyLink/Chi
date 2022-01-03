@@ -2,27 +2,21 @@
   <ComponentExample titleSize="h4" title="Required" id="required" :tabs="exampleTabs" padding="-p--4">
     p.-text(slot="example-description")
       | Use the <code>required</code> boolean attribute to indicate which pickers must be completed before submitting a form.
-    <Wrapper slot="example">
-      fieldset
-        legend.chi-label
-          | Select options
-          abbr.chi-label__required(title="Required field") *
-        each i in [1, 2]
-          .chi-picker
-            input(type="checkbox", class="chi-picker__input", name=`unique-name-mre`, id=`unique-id-mre${i}`, required=(i === 1))
-            label(for=`unique-id-mre${i}`)
-              = 'Option ' + `${i}`
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    fieldset(slot="example")
+      legend.chi-label
+        | Select options
+        abbr.chi-label__required(title="Required field") *
+      each i in [1, 2]
+        .chi-picker
+          input(type="checkbox", class="chi-picker__input", name=`unique-name-mre`, id=`unique-id-mre${i}`, required=(i === 1))
+          label(for=`unique-id-mre${i}`)
+            = 'Option ' + `${i}`
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

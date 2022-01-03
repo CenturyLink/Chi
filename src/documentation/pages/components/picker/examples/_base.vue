@@ -1,24 +1,18 @@
 <template lang="pug">
   <ComponentExample titleSize="h4" title="Base" id="base" :tabs="exampleTabs" padding="-p--4">
-    <Wrapper slot="example">
-      fieldset
-        legend.chi-label Select options
-        each i in [1, 2]
-          .chi-picker
-            input(type="checkbox", class="chi-picker__input", name=`unique-name-mba`, id=`unique-id-mba${i}`)
-            label(for=`unique-id-mba${i}`)
-              = 'Option ' + `${i}`
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    fieldset(slot="example")
+      legend.chi-label Select options
+      each i in [1, 2]
+        .chi-picker
+          input(type="checkbox", class="chi-picker__input", name=`unique-name-mba`, id=`unique-id-mba${i}`)
+          label(for=`unique-id-mba${i}`)
+            = 'Option ' + `${i}`
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

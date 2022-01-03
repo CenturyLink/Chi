@@ -3,25 +3,19 @@
     p.-text(slot="example-description")
       | Use the <code>checked</code> boolean attribute to set the default value of
       | a picker input to true.
-    <Wrapper slot="example">
-      fieldset
-        legend.chi-label Select options
-        each i in [1, 2]
-          .chi-picker
-            input(type="checkbox", class="chi-picker__input", name=`unique-name-mch`, id=`unique-id-mch${i}`, checked=(i === 1))
-            label(for=`unique-id-mch${i}`)
-              = 'Option ' + `${i}`
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    fieldset(slot="example")
+      legend.chi-label Select options
+      each i in [1, 2]
+        .chi-picker
+          input(type="checkbox", class="chi-picker__input", name=`unique-name-mch`, id=`unique-id-mch${i}`, checked=(i === 1))
+          label(for=`unique-id-mch${i}`)
+            = 'Option ' + `${i}`
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
