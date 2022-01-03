@@ -11,7 +11,7 @@
       | The Web Component approach is dependent on your project using Chi's <a href="../../getting-started/installation">Web Components</a>.
       | The HTML Blueprint approach has no dependencies and all icons come pre-packaged in <a href="../../getting-started/installation">Chi CSS</a>.
 
-    <Wrapper v-if="['lumen', 'portal'].includes($store.state.themes.theme)">
+    div(v-if="['lumen', 'portal'].includes($store.state.themes.theme)")
       <Base />
       <Sizes />
       h3 Colors
@@ -22,9 +22,8 @@
       <Semantic />
       <BrandComplimentary />
       <Icons />
-    </Wrapper>
 
-    <Wrapper v-if="$store.state.themes.theme === 'centurylink'">
+    div(v-if="$store.state.themes.theme === 'centurylink'")
       <Base />
       <Sizes />
       h3 Colors
@@ -34,7 +33,6 @@
       <Brand />
       <Semantic />
       <Icons />
-    </Wrapper>
   </Wrapper>
 </template>
 

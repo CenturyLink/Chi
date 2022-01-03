@@ -11,7 +11,7 @@
       | By default, all content stored in headers will render in drawer
       | components when the viewport is too small to accommodate.
 
-    <Wrapper v-if="$store.state.themes.theme === 'lumen'">
+    div(v-if="$store.state.themes.theme === 'lumen'")
       <Base />
       <HeaderTitle />
       <PortalHeader />
@@ -25,14 +25,12 @@
       <SizesMedium />
       <SizesLarge />
       <SizesXLarge />
-    </Wrapper>
 
-    <Wrapper v-if="$store.state.themes.theme === 'portal'">
+    div(v-if="$store.state.themes.theme === 'portal'")
       <BasePortal />
       <HeaderImpersonationPortal />
-    </Wrapper>
 
-    <Wrapper v-if="$store.state.themes.theme === 'centurylink'">
+    div(v-if="$store.state.themes.theme === 'centurylink'")
       <BaseCenturylink />
       <HeaderTitleCenturylink />
       <HeaderTitleButtonCenturylink />
@@ -43,7 +41,6 @@
       <SizesMediumCenturylink />
       <SizesLargeCenturylink />
       <SizesXLargeCenturylink />
-    </Wrapper>
 </template>
 
 <script lang="ts">
