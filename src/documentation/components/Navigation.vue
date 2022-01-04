@@ -22,6 +22,11 @@
           <li><NuxtLink to="/components/header">Header</NuxtLink></li>
           <li><NuxtLink to="/components/label">Label</NuxtLink></li>
           <li><NuxtLink to="/components/marketing-icon">Marketing icon</NuxtLink></li>
+          <li>
+            <NuxtLink to="/components/forms/number-input"
+              >Number input</NuxtLink
+            >
+          </li>
           <li><NuxtLink to="/components/phone-input">Phone input</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
