@@ -61,6 +61,16 @@
               li
                 a(href='#' target='_blank')
                   | Contact Us
+      .chi-backdrop.-closed
+        .chi-backdrop__wrapper
+          div#drawer-portal-1.chi-drawer.-left.-menu.-position--absolute
+            .chi-drawer__header
+              button(class='chi-button -icon -close', aria-label='Close')
+                .chi-button__content
+                  i.chi-icon.icon-x(aria-hidden="true")
+            .chi-drawer__content
+              .-px--2.-pt--2.-text
+                | Drawer content here
     <Wrapper slot="code-webcomponent">
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -171,7 +181,7 @@ declare const chi: any;
 })
 export default class BasePortal extends Vue {
   mounted() {
-    chi.drawer(document.getElementById('drawer-trigger-pib1'));
+    chi.drawer(document.getElementById('drawer-trigger-portal-pib1'));
     chi.dropdown(document.getElementById('button-portal-site-menu'));
     chi.dropdown(document.getElementById('button-portal-user-menu'));
     chi.dropdown(document.getElementById('button-portal-eid-menu'));
