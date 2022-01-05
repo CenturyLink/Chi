@@ -1,0 +1,14 @@
+@import '../../_global-variables';
+@import '_variables';
+@import '../../_global-mixins';
+@import '_mixins';
+
+// sass-lint:disable-all
+%css-variables {
+  --color-background-primary: #{$color-background-primary};
+  --color-background-secondary: #{$color-background-secondary};
+  --color-link-cta-icon: #{$link-cta-icon-color};
+  --color-marketing-icon-primary: #{$marketing-icon-primary-color};
+  --color-marketing-icon-secondary: #{$marketing-icon-secondary-color};
+  --color-marketing-icon-shadow: #{$marketing-icon-shadow-color};
+}
