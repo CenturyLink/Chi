@@ -350,7 +350,7 @@ export default class DataTable extends Vue {
     this._emitSelectedRows();
   }
 
-  deselectRow(rowData: DataTableRow) {
+  async deselectRow(rowData: DataTableRow) {
     const selectedRow = this.selectedRows.find(rowId => rowId === rowData.rowId);
     const newRowData = {
       ...rowData,
@@ -360,9 +360,11 @@ export default class DataTable extends Vue {
     if (selectedRow) {
       const indexOfRowId = this.selectedRows.indexOf(rowData.rowId);
 
-      this.selectedRows.splice(indexOfRowId, 1);
+      await this.selectedRows.splice(indexOfRowId, 1);
     }
-
+    if (this._bulkActionsComponent && this._showSelectedRowsOnly) {
+      this._showSelectedRows(true);
+    }
     this._checkSelectAllCheckbox();
     this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._emitSelectedRows();
@@ -725,7 +727,7 @@ export default class DataTable extends Vue {
               this.slicedData = this.sliceData(data);
               if (this._showSelectedRowsOnly) {
                 const data = this._serializedDataBody.filter((row: DataTableRow) => {
-                  return this.selectedRows.some(r => r === row.rowId);
+                  return this.selectedRows.some(rowId => rowId === row.rowId);
                 });
                 this.slicedData = this.sliceData(data);
               }
@@ -938,12 +940,12 @@ export default class DataTable extends Vue {
   }
 
   _showSelectedRows(isSelected: boolean) {
-    const sliceData = this._serializedDataBody.filter((row: DataTableRow) => {
-      return this.selectedRows.some(r => r === row.rowId);
+    const selectedRows = this._serializedDataBody.filter((row: DataTableRow) => {
+      return this.selectedRows.some(rowId => rowId === row.rowId);
     });
 
     this.activePage = 1;
-    this.slicedData = this.sliceData(sliceData);
+    this.slicedData = this.sliceData(selectedRows);
 
     if (this.selectedRows.length > 10) {
       const pageChangeEventData: DataTablePageChange = {
@@ -969,12 +971,13 @@ export default class DataTable extends Vue {
     }
 
     if (this._bulkActionsComponent) {
-      (this._bulkActionsComponent as Vue).$on('chiShowSelectedRowsOnly', (isSelected: boolean) => {
+      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.SELECTED_ROWS_ONLY, (isSelected: boolean) => {
         this._showSelectedRows(isSelected);
+        this._checkSelectAllCheckbox();
       });
 
-      (this._bulkActionsComponent as Vue).$on('chiMobileCancel', (e: Event) => {
-        this.$emit('chiMobileCancel', e);
+      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.MOBILE_CANCEL, (e: Event) => {
+        this.$emit(DATA_TABLE_EVENTS.MOBILE_CANCEL, e);
       });
     }
 
