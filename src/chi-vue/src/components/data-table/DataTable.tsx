@@ -940,26 +940,35 @@ export default class DataTable extends Vue {
   }
 
   _showSelectedRows(isSelected: boolean) {
-    const selectedRows = this._serializedDataBody.filter((row: DataTableRow) => {
-      return this.selectedRows.some(rowId => rowId === row.rowId);
-    });
+    /* We are not supporting nested rows show selection for now. This code is to handle a bug specific to
+    nested row selection which needs to be modified/refactored in future */
+    const nestedData = this.slicedData.find(v => 'nestedContent' in v && 'table' in v.nestedContent);
+    const nonNestedRows = this.slicedData.filter(v => v.rowId != nestedData?.rowId);
+    const nestedRowIds = nonNestedRows.filter(v => this.selectedRows.includes(v.rowId));
 
-    this.activePage = 1;
-    this.slicedData = this.sliceData(selectedRows);
+    if (nestedRowIds.length > 0 || this.accordionsExpanded.length == 0) {
+      const selectedRows = this._serializedDataBody.filter((row: DataTableRow) => {
+        return this.selectedRows.some(rowId => rowId === row.rowId);
+      });
+      /******/
 
-    if (this.selectedRows.length > 10) {
-      const pageChangeEventData: DataTablePageChange = {
-        page: 1,
-      };
-      pageChangeEventData.data = this.slicedData;
-      this._checkSelectAllCheckbox();
-      this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
-    }
+      this.activePage = 1;
+      this.slicedData = this.sliceData(selectedRows);
 
-    this._showSelectedRowsOnly = isSelected;
+      if (this.selectedRows.length > 10) {
+        const pageChangeEventData: DataTablePageChange = {
+          page: 1,
+        };
+        pageChangeEventData.data = this.slicedData;
+        this._checkSelectAllCheckbox();
+        this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
+      }
 
-    if (!isSelected) {
-      this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
+      this._showSelectedRowsOnly = isSelected;
+
+      if (!isSelected) {
+        this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
+      }
     }
   }
 
