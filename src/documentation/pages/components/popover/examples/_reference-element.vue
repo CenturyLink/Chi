@@ -81,6 +81,7 @@ export default class ReferenceElement extends Vue {
     document
       .querySelector('#example-3-button')?.addEventListener('click', function() {
         const popoverElem: any = document.querySelector('#example-3-popover');
+
         popoverElem?.toggle();
       });
   }

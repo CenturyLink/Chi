@@ -212,6 +212,7 @@ popover.dispose(); // Only have to do it once.`
 export default class Properties extends Vue {
   mounted() {
     const popover = chi.popover(document.getElementById('popover-2'));
+
     popover.setContent('<div class="chi-popover__content">Bar</div>');
   }
 }
