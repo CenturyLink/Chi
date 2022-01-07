@@ -32,6 +32,7 @@ import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
+import DataTableBulkActions from '../data-table-bulk-actions/DataTableBulkActions';
 import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
 import { detectMajorChiVersion } from '@/utils/utils';
@@ -59,7 +60,9 @@ export default class DataTable extends Vue {
   _sortConfig?: DataTableSortConfig;
   _serializedDataBody: DataTableRow[] = [];
   _toolbarComponent?: DataTableToolbar;
+  _bulkActionsComponent?: DataTableBulkActions;
   _paginationListenersAdded = false;
+  _showSelectedRowsOnly = false;
   _chiMajorVersion = 5;
 
   _head() {
@@ -167,6 +170,16 @@ export default class DataTable extends Vue {
       return <div class="">{this.$scopedSlots['toolbar']({})}</div>;
     }
     return null;
+  }
+
+  _bulkAction() {
+    const bulkActionSlot = this.$scopedSlots['bulkActions'] ? this.$scopedSlots['bulkActions']({}) : null;
+
+    return (
+      <DataTableBulkActions selectedRows={this.selectedRows.length}>
+        <template slot="start">{bulkActionSlot}</template>
+      </DataTableBulkActions>
+    );
   }
 
   _generateColumnResize(elem: HTMLElement) {
@@ -337,7 +350,7 @@ export default class DataTable extends Vue {
     this._emitSelectedRows();
   }
 
-  deselectRow(rowData: DataTableRow) {
+  async deselectRow(rowData: DataTableRow) {
     const selectedRow = this.selectedRows.find(rowId => rowId === rowData.rowId);
     const newRowData = {
       ...rowData,
@@ -347,9 +360,11 @@ export default class DataTable extends Vue {
     if (selectedRow) {
       const indexOfRowId = this.selectedRows.indexOf(rowData.rowId);
 
-      this.selectedRows.splice(indexOfRowId, 1);
+      await this.selectedRows.splice(indexOfRowId, 1);
     }
-
+    if (this._bulkActionsComponent && this._showSelectedRowsOnly) {
+      this._showSelectedRows(true);
+    }
     this._checkSelectAllCheckbox();
     this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._emitSelectedRows();
@@ -363,7 +378,9 @@ export default class DataTable extends Vue {
       return pages;
     }
 
-    return Math.max(Math.ceil(this.data.body.length / this.resultsPerPage), 1);
+    const bodyLength = !this._showSelectedRowsOnly ? this.data.body.length : this.selectedRows.length;
+
+    return Math.max(Math.ceil(bodyLength / this.resultsPerPage), 1);
   }
 
   selectAllRows(action: 'select' | 'deselect') {
@@ -708,6 +725,12 @@ export default class DataTable extends Vue {
               this.accordionsExpanded.length = 0;
               this.activePage = ev;
               this.slicedData = this.sliceData(data);
+              if (this._showSelectedRowsOnly) {
+                const data = this._serializedDataBody.filter((row: DataTableRow) => {
+                  return this.selectedRows.some(rowId => rowId === row.rowId);
+                });
+                this.slicedData = this.sliceData(data);
+              }
               pageChangeEventData.data = this.slicedData;
               this._checkSelectAllCheckbox();
             }
@@ -738,7 +761,11 @@ export default class DataTable extends Vue {
             firstLast={this.config.pagination.firstLast}
             currentPage={this.activePage}
             pages={pages}
-            results={this.config.pagination.results || this.data.body.length}
+            results={
+              this.config.pagination.results || !this._showSelectedRowsOnly
+                ? this.data.body.length
+                : this.selectedRows.length
+            }
             pageSize={!this.config.style.portal}
             pageJumper={this.config.pagination.pageJumper}
             portal={this.config.style.portal}
@@ -912,11 +939,55 @@ export default class DataTable extends Vue {
     this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
   }
 
+  _showSelectedRows(isSelected: boolean) {
+    /* We are not supporting nested rows show selection for now. This code is to handle a bug specific to
+    nested row selection which needs to be modified/refactored in future */
+    const nestedData = this.slicedData.find(v => 'nestedContent' in v && 'table' in v.nestedContent);
+    const nonNestedRows = this.slicedData.filter(v => v.rowId != nestedData?.rowId);
+    const nestedRowIds = nonNestedRows.filter(v => this.selectedRows.includes(v.rowId));
+
+    if (nestedRowIds.length > 0 || this.accordionsExpanded.length == 0) {
+      const selectedRows = this._serializedDataBody.filter((row: DataTableRow) => {
+        return this.selectedRows.some(rowId => rowId === row.rowId);
+      });
+      /******/
+
+      this.activePage = 1;
+      this.slicedData = this.sliceData(selectedRows);
+
+      if (this.selectedRows.length > 10) {
+        const pageChangeEventData: DataTablePageChange = {
+          page: 1,
+        };
+        pageChangeEventData.data = this.slicedData;
+        this._checkSelectAllCheckbox();
+        this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
+      }
+
+      this._showSelectedRowsOnly = isSelected;
+
+      if (!isSelected) {
+        this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
+      }
+    }
+  }
+
   mounted() {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
 
     if (dataTableComponent && this.config.columnResize) {
       this._generateColumnResize(dataTableComponent);
+    }
+
+    if (this._bulkActionsComponent) {
+      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.SELECTED_ROWS_ONLY, (isSelected: boolean) => {
+        this._showSelectedRows(isSelected);
+        this._checkSelectAllCheckbox();
+      });
+
+      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.MOBILE_CANCEL, (e: Event) => {
+        this.$emit(DATA_TABLE_EVENTS.MOBILE_CANCEL, e);
+      });
     }
 
     this._addPaginationEventListener();
@@ -1115,12 +1186,14 @@ export default class DataTable extends Vue {
     const classes = this._dataTableClasses(this.config.style, this._sortable),
       head = this._head(),
       toolbar = this._toolbar(),
+      bulkaction = this._bulkAction(),
       body = this._body(),
       pagination = this._pagination();
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
         {toolbar}
+        {bulkaction}
         {head}
         {body}
         {pagination}

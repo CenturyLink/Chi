@@ -3,6 +3,7 @@ import { DataTableRow } from './types';
 //#region Data Table
 export const DATA_TABLE_EVENTS = {
   SELECTED_ROWS_CHANGE: 'chiSelectedRowsChange',
+  SELECTED_ROWS_ONLY: 'chiShowSelectedRowsOnly',
   SELECTED_ROW: 'chiRowSelected',
   DESELECTED_ROW: 'chiRowDeselected',
   SELECTED_ALL: 'chiSelectAll',
@@ -13,6 +14,7 @@ export const DATA_TABLE_EVENTS = {
   COLUMNS_RESET: 'chiColumnsReset',
   ADVANCED_FILTERS_CHANGE: 'chiAdvancedFiltersChange',
   VIEWS_CHANGE: 'chiViewsChange',
+  MOBILE_CANCEL: 'chiMobileCancel',
   TOOLBAR: {
     COLUMNS_CHANGE: 'chiToolbarColumnsChange',
     COLUMNS_RESET: 'chiToolbarColumnsReset',
