@@ -28,6 +28,7 @@
             >
           </li>
           <li><NuxtLink to="/components/phone-input">Phone input</NuxtLink></li>
+          <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
           <li><NuxtLink to="/components/breadcrumb">Breadcrumb</NuxtLink></li>
