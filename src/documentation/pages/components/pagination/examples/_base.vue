@@ -15,12 +15,14 @@
     <pre class="language-html" slot="code-vue">
       <code v-highlight="$data.codeSnippets.vue" class="html"></code>
     </pre>
-    .chi-tab__description
-      span
-        | Use the class <code>chi-pagination</code> to render a pagination component.
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
+    <Wrapper slot="code-htmlblueprint">
+      .chi-tab__description
+        span
+          | Use the class <code>chi-pagination</code> to render a pagination component.
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 

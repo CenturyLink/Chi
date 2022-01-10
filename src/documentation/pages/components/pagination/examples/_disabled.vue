@@ -15,24 +15,30 @@
             p.-text--bold.-text--white Disabled next button
             <chi-pagination chi-pagination pages="5" current-page="5" inverse></chi-pagination>
     </Wrapper>
-    .chi-tab__description
+    <Wrapper slot="code-webcomponent">
+      .chi-tab__description
         span
           | <code>chi-pagination</code> automatically disables previous / next pages if current page is first or last
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    .chi-tab__description
-      span
-        | <code>ChiPagination</code> automatically disables previous / next pages if current page is first or last
-    <pre class="language-html" slot="code-vue">
-      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-    </pre>
-    .chi-tab__description
-      span
-        | Add the attribute <code>disabled</code> to any button to render in a disabled state.
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+      </pre>
+    </Wrapper>
+    <Wrapper slot="code-vue">
+      .chi-tab__description
+        span
+          | <code>ChiPagination</code> automatically disables previous / next pages if current page is first or last
+      <pre class="language-html" >
+        <code v-highlight="$data.codeSnippets.vue" class="html"></code>
+      </pre>
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      .chi-tab__description
+        span
+          | Add the attribute <code>disabled</code> to any button to render in a disabled state.
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
@@ -48,7 +54,7 @@ import { Component, Vue } from 'vue-property-decorator';
           id: 'webcomponent',
           label: 'Web component'
         },
-         {
+        {
           id: 'vue',
           label: 'Vue'
         },
