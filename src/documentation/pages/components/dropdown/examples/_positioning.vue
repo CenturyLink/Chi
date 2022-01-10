@@ -97,11 +97,9 @@
               a.chi-dropdown__menu-item(href='#exampleLink') Item 1
               a.chi-dropdown__menu-item(href='#exampleLink') Item 2
               a.chi-dropdown__menu-item(href='#exampleLink') Item 3
-    <Wrapper slot="code-webcomponent">      
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">
