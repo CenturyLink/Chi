@@ -1,13 +1,9 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    <Wrapper slot="example">
-      chi-marketing-icon(icon="business-big-data")
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    chi-marketing-icon(icon="business-big-data" slot="example")
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">
