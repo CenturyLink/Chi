@@ -2,19 +2,13 @@
   <ComponentExample title="No Underline on Hover" id="no-hover-underline" :tabs="exampleTabs" additionalClasses="-text">
     p.-text(slot="example-description")
       | Use to remove a link's underline on hover.
-    <Wrapper slot="example">
-      <chi-link href="#" no-hover-underline>Link</chi-link>
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">    
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <chi-link href="#" no-hover-underline slot="example">Link</chi-link>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>   
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

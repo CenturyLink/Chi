@@ -3,21 +3,15 @@
     p.-text(slot="example-description")
       | Use icon links to render icons inside link tags. <strong>Note:</strong> All icon links without text labels 
       | must define a label in the <code>alternative-text</code> attribute for accessibility.
-    <Wrapper slot="example">
-      <chi-link href="#" alternative-text="View helpful information about this topic">
-        <chi-icon icon="circle-question-outline"></chi-icon>
-      </chi-link>
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <chi-link href="#" alternative-text="View helpful information about this topic" slot="example">
+      <chi-icon icon="circle-question-outline"></chi-icon>
+    </chi-link>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

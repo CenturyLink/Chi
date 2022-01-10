@@ -1,11 +1,11 @@
 <template lang="pug">
-  <Wrapper>
+  <div>
     h2 Accessibility
     .chi-card.-align--center.-empty
       .chi-card__content
         .chi-card__caption
           | Accessibility guidelines coming soon
-  </Wrapper>
+  </div>
 </template>
 
 <script lang="ts">

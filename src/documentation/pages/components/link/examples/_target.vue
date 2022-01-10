@@ -3,19 +3,13 @@
     p.-text(slot="example-description")
       | Use target to specify where to open a link. Supported values are: <code>_self</code>, <code>_blank</code>, <code>_parent</code>, <code>_top</code>, 
       | or a custom named frame <em><code>framename</code></em>. The default value is <code>_self</code>.
-    <Wrapper slot="example">
-      <chi-link href="#" target="_self">Link</chi-link>
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <chi-link href="#" target="_self" slot="example">Link</chi-link>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

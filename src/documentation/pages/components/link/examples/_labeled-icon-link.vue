@@ -2,22 +2,16 @@
   <ComponentExample title="Labeled Icon Link" id="labeled-icon-link" :tabs="exampleTabs" additionalClasses="-text">
     p.-text(slot="example-description")
       | Use labeled icon links to render both text and icons inside link tags.
-    <Wrapper slot="example">
-      <chi-link href="#">
-        <chi-icon icon="circle-question-outline"></chi-icon>
-        <span>Help</span>
-      </chi-link>
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <chi-link href="#" slot="example">
+      <chi-icon icon="circle-question-outline"></chi-icon>
+      <span>Help</span>
+    </chi-link>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

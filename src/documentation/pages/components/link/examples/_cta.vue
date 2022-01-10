@@ -4,19 +4,13 @@
       | Call to action (CTA) links are prominent links used primarily on marketing web pages to encourage 
       | users to perform a specific action (e.g. Get started, Learn more). Use <a href="#additional-sizes">link sizes</a> to render CTA links 
       | larger or smaller.
-    <Wrapper slot="example">
-      <chi-link href="#" cta>Learn more</chi-link>
-    </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <chi-link href="#" cta slot="example">Learn more</chi-link>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

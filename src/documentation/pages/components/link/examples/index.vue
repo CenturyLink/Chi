@@ -1,5 +1,5 @@
 <template lang="pug">
-  <Wrapper>
+  <div>
     h2 Examples
    
     <Base />
@@ -13,7 +13,7 @@
     <Download />
     <Hreflang />
     <AdditionalSizes />
-  </Wrapper>
+  </div>
 </template>
 
 <script lang="ts">
