@@ -1113,10 +1113,10 @@ export default class DataTable extends Vue {
       columnHeadSortButton;
 
     if (
-      (element && element.classList.contains(ICON_CLASSES.ICON_INFO)) ||
-      element.querySelector(`.${ICON_CLASSES.ICON_INFO}`)
+      (element && element.nodeName === 'CHI-BUTTON' && element.querySelector(`.${ICON_CLASSES.ICON_INFO}`)) ||
+      element.classList.contains(ICON_CLASSES.ICON_INFO)
     ) {
-      e.preventDefault();
+      e.stopPropagation();
       return false;
     }
 

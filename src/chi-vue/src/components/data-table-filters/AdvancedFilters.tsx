@@ -21,13 +21,32 @@ import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { detectMajorChiVersion } from '@/utils/utils';
 
 Vue.config.ignoredElements = [
-  'chi-date-picker',
-  'chi-popover',
-  'chi-text-input',
-  'chi-label',
+  'chi-alert',
+  'chi-app-layout',
+  'chi-badge',
+  'chi-brand',
   'chi-button',
-  'chi-time-picker',
+  'chi-carousel',
+  'chi-date',
+  'chi-date-picker',
+  'chi-drawer',
+  'chi-expansion-panel',
+  'chi-icon',
+  'chi-label',
+  'chi-link',
+  'chi-marketing-icon',
   'chi-number-input',
+  'chi-pagination',
+  'chi-phone-input',
+  'chi-popover',
+  'chi-progress',
+  'chi-search-input',
+  'chi-spinner',
+  'chi-text-input',
+  'chi-textarea',
+  'chi-time',
+  'chi-time-picker',
+  'chi-toggle-switch',
 ];
 
 declare const chi: any;

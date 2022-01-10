@@ -1118,6 +1118,22 @@ describe('Data Table', () => {
         .last()
         .click({ force: true });
     });
+
+    it('Should still sort column when clicking outside the info icon', () => {
+      cy.get(`[data-cy='data-table-description'] .${DATA_TABLE_CLASSES.BODY}`)
+        .find(`.${DATA_TABLE_CLASSES.ROW}`)
+        .as('rows')
+        .first()
+        .should('contain', 'Name 2');
+      cy.get('[data-cy="data-table-description"]')
+        .find(`.${DATA_TABLE_CLASSES.SORTING}`)
+        .click()
+        .then(() => {
+          cy.get('@rows')
+            .first()
+            .should('contain', 'Name 1');
+        });
+    });
   });
 });
 
