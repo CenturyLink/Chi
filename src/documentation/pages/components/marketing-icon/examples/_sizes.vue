@@ -4,18 +4,15 @@
       | Icons support the following sizes:
       | <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>.
       | By default, icons render at 96x96px (<code>md</code>).
-    <Wrapper slot="example">
-      .chi-grid.-align-items--end
-        each size in ['xs', 'sm', 'md', 'lg']
-          div.-p--2.-m--1
-            chi-marketing-icon(icon="business-big-data", size=size)
-            p.-text.-text--center= size
+    .chi-grid.-align-items--end(slot="example")
+      each size in ['xs', 'sm', 'md', 'lg']
+        div.-p--2.-m--1
+          chi-marketing-icon(icon="business-big-data", size=size)
+          p.-text.-text--center= size
     </Wrapper>
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">
