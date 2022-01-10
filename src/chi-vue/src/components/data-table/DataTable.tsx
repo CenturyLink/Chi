@@ -7,7 +7,6 @@ import {
   DATA_TABLE_CLASSES,
   EXPANDED_CLASS,
   ICON_CLASS,
-  INFO_ICON_CLASS,
   ONE_LINK_TX,
   RADIO_CLASSES,
   SR_ONLY,
@@ -34,9 +33,11 @@ import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
+import DataTableBulkActions from '../data-table-bulk-actions/DataTableBulkActions';
 import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
 import { detectMajorChiVersion } from '@/utils/utils';
+import { ICON_CLASSES } from '@/constants/icons';
 
 Vue.config.ignoredElements = ['chi-popover'];
 
@@ -63,32 +64,33 @@ export default class DataTable extends Vue {
   _sortConfig?: DataTableSortConfig;
   _serializedDataBody: DataTableRow[] = [];
   _toolbarComponent?: DataTableToolbar;
+  _bulkActionsComponent?: DataTableBulkActions;
   _paginationListenersAdded = false;
+  _showSelectedRowsOnly = false;
   _chiMajorVersion = 5;
 
   _toggleInfoPopover(infoPopoverRef: string) {
-    const popover = this.$refs[infoPopoverRef];
+    const popover: any = this.$refs[infoPopoverRef];
 
     if (popover) {
-      // eslint-disable-next-line
-      // @ts-ignore
       popover.toggle();
     }
   }
 
   _getDescription(description: string | DataTableColumnDescription) {
+    if (typeof description === 'string') {
+      return description;
+    }
     const template = (description as DataTableColumnDescription).template;
 
     if (template) {
-      const getDescriptionSlot = this.$scopedSlots[template];
+      const descriptionSlot = this.$scopedSlots[template];
 
-      if (getDescriptionSlot) {
-        return getDescriptionSlot((description as DataTableColumnDescription).payload);
+      if (descriptionSlot) {
+        return descriptionSlot((description as DataTableColumnDescription).payload);
       }
     }
-    return (description as DataTableColumnDescription).content
-      ? (description as DataTableColumnDescription).content
-      : description;
+    return (description as DataTableColumnDescription).content;
   }
 
   _head() {
@@ -120,10 +122,10 @@ export default class DataTable extends Vue {
             variant="flat"
             type="icon"
             alternative-text="Info icon"
-            onclick={() => {
+            onChiClick={() => {
               this._toggleInfoPopover(infoPopoverId);
             }}>
-            <i class={`${ICON_CLASS} ${INFO_ICON_CLASS}`} aria-hidden="true"></i>
+            <i class={`${ICON_CLASS} ${ICON_CLASSES.ICON_INFO}`} aria-hidden="true"></i>
           </chi-button>
         ) : null,
         infoPopover = this.data.head[column].description ? (
@@ -225,6 +227,16 @@ export default class DataTable extends Vue {
       return <div class="">{this.$scopedSlots['toolbar']({})}</div>;
     }
     return null;
+  }
+
+  _bulkAction() {
+    const bulkActionSlot = this.$scopedSlots['bulkActions'] ? this.$scopedSlots['bulkActions']({}) : null;
+
+    return (
+      <DataTableBulkActions selectedRows={this.selectedRows.length}>
+        <template slot="start">{bulkActionSlot}</template>
+      </DataTableBulkActions>
+    );
   }
 
   _generateColumnResize(elem: HTMLElement) {
@@ -395,7 +407,7 @@ export default class DataTable extends Vue {
     this._emitSelectedRows();
   }
 
-  deselectRow(rowData: DataTableRow) {
+  async deselectRow(rowData: DataTableRow) {
     const selectedRow = this.selectedRows.find(rowId => rowId === rowData.rowId);
     const newRowData = {
       ...rowData,
@@ -405,9 +417,11 @@ export default class DataTable extends Vue {
     if (selectedRow) {
       const indexOfRowId = this.selectedRows.indexOf(rowData.rowId);
 
-      this.selectedRows.splice(indexOfRowId, 1);
+      await this.selectedRows.splice(indexOfRowId, 1);
     }
-
+    if (this._bulkActionsComponent && this._showSelectedRowsOnly) {
+      this._showSelectedRows(true);
+    }
     this._checkSelectAllCheckbox();
     this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._emitSelectedRows();
@@ -421,7 +435,9 @@ export default class DataTable extends Vue {
       return pages;
     }
 
-    return Math.max(Math.ceil(this.data.body.length / this.resultsPerPage), 1);
+    const bodyLength = !this._showSelectedRowsOnly ? this.data.body.length : this.selectedRows.length;
+
+    return Math.max(Math.ceil(bodyLength / this.resultsPerPage), 1);
   }
 
   selectAllRows(action: 'select' | 'deselect') {
@@ -766,6 +782,12 @@ export default class DataTable extends Vue {
               this.accordionsExpanded.length = 0;
               this.activePage = ev;
               this.slicedData = this.sliceData(data);
+              if (this._showSelectedRowsOnly) {
+                const data = this._serializedDataBody.filter((row: DataTableRow) => {
+                  return this.selectedRows.some(rowId => rowId === row.rowId);
+                });
+                this.slicedData = this.sliceData(data);
+              }
               pageChangeEventData.data = this.slicedData;
               this._checkSelectAllCheckbox();
             }
@@ -796,7 +818,11 @@ export default class DataTable extends Vue {
             firstLast={this.config.pagination.firstLast}
             currentPage={this.activePage}
             pages={pages}
-            results={this.config.pagination.results || this.data.body.length}
+            results={
+              this.config.pagination.results || !this._showSelectedRowsOnly
+                ? this.data.body.length
+                : this.selectedRows.length
+            }
             pageSize={!this.config.style.portal}
             pageJumper={this.config.pagination.pageJumper}
             portal={this.config.style.portal}
@@ -970,11 +996,55 @@ export default class DataTable extends Vue {
     this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
   }
 
+  _showSelectedRows(isSelected: boolean) {
+    /* We are not supporting nested rows show selection for now. This code is to handle a bug specific to
+    nested row selection which needs to be modified/refactored in future */
+    const nestedData = this.slicedData.find(v => 'nestedContent' in v && 'table' in v.nestedContent);
+    const nonNestedRows = this.slicedData.filter(v => v.rowId != nestedData?.rowId);
+    const nestedRowIds = nonNestedRows.filter(v => this.selectedRows.includes(v.rowId));
+
+    if (nestedRowIds.length > 0 || this.accordionsExpanded.length == 0) {
+      const selectedRows = this._serializedDataBody.filter((row: DataTableRow) => {
+        return this.selectedRows.some(rowId => rowId === row.rowId);
+      });
+      /******/
+
+      this.activePage = 1;
+      this.slicedData = this.sliceData(selectedRows);
+
+      if (this.selectedRows.length > 10) {
+        const pageChangeEventData: DataTablePageChange = {
+          page: 1,
+        };
+        pageChangeEventData.data = this.slicedData;
+        this._checkSelectAllCheckbox();
+        this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
+      }
+
+      this._showSelectedRowsOnly = isSelected;
+
+      if (!isSelected) {
+        this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
+      }
+    }
+  }
+
   mounted() {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
 
     if (dataTableComponent && this.config.columnResize) {
       this._generateColumnResize(dataTableComponent);
+    }
+
+    if (this._bulkActionsComponent) {
+      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.SELECTED_ROWS_ONLY, (isSelected: boolean) => {
+        this._showSelectedRows(isSelected);
+        this._checkSelectAllCheckbox();
+      });
+
+      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.MOBILE_CANCEL, (e: Event) => {
+        this.$emit(DATA_TABLE_EVENTS.MOBILE_CANCEL, e);
+      });
     }
 
     this._addPaginationEventListener();
@@ -1042,7 +1112,10 @@ export default class DataTable extends Vue {
       columnHeadCell,
       columnHeadSortButton;
 
-    if ((element && element.classList.contains(INFO_ICON_CLASS)) || element.querySelector(`.${INFO_ICON_CLASS}`)) {
+    if (
+      (element && element.classList.contains(ICON_CLASSES.ICON_INFO)) ||
+      element.querySelector(`.${ICON_CLASSES.ICON_INFO}`)
+    ) {
       e.preventDefault();
       return false;
     }
@@ -1178,12 +1251,14 @@ export default class DataTable extends Vue {
     const classes = this._dataTableClasses(this.config.style, this._sortable),
       head = this._head(),
       toolbar = this._toolbar(),
+      bulkaction = this._bulkAction(),
       body = this._body(),
       pagination = this._pagination();
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
         {toolbar}
+        {bulkaction}
         {head}
         {body}
         {pagination}
