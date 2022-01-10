@@ -78,11 +78,9 @@
             .chi-drawer__content
               .-px--2.-pt--2.-text
                 | Drawer content here
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">

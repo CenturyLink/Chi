@@ -59,8 +59,7 @@
               li
                 a(href='#' target='_blank') Help
               li
-                a(href='#' target='_blank')
-                  | Contact Us
+                a(href='#' target='_blank') Contact Us
       .chi-backdrop.-closed
         .chi-backdrop__wrapper
           div#drawer-portal-1.chi-drawer.-left.-menu.-position--absolute
@@ -71,16 +70,12 @@
             .chi-drawer__content
               .-px--2.-pt--2.-text
                 | Drawer content here
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>        
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>        
   </ComponentExample>
 </template>
 
