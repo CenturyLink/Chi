@@ -16,11 +16,9 @@
           p.-text.-m--0 Modal content
         footer.chi-modal__footer
           button.chi-button.-primary Next
-  <Wrapper slot="code-webcomponent">
-    <pre class="language-html">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-  </Wrapper>
+  <pre class="language-html" slot="code-webcomponent">
+    <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+  </pre>
   <Wrapper slot="code-htmlblueprint">
     <JSNeeded />
     <pre class="language-html">

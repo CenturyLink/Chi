@@ -18,11 +18,9 @@
                 | This is placeholder text to show spacing and line height. Replace this text with text provided in requirements.
         footer.chi-modal__footer
           button.chi-button.-primary Button
-  <Wrapper slot="code-webcomponent">
-    <pre class="language-html">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-  </Wrapper>
+  <pre class="language-html" slot="code-webcomponent">
+    <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+  </pre>
   <Wrapper slot="code-htmlblueprint">
     <JSNeeded />
     <pre class="language-html">

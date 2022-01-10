@@ -15,11 +15,9 @@
             | mollis nulla, eget ornare tellus. Lorem ipsum dolor sit amet,
             | consectetur adipiscing elit. Donec laoreet rutrum eros laoreet.
           button.chi-button.-primary.-lg.-mt--1 Action
-  <Wrapper slot="code-webcomponent">
-    <pre class="language-html">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-  </Wrapper>
+  <pre class="language-html" slot="code-webcomponent">
+    <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+  </pre>
   <Wrapper slot="code-htmlblueprint">
     <JSNeeded />
     <pre class="language-html">
