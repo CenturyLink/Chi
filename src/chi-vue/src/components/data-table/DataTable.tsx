@@ -6,6 +6,8 @@ import {
   COLLAPSED_CLASS,
   DATA_TABLE_CLASSES,
   EXPANDED_CLASS,
+  EXPAND_CLASS,
+  GENERIC_SIZE_CLASSES,
   ICON_CLASS,
   ONE_LINK_TX,
   RADIO_CLASSES,
@@ -18,7 +20,6 @@ import {
   DataTableCellAlignment,
   DataTableConfig,
   DataTableData,
-  DataTableExpansionIcons,
   DataTableExpansionIconStyles,
   DataTableRow,
   DataTableRowNestedContent,
@@ -38,6 +39,7 @@ import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
 import { detectMajorChiVersion } from '@/utils/utils';
 import { ICON_CLASSES } from '@/constants/icons';
+import { alignmentUtilityClasses, expansionIcons } from './constants/constants';
 
 Vue.config.ignoredElements = ['chi-popover'];
 
@@ -66,7 +68,7 @@ export default class DataTable extends Vue {
   _toolbarComponent?: DataTableToolbar;
   _bulkActionsComponent?: DataTableBulkActions;
   _paginationListenersAdded = false;
-  _showSelectedRowsOnly = false;
+  _showSelectedOnly = false;
   _chiMajorVersion = 5;
 
   _toggleInfoPopover(infoPopoverRef: string) {
@@ -230,14 +232,21 @@ export default class DataTable extends Vue {
     return null;
   }
 
-  _bulkAction() {
+  _bulkActions() {
     const bulkActionSlot = this.$scopedSlots['bulkActions'] ? this.$scopedSlots['bulkActions']({}) : null;
 
-    return (
-      <DataTableBulkActions selectedRows={this.selectedRows.length}>
-        <template slot="start">{bulkActionSlot}</template>
-      </DataTableBulkActions>
-    );
+    if (bulkActionSlot) {
+      if (this.mode === DataTableModes.CLIENT) {
+        return (
+          <DataTableBulkActions uuid={dataTableNumber} selectedRows={this._getSelectedFirstLevelRowsCount()}>
+            <template slot="start">{bulkActionSlot}</template>
+          </DataTableBulkActions>
+        );
+      }
+
+      return bulkActionSlot;
+    }
+    return null;
   }
 
   _generateColumnResize(elem: HTMLElement) {
@@ -294,22 +303,28 @@ export default class DataTable extends Vue {
     });
   }
 
-  _cellAlignment(align: DataTableCellAlignment): string {
-    const alignmentUtilityClasses: {
-      left: string;
-      center: string;
-      right: string;
-    } = {
-      left: UTILITY_CLASSES.JUSTIFY.MD_START,
-      center: UTILITY_CLASSES.JUSTIFY.MD_CENTER,
-      right: UTILITY_CLASSES.JUSTIFY.MD_END,
-    };
+  _getSelectedFirstLevelRowsCount() {
+    const selectedRows = this._serializedDataBody.filter((row: DataTableRow) => {
+      return this.selectedRows.includes(row.rowId);
+    });
 
-    if (align) {
-      return alignmentUtilityClasses[align];
+    return selectedRows.length;
+  }
+
+  _handleBulkActionsDeselection() {
+    if (this._showSelectedOnly && this._bulkActionsComponent) {
+      if (this._getSelectedFirstLevelRowsCount() > 0) {
+        this._showSelectedOnlyRows();
+      } else {
+        this._showSelectedOnly = false;
+        this._showAllRows();
+      }
+      this.activePage = 1;
     }
+  }
 
-    return '';
+  _cellAlignment(align: DataTableCellAlignment): string {
+    return align ? alignmentUtilityClasses[align] : '';
   }
 
   _dataTableClasses(style: DataTableStyleConfig, sortable: boolean) {
@@ -327,16 +342,6 @@ export default class DataTable extends Vue {
   }
 
   _expansionButton(rowData: DataTableRow) {
-    const expansionIcons: DataTableExpansionIcons = {
-      portal: {
-        expanded: 'minus',
-        collapsed: 'plus',
-      },
-      base: {
-        expanded: 'chevron-up',
-        collapsed: 'chevron-right',
-      },
-    };
     const iconStyle: DataTableExpansionIconStyles = this.config.style.portal ? 'portal' : 'base';
 
     return (
@@ -345,11 +350,11 @@ export default class DataTable extends Vue {
       ${BUTTON_CLASSES.BUTTON}
       ${BUTTON_CLASSES.ICON_BUTTON}
       ${BUTTON_CLASSES.FLAT}
-      -expand
+      ${EXPAND_CLASS}
       ${
         this._chiMajorVersion === 4 // To be removed
-          ? '-sm'
-          : '-xs'
+          ? GENERIC_SIZE_CLASSES.SM
+          : GENERIC_SIZE_CLASSES.XS
       }
       `}
         aria-label="Expand row"
@@ -420,9 +425,8 @@ export default class DataTable extends Vue {
 
       await this.selectedRows.splice(indexOfRowId, 1);
     }
-    if (this._bulkActionsComponent && this._showSelectedRowsOnly) {
-      this._showSelectedRows(true);
-    }
+
+    this._handleBulkActionsDeselection();
     this._checkSelectAllCheckbox();
     this.$emit(DATA_TABLE_EVENTS.DESELECTED_ROW, newRowData);
     this._emitSelectedRows();
@@ -436,12 +440,12 @@ export default class DataTable extends Vue {
       return pages;
     }
 
-    const bodyLength = !this._showSelectedRowsOnly ? this.data.body.length : this.selectedRows.length;
+    const bodyLength = this._showSelectedOnly ? this._getSelectedFirstLevelRowsCount() : this.data.body.length;
 
     return Math.max(Math.ceil(bodyLength / this.resultsPerPage), 1);
   }
 
-  selectAllRows(action: 'select' | 'deselect') {
+  async selectAllRows(action: 'select' | 'deselect') {
     const numberOfPages = this._calculateNumberOfPages();
     const data =
       numberOfPages === 1
@@ -464,7 +468,8 @@ export default class DataTable extends Vue {
 
         this.selectedRows.splice(rowIndex, 1);
       });
-
+      await this._handleBulkActionsDeselection();
+      this._checkSelectAllCheckbox();
       this.$emit(DATA_TABLE_EVENTS.DESELECTED_ALL, this.slicedData);
     }
 
@@ -688,6 +693,7 @@ export default class DataTable extends Vue {
       <div
         id={rowId}
         data-rownumber={bodyRow.rowNumber}
+        data-rowlevel={bodyRow.level}
         class={`
         ${rowClass}
         ${
@@ -783,11 +789,12 @@ export default class DataTable extends Vue {
               this.accordionsExpanded.length = 0;
               this.activePage = ev;
               this.slicedData = this.sliceData(data);
-              if (this._showSelectedRowsOnly) {
-                const data = this._serializedDataBody.filter((row: DataTableRow) => {
+              if (this._showSelectedOnly) {
+                const data = this._sortedData ? this._sortedData : this._serializedDataBody;
+                const dataToShow = data.filter((row: DataTableRow) => {
                   return this.selectedRows.some(rowId => rowId === row.rowId);
                 });
-                this.slicedData = this.sliceData(data);
+                this.slicedData = this.sliceData(dataToShow);
               }
               pageChangeEventData.data = this.slicedData;
               this._checkSelectAllCheckbox();
@@ -804,6 +811,12 @@ export default class DataTable extends Vue {
 
   _pagination() {
     const pages = this._calculateNumberOfPages();
+    const results =
+      this.mode === DataTableModes.CLIENT
+        ? this._showSelectedOnly
+          ? this.selectedRows.length
+          : this.data.body.length
+        : this.config.pagination.results;
 
     if (
       (pages === 1 && this.config.pagination.hideOnSinglePage) ||
@@ -819,11 +832,7 @@ export default class DataTable extends Vue {
             firstLast={this.config.pagination.firstLast}
             currentPage={this.activePage}
             pages={pages}
-            results={
-              this.config.pagination.results || !this._showSelectedRowsOnly
-                ? this.data.body.length
-                : this.selectedRows.length
-            }
+            results={results}
             pageSize={!this.config.style.portal}
             pageJumper={this.config.pagination.pageJumper}
             portal={this.config.style.portal}
@@ -887,13 +896,15 @@ export default class DataTable extends Vue {
   }
 
   serializeData() {
-    const serializeRow = (row: DataTableRow, rowNumber: number, parentRowId: string | null) => {
+    const serializeRow = (row: DataTableRow, rowNumber: number, parentRowId: string | null, nestingLevel = 0) => {
       const rowId = this._rowId(row.id || rowNumber);
       const rowN = parentRowId !== null ? `${parentRowId}-${rowNumber}` : String(rowNumber);
+
       const rowObject = {
         ...row,
         rowNumber: rowN,
         rowId: rowId,
+        level: nestingLevel,
       };
       let subrowNumber = 0;
 
@@ -903,7 +914,7 @@ export default class DataTable extends Vue {
         row.nestedContent.table.data
       ) {
         row.nestedContent.table.data = row.nestedContent.table.data.map((row: DataTableRow) => {
-          const serialized = serializeRow(row, subrowNumber, rowN);
+          const serialized = serializeRow(row, subrowNumber, rowN, nestingLevel + 1);
 
           subrowNumber++;
           return serialized;
@@ -997,37 +1008,32 @@ export default class DataTable extends Vue {
     this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
   }
 
-  _showSelectedRows(isSelected: boolean) {
-    /* We are not supporting nested rows show selection for now. This code is to handle a bug specific to
-    nested row selection which needs to be modified/refactored in future */
-    const nestedData = this.slicedData.find(v => 'nestedContent' in v && 'table' in v.nestedContent);
-    const nonNestedRows = this.slicedData.filter(v => v.rowId != nestedData?.rowId);
-    const nestedRowIds = nonNestedRows.filter(v => this.selectedRows.includes(v.rowId));
-
-    if (nestedRowIds.length > 0 || this.accordionsExpanded.length == 0) {
-      const selectedRows = this._serializedDataBody.filter((row: DataTableRow) => {
-        return this.selectedRows.some(rowId => rowId === row.rowId);
-      });
-      /******/
-
-      this.activePage = 1;
-      this.slicedData = this.sliceData(selectedRows);
-
-      if (this.selectedRows.length > 10) {
-        const pageChangeEventData: DataTablePageChange = {
-          page: 1,
-        };
-        pageChangeEventData.data = this.slicedData;
-        this._checkSelectAllCheckbox();
-        this.$emit(PAGINATION_EVENTS.PAGE_CHANGE, pageChangeEventData);
-      }
-
-      this._showSelectedRowsOnly = isSelected;
-
-      if (!isSelected) {
-        this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
-      }
+  _resolveRowsToRender() {
+    if (this._sortConfig && this._sortedData) {
+      this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
+      return this._sortedData;
     }
+    return this._serializedDataBody;
+  }
+
+  _showAllRows() {
+    this.slicedData = this.sliceData(this._resolveRowsToRender());
+    this.activePage = 1;
+  }
+
+  async _showSelectedOnlyRows() {
+    const data = this._resolveRowsToRender();
+    const rowsToShow: DataTableRow[] = [];
+
+    await data.forEach((row: DataTableRow) => {
+      if (this.selectedRows.includes(row.rowId)) {
+        rowsToShow.push(row);
+      }
+    });
+
+    this.slicedData = this.sliceData(rowsToShow);
+    this._checkSelectAllCheckbox();
+    this.activePage = 1;
   }
 
   mounted() {
@@ -1038,13 +1044,29 @@ export default class DataTable extends Vue {
     }
 
     if (this._bulkActionsComponent) {
-      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.SELECTED_ROWS_ONLY, (isSelected: boolean) => {
-        this._showSelectedRows(isSelected);
-        this._checkSelectAllCheckbox();
-      });
+      (this._bulkActionsComponent as Vue).$on(
+        DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY,
+        (isSelected: boolean) => {
+          this._showSelectedOnly = isSelected;
 
-      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.MOBILE_CANCEL, (e: Event) => {
-        this.$emit(DATA_TABLE_EVENTS.MOBILE_CANCEL, e);
+          if (this.mode === DataTableModes.CLIENT) {
+            if (this._showSelectedOnly) {
+              this._showSelectedOnlyRows();
+            } else {
+              this._showAllRows();
+            }
+            this._checkSelectAllCheckbox();
+            this.activePage = 1;
+          }
+          this.$emit(DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY, isSelected);
+        }
+      );
+      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.SELECTED_ALL, () => {
+        this.selectAllRows('select');
+      });
+      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL, () => {
+        this.selectedRows = [];
+        this.$emit(DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL);
       });
     }
 
@@ -1066,7 +1088,21 @@ export default class DataTable extends Vue {
   }
 
   sortData(column: string, direction: string, sortBy: string | undefined) {
-    const copiedData = [...this._serializedDataBody];
+    const dataToSort = () => {
+      if (this._showSelectedOnly) {
+        const rowsToShow: DataTableRow[] = [];
+
+        this._serializedDataBody.forEach((row: DataTableRow) => {
+          if (this.selectedRows.includes(row.rowId)) {
+            rowsToShow.push(row);
+          }
+        });
+
+        return rowsToShow;
+      }
+      return this._serializedDataBody;
+    };
+    const copiedData = [...dataToSort()];
     const columnData = this.data.head[column];
     const ascending: boolean = direction === 'ascending';
 
@@ -1252,14 +1288,14 @@ export default class DataTable extends Vue {
     const classes = this._dataTableClasses(this.config.style, this._sortable),
       head = this._head(),
       toolbar = this._toolbar(),
-      bulkaction = this._bulkAction(),
+      bulkactions = this._bulkActions(),
       body = this._body(),
       pagination = this._pagination();
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
         {toolbar}
-        {bulkaction}
+        {bulkactions}
         {head}
         {body}
         {pagination}
