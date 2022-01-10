@@ -61,11 +61,9 @@
                   a.chi-dropdown__menu-item(href="#")
                     i.chi-icon.icon-logout(aria-hidden="true")
                     span Item 2
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">
