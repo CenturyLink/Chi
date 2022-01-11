@@ -65,13 +65,16 @@
                 </div>
               </template>
               <template #customAdvanced2>
-                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
+                <chi-label for="date-picker-1">Date</chi-label>
+                <chi-date-picker id="date-picker-1" @chiDateChange="e => dateChangeHandler(e)" />
               </template>
               <template #customAdvanced3>
-                <chi-time-picker />
+                <chi-label for="time-picker-1">Time</chi-label>
+                <chi-time-picker id="time-picker-1" />
               </template>
               <template #customAdvanced4>
-                <chi-number-input />
+                <chi-label for="number-input-1">Number</chi-label>
+                <chi-number-input id="number-input-1" />
               </template>
               <template #customAdvanced5>
                 <input type="file" class="chi-file-input" id="file01" aria-label="Choose file" />
