@@ -35,6 +35,10 @@
             >
           </li>
           <li><NuxtLink to="/components/phone-input">Phone input</NuxtLink></li>
+          <li><NuxtLink to="/components/price">Price</NuxtLink></li>
+          <li>
+            <NuxtLink to="/components/forms/search-input">Search input</NuxtLink>
+          </li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
           <li><NuxtLink to="/components/breadcrumb">Breadcrumb</NuxtLink></li>
@@ -74,9 +78,6 @@
           </li>
           <li>
             <NuxtLink to="/components/forms/range-slider">Range slider</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/components/forms/search-input">Search input</NuxtLink>
           </li>
           <li><NuxtLink to="/components/forms/select">Select</NuxtLink></li>
           <li><NuxtLink to="/components/sidenav">Sidenav</NuxtLink></li>
