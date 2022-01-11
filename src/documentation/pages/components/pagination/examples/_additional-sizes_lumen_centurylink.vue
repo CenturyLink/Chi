@@ -1,20 +1,18 @@
 <template lang="pug">
-  <ComponentExample title="Additional Sizes" id="additional_sizes" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Additional Sizes" id="additional_sizes_lumen_centurylink" :tabs="exampleTabs" padding="-p--0">
     p.-text(slot="example-description")
       | Pagination supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
-    <Wrapper slot="example">
-      .chi-grid.-no-gutter
-        .chi-col.-w--12.-w-md--6
-          .-p--3
+    .chi-grid.-no-gutter(slot="example")
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          each size in ['xs', 'sm', 'md', 'lg', 'xl']
+            p.-text--bold=`-${size}`
+            chi-pagination(pages="5", current-page="3", size=size)
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
             each size in ['xs', 'sm', 'md', 'lg', 'xl']
-              p.-text--bold=`-${size}`
-              chi-pagination(pages="5", current-page="3", size=size)
-        .chi-col.-w--12.-w-md--6
-          .-p--3.-bg--black
-              each size in ['xs', 'sm', 'md', 'lg', 'xl']
-                p.-text--bold.-text--white=`-${size}`
-                chi-pagination(pages="5", current-page="3", size=size, inverse)
-    </Wrapper>
+              p.-text--bold.-text--white=`-${size}`
+              chi-pagination(pages="5", current-page="3", size=size, inverse)
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -241,5 +239,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class AdditionalSizes extends Vue {}
+export default class AdditionalSizesLumenCenturylink extends Vue {}
 </script>

@@ -1,14 +1,12 @@
 <template lang="pug">
-  <ComponentExample title="Page Jumper" id="page_jumper" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
-    <Wrapper slot="example">
-      .chi-grid.-no-gutter
-        .chi-col.-w--12.-w-md--6
-          .-p--3
-            <chi-pagination pages="3" current-page="2" compact page-jumper></chi-pagination>
-        .chi-col.-w--12.-w-md--6
-          .-p--3.-bg--black
-            <chi-pagination pages="3" current-page="2" compact page-jumper inverse></chi-pagination>
-    </Wrapper>
+  <ComponentExample title="Page Jumper" id="compact_page_jumper_lumen_centurylink" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
+    .chi-grid.-no-gutter(slot="example")
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          <chi-pagination pages="3" current-page="2" compact page-jumper></chi-pagination>
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          <chi-pagination pages="3" current-page="2" compact page-jumper inverse></chi-pagination>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -87,5 +85,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class PageJumper extends Vue {}
+export default class CompactPageJumperLumenCenturylink extends Vue {}
 </script>

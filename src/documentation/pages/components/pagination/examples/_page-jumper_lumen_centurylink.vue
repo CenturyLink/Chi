@@ -1,16 +1,14 @@
 <template lang="pug">
-  <ComponentExample title="Page Jumper" id="page_jumper" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Page Jumper" id="page_jumper_lumen_centurylink" :tabs="exampleTabs" padding="-p--0">
     p.-text(slot="example-description")
       | Add a page jumper to allow users to jump to a specific page of results.
-    <Wrapper slot="example">
-      .chi-grid.-no-gutter
-        .chi-col.-w--12
-          .-p--3
-            <chi-pagination pages="12" results="240" current-page="3" page-size page-jumper></chi-pagination>
-        .chi-col.-w--12
-          .-p--3.-bg--black
-            <chi-pagination pages="12" results="240" current-page="3" page-size page-jumper inverse></chi-pagination>
-    </Wrapper>
+    .chi-grid.-no-gutter(slot="example")
+      .chi-col.-w--12
+        .-p--3
+          <chi-pagination pages="12" results="240" current-page="3" page-size page-jumper></chi-pagination>
+      .chi-col.-w--12
+        .-p--3.-bg--black
+          <chi-pagination pages="12" results="240" current-page="3" page-size page-jumper inverse></chi-pagination>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -153,5 +151,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class PageJumper extends Vue {}
+export default class PageJumperLumenCenturylink extends Vue {}
 </script>

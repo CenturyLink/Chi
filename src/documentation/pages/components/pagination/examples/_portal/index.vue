@@ -1,20 +1,19 @@
 <template lang="pug">
-  <div>
+  div
     h3 Compact
-    <CompactBase />
-    <ResultsLabel />
-  </div>
+    <CompactBasePortal />
+    <ResultsLabelPortal />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import CompactBase from './_base.vue';
-import ResultsLabel from './_results-label.vue';
+import CompactBasePortal from './_base.vue';
+import ResultsLabelPortal from './_results-label.vue';
 
 @Component({
   components: {
-    CompactBase,
-    ResultsLabel
+    CompactBasePortal,
+    ResultsLabelPortal
   }
 })
 export default class Portal extends Vue {}

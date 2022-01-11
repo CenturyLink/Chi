@@ -1,5 +1,5 @@
 <template lang="pug">
-  <div>
+  div
     <TitleBar title="Pagination" description="Use pagination to separate long sets of data so that it is easier for a user to consume information." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
@@ -8,7 +8,6 @@
         <Properties />
       .chi-tabs-panel#accessibility
         <Accessibility />
-  </div>
 </template>
 
 <script lang="ts">

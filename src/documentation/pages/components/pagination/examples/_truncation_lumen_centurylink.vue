@@ -1,16 +1,14 @@
 <template lang="pug">
-  <ComponentExample title="Truncation" id="truncation" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Truncation" id="truncation_lumen_centurylink" :tabs="exampleTabs" padding="-p--0">
     p.-text(slot="example-description")
       | When the number of pages exceeds the recommended 7 page limit, an ellipsis is used to truncate the remaining pages.
-    <Wrapper slot="example">
-      .chi-grid.-no-gutter
-        .chi-col.-w--12
-          .-p--3
-            <chi-pagination pages="12" current-page="3"></chi-pagination>
-        .chi-col.-w--12
-          .-p--3.-bg--black
-            <chi-pagination pages="12" current-page="3" inverse></chi-pagination>
-    </Wrapper>
+    .chi-grid.-no-gutter(slot="example")
+      .chi-col.-w--12
+        .-p--3
+          <chi-pagination pages="12" current-page="3"></chi-pagination>
+      .chi-col.-w--12
+        .-p--3.-bg--black
+          <chi-pagination pages="12" current-page="3" inverse></chi-pagination>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -116,5 +114,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Truncation extends Vue {}
+export default class TruncationLumenCenturylink extends Vue {}
 </script>

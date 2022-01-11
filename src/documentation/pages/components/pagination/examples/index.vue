@@ -1,46 +1,46 @@
 <template lang="pug">
-  <div>
+  <Wrapper>
     h2 Examples
     div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-      <Base />
-      <Disabled />
-      <Truncation />
-      <DoubleTruncation />
-      <ResultsLabel />
-      <PageSize />
-      <PageJumper />
+      <BaseLumenCenturylink />
+      <DisabledLumenCenturylink />
+      <TruncationLumenCenturylink />
+      <DoubleTruncationLumenCenturylink />
+      <ResultsLabelLumenCenturylink />
+      <PageSizeLumenCenturylink />
+      <PageJumperLumenCenturylink />
       <Compact />
-      <AdditionalSizes />
+      <AdditionalSizesLumenCenturylink />
       
     div(v-if="$store.state.themes.theme === 'portal'")
       <Portal />
-  </div>
+  </Wrapper>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Base from './_base.vue';
-import Disabled from './_disabled.vue';
-import Truncation from './_truncation.vue';
-import DoubleTruncation from './_double-truncation.vue';
-import ResultsLabel from './_results-label.vue';
-import PageSize from './_page-size.vue';
-import PageJumper from './_page-jumper.vue';
+import BaseLumenCenturylink from './_base_lumen_centurylink.vue';
+import DisabledLumenCenturylink from './_disabled_lumen_centurylink.vue';
+import TruncationLumenCenturylink from './_truncation_lumen_centurylink.vue';
+import DoubleTruncationLumenCenturylink from './_double-truncation_lumen_centurylink.vue';
+import ResultsLabelLumenCenturylink from './_results-label_lumen_centurylink.vue';
+import PageSizeLumenCenturylink from './_page-size_lumen_centurylink.vue';
+import PageJumperLumenCenturylink from './_page-jumper_lumen_centurylink.vue';
 import Compact from './compact/index.vue';
-import AdditionalSizes from './_additional-sizes.vue';
+import AdditionalSizesLumenCenturylink from './_additional-sizes_lumen_centurylink.vue';
 import Portal from './portal/index.vue';
 
 @Component({
   components: {
-    Base,
-    Disabled,
-    Truncation,
-    DoubleTruncation,
-    ResultsLabel,
-    PageSize,
-    PageJumper,
+    BaseLumenCenturylink,
+    DisabledLumenCenturylink,
+    TruncationLumenCenturylink,
+    DoubleTruncationLumenCenturylink,
+    ResultsLabelLumenCenturylink,
+    PageSizeLumenCenturylink,
+    PageJumperLumenCenturylink,
     Compact,
-    AdditionalSizes,
+    AdditionalSizesLumenCenturylink,
     Portal
   }
 })

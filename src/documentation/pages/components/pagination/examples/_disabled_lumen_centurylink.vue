@@ -1,20 +1,18 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs" padding="-p--0">
-    <Wrapper slot="example">
-      .chi-grid.-no-gutter
-        .chi-col.-w--12.-w-md--6
-          .-p--3
-            p.-text--bold Disabled previous button
-            <chi-pagination pages="5" current-page="1"></chi-pagination>
-            p.-text--bold Disabled next button
-            <chi-pagination pages="5" current-page="5"></chi-pagination>
-        .chi-col.-w--12.-w-md--6
-          .-p--3.-bg--black
-            p.-text--bold.-text--white Disabled previous button
-            <chi-pagination pages="5" current-page="1" inverse></chi-pagination>
-            p.-text--bold.-text--white Disabled next button
-            <chi-pagination chi-pagination pages="5" current-page="5" inverse></chi-pagination>
-    </Wrapper>
+  <ComponentExample title="Disabled" id="disabled_lumen_centurylink" :tabs="exampleTabs" padding="-p--0">
+    .chi-grid.-no-gutter(slot="example")
+      .chi-col.-w--12.-w-md--6
+        .-p--3
+          p.-text--bold Disabled previous button
+          <chi-pagination pages="5" current-page="1"></chi-pagination>
+          p.-text--bold Disabled next button
+          <chi-pagination pages="5" current-page="5"></chi-pagination>
+      .chi-col.-w--12.-w-md--6
+        .-p--3.-bg--black
+          p.-text--bold.-text--white Disabled previous button
+          <chi-pagination pages="5" current-page="1" inverse></chi-pagination>
+          p.-text--bold.-text--white Disabled next button
+          <chi-pagination chi-pagination pages="5" current-page="5" inverse></chi-pagination>
     <Wrapper slot="code-webcomponent">
       .chi-tab__description
         span
@@ -134,5 +132,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Disabled extends Vue {}
+export default class DisabledLumenCenturylink extends Vue {}
 </script>
