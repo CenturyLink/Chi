@@ -14,10 +14,10 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Examples from './examples/index.vue';
-import PageContentTabs from '../../../components/PageContentTabs.vue';
+import PageContentTabs from '../../../../components/PageContentTabs.vue';
 import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
-import { standardComponentPageTabs } from '../../../constants/constants';
+import { standardComponentPageTabs } from '../../../../constants/constants';
 
 @Component({
   components: {

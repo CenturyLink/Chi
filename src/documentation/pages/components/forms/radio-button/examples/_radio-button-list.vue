@@ -3,43 +3,41 @@
     p.-text(slot="example-description")
       | Radio button lists are used to wrap a series of radio buttons in a list. 
       | To render a series of radio buttons in a list, apply the class <code>-list</code> to <code>chi-form__item</code>.
-    <Wrapper slot="example">
-      <fieldset>
-        <legend class="chi-label">Select an option</legend>
-        <ul class="chi-form__item -list">
-          <li class="chi-form__item">
-            <div class="chi-radio">
-              <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio1">
-              <label class="chi-radio__label" for="radio1">Option 1</label>
-            </div>
-          </li>
-          <li class="chi-form__item">
-            <div class="chi-radio">
-              <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio2">
-              <label class="chi-radio__label" for="radio2">Option 2</label>
-            </div>
-          </li>
-          <li class="chi-form__item">
-            <div class="chi-radio">
-              <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio3">
-              <label class="chi-radio__label" for="radio3">Option 3</label>
-            </div>
-          </li>
-          <li class="chi-form__item">
-            <div class="chi-radio">
-              <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio4">
-              <label class="chi-radio__label" for="radio4">Option 4</label>
-            </div>
-          </li>
-          <li class="chi-form__item">
-            <div class="chi-radio">
-              <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio5">
-              <label class="chi-radio__label" for="radio5">Option 5</label>
-            </div>
-          </li>
-        </ul>
-      </fieldset>
-    </Wrapper>  
+    <fieldset slot="example">
+      <legend class="chi-label">Select an option</legend>
+      <ul class="chi-form__item -list">
+        <li class="chi-form__item">
+          <div class="chi-radio">
+            <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio1">
+            <label class="chi-radio__label" for="radio1">Option 1</label>
+          </div>
+        </li>
+        <li class="chi-form__item">
+          <div class="chi-radio">
+            <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio2">
+            <label class="chi-radio__label" for="radio2">Option 2</label>
+          </div>
+        </li>
+        <li class="chi-form__item">
+          <div class="chi-radio">
+            <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio3">
+            <label class="chi-radio__label" for="radio3">Option 3</label>
+          </div>
+        </li>
+        <li class="chi-form__item">
+          <div class="chi-radio">
+            <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio4">
+            <label class="chi-radio__label" for="radio4">Option 4</label>
+          </div>
+        </li>
+        <li class="chi-form__item">
+          <div class="chi-radio">
+            <input type="radio" class="chi-radio__input" name="radiobuttonList" id="radio5">
+            <label class="chi-radio__label" for="radio5">Option 5</label>
+          </div>
+        </li>
+      </ul>
+    </fieldset>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

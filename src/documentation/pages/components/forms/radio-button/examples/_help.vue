@@ -3,35 +3,33 @@
     p.-text(slot="example-description")
       | Use <code>chi-label__help</code> to include a help icon that displays helpful information about an input in a popover. 
       | A help icon must be contained within an icon button to ensure it receives focus when a user tabs through a form.
-    <Wrapper slot="example">
-      <fieldset>
-        <div class="chi-label__wrapper">
-          <legend class="chi-label">Select an option</legend>
-          <div class="chi-label__help">
-            <button class="chi-button -icon -xs -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
-              <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
-            </button>
-            <section class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top">
-              <div class="chi-popover__content">
-                <p class="chi-popover__text">Helpful information goes here.</p>
-              </div>
-            </section>
-          </div>
+    <fieldset slot="example">
+      <div class="chi-label__wrapper">
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-label__help">
+          <button class="chi-button -icon -xs -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
+            <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+          </button>
+          <section class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top">
+            <div class="chi-popover__content">
+              <p class="chi-popover__text">Helpful information goes here.</p>
+            </div>
+          </section>
         </div>
-        <div class="chi-form__item">
-          <div class="chi-radio">
-            <input class="chi-radio__input" type="radio" name="radios" id="radio-he1">
-            <label class="chi-radio__label" for="radio-he1">Option 1</label>
-          </div>
+      </div>
+      <div class="chi-form__item">
+        <div class="chi-radio">
+          <input class="chi-radio__input" type="radio" name="radios" id="radio-he1">
+          <label class="chi-radio__label" for="radio-he1">Option 1</label>
         </div>
-        <div class="chi-form__item">
-          <div class="chi-radio">
-            <input class="chi-radio__input" type="radio" name="radios" id="radio-he2">
-            <label class="chi-radio__label" for="radio-he2">Option 2</label>
-          </div>
+      </div>
+      <div class="chi-form__item">
+        <div class="chi-radio">
+          <input class="chi-radio__input" type="radio" name="radios" id="radio-he2">
+          <label class="chi-radio__label" for="radio-he2">Option 2</label>
         </div>
-      </fieldset>
-    </Wrapper>  
+      </div>
+    </fieldset> 
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
