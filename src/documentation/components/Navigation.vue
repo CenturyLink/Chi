@@ -35,7 +35,6 @@
             >
           </li>
           <li><NuxtLink to="/components/phone-input">Phone input</NuxtLink></li>
-          <li><NuxtLink to="/components/price">Price</NuxtLink></li>
           <li>
             <NuxtLink to="/components/forms/search-input">Search input</NuxtLink>
           </li>
