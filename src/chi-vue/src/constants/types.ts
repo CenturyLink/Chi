@@ -67,7 +67,7 @@ export interface DataTableData {
 
 export interface DataTableColumnDescription {
   title?: string;
-  content?: string;
+  text?: string;
   template?: string;
   payload?: any;
 }

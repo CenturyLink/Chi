@@ -90,7 +90,7 @@ export default class DataTable extends Vue {
         return descriptionSlot((description as DataTableColumnDescription).payload);
       }
     }
-    return (description as DataTableColumnDescription).content;
+    return (description as DataTableColumnDescription).text;
   }
 
   _head() {

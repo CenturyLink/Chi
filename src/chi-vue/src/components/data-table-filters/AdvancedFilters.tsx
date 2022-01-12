@@ -260,37 +260,11 @@ export default class AdvancedFilters extends Vue {
     this._chiMajorVersion = detectMajorChiVersion();
   }
 
-  _changeNodeId(vnode: VNode) {
-    const attributes = ['for', 'id'];
-
-    attributes.forEach(attr => {
-      if (vnode.data && vnode.data.attrs && vnode.data.attrs[attr]) {
-        this.mobile
-          ? (vnode.data = { attrs: { [attr]: `${vnode.data.attrs[attr]}-mobile` } })
-          : (vnode.data = { attrs: { [attr]: `${vnode.data.attrs[attr]}-desktop` } });
-      }
-    });
-  }
-
   _createCustomItem(filter: DataTableCustomItem) {
     const customItemSlot =
       this.$scopedSlots?.default &&
       this.$scopedSlots.default(null)?.find(item => item[filter.template as keyof typeof item]);
 
-    if (customItemSlot) {
-      (customItemSlot[filter.template as keyof typeof customItemSlot] as VNode[]).forEach((vnode: VNode) => {
-        this._changeNodeId(vnode);
-        if (vnode.children && vnode.children.length) {
-          let vnodes = vnode.children;
-          while (vnodes && vnodes.length) {
-            vnodes.forEach((vnode: VNode) => {
-              this._changeNodeId(vnode);
-              vnodes = vnode.children || [];
-            });
-          }
-        }
-      });
-    }
     return (
       <div class={`${FORM_CLASSES.FORM_ITEM}`}>
         {this.mobile && (

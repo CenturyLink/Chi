@@ -221,12 +221,12 @@ export const exampleTableHead = {
     sortDataType: 'string',
     key: true,
     bold: true,
-    description: { title: 'Ticket ID', content: 'This is content for ticket id' },
+    description: { title: 'Ticket ID', text: 'This is content for ticket id' },
   },
   alerts: {
     label: 'Alerts',
     align: 'center',
-    description: { title: 'Alerts', content: 'This is content for alerts' },
+    description: { title: 'Alerts', text: 'This is content for alerts' },
   },
   status: {
     label: 'Status',
