@@ -135,5 +135,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class PortalSizes extends Vue {}
+export default class SizesPortal extends Vue {}
 </script>

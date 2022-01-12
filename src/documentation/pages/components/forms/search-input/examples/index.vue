@@ -2,14 +2,12 @@
   <Wrapper>
     h2 Examples
 
+    <Base />
+    <Disabled />
     div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-      <Base />
-      <Disabled />
-      <Sizes />
+      <SizesLumenCenturyLink />
     div(v-if="$store.state.themes.theme === 'portal'")
-      <Base />
-      <Disabled />
-      <PortalSizes />
+      <SizesPortal />
   </Wrapper>
 </template>
 
@@ -17,15 +15,15 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Base from './_base.vue';
 import Disabled from './_disabled.vue';
-import Sizes from './_sizes.vue';
-import PortalSizes from './_portal_sizes.vue';
+import SizesLumenCenturyLink from './_sizes.vue';
+import SizesPortal from './_portal_sizes.vue';
 
 @Component({
   components: {
     Base,
     Disabled,
-    Sizes,
-    PortalSizes,
+    SizesLumenCenturyLink,
+    SizesPortal,
   }
 })
 export default class Examples extends Vue {}

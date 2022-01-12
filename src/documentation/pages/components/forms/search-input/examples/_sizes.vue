@@ -156,5 +156,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class Sizes extends Vue {}
+export default class SizesLumenCenturyLink extends Vue {}
 </script>
