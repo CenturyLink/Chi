@@ -19,18 +19,18 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          disabled: true,
+          active: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
-          active: true,
+          active: false,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: ``,
+        webcomponent: `<chi-icon icon="atom"></chi-icon>`,
         htmlblueprint: `<i class="chi-icon icon-atom" aria-hidden="true"></i>`,
       },
     };
