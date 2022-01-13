@@ -1,8 +1,8 @@
 <template lang="pug">
-  <ComponentExample title="Draggable popover" id="draggable_lumen_centurylink" :tabs="exampleTabs">
+  <ComponentExample title="Draggable popover" id="draggable-lumen-centurylink" :tabs="exampleTabs">
     <Wrapper slot='example'>
-      chi-button#example-draggable-button Click me!
-      chi-popover(id="example-draggable-popover" title="Draggable Popover" reference="#example-draggable-button" drag portal closable) Popover content
+      chi-button#example-draggable-button(@click="togglePopover") Click me!
+      chi-popover(ref="popover" title="Draggable Popover" reference="#example-draggable-button" drag portal closable) Popover content
     </Wrapper>
     <Wrapper slot='code-webcomponent'>
       .chi-tab__description
@@ -24,7 +24,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           active: true,
@@ -57,15 +56,8 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class DraggableLumenCenturyLink extends Vue {
-  mounted() {
-    document
-      .querySelector('#example-draggable-button')?.addEventListener('click', function() {
-        const popoverElem: any = document.querySelector(
-          '#example-draggable-popover'
-        );
-
-        popoverElem?.toggle();
-      });
+  togglePopover() {
+    (this.$refs.popover as any).toggle();
   }
 }
 </script>

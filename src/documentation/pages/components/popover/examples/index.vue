@@ -6,11 +6,13 @@
     <Titled />
     <Arrow />
     <ReferenceElement />
+
     div(v-if="$store.state.themes.theme === 'portal'")
       <InlineModalPortal />
       <DraggablePortal />
     div(v-else)
       <DraggableLumenCenturyLink />
+
     <OpenOnHover />
     <CloseButton />
     <Positioning />
@@ -21,8 +23,7 @@
     p.--text Popovers can be used to display any kind of custom content (even other components).
     
     <DestructiveActionConfirmation />
-    div(v-if="$store.state.themes.theme === 'portal'")
-      <TableFilteringPortal />
+    <TableFilteringPortal v-if="$store.state.themes.theme === 'portal'" />
 </template>
 
 <script lang="ts">

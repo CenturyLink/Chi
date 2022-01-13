@@ -1,8 +1,8 @@
 <template lang="pug">
   <ComponentExample title="Open on hover" id="open-on-hover" :tabs="exampleTabs">
     .-position--relative(slot='example')
-      chi-button#button-open-on-hover Hover me!
-      chi-popover#popover-open-on-hover(variant="text", arrow,  reference="#button-open-on-hover")
+      chi-button#button-open-on-hover(@chiMouseEnter="show" @chiMouseLeave="hide" @click="toggle") Hover me!
+      chi-popover(ref="popover" variant="text", arrow,  reference="#button-open-on-hover")
         | Popover content
     <Wrapper slot='code-webcomponent'>
       .chi-tab__description
@@ -27,7 +27,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           active: true,
@@ -98,29 +97,16 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class OpenOnHover extends Vue {
-  mounted() {
-    const buttonOpenOnHover = document.getElementById('button-open-on-hover');
-    const popoverOpenOnHover: any = document.getElementById(
-      'popover-open-on-hover'
-    );
-    let hoverAnimationTimeout: any;
+  show() {
+    (this.$refs.popover as any).show();
+  }
 
-    buttonOpenOnHover?.addEventListener('chiMouseEnter', function() {
-      hoverAnimationTimeout = setTimeout(() => {
-        popoverOpenOnHover?.show();
-      }, 300);
-    });
+  hide() {
+    (this.$refs.popover as any).hide();
+  }
 
-    buttonOpenOnHover?.addEventListener('chiMouseLeave', function() {
-      if (hoverAnimationTimeout) {
-        clearTimeout(hoverAnimationTimeout);
-      }
-      popoverOpenOnHover?.hide();
-    });
-
-    buttonOpenOnHover?.addEventListener('click', function() {
-      popoverOpenOnHover?.toggle();
-    });
+  toggle() {
+    (this.$refs.popover as any).toggle();
   }
 }
 </script>

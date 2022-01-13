@@ -1,10 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="Inline Modal" id="inline-modal_portal" :tabs="exampleTabs">
+  <ComponentExample title="Inline Modal" id="inline-modal-portal" :tabs="exampleTabs">
     p.-text(slot="example-description") 
       | Use Inline Modals to imitate the style of a Modal and the behavior of a Popover. This is useful for advanced
       | filtering in Data Tables.
     div.-position--relative(slot="example" style="height: 106px;")
-      chi-popover#example-modal-popover(
+      chi-popover(
         modal
         closable
         title="Popover title"
@@ -30,7 +30,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           active: true,

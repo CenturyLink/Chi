@@ -1,8 +1,9 @@
 <template lang="pug">
   <ComponentExample title="Close button" id="close-button" :tabs="exampleTabs">
     <Wrapper slot="example">
-      chi-button#button-example-popover-closable-1 Click Me!
-      chi-popover#popover-example-popover-closable-1(
+      chi-button#button-example-popover-closable-1(@click="togglePopover") Click Me!
+      chi-popover(
+        ref="popover"
         title="Title"
         variant="text"
         arrow
@@ -33,7 +34,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           active: true,
@@ -88,15 +88,8 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class CloseButton extends Vue {
-  mounted() {
-    const button = document.getElementById('button-example-popover-closable-1');
-    const popover: any = document.getElementById(
-      'popover-example-popover-closable-1'
-    );
-
-    button?.addEventListener('click', function() {
-      popover?.toggle();
-    });
+  togglePopover() {
+    (this.$refs.popover as any).toggle();
   }
 }
 </script>

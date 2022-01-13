@@ -6,12 +6,13 @@
     a(href='../../getting-started/installation') HTML attributes and DOM properties
     | .
   <Wrapper slot="example">
-    chi-button#example-5-button-show.-mr--2.-mb--2.-mb-md--0 Show
-    chi-button#example-5-button-hide.-mr--2.-mb--2.-mb-md--0 Hide
-    chi-button#example-5-button-toggle.-mr--2.-mb--2.-mb-md--0 Toggle
+    chi-button.-mr--2.-mb--2.-mb-md--0(@click="show") Show
+    chi-button.-mr--2.-mb--2.-mb-md--0(@click="hide") Hide
+    chi-button.-mr--2.-mb--2.-mb-md--0(@click="toggle") Toggle
     chi-button#example-5-button-reference.-mr--2.-mb--2.-mb-md--0 Reference
 
-    chi-popover#example-5-popover(
+    chi-popover(
+      ref="popover"
       position='top',
       title='Popover title',
       variant='text',
@@ -47,17 +48,16 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web component'
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
+          label: 'HTML blueprint'
+        }
       ],
       codeSnippets: {
         webcomponent: `<chi-button id="example-5-button-show">Show</chi-button>
@@ -111,31 +111,22 @@ import { Component, Vue } from 'vue-property-decorator';
   document.getElementById('toggle-popover-3').addEventListener('click', function(e) {
     popover.toggle()
   });
-<\/script>`,
-      },
+<\/script>`
+      }
     };
-  },
+  }
 })
 export default class Interaction extends Vue {
-  mounted() {
-    const popover5: any = document.getElementById('example-5-popover');
-    const bShow = document.getElementById('example-5-button-show');
+  show() {
+    (this.$refs.popover as any).show();
+  }
 
-    bShow?.addEventListener('click', function () {
-      popover5?.show();
-    });
+  hide() {
+    (this.$refs.popover as any).hide();
+  }
 
-    const bHide = document.getElementById('example-5-button-hide');
-
-    bHide?.addEventListener('click', function () {
-      popover5?.hide();
-    });
-
-    const bToggle = document.getElementById('example-5-button-toggle');
-
-    bToggle?.addEventListener('click', function () {
-      popover5?.toggle();
-    });
+  toggle() {
+    (this.$refs.popover as any).toggle();
   }
 }
 </script>

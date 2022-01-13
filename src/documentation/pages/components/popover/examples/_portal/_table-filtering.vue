@@ -1,87 +1,18 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Table filtering" id="table-filtering_portal" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Table filtering" id="table-filtering-portal" :tabs="exampleTabs">
     .-position--relative(slot="example" style="height: 640px;")
       chi-popover(position='top' title='Filter' variant='custom' modal drag closable active prevent-auto-hide)
-        button.chi-button(class='-flat -primary -sm -no-hover -px--0 -mb--1 -text--normal' id='example-expand-all') Expand All
-        .chi-accordion.-sm#example-base
-          .chi-accordion__item.-expanded
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion 1
-              i.chi-icon.icon-chevron-down(aria-hidden='true')
-            .chi-accordion__content
-              p.chi-accordion__text Filter content goes here
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion 2
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__content
-              p.chi-accordion__text Filter content goes here
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion 3
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__content
-              p.chi-accordion__text Filter content goes here
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion 4
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__content
-              p.chi-accordion__text Filter content goes here
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion 5
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__content
-              p.chi-accordion__text Filter content goes here
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion 6
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__content
-              p.chi-accordion__text Filter content goes here
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion 7
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__content
-              p.chi-accordion__text Filter content goes here
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion 8
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__content
-              p.chi-accordion__text Filter content goes here
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion 9
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__content
-              p.chi-accordion__text Filter content goes here
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion 10
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__content
-              p.chi-accordion__text Filter content goes here
-          .chi-accordion__item
-            button.chi-accordion__trigger
-              .chi-accordion__title
-                | Accordion 11
-              i.chi-icon.icon-chevron-down(aria-hidden="true")
-            .chi-accordion__content
-              p.chi-accordion__text Filter content goes here
-        button.chi-button.-flat.-icon.-xs.-py--0(slot='chi-popover__footer' data-tooltip='Clear all filters')
+        button.chi-button(class='-flat -primary -sm -no-hover -px--0 -mb--1 -text--normal' @click="expandAll") Expand All
+        .chi-accordion.-sm(ref="accordion")
+          template(v-for="accordionIndex in accordionIndexes")
+            .chi-accordion__item(:class="accordionIndex === '1' ? '-expanded' : ''")
+              button.chi-accordion__trigger
+                .chi-accordion__title
+                  | Accordion {{ accordionIndex }}
+                i.chi-icon.icon-chevron-down(aria-hidden="true")
+              .chi-accordion__content
+                p.chi-accordion__text Filter content goes here
+        button.chi-button.-flat.-icon.-xs.-py--0(slot='chi-popover__footer' ref="tooltipButton" data-tooltip='Clear all filters')
           .chi-button__content.-flex--column.-align-items--center
             i.chi-icon.icon-reset.-sm--2.-mr--0
             span.-text--uppercase.-text--primary.-text--2xs Clear
@@ -105,7 +36,7 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      string: 'String',
+      accordionIndexes: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
       exampleTabs: [
         {
           active: true,
@@ -324,19 +255,15 @@ declare const chi: any;
   }
 })
 export default class TableFilteringPortal extends Vue {
+  accordion: any;
+
   mounted() {
-    const accordionBase = document.getElementById('example-base');
-    const expandAll = document.getElementById('example-expand-all');
+    this.accordion = chi.accordion(this.$refs.accordion);
+    chi.tooltip(this.$refs.tooltipButton);
+  }
 
-    if(accordionBase){
-      const accordion = chi.accordion(accordionBase);
-
-      expandAll?.addEventListener('click', () => {
-        accordion.expandAll();
-      });
-
-      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
-    }
+  expandAll() {
+    this.accordion?.expandAll();
   }
 }
 </script>

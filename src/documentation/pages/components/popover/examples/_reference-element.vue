@@ -4,8 +4,8 @@
       | A reference element can be set up for advanced positioning.
       | The popover will be positioned relative to this element.
     <Wrapper slot="example">
-      chi-button#example-3-button Click me!
-      chi-popover#example-3-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-3-button")
+      chi-button#example-3-button(@click="togglePopover") Click me!
+      chi-popover(ref="popover" position="top", title="Popover title", variant="text", arrow, reference="#example-3-button")
         | Popover content
     </Wrapper>
     <Wrapper slot='code-webcomponent'>
@@ -31,7 +31,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           active: true,
@@ -77,13 +76,8 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class ReferenceElement extends Vue {
-  mounted() {
-    document
-      .querySelector('#example-3-button')?.addEventListener('click', function() {
-        const popoverElem: any = document.querySelector('#example-3-popover');
-
-        popoverElem?.toggle();
-      });
+  togglePopover() {
+    (this.$refs.popover as any).toggle();
   }
 }
 </script>

@@ -125,7 +125,7 @@
       | HTML DOM Element as a parameter.
     .example.-mb--3
       .-p--3
-        button#popover-2.chi-button.-mb--2(data-popover-content='<div class="chi-popover__content">Foo</div>') Popover
+        button.chi-button.-mb--2(ref="button" data-popover-content='<div class="chi-popover__content">Foo</div>') Popover
         <pre class="language-javascript">
           <code v-highlight="$data.example" class="javascript"></code>
         </pre>
@@ -211,7 +211,7 @@ popover.dispose(); // Only have to do it once.`
 })
 export default class Properties extends Vue {
   mounted() {
-    const popover = chi.popover(document.getElementById('popover-2'));
+    const popover = chi.popover(this.$refs.button);
 
     popover.setContent('<div class="chi-popover__content">Bar</div>');
   }

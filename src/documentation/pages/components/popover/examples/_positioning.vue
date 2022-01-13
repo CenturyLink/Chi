@@ -1,4 +1,9 @@
 <template lang="pug">
+  - var topPositions = [{ label: 'Top start', position: 'top-start'}, {label: 'Top', position: 'top'}, {label: 'Top end', position: 'top-end'}]
+  - var leftPositions = [{ label: 'Left start', position: 'left-start'}, {label: 'Left', position: 'left'}, {label: 'Left end', position: 'left-end'}]
+  - var rightPositions = [{ label: 'Right start', position: 'right-start'}, {label: 'Right', position: 'right'}, {label: 'Right end', position: 'right-end'}]
+  - var bottomPositions = [{ label: 'Bottom start', position: 'bottom-start'}, {label: 'Bottom', position: 'bottom'}, {label: 'Bottom end', position: 'bottom-end'}]
+
   <ComponentExample title="Positioning" id="positioning" :tabs="exampleTabs">
     p.-text(slot="example-description") 
       | Further positions can be used in this mode: <code>top</code>,
@@ -8,59 +13,31 @@
       | <code>left-end</code>.
     .chi-grid.-no-gutter.-px-xl--3(slot="example")
       .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
-        div.-p--1
-          chi-button#example-4-ts-button Top start
-          chi-popover#example-4-ts-popover(position="top-start", title="Popover title", variant="text", arrow, reference="#example-4-ts-button")
-            | This popover is top-start positioned.
-        div.-p--1
-          chi-button#example-4-t-button Top
-          chi-popover#example-4-t-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-4-t-button")
-            | This popover is top positioned.
-        div.-p--1
-          chi-button#example-4-te-button Top end
-          chi-popover#example-4-te-popover(position="top-end", title="Popover title", variant="text", arrow, reference="#example-4-te-button")
-            | This popover is top-end positioned.
+        each position in topPositions
+          div.-p--1
+            chi-button(@click="togglePopover('popover-"+ position.position +"')" id='button-' + position.position) #{position.label}
+            chi-popover(ref="popover-" + position.position position=position.position, title="Popover title", variant="text", arrow, reference='#button-' + position.position)
+              | This popover is #{position.position} positioned.
       .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-flex--wrap
-        div.-p--1.-py-sm--3
-          chi-button#example-4-ls-button Left start
-          chi-popover#example-4-ls-popover(position="left-start", title="Popover title", variant="text", arrow, reference="#example-4-ls-button")
-            | This popover is left-start positioned.
-        div.-p--1.-py-sm--3
-          chi-button#example-4-l-button Left
-          chi-popover#example-4-l-popover(position="left", title="Popover title", variant="text", arrow, reference="#example-4-l-button")
-            | This popover is left positioned.
-        div.-p--1.-py-sm--3
-          chi-button#example-4-le-button Left end
-          chi-popover#example-4-le-popover(position="left-end", title="Popover title", variant="text", arrow, reference="#example-4-le-button")
-            | This popover is left-end positioned.
+        each position in leftPositions
+          div.-p--1.-py-sm--3
+            chi-button(@click="togglePopover('popover-"+ position.position +"')" id='button-' + position.position) #{position.label}
+            chi-popover(ref="popover-" + position.position position=position.position, title="Popover title", variant="text", arrow, reference='#button-' + position.position)
+              | This popover is #{position.position} positioned.
       .chi-col.-d--none.-w--12.-w-sm--4.-d-sm--flex.-flex-sm--column.-justify-content-sm--center.-align-items-sm--center
         div.-w--75.-text.-text--muted.-text--center.-lh--2 Click buttons to see popover positions
       .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-align-items-sm--end.-flex--wrap
-        div.-p--1.-py-sm--3
-          chi-button#example-4-rs-button Right start
-          chi-popover#example-4-rs-popover(position="right-start", title="Popover title", variant="text", arrow, reference="#example-4-rs-button")
-            | This popover is right-start positioned.
-        div.-p--1.-py-sm--3
-          chi-button#example-4-r-button Right
-          chi-popover#example-4-r-popover(position="right", title="Popover title", variant="text", arrow, reference="#example-4-r-button")
-            | This popover is right positioned.
-        div.-p--1.-py-sm--3
-          chi-button#example-4-re-button Right end
-          chi-popover#example-4-re-popover(position="right-end", title="Popover title", variant="text", arrow, reference="#example-4-re-button")
-            | This popover is right-end positioned.
+        each position in rightPositions
+          div.-p--1.-py-sm--3
+            chi-button(@click="togglePopover('popover-"+ position.position +"')" id='button-' + position.position) #{position.label}
+            chi-popover(ref="popover-" + position.position position=position.position, title="Popover title", variant="text", arrow, reference='#button-' + position.position)
+              | This popover is #{position.position} positioned.
       .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
-        div.-p--1
-          chi-button#example-4-bs-button Bottom start
-          chi-popover#example-4-bs-popover(position="bottom-start", title="Popover title", variant="text", arrow, reference="#example-4-bs-button")
-            | This popover is bottom-start positioned.
-        div.-p--1
-          chi-button#example-4-b-button Bottom
-          chi-popover#example-4-b-popover(position="bottom", title="Popover title", variant="text", arrow, reference="#example-4-b-button")
-            | This popover is bottom positioned.
-        div.-p--1
-          chi-button#example-4-be-button Bottom end
-          chi-popover#example-4-be-popover(position="bottom-end", title="Popover title", variant="text", arrow, reference="#example-4-be-button")
-            | This popover is bottom-end positioned.
+        each position in bottomPositions
+          div.-p--1
+            chi-button(@click="togglePopover('popover-"+ position.position +"')" id='button-' + position.position) #{position.label}
+            chi-popover(ref="popover-" + position.position position=position.position, title="Popover title", variant="text", arrow, reference='#button-' + position.position)
+              | This popover is #{position.position} positioned.
     <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         | Use the <code>reference</code> attribute with a
@@ -84,7 +61,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           active: true,
@@ -211,30 +187,8 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class Positioning extends Vue {
-  mounted(){
-    const popovers: any = [
-      { button: '#example-3-button', popover: '#example-3-popover' },
-      { button: '#example-4-t-button', popover: '#example-4-t-popover' },
-      { button: '#example-4-ts-button', popover: '#example-4-ts-popover' },
-      { button: '#example-4-te-button', popover: '#example-4-te-popover' },
-      { button: '#example-4-r-button', popover: '#example-4-r-popover' },
-      { button: '#example-4-rs-button', popover: '#example-4-rs-popover' },
-      { button: '#example-4-re-button', popover: '#example-4-re-popover' },
-      { button: '#example-4-b-button', popover: '#example-4-b-popover' },
-      { button: '#example-4-bs-button', popover: '#example-4-bs-popover' },
-      { button: '#example-4-be-button', popover: '#example-4-be-popover' },
-      { button: '#example-4-l-button', popover: '#example-4-l-popover' },
-      { button: '#example-4-ls-button', popover: '#example-4-ls-popover' },
-      { button: '#example-4-le-button', popover: '#example-4-le-popover' },
-    ];
-
-    popovers?.forEach((popover: any) => {
-      document.querySelector(popover.button).addEventListener('click', function () {
-        const popoverElem: any = document.querySelector(popover.popover);
-
-        popoverElem?.toggle();
-      });
-    });
+  togglePopover(popoverRef: string) {
+    (this.$refs[popoverRef] as any).toggle();
   }
 }
 </script>

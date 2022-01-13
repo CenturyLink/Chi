@@ -68,6 +68,35 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { TabsInterface } from '../models/models';
 
+Vue.config.ignoredElements = [
+  'chi-alert',
+  'chi-app-layout',
+  'chi-badge',
+  'chi-brand',
+  'chi-button',
+  'chi-carousel',
+  'chi-date',
+  'chi-date-picker',
+  'chi-drawer',
+  'chi-expansion-panel',
+  'chi-icon',
+  'chi-label',
+  'chi-link',
+  'chi-marketing-icon',
+  'chi-number-input',
+  'chi-pagination',
+  'chi-phone-input',
+  'chi-popover',
+  'chi-progress',
+  'chi-search-input',
+  'chi-spinner',
+  'chi-text-input',
+  'chi-textarea',
+  'chi-time',
+  'chi-time-picker',
+  'chi-toggle-switch'
+];
+
 declare const chi: any;
 
 @Component({})
@@ -86,7 +115,9 @@ export default class ComponentExample extends Vue {
       'code-snippet-tabs' + this.$props.id
     );
 
-    this.chiTabs = chi.tab(chiTabs);
+    if (chiTabs) {
+      this.chiTabs = chi.tab(chiTabs);
+    }
   }
 }
 </script>

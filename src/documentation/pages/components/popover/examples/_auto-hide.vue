@@ -3,11 +3,11 @@
   p.-text(slot='example-description') 
     | Popovers automatically hide when clicking outside of it or when pressing the ESC key.
   <Wrapper slot="example">
-    chi-button#example-6-auto-hide-button.-mr--2.-mb--2.-mb-md--0 Auto hide
-    chi-popover#example-6-auto-hide-popover(position="top", title="Popover title", variant="text", arrow, reference="#example-6-auto-hide-button")
+    chi-button#auto-hide-button-1.-mr--2.-mb--2.-mb-md--0(@click="togglePopover('popover-1')") Auto hide
+    chi-popover(ref="popover-1" position="top", title="Popover title", variant="text", arrow, reference="#auto-hide-button-1")
       | Click outside. I will disappear!
-    chi-button#example-6-no-auto-hide-button.-mr--2.-mb--2.-mb-md--0 No auto hide
-    chi-popover#example-6-no-auto-hide-popover(position="top", title="Popover title", variant="text", arrow, prevent-auto-hide, reference="#example-6-no-auto-hide-button")
+    chi-button#auto-hide-button-2.-mr--2.-mb--2.-mb-md--0(@click="togglePopover('popover-2')") No auto hide
+    chi-popover(ref="popover-2" position="top", title="Popover title", variant="text", arrow, prevent-auto-hide, reference="#auto-hide-button-2")
       | Click outside. I will stay!
   </Wrapper>
   <Wrapper slot='code-webcomponent'>
@@ -36,7 +36,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           active: true,
@@ -78,19 +77,8 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class AutoHide extends Vue {
-  mounted() {
-    const popovers: any = [
-      { button: '#example-6-auto-hide-button', popover: '#example-6-auto-hide-popover' },
-      { button: '#example-6-no-auto-hide-button', popover: '#example-6-no-auto-hide-popover' },
-    ];
-
-    popovers?.forEach((popover: any) => {
-      document.querySelector(popover.button).addEventListener('click', function () {
-        const popoverElem: any = document.querySelector(popover.popover);
-
-        popoverElem?.toggle();
-      });
-    });
+  togglePopover(popoverRef: string){
+    (this.$refs[popoverRef] as any).toggle();
   }
 }
 </script>
