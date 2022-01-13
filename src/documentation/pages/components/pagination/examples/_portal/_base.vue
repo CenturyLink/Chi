@@ -3,7 +3,7 @@
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12
         .-p--3
-          <chi-pagination pages="3" current-page="2" size="xs" compact first-last></chi-pagination>
+          chi-pagination(pages="3" current-page="2" size="xs" compact first-last)
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

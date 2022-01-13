@@ -4,15 +4,15 @@
       .chi-col.-w--12.-w-md--6
         .-p--3
           p.-text--bold Disabled previous button
-          <chi-pagination pages="5" current-page="1"></chi-pagination>
+          chi-pagination(pages="5" current-page="1")
           p.-text--bold Disabled next button
-          <chi-pagination pages="5" current-page="5"></chi-pagination>
+          chi-pagination(pages="5" current-page="5")
       .chi-col.-w--12.-w-md--6
         .-p--3.-bg--black
           p.-text--bold.-text--white Disabled previous button
-          <chi-pagination pages="5" current-page="1" inverse></chi-pagination>
+          chi-pagination(pages="5" current-page="1" inverse)
           p.-text--bold.-text--white Disabled next button
-          <chi-pagination chi-pagination pages="5" current-page="5" inverse></chi-pagination>
+          chi-pagination(pages="5" current-page="5" inverse)
     <Wrapper slot="code-webcomponent">
       .chi-tab__description
         span

@@ -5,10 +5,10 @@
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12
         .-p--3
-          <chi-pagination pages="12" results="240" current-page="3" page-size page-jumper></chi-pagination>
+          chi-pagination(pages="12" current-page="3" results="240" page-size page-jumper)
       .chi-col.-w--12
         .-p--3.-bg--black
-          <chi-pagination pages="12" results="240" current-page="3" page-size page-jumper inverse></chi-pagination>
+          chi-pagination(pages="12" current-page="3" results="240" page-size page-jumper inverse)
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

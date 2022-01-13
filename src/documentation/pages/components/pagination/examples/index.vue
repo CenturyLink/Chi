@@ -1,5 +1,5 @@
 <template lang="pug">
-  <Wrapper>
+  div
     h2 Examples
     div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
       <BaseLumenCenturylink />
@@ -14,7 +14,6 @@
       
     div(v-if="$store.state.themes.theme === 'portal'")
       <Portal />
-  </Wrapper>
 </template>
 
 <script lang="ts">
@@ -26,9 +25,9 @@ import DoubleTruncationLumenCenturylink from './_double-truncation_lumen_century
 import ResultsLabelLumenCenturylink from './_results-label_lumen_centurylink.vue';
 import PageSizeLumenCenturylink from './_page-size_lumen_centurylink.vue';
 import PageJumperLumenCenturylink from './_page-jumper_lumen_centurylink.vue';
-import Compact from './compact/index.vue';
+import Compact from './_compact/index.vue';
 import AdditionalSizesLumenCenturylink from './_additional-sizes_lumen_centurylink.vue';
-import Portal from './portal/index.vue';
+import Portal from './_portal/index.vue';
 
 @Component({
   components: {
