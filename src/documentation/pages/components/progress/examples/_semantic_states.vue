@@ -5,14 +5,14 @@
       | red (<code>-danger</code>) for negative, and yellow (<code>-warning</code>) for needs attention.
     <Wrapper slot="example">
       .-py--2
-        <div class="chi-label">Success</div>
-        <chi-progress value="75" max="100" state="success"></chi-progress>
+        .chi-label Success
+        chi-progress(value="75" max="100" state="success")
       .-py--2
-        <div class="chi-label">Warning</div>
-        <chi-progress value="50" max="100" state="warning"></chi-progress>
+        .chi-label Warning
+        chi-progress(value="50" max="100" state="warning")
       .-py--2
-        <div class="chi-label">Danger</div>
-        <chi-progress value="25" max="100" state="danger"></chi-progress>
+        .chi-label Danger
+        chi-progress(value="25" max="100" state="danger")
     </Wrapper>  
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
