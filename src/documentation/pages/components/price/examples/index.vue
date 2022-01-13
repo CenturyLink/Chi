@@ -1,10 +1,9 @@
 <template lang="pug">
   <Wrapper>
     h2 Examples
-    p.-text 
+    p.-text
       | To render price, use the class <code>chi-price</code>.
 
-    div(v-if="['lumen', 'portal', 'centurylink'].includes($store.state.themes.theme)")
       <Base />
       <Sizes />
   </Wrapper>
