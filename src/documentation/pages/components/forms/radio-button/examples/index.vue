@@ -1,5 +1,5 @@
 <template lang="pug">
-  <Wrapper>
+  div
     h2 Examples
 
     <Base />
@@ -12,9 +12,7 @@
 
     h2 Layout Variations
     <Inline />
-    
     <RadioButtonList />
-  </Wrapper>
 </template>
 
 <script lang="ts">

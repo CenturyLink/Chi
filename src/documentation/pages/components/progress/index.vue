@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    <TitleBar title="Radio button" description="Radio buttons are used to select a single item in a list of options." :tabs="pageTabs" />
+    <TitleBar title="Progress" description="Use progress to display the status of a task or process." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
         <Examples />
@@ -13,10 +13,10 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Examples from './examples/index.vue';
-import PageContentTabs from '../../../../components/PageContentTabs.vue';
+import PageContentTabs from '../../../components/PageContentTabs.vue';
 import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
-import { standardComponentPageTabs } from '../../../../constants/constants';
+import { standardComponentPageTabs } from '../../../constants/constants';
 
 @Component({
   components: {
@@ -31,5 +31,5 @@ import { standardComponentPageTabs } from '../../../../constants/constants';
     };
   }
 })
-export default class RadioButton extends Vue {}
+export default class Progress extends Vue {}
 </script>
