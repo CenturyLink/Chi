@@ -1,31 +1,31 @@
 <template lang="pug">
-<ComponentExample title="Center" padding="-p--0" id="center" :tabs="exampleTabs">
-  p.-text(slot="example-description")
-    | Modals can also be placed in the middle of the page by applying the class <code>-center</code>
-    | to <code>chi-backdrop</code>.
-  .chi-backdrop.-center.-p--6.-position--relative.-z--0(slot="example")
-    .chi-backdrop__wrapper
-      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.chi-modal__header
-          h2.chi-modal__title Modal Title
-          button(class='chi-button -icon -close', aria-label='Close')
-            .chi-button__content
-              i.chi-icon.icon-x(aria-hidden="true")
-        .chi-modal__content
-          p.-text.-m--0 Modal content
-        footer.chi-modal__footer
-          button.chi-button Cancel
-          button.chi-button.-primary Save
-  <pre class="language-html" slot="code-webcomponent">
-    <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-  </pre>
-  <Wrapper slot="code-htmlblueprint">
-    <JSNeeded />
-    <pre class="language-html">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+  <ComponentExample title="Center" padding="-p--0" id="center" :tabs="exampleTabs">
+    p.-text(slot="example-description")
+      | Modals can also be placed in the middle of the page by applying the class <code>-center</code>
+      | to <code>chi-backdrop</code>.
+    .chi-backdrop.-center.-p--6.-position--relative.-z--0(slot="example")
+      .chi-backdrop__wrapper
+        section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+          header.chi-modal__header
+            h2.chi-modal__title Modal Title
+            button(class='chi-button -icon -close', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x(aria-hidden="true")
+          .chi-modal__content
+            p.-text.-m--0 Modal content
+          footer.chi-modal__footer
+            button.chi-button Cancel
+            button.chi-button.-primary Save
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-  </Wrapper>          
-</ComponentExample>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+    </Wrapper>        
+  </ComponentExample>
 </template>
 
 <script lang="ts">

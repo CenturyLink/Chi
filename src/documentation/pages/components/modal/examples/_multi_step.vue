@@ -1,31 +1,31 @@
 <template lang="pug">
-<ComponentExample title="Multi-step" id="multi-step" padding="-p--0" :tabs="exampleTabs">
-  p.-text(slot="example-description")
-    | For multi-step modals, ensure the class <code>-centered</code> is applied to <code>chi-modal__title</code>.
-    | This will provide sufficient real estate on the left side to store a back button <code>chi-modal__back</code>.
-  .chi-backdrop.-p--6.-position--relative.-z--0(slot="example")
-    .chi-backdrop__wrapper
-      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.chi-modal__header
-          h2.chi-modal__title.-centered Modal Title
-          button.chi-modal__back(aria-label='Back')
-          button(class='chi-button -icon -close', aria-label='Close')
-            .chi-button__content
-              i.chi-icon.icon-x(aria-hidden="true")
-        .chi-modal__content
-          p.-text.-m--0 Modal content
-        footer.chi-modal__footer
-          button.chi-button.-primary Next
-  <pre class="language-html" slot="code-webcomponent">
-    <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-  </pre>
-  <Wrapper slot="code-htmlblueprint">
-    <JSNeeded />
-    <pre class="language-html">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+  <ComponentExample title="Multi-step" id="multi-step" padding="-p--0" :tabs="exampleTabs">
+    p.-text(slot="example-description")
+      | For multi-step modals, ensure the class <code>-centered</code> is applied to <code>chi-modal__title</code>.
+      | This will provide sufficient real estate on the left side to store a back button <code>chi-modal__back</code>.
+    .chi-backdrop.-p--6.-position--relative.-z--0(slot="example")
+      .chi-backdrop__wrapper
+        section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+          header.chi-modal__header
+            h2.chi-modal__title.-centered Modal Title
+            button.chi-modal__back(aria-label='Back')
+            button(class='chi-button -icon -close', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x(aria-hidden="true")
+          .chi-modal__content
+            p.-text.-m--0 Modal content
+          footer.chi-modal__footer
+            button.chi-button.-primary Next
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-  </Wrapper>
-</ComponentExample>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+    </Wrapper>
+  </ComponentExample>
 </template>
 
 <script lang="ts">

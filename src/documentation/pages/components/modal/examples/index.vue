@@ -1,12 +1,11 @@
 <template lang="pug">
-  <Wrapper>
+  div
     h2 Examples
     p.-text
       | Modals are composed of several parts. To render a modal, include a modal backdrop, modal header, modal body,
       | and modal footer (optional).
       | By default modals are aligned to the top of the page.
 
-    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
       <Base />
       <Center />
       h3 Scrollable
@@ -14,23 +13,15 @@
         | Enable scrolling if the height of the modal's content is larger than the modal's content container.
       <ScrollReq />
       <ScrollLong />
-      <SubTitle />
-      <Inverse />
-      <NoBorder />
-      <MultiStep />
-      <Simple />
-
-    div(v-if="$store.state.themes.theme === 'portal'")
-      <Base />
-      <Center />
-       h3 Scrollable
-       p.-text 
-         | Enable scrolling if the height of the modal's content is larger than the modal's content container.
-      <ScrollReq />
-      <ScrollLong />
-      <Alert />
-      <MultiStep />
-  </Wrapper>
+      div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+        <SubTitle />
+        <Inverse />
+        <NoBorder />
+        <MultiStep />
+        <Simple />
+      div(v-if="$store.state.themes.theme === 'portal'")
+        <Alert />
+        <MultiStep />
 </template>
 
 <script lang="ts">
