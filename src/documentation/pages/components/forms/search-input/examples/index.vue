@@ -4,10 +4,10 @@
 
     <Base />
     <Disabled />
-    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-      <SizesLumenCenturyLink />
     div(v-if="$store.state.themes.theme === 'portal'")
       <SizesPortal />
+    div(v-else)
+      <SizesLumenCenturyLink />
   </Wrapper>
 </template>
 
