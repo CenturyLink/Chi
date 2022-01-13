@@ -124,7 +124,7 @@ h3 Size -xl
 h3 Description
 .test-data-table.-p--3.-w--100
   #description
-    chi-vue-data-table(ref="base" data-cy='data-table-description', :config="config", :data="table")
+    chi-vue-data-table(data-cy='data-table-description', :config="config", :data="table")
       template(#statusdesc='payload')
         i(:class="`chi-icon icon-${payload.due.icon} -icon--${payload.due.color}`" aria-hidden="true")
         span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.due.status }}

@@ -135,7 +135,8 @@ export default class DataTable extends Vue {
             position="top"
             title={(this.data.head[column].description as DataTableColumnDescription).title}
             portal={this._chiMajorVersion === 4}
-            modal={this._chiMajorVersion === 5}>
+            modal={this._chiMajorVersion === 5}
+            arrow>
             <div>{this._getDescription(this.data.head[column].description as string | DataTableColumnDescription)}</div>
           </chi-popover>
         ) : null,

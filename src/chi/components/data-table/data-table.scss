@@ -88,6 +88,7 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           border-left: 0;
           border-right: 0;
           border-top: 0;
+          user-select: none;
 
           .icon-arrow-up,
           .icon-arrow-down,
