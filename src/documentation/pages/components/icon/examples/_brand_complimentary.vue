@@ -1,20 +1,20 @@
 <template lang="pug">
-<ComponentExample title="Brand complimentary" titleSize="h4" padding="-p--0" id="brand-complimentary" :tabs="exampleTabs">
-  p.-text(slot="example-description")
-    | More icon colors that can be used to compliment the primary brand palette.
-  .chi-grid.-no-gutter(slot="example")
-    .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
-      each color in ['icon--navy', 'icon--orange']
-        div(class=`chi-icon -${color} -m--1`)
-          svg
-            use(xlink:href='#icon-atom')
-  <pre class="language-html" slot="code-webcomponent">
-    <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-  </pre>
-  <pre class="language-html" slot="code-htmlblueprint">
-    <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-  </pre>
-</ComponentExample>
+  <ComponentExample title="Brand complimentary" titleSize="h4" padding="-p--0" id="brand-complimentary" :tabs="exampleTabs">
+    p.-text(slot="example-description")
+      | More icon colors that can be used to compliment the primary brand palette.
+    .chi-grid.-no-gutter(slot="example")
+      .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
+        each color in ['icon--navy', 'icon--orange']
+          div(class=`chi-icon -${color} -m--1`)
+            svg
+              use(xlink:href='#icon-atom')
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
+  </ComponentExample>
 </template>
 
 <script lang="ts">

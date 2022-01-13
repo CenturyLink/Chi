@@ -1,5 +1,5 @@
 <template lang="pug">
-  <Wrapper>
+  div
     h3 Overview
     p.-text 
       | Chi icons are a collection of high-quality vector icons designed by Lumen for use in consumer, enterprise, and internal applications.
@@ -10,7 +10,7 @@
       | Chi icons can be added to projects in one of two ways: Web Component (SVG) or HTML Blueprint (Web Font).
       | The Web Component approach is dependent on your project using Chi's <a href="../../getting-started/installation">Web Components</a>.
       | The HTML Blueprint approach has no dependencies and all icons come pre-packaged in <a href="../../getting-started/installation">Chi CSS</a>.
-
+    h3 Examples
     <Base />
     <Sizes />
     h3 Colors
@@ -21,10 +21,7 @@
     <Semantic />
     div(v-if="['lumen', 'portal'].includes($store.state.themes.theme)")
       <BrandComplimentary />
-      <Icons />
-    div(v-else)
-      <Icons />
-  </Wrapper>
+    <Icons />
 </template>
 
 <script lang="ts">
