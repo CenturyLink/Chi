@@ -1,10 +1,9 @@
 <template lang="pug">
-  <Wrapper>
+  div
     h2 Examples
 
     <Base />
     <SemanticStates />
-  </Wrapper>
 </template>
 
 <script lang="ts">
