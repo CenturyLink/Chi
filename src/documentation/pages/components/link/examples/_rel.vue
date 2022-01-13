@@ -3,7 +3,7 @@
     p.-text(slot="example-description")
       | Use rel to set the relationship between the current page and the linked page. Rel supports all HTML a attribute values. 
       | Examples include: <code>alternate</code>, <code>external</code>, <code>next</code>, <code>nofollow</code>, <code>noreferrer</code>, <code>noopener</code>, <code>prev</code>, and more.
-    <chi-link href="#" rel="noopener" slot="example">Link</chi-link>
+    chi-link(href="#" slot="example" rel="noopener") Link
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

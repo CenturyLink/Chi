@@ -2,7 +2,7 @@
   <ComponentExample title="Hreflang" id="hreflang" :tabs="exampleTabs" additionalClasses="-text">
     p.-text(slot="example-description")
       | Use to set the language of the link.
-    <chi-link href="#" hreflang="en" slot="example">Link</chi-link>
+    chi-link(href="#" slot="example" hreflang="en") Link
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

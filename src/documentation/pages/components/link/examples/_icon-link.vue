@@ -3,9 +3,8 @@
     p.-text(slot="example-description")
       | Use icon links to render icons inside link tags. <strong>Note:</strong> All icon links without text labels 
       | must define a label in the <code>alternative-text</code> attribute for accessibility.
-    <chi-link href="#" alternative-text="View helpful information about this topic" slot="example">
-      <chi-icon icon="circle-question-outline"></chi-icon>
-    </chi-link>
+    chi-link(href="#" slot="example" alternative-text="View helpful information about this topic")
+      chi-icon(icon="circle-question-outline")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

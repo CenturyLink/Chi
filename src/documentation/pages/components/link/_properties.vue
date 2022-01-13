@@ -1,8 +1,7 @@
 <template lang="pug">
-  <div>
+  div
     h2 Web Component
     <PropertiesGenerator tag="chi-link" />
-  </div>
 </template>
 
 <script lang="ts">

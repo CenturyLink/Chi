@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base" :tabs="exampleTabs" additionalClasses="-text">
-    <chi-link href="#" slot="example">Link</chi-link>
+    chi-link(href="#" slot="example") Link
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

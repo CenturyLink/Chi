@@ -4,7 +4,7 @@
       | Use download to prompt users to save a page or document instead of navigating to it. 
       | The download attribute accepts an optional value used to name the file. 
       | If no value is provided, the original filename is used.
-    <chi-link href="#" download slot="example">Link</chi-link>
+    chi-link(href="#" slot="example" download) Link
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
