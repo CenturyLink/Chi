@@ -1,8 +1,8 @@
 <template lang="pug">
   <ComponentExample title="Complex combination" id="complex-combination" additionalClasses="-p-lg--6" :tabs="exampleTabs">
-    <Wrapper slot="example">
-      button.chi-button#toggle-skeleton(@click="toggleSkeletonVisibility") Toggle Skeleton
-      .complex-combination-html(v-if="isSkeletonVisible")
+    div(slot="example")
+      button.chi-button(@click="toggleSkeletonVisibility") Toggle Skeleton
+      .complex-combination-skeleton(v-if="isSkeletonVisible")
         .-mw--480
           .chi-skeleton.-mt--2.-w--90
           .-mt--2
@@ -13,7 +13,7 @@
             .chi-skeleton.-circle
             .chi-skeleton.-rounded.-flex--grow1.-ml--2
             .chi-skeleton.-rounded.-ml--2.-w--15   
-      .complex-combination-skeleton(v-else)
+      .complex-combination-html(v-else)
         .-text--h2 Lorem ipsum dolor sit amet
         p.-mw--480
           | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -23,9 +23,8 @@
           .chi-avatar
             i.chi-icon.icon-user(aria-hidden="true")
           .chi-form__item.-flex--grow1.-ml--2
-            input#example__placeholder.chi-input(type='text' placeholder='Placeholder' aria-label='Example input')
+            input.chi-input(type='text' placeholder='Placeholder' aria-label='Example input')
           button.chi-button.-primary.-ml--2 Send
-    </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -41,7 +40,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -55,7 +53,7 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<div class="-mw--480">
   <div class="chi-skeleton -mt--2 -w--90"></div>
   <div class="-mt--2">
