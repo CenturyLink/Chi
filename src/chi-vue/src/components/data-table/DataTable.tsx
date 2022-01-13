@@ -125,7 +125,7 @@ export default class DataTable extends Vue {
             onChiClick={() => {
               this._toggleInfoPopover(infoPopoverId);
             }}>
-            <i class={`${ICON_CLASS} ${ICON_CLASSES.ICON_INFO}`} aria-hidden="true"></i>
+            <i class={`${ICON_CLASS} -xs ${ICON_CLASSES.ICON_INFO}`} aria-hidden="true"></i>
           </chi-button>
         ) : null,
         infoPopover = this.data.head[column].description ? (
@@ -1138,9 +1138,9 @@ export default class DataTable extends Vue {
       const columnName = columnHeadSortButton.dataset.column,
         currentSort = this._sortConfig && this._sortConfig.direction,
         columnSortBy = columnHeadSortButton.dataset.sortBy,
-        sortIcon = columnHeadSortButton.querySelector(`i.-xs.${ICON_CLASS}`),
+        sortIcon = columnHeadSortButton.querySelector(`[aria-label="Sort icon"] i.${ICON_CLASS}`),
         headSortColumnIcons = (this.$refs.dataTable as HTMLElement).querySelectorAll(
-          `.${DATA_TABLE_CLASSES.HEAD} i.-xs.${ICON_CLASS}`
+          `.${DATA_TABLE_CLASSES.HEAD} [aria-label="Sort icon"] i.-xs.${ICON_CLASS}`
         );
 
       headSortColumnIcons.forEach(sortIcon => {

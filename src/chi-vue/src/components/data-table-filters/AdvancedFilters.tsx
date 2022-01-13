@@ -19,7 +19,6 @@ import { getModule } from 'vuex-module-decorators';
 import store from '@/store/index';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { detectMajorChiVersion } from '@/utils/utils';
-import { VNode } from 'vue';
 
 Vue.config.ignoredElements = [
   'chi-alert',

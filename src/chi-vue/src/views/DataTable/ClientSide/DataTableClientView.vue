@@ -14,6 +14,11 @@
       @chiRowDeselected="e => this.rowDeselected(e)"
       @chiMobileCancel="e => this.chiMobileCancel(e)"
     >
+      <template #alertsDesc="payload">
+        <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
+        <br />
+        <i :class="`chi-icon icon-${payload.warning.icon} -icon--${payload.warning.color}`" aria-hidden="true"></i>
+      </template>
       <template #icon="payload">
         <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
       </template>
@@ -65,16 +70,13 @@
                 </div>
               </template>
               <template #customAdvanced2>
-                <chi-label for="date-picker-1">Date</chi-label>
-                <chi-date-picker id="date-picker-1" @chiDateChange="e => dateChangeHandler(e)" />
+                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
               </template>
               <template #customAdvanced3>
-                <chi-label for="time-picker-1">Time</chi-label>
-                <chi-time-picker id="time-picker-1" />
+                <chi-time-picker />
               </template>
               <template #customAdvanced4>
-                <chi-label for="number-input-1">Number</chi-label>
-                <chi-number-input id="number-input-1" />
+                <chi-number-input />
               </template>
               <template #customAdvanced5>
                 <input type="file" class="chi-file-input" id="file01" aria-label="Choose file" />

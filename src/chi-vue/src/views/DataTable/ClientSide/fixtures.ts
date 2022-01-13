@@ -226,7 +226,13 @@ export const exampleTableHead = {
   alerts: {
     label: 'Alerts',
     align: 'center',
-    description: { title: 'Alerts', text: 'This is content for alerts' },
+    description: {
+      template: 'alertsDesc',
+      payload: {
+        success: { icon: 'circle-check', color: 'success' },
+        warning: { icon: 'warning', color: 'warning' },
+      },
+    },
   },
   status: {
     label: 'Status',
