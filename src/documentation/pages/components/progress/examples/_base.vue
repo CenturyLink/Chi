@@ -2,14 +2,14 @@
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
     <Wrapper slot="example">
       .-py--2
-        <div class="chi-label">0%</div>
-        <chi-progress value="0" max="100"></chi-progress>
+        .chi-label 0%
+        chi-progress(value="0" max="100")
       .-py--2
-        <div class="chi-label">50%</div>
-        <chi-progress value="50" max="100"></chi-progress>
+        .chi-label 50%
+        chi-progress(value="50" max="100")
       .-py--2
-        <div class="chi-label">100%</div>
-        <chi-progress value="100" max="100"></chi-progress>
+        .chi-label 100%
+        chi-progress(value="100" max="100")
     </Wrapper>  
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
