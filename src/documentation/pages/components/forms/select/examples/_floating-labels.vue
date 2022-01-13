@@ -5,26 +5,22 @@
       | Chi only supports floating labels on <code>-lg</code> and <code>-xl</code> selects.
     <Wrapper slot="example">
       .chi-col.-w--12.-p--2
-        <div id="floating-label-lg" class="chi-input__wrapper -floating-label" style="max-width:20rem">
-          <select class="chi-select -lg" id="floating-label-select-lg">
-            <option></option>
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </select>
-          <label for="floating-label-select-lg">Placeholder text</label>
-        </div>
+        .chi-input__wrapper.-floating-label(id="floating-label-lg" style="max-width:20rem")
+          select(class="chi-select -lg" id="floating-label-select-lg")
+            option
+            option Option 1
+            option Option 2
+            option Option 3
+          label(for="floating-label-select-lg") Placeholder text
         
       .chi-col.-w--12.-p--2
-        <div id="floating-label-xl" class="chi-input__wrapper -floating-label" style="max-width:20rem">
-          <select class="chi-select -xl" id="floating-label-select-xl">
-            <option></option>
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </select>
-          <label for="floating-label-select-xl">Placeholder text</label>
-        </div>
+        .chi-input__wrapper.-floating-label(id="floating-label-xl" style="max-width:20rem")
+          select(class="chi-select -xl" id="floating-label-select-xl")
+            option
+            option Option 1
+            option Option 2
+            option Option 3
+          label(for="floating-label-select-xl") Placeholder text
     </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

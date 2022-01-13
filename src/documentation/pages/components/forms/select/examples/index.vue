@@ -1,5 +1,5 @@
 <template lang="pug">
-  <Wrapper>
+  div
     h2 Examples
     p.-text To render a select, apply the class <code>chi-select</code> to a <code>select</code>.
 
@@ -12,7 +12,6 @@
     <Error />
     <Sizes />
     <FloatingLabels />
-  </Wrapper>
 </template>
 
 <script lang="ts">

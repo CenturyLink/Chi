@@ -1,16 +1,14 @@
 <template lang="pug">
   <ComponentExample title="Message" id="message" :tabs="exampleTabs">
     p.-text(slot="example-description") Add a message below a select to store descriptions, validation feedback, and other helpful information.
-    <div class="chi-form__item" style="max-width:20rem" slot="example">
-      <label class="chi-label" for="example-me1">Label</label>
-      <select class="chi-select" id="example-me1">
-        <option value="">Select</option>
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 3</option>
-      </select>
-      <div class="chi-label -status">Optional input message</div>
-    </div>
+    .chi-form__item(style="max-width:20rem" slot="example")
+      label(class="chi-label" for="example-me1") Label
+      select(class="chi-select" id="example-me1")
+        option(value="") Select
+        option Option 1
+        option Option 2
+        option Option 3 
+      .chi-label.-status Optional input message
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>   
