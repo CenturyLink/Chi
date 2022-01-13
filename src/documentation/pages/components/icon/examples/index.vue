@@ -11,27 +11,18 @@
       | The Web Component approach is dependent on your project using Chi's <a href="../../getting-started/installation">Web Components</a>.
       | The HTML Blueprint approach has no dependencies and all icons come pre-packaged in <a href="../../getting-started/installation">Chi CSS</a>.
 
+    <Base />
+    <Sizes />
+    h3 Colors
+    p.-text
+      | By default, icons are rendered in the same color as the text color defined on their parent container.
+      | Easily change an icon's color using the examples below.
+    <Brand />
+    <Semantic />
     div(v-if="['lumen', 'portal'].includes($store.state.themes.theme)")
-      <Base />
-      <Sizes />
-      h3 Colors
-      p.-text 
-        | By default, icons are rendered in the same color as the text color defined on their parent container.
-        | Easily change an icon's color using the examples below.
-      <Brand />
-      <Semantic />
       <BrandComplimentary />
       <Icons />
-
-    div(v-if="$store.state.themes.theme === 'centurylink'")
-      <Base />
-      <Sizes />
-      h3 Colors
-      p.-text 
-        | By default, icons are rendered in the same color as the text color defined on their parent container.
-        | Easily change an icon's color using the examples below.
-      <Brand />
-      <Semantic />
+    div(v-else)
       <Icons />
   </Wrapper>
 </template>
