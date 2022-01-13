@@ -1,26 +1,26 @@
 <template lang="pug">
-<ComponentExample title="Sizes" id="sizes" padding="-p--0" :tabs="exampleTabs">
-  div(slot="example-description")
-    p.-text Search input supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
-      |  <code>lg</code>, <code>xl</code>.
-      | The default size is <code>md</code>.
-  .-p--3(slot="example")
-    .chi-grid
-    each size in ['xs', 'sm', 'md', 'lg', 'xl']
-      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
-        p.-text.-text--bold= size
-        .chi-form__item
-          chi-search-input(size=`${size}` value="Sample Text")
-  <pre class="language-html" slot="code-webcomponent">
-    <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-  </pre>
-  <pre class="language-html" slot="code-vue">
-    <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-  </pre>
-  <pre class="language-html" slot="code-htmlblueprint">
-    <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-  </pre>       
-</ComponentExample>
+  <ComponentExample title="Sizes" id="sizes" padding="-p--0" :tabs="exampleTabs">
+    div(slot="example-description")
+      p.-text Search input supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
+        |  <code>lg</code>, <code>xl</code>.
+        | The default size is <code>md</code>.
+    .-p--3(slot="example")
+      .chi-grid
+      each size in ['xs', 'sm', 'md', 'lg', 'xl']
+        .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+          p.-text.-text--bold= size
+          .chi-form__item
+            chi-search-input(size=`${size}` value="Sample Text")
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-vue">
+      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
+  </ComponentExample>
 </template>
 
 <script lang="ts">

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <Wrapper>
+  div
     h2 Examples
 
     <Base />
@@ -8,7 +8,6 @@
       <SizesPortal />
     div(v-else)
       <SizesLumenCenturyLink />
-  </Wrapper>
 </template>
 
 <script lang="ts">
