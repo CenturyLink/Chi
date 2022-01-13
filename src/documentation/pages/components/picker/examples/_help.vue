@@ -7,7 +7,7 @@
       .chi-label__wrapper
         legend.chi-label Select options
         .chi-label__help
-          button.chi-button.-icon.-xs.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
+          button.chi-button.-icon.-xs.-flat(ref="button" aria-label="Help" data-target="#example__help-popover")
             i.chi-icon.icon-circle-info-outline(aria-hidden="true")
           section.chi-popover.chi-popover--top(id="example__help-popover" aria-modal="true" role="dialog")
             .chi-popover__content
@@ -38,7 +38,6 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -52,7 +51,7 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<fieldset>
   <div class="chi-label__wrapper">
     <legend class="chi-label">Select options</legend>
@@ -85,7 +84,7 @@ declare const chi: any;
 })
 export default class Help extends Vue {
   mounted() {
-    chi.popover(document.getElementById('example__help-button'));
+    chi.popover(this.$refs.button);
   }
 }
 </script>
