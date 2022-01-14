@@ -70,6 +70,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
                     allowOverflow?: <code>'visible' | 'hidden'</code>;
                     key?: <code>boolean</code>;
                     bold?: <code>boolean</code>;
+                    description?: <code>string | DataTableColumnDescription</code>;
                   };
                 };
                 body: <code>DataTableRow[]</code>;
@@ -138,6 +139,17 @@ section.chi-table.chi-table__options.-bordered.-my--3
             div <code>DataTableSizes</code>
           td
             <code>'xs' | 'sm' | 'md' | 'lg' | 'xl'</code>
+        tr 
+          td 
+            div <code>DataTableColumnDescription</code>
+          td.-p--0 
+            pre.-mb--0.
+              interface DataTableColumnDescription {
+                title?: string;
+                text?: string;
+                template?: string;
+                payload?: any;
+              }
 
 h3 Methods
 section.chi-table.chi-table__options.-bordered.-my--3
