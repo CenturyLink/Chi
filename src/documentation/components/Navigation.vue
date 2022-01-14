@@ -21,9 +21,8 @@
           <li><NuxtLink to="/components/flag-icon">Flag icon</NuxtLink></li>
           <li><NuxtLink to="/components/header">Header</NuxtLink></li>
           <li><NuxtLink to="/components/label">Label</NuxtLink></li>
-          <li>
-            <NuxtLink to="/components/marketing-icon">Marketing icon</NuxtLink>
-          </li>
+          <li><NuxtLink to="/components/link">Link</NuxtLink></li>
+          <li><NuxtLink to="/components/marketing-icon">Marketing icon</NuxtLink></li>
           <li>
             <NuxtLink to="/components/mobile-navigation"
               >Mobile navigation</NuxtLink
@@ -36,6 +35,7 @@
           </li>
           <li><NuxtLink to="/components/phone-input">Phone input</NuxtLink></li>
           <li><NuxtLink to="/components/progress">Progress</NuxtLink></li>
+          <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
           <li><NuxtLink to="/components/breadcrumb">Breadcrumb</NuxtLink></li>
@@ -55,8 +55,6 @@
           <li><NuxtLink to="/components/header">Header</NuxtLink></li>
           <li><NuxtLink to="/components/icon">Icon</NuxtLink></li>
           <li><NuxtLink to="/components/label">Label</NuxtLink></li>
-          <li><NuxtLink to="/components/link">Link</NuxtLink></li>
-          <li><NuxtLink to="/components/marketing-icon">Marketing icon</NuxtLink></li>
           <li>
             <NuxtLink to="/components/mobile-navigation">Mobile navigation</NuxtLink>
           </li>
