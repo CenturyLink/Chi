@@ -4,14 +4,13 @@
       chi-popover(position='top' title='Filter' variant='custom' modal drag closable active prevent-auto-hide)
         button.chi-button(class='-flat -primary -sm -no-hover -px--0 -mb--1 -text--normal' @click="expandAll") Expand All
         .chi-accordion.-sm(ref="accordion")
-          template(v-for="accordionIndex in accordionIndexes")
-            .chi-accordion__item(:class="accordionIndex === '1' ? '-expanded' : ''")
-              button.chi-accordion__trigger
-                .chi-accordion__title
-                  | Accordion {{ accordionIndex }}
-                i.chi-icon.icon-chevron-down(aria-hidden="true")
-              .chi-accordion__content
-                p.chi-accordion__text Filter content goes here
+          .chi-accordion__item(:class="accordionIndex === '1' ? '-expanded' : ''" v-for="accordionIndex in accordionIndexes")
+            button.chi-accordion__trigger
+              .chi-accordion__title
+                | Accordion {{ accordionIndex }}
+              i.chi-icon.icon-chevron-down(aria-hidden="true")
+            .chi-accordion__content
+              p.chi-accordion__text Filter content goes here
         button.chi-button.-flat.-icon.-xs.-py--0(slot='chi-popover__footer' ref="tooltipButton" data-tooltip='Clear all filters')
           .chi-button__content.-flex--column.-align-items--center
             i.chi-icon.icon-reset.-sm--2.-mr--0
