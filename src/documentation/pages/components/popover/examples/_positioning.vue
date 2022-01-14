@@ -1,9 +1,4 @@
 <template lang="pug">
-  - var topPositions = [{ label: 'Top start', position: 'top-start'}, {label: 'Top', position: 'top'}, {label: 'Top end', position: 'top-end'}]
-  - var leftPositions = [{ label: 'Left start', position: 'left-start'}, {label: 'Left', position: 'left'}, {label: 'Left end', position: 'left-end'}]
-  - var rightPositions = [{ label: 'Right start', position: 'right-start'}, {label: 'Right', position: 'right'}, {label: 'Right end', position: 'right-end'}]
-  - var bottomPositions = [{ label: 'Bottom start', position: 'bottom-start'}, {label: 'Bottom', position: 'bottom'}, {label: 'Bottom end', position: 'bottom-end'}]
-
   <ComponentExample title="Positioning" id="positioning" :tabs="exampleTabs">
     p.-text(slot="example-description") 
       | Further positions can be used in this mode: <code>top</code>,
@@ -12,32 +7,13 @@
       | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>,
       | <code>left-end</code>.
     .chi-grid.-no-gutter.-px-xl--3(slot="example")
-      .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
-        each position in topPositions
-          div.-p--1
-            chi-button(@click="togglePopover('popover-"+ position.position +"')" id='button-' + position.position) #{position.label}
-            chi-popover(ref="popover-" + position.position position=position.position, title="Popover title", variant="text", arrow, reference='#button-' + position.position)
-              | This popover is #{position.position} positioned.
-      .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-flex--wrap
-        each position in leftPositions
-          div.-p--1.-py-sm--3
-            chi-button(@click="togglePopover('popover-"+ position.position +"')" id='button-' + position.position) #{position.label}
-            chi-popover(ref="popover-" + position.position position=position.position, title="Popover title", variant="text", arrow, reference='#button-' + position.position)
-              | This popover is #{position.position} positioned.
-      .chi-col.-d--none.-w--12.-w-sm--4.-d-sm--flex.-flex-sm--column.-justify-content-sm--center.-align-items-sm--center
-        div.-w--75.-text.-text--muted.-text--center.-lh--2 Click buttons to see popover positions
-      .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-align-items-sm--end.-flex--wrap
-        each position in rightPositions
-          div.-p--1.-py-sm--3
-            chi-button(@click="togglePopover('popover-"+ position.position +"')" id='button-' + position.position) #{position.label}
-            chi-popover(ref="popover-" + position.position position=position.position, title="Popover title", variant="text", arrow, reference='#button-' + position.position)
-              | This popover is #{position.position} positioned.
-      .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
-        each position in bottomPositions
-          div.-p--1
-            chi-button(@click="togglePopover('popover-"+ position.position +"')" id='button-' + position.position) #{position.label}
-            chi-popover(ref="popover-" + position.position position=position.position, title="Popover title", variant="text", arrow, reference='#button-' + position.position)
-              | This popover is #{position.position} positioned.
+      .chi-col(:class="getClasses(pos)" v-for="pos in ['top', 'left', '', 'right', 'bottom']")
+        div.-w--75.-text.-text--muted.-text--center.-lh--2(v-if="pos === ''") Click buttons to see popover positions
+        template(v-else)
+          div.-p--1.-py-sm--3(v-for="position in positions[pos]")
+            chi-button(@click="togglePopover(`popover-${position.position}`)" :id="`button-${position.position}`") {{ position.label }}
+            chi-popover(:ref="`popover-${position.position}`" :position="position.position", title="Popover title", variant="text", arrow, :reference="`#button-${position.position}`")
+              | This popover is {{ position.position }} positioned.
     <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         | Use the <code>reference</code> attribute with a
@@ -57,10 +33,33 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import VNode from 'vue';
 
 @Component({
   data: () => {
     return {
+      positions: {
+        top: [
+          { label: 'Top start', position: 'top-start' },
+          { label: 'Top', position: 'top' },
+          { label: 'Top end', position: 'top-end' }
+        ],
+        left: [
+          { label: 'Left start', position: 'left-start' },
+          { label: 'Left', position: 'left' },
+          { label: 'Left end', position: 'left-end' }
+        ],
+        right: [
+          { label: 'Right start', position: 'right-start' },
+          { label: 'Right', position: 'right' },
+          { label: 'Right end', position: 'right-end' }
+        ],
+        bottom: [
+          { label: 'Bottom start', position: 'bottom-start' },
+          { label: 'Bottom', position: 'bottom' },
+          { label: 'Bottom end', position: 'bottom-end' }
+        ]
+      },
       exampleTabs: [
         {
           active: true,
@@ -188,7 +187,18 @@ import { Component, Vue } from 'vue-property-decorator';
 })
 export default class Positioning extends Vue {
   togglePopover(popoverRef: string) {
-    (this.$refs[popoverRef] as any).toggle();
+    ((this.$refs[popoverRef] as VNode[])[0] as any).toggle();
+  }
+
+  getClasses(index: string) {
+    if (['top', 'bottom'].includes(index)) {
+      return '-w--12 -w-xl--10 -o-xl--1 -d--flex -justify-content-sm--around -flex--wrap';
+    } else if (index === 'left') {
+      return '-w--12 -w-sm--4 -d--flex -flex-sm--column -flex--wrap';
+    } else if (index === '') {
+      return '-d--none -w--12 -w-sm--4 -d-sm--flex -flex-sm--column -justify-content-sm--center -align-items-sm--center';
+    }
+    return '-w--12 -w-sm--4 -d--flex -flex-sm--column -align-items-sm--end -flex--wrap';
   }
 }
 </script>
