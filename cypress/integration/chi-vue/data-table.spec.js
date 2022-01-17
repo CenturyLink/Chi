@@ -1,8 +1,10 @@
 const ACTIVE_CLASS = '-active';
+const ACTIVE_ATTR = 'active';
 const EXPANDED_CLASS = '-expanded';
 const PORTAL_CLASS = '-portal';
 const ICON_BUTTON = '-icon';
 const ICON_CLASS = 'chi-icon';
+const INFO_ICON_CLASS = 'icon-circle-info-outline';
 const ARROW_UP_CLASS = 'icon-arrow-up';
 const ARROW_SORT_CLASS = 'icon-arrow-sort';
 const DATA_TABLE_CLASSES = {
@@ -30,8 +32,8 @@ const DATA_TABLE_CLASSES = {
   TRUNCATED: '-truncated'
 };
 const RADIO_CLASSES = {
-  RADIO: 'chi-radio',
-}
+  RADIO: 'chi-radio'
+};
 const PAGINATION_CLASSES = {
   PAGINATION: 'chi-pagination',
   RESULTS: 'chi-pagination__results',
@@ -599,7 +601,7 @@ describe('Data Table', () => {
         .find(`.${DATA_TABLE_CLASSES.CELL}`)
         .first()
         .should('not.have.class', RADIO_CLASSES.RADIO);
-    })
+    });
 
     it(`Should trigger the ${DATA_TABLE_EVENTS.SELECTED_ROWS_CHANGE} event`, () => {
       cy.window()
@@ -674,7 +676,6 @@ describe('Data Table', () => {
             .should('be.checked');
         });
     });
-
   });
 
   describe('Accordion', () => {
@@ -1028,6 +1029,110 @@ describe('Data Table', () => {
       it(`Should have class .${size}`, () => {
         hasClassAssertion(`[data-cy='data-table${size}']`, size);
       });
+    });
+  });
+
+  describe('Description', () => {
+    beforeEach(() => {
+      cy.get('[data-cy="data-table-description"]')
+        .find(`i.${INFO_ICON_CLASS}`)
+        .as('popoverTriggers');
+      cy.get('[data-cy="data-table-description"]')
+        .find('chi-popover')
+        .as('popovers');
+    });
+
+    it('Should toggle info popover and show the provided title and content', () => {
+      cy.get('@popoverTriggers').should('not.have.attr', ACTIVE_ATTR);
+      cy.get('@popoverTriggers')
+        .first()
+        .click({ force: true })
+        .then(() => {
+          cy.get('@popovers')
+            .first()
+            .should('have.attr', ACTIVE_ATTR);
+          cy.get('@popovers')
+            .first()
+            .should('contain', 'Name');
+          cy.get('@popovers')
+            .first()
+            .should('contain', 'This is Name description');
+        });
+      cy.get('@popoverTriggers')
+        .first()
+        .click({ force: true })
+        .then(() => {
+          cy.get('@popovers')
+            .first()
+            .should('not.have.attr', ACTIVE_ATTR);
+        });
+    });
+
+    it('Should open info popover with custom template', () => {
+      cy.get('@popoverTriggers').should('not.have.attr', ACTIVE_ATTR);
+      cy.get('@popoverTriggers')
+        .last()
+        .click({ force: true })
+        .then(() => {
+          cy.get('@popovers')
+            .last()
+            .should('have.attr', ACTIVE_ATTR);
+          cy.get('@popovers')
+            .last()
+            .should('contain', 'Status');
+          cy.get('@popovers')
+            .last()
+            .find(`.${ICON_CLASS}`)
+            .should('have.length', 2);
+          cy.get('@popovers')
+            .last()
+            .should('contain', 'Due');
+          cy.get('@popovers')
+            .last()
+            .should('contain', 'Overdue');
+        });
+      cy.get('@popoverTriggers')
+        .last()
+        .click({ force: true });
+    });
+
+    it('Should not sort when clicking on info icon in a sortable header cell', () => {
+      cy.get('@popoverTriggers').should('not.have.attr', ACTIVE_ATTR);
+      cy.get(`[data-cy='data-table-description'] .${DATA_TABLE_CLASSES.BODY}`)
+        .find(`.${DATA_TABLE_CLASSES.ROW}`)
+        .as('rows')
+        .first()
+        .should('contain', 'Name 2');
+      cy.get('@popoverTriggers')
+        .last()
+        .click({ force: true })
+        .then(() => {
+          cy.get('@popovers')
+            .last()
+            .should('have.attr', ACTIVE_ATTR);
+          cy.get('@rows')
+            .first()
+            .should('contain', 'Name 2');
+        });
+      cy.get('@popoverTriggers')
+        .last()
+        .click({ force: true });
+    });
+
+    it('Should still sort column when clicking outside the info icon', () => {
+      cy.get(`[data-cy='data-table-description'] .${DATA_TABLE_CLASSES.BODY}`)
+        .find(`.${DATA_TABLE_CLASSES.ROW}`)
+        .as('rows')
+        .first()
+        .should('contain', 'Name 2');
+      cy.get('[data-cy="data-table-description"]')
+        .find(`.${DATA_TABLE_CLASSES.SORTING}`)
+        .click()
+        .then(() => {
+          cy.get('@rows')
+            .first()
+            .should('contain', 'Name 1');
+        });
     });
   });
 });
