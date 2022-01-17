@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Compact" id="compact-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample title="Compact" id="compact-portal" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Use <code>-compact</code> when vertical space is limited.
     <Wrapper slot="example">
@@ -10,7 +10,7 @@
               .chi-stat-metric__title
                 | {{ stat.title }}
               .chi-label__help
-                button.chi-button.-icon.-xs.-flat(:id="`button-compact-${index}`" @click="togglePopover(`popover-${index}`)" aria-label="Help")
+                button.chi-button.-icon.-xs.-flat(:id="`button-compact-portal-${index}`" @click="togglePopover(`popover-${index}`)" aria-label="Help")
                   i.chi-icon.icon-circle-info-outline(aria-hidden="true")
             .chi-stat-submetric
               .chi-stat-submetric__value
@@ -22,7 +22,7 @@
                 | {{ stat.value2 }}
               .chi-stat-submetric__title
                 | {{ stat.title3 }}
-      chi-popover(v-for="n, index in stats.length" :key="index" :ref="`popover-${index}`" aria-modal="true" position="bottom" role="dialog" :reference="`#button-compact-${index}`")
+      chi-popover(v-for="n, index in stats.length" :key="index" :ref="`popover-${index}`" aria-modal="true" position="bottom" role="dialog" :reference="`#button-compact-portal-${index}`")
         .chi-popover__content
           p.chi-popover__text
             | Helpful information goes here.
@@ -107,7 +107,7 @@ import { Component, Vue } from 'vue-property-decorator';
       <div class="chi-stat-metric">
         <div class="chi-stat-metric__title">Utilization</div>
         <div class="chi-label__help">
-          <button class="chi-button -icon -xs -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover" data-position="bottom" aria-describedby="example__help-popover">
+          <button class="chi-button -icon -xs -flat" id="example__portal-help-button" aria-label="Help" data-target="#example__portal-help-popover" data-position="bottom" aria-describedby="example__portal-help-popover">
             <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
           </button>
         </div>
@@ -127,7 +127,7 @@ import { Component, Vue } from 'vue-property-decorator';
       <div class="chi-stat-metric">
         <div class="chi-stat-metric__title">Performance</div>
         <div class="chi-label__help">
-          <button class="chi-button -icon -xs -flat" id="example__help-button2" aria-label="Help" data-target="#example__help-popover2" data-position="bottom" aria-describedby="example__help-popover2">
+          <button class="chi-button -icon -xs -flat" id="example__portal-help-button2" aria-label="Help" data-target="#example__portal-help-popover2" data-position="bottom" aria-describedby="example__portal-help-popover2">
             <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
           </button>
         </div>
@@ -147,7 +147,7 @@ import { Component, Vue } from 'vue-property-decorator';
       <div class="chi-stat-metric">
         <div class="chi-stat-metric__title">Status</div>
         <div class="chi-label__help">
-          <button class="chi-button -icon -xs -flat" id="example__help-button3" aria-label="Help" data-target="#example__help-popover3" data-position="bottom" aria-describedby="example__help-popover3">
+          <button class="chi-button -icon -xs -flat" id="example__portal-help-button3" aria-label="Help" data-target="#example__portal-help-popover3" data-position="bottom" aria-describedby="example__portal-help-popover3">
             <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
           </button>
         </div>
@@ -167,7 +167,7 @@ import { Component, Vue } from 'vue-property-decorator';
       <div class="chi-stat-metric">
         <div class="chi-stat-metric__title">Threshold Alerts</div>
         <div class="chi-label__help">
-          <button class="chi-button -icon -xs -flat" id="example__help-button4" aria-label="Help" data-target="#example__help-popover4" data-position="bottom" aria-describedby="example__help-popover4">
+          <button class="chi-button -icon -xs -flat" id="example__portal-help-button4" aria-label="Help" data-target="#example__portal-help-popover4" data-position="bottom" aria-describedby="example__portal-help-popover4">
             <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
           </button>
         </div>
@@ -187,7 +187,7 @@ import { Component, Vue } from 'vue-property-decorator';
       <div class="chi-stat-metric">
         <div class="chi-stat-metric__title">Repair Tickets</div>
         <div class="chi-label__help">
-          <button class="chi-button -icon -xs -flat" id="example__help-button5" aria-label="Help" data-target="#example__help-popover5" data-position="bottom" aria-describedby="example__help-popover5">
+          <button class="chi-button -icon -xs -flat" id="example__portal-help-button5" aria-label="Help" data-target="#example__portal-help-popover5" data-position="bottom" aria-describedby="example__portal-help-popover5">
             <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
           </button>
         </div>
@@ -207,7 +207,7 @@ import { Component, Vue } from 'vue-property-decorator';
       <div class="chi-stat-metric">
         <div class="chi-stat-metric__title">Sch Maintenance</div>
         <div class="chi-label__help">
-          <button class="chi-button -icon -xs -flat" id="example__help-button6" aria-label="Help" data-target="#example__help-popover6" data-position="bottom" aria-describedby="example__help-popover6">
+          <button class="chi-button -icon -xs -flat" id="example__portal-help-button6" aria-label="Help" data-target="#example__portal-help-popover6" data-position="bottom" aria-describedby="example__portal-help-popover6">
             <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
           </button>
         </div>
@@ -224,50 +224,50 @@ import { Component, Vue } from 'vue-property-decorator';
   </div>
 </div>
 
-<section class="chi-popover chi-popover--bottom" id="example__help-popover" aria-modal="true" role="dialog">
+<section class="chi-popover chi-popover--bottom" id="example__portal-help-popover" aria-modal="true" role="dialog">
   <div class="chi-popover__content">
     <p class="chi-popover__text">Helpful information goes here.</p>
   </div>
 </section>
-<section class="chi-popover chi-popover--bottom" id="example__help-popover2" aria-modal="true" role="dialog">
+<section class="chi-popover chi-popover--bottom" id="example__portal-help-popover2" aria-modal="true" role="dialog">
   <div class="chi-popover__content">
     <p class="chi-popover__text">Helpful information goes here.</p>
   </div>
 </section>
-<section class="chi-popover chi-popover--bottom" id="example__help-popover3" aria-modal="true" role="dialog">
+<section class="chi-popover chi-popover--bottom" id="example__portal-help-popover3" aria-modal="true" role="dialog">
   <div class="chi-popover__content">
     <p class="chi-popover__text">Helpful information goes here.</p>
   </div>
 </section>
-<section class="chi-popover chi-popover--bottom" id="example__help-popover4" aria-modal="true" role="dialog">
+<section class="chi-popover chi-popover--bottom" id="example__portal-help-popover4" aria-modal="true" role="dialog">
   <div class="chi-popover__content">
     <p class="chi-popover__text">Helpful information goes here.</p>
   </div>
 </section>
-<section class="chi-popover chi-popover--bottom" id="example__help-popover5" aria-modal="true" role="dialog">
+<section class="chi-popover chi-popover--bottom" id="example__portal-help-popover5" aria-modal="true" role="dialog">
   <div class="chi-popover__content">
     <p class="chi-popover__text">Helpful information goes here.</p>
   </div>
 </section>
-<section class="chi-popover chi-popover--bottom" id="example__help-popover6" aria-modal="true" role="dialog">
+<section class="chi-popover chi-popover--bottom" id="example__portal-help-popover6" aria-modal="true" role="dialog">
   <div class="chi-popover__content">
     <p class="chi-popover__text">Helpful information goes here.</p>
   </div>
 </section>
 
 <script>
-  chi.popover(document.getElementById('example__help-button'));
-  chi.popover(document.getElementById('example__help-button2'));
-  chi.popover(document.getElementById('example__help-button3'));
-  chi.popover(document.getElementById('example__help-button4'));
-  chi.popover(document.getElementById('example__help-button5'));
-  chi.popover(document.getElementById('example__help-button6'));
+  chi.popover(document.getElementById('example__portal-help-button'));
+  chi.popover(document.getElementById('example__portal-help-button2'));
+  chi.popover(document.getElementById('example__portal-help-button3'));
+  chi.popover(document.getElementById('example__portal-help-button4'));
+  chi.popover(document.getElementById('example__portal-help-button5'));
+  chi.popover(document.getElementById('example__portal-help-button6'));
 <\/script>`
       }
     };
   }
 })
-export default class CompactLumenCenturyLink extends Vue {
+export default class CompactPortal extends Vue {
   togglePopover(popoverRef: string) {
     ((this.$refs[popoverRef] as Element[])[0] as any).toggle();
   }

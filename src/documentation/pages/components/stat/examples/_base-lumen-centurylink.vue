@@ -1,34 +1,13 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base-lumen-centurylink" :tabs="exampleTabs">
     .chi-stat(slot="example")
-      .chi-stat__item
+      div(v-for="stat in stats" :class="stat.num === '2' ? 'chi-stat__item -active' : 'chi-stat__item'")
         .chi-stat__content
           .chi-stat-metric
             .chi-stat-metric__value
-              | 1
+              | {{ stat.num }}
             .chi-stat-metric__title
-              | High Utilization
-      .chi-stat__item
-        .chi-stat__content
-          .chi-stat-metric
-            .chi-stat-metric__value
-              | 1
-            .chi-stat-metric__title
-              | Critical Performing
-      .chi-stat__item.-active
-        .chi-stat__content
-          .chi-stat-metric
-            .chi-stat-metric__value
-              | 2
-            .chi-stat-metric__title
-              | Services Down
-      .chi-stat__item
-        .chi-stat__content
-          .chi-stat-metric
-            .chi-stat-metric__value
-              | 3
-            .chi-stat-metric__title
-              | Scheduled Maintenance
+              | {{ stat.title }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -44,7 +23,12 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
+      stats: [
+        { num: '1', title: 'High Utilization' },
+        { num: '1', title: 'Critical Performing' },
+        { num: '2', title: 'Services Down' },
+        { num: '3', title: 'Scheduled Maintenance' }
+      ],
       exampleTabs: [
         {
           disabled: true,
