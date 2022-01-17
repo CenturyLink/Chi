@@ -49,7 +49,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -63,7 +62,7 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<!-- Base -->
 <div class="chi-card -align--center -hover--animate">
   <div class="chi-card__content">
@@ -90,7 +89,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class AnimateOnHoverLumenCenturylink extends Vue {
-  mounted() {}
-}
+export default class AnimateOnHoverLumenCenturylink extends Vue {}
 </script>

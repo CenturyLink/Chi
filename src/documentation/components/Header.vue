@@ -249,9 +249,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 Vue.config.ignoredElements = ['chi-brand'];
 @Component
-export default class Header extends Vue {
-  mounted() {}
-}
+export default class Header extends Vue {}
 </script>
 
 <style scoped lang="scss"></style>
