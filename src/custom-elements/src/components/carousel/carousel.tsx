@@ -121,7 +121,7 @@ export class Carousel {
             this.view = 0;
           } else {
             this._animationClasses = '';
-            this.chiViewChange.emit(this.view - 1);
+            this.chiViewChange.emit(this.view);
           }
         },
         ANIMATION_DURATION.SHORT
@@ -147,7 +147,7 @@ export class Carousel {
         if (this.view === this.numberOfViews) {
           this.view = this.numberOfViews - 1;
         } else {
-          this.chiViewChange.emit(this.view + 1);
+          this.chiViewChange.emit(this.view);
           this._animationClasses = '';
         }
       },
