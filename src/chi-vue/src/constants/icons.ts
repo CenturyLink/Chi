@@ -6,5 +6,6 @@ export const ICON_CLASSES = {
   ICON_PRINT: 'icon-print',
   ICON_DELETE: 'icon-delete',
   ICON_ARROW_BOTTOM: 'icon-arrow-to-bottom',
+  ICON_INFO: 'icon-circle-info-outline',
 };
 //#endregion

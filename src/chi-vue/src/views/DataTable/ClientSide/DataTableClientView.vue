@@ -14,6 +14,11 @@
       @chiRowDeselected="e => this.rowDeselected(e)"
       @chiMobileCancel="e => this.chiMobileCancel(e)"
     >
+      <template #alertsDesc="payload">
+        <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
+        <br />
+        <i :class="`chi-icon icon-${payload.warning.icon} -icon--${payload.warning.color}`" aria-hidden="true"></i>
+      </template>
       <template #icon="payload">
         <i :class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
       </template>
@@ -65,7 +70,7 @@
                 </div>
               </template>
               <template #customAdvanced2>
-                <chi-date-picker id="date-picker" @chiDateChange="e => dateChangeHandler(e)" />
+                <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
               </template>
               <template #customAdvanced3>
                 <chi-time-picker />
