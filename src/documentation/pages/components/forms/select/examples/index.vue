@@ -9,9 +9,16 @@
     <Optional />
     <Help />
     <Message />
-    <Error />
-    <Sizes />
-    <FloatingLabels />
+
+    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+      <ErrorLumenCenturylink />
+      <SizesLumenCenturylink />
+      <FloatingLabelsLumenCenturylink />
+    div(v-if="$store.state.themes.theme === 'portal'")
+      <ErrorPortal />
+      <SizesPortal />
+      <FloatingLabelsPortal />
+  
 </template>
 
 <script lang="ts">
@@ -22,9 +29,12 @@ import Required from './_required.vue';
 import Optional from './_optional.vue';
 import Help from './_help.vue';
 import Message from './_message.vue';
-import Error from './_error.vue';
-import Sizes from './_sizes.vue';
-import FloatingLabels from './_floating-labels.vue';
+import ErrorLumenCenturylink from './_error_lumen_centurylink.vue';
+import ErrorPortal from './_portal/_error.vue';
+import SizesLumenCenturylink from './_sizes_lumen_centurylink.vue';
+import SizesPortal from './_portal/_sizes.vue';
+import FloatingLabelsLumenCenturylink from './_floating-labels_lumen_centurylink..vue';
+import FloatingLabelsPortal from './_portal/_floating-labels.vue';
 
 @Component({
   components: {
@@ -34,9 +44,12 @@ import FloatingLabels from './_floating-labels.vue';
     Optional,
     Help,
     Message,
-    Error,
-    Sizes,
-    FloatingLabels
+    ErrorLumenCenturylink,
+    ErrorPortal,
+    SizesLumenCenturylink,
+    SizesPortal,
+    FloatingLabelsLumenCenturylink,
+    FloatingLabelsPortal
   }
 })
 export default class Examples extends Vue {}
