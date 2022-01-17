@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Page Jumper" id="page_jumper_lumen_centurylink" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Page Jumper" id="page-jumper-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
     p.-text(slot="example-description")
       | Add a page jumper to allow users to jump to a specific page of results.
     .chi-grid.-no-gutter(slot="example")

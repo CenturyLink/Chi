@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base_compact_lumen_centurylink" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
+  <ComponentExample title="Base" id="base-compact-lumen-centurylink" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12.-w-md--6
         .-p--3

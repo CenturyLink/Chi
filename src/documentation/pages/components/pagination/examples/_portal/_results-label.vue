@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Results Label" id="results_label_portal" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Results Label" id="results-label-portal" :tabs="exampleTabs" padding="-p--0">
     p.-text(slot="example-description")
       | Add a label to indicate the total number of results.
     .chi-grid.-no-gutter(slot="example")

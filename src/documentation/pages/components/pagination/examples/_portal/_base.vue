@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base_compact_portal" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
+  <ComponentExample title="Base" id="base-compact-portal" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12
         .-p--3

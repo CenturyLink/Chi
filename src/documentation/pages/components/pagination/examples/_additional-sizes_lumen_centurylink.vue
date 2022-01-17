@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Additional Sizes" id="additional_sizes_lumen_centurylink" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Additional Sizes" id="additional-sizes-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
     p.-text(slot="example-description")
       | Pagination supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code> (default), <code>lg</code>, and <code>xl</code>.
     .chi-grid.-no-gutter(slot="example")

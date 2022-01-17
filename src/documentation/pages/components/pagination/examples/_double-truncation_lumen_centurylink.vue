@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Double Truncation" id="double_truncation_lumen_centurylink" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Double Truncation" id="double-truncation-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
     p.-text(slot="example-description")
       | Use double truncation when the current page is separated by 5 or more pages from the first and last page.
     .chi-grid.-no-gutter(slot="example")

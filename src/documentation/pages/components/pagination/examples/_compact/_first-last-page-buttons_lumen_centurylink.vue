@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="First and Last page buttons" id="compact_first_last_page_buttons_lumen_centurylink" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
+  <ComponentExample title="First and Last page buttons" id="compact-first-last-page-buttons-lumen-centurylink" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12.-w-md--6
         .-p--3

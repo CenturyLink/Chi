@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Page Size" id="page_size_lumen_centurylink" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Page Size" id="page-size-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
     p.-text(slot="example-description")
       | Allow users to configure the number of result items per page.
     .chi-grid.-no-gutter(slot="example")

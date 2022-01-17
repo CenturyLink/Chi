@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Page Jumper" id="compact_page_jumper_lumen_centurylink" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
+  <ComponentExample title="Page Jumper" id="compact-page-jumper-lumen-centurylink" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12.-w-md--6
         .-p--3

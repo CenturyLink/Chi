@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Truncation" id="truncation_lumen_centurylink" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Truncation" id="truncation-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
     p.-text(slot="example-description")
       | When the number of pages exceeds the recommended 7 page limit, an ellipsis is used to truncate the remaining pages.
     .chi-grid.-no-gutter(slot="example")

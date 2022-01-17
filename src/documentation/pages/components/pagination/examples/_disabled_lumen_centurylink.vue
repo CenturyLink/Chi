@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled_lumen_centurylink" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Disabled" id="disabled-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12.-w-md--6
         .-p--3
