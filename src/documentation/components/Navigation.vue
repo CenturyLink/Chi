@@ -36,6 +36,7 @@
           <li><NuxtLink to="/components/phone-input">Phone input</NuxtLink></li>
           <li><NuxtLink to="/components/progress">Progress</NuxtLink></li>
           <li><NuxtLink to="/components/forms/select">Select</NuxtLink></li>
+          <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
           <li><NuxtLink to="/components/breadcrumb">Breadcrumb</NuxtLink></li>
@@ -77,7 +78,6 @@
             <NuxtLink to="/components/forms/search-input">Search input</NuxtLink>
           </li>
           <li><NuxtLink to="/components/sidenav">Sidenav</NuxtLink></li>
-          <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
           <li><NuxtLink to="/components/spinner">Spinner</NuxtLink></li>
           <li><NuxtLink to="/components/stat">Stat</NuxtLink></li>
           <li><NuxtLink to="/components/steps">Steps</NuxtLink></li>
