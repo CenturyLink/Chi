@@ -26,10 +26,10 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       steps: [
         { title: 'Step 1', class: '-completed' },
-        { title: 'Step 1', class: '-completed' },
-        { title: 'Step 1', class: '-active' },
-        { title: 'Step 1', class: '' },
-        { title: 'Step 1', class: '' }
+        { title: 'Step 2', class: '-completed' },
+        { title: 'Step 3', class: '-active' },
+        { title: 'Step 4', class: '' },
+        { title: 'Step 5', class: '' }
       ],
       exampleTabs: [
         {

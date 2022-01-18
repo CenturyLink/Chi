@@ -1,11 +1,21 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    ul.chi-steps.-pb--2.-p-sm--6(slot="example")
-      li(v-for="(step, index) in steps" :key="index" :class="`chi-steps__item ${step.class}`")
-        div.chi-steps__icon
-          div.chi-steps__content
-            a.chi-steps__item-title(href='#') {{ step.title }}
-        div.chi-steps__line(v-if="step.title !== 'Step 5'")
+  <ComponentExample title="Vertical" titleSize="h4" id="small-vertical" :tabs="exampleTabs">
+    .-d--flex.-flex--column.-justify-content--center.-align-items--center(slot="example")
+      ul.chi-steps.-vertical.-sm
+        li(v-for="(step, index) in steps" :key="index" :class="`chi-steps__item ${step.class}`")
+          div.chi-steps__icon
+            div.chi-steps__content
+              a.chi-steps__item-title(href='#') {{ step.title }}
+              template(v-if="step.title === 'Step 1'")
+                .chi-steps__subitem.-completed
+                  i.chi-icon.icon-check.-xs(aria-hidden="true")
+                  p Completed item
+                .chi-steps__subitem.-active
+                  i.chi-icon.icon-spinner.-xs(aria-hidden="true")
+                  p In progress item
+                .chi-steps__subitem
+                  p Pending item
+          div.chi-steps__line
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -42,11 +52,22 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-steps">
+        htmlblueprint: `<ul class="chi-steps -vertical -sm">
   <li class="chi-steps__item -completed">
     <div class="chi-steps__icon">
       <div class="chi-steps__content">
         <a class="chi-steps__item-title" href="#">Step 1</a>
+        <div class="chi-steps__subitem -completed">
+          <i class="chi-icon icon-check -xs" aria-hidden="true"></i>
+          <p>Completed item</p>
+        </div>
+        <div class="chi-steps__subitem -active">
+          <i class="chi-icon icon-spinner -xs" aria-hidden="true"></i>
+          <p>In progress item</p>
+        </div>
+        <div class="chi-steps__subitem">
+          <p>Pending item</p>
+        </div>
       </div>
     </div>
     <div class="chi-steps__line"></div>
@@ -87,5 +108,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Base extends Vue {}
+export default class SmallVertical extends Vue {}
 </script>

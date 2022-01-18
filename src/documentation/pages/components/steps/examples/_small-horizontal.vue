@@ -1,11 +1,23 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    ul.chi-steps.-pb--2.-p-sm--6(slot="example")
-      li(v-for="(step, index) in steps" :key="index" :class="`chi-steps__item ${step.class}`")
-        div.chi-steps__icon
+  <ComponentExample title="Horizontal" titleSize="h4" id="small-horizontal" :tabs="exampleTabs">
+    <Wrapper slot="example">
+      ul.chi-steps.-sm.-pb--4.-p-sm--6
+        li(v-for="(step, index) in steps" :key="index" :class="`chi-steps__item ${step.class}`")
+          div.chi-steps__icon
+            div.chi-steps__content
+              a.chi-steps__item-title(href='#') {{ step.title }}
+          div.chi-steps__line(v-if="step.title !== 'Step 5'")
+      p.-text--center
+        | Base
+      ul.chi-steps.-horizontal-label.-sm.-labels-sm--hide.-p-sm--5
+        li(v-for="(step, index) in steps" :key="index" :class="`chi-steps__item ${step.class}`")
+          div.chi-steps__icon
           div.chi-steps__content
             a.chi-steps__item-title(href='#') {{ step.title }}
-        div.chi-steps__line(v-if="step.title !== 'Step 5'")
+          div.chi-steps__line(v-if="step.title !== 'Step 5'")
+      p.-text--center
+        | Horizontal labels
+    </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -42,7 +54,8 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-steps">
+        htmlblueprint: `<!-- Base -->
+<ul class="chi-steps -sm">
   <li class="chi-steps__item -completed">
     <div class="chi-steps__icon">
       <div class="chi-steps__content">
@@ -82,10 +95,47 @@ import { Component, Vue } from 'vue-property-decorator';
       </div>
     </div>
   </li>
+</ul>
+<!-- Horizontal labels -->
+<ul class="chi-steps -horizontal-label -sm">
+  <li class="chi-steps__item -completed">
+    <div class="chi-steps__icon"></div>
+    <div class="chi-steps__content">
+      <a class="chi-steps__item-title" href="#">Step 1</a>
+    </div>
+    <div class="chi-steps__line"></div>
+  </li>
+  <li class="chi-steps__item -completed">
+    <div class="chi-steps__icon"></div>
+    <div class="chi-steps__content">
+      <a class="chi-steps__item-title" href="#">Step 2</a>
+    </div>
+    <div class="chi-steps__line"></div>
+  </li>
+  <li class="chi-steps__item -active">
+    <div class="chi-steps__icon"></div>
+    <div class="chi-steps__content">
+      <a class="chi-steps__item-title" href="#">Step 3</a>
+    </div>
+    <div class="chi-steps__line"></div>
+  </li>
+  <li class="chi-steps__item">
+    <div class="chi-steps__icon"></div>
+    <div class="chi-steps__content">
+      <a class="chi-steps__item-title" href="#">Step 4</a>
+    </div>
+    <div class="chi-steps__line"></div>
+  </li>
+  <li clas="chi-steps__item">
+    <div class="chi-steps__icon"></div>
+    <div class="chi-steps__content">
+      <a class="chi-steps__item-title" href="#">Step 5</a>
+    </div>
+  </li>
 </ul>`
       }
     };
   }
 })
-export default class Base extends Vue {}
+export default class SmallHorizontal extends Vue {}
 </script>
