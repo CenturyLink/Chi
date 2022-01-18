@@ -9,6 +9,9 @@
   "scripts": {
     "approve": "gulp backstop-approve",
     "build": "gulp build",
+    "cicd:build:pre:sri": "gulp cicd:build:pre:sri",
+    "cicd:build:post:sri": "gulp cicd:build:post:sri",
+    "build:website": "gulp build:website",
     "ci": "gulp ci",
     "docker": "scripts/docker.sh",
     "start": "gulp watch",
