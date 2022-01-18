@@ -9,6 +9,7 @@
   "scripts": {
     "approve": "gulp backstop-approve",
     "build": "gulp build",
+    "build:website": "gulp build-website",
     "ci": "gulp ci",
     "docker": "scripts/docker.sh",
     "start": "gulp watch",

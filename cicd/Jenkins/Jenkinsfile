@@ -325,6 +325,36 @@ pipeline {
           }
         }
       }
+      stage ('SRI Chi Assets') {
+        agent {
+          dockerfile {
+            filename 'Dockerfile'
+            dir 'cicd/docker/sonar-scanner'
+            label 'Docker-enabled'
+            args '-m 2G --shm-size=2gb'
+          }
+        }
+        steps {
+          script {
+            sriChiAssets()
+          }
+        }
+      }
+      stage ('Build Chi website') {
+        agent {
+          dockerfile {
+            filename 'Dockerfile'
+            dir 'cicd/docker/sonar-scanner'
+            label 'Docker-enabled'
+            args '-m 2G --shm-size=2gb'
+          }
+        }
+        steps {
+          script {
+            buildChiWebsite()
+          }
+        }
+      }
       stage ('Cleaning reports & test folders before testing') {
         agent {
           dockerfile {
@@ -859,6 +889,16 @@ def buildChi() {
   stash name: "DIST-CHI", includes: "dist/**"
   stash name: "NODEMODULES-CHI", includes: "node_modules/**"
   jslJiraSendBuildInfo()
+}
+
+def sriChiAssets() {
+  jslNpmWrapper('run sri')
+  stash name: "SRI", includes: "dist/sri.json"
+}
+
+def buildChiWebsite() {
+  jslNpmWrapper('run build:website')
+  stash name: "WEBSITE", includes: "dist/**"
 }
 
 def runBackstopjsResponsiveTest() {
