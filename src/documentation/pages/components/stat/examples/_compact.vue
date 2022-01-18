@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Compact" id="compact-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample title="Compact" id="compact" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Use <code>-compact</code> when vertical space is limited.
     <Wrapper slot="example">
@@ -22,7 +22,7 @@
                 | {{ stat.value2 }}
               .chi-stat-submetric__title
                 | {{ stat.title3 }}
-      chi-popover(v-for="n, index in stats.length" :key="index" :ref="`popover-${index}`" aria-modal="true" position="bottom" role="dialog" :reference="`#button-compact-${index}`")
+      chi-popover(v-for="n, index in stats.length" :key="index" :ref="`popover-${index}`" aria-modal="true" position="bottom" role="dialog" :reference="`#button-compact-${index}`" arrow)
         .chi-popover__content
           p.chi-popover__text
             | Helpful information goes here.
@@ -267,7 +267,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class CompactLumenCenturyLink extends Vue {
+export default class Compact extends Vue {
   togglePopover(popoverRef: string) {
     ((this.$refs[popoverRef] as Element[])[0] as any).toggle();
   }

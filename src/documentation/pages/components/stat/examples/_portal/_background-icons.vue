@@ -19,7 +19,7 @@
             .chi-label__help(v-if="!stat.active")
               button.chi-button.-icon.-xs.-flat(:id="`button-bg-icons-portal-${index}`" @click="togglePopover(`popover-${index}`)" aria-label="Help")
                 i.chi-icon.icon-circle-info-outline(aria-hidden="true")
-      chi-popover(v-for="index in stats.length-1" :key="index" :ref="`popover-${index}`" aria-modal="true" position="bottom" role="dialog" :reference="`#button-bg-icons-portal-${index}`")
+      chi-popover(v-for="index in stats.length-1" :key="index" :ref="`popover-${index}`" aria-modal="true" position="bottom" role="dialog" :reference="`#button-bg-icons-portal-${index}`" arrow)
         .chi-popover__content
           p.chi-popover__text
             | Helpful information goes here.

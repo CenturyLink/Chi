@@ -54,19 +54,18 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       exampleTabs: [
         {
-          disabled: true,
+          active: true,
           id: 'webcomponent',
           label: 'Web component'
         },
         {
-          active: true,
+          disabled: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint'
         }
       ],
       codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<chi-carousel>
+        webcomponent: `<chi-carousel>
   <div class="chi-stat" slot="items">
     <div class="chi-stat__item">
       <div class="chi-stat__content">
@@ -133,7 +132,8 @@ import { Component, Vue } from 'vue-property-decorator';
       </div>
     </div>
   </div>
-</chi-carousel>`
+</chi-carousel>`,
+        htmlblueprint: ``
       }
     };
   }
