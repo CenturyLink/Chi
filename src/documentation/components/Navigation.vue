@@ -34,6 +34,7 @@
             >
           </li>
           <li><NuxtLink to="/components/phone-input">Phone input</NuxtLink></li>
+          <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
           <li><NuxtLink to="/components/price">Price</NuxtLink></li>
           <li><NuxtLink to="/components/progress">Progress</NuxtLink></li>
           <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
