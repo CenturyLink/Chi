@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20211215',
+        identifier: 'jsl-jenkins-shared-library-local@release/20220117',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-        identifier: 'jsl-jenkins-shared-library@release/20211215',
+        identifier: 'jsl-jenkins-shared-library@release/20220117',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -855,7 +855,9 @@ def buildChi() {
   }
   sh "sleep 10s"
   jslYarnWrapper('install')
-  jslNpmWrapper('run build')
+  jslNpmWrapper('run cicd:build:pre:sri')
+  jslNpmWrapper('run sri')
+  jslNpmWrapper('run cicd:build:post:sri')
   stash name: "DIST-CHI", includes: "dist/**"
   stash name: "NODEMODULES-CHI", includes: "node_modules/**"
   jslJiraSendBuildInfo()

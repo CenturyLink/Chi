@@ -31,7 +31,5 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     };
   }
 })
-export default class Header extends Vue {
-  mounted() {}
-}
+export default class Header extends Vue {}
 </script>

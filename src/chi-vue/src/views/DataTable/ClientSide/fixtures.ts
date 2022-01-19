@@ -214,8 +214,26 @@ export const exampleToolbar = {
 };
 
 export const exampleTableHead = {
-  ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id', sortDataType: 'string', key: true, bold: true },
-  alerts: { label: 'Alerts', align: 'center' },
+  ticketId: {
+    label: 'Ticket ID',
+    sortable: true,
+    sortBy: 'id',
+    sortDataType: 'string',
+    key: true,
+    bold: true,
+    description: { title: 'Ticket ID', text: 'This is content for ticket id' },
+  },
+  alerts: {
+    label: 'Alerts',
+    align: 'center',
+    description: {
+      template: 'alertsDesc',
+      payload: {
+        success: { icon: 'circle-check', color: 'success' },
+        warning: { icon: 'warning', color: 'warning' },
+      },
+    },
+  },
   status: {
     label: 'Status',
     sortable: true,
