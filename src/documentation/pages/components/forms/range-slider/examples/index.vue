@@ -1,5 +1,5 @@
 <template lang="pug">
-  <Wrapper>
+  div
     h2 Examples
     p.-text To render a range slider, apply the class <code>chi-range-slider</code> to an <code>input type="range"</code>. 
       | Range widths are fluid by default.
@@ -19,7 +19,6 @@
     <RadioSlider />
     <RadioDisabled />
     <RadioConsistent />
-  </Wrapper>
 </template>
 
 <script lang="ts">
