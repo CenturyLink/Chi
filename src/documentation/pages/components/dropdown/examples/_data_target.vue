@@ -30,7 +30,6 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -44,7 +43,7 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<button id="dropdown-2" class="chi-button chi-dropdown__trigger" data-target="#dropdown-2-menu">Dropdown component</button>
 <p class="-text">There is no need for proximity between elements.</p>
 <div class="chi-dropdown__menu" id="dropdown-2-menu">

@@ -31,7 +31,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           active: true,
@@ -82,7 +81,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class BubbleClosablePortal extends Vue {
-  mounted() {}
-}
+export default class BubbleClosablePortal extends Vue {}
 </script>

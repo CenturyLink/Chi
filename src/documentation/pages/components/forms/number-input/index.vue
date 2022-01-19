@@ -18,6 +18,15 @@ import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
 import { standardComponentPageTabs } from '../../../../constants/constants';
 
+Vue.config.ignoredElements = [
+  'chi-number-input',
+  'chi-label',
+  'chi-brand',
+  'chi-popover',
+  'chi-icon',
+  'chi-button'
+];
+
 @Component({
   components: {
     Accessibility,
