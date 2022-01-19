@@ -22,6 +22,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
+declare const chi: any;
+
 @Component({
   data: () => {
     return {
@@ -53,5 +55,9 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class BaseConsistent extends Vue {}
+export default class BaseConsistent extends Vue {
+  mounted() {
+    chi.rangeSlider(document.getElementById('range04'));
+  }
+}
 </script>

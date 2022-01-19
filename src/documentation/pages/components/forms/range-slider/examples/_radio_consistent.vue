@@ -38,6 +38,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
+declare const chi: any;
+
 @Component({
   data: () => {
     return {
@@ -91,5 +93,9 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class RadioConsistent extends Vue {}
+export default class RadioConsistent extends Vue {
+  mounted() {
+    chi.rangeSlider(document.getElementById('range09'));
+  }
+}
 </script>
