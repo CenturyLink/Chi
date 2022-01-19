@@ -39,7 +39,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -53,7 +52,7 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<div class="chi-dropdown__menu">
   <a class="chi-dropdown__menu-item" href="#">
     <i class="chi-icon icon-file-outline" aria-hidden="true"></i>New
