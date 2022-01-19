@@ -117,7 +117,6 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -131,7 +130,7 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<!-- Top start -->
 <div class="chi-dropdown">
   <button class="chi-button chi-dropdown__trigger" id="dropdown-top-start" data-position="top-start">Top start</button>
