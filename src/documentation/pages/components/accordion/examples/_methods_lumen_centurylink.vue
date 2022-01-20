@@ -44,7 +44,6 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -58,7 +57,7 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<button class="chi-button" id="toggle-accordion-1">Toggle item 1</button>
 <button class="chi-button" id="toggle-accordion-2">Toggle item 2</button>
 

@@ -1,4 +1,4 @@
-FROM node:dubnium-stretch
+FROM node:dubnium-buster
 
 ENV BABEL_DISABLE_CACHE=1
 
