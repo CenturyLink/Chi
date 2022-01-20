@@ -711,6 +711,8 @@ $card-empty-icon-color:                     $color-text-muted-light;
 $card-content-padding:                      2rem;
 $card-tabs-padding:                         1rem 2rem;
 $card-tabs-border-bottom:                   0.125rem solid $color-border-base;
+$card-highlight-background-color:           $color-background-secondary-light;
+$card-highlight-header-background-color:    $color-background-white;
 
 $card-title-font-size:                      $font-size-7;
 $card-title-font-weight:                    $font-weight-extra-bold;
@@ -718,6 +720,7 @@ $card-title-line-height:                    $line-height-lg;
 
 // Carousel
 $carousel-dot-background-color:             transparent;
+$carousel-dot-border-color:                 $color-border-primary;
 $carousel-dot-hover-background-color:       $color-background-primary;
 $carousel-dot-active-background-color:      $color-background-primary;
 $carousel-dot-size:                         $icon-size-xs;
@@ -737,6 +740,7 @@ $checkbox-label-disabled-opacity:           $opacity-60;
 // Date picker
 $date-picker-input-width:                   14rem;
 $date-picker-day-active-background-color:   $color-background-primary;
+$date-picker-day-active-text-color:         $color-text-white;
 $date-picker-day-background-color:          $color-background-white;
 $date-picker-day-today-accent-background-color: $color-background-primary;
 
@@ -747,14 +751,18 @@ $date-picker-day-hover-background-color:    $color-grey-20;
 $date-picker-arrow-icon-color:              $color-text-primary;
 $date-picker-arrow-disabled-icon-color:     rgba($color-text-base, 0.2);
 
-// Time picker
-$time-picker-border-color:                  $color-border-base;
-
 // Divider
 $divider-border-color:                      rgba($color-black, 0.12);
 $divider-inverse-border-color:              rgba($color-white, 0.2);
 $divider-vertical-border-color:             rgba($color-black, 0.12);
 $divider-vertical-inverse-border-color:     rgba($color-white, 0.2);
+
+// Data Table
+$data-table-row-striped-background-color:   $color-navy-10;
+$data-table-row-active-background-color:    $color-navy-20;
+$data-table-row-active-marker-color:        $color-border-primary;
+$data-table-row-hover-background-color:     $data-table-row-active-background-color;
+$data-table-row-expanded-background-color:  $data-table-row-active-background-color;
 
 // Drawer
 $drawer-width:                              18.75rem;
@@ -885,6 +893,7 @@ $header-content-title-font-weight:          $font-weight-normal;
 $header-content-title-line-height:          $line-height;
 $header-content-title-font-size:            $font-size-lg;
 $header-content-title-lg-font-size:         $font-size-xl;
+$header-alert-badge-background-color:       $color-navy-100;
 $header-search-background-color:            $color-background-white;
 $header-search-hover-border-color:          $color-grey-40;
 $header-search-focus-color:                 $focus-color;
@@ -1664,7 +1673,6 @@ $textarea-xl-line-height:                   $text-input-xl-line-height;
 $textarea-xl-min-height:                    7.5rem;
 $textarea-xl-padding:                       $text-input-xl-padding;
 
-
 // Time picker
 $time-picker-width:                         14rem;
 $time-picker-column-border-color:           $color-border-base;
@@ -1674,6 +1682,7 @@ $time-picker-item-active-background-color:  $color-background-primary;
 $time-picker-item-active-text-color:        $color-text-white;
 $time-picker-item-disabled-text-color:      $color-grey-70;
 $time-picker-item-disabled-opacity:         $opacity-40;
+$time-picker-border-color:                  $color-border-base;
 
 // Toggle switch
 $toggle-switch-background-color:            $color-grey-50;

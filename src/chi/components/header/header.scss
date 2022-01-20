@@ -114,8 +114,8 @@
         z-index: 1;
 
         &.-dark {
-          background-color: $color-navy-100;
-          border-color: $color-navy-100;
+          background-color: $header-alert-badge-background-color;
+          border-color: $header-alert-badge-background-color;
         }
       }
     }
@@ -495,7 +495,7 @@
         margin: 0 3rem 0 0;
       }
 
-      &:not(.-centurylink) {
+      &:not(.-centurylink):not(.-brightspeed) {
         margin: 0 0.5rem;
         width: 8.75rem;
 
@@ -540,7 +540,7 @@
         margin: 0 3rem 0 0;
       }
 
-      &:not(.-centurylink) {
+      &:not(.-centurylink):not(.-brightspeed) {
         margin: 0 0.5rem;
         width: 9.0625rem;
 
@@ -580,7 +580,7 @@
     }
 
     .chi-brand {
-      &:not(.-centurylink) {
+      &:not(.-centurylink):not(.-brightspeed) {
         @include respond-to(md) {
           margin: 0 1rem 0 0;
           width: 10rem;
