@@ -1288,14 +1288,14 @@ export default class DataTable extends Vue {
     const classes = this._dataTableClasses(this.config.style, this._sortable),
       head = this._head(),
       toolbar = this._toolbar(),
-      bulkactions = this._bulkActions(),
+      bulkActions = this._bulkActions(),
       body = this._body(),
       pagination = this._pagination();
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
         {toolbar}
-        {bulkactions}
+        {bulkActions}
         {head}
         {body}
         {pagination}
