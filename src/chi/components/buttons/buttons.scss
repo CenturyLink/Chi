@@ -10,6 +10,9 @@ $button-colors: (
     border-color: $button-primary-solid-border-color,
     border-color-hover: $button-primary-solid-hover-border-color,
     border-color-active: $button-primary-solid-active-border-color,
+    border-color-outline: $button-primary-outline-border-color,
+    border-color-outline-hover: $button-primary-outline-hover-border-color,
+    border-color-outline-active: $button-primary-outline-active-border-color,
     text-color: $button-primary-solid-text-color,
     text-color-outline: $button-primary-outline-text-color,
     text-color-outline-hover: $button-primary-outline-hover-text-color,
@@ -23,6 +26,9 @@ $button-colors: (
     border-color: $button-secondary-solid-border-color,
     border-color-hover: $button-secondary-solid-hover-border-color,
     border-color-active: $button-secondary-solid-active-border-color,
+    border-color-outline: $button-secondary-solid-border-color,
+    border-color-outline-hover: $button-secondary-solid-hover-border-color,
+    border-color-outline-active: $button-secondary-solid-active-border-color,
     text-color: $button-secondary-solid-text-color,
     text-color-outline: $button-secondary-outline-text-color,
     text-color-outline-hover: $button-secondary-outline-hover-text-color,
@@ -36,6 +42,9 @@ $button-colors: (
     border-color: $button-dark-solid-border-color,
     border-color-hover: $button-dark-solid-hover-border-color,
     border-color-active: $button-dark-solid-active-border-color,
+    border-color-outline: $button-dark-solid-border-color,
+    border-color-outline-hover: $button-dark-solid-hover-border-color,
+    border-color-outline-active: $button-dark-solid-active-border-color,
     text-color: $button-dark-solid-text-color,
     text-color-outline: $button-dark-outline-text-color,
     text-color-outline-hover: $button-dark-outline-hover-text-color,
@@ -49,6 +58,9 @@ $button-colors: (
     border-color: $button-danger-solid-border-color,
     border-color-hover: $button-danger-solid-hover-border-color,
     border-color-active: $button-danger-solid-active-border-color,
+    border-color-outline: $button-danger-solid-border-color,
+    border-color-outline-hover: $button-danger-solid-hover-border-color,
+    border-color-outline-active: $button-danger-solid-active-border-color,
     text-color: $button-danger-solid-text-color,
     text-color-outline: $button-danger-outline-text-color,
     text-color-outline-hover: $button-danger-outline-hover-text-color,
@@ -62,6 +74,9 @@ $button-colors: (
     border-color: $button-light-solid-border-color,
     border-color-hover: $button-light-solid-hover-border-color,
     border-color-active: $button-light-solid-active-border-color,
+    border-color-outline: $button-light-solid-border-color,
+    border-color-outline-hover: $button-light-solid-hover-border-color,
+    border-color-outline-active: $button-light-solid-active-border-color,
     text-color: $button-light-solid-text-color,
     text-color-outline: $button-light-outline-text-color,
     text-color-outline-hover: $button-light-outline-hover-text-color,
@@ -487,7 +502,7 @@ $sizes: (
 
       &.-outline {
         background-color: map-get(map-get($button-colors, $color), background-color-outline);
-        border: $border solid map-get(map-get($button-colors, $color), border-color);
+        border: $border solid map-get(map-get($button-colors, $color), border-color-outline);
         box-shadow: none;
         color: map-get(map-get($button-colors, $color), text-color-outline);
 
@@ -499,13 +514,13 @@ $sizes: (
 
         &:hover,
         &.-hover {
-          border: $border solid map-get(map-get($button-colors, $color), border-color-hover);
+          border: $border solid map-get(map-get($button-colors, $color), border-color-outline-hover);
           color: map-get(map-get($button-colors, $color), text-color-outline-hover);
         }
 
         &:active,
         &.-active {
-          border: $border solid map-get(map-get($button-colors, $color), border-color-active);
+          border: $border solid map-get(map-get($button-colors, $color), border-color-outline-active);
           color: map-get(map-get($button-colors, $color), text-color-outline-active);
         }
 
