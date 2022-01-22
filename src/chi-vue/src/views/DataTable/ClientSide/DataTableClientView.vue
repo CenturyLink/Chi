@@ -12,7 +12,6 @@
       @chiRowCollapsed="e => this.rowCollapsed(e)"
       @chiRowSelected="e => this.rowSelected(e)"
       @chiRowDeselected="e => this.rowDeselected(e)"
-      @chiMobileCancel="e => this.chiMobileCancel(e)"
     >
       <template #alertsDesc="payload">
         <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
@@ -106,10 +105,8 @@
         </ChiDataTableToolbar>
       </template>
       <template #bulkActions>
-        <div class="chi-bulk-actions__buttons -pl--3">
-          <div
-            :class="`${showBottomNavOnMobileView === false ? '-d--none' : 'chi-bulk-actions__buttons-mobile -z--40'}`"
-          >
+        <div class="chi-bulk-actions__buttons">
+          <div class="chi-bulk-actions__buttons-mobile -z--40">
             <chi-button variant="flat" type="icon" aria-label="Edit">
               <chi-icon icon="edit"></chi-icon>
             </chi-button>
@@ -169,8 +166,6 @@ import ColumnCustomization from '../../../components/column-customization/Column
 import { exampleConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
 import DataTableViews from '../../../components/data-table-views/DataTableViews';
 
-const MOCK_API_RESPONSE_DELAY = 5000;
-
 @Component({
   components: {
     ChiDataTable: DataTable,
@@ -199,12 +194,12 @@ const MOCK_API_RESPONSE_DELAY = 5000;
     chiShowSelectedRowsOnly: e => {
       console.log('chiColumnsReset', e);
     },
-    chiMobileSelectedAll: e => {
-      console.log('chiMobileSelectedAll', e);
+    chiSelectAll: e => {
+      console.log('chiSelectAll', e);
     },
-    chiMobileCancel(e) {
+    chiCancel(e) {
       this.$data.showBottomNavOnMobileView = false;
-      console.log('chiMobileCancel', e);
+      console.log('chiCancel', e);
     },
     pageChange: e => {
       console.log('chiPageChange', e);
@@ -255,15 +250,15 @@ const MOCK_API_RESPONSE_DELAY = 5000;
         body: exampleTableBody,
       },
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-      showBottomNavOnMobileView: true,
     };
   },
 })
 export default class DataTableView extends Vue {
   mounted() {
-    setTimeout(() => {
-      // This example is present to demonstrate asynchronous updating of the data
+    // This example is present to demonstrate asynchronous updating of the data
+    const MOCK_API_RESPONSE_DELAY = 5000;
 
+    setTimeout(() => {
       const newData = [
         { template: 'ticketId', payload: { id: 'NTM000021063' } },
         {
@@ -271,7 +266,7 @@ export default class DataTableView extends Vue {
           payload: { icon: 'circle-check', color: 'success' },
         },
         { template: 'status', payload: { status: 'active' } },
-        'Colocation',
+        'Colocation A',
         0,
         { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
         'SVUJW034781A',

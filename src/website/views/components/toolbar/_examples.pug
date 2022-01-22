@@ -1236,44 +1236,6 @@ h2 Examples
             button.chi-button.-icon.-flat(aria-label="Button action")
               .chi-button__content
                 i.chi-icon.icon-x(aria-hidden="true")
-      .chi-bulk-actions
-        .chi-bulk-actions__top
-          chi-link(href='#') Select all
-          chi-link(href='#') Clear
-        .chi-bulk-actions__start
-          .chi-bulk-actions__results
-            .chi-bulk-actions__label Actions (10 Selected)
-            .chi-form__item
-              .chi-checkbox
-                input#checkbox-ba1.chi-checkbox__input(type='checkbox')
-                label.chi-checkbox__label(for='checkbox-ba1') Show Selected Only
-          .chi-bulk-actions__buttons
-            .chi-bulk-actions__buttons-mobile
-              chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Edit')
-                chi-icon(icon='edit')
-              chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Compose')
-                chi-icon(icon='compose')
-              chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Delete')
-                chi-icon(icon='delete')
-              chi-button(variant='flat' type='icon' alternative-text='Button action' data-tooltip='Print')
-                chi-icon(icon='print')
-            .chi-bulk-actions__buttons-desktop
-              .chi-divider.-vertical
-              chi-button(size='xs')
-                chi-icon(icon='arrow-to-bottom')
-                span Download
-              chi-button(size='xs')
-                chi-icon(icon='compose')
-                span Compose
-              chi-button(size='xs')
-                chi-icon(icon='delete')
-                span Delete
-              chi-button(size='xs')
-                chi-icon(icon='print')
-                span Print
-        .chi-bulk-actions__end
-          chi-button(type='close')
-
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-ribbon(role="tablist")
         li.-disabled
@@ -1394,57 +1356,6 @@ h2 Examples
                 </div>
               </button>
             </div>
-          </div>
-        </div>
-        <div class="chi-bulk-actions">
-          <div class="chi-bulk-actions__top">
-            <chi-link href="#">Select all</chi-link>
-            <chi-link href="#">Clear</chi-link>
-          </div>
-          <div class="chi-bulk-actions__start">
-            <div class="chi-bulk-actions__results">
-              <div class="chi-bulk-actions__label">Actions (10 Selected)</div>
-              <div class="chi-form__item">
-                <div class="chi-checkbox">
-                  <input class="chi-checkbox__input" id="checkbox-ba1" type="checkbox" />
-                  <label class="chi-checkbox__label" for="checkbox-ba1">Show Selected Only</label>
-                </div>
-              </div>
-            </div>
-            <div class="chi-bulk-actions__buttons">
-              <div class="chi-bulk-actions__buttons-mobile">
-                <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Edit">
-                  <chi-icon icon="edit"></chi-icon>
-                </chi-button>
-                <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Compose">
-                  <chi-icon icon="compose"></chi-icon>
-                </chi-button>
-                <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Delete">
-                  <chi-icon icon="delete"></chi-icon>
-                </chi-button>
-                <chi-button variant="flat" type="icon" alternative-text="Button action" data-tooltip="Print">
-                  <chi-icon icon="print"></chi-icon>
-                </chi-button>
-              </div>
-              <div class="chi-bulk-actions__buttons-desktop">
-                <div class="chi-divider -vertical"></div>
-                <chi-button size="xs">
-                  <chi-icon icon="arrow-to-bottom"></chi-icon><span>Download</span>
-                </chi-button>
-                <chi-button size="xs">
-                  <chi-icon icon="compose"></chi-icon><span>Compose</span>
-                </chi-button>
-                <chi-button size="xs">
-                  <chi-icon icon="delete"></chi-icon><span>Delete</span>
-                </chi-button>
-                <chi-button size="xs">
-                  <chi-icon icon="print"></chi-icon><span>Print</span>
-                </chi-button>
-              </div>
-            </div>
-          </div>
-          <div class="chi-bulk-actions__end">
-            <chi-button type="close"></chi-button>
           </div>
         </div>
 
