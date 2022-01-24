@@ -59,7 +59,7 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: $color-text-muted-light;
+  color: rgba($color-grey-60, 0.7);
 }
 
 .token.punctuation {
@@ -71,19 +71,19 @@ pre[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: $color-yellow-70;
+  color: $color-grey-60;
 }
 
 .token.boolean,
 .token.number {
-  color: $color-yellow-70;
+  color: $color-grey-60;
 }
 .token.attr-name,
 .token.property {
   color: $color-text-base;
 }
 .token.function {
-  color: $color-text-code;
+  color: $color-grey-70;
 }
 
 .language-css .token.string,
@@ -92,17 +92,17 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: $color-text-code;
+  color: $color-grey-70;
 }
 
 .token.entity,
 .token.url,
 .token.variable {
-  color: $color-text-code;
+  color: $color-grey-70;
 }
 
 .token.attr-value {
-  color: $color-text-code;
+  color: $color-grey-70;
 }
 
 .token.atrule,
@@ -176,7 +176,7 @@ table {
   &.-types {
     pre {
       code {
-        color: $color-yellow-70;
+        color: $color-grey-60;
       }
     }
   }
