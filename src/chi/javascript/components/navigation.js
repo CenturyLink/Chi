@@ -176,7 +176,7 @@ class Navigation extends Component {
       this._overflowMenu.dispose();
     }
     window.removeEventListener('resize', this._onWindowResize);
-    this._elem.removeEventListener('click', this._clickOnComponentHandler);
+    this._elem && this._elem.removeEventListener('click', this._clickOnComponentHandler);
     document.removeEventListener('click', this._clickOnDocumentHandler);
 
     this._tabComponent = null;

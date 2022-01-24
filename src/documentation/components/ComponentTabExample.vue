@@ -96,7 +96,9 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { TabsInterface } from '../models/models';
+
 declare const chi: any;
+
 @Component({})
 export default class ComponentTabExample extends Vue {
   @Prop() id?: string;
@@ -107,24 +109,31 @@ export default class ComponentTabExample extends Vue {
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
   @Prop() menuId?: string;
+
   chiTabs: any;
   chiMainTabs: any;
+
   mounted() {
     const chiTabs = document.getElementById(
       'code-snippet-tabs' + this.$props.id
     );
+
     if (chiTabs) {
       this.chiTabs = chi.tab(chiTabs);
     }
+
     const chiMainTabs = document.getElementById(
       'chi-tabs--menu' + this.$props.id
     );
+
     if (chiMainTabs) {
       this.chiMainTabs = chi.tab(chiMainTabs);
     }
   }
+
   setMenuId(tabId: string) {
     this.$emit('toggleMenuId', tabId);
   }
+
 }
 </script>

@@ -323,7 +323,7 @@ class Tab extends Component {
 
   dispose () {
     this._config = null;
-    this._elem.removeEventListener('click', this._clickEventHandler);
+    this._elem && this._elem.removeEventListener('click', this._clickEventHandler);
     this._clickEventHandler = null;
     this._elem = null;
     if (this._slidingBorder) {
