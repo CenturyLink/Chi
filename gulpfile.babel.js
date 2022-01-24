@@ -40,7 +40,9 @@ const requires = {
   'vue-watch': require('./tasks/watch-vue.js'),
   'lint-typescript': require('./tasks/lint-typescript'),
   'test-custom-elements': require('./tasks/test-custom-elements'),
-  'test-e2e': require('./tasks/test-e2e')
+  'test-e2e': require('./tasks/test-e2e'),
+  'cicd-build-pre-sri': require('./tasks/cicd-build-pre-sri'),
+  'cicd-build-post-sri': require('./tasks/cicd-build-post-sri'),
 };
 
 gulp.task('default', function(){});
