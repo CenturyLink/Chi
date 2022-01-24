@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20211215',
+        identifier: 'jsl-jenkins-shared-library-local@release/20220117',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-        identifier: 'jsl-jenkins-shared-library@release/20211215',
+        identifier: 'jsl-jenkins-shared-library@release/20220117',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -53,11 +53,12 @@ pipeline {
       //  MSTEAMS_CREDENTIALS MS Teams access info, jenkins secret text
       //  QUALITY_GATE_CREDENTIALS Credentials to gather all the contract validation gates expected to be crossed.
       //  PROJECT_MAL The MAL of the project
-
-      GITHUB_TOKEN_CREDENTIALS = 'SCMAUTO_GITHUB'
+      GITHUB_TOKEN_SHELL_CREDENTIALS = 'allyourbotsarebelongtous-token'
+      GITHUB_TOKEN_CREDENTIALS = 'GITHUB_APP_CREDENTIALS'
       GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
       GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
       DOCKER_CREDENTIALS = 'nexus-secrets'
+      DOCKER_LOGIN_CREDENTIALS = 'docker-login-user-pass'
       KUBE_CREDENTIALS = 'kube-secret'
       KUBE_CREDENTIALS_TEST = 'kube-secret-test'
       AMAZON_CREDENTIALS = 'awsCredentialsPR'
@@ -95,6 +96,7 @@ pipeline {
       RC_TAG_PATTERN =  /(.*##RC##.*)/
       PROMOTE_TAG_PATTERN =  /(.*##PROMOTE##.*)/
       DEPLOY_TAG_PATTERN =  /(.*##DEPLOYMENT##.*)/
+      DOCKER_REGISTRY = 'https://nexusprod.corp.intranet:4567'
     }
 
 
@@ -240,7 +242,9 @@ pipeline {
             }
             steps {
               script {
-                checkPackageVersion()
+                check_package()
+                stash name: "VERSION_BUMP", includes: "version_bump"
+                stash name: "VERSION_BUMP_VUE_CHI", includes: "version_bump_vue_chi"
               }
             }
           }
@@ -681,6 +685,29 @@ pipeline {
           }
         }
       }
+      
+
+      stage('Create PR') {
+        agent {
+          docker {
+            image "nexusprod.corp.intranet:4567/pomicroappbase/node12:1.0.2"
+            label 'Docker-enabled'
+          }
+        }
+        steps {
+          script {
+            try {
+              if ( BRANCH_NAME == PROD_BRANCH ) {
+                createPRInShellVueChi()
+                createPRInShellChi()
+              }
+            } catch (Exception e) {
+              echo "The creation of PRs in the shell failed! Error message: ${e.getMessage()}"
+            }
+          }
+        }
+      }
+
       stage('Adoption Stats') {
         agent {
           dockerfile {
@@ -828,23 +855,6 @@ def createTagging() {
   jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6)
 }
 
-def checkPackageVersion() {
-  sh(script: """
-      set +x
-      git whatchanged -1 --format=oneline
-      git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
-      rm -rf version_bump
-      if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
-        echo -n "yes" > version_bump
-      else
-        echo -n "no" > version_bump
-      fi
-      cat version_bump
-      echo "All good."
-  """, label: "Package version validation")
-  stash name: "VERSION_BUMP", includes: "version_bump"
-}
-
 def buildChi() {
   dir ('src/chi-vue') {
     unstash name: "DIST-CHI-VUE-UMD"
@@ -855,7 +865,9 @@ def buildChi() {
   }
   sh "sleep 10s"
   jslYarnWrapper('install')
-  jslNpmWrapper('run build')
+  jslNpmWrapper('run cicd:build:pre:sri')
+  jslNpmWrapper('run sri')
+  jslNpmWrapper('run cicd:build:post:sri')
   stash name: "DIST-CHI", includes: "dist/**"
   stash name: "NODEMODULES-CHI", includes: "node_modules/**"
   jslJiraSendBuildInfo()
@@ -1245,4 +1257,248 @@ def runAdoptionStats() {
     }
     jslAdoptionMain('reports/ci_report/xunitfinal.xml')
   }
+}
+
+def createBranchChiVue() {
+  withCredentials([usernamePassword(credentialsId: env.GITHUB_TOKEN_CREDENTIALS, usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN')]){
+    def projectJson = readJSON file: 'src/chi-vue/package.json', returnPojo: true;
+    def version = projectJson["version"];
+    def versionReturn = projectJson["version"];
+    jslGitHubCloneRepo("po-enterprise-shell", "CenturyLink", "master", env.GITHUB_TOKEN_CREDENTIALS)
+    def shellJson = readJSON file: 'po-enterprise-shell/package.json', returnPojo: true;
+    if (shellJson["dependencies"]["@centurylink/chi-vue"] != null) {
+      updateBranchChiVue(version)
+    }
+    return versionReturn
+  }
+}
+
+def updateBranchChi(version) {
+  sh (script: """
+      cd po-enterprise-shell
+      git fetch -p
+      git branch -D chi-new-version-${version} || echo "Branch was not there"
+      git push origin --delete chi-new-version-${version} || echo "Branch was not there"
+      git checkout -b chi-new-version-${version}
+      git push -u origin chi-new-version-${version}
+    """, label: "Changes for PR in shell to upgrade Chi", returnStdout: true)
+}
+
+def updateBranchChiVue(version) {
+  sh(script: """
+      cd po-enterprise-shell
+      git fetch -p
+      git branch -D chi-vue-new-version-${version} || echo "Branch was not there"
+      git push origin --delete chi-vue-new-version-${version} || echo "Branch was not there"
+      git checkout -b chi-vue-new-version-${version}
+      git push -u origin chi-vue-new-version-${version}
+    """, label: "Changes for PR in shell to upgrade chi vue")
+}
+
+def createBranchChi() {
+  withCredentials([usernamePassword(credentialsId: env.GITHUB_TOKEN_CREDENTIALS, usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN')]){
+    def projectJson = readJSON file: 'package.json', returnPojo: true;
+    def version = projectJson["version"];
+    jslGitHubCloneRepo("po-enterprise-shell", "CenturyLink", "master", env.GITHUB_TOKEN_CREDENTIALS)
+    updateBranchChi(version);
+    return version
+  }
+}
+
+def deleteShellFolder() {
+  sh(script: """
+  rm -rf po-enterprise-shell
+  """)
+}
+
+def pushBranchChiVue(version) {
+  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITHUB_TOKEN_CREDENTIALS,
+                   usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
+    sh(script: """
+        set +x
+        git config credential.helper  "!f() {echo username=${env.USERNAME}; echo password=${env.ACCESS_TOKEN}; }"
+        git config --global user.email "cicdint0@lumen.com"
+        cd po-enterprise-shell
+        git status
+        git add package-lock.json package.json
+        git commit -m "New version on ${env.PROJECT_NAME}: ${version}"
+        git push https://\${USERNAME}:\${ACCESS_TOKEN}@github.com/CenturyLink/po-enterprise-shell.git
+        """, returnStdout: true, label: 'pushBranchChiVue')
+  }
+}
+
+def pushBranchChi(version) {
+  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITHUB_TOKEN_CREDENTIALS,
+                    usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
+  sh(script: """
+    set +x
+    git config credential.helper "!f() {echo username=${env.USERNAME}; echo password=${env.ACCESS_TOKEN}; }"
+    git config --global user.email "cicdint0@lumen.com"
+    cd po-enterprise-shell
+    git status
+    git add .env
+    git commit -m "New Chi version: ${version}"
+    git push https://\${USERNAME}:\${ACCESS_TOKEN}@github.com/CenturyLink/po-enterprise-shell.git
+  """, returnStdout: true)
+  }
+}
+
+def updateChiVueOnShell() {
+  def shellJson = readJSON file: 'po-enterprise-shell/package.json', returnPojo: true;
+  def projectJson = readJSON file: 'src/chi-vue/package.json', returnPojo: true;
+  def version = projectJson["version"];
+  if (version != null && version != "" && shellJson["dependencies"]["@centurylink/chi-vue"] != null) {
+    shellJson["dependencies"]["@centurylink/chi-vue"] = version
+    writeJSON file: 'po-enterprise-shell/package3.json', json: shellJson, pretty: 2
+    sh(script: """
+    ls -l
+    ls -l po-enterprise-shell
+    rm -f po-enterprise-shell/package.json po-enterprise-shell/package2.json
+    mv po-enterprise-shell/package3.json po-enterprise-shell/package.json
+    """, returnStdout: true)
+    return true
+    
+    
+  }
+  return false
+}
+
+def parserEnv(newVersion) {
+  def filePath = "po-enterprise-shell/.env"
+  def fileDestiny = "po-enterprise-shell/.env2"
+  def fileBegin = readFile filePath
+  def completeStr = ""
+  list = fileBegin.readLines()
+  list.each {
+    info = it.split("=")
+    if (info[0] == "VUE_APP_CHI_VERSION") {
+        completeStr = completeStr + "VUE_APP_CHI_VERSION=${newVersion}\n"
+      } else if (info[0] == "VUE_APP_CHI_CSS_VERSIONS_ALLOWED") {
+        def oldVersions = info[1].trim()
+        completeStr = completeStr + "VUE_APP_CHI_CSS_VERSIONS_ALLOWED=${oldVersions},${newVersion}\n"
+      } else {
+        completeStr = completeStr + "${it}" + "\n"
+      }
+  }
+  writeFile file: fileDestiny, text: completeStr
+}
+
+def updateChiOnShell() {
+  def projectJson = readJSON file: 'package.json', returnPojo: true;
+  def version = projectJson["version"]
+  parserEnv(version)
+  sh(script: """
+  ls -l
+  echo "${version}"
+  export VERSION_UPDATE_CHI_SHELL=${version}
+  cat po-enterprise-shell/.env2
+  rm po-enterprise-shell/.env
+  mv po-enterprise-shell/.env2 po-enterprise-shell/.env
+  """, returnStdout: true)
+}
+
+def createPRInShellVueChi() {
+  unstash name: "VERSION_BUMP_VUE_CHI"
+  def changed = readFile file: "version_bump_vue_chi"
+  if (changed.trim() == "yes") {
+    def result = false
+    def version = ""
+    version = createBranchChiVue()
+
+    result = updateChiVueOnShell()
+    if (result) {
+      publishAutoPRChiVue(version)
+    }
+    deleteShellFolder()
+  }
+}
+
+def publishAutoPRChiVue(version) {
+  dir("po-enterprise-shell") {
+    jslNpmWrapper("install", env.GITHUB_TOKEN_SHELL_CREDENTIALS)
+  }
+  pushBranchChiVue(version)
+  if (version != "") {
+    configFileProvider([configFile(fileId: 'jira-ticket-auto-pr', variable: 'configFileJira')]) {
+      def props = readProperties file: "$configFileJira"
+      def ticket = props['ticket']
+      def titleName = "${ticket} Update chi-vue to version ${version}"
+      def bodyString = "Update ${env.PROJECT_NAME} version to ${version}"
+      def headName = "chi-vue-new-version-${version}"
+      def baseName = "master"
+      def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS
+      def repoPR = "po-enterprise-shell"
+      jslGitHubPRCreate(titleName, bodyString, headName, baseName, githubCredentials, repoPR)
+    }
+  }
+}
+
+def createPRInShellChi() {
+  unstash name: "VERSION_BUMP"
+  def changed = readFile file: "version_bump"
+  if (changed.trim() == "yes") {
+    def result = false
+    def version = ""
+    version = createBranchChi()
+    result = updateChiOnShell()
+    if (result) {
+      publishAutoPRChi(version)
+    }
+  }
+  deleteShellFolder()
+}
+
+def publishAutoPRChi(version) {
+  pushBranchChi(version)
+  if (version != "") {
+    configFileProvider([configFile(fileId: 'jira-ticket-auto-pr', variable: 'configFileJira')]) {
+      def props = readProperties file: "$configFileJira"
+      def ticket = props['ticket']
+      def titleName = "${ticket} Update chi version to ${version}"
+      def bodyString = "Update chi version to ${version}"
+      def headName = "chi-new-version-${version}"
+      def baseName = "master"
+      def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS
+      def repoPR = "po-enterprise-shell"
+      jslGitHubPRCreate(titleName, bodyString, headName, baseName, githubCredentials, repoPR)
+    }
+  }
+}
+
+def check_pack() {
+  sh(script: """
+    set +x
+    git whatchanged -1 --format=oneline
+    git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
+    rm -rf version_bump
+    if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
+      echo "change in package.json"
+      echo -n "yes" > version_bump
+    else
+      echo "no change in package.json"
+      echo -n "no" > version_bump
+    fi
+    cat version_bump
+    """, label: "Package version validation")
+}
+
+def check_vue_pack() {
+  sh(script: """
+  set +x
+  git diff HEAD~2 src/chi-vue/package.json | grep '"version":' || echo No chi-vue package.json changes
+    rm -rf version_bump_chi_vue
+    if [ \$(git diff HEAD~2 src/chi-vue/package.json | grep '"version":' | wc -l) -eq 2 ]; then
+      echo -n "yes" > version_bump_vue_chi
+      echo "change in chi-vue"
+    else
+      echo -n "no" > version_bump_vue_chi
+      echo "no change in chi-vue"
+    fi
+    echo "All good."
+    """, label: "Package version validation")
+}
+
+def check_package() {
+  check_pack()
+  check_vue_pack()
 }

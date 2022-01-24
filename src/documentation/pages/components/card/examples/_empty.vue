@@ -20,7 +20,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -34,7 +33,7 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<div class="chi-card -empty">
   <div class="chi-card__content">
     <div class="chi-card__caption">This is an empty card</div>
@@ -44,7 +43,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Empty extends Vue {
-  mounted() {}
-}
+export default class Empty extends Vue {}
 </script>
