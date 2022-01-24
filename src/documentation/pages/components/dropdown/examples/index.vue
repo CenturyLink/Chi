@@ -77,7 +77,5 @@ import FlexibleHeight from './_flexible_height.vue';
     TruncateLongMenuItems
   }
 })
-export default class Examples extends Vue {
-  mounted() {}
-}
+export default class Examples extends Vue {}
 </script>
