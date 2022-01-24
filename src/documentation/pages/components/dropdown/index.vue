@@ -31,7 +31,5 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     };
   }
 })
-export default class Dropdown extends Vue {
-  mounted() {}
-}
+export default class Dropdown extends Vue {}
 </script>
