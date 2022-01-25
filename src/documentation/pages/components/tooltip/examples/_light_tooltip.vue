@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Light" id="base" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Light" id="light" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Use light tooltips for rendering tooltips on dark backgrounds. 
     .-bg--black(slot="example")
@@ -12,6 +12,8 @@
       <code v-highlight="$data.codeSnippets.vue" class="html"></code>
     </pre>
     <Wrapper slot="code-htmlblueprint">
+      .p--text(class="chi-tab__description")
+        | To use, apply the <code>data-tooltip-color="light"</code> attribute to the Tooltip trigger element.
       <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
@@ -59,7 +61,7 @@ declare const chi: any;
 })
 export default class LightTooltip extends Vue {
   mounted() {
-    setTimeout(function() {
+    setTimeout(() => {
       chi.tooltip(document.querySelectorAll('[data-tooltip]'));
     }, 1000);
   }

@@ -1,39 +1,22 @@
 <template lang="pug">
-  <ComponentExample title="Components contained" id="components-contained" padding="-p--0" :tabs="exampleTabs">
-    p.-text(slot="example-description")
-      | As navigation component is built from other primitive Chi components, most of the components behavior
-      | can be replicated on the navigation component. For example, you can use the <code>-animate</code> class
-      | on the dropdowns to make the chevron rotate when activated.
-
-    .-p--3.-pb--4(slot="example")
-      ul.chi-tabs.chi-navigationExample#navigation-components-contained
-        li.chi-dropdown.-active
-          a.chi-dropdown__trigger.-animate(href='#') Active Tab
-          .chi-dropdown__menu
-            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 1
-            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 2
-            div
-              a.chi-dropdown__menu-item.chi-dropdown__trigger.-animate(href='#') Elem 3 more
-              .chi-dropdown__menu
-                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
-                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
-                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
-                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
-            a.chi-dropdown__menu-item(href='#') Elem 4
-        li
-          a(href='#exampleHashTarget') Tab Link
-        li
-          a(href='#exampleHashTarget') Tab Link
-        li.chi-dropdown
-          a.chi-dropdown__trigger.-animate(href='#') Tab Link
-          .chi-dropdown__menu
-            a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 1
-            a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 2
-            a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 3
+  <ComponentExample title="Positioning" id="positioned-tooltip" padding="-p--0" :tabs="exampleTabs">
+    .-p--3(slot="example")
+      button(data-tooltip='Your top tooltip text').chi-button.-mr--2.-mb--2.-mb-md--0 Top Tooltip
+      button(data-tooltip='Your right tooltip text' data-position='right').chi-button.-mr--2.-mb--2.-mb-md--0 Right Tooltip
+      button(data-tooltip='Your bottom tooltip text' data-position='bottom').chi-button.-mr--2.-mb--2.-mb-md--0 Bottom Tooltip
+      button(data-tooltip='Your left tooltip text' data-position='left').chi-button.-mr--2.-mb--2.-mb-md--0 Left Tooltip
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
+    <pre class="language-html" slot="code-vue">
+      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
+      .p--text(class="chi-tab__description")
+        | By default, tooltip is positioned on top of the element. To alter position, use
+        | the <code>data-position</code> attribute. Valid values are <code>top</code>,
+        | <code>right</code>, <code>bottom</code>, <code>left</code>. You can pass an array
+        | of Elements and initialize all at once.
       <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
@@ -58,47 +41,45 @@ declare const chi: any;
         },
         {
           active: true,
+          id: 'vue',
+          label: 'Vue',
+        },
+        {
+          active: false,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-tabs" id="navigation-components-contained">
-  <li class="chi-dropdown -active">
-    <a class="chi-dropdown__trigger -animate" href="#">Active Tab</a>
-    <div class="chi-dropdown__menu" x-placement="bottom-start">
-      <a class="chi-dropdown__menu-item" href="#">Elem 1</a><a class="chi-dropdown__menu-item" href="#">Elem 2</a>
-      <div>
-        <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
-        <div class="chi-dropdown__menu">
-          <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
-        </div>
-      </div><a class="chi-dropdown__menu-item" href="#">Elem 4</a>
-    </div>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li class="chi-dropdown">
-    <a class="chi-dropdown__trigger" href="#">Tab Link</a>
-    <div class="chi-dropdown__menu">
-      <a class="chi-dropdown__menu-item" href="#">Element 1</a><a class="chi-dropdown__menu-item" href="#">Element 2</a><a class="chi-dropdown__menu-item" href="#">Element 3</a>
-    </div>
-  </li>
-</ul>
+        vue: `<ChiTooltip message="Your top tooltip text" position="top">
+  <button class="chi-button">Top Tooltip</button>
+</ChiTooltip>
+<ChiTooltip message="Your right tooltip text" position="right">
+  <button class="chi-button">Right Tooltip</button>
+</ChiTooltip>
+<ChiTooltip message="Your bottom tooltip text" position="bottom">
+  <button class="chi-button">Bottom Tooltip</button>
+</ChiTooltip>
+<ChiTooltip message="Your left tooltip text" position="left">
+  <button class="chi-button">Left Tooltip</button>
+</ChiTooltip>`,
+        htmlblueprint: `<button class="chi-button" data-tooltip="Your top tooltip text">Top Tooltip</button>
+<button class="chi-button" data-tooltip="Your right tooltip text" data-position="right">Right Tooltip</button>
+<button class="chi-button" data-tooltip="Your bottom tooltip text" data-position="bottom">Bottom Tooltip</button>
+<button class="chi-button" data-tooltip="Your left tooltip text" data-position="left">Left Tooltip</button>
 
-<script>chi.navigation(document.getElementById('navigation-components-contained'));<\/script>`,
+<script>chi.tooltip(document.getElementById('data-tooltip'));<\/script>
+`,
       },
     };
   },
 })
 export default class PositionedTooltip extends Vue {
   mounted() {
-    chi.navigation(document.getElementById('navigation-components-contained'));
+    setTimeout(() => {
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+    }, 1000);
   }
 }
 </script>

@@ -3,7 +3,8 @@
     h2 Examples
 
     <BaseTooltip />
-    <LightTooltip />
+    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+      <LightTooltip />
     <DisabledTooltip />
     <PositionedTooltip />
     <LongTooltip />

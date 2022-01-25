@@ -1,94 +1,22 @@
 <template lang="pug">
-  <ComponentExample title="Horizontal" id="horizontal" padding="-p--0" :tabs="exampleTabs">
-    ul#chi-tabs--menu.chi-tabs(
-      role="tablist"
-      aria-label="chi-tabs-horizontal-examples"
-      slot="example")
-      li.-active
-        a(
-          href='#chi-tabs-panel--horizontal-base'
-          role="tab"
-          aria-selected="true"
-          aria-controls="chi-tabs-panel--horizontal-base") Base
-      li
-        a(
-          href='#chi-tabs-panel--horizontal-inverse'
-          role="tab"
-          aria-selected="false"
-          tabindex="-1"
-          aria-controls="chi-tabs-panel--horizontal-inverse") Inverse
-      #chi-tabs-panel--horizontal-base.chi-tabs-panel.-active
-        .-p--3.-bg--grey-20
-          .-bg--white.-px--3
-            ul.chi-tabs#example-horizontal-base(
-              role="tablist"
-              aria-label="chi-tabs-horizontal")
-              li.-active
-                a(
-                  href='#horizontal-base-1'
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="horizontal-base-1"
-                  ) Active Tab
-              li
-                a(
-                  href='#horizontal-base-2'
-                  role="tab"
-                  aria-selected="false"
-                  tabindex="-1"
-                  aria-controls="horizontal-base-2") Tab Link
-              li
-                a(
-                  href='#horizontal-base-3'
-                  role="tab"
-                  aria-selected="false"
-                  tabindex="-1"
-                  aria-controls="horizontal-base-3"
-                  ) Tab Link
-            .-py--3
-              .chi-tabs-panel.-active#horizontal-base-1(role="tabpanel")
-                .-text Tab 1 content
-              .chi-tabs-panel#horizontal-base-2(role="tabpanel")
-                .-text Tab 2 content
-              .chi-tabs-panel#horizontal-base-3(role="tabpanel")
-                .-text Tab 3 content
-
-      #chi-tabs-panel--horizontal-inverse.chi-tabs-panel(role="tabpanel")
-        .-p--3.-bg--grey-20
-          .-bg--black.-px--3
-            ul.chi-tabs.-inverse#example-horizontal-inverse(role="tablist" aria-label="chi-tabs-horizontal-inverse")
-              li.-active
-                a(
-                  href='#horizontal-inverse-1'
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="horizontal-inverse-1") Active Tab
-              li
-                a(
-                  href='#horizontal-inverse-2'
-                  role="tab"
-                  aria-selected="false"
-                  tabindex="-1"
-                  aria-controls="horizontal-inverse-2") Tab Link
-              li
-                a(
-                  href='#horizontal-inverse-3'
-                  role="tab"
-                  aria-selected="false"
-                  tabindex="-1"
-                  aria-controls="horizontal-inverse-3") Tab Link
-          .-bg--white.-p--3
-            .chi-tabs-panel.-active#horizontal-inverse-1(role="tabpanel")
-              .-text Tab 1 content
-            .chi-tabs-panel#horizontal-inverse-2(role="tabpanel")
-              .-text Tab 2 content
-            .chi-tabs-panel#horizontal-inverse-3(role="tabpanel")
-              .-text Tab 3 content
-
+  <ComponentExample title="Long Tooltips" id="long-tooltip" padding="-p--0" :tabs="exampleTabs">
+    p.-text(slot="example-description")
+      | Long Tooltips will be truncated on the fourth line. To display text beyond four lines,
+      | use the <a href="../../components/popover">Popover</a> component
+    .-p--3(slot="example")
+      button(data-tooltip='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas et interdum purus. ' +
+      'Curabitur varius libero, vel hendrerit enim tincidunt sit amet. Ut eros purus, semper nec ipsum et, ' +
+      'maximus faucibus suscipit nibh.').chi-button.-mr--2.-mb--2.-mb-md--0 Hover me to see tooltip
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
+    <pre class="language-html" slot="code-vue">
+      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
+      .p--text(class="chi-tab__description")
+        | To render a tooltip, apply the <code>data-tooltip</code> attribute to an element. Then
+        | initialize it with the chi.tooltip factory method.
       <JSNeeded />
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
@@ -113,46 +41,32 @@ declare const chi: any;
         },
         {
           active: true,
+          id: 'vue',
+          label: 'Vue',
+        },
+        {
+          active: false,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-tabs" id="example-horizontal-base" role="tablist" aria-label="chi-tabs-horizontal">
-  <li class="-active">
-    <a
-      href="#horizontal-base-1"
-      role="tab"
-      aria-selected="true"
-      aria-controls="horizontal-base-1">Active Tab</a>
-  </li>
-  <li role="tab">
-    <a
-      href="#horizontal-base-2"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="horizontal-base-2">Tab Link</a>
-  </li>
-  <li role="tab">
-    <a
-      href="#horizontal-base-3"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="horizontal-base-3">Tab Link</a>
-  </li>
-</ul>
+        vue: `<ChiTooltip message="Lorem ipsum...">
+  <button class="chi-button">Hover me to see tooltip</button>
+</ChiTooltip>`,
+        htmlblueprint: `<button class="chi-button" data-tooltip="Lorem ipsum...">Hover me to see tooltip</button>
 
-<div class="chi-tabs-panel -active" id="horizontal-base-1" role="tabpanel">Tab 1 content</div>
-<div class="chi-tabs-panel" id="horizontal-base-2" role="tabpanel">Tab 2 content</div>
-<div class="chi-tabs-panel" id="horizontal-base-3" role="tabpanel">Tab 3 content</div>
-
-<script>chi.tab(document.getElementById('example-horizontal-base'));<\/script>`,
+<script>chi.tooltip(document.getElementById('data-tooltip'));<\/script>`,
       },
     };
   },
 })
 export default class LongTooltip extends Vue {
-  mounted() {}
+  mounted() {
+    setTimeout(() => {
+      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+    }, 1000);
+  }
 }
 </script>
