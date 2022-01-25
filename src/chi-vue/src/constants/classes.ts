@@ -10,9 +10,17 @@ export const ANIMATED_CLASS = '-animated';
 export const PORTAL_CLASS = '-portal';
 export const TRANSITIONING_CLASS = '-transitioning';
 export const SR_ONLY = '-sr--only';
+export const EXPAND_CLASS = '-expand';
 export const EXPANDED_CLASS = '-expanded';
 export const COLLAPSED_CLASS = '-collapsed';
 export const ONE_LINK_TX = 'OneLinkTx';
+export const GENERIC_SIZES = {
+  XS: '-xs',
+  SM: '-sm',
+  MD: '-md',
+  LG: '-lg',
+  XL: '-xl',
+};
 //#endregion
 
 //#region Accordion
@@ -30,7 +38,7 @@ export const BULK_ACTIONS_CLASSES = {
   BULK_ACTIONS_TOP: 'chi-bulk-actions__top',
   BULK_ACTIONS_START: 'chi-bulk-actions__start',
   BULK_ACTIONS_RESULTS: 'chi-bulk-actions__results',
-  BULK_ACTIONS_LABELS: 'chi-bulk-actions__label',
+  BULK_ACTIONS_LABEL: 'chi-bulk-actions__label',
   BULK_ACTIONS_END: 'chi-bulk-actions__end',
   BULK_ACTIONS_BUTTONS: 'chi-bulk-actions__buttons',
   BULK_ACTIONS_BUTTONS_MOBILE: 'chi-bulk-actions__buttons-mobile',
@@ -208,6 +216,8 @@ export const TOOLTIP_CLASSES = {
 //#region Utility Classes
 export const UTILITY_CLASSES = {
   Z_INDEX: {
+    Z_10: '-z--10',
+    Z_30: '-z--30',
     Z_40: '-z--40',
   },
   ALIGN_ITEMS: {
