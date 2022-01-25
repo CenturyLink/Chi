@@ -31,7 +31,5 @@ import { standardComponentPageTabs } from '../../../../constants/constants';
     };
   }
 })
-export default class Checkbox extends Vue {
-  mounted() {}
-}
+export default class Checkbox extends Vue {}
 </script>
