@@ -77,9 +77,7 @@ declare const chi: any;
 })
 export default class PositionedTooltip extends Vue {
   mounted() {
-    setTimeout(() => {
-      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
-    }, 1000);
+    chi.tooltip(document.querySelectorAll('[data-tooltip]'));
   }
 }
 </script>

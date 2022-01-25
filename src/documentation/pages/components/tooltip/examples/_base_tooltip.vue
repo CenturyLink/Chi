@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Base" id="base-tooltip" padding="-p--0" :tabs="exampleTabs">
     .-p--3(slot="example")
       button(data-tooltip='Your tooltip text on a button').chi-button Hover me to see tooltip
     <pre class="language-html" slot="code-webcomponent">
@@ -60,9 +60,7 @@ declare const chi: any;
 })
 export default class BaseTooltip extends Vue {
   mounted() {
-    setTimeout(() => {
-      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
-    }, 1000);
+    chi.tooltip(document.querySelectorAll('[data-tooltip]'));
   }
 }
 </script>

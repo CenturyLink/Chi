@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Light" id="light" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Light" id="light-tooltip" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Use light tooltips for rendering tooltips on dark backgrounds. 
     .-bg--black(slot="example")
@@ -61,9 +61,7 @@ declare const chi: any;
 })
 export default class LightTooltip extends Vue {
   mounted() {
-    setTimeout(() => {
-      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
-    }, 1000);
+    chi.tooltip(document.querySelectorAll('[data-tooltip]'));
   }
 }
 </script>

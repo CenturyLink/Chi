@@ -64,9 +64,7 @@ declare const chi: any;
 })
 export default class LongTooltip extends Vue {
   mounted() {
-    setTimeout(() => {
-      chi.tooltip(document.querySelectorAll('[data-tooltip]'));
-    }, 1000);
+    chi.tooltip(document.querySelectorAll('[data-tooltip]'));
   }
 }
 </script>
