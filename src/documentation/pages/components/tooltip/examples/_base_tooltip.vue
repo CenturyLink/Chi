@@ -1,7 +1,6 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base-tooltip" padding="-p--0" :tabs="exampleTabs">
-    .-p--3(slot="example")
-      button(data-tooltip='Your tooltip text on a button').chi-button Hover me to see tooltip
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
+    button(data-tooltip='Your tooltip text on a button' slot="example").chi-button Hover me to see tooltip
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -40,7 +39,6 @@ declare const chi: any;
           label: 'Vue',
         },
         {
-          active: false,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
@@ -58,7 +56,7 @@ declare const chi: any;
     };
   },
 })
-export default class BaseTooltip extends Vue {
+export default class Base extends Vue {
   mounted() {
     chi.tooltip(document.querySelectorAll('[data-tooltip]'));
   }

@@ -1,6 +1,6 @@
 <template lang="pug">
-  <ComponentExample title="Positioning" id="positioned-tooltip" padding="-p--0" :tabs="exampleTabs">
-    .-p--3(slot="example")
+  <ComponentExample title="Positioning" id="positioned" :tabs="exampleTabs">
+    div(slot="example")
       button(data-tooltip='Your top tooltip text').chi-button.-mr--2.-mb--2.-mb-md--0 Top Tooltip
       button(data-tooltip='Your right tooltip text' data-position='right').chi-button.-mr--2.-mb--2.-mb-md--0 Right Tooltip
       button(data-tooltip='Your bottom tooltip text' data-position='bottom').chi-button.-mr--2.-mb--2.-mb-md--0 Bottom Tooltip
@@ -45,7 +45,6 @@ declare const chi: any;
           label: 'Vue',
         },
         {
-          active: false,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
@@ -75,7 +74,7 @@ declare const chi: any;
     };
   },
 })
-export default class PositionedTooltip extends Vue {
+export default class Positioning extends Vue {
   mounted() {
     chi.tooltip(document.querySelectorAll('[data-tooltip]'));
   }

@@ -1,8 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Tooltip on disabled buttons" id="disabled-tooltip" padding="-p--0" :tabs="exampleTabs">
-    .-p--3(slot="example")
-      span#tooltip-disabled-button(data-tooltip='Tooltip message for a disabled button')
-        button(disabled).chi-button Hover me to see tooltip
+  <ComponentExample title="Tooltip on disabled buttons" id="disabled" :tabs="exampleTabs">
+    span#tooltip-disabled-button(data-tooltip='Tooltip message for a disabled button' slot="example")
+      button(disabled).chi-button Hover me to see tooltip
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -42,7 +41,6 @@ declare const chi: any;
           label: 'Vue',
         },
         {
-          active: false,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
@@ -61,7 +59,7 @@ declare const chi: any;
     };
   },
 })
-export default class DisabledTooltip extends Vue {
+export default class Disabled extends Vue {
   mounted() {
     chi.tooltip(document.querySelectorAll('[data-tooltip]'));
   }

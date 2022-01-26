@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Light" id="light-tooltip" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Light" id="light" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Use light tooltips for rendering tooltips on dark backgrounds. 
     .-bg--black(slot="example")
@@ -42,7 +42,6 @@ declare const chi: any;
           label: 'Vue',
         },
         {
-          active: false,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
@@ -59,7 +58,7 @@ declare const chi: any;
     };
   },
 })
-export default class LightTooltip extends Vue {
+export default class Light extends Vue {
   mounted() {
     chi.tooltip(document.querySelectorAll('[data-tooltip]'));
   }
