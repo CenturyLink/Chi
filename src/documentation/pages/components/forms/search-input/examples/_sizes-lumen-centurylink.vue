@@ -1,10 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Sizes" id="sizes-lumen-centurylink" :tabs="exampleTabs">
     div(slot="example-description")
       p.-text Search input supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
         |  <code>lg</code>, <code>xl</code>.
         | The default size is <code>md</code>.
-    .-p--3(slot="example")
+    .-p--0(slot="example")
       .chi-grid
       each size in ['xs', 'sm', 'md', 'lg', 'xl']
         .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
@@ -36,12 +36,10 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'Web component',
         },
         {
-          active: false,
           id: 'vue',
           label: 'Vue',
         },
         {
-          active: false,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },

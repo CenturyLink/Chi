@@ -1,10 +1,9 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" padding="-p--0" :tabs="exampleTabs">
-    .-p--3(slot="example")
-      .chi-grid
-        .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
-          .chi-form__item
-            chi-search-input
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
+    .chi-grid(slot="example")
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-search-input
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -30,12 +29,10 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'Web component',
         },
         {
-          active: false,
           id: 'vue',
           label: 'Vue',
         },
         {
-          active: false,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },

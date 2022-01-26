@@ -4,17 +4,15 @@
 
     <Base />
     <Disabled />
-    div(v-if="$store.state.themes.theme === 'portal'")
-      <SizesPortal />
-    div(v-else)
-      <SizesLumenCenturyLink />
+    <SizesPortal v-if="$store.state.themes.theme === 'portal'" />
+    <SizesLumenCenturyLink v-else />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Base from './_base.vue';
 import Disabled from './_disabled.vue';
-import SizesLumenCenturyLink from './_sizes.vue';
+import SizesLumenCenturyLink from './_sizes-lumen-centurylink.vue';
 import SizesPortal from './_portal_sizes.vue';
 
 @Component({
