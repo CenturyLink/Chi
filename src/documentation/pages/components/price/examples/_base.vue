@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" padding="-p--3" :tabs="exampleTabs">
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
     .chi-price.-m--3(slot="example")
       sup
         | $
