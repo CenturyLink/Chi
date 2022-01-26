@@ -571,6 +571,46 @@ describe('Data Table', () => {
     });
   });
 
+  describe('All selected', () => {
+    it('Should have the select all checkbox checked by default', () => {
+      cy.get(`[data-cy='data-table-all-selected'] .${DATA_TABLE_CLASSES.ROW}`)
+        .as('rows')
+        .should('have.length', 4);
+      hasClassAssertion('@rows', `${ACTIVE_CLASS}`);
+      cy.get('@rows')
+        .find('input')
+        .as('checkboxes')
+        .should('be.checked');
+    });
+
+    it('Should keep the select all checkbox checked upon pagination change', () => {
+      cy.get(`[data-cy='data-table-all-selected'] .${DATA_TABLE_CLASSES.ROW}`)
+        .as('rows')
+        .find('input')
+        .as('checkboxes')
+        .should('be.checked');
+
+      cy.get(
+        `[data-cy='data-table-server-side'] .${PAGINATION_CLASSES.PAGINATION}`
+      )
+        .as('pagination')
+        .find(`.${ICON_BUTTON}`)
+        .as('paginationIcons')
+        .eq(2)
+        .click()
+        .then(() => {
+          cy.get('@checkboxes').should('be.checked');
+        });
+
+      cy.get('@paginationIcons')
+        .eq(0)
+        .click()
+        .then(() => {
+          cy.get('@checkboxes').should('be.checked');
+        });
+    });
+  });
+
   describe('Radio selection', () => {
     beforeEach(() => {
       cy.get(`[data-cy='data-table-radio']`)
