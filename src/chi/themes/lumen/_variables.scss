@@ -966,6 +966,7 @@ $link-cta-padding-left:                     0;
 $link-cta-position-right:                   0.375rem;
 $link-cta-hover-position-right:             0;
 $link-cta-padding-right:                    2rem;
+$link-cta-hover-color:                      $color-navy-100;
 
 // Marketing icon
 $marketing-icon-primary-color:              $color-icon-primary-dark;
@@ -1288,6 +1289,7 @@ $select-danger-border-color:                $color-border-danger;
 $select-danger-text-color:                  $color-text-base;
 $select-disabled-opacity:                   $opacity-60;
 $select-box-shadow:                         0 1px 1px 0 rgba($color-black, 0.04);
+$select-option-checked-background-color:    $color-background-primary-light;
 
 $select-xs-height:                          1.5rem;
 $select-xs-font-size:                       $font-size-xs;
@@ -1436,6 +1438,7 @@ $steps-item-completed-line-border-color:    $color-border-primary;
 $steps-item-active-content-font-weight:     $font-weight-semi-bold;
 $steps-item-active-title-font-weight:       $font-weight-semi-bold;
 $steps-item-active-count-text-color:        $color-text-white;
+$steps-item-active-icon-color:              $color-icon-primary;
 $steps-item-title-text-color:               $color-text-base;
 
 $steps-inverse-background-color:            $color-background-black;

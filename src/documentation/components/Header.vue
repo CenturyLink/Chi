@@ -4,10 +4,14 @@
     style(type='text/css').
       .theme-lumen a.theme-trigger-lumen.chi-dropdown__menu-item,
       .theme-portal a.theme-trigger-portal.chi-dropdown__menu-item,
-      .theme-centurylink a.theme-trigger-centurylink.chi-dropdown__menu-item,
-      .theme-brightspeed a.theme-trigger-brightspeed.chi-dropdown__menu-item {
+      .theme-centurylink a.theme-trigger-centurylink.chi-dropdown__menu-item {
         background-color: #e6f0ff;
         color: #0047bb;
+        font-weight: 600;
+      }
+      .theme-brightspeed a.theme-trigger-brightspeed.chi-dropdown__menu-item {
+        background-color: #fff1bf;
+        color: #000;
         font-weight: 600;
       }
       .-lumen--show,
@@ -48,6 +52,11 @@
       .theme-brightspeed .-portal--hide.-brightspeed--hide {
         display: none;
       }
+      .theme-brightspeed .-portal--hide,
+      .theme-brightspeed .-centurylink--hide,
+      .theme-brightspeed .-lumen--hide {
+        display: none;
+      }
       .theme-portal .-lumen--hide,
       .theme-portal .-centurylink--hide,
       .theme-portal .-brightspeed--hide,
@@ -57,9 +66,7 @@
       .theme-lumen .-portal--hide,
       .theme-lumen .-centurylink--hide,
       .theme-lumen .-brightspeed--hide,
-      .theme-brightspeed .-portal--hide,
-      .theme-brightspeed .-centurylink--hide,
-      .theme-brightspeed .-lumen--hide {
+      .theme-brightspeed .-brightspeed--show {
         display: block;
       }
       .chi-brand {
