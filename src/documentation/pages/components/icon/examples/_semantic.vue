@@ -33,7 +33,6 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'Web component',
         },
         {
-          active: false,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },

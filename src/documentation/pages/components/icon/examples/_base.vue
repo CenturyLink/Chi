@@ -1,7 +1,6 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" padding="-p--0" :tabs="exampleTabs">
-    .-p--3(slot="example")
-      chi-icon(icon='atom')
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
+    chi-icon(icon='atom' slot="example")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -24,7 +23,6 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'Web component',
         },
         {
-          active: false,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },

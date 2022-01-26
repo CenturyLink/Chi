@@ -19,8 +19,7 @@
       | Easily change an icon's color using the examples below.
     <Brand />
     <Semantic />
-    div(v-if="['lumen', 'portal'].includes($store.state.themes.theme)")
-      <BrandComplimentary />
+    <BrandComplimentary v-if="['lumen', 'portal'].includes($store.state.themes.theme)" />
     <Icons />
 </template>
 

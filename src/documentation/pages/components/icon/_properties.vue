@@ -7,10 +7,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component({
-  data: () => {
-    return {};
-  }
-})
+@Component({})
 export default class Properties extends Vue {}
 </script>
