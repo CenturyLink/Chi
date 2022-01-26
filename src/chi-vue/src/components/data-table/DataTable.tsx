@@ -477,7 +477,9 @@ export default class DataTable extends Vue {
   }
 
   _selectRowCheckbox(selectAll: boolean, rowData: DataTableRow | null = null) {
-    const checkedState = rowData && rowData.rowNumber && this.selectedRows.includes(rowData.rowId);
+    const checkedState =
+      (selectAll && this.slicedData.every((row: DataTableRow) => row.selected)) ||
+      (rowData && rowData.rowNumber && this.selectedRows.includes(rowData.rowId));
 
     if (selectAll || !!rowData) {
       const checkboxId =
