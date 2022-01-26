@@ -1,12 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" padding="-p--0" :tabs="exampleTabs">
-    .-p--3(slot="example")
-      .chi-price.-m--3
-        sup
-          | $
-        | 100
-        sup
-          | 00
+  <ComponentExample title="Base" id="base" padding="-p--3" :tabs="exampleTabs">
+    .chi-price.-m--3(slot="example")
+      sup
+        | $
+      | 100
+      sup
+        | 00
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
