@@ -27,7 +27,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -50,7 +49,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Sizes extends Vue {
-  mounted() {}
-}
+export default class Sizes extends Vue {}
 </script>

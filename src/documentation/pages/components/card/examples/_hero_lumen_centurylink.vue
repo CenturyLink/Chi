@@ -22,7 +22,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -36,7 +35,7 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<div class="chi-card">
   <img class="chi-card__hero" src="..." alt="Card Image">
   <div class="chi-card__content">
@@ -47,7 +46,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class HeroLumenCenturylinkLumenCenturylink extends Vue {
-  mounted() {}
-}
+export default class HeroLumenCenturylinkLumenCenturylink extends Vue {}
 </script>
