@@ -561,6 +561,8 @@ $button-primary-outline-active-border-color:  $color-border-primary-darker;
 $button-primary-flat-text-color:            $color-text-primary;
 $button-primary-flat-hover-text-color:      $color-text-primary;
 $button-primary-flat-active-text-color:     $color-text-primary;
+$button-primary-flat-hover-border-color:    transparent;
+$button-primary-flat-active-border-color:   transparent;
 
 $button-secondary-solid-background-color:     $color-background-secondary;
 $button-secondary-solid-border-color:         $color-border-secondary;
@@ -579,6 +581,8 @@ $button-secondary-outline-active-border-color:  $color-border-secondary;
 $button-secondary-flat-text-color:            $color-text-secondary;
 $button-secondary-flat-hover-text-color:      $color-text-secondary-dark;
 $button-secondary-flat-active-text-color:     $color-text-secondary-darker;
+$button-secondary-flat-hover-border-color:    transparent;
+$button-secondary-flat-active-border-color:   transparent;
 
 $button-dark-solid-background-color:        $color-background-dark;
 $button-dark-solid-border-color:            $color-border-dark;
@@ -597,6 +601,8 @@ $button-dark-outline-active-border-color:   $color-border-dark;
 $button-dark-flat-text-color:               $color-text-base;
 $button-dark-flat-hover-text-color:         $color-text-black;
 $button-dark-flat-active-text-color:        $color-text-black;
+$button-dark-flat-hover-border-color:       transparent;
+$button-dark-flat-active-border-color:      transparent;
 
 $button-danger-solid-background-color:      $color-background-danger;
 $button-danger-solid-border-color:          $color-border-danger;
@@ -615,6 +621,8 @@ $button-danger-outline-active-border-color: $color-border-danger;
 $button-danger-flat-text-color:             $color-text-danger;
 $button-danger-flat-hover-text-color:       $color-text-danger-dark;
 $button-danger-flat-active-text-color:      $color-text-danger-darker;
+$button-danger-flat-hover-border-color:     transparent;
+$button-danger-flat-active-border-color:    transparent;
 
 $button-light-solid-background-color:       $color-background-white;
 $button-light-solid-border-color:           $color-border-white;
@@ -633,6 +641,8 @@ $button-light-outline-active-border-color:  $color-border-white;
 $button-light-flat-text-color:              $color-text-white;
 $button-light-flat-hover-text-color:        $color-grey-25;
 $button-light-flat-active-text-color:       $color-grey-40;
+$button-light-flat-hover-border-color:      transparent;
+$button-light-flat-active-border-color:     transparent;
 
 $button-xs-font-size:                       $font-size-xs;
 $button-xs-line-height:                     $line-height-sm;

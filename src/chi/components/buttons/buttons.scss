@@ -13,6 +13,8 @@ $button-colors: (
     border-color-outline: $button-primary-outline-border-color,
     border-color-outline-hover: $button-primary-outline-hover-border-color,
     border-color-outline-active: $button-primary-outline-active-border-color,
+    border-color-flat-hover: $button-primary-flat-hover-border-color,
+    border-color-flat-active: $button-primary-flat-active-border-color,
     text-color: $button-primary-solid-text-color,
     text-color-outline: $button-primary-outline-text-color,
     text-color-outline-hover: $button-primary-outline-hover-text-color,
@@ -29,6 +31,8 @@ $button-colors: (
     border-color-outline: $button-secondary-solid-border-color,
     border-color-outline-hover: $button-secondary-solid-hover-border-color,
     border-color-outline-active: $button-secondary-solid-active-border-color,
+    border-color-flat-hover: $button-secondary-flat-hover-border-color,
+    border-color-flat-active: $button-secondary-flat-active-border-color,
     text-color: $button-secondary-solid-text-color,
     text-color-outline: $button-secondary-outline-text-color,
     text-color-outline-hover: $button-secondary-outline-hover-text-color,
@@ -45,6 +49,8 @@ $button-colors: (
     border-color-outline: $button-dark-solid-border-color,
     border-color-outline-hover: $button-dark-solid-hover-border-color,
     border-color-outline-active: $button-dark-solid-active-border-color,
+    border-color-flat-hover: $button-dark-flat-hover-border-color,
+    border-color-flat-active: $button-dark-flat-active-border-color,
     text-color: $button-dark-solid-text-color,
     text-color-outline: $button-dark-outline-text-color,
     text-color-outline-hover: $button-dark-outline-hover-text-color,
@@ -61,6 +67,8 @@ $button-colors: (
     border-color-outline: $button-danger-solid-border-color,
     border-color-outline-hover: $button-danger-solid-hover-border-color,
     border-color-outline-active: $button-danger-solid-active-border-color,
+    border-color-flat-hover: $button-danger-flat-hover-border-color,
+    border-color-flat-active: $button-danger-flat-active-border-color,
     text-color: $button-danger-solid-text-color,
     text-color-outline: $button-danger-outline-text-color,
     text-color-outline-hover: $button-danger-outline-hover-text-color,
@@ -77,6 +85,8 @@ $button-colors: (
     border-color-outline: $button-light-solid-border-color,
     border-color-outline-hover: $button-light-solid-hover-border-color,
     border-color-outline-active: $button-light-solid-active-border-color,
+    border-color-flat-hover: $button-light-flat-hover-border-color,
+    border-color-flat-active: $button-light-flat-active-border-color,
     text-color: $button-light-solid-text-color,
     text-color-outline: $button-light-outline-text-color,
     text-color-outline-hover: $button-light-outline-hover-text-color,
@@ -539,13 +549,13 @@ $sizes: (
         &:not(.-no-hover) {
           &:hover,
           &.-hover {
-            border: $border solid map-get(map-get($button-colors, $color), border-color);
+            border: $border solid map-get(map-get($button-colors, $color), border-color-flat-hover);
           }
 
           &:active,
           &.-active {
             background-color: transparent;
-            border: $border solid map-get(map-get($button-colors, $color), border-color);
+            border: $border solid map-get(map-get($button-colors, $color), border-color-flat-active);
             box-shadow: none;
           }
         }
