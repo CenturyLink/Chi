@@ -1,12 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="Multiple Labels" id="multiple-labels" padding="-p--0" :tabs="exampleTabs">
-    .-p--3(slot="example")
-      .chi-form__item
-        label(class="chi-label", for="range03") Range label
-        .chi-input__wrapper.-d--flex
-          span.-text.-mr--2 200GB
-          input(type="range", class="chi-range-slider", id="range03")
-          span.-text.-ml--2 5TB
+  <ComponentExample title="Multiple Labels" id="multiple-labels" :tabs="exampleTabs">
+    .chi-form__item(slot="example")
+      label(class="chi-label", for="range03") Range label
+      .chi-input__wrapper.-d--flex
+        span.-text.-mr--2 200GB
+        input(type="range", class="chi-range-slider", id="range03")
+        span.-text.-ml--2 5TB
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

@@ -1,9 +1,8 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled" padding="-p--0" :tabs="exampleTabs">
-    .-p--3(slot="example")
-      .chi-form__item
-        label(class="chi-label", for="range02") Range label
-        input(class="chi-range-slider", type="range", id="range02" disabled)
+  <ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs">
+    .chi-form__item(slot="example")
+      label(class="chi-label", for="range02") Range label
+      input(class="chi-range-slider", type="range", id="range02" disabled)
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

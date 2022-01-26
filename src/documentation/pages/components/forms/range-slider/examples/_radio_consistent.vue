@@ -1,28 +1,27 @@
 <template lang="pug">
-  <ComponentExample title="Consistent rendering in WebKit browsers" id="radio-consistent" padding="-p--0" :tabs="exampleTabs">
-    .-p--3(slot="example")
-      .chi-form__item
-        label(class="chi-label", for="range09") Range label
-        .chi-input__wrapper
-          input(class="chi-range-slider", type="range", min="0", max="4", step="1", id="range09")
-          .chi-input__tick-bar
-            div
-              .chi-input__tick
-              .chi-input__tick-label Monthly
-            div
-              .chi-input__tick
-              .chi-input__tick-label 1 year
-            div
-              .chi-input__tick
-              .chi-input__tick-label 2 years
-            div
-              .chi-input__tick
-              .chi-input__tick-label 3 years
-            div
-              .chi-input__tick
-              .chi-input__tick-label > 3 years
-          .chi-input__progress
-          .chi-input__thumb
+  <ComponentExample title="Consistent rendering in WebKit browsers" id="radio-consistent" :tabs="exampleTabs">
+    .chi-form__item(slot="example")
+      label(class="chi-label", for="range09") Range label
+      .chi-input__wrapper
+        input(class="chi-range-slider", type="range", min="0", max="4", step="1", id="range09")
+        .chi-input__tick-bar
+          div
+            .chi-input__tick
+            .chi-input__tick-label Monthly
+          div
+            .chi-input__tick
+            .chi-input__tick-label 1 year
+          div
+            .chi-input__tick
+            .chi-input__tick-label 2 years
+          div
+            .chi-input__tick
+            .chi-input__tick-label 3 years
+          div
+            .chi-input__tick
+            .chi-input__tick-label > 3 years
+        .chi-input__progress
+        .chi-input__thumb
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

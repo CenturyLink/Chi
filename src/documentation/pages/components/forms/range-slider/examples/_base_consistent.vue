@@ -1,12 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base-consistent" padding="-p--0" :tabs="exampleTabs">
-    .-p--3(slot="example")
-      .chi-form__item
-        label(class="chi-label", for="range04") Range label
-        .chi-input__wrapper
-          input(class="chi-range-slider", type="range", id="range04")
-          .chi-input__progress
-          .chi-input__thumb
+  <ComponentExample title="Base" id="base-consistent" :tabs="exampleTabs">
+    .chi-form__item(slot="example")
+      label(class="chi-label", for="range04") Range label
+      .chi-input__wrapper
+        input(class="chi-range-slider", type="range", id="range04")
+        .chi-input__progress
+        .chi-input__thumb
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
