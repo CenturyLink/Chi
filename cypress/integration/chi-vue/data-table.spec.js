@@ -60,6 +60,10 @@ const DATA_TABLE_EVENTS = {
   EXPANSION: {
     EXPANDED: 'chiRowExpanded',
     COLLAPSED: 'chiRowCollapsed'
+  },
+  BULK_ACTIONS: {
+    SHOW_SELECTED_ONLY: 'chiShowSelectedRowsOnly',
+    CANCEL: 'chiCancel'
   }
 };
 const PAGINATION_EVENTS = {
@@ -74,6 +78,18 @@ const UTILITY_CLASSES = {
 const TOOLTIP_CLASSES = {
   TOOLTIP: 'chi-tooltip'
 };
+const BULK_ACTIONS_CLASSES = {
+  BULK_ACTIONS: 'chi-bulk-actions',
+  START: 'chi-bulk-actions__start',
+  END: 'chi-bulk-actions__end',
+  BUTTONS: 'chi-bulk-actions__buttons',
+  BUTTONS_DESKTOP: 'chi-bulk-actions__buttons-desktop',
+  BUTTONS_MOBILE: 'chi-bulk-actions__buttons-mobile',
+  LABEL: 'chi-bulk-actions__label',
+}
+const CHECKBOXES_CLASSES = {
+  LABEL: 'chi-checkbox__label'
+}
 
 const hasClassAssertion = (el, value) => {
   cy.get(el).should('have.class', value);
@@ -349,22 +365,21 @@ describe('Data Table', () => {
     headCellsTooltips.forEach((isVisible, index) => {
       const assertion = !isVisible ? 'not.exist' : 'exist';
 
-      it(`Tooltip element ${index} should ${
-        !isVisible ? 'not' : ''
-      } exist as the label is ${!isVisible ? 'not' : ''} truncated`, () => {
-        cy.get(`[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD}`)
-          .find(`.${DATA_TABLE_CLASSES.CELL}`)
-          .eq(index)
-          .children()
-          .first()
-          .as('trigger')
-          .trigger('mouseenter')
-          .then(() => {
-            cy.get('@trigger')
-              .find(`.${TOOLTIP_CLASSES.TOOLTIP}`)
-              .should(assertion);
-          });
-      });
+      it(`Tooltip element ${index} should ${!isVisible ? 'not' : ''
+        } exist as the label is ${!isVisible ? 'not' : ''} truncated`, () => {
+          cy.get(`[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD}`)
+            .find(`.${DATA_TABLE_CLASSES.CELL}`)
+            .eq(index)
+            .children()
+            .first()
+            .as('trigger')
+            .trigger('mouseenter')
+            .then(() => {
+              cy.get('@trigger')
+                .find(`.${TOOLTIP_CLASSES.TOOLTIP}`)
+                .should(assertion);
+            });
+        });
     });
   });
 
@@ -1172,6 +1187,238 @@ describe('Data Table', () => {
           cy.get('@rows')
             .first()
             .should('contain', 'Name 1');
+        });
+    });
+  });
+
+  describe.only('Bulk Actions', () => {
+    beforeEach(() => {
+      cy.get(`[data-cy='data-table-bulk-actions']`)
+        .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
+        .as('selectables');
+      cy.get(`[data-cy='data-table-bulk-actions'] 
+        .${PAGINATION_CLASSES.PAGINATION}`).as('pagination');
+      cy.get(`[data-cy='data-table-bulk-actions'] 
+        .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`)
+        .as('rows');
+    });
+
+    it('Should create bulk actions when row is selected', () => {
+      cy.get('@selectables')
+        .eq(1)
+        .click();
+      cy.get(`[data-cy='data-table-bulk-actions']`)
+        .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS}`)
+        .should('be.visible');
+    });
+
+    it('Should select "Show selected only" and show all the selected rows', () => {
+      cy.window()
+        .its('dataTableBulkActionsExample')
+        .then(dataTableBulkActionsExample => {
+          const paginationResults = '1';
+          const selected = '1';
+          const spy = cy.spy();
+          const dataTableRef = dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
+
+          dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY}`, spy);
+          cy.get(`[data-cy='data-table-bulk-actions']`)
+            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+            .${CHECKBOXES_CLASSES.LABEL}`)
+            .click()
+            .then(() => {
+              cy.get('@selectables')
+                .find('input')
+                .should('be.checked');
+              cy.get(
+                `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
+                    .${PAGINATION_CLASSES.RESULTS}`
+              )
+                .find('span')
+                .contains(`${paginationResults} results`);
+              cy.get(`[data-cy='data-table-bulk-actions']`)
+                .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+                  .${BULK_ACTIONS_CLASSES.LABEL}`)
+                .contains(`Actions (${selected} Selected)`);
+              cy.get("@rows").should("have.length", 1);
+              expect(spy).to.be.calledOnce;
+            });
+        })
+    });
+
+    it('Should deselect "Show selected only" and show data table is still in its original state', () => {
+      cy.window()
+        .its('dataTableBulkActionsExample')
+        .then(dataTableBulkActionsExample => {
+          const paginationResults = '6';
+          const selected = '1';
+          const spy = cy.spy();
+          const dataTableRef = dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
+
+          dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY}`, spy);
+          cy.get(`[data-cy='data-table-bulk-actions']`)
+            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+            .${CHECKBOXES_CLASSES.LABEL}`)
+            .click()
+            .then(() => {
+              cy.get(`[data-cy='data-table-bulk-actions']`)
+                .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
+                .as('selectablesAfterClick');
+              cy.get('@selectablesAfterClick')
+                .eq(1)
+                .find('input')
+                .should('be.checked');
+              cy.get('@selectablesAfterClick')
+                .eq(2)
+                .find('input')
+                .should('not.be.checked');
+              cy.get(
+                `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
+                    .${PAGINATION_CLASSES.RESULTS}`
+              )
+                .find('span')
+                .contains(`${paginationResults} results`);
+              cy.get(`[data-cy='data-table-bulk-actions']`)
+                .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+                  .${BULK_ACTIONS_CLASSES.LABEL}`)
+                .contains(`Actions (${selected} Selected)`);
+              cy.get("@rows").should("have.length", 3);
+              expect(spy).to.be.calledOnce;
+            });
+        });
+    });
+
+    it('Should close bulk actions and show data table is still in its original state', () => {
+      cy.window()
+        .its('dataTableBulkActionsExample')
+        .then(dataTableBulkActionsExample => {
+          const spy = cy.spy();
+          const dataTableRef = dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
+          const paginationResults = '6';
+
+          dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL}`, spy);
+          cy.get(`[data-cy='data-table-bulk-actions']`)
+            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END}`)
+            .click()
+            .then(() => {
+              cy.get(`[data-cy='data-table-bulk-actions']`)
+                .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS}`)
+                .should('not.be.visible');
+              cy.get('@selectables')
+                .find('input')
+                .should('not.be.checked');
+              cy.get("@rows").should("have.length", 3);
+              cy.get(
+                `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
+                    .${PAGINATION_CLASSES.RESULTS}`
+              )
+                .find('span')
+                .contains(`${paginationResults} results`);
+              expect(spy).to.be.calledOnce;
+            });
+        });
+    });
+
+    it.skip('Should close bulk actions when "Show selected only" is active and show data table is still in its original state', () => {
+      cy.window()
+        .its('dataTableBulkActionsExample')
+        .then(dataTableBulkActionsExample => {
+          const spy = cy.spy();
+          const dataTableRef = dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
+          const paginationResults = '6';
+
+          dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL}`, spy);
+          cy.get('@selectables')
+            .eq(1)
+            .click();
+          cy.get(`[data-cy='data-table-bulk-actions']`)
+            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+            .${CHECKBOXES_CLASSES.LABEL}`)
+            .click();
+          cy.get(`[data-cy='data-table-bulk-actions']`)
+            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END}`)
+            .click()
+            .then(() => {
+              cy.get(`[data-cy='data-table-bulk-actions']`)
+                .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS}`)
+                .should('not.be.visible');
+              cy.get('@selectables')
+                .find('input')
+                .should('not.be.checked');
+              cy.get("@rows").should("have.length", 3);
+              cy.get(
+                `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
+                  .${PAGINATION_CLASSES.RESULTS}`
+              )
+                .find('span')
+                .contains(`${paginationResults} results`);
+              expect(spy).to.be.calledOnce;
+            });
+        });
+    });
+
+    it('Should show custom action buttons (desktop)', () => {
+      cy.get('@selectables')
+        .eq(1)
+        .click();
+      cy.get(`[data-cy='data-table-bulk-actions']`)
+        .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.BUTTONS} 
+          .${BULK_ACTIONS_CLASSES.BUTTONS_DESKTOP}`)
+        .should('be.visible');
+      cy.get(`[data-cy='data-table-bulk-actions']`)
+        .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.BUTTONS} 
+          .${BULK_ACTIONS_CLASSES.BUTTONS_MOBILE}`)
+        .should('not.be.visible');
+    });
+
+    it('Should go to page 2 and selected number of rows should be the same number', () => {
+      const selected = '1';
+
+      cy.get('@selectables')
+        .eq(0)
+        .dblclick();
+      cy.get('@selectables')
+        .eq(1)
+        .click();
+      cy.get(`@pagination`)
+        .find(`.${ICON_BUTTON}`)
+        .eq(1)
+        .click()
+        .then(() => {
+          cy.get(`[data-cy='data-table-bulk-actions']`)
+            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+                  .${BULK_ACTIONS_CLASSES.LABEL}`)
+            .contains(`Actions (${selected} Selected)`);
+        });
+      cy.get(`@pagination`)
+        .find(`.${ICON_BUTTON}`)
+        .eq(0)
+        .click();
+    });
+
+    it('Should go to page 2 and selected number of rows should update', () => {
+      const selected = '2';
+
+      cy.get(`@pagination`)
+        .find(`.${ICON_BUTTON}`)
+        .eq(1)
+        .click()
+        .then(() => {
+          cy.get('@selectables')
+            .eq(1)
+            .click();
+          cy.get(`[data-cy='data-table-bulk-actions']`)
+            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+                .${BULK_ACTIONS_CLASSES.LABEL}`)
+            .contains(`Actions (${selected} Selected)`);
+          cy.get(`@pagination`)
+            .find(`.${ICON_BUTTON}`)
+            .eq(0)
+            .click();
+          cy.get(`[data-cy='data-table-bulk-actions']`)
+            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+                  .${BULK_ACTIONS_CLASSES.LABEL}`)
+            .contains(`Actions (${selected} Selected)`);
         });
     });
   });
