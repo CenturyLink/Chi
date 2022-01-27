@@ -1286,6 +1286,129 @@ export default class DataTable extends Vue {
     }
   }
 
+  _printHead() {
+    return (
+      <thead>
+        <tr>
+          {Object.keys(this.data.head).map((column: string) => {
+            return <th>{this.data.head[column].label}</th>;
+          })}
+        </tr>
+      </thead>
+    );
+  }
+
+  _printFooter() {
+    const resultsCount =
+      this.mode === DataTableModes.CLIENT
+        ? this._showSelectedOnly
+          ? this.selectedRows.length
+          : this.data.body.length
+        : this.config.pagination.results;
+
+    return (
+      <tfoot>
+        <tr>
+          <td colspan={Object.keys(this.data.head).length}>{resultsCount} results</td>
+        </tr>
+      </tfoot>
+    );
+  }
+
+  _printBody() {
+    if (this.data.body.length > 0) {
+      return (
+        <tbody>
+          {this._serializedDataBody.map((bodyRow: DataTableRow) => {
+            return this.printRow(bodyRow, 'parent');
+          })}
+        </tbody>
+      );
+    } else {
+      return (
+        <tbody>
+          <tr>
+            <td colspan={Object.keys(this.data.head).length} class={DATA_TABLE_CLASSES.EMPTY}>
+              {this.config.noResultsMessage ? this.config.noResultsMessage : 'No results found'}
+            </td>
+          </tr>
+        </tbody>
+      );
+    }
+  }
+
+  printRow(bodyRow: DataTableRow, rowLevel: DataTableRowLevels = 'parent') {
+    const row: any[] = [];
+    const rowCells: JSX.Element[] = [];
+    const rowAccordionContent = [];
+
+    if (this._expandable && bodyRow.nestedContent) {
+      rowAccordionContent.push(
+        this._printRowAccordionContent(bodyRow.nestedContent, rowLevel === 'child' ? 'child' : 'parent')
+      );
+    }
+
+    bodyRow.data.forEach((rowCell: any, index: number) => {
+      let cellData: any;
+
+      if (!!rowCell.template && !!this.$scopedSlots[rowCell.template]) {
+        if (typeof rowCell === 'object' && rowCell.payload) {
+          // eslint-disable-next-line
+          cellData = this.$scopedSlots[rowCell.template]!(rowCell.payload);
+        }
+      } else if (typeof rowCell === 'object' && !!rowCell.value) {
+        cellData = rowCell.value;
+      } else if (typeof rowCell === 'string' || typeof rowCell === 'number') {
+        cellData = rowCell;
+      } else {
+        cellData = null;
+      }
+
+      if (index === 0 && rowLevel === 'grandChild') {
+        rowCells.push(<td class="-pl--6">{cellData}</td>);
+      } else if (index === 0 && rowLevel === 'child') {
+        rowCells.push(<td class="-pl--4">{cellData}</td>);
+      } else {
+        rowCells.push(<td>{cellData}</td>);
+      }
+    });
+
+    row.push(<tr>{rowCells}</tr>);
+
+    if (bodyRow.nestedContent) {
+      row.push(rowAccordionContent);
+    }
+
+    return row;
+  }
+
+  _printRowAccordionContent(accordionData: DataTableRowNestedContent, contentLevel: 'parent' | 'child') {
+    if (accordionData.template) {
+      // eslint-disable-next-line
+      const template = this.$scopedSlots[accordionData.template]!(accordionData.payload);
+
+      return (
+        <tr>
+          <td colspan={Object.keys(this.data.head).length} class={`-pl--4`}>
+            {template}
+          </td>
+        </tr>
+      );
+    } else if (accordionData.table && accordionData.table.data) {
+      return accordionData.table.data.map((bodyRow: DataTableRow) => {
+        return this.printRow(bodyRow, contentLevel === 'child' ? 'grandChild' : 'child');
+      });
+    } else {
+      return (
+        <tr>
+          <td colspan={Object.keys(this.data.head).length} class={`-pl--4`}>
+            {accordionData.value}
+          </td>
+        </tr>
+      );
+    }
+  }
+
   render() {
     const classes = this._dataTableClasses(this.config.style, this._sortable),
       head = this._head(),
@@ -1293,14 +1416,26 @@ export default class DataTable extends Vue {
       bulkActions = this._bulkActions(),
       body = this._body(),
       pagination = this._pagination();
+    const printHead = this._printHead();
+    const printBody = this._printBody();
+    const printFooter = this._printFooter();
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
-        {toolbar}
-        {bulkActions}
-        {head}
-        {body}
-        {pagination}
+        <div class="default-view">
+          {toolbar}
+          {bulkActions}
+          {head}
+          {body}
+          {pagination}
+        </div>
+        <div class="print-only">
+          <table class="chi-table">
+            {printHead}
+            {printBody}
+            {printFooter}
+          </table>
+        </div>
       </div>
     );
   }

@@ -32,6 +32,14 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
   overflow-y: initial;
   width: 100%;
 
+  .default-view {
+    display: block;
+  }
+
+  .print-only {
+    display: none;
+  }
+
   @include respond-to(md) {
     display: flex;
     flex-direction: column;
@@ -866,6 +874,41 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
               }
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media print {
+  .chi-data-table {
+    .default-view {
+      display: none;
+    }
+
+    .print-only {
+      display: block;
+
+      .chi-table {
+        transform-style: preserve-3d;
+
+        thead {
+          display: table-row-group;
+        }
+
+        tbody {
+          tr {
+            td::before,
+            td::after {
+              content: '';
+              height: 0.25rem;
+              display: block;
+            }
+          }
+        }
+
+        tfoot {
+          display: table-row-group;
         }
       }
     }
