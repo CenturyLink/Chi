@@ -3,12 +3,9 @@
     p.-text(slot="example-description")
       | Use double truncation when the current page is separated by 5 or more pages from the first and last page.
     .chi-grid.-no-gutter(slot="example")
-      .chi-col.-w--12
-        .-p--3
-          chi-pagination(pages="12" current-page="6")
-      .chi-col.-w--12
-        .-p--3.-bg--black
-          chi-pagination(pages="12" current-page="6" inverse)
+      .chi-col.-w--12(v-for="item in [1, 2]")
+        .-p--3(:class="item === 2 ? '-bg--black' : ''")
+          chi-pagination(pages="12" current-page="6" :inverse="item === 2 ? true : false")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

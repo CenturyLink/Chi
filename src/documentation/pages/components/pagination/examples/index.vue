@@ -12,7 +12,7 @@
       <Compact />
       <AdditionalSizesLumenCenturyLink />
       
-    div(v-if="$store.state.themes.theme === 'portal'")
+    div(v-else)
       <Portal />
 </template>
 

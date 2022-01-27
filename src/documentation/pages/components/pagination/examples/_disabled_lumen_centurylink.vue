@@ -1,18 +1,12 @@
 <template lang="pug">
   <ComponentExample title="Disabled" id="disabled-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
     .chi-grid.-no-gutter(slot="example")
-      .chi-col.-w--12.-w-md--6
-        .-p--3
-          p.-text--bold Disabled previous button
-          chi-pagination(pages="5" current-page="1")
-          p.-text--bold Disabled next button
-          chi-pagination(pages="5" current-page="5")
-      .chi-col.-w--12.-w-md--6
-        .-p--3.-bg--black
-          p.-text--bold.-text--white Disabled previous button
-          chi-pagination(pages="5" current-page="1" inverse)
-          p.-text--bold.-text--white Disabled next button
-          chi-pagination(pages="5" current-page="5" inverse)
+      .chi-col.-w--12.-w-md--6(v-for="item in [1, 2]")
+        .-p--3(:class="item === 2 ? '-bg--black' : ''")
+          p.-text--bold(:class="item === 2 ? '-text--white' : ''") Disabled previous button
+          chi-pagination(pages="5" current-page="1" :inverse="item === 2 ? true : false")
+          p.-text--bold(:class="item === 2 ? '-text--white' : ''") Disabled next button
+          chi-pagination(pages="5" current-page="5" :inverse="item === 2 ? true : false")
     <Wrapper slot="code-webcomponent">
       .chi-tab__description
         span

@@ -1,12 +1,9 @@
 <template lang="pug">
   <ComponentExample title="Page Jumper" id="compact-page-jumper-lumen-centurylink" :tabs="exampleTabs" padding="-p--0" titleSize="h4">
     .chi-grid.-no-gutter(slot="example")
-      .chi-col.-w--12.-w-md--6
-        .-p--3
-          chi-pagination(pages="3" current-page="2" compact page-jumper)
-      .chi-col.-w--12.-w-md--6
-        .-p--3.-bg--black
-          chi-pagination(pages="3" current-page="2" compact page-jumper inverse)
+      .chi-col.-w--12.-w-md--6(v-for="item in [1, 2]")
+        .-p--3(:class="item === 2 ? '-bg--black' : ''")
+          chi-pagination(pages="3" current-page="2" compact page-jumper :inverse="item === 2 ? true : false")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
