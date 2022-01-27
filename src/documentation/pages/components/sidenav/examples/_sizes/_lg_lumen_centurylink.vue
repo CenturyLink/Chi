@@ -71,6 +71,7 @@ declare const chi: any;
           label: 'Web component'
         },
         {
+          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint'
         }
