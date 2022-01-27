@@ -7,7 +7,7 @@
       .chi-label__wrapper
         label(class="chi-label" for="example-he1") Label
         .chi-label__help
-          button(class="chi-button -icon -xs -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover")
+          button(class="chi-button -icon -xs -flat" ref="helpButton" aria-label="Help" data-target="#example__help-popover")
             i(class="chi-icon icon-circle-info-outline" aria-hidden="true")
           section(class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top")
             .chi-popover__content
@@ -37,7 +37,6 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -81,7 +80,7 @@ declare const chi: any;
 })
 export default class Help extends Vue {
   mounted() {
-    chi.popover(document.getElementById('example__help-button'));
+    chi.popover(this.$refs.helpButton);
   }
 }
 </script>

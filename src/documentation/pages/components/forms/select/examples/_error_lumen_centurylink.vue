@@ -27,7 +27,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -59,5 +58,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class ErrorLumenCenturylink extends Vue {}
+export default class ErrorLumenCenturyLink extends Vue {}
 </script>

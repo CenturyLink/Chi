@@ -4,23 +4,14 @@
       | Floating labels are a solution to keep the placeholder visible when no label is attached to the select. 
       | Chi only supports floating labels on <code>-lg</code> and <code>-xl</code> selects.
     <Wrapper slot="example">
-      .chi-col.-w--12.-p--2
-        .chi-input__wrapper.-floating-label(id="floating-label-lg" style="max-width:20rem")
-          select(class="chi-select -lg" id="floating-label-select-lg")
+      .chi-col.-w--12.-p--2(v-for="size in sizes")
+        .chi-input__wrapper.-floating-label(:id="`floating-label-${size}`" style="max-width:20rem" :ref="`label-${size}`")
+          select(:class="`chi-select -${size}`" :id="`floating-label-select-${size}`")
             option
             option Option 1
             option Option 2
             option Option 3
-          label(for="floating-label-select-lg") Placeholder text
-        
-      .chi-col.-w--12.-p--2
-        .chi-input__wrapper.-floating-label(id="floating-label-xl" style="max-width:20rem")
-          select(class="chi-select -xl" id="floating-label-select-xl")
-            option
-            option Option 1
-            option Option 2
-            option Option 3
-          label(for="floating-label-select-xl") Placeholder text
+          label(:for="`floating-label-select-${size}`") Placeholder text
     </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -42,7 +33,6 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -82,9 +72,13 @@ declare const chi: any;
     };
   }
 })
-export default class FloatingLabelsLumenCenturylink extends Vue {
+export default class FloatingLabelsLumenCenturyLink extends Vue {
+  sizes = ['lg', 'xl'];
+
   mounted() {
-    chi.floatingLabel(document.querySelectorAll('.-floating-label'));
+    this.sizes.forEach(size => {
+      chi.floatingLabel(this.$refs[`label-${size}`]);
+    });
   }
 }
 </script>

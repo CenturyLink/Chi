@@ -3,23 +3,14 @@
     p.-text(slot="example-description") 
       | Floating labels are a solution to keep the placeholder visible when no label is attached to the select.
     <Wrapper slot="example">
-      .chi-col.-w--12.-p--2
-        .chi-input__wrapper.-floating-label(id="floating-label-md" style="max-width:20rem")
-          select(class="chi-select -md" id="floating-label-select-md")
+      .chi-col.-w--12.-p--2(v-for="size in sizes")
+        .chi-input__wrapper.-floating-label(:id="`floating-label-${size}`" style="max-width:20rem" :ref="`label-${size}`")
+          select(:class="`chi-select -${size}`" :id="`floating-label-select-${size}`")
             option
             option Option 1
             option Option 2
             option Option 3
-          label(for="floating-label-select-md") Placeholder text
-        
-      .chi-col.-w--12.-p--2
-        .chi-input__wrapper.-floating-label(id="floating-label-lg" style="max-width:20rem")
-          select(class="chi-select -lg" id="floating-label-select-lg")
-            option
-            option Option 1
-            option Option 2
-            option Option 3
-          label(for="floating-label-select-lg") Placeholder text
+          label(:for="`floating-label-select-${size}`") Placeholder text
     </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -41,7 +32,6 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -82,8 +72,12 @@ declare const chi: any;
   }
 })
 export default class FloatingLabelsPortal extends Vue {
+  sizes = ['md', 'lg'];
+
   mounted() {
-    chi.floatingLabel(document.querySelectorAll('.-floating-label'));
+    this.sizes.forEach(size => {
+      chi.floatingLabel(this.$refs[`label-${size}`]);
+    });
   }
 }
 </script>
