@@ -5,7 +5,7 @@
       .chi-input__wrapper.-d--flex
         span.-text.-mr--2 200GB
         .chi-input__wrapper.-w--100
-          input(type="range", class="chi-range-slider", id="range06")
+          input(type="range", class="chi-range-slider", ref="range06")
           .chi-input__progress
           .chi-input__thumb
         span.-text.-ml--2 5TB
@@ -63,7 +63,7 @@ declare const chi: any;
 })
 export default class MultipleConsistent extends Vue {
   mounted() {
-    chi.rangeSlider(document.getElementById('range06'));
+    chi.rangeSlider(this.$refs.range06);
   }
 }
 </script>

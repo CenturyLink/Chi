@@ -3,7 +3,7 @@
     .chi-form__item(slot="example")
       label(class="chi-label", for="range04") Range label
       .chi-input__wrapper
-        input(class="chi-range-slider", type="range", id="range04")
+        input(class="chi-range-slider", type="range", ref="range04")
         .chi-input__progress
         .chi-input__thumb
     <pre class="language-html" slot="code-webcomponent">
@@ -56,7 +56,7 @@ declare const chi: any;
 })
 export default class BaseConsistent extends Vue {
   mounted() {
-    chi.rangeSlider(document.getElementById('range04'));
+    chi.rangeSlider(this.$refs.range04);
   }
 }
 </script>

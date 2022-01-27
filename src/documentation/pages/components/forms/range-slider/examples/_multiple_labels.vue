@@ -4,7 +4,7 @@
       label(class="chi-label", for="range03") Range label
       .chi-input__wrapper.-d--flex
         span.-text.-mr--2 200GB
-        input(type="range", class="chi-range-slider", id="range03")
+        input(type="range", class="chi-range-slider", ref="range03")
         span.-text.-ml--2 5TB
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -56,7 +56,7 @@ declare const chi: any;
 })
 export default class MultipleLabels extends Vue {
   mounted() {
-    chi.rangeSlider(document.getElementById('range03'));
+    chi.rangeSlider(this.$refs.range03);
   }
 }
 </script>

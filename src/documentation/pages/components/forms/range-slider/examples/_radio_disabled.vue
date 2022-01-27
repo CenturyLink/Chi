@@ -5,21 +5,10 @@
       .chi-input__wrapper
         input(class="chi-range-slider", type="range", min="0", max="4", step="1", id="range08", disabled)
         .chi-input__tick-bar
-          div
+          div(v-for="range in rangeLabel")
+            div
             .chi-input__tick
-            .chi-input__tick-label Monthly
-          div
-            .chi-input__tick
-            .chi-input__tick-label 1 year
-          div
-            .chi-input__tick
-            .chi-input__tick-label 2 years
-          div
-            .chi-input__tick
-            .chi-input__tick-label 3 years
-          div
-            .chi-input__tick
-            .chi-input__tick-label > 3 years
+            .chi-input__tick-label {{ range }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -50,6 +39,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
+      rangeLabel: ['Monthly', '1 year', '2 years', '3 years', '> 3 years'],
       codeSnippets: {
         webcomponent: ``,
         htmlblueprint: `<div class="chi-form__item">

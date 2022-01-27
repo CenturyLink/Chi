@@ -3,23 +3,12 @@
     .chi-form__item(slot="example")
       label(class="chi-label", for="range09") Range label
       .chi-input__wrapper
-        input(class="chi-range-slider", type="range", min="0", max="4", step="1", id="range09")
+        input(class="chi-range-slider", type="range", min="0", max="4", step="1", ref="range09")
         .chi-input__tick-bar
-          div
+          div(v-for="range in rangeLabel")
+            div
             .chi-input__tick
-            .chi-input__tick-label Monthly
-          div
-            .chi-input__tick
-            .chi-input__tick-label 1 year
-          div
-            .chi-input__tick
-            .chi-input__tick-label 2 years
-          div
-            .chi-input__tick
-            .chi-input__tick-label 3 years
-          div
-            .chi-input__tick
-            .chi-input__tick-label > 3 years
+            .chi-input__tick-label {{ range }}
         .chi-input__progress
         .chi-input__thumb
     <pre class="language-html" slot="code-webcomponent">
@@ -54,6 +43,7 @@ declare const chi: any;
           label: 'HTML blueprint',
         },
       ],
+      rangeLabel: ['Monthly', '1 year', '2 years', '3 years', '> 3 years'],
       codeSnippets: {
         webcomponent: ``,
         htmlblueprint: `<div class="chi-form__item">
@@ -94,7 +84,7 @@ declare const chi: any;
 })
 export default class RadioConsistent extends Vue {
   mounted() {
-    chi.rangeSlider(document.getElementById('range09'));
+    chi.rangeSlider(this.$refs.range09);
   }
 }
 </script>
