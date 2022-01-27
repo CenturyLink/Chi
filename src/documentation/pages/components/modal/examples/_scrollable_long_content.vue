@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Scrolling long content" id="scrolling-long-content" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Scrolling long content" id="scrollable-long-content" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Enable scrolling when modals become too long for the user’s viewport or device, they scroll independent of the page itself.
     .chi-backdrop.-p--6.-position--relative.-z--0.-mh--480(slot="example")
@@ -111,5 +111,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class ScrollLong extends Vue {}
+export default class ScrollableLongContent extends Vue {}
 </script>

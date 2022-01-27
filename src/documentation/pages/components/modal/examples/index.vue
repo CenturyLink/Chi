@@ -11,15 +11,15 @@
       h3 Scrollable
       p.-text 
         | Enable scrolling if the height of the modal's content is larger than the modal's content container.
-      <ScrollReq />
-      <ScrollLong />
+      <ScrollableRequirements />
+      <ScrollableLongContent />
       div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-        <SubTitle />
+        <ModalSubtitle />
         <Inverse />
         <NoBorder />
         <MultiStep />
         <Simple />
-      div(v-if="$store.state.themes.theme === 'portal'")
+      div(v-else)
         <Alert />
         <MultiStep />
 </template>
@@ -31,9 +31,9 @@ import Base from './_base.vue';
 import NoBorder from './_no_border.vue';
 import Center from './_center.vue';
 import Inverse from './_inverse.vue';
-import ScrollLong from './_scrollable_long.vue';
-import SubTitle from './_subtitle.vue';
-import ScrollReq from './_scrollable_requirements.vue';
+import ScrollableLongContent from './_scrollable_long_content.vue';
+import ModalSubtitle from './_subtitle.vue';
+import ScrollableRequirements from './_scrollable_requirements.vue';
 import Simple from './_simple.vue';
 import MultiStep from './_multi_step.vue';
 
@@ -44,9 +44,9 @@ import MultiStep from './_multi_step.vue';
     NoBorder,
     Center,
     Inverse,
-    ScrollLong,
-    ScrollReq,
-    SubTitle,
+    ScrollableLongContent,
+    ScrollableRequirements,
+    ModalSubtitle,
     Simple,
     MultiStep,
   }

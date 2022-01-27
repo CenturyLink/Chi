@@ -1,8 +1,8 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" padding="-p--0" additionalClasses="-position--static" :tabs="exampleTabs">
-    .-p--3(slot="example")
+  <ComponentExample title="Base" id="base" additionalClasses="-position--static" :tabs="exampleTabs">
+    .-p--0(slot="example")
       .-d--flex.-justify-content--start.-align-items--start
-        button#modal-trigger-1.chi-button.-primary.chi-modal__trigger(data-target='#modal-1')
+        button#modal-trigger-1.chi-button.-primary.chi-modal__trigger(data-target='#modal-1' ref="baseModal")
           | Click me to open the modal
       .chi-backdrop.-closed
         .chi-backdrop__wrapper
@@ -87,7 +87,7 @@ declare const chi: any;
 })
 export default class Base extends Vue {
   mounted() {
-    chi.modal(document.getElementById('modal-trigger-1'));
+    chi.modal(this.$refs.baseModal);
   }  
 }
 </script>

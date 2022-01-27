@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Requirements" titleSize="h4" id="requirements" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Requirements" titleSize="h4" id="scrollable-requirements" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | A max-height must be defined on <code>chi-modal__content</code>. Use max-height utility classes
       | such as <code>-mh--400</code> or <code>-mh--480</code>, or define your own value.
@@ -112,5 +112,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class ScrollReq extends Vue {}
+export default class ScrollableRequirements extends Vue {}
 </script>
