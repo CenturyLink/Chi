@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-01-19T18:20:18",
+  "timestamp": "2022-01-27T19:00:59",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2086,6 +2086,28 @@
             }
           ],
           "optional": false,
+          "required": false
+        },
+        {
+          "name": "mode",
+          "type": "\"full-color\" | \"one-color\"",
+          "mutable": false,
+          "attr": "mode",
+          "reflectToAttr": true,
+          "docs": "To render Marketing icon as full color or one color",
+          "docsTags": [],
+          "default": "defaultMode",
+          "values": [
+            {
+              "value": "full-color",
+              "type": "string"
+            },
+            {
+              "value": "one-color",
+              "type": "string"
+            }
+          ],
+          "optional": true,
           "required": false
         },
         {
