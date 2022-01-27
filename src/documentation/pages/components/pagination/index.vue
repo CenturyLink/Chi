@@ -18,6 +18,11 @@ import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
 import { standardComponentPageTabs } from '../../../constants/constants';
 
+Vue.config.ignoredElements = [
+  'chi-pagination',
+  'chi-brand',
+];
+
 @Component({
   components: {
     Accessibility,
