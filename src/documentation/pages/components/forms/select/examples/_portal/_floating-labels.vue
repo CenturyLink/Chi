@@ -4,7 +4,7 @@
       | Floating labels are a solution to keep the placeholder visible when no label is attached to the select.
     <Wrapper slot="example">
       .chi-col.-w--12.-p--2(v-for="size in sizes")
-        .chi-input__wrapper.-floating-label(:id="`floating-label-${size}`" style="max-width:20rem" :ref="`label-${size}`")
+        .chi-input__wrapper.-floating-label(style="max-width:20rem" :ref="`label-${size}`")
           select(:class="`chi-select -${size}`" :id="`floating-label-select-${size}`")
             option
             option Option 1
@@ -75,7 +75,7 @@ export default class FloatingLabelsPortal extends Vue {
   sizes = ['md', 'lg'];
 
   mounted() {
-    this.sizes.forEach(size => {
+    this.sizes.forEach((size: string)  => {
       chi.floatingLabel(this.$refs[`label-${size}`]);
     });
   }

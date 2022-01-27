@@ -5,7 +5,7 @@
       | Chi only supports floating labels on <code>-lg</code> and <code>-xl</code> selects.
     <Wrapper slot="example">
       .chi-col.-w--12.-p--2(v-for="size in sizes")
-        .chi-input__wrapper.-floating-label(:id="`floating-label-${size}`" style="max-width:20rem" :ref="`label-${size}`")
+        .chi-input__wrapper.-floating-label(style="max-width:20rem" :ref="`label-${size}`")
           select(:class="`chi-select -${size}`" :id="`floating-label-select-${size}`")
             option
             option Option 1
@@ -76,7 +76,7 @@ export default class FloatingLabelsLumenCenturyLink extends Vue {
   sizes = ['lg', 'xl'];
 
   mounted() {
-    this.sizes.forEach(size => {
+    this.sizes.forEach((size: string) => {
       chi.floatingLabel(this.$refs[`label-${size}`]);
     });
   }
