@@ -1,16 +1,16 @@
 <template lang="pug">
   <ComponentExample title="-sm" id="sm-size-lumen-centurylink" :tabs="exampleTabs" padding="-p--0">
     .-d--flex.-overflow--hidden(slot="example")
-      aside.chi-sidenav.-flex--shrink0.-sm.-animated#example-size-sm
+      aside.chi-sidenav.-flex--shrink0.-sm.-animated(ref="sidenav")
         .chi-sidenav__content
           nav
             ul.chi-sidenav__list
               li(v-for="val in menuItems" :class="val === activeMenuItem ? '-active' : ''")
-                a(:href="`#drawer-${example}-${val}`")
+                a(:href="`#drawer-3-${val}`")
                   i.chi-icon.icon-atom(aria-hidden="true")
                   span {{ val === activeMenuItem ? 'Active Item' : 'Menu Item' }}
         .chi-sidenav__drawers
-          .chi-drawer.-animated.-left(v-for="val1 in menuItems" :id="`drawer-${example}-${val1}`")
+          .chi-drawer.-animated.-left(v-for="val1 in menuItems" :id="`drawer-3-${val1}`")
             .chi-drawer__header
               .chi-drawer__title Menu item {{val1}}
               button(class='chi-button -icon -close' aria-label='Close')
@@ -60,7 +60,6 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      example: 3,
       menuItems: ['1', '2', '3', '4'],
       drawerMenuItems: ['1', '2'],
       activeMenuItem: '1',
@@ -553,7 +552,7 @@ declare const chi: any;
 })
 export default class SmSizeLumenCenturyLink extends Vue {
   mounted() {
-    chi.sidenav(document.getElementById('example-size-sm'));
+    chi.sidenav(this.$refs.sidenav);
   }
 }
 </script>
