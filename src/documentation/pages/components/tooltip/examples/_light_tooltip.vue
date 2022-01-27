@@ -4,7 +4,7 @@
       | Use light tooltips for rendering tooltips on dark backgrounds. 
     .-bg--black(slot="example")
       .-p--3
-        button.-outline.-light(data-tooltip='Your tooltip text on a button' data-tooltip-color='light').chi-button Hover me to see tooltip
+        button.-outline.-light(data-tooltip='Your tooltip text on a button' data-tooltip-color='light' ref="light").chi-button Hover me to see tooltip
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -60,7 +60,7 @@ declare const chi: any;
 })
 export default class Light extends Vue {
   mounted() {
-    chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+    chi.tooltip(this.$refs.light);
   }
 }
 </script>
