@@ -2,22 +2,22 @@
   div
     h3 Compact
 
-    <CompactBaseLumenCenturylink />
-    <CompactPageJumperLumenCenturylink />
-    <CompactFirstLastPageButtonsLumenCenturylink />
+    <CompactBaseLumenCenturyLink />
+    <CompactPageJumperLumenCenturyLink />
+    <CompactFirstLastPageButtonsLumenCenturyLink />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import CompactBaseLumenCenturylink from './_base_lumen_centurylink.vue';
-import CompactPageJumperLumenCenturylink from './_page-jumper_lumen_centurylink.vue';
-import CompactFirstLastPageButtonsLumenCenturylink from './_first-last-page-buttons_lumen_centurylink.vue';
+import CompactBaseLumenCenturyLink from './_base_lumen_centurylink.vue';
+import CompactPageJumperLumenCenturyLink from './_page-jumper_lumen_centurylink.vue';
+import CompactFirstLastPageButtonsLumenCenturyLink from './_first-last-page-buttons_lumen_centurylink.vue';
 
 @Component({
   components: {
-    CompactBaseLumenCenturylink,
-    CompactPageJumperLumenCenturylink,
-    CompactFirstLastPageButtonsLumenCenturylink
+    CompactBaseLumenCenturyLink,
+    CompactPageJumperLumenCenturyLink,
+    CompactFirstLastPageButtonsLumenCenturyLink
   }
 })
 export default class Compact extends Vue {}
