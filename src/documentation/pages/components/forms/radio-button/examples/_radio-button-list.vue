@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Radio Button List" id="radio_button_list" :tabs="exampleTabs">
+  <ComponentExample title="Radio Button List" id="radio-button-list" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Radio button lists are used to wrap a series of radio buttons in a list. 
       | To render a series of radio buttons in a list, apply the class <code>-list</code> to <code>chi-form__item</code>.
@@ -29,12 +29,9 @@
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
