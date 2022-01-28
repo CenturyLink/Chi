@@ -110,7 +110,7 @@ export class MarketingIcon {
   render() {
     return (
       <div
-        class={`chi-marketing-icon ${this.getClass()} ${
+        class={`chi-marketing-icon ${this.mode} ${this.getClass()} ${
           this.extraClass ? this.extraClass : ''
         }`}
       >
