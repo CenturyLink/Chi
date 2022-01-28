@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Titled" id="titled" :tabs="exampleTabs">
-    div.-position--relative(style="height: 87px;" slot="example")      
+    .-position--relative(style="height: 87px;" slot="example")      
       chi-popover(active, title="Popover title", variant="text", prevent-auto-hide)
         | Popover content
     <Wrapper slot='code-webcomponent'>

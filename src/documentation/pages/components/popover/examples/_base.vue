@@ -2,7 +2,7 @@
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
     p.-text(slot="example-description") 
       | Popover components are absolutely positioned. For this example we have forced a relative position.
-    div.-position--relative(style="height: 53px;" slot="example")
+    .-position--relative(style="height: 53px;" slot="example")
       chi-popover(active, variant="text", prevent-auto-hide)
         | Popover content
     <Wrapper slot='code-webcomponent'>

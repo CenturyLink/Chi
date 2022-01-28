@@ -35,6 +35,7 @@
           </li>
           <li><NuxtLink to="/components/phone-input">Phone input</NuxtLink></li>
           <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
+          <li><NuxtLink to="/components/price">Price</NuxtLink></li>
           <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
           <li><NuxtLink to="/components/progress">Progress</NuxtLink></li>
           <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
@@ -69,7 +70,6 @@
           <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
           <li><NuxtLink to="/components/picker-group">Picker group</NuxtLink></li>
           <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
-          <li><NuxtLink to="/components/price">Price</NuxtLink></li>
           <li>
             <NuxtLink to="/components/forms/radio-button">Radio button</NuxtLink>
           </li>

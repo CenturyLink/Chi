@@ -3,12 +3,11 @@
     p.-text(slot="example-description") 
       | Popovers support arrows to indicate the element they originate from. Arrows can be located anywhere around the Popover.
     .chi-grid.-no-gutter(slot="example")
-      each position in ['Top', 'Right', 'Bottom', 'Left']
-        .chi-col.-w--6.-w-md--4.-w-xl--3
-          h4.-text--h5.-mb--3 #{position}
-          .-position--relative(style='height: 100px')
-            chi-popover(position=position.toLowerCase(), variant="text", active, arrow, prevent-auto-hide)
-              | Popover content
+      .chi-col.-w--6.-w-md--4.-w-xl--3(v-for="position in ['Top', 'Right', 'Bottom', 'Left']")
+        h4.-text--h5.-mb--3 {{ position }}
+        .-position--relative(:style="position === 'Bottom' ? 'height: 100px; top: -12px' : 'height: 100px;'")
+          chi-popover(:position="position.toLowerCase()", variant="text", active, arrow, prevent-auto-hide)
+            | Popover content
     <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         | Add the attribute <code>arrow</code> and use the attribute <code>position</code>

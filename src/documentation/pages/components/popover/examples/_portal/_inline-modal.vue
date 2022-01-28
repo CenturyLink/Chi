@@ -3,7 +3,7 @@
     p.-text(slot="example-description") 
       | Use Inline Modals to imitate the style of a Modal and the behavior of a Popover. This is useful for advanced
       | filtering in Data Tables.
-    div.-position--relative(slot="example" style="height: 106px;")
+    .-position--relative(slot="example" style="height: 106px;")
       chi-popover(
         modal
         closable

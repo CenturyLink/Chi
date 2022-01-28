@@ -1,8 +1,7 @@
 <template lang="pug">
 <ComponentExample title="Interaction" id="interaction" :tabs="exampleTabs">
   p.-text(slot='example-description') 
-    | Read this handy introduction to
-    |
+    | Read this handy introduction to 
     a(href='../../getting-started/installation') HTML attributes and DOM properties
     | .
   <Wrapper slot="example">

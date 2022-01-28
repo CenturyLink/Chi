@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample titleSize="h4" title="Destructive action confirmation" id="destructive-action-confirmation" :tabs="exampleTabs">
-    div.-position--relative(style="height: 146px;" slot="example")      
+    .-position--relative(style="height: 146px;" slot="example")      
       chi-popover(position="top", title="Are you sure?", variant="text", active, arrow, prevent-auto-hide)
         | Are you sure you want to delete this?
         chi-button(slot="chi-popover__footer" color="danger") Delete

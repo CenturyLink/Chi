@@ -14,14 +14,9 @@
             chi-button(@click="togglePopover(`popover-${position.position}`)" :id="`button-${position.position}`") {{ position.label }}
             chi-popover(:ref="`popover-${position.position}`" :position="position.position", title="Popover title", variant="text", arrow, :reference="`#button-${position.position}`")
               | This popover is {{ position.position }} positioned.
-    <Wrapper slot='code-webcomponent'>
-      .chi-tab__description
-        | Use the <code>reference</code> attribute with a
-        | CSS selector to properly reference an element.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot='code-webcomponent'>
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot='code-htmlblueprint'>
       <JSNeeded />
       <pre class="language-html">
