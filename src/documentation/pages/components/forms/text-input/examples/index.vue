@@ -5,6 +5,7 @@
     <Base />
     <Disabled />
     <Readonly />
+    <Placeholder />
     <Spinner />
     <Required />
     <Optional />
@@ -23,9 +24,13 @@
     h2 Icons
     <LeftAligned />
     <RightAligned />
-    <LeftRightAligned />
-    <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
-    <SizesPortal v-else />
+
+    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+      <LeftRightAlignedCenturyLink />
+      <SizesLumenCenturyLink  />
+    div(v-else)
+      <LeftRightAlignedPortal />
+      <SizesPortal />
 </template>
 
 <script lang="ts">
@@ -33,6 +38,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import Base from './_base.vue';
 import Disabled from './_disabled.vue';
 import Readonly from './_readonly.vue';
+import Placeholder from './_placeholder.vue';
 import Spinner from './_spinner.vue';
 import Required from './_required.vue';
 import Optional from './_optional.vue';
@@ -47,7 +53,8 @@ import InlineInputs from './_inline-inputs.vue';
 import FloatingLabel from './_floating-label.vue';
 import LeftAligned from './_left-aligned.vue';
 import RightAligned from './_right-aligned.vue';
-import LeftRightAligned from './_left-right-aligned.vue';
+import LeftRightAlignedCenturyLink from './_left-right-aligned-centurylink.vue';
+import LeftRightAlignedPortal from './_portal/_left-right-aligned.vue';
 import SizesLumenCenturyLink from './_sizes-lumen-centurylink.vue';
 import SizesPortal from './_portal/_sizes.vue';
 
@@ -56,6 +63,7 @@ import SizesPortal from './_portal/_sizes.vue';
     Base,
     Disabled,
     Readonly,
+    Placeholder,
     Spinner,
     Required,
     Optional,
@@ -70,7 +78,8 @@ import SizesPortal from './_portal/_sizes.vue';
     FloatingLabel,
     LeftAligned,
     RightAligned,
-    LeftRightAligned,
+    LeftRightAlignedCenturyLink,
+    LeftRightAlignedPortal,
     SizesLumenCenturyLink,
     SizesPortal
   }

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Left + Right Aligned" id="left-right-aligned" :tabs="exampleTabs">
+  <ComponentExample title="Left + Right Aligned" id="left-right-aligned-centurylink" :tabs="exampleTabs">
     .chi-grid(slot="example")
       .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-form__item
@@ -54,5 +54,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class LeftRightAligned extends Vue {}
+export default class LeftRightAlignedCenturyLink extends Vue {}
 </script>
