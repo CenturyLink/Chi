@@ -22,8 +22,8 @@ $icon-sizes: (
     width: 100%;
   }
 
-  &.one-color {
-    color: $marketing-icon-one-color-fill;
+  &.outline {
+    color: $marketing-icon-outline-fill;
 
     & > svg {
       fill: currentColor;

@@ -31,22 +31,22 @@ h3 Base
 
 h3 One color
 p.-text
-  | Use the attribute <code>mode="one-color"</code> to render marketing icon with one color.
+  | Use the attribute <code>variant="outline"</code> to render marketing icon with one color.
 .example.-mb--3
   .-p--3
-    chi-marketing-icon(icon="business-big-data" mode="one-color")
+    chi-marketing-icon(icon="business-big-data" variant="outline")
   .example-tabs.-pl--2
-    ul.chi-tabs#example-one-color
+    ul.chi-tabs#example-outline
       li.-active
-        a(href='#webcomponent-one-color' role='tab' aria-selected='true' aria-controls='webcomponent-one-color')
+        a(href='#webcomponent-outline' role='tab' aria-selected='true' aria-controls='webcomponent-outline')
           | Web Component
       li.-disabled
-        a(href='#html-one-color' role='tab' aria-selected='false' tabindex='-1' aria-controls='html-one-color')
+        a(href='#html-outline' role='tab' aria-selected='false' tabindex='-1' aria-controls='html-outline')
           | HTML Blueprint
-  #webcomponent-one-color.chi-tabs-panel.-active
+  #webcomponent-outline.chi-tabs-panel.-active
     :code(lang="html")
-      <chi-marketing-icon icon="business-big-data" mode="one-color"></chi-marketing-icon>
-  #html-one-color.chi-tabs-panel
+      <chi-marketing-icon icon="business-big-data" variant="outline"></chi-marketing-icon>
+  #html-outline.chi-tabs-panel
 
 h3 Sizes
 p.-text

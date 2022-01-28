@@ -4,18 +4,18 @@ import {
   MARKETING_ICON_SIZES as VALID_SIZES,
   MarketingIconSizes
 } from '../../constants/size';
-import { spriteFullColor } from './sprites/full-color';
-import { spriteOneColor } from './sprites/one-color';
+import { spriteFilled } from './sprites/filled';
+import { spriteOutline } from './sprites/outline';
 import {
   MARKETING_ICON_MODES,
   ChiMarketingIconModes
 } from '../../constants/types';
 
 let loadedIcons = {
-  'full-color': 0,
-  'one-color': 0
+  filled: 0,
+  outline: 0
 };
-const defaultMode = 'full-color';
+const defaultMode = 'filled';
 
 @Component({
   tag: 'chi-marketing-icon',
@@ -40,10 +40,10 @@ export class MarketingIcon {
   @Prop({ reflect: true }) extraClass?: string;
 
   /**
-   * To render Marketing icon as full color or one color
+   * To render Marketing icon as filled or outline
    */
 
-  @Prop({ reflect: true }) mode?: ChiMarketingIconModes = defaultMode;
+  @Prop({ reflect: true }) variant?: ChiMarketingIconModes = defaultMode;
 
   @Watch('size')
   validateSizeAttribute(newValue: MarketingIconSizes) {
@@ -67,26 +67,28 @@ export class MarketingIcon {
     const validValues = MARKETING_ICON_MODES.join(', ');
 
     if (newValue && !MARKETING_ICON_MODES.includes(newValue)) {
-      throw new Error(`${this.mode} is not a valid mode of Marketing Icon. If provided, valid values are: ${validValues}. `);
+      throw new Error(
+        `${this.variant} is not a valid mode of Marketing Icon. If provided, valid values are: ${validValues}. `
+      );
     }
   }
 
   componentWillLoad(): void {
-    if (loadedIcons[this.mode] === 0) {
-      this._loadSprite(this.mode);
+    if (loadedIcons[this.variant] === 0) {
+      this._loadSprite(this.variant);
     }
-    loadedIcons[this.mode]++;
+    loadedIcons[this.variant]++;
 
-    this.validateMode(this.mode);
+    this.validateMode(this.variant);
     this.validateSizeAttribute(this.size);
   }
 
   componentDidUnload(): void {
-    if (loadedIcons[this.mode] === 0) {
-      if (!document.getElementById(`chi-marketing-icons-${this.mode}`)) {
-        this._loadSprite(this.mode);
+    if (loadedIcons[this.variant] === 0) {
+      if (!document.getElementById(`chi-marketing-icons-${this.variant}`)) {
+        this._loadSprite(this.variant);
       }
-      loadedIcons[this.mode]--;
+      loadedIcons[this.variant]--;
     }
   }
 
@@ -97,10 +99,10 @@ export class MarketingIcon {
   }
 
   _loadSprite(mode: string) {
-    const svgSprite = mode === 'one-color' ? spriteOneColor : spriteFullColor;
+    const svgSprite = mode === 'outline' ? spriteOutline : spriteFilled;
 
     const shadowSVG: HTMLElement = document.createElement('div');
-    shadowSVG.id = `chi-marketing-icons-${this.mode}`;
+    shadowSVG.id = `chi-marketing-icons-${this.variant}`;
     shadowSVG.setAttribute('style', 'display:none;');
     shadowSVG.setAttribute('aria-hidden', 'true');
     shadowSVG.innerHTML = svgSprite;
@@ -110,7 +112,7 @@ export class MarketingIcon {
   render() {
     return (
       <div
-        class={`chi-marketing-icon ${this.mode} ${this.getClass()} ${
+        class={`chi-marketing-icon ${this.variant} ${this.getClass()} ${
           this.extraClass ? this.extraClass : ''
         }`}
       >
@@ -119,7 +121,7 @@ export class MarketingIcon {
           xmlnsXlink="http://www.w3.org/1999/xlink"
           aria-hidden="true"
         >
-          <use xlinkHref={`#icon-${this.mode}-${this.icon}`} />
+          <use xlinkHref={`#icon-${this.variant}-${this.icon}`} />
         </svg>
       </div>
     );
