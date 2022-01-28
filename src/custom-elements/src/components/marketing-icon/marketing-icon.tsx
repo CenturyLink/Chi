@@ -15,7 +15,6 @@ let loadedIcons = {
   filled: 0,
   outline: 0
 };
-const defaultMode = 'filled';
 
 @Component({
   tag: 'chi-marketing-icon',
@@ -43,7 +42,7 @@ export class MarketingIcon {
    * To render Marketing icon as filled or outline
    */
 
-  @Prop({ reflect: true }) variant?: ChiMarketingIconModes = defaultMode;
+  @Prop({ reflect: true }) variant?: ChiMarketingIconModes = 'filled';
 
   @Watch('size')
   validateSizeAttribute(newValue: MarketingIconSizes) {
