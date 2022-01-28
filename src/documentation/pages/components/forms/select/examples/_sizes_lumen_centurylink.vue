@@ -2,12 +2,12 @@
   <ComponentExample title="Sizes" id="sizes-lumen-centurylink" :tabs="exampleTabs">
     p.-text(slot="example-description") Selects support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>. The default size is <code>-md</code>.
     <Wrapper slot="example">
-      each size in ['xs', 'sm', 'md', 'lg', 'xl']
-        .-p--2
-          .chi-form__item(style="max-width:20rem")
-            label(class="chi-label" for=`example-size-${size}`) Label
-            select(class=`chi-select -${size}` id=`example-size-${size}`)
-              option=`-${size} Select`
+      .-p--2(v-for="size in sizes")
+        .chi-form__item(style="max-width:20rem")
+          label(class="chi-label" :for="`example-size-${size}`") Label
+          select(:class="`chi-select -${size}`" :id="`example-size-${size}`")
+            option(value="" selected disabled hidden) -{{size}} Select
+            option(v-for="opt in [1, 2, 3]") Option {{opt}}
     </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -81,5 +81,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class SizesLumenCenturyLink extends Vue {}
+export default class SizesLumenCenturyLink extends Vue {
+  sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
+}
 </script>
