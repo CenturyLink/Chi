@@ -7,11 +7,10 @@
     .chi-grid(slot="example")
       .chi-col.-w--12.-w-sm--8.-w-md--6
         .chi-grid
-          each size in ['xs', 'sm', 'md','lg', 'xl']
-            .chi-col.-w--12.-mb--2
-              .chi-form__item
-                chi-label(for=`example__${size}`) Label
-                chi-textarea(size=`${size}`, id=`example__${size}`) Sample text
+          .chi-col.-w--12.-mb--2(v-for="size in ['xs', 'sm', 'md','lg', 'xl']")
+            .chi-form__item
+              chi-label(:for="`example__${size}`") Label
+              chi-textarea(:size="size", :id="`example__${size}`") Sample text
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

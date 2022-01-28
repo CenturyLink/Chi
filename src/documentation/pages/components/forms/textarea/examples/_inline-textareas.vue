@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample titleSize="h4" title="Inline Textareas" id="inline-textareas" :tabs="exampleTabs">
-    .-p--3.-d--flex(slot="example")
+    .-d--flex(slot="example")
       .chi-form__item.-inline.-flex--grow1
         chi-label(for='example__inline-input01') Label
         chi-textarea(id='example__inline-input01')
