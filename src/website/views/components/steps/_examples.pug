@@ -350,8 +350,8 @@ p.-text
                         .chi-popover__content
                           p.chi-popover__text
                             | Helpful information goes here.
-                    .chi-steps__subitem.-completed.-position--relative
-                      i.chi-icon.icon-arrow-right.-sm.-icon--warning.-position--absolute(aria-hidden="true", style="left:-48px;")
+                    .chi-steps__subitem.-completed
+                      i.chi-icon.icon-arrow-right.-sm.-icon--warning.chi-steps__marker(aria-hidden="true")
                       i.chi-icon.icon-warning.-xs.-icon--warning(aria-hidden="true")
                       p Completed item 
                         span.-text--2xs  | 17 Feb 2021
@@ -369,7 +369,8 @@ p.-text
                     a.chi-steps__item-title.-text--h5.-text--navy.-lh--2.-m--0(href='#')= `${step}`
                     .chi-steps__subitem.-d--block.-pl--0
                       .-d--flex.-justify-content--center.-align-items--center.-mb--1
-                        i.chi-icon.icon-warning.-xs.-icon--warning(aria-hidden="true")
+                        .chi-steps__subitem-icon
+                          i.chi-icon.icon-warning.-xs.-icon--warning(aria-hidden="true")
                         p Pending item 
                           span.-text--2xs.-text--navy  | 17 Feb 2021
                         button.chi-button.-icon.-xs.-flat.-p--0.-ml--1(id="example__help-button-4" aria-label="Help" data-target="#example__help-popover-4")
@@ -378,15 +379,17 @@ p.-text
                           .chi-popover__content
                             p.chi-popover__text
                               | Helpful information goes here.
-                      button.chi-button.-xs(style="margin-left: 1.125rem;") Schedule
+                      .chi-steps__actions
+                        button.chi-button.-xs Schedule
                 div.chi-steps__line
             else if step == 'Step 4'
               li.chi-steps__item
                 div.chi-steps__icon
                   div.chi-steps__content
                     a.chi-steps__item-title.-text--h5.-text--navy.-lh--2.-m--0(href='#')= `${step}`
-                    .chi-steps__subitem.-d--block
+                    .chi-steps__subitem.-d--block.-pl--0
                       .-d--flex.-justify-content--center.-align-items--center.-mb--1
+                        .chi-steps__subitem-icon
                         p Pending item 
                           span.-text--2xs.-text--navy  | 17 Feb 2021
                         button.chi-button.-icon.-xs.-flat.-p--0.-ml--1(id="example__help-button-5" aria-label="Help" data-target="#example__help-popover-5")
@@ -395,25 +398,26 @@ p.-text
                           .chi-popover__content
                             p.chi-popover__text
                               | Helpful information goes here.
-                      button.chi-button.-xs Reschedule
+                      .chi-steps__actions
+                        button.chi-button.-xs Reschedule
     .example-tabs.-pl--2
-      ul.chi-tabs#example-vertical
+      ul.chi-tabs#example-order-progress
         li.-disabled
           a(
-            href=`#webcomponent-vertical`
+            href=`#webcomponent-order-progress`
             role="tab"
             aria-selected="false"
-            aria-controls="webcomponent-vertical"
+            aria-controls="webcomponent-order-progress"
           ) Web Component
         li.-active
           a(
-            href=`#html-vertical`
+            href=`#html-order-progress`
             role="tab"
             aria-selected="true"
-            aria-controls="html-vertical"
+            aria-controls="html-order-progress"
           ) HTML Blueprint
-    .chi-tabs-panel#webcomponent-vertical
-    .chi-tabs-panel.-active#html-vertical
+    .chi-tabs-panel#webcomponent-order-progress
+    .chi-tabs-panel.-active#html-order-progress
       :code(lang="html")
         <ul class="chi-steps -vertical">
           <li class="chi-steps__item -completed">
@@ -473,8 +477,8 @@ p.-text
                     </div>
                   </section>
                 </div>
-                <div class="chi-steps__subitem -completed -position--relative">
-                  <i class="chi-icon icon-arrow-right -sm -icon--warning -position--absolute" aria-hidden="true" style="left:-48px;"></i>
+                <div class="chi-steps__subitem -completed">
+                  <i class="chi-steps__marker chi-icon icon-arrow-right -sm -icon--warning" aria-hidden="true"></i>
                   <i class="chi-icon icon-warning -xs -icon--warning" aria-hidden="true"></i>
                   <p>
                     Completed item 
@@ -499,7 +503,9 @@ p.-text
                 <a class="chi-steps__item-title -text--h5 -text--navy -lh--2 -m--0">Step 3</a>
                 <div class="chi-steps__subitem -d--block -pl--0">
                   <div class="-d--flex -justify-content--center -align-items--center -mb--1">
-                    <i class="chi-icon icon-warning -xs -icon--warning" aria-hidden="true"></i>
+                    <div class="chi-steps__subitem-icon">
+                      <i class="chi-icon icon-warning -xs -icon--warning" aria-hidden="true"></i>
+                    </div>
                     <p>
                       Pending item 
                       <span class="-text--2xs -text--navy"> | 17 Feb 2021</span>
@@ -513,7 +519,9 @@ p.-text
                       </div>
                     </section>
                   </div>
-                  <button class="chi-button -xs" style="margin-left: 1.125rem;">Schedule</button>
+                  <div class="chi-steps__actions">
+                    <button class="chi-button -xs">Schedule</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -523,8 +531,9 @@ p.-text
             <div class="chi-steps__icon">
               <div class="chi-steps__content">
                 <a class="chi-steps__item-title -text--h5 -text--navy -lh--2 -m--0">Step 4</a>
-                <div class="chi-steps__subitem -d--block">
+                <div class="chi-steps__subitem -d--block -pl--0">
                   <div class="-d--flex -justify-content--center -align-items--center -mb--1">
+                    <div class="chi-steps__subitem-icon"></div>
                     <p>
                       Pending item 
                       <span class="-text--2xs -text--navy"> | 17 Feb 2021</span>
@@ -538,7 +547,9 @@ p.-text
                       </div>
                     </section>
                   </div>
-                  <button class="chi-button -xs">Reschedule</button>
+                  <div class="chi-steps__actions">
+                    <button class="chi-button -xs">Reschedule</button>
+                  </div>
                 </div>
               </div>
             </div>
