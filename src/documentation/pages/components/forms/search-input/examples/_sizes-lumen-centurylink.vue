@@ -46,19 +46,19 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: `<div class="chi-form__item">
-  <ChiSearchInput value="Sample Text" size="xs" />
+  <chi-search-input size="xs" value="Sample Text"></chi-search-input>
 </div>
 <div class="chi-form__item">
-  <ChiSearchInput value="Sample Text" size="sm" />
+  <chi-search-input size="sm" value="Sample Text"></chi-search-input>
 </div>
 <div class="chi-form__item">
-  <ChiSearchInput value="Sample Text" size="md" />
+  <chi-search-input size="md" value="Sample Text"></chi-search-input>
 </div>
 <div class="chi-form__item">
-  <ChiSearchInput value="Sample Text" size="lg" />
+  <chi-search-input size="lg" value="Sample Text"></chi-search-input>
 </div>
 <div class="chi-form__item">
-  <ChiSearchInput value="Sample Text" size="xl" />
+  <chi-search-input size="xl" value="Sample Text"></chi-search-input>
 </div>`,
         vue: `<div class="chi-form__item">
   <ChiSearchInput value="Sample Text" size="xs" />

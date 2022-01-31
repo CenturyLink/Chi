@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="portal-sizes" :tabs="exampleTabs">
+  <ComponentExample title="Sizes" id="sizes-portal" :tabs="exampleTabs">
     div(slot="example-description")
       p.-text Search input supports the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
         |  <code>lg</code>.
