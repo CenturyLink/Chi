@@ -3,9 +3,9 @@
     .p-text(slot="example-description" class="-mb--3 -text")
       | Enable range sliders to function like radio buttons.
     .chi-form__item(slot="example")
-      label(class="chi-label", for="range07") Range label
+      label(class="chi-label", id="range-label", for="range07") Range label
       .chi-input__wrapper
-        input(class="chi-range-slider", type="range", min="0", max="4", step="1", ref="range07")
+        input(class="chi-range-slider", type="range", min="0", max="4", step="1", ref="range")
         .chi-input__tick-bar
           div(v-for="range in rangeLabel")
             div
@@ -82,7 +82,7 @@ declare const chi: any;
 })
 export default class RadioSlider extends Vue {
   mounted() {
-    chi.rangeSlider(this.$refs.range07);
+    chi.rangeSlider(this.$refs.range);
   }
 }
 </script>

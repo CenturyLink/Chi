@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Disabled" id="radio-disabled" :tabs="exampleTabs">
     .chi-form__item(slot="example")
-      label(class="chi-label", for="range08") Range label
+      label(class="chi-label", id="range-label", for="range08") Range label
       .chi-input__wrapper
         input(class="chi-range-slider", type="range", min="0", max="4", step="1", id="range08", disabled)
         .chi-input__tick-bar

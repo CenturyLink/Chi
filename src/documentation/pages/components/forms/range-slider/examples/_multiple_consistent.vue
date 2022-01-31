@@ -1,11 +1,11 @@
 <template lang="pug">
   <ComponentExample title="Multiple Labels" id="multiple-labels" :tabs="exampleTabs">
     .chi-form__item(slot="example")
-      label(class="chi-label", for="range06") Range label
+      label(class="chi-label", id="range-label", for="range06") Range label
       .chi-input__wrapper.-d--flex
         span.-text.-mr--2 200GB
         .chi-input__wrapper.-w--100
-          input(type="range", class="chi-range-slider", ref="range06")
+          input(type="range", class="chi-range-slider", ref="range")
           .chi-input__progress
           .chi-input__thumb
         span.-text.-ml--2 5TB
@@ -63,7 +63,7 @@ declare const chi: any;
 })
 export default class MultipleConsistent extends Vue {
   mounted() {
-    chi.rangeSlider(this.$refs.range06);
+    chi.rangeSlider(this.$refs.range);
   }
 }
 </script>

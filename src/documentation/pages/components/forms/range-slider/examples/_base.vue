@@ -1,8 +1,8 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
     .chi-form__item(slot="example")
-      label(class="chi-label", for="range01") Range label
-      input(class="chi-range-slider", type="range", ref="range01")
+      label(class="chi-label", id="range-label", for="range") Range label
+      input(class="chi-range-slider", type="range", ref="range")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -49,7 +49,7 @@ declare const chi: any;
 })
 export default class Base extends Vue {
   mounted() {
-    chi.rangeSlider(this.$refs.range01);
+    chi.rangeSlider(this.$refs.range);
   }
 }
 </script>

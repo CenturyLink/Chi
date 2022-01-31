@@ -1,9 +1,9 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base-consistent" :tabs="exampleTabs">
     .chi-form__item(slot="example")
-      label(class="chi-label", for="range04") Range label
+      label(class="chi-label", id="range-label", for="range04") Range label
       .chi-input__wrapper
-        input(class="chi-range-slider", type="range", ref="range04")
+        input(class="chi-range-slider", type="range", ref="range")
         .chi-input__progress
         .chi-input__thumb
     <pre class="language-html" slot="code-webcomponent">
@@ -56,7 +56,7 @@ declare const chi: any;
 })
 export default class BaseConsistent extends Vue {
   mounted() {
-    chi.rangeSlider(this.$refs.range04);
+    chi.rangeSlider(this.$refs.range);
   }
 }
 </script>
