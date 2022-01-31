@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Alert" id="alert" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Alert" id="alert-portal" padding="-p--0" :tabs="exampleTabs">
     .chi-backdrop.-p--6.-position--relative.-z--0(slot="example")
       .chi-backdrop__wrapper
         section.chi-modal.-portal(role="dialog", aria-label="Modal description", aria-modal="true")

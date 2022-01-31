@@ -26,15 +26,15 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import AlertPortal from './_alert.vue';
+import AlertPortal from './_alert-portal.vue';
 import Base from './_base.vue';
-import NoBorderLumenCenturyLink from './_no_border.vue';
+import NoBorderLumenCenturyLink from './_noborder-lumen-centurylink.vue';
 import Center from './_center.vue';
-import InverseLumenCenturyLink from './_inverse.vue';
+import InverseLumenCenturyLink from './_inverse-lumen-centurylink.vue';
 import ScrollableLongContent from './_scrollable_long_content.vue';
-import ModalSubtitleLumenCenturyLink from './_subtitle.vue';
+import ModalSubtitleLumenCenturyLink from './_subtitle-lumen-centurylink.vue';
 import ScrollableRequirements from './_scrollable_requirements.vue';
-import SimpleLumenCenturyLink from './_simple.vue';
+import SimpleLumenCenturyLink from './_simple-lumen-centurylink.vue';
 import MultiStep from './_multi_step.vue';
 
 @Component({
