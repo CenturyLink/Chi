@@ -91,5 +91,5 @@ declare const chi: any;
     };
   },
 })
-export default class Alert extends Vue {}
+export default class AlertPortal extends Vue {}
 </script>

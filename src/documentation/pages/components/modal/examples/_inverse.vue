@@ -81,5 +81,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class Inverse extends Vue {}
+export default class InverseLumenCenturyLink extends Vue {}
 </script>

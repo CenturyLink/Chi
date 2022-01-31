@@ -14,40 +14,40 @@
       <ScrollableRequirements />
       <ScrollableLongContent />
       div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-        <ModalSubtitle />
-        <Inverse />
-        <NoBorder />
+        <ModalSubtitleLumenCenturyLink />
+        <InverseLumenCenturyLink />
+        <NoBorderLumenCenturyLink />
         <MultiStep />
-        <Simple />
+        <SimpleLumenCenturyLink />
       div(v-else)
-        <Alert />
+        <AlertPortal />
         <MultiStep />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Alert from './_alert.vue';
+import AlertPortal from './_alert.vue';
 import Base from './_base.vue';
-import NoBorder from './_no_border.vue';
+import NoBorderLumenCenturyLink from './_no_border.vue';
 import Center from './_center.vue';
-import Inverse from './_inverse.vue';
+import InverseLumenCenturyLink from './_inverse.vue';
 import ScrollableLongContent from './_scrollable_long_content.vue';
-import ModalSubtitle from './_subtitle.vue';
+import ModalSubtitleLumenCenturyLink from './_subtitle.vue';
 import ScrollableRequirements from './_scrollable_requirements.vue';
-import Simple from './_simple.vue';
+import SimpleLumenCenturyLink from './_simple.vue';
 import MultiStep from './_multi_step.vue';
 
 @Component({
   components: {
-    Alert,
+    AlertPortal,
     Base,
-    NoBorder,
+    NoBorderLumenCenturyLink,
     Center,
-    Inverse,
+    InverseLumenCenturyLink,
     ScrollableLongContent,
     ScrollableRequirements,
-    ModalSubtitle,
-    Simple,
+    ModalSubtitleLumenCenturyLink,
+    SimpleLumenCenturyLink,
     MultiStep,
   }
 })

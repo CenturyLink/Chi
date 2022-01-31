@@ -82,5 +82,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class NoBorder extends Vue {}
+export default class NoBorderLumenCenturyLink extends Vue {}
 </script>

@@ -81,5 +81,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class ModalSubtitle extends Vue {}
+export default class ModalSubtitleLumenCenturyLink extends Vue {}
 </script>

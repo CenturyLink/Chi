@@ -75,5 +75,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class Simple extends Vue {}
+export default class SimpleLumenCenturyLink extends Vue {}
 </script>
