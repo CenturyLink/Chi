@@ -36,6 +36,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
     display: flex;
     justify-content: center;
     margin-top: 0.375rem;
+    position: relative;
 
     &:last-child {
       margin-bottom: 1.5rem;
@@ -51,6 +52,11 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
       margin-right: 0.375rem;
     }
 
+    &-icon {
+      height: 1rem;
+      width: 1.125rem;
+    }
+
     &.-active {
       font-weight: $steps-subitem-active-font-weight;
     }
@@ -64,6 +70,15 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         padding-left: 1.125rem;
       }
     }
+  }
+
+  &__marker {
+    left: -3rem;
+    position: absolute;
+  }
+
+  &__actions {
+    padding-left: 1.125rem;
   }
 
   & > li,

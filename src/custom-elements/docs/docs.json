@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-01-26T18:00:44",
+  "timestamp": "2022-01-31T11:17:39",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2102,6 +2102,28 @@
             }
           ],
           "optional": false,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "\"filled\" | \"outline\"",
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": true,
+          "docs": "To render Marketing icon as filled or outline",
+          "docsTags": [],
+          "default": "'filled'",
+          "values": [
+            {
+              "value": "filled",
+              "type": "string"
+            },
+            {
+              "value": "outline",
+              "type": "string"
+            }
+          ],
+          "optional": true,
           "required": false
         }
       ],
