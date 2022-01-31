@@ -32,6 +32,8 @@ import Icons from './_icons.vue';
 import Semantic from './_semantic.vue';
 import Sizes from './_sizes.vue';
 
+Vue.config.ignoredElements = ['chi-icon', 'chi-brand'];
+
 @Component({
   components: {
     Base,
