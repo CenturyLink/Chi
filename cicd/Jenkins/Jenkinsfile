@@ -855,9 +855,7 @@ def buildChi() {
   }
   sh "sleep 10s"
   jslYarnWrapper('install')
-  jslNpmWrapper('run cicd:build:pre:sri')
-  jslNpmWrapper('run sri')
-  jslNpmWrapper('run cicd:build:post:sri')
+  jslNpmWrapper('run build')
   stash name: "DIST-CHI", includes: "dist/**"
   stash name: "NODEMODULES-CHI", includes: "node_modules/**"
   jslJiraSendBuildInfo()
