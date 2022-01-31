@@ -302,6 +302,268 @@ p.-text
         </li>
       </ul>
 
+.-portal--show
+  h3 Order progress
+  .example.-mb--3
+    .-p--3
+      .-d--flex.-flex--column.-justify-content--center.-align-items--center
+        ul.chi-steps.-vertical
+          each step in steps
+            if step == 'Step 1'
+              li.chi-steps__item.-completed
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a.chi-steps__item-title.-text--h5.-text--navy.-lh--2.-m--0(href='#')= `${step}`
+                    .chi-steps__subitem.-completed
+                      i.chi-icon.icon-check.-xs(aria-hidden="true")
+                      p Completed item 
+                        span.-text--2xs  | 17 Feb 2021
+                      button.chi-button.-icon.-xs.-flat.-p--0.-ml--1(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
+                        i.chi-icon.icon-circle-info-outline.-icon--dark.-mr--0(aria-hidden="true")
+                      section.chi-popover.chi-popover--top(id="example__help-popover" aria-modal="true" role="dialog")
+                        .chi-popover__content
+                          p.chi-popover__text
+                            | Helpful information goes here.
+                div.chi-steps__line
+            else if step == 'Step 2'
+              li.chi-steps__item.-active
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a.chi-steps__item-title.-text--h5.-text--navy.-lh--2.-m--0(href='#')= `${step}`
+                    .chi-steps__subitem.-completed
+                      i.chi-icon.icon-warning.-xs.-icon--warning(aria-hidden="true")
+                      p Completed item 
+                        span.-text--2xs  | 17 Feb 2021
+                      button.chi-button.-icon.-xs.-flat.-p--0.-ml--1(id="example__help-button-1" aria-label="Help" data-target="#example__help-popover-1")
+                        i.chi-icon.icon-circle-info-outline.-icon--dark.-mr--0(aria-hidden="true")
+                      section.chi-popover.chi-popover--top(id="example__help-popover-1" aria-modal="true" role="dialog")
+                        .chi-popover__content
+                          p.chi-popover__text
+                            | Helpful information goes here.
+                    .chi-steps__subitem.-completed
+                      i.chi-icon.icon-check.-xs(aria-hidden="true")
+                      p Completed item 
+                        span.-text--2xs  | 17 Feb 2021
+                      button.chi-button.-icon.-xs.-flat.-p--0.-ml--1(id="example__help-button-2" aria-label="Help" data-target="#example__help-popover-2")
+                        i.chi-icon.icon-circle-info-outline.-icon--dark.-mr--0(aria-hidden="true")
+                      section.chi-popover.chi-popover--top(id="example__help-popover-2" aria-modal="true" role="dialog")
+                        .chi-popover__content
+                          p.chi-popover__text
+                            | Helpful information goes here.
+                    .chi-steps__subitem.-completed
+                      i.chi-icon.icon-arrow-right.-sm.-icon--warning.chi-steps__marker(aria-hidden="true")
+                      i.chi-icon.icon-warning.-xs.-icon--warning(aria-hidden="true")
+                      p Completed item 
+                        span.-text--2xs  | 17 Feb 2021
+                      button.chi-button.-icon.-xs.-flat.-p--0.-ml--1(id="example__help-button-3" aria-label="Help" data-target="#example__help-popover-3")
+                        i.chi-icon.icon-circle-info-outline.-icon--dark.-mr--0(aria-hidden="true")
+                      section.chi-popover.chi-popover--top(id="example__help-popover-3" aria-modal="true" role="dialog")
+                        .chi-popover__content
+                          p.chi-popover__text
+                            | Helpful information goes here.
+                div.chi-steps__line
+            else if step == 'Step 3'
+              li.chi-steps__item
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a.chi-steps__item-title.-text--h5.-text--navy.-lh--2.-m--0(href='#')= `${step}`
+                    .chi-steps__subitem.-d--block.-pl--0
+                      .-d--flex.-justify-content--center.-align-items--center.-mb--1
+                        .chi-steps__subitem-icon
+                          i.chi-icon.icon-warning.-xs.-icon--warning(aria-hidden="true")
+                        p Pending item 
+                          span.-text--2xs.-text--navy  | 17 Feb 2021
+                        button.chi-button.-icon.-xs.-flat.-p--0.-ml--1(id="example__help-button-4" aria-label="Help" data-target="#example__help-popover-4")
+                          i.chi-icon.icon-circle-info-outline.-icon--dark.-mr--0(aria-hidden="true")
+                        section.chi-popover.chi-popover--top(id="example__help-popover-4" aria-modal="true" role="dialog")
+                          .chi-popover__content
+                            p.chi-popover__text
+                              | Helpful information goes here.
+                      .chi-steps__actions
+                        button.chi-button.-xs Schedule
+                div.chi-steps__line
+            else if step == 'Step 4'
+              li.chi-steps__item
+                div.chi-steps__icon
+                  div.chi-steps__content
+                    a.chi-steps__item-title.-text--h5.-text--navy.-lh--2.-m--0(href='#')= `${step}`
+                    .chi-steps__subitem.-d--block.-pl--0
+                      .-d--flex.-justify-content--center.-align-items--center.-mb--1
+                        .chi-steps__subitem-icon
+                        p Pending item 
+                          span.-text--2xs.-text--navy  | 17 Feb 2021
+                        button.chi-button.-icon.-xs.-flat.-p--0.-ml--1(id="example__help-button-5" aria-label="Help" data-target="#example__help-popover-5")
+                          i.chi-icon.icon-circle-info-outline.-icon--dark.-mr--0(aria-hidden="true")
+                        section.chi-popover.chi-popover--top(id="example__help-popover-5" aria-modal="true" role="dialog")
+                          .chi-popover__content
+                            p.chi-popover__text
+                              | Helpful information goes here.
+                      .chi-steps__actions
+                        button.chi-button.-xs Reschedule
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-order-progress
+        li.-disabled
+          a(
+            href=`#webcomponent-order-progress`
+            role="tab"
+            aria-selected="false"
+            aria-controls="webcomponent-order-progress"
+          ) Web Component
+        li.-active
+          a(
+            href=`#html-order-progress`
+            role="tab"
+            aria-selected="true"
+            aria-controls="html-order-progress"
+          ) HTML Blueprint
+    .chi-tabs-panel#webcomponent-order-progress
+    .chi-tabs-panel.-active#html-order-progress
+      :code(lang="html")
+        <ul class="chi-steps -vertical">
+          <li class="chi-steps__item -completed">
+            <div class="chi-steps__icon">
+              <div class="chi-steps__content">
+                <a class="chi-steps__item-title -text--h5 -text--navy -lh--2 -m--0">Step 1</a>
+                <div class="chi-steps__subitem -completed">
+                  <i class="chi-icon icon-check -xs" aria-hidden="true"></i>
+                  <p>
+                    Completed item
+                    <span class="-text--2xs"> | 17 Feb 2021</span>
+                  </p>
+                  <button class="chi-button -icon -xs -flat -p--0 -ml--1" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
+                    <i class="chi-icon icon-circle-info-outline -icon--dark -mr--0" aria-hidden="true"></i>
+                  </button>
+                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                      <div class="chi-popover__content">
+                          <p class="chi-popover__text">Helpful information goes here.</p>
+                      </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <div class="chi-steps__line"></div>
+          </li>
+          <li class="chi-steps__item -active">
+            <div class="chi-steps__icon">
+              <div class="chi-steps__content">
+                <a class="chi-steps__item-title -text--h5 -text--navy -lh--2 -m--0">Step 2</a>
+                <div class="chi-steps__subitem -completed">
+                  <i class="chi-icon icon-warning -xs -icon--warning" aria-hidden="true"></i>
+                  <p>
+                    Completed item 
+                    <span class="-text--2xs"> | 17 Feb 2021</span>
+                  </p>
+                  <button class="chi-button -icon -xs -flat -p--0 -ml--1" id="example__help-button-1" aria-label="Help" data-target="#example__help-popover-1">
+                    <i class="chi-icon icon-circle-info-outline -icon--dark -mr--0" aria-hidden="true"></i>
+                  </button>
+                  <section class="chi-popover chi-popover--top" id="example__help-popover-1" aria-modal="true" role="dialog">
+                    <div class="chi-popover__content">
+                        <p class="chi-popover__text">Helpful information goes here.</p>
+                    </div>
+                  </section>
+                </div>
+                <div class="chi-steps__subitem -completed">
+                  <i class="chi-icon icon-check -xs" aria-hidden="true"></i>
+                  <p>
+                    Completed item 
+                    <span class="-text--2xs"> | 17 Feb 2021</span>
+                  </p>
+                  <button class="chi-button -icon -xs -flat -p--0 -ml--1" id="example__help-button-2" aria-label="Help" data-target="#example__help-popover-2">
+                    <i class="chi-icon icon-circle-info-outline -icon--dark -mr--0" aria-hidden="true"></i>
+                  </button>
+                  <section class="chi-popover chi-popover--top" id="example__help-popover-2" aria-modal="true" role="dialog">
+                    <div class="chi-popover__content">
+                        <p class="chi-popover__text">Helpful information goes here.</p>
+                    </div>
+                  </section>
+                </div>
+                <div class="chi-steps__subitem -completed">
+                  <i class="chi-steps__marker chi-icon icon-arrow-right -sm -icon--warning" aria-hidden="true"></i>
+                  <i class="chi-icon icon-warning -xs -icon--warning" aria-hidden="true"></i>
+                  <p>
+                    Completed item 
+                    <span class="-text--2xs"> | 17 Feb 2021</span>
+                  </p>
+                  <button class="chi-button -icon -xs -flat -p--0 -ml--1" id="example__help-button-3" aria-label="Help" data-target="#example__help-popover-3">
+                    <i class="chi-icon icon-circle-info-outline -icon--dark -mr--0" aria-hidden="true"></i>
+                  </button>
+                  <section class="chi-popover chi-popover--top" id="example__help-popover-3" aria-modal="true" role="dialog">
+                    <div class="chi-popover__content">
+                        <p class="chi-popover__text">Helpful information goes here.</p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <div class="chi-steps__line"></div>
+          </li>
+          <li class="chi-steps__item -active">
+            <div class="chi-steps__icon">
+              <div class="chi-steps__content">
+                <a class="chi-steps__item-title -text--h5 -text--navy -lh--2 -m--0">Step 3</a>
+                <div class="chi-steps__subitem -d--block -pl--0">
+                  <div class="-d--flex -justify-content--center -align-items--center -mb--1">
+                    <div class="chi-steps__subitem-icon">
+                      <i class="chi-icon icon-warning -xs -icon--warning" aria-hidden="true"></i>
+                    </div>
+                    <p>
+                      Pending item 
+                      <span class="-text--2xs -text--navy"> | 17 Feb 2021</span>
+                    </p>
+                    <button class="chi-button -icon -xs -flat -p--0 -ml--1" id="example__help-button-4" aria-label="Help" data-target="#example__help-popover-4">
+                      <i class="chi-icon icon-circle-info-outline -icon--dark -mr--0" aria-hidden="true"></i>
+                    </button>
+                    <section class="chi-popover chi-popover--top" id="example__help-popover-4" aria-modal="true" role="dialog">
+                      <div class="chi-popover__content">
+                          <p class="chi-popover__text">Helpful information goes here.</p>
+                      </div>
+                    </section>
+                  </div>
+                  <div class="chi-steps__actions">
+                    <button class="chi-button -xs">Schedule</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-steps__line"></div>
+          </li>
+          <li class="chi-steps__item">
+            <div class="chi-steps__icon">
+              <div class="chi-steps__content">
+                <a class="chi-steps__item-title -text--h5 -text--navy -lh--2 -m--0">Step 4</a>
+                <div class="chi-steps__subitem -d--block -pl--0">
+                  <div class="-d--flex -justify-content--center -align-items--center -mb--1">
+                    <div class="chi-steps__subitem-icon"></div>
+                    <p>
+                      Pending item 
+                      <span class="-text--2xs -text--navy"> | 17 Feb 2021</span>
+                    </p>
+                    <button class="chi-button -icon -xs -flat -p--0 -ml--1" id="example__help-button-5" aria-label="Help" data-target="#example__help-popover-5">
+                      <i class="chi-icon icon-circle-info-outline -icon--dark -mr--0" aria-hidden="true"></i>
+                    </button>
+                    <section class="chi-popover chi-popover--top" id="example__help-popover-5" aria-modal="true" role="dialog">
+                      <div class="chi-popover__content">
+                          <p class="chi-popover__text">Helpful information goes here.</p>
+                      </div>
+                    </section>
+                  </div>
+                  <div class="chi-steps__actions">
+                    <button class="chi-button -xs">Reschedule</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <script>
+          chi.popover(document.getElementById('example__help-button'));
+          chi.popover(document.getElementById('example__help-button-2'));
+          chi.popover(document.getElementById('example__help-button-3'));
+          chi.popover(document.getElementById('example__help-button-4'));
+          chi.popover(document.getElementById('example__help-button-5'));
+        </script>
+
 h2 Additional size
 h3 Small
 p.-text
@@ -767,5 +1029,11 @@ script.
     'DOMContentLoaded',
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+      chi.popover(document.getElementById('example__help-button'));
+      chi.popover(document.getElementById('example__help-button-1'));
+      chi.popover(document.getElementById('example__help-button-2'));
+      chi.popover(document.getElementById('example__help-button-3'));
+      chi.popover(document.getElementById('example__help-button-4'));
+      chi.popover(document.getElementById('example__help-button-5'));
     }
   );
