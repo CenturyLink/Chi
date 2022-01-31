@@ -1324,17 +1324,16 @@ export default class DataTable extends Vue {
           })}
         </tbody>
       );
-    } else {
-      return (
-        <tbody>
-          <tr>
-            <td colspan={Object.keys(this.data.head).length} class={DATA_TABLE_CLASSES.EMPTY}>
-              {this.config.noResultsMessage ? this.config.noResultsMessage : 'No results found'}
-            </td>
-          </tr>
-        </tbody>
-      );
     }
+    return (
+      <tbody>
+        <tr>
+          <td colspan={Object.keys(this.data.head).length} class={DATA_TABLE_CLASSES.EMPTY}>
+            {this.config.noResultsMessage ? this.config.noResultsMessage : 'No results found'}
+          </td>
+        </tr>
+      </tbody>
+    );
   }
 
   printRow(bodyRow: DataTableRow, rowLevel: DataTableRowLevels = 'parent') {
@@ -1347,10 +1346,8 @@ export default class DataTable extends Vue {
         this._printRowAccordionContent(bodyRow.nestedContent, rowLevel === 'child' ? 'child' : 'parent')
       );
     }
-
     bodyRow.data.forEach((rowCell: any, index: number) => {
       let cellData: any;
-
       if (!!rowCell.template && !!this.$scopedSlots[rowCell.template]) {
         if (typeof rowCell === 'object' && rowCell.payload) {
           // eslint-disable-next-line
@@ -1363,22 +1360,18 @@ export default class DataTable extends Vue {
       } else {
         cellData = null;
       }
-
       if (index === 0 && rowLevel === 'grandChild') {
-        rowCells.push(<td class="-pl--6">{cellData}</td>);
+        rowCells.push(<td class={`${UTILITY_CLASSES.PADDING.LEFT[6]}`}>{cellData}</td>);
       } else if (index === 0 && rowLevel === 'child') {
-        rowCells.push(<td class="-pl--4">{cellData}</td>);
+        rowCells.push(<td class={`${UTILITY_CLASSES.PADDING.LEFT[4]}`}>{cellData}</td>);
       } else {
         rowCells.push(<td>{cellData}</td>);
       }
     });
-
     row.push(<tr>{rowCells}</tr>);
-
     if (bodyRow.nestedContent) {
       row.push(rowAccordionContent);
     }
-
     return row;
   }
 
@@ -1389,7 +1382,7 @@ export default class DataTable extends Vue {
 
       return (
         <tr>
-          <td colspan={Object.keys(this.data.head).length} class={`-pl--4`}>
+          <td colspan={Object.keys(this.data.head).length} class={`${UTILITY_CLASSES.PADDING.LEFT[4]}`}>
             {template}
           </td>
         </tr>
@@ -1398,15 +1391,14 @@ export default class DataTable extends Vue {
       return accordionData.table.data.map((bodyRow: DataTableRow) => {
         return this.printRow(bodyRow, contentLevel === 'child' ? 'grandChild' : 'child');
       });
-    } else {
-      return (
-        <tr>
-          <td colspan={Object.keys(this.data.head).length} class={`-pl--4`}>
-            {accordionData.value}
-          </td>
-        </tr>
-      );
     }
+    return (
+      <tr>
+        <td colspan={Object.keys(this.data.head).length} class={`${UTILITY_CLASSES.PADDING.LEFT[4]}`}>
+          {accordionData.value}
+        </td>
+      </tr>
+    );
   }
 
   render() {
@@ -1415,10 +1407,10 @@ export default class DataTable extends Vue {
       toolbar = this._toolbar(),
       bulkActions = this._bulkActions(),
       body = this._body(),
-      pagination = this._pagination();
-    const printHead = this._printHead();
-    const printBody = this._printBody();
-    const printFooter = this._printFooter();
+      pagination = this._pagination(),
+      printHead = this._printHead(),
+      printBody = this._printBody(),
+      printFooter = this._printFooter();
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
