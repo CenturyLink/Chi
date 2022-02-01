@@ -5,3 +5,6 @@ export interface Country {
   countryAbbr: CountryCode;
   dialCode: CountryCallingCode;
 }
+export const MARKETING_ICON_MODES = ['filled', 'outline'] as const;
+
+export type ChiMarketingIconModes = typeof MARKETING_ICON_MODES[number];

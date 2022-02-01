@@ -1,4 +1,23 @@
 # CHANGELOG
+## 5.8.0 (January 31, 2022)
+### Components
+#### Added
+* Added: Marketing Icon web component now supports `filled` and `outline` variants.
+* Added: Data Table Vue component now supports Bulk actions module.
+* Added: Data Table Vue component now supports optional info icon in header cells to provide additional information.
+#### Changed
+* Changed: Draggable Popover icon opacity has been changed to accommodate style guide requirements.
+#### Fixed
+* Fixed: Data Table Vue component select all checkbox issue of rendering with the incorrect state when all the rows of the page are selected by default.
+* Fixed: Radio Button alignment when no associated label is present.
+* Fixed: Carousel button event emission issue.
+### Documentation
+#### Added
+* Added: Steps component documentation now includes order progress template.
+#### Changed
+* Changed: Table filtering example of popover component documentation now includes more accordions to show a scrollbar.
+
+# CHANGELOG
 ## 5.7.0 (December 16, 2021)
 ### Components
 #### Added
