@@ -33,10 +33,14 @@
               >Number input</NuxtLink
             >
           </li>
+          <li><NuxtLink to="/components/pagination">Pagination</NuxtLink></li>
           <li><NuxtLink to="/components/phone-input">Phone input</NuxtLink></li>
           <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
           <li><NuxtLink to="/components/price">Price</NuxtLink></li>
           <li><NuxtLink to="/components/progress">Progress</NuxtLink></li>
+          <li>
+            <NuxtLink to="/components/forms/radio-button">Radio button</NuxtLink>
+          </li>
           <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
           <li><NuxtLink to="/components/stat">Stat</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
@@ -65,13 +69,9 @@
           <li>
             <NuxtLink to="/components/forms/number-input">Number input</NuxtLink>
           </li>
-          <li><NuxtLink to="/components/pagination">Pagination</NuxtLink></li>
           <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
           <li><NuxtLink to="/components/picker-group">Picker group</NuxtLink></li>
           <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
-          <li>
-            <NuxtLink to="/components/forms/radio-button">Radio button</NuxtLink>
-          </li>
           <li>
             <NuxtLink to="/components/forms/range-slider">Range slider</NuxtLink>
           </li>
@@ -80,7 +80,6 @@
           </li>
           <li><NuxtLink to="/components/forms/select">Select</NuxtLink></li>
           <li><NuxtLink to="/components/sidenav">Sidenav</NuxtLink></li>
-          <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
           <li><NuxtLink to="/components/spinner">Spinner</NuxtLink></li>
           <li><NuxtLink to="/components/stat">Stat</NuxtLink></li>
           <li><NuxtLink to="/components/steps">Steps</NuxtLink></li>
