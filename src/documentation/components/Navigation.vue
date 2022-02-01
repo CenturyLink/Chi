@@ -33,6 +33,7 @@
               >Number input</NuxtLink
             >
           </li>
+          <li><NuxtLink to="/components/pagination">Pagination</NuxtLink></li>
           <li><NuxtLink to="/components/phone-input">Phone input</NuxtLink></li>
           <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
           <li><NuxtLink to="/components/price">Price</NuxtLink></li>
@@ -65,7 +66,6 @@
           <li>
             <NuxtLink to="/components/forms/number-input">Number input</NuxtLink>
           </li>
-          <li><NuxtLink to="/components/pagination">Pagination</NuxtLink></li>
           <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
           <li><NuxtLink to="/components/picker-group">Picker group</NuxtLink></li>
           <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
