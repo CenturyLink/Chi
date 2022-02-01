@@ -53,12 +53,11 @@ pipeline {
       //  MSTEAMS_CREDENTIALS MS Teams access info, jenkins secret text
       //  QUALITY_GATE_CREDENTIALS Credentials to gather all the contract validation gates expected to be crossed.
       //  PROJECT_MAL The MAL of the project
-      GITHUB_TOKEN_SHELL_CREDENTIALS = 'allyourbotsarebelongtous-token'
-      GITHUB_TOKEN_CREDENTIALS = 'GITHUB_APP_CREDENTIALS'
+
+      GITHUB_TOKEN_CREDENTIALS = 'SCMAUTO_GITHUB'
       GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
       GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
       DOCKER_CREDENTIALS = 'nexus-secrets'
-      DOCKER_LOGIN_CREDENTIALS = 'docker-login-user-pass'
       KUBE_CREDENTIALS = 'kube-secret'
       KUBE_CREDENTIALS_TEST = 'kube-secret-test'
       AMAZON_CREDENTIALS = 'awsCredentialsPR'
@@ -96,7 +95,6 @@ pipeline {
       RC_TAG_PATTERN =  /(.*##RC##.*)/
       PROMOTE_TAG_PATTERN =  /(.*##PROMOTE##.*)/
       DEPLOY_TAG_PATTERN =  /(.*##DEPLOYMENT##.*)/
-      DOCKER_REGISTRY = 'https://nexusprod.corp.intranet:4567'
     }
 
 
@@ -148,7 +146,15 @@ pipeline {
         }
         steps {
           script {
-            createTagging()
+             def tagAttributes = jslGCRGetTagAttributes()
+             echo "Processing ${tagAttributes['tagType']} tag for DevOps ${tagAttributes['gcrNumber']}"
+             jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
+             def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
+             def currentJob = env.JOB_NAME.toString()
+             def currentBaseName = env.JOB_BASE_NAME.toString()
+             def pathJob = currentJob - currentBaseName
+             echo "Triggering deployment to production job ${pathJob} with tag ${tagName}"
+             jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6)
           }
         }
       }
@@ -242,9 +248,20 @@ pipeline {
             }
             steps {
               script {
-                check_package()
+                sh(script: """
+                    set +x
+                    git whatchanged -1 --format=oneline
+                    git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
+                    rm -rf version_bump
+                    if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
+                      echo -n "yes" > version_bump
+                    else
+                      echo -n "no" > version_bump
+                    fi
+                    cat version_bump
+                    echo "All good."
+                """, label: "Package version validation")
                 stash name: "VERSION_BUMP", includes: "version_bump"
-                stash name: "VERSION_BUMP_VUE_CHI", includes: "version_bump_vue_chi"
               }
             }
           }
@@ -325,7 +342,21 @@ pipeline {
         }
         steps {
           script {
-            buildChi()
+            dir ('src/chi-vue') {
+              unstash name: "DIST-CHI-VUE-UMD"
+            }
+            sh "sleep 10s"
+            dir ('src/custom-elements') {
+              unstash name: "DIST-CHI-CE"
+            }
+            sh "sleep 10s"
+            jslYarnWrapper('install')
+            jslNpmWrapper('run cicd:build:pre:sri')
+            jslNpmWrapper('run sri')
+            jslNpmWrapper('run cicd:build:post:sri')
+            stash name: "DIST-CHI", includes: "dist/**"
+            stash name: "NODEMODULES-CHI", includes: "node_modules/**"
+            jslJiraSendBuildInfo()
           }
         }
       }
@@ -377,7 +408,23 @@ pipeline {
             }
             steps {
               script {
-                runBackstopjsResponsiveTest()
+                sh """
+                  rm -rf dist
+                  rm -rf node_modules
+                  rm -rf reports/html_report/responsive
+                """
+                unstash name: "DIST-CHI"
+                unstash name: "NODEMODULES-CHI"
+                sh script: """
+                  mkdir -p reports/html_report/responsive
+                  cp -a config/backstop_data/bitmaps_reference/responsive reports/html_report/responsive/bitmaps_reference
+                """, label: "Copying for executing BackstopJS Responsive tests"
+                jslNpmWrapper('run test:backstop:responsive')
+                stash name: "BACKSTOP-RES-HTML", includes: "reports/html_report/responsive/**"
+                stash name: "BACKSTOP-RES-CI", includes: "reports/ci_report/responsive/**"
+                archiveArtifacts artifacts: "reports/html_report/responsive/**", fingerprint: true
+                jslPublishTestResults('reports/ci_report/responsive/xunit.xml')
+                sh "test ${currentBuild.currentResult} != UNSTABLE"
               }
             }
           }
@@ -394,7 +441,23 @@ pipeline {
             }
             steps {
               script {
-                runBackstopjsNonResponsiveTest()
+                sh """
+                  rm -rf dist
+                  rm -rf node_modules
+                  rm -rf reports/html_report/non_responsive
+                """
+                unstash name: "DIST-CHI"
+                unstash name: "NODEMODULES-CHI"
+                sh script: """
+                  mkdir -p reports/html_report/non_responsive
+                  cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive/bitmaps_reference
+                """, label: "Copying for executing BackstopJS Non-Responsive tests"
+                jslNpmWrapper('run test:backstop:non-responsive')
+                stash name: "BACKSTOP-NON-RES-HTML", includes: "reports/html_report/non_responsive/**"
+                stash name: "BACKSTOP-NON-RES-CI", includes: "reports/ci_report/non_responsive/**"
+                archiveArtifacts artifacts: "reports/html_report/non_responsive/**", fingerprint: true
+                jslPublishTestResults('reports/ci_report/non_responsive/xunit.xml')
+                sh "test ${currentBuild.currentResult} != UNSTABLE"
               }
             }
           }
@@ -411,7 +474,23 @@ pipeline {
             }
             steps {
               script {
-                runBackstopjsCustomElementsTest()
+                sh """
+                  rm -rf dist
+                  rm -rf node_modules
+                  rm -rf reports/html_report/non_responsive_ce
+                """
+                unstash name: "DIST-CHI"
+                unstash name: "NODEMODULES-CHI"
+                sh script: """
+                  mkdir -p reports/html_report/non_responsive_ce
+                  cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive_ce/bitmaps_reference
+                """, label: "Copying for executing BackstopJS Custom Elements tests"
+                jslNpmWrapper('run test:backstop:non-responsive:ce')
+                stash name: "BACKSTOP-CE-HTML", includes: "reports/html_report/non_responsive_ce/**"
+                stash name: "BACKSTOP-CE-CI", includes: "reports/ci_report/non_responsive_ce/**"
+                archiveArtifacts artifacts: "reports/html_report/non_responsive_ce/**", fingerprint: true
+                jslPublishTestResults('reports/ci_report/non_responsive_ce/xunit.xml')
+                sh "test ${currentBuild.currentResult} != UNSTABLE"
               }
             }
           }
@@ -428,7 +507,43 @@ pipeline {
             }
             steps {
               script {
-                runCypressLocalTesting()
+                sh """
+                  rm -rf dist
+                  rm -rf node_modules
+                """
+                jslYarnWrapper('install')
+                jslYarnWrapper('cache clean')
+                unstash name: "DIST-CHI"
+                dir ('src/custom-elements') {
+                  sh """
+                    rm -rf dist
+                    rm -rf node_modules
+                  """
+                  unstash name: "DIST-CHI-CE"
+                  unstash name: "NODEMODULES-CHI-CE"
+                }
+                dir ('src/chi-vue') {
+                  sh """
+                    rm -rf dist
+                    rm -rf node_modules
+                  """
+                  unstash name: "DIST-CHI-VUE"
+                  unstash name: "NODEMODULES-CHI-VUE"
+                }
+                def retries = 3
+                while (retries != 0) {
+                  try {
+                    jslNpxWrapper('gulp serve 2>&1 >/dev/null &')
+                    break
+                  } catch (Exception e) {
+                    retries -= 1
+                    echo "failure starting local server // remaining attempts: ${retries}"
+                  }
+                }
+                sh script: """
+                  ./node_modules/.bin/cypress run
+                """, label: "Running NPX before adding JSL file, TEST."
+                jslNpxWrapper('gulp serve:stop')
               }
             }
           }
@@ -488,7 +603,15 @@ pipeline {
         }
         steps {
           script {
-            uploadCoverageToSonarqube()
+            try {
+              unstash name: "COVERAGE"
+            }  catch (Exception e) {
+              echo "No coverage data"
+            }
+            unstash name: "BACKSTOP-CE-CI"
+            unstash name: "BACKSTOP-NON-RES-CI"
+            unstash name: "BACKSTOP-RES-CI"
+            jslSonarQubeStaticAnalysis('./cicd/docker/SonarQube/sonar-project.properties', env.SONARQUBE_CREDENTIALS)
           }
         }
       }
@@ -534,7 +657,25 @@ pipeline {
           }
           steps {
               script {
-                  runQualityGate1()
+                  def isTestAvailable = true
+                  try {
+                    unstash name: "BACKSTOP-NON-RES-CI"
+                  } catch (Exception e) {
+                    echo "No BACKSTOP-NON-RES-CI tests: ${e.getMessage()}"
+                    isTestAvailable = false
+                  }
+                  if (isTestAvailable) {
+                    echo "QualityGate1-Unit"
+                    jslCheckQualityGates('reports/ci_report/non_responsive/xunit.xml', 'QualityGate1-Unit')
+                  }
+                  echo "QualityGate1-StaticCodeAnalysis"
+                  jslAdoptionSonarStats('sonarqubeStats.json')
+                  jslCheckSonarQualityGate('cicd/qgatethresholds/qgate1-sonar.json', 'sonarqubeStats.json')
+                  if ("${currentBuild.currentResult}" != "UNSTABLE") {
+                    jslCheckQualityGates('sonarqubeStats.json', 'QualityGate1-StaticCodeAnalysis', 'sonarqubestats', 'cicd/qgatethresholds/qgate1-sonar.json')
+                  } else {
+                    echo "skipping CheckQualityGate of StaticCodeAnalysis: jslCheckSonarQualityGate failed"
+                  }
               }
           }
       }
@@ -559,7 +700,54 @@ pipeline {
             }
             steps {
               script {
-                runGitHubRelease()
+                sh script: """#!/bin/bash
+                  VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
+                  major=\$(echo \$VERSION | awk -F '.' '{print \$1}')
+                  minor=\$(echo \$VERSION | awk -F '.' '{print \$2}')
+                  patch=\$(echo \$VERSION | awk -F '.' '{print \$3}')
+
+                  if [[ \$major == 0 ]]
+                  then
+                      echo "Major digit Already Zero"
+                      majorold="0"
+                  elif [[ \$minor == 0 ]]
+                  then
+                      majorold=\$(( \$major - 1 ))
+                  else
+                      majorold="\$major"
+                  fi
+
+                  if [[ \$minor == 0 ]]
+                  then
+                      echo "Minor digit Already Zero"
+                      minorold="0"
+                  elif [[ \$patch == 0 ]]
+                  then
+                      minorold=\$(( \$minor - 1 ))
+                  else
+                      minorold="\$minor"
+                  fi
+
+                  if [[ \$patch == 0 ]]
+                  then
+                      echo "Patch digit Already Zero"
+                      patchold="0"
+                  else
+                      patchold=\$(( \$patch - 1 ))
+                  fi
+
+                  echo "READING CHANGELOG FOR VERSION: \$major.\$minor.\$patch"
+                  echo "v\$major.\$minor.\$patch" > shortCHANGELOG.md
+                  echo "" >> shortCHANGELOG.md
+                  sed -n -e "/\$major.\$minor.\$patch/,/\$majorold.\$minorold.\$patchold/ p" CHANGELOG.md | head -n -2 >> shortCHANGELOG.md
+                """
+                env.VERSION = sh (
+                  script: """
+                    cat package.json | grep '"version":' | cut -f4 -d '"'
+                  """,
+                  returnStdout: true
+                ).trim()
+                jslHubWrapper("release create -F shortCHANGELOG.md v${env.VERSION}")
               }
             }
           }
@@ -621,7 +809,34 @@ pipeline {
             }
             steps {
               script {
-                publishToS3()
+                sh "rm -rf dist"
+                unstash name: "DIST-CHI"
+                def s3Uri = "${GIT_COMMIT}-chi-pr-po-ctl"
+                sh script:"""
+                  cat << 'PolicyDocument' > policy.json
+{
+   "Statement": [
+      {
+         "Effect": "Allow",
+         "Principal": "*",
+         "Action": "s3:GetObject",
+         "Resource": "arn:aws:s3:::${s3Uri}/*"
+      }
+   ]
+}
+PolicyDocument
+                """, label: "Policy.json"
+
+                jslAwsCliWrapper("s3api create-bucket --bucket ${s3Uri} --acl public-read", 'us-east-1', true)
+                jslAwsCliWrapper("s3api put-bucket-policy --bucket ${s3Uri} --policy file://policy.json", 'us-east-1', true)
+                jslAwsCliWrapper("s3api get-bucket-policy --bucket ${s3Uri}", 'us-east-1', true)
+                jslAwsCliWrapper("s3 cp ./dist s3://${s3Uri} --recursive", 'us-east-1', true)
+                jslAwsCliWrapper("s3 website s3://${s3Uri} --index-document index.html --error-document index.html", 'us-east-1', true)
+
+
+                // sh "sleep 10m"
+                // jslAwsCliWrapper("s3 rb ${s3Uri} --force", 'us-east-1', true)
+                echo "This will publish dev build to S3"
               }
             }
           }
@@ -636,7 +851,23 @@ pipeline {
             }
             steps {
               script {
-                publishToK8s()
+                sh "rm -rf dist"
+                unstash name: "DIST-CHI"
+                jslBuildAndPushToNexus('./cicd/docker/nginx/Dockerfile')
+
+                def chiManifest = 'chiManifest.yml'
+                def chiManifestFile = "./${chiManifest}"
+                sh "rm -rf ${chiManifestFile}"
+                jslGenerateManifestForSimpleNginx(chiManifestFile)
+                jslDeployK8s(chiManifestFile)
+                archiveArtifacts artifacts: chiManifest, fingerprint: true
+
+                echo "This will publish dev build to K8s"
+                if (env.CHANGE_ID != null) {
+                  echo "Sending Jira Deployment for DEV"
+                  jslDeploymentContractValidationWrite("development")
+                  jslJiraSendDeploymentInfo('development', true)
+                }
               }
             }
           }
@@ -659,7 +890,75 @@ pipeline {
             }
             steps {
               script {
-                publishAssetServerBuild()
+                sh "rm -rf dist node_modules"
+                unstash name: "DIST-CHI"
+                sh script:"""
+                  sed -i 's#/getting-started#getting-started#g' dist/index.html
+
+                  cat ${WORKSPACE}/CHANGELOG.md
+
+                  if [ -e "${WORKSPACE}/ux-chi-AssetsServer" ];
+                  then
+                    rm -rf ${WORKSPACE}/ux-chi-AssetsServer
+                  fi
+                """, label: "Cleaning before pushing to AssetsServer"
+                jslGitHubCloneRepo('ux-chi-AssetsServer')
+                env.CHECK = sh (
+                  script: """#!/bin/bash
+                    VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
+                    if [[ -d ux-chi-AssetsServer/chi/\$VERSION ]]
+                    then
+                        check="EXISTS"
+                    else
+                        check="NO"
+                    fi
+                    echo "\$check"
+                  """,
+                  returnStdout: true
+                ).trim()
+
+                echo "PlaceHolder for ASSET Server Push of CHI version"
+                sh script:"""
+                  ls -lah
+                  VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
+                  echo \${VERSION}
+                  cat << PRDesc > ux-chi-AssetsServer/prepared-message.md
+This PR is for CHI \${VERSION}
+
+You can check staging in https://assets-dev.ctl.io/chi/staging
+PRDesc
+                  mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
+                  cp -R ${WORKSPACE}/dist/* ${WORKSPACE}/ux-chi-AssetsServer/chi/latest/
+                  mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/\$VERSION
+                  cd ${WORKSPACE}/ux-chi-AssetsServer
+                  git checkout -b "CHI_\$VERSION"
+                  git add ${WORKSPACE}/ux-chi-AssetsServer/chi/\$VERSION
+                  git add ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
+                  git config user.email "scmauto@lumen.com"
+                  git config user.name "SCMAUTO"
+                  git commit -m "CHI_\$VERSION"
+                  git push -f origin CHI_\$VERSION
+                """, label: "Pushing branch to AssetsServer"
+                if ( env.CHECK == "NO" ) {
+                  dir ('ux-chi-AssetsServer') {
+                    jslHubWrapper('pull-request -F prepared-message.md')
+                  }
+                } else {
+                  echo "NO PR CREATED THIS TIME; REQUIRES VERSION BUMP"
+                }
+                if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
+                  def previousDeploymentCommit = jslGCRTagCommit('DEPLOYMENT', 2)
+                  def changeLog = jslAuditChangelog(true, env.GIT_COMMIT, previousDeploymentCommit)
+                  echo "Sending Jira Deployment changeLog for PROD: ${changeLog}"
+                  jslDeploymentContractValidationWrite("production")
+                  jslJiraSendDeploymentInfo('production', true, env.BRANCH_NAME, changeLog)
+                } else {
+                  def lastDeploymentCommit = jslGCRTagCommit()
+                  def changeLog = jslAuditChangelog(true, env.GIT_COMMIT, lastDeploymentCommit)
+                  echo "Sending Jira Deployment changeLog for STAGING: ${changeLog}"
+                  jslDeploymentContractValidationWrite("staging")
+                  jslJiraSendDeploymentInfo('staging', true, env.BRANCH_NAME, changeLog)
+                }
               }
             }
           }
@@ -681,33 +980,36 @@ pipeline {
         }
         steps {
           script {
-            runSmokeTests()
-          }
-        }
-      }
-      
+            sh "rm -rf cypress/reports/smokeTests && mkdir -p cypress/reports/smokeTests"
+            if (env.VERSION != null) {
+              echo "Starting SMOKE TESTS with the published release ${env.VERSION}"
 
-      stage('Create PR') {
-        agent {
-          docker {
-            image "nexusprod.corp.intranet:4567/pomicroappbase/node12:1.0.2"
-            label 'Docker-enabled'
-          }
-        }
-        steps {
-          script {
-            try {
-              if ( BRANCH_NAME == PROD_BRANCH ) {
-                createPRInShellVueChi()
-                createPRInShellChi()
+              def latestRelease = ""
+              withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITHUB_TOKEN_CREDENTIALS,
+                                usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
+                try {
+                  latestRelease = sh script: """
+                   curl -s -H "Authorization: token \${ACCESS_TOKEN}" "https://api.github.com/repos/${env.GITHUB_ORGANIZATION}/chi/releases/latest" | grep '"name":' | cut -d: -f 2,3 | tr -d '"' | tr -d ','
+                   """, label: 'Getting Latest Release Version', returnStdout: true
+                   latestRelease = latestRelease.trim()
+                } catch (Exception e) {
+                  echo "Error checking chi releases: ${e.getMessage()}"
+                }
               }
-            } catch (Exception e) {
-              echo "The creation of PRs in the shell failed! Error message: ${e.getMessage()}"
+
+              jslGenerateManualTestReport("Version Release", "Check Version", "v${env.VERSION}", (latestRelease == "v${env.VERSION}").toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
+              env.SMOKE_TEST_FAILURE = (latestRelease != "v${env.VERSION}")
+              echo "Smoke Test Failure? ${env.SMOKE_TEST_FAILURE}"
+            } else {
+              echo "Smoke Test hook without release"
+              jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
             }
+
+            stash name: 'smokeTests', includes:"cypress/reports/smokeTests/**"
+            jslPublishTestResults('cypress/reports/smokeTests/**')
           }
         }
       }
-
       stage('Adoption Stats') {
         agent {
           dockerfile {
@@ -727,7 +1029,52 @@ pipeline {
         }
         steps {
           script {
-            runAdoptionStats()
+            if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
+              env.DEVOPS_GCR_PREPROD_BRANCH = 'master'
+              unstash name: "smokeTests"
+              zip zipFile: 'smoke_tests.zip', dir: "cypress/reports/smokeTests"
+              if (env.SMOKE_TEST_FAILURE != null && env.VERSION != null) {
+                //DevOpsGCR with release Version
+                echo "updating DevOpsGCR"
+                if (env.SMOKE_TEST_FAILURE == "false") {
+                  echo "release successfully created"
+                  jslGCRDevOpsUpdate('SUCCEEDS', ['smoke_tests.zip'])
+                } else {
+                  echo "failures creating release!"
+                  jslGCRDevOpsUpdate('FAILED', ['smoke_tests.zip'], "SmokeTests failed after release creation")
+                }
+              }
+              echo "Adding smoke Tests / smoke Test hook to Adoption Stats"
+              jslAdoptionMain('cypress/reports/smokeTests/*.xml')
+
+            } else {
+              try {
+                sh """
+                  rm -rf reports/ci_report/*
+                """
+                unstash name: "BACKSTOP-CE-CI"
+                unstash name: "BACKSTOP-NON-RES-CI"
+                unstash name: "BACKSTOP-RES-CI"
+                sh """
+                  cat reports/ci_report/responsive/xunit.xml > reports/ci_report/xunitfinal.xml
+                  cat reports/ci_report/non_responsive/xunit.xml >> reports/ci_report/xunitfinal.xml
+                  cat reports/ci_report/non_responsive_ce/xunit.xml >> reports/ci_report/xunitfinal.xml
+                """
+                echo "No E2E results found, reporting only unit"
+              } catch (Exception exc) {
+                echo "No regression tests present and no AdoptionMain Stats neither DevOps GCR"
+                sh """
+                  mkdir -p reports/ci_report
+                  touch reports/ci_report/xunitfinal.xml
+                """
+              }
+              if (isVersionBump()) {
+                //Set variable to trigger DevOps GCR Creation
+                env.DEVOPS_GCR_PREPROD_BRANCH = 'master'
+              }
+              jslAdoptionMain('reports/ci_report/xunitfinal.xml')
+            }
+
           }
         }
       }
@@ -758,8 +1105,8 @@ pipeline {
       unstable {
         jslNotification('unstable')
       }
-    }
   }
+}
 
 def isVersionBump() {
   try {
@@ -841,664 +1188,4 @@ def printSummary() {
   } else if ( BRANCH_NAME != PROD_BRANCH && BRANCH_NAME == "pr-*" && BRANCH_NAME == "PR-*" ) {
     currentBuild.description = "<a href='https://github.com/${env.GITHUB_ORGANIZATION}/Chi/pull/${CHANGE_ID}'>PR#${CHANGE_ID}</a> - <a href='https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io'> WEB </a> : ${PULL_REQUEST}";
   }
-}
-
-def createTagging() {
-  def tagAttributes = jslGCRGetTagAttributes()
-  echo "Processing ${tagAttributes['tagType']} tag for DevOps ${tagAttributes['gcrNumber']}"
-  jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
-  def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
-  def currentJob = env.JOB_NAME.toString()
-  def currentBaseName = env.JOB_BASE_NAME.toString()
-  def pathJob = currentJob - currentBaseName
-  echo "Triggering deployment to production job ${pathJob} with tag ${tagName}"
-  jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6)
-}
-
-def buildChi() {
-  dir ('src/chi-vue') {
-    unstash name: "DIST-CHI-VUE-UMD"
-  }
-  sh "sleep 10s"
-  dir ('src/custom-elements') {
-    unstash name: "DIST-CHI-CE"
-  }
-  sh "sleep 10s"
-  jslYarnWrapper('install')
-  jslNpmWrapper('run cicd:build:pre:sri')
-  jslNpmWrapper('run sri')
-  jslNpmWrapper('run cicd:build:post:sri')
-  stash name: "DIST-CHI", includes: "dist/**"
-  stash name: "NODEMODULES-CHI", includes: "node_modules/**"
-  jslJiraSendBuildInfo()
-}
-
-def runBackstopjsResponsiveTest() {
-  sh """
-    rm -rf dist
-    rm -rf node_modules
-    rm -rf reports/html_report/responsive
-  """
-  unstash name: "DIST-CHI"
-  unstash name: "NODEMODULES-CHI"
-  sh script: """
-    mkdir -p reports/html_report/responsive
-    cp -a config/backstop_data/bitmaps_reference/responsive reports/html_report/responsive/bitmaps_reference
-  """, label: "Copying for executing BackstopJS Responsive tests"
-  jslNpmWrapper('run test:backstop:responsive')
-  stash name: "BACKSTOP-RES-HTML", includes: "reports/html_report/responsive/**"
-  stash name: "BACKSTOP-RES-CI", includes: "reports/ci_report/responsive/**"
-  archiveArtifacts artifacts: "reports/html_report/responsive/**", fingerprint: true
-  jslPublishTestResults('reports/ci_report/responsive/xunit.xml')
-  sh "test ${currentBuild.currentResult} != UNSTABLE"
-}
-
-def runBackstopjsNonResponsiveTest() {
-  sh """
-    rm -rf dist
-    rm -rf node_modules
-    rm -rf reports/html_report/non_responsive
-  """
-  unstash name: "DIST-CHI"
-  unstash name: "NODEMODULES-CHI"
-  sh script: """
-    mkdir -p reports/html_report/non_responsive
-    cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive/bitmaps_reference
-  """, label: "Copying for executing BackstopJS Non-Responsive tests"
-  jslNpmWrapper('run test:backstop:non-responsive')
-  stash name: "BACKSTOP-NON-RES-HTML", includes: "reports/html_report/non_responsive/**"
-  stash name: "BACKSTOP-NON-RES-CI", includes: "reports/ci_report/non_responsive/**"
-  archiveArtifacts artifacts: "reports/html_report/non_responsive/**", fingerprint: true
-  jslPublishTestResults('reports/ci_report/non_responsive/xunit.xml')
-  sh "test ${currentBuild.currentResult} != UNSTABLE"
-}
-
-def runBackstopjsCustomElementsTest() {
-  sh """
-    rm -rf dist
-    rm -rf node_modules
-    rm -rf reports/html_report/non_responsive_ce
-  """
-  unstash name: "DIST-CHI"
-  unstash name: "NODEMODULES-CHI"
-  sh script: """
-    mkdir -p reports/html_report/non_responsive_ce
-    cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive_ce/bitmaps_reference
-  """, label: "Copying for executing BackstopJS Custom Elements tests"
-  jslNpmWrapper('run test:backstop:non-responsive:ce')
-  stash name: "BACKSTOP-CE-HTML", includes: "reports/html_report/non_responsive_ce/**"
-  stash name: "BACKSTOP-CE-CI", includes: "reports/ci_report/non_responsive_ce/**"
-  archiveArtifacts artifacts: "reports/html_report/non_responsive_ce/**", fingerprint: true
-  jslPublishTestResults('reports/ci_report/non_responsive_ce/xunit.xml')
-  sh "test ${currentBuild.currentResult} != UNSTABLE"
-}
-
-def runCypressLocalTesting() {
-  sh """
-    rm -rf dist
-    rm -rf node_modules
-  """
-  jslYarnWrapper('install')
-  jslYarnWrapper('cache clean')
-  unstash name: "DIST-CHI"
-  dir ('src/custom-elements') {
-    sh """
-      rm -rf dist
-      rm -rf node_modules
-    """
-    unstash name: "DIST-CHI-CE"
-    unstash name: "NODEMODULES-CHI-CE"
-  }
-  dir ('src/chi-vue') {
-    sh """
-      rm -rf dist
-      rm -rf node_modules
-    """
-    unstash name: "DIST-CHI-VUE"
-    unstash name: "NODEMODULES-CHI-VUE"
-  }
-  def retries = 3
-  while (retries != 0) {
-    try {
-      jslNpxWrapper('gulp serve 2>&1 >/dev/null &')
-      break
-    } catch (Exception e) {
-      retries -= 1
-      echo "failure starting local server // remaining attempts: ${retries}"
-    }
-  }
-  sh script: """
-    ./node_modules/.bin/cypress run
-  """, label: "Running NPX before adding JSL file, TEST."
-  jslNpxWrapper('gulp serve:stop')
-}
-
-def uploadCoverageToSonarqube() {
-  try {
-    unstash name: "COVERAGE"
-  }  catch (Exception e) {
-    echo "No coverage data"
-  }
-  unstash name: "BACKSTOP-CE-CI"
-  unstash name: "BACKSTOP-NON-RES-CI"
-  unstash name: "BACKSTOP-RES-CI"
-  jslSonarQubeStaticAnalysis('./cicd/docker/SonarQube/sonar-project.properties', env.SONARQUBE_CREDENTIALS)
-}
-
-def runQualityGate1() {
-  def isTestAvailable = true
-  try {
-    unstash name: "BACKSTOP-NON-RES-CI"
-  } catch (Exception e) {
-    echo "No BACKSTOP-NON-RES-CI tests: ${e.getMessage()}"
-    isTestAvailable = false
-  }
-  if (isTestAvailable) {
-    echo "QualityGate1-Unit"
-    jslCheckQualityGates('reports/ci_report/non_responsive/xunit.xml', 'QualityGate1-Unit')
-  }
-  echo "QualityGate1-StaticCodeAnalysis"
-  jslAdoptionSonarStats('sonarqubeStats.json')
-  jslCheckSonarQualityGate('cicd/qgatethresholds/qgate1-sonar.json', 'sonarqubeStats.json')
-  if ("${currentBuild.currentResult}" != "UNSTABLE") {
-    jslCheckQualityGates('sonarqubeStats.json', 'QualityGate1-StaticCodeAnalysis', 'sonarqubestats', 'cicd/qgatethresholds/qgate1-sonar.json')
-  } else {
-    echo "skipping CheckQualityGate of StaticCodeAnalysis: jslCheckSonarQualityGate failed"
-  }
-}
-
-def runGitHubRelease() {
-  sh script: """#!/bin/bash
-    VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
-    major=\$(echo \$VERSION | awk -F '.' '{print \$1}')
-    minor=\$(echo \$VERSION | awk -F '.' '{print \$2}')
-    patch=\$(echo \$VERSION | awk -F '.' '{print \$3}')
-
-    if [[ \$major == 0 ]]
-    then
-        echo "Major digit Already Zero"
-        majorold="0"
-    elif [[ \$minor == 0 ]]
-    then
-        majorold=\$(( \$major - 1 ))
-    else
-        majorold="\$major"
-    fi
-
-    if [[ \$minor == 0 ]]
-    then
-        echo "Minor digit Already Zero"
-        minorold="0"
-    elif [[ \$patch == 0 ]]
-    then
-        minorold=\$(( \$minor - 1 ))
-    else
-        minorold="\$minor"
-    fi
-
-    if [[ \$patch == 0 ]]
-    then
-        echo "Patch digit Already Zero"
-        patchold="0"
-    else
-        patchold=\$(( \$patch - 1 ))
-    fi
-
-    echo "READING CHANGELOG FOR VERSION: \$major.\$minor.\$patch"
-    echo "v\$major.\$minor.\$patch" > shortCHANGELOG.md
-    echo "" >> shortCHANGELOG.md
-    sed -n -e "/\$major.\$minor.\$patch/,/\$majorold.\$minorold.\$patchold/ p" CHANGELOG.md | head -n -2 >> shortCHANGELOG.md
-  """
-  env.VERSION = sh (
-    script: """
-      cat package.json | grep '"version":' | cut -f4 -d '"'
-    """,
-    returnStdout: true
-  ).trim()
-  jslHubWrapper("release create -F shortCHANGELOG.md v${env.VERSION}")
-}
-
-def publishToS3() {
-  sh "rm -rf dist"
-                unstash name: "DIST-CHI"
-                def s3Uri = "${GIT_COMMIT}-chi-pr-po-ctl"
-                sh script:"""
-                  cat << 'PolicyDocument' > policy.json
-{
-   "Statement": [
-      {
-         "Effect": "Allow",
-         "Principal": "*",
-         "Action": "s3:GetObject",
-         "Resource": "arn:aws:s3:::${s3Uri}/*"
-      }
-   ]
-}
-PolicyDocument
-                """, label: "Policy.json"
-
-  jslAwsCliWrapper("s3api create-bucket --bucket ${s3Uri} --acl public-read", 'us-east-1', true)
-  jslAwsCliWrapper("s3api put-bucket-policy --bucket ${s3Uri} --policy file://policy.json", 'us-east-1', true)
-  jslAwsCliWrapper("s3api get-bucket-policy --bucket ${s3Uri}", 'us-east-1', true)
-  jslAwsCliWrapper("s3 cp ./dist s3://${s3Uri} --recursive", 'us-east-1', true)
-  jslAwsCliWrapper("s3 website s3://${s3Uri} --index-document index.html --error-document index.html", 'us-east-1', true)
-
-
-  // sh "sleep 10m"
-  // jslAwsCliWrapper("s3 rb ${s3Uri} --force", 'us-east-1', true)
-  echo "This will publish dev build to S3"
-}
-
-def publishToK8s() {
-  sh "rm -rf dist"
-  unstash name: "DIST-CHI"
-  jslBuildAndPushToNexus('./cicd/docker/nginx/Dockerfile')
-
-  def chiManifest = 'chiManifest.yml'
-  def chiManifestFile = "./${chiManifest}"
-  sh "rm -rf ${chiManifestFile}"
-  jslGenerateManifestForSimpleNginx(chiManifestFile)
-  jslDeployK8s(chiManifestFile)
-  archiveArtifacts artifacts: chiManifest, fingerprint: true
-
-  echo "This will publish dev build to K8s"
-  if (env.CHANGE_ID != null) {
-    echo "Sending Jira Deployment for DEV"
-    jslDeploymentContractValidationWrite("development")
-    jslJiraSendDeploymentInfo('development', true)
-  }
-}
-
-def publishAssetServerBuild() {
-  sh "rm -rf dist node_modules"
-  unstash name: "DIST-CHI"
-  sh script:"""
-    sed -i 's#/getting-started#getting-started#g' dist/index.html
-
-    cat ${WORKSPACE}/CHANGELOG.md
-
-    if [ -e "${WORKSPACE}/ux-chi-AssetsServer" ];
-    then
-      rm -rf ${WORKSPACE}/ux-chi-AssetsServer
-    fi
-  """, label: "Cleaning before pushing to AssetsServer"
-  jslGitHubCloneRepo('ux-chi-AssetsServer')
-  env.CHECK = sh (
-    script: """#!/bin/bash
-      VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
-      if [[ -d ux-chi-AssetsServer/chi/\$VERSION ]]
-      then
-          check="EXISTS"
-      else
-          check="NO"
-      fi
-      echo "\$check"
-    """,
-    returnStdout: true
-  ).trim()
-
-  echo "PlaceHolder for ASSET Server Push of CHI version"
-  sh script:"""
-    ls -lah
-    VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
-    echo \${VERSION}
-    cat << PRDesc > ux-chi-AssetsServer/prepared-message.md
-This PR is for CHI \${VERSION}
-
-You can check staging in https://assets-dev.ctl.io/chi/staging
-PRDesc
-    mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
-    cp -R ${WORKSPACE}/dist/* ${WORKSPACE}/ux-chi-AssetsServer/chi/latest/
-    mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/\$VERSION
-    cd ${WORKSPACE}/ux-chi-AssetsServer
-    git checkout -b "CHI_\$VERSION"
-    git add ${WORKSPACE}/ux-chi-AssetsServer/chi/\$VERSION
-    git add ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
-    git config user.email "scmauto@lumen.com"
-    git config user.name "SCMAUTO"
-    git commit -m "CHI_\$VERSION"
-    git push -f origin CHI_\$VERSION
-  """, label: "Pushing branch to AssetsServer"
-  if ( env.CHECK == "NO" ) {
-    dir ('ux-chi-AssetsServer') {
-      jslHubWrapper('pull-request -F prepared-message.md')
-    }
-  } else {
-    echo "NO PR CREATED THIS TIME; REQUIRES VERSION BUMP"
-  }
-  if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
-    def previousDeploymentCommit = jslGCRTagCommit('DEPLOYMENT', 2)
-    def changeLog = jslAuditChangelog(true, env.GIT_COMMIT, previousDeploymentCommit)
-    echo "Sending Jira Deployment changeLog for PROD: ${changeLog}"
-    jslDeploymentContractValidationWrite("production")
-    jslJiraSendDeploymentInfo('production', true, env.BRANCH_NAME, changeLog)
-  } else {
-    def lastDeploymentCommit = jslGCRTagCommit()
-    def changeLog = jslAuditChangelog(true, env.GIT_COMMIT, lastDeploymentCommit)
-    echo "Sending Jira Deployment changeLog for STAGING: ${changeLog}"
-    jslDeploymentContractValidationWrite("staging")
-    jslJiraSendDeploymentInfo('staging', true, env.BRANCH_NAME, changeLog)
-  }
-}
-
-def runSmokeTests() {
-  sh "rm -rf cypress/reports/smokeTests && mkdir -p cypress/reports/smokeTests"
-  if (env.VERSION != null) {
-    echo "Starting SMOKE TESTS with the published release ${env.VERSION}"
-
-    def latestRelease = ""
-    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITHUB_TOKEN_CREDENTIALS,
-                      usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
-      try {
-        latestRelease = sh script: """
-          curl -s -H "Authorization: token \${ACCESS_TOKEN}" "https://api.github.com/repos/${env.GITHUB_ORGANIZATION}/chi/releases/latest" | grep '"name":' | cut -d: -f 2,3 | tr -d '"' | tr -d ','
-          """, label: 'Getting Latest Release Version', returnStdout: true
-          latestRelease = latestRelease.trim()
-      } catch (Exception e) {
-        echo "Error checking chi releases: ${e.getMessage()}"
-      }
-    }
-
-    jslGenerateManualTestReport("Version Release", "Check Version", "v${env.VERSION}", (latestRelease == "v${env.VERSION}").toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
-    env.SMOKE_TEST_FAILURE = (latestRelease != "v${env.VERSION}")
-    echo "Smoke Test Failure? ${env.SMOKE_TEST_FAILURE}"
-  } else {
-    echo "Smoke Test hook without release"
-    jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
-  }
-
-  stash name: 'smokeTests', includes:"cypress/reports/smokeTests/**"
-  jslPublishTestResults('cypress/reports/smokeTests/**')
-}
-
-def runAdoptionStats() {
-  if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
-    env.DEVOPS_GCR_PREPROD_BRANCH = 'master'
-    unstash name: "smokeTests"
-    zip zipFile: 'smoke_tests.zip', dir: "cypress/reports/smokeTests"
-    if (env.SMOKE_TEST_FAILURE != null && env.VERSION != null) {
-      //DevOpsGCR with release Version
-      echo "updating DevOpsGCR"
-      if (env.SMOKE_TEST_FAILURE == "false") {
-        echo "release successfully created"
-        jslGCRDevOpsUpdate('SUCCEEDS', ['smoke_tests.zip'])
-      } else {
-        echo "failures creating release!"
-        jslGCRDevOpsUpdate('FAILED', ['smoke_tests.zip'], "SmokeTests failed after release creation")
-      }
-    }
-    echo "Adding smoke Tests / smoke Test hook to Adoption Stats"
-    jslAdoptionMain('cypress/reports/smokeTests/*.xml')
-
-  } else {
-    try {
-      sh """
-        rm -rf reports/ci_report/*
-      """
-      unstash name: "BACKSTOP-CE-CI"
-      unstash name: "BACKSTOP-NON-RES-CI"
-      unstash name: "BACKSTOP-RES-CI"
-      sh """
-        cat reports/ci_report/responsive/xunit.xml > reports/ci_report/xunitfinal.xml
-        cat reports/ci_report/non_responsive/xunit.xml >> reports/ci_report/xunitfinal.xml
-        cat reports/ci_report/non_responsive_ce/xunit.xml >> reports/ci_report/xunitfinal.xml
-      """
-      echo "No E2E results found, reporting only unit"
-    } catch (Exception exc) {
-      echo "No regression tests present and no AdoptionMain Stats neither DevOps GCR"
-      sh """
-        mkdir -p reports/ci_report
-        touch reports/ci_report/xunitfinal.xml
-      """
-    }
-    if (isVersionBump()) {
-      //Set variable to trigger DevOps GCR Creation
-      env.DEVOPS_GCR_PREPROD_BRANCH = 'master'
-    }
-    jslAdoptionMain('reports/ci_report/xunitfinal.xml')
-  }
-}
-
-def createBranchChiVue() {
-  withCredentials([usernamePassword(credentialsId: env.GITHUB_TOKEN_CREDENTIALS, usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN')]){
-    def projectJson = readJSON file: 'src/chi-vue/package.json', returnPojo: true;
-    def version = projectJson["version"];
-    def versionReturn = projectJson["version"];
-    jslGitHubCloneRepo("po-enterprise-shell", "CenturyLink", "master", env.GITHUB_TOKEN_CREDENTIALS)
-    def shellJson = readJSON file: 'po-enterprise-shell/package.json', returnPojo: true;
-    if (shellJson["dependencies"]["@centurylink/chi-vue"] != null) {
-      updateBranchChiVue(version)
-    }
-    return versionReturn
-  }
-}
-
-def updateBranchChi(version) {
-  sh (script: """
-      cd po-enterprise-shell
-      git fetch -p
-      git branch -D chi-new-version-${version} || echo "Branch was not there"
-      git push origin --delete chi-new-version-${version} || echo "Branch was not there"
-      git checkout -b chi-new-version-${version}
-      git push -u origin chi-new-version-${version}
-    """, label: "Changes for PR in shell to upgrade Chi", returnStdout: true)
-}
-
-def updateBranchChiVue(version) {
-  sh(script: """
-      cd po-enterprise-shell
-      git fetch -p
-      git branch -D chi-vue-new-version-${version} || echo "Branch was not there"
-      git push origin --delete chi-vue-new-version-${version} || echo "Branch was not there"
-      git checkout -b chi-vue-new-version-${version}
-      git push -u origin chi-vue-new-version-${version}
-    """, label: "Changes for PR in shell to upgrade chi vue")
-}
-
-def createBranchChi() {
-  withCredentials([usernamePassword(credentialsId: env.GITHUB_TOKEN_CREDENTIALS, usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN')]){
-    def projectJson = readJSON file: 'package.json', returnPojo: true;
-    def version = projectJson["version"];
-    jslGitHubCloneRepo("po-enterprise-shell", "CenturyLink", "master", env.GITHUB_TOKEN_CREDENTIALS)
-    updateBranchChi(version);
-    return version
-  }
-}
-
-def deleteShellFolder() {
-  sh(script: """
-  rm -rf po-enterprise-shell
-  """)
-}
-
-def pushBranchChiVue(version) {
-  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITHUB_TOKEN_CREDENTIALS,
-                   usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
-    sh(script: """
-        set +x
-        git config credential.helper  "!f() {echo username=${env.USERNAME}; echo password=${env.ACCESS_TOKEN}; }"
-        git config --global user.email "cicdint0@lumen.com"
-        cd po-enterprise-shell
-        git status
-        git add package-lock.json package.json
-        git commit -m "New version on ${env.PROJECT_NAME}: ${version}"
-        git push https://\${USERNAME}:\${ACCESS_TOKEN}@github.com/CenturyLink/po-enterprise-shell.git
-        """, returnStdout: true, label: 'pushBranchChiVue')
-  }
-}
-
-def pushBranchChi(version) {
-  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITHUB_TOKEN_CREDENTIALS,
-                    usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
-  sh(script: """
-    set +x
-    git config credential.helper "!f() {echo username=${env.USERNAME}; echo password=${env.ACCESS_TOKEN}; }"
-    git config --global user.email "cicdint0@lumen.com"
-    cd po-enterprise-shell
-    git status
-    git add .env
-    git commit -m "New Chi version: ${version}"
-    git push https://\${USERNAME}:\${ACCESS_TOKEN}@github.com/CenturyLink/po-enterprise-shell.git
-  """, returnStdout: true)
-  }
-}
-
-def updateChiVueOnShell() {
-  def shellJson = readJSON file: 'po-enterprise-shell/package.json', returnPojo: true;
-  def projectJson = readJSON file: 'src/chi-vue/package.json', returnPojo: true;
-  def version = projectJson["version"];
-  if (version != null && version != "" && shellJson["dependencies"]["@centurylink/chi-vue"] != null) {
-    shellJson["dependencies"]["@centurylink/chi-vue"] = version
-    writeJSON file: 'po-enterprise-shell/package3.json', json: shellJson, pretty: 2
-    sh(script: """
-    ls -l
-    ls -l po-enterprise-shell
-    rm -f po-enterprise-shell/package.json po-enterprise-shell/package2.json
-    mv po-enterprise-shell/package3.json po-enterprise-shell/package.json
-    """, returnStdout: true)
-    return true
-    
-    
-  }
-  return false
-}
-
-def parserEnv(newVersion) {
-  def filePath = "po-enterprise-shell/.env"
-  def fileDestiny = "po-enterprise-shell/.env2"
-  def fileBegin = readFile filePath
-  def completeStr = ""
-  list = fileBegin.readLines()
-  list.each {
-    info = it.split("=")
-    if (info[0] == "VUE_APP_CHI_VERSION") {
-        completeStr = completeStr + "VUE_APP_CHI_VERSION=${newVersion}\n"
-      } else if (info[0] == "VUE_APP_CHI_CSS_VERSIONS_ALLOWED") {
-        def oldVersions = info[1].trim()
-        completeStr = completeStr + "VUE_APP_CHI_CSS_VERSIONS_ALLOWED=${oldVersions},${newVersion}\n"
-      } else {
-        completeStr = completeStr + "${it}" + "\n"
-      }
-  }
-  writeFile file: fileDestiny, text: completeStr
-}
-
-def updateChiOnShell() {
-  def projectJson = readJSON file: 'package.json', returnPojo: true;
-  def version = projectJson["version"]
-  parserEnv(version)
-  sh(script: """
-  ls -l
-  echo "${version}"
-  export VERSION_UPDATE_CHI_SHELL=${version}
-  cat po-enterprise-shell/.env2
-  rm po-enterprise-shell/.env
-  mv po-enterprise-shell/.env2 po-enterprise-shell/.env
-  """, returnStdout: true)
-}
-
-def createPRInShellVueChi() {
-  unstash name: "VERSION_BUMP_VUE_CHI"
-  def changed = readFile file: "version_bump_vue_chi"
-  if (changed.trim() == "yes") {
-    def result = false
-    def version = ""
-    version = createBranchChiVue()
-
-    result = updateChiVueOnShell()
-    if (result) {
-      publishAutoPRChiVue(version)
-    }
-    deleteShellFolder()
-  }
-}
-
-def publishAutoPRChiVue(version) {
-  dir("po-enterprise-shell") {
-    jslNpmWrapper("install", env.GITHUB_TOKEN_SHELL_CREDENTIALS)
-  }
-  pushBranchChiVue(version)
-  if (version != "") {
-    configFileProvider([configFile(fileId: 'jira-ticket-auto-pr', variable: 'configFileJira')]) {
-      def props = readProperties file: "$configFileJira"
-      def ticket = props['ticket']
-      def titleName = "${ticket} Update chi-vue to version ${version}"
-      def bodyString = "Update ${env.PROJECT_NAME} version to ${version}"
-      def headName = "chi-vue-new-version-${version}"
-      def baseName = "master"
-      def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS
-      def repoPR = "po-enterprise-shell"
-      jslGitHubPRCreate(titleName, bodyString, headName, baseName, githubCredentials, repoPR)
-    }
-  }
-}
-
-def createPRInShellChi() {
-  unstash name: "VERSION_BUMP"
-  def changed = readFile file: "version_bump"
-  if (changed.trim() == "yes") {
-    def result = false
-    def version = ""
-    version = createBranchChi()
-    result = updateChiOnShell()
-    if (result) {
-      publishAutoPRChi(version)
-    }
-  }
-  deleteShellFolder()
-}
-
-def publishAutoPRChi(version) {
-  pushBranchChi(version)
-  if (version != "") {
-    configFileProvider([configFile(fileId: 'jira-ticket-auto-pr', variable: 'configFileJira')]) {
-      def props = readProperties file: "$configFileJira"
-      def ticket = props['ticket']
-      def titleName = "${ticket} Update chi version to ${version}"
-      def bodyString = "Update chi version to ${version}"
-      def headName = "chi-new-version-${version}"
-      def baseName = "master"
-      def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS
-      def repoPR = "po-enterprise-shell"
-      jslGitHubPRCreate(titleName, bodyString, headName, baseName, githubCredentials, repoPR)
-    }
-  }
-}
-
-def check_pack() {
-  sh(script: """
-    set +x
-    git whatchanged -1 --format=oneline
-    git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
-    rm -rf version_bump
-    if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
-      echo "change in package.json"
-      echo -n "yes" > version_bump
-    else
-      echo "no change in package.json"
-      echo -n "no" > version_bump
-    fi
-    cat version_bump
-    """, label: "Package version validation")
-}
-
-def check_vue_pack() {
-  sh(script: """
-  set +x
-  git diff HEAD~2 src/chi-vue/package.json | grep '"version":' || echo No chi-vue package.json changes
-    rm -rf version_bump_chi_vue
-    if [ \$(git diff HEAD~2 src/chi-vue/package.json | grep '"version":' | wc -l) -eq 2 ]; then
-      echo -n "yes" > version_bump_vue_chi
-      echo "change in chi-vue"
-    else
-      echo -n "no" > version_bump_vue_chi
-      echo "no change in chi-vue"
-    fi
-    echo "All good."
-    """, label: "Package version validation")
-}
-
-def check_package() {
-  check_pack()
-  check_vue_pack()
 }
