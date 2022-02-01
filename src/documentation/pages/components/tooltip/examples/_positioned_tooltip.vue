@@ -1,10 +1,8 @@
 <template lang="pug">
   <ComponentExample title="Positioning" id="positioned" :tabs="exampleTabs">
     div(slot="example")
-      button(data-tooltip='Your top tooltip text').chi-button.-mr--2.-mb--2.-mb-md--0 Top Tooltip
-      button(data-tooltip='Your right tooltip text' data-position='right').chi-button.-mr--2.-mb--2.-mb-md--0 Right Tooltip
-      button(data-tooltip='Your bottom tooltip text' data-position='bottom').chi-button.-mr--2.-mb--2.-mb-md--0 Bottom Tooltip
-      button(data-tooltip='Your left tooltip text' data-position='left').chi-button.-mr--2.-mb--2.-mb-md--0 Left Tooltip
+      span(v-for="tooltipButton in tooltipButtons")
+        button(:data-tooltip="tooltipButton.dataTooltip" :data-position="tooltipButton.position" :ref="`data-tooltip-${tooltipButton.position}`").chi-button.-mr--2.-mb--2.-mb-md--0 {{ tooltipButton.text}}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -49,6 +47,28 @@ declare const chi: any;
           label: 'HTML blueprint',
         },
       ],
+      tooltipButtons: [
+        {
+          text: "Top Tooltip",
+          dataTooltip: "Your top tooltip text",
+          position: "top"
+        },
+        {
+          text: "Right Tooltip",
+          dataTooltip: "Your right tooltip text",
+          position: "right"
+        },
+        {
+          text: "Bottom Tooltip",
+          dataTooltip: "Your bottom tooltip tex",
+          position: "bottom"
+        },
+        {
+          text: "Left Tooltip",
+          dataTooltip: "Your left tooltip text",
+          position: "left"
+        }
+      ],
       codeSnippets: {
         webcomponent: ``,
         vue: `<ChiTooltip message="Your top tooltip text" position="top">
@@ -76,7 +96,9 @@ declare const chi: any;
 })
 export default class Positioning extends Vue {
   mounted() {
-    chi.tooltip(document.querySelectorAll('[data-tooltip]'));
+    this.$data.tooltipButtons.forEach((tooltip: { position: string; }) => {
+      chi.tooltip(this.$refs[`data-tooltip-${tooltip.position}`]);
+    });
   }
 }
 </script>
