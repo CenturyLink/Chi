@@ -22,7 +22,9 @@
           <li><NuxtLink to="/components/header">Header</NuxtLink></li>
           <li><NuxtLink to="/components/label">Label</NuxtLink></li>
           <li><NuxtLink to="/components/link">Link</NuxtLink></li>
-          <li><NuxtLink to="/components/marketing-icon">Marketing icon</NuxtLink></li>
+          <li>
+            <NuxtLink to="/components/marketing-icon">Marketing icon</NuxtLink>
+          </li>
           <li>
             <NuxtLink to="/components/mobile-navigation"
               >Mobile navigation</NuxtLink
@@ -37,9 +39,13 @@
           <li><NuxtLink to="/components/phone-input">Phone input</NuxtLink></li>
           <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
           <li><NuxtLink to="/components/price">Price</NuxtLink></li>
+          <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
           <li><NuxtLink to="/components/progress">Progress</NuxtLink></li>
+          <li><NuxtLink to="/components/sidenav">Sidenav</NuxtLink></li>
           <li>
-            <NuxtLink to="/components/forms/radio-button">Radio button</NuxtLink>
+            <NuxtLink to="/components/forms/radio-button"
+              >Radio button</NuxtLink
+            >
           </li>
           <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
           <li><NuxtLink to="/components/stat">Stat</NuxtLink></li>
@@ -79,7 +85,7 @@
             <NuxtLink to="/components/forms/search-input">Search input</NuxtLink>
           </li>
           <li><NuxtLink to="/components/forms/select">Select</NuxtLink></li>
-          <li><NuxtLink to="/components/sidenav">Sidenav</NuxtLink></li>
+          <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
           <li><NuxtLink to="/components/spinner">Spinner</NuxtLink></li>
           <li><NuxtLink to="/components/stat">Stat</NuxtLink></li>
           <li><NuxtLink to="/components/steps">Steps</NuxtLink></li>

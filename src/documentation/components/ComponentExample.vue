@@ -86,7 +86,9 @@ export default class ComponentExample extends Vue {
       'code-snippet-tabs' + this.$props.id
     );
 
-    this.chiTabs = chi.tab(chiTabs);
+    if (chiTabs) {
+      this.chiTabs = chi.tab(chiTabs);
+    }
   }
 }
 </script>
