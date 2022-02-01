@@ -32,12 +32,12 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
   overflow-y: initial;
   width: 100%;
 
-  .default-view {
-    display: block;
+  .-screen--only {
+    display: none;
   }
 
-  .print-only {
-    display: none;
+  .-print--only {
+    display: block;
   }
 
   @include respond-to(md) {
@@ -882,11 +882,11 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
 
 @media print {
   .chi-data-table {
-    .default-view {
+    .-screen--only {
       display: none;
     }
 
-    .print-only {
+    .-print--only {
       display: block;
 
       .chi-table {

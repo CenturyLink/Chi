@@ -1317,10 +1317,12 @@ export default class DataTable extends Vue {
 
   _printBody() {
     if (this.data.body.length > 0) {
+      const bodyRows = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+
       return (
         <tbody>
-          {this._serializedDataBody.map((bodyRow: DataTableRow) => {
-            return this.printRow(bodyRow, 'parent');
+          {bodyRows?.map((bodyRow: DataTableRow) => {
+            return this._printRow(bodyRow, 'parent');
           })}
         </tbody>
       );
@@ -1336,14 +1338,14 @@ export default class DataTable extends Vue {
     );
   }
 
-  printRow(bodyRow: DataTableRow, rowLevel: DataTableRowLevels = 'parent') {
-    const row: any[] = [];
+  _printRow(bodyRow: DataTableRow, rowLevel: DataTableRowLevels = 'parent') {
+    const row: JSX.Element[] = [];
     const rowCells: JSX.Element[] = [];
-    const rowAccordionContent = [];
+    const subLevelContent = [];
 
     if (this._expandable && bodyRow.nestedContent) {
-      rowAccordionContent.push(
-        this._printRowAccordionContent(bodyRow.nestedContent, rowLevel === 'child' ? 'child' : 'parent')
+      subLevelContent.push(
+        this._printSublevelContent(bodyRow.nestedContent, rowLevel === 'child' ? 'child' : 'parent')
       );
     }
     bodyRow.data.forEach((rowCell: any, index: number) => {
@@ -1368,17 +1370,17 @@ export default class DataTable extends Vue {
         rowCells.push(<td>{cellData}</td>);
       }
     });
-    row.push(<tr>{rowCells}</tr>);
+    row.push((<tr>{rowCells}</tr>) as JSX.Element[] & JSX.Element);
     if (bodyRow.nestedContent) {
-      row.push(rowAccordionContent);
+      row.push(subLevelContent as JSX.Element[] & JSX.Element);
     }
     return row;
   }
 
-  _printRowAccordionContent(accordionData: DataTableRowNestedContent, contentLevel: 'parent' | 'child') {
-    if (accordionData.template) {
+  _printSublevelContent(sublevelData: DataTableRowNestedContent, contentLevel: 'parent' | 'child') {
+    if (sublevelData.template) {
       // eslint-disable-next-line
-      const template = this.$scopedSlots[accordionData.template]!(accordionData.payload);
+      const template = this.$scopedSlots[sublevelData.template]!(sublevelData.payload);
 
       return (
         <tr>
@@ -1387,15 +1389,15 @@ export default class DataTable extends Vue {
           </td>
         </tr>
       );
-    } else if (accordionData.table && accordionData.table.data) {
-      return accordionData.table.data.map((bodyRow: DataTableRow) => {
-        return this.printRow(bodyRow, contentLevel === 'child' ? 'grandChild' : 'child');
+    } else if (sublevelData.table && sublevelData.table.data) {
+      return sublevelData.table.data.map((bodyRow: DataTableRow) => {
+        return this._printRow(bodyRow, contentLevel === 'child' ? 'grandChild' : 'child');
       });
     }
     return (
       <tr>
         <td colspan={Object.keys(this.data.head).length} class={`${UTILITY_CLASSES.PADDING.LEFT[4]}`}>
-          {accordionData.value}
+          {sublevelData.value}
         </td>
       </tr>
     );
@@ -1414,14 +1416,14 @@ export default class DataTable extends Vue {
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
-        <div class="default-view">
+        <div class="-screen--only">
           {toolbar}
           {bulkActions}
           {head}
           {body}
           {pagination}
         </div>
-        <div class="print-only">
+        <div class="-print--only">
           <table class="chi-table">
             {printHead}
             {printBody}
