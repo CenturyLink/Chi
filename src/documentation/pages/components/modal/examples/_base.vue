@@ -1,12 +1,12 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" additionalClasses="-position--static" :tabs="exampleTabs">
+  <ComponentExample title="Base" id="base" additionalStyle="position: static;" :tabs="exampleTabs">
     .-p--0(slot="example")
       .-d--flex.-justify-content--start.-align-items--start
         button#modal-trigger-1.chi-button.-primary.chi-modal__trigger(data-target='#modal-1' ref="baseModal")
           | Click me to open the modal
       .chi-backdrop.-closed
         .chi-backdrop__wrapper
-          section.chi-modal#modal-1(role="dialog", aria-label="Modal description", aria-modal="true", style="top: 4rem;")
+          section.chi-modal#modal-1(role="dialog", aria-label="Modal description", aria-modal="true")
             header.chi-modal__header
               h2.chi-modal__title Modal Title
               button(class='chi-button -icon -close', data-dismiss='modal', aria-label='Close')
