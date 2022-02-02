@@ -1,10 +1,10 @@
 <template lang="pug">
   <ComponentExample title="Multiple Labels" id="multiple-labels" :tabs="exampleTabs">
     .chi-form__item(slot="example")
-      label(class="chi-label", id="range-label", for="range") Range label
+      label(class="chi-label", for="range03") Range label
       .chi-input__wrapper.-d--flex
         span.-text.-mr--2 200GB
-        input(type="range", class="chi-range-slider", ref="range")
+        input(type="range", id="range03", class="chi-range-slider", ref="range")
         span.-text.-ml--2 5TB
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Disabled" id="disabled-consistent" :tabs="exampleTabs">
     .chi-form__item(slot="example")
-      label(class="chi-label", id="range-label", for="range05") Range label
+      label(class="chi-label", for="range05") Range label
       .chi-input__wrapper
         input(class="chi-range-slider", type="range", id="range05", disabled)
         .chi-input__progress

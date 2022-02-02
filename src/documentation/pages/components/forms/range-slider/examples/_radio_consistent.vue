@@ -1,9 +1,9 @@
 <template lang="pug">
   <ComponentExample title="Consistent rendering in WebKit browsers" id="radio-consistent" :tabs="exampleTabs">
     .chi-form__item(slot="example")
-      label(class="chi-label", id="range-label", for="range09") Range label
+      label(class="chi-label", for="range09") Range label
       .chi-input__wrapper
-        input(class="chi-range-slider", type="range", min="0", max="4", step="1", ref="range")
+        input(class="chi-range-slider", id="range09", type="range", min="0", max="4", step="1", ref="range")
         .chi-input__tick-bar
           div(v-for="range in rangeLabel")
             div
