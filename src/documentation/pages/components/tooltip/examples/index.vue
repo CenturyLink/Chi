@@ -3,7 +3,7 @@
     h2 Examples
 
     <Base />
-    <Light v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
+    <LightLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
     <Disabled />
     <Positioning />
     <Long />
@@ -11,17 +11,17 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Long from './_long_tooltip.vue';
-import Disabled from './_disabled_tooltip.vue';
-import Light from './_light_tooltip.vue';
-import Positioning from './_positioned_tooltip.vue';
-import Base from './_base_tooltip.vue';
+import Long from './_long.vue';
+import Disabled from './_disabled.vue';
+import LightLumenCenturyLink from './_light-lumen-centurylink.vue';
+import Positioning from './_positioned.vue';
+import Base from './_base.vue';
 
 @Component({
   components: {
     Long,
     Disabled,
-    Light,
+    LightLumenCenturyLink,
     Positioning,
     Base,
   }

@@ -52,7 +52,9 @@ declare const chi: any;
     <button class="chi-button" disabled>Hover me to see tooltip</button>
   </span>
 </ChiTooltip>`,
-        htmlblueprint: `<span data-tooltip="Tooltip message for a disabled button" id="tooltip-disabled-button"><button class="chi-button" disabled>Hover me to see tooltip</button></span>
+        htmlblueprint: `<span data-tooltip="Tooltip message for a disabled button" id="tooltip-disabled-button">
+  <button class="chi-button" disabled>Hover me to see tooltip</button>
+</span>
 
 <script>chi.tooltip(document.getElementById('tooltip-disabled-button'));<\/script>`,
       },

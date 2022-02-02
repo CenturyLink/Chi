@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Light" id="light" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Light" id="light-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Use light tooltips for rendering tooltips on dark backgrounds. 
     .-bg--black(slot="example")
@@ -48,8 +48,8 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        vue: `<ChiTooltip message="Your tooltip text on a button">
-  <button class="chi-button">Hover me to see tooltip</button>
+        vue: `<ChiTooltip message="Your tooltip text on a button" color="light">
+  <button class="chi-button -outline -light">Hover me to see tooltip</button>
 </ChiTooltip>`,
         htmlblueprint: `<button id="tooltip-2" class="chi-button -outline -light" data-tooltip="Your tooltip text on a button" data-tooltip-color="light">Hover me to see tooltip</button>
 
@@ -58,7 +58,7 @@ declare const chi: any;
     };
   },
 })
-export default class Light extends Vue {
+export default class LightLumenCenturyLink extends Vue {
   mounted() {
     chi.tooltip(this.$refs.light);
   }
