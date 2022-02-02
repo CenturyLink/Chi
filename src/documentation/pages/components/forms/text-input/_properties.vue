@@ -1,10 +1,12 @@
 <template lang="pug">
-  <AccessibilityComingSoon />
+  div
+    h2 Web Component
+    <PropertiesGenerator tag="chi-text-input" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({})
-export default class Accessibility extends Vue {}
+export default class Properties extends Vue {}
 </script>
