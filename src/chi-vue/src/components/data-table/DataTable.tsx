@@ -40,6 +40,7 @@ import { defaultConfig } from './default-config';
 import { detectMajorChiVersion } from '@/utils/utils';
 import { ICON_CLASSES } from '@/constants/icons';
 import { alignmentUtilityClasses, expansionIcons } from './constants/constants';
+import { NormalizedScopedSlot } from 'vue/types/vnode';
 
 Vue.config.ignoredElements = ['chi-popover'];
 
@@ -576,8 +577,7 @@ export default class DataTable extends Vue {
 
   _rowAccordionContent(accordionData: DataTableRowNestedContent, contentLevel: 'parent' | 'child') {
     if (accordionData.template) {
-      // eslint-disable-next-line
-      const template = this.$scopedSlots[accordionData.template]!(accordionData.payload);
+      const template = (this.$scopedSlots[accordionData.template] as NormalizedScopedSlot)(accordionData.payload);
 
       return (
         <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} -p--2`} role="row">
@@ -816,7 +816,7 @@ export default class DataTable extends Vue {
     const results =
       this.mode === DataTableModes.CLIENT
         ? this._showSelectedOnly
-          ? this.selectedRows.length
+          ? this._getSelectedFirstLevelRowsCount()
           : this.data.body.length
         : this.config.pagination.results;
 
@@ -1302,17 +1302,11 @@ export default class DataTable extends Vue {
     const resultsCount =
       this.mode === DataTableModes.CLIENT
         ? this._showSelectedOnly
-          ? this.selectedRows.length
+          ? this._getSelectedFirstLevelRowsCount()
           : this.data.body.length
         : this.config.pagination.results;
 
-    return (
-      <tfoot>
-        <tr>
-          <td colspan={Object.keys(this.data.head).length}>{resultsCount} results</td>
-        </tr>
-      </tfoot>
-    );
+    return <div class="-p--2">{resultsCount} results</div>;
   }
 
   _printBody() {
@@ -1352,8 +1346,7 @@ export default class DataTable extends Vue {
       let cellData: any;
       if (!!rowCell.template && !!this.$scopedSlots[rowCell.template]) {
         if (typeof rowCell === 'object' && rowCell.payload) {
-          // eslint-disable-next-line
-          cellData = this.$scopedSlots[rowCell.template]!(rowCell.payload);
+          cellData = (this.$scopedSlots[rowCell.template] as NormalizedScopedSlot)(rowCell.payload);
         }
       } else if (typeof rowCell === 'object' && !!rowCell.value) {
         cellData = rowCell.value;
@@ -1379,8 +1372,7 @@ export default class DataTable extends Vue {
 
   _printSublevelContent(sublevelData: DataTableRowNestedContent, contentLevel: 'parent' | 'child') {
     if (sublevelData.template) {
-      // eslint-disable-next-line
-      const template = this.$scopedSlots[sublevelData.template]!(sublevelData.payload);
+      const template = (this.$scopedSlots[sublevelData.template] as NormalizedScopedSlot)(sublevelData.payload);
 
       return (
         <tr>
@@ -1416,19 +1408,19 @@ export default class DataTable extends Vue {
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
-        <div class="-screen--only">
+        <div class="-d-screen--only">
           {toolbar}
           {bulkActions}
           {head}
           {body}
           {pagination}
         </div>
-        <div class="-print--only">
+        <div class="-d-print--only">
           <table class="chi-table">
             {printHead}
             {printBody}
-            {printFooter}
           </table>
+          {printFooter}
         </div>
       </div>
     );
