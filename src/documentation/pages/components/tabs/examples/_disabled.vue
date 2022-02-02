@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Disabled" id="disabled-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
     .-p--3(slot="example")
       .chi-form__item
         label(class="chi-label", for="range02") Range label
@@ -46,5 +46,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class Disabled extends Vue {}
+export default class DisabledLumenCenturyLink extends Vue {}
 </script>

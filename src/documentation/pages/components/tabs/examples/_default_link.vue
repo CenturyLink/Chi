@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Keep default link behavior" id="default-link" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Keep default link behavior" id="default-link-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | By default, Chi JavaScript enabled tabs will ignore default link behavior.
       | To preserve it, specify a target property on the link.
@@ -109,7 +109,7 @@ declare const chi: any;
     };
   },
 })
-export default class DefaultLink extends Vue {
+export default class DefaultLinkLumenCenturyLink extends Vue {
   mounted() {
     chi.tab(document.getElementById('example-default-link-behavior'));
   }

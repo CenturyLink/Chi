@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Tabbed Navigation" id="tabbed-navigation" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Tabbed Navigation" id="tabbed-navigation-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | The navigation component is a combination of Chi tabs and dropdowns components. You must use
       | <code>chi.navigation</code> function to instantiate the whole group of components, and there is no need for
@@ -129,7 +129,7 @@ declare const chi: any;
     };
   },
 })
-export default class TabbedNavigation extends Vue {
+export default class TabbedNavigationLumenCenturyLink extends Vue {
   mounted() {
     chi.navigation(document.getElementById('example-tabbed-navigation'));
   }

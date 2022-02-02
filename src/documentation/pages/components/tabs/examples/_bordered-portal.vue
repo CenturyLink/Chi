@@ -1,38 +1,38 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Bordered" id="bordered-portal" padding="-p--0" :tabs="exampleTabs">
     .-p--3.-bg--grey-20(slot="example")
       .-bg--white.-px--3.-pt--2
-        ul.chi-tabs#example-portal-horizontal-base(
+        ul.chi-tabs.-border#example-portal-horizontal-bordered(
           role="tablist"
-          aria-label="chi-tabs-horizontal")
+          aria-label="chi-tabs-portal-horizontal")
           li.-active
             a(
-              href='#portal-horizontal-base-1'
+              href='#portal-horizontal-bordered-1'
               role="tab"
               aria-selected="true"
-              aria-controls="portal-horizontal-base-1"
+              aria-controls="portal-horizontal-bordered-1"
               ) Active Tab
           li
             a(
-              href='#portal-horizontal-base-2'
+              href='#portal-horizontal-bordered-2'
               role="tab"
               aria-selected="false"
               tabindex="-1"
-              aria-controls="portal-horizontal-base-2") Tab Link
+              aria-controls="portal-horizontal-bordered-2") Tab Link
           li
             a(
-              href='#portal-horizontal-base-3'
+              href='#portal-horizontal-bordered-3'
               role="tab"
               aria-selected="false"
               tabindex="-1"
-              aria-controls="portal-horizontal-base-3"
+              aria-controls="portal-horizontal-bordered-3"
               ) Tab Link
         .-py--3
-          .chi-tabs-panel.-active#portal-horizontal-base-1(role="tabpanel")
+          .chi-tabs-panel.-active#portal-horizontal-bordered-1(role="tabpanel")
             .-text Tab 1 content
-          .chi-tabs-panel#portal-horizontal-base-2(role="tabpanel")
+          .chi-tabs-panel#portal-horizontal-bordered-2(role="tabpanel")
             .-text Tab 2 content
-          .chi-tabs-panel#portal-horizontal-base-3(role="tabpanel")
+          .chi-tabs-panel#portal-horizontal-bordered-3(role="tabpanel")
             .-text Tab 3 content
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -68,42 +68,42 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-tabs" id="example-horizontal-base" role="tablist" aria-label="chi-tabs-horizontal">
+        htmlblueprint: `<ul class="chi-tabs -border" id="example-horizontal-bordered" role="tablist" aria-label="chi-tabs-horizontal">
   <li class="-active">
     <a
-      href="#horizontal-base-1"
+      href="#horizontal-bordered-1"
       role="tab"
       aria-selected="true"
-      aria-controls="horizontal-base-1">Active Tab</a>
+      aria-controls="horizontal-bordered-1">Active Tab</a>
   </li>
   <li role="tab">
     <a
-      href="#horizontal-base-2"
+      href="#horizontal-bordered-2"
       aria-selected="false"
       tabindex="-1"
-      aria-controls="horizontal-base-2">Tab Link</a>
+      aria-controls="horizontal-bordered-2">Tab Link</a>
   </li>
   <li role="tab">
     <a
-      href="#horizontal-base-3"
+      href="#horizontal-bordered-3"
       aria-selected="false"
       tabindex="-1"
-      aria-controls="horizontal-base-3"">Tab Link</a>
+      aria-controls="horizontal-bordered-3">Tab Link</a>
   </li>
 </ul>
 
-<div class="chi-tabs-panel -active" id="horizontal-base-1" role="tabpanel">Tab 1 content</div>
-<div class="chi-tabs-panel" id="horizontal-base-2" role="tabpanel">Tab 2 content</div>
-<div class="chi-tabs-panel" id="horizontal-base-3" role="tabpanel">Tab 3 content</div>
+<div class="chi-tabs-panel -active" id="horizontal-bordered-1" role="tabpanel">Tab 1 content</div>
+<div class="chi-tabs-panel" id="horizontal-bordered-2" role="tabpanel">Tab 2 content</div>
+<div class="chi-tabs-panel" id="horizontal-bordered-3" role="tabpanel">Tab 3 content</div>
 
-<script>chi.tab(document.getElementById('example-portal-horizontal-base'));<\/script>`,
+<script>chi.tab(document.getElementById('example-portal-horizontal-bordered'));<\/script>`,
       },
     };
   },
 })
-export default class BasePortal extends Vue {
+export default class BorderedPortal extends Vue {
   mounted() {
-    chi.tab(document.getElementById('example-portal-horizontal-base'));
+    chi.tab(document.getElementById('example-portal-horizontal-bordered'));
   }
 }
 </script>

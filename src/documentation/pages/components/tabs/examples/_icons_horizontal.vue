@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Horizontal tabs with icons" id="icons-horizontal" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Horizontal tabs with icons" id="icons-horizontal-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
     .-p--3(slot="example")
       .chi-form__item
         label(class="chi-label", for="range08") Range label
@@ -87,5 +87,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class IconsHorizontal extends Vue {}
+export default class IconsHorizontalLumenCenturyLink extends Vue {}
 </script>

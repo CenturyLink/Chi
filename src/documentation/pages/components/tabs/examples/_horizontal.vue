@@ -1,89 +1,56 @@
 <template lang="pug">
-  <ComponentExample title="Horizontal" id="horizontal" padding="-p--0" :tabs="exampleTabs">
-    ul#chi-tabs--menu.chi-tabs(
-      role="tablist"
-      aria-label="chi-tabs-horizontal-examples"
-      slot="example")
-      li.-active
-        a(
-          href='#chi-tabs-panel--horizontal-base'
-          role="tab"
-          aria-selected="true"
-          aria-controls="chi-tabs-panel--horizontal-base") Base
-      li
-        a(
-          href='#chi-tabs-panel--horizontal-inverse'
-          role="tab"
-          aria-selected="false"
-          tabindex="-1"
-          aria-controls="chi-tabs-panel--horizontal-inverse") Inverse
-      #chi-tabs-panel--horizontal-base.chi-tabs-panel.-active
-        .-p--3.-bg--grey-20
-          .-bg--white.-px--3
-            ul.chi-tabs#example-horizontal-base(
-              role="tablist"
-              aria-label="chi-tabs-horizontal")
-              li.-active
-                a(
-                  href='#horizontal-base-1'
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="horizontal-base-1"
-                  ) Active Tab
-              li
-                a(
-                  href='#horizontal-base-2'
-                  role="tab"
-                  aria-selected="false"
-                  tabindex="-1"
-                  aria-controls="horizontal-base-2") Tab Link
-              li
-                a(
-                  href='#horizontal-base-3'
-                  role="tab"
-                  aria-selected="false"
-                  tabindex="-1"
-                  aria-controls="horizontal-base-3"
-                  ) Tab Link
-            .-py--3
-              .chi-tabs-panel.-active#horizontal-base-1(role="tabpanel")
-                .-text Tab 1 content
-              .chi-tabs-panel#horizontal-base-2(role="tabpanel")
-                .-text Tab 2 content
-              .chi-tabs-panel#horizontal-base-3(role="tabpanel")
-                .-text Tab 3 content
-
-      #chi-tabs-panel--horizontal-inverse.chi-tabs-panel(role="tabpanel")
-        .-p--3.-bg--grey-20
-          .-bg--black.-px--3
-            ul.chi-tabs.-inverse#example-horizontal-inverse(role="tablist" aria-label="chi-tabs-horizontal-inverse")
-              li.-active
-                a(
-                  href='#horizontal-inverse-1'
-                  role="tab"
-                  aria-selected="true"
-                  aria-controls="horizontal-inverse-1") Active Tab
-              li
-                a(
-                  href='#horizontal-inverse-2'
-                  role="tab"
-                  aria-selected="false"
-                  tabindex="-1"
-                  aria-controls="horizontal-inverse-2") Tab Link
-              li
-                a(
-                  href='#horizontal-inverse-3'
-                  role="tab"
-                  aria-selected="false"
-                  tabindex="-1"
-                  aria-controls="horizontal-inverse-3") Tab Link
-          .-bg--white.-p--3
-            .chi-tabs-panel.-active#horizontal-inverse-1(role="tabpanel")
-              .-text Tab 1 content
-            .chi-tabs-panel#horizontal-inverse-2(role="tabpanel")
-              .-text Tab 2 content
-            .chi-tabs-panel#horizontal-inverse-3(role="tabpanel")
-              .-text Tab 3 content
+  <ComponentExample title="Horizontal" id="horizontal-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
+    div(slot="example-description")
+      ul#chi-tabs--menu.chi-tabs(
+        role="tablist"
+        aria-label="chi-tabs-horizontal-examples")
+        li.-active
+          a(
+            href='#chi-tabs-panel--horizontal-base'
+            role="tab"
+            aria-selected="true"
+            aria-controls="chi-tabs-panel--horizontal-base") Base
+        li
+          a(
+            href='#chi-tabs-panel--horizontal-inverse'
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="chi-tabs-panel--horizontal-inverse") Inverse
+    .-p--3.-bg--grey-20(slot="example")
+      .-bg--white.-px--3
+        ul.chi-tabs#example-horizontal-base(
+          role="tablist"
+          aria-label="chi-tabs-horizontal")
+          li.-active
+            a(
+              href='#horizontal-base-1'
+              role="tab"
+              aria-selected="true"
+              aria-controls="horizontal-base-1"
+              ) Active Tab
+          li
+            a(
+              href='#horizontal-base-2'
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="horizontal-base-2") Tab Link
+          li
+            a(
+              href='#horizontal-base-3'
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              aria-controls="horizontal-base-3"
+              ) Tab Link
+        .-py--3
+          .chi-tabs-panel.-active#horizontal-base-1(role="tabpanel")
+            .-text Tab 1 content
+          .chi-tabs-panel#horizontal-base-2(role="tabpanel")
+            .-text Tab 2 content
+          .chi-tabs-panel#horizontal-base-3(role="tabpanel")
+            .-text Tab 3 content
 
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

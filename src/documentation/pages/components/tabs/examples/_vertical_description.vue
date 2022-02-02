@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Vertical tabs with icons and description" id="vertical-description" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Vertical tabs with icons and description" id="vertical-description-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
     .-p--3.-bg--grey-20(slot="example")
       .-bg--white.-p--3
         ul.chi-tabs.-vertical.-icons.-list
@@ -107,5 +107,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class VerticalDescription extends Vue {}
+export default class VerticalDescriptionLumenCenturyLink extends Vue {}
 </script>

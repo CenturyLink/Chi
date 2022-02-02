@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Components contained" id="components-contained" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Components contained" id="components-contained-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | As navigation component is built from other primitive Chi components, most of the components behavior
       | can be replicated on the navigation component. For example, you can use the <code>-animate</code> class
@@ -96,7 +96,7 @@ declare const chi: any;
     };
   },
 })
-export default class ContainedComponent extends Vue {
+export default class ContainedComponentLumenCenturyLink extends Vue {
   mounted() {
     chi.navigation(document.getElementById('navigation-components-contained'));
   }

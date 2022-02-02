@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Wait for animations" id="wait-animations" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Wait for animations" id="wait-animations-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Browsers stop any execution of JavaScript as soon as a link is clicked and it starts to fetch the destination URL.
       | For this reason, the sliding border animation will not be perceived by the user when an external link is clicked, as
@@ -62,5 +62,5 @@ declare const chi: any;
     };
   },
 })
-export default class WaitAnimations extends Vue {}
+export default class WaitAnimationsLumenCenturyLink extends Vue {}
 </script>

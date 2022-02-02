@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Horizontal" id="additional-horizontal" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Horizontal" id="additional-horizontal-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
     .-p--3.-pb--4(slot="example")
       p.-text--bold X-small
       .chi-divider.-mb--2
@@ -121,5 +121,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class AdditionalHorizontal extends Vue {}
+export default class AdditionalHorizontalLumenCenturyLink extends Vue {}
 </script>

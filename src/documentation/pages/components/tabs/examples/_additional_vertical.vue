@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Vertical" id="additional-vertical" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Vertical" id="additional-vertical-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
     .-p--3.-pb--4(slot="example")
       p.-text--bold.-mt--6 Small
       .chi-divider.-mb--3
@@ -193,5 +193,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class AdditionalVertical extends Vue {}
+export default class AdditionalVerticalLumenCenturyLink extends Vue {}
 </script>

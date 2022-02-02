@@ -7,58 +7,58 @@
       <BorderedPortal />
       <VerticalPortal />
     div(v-else)
-      <Horizontal />
-      <Vertical />
-      <DefaultLink />
-      <TabbedNavigation />
-      <ContainedComponent />
-      <WaitAnimations />
-      <IconsHorizontal />
-      <IconsVertical />
-      <VerticalDescription />
-      <VerticalSubtabs />
-      <BorderedSubtabs />
+      <HorizontalLumenCenturyLink />
+      <VerticalLumenCenturyLink />
+      <DefaultLinkLumenCenturyLink />
+      <TabbedNavigationLumenCenturyLink />
+      <ContainedComponentLumenCenturyLink />
+      <WaitAnimationsLumenCenturyLink />
+      <IconsHorizontalLumenCenturyLink />
+      <IconsVerticalLumenCenturyLink />
+      <VerticalDescriptionLumenCenturyLink />
+      <VerticalSubtabsLumenCenturyLink />
+      <BorderedSubtabsLumenCenturyLink />
       h2 Additional Sizes
-      <AdditionalHorizontal />
-      <AdditionalVertical />
+      <AdditionalHorizontalLumenCenturyLink />
+      <AdditionalVerticalLumenCenturyLink />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Vertical from './_vertical.vue';
-import Horizontal from './_horizontal.vue';
-import Disabled from './_disabled.vue';
-import DefaultLink from './_default_link.vue';
-import TabbedNavigation from './_tabbed_navigation.vue';
-import WaitAnimations from './_wait_animations.vue';
-import IconsVertical from './_icons_vertical.vue';
-import IconsHorizontal from './_icons_horizontal.vue';
-import ContainedComponent from './_contained_component.vue';
-import VerticalDescription from './_vertical_description.vue';
-import VerticalSubtabs from './_vertical_subtabs.vue';
-import BorderedSubtabs from './_bordered_subtabs.vue';
-import AdditionalHorizontal from './_additional_horizontal.vue';
-import AdditionalVertical from './_additional_vertical.vue';
-import BasePortal from './_base_portal.vue';
-import BorderedPortal from './_bordered_portal.vue';
-import VerticalPortal from './_vertical_portal.vue';
+import VerticalLumenCenturyLink from './_vertical.vue';
+import HorizontalLumenCenturyLink from './_horizontal.vue';
+import DisabledLumenCenturyLink from './_disabled.vue';
+import DefaultLinkLumenCenturyLink from './_default_link.vue';
+import TabbedNavigationLumenCenturyLink from './_tabbed_navigation.vue';
+import WaitAnimationsLumenCenturyLink from './_wait_animations.vue';
+import IconsVerticalLumenCenturyLink from './_icons_vertical.vue';
+import IconsHorizontalLumenCenturyLink from './_icons_horizontal.vue';
+import ContainedComponentLumenCenturyLink from './_contained_component.vue';
+import VerticalDescriptionLumenCenturyLink from './_vertical_description.vue';
+import VerticalSubtabsLumenCenturyLink from './_vertical_subtabs.vue';
+import BorderedSubtabsLumenCenturyLink from './_bordered_subtabs.vue';
+import AdditionalHorizontalLumenCenturyLink from './_additional_horizontal.vue';
+import AdditionalVerticalLumenCenturyLink from './_additional_vertical.vue';
+import BasePortal from './_base-portal.vue';
+import BorderedPortal from './_bordered-portal.vue';
+import VerticalPortal from './_vertical-portal.vue';
 
 @Component({
   components: {
-    Horizontal,
-    Vertical,
-    DefaultLink,
-    TabbedNavigation,
-    ContainedComponent,
-    Disabled,
-    WaitAnimations,
-    IconsHorizontal,
-    IconsVertical,
-    VerticalDescription,
-    VerticalSubtabs,
-    BorderedSubtabs,
-    AdditionalHorizontal,
-    AdditionalVertical,
+    HorizontalLumenCenturyLink,
+    VerticalLumenCenturyLink,
+    DefaultLinkLumenCenturyLink,
+    TabbedNavigationLumenCenturyLink,
+    ContainedComponentLumenCenturyLink,
+    DisabledLumenCenturyLink,
+    WaitAnimationsLumenCenturyLink,
+    IconsHorizontalLumenCenturyLink,
+    IconsVerticalLumenCenturyLink,
+    VerticalDescriptionLumenCenturyLink,
+    VerticalSubtabsLumenCenturyLink,
+    BorderedSubtabsLumenCenturyLink,
+    AdditionalHorizontalLumenCenturyLink,
+    AdditionalVerticalLumenCenturyLink,
     BasePortal,
     BorderedPortal,
     VerticalPortal,

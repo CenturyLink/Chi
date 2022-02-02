@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Vertical tabs with icons" id="icons-vertical" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Vertical tabs with icons" id="icons-vertical-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
     .-p--3(slot="example")
       .chi-form__item
         label(class="chi-label", for="range09") Range label
@@ -93,5 +93,5 @@ declare const chi: any;
     };
   },
 })
-export default class IconsVertical extends Vue {}
+export default class IconsVerticalLumenCenturyLink extends Vue {}
 </script>
