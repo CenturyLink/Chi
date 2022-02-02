@@ -51,6 +51,7 @@
           <li><NuxtLink to="/components/stat">Stat</NuxtLink></li>
           <li><NuxtLink to="/components/steps">Steps</NuxtLink></li>
           <li><NuxtLink to="/components/forms/text-input">Text input</NuxtLink></li>
+          <li><NuxtLink to="/components/forms/textarea">Textarea</NuxtLink></li>
           <li><NuxtLink to="/components/tooltip">Tooltip</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
