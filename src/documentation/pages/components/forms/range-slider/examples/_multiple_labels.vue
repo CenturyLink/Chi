@@ -55,8 +55,14 @@ declare const chi: any;
   },
 })
 export default class MultipleLabels extends Vue {
+  rangeSlider: any;
+
   mounted() {
-    chi.rangeSlider(this.$refs.range);
+    chi.rangeSlider(this.$refs.range as HTMLElement);
+  }
+
+  beforeDestroy() {
+    this.rangeSlider.dispose();
   }
 }
 </script>
