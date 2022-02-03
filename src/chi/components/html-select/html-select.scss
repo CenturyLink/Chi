@@ -123,4 +123,12 @@ select.chi-input { // sass-lint:disable-line force-element-nesting
       box-shadow: 0 0 0 1px $select-danger-border-color;
     }
   }
+
+  &[multiple] {
+    option {
+      &:checked {
+        background: $select-option-checked-background-color !important;
+      }
+    }
+  }
 }

@@ -27,8 +27,9 @@ function buildWebsiteImages() {
   const globalImages = buildIamges('src/website/assets/images/**/*', 'dist/assets/images');
   const centurylinkImages = buildIamges('src/website/assets/themes/centurylink/images/**/*', 'dist/assets/themes/centurylink/images');
   const lumenImages = buildIamges('src/website/assets/themes/lumen/images/**/*', 'dist/assets/themes/lumen/images');
+  const brightspeedImages = buildIamges('src/website/assets/themes/brightspeed/images/**/*', 'dist/assets/themes/brightspeed/images');
 
-  return merge(globalImages, centurylinkImages, lumenImages);
+  return merge(globalImages, centurylinkImages, lumenImages, brightspeedImages);
 }
 
 buildWebsiteImages.description = 'Optimizes website images and puts them in ' +
