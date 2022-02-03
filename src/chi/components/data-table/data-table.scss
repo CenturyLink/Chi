@@ -32,12 +32,10 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
   overflow-y: initial;
   width: 100%;
 
-  .-screen--only {
-    display: none;
-  }
-
-  .-print--only {
-    display: block;
+  .-d-print--only {
+    .chi-data-table__print-footer {
+      padding: 1rem;
+    }
   }
 
   @include respond-to(md) {

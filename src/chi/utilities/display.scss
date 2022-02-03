@@ -19,12 +19,14 @@
   }
 }
 
-.-d-print--only {
-  display: none;
-}
+@media screen {
+  .-d-print--only {
+    display: none;
+  }
 
-.-d-screen--only {
-  display: block;
+  .-d-screen--only {
+    display: block;
+  }
 }
 
 @media print {

@@ -12,6 +12,7 @@ import {
   ONE_LINK_TX,
   RADIO_CLASSES,
   SR_ONLY,
+  TABLE_CLASSES,
   UTILITY_CLASSES,
 } from '@/constants/classes';
 import './data-table.scss';
@@ -30,7 +31,7 @@ import {
   DataTableRowLevels,
   DataTableColumnDescription,
 } from '@/constants/types';
-import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
+import { DATA_TABLE_NO_RESULTS_FOUND, DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
@@ -744,7 +745,9 @@ export default class DataTable extends Vue {
         return this.row(bodyRow, 'parent', striped);
       });
     } else {
-      const noResultsMessage = this.config.noResultsMessage ? this.config.noResultsMessage : 'No results found';
+      const noResultsMessage = this.config.noResultsMessage
+        ? this.config.noResultsMessage
+        : DATA_TABLE_NO_RESULTS_FOUND;
 
       tableBodyRows = (
         <div class={DATA_TABLE_CLASSES.EMPTY}>
@@ -1306,7 +1309,7 @@ export default class DataTable extends Vue {
           : this.data.body.length
         : this.config.pagination.results;
 
-    return <div class="-p--2">{resultsCount} results</div>;
+    return <div class={`${DATA_TABLE_CLASSES.PRINT_FOOTER}`}>{resultsCount} results</div>;
   }
 
   _printBody() {
@@ -1325,7 +1328,7 @@ export default class DataTable extends Vue {
       <tbody>
         <tr>
           <td colspan={Object.keys(this.data.head).length} class={DATA_TABLE_CLASSES.EMPTY}>
-            {this.config.noResultsMessage ? this.config.noResultsMessage : 'No results found'}
+            {this.config.noResultsMessage ? this.config.noResultsMessage : DATA_TABLE_NO_RESULTS_FOUND}
           </td>
         </tr>
       </tbody>
@@ -1408,15 +1411,15 @@ export default class DataTable extends Vue {
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
-        <div class="-d-screen--only">
+        <div class={`${UTILITY_CLASSES.SCREEN_ONLY}`}>
           {toolbar}
           {bulkActions}
           {head}
           {body}
           {pagination}
         </div>
-        <div class="-d-print--only">
-          <table class="chi-table">
+        <div class={`${UTILITY_CLASSES.PRINT_ONLY}`}>
+          <table class={`${TABLE_CLASSES.TABLE}`}>
             {printHead}
             {printBody}
           </table>
