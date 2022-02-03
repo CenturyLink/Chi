@@ -18,6 +18,7 @@
   width: 100%;
 
   &__header {
+    background-image: $modal-header-background-image;
     background-color: $modal-header-background-color;
     box-shadow: $modal-header-box-shadow;
     min-height: $modal-header-min-height;
