@@ -73,6 +73,21 @@
           src="/themes/lumen/images/favicon.svg"
         />
         <div class="-theme-name">Lumen Enterprise Portal</div></a
+      ><a
+        v-bind:class="[
+          this.$store.state.themes.theme === 'brightspeed' ? '-active' : '',
+          'theme-trigger-brightspeed',
+          'chi-dropdown__menu-item'
+        ]"
+        href="#"
+        @click="setTheme('brightspeed')"
+        ><img
+          class="-mr--1"
+          width="16"
+          height="16"
+          src="/themes/brightspeed/images/favicon.svg"
+        />
+        <div class="-theme-name">Brightspeed</div></a
       >
     </div>
   </div>
@@ -134,7 +149,8 @@ export default class ThemeSwitcher extends Vue {
         });
       }
     });
-    brandLogo.logo = theme === 'centurylink' ? 'centurylink' : 'lumen';
+    brandLogo.logo = theme === 'centurylink' ? 'centurylink' : 'brightspeed' ? 'brightspeed' : 'lumen';
+
     this.$store.commit('themes/set', theme);
   }
 

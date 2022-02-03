@@ -226,18 +226,18 @@ $vertical-alignments: (top, bottom, middle);
     tbody {
       tr {
         &:nth-child(even) {
-          background-color: $color-navy-10;
+          background-color: $table-portal-row-even-background-color;
         }
 
         &.-active {
           td {
-            background-color: $color-navy-20;
+            background-color: $table-portal-row-active-background-color;
           }
         }
 
         &:hover,
         &.-hover {
-          background-color: $color-navy-20;
+          background-color: $table-portal-row-hover-background-color;
         }
 
         td {
@@ -250,11 +250,11 @@ $vertical-alignments: (top, bottom, middle);
       tbody {
         tr {
           &:nth-child(even) {
-            background-color: $color-navy-10;
+            background-color: $table-portal-striped-row-even-background-color;
           }
 
           &:nth-child(odd) {
-            background-color: $color-background-white;
+            background-color: $table-portal-striped-row-odd-background-color;
           }
         }
       }
