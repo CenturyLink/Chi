@@ -86,8 +86,14 @@ declare const chi: any;
   },
 })
 export default class Base extends Vue {
+  modal: any;
+
   mounted() {
-    chi.modal(this.$refs.baseModal);
-  }  
+    chi.modal(this.$refs.baseModal as HTMLElement);
+  } 
+
+  beforeDestroy() {
+    this.modal.dispose();
+  }
 }
 </script>
