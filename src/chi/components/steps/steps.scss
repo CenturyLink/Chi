@@ -181,7 +181,7 @@ $breakpoints: ('sm', 'md', 'lg', 'xl');
         }
 
         &::after {
-          color: $steps-item-completed-icon-color;
+          color: $steps-item-active-icon-color;
           content: '\e942';
         }
 
