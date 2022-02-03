@@ -79,6 +79,13 @@ export class SearchInput {
     }
   }
 
+  @Watch('value')
+  updateValue(newValue: string, oldValue: string) {
+    if (newValue !== oldValue) {
+      this.value = newValue;
+    }
+  }
+
   _handleValueInput(valueChange: Event) {
     const newValue = (valueChange.target as HTMLInputElement).value;
 

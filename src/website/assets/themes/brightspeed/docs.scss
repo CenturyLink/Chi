@@ -1,0 +1,12 @@
+@import '../../../../chi/_global-variables';
+@import '../../../../chi/themes/brightspeed/_variables';
+@import '../../../../chi/_global-mixins';
+@import '../../../../chi/themes/brightspeed/_mixins';
+
+.chi {
+  @import './header';
+  @import './sidenav';
+  @import './content';
+  @import './introduction';
+  @import './code';
+}
