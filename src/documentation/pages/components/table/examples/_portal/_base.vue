@@ -10,21 +10,11 @@
           th ID
           th Last Login
       tbody
-        tr.-lg
+        tr.-lg(v-for="(row, index) in rows" :key="index" :class="{'-active' : index === 2}")
           td
-            a(href='#') Name 1
-          td name-1
-          td Dec 18, 2020 3:26 PM
-        tr.-lg
-          td
-            a(href='#') Name 2
-          td name-2
-          td Dec 18, 2020 2:38 AM
-        tr.-active.-lg
-          td
-            a(href='#') Name 3
-          td name-3
-          td Nov 5, 2020 10:15 AM
+            a(href='#') {{ row.cell1 }}
+          td {{ row.cell2 }}
+          td {{ row.cell3 }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre> 
@@ -40,6 +30,11 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
+      rows: [
+        { cell1: 'Name 1', cell2: 'name-1', cell3: 'Dec 18, 2020 3:26 PM' },
+        { cell1: 'Name 2', cell2: 'name-2', cell3: 'Dec 18, 2020 2:38 AM' },
+        { cell1: 'Name 3', cell2: 'name-3', cell3: 'Nov 5, 2020 10:15 AM' }
+      ],
       exampleTabs: [
         {
           disabled: true,

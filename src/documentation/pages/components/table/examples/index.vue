@@ -1,13 +1,11 @@
 <template lang="pug">
   div
     h2 Examples
-
     <Base />
     <NoBorder />
     <Striped />
     <Hover />
     <BasePortal v-if="$store.state.themes.theme === 'portal'" />
-    
     h3 Row States
     p.-text Chi offers a wide variety of modifiers to express different row states.
     <Disabled />
@@ -32,6 +30,15 @@
     <SizeMd />
     <SizeLg />
     <SizeXl />
+    div(v-if="$store.state.themes.theme === 'portal'")
+      <SelectablePortal />
+      <ScrollablePortal />
+      <TwoTierHeaderPortal />
+      <HeaderCellsInTopRowPortal /> 
+    div(v-else)
+      <SelectableLumenCenturyLink />
+      <ScrollableLumenCenturyLink />
+      <TwoTierHeaderLumenCenturyLink />
 </template>
 
 <script lang="ts">
@@ -54,6 +61,13 @@ import SizeSm from './_size-sm.vue';
 import SizeMd from './_size-md.vue';
 import SizeLg from './_size-lg.vue';
 import SizeXl from './_size-xl.vue';
+import SelectableLumenCenturyLink from './_selectable-lumen-centurylink.vue';
+import ScrollableLumenCenturyLink from './_scrollable-lumen-centurylink.vue';
+import TwoTierHeaderLumenCenturyLink from './_two-tier-header-lumen-centurylink.vue';
+import HeaderCellsInTopRowPortal from './_portal/_headerCellsInTopRow.vue';
+import SelectablePortal from './_portal/_selectable.vue';
+import ScrollablePortal from './_portal/_scrollable.vue';
+import TwoTierHeaderPortal from './_portal/_two-tier-header.vue';
 
 @Component({
   components: {
@@ -74,7 +88,14 @@ import SizeXl from './_size-xl.vue';
     SizeSm,
     SizeMd,
     SizeLg,
-    SizeXl
+    SizeXl,
+    SelectableLumenCenturyLink,
+    ScrollableLumenCenturyLink,
+    TwoTierHeaderLumenCenturyLink,
+    SelectablePortal,
+    ScrollablePortal,
+    TwoTierHeaderPortal,
+    HeaderCellsInTopRowPortal
   }
 })
 export default class Examples extends Vue {}

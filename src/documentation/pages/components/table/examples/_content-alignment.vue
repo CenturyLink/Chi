@@ -10,18 +10,10 @@
           th.-text--center ID
           th.-text--right Last Login
       tbody
-        tr.-md
-          td.-text--left Name 1
-          td.-text--center name-1
-          td.-text--right 2020 3:26 PM
-        tr.-md
-          td.-text--left Name 2
-          td.-text--center name-2
-          td.-text--right 2020 3:26 PM
-        tr.-md
-          td.-text--left Name 3
-          td.-text--center name-3
-          td.-text--right 2020 3:26 PM
+        tr.-md(v-for="(row, index) in rows" :key="index")
+          td.-text--left {{ row.cell1 }}
+          td.-text--center {{ row.cell2 }}
+          td.-text--right {{ row.cell3 }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre> 
@@ -37,6 +29,11 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
+      rows: [
+        { cell1: 'Name 1', cell2: 'name-1', cell3: 'Dec 18, 2020 3:26 PM' },
+        { cell1: 'Name 2', cell2: 'name-2', cell3: 'Dec 18, 2020 2:38 AM' },
+        { cell1: 'Name 3', cell2: 'name-3', cell3: 'Nov 5, 2020 10:15 AM' }
+      ],
       exampleTabs: [
         {
           disabled: true,
