@@ -55,7 +55,7 @@
 
     .chi-carousel__dot {
       background-color: $carousel-dot-background-color;
-      border: 0.0625rem solid $color-border-primary;
+      border: 0.0625rem solid $carousel-dot-border-color;
       border-radius: $carousel-dot-size / 2;
       display: block;
       height: $carousel-dot-size;

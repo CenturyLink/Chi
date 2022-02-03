@@ -1,0 +1,182 @@
+@import '../../../../chi/_global-variables';
+@import '../../../../chi/_global-mixins';
+
+.docs-container {
+
+  // Mobile sidenav
+  .chi-drawer {
+    .-theme-switch {
+      margin-top: 1.5rem;
+    }
+
+    ul {
+      &.chi-tabs {
+        li {
+          .chi-collection__title {
+            font-size: $font-size-base;
+            font-weight: $font-weight-semi-bold;
+            line-height: $line-height-lg;
+            padding: 0.75rem 0 0.75rem 1.5rem;
+          }
+
+          &.-active {
+            .chi-collection__title {
+              color: $color-text-primary;
+            }
+          }
+
+          .chi-tabs__subtabs {
+            .chi-accordion {
+              &.accessibility-accordion {
+                .chi-accordion__trigger {
+                  padding-bottom: 0.5rem;
+                  padding-left: 2.5rem;
+                  padding-right: 1rem;
+                  padding-top: 0.5rem;
+
+                  .chi-accordion__title {
+                    font-size: $font-size-sm;
+                    font-weight: $font-weight-base;
+                    line-height: $line-height-sm;
+                  }
+                }
+
+                .chi-accordion__content {
+                  .chi-tabs__subtabs {
+                    li {
+                      a {
+                        padding-left: 3.5rem;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Sidenav theme switcher
+  .-theme-switch {
+    position: relative;
+
+    &:not([data-position^=left]) {
+      &::after {
+        position: absolute;
+        right: 1rem;
+      }
+    }
+
+    .chi-button__content {
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .-theme-name {
+      overflow: hidden;
+      text-align: left;
+      text-overflow: ellipsis;
+      width: calc(100% - 2.25rem);
+    }
+  }
+
+  // Desktop sidenav
+  .docs-sidenav {
+    background-color: $color-background-white;
+    border-bottom: 0.0625rem solid $color-grey-25;
+    border-right: 0;
+    display: none;
+    height: calc(100% - 4rem);
+    left: 0;
+    overflow: auto;
+    padding-bottom: 1rem;
+    padding-top: 0;
+    position: static;
+    top: 4rem;
+    width: 100%;
+    @include respond-to(lg) {
+      border-bottom: 0;
+      border-right: 0.0625rem solid $color-grey-25;
+      display: block;
+      position: fixed;
+      width: 16rem;
+    }
+
+    ul {
+      &.chi-tabs {
+        margin-bottom: 1rem;
+
+        li {
+          .chi-collection__title {
+            font-size: $font-size-base;
+            font-weight: $font-weight-semi-bold;
+            line-height: $line-height-lg;
+            padding: 0.75rem 0 0.75rem 1.5rem;
+          }
+
+          &.-active {
+            .chi-collection__title {
+              color: $color-text-primary;
+            }
+          }
+
+          .chi-tabs__subtabs {
+            li {
+              a {
+                transition: background-color 0.12s ease-in, color 0.12s ease-in;
+
+                &:hover {
+                  background-color: $color-background-base-darker;
+                  color: $color-text-base;
+                }
+
+                &:active {
+                  background-color: $color-background-base-darkest;
+                }
+              }
+
+              &.-active {
+                a {
+                  &,
+                  &:hover {
+                    background-color: $color-background-primary-light;
+                    color: $color-text-primary;
+                  }
+                }
+              }
+
+              .chi-accordion {
+                &.accessibility-accordion {
+                  .chi-accordion__trigger {
+                    padding-bottom: 0.5rem;
+                    padding-left: 2.5rem;
+                    padding-right: 1rem;
+                    padding-top: 0.5rem;
+
+                    .chi-accordion__title {
+                      font-size: $font-size-sm;
+                      font-weight: $font-weight-base;
+                      line-height: $line-height-sm;
+                    }
+                  }
+
+                  .chi-accordion__content {
+                    .chi-tabs__subtabs {
+                      li {
+                        a {
+                          padding-left: 3.5rem;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
