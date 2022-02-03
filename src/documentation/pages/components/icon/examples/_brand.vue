@@ -4,10 +4,9 @@
       | Brand icon colors reinforce Lumen's brand.
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12.-w-md--6.-p--1.-d--flex.-justify-content--center
-        each color in ['', 'icon--primary', 'icon--dark', 'icon--grey']
-          div(class=`chi-icon -${color} -m--1`)
-            svg
-              use(xlink:href='#icon-atom')
+        div(v-for="color in colors" :class="`chi-icon -${color} -m--1`")
+          svg
+            use(xlink:href='#icon-atom')
       .chi-col.-w--12.-w-md--6.-bg--black.-p--1.-d--flex.-justify-content--center
         each color in ['icon--secondary', 'icon--light']
           if (color === 'icon--secondary')
@@ -44,6 +43,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
+      colors: ['', 'icon--primary', 'icon--dark', 'icon--grey'],
       codeSnippets: {
         webcomponent: `<!-- For light backgrounds -->
 <chi-icon icon="atom"></chi-icon>

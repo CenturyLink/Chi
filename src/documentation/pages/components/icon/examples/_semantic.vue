@@ -7,8 +7,8 @@
       | and grey (muted) for neutral. Semantic colors should never be used for decorative purposes.
     .chi-grid(slot="example")
       .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
-        each color in ['icon--success', 'icon--info', 'icon--warning', 'icon--danger', 'icon--muted']
-          div(class=`chi-icon -${color} -m--1`)
+        div(v-for="color in colors")
+          div(:class="`chi-icon -${color} -m--1`")
             svg
               use(xlink:href='#icon-atom')
     <pre class="language-html" slot="code-webcomponent">
@@ -37,6 +37,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
+      colors: ['icon--success', 'icon--info', 'icon--warning', 'icon--danger', 'icon--muted'],
       codeSnippets: {
         webcomponent: `<chi-icon icon="atom" color="success"></chi-icon>
 <chi-icon icon="atom" color="info"></chi-icon>
