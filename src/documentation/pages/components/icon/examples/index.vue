@@ -19,7 +19,7 @@
       | Easily change an icon's color using the examples below.
     <Brand />
     <Semantic />
-    <BrandComplimentary v-if="['lumen', 'portal'].includes($store.state.themes.theme)" />
+    <BrandComplimentaryLumenPortal v-if="['lumen', 'portal'].includes($store.state.themes.theme)" />
     <Icons />
 </template>
 
@@ -27,7 +27,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import Base from './_base.vue';
 import Brand from './_brand.vue';
-import BrandComplimentary from './_brand_complimentary.vue';
+import BrandComplimentaryLumenPortal from './_brand_complimentary-lumen-portal.vue';
 import Icons from './_icons.vue';
 import Semantic from './_semantic.vue';
 import Sizes from './_sizes.vue';
@@ -40,7 +40,7 @@ Vue.config.ignoredElements = ['chi-icon', 'chi-brand'];
     Sizes,
     Brand,
     Semantic,
-    BrandComplimentary,
+    BrandComplimentaryLumenPortal,
     Icons,
   }
 })

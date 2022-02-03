@@ -43,5 +43,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class BrandComplimentary extends Vue {}
+export default class BrandComplimentaryLumenPortal extends Vue {}
 </script>
