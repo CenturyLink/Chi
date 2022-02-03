@@ -264,10 +264,10 @@ onLoad(() => {
     },
     Brightspeed: {
       chiCss: rootUrl + 'chi-brightspeed.css',
-      docsCss: rootUrl + 'assets/themes/lumen/docs.css',
-      faviconSvg: rootUrl + 'assets/themes/lumen/images/favicon.svg',
-      faviconIco: rootUrl + 'assets/themes/lumen/images/favicon.ico',
-      trigger: null
+      docsCss: rootUrl + 'assets/themes/brightspeed/docs.css',
+      faviconSvg: rootUrl + 'assets/themes/brightspeed/images/favicon.svg',
+      faviconIco: rootUrl + 'assets/themes/brightspeed/images/favicon.ico',
+      trigger: '.theme-trigger-brightspeed'
     }
   };
 
@@ -293,6 +293,13 @@ onLoad(() => {
       if (theme === 'CenturyLink') {
         logoElement.logo = theme.toLowerCase();
         logoElement.color = 'black';
+      } 
+      else if (theme === 'Brightspeed') {
+        logoElement.logo = theme.toLowerCase();
+
+        if (logoElement.color) {
+          logoElement.removeAttribute('color');
+        }
       } else {
         logoElement.logo = 'lumen';
 
