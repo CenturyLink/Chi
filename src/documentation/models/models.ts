@@ -1,4 +1,4 @@
-export const THEMES = ['centurylink', 'lumen', 'portal'] as const;
+export const THEMES = ['centurylink', 'lumen', 'portal', 'brightspeed'] as const;
 export type Themes = typeof THEMES[number];
 
 export interface TabsInterface {

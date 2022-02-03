@@ -6,36 +6,48 @@ $brand-sizes: (
     lumen-width: 5.25rem,
     centurylink-height: 1rem,
     centurylink-width: 4.875rem,
+    brightspeed-height: 1rem,
+    brightspeed-width: 6.8125rem,
   ),
   sm: (
     lumen-height: 1rem,
     lumen-width: 7rem,
     centurylink-height: 1.25rem,
     centurylink-width: 6.09375rem,
+    brightspeed-height: 1.25rem,
+    brightspeed-width: 8.5625rem,
   ),
   md: (
     lumen-height: 1.25rem,
     lumen-width: 8.75rem,
     centurylink-height: 2rem,
     centurylink-width: 9.75rem,
+    brightspeed-height: 1.5rem,
+    brightspeed-width: 10.25rem,
   ),
   lg: (
     lumen-height: 1.5rem,
     lumen-width: 10.5rem,
     centurylink-height: 2.5rem,
     centurylink-width: 12.1875rem,
+    brightspeed-height: 2.5rem,
+    brightspeed-width: 17.125rem,
   ),
   xl: (
     lumen-height: 2rem,
     lumen-width: 14rem,
     centurylink-height: 3rem,
     centurylink-width: 14.625rem,
+    brightspeed-height: 3rem,
+    brightspeed-width: 20.5rem,
   ),
   xxl: (
     lumen-height: 2.5rem,
     lumen-width: 17.5rem,
     centurylink-height: 3.5rem,
     centurylink-width: 17.0625rem,
+    brightspeed-height: 3.5rem,
+    brightspeed-width: 23.9375rem,
   ),
 );
 
@@ -59,6 +71,16 @@ chi-brand:not(.hydrated) {
       &[size=#{$size}] {
         height: map-get(map-get($brand-sizes, $size), centurylink-height);
         width: map-get(map-get($brand-sizes, $size), centurylink-width);
+      }
+    }
+
+    &[logo='brightspeed'] {
+      height: 2rem;
+      width: 9.951rem;
+
+      &[size=#{$size}] {
+        height: map-get(map-get($brand-sizes, $size), brightspeed-height);
+        width: map-get(map-get($brand-sizes, $size), brightspeed-width);
       }
     }
   }
