@@ -3,7 +3,8 @@
     table.chi-table(slot="example")
       thead
         tr
-          th Name
+          th.-sorted.-ascending
+            div Name
           th ID
           th Last Login
       tbody
