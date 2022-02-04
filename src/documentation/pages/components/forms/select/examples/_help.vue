@@ -79,8 +79,14 @@ declare const chi: any;
   }
 })
 export default class Help extends Vue {
+  popover: any;
+
   mounted() {
-    chi.popover(this.$refs.helpButton);
+    this.popover = chi.popover(this.$refs.helpButton as HTMLElement);
+  }
+
+  beforeDestroy() {
+    this.popover.dispose();
   }
 }
 </script>

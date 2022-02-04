@@ -73,11 +73,18 @@ declare const chi: any;
   }
 })
 export default class FloatingLabelsLumenCenturyLink extends Vue {
+  floatingLabels: any[] = [];
   sizes = ['lg', 'xl'];
 
   mounted() {
     this.sizes.forEach((size: string) => {
-      chi.floatingLabel(this.$refs[`label-${size}`]);
+      this.floatingLabels.push(chi.floatingLabel(this.$refs[`label-${size}`]));
+    });
+  }
+
+  beforeDestroy() {
+    this.floatingLabels.forEach((floatingLabel: any) => {
+      floatingLabel[0].dispose();
     });
   }
 }
