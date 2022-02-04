@@ -130,7 +130,7 @@ export default class ComponentTest extends Vue {
   }
 
   setMenuId(tabId: string) {
-      this.$props.menuId = tabId;
+    this.$emit('toggleMenuId', tabId);
   }
 
   

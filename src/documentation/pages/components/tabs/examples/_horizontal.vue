@@ -1,23 +1,5 @@
 <template lang="pug">
-  <ComponentTest title="Horizontal" id="horizontal-lumen-centurylink" padding="-p--0" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuTabs[0].id">
-    //- div(slot="example-description")
-    //-   ul#chi-tabs--menu.chi-tabs(
-    //-     role="tablist"
-    //-     aria-label="chi-tabs-horizontal-examples")
-    //-     li.-active
-    //-       a(
-    //-         href='#chi-tabs-panel--horizontal-base'
-    //-         role="tab"
-    //-         aria-selected="true"
-    //-         aria-controls="chi-tabs-panel--horizontal-base") Base
-    //-     li
-    //-       a(
-    //-         href='#chi-tabs-panel--horizontal-inverse'
-    //-         role="tab"
-    //-         aria-selected="false"
-    //-         tabindex="-1"
-    //-         aria-controls="chi-tabs-panel--horizontal-inverse") Inverse
-
+  <ComponentTest title="Horizontal" id="horizontal-lumen-centurylink" padding="-p--0" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
     .-p--3.-bg--grey-20(slot="menu-base")
       .-bg--white.-px--3
         ul.chi-tabs#example-horizontal-base(
@@ -163,9 +145,14 @@ declare const chi: any;
   },
 })
 export default class Horizontal extends Vue {
+  menuId = 'base';
   mounted() {
     // chi.tab(document.getElementById('example-base'));
     // chi.tab(document.getElementById('example-horizontal-base'));
+  }
+  toggleMenuId(e: string) {
+    console.log(e);
+    this.menuId = e;
   }
 }
 </script>
