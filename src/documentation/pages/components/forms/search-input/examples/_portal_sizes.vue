@@ -5,12 +5,11 @@
         |  <code>lg</code>.
         | The default size is <code>md</code>.
     .-p--0(slot="example")
-      .chi-grid
-      each size in ['xs', 'sm', 'md', 'lg']
+      .chi-grid(v-for="size in sizes")
         .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
-          p.-text.-text--bold= size
+          p.-text.-text--bold {{size}}
           .chi-form__item
-            chi-search-input(size=`${size}` value="Sample Text")
+            chi-search-input(:size='size' value="Sample Text")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -44,6 +43,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
+      sizes: ['xs', 'sm', 'md', 'lg'],
       codeSnippets: {
         webcomponent: `<div class="chi-form__item">
   <chi-search-input size="xs" value="Sample Text"></chi-search-input>
