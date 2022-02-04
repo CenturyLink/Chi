@@ -578,13 +578,19 @@ export default class DataTable extends Vue {
 
   _rowAccordionContent(accordionData: DataTableRowNestedContent, contentLevel: 'parent' | 'child') {
     if (accordionData.template) {
-      const template = (this.$scopedSlots[accordionData.template] as NormalizedScopedSlot)(accordionData.payload);
+      const template: NormalizedScopedSlot | undefined = this.$scopedSlots[accordionData.template];
 
-      return (
-        <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} -p--2`} role="row">
-          {template}
-        </div>
-      );
+      if (!template) {
+        throw Error(`No template with name ${accordionData.template} is provided.`);
+      } else {
+        const element = template(accordionData.payload);
+
+        return (
+          <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} ${UTILITY_CLASSES.PADDING[2]}`} role="row">
+            {element}
+          </div>
+        );
+      }
     } else if (accordionData.table) {
       if (accordionData.table.data) {
         return accordionData.table.data.map((bodyRow: DataTableRow) => {
@@ -1338,10 +1344,10 @@ export default class DataTable extends Vue {
   _printRow(bodyRow: DataTableRow, rowLevel: DataTableRowLevels = 'parent') {
     const row: JSX.Element[] = [];
     const rowCells: JSX.Element[] = [];
-    const subLevelContent = [];
+    const sublevelContent = [];
 
     if (this._expandable && bodyRow.nestedContent) {
-      subLevelContent.push(
+      sublevelContent.push(
         this._printSublevelContent(bodyRow.nestedContent, rowLevel === 'child' ? 'child' : 'parent')
       );
     }
@@ -1349,7 +1355,13 @@ export default class DataTable extends Vue {
       let cellData: any;
       if (!!rowCell.template && !!this.$scopedSlots[rowCell.template]) {
         if (typeof rowCell === 'object' && rowCell.payload) {
-          cellData = (this.$scopedSlots[rowCell.template] as NormalizedScopedSlot)(rowCell.payload);
+          const template: NormalizedScopedSlot | undefined = this.$scopedSlots[rowCell.template];
+
+          if (!template) {
+            throw Error(`No template with name ${rowCell.template} is provided.`);
+          } else {
+            cellData = template(rowCell.payload);
+          }
         }
       } else if (typeof rowCell === 'object' && !!rowCell.value) {
         cellData = rowCell.value;
@@ -1368,7 +1380,7 @@ export default class DataTable extends Vue {
     });
     row.push((<tr>{rowCells}</tr>) as JSX.Element[] & JSX.Element);
     if (bodyRow.nestedContent) {
-      row.push(subLevelContent as JSX.Element[] & JSX.Element);
+      row.push(sublevelContent as JSX.Element[] & JSX.Element);
     }
     return row;
   }
@@ -1411,14 +1423,14 @@ export default class DataTable extends Vue {
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
-        <div class={`${UTILITY_CLASSES.SCREEN_ONLY}`}>
+        <div class={`${UTILITY_CLASSES.DISPLAY.SCREEN_ONLY}`}>
           {toolbar}
           {bulkActions}
           {head}
           {body}
           {pagination}
         </div>
-        <div class={`${UTILITY_CLASSES.PRINT_ONLY}`}>
+        <div class={`${UTILITY_CLASSES.DISPLAY.PRINT_ONLY}`}>
           <table class={`${TABLE_CLASSES.TABLE}`}>
             {printHead}
             {printBody}
