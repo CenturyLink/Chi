@@ -504,19 +504,19 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
 
         &.-striped {
           @include respond-to(md) {
-            background-color: $color-navy-10;
+            background-color: $data-table-row-striped-background-color;
           }
         }
 
         &.-active {
-          background-color: $color-navy-20;
-          box-shadow: inset 0.25rem 0 0 $color-border-primary;
+          background-color: $data-table-row-active-background-color;
+          box-shadow: inset 0.25rem 0 0 $data-table-row-active-marker-color;
         }
 
         &:hover,
         &.-hover {
           @include respond-to(md) {
-            background-color: $color-navy-20;
+            background-color: $data-table-row-hover-background-color;
           }
         }
 
@@ -524,7 +524,7 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           background-color: $color-background-base-darker;
 
           @include respond-to(md) {
-            background-color: $color-navy-20;
+            background-color: $data-table-row-expanded-background-color;
             display: flex;
           }
         }
@@ -829,7 +829,7 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
         padding: 0.75rem 1rem 0.75rem 3rem;
 
         @include respond-to(md) {
-          background-color: $color-navy-20;
+          background-color: $data-table-row-expanded-background-color;
           padding: 0;
         }
 
