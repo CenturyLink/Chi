@@ -58,7 +58,7 @@ export default class MultipleLabels extends Vue {
   rangeSlider: any;
 
   mounted() {
-    chi.rangeSlider(this.$refs.range as HTMLElement);
+    this.rangeSlider = chi.rangeSlider(this.$refs.range as HTMLElement);
   }
 
   beforeDestroy() {

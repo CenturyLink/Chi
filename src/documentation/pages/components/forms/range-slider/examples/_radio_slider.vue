@@ -84,7 +84,7 @@ export default class RadioSlider extends Vue {
   rangeSlider: any;
 
   mounted() {
-    chi.rangeSlider(this.$refs.range as HTMLElement);
+    this.rangeSlider = chi.rangeSlider(this.$refs.range as HTMLElement);
   }
 
   beforeDestroy() {
