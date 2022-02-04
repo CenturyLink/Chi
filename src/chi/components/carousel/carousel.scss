@@ -78,4 +78,10 @@
       }
     }
   }
+
+  &__pagination {
+    display: flex;
+    font-size: $font-size-sm;
+    justify-content: center;
+  }
 }
