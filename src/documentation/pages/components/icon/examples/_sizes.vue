@@ -7,10 +7,9 @@
       | specific app scenarios. Use <code>sm--2</code> for displaying 20px icons within a 40px container
       | (e.g. large button), and <code>sm--3</code> for displaying 24px icons within a 48px container.
     .chi-grid.-align-items--end(slot="example")
-      each size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']
-        div.-p--2.-m--1
-          chi-icon(icon="atom", size=size)
-          p.-text.-text--center= size
+      div.-p--2.-m--1(v-for="size in sizes")
+        chi-icon(icon="atom", :size='size')
+        p.-text.-text--center {{size}}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -37,6 +36,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
+      sizes: ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl'],
       codeSnippets: {
         webcomponent: `<!-- -xs : 12x12px -->
 <chi-icon icon="atom" size="xs"></chi-icon>
