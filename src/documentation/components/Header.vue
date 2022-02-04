@@ -9,37 +9,64 @@
         color: #0047bb;
         font-weight: 600;
       }
+      .theme-brightspeed a.theme-trigger-brightspeed.chi-dropdown__menu-item {
+        background-color: #fff1bf;
+        color: #000;
+        font-weight: 600;
+      }
       .-lumen--show,
       .-centurylink--show,
-      .-portal--show {
+      .-portal--show,
+      .-brightspeed--show {
         display: block;
       }
       .-lumen--hide,
       .-centurylink--hide,
-      .-portal--hide {
+      .-portal--hide,
+      .-brightspeed--hide {
         display: none;
       }
       .theme-centurylink .-lumen--show,
       .theme-centurylink .-portal--show,
+      .theme-centurylink .-brightspeed--show,
       .theme-centurylink .-centurylink--hide {
         display: none;
       }
       .theme-lumen .-portal--show,
       .theme-lumen .-centurylink--show,
+      .theme-lumen .-brightspeed--show,
       .theme-lumen .-lumen--hide {
         display: none;
       }
       .theme-portal .-lumen--show,
       .theme-portal .-centurylink--show,
-      .theme-portal .-portal--hide {
+      .theme-portal .-brightspeed--show,
+      .theme-portal .-portal--hide,
+      .theme-portal .-portal--hide.-brightspeed--hide {
+        display: none;
+      }
+      .theme-brightspeed .-lumen--show,
+      .theme-brightspeed .-centurylink--show,
+      .theme-brightspeed .-portal--show,
+      .theme-brightspeed .-brightspeed--hide,
+      .theme-brightspeed .-portal--hide.-brightspeed--hide {
+        display: none;
+      }
+      .theme-brightspeed .-portal--hide,
+      .theme-brightspeed .-centurylink--hide,
+      .theme-brightspeed .-lumen--hide {
         display: none;
       }
       .theme-portal .-lumen--hide,
       .theme-portal .-centurylink--hide,
+      .theme-portal .-brightspeed--hide,
       .theme-centurylink .-portal--hide,
       .theme-centurylink .-lumen--hide,
+      .theme-centurylink .-brightspeed--hide,
       .theme-lumen .-portal--hide,
-      .theme-lumen .-centurylink--hide {
+      .theme-lumen .-centurylink--hide,
+      .theme-lumen .-brightspeed--hide,
+      .theme-brightspeed .-brightspeed--show {
         display: block;
       }
       .chi-brand {
@@ -108,14 +135,17 @@
         top: 0.625rem;
         width: 1.25rem;
       }
-      .chi.theme-portal .example .example-tabs .chi-tabs {
+      .chi.theme-portal .example .example-tabs .chi-tabs,
+      .chi.theme-brightspeed .example .example-tabs .chi-tabs {
         height: 3rem;
       }
-      .chi.theme-portal .example .example-tabs .chi-tabs > li > a {
+      .chi.theme-portal .example .example-tabs .chi-tabs > li > a,
+      .chi.theme-brightspeed .example .example-tabs .chi-tabs > li > a {
         line-height: 1.5rem;
         padding: 0.75rem 0;
       }
-      .chi.theme-portal .example .example-tabs .chi-tabs > li.-active > a {
+      .chi.theme-portal .example .example-tabs .chi-tabs > li.-active > a,
+      .chi.theme-brightspeed .example .example-tabs .chi-tabs > li.-active > a {
         padding-bottom: 0.625rem;
       }
     nav.chi-header__content
