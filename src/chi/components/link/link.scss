@@ -67,7 +67,7 @@ a,
     }
 
     &:hover {
-      color: $color-navy-100;
+      color: $link-cta-hover-color;
 
       &::after {
         left: $link-cta-hover-position-left;
