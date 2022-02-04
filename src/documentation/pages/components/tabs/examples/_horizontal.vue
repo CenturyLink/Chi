@@ -72,7 +72,8 @@
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+        <code v-if="menuId === 'base'" v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+        <code v-if="menuId === 'inverse'" v-highlight="$data.codeSnippets.htmlblueprint1" class="html"></code>
       </pre>
     </Wrapper>
   </ComponentTest>
@@ -140,19 +141,47 @@ declare const chi: any;
 <div class="chi-tabs-panel" id="horizontal-base-3" role="tabpanel">Tab 3 content</div>
 
 <script>chi.tab(document.getElementById('example-horizontal-base'));<\/script>`,
+      
+        htmlblueprint1: `<ul class="chi-tabs" id="example-horizontal-base" role="tablist" aria-label="chi-tabs-horizontal">
+  <li class="-active">
+    <a
+      href="#horizontal-base-1"
+      role="tab"
+      aria-selected="true"
+      aria-controls="horizontal-base-1">Rest Tab</a>
+  </li>
+  <li role="tab">
+    <a
+      href="#horizontal-base-2"
+      aria-selected="false"
+      tabindex="-1"
+      aria-controls="horizontal-base-2">Tab Link</a>
+  </li>
+  <li role="tab">
+    <a
+      href="#horizontal-base-3"
+      aria-selected="false"
+      tabindex="-1"
+      aria-controls="horizontal-base-3">Tab Link</a>
+  </li>
+</ul>
+
+<div class="chi-tabs-panel -active" id="horizontal-base-1" role="tabpanel">Tab 1 content</div>
+<div class="chi-tabs-panel" id="horizontal-base-2" role="tabpanel">Tab 2 content</div>
+<div class="chi-tabs-panel" id="horizontal-base-3" role="tabpanel">Tab 3 content</div>
+
+<script>chi.tab(document.getElementById('example-horizontal-base'));<\/script>`,
       },
     };
   },
 })
 export default class Horizontal extends Vue {
   menuId = 'base';
-  mounted() {
-    // chi.tab(document.getElementById('example-base'));
-    // chi.tab(document.getElementById('example-horizontal-base'));
-  }
+      
+  mounted() {}
   toggleMenuId(e: string) {
     console.log(e);
-    this.menuId = e;
+    this.menuId = e;  
   }
 }
 </script>
