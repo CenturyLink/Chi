@@ -89,7 +89,7 @@ export default class Base extends Vue {
   modal: any;
 
   mounted() {
-    chi.modal(this.$refs.baseModal as HTMLElement);
+    this.modal = chi.modal(this.$refs.baseModal as HTMLElement);
   } 
 
   beforeDestroy() {
