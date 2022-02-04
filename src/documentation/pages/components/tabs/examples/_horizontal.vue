@@ -142,45 +142,52 @@ declare const chi: any;
 
 <script>chi.tab(document.getElementById('example-horizontal-base'));<\/script>`,
       
-        htmlblueprint1: `<ul class="chi-tabs" id="example-horizontal-base" role="tablist" aria-label="chi-tabs-horizontal">
+        htmlblueprint1: `<ul class="chi-tabs -inverse" id="example-horizontal-inverse" role="tablist" aria-label="chi-tabs-horizontal-inverse">
   <li class="-active">
     <a
-      href="#horizontal-base-1"
+      href="#horizontal-inverse-1"
       role="tab"
       aria-selected="true"
-      aria-controls="horizontal-base-1">Rest Tab</a>
-  </li>
-  <li role="tab">
+      aria-controls="horizontal-inverse-1">Active Tab</a></li>
+  <li>
     <a
-      href="#horizontal-base-2"
+      href="#horizontal-inverse-2"
+      role="tab"
       aria-selected="false"
       tabindex="-1"
-      aria-controls="horizontal-base-2">Tab Link</a>
-  </li>
-  <li role="tab">
+      aria-controls="horizontal-inverse-2">Tab Link</a></li>
+  <li>
     <a
-      href="#horizontal-base-3"
+      href="#horizontal-inverse-3"
+      role="tab"
       aria-selected="false"
       tabindex="-1"
-      aria-controls="horizontal-base-3">Tab Link</a>
-  </li>
+      aria-controls="horizontal-inverse-3">Tab Link</a></li>
 </ul>
 
-<div class="chi-tabs-panel -active" id="horizontal-base-1" role="tabpanel">Tab 1 content</div>
-<div class="chi-tabs-panel" id="horizontal-base-2" role="tabpanel">Tab 2 content</div>
-<div class="chi-tabs-panel" id="horizontal-base-3" role="tabpanel">Tab 3 content</div>
+<div class="chi-tabs-panel -active" id="horizontal-inverse-1" role="tabpanel">
+  Tab 1 content
+</div>
+<div class="chi-tabs-panel" id="horizontal-inverse-2" role="tabpanel">
+  Tab 2 content
+</div>
+<div class="chi-tabs-panel" id="horizontal-inverse-3" role="tabpanel">
+  Tab 3 content
+</div>
 
-<script>chi.tab(document.getElementById('example-horizontal-base'));<\/script>`,
+<script>chi.tab(document.getElementById('example-horizontal-inverse'));<\/script>`,
       },
     };
   },
 })
 export default class Horizontal extends Vue {
   menuId = 'base';
-      
-  mounted() {}
+
+  mounted() {
+    chi.tab(document.getElementById('example-horizontal-base'));
+  }
+
   toggleMenuId(e: string) {
-    console.log(e);
     this.menuId = e;  
   }
 }
