@@ -177,7 +177,7 @@ export class Carousel {
         {
           this.customPrevButton ?
           <slot name="previous"></slot> :
-          <chi-button size="sm" type="float" alternative-text="Carousel next">
+          <chi-button size="sm" type="float" alternative-text="Carousel previous" disabled={this.view === 0 || this.view === -1}>
             <chi-icon icon="chevron-left"></chi-icon>
           </chi-button>
         }
@@ -186,7 +186,7 @@ export class Carousel {
       {
         this.customNextButton ?
         <slot name="next"></slot> :
-        <chi-button size="sm" type="float" alternative-text="Carousel next">
+        <chi-button size="sm" type="float" alternative-text="Carousel next" disabled={this.view === this.numberOfViews || this.view + 1 === this.numberOfViews}>
           <chi-icon icon="chevron-right"></chi-icon>
         </chi-button>
       }
