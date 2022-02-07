@@ -131,8 +131,12 @@ describe('Data Table', () => {
       cy.get(`[data-cy='data-table']`)
         .children()
         .first()
+        .children()
+        .first()
         .as('head');
       cy.get(`[data-cy='data-table']`)
+        .children()
+        .first()
         .children()
         .eq(1)
         .as('body');
@@ -145,6 +149,8 @@ describe('Data Table', () => {
         .first()
         .as('cell');
       cy.get(`[data-cy='data-table']`)
+        .children()
+        .first()
         .children()
         .last()
         .as('footer');
@@ -1436,8 +1442,12 @@ describe('Data Table Portal', () => {
       cy.get(`[data-cy='data-table-portal']`)
         .children()
         .first()
+        .children()
+        .first()
         .as('head');
       cy.get(`[data-cy='data-table-portal']`)
+        .children()
+        .first()
         .children()
         .eq(1)
         .as('body');
@@ -1450,6 +1460,8 @@ describe('Data Table Portal', () => {
         .first()
         .as('cell');
       cy.get(`[data-cy='data-table-portal']`)
+        .children()
+        .first()
         .children()
         .last()
         .as('footer');
