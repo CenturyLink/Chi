@@ -144,27 +144,12 @@ h3 Bulk Actions
       template(slot='bulkActions')
         .chi-bulk-actions__buttons
           .chi-bulk-actions__buttons-mobile.-z--40
-            chi-button(variant='flat' type='icon' aria-label='Edit')
-              chi-icon(icon='edit')
-            chi-button(variant='flat' type='icon' aria-label='Compose')
-              chi-icon(icon='compose')
-            chi-button(variant='flat' type='icon' aria-label='Delete')
-              chi-icon(icon='delete')
-            chi-button(variant='flat' type='icon' aria-label='Print')
-              chi-icon(icon='print')
+            chi-button(v-for="button in buttonsMobile" variant='flat' type='icon' aria-label='button.label')
+              chi-icon(icon='button.icon')
           .chi-bulk-actions__buttons-desktop
-            chi-button(size='xs' aria-label='Download')
+            chi-button(v-for="button in buttonsDesktop" size='xs' aria-label='button.label')
               chi-icon(icon='arrow-to-bottom')
-              span Download 
-            chi-button(size='xs' aria-label='Compose')
-              chi-icon(icon='arrow-to-bottom')
-              span Compose 
-            chi-button(size='xs' aria-label='Delete')
-              chi-icon(icon='arrow-to-bottom')
-              span Delete 
-            chi-button(size='xs' aria-label='Print')
-              chi-icon(icon='arrow-to-bottom')
-              span Print
+              span {{ button.label }}
 
 h2 Data Table Server Side
 .test-data-table.-p--3.-w--100
@@ -1703,33 +1688,40 @@ script.
           },
           lastLogin: { label: "Last Login" },
         },
-        body: [
-          {
-            id: "name-2",
-            data: ["Name 2", "name-2", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-1",
-            data: ["Name 1", "name-1", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-3",
-            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
-          },
-          {
-            id: "name-4",
-            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-5",
-            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
-          },
-          {
-            id: "name-6",
-            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
-          },
-        ],
+        body: exampleBody,
       },
+      buttonsMobile: [
+        { 
+          label: 'Edit', 
+          icon: 'edit'
+        },
+        { 
+          label: 'Compose', 
+          icon: 'compose'
+        },
+        { 
+          label: 'Delete', 
+          icon: 'delete'
+        },
+        { 
+          label: 'Print', 
+          icon: 'print'
+        },
+      ],
+      buttonsDesktop: [
+        { 
+          label: 'Download', 
+        },
+        { 
+          label: 'Compose', 
+        },
+        { 
+          label: 'Delete', 
+        },
+        { 
+          label: 'Print',
+        },
+      ],
     },
     mounted() {
       if (window.Cypress) {

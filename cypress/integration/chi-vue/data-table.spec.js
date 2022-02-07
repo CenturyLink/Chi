@@ -362,11 +362,11 @@ describe('Data Table', () => {
 
     const headCellsTooltips = [false, false, true, true, true];
 
-    headCellsTooltips.forEach((isVisible, index) => {
-      const assertion = !isVisible ? 'not.exist' : 'exist';
+    headCellsTooltips.forEach((existsAssertion, index) => {
+      const assertion = !existsAssertion ? 'not.exist' : 'exist';
 
-      it(`Tooltip element ${index} should ${!isVisible ? 'not' : ''
-        } exist as the label is ${!isVisible ? 'not' : ''} truncated`, () => {
+      it(`Tooltip element ${index} should ${!existsAssertion ? 'not' : ''
+        } exist as the label is ${!existsAssertion ? 'not' : ''} truncated`, () => {
           cy.get(`[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD}`)
             .find(`.${DATA_TABLE_CLASSES.CELL}`)
             .eq(index)
@@ -1191,7 +1191,7 @@ describe('Data Table', () => {
     });
   });
 
-  describe.only('Bulk Actions', () => {
+  describe('Bulk Actions', () => {
     beforeEach(() => {
       cy.get(`[data-cy='data-table-bulk-actions']`)
         .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
@@ -1375,7 +1375,7 @@ describe('Data Table', () => {
       const selected = '1';
 
       cy.get('@selectables')
-        .eq(0)
+        .first()
         .dblclick();
       cy.get('@selectables')
         .eq(1)
@@ -1392,7 +1392,7 @@ describe('Data Table', () => {
         });
       cy.get(`@pagination`)
         .find(`.${ICON_BUTTON}`)
-        .eq(0)
+        .first()
         .click();
     });
 
@@ -1413,7 +1413,7 @@ describe('Data Table', () => {
             .contains(`Actions (${selected} Selected)`);
           cy.get(`@pagination`)
             .find(`.${ICON_BUTTON}`)
-            .eq(0)
+            .first()
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
