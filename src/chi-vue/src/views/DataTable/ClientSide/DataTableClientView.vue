@@ -1,5 +1,5 @@
 <template>
-  <div id="tadataTableClientView">
+  <div id="dataTableClientView">
     <h2>Data Table</h2>
     <ChiDataTable
       :data="table"
