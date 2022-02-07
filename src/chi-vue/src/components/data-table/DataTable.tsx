@@ -1330,6 +1330,7 @@ export default class DataTable extends Vue {
         </tbody>
       );
     }
+
     return (
       <tbody>
         <tr>
@@ -1401,6 +1402,7 @@ export default class DataTable extends Vue {
         return this._printRow(bodyRow, contentLevel === 'child' ? 'grandChild' : 'child');
       });
     }
+
     return (
       <tr>
         <td colspan={Object.keys(this.data.head).length} class={`${UTILITY_CLASSES.PADDING.LEFT[4]}`}>
