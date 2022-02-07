@@ -4,9 +4,11 @@ const EXPANDED_CLASS = '-expanded';
 const PORTAL_CLASS = '-portal';
 const ICON_BUTTON = '-icon';
 const ICON_CLASS = 'chi-icon';
+const BUTTON_CLASS = 'chi-button';
 const INFO_ICON_CLASS = 'icon-circle-info-outline';
 const ARROW_UP_CLASS = 'icon-arrow-up';
 const ARROW_SORT_CLASS = 'icon-arrow-sort';
+const CLOSE_CLASS = '-close';
 const DATA_TABLE_CLASSES = {
   DATA_TABLE: 'chi-data-table',
   TOOLBAR: 'chi-data-table__toolbar',
@@ -362,11 +364,11 @@ describe('Data Table', () => {
 
     const headCellsTooltips = [false, false, true, true, true];
 
-    headCellsTooltips.forEach((existsAssertion, index) => {
-      const assertion = !existsAssertion ? 'not.exist' : 'exist';
+    headCellsTooltips.forEach((isVisible, index) => {
+      const assertion = !isVisible ? 'not.exist' : 'exist';
 
-      it(`Tooltip element ${index} should ${!existsAssertion ? 'not' : ''
-        } exist as the label is ${!existsAssertion ? 'not' : ''} truncated`, () => {
+      it(`Tooltip element ${index} should ${!isVisible ? 'not' : ''
+        } exist as the label is ${!isVisible ? 'not' : ''} truncated`, () => {
           cy.get(`[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD}`)
             .find(`.${DATA_TABLE_CLASSES.CELL}`)
             .eq(index)
@@ -1288,7 +1290,7 @@ describe('Data Table', () => {
         });
     });
 
-    it('Should close bulk actions and show data table is still in its original state', () => {
+    it('Should reset data table rows to the initial state when closing bulk actions clicking the X button', () => {
       cy.window()
         .its('dataTableBulkActionsExample')
         .then(dataTableBulkActionsExample => {
@@ -1298,7 +1300,7 @@ describe('Data Table', () => {
 
           dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL}`, spy);
           cy.get(`[data-cy='data-table-bulk-actions']`)
-            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END}`)
+            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END} .${BUTTON_CLASS} .${CLOSE_CLASS}`)
             .click()
             .then(() => {
               cy.get(`[data-cy='data-table-bulk-actions']`)
@@ -1319,7 +1321,7 @@ describe('Data Table', () => {
         });
     });
 
-    it.skip('Should close bulk actions when "Show selected only" is active and show data table is still in its original state', () => {
+    it.skip('Should reset data table rows to the initial state when closing bulk actions having "Show selected only" mode enabled', () => {
       cy.window()
         .its('dataTableBulkActionsExample')
         .then(dataTableBulkActionsExample => {
@@ -1336,7 +1338,7 @@ describe('Data Table', () => {
             .${CHECKBOXES_CLASSES.LABEL}`)
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
-            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END}`)
+            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END} .${BUTTON_CLASS} .${CLOSE_CLASS}`)
             .click()
             .then(() => {
               cy.get(`[data-cy='data-table-bulk-actions']`)
@@ -1371,7 +1373,7 @@ describe('Data Table', () => {
         .should('not.be.visible');
     });
 
-    it('Should go to page 2 and selected number of rows should be the same number', () => {
+    it('The number of selected rows should remain the same when navigating to page 2', () => {
       const selected = '1';
 
       cy.get('@selectables')
@@ -1396,7 +1398,7 @@ describe('Data Table', () => {
         .click();
     });
 
-    it('Should go to page 2 and selected number of rows should update', () => {
+    it('The number of selected rows should update when selecting rows on page 2', () => {
       const selected = '2';
 
       cy.get(`@pagination`)
