@@ -1,11 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="Components contained" id="components-contained-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Components contained" id="components-contained-lumen-centurylink" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | As navigation component is built from other primitive Chi components, most of the components behavior
       | can be replicated on the navigation component. For example, you can use the <code>-animate</code> class
       | on the dropdowns to make the chevron rotate when activated.
 
-    .-p--3.-pb--4(slot="example")
+    .-p--0(slot="example")
       ul.chi-tabs.chi-navigationExample#navigation-components-contained
         li.chi-dropdown.-active
           a.chi-dropdown__trigger.-animate(href='#') Active Tab

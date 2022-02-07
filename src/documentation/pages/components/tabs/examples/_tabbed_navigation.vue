@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Tabbed Navigation" id="tabbed-navigation-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Tabbed Navigation" id="tabbed-navigation-lumen-centurylink" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | The navigation component is a combination of Chi tabs and dropdowns components. You must use
       | <code>chi.navigation</code> function to instantiate the whole group of components, and there is no need for
@@ -11,7 +11,7 @@
       | animated chevron in the dropdowns, it also adds some other new functionalities like the automatic overflow menu,
       | or a wait-for-animation option.
 
-    .-p--3.-pb--4(slot="example")
+    .-p--0(slot="example")
       ul.chi-tabs.chi-navigationExample#example-tabbed-navigation
         li.chi-dropdown.-active
           a.chi-dropdown__trigger(href='#') Active tab

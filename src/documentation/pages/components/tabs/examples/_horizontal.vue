@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentTest title="Horizontal" id="horizontal-lumen-centurylink" padding="-p--0" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
+  <ComponentTabExample title="Horizontal" id="horizontal-lumen-centurylink" padding="-p--0" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
     .-p--3.-bg--grey-20(slot="menu-base")
       .-bg--white.-px--3
         ul.chi-tabs#example-horizontal-base(
@@ -76,7 +76,7 @@
         <code v-if="menuId === 'inverse'" v-highlight="$data.codeSnippets.htmlblueprint1" class="html"></code>
       </pre>
     </Wrapper>
-  </ComponentTest>
+  </ComponentTabExample>
 </template>
 
 <script lang="ts">

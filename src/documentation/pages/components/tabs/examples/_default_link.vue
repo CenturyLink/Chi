@@ -1,9 +1,9 @@
 <template lang="pug">
-  <ComponentExample title="Keep default link behavior" id="default-link-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Keep default link behavior" id="default-link-lumen-centurylink" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | By default, Chi JavaScript enabled tabs will ignore default link behavior.
       | To preserve it, specify a target property on the link.
-    .-p--3.-pb--4(slot="example")
+    .-p--0(slot="example")
       ul#example-default-link-behavior.chi-tabs(role="tablist" aria-label="example-default-link-behavior")
         li.-active
           a(

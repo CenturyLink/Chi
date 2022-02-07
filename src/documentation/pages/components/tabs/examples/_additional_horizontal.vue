@@ -1,6 +1,6 @@
 <template lang="pug">
-  <ComponentExample title="Horizontal" id="additional-horizontal-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
-    .-p--3.-pb--4(slot="example")
+  <ComponentExample title="Horizontal" id="additional-horizontal-lumen-centurylink" :tabs="exampleTabs">
+    .-pb--4(slot="example")
       p.-text--bold X-small
       .chi-divider.-mb--2
       ul.chi-tabs.-xs

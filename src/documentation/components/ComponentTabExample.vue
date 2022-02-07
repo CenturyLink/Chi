@@ -20,7 +20,7 @@
         >
       </span>
     </h3>
-    <!-- <slot name="example-description"></slot> -->
+    <slot name="example-description"></slot>
     <div>
       <ul
         :id="'chi-tabs--menu' + id"
@@ -100,7 +100,7 @@ import { TabsInterface } from '../models/models';
 declare const chi: any;
 
 @Component({})
-export default class ComponentTest extends Vue {
+export default class ComponentTabExample extends Vue {
   @Prop() id?: string;
   @Prop() title?: string;
   @Prop() titleSize?: 'h3' | 'h4';
@@ -109,8 +109,10 @@ export default class ComponentTest extends Vue {
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
   @Prop() menuId?: string;
+
   chiTabs: any;
   chiMainTabs: any;
+
   mounted() {
     const chiTabs = document.getElementById(
       'code-snippet-tabs' + this.$props.id
@@ -133,6 +135,5 @@ export default class ComponentTest extends Vue {
     this.$emit('toggleMenuId', tabId);
   }
 
-  
 }
 </script>
