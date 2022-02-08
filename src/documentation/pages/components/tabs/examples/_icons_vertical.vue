@@ -1,44 +1,63 @@
 <template lang="pug">
-  <ComponentExample title="Vertical tabs with icons" id="icons-vertical-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
-    .-p--3(slot="example")
-      .chi-form__item
-        label(class="chi-label", for="range09") Range label
-        .chi-input__wrapper
-          input(class="chi-range-slider", type="range", min="0", max="4", step="1", id="range09")
-          .chi-input__tick-bar
-            div
-              .chi-input__tick
-              .chi-input__tick-label Monthly
-            div
-              .chi-input__tick
-              .chi-input__tick-label 1 year
-            div
-              .chi-input__tick
-              .chi-input__tick-label 2 years
-            div
-              .chi-input__tick
-              .chi-input__tick-label 3 years
-            div
-              .chi-input__tick
-              .chi-input__tick-label > 3 years
-          .chi-input__progress
-          .chi-input__thumb
+  <ComponentTabExample title="Vertical tabs with icons" id="icons-vertical-lumen-centurylink" padding="-p--0" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
+    .-p--3.-bg--grey-20(slot="menu-base")
+      .-bg--white.-p--3
+        ul.chi-tabs.-vertical.-icons
+          li.-active
+            a(href='#')
+              i.chi-icon.icon-atom(aria-hidden="true")
+              span Active Tab
+            ul.chi-tabs__subtabs
+              li.-active
+                a(href='#') Subtab Link
+              li
+                a(href='#') Subtab Link
+              li
+                a(href='#') Subtab Link
+          li
+            a(href='#')
+              i.chi-icon.icon-atom(aria-hidden="true")
+              span Tab Link
+          li
+            a(href='#')
+              i.chi-icon.icon-atom(aria-hidden="true")
+              span Tab Link
+
+    .-p--3.-bg--grey-20(slot="menu-inverse")
+      .-bg--black.-p--3
+        ul.chi-tabs.-inverse.-vertical.-icons
+          li.-active
+            a(href='#')
+              i.chi-icon.icon-atom(aria-hidden="true")
+              span Active Tab
+            ul.chi-tabs__subtabs
+              li.-active
+                a(href='#') Subtab Link
+              li
+                a(href='#') Subtab Link
+              li
+                a(href='#') Subtab Link
+          li
+            a(href='#')
+              i.chi-icon.icon-atom(aria-hidden="true")
+              span Tab Link
+          li
+            a(href='#')
+              i.chi-icon.icon-atom(aria-hidden="true")
+              span Tab Link
+      
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-if="menuId === 'base'" v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      <code v-if="menuId === 'inverse'" v-highlight="$data.codeSnippets.htmlblueprint1" class="html"></code>
+    </pre>
+  </ComponentTabExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {
@@ -55,43 +74,68 @@ declare const chi: any;
           label: 'HTML blueprint',
         },
       ],
+       menuTabs: [
+        {
+          active: true,
+          id: 'base',
+          label: 'Base',
+        },
+        {
+          id: 'inverse',
+          label: 'Inverse',
+        },
+      ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="range09">Range label</label>
-  <div class="chi-input__wrapper">
-    <input class="chi-range-slider" type="range" min="0" max="4" step="1" id="range09">
-    <div class="chi-input__tick-bar">
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">Monthly</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">1 year</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">2 years</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">3 years</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">&gt; 3 years</div>
-      </div>
-    </div>
-    <div class="chi-input__progress"></div>
-    <div class="chi-input__thumb"></div>
-  </div>
-</div>
-
-<script>chi.rangeSlider(document.getElementById('range09'));<\/script>`,
+        htmlblueprint: `<ul class="chi-tabs -vertical -icons">
+  <li class="-active">
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>Active Tab</span>
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>Tab link</span>
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>Tab link</span>
+    </a>
+  </li>
+</ul>`,
+          htmlblueprint1: `<ul class="chi-tabs -inverse -vertical -icons">
+  <li class="-active">
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>Active Tab</span>
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>Tab link</span>
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>Tab link</span>
+    </a>
+  </li>
+</ul>`
       },
     };
   },
 })
-export default class IconsVerticalLumenCenturyLink extends Vue {}
+export default class IconsVerticalLumenCenturyLink extends Vue {
+   menuId = 'base';
+
+  toggleMenuId(e: string) {
+    this.menuId = e;  
+  }
+}
 </script>

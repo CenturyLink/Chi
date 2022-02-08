@@ -1,36 +1,43 @@
 <template lang="pug">
-  <ComponentExample title="Horizontal tabs with icons" id="icons-horizontal-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
-    .-p--3(slot="example")
-      .chi-form__item
-        label(class="chi-label", for="range08") Range label
-        .chi-input__wrapper
-          input(class="chi-range-slider", type="range", min="0", max="4", step="1", id="range08", disabled)
-          .chi-input__tick-bar
-            div
-              .chi-input__tick
-              .chi-input__tick-label Monthly
-            div
-              .chi-input__tick
-              .chi-input__tick-label 1 year
-            div
-              .chi-input__tick
-              .chi-input__tick-label 2 years
-            div
-              .chi-input__tick
-              .chi-input__tick-label 3 years
-            div
-              .chi-input__tick
-              .chi-input__tick-label > 3 years
+  <ComponentTabExample title="Horizontal tabs with icons" id="icons-horizontal-lumen-centurylink" padding="-p--0" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
+    .-p--3.-bg--grey-20(slot="menu-base")
+      .-bg--white.-px--3
+        ul.chi-tabs.-icons
+          li.-active
+            a(href='#')
+              i.chi-icon.icon-atom(aria-hidden="true")
+              span Active Tab
+          li
+            a(href='#')
+              i.chi-icon.icon-atom(aria-hidden="true")
+              span Tab Link
+          li
+            a(href='#')
+              i.chi-icon.icon-atom(aria-hidden="true")
+              span Tab Link
+    .-p--3.-bg--grey-20(slot="menu-inverse")
+      .-bg--black.-px--3
+         ul.chi-tabs.-inverse.-icons
+          li.-active
+            a(href='#')
+              i.chi-icon.icon-atom(aria-hidden="true")
+              span Active Tab
+          li
+            a(href='#')
+              i.chi-icon.icon-atom(aria-hidden="true")
+              span Tab Link
+          li
+            a(href='#')
+              i.chi-icon.icon-atom(aria-hidden="true")
+              span Tab Link
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentExample>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-if="menuId === 'base'" v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      <code v-if="menuId === 'inverse'" v-highlight="$data.codeSnippets.htmlblueprint1" class="html"></code>
+    </pre>
+  </ComponentTabExample>
 </template>
 
 <script lang="ts">
@@ -51,41 +58,68 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
+       menuTabs: [
+        {
+          active: true,
+          id: 'base',
+          label: 'Base',
+        },
+        {
+          id: 'inverse',
+          label: 'Inverse',
+        },
+      ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="range08">Range label</label>
-  <div class="chi-input__wrapper">
-    <input class="chi-range-slider" type="range" min="0" max="4" step="1" id="range08" disabled>
-    <div class="chi-input__tick-bar">
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">Monthly</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">1 year</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">2 years</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">3 years</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">&gt; 3 years</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>chi.rangeSlider(document.getElementById('range08'));<\/script>`,
+        htmlblueprint: `<ul class="chi-tabs -icons">
+  <li class="-active">
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>Active Tab</span>
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>Tab Link</span>
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>Tab Link</span>
+    </a>
+  </li>
+</ul>`,    
+        htmlblueprint1: `<ul class="chi-tabs -inverse -icons">
+  <li class="-active">
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>Active Tab</span>
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>Tab Link</span>
+    </a>
+  </li>
+  <li>
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>Tab Link</span>
+    </a>
+  </li>
+</ul>`,
       },
     };
   },
 })
-export default class IconsHorizontalLumenCenturyLink extends Vue {}
+export default class IconsHorizontalLumenCenturyLink extends Vue {
+   menuId = 'base';
+
+  toggleMenuId(e: string) {
+    this.menuId = e;  
+  }
+}
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Wait for animations" id="wait-animations-lumen-centurylink" padding="-p--0" :tabs="exampleTabs">
+  <ComponentTabExample title="Wait for animations" id="wait-animations-lumen-centurylink" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
     p.-text(slot="example-description")
       | Browsers stop any execution of JavaScript as soon as a link is clicked and it starts to fetch the destination URL.
       | For this reason, the sliding border animation will not be perceived by the user when an external link is clicked, as
@@ -7,29 +7,50 @@
       | component has the option to wait for the animation to finish and, then, it will redirect the user to the destination
       | URL. You can enable this behavior by setting the <code>waitForAnimations</code> option to <code>true</code>.
 
-    .-p--3(slot="example")
-      .chi-form__item
-        label(class="chi-label", for="range03") Range label
-        .chi-input__wrapper.-d--flex
-          span.-text.-mr--2 200GB
-          input(type="range", class="chi-range-slider", id="range03")
-          span.-text.-ml--2 5TB
+    .-p--0(slot="menu-enable")
+      ul.chi-tabs.chi-navigationExample.chi-customExample
+        li.-active
+          a(href='?tab=1') Tab Link
+        li
+          a(href='?tab=2') Tab Link
+        li
+          a(href='?tab=3') Tab Link
+        li
+          a(href='?tab=4') Tab Link
+        li
+          a(href='?tab=5') Tab Link
+        li
+          a(href='?tab=6') Tab Link
+      
+    .-p--0(slot="menu-disable")
+      ul.chi-tabs.chi-navigationExample.chi-customExample
+        li.-active
+          a(href='?tab=1') Tab Link
+        li
+          a(href='?tab=2') Tab Link
+        li
+          a(href='?tab=3') Tab Link
+        li
+          a(href='?tab=4') Tab Link
+        li
+          a(href='?tab=5') Tab Link
+        li
+          a(href='?tab=6') Tab Link  
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+        <code v-if="menuId === 'enable'" v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+        <code v-if="menuId === 'disable'" v-highlight="$data.codeSnippets.htmlblueprint1" class="html"></code>
       </pre>
     </Wrapper>
-  </ComponentExample>
+  </ComponentTabExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {
@@ -46,21 +67,82 @@ declare const chi: any;
           label: 'HTML blueprint',
         },
       ],
+       menuTabs: [
+        {
+          active: true,
+          id: 'enable',
+          label: 'Enabled',
+        },
+        {
+          id: 'disable',
+          label: 'Disabled',
+        },
+      ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="range03">Range label</label>
-  <div class="chi-input__wrapper -d--flex">
-    <span class="-text">200GB</span>
-    <input class="chi-range-slider -mx--2" type="range" id="range03">
-    <span class="-text">5TB</span>
-  </div>
-</div>
-
-<script>chi.rangeSlider(document.getElementById('range03'));<\/script>`,
+        htmlblueprint: `<ul id="navigationexample-4-enabled" class="chi-tabs">
+  <li class="-active">
+    <a href="/">Tab Link</a>
+  </li>
+  <li>
+    <a href="/">Tab Link</a>
+  </li>
+  <li>
+    <a href="/">Tab Link</a>
+  </li>
+  <li>
+    <a href="/">Tab Link</a>
+  </li>
+  <li>
+    <a href="/">Tab Link</a>
+  </li>
+  <li>
+    <a href="/">Tab Link</a>
+  </li>
+</ul>
+<script>
+const navigationElem = document.getElementById('#navigationexample-4-enabled');
+chi.navigation(
+  navigationElem,
+  {waitForAnimations: true}
+);
+<\/script>`,
+        htmlblueprint1: `<ul id="navigationexample-4-disabled" class="chi-tabs">
+  <li class="-active">
+    <a href="/">Tab Link</a>
+  </li>
+  <li>
+    <a href="/">Tab Link</a>
+  </li>
+  <li>
+    <a href="/">Tab Link</a>
+  </li>
+  <li>
+    <a href="/">Tab Link</a>
+  </li>
+  <li>
+    <a href="/">Tab Link</a>
+  </li>
+  <li>
+    <a href="/">Tab Link</a>
+  </li>
+</ul>
+<script>
+  const navigationElem = document.getElementById('#navigationexample-4-disabled');
+  chi.navigation(
+    navigationElem,
+    {waitForAnimations: false}
+  );
+<\/script>`
       },
     };
   },
 })
-export default class WaitAnimationsLumenCenturyLink extends Vue {}
+export default class WaitAnimationsLumenCenturyLink extends Vue {
+  menuId = 'enable';
+
+  toggleMenuId(e: string) {
+    this.menuId = e;  
+  }
+}
 </script>

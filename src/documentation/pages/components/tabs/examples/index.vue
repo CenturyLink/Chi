@@ -13,6 +13,7 @@
       <TabbedNavigationLumenCenturyLink />
       <ContainedComponentLumenCenturyLink />
       <WaitAnimationsLumenCenturyLink />
+      h2 Icons
       <IconsHorizontalLumenCenturyLink />
       <IconsVerticalLumenCenturyLink />
       <VerticalDescriptionLumenCenturyLink />
