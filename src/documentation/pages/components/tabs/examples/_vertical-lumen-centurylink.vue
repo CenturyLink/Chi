@@ -3,7 +3,7 @@
     .-p--3.-bg--grey-20(:slot="$data.menuTabs[0].id")
       .chi-grid.-no-gutter.-bg--white
         .chi-col.-w--6.-w-sm--4.-p--3
-          ul.chi-tabs.-vertical#example-vertical-base(role="tablist" aria-label="chi-tabs-vertical-base")
+          ul.chi-tabs.-vertical#example-vertical-base(role="tablist" aria-label="chi-tabs-vertical-base" ref="example-vertical-base")
             li.-active
               a(
                 href='#vertical-base-1'
@@ -190,13 +190,18 @@ declare const chi: any;
 })
 export default class VerticalLumenCenturyLink extends Vue {
   menuId = 'base';
+  tab: any;
 
   mounted() {
-    chi.tab(document.getElementById('example-vertical-base'));
+    this.tab = chi.tab(this.$refs['example-vertical-base'] as HTMLElement);
   }
 
   toggleMenuId(e: string) {
     this.menuId = e;
+  }
+
+  beforeDestroy() {
+    this.tab.dispose();
   }
 }
 </script>

@@ -4,7 +4,8 @@
       .-bg--white.-px--3.-pt--2
         ul.chi-tabs.-border#example-portal-horizontal-bordered(
           role="tablist"
-          aria-label="chi-tabs-portal-horizontal")
+          aria-label="chi-tabs-portal-horizontal"
+          ref="example-portal-horizontal-bordered")
           li.-active
             a(
               href='#portal-horizontal-bordered-1'
@@ -102,8 +103,14 @@ declare const chi: any;
   },
 })
 export default class BorderedPortal extends Vue {
+  tab: any;
+
   mounted() {
-    chi.tab(document.getElementById('example-portal-horizontal-bordered'));
+    this.tab = chi.tab(this.$refs['example-portal-horizontal-bordered'] as HTMLElement);
+  }
+
+  beforeDestroy() {
+    this.tab.dispose();
   }
 }
 </script>

@@ -4,7 +4,8 @@
       .-bg--white.-px--3.-pt--2
         ul.chi-tabs#example-portal-horizontal-base(
           role="tablist"
-          aria-label="chi-tabs-horizontal")
+          aria-label="chi-tabs-horizontal"
+          ref="example-portal-horizontal-base")
           li.-active
             a(
               href='#portal-horizontal-base-1'
@@ -102,8 +103,14 @@ declare const chi: any;
   },
 })
 export default class BasePortal extends Vue {
+  tab: any;
+
   mounted() {
-    chi.tab(document.getElementById('example-portal-horizontal-base'));
+    this.tab = chi.tab(this.$refs['example-portal-horizontal-base'] as HTMLElement);
+  }
+
+  beforeDestroy() {
+    this.tab.dispose();
   }
 }
 </script>

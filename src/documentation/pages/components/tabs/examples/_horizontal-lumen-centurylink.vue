@@ -4,7 +4,8 @@
       .-bg--white.-px--3
         ul.chi-tabs#example-horizontal-base(
           role="tablist"
-          aria-label="chi-tabs-horizontal")
+          aria-label="chi-tabs-horizontal"
+          ref="example-horizontal-base")
           li.-active
             a(
               href='#horizontal-base-1'
@@ -181,13 +182,18 @@ declare const chi: any;
 })
 export default class Horizontal extends Vue {
   menuId = 'base';
+  tab: any;
 
   mounted() {
-    chi.tab(document.getElementById('example-horizontal-base'));
+    this.tab = chi.tab(this.$refs['example-horizontal-base'] as HTMLElement);
   }
 
   toggleMenuId(e: string) {
     this.menuId = e;
+  }
+
+  beforeDestroy() {
+    this.tab.dispose();
   }
 }
 </script>

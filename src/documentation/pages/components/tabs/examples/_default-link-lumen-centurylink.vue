@@ -4,7 +4,7 @@
       | By default, Chi JavaScript enabled tabs will ignore default link behavior.
       | To preserve it, specify a target property on the link.
     .div(slot="example")
-      ul#example-default-link-behavior.chi-tabs(role="tablist" aria-label="example-default-link-behavior")
+      ul#example-default-link-behavior.chi-tabs(role="tablist" aria-label="example-default-link-behavior" ref="example-default-link-behavior")
         li.-active
           a(
             href='#a2'
@@ -110,8 +110,14 @@ declare const chi: any;
   },
 })
 export default class DefaultLinkLumenCenturyLink extends Vue {
+  tab: any;
+
   mounted() {
-    chi.tab(document.getElementById('example-default-link-behavior'));
+    this.tab = chi.tab(this.$refs['example-default-link-behavior'] as HTMLElement);
+  }
+
+  beforeDestroy() {
+    this.tab.dispose();
   }
 }
 </script>
