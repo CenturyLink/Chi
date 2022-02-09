@@ -15,10 +15,7 @@
             div
               a.chi-dropdown__menu-item.chi-dropdown__trigger.-animate(href='#') Elem 3 more
               .chi-dropdown__menu
-                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
-                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
-                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
-                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
+                a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="elem in activeElements") {{ elem }}
             a.chi-dropdown__menu-item(href='#') Elem 4
         li
           a(href='#exampleHashTarget') Tab Link
@@ -27,9 +24,7 @@
         li.chi-dropdown
           a.chi-dropdown__trigger.-animate(href='#') Tab Link
           .chi-dropdown__menu
-            a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 1
-            a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 2
-            a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 3
+            a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="elem in tabElements") {{ elem }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -62,6 +57,8 @@ declare const chi: any;
           label: 'HTML blueprint',
         },
       ],
+      tabElements: ['Element 1', 'Element 2', 'Element 3'],
+      activeElements: ['Elem 3.1', 'Elem 3.2', 'Elem 3.3', 'Elem 3.4'],
       codeSnippets: {
         webcomponent: ``,
         htmlblueprint: `<ul class="chi-tabs" id="navigation-components-contained">
