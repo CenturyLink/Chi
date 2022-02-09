@@ -44,7 +44,7 @@ $monday-starting-week: (
 
     &.-active {
       background-color: $date-picker-day-active-background-color;
-      color: white;
+      color: $date-picker-day-active-text-color;
       font-weight: $font-weight-semi-bold;
 
       &.-today::after {
