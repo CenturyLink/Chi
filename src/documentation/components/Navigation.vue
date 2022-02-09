@@ -30,6 +30,7 @@
               >Mobile navigation</NuxtLink
             >
           </li>
+           <li><NuxtLink to="/components/modal">Modal</NuxtLink></li>
           <li>
             <NuxtLink to="/components/forms/number-input"
               >Number input</NuxtLink
@@ -76,7 +77,6 @@
           <li>
             <NuxtLink to="/components/mobile-navigation">Mobile navigation</NuxtLink>
           </li>
-          <li><NuxtLink to="/components/modal">Modal</NuxtLink></li>
           <li>
             <NuxtLink to="/components/forms/number-input">Number input</NuxtLink>
           </li>
