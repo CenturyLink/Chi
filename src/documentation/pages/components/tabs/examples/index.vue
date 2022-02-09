@@ -28,7 +28,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import VerticalLumenCenturyLink from './_vertical.vue';
 import HorizontalLumenCenturyLink from './_horizontal.vue';
-import DisabledLumenCenturyLink from './_disabled.vue';
 import DefaultLinkLumenCenturyLink from './_default_link.vue';
 import TabbedNavigationLumenCenturyLink from './_tabbed_navigation.vue';
 import WaitAnimationsLumenCenturyLink from './_wait_animations.vue';
@@ -51,7 +50,6 @@ import VerticalPortal from './_vertical-portal.vue';
     DefaultLinkLumenCenturyLink,
     TabbedNavigationLumenCenturyLink,
     ContainedComponentLumenCenturyLink,
-    DisabledLumenCenturyLink,
     WaitAnimationsLumenCenturyLink,
     IconsHorizontalLumenCenturyLink,
     IconsVerticalLumenCenturyLink,
