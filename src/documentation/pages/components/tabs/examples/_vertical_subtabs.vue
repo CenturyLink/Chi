@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentTabExample title="Vertical Subtabs" id="vertical-subtabs-lumen-centurylink" padding="-p--0" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
-    .-p--3.-bg--grey-20(slot="menu-base")
+    .-p--3.-bg--grey-20(:slot="$data.menuTabs[0].id")
       .-bg--white.-p--3
         ul.chi-tabs.-vertical
           li.-active
@@ -17,7 +17,7 @@
           li
             a(href='#') Tab link
 
-    .-p--3.-bg--grey-20(slot="menu-inverse")
+    .-p--3.-bg--grey-20(:slot="$data.menuTabs[1].id")
       .-bg--black.-p--3
         ul.chi-tabs.-inverse.-vertical
           li.-active
@@ -37,8 +37,8 @@
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
     <pre class="language-html" slot="code-htmlblueprint">
-      <code v-if="menuId === 'base'" v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      <code v-if="menuId === 'inverse'" v-highlight="$data.codeSnippets.htmlblueprint1" class="html"></code>
+      <code v-if="menuId === $data.menuTabs[0].id" v-highlight="$data.codeSnippets.htmlblueprintBase" class="html"></code>
+      <code v-if="menuId === $data.menuTabs[1].id" v-highlight="$data.codeSnippets.htmlblueprintInverse" class="html"></code>
     </pre>
   </ComponentTabExample>
 </template>
@@ -74,7 +74,7 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-tabs -vertical">
+        htmlblueprintBase: `<ul class="chi-tabs -vertical">
   <li class="-active">
     <a href="#">Active tab</a>
     <ul class="chi-tabs__subtabs">
@@ -96,7 +96,7 @@ import { Component, Vue } from 'vue-property-decorator';
     <a href="#">Tab link</a>
   </li>
 </ul>`,
-          htmlblueprint1: `<ul class="chi-tabs -inverse -vertical">
+        htmlblueprintInverse: `<ul class="chi-tabs -inverse -vertical">
   <li class="-active">
     <a href="#">Active tab</a>
     <ul class="chi-tabs__subtabs">

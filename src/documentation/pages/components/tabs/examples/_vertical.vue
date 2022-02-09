@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentTabExample title="Vertical" id="vertical-lumen-centurylink" padding="-p--0" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
-    .-p--3.-bg--grey-20(slot="menu-base")
+    .-p--3.-bg--grey-20(:slot="$data.menuTabs[0].id")
       .chi-grid.-no-gutter.-bg--white
         .chi-col.-w--6.-w-sm--4.-p--3
           ul.chi-tabs.-vertical#example-vertical-base(role="tablist" aria-label="chi-tabs-vertical-base")
@@ -32,7 +32,7 @@
           .chi-tabs-panel#vertical-base-3(role="tabpanel")
             .-text Tab 3 content
       
-    .-p--3.-bg--grey-20(slot="menu-inverse")
+    .-p--3.-bg--grey-20(:slot="$data.menuTabs[1].id")
       .chi-grid.-no-gutter.-bg--black
         .chi-col.-w--6.-w-sm--4.-p--3
           ul.chi-tabs.-inverse.-vertical#example-vertical-inverse(role="tablist" aria-label="vertical-inverse")
@@ -70,8 +70,8 @@
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">
-        <code v-if="menuId === 'base'" v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-        <code v-if="menuId === 'inverse'" v-highlight="$data.codeSnippets.htmlblueprint1" class="html"></code>
+        <code v-if="menuId === $data.menuTabs[0].id" v-highlight="$data.codeSnippets.htmlblueprintBase" class="html"></code>
+        <code v-if="menuId === $data.menuTabs[1].id" v-highlight="$data.codeSnippets.htmlblueprintInverse" class="html"></code>
       </pre>
     </Wrapper>
   </ComponentTabExample>
@@ -110,7 +110,7 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-tabs -vertical" id="example-vertical-base" role="tablist" aria-label="chi-tabs-vertical-base">
+        htmlblueprintBase: `<ul class="chi-tabs -vertical" id="example-vertical-base" role="tablist" aria-label="chi-tabs-vertical-base">
   <li class="-active">
     <a
       href="#vertical-base-1"
@@ -147,7 +147,7 @@ declare const chi: any;
 </div>
 
 <script>chi.tab(document.getElementById('example-vertical-base'));<\/script>`,     
-        htmlblueprint1: `<ul class="chi-tabs -inverse -vertical" id="example-vertical-inverse" role="tablist" aria-label="vertical-inverse">
+        htmlblueprintInverse: `<ul class="chi-tabs -inverse -vertical" id="example-vertical-inverse" role="tablist" aria-label="vertical-inverse">
   <li class="-active">
     <a
       href="#vertical-inverse-1"

@@ -52,7 +52,7 @@
     <div class="example -mb--3">
       <div :class="[padding || '-p--3', additionalClasses]">
         <slot name="example"></slot>
-        <slot :name="'menu-' + menuId"></slot>
+        <slot :name="menuId"></slot>
       </div>
       <div class="example-tabs -pl--2">
         <ul

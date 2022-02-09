@@ -7,7 +7,7 @@
       | component has the option to wait for the animation to finish and, then, it will redirect the user to the destination
       | URL. You can enable this behavior by setting the <code>waitForAnimations</code> option to <code>true</code>.
 
-    .-p--0(slot="menu-enable")
+    .-p--0(:slot="$data.menuTabs[0].id")
       ul.chi-tabs.chi-navigationExample.chi-customExample
         li.-active
           a(href='?tab=1') Tab Link
@@ -22,7 +22,7 @@
         li
           a(href='?tab=6') Tab Link
       
-    .-p--0(slot="menu-disable")
+    .-p--0(:slot="$data.menuTabs[1].id")
       ul.chi-tabs.chi-navigationExample.chi-customExample
         li.-active
           a(href='?tab=1') Tab Link
@@ -42,8 +42,8 @@
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">
-        <code v-if="menuId === 'enable'" v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-        <code v-if="menuId === 'disable'" v-highlight="$data.codeSnippets.htmlblueprint1" class="html"></code>
+        <code v-if="menuId === $data.menuTabs[0].id" v-highlight="$data.codeSnippets.htmlblueprintEnable" class="html"></code>
+        <code v-if="menuId === $data.menuTabs[1].id" v-highlight="$data.codeSnippets.htmlblueprintDisable" class="html"></code>
       </pre>
     </Wrapper>
   </ComponentTabExample>
@@ -80,7 +80,7 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul id="navigationexample-4-enabled" class="chi-tabs">
+        htmlblueprintEnable: `<ul id="navigationexample-4-enabled" class="chi-tabs">
   <li class="-active">
     <a href="/">Tab Link</a>
   </li>
@@ -107,7 +107,7 @@ chi.navigation(
   {waitForAnimations: true}
 );
 <\/script>`,
-        htmlblueprint1: `<ul id="navigationexample-4-disabled" class="chi-tabs">
+        htmlblueprintDisable: `<ul id="navigationexample-4-disabled" class="chi-tabs">
   <li class="-active">
     <a href="/">Tab Link</a>
   </li>
