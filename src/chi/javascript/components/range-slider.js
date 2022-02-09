@@ -72,8 +72,12 @@ class RangeSlider extends Component {
 
   dispose() {
     this._config = null;
-    this._thumbElem.removeEventListener('click', this._updateValues);
-    this._progressElem.removeEventListener('click', this._updateValues);
+    if (this._thumbElem) {
+      this._thumbElem.removeEventListener('click', this._updateValues);
+    }
+    if (this._progressElem) {
+      this._progressElem.removeEventListener('click', this._updateValues);
+    }
     this._updateValues = null;
     this._thumbElem = null;
     this._progressElem = null;

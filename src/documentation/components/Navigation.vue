@@ -42,6 +42,9 @@
           <li><NuxtLink to="/components/price">Price</NuxtLink></li>
           <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
           <li><NuxtLink to="/components/progress">Progress</NuxtLink></li>
+          <li>
+            <NuxtLink to="/components/forms/range-slider">Range slider</NuxtLink>
+          </li>
           <li><NuxtLink to="/components/forms/select">Select</NuxtLink></li>
           <li><NuxtLink to="/components/sidenav">Sidenav</NuxtLink></li>
           <li>
@@ -83,9 +86,6 @@
           <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
           <li><NuxtLink to="/components/picker-group">Picker group</NuxtLink></li>
           <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
-          <li>
-            <NuxtLink to="/components/forms/range-slider">Range slider</NuxtLink>
-          </li>
           <li>
             <NuxtLink to="/components/forms/search-input">Search input</NuxtLink>
           </li>
