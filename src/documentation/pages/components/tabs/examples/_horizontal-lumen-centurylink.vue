@@ -99,7 +99,7 @@ declare const chi: any;
           label: 'HTML blueprint',
         },
       ],
-       menuTabs: [
+      menuTabs: [
         {
           active: true,
           id: 'base',
@@ -187,7 +187,7 @@ export default class Horizontal extends Vue {
   }
 
   toggleMenuId(e: string) {
-    this.menuId = e;  
+    this.menuId = e;
   }
 }
 </script>

@@ -22,7 +22,7 @@
         li
           a(href='?tab=6') Tab Link
       
-    .-p--0(:slot="$data.menuTabs[1].id")
+    .div(:slot="$data.menuTabs[1].id")
       ul.chi-tabs.chi-navigationExample.chi-customExample
         li.-active
           a(href='?tab=1') Tab Link
@@ -67,7 +67,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
-       menuTabs: [
+      menuTabs: [
         {
           active: true,
           id: 'enable',
@@ -142,7 +142,7 @@ export default class WaitAnimationsLumenCenturyLink extends Vue {
   menuId = 'enable';
 
   toggleMenuId(e: string) {
-    this.menuId = e;  
+    this.menuId = e;
   }
 }
 </script>

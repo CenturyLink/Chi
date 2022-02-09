@@ -58,7 +58,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
-       menuTabs: [
+      menuTabs: [
         {
           active: true,
           id: 'base',
@@ -90,7 +90,7 @@ import { Component, Vue } from 'vue-property-decorator';
       <span>Tab Link</span>
     </a>
   </li>
-</ul>`,    
+</ul>`,
         htmlblueprintInverse: `<ul class="chi-tabs -inverse -icons">
   <li class="-active">
     <a href="#">
@@ -116,10 +116,10 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class IconsHorizontalLumenCenturyLink extends Vue {
-   menuId = 'base';
+  menuId = 'base';
 
   toggleMenuId(e: string) {
-    this.menuId = e;  
+    this.menuId = e;
   }
 }
 </script>

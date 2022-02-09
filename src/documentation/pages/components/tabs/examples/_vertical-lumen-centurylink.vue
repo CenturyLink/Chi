@@ -97,7 +97,7 @@ declare const chi: any;
           label: 'HTML blueprint',
         },
       ],
-       menuTabs: [
+      menuTabs: [
         {
           active: true,
           id: 'base',
@@ -146,7 +146,7 @@ declare const chi: any;
   Tab 3 content
 </div>
 
-<script>chi.tab(document.getElementById('example-vertical-base'));<\/script>`,     
+<script>chi.tab(document.getElementById('example-vertical-base'));<\/script>`,
         htmlblueprintInverse: `<ul class="chi-tabs -inverse -vertical" id="example-vertical-inverse" role="tablist" aria-label="vertical-inverse">
   <li class="-active">
     <a
@@ -196,7 +196,7 @@ export default class VerticalLumenCenturyLink extends Vue {
   }
 
   toggleMenuId(e: string) {
-    this.menuId = e;  
+    this.menuId = e;
   }
 }
 </script>

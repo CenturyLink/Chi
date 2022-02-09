@@ -61,7 +61,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
-        menuTabs: [
+      menuTabs: [
         {
           active: true,
           id: 'base',
@@ -123,10 +123,10 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class VerticalSubtabsLumenCenturyLink extends Vue {
-   menuId = 'base';
+  menuId = 'base';
 
   toggleMenuId(e: string) {
-    this.menuId = e;  
+    this.menuId = e;
   }
 }
 </script>
