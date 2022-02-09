@@ -70,6 +70,16 @@ import { TabsInterface } from '../models/models';
 
 declare const chi: any;
 
+Vue.config.warnHandler = (msg: string, _vm: Vue, trace: string) => {
+  if (
+    !msg.includes(
+      'The client-side rendered virtual DOM tree is not matching server-rendered content.'
+    )
+  ) {
+    console.warn(msg, trace);
+  }
+};
+
 @Component({})
 export default class ComponentExample extends Vue {
   @Prop() id?: string;
