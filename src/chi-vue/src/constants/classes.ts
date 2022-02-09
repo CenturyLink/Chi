@@ -126,6 +126,13 @@ export const DATA_TABLE_CLASSES = {
   SORTING: '-sorting',
   COMPACT: '-compact',
   TRUNCATED: '-truncated',
+  PRINT_FOOTER: 'chi-data-table__print-footer',
+};
+//#endregion
+
+//#region Table
+export const TABLE_CLASSES = {
+  TABLE: 'chi-table',
 };
 //#endregion
 
@@ -229,6 +236,8 @@ export const UTILITY_CLASSES = {
   },
   DISPLAY: {
     FLEX: '-d--flex',
+    SCREEN_ONLY: '-d-screen--only',
+    PRINT_ONLY: '-d-print--only',
   },
   FLEX: {
     FLEX_GROW1: '-flex--grow1',
@@ -275,6 +284,8 @@ export const UTILITY_CLASSES = {
       2: '-pl--2',
       3: '-pl--3',
       4: '-pl--4',
+      5: '-pl--5',
+      6: '-pl--6',
     },
     RIGHT: {
       1: '-pr--1',
