@@ -30,6 +30,7 @@
               >Mobile navigation</NuxtLink
             >
           </li>
+           <li><NuxtLink to="/components/modal">Modal</NuxtLink></li>
           <li>
             <NuxtLink to="/components/forms/number-input"
               >Number input</NuxtLink
@@ -41,6 +42,7 @@
           <li><NuxtLink to="/components/price">Price</NuxtLink></li>
           <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
           <li><NuxtLink to="/components/progress">Progress</NuxtLink></li>
+          <li><NuxtLink to="/components/forms/select">Select</NuxtLink></li>
           <li><NuxtLink to="/components/sidenav">Sidenav</NuxtLink></li>
           <li>
             <NuxtLink to="/components/forms/radio-button"
@@ -76,7 +78,6 @@
           <li>
             <NuxtLink to="/components/mobile-navigation">Mobile navigation</NuxtLink>
           </li>
-          <li><NuxtLink to="/components/modal">Modal</NuxtLink></li>
           <li>
             <NuxtLink to="/components/forms/number-input">Number input</NuxtLink>
           </li>
@@ -89,7 +90,6 @@
           <li>
             <NuxtLink to="/components/forms/search-input">Search input</NuxtLink>
           </li>
-          <li><NuxtLink to="/components/forms/select">Select</NuxtLink></li>
           <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
           <li><NuxtLink to="/components/spinner">Spinner</NuxtLink></li>
           <li><NuxtLink to="/components/stat">Stat</NuxtLink></li>
