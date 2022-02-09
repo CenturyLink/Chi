@@ -7,7 +7,7 @@
       | component has the option to wait for the animation to finish and, then, it will redirect the user to the destination
       | URL. You can enable this behavior by setting the <code>waitForAnimations</code> option to <code>true</code>.
 
-    .-p--0(:slot="$data.menuTabs[0].id")
+    .div(:slot="$data.menuTabs[0].id")
       ul.chi-tabs.chi-navigationExample.chi-customExample
         li.-active
           a(href='?tab=1') Tab Link

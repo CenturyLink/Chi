@@ -26,19 +26,19 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import VerticalLumenCenturyLink from './_vertical.vue';
-import HorizontalLumenCenturyLink from './_horizontal.vue';
-import DefaultLinkLumenCenturyLink from './_default_link.vue';
-import TabbedNavigationLumenCenturyLink from './_tabbed_navigation.vue';
-import WaitAnimationsLumenCenturyLink from './_wait_animations.vue';
-import IconsVerticalLumenCenturyLink from './_icons_vertical.vue';
-import IconsHorizontalLumenCenturyLink from './_icons_horizontal.vue';
-import ContainedComponentLumenCenturyLink from './_contained_component.vue';
-import VerticalDescriptionLumenCenturyLink from './_vertical_description.vue';
-import VerticalSubtabsLumenCenturyLink from './_vertical_subtabs.vue';
-import BorderedSubtabsLumenCenturyLink from './_bordered_subtabs.vue';
-import AdditionalHorizontalLumenCenturyLink from './_additional_horizontal.vue';
-import AdditionalVerticalLumenCenturyLink from './_additional_vertical.vue';
+import VerticalLumenCenturyLink from './_vertical-lumen-centurylink.vue';
+import HorizontalLumenCenturyLink from './_horizontal-lumen-centurylink.vue';
+import DefaultLinkLumenCenturyLink from './_default-link-lumen-centurylink.vue';
+import TabbedNavigationLumenCenturyLink from './_tabbed-navigation-lumen-centurylink.vue';
+import WaitAnimationsLumenCenturyLink from './_wait-animations-lumen-centurylink.vue';
+import IconsVerticalLumenCenturyLink from './_icons-vertical-lumen-centurylink.vue';
+import IconsHorizontalLumenCenturyLink from './_icons-horizontal-lumen-centurylink.vue';
+import ContainedComponentLumenCenturyLink from './_contained-component-lumen-centurylink.vue';
+import VerticalDescriptionLumenCenturyLink from './_vertical-description-lumen-centurylink.vue';
+import VerticalSubtabsLumenCenturyLink from './_vertical-subtabs-lumen-centurylink.vue';
+import BorderedSubtabsLumenCenturyLink from './_bordered-subtabs-lumen-centurylink.vue';
+import AdditionalHorizontalLumenCenturyLink from './_additional-horizontal-lumen-centurylink.vue';
+import AdditionalVerticalLumenCenturyLink from './_additional-vertical-lumen-centurylink.vue';
 import BasePortal from './_base-portal.vue';
 import BorderedPortal from './_bordered-portal.vue';
 import VerticalPortal from './_vertical-portal.vue';
