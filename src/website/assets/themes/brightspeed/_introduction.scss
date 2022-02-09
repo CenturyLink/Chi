@@ -75,12 +75,6 @@
                 width: auto;
               }
 
-              &.-dark {
-                &.-outline {
-                  background: transparent;
-                }
-              }
-
               &.-primary {
                 color: $color-text-white;
                 background-color: $color-background-black;
