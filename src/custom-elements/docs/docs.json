@@ -4231,6 +4231,23 @@
           "required": false
         },
         {
+          "name": "readonly",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": true,
+          "docs": "To render Search Input in readonly mode",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "size",
           "type": "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\"",
           "mutable": false,
