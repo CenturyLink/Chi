@@ -1,22 +1,22 @@
-h3 Single element per view
+h3 Pagination
 p.-text
-  | Use the attribute <code>single</code> to render single item per view.
+  | Use the attribute <code>pagination</code> to render carousel with pagination.
 .example.-mb--3
   .-p--3
-    chi-carousel(single)
-      each item in [1,2,3,4,5,6,7,8]
-        .chi-carousel__item.-p--1(style="height: 10rem;" slot="items")
-          .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center
-            =item
+    chi-carousel(pagination single)
+      .-d--flex(slot="items")
+        each item in [1, 2, 3, 4, 5, 6, 7, 8]
+          .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;")
+            .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
   .example-tabs.-pl--2
-    ul.chi-tabs#example-accordion-base
+    ul.chi-tabs#example-accordion-pagination
       li.-active
-        a(href=`#webcomponent-accordion-base`) Web Component
+        a(href=`#webcomponent-accordion-pagination`) Web Component
       li.-disabled
-        a(href=`#html-accordion-base`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-accordion-base
+        a(href=`#html-accordion-pagination`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-accordion-pagination
     :code(lang="html")
-      <chi-carousel single>
+      <chi-carousel pagination single>
         <div class="-d--flex" slot="items">
           <div class="chi-carousel__item -p--1">
             <!-- Custom item 1 -->
@@ -44,4 +44,4 @@ p.-text
           <</div>
         </div>
       </chi-carousel>
-  .chi-tabs-panel#html-accordion-base
+  .chi-tabs-panel#html-accordion-pagination
