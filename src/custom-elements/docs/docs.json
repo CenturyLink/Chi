@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-02-07T19:12:58",
+  "timestamp": "2022-02-10T09:28:47",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -601,6 +601,22 @@
           "attr": "dots",
           "reflectToAttr": false,
           "docs": "To render Carousel with dot controllers",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "pagination",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "pagination",
+          "reflectToAttr": false,
+          "docs": "To render Carousel with pagination indicators",
           "docsTags": [],
           "values": [
             {
