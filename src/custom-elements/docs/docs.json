@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-02-03T01:19:04",
+  "timestamp": "2022-02-10T12:52:48",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -601,6 +601,22 @@
           "attr": "dots",
           "reflectToAttr": false,
           "docs": "To render Carousel with dot controllers",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "pagination",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "pagination",
+          "reflectToAttr": false,
+          "docs": "To render Carousel with pagination indicators",
           "docsTags": [],
           "values": [
             {
@@ -4204,6 +4220,23 @@
           "attr": "prevent-value-mutation",
           "reflectToAttr": true,
           "docs": "To disable Value attribute mutation",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": true,
+          "docs": "To render Search Input in readonly mode",
           "docsTags": [],
           "default": "false",
           "values": [

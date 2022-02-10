@@ -1,4 +1,12 @@
 # CHANGELOG
+## 5.9.0 (February 10, 2022)
+### Components
+#### Added
+* Added: Theme support for Project Connect.
+* Added: Carousel web component now supports optional pagination.
+* Added: Search Input web component now supports `readonly` state.
+
+# CHANGELOG
 ## 5.8.0 (January 31, 2022)
 ### Components
 #### Added

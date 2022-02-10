@@ -12,6 +12,7 @@ import {
   ONE_LINK_TX,
   RADIO_CLASSES,
   SR_ONLY,
+  TABLE_CLASSES,
   UTILITY_CLASSES,
 } from '@/constants/classes';
 import './data-table.scss';
@@ -30,7 +31,7 @@ import {
   DataTableRowLevels,
   DataTableColumnDescription,
 } from '@/constants/types';
-import { DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
+import { DATA_TABLE_NO_RESULTS_FOUND, DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
@@ -40,6 +41,7 @@ import { defaultConfig } from './default-config';
 import { detectMajorChiVersion } from '@/utils/utils';
 import { ICON_CLASSES } from '@/constants/icons';
 import { alignmentUtilityClasses, expansionIcons } from './constants/constants';
+import { NormalizedScopedSlot } from 'vue/types/vnode';
 
 Vue.config.ignoredElements = ['chi-popover'];
 
@@ -576,14 +578,19 @@ export default class DataTable extends Vue {
 
   _rowAccordionContent(accordionData: DataTableRowNestedContent, contentLevel: 'parent' | 'child') {
     if (accordionData.template) {
-      // eslint-disable-next-line
-      const template = this.$scopedSlots[accordionData.template]!(accordionData.payload);
+      const template: NormalizedScopedSlot | undefined = this.$scopedSlots[accordionData.template];
 
-      return (
-        <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} -p--2`} role="row">
-          {template}
-        </div>
-      );
+      if (!template) {
+        throw Error(`No template with name ${accordionData.template} is provided.`);
+      } else {
+        const element = template(accordionData.payload);
+
+        return (
+          <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} ${UTILITY_CLASSES.PADDING[2]}`} role="row">
+            {element}
+          </div>
+        );
+      }
     } else if (accordionData.table) {
       if (accordionData.table.data) {
         return accordionData.table.data.map((bodyRow: DataTableRow) => {
@@ -744,7 +751,9 @@ export default class DataTable extends Vue {
         return this.row(bodyRow, 'parent', striped);
       });
     } else {
-      const noResultsMessage = this.config.noResultsMessage ? this.config.noResultsMessage : 'No results found';
+      const noResultsMessage = this.config.noResultsMessage
+        ? this.config.noResultsMessage
+        : DATA_TABLE_NO_RESULTS_FOUND;
 
       tableBodyRows = (
         <div class={DATA_TABLE_CLASSES.EMPTY}>
@@ -816,7 +825,7 @@ export default class DataTable extends Vue {
     const results =
       this.mode === DataTableModes.CLIENT
         ? this._showSelectedOnly
-          ? this.selectedRows.length
+          ? this._getSelectedFirstLevelRowsCount()
           : this.data.body.length
         : this.config.pagination.results;
 
@@ -1286,21 +1295,150 @@ export default class DataTable extends Vue {
     }
   }
 
+  _printHead() {
+    return (
+      <thead>
+        <tr>
+          {Object.keys(this.data.head).map((column: string) => {
+            return <th>{this.data.head[column].label}</th>;
+          })}
+        </tr>
+      </thead>
+    );
+  }
+
+  _printFooter() {
+    const resultsCount =
+      this.mode === DataTableModes.CLIENT
+        ? this._showSelectedOnly
+          ? this._getSelectedFirstLevelRowsCount()
+          : this.data.body.length
+        : this.config.pagination.results;
+
+    return <div class={`${DATA_TABLE_CLASSES.PRINT_FOOTER}`}>{resultsCount} results</div>;
+  }
+
+  _printBody() {
+    if (this.data.body.length > 0) {
+      const bodyRows = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+
+      return (
+        <tbody>
+          {bodyRows?.map((bodyRow: DataTableRow) => {
+            return this._printRow(bodyRow, 'parent');
+          })}
+        </tbody>
+      );
+    }
+
+    return (
+      <tbody>
+        <tr>
+          <td colspan={Object.keys(this.data.head).length} class={DATA_TABLE_CLASSES.EMPTY}>
+            {this.config.noResultsMessage ? this.config.noResultsMessage : DATA_TABLE_NO_RESULTS_FOUND}
+          </td>
+        </tr>
+      </tbody>
+    );
+  }
+
+  _printRow(bodyRow: DataTableRow, rowLevel: DataTableRowLevels = 'parent') {
+    const row: JSX.Element[] = [];
+    const rowCells: JSX.Element[] = [];
+    const sublevelContent = [];
+
+    if (this._expandable && bodyRow.nestedContent) {
+      sublevelContent.push(
+        this._printSublevelContent(bodyRow.nestedContent, rowLevel === 'child' ? 'child' : 'parent')
+      );
+    }
+    bodyRow.data.forEach((rowCell: any, index: number) => {
+      let cellData: any;
+      if (!!rowCell.template && !!this.$scopedSlots[rowCell.template]) {
+        if (typeof rowCell === 'object' && rowCell.payload) {
+          const template: NormalizedScopedSlot | undefined = this.$scopedSlots[rowCell.template];
+
+          if (!template) {
+            throw Error(`No template with name ${rowCell.template} is provided.`);
+          } else {
+            cellData = template(rowCell.payload);
+          }
+        }
+      } else if (typeof rowCell === 'object' && !!rowCell.value) {
+        cellData = rowCell.value;
+      } else if (typeof rowCell === 'string' || typeof rowCell === 'number') {
+        cellData = rowCell;
+      } else {
+        cellData = null;
+      }
+      if (index === 0 && rowLevel === 'grandChild') {
+        rowCells.push(<td class={`${UTILITY_CLASSES.PADDING.LEFT[6]}`}>{cellData}</td>);
+      } else if (index === 0 && rowLevel === 'child') {
+        rowCells.push(<td class={`${UTILITY_CLASSES.PADDING.LEFT[4]}`}>{cellData}</td>);
+      } else {
+        rowCells.push(<td>{cellData}</td>);
+      }
+    });
+    row.push((<tr>{rowCells}</tr>) as JSX.Element[] & JSX.Element);
+    if (bodyRow.nestedContent) {
+      row.push(sublevelContent as JSX.Element[] & JSX.Element);
+    }
+    return row;
+  }
+
+  _printSublevelContent(sublevelData: DataTableRowNestedContent, contentLevel: 'parent' | 'child') {
+    if (sublevelData.template) {
+      const template = (this.$scopedSlots[sublevelData.template] as NormalizedScopedSlot)(sublevelData.payload);
+
+      return (
+        <tr>
+          <td colspan={Object.keys(this.data.head).length} class={`${UTILITY_CLASSES.PADDING.LEFT[4]}`}>
+            {template}
+          </td>
+        </tr>
+      );
+    } else if (sublevelData.table && sublevelData.table.data) {
+      return sublevelData.table.data.map((bodyRow: DataTableRow) => {
+        return this._printRow(bodyRow, contentLevel === 'child' ? 'grandChild' : 'child');
+      });
+    }
+
+    return (
+      <tr>
+        <td colspan={Object.keys(this.data.head).length} class={`${UTILITY_CLASSES.PADDING.LEFT[4]}`}>
+          {sublevelData.value}
+        </td>
+      </tr>
+    );
+  }
+
   render() {
     const classes = this._dataTableClasses(this.config.style, this._sortable),
       head = this._head(),
       toolbar = this._toolbar(),
       bulkActions = this._bulkActions(),
       body = this._body(),
-      pagination = this._pagination();
+      pagination = this._pagination(),
+      printHead = this._printHead(),
+      printBody = this._printBody(),
+      printFooter = this._printFooter();
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
-        {toolbar}
-        {bulkActions}
-        {head}
-        {body}
-        {pagination}
+        <div class={`${UTILITY_CLASSES.DISPLAY.SCREEN_ONLY}`}>
+          {toolbar}
+          {bulkActions}
+          {head}
+          {body}
+          {pagination}
+        </div>
+        <div class={`${UTILITY_CLASSES.DISPLAY.PRINT_ONLY}`}>
+          <table class={`${TABLE_CLASSES.TABLE}`}>
+            {printHead}
+            {printBody}
+          </table>
+          {printFooter}
+        </div>
       </div>
     );
   }
