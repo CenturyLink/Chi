@@ -141,8 +141,8 @@ chi.navigation(
 export default class WaitAnimationsLumenCenturyLink extends Vue {
   menuId = 'enable';
 
-  toggleMenuId(e: string) {
-    this.menuId = e;
+  toggleMenuId(toggleTabEvent: string) {
+    this.menuId = toggleTabEvent;
   }
 }
 </script>

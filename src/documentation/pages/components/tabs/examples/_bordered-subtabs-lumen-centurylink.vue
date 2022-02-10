@@ -89,8 +89,8 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class BorderedSubtabsLumenCenturyLink extends Vue {
   menuId = 'base';
 
-  toggleMenuId(e: string) {
-    this.menuId = e;
+  toggleMenuId(toggleTabEvent: string) {
+    this.menuId = toggleTabEvent;
   }
 }
 </script>

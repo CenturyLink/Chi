@@ -5,8 +5,8 @@
       | can be replicated on the navigation component. For example, you can use the <code>-animate</code> class
       | on the dropdowns to make the chevron rotate when activated.
 
-    .div(slot="example")
-      ul.chi-tabs.chi-navigationExample#navigation-components-contained
+    <Wrapper slot="example">
+      ul.chi-tabs.chi-navigationExample#navigation-components-contained(ref="navigation-components-contained")
         li.chi-dropdown.-active
           a.chi-dropdown__trigger.-animate(href='#') Active Tab
           .chi-dropdown__menu
@@ -25,6 +25,7 @@
           a.chi-dropdown__trigger.-animate(href='#') Tab Link
           .chi-dropdown__menu
             a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="elem in tabElements") {{ elem }}
+    </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -95,7 +96,7 @@ declare const chi: any;
 })
 export default class ContainedComponentLumenCenturyLink extends Vue {
   mounted() {
-    chi.navigation(document.getElementById('navigation-components-contained'));
+    chi.navigation(this.$refs['navigation-components-contained'] as HTMLElement);
   }
 }
 </script>

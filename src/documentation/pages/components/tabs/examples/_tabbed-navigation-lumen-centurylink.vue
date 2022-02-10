@@ -11,8 +11,8 @@
       | animated chevron in the dropdowns, it also adds some other new functionalities like the automatic overflow menu,
       | or a wait-for-animation option.
 
-    .div(slot="example")
-      ul.chi-tabs.chi-navigationExample#example-tabbed-navigation
+    <Wrapper slot="example">
+      ul.chi-tabs.chi-navigationExample#example-tabbed-navigation(ref="example-tabbed-navigation")
         li.chi-dropdown.-active
           a.chi-dropdown__trigger(href='#') Active tab
           .chi-dropdown__menu
@@ -39,6 +39,7 @@
           a.chi-dropdown__trigger(href='#') Tab Dropdown
           .chi-dropdown__menu
             a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="elem in tabElements") {{ elem }}
+    </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -128,7 +129,7 @@ declare const chi: any;
 })
 export default class TabbedNavigationLumenCenturyLink extends Vue {
   mounted() {
-    chi.navigation(document.getElementById('example-tabbed-navigation'));
+    chi.navigation(this.$refs['example-tabbed-navigation'] as HTMLElement);
   }
 }
 </script>

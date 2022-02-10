@@ -3,7 +3,7 @@
     p.-text(slot="example-description")
       | By default, Chi JavaScript enabled tabs will ignore default link behavior.
       | To preserve it, specify a target property on the link.
-    .div(slot="example")
+    <Wrapper slot="example">
       ul#example-default-link-behavior.chi-tabs(role="tablist" aria-label="example-default-link-behavior" ref="example-default-link-behavior")
         li.-active
           a(
@@ -33,6 +33,7 @@
         p.-text Content for tab b
       #c2.chi-tabs-panel(role="tabpanel")
         p.-text Content for tab c
+    </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

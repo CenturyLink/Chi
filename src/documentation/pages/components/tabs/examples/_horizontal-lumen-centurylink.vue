@@ -188,8 +188,8 @@ export default class Horizontal extends Vue {
     this.tab = chi.tab(this.$refs['example-horizontal-base'] as HTMLElement);
   }
 
-  toggleMenuId(e: string) {
-    this.menuId = e;
+  toggleMenuId(toggleTabEvent: string) {
+    this.menuId = toggleTabEvent;
   }
 
   beforeDestroy() {
