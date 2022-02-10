@@ -10,11 +10,11 @@
                 path(d='M106.330232 1.71966316c0-.94108421-.572874-1.47287369-1.677516-1.47287369H89.1060842c-1.1043263 0-1.6771789.53178948-1.6771789 1.47287369v1.42565263l17.2648737-.0345579c1.063579-.00001052 1.636453-.49107368 1.636453-1.39109473', fill='#0C9ED9')
           .chi-header__start
             .-d--flex.-d-lg--none
-              button#drawer-trigger-portal-pib1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-portal-1', aria-label="Toggle navigation")
+              button#drawer-trigger-portal-pib1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-portal-1', aria-label="Toggle navigation", ref="drawer-trigger-portal-pib1")
                 .chi-button__content
                   i.chi-icon.-sm--2.icon-menu(aria-hidden="true")
             .chi-dropdown.-d--none.-d-lg--flex
-              button.chi-button.-flat.chi-dropdown__trigger.-text--xl.-px--1.-animate(id="button-portal-site-menu") App Name
+              button.chi-button.-flat.chi-dropdown__trigger.-text--xl.-px--1.-animate(id="button-portal-site-menu" ref="button-portal-site-menu") App Name
               .chi-dropdown__menu.-list.-w--lg
                 a.chi-dropdown__menu-item.-h--auto.-active(href="#")
                   span.chi-dropdown__menu-item_title App Name
@@ -27,13 +27,13 @@
                   span.chi-dropdown__menu-item_text App description
           .chi-header__end
             div.-d--none.-d-lg--flex
-              button.chi-button.-flat.-icon(id="button-portal-notification" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom")
+              button.chi-button.-flat.-icon(id="button-portal-notification" ref="button-portal-notification" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom")
                 .chi-button__content
                   i.chi-icon.icon-bell-outline.-icon--primary(aria-hidden="true")
                   div.chi-badge.-dark.-xs 2
               .chi-divider.-vertical
               .chi-dropdown.-d--none.-d-lg--flex
-                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-portal-user-menu", data-position="bottom-end") Menu
+                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-portal-user-menu", ref="button-portal-user-menu", data-position="bottom-end") Menu
                 .chi-dropdown__menu.-w--sm
                   a.chi-dropdown__menu-item(href="#")
                     i.chi-icon.icon-user(aria-hidden="true")
@@ -42,7 +42,7 @@
                     i.chi-icon.icon-logout(aria-hidden="true")
                     span Item 2
               .chi-dropdown.-d--none.-d-lg--flex
-                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-portal-eid-menu", data-position="bottom-end") Menu
+                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-portal-eid-menu", ref="button-portal-eid-menu", data-position="bottom-end") Menu
                 .chi-dropdown__menu.-w--sm
                   a.chi-dropdown__menu-item(href="#")
                     i.chi-icon.icon-user(aria-hidden="true")
@@ -175,11 +175,11 @@ declare const chi: any;
 })
 export default class BasePortal extends Vue {
   mounted() {
-    chi.drawer(document.getElementById('drawer-trigger-portal-pib1'));
-    chi.dropdown(document.getElementById('button-portal-site-menu'));
-    chi.dropdown(document.getElementById('button-portal-user-menu'));
-    chi.dropdown(document.getElementById('button-portal-eid-menu'));
-    chi.tooltip(document.getElementById('button-portal-notification'));
+    chi.drawer(this.$refs['drawer-trigger-portal-pib1'] as HTMLElement);
+    chi.dropdown(this.$refs['button-portal-site-menu'] as HTMLElement);
+    chi.dropdown(this.$refs['button-portal-user-menu'] as HTMLElement);
+    chi.dropdown(this.$refs['button-portal-eid-menu'] as HTMLElement);
+    chi.tooltip(this.$refs['button-portal-notification'] as HTMLElement);
   }
 }
 </script>
