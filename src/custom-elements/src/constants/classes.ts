@@ -20,7 +20,8 @@ export const CAROUSEL_CLASSES = {
   PREVIOUS: '-previous',
   NEXT: '-next',
   DOTS: 'chi-carousel__dots',
-  DOT: 'chi-carousel__dot'
+  DOT: 'chi-carousel__dot',
+  PAGINATION: 'chi-carousel__pagination',
 };
 //#endregion
 
