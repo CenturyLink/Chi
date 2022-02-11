@@ -1,23 +1,16 @@
 <template lang="pug">
   <ComponentExample title="Checked" id="checked-lumen-centurylink" :tabs="exampleTabs">
-    .p-text(slot="example-description" class="-mb--3 -text")
+    p.-text(slot="example-description")
       | Use the <code>checked</code> boolean attribute to set the default value of
       | a toggle switch to true.
     .chi-form__item(slot="example")
-      label(class="chi-label", for="range04") Range label
-      .chi-input__wrapper
-        input(class="chi-range-slider", id="range04", type="range", ref="range")
-        .chi-input__progress
-        .chi-input__thumb
+      chi-switch(id='toggle-ch1',label='Label' checked)
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
@@ -29,28 +22,26 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          disabled: true,
+          active: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
-          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: ``,
+        webcomponent: `<chi-switch id="toggle-ch1" label="Label" checked></chi-switch>`,
         htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="range04">Range label</label>
-  <div class="chi-input__wrapper">
-    <input class="chi-range-slider" type="range" id="range04">
-    <div class="chi-input__progress"></div>
-    <div class="chi-input__thumb"></div>
-  </div>
-</div>
-
-<script>chi.rangeSlider(document.getElementById('range04'));<\/script>`,
+  <label class="chi-switch" for="toggle-ch1">
+    <input type="checkbox" class="chi-switch__input" id="toggle-ch1" checked>
+    <span class="chi-switch__content">
+      <span class="chi-switch__thumb"></span>
+    </span>
+    <span class="chi-switch__label">Label</span>
+  </label>
+</div>`,
       },
     };
   },

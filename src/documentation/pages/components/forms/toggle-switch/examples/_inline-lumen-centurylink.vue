@@ -1,19 +1,20 @@
 <template lang="pug">
-  <ComponentExample title="Inline" id="inline-lumen-centurylink" :tabs="exampleTabs">
-    .chi-form__item(slot="example")
-      label(class="chi-label", for="range06") Range label
-      .chi-input__wrapper.-d--flex
-        span.-text.-mr--2 200GB
-        .chi-input__wrapper.-w--100
-          input(type="range", id="range06", class="chi-range-slider", ref="range")
-          .chi-input__progress
-          .chi-input__thumb
-        span.-text.-ml--2 5TB
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
+  <ComponentExample title="Inline" id="inline-portal" :tabs="exampleTabs">
+    .-d--flex(slot="example")
+      .chi-form__item.-inline
+        chi-switch(id='toggle5', label='Label')
+      .chi-form__item.-inline
+        chi-switch(id='toggle6', label='Label')
+    <Wrapper slot="code-webcomponent">
+      .p--text(class="chi-tab__description")
+        | Apply the <code>-inline</code> class to <code>chi-form__item</code> for displaying toggle switches inline.
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+      </pre>
+    </Wrapper>
     <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
+      .p--text(class="chi-tab__description")
+        | Apply the <code>-inline</code> class to <code>chi-form__item</code> to display switches inline.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
@@ -29,32 +30,43 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          disabled: true,
+          active: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
-          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="range06">Range label</label>
-  <div class="chi-input__wrapper -d--flex">
-    <span class="-text -mr--2">200GB</span>
-    <div class="chi-input__wrapper -w--100">
-      <input class="chi-range-slider" type="range" id="range06">
-      <div class="chi-input__progress"></div>
-      <div class="chi-input__thumb"></div>
-    </div>
-    <span class="-text -ml--2">5TB</span>
-  </div>
+        webcomponent: `<div class="chi-form__item -inline">
+  <chi-switch id="toggle5" label="Label"></chi-switch>
 </div>
-
-<script>chi.rangeSlider(document.getElementById('range06'));<\/script>`,
+<div class="chi-form__item -inline">
+  <chi-switch id="toggle6" label="Label"></chi-switch>
+</div>`,
+    htmlblueprint: `<fieldset>
+  <legend class="chi-label">Configure options</legend>
+  <div class="chi-form__item -inline">
+    <label class="chi-switch" for="toggle5">
+      <input type="checkbox" class="chi-switch__input" id="toggle5">
+      <span class="chi-switch__content">
+        <span class="chi-switch__thumb"></span>
+      </span>
+      <span class="chi-switch__label">Label</span>
+    </label>
+  </div>
+  <div class="chi-form__item -inline">
+    <label class="chi-switch" for="toggle6">
+      <input type="checkbox" class="chi-switch__input" id="toggle6">
+      <span class="chi-switch__content">
+        <span class="chi-switch__thumb"></span>
+      </span>
+      <span class="chi-switch__label">Label</span>
+    </label>
+  </div>
+</fieldset>`,
       },
     };
   },

@@ -1,32 +1,22 @@
 <template lang="pug">
   <ComponentExample title="Switch with Left Label" id="switch-left-label-lumen-centurylink" :tabs="exampleTabs">
     .chi-form__item(slot="example")
-      label(class="chi-label", for="range09") Range label
-      .chi-input__wrapper
-        input(class="chi-range-slider", id="range09", type="range", min="0", max="4", step="1", ref="range")
-        .chi-input__tick-bar
-          div(v-for="range in rangeLabel")
-            div
-            .chi-input__tick
-            .chi-input__tick-label {{ range }}
-        .chi-input__progress
-        .chi-input__thumb
+      label.chi-switch(for="toggle7")
+        span.chi-switch__label Label
+        input(type="checkbox", class="chi-switch__input", id="toggle7")
+        span(class="chi-switch__content")
+          span.chi-switch__thumb
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {
@@ -43,41 +33,17 @@ declare const chi: any;
           label: 'HTML blueprint',
         },
       ],
-      rangeLabel: ['Monthly', '1 year', '2 years', '3 years', '> 3 years'],
       codeSnippets: {
         webcomponent: ``,
         htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="range09">Range label</label>
-  <div class="chi-input__wrapper">
-    <input class="chi-range-slider" type="range" min="0" max="4" step="1" id="range09">
-    <div class="chi-input__tick-bar">
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">Monthly</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">1 year</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">2 years</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">3 years</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">&gt; 3 years</div>
-      </div>
-    </div>
-    <div class="chi-input__progress"></div>
-    <div class="chi-input__thumb"></div>
-  </div>
-</div>
-
-<script>chi.rangeSlider(document.getElementById('range09'));<\/script>`,
+  <label class="chi-switch" for="toggle7">
+    <span class="chi-switch__label">Label</span>
+    <input type="checkbox" class="chi-switch__input" id="toggle7">
+    <span class="chi-switch__content">
+      <span class="chi-switch__thumb"></span>
+    </span>
+  </label>
+</div>`,
       },
     };
   },

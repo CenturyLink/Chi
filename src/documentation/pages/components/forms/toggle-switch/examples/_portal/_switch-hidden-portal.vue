@@ -1,19 +1,19 @@
 <template lang="pug">
   <ComponentExample title="Switch with Hidden Label" id="switch-hidden-label-portal" :tabs="exampleTabs">
     .chi-form__item(slot="example")
-      label(class="chi-label", for="range08") Range label
-      .chi-input__wrapper
-        input(class="chi-range-slider", type="range", min="0", max="4", step="1", id="range08", disabled)
-        .chi-input__tick-bar
-          div(v-for="range in rangeLabel")
-            div
-            .chi-input__tick
-            .chi-input__tick-label {{ range }}
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
+      chi-switch(id='portal-toggle8', size="xs", label='Label', hide-label)
+    <Wrapper slot="code-webcomponent">
+      .p--text(class="chi-tab__description")
+        | Apply the <code>hide-label</code> attribute to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
+        | in close proximity to other text that clearly describes its purpose.
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+      </pre>
+    </Wrapper>
     <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
+      .p--text(class="chi-tab__description")
+        | Apply the class <code>-label--hide</code> to <code>chi-switch</code> to render a switch without a label. Use this method for rendering switches
+        | in close proximity to other text that clearly describes its purpose.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
@@ -29,49 +29,28 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          disabled: true,
+          active: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
-          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
-      rangeLabel: ['Monthly', '1 year', '2 years', '3 years', '> 3 years'],
       codeSnippets: {
-        webcomponent: ``,
+        webcomponent: `<div class="chi-form__item">
+  <chi-switch id="portal-toggle8" size="xs" label="Label" hide-label></chi-switch>
+</div>`,
         htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="range08">Range label</label>
-  <div class="chi-input__wrapper">
-    <input class="chi-range-slider" type="range" min="0" max="4" step="1" id="range08" disabled>
-    <div class="chi-input__tick-bar">
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">Monthly</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">1 year</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">2 years</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">3 years</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">&gt; 3 years</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>chi.rangeSlider(document.getElementById('range08'));<\/script>`,
+  <label class="chi-switch -xs -label--hide" for="portal-toggle8">
+    <input type="checkbox" class="chi-switch__input" id="portal-toggle8">
+    <span class="chi-switch__content">
+      <span class="chi-switch__thumb"></span>
+    </span>
+    <span class="chi-switch__label">Label</span>
+  </label>
+</div>`,
       },
     };
   },

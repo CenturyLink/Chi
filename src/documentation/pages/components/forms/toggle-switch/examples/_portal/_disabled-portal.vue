@@ -1,21 +1,17 @@
 <template lang="pug">
   <ComponentExample title="Disabled" id="disabled-portal" :tabs="exampleTabs">
-    .p-text(slot="example-description" class="-mb--3 -text")
+    p.-text(slot="example-description")
       | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
       | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
       | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
-    .chi-form__item(slot="example")
-      label(class="chi-label", for="range02") Range label
-      input(class="chi-range-slider", type="range", id="range02" disabled)
+      .chi-form__item(slot="example")
+        chi-switch(id='toggle-portal-di1', size="xs", label='Label', disabled)
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
@@ -27,24 +23,26 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          disabled: true,
+          active: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
-          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: ``,
+        webcomponent: `<chi-switch id="toggle-portal-di1" label="Label" disabled></chi-switch>`,
         htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="range02">Range label</label>
-  <input class="chi-range-slider" type="range" id="range02" disabled>
-</div>
-
-<script>chi.rangeSlider(document.getElementById('range02'));<\/script>`,
+  <label class="chi-switch -xs" for="toggle-portal-di1">
+    <input type="checkbox" class="chi-switch__input" name="toggle-portal-di1" value="toggle-portal-di1" disabled>
+    <span id="toggle-di1" class="chi-switch__content">
+      <span class="chi-switch__thumb"></span>
+    </span>
+    <span class="chi-switch__label">Label</span>
+  </label>
+</div>`,
       },
     };
   },

@@ -1,30 +1,52 @@
 <template lang="pug">
-  <ComponentExample title="Switch list" id="switch-list-lumen-centurylink" :tabs="exampleTabs">
-    .p-text(slot="example-description" class="-mb--3 -text")
+  <ComponentExample title="Switch List" id="switch-list-portal" :tabs="exampleTabs">
+    p.-text(slot="example-description")
       | Switch lists are used to wrap a series of switches in a list.
       | To render, apply the class <code>-list</code> to <code>chi-form__item</code>.
-    .chi-form__item(slot="example")
-      label(class="chi-label", for="range03") Range label
-      .chi-input__wrapper.-d--flex
-        span.-text.-mr--2 200GB
-        input(type="range", id="range03", class="chi-range-slider", ref="range")
-        span.-text.-ml--2 5TB
+    .div(slot="example")
+      legend.chi-label Select options
+      ul.chi-form__item.-list(style="max-width:20rem")
+        li.chi-form__item
+          label.chi-switch(for="toggle10")
+            span.chi-switch__label Label
+            input(type="checkbox", class="chi-switch__input", id="toggle10")
+            span(class="chi-switch__content")
+              span.chi-switch__thumb
+        li.chi-form__item
+          label.chi-switch(for="toggle11")
+            span.chi-switch__label Label
+            input(type="checkbox", class="chi-switch__input", id="toggle11")
+            span(class="chi-switch__content")
+              span.chi-switch__thumb
+        li.chi-form__item
+          label.chi-switch(for="toggle12")
+            span.chi-switch__label Label
+            input(type="checkbox", class="chi-switch__input", id="toggle12")
+            span(class="chi-switch__content")
+              span.chi-switch__thumb
+        li.chi-form__item
+          label.chi-switch(for="toggle13")
+            span.chi-switch__label Label
+            input(type="checkbox", class="chi-switch__input", id="toggle13")
+            span(class="chi-switch__content")
+              span.chi-switch__thumb
+        li.chi-form__item
+          label.chi-switch(for="toggle14")
+            span.chi-switch__label Label
+            input(type="checkbox", class="chi-switch__input", id="toggle14")
+            span(class="chi-switch__content")
+              span.chi-switch__thumb
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {
@@ -43,16 +65,56 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="range03">Range label</label>
-  <div class="chi-input__wrapper -d--flex">
-    <span class="-text">200GB</span>
-    <input class="chi-range-slider -mx--2" type="range" id="range03">
-    <span class="-text">5TB</span>
-  </div>
-</div>
-
-<script>chi.rangeSlider(document.getElementById('range03'));<\/script>`,
+        htmlblueprint: `<fieldset>
+  <legend class="chi-label">Select options</legend>
+  <ul class="chi-form__item -list">
+    <li class="chi-form__item">
+      <label class="chi-switch" for="toggle10">
+        <span class="chi-switch__label">Label</span>
+        <input type="checkbox" class="chi-switch__input" id="toggle10">
+        <span class="chi-switch__content">
+          <span class="chi-switch__thumb"></span>
+        </span>
+      </label>
+    </li>
+    <li class="chi-form__item">
+      <label class="chi-switch" for="toggle11">
+        <span class="chi-switch__label">Label</span>
+        <input type="checkbox" class="chi-switch__input" id="toggle11">
+        <span class="chi-switch__content">
+          <span class="chi-switch__thumb"></span>
+        </span>
+      </label>
+    </li>
+    <li class="chi-form__item">
+      <label class="chi-switch" for="toggle12">
+        <span class="chi-switch__label">Label</span>
+        <input type="checkbox" class="chi-switch__input" id="toggle12">
+        <span class="chi-switch__content">
+          <span class="chi-switch__thumb"></span>
+        </span>
+      </label>
+    </li>
+    <li class="chi-form__item">
+      <label class="chi-switch" for="toggle13">
+        <span class="chi-switch__label">Label</span>
+        <input type="checkbox" class="chi-switch__input" id="toggle13">
+        <span class="chi-switch__content">
+          <span class="chi-switch__thumb"></span>
+        </span>
+      </label>
+    </li>
+    <li class="chi-form__item" for="toggle14">
+      <label class="chi-switch">
+        <span class="chi-switch__label">Label</span>
+        <input type="checkbox" class="chi-switch__input" id="toggle14">
+        <span class="chi-switch__content">
+          <span class="chi-switch__thumb"></span>
+        </span>
+      </label>
+    </li>
+  </ul>
+</fieldset>`,
       },
     };
   },

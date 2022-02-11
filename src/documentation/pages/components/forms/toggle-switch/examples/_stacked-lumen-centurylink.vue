@@ -1,20 +1,16 @@
 <template lang="pug">
-  <ComponentExample title="Stacked" id="stacked-lumen-centurylink" :tabs="exampleTabs">
-    .chi-form__item(slot="example")
-      label(class="chi-label", for="range05") Range label
-      .chi-input__wrapper
-        input(class="chi-range-slider", type="range", id="range05", disabled)
-        .chi-input__progress
-        .chi-input__thumb
+  <ComponentExample title="Stacked" id="stacked-portal" :tabs="exampleTabs">
+    .div(slot="example")
+      .chi-form__item
+        chi-switch(id='toggle3', label='Label')
+      .chi-form__item
+        chi-switch(id='toggle4', label='Label')
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
@@ -26,28 +22,43 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          disabled: true,
+          active: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
-          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="range05">Range label</label>
-  <div class="chi-input__wrapper">
-    <input class="chi-range-slider" type="range" id="range05" disabled>
-    <div class="chi-input__progress"></div>
-    <div class="chi-input__thumb"></div>
-  </div>
+        webcomponent: `<div class="chi-form__item">
+  <chi-switch id="toggle3" label="Label"></chi-switch>
 </div>
-
-<script>chi.rangeSlider(document.getElementById('range05'));<\/script>`,
+<div class="chi-form__item">
+  <chi-switch id="toggle4" label="Label"></chi-switch>
+</div>`,
+      htmlblueprint: `<fieldset>
+  <legend class="chi-label">Configure options</legend>
+  <div class="chi-form__item">
+    <label class="chi-switch" for="toggle3">
+      <input type="checkbox" class="chi-switch__input" id="toggle3">
+      <span class="chi-switch__content">
+        <span class="chi-switch__thumb"></span>
+      </span>
+      <span class="chi-switch__label">Label</span>
+    </label>
+  </div>
+  <div class="chi-form__item">
+    <label class="chi-switch" for="toggle4">
+      <input type="checkbox" class="chi-switch__input" id="toggle4">
+      <span class="chi-switch__content">
+        <span class="chi-switch__thumb"></span>
+      </span>
+      <span class="chi-switch__label">Label</span>
+    </label>
+  </div>
+</fieldset>`,
       },
     };
   },

@@ -3,24 +3,19 @@
     .p-text(slot="example-description" class="-mb--3 -text")
       | Toggle switch supports different sizes: <code>xs</code>, <code>sm</code>.
       | The default size is <code>sm</code>.
-    .chi-form__item(slot="example")
-      label(class="chi-label", for="range07") Range label
-      .chi-input__wrapper
-        input(class="chi-range-slider", id="range07" type="range", min="0", max="4", step="1", ref="range")
-        .chi-input__tick-bar
-          div(v-for="range in rangeLabel")
-            div
-            .chi-input__tick
-            .chi-input__tick-label {{ range }}
+    .div(slot="example")
+      .-p--2
+        .chi-form__item
+          chi-switch(id='toggle15',label='Label', size='xs')
+      .-p--2
+        .chi-form__item
+          chi-switch(id='toggle16',label='Label', size='sm')
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
@@ -32,49 +27,46 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          disabled: true,
+          active: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
-          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
-      rangeLabel: ['Monthly', '1 year', '2 years', '3 years', '> 3 years'],
       codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="range07">Range label</label>
-  <div class="chi-input__wrapper">
-    <input class="chi-range-slider" type="range" min="0" max="4" step="1" id="range07">
-    <div class="chi-input__tick-bar">
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">Monthly</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">1 year</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">2 years</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">3 years</div>
-      </div>
-      <div>
-        <div class="chi-input__tick"></div>
-        <div class="chi-input__tick-label">&gt; 3 years</div>
-      </div>
-    </div>
-  </div>
+        webcomponent: `<!-- xs -->
+<div class="chi-form__item">
+  <chi-switch id="toggle15" label="Label" size="xs"></chi-switch>
 </div>
 
-<script>chi.rangeSlider(document.getElementById('range07'));<\/script>`,
+<!-- sm -->
+<div class="chi-form__item">
+  <chi-switch id="toggle16" label="Label" size="sm"></chi-switch>
+</div>`,
+        htmlblueprint: `<!-- xs -->
+<div class="chi-form__item">
+  <label class="chi-switch -xs" for="toggle15">
+    <input type="checkbox" class="chi-switch__input" id="toggle15">
+    <span class="chi-switch__content">
+      <span class="chi-switch__thumb"></span>
+    </span>
+    <span class="chi-switch__label">Label</span>
+  </label>
+</div>
+
+<!-- sm -->
+<div class="chi-form__item">
+  <label class="chi-switch -sm" for="toggle16">
+    <input type="checkbox" class="chi-switch__input" id="toggle16">
+    <span class="chi-switch__content">
+      <span class="chi-switch__thumb"></span>
+    </span>
+    <span class="chi-switch__label">Label</span>
+  </label>
+</div>`,
       },
     };
   },
