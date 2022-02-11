@@ -9,33 +9,13 @@
 
     .div(:slot="$data.menuTabs[0].id")
       ul.chi-tabs.chi-navigationExample.chi-customExample
-        li.-active
-          a(href='?tab=1') Tab Link
-        li
-          a(href='?tab=2') Tab Link
-        li
-          a(href='?tab=3') Tab Link
-        li
-          a(href='?tab=4') Tab Link
-        li
-          a(href='?tab=5') Tab Link
-        li
-          a(href='?tab=6') Tab Link
+        li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
+          a(:href="`?tab=${index + 1}`") {{ link }} 
       
     .div(:slot="$data.menuTabs[1].id")
       ul.chi-tabs.chi-navigationExample.chi-customExample
-        li.-active
-          a(href='?tab=1') Tab Link
-        li
-          a(href='?tab=2') Tab Link
-        li
-          a(href='?tab=3') Tab Link
-        li
-          a(href='?tab=4') Tab Link
-        li
-          a(href='?tab=5') Tab Link
-        li
-          a(href='?tab=6') Tab Link  
+        li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
+          a(:href="`?tab=${index + 1}`") {{ link }}  
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -67,6 +47,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
+      tabLinks: Array(6).fill('Tab Link'),
       menuTabs: [
         {
           active: true,

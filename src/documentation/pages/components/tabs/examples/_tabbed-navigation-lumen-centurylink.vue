@@ -23,18 +23,8 @@
               .chi-dropdown__menu
                 a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="elem in activeElements") {{ elem }}
             a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 4
-        li
-          a(href='#exampleHashTarget') Tab Link
-        li
-          a(href='#exampleHashTarget') Tab Link
-        li
-          a(href='#exampleHashTarget') Tab Link
-        li
-          a(href='#exampleHashTarget') Tab Link
-        li
-          a(href='#exampleHashTarget') Tab Link
-        li
-          a(href='#exampleHashTarget') Tab Link
+        li(v-for="link in tabLinks") 
+          a(href='#exampleHashTarget') {{ link }}
         li.chi-dropdown
           a.chi-dropdown__trigger(href='#') Tab Dropdown
           .chi-dropdown__menu
@@ -73,6 +63,7 @@ declare const chi: any;
         },
       ],
       tabElements: ['Element 1', 'Element 2', 'Element 3'],
+      tabLinks: Array(6).fill('Tab Link'),
       activeElements: ['Elem 3.1', 'Elem 3.2', 'Elem 3.3', 'Elem 3.4'],
       codeSnippets: {
         webcomponent: ``,

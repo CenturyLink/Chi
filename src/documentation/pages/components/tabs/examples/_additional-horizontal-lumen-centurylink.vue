@@ -4,39 +4,23 @@
       p.-text--bold X-small
       .chi-divider.-mb--2
       ul.chi-tabs.-xs
-        li.-active
-          a(href='#') Active Tab
-        li
-          a(href='#') Tab Link
-        li
-          a(href='#') Tab Link
+        li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
+          a(href='#') {{ link }}
       p.-text--bold.-mt--6 Small
       .chi-divider.-mb--2
       ul.chi-tabs.-sm
-        li.-active
-          a(href='#') Active Tab
-        li
-          a(href='#') Tab Link
-        li
-          a(href='#') Tab Link
+        li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
+          a(href='#') {{ link }}
       p.-text--bold.-mt--6 Medium (Base)
       .chi-divider.-mb--2
       ul.chi-tabs
-        li.-active
-          a(href='#') Active Tab
-        li
-          a(href='#') Tab Link
-        li
-          a(href='#') Tab Link
+        li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
+          a(href='#') {{ link }}
       p.-text--bold.-mt--6 Large
       .chi-divider.-mb--2
       ul.chi-tabs.-lg
-        li.-active
-          a(href='#') Active Tab
-        li
-          a(href='#') Tab Link
-        li
-          a(href='#') Tab Link
+        li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
+          a(href='#') {{ link }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -64,6 +48,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
+      tabLinks: ['Active Tab', 'Tab Link', 'Tab Link'],
       codeSnippets: {
         webcomponent: ``,
         htmlblueprint: `<!-- X-small -->

@@ -36,19 +36,11 @@
       p.-text--bold.-mt--6 Large
       .chi-divider.-mb--3
       ul.chi-tabs.-vertical.-lg
-        li.-active
-          a(href='#') Active Tab
-          ul.chi-tabs__subtabs
-            li.-active
-              a(href='#') Subtab Link
-            li
-              a(href='#') Subtab Link
-            li
-              a(href='#') Subtab Link
-        li
-          a(href='#') Tab Link
-        li
-          a(href='#') Tab Link
+        li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
+          a(href="#") {{link.link}}
+          ul.chi-tabs__subtabs(v-if="link.subLinks && link.subLinks.length")
+            li(:class="sublinkIndex === 0 ? '-active' : ''" v-for="(sublink, sublinkIndex) in link.subLinks")
+              a(href='#') {{sublink}}
       p.-text--bold.-mt--6 X-Large
       .chi-divider.-mb--3
       ul.chi-tabs.-vertical.-xl
@@ -92,6 +84,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
+      tabLinks: [{link: 'Active Tab', subLinks: Array(3).fill('Subtab Link')}, {link: 'Tab Link'}, {link: 'Tab Link'}],
       codeSnippets: {
         webcomponent: ``,
         htmlblueprint: `<!-- Small -->
