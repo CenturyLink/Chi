@@ -18,7 +18,7 @@ import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
 import { standardComponentPageTabs } from '../../../../constants/constants';
 
-Vue.config.ignoredElements = ['chi-switch'];
+Vue.config.ignoredElements = ['chi-switch', 'chi-brand'];
 
 @Component({
   components: {
