@@ -66,11 +66,6 @@ class FloatingLabel extends Component {
   }
 
   dispose() {
-    this._label = null;
-    this._input = null;
-    this._config = null;
-    this._elem = null;
-
     if (this._input.tagName === 'INPUT') {
       this._input.removeEventListener('focus', this._onFocusEventListener);
       this._input.removeEventListener('blur', this._onBlurEventListener);
@@ -80,6 +75,11 @@ class FloatingLabel extends Component {
       this._input.removeEventListener('change', this._onChangeEventListener);
       this._onChangeEventListener = null;
     }
+
+    this._label = null;
+    this._input = null;
+    this._config = null;
+    this._elem = null;
   }
 
   static get componentType () {

@@ -17,7 +17,7 @@
               th
                 div Last Login
           tbody
-            tr(v-for="(row, index) in rows" :key="index" :class="{'-active' : index === 2}")
+            tr(v-for="(row, index) in rows" :key="index")
               td {{ row.cell1 }}
               td {{ row.cell2 }}
               td {{ row.cell3 }}
