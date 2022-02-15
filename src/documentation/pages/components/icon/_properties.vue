@@ -1,5 +1,7 @@
 <template lang="pug">
-  <PropertiesComingSoon />
+  div
+    h2 Web Component
+    <PropertiesGenerator tag="chi-icon" />
 </template>
 
 <script lang="ts">
