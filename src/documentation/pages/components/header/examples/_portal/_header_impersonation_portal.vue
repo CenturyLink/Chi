@@ -7,7 +7,7 @@
             span.chi-impersonation-bar__label Signed in as:
             strong.chi-impersonation-bar__username User
             div.chi-impersonation-bar__divider.chi-divider.-vertical.-h--75
-            button.chi-button.-flat.-xs.-icon(id="button-portal-logout", aria-label="Sign out", data-tooltip="Sign out", data-position="bottom")
+            button.chi-button.-flat.-xs.-icon(id="button-portal-logout", ref="button-portal-logout", aria-label="Sign out", data-tooltip="Sign out", data-position="bottom")
               .chi-button__content
                 i.chi-icon.icon-logout.-icon--primary(aria-hidden="true")
         nav.chi-header__content
@@ -18,11 +18,11 @@
                 path(d='M106.330232 1.71966316c0-.94108421-.572874-1.47287369-1.677516-1.47287369H89.1060842c-1.1043263 0-1.6771789.53178948-1.6771789 1.47287369v1.42565263l17.2648737-.0345579c1.063579-.00001052 1.636453-.49107368 1.636453-1.39109473', fill='#0C9ED9')
           .chi-header__start
             .-d--flex.-d-lg--none
-              button#drawer-trigger-pib2.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Toggle navigation")
+              button#drawer-trigger-pib2.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-portal-2', ref="drawer-trigger-pib2", aria-label="Toggle navigation")
                 .chi-button__content
                   i.chi-icon.-sm--2.icon-menu(aria-hidden="true")
             .chi-dropdown.-d--none.-d-lg--flex
-              button.chi-button.-flat.chi-dropdown__trigger.-text--xl.-px--1.-animate(id="button-portal-site-menu2") App Name
+              button.chi-button.-flat.chi-dropdown__trigger.-text--xl.-px--1.-animate(id="button-portal-site-menu2" ref="button-portal-site-menu2") App Name
               .chi-dropdown__menu.-list.-w--lg
                 a.chi-dropdown__menu-item.-h--auto.-active(href="#")
                   span.chi-dropdown__menu-item_title App Name
@@ -35,13 +35,13 @@
                   span.chi-dropdown__menu-item_text App description
           .chi-header__end
             div.-d--none.-d-lg--flex
-              button.chi-button.-flat.-icon(id="button-portal-notification2" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom")
+              button.chi-button.-flat.-icon(id="button-portal-notification2" ref="button-portal-notification2" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom")
                 .chi-button__content
                   i.chi-icon.icon-bell-outline.-icon--primary(aria-hidden="true")
                   div.chi-badge.-dark.-xs 2
               .chi-divider.-vertical
               .chi-dropdown.-d--none.-d-lg--flex
-                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-portal-user-menu2", data-position="bottom-end") Menu
+                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-portal-user-menu2", ref="button-portal-user-menu2", data-position="bottom-end") Menu
                 .chi-dropdown__menu.-w--sm
                   a.chi-dropdown__menu-item(href="#")
                     i.chi-icon.icon-user(aria-hidden="true")
@@ -50,7 +50,7 @@
                     i.chi-icon.icon-logout(aria-hidden="true")
                     span Item 2
               .chi-dropdown.-d--none.-d-lg--flex
-                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-portal-eid-menu2", data-position="bottom-end") Menu
+                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-portal-eid-menu2", ref="button-portal-eid-menu2", data-position="bottom-end") Menu
                 .chi-dropdown__menu.-w--sm
                   a.chi-dropdown__menu-item(href="#")
                     i.chi-icon.icon-user(aria-hidden="true")
@@ -68,6 +68,16 @@
                 a(href='#' target='_blank') Help
               li
                 a(href='#' target='_blank') Contact Us
+      .chi-backdrop.-closed
+        .chi-backdrop__wrapper
+          div#drawer-portal-2.chi-drawer.-left.-menu.-position--absolute
+            .chi-drawer__header
+              button(class='chi-button -icon -close', aria-label='Close')
+                .chi-button__content
+                  i.chi-icon.icon-x(aria-hidden="true")
+            .chi-drawer__content
+              .-px--2.-pt--2.-text
+                | Drawer content here
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -195,12 +205,12 @@ declare const chi: any;
 })
 export default class HeaderImpersonationPortal extends Vue {
   mounted() {
-    chi.drawer(document.getElementById('drawer-trigger-pib2'));
-    chi.dropdown(document.getElementById('button-portal-site-menu2'));
-    chi.dropdown(document.getElementById('button-portal-user-menu2'));
-    chi.dropdown(document.getElementById('button-portal-eid-menu2'));
-    chi.tooltip(document.getElementById('button-portal-logout'));
-    chi.tooltip(document.getElementById('button-portal-notification2'));
+    chi.drawer(this.$refs['drawer-trigger-pib2'] as HTMLElement);
+    chi.dropdown(this.$refs['button-portal-site-menu2'] as HTMLElement);
+    chi.dropdown(this.$refs['button-portal-user-menu2'] as HTMLElement);
+    chi.dropdown(this.$refs['button-portal-eid-menu2'] as HTMLElement);
+    chi.tooltip(this.$refs['button-portal-logout'] as HTMLElement);
+    chi.tooltip(this.$refs['button-portal-notification2'] as HTMLElement);
   }
 }
 </script>
