@@ -447,8 +447,10 @@ legend {
 a {
   &.chi-dropdown__menu-item {
     color: $color-text-base;
+    text-decoration: none;
 
     &:hover {
+      color: $color-text-base;
       text-decoration: none;
     }
 
