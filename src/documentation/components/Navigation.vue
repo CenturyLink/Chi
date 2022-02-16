@@ -13,6 +13,7 @@
           <!-- <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li> -->
           <li><NuxtLink to="/components/badge">Badge</NuxtLink></li>
           <li><NuxtLink to="/components/brand">Brand</NuxtLink></li>
+          <li><NuxtLink to="/components/button">Button</NuxtLink></li>
           <li><NuxtLink to="/components/card">Card</NuxtLink></li>
           <li><NuxtLink to="/components/forms/checkbox">Checkbox</NuxtLink></li>
           <li><NuxtLink to="/components/divider">Divider</NuxtLink></li>
