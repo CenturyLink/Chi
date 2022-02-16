@@ -251,7 +251,7 @@ $icon-size-xl:                              6rem;
 $icon-size-xxl:                             8rem;
 
 // Link color
-$link-color: $color-text-primary;
+$link-color: $color-grey-70;
 
 // Focus color
 $focus-color: $color-border-black;
@@ -998,6 +998,10 @@ $label-help-icon-color:                     $color-icon-primary;
 $label-help-hover-icon-color:               $color-icon-primary;
 
 // Link
+$link-text-decoration:                      none;
+$link-hover-text-decoration:                underline;
+$link-hover-color:                          $color-text-primary;
+
 $link-cta-icon:                             '\e904';
 $link-cta-icon-color:                       $color-red-50;
 $link-cta-icon-size:                        1rem;
@@ -1008,7 +1012,7 @@ $link-cta-padding-left:                     1.5rem;
 $link-cta-position-right:                   auto;
 $link-cta-hover-position-right:             auto;
 $link-cta-padding-right:                    0;
-$link-cta-hover-color:                      rgba($color-black, 0.7);
+$link-cta-hover-color:                      $color-text-primary;
 
 // Marketing icon
 $marketing-icon-primary-color:              $color-icon-primary-dark;
