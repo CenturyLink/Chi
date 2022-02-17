@@ -58,6 +58,7 @@ export default class DataTable extends Vue {
   selectedRows: string[] = [];
   slicedData: DataTableRow[] = [];
   mode = this.$props.config.mode || defaultConfig.mode;
+  printMode = this.$props.config.printMode || defaultConfig.printMode;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -1421,24 +1422,32 @@ export default class DataTable extends Vue {
       pagination = this._pagination(),
       printHead = this._printHead(),
       printBody = this._printBody(),
-      printFooter = this._printFooter();
+      printFooter = this._printFooter(),
+      screen =
+        this.printMode === 'screenonly' || this.printMode === 'full' ? (
+          <div class={`${UTILITY_CLASSES.DISPLAY.SCREEN_ONLY}`}>
+            {toolbar}
+            {bulkActions}
+            {head}
+            {body}
+            {pagination}
+          </div>
+        ) : null,
+      print =
+        this.printMode === 'printonly' || this.printMode === 'full' ? (
+          <div class={`${UTILITY_CLASSES.DISPLAY.PRINT_ONLY}`}>
+            <table class={`${TABLE_CLASSES.TABLE}`}>
+              {printHead}
+              {printBody}
+            </table>
+            {printFooter}
+          </div>
+        ) : null;
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
-        <div class={`${UTILITY_CLASSES.DISPLAY.SCREEN_ONLY}`}>
-          {toolbar}
-          {bulkActions}
-          {head}
-          {body}
-          {pagination}
-        </div>
-        <div class={`${UTILITY_CLASSES.DISPLAY.PRINT_ONLY}`}>
-          <table class={`${TABLE_CLASSES.TABLE}`}>
-            {printHead}
-            {printBody}
-          </table>
-          {printFooter}
-        </div>
+        {screen}
+        {print}
       </div>
     );
   }
