@@ -2160,22 +2160,6 @@
       "usage": {},
       "props": [
         {
-          "name": "decimals",
-          "type": "number",
-          "mutable": false,
-          "attr": "decimals",
-          "reflectToAttr": true,
-          "docs": "used to show a fixed amount of decimal digits after the decimal point",
-          "docsTags": [],
-          "values": [
-            {
-              "type": "number"
-            }
-          ],
-          "optional": true,
-          "required": false
-        },
-        {
           "name": "disabled",
           "type": "boolean",
           "mutable": false,

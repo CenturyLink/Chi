@@ -80,11 +80,6 @@ export class NumberInput {
    */
   @Prop() state?: string;
 
-  /**
-   * used to show a fixed amount of decimal digits after the decimal point.
-   */
-  @Prop({ reflect: true }) decimals?: number;
-
   @Element() el: HTMLElement;
 
   /**
@@ -141,7 +136,7 @@ export class NumberInput {
       : (this.el.children[0].children[0] as HTMLInputElement);
 
     input.stepUp();
-    this.value = this.setNewValue(input.value);
+    this.value = input.value;
 
     if (input.valueAsNumber <= this.max) {
       this._didUpdateCallBackOnceQueue.push(() => {
@@ -156,21 +151,13 @@ export class NumberInput {
       : (this.el.children[0].children[0] as HTMLInputElement);
 
     input.stepDown();
-    this.value = this.setNewValue(input.value);
+    this.value = input.value;
 
     if (input.valueAsNumber >= this.min) {
       this._didUpdateCallBackOnceQueue.push(() => {
         this.chiChange.emit(this.value);
       });
     }
-  }
-
-  private formatNumber(number: string): string {
-    return parseFloat(number).toFixed(this.decimals);
-  }
-
-  private setNewValue(number: string): string {
-    return this.decimals ? this.formatNumber(number) : number;
   }
 
   render() {
