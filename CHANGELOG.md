@@ -1,4 +1,9 @@
 # CHANGELOG
+## 5.9.1 (February 17, 2022)
+### Components
+#### Changed
+* Changed: Link component color has been changed for the Project Connect theme.
+
 ## 5.9.0 (February 10, 2022)
 ### Components
 #### Added
