@@ -996,6 +996,10 @@ $label-help-icon-color:                     $color-icon-muted-dark;
 $label-help-hover-icon-color:               $color-icon-primary;
 
 // Link
+$link-text-decoration:                      none;
+$link-hover-text-decoration:                underline;
+$link-hover-color:                          $link-color;
+
 $link-cta-icon:                             '\e9dd';
 $link-cta-icon-color:                       $color-orange-50;
 $link-cta-icon-size:                        1.5rem;

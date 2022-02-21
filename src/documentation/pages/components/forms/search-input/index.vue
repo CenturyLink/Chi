@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    <TitleBar title="Toolbar" description="Toolbar provides the ability of performing actions such as searching for elements and filtering complex structures." :tabs="pageTabs" />
+    <TitleBar title="Search input" description="Search inputs are used for inputting words or phrases and locating relevant content." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
         <Examples />
@@ -12,19 +12,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Examples from './_examples/index.vue';
-import PageContentTabs from '../../../components/PageContentTabs.vue';
+import Examples from './examples/index.vue';
+import PageContentTabs from '../../../../components/PageContentTabs.vue';
 import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
-import { standardComponentPageTabs } from '../../../constants/constants';
+import { standardComponentPageTabs } from '../../../../constants/constants';
 
-Vue.config.ignoredElements = [
-  'chi-textarea',
-  'chi-brand',
-  'chi-text-input',
-  'chi-label',
-  'chi-date-picker'
-];
+Vue.config.ignoredElements = ['chi-search-input', 'chi-brand'];
 
 @Component({
   components: {
@@ -39,5 +33,5 @@ Vue.config.ignoredElements = [
     };
   }
 })
-export default class Tooltip extends Vue {}
+export default class SearchInput extends Vue {}
 </script>

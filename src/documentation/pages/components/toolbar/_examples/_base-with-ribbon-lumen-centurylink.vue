@@ -16,14 +16,8 @@
           .chi-divider.-vertical
           .chi-toolbar__filters
             .chi-toolbar__filters-desktop
-              .chi-form__item
-                select(class="chi-select", id="example-ba3")
-                  option(value="") Select
-                  option Option 1
-                  option Option 2
-                  option Option 3
-              .chi-form__item
-                select(class="chi-select", id="example-ba4")
+              .chi-form__item(v-for="index in 2" :key="index")
+                select(class="chi-select")
                   option(value="") Select
                   option Option 1
                   option Option 2
@@ -32,7 +26,7 @@
                 .chi-button__content
                   i.chi-icon.icon-filter(aria-hidden="true")
             .chi-toolbar__filters-mobile
-              button#drawer-trigger-filter1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
+              button#drawer-trigger-filter1.chi-button.-icon.-flat.chi-drawer__trigger(aria-label="Button action")
                 .chi-button__content
                   i.chi-icon.icon-filter(aria-hidden="true")
         .chi-toolbar__end
@@ -48,7 +42,7 @@
                 .chi-button__content
                   i.chi-icon.icon-table-column-settings(aria-hidden="true")
             .chi-toolbar__actions-mobile
-              button#drawer-trigger-actions1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-2' aria-label="Button action")
+              button#drawer-trigger-actions1.chi-button.-icon.-flat.chi-drawer__trigger(aria-label="Button action")
                 .chi-button__content
                   i.chi-icon.icon-more-vert(aria-hidden="true")
       .chi-toolbar__ribbon

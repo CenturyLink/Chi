@@ -5,34 +5,28 @@
         .chi-toolbar__start
           .chi-toolbar__search
             .chi-form__item
-              chi-search-input(id="example__base-4")
+              chi-search-input
           .chi-divider.-vertical
           .chi-toolbar__views
             .chi-toolbar__views-desktop
               .chi-form__item
-                select(class="chi-select", id="example-views-4")
+                select(class="chi-select")
                   option(value="view-1") View 1
                   option(value="view-2") View 2
           .chi-divider.-vertical
           .chi-toolbar__filters
             .chi-toolbar__filters-desktop
-              .chi-form__item
-                select(class="chi-select", id="example-ba9")
+              .chi-form__item(v-for="index in 2" :key="index")
+                select(class="chi-select")
                   option(value="") Select
                   option Option 1
                   option Option 2
                   option Option 3
-              .chi-form__item
-                select(class="chi-select", id="example-ba10")
-                  option(value="") Select
-                  option Option 1
-                  option Option 2
-                  option Option 3
-              button.chi-button.-icon.-flat(id="button-pr-filters" aria-label="Filters" data-tooltip="Filters" data-position="top")
+              button.chi-button.-icon.-flat(aria-label="Filters" data-tooltip="Filters" data-position="top")
                 .chi-button__content
                   i.chi-icon.icon-filter(aria-hidden="true")
             .chi-toolbar__filters-mobile
-              button#drawer-trigger-filter1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
+              button#drawer-trigger-filter1.chi-button.-icon.-flat.chi-drawer__trigger(aria-label="Button action")
                 .chi-button__content
                   i.chi-icon.icon-filter(aria-hidden="true")
         .chi-toolbar__end
@@ -48,7 +42,7 @@
                 .chi-button__content
                   i.chi-icon.icon-table-column-settings(aria-hidden="true")
             .chi-toolbar__actions-mobile
-              button#drawer-trigger-actions1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-2' aria-label="Button action")
+              button#drawer-trigger-actions1.chi-button.-icon.-flat.chi-drawer__trigger(aria-label="Button action")
                 .chi-button__content
                   i.chi-icon.icon-more-vert(aria-hidden="true")
       .chi-toolbar__ribbon
@@ -63,20 +57,6 @@
           button.chi-button.-icon.-flat(aria-label="Button action")
             .chi-button__content
               i.chi-icon.icon-x(aria-hidden="true")
-      .chi-backdrop.-closed
-        .chi-backdrop__wrapper
-          div#drawer-2.chi-drawer.-right.-menu.-position--absolute
-            .chi-drawer__header
-              span.chi-drawer__title Actions
-              button(class='chi-button -icon -close', aria-label='Close')
-                .chi-button__content
-                  i.chi-icon.icon-x(aria-hidden="true")
-            .chi-drawer__content.-px--2
-              ul.-no-style
-                li.-text--md Download data
-                .chi-divider
-                li.-text--md Refresh results
-                .chi-divider
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
