@@ -111,6 +111,10 @@
           left: $stat-background-icon-icon-left;
           position: relative;
           width: 4.5rem;
+
+          &.outline {
+            color: $stat-background-icon-color;
+          }
         }
       }
 
