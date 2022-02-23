@@ -245,7 +245,7 @@ export const exampleTableHead = {
   number: { label: 'Number', sortable: true, sortDataType: 'number' },
   date: { label: 'Date', sortable: true, sortBy: 'date', sortDataType: 'date' },
   productId: { label: 'Product / Service ID', sortable: true, sortDataType: 'string' },
-  actions: { label: ' ', align: 'right', allowOverflow: true },
+  actions: { label: ' ', align: 'right', allowOverflow: true, isPrintDisabled: true },
 };
 
 export const exampleTableBody = [

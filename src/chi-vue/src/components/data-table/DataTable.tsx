@@ -73,6 +73,7 @@ export default class DataTable extends Vue {
   _paginationListenersAdded = false;
   _showSelectedOnly = false;
   _chiMajorVersion = 5;
+  _printDisabledColsIndexes: number[] = [];
 
   _toggleInfoPopover(infoPopoverRef: string) {
     const popover: any = this.$refs[infoPopoverRef];
@@ -1301,7 +1302,7 @@ export default class DataTable extends Vue {
       <thead>
         <tr>
           {Object.keys(this.data.head).map((column: string) => {
-            return <th>{this.data.head[column].label}</th>;
+            return !this.data.head[column].isPrintDisabled && <th>{this.data.head[column].label}</th>;
           })}
         </tr>
       </thead>
@@ -1322,6 +1323,13 @@ export default class DataTable extends Vue {
   _printBody() {
     if (this.data.body.length > 0) {
       const bodyRows = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+
+      this._printDisabledColsIndexes = [];
+      Object.keys(this.data.head).forEach((column: string, columnIndex: number) => {
+        if (this.data.head[column].isPrintDisabled) {
+          this._printDisabledColsIndexes.push(columnIndex);
+        }
+      });
 
       return (
         <tbody>
@@ -1377,7 +1385,9 @@ export default class DataTable extends Vue {
       } else if (index === 0 && rowLevel === 'child') {
         rowCells.push(<td class={`${UTILITY_CLASSES.PADDING.LEFT[4]}`}>{cellData}</td>);
       } else {
-        rowCells.push(<td>{cellData}</td>);
+        if (!this._printDisabledColsIndexes.includes(index)) {
+          rowCells.push(<td>{cellData}</td>);
+        }
       }
     });
     row.push((<tr>{rowCells}</tr>) as JSX.Element[] & JSX.Element);
