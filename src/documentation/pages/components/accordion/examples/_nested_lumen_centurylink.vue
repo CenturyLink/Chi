@@ -73,7 +73,6 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -87,7 +86,7 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<div class="chi-accordion" id="nested-accordions">
   <div class="chi-accordion__item">
     <button class="chi-accordion__trigger">

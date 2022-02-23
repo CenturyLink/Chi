@@ -23,7 +23,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -65,7 +64,5 @@ Array.prototype.forEach.call(inputFiles, function(input) {
     };
   }
 })
-export default class Base extends Vue {
-  mounted() {}
-}
+export default class Base extends Vue {}
 </script>

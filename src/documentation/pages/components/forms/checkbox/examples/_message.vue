@@ -22,7 +22,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -36,7 +35,7 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<div class="chi-form__item">
   <div class="chi-checkbox">
     <input type="checkbox" class="chi-checkbox__input" id="checkbox-me1">
@@ -48,7 +47,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Message extends Vue {
-  mounted() {}
-}
+export default class Message extends Vue {}
 </script>

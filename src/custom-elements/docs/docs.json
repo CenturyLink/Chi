@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-12-16T09:16:10",
+  "timestamp": "2022-02-17T11:16:21",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -306,7 +306,7 @@
           "mutable": false,
           "attr": "logo",
           "reflectToAttr": true,
-          "docs": "to set logo of brand { lumen, centurylink }.",
+          "docs": "to set logo of brand { lumen, centurylink, brightspeed }.",
           "docsTags": [],
           "default": "'lumen'",
           "values": [
@@ -601,6 +601,22 @@
           "attr": "dots",
           "reflectToAttr": false,
           "docs": "To render Carousel with dot controllers",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "pagination",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "pagination",
+          "reflectToAttr": false,
+          "docs": "To render Carousel with pagination indicators",
           "docsTags": [],
           "values": [
             {
@@ -2102,6 +2118,28 @@
             }
           ],
           "optional": false,
+          "required": false
+        },
+        {
+          "name": "variant",
+          "type": "\"filled\" | \"outline\"",
+          "mutable": false,
+          "attr": "variant",
+          "reflectToAttr": true,
+          "docs": "To render Marketing icon as filled or outline",
+          "docsTags": [],
+          "default": "'filled'",
+          "values": [
+            {
+              "value": "filled",
+              "type": "string"
+            },
+            {
+              "value": "outline",
+              "type": "string"
+            }
+          ],
+          "optional": true,
           "required": false
         }
       ],
@@ -4182,6 +4220,23 @@
           "attr": "prevent-value-mutation",
           "reflectToAttr": true,
           "docs": "To disable Value attribute mutation",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "readonly",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "readonly",
+          "reflectToAttr": true,
+          "docs": "To render Search Input in readonly mode",
           "docsTags": [],
           "default": "false",
           "values": [

@@ -1,6 +1,6 @@
 <template>
   <div class="chi-dropdown">
-    <button ref="dropdownTrigger" class="chi-button -icon -flat" aria-label="More options">
+    <button ref="dropdownTrigger" class="chi-button -icon -flat" aria-label="More options" data-position="left">
       <div class="chi-button__content">
         <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
       </div>

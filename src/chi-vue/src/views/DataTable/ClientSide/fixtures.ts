@@ -155,6 +155,15 @@ const exampleFilters = [
     type: 'checkbox',
     advanced: true,
   },
+  {
+    name: 'input',
+    placeholder: 'Input filter',
+    type: 'input',
+    value: '',
+    id: 'myoption8',
+    label: 'Input',
+    advanced: true,
+  },
 ];
 
 const customItems = [
@@ -165,6 +174,18 @@ const customItems = [
   {
     template: 'customAdvanced2',
     label: 'Custom 2',
+  },
+  {
+    template: 'customAdvanced3',
+    label: 'Custom 3',
+  },
+  {
+    template: 'customAdvanced4',
+    label: 'Custom 4',
+  },
+  {
+    template: 'customAdvanced5',
+    label: 'Custom 5',
   },
 ];
 
@@ -193,8 +214,26 @@ export const exampleToolbar = {
 };
 
 export const exampleTableHead = {
-  ticketId: { label: 'Ticket ID', sortable: true, sortBy: 'id', sortDataType: 'string', key: true, bold: true },
-  alerts: { label: 'Alerts', align: 'center' },
+  ticketId: {
+    label: 'Ticket ID',
+    sortable: true,
+    sortBy: 'id',
+    sortDataType: 'string',
+    key: true,
+    bold: true,
+    description: { title: 'Ticket ID', text: 'This is content for ticket id' },
+  },
+  alerts: {
+    label: 'Alerts',
+    align: 'center',
+    description: {
+      template: 'alertsDesc',
+      payload: {
+        success: { icon: 'circle-check', color: 'success' },
+        warning: { icon: 'warning', color: 'warning' },
+      },
+    },
+  },
   status: {
     label: 'Status',
     sortable: true,
@@ -298,7 +337,6 @@ export const exampleTableBody = [
   },
   {
     id: 'NTM000021066',
-    active: false,
     nestedContent: {
       template: 'accordionContent',
       payload: {
@@ -322,13 +360,11 @@ export const exampleTableBody = [
   },
   {
     id: 'NTM0000210662',
-    active: false,
     nestedContent: {
       table: {
         data: [
           {
             id: 'NTM0000210661',
-            active: false,
             data: [
               {
                 template: 'ticketId',

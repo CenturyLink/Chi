@@ -23,7 +23,6 @@
     height: 100%;
     position: absolute;
     top: 0;
-    width: 20%;
     z-index: 10;
 
     &.-previous,
@@ -56,7 +55,7 @@
 
     .chi-carousel__dot {
       background-color: $carousel-dot-background-color;
-      border: 0.0625rem solid $color-border-primary;
+      border: 0.0625rem solid $carousel-dot-border-color;
       border-radius: $carousel-dot-size / 2;
       display: block;
       height: $carousel-dot-size;
@@ -78,5 +77,11 @@
         }
       }
     }
+  }
+
+  &__pagination {
+    display: flex;
+    font-size: $font-size-sm;
+    justify-content: center;
   }
 }

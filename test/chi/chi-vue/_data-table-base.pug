@@ -1,5 +1,7 @@
 script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
 script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 h2 Data Table Base
 h3 Base
@@ -53,6 +55,11 @@ h3 Selectable
 .test-data-table.-p--3.-w--100
   #selectable
     chi-vue-data-table(ref="selectable" data-cy='data-table-selectable', :config="config", :data="table")
+
+h3 All Selected
+.test-data-table.-p--3.-w--100
+  #allSelected
+    chi-vue-data-table(data-cy='data-table-all-selected', :config="config", :data="table")
 
 h3 Radio selection
 .test-data-table.-p--3.-w--100
@@ -119,8 +126,32 @@ h3 Size -xl
   #sizeXl
     chi-vue-data-table(data-cy='data-table-xl', :config="config", :data="table")
 
-h2 Data Table Server Side
+h3 Description
+.test-data-table.-p--3.-w--100
+  #description
+    chi-vue-data-table(data-cy='data-table-description', :config="config", :data="table")
+      template(#statusdesc='payload')
+        i(:class="`chi-icon icon-${payload.due.icon} -icon--${payload.due.color}`" aria-hidden="true")
+        span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.due.status }}
+        br
+        i(:class="`chi-icon icon-${payload.overdue.icon} -icon--${payload.overdue.color}`" aria-hidden="true")
+        span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.overdue.status }}
 
+h3 Bulk Actions
+.test-data-table.-p--3.-w--100
+  #bulkActions
+    chi-vue-data-table(data-cy='data-table-bulk-actions', ref="dataTableBulkActionsRef", :config="config", :data="table")
+      template(slot='bulkActions')
+        .chi-bulk-actions__buttons
+          .chi-bulk-actions__buttons-mobile.-z--40
+            chi-button(v-for="button in buttonsMobile" variant='flat' type='icon' aria-label='button.label')
+              chi-icon(icon='button.icon')
+          .chi-bulk-actions__buttons-desktop
+            chi-button(v-for="button in buttonsDesktop" size='xs' aria-label='button.label')
+              chi-icon(icon='arrow-to-bottom')
+              span {{ button.label }}
+
+h2 Data Table Server Side
 .test-data-table.-p--3.-w--100
   #base-server-side
     chi-vue-data-table(data-cy='data-table-server-side' ref="dataTableServerSideRef" :config="config", :data="table")
@@ -294,7 +325,32 @@ script.
           superLastLogin: { label: "Last Login Super Last Login lorem ipsum dolor sit amet"},
           megaSuperLastLogin: { label: "Last Login Super Last Login Mega Super Last Login"}
         },
-        body: exampleBody,
+        body: [
+          {
+            id: "name-1",
+            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-2",
+            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-3",
+            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-4",
+            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-5",
+            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-6",
+            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM", "Dec 18, 2020 3:26 PM", "Dec 18, 2020 3:26 PM"],
+          },
+        ],
       },
     },
   }).$mount("#truncation");
@@ -571,6 +627,72 @@ script.
       }
     },
   }).$mount("#selectable");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        selectable: true,
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: "Name" },
+          id: { label: "ID" },
+          lastLogin: { label: "Last Login" },
+        },
+        body: [
+          {
+            id: "name-1",
+            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+            selected: true,
+          },
+          {
+            id: "name-2",
+            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
+            selected: true,
+          },
+          {
+            id: "name-3",
+            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
+            selected: true,
+          },
+          {
+            id: "name-4",
+            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
+            selected: true,
+          },
+          {
+            id: "name-5",
+            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
+            selected: true,
+          },
+          {
+            id: "name-6",
+            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
+            selected: true,
+          },
+        ],
+      },
+    },
+  }).$mount("#allSelected");
 
   new Vue({
     components: {
@@ -1489,6 +1611,149 @@ script.
       },
     },
   }).$mount("#sizeXl");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "xl",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: "Name", description: { title: "Name", text: "This is Name description"} },
+          status: { label: 'Status', sortable: true, description: { title: 'Status', template: 'statusdesc', 
+            payload: { 
+              overdue: { status: "Overdue", icon: "circle-alert", color: "danger" }, 
+              due: { status: "Due", icon: 'warning', color: 'warning' }
+              } 
+            }
+          },
+          lastLogin: { label: "Last Login" },
+        },
+        body: [
+          {
+            id: "name-2",
+            data: ["Name 2", "name-2", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-1",
+            data: ["Name 1", "name-1", "Dec 18, 2020 2:38 AM"],
+          },
+          {
+            id: "name-3",
+            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
+          },
+          {
+            id: "name-4",
+            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-5",
+            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
+          },
+          {
+            id: "name-6",
+            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
+          },
+        ],
+      },
+    },
+  }).$mount("#description");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        selectable: true,
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: "Name", description: { title: "Name", text: "This is Name description"} },
+          status: { label: 'Status', sortable: true, description: { title: 'Status', template: 'statusdesc', 
+            payload: { 
+              overdue: { status: "Overdue", icon: "circle-alert", color: "danger" }, 
+              due: { status: "Due", icon: 'warning', color: 'warning' }
+              } 
+            }
+          },
+          lastLogin: { label: "Last Login" },
+        },
+        body: exampleBody,
+      },
+      buttonsMobile: [
+        { 
+          label: 'Edit', 
+          icon: 'edit'
+        },
+        { 
+          label: 'Compose', 
+          icon: 'compose'
+        },
+        { 
+          label: 'Delete', 
+          icon: 'delete'
+        },
+        { 
+          label: 'Print', 
+          icon: 'print'
+        },
+      ],
+      buttonsDesktop: [
+        { 
+          label: 'Download', 
+        },
+        { 
+          label: 'Compose', 
+        },
+        { 
+          label: 'Delete', 
+        },
+        { 
+          label: 'Print',
+        },
+      ],
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.dataTableBulkActionsExample = this;
+      }
+    },
+  }).$mount("#bulkActions");
 
   const page1 = [
     {

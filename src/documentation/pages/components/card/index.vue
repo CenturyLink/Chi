@@ -31,7 +31,5 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     };
   }
 })
-export default class Card extends Vue {
-  mounted() {}
-}
+export default class Card extends Vue {}
 </script>

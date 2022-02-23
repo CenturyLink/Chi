@@ -18,5 +18,5 @@ function buildPortalStyles(){
   }
 }
 
-buildPortalStyles.description = "Builds Chi SCSS files into one minimized CSS file. ";
+buildPortalStyles.description = "Builds Portal theme SCSS files into one minimized chi-portal.css file. ";
 gulp.task('build:portal:styles', gulp.series(copyPortalFontsFiles, buildPortalStyles));

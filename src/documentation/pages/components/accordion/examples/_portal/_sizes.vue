@@ -33,7 +33,6 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -47,7 +46,7 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<!-- sm-->
 <div class="chi-accordion -sm" id="portal-example-size-sm">
   <div class="chi-accordion__item">

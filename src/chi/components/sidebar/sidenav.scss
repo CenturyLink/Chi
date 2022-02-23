@@ -49,6 +49,7 @@ $sidenav-lg-width: 12.5rem;
       justify-content: center;
       min-height: 3rem;
       padding: 0.5rem;
+      text-decoration: none;
 
       // sass-lint:disable-block no-universal-selectors
       > *:not(.chi-icon) {
@@ -164,6 +165,7 @@ $sidenav-lg-width: 12.5rem;
         > a {
           font-size: $font-size-md;
           padding: 0.625rem 1.5rem;
+          text-decoration: none;
 
           &.-active {
             background-color: $sidenav-drawer-tab-active-background-color;
@@ -192,6 +194,7 @@ $sidenav-lg-width: 12.5rem;
               color: $color-text-base;
               display: block;
               font-weight: $sidenav-item-title-font-weight;
+              text-decoration: none;
 
               &.-active {
                 background-color: $sidenav-drawer-tab-active-background-color;

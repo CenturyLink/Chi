@@ -28,7 +28,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -42,7 +41,7 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<fieldset>
   <div class="chi-grid">
     <div class="chi-col -w--12 -mb--1">
@@ -150,7 +149,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Grid extends Vue {
-  mounted() {}
-}
+export default class Grid extends Vue {}
 </script>

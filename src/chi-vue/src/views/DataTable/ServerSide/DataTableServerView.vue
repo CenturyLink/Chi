@@ -41,6 +41,44 @@
       <template #date="payload">
         {{ `${payload.date.getDate()} ${months[payload.date.getMonth()]} ${payload.date.getFullYear()}` }}
       </template>
+      <template #bulkActions>
+        <ChiDataTableBulkActions uuid="example-server-side-uuid" :selectedRows="selectedFirstLevelRows.length">
+          <div class="chi-bulk-actions__buttons" slot="start">
+            <div class="chi-bulk-actions__buttons-mobile -z--40">
+              <chi-button variant="flat" type="icon" aria-label="Edit">
+                <chi-icon icon="edit"></chi-icon>
+              </chi-button>
+              <chi-button variant="flat" type="icon" aria-label="Compose">
+                <chi-icon icon="compose"></chi-icon>
+              </chi-button>
+              <chi-button variant="flat" type="icon" aria-label="Delete">
+                <chi-icon icon="delete"></chi-icon>
+              </chi-button>
+              <chi-button variant="flat" type="icon" aria-label="Print">
+                <chi-icon icon="print"></chi-icon>
+              </chi-button>
+            </div>
+            <div class="chi-bulk-actions__buttons-desktop">
+              <chi-button size="xs" aria-label="Download">
+                <chi-icon icon="arrow-to-bottom"></chi-icon>
+                <span> Download </span>
+              </chi-button>
+              <chi-button size="xs" aria-label="Compose">
+                <chi-icon icon="arrow-to-bottom"></chi-icon>
+                <span> Compose </span>
+              </chi-button>
+              <chi-button size="xs" aria-label="Delete">
+                <chi-icon icon="arrow-to-bottom"></chi-icon>
+                <span> Delete </span>
+              </chi-button>
+              <chi-button size="xs" aria-label="Print">
+                <chi-icon icon="arrow-to-bottom"></chi-icon>
+                <span> Print </span>
+              </chi-button>
+            </div>
+          </div>
+        </ChiDataTableBulkActions>
+      </template>
       <template #loadingSkeleton>
         <div class="-d--flex -flex--column -w--100">
           <div class="chi-skeleton -w--85 -w-md--75 -w-lg--50"></div>
@@ -59,6 +97,7 @@ import DataTable from '../../../components/data-table/DataTable';
 import Actions from '../DataTableTemplates/example-actions.vue';
 import TicketPopover from '../DataTableTemplates/example-popover.vue';
 import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar';
+import DataTableBulkActions from '../../../components/data-table-bulk-actions/DataTableBulkActions';
 import SearchInput from '../../../components/search-input/SearchInput';
 import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
@@ -70,6 +109,7 @@ import { DataTableRow } from '../../../constants/types';
   components: {
     ChiDataTable: DataTable,
     ChiDataTableToolbar: DataTableToolbar,
+    ChiDataTableBulkActions: DataTableBulkActions,
     ChiSearchInput: SearchInput,
     ChiDataTableFilters: DataTableFilters,
     ChiColumnCustomization: ColumnCustomization,
@@ -84,6 +124,7 @@ import { DataTableRow } from '../../../constants/types';
         body: exampleTablePage1,
       },
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      selectedFirstLevelRows: [],
     };
   },
 })
@@ -93,10 +134,14 @@ export default class DataTableView extends Vue {
   }
 
   rowSelected(rowData: DataTableRow) {
+    this.$data.selectedFirstLevelRows.push(rowData);
     console.log('Row selected', rowData);
   }
 
   rowDeselected(rowData: DataTableRow) {
+    const indexOfRow = this.$data.selectedFirstLevelRows.findIndex((row: DataTableRow) => row.rowId === rowData.rowId);
+
+    this.$data.selectedFirstLevelRows.splice(indexOfRow, 1);
     console.log('Row deselected', rowData);
   }
 

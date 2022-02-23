@@ -20,7 +20,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -34,13 +33,11 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<div class="chi-divider -label">or</div>`
       }
     };
   }
 })
-export default class Label extends Vue {
-  mounted() {}
-}
+export default class Label extends Vue {}
 </script>

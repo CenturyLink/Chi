@@ -10,11 +10,9 @@
         a.chi-dropdown__menu-item(href='#exampleLink') Item 3
         a.chi-dropdown__menu-item(href='#exampleLink') Item 4
     </Wrapper>
-    <Wrapper slot="code-webcomponent">      
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">
@@ -32,7 +30,6 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -46,7 +43,7 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<button id="dropdown-2" class="chi-button chi-dropdown__trigger" data-target="#dropdown-2-menu">Dropdown component</button>
 <p class="-text">There is no need for proximity between elements.</p>
 <div class="chi-dropdown__menu" id="dropdown-2-menu">

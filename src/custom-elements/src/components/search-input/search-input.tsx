@@ -37,6 +37,10 @@ export class SearchInput {
    */
   @Prop({ reflect: true }) preventValueMutation = false;
   /**
+   * To render Search Input in readonly mode
+   */
+  @Prop({ reflect: true }) readonly = false;
+  /**
    * To define -hover, -focus statuses
    */
   @Prop() _status: string;
@@ -76,6 +80,13 @@ export class SearchInput {
 
     if (newValue && !TEXT_INPUT_SIZES.includes(newValue)) {
       throw new Error(`${newValue} is not a valid size for input. If provided, valid values are: ${validValues}. `);
+    }
+  }
+
+  @Watch('value')
+  updateValue(newValue: string, oldValue: string) {
+    if (newValue !== oldValue) {
+      this.value = newValue;
     }
   }
 
@@ -132,11 +143,16 @@ export class SearchInput {
       onChange={(ev) => this._handleValueChange(ev)}
       autocomplete="off"
       aria-label="search input"
+      readonly={this.readonly}
     />;
 
     const searchXIcon = this._cleanButtonVisible ?
       <button class="chi-button -icon -close -xs"
-        onClick={() => this._cleanInput()}
+        onClick={() => {
+          if (!this.readonly) {
+            this._cleanInput();
+          }
+        }}
         aria-label="Clear">
         <div class="chi-button__content">
           <i class="chi-icon icon-x" aria-hidden="true"></i>

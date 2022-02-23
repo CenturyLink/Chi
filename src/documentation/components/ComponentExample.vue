@@ -21,7 +21,7 @@
       </span>
     </h3>
     <slot name="example-description"></slot>
-    <div class="example -mb--3">
+    <div class="example -mb--3" :style="additionalStyle">
       <div :class="[padding || '-p--3', additionalClasses]">
         <slot name="example"></slot>
       </div>
@@ -78,6 +78,7 @@ export default class ComponentExample extends Vue {
   @Prop() tabs?: TabsInterface[];
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
+  @Prop() additionalStyle?: string;
 
   chiTabs: any;
 
@@ -86,7 +87,9 @@ export default class ComponentExample extends Vue {
       'code-snippet-tabs' + this.$props.id
     );
 
-    this.chiTabs = chi.tab(chiTabs);
+    if (chiTabs) {
+      this.chiTabs = chi.tab(chiTabs);
+    }
   }
 }
 </script>

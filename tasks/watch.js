@@ -9,7 +9,13 @@ export const serveAndWatch = gulp.parallel(
     watchOptions,
     gulp.series(
       'serve:notify:start',
-      gulp.parallel('lint:css', 'build:chi:styles', 'build:ctl:styles', 'build:portal:styles'),
+      gulp.parallel(
+        'lint:css',
+        'build:chi:styles',
+        'build:ctl:styles',
+        'build:portal:styles',
+        'build:brightspeed:styles'
+      ),
       'sri:chi:assets',
       'serve:notify:end'
     )
