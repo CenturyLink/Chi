@@ -20,6 +20,7 @@
           <li><NuxtLink to="/components/file-input">File input</NuxtLink></li>
           <li><NuxtLink to="/components/flag-icon">Flag icon</NuxtLink></li>
           <li><NuxtLink to="/components/header">Header</NuxtLink></li>
+          <li><NuxtLink to="/components/icon">Icon</NuxtLink></li>
           <li><NuxtLink to="/components/label">Label</NuxtLink></li>
           <li><NuxtLink to="/components/link">Link</NuxtLink></li>
           <li>
@@ -45,6 +46,9 @@
           <li>
             <NuxtLink to="/components/forms/range-slider">Range slider</NuxtLink>
           </li>
+          <li>
+            <NuxtLink to="/components/forms/search-input">Search input</NuxtLink>
+          </li>
           <li><NuxtLink to="/components/forms/select">Select</NuxtLink></li>
           <li><NuxtLink to="/components/sidenav">Sidenav</NuxtLink></li>
           <li>
@@ -55,6 +59,7 @@
           <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
           <li><NuxtLink to="/components/stat">Stat</NuxtLink></li>
           <li><NuxtLink to="/components/steps">Steps</NuxtLink></li>
+          <li><NuxtLink to="/components/table">Table</NuxtLink></li>
           <li><NuxtLink to="/components/forms/text-input">Text input</NuxtLink></li>
           <li><NuxtLink to="/components/forms/textarea">Textarea</NuxtLink></li>
           <li><NuxtLink to="/components/tooltip">Tooltip</NuxtLink></li>
@@ -86,9 +91,6 @@
           <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
           <li><NuxtLink to="/components/picker-group">Picker group</NuxtLink></li>
           <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
-          <li>
-            <NuxtLink to="/components/forms/search-input">Search input</NuxtLink>
-          </li>
           <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
           <li><NuxtLink to="/components/spinner">Spinner</NuxtLink></li>
           <li><NuxtLink to="/components/stat">Stat</NuxtLink></li>

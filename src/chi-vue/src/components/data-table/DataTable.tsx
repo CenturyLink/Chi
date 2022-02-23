@@ -2,7 +2,6 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import {
   ACTIVE_CLASS,
   BUTTON_CLASSES,
-  CHECKBOX_CLASSES,
   COLLAPSED_CLASS,
   DATA_TABLE_CLASSES,
   EXPANDED_CLASS,
@@ -42,6 +41,7 @@ import { detectMajorChiVersion } from '@/utils/utils';
 import { ICON_CLASSES } from '@/constants/icons';
 import { alignmentUtilityClasses, expansionIcons } from './constants/constants';
 import { NormalizedScopedSlot } from 'vue/types/vnode';
+import Checkbox from '../checkbox/Checkbox';
 
 Vue.config.ignoredElements = ['chi-popover'];
 
@@ -58,6 +58,7 @@ export default class DataTable extends Vue {
   selectedRows: string[] = [];
   slicedData: DataTableRow[] = [];
   mode = this.$props.config.mode || defaultConfig.mode;
+  printMode = this.$props.config.printMode || defaultConfig.printMode;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -478,10 +479,25 @@ export default class DataTable extends Vue {
     this._emitSelectedRows();
   }
 
-  _selectRowCheckbox(selectAll: boolean, rowData: DataTableRow | null = null) {
-    const checkedState =
+  _handleCheckboxChange(ev: Event, selectAll: boolean, rowData?: DataTableRow) {
+    if (selectAll) {
+      this.selectAllRows((ev.target as HTMLInputElement).checked ? 'select' : 'deselect');
+    } else {
+      if (rowData) {
+        if (ev.target && (ev.target as HTMLInputElement).checked) {
+          this.selectRow(rowData);
+        } else {
+          this.deselectRow(rowData);
+        }
+      }
+    }
+  }
+
+  _selectRowCheckbox(selectAll: boolean, rowData: DataTableRow | undefined = undefined) {
+    const selected =
       (selectAll && this.slicedData.every((row: DataTableRow) => row.selected)) ||
-      (rowData && rowData.rowNumber && this.selectedRows.includes(rowData.rowId));
+      (rowData && rowData.rowId && this.selectedRows.includes(rowData.rowId)) ||
+      (rowData && rowData.selected === 'indeterminate' && 'indeterminate');
 
     if (selectAll || !!rowData) {
       const checkboxId =
@@ -494,34 +510,15 @@ export default class DataTable extends Vue {
       return (
         <div
           class={`
-        ${DATA_TABLE_CLASSES.CELL}
-        ${DATA_TABLE_CLASSES.SELECTABLE}
-      `}>
-          <div class={CHECKBOX_CLASSES.checkbox}>
-            <input
-              type="checkbox"
-              class={CHECKBOX_CLASSES.INPUT}
-              id={checkboxId}
-              disabled={rowData?.selectionDisabled}
-              onChange={(ev: Event) => {
-                if (selectAll) {
-                  this.selectAllRows((ev.target as HTMLInputElement).checked ? 'select' : 'deselect');
-                } else {
-                  if (rowData) {
-                    if (ev.target && (ev.target as HTMLInputElement).checked) {
-                      this.selectRow(rowData);
-                    } else {
-                      this.deselectRow(rowData);
-                    }
-                  }
-                }
-              }}
-              checked={checkedState}
-            />
-            <label class={CHECKBOX_CLASSES.LABEL} for={checkboxId}>
-              <div class={SR_ONLY}>Select row {checkboxId}</div>
-            </label>
-          </div>
+      ${DATA_TABLE_CLASSES.CELL}
+      ${DATA_TABLE_CLASSES.SELECTABLE}
+    `}>
+          <Checkbox
+            disabled={rowData?.selectionDisabled}
+            id={checkboxId}
+            onChiChange={(ev: Event) => this._handleCheckboxChange(ev, selectAll, rowData)}
+            selected={selected}
+          />
         </div>
       );
     }
@@ -936,7 +933,11 @@ export default class DataTable extends Vue {
         this.accordionsExpanded.push(rowObject.rowId);
       }
 
-      if (rowObject.selected && !this.selectedRows.includes(rowObject.rowId)) {
+      if (
+        rowObject.selected &&
+        rowObject.selected !== 'indeterminate' &&
+        !this.selectedRows.includes(rowObject.rowId)
+      ) {
         this.selectedRows.push(rowObject.rowId);
       }
       return rowObject;
@@ -1421,24 +1422,32 @@ export default class DataTable extends Vue {
       pagination = this._pagination(),
       printHead = this._printHead(),
       printBody = this._printBody(),
-      printFooter = this._printFooter();
+      printFooter = this._printFooter(),
+      screen =
+        this.printMode === 'screenonly' || this.printMode === 'full' ? (
+          <div class={`${UTILITY_CLASSES.DISPLAY.SCREEN_ONLY}`}>
+            {toolbar}
+            {bulkActions}
+            {head}
+            {body}
+            {pagination}
+          </div>
+        ) : null,
+      print =
+        this.printMode === 'printonly' || this.printMode === 'full' ? (
+          <div class={`${UTILITY_CLASSES.DISPLAY.PRINT_ONLY}`}>
+            <table class={`${TABLE_CLASSES.TABLE}`}>
+              {printHead}
+              {printBody}
+            </table>
+            {printFooter}
+          </div>
+        ) : null;
 
     return (
       <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
-        <div class={`${UTILITY_CLASSES.DISPLAY.SCREEN_ONLY}`}>
-          {toolbar}
-          {bulkActions}
-          {head}
-          {body}
-          {pagination}
-        </div>
-        <div class={`${UTILITY_CLASSES.DISPLAY.PRINT_ONLY}`}>
-          <table class={`${TABLE_CLASSES.TABLE}`}>
-            {printHead}
-            {printBody}
-          </table>
-          {printFooter}
-        </div>
+        {screen}
+        {print}
       </div>
     );
   }
