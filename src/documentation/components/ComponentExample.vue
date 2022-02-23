@@ -10,7 +10,7 @@
         >
       </span>
     </h4>
-    <h3 v-else class="-anchor" :id="id">
+    <h3 v-else-if="title" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a

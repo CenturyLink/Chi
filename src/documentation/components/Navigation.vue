@@ -13,6 +13,7 @@
           <!-- <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li> -->
           <li><NuxtLink to="/components/badge">Badge</NuxtLink></li>
           <li><NuxtLink to="/components/brand">Brand</NuxtLink></li>
+          <li><NuxtLink to="/components/button-group">Button group</NuxtLink></li>
           <li><NuxtLink to="/components/card">Card</NuxtLink></li>
           <li><NuxtLink to="/components/forms/checkbox">Checkbox</NuxtLink></li>
           <li><NuxtLink to="/components/divider">Divider</NuxtLink></li>
@@ -73,8 +74,7 @@
             <NuxtLink to="/components/button"
               >Button
               <div class="-sr--only">component</div></NuxtLink>
-          </li>
-          <li><NuxtLink to="/components/button-group">Button group</NuxtLink></li> -->
+          </li> -->
           <!-- <li><NuxtLink to="/components/data-table">Data table</NuxtLink></li> -->
           <!-- <li><NuxtLink to="/components/date-picker">Date picker</NuxtLink></li> -->
           <!-- <li><NuxtLink to="/components/drawer">Drawer</NuxtLink></li> -->
