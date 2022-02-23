@@ -27,85 +27,43 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          active: true,
+          disabled: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
+          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       sizes: ['xs', 'sm', 'md', 'lg'],
       codeSnippets: {
-        webcomponent: `<!-- xs -->
-<chi-button color="primary" size="xs">Button</chi-button>
-<chi-button size="xs">Button</chi-button>
-<chi-button type="icon" variant="flat" size="xs" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
-  <chi-icon icon="atom"></chi-icon>
-</chi-button>
-
-<!-- sm -->
-<chi-button color="primary" size="sm">Button</chi-button>
-<chi-button size="sm">Button</chi-button>
-<chi-button type="icon" variant="flat" size="sm" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
-  <chi-icon icon="atom"></chi-icon>
-</chi-button>
-
-<!-- md -->
-<chi-button color="primary" size="md">Button</chi-button>
-<chi-button size="md">Button</chi-button>
-<chi-button type="icon" variant="flat" size="md" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
-  <chi-icon icon="atom"></chi-icon>
-</chi-button>
-
-<!-- lg -->
-<chi-button color="primary" size="lg">Button</chi-button>
-<chi-button size="lg">Button</chi-button>
-<chi-button type="icon" variant="flat" size="lg" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
-  <chi-icon icon="atom"></chi-icon>
-</chi-button>
-
-<!-- Icon button tooltip -->
-<script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
+        webcomponent: ``,
         htmlblueprint: `<!-- xs -->
-<button class="chi-button -primary -xs">Button</button>
-<button class="chi-button -xs">Button</button>
-<button class="chi-button -flat -xs -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
-  <div class="chi-button__content">
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-  </div>
-</button>
-
+<div class="chi-button-group -vertical -fluid">
+  <button class="chi-button -xs">Button</button>
+  <button class="chi-button -xs">Button</button>
+  <button class="chi-button -xs">Button</button>
+</div>
 <!-- sm -->
-<button class="chi-button -primary -sm">Button</button>
-<button class="chi-button -sm">Button</button>
-<button class="chi-button -flat -sm -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
-  <div class="chi-button__content">
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-  </div>
-</button>
-
+<div class="chi-button-group -vertical -fluid">
+  <button class="chi-button -sm">Button</button>
+  <button class="chi-button -sm">Button</button>
+  <button class="chi-button -sm">Button</button>
+</div>
 <!-- md -->
-<button class="chi-button -primary -md">Button</button>
-<button class="chi-button -md">Button</button>
-<button class="chi-button -flat -md -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
-  <div class="chi-button__content">
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-  </div>
-</button>
-
+<div class="chi-button-group -vertical -fluid">
+  <button class="chi-button -md">Button</button>
+  <button class="chi-button -md">Button</button>
+  <button class="chi-button -md">Button</button>
+</div>
 <!-- lg -->
-<button class="chi-button -primary -lg">Button</button>
-<button class="chi-button -lg">Button</button>
-<button class="chi-button -flat -lg -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
-  <div class="chi-button__content">
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-  </div>
-</button>
-
-<!-- Icon button tooltip -->
-<script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
+<div class="chi-button-group -vertical -fluid">
+  <button class="chi-button -lg">Button</button>
+  <button class="chi-button -lg">Button</button>
+  <button class="chi-button -lg">Button</button>
+</div>`,
       },
     };
   },

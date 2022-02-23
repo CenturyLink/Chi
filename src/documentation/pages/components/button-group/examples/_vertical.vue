@@ -23,22 +23,23 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          active: true,
+          disabled: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
+          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-button color="danger">Danger</chi-button>
-<chi-button color="danger" variant="outline">Danger</chi-button>
-<chi-button color="danger" variant="flat">Danger</chi-button>`,
-        htmlblueprint: `<button class="chi-button -danger">Danger</button>
-<button class="chi-button -danger -outline">Danger</button>
-<button class="chi-button -danger -flat">Danger</button>`,
+        webcomponent: ``,
+        htmlblueprint: `<div class="chi-button-group -vertical">
+  <button class="chi-button">Button</button>
+  <button class="chi-button">Button</button>
+  <button class="chi-button">Button</button>
+</div>`,
       },
     };
   },

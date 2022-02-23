@@ -18,14 +18,9 @@
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-    <Wrapper slot="code-htmlblueprint">
-      .p--text.chi-tab__description
-        | Chi supports button classes on <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code> and 
-        | <code>&lt;input&gt;</code> elements.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
@@ -37,35 +32,63 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          active: true,
+          disabled: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
+          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: `<!-- For light backgrounds -->
-<chi-button color="primary" variant="outline">Primary</chi-button>
-<chi-button color="dark" variant="outline">Dark</chi-button>
-
-<!-- For dark backgrounds -->
-<chi-button color="secondary" variant="outline">Secondary</chi-button>
-<chi-button color="light" variant="outline">Light</chi-button>`,
-        htmlblueprint: `<!-- For light backgrounds -->
-<button class="chi-button -primary -outline">Primary</button>
-<button class="chi-button -dark -outline">Dark</button>
-
-<!-- For dark backgrounds -->
-<button class="chi-button -secondary -outline">Secondary</button>
-<button class="chi-button -light -outline">Light</button>
-
-<!-- Button classes can be used on other elements -->
-<a class="chi-button -primary -outline" href="#" role="button">Link button</a>
-<input class="chi-button -primary -outline" type="button" value="Input button">
-<input class="chi-button -primary -outline" type="submit" value="Submit button">`,
+        webcomponent: ``,
+        htmlblueprint: `<!-- xs -->
+<div class="chi-button-group">
+  <button class="chi-button -xs">Button</button>
+  <button class="chi-button -xs -icon" aria-label="Button action">
+    <div class="chi-button__content">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+    </div>
+  </button>
+</div>
+<!-- sm -->
+<div class="chi-button-group">
+  <button class="chi-button -sm">Button</button>
+  <button class="chi-button -sm -icon" aria-label="Button action">
+    <div class="chi-button__content">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+    </div>
+  </button>
+</div>
+<!-- md -->
+<div class="chi-button-group">
+  <button class="chi-button -md">Button</button>
+  <button class="chi-button -md -icon" aria-label="Button action">
+    <div class="chi-button__content">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+    </div>
+  </button>
+</div>
+<!-- lg -->
+<div class="chi-button-group">
+  <button class="chi-button -lg">Button</button>
+  <button class="chi-button -lg -icon" aria-label="Button action">
+    <div class="chi-button__content">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+    </div>
+  </button>
+</div>
+<!-- xl -->
+<div class="chi-button-group">
+  <button class="chi-button -xl">Button</button>
+  <button class="chi-button -xl -icon" aria-label="Button action">
+    <div class="chi-button__content">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+    </div>
+  </button>
+</div>`,
       },
     };
   },

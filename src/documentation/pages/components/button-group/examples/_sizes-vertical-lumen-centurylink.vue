@@ -33,37 +33,48 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          active: true,
+          disabled: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
+          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: `<!-- For light backgrounds -->
-<chi-button>Base</chi-button>
-<chi-button color="primary">Primary</chi-button>
-<chi-button color="dark">Dark</chi-button>
-
-<!-- For dark backgrounds -->
-<chi-button color="secondary">Secondary</chi-button>
-<chi-button color="light">Light</chi-button>`,
-        htmlblueprint: `<!-- For light backgrounds -->
-<button class="chi-button">Base</button>
-<button class="chi-button -primary">Primary</button>
-<button class="chi-button -dark">Dark</button>
-
-<!-- For dark backgrounds -->
-<button class="chi-button -secondary">Secondary</button>
-<button class="chi-button -light">Light</button>
-
-<!-- Button classes can be used on other elements -->
-<a class="chi-button -primary" href="#" role="button">Link button</a>
-<input class="chi-button -primary" type="button" value="Input button">
-<input class="chi-button -primary" type="submit" value="Submit button">`,
+        webcomponent: ``,
+        htmlblueprint: `<!-- xs -->
+<div class="chi-button-group -vertical -fluid">
+  <button class="chi-button -xs">Button</button>
+  <button class="chi-button -xs">Button</button>
+  <button class="chi-button -xs">Button</button>
+</div>
+<!-- sm -->
+<div class="chi-button-group -vertical -fluid">
+  <button class="chi-button -sm">Button</button>
+  <button class="chi-button -sm">Button</button>
+  <button class="chi-button -sm">Button</button>
+</div>
+<!-- md -->
+<div class="chi-button-group -vertical -fluid">
+  <button class="chi-button -md">Button</button>
+  <button class="chi-button -md">Button</button>
+  <button class="chi-button -md">Button</button>
+</div>
+<!-- lg -->
+<div class="chi-button-group -vertical -fluid">
+  <button class="chi-button -lg">Button</button>
+  <button class="chi-button -lg">Button</button>
+  <button class="chi-button -lg">Button</button>
+</div>
+<!-- xl -->
+<div class="chi-button-group -vertical -fluid">
+  <button class="chi-button -xl">Button</button>
+  <button class="chi-button -xl">Button</button>
+  <button class="chi-button -xl">Button</button>
+</div>`,
       },
     };
   },

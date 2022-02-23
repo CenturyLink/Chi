@@ -23,26 +23,42 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          active: true,
+          disabled: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
+          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-button size="xs">
-  <chi-icon icon="edit"></chi-icon>
-  <span>Edit</span>
-</chi-button>`,
-        htmlblueprint: `<button class="chi-button -xs">
-  <div class="chi-button__content">
-    <i class="chi-icon icon-edit" aria-hidden="true"></i>
-    <span>Edit</span>
-  </div>
-</button>`,
+        webcomponent: ``,
+        htmlblueprint: `<!-- xs -->
+<div class="chi-button-group">
+  <button class="chi-button -xs">Button</button>
+  <button class="chi-button -xs">Button</button>
+  <button class="chi-button -xs">Button</button>
+</div>
+<!-- sm -->
+<div class="chi-button-group">
+  <button class="chi-button -sm">Button</button>
+  <button class="chi-button -sm">Button</button>
+  <button class="chi-button -sm">Button</button>
+</div>
+<!-- md -->
+<div class="chi-button-group">
+  <button class="chi-button -md">Button</button>
+  <button class="chi-button -md">Button</button>
+  <button class="chi-button -md">Button</button>
+</div>
+<!-- lg -->
+<div class="chi-button-group">
+  <button class="chi-button -lg">Button</button>
+  <button class="chi-button -lg">Button</button>
+  <button class="chi-button -lg">Button</button>
+</div>`,
       },
     };
   },

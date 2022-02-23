@@ -23,91 +23,49 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          active: true,
+          disabled: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
+          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       sizes: ['xs', 'sm', 'md', 'lg', 'xl'],
       codeSnippets: {
-        webcomponent: `<!-- xs -->
-<chi-button size="xs">Button</chi-button>
-<chi-button type="icon" size="xs" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
-  <chi-icon icon="atom"></chi-icon>
-</chi-button>
-
-<!-- sm -->
-<chi-button size="sm">Button</chi-button>
-<chi-button type="icon" size="sm" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
-  <chi-icon icon="atom"></chi-icon>
-</chi-button>
-
-<!-- md -->
-<chi-button size="md">Button</chi-button>
-<chi-button type="icon" size="md" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
-  <chi-icon icon="atom"></chi-icon>
-</chi-button>
-
-<!-- lg -->
-<chi-button size="lg">Button</chi-button>
-<chi-button type="icon" size="lg" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
-  <chi-icon icon="atom"></chi-icon>
-</chi-button>
-
-<!-- xl -->
-<chi-button size="xl">Button</chi-button>
-<chi-button type="icon" size="xl" alternative-text="Button action" data-tooltip="Button action" data-position="bottom">
-  <chi-icon icon="atom" />
-</chi-button>
-
-<!-- Icon button tooltip -->
-<script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
+        webcomponent: ``,
         htmlblueprint: `<!-- xs -->
-<button class="chi-button -xs">Button</button>
-<button class="chi-button -xs -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
-  <div class="chi-button__content">
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-  </div>
-</button>
-
+<div class="chi-button-group">
+  <button class="chi-button -xs">Button</button>
+  <button class="chi-button -xs">Button</button>
+  <button class="chi-button -xs">Button</button>
+</div>
 <!-- sm -->
-<button class="chi-button -sm">Button</button>
-<button class="chi-button -sm -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
-  <div class="chi-button__content">
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-  </div>
-</button>
-
+<div class="chi-button-group">
+  <button class="chi-button -sm">Button</button>
+  <button class="chi-button -sm">Button</button>
+  <button class="chi-button -sm">Button</button>
+</div>
 <!-- md -->
-<button class="chi-button -md">Button</button>
-<button class="chi-button -md -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
-  <div class="chi-button__content">
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-  </div>
-</button>
-
+<div class="chi-button-group">
+  <button class="chi-button -md">Button</button>
+  <button class="chi-button -md">Button</button>
+  <button class="chi-button -md">Button</button>
+</div>
 <!-- lg -->
-<button class="chi-button -lg">Button</button>
-<button class="chi-button -lg -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
-  <div class="chi-button__content">
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-  </div>
-</button>
-
+<div class="chi-button-group">
+  <button class="chi-button -lg">Button</button>
+  <button class="chi-button -lg">Button</button>
+  <button class="chi-button -lg">Button</button>
+</div>
 <!-- xl -->
-<button class="chi-button -xl">Button</button>
-<button class="chi-button -xl -icon" aria-label="Button action" data-tooltip="Button action" data-position="bottom">
-  <div class="chi-button__content">
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-  </div>
-</button>
-
-<!-- Icon button tooltip -->
-<script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`,
+<div class="chi-button-group">
+  <button class="chi-button -xl">Button</button>
+  <button class="chi-button -xl">Button</button>
+  <button class="chi-button -xl">Button</button>
+</div>`,
       },
     };
   },

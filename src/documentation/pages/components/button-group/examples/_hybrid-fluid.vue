@@ -27,22 +27,26 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          active: true,
+          disabled: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
+          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-button uppercase>Button</chi-button>
-<chi-button color="primary" uppercase>Button</chi-button>
-<chi-button color="primary" variant="outline" uppercase>Button</chi-button>`,
-      htmlblueprint: `<button class="chi-button -uppercase">Button</button>
-<button class="chi-button -primary -uppercase">Button</button>
-<button class="chi-button -primary -outline -uppercase">Button</button>`,
+        webcomponent: ``,
+      htmlblueprint: `<div class="chi-button-group -fluid">
+  <button class="chi-button">Button</button>
+  <button class="chi-button -icon -no-fluid" aria-label="Button action">
+    <div class="chi-button__content">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+    </div>
+  </button>
+</div>`,
       },
     };
   },

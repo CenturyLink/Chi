@@ -20,26 +20,23 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          active: true,
+          disabled: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
+          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: `<!-- left aligned content -->
-<chi-button fluid>Button</chi-button>
-
-<!-- center aligned content -->
-<chi-button fluid center>Button</chi-button>`,
-        htmlblueprint: `<!-- left aligned content -->
-<button class="chi-button -fluid">Button</button>
-
-<!-- center aligned content -->
-<button class="chi-button -fluid -justify-content--center">Button</button>`,
+        webcomponent: ``,
+        htmlblueprint: `<div class="chi-button-group -vertical -fluid">
+  <button class="chi-button">Button</button>
+  <button class="chi-button">Button</button>
+  <button class="chi-button">Button</button>
+</div>`,
       },
     };
   },

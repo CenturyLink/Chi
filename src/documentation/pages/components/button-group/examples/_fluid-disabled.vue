@@ -31,58 +31,23 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          active: true,
+          disabled: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
+          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: `<!-- left aligned -->
-<chi-button>
-  <chi-icon icon="atom"></chi-icon>
-  <span>Button</span>
-</chi-button>
-
-<!-- right aligned -->
-<chi-button>
-  <span>Button</span>
-  <chi-icon icon="atom"></chi-icon>
-</chi-button>
-
-<!-- both sides -->
-<chi-button>
-  <chi-icon icon="atom"></chi-icon>
-  <span>Button</span>
-  <chi-icon icon="atom"></chi-icon>
-</chi-button>`,
-        htmlblueprint: `<!-- left aligned -->
-<button class="chi-button">
-  <div class="chi-button__content">
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-    <span>Button</span>
-  </div>
-</button>
-
-<!-- right aligned -->
-<button class="chi-button">
-  <div class="chi-button__content">
-    <span>Button</span>
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-  </div>
-</button>
-
-<!-- both sides -->
-<button class="chi-button">
-  <div class="chi-button__content">
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-    <span>Button</span>
-    <i class="chi-icon icon-atom" aria-hidden="true"></i>
-  </div>
-</button>`,
+        webcomponent: ``,
+        htmlblueprint: `<div class="chi-button-group -fluid">
+  <button class="chi-button">Button</button>
+  <button class="chi-button -no-fluid">Button</button>
+  <button class="chi-button">Button</button>
+</div>`,
       },
     };
   },
