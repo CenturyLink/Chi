@@ -81,6 +81,7 @@ export const CHECKBOX_CLASSES = {
   checkbox: 'chi-checkbox',
   INPUT: 'chi-checkbox__input',
   LABEL: 'chi-checkbox__label',
+  INDETERMINATE: '-indeterminate',
 };
 //#endregion
 
