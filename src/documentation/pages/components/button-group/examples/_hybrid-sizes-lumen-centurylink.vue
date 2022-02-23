@@ -1,5 +1,9 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Outline" padding="-p--0" id="outline-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Hybrid buttons sizes" padding="-p--0" id="hybrid-buttons-sizes-lumen-centurylink" :tabs="exampleTabs">
+    p.-text(slot="example-description")
+      | Hybrid buttons support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
+      |  <code>lg</code>, <code>xl</code>.
+      | The default size is <code>md</code>.
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12.-w-md--6
         .-p--3.-d--flex(style="justify-content: center;")

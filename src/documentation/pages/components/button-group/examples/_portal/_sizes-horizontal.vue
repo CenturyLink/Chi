@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Labeled icon buttons" id="labeled-portal" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Horizontal" id="horizontal-portal" :tabs="exampleTabs">
     div(slot="example")
       .-d--flex
         .-pr--2
@@ -47,5 +47,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class LabeledIconPortal extends Vue {}
+export default class SizesHorizontal extends Vue {}
 </script>

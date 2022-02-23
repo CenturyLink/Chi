@@ -1,8 +1,8 @@
 <template lang="pug">
-  <ComponentExample title="Icon buttons" id="icon-button-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Alignment" id="fluid-alignment" :tabs="exampleTabs">
     p.-text(slot="example-description")
-      | For interfaces with limited space, an Icon button can
-      | be used for common actions such as editing, deleting, closing, etc.
+      | Button text is centered by default. However, this behavior can change by applying the modifiers
+      | <code>-align--left</code> or <code>-align--right</code>.
     div(slot="example")
       chi-button(type='icon' alternative-text='Edit' ref='edit' data-tooltip='Edit')
         chi-icon(icon='edit')

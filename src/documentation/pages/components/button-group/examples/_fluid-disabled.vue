@@ -1,5 +1,8 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Labeled icon buttons" id="labeled-icon-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Disable Fluidity" id="fluid-disable" :tabs="exampleTabs">
+    p.-text(slot="example-description")
+      | To disable the fluidity of a specific button in a fluid button group,
+      | apply the class <code>-no-fluid</code> to the button.
     div(slot="example")
       chi-button
         chi-icon(icon='atom')

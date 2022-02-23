@@ -1,8 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled-lumen-centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description")
-      | Make buttons appear inactive by adding the <code>disabled</code> boolean attribute
-      | or <code>-disabled</code> class.
+  <ComponentExample titleSize="h4" title="Horizontal" id="fluid-horizontal" :tabs="exampleTabs">
     .chi-form__item(slot="example")
       .-d--flex
         .-pr--2

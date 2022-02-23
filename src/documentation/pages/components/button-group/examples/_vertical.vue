@@ -1,8 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Danger" id="danger-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Vertical" id="vertical" :tabs="exampleTabs">
     p.-text(slot="example-description")
-      | For special cases, such as styling a destructive action in an application (e.g. Delete Account),
-      | a Danger button may be used.
+      | To render a series of buttons vertically, apply the class modifier <code>-vertical</code>.
     div(slot="example")
       chi-button.-mr--2(color='danger')= 'Danger'
       chi-button.-mr--2(variant='outline', color='danger')= 'Danger'

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Solid" padding="-p--0" id="solid-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Vertical" padding="-p--0" id="sizes-vertical-lumen-centurylink" :tabs="exampleTabs">
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12.-w-md--6
         .-p--3.-d--flex(style="justify-content: center;")

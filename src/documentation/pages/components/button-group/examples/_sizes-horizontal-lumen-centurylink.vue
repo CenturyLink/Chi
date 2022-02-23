@@ -1,8 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes-lumen-centurylink" :tabs="exampleTabs">
-    .p-text(slot="example-description" class="-mb--3 -text")
-      | Buttons support the following sizes: Extra Small (xs), Small (sm), Medium (md), Large (lg), and Extra Large (xl).
-      | The default size is <code>md</code>.
+  <ComponentExample titleSize="h4" title="Horizontal" id="sizes-horizontal-lumen-centurylink" :tabs="exampleTabs">
     div(slot="example" v-for="size in sizes")
       p.-text--bold.-pl--2 {{size}}
       div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)

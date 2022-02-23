@@ -1,5 +1,7 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Close icon button" id="close-icon-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Base" id="base" :tabs="exampleTabs">
+    p.-text(slot="example-description")
+      | To render a button group, wrap a series of buttons in a div and apply the class <code>chi-button-group</code>.
     div(slot="example")
       chi-button(type='close')
     <pre class="language-html" slot="code-webcomponent">

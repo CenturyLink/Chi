@@ -1,82 +1,72 @@
 <template lang="pug">
-  div
+  div 
+    h3 Examples
+    <Base />
+    <Vertical />
+    h3 Fluid buttons
+    p.-text
+      | Button groups can be expanded to fill the parent space by applying the class <code>-fluid</code>.
+    <FluidHorizontal />
+    <FluidVertical />
+    <FluidAlignment />
+    <FluidDisabled />
     div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-      h2 Examples
+      h3 Sizes
       p.-text
-        | Chi includes three button variants: Solid, Outline, and Flat. Use <code>solid</code>
-        | buttons for high emphasis actions, base or <code>outline</code> buttons for medium
-        | emphasis actions, and <code>flat</code> buttons for low emphasis actions.
-        <SolidLumenCenturyLink />
-        <OutlineLumenCenturyLink />
-        <FlatLumenCenturyLink />
-        <DisabledLumenCenturyLink />
-        <UppercaseLumenCenturyLink />
-        <FluidLumenCenturyLink />
-        <IconButtonLumenCenturyLink />
-        <LabeledIconLumenCenturyLink />
-        <FloatingIconLumenCenturyLink />
-        <CloseIconLumenCenturyLink />
-        <DangerLumenCenturyLink />
-        <SizesLumenCenturyLink />
+        | Button groups support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
+        |  <code>-lg</code>, <code>-xl</code>.
+        | The default size is <code>-md</code>.
+      <SizesHorizontalLumenCenturyLink />
+      <SizesVerticalLumenCenturyLink />
+      <HybridButtons />
+      <HybridFluid />
+      <HybridSizesLumenCenturyLink />
     div(v-else)
-      <ExamplesPortal />
-      <DisabledPortal />
-      <FluidPortal />
-      <IconButtonPortal />
-      <LabeledIconPortal />
-      <FloatingIconPortal />
-      <CloseIconPortal />
-      <DangerPortal />
-      <SizesPortal />
+      h3 Sizes
+      p.-text
+        | Button groups support the following sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>,
+        |  <code>-lg</code>.
+        | The default size is <code>-md</code>.
+      <SizesHorizontal />
+      <SizesVertical />
+      <HybridButtons />
+      <HybridFluid />
+      <HybridSizes />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import DisabledLumenCenturyLink from './_disabled-lumen-centurylink.vue';
-import SizesLumenCenturyLink from './_sizes-lumen-centurylink.vue';
-import SolidLumenCenturyLink from './_solid-lumen-centurylink.vue';
-import OutlineLumenCenturyLink from './_outline-lumen-centurylink.vue';
-import FlatLumenCenturyLink from './_flat-lumen-centurylink.vue';
-import UppercaseLumenCenturyLink from './_uppercase-lumen-centurylink.vue';
-import FluidLumenCenturyLink from './_fluid-lumen-centurylink.vue';
-import IconButtonLumenCenturyLink from './_icon-buttons-lumen-centurylink.vue';
-import LabeledIconLumenCenturyLink from './_labelled-icon-lumen-centurylink.vue';
-import FloatingIconLumenCenturyLink from './_floating-icon-lumen-centurylink.vue';
-import CloseIconLumenCenturyLink from './_close-icon-lumen-centurylink.vue';
-import DangerLumenCenturyLink from './_danger-lumen-centurylink.vue';
-import ExamplesPortal from './_portal/_example.vue';
-import DisabledPortal from './_portal/_disabled.vue';
-import FluidPortal from './_portal/_fluid.vue';
-import IconButtonPortal from './_portal/_icon-button.vue';
-import LabeledIconPortal from './_portal/_labeled-icon.vue';
-import FloatingIconPortal from './_portal/_floating-icon.vue';
-import CloseIconPortal from './_portal/_close-icon.vue';
-import DangerPortal from './_portal/_danger.vue';
-import SizesPortal from './_portal/_sizes.vue';
+import Base from './_base.vue';
+import FluidAlignment from './_fluid-alignment.vue';
+import FluidDisabled from './_fluid-disabled.vue';
+import FluidHorizontal from './_fluid-horizontal.vue';
+import FluidVertical from './_fluid-vertical.vue';
+import HybridButtons from './_hybrid-buttons.vue';
+import HybridFluid from './_hybrid-fluid.vue';
+import HybridSizesLumenCenturyLink from './_hybrid-sizes-lumen-centurylink.vue';
+import HybridSizes from './_portal/_hybrid-sizes.vue';
+import SizesHorizontal from './_portal/_sizes-horizontal.vue';
+import SizesVertical from './_portal/_sizes-vertical.vue';
+import SizesHorizontalLumenCenturyLink from './_sizes-horizontal-lumen-centurylink.vue';
+import SizesVerticalLumenCenturyLink from './_sizes-vertical-lumen-centurylink.vue';
+import Vertical from './_vertical.vue';
 
 @Component({
   components: {
-    SolidLumenCenturyLink,
-    OutlineLumenCenturyLink,
-    FlatLumenCenturyLink,
-    DisabledLumenCenturyLink,
-    UppercaseLumenCenturyLink,
-    FluidLumenCenturyLink,
-    IconButtonLumenCenturyLink,
-    LabeledIconLumenCenturyLink,
-    FloatingIconLumenCenturyLink,
-    CloseIconLumenCenturyLink,
-    DangerLumenCenturyLink,
-    SizesLumenCenturyLink,
-    ExamplesPortal,
-    DisabledPortal,
-    FluidPortal,
-    IconButtonPortal,
-    LabeledIconPortal,
-    FloatingIconPortal,
-    CloseIconPortal,
-    DangerPortal,
-    SizesPortal,
+    Base,
+    Vertical,
+    FluidHorizontal,
+    FluidVertical,
+    FluidAlignment,
+    FluidDisabled,
+    SizesHorizontalLumenCenturyLink,
+    SizesVerticalLumenCenturyLink,
+    HybridButtons,
+    HybridFluid,
+    HybridSizesLumenCenturyLink,
+    HybridSizes,
+    SizesHorizontal,
+    SizesVertical,
   }
 })
 export default class Examples extends Vue {}

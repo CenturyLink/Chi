@@ -1,8 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Hybrid buttons" id="hybrid-buttons" :tabs="exampleTabs">
+  <ComponentExample id="hybrid-fluid" :tabs="exampleTabs">
     p.-text(slot="example-description")
-      | Button groups support all button types and styles, including icons.
-      | Mix and match text and icons to form a hybrid button group.
+      | Hybrid buttons also support fluid rendering.
     .div(slot="example")
       .-d--flex
         .-pr--2
@@ -48,5 +47,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class HybridButtons extends Vue {}
+export default class HybridFluid extends Vue {}
 </script>
