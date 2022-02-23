@@ -2,7 +2,7 @@
   <ComponentExample title="Sizes" id="sizes-portal" :tabs="exampleTabs">
     .p-text(slot="example-description" class="-mb--3 -text")
       | Toggle switch supports different sizes: <code>xs</code>, <code>sm</code>.
-      | The default size is <code>sm</code>.
+      | The default size is <code>xs</code>.
     div(slot="example")
       .-p--2
         .chi-form__item
