@@ -4,6 +4,7 @@ declare class ComponentLibrary {
 
 const exportComponent: ComponentLibrary = {
   components: {
+    ChiCheckbox: () => import(/* webpackChunkName: "checkbox" */ '../components/checkbox/Checkbox'),
     ChiColumnCustomization: () =>
       import(/* webpackChunkName: "column-customization" */ '../components/column-customization/ColumnCustomization'),
     ChiDataTable: () => import(/* webpackChunkName: "data-table" */ '../components/data-table/DataTable'),

@@ -337,7 +337,6 @@ export const exampleTableBody = [
   },
   {
     id: 'NTM000021066',
-    active: false,
     nestedContent: {
       template: 'accordionContent',
       payload: {
@@ -361,13 +360,11 @@ export const exampleTableBody = [
   },
   {
     id: 'NTM0000210662',
-    active: false,
     nestedContent: {
       table: {
         data: [
           {
             id: 'NTM0000210661',
-            active: false,
             data: [
               {
                 template: 'ticketId',
