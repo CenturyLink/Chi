@@ -4,6 +4,7 @@
     <ChiDataTable
       :data="table"
       :config="config"
+      ref="dataTable"
       @chiSelectedRowsChange="e => this.chiSelectedRowsChange(e)"
       @chiPageChange="e => this.pageChange(e)"
       @chiPageSizeChange="e => this.pageSizeChange(e)"
@@ -239,6 +240,9 @@ import DataTableViews from '../../../components/data-table-views/DataTableViews'
     },
     inputTwoChangeHandler: e => {
       console.log('inputTwoChangeHandler', e);
+    },
+    printTable() {
+      (this.$refs.dataTable as DataTable).print('DataTable Client - Print');
     },
   },
   data: () => {
