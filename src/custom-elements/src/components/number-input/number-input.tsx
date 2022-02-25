@@ -98,6 +98,8 @@ export class NumberInput {
   @Event({ eventName: 'chiNumberInvalid' }) chiNumberInvalid: EventEmitter<
     void
   >;
+  
+  _numberInput!: HTMLInputElement;
 
   connectedCallback() {
     this.initialValue = this.value;
@@ -131,14 +133,10 @@ export class NumberInput {
   }
 
   private increment() {
-    const input = this.el.id
-      ? (document.getElementById(`${this.el.id}-control`) as HTMLInputElement)
-      : (this.el.children[0].children[0] as HTMLInputElement);
+    this._numberInput.stepUp();
+    this.value = this._numberInput.value;
 
-    input.stepUp();
-    this.value = input.value;
-
-    if (input.valueAsNumber <= this.max) {
+    if (this._numberInput.valueAsNumber <= this.max) {
       this._didUpdateCallBackOnceQueue.push(() => {
         this.chiChange.emit(this.value);
       });
@@ -146,14 +144,10 @@ export class NumberInput {
   }
 
   private decrement() {
-    const input = this.el.id
-      ? (document.getElementById(`${this.el.id}-control`) as HTMLInputElement)
-      : (this.el.children[0].children[0] as HTMLInputElement);
+    this._numberInput.stepDown();
+    this.value = this._numberInput.value;
 
-    input.stepDown();
-    this.value = input.value;
-
-    if (input.valueAsNumber >= this.min) {
+    if (this._numberInput.valueAsNumber >= this.min) {
       this._didUpdateCallBackOnceQueue.push(() => {
         this.chiChange.emit(this.value);
       });
@@ -164,6 +158,7 @@ export class NumberInput {
     const input = (
       <input
         type="number"
+        ref={(el) => this._numberInput = el as HTMLInputElement}
         class={`chi-input ${this.inputstyle ? `-${this.inputstyle}` : ''} ${
           this.state ? `-${this.state}` : ''
         }`}
