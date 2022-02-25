@@ -3,17 +3,10 @@
     p.-text(slot="example-description")
       | To disable the fluidity of a specific button in a fluid button group,
       | apply the class <code>-no-fluid</code> to the button.
-    div(slot="example")
-      chi-button
-        chi-icon(icon='atom')
-        span Button
-      chi-button.-mr--2.-ml--2()
-        span Button
-        chi-icon(icon='atom')
-      chi-button
-        chi-icon(icon='atom')
-        span Button
-        chi-icon(icon='atom')
+    .chi-button-group.-fluid(slot="example")
+      button(class=`chi-button`) Button
+      button(class=`chi-button -no-fluid`) Button
+      button(class=`chi-button`) Button
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

@@ -3,11 +3,10 @@
     p.-text(slot="example-description")
       | Button text is centered by default. However, this behavior can change by applying the modifiers
       | <code>-align--left</code> or <code>-align--right</code>.
-    div(slot="example")
-      chi-button(type='icon' alternative-text='Edit' ref='edit' data-tooltip='Edit')
-        chi-icon(icon='edit')
-      chi-button.-ml--2(variant='flat' type='icon' alternative-text='Edit' ref='editFlat' data-tooltip='Edit')
-        chi-icon(icon='edit')
+    .chi-button-group.-fluid(slot="example")
+      button(class=`chi-button -align--left`) Button
+      button(class=`chi-button`) Button
+      button(class=`chi-button -align--right`) Button
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

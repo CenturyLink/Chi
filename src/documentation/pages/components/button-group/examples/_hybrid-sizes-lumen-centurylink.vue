@@ -1,20 +1,16 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Hybrid buttons sizes" padding="-p--0" id="hybrid-buttons-sizes-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Hybrid buttons sizes" id="hybrid-buttons-sizes-lumen-centurylink" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Hybrid buttons support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
       |  <code>lg</code>, <code>xl</code>.
       | The default size is <code>md</code>.
-    .chi-grid.-no-gutter(slot="example")
-      .chi-col.-w--12.-w-md--6
-        .-p--3.-d--flex(style="justify-content: center;")
-          each type, val in {Primary:'primary', Dark:'dark'}
-            div.-pr--2
-              chi-button(color=type, variant='outline')= val
-      .chi-col.-w--12.-w-md--6
-        .-p--3.-bg--black.-d--flex(style="justify-content: center;")
-          each type, val in {Secondary:'secondary', Light:'light'}
-            div.-pr--2
-              chi-button(color=type, variant='outline')= val
+    .-p--0.-d--flex.-flex--column(slot="example" v-for="size in sizes")
+      p.-text--bold.-pl--1.-mb--0 -{{size}}
+      .chi-button-group.-m--1
+        button(class=`chi-button -${size}`) Button
+        button(class=`chi-button -${size} -icon`, aria-label="Button action")
+          .chi-button__content
+            i.chi-icon.icon-atom(aria-hidden="true")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -42,6 +38,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
+      sizes: ['xs', 'sm', 'md', 'lg', 'xl'],
       codeSnippets: {
         webcomponent: ``,
         htmlblueprint: `<!-- xs -->

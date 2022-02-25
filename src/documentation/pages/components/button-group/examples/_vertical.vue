@@ -2,10 +2,8 @@
   <ComponentExample titleSize="h4" title="Vertical" id="vertical" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | To render a series of buttons vertically, apply the class modifier <code>-vertical</code>.
-    div(slot="example")
-      chi-button.-mr--2(color='danger')= 'Danger'
-      chi-button.-mr--2(variant='outline', color='danger')= 'Danger'
-      chi-button(variant='flat', color='danger')= 'Danger'
+    .chi-button-group.-vertical(slot="example")
+      button(class=`chi-button` v-for="item in Array(3).fill(0)") Button
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

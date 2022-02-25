@@ -3,14 +3,11 @@
     p.-text(slot="example-description")
       | Button groups support all button types and styles, including icons.
       | Mix and match text and icons to form a hybrid button group.
-    .div(slot="example")
-      .-d--flex
-        .-pr--2
-          button(class=`chi-button -uppercase`) Button
-        .-pr--2
-          button(class=`chi-button -primary -uppercase`) Button
-        .-pr--2
-          button(class=`chi-button -outline -primary -uppercase`) Button
+    .chi-button-group(slot="example")
+      button(class=`chi-button`) Button
+      button(class=`chi-button -icon`, aria-label="Button action")
+        .chi-button__content
+          i.chi-icon.icon-atom(aria-hidden="true")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

@@ -1,15 +1,10 @@
 <template lang="pug">
   <ComponentExample titleSize="h4" title="Vertical" id="vertical-portal" :tabs="exampleTabs">
-    div(slot="example" v-for="size in sizes")
-      p.-text--bold.-pl--2 {{size}}
-      div(class=`chi-col -w--12 -pb--2 -mr--0 -d--flex`)
-        .-pr--2
-          chi-button(:size='size', color='primary') Button
-        .-pr--2
-          chi-button(:size='size') Button
-        .-pr--2
-          chi-button(:size='size' variant='flat' type='icon' alternative-text='Button action' data-tooltip='Button action' data-position='bottom')
-            chi-icon(icon='atom')
+    .-p--0(slot="example" v-for="size in sizes")
+      p.-text--bold -{{size}}
+      .-d--flex.-flex--wrap
+        .chi-button-group.-vertical.-fluid(style="width:12rem")
+          button(:class="`chi-button -${size}`"  v-for="item in Array(3).fill(0)") Button
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

@@ -2,8 +2,10 @@
   <ComponentExample titleSize="h4" title="Base" id="base" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | To render a button group, wrap a series of buttons in a div and apply the class <code>chi-button-group</code>.
-    div(slot="example")
-      chi-button(type='close')
+    .chi-button-group(slot="example")
+      button(class=`chi-button`) Button
+      button(class=`chi-button`) Button
+      button(class=`chi-button`) Button
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

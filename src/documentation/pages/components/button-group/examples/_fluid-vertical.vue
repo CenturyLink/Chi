@@ -1,8 +1,7 @@
 <template lang="pug">
   <ComponentExample titleSize="h4" title="Vertical" id="fluid-vertical" :tabs="exampleTabs">
-    .chi-form__item(slot="example")
-      button(class=`chi-button -fluid -mb--2`) Button
-      button(class=`chi-button -fluid -justify-content--center`) Button
+    .chi-button-group.-vertical.-fluid(style="width:12rem" slot="example")
+      button(class=`chi-button` v-for="item in Array(3).fill(0)") Button
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

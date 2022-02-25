@@ -1,9 +1,7 @@
 <template lang="pug">
   <ComponentExample titleSize="h4" title="Horizontal" id="fluid-horizontal" :tabs="exampleTabs">
-    .chi-form__item(slot="example")
-      .-d--flex
-        .-pr--2
-          chi-button(color='primary' disabled) Button
+    .chi-button-group.-fluid(slot="example")
+      button(class=`chi-button` v-for="item in Array(3).fill(0)") Button
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

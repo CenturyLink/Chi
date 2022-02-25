@@ -4,12 +4,13 @@
       | Hybrid buttons support the following sizes: <code>xs</code>, <code>sm</code>, <code>md</code>,
       |  <code>lg</code>.
       | The default size is <code>md</code>.
-    div(slot="example")
-      .-d--flex
-        .-pr--2
-          chi-button(size='xs')
-            chi-icon(icon='edit')
-            span Edit
+    .-p--0.-d--flex.-flex--column(slot="example" v-for="size in sizes")
+      p.-text--bold.-pl--1.-mb--0 -{{size}}
+      .chi-button-group.-m--1
+        button(:class="`chi-button -${size}`") Button
+        button(:class="`chi-button -${size} -icon`", aria-label="Button action")
+          .chi-button__content
+            i.chi-icon.icon-atom(aria-hidden="true")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -37,6 +38,7 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML blueprint',
         },
       ],
+      sizes: ['xs', 'sm', 'md', 'lg'],
       codeSnippets: {
         webcomponent: ``,
         htmlblueprint: `<!-- xs -->
