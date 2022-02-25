@@ -1,6 +1,13 @@
 import { DataTableRow } from './types';
 
 //#region Data Table
+export const GENERIC_EVENTS = {
+  CHANGE: 'chiChange',
+  INPUT: 'chiInput',
+};
+//#endregion
+
+//#region Data Table
 export const DATA_TABLE_EVENTS = {
   SELECTED_ROWS_CHANGE: 'chiSelectedRowsChange',
   SELECTED_ROW: 'chiRowSelected',
