@@ -954,6 +954,12 @@ export default class DataTable extends Vue {
       this._serializedDataBody.push(serializeRow(row, rowNumber, null));
       rowNumber++;
     });
+    this._printDisabledColsIndexes = [];
+    Object.keys(this.data.head).forEach((column: string, columnIndex: number) => {
+      if (this.data.head[column].isPrintDisabled) {
+        this._printDisabledColsIndexes.push(columnIndex);
+      }
+    });
   }
 
   dataToRender() {
@@ -1323,13 +1329,6 @@ export default class DataTable extends Vue {
   _printBody() {
     if (this.data.body.length > 0) {
       const bodyRows = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
-
-      this._printDisabledColsIndexes = [];
-      Object.keys(this.data.head).forEach((column: string, columnIndex: number) => {
-        if (this.data.head[column].isPrintDisabled) {
-          this._printDisabledColsIndexes.push(columnIndex);
-        }
-      });
 
       return (
         <tbody>
