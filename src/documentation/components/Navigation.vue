@@ -62,6 +62,9 @@
           <li><NuxtLink to="/components/table">Table</NuxtLink></li>
           <li><NuxtLink to="/components/forms/text-input">Text input</NuxtLink></li>
           <li><NuxtLink to="/components/forms/textarea">Textarea</NuxtLink></li>
+          <li>
+            <NuxtLink to="/components/forms/toggle-switch">Toggle switch</NuxtLink>
+          </li>
           <li><NuxtLink to="/components/tooltip">Tooltip</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
@@ -98,9 +101,6 @@
           <li><NuxtLink to="/components/tabs">Tabs</NuxtLink></li>
           <li><NuxtLink to="/components/forms/textarea">Textarea</NuxtLink></li>
           <li><NuxtLink to="/components/time-picker">Time picker</NuxtLink></li>
-          <li>
-            <NuxtLink to="/components/forms/toggle-switch">Toggle switch</NuxtLink>
-          </li>
           <li><NuxtLink to="/components/toolbar">Toolbar</NuxtLink></li> -->
         </ul>
       </li>

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs">
+  <ComponentExample title="Sizes" id="sizes-lumen-centurylink" :tabs="exampleTabs">
     p.-text(slot="example-description") File inputs support sizes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>, 
       | <code>-lg</code>, <code>-xl</code>. The default size is <code>-md</code>.
     <Wrapper slot="example">
@@ -57,5 +57,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Sizes extends Vue {}
+export default class SizesLumenCenturyLink extends Vue {}
 </script>
