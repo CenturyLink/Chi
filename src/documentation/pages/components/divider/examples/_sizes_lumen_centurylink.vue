@@ -35,7 +35,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -49,7 +48,7 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<div class="chi-divider -bt--1"></div>
 <div class="chi-divider -bt--2"></div>
 <div class="chi-divider -bt--3"></div>
@@ -58,7 +57,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class SizesLumenCenturyLink extends Vue {
-  mounted() {}
-}
+export default class SizesLumenCenturyLink extends Vue {}
 </script>

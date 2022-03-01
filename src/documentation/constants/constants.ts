@@ -2,6 +2,12 @@ import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
 export const chiAssetsRootUrl = `https://assets.ctl.io/chi/${CHI_VERSION}/`;
 export const THEMES = {
+  brightspeed: {
+    label: 'Brightspeed',
+    favicon: '',
+    css: `${chiAssetsRootUrl}chi-brightspeed.css`,
+    docsCss: `${chiAssetsRootUrl}assets/themes/brightspeed/docs.css`,
+  },
   centurylink: {
     label: 'CenturyLink',
     favicon: '',

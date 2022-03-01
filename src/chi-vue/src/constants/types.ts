@@ -2,11 +2,16 @@
 export const GENERAL_POSITIONS = ['left', 'top', 'right', 'bottom'] as const;
 //#endregion
 
+//#region Checkbox
+export type CheckboxState = boolean | 'indeterminate';
+//#endregion
+
 //#region Data Table
 export const DATA_TABLE_SIZE = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type DataTableSizes = typeof DATA_TABLE_SIZE[number];
 export const DATA_TABLE_EXPANSION_ICON_STYLES = ['portal', 'base'] as const;
 export type DataTableRowLevels = 'parent' | 'child' | 'grandChild';
+export type PrintModes = 'full' | 'printonly' | 'screenonly';
 export interface DataTableExpansionIcons {
   portal: {
     expanded: string;
@@ -41,11 +46,12 @@ export interface DataTableRow {
   active: boolean;
   expanded: boolean;
   data: Record<string, any>;
+  level: number;
   nestedContent: DataTableRowNestedContent;
   id: string;
   rowId: string;
   rowNumber: string;
-  selected?: boolean;
+  selected?: boolean | 'indeterminate';
   selectionDisabled?: boolean;
 }
 export interface DataTableData {
@@ -59,10 +65,19 @@ export interface DataTableData {
       allowOverflow?: 'visible' | 'hidden';
       key?: boolean;
       bold?: boolean;
+      description?: string | DataTableColumnDescription;
     };
   };
   body: DataTableRow[];
 }
+
+export interface DataTableColumnDescription {
+  title?: string;
+  text?: string;
+  template?: string;
+  payload?: any;
+}
+
 export interface DataTableSortConfig {
   key: string;
   sortBy?: string;
@@ -100,6 +115,7 @@ export interface DataTableConfig {
   selectable?: boolean | 'radio';
   reserveExpansionSlot?: boolean;
   truncation?: boolean;
+  printMode?: PrintModes;
 }
 export interface DataTableFilter {
   name: string;

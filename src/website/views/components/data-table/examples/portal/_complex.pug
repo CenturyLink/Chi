@@ -10,6 +10,12 @@ h3 Complex
             :config="config",
             :data="table",
           )
+            template(#statusdesc='payload')
+              i(:class="`chi-icon icon-${payload.due.icon} -icon--${payload.due.color}`" aria-hidden="true")
+              span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.due.status }}
+              br
+              i(:class="`chi-icon icon-${payload.overdue.icon} -icon--${payload.overdue.color}`" aria-hidden="true")
+              span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.overdue.status }}
             template(#status="payload")
               i(:class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true")
               span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.status }}
@@ -17,6 +23,30 @@ h3 Complex
               chi-popover-example(:name="payload.name", :id="payload.id")
             template(#actions="payload")
               chi-dropdown-example(:id="payload.id")
+            template(slot='bulkActions')
+              .chi-bulk-actions__buttons
+                .chi-bulk-actions__buttons-mobile.-z--40
+                  chi-button(variant='flat' type='icon' aria-label='Edit')
+                    chi-icon(icon='edit')
+                  chi-button(variant='flat' type='icon' aria-label='Compose')
+                    chi-icon(icon='compose')
+                  chi-button(variant='flat' type='icon' aria-label='Delete')
+                    chi-icon(icon='delete')
+                  chi-button(variant='flat' type='icon' aria-label='Print')
+                    chi-icon(icon='print')
+                .chi-bulk-actions__buttons-desktop
+                  chi-button(size='xs' aria-label='Download')
+                    chi-icon(icon='arrow-to-bottom')
+                    span Download 
+                  chi-button(size='xs' aria-label='Compose')
+                    chi-icon(icon='arrow-to-bottom')
+                    span Compose 
+                  chi-button(size='xs' aria-label='Delete')
+                    chi-icon(icon='arrow-to-bottom')
+                    span Delete 
+                  chi-button(size='xs' aria-label='Print')
+                    chi-icon(icon='arrow-to-bottom')
+                    span Print
   .example-tabs.-pl--2
     ul.chi-tabs#example-portal-complex
       li.-disabled
@@ -45,6 +75,12 @@ h3 Complex
           :code(lang='html')
             <!-- Vue component -->
             <ChiDataTable :config="config" :data="table">
+              <template #statusdesc="payload">
+                <div v-for="status in payload" :key="status.status">
+                  <i :class="`chi-icon icon-${status.icon} -icon--${status.color}`" aria-hidden="true"></i>
+                  <span class="-text--truncate" style="padding-left: 0.5rem;">{{ status.status }}</span>
+                </div>
+              </template>
               <template #status="payload">
                 <i class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
                 <span class="-text--truncate" style="padding-left: 0.5rem;">
@@ -56,6 +92,42 @@ h3 Complex
               </template>
               <template #actions="payload">
                 <ExampleDropdown :id="payload.id" />
+              </template>
+              <template #bulkActions>
+                <div class="chi-bulk-actions__buttons">
+                  <div class="chi-bulk-actions__buttons-mobile -z--40">
+                    <chi-button variant="flat" type="icon" aria-label="Edit">
+                      <chi-icon icon="edit"></chi-icon>
+                    </chi-button>
+                    <chi-button variant="flat" type="icon" aria-label="Compose">
+                      <chi-icon icon="compose"></chi-icon>
+                    </chi-button>
+                    <chi-button variant="flat" type="icon" aria-label="Delete">
+                      <chi-icon icon="delete"></chi-icon>
+                    </chi-button>
+                    <chi-button variant="flat" type="icon" aria-label="Print">
+                      <chi-icon icon="print"></chi-icon>
+                    </chi-button>
+                  </div>
+                  <div class="chi-bulk-actions__buttons-desktop">
+                    <chi-button size="xs" aria-label="Download">
+                      <chi-icon icon="arrow-to-bottom"></chi-icon>
+                      <span> Download </span>
+                    </chi-button>
+                    <chi-button size="xs" aria-label="Compose">
+                      <chi-icon icon="arrow-to-bottom"></chi-icon>
+                      <span> Compose </span>
+                    </chi-button>
+                    <chi-button size="xs" aria-label="Delete">
+                      <chi-icon icon="arrow-to-bottom"></chi-icon>
+                      <span> Delete </span>
+                    </chi-button>
+                    <chi-button size="xs" aria-label="Print">
+                      <chi-icon icon="arrow-to-bottom"></chi-icon>
+                      <span> Print </span>
+                    </chi-button>
+                  </div>
+                </div>
               </template>
             </ChiDataTable>
 
@@ -92,7 +164,15 @@ h3 Complex
               table: {
                 head: {
                   name: { label: 'Name', sortable: true, sortBy: 'name', sortDataType: 'string', key: true, bold: true },
-                  status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string' },
+                  status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: { 
+                    title: 'Status', 
+                    template: 'statusdesc', 
+                    payload: { 
+                      overdue: { status: "Overdue", icon: "circle-alert", color: "danger" }, 
+                      due: { status: "Due", icon: 'warning', color: 'warning' }
+                      } 
+                    }
+                  },
                   lastLogin: { label: 'Last Login', key: true },
                   actions: { label: 'Actions', align: 'right' },
                 },
@@ -989,7 +1069,7 @@ script.
       window.chi.dropdown(document.getElementById(`action-button-${this.id}`));
     },
     template: `<div class="chi-dropdown -position--absolute">
-      <button :id="'action-button-'+this.id" class="chi-button -icon -primary -flat" aria-label="More options">
+      <button :id="'action-button-'+this.id" class="chi-button -icon -primary -flat" aria-label="More options" data-position="left">
         <div class="chi-button__content">
           <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
         </div>
@@ -1041,7 +1121,13 @@ script.
       table: {
         head: {
           name: { label: 'Name', sortable: true, sortBy: 'name', sortDataType: 'string', key: true, bold: true },
-          status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string' },
+          status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: { template: 'statusdesc', 
+            payload: { 
+              overdue: { status: "Overdue", icon: "circle-alert", color: "danger" }, 
+              due: { status: "Due", icon: 'warning', color: 'warning' }
+              } 
+            }
+          },
           lastLogin: { label: 'Last Login', key: true },
           actions: { label: 'Actions', align: 'right' },
         },

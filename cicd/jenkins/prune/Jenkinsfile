@@ -1,0 +1,159 @@
+/*
+ Library declaration.
+  Notes:
+  identifier includes the version of the library (git tag / branch)
+  remote includes the repository git url
+  credentialsId needs to be of the type SSH key in Jenkins
+  _ at the end of the declaration loads the whole library
+
+  This section always runs in the master jenkins.
+*/
+try {
+library(
+      identifier: 'jsl-jenkins-shared-library-local@release/20220117',
+      retriever: modernSCM(
+        [
+          $class: 'GitSCMSource',
+          remote: "/app/jenkins/git/jsl-jenkins-shared-library.git",
+          extensions: [[$class: 'WipeWorkspace']]
+        ]
+      )
+    ) _
+} catch (Exception Ex) {
+library(
+  identifier: 'jsl-jenkins-shared-library@release/20220117',
+  retriever: modernSCM(
+    [
+      $class: 'GitSCMSource',
+      remote: "https://github.com/CenturyLink/jsl-jenkins-shared-library.git",
+      credentialsId: 'GITHUB_APP_CREDENTIALS',
+      extensions: [[$class: 'WipeWorkspace']]
+    ]
+  )
+) _
+}
+
+pipeline {
+
+    environment {
+
+      /*
+        Credentials:
+        GITHUB_TOKEN_CREDENTIALS github token, jenkins user password credential
+        GITHUB_SSH_CREDENTIALS github ssh private key, jenkins private key credential.
+        DOCKER_CREDENTIALS Docker access info, jenkins secret file credential with environment variables to export
+        KUBE_CREDENTIALS Kubernetes access info, jenkins secret file credential with environment variables to export. For PRs.
+        KUBE_CREDENTIALS_TEST Kubernetes access info, jenkins secret file credential with environment variables to export. For branches.
+        AMAZON_CREDENTIALS AWS access info, jenkins secret file credential with environment variables to export
+        SONARQUBE_CREDENTIALS Sonarqube access info, jenkins secret text
+        GCP_CREDENTIALS GCP access info, jenkins secret file credential with environment variables to export
+        JIRA_CREDENTIALS Jira access info, jenkins secret file credential with environment variables to export
+        MORPHEUS_CREDENTIALS Morpheus access info, jenkins secret text
+        MSTEAMS_CREADENTIALS MS Teams access info, jenkins secret text
+        QUALITY_GATE_CREDENTIALS Credentials to gather
+        PROJECT_MAL The MAL of the project
+      */
+      GITHUB_TOKEN_CREDENTIALS = 'SCMAUTO_GITHUB'
+      GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
+      GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
+      DOCKER_CREDENTIALS = 'nexus-secrets'
+      KUBE_CREDENTIALS = 'kube-secret'
+      KUBE_CREDENTIALS_TEST = 'kube-secret-test'
+      AMAZON_CREDENTIALS = 'awsCredentialsPR'
+      AMAZON_CREDENTIALS_PR = 'awsCredentials'
+      SONARQUBE_CREDENTIALS = 'sonar-credentials'
+      GCP_CREDENTIALS = ''
+      JIRA_CREDENTIALS = 'jira-credentials'
+      MSTEAMS_CREDENTIALS = 'TEAMS-SECRET'
+      QUALITY_GATE_CREDENTIALS = 'CRUMBS-FILE'
+      //Deployment control credentialsId
+      AUTHORIZED_USERS = ''
+      DEPLOY_AUTH_TOKEN = ''
+      NEXUS_NPM_CREDENTIALS = 'nexus-npm-secret'
+
+      // Custom project variables
+      // Add
+      PROJECT_NAME = 'ux-chi'
+      PROJECT_MAL = "chi"
+      DOCKER_REPO = 'chi'
+
+      BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
+      COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
+      PULL_REQUEST="pr-${env.CHANGE_ID}"
+      IMAGE_NAME = "${env.PROJECT_NAME}"
+      IMAGE_TAG = "${env.PULL_REQUEST}"
+      KUBE_DOCKER_SECRET_NAME = "${env.PROJECT_NAME}-${env.PULL_REQUEST}"
+      KUBE_DOCKER_SECRET_NAME_TEST = "${env.PROJECT_NAME}-${env.BRANCH_NAME}"
+      PROD_BRANCH="master"
+    }
+    
+    /*parameters {
+      //      https://www.jenkins.io/doc/book/pipeline/syntax/#parameters
+
+    }*/
+
+    /*
+    https://www.jenkins.io/doc/book/pipeline/syntax/#agent
+    Add agent sections in stages/stage if needed.
+    */
+    agent {
+      label 'Docker-enabled'
+    }
+
+    options {
+      /*
+      https://www.jenkins.io/doc/book/pipeline/syntax/#options
+      */
+      timestamps ()
+      timeout(time: 1, unit: 'HOURS')
+      buildDiscarder(logRotator(numToKeepStr:'10', daysToKeepStr: '30'))
+      disableConcurrentBuilds()
+    }
+
+    /*
+    https://www.jenkins.io/doc/book/pipeline/syntax/#triggers
+    */
+    triggers {
+      cron('H 23 * * *')
+    }
+
+    stages {
+
+       stage('Cleanup') {
+         agent {
+            label 'Docker-enabled'
+           }
+         steps {
+           script {
+             string closed_prs = jslGetClosedPRs()
+             if (closed_prs.trim()) {
+               closed_prs.split(' ').each {
+                   jslProcessClosedPR(it.trim())
+               }
+             }
+             else {
+               println "There are no closed PRs in the time slice to check."
+             }
+           }
+         }
+       }
+     }
+    post {
+      /*
+      https://www.jenkins.io/doc/book/pipeline/syntax/#post
+
+      Always post somewhere the watermark:
+  - md5sum of Jenkinsfile
+  - Output of the Jenkinsfile checker output
+      */
+      success {
+         jslNotification('success')
+      }
+      failure {
+        jslNotification('failure')
+      }
+      unstable {
+        jslNotification('unestable')
+      }
+    }
+}

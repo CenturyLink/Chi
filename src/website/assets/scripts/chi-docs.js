@@ -261,6 +261,13 @@ onLoad(() => {
       faviconSvg: rootUrl + 'assets/themes/lumen/images/favicon.svg',
       faviconIco: rootUrl + 'assets/themes/lumen/images/favicon.ico',
       trigger: '.theme-trigger-portal'
+    },
+    Brightspeed: {
+      chiCss: rootUrl + 'chi-brightspeed.css',
+      docsCss: rootUrl + 'assets/themes/brightspeed/docs.css',
+      faviconSvg: rootUrl + 'assets/themes/brightspeed/images/favicon.svg',
+      faviconIco: rootUrl + 'assets/themes/brightspeed/images/favicon.ico',
+      trigger: '.theme-trigger-brightspeed'
     }
   };
 
@@ -278,7 +285,6 @@ onLoad(() => {
 
   window.switchTheme = function(theme, anchorTarget) {
     var logoElement = document.getElementById('header-logo');
-    var themeFavicon = anchorTarget.querySelector('img').getAttribute('src');
     var themeSwitchButtons = document.querySelectorAll('button.-theme-switch');
 
     window.theme = theme;
@@ -287,6 +293,13 @@ onLoad(() => {
       if (theme === 'CenturyLink') {
         logoElement.logo = theme.toLowerCase();
         logoElement.color = 'black';
+      } 
+      else if (theme === 'Brightspeed') {
+        logoElement.logo = theme.toLowerCase();
+
+        if (logoElement.color) {
+          logoElement.removeAttribute('color');
+        }
       } else {
         logoElement.logo = 'lumen';
 
@@ -337,8 +350,12 @@ onLoad(() => {
         const buttonImg = button.querySelector('img.-favicon');
         const buttonThemeName = button.querySelector('.-theme-name');
 
-        buttonImg.setAttribute('src', themeFavicon);
-        buttonThemeName.innerText = anchorTarget.dataset.theme;
+        if (anchorTarget) {
+          const themeFavicon = anchorTarget.querySelector('img').getAttribute('src');
+  
+          buttonImg.setAttribute('src', themeFavicon);
+          buttonThemeName.innerText = anchorTarget.dataset.theme;
+        }
       }
     );
     updateAnchorHrefs()

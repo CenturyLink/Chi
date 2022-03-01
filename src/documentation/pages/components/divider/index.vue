@@ -31,7 +31,5 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     };
   }
 })
-export default class Divider extends Vue {
-  mounted() {}
-}
+export default class Divider extends Vue {}
 </script>

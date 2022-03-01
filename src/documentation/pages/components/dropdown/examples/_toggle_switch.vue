@@ -24,11 +24,9 @@
               span(class="chi-switch__content")
                 span.chi-switch__thumb
               span.chi-switch__label App notifications
-    <Wrapper slot="code-webcomponent">      
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">
@@ -44,7 +42,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -58,7 +55,7 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<div class="chi-dropdown__menu">
   <fieldset>
     <legend class="chi-dropdown__menu-item">Configure options</legend>

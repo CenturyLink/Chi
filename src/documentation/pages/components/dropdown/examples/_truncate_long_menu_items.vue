@@ -8,16 +8,12 @@
       a.chi-dropdown__menu-item(id='example-truncated-menu-item' href='#exampleLink' data-tooltip='Item 3 with truncated longer text')
         .-flex--ellipsis Item 3 with truncated longer text
       a.chi-dropdown__menu-item(href='#exampleLink') Item 4
-    <Wrapper slot="code-webcomponent">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper slot="code-htmlblueprint">
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
@@ -29,7 +25,6 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -43,7 +38,7 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<div class="chi-dropdown__menu">
   <a class="chi-dropdown__menu-item" href="#">Item 1</a>
   <a class="chi-dropdown__menu-item" href="#">Item 2</a>

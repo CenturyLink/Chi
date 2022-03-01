@@ -255,6 +255,7 @@
 
     .chi-popover__header {
       background-color: $popover-modal-header-background-color;
+      background-image: $popover-modal-header-background-image;
       padding-bottom: 1rem;
     }
 
@@ -305,7 +306,6 @@
         display: block;
         height: 1rem;
         left: calc(50% - 1.5rem);
-        opacity: $opacity-60;
         position: absolute;
         top: 0.3rem;
         width: 3rem;

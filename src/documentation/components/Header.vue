@@ -9,37 +9,64 @@
         color: #0047bb;
         font-weight: 600;
       }
+      .theme-brightspeed a.theme-trigger-brightspeed.chi-dropdown__menu-item {
+        background-color: #fff1bf;
+        color: #000;
+        font-weight: 600;
+      }
       .-lumen--show,
       .-centurylink--show,
-      .-portal--show {
+      .-portal--show,
+      .-brightspeed--show {
         display: block;
       }
       .-lumen--hide,
       .-centurylink--hide,
-      .-portal--hide {
+      .-portal--hide,
+      .-brightspeed--hide {
         display: none;
       }
       .theme-centurylink .-lumen--show,
       .theme-centurylink .-portal--show,
+      .theme-centurylink .-brightspeed--show,
       .theme-centurylink .-centurylink--hide {
         display: none;
       }
       .theme-lumen .-portal--show,
       .theme-lumen .-centurylink--show,
+      .theme-lumen .-brightspeed--show,
       .theme-lumen .-lumen--hide {
         display: none;
       }
       .theme-portal .-lumen--show,
       .theme-portal .-centurylink--show,
-      .theme-portal .-portal--hide {
+      .theme-portal .-brightspeed--show,
+      .theme-portal .-portal--hide,
+      .theme-portal .-portal--hide.-brightspeed--hide {
+        display: none;
+      }
+      .theme-brightspeed .-lumen--show,
+      .theme-brightspeed .-centurylink--show,
+      .theme-brightspeed .-portal--show,
+      .theme-brightspeed .-brightspeed--hide,
+      .theme-brightspeed .-portal--hide.-brightspeed--hide {
+        display: none;
+      }
+      .theme-brightspeed .-portal--hide,
+      .theme-brightspeed .-centurylink--hide,
+      .theme-brightspeed .-lumen--hide {
         display: none;
       }
       .theme-portal .-lumen--hide,
       .theme-portal .-centurylink--hide,
+      .theme-portal .-brightspeed--hide,
       .theme-centurylink .-portal--hide,
       .theme-centurylink .-lumen--hide,
+      .theme-centurylink .-brightspeed--hide,
       .theme-lumen .-portal--hide,
-      .theme-lumen .-centurylink--hide {
+      .theme-lumen .-centurylink--hide,
+      .theme-lumen .-brightspeed--hide,
+      .theme-brightspeed .-brightspeed--show {
         display: block;
       }
       .chi-brand {
@@ -108,14 +135,17 @@
         top: 0.625rem;
         width: 1.25rem;
       }
-      .chi.theme-portal .example .example-tabs .chi-tabs {
+      .chi.theme-portal .example .example-tabs .chi-tabs,
+      .chi.theme-brightspeed .example .example-tabs .chi-tabs {
         height: 3rem;
       }
-      .chi.theme-portal .example .example-tabs .chi-tabs > li > a {
+      .chi.theme-portal .example .example-tabs .chi-tabs > li > a,
+      .chi.theme-brightspeed .example .example-tabs .chi-tabs > li > a {
         line-height: 1.5rem;
         padding: 0.75rem 0;
       }
-      .chi.theme-portal .example .example-tabs .chi-tabs > li.-active > a {
+      .chi.theme-portal .example .example-tabs .chi-tabs > li.-active > a,
+      .chi.theme-brightspeed .example .example-tabs .chi-tabs > li.-active > a {
         padding-bottom: 0.625rem;
       }
     nav.chi-header__content
@@ -166,14 +196,16 @@
           button#version-dropdown.chi-button.-flat.-px--1.chi-dropdown__trigger.-animate(
             data-position='bottom-end',
             aria-label='Toggle Chi version'
-          ) v5.5.0
+          ) v5.7.0
           #versionDropdown.chi-dropdown__menu(
             style='width: 10rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(76px, 40px, 0px)',
             x-placement='bottom-end'
           )
             a.chi-dropdown__menu-item.-active(
-              href='https://assets.ctl.io/chi/5.5.0'
-            ) v5.5.0
+              href='https://assets.ctl.io/chi/5.7.0'
+            ) v5.7.0
+            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.6.0') v5.6.0       
+            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.5.0') v5.5.0       
             a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.4.0') v5.4.0       
             a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.3.1') v5.3.1
             a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.3.0') v5.3.0
@@ -247,9 +279,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 Vue.config.ignoredElements = ['chi-brand'];
 @Component
-export default class Header extends Vue {
-  mounted() {}
-}
+export default class Header extends Vue {}
 </script>
 
 <style scoped lang="scss"></style>

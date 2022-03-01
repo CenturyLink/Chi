@@ -8,6 +8,7 @@ const requires = {
   'build-chi-styles': require('./tasks/build-chi-styles.js'),
   'build-ctl-styles': require('./tasks/build-ctl-styles.js'),
   'build-portal-styles': require('./tasks/build-portal-styles.js'),
+  'build-brightspeed-styles': require('./tasks/build-brightspeed-styles.js'),
   'build-chi-assets': require('./tasks/build-chi-assets.js'),
   'build-chi-sprite': require('./tasks/build-chi-sprite.js'),
   'build-chi-scripts-amd': require('./tasks/build-chi-scripts-amd.js'),
@@ -39,7 +40,9 @@ const requires = {
   'vue-watch': require('./tasks/watch-vue.js'),
   'lint-typescript': require('./tasks/lint-typescript'),
   'test-custom-elements': require('./tasks/test-custom-elements'),
-  'test-e2e': require('./tasks/test-e2e')
+  'test-e2e': require('./tasks/test-e2e'),
+  'cicd-build-pre-sri': require('./tasks/cicd-build-pre-sri'),
+  'cicd-build-post-sri': require('./tasks/cicd-build-post-sri'),
 };
 
 gulp.task('default', function(){});

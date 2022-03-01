@@ -1,12 +1,5 @@
 <template lang="pug">
-  div
-    h2 Web Component
-
-    h3.mt--2 Properties
-    .chi-card.-align--center.-empty
-      .chi-card__content
-        .chi-card__caption
-          | Web component coming soon
+  <PropertiesComingSoon />
 </template>
 
 <script lang="ts">

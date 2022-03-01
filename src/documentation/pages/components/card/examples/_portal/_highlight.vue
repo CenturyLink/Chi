@@ -22,7 +22,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      string: 'String',
       exampleTabs: [
         {
           disabled: true,
@@ -36,7 +35,7 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: `Web component code snippet`,
+        webcomponent: ``,
         htmlblueprint: `<div class="chi-card -highlight">
   <div class="chi-card__header">
     <div class="chi-card__title">Title</div>
@@ -49,7 +48,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class HighlightPortal extends Vue {
-  mounted() {}
-}
+export default class HighlightPortal extends Vue {}
 </script>

@@ -29,10 +29,11 @@ a,
   background-color: transparent;
   color: $link-color;
   cursor: pointer;
-  text-decoration: none;
+  text-decoration: $link-text-decoration;
 
   &:hover {
-    text-decoration: underline;
+    color: $link-hover-color;
+    text-decoration: $link-hover-text-decoration;
   }
 
   &[disabled],
@@ -67,7 +68,7 @@ a,
     }
 
     &:hover {
-      color: $color-navy-100;
+      color: $link-cta-hover-color;
 
       &::after {
         left: $link-cta-hover-position-left;

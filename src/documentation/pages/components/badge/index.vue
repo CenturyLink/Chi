@@ -18,6 +18,8 @@ import Properties from './_properties.vue';
 import Accessibility from './_accessibility.vue';
 import { standardComponentPageTabs } from '../../../constants/constants';
 
+Vue.config.ignoredElements = ['chi-badge', 'chi-icon', 'chi-brand'];
+
 @Component({
   components: {
     Accessibility,
@@ -31,7 +33,5 @@ import { standardComponentPageTabs } from '../../../constants/constants';
     };
   }
 })
-export default class Badge extends Vue {
-  mounted() {}
-}
+export default class Badge extends Vue {}
 </script>
