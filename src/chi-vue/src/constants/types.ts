@@ -49,11 +49,12 @@ export interface DataTableRow {
   level: number;
   nestedContent: DataTableRowNestedContent;
   id: string;
-  parentRow?: DataTableRow | undefined;
   rowId: string;
   rowNumber: string;
   selected?: boolean | 'indeterminate';
   selectionDisabled?: boolean;
+  parentRowId?: string | null;
+  rootLevelRowId?: string | null;
 }
 export interface DataTableData {
   head: {
@@ -118,6 +119,7 @@ export interface DataTableConfig {
   reserveExpansionSlot?: boolean;
   truncation?: boolean;
   printMode?: PrintModes;
+  treeSelection?: boolean;
 }
 export interface DataTableFilter {
   name: string;
