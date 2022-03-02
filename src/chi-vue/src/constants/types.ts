@@ -49,6 +49,7 @@ export interface DataTableRow {
   level: number;
   nestedContent: DataTableRowNestedContent;
   id: string;
+  parentRow?: DataTableRow | undefined;
   rowId: string;
   rowNumber: string;
   selected?: boolean | 'indeterminate';

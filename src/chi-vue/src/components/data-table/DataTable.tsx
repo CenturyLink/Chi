@@ -243,7 +243,7 @@ export default class DataTable extends Vue {
     if (bulkActionSlot) {
       if (this.mode === DataTableModes.CLIENT) {
         return (
-          <DataTableBulkActions uuid={dataTableNumber} selectedRows={this._getSelectedFirstLevelRowsCount()}>
+          <DataTableBulkActions uuid={dataTableNumber} selectedRows={this.selectedRows.length}>
             <template slot="start">{bulkActionSlot}</template>
           </DataTableBulkActions>
         );
@@ -318,7 +318,7 @@ export default class DataTable extends Vue {
 
   _handleBulkActionsDeselection() {
     if (this._showSelectedOnly && this._bulkActionsComponent) {
-      if (this._getSelectedFirstLevelRowsCount() > 0) {
+      if (this.selectedRows.length > 0) {
         this._showSelectedOnlyRows();
       } else {
         this._showSelectedOnly = false;
@@ -495,16 +495,49 @@ export default class DataTable extends Vue {
     }
   }
 
+  _getCheckboxState(selectAll: boolean, rowData: DataTableRow | undefined = undefined) {
+    if (selectAll) {
+      if (this.slicedData.every(this._isRowSelected)) {
+        // All rows selected
+
+        return true;
+      } else if (this.slicedData.some(this._isRowSelected)) {
+        // Some rows selected
+
+        return 'indeterminate';
+      }
+
+      return false;
+    } else {
+      const isRowSelected = rowData && rowData.rowId && this.selectedRows.includes(rowData.rowId);
+
+      if (rowData && rowData.nestedContent && rowData.nestedContent.table && rowData.nestedContent.table.data) {
+        const childRows = rowData.nestedContent.table.data;
+
+        if (childRows.every(this._isRowSelected)) {
+          // All children selected
+          return true;
+        } else if (childRows.some(this._isRowSelected)) {
+          // Some children selected
+          return 'indeterminate';
+        }
+      }
+
+      return isRowSelected;
+    }
+  }
+
+  _isRowSelected(row: DataTableRow) {
+    return this.selectedRows.includes(row.rowId);
+  }
+
   _selectRowCheckbox(selectAll: boolean, rowData: DataTableRow | undefined = undefined) {
-    const selected =
-      (selectAll && this.slicedData.every((row: DataTableRow) => row.selected)) ||
-      (rowData && rowData.rowId && this.selectedRows.includes(rowData.rowId)) ||
-      (rowData && rowData.selected === 'indeterminate' && 'indeterminate');
+    const selected = this._getCheckboxState(selectAll, rowData);
 
     if (selectAll || !!rowData) {
       const checkboxId =
         rowData && typeof rowData === 'object' && rowData.rowNumber
-          ? `checkbox-select-${this._rowId(rowData.rowNumber)}`
+          ? `checkbox-select-${rowData?.rowId}`
           : selectAll
           ? `checkbox-${this._dataTableId}-select-all-rows`
           : '';
