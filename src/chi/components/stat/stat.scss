@@ -111,6 +111,10 @@
           left: $stat-background-icon-icon-left;
           position: relative;
           width: 4.5rem;
+
+          &.outline {
+            color: $stat-background-icon-color;
+          }
         }
       }
 
@@ -218,7 +222,10 @@
         left: 0;
         right: auto;
 
-        & > .chi-icon {
+        & > .chi-icon,
+        & > .chi-marketing-icon,
+        & > chi-icon > .chi-icon,
+        & > chi-marketing-icon > .chi-marketing-icon {
           left: -1rem;
           position: relative;
         }
