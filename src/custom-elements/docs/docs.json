@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-02-10T12:52:48",
+  "timestamp": "2022-02-28T16:55:49",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2330,7 +2330,6 @@
           "reflectToAttr": true,
           "docs": "used to hold the value of the number input",
           "docsTags": [],
-          "default": "'0'",
           "values": [
             {
               "type": "string"
@@ -2348,7 +2347,25 @@
           "bubbles": true,
           "cancelable": true,
           "composed": true,
-          "docs": "",
+          "docs": "Triggered when an alteration to the element's value is committed by the user",
+          "docsTags": []
+        },
+        {
+          "event": "chiInput",
+          "detail": "string",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user changed the element's value but did not commit the change yet",
+          "docsTags": []
+        },
+        {
+          "event": "chiNumberInvalid",
+          "detail": "void",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the element's value committed by the user is an invalid number",
           "docsTags": []
         }
       ],

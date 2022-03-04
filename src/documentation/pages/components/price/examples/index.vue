@@ -1,12 +1,10 @@
 <template lang="pug">
-  <Wrapper>
+  div
     h2 Examples
     p.-text
       | To render price, use the class <code>chi-price</code>.
-
-      <Base />
-      <Sizes />
-  </Wrapper>
+    <Base />
+    <Sizes />
 </template>
 
 <script lang="ts">

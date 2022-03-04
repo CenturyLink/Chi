@@ -22,6 +22,7 @@ export default {
       },
       {
         src: `https://assets.ctl.io/chi/${CHI_VERSION}/js/ce/ux-chi-ce/ux-chi-ce.esm.js`,
+        type: 'module'
       },
       {
         src: `https://assets.ctl.io/chi/${CHI_VERSION}/js/ce/ux-chi-ce/ux-chi-ce.js`,
