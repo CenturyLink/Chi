@@ -7,8 +7,8 @@
     .-p--0.-d--flex.-flex--column(slot="example" v-for="size in sizes")
       p.-text--bold.-pl--1.-mb--0 -{{size}}
       .chi-button-group.-m--1
-        button(class=`chi-button -${size}`) Button
-        button(class=`chi-button -${size} -icon`, aria-label="Button action")
+        button(:class="`chi-button -${size}`") Button
+        button(:class="`chi-button -${size} -icon`", aria-label="Button action")
           .chi-button__content
             i.chi-icon.icon-atom(aria-hidden="true")
     <pre class="language-html" slot="code-webcomponent">
