@@ -2,6 +2,10 @@
 export const GENERAL_POSITIONS = ['left', 'top', 'right', 'bottom'] as const;
 //#endregion
 
+//#region Checkbox
+export type CheckboxState = boolean | 'indeterminate';
+//#endregion
+
 //#region Data Table
 export const DATA_TABLE_SIZE = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type DataTableSizes = typeof DATA_TABLE_SIZE[number];
@@ -47,7 +51,7 @@ export interface DataTableRow {
   id: string;
   rowId: string;
   rowNumber: string;
-  selected?: boolean;
+  selected?: boolean | 'indeterminate';
   selectionDisabled?: boolean;
 }
 export interface DataTableData {
@@ -62,6 +66,7 @@ export interface DataTableData {
       key?: boolean;
       bold?: boolean;
       description?: string | DataTableColumnDescription;
+      isPrintDisabled?: boolean;
     };
   };
   body: DataTableRow[];
