@@ -1,9 +1,5 @@
 <template lang="pug">
   <ComponentExample titleSize="h4" title="Value option" id="value-option" :tabs="exampleTabs">
-    p.-text(slot="example-description")
-      | Use the <code>disabled</code> boolean attribute to prevent users from interacting with an input.
-      | Disabled inputs are not submitted with the form and can not receive any browsing events such as mouse clicks or focus.
-      | <strong>Note:</strong> The required attribute can not be used on inputs with a disabled attribute specified.
     .chi-form__item(style="max-width: 14rem;" slot="example")
       chi-label(for='unique-id-va1') Time
       chi-time-picker#unique-id-va1(value='09:00')
