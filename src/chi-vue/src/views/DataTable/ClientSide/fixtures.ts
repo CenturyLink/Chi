@@ -31,6 +31,7 @@ export const exampleConfig = {
     direction: 'ascending',
   },
   truncation: true,
+  treeSelection: true,
 };
 
 const exampleColumns = [

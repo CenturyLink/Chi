@@ -59,7 +59,9 @@ export default class DataTable extends Vue {
   selectedRows: string[] = [];
   slicedData: DataTableRow[] = [];
   mode = this.$props.config.mode || defaultConfig.mode;
-  treeSelection = this.$props.config.treeSelection || defaultConfig.treeSelection;
+  treeSelection = Object.prototype.hasOwnProperty.call(this.$props.config, 'treeSelection')
+    ? this.$props.config.treeSelection
+    : defaultConfig.treeSelection;
   printMode = this.$props.config.printMode || defaultConfig.printMode;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
@@ -429,12 +431,14 @@ export default class DataTable extends Vue {
           selectedRows.push(childRow.rowId);
         } else if (action === 'deselect') {
           const indexOfRowIdIndex = selectedRows.indexOf(childRow.rowId);
+
           if (indexOfRowIdIndex !== -1) {
             selectedRows.splice(indexOfRowIdIndex, 1);
           }
         }
         if (childRow.nestedContent && childRow.nestedContent.table && childRow.nestedContent.table.data) {
           const childRows = childRow.nestedContent.table.data;
+
           childRows.forEach((childRow: DataTableRow) => {
             toggleChildRow(childRow);
           });
@@ -468,6 +472,16 @@ export default class DataTable extends Vue {
 
       if (parentRow?.nestedContent.table.data.every((row: DataTableRow) => this.selectedRows.includes(row.rowId))) {
         this.selectedRows.push(parentRow.rowId);
+
+        if (rowData.level === 2) {
+          const rootLevelRow = this._locateParentRow(parentRow);
+
+          if (
+            rootLevelRow?.nestedContent.table.data.every((row: DataTableRow) => this.selectedRows.includes(row.rowId))
+          ) {
+            this.selectedRows.push(rootLevelRow.rowId);
+          }
+        }
       }
       this._toggleChildRowSelection(rowData, 'select');
     }
@@ -495,6 +509,22 @@ export default class DataTable extends Vue {
         const indexOfParentRowId = this.selectedRows.indexOf(parentRow.rowId);
 
         await this.selectedRows.splice(indexOfParentRowId, 1);
+
+        if (rowData.level === 2) {
+          const rootLevelRow = this._locateParentRow(parentRow);
+
+          if (rootLevelRow) {
+            const indexOfParentRootLevelRowId = this.selectedRows.indexOf(rootLevelRow.rowId);
+
+            if (
+              !rootLevelRow?.nestedContent.table.data.every((row: DataTableRow) =>
+                this.selectedRows.includes(row.rowId)
+              )
+            ) {
+              await this.selectedRows.splice(indexOfParentRootLevelRowId, 1);
+            }
+          }
+        }
       }
       this._toggleChildRowSelection(rowData, 'deselect');
     }
@@ -530,6 +560,9 @@ export default class DataTable extends Vue {
       data.forEach((row: DataTableRow) => {
         if (!this.selectedRows.includes(row.rowId) && !row.selectionDisabled) {
           this.selectedRows.push(row.rowId);
+          if (this.treeSelection) {
+            this._toggleChildRowSelection(row, 'select');
+          }
         }
       });
 
@@ -539,6 +572,9 @@ export default class DataTable extends Vue {
         const rowIndex = this.selectedRows.indexOf(row.rowId);
 
         this.selectedRows.splice(rowIndex, 1);
+        if (this.treeSelection) {
+          this._toggleChildRowSelection(row, 'deselect');
+        }
       });
       await this._handleBulkActionsDeselection();
       this.$emit(DATA_TABLE_EVENTS.DESELECTED_ALL, this.slicedData);
