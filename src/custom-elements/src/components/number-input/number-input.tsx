@@ -1,4 +1,12 @@
-import { Component, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Prop,
+  State,
+  h
+} from '@stencil/core';
 import { CallbackQueue } from '../../utils/CallbackQueue';
 
 @Component({
@@ -20,7 +28,7 @@ export class NumberInput {
   /**
    * used to hold the value of the number input
    */
-  @Prop({ mutable: true, reflect: true }) value = '0';
+  @Prop({ mutable: true, reflect: true }) value: string;
 
   /**
    * used to set a step to indicate the expected granularity
@@ -74,7 +82,24 @@ export class NumberInput {
 
   @Element() el: HTMLElement;
 
-  @Event() chiChange: EventEmitter<string>;
+  /**
+   * Triggered when an alteration to the element's value is committed by the user
+   */
+  @Event({ eventName: 'chiChange' }) chiChange: EventEmitter<string>;
+
+  /**
+   * Triggered when the user changed the element's value but did not commit the change yet
+   */
+  @Event({ eventName: 'chiInput' }) chiInput: EventEmitter<string>;
+
+  /**
+   * Triggered when the element's value committed by the user is an invalid number
+   */
+  @Event({ eventName: 'chiNumberInvalid' }) chiNumberInvalid: EventEmitter<
+    void
+  >;
+  
+  _numberInput!: HTMLInputElement;
 
   connectedCallback() {
     this.initialValue = this.value;
@@ -84,67 +109,34 @@ export class NumberInput {
     CallbackQueue.queueProcess(this._didUpdateCallBackOnceQueue);
   }
 
-  static isNumeric(n: string | number) {
-    return (
-      (typeof n === 'number' || typeof n === 'string') &&
-      !isNaN(+n - parseFloat(`${n}`))
-    );
-  }
-
-  _setNewValue(newValue: string) {
-    if (!this.preventValueMutation) {
-      this.value = newValue;
-      this._didUpdateCallBackOnceQueue.push(() => {
-        this.chiChange.emit(newValue);
-      });
-    } else {
-      this.chiChange.emit(newValue);
-    }
-  }
-
   handleChange(ev: Event) {
     ev.stopPropagation();
 
-    let newValue = !!ev.target
-      ? (ev.target as HTMLInputElement).value.toString()
-      : null;
-    newValue = NumberInput.isNumeric(newValue) ? newValue : null;
-
-    if (newValue !== null) {
-      let steppedValue =
-        Math.round(10000 * ((+newValue - this.initialValue) / this.step)) /
-        10000;
-      const steppedMax =
-        Math.round(
-          10000 * Math.floor((+this.max - this.initialValue) / this.step)
-        ) / 10000;
-      const steppedMin =
-        Math.round(
-          10000 * Math.ceil((+this.min - this.initialValue) / this.step)
-        ) / 10000;
-
-      steppedValue = Math.max(Math.min(steppedValue, steppedMax), steppedMin);
-      newValue = (
-        Math.round(steppedValue) * this.step +
-        +this.initialValue
-      ).toString();
-    }
-
-    if (newValue !== this.value) {
-      this._setNewValue(newValue);
+    if (!this.preventValueMutation) {
+      this._didUpdateCallBackOnceQueue.push(() => {
+        this.chiChange.emit(this.value);
+      });
     } else {
-      if ((ev.target as HTMLInputElement).value.toString() !== this.value) {
-        (ev.target as HTMLInputElement).value = this.value;
-      }
+      this.chiChange.emit(this.value);
     }
   }
 
-  private increment() {
-    const step = this.step;
-    const newValue = Math.round((+this.value + step) * 10000) / 10000;
+  handleInput(ev: Event) {
+    const input = ev.target as HTMLInputElement;
 
-    if (newValue <= this.max) {
-      this.value = newValue.toString();
+    ev.stopPropagation();
+
+    this.value = input.value;
+    this.chiInput.emit(this.value);
+
+    if (!input.validity.valid) this.chiNumberInvalid.emit();
+  }
+
+  private increment() {
+    this._numberInput.stepUp();
+    this.value = this._numberInput.value;
+
+    if (this._numberInput.valueAsNumber <= this.max) {
       this._didUpdateCallBackOnceQueue.push(() => {
         this.chiChange.emit(this.value);
       });
@@ -152,11 +144,10 @@ export class NumberInput {
   }
 
   private decrement() {
-    const step = this.step;
-    const newValue = Math.round((+this.value - step) * 10000) / 10000;
+    this._numberInput.stepDown();
+    this.value = this._numberInput.value;
 
-    if (newValue >= this.min) {
-      this.value = newValue.toString();
+    if (this._numberInput.valueAsNumber >= this.min) {
       this._didUpdateCallBackOnceQueue.push(() => {
         this.chiChange.emit(this.value);
       });
@@ -167,8 +158,10 @@ export class NumberInput {
     const input = (
       <input
         type="number"
+        ref={(el) => this._numberInput = el as HTMLInputElement}
         class={`chi-input ${this.inputstyle ? `-${this.inputstyle}` : ''} ${
-          this.state ? `-${this.state}` : ''}`}
+          this.state ? `-${this.state}` : ''
+        }`}
         disabled={this.disabled}
         required={this.required}
         step={this.step}
@@ -176,22 +169,23 @@ export class NumberInput {
         min={this.min}
         value={this.value}
         onChange={ev => this.handleChange(ev)}
+        onInput={ev => this.handleInput(ev)}
         id={this.el.id ? `${this.el.id}-control` : null}
       />
     );
 
     const base = (
-      <div
-        class={`chi-number-input ${this.size ? `-${this.size}` : ''}`}
-      >
+      <div class={`chi-number-input ${this.size ? `-${this.size}` : ''}`}>
         {input}
         <button
-          disabled={+this.value - this.step < this.min}
+          disabled={+this.value <= this.min}
           onClick={() => this.decrement()}
           aria-label="Decrease"
         ></button>
         <button
-          disabled={+this.value + this.step > this.max}
+          disabled={
+            +this.value + this.step > this.max || +this.value >= this.max
+          }
           onClick={() => this.increment()}
           aria-label="Increase"
         ></button>
@@ -205,7 +199,7 @@ export class NumberInput {
         {input}
         <button
           class="chi-button -icon"
-          disabled={+this.value - this.step < this.min}
+          disabled={+this.value <= this.min}
           onClick={() => this.decrement()}
           aria-label="Decrease"
         >
@@ -215,7 +209,9 @@ export class NumberInput {
         </button>
         <button
           class="chi-button -icon"
-          disabled={+this.value + this.step > this.max}
+          disabled={
+            +this.value + this.step > this.max || +this.value >= this.max
+          }
           onClick={() => this.increment()}
           aria-label="Increase"
         >
