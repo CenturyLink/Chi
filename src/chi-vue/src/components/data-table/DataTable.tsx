@@ -42,7 +42,7 @@ import { ICON_CLASSES } from '@/constants/icons';
 import { alignmentUtilityClasses, expansionIcons } from './constants/constants';
 import { NormalizedScopedSlot } from 'vue/types/vnode';
 import Checkbox from '../checkbox/Checkbox';
-import { printDataTable } from './DataTableUtils';
+import { printElement } from '../../utils/utils';
 
 Vue.config.ignoredElements = ['chi-popover'];
 
@@ -1424,7 +1424,7 @@ export default class DataTable extends Vue {
   }
 
   print(title: string) {
-    printDataTable((this.$refs.dataTablePrint as HTMLElement).innerHTML, title);
+    printElement((this.$refs.dataTablePrint as HTMLElement).innerHTML, title);
   }
 
   render() {
