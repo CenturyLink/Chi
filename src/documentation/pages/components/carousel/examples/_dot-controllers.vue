@@ -42,25 +42,25 @@ import { Component, Vue } from 'vue-property-decorator';
     </div>
     <div class="chi-carousel__item -p--1">
       <!-- Custom item 2 -->
-    <</div>
+    </div>
     <div class="chi-carousel__item -p--1">
       <!-- Custom item 3 -->
-    <</div>
+    </div>
     <div class="chi-carousel__item -p--1">
       <!-- Custom item 4 -->
-    <</div>
+    </div>
     <div class="chi-carousel__item -p--1">
       <!-- Custom item 5 -->
-    <</div>
+    </div>
     <div class="chi-carousel__item -p--1">
       <!-- Custom item 6 -->
-    <</div>
+    </div>
     <div class="chi-carousel__item -p--1">
       <!-- Custom item 7 -->
-    <</div>
+    </div>
     <div class="chi-carousel__item -p--1">
       <!-- Custom item 8 -->
-    <</div>
+    </div>
   </div>
 </chi-carousel>`,
         htmlblueprint: ``

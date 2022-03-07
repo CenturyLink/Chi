@@ -1,9 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    chi-carousel(slot="example")
+  <ComponentExample title="Pagination" id="pagination" :tabs="exampleTabs">
+    p.-text(slot="example-description")
+      | Use the attribute <code>pagination</code> to render carousel with pagination.
+    chi-carousel(pagination single slot="example")
       .-d--flex(slot="items")
-        .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;" v-for="item in [1, 2, 3, 4, 5, 6, 7, 8]" :key="item")
-          .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center 
+        .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;" v-for="item in [1,2,3,4,5,6,7,8]" :key="item")
+          .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center
             | {{ item }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -24,16 +26,16 @@ import { Component, Vue } from 'vue-property-decorator';
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web component'
         },
         {
           disabled: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
+          label: 'HTML blueprint'
+        }
       ],
       codeSnippets: {
-        webcomponent: `<chi-carousel>
+        webcomponent: `<chi-carousel pagination single>
   <div class="-d--flex" slot="items">
     <div class="chi-carousel__item -p--1">
       <!-- Custom item 1 -->
@@ -61,10 +63,10 @@ import { Component, Vue } from 'vue-property-decorator';
     </div>
   </div>
 </chi-carousel>`,
-        htmlblueprint: ``,
+        htmlblueprint: ``
       }
-    }
+    };
   }
 })
-export default class Base extends Vue {}
+export default class Pagination extends Vue {}
 </script>
