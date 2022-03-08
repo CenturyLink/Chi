@@ -422,7 +422,7 @@ export default class DataTable extends Vue {
   }
 
   _toggleChildRowSelection(rowData: DataTableRow, action: 'select' | 'deselect') {
-    if (rowData.nestedContent && rowData.nestedContent.table && rowData.nestedContent.table.data) {
+    if (rowData.nestedContent?.table?.data) {
       const childRows = rowData.nestedContent.table.data;
       const selectedRows = this.selectedRows;
 
@@ -436,7 +436,7 @@ export default class DataTable extends Vue {
             selectedRows.splice(indexOfRowIdIndex, 1);
           }
         }
-        if (childRow.nestedContent && childRow.nestedContent.table && childRow.nestedContent.table.data) {
+        if (childRow.nestedContent?.table?.data) {
           const childRows = childRow.nestedContent.table.data;
 
           childRows.forEach((childRow: DataTableRow) => {
@@ -499,16 +499,18 @@ export default class DataTable extends Vue {
     if (this.selectedRows.includes(rowData.rowId)) {
       const indexOfRowId = this.selectedRows.indexOf(rowData.rowId);
 
-      await this.selectedRows.splice(indexOfRowId, 1);
+      this.selectedRows.splice(indexOfRowId, 1);
     }
 
     if (this.treeSelection) {
       const parentRow = this._locateParentRow(rowData);
 
       if (parentRow) {
-        const indexOfParentRowId = this.selectedRows.indexOf(parentRow.rowId);
+        const indexOfSelectedParent = this.selectedRows.indexOf(parentRow.rowId);
 
-        await this.selectedRows.splice(indexOfParentRowId, 1);
+        if (indexOfSelectedParent !== -1) {
+          this.selectedRows.splice(indexOfSelectedParent, 1);
+        }
 
         if (rowData.level === 2) {
           const rootLevelRow = this._locateParentRow(parentRow);
@@ -517,11 +519,12 @@ export default class DataTable extends Vue {
             const indexOfParentRootLevelRowId = this.selectedRows.indexOf(rootLevelRow.rowId);
 
             if (
+              indexOfParentRootLevelRowId !== -1 &&
               !rootLevelRow?.nestedContent.table.data.every((row: DataTableRow) =>
                 this.selectedRows.includes(row.rowId)
               )
             ) {
-              await this.selectedRows.splice(indexOfParentRootLevelRowId, 1);
+              this.selectedRows.splice(indexOfParentRootLevelRowId, 1);
             }
           }
         }
@@ -601,8 +604,7 @@ export default class DataTable extends Vue {
     if (selectAll) {
       const isOnVisiblePage = (selectedRowId: string) => {
         return (
-          this._mapRows[selectedRowId] &&
-          this._mapRows[selectedRowId].rootLevelRowId &&
+          this._mapRows[selectedRowId]?.rootLevelRowId &&
           this.slicedData.find(
             (visibleRow: DataTableRow) => visibleRow.rowId === this._mapRows[selectedRowId].rootLevelRowId
           )
@@ -617,13 +619,13 @@ export default class DataTable extends Vue {
 
       return false;
     } else {
-      const isRowSelected = rowData && rowData.rowId && this.selectedRows.includes(rowData.rowId);
+      const isRowSelected = rowData?.rowId && this.selectedRows.includes(rowData.rowId);
 
       if (isRowSelected) {
         return true;
       }
 
-      if (rowData && rowData.nestedContent && rowData.nestedContent.table && rowData.nestedContent.table.data) {
+      if (rowData?.nestedContent?.table?.data) {
         const childRows = rowData.nestedContent.table.data;
 
         if (childRows.some(this._isRowSelected)) {
@@ -1045,14 +1047,13 @@ export default class DataTable extends Vue {
       row: DataTableRow,
       rowNumber: number,
       nestingLevel = 0,
-      parentRowN: string | null,
-      parentRowId?: string | null,
-      rootLevelRowId?: string | null
+      parentRowN: string | null = null,
+      parentRowId: string | null = null,
+      rootLevelRowId: string | null = null
     ) => {
       const rowId = this._rowId(row.id || rowNumber);
       const rowN = parentRowN !== null ? `${parentRowN}-${rowNumber}` : String(rowNumber);
       const rootLevelId = nestingLevel === 0 ? rowId : rootLevelRowId;
-
       const rowObject = {
         ...row,
         rowNumber: rowN,
@@ -1064,8 +1065,8 @@ export default class DataTable extends Vue {
       let subrowNumber = 0;
 
       this._mapRows[rowId as string] = {
-        parentRowId: parentRowId || null,
-        rootLevelRowId: rootLevelId || null,
+        parentRowId: parentRowId,
+        rootLevelRowId: rootLevelId,
         level: nestingLevel,
       };
 
@@ -1104,7 +1105,7 @@ export default class DataTable extends Vue {
       this.$props.config.reserveExpansionSlot ||
       !!this.data.body.find((row: { nestedContent: any }) => row.nestedContent);
     this.data.body.forEach(row => {
-      this._serializedDataBody.push(serializeRow(row, rowNumber, 0, null, null, null));
+      this._serializedDataBody.push(serializeRow(row, rowNumber));
       rowNumber++;
     });
     this._printDisabledColsIndexes = [];
