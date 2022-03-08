@@ -46,7 +46,7 @@ export default class Checkbox extends Vue {
 
   render() {
     return (
-      <div class={CHECKBOX_CLASSES.checkbox}>
+      <div class={CHECKBOX_CLASSES.checkbox} key={this.id}>
         <input
           v-model={this.state}
           class={`${CHECKBOX_CLASSES.INPUT} ${this.state === 'indeterminate' && CHECKBOX_CLASSES.INDETERMINATE}`}
