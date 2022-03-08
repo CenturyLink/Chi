@@ -7,8 +7,8 @@
         i.chi-icon.icon-chevron-left.-sm--2(aria-hidden="true")
       button.exampleNextButton(slot="next")
         i.chi-icon.icon-chevron-right.-sm--2(aria-hidden="true")
-        .chi-carousel__item.-text--xl.-d--flex.-align-items--center.-justify-content--center.-bg--grey-10(style="height: 20rem; box-sizing: border-box;", slot="items" v-for="item in [1,2,3,4,5,6,7,8]" :key="item")
-          | {{ item }}
+      .chi-carousel__item.-text--xl.-d--flex.-align-items--center.-justify-content--center.-bg--grey-10(style="height: 20rem; box-sizing: border-box;", slot="items" v-for="item in [1,2,3,4,5,6,7,8]" :key="item")
+        | {{ item }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -82,22 +82,22 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class CustomControllers extends Vue {}
 </script>
 
-<style scoped>
-  button.examplePreviousButton,
-  button.exampleNextButton {
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    display: flex;
-    justify-content: center;
-    opacity: 0.5;
-    height: 100%;
-    width: 100%;
-  }
+<style>
+button.examplePreviousButton,
+button.exampleNextButton {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
+}
 
-  button.examplePreviousButton:hover,
-  button.exampleNextButton:hover {
-    cursor: pointer;
-    opacity: 1;
-  }
+button.examplePreviousButton:hover,
+button.exampleNextButton:hover {
+  cursor: pointer;
+  opacity: 1;
+}
 </style>
