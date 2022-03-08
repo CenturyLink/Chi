@@ -1384,7 +1384,7 @@ describe('Data Table', () => {
 
       cy.get('@selectables')
         .first()
-        .dblclick();
+        .click();
       cy.get('@selectables')
         .eq(1)
         .click();
