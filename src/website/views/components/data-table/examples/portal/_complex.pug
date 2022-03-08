@@ -10,8 +10,6 @@ h3 Complex
             :config="config",
             :data="table",
           )
-            template(#statusdesc='payload')
-              span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.statusInfo }}
             template(#status="payload")
               i(:class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true")
               span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.status }}
@@ -157,16 +155,7 @@ h3 Complex
               table: {
                 head: {
                   name: { label: 'Name', sortable: true, sortBy: 'name', sortDataType: 'string', key: true, bold: true },
-                  status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: { 
-                    title: 'Status', 
-                    template: 'statusdesc', 
-                    payload: { 
-                      overdue: { status: "Overdue", icon: "circle-alert", color: "danger" }, 
-                      due: { status: "Due", icon: 'warning', color: 'warning' },
-                      statusInfo: 'Helpful information goes here.'
-                      } 
-                    }
-                  },
+                  status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: 'Helpful information goes here.' },
                   lastLogin: { label: 'Last Login', key: true },
                   actions: { label: 'Actions', align: 'right', isPrintDisabled: true },
                 },
@@ -1127,14 +1116,7 @@ script.
       table: {
         head: {
           name: { label: 'Name', sortable: true, sortBy: 'name', sortDataType: 'string', key: true, bold: true },
-          status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: { template: 'statusdesc', 
-            payload: { 
-              overdue: { status: "Overdue", icon: "circle-alert", color: "danger" }, 
-              due: { status: "Due", icon: 'warning', color: 'warning' },
-              statusInfo: 'Helpful information goes here.'
-              } 
-            }
-          },
+          status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: 'Helpful information goes here.' },
           lastLogin: { label: 'Last Login', key: true },
           actions: { label: 'Actions', align: 'right', isPrintDisabled: true },
         },
