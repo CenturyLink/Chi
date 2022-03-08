@@ -23,4 +23,5 @@ export const defaultConfig: DataTableConfig = {
   },
   selectable: false,
   printMode: 'full',
+  treeSelection: true,
 };
