@@ -6,10 +6,10 @@
     <Inverse />
     h3 Contextual
     <SpinnerButtonsPortal v-if="$store.state.themes.theme === 'portal'" />
-    <SpinnerButtonsLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
+    <SpinnerButtonsLumenCenturyLink v-else />
     <SpinnerTexts />
     <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
-    <SizesPortal v-if="$store.state.themes.theme === 'portal'" />
+    <SizesPortal v-else />
     h3 Colors
     p.-text
       | By default, spinners are rendered in the same color as the text color defined on their parent container.

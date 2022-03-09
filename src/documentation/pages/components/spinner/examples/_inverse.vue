@@ -3,14 +3,14 @@
     div(style="position:relative;height:25rem;" slot="example")
       chi-spinner(color='primary', backdrop='inverse')
     <Wrapper slot="code-webcomponent">
-      .p--text.chi-tab__description
+      .chi-tab__description
         | Set the <code>backdrop</code> value to <code>inverse</code> to render spinners on light backgrounds.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
     </Wrapper>
     <Wrapper slot="code-htmlblueprint">
-      .p--text.chi-tab__description
+      .chi-tab__description
         | Apply the class <code>-inverse</code> to render spinners on light backgrounds.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>

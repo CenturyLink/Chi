@@ -5,7 +5,7 @@
         chi-spinner(:size="size", color='primary' class='-m--1')
         p.-text.-text--center {{size}}
     <Wrapper slot="code-webcomponent">
-      .p--text.chi-tab__description
+      .chi-tab__description
         | By default, spinners are rendered at 16x16px (<code>sm</code>).
         | Set <code>size</code> attribute to render spinners larger or smaller: <code>xs</code>,
         | <code>sm</code>, <code>sm--2</code>, <code>sm--3</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code>.
@@ -14,7 +14,7 @@
       </pre>
     </Wrapper>
     <Wrapper slot="code-htmlblueprint">
-      .p--text.chi-tab__description
+      .chi-tab__description
         | By default, spinners render at 16x16px (<code>-sm</code>).
         | Apply size classes to render spinners larger or smaller: <code>-xs</code>,
         | <code>-sm</code>, <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.

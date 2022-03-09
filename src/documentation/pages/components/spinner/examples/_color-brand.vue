@@ -10,14 +10,14 @@
         div.-p--2.-text--center(v-for="color in ['secondary', 'light']")
           chi-spinner(:color="color", class='-m--1', size='md')
     <Wrapper slot="code-webcomponent">
-      .p--text.chi-tab__description
+      .chi-tab__description
         | Use the <code>color</code> attribute to change a spinners color.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
       </pre>
     </Wrapper>
     <Wrapper slot="code-htmlblueprint">
-      .p--text.chi-tab__description
+      .chi-tab__description
         | Use <a href="../../utilities/color">icon color utilities</a> such as <code>-icon--primary</code>
         | and <code>-icon--secondary</code> to change the color of any spinner.
       <pre class="language-html">

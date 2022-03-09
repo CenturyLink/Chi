@@ -3,7 +3,7 @@
     div(style="position:relative;height:25rem;" slot="example")
       chi-spinner(color='light', backdrop)
     <Wrapper slot="code-webcomponent">
-      .p--text.chi-tab__description
+      .chi-tab__description
         | To render a spinner, use the tag <code>&lt;chi-spinner&gt;</code>.
         br
         | An optional backdrop can be added to focus the user's attention on a spinner. To set a backdrop, use the <code>backdrop</code> attribute.
@@ -12,7 +12,7 @@
       </pre>
     </Wrapper>
     <Wrapper slot="code-htmlblueprint">
-      .p--text.chi-tab__description
+      .chi-tab__description
         | To render a spinner, use the class <code>chi-spinner</code>.
         br
         | Wrap spinners in <code>chi-backdrop</code> to overlay content similar to a modal, and add <code>-center</code> class to position it in the middle of the page.

@@ -1,6 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Spinners in Text Inputs" titleSize="h4" id="spinner-texts" :tabs="exampleTabs">
-    div(slot="example")
+    <Wrapper slot="example">
       .chi-form__item.-mb--2(style="max-width:20rem")
         chi-label(for="spinner-input-01") Label
         chi-text-input(id="spinner-input-01" spinner)
@@ -10,8 +10,9 @@
       .chi-form__item.-mb--2(style="max-width:20rem")
         chi-label(for="spinner-input-03") Label
         chi-text-input(id="spinner-input-03" spinner size="lg")
+    </Wrapper>
     <Wrapper slot="code-webcomponent">
-      .p--text.chi-tab__description
+      .chi-tab__description
         | Use the <code>spinner</code> attribute to render a spinner inside a text input. This lets users know when information is saving or loading.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
