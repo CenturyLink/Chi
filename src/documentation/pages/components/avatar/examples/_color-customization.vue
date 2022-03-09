@@ -7,7 +7,7 @@
       | <code>-teal</code>, <code>-green</code>, <code>-yellow</code>, <code>-orange</code>,
       | <code>-secondary</code>, <code>-primary</code>
     .-p--0(:slot="$data.menuTabs[0].id")
-      .chi-grid.-align-items--extends
+      .chi-grid.-align-items--end
         template(v-for="color in colors" v-if="color !== 'secondary'")
           .chi-col.-w--2.-text--center
             div(:class="`chi-avatar -${color}`") AA
