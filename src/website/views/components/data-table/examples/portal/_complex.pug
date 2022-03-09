@@ -6,10 +6,12 @@ h3 Complex
         .chi-card__title Title
       .chi-card__content.-p--0
         #complex
+          chi-button(v-on:click="printTable" variant="flat" type="icon" aria-label="Print")
+            chi-icon(icon="print")
           chi-vue-data-table(
             :config="config",
             :data="table",
-          )
+            ref="dataTableComplex")
             template(#statusdesc='payload')
               i(:class="`chi-icon icon-${payload.due.icon} -icon--${payload.due.color}`" aria-hidden="true")
               span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.due.status }}
@@ -1092,6 +1094,11 @@ script.
       chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
       ChiPopoverExample: namePopover,
       ChiDropdownExample: actionsDropdown,
+    },
+    methods: {
+      printTable() {
+        this.$refs.dataTableComplex.print('Data table - Complex')
+      }
     },
     data: {
       config: {
