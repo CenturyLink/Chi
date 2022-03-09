@@ -72,6 +72,7 @@ export default class DataTable extends Vue {
   _sortedData?: DataTableRow[] = [];
   _sortConfig?: DataTableSortConfig;
   _serializedDataBody: DataTableRow[] = [];
+  _showSelectedOnlyRowsData: DataTableRow[] = [];
   _toolbarComponent?: DataTableToolbar;
   _bulkActionsComponent?: DataTableBulkActions;
   _paginationListenersAdded = false;
@@ -1188,6 +1189,7 @@ export default class DataTable extends Vue {
   }
 
   async _showAllRows() {
+    this._showSelectedOnlyRowsData = [];
     this.slicedData = this.sliceData(await this._resolveRowsToRender());
     this.activePage = 1;
   }
@@ -1216,6 +1218,7 @@ export default class DataTable extends Vue {
       }
     });
 
+    this._showSelectedOnlyRowsData = rowsToShow;
     this.slicedData = this.sliceData(rowsToShow);
     this.activePage = 1;
   }
@@ -1271,7 +1274,10 @@ export default class DataTable extends Vue {
   }
 
   sortData(column: string, direction: string, sortBy: string | undefined) {
-    const copiedData = [...this._serializedDataBody];
+    const copiedData =
+      this._showSelectedOnlyRowsData && this._showSelectedOnlyRowsData.length > 0
+        ? [...this._showSelectedOnlyRowsData]
+        : [...this._serializedDataBody];
     const columnData = this.data.head[column];
     const ascending: boolean = direction === 'ascending';
 
