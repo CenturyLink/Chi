@@ -258,47 +258,51 @@ import DataTableViews from '../../../components/data-table-views/DataTableViews'
   },
 })
 export default class DataTableView extends Vue {
-  mounted() {
-    // This example is present to demonstrate asynchronous updating of the data
-    const MOCK_API_RESPONSE_DELAY = 5000;
+  isTestAsynchronousUpdateEnabled = false; // Set to true to test asyncronous update of data
 
-    setTimeout(() => {
-      const newData = [
-        { template: 'ticketId', payload: { id: 'NTM000021063' } },
-        {
-          template: 'icon',
-          payload: { icon: 'circle-check', color: 'success' },
-        },
-        { template: 'status', payload: { status: 'active' } },
-        'Colocation A',
-        0,
-        { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
-        'SVUJW034781A',
-        {
-          template: 'actions',
-          payload: { id: 'NTM000021063' },
-          align: 'right',
-        },
-      ];
-      this.$data.table = {
-        ...this.$data.table,
-        body: this.$data.table.body.map((row: DataTableRow, index: number) =>
-          index === 0
-            ? {
-                ...row,
-                nestedContent: {
-                  value: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  mounted() {
+    if (this.isTestAsynchronousUpdateEnabled) {
+      // This example is present to demonstrate asynchronous updating of the data
+      const MOCK_API_RESPONSE_DELAY = 5000;
+
+      setTimeout(() => {
+        const newData = [
+          { template: 'ticketId', payload: { id: 'NTM000021063' } },
+          {
+            template: 'icon',
+            payload: { icon: 'circle-check', color: 'success' },
+          },
+          { template: 'status', payload: { status: 'active' } },
+          'Colocation A',
+          0,
+          { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+          'SVUJW034781A',
+          {
+            template: 'actions',
+            payload: { id: 'NTM000021063' },
+            align: 'right',
+          },
+        ];
+        this.$data.table = {
+          ...this.$data.table,
+          body: this.$data.table.body.map((row: DataTableRow, index: number) =>
+            index === 0
+              ? {
+                  ...row,
+                  nestedContent: {
+                    value: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
               Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."`,
-                },
-                data: newData,
-              }
-            : row
-        ),
-      };
-    }, MOCK_API_RESPONSE_DELAY);
+                  },
+                  data: newData,
+                }
+              : row
+          ),
+        };
+      }, MOCK_API_RESPONSE_DELAY);
+    }
   }
 }
 </script>
