@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Uppercase" id="uppercase-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h2" title="Uppercase" id="uppercase-lumen-centurylink" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Uppercase buttons style button text with <code>text-transform: uppercase;</code>
       | to further emphasize button text labels and distinguish them from surrounding content.

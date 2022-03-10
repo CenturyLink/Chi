@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Icon buttons" id="icon-button-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h2" title="Icon buttons" id="icon-button-lumen-centurylink" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | For interfaces with limited space, an Icon button can
       | be used for common actions such as editing, deleting, closing, etc.

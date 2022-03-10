@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Examples" id="examples-portal" :tabs="exampleTabs">
+  <ComponentExample titleSize="h2" title="Examples" id="examples-portal" :tabs="exampleTabs">
     p.-text(slot="example-description" class="-mb--3 -text")
       | Use the primary button example for high emphasis actions, secondary button example for medium
       | emphasis actions, and tertiary button example for low emphasis actions.

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Danger" id="danger-portal" :tabs="exampleTabs">
+  <ComponentExample titleSize="h2" title="Danger" id="danger-portal" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | For special cases, such as styling a destructive action in an application (e.g. Delete Account),
       | a Danger button may be used.

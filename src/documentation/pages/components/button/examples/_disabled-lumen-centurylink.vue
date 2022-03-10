@@ -1,12 +1,9 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h2" title="Disabled" id="disabled-lumen-centurylink" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Make buttons appear inactive by adding the <code>disabled</code> boolean attribute
       | or <code>-disabled</code> class.
-    .chi-form__item(slot="example")
-      .-d--flex
-        .-pr--2
-          chi-button(color='primary' disabled) Button
+    chi-button(color='primary' slot="example" disabled) Button
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

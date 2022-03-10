@@ -1,6 +1,6 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Close icon buttons" id="close-icon-portal" :tabs="exampleTabs">
-    chi-button(slot="example" type='close')
+  <ComponentExample titleSize="h3" title="Close icon button" id="close-icon" :tabs="exampleTabs">
+    chi-button(type='close' slot="example")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -38,5 +38,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   },
 })
-export default class CloseIconPortal extends Vue {}
+export default class CloseIcon extends Vue {}
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Floating icon buttons" id="floating-icon-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h3" title="Floating icon buttons" id="floating-icon-lumen-centurylink" :tabs="exampleTabs">
     .-d--flex(slot="example")
       div.-pr--2
         chi-button(color='primary' type='float' size='xl' alternative-text='Chat with Support' ref='chat' data-tooltip='Chat with Support')

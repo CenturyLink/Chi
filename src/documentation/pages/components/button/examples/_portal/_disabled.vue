@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="disabled-portal" :tabs="exampleTabs">
+  <ComponentExample titleSize="h2" title="Disabled" id="disabled-portal" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Make buttons appear inactive by adding the <code>disabled</code> boolean attribute
       | or <code>-disabled</code> class.

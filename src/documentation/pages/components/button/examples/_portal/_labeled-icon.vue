@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Labeled icon buttons" id="labeled-portal" :tabs="exampleTabs">
+  <ComponentExample titleSize="h3" title="Labeled icon buttons" id="labeled-portal" :tabs="exampleTabs">
     .-d--flex(slot="example")
       .-pr--2
         chi-button(size='xs')

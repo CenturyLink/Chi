@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Labeled icon buttons" id="labeled-icon-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h3" title="Labeled icon buttons" id="labeled-icon-lumen-centurylink" :tabs="exampleTabs">
     <Wrapper slot="example">
       chi-button
         chi-icon(icon='atom')

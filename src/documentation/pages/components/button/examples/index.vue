@@ -15,7 +15,7 @@
         <IconButtonLumenCenturyLink />
         <LabeledIconLumenCenturyLink />
         <FloatingIconLumenCenturyLink />
-        <CloseIconLumenCenturyLink />
+        <CloseIcon />
         <DangerLumenCenturyLink />
         <SizesLumenCenturyLink />
     div(v-else)
@@ -25,7 +25,7 @@
       <IconButtonPortal />
       <LabeledIconPortal />
       <FloatingIconPortal />
-      <CloseIconPortal />
+      <CloseIcon />
       <DangerPortal />
       <SizesPortal />
 </template>
@@ -42,7 +42,7 @@ import FluidLumenCenturyLink from './_fluid-lumen-centurylink.vue';
 import IconButtonLumenCenturyLink from './_icon-buttons-lumen-centurylink.vue';
 import LabeledIconLumenCenturyLink from './_labelled-icon-lumen-centurylink.vue';
 import FloatingIconLumenCenturyLink from './_floating-icon-lumen-centurylink.vue';
-import CloseIconLumenCenturyLink from './_close-icon-lumen-centurylink.vue';
+import CloseIcon from './_close-icon.vue';
 import DangerLumenCenturyLink from './_danger-lumen-centurylink.vue';
 import ExamplesPortal from './_portal/_example.vue';
 import DisabledPortal from './_portal/_disabled.vue';
@@ -50,7 +50,6 @@ import FluidPortal from './_portal/_fluid.vue';
 import IconButtonPortal from './_portal/_icon-button.vue';
 import LabeledIconPortal from './_portal/_labeled-icon.vue';
 import FloatingIconPortal from './_portal/_floating-icon.vue';
-import CloseIconPortal from './_portal/_close-icon.vue';
 import DangerPortal from './_portal/_danger.vue';
 import SizesPortal from './_portal/_sizes.vue';
 
@@ -65,7 +64,7 @@ import SizesPortal from './_portal/_sizes.vue';
     IconButtonLumenCenturyLink,
     LabeledIconLumenCenturyLink,
     FloatingIconLumenCenturyLink,
-    CloseIconLumenCenturyLink,
+    CloseIcon,
     DangerLumenCenturyLink,
     SizesLumenCenturyLink,
     ExamplesPortal,
@@ -74,7 +73,6 @@ import SizesPortal from './_portal/_sizes.vue';
     IconButtonPortal,
     LabeledIconPortal,
     FloatingIconPortal,
-    CloseIconPortal,
     DangerPortal,
     SizesPortal,
   }

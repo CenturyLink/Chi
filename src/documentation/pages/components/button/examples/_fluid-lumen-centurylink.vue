@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Fluid" id="fluid-lumen-centurylink" :tabs="exampleTabs">
+  <ComponentExample titleSize="h2" title="Fluid" id="fluid-lumen-centurylink" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Use Fluid buttons to stretch the full width of the parent container.
     .chi-form__item(slot="example")

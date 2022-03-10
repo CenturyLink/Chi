@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Fluid" id="fluid-portal" :tabs="exampleTabs">
+  <ComponentExample titleSize="h2" title="Fluid" id="fluid-portal" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Use Fluid buttons to stretch the full width of the parent container.
     <Wrapper slot="example">

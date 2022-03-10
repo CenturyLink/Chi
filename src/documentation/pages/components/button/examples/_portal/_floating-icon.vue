@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Floating icon buttons" id="floating-icon-portal" :tabs="exampleTabs">
+  <ComponentExample titleSize="h3" title="Floating icon buttons" id="floating-icon-portal" :tabs="exampleTabs">
     .chi-form__item(slot="example")
       .-d--flex
         div.-pr--2
