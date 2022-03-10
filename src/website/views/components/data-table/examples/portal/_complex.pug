@@ -6,8 +6,6 @@ h3 Complex
         .chi-card__title Title
       .chi-card__content.-p--0
         #complex
-          chi-button(v-on:click="printTable" variant="flat" type="icon" aria-label="Print")
-            chi-icon(icon="print")
           chi-vue-data-table(
             :config="config",
             :data="table",
@@ -24,7 +22,13 @@ h3 Complex
             template(#name="payload")
               chi-popover-example(:name="payload.name", :id="payload.id")
             template(#actions="payload")
-              chi-dropdown-example(:id="payload.id")
+              chi-dropdown-example(:id="payload.id")          
+            template(#toolbar)
+              chi-vue-data-table-toolbar
+                template(v-slot:start)
+                template(v-slot:end)
+                  chi-button(@click="printTable" variant="flat" type="icon" aria-label="Print")
+                    chi-icon(icon="print")
             template(slot='bulkActions')
               .chi-bulk-actions__buttons
                 .chi-bulk-actions__buttons-mobile.-z--40
@@ -76,7 +80,7 @@ h3 Complex
         #vertical-base-1.chi-tabs-panel.-active(role='tabpanel')
           :code(lang='html')
             <!-- Vue component -->
-            <ChiDataTable :config="config" :data="table">
+            <ChiDataTable :config="config" :data="table" ref="dataTableComplex">
               <template #statusdesc="payload">
                 <div v-for="status in payload" :key="status.status">
                   <i :class="`chi-icon icon-${status.icon} -icon--${status.color}`" aria-hidden="true"></i>
@@ -94,6 +98,16 @@ h3 Complex
               </template>
               <template #actions="payload">
                 <ExampleDropdown :id="payload.id" />
+              </template>
+              <template #toolbar>
+                <ChiToolbar>
+                  <template v-slot:start></template>
+                  <template v-slot:end>
+                    <chi-button @click="printTable" variant="flat" type="icon" aria-label="Print">
+                      <chi-icon icon="print"></chi-icon>
+                    </chi-button>
+                  </template>
+                </ChiToolbar>
               </template>
               <template #bulkActions>
                 <div class="chi-bulk-actions__buttons">
@@ -952,6 +966,11 @@ h3 Complex
                   },
                 ],
               },
+            },
+            methods: {
+              printTable() {
+                this.$refs.dataTableComplex.print('Data table - Complex')
+              }
             }
         #vertical-base-2.chi-tabs-panel(role='tabpanel')
           :code(lang='html')
@@ -1092,6 +1111,7 @@ script.
   new Vue({
     components: {
       chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+      chiVueDataTableToolbar: window['chi-vue'].library.components.ChiDataTableToolbar,
       ChiPopoverExample: namePopover,
       ChiDropdownExample: actionsDropdown,
     },
