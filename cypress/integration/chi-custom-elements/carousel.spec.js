@@ -60,7 +60,7 @@ describe('Carousel', () => {
         });
     });
 
-    it(`Should trigger the ${CAROUSEL_VIEW_CHANGE_EVENT} event`, () => {
+    it.skip(`Should trigger the ${CAROUSEL_VIEW_CHANGE_EVENT} event`, () => {
       const spy = cy.spy();
 
       cy.get('body').then(el => {
