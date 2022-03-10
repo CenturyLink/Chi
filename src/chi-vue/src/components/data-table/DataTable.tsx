@@ -1295,7 +1295,7 @@ export default class DataTable extends Vue {
           : data.data[columnIndex];
       };
 
-      this._sortedData = arraySort(copiedData, function(a, b) {
+      const sortedData = arraySort(copiedData, function(a, b) {
         const aData = locateData(a, sortBy);
         const bData = locateData(b, sortBy);
 
@@ -1321,6 +1321,11 @@ export default class DataTable extends Vue {
 
         return ascending ? aData.localeCompare(bData) : bData.localeCompare(aData);
       });
+
+      this._sortedData = sortedData;
+      if (this._showSelectedOnly) {
+        this._showSelectedOnlyRowsData = sortedData;
+      }
     }
   }
 
@@ -1487,7 +1492,12 @@ export default class DataTable extends Vue {
 
   _printBody() {
     if (this.data.body.length > 0) {
-      const bodyRows = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+      const bodyRows =
+        this._showSelectedOnlyRowsData?.length > 0
+          ? this._showSelectedOnlyRowsData
+          : this._sortedData && this._sortedData.length > 0
+          ? this._sortedData
+          : this._serializedDataBody;
 
       return (
         <tbody>
