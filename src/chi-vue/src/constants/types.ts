@@ -53,6 +53,8 @@ export interface DataTableRow {
   rowNumber: string;
   selected?: boolean | 'indeterminate';
   selectionDisabled?: boolean;
+  parentRowId?: string | null;
+  rootLevelRowId?: string | null;
 }
 export interface DataTableData {
   head: {
@@ -66,6 +68,7 @@ export interface DataTableData {
       key?: boolean;
       bold?: boolean;
       description?: string | DataTableColumnDescription;
+      isPrintDisabled?: boolean;
     };
   };
   body: DataTableRow[];
@@ -116,6 +119,7 @@ export interface DataTableConfig {
   reserveExpansionSlot?: boolean;
   truncation?: boolean;
   printMode?: PrintModes;
+  treeSelection?: boolean;
 }
 export interface DataTableFilter {
   name: string;
