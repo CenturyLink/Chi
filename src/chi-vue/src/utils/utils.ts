@@ -99,8 +99,10 @@ export function printElement(content: string, title: string) {
   win.document.write(`<head><title>${title}</title>${styleSheets}</head><body class='chi'>${content}</body>`);
   win.document.close();
 
-  win.setTimeout(() => {
-    win.print();
-    win.close();
-  }, 0);
+  win.addEventListener('load', () => {
+    win.setTimeout(() => {
+      win.print();
+      win.close();
+    }, 0);
+  });
 }
