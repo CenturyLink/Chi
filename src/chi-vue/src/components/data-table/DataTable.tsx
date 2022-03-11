@@ -72,6 +72,7 @@ export default class DataTable extends Vue {
   _sortedData?: DataTableRow[] = [];
   _sortConfig?: DataTableSortConfig;
   _serializedDataBody: DataTableRow[] = [];
+  _showSelectedOnlyRowsData: DataTableRow[] = [];
   _toolbarComponent?: DataTableToolbar;
   _bulkActionsComponent?: DataTableBulkActions;
   _paginationListenersAdded = false;
@@ -334,7 +335,6 @@ export default class DataTable extends Vue {
         this._showSelectedOnly = false;
         this._showAllRows();
       }
-      this.activePage = 1;
     }
   }
 
@@ -569,7 +569,10 @@ export default class DataTable extends Vue {
         }
       });
 
-      this.$emit(DATA_TABLE_EVENTS.SELECTED_ALL, this.slicedData);
+      this.$emit(
+        DATA_TABLE_EVENTS.SELECTED_ALL,
+        this.slicedData.filter(row => !row.selectionDisabled)
+      );
     } else {
       data.forEach((row: DataTableRow) => {
         const rowIndex = this.selectedRows.indexOf(row.rowId);
@@ -580,7 +583,10 @@ export default class DataTable extends Vue {
         }
       });
       await this._handleBulkActionsDeselection();
-      this.$emit(DATA_TABLE_EVENTS.DESELECTED_ALL, this.slicedData);
+      this.$emit(
+        DATA_TABLE_EVENTS.DESELECTED_ALL,
+        this.slicedData.filter(row => !row.selectionDisabled)
+      );
     }
 
     this._emitSelectedRows();
@@ -660,6 +666,8 @@ export default class DataTable extends Vue {
           : selectAll
           ? `checkbox-${this._dataTableId}-select-all-rows`
           : '';
+      const allVisibleRowsSelectionDisabled =
+        this.slicedData.length > 0 && this.slicedData.every(row => row.selectionDisabled);
 
       return (
         <div
@@ -668,7 +676,7 @@ export default class DataTable extends Vue {
       ${DATA_TABLE_CLASSES.SELECTABLE}
     `}>
           <Checkbox
-            disabled={rowData?.selectionDisabled}
+            disabled={rowData?.selectionDisabled || (selectAll && allVisibleRowsSelectionDisabled)}
             id={checkboxId}
             onChiChange={(ev: Event) => this._handleCheckboxChange(ev, selectAll, rowData)}
             selected={selected}
@@ -1188,15 +1196,15 @@ export default class DataTable extends Vue {
   }
 
   async _showAllRows() {
+    this._showSelectedOnlyRowsData = [];
     this.slicedData = this.sliceData(await this._resolveRowsToRender());
-    this.activePage = 1;
   }
 
   async _showSelectedOnlyRows() {
     const data = await this._resolveRowsToRender();
     const rowsToShow: DataTableRow[] = [];
     const rowIds = this._mapRows;
-    const selectedRows = Object.keys(this._mapRows)
+    const selectedFirstLevelRowIds = Object.keys(this._mapRows)
       .filter((rowId: string) => this.selectedRows.includes(rowId))
       .map(key => {
         if (rowIds[key].level === 0) {
@@ -1211,13 +1219,13 @@ export default class DataTable extends Vue {
       });
 
     await data.forEach((row: DataTableRow) => {
-      if (selectedRows.includes(row.rowId)) {
+      if (selectedFirstLevelRowIds.includes(row.rowId)) {
         rowsToShow.push(row);
       }
     });
 
+    this._showSelectedOnlyRowsData = rowsToShow;
     this.slicedData = this.sliceData(rowsToShow);
-    this.activePage = 1;
   }
 
   mounted() {
@@ -1271,7 +1279,10 @@ export default class DataTable extends Vue {
   }
 
   sortData(column: string, direction: string, sortBy: string | undefined) {
-    const copiedData = [...this._serializedDataBody];
+    const copiedData =
+      this._showSelectedOnlyRowsData && this._showSelectedOnlyRowsData.length > 0
+        ? [...this._showSelectedOnlyRowsData]
+        : [...this._serializedDataBody];
     const columnData = this.data.head[column];
     const ascending: boolean = direction === 'ascending';
 
@@ -1284,7 +1295,7 @@ export default class DataTable extends Vue {
           : data.data[columnIndex];
       };
 
-      this._sortedData = arraySort(copiedData, function(a, b) {
+      const sortedData = arraySort(copiedData, function(a, b) {
         const aData = locateData(a, sortBy);
         const bData = locateData(b, sortBy);
 
@@ -1310,6 +1321,11 @@ export default class DataTable extends Vue {
 
         return ascending ? aData.localeCompare(bData) : bData.localeCompare(aData);
       });
+
+      this._sortedData = sortedData;
+      if (this._showSelectedOnly) {
+        this._showSelectedOnlyRowsData = sortedData;
+      }
     }
   }
 
@@ -1476,7 +1492,12 @@ export default class DataTable extends Vue {
 
   _printBody() {
     if (this.data.body.length > 0) {
-      const bodyRows = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+      const bodyRows =
+        this._showSelectedOnlyRowsData?.length > 0
+          ? this._showSelectedOnlyRowsData
+          : this._sortedData && this._sortedData.length > 0
+          ? this._sortedData
+          : this._serializedDataBody;
 
       return (
         <tbody>
