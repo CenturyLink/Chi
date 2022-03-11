@@ -256,7 +256,7 @@ export const exampleTableBody = [
       template: 'loadingSkeleton',
     },
     active: false,
-    selectionDisabled: false,
+    selectionDisabled: true,
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021063' } },
       {
