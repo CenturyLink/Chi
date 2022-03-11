@@ -216,21 +216,23 @@ export class Carousel {
         } of {this.numberOfViews}
       </div> : null;
 
-    return <div class={`${CAROUSEL_CLASSES.CAROUSEL}`}>
-      <div class={CAROUSEL_CLASSES.CONTENT}>
-        <div
-          class={`
-            ${CAROUSEL_CLASSES.WRAPPER}
-            ${this._animationClasses}
-            ${this.single ? UTILITY_CLASSES.DISPLAY.FLEX : ''}
-          `}
-          style={{transform: `translateX(${this.scrollBreakpoints[this.view + 1]}px)`}}
-          ref={el => this.wrapper = el}>
-          {items}
+    return <div>
+      <div class={`${CAROUSEL_CLASSES.CAROUSEL}`}>
+        <div class={CAROUSEL_CLASSES.CONTENT}>
+          <div
+            class={`
+              ${CAROUSEL_CLASSES.WRAPPER}
+              ${this._animationClasses}
+              ${this.single ? UTILITY_CLASSES.DISPLAY.FLEX : ''}
+            `}
+            style={{transform: `translateX(${this.scrollBreakpoints[this.view + 1]}px)`}}
+            ref={el => this.wrapper = el}>
+            {items}
+          </div>
         </div>
+        {prevButton}
+        {nextButton}
       </div>
-      {prevButton}
-      {nextButton}
       {dotControllers}
       {pagination}
     </div>;
