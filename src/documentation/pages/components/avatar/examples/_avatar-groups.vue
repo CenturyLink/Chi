@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Avatar Groups" id="avatar-groups" :tabs="exampleTabs">
+  <ComponentExample title="Avatar Groups" id="avatar-groups" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Use avatar groups to group multiple avatars or add descriptive text such as a users name.
       | Render an avatar group by wrapping an avatar in the class <code>chi-avatar-group</code>.

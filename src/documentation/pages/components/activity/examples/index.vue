@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    h3 Examples
+    h2 Examples
     p.-text
       | To render an activity, use the class <code>chi-activity</code>.
     <Base />
