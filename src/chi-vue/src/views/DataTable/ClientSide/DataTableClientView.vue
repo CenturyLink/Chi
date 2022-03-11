@@ -13,6 +13,8 @@
       @chiRowCollapsed="e => this.rowCollapsed(e)"
       @chiRowSelected="e => this.rowSelected(e)"
       @chiRowDeselected="e => this.rowDeselected(e)"
+      @chiSelectAll="e => this.chiSelectAll(e)"
+      @chiDeselectAll="e => this.chiDeselectAll(e)"
     >
       <template #alertsDesc="payload">
         <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
@@ -194,6 +196,9 @@ import DataTableViews from '../../../components/data-table-views/DataTableViews'
     },
     chiShowSelectedRowsOnly: e => {
       console.log('chiColumnsReset', e);
+    },
+    chiDeselectAll: e => {
+      console.log('chiDeselectAll', e);
     },
     chiSelectAll: e => {
       console.log('chiSelectAll', e);
