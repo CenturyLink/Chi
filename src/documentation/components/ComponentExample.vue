@@ -10,7 +10,7 @@
         >
       </span>
     </h4>
-    <h2 v-if="titleSize === 'h2'" class="-anchor" :id="id">
+    <h2 v-else-if="titleSize === 'h2'" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
