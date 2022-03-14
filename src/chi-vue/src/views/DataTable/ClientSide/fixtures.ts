@@ -31,6 +31,7 @@ export const exampleConfig = {
     direction: 'ascending',
   },
   truncation: true,
+  treeSelection: true,
 };
 
 const exampleColumns = [
@@ -255,7 +256,7 @@ export const exampleTableBody = [
       template: 'loadingSkeleton',
     },
     active: false,
-    selectionDisabled: false,
+    selectionDisabled: true,
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021063' } },
       {
@@ -432,76 +433,6 @@ export const exampleTableBody = [
                   {
                     id: 'bbb',
                     active: false,
-                    nestedContent: {
-                      table: {
-                        data: [
-                          {
-                            id: 'ba',
-                            active: false,
-                            data: [
-                              {
-                                template: 'ticketId',
-                                payload: { id: 'NTM00002106611' },
-                              },
-                              {
-                                label: 'Alerts',
-                                template: 'icon',
-                                payload: {
-                                  icon: 'circle-check',
-                                  color: 'success',
-                                },
-                              },
-                              {
-                                template: 'status',
-                                payload: { status: 'active' },
-                                align: 'center',
-                              },
-                              'Colocation',
-                              7,
-                              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
-                              'SVUJW034781A',
-                              {
-                                template: 'actions',
-                                payload: { id: 'NTM00002106611' },
-                                align: 'right',
-                              },
-                            ],
-                          },
-                          {
-                            id: 'bb',
-                            active: false,
-                            data: [
-                              {
-                                template: 'ticketId',
-                                payload: { id: 'NTM00002106621' },
-                              },
-                              {
-                                label: 'Alerts',
-                                template: 'icon',
-                                payload: {
-                                  icon: 'circle-check',
-                                  color: 'success',
-                                },
-                              },
-                              {
-                                template: 'status',
-                                payload: { status: 'active' },
-                                align: 'center',
-                              },
-                              'Colocation',
-                              8,
-                              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
-                              'SVUJW034781A',
-                              {
-                                template: 'actions',
-                                payload: { id: 'NTM00002106621' },
-                                align: 'right',
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                    },
                     data: [
                       {
                         template: 'ticketId',
