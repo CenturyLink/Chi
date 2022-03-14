@@ -8,11 +8,12 @@
         <div class="chi-collection__title">Components</div>
         <ul class="chi-tabs__subtabs">
           <li><NuxtLink to="/components/accordion">Accordion</NuxtLink></li>
-          <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li> -->
+          <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/alert">Alert</NuxtLink></li>
-          <!-- <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li> -->
+          <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
           <li><NuxtLink to="/components/badge">Badge</NuxtLink></li>
           <li><NuxtLink to="/components/brand">Brand</NuxtLink></li>
+          <li><NuxtLink to="/components/breadcrumb">Breadcrumb</NuxtLink></li>
           <li><NuxtLink to="/components/card">Card</NuxtLink></li>
           <li><NuxtLink to="/components/forms/checkbox">Checkbox</NuxtLink></li>
           <li><NuxtLink to="/components/divider">Divider</NuxtLink></li>
@@ -66,9 +67,10 @@
             <NuxtLink to="/components/forms/toggle-switch">Toggle switch</NuxtLink>
           </li>
           <li><NuxtLink to="/components/tooltip">Tooltip</NuxtLink></li>
+          <li><NuxtLink to="/components/time-picker">Time picker</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
-          <li><NuxtLink to="/components/breadcrumb">Breadcrumb</NuxtLink></li>
+
           <li>
             <NuxtLink to="/components/button"
               >Button
