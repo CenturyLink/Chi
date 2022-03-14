@@ -6,7 +6,7 @@
       | Semantic colors should never be used for decorative purposes.
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12.-d--flex.-flex--row.-justify-content--center.-flex--wrap
-        div.-p--2.-text--center(v-for="color in ['success', 'warning', 'danger', 'muted']")
+        .-p--2.-text--center(v-for="color in ['success', 'warning', 'danger', 'muted']")
           chi-spinner(:color="color", class='-m--3', size='md')
     <Wrapper slot="code-webcomponent">
       .chi-tab__description

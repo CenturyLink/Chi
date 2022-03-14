@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Sizes" titleSize="h4" id="sizes-portal" :tabs="exampleTabs">
     .chi-grid.-align-items--end(slot="example")
-      div.-p--2(v-for="size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']")
+      .-p--2(v-for="size in ['xs', 'sm', 'sm--2', 'sm--3', 'md', 'lg', 'xl', 'xxl']")
         chi-spinner(:size="size", color='primary' class='-m--1')
         p.-text.-text--center {{size}}
     <Wrapper slot="code-webcomponent">
