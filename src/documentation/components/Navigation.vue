@@ -16,6 +16,7 @@
           <li><NuxtLink to="/components/breadcrumb">Breadcrumb</NuxtLink></li>
           <li><NuxtLink to="/components/button">Button</NuxtLink></li>
           <li><NuxtLink to="/components/card">Card</NuxtLink></li>
+          <li><NuxtLink to="/components/carousel">Carousel</NuxtLink></li>
           <li><NuxtLink to="/components/forms/checkbox">Checkbox</NuxtLink></li>
           <li><NuxtLink to="/components/divider">Divider</NuxtLink></li>
           <li><NuxtLink to="/components/dropdown">Dropdown</NuxtLink></li>
