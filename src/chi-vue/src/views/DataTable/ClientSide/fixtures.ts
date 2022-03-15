@@ -242,10 +242,10 @@ export const exampleTableHead = {
     sortDataType: 'string',
     align: 'center',
   },
-  string: { label: 'String', sortable: true, sortDataType: 'string', key: true },
+  string: { label: 'Product', sortable: true, sortDataType: 'string', key: true },
   number: { label: 'Number', sortable: true, sortDataType: 'number' },
-  date: { label: 'Date', sortable: true, sortBy: 'date', sortDataType: 'date' },
-  productId: { label: 'Product / Service ID', sortable: true, sortDataType: 'string' },
+  date: { label: 'Created', sortable: true, sortBy: 'date', sortDataType: 'date' },
+  productId: { label: 'Service ID', sortable: true, sortDataType: 'string' },
   actions: { label: ' ', align: 'right', allowOverflow: true, isPrintDisabled: true },
 };
 
