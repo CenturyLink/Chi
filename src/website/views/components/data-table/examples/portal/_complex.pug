@@ -9,7 +9,7 @@ h3 Complex
           chi-vue-data-table(
             :config="config",
             :data="table",
-             ref="dataTableComplex"
+            ref="dataTableComplex"
           )
             template(#status="payload")
               i(:class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true")
@@ -22,7 +22,7 @@ h3 Complex
               chi-vue-data-table-toolbar
                 template(v-slot:start)
                 template(v-slot:end)
-                  chi-button(@chiClick="printTable" variant="flat" type="icon" aria-label="Print data table complex example")
+                  chi-button(@click="printTable" variant="flat" type="icon" aria-label="Print data table complex example")
                     chi-icon(icon="print")
             template(slot='bulkActions')
               .chi-bulk-actions__buttons
@@ -75,7 +75,7 @@ h3 Complex
         #vertical-base-1.chi-tabs-panel.-active(role='tabpanel')
           :code(lang='html')
             <!-- Vue component -->
-            <ChiDataTable :config="config" :data="table">
+            <ChiDataTable :config="config" :data="table" ref="dataTableComplex">
               <template #status="payload">
                 <i class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
                 <span class="-text--truncate" style="padding-left: 0.5rem;">
@@ -169,7 +169,8 @@ h3 Complex
               table: {
                 head: {
                   name: { label: 'Name', sortable: true, sortBy: 'name', sortDataType: 'string', key: true, bold: true },
-                  status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: 'Helpful information goes here.' },
+                  status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', 
+                    description: 'Helpful information goes here.' },
                   lastLogin: { label: 'Last Login', key: true },
                   actions: { label: 'Actions', align: 'right', isPrintDisabled: true },
                 },
