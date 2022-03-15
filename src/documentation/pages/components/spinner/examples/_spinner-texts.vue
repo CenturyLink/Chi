@@ -1,15 +1,9 @@
 <template lang="pug">
   <ComponentExample title="Spinners in Text Inputs" titleSize="h4" id="spinner-texts" :tabs="exampleTabs">
     <Wrapper slot="example">
-      .chi-form__item.-mb--2(style="max-width:20rem")
-        chi-label(for="spinner-input-01") Label
-        chi-text-input(id="spinner-input-01" spinner)
-      .chi-form__item.-mb--2(style="max-width:20rem")
-        chi-label(for="spinner-input-02") Label
-        chi-text-input(id="spinner-input-02" spinner size="sm")
-      .chi-form__item.-mb--2(style="max-width:20rem")
-        chi-label(for="spinner-input-03") Label
-        chi-text-input(id="spinner-input-03" spinner size="lg")
+      .chi-form__item.-mb--2(v-for="item in $data.textInputs" :key="item.text" style="max-width:20rem")
+        chi-label(:for="'spinner-input-' + item") Label
+        chi-text-input(:id="'spinner-input-' + item.text" spinner :size="item.size")
     </Wrapper>
     <Wrapper slot="code-webcomponent">
       .chi-tab__description
@@ -30,6 +24,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
+      textInputs: [{text: '01', size: ''}, {text: '02', size: 'sm'}, {text: '03', size: 'lg'}],
       exampleTabs: [
         {
           active: true,

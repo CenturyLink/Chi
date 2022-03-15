@@ -4,7 +4,7 @@
       | Brand spinner colors reinforce Lumen's brand. Use primary or dark for light themes and secondary or light for dark themes.
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12.-w-md--6.-p--1.-d--flex.-justify-content--center
-        div.-p--2.-text--center(v-for="color in ['primary', 'dark']")
+        .-p--2.-text--center(v-for="color in ['primary', 'dark']")
           chi-spinner(:color="color", class='-m--1', size='md')
       .chi-col.-w--12.-w-md--6.-bg--black.-p--1.-d--flex.-justify-content--center
         .-p--2.-text--center(v-for="color in ['secondary', 'light']")

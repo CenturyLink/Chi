@@ -1,15 +1,9 @@
 <template lang="pug">
   <ComponentExample title="Spinners in Buttons" titleSize="h4" id="spinner-buttons-lumen-centurylink" :tabs="exampleTabs">
     <Wrapper slot="example">
-      chi-button(class='-mr--3')
-        span= 'Button'
-        chi-spinner(color='muted')
-      chi-button(class='-mr--3', size='sm')
-        span= 'Small'
-        chi-spinner(color='muted', size='xs')
-      chi-button(class='-mr--3', size='lg')
-        span= 'Large'
-        chi-spinner(color='muted', size='sm--2')
+      chi-button(class='-mr--3' v-for="button in $data.buttonInputs" :key="button.text" :size="button.buttonSize")
+        span {{button.text}}
+        chi-spinner(color='muted' :size="button.spinnerSize")
     </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -26,6 +20,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
+      buttonInputs: [{text: 'Button', buttonSize: '', spinnerSize: ''}, {text: 'Small', buttonSize: 'sm', spinnerSize: 'xs'}, {text: 'Large', buttonSize: 'lg', spinnerSize: 'sm--2'}],
       exampleTabs: [
         {
           active: true,
