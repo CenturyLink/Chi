@@ -194,8 +194,8 @@ export default class DataTable extends Vue {
           data-sort-by={sortBy}
           data-sort={this._sortConfig && this._sortConfig.direction ? this._sortConfig.direction : ''}
           data-label={label}
-          onclick={(e: Event) => {
-            if (!this._preventSortOnResize) {
+          onclick={(e: PointerEvent) => {
+            if (!this._preventSortOnResize && e.pointerType !== '') {
               this.sortColumn(e);
             }
           }}
@@ -1257,6 +1257,8 @@ export default class DataTable extends Vue {
       });
       (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL, () => {
         this.selectedRows = [];
+        this._showSelectedOnly = false;
+        this._showAllRows();
         this.$emit(DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL);
       });
     }

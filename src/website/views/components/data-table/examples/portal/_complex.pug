@@ -9,13 +9,8 @@ h3 Complex
           chi-vue-data-table(
             :config="config",
             :data="table",
-            ref="dataTableComplex")
-            template(#statusdesc='payload')
-              i(:class="`chi-icon icon-${payload.due.icon} -icon--${payload.due.color}`" aria-hidden="true")
-              span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.due.status }}
-              br
-              i(:class="`chi-icon icon-${payload.overdue.icon} -icon--${payload.overdue.color}`" aria-hidden="true")
-              span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.overdue.status }}
+             ref="dataTableComplex"
+          )
             template(#status="payload")
               i(:class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true")
               span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.status }}
@@ -27,7 +22,7 @@ h3 Complex
               chi-vue-data-table-toolbar
                 template(v-slot:start)
                 template(v-slot:end)
-                  chi-button(@click="printTable" variant="flat" type="icon" aria-label="Print")
+                  chi-button(@chiClick="printTable" variant="flat" type="icon" aria-label="Print data table complex example")
                     chi-icon(icon="print")
             template(slot='bulkActions')
               .chi-bulk-actions__buttons
@@ -80,13 +75,7 @@ h3 Complex
         #vertical-base-1.chi-tabs-panel.-active(role='tabpanel')
           :code(lang='html')
             <!-- Vue component -->
-            <ChiDataTable :config="config" :data="table" ref="dataTableComplex">
-              <template #statusdesc="payload">
-                <div v-for="status in payload" :key="status.status">
-                  <i :class="`chi-icon icon-${status.icon} -icon--${status.color}`" aria-hidden="true"></i>
-                  <span class="-text--truncate" style="padding-left: 0.5rem;">{{ status.status }}</span>
-                </div>
-              </template>
+            <ChiDataTable :config="config" :data="table">
               <template #status="payload">
                 <i class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true"></i>
                 <span class="-text--truncate" style="padding-left: 0.5rem;">
@@ -103,7 +92,7 @@ h3 Complex
                 <ChiToolbar>
                   <template v-slot:start></template>
                   <template v-slot:end>
-                    <chi-button @click="printTable" variant="flat" type="icon" aria-label="Print">
+                    <chi-button @chiClick="printTable" variant="flat" type="icon" aria-label="Print data table complex example">
                       <chi-icon icon="print"></chi-icon>
                     </chi-button>
                   </template>
@@ -180,15 +169,7 @@ h3 Complex
               table: {
                 head: {
                   name: { label: 'Name', sortable: true, sortBy: 'name', sortDataType: 'string', key: true, bold: true },
-                  status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: { 
-                    title: 'Status', 
-                    template: 'statusdesc', 
-                    payload: { 
-                      overdue: { status: "Overdue", icon: "circle-alert", color: "danger" }, 
-                      due: { status: "Due", icon: 'warning', color: 'warning' }
-                      } 
-                    }
-                  },
+                  status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: 'Helpful information goes here.' },
                   lastLogin: { label: 'Last Login', key: true },
                   actions: { label: 'Actions', align: 'right', isPrintDisabled: true },
                 },
@@ -1022,6 +1003,9 @@ h3 Complex
                 });
               }
             }
+            beforeDestroy() {
+              this.popover.dispose();
+            }
         #vertical-base-3.chi-tabs-panel(role='tabpanel')
           :code(lang='html')
             <!-- Template -->
@@ -1047,7 +1031,10 @@ h3 Complex
 
             <!-- mounted -->
             mounted() {
-              chi.dropdown(this.$refs.dropdownTrigger);
+              this.dropdown = chi.dropdown(this.$refs.dropdownTrigger);
+            }
+            beforeDestroy() {
+              this.dropdown.dispose();
             }
   .chi-tabs-panel#html-portal-complex
 
@@ -1075,6 +1062,9 @@ script.
         });
       }
     },
+    beforeDestroy() {
+      this.popover.dispose();
+    },
     template: `<div class="-text--truncate">
       <a :id="'name-popover-button-'+this.id" href="#" :data-target="'#name-popover-'+this.id" position="top-start">{{this.name}}</a>
       <section class="chi-popover" :id="'name-popover-'+this.id" aria-modal="true" role="dialog" aria-label={this.name}>
@@ -1087,10 +1077,13 @@ script.
   const actionsDropdown = Vue.component('actionsdropdown', {
     props: ['id'],
     mounted() {
-      window.chi.dropdown(document.getElementById(`action-button-${this.id}`));
+      this.dropdown = window.chi.dropdown(document.getElementById(`action-button-${this.id}`));
+    },
+    beforeDestroy() {
+      this.dropdown.dispose();
     },
     template: `<div class="chi-dropdown -position--absolute">
-      <button :id="'action-button-'+this.id" class="chi-button -icon -primary -flat" aria-label="More options" data-position="left">
+      <button :id="'action-button-'+this.id" class="chi-button -icon -primary -flat" aria-label="More options" data-position="left-start">
         <div class="chi-button__content">
           <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
         </div>
@@ -1148,13 +1141,7 @@ script.
       table: {
         head: {
           name: { label: 'Name', sortable: true, sortBy: 'name', sortDataType: 'string', key: true, bold: true },
-          status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: { template: 'statusdesc', 
-            payload: { 
-              overdue: { status: "Overdue", icon: "circle-alert", color: "danger" }, 
-              due: { status: "Due", icon: 'warning', color: 'warning' }
-              } 
-            }
-          },
+          status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: 'Helpful information goes here.' },
           lastLogin: { label: 'Last Login', key: true },
           actions: { label: 'Actions', align: 'right', isPrintDisabled: true },
         },
