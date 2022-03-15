@@ -22,6 +22,9 @@ export const defaultConfig: DataTableConfig = {
     size: 'md',
   },
   selectable: false,
-  printMode: 'full',
+  print: {
+    mode: 'full',
+    isNestedContentPrintDisabled: false,
+  },
   treeSelection: true,
 };

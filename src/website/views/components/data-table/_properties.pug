@@ -49,7 +49,10 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 selectable?: <code>boolean | 'radio'</code>;
                 reserveExpansionSlot?: <code>boolean</code>;
                 truncation?: <code>boolean</code>;
-                printMode?: <code>'full' | 'printonly' | 'screenonly'</code>;
+                print: {
+                  mode?: <code>'full' | 'printonly' | 'screenonly'</code>;
+                  isNestedContentPrintDisabled?: <code>boolean</code>;
+                }
               }
           td
             div undefined
@@ -111,6 +114,9 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 id: <code>string</code>;
                 selected?: <code>boolean</code>;
                 selectionDisabled?: <code>boolean</code>;
+                print?: {
+                  isNestedContentPrintDisabled?: boolean;
+                };
               }
         tr
           td

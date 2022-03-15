@@ -62,7 +62,7 @@ export default class DataTable extends Vue {
   treeSelection = Object.prototype.hasOwnProperty.call(this.$props.config, 'treeSelection')
     ? this.$props.config.treeSelection
     : defaultConfig.treeSelection;
-  printMode = this.$props.config.printMode || defaultConfig.printMode;
+  printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -1526,7 +1526,12 @@ export default class DataTable extends Vue {
     const rowCells: JSX.Element[] = [];
     const sublevelContent = [];
 
-    if (this._expandable && bodyRow.nestedContent) {
+    if (
+      this._expandable &&
+      bodyRow.nestedContent &&
+      !this.config.print?.isNestedContentPrintDisabled &&
+      !bodyRow.print?.isNestedContentPrintDisabled
+    ) {
       sublevelContent.push(
         this._printSublevelContent(bodyRow.nestedContent, rowLevel === 'child' ? 'child' : 'parent')
       );
