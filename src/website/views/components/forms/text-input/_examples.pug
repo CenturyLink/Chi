@@ -339,89 +339,51 @@ p.-text
         <div class="chi-label -status">Optional input message</div>
       </div>
 
-.-portal--hide
-  h3 Error
-  p.-text
-    | Use the <code>danger</code> state to provide feedback to users when input data fails to validate.
-    | To meet accessibility requirements, danger inputs must include an error message explaining the
-    | failure and/or how to correct it.
-  .example.-mb--3
-    .-p--3
-      .chi-grid
-        .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
-          .chi-form__item
-            chi-label(for="example__danger") Name
-            chi-text-input(
-              id="example__danger"
-              state="danger"
-              )
-            .chi-label.-status.-danger Please enter a name.
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-error
-        li.-active
-          a(href=`#webcomponent-error`) Web Component
-        li
-          a(href=`#html-error`) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-error
-      :code(lang="html")
-        <div class="chi-form__item">
-          <chi-label for="example__danger">Name</chi-label>
-          <chi-text-input id="example__danger" state="danger"></chi-text-input>
-          <div class="chi-label -status -danger">Please enter a name.</div>
-        </div>
-    .chi-tabs-panel#html-error
-      :code(lang="html")
-        <div class="chi-form__item">
-          <label class="chi-label" for="example__danger">Name</label>
-          <input type="text" class="chi-input -danger" id="example__danger">
-          <div class="chi-label -status -danger">Please enter a name.</div>
-        </div>
 
-.-portal--show.-brightspeed--show
-  h3 Error
-  p.-text
-    | Use the <code>danger</code> state to provide feedback to users when input data fails to validate.
-    | To meet accessibility requirements, danger inputs must include an error message explaining the
-    | failure and/or how to correct it.
-  .example.-mb--3
-    .-p--3
-      .chi-grid
-        .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
-          .chi-form__item
-            chi-label(for="example__portal-danger") Name
-            chi-text-input(
-              id="example__portal-danger"
-              state="danger"
-              )
-            .chi-label.-status.-danger
-              i.chi-icon.icon-circle-warning.-icon--danger(aria-hidden="true")
-              | Please enter a name.
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-error
-        li.-active
-          a(href=`#webcomponent-portal-error`) Web Component
-        li
-          a(href=`#html-portal-error`) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-portal-error
-      :code(lang="html")
-        <div class="chi-form__item">
-          <chi-label for="example__danger">Name</chi-label>
-          <chi-text-input id="example__danger" state="danger"></chi-text-input>
-          <div class="chi-label -status -danger">
-            <chi-icon icon="circle-warning"></chi-icon>
-            Please enter a name.
-          </div>
+h3 Error
+p.-text
+  | Use the <code>danger</code> state to provide feedback to users when input data fails to validate.
+  | To meet accessibility requirements, danger inputs must include an error message explaining the
+  | failure and/or how to correct it.
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-label(for="example__portal-danger") Name
+          chi-text-input(
+            id="example__portal-danger"
+            state="danger"
+            )
+          .chi-label.-status.-danger
+            i.chi-icon.icon-circle-warning(aria-hidden="true")
+            | Please enter a name.
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-error
+      li.-active
+        a(href=`#webcomponent-portal-error`) Web Component
+      li
+        a(href=`#html-portal-error`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-portal-error
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-label for="example__danger">Name</chi-label>
+        <chi-text-input id="example__danger" state="danger"></chi-text-input>
+        <div class="chi-label -status -danger">
+          <chi-icon icon="circle-warning"></chi-icon>
+          Please enter a name.
         </div>
-    .chi-tabs-panel#html-portal-error
-      :code(lang="html")
-        <div class="chi-form__item">
-          <label class="chi-label" for="example__portal-danger">Name</label>
-          <input type="text" class="chi-input -danger" id="example__portal-danger">
-          <div class="chi-label -status -danger">
-            <i class="chi-icon icon-circle-warning -icon--danger" aria-hidden="true"></i>
-            Please enter a name.
-          </div>
+      </div>
+  .chi-tabs-panel#html-portal-error
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example__portal-danger">Name</label>
+        <input type="text" class="chi-input -danger" id="example__portal-danger">
+        <div class="chi-label -status -danger">
+          <i class="chi-icon icon-circle-warning" aria-hidden="true"></i>
+          Please enter a name.
         </div>
+      </div>
 
 h2 Layout Variations
 h3 Inline Label

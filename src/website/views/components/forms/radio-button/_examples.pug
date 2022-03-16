@@ -308,6 +308,7 @@ p.-text
           input(class="chi-radio__input -danger", type="radio", name="radios", id="radio-er2")
           label.chi-radio__label(for="radio-er2") Option 2
       .chi-label.-status.-danger
+        i.chi-icon.icon-circle-warning(aria-hidden="true")
         | Please select an option.
   .example-tabs.-pl--2
     ul.chi-tabs#example-error
@@ -335,7 +336,10 @@ p.-text
             <label class="chi-radio__label" for="radio-er2">Option 2</label>
           </div>
         </div>
-        <div class="chi-label -status -danger">Please select an option.</div>
+        <div class="chi-label -status -danger">
+          <i class="chi-icon icon-circle-warning" aria-hidden="true"></i>
+          Please select an option.
+        </div>
       </fieldset>
 
 h2 Layout Variations

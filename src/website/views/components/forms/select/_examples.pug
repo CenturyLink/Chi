@@ -224,92 +224,50 @@ p.-text
         <div class="chi-label -status">Optional input message</div>
       </div>
 
-.-portal--hide
-  h3 Error
-  p.-text
-    | Use the <code>-danger</code> state to provide feedback to users when a selection has not been made.
-    | Once a selection has been made, the state must be removed. To meet accessibility requirements,
-    | danger inputs must include an error message explaining the failure and/or how to correct it.
-  .example.-mb--3
-    .-p--3
-      .chi-form__item(style="max-width:20rem")
-        label.chi-label(for="example-er1")
-          | Label
-          abbr.chi-label__required(title="Required field") *
-        select(class="chi-select -danger", id="example-er1" required)
-          option(value="") Select
-          option Option 1
-          option Option 2
-          option Option 3
-        .chi-label.-status.-danger Please select an option.
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-error
-        li.-disabled
-          a(href=`#webcomponent-error`) Web Component
-        li.-active
-          a(href=`#html-error`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-error
-    .chi-tabs-panel.-active#html-error
-      :code(lang="html")
-        <div class="chi-form__item">
-          <label class="chi-label" for="example-er1">
-            Label
-            <abbr class="chi-label__required" title="Required field">*</abbr>
-          </label>
-          <select class="chi-select -danger" id="example-er1" required>
-            <option value="">Select</option>
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </select>
-          <div class="chi-label -status -danger">Please select an option.</div>
+h3 Error
+p.-text
+  | Use the <code>-danger</code> state to provide feedback to users when a selection has not been made.
+  | Once a selection has been made, the state must be removed. To meet accessibility requirements,
+  | danger inputs must include an error message explaining the failure and/or how to correct it.
+.example.-mb--3
+  .-p--3
+    .chi-form__item(style="max-width:20rem")
+      label.chi-label(for="example-er1")
+        | Label
+        abbr.chi-label__required(title="Required field") *
+      select(class="chi-select -danger", id="example-er1" required)
+        option(value="") Select
+        option Option 1
+        option Option 2
+        option Option 3
+      .chi-label.-status.-danger
+        i.chi-icon.icon-circle-warning(aria-hidden="true")
+        | Please select an option.
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-error
+      li.-disabled
+        a(href=`#webcomponent-error`) Web Component
+      li.-active
+        a(href=`#html-error`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-error
+  .chi-tabs-panel.-active#html-error
+    :code(lang="html")
+      <div class="chi-form__item">
+        <label class="chi-label" for="example-er1">
+          Label
+          <abbr class="chi-label__required" title="Required field">*</abbr>
+        </label>
+        <select class="chi-select -danger" id="example-er1" required>
+          <option value="">Select</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </select>
+        <div class="chi-label -status -danger">
+          <i class="chi-icon icon-circle-warning" aria-hidden="true"></i>
+          Please select an option.
         </div>
-
-.-portal--show
-  h3 Error
-  p.-text
-    | Use the <code>-danger</code> state to provide feedback to users when a selection has not been made.
-    | Once a selection has been made, the state must be removed. To meet accessibility requirements,
-    | danger inputs must include an error message explaining the failure and/or how to correct it.
-  .example.-mb--3
-    .-p--3
-      .chi-form__item(style="max-width:20rem")
-        label.chi-label(for="example-portal-er1")
-          | Label
-          abbr.chi-label__required(title="Required field") *
-        select(class="chi-select -danger", id="example-portal-er1" required)
-          option(value="") Select
-          option Option 1
-          option Option 2
-          option Option 3
-        .chi-label.-status.-danger
-          i.chi-icon.icon-circle-warning.-icon--danger(aria-hidden="true")
-          | Please select an option.
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-portal-error
-        li.-disabled
-          a(href=`#webcomponent-portal-error`) Web Component
-        li.-active
-          a(href=`#html-portal-error`) HTML Blueprint
-    .chi-tabs-panel#webcomponent-portal-error
-    .chi-tabs-panel.-active#html-portal-error
-      :code(lang="html")
-        <div class="chi-form__item">
-          <label class="chi-label" for="example-portal-er1">
-            Label
-            <abbr class="chi-label__required" title="Required field">*</abbr>
-          </label>
-          <select class="chi-select -danger" id="example-portal-er1" required>
-            <option value="">Select</option>
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </select>
-          <div class="chi-label -status -danger">
-            <i class="chi-icon icon-circle-warning -icon--danger" aria-hidden="true"></i>
-            Please select an option.
-          </div>
-        </div>
+      </div>
 
 .-portal--hide
   h3 Sizes
