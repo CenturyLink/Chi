@@ -115,7 +115,9 @@ p.-text
     div(style="max-width: 18rem;")
       chi-label(for="phone-input-error") Phone Number
       chi-phone-input(id="phone-input-error" state="danger")
-      div.chi-label.-status.-danger Invalid phone number
+      div.chi-label.-status.-danger
+        chi-icon(icon="circle-warning")
+        | Invalid phone number
 
   .example-tabs.-pl--2
     ul.chi-tabs
@@ -128,6 +130,7 @@ p.-text
       <chi-label for="phone-input-error">Phone Number</chi-label>
       <chi-phone-input id="phone-input-error" state="danger"></chi-phone-input>
       <div class="chi-label -status -danger">
+        <chi-icon icon="circle-warning"></chi-icon>
         Invalid phone number
       </div>
   #phone-input-html-error.chi-tabs-panel
