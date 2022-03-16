@@ -319,7 +319,9 @@ p.-text
         .chi-form__item
           chi-label(for="example__danger" required) Describe the issue
           chi-textarea(id="example__danger" state="danger" required)
-          div.chi-label.-status.-danger Please describe the issue.
+          div.chi-label.-status.-danger
+            chi-icon(icon="circle-warning")
+            | Please describe the issue.
   .example-tabs.-pl--2
     ul.chi-tabs#example-state-danger
       li.-active
@@ -331,7 +333,10 @@ p.-text
       <div class="chi-form__item">
         <chi-label for="example__danger" required>Describe the issue</chi-label>
         <chi-textarea id="example__danger" state="danger" required></chi-textarea>
-        <div class="chi-label -status -danger">Please describe the issue.</div>
+        <div class="chi-label -status -danger">
+          <chi-icon icon="circle-warning"></chi-icon>
+          Please describe the issue.
+        </div>
       </div>
   .chi-tabs-panel#html-state-danger
     :code(lang="html")
@@ -341,7 +346,10 @@ p.-text
           <abbr class="chi-label__required" title="Required field">*</abbr>
         </label>
         <textarea class="chi-input -danger" id="example__danger" required></textarea>
-        <div class="chi-label -status -danger">Please describe the issue.</div>
+        <div class="chi-label -status -danger">
+          <i class="chi-icon icon-circle-warning" aria-hidden="true"></i>
+          Please describe the issue.
+        </div>
       </div>
 
 h2 Layout Variations
