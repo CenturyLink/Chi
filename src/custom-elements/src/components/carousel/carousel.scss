@@ -4,3 +4,21 @@
   display: block;
   width: 100%;
 }
+
+:host(chi-carousel[dots]) {
+  .chi-carousel__control {
+    &.-next,
+    &.-previous {
+      height: calc(100% - 12px);
+    }
+  }
+}
+
+:host(chi-carousel[pagination]) {
+  .chi-carousel__control {
+    &.-next,
+    &.-previous {
+      height: calc(100% - 20px);
+    }
+  }
+}
