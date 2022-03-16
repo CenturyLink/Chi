@@ -232,7 +232,9 @@ p.-text
         label(for="checkbox-er1" class="chi-checkbox__label -danger")
           | I accept the Terms of Service
           abbr.chi-label__required(title="Required field") *
-      .chi-label.-status.-danger Please accept the terms of service.
+      .chi-label.-status.-danger
+        i.chi-icon.icon-circle-warning(aria-hidden="true")
+        | Please accept the terms of service.
   .example-tabs.-pl--2
     ul.chi-tabs#example-error
       li.-disabled
@@ -250,7 +252,10 @@ p.-text
             <abbr class="chi-label__required" title="Required field">*</abbr>
           </label>
         </div>
-        <div class="chi-label -status -danger">Please accept the terms of service.</div>
+        <div class="chi-label -status -danger">
+          <i class="chi-icon icon-circle-warning" aria-hidden="true"></i>
+          Please accept the terms of service.
+        </div>
       </div>
 
 h2 Layout Variations
