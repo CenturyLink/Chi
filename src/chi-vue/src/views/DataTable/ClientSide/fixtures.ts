@@ -257,6 +257,9 @@ export const exampleTableBody = [
     },
     active: false,
     selectionDisabled: true,
+    print: {
+      isNestedContentPrintDisabled: true,
+    },
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021063' } },
       {
