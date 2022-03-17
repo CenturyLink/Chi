@@ -69,7 +69,7 @@ $states: (
       left: -0.0625rem;
       position: absolute;
       top: -0.0625rem;
-      width: 0.25rem;
+      width: $alert-accent-border-width;
     }
   }
 
