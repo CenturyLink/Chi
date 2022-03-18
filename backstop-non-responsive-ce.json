@@ -230,6 +230,29 @@
       "requireSameDimensions": true
     },
     {
+      "label": "Carousel",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/carousel.html",
+      "referenceUrl": "",
+      "readyEvent": "backstop_ready",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-base",
+        ".test-single",
+        ".test-dots",
+        ".test-pagination"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "date-picker",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/custom-elements/date-picker.html",
