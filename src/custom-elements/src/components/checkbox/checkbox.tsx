@@ -59,11 +59,7 @@ export class Checkbox {
   }
 
   _updateIndeterminate() {
-    if (this.indeterminate) {
-      this.input.indeterminate = true;
-    } else {
-      this.input.indeterminate = false;
-    }
+    this.input.indeterminate = this.indeterminate;
   }
 
   @Watch('indeterminate')
