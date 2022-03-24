@@ -1,4 +1,9 @@
 # CHANGELOG
+## 5.X.X (March X, 2022)
+### Components
+#### Added
+* Added: Checkbox web component.
+
 ## 5.11.0 (March 18, 2022)
 ### Components
 #### Added
