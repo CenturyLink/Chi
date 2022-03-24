@@ -1,4 +1,6 @@
-export const exampleConfig = {
+import { DataTableConfig } from '@/constants/types';
+
+export const exampleConfig: DataTableConfig = {
   columnResize: true,
   noResultsMessage: 'No matches found. Please revise search criteria and try again.',
   style: {
@@ -32,6 +34,9 @@ export const exampleConfig = {
   },
   truncation: true,
   treeSelection: true,
+  print: {
+    isNestedContentPrintDisabled: true,
+  },
 };
 
 const exampleColumns = [
