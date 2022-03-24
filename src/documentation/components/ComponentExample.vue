@@ -21,14 +21,86 @@
       </span>
     </h3>
     <slot name="example-description"></slot>
-    <div class="example -mb--3" :style="additionalStyle">
+    <div v-if="headTabs">
+      <ul
+        :id="'head-tabs-' + id"
+        :aria-label="'head-tabs-' + id"
+        class="chi-tabs -animated"
+        role="tablist"
+      >
+        <li
+          :class="[headTab.active ? '-active' : '']"
+          :key="headTab.id"
+          v-for="headTab in headTabs"
+          role="tab"
+        >
+          <a
+            :href="'#head-tabs-' + id + '-' + headTab.id"
+            :aria-selected="headTab.active ? true : false"
+            :aria-controls="'#head-tabs-' + id + '-' + headTab.id"
+            @click="emitHeadTabsChange(headTab)"
+            >{{ headTab.label }}</a
+          >
+        </li>
+      </ul>
+      <div
+        :class="['chi-tabs-panel', headTab.active ? '-active' : '']"
+        :id="'head-tabs-' + id + '-' + headTab.id"
+        :key="headTab.id"
+        v-for="headTab in headTabs"
+        role="tabpanel"
+      >
+        <div class="example -mb--3" :style="additionalStyle">
+          <div :class="[padding || '-p--3', additionalClasses]">
+            <slot name="example"></slot>
+          </div>
+          <div class="example-tabs -pl--2">
+            <ul
+              :id="'code-snippet-tabs-' + id + '-' + headTab.id"
+              class="chi-tabs -animated"
+              role="tabs"
+            >
+              <li
+                :class="[
+                  tab.active ? '-active' : '',
+                  tab.disabled ? '-disabled' : ''
+                ]"
+                :key="tab.id"
+                v-for="tab in tabs"
+              >
+                <a
+                  :href="'#example-' + id + '-' + headTab.id + '-' + tab.id"
+                  :aria-controls="
+                    '#example-' + id + '-' + headTab.id + '-' + tab.id
+                  "
+                  :aria-selected="tab.active ? true : false"
+                  role="tab"
+                >
+                  {{ tab.label }}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            :class="['chi-tabs-panel', tab.active ? '-active' : '']"
+            :key="tab.id"
+            :id="'example-' + id + '-' + headTab.id + '-' + tab.id"
+            v-for="tab in tabs"
+            role="tabpanel"
+          >
+            <slot :name="'code-' + id + '-' + headTab.id + '-' + tab.id"></slot>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-else class="example -mb--3" :style="additionalStyle">
       <div :class="[padding || '-p--3', additionalClasses]">
         <slot name="example"></slot>
       </div>
       <div class="example-tabs -pl--2">
         <ul
           class="chi-tabs -animated"
-          :id="'code-snippet-tabs' + id"
+          :id="'code-snippet-tabs-' + id"
           role="tabs"
         >
           <li
@@ -41,9 +113,9 @@
           >
             <a
               role="tab"
-              :aria-controls="'#example-' + '-' + id + '-' + tab.id"
+              :aria-controls="'#example-' + id + '-' + tab.id"
               :aria-selected="tab.active ? true : false"
-              :href="'#example-' + '-' + id + '-' + tab.id"
+              :href="'#example-' + id + '-' + tab.id"
               :tabindex="tab.disabled ? -1 : null"
             >
               {{ tab.label }}
@@ -55,7 +127,7 @@
         :class="['chi-tabs-panel', tab.active ? '-active' : '']"
         v-for="tab in tabs"
         :key="tab.id"
-        :id="'example-' + '-' + id + '-' + tab.id"
+        :id="'example-' + id + '-' + tab.id"
         role="tabpanel"
       >
         <slot :name="'code-' + tab.id"></slot>
@@ -64,9 +136,17 @@
   </div>
 </template>
 
+<style>
+pre code.hljs {
+  display: unset;
+  padding: 0;
+}
+</style>
+
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { TabsInterface } from '../models/models';
+import { TabsInterface, HeadTabsInterface } from '../models/models';
+import { COMPONENT_EXAMPLE_EVENTS } from '../constants/constants';
 
 declare const chi: any;
 
@@ -86,20 +166,36 @@ export default class ComponentExample extends Vue {
   @Prop() title?: string;
   @Prop() titleSize?: 'h3' | 'h4';
   @Prop() tabs?: TabsInterface[];
+  @Prop() headTabs?: HeadTabsInterface[];
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
   @Prop() additionalStyle?: string;
 
   chiTabs: any;
+  chiHeadTabs: any;
 
   mounted() {
     const chiTabs = document.getElementById(
-      'code-snippet-tabs' + this.$props.id
+      'code-snippet-tabs-' + this.$props.id
     );
+    const chiHeadTabs = document.getElementById('head-tabs-' + this.$props.id);
 
-    if (chiTabs) {
-      this.chiTabs = chi.tab(chiTabs);
-    }
+    if (chiTabs) this.chiTabs = chi.tab(chiTabs);
+    if (chiHeadTabs) {
+      this.headTabs?.forEach((tab: HeadTabsInterface) => {
+        const codeSnippetTab = document.getElementById(
+          `code-snippet-tabs-${this.$props.id}-${tab.id}`
+        );
+
+        if (codeSnippetTab) chi.tab(codeSnippetTab);
+      });
+
+      this.chiHeadTabs = chi.tab(chiHeadTabs);
+    };
+  }
+
+  emitHeadTabsChange(tab: HeadTabsInterface) {
+    this.$emit(COMPONENT_EXAMPLE_EVENTS.CHI_HEAD_TABS_CHANGE, tab);
   }
 }
 </script>

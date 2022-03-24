@@ -193,63 +193,23 @@
             i.chi-icon.icon-search(aria-hidden='true')
       .chi-header__end
         .chi-dropdown
-          button#version-dropdown.chi-button.-flat.-px--1.chi-dropdown__trigger.-animate(
+          button.chi-button.-flat.-px--1.chi-dropdown__trigger.-animate(
             data-position='bottom-end',
             aria-label='Toggle Chi version'
-          ) v5.7.0
+            ref="versionDropdown"
+          ) v{{versions[0]}}
           #versionDropdown.chi-dropdown__menu(
             style='width: 10rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(76px, 40px, 0px)',
             x-placement='bottom-end'
           )
-            a.chi-dropdown__menu-item.-active(
-              href='https://assets.ctl.io/chi/5.7.0'
-            ) v5.7.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.6.0') v5.6.0       
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.5.0') v5.5.0       
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.4.0') v5.4.0       
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.3.1') v5.3.1
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.3.0') v5.3.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.2.0') v5.2.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.1.0') v5.1.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.0.0') v5.0.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.4.0') v4.4.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.3.0') v4.3.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.2.0') v4.2.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.1.2') v4.1.2
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.1.1') v4.1.1
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.1.0') v4.1.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.0.0') v4.0.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.17.0') v3.17.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.16.0') v3.16.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.15.0') v3.15.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.14.0') v3.14.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.13.0') v3.13.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.12.0') v3.12.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.11.0') v3.11.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.10.0') v3.10.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.9.0') v3.9.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.8.0') v3.8.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.7.0') v3.7.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.6.0') v3.6.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.5.0') v3.5.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.4.0') v3.4.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.3.0') v3.3.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.2.0') v3.2.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.1.1') v3.1.1
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.1.0') v3.1.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.0.0') v3.0.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.6.0') v2.6.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.5.1') v2.5.1
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.5.0') v2.5.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.4.1') v2.4.1
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.4.0') v2.4.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.3.0') v2.3.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.2.0') v2.2.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.1.0') v2.1.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.0.0') v2.0.0
+            a.chi-dropdown__menu-item(
+              v-for="version in versions" 
+              :class="version === versions[0] ? '-active' : ''" 
+              :href="`https://assets.ctl.io/chi/${version}`") v{{version}}
         .chi-dropdown
           button#support.chi-button.-flat.-px--1.-ml--1.chi-dropdown__trigger.-animate(
             data-position='bottom-end'
+            ref="supportDropdown"
           ) Support
           .chi-dropdown__menu(
             style='width: 14rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(100px, 40px, 0px)',
@@ -276,10 +236,23 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { allChiVersions } from '../constants/constants';
+
+declare const chi: any;
 
 Vue.config.ignoredElements = ['chi-brand'];
 @Component
-export default class Header extends Vue {}
+export default class Header extends Vue {
+  versions = allChiVersions.reverse();
+
+  mounted() {
+    const versionDropdownElement = this.$refs.versionDropdown as HTMLElement;
+    const supportDropdownElement = this.$refs.supportDropdown as HTMLElement;
+
+    chi.dropdown(versionDropdownElement);
+    chi.dropdown(supportDropdownElement);
+  }
+}
 </script>
 
 <style scoped lang="scss"></style>
