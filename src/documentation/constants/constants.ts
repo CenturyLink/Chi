@@ -93,7 +93,7 @@ export const allChiVersions = [
   '5.8.0',
   '5.9.0',
   '5.9.1',
-  '5.9.11'
+  '5.11.0'
 ];
 
 export const COMPONENT_EXAMPLE_EVENTS = {
