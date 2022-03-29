@@ -8,6 +8,7 @@ import {
   Watch
 } from '@stencil/core';
 import { CHECKBOX_CLASSES, SR_ONLY } from '../../constants/classes';
+import { ChiStates } from '../../constants/states';
 
 @Component({
   tag: 'chi-checkbox',
@@ -35,6 +36,14 @@ export class Checkbox {
    * To disable the checkbox
    */
   @Prop() disabled?: boolean;
+  /**
+   * To indicate which form field is required.
+   */
+  @Prop() required = false;
+  /**
+   * To indicate the state.
+   */
+  @Prop() state?: ChiStates;
 
   private input?: HTMLInputElement;
   id: string;
@@ -74,6 +83,13 @@ export class Checkbox {
   }
 
   render() {
+    const required = <abbr class="chi-label__required" title="Required field">*</abbr>;
+    let message = '';
+
+    if (this.required) {
+      message = required;
+    }
+
     return (
       <div class={CHECKBOX_CLASSES.checkbox}>
         <input
@@ -87,11 +103,12 @@ export class Checkbox {
           onChange={(ev: Event) => this.toggle(ev)}
           type="checkbox"
         />
-        <label class={CHECKBOX_CLASSES.LABEL} htmlFor={`${this.id}-control`}>
+        <label class={`${CHECKBOX_CLASSES.LABEL} ${this.state ? `-${this.state}` : ''}`} htmlFor={`${this.id}-control`}>
           {this.label}
           <div class={SR_ONLY}>
             Select {this.label || this.name} {this.id}
           </div>
+          {message}
         </label>
       </div>
     );
