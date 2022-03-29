@@ -9,12 +9,14 @@ h3 Base
         label(for="checkbox-ba1" class="chi-checkbox__label") Checkbox
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
-      li.-disabled
-        a(href=`#webcomponent-base`) Web Component
       li.-active
+        a(href=`#webcomponent-base`) Web Component
+      li
         a(href=`#html-base`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-base
-  .chi-tabs-panel.-active#html-base
+  .chi-tabs-panel.-active#webcomponent-base
+    :code(lang="html")
+      <chi-checkbox id="checkbox-ba1" label="Checkbox"></chi-checkbox>
+  .chi-tabs-panel#html-base
     :code(lang="html")
       <div class="chi-form__item">
         <div class="chi-checkbox">
@@ -35,12 +37,14 @@ p.-text
         label(for="checkbox-ch1" class="chi-checkbox__label") Checkbox
   .example-tabs.-pl--2
     ul.chi-tabs#example-checked
-      li.-disabled
-        a(href=`#webcomponent-checked`) Web Component
       li.-active
+        a(href=`#webcomponent-checked`) Web Component
+      li
         a(href=`#html-checked`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-checked
-  .chi-tabs-panel.-active#html-checked
+  .chi-tabs-panel.-active#webcomponent-checked
+    :code(lang="html")
+      <chi-checkbox id="checkbox-ch1" label="Checkbox" checked></chi-checkbox>
+  .chi-tabs-panel#html-checked
     :code(lang="html")
       <div class="chi-form__item">
         <div class="chi-checkbox">
@@ -63,12 +67,14 @@ p.-text
 
   .example-tabs.-pl--2
     ul.chi-tabs#example-indeterminate
-      li.-disabled
-        a(href=`#webcomponent-indeterminate`) Web Component
       li.-active
+        a(href=`#webcomponent-indeterminate`) Web Component
+      li
         a(href=`#html-indeterminate`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-indeterminate
-  .chi-tabs-panel.-active#html-indeterminate
+  .chi-tabs-panel.-active#webcomponent-indeterminate
+    :code(lang="html")
+      <chi-checkbox id="checkbox-ind1" label="Checkbox" indeterminate></chi-checkbox>
+  .chi-tabs-panel#html-indeterminate
     :code(lang="html")
       <div class="chi-form__item">
         <div class="chi-checkbox">
@@ -97,12 +103,14 @@ p.-text
         label(for="checkbox-di1" class="chi-checkbox__label") Checkbox
   .example-tabs.-pl--2
     ul.chi-tabs#example-disabled
-      li.-disabled
-        a(href=`#webcomponent-disabled`) Web Component
       li.-active
+        a(href=`#webcomponent-disabled`) Web Component
+      li
         a(href=`#html-disabled`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-disabled
-  .chi-tabs-panel.-active#html-disabled
+  .chi-tabs-panel.-active#webcomponent-disabled
+    :code(lang="html")
+      <chi-checkbox id="checkbox-dis1" label="Checkbox" disabled></chi-checkbox>
+  .chi-tabs-panel#html-disabled
     :code(lang="html")
       <div class="chi-form__item">
         <div class="chi-checkbox">
@@ -125,12 +133,14 @@ p.-text
           abbr.chi-label__required(title="Required field") *
   .example-tabs.-pl--2
     ul.chi-tabs#example-required
-      li.-disabled
-        a(href=`#webcomponent-required`) Web Component
       li.-active
+        a(href=`#webcomponent-required`) Web Component
+      li
         a(href=`#html-required`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-required
-  .chi-tabs-panel.-active#html-required
+  .chi-tabs-panel.-active#webcomponent-required
+    :code(lang="hmtl")
+      <chi-checkbox id="checkbox-req1" label="I accept the Terms of Service" required></chi-checkbox>
+  .chi-tabs-panel#html-required
     :code(lang="html")
       <div class="chi-form__item">
         <div class="chi-checkbox">
@@ -161,12 +171,22 @@ p.-text
                 | Helpful information goes here.
   .example-tabs.-pl--2
     ul.chi-tabs#example-help
-      li.-disabled
-        a(href=`#webcomponent-help`) Web Component
       li.-active
+        a(href=`#webcomponent-help`) Web Component
+      li
         a(href=`#html-help`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-help
-  .chi-tabs-panel.-active#html-help
+  .chi-tabs-panel.-active#webcomponent-help
+    :code(lang="html")
+      <chi-checkbox id="checkbox-he1" label="Checkbox"></chi-checkbox>
+      <div class="chi-label__help">
+        <chi-button id="example__help-button" type="icon" size="xs" variant="flat" alternative-text="Help">
+          <chi-icon icon="circle-info-outline"></chi-icon>
+        </chi-button>
+        <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button">
+          Helpful information goes here.
+        </chi-popover>
+      </div>
+  .chi-tabs-panel#html-help
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -204,12 +224,17 @@ p.-text
       .chi-label.-status Optional input message
   .example-tabs.-pl--2
     ul.chi-tabs#example-message
-      li.-disabled
-        a(href=`#webcomponent-message`) Web Component
       li.-active
+        a(href=`#webcomponent-message`) Web Component
+      li
         a(href=`#html-message`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-message
-  .chi-tabs-panel.-active#html-message
+  .chi-tabs-panel.-active#webcomponent-message
+    :code(lang="html")
+      <chi-checkbox id="checkbox-ms1" label="Checkbox"></chi-checkbox>
+      <div class="chi-label -status">
+        Optional input message
+      </div>
+  .chi-tabs-panel#html-message
     :code(lang="html")
       <div class="chi-form__item">
         <div class="chi-checkbox">
@@ -237,12 +262,18 @@ p.-text
         | Please accept the terms of service.
   .example-tabs.-pl--2
     ul.chi-tabs#example-error
-      li.-disabled
-        a(href=`#webcomponent-error`) Web Component
       li.-active
+        a(href=`#webcomponent-error`) Web Component
+      li
         a(href=`#html-error`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-error
-  .chi-tabs-panel.-active#html-error
+  .chi-tabs-panel.-active#webcomponent-error
+    :code(lang="html")
+      <chi-checkbox id="checkbox-er1" state="danger" label="I accept the Terms of Service" required></chi-checkbox>
+      <div class="chi-label -status -danger">
+        <chi-icon icon="circle-warning"></chi-icon>
+        Please accept the terms of service.
+      </div>
+  .chi-tabs-panel#html-error
     :code(lang="html")
       <div class="chi-form__item">
         <div class="chi-checkbox">
@@ -275,12 +306,20 @@ p.-text
         label(for="checkbox-st2" class="chi-checkbox__label") Option 2
   .example-tabs.-pl--2
     ul.chi-tabs#example-stacked
-      li.-disabled
-        a(href=`#webcomponent-stacked`) Web Component
       li.-active
+        a(href=`#webcomponent-stacked`) Web Component
+      li
         a(href=`#html-stacked`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-stacked
-  .chi-tabs-panel.-active#html-stacked
+  .chi-tabs-panel.-active#webcomponent-stacked
+    :code(lang="html")
+      <chi-label for="checkbox-id-stacked">Select options</chi-label>
+      <div class="chi-form__item">
+        <chi-checkbox id="checkbox-st1" label="Option 1"></chi-checkbox>
+      </div>
+      <div class="chi-form__item">
+        <chi-checkbox id="checkbox-st2" label="Option 2"></chi-checkbox>
+      </div>
+  .chi-tabs-panel#html-stacked
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Select options</legend>
@@ -316,12 +355,78 @@ p.-text
               label(for=`checkbox-g${i}` class="chi-checkbox__label")="Option " + i
   .example-tabs.-pl--2
     ul.chi-tabs#example-grid
-      li.-disabled
-        a(href=`#webcomponent-grid`) Web Component
       li.-active
+        a(href=`#webcomponent-grid`) Web Component
+      li
         a(href=`#html-grid`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-grid
-  .chi-tabs-panel.-active#html-grid
+  .chi-tabs-panel.-active#webcomponent-grid
+    :code(lang="html")
+      <div class="chi-grid">
+        <div class="chi-col -w--12 -mb--1">
+          <chi-label for="checkbox-id-grid">Select options</chi-label>
+        </div>
+        <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
+          <div class="chi-form__item">
+            <chi-checkbox id="checkbox-gr1" label="Option 1"></chi-checkbox>
+          </div>
+        </div>
+        <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
+          <div class="chi-form__item">
+            <chi-checkbox id="checkbox-gr2" label="Option 2"></chi-checkbox>
+          </div>
+        </div>
+        <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
+          <div class="chi-form__item">
+            <chi-checkbox id="checkbox-gr3" label="Option 3"></chi-checkbox>
+          </div>
+        </div>
+        <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
+          <div class="chi-form__item">
+            <chi-checkbox id="checkbox-gr4" label="Option 4"></chi-checkbox>
+          </div>
+        </div>
+        <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
+          <div class="chi-form__item">
+            <chi-checkbox id="checkbox-gr5" label="Option 5"></chi-checkbox>
+          </div>
+        </div>
+        <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
+          <div class="chi-form__item">
+            <chi-checkbox id="checkbox-gr6" label="Option 6"></chi-checkbox>
+          </div>
+        </div>
+        <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
+          <div class="chi-form__item">
+            <chi-checkbox id="checkbox-gr7" label="Option 7"></chi-checkbox>
+          </div>
+        </div>
+        <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
+          <div class="chi-form__item">
+            <chi-checkbox id="checkbox-gr8" label="Option 8"></chi-checkbox>
+          </div>
+        </div>
+        <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
+          <div class="chi-form__item">
+            <chi-checkbox id="checkbox-gr9" label="Option 9"></chi-checkbox>
+          </div>
+        </div>
+        <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
+          <div class="chi-form__item">
+            <chi-checkbox id="checkbox-gr10" label="Option 10"></chi-checkbox>
+          </div>
+        </div>
+        <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
+          <div class="chi-form__item">
+            <chi-checkbox id="checkbox-gr11" label="Option 11"></chi-checkbox>
+          </div>
+        </div>
+        <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
+          <div class="chi-form__item">
+            <chi-checkbox id="checkbox-gr12" label="Option 12"></chi-checkbox>
+          </div>
+        </div>
+      </div>
+  .chi-tabs-panel#html-grid
     :code(lang="html")
       <fieldset>
         <div class="chi-grid">
@@ -443,12 +548,20 @@ p.-text
         label(for="checkbox-in2", class="chi-checkbox__label") Option 2
   .example-tabs.-pl--2
     ul.chi-tabs#example-inline
-      li.-disabled
-        a(href=`#webcomponent-inline`) Web Component
       li.-active
+        a(href=`#webcomponent-inline`) Web Component
+      li
         a(href=`#html-inline`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-inline
-  .chi-tabs-panel.-active#html-inline
+  .chi-tabs-panel.-active#webcomponent-inline
+    :code(lang="html")
+      <chi-label for="checkbox-id-inline">Select options</chi-label>
+      <div class="chi-form__item -inline">
+        <chi-checkbox id="checkbox-in1" label="Option 1"></chi-checkbox>
+      </div>
+      <div class="chi-form__item -inline">
+        <chi-checkbox id="checkbox-in2" label="Option 2"></chi-checkbox>
+      </div>
+  .chi-tabs-panel#html-inline
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Select options</legend>
@@ -496,12 +609,31 @@ p.-text
           label(for="checkbox-li5", class="chi-checkbox__label") Option 5
   .example-tabs.-pl--2
     ul.chi-tabs#example-list
-      li.-disabled
-        a(href=`#webcomponent-list`) Web Component
       li.-active
+        a(href=`#webcomponent-list`) Web Component
+      li
         a(href=`#html-list`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-list
-  .chi-tabs-panel.-active#html-list
+  .chi-tabs-panel.-active#webcomponent-list
+    :code(lang="html")
+      <chi-label for="checkbox-id-list">Select options</chi-label>
+      <ul class="chi-form__item -list">
+        <li class="chi-form__item">
+          <chi-checkbox id="checkbox-li1" label="Option 1"></chi-checkbox>
+        </li>
+        <li class="chi-form__item">
+          <chi-checkbox id="checkbox-li2" label="Option 2"></chi-checkbox>
+        </li>
+        <li class="chi-form__item">
+          <chi-checkbox id="checkbox-li3" label="Option 3"></chi-checkbox>
+        </li>
+        <li class="chi-form__item">
+          <chi-checkbox id="checkbox-li4" label="Option 4"></chi-checkbox>
+        </li>
+        <li class="chi-form__item">
+          <chi-checkbox id="checkbox-li5" label="Option 5"></chi-checkbox>
+        </li>
+      </ul>
+  .chi-tabs-panel#html-list
     :code(lang='html')
       <fieldset>
         <legend class="chi-label">Select options</legend>
