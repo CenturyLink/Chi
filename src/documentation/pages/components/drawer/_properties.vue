@@ -349,13 +349,13 @@
     p.-text
       | Drawer components have a dispose function to free all resources attached to the element, such as event listeners
       | and object data. You should call this method when you want to remove the component.
-      pre.language-javascript
-        code.javascript(v-highlight="$data.codeMemory1")
+    pre.language-javascript
+       code.javascript(v-highlight="$data.codeMemory1")
     p.-text
       | It is safe to call the <code>drawer</code> method more than once, as it will return any previously created drawer component
       | associated with the trigger.
-      pre.language-javascript
-        code.javascript(v-highlight="$data.codeMemory2")
+    pre.language-javascript
+      code.javascript(v-highlight="$data.codeMemory2")
 </template>
 
 <script lang="ts">

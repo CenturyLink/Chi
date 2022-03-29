@@ -43,7 +43,12 @@ import { HeadTabsInterface } from '../../../../models/models';
           label: 'Closable',
           codeSnippets: {
             webComponent: {
-              code: `<!-- Drawer -->
+              code: `<!-- Trigger -->
+<chi-button id="drawer-trigger-14" variant="flat" type="icon">
+  <chi-icon icon="menu" size="sm--2"></chi-icon>
+</chi-button>
+
+<!-- Drawer -->
 <chi-drawer id="interactive-drawer-14" position="left" backdrop no-header>
   <div class="-p--2 -pt--6 -text">Drawer content here</div>
 </chi-drawer>
@@ -59,7 +64,12 @@ import { HeadTabsInterface } from '../../../../models/models';
 <\/script>`
             },
             vue: {
-              code: `<!-- Vue component -->
+              code: `<!-- Trigger -->
+<button class="chi-button -flat -icon" @click="() => toggleDrawer()">
+  <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
+</button>
+
+<!-- Vue component -->
 <ChiDrawer
   position="left"
   :active="this.drawerActive"
