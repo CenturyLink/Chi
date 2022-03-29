@@ -172,11 +172,8 @@ export class ChiPhoneInput {
 
   _inputHandler = (event: Event): void => {
     event.stopPropagation();
-    this._suffix = new AsYouType(this._country.countryAbbr).input(
-      (event.target as HTMLInputElement).value
-    );
-    this.value = this._getValue();
-    this.chiInput.emit(this.value);
+
+    this.chiInput.emit((event.target as HTMLInputElement).value);
   };
 
   _prefixChangeHandler(event: Event, country: Country): void {
