@@ -173,7 +173,9 @@ export class ChiPhoneInput {
   _inputHandler = (event: Event): void => {
     event.stopPropagation();
 
-    this.chiInput.emit((event.target as HTMLInputElement).value);
+    this.chiInput.emit(
+      this._prefix + '-' + (event.target as HTMLInputElement).value
+    );
   };
 
   _prefixChangeHandler(event: Event, country: Country): void {

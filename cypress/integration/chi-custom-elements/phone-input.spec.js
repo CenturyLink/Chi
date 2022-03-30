@@ -106,13 +106,13 @@ describe('Phone Input', () => {
         .type('1{Enter}')
         .then(() => {
           expect(spy).to.be.calledOnce;
-          expect(spy.getCall(0).args[0].detail).to.equal('1');
+          expect(spy.getCall(0).args[0].detail).to.equal('+46-1');
         });
       cy.get('@phoneInput')
         .clear()
         .then(() => {
           expect(spy).to.be.calledTwice;
-          expect(spy.getCall(1).args[0].detail).to.equal('');
+          expect(spy.getCall(1).args[0].detail).to.equal('+46-');
         });
     });
 
