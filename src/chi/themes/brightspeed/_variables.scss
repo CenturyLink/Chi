@@ -812,7 +812,7 @@ $divider-vertical-border-color:             rgba($color-black, 0.12);
 $divider-vertical-inverse-border-color:     rgba($color-white, 0.2);
 
 // Data Table
-$data-table-row-striped-background-color:   $color-navy-10;
+$data-table-row-striped-background-color:   $color-grey-20;
 $data-table-row-active-background-color:    $color-yellow-20;
 $data-table-row-active-marker-color:        $color-border-primary;
 $data-table-row-hover-background-color:     $data-table-row-active-background-color;
@@ -1517,7 +1517,7 @@ $table-row-cell-disabled-text-color:        rgba($color-text-base, 0.4);
 $table-row-active-cell-background-color:    $color-yellow-20;
 $table-row-active-cell-accent-border-color: $color-yellow-40;
 
-$table-striped-row-background-color:        $color-background-muted-lighter;
+$table-striped-row-background-color:        $color-grey-20;
 $table-bordered-row-cell-border-color:      $color-border-base-dark;
 $table-bordered-header-cell-border-color:   $color-border-base-dark;
 
