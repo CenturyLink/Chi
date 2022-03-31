@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Compact Feed" id="compact-feed" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Compact Feed" id="compact-feed" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Apply the modifier class <code>-feed</code> and the modifier class <code>-compact</code> to render with compact feed style
     .-p-md--5(slot="example")

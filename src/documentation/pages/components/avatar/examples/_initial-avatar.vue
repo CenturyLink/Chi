@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Initial Avatars" id="initial-avatars" :tabs="exampleTabs">
+  <ComponentExample title="Initial Avatars" id="initial-avatars" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Initial avatars can also be used when an image is not available.
       | They are more versatile than icon avatars and support up to two letters.
