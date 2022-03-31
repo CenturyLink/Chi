@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Base" id="base" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Base" id="base" padding="-p--0" :tabs="exampleTabs">
     .-p-md--5(slot="example")
       .chi-activity
         .chi-activity__day
