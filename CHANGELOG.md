@@ -1,8 +1,12 @@
 # CHANGELOG
-## 5.X.X (March X, 2022)
+## 5.12.0 (March 30, 2022)
 ### Components
 #### Added
 * Added: Checkbox web component.
+#### Changed
+* Changed: Date picker web component now emits `chiDateInvalid` event instead of selecting today's date when the typed date is invalid.
+#### Fixed
+* Fixed: Phone input web component cursor position when editing phone number.
 
 ## 5.11.0 (March 18, 2022)
 ### Components
