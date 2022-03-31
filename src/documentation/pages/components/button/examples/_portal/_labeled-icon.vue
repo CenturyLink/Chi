@@ -1,7 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    .chi-avatar(slot="example")
-      img(src='../../../../assets/images/avatar.jpg', alt="avatar")
+  <ComponentExample titleSize="h3" title="Labeled icon buttons" id="labeled-portal" :tabs="exampleTabs">
+    .-d--flex(slot="example")
+      .-pr--2
+        chi-button(size='xs')
+          chi-icon(icon='edit')
+          span Edit
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -19,24 +22,29 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          disabled: true,
+          active: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
-          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<div class="chi-avatar">
-  <img src="path/to/image.jpg" alt="avatar">
-</div>`,
+        webcomponent: `<chi-button size="xs">
+  <chi-icon icon="edit"></chi-icon>
+  <span>Edit</span>
+</chi-button>`,
+        htmlblueprint: `<button class="chi-button -xs">
+  <div class="chi-button__content">
+    <i class="chi-icon icon-edit" aria-hidden="true"></i>
+    <span>Edit</span>
+  </div>
+</button>`,
       },
     };
   },
 })
-export default class Base extends Vue {}
+export default class LabeledIconPortal extends Vue {}
 </script>

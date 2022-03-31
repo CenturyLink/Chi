@@ -1,7 +1,6 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    .chi-avatar(slot="example")
-      img(src='../../../../assets/images/avatar.jpg', alt="avatar")
+  <ComponentExample titleSize="h3" title="Close icon button" id="close-icon" :tabs="exampleTabs">
+    chi-button(type='close' slot="example")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -19,24 +18,25 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          disabled: true,
+          active: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
-          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
       codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<div class="chi-avatar">
-  <img src="path/to/image.jpg" alt="avatar">
-</div>`,
+        webcomponent: `<chi-button type="close"></chi-button>`,
+        htmlblueprint: `<button class="chi-button -icon -close" aria-label="Close">
+  <div class="chi-button__content">
+    <i class="chi-icon icon-x" aria-hidden="true"></i>
+  </div>
+</button>`,
       },
     };
   },
 })
-export default class Base extends Vue {}
+export default class CloseIcon extends Vue {}
 </script>
