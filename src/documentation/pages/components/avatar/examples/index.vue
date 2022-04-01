@@ -1,12 +1,12 @@
 <template lang="pug">
   div
-    h3 Examples
+    h2 Examples
     p.-text
       | To render an avatar, apply the class <code>chi-avatar</code> to a div element and place an image inside.
     <Base />
     <IconAvatar />
     <InitialAvatar />
-    h3 Customizations
+    h2 Customizations
     <ColorCustomization />
     <LightTransparent />
     <Sizes />

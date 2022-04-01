@@ -10,6 +10,16 @@
         >
       </span>
     </h4>
+    <h2 v-else-if="titleSize === 'h2'" class="-anchor" :id="id">
+      {{ title }}
+      <span>
+        <a
+          class="-ml--1"
+          :href="'?theme=' + $store.state.themes.theme + '#' + id"
+          >#</a
+        >
+      </span>
+    </h2>
     <h3 v-else class="-anchor" :id="id">
       {{ title }}
       <span>

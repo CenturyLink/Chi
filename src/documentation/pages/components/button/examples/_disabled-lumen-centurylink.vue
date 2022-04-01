@@ -1,12 +1,9 @@
 <template lang="pug">
-  <ComponentExample title="Icon Avatars" id="icon-avatars" :tabs="exampleTabs">
+  <ComponentExample titleSize="h2" title="Disabled" id="disabled-lumen-centurylink" :tabs="exampleTabs">
     p.-text(slot="example-description")
-      | Icon avatars can be used when an image is not available.
-      | To use, wrap any <a href="/components/icon/">Chi icon</a> with <code>chi-avatar</code>.
-    .chi-grid(slot="example")
-      .chi-col.-w--2.-w-sm--1(v-for="icon in iconExamples")
-        .chi-avatar
-          i(:class="`chi-icon icon-${icon}`", aria-hidden='true')
+      | Make buttons appear inactive by adding the <code>disabled</code> boolean attribute
+      | or <code>-disabled</code> class.
+    chi-button(color='primary' slot="example" disabled) Button
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -24,25 +21,25 @@ import { Component, Vue } from 'vue-property-decorator';
     return {
       exampleTabs: [
         {
-          disabled: true,
+          active: true,
           id: 'webcomponent',
           label: 'Web component',
         },
         {
-          active: true,
           id: 'htmlblueprint',
           label: 'HTML blueprint',
         },
       ],
-      iconExamples: ['user', 'users', 'atom'],
       codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<div class="chi-avatar">
-  <i class="chi-icon icon-user" aria-hidden="true"></i>
-</div>`,
+        webcomponent: `<chi-button color="primary" disabled>Button</chi-button>`,
+        htmlblueprint: `<!-- Disabled boolean attribute -->
+<button class="chi-button -primary" disabled>Button</button>
+
+<!-- Disabled class -->
+<button class="chi-button -primary -disabled">Button</button>`,
       },
     };
   },
 })
-export default class IconAvatar extends Vue {}
+export default class DisabledLumenCenturyLink extends Vue {}
 </script>
