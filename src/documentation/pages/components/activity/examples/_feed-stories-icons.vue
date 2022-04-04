@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Feed with stories and operation icons" id="feed-stories-icons" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Feed with stories and operation icons" id="feed-stories-icons" padding="-p--0" :tabs="exampleTabs">
     .-p-md--5(slot="example")
       .chi-activity.-feed.-stories
         .chi-activity__day

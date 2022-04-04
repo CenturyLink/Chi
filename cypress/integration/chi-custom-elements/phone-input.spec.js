@@ -257,7 +257,7 @@ describe('Phone Input', () => {
       hasClassAssertion('@trigger', `-${SIZES.md}`);
     });
 
-    it('Should format the phone number as you type as long as it is valid', () => {
+    it.skip('Should format the phone number as you type as long as it is valid', () => {
       cy.get(`@dropdownTrigger`)
         .click()
         .find('.chi-dropdown__menu-item')
@@ -288,7 +288,7 @@ describe('Phone Input', () => {
         .first()
         .click()
         .then(() => {
-          cy.get('@base').should('have.attr', 'value', '+358-');
+          cy.get('@base').should('have.attr', 'value', '+358-1');
         });
     });
 

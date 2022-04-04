@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Feed" id="feed" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="Feed" id="feed" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Apply the modifier class <code>-feed</code> to render with feed style
     .-p-md--5(slot="example")

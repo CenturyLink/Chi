@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentTabExample titleSize="h4" title="Color" id="color" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
+  <ComponentTabExample title="Color" id="color" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
     p.-text(slot="example-description")
       | Both icon and initial avatars support <a href="../../foundations/color/">Chi colors</a>.
       | To color an icon, apply any of the following color classes: <code>-grey</code>, <code>-red</code>,

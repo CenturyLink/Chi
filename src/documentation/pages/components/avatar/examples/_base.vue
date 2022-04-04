@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Base" id="base" :tabs="exampleTabs">
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
     .chi-avatar(slot="example")
       img(src='../../../../assets/images/avatar.jpg', alt="avatar")
     <pre class="language-html" slot="code-webcomponent">
