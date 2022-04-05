@@ -75,6 +75,11 @@ export class DatePicker {
    */
   @Event({ eventName: 'chiDateChange' }) eventChange: EventEmitter;
 
+  /**
+   * Triggered if the date value introduced by the user is invalid
+   */
+  @Event({ eventName: 'chiDateInvalid' }) eventInvalid: EventEmitter;
+
   @Element() el: HTMLElement;
 
   private _input: HTMLInputElement;
@@ -207,9 +212,9 @@ export class DatePicker {
           this.eventChange.emit(this.value);
         }
       } else {
-        this.value = dayjs().format(this.format);
-        this._input.value = this.value;
-        this.eventChange.emit(this.value);
+        this.eventInvalid.emit(this._input.value);
+        this.value = '';
+        this._input.value = '';
       }
     }
   }
