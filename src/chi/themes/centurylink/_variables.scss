@@ -793,6 +793,8 @@ $carousel-dot-border-color:                 $color-border-primary;
 $carousel-dot-hover-background-color:       $color-background-primary;
 $carousel-dot-active-background-color:      $color-background-primary;
 $carousel-dot-size:                         $icon-size-xs;
+$carousel-controller-height-dots:           calc(100% - #{$icon-size-xs});
+$carousel-controller-height-pagination:     calc(100% - #{$icon-size-sm2});
 
 // Checkbox
 $checkbox-background-color:                 $color-background-white;
