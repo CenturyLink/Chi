@@ -18,6 +18,7 @@ const dayToReturn =
 const today =
   monthToReturn + '/' + dayToReturn + '/' + dateObject.getFullYear();
 const chiDateChange = 'chiDateChange';
+const chiDateInvalid = 'chiDateInvalid';
 
 describe('Date picker', function() {
   const chiDatePicker = 'CHI-DATE-PICKER';
@@ -89,6 +90,30 @@ describe('Date picker', function() {
           expect(spy.getCall(0).args[0].target.nodeName).to.equal(
             chiDatePicker
           );
+        });
+    });
+  });
+
+  describe(chiDateInvalid, () => {
+    beforeEach(() => {
+      cy.get('[data-cy="test-input-combined-picker"]').as('picker');
+    });
+
+    it(`Manually introducing an invalid date emits the ${chiDateInvalid} event`, function() {
+      const date = '14/02/2021';
+      const spy = cy.spy();
+
+      cy.get('@picker').then(el => {
+        el.on(chiDateInvalid, spy);
+      });
+
+      cy.get('@picker')
+        .find('input')
+        .clear()
+        .type(`${date}{Enter}`)
+        .then(() => {
+          expect(spy).to.be.calledOnce;
+          expect(spy.getCall(0).args[0].detail).to.equal(date);
         });
     });
   });
@@ -169,16 +194,6 @@ describe('Date picker', function() {
       .trigger('change')
       .get('[data-cy="test-input-combined"] input')
       .should('have.value', '12/31/2099');
-  });
-
-  it('Date-picker should reset input value to Today if the introduced date is invalid. ', function() {
-    cy.get('[data-cy="test-input-combined"]')
-      .find('input')
-      .clear()
-      .type('22/31/2099')
-      .trigger('change')
-      .get('[data-cy="test-input-combined-picker"]')
-      .should('have.value', today);
   });
 
   it('Should render calendar with multiple active days when attribute' +

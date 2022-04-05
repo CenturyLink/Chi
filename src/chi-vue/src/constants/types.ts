@@ -53,6 +53,11 @@ export interface DataTableRow {
   rowNumber: string;
   selected?: boolean | 'indeterminate';
   selectionDisabled?: boolean;
+  parentRowId?: string | null;
+  rootLevelRowId?: string | null;
+  print?: {
+    isNestedContentPrintDisabled?: boolean;
+  };
 }
 export interface DataTableData {
   head: {
@@ -116,7 +121,11 @@ export interface DataTableConfig {
   selectable?: boolean | 'radio';
   reserveExpansionSlot?: boolean;
   truncation?: boolean;
-  printMode?: PrintModes;
+  print?: {
+    mode?: PrintModes;
+    isNestedContentPrintDisabled?: boolean;
+  };
+  treeSelection?: boolean;
 }
 export interface DataTableFilter {
   name: string;
