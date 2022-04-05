@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Icon Avatars" id="icon-avatars" :tabs="exampleTabs">
+  <ComponentExample title="Icon Avatars" id="icon-avatars" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Icon avatars can be used when an image is not available.
       | To use, wrap any <a href="/components/icon/">Chi icon</a> with <code>chi-avatar</code>.

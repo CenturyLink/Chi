@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Light and transparent background" additionalClasses="-bg--black" id="light-transparent" :tabs="exampleTabs">
+  <ComponentExample title="Light and transparent background" additionalClasses="-bg--black" id="light-transparent" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Both icon and initial avatars support light and transparent versions for dark backgrounds.
     .chi-grid.-align-items--end(slot="example")
