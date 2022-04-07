@@ -15,6 +15,7 @@
           <li><NuxtLink to="/components/brand">Brand</NuxtLink></li>
           <li><NuxtLink to="/components/breadcrumb">Breadcrumb</NuxtLink></li>
           <li><NuxtLink to="/components/button">Button</NuxtLink></li>
+          <li><NuxtLink to="/components/button-group">Button group</NuxtLink></li>
           <li><NuxtLink to="/components/card">Card</NuxtLink></li>
           <li><NuxtLink to="/components/carousel">Carousel</NuxtLink></li>
           <li><NuxtLink to="/components/forms/checkbox">Checkbox</NuxtLink></li>
@@ -80,8 +81,6 @@
             >
           </li>
           <li><NuxtLink to="/components/tooltip">Tooltip</NuxtLink></li>
-          <!-- 
-          <li><NuxtLink to="/components/button-group">Button group</NuxtLink></li> -->
           <!-- <li><NuxtLink to="/components/data-table">Data table</NuxtLink></li> -->
           <!-- <li><NuxtLink to="/components/date-picker">Date picker</NuxtLink></li> -->
           <!-- <li>
