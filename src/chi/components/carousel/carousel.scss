@@ -49,6 +49,24 @@
     }
   }
 
+  &.-dots {
+    .chi-carousel__control {
+      &.-next,
+      &.-previous {
+        height: $carousel-controller-height-dots;
+      }
+    }
+  }
+
+  &.-pagination {
+    .chi-carousel__control {
+      &.-next,
+      &.-previous {
+        height: $carousel-controller-height-pagination;
+      }
+    }
+  }
+
   &__dots {
     display: flex;
     justify-content: center;
@@ -83,5 +101,6 @@
     display: flex;
     font-size: $font-size-sm;
     justify-content: center;
+    line-height: $carousel-pagination-line-height;
   }
 }

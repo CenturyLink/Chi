@@ -216,7 +216,7 @@ export class Carousel {
         } of {this.numberOfViews}
       </div> : null;
 
-    return <div class={`${CAROUSEL_CLASSES.CAROUSEL}`}>
+    return <div class={`${CAROUSEL_CLASSES.CAROUSEL} ${this.dots ? '-dots' : ''} ${this.pagination ? '-pagination' : ''}`}>
       <div class={CAROUSEL_CLASSES.CONTENT}>
         <div
           class={`
