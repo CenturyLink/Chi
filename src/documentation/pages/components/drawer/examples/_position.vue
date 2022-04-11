@@ -32,30 +32,33 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { HeadTabsInterface } from '../../../../models/models';
 
-@Component({
+@Component({ 
   data: () => {
     return {
-      headTabs: [
-        {
-          active: true,
-          id: 'left',
-          label: 'Left',
+      headTabs: ['left', 'right', 'top', 'bottom'].map((position, index) => {
+        const webComponentIds = [2, 4, 6, 8];
+        const htmlBlueprintIds = [3, 5, 7, 9];
+
+        return {
+          active: position === 'left' ? true : false,
+          id: position,
+          label: position.charAt(0).toUpperCase() + position.slice(1),
           codeSnippets: {
             webComponent: {
               code: `<!-- Trigger -->
-<chi-button id="drawer-trigger-2" variant="flat" type="icon">
+<chi-button id="drawer-trigger-${webComponentIds[index]}" variant="flat" type="icon">
   <chi-icon icon="menu" size="sm--2"></chi-icon>
 </chi-button>
 
 <!-- Drawer -->
-<chi-drawer id="interactive-drawer-2" position="left" no-header>
+<chi-drawer id="interactive-drawer-${webComponentIds[index]}" position="${position}" no-header>
   <div class="-p--2 -pt--6 -text">Drawer content here</div>
 </chi-drawer>
 
 <!-- JavaScript -->
 <script>
-  var drawer = document.getElementById('interactive-drawer-2');
-  var drawerTrigger = document.getElementById('drawer-trigger-2');
+  var drawer = document.getElementById('interactive-drawer-${webComponentIds[index]}');
+  var drawerTrigger = document.getElementById('drawer-trigger-${webComponentIds[index]}');
   drawerTrigger.addEventListener('click', function(){
     drawer.toggle();
     // or drawer.active = !drawer.active;
@@ -70,7 +73,7 @@ import { HeadTabsInterface } from '../../../../models/models';
 
 <!-- Vue component -->
 <ChiDrawer
-  position="left"
+  position="${position}"
   :active="this.drawerActive"
   :noHeader="true"
   backdrop
@@ -90,14 +93,14 @@ methods: {
             },
             htmlBlueprint: {
               code: `<!-- Trigger -->
-<button id="drawer-trigger-3" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-3" aria-label="Toggle navigation">
+<button id="drawer-trigger-${htmlBlueprintIds[index]}" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-${htmlBlueprintIds[index]}" aria-label="Toggle navigation">
   <div class="chi-button__content">
     <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
   </div>
 </button>
 
 <!-- Drawer -->
-<div id="drawer-3" class="chi-drawer -left">
+<div id="drawer-${htmlBlueprintIds[index]}" class="chi-drawer -${position}">
   <button class="chi-button -icon -close" aria-label="Close">
     <div class="chi-button__content">
       <i class="chi-icon icon-x" aria-hidden="true"></i>
@@ -109,234 +112,11 @@ methods: {
 </div>
 
 <!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-trigger-3'));<\/script>`
+<script>chi.drawer(document.getElementById('drawer-trigger-${htmlBlueprintIds[index]}'));<\/script>`
             }
           }
-        },
-        {
-          id: 'right',
-          label: 'Right',
-          codeSnippets: {
-            webComponent: {
-              code: `<!-- Trigger -->
-<chi-button id="drawer-trigger-4" variant="flat" type="icon">
-  <chi-icon icon="menu" size="sm--2"></chi-icon>
-</chi-button>
-
-<!-- Drawer -->
-<chi-drawer id="interactive-drawer-4" position="right" no-header>
-  <div class="-p--2 -pt--6 -text">Drawer content here</div>
-</chi-drawer>
-
-<!-- JavaScript -->
-<script>
-  var drawer = document.getElementById('interactive-drawer-4');
-  var drawerTrigger = document.getElementById('drawer-trigger-4');
-  drawerTrigger.addEventListener('click', function(){
-    drawer.toggle();
-    // or drawer.active = !drawer.active;
-  });
-<\/script>`
-            },
-            vue: {
-              code: `<!-- Trigger -->
-<button class="chi-button -flat -icon" @click="() => toggleDrawer()">
-  <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
-</button>
-
-<!-- Vue component -->
-<ChiDrawer
-  position="right"
-  :active="this.drawerActive"
-  :noHeader="true"
-  backdrop
->
-  <div class="-p--2 -pt--6 -text">Drawer content here</div>
-</ChiDrawer>
-
-<!-- Data and Methods -->
-data: {
-  drawerActive : false;
-},
-methods: {
-  toggleDrawer() {
-    this.drawerActive = !this.drawerActive;
-  }
-}`
-            },
-            htmlBlueprint: {
-              code: `<!-- Trigger -->
-<button id="drawer-trigger-5" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-5" aria-label="Toggle navigation">
-  <div class="chi-button__content">
-    <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
-  </div>
-</button>
-
-<!-- Drawer -->
-<div id="drawer-5" class="chi-drawer -right">
-  <button class="chi-button -icon -close" aria-label="Close">
-    <div class="chi-button__content">
-      <i class="chi-icon icon-x" aria-hidden="true"></i>
-    </div>
-  </button>
-  <div class="chi-drawer__content">
-    <div class="-p--2 -pt--6 -text">Drawer content here</div>
-  </div>
-</div>
-
-<!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-trigger-5'));<\/script>`
-            }
-          }
-        },
-        {
-          id: 'top',
-          label: 'Top',
-          codeSnippets: {
-            webComponent: {
-              code: `<!-- Trigger -->
-<chi-button id="drawer-trigger-6" variant="flat" type="icon">
-  <chi-icon icon="menu" size="sm--2"></chi-icon>
-</chi-button>
-
-<!-- Drawer -->
-<chi-drawer id="interactive-drawer-6" position="top" no-header>
-  <div class="-p--2 -pt--6 -text">Drawer content here</div>
-</chi-drawer>
-
-<!-- JavaScript -->
-<script>
-  var drawer = document.getElementById('interactive-drawer-6');
-  var drawerTrigger = document.getElementById('drawer-trigger-6');
-  drawerTrigger.addEventListener('click', function(){
-    drawer.toggle();
-    // or drawer.active = !drawer.active;
-  });
-<\/script>`
-            },
-            vue: {
-              code: `<!-- Trigger -->
-<button class="chi-button -flat -icon" @click="() => toggleDrawer()">
-  <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
-</button>
-
-<!-- Vue component -->
-<ChiDrawer
-  position="top"
-  :active="this.drawerActive"
-  :noHeader="true"
-  backdrop
->
-  <div class="-p--2 -pt--6 -text">Drawer content here</div>
-</ChiDrawer>
-
-<!-- Data and Methods -->
-data: {
-  drawerActive : false;
-},
-methods: {
-  toggleDrawer() {
-    this.drawerActive = !this.drawerActive;
-  }
-}`
-            },
-            htmlBlueprint: {
-              code: `<!-- Trigger -->
-<button id="drawer-trigger-7" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-7" aria-label="Toggle navigation">
-  <div class="chi-button__content">
-    <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
-  </div>
-</button>
-
-<!-- Drawer -->
-<div id="drawer-7" class="chi-drawer -top">
-  <button class="chi-button -icon -close" aria-label="Close">
-    <div class="chi-button__content">
-      <i class="chi-icon icon-x" aria-hidden="true"></i>
-    </div>
-  </button>
-  <div class="chi-drawer__content">
-    <div class="-p--2 -pt--6 -text">Drawer content here</div>
-  </div>
-</div>
-
-<!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-trigger-7'));<\/script>`
-            }
-          }
-        },
-        {
-          id: 'bottom',
-          label: 'Bottom',
-          codeSnippets: {
-            webComponent: {
-              code: `<!-- Drawer -->
-<chi-drawer id="interactive-drawer-8" position="bottom" no-header>
-  <div class="-p--2 -pt--6 -text">Drawer content here</div>
-</chi-drawer>
-
-<!-- JavaScript -->
-<script>
-  var drawer = document.getElementById('interactive-drawer-8');
-  var drawerTrigger = document.getElementById('drawer-trigger-8');
-  drawerTrigger.addEventListener('click', function(){
-    drawer.toggle();
-    // or drawer.active = !drawer.active;
-  });
-<\/script>`
-            },
-            vue: {
-              code: `<!-- Trigger -->
-<button class="chi-button -flat -icon" @click="() => toggleDrawer()">
-  <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
-</button>
-
-<!-- Vue component -->
-<ChiDrawer
-  position="bottom"
-  :active="this.drawerActive"
-  :noHeader="true"
-  backdrop
->
-  <div class="-p--2 -pt--6 -text">Drawer content here</div>
-</ChiDrawer>
-
-<!-- Data and Methods -->
-data: {
-  drawerActive : false;
-},
-methods: {
-  toggleDrawer() {
-    this.drawerActive = !this.drawerActive;
-  }
-}`
-            },
-            htmlBlueprint: {
-              code: `<!-- Trigger -->
-<button id="drawer-trigger-9" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-9" aria-label="Toggle navigation">
-  <div class="chi-button__content">
-    <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
-  </div>
-</button>
-
-<!-- Drawer -->
-<div id="drawer-9" class="chi-drawer -bottom">
-  <button class="chi-button -icon -close" aria-label="Close">
-    <div class="chi-button__content">
-      <i class="chi-icon icon-x" aria-hidden="true"></i>
-    </div>
-  </button>
-  <div class="chi-drawer__content">
-    <div class="-p--2 -pt--6 -text">Drawer content here</div>
-  </div>
-</div>
-
-<!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-trigger-9'));<\/script>`
-            }
-          }
-        }
-      ],
+        };
+      }),
       exampleTabs: [
         {
           active: true,
