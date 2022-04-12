@@ -31,6 +31,11 @@ export const exampleConfig: DataTableConfig = {
     xl: [15, 5, 10, 15, 15, 15, 15, 5],
   },
   resultsPerPage: 10,
+  defaultSort: {
+    key: 'ticketId',
+    sortBy: 'id',
+    direction: 'ascending',
+  },
 };
 
 export const exampleTableHead = {
