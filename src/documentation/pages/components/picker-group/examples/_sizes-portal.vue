@@ -76,6 +76,8 @@ export default class SizesPortal extends Vue {
 
   setCodeSnippets() {
     const snippets = this.$data.sizes.map((size: string) => {
+      const iconSize = size === 'xs' ? '-xs' : '-sm';
+
       return {
         webcomponent: ``,
         htmlblueprint: `<!-- ${size} -->
@@ -100,17 +102,17 @@ export default class SizesPortal extends Vue {
       <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_4_portal" checked>
       <label class="-${size}" for="example__size_${size}_icon_4_portal">
         <span class="-sr--only">Option 1</span>
-        <i class="chi-icon icon-atom -xs" aria-hidden="true"></i>
+        <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
       </label>
       <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_5_portal">
       <label class="-${size}" for="example__size_${size}_icon_5_portal">
         <span class="-sr--only">Option 2</span>
-        <i class="chi-icon icon-atom -xs" aria-hidden="true"></i>
+        <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
       </label>
       <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_6_portal">
       <label class="-${size}" for="example__size_${size}_icon_6_portal">
         <span class="-sr--only">Option 3</span>
-        <i class="chi-icon icon-atom -xs" aria-hidden="true"></i>
+        <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
       </label>
     </div>
   </div>
