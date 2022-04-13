@@ -17,7 +17,7 @@
               legend.chi-label Select an option
               .chi-picker-group
                 .chi-picker-group__content
-                  template(v-for="item in pickersIcons")
+                  template(v-for="item in pickers")
                     input.chi-picker__input(type='radio', :name="`example__size_${size}_icon_portal`", :id="`example__size_${size}_icon_${item}_portal`" :checked="item === 4")
                     label(:ref="`tooltip-${item}`" :for="`example__size_${size}_icon_${item}_portal`" :class="`-${size}`", :data-tooltip="`Option ${item}`" data-position="bottom")
                       span.-sr--only Option {{ item }}
@@ -40,7 +40,6 @@ declare const chi: any;
   data: () => {
     return {
       pickers: [1, 2, 3],
-      pickersIcons: [4, 5, 6],
       sizes: ['xs', 'sm', 'md', 'lg'],
       exampleTabs: [
         {
@@ -64,17 +63,19 @@ declare const chi: any;
 export default class SizesPortal extends Vue {
   tooltips: any[] = [];
 
+  created() {
+    this._setCodeSnippets();
+  }
+
   mounted() {
-    this.$data.pickersIcons.forEach((item: string) => {
+    this.$data.pickers.forEach((item: string) => {
       this.tooltips.push(
         chi.tooltip(this.$refs[`tooltip-${item}`] as HTMLElement)
       );
     });
-
-    this.setCodeSnippets();
   }
 
-  setCodeSnippets() {
+  _setCodeSnippets() {
     const snippets = this.$data.sizes.map((size: string) => {
       const iconSize = size === 'xs' ? '-xs' : '-sm';
 
@@ -99,18 +100,18 @@ export default class SizesPortal extends Vue {
   <legend class="chi-label">Select an option</legend>
   <div class="chi-picker-group">
     <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_4_portal" checked>
-      <label class="-${size}" for="example__size_${size}_icon_4_portal">
+      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_1_portal" checked>
+      <label class="-${size}" for="example__size_${size}_icon_1_portal">
         <span class="-sr--only">Option 1</span>
         <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
       </label>
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_5_portal">
-      <label class="-${size}" for="example__size_${size}_icon_5_portal">
+      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_2_portal">
+      <label class="-${size}" for="example__size_${size}_icon_2_portal">
         <span class="-sr--only">Option 2</span>
         <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
       </label>
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_6_portal">
-      <label class="-${size}" for="example__size_${size}_icon_6_portal">
+      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_3_portal">
+      <label class="-${size}" for="example__size_${size}_icon_3_portal">
         <span class="-sr--only">Option 3</span>
         <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
       </label>
