@@ -4,9 +4,7 @@ h3 Base
 .example.-mb--3
   .-p--3
     .chi-form__item
-      .chi-checkbox
-        input(type="checkbox" class="chi-checkbox__input" id="checkbox__base")
-        label(for="checkbox__base" class="chi-checkbox__label") Checkbox
+      chi-checkbox#checkbox__base(label='Checkbox')
   .example-tabs.-pl--2
     ul.chi-tabs#example-base
       li.-active
@@ -34,9 +32,7 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-form__item
-      .chi-checkbox
-        input(type="checkbox" class="chi-checkbox__input" id="checkbox__checked" checked)
-        label(for="checkbox__checked" class="chi-checkbox__label") Checkbox
+      chi-checkbox#checkbox__checked(label='Checkbox' checked)
   .example-tabs.-pl--2
     ul.chi-tabs#example-checked
       li.-active
@@ -65,10 +61,7 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-form__item
-      .chi-checkbox
-        input(type="checkbox" class="chi-checkbox__input -indeterminate" id="checkbox__indeterminate")
-        label(for="checkbox__indeterminate" class="chi-checkbox__label") Checkbox
-
+      chi-checkbox#checkbox__indeterminate(label='Checkbox' indeterminate)
   .example-tabs.-pl--2
     ul.chi-tabs#example-indeterminate
       li.-active
@@ -104,9 +97,7 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-form__item
-      .chi-checkbox
-        input(type="checkbox" class="chi-checkbox__input" id="checkbox__disabled" disabled)
-        label(for="checkbox__disabled" class="chi-checkbox__label") Checkbox
+      chi-checkbox#checkbox__disabled(label='Checkbox' disabled)
   .example-tabs.-pl--2
     ul.chi-tabs#example-disabled
       li.-active
@@ -134,11 +125,7 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-form__item
-      .chi-checkbox
-        input(type="checkbox" class="chi-checkbox__input" id="checkbox__required")
-        label(for="checkbox__required" class="chi-checkbox__label")
-          | I accept the Terms of Service
-          abbr.chi-label__required(title="Required field") *
+      chi-checkbox#checkbox__required(label='I accept the Terms of Service' required)
   .example-tabs.-pl--2
     ul.chi-tabs#example-required
       li.-active
@@ -169,16 +156,12 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-form__item
-      .chi-checkbox
-        input(type="checkbox" class="chi-checkbox__input" id="checkbox__help")
-        label(for="checkbox__help" class="chi-checkbox__label") Checkbox
-        .chi-label__help
-          button.chi-button.-icon.-xs.-flat(id="example__help-button" aria-label="Help" data-target="#example__help-popover")
-            i.chi-icon.icon-circle-info-outline(aria-hidden="true")
-          section.chi-popover.chi-popover--top(id="example__help-popover" aria-modal="true" role="dialog")
-            .chi-popover__content
-              p.chi-popover__text
-                | Helpful information goes here.
+      chi-checkbox#checkbox__help(label='Checkbox')
+      .chi-label__help
+        chi-button#example__help-button(type='icon' size='xs' variant='flat' alternative-text='Help')
+          chi-icon(icon='circle-info-outline')
+        chi-popover#example__help-popover(position='top' variant='text' arrow='' reference='#example__help-button')
+          | Helpful information goes here.
   .example-tabs.-pl--2
     ul.chi-tabs#example-help
       li.-active
@@ -230,9 +213,7 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-form__item
-      .chi-checkbox
-        input(type="checkbox" class="chi-checkbox__input" id="checkbox__message")
-        label(for="checkbox__message" class="chi-checkbox__label") Checkbox
+      chi-checkbox#checkbox__message(label='Checkbox')
       .chi-label.-status Optional input message
   .example-tabs.-pl--2
     ul.chi-tabs#example-message
@@ -264,13 +245,9 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-form__item
-      .chi-checkbox
-        input(type="checkbox" class="chi-checkbox__input" id="checkbox__error")
-        label(for="checkbox__error" class="chi-checkbox__label -danger")
-          | I accept the Terms of Service
-          abbr.chi-label__required(title="Required field") *
+      chi-checkbox#checkbox__error(state='danger' label='I accept the Terms of Service' required)
       .chi-label.-status.-danger
-        i.chi-icon.icon-circle-warning(aria-hidden="true")
+        chi-icon(icon='circle-warning')
         | Please accept the terms of service.
   .example-tabs.-pl--2
     ul.chi-tabs#example-error
@@ -309,15 +286,13 @@ p.-text
   | Group checkboxes in <code>chi-form__item</code> for easy stacking.
 .example.-mb--3
   .-p--3
-    legend.chi-label Select options
-    .chi-form__item
-      .chi-checkbox
-        input(type="checkbox" class="chi-checkbox__input" id="checkbox__stacked1")
-        label(for="checkbox__stacked1" class="chi-checkbox__label") Option 1
-    .chi-form__item
-      .chi-checkbox
-        input(type="checkbox" class="chi-checkbox__input" id="checkbox__stacked2")
-        label(for="checkbox__stacked2" class="chi-checkbox__label") Option 2
+    fieldset
+      legend
+        chi-label(for='checkbox__stacked') Select options
+        .chi-form__item
+          chi-checkbox#checkbox__stacked1(label='Option 1')
+        .chi-form__item
+          chi-checkbox#checkbox__stacked2(label='Option 2')
   .example-tabs.-pl--2
     ul.chi-tabs#example-stacked
       li.-active
@@ -362,15 +337,15 @@ p.-text
   | 2 columns on small screens, and 1 column on x-small screens.
 .example.-mb--3
   .-p--3
-    .chi-grid
-      .chi-col.-w--12.-mb--1
-        legend.chi-label Select options
-      each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        .chi-col.-w--12.-w-md--3.-w-sm--6.-mb--1
-          .chi-form__item
-            .chi-checkbox
-              input(type="checkbox" class="chi-checkbox__input" id=`checkbox__grid${i}`)
-              label(for=`checkbox__grid${i}` class="chi-checkbox__label")="Option " + i
+    fieldset
+      .chi-grid
+        .chi-col.-w--12.-mb--1
+          legend
+            chi-label(for='checkbox__grid') Select options
+        each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+          .chi-col.-w--12.-w-md--3.-w-sm--6.-mb--1
+            .chi-form__item
+              chi-checkbox#checkbox__grid1(label=`Option ${i}`)
   .example-tabs.-pl--2
     ul.chi-tabs#example-grid
       li.-active
@@ -559,15 +534,13 @@ p.-text
   | Apply the class <code>-inline</code> to <code>chi-form__item</code> to display two or more checkboxes in one row.
 .example.-mb--3
   .-p--3
-    legend.chi-label Select options
-    .chi-form__item.-inline
-      .chi-checkbox
-        input(type="checkbox", class="chi-checkbox__input", id="checkbox__inline1")
-        label(for="checkbox__inline1", class="chi-checkbox__label") Option 1
-    .chi-form__item.-inline
-      .chi-checkbox
-        input(type="checkbox", class="chi-checkbox__input", id="checkbox__inline2")
-        label(for="checkbox__inline2", class="chi-checkbox__label") Option 2
+    fieldset
+      legend
+        chi-label(for='checkbox__inline') Select options
+      .chi-form__item.-inline
+        chi-checkbox#checkbox__inline1(label='Option 1')
+      .chi-form__item.-inline
+        chi-checkbox#checkbox__inline2(label='Option 2')
   .example-tabs.-pl--2
     ul.chi-tabs#example-inline
       li.-active
@@ -611,28 +584,14 @@ p.-text
   | To render a series of checkboxes in a list, apply the class <code>-list</code> to <code>chi-form__item</code>.
 .example.-mb--3
   .-p--3
-    legend.chi-label Select options
-    ul.chi-form__item.-list(style="max-width:20rem")
-      li.chi-form__item
-        .chi-checkbox
-          input(type="checkbox", class="chi-checkbox__input", id="checkbox__list1")
-          label(for="checkbox__list1", class="chi-checkbox__label") Option 1
-      li.chi-form__item
-        .chi-checkbox
-          input(type="checkbox", class="chi-checkbox__input", id="checkbox__list2")
-          label(for="checkbox__list2", class="chi-checkbox__label") Option 2
-      li.chi-form__item
-        .chi-checkbox
-          input(type="checkbox", class="chi-checkbox__input", id="checkbox__list3")
-          label(for="checkbox__list3", class="chi-checkbox__label") Option 3
-      li.chi-form__item
-        .chi-checkbox
-          input(type="checkbox", class="chi-checkbox__input", id="checkbox__list4")
-          label(for="checkbox__list4", class="chi-checkbox__label") Option 4
-      li.chi-form__item
-        .chi-checkbox
-          input(type="checkbox", class="chi-checkbox__input", id="checkbox__list5")
-          label(for="checkbox__list5", class="chi-checkbox__label") Option 5
+    fieldset
+      legend.chi-label Select options
+      ul.chi-form__item.-list(style="max-width:20rem")
+        each i in [1, 2, 3, 4, 5]
+          li.chi-form__item
+            .chi-checkbox
+              input#checkbox-li1.chi-checkbox__input(type='checkbox')
+              label.chi-checkbox__label(for=`checkbox-li${i}`) Option #{i}
   .example-tabs.-pl--2
     ul.chi-tabs#example-list
       li.-active
