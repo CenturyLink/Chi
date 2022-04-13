@@ -345,7 +345,7 @@ p.-text
         each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
           .chi-col.-w--12.-w-md--3.-w-sm--6.-mb--1
             .chi-form__item
-              chi-checkbox#checkbox__grid1(label=`Option ${i}`)
+              chi-checkbox(label=`Option ${i}` id=`checkbox__grid${i}`)
   .example-tabs.-pl--2
     ul.chi-tabs#example-grid
       li.-active
@@ -590,7 +590,7 @@ p.-text
         each i in [1, 2, 3, 4, 5]
           li.chi-form__item
             .chi-checkbox
-              input#checkbox-li1.chi-checkbox__input(type='checkbox')
+              input.chi-checkbox__input(type='checkbox' id=`checkbox-li${i}`)
               label.chi-checkbox__label(for=`checkbox-li${i}`) Option #{i}
   .example-tabs.-pl--2
     ul.chi-tabs#example-list
