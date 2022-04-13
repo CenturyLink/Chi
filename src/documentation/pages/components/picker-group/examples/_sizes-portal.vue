@@ -78,6 +78,20 @@ export default class SizesPortal extends Vue {
   _setCodeSnippets() {
     const snippets = this.$data.sizes.map((size: string) => {
       const iconSize = size === 'xs' ? '-xs' : '-sm';
+      let pickerInputs = '';
+      let pickerIconsInputs = '';
+
+      this.$data.pickers.forEach((option: any) => {
+        pickerInputs += `
+      <input class="chi-picker__input" type="radio" name="example__size_${size}_portal" id="example__size_${size}_${option}_portal" checked>
+      <label class="-${size}" for="example__size_${size}_${option}_portal">Option ${option}</label>`;
+        pickerIconsInputs += `
+      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_${option}_portal" checked>
+      <label class="-${size}" for="example__size_${size}_icon_${option}_portal">
+        <span class="-sr--only">Option ${option}</span>
+        <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
+      </label>`;
+      });
 
       return {
         webcomponent: ``,
@@ -85,13 +99,7 @@ export default class SizesPortal extends Vue {
 <fieldset>
   <legend class="chi-label">Select an option</legend>
   <div class="chi-picker-group">
-    <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_portal" id="example__size_${size}_1_portal" checked>
-      <label class="-${size}" for="example__size_${size}_1_portal">Option 1</label>
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_portal" id="example__size_${size}_2_portal">
-      <label class="-${size}" for="example__size_${size}_2_portal">Option 2</label>
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_portal" id="example__size_${size}_3_portal">
-      <label class="-${size}" for="example__size_${size}_3_portal">Option 3</label>
+    <div class="chi-picker-group__content">${pickerInputs}
     </div>
   </div>
 </fieldset>
@@ -99,22 +107,7 @@ export default class SizesPortal extends Vue {
 <fieldset>
   <legend class="chi-label">Select an option</legend>
   <div class="chi-picker-group">
-    <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_1_portal" checked>
-      <label class="-${size}" for="example__size_${size}_icon_1_portal">
-        <span class="-sr--only">Option 1</span>
-        <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
-      </label>
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_2_portal">
-      <label class="-${size}" for="example__size_${size}_icon_2_portal">
-        <span class="-sr--only">Option 2</span>
-        <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
-      </label>
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_3_portal">
-      <label class="-${size}" for="example__size_${size}_icon_3_portal">
-        <span class="-sr--only">Option 3</span>
-        <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
-      </label>
+    <div class="chi-picker-group__content">${pickerIconsInputs}
     </div>
   </div>
 </fieldset>

@@ -78,6 +78,20 @@ export default class SizesLumenCenturyLink extends Vue {
   _setCodeSnippets() {
     const snippets = this.$data.sizes.map((size: string) => {
       const iconSize = size === 'xs' ? '-xs' : '-sm';
+      let pickerInputs = '';
+      let pickerIconsInputs = '';
+
+      this.$data.pickers.forEach((option: any) => {
+        pickerInputs += `
+      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon" id="example__size_${size}_${option}" checked>
+      <label class="-${size}" for="example__size_${size}_${option}">Option ${option}</label>`;
+        pickerIconsInputs += `
+      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon" id="example__size_${size}_icon_${option}" checked>
+      <label class="-${size}" for="example__size_${size}_icon_${option}">
+        <span class="-sr--only">Option ${option}</span>
+        <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
+      </label>`;
+      });
 
       return {
         webcomponent: ``,
@@ -85,13 +99,7 @@ export default class SizesLumenCenturyLink extends Vue {
 <fieldset>
   <legend class="chi-label">Select an option</legend>
   <div class="chi-picker-group">
-    <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon" id="example__size_${size}_1" checked>
-      <label class="-${size}" for="example__size_${size}_1">Option 1</label>
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon" id="example__size_${size}_2">
-      <label class="-${size}" for="example__size_${size}_2">Option 2</label>
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon" id="example__size_${size}_3">
-      <label class="-${size}" for="example__size_${size}_3">Option 3</label>
+    <div class="chi-picker-group__content">${pickerInputs}
     </div>
   </div>
 </fieldset>
@@ -99,22 +107,7 @@ export default class SizesLumenCenturyLink extends Vue {
 <fieldset>
   <legend class="chi-label">Select an option</legend>
   <div class="chi-picker-group">
-    <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon" id="example__size_${size}_icon_1" checked>
-      <label class="-${size}" for="example__size_${size}_icon_1">
-        <span class="-sr--only">Option 1</span>
-        <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
-      </label>
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon" id="example__size_${size}_icon_2">
-      <label class="-${size}" for="example__size_${size}_icon_2">
-        <span class="-sr--only">Option 2</span>
-        <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
-      </label>
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon" id="example__size_${size}_icon_3">
-      <label class="-${size}" for="example__size_${size}_icon_3">
-        <span class="-sr--only">Option 3</span>
-        <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>
-      </label>
+    <div class="chi-picker-group__content">${pickerIconsInputs}
     </div>
   </div>
 </fieldset>
