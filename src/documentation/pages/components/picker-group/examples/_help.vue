@@ -15,8 +15,8 @@
       .chi-picker-group
         .chi-picker-group__content
           template(v-for="item in pickers")
-            input.chi-picker__input(type='radio', name='unique-name-he', :id="`unique-id-he${item}`")
-            label(:for="`unique-id-he${item}`") Option {{ item }}
+            input.chi-picker__input(type='radio', name='example__help', :id="`example__help_${item}`")
+            label(:for="`example__help_${item}`") Option {{ item }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -68,12 +68,12 @@ declare const chi: any;
   </div>
   <div class="chi-picker-group">
     <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="unique-name-he" id="unique-id-he1">
-      <label for="unique-id-he1">Option 1</label>
-      <input class="chi-picker__input" type="radio" name="unique-name-he" id="unique-id-he2">
-      <label for="unique-id-he2">Option 2</label>
-      <input class="chi-picker__input" type="radio" name="unique-name-he" id="unique-id-he3">
-      <label for="unique-id-he3">Option 3</label>
+      <input class="chi-picker__input" type="radio" name="example__help" id="example__help_1">
+      <label for="example__help_1">Option 1</label>
+      <input class="chi-picker__input" type="radio" name="example__help" id="example__help_2">
+      <label for="example__help_2">Option 2</label>
+      <input class="chi-picker__input" type="radio" name="example__help" id="example__help_3">
+      <label for="example__help_3">Option 3</label>
     </div>
   </div>
 </fieldset>

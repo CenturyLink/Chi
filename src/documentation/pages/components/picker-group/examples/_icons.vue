@@ -5,8 +5,8 @@
       .chi-picker-group
         .chi-picker-group__content
           template(v-for="item in pickers")
-            input.chi-picker__input(type='radio', name='unique-name-ic', :id="`unique-id-ic${item}`" :checked="item === 1")
-            label(:ref="`tooltip-${item}`" :for="`unique-id-ic${item}`" :data-tooltip="`Option ${item}`"  data-position="bottom")
+            input.chi-picker__input(type='radio', name='example__icons', :id="`example__icons_${item}`" :checked="item === 1")
+            label(:ref="`tooltip-${item}`" :for="`example__icons_${item}`" :data-tooltip="`Option ${item}`" data-position="bottom")
               span.-sr--only Option {{ item }}
               i.chi-icon.icon-atom.-sm(aria-hidden="true")
     <pre class="language-html" slot="code-webcomponent">
@@ -48,18 +48,18 @@ declare const chi: any;
   <legend class="chi-label">Select an option</legend>
   <div class="chi-picker-group">
     <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="unique-name-ic" id="unique-id-ic1" checked>
-      <label for="unique-id-ic1" data-tooltip="Option 1" data-position="bottom">
+      <input class="chi-picker__input" type="radio" name="example__icons" id="example__icons_1" checked>
+      <label for="example__icons_1" data-tooltip="Option 1" data-position="bottom">
         <span class="-sr--only">Option 1</span>
         <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
       </label>
-      <input class="chi-picker__input" type="radio" name="unique-name-ic" id="unique-id-ic2">
-      <label for="unique-id-ic2" data-tooltip="Option 2" data-position="bottom">
+      <input class="chi-picker__input" type="radio" name="example__icons" id="example__icons_2">
+      <label for="example__icons_2" data-tooltip="Option 2" data-position="bottom">
         <span class="-sr--only">Option 2</span>
         <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
       </label>
-      <input class="chi-picker__input" type="radio" name="unique-name-ic" id="unique-id-ic3">
-      <label for="unique-id-ic3" data-tooltip="Option 3" data-position="bottom">
+      <input class="chi-picker__input" type="radio" name="example__icons" id="example__icons_3">
+      <label for="example__icons_3" data-tooltip="Option 3" data-position="bottom">
         <span class="-sr--only">Option 3</span>
         <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
       </label>

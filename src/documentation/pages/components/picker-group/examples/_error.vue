@@ -9,8 +9,8 @@
       .chi-picker-group
         .chi-picker-group__content
           template(v-for="item in pickers")
-            input.chi-picker__input(type='radio', name='unique-name-er', :id="`unique-id-er${item}`" :required="item === 1")
-            label(:for="`unique-id-er${item}`") Option {{ item }}
+            input.chi-picker__input(type='radio', name='example__error', :id="`example__error_${item}`" :required="item === 1")
+            label(:for="`example__error_${item}`") Option {{ item }}
       .chi-label.-status.-danger
         | Please select an option.
     <pre class="language-html" slot="code-webcomponent">
@@ -50,12 +50,12 @@ import { Component, Vue } from 'vue-property-decorator';
   </legend>
   <div class="chi-picker-group">
     <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="unique-name-er" id="unique-id-er1" required>
-      <label for="unique-id-er1">Option 1</label>
-      <input class="chi-picker__input" type="radio" name="unique-name-er" id="unique-id-er2">
-      <label for="unique-id-er2">Option 2</label>
-      <input class="chi-picker__input" type="radio" name="unique-name-er" id="unique-id-er3">
-      <label for="unique-id-er3">Option 3</label>
+      <input class="chi-picker__input" type="radio" name="example__error" id="example__error_1" required>
+      <label for="example__error_1">Option 1</label>
+      <input class="chi-picker__input" type="radio" name="example__error" id="example__error_2">
+      <label for="example__error_2">Option 2</label>
+      <input class="chi-picker__input" type="radio" name="example__error" id="example__error_3">
+      <label for="example__error_3">Option 3</label>
     </div>
   </div>
   <div class="chi-label -status -danger">Please select an option.</div>

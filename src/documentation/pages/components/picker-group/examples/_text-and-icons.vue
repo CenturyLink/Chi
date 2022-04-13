@@ -5,8 +5,8 @@
       .chi-picker-group.-fluid(style="max-width:21rem;")
         .chi-picker-group__content
           template(v-for="item in pickers")
-            input.chi-picker__input(type='radio', name='unique-name-ti', :id="`unique-id-ti${item}`" :checked="item === 1")
-            label(:for="`unique-id-ti${item}`") 
+            input.chi-picker__input(type='radio', name='example__text_and_icons', :id="`example__text_and_icons_${item}`" :checked="item === 1")
+            label(:for="`example__text_and_icons_${item}`") 
               i.chi-icon.icon-atom.-sm(v-if="item === 1 || item === 3" aria-hidden="true")
               span Radio{{ item }}
               i.chi-icon.icon-atom.-sm(v-if="item === 2 || item === 3" aria-hidden="true")
@@ -44,18 +44,18 @@ import { Component, Vue } from 'vue-property-decorator';
   <legend class="chi-label">Select an option</legend>
   <div class="chi-picker-group">
     <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="unique-name-ti" id="unique-id-ti1" checked>
-      <label for="unique-id-ti1">
+      <input class="chi-picker__input" type="radio" name="example__text_and_icons" id="example__text_and_icons_1" checked>
+      <label for="example__text_and_icons_1">
         <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
         <span>Radio1</span>
       </label>
-      <input class="chi-picker__input" type="radio" name="unique-name-ti" id="unique-id-ti2">
-      <label for="unique-id-ti2">
+      <input class="chi-picker__input" type="radio" name="example__text_and_icons" id="example__text_and_icons_2">
+      <label for="example__text_and_icons_2">
         <span>Radio2</span>
         <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
       </label>
-      <input class="chi-picker__input" type="radio" name="unique-name-ti" id="unique-id-ti3">
-      <label for="unique-id-ti3">
+      <input class="chi-picker__input" type="radio" name="example__text_and_icons" id="example__text_and_icons_3">
+      <label for="example__text_and_icons_3">
         <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
         <span>Radio3</span>
         <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>

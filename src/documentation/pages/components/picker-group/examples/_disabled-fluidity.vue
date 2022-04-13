@@ -7,8 +7,8 @@
       .chi-picker-group.-fluid
         .chi-picker-group__content
           template(v-for="item in pickers")
-            input.chi-picker__input(type='radio', name='unique-name-df', :id="`unique-id-df${item}`", :checked="item === 1")
-            label(:class="item === 2 ? '-no-fluid' : ''" :for="`unique-id-df${item}`") Option {{ item }}
+            input.chi-picker__input(type='radio', name='example__disabled_fluidity', :id="`example__disabled_fluidity_${item}`", :checked="item === 1")
+            label(:class="item === 2 ? '-no-fluid' : ''" :for="`example__disabled_fluidity_${item}`") Option {{ item }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -43,12 +43,12 @@ import { Component, Vue } from 'vue-property-decorator';
   <legend class="chi-label">Select an option</legend>
   <div class="chi-picker-group -fluid">
     <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="unique-name-df" id="unique-id-df1" checked>
-      <label for="unique-id-df1">Option 1</label>
-      <input class="chi-picker__input" type="radio" name="unique-name-df" id="unique-id-df2">
-      <label class="-no-fluid" for="unique-id-df2">Option 2</label>
-      <input class="chi-picker__input" type="radio" name="unique-name-df" id="unique-id-df3">
-      <label for="unique-id-df3">Option 3</label>
+      <input class="chi-picker__input" type="radio" name="example__disabled_fluidity" id="example__disabled_fluidity_1" checked>
+      <label for="example__disabled_fluidity_1">Option 1</label>
+      <input class="chi-picker__input" type="radio" name="example__disabled_fluidity" id="example__disabled_fluidity_2">
+      <label class="-no-fluid" for="example__disabled_fluidity_2">Option 2</label>
+      <input class="chi-picker__input" type="radio" name="example__disabled_fluidity" id="example__disabled_fluidity_3">
+      <label for="example__disabled_fluidity_3">Option 3</label>
     </div>
   </div>
 </fieldset>`

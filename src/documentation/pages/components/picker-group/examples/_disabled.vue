@@ -7,8 +7,8 @@
       .chi-picker-group
         .chi-picker-group__content
           template(v-for="item in pickers")
-            input.chi-picker__input(type='radio', name='unique-name-di', :id="`unique-id-di${item}`", :disabled="item === 3")
-            label(:for="`unique-id-di${item}`") Option {{ item }}
+            input.chi-picker__input(type='radio', name='example__disabled', :id="`example__disabled_${item}`", :disabled="item === 3")
+            label(:for="`example__disabled_${item}`") Option {{ item }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -43,12 +43,12 @@ import { Component, Vue } from 'vue-property-decorator';
   <legend class="chi-label">Select an option</legend>
   <div class="chi-picker-group">
     <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="unique-name-di" id="unique-id-di1">
-      <label for="unique-id-di1">Option 1</label>
-      <input class="chi-picker__input" type="radio" name="unique-name-di" id="unique-id-di2">
-      <label for="unique-id-di2">Option 2</label>
-      <input class="chi-picker__input" type="radio" name="unique-name-di" id="unique-id-di3" disabled>
-      <label for="unique-id-di3">Option 3</label>
+      <input class="chi-picker__input" type="radio" name="example__disabled" id="example__disabled_1">
+      <label for="example__disabled_1">Option 1</label>
+      <input class="chi-picker__input" type="radio" name="example__disabled" id="example__disabled_2">
+      <label for="example__disabled_2">Option 2</label>
+      <input class="chi-picker__input" type="radio" name="example__disabled" id="example__disabled_3" disabled>
+      <label for="example__disabled_3">Option 3</label>
     </div>
   </div>
 </fieldset>`

@@ -6,8 +6,8 @@
       .chi-picker-group
         .chi-picker-group__content
           template(v-for="item in pickers")
-            input.chi-picker__input(type='radio', name='unique-name-ch', :id="`unique-id-ch${item}`", :checked="item === 1")
-            label(:for="`unique-id-ch${item}`") Option {{ item }}
+            input.chi-picker__input(type='radio', name='example__checked', :id="`example__checked_${item}`", :checked="item === 1")
+            label(:for="`example__checked_${item}`") Option {{ item }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -42,12 +42,12 @@ import { Component, Vue } from 'vue-property-decorator';
   <legend class="chi-label">Select an option</legend>
   <div class="chi-picker-group">
     <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="unique-name-ch" id="unique-id-ch1" checked>
-      <label for="unique-id-ch1">Option 1</label>
-      <input class="chi-picker__input" type="radio" name="unique-name-ch" id="unique-id-ch2">
-      <label for="unique-id-ch2">Option 2</label>
-      <input class="chi-picker__input" type="radio" name="unique-name-ch" id="unique-id-ch3">
-      <label for="unique-id-ch3">Option 3</label>
+      <input class="chi-picker__input" type="radio" name="example__checked" id="example__checked_1" checked>
+      <label for="example__checked_1">Option 1</label>
+      <input class="chi-picker__input" type="radio" name="example__checked" id="example__checked_2">
+      <label for="example__checked_2">Option 2</label>
+      <input class="chi-picker__input" type="radio" name="example__checked" id="example__checked_3">
+      <label for="example__checked_3">Option 3</label>
     </div>
   </div>
 </fieldset>`
