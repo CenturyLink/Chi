@@ -39,25 +39,35 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<fieldset>
+        htmlblueprint: ``
+      }
+    };
+  }
+})
+export default class Optional extends Vue {
+  created() {
+    this._setCodeSnippets();
+  }
+
+  _setCodeSnippets() {
+    let pickerInputs = '';
+
+    this.$data.pickers.forEach((option: number) => {
+      pickerInputs += `
+      <input class="chi-picker__input" type="radio" name="example__optional" id="example__optional_${option}">
+      <label for="example__optional_${option}">Option ${option}</label>`;
+    });
+
+    this.$data.codeSnippets.htmlblueprint = `<fieldset>
   <legend class="chi-label">
     Select an option
     <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
   </legend>
   <div class="chi-picker-group">
-    <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="example__optional" id="example__optional_1">
-      <label for="example__optional_1">Option 1</label>
-      <input class="chi-picker__input" type="radio" name="example__optional" id="example__optional_2">
-      <label for="example__optional_2">Option 2</label>
-      <input class="chi-picker__input" type="radio" name="example__optional" id="example__optional_3">
-      <label for="example__optional_3">Option 3</label>
+    <div class="chi-picker-group__content">${pickerInputs}
     </div>
   </div>
-</fieldset>`
-      }
-    };
+</fieldset>`;
   }
-})
-export default class Optional extends Vue {}
+}
 </script>

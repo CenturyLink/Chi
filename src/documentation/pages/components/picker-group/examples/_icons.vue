@@ -44,30 +44,7 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<fieldset>
-  <legend class="chi-label">Select an option</legend>
-  <div class="chi-picker-group">
-    <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="example__icons" id="example__icons_1" checked>
-      <label for="example__icons_1" data-tooltip="Option 1" data-position="bottom">
-        <span class="-sr--only">Option 1</span>
-        <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
-      </label>
-      <input class="chi-picker__input" type="radio" name="example__icons" id="example__icons_2">
-      <label for="example__icons_2" data-tooltip="Option 2" data-position="bottom">
-        <span class="-sr--only">Option 2</span>
-        <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
-      </label>
-      <input class="chi-picker__input" type="radio" name="example__icons" id="example__icons_3">
-      <label for="example__icons_3" data-tooltip="Option 3" data-position="bottom">
-        <span class="-sr--only">Option 3</span>
-        <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
-      </label>
-    </div>
-  </div>
-</fieldset>
-
-<script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`
+        htmlblueprint: ``
       }
     };
   }
@@ -75,10 +52,41 @@ declare const chi: any;
 export default class Icons extends Vue {
   tooltips: any[] = [];
 
+  created() {
+    this._setCodeSnippets();
+  }
+
   mounted() {
     this.$data.pickers.forEach((item: string) => {
-      this.tooltips.push(chi.tooltip(this.$refs[`tooltip-${item}`] as HTMLElement));
+      this.tooltips.push(
+        chi.tooltip(this.$refs[`tooltip-${item}`] as HTMLElement)
+      );
     });
+  }
+
+  _setCodeSnippets() {
+    let pickerInputs = '';
+
+    this.$data.pickers.forEach((option: number) => {
+      const checked = option === 1 ? ' checked' : '';
+
+      pickerInputs += `
+      <input class="chi-picker__input" type="radio" name="example__icons" id="example__icons_${option}"${checked}>
+      <label for="example__icons_${option}" data-tooltip="Option ${option}" data-position="bottom">
+        <span class="-sr--only">Option ${option}</span>
+        <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
+      </label>`;
+    });
+
+    this.$data.codeSnippets.htmlblueprint = `<fieldset>
+  <legend class="chi-label">Select an option</legend>
+  <div class="chi-picker-group">
+    <div class="chi-picker-group__content">${pickerInputs}
+    </div>
+  </div>
+</fieldset>
+
+<script>chi.tooltip(document.querySelectorAll('[data-tooltip]'));<\/script>`;
   }
 
   beforeDestroy() {

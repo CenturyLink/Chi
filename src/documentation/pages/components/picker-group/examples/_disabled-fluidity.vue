@@ -39,22 +39,35 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<fieldset>
-  <legend class="chi-label">Select an option</legend>
-  <div class="chi-picker-group -fluid">
-    <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="example__disabled_fluidity" id="example__disabled_fluidity_1" checked>
-      <label for="example__disabled_fluidity_1">Option 1</label>
-      <input class="chi-picker__input" type="radio" name="example__disabled_fluidity" id="example__disabled_fluidity_2">
-      <label class="-no-fluid" for="example__disabled_fluidity_2">Option 2</label>
-      <input class="chi-picker__input" type="radio" name="example__disabled_fluidity" id="example__disabled_fluidity_3">
-      <label for="example__disabled_fluidity_3">Option 3</label>
-    </div>
-  </div>
-</fieldset>`
+        htmlblueprint: ``
       }
     };
   }
 })
-export default class DisableFluidity extends Vue {}
+export default class DisableFluidity extends Vue {
+  created() {
+    this._setCodeSnippets();
+  }
+
+  _setCodeSnippets() {
+    let pickerInputs = '';
+
+    this.$data.pickers.forEach((option: number) => {
+      const checked = option === 1 ? ' checked' : '';
+      const noFluid = option === 2 ? ' -no-fluid' : '';
+
+      pickerInputs += `
+      <input class="chi-picker__input${noFluid}" type="radio" name="example__disabled_fluidity" id="example__disabled_fluidity_${option}"${checked}>
+      <label for="example__disabled_fluidity_${option}">Option ${option}</label>`;
+    });
+
+    this.$data.codeSnippets.htmlblueprint = `<fieldset>
+  <legend class="chi-label">Select an option</legend>
+  <div class="chi-picker-group -fluid">
+    <div class="chi-picker-group__content">${pickerInputs}
+    </div>
+  </div>
+</fieldset>`;
+  }
+}
 </script>

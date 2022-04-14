@@ -39,22 +39,34 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<fieldset>
-  <legend class="chi-label">Select an option</legend>
-  <div class="chi-picker-group">
-    <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="example__disabled" id="example__disabled_1">
-      <label for="example__disabled_1">Option 1</label>
-      <input class="chi-picker__input" type="radio" name="example__disabled" id="example__disabled_2">
-      <label for="example__disabled_2">Option 2</label>
-      <input class="chi-picker__input" type="radio" name="example__disabled" id="example__disabled_3" disabled>
-      <label for="example__disabled_3">Option 3</label>
-    </div>
-  </div>
-</fieldset>`
+        htmlblueprint: ``
       }
     };
   }
 })
-export default class Disabled extends Vue {}
+export default class Disabled extends Vue {
+  created() {
+    this._setCodeSnippets();
+  }
+
+  _setCodeSnippets() {
+    let pickerInputs = '';
+
+    this.$data.pickers.forEach((option: number) => {
+      const disabled = option === 3 ? ' disabled' : '';
+
+      pickerInputs += `
+      <input class="chi-picker__input" type="radio" name="example__disabled" id="example__disabled_${option}"${disabled}>
+      <label for="example__disabled_${option}">Option ${option}</label>`;
+    });
+
+    this.$data.codeSnippets.htmlblueprint = `<fieldset>
+  <legend class="chi-label">Select an option</legend>
+  <div class="chi-picker-group">
+    <div class="chi-picker-group__content">${pickerInputs}
+    </div>
+  </div>
+</fieldset>`;
+  }
+}
 </script>

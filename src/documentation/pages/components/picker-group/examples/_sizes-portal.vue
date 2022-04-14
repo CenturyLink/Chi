@@ -18,7 +18,7 @@
               .chi-picker-group
                 .chi-picker-group__content
                   template(v-for="item in pickers")
-                    input.chi-picker__input(type='radio', :name="`example__size_${size}_icon_portal`", :id="`example__size_${size}_icon_${item}_portal`" :checked="item === 4")
+                    input.chi-picker__input(type='radio', :name="`example__size_${size}_icon_portal`", :id="`example__size_${size}_icon_${item}_portal`" :checked="item === 1")
                     label(:ref="`tooltip-${item}`" :for="`example__size_${size}_icon_${item}_portal`" :class="`-${size}`", :data-tooltip="`Option ${item}`" data-position="bottom")
                       span.-sr--only Option {{ item }}
                       i.chi-icon.icon-atom(:class="size === 'xs' ? '-xs' : '-sm'" aria-hidden="true")
@@ -81,12 +81,14 @@ export default class SizesPortal extends Vue {
       let pickerInputs = '';
       let pickerIconsInputs = '';
 
-      this.$data.pickers.forEach((option: any) => {
+      this.$data.pickers.forEach((option: number) => {
+        const checked = option === 1 ? ' checked' : '';
+
         pickerInputs += `
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_portal" id="example__size_${size}_${option}_portal" checked>
+      <input class="chi-picker__input" type="radio" name="example__size_${size}_portal" id="example__size_${size}_${option}_portal"${checked}>
       <label class="-${size}" for="example__size_${size}_${option}_portal">Option ${option}</label>`;
         pickerIconsInputs += `
-      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_${option}_portal" checked>
+      <input class="chi-picker__input" type="radio" name="example__size_${size}_icon_portal" id="example__size_${size}_icon_${option}_portal"${checked}>
       <label class="-${size}" for="example__size_${size}_icon_${option}_portal">
         <span class="-sr--only">Option ${option}</span>
         <i class="chi-icon icon-atom ${iconSize}" aria-hidden="true"></i>

@@ -39,25 +39,37 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<fieldset>
+        htmlblueprint: ``
+      }
+    };
+  }
+})
+export default class Required extends Vue {
+  created() {
+    this._setCodeSnippets();
+  }
+
+  _setCodeSnippets() {
+    let pickerInputs = '';
+
+    this.$data.pickers.forEach((option: number) => {
+      const required = option === 1 ? ' required' : '';
+
+      pickerInputs += `
+      <input class="chi-picker__input" type="radio" name="example__required" id="example__required_${option}"${required}>
+      <label for="example__required_${option}">Option ${option}</label>`;
+    });
+
+    this.$data.codeSnippets.htmlblueprint = `<fieldset>
   <legend class="chi-label">
     Select an option
     <abbr class="chi-label__required" title="Required field">*</abbr>
   </legend>
   <div class="chi-picker-group">
-    <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="example__required" id="example__required_1" required>
-      <label for="example__required_1">Option 1</label>
-      <input class="chi-picker__input" type="radio" name="example__required" id="example__required_2">
-      <label for="example__required_2">Option 2</label>
-      <input class="chi-picker__input" type="radio" name="example__required" id="example__required_3">
-      <label for="example__required_3">Option 3</label>
+    <div class="chi-picker-group__content">${pickerInputs}
     </div>
   </div>
-</fieldset>`
-      }
-    };
+</fieldset>`;
   }
-})
-export default class Required extends Vue {}
+}
 </script>

@@ -40,32 +40,46 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<fieldset>
-  <legend class="chi-label">Select an option</legend>
-  <div class="chi-picker-group">
-    <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="example__text_and_icons" id="example__text_and_icons_1" checked>
-      <label for="example__text_and_icons_1">
-        <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
-        <span>Radio1</span>
-      </label>
-      <input class="chi-picker__input" type="radio" name="example__text_and_icons" id="example__text_and_icons_2">
-      <label for="example__text_and_icons_2">
-        <span>Radio2</span>
-        <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
-      </label>
-      <input class="chi-picker__input" type="radio" name="example__text_and_icons" id="example__text_and_icons_3">
-      <label for="example__text_and_icons_3">
-        <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
-        <span>Radio3</span>
-        <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>
-      </label>
-    </div>
-  </div>
-</fieldset>`
+        htmlblueprint: ``
       }
     };
   }
 })
-export default class TextAndIcons extends Vue {}
+export default class TextAndIcons extends Vue {
+  created() {
+    this._setCodeSnippets();
+  }
+
+  _setCodeSnippets() {
+    let pickerInputs = '';
+
+    this.$data.pickers.forEach((option: number) => {
+      const checked = option === 1 ? ' checked' : '';
+
+      pickerInputs += `
+      <input class="chi-picker__input" type="radio" name="example__text_and_icons" id="example__text_and_icons_${option}"${checked}>
+      <label for="example__text_and_icons_${option}">${
+        option === 1 || option === 3
+          ? `
+        <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>`
+          : ''
+      }
+        <span>Radio${option}</span>${
+        option === 2 || option === 3
+          ? `
+        <i class="chi-icon icon-atom -sm" aria-hidden="true"></i>`
+          : ''
+      }
+      </label>`;
+    });
+
+    this.$data.codeSnippets.htmlblueprint = `<fieldset>
+  <legend class="chi-label">Select an option</legend>
+  <div class="chi-picker-group">
+    <div class="chi-picker-group__content">${pickerInputs}
+    </div>
+  </div>
+</fieldset>`;
+  }
+}
 </script>

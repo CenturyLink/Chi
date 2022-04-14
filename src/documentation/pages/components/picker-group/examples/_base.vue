@@ -37,22 +37,32 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<fieldset>
-  <legend class="chi-label">Select an option</legend>
-  <div class="chi-picker-group">
-    <div class="chi-picker-group__content">
-      <input class="chi-picker__input" type="radio" name="example__base" id="example__base_1">
-      <label for="example__base_1">Option 1</label>
-      <input class="chi-picker__input" type="radio" name="example__base" id="example__base_2">
-      <label for="example__base_2">Option 2</label>
-      <input class="chi-picker__input" type="radio" name="example__base" id="example__base_3">
-      <label for="example__base_3">Option 3</label>
-    </div>
-  </div>
-</fieldset>`
+        htmlblueprint: ``
       }
     };
   }
 })
-export default class Base extends Vue {}
+export default class Base extends Vue {
+  created() {
+    this._setCodeSnippets();
+  }
+
+  _setCodeSnippets() {
+    let pickerInputs = '';
+
+    this.$data.pickers.forEach((option: number) => {
+      pickerInputs += `
+      <input class="chi-picker__input" type="radio" name="example__base" id="example__base_${option}">
+      <label for="example__base_${option}">Option ${option}</label>`;
+    });
+
+    this.$data.codeSnippets.htmlblueprint = `<fieldset>
+  <legend class="chi-label">Select an option</legend>
+  <div class="chi-picker-group">
+    <div class="chi-picker-group__content">${pickerInputs}
+    </div>
+  </div>
+</fieldset>`;
+  }
+}
 </script>
