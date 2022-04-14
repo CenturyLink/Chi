@@ -156,12 +156,15 @@ p.-text
 .example.-mb--3
   .-p--3
     .chi-form__item
-      chi-checkbox#checkbox__help(label='Checkbox')
-      .chi-label__help
-        chi-button#example__help-button(type='icon' size='xs' variant='flat' alternative-text='Help')
-          chi-icon(icon='circle-info-outline')
-        chi-popover#example__help-popover(position='top' variant='text' arrow='' reference='#example__help-button')
-          | Helpful information goes here.
+      .chi-checkbox
+        input#checkbox__help.chi-checkbox__input(type='checkbox')
+        label.chi-checkbox__label(for='checkbox__help') Checkbox
+        .chi-label__help
+          button#example__help-button.chi-button.-icon.-xs.-flat(aria-label='Help' data-target='#example__help-popover')
+            i.chi-icon.icon-circle-info-outline(aria-hidden='true')
+          section#example__help-popover.chi-popover.chi-popover--top.-animated(aria-modal='true' role='dialog' aria-hidden='true' x-placement='top')
+            .chi-popover__content
+              p.chi-popover__text Helpful information goes here.
   .example-tabs.-pl--2
     ul.chi-tabs#example-help
       li.-active
