@@ -1,4 +1,10 @@
 # CHANGELOG
+## 5.X.X (April X, 2022)
+### Components
+#### Fixed
+* Fixed: Time picker web component removed the period when the format is 24 hours.
+
+# CHANGELOG
 ## 5.12.0 (March 30, 2022)
 ### Components
 #### Added
