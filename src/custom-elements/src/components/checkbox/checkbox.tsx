@@ -104,6 +104,7 @@ export class Checkbox {
             Select {this.label || this.name} {this.id}
           </div>
           {this.required ? requiredField : null}
+          <slot name="chi-checkbox__actions"></slot>
         </label>
       </div>
     );
