@@ -89,20 +89,6 @@
             <NuxtLink to="/components/expansion-panel">Expansion panel</NuxtLink>
           </li>
           <li><NuxtLink to="/components/footer">Footer</NuxtLink></li>
-          <li><NuxtLink to="/components/header">Header</NuxtLink></li>
-          <li><NuxtLink to="/components/icon">Icon</NuxtLink></li>
-          <li><NuxtLink to="/components/label">Label</NuxtLink></li>
-          <li>
-            <NuxtLink to="/components/mobile-navigation">Mobile navigation</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/components/forms/number-input">Number input</NuxtLink>
-          </li>
-          <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
-          <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
-          <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
-          <li><NuxtLink to="/components/stat">Stat</NuxtLink></li>
-          <li><NuxtLink to="/components/table">Table</NuxtLink></li>
           <li><NuxtLink to="/components/tabs">Tabs</NuxtLink></li>
           <li><NuxtLink to="/components/toolbar">Toolbar</NuxtLink></li> -->
         </ul>
