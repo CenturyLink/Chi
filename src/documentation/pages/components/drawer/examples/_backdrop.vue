@@ -42,19 +42,19 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: `<!-- Trigger -->
-<chi-button id="drawer-trigger-10" variant="flat" type="icon">
+<chi-button id="drawer-backdrop-trigger" variant="flat" type="icon">
   <chi-icon icon="menu" size="sm--2"></chi-icon>
 </chi-button>
 
 <!-- Drawer -->
-<chi-drawer id="interactive-drawer-10" position="bottom" backdrop no-header>
+<chi-drawer id="drawer-backdrop" position="bottom" backdrop no-header>
   <div class="-p--2 -pt--6 -text">Drawer content here</div>
 </chi-drawer>
 
 <!-- JavaScript -->
 <script>
-  var drawer = document.getElementById('interactive-drawer-10');
-  var drawerTrigger = document.getElementById('drawer-trigger-10');
+  var drawer = document.getElementById('drawer-backdrop');
+  var drawerTrigger = document.getElementById('drawer-backdrop-trigger');
   drawerTrigger.addEventListener('click', function(){
     drawer.toggle();
     // or drawer.active = !drawer.active;
@@ -85,7 +85,7 @@ methods: {
   }
 }`,
         htmlblueprint: `<!-- Trigger -->
-<button id="drawer-trigger-11" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-11" aria-label="Toggle navigation">
+<button id="drawer-backdrop-trigger" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-backdrop" aria-label="Toggle navigation">
   <div class="chi-button__content">
     <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
   </div>
@@ -94,7 +94,7 @@ methods: {
 <!-- Drawer -->
 <div class="chi-backdrop -closed">
   <div class="chi-backdrop__wrapper">
-    <div id="drawer-11" class="chi-drawer -bottom">
+    <div id="drawer-backdrop" class="chi-drawer -bottom">
       <button class="chi-button -icon -close" aria-label="Close">
         <div class="chi-button__content">
           <i class="chi-icon icon-x" aria-hidden="true"></i>
@@ -108,7 +108,7 @@ methods: {
 </div>
 
 <!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-trigger-11'));<\/script>`
+<script>chi.drawer(document.getElementById('drawer-backdrop-trigger'));<\/script>`
       }
     };
   }

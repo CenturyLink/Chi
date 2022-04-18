@@ -44,19 +44,19 @@ import { HeadTabsInterface } from '../../../../models/models';
           codeSnippets: {
             webComponent: {
               code: `<!-- Trigger -->
-<chi-button id="drawer-trigger-14" variant="flat" type="icon">
+<chi-button id="drawer-close-button-trigger" variant="flat" type="icon">
   <chi-icon icon="menu" size="sm--2"></chi-icon>
 </chi-button>
 
 <!-- Drawer -->
-<chi-drawer id="interactive-drawer-14" position="left" backdrop no-header>
+<chi-drawer id="drawer-close-button" position="left" backdrop no-header>
   <div class="-p--2 -pt--6 -text">Drawer content here</div>
 </chi-drawer>
 
 <!-- JavaScript -->
 <script>
-  var drawer = document.getElementById('interactive-drawer-14');
-  var drawerTrigger = document.getElementById('drawer-trigger-14');
+  var drawer = document.getElementById('drawer-close-button');
+  var drawerTrigger = document.getElementById('drawer-close-button-trigger');
   drawerTrigger.addEventListener('click', function(){
     drawer.toggle();
     // or drawer.active = !drawer.active;
@@ -95,7 +95,7 @@ methods: {
             },
             htmlBlueprint: {
               code: `<!-- Trigger -->
-<button id="drawer-trigger-15" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-15" aria-label="Toggle navigation">
+<button id="drawer-close-button-trigger" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-close-button" aria-label="Toggle navigation">
   <div class="chi-button__content">
     <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
   </div>
@@ -104,7 +104,7 @@ methods: {
 <!-- Drawer -->
 <div class="chi-backdrop -closed">
   <div class="chi-backdrop__wrapper">
-    <div id="drawer-15" class="chi-drawer -left">
+    <div id="drawer-close-button" class="chi-drawer -left">
       <button class="chi-button -icon -close" aria-label="Close">
         <div class="chi-button__content">
           <i class="chi-icon icon-x" aria-hidden="true"></i>
@@ -118,7 +118,7 @@ methods: {
 </div>
 
 <!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-trigger-15'));<\/script>`
+<script>chi.drawer(document.getElementById('drawer-close-button-trigger'));<\/script>`
             }
           }
         },
@@ -128,19 +128,19 @@ methods: {
           codeSnippets: {
             webComponent: {
               code: `<!-- Trigger -->
-<chi-button id="drawer-trigger-16" variant="flat" type="icon">
+<chi-button id="drawer-close-button-trigger" variant="flat" type="icon">
   <chi-icon icon="menu" size="sm--2"></chi-icon>
 </chi-button>
 
 <!-- Drawer -->
-<chi-drawer id="interactive-drawer-16" position="left" backdrop non-closable no-header>
+<chi-drawer id="drawer-close-button" position="left" backdrop non-closable no-header>
   <div class="-p--2 -pt--6 -text">Drawer content here</div>
 </chi-drawer>
 
 <!-- JavaScript -->
 <script>
-  var drawer = document.getElementById('interactive-drawer-16');
-  var drawerTrigger = document.getElementById('drawer-trigger-16');
+  var drawer = document.getElementById('drawer-close-button');
+  var drawerTrigger = document.getElementById('drawer-close-button-trigger');
   drawerTrigger.addEventListener('click', function(){
     drawer.toggle();
     // or drawer.active = !drawer.active;
@@ -178,7 +178,7 @@ methods: {
             },
             htmlBlueprint: {
               code: `<!-- Trigger -->
-<button id="drawer-trigger-17" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-17" aria-label="Toggle navigation">
+<button id="drawer-close-button-triger" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-close-button" aria-label="Toggle navigation">
   <div class="chi-button__content">
     <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
   </div>
@@ -187,7 +187,7 @@ methods: {
 <!-- Drawer -->
 <div class="chi-backdrop -closed">
   <div class="chi-backdrop__wrapper">
-    <div id="drawer-17" class="chi-drawer -left">
+    <div id="drawer-close-button" class="chi-drawer -left">
       <div class="chi-drawer__content">
         <div class="-p--2 -pt--6 -text">Drawer content here</div>
       </div>
@@ -196,7 +196,7 @@ methods: {
 </div>
 
 <!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-trigger-17'));<\/script>`
+<script>chi.drawer(document.getElementById('drawer-close-button-triger'));<\/script>`
             }
           }
         }

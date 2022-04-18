@@ -36,29 +36,26 @@ import { HeadTabsInterface } from '../../../../models/models';
   data: () => {
     return {
       headTabs: ['left', 'right', 'top', 'bottom'].map((position, index) => {
-        const webComponentIds = [2, 4, 6, 8];
-        const htmlBlueprintIds = [3, 5, 7, 9];
-
         return {
-          active: position === 'left' ? true : false,
+          active: position === 'left',
           id: position,
           label: position.charAt(0).toUpperCase() + position.slice(1),
           codeSnippets: {
             webComponent: {
               code: `<!-- Trigger -->
-<chi-button id="drawer-trigger-${webComponentIds[index]}" variant="flat" type="icon">
+<chi-button id="drawer-position-${position}-trigger" variant="flat" type="icon">
   <chi-icon icon="menu" size="sm--2"></chi-icon>
 </chi-button>
 
 <!-- Drawer -->
-<chi-drawer id="interactive-drawer-${webComponentIds[index]}" position="${position}" no-header>
+<chi-drawer id="drawer-position-${position}" position="${position}" no-header>
   <div class="-p--2 -pt--6 -text">Drawer content here</div>
 </chi-drawer>
 
 <!-- JavaScript -->
 <script>
-  var drawer = document.getElementById('interactive-drawer-${webComponentIds[index]}');
-  var drawerTrigger = document.getElementById('drawer-trigger-${webComponentIds[index]}');
+  var drawer = document.getElementById('drawer-position-${position}');
+  var drawerTrigger = document.getElementById('drawer-position-${position}-trigger');
   drawerTrigger.addEventListener('click', function(){
     drawer.toggle();
     // or drawer.active = !drawer.active;
@@ -93,14 +90,14 @@ methods: {
             },
             htmlBlueprint: {
               code: `<!-- Trigger -->
-<button id="drawer-trigger-${htmlBlueprintIds[index]}" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-${htmlBlueprintIds[index]}" aria-label="Toggle navigation">
+<button id="drawer-position-${position}-trigger" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-position-${position}" aria-label="Toggle navigation">
   <div class="chi-button__content">
     <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
   </div>
 </button>
 
 <!-- Drawer -->
-<div id="drawer-${htmlBlueprintIds[index]}" class="chi-drawer -${position}">
+<div id="drawer-position-${position}" class="chi-drawer -${position}">
   <button class="chi-button -icon -close" aria-label="Close">
     <div class="chi-button__content">
       <i class="chi-icon icon-x" aria-hidden="true"></i>
@@ -112,7 +109,7 @@ methods: {
 </div>
 
 <!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-trigger-${htmlBlueprintIds[index]}'));<\/script>`
+<script>chi.drawer(document.getElementById('drawer-position-${position}-trigger'));<\/script>`
             }
           }
         };

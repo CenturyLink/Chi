@@ -34,19 +34,19 @@ import { HeadTabsInterface } from '../../../../models/models';
           codeSnippets: {
             webComponent: {
               code: `<!-- Trigger -->
-<chi-button id="drawer-trigger-18" variant="flat" type="icon">
+<chi-button id="drawer-trigger-header" variant="flat" type="icon">
   <chi-icon icon="menu" size="sm--2"></chi-icon>
 </chi-button>
 
 <!-- Drawer -->
-<chi-drawer id="interactive-drawer-18" title="Drawer title here" position="bottom" backdrop>
+<chi-drawer id="drawer-header" title="Drawer title here" position="bottom" backdrop>
   <div class="-p--2 -text">Drawer content here</div>
 </chi-drawer>
 
 <!-- JavaScript -->
 <script>
-  var drawer = document.getElementById('interactive-drawer-18');
-  var drawerTrigger = document.getElementById('drawer-trigger-18');
+  var drawer = document.getElementById('drawer-header');
+  var drawerTrigger = document.getElementById('drawer-trigger-header');
   drawerTrigger.addEventListener('click', function(){
     drawer.toggle();
     // or drawer.active = !drawer.active;
@@ -81,7 +81,7 @@ methods: {
             },
             htmlBlueprint: {
               code: `<!-- Trigger -->
-<button id="drawer-trigger-19" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-19" aria-label="Toggle navigation">
+<button id="drawer-trigger-header" class="chi-button -flat -icon chi-drawer__trigger" data-target="#drawer-header" aria-label="Toggle navigation">
   <div class="chi-button__content">
     <i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i>
   </div>
@@ -90,7 +90,7 @@ methods: {
 <!-- Drawer -->
 <div class="chi-backdrop -closed">
   <div class="chi-backdrop__wrapper">
-    <div id="drawer-19" class="chi-drawer -bottom">
+    <div id="drawer-header" class="chi-drawer -bottom">
       <div class="chi-drawer__header">
         <span class="chi-drawer__title">
           Drawer title here
@@ -109,7 +109,7 @@ methods: {
 </div>
 
 <!-- JavaScript -->
-<script>chi.drawer(document.getElementById('drawer-trigger-19'));<\/script>`
+<script>chi.drawer(document.getElementById('drawer-trigger-header'));<\/script>`
             }
           }
         },
