@@ -286,12 +286,11 @@ p.-text
 .example.-mb--3
   .-p--3
     fieldset
-      legend
-        chi-label(for='checkbox__stacked') Select options
-        .chi-form__item
-          chi-checkbox#checkbox__stacked1(label='Option 1')
-        .chi-form__item
-          chi-checkbox#checkbox__stacked2(label='Option 2')
+      legend.chi-label Select options
+      .chi-form__item
+        chi-checkbox#checkbox__stacked1(label='Option 1')
+      .chi-form__item
+        chi-checkbox#checkbox__stacked2(label='Option 2')
   .example-tabs.-pl--2
     ul.chi-tabs#example-stacked
       li.-active
@@ -301,9 +300,7 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-stacked
     :code(lang="html")
       <fieldset>
-        <legend>
-          <chi-label for="checkbox__stacked">Select options</chi-label>
-        </label>
+        <legend class="chi-label">Select options</legend>
         <div class="chi-form__item">
           <chi-checkbox id="checkbox__stacked1" label="Option 1"></chi-checkbox>
         </div>
@@ -339,8 +336,7 @@ p.-text
     fieldset
       .chi-grid
         .chi-col.-w--12.-mb--1
-          legend
-            chi-label(for='checkbox__grid') Select options
+          legend.chi-label Select options
         each i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
           .chi-col.-w--12.-w-md--3.-w-sm--6.-mb--1
             .chi-form__item
@@ -356,9 +352,7 @@ p.-text
       <fieldset>
         <div class="chi-grid">
           <div class="chi-col -w--12 -mb--1">
-            <legend>
-              <chi-label for="checkbox__grid">Select options</chi-label>
-            </legend>
+            <legend class="chi-label">Select options</legend>
           </div>
           <div class="chi-col -w--12 -w-md--3 -w-sm--6 -mb--1">
             <div class="chi-form__item">
@@ -534,8 +528,7 @@ p.-text
 .example.-mb--3
   .-p--3
     fieldset
-      legend
-        chi-label(for='checkbox__inline') Select options
+      legend.chi-label Select options
       .chi-form__item.-inline
         chi-checkbox#checkbox__inline1(label='Option 1')
       .chi-form__item.-inline
@@ -549,9 +542,7 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-inline
     :code(lang="html")
       <fieldset>
-        <legend>
-          <chi-label for="checkbox__inline">Select options</chi-label>
-        </legend>
+        <legend class="chi-label">Select options</legend>
         <div class="chi-form__item -inline">
           <chi-checkbox id="checkbox__inline1" label="Option 1"></chi-checkbox>
         </div>
@@ -600,9 +591,7 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-list
     :code(lang="html")
       <fieldset>
-        <legend>
-          <chi-label for="checkbox__list">Select options</chi-label>
-        </legend>
+        <legend class="chi-label">Select options</legend>
         <ul class="chi-form__item -list">
           <li class="chi-form__item">
             <chi-checkbox id="checkbox__list1" label="Option 1"></chi-checkbox>
