@@ -17,6 +17,7 @@ export default class Checkbox extends Vue {
   dataState(newValue: CheckboxState, oldValue: CheckboxState) {
     if (newValue !== oldValue) {
       this.state = newValue;
+      this._updateCheckboxState();
     }
   }
 
@@ -29,10 +30,8 @@ export default class Checkbox extends Vue {
 
     if (this.state === 'indeterminate') {
       checkbox.indeterminate = true;
-      checkbox.classList.add(CHECKBOX_CLASSES.INDETERMINATE);
     } else {
       checkbox.indeterminate = false;
-      checkbox.classList.remove(CHECKBOX_CLASSES.INDETERMINATE);
     }
   }
 
@@ -40,13 +39,9 @@ export default class Checkbox extends Vue {
     this._updateCheckboxState();
   }
 
-  updated() {
-    this._updateCheckboxState();
-  }
-
   render() {
     return (
-      <div class={CHECKBOX_CLASSES.checkbox}>
+      <div class={CHECKBOX_CLASSES.checkbox} key={this.id}>
         <input
           v-model={this.state}
           class={`${CHECKBOX_CLASSES.INPUT} ${this.state === 'indeterminate' && CHECKBOX_CLASSES.INDETERMINATE}`}

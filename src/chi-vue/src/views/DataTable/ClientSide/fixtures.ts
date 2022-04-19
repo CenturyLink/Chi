@@ -1,4 +1,6 @@
-export const exampleConfig = {
+import { DataTableConfig } from '@/constants/types';
+
+export const exampleConfig: DataTableConfig = {
   columnResize: true,
   noResultsMessage: 'No matches found. Please revise search criteria and try again.',
   style: {
@@ -31,6 +33,10 @@ export const exampleConfig = {
     direction: 'ascending',
   },
   truncation: true,
+  treeSelection: true,
+  print: {
+    isNestedContentPrintDisabled: true,
+  },
 };
 
 const exampleColumns = [
@@ -241,10 +247,10 @@ export const exampleTableHead = {
     sortDataType: 'string',
     align: 'center',
   },
-  string: { label: 'String', sortable: true, sortDataType: 'string', key: true },
+  string: { label: 'Product', sortable: true, sortDataType: 'string', key: true },
   number: { label: 'Number', sortable: true, sortDataType: 'number' },
-  date: { label: 'Date', sortable: true, sortBy: 'date', sortDataType: 'date' },
-  productId: { label: 'Product / Service ID', sortable: true, sortDataType: 'string' },
+  date: { label: 'Created', sortable: true, sortBy: 'date', sortDataType: 'date' },
+  productId: { label: 'Service ID', sortable: true, sortDataType: 'string' },
   actions: { label: ' ', align: 'right', allowOverflow: true, isPrintDisabled: true },
 };
 
@@ -255,7 +261,10 @@ export const exampleTableBody = [
       template: 'loadingSkeleton',
     },
     active: false,
-    selectionDisabled: false,
+    selectionDisabled: true,
+    print: {
+      isNestedContentPrintDisabled: true,
+    },
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021063' } },
       {
@@ -432,76 +441,6 @@ export const exampleTableBody = [
                   {
                     id: 'bbb',
                     active: false,
-                    nestedContent: {
-                      table: {
-                        data: [
-                          {
-                            id: 'ba',
-                            active: false,
-                            data: [
-                              {
-                                template: 'ticketId',
-                                payload: { id: 'NTM00002106611' },
-                              },
-                              {
-                                label: 'Alerts',
-                                template: 'icon',
-                                payload: {
-                                  icon: 'circle-check',
-                                  color: 'success',
-                                },
-                              },
-                              {
-                                template: 'status',
-                                payload: { status: 'active' },
-                                align: 'center',
-                              },
-                              'Colocation',
-                              7,
-                              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
-                              'SVUJW034781A',
-                              {
-                                template: 'actions',
-                                payload: { id: 'NTM00002106611' },
-                                align: 'right',
-                              },
-                            ],
-                          },
-                          {
-                            id: 'bb',
-                            active: false,
-                            data: [
-                              {
-                                template: 'ticketId',
-                                payload: { id: 'NTM00002106621' },
-                              },
-                              {
-                                label: 'Alerts',
-                                template: 'icon',
-                                payload: {
-                                  icon: 'circle-check',
-                                  color: 'success',
-                                },
-                              },
-                              {
-                                template: 'status',
-                                payload: { status: 'active' },
-                                align: 'center',
-                              },
-                              'Colocation',
-                              8,
-                              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
-                              'SVUJW034781A',
-                              {
-                                template: 'actions',
-                                payload: { id: 'NTM00002106621' },
-                                align: 'right',
-                              },
-                            ],
-                          },
-                        ],
-                      },
-                    },
                     data: [
                       {
                         template: 'ticketId',

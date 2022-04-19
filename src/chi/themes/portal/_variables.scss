@@ -311,12 +311,13 @@ $accordion-xl-item-content-padding:         0 1.5rem 1.5rem;
 
 // Alert
 $alert-background-color:                    $color-background-white;
-$alert-accent-border-color:                 $color-icon-info;
+$alert-accent-border-color:                 $color-text-base;
+$alert-accent-border-width:                 0.5rem;
 $alert-border-color:                        $color-border-base-dark;
-$alert-title-text-color:                    $color-text-primary;
+$alert-title-text-color:                    $color-text-base;
 $alert-banner-title-text-color:             $color-text-base;
 $alert-text-color:                          $color-text-base;
-$alert-icon-color:                          $color-icon-info;
+$alert-icon-color:                          $color-text-base;
 $alert-close-icon-color:                    $color-icon-primary;
 $alert-success-accent-border-color:         $color-icon-success;
 $alert-success-border-color:                $color-border-success-light;
@@ -775,6 +776,9 @@ $carousel-dot-border-color:                 $color-border-primary;
 $carousel-dot-hover-background-color:       $color-background-primary;
 $carousel-dot-active-background-color:      $color-background-primary;
 $carousel-dot-size:                         $icon-size-xs;
+$carousel-pagination-line-height:           $line-height;
+$carousel-controller-height-dots:           calc(100% - #{$carousel-dot-size});
+$carousel-controller-height-pagination:     calc(100% - #{$carousel-pagination-line-height});
 
 // Checkbox
 $checkbox-background-color:                 $color-background-white;

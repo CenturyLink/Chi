@@ -1,4 +1,36 @@
 # CHANGELOG
+## 5.12.0 (March 30, 2022)
+### Components
+#### Added
+* Added: Checkbox web component.
+#### Changed
+* Changed: Date picker web component now emits `chiDateInvalid` event instead of selecting today's date when the typed date is invalid.
+#### Fixed
+* Fixed: Phone input web component cursor position when editing phone number.
+
+## 5.11.0 (March 18, 2022)
+### Components
+#### Added
+* Added: Data table now supports print-friendly rendering.
+* Added: Number input now supports optional configuration of value format.
+* Added: Data table bulk actions module now supports displaying of three level data in show selected only mode.
+* Added: Checkbox Vue component.
+* Added: Data table now supports indeterminate state of row checkbox.
+* Added: Data table now supports tree selection for automatic hierarchical selection of rows.
+* Added: Data table select all checkbox now supports disabled state.
+* Added: Display utility classes now support `-d-screen--only` and `-d-print--only` to target specific media type.
+#### Changed
+* Changed: Form item error messages now include warning icon.
+#### Fixed
+* Fixed: Data table `chiSelectAll` and `chiDeselectAll` events to provide an array of rows with enabled selection.
+### Documentation
+#### Added
+* Added: Alert type toast examples have been included in Lumen Enterprise Portal theme documentation.
+* Added: Data table complex example now illustrates `print` method.
+* Added: Stat component documentation examples now illustrate hover behavior.
+#### Changed
+* Changed: Stat component documentation examples now illustrate carousel.
+
 ## 5.9.1 (February 17, 2022)
 ### Components
 #### Changed
@@ -11,7 +43,6 @@
 * Added: Carousel web component now supports optional pagination.
 * Added: Search Input web component now supports `readonly` state.
 
-# CHANGELOG
 ## 5.8.0 (January 31, 2022)
 ### Components
 #### Added
@@ -30,7 +61,6 @@
 #### Changed
 * Changed: Table filtering example of popover component documentation now includes more accordions to show a scrollbar.
 
-# CHANGELOG
 ## 5.7.0 (December 16, 2021)
 ### Components
 #### Added

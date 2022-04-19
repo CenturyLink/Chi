@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-02-28T16:55:49",
+  "timestamp": "2022-04-19T00:00:31",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -673,6 +673,113 @@
       }
     },
     {
+      "filePath": "src/components/checkbox/checkbox.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-checkbox",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "checked",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "checked",
+          "reflectToAttr": false,
+          "docs": "To render the checkbox in checked state",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "disabled",
+          "reflectToAttr": false,
+          "docs": "To disable the checkbox",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "indeterminate",
+          "reflectToAttr": false,
+          "docs": "To add indeterminate state to checkbox",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "mutable": false,
+          "attr": "label",
+          "reflectToAttr": false,
+          "docs": "To provide checkbox label as a string",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "mutable": false,
+          "attr": "name",
+          "reflectToAttr": false,
+          "docs": "To render the checkbox input with a respective name attribute",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiChange",
+          "detail": "boolean | string",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user selects or deselects the chechbox",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
       "filePath": "src/components/date/date.tsx",
       "encapsulation": "scoped",
       "tag": "chi-date",
@@ -1197,6 +1304,15 @@
           "cancelable": true,
           "composed": true,
           "docs": "Date change value event",
+          "docsTags": []
+        },
+        {
+          "event": "chiDateInvalid",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered if the date value introduced by the user is invalid",
           "docsTags": []
         }
       ],

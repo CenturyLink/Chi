@@ -1,0 +1,33 @@
+---
+title: Carousel
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+h3 Base
+chi-carousel(data-cy="base")
+  .-d--flex(slot="items")
+    each item in [1, 2, 3, 4, 5, 6, 7, 8]
+      .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;")
+        .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
+
+h3 Single
+chi-carousel(single data-cy="single")
+  each item in [1,2,3,4,5,6,7,8]
+    .chi-carousel__item.-p--1(style="height: 10rem;" slot="items")
+      .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center
+        =item
+
+h3 Dots
+chi-carousel(dots data-cy="dots")
+  .-d--flex(slot="items")
+    each item in [1, 2, 3, 4, 5, 6, 7, 8]
+      .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;")
+        .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
+
+h3 Pagination
+chi-carousel(pagination single data-cy="pagination")
+  .-d--flex(slot="items")
+    each item in [1, 2, 3, 4, 5, 6, 7, 8]
+      .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;")
+        .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item

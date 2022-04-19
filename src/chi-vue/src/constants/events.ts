@@ -1,6 +1,6 @@
 import { DataTableRow } from './types';
 
-//#region Data Table
+//#region Generic events
 export const GENERIC_EVENTS = {
   CHANGE: 'chiChange',
   INPUT: 'chiInput',

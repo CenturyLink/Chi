@@ -8,12 +8,15 @@
         <div class="chi-collection__title">Components</div>
         <ul class="chi-tabs__subtabs">
           <li><NuxtLink to="/components/accordion">Accordion</NuxtLink></li>
-          <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li> -->
+          <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/alert">Alert</NuxtLink></li>
-          <!-- <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li> -->
+          <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
           <li><NuxtLink to="/components/badge">Badge</NuxtLink></li>
           <li><NuxtLink to="/components/brand">Brand</NuxtLink></li>
+          <li><NuxtLink to="/components/breadcrumb">Breadcrumb</NuxtLink></li>
+          <li><NuxtLink to="/components/button-group">Button group</NuxtLink></li>
           <li><NuxtLink to="/components/card">Card</NuxtLink></li>
+          <li><NuxtLink to="/components/carousel">Carousel</NuxtLink></li>
           <li><NuxtLink to="/components/forms/checkbox">Checkbox</NuxtLink></li>
           <li><NuxtLink to="/components/divider">Divider</NuxtLink></li>
           <li><NuxtLink to="/components/dropdown">Dropdown</NuxtLink></li>
@@ -40,6 +43,7 @@
           <li><NuxtLink to="/components/pagination">Pagination</NuxtLink></li>
           <li><NuxtLink to="/components/phone-input">Phone input</NuxtLink></li>
           <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
+          <li><NuxtLink to="/components/picker-group">Picker group</NuxtLink></li>
           <li><NuxtLink to="/components/price">Price</NuxtLink></li>
           <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
           <li><NuxtLink to="/components/progress">Progress</NuxtLink></li>
@@ -57,6 +61,7 @@
             >
           </li>
           <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
+          <li><NuxtLink to="/components/spinner">Spinner</NuxtLink></li>
           <li><NuxtLink to="/components/stat">Stat</NuxtLink></li>
           <li><NuxtLink to="/components/steps">Steps</NuxtLink></li>
           <li><NuxtLink to="/components/table">Table</NuxtLink></li>
@@ -67,15 +72,15 @@
           </li>
           <li><NuxtLink to="/components/tooltip">Tooltip</NuxtLink></li>
           <li><NuxtLink to="/components/toolbar">Toolbar</NuxtLink></li>
+          <li><NuxtLink to="/components/time-picker">Time picker</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/activity">Activity</NuxtLink></li>
           <li><NuxtLink to="/components/avatar">Avatar</NuxtLink></li>
-          <li><NuxtLink to="/components/breadcrumb">Breadcrumb</NuxtLink></li>
+
           <li>
             <NuxtLink to="/components/button"
               >Button
               <div class="-sr--only">component</div></NuxtLink>
-          </li>
-          <li><NuxtLink to="/components/button-group">Button group</NuxtLink></li> -->
+          </li> -->
           <!-- <li><NuxtLink to="/components/data-table">Data table</NuxtLink></li> -->
           <!-- <li><NuxtLink to="/components/date-picker">Date picker</NuxtLink></li> -->
           <!-- <li><NuxtLink to="/components/drawer">Drawer</NuxtLink></li> -->
@@ -93,10 +98,8 @@
             <NuxtLink to="/components/forms/number-input">Number input</NuxtLink>
           </li>
           <li><NuxtLink to="/components/picker">Picker</NuxtLink></li>
-          <li><NuxtLink to="/components/picker-group">Picker group</NuxtLink></li>
           <li><NuxtLink to="/components/popover">Popover</NuxtLink></li>
           <li><NuxtLink to="/components/skeleton">Skeleton</NuxtLink></li>
-          <li><NuxtLink to="/components/spinner">Spinner</NuxtLink></li>
           <li><NuxtLink to="/components/stat">Stat</NuxtLink></li>
           <li><NuxtLink to="/components/table">Table</NuxtLink></li>
           <li><NuxtLink to="/components/tabs">Tabs</NuxtLink></li>
