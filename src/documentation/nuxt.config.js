@@ -1,4 +1,5 @@
-import { CHI_VERSION } from "./constants/configs";
+import { CHI_VERSION } from './constants/configs';
+const CopyPlugin = require('copy-webpack-plugin');
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -34,7 +35,9 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    './plugins/chi-vue-components.js'
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -70,5 +73,12 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {
+    plugins: [
+      new CopyPlugin([{ from: '@centurylink/chi-vue/dist' }], {
+        context: 'node_modules',
+        ignore: ['.DS_Store']
+      })
+    ]
+  }
 };
