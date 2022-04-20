@@ -1,3 +1,4 @@
+# CHANGELOG
 ## 5.12.0 (March 30, 2022)
 ### Components
 #### Added
