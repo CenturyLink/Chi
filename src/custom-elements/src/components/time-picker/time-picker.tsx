@@ -162,10 +162,9 @@ export class TimePicker {
     };
     const hour = !(this.format === '24hr') && ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
     const seconds = this.displaySeconds ? `:${formatTimePeriod(ev.detail.second)}` : '';
-
-    timePickerInput.value = !(this.format === '24hr') ? 
-      `${formatTimePeriod(hour)}:${formatTimePeriod(ev.detail.minute)}${seconds} ${formatTimePeriod(ev.detail.period)}` :
-      `${formatTimePeriod(hour)}:${formatTimePeriod(ev.detail.minute)}${seconds}`
+    const timePeriod = this.format === '12hr' ? formatTimePeriod(ev.detail.period) : '';
+    
+    timePickerInput.value = `${formatTimePeriod(hour)}:${formatTimePeriod(ev.detail.minute)}${seconds} ${timePeriod}`
   }
 
   render() {
@@ -198,7 +197,7 @@ export class TimePicker {
             class={`chi-input
               ${this.active ? '-focus' : ''}`}
             type={`text`}
-            placeholder={`--:-- --`}
+            placeholder={this.format === '12hr' ? '--:-- --' : '--:--'}
             ref={el => (this._input = el as HTMLInputElement)}
             value={this.value}
             disabled={this.disabled}
