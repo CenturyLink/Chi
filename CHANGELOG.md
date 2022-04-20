@@ -1,4 +1,12 @@
 # CHANGELOG
+## 5.13.0 (April 20, 2022)
+### Components
+#### Added
+* Added: Expansion panel component now supports mobile-first rendering.
+* Added: Search input Vue component now supports asynchronous update of value.
+#### Fixed
+* Fixed: Time picker web component now renders the value with `AM/PM` only in mode `12hr`.
+
 ## 5.12.0 (March 30, 2022)
 ### Components
 #### Added

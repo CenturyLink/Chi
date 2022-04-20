@@ -1,0 +1,72 @@
+<template lang="pug">
+  <ComponentExample title="Error" id="error" :tabs="exampleTabs">
+    p.-text(slot="example-description")
+      | Use the <code>danger</code> state to provide feedback to users when date fails to validate.
+      | To meet accessibility requirements, danger date picker must include an error message explaining the
+      | failure and/or how to correct it.
+    div(slot="example")
+      div(style="max-width: 14rem;")
+        chi-label(for='date-error')
+          | Date
+        chi-date-picker(id="date-error" state="danger")
+      .chi-label.-status.-danger
+        chi-icon(icon='circle-warning')
+          | Please select a date.
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+    </Wrapper>
+  </ComponentExample>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+declare const chi: any;
+
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          active: true,
+          id: 'webcomponent',
+          label: 'Web component',
+        },
+        {
+          id: 'htmlblueprint',
+          label: 'HTML blueprint',
+        },
+      ],
+      codeSnippets: {
+        webcomponent: `<chi-label for="date-error">Date</chi-label>
+<chi-date-picker id="date-error" state="danger"></chi-date-picker>
+<div class="chi-label -status -danger">
+  <chi-icon icon="circle-warning"></chi-icon>
+  Please select a date.
+</div>`,
+        htmlblueprint: `<div class="chi-form__item">
+  <label class="chi-label" for="datepicker-error">Date</label>
+  <div class="chi-input__wrapper -icon--right">
+    <input id="datepicker-error" type="text" class="chi-input -danger" placeholder="MM/DD/YYYY">
+    <i class="chi-icon icon-date" aria-hidden="true"></i>
+  </div>
+  <div class="chi-label -status -danger">
+    <i class="chi-icon circle-warning" aria-hidden="true"></i>
+    Please select a date.
+  </div>
+</div>
+
+<script>chi.datePicker(document.getElementById('datepicker-error'));<\/script>`,
+      },
+    };
+  },
+})
+export default class Error extends Vue {
+}
+</script>

@@ -19,6 +19,7 @@
           <li><NuxtLink to="/components/carousel">Carousel</NuxtLink></li>
           <li><NuxtLink to="/components/forms/checkbox">Checkbox</NuxtLink></li>
           <li><NuxtLink to="/components/divider">Divider</NuxtLink></li>
+          <li><NuxtLink to="/components/date-picker">Date picker</NuxtLink></li>
           <li><NuxtLink to="/components/dropdown">Dropdown</NuxtLink></li>
           <li><NuxtLink to="/components/file-input">File input</NuxtLink></li>
           <li><NuxtLink to="/components/flag-icon">Flag icon</NuxtLink></li>
@@ -82,7 +83,6 @@
               <div class="-sr--only">component</div></NuxtLink>
           </li> -->
           <!-- <li><NuxtLink to="/components/data-table">Data table</NuxtLink></li> -->
-          <!-- <li><NuxtLink to="/components/date-picker">Date picker</NuxtLink></li> -->
           <!-- <li><NuxtLink to="/components/drawer">Drawer</NuxtLink></li> -->
           <!-- <li>
             <NuxtLink to="/components/expansion-panel">Expansion panel</NuxtLink>
