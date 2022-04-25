@@ -81,6 +81,7 @@
               >Toggle switch</NuxtLink
             >
           </li>
+          <li><NuxtLink to="/components/toolbar">Toolbar</NuxtLink></li>
           <li><NuxtLink to="/components/tooltip">Tooltip</NuxtLink></li>
           <!-- <li><NuxtLink to="/components/data-table">Data table</NuxtLink></li> -->
           <!-- <li><NuxtLink to="/components/date-picker">Date picker</NuxtLink></li> -->
@@ -88,8 +89,7 @@
             <NuxtLink to="/components/expansion-panel">Expansion panel</NuxtLink>
           </li>
           <li><NuxtLink to="/components/footer">Footer</NuxtLink></li>
-          <li><NuxtLink to="/components/tabs">Tabs</NuxtLink></li>
-          <li><NuxtLink to="/components/toolbar">Toolbar</NuxtLink></li> -->
+          <li><NuxtLink to="/components/tabs">Tabs</NuxtLink></li> -->
         </ul>
       </li>
       <!-- <li>

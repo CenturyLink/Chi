@@ -1,4 +1,4 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import {
   BUTTON_CLASSES,
   CLOSE_CLASS,
@@ -57,6 +57,13 @@ export default class SearchInput extends Vue {
 
   beforeMount() {
     this._chiMajorVersion = detectMajorChiVersion();
+  }
+
+  @Watch('value')
+  updateValue(newValue: string, oldValue: string) {
+    if (newValue !== oldValue) {
+      this.inputValue = newValue;
+    }
   }
 
   render() {
