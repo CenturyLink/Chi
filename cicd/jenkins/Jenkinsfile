@@ -57,6 +57,7 @@ pipeline {
       GITHUB_TOKEN_CREDENTIALS = 'SCMAUTO_GITHUB'
       GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
       GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
+      GITHUB_PUBLISH_TOKEN_CREDENTIALS = 'allyourbotsarebelongtous-token'
       DOCKER_CREDENTIALS = 'nexus-secrets'
       KUBE_CREDENTIALS = 'kube-secret'
       KUBE_CREDENTIALS_TEST = 'kube-secret-test'
@@ -267,7 +268,7 @@ pipeline {
           }
         }
       }
-      stage('CE & Vue Build') {
+      stage('CE, Vue & Documentation Build') {
         when {
             allOf {
               not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
@@ -317,6 +318,26 @@ pipeline {
                   jslNpmWrapper('run build:umd')
                   stash name: "DIST-CHI-VUE-UMD", includes: "umd/**"
                   stash name: "NODEMODULES-CHI-VUE", includes: "node_modules/**"
+                }
+              }
+            }
+          }
+          stage ('Building Vue documentation system') {
+            agent {
+              dockerfile {
+                filename 'Dockerfile'
+                dir 'cicd/docker/sonar-scanner'
+                label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
+                // registryUrl DOCKER_REGISTRY
+                // registryCredentialsId DOCKER_CREDENTIALS
+              }
+            }
+            steps {
+              script {
+                dir('src/documentation') {
+                  jslNpmWrapper('install', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+                  jslNpmWrapper('run generate')
                 }
               }
             }
@@ -852,7 +873,7 @@ PolicyDocument
             steps {
               script {
                 sh "rm -rf dist"
-                unstash name: "DIST-CHI"
+                unstash name: "DIST-VUE"
                 jslBuildAndPushToNexus('./cicd/docker/nginx/Dockerfile')
 
                 def chiManifest = 'chiManifest.yml'

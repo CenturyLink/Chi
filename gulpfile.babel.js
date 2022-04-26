@@ -7,6 +7,7 @@ const requires = {
   'build-boilerplates': require('./tasks/build-boilerplates.js'),
   'build-chi-styles': require('./tasks/build-chi-styles.js'),
   'build-ctl-styles': require('./tasks/build-ctl-styles.js'),
+  'copy-documentation-compilation': require('./tasks/copy-documentation-compilation.js'),
   'build-portal-styles': require('./tasks/build-portal-styles.js'),
   'build-brightspeed-styles': require('./tasks/build-brightspeed-styles.js'),
   'build-chi-assets': require('./tasks/build-chi-assets.js'),

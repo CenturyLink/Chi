@@ -1,5 +1,6 @@
 <template>
   <nav class="docs-sidenav">
+    <div class="-text--primary -p--2">New docs</div>
     <div class="-px--2 -pt--2 -pb--1">
       <ThemeSwitcher />
     </div>
@@ -19,6 +20,7 @@
           <li><NuxtLink to="/components/card">Card</NuxtLink></li>
           <li><NuxtLink to="/components/carousel">Carousel</NuxtLink></li>
           <li><NuxtLink to="/components/forms/checkbox">Checkbox</NuxtLink></li>
+          <li><a href="/components/data-table">Data table</a></li>
           <li><NuxtLink to="/components/divider">Divider</NuxtLink></li>
           <li><NuxtLink to="/components/drawer">Drawer</NuxtLink></li>
           <li><NuxtLink to="/components/dropdown">Dropdown</NuxtLink></li>

@@ -9,5 +9,6 @@ gulp.task('build', gulp.series(
   'build:boilerplates',
   'copy:chi:ce-docs-scripts',
   'copy:chi:ce-scripts',
-  'copy:chi-vue:scripts'
+  'copy:chi-vue:scripts',
+  'copy:documentation:compilation',
 ));

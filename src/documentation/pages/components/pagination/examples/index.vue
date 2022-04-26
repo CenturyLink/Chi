@@ -1,19 +1,21 @@
 <template lang="pug">
   div
     h2 Examples
-    div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
-      <BaseLumenCenturyLink />
-      <DisabledLumenCenturyLink />
-      <TruncationLumenCenturyLink />
-      <DoubleTruncationLumenCenturyLink />
-      <ResultsLabelLumenCenturyLink />
-      <PageSizeLumenCenturyLink />
-      <PageJumperLumenCenturyLink />
-      <Compact />
-      <AdditionalSizesLumenCenturyLink />
-      
-    div(v-else)
-      <Portal />
+    <client-only placeholder="loading...">
+      div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
+        <BaseLumenCenturyLink />
+        <DisabledLumenCenturyLink />
+        <TruncationLumenCenturyLink />
+        <DoubleTruncationLumenCenturyLink />
+        <ResultsLabelLumenCenturyLink />
+        <PageSizeLumenCenturyLink />
+        <PageJumperLumenCenturyLink />
+        <Compact />
+        <AdditionalSizesLumenCenturyLink />
+        
+      div(v-else)
+        <Portal />
+    </client-only>
 </template>
 
 <script lang="ts">

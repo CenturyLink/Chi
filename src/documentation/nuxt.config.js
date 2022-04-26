@@ -65,13 +65,6 @@ export default {
     baseURL: 'http://localhost:3000'
   },
 
-  proxy: {
-    '/api/': {
-      target: 'http://localhost:8000',
-      pathRewrite: { '^/api/': '' }
-    }
-  },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     plugins: [
@@ -80,5 +73,9 @@ export default {
         ignore: ['.DS_Store']
       })
     ]
+  },
+  target: 'static',
+  generate: {
+    exclude: ['/components/data-table'],
   }
 };
