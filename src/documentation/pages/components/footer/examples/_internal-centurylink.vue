@@ -1,9 +1,8 @@
 <template lang="pug">
-<ComponentExample title="Internal" id="internal-centurylink" :tabs="exampleTabs">
-  p.-text(slot="example-description")
-    | Show the internal footer for authenticated users.
-  <Wrapper slot='example'>
-    footer.chi-footer
+  <ComponentExample title="Internal" id="internal-centurylink" :tabs="exampleTabs">
+    p.-text(slot="example-description")
+      | Show the internal footer for authenticated users.
+    footer.chi-footer(slot='example')
       .chi-footer__content
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
@@ -33,17 +32,16 @@
                   a(href="https://www.centurylink.com/sitemap.html" target="_blank") Site Map
               .chi-footer__copyright
                 | &copy; 2022 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.
-  </Wrapper>
-  <pre class="language-html" slot="code-webcomponent">
-    <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-  </pre>
-  <Wrapper slot="code-htmlblueprint">
-    <JSNeeded />
-    <pre class="language-html">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-  </Wrapper>
-</ComponentExample>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+    </Wrapper>
+  </ComponentExample>
 </template>
 
 <script lang="ts">

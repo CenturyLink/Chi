@@ -1,9 +1,8 @@
 <template lang="pug">
-<ComponentExample title="External" id="external-brightspeed" :tabs="exampleTabs">
-  p.-text(slot="example-description")
-    | Show the external footer for all public facing webpages.
-  <Wrapper slot='example'>
-    footer.chi-footer
+  <ComponentExample title="External" id="external-brightspeed" :tabs="exampleTabs">
+    p.-text(slot="example-description")
+      | Show the external footer for all public facing webpages.
+    footer.chi-footer(slot='example')
       .chi-footer__content
         .chi-footer__external
           .chi-footer__external-content.-mw--1200
@@ -149,18 +148,17 @@
                   a(href="https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html") UK Tax Strategy
               .chi-footer__copyright
                 | &copy; 2022 Lumen Technologies. All Rights Reserved.
-                | Lumen is a registered trademark in the United States, EU and certain other countries.
-  </Wrapper> 
-  <pre class="language-html" slot="code-webcomponent">
-    <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-  </pre>
-  <Wrapper slot="code-htmlblueprint">
-    <JSNeeded />
-    <pre class="language-html">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+                | Lumen is a registered trademark in the United States, EU and certain other countries. 
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
-  </Wrapper>
-</ComponentExample>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+    </Wrapper>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
