@@ -1,8 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Disabled" id="disabled" :tabs="exampleTabs">
     div(style="max-width: 14rem;" slot="example")
-      chi-label(for='date-2')
-        | Date
+      chi-label(for='date-2') Date
       chi-date-picker(id="date-2", disabled)
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

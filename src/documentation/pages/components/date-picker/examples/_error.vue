@@ -4,14 +4,12 @@
       | Use the <code>danger</code> state to provide feedback to users when date fails to validate.
       | To meet accessibility requirements, danger date picker must include an error message explaining the
       | failure and/or how to correct it.
-    div(slot="example")
-      div(style="max-width: 14rem;")
-        chi-label(for='date-error')
-          | Date
-        chi-date-picker(id="date-error" state="danger")
+    div(style="max-width: 14rem;" slot="example")
+      chi-label(for='date-error') Date
+      chi-date-picker(id="date-error" state="danger")
       .chi-label.-status.-danger
-        chi-icon(icon='circle-warning')
-          | Please select a date.
+        chi-icon(icon='circle-warning')  
+        | Please select a date.
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

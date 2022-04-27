@@ -2,8 +2,7 @@
   <ComponentExample title="Multiple dates" id="date-picker-multiple-dates" :tabs="exampleTabs">
     p.-text(slot="example-description") Use the attribute <code>multiple</code> to allow the user to select multiple dates.
     div(style="max-width: 14rem;" slot="example")
-      chi-label(for='date-multiple')
-        | Date
+      chi-label(for='date-multiple') Date
       chi-date-picker(id='date-multiple' multiple)
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
