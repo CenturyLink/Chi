@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base-date-picker" :tabs="exampleTabs">
+  <ComponentExample title="Base" id="example__base_date_picker" :tabs="exampleTabs">
     div(style="max-width: 14rem;" slot="example")
       chi-label(for='date') Date
       chi-date-picker(id="date")
@@ -33,17 +33,17 @@ import { Component, Vue } from 'vue-property-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="date">Date</chi-label>
-<chi-date-picker id="date"></chi-date-picker>`,
+        webcomponent: `<chi-label for="example__date_base">Date</chi-label>
+<chi-date-picker id="example__date_base"></chi-date-picker>`,
         htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="datepicker-1">Date</label>
+  <label class="chi-label" for="example__datepicker_1">Date</label>
   <div class="chi-input__wrapper -icon--right">
-    <input id="datepicker-1" type="text" class="chi-input" placeholder="MM/DD/YYYY">
+    <input id="example__datepicker_1" type="text" class="chi-input" placeholder="MM/DD/YYYY">
     <i class="chi-icon icon-date" aria-hidden="true"></i>
   </div>
 </div>
 
-<script>chi.datePicker(document.getElementById('datepicker-1'));<\/script>`,
+<script>chi.datePicker(document.getElementById('example__datepicker_1'));<\/script>`,
       },
     };
   },

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Min and Max " id="calendar-min-max" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Min and Max " id="example__calendar_min_max" :tabs="exampleTabs">
     chi-date(min="06/06/2019", max="06/22/2019" slot="example")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -61,9 +61,13 @@ export default class CalendarMinMax extends Vue {
 
     this.$data.codeSnippets.htmlblueprint = `<div class="chi-datepicker -week-starts-on-sun -month-starts-on-sat">
   <div class="chi-datepicker__month-row">
-    <div class="prev -disabled"><i class="chi-icon icon-chevron-left -sm" aria-hidden="true"></i></div>
+    <div class="prev -disabled">
+      <i class="chi-icon icon-chevron-left -sm" aria-hidden="true"></i>
+    </div>
     <div class="chi-datepicker__month">June 2019</div>
-    <div class="next -disabled"><i class="chi-icon icon-chevron-right -sm" aria-hidden="true"></i></div>
+    <div class="next -disabled">
+      <i class="chi-icon icon-chevron-right -sm" aria-hidden="true"></i>
+    </div>
   </div>
   <div class="chi-datepicker__day-names">${datePickerDayNames}
   </div>

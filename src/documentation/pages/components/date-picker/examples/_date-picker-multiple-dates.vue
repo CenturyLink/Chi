@@ -1,9 +1,9 @@
 <template lang="pug">
-  <ComponentExample title="Multiple dates" id="date-picker-multiple-dates" :tabs="exampleTabs">
+  <ComponentExample title="Multiple dates" id="example__date_picker_multiple_dates" :tabs="exampleTabs">
     p.-text(slot="example-description") Use the attribute <code>multiple</code> to allow the user to select multiple dates.
     div(style="max-width: 14rem;" slot="example")
-      chi-label(for='date-multiple') Date
-      chi-date-picker(id='date-multiple' multiple)
+      chi-label(for='example__date_multiple') Date
+      chi-date-picker(id='example__date_multiple' multiple)
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -32,8 +32,8 @@ import { Component, Vue } from 'vue-property-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="multiple-dates">Date</chi-label>
-<chi-date-picker id="multiple-dates" multiple></chi-date-picker>`,
+        webcomponent: `<chi-label for="example__multiple_dates">Date</chi-label>
+<chi-date-picker id="example__multiple_dates" multiple></chi-date-picker>`,
         htmlblueprint: ``,
       },
     };

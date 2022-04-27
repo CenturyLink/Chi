@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Multiple active dates" id="calendarr-multiple-active-dates" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Multiple active dates" id="example__calendar_multiple_active_dates" :tabs="exampleTabs">
     chi-date(multiple, value="03/10/2021,03/11/2021,03/12/2021" slot="example")
     <Wrapper slot="code-webcomponent">
       .chi-tab__description Specify multiple active dates by separating the dates with a comma
@@ -23,7 +23,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      datePickerDates: Array.from(Array(30).keys()),
+      datePickerDates: Array.from(Array(31).keys()),
       datePickerDayNames: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
       exampleTabs: [
         {
@@ -64,9 +64,13 @@ export default class CalendarMultipleActiveDates extends Vue {
 
     this.$data.codeSnippets.htmlblueprint = `<div class="chi-datepicker -week-starts-on-sun -month-starts-on-wed">
   <div class="chi-datepicker__month-row">
-    <div class="prev"><i class="chi-icon icon-chevron-left -sm" aria-hidden="true"></i></div>
+    <div class="prev">
+      <i class="chi-icon icon-chevron-left -sm" aria-hidden="true"></i>
+    </div>
     <div class="chi-datepicker__month">March 2021</div>
-    <div class="next"><i class="chi-icon icon-chevron-right -sm" aria-hidden="true"></i></div>
+    <div class="next">
+      <i class="chi-icon icon-chevron-right -sm" aria-hidden="true"></i>
+    </div>
   </div>
   <div class="chi-datepicker__day-names">${datePickerDayNames}
   </div>

@@ -1,12 +1,12 @@
 <template lang="pug">
-  <ComponentExample title="Error" id="error" :tabs="exampleTabs">
+  <ComponentExample title="Error" id="example__error" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Use the <code>danger</code> state to provide feedback to users when date fails to validate.
       | To meet accessibility requirements, danger date picker must include an error message explaining the
       | failure and/or how to correct it.
     div(style="max-width: 14rem;" slot="example")
-      chi-label(for='date-error') Date
-      chi-date-picker(id="date-error" state="danger")
+      chi-label(for='example__date_error') Date
+      chi-date-picker(id="example__date_error" state="danger")
       .chi-label.-status.-danger
         chi-icon(icon='circle-warning')  
         | Please select a date.
@@ -42,16 +42,16 @@ declare const chi: any;
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="date-error">Date</chi-label>
-<chi-date-picker id="date-error" state="danger"></chi-date-picker>
+        webcomponent: `<chi-label for="example__date_error">Date</chi-label>
+<chi-date-picker id="example__date_error" state="danger"></chi-date-picker>
 <div class="chi-label -status -danger">
   <chi-icon icon="circle-warning"></chi-icon>
   Please select a date.
 </div>`,
         htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="datepicker-error">Date</label>
+  <label class="chi-label" for="example__datepicker_error">Date</label>
   <div class="chi-input__wrapper -icon--right">
-    <input id="datepicker-error" type="text" class="chi-input -danger" placeholder="MM/DD/YYYY">
+    <input id="example__datepicker_error" type="text" class="chi-input -danger" placeholder="MM/DD/YYYY">
     <i class="chi-icon icon-date" aria-hidden="true"></i>
   </div>
   <div class="chi-label -status -danger">
@@ -60,7 +60,7 @@ declare const chi: any;
   </div>
 </div>
 
-<script>chi.datePicker(document.getElementById('datepicker-error'));<\/script>`,
+<script>chi.datePicker(document.getElementById('example__datepicker_error'));<\/script>`,
       },
     };
   },

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Date and Time" id="calendar-date-time" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Date and Time" id="example__calendar_date_time" :tabs="exampleTabs">
     .-d--flex(style="width: 28.75rem;" slot="example")
       chi-date
       chi-time
