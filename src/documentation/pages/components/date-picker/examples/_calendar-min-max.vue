@@ -20,7 +20,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      datePickerDayInputs: Array.from(Array(30).keys()),
+      datePickerDates: Array.from(Array(30).keys()),
       datePickerDayNames: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
       exampleTabs: [
         {
@@ -46,11 +46,11 @@ export default class CalendarMinMax extends Vue {
   }
 
   _setCodeSnippets() {
-    let datePickerDayInputs = '';
+    let datePickerDates = '';
     let datePickerDayNames = '';
 
-    this.$data.datePickerDayInputs.forEach((day: number) => {
-      datePickerDayInputs += `
+    this.$data.datePickerDates.forEach((day: number) => {
+      datePickerDates += `
     <div class="chi-datepicker__day ${day <= 4 || day >= 22 ? '-inactive' : ''}">${day + 1}</div>`
     });
 
@@ -67,7 +67,7 @@ export default class CalendarMinMax extends Vue {
   </div>
   <div class="chi-datepicker__day-names">${datePickerDayNames}
   </div>
-  <div class="chi-datepicker__days">${datePickerDayInputs}
+  <div class="chi-datepicker__days">${datePickerDates}
   </div>
 </div>`
   }
