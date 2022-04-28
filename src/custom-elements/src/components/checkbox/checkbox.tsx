@@ -83,7 +83,7 @@ export class Checkbox {
   }
 
   render() {
-    const requiredField = <abbr class="chi-label__required" title="Required field">*</abbr>;
+    const requiredField = this.required ? <abbr class="chi-label__required" title="Required field">*</abbr> : null;
 
     return (
       <div class={CHECKBOX_CLASSES.checkbox}>
@@ -103,9 +103,9 @@ export class Checkbox {
           <div class={SR_ONLY}>
             Select {this.label || this.name} {this.id}
           </div>
-          {this.required ? requiredField : null}
-          <slot name="chi-checkbox__help"></slot>
+          {requiredField}
         </label>
+        <slot name="chi-checkbox__help"></slot>
       </div>
     );
   }
