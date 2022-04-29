@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Date Time" id="example__date_picker_date_time" :tabs="exampleTabs">
+  <ComponentExample title="Date Time" id="date-picker-date-time" :tabs="exampleTabs">
     div(style="max-width: 14rem;" slot="example")
       chi-label(for='example__date_time') Date Time
       chi-date-picker(id="example__date_time" mode="datetime")

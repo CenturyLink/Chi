@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Excluded week days" id="example__excluded_week_days" :tabs="exampleTabs">
+  <ComponentExample title="Excluded week days" id="excluded-week-days" :tabs="exampleTabs">
     p.-text(slot="example-description") Specify which week days to disable by using <code>excluded-weekdays="0, 6"</code> attribute
     div(style="max-width: 14rem;" slot="example")
       chi-label(for='example__date_excluded_weekdays') Date

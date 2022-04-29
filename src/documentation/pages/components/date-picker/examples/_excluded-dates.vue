@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Excluded dates" id="example__excluded_dates" :tabs="exampleTabs">
+  <ComponentExample title="Excluded dates" id="excluded-dates" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Specify which dates to disable by using <code>excluded-dates="02/24/2020, 05/25/2020"</code> attribute
       br

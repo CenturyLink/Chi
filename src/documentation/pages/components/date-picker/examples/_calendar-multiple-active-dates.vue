@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Multiple active dates" id="example__calendar_multiple_active_dates" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Multiple active dates" id="calendar-multiple-active-dates" :tabs="exampleTabs">
     chi-date(multiple, value="03/10/2021,03/11/2021,03/12/2021" slot="example")
     <Wrapper slot="code-webcomponent">
       .chi-tab__description Specify multiple active dates by separating the dates with a comma

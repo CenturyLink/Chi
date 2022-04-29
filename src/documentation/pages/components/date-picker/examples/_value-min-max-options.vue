@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Value, min and max options" id="example__value_min_max_options" :tabs="exampleTabs">
+  <ComponentExample title="Value, min and max options" id="value-min-max-options" :tabs="exampleTabs">
     div(style="max-width: 14rem;" slot="example")
       chi-label(for='example__date_3') Date
       chi-date-picker(id="example__date_3", value="01/24/2019", min="01/14/2019", max="02/07/2019")

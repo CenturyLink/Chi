@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Base" id="example__calendar_base" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Base" id="calendar-base" :tabs="exampleTabs">
     chi-date(slot="example")   
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

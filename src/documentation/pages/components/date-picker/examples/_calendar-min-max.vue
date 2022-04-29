@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="Min and Max " id="example__calendar_min_max" :tabs="exampleTabs">
+  <ComponentExample titleSize="h4" title="Min and Max " id="calendar-min-max" :tabs="exampleTabs">
     chi-date(min="06/06/2019", max="06/22/2019" slot="example")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

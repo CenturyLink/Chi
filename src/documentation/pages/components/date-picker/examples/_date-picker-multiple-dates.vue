@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Multiple dates" id="example__date_picker_multiple_dates" :tabs="exampleTabs">
+  <ComponentExample title="Multiple dates" id="date-picker-multiple-dates" :tabs="exampleTabs">
     p.-text(slot="example-description") Use the attribute <code>multiple</code> to allow the user to select multiple dates.
     div(style="max-width: 14rem;" slot="example")
       chi-label(for='example__date_multiple') Date

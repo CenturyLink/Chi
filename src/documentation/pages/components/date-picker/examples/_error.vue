@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Error" id="example__error" :tabs="exampleTabs">
+  <ComponentExample title="Error" id="date-error" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Use the <code>danger</code> state to provide feedback to users when date fails to validate.
       | To meet accessibility requirements, danger date picker must include an error message explaining the
