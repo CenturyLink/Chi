@@ -25,6 +25,10 @@ export class Checkbox {
    */
   @Prop() name: string;
   /**
+   * To define -hover, -focus statuses
+   */
+  @Prop() _status: string;
+  /**
    * To render the checkbox in checked state
    */
   @Prop() checked?: boolean;
@@ -88,8 +92,11 @@ export class Checkbox {
     return (
       <div class={CHECKBOX_CLASSES.checkbox}>
         <input
-          class={`${CHECKBOX_CLASSES.INPUT} ${this.indeterminate &&
-            CHECKBOX_CLASSES.INDETERMINATE}`}
+          class={`
+            ${CHECKBOX_CLASSES.INPUT}
+            ${this.indeterminate && CHECKBOX_CLASSES.INDETERMINATE}
+            ${this._status ? `-${this._status}` : ''}
+          `}
           checked={this.checked}
           disabled={this.disabled}
           id={`${this.id}-control`}

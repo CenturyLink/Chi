@@ -4,26 +4,25 @@ title: Checkbox
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-h3 Base
-chi-checkbox#test-base(label="Base")
+- var states = ['default', 'hover', 'focus', 'checked', 'indeterminate', 'disabled', 'required', 'danger'];
+- var statesList = ['default', 'hover', 'focus', 'checked', 'indeterminate', 'disabled'];
 
-h3 Selected
-chi-checkbox#test-selected(label="Selected" checked)
+.test-states
+  each state in states
+    h5= `Checkbox / ${state}`
+    if state !== 'danger'
+      chi-checkbox(label="Checkbox" _status=state checked=state === 'checked' required=state === 'required')
+    else
+      chi-checkbox(state='danger' label='Checkbox' required)
+      .chi-label.-status.-danger
+        chi-icon(icon='circle-warning')
+        | Please accept the terms of service.
 
-h3 Indeterminate
-chi-checkbox#test-indeterminate(label="Indeterminate" indeterminate)
-
-h3 Indeterminate & checked
-chi-checkbox#test-indeterminate-checked(label="Indeterminate" checked indeterminate)
-
-h3 Disabled
-chi-checkbox#test-disabled(label="Disabled" disabled)
-
-h3 Required
-chi-checkbox#test-required(label='I accept the Terms of Service' required)
-
-h3 Error
-chi-checkbox#test-error(state='danger' label='I accept the Terms of Service' required)
-.chi-label.-status.-danger
-  chi-icon(icon='circle-warning')
-  | Please accept the terms of service.
+h2 Checkbox List
+.test-states
+  each state in statesList
+    h5= `Checkbox / ${state}`
+    ul.chi-form__item.-list(style="max-width:20rem")
+        each element in [1, 2, 3, 4, 5]
+          li.chi-form__item
+            chi-checkbox(label=`Checkbox-${element}` _status=state checked=state === 'checked' required=state === 'required')
