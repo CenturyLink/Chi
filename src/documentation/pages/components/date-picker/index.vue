@@ -33,5 +33,5 @@ Vue.config.ignoredElements = ['chi-icon', 'chi-button', 'chi-brand'];
     };
   }
 })
-export default class Button extends Vue {}
+export default class DatePicker extends Vue {}
 </script>

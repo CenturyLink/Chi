@@ -6,7 +6,7 @@
     </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
-        .chi-tab__description Use class <code>-active</code> for the selected date
+      .chi-tab__description Use class <code>-active</code> for the selected date
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
       </pre>
