@@ -338,6 +338,8 @@ pipeline {
                 dir('src/documentation') {
                   jslNpmWrapper('install', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
                   jslNpmWrapper('run generate')
+                  sh "ls -la ${pwd()}"
+                  stash name: "DIST-CHI-DOCUMENTATION", includes: "dist/**"
                 }
               }
             }
@@ -376,6 +378,10 @@ pipeline {
             jslNpmWrapper('run sri')
             jslNpmWrapper('run cicd:build:post:sri')
             stash name: "DIST-CHI", includes: "dist/**"
+            echo "/dist"
+            sh "ls -la ${pwd()}/dist"
+            echo "/dist/components"
+            sh "ls -la ${pwd()}/dist/components"
             stash name: "NODEMODULES-CHI", includes: "node_modules/**"
             jslJiraSendBuildInfo()
           }
@@ -831,7 +837,7 @@ pipeline {
             steps {
               script {
                 sh "rm -rf dist"
-                unstash name: "DIST-CHI"
+                unstash name: "DIST-CHI-DOCUMENTATION"
                 def s3Uri = "${GIT_COMMIT}-chi-pr-po-ctl"
                 sh script:"""
                   cat << 'PolicyDocument' > policy.json
@@ -873,7 +879,9 @@ PolicyDocument
             steps {
               script {
                 sh "rm -rf dist"
-                unstash name: "DIST-VUE"
+                unstash name: "DIST-CHI-DOCUMENTATION"
+                unstash name: "DIST-CHI"
+                sh "ls -la ${pwd()}"
                 jslBuildAndPushToNexus('./cicd/docker/nginx/Dockerfile')
 
                 def chiManifest = 'chiManifest.yml'
@@ -914,8 +922,6 @@ PolicyDocument
                 sh "rm -rf dist node_modules"
                 unstash name: "DIST-CHI"
                 sh script:"""
-                  sed -i 's#/getting-started#getting-started#g' dist/index.html
-
                   cat ${WORKSPACE}/CHANGELOG.md
 
                   if [ -e "${WORKSPACE}/ux-chi-AssetsServer" ];

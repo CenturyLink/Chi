@@ -22,95 +22,206 @@
       //-   .-theme-name Brightspeed
 
 ul.chi-tabs.-vertical.-lg.-animated
-  each collection, key in collections
-    if utils.hasActiveSections(collection)
-      if utils.isCurrentCollection(collection, path)
-        li.-active
-          .chi-collection__title
-            =key
-          if utils.hasSections(collection)
-            ul.chi-tabs__subtabs
-              each section in collection
-                if section.disabled
-                  //- li
-                  //-   a(href=`${rootPath}${section.path}`, disabled="disabled") #{section.title}
-                else if section.accessibilityAccordion
-                  li
-                    .chi-accordion.accessibility-accordion
-                      .chi-accordion__item.-bg--none.-expanded
-                        button.chi-accordion__trigger
-                          .chi-accordion__title #{section.title}
-                          i.chi-icon.icon-chevron-down.-xs(aria-hidden="true")
-                        .chi-accordion__content.-p--0
-                          ul.chi-tabs__subtabs
-                            li(class=`${'foundations/accessibility/overview' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/overview`) Overview
-                            li(class=`${'foundations/accessibility/using-keyboard' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/using-keyboard`) Using the keyboard
-                            li(class=`${'foundations/accessibility/page-structure' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/page-structure`) Page structure
-                            li(class=`${'foundations/accessibility/color-sensory' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/color-sensory`) Color and sensory
-                            li(class=`${'foundations/accessibility/images' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/images`) Images
-                            li(class=`${'foundations/accessibility/text' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/text`) Text
-                            li(class=`${'foundations/accessibility/links-and-forms' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/links-and-forms`) Links and forms
-                            li(class=`${'foundations/accessibility/tables' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/tables`) Tables
-                            li(class=`${'foundations/accessibility/other' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/other`) Other
-                            
-                else
-                  -var portalOnly = section.title === 'Portal' || section.title ==='App layout' ? ' -portal-only' : "";
-                  li(class=section.path === path ? '-active' + portalOnly : portalOnly)
-                    a(href=`${rootPath}${section.path}`) #{section.title}
-                      if section.title == 'Button' || section.title == 'Link'
-                        .-sr--only component
-      else
-        li
-          .chi-collection__title
-            =key
-          if utils.hasSections(collection)
-            ul.chi-tabs__subtabs
-              each section in collection
-                if section.disabled
-                  //- li
-                  //-   a(href=`${rootPath}${section.path}`, disabled="disabled") #{section.title}
-                else if section.accessibilityAccordion
-                  li
-                    .chi-accordion.accessibility-accordion
-                      .chi-accordion__item.-bg--none
-                        button.chi-accordion__trigger
-                          .chi-accordion__title #{section.title}
-                          i.chi-icon.icon-chevron-down.-xs(aria-hidden="true")
-                        .chi-accordion__content.-p--0
-                          ul.chi-tabs__subtabs
-                            li(class=`${'foundations/accessibility/overview' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/overview`) Overview
-                            li(class=`${'foundations/accessibility/using-keyboard' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/using-keyboard`) Using the keyboard
-                            li(class=`${'foundations/accessibility/page-structure' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/page-structure`) Page structure
-                            li(class=`${'foundations/accessibility/color-sensory' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/color-sensory`) Color and sensory
-                            li(class=`${'foundations/accessibility/images' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/images`) Images
-                            li(class=`${'foundations/accessibility/text' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/text`) Text
-                            li(class=`${'foundations/accessibility/links-and-forms' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/links-and-forms`) Links and forms
-                            li(class=`${'foundations/accessibility/tables' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/tables`) Tables
-                            li(class=`${'foundations/accessibility/other' === path ? "-active" : ""}`)
-                              a(href=`${rootPath}foundations/accessibility/other`) Other
-                else
-                  -var portalOnly = section.title === 'Portal' || section.title ==='App layout' ? ' -portal-only' : "";
-                  li(class=section.path === path ? '-active' + portalOnly : portalOnly)
-                    a(href=`${rootPath}${section.path}`) #{section.title}
-                      if section.title == 'Button' || section.title == 'Link'
-                        .-sr--only component
-    else
+  li.-active
+    .chi-collection__title Getting Started
+    ul.chi-tabs__subtabs
+      li.-active
+        a(href='../getting-started') Introduction
       li
-        a(href=`#`, disabled="disabled") #{key}
+        a(href='../getting-started/installation') Installation
+      li
+        a(href='../getting-started/development-workflow') Development workflow
+      li
+        a(href='../getting-started/browsers-devices') Browser support
+      li
+        a(href='../getting-started/whats-new') What&apos;s new
+  li
+    .chi-collection__title Foundations
+    ul.chi-tabs__subtabs
+      li
+        .chi-accordion.accessibility-accordion
+          .chi-accordion__item.-bg--none
+            button.chi-accordion__trigger
+              .chi-accordion__title Accessibility
+              i.chi-icon.icon-chevron-down.-xs(aria-hidden='true')
+            .chi-accordion__content.-p--0
+              ul.chi-tabs__subtabs
+                li
+                  a(href='../foundations/accessibility/overview') Overview
+                li
+                  a(href='../foundations/accessibility/using-keyboard') Using the keyboard
+                li
+                  a(href='../foundations/accessibility/page-structure') Page structure
+                li
+                  a(href='../foundations/accessibility/color-sensory') Color and sensory
+                li
+                  a(href='../foundations/accessibility/images') Images
+                li
+                  a(href='../foundations/accessibility/text') Text
+                li
+                  a(href='../foundations/accessibility/links-and-forms') Links and forms
+                li
+                  a(href='../foundations/accessibility/tables') Tables
+                li
+                  a(href='../foundations/accessibility/other') Other
+      li
+        a(href='../foundations/color') Color
+      li
+        a(href='../foundations/design-tokens') Design tokens
+      li
+        a(href='../foundations/grid') Grid
+  li
+    .chi-collection__title Components
+    ul.chi-tabs__subtabs
+      li
+        a(href='../components/accordion') Accordion
+      li
+        a(href='../components/activity') Activity
+      li
+        a(href='../components/alert') Alert
+      li
+        a(href='../components/avatar') Avatar
+      li
+        a(href='../components/badge') Badge
+      li
+        a(href='../components/brand') Brand
+      li
+        a(href='../components/breadcrumb') Breadcrumb
+      li
+        a(href='../components/button')
+          | Button
+          .-sr--only component
+      li
+        a(href='../components/button-group') Button group
+      li
+        a(href='../components/card') Card
+      li
+        a(href='../components/carousel') Carousel
+      li
+        a(href='../components/forms/checkbox') Checkbox
+      li
+        a(href='../components/data-table') Data table
+      li
+        a(href='../components/date-picker') Date picker
+      li
+        a(href='../components/divider') Divider
+      li
+        a(href='../components/drawer') Drawer
+      li
+        a(href='../components/dropdown') Dropdown
+      li
+        a(href='../components/expansion-panel') Expansion panel
+      li
+        a(href='../components/forms/file-input') File input
+      li
+        a(href='../components/flag-icon') Flag icon
+      li
+        a(href='../components/footer') Footer
+      li
+        a(href='../components/header') Header
+      li
+        a(href='../components/icon') Icon
+      li
+        a(href='../components/label') Label
+      li
+        a(href='../components/link')
+          | Link
+          .-sr--only component
+      li
+        a(href='../components/marketing-icon') Marketing icon
+      li
+        a(href='../components/mobile-navigation') Mobile navigation
+      li
+        a(href='../components/modal') Modal
+      li
+        a(href='../components/forms/number-input') Number input
+      li
+        a(href='../components/pagination') Pagination
+      li
+        a(href='../components/phone-input') Phone Input
+      li
+        a(href='../components/picker') Picker
+      li
+        a(href='../components/picker-group') Picker group
+      li
+        a(href='../components/popover') Popover
+      li
+        a(href='../components/price') Price
+      li
+        a(href='../components/progress') Progress
+      li
+        a(href='../components/forms/radio-button') Radio button
+      li
+        a(href='../components/forms/range-slider') Range slider
+      li
+        a(href='../components/forms/search-input') Search input
+      li
+        a(href='../components/forms/select') Select
+      li
+        a(href='../components/sidenav') Sidenav
+      li
+        a(href='../components/skeleton') Skeleton
+      li
+        a(href='../components/spinner') Spinner
+      li
+        a(href='../components/stat') Stat
+      li
+        a(href='../components/steps') Steps
+      li
+        a(href='../components/table') Table
+      li
+        a(href='../components/tabs') Tabs
+      li
+        a(href='../components/forms/text-input') Text input
+      li
+        a(href='../components/forms/textarea') Textarea
+      li
+        a(href='../components/time-picker') Time picker
+      li
+        a(href='../components/forms/toggle-switch') Toggle switch
+      li
+        a(href='../components/toolbar') Toolbar
+      li
+        a(href='../components/tooltip') Tooltip
+  li
+    .chi-collection__title Utilities
+    ul.chi-tabs__subtabs
+      li
+        a(href='../utilities/border') Border
+      li
+        a(href='../utilities/color') Color
+      li
+        a(href='../utilities/display') Display
+      li
+        a(href='../utilities/flex') Flex
+      li
+        a(href='../utilities/image') Image
+      li
+        a(href='../utilities/opacity') Opacity
+      li
+        a(href='../utilities/overflow') Overflow
+      li
+        a(href='../utilities/position') Position
+      li
+        a(href='../utilities/shadow') Shadow
+      li
+        a(href='../utilities/sizing') Sizing
+      li
+        a(href='../utilities/spacing') Spacing
+      li
+        a(href='../utilities/text') Text
+      li
+        a(href='../utilities/vertical-align') Vertical-align
+      li
+        a(href='../utilities/zindex') Z-index
+  li
+    .chi-collection__title Templates
+    ul.chi-tabs__subtabs
+      li.-portal-only
+        a(href='../templates/app-layout') App layout
+      li
+        a(href='../templates/error-404') Error 404
+      li
+        a(href='../templates/error-500') Error 500
+      li
+        a(href='../templates/state') State
