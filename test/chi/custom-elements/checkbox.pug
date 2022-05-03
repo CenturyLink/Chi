@@ -11,9 +11,9 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
   each state in states
     h5= `Checkbox / ${state}`
     if state !== 'danger'
-      chi-checkbox(label="Checkbox" _status=state checked=state === 'checked' required=state === 'required')
+      chi-checkbox(class="-mb--1" label="Checkbox" _status=state checked=state === 'checked' required=state === 'required')
     else
-      chi-checkbox(state='danger' label='Checkbox' required)
+      chi-checkbox(class="-mb--1" state='danger' label='Checkbox' required)
       .chi-label.-status.-danger
         chi-icon(icon='circle-warning')
         | Please accept the terms of service.
