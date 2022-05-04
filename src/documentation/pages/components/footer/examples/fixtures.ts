@@ -30,6 +30,20 @@ export const FOOTER_LINKS: ILink[] = [
     {href: 'https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80', title: 'Modern Slavery Statement 2020 (UK)', target: '_blank'},
     {href: 'https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html', title: 'UK Tax Strategy'},
 ];
+
+export const CENTURY_FOOTER_LINKS: ILink[] = [
+    {href: 'https://www.centurylink.com/aboutus.html', title: 'About Us'},
+    {href: 'https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html', title: 'Accessibility'},
+    {href: 'https://jobs.lumen.com', title: 'Careers', target: '_blank'},
+    {href: 'https://www.centurylink.com/home/help/contact.html', title: 'Contact Us'},
+    {href: '#', class:"optanon-toggle-display", title: 'Cookie Settings'},
+    {href: 'https://www.centurylink.com/aboutus/legal.html', title: 'Legal', target: '_blank'},
+    {href: 'https://www.centurylink.com/legal/', title: 'Legal Notices', target: '_blank'},
+    {href: 'https://www.centurylink.com/aboutus/legal/privacy-policy.html', title: 'Privacy Policy'},
+    {href: 'https://www.centurylink.com/aboutus/legal/tariff-library.htmll', title: 'Tariffs', target: '_blank'},
+    {href: 'https://www.centurylink.com/sitemap.html', title: 'Site Map', target: '_blank'},
+];
+
 export const FOOTER_LANGUAGE_DROPDOWN_ITEMS: ILanguage[] = [
     {href: '#', name: 'English'},
     {href: '#', name: 'Español'},

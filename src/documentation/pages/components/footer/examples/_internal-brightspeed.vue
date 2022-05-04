@@ -79,7 +79,9 @@ export default class InternalBrightspeed extends Vue {
 
     this.$data.footerLinks.forEach((footerLink: ILink) => {
       footerLinks += `
-            <li><a href="${footerLink.href}"${footerLink.target ? ' target=' + footerLink.target : ''}${footerLink.class ? ' class=' + footerLink.class : ''}>${footerLink.title}</a></li>`
+            <li>
+              <a href="${footerLink.href}"${footerLink.target ? ' target=' + footerLink.target : ''}${footerLink.class ? ' class=' + footerLink.class : ''}>${footerLink.title}</a>
+            </li>`
     })
     this.$data.codeSnippets.htmlblueprint = `<footer class="chi-footer">
   <div class="chi-footer__content">

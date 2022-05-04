@@ -8,28 +8,8 @@
           .chi-footer__internal-content.-mw--1200
             .chi-footer__links
               ul
-                li
-                  a(href="https://www.centurylink.com/aboutus.html") About Us
-                li
-                  a(href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html") Accessibility
-                li
-                  a(href="https://jobs.lumen.com" target="_blank") Careers
-                li
-                  a(href="https://www.centurylink.com/home/help/contact.html") Contact Us
-                <!-- OneTrust Cookies Settings button start -->
-                li
-                  a(href="#" class="optanon-toggle-display") Cookie Settings
-                <!-- OneTrust Cookies Settings button end -->
-                li
-                  a(href="https://www.centurylink.com/aboutus/legal.html" target="_blank") Legal
-                li
-                  a(href="https://www.centurylink.com/legal/" target="_blank") Legal Notices
-                li
-                  a(href="https://www.centurylink.com/aboutus/legal/privacy-policy.html") Privacy Policy
-                li
-                  a(href="https://www.centurylink.com/aboutus/legal/tariff-library.html" target="_blank") Tariffs
-                li
-                  a(href="https://www.centurylink.com/sitemap.html" target="_blank") Site Map
+                li(v-for="(item, index) in centuryFooterLinks" :key="index")
+                  a(:href="item.href" :target="item.target" :class="item.class") {{item.title}}
               .chi-footer__copyright
                 | &copy; 2022 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.
     <pre class="language-html" slot="code-webcomponent">
@@ -46,10 +26,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { CENTURY_FOOTER_LINKS, ILink } from './fixtures';
 
 @Component({
   data: () => {
     return {
+      centuryFooterLinks: CENTURY_FOOTER_LINKS,
       exampleTabs: [
         {
           disabled: true,
@@ -64,22 +46,33 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<footer class="chi-footer">
+        htmlblueprint: ``
+      }
+    };
+  }
+})
+export default class InternalCenturylink extends Vue {
+
+  created() {
+    this._setCodeSnippets()
+  }
+
+  _setCodeSnippets() {
+    let centuryFooterLinks = '';
+
+    this.$data.centuryFooterLinks.forEach((footerLink: ILink) => {
+      centuryFooterLinks += `
+            <li>
+              <a href="${footerLink.href}""${footerLink.target ? ' target=' + footerLink.target : ''}""${footerLink.class ? ' class=' + footerLink.class : ''}">${footerLink.title}</a>
+            </li>`
+    })
+
+    this.$data.codeSnippets.htmlblueprint = `<footer class="chi-footer">
   <div class="chi-footer__content">
     <div class="chi-footer__internal">
       <div class="chi-footer__internal-content -mw--1200">
         <div class="chi-footer__links">
-          <ul>
-            <li><a href="https://www.centurylink.com/aboutus.html">About Us</a></li>
-            <li><a href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html">Accessibility</a></li>
-            <li><a href="https://jobs.lumen.com" target="_blank">Careers</a></li>
-            <li><a href="https://www.centurylink.com/home/help/contact.html">Contact Us</a></li><!-- OneTrust Cookies Settings button start -->
-            <li><a class="optanon-toggle-display" href="#">Cookie Settings</a></li><!-- OneTrust Cookies Settings button end -->
-            <li><a href="https://www.centurylink.com/aboutus/legal.html" target="_blank">Legal</a></li>
-            <li><a href="https://www.centurylink.com/legal/" target="_blank">Legal Notices</a></li>
-            <li><a href="https://www.centurylink.com/aboutus/legal/privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="https://www.centurylink.com/aboutus/legal/tariff-library.html" target="_blank">Tariffs</a></li>
-            <li><a href="https://www.centurylink.com/sitemap.html" target="_blank">Site Map</a></li>
+          <ul>${centuryFooterLinks}
           </ul>
           <div class="chi-footer__copyright">&copy; 2022 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.</div>
         </div>
@@ -87,9 +80,6 @@ import { Component, Vue } from 'vue-property-decorator';
     </div>
   </div>
 </footer>`
-      }
-    };
   }
-})
-export default class InternalCenturylink extends Vue {}
+}
 </script>
