@@ -158,10 +158,10 @@ p.-text
     .chi-form__item
       chi-checkbox#example__help(label='Checkbox')
         .chi-label__help(slot="chi-checkbox__help")
-          chi-button#example__help-button(type='icon', size='xs', variant='flat', alternative-text='Help')
+          chi-button#example__help_button(type='icon', size='xs', variant='flat', alternative-text='Help')
             chi-icon(icon='circle-info-outline')
-      chi-popover#example__help-popover(position='top', variant='text', arrow='arrow', reference='#example__help-button') Helpful information goes here.
-  .example-tabs.-pl--2
+      chi-popover#example__help_popover(position='top', variant='text', arrow='arrow', reference='#example__help_button') Helpful information goes here.
+  .example-tabs.-pl--
     ul.chi-tabs#example-help
       li.-active
         a(href=`#webcomponent-help`) Web Component
@@ -172,12 +172,12 @@ p.-text
       <div class="chi-form__item">
         <chi-checkbox id="example__help" label="Checkbox">
           <div class="chi-label__help" slot="chi-checkbox__help">
-            <chi-button id="example__help-button" type="icon" size="xs" variant="flat" alternative-text="Help">
+            <chi-button id="example__help_button" type="icon" size="xs" variant="flat" alternative-text="Help">
                 <chi-icon icon="circle-info-outline"></chi-icon>
             </chi-button>
           </div>
         </chi-checkbox>
-        <chi-popover id="example__help-popover" position="top" variant="text" arrow="arrow" reference="#example__help-button">Helpful information goes here.</chi-popover>
+        <chi-popover id="example__help_popover" position="top" variant="text" arrow="arrow" reference="#example__help_button">Helpful information goes here.</chi-popover>
       </div>
   .chi-tabs-panel#html-help
     .chi-tab__description
@@ -191,10 +191,10 @@ p.-text
           <input class="chi-checkbox__input" type="checkbox" id="example__help">
           <label class="chi-checkbox__label" for="example__help">Checkbox</label>
           <div class="chi-label__help">
-            <button class="chi-button -icon -xs -flat" id="example__help-button" aria-label="Help" data-target="#example__help-popover">
+            <button class="chi-button -icon -xs -flat" id="example__help_button" aria-label="Help" data-target="#example__help_popover">
               <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
             </button>
-            <section class="chi-popover chi-popover--top -animated" id="example__help-popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top">
+            <section class="chi-popover chi-popover--top -animated" id="example__help_popover" aria-modal="true" role="dialog" aria-hidden="true" x-placement="top">
               <div class="chi-popover__content">
                 <p class="chi-popover__text">Helpful information goes here.</p>
               </div>
@@ -203,7 +203,7 @@ p.-text
         </div>
       </div>
 
-      <script>chi.popover(document.getElementById('example__help-button'));</script>
+      <script>chi.popover(document.getElementById('example__help_button'));</script>
 
 h3 Message
 p.-text
@@ -659,9 +659,9 @@ script.
     }
   );
 
-  document.querySelector("#example__help-button")
+  document.querySelector("#example__help_button")
     .addEventListener("click", function() {
-      var popoverElem = document.querySelector("#example__help-popover");
+      var popoverElem = document.querySelector("#example__help_popover");
       popoverElem.toggle();
     }
   );

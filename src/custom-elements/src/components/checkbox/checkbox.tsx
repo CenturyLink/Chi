@@ -25,10 +25,6 @@ export class Checkbox {
    */
   @Prop() name: string;
   /**
-   * To define -hover, -focus statuses
-   */
-  @Prop() _status: string;
-  /**
    * To render the checkbox in checked state
    */
   @Prop() checked?: boolean;
@@ -48,6 +44,10 @@ export class Checkbox {
    * To indicate the state.
    */
   @Prop() state?: ChiStates;
+  /**
+   * To define -hover, -focus statuses
+   */
+  @Prop() _status: string;
 
   private input?: HTMLInputElement;
   id: string;
