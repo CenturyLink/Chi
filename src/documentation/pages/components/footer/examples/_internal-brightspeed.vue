@@ -18,28 +18,6 @@
               ul
                 li(v-for="(item, index) in footerLinks" :key="index")
                   a(:href="item.href" :target="item.target" :class="item.class") {{item.title}}
-                li
-                  a(href="https://www.centurylink.com/aboutus/legal.html" target="_blank") Legal
-                li
-                  a(href="https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html" target="_blank") Legal Notices
-                li
-                  a(href="https://www.lumen.com/en-us/about/legal/privacy-notice.html") Privacy
-                li
-                  a(href="https://www.centurylink.com/aboutus/company-information/public-policy.html" target="_blank") Public Policy
-                li
-                  a(href="https://www.lumen.com/help/en-us/home.html" target="_blank") Support
-                li
-                  a(href="https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts") Canadian Ombudsman
-                li
-                  a(href="https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3" target="_blank") Gender Pay Gap 2020 (UK)
-                li
-                  a(href="https://www.lumen.com/es-ar/about/legal/latam-tariffs-regulatory.html") Legal (Latin America)
-                li
-                  a(href="https://www.lumen.com/en-us/about/legal/de-legal-notices.html") Legal Notices (Germany)
-                li
-                  a(href="https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80" target="_blank") Modern Slavery Statement 2020 (UK)
-                li
-                  a(href="https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html") UK Tax Strategy
               .chi-footer__copyright
                 | &copy; 2022 Lumen Technologies. All Rights Reserved.
                 | Lumen is a registered trademark in the United States, EU and certain other countries.
@@ -119,32 +97,6 @@ export default class InternalBrightspeed extends Vue {
         </div>
         <div class="chi-footer__links">
           <ul>${footerLinks}
-            <li><a href="https://www.centurylink.com/aboutus/legal.html" target="_blank">Legal</a></li>
-            <li><a href="https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html" target="_blank">Legal Notices</a>
-            </li>
-            <li><a href="https://www.lumen.com/en-us/about/legal/privacy-notice.html">Privacy</a></li>
-            <li>
-              <a href="https://www.centurylink.com/aboutus/company-information/public-policy.html" target="_blank">Public Policy</a>
-            </li>
-            <li><a href="https://www.lumen.com/help/en-us/home.html" target="_blank">Support</a></li>
-            <li>
-              <a href="https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts">Canadian Ombudsman</a>
-            </li>
-            <li>
-              <a href="https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3">Gender Pay Gap 2020 (UK)</a>
-            </li>
-            <li>
-              <a href="https://www.lumen.com/es-ar/about/legal/latam-tariffs-regulatory.html">Legal (Latin America)</a>
-            </li>
-            <li>
-              <a href="https://www.lumen.com/en-us/about/legal/de-legal-notices.html">Legal Notices (Germany)</a>
-            </li>
-            <li>
-              <a href="https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80">Modern Slavery Statement 2020 (UK)</a>
-            </li>
-            <li>
-              <a href="https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html">UK Tax Strategy</a>
-            </li>
           </ul>
           <div class="chi-footer__copyright">&copy; 2022 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
         </div>

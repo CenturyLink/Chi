@@ -25,29 +25,29 @@
             .chi-footer__links.chi-grid
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 ul.-text--bold
-                  li(v-for="(firstGridLink, index) in externalContents.firstGridLinks" :key="index")
-                    a(:href="firstGridLink.href" :target="firstGridLink.target" :class="firstGridLink.class") {{firstGridLink.title}}
+                  li(v-for="(contactLink, index) in externalContents.contactLinks" :key="index")
+                    a(:href="contactLink.href" :target="contactLink.target" :class="contactLink.class") {{contactLink.title}}
                 .chi-footer__social
-                  a(v-for="(socialLink, index) in externalContents.firstGridSocialLinks" :key="index" :href="socialLink.href" :aria-label="socialLink.ariaLabel" rel="noopener" target="_blank")
+                  a(v-for="(socialLink, index) in externalContents.socialLinks" :key="index" :href="socialLink.href" :aria-label="socialLink.ariaLabel" rel="noopener" target="_blank")
                     i(:class="`chi-icon icon-logo-${socialLink.iconName} -md`" aria-hidden="true")
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 ul.-text--bold
-                  li(v-for="(secondGridLink, index) in externalContents.secondGridLinks" :key="index")
-                    a(:href="secondGridLink.href" :target="secondGridLink.target" :class="secondGridLink.class") {{secondGridLink.title}}
+                  li(v-for="(aboutLink, index) in externalContents.aboutLinks" :key="index")
+                    a(:href="aboutLink.href" :target="aboutLink.target" :class="aboutLink.class") {{aboutLink.title}}
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 .chi-footer__links-title Solutions
                 ul
-                  li(v-for="(thirdGridLink, index) in externalContents.thirdGridLinks" :key="index")
-                    a(:href="thirdGridLink.href" :target="thirdGridLink.target" :class="thirdGridLink.class") {{thirdGridLink.title}}
+                  li(v-for="(solutionLink, index) in externalContents.solutionLinks" :key="index")
+                    a(:href="solutionLink.href" :target="solutionLink.target" :class="solutionLink.class") {{solutionLink.title}}
                 .chi-footer__links-title Shop
                 ul
-                  li(v-for="(fourthGridLink, index) in externalContents.fourthGridLinks" :key="index")
-                    a(:href="fourthGridLink.href" :target="fourthGridLink.target" :class="fourthGridLink.class") {{fourthGridLink.title}}
+                  li(v-for="(shopLink, index) in externalContents.shopLinks" :key="index")
+                    a(:href="shopLink.href" :target="shopLink.target" :class="shopLink.class") {{shopLink.title}}
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 .chi-footer__links-title Resources
                 ul
-                  li(v-for="(fifthGridLink, index) in externalContents.fifthGridLinks" :key="index")
-                    a(:href="fifthGridLink.href" :target="fifthGridLink.target" :class="fifthGridLink.class") {{fifthGridLink.title}}
+                  li(v-for="(resourceLink, index) in externalContents.resourceLinks" :key="index")
+                    a(:href="resourceLink.href" :target="resourceLink.target" :class="resourceLink.class") {{resourceLink.title}}
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
             .chi-dropdown.chi-footer__language
@@ -58,54 +58,10 @@
               .chi-dropdown__menu.-w--sm.-text--body
                 a.chi-dropdown__menu-item(v-for="(link, index) in languageItems" :key="index" :href="link.href" :class="index === 0 ? '-active' : ''")
                   | {{link.name}}
-                //- a.chi-dropdown__menu-item(href="#")
-                //-   | Español
-                //- a.chi-dropdown__menu-item(href="#")
-                //-   | Português
-                //- a.chi-dropdown__menu-item(href="#")
-                //-   | Français
-                //- a.chi-dropdown__menu-item(href="#")
-                //-   | Deutsch
-                //- a.chi-dropdown__menu-item(href="#")
-                //-   | 简体中文
-                //- a.chi-dropdown__menu-item(href="#")
-                //-   | 日本語 
             .chi-footer__links
               ul
                 li(v-for="(item, index) in footerLinks" :key="index")
                   a(:href="item.href" :target="item.target" :class="item.class") {{item.title}}
-                //- li
-                //-   a(href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html") Accessibility
-                //- li
-                //-   a(href="https://jobs.lumen.com" target="_blank") Careers
-                //- li
-                //-   a(href="https://www.lumen.com/en-us/contact-us.html") Contact Us
-                //- <!-- OneTrust Cookies Settings button start -->
-                //- li
-                //-   a(href="#" class="optanon-toggle-display") Cookie Settings
-                //- <!-- OneTrust Cookies Settings button end -->
-                li
-                  a(href="https://www.centurylink.com/aboutus/legal.html" target="_blank") Legal
-                li
-                  a(href="https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html" target="_blank") Legal Notices
-                li
-                  a(href="https://www.lumen.com/en-us/about/legal/privacy-notice.html") Privacy
-                li
-                  a(href="https://www.centurylink.com/aboutus/company-information/public-policy.html" target="_blank") Public Policy
-                li
-                  a(href="https://www.lumen.com/help/en-us/home.html" target="_blank") Support
-                li
-                  a(href="https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts") Canadian Ombudsman
-                li
-                  a(href="https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3" target="_blank") Gender Pay Gap 2020 (UK)
-                li
-                  a(href="https://www.lumen.com/es-ar/about/legal/latam-tariffs-regulatory.html") Legal (Latin America)
-                li
-                  a(href="https://www.lumen.com/en-us/about/legal/de-legal-notices.html") Legal Notices (Germany)
-                li
-                  a(href="https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80" target="_blank") Modern Slavery Statement 2020 (UK)
-                li
-                  a(href="https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html") UK Tax Strategy
               .chi-footer__copyright
                 | &copy; 2022 Lumen Technologies. All Rights Reserved.
                 | Lumen is a registered trademark in the United States, EU and certain other countries. 
