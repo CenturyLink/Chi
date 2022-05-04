@@ -25,69 +25,29 @@
             .chi-footer__links.chi-grid
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 ul.-text--bold
-                  li
-                    a(href="https://www.lumen.com/en-us/contact-us.html") Contact Us
-                  li
-                    a(href="https://www.centurylink.com/business/login/" target="_blank") Sign in / Pay bill
-                  li
-                    a(href="https://www.lumen.com/help/en-us/home.html") Support
+                  li(v-for="(firstGridLink, index) in externalContents.firstGridLinks" :key="index")
+                    a(:href="firstGridLink.href" :target="firstGridLink.target" :class="firstGridLink.class") {{firstGridLink.title}}
                 .chi-footer__social
-                  a(href="https://www.twitter.com/lumentechco" aria-label="Lumen on Twitter" rel="noopener" target="_blank")
-                    i.chi-icon.icon-logo-twitter.-md(aria-hidden="true")
-                  a(href="https://www.linkedin.com/company/lumen-tech" aria-label="Lumen on LinkedIn" rel="noopener" target="_blank")
-                    i.chi-icon.icon-logo-linkedin.-md(aria-hidden="true")
-                  a(href="https://www.facebook.com/lumentechnologies" aria-label="Lumen on Facebook" rel="noopener" target="_blank")
-                    i.chi-icon.icon-logo-facebook.-md(aria-hidden="true")
-                  a(href="https://www.youtube.com/lumentechnologies" aria-label="Lumen on YouTube" rel="noopener" target="_blank")
-                    i.chi-icon.icon-logo-youtube.-md(aria-hidden="true")
+                  a(v-for="(socialLink, index) in externalContents.firstGridSocialLinks" :key="index" :href="socialLink.href" :aria-label="socialLink.ariaLabel" rel="noopener" target="_blank")
+                    i(:class="`chi-icon icon-logo-${socialLink.iconName} -md`" aria-hidden="true")
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 ul.-text--bold
-                  li
-                    a(href="https://www.lumen.com/en-us/about.html") About Us
-                  li
-                    a(href="https://ir.lumen.com" target="_blank") Investors
-                  li
-                    a(href="https://news.lumen.com" target="_blank") Newsroom
-                  li
-                    a(href="https://www.lumen.com/en-us/about/our-platform.html") Our Platform
-                  li
-                    a(href="https://www.lumen.com/public-sector.html" target="_blank") Public Sector
-                  li
-                    a(href="https://www.centurylink.com/home/" target="_blank") Residential
-                  li
-                    a(href="https://www.lumen.com/wholesale.html" target="_blank") Wholesale
+                  li(v-for="(secondGridLink, index) in externalContents.secondGridLinks" :key="index")
+                    a(:href="secondGridLink.href" :target="secondGridLink.target" :class="secondGridLink.class") {{secondGridLink.title}}
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 .chi-footer__links-title Solutions
                 ul
-                  li
-                    a(href="https://www.lumen.com/en-us/solutions/adaptive-networking.html") Adaptive Networking
-                  li
-                    a(href="https://www.lumen.com/en-us/solutions/collaboration.html") Collaboration
-                  li
-                    a(href="https://www.lumen.com/en-us/solutions/connected-security.html") Connected Security
-                  li
-                    a(href="https://www.lumen.com/en-us/solutions/edge-computing.html") Edge Computing
-                  li
-                    a(href="https://www.lumen.com/en-us/solutions/hybrid-cloud.html") Hybrid Cloud
+                  li(v-for="(thirdGridLink, index) in externalContents.thirdGridLinks" :key="index")
+                    a(:href="thirdGridLink.href" :target="thirdGridLink.target" :class="thirdGridLink.class") {{thirdGridLink.title}}
                 .chi-footer__links-title Shop
                 ul
-                  li
-                    a(href="https://www.lumen.com/en-us/communications/hosted-voip.html") Lumen Engage
+                  li(v-for="(fourthGridLink, index) in externalContents.fourthGridLinks" :key="index")
+                    a(:href="fourthGridLink.href" :target="fourthGridLink.target" :class="fourthGridLink.class") {{fourthGridLink.title}}
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 .chi-footer__links-title Resources
                 ul
-                  li
-                    a(href="https://www.lumen.com/en-us/about/4th-industrial-revolution.html") 4th Industrial Revolution
-                  li
-                    a(href="https://blog.lumen.com" target="_blank") Blog
-                  li
-                    a(href="https://www.lumen.com/help/en-us/portals.html" target="_blank") Customer Portals
-                  li
-                    a(href="https://www.lumen.com/en-us/resources/network-maps.html") Network Maps
-                  li
-                    a(href="https://www.lumen.com/en-us/partner.html") Partners
-                  li
-                    a(href="https://www.lumen.com/help/en-us/home.html" target="_blank") Support
+                  li(v-for="(fifthGridLink, index) in externalContents.fifthGridLinks" :key="index")
+                    a(:href="fifthGridLink.href" :target="fifthGridLink.target" :class="fifthGridLink.class") {{fifthGridLink.title}}
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
             .chi-dropdown.chi-footer__language
@@ -96,34 +56,34 @@
                   i.chi-icon.icon-globe-network(aria-hidden="true")
                   span English
               .chi-dropdown__menu.-w--sm.-text--body
-                a.chi-dropdown__menu-item.-active(href="#")
-                  | English
-                a.chi-dropdown__menu-item(href="#")
-                  | Español
-                a.chi-dropdown__menu-item(href="#")
-                  | Português
-                a.chi-dropdown__menu-item(href="#")
-                  | Français
-                a.chi-dropdown__menu-item(href="#")
-                  | Deutsch
-                a.chi-dropdown__menu-item(href="#")
-                  | 简体中文
-                a.chi-dropdown__menu-item(href="#")
-                  | 日本語 
+                a.chi-dropdown__menu-item(v-for="(link, index) in languageItems" :key="index" :href="link.href" :class="index === 0 ? '-active' : ''")
+                  | {{link.name}}
+                //- a.chi-dropdown__menu-item(href="#")
+                //-   | Español
+                //- a.chi-dropdown__menu-item(href="#")
+                //-   | Português
+                //- a.chi-dropdown__menu-item(href="#")
+                //-   | Français
+                //- a.chi-dropdown__menu-item(href="#")
+                //-   | Deutsch
+                //- a.chi-dropdown__menu-item(href="#")
+                //-   | 简体中文
+                //- a.chi-dropdown__menu-item(href="#")
+                //-   | 日本語 
             .chi-footer__links
               ul
-                li
-                  a(href="https://www.lumen.com/en-us/about.html") About Us
-                li
-                  a(href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html") Accessibility
-                li
-                  a(href="https://jobs.lumen.com" target="_blank") Careers
-                li
-                  a(href="https://www.lumen.com/en-us/contact-us.html") Contact Us
-                <!-- OneTrust Cookies Settings button start -->
-                li
-                  a(href="#" class="optanon-toggle-display") Cookie Settings
-                <!-- OneTrust Cookies Settings button end -->
+                li(v-for="(item, index) in footerLinks" :key="index")
+                  a(:href="item.href" :target="item.target" :class="item.class") {{item.title}}
+                //- li
+                //-   a(href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html") Accessibility
+                //- li
+                //-   a(href="https://jobs.lumen.com" target="_blank") Careers
+                //- li
+                //-   a(href="https://www.lumen.com/en-us/contact-us.html") Contact Us
+                //- <!-- OneTrust Cookies Settings button start -->
+                //- li
+                //-   a(href="#" class="optanon-toggle-display") Cookie Settings
+                //- <!-- OneTrust Cookies Settings button end -->
                 li
                   a(href="https://www.centurylink.com/aboutus/legal.html" target="_blank") Legal
                 li
@@ -163,12 +123,16 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { EXTERNAL_CONTENTS, FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from './fixtures';
 
 declare const chi: any;
 
 @Component({
   data: () => {
     return {
+      footerLinks: FOOTER_LINKS,
+      languageItems: FOOTER_LANGUAGE_DROPDOWN_ITEMS,
+      externalContents: EXTERNAL_CONTENTS,
       exampleTabs: [
         {
           disabled: true,

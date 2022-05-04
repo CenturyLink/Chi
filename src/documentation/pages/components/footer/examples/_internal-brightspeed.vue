@@ -12,34 +12,12 @@
                   i.chi-icon.icon-globe-network(aria-hidden="true")
                   span English
               .chi-dropdown__menu.-w--sm.-text--body
-                a.chi-dropdown__menu-item.-active(href="#")
-                  | English
-                a.chi-dropdown__menu-item(href="#")
-                  | Español
-                a.chi-dropdown__menu-item(href="#")
-                  | Português
-                a.chi-dropdown__menu-item(href="#")
-                  | Français
-                a.chi-dropdown__menu-item(href="#")
-                  | Deutsch
-                a.chi-dropdown__menu-item(href="#")
-                  | 简体中文
-                a.chi-dropdown__menu-item(href="#")
-                  | 日本語
+                a.chi-dropdown__menu-item(v-for="(link, index) in languageItems" :key="index" :href="link.href" :class="index === 0 ? '-active' : ''")
+                  | {{link.name}}
             .chi-footer__links
               ul
-                li
-                  a(href="https://www.lumen.com/en-us/about.html") About Us
-                li
-                  a(href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html") Accessibility
-                li
-                  a(href="https://jobs.lumen.com" target="_blank") Careers
-                li
-                  a(href="https://www.lumen.com/en-us/contact-us.html") Contact Us
-                <!-- OneTrust Cookies Settings button start -->
-                li
-                  a(href="#" class="optanon-toggle-display") Cookie Settings
-                <!-- OneTrust Cookies Settings button end -->
+                li(v-for="(item, index) in footerLinks" :key="index")
+                  a(:href="item.href" :target="item.target" :class="item.class") {{item.title}}
                 li
                   a(href="https://www.centurylink.com/aboutus/legal.html" target="_blank") Legal
                 li
@@ -79,12 +57,14 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
+import { FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS, ILink, ILanguage } from './fixtures';
 declare const chi: any;
 
 @Component({
   data: () => {
     return {
+      footerLinks: FOOTER_LINKS,
+      languageItems: FOOTER_LANGUAGE_DROPDOWN_ITEMS,
       exampleTabs: [
         {
           disabled: true,
@@ -99,7 +79,31 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<footer class="chi-footer">
+        htmlblueprint: ``
+      }
+    };
+  }
+})
+export default class InternalBrightspeed extends Vue {
+  dropdown: any;
+
+  created() {
+    this._setCodeSnippets()
+  }
+
+  _setCodeSnippets() {
+    let languageOptions = '', footerLinks = '';
+
+    this.$data.languageItems.forEach((language: ILanguage, index: number) => {
+      languageOptions += `
+            <a class="chi-dropdown__menu-item${index === 0 ? ' -active' : ''}" href="${language.href}">${language.name}</a>`;
+    });
+
+    this.$data.footerLinks.forEach((footerLink: ILink) => {
+      footerLinks += `
+            <li><a href="${footerLink.href}"${footerLink.target ? ' target=' + footerLink.target : ''}${footerLink.class ? ' class=' + footerLink.class : ''}>${footerLink.title}</a></li>`
+    })
+    this.$data.codeSnippets.htmlblueprint = `<footer class="chi-footer">
   <div class="chi-footer__content">
     <div class="chi-footer__internal">
       <div class="chi-footer__internal-content -mw--1200">
@@ -110,25 +114,11 @@ declare const chi: any;
               <span>English</span>
             </div>
           </a>
-          <div class="chi-dropdown__menu -w--sm -text--body">
-            <a class="chi-dropdown__menu-item -active" href="#">English</a>
-            <a class="chi-dropdown__menu-item" href="#">Español</a>
-            <a class="chi-dropdown__menu-item" href="#">Português</a>
-            <a class="chi-dropdown__menu-item" href="#">Français</a>
-            <a class="chi-dropdown__menu-item" href="#">Deutsch</a>
-            <a class="chi-dropdown__menu-item" href="#">简体中文</a>
-            <a class="chi-dropdown__menu-item" href="#">日本語</a>
+          <div class="chi-dropdown__menu -w--sm -text--body">${languageOptions}
           </div>
         </div>
         <div class="chi-footer__links">
-          <ul>
-            <li><a href="https://www.lumen.com/en-us/about.html">About Us</a></li>
-            <li>
-              <a href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html">Accessibility</a>
-            </li>
-            <li><a href="https://jobs.lumen.com" target="_blank">Careers</a></li>
-            <li><a href="https://www.lumen.com/en-us/contact-us.html">Contact Us</a></li>
-            <li><a href="#" class="optanon-toggle-display">Cookie Settings</a></li>
+          <ul>${footerLinks}
             <li><a href="https://www.centurylink.com/aboutus/legal.html" target="_blank">Legal</a></li>
             <li><a href="https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html" target="_blank">Legal Notices</a>
             </li>
@@ -164,12 +154,7 @@ declare const chi: any;
 </footer>
 
 <script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
-      }
-    };
   }
-})
-export default class InternalBrightspeed extends Vue {
-  dropdown: any;
 
   mounted() {
     this.dropdown = chi.dropdown(this.$refs[`language-dropdown-button`] as HTMLElement);
