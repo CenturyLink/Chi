@@ -174,7 +174,7 @@
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
             .chi-dropdown.chi-footer__language
-              a#language-dropdown-button.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(
+              a#language__dropdown_button.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(
                 data-position='top-start',
                 ref='language-dropdown-button',
                 aria-label='Select your preferred language'
@@ -433,7 +433,7 @@ declare const chi: any;
     <div class="chi-footer__internal">
       <div class="chi-footer__internal-content -mw--1200">
         <div class="chi-dropdown chi-footer__language">
-          <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
+          <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language__dropdown_button" data-position="top-start" aria-label="Select your preferred language">
             <div class="chi-button__content">
               <i class="chi-icon icon-globe-network" aria-hidden="true"></i>
               <span>English</span>
@@ -509,7 +509,7 @@ declare const chi: any;
   </div>
 </footer>
 
-<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
+<script>chi.dropdown(document.getElementById('language__dropdown_button'));<\/script>`
       }
     }
   }

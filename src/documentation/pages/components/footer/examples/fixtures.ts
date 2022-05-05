@@ -94,3 +94,32 @@ export const EXTERNAL_CONTENTS: {[key: string]: ILink[]} = {
         {href: 'https://www.lumen.com/help/en-us/home.html', target: '_blank', title: 'Support'},
     ],
 }
+
+export const EXTERNAL_CENTURYLINKS_CONTENTS: {[key: string]: ILink[]} = {
+    'contactLinks': [
+        {href: 'https://www.centurylink.com/home/help/contact.html', title: 'Contact Us'},
+        {href: 'https://signin.centurylink.com/oxauth/consumer/login.htm', target: '_blank', title: 'Sign in / Pay bill'},
+        {href: 'https://www.centurylink.com/home/help.html', title: 'Support'}
+    ],
+    'socialLinks': [
+        {href:"https://twitter.com/centurylink", ariaLabel: 'CenturyLink on Twitter', iconName: 'twitter'},
+        {href:"https://www.linkedin.com/company/lumen-tech", ariaLabel: 'CenturyLink on LinkedIn', iconName: 'linkedin'},
+        {href:"https://www.facebook.com/CenturyLink", ariaLabel: 'CenturyLink on Facebook', iconName: 'facebook'},
+        {href:"https://www.youtube.com/centurylink", ariaLabel: 'CenturyLink on YouTube', iconName: 'youtube'}
+    ],
+    'aboutLinks': [
+        {href: 'https://www.lumen.com/en-us/about.html', title: 'About Lumen'},
+        {href: 'https://www.centurylink.com/aboutus.html', target: '_blank', title: 'About CenturyLink'},
+        {href: 'https://ir.lumen.com/', target: '_blank', title: 'Investor Relations'},
+        {href: 'https://news.lumen.com/', title: 'Newsroom'},
+    ],
+    'solutionLinks': [
+        {href: 'https://www.centurylink.com/', title: 'Residential'},
+        {href: 'https://www.centurylink.com/small-business/', title: 'Small Business'},
+        {href: 'https://www.lumen.com/en-us/home.html', title: 'Enterprise'},
+    ],
+    'resourceLinks': [
+        {href: 'https://www.centurylink.com/local.html', title: 'CenturyLink in Your Area'},
+        {href: 'http://www.localinternetservice.com/', target: '_blank', title: 'CenturyLink Retailer'},
+    ],
+}

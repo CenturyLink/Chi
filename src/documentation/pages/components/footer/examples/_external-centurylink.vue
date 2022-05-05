@@ -26,73 +26,31 @@
             .chi-footer__links.chi-grid
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 ul.-text--bold
-                  li
-                    a(href="https://www.centurylink.com/home/help/contact.html") Contact Us
-                  li
-                    a(href="https://signin.centurylink.com/oxauth/consumer/login.htm" target="_blank") Sign in / Pay bill
-                  li
-                    a(href="https://www.centurylink.com/home/help.html") Support
+                  li(v-for="(contactLink, index) in externalContents.contactLinks" :key="index")
+                    a(:href="contactLink.href" :target="contactLink.target" :class="contactLink.class") {{contactLink.title}}
                 .chi-footer__social
-                  a(href="https://twitter.com/centurylink" aria-label="CenturyLink on Twitter" rel="noopener" target="_blank")
-                    i.chi-icon.icon-logo-twitter.-md(aria-hidden="true")
-                  a(href="https://www.linkedin.com/company/centurylink" aria-label="CenturyLink on LinkedIn" rel="noopener" target="_blank")
-                    i.chi-icon.icon-logo-linkedin.-md(aria-hidden="true")
-                  a(href="https://www.facebook.com/CenturyLink" aria-label="CenturyLink on Facebook" rel="noopener" target="_blank")
-                    i.chi-icon.icon-logo-facebook.-md(aria-hidden="true")
-                  a(href="https://www.youtube.com/centurylink" aria-label="CenturyLink on YouTube" rel="noopener" target="_blank")
-                    i.chi-icon.icon-logo-youtube.-md(aria-hidden="true")
+                  a(v-for="(socialLink, index) in externalContents.socialLinks" :key="index" :href="socialLink.href" :aria-label="socialLink.ariaLabel" rel="noopener" target="_blank")
+                    i(:class="`chi-icon icon-logo-${socialLink.iconName} -md`" aria-hidden="true")
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 ul.-text--bold
-                  li
-                    a(href="https://www.lumen.com/en-us/about.html" target="_blank") About Lumen
-                  li
-                    a(href="https://www.centurylink.com/aboutus.html" target="_blank") About CenturyLink
-                  li
-                    a(href="https://ir.lumen.com/") Investor Relations
-                  li
-                    a(href="https://news.lumen.com/" target="_blank") Newsroom
+                  li(v-for="(aboutLink, index) in externalContents.aboutLinks" :key="index")
+                    a(:href="aboutLink.href" :target="aboutLink.target" :class="aboutLink.class") {{aboutLink.title}}
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 .chi-footer__links-title Solutions
                 ul
-                  li
-                    a(href="https://www.centurylink.com/") Residential
-                  li
-                    a(href="https://www.centurylink.com/small-business/") Small Business
-                  li
-                    a(href="https://www.lumen.com/en-us/home.html") Enterprise
+                  li(v-for="(solutionLink, index) in externalContents.solutionLinks" :key="index")
+                    a(:href="solutionLink.href" :target="solutionLink.target" :class="solutionLink.class") {{solutionLink.title}}
               .chi-col.-w--12.-w-md--6.-w-lg--3
                 .chi-footer__links-title Resources
                 ul
-                  li
-                    a(href="https://www.centurylink.com/local.html" target="_blank") CenturyLink in Your Area
-                  li
-                    a(href="http://www.localinternetservice.com/" target="_blank") CenturyLink Retailer
+                  li(v-for="(resourceLink, index) in externalContents.resourceLinks" :key="index")
+                    a(:href="resourceLink.href" :target="resourceLink.target" :class="resourceLink.class") {{resourceLink.title}}
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
             .chi-footer__links
               ul
-                li
-                  a(href="https://www.centurylink.com/aboutus.html") About Us
-                li
-                  a(href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html") Accessibility
-                li
-                  a(href="https://jobs.lumen.com" target="_blank") Careers
-                li
-                  a(href="https://www.centurylink.com/home/help/contact.html") Contact Us
-                <!-- OneTrust Cookies Settings button start -->
-                li
-                  a(href="#" class="optanon-toggle-display") Cookie Settings
-                <!-- OneTrust Cookies Settings button end -->
-                li
-                  a(href="https://www.centurylink.com/aboutus/legal.html" target="_blank") Legal
-                li
-                  a(href="https://www.centurylink.com/legal/" target="_blank") Legal Notices
-                li
-                  a(href="https://www.centurylink.com/aboutus/legal/privacy-policy.html") Privacy Policy
-                li
-                  a(href="https://www.centurylink.com/aboutus/legal/tariff-library.html" target="_blank") Tariffs
-                li
-                  a(href="https://www.centurylink.com/sitemap.html" target="_blank") Site Map
+                li(v-for="(item, index) in footerLinks" :key="index")
+                  a(:href="item.href" :target="item.target" :class="item.class") {{item.title}}
               .chi-footer__copyright
                 | &copy; 2022 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.
     <pre class="language-html" slot="code-webcomponent">
@@ -109,10 +67,13 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { CENTURY_FOOTER_LINKS, EXTERNAL_CENTURYLINKS_CONTENTS, ILink } from './fixtures';
 
 @Component({
   data: () => {
     return {
+      footerLinks: CENTURY_FOOTER_LINKS,
+      externalContents: EXTERNAL_CENTURYLINKS_CONTENTS,
       exampleTabs: [
         {
           disabled: true,
@@ -127,7 +88,33 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<footer class="chi-footer">
+        htmlblueprint: ``
+      }
+    };
+  }
+})
+export default class ExternalCenturylink extends Vue {
+
+  created() {
+    this._setCodeSnippet();
+  }
+
+  _setCodeSnippet() {
+    let socialLinks = '', footerItemLinks = '';
+
+    this.$data.externalContents.socialLinks.forEach((link: ILink) => {
+        socialLinks += `
+              <a href="${link.href}" aria-label="${link.ariaLabel}" rel="noopener" target="_blank">
+                <i class="chi-icon icon-logo-${link.iconName} -md" aria-hidden="true"></i>
+              </a>`;
+    });
+
+    this.$data.footerLinks.forEach((link: ILink) => {
+          footerItemLinks += `
+            <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''}>${link.title}</a></li>`;
+    });
+
+    this.$data.codeSnippets.htmlblueprint = `<footer class="chi-footer">
   <div class="chi-footer__content">
     <div class="chi-footer__external">
       <div class="chi-footer__external-content -mw--1200">
@@ -156,34 +143,23 @@ import { Component, Vue } from 'vue-property-decorator';
         </div>
         <div class="chi-footer__links chi-grid">
           <div class="chi-col -w--12 -w-md--6 -w-lg--3">
-            <ul class="-text--bold">
-              <li><a href="https://www.centurylink.com/home/help/contact.html">Contact Us</a></li>
-              <li><a href="https://signin.centurylink.com/oxauth/consumer/login.htm" target="_blank">Sign in / Pay bill</a></li>
-              <li><a href="https://www.centurylink.com/home/help.html">Support</a></li>
+            <ul class="-text--bold">${this.generateLinkCodeSnippet('contactLinks')}
             </ul>
-            <div class="chi-footer__social"><a href="https://twitter.com/centurylink" aria-label="CenturyLink on Twitter" rel="noopener" target="_blank"><i class="chi-icon icon-logo-twitter -md"></i></a><a href="https://www.linkedin.com/company/centurylink" aria-label="CenturyLink on LinkedIn" rel="noopener" target="_blank"><i class="chi-icon icon-logo-linkedin -md"></i></a><a href="https://www.facebook.com/CenturyLink" aria-label="CenturyLink on Facebook" rel="noopener" target="_blank"><i class="chi-icon icon-logo-facebook -md"></i></a><a href="https://www.youtube.com/centurylink" aria-label="CenturyLink on YouTube" rel="noopener" target="_blank"><i class="chi-icon icon-logo-youtube -md"></i></a></div>
+            <div class="chi-footer__social">${socialLinks}
+            </div>
           </div>
           <div class="chi-col -w--12 -w-md--6 -w-lg--3">
-            <ul class="-text--bold">
-              <li><a href="https://www.lumen.com/en-us/about.html" target="_blank">About Lumen</a></li>
-              <li><a href="https://www.centurylink.com/aboutus.html" target="_blank">About CenturyLink</a></li>
-              <li><a href="https://ir.lumen.com/">Investor Relations</a></li>
-              <li><a href="https://news.lumen.com/" target="_blank">Newsroom</a></li>
+            <ul class="-text--bold">${this.generateLinkCodeSnippet('aboutLinks')}
             </ul>
           </div>
           <div class="chi-col -w--12 -w-md--6 -w-lg--3">
             <div class="chi-footer__links-title">Solutions</div>
-            <ul>
-              <li><a href="https://www.centurylink.com/">Residential</a></li>
-              <li><a href="https://www.centurylink.com/small-business/">Small Business</a></li>
-              <li><a href="https://www.lumen.com/en-us/home.html">Enterprise</a></li>
+            <ul>${this.generateLinkCodeSnippet('solutionLinks')}
             </ul>
           </div>
           <div class="chi-col -w--12 -w-md--6 -w-lg--3">
             <div class="chi-footer__links-title">Resources</div>
-            <ul>
-              <li><a href="https://www.centurylink.com/local.html" target="_blank">CenturyLink in Your Area</a></li>
-              <li><a href="http://www.localinternetservice.com/" target="_blank">CenturyLink Retailer</a></li>
+            <ul>${this.generateLinkCodeSnippet('resourceLinks')}
             </ul>
           </div>
         </div>
@@ -192,17 +168,7 @@ import { Component, Vue } from 'vue-property-decorator';
     <div class="chi-footer__internal">
       <div class="chi-footer__internal-content -mw--1200">
         <div class="chi-footer__links">
-          <ul>
-            <li><a href="https://www.centurylink.com/aboutus.html">About Us</a></li>
-            <li><a href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html">Accessibility</a></li>
-            <li><a href="https://jobs.lumen.com" target="_blank">Careers</a></li>
-            <li><a href="https://www.centurylink.com/home/help/contact.html">Contact Us</a></li><!-- OneTrust Cookies Settings button start -->
-            <li><a class="optanon-toggle-display" href="#">Cookie Settings</a></li><!-- OneTrust Cookies Settings button end -->
-            <li><a href="https://www.centurylink.com/aboutus/legal.html" target="_blank">Legal</a></li>
-            <li><a href="https://www.centurylink.com/legal/" target="_blank">Legal Notices</a></li>
-            <li><a href="https://www.centurylink.com/aboutus/legal/privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="https://www.centurylink.com/aboutus/legal/tariff-library.html" target="_blank">Tariffs</a></li>
-            <li><a href="https://www.centurylink.com/sitemap.html" target="_blank">Site Map</a></li>
+          <ul>${footerItemLinks}
           </ul>
           <div class="chi-footer__copyright">&copy; 2022 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.</div>
         </div>
@@ -210,9 +176,15 @@ import { Component, Vue } from 'vue-property-decorator';
     </div>
   </div>
 </footer>`
-      }
-    };
   }
-})
-export default class ExternalCenturylink extends Vue {}
+
+  generateLinkCodeSnippet(keyName: string) {
+    let linkCodeSnippet = '';
+    this.$data.externalContents[keyName].forEach((link: ILink) => {
+          linkCodeSnippet += `
+              <li><a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''}>${link.title}</a></li>`;
+    });
+    return linkCodeSnippet;
+  }
+}
 </script>

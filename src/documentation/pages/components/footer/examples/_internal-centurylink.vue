@@ -63,7 +63,7 @@ export default class InternalCenturylink extends Vue {
     this.$data.centuryFooterLinks.forEach((footerLink: ILink) => {
       centuryFooterLinks += `
             <li>
-              <a href="${footerLink.href}"${footerLink.target ? ' target=' + footerLink.target : ''}${footerLink.class ? ' class=' + footerLink.class : ''}>${footerLink.title}</a>
+              <a href="${footerLink.href}"${footerLink.target ? ' target="' + footerLink.target + '"' : ''}${footerLink.class ? ' class="' + footerLink.class + '"' : ''}>${footerLink.title}</a>
             </li>`
     })
 

@@ -51,7 +51,7 @@
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
             .chi-dropdown.chi-footer__language
-              a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language-dropdown-button" ref="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language")
+              a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language__dropdown_button" ref="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language")
                 .chi-button__content
                   i.chi-icon.icon-globe-network(aria-hidden="true")
                   span English
@@ -79,7 +79,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { EXTERNAL_CONTENTS, FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from './fixtures';
+import { EXTERNAL_CONTENTS, FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS, ILanguage, ILink } from './fixtures';
 
 declare const chi: any;
 
@@ -103,7 +103,40 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<footer class="chi-footer">
+        htmlblueprint: ``
+      }
+    };
+  }
+})
+export default class ExternalBrightspeed extends Vue {
+  dropdown: any;
+
+  created() {
+    this._setCodeSnippet();
+  }
+
+  _setCodeSnippet() {
+    let socialLinks = '', languageItemLinks = '', footerItemLinks = '';
+    this.$data.footerLinks.forEach((link: ILink) => {
+          footerItemLinks += `
+            <li>
+              <a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''}>${link.title}</a>
+            </li>`;
+    });
+    
+    this.$data.externalContents.socialLinks.forEach((link: ILink) => {
+        socialLinks += `
+              <a href="${link.href}" aria-label="${link.ariaLabel}" rel="noopener" target="_blank">
+                <i class="chi-icon icon-logo-${link.iconName} -md" aria-hidden="true"></i>
+              </a>`;
+    });
+
+    this.$data.languageItems.forEach((languageItem: ILanguage, index: number) => {
+      languageItemLinks += `
+            <a class="chi-dropdown__menu-item${index === 0 ? ' -active' : ''}" href="${languageItem.href}">${languageItem.name}</a>`
+    })
+
+    this.$data.codeSnippets.htmlblueprint = `<footer class="chi-footer">
   <div class="chi-footer__content">
     <div class="chi-footer__external">
       <div class="chi-footer__external-content -mw--1200">
@@ -122,104 +155,26 @@ declare const chi: any;
         </div>
         <div class="chi-footer__links chi-grid">
           <div class="chi-col -w--12 -w-md--6 -w-lg--3">
-            <ul class="-text--bold">
-              <li>
-                <a href="https://www.lumen.com/en-us/contact-us.html">Contact Us</a>
-              </li>
-              <li>
-                <a href="https://www.centurylink.com/business/login/" target="_blank">Sign in / Pay bill</a>
-              </li>
-              <li>
-                <a href="https://www.lumen.com/help/en-us/home.html" target="_blank">Support</a>
-              </li>
+            <ul class="-text--bold">${this.generateLinkCodeSnippet('contactLinks')}
             </ul>
-            <div class="chi-footer__social">
-              <a href="https://www.twitter.com/lumentechco" aria-label="Lumen on Twitter" rel="noopener" target="_blank">
-                <i class="chi-icon icon-logo-twitter -md" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.linkedin.com/company/lumen-tech" aria-label="Lumen on LinkedIn" rel="noopener" target="_blank">
-                <i class="chi-icon icon-logo-linkedin -md" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.facebook.com/lumentechnologies" aria-label="Lumen on Facebook" rel="noopener" target="_blank">
-                <i class="chi-icon icon-logo-facebook -md" aria-hidden="true"></i>
-              </a>
-              <a href="https://www.youtube.com/lumentechnologies" aria-label="Lumen on YouTube" rel="noopener" target="_blank">
-                <i class="chi-icon chi-icon icon-logo-youtube -md" aria-hidden="true"></i>
-              </a>
+            <div class="chi-footer__social">${socialLinks}
             </div>
           </div>
           <div class="chi-col -w--12 -w-md--6 -w-lg--3">
-            <ul class="-text--bold">
-              <li>
-                <a href="https://www.lumen.com/en-us/about.html">About Us</a>
-              </li>
-              <li>
-                <a href="https://ir.lumen.com" target="_blank">Investors</a>
-              </li>
-              <li>
-                <a href="https://news.lumen.com" target="_blank">Newsroom</a>
-              </li>
-              <li>
-                <a href="https://www.lumen.com/en-us/about/our-platform.html">Our Platform</a>
-              </li>
-              <li>
-                <a href="https://www.lumen.com/public-sector.html" target="_blank">Public Sector</a>
-              </li>
-              <li>
-                <a href="https://www.centurylink.com/home/" target="_blank">Residential</a>
-              </li>
-              <li>
-                <a href="https://www.lumen.com/wholesale.html" target="_blank">Wholesale</a>
-              </li>
+            <ul class="-text--bold">${this.generateLinkCodeSnippet('aboutLinks')}
             </ul>
           </div>
           <div class="chi-col -w--12 -w-md--6 -w-lg--3">
             <div class="chi-footer__links-title">Solutions</div>
-            <ul>
-              <li>
-                <a href="https://www.lumen.com/en-us/solutions/adaptive-networking.html">Adaptive Networking</a>
-              </li>
-              <li>
-                <a href="https://www.lumen.com/en-us/solutions/collaboration.html">Collaboration</a>
-              </li>
-              <li>
-                <a href="https://www.lumen.com/en-us/solutions/connected-security.html">Connected Security</a>
-              </li>
-              <li>
-                <a href="https://www.lumen.com/en-us/solutions/edge-computing.html">Edge Computing</a>
-              </li>
-              <li>
-                <a href="https://www.lumen.com/en-us/solutions/hybrid-cloud.html">Hybrid Cloud</a>
-              </li>
+            <ul>${this.generateLinkCodeSnippet('solutionLinks')}
             </ul>
             <div class="chi-footer__links-title">Shop</div>
-            <ul>
-              <li>
-                <a href="https://www.lumen.com/en-us/communications/hosted-voip.html">Lumen Engage</a>
-              </li>
+            <ul>${this.generateLinkCodeSnippet('shopLinks')}
             </ul>
           </div>
           <div class="chi-col -w--12 -w-md--6 -w-lg--3">
             <div class="chi-footer__links-title">Resources</div>
-            <ul>
-              <li>
-                <a href="https://www.lumen.com/en-us/about/4th-industrial-revolution.html">4th Industrial Revolution</a>
-              </li>
-              <li>
-                <a href="https://blog.lumen.com" target="_blank">Blog</a>
-              </li>
-              <li>
-                <a href="https://www.lumen.com/help/en-us/portals.html" target="_blank">Customer Portals</a>
-              </li>
-              <li>
-                <a href="https://www.lumen.com/en-us/resources/network-maps.html">Network Maps</a>
-              </li>
-              <li>
-                <a href="https://www.lumen.com/en-us/partner.html" target="_blank">Partners</a>
-              </li>
-              <li>
-                <a href="https://www.lumen.com/help/en-us/home.html" target="_blank">Support</a>
-              </li>
+            <ul>${this.generateLinkCodeSnippet('resourceLinks')}
             </ul>
           </div>
         </div>
@@ -228,74 +183,17 @@ declare const chi: any;
     <div class="chi-footer__internal">
       <div class="chi-footer__internal-content -mw--1200">
         <div class="chi-dropdown chi-footer__language">
-          <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
+          <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language__dropdown_button" data-position="top-start" aria-label="Select your preferred language">
             <div class="chi-button__content">
               <i class="chi-icon icon-globe-network" aria-hidden="true"></i>
               <span>English</span>
             </div>
           </a>
-          <div class="chi-dropdown__menu -w--sm -text--body">
-            <a class="chi-dropdown__menu-item -active" href="#">English</a>
-            <a class="chi-dropdown__menu-item" href="#">Español</a>
-            <a class="chi-dropdown__menu-item" href="#">Português</a>
-            <a class="chi-dropdown__menu-item" href="#">Français</a>
-            <a class="chi-dropdown__menu-item" href="#">Deutsch</a>
-            <a class="chi-dropdown__menu-item" href="#">简体中文</a>
-            <a class="chi-dropdown__menu-item" href="#">日本語</a>
+          <div class="chi-dropdown__menu -w--sm -text--body">${languageItemLinks}
           </div>
         </div>
         <div class="chi-footer__links">
-          <ul>
-            <li>
-              <a href="https://www.lumen.com/en-us/about.html">About Us</a>
-            </li>
-            <li>
-              <a href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html">Accessibility</a>
-            </li>
-            <li>
-              <a href="https://jobs.lumen.com" target="_blank">Careers</a>
-            </li>
-            <li>
-              <a href="https://www.lumen.com/en-us/contact-us.html">Contact Us</a>
-            </li>
-            <!-- OneTrust Cookies Settings button start -->
-            <li>
-              <a href="#" class="optanon-toggle-display">Cookie Settings</a>
-            </li>
-            <!-- OneTrust Cookies Settings button end -->
-            <li>
-              <a href="https://www.centurylink.com/aboutus/legal.html" target="_blank">Legal</a>
-            </li>
-            <li>
-              <a href="https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html" target="_blank">Legal Notices</a>
-            </li>
-            <li>
-              <a href="https://www.lumen.com/en-us/about/legal/privacy-notice.html">Privacy</a>
-            </li>
-            <li>
-              <a href="https://www.centurylink.com/aboutus/company-information/public-policy.html" target="_blank">Public Policy</a>
-            </li>
-            <li>
-              <a href="https://www.lumen.com/help/en-us/home.html" target="_blank">Support</a>
-            </li>
-            <li>
-              <a href="https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts">Canadian Ombudsman</a>
-            </li>
-            <li>
-              <a href="https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3" target="_blank">Gender Pay Gap 2020 (UK)</a>
-            </li>
-            <li>
-              <a href="https://www.lumen.com/es-ar/about/legal/latam-tariffs-regulatory.html">Legal (Latin America)</a>
-            </li>
-            <li>
-              <a href="https://www.lumen.com/en-us/about/legal/de-legal-notices.html">Legal Notices (Germany)</a>
-            </li>
-            <li>
-              <a href="https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80" target="_blank">Modern Slavery Statement 2020 (UK)</a>
-            </li>
-            <li>
-              <a href="https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html">UK Tax Strategy</a>
-            </li>
+          <ul>${footerItemLinks}
           </ul>
           <div class="chi-footer__copyright">&copy; 2022 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
         </div>
@@ -304,13 +202,19 @@ declare const chi: any;
   </div>
 </footer>
 
-<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
-      }
-    };
+<script>chi.dropdown(document.getElementById('language__dropdown_button'));<\/script>`
   }
-})
-export default class ExternalBrightspeed extends Vue {
-  dropdown: any;
+
+  generateLinkCodeSnippet(keyName: string) {
+    let linkCodeSnippet = '';
+    this.$data.externalContents[keyName].forEach((link: ILink) => {
+          linkCodeSnippet += `
+              <li>
+                <a href="${link.href}"${link.target ? ' target="' + link.target + '"' : ''}${link.class ? ' class="' + link.class + '"' : ''}>${link.title}</a>
+              </li>`;
+    });
+    return linkCodeSnippet;
+  }
 
   mounted() {
     this.dropdown = chi.dropdown(this.$refs[`language-dropdown-button`] as HTMLElement);

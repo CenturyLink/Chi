@@ -7,7 +7,7 @@
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
             .chi-dropdown.chi-footer__language
-              a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language-dropdown-button" ref="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language")
+              a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language__dropdown_button" ref="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language")
                 .chi-button__content
                   i.chi-icon.icon-globe-network(aria-hidden="true")
                   span English
@@ -80,7 +80,7 @@ export default class InternalBrightspeed extends Vue {
     this.$data.footerLinks.forEach((footerLink: ILink) => {
       footerLinks += `
             <li>
-              <a href="${footerLink.href}"${footerLink.target ? ' target=' + footerLink.target : ''}${footerLink.class ? ' class=' + footerLink.class : ''}>${footerLink.title}</a>
+              <a href="${footerLink.href}"${footerLink.target ? ' target="' + footerLink.target + '"' : ''}${footerLink.class ? ' class="' + footerLink.class + '"' : ''}>${footerLink.title}</a>
             </li>`
     })
     this.$data.codeSnippets.htmlblueprint = `<footer class="chi-footer">
@@ -88,7 +88,7 @@ export default class InternalBrightspeed extends Vue {
     <div class="chi-footer__internal">
       <div class="chi-footer__internal-content -mw--1200">
         <div class="chi-dropdown chi-footer__language">
-          <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
+          <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language__dropdown_button" data-position="top-start" aria-label="Select your preferred language">
             <div class="chi-button__content">
               <i class="chi-icon icon-globe-network" aria-hidden="true"></i>
               <span>English</span>
@@ -107,7 +107,7 @@ export default class InternalBrightspeed extends Vue {
   </div>
 </footer>
 
-<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
+<script>chi.dropdown(document.getElementById('language__dropdown_button'));<\/script>`
   }
 
   mounted() {
