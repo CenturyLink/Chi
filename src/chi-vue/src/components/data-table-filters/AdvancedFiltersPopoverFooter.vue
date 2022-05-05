@@ -1,17 +1,24 @@
 <template>
-  <div class="-d--flex" slot="chi-popover__footer">
+  <div :class="[UTILITY_CLASSES.DISPLAY.FLEX]" slot="chi-popover__footer">
     <button
       @click="clear"
-      class="chi-button -flat -icon -py--0"
+      :class="[BUTTON_CLASSES.BUTTON, BUTTON_CLASSES.FLAT, BUTTON_CLASSES.ICON_BUTTON, UTILITY_CLASSES.PADDING.Y[0]]"
       aria-label="Clear all filters"
       :disabled="disabledButtons"
     >
-      <div class="chi-button__content -flex--column -align-items--center">
-        <i class="chi-icon icon-reset" aria-hidden="true"></i>
-        <span class="-text--uppercase -text--primary -text--2xs">Clear</span>
+      <div :class="[BUTTON_CLASSES.CONTENT, UTILITY_CLASSES.FLEX.COLUMN, UTILITY_CLASSES.ALIGN_ITEMS.CENTER]">
+        <i :class="[ICON_CLASS, 'icon-reset', UTILITY_CLASSES.MARGIN.RIGHT[0]]" aria-hidden="true"></i>
+        <span
+          :class="[
+            UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE,
+            UTILITY_CLASSES.TYPOGRAPHY.COLOR.PRIMARY,
+            UTILITY_CLASSES.TYPOGRAPHY.SIZE.TWO_XS,
+          ]"
+          >Clear</span
+        >
       </div>
     </button>
-    <div class="chi-divider -vertical"></div>
+    <div :class="[DIVIDER_CLASSES.DIVIDER, DIVIDER_CLASSES.VERTICAL]"></div>
     <chi-button @chiClick="cancel">Cancel</chi-button>
     <chi-button @chiClick="apply" :disabled="disabledButtons" color="primary">Apply</chi-button>
   </div>
@@ -19,21 +26,28 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { ADVANCED_FILTER_EVENTS } from '../../constants/events';
+import { BUTTON_CLASSES, DIVIDER_CLASSES, ICON_CLASS, UTILITY_CLASSES } from '../../constants/classes';
 
 @Component({})
 export default class AdvancedFiltersPopoverFooter extends Vue {
   @Prop() disabledButtons?: boolean;
 
+  BUTTON_CLASSES = BUTTON_CLASSES;
+  DIVIDER_CLASSES = DIVIDER_CLASSES;
+  ICON_CLASS = ICON_CLASS;
+  UTILITY_CLASSES = UTILITY_CLASSES;
+
   clear() {
-    this.$emit('chiFiltersClear');
+    this.$emit(ADVANCED_FILTER_EVENTS.CLEAR);
   }
 
   cancel() {
-    this.$emit('chiFiltersCancel');
+    this.$emit(ADVANCED_FILTER_EVENTS.CANCEL);
   }
 
   apply() {
-    this.$emit('chiFiltersApply');
+    this.$emit(ADVANCED_FILTER_EVENTS.APPLY);
   }
 }
 </script>

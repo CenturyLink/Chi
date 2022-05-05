@@ -254,6 +254,13 @@ export const UTILITY_CLASSES = {
     TEXT_TRUNCATE: '-text--truncate',
     TEXT_NORMAL: '-text--normal',
     TEXT_BOLD: '-text--bold',
+    TEXT_UPPERCASE: '-text--uppercase',
+    COLOR: {
+      PRIMARY: '-text--primary',
+    },
+    SIZE: {
+      TWO_XS: '-text--2xs',
+    },
   },
   POSITION: {
     RELATIVE: '-position--relative',
@@ -275,6 +282,7 @@ export const UTILITY_CLASSES = {
       4: '-px--4',
     },
     Y: {
+      0: '-py--0',
       1: '-py--1',
       2: '-py--2',
       3: '-py--3',
@@ -331,6 +339,7 @@ export const UTILITY_CLASSES = {
       4: '-ml--4',
     },
     RIGHT: {
+      0: '-mr--0',
       1: '-mr--1',
       2: '-mr--2',
       3: '-mr--3',

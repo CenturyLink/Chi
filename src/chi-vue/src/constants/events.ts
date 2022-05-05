@@ -85,3 +85,11 @@ export const TOOLTIP_EVENTS = {
   HIDDEN: 'chiTooltipHidden',
 };
 //#endregion
+
+//#region Advanced Filters
+export const ADVANCED_FILTER_EVENTS = {
+  CLEAR: 'chiFiltersClear',
+  CANCEL: 'chiFiltersCancel',
+  APPLY: 'chiFiltersApply',
+};
+//#endregion
