@@ -10,9 +10,9 @@ header.chi-header.docs-header.-z--20
               return false;
           }
 
-          if (v1parts[i] == v2parts[i]) {
+          if (Number(v1parts[i]) == Number(v2parts[i])) {
               continue;
-          } else if (v1parts[i] > v2parts[i]) {
+          } else if (Number(v1parts[i]) > Number(v2parts[i])) {
               return false;
           } else {
               return true;
@@ -207,9 +207,10 @@ header.chi-header.docs-header.-z--20
           i.chi-icon.icon-search(aria-hidden="true")
     .chi-header__end
       .chi-dropdown
-        button.chi-button.-flat.-px--1.chi-dropdown__trigger.-animate(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v5.12.0
+        button.chi-button.-flat.-px--1.chi-dropdown__trigger.-animate(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v5.13.0
         .chi-dropdown__menu(style='width:10rem;')#versionDropdown
-          a.chi-dropdown__menu-item.-active(href='https://assets.ctl.io/chi/5.12.0') v5.12.0
+          a.chi-dropdown__menu-item.-active(href='https://assets.ctl.io/chi/5.13.0') v5.13.0
+          a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.12.0') v5.12.0
           a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.11.0') v5.11.0
           a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.9.1') v5.9.1
           a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.9.0') v5.9.0

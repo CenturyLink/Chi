@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample titleSize="h4" title="With Avatar" id="with-avatar" padding="-p--0" :tabs="exampleTabs">
+  <ComponentExample title="With Avatar" id="with-avatar" padding="-p--0" :tabs="exampleTabs">
     .-p-md--5(slot="example")
       .chi-activity
         .chi-activity__day

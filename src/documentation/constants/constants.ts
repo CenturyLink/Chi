@@ -45,3 +45,7 @@ export const standardComponentPageTabs = [
     label: 'Accessibility',
   },
 ];
+
+export const COMPONENT_EXAMPLE_EVENTS = {
+  CHI_HEAD_TABS_CHANGE: 'chiHeadTabsChange'
+}

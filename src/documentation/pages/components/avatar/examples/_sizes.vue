@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentTabExample titleSize="h4" title="Size" id="size" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
+  <ComponentTabExample title="Size" id="size" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
     p.-text(slot="example-description")
       | All three avatar styles support a full spectrum of sizes: <code>-xs</code>, <code>-sm</code>,
       | <code>-sm--2</code>, <code>-sm--3</code>, <code>-md</code>, <code>-lg</code>, <code>-xl</code>, <code>-xxl</code>.

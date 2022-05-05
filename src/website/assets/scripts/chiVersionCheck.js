@@ -49,9 +49,9 @@ function versionCompare(v1, v2) {
           return false;
       }
 
-      if (v1parts[i] == v2parts[i]) {
+      if (Number(v1parts[i]) == Number(v2parts[i])) {
           continue;
-      } else if (v1parts[i] > v2parts[i]) {
+      } else if (Number(v1parts[i]) > Number(v2parts[i])) {
           return false;
       } else {
           return true;
