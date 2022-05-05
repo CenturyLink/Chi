@@ -6,6 +6,7 @@ import {
   CLOSED_CLASS,
   DATA_TABLE_CLASSES,
   GENERIC_SIZE_CLASSES,
+  UTILITY_CLASSES,
   ICON_CLASS,
   MODAL_CLASSES,
   PORTAL_CLASS,
@@ -74,8 +75,10 @@ export default class ColumnCustomization extends Vue {
                   }`}
                 onclick={this._reset}
                 disabled>
-                <div class="chi-button__content">
-                  <i aria-hidden="true" class="chi-icon icon-reload"></i>
+                <div
+                  class={`${BUTTON_CLASSES.CONTENT} ${UTILITY_CLASSES.FLEX.COLUMN} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>
+                  <i aria-hidden="true" class={`${ICON_CLASS} icon-reload -sm--2 -mr--0`}></i>
+                  <span class="-text--uppercase -text--primary -text--2xs">Reset</span>
                 </div>
               </button>
               <div class="chi-divider -vertical -mr--2"></div>
