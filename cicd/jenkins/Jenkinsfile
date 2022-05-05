@@ -838,6 +838,7 @@ pipeline {
               script {
                 sh "rm -rf dist"
                 unstash name: "DIST-CHI-DOCUMENTATION"
+                unstash name: "DIST-CHI"
                 def s3Uri = "${GIT_COMMIT}-chi-pr-po-ctl"
                 sh script:"""
                   cat << 'PolicyDocument' > policy.json
