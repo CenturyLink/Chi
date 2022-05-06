@@ -10,6 +10,7 @@ import {
   ICON_CLASS,
   MODAL_CLASSES,
   PORTAL_CLASS,
+  GENERIC_SIZE_CLASSES,
 } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
@@ -38,6 +39,7 @@ export default class ColumnCustomization extends Vue {
       <div class={`${BACKDROP_CLASSES.BACKDROP} ${CLOSED_CLASS}`}>
         <div class={BACKDROP_CLASSES.WRAPPER}>
           <section
+            data-cy="chi-modal"
             id={this._modalId}
             class={`${MODAL_CLASSES.MODAL} ${PORTAL_CLASS}`}
             role="dialog"
@@ -68,12 +70,15 @@ export default class ColumnCustomization extends Vue {
                   ${BUTTON_CLASSES.BUTTON}
                   ${BUTTON_CLASSES.ICON_BUTTON}
                   ${BUTTON_CLASSES.FLAT}
+                  ${BUTTON_CLASSES.SIZES.XS}
                   ${UTILITY_CLASSES.PADDING.Y[0]}`}
                 onclick={this._reset}
                 disabled>
                 <div
                   class={`${BUTTON_CLASSES.CONTENT} ${UTILITY_CLASSES.FLEX.COLUMN} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>
-                  <i aria-hidden="true" class={`${ICON_CLASS} icon-reload ${UTILITY_CLASSES.MARGIN.RIGHT[0]}`}></i>
+                  <i
+                    aria-hidden="true"
+                    class={`${ICON_CLASS} icon-reload -sm--2 ${UTILITY_CLASSES.MARGIN.RIGHT[0]}`}></i>
                   <span
                     class={`${UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE} ${UTILITY_CLASSES.TYPOGRAPHY.COLOR.PRIMARY} ${UTILITY_CLASSES.TYPOGRAPHY.SIZE.TWO_XS}`}>
                     Reset
@@ -82,10 +87,16 @@ export default class ColumnCustomization extends Vue {
               </button>
               <div
                 class={`${DIVIDER_CLASSES.DIVIDER} ${DIVIDER_CLASSES.VERTICAL} ${UTILITY_CLASSES.MARGIN.RIGHT[2]}`}></div>
-              <chi-button onChiClick={this._cancelColumnsChange}>Cancel</chi-button>
-              <chi-button ref="saveButton" onChiClick={this._submitColumnsChange} color="primary">
+              <button class={`${BUTTON_CLASSES.BUTTON}`} onclick={this._cancelColumnsChange}>
+                Cancel
+              </button>
+              <button
+                ref="saveButton"
+                onclick={this._submitColumnsChange}
+                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY}`}
+                disabled>
                 Save
-              </chi-button>
+              </button>
             </footer>
           </section>
         </div>
@@ -202,6 +213,7 @@ export default class ColumnCustomization extends Vue {
     const modalButton = (
       <button
         ref="modalButton"
+        data-cy="chi-modal__trigger"
         data-target={`#${this._modalId}`}
         class={`
           ${BUTTON_CLASSES.BUTTON}

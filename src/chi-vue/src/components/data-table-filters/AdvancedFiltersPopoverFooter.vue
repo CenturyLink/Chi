@@ -2,12 +2,18 @@
   <div :class="[UTILITY_CLASSES.DISPLAY.FLEX]" slot="chi-popover__footer">
     <button
       @click="clear"
-      :class="[BUTTON_CLASSES.BUTTON, BUTTON_CLASSES.FLAT, BUTTON_CLASSES.ICON_BUTTON, UTILITY_CLASSES.PADDING.Y[0]]"
+      :class="[
+        BUTTON_CLASSES.BUTTON,
+        BUTTON_CLASSES.FLAT,
+        BUTTON_CLASSES.ICON_BUTTON,
+        BUTTON_CLASSES.SIZES.XS,
+        UTILITY_CLASSES.PADDING.Y[0],
+      ]"
       aria-label="Clear all filters"
       :disabled="disabledButtons"
     >
       <div :class="[BUTTON_CLASSES.CONTENT, UTILITY_CLASSES.FLEX.COLUMN, UTILITY_CLASSES.ALIGN_ITEMS.CENTER]">
-        <i :class="[ICON_CLASS, 'icon-reset', UTILITY_CLASSES.MARGIN.RIGHT[0]]" aria-hidden="true"></i>
+        <i :class="[ICON_CLASS, 'icon-reset', '-sm--2', UTILITY_CLASSES.MARGIN.RIGHT[0]]" aria-hidden="true"></i>
         <span
           :class="[
             UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE,
