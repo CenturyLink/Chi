@@ -372,7 +372,7 @@ export default class AdvancedFilters extends Vue {
             <AdvancedFiltersPopoverFooter
               disabledButtons={disabledFooterButtons}
               onChiFiltersClear={() => this._resetAdvancedFilters()}
-              onChiFiltersCancel={() => this._toggleAdvancedFiltersPopover()}
+              onChiCancel={() => this._toggleAdvancedFiltersPopover()}
               onChiFiltersApply={() => this._applyAdvancedFiltersChange()}
             />
           </chi-popover>,
