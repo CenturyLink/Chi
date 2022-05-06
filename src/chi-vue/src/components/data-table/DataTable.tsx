@@ -15,7 +15,13 @@ import {
   UTILITY_CLASSES,
 } from '@/constants/classes';
 import './data-table.scss';
-import { DataTablePageChange, DataTableSorting, DATA_TABLE_EVENTS, PAGINATION_EVENTS } from '@/constants/events';
+import {
+  DataTablePageChange,
+  DataTableSorting,
+  DATA_TABLE_EVENTS,
+  GENERIC_EVENTS,
+  PAGINATION_EVENTS,
+} from '@/constants/events';
 import {
   DataTableCellAlignment,
   DataTableConfig,
@@ -1257,11 +1263,11 @@ export default class DataTable extends Vue {
       (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.SELECTED_ALL, () => {
         this.selectAllRows('select');
       });
-      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL, () => {
+      (this._bulkActionsComponent as Vue).$on(GENERIC_EVENTS.CANCEL, () => {
         this.selectedRows = [];
         this._showSelectedOnly = false;
         this._showAllRows();
-        this.$emit(DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL);
+        this.$emit(GENERIC_EVENTS.CANCEL);
       });
     }
 

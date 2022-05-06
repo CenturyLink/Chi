@@ -5,7 +5,7 @@ import {
   BUTTON_CLASSES,
   CLOSED_CLASS,
   DATA_TABLE_CLASSES,
-  GENERIC_SIZE_CLASSES,
+  DIVIDER_CLASSES,
   UTILITY_CLASSES,
   ICON_CLASS,
   MODAL_CLASSES,
@@ -68,43 +68,24 @@ export default class ColumnCustomization extends Vue {
                   ${BUTTON_CLASSES.BUTTON}
                   ${BUTTON_CLASSES.ICON_BUTTON}
                   ${BUTTON_CLASSES.FLAT}
-                  ${
-                    this._chiMajorVersion === 4
-                      ? `${PORTAL_CLASS} ${BUTTON_CLASSES.PRIMARY} -bg--white -uppercase -px--4`
-                      : ''
-                  }`}
+                  ${UTILITY_CLASSES.PADDING.Y[0]}`}
                 onclick={this._reset}
                 disabled>
                 <div
                   class={`${BUTTON_CLASSES.CONTENT} ${UTILITY_CLASSES.FLEX.COLUMN} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>
-                  <i aria-hidden="true" class={`${ICON_CLASS} icon-reload -sm--2 -mr--0`}></i>
-                  <span class="-text--uppercase -text--primary -text--2xs">Reset</span>
+                  <i aria-hidden="true" class={`${ICON_CLASS} icon-reload ${UTILITY_CLASSES.MARGIN.RIGHT[0]}`}></i>
+                  <span
+                    class={`${UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE} ${UTILITY_CLASSES.TYPOGRAPHY.COLOR.PRIMARY} ${UTILITY_CLASSES.TYPOGRAPHY.SIZE.TWO_XS}`}>
+                    Reset
+                  </span>
                 </div>
               </button>
-              <div class="chi-divider -vertical -mr--2"></div>
-              <button
-                class={`
-                  ${BUTTON_CLASSES.BUTTON}
-                  ${
-                    this._chiMajorVersion === 4
-                      ? `${BUTTON_CLASSES.SIZES.LG} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} -bg--white -uppercase -px--4 -ml--1`
-                      : ''
-                  }
-                `}
-                onclick={this._cancelColumnsChange}>
-                Cancel
-              </button>
-              <button
-                ref="saveButton"
-                onclick={this._submitColumnsChange}
-                class={`
-                  ${BUTTON_CLASSES.BUTTON}
-                  ${BUTTON_CLASSES.PRIMARY}
-                  ${this._chiMajorVersion === 4 ? `${GENERIC_SIZE_CLASSES.LG} -uppercase -px--4` : ''}
-                  `}
-                disabled>
+              <div
+                class={`${DIVIDER_CLASSES.DIVIDER} ${DIVIDER_CLASSES.VERTICAL} ${UTILITY_CLASSES.MARGIN.RIGHT[2]}`}></div>
+              <chi-button onChiClick={this._cancelColumnsChange}>Cancel</chi-button>
+              <chi-button ref="saveButton" onChiClick={this._submitColumnsChange} color="primary">
                 Save
-              </button>
+              </chi-button>
             </footer>
           </section>
         </div>

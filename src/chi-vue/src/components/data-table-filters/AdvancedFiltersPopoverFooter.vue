@@ -26,24 +26,28 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { ADVANCED_FILTER_EVENTS } from '../../constants/events';
+import { ADVANCED_FILTER_EVENTS, GENERIC_EVENTS } from '../../constants/events';
 import { BUTTON_CLASSES, DIVIDER_CLASSES, ICON_CLASS, UTILITY_CLASSES } from '../../constants/classes';
 
-@Component({})
+@Component({
+  data: () => {
+    return {
+      BUTTON_CLASSES,
+      DIVIDER_CLASSES,
+      ICON_CLASS,
+      UTILITY_CLASSES,
+    };
+  },
+})
 export default class AdvancedFiltersPopoverFooter extends Vue {
   @Prop() disabledButtons?: boolean;
-
-  BUTTON_CLASSES = BUTTON_CLASSES;
-  DIVIDER_CLASSES = DIVIDER_CLASSES;
-  ICON_CLASS = ICON_CLASS;
-  UTILITY_CLASSES = UTILITY_CLASSES;
 
   clear() {
     this.$emit(ADVANCED_FILTER_EVENTS.CLEAR);
   }
 
   cancel() {
-    this.$emit(ADVANCED_FILTER_EVENTS.CANCEL);
+    this.$emit(GENERIC_EVENTS.CANCEL);
   }
 
   apply() {
