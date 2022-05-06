@@ -1,41 +1,75 @@
 <template lang="pug">
-  <ComponentTabExample title="Horizontal" id="horizontal-lumen-centurylink" additionalClasses="-bg--grey-20" padding="-p--0" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
-    .-p--3(:slot="$data.menuTabs[menuId === 'base' ? 0 : 1].id")
-      div(:class="menuId === 'base' ? '-bg--white' : '-bg--black'").-px--3
-        ul.chi-tabs(:class="menuId === 'base' ? '' : '-inverse'" :id="`example-horizontal-${menuId}`"
+  <ComponentExample title="Horizontal" :id="exampleId" additionalClasses="-bg--grey-20" padding="-p--0" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
+    .-p--3(slot="example")
+      div(:class="selectedTabId === 'base' ? '-bg--white' : '-bg--black'").-px--3
+        ul.chi-tabs(:class="selectedTabId === 'base' ? '' : '-inverse'" :id="`example-horizontal-${selectedTabId}`"
           role="tablist"
-          :aria-label="menuId === 'base' ? 'chi-tabs-horizontal' : 'chi-tabs-horizontal-inverse'"
-          :ref="menuId === 'base' ? 'example-horizontal-base' : ''")
-          li(v-for="item in [1,2,3]" :class="item === 1 ? '-active' : ''")
+          :aria-label="selectedTabId === 'base' ? 'chi-tabs-horizontal' : 'chi-tabs-horizontal-inverse'"
+          :ref="`example-horizontal-${selectedTabId}`")
+          li(v-for="item in [1,2,3]" :class="selectedTab.selectedItemId === item ? '-active' : ''" @click.prevent="selectedTab.selectedItemId = item")
             a(
-              :href="`#horizontal-${menuId}-${item}`"
+              :href="`#horizontal-${selectedTabId}-${item}`"
               role="tab"
-              :aria-selected="`${item === 1 ? 'true' : 'false'}`"
-              :aria-controls="`horizontal-${menuId}-${item}`"
+              :aria-selected="`${selectedTab.selectedItemId === item ? 'true' : 'false'}`"
+              :aria-controls="`horizontal-${selectedTabId}-${item}`"
               ) {{item === 1 ? 'Active Tab' : 'Tab Link'}}
       .-bg--white.-p--3
-        .chi-tabs-panel(:class="item === 1 ? '-active' : ''" v-for="item in [1,2,3]" :id="`horizontal-${menuId}-${item}`" role="tabpanel")
+        .chi-tabs-panel(:class="selectedTab.selectedItemId === item ? '-active' : ''" v-for="item in [1,2,3]" :id="`horizontal-${selectedTabId}-${item}`" role="tabpanel")
           .-text Tab {{item}} content
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
+    <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
       <pre class="language-html">
-        <code v-highlight="highlightedHTMLBluePrint ? highlightedHTMLBluePrint : $data.codeSnippets.htmlblueprint.base" class="html"></code>
+        <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code>
       </pre>
     </Wrapper>
-  </ComponentTabExample>
+    <Wrapper v-for="tab in headTabs" :slot="`code-${exampleId}-${tab.id}-htmlblueprint`" :key="tab.id">
+      <JSNeeded />
+      <pre class="language-html">
+        <code v-highlight="tab.codeSnippets.htmlBlueprint.code" class="html"></code>
+      </pre>
+    </Wrapper>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { HeadTabsInterface } from '../../../../models/models';
 
 declare const chi: any;
 
 @Component({
   data: () => {
     return {
+      tabs: [1,2,3],
+      headTabs: [
+        {
+          active: true,
+          id: 'base',
+          label: 'Base',
+          selectedItemId: 1,
+          codeSnippets: {
+            webComponent: {
+              code: ``
+            },
+            htmlBlueprint: {
+              code: ``,
+            }
+          }
+        },
+        {
+          id: 'inverse',
+          label: 'Inverse',
+          selectedItemId: 1,
+          codeSnippets: {
+            webComponent: {
+              code: ``,
+              description: ``
+            },
+            htmlBlueprint: {
+              code: ``,
+            }
+          }
+        }
+      ],
       exampleTabs: [
         {
           disabled: true,
@@ -48,101 +82,51 @@ declare const chi: any;
           label: 'HTML blueprint',
         },
       ],
-      menuTabs: [
-        {
-          active: true,
-          id: 'base',
-          label: 'Base',
-        },
-        {
-          id: 'inverse',
-          label: 'Inverse',
-        },
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: { 
-          base: `<ul class="chi-tabs" id="example-horizontal-base" role="tablist" aria-label="chi-tabs-horizontal">
-  <li class="-active">
-    <a
-      href="#horizontal-base-1"
-      role="tab"
-      aria-selected="true"
-      aria-controls="horizontal-base-1">Active Tab</a>
-  </li>
-  <li role="tab">
-    <a
-      href="#horizontal-base-2"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="horizontal-base-2">Tab Link</a>
-  </li>
-  <li role="tab">
-    <a
-      href="#horizontal-base-3"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="horizontal-base-3">Tab Link</a>
-  </li>
-</ul>
-
-<div class="chi-tabs-panel -active" id="horizontal-base-1" role="tabpanel">Tab 1 content</div>
-<div class="chi-tabs-panel" id="horizontal-base-2" role="tabpanel">Tab 2 content</div>
-<div class="chi-tabs-panel" id="horizontal-base-3" role="tabpanel">Tab 3 content</div>
-
-<script>chi.tab(document.getElementById('example-horizontal-base'));<\/script>`,
-          inverse: `<ul class="chi-tabs -inverse" id="example-horizontal-inverse" role="tablist" aria-label="chi-tabs-horizontal-inverse">
-  <li class="-active">
-    <a
-      href="#horizontal-inverse-1"
-      role="tab"
-      aria-selected="true"
-      aria-controls="horizontal-inverse-1">Active Tab</a></li>
-  <li>
-    <a
-      href="#horizontal-inverse-2"
-      role="tab"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="horizontal-inverse-2">Tab Link</a></li>
-  <li>
-    <a
-      href="#horizontal-inverse-3"
-      role="tab"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="horizontal-inverse-3">Tab Link</a></li>
-</ul>
-
-<div class="chi-tabs-panel -active" id="horizontal-inverse-1" role="tabpanel">
-  Tab 1 content
-</div>
-<div class="chi-tabs-panel" id="horizontal-inverse-2" role="tabpanel">
-  Tab 2 content
-</div>
-<div class="chi-tabs-panel" id="horizontal-inverse-3" role="tabpanel">
-  Tab 3 content
-</div>
-
-<script>chi.tab(document.getElementById('example-horizontal-inverse'));<\/script>`,
-        },
-      },
+      exampleId: 'horizontal-lumen-centurylink',
+      selectedTabId: 'base'
     };
   },
 })
 export default class Horizontal extends Vue {
-  menuId = 'base';
-  highlightedHTMLBluePrint = '';
+  selectedTab: any;
   tab: any;
+
+  _setCodeSnippets() {
+    this.$data.headTabs.forEach((headTab: any) => {
+      let tabLinks = '', tabConents = '';
+      this.$data.tabs.forEach((tab: number, index: number) => {
+        tabLinks += `
+  <li ${index === 0 ? 'class="-active"' : 'role="tab"'}">
+    <a
+      href="#horizontal-${headTab.id}-${tab}"
+      ${index === 0 ? 'role="tab"' : 'tabIndex="-1"'}
+      aria-selected="${index === 0 ? 'true' : 'false'}"
+      aria-controls="horizontal-${headTab.id}-${index === 0 ? '-active' : ''}">${index === 0 ? 'Active Tab' : 'Tab Link'}</a>
+  </li>`;
+        tabConents += `
+<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="horizontal-${headTab.id}-${tab}" role="tabpanel">Tab ${tab} content</div>`
+      });
+
+      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example-horizontal-${headTab.id}" role="tablist" aria-label="chi-tabs-horizontal${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}
+</ul>
+${tabConents}
+
+<script>chi.tab(document.getElementById('example-horizontal-${headTab.id}'));<\/script>`
+    })
+  }
+
+  created() {
+    this.selectedTab = this.$data.headTabs[0];
+    this._setCodeSnippets();
+  }
 
   mounted() {
     this.tab = chi.tab(this.$refs['example-horizontal-base'] as HTMLElement);
   }
 
-  toggleMenuId(toggleTabEvent: string) {
-    this.menuId = toggleTabEvent;
-    this.highlightedHTMLBluePrint = this.$data.codeSnippets.htmlblueprint[toggleTabEvent];
-
+  changeSelectedTab(e: HeadTabsInterface) {
+    this.$data.selectedTabId = e.id;
+    this.selectedTab = this.$data.headTabs.find((tab: any) => tab.id === e.id);
   }
 
   beforeDestroy() {
