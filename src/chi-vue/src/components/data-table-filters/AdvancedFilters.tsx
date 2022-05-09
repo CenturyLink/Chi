@@ -19,6 +19,7 @@ import { getModule } from 'vuex-module-decorators';
 import store from '@/store/index';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { detectMajorChiVersion } from '@/utils/utils';
+import AdvancedFiltersPopoverFooter from './AdvancedFiltersPopoverFooter.vue';
 
 Vue.config.ignoredElements = [
   'chi-alert',
@@ -50,7 +51,11 @@ Vue.config.ignoredElements = [
 ];
 
 declare const chi: any;
-@Component
+@Component({
+  components: {
+    AdvancedFiltersPopoverFooter,
+  },
+})
 export default class AdvancedFilters extends Vue {
   @Prop() advancedFiltersData?: DataTableFilter[];
   @Prop() popoverFilterID?: string;
@@ -280,6 +285,8 @@ export default class AdvancedFilters extends Vue {
 
   render() {
     const advancedFilters: JSX.Element[] = [];
+    const disabledFooterButtons =
+      this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive);
 
     this.advancedFiltersData &&
       this.advancedFiltersData.forEach((filter: DataTableFilter) => {
@@ -352,63 +359,22 @@ export default class AdvancedFilters extends Vue {
             modal={this._chiMajorVersion === 5}
             drag
             closable>
-            <div class={`${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}>
-              <button
-                class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.SM} ${BUTTON_CLASSES.NO_HOVER} ${UTILITY_CLASSES.PADDING.X[0]} ${UTILITY_CLASSES.TYPOGRAPHY.TEXT_NORMAL}`}
-                onclick={(event: Event) => this._expandCollapseAccordions(event)}>
-                {this.isExpanded ? 'Collapse All' : 'Expand All'}
-              </button>
-            </div>
+            <button
+              class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.SM} ${BUTTON_CLASSES.NO_HOVER} ${UTILITY_CLASSES.PADDING.X[0]} ${UTILITY_CLASSES.TYPOGRAPHY.TEXT_NORMAL} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}
+              onclick={(event: Event) => this._expandCollapseAccordions(event)}>
+              {this.isExpanded ? 'Collapse All' : 'Expand All'}
+            </button>
             <div
               class={`${ACCORDION_CLASSES.ACCORDION} ${this._chiMajorVersion === 4 ? PORTAL_CLASS : ''} -sm`}
               ref="advancedFiltersAccordion">
               {advancedFilters}
             </div>
-            <div class={`advanced-filters__actions ${UTILITY_CLASSES.DISPLAY.FLEX} -mt--2`}>
-              <button
-                class={`
-                  ${BUTTON_CLASSES.BUTTON} 
-                  ${BUTTON_CLASSES.ICON_BUTTON}
-                  ${BUTTON_CLASSES.FLAT}
-                  ${this._chiMajorVersion === 4 ? `${PORTAL_CLASS} ${BUTTON_CLASSES.PRIMARY}` : ''}`}
-                aria-label="Reset advanced filters"
-                onclick={() => this._resetAdvancedFilters()}
-                disabled={
-                  this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
-                }>
-                <div class={BUTTON_CLASSES.CONTENT}>
-                  <i class={`${ICON_CLASS} icon-reload`} aria-hidden="true" />
-                </div>
-              </button>
-              <div class="chi-divider -vertical -mr--2"></div>
-              <button
-                onclick={() => this._toggleAdvancedFiltersPopover()}
-                class={`
-                ${BUTTON_CLASSES.BUTTON}
-                ${
-                  this._chiMajorVersion === 4
-                    ? `${UTILITY_CLASSES.PADDING.X[4]} -primary -outline ${GENERIC_SIZE_CLASSES.LG} -bg--white`
-                    : ''
-                }
-                `}>
-                CANCEL
-              </button>
-              <button
-                onclick={() => this._applyAdvancedFiltersChange()}
-                class={`
-                  ${BUTTON_CLASSES.BUTTON}
-                  ${BUTTON_CLASSES.PRIMARY}
-                  ${
-                    this._chiMajorVersion === 4 ? `${GENERIC_SIZE_CLASSES.LG} ${UTILITY_CLASSES.PADDING.X[4]}` : ''
-                  } -ml--2
-                  `}
-                ref="advancedFiltersApplyButton"
-                disabled={
-                  this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
-                }>
-                APPLY
-              </button>
-            </div>
+            <AdvancedFiltersPopoverFooter
+              disabledButtons={disabledFooterButtons}
+              onChiFiltersClear={() => this._resetAdvancedFilters()}
+              onChiCancel={() => this._toggleAdvancedFiltersPopover()}
+              onChiFiltersApply={() => this._applyAdvancedFiltersChange()}
+            />
           </chi-popover>,
         ]}
         {this.mobile && advancedFilters}
