@@ -232,9 +232,9 @@
     {
       "label": "Carousel",
       "cookiePath": "",
-      "url": "http://localhost:8000/tests/components/carousel.html",
+      "url": "http://localhost:8000/tests/custom-elements/carousel.html",
       "referenceUrl": "",
-      "readyEvent": "backstop_ready",
+      "readyEvent": "",
       "readySelector": "",
       "delay": 0,
       "hideSelectors": [],
@@ -247,6 +247,26 @@
         ".test-single",
         ".test-dots",
         ".test-pagination"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "checkbox",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/checkbox.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-states"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
