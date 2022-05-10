@@ -1,4 +1,6 @@
 import { CHI_VERSION } from './constants/configs';
+import { NAVIGATION_COMPONENTS_ITEMS, CHI_ROOT_URL } from './constants/constants';
+
 const CopyPlugin = require('copy-webpack-plugin');
 
 export default {
@@ -14,19 +16,17 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: `${CHI_ROOT_URL}/assets/themes/lumen/images/favicon.ico` }],
     script: [
       {
-        src: `https://assets.ctl.io/chi/${CHI_VERSION}/js/chi.js`,
+        src: `${CHI_ROOT_URL}/js/chi.js`
       },
       {
-        src: `https://assets.ctl.io/chi/${CHI_VERSION}/js/ce/ux-chi-ce/ux-chi-ce.esm.js`,
+        src: `${CHI_ROOT_URL}/js/ce/ux-chi-ce/ux-chi-ce.esm.js`,
         type: 'module'
       },
       {
-        src: `https://assets.ctl.io/chi/${CHI_VERSION}/js/ce/ux-chi-ce/ux-chi-ce.js`,
+        src: `${CHI_ROOT_URL}/js/ce/ux-chi-ce/ux-chi-ce.js`
       }
     ]
   },
@@ -35,9 +35,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    './plugins/chi-vue-components.js'
-  ],
+  plugins: ['./plugins/chi-vue-components.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -81,8 +79,45 @@ export default {
       })
     ]
   },
-  target: 'static',
+  target: 'static', // To be set conditionally based on process.env.NODE_ENV
   generate: {
-    exclude: ['/components/data-table'],
+    exclude: [
+      '/',
+      '/getting-started',
+      '/getting-started/installation',
+      '/getting-started/development-workflow',
+      '/getting-started/browsers-devices',
+      '/getting-started/whats-new',
+      '/foundations/design-tokens',
+      '/foundations/grid',
+      '/foundations/color',
+      '/foundations/accessibility/other',
+      '/foundations/accessibility/overview',
+      '/foundations/accessibility/color-sensory',
+      '/foundations/accessibility/using-keyboard',
+      '/foundations/accessibility/text',
+      '/foundations/accessibility/page-structure',
+      '/foundations/accessibility/images',
+      '/foundations/accessibility/tables',
+      '/foundations/accessibility/links-and-forms',
+      '/installation',
+      '/utilities/display',
+      '/utilities/flex',
+      '/utilities/border',
+      '/utilities/overflow',
+      '/utilities/image',
+      '/utilities/position',
+      '/utilities/opacity',
+      '/utilities/shadow',
+      '/utilities/text',
+      '/utilities/sizing',
+      '/utilities/spacing',
+      '/utilities/vertical-align',
+      '/utilities/zindex',
+      '/utilities/color',
+      ...NAVIGATION_COMPONENTS_ITEMS.filter(item => item.href).map(
+        item => item.href
+      )
+    ]
   }
 };
