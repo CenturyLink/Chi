@@ -156,9 +156,9 @@
         )
           .chi-button__content
             i.chi-icon.-sm--2.icon-menu(aria-hidden='true')
-        <NuxtLink class="docs-header__logo" aria-label='Portal' to="/">
+        <a class="docs-header__logo" aria-label='Portal' href="/">
           chi-brand#header-logo(logo='lumen')
-        </NuxtLink>
+        </a>
         span.chi-header__title.-d--none.-d-lg--flex Chi Design System
       .chi-header__start
         form.-chi-search

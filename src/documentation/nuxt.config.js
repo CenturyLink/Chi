@@ -80,5 +80,9 @@ export default {
         ignore: ['.DS_Store']
       })
     ]
+  },
+  target: 'static',
+  generate: {
+    exclude: ['/components/data-table'],
   }
 };
