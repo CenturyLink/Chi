@@ -10,11 +10,11 @@
             a(
               :href="`#horizontal-${selectedTabId}-${item}`"
               role="tab"
-              :aria-selected="`${selectedTab.selectedItemId === item ? 'true' : 'false'}`"
+              :aria-selected="selectedTab.selectedItemId === item ? 'true' : 'false'"
               :aria-controls="`horizontal-${selectedTabId}-${item}`"
               ) {{item === 1 ? 'Active Tab' : 'Tab Link'}}
       .-bg--white.-p--3
-        .chi-tabs-panel(:class="selectedTab.selectedItemId === item ? '-active' : ''" v-for="item in [1,2,3]" :id="`horizontal-${selectedTabId}-${item}`" role="tabpanel")
+        .chi-tabs-panel(:class="selectedTab.selectedItemId === item ? '-active' : ''" v-for="item in [1,2,3]" :id="`horizontal-${selectedTabId}-${item}`" :key="item" role="tabpanel")
           .-text Tab {{item}} content
     <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
       <pre class="language-html">
@@ -96,12 +96,12 @@ export default class Horizontal extends Vue {
       let tabLinks = '', tabConents = '';
       this.$data.tabs.forEach((tab: number, index: number) => {
         tabLinks += `
-  <li ${index === 0 ? 'class="-active"' : 'role="tab"'}">
+  <li ${index === 0 ? 'class="-active"' : 'role="tab"'}>
     <a
       href="#horizontal-${headTab.id}-${tab}"
       ${index === 0 ? 'role="tab"' : 'tabIndex="-1"'}
       aria-selected="${index === 0 ? 'true' : 'false'}"
-      aria-controls="horizontal-${headTab.id}-${index === 0 ? '-active' : ''}">${index === 0 ? 'Active Tab' : 'Tab Link'}</a>
+      aria-controls="horizontal-${headTab.id}${index === 0 ? '-active' : ''}">${index === 0 ? 'Active Tab' : 'Tab Link'}</a>
   </li>`;
         tabConents += `
 <div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="horizontal-${headTab.id}-${tab}" role="tabpanel">Tab ${tab} content</div>`

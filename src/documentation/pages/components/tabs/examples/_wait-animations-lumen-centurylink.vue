@@ -1,30 +1,38 @@
 <template lang="pug">
-  <ComponentTabExample title="Wait for animations" id="wait-animations-lumen-centurylink" :tabs="exampleTabs" :menuTabs="menuTabs" :menuId="menuId" @toggleMenuId="toggleMenuId">
-    p.-text(slot="example-description")
-      | Browsers stop any execution of JavaScript as soon as a link is clicked and it starts to fetch the destination URL.
-      | For this reason, the sliding border animation will not be perceived by the user when an external link is clicked, as
-      | the animation will not be done, an this can be confusing for the user. To prevent this possible confusion, this
-      | component has the option to wait for the animation to finish and, then, it will redirect the user to the destination
-      | URL. You can enable this behavior by setting the <code>waitForAnimations</code> option to <code>true</code>.
+<ComponentExample title="Wait for animations" :id="exampleId" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
+  p.-text(slot='example-description')
+    | Browsers stop any execution of JavaScript as soon as a link is clicked and it starts to fetch the destination URL.
+    | For this reason, the sliding border animation will not be perceived by the user when an external link is clicked, as
+    | the animation will not be done, an this can be confusing for the user. To prevent this possible confusion, this
+    | component has the option to wait for the animation to finish and, then, it will redirect the user to the destination
+    | URL. You can enable this behavior by setting the <code>waitForAnimations</code> option to <code>true</code>.
 
-    .div(:slot="$data.menuTabs[menuId === 'enable' ? 0 : 1].id")
-      ul.chi-tabs.chi-navigationExample.chi-customExample
-        li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
-          a(:href="`?tab=${index + 1}`") {{ link }}      
+  .div(slot='example')
+    ul.chi-tabs.chi-navigationExample.chi-customExample
+      li(
+        :class='index === 0 ? "-active" : ""',
+        v-for='(link, index) in tabLinks'
+      )
+        a(:href='`?tab=${index + 1}`') {{ link }}
+  <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
     <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+      <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code> 
     </pre>
-    <Wrapper slot="code-htmlblueprint">
-      <JSNeeded />
-      <pre class="language-html">
-        <code v-highlight="highlightedHTMLBluePrint ? highlightedHTMLBluePrint : $data.codeSnippets.htmlblueprint.enable" class="html"></code>
-      </pre>
-    </Wrapper>
-  </ComponentTabExample>
+  </Wrapper>
+  <Wrapper v-for="tab in headTabs" :slot="`code-${exampleId}-${tab.id}-htmlblueprint`" :key="tab.id">
+    <JSNeeded />
+    <pre class="language-html">
+      <code v-highlight="tab.codeSnippets.htmlBlueprint.code" class="html"></code> 
+    </pre>
+  </Wrapper>
+</ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { HeadTabsInterface } from '../../../../models/models';
+
+declare const chi: any;
 
 @Component({
   data: () => {
@@ -42,86 +50,81 @@ import { Component, Vue } from 'vue-property-decorator';
         },
       ],
       tabLinks: Array(6).fill('Tab Link'),
-      menuTabs: [
+      headTabs: [
         {
           active: true,
-          id: 'enable',
+          id: 'enabled',
           label: 'Enabled',
+          selectedItemId: 1,
+          codeSnippets: {
+            webComponent: {
+              code: ``,
+            },
+            htmlBlueprint: {
+              code: ``,
+            },
+          },
         },
         {
-          id: 'disable',
+          id: 'disabled',
           label: 'Disabled',
+          selectedItemId: 1,
+          codeSnippets: {
+            webComponent: {
+              code: ``,
+              description: ``,
+            },
+            htmlBlueprint: {
+              code: ``,
+            },
+          },
         },
       ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: {
-          enable: `<ul id="navigationexample-4-enabled" class="chi-tabs">
-  <li class="-active">
-    <a href="/">Tab Link</a>
-  </li>
-  <li>
-    <a href="/">Tab Link</a>
-  </li>
-  <li>
-    <a href="/">Tab Link</a>
-  </li>
-  <li>
-    <a href="/">Tab Link</a>
-  </li>
-  <li>
-    <a href="/">Tab Link</a>
-  </li>
-  <li>
-    <a href="/">Tab Link</a>
-  </li>
-</ul>
-<script>
-const navigationElem = document.getElementById('#navigationexample-4-enabled');
-chi.navigation(
-  navigationElem,
-  {waitForAnimations: true}
-);
-<\/script>`,
-          disable: `<ul id="navigationexample-4-disabled" class="chi-tabs">
-  <li class="-active">
-    <a href="/">Tab Link</a>
-  </li>
-  <li>
-    <a href="/">Tab Link</a>
-  </li>
-  <li>
-    <a href="/">Tab Link</a>
-  </li>
-  <li>
-    <a href="/">Tab Link</a>
-  </li>
-  <li>
-    <a href="/">Tab Link</a>
-  </li>
-  <li>
-    <a href="/">Tab Link</a>
-  </li>
-</ul>
-<script>
-  const navigationElem = document.getElementById('#navigationexample-4-disabled');
-  chi.navigation(
-    navigationElem,
-    {waitForAnimations: false}
-  );
-<\/script>`
-        },
-      },
+      exampleId: 'wait-animations-lumen-centurylink',
     };
   },
 })
 export default class WaitAnimationsLumenCenturyLink extends Vue {
-  menuId = 'enable';
-  highlightedHTMLBluePrint = '';
+  selectedTab: any;
+  tab: any;
 
-  toggleMenuId(toggleTabEvent: string) {
-    this.menuId = toggleTabEvent;
-    this.highlightedHTMLBluePrint = this.$data.codeSnippets.htmlblueprint[toggleTabEvent];
+  _setCodeSnippets() {
+    this.$data.headTabs.forEach((headTab: any) => {
+      let tabLinks = '';
+      this.$data.tabLinks.forEach((tabLink: string, index: number) => {
+        tabLinks += `
+  <li ${index === 0 ? 'class="-active"' : ''}>
+    <a href="/>${tabLink}</a>
+  </li>`;
+      });
+
+      headTab.codeSnippets.htmlBlueprint.code = `<ul id="navigationexample-4-${headTab.id}" class="chi-tabs">${tabLinks}
+</ul>
+
+<script>
+const navigationElem = document.getElementById('#navigationexample-4-${headTab.id}');
+chi.navigation(
+  navigationElem,
+  {waitForAnimations: ${headTab.id === 'enabled' ? 'true' : 'false'}}
+);
+<\/script>
+`;
+    });
+  }
+  created() {
+    this.selectedTab = this.$data.headTabs[0];
+    this._setCodeSnippets();
+  }
+
+  mounted() {
+  }
+
+  changeSelectedTab(e: HeadTabsInterface) {
+    this.$data.selectedTabId = e.id;
+    this.selectedTab = this.$data.headTabs.find((tab: any) => tab.id === e.id);
+  }
+
+  beforeDestroy() {
   }
 }
 </script>
