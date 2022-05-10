@@ -3,7 +3,7 @@ title: Checkbox
 ---
 
 .test-states
-  each state, index in ['default', 'hover', 'focus', 'checked', 'indeterminate', 'disabled']
+  each state, index in ['default', 'hover', 'focus', 'checked', 'indeterminate', 'disabled', 'required', 'danger']
     h5= `Checkbox / ${state}`
     .chi-form__item.-row.-mb--1
       .chi-checkbox
@@ -16,7 +16,13 @@ title: Checkbox
           checked=state=='checked' ? 'checked' : false
           disabled=state=='disabled' ? 'disabled' : false
         )
-        label.chi-checkbox__label(for=`checkbox-${index}`) Checkbox
+        label.chi-checkbox__label(for=`checkbox-${index}` class={[`-${state}`]: state == 'danger'}) Checkbox
+          if state === 'required' || state === 'danger'
+            abbr.chi-label__required(title="Required field") *
+    if state === 'danger' 
+      .chi-label.-status(class={[`-${state}`]: state == 'danger'})
+        i.chi-icon.icon-circle-warning(aria-hidden="true")
+        | Please accept the terms of service.
 
 h2 Checkbox List
 .test-states
@@ -24,7 +30,7 @@ h2 Checkbox List
     h5= `Checkbox / ${state}`
     ul.chi-form__item.-list(style="max-width:20rem")
       each element in [1, 2, 3, 4, 5]
-        li.chi-form__item.-row
+        li.chi-form__item
           .chi-checkbox
             input.chi-checkbox__input(
             type="checkbox"

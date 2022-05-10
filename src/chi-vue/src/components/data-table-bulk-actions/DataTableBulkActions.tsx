@@ -11,7 +11,7 @@ import {
 } from '@/constants/classes';
 import DataTable from '../data-table/DataTable';
 import { ICON_CLASSES } from '@/constants/icons';
-import { DATA_TABLE_EVENTS } from '@/constants/events';
+import { DATA_TABLE_EVENTS, GENERIC_EVENTS } from '@/constants/events';
 
 @Component({})
 export default class DataTableBulkActions extends Vue {
@@ -73,7 +73,7 @@ export default class DataTableBulkActions extends Vue {
                 class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.FLAT} ${UTILITY_CLASSES.PADDING.X[1]}`}
                 onClick={() => {
                   this._cancel();
-                  this.$emit(DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL);
+                  this.$emit(GENERIC_EVENTS.CANCEL);
                 }}>
                 Cancel
               </button>
@@ -106,7 +106,7 @@ export default class DataTableBulkActions extends Vue {
                 class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${CLOSE_CLASS}`}
                 onClick={() => {
                   this.isBulkActionsVisible = false;
-                  this.$emit(DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL);
+                  this.$emit(GENERIC_EVENTS.CANCEL);
                 }}>
                 <div class={`${BUTTON_CLASSES.CONTENT} ${BUTTON_CLASSES.ICON_BUTTON} ${CLOSE_CLASS}`}>
                   <i aria-hidden="true" class={`${ICON_CLASS} ${ICON_CLASSES.ICON_X}`}></i>
