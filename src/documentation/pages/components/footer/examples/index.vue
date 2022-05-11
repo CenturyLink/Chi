@@ -4,23 +4,24 @@
     p.-text
       | To use footers, apply the class <code>chi-footer</code> to <code>&lt;footer&gt;</code>
       | and wrap all content in <code>chi-footer__content</code>.
-    <div v-if="['lumen', 'portal', 'brightspeed'].includes($store.state.themes.theme)">
+
+    div(v-if="['lumen', 'portal', 'brightspeed'].includes($store.state.themes.theme)")
       chi-alert(color="info" icon="circle-info" title="Localization") 
         | The Footer's language drop down is not functional by default as language support varies by project.
         | Please ensure the drop down is populated with the correct languages and URL paths relevant to your project prior to release.
-    </div>
-    <div v-if="['lumen', 'portal'].includes($store.state.themes.theme)">
+
+    div(v-if="['lumen', 'portal'].includes($store.state.themes.theme)")
       <ExternalLumenPortal />
       <InternalLumenPortal />
-    </div>
-    <div v-if="$store.state.themes.theme === 'brightspeed'">
+
+    div(v-if="$store.state.themes.theme === 'brightspeed'")
       <ExternalBrightspeed />
       <InternalBrightspeed />
-    </div>
-    <div v-if="$store.state.themes.theme === 'centurylink'">
+
+    div(v-if="$store.state.themes.theme === 'centurylink'")
       <ExternalCenturylink />
       <InternalCenturylink />
-    </div>
+
 </template>
 
 <script lang="ts">
