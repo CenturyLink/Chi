@@ -136,8 +136,8 @@ export default class ExternalCenturylink extends Vue {
           </div>
           <div class="chi-footer__search">
             <div class="chi-form__item">
-              <label class="chi-label -d--none" for="chi-footer-search-input2">Search CenturyLink</label>
-              <input class="chi-input" type="text" placeholder="Search" id="chi-footer-search-input2" />
+              <label class="chi-label -d--none" for="example__footer_search_input2">Search CenturyLink</label>
+              <input class="chi-input" type="text" placeholder="Search" id="example__footer_search_input2" />
             </div>
           </div>
         </div>

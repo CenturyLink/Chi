@@ -157,8 +157,8 @@ export default class ExternalBrightspeed extends Vue {
           </div>
           <div class="chi-footer__search">
             <div class="chi-form__item">
-              <label class="chi-label -d--none" for="chi-footer-search-input">Search Lumen</label>
-              <input class="chi-input" type="text" placeholder="Search" id="chi-footer-search-input">
+              <label class="chi-label -d--none" for="example__footer_search_input">Search Lumen</label>
+              <input class="chi-input" type="text" placeholder="Search" id="example__footer_search_input">
             </div>
           </div>
         </div>
@@ -192,7 +192,7 @@ export default class ExternalBrightspeed extends Vue {
     <div class="chi-footer__internal">
       <div class="chi-footer__internal-content -mw--1200">
         <div class="chi-dropdown chi-footer__language">
-          <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language__dropdown_button" data-position="top-start" aria-label="Select your preferred language">
+          <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="example__footer_language_dropdown_button" data-position="top-start" aria-label="Select your preferred language">
             <div class="chi-button__content">
               <i class="chi-icon icon-globe-network" aria-hidden="true"></i>
               <span>English</span>
@@ -211,7 +211,7 @@ export default class ExternalBrightspeed extends Vue {
   </div>
 </footer>
 
-<script>chi.dropdown(document.getElementById('language__dropdown_button'));<\/script>`
+<script>chi.dropdown(document.getElementById('example__footer_language_dropdown_button'));<\/script>`
   }
 
   generateLinkCodeSnippet(keyName: string) {
