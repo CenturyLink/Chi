@@ -42,8 +42,8 @@ declare const chi: any;
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="example__date_error">Date</chi-label>
-<chi-date-picker id="example__date_error" state="danger"></chi-date-picker>
+        webcomponent: `<chi-label for="example__datepicker_date_error">Date</chi-label>
+<chi-date-picker id="example__datepicker_date_error" state="danger"></chi-date-picker>
 <div class="chi-label -status -danger">
   <chi-icon icon="circle-warning"></chi-icon>
   Please select a date.

@@ -5,8 +5,8 @@
       br
       | Disable days - <code>excluded-weekdays="0, 6"</code>
     div(style="max-width: 14rem;" slot="example")
-      chi-label(for='example__date_excluded_days_dates') Date
-      chi-date-picker(id="example__date_excluded_days_dates", excluded-dates="02/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020", excluded-weekdays="0, 6")
+      chi-label(for='example__datepicker_excluded_days_dates') Date
+      chi-date-picker(id="example__datepicker_excluded_days_dates", excluded-dates="02/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020", excluded-weekdays="0, 6")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -35,8 +35,8 @@ import { Component, Vue } from 'vue-property-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="example__date_excluded_days_dates">Date</chi-label>
-<chi-date-picker id="example__date_excluded_days_dates" excluded-weekdays="0, 6" excluded-dates="01/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020"></chi-date-picker>`,
+        webcomponent: `<chi-label for="example__datepicker_date_excluded_days_dates">Date</chi-label>
+<chi-date-picker id="example__datepicker_date_excluded_days_dates" excluded-weekdays="0, 6" excluded-dates="01/24/2020, 05/25/2020, 07/03/2020, 09/12/2020, 12/12/2020"></chi-date-picker>`,
         htmlblueprint: ``,
       },
     };

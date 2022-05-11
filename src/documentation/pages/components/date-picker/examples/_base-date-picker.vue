@@ -33,17 +33,17 @@ import { Component, Vue } from 'vue-property-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="example__date_base">Date</chi-label>
-<chi-date-picker id="example__date_base"></chi-date-picker>`,
+        webcomponent: `<chi-label for="example__datepicker_base">Date</chi-label>
+<chi-date-picker id="example__datepicker_base"></chi-date-picker>`,
         htmlblueprint: `<div class="chi-form__item">
-  <label class="chi-label" for="example__datepicker_1">Date</label>
+  <label class="chi-label" for="example__datepicker_base">Date</label>
   <div class="chi-input__wrapper -icon--right">
-    <input id="example__datepicker_1" type="text" class="chi-input" placeholder="MM/DD/YYYY">
+    <input id="example__datepicker_base" type="text" class="chi-input" placeholder="MM/DD/YYYY">
     <i class="chi-icon icon-date" aria-hidden="true"></i>
   </div>
 </div>
 
-<script>chi.datePicker(document.getElementById('example__datepicker_1'));<\/script>`,
+<script>chi.datePicker(document.getElementById('example__datepicker_base'));<\/script>`,
       },
     };
   },

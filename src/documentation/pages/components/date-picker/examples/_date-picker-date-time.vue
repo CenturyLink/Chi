@@ -1,8 +1,8 @@
 <template lang="pug">
   <ComponentExample title="Date Time" id="date-picker-date-time" :tabs="exampleTabs">
     div(style="max-width: 14rem;" slot="example")
-      chi-label(for='example__date_time') Date Time
-      chi-date-picker(id="example__date_time" mode="datetime")
+      chi-label(for='example__datepicker_date_time') Date Time
+      chi-date-picker(id="example__datepicker_date_time" mode="datetime")
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -31,8 +31,8 @@ import { Component, Vue } from 'vue-property-decorator';
         },
       ],
       codeSnippets: {
-        webcomponent: `<chi-label for="example__date_time">Date</chi-label>
-<chi-date-picker id="example__date_time" mode="datetime"></chi-date-picker>`,
+        webcomponent: `<chi-label for="example__datepicker_date_time">Date</chi-label>
+<chi-date-picker id="example__datepicker_date_time" mode="datetime"></chi-date-picker>`,
         htmlblueprint: ``,
       },
     };
