@@ -102,13 +102,13 @@ selectedTab: any;
       aria-controls="vertical-${headTab.id}${index === 0 ? '-active' : ''}">${index === 0 ? 'Active Tab' : 'Tab Link'}</a>
   </li>`;
         tabConents += `
-<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="vertical-${headTab.id}-${tab}" role="tabpanel">Tab ${tab} content</div>`
+<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="example__vertical_${headTab.id}-${tab}" role="tabpanel">Tab ${tab} content</div>`
       });
 
-      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example-vertical-${headTab.id}" role="tablist" aria-label="chi-tabs-vertical${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}
+      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example__vertical_${headTab.id}" role="tablist" aria-label="chi-tabs-vertical${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}
 </ul>
 ${tabConents}
-<script>chi.tab(document.getElementById('example-vertical-${headTab.id}'));<\/script>`
+<script>chi.tab(document.getElementById('example__vertical_${headTab.id}'));<\/script>`
     })
   }
 

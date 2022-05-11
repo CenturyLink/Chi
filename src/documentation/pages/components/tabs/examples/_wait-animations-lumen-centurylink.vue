@@ -98,11 +98,11 @@ export default class WaitAnimationsLumenCenturyLink extends Vue {
   </li>`;
       });
 
-      headTab.codeSnippets.htmlBlueprint.code = `<ul id="navigationexample-4-${headTab.id}" class="chi-tabs">${tabLinks}
+      headTab.codeSnippets.htmlBlueprint.code = `<ul id="example__navigation_4_${headTab.id}" class="chi-tabs">${tabLinks}
 </ul>
 
 <script>
-const navigationElem = document.getElementById('#navigationexample-4-${headTab.id}');
+const navigationElem = document.getElementById('#example__navigation_4_${headTab.id}');
 chi.navigation(
   navigationElem,
   {waitForAnimations: ${headTab.id === 'enabled' ? 'true' : 'false'}}

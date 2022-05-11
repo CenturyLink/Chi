@@ -5,7 +5,7 @@
         ul.chi-tabs#example-portal-horizontal-base(
           role="tablist"
           aria-label="chi-tabs-horizontal"
-          ref="example-portal-horizontal-base")
+          ref="example__portal_horizontal_base")
           li.-active
             a(
               href='#portal-horizontal-base-1'
@@ -69,7 +69,7 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-tabs" id="example-horizontal-base" role="tablist" aria-label="chi-tabs-horizontal">
+        htmlblueprint: `<ul class="chi-tabs" id="example__horizontal_base" role="tablist" aria-label="chi-tabs-horizontal">
   <li class="-active">
     <a
       href="#horizontal-base-1"
@@ -93,11 +93,11 @@ declare const chi: any;
   </li>
 </ul>
 
-<div class="chi-tabs-panel -active" id="horizontal-base-1" role="tabpanel">Tab 1 content</div>
-<div class="chi-tabs-panel" id="horizontal-base-2" role="tabpanel">Tab 2 content</div>
-<div class="chi-tabs-panel" id="horizontal-base-3" role="tabpanel">Tab 3 content</div>
+<div class="chi-tabs-panel -active" id="horizontal__base_1" role="tabpanel">Tab 1 content</div>
+<div class="chi-tabs-panel" id="horizontal__base_2" role="tabpanel">Tab 2 content</div>
+<div class="chi-tabs-panel" id="horizontal__base_3" role="tabpanel">Tab 3 content</div>
 
-<script>chi.tab(document.getElementById('example-portal-horizontal-base'));<\/script>`,
+<script>chi.tab(document.getElementById('example__portal_horizontal_base'));<\/script>`,
       },
     };
   },
@@ -106,7 +106,7 @@ export default class BasePortal extends Vue {
   tab: any;
 
   mounted() {
-    this.tab = chi.tab(this.$refs['example-portal-horizontal-base'] as HTMLElement);
+    this.tab = chi.tab(this.$refs['example__portal_horizontal_base'] as HTMLElement);
   }
 
   beforeDestroy() {

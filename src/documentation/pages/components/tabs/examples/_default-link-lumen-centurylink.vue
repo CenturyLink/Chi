@@ -68,7 +68,7 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-tabs" id="example-tabs-2" role="tablist" aria-label="example-default-link-behavior">
+        htmlblueprint: `<ul class="chi-tabs" id="example__tabs_2" role="tablist" aria-label="example-default-link-behavior">
   <li class="-active">
     <a
       href="#a2"
@@ -95,17 +95,17 @@ declare const chi: any;
   <li><a href="https://assets.ctl.io/chi/" target="_self">External Link</a></li>
 </ul>
 
-<div class="chi-tabs-panel -active" id="a2" role="tabpanel">
+<div class="chi-tabs-panel -active" id="example_panel_a2" role="tabpanel">
   <p class="-text">Content for tab a</p>
 </div>
-<div class="chi-tabs-panel" id="b2" role="tabpanel">
+<div class="chi-tabs-panel" id="example_panel_b2" role="tabpanel">
   <p class="-text">Content for tab b</p>
 </div>
-<div class="chi-tabs-panel" id="c2" role="tabpanel">
+<div class="chi-tabs-panel" id="example_panel_c2" role="tabpanel">
   <p class="-text">Content for tab c</p>
 </div>
 
-<script>chi.tab(document.getElementById('example-tabs-2'));<\/script>`,
+<script>chi.tab(document.getElementById('example__tabs_2'));<\/script>`,
       },
     };
   },

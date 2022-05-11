@@ -69,7 +69,7 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-tabs -border" id="example-horizontal-bordered" role="tablist" aria-label="chi-tabs-horizontal">
+        htmlblueprint: `<ul class="chi-tabs -border" id="example__horizontal_bordered" role="tablist" aria-label="chi-tabs-horizontal">
   <li class="-active">
     <a
       href="#horizontal-bordered-1"
@@ -93,11 +93,11 @@ declare const chi: any;
   </li>
 </ul>
 
-<div class="chi-tabs-panel -active" id="horizontal-bordered-1" role="tabpanel">Tab 1 content</div>
-<div class="chi-tabs-panel" id="horizontal-bordered-2" role="tabpanel">Tab 2 content</div>
-<div class="chi-tabs-panel" id="horizontal-bordered-3" role="tabpanel">Tab 3 content</div>
+<div class="chi-tabs-panel -active" id="horizontal__bordered_1" role="tabpanel">Tab 1 content</div>
+<div class="chi-tabs-panel" id="horizontal__bordered_2" role="tabpanel">Tab 2 content</div>
+<div class="chi-tabs-panel" id="horizontal__bordered_3" role="tabpanel">Tab 3 content</div>
 
-<script>chi.tab(document.getElementById('example-portal-horizontal-bordered'));<\/script>`,
+<script>chi.tab(document.getElementById('example__portal_horizontal_bordered'));<\/script>`,
       },
     };
   },

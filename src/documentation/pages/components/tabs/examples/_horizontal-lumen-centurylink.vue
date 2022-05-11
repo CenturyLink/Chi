@@ -104,14 +104,14 @@ export default class Horizontal extends Vue {
       aria-controls="horizontal-${headTab.id}${index === 0 ? '-active' : ''}">${index === 0 ? 'Active Tab' : 'Tab Link'}</a>
   </li>`;
         tabConents += `
-<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="horizontal-${headTab.id}-${tab}" role="tabpanel">Tab ${tab} content</div>`
+<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="example__horizontal_${headTab.id}-${tab}" role="tabpanel">Tab ${tab} content</div>`
       });
 
-      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example-horizontal-${headTab.id}" role="tablist" aria-label="chi-tabs-horizontal${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}
+      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example__horizontal_${headTab.id}" role="tablist" aria-label="chi-tabs-horizontal${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}
 </ul>
 ${tabConents}
 
-<script>chi.tab(document.getElementById('example-horizontal-${headTab.id}'));<\/script>`
+<script>chi.tab(document.getElementById('example__horizontal_${headTab.id}'));<\/script>`
     })
   }
 

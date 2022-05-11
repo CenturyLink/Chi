@@ -62,7 +62,7 @@ declare const chi: any;
       activeElements: ['Elem 3.1', 'Elem 3.2', 'Elem 3.3', 'Elem 3.4'],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-tabs" id="navigation-components-contained">
+        htmlblueprint: `<ul class="chi-tabs" id="example__navigation_contained">
   <li class="chi-dropdown -active">
     <a class="chi-dropdown__trigger -animate" href="#">Active Tab</a>
     <div class="chi-dropdown__menu" x-placement="bottom-start">
@@ -89,7 +89,7 @@ declare const chi: any;
   </li>
 </ul>
 
-<script>chi.navigation(document.getElementById('navigation-components-contained'));<\/script>`,
+<script>chi.navigation(document.getElementById('example__navigation_contained'));<\/script>`,
       },
     };
   },
