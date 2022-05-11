@@ -4,6 +4,7 @@ import { DataTableRow } from './types';
 export const GENERIC_EVENTS = {
   CHANGE: 'chiChange',
   INPUT: 'chiInput',
+  CANCEL: 'chiCancel',
 };
 //#endregion
 
@@ -29,7 +30,6 @@ export const DATA_TABLE_EVENTS = {
     VIEWS_CHANGE: 'chiToolbarViewsChange',
   },
   BULK_ACTIONS: {
-    CANCEL: 'chiCancel',
     SHOW_SELECTED_ONLY: 'chiShowSelectedRowsOnly',
   },
   EXPANSION: {
@@ -83,5 +83,12 @@ export const TOOLTIP_EVENTS = {
   HIDE: 'chiTooltipHide',
   SHOWN: 'chiTooltipShown',
   HIDDEN: 'chiTooltipHidden',
+};
+//#endregion
+
+//#region Advanced Filters
+export const ADVANCED_FILTER_EVENTS = {
+  CLEAR: 'chiFiltersClear',
+  APPLY: 'chiFiltersApply',
 };
 //#endregion

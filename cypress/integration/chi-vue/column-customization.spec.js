@@ -31,11 +31,11 @@ describe('Column Customization', () => {
 
   beforeEach(() => {
     cy.get('[data-cy="column-customization-base"]')
-      .find(`.${BUTTON_CLASS}`)
+      .find(`[data-cy="chi-modal__trigger"]`)
       .first()
       .as('columnsBtn');
     cy.get('[data-cy="column-customization-base"]')
-      .find(`.${MODAL_CLASSES.MODAL}`)
+      .find(`[data-cy="chi-modal"]`)
       .as('modal');
     cy.get('@modal')
       .find(`.${MODAL_CLASSES.CONTENT}`)
