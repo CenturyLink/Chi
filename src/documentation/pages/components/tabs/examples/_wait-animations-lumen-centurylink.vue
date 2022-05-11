@@ -116,15 +116,9 @@ chi.navigation(
     this._setCodeSnippets();
   }
 
-  mounted() {
-  }
-
   changeSelectedTab(e: HeadTabsInterface) {
     this.$data.selectedTabId = e.id;
     this.selectedTab = this.$data.headTabs.find((tab: any) => tab.id === e.id);
-  }
-
-  beforeDestroy() {
   }
 }
 </script>
