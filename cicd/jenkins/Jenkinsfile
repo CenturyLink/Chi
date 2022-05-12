@@ -337,7 +337,11 @@ pipeline {
               script {
                 dir('src/documentation') {
                   jslNpmWrapper('install', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-                  jslNpmWrapper('run generate')
+                  if (isVersionBump()) {
+                    jslNpmWrapper('run generate-prod')
+                  } else {
+                    jslNpmWrapper('run generate')
+                  }
                   sh "ls -la ${pwd()}"
                   stash name: "DIST-CHI-DOCUMENTATION", includes: "dist/**"
                 }

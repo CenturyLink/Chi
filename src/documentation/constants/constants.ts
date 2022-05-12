@@ -1,28 +1,35 @@
-import { CHI_VERSION, DEFAULT_THEME } from './configs';
+import { CHI_FALLBACK_VERSION, CHI_VERSION, DEFAULT_THEME } from './configs';
 
 export const CHI_ROOT_URL = `https://assets.ctl.io/chi/${CHI_VERSION}`;
+export const ABSOLUTE_ROOT_URL =
+  process.env.DOCS_ENV === 'production'
+    ? CHI_ROOT_URL
+    : process.env.DOCS_ENV === 'development'
+    ? `https://assets.ctl.io/chi/${CHI_FALLBACK_VERSION}`
+    : '/';
+
 export const THEMES = {
   centurylink: {
     label: 'CenturyLink',
     favicon: '',
-    css: `${CHI_ROOT_URL}/chi-centurylink.css`,
-    docsCss: `${CHI_ROOT_URL}/assets/themes/centurylink/docs.css`
+    css: `${ABSOLUTE_ROOT_URL}/chi-centurylink.css`,
+    docsCss: `${ABSOLUTE_ROOT_URL}/assets/themes/centurylink/docs.css`
   },
   lumen: {
     label: 'Lumen',
     favicon: '',
-    css: `${CHI_ROOT_URL}/chi.css`,
-    docsCss: `${CHI_ROOT_URL}/assets/themes/lumen/docs.css`
+    css: `${ABSOLUTE_ROOT_URL}/chi.css`,
+    docsCss: `${ABSOLUTE_ROOT_URL}/assets/themes/lumen/docs.css`
   },
   portal: {
     label: 'Lumen Enterprise Portal',
     favicon: '',
-    css: `${CHI_ROOT_URL}/chi-portal.css`,
-    docsCss: `${CHI_ROOT_URL}/assets/themes/portal/docs.css`
+    css: `${ABSOLUTE_ROOT_URL}/chi-portal.css`,
+    docsCss: `${ABSOLUTE_ROOT_URL}/assets/themes/portal/docs.css`
   }
 };
-export const defaultCss = THEMES[DEFAULT_THEME].css;
-export const defaultDocsCss = THEMES[DEFAULT_THEME].docsCss;
+export const DEFAULT_CSS = THEMES[DEFAULT_THEME].css;
+export const DEFAULT_DOCS_CSS = THEMES[DEFAULT_THEME].docsCss;
 
 export const standardComponentPageTabs = [
   {

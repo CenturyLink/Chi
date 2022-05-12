@@ -1,5 +1,12 @@
-import { CHI_VERSION } from './constants/configs';
-import { NAVIGATION_COMPONENTS_ITEMS, CHI_ROOT_URL } from './constants/constants';
+import {
+  NAVIGATION_COMPONENTS_ITEMS,
+  ABSOLUTE_ROOT_URL,
+  DEFAULT_CSS,
+  DEFAULT_DOCS_CSS
+} from './constants/constants';
+
+const PUBLIC_PATH = process.env.DOCS_ENV === 'production'
+? CHI_ROOT_URL : '/_nuxt/';
 
 const CopyPlugin = require('copy-webpack-plugin');
 
@@ -15,17 +22,35 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: `${CHI_ROOT_URL}/assets/themes/lumen/images/favicon.ico` }],
-    script: [
+    link: [
       {
-        src: `${CHI_ROOT_URL}/js/chi.js`
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: `${ABSOLUTE_ROOT_URL}/assets/themes/lumen/images/favicon.ico`
       },
       {
-        src: `${CHI_ROOT_URL}/js/ce/ux-chi-ce/ux-chi-ce.esm.js`,
+        rel: 'stylesheet',
+        id: 'chi-css',
+        type: 'text/css',
+        href: DEFAULT_CSS
+      },
+      {
+        rel: 'stylesheet',
+        type: 'text/css',
+        id: 'chi-docs-css',
+        href: DEFAULT_DOCS_CSS
+      }
+    ],
+    script: [
+      {
+        src: `${ABSOLUTE_ROOT_URL}/js/chi.js`
+      },
+      {
+        src: `${ABSOLUTE_ROOT_URL}/js/ce/ux-chi-ce/ux-chi-ce.esm.js`,
         type: 'module'
       },
       {
-        src: `${CHI_ROOT_URL}/js/ce/ux-chi-ce/ux-chi-ce.js`
+        src: `${ABSOLUTE_ROOT_URL}/js/ce/ux-chi-ce/ux-chi-ce.js`
       }
     ]
   },
@@ -71,6 +96,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    piblicPath: PUBLIC_PATH,
     plugins: [
       new CopyPlugin([{ from: '@centurylink/chi-vue/dist' }], {
         context: 'node_modules',

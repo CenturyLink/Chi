@@ -112,7 +112,7 @@
                 navigationComponentItem.href &&
                   navigationComponentItem.source === 'pug'
               "
-              :href="navigationComponentItem.href"
+              :href="`${ROOT_URL}${navigationComponentItem.href}`"
               >{{ navigationComponentItem.label }}</a
             >
           </li>
@@ -165,6 +165,7 @@ import {
 } from '../constants/constants';
 
 declare const chi: any;
+const ROOT_URL = process.env.DOCS_ENV === 'production' ? CHI_ROOT_URL : '';
 
 @Component({
   components: {
@@ -173,7 +174,8 @@ declare const chi: any;
   data: () => {
     return {
       NAVIGATION_COMPONENTS_ITEMS,
-      CHI_ROOT_URL
+      CHI_ROOT_URL,
+      ROOT_URL,
     };
   }
 })
