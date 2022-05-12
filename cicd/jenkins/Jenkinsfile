@@ -924,6 +924,8 @@ PolicyDocument
                 unstash name: "DIST-CHI-DOCUMENTATION"
                 unstash name: "DIST-CHI"
                 sh script:"""
+                  sed -i 's#/getting-started#getting-started#g' dist/index.html
+
                   cat ${WORKSPACE}/CHANGELOG.md
 
                   if [ -e "${WORKSPACE}/ux-chi-AssetsServer" ];
