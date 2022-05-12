@@ -2,7 +2,7 @@
   div
     h2 Examples
     <client-only placeholder="loading...">
-    <Base />
+      <Base />
       div(v-if="$store.state.themes.theme === 'portal'")
         <BaseWithRibbonPortal />
         <BaseWithRibbonAndBulkActionsPortal />

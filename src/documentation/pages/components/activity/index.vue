@@ -21,6 +21,11 @@ import { standardComponentPageTabs } from '../../../constants/constants';
 Vue.config.ignoredElements = ['chi-icon', 'chi-avatar'];
 
 @Component({
+  head() {
+    return {
+      title: 'Chi - Activity'
+    }
+  },
   components: {
     Examples,
     Accessibility,
