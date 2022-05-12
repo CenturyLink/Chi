@@ -6,35 +6,17 @@
           role="tablist"
           aria-label="chi-tabs-portal-horizontal"
           ref="example-portal-horizontal-bordered")
-          li.-active
+          li(v-for="(tab, index) in tabs" :class="index === 0 && '-active'")
             a(
-              href='#portal-horizontal-bordered-1'
+              :href="'#portal-horizontal-bordered-' + tab"
               role="tab"
-              aria-selected="true"
-              aria-controls="portal-horizontal-bordered-1"
-              ) Active Tab
-          li
-            a(
-              href='#portal-horizontal-bordered-2'
-              role="tab"
-              aria-selected="false"
-              tabindex="-1"
-              aria-controls="portal-horizontal-bordered-2") Tab Link
-          li
-            a(
-              href='#portal-horizontal-bordered-3'
-              role="tab"
-              aria-selected="false"
-              tabindex="-1"
-              aria-controls="portal-horizontal-bordered-3"
-              ) Tab Link
+              :aria-selected="index === 0 ? 'true' : 'false'"
+              :tabindex="index === 0 ? '' : -1"
+              :aria-controls="'portal-horizontal-bordered-' + tab"
+              ) {{tab === 1 ? 'Active Tab' : 'Tab Link'}}
         .-py--3
-          .chi-tabs-panel.-active#portal-horizontal-bordered-1(role="tabpanel")
-            .-text Tab 1 content
-          .chi-tabs-panel#portal-horizontal-bordered-2(role="tabpanel")
-            .-text Tab 2 content
-          .chi-tabs-panel#portal-horizontal-bordered-3(role="tabpanel")
-            .-text Tab 3 content
+          .chi-tabs-panel(role="tabpanel" :id="'portal-horizontal-bordered-' + tab" v-for="(tab, index) in tabs" :class="index === 0 ? '-active' : ''")
+            .-text Tab {{tab}} content
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -55,6 +37,7 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
+      tabs: [1,2,3],
       exampleTabs: [
         {
           disabled: true,
@@ -69,41 +52,41 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-tabs -border" id="example__horizontal_bordered" role="tablist" aria-label="chi-tabs-horizontal">
-  <li class="-active">
-    <a
-      href="#horizontal-bordered-1"
-      role="tab"
-      aria-selected="true"
-      aria-controls="horizontal-bordered-1">Active Tab</a>
-  </li>
-  <li role="tab">
-    <a
-      href="#horizontal-bordered-2"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="horizontal-bordered-2">Tab Link</a>
-  </li>
-  <li role="tab">
-    <a
-      href="#horizontal-bordered-3"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="horizontal-bordered-3">Tab Link</a>
-  </li>
-</ul>
-
-<div class="chi-tabs-panel -active" id="horizontal__bordered_1" role="tabpanel">Tab 1 content</div>
-<div class="chi-tabs-panel" id="horizontal__bordered_2" role="tabpanel">Tab 2 content</div>
-<div class="chi-tabs-panel" id="horizontal__bordered_3" role="tabpanel">Tab 3 content</div>
-
-<script>chi.tab(document.getElementById('example__portal_horizontal_bordered'));<\/script>`,
+        htmlblueprint: ``,
       },
     };
   },
 })
 export default class BorderedPortal extends Vue {
   tab: any;
+
+  _setCodeSnippet() {
+    let tabLinks = '', tabPanels = '';
+    this.$data.tabs.forEach((tab: number, tabIndex: number) => {
+      tabLinks += `
+  <li${tabIndex === 0 ? ' class="-active"' : ''}>
+    <a
+      href="#horizontal-bordered-${tab}"
+      role="tab"
+      aria-selected="${tabIndex === 0 ? 'true' : 'false'}"${tabIndex !== 0 ? `
+      tabindex="-1"` : ''}
+      aria-controls="${'horizontal-bordered-' + tab}"
+      >${tab === 1 ? 'Active Tab' : 'Tab Link'}</a>
+  </li>`
+
+      tabPanels += `
+<div class="chi-tabs-panel ${tabIndex === 0 ? '-active' : ''}" id="horizontal__bordered_${tab}" role="tabpanel">Tab ${tab} content</div>`
+    })
+    this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs -border" id="example__horizontal_bordered" role="tablist" aria-label="chi-tabs-horizontal">${tabLinks}
+</ul>
+${tabPanels}
+
+<script>chi.tab(document.getElementById('example__portal_horizontal_bordered'));<\/script>`
+  }
+  
+  created() {
+    this._setCodeSnippet();
+  }
 
   mounted() {
     this.tab = chi.tab(this.$refs['example-portal-horizontal-bordered'] as HTMLElement);
