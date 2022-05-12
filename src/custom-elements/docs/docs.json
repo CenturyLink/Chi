@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-04-21T09:57:47",
+  "timestamp": "2022-05-06T20:45:11",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -759,6 +759,48 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "required",
+          "reflectToAttr": true,
+          "docs": "To indicate checkbox field is required.",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "state",
+          "type": "\"danger\" | \"success\" | \"warning\"",
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": true,
+          "docs": "To define state color of checkbox",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [],
@@ -769,7 +811,7 @@
           "bubbles": true,
           "cancelable": true,
           "composed": true,
-          "docs": "Triggered when the user selects or deselects the chechbox",
+          "docs": "Triggered when the user selects or deselects the checkbox",
           "docsTags": []
         }
       ],
