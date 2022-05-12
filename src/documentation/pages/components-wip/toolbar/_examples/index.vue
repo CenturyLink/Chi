@@ -1,12 +1,14 @@
 <template lang="pug">
   div
     h2 Examples
+    <client-only placeholder="loading...">
     <Base />
-    div(v-if="$store.state.themes.theme === 'portal'")
-      <BaseWithRibbonPortal />
-      <BaseWithRibbonAndBulkActionsPortal />
-    div(v-else)
-      <BaseWithRibbonLumenCenturyLink />
+      div(v-if="$store.state.themes.theme === 'portal'")
+        <BaseWithRibbonPortal />
+        <BaseWithRibbonAndBulkActionsPortal />
+      div(v-else)
+        <BaseWithRibbonLumenCenturyLink />
+    </client-only>
 </template>
 
 <script lang="ts">
