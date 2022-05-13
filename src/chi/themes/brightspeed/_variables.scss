@@ -1543,6 +1543,7 @@ $tabs-inverse-item-active-border-color:     $color-border-white;
 $tabs-inverse-item-active-text-color:       $color-text-white;
 $tabs-inverse-item-hover-text-color:        $color-text-white;
 
+$tabs-horizontal-border-bottom-width:       0.125rem;
 $tabs-horizontal-border-bottom:             0.125rem solid $color-border-base;
 $tabs-horizontal-sliding-border-bottom-placement: -0.125rem;
 
@@ -1551,6 +1552,7 @@ $tabs-horizontal-lg-font-weight:            $font-weight-bold;
 $tabs-horizontal-lg-height:                 4rem;
 $tabs-horizontal-lg-line-height:            $line-height-lg;
 $tabs-horizontal-lg-padding:                1.25rem 0;
+$tabs-horizontal-lg-solid-padding:          1.5rem 2rem;
 $tabs-horizontal-lg-trigger-icon-top:       1.5rem;
 $tabs-horizontal-lg-trigger-padding-right:  1.5rem;
 
@@ -1558,6 +1560,7 @@ $tabs-horizontal-md-font-size:              $font-size-lg;
 $tabs-horizontal-md-font-weight:            $font-weight-bold;
 $tabs-horizontal-md-height:                 2.5rem;
 $tabs-horizontal-md-padding:                0.8125rem 0 0.6875rem;
+$tabs-horizontal-md-solid-padding:          0.75rem 1rem;
 $tabs-horizontal-md-trigger-icon-top:       0.8125rem;
 $tabs-horizontal-md-trigger-padding-right:  1.5rem;
 
@@ -1565,6 +1568,7 @@ $tabs-horizontal-sm-font-size:              $font-size-base;
 $tabs-horizontal-sm-font-weight:            $font-weight-bold;
 $tabs-horizontal-sm-height:                 2rem;
 $tabs-horizontal-sm-padding:                0.5rem 0;
+$tabs-horizontal-sm-solid-padding:          0.5rem 0.75rem;
 $tabs-horizontal-sm-trigger-icon-top:       0.5rem;
 $tabs-horizontal-sm-trigger-padding-right:  1.25rem;
 
@@ -1572,6 +1576,7 @@ $tabs-horizontal-xs-font-size:              $font-size-sm;
 $tabs-horizontal-xs-font-weight:            $font-weight-semi-bold;
 $tabs-horizontal-xs-height:                 1.5rem;
 $tabs-horizontal-xs-padding:                0.25rem 0;
+$tabs-horizontal-xs-solid-padding:          0.25rem 0.5rem;
 $tabs-horizontal-xs-trigger-icon-top:       0.25rem;
 $tabs-horizontal-xs-trigger-padding-right:  1.125rem;
 
@@ -1581,6 +1586,8 @@ $tabs-vertical-xl-font-size:                $font-size-lg;
 $tabs-solid-xl-font-size:                   $font-size-lg;
 $tabs-solid-xl-font-weight:                 $font-weight-bold;
 $tabs-solid-vertical-xl-active-border-width: 0.125rem;
+$tabs-solid-horizontal-lg-active-border-width: 0.125rem;
+$tabs-solid-horizontal-md-active-border-width: 0.125rem;
 $tabs-solid-background-color:               $color-grey-10;
 $tabs-solid-active-border-color:            $color-border-black;
 $tabs-solid-active-background-color:        $color-background-white;

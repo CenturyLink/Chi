@@ -34,40 +34,6 @@
     }
   }
 
-  &.-icons {
-    & > li {
-      &.-active {
-        & > a {
-          position: relative;
-
-          & > .chi-icon {
-            color: $color-text-primary;
-            left: 1.5rem;
-          }
-        }
-      }
-
-      & > a {
-        padding-left: 3.5rem;
-        position: relative;
-
-        & > .chi-icon {
-          color: inherit;
-          left: 1.5rem;
-          position: absolute;
-        }
-      }
-
-      .chi-tabs__subtabs {
-        & > li {
-          & > a {
-            padding-left: 4.5rem;
-          }
-        }
-      }
-    }
-  }
-
   & > li {
     &.chi-sliding-border {
       left: 0;
@@ -402,6 +368,40 @@
     }
   }
 
+  &.-icons {
+    & > li {
+      &.-active {
+        & > a {
+          position: relative;
+
+          & > .chi-icon {
+            color: $color-text-primary;
+            left: 1.5rem;
+          }
+        }
+      }
+
+      & > a {
+        padding-left: 3.5rem;
+        position: relative;
+
+        & > .chi-icon {
+          color: inherit;
+          left: 1.5rem;
+          position: absolute;
+        }
+      }
+
+      .chi-tabs__subtabs {
+        & > li {
+          & > a {
+            padding-left: 4.5rem;
+          }
+        }
+      }
+    }
+  }
+
   &:not(.-sliding) {
     &:not(.-inverse) {
       &.-solid {
@@ -422,12 +422,21 @@
             }
           }
         }
+
+        &.-xl {
+          & > li {
+            &.-active:not(.-has-active) > a {
+              box-shadow: inset $tabs-solid-vertical-xl-active-border-width 0 0 $tabs-solid-active-border-color;
+            }
+          }
+        }
       }
     }
   }
 }
 
 @mixin tabs-not-vertical {
+  display: flex;
   height: $tabs-horizontal-md-height;
 
   &.-icons {
@@ -437,40 +446,25 @@
           color: $color-text-primary;
         }
       }
-
-      & > a {
-        padding-left: 1.5rem;
-        position: relative;
-
-        .chi-icon {
-          color: inherit;
-          left: 0;
-          position: absolute;
-        }
-      }
-    }
-  }
-
-  &.-border {
-    border-bottom: $tabs-horizontal-border-bottom;
-
-    & > li {
-      &.chi-sliding-border {
-        bottom: $tabs-horizontal-sliding-border-bottom-placement;
-      }
     }
   }
 
   & > li {
+    display: flex;
+
     &:not(:first-child) {
       margin-left: 1.5rem;
     }
 
     & > a {
+      align-items: center;
+      display: flex;
       font-size: $tabs-horizontal-md-font-size;
       font-weight: $tabs-horizontal-md-font-weight;
       line-height: $line-height-sm;
       padding: $tabs-horizontal-md-padding;
+      position: relative;
+      white-space: nowrap;
 
       &.chi-dropdown__trigger {
         padding-right: $tabs-horizontal-md-trigger-padding-right;
@@ -479,11 +473,16 @@
           top: $tabs-horizontal-md-trigger-icon-top;
         }
       }
+
+      .chi-icon {
+        color: inherit;
+        margin-right: 0.5rem;
+      }
     }
 
     &.chi-sliding-border {
       bottom: 0;
-      height: 0.125rem;
+      height: $tabs-solid-horizontal-md-active-border-width;
       margin-left: 0;
     }
   }
@@ -494,7 +493,7 @@
       &:not(.-inverse) {
         & > li {
           &.-active > a {
-            box-shadow: inset 0 -0.125rem 0 $color-border-primary;
+            box-shadow: inset 0 (-$tabs-solid-horizontal-md-active-border-width) 0 $color-border-primary;
 
             &.chi-dropdown__trigger {
               &:not(.-primary) {
@@ -503,14 +502,14 @@
                     &:not(.-light) {
                       &:not(.-danger) {
                         background-color: transparent;
-                        box-shadow: inset 0 -0.125rem 0 $color-border-primary;
+                        box-shadow: inset 0 (-$tabs-solid-horizontal-md-active-border-width) 0 $color-border-primary;
                         color: $color-text-primary;
 
                         &:hover,
                         &:active,
                         &.-active {
                           background-color: transparent;
-                          box-shadow: inset 0 -0.125rem 0 $color-border-primary;
+                          box-shadow: inset 0 (-$tabs-solid-horizontal-md-active-border-width) 0 $color-border-primary;
                         }
                       }
                     }
@@ -652,7 +651,7 @@
       & > li {
         &.-active {
           & > a {
-            box-shadow: inset 0 0.125rem 0 $tabs-solid-active-border-color;
+            box-shadow: inset 0 $tabs-solid-horizontal-md-active-border-width 0 $tabs-solid-active-border-color;
           }
         }
       }
@@ -660,12 +659,9 @@
 
     &,
     &.-md {
-      height: $tabs-horizontal-md-height;
-
       & > li:not(.chi-sliding-border) {
         & > a {
-          line-height: 1rem;
-          padding: 0.75rem 1rem;
+          padding: $tabs-horizontal-md-solid-padding;
 
           &.chi-dropdown__trigger {
             padding-right: 2rem;
@@ -680,12 +676,9 @@
     }
 
     &.-xs {
-      height: $tabs-horizontal-xs-height;
-
       & > li:not(.chi-sliding-border) {
         & > a {
-          line-height: 1rem;
-          padding: 0.25rem 0.5rem;
+          padding: $tabs-horizontal-xs-solid-padding;
 
           &.chi-dropdown__trigger {
             padding-right: 1.5rem;
@@ -700,12 +693,9 @@
     }
 
     &.-sm {
-      height: $tabs-horizontal-sm-height;
-
       & > li:not(.chi-sliding-border) {
         & > a {
-          line-height: 1rem;
-          padding: 0.5rem 0.75rem;
+          padding: $tabs-horizontal-sm-solid-padding;
 
           &.chi-dropdown__trigger {
             &::after {
@@ -718,12 +708,9 @@
     }
 
     &.-lg {
-      height: $tabs-horizontal-lg-height;
-
       & > li:not(.chi-sliding-border) {
         & > a {
-          line-height: 1.5rem;
-          padding: 1.25rem 2rem;
+          padding: $tabs-horizontal-lg-solid-padding;
 
           &.chi-dropdown__trigger {
             padding-right: 3rem;
@@ -735,10 +722,28 @@
           }
         }
       }
+
+      & > li {
+        &.chi-sliding-border {
+          height: $tabs-solid-horizontal-lg-active-border-width;
+        }
+      }
+
+      &:not(.-sliding) {
+        &:not(.-inverse) {
+          & > li {
+            &.-active {
+              & > a {
+                box-shadow: inset 0 $tabs-solid-horizontal-lg-active-border-width 0 $tabs-solid-active-border-color;
+              }
+            }
+          }
+        }
+      }
     }
 
     &.-border {
-      border-bottom-width: 0.0625rem;
+      box-shadow: inset 0 -0.0625rem 0 0 $color-border-base;
 
       & > li {
         &:not(.-active) {
@@ -885,7 +890,7 @@
 
       &.-border {
         > li {
-          border-bottom: 0.0625rem solid $color-grey-80;
+          box-shadow: inset 0 (-$tabs-horizontal-border-bottom-width) 0 0 $color-grey-80;
 
           &:first-child {
             border-top: 0.0625rem solid $color-grey-80;
@@ -917,7 +922,7 @@
 
     &:not(.-vertical):not(.-responsive) {
       &.-border {
-        border-bottom: 0.0625rem solid $color-grey-80;
+        box-shadow: inset 0 (-$tabs-horizontal-border-bottom-width) 0 0 $color-grey-80;
       }
 
       &.-solid {
@@ -925,7 +930,8 @@
           & > li {
             &.-active {
               & > a {
-                box-shadow: inset 0 0.125rem 0 $color-border-white;
+                // sass-lint:disable-block max-line-length
+                box-shadow: inset 0 $tabs-solid-horizontal-md-active-border-width 0 $tabs-inverse-item-active-border-color;
               }
             }
           }
@@ -935,7 +941,7 @@
           & > li {
             &:not(.-active) {
               & > a {
-                box-shadow: inset 0 -0.0625rem 0 0 $color-grey-80;
+                box-shadow: inset 0 (-$tabs-horizontal-border-bottom-width) 0 0 $color-grey-80;
               }
             }
           }
@@ -958,7 +964,7 @@
           }
 
           &.chi-sliding-border {
-            background-color: $color-background-white;
+            background-color: $tabs-inverse-item-active-border-color;
           }
         }
       }
