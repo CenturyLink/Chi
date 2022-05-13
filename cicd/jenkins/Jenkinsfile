@@ -337,7 +337,11 @@ pipeline {
               script {
                 dir('src/documentation') {
                   jslNpmWrapper('install', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-                  jslNpmWrapper('run generate')
+                  if (isVersionBump()) {
+                    jslNpmWrapper('run generate-production')
+                  } else {
+                    jslNpmWrapper('run generate-pr')
+                  }
                   sh "ls -la ${pwd()}"
                   stash name: "DIST-CHI-DOCUMENTATION", includes: "dist/**"
                 }
@@ -880,9 +884,7 @@ PolicyDocument
             steps {
               script {
                 sh "rm -rf dist"
-                unstash name: "DIST-CHI-DOCUMENTATION"
                 unstash name: "DIST-CHI"
-                sh "ls -la ${pwd()}"
                 jslBuildAndPushToNexus('./cicd/docker/nginx/Dockerfile')
 
                 def chiManifest = 'chiManifest.yml'

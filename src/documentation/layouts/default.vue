@@ -12,9 +12,5 @@
 import { Component, Vue } from 'vue-property-decorator';
 
 @Component({})
-export default class Default extends Vue {
-  mounted() {
-    document.body.classList.add('chi');
-  }
-}
+export default class Default extends Vue {}
 </script>

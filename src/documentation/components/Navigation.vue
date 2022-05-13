@@ -160,7 +160,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import ThemeSwitcher from './ThemeSwitcher.vue';
 import {
-  CHI_ROOT_URL,
   NAVIGATION_COMPONENTS_ITEMS
 } from '../constants/constants';
 
@@ -173,7 +172,6 @@ declare const chi: any;
   data: () => {
     return {
       NAVIGATION_COMPONENTS_ITEMS,
-      CHI_ROOT_URL
     };
   }
 })

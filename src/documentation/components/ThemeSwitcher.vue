@@ -80,7 +80,7 @@
 
 <script lang="ts">
 import { Themes } from '../models/models';
-import { THEMES, defaultCss, defaultDocsCss } from '../constants/constants';
+import { THEMES } from '../constants/constants';
 import { Component, Vue } from 'vue-property-decorator';
 
 declare const chi: any;
@@ -89,27 +89,9 @@ interface AssetToReplace {
   id: string;
 }
 
-@Component({
-  head() {
-    return {
-      link: [
-        {
-          rel: 'stylesheet',
-          id: 'chi-css',
-          type: 'text/css',
-          href: defaultCss
-        },
-        {
-          rel: 'stylesheet',
-          type: 'text/css',
-          id: 'chi-docs-css',
-          href: defaultDocsCss
-        },
-      ],
-    }
-  }
-})
+@Component({})
 export default class ThemeSwitcher extends Vue {
+  themeSwitcherDropdown: any;
   themes = THEMES;
 
   setTheme(theme: Themes): void {
@@ -142,7 +124,13 @@ export default class ThemeSwitcher extends Vue {
   mounted() {
     const themeSwitcherElement = this.$refs.switcher as HTMLElement;
 
-    chi.dropdown(themeSwitcherElement);
+    if (themeSwitcherElement) {
+      this.themeSwitcherDropdown = chi.dropdown(themeSwitcherElement);
+    }
+  }
+
+  beforeDestroy() {
+    this.themeSwitcherDropdown.dispose();
   }
 }
 </script>
