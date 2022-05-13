@@ -5,7 +5,7 @@
         ul.chi-tabs(:class="selectedTabId === 'base' ? '' : '-inverse'" :id="`example-horizontal-${selectedTabId}`"
           role="tablist"
           :aria-label="selectedTabId === 'base' ? 'chi-tabs-horizontal' : 'chi-tabs-horizontal-inverse'"
-          :ref="`example-horizontal-${selectedTabId}`")
+          :ref="`example__tabs_horizontal_${selectedTabId}`")
           li(v-for="item in [1,2,3]" :class="selectedTab.selectedItemId === item ? '-active' : ''" @click.prevent="selectedTab.selectedItemId = item")
             a(
               :href="`#horizontal-${selectedTabId}-${item}`"
@@ -104,14 +104,14 @@ export default class Horizontal extends Vue {
       aria-controls="horizontal-${headTab.id}${index === 0 ? '-active' : ''}">${index === 0 ? 'Active Tab' : 'Tab Link'}</a>
   </li>`;
         tabConents += `
-<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="example__horizontal_${headTab.id}-${tab}" role="tabpanel">Tab ${tab} content</div>`
+<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="example__tabs_horizontal_${headTab.id}-${tab}" role="tabpanel">Tab ${tab} content</div>`
       });
 
-      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example__horizontal_${headTab.id}" role="tablist" aria-label="chi-tabs-horizontal${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}
+      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example__tabs_horizontal_${headTab.id}" role="tablist" aria-label="chi-tabs-horizontal${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}
 </ul>
 ${tabConents}
 
-<script>chi.tab(document.getElementById('example__horizontal_${headTab.id}'));<\/script>`
+<script>chi.tab(document.getElementById('example__tabs_horizontal_${headTab.id}'));<\/script>`
     })
   }
 
@@ -121,7 +121,7 @@ ${tabConents}
   }
 
   mounted() {
-    this.tab = chi.tab(this.$refs['example-horizontal-base'] as HTMLElement);
+    this.tab = chi.tab(this.$refs['example__tabs_horizontal_base'] as HTMLElement);
   }
 
   changeSelectedTab(e: HeadTabsInterface) {

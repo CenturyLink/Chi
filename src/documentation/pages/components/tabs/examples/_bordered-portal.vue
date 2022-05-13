@@ -5,7 +5,7 @@
         ul.chi-tabs.-border#example-portal-horizontal-bordered(
           role="tablist"
           aria-label="chi-tabs-portal-horizontal"
-          ref="example-portal-horizontal-bordered")
+          ref="example__tabs_portal_horizontal_bordered")
           li(v-for="(tab, index) in tabs" :class="index === 0 && '-active'")
             a(
               :href="'#portal-horizontal-bordered-' + tab"
@@ -64,24 +64,23 @@ export default class BorderedPortal extends Vue {
     let tabLinks = '', tabPanels = '';
     this.$data.tabs.forEach((tab: number, tabIndex: number) => {
       tabLinks += `
-  <li${tabIndex === 0 ? ' class="-active"' : ''}>
+  <li${tabIndex === 0 ? ' class="-active"' : ' role="tab"'}>
     <a
-      href="#horizontal-bordered-${tab}"
-      role="tab"
+      href="#horizontal-bordered-${tab}"${tabIndex === 0 ? `
+      role="tab"` : ''}
       aria-selected="${tabIndex === 0 ? 'true' : 'false'}"${tabIndex !== 0 ? `
       tabindex="-1"` : ''}
-      aria-controls="${'horizontal-bordered-' + tab}"
-      >${tab === 1 ? 'Active Tab' : 'Tab Link'}</a>
+      aria-controls="${'horizontal-bordered-' + tab}">${tab === 1 ? 'Active Tab' : 'Tab Link'}</a>
   </li>`
 
       tabPanels += `
-<div class="chi-tabs-panel ${tabIndex === 0 ? '-active' : ''}" id="horizontal__bordered_${tab}" role="tabpanel">Tab ${tab} content</div>`
+<div class="chi-tabs-panel ${tabIndex === 0 ? '-active' : ''}" id="example__tabs_horizontal__bordered_${tab}" role="tabpanel">Tab ${tab} content</div>`
     })
-    this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs -border" id="example__horizontal_bordered" role="tablist" aria-label="chi-tabs-horizontal">${tabLinks}
+    this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs -border" id="example__tabs_horizontal_bordered" role="tablist" aria-label="chi-tabs-horizontal">${tabLinks}
 </ul>
 ${tabPanels}
 
-<script>chi.tab(document.getElementById('example__portal_horizontal_bordered'));<\/script>`
+<script>chi.tab(document.getElementById('example__tabs_portal_horizontal_bordered'));<\/script>`
   }
   
   created() {
@@ -89,7 +88,7 @@ ${tabPanels}
   }
 
   mounted() {
-    this.tab = chi.tab(this.$refs['example-portal-horizontal-bordered'] as HTMLElement);
+    this.tab = chi.tab(this.$refs['example__tabs_portal_horizontal_bordered'] as HTMLElement);
   }
 
   beforeDestroy() {

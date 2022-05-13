@@ -83,24 +83,25 @@ export default class VerticalSubtabsLumenCenturyLink extends Vue {
     let subTabs = '', subTabLinks = ``;
       this.$data.subTabs.forEach((subTab: string, index: number) => {
         subTabLinks += `
-        <li${index === 0 ? ' class="-active"' : ''}>
-          <a href="#">${subTab}</a>
-        </li>`
+      <li${index === 0 ? ' class="-active"' : ''}>
+        <a href="#">${subTab}</a>
+      </li>`
       })
 
-    subTabs = `<ul class="chi-tabs__subtabs">${subTabLinks}
+    subTabs = `
+    <ul class="chi-tabs__subtabs">${subTabLinks}
     </ul>`
     this.$data.headTabs.forEach((headTab: any) => {
       let tabLinks = ''; 
       this.$data.tabs.forEach((tab: string, index: number) => {
         tabLinks += `
   <li ${index === 0 ? 'class="-active"' : ''}>
-    <a href="#">${tab}</a>
-    ${index === 0 ? subTabs : ''}
+    <a href="#">${tab}</a>${index === 0 ? 
+    subTabs : ''}
   </li>`;
       });
 
-      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''} -vertical -icons">${tabLinks}
+      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''} -vertical">${tabLinks}
 </ul>`
     })
   }

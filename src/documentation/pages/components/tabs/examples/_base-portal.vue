@@ -5,7 +5,7 @@
         ul.chi-tabs#example-portal-horizontal-base(
           role="tablist"
           aria-label="chi-tabs-horizontal"
-          ref="example__portal_horizontal_base")
+          ref="example__tabs_portal_horizontal_base")
           li(v-for="(tab, index) in tabs" :class="index === 0 && '-active'")
             a(
               :href="'#portal-horizontal-base-' + tab"
@@ -64,24 +64,23 @@ export default class BasePortal extends Vue {
     let tabLinks = '', tabPanels = '';
     this.$data.tabs.forEach((tab: number, tabIndex: number) => {
       tabLinks += `
-  <li${tabIndex === 0 ? ' class="-active"' : ''}>
+  <li${tabIndex === 0 ? ' class="-active"' : ' role="tab"'}>
     <a
-      href="#horizontal-base-${tab}"
-      role="tab"
+      href="#horizontal-base-${tab}"${tabIndex === 0 ? `
+      role="tab"` : ''}
       aria-selected="${tabIndex === 0 ? 'true' : 'false'}"${tabIndex !== 0 ? `
       tabindex="-1"` : ''}
-      aria-controls="${'portal-horizontal-base-' + tab}"
-      >${tab === 1 ? 'Active Tab' : 'Tab Link'}</a>
+      aria-controls="${'portal-horizontal-base-' + tab}">${tab === 1 ? 'Active Tab' : 'Tab Link'}</a>
   </li>`
 
       tabPanels += `
-<div class="chi-tabs-panel ${tabIndex === 0 ? '-active' : ''}" id="horizontal__base_${tab}" role="tabpanel">Tab ${tab} content</div>`
+<div class="chi-tabs-panel ${tabIndex === 0 ? '-active' : ''}" id="example__tabs_horizontal__base_${tab}" role="tabpanel">Tab ${tab} content</div>`
     })
-    this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs" id="example__horizontal_base" role="tablist" aria-label="chi-tabs-horizontal">${tabLinks}
+    this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs" id="example__tabs_horizontal_base" role="tablist" aria-label="chi-tabs-horizontal">${tabLinks}
 </ul>
 ${tabPanels}
 
-<script>chi.tab(document.getElementById('example__portal_horizontal_base'));<\/script>`
+<script>chi.tab(document.getElementById('example__tabs_portal_horizontal_base'));<\/script>`
   }
   
   created() {
@@ -89,7 +88,7 @@ ${tabPanels}
   }
 
   mounted() {
-    this.tab = chi.tab(this.$refs['example__portal_horizontal_base'] as HTMLElement);
+    this.tab = chi.tab(this.$refs['example__tabs_portal_horizontal_base'] as HTMLElement);
   }
 
   beforeDestroy() {

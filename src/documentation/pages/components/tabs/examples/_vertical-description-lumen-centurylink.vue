@@ -8,11 +8,11 @@
               i.chi-icon.icon-atom(aria-hidden="true")
               span.chi-tabs_item-title {{tab}}
               span.chi-tabs_item-text Tab description
-              ul.chi-tabs__subtabs(v-if="tab.includes('Active')")
-                li(v-for="(subTab, subTabIndex) in subTabs" :key="subTabIndex")
-                  a.chi-tabs_item(href='#')
-                    span.chi-tabs_item-title {{subTab}}
-                    span.chi-tabs_item-text Subtab description
+            ul.chi-tabs__subtabs(v-if="tab.includes('Active')")
+              li(v-for="(subTab, subTabIndex) in subTabs" :key="subTabIndex")
+                a.chi-tabs_item(href='#')
+                  span.chi-tabs_item-title {{subTab}}
+                  span.chi-tabs_item-text Subtab description
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

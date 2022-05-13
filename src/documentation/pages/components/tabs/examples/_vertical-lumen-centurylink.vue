@@ -3,7 +3,7 @@
     .-p--3(slot="example")
       div(:class="'chi-grid -no-gutter -bg--' + (selectedTabId === 'base' ? 'white' : 'black')")
         .chi-col.-w--6.-w-sm--4.-p--3
-          ul(:class="'chi-tabs ' + (selectedTabId === 'base' ? '' : '-inverse') + ' -vertical'" :id="'example-vertical-' + selectedTabId" role="tablist" :aria-label="selectedTabId === 'base' ? 'chi-tabs-vertical-base' : 'vertical-inverse'" :ref="`example-vertical-${selectedTabId}`")
+          ul(:class="'chi-tabs ' + (selectedTabId === 'base' ? '' : '-inverse') + ' -vertical'" :id="'example-vertical-' + selectedTabId" role="tablist" :aria-label="selectedTabId === 'base' ? 'chi-tabs-vertical-base' : 'vertical-inverse'" :ref="`example__tabs_vertical_${selectedTabId}`")
             li(v-for="item in [1,2,3]" :class="selectedTab.selectedItemId === item ? '-active' : ''" @click.prevent="tabClickHandler(item)")
               a(
                 :href="'#vertical-' + selectedTabId + '-' + item"
@@ -97,18 +97,22 @@ selectedTab: any;
   <li ${index === 0 ? 'class="-active"' : 'role="tab"'}>
     <a
       href="#vertical-${headTab.id}-${tab}"
-      ${index === 0 ? 'role="tab"' : 'tabIndex="-1"'}
+      role="tab"${index !== 0 ? `
+      tabindex="-1"` : ''}
       aria-selected="${index === 0 ? 'true' : 'false'}"
       aria-controls="vertical-${headTab.id}${index === 0 ? '-active' : ''}">${index === 0 ? 'Active Tab' : 'Tab Link'}</a>
   </li>`;
         tabConents += `
-<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="example__vertical_${headTab.id}-${tab}" role="tabpanel">Tab ${tab} content</div>`
+<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="example__tabs_vertical_${headTab.id}-${tab}" role="tabpanel">
+  Tab ${tab} content
+</div>`
       });
 
-      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example__vertical_${headTab.id}" role="tablist" aria-label="chi-tabs-vertical${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}
+      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example__tabs_vertical_${headTab.id}" role="tablist" aria-label="chi-tabs-vertical${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}
 </ul>
 ${tabConents}
-<script>chi.tab(document.getElementById('example__vertical_${headTab.id}'));<\/script>`
+
+<script>chi.tab(document.getElementById('example__tabs_vertical_${headTab.id}'));<\/script>`
     })
   }
 
@@ -118,7 +122,7 @@ ${tabConents}
   }
 
   mounted() {
-    this.tab = chi.tab(this.$refs['example-vertical-base'] as HTMLElement);
+    this.tab = chi.tab(this.$refs['example__tabs_vertical_base'] as HTMLElement);
   }
 
   changeSelectedTab(e: HeadTabsInterface) {
@@ -132,7 +136,6 @@ ${tabConents}
 
   tabClickHandler(tabId: number) {
     this.selectedTab.selectedItemId = tabId;
-    console.log(this.selectedTab);
   }
 }
 </script>

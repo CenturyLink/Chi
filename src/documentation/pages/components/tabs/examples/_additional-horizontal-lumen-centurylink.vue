@@ -36,6 +36,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
+      sizes: [{name: 'X-small', class: '-xs'}, {name: 'Small', class: '-sm'}, {name: 'Medium (Base)', class: '-md'}, {name:'Large', class: '-lg'}, {name: 'X-Large', class:'-xl'}],
       exampleTabs: [
         {
           disabled: true,
@@ -51,60 +52,29 @@ import { Component, Vue } from 'vue-property-decorator';
       tabLinks: ['Active Tab', 'Tab Link', 'Tab Link'],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<!-- X-small -->
-<ul class="chi-tabs -xs">
-  <li class="-active">
-    <a href="#">Active Tab</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-</ul>
-
-<!-- Small -->
-<ul class="chi-tabs -sm">
-  <li class="-active">
-    <a href="#">Active Tab</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-</ul>
-
-<!-- Medium (Base) -->
-<ul class="chi-tabs">
-  <li class="-active">
-    <a href="#">Active Tab</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-</ul>
-
-<!-- Large -->
-<ul class="chi-tabs -lg">
-  <li class="-active">
-    <a href="#">Active Tab</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-</ul>`,
+        htmlblueprint: ``,
       },
     };
   },
 })
-export default class AdditionalHorizontalLumenCenturyLink extends Vue {}
+export default class AdditionalHorizontalLumenCenturyLink extends Vue {
+  _setCodeSnippet() {
+    let codeSnippet = '', tabLinks = '';
+      this.$data.tabLinks.forEach((tab: string, index: number) => {
+        tabLinks += `
+  <li ${index === 0 ? 'class="-active"' : ''}>
+    <a href="#">${tab}</a>
+  </li>`;
+    })
+    this.$data.sizes.forEach((size: {[key: string]: string}, index: number) => {
+      codeSnippet += `<!-- ${size.name} -->
+<ul class="chi-tabs ${size.class}">${tabLinks}
+</ul>${index === this.$data.sizes.length - 1 ? '' : '\n\n'}`
+    })
+    this.$data.codeSnippets.htmlblueprint = codeSnippet
+  }
+  created() {
+    this._setCodeSnippet()
+  }
+}
 </script>

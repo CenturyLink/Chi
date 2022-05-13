@@ -4,7 +4,7 @@
       | By default, Chi JavaScript enabled tabs will ignore default link behavior.
       | To preserve it, specify a target property on the link.
     div(slot="example")
-      ul#example-default-link-behavior.chi-tabs(role="tablist" aria-label="example-default-link-behavior" ref="example-default-link-behavior")
+      ul#example-default-link-behavior.chi-tabs(role="tablist" aria-label="example-default-link-behavior" ref="example__tabs_default_link_behavior")
         li(v-for="(tab, index) in tabs" :class="index===0 ? '-active' : ''")
           a(
             :href="`#${tab}2`"
@@ -72,23 +72,23 @@ _setcodesnippet() {
       aria-controls="${tab}2">Tab ${tab}</a>
   </li>`
     tabPanels += `
-<div class="chi-tabs-panel${tabIndex === 0 ? ' -active' : ''}" id="example_panel_${tab}2" role="tabpanel">
+<div class="chi-tabs-panel${tabIndex === 0 ? ' -active' : ''}" id="example__tabs_panel_${tab}2" role="tabpanel">
   <p class="-text">Content for tab ${tab}</p>
 </div>`
   })
-  this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs" id="example__tabs_2" role="tablist" aria-label="example-default-link-behavior">${links}
+  this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs" id="example__tabs_default_link" role="tablist" aria-label="example-default-link-behavior">${links}
   <li><a href="https://assets.ctl.io/chi/" target="_self">External Link</a></li>
 </ul>
 ${tabPanels}
 
-<script>chi.tab(document.getElementById('example__tabs_2'));<\/script>`
+<script>chi.tab(document.getElementById('example__tabs_default_link'));<\/script>`
 }
 
 created() {
   this._setcodesnippet();
 }
   mounted() {
-    this.tab = chi.tab(this.$refs['example-default-link-behavior'] as HTMLElement);
+    this.tab = chi.tab(this.$refs['example__tabs_default_link_behavior'] as HTMLElement);
   }
 
   beforeDestroy() {

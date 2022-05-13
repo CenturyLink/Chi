@@ -6,7 +6,7 @@
       | on the dropdowns to make the chevron rotate when activated.
 
     <Wrapper slot="example">
-      ul.chi-tabs.chi-navigationExample#navigation-components-contained(ref="navigation-components-contained")
+      ul.chi-tabs.chi-navigationExample#navigation-components-contained(ref="example__tabs_navigation_components_contained")
         li.chi-dropdown.-active
           a.chi-dropdown__trigger.-animate(href='#') Active Tab
           .chi-dropdown__menu
@@ -80,7 +80,7 @@ export default class ContainedComponentLumenCenturyLink extends Vue {
     this.$data.activeElements.forEach((activeEl: string) => {
       activeElements += `<a class="chi-dropdown__menu-item" href="#">${activeEl}</a>`
     })
-    this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs" id="example__navigation_contained">
+    this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs" id="example__tabs_navigation_contained">
   <li class="chi-dropdown -active">
     <a class="chi-dropdown__trigger -animate" href="#">Active Tab</a>
     <div class="chi-dropdown__menu" x-placement="bottom-start">
@@ -101,13 +101,13 @@ export default class ContainedComponentLumenCenturyLink extends Vue {
   </li>
 </ul>
 
-<script>chi.navigation(document.getElementById('example__navigation_contained'));<\/script>`
+<script>chi.navigation(document.getElementById('example__tabs_navigation_contained'));<\/script>`
   }
   created() {
     this._setCodeSnippet()
   }
   mounted() {
-    this.navigation = chi.navigation(this.$refs['navigation-components-contained'] as HTMLElement);
+    this.navigation = chi.navigation(this.$refs['example__tabs_navigation_components_contained'] as HTMLElement);
   }
 
   beforeDestroy() {

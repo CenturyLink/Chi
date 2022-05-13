@@ -12,7 +12,7 @@
       | or a wait-for-animation option.
 
     <Wrapper slot="example">
-      ul.chi-tabs.chi-navigationExample#example-tabbed-navigation(ref="example-tabbed-navigation")
+      ul.chi-tabs.chi-navigationExample#example-tabbed-navigation(ref="example__tabs_tabbed_navigation")
         li.chi-dropdown.-active
           a.chi-dropdown__trigger(href='#') Active tab
           .chi-dropdown__menu
@@ -90,7 +90,7 @@ export default class TabbedNavigationLumenCenturyLink extends Vue {
       tabElements += `
       <a class="chi-dropdown__menu-item" href="#">${tabEl}</a>`
     })
-    this.$data.codeSnippets.htmlblueprint = `<ul id="example__navigation_1" class="chi-tabs">
+    this.$data.codeSnippets.htmlblueprint = `<ul id="example__tabs_navigation_1" class="chi-tabs">
   <li class="chi-dropdown -active">
     <a class="chi-dropdown__trigger" href="#">Active tab</a>
     <div class="chi-dropdown__menu">
@@ -113,7 +113,7 @@ export default class TabbedNavigationLumenCenturyLink extends Vue {
 </ul>
 
 <script>
-  const navigationElem = document.getElementById('#example__navigation_1');
+  const navigationElem = document.getElementById('#example__tabs_navigation_1');
   chi.navigation(navigationElem);
 <\/script>`
   }
@@ -123,7 +123,7 @@ export default class TabbedNavigationLumenCenturyLink extends Vue {
   }
 
   mounted() {
-    this.navigation = chi.navigation(this.$refs['example-tabbed-navigation'] as HTMLElement);
+    this.navigation = chi.navigation(this.$refs['example__tabs_tabbed_navigation'] as HTMLElement);
   }
 
   beforeDestroy() {
