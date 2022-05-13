@@ -3,37 +3,19 @@
     p.-text(slot="example-description")
       | By default, Chi JavaScript enabled tabs will ignore default link behavior.
       | To preserve it, specify a target property on the link.
-    <Wrapper slot="example">
+    div(slot="example")
       ul#example-default-link-behavior.chi-tabs(role="tablist" aria-label="example-default-link-behavior" ref="example-default-link-behavior")
-        li.-active
+        li(v-for="(tab, index) in tabs" :class="index===0 ? '-active' : ''")
           a(
-            href='#a2'
+            :href="`#${tab}2`"
             role="tab"
-            aria-selected="true"
-            aria-controls="a2") Tab a
-        li
-          a(
-            href='#b2'
-            role="tab"
-            aria-selected="false"
-            tabindex="-1"
-            aria-controls="ab2") Tab b
-        li
-          a(
-            href='#c2'
-            role="tab"
-            aria-selected="true"
-            tabindex="-1"
-            aria-controls="c2") Tab c
+            :aria-selected="tab === 'a' ? 'true' : 'false'"
+            :tabindex="tab === 'a' ? 0 : -1"
+            :aria-controls="tab + '2'") Tab {{tab}}
         li
           a(href='https://assets.ctl.io/chi/' target='_self') External Link
-      #a2.chi-tabs-panel.-active(role="tabpanel")
-        p.-text Content for tab a
-      #b2.chi-tabs-panel(role="tabpanel")
-        p.-text Content for tab b
-      #c2.chi-tabs-panel(role="tabpanel")
-        p.-text Content for tab c
-    </Wrapper>
+      .chi-tabs-panel(role="tabpanel" :id="`${tab}2`" :class="tab === 'a' ? '-active' : ''" v-for="tab in tabs")
+        p.-text Content for tab {{tab}}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -54,6 +36,7 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
+      tabs: ['a', 'b', 'c'],
       exampleTabs: [
         {
           disabled: true,
@@ -68,44 +51,7 @@ declare const chi: any;
       ],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-tabs" id="example__tabs_2" role="tablist" aria-label="example-default-link-behavior">
-  <li class="-active">
-    <a
-      href="#a2"
-      role="tab"
-      aria-selected="true"
-      aria-controls="a2">Tab a</a>
-  </li>
-  <li>
-    <a
-      href="#b2"
-      role="tab"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="ab2">Tab b</a>
-  </li>
-  <li>
-    <a
-      href="#c2"
-      role="tab"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="c2">Tab c</a>
-  </li>
-  <li><a href="https://assets.ctl.io/chi/" target="_self">External Link</a></li>
-</ul>
-
-<div class="chi-tabs-panel -active" id="example_panel_a2" role="tabpanel">
-  <p class="-text">Content for tab a</p>
-</div>
-<div class="chi-tabs-panel" id="example_panel_b2" role="tabpanel">
-  <p class="-text">Content for tab b</p>
-</div>
-<div class="chi-tabs-panel" id="example_panel_c2" role="tabpanel">
-  <p class="-text">Content for tab c</p>
-</div>
-
-<script>chi.tab(document.getElementById('example__tabs_2'));<\/script>`,
+        htmlblueprint: ``,
       },
     };
   },
@@ -113,6 +59,34 @@ declare const chi: any;
 export default class DefaultLinkLumenCenturyLink extends Vue {
   tab: any;
 
+_setcodesnippet() {
+  let links = ``, tabPanels = ``;
+  this.$data.tabs.forEach((tab: string, tabIndex: number) => {
+    links += `
+  <li${tabIndex === 0 ? ' class="-active"' : ''}>
+    <a
+      href="#${tab}2"
+      role="tab"
+      aria-selected="${tabIndex === 0 ? true : false}"${tabIndex === 0 ? '' : `
+      tabindex="-1"`}
+      aria-controls="${tab}2">Tab ${tab}</a>
+  </li>`
+    tabPanels += `
+<div class="chi-tabs-panel${tabIndex === 0 ? ' -active' : ''}" id="example_panel_${tab}2" role="tabpanel">
+  <p class="-text">Content for tab ${tab}</p>
+</div>`
+  })
+  this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs" id="example__tabs_2" role="tablist" aria-label="example-default-link-behavior">${links}
+  <li><a href="https://assets.ctl.io/chi/" target="_self">External Link</a></li>
+</ul>
+${tabPanels}
+
+<script>chi.tab(document.getElementById('example__tabs_2'));<\/script>`
+}
+
+created() {
+  this._setcodesnippet();
+}
   mounted() {
     this.tab = chi.tab(this.$refs['example-default-link-behavior'] as HTMLElement);
   }

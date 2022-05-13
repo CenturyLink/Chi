@@ -67,7 +67,30 @@ declare const chi: any;
       activeElements: ['Elem 3.1', 'Elem 3.2', 'Elem 3.3', 'Elem 3.4'],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul id="example__navigation_1" class="chi-tabs">
+        htmlblueprint: ``,
+      },
+    };
+  },
+})
+export default class TabbedNavigationLumenCenturyLink extends Vue {
+  navigation: any;
+
+  _setcodeSnippet() {
+    let tabLinks = '', tabElements = '', activeElements = '';
+    this.$data.tabLinks.forEach((tabLink: string) => {
+      tabLinks += `
+  <li>
+    <a href="#">${tabLink}</a>
+  </li>`
+    })
+    this.$data.activeElements.forEach((activeEl: string) => {
+      activeElements += `<a class="chi-dropdown__menu-item" href="#">${activeEl}</a>`
+    })
+    this.$data.tabElements.forEach((tabEl: string) => {
+      tabElements += `
+      <a class="chi-dropdown__menu-item" href="#">${tabEl}</a>`
+    })
+    this.$data.codeSnippets.htmlblueprint = `<ul id="example__navigation_1" class="chi-tabs">
   <li class="chi-dropdown -active">
     <a class="chi-dropdown__trigger" href="#">Active tab</a>
     <div class="chi-dropdown__menu">
@@ -76,36 +99,15 @@ declare const chi: any;
       <div>
         <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
         <div class="chi-dropdown__menu">
-          <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
+          ${activeElements}
         </div>
       </div>
       <a class="chi-dropdown__menu-item" href="#">Elem 4</a>
     </div>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
+  </li>${tabLinks}
   <li class="chi-dropdown">
     <a class="chi-dropdown__trigger" href="#">Tab Dropdown</a>
-    <div class="chi-dropdown__menu">
-      <a class="chi-dropdown__menu-item" href="#">Element 1</a>
-      <a class="chi-dropdown__menu-item" href="#">Element 2</a>
-      <a class="chi-dropdown__menu-item" href="#">Element 3</a>
+    <div class="chi-dropdown__menu">${tabElements}
     </div>
   </li>
 </ul>
@@ -113,13 +115,12 @@ declare const chi: any;
 <script>
   const navigationElem = document.getElementById('#example__navigation_1');
   chi.navigation(navigationElem);
-<\/script>`,
-      },
-    };
-  },
-})
-export default class TabbedNavigationLumenCenturyLink extends Vue {
-  navigation: any;
+<\/script>`
+  }
+
+  created() {
+    this._setcodeSnippet();
+  }
 
   mounted() {
     this.navigation = chi.navigation(this.$refs['example-tabbed-navigation'] as HTMLElement);

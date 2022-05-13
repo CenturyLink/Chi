@@ -62,7 +62,25 @@ declare const chi: any;
       activeElements: ['Elem 3.1', 'Elem 3.2', 'Elem 3.3', 'Elem 3.4'],
       codeSnippets: {
         webcomponent: ``,
-        htmlblueprint: `<ul class="chi-tabs" id="example__navigation_contained">
+        htmlblueprint: ``,
+      },
+    };
+  },
+})
+export default class ContainedComponentLumenCenturyLink extends Vue {
+  navigation: any;
+  _setCodeSnippet() {
+    let activeElements = '', tabLinks = '';
+    ['Tab Link', 'Tab Link'].forEach(tab => {
+      tabLinks += `
+  <li>
+    <a href="#">${tab}</a>
+  </li>`
+    })
+    this.$data.activeElements.forEach((activeEl: string) => {
+      activeElements += `<a class="chi-dropdown__menu-item" href="#">${activeEl}</a>`
+    })
+    this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs" id="example__navigation_contained">
   <li class="chi-dropdown -active">
     <a class="chi-dropdown__trigger -animate" href="#">Active Tab</a>
     <div class="chi-dropdown__menu" x-placement="bottom-start">
@@ -70,17 +88,11 @@ declare const chi: any;
       <div>
         <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
         <div class="chi-dropdown__menu">
-          <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
+          ${activeElements}
         </div>
       </div><a class="chi-dropdown__menu-item" href="#">Elem 4</a>
     </div>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
+  </li>${tabLinks}
   <li class="chi-dropdown">
     <a class="chi-dropdown__trigger" href="#">Tab Link</a>
     <div class="chi-dropdown__menu">
@@ -89,14 +101,11 @@ declare const chi: any;
   </li>
 </ul>
 
-<script>chi.navigation(document.getElementById('example__navigation_contained'));<\/script>`,
-      },
-    };
-  },
-})
-export default class ContainedComponentLumenCenturyLink extends Vue {
-  navigation: any;
-
+<script>chi.navigation(document.getElementById('example__navigation_contained'));<\/script>`
+  }
+  created() {
+    this._setCodeSnippet()
+  }
   mounted() {
     this.navigation = chi.navigation(this.$refs['navigation-components-contained'] as HTMLElement);
   }
