@@ -126,9 +126,13 @@
   }
 
   &.-border {
-    & > li {
-      border-bottom: 0.0625rem solid $color-border-base-dark;
+    &:not(.-inverse) {
+      & > li {
+        border-bottom: 0.0625rem solid $color-border-base-dark;
+      }
+    }
 
+    & > li {
       &.-active {
         & > a {
           &::before {
@@ -375,7 +379,7 @@
           position: relative;
 
           & > .chi-icon {
-            color: $color-text-primary;
+            color: inherit;
             left: 1.5rem;
           }
         }
@@ -742,19 +746,20 @@
       }
     }
 
-    &.-border {
-      box-shadow: inset 0 -0.0625rem 0 0 $color-border-base;
+    &:not(.-inverse) {
+      &.-border {
+        box-shadow: inset 0 -0.0625rem 0 0 $color-border-base;
 
-      & > li {
-        &:not(.-active) {
-          & > a {
-            box-shadow: inset 0 -0.0625rem 0 0 $color-border-base;
+        & > li {
+          &:not(.-active) {
+            & > a {
+              box-shadow: inset 0 -0.0625rem 0 0 $color-border-base;
+            }
           }
         }
       }
     }
   }
-
 }
 
 .chi-tabs {
