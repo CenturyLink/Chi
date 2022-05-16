@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20220117',
+        identifier: 'jsl-jenkins-shared-library-local@release/20220505',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-        identifier: 'jsl-jenkins-shared-library@release/20220117',
+        identifier: 'jsl-jenkins-shared-library@release/20220505',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -57,6 +57,7 @@ pipeline {
       GITHUB_TOKEN_CREDENTIALS = 'SCMAUTO_GITHUB'
       GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
       GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
+      GITHUB_PUBLISH_TOKEN_CREDENTIALS = 'allyourbotsarebelongtous-token'
       DOCKER_CREDENTIALS = 'nexus-secrets'
       KUBE_CREDENTIALS = 'kube-secret'
       KUBE_CREDENTIALS_TEST = 'kube-secret-test'
@@ -267,7 +268,7 @@ pipeline {
           }
         }
       }
-      stage('CE & Vue Build') {
+      stage('CE, Vue & Documentation Build') {
         when {
             allOf {
               not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
@@ -321,6 +322,28 @@ pipeline {
               }
             }
           }
+          stage ('Building Vue documentation system') {
+            agent {
+              dockerfile {
+                filename 'Dockerfile'
+                dir 'cicd/docker/sonar-scanner'
+                label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
+                // registryUrl DOCKER_REGISTRY
+                // registryCredentialsId DOCKER_CREDENTIALS
+              }
+            }
+            steps {
+              script {
+                dir('src/documentation') {
+                  jslNpmWrapper('install', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+                  jslNpmWrapper('run generate')
+                  sh "ls -la ${pwd()}"
+                  stash name: "DIST-CHI-DOCUMENTATION", includes: "dist/**"
+                }
+              }
+            }
+          }
         }
       }
       stage ('Building Chi') {
@@ -355,6 +378,10 @@ pipeline {
             jslNpmWrapper('run sri')
             jslNpmWrapper('run cicd:build:post:sri')
             stash name: "DIST-CHI", includes: "dist/**"
+            echo "/dist"
+            sh "ls -la ${pwd()}/dist"
+            echo "/dist/components"
+            sh "ls -la ${pwd()}/dist/components"
             stash name: "NODEMODULES-CHI", includes: "node_modules/**"
             jslJiraSendBuildInfo()
           }
@@ -810,6 +837,7 @@ pipeline {
             steps {
               script {
                 sh "rm -rf dist"
+                unstash name: "DIST-CHI-DOCUMENTATION"
                 unstash name: "DIST-CHI"
                 def s3Uri = "${GIT_COMMIT}-chi-pr-po-ctl"
                 sh script:"""
@@ -852,7 +880,9 @@ PolicyDocument
             steps {
               script {
                 sh "rm -rf dist"
+                unstash name: "DIST-CHI-DOCUMENTATION"
                 unstash name: "DIST-CHI"
+                sh "ls -la ${pwd()}"
                 jslBuildAndPushToNexus('./cicd/docker/nginx/Dockerfile')
 
                 def chiManifest = 'chiManifest.yml'
@@ -891,6 +921,7 @@ PolicyDocument
             steps {
               script {
                 sh "rm -rf dist node_modules"
+                unstash name: "DIST-CHI-DOCUMENTATION"
                 unstash name: "DIST-CHI"
                 sh script:"""
                   sed -i 's#/getting-started#getting-started#g' dist/index.html
