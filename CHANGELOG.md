@@ -1,4 +1,12 @@
 # CHANGELOG
+## 5.13.1 (May 12, 2022)
+### Components
+#### Changed
+* Changed: Data table Advanced filters Vue component footer styling is now fully aligned with Lumen Enterprise Portal style guide.
+* Changed: Data table Column customization Vue component footer styling is now fully aligned with Lumen Enterprise Portal style guide.
+#### Fixed
+* Fixed: Popover component shown within the context of the Data table now automatically wraps text.
+
 ## 5.13.0 (April 20, 2022)
 ### Components
 #### Added

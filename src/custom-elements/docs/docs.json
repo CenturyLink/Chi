@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-05-06T20:45:11",
+  "timestamp": "2022-05-12T10:25:50",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -765,8 +765,8 @@
           "type": "boolean",
           "mutable": false,
           "attr": "required",
-          "reflectToAttr": true,
-          "docs": "To indicate checkbox field is required.",
+          "reflectToAttr": false,
+          "docs": "To indicate which form field is required",
           "docsTags": [],
           "default": "false",
           "values": [
@@ -782,8 +782,8 @@
           "type": "\"danger\" | \"success\" | \"warning\"",
           "mutable": false,
           "attr": "state",
-          "reflectToAttr": true,
-          "docs": "To define state color of checkbox",
+          "reflectToAttr": false,
+          "docs": "To indicate the state",
           "docsTags": [],
           "values": [
             {
