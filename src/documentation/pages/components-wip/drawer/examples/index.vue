@@ -2,12 +2,14 @@
   div
     h2 Examples
 
-    <Interaction />
-    <Position />
-    <Backdrop />
-    <Titled />
-    <CloseButton />
-    <HeaderTitle />
+    <client-only placeholder="loading...">
+      <Interaction />
+      <Position />
+      <Backdrop />
+      <Titled />
+      <CloseButton />
+      <HeaderTitle />
+    </client-only>
 </template>
 
 <script lang="ts">

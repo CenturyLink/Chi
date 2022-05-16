@@ -125,7 +125,7 @@
       | HTML DOM Element as a parameter.
     .example.-mb--3
       .-p--3
-        button.chi-button.-mb--2(ref="button" data-popover-content='<div class="chi-popover__content">Foo</div>') Popover
+        button.chi-button.-mb--2(ref="button" data-popover-content="<div class='chi-popover__content'>Foo</div>") Popover
         <pre class="language-javascript">
           <code v-highlight="$data.example" class="javascript"></code>
         </pre>

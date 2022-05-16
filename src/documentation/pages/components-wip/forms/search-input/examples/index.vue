@@ -2,10 +2,12 @@
   div
     h2 Examples
 
-    <Base />
-    <Disabled />
-    <SizesPortal v-if="$store.state.themes.theme === 'portal'" />
-    <SizesLumenCenturyLink v-else />
+    <client-only placeholder="loading...">
+      <Base />
+      <Disabled />
+      <SizesPortal v-if="$store.state.themes.theme === 'portal'" />
+      <SizesLumenCenturyLink v-else />
+    </client-only>
 </template>
 
 <script lang="ts">

@@ -37,11 +37,11 @@ export class Checkbox {
    */
   @Prop() disabled?: boolean;
   /**
-   * To indicate which form field is required.
+   * To indicate which form field is required
    */
   @Prop() required = false;
   /**
-   * To indicate the state.
+   * To indicate the state
    */
   @Prop() state?: ChiStates;
   /**
@@ -53,7 +53,7 @@ export class Checkbox {
   id: string;
 
   /**
-   * Triggered when the user selects or deselects the chechbox
+   * Triggered when the user selects or deselects the checkbox
    */
   @Event() chiChange: EventEmitter<string | boolean>;
 

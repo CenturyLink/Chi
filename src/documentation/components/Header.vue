@@ -14,61 +14,6 @@
         color: #000;
         font-weight: 600;
       }
-      .-lumen--show,
-      .-centurylink--show,
-      .-portal--show,
-      .-brightspeed--show {
-        display: block;
-      }
-      .-lumen--hide,
-      .-centurylink--hide,
-      .-portal--hide,
-      .-brightspeed--hide {
-        display: none;
-      }
-      .theme-centurylink .-lumen--show,
-      .theme-centurylink .-portal--show,
-      .theme-centurylink .-brightspeed--show,
-      .theme-centurylink .-centurylink--hide {
-        display: none;
-      }
-      .theme-lumen .-portal--show,
-      .theme-lumen .-centurylink--show,
-      .theme-lumen .-brightspeed--show,
-      .theme-lumen .-lumen--hide {
-        display: none;
-      }
-      .theme-portal .-lumen--show,
-      .theme-portal .-centurylink--show,
-      .theme-portal .-brightspeed--show,
-      .theme-portal .-portal--hide,
-      .theme-portal .-portal--hide.-brightspeed--hide {
-        display: none;
-      }
-      .theme-brightspeed .-lumen--show,
-      .theme-brightspeed .-centurylink--show,
-      .theme-brightspeed .-portal--show,
-      .theme-brightspeed .-brightspeed--hide,
-      .theme-brightspeed .-portal--hide.-brightspeed--hide {
-        display: none;
-      }
-      .theme-brightspeed .-portal--hide,
-      .theme-brightspeed .-centurylink--hide,
-      .theme-brightspeed .-lumen--hide {
-        display: none;
-      }
-      .theme-portal .-lumen--hide,
-      .theme-portal .-centurylink--hide,
-      .theme-portal .-brightspeed--hide,
-      .theme-centurylink .-portal--hide,
-      .theme-centurylink .-lumen--hide,
-      .theme-centurylink .-brightspeed--hide,
-      .theme-lumen .-portal--hide,
-      .theme-lumen .-centurylink--hide,
-      .theme-lumen .-brightspeed--hide,
-      .theme-brightspeed .-brightspeed--show {
-        display: block;
-      }
       .chi-brand {
         margin: 0;
       }
@@ -156,17 +101,15 @@
         )
           .chi-button__content
             i.chi-icon.-sm--2.icon-menu(aria-hidden='true')
-        <NuxtLink class="docs-header__logo" aria-label='Portal' to="/">
+        <a class="docs-header__logo" aria-label='Portal' href="/">
           chi-brand#header-logo(logo='lumen')
-        </NuxtLink>
+        </a>
         span.chi-header__title.-d--none.-d-lg--flex Chi Design System
       .chi-header__start
         form.-chi-search
           .chi-input__wrapper.-icon--right.-flex--grow1
             label.chi-label.-d--none(for='chi-docs-search') Search Chi documentation
-            span.algolia-autocomplete(
-              style='position: relative; display: inline-block; direction: ltr'
-            )
+            span.algolia-autocomplete
               input#chi-docs-search.chi-input.searchbox.ds-input(
                 type='text',
                 placeholder='Search',
@@ -176,90 +119,29 @@
                 aria-autocomplete='list',
                 aria-expanded='false',
                 aria-label='search input',
-                aria-owns='algolia-autocomplete-listbox-0',
-                dir='auto',
-                style='position: relative; vertical-align: top'
               )
-              pre(
-                aria-hidden='true',
-                style='position: absolute; visibility: hidden; white-space: pre; font-family: Inter, Arial, Helvetica, Verdana, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: normal; text-indent: 0px; text-rendering: auto; text-transform: none'
-              ).
-
-              span#algolia-autocomplete-listbox-0.ds-dropdown-menu(
-                role='listbox',
-                style='position: absolute; top: 100%; z-index: 100; display: none; left: 0px; right: auto'
-              )
-                .ds-dataset-1
             i.chi-icon.icon-search(aria-hidden='true')
       .chi-header__end
         .chi-dropdown
-          button#version-dropdown.chi-button.-flat.-px--1.chi-dropdown__trigger.-animate(
+          button.chi-button.-flat.-px--1.chi-dropdown__trigger.-animate(
             data-position='bottom-end',
             aria-label='Toggle Chi version'
-          ) v5.12.0
-          #versionDropdown.chi-dropdown__menu(
-            style='width: 10rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(76px, 40px, 0px)',
-            x-placement='bottom-end'
-          )
-            a.chi-dropdown__menu-item.-active(
-              href='https://assets.ctl.io/chi/5.12.0'
-            ) v5.12.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.11.0') v5.11.0  
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.9.1') v5.9.1 
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.9.0') v5.9.0  
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.8.0') v5.8.0  
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.7.0') v5.7.0  
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.6.0') v5.6.0       
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.5.0') v5.5.0       
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.4.0') v5.4.0       
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.3.1') v5.3.1
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.3.0') v5.3.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.2.0') v5.2.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.1.0') v5.1.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/5.0.0') v5.0.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.4.0') v4.4.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.3.0') v4.3.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.2.0') v4.2.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.1.2') v4.1.2
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.1.1') v4.1.1
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.1.0') v4.1.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/4.0.0') v4.0.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.17.0') v3.17.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.16.0') v3.16.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.15.0') v3.15.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.14.0') v3.14.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.13.0') v3.13.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.12.0') v3.12.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.11.0') v3.11.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.10.0') v3.10.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.9.0') v3.9.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.8.0') v3.8.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.7.0') v3.7.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.6.0') v3.6.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.5.0') v3.5.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.4.0') v3.4.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.3.0') v3.3.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.2.0') v3.2.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.1.1') v3.1.1
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.1.0') v3.1.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/3.0.0') v3.0.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.6.0') v2.6.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.5.1') v2.5.1
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.5.0') v2.5.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.4.1') v2.4.1
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.4.0') v2.4.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.3.0') v2.3.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.2.0') v2.2.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.1.0') v2.1.0
-            a.chi-dropdown__menu-item(href='https://assets.ctl.io/chi/2.0.0') v2.0.0
+            ref='versionDropdown'
+          ) v{{ACTIVE_CHI_VERSION}}
+          .chi-dropdown__menu.-mh--400.-overflow--auto
+            a.chi-dropdown__menu-item(
+              :class="version === ACTIVE_CHI_VERSION ? '-active' : ''"
+              v-for="(version, index) in CHI_VISIBLE_VERSION"
+              :key="index"
+              :href="`https://assets.ctl.io/chi/${version}`"
+            )
+              | v{{version}}
         .chi-dropdown
           button#support.chi-button.-flat.-px--1.-ml--1.chi-dropdown__trigger.-animate(
             data-position='bottom-end'
+            ref='supportDropdown'
           ) Support
-          .chi-dropdown__menu(
-            style='width: 14rem; position: absolute; will-change: transform; right: initial; top: 0px; left: initial; transform: translate3d(100px, 40px, 0px)',
-            x-placement='bottom-end'
-          )
+          .chi-dropdown__menu
             a#contact.chi-dropdown__menu-item(
               href='mailto:chi.support@centurylink.com'
             ) Email Support
@@ -268,12 +150,13 @@
               target='_blank',
               rel='noopener'
             ) Talk #Chi on Microsoft Teams
-        a#github-button.chi-button.-icon.-flat.-ml--1(
+        a.chi-button.-icon.-flat.-ml--1(
           href='https://github.com/CenturyLink/Chi',
           rel='noopener',
           aria-label='GitHub',
           data-tooltip='GitHub',
           aria-describedby='chi-tooltip-1'
+          ref="githubButtonTooltip"
         )
           .chi-button__content
             i.chi-icon.icon-logo-github(aria-hidden='true')
@@ -281,10 +164,54 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { CHI_VISIBLE_VERSION } from '../constants/constants';
+import { CHI_VERSION as ACTIVE_CHI_VERSION } from '../constants/configs';
+
+declare const chi: any;
 
 Vue.config.ignoredElements = ['chi-brand'];
-@Component
-export default class Header extends Vue {}
-</script>
+@Component({
+  data: () => {
+    return {
+      CHI_VISIBLE_VERSION,
+      ACTIVE_CHI_VERSION
+    };
+  }
+})
+export default class Header extends Vue {
+  versionDropdown: any;
+  supportDropdown: any;
+  githubButtonTooltip: any;
 
+  mounted() {
+    const versionDropdown = this.$refs.versionDropdown as HTMLElement;
+    const supportDropdown = this.$refs.supportDropdown as HTMLElement;
+    const githubButtonTooltip = this.$refs.githubButtonTooltip as HTMLElement;
+
+    if (versionDropdown) {
+      this.versionDropdown = chi.dropdown(versionDropdown);
+    }
+
+    if (supportDropdown) {
+      this.supportDropdown = chi.dropdown(supportDropdown);
+    }
+
+    if (githubButtonTooltip) {
+      this.githubButtonTooltip = chi.tooltip(githubButtonTooltip);
+    }
+  }
+
+  beforeDestroy() {
+    if (this.versionDropdown) {
+      this.versionDropdown.dispose();
+    }
+    if (this.supportDropdown) {
+      this.supportDropdown.dispose();
+    }
+    if (this.githubButtonTooltip) {
+      this.githubButtonTooltip.dispose();
+    }
+  }
+}
+</script>
 <style scoped lang="scss"></style>
