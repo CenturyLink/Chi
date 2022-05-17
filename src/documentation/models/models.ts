@@ -37,3 +37,32 @@ export interface ILink {
   iconName?: string;
 }
 
+export interface TableData {
+  head: string[];
+  body: TableRow[];
+  config: {
+    cells: CellConfig[];
+  }
+}
+
+export interface TableRow {
+  data: Record<string, any>;
+}
+
+interface CellConfig {
+  hasCode: boolean;
+  width: string;
+}
+
+export interface ZIndex {
+  index: number;
+  color: string;
+  margin: string;
+}
+
+export interface TextModel {
+  size?: string;
+  head?: string;
+  font: string;
+  line: string;
+}

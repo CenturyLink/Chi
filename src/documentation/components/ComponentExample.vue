@@ -1,16 +1,6 @@
 <template>
   <div class="example-wrapper">
-    <h4 v-if="titleSize === 'h4'" class="-anchor" :id="id">
-      {{ title }}
-      <span>
-        <a
-          class="-ml--1"
-          :href="'?theme=' + $store.state.themes.theme + '#' + id"
-          >#</a
-        >
-      </span>
-    </h4>
-    <h2 v-else-if="titleSize === 'h2'" class="-anchor" :id="id">
+    <h2 v-if="titleSize === 'h2' && title" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
@@ -20,7 +10,17 @@
         >
       </span>
     </h2>
-    <h3 v-else class="-anchor" :id="id">
+    <h4 v-else-if="titleSize === 'h4' && title" class="-anchor" :id="id">
+      {{ title }}
+      <span>
+        <a
+          class="-ml--1"
+          :href="'?theme=' + $store.state.themes.theme + '#' + id"
+          >#</a
+        >
+      </span>
+    </h4>
+    <h3 v-else-if="title" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
@@ -31,7 +31,8 @@
       </span>
     </h3>
     <slot name="example-description"></slot>
-    <div v-if="headTabs">
+    <slot v-if="noExample" name="no-example"></slot>
+    <div v-else-if="headTabs">
       <ul
         :id="'head-tabs-' + id"
         :aria-label="'head-tabs-' + id"
@@ -107,50 +108,53 @@
       <div :class="[padding || '-p--3', additionalClasses]">
         <slot name="example"></slot>
       </div>
-      <div class="example-tabs -pl--2">
-        <ul
-          class="chi-tabs -animated"
-          :id="'code-snippet-tabs-' + id"
-          role="tabs"
-        >
-          <li
-            :class="[
-              tab.active ? '-active' : '',
-              tab.disabled ? '-disabled' : ''
-            ]"
-            v-for="tab in tabs"
-            :key="tab.id"
+      <template v-if="!codeSnippetWithoutTabs">
+        <div class="example-tabs -pl--2">
+          <ul
+            class="chi-tabs -animated"
+            :id="'code-snippet-tabs-' + id"
+            role="tabs"
           >
-            <a
-              role="tab"
-              :aria-controls="'#example-' + id + '-' + tab.id"
-              :aria-selected="tab.active ? true : false"
-              :href="'#example-' + id + '-' + tab.id"
-              :tabindex="tab.disabled ? -1 : null"
+            <li
+              :class="[
+                tab.active ? '-active' : '',
+                tab.disabled ? '-disabled' : ''
+              ]"
+              v-for="tab in tabs"
+              :key="tab.id"
             >
-              {{ tab.label }}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div
-        :class="['chi-tabs-panel', tab.active ? '-active' : '']"
-        v-for="tab in tabs"
-        :key="tab.id"
-        :id="'example-' + id + '-' + tab.id"
-        :ref="`tab-panel-${tab.id}`"
-        role="tabpanel"
-      >
-        <div class="clipboard">
-          <button
-            class="clipboard__button chi-button -xs -flat"
-            @click="() => copy(`tab-panel-${tab.id}`)"
-          >
-            Copy
-          </button>
+              <a
+                role="tab"
+                :aria-controls="'#example-' + id + '-' + tab.id"
+                :aria-selected="tab.active ? true : false"
+                :href="'#example-' + id + '-' + tab.id"
+                :tabindex="tab.disabled ? -1 : null"
+              >
+                {{ tab.label }}
+              </a>
+            </li>
+          </ul>
         </div>
-        <slot :name="'code-' + tab.id"></slot>
-      </div>
+        <div
+          :class="['chi-tabs-panel', tab.active ? '-active' : '']"
+          v-for="tab in tabs"
+          :key="tab.id"
+          :id="'example-' + id + '-' + tab.id"
+          :ref="`tab-panel-${tab.id}`"
+          role="tabpanel"
+        >
+          <div class="clipboard">
+            <button
+              class="clipboard__button chi-button -xs -flat"
+              @click="() => copy(`tab-panel-${tab.id}`)"
+            >
+              Copy
+            </button>
+          </div>
+          <slot :name="'code-' + tab.id"></slot>
+        </div>
+      </template>
+      <slot v-else :name="`code-snippet-${id}`"></slot>
     </div>
   </div>
 </template>
@@ -184,18 +188,15 @@ Vue.config.warnHandler = (msg: string, _vm: Vue, trace: string) => {
   methods: {
     copy(id: string) {
       const tabElement = (this.$refs[id] as HTMLElement[])[0];
-
       if (tabElement) {
         const codeElement = (tabElement as HTMLElement).querySelector('code');
         const codeSnippet = codeElement?.textContent;
-
         if (codeSnippet || typeof codeSnippet === 'string') {
           if (navigator.clipboard && window.isSecureContext) {
             navigator.clipboard
               .writeText(codeSnippet);
           } else {
             const textArea = document.createElement("textarea");
-
             textArea.value = codeSnippet as string;
             textArea.classList.add(SR_ONLY);
             tabElement.appendChild(textArea);
@@ -218,6 +219,8 @@ export default class ComponentExample extends Vue {
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
   @Prop() additionalStyle?: string;
+  @Prop() codeSnippetWithoutTabs?: boolean;
+  @Prop() noExample?: boolean;
 
   chiTabs: any;
   chiHeadTabs: any;
@@ -234,10 +237,8 @@ export default class ComponentExample extends Vue {
         const codeSnippetTab = document.getElementById(
           `code-snippet-tabs-${this.$props.id}-${tab.id}`
         );
-
         if (codeSnippetTab) chi.tab(codeSnippetTab);
       });
-
       this.chiHeadTabs = chi.tab(chiHeadTabs);
     };
   }

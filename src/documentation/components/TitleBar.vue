@@ -25,11 +25,11 @@ export default class BaseExample extends Vue {
   mounted() {
     const chiTabs = document.getElementById('page-content-tabs');
 
-    this.chiTabs = chi.tab(chiTabs);
+    if (chiTabs) this.chiTabs = chi.tab(chiTabs);
   }
 
   beforeDestroy() {
-    this.chiTabs.dispose();
+    if (this.chiTabs) this.chiTabs.dispose();
   }
 }
 </script>
