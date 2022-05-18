@@ -1316,6 +1316,13 @@ $range-slider-disabled-opacity:             $opacity-60;
 $range-slider-focus-color:                  $focus-color;
 $range-slider-tick-border-color:            $color-border-base-dark;
 
+// Save view
+$save-view-background-color:                $color-yellow-30;
+$save-view-border-color:                    transparent;
+$save-view-divider-border-color:            rgba($color-black, 0.5);
+$save-view-divider-height:                  1.25rem;
+$save-view-save-border-color:               $color-border-info;
+
 // Search input
 $search-input-xs-icon-top:                  0;
 $search-input-xs-close-top:                 0;
@@ -1803,10 +1810,6 @@ $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 // Toolbar
 $toolbar-header-background-color:           $color-grey-10;
 $toolbar-header-divider-height:             2.5rem;
-$toolbar-ribbon-background-color:           $color-yellow-30;
-$toolbar-ribbon-border-color:               transparent;
-$toolbar-ribbon-divider-border-color:       rgba($color-black, 0.5);
-$toolbar-ribbon-divider-height:             1.25rem;
 $toolbar-results-font-size:                 $font-size-md;
 $toolbar-label-font-weight:                 $font-weight-semi-bold;
 

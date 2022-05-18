@@ -1,0 +1,72 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-save-view {
+  background-color: $save-view-background-color;
+
+  .chi-divider {
+    border-color: $save-view-divider-border-color;
+    height: $save-view-divider-height;
+    margin: 0 1rem;
+  }
+
+  &__start,
+  &__end,
+  &__delete {
+    align-items: center;
+    display: flex;
+  }
+
+  &__base,
+  &__save,
+  &__edit {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0.875rem 0.5rem 1.5rem;
+
+    .chi-save-view__results {
+      font-size: $toolbar-results-font-size;
+      margin-left: 0.5rem;
+
+      .chi-save-view__label {
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__save {
+    border: 0.0625rem dashed $save-view-save-border-color;
+    padding: 0.4375rem 1.5rem 0.4375rem 0;
+
+    .chi-save-view__results {
+      margin-right: 1rem;
+    }
+
+    .chi-save-view__end,
+    .chi-save-view__delete {
+      .chi-button {
+        text-transform: uppercase;
+
+        + .chi-button {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+  }
+
+  &__delete {
+    .chi-save-view__results {
+      margin-left: 0;
+      margin-right: 1rem;
+    }
+
+    .chi-button {
+      text-transform: uppercase;
+
+      + .chi-button {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+}
