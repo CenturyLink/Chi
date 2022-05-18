@@ -1058,210 +1058,209 @@ h2 Examples
 
         <script>chi.tab(document.getElementById('example-tabs-2'));</script>
 
+.-portal--hide
+  h2 Tabbed navigation bar
 
-h2 Tabbed navigation bar
+  p.-text
+    | The navigation component is a combination of Chi tabs and dropdowns components. You must use
+    | <code>chi.navigation</code> function to instantiate the whole group of components, and there is no need for
+    | instantiating the tabs nor the dropdowns independently. The navigation components will manage the lifecycle of the
+    | descendants' tabs and dropdowns.
 
-p.-text
-  | The navigation component is a combination of Chi tabs and dropdowns components. You must use
-  | <code>chi.navigation</code> function to instantiate the whole group of components, and there is no need for
-  | instantiating the tabs nor the dropdowns independently. The navigation components will manage the lifecycle of the
-  | descendants' tabs and dropdowns.
+  p.-text
+    | Although navigation reproduces all the functionality that tabs and dropdowns have, like the sliding border or the
+    | animated chevron in the dropdowns, it also adds some other new functionalities like the automatic overflow menu,
+    | or a wait-for-animation option.
 
-p.-text
-  | Although navigation reproduces all the functionality that tabs and dropdowns have, like the sliding border or the
-  | animated chevron in the dropdowns, it also adds some other new functionalities like the automatic overflow menu,
-  | or a wait-for-animation option.
-
-h3 Flat
-.example.-mb--3
-  .-p--3.-pb--4
-    ul.chi-tabs.chi-navigationExample#example-tabbed-navigation
-      li.chi-dropdown.-active
-        a.chi-dropdown__trigger(href='#') Active tab
-        .chi-dropdown__menu
-          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 1
-          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 2
-          div
-            a.chi-dropdown__menu-item.chi-dropdown__trigger(href='#') Elem 3 more
-            .chi-dropdown__menu
-              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
-              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
-              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
-              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
-          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 4
-      li
-        a(href='#exampleHashTarget') Tab Link
-      li
-        a(href='#exampleHashTarget') Tab Link
-      li
-        a(href='#exampleHashTarget') Tab Link
-      li
-        a(href='#exampleHashTarget') Tab Link
-      li
-        a(href='#exampleHashTarget') Tab Link
-      li
-        a(href='#exampleHashTarget') Tab Link
-      li.chi-dropdown
-        a.chi-dropdown__trigger(href='#') Tab Dropdown
-        .chi-dropdown__menu
-          a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 1
-          a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 2
-          a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 3
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-tabs-tabbed-navigation
-      li.-disabled
-        a(href=`#webcomponent-tabbed-navigation`) Web Component
-      li.-active
-        a(href=`#html-tabbed-navigation`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-tabbed-navigation(role="tabpanel")
-  .chi-tabs-panel.-active#html-tabbed-navigation(role="tabpanel")
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang='html')
-      <ul id="navigationExample-1" class="chi-tabs">
-        <li class="chi-dropdown -active">
-          <a class="chi-dropdown__trigger" href="#">Active tab</a>
-          <div class="chi-dropdown__menu">
-            <a class="chi-dropdown__menu-item" href="#">Elem 1</a>
-            <a class="chi-dropdown__menu-item" href="#">Elem 2</a>
-            <div>
-              <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
-              <div class="chi-dropdown__menu">
-                <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
+  h3 Flat
+  .example.-mb--3
+    .-p--3.-pb--4
+      ul.chi-tabs.chi-navigationExample#example-tabbed-navigation
+        li.chi-dropdown.-active
+          a.chi-dropdown__trigger(href='#') Active tab
+          .chi-dropdown__menu
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 1
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 2
+            div
+              a.chi-dropdown__menu-item.chi-dropdown__trigger(href='#') Elem 3 more
+              .chi-dropdown__menu
+                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
+                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
+                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
+                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 4
+        li
+          a(href='#exampleHashTarget') Tab Link
+        li
+          a(href='#exampleHashTarget') Tab Link
+        li
+          a(href='#exampleHashTarget') Tab Link
+        li
+          a(href='#exampleHashTarget') Tab Link
+        li
+          a(href='#exampleHashTarget') Tab Link
+        li
+          a(href='#exampleHashTarget') Tab Link
+        li.chi-dropdown
+          a.chi-dropdown__trigger(href='#') Tab Dropdown
+          .chi-dropdown__menu
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 1
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 2
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 3
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-tabs-tabbed-navigation
+        li.-disabled
+          a(href=`#webcomponent-tabbed-navigation`) Web Component
+        li.-active
+          a(href=`#html-tabbed-navigation`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-tabbed-navigation(role="tabpanel")
+    .chi-tabs-panel.-active#html-tabbed-navigation(role="tabpanel")
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <ul id="navigationExample-1" class="chi-tabs">
+          <li class="chi-dropdown -active">
+            <a class="chi-dropdown__trigger" href="#">Active tab</a>
+            <div class="chi-dropdown__menu">
+              <a class="chi-dropdown__menu-item" href="#">Elem 1</a>
+              <a class="chi-dropdown__menu-item" href="#">Elem 2</a>
+              <div>
+                <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
+                <div class="chi-dropdown__menu">
+                  <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
+                </div>
               </div>
+              <a class="chi-dropdown__menu-item" href="#">Elem 4</a>
             </div>
-            <a class="chi-dropdown__menu-item" href="#">Elem 4</a>
-          </div>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li class="chi-dropdown">
-          <a class="chi-dropdown__trigger" href="#">Tab Dropdown</a>
-          <div class="chi-dropdown__menu">
-            <a class="chi-dropdown__menu-item" href="#">Element 1</a>
-            <a class="chi-dropdown__menu-item" href="#">Element 2</a>
-            <a class="chi-dropdown__menu-item" href="#">Element 3</a>
-          </div>
-        </li>
-      </ul>
+          </li>
+          <li>
+            <a href="#">Tab Link</a>
+          </li>
+          <li>
+            <a href="#">Tab Link</a>
+          </li>
+          <li>
+            <a href="#">Tab Link</a>
+          </li>
+          <li>
+            <a href="#">Tab Link</a>
+          </li>
+          <li>
+            <a href="#">Tab Link</a>
+          </li>
+          <li>
+            <a href="#">Tab Link</a>
+          </li>
+          <li class="chi-dropdown">
+            <a class="chi-dropdown__trigger" href="#">Tab Dropdown</a>
+            <div class="chi-dropdown__menu">
+              <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+              <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+              <a class="chi-dropdown__menu-item" href="#">Element 3</a>
+            </div>
+          </li>
+        </ul>
 
-      <script>
-        const navigationElem = document.getElementById('#navigationExample-1');
-        chi.navigation(navigationElem);
-      </script>
+        <script>
+          const navigationElem = document.getElementById('#navigationExample-1');
+          chi.navigation(navigationElem);
+        </script>
 
-h3 Solid
-.example.-mb--3
-  .-p--3.-pb--4
-    ul.chi-tabs.-solid.-border.-lg.chi-navigationExample#example-solid-tabbed-navigation
-      li.chi-dropdown.-active
-        a.chi-dropdown__trigger(href='#') Active tab
-        .chi-dropdown__menu
-          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 1
-          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 2
-          div
-            a.chi-dropdown__menu-item.chi-dropdown__trigger(href='#') Elem 3 more
-            .chi-dropdown__menu
-              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
-              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
-              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
-              a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
-          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 4
-      li
-        a(href='#exampleHashTarget') Tab Link
-      li
-        a(href='#exampleHashTarget') Tab Link
-      li
-        a(href='#exampleHashTarget') Tab Link
-      li
-        a(href='#exampleHashTarget') Tab Link
-      li.chi-dropdown
-        a.chi-dropdown__trigger(href='#') Tab Dropdown
-        .chi-dropdown__menu
-          a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 1
-          a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 2
-          a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 3
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-tabs-solid-tabbed-navigation
-      li.-disabled
-        a(href=`#webcomponent-solid-tabbed-navigation`) Web Component
-      li.-active
-        a(href=`#html-solid-tabbed-navigation`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-solid-tabbed-navigation(role="tabpanel")
-  .chi-tabs-panel.-active#html-solid-tabbed-navigation(role="tabpanel")
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang='html')
-      <ul id="navigationExample-1" class="chi-tabs -solid -border -lg">
-        <li class="chi-dropdown -active">
-          <a class="chi-dropdown__trigger" href="#">Active tab</a>
-          <div class="chi-dropdown__menu">
-            <a class="chi-dropdown__menu-item" href="#">Elem 1</a>
-            <a class="chi-dropdown__menu-item" href="#">Elem 2</a>
-            <div>
-              <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
-              <div class="chi-dropdown__menu">
-                <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
+  h3 Solid
+  .example.-mb--3
+    .-p--3.-pb--4
+      ul.chi-tabs.-solid.-border.-lg.chi-navigationExample#example-solid-tabbed-navigation
+        li.chi-dropdown.-active
+          a.chi-dropdown__trigger(href='#') Active tab
+          .chi-dropdown__menu
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 1
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 2
+            div
+              a.chi-dropdown__menu-item.chi-dropdown__trigger(href='#') Elem 3 more
+              .chi-dropdown__menu
+                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.1
+                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.2
+                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.3
+                a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 3.4
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 4
+        li
+          a(href='#exampleHashTarget') Tab Link
+        li
+          a(href='#exampleHashTarget') Tab Link
+        li
+          a(href='#exampleHashTarget') Tab Link
+        li
+          a(href='#exampleHashTarget') Tab Link
+        li.chi-dropdown
+          a.chi-dropdown__trigger(href='#') Tab Dropdown
+          .chi-dropdown__menu
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 1
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 2
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Element 3
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-tabs-solid-tabbed-navigation
+        li.-disabled
+          a(href=`#webcomponent-solid-tabbed-navigation`) Web Component
+        li.-active
+          a(href=`#html-solid-tabbed-navigation`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-solid-tabbed-navigation(role="tabpanel")
+    .chi-tabs-panel.-active#html-solid-tabbed-navigation(role="tabpanel")
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <ul id="navigationExample-1" class="chi-tabs -solid -border -lg">
+          <li class="chi-dropdown -active">
+            <a class="chi-dropdown__trigger" href="#">Active tab</a>
+            <div class="chi-dropdown__menu">
+              <a class="chi-dropdown__menu-item" href="#">Elem 1</a>
+              <a class="chi-dropdown__menu-item" href="#">Elem 2</a>
+              <div>
+                <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
+                <div class="chi-dropdown__menu">
+                  <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
+                </div>
               </div>
+              <a class="chi-dropdown__menu-item" href="#">Elem 4</a>
             </div>
-            <a class="chi-dropdown__menu-item" href="#">Elem 4</a>
-          </div>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li>
-          <a href="#">Tab Link</a>
-        </li>
-        <li class="chi-dropdown">
-          <a class="chi-dropdown__trigger" href="#">Tab Dropdown</a>
-          <div class="chi-dropdown__menu">
-            <a class="chi-dropdown__menu-item" href="#">Element 1</a>
-            <a class="chi-dropdown__menu-item" href="#">Element 2</a>
-            <a class="chi-dropdown__menu-item" href="#">Element 3</a>
-          </div>
-        </li>
-      </ul>
+          </li>
+          <li>
+            <a href="#">Tab Link</a>
+          </li>
+          <li>
+            <a href="#">Tab Link</a>
+          </li>
+          <li>
+            <a href="#">Tab Link</a>
+          </li>
+          <li>
+            <a href="#">Tab Link</a>
+          </li>
+          <li>
+            <a href="#">Tab Link</a>
+          </li>
+          <li>
+            <a href="#">Tab Link</a>
+          </li>
+          <li class="chi-dropdown">
+            <a class="chi-dropdown__trigger" href="#">Tab Dropdown</a>
+            <div class="chi-dropdown__menu">
+              <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+              <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+              <a class="chi-dropdown__menu-item" href="#">Element 3</a>
+            </div>
+          </li>
+        </ul>
 
-      <script>
-        const navigationElem = document.getElementById('#navigationExample-1');
-        chi.navigation(navigationElem);
-      </script>
-
+        <script>
+          const navigationElem = document.getElementById('#navigationExample-1');
+          chi.navigation(navigationElem);
+        </script>
 
 .-portal--hide
   h3 Components contained
