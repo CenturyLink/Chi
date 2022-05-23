@@ -1,0 +1,133 @@
+<template lang="pug">
+  <ComponentExample title="Tabbed Navigation" id="tabbed-navigation-lumen-centurylink" :tabs="exampleTabs">
+    p.-text(slot="example-description")
+      | The navigation component is a combination of Chi tabs and dropdowns components. You must use
+      | <code>chi.navigation</code> function to instantiate the whole group of components, and there is no need for
+      | instantiating the tabs nor the dropdowns independently. The navigation components will manage the lifecycle of the
+      | descendants' tabs and dropdowns.
+
+    p.-text(slot="example-description")
+      | Although navigation reproduces all the functionality that tabs and dropdowns have, like the sliding border or the
+      | animated chevron in the dropdowns, it also adds some other new functionalities like the automatic overflow menu,
+      | or a wait-for-animation option.
+
+    <Wrapper slot="example">
+      ul.chi-tabs.chi-navigationExample#example-tabbed-navigation(ref="example__tabs_tabbed_navigation")
+        li.chi-dropdown.-active
+          a.chi-dropdown__trigger(href='#') Active tab
+          .chi-dropdown__menu
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 1
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 2
+            div
+              a.chi-dropdown__menu-item.chi-dropdown__trigger(href='#') Elem 3 more
+              .chi-dropdown__menu
+                a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="(elem, index) in activeElements" :index="index") {{ elem }}
+            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 4
+        li(v-for="(link, index) in tabLinks" :index="index") 
+          a(href='#exampleHashTarget') {{ link }}
+        li.chi-dropdown
+          a.chi-dropdown__trigger(href='#') Tab Dropdown
+          .chi-dropdown__menu
+            a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="(elem, index) in tabElements" :index="index") {{ elem }}
+    </Wrapper>
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <Wrapper slot="code-htmlblueprint">
+      <JSNeeded />
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+    </Wrapper>
+  </ComponentExample>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+declare const chi: any;
+
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          disabled: true,
+          id: 'webcomponent',
+          label: 'Web component',
+        },
+        {
+          active: true,
+          id: 'htmlblueprint',
+          label: 'HTML blueprint',
+        },
+      ],
+      tabElements: ['Element 1', 'Element 2', 'Element 3'],
+      tabLinks: Array(6).fill('Tab Link'),
+      activeElements: ['Elem 3.1', 'Elem 3.2', 'Elem 3.3', 'Elem 3.4'],
+      codeSnippets: {
+        webcomponent: ``,
+        htmlblueprint: ``,
+      },
+    };
+  },
+})
+export default class TabbedNavigationLumenCenturyLink extends Vue {
+  navigation: any;
+
+  _setcodeSnippet() {
+    let tabLinks = '', tabElements = '', activeElements = '';
+    this.$data.tabLinks.forEach((tabLink: string) => {
+      tabLinks += `
+  <li>
+    <a href="#">${tabLink}</a>
+  </li>`
+    })
+    this.$data.activeElements.forEach((activeEl: string) => {
+      activeElements += `<a class="chi-dropdown__menu-item" href="#">${activeEl}</a>`
+    })
+    this.$data.tabElements.forEach((tabEl: string) => {
+      tabElements += `
+      <a class="chi-dropdown__menu-item" href="#">${tabEl}</a>`
+    })
+    this.$data.codeSnippets.htmlblueprint = `<ul id="example__tabs_navigation_1" class="chi-tabs">
+  <li class="chi-dropdown -active">
+    <a class="chi-dropdown__trigger" href="#">Active tab</a>
+    <div class="chi-dropdown__menu">
+      <a class="chi-dropdown__menu-item" href="#">Elem 1</a>
+      <a class="chi-dropdown__menu-item" href="#">Elem 2</a>
+      <div>
+        <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
+        <div class="chi-dropdown__menu">
+          ${activeElements}
+        </div>
+      </div>
+      <a class="chi-dropdown__menu-item" href="#">Elem 4</a>
+    </div>
+  </li>${tabLinks}
+  <li class="chi-dropdown">
+    <a class="chi-dropdown__trigger" href="#">Tab Dropdown</a>
+    <div class="chi-dropdown__menu">${tabElements}
+    </div>
+  </li>
+</ul>
+
+<script>
+  const navigationElem = document.getElementById('#example__tabs_navigation_1');
+  chi.navigation(navigationElem);
+<\/script>`
+  }
+
+  created() {
+    this._setcodeSnippet();
+  }
+
+  mounted() {
+    this.navigation = chi.navigation(this.$refs['example__tabs_tabbed_navigation'] as HTMLElement);
+  }
+
+  beforeDestroy() {
+    this.navigation.dispose();
+  }
+}
+</script>
