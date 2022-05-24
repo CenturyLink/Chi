@@ -5,26 +5,30 @@
 
     <Base />
     <BaseHelp />
-    <Disabled />
-    <Error />
-    //- <SizesLumenCenturyLink v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)" />
-    //- <SizesPortal v-else />
+    <BaseBackLink />
+    <BaseSubtitle />
+    <BaseSubtitleButtons />
+    <BasePageLevelActions />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import BaseSubtitleButtons from './_base-back-link-subtitle-buttons.vue';
+import BaseSubtitle from './_base-back-link-subtitle.vue';
+import BaseBackLink from './_base-back-link.vue';
 import BaseHelp from './_base-help.vue';
+import BasePageLevelActions from './_base-page-level-actions.vue';
 import Base from './_base.vue';
-import Disabled from './_disabled.vue';
-import Error from './_error.vue';
 
 @Component({
   components: {
     Base,
     BaseHelp,
-    Disabled,
-    Error,
-  }
+    BaseBackLink,
+    BaseSubtitle,
+    BaseSubtitleButtons,
+    BasePageLevelActions
+  },
 })
 export default class Examples extends Vue {}
 </script>

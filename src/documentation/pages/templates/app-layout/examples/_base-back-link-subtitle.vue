@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Error" id="error" :tabs="exampleTabs">
+  <ComponentExample title="Base with back link and subtitle" id="base-back-link-subtitle" :tabs="exampleTabs">
     p.-text(slot="example-description") Use the <code>-danger</code> state to provide feedback to users when an input fails to validate. 
       | To meet accessibility requirements, danger inputs must include an error message explaining the
       | failure and/or how to correct it.
@@ -48,7 +48,7 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Error extends Vue {
+export default class BaseSubtitle extends Vue {
   created() {
     this._setCodeSnippets();
   }
