@@ -7,20 +7,22 @@
       <li>
         <div class="chi-collection__title">Getting Started</div>
         <ul class="chi-tabs__subtabs">
-          <li><a href="/getting-started">Introduction</a></li>
+          <li><NuxtLink to="/getting-started">Introduction</NuxtLink></li>
           <li>
-            <a href="/getting-started/installation">Installation</a>
+            <NuxtLink to="/getting-started/installation">Installation</NuxtLink>
           </li>
           <li>
-            <a href="/getting-started/development-workflow"
-              >Development workflow</a
+            <NuxtLink to="/getting-started/development-workflow"
+              >Development workflow</NuxtLink
             >
           </li>
           <li>
-            <a href="/getting-started/browsers-devices">Browser support</a>
+            <NuxtLink to="/getting-started/browsers-devices"
+              >Browser support</NuxtLink
+            >
           </li>
           <li>
-            <a href="/getting-started/whats-new">What's new</a>
+            <NuxtLink to="/getting-started/whats-new">What's new</NuxtLink>
           </li>
         </ul>
       </li>
@@ -43,52 +45,60 @@
                 <div class="chi-accordion__content -p--0">
                   <ul class="chi-tabs__subtabs">
                     <li>
-                      <a href="/foundations/accessibility/overview"
-                        >Overview</a
+                      <NuxtLink to="/foundations/accessibility/overview"
+                        >Overview</NuxtLink
                       >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/using-keyboard"
-                        >Using the keyboard</a
+                      <NuxtLink to="/foundations/accessibility/using-keyboard"
+                        >Using the keyboard</NuxtLink
                       >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/page-structure"
-                        >Page structure</a
+                      <NuxtLink to="/foundations/accessibility/page-structure"
+                        >Page structure</NuxtLink
                       >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/color-sensory"
-                        >Color and sensory</a
+                      <NuxtLink to="/foundations/accessibility/color-sensory"
+                        >Color and sensory</NuxtLink
                       >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/images">Images</a>
-                    </li>
-                    <li>
-                      <a href="/foundations/accessibility/text">Text</a>
-                    </li>
-                    <li>
-                      <a href="/foundations/accessibility/links-and-forms"
-                        >Links and forms</a
+                      <NuxtLink to="/foundations/accessibility/images"
+                        >Images</NuxtLink
                       >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/tables">Tables</a>
+                      <NuxtLink to="/foundations/accessibility/text"
+                        >Text</NuxtLink
+                      >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/other">Other</a>
+                      <NuxtLink to="/foundations/accessibility/links-and-forms"
+                        >Links and forms</NuxtLink
+                      >
+                    </li>
+                    <li>
+                      <NuxtLink to="/foundations/accessibility/tables"
+                        >Tables</NuxtLink
+                      >
+                    </li>
+                    <li>
+                      <NuxtLink to="/foundations/accessibility/other"
+                        >Other</NuxtLink
+                      >
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           </li>
-          <li><a href="/foundations/color">Color</a></li>
+          <li><NuxtLink to="/foundations/color">Color</NuxtLink></li>
           <li>
-            <a href="/foundations/design-tokens">Design tokens</a>
+            <NuxtLink to="/foundations/design-tokens">Design tokens</NuxtLink>
           </li>
-          <li><a href="/foundations/grid">Grid</a></li>
+          <li><NuxtLink to="/foundations/grid">Grid</NuxtLink></li>
         </ul>
       </li>
       <li class="-active">
@@ -121,35 +131,37 @@
       <li>
         <div class="chi-collection__title">Utilities</div>
         <ul class="chi-tabs__subtabs">
-          <li><a href="/utilities/border">Border</a></li>
-          <li><a href="/utilities/color">Color</a></li>
-          <li><a href="/utilities/display">Display</a></li>
-          <li><a href="/utilities/flex">Flex</a></li>
-          <li><a href="/utilities/image">Image</a></li>
-          <li><a href="/utilities/opacity">Opacity</a></li>
-          <li><a href="/utilities/overflow">Overflow</a></li>
-          <li><a href="/utilities/position">Position</a></li>
-          <li><a href="/utilities/shadow">Shadow</a></li>
-          <li><a href="/utilities/sizing">Sizing</a></li>
-          <li><a href="/utilities/spacing">Spacing</a></li>
-          <li><a href="/utilities/text">Text</a></li>
-          <li><a href="/utilities/vertical-align">Vertical-align</a></li>
-          <li><a href="/utilities/zindex">Z-index</a></li>
+          <li><NuxtLink to="/utilities/border">Border</NuxtLink></li>
+          <li><NuxtLink to="/utilities/color">Color</NuxtLink></li>
+          <li><NuxtLink to="/utilities/display">Display</NuxtLink></li>
+          <li><NuxtLink to="/utilities/flex">Flex</NuxtLink></li>
+          <li><NuxtLink to="/utilities/image">Image</NuxtLink></li>
+          <li><NuxtLink to="/utilities/opacity">Opacity</NuxtLink></li>
+          <li><NuxtLink to="/utilities/overflow">Overflow</NuxtLink></li>
+          <li><NuxtLink to="/utilities/position">Position</NuxtLink></li>
+          <li><NuxtLink to="/utilities/shadow">Shadow</NuxtLink></li>
+          <li><NuxtLink to="/utilities/sizing">Sizing</NuxtLink></li>
+          <li><NuxtLink to="/utilities/spacing">Spacing</NuxtLink></li>
+          <li><NuxtLink to="/utilities/text">Text</NuxtLink></li>
+          <li>
+            <NuxtLink to="/utilities/vertical-align">Vertical-align</NuxtLink>
+          </li>
+          <li><NuxtLink to="/utilities/zindex">Z-index</NuxtLink></li>
         </ul>
       </li>
       <li>
         <div class="chi-collection__title">Templates</div>
         <ul class="chi-tabs__subtabs">
           <li>
-            <a href="templates/app-layout">App layout</a>
+            <NuxtLink to="/templates/app-layout">App layout</NuxtLink>
           </li>
           <li>
-            <a href="templates/error-404">Error 404</a>
+            <NuxtLink to="/templates/error-404">Error 404</NuxtLink>
           </li>
           <li>
-            <a href="templates/error-500">Error 500</a>
+            <NuxtLink to="/templates/error-500">Error 500</NuxtLink>
           </li>
-          <li><a href="templates/state">State</a></li>
+          <li><NuxtLink to="/templates/state">State</NuxtLink></li>
         </ul>
       </li>
     </ul>
@@ -159,9 +171,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import ThemeSwitcher from './ThemeSwitcher.vue';
-import {
-  NAVIGATION_COMPONENTS_ITEMS
-} from '../constants/constants';
+import { NAVIGATION_COMPONENTS_ITEMS } from '../constants/constants';
 
 declare const chi: any;
 
@@ -171,7 +181,7 @@ declare const chi: any;
   },
   data: () => {
     return {
-      NAVIGATION_COMPONENTS_ITEMS,
+      NAVIGATION_COMPONENTS_ITEMS
     };
   }
 })
