@@ -122,7 +122,7 @@
                 navigationComponentItem.href &&
                   navigationComponentItem.source === 'pug'
               "
-              :href="navigationComponentItem.href"
+              :href="`${BASE_URL}${navigationComponentItem.href}`"
               >{{ navigationComponentItem.label }}</a
             >
           </li>
@@ -171,7 +171,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import ThemeSwitcher from './ThemeSwitcher.vue';
-import { NAVIGATION_COMPONENTS_ITEMS } from '../constants/constants';
+import { NAVIGATION_COMPONENTS_ITEMS, BASE_URL } from '../constants/constants';
 
 declare const chi: any;
 
@@ -181,6 +181,7 @@ declare const chi: any;
   },
   data: () => {
     return {
+      BASE_URL,
       NAVIGATION_COMPONENTS_ITEMS
     };
   }

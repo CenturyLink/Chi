@@ -1,21 +1,16 @@
-import { CHI_VERSION } from './constants/configs';
 import {
+  BASE_URL,
+  DOCS_ENV,
   NAVIGATION_COMPONENTS_ITEMS,
   TEMP_DEVELOPMENT_FALLBACK_URL,
-  defaultCss,
-  defaultDocsCss,
-  baseUrlsForEnvs
+  DEFAULT_CSS,
+  DEFAULT_DOCS_CSS
 } from './constants/constants';
 
 const CopyPlugin = require('copy-webpack-plugin');
 
-const baseUrl = process.env.DOCS_ENV
-  ? baseUrlsForEnvs[process.env.DOCS_ENV]
-  : '/';
-const chiAssetsSourceURL =
-  process.env.DOCS_ENV === 'development'
-    ? `${TEMP_DEVELOPMENT_FALLBACK_URL}/`
-    : baseUrl;
+const CHI_ASSETS_SOURCE_URL =
+  DOCS_ENV === 'development' ? `${TEMP_DEVELOPMENT_FALLBACK_URL}/` : BASE_URL;
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -34,31 +29,31 @@ export default {
       {
         rel: 'icon',
         type: 'image/x-icon',
-        href: `${chiAssetsSourceURL}assets/themes/lumen/images/favicon.ico`
+        href: `${CHI_ASSETS_SOURCE_URL}assets/themes/lumen/images/favicon.ico`
       },
       {
         rel: 'stylesheet',
         id: 'chi-css',
         type: 'text/css',
-        href: `${chiAssetsSourceURL}${defaultCss}`
+        href: `${CHI_ASSETS_SOURCE_URL}${DEFAULT_CSS}`
       },
       {
         rel: 'stylesheet',
         type: 'text/css',
         id: 'chi-docs-css',
-        href: `${chiAssetsSourceURL}${defaultDocsCss}`
+        href: `${CHI_ASSETS_SOURCE_URL}${DEFAULT_DOCS_CSS}`
       }
     ],
     script: [
       {
-        src: `${chiAssetsSourceURL}js/chi.js`
+        src: `${CHI_ASSETS_SOURCE_URL}js/chi.js`
       },
       {
-        src: `${chiAssetsSourceURL}js/ce/ux-chi-ce/ux-chi-ce.esm.js`,
+        src: `${CHI_ASSETS_SOURCE_URL}js/ce/ux-chi-ce/ux-chi-ce.esm.js`,
         type: 'module'
       },
       {
-        src: `${chiAssetsSourceURL}js/ce/ux-chi-ce/ux-chi-ce.js`
+        src: `${CHI_ASSETS_SOURCE_URL}js/ce/ux-chi-ce/ux-chi-ce.js`
       }
     ]
   },
@@ -75,7 +70,8 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build'
+    '@nuxt/typescript-build',
+    '@nuxt/image'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -112,7 +108,7 @@ export default {
     ]
   },
   router: {
-    base: baseUrl
+    base: BASE_URL
   },
   target: 'static',
   generate: {
@@ -154,9 +150,10 @@ export default {
       '/templates/state',
       '/templates/app-layout',
       '/templates/error-404',
-      ...NAVIGATION_COMPONENTS_ITEMS.filter(item => item.href).map(
-        item => item.href
-      )
+      '/components/icon', // To-do, must be removed after full migration
+      ...NAVIGATION_COMPONENTS_ITEMS.map(item => {
+        return `/${item.href}`
+      })
     ]
   }
 };

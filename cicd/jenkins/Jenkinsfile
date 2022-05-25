@@ -884,16 +884,15 @@ PolicyDocument
             steps {
               script {
                 sh "rm -rf dist"
+                unstash name: "DIST-CHI-DOCUMENTATION"
                 unstash name: "DIST-CHI"
                 jslBuildAndPushToNexus('./cicd/docker/nginx/Dockerfile')
-
                 def chiManifest = 'chiManifest.yml'
                 def chiManifestFile = "./${chiManifest}"
                 sh "rm -rf ${chiManifestFile}"
                 jslGenerateManifestForSimpleNginx(chiManifestFile)
                 jslDeployK8s(chiManifestFile)
                 archiveArtifacts artifacts: chiManifest, fingerprint: true
-
                 echo "This will publish dev build to K8s"
                 if (env.CHANGE_ID != null) {
                   echo "Sending Jira Deployment for DEV"

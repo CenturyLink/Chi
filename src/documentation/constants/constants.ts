@@ -1,6 +1,6 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
-export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.13.0`;
+export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.13.1`;
 export const THEMES = {
   centurylink: {
     label: 'CenturyLink',
@@ -21,8 +21,8 @@ export const THEMES = {
     docsCss: `assets/themes/portal/docs.css`
   }
 };
-export const defaultCss = THEMES[DEFAULT_THEME].css;
-export const defaultDocsCss = THEMES[DEFAULT_THEME].docsCss;
+export const DEFAULT_CSS = THEMES[DEFAULT_THEME].css;
+export const DEFAULT_DOCS_CSS = THEMES[DEFAULT_THEME].docsCss;
 
 export const standardComponentPageTabs = [
   {
@@ -44,271 +44,273 @@ export const COMPONENT_EXAMPLE_EVENTS = {
   CHI_HEAD_TABS_CHANGE: 'chiHeadTabsChange'
 };
 
-export const baseUrlsForEnvs = {
+export const DOCS_ENV = process.env.DOCS_ENV;
+export const BASE_URLS_FOR_ENVS = {
   production: `/chi/${CHI_VERSION}/`, // assets.ctl.io, lib.lumen.io, staging
   development: '/', // Local
   pr: '/' // PR instances
 };
 
-export const NAVIGATION_BASE_URL =
-  process.env.DOCS_ENV && process.env.DOCS_ENV === 'production'
-    ? baseUrlsForEnvs.production
+export const BASE_URL =
+  DOCS_ENV &&
+  (DOCS_ENV === 'production' || DOCS_ENV === 'pr' || DOCS_ENV === 'development')
+    ? BASE_URLS_FOR_ENVS[DOCS_ENV]
     : '/';
 
 export const NAVIGATION_COMPONENTS_ITEMS = [
   {
-    href: `${NAVIGATION_BASE_URL}components/accordion`,
+    href: `components/accordion`,
     label: 'Accordion',
     source: 'pug'
   },
-  { to: `/components/activity`, label: 'Activity', source: 'vue' },
+  { href: `components/activity`, label: 'Activity', source: 'pug' },
   {
-    href: `${NAVIGATION_BASE_URL}components/alert`,
+    href: `components/alert`,
     label: 'Alert',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/avatar`,
+    href: `components/avatar`,
     label: 'Avatar',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/badge`,
+    href: `components/badge`,
     label: 'Badge',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/brand`,
+    href: `components/brand`,
     label: 'Brand',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/breadcrumb`,
+    href: `components/breadcrumb`,
     label: 'Breadcrumb',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/button`,
+    href: `components/button`,
     label: 'Button',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/button-group`,
+    href: `components/button-group`,
     label: 'Button group',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/card`,
+    href: `components/card`,
     label: 'Card',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/carousel`,
+    href: `components/carousel`,
     label: 'Carousel',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/forms/checkbox`,
+    href: `components/forms/checkbox`,
     label: 'Checkbox',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/data-table`,
+    href: `components/data-table`,
     label: 'Data table',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/date-picker`,
+    href: `components/date-picker`,
     label: 'Date picker',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/divider`,
+    href: `components/divider`,
     label: 'Divider',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/drawer`,
+    href: `components/drawer`,
     label: 'Drawer',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/dropdown`,
+    href: `components/dropdown`,
     label: 'Dropdown',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/expansion-panel`,
+    href: `components/expansion-panel`,
     label: 'Expansion panel',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/forms/file-input`,
+    href: `components/forms/file-input`,
     label: 'File input',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/flag-icon`,
+    href: `components/flag-icon`,
     label: 'Flag icon',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/footer`,
+    href: `components/footer`,
     label: 'Footer',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/header`,
+    href: `components/header`,
     label: 'Header',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/icon`,
+    href: `components/icon`,
     label: 'Icon',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/label`,
+    href: `components/label`,
     label: 'Label',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/marketing-icon`,
+    href: `components/marketing-icon`,
     label: 'Marketing icon',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/mobile-navigation`,
+    href: `components/mobile-navigation`,
     label: 'Mobile navigation',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/modal`,
+    href: `components/modal`,
     label: 'Modal',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/forms/number-input`,
+    href: `components/forms/number-input`,
     label: 'Number input',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/pagination`,
+    href: `components/pagination`,
     label: 'Pagination',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/phone-input`,
+    href: `components/phone-input`,
     label: 'Phone Input',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/picker`,
+    href: `components/picker`,
     label: 'Picker',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/picker-group`,
+    href: `components/picker-group`,
     label: 'Picker group',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/popover`,
+    href: `components/popover`,
     label: 'Popover',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/price`,
+    href: `components/price`,
     label: 'Price',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/progress`,
+    href: `components/progress`,
     label: 'Progress',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/forms/radio-button`,
+    href: `components/forms/radio-button`,
     label: 'Radio button',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/forms/range-slider`,
+    href: `components/forms/range-slider`,
     label: 'Range slider',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/forms/search-input`,
+    href: `components/forms/search-input`,
     label: 'Search input',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/forms/select`,
+    href: `components/forms/select`,
     label: 'Select',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/sidenav`,
+    href: `components/sidenav`,
     label: 'Sidenav',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/skeleton`,
+    href: `components/skeleton`,
     label: 'Skeleton',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/spinner`,
+    href: `components/spinner`,
     label: 'Spinner',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/stat`,
+    href: `components/stat`,
     label: 'Stat',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/steps`,
+    href: `components/steps`,
     label: 'Steps',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/table`,
+    href: `components/table`,
     label: 'Table',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/tabs`,
+    href: `components/tabs`,
     label: 'Tabs',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/forms/text-input`,
+    href: `components/forms/text-input`,
     label: 'Text input',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/forms/textarea`,
+    href: `components/forms/textarea`,
     label: 'Textarea',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/time-picker`,
+    href: `components/time-picker`,
     label: 'Time picker',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/forms/toggle-switch`,
+    href: `components/forms/toggle-switch`,
     label: 'Toggle switch',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/toolbar`,
+    href: `components/toolbar`,
     label: 'Toolbar',
     source: 'pug'
   },
   {
-    href: `${NAVIGATION_BASE_URL}components/tooltip`,
+    href: `components/tooltip`,
     label: 'Tooltip',
     source: 'pug'
   }
