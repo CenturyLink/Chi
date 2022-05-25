@@ -84,12 +84,21 @@
                 &.-active {
                   & > a {
                     color: $color-text-secondary;
-                    border-color: $color-border-secondary;
                   }
                 }
 
                 &.chi-sliding-border {
                   background-color: $color-background-secondary;
+                }
+              }
+
+              &:not(.-sliding) {
+                & > li {
+                  &.-active {
+                    & > a {
+                      box-shadow: inset 0 -0.125rem 0 $color-border-secondary;
+                    }
+                  }
                 }
               }
             }
