@@ -21,9 +21,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import AppLayoutFooter from './_app-layout-footer.vue';
 import { BASE_HELP_LANGUAGES, FOOTER_LINKS } from './fixtures';
-import { _getFooterLinksList, _getLanguagesList } from './utilities';
-
-declare const chi: any;
+import { _baseWebComponentFooter, _baseHtmlBlueprintFooter } from './utilities';
 
 @Component({
   components: {
@@ -45,7 +43,18 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `<chi-main title="App title">
+        webcomponent: ``,
+        htmlblueprint: ``
+      }
+    };
+  }
+})
+export default class BaseHelp extends Vue {
+  created() {
+    this._createSnippets();
+  }
+  _createSnippets() {
+    this.$data.codeSnippets.webcomponent = `<chi-main title="App title">
   <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon" class="-ml--1">
     <chi-icon icon="circle-question-outline"></chi-icon>
   </chi-button>
@@ -53,31 +62,7 @@ declare const chi: any;
     Popover content.
   </chi-popover>
   <!-- App content goes here -->
-  <footer class="chi-footer" slot="footer">
-    <div class="chi-footer__content">
-      <div class="chi-footer__internal">
-        <div class="chi-footer__internal-content -mw--1200">
-          <div class="chi-dropdown chi-footer__language">
-            <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-globe-network"></i>
-                <span>English</span>
-              </div>
-            </a>
-            <div class="chi-dropdown__menu -w--sm -text--body">
-              ${_getLanguagesList()}
-            </div>
-          </div>
-          <div class="chi-footer__links">
-            <ul>
-              ${_getFooterLinksList()}
-            </ul>
-            <div class="chi-footer__copyright">&copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  ${_baseWebComponentFooter}
 </chi-main>
 
 <script>
@@ -87,9 +72,8 @@ declare const chi: any;
       var popoverElem = document.querySelector("#example__help-popover");
       popoverElem.toggle();
     });
-<\/script>
-`,
-        htmlblueprint: `<div class="chi-main">
+<\/script>`;
+    this.$data.codeSnippets.htmlblueprint = `<div class="chi-main">
   <div class="chi-main__header">
     <div class="chi-main__header-start">
       <div class="chi-main__title">
@@ -112,40 +96,13 @@ declare const chi: any;
   <div class="chi-main__content">
     <!-- App content goes here -->
   </div>
-  <footer class="chi-footer">
-    <div class="chi-footer__content">
-      <div class="chi-footer__internal">
-        <div class="chi-footer__internal-content -mw--1200">
-          <div class="chi-dropdown chi-footer__language">
-            <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-globe-network"></i>
-                <span>English</span>
-              </div>
-            </a>
-            <div class="chi-dropdown__menu -w--sm -text--body">
-              ${_getLanguagesList()}
-            </div>
-          </div>
-          <div class="chi-footer__links">
-            <ul>
-              ${_getFooterLinksList()}
-            </ul>
-            <div class="chi-footer__copyright">&copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  ${_baseHtmlBlueprintFooter}
 </div>
 
 <script>
   chi.dropdown(document.getElementById('language-dropdown-button'));
   chi.popover(document.getElementById('example__help-button'));
-<\/script>`
-      }
-    };
+<\/script>`;
   }
-})
-export default class BaseHelp extends Vue {}
+}
 </script>

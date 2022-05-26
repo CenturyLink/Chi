@@ -20,7 +20,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import AppLayoutFooter from './_app-layout-footer.vue';
-import { _getFooterLinksList, _getLanguagesList } from './utilities';
+import { _baseHtmlBlueprintFooter, _baseWebComponentFooter } from './utilities';
 @Component({
   components: {
     AppLayoutFooter
@@ -52,31 +52,7 @@ export default class Base extends Vue {
   _createSnippets() {
     this.$data.codeSnippets.webcomponent = `<chi-main title="App title">
   <!-- App content goes here -->
-  <footer class="chi-footer" slot="footer">
-    <div class="chi-footer__content">
-      <div class="chi-footer__internal">
-        <div class="chi-footer__internal-content -mw--1200">
-          <div class="chi-dropdown chi-footer__language">
-            <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-globe-network" aria-hidden="true"></i>
-                <span>English</span>
-              </div>
-            </a>
-            <div class="chi-dropdown__menu -w--sm -text--body">
-              ${_getLanguagesList()}
-            </div>
-          </div>
-          <div class="chi-footer__links">
-            <ul>
-              ${_getFooterLinksList()}
-            </ul>
-            <div class="chi-footer__copyright">&copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  ${_baseWebComponentFooter}
 </chi-main>
 
 <script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>
@@ -92,31 +68,7 @@ export default class Base extends Vue {
   <div class="chi-main__content">
     <!-- App content goes here -->
   </div>
-  <footer class="chi-footer">
-    <div class="chi-footer__content">
-      <div class="chi-footer__internal">
-        <div class="chi-footer__internal-content -mw--1200">
-          <div class="chi-dropdown chi-footer__language">
-            <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-globe-network" aria-hidden="true"></i>
-                <span>English</span>
-              </div>
-            </a>
-            <div class="chi-dropdown__menu -w--sm -text--body">
-              ${_getLanguagesList()}
-            </div>
-          </div>
-          <div class="chi-footer__links">
-            <ul>
-              ${_getFooterLinksList()}
-            </ul>
-            <div class="chi-footer__copyright">&copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  ${_baseHtmlBlueprintFooter}
 </div>
 
 <script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>
