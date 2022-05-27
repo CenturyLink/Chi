@@ -317,6 +317,8 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '5.14.0',
+  '5.13.1',
   '5.13.0',
   '5.12.0',
   '5.11.0',
