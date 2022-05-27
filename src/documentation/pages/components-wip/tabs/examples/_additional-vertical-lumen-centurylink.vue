@@ -50,30 +50,22 @@ export default class AdditionalVerticalLumenCenturyLink extends Vue {
   _getSubLinks(links: string[]) {
     let subLinks = '';
     links.forEach((subLink: string, subLinkIndex: number) => {
-      subLinks += `
-      <li${subLinkIndex === 0 ? ' class="-active"' : ''}>
-        <a href="#">${subLink}</a>
-      </li>`
+      subLinks += `\n     <li${subLinkIndex === 0 ? ' class="-active"' : ''}>\n       <a href="#">${subLink}</a>\n     </li>`
     })
       return subLinks;
   }
+
   _setCodeSnippet() {
     let codeSnippet = '', tabLinks = '';
     this.$data.tabLinks.forEach((tab: {[key: string]: any}, tabIndex: number) => {
-      tabLinks += `
-  <li${tabIndex === 0 ? ' class="-active"' : ''}>
-    <a href="#">${tab.link}</a>${tab.subLinks ? `
-    <ul class="chi-tabs__subtabs">${this._getSubLinks(tab.subLinks)}
-    </ul>` : ''}
-  </li>`
+      tabLinks += `\n  <li${tabIndex === 0 ? ' class="-active"' : ''}>\n   <a href="#">${tab.link}</a>${tab.subLinks ? `\n   <ul class="chi-tabs__subtabs">${this._getSubLinks(tab.subLinks)}\n   </ul>` : ''}\n  </li>`
     })
     this.$data.sizes.forEach((size: {[key: string]: string}, index: number) => {
-      codeSnippet += `<!-- ${size.name} -->
-<ul class="chi-tabs -vertical ${size.class}">${tabLinks}
-</ul>${index === this.$data.sizes.length - 1 ? '' : '\n\n'}`
+      codeSnippet += `<!-- ${size.name} -->\n<ul class="chi-tabs -vertical ${size.class}">${tabLinks}\n</ul>${index === this.$data.sizes.length - 1 ? '' : '\n\n'}`
     })
     this.$data.codeSnippets.htmlblueprint = codeSnippet
   }
+  
   created() {
     this._setCodeSnippet()
   }

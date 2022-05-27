@@ -1,13 +1,12 @@
 <template lang="pug">
-  <ComponentExample title="Vertical Subtabs" :id="exampleId" additionalClasses="-bg--grey-20" padding="-p--0" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
-    .-p--3(slot="example")
-      div(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'} -p--3`")
-        ul(:class="`chi-tabs ${selectedTabId === 'base' ? '' : '-inverse'} -vertical`")
-          li(:class="index === 0 ? '-active' : ''" v-for="(tab, index) in tabs")
-            a(href='#') {{tab}}
-            ul.chi-tabs__subtabs(v-if="index === 0")
-              li(:class="subTabindex === 0 ? '-active' : ''" v-for="(subTab, subTabindex) in subTabs")
-                a(href='#') {{subTab}}
+  <ComponentExample title="Vertical Subtabs" :id="exampleId" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
+    .-p--3(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'}`" slot="example")
+      ul.chi-tabs.-vertical(:class="selectedTabId === 'base' ? '' : '-inverse'")
+        li(:class="index === 0 ? '-active' : ''" v-for="(tab, index) in tabs")
+          a(href='#') {{tab}}
+          ul.chi-tabs__subtabs(v-if="index === 0")
+            li(:class="subTabindex === 0 ? '-active' : ''" v-for="(subTab, subTabindex) in subTabs")
+              a(href='#') {{subTab}}
     <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
       <pre class="language-html">
         <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code>
@@ -82,27 +81,17 @@ export default class VerticalSubtabsLumenCenturyLink extends Vue {
   _setCodeSnippets() {
     let subTabs = '', subTabLinks = ``;
       this.$data.subTabs.forEach((subTab: string, index: number) => {
-        subTabLinks += `
-      <li${index === 0 ? ' class="-active"' : ''}>
-        <a href="#">${subTab}</a>
-      </li>`
+        subTabLinks += `\n     <li${index === 0 ? ' class="-active"' : ''}>\n        <a href="#">${subTab}</a>\n     </li>`
       })
 
-    subTabs = `
-    <ul class="chi-tabs__subtabs">${subTabLinks}
-    </ul>`
+    subTabs = `\n    <ul class="chi-tabs__subtabs">${subTabLinks}\n    </ul>`
     this.$data.headTabs.forEach((headTab: any) => {
       let tabLinks = ''; 
       this.$data.tabs.forEach((tab: string, index: number) => {
-        tabLinks += `
-  <li ${index === 0 ? 'class="-active"' : ''}>
-    <a href="#">${tab}</a>${index === 0 ? 
-    subTabs : ''}
-  </li>`;
+        tabLinks += `\n  <li${index === 0 ? ' class="-active"' : ''}>\n    <a href="#">${tab}</a>${index === 0 ? `     ${subTabs}` : ''}\n  </li>`;
       });
 
-      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''} -vertical">${tabLinks}
-</ul>`
+      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''} -vertical">${tabLinks}\n</ul>`
     })
   }
 

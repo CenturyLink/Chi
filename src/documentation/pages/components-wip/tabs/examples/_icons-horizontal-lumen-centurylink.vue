@@ -1,12 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="Horizontal tabs with icons" additionalClasses="-bg--grey-20" padding="-p--0" :id="exampleId" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
-    .-p--3(slot="example")
-      div(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'} -px--3`")
-        ul(:class="`chi-tabs ${selectedTabId === 'base' ? '' : '-inverse'} -icons`" :ref="`example-icons-horizontal-${selectedTabId}`")
-          li(:class="index === 0 ? '-active' : ''" v-for="(tab, index) in tabs")
-            a(href='#')
-              i.chi-icon.icon-atom(aria-hidden="true")
-              span {{tab}}
+  <ComponentExample title="Horizontal tabs with icons" additionalClasses="-bg--grey-20" :id="exampleId" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
+    .-px--3(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'}`" slot="example")
+      ul.chi-tabs.-icons(:class="selectedTabId === 'base' ? '' : '-inverse'" :ref="`example-icons-horizontal-${selectedTabId}`")
+        li(:class="index === 0 ? '-active' : ''" v-for="(tab, index) in tabs")
+          a(href='#')
+            i.chi-icon.icon-atom(aria-hidden="true")
+            span {{tab}}
     <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
       <pre class="language-html">
         <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code>
@@ -85,17 +84,10 @@ export default class IconsHorizontalLumenCenturyLink extends Vue {
     this.$data.headTabs.forEach((headTab: any) => {
       let tabLinks = '';
       this.$data.tabs.forEach((tab: string, index: number) => {
-        tabLinks += `
-  <li ${index === 0 ? 'class="-active"' : ''}>
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>${tab}</span>
-    </a>
-  </li>`;
+        tabLinks += `\n  <li${index === 0 ? ' class="-active"' : ''}>\n    <a href="#">\n      <i class="chi-icon icon-atom" aria-hidden="true"></i>\n     <span>${tab}</span>\n   </a>\n  </li>`;
         });
 
-      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''} -icons">${tabLinks}
-</ul>`
+      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''} -icons">${tabLinks}\n</ul>`
     })
   }
 

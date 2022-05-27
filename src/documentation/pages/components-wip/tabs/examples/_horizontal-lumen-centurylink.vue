@@ -1,7 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Horizontal" :id="exampleId" additionalClasses="-bg--grey-20" padding="-p--0" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
-    .-p--3(slot="example")
-      div(:class="selectedTabId === 'base' ? '-bg--white' : '-bg--black'").-px--3
+  <ComponentExample title="Horizontal" :id="exampleId" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
+    div(slot="example")
+      div(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'}`").-px--3
         ul.chi-tabs(:class="selectedTabId === 'base' ? '' : '-inverse'" :id="`example-horizontal-${selectedTabId}`"
           role="tablist"
           :aria-label="selectedTabId === 'base' ? 'chi-tabs-horizontal' : 'chi-tabs-horizontal-inverse'"
@@ -95,23 +95,15 @@ export default class Horizontal extends Vue {
     this.$data.headTabs.forEach((headTab: any) => {
       let tabLinks = '', tabConents = '';
       this.$data.tabs.forEach((tab: number, index: number) => {
-        tabLinks += `
-  <li ${index === 0 ? 'class="-active"' : 'role="tab"'}>
-    <a
+        tabLinks += `\n  <li ${index === 0 ? 'class="-active"' : 'role="tab"'}>\n    <a
       href="#horizontal-${headTab.id}-${tab}"
       ${index === 0 ? 'role="tab"' : 'tabIndex="-1"'}
       aria-selected="${index === 0 ? 'true' : 'false'}"
-      aria-controls="horizontal-${headTab.id}${index === 0 ? '-active' : ''}">${index === 0 ? 'Active Tab' : 'Tab Link'}</a>
-  </li>`;
-        tabConents += `
-<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="example__tabs_horizontal_${headTab.id}-${tab}" role="tabpanel">Tab ${tab} content</div>`
+      aria-controls="horizontal-${headTab.id}${index === 0 ? '-active' : ''}">${index === 0 ? 'Active Tab' : 'Tab Link'}</a>\n  </li>`;
+        tabConents += `\n<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="example__tabs_horizontal_${headTab.id}-${tab}" role="tabpanel">Tab ${tab} content</div>`
       });
 
-      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example__tabs_horizontal_${headTab.id}" role="tablist" aria-label="chi-tabs-horizontal${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}
-</ul>
-${tabConents}
-
-<script>chi.tab(document.getElementById('example__tabs_horizontal_${headTab.id}'));<\/script>`
+      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example__tabs_horizontal_${headTab.id}" role="tablist" aria-label="chi-tabs-horizontal${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}\n</ul>\n${tabConents}\n\n<script>chi.tab(document.getElementById('example__tabs_horizontal_${headTab.id}'));<\/script>`
     })
   }
 

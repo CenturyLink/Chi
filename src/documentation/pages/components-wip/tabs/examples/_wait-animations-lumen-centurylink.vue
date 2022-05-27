@@ -7,13 +7,12 @@
     | component has the option to wait for the animation to finish and, then, it will redirect the user to the destination
     | URL. You can enable this behavior by setting the <code>waitForAnimations</code> option to <code>true</code>.
 
-  .div(slot='example')
-    ul.chi-tabs.chi-navigationExample.chi-customExample
-      li(
-        :class='index === 0 ? "-active" : ""',
-        v-for='(link, index) in tabLinks'
-      )
-        a(:href='`?tab=${index + 1}`') {{ link }}
+  ul.chi-tabs.chi-navigationExample.chi-customExample(slot='example')
+    li(
+      :class='index === 0 ? "-active" : ""',
+      v-for='(link, index) in tabLinks'
+    )
+      a(:href='`?tab=${index + 1}`') {{ link }}
   <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code> 
@@ -31,8 +30,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { HeadTabsInterface } from '../../../../models/models';
-
-declare const chi: any;
 
 @Component({
   data: () => {
@@ -92,25 +89,18 @@ export default class WaitAnimationsLumenCenturyLink extends Vue {
     this.$data.headTabs.forEach((headTab: any) => {
       let tabLinks = '';
       this.$data.tabLinks.forEach((tabLink: string, index: number) => {
-        tabLinks += `
-  <li ${index === 0 ? 'class="-active"' : ''}>
-    <a href="/>${tabLink}</a>
-  </li>`;
+        tabLinks += `\n  <li${index === 0 ? ' class="-active"' : ''}>\n    <a href="/">${tabLink}</a>\n  </li>`;
       });
 
-      headTab.codeSnippets.htmlBlueprint.code = `<ul id="example__tabs_navigation_${headTab.id}" class="chi-tabs">${tabLinks}
-</ul>
-
-<script>
-const navigationElem = document.getElementById('#example__tabs_navigation_${headTab.id}');
-chi.navigation(
-  navigationElem,
-  {waitForAnimations: ${headTab.id === 'enabled' ? 'true' : 'false'}}
-);
-<\/script>
-`;
+      headTab.codeSnippets.htmlBlueprint.code = `<ul id="example__tabs_navigation_${headTab.id}" class="chi-tabs">${tabLinks}\n</ul>\n\n<script>
+  const navigationElem = document.getElementById('#example__tabs_navigation_${headTab.id}');
+  chi.navigation(
+    navigationElem,
+    {waitForAnimations: ${headTab.id === 'enabled' ? 'true' : 'false'}}
+  );\n<\/script>`;
     });
   }
+
   created() {
     this.selectedTab = this.$data.headTabs[0];
     this._setCodeSnippets();

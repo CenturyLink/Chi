@@ -5,27 +5,25 @@
       | can be replicated on the navigation component. For example, you can use the <code>-animate</code> class
       | on the dropdowns to make the chevron rotate when activated.
 
-    <Wrapper slot="example">
-      ul.chi-tabs.chi-navigationExample#navigation-components-contained(ref="example__tabs_navigation_components_contained")
-        li.chi-dropdown.-active
-          a.chi-dropdown__trigger.-animate(href='#') Active Tab
-          .chi-dropdown__menu
-            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 1
-            a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 2
-            div
-              a.chi-dropdown__menu-item.chi-dropdown__trigger.-animate(href='#') Elem 3 more
-              .chi-dropdown__menu
-                a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="(elem, index) in activeElements" :index="index") {{ elem }}
-            a.chi-dropdown__menu-item(href='#') Elem 4
-        li
-          a(href='#exampleHashTarget') Tab Link
-        li
-          a(href='#exampleHashTarget') Tab Link
-        li.chi-dropdown
-          a.chi-dropdown__trigger.-animate(href='#') Tab Link
-          .chi-dropdown__menu
-            a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="(elem, index) in tabElements" :index="index") {{ elem }}
-    </Wrapper>
+    ul.chi-tabs.chi-navigationExample#navigation-components-contained(ref="example__tabs_navigation_components_contained" slot="example")
+      li.chi-dropdown.-active
+        a.chi-dropdown__trigger.-animate(href='#') Active Tab
+        .chi-dropdown__menu
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 1
+          a.chi-dropdown__menu-item(href='#exampleHashTarget') Elem 2
+          div
+            a.chi-dropdown__menu-item.chi-dropdown__trigger.-animate(href='#') Elem 3 more
+            .chi-dropdown__menu
+              a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="(elem, index) in activeElements" :index="index") {{ elem }}
+          a.chi-dropdown__menu-item(href='#') Elem 4
+      li
+        a(href='#exampleHashTarget') Tab Link
+      li
+        a(href='#exampleHashTarget') Tab Link
+      li.chi-dropdown
+        a.chi-dropdown__trigger.-animate(href='#') Tab Link
+        .chi-dropdown__menu
+          a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="(elem, index) in tabElements" :index="index") {{ elem }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -69,13 +67,11 @@ declare const chi: any;
 })
 export default class ContainedComponentLumenCenturyLink extends Vue {
   navigation: any;
+
   _setCodeSnippet() {
     let activeElements = '', tabLinks = '';
     ['Tab Link', 'Tab Link'].forEach(tab => {
-      tabLinks += `
-  <li>
-    <a href="#">${tab}</a>
-  </li>`
+      tabLinks += `\n  <li>\n    <a href="#">${tab}</a>\n  </li>`
     })
     this.$data.activeElements.forEach((activeEl: string) => {
       activeElements += `<a class="chi-dropdown__menu-item" href="#">${activeEl}</a>`
@@ -87,9 +83,7 @@ export default class ContainedComponentLumenCenturyLink extends Vue {
       <a class="chi-dropdown__menu-item" href="#">Elem 1</a><a class="chi-dropdown__menu-item" href="#">Elem 2</a>
       <div>
         <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
-        <div class="chi-dropdown__menu">
-          ${activeElements}
-        </div>
+        <div class="chi-dropdown__menu">\n          ${activeElements}\n       </div>
       </div><a class="chi-dropdown__menu-item" href="#">Elem 4</a>
     </div>
   </li>${tabLinks}
@@ -99,13 +93,13 @@ export default class ContainedComponentLumenCenturyLink extends Vue {
       <a class="chi-dropdown__menu-item" href="#">Element 1</a><a class="chi-dropdown__menu-item" href="#">Element 2</a><a class="chi-dropdown__menu-item" href="#">Element 3</a>
     </div>
   </li>
-</ul>
-
-<script>chi.navigation(document.getElementById('example__tabs_navigation_contained'));<\/script>`
+</ul>\n\n<script>chi.navigation(document.getElementById('example__tabs_navigation_contained'));<\/script>`
   }
+
   created() {
     this._setCodeSnippet()
   }
+
   mounted() {
     this.navigation = chi.navigation(this.$refs['example__tabs_navigation_components_contained'] as HTMLElement);
   }

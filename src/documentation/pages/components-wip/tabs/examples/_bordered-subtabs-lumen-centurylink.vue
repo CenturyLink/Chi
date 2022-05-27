@@ -1,7 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Bordered" :id="exampleId" additionalClasses="-bg--grey-20" padding="-p--0" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
-    .-p--3(:class="selectedTabId === 'base' ? '' : '-bg--grey-20'" slot="example")
-      div(:class="selectedTabId === 'base' ? '-bg--white' : '-bg--black'").-p--3
+  <ComponentExample title="Bordered" :id="exampleId" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
+    div(:class="selectedTabId === 'base' ? '' : '-bg--grey-20'" slot="example")
+      .-p--3(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'}`")
         ul.chi-tabs(:class="selectedTabId === 'base' ? '' : '-inverse'").-border
           li(:class="index === 0 ? '-active' : ''" v-for="(tab, index) in tabs")
             a(href='#') {{tab}}
@@ -79,14 +79,10 @@ export default class BorderedSubtabsLumenCenturyLink extends Vue {
     this.$data.headTabs.forEach((headTab: any) => {
       let tabLinks = ''; 
       this.$data.tabs.forEach((tab: string, index: number) => {
-        tabLinks += `
-  <li ${index === 0 ? 'class="-active"' : ''}>
-    <a href="#">${tab}</a>
-  </li>`;
+        tabLinks += `\n  <li${index === 0 ? ' class="-active"' : ''}>\n    <a href="#">${tab}</a>\n  </li>`;
       });
 
-      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''} -border">${tabLinks}
-</ul>`
+      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''} -border">${tabLinks}\n</ul>`
     })
   }
 

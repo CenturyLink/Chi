@@ -61,18 +61,14 @@ export default class AdditionalHorizontalLumenCenturyLink extends Vue {
   _setCodeSnippet() {
     let codeSnippet = '', tabLinks = '';
       this.$data.tabLinks.forEach((tab: string, index: number) => {
-        tabLinks += `
-  <li ${index === 0 ? 'class="-active"' : ''}>
-    <a href="#">${tab}</a>
-  </li>`;
+        tabLinks += `\n  <li ${index === 0 ? 'class="-active"' : ''}>\n    <a href="#">${tab}</a>\n  </li>`;
     })
     this.$data.sizes.forEach((size: {[key: string]: string}, index: number) => {
-      codeSnippet += `<!-- ${size.name} -->
-<ul class="chi-tabs ${size.class}">${tabLinks}
-</ul>${index === this.$data.sizes.length - 1 ? '' : '\n\n'}`
+      codeSnippet += `<!-- ${size.name} -->\n<ul class="chi-tabs ${size.class}">${tabLinks}\n</ul>${index === this.$data.sizes.length - 1 ? '' : '\n\n'}`
     })
     this.$data.codeSnippets.htmlblueprint = codeSnippet
   }
+  
   created() {
     this._setCodeSnippet()
   }

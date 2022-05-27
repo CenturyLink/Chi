@@ -1,15 +1,14 @@
 <template lang="pug">
-  <ComponentExample title="Vertical tabs with icons" :id="exampleId" additionalClasses="-bg--grey-20" padding="-p--0" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
-    .-p--3(slot="example")
-      div(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'} -p--3`")
-        ul(:class="`chi-tabs ${selectedTabId === 'base' ? '' : '-inverse'} -vertical -icons`")
-          li(:class="index === 0 ? '-active' : ''" v-for="(tab, index) in tabs")
-            a(href='#')
-              i.chi-icon.icon-atom(aria-hidden="true")
-              span {{tab}}
-            ul.chi-tabs__subtabs(v-if="index === 0")
-              li(:class="subTabindex === 0 ? '-active' : ''" v-for="(subTab, subTabindex) in ['Subtab Link', 'Subtab Link', 'Subtab Link']")
-                a(href='#') {{subTab}}           
+  <ComponentExample title="Vertical tabs with icons" :id="exampleId" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
+    .-p--3(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'}`" slot="example")
+      ul.chi-tabs.-vertical.-icons(:class="selectedTabId === 'base' ? '' : '-inverse'")
+        li(:class="index === 0 ? '-active' : ''" v-for="(tab, index) in tabs")
+          a(href='#')
+            i.chi-icon.icon-atom(aria-hidden="true")
+            span {{tab}}
+          ul.chi-tabs__subtabs(v-if="index === 0")
+            li(:class="subTabindex === 0 ? '-active' : ''" v-for="(subTab, subTabindex) in ['Subtab Link', 'Subtab Link', 'Subtab Link']")
+              a(href='#') {{subTab}}           
     <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
       <pre class="language-html">
         <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code>
@@ -26,8 +25,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { HeadTabsInterface } from '../../../../models/models';
-
-declare const chi: any;
 
 @Component({
   data: () => {
@@ -86,17 +83,10 @@ export default class IconsVerticalLumenCenturyLink extends Vue {
     this.$data.headTabs.forEach((headTab: any) => {
       let tabLinks = '';
       this.$data.tabs.forEach((tab: string, index: number) => {
-        tabLinks += `
-  <li ${index === 0 ? 'class="-active"' : ''}>
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>${tab}</span>
-    </a>
-  </li>`;
+        tabLinks += `\n  <li${index === 0 ? ' class="-active"' : ''}>\n    <a href="#">\n      <i class="chi-icon icon-atom" aria-hidden="true"></i>\n     <span>${tab}</span>\n   </a>\n  </li>`;
       });
 
-      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''} -vertical -icons">${tabLinks}
-</ul>`
+      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''} -vertical -icons">${tabLinks}\n</ul>`
     })
   }
 
