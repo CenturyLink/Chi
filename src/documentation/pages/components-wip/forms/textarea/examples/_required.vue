@@ -42,7 +42,7 @@ import { Component, Vue } from 'vue-property-decorator';
       codeSnippets: {
         webcomponent: `<div class="chi-form__item">
   <chi-label for="example__required" required>Label</chi-label>
-  <chitextarea id="example__required" required></chi-textarea>
+  <chi-textarea id="example__required" required></chi-textarea>
 </div>`,
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example__required">
