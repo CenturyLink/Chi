@@ -1224,51 +1224,15 @@ h2 Examples
                 button#drawer-trigger-actions1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-2' aria-label="Button action")
                   .chi-button__content
                     i.chi-icon.icon-more-vert(aria-hidden="true")
-      .chi-save-view
-        .chi-save-view__base
-          .chi-save-view__start
+        .chi-toolbar__ribbon
+          .chi-toolbar__start
             i.chi-icon.icon-arrow-down.-xs(aria-hidden="true")
-            .chi-save-view__results
-              span.chi-save-view__label Search Results 
+            .chi-toolbar__results
+              span.chi-toolbar__label Search Results 
               span (1-40 of 78)
             .chi-divider.-vertical
             chi-link(href='#', size='md') Save View
-          .chi-save-view__end
-            button.chi-button.-icon.-flat(aria-label="Button action")
-              .chi-button__content
-                i.chi-icon.icon-x(aria-hidden="true")
-        .chi-save-view__save
-          .chi-save-view__start
-            i.chi-icon.icon-arrow-down.-xs(aria-hidden="true")
-            .chi-save-view__results
-              span.chi-save-view__label View
-            input#example__base.chi-input(type="text" aria-label="Save view")
-            .chi-divider.-vertical
-            .chi-checkbox
-              input#example__base.chi-checkbox__input(type='checkbox')
-              label.chi-checkbox__label(for='example__base') Default
-          .chi-save-view__end
-            button.chi-button.-xs(aria-label="Button cancel") Cancel
-            button.chi-button.-primary.-xs(aria-label="Button save") Save
-        .chi-save-view__edit
-          .chi-save-view__start
-            i.chi-icon.icon-arrow-down.-xs(aria-hidden="true")
-            .chi-save-view__results
-              span.chi-save-view__label View
-            .chi-divider.-vertical
-            button.chi-button.-icon.-flat.-sm(id="button-edit" aria-label="Edit" data-tooltip="Edit" data-position="top")
-              .chi-button__content
-                i.chi-icon.icon-edit(aria-hidden="true")
-            button.chi-button.-icon.-flat.-sm(id="button-delete" aria-label="Delete" data-tooltip="Delete" data-position="top")
-              .chi-button__content
-                i.chi-icon.icon-delete(aria-hidden="true")
-            .chi-save-view__delete
-              .chi-divider.-vertical
-              .chi-save-view__results
-                span.chi-save-view__label Are you sure you want to delete this Saved View?
-              button.chi-button.-xs(aria-label="Button cancel") Cancel
-              button.chi-button.-primary.-xs(aria-label="Button delete") Delete
-          .chi-save-view__end
+          .chi-toolbar__end
             button.chi-button.-icon.-flat(aria-label="Button action")
               .chi-button__content
                 i.chi-icon.icon-x(aria-hidden="true")
