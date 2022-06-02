@@ -107,41 +107,46 @@
       <div :class="[padding || '-p--3', additionalClasses]">
         <slot name="example"></slot>
       </div>
-      <div class="example-tabs -pl--2">
-        <ul
-          class="chi-tabs -animated"
-          :id="'code-snippet-tabs-' + id"
-          role="tabs"
-        >
-          <li
-            :class="[
-              tab.active ? '-active' : '',
-              tab.disabled ? '-disabled' : ''
-            ]"
-            v-for="tab in tabs"
-            :key="tab.id"
+      <template v-if="tabs">
+        <div class="example-tabs -pl--2">
+          <ul
+            class="chi-tabs -animated"
+            :id="'code-snippet-tabs-' + id"
+            role="tabs"
           >
-            <a
-              role="tab"
-              :aria-controls="'#example-' + id + '-' + tab.id"
-              :aria-selected="tab.active ? true : false"
-              :href="'#example-' + id + '-' + tab.id"
-              :tabindex="tab.disabled ? -1 : null"
+            <li
+              :class="[
+                tab.active ? '-active' : '',
+                tab.disabled ? '-disabled' : ''
+              ]"
+              v-for="tab in tabs"
+              :key="tab.id"
             >
-              {{ tab.label }}
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div
-        :class="['chi-tabs-panel', tab.active ? '-active' : '']"
-        v-for="tab in tabs"
-        :key="tab.id"
-        :id="'example-' + id + '-' + tab.id"
-        role="tabpanel"
-      >
-        <slot :name="'code-' + tab.id"></slot>
-      </div>
+              <a
+                role="tab"
+                :aria-controls="'#example-' + id + '-' + tab.id"
+                :aria-selected="tab.active ? true : false"
+                :href="'#example-' + id + '-' + tab.id"
+                :tabindex="tab.disabled ? -1 : null"
+              >
+                {{ tab.label }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div
+          :class="['chi-tabs-panel', tab.active ? '-active' : '']"
+          v-for="tab in tabs"
+          :key="tab.id"
+          :id="'example-' + id + '-' + tab.id"
+          role="tabpanel"
+        >
+          <slot :name="'code-' + tab.id"></slot>
+        </div>
+      </template>
+      <template v-if="hasSingleHtmlCode">
+        <slot name="single-html-code"></slot>
+      </template>
     </div>
   </div>
 </template>
@@ -180,6 +185,7 @@ export default class ComponentExample extends Vue {
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
   @Prop() additionalStyle?: string;
+  @Prop() hasSingleHtmlCode?: string;
 
   chiTabs: any;
   chiHeadTabs: any;

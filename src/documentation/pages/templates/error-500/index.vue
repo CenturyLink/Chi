@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    <TitleBar title="Error 404" description="Basic 404 level error page template. Indicates a client error, such as a misspelled URL." />
+    <TitleBar title="Error 500" description="Basic 500 level error page template. Indicates a server side error, so no dynamic information is presented." />
     .chi-grid__container.-pt--3
       .-centurylink--hide
         .example.-mb--3
@@ -19,11 +19,11 @@
                 div.-w--100.-mw--480
                   .chi-card.-b--0.-bg--none
                     .chi-card__content.-text--center
-                      h1.-m--2 404
-                      h2.-text--h3 Page not found
-                      p.-text.-pb--2 We're Sorry! The page you requested is currently unavailable.
+                      h1.-m--2 500
+                      h2.-text--h3 Internal Server Error
+                      p.-text.-pb--2 We're sorry, the server encountered an internal error and was unable to complete your request.
           <pre class="language-html">
-            <code v-highlight="['centurylink'].includes($store.state.themes.theme) ? $data._centuryLinkCodeSnippet : $data._lumenCodeSnippet" ref="error404Code" class="html"></code>
+            <code v-highlight="['centurylink'].includes($store.state.themes.theme) ? $data._centuryLinkCodeSnippet : $data._lumenCodeSnippet" class="html"></code>
           </pre>
 </template>
 
@@ -44,7 +44,7 @@ import { _centuryLinkLogoData, _lumenLogoData, _lumenLogoSvgDataList, _centuryLi
     };
   }
 })
-export default class Error404 extends Vue {
+export default class Error500 extends Vue {
   created(){
     this._createCodeSnippet();
   }
@@ -63,14 +63,15 @@ export default class Error404 extends Vue {
     <div class="-w--100 -mw--480">
       <div class="chi-card -b--0 -bg--none">
         <div class="chi-card__content -text--center">
-          <h1 class="-m--2">404</h1>
-          <h2 class="-text--h3">Page not found</h2>
-          <p class="-text -pb--2">We're Sorry! The page you requested is currently unavailable.</p>
+          <h1 class="-m--2">500</h1>
+          <h2 class="-text--h3">Internal Server Error</h2>
+          <p class="-text -pb--2">We're sorry, the server encountered an internal error and was unable to complete your request.</p>
         </div>
       </div>
     </div>
   </div>
-</div>`;
+</div>
+`;
     this.$data._centuryLinkCodeSnippet = `<div class="chi-app -bg--grey-10">
   <header class="chi-header">
     <div class="chi-header__content -justify-content--center">
@@ -85,14 +86,15 @@ export default class Error404 extends Vue {
     <div class="-w--100 -mw--480">
       <div class="chi-card -b--0 -bg--none">
         <div class="chi-card__content -text--center">
-          <h1 class="-m--2">404</h1>
-          <h2 class="-text--h3">Page not found</h2>
-          <p class="-text -pb--2">We're Sorry! The page you requested is currently unavailable.</p>
+          <h1 class="-m--2">500</h1>
+          <h2 class="-text--h3">Internal Server Error</h2>
+          <p class="-text -pb--2">We're sorry, the server encountered an internal error and was unable to complete your request.</p>
         </div>
       </div>
     </div>
   </div>
-</div>`;
+</div>
+`;
   }
   _getLumenSvgSnippet(){
     return `<svg viewBox="${_centuryLinkLogoData.viewBox}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${_lumenLogoSvgDataList.map((svgData) =>`<path d="${svgData.path}" fill="${svgData.fill}"/>`).join("")}</svg>`;
