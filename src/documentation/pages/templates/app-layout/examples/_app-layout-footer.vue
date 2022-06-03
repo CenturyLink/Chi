@@ -4,7 +4,7 @@
       .chi-footer__internal
         .chi-footer__internal-content.-mw--1200
           .chi-dropdown.chi-footer__language
-            a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language-dropdown-button3" ref="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language")
+            a.chi-button.-icon.-flat.-sm.chi-dropdown__trigger(id="language-dropdown-button3" :class="['centurylink'].includes($store.state.themes.theme) ? '' : '-light'" ref="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language")
               .chi-button__content
                 i.chi-icon.icon-globe-network
                 span English
