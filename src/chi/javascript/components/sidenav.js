@@ -745,11 +745,14 @@ class Sidenav extends Component {
               for (let cur = e.target; cur.nodeName !== 'LI'; cur = cur.parentNode) {
                 if (cur.nodeName === 'A') {
                   const idDrawerToCheck = cur.getAttribute('href');
-                  const drawerToCheck = self._elem.querySelector(`.${SIDENAV_DRAWERS_CLASS} ${idDrawerToCheck}`);
 
-                  if (drawerToCheck) {
-                    if (!drawerToCheck.classList.contains(chi.classes.ANIMATED)) {
-                      self._resetDrawerAnimation();
+                  if (idDrawerToCheck && idDrawerToCheck[0] === '#') {
+                    const drawerToCheck = self._elem.querySelector(`.${SIDENAV_DRAWERS_CLASS} ${idDrawerToCheck}`);
+  
+                    if (drawerToCheck) {
+                      if (!drawerToCheck.classList.contains(chi.classes.ANIMATED)) {
+                        self._resetDrawerAnimation();
+                      }
                     }
                   }
                 }

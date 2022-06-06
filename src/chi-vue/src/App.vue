@@ -3,6 +3,7 @@
     <div class="-p--4">
       <DataTableClientView />
       <DataTableServerView class="-mt--10" />
+      <ExpansionPanelView />
       <PaginationView />
       <DrawerView />
       <TooltipView />
@@ -13,6 +14,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import ExpansionPanelView from './views/ExpansionPanelView.vue';
 import PaginationView from './views/PaginationView.vue';
 import DrawerView from './views/DrawerView.vue';
 import TooltipView from './views/TooltipView.vue';
@@ -25,6 +27,7 @@ import SearchInputView from './views/SearchInputView.vue';
     DataTableClientView,
     DataTableServerView,
     DrawerView,
+    ExpansionPanelView,
     PaginationView,
     SearchInputView,
     TooltipView,
