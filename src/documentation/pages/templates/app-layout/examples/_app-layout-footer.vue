@@ -6,7 +6,7 @@
           .chi-dropdown.chi-footer__language
             a.chi-button.-icon.-flat.-sm.chi-dropdown__trigger(id="language-dropdown-button3" :class="['centurylink'].includes($store.state.themes.theme) ? '' : '-light'" ref="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language")
               .chi-button__content
-                i.chi-icon.icon-globe-network
+                i.chi-icon.icon-globe-network(aria-hidden="true")
                 span English
             .chi-dropdown__menu.-w--sm.-text--body
               a.chi-dropdown__menu-item(v-for="(lang, index) in languages" :key="index" href="#" :class="index === 0 ? '-active' : ''")

@@ -97,11 +97,11 @@ export default class Error500 extends Vue {
 `;
   }
   _getLumenSvgSnippet(){
-    return `<svg viewBox="${_centuryLinkLogoData.viewBox}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${_lumenLogoSvgDataList.map((svgData) =>`<path d="${svgData.path}" fill="${svgData.fill}"/>`).join("")}</svg>`;
+    return `<svg viewBox="${_lumenLogoData.viewBox}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${_lumenLogoSvgDataList.map((svgData) =>`<path d="${svgData.path}" fill="${svgData.fill}"/>`).join("")}</svg>`;
   }
   _getCenturyLinkSvgSnippet(){
     return `<svg viewBox="${_centuryLinkLogoData.viewBox}" xmlns="http://www.w3.org/2000/svg" data-brand-type="black" aria-hidden="true">
-            ${_centuryLinkLogoSvgDataList.map((svgData, index) =>`<path d="${svgData.path}" fill="${svgData.fill}"/>${index + 1 === _centuryLinkLogoSvgDataList.length ? '' :`
+            ${_centuryLinkLogoSvgDataList.map((svgData, index) =>`<path fill="${svgData.fill}" d="${svgData.path}"></path>${index + 1 === _centuryLinkLogoSvgDataList.length ? '' :`
             `}`).join("")}
           </svg>`;
   }

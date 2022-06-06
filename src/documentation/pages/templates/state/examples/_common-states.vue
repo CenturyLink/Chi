@@ -10,7 +10,7 @@
                 circle(class="path" :cx="stateData.circle.cx" :cy="stateData.circle.cy" :r="stateData.circle.radius" :fill="stateData.circle.fill" :stroke-width="stateData.circle.strokeWidth")
               i(v-else :class="stateData.icon" aria-hidden="true")
               span {{stateData.label}}
-      <pre class="language-html-hella" slot="single-html-code">
+      <pre class="language-html" slot="single-html-code">
         <code v-highlight="$props.stateCodeSnippet" class="html"></code>
       </pre>
   </ComponentExample>

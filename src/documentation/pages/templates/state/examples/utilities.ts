@@ -83,7 +83,7 @@ export const _applicationStateDataList: StateData[] = [
     }
 ];
 
-const _createCodeSnippet = (stateDataList: StateData[]): string => {
+const _createCodeSnippet = (stateDataList: StateData[]) => {
     let _codeSnippet = ``;
     stateDataList.forEach((stateType, index) => {
       _codeSnippet += `<!-- ${stateType.label} -->
@@ -92,8 +92,8 @@ const _createCodeSnippet = (stateDataList: StateData[]): string => {
     ${_getIconSnippet(stateType)}
     <span>${stateType.label}</span>
   </div>
-</div>${index++ === _applicationStateDataList.length ? `
-`:''}`
+</div>${index+1 === stateDataList.length ? '' : `
+`}`
     });
     return _codeSnippet;
 }

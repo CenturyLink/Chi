@@ -4,9 +4,13 @@
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | App content goes here
       <AppLayoutFooter />
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
+    <Wrapper slot="code-webcomponent">
+      .p--text.chi-tab__description
+        | Use the <code>subtitle=""</code> attribute to display a subtitle next to the title of the application layout.
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+      </pre>
+    </Wrapper>
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>

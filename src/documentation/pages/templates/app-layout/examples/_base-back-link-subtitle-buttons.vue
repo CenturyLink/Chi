@@ -5,9 +5,13 @@
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | App content goes here
       <AppLayoutFooter />
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
+    <Wrapper slot="code-webcomponent">
+      .p--text.chi-tab__description
+        | Add buttons in the header of the application layout by defining <code>slot="header-actions"</code> on each <code>chi-button</code>.
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+      </pre>
+    </Wrapper>
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -44,10 +48,10 @@ import { _baseHtmlBlueprintFooter, _baseWebComponentFooter } from './utilities';
   }
 })
 export default class BaseSubtitleButtons extends Vue {
-  created(){
+  created() {
     this._createSnippets();
   }
-  _createSnippets(){
+  _createSnippets() {
     this.$data.codeSnippets.webcomponent = `<chi-main backlink="Back link" title="App title" subtitle="App subtitle">
   <button class="chi-button -primary" slot="header-actions">Primary</button>
   <!-- App content goes here -->

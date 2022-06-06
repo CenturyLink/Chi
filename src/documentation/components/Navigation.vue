@@ -141,15 +141,15 @@
         <div class="chi-collection__title">Templates</div>
         <ul class="chi-tabs__subtabs">
           <li>
-            <a href="templates/app-layout">App layout</a>
+            <a href="/templates/app-layout">App layout</a>
           </li>
           <li>
-            <a href="templates/error-404">Error 404</a>
+            <a href="/templates/error-404">Error 404</a>
           </li>
           <li>
-            <a href="templates/error-500">Error 500</a>
+            <a href="/templates/error-500">Error 500</a>
           </li>
-          <li><a href="templates/state">State</a></li>
+          <li><a href="/templates/state">State</a></li>
         </ul>
       </li>
     </ul>
