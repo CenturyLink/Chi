@@ -2,9 +2,11 @@
 title: Tabs
 ---
 
-.test-horizontal
+h2 Horizontal
+h3 Flat
+.test-horizontal-flat
   each style in ['base', 'border']
-    each size in ['xs', 'sm', 'medium', 'lg']
+    each size in ['xs', 'sm', 'md', 'lg']
       h4= `Tabs ${size} ${style}`
       ul.chi-tabs(class=`-${style} -${size}`)
         li.-active
@@ -14,12 +16,55 @@ title: Tabs
         li
           a(href='#') Tab link
 
-h2 vertical
+h3 Solid
+.test-horizontal-solid
+  each style in ['base', 'border']
+    each size in ['xs', 'sm', 'md', 'lg']
+      h4= `Tabs ${size} ${style}`
+      ul.chi-tabs.-solid(class=`-${style} -${size}`)
+        li.-active
+          a(href='#') Active tab
+        li
+          a(href='#') Tab link
+        li
+          a(href='#') Tab link
 
+h2 Vertical
+h3 Flat
+each style in ['base', 'border']
+  div(class=`test-vertical-flat`)
+    each size in ['sm', 'md', 'lg']
+      h4= `Tabs vertical ${size} ${style}`
+      ul.chi-tabs.-vertical(class=`-${style} -${size}`)
+        li(class=`-active`)
+          a(href='#') Active tab
+        li
+          a(href='#') Tab link
+        li
+          a(href='#') Tab link
+        li
+          a(href='#') Tab link
+
+h3 Solid
+each style in ['base', 'border']
+  div(class=`test-vertical-solid`)
+    each size in ['sm', 'md', 'lg']
+      h4= `Tabs vertical ${size} ${style}`
+      ul.chi-tabs.-vertical.-solid(class=`-${style} -${size}`)
+        li(class=`-active`)
+          a(href='#') Active tab
+        li
+          a(href='#') Tab link
+        li
+          a(href='#') Tab link
+        li
+          a(href='#') Tab link
+
+h2 Vertical with subtabs
 each active in ['', 'active-alt']
   each style in ['', 'border']
     div(class=`test-vertical-${active}-${style}`)
-      each size in ['sm', 'medium', 'lg']
+      each size in ['sm', 'md', 'lg']
         h4= `Tabs vertical ${size} ${style} ${active}`
         ul.chi-tabs.-vertical(class=`-${style} -${size}`)
           li(class=`-active -${active}`)
@@ -41,7 +86,7 @@ each active in ['', 'active-alt']
 each active in ['', 'active-alt']
   each style in ['', 'border']
     div(class=`test-vertical-icons-${active}-${style}`)
-      each size in ['sm', 'medium', 'lg']
+      each size in ['sm', 'md', 'lg']
         h4= `Tabs vertical icons ${size} ${style} ${active}`
         ul.chi-tabs.-vertical.-icons(class=`-${alt} -${style} -${size}`)
           li(class=`-active -${active}`)
@@ -79,7 +124,7 @@ each active in ['', 'active-alt']
 each active in ['', 'active']
   each style in ['', 'border']
     div(class=`test-multi-level-${active}-${style}`)
-      each size in ['sm', 'medium', 'lg']
+      each size in ['sm', 'md', 'lg']
         h4= `Tabs vertical multi-level ${size} ${style} ${active}`
         ul.chi-tabs.-vertical.-icons(class=`-${alt} -${style} -${size}`)
           li
@@ -115,34 +160,70 @@ each active in ['', 'active']
                   use(xlink:href='#icon-atom')
               span Tab link
 
-.test-horizontal-inverse
-  each size in ['xs', 'sm', 'medium', 'lg']
-    h4= `Tabs ${size} inverse`
-    .-bg--black.-px--3
-      ul.chi-tabs.-inverse(class=`-${size}`)
-        li.-active
-          a(href='#') Active tab
-        li
-          a(href='#') Tab link
-        li
-          a(href='#') Tab link
+h2 Horizontal Inverse
+h3 Flat
+.test-horizontal-flat-inverse
+  each style in ['base', 'border']
+    each size in ['xs', 'sm', 'md', 'lg']
+      h4= `Tabs ${style} ${size} inverse`
+      .-bg--black.-px--3
+        ul.chi-tabs.-inverse(class=`-${size} -${style}`)
+          li.-active
+            a(href='#') Active tab
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+h3 Solid
+.test-horizontal-solid-inverse
+  each style in ['base', 'border']
+    each size in ['xs', 'sm', 'md', 'lg']
+      h4= `Tabs ${style} ${size} inverse`
+      .-bg--black.-px--3.-py--1
+        ul.chi-tabs.-inverse.-solid(class=`-${size} -${style}`)
+          li.-active
+            a(href='#') Active tab
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
 
-.test-horizontal-bordered-inverse
-  each size in ['xs', 'sm', 'medium', 'lg']
-    h4= `Tabs ${size} border inverse`
-    .-bg--black.-px--3.-py--1
-      ul.chi-tabs.-inverse.-border(class=`-${size}`)
-        li.-active
-          a(href='#') Active tab
-        li
-          a(href='#') Tab link
-        li
-          a(href='#') Tab link
+h2 Vertical Inverse
+h3 Flat
+each style in ['base', 'border']
+  .test-vertical-inverse-flat
+    each size in ['sm', 'md', 'lg']
+      h4= `Tabs vertical ${size} ${style}`
+      .-bg--black.-p--3
+        ul.chi-tabs.-vertical.-inverse(class=`-${style} -${size}`)
+          li(class=`-active`)
+            a(href='#') Active tab
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
 
-h2 vertical inverse
+h3 Solid
+each style in ['base', 'border']
+  .test-vertical-inverse-solid
+    each size in ['sm', 'md', 'lg']
+      h4= `Tabs vertical ${size} ${style}`
+      .-bg--black.-p--3
+        ul.chi-tabs.-vertical.-solid.-inverse(class=`-${style} -${size}`)
+          li(class=`-active`)
+            a(href='#') Active tab
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
+          li
+            a(href='#') Tab link
 
+h2 Vertical Inverse with subtabs
 .test-vertical-inverse
-  each size in ['sm', 'medium', 'lg']
+  each size in ['sm', 'md', 'lg']
     h4= `Tabs vertical inverse ${size}`
     .-bg--black.-p--3
       ul.chi-tabs.-inverse.-vertical(class=`-${size}`)
@@ -163,7 +244,7 @@ h2 vertical inverse
           a(href='#') Tab link
 
 .test-vertical-icons-inverse
-  each size in ['sm', 'medium', 'lg']
+  each size in ['sm', 'md', 'lg']
     h4= `Tabs vertical icons ${size} inverse`
     .-bg--black.-p--3
       ul.chi-tabs.-vertical.-icons.-inverse(class=`-${size}`)

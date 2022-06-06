@@ -1188,7 +1188,7 @@ export default class DataTable extends Vue {
 
     this._mapRows = {};
     this.serializeData();
-    if (this._sortConfig) {
+    if (this._sortConfig && this.mode === DataTableModes.CLIENT) {
       this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
     }
     this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);

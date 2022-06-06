@@ -19,6 +19,8 @@ const exportComponent: ComponentLibrary = {
     ChiDataTableViews: () =>
       import(/* webpackChunkName: "data-table-views" */ '../components/data-table-views/DataTableViews'),
     ChiDrawer: () => import(/* webpackChunkName: "drawer" */ '../components/drawer/drawer'),
+    ChiExpansionPanel: () =>
+      import(/* webpackChunkName: "expansion-panel" */ '../components/expansion-panel/ExpansionPanel'),
     ChiPagination: () => import(/* webpackChunkName: "pagination" */ '../components/pagination/pagination'),
     ChiSearchInput: () => import(/* webpackChunkName: "search-input" */ '../components/search-input/SearchInput'),
     ChiTooltip: () => import(/* webpackChunkName: "tooltip" */ '../components/tooltip/tooltip'),

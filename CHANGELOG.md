@@ -1,4 +1,11 @@
 # CHANGELOG
+## 5.14.0 (May 27, 2022)
+### Components
+#### Added
+* Added: Tabs component now supports solid variant.
+#### Fixed
+* Fixed: Data table vue component no longer performs redundant sorting in server-side mode.
+
 ## 5.13.1 (May 12, 2022)
 ### Components
 #### Changed

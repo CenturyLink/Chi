@@ -23,3 +23,11 @@ export const DATA_TABLE_SORT_ICONS = {
   ARROW: 'icon-arrow-up',
 };
 //#endregion
+
+//#region Expansion Panel
+export const EPANEL = {
+  TRANSITIONS: {
+    SLIDE_FADE: 'slide-fade',
+  },
+};
+//#endregion
