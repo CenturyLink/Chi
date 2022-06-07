@@ -67,11 +67,11 @@
   }
 
   &__results {
-    font-size: $toolbar-results-font-size;
+    font-size: $save-view-results-font-size;
     margin-left: 0.5rem;
 
     .chi-toolbar__label {
-      font-weight: 600;
+      font-weight: $save-view-label-font-weight;
     }
   }
 
@@ -101,5 +101,9 @@
 
   + .chi-bulk-actions {
     margin-top: 0.125rem;
+  }
+
+  + .chi-save-view {
+    border-top: 0.0625rem solid $save-view-border-color;
   }
 }

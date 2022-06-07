@@ -1335,7 +1335,16 @@ $save-view-background-color:                $color-background-base;
 $save-view-border-color:                    $color-border-base;
 $save-view-divider-border-color:            $color-border-base;
 $save-view-divider-height:                  1.25rem;
+$save-view-results-font-size:               $font-size-md;
+$save-view-label-font-size:                 $font-size-md;
+$save-view-label-font-weight:               $font-weight-semi-bold;
 $save-view-save-border-color:               $color-border-info;
+$save-view-save-border-style:               dashed;
+$save-view-ribbon-background-color:         $color-blue-70;
+$save-view-ribbon-label-color:              $color-text-white;
+$save-view-ribbon-label-font-style:         italic;
+$save-view-ribbon-arrow-border-color:       $color-blue-70;
+$save-view-ribbon-arrow-border-style:       solid;
 
 // Search input
 $search-input-xs-icon-top:                  0;
@@ -1825,17 +1834,11 @@ $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 // Toolbar
 $toolbar-header-background-color:           $color-background-base;
 $toolbar-header-divider-height:             2.5rem;
-$toolbar-ribbon-background-color:           $color-background-base;
-$toolbar-ribbon-border-color:               $color-border-base;
-$toolbar-ribbon-divider-border-color:       $color-border-base;
-$toolbar-ribbon-divider-height:             1.25rem;
-$toolbar-results-font-size:                 $font-size-md;
-$toolbar-label-font-weight:                 $font-weight-semi-bold;
 
 // Tooltip
 $tooltip-light-background-color:            rgba($color-white, 0.96);
 $tooltip-light-text-color:                  $color-text-base;
-$tooltip-light-box-shadow:                  0 4px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 20px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+$tooltip-light-box-shadow:                  0 4px 10px 0 rgba(136, 53, 53, 0.14), 0 1px 20px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
 $tooltip-dark-background-color:             rgba($color-grey-100, 0.95);
 $tooltip-dark-text-color:                   $color-text-white;
 $tooltip-dark-box-shadow:                   none;
