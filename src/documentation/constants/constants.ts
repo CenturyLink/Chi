@@ -63,7 +63,7 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     label: 'Accordion',
     source: 'pug'
   },
-  { href: `components/activity`, label: 'Activity', source: 'pug' },
+  { to: `components/activity`, label: 'Activity', source: 'vue' },
   {
     href: `components/alert`,
     label: 'Alert',

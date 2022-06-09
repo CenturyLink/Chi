@@ -68,9 +68,9 @@ ul.chi-tabs.-vertical.-lg.-animated
                     a(href=`${rootPath}${section.path}`) #{section.title}
                       if section.title == 'Button' || section.title == 'Link'
                         .-sr--only component
-                  //- if section.title === 'Accordion'
-                  //-   li
-                  //-     a(href=`${rootPath}components/activity`) Activity
+                  if section.title === 'Accordion'
+                    li
+                      a(href=`${rootPath}components/activity`) Activity
       else
         li
           .chi-collection__title
@@ -114,9 +114,9 @@ ul.chi-tabs.-vertical.-lg.-animated
                     a(href=`${rootPath}${section.path}`) #{section.title}
                       if section.title == 'Button' || section.title == 'Link'
                         .-sr--only component
-                  //- if section.title === 'Accordion'
-                  //-   li
-                  //-     a(href=`${rootPath}components/activity`) Activity
+                  if section.title === 'Accordion'
+                    li
+                      a(href=`${rootPath}components/activity`) Activity
     else
       li
         a(href=`#`, disabled="disabled") #{key}
