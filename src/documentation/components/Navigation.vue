@@ -7,22 +7,22 @@
       <li>
         <div class="chi-collection__title">Getting Started</div>
         <ul class="chi-tabs__subtabs">
-          <li><NuxtLink to="/getting-started">Introduction</NuxtLink></li>
+          <li><a :href="`${BASE_URL}getting-started`">Introduction</a></li>
           <li>
-            <NuxtLink to="/getting-started/installation">Installation</NuxtLink>
+            <a :href="`${BASE_URL}getting-started/installation`">Installation</a>
           </li>
           <li>
-            <NuxtLink to="/getting-started/development-workflow"
-              >Development workflow</NuxtLink
+            <a :href="`${BASE_URL}getting-started/development-workflow`"
+              >Development workflow</a
             >
           </li>
           <li>
-            <NuxtLink to="/getting-started/browsers-devices"
-              >Browser support</NuxtLink
+            <a :href="`${BASE_URL}getting-started/browsers-devices`"
+              >Browser support</a
             >
           </li>
           <li>
-            <NuxtLink to="/getting-started/whats-new">What's new</NuxtLink>
+            <a :href="`${BASE_URL}getting-started/whats-new`">What's new</a>
           </li>
         </ul>
       </li>
@@ -45,48 +45,48 @@
                 <div class="chi-accordion__content -p--0">
                   <ul class="chi-tabs__subtabs">
                     <li>
-                      <NuxtLink to="/foundations/accessibility/overview"
-                        >Overview</NuxtLink
+                      <a :href="`${BASE_URL}foundations/accessibility/overview`"
+                        >Overview</a
                       >
                     </li>
                     <li>
-                      <NuxtLink to="/foundations/accessibility/using-keyboard"
-                        >Using the keyboard</NuxtLink
+                      <a :href="`${BASE_URL}foundations/accessibility/using-keyboard`"
+                        >Using the keyboard</a
                       >
                     </li>
                     <li>
-                      <NuxtLink to="/foundations/accessibility/page-structure"
-                        >Page structure</NuxtLink
+                      <a :href="`${BASE_URL}foundations/accessibility/page-structure`"
+                        >Page structure</a
                       >
                     </li>
                     <li>
-                      <NuxtLink to="/foundations/accessibility/color-sensory"
-                        >Color and sensory</NuxtLink
+                      <a :href="`${BASE_URL}foundations/accessibility/color-sensory`"
+                        >Color and sensory</a
                       >
                     </li>
                     <li>
-                      <NuxtLink to="/foundations/accessibility/images"
-                        >Images</NuxtLink
+                      <a :href="`${BASE_URL}foundations/accessibility/images`"
+                        >Images</a
                       >
                     </li>
                     <li>
-                      <NuxtLink to="/foundations/accessibility/text"
-                        >Text</NuxtLink
+                      <a :href="`${BASE_URL}foundations/accessibility/text`"
+                        >Text</a
                       >
                     </li>
                     <li>
-                      <NuxtLink to="/foundations/accessibility/links-and-forms"
-                        >Links and forms</NuxtLink
+                      <a :href="`${BASE_URL}foundations/accessibility/links-and-forms`"
+                        >Links and forms</a
                       >
                     </li>
                     <li>
-                      <NuxtLink to="/foundations/accessibility/tables"
-                        >Tables</NuxtLink
+                      <a :href="`${BASE_URL}foundations/accessibility/tables`"
+                        >Tables</a
                       >
                     </li>
                     <li>
-                      <NuxtLink to="/foundations/accessibility/other"
-                        >Other</NuxtLink
+                      <a :href="`${BASE_URL}foundations/accessibility/other`"
+                        >Other</a
                       >
                     </li>
                   </ul>
@@ -94,11 +94,11 @@
               </div>
             </div>
           </li>
-          <li><NuxtLink to="/foundations/color">Color</NuxtLink></li>
+          <li><a :href="`${BASE_URL}foundations/color`">Color</a></li>
           <li>
-            <NuxtLink to="/foundations/design-tokens">Design tokens</NuxtLink>
+            <a :href="`${BASE_URL}foundations/design-tokens`">Design tokens</a>
           </li>
-          <li><NuxtLink to="/foundations/grid">Grid</NuxtLink></li>
+          <li><a :href="`${BASE_URL}foundations/grid`">Grid</a></li>
         </ul>
       </li>
       <li class="-active">
@@ -114,7 +114,7 @@
                 navigationComponentItem.to &&
                   navigationComponentItem.source === 'vue'
               "
-              :to="navigationComponentItem.to"
+              :to="`/${navigationComponentItem.to}`"
               >{{ navigationComponentItem.label }}</NuxtLink
             >
             <a
@@ -131,37 +131,37 @@
       <li>
         <div class="chi-collection__title">Utilities</div>
         <ul class="chi-tabs__subtabs">
-          <li><NuxtLink to="/utilities/border">Border</NuxtLink></li>
-          <li><NuxtLink to="/utilities/color">Color</NuxtLink></li>
-          <li><NuxtLink to="/utilities/display">Display</NuxtLink></li>
-          <li><NuxtLink to="/utilities/flex">Flex</NuxtLink></li>
-          <li><NuxtLink to="/utilities/image">Image</NuxtLink></li>
-          <li><NuxtLink to="/utilities/opacity">Opacity</NuxtLink></li>
-          <li><NuxtLink to="/utilities/overflow">Overflow</NuxtLink></li>
-          <li><NuxtLink to="/utilities/position">Position</NuxtLink></li>
-          <li><NuxtLink to="/utilities/shadow">Shadow</NuxtLink></li>
-          <li><NuxtLink to="/utilities/sizing">Sizing</NuxtLink></li>
-          <li><NuxtLink to="/utilities/spacing">Spacing</NuxtLink></li>
-          <li><NuxtLink to="/utilities/text">Text</NuxtLink></li>
+          <li><a :href="`${BASE_URL}utilities/border`">Border</a></li>
+          <li><a :href="`${BASE_URL}utilities/color`">Color</a></li>
+          <li><a :href="`${BASE_URL}utilities/display`">Display</a></li>
+          <li><a :href="`${BASE_URL}utilities/flex`">Flex</a></li>
+          <li><a :href="`${BASE_URL}utilities/image`">Image</a></li>
+          <li><a :href="`${BASE_URL}utilities/opacity`">Opacity</a></li>
+          <li><a :href="`${BASE_URL}utilities/overflow`">Overflow</a></li>
+          <li><a :href="`${BASE_URL}utilities/position`">Position</a></li>
+          <li><a :href="`${BASE_URL}utilities/shadow`">Shadow</a></li>
+          <li><a :href="`${BASE_URL}utilities/sizing`">Sizing</a></li>
+          <li><a :href="`${BASE_URL}utilities/spacing`">Spacing</a></li>
+          <li><a :href="`${BASE_URL}utilities/text`">Text</a></li>
           <li>
-            <NuxtLink to="/utilities/vertical-align">Vertical-align</NuxtLink>
+            <a :href="`${BASE_URL}utilities/vertical-align`">Vertical-align</a>
           </li>
-          <li><NuxtLink to="/utilities/zindex">Z-index</NuxtLink></li>
+          <li><a :href="`${BASE_URL}utilities/zindex`">Z-index</a></li>
         </ul>
       </li>
       <li>
         <div class="chi-collection__title">Templates</div>
         <ul class="chi-tabs__subtabs">
           <li>
-            <NuxtLink to="/templates/app-layout">App layout</NuxtLink>
+            <a :href="`${BASE_URL}templates/app-layout`">App layout</a>
           </li>
           <li>
-            <NuxtLink to="/templates/error-404">Error 404</NuxtLink>
+            <a :href="`${BASE_URL}templates/error-404`">Error 404</a>
           </li>
           <li>
-            <NuxtLink to="/templates/error-500">Error 500</NuxtLink>
+            <a :href="`${BASE_URL}templates/error-500`">Error 500</a>
           </li>
-          <li><NuxtLink to="/templates/state">State</NuxtLink></li>
+          <li><a :href="`${BASE_URL}templates/state`">State</a></li>
         </ul>
       </li>
     </ul>
