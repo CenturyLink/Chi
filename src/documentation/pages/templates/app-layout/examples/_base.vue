@@ -18,9 +18,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import AppLayoutFooter from './_app-layout-footer.vue';
-import { _baseHtmlBlueprintFooter, _baseWebComponentFooter } from './utilities';
+import { _getBaseHtmlBlueprintFooter, _getBaseWebComponentFooter } from './utilities';
 @Component({
   components: {
     AppLayoutFooter
@@ -46,17 +46,27 @@ import { _baseHtmlBlueprintFooter, _baseWebComponentFooter } from './utilities';
   }
 })
 export default class Base extends Vue {
+  // Computed Property
+  get hasThemeChangedToCenturyLink() {
+    return this.$store.state.themes.theme === 'centurylink';
+  }
+
+  @Watch('hasThemeChangedToCenturyLink')
+  onDataChanged(isThemeCenturyLink: boolean) {
+    this._createSnippets(isThemeCenturyLink);
+  }
+
   created() {
     this._createSnippets();
   }
-  _createSnippets() {
+
+  _createSnippets(isThemeCenturyLink: boolean = false) {
     this.$data.codeSnippets.webcomponent = `<chi-main title="App title">
   <!-- App content goes here -->
-  ${_baseWebComponentFooter}
+  ${_getBaseWebComponentFooter(isThemeCenturyLink)}
 </chi-main>
 
-<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>
-`
+<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
     this.$data.codeSnippets.htmlblueprint = `<div class="chi-main">
   <div class="chi-main__header">
     <div class="chi-main__header-start">
@@ -68,11 +78,10 @@ export default class Base extends Vue {
   <div class="chi-main__content">
     <!-- App content goes here -->
   </div>
-  ${_baseHtmlBlueprintFooter}
+  ${_getBaseHtmlBlueprintFooter(isThemeCenturyLink)}
 </div>
 
-<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>
-`
+<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
   }
 }
 </script>

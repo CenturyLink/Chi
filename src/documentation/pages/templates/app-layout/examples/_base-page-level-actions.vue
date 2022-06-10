@@ -20,9 +20,9 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import AppLayoutFooter from './_app-layout-footer.vue';
-import { _baseHtmlBlueprintFooter, _baseWebComponentFooter } from './utilities';
+import { _getBaseHtmlBlueprintFooter, _getBaseWebComponentFooter } from './utilities';
 
 @Component({
   components: {
@@ -49,15 +49,26 @@ import { _baseHtmlBlueprintFooter, _baseWebComponentFooter } from './utilities';
   }
 })
 export default class BasePageLevelActions extends Vue {
-  created(){
+  // Computed Property
+  get hasThemeChangedToCenturyLink() {
+    return this.$store.state.themes.theme === 'centurylink';
+  }
+
+  @Watch('hasThemeChangedToCenturyLink')
+  onDataChanged(isThemeCenturyLink: boolean) {
+    this._createSnippets(isThemeCenturyLink);
+  }
+
+  created() {
     this._createSnippets();
   }
-  _createSnippets(){
+
+  _createSnippets(isThemeCenturyLink: boolean = false) {
     this.$data.codeSnippets.webcomponent = `<chi-main backlink="Back link" title="App title" subtitle="App subtitle">
   <!-- App content goes here -->
   <button class="chi-button -primary -outline -bg--white" slot="page-level__actions">Cancel</button>
   <button class="chi-button -primary -ml--1" slot="page-level__actions">Submit</button>
-  ${_baseWebComponentFooter}
+  ${_getBaseWebComponentFooter(isThemeCenturyLink)}
 </chi-main>
 
 <script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`;
@@ -71,7 +82,7 @@ export default class BasePageLevelActions extends Vue {
         </div>
       </a>
       <div class="chi-main__title">
-        <div class="-text--h3 -text--boldest -text--navy -m--0 -br--1 -pr--2">App title</div>
+        <div class="-text--h3 -text--boldest -m--0 -br--1 -pr--2">App title</div>
         <div class="-text--md -pl--2">App subtitle</div>
       </div>
       </div>
@@ -86,7 +97,7 @@ export default class BasePageLevelActions extends Vue {
       <button class="chi-button -primary -ml--1">Submit</button>
     </div>
   </div>
-  ${_baseHtmlBlueprintFooter}
+  ${_getBaseHtmlBlueprintFooter(isThemeCenturyLink)}
 </div>
 
 <script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`;

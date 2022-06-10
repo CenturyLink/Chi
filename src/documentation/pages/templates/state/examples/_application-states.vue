@@ -5,7 +5,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import CommonState from './_common-states.vue';
-import { _applicationStateDataList, _createApplicationStateCodeSnippet } from './utilities';
+import { _createApplicationStateCodeSnippet } from './utilities';
+import { APPLICATION_STATE_DATA_LIST } from './fixtures';
 
 @Component({
   components: {
@@ -13,7 +14,7 @@ import { _applicationStateDataList, _createApplicationStateCodeSnippet } from '.
   },
   data: () => {
     return {
-      applicationStateDataList: _applicationStateDataList,
+      applicationStateDataList: APPLICATION_STATE_DATA_LIST,
       applicationStateCodeSnippet: _createApplicationStateCodeSnippet()
     };
   }

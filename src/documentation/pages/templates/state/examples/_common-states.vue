@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { StateData } from './utilities';
+import { StateData } from './domain';
 
 @Component({
   props: {

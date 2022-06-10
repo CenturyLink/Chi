@@ -75,7 +75,7 @@
 
 <script lang="ts">
 import { Themes } from '../models/models';
-import { THEMES } from '../constants/constants';
+import { THEMES, BASE_ASSETS_URL } from '../constants/constants';
 import { Component, Vue } from 'vue-property-decorator';
 import { BASE_URL } from '../constants/constants';
 
@@ -112,12 +112,14 @@ export default class ThemeSwitcher extends Vue {
       { type: 'css', id: 'chi-css' },
       { type: 'docsCss', id: 'chi-docs-css' }
     ];
-
     assetsToReplace.forEach((asset: AssetToReplace) => {
       const currentAsset = document.getElementById(asset.id);
       const replacementAsset = document.createElement('LINK');
-      const replacementHref = THEMES[theme][asset.type];
-
+      //const replacementHref = THEMES[theme][asset.type];
+      // Using a base url, as in the THEME constants only file name is provided
+      // which throws a 404 error on the console when trying to load the file
+      // from localhost:3000/chi-centurylink.css
+      const replacementHref = `${BASE_ASSETS_URL}${THEMES[theme][asset.type]}`;
       if (currentAsset && replacementAsset) {
         replacementAsset.setAttribute('rel', 'stylesheet');
         replacementAsset.setAttribute('href', replacementHref);

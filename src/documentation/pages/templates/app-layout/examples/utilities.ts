@@ -20,12 +20,12 @@ const _getFooterLinksList = (): string => {
     return footerLinksList;
 }
 
-export const _baseWebComponentFooter = `<footer class="chi-footer" slot="footer">
+export const _getBaseWebComponentFooter = (isCenturyLinkTheme?: boolean): string => `<footer class="chi-footer" slot="footer">
     <div class="chi-footer__content">
       <div class="chi-footer__internal">
         <div class="chi-footer__internal-content -mw--1200">
           <div class="chi-dropdown chi-footer__language">
-            <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
+            <a class="chi-button -icon -flat ${isCenturyLinkTheme ? '' : '-light '}-sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
               <div class="chi-button__content">
                 <i class="chi-icon icon-globe-network" aria-hidden="true"></i>
                 <span>English</span>
@@ -47,12 +47,12 @@ export const _baseWebComponentFooter = `<footer class="chi-footer" slot="footer"
   </footer>`;
 
 
-export const _baseHtmlBlueprintFooter = `<footer class="chi-footer">
+export const _getBaseHtmlBlueprintFooter = (isCenturyLinkTheme?: boolean): string => `<footer class="chi-footer">
     <div class="chi-footer__content">
       <div class="chi-footer__internal">
         <div class="chi-footer__internal-content -mw--1200">
           <div class="chi-dropdown chi-footer__language">
-            <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
+            <a class="chi-button -icon -flat ${isCenturyLinkTheme ? '' : '-light '}-sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
               <div class="chi-button__content">
                 <i class="chi-icon icon-globe-network" aria-hidden="true"></i>
                 <span>English</span>

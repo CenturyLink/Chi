@@ -18,10 +18,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 import AppLayoutFooter from './_app-layout-footer.vue';
 import { BASE_HELP_LANGUAGES, FOOTER_LINKS } from './fixtures';
-import { _baseWebComponentFooter, _baseHtmlBlueprintFooter } from './utilities';
+import { _getBaseWebComponentFooter, _getBaseHtmlBlueprintFooter } from './utilities';
 
 @Component({
   components: {
@@ -50,10 +50,21 @@ import { _baseWebComponentFooter, _baseHtmlBlueprintFooter } from './utilities';
   }
 })
 export default class BaseHelp extends Vue {
+  // Computed Property
+  get hasThemeChangedToCenturyLink() {
+    return this.$store.state.themes.theme === 'centurylink';
+  }
+
+  @Watch('hasThemeChangedToCenturyLink')
+  onDataChanged(isThemeCenturyLink: boolean) {
+    this._createSnippets(isThemeCenturyLink);
+  }
+
   created() {
     this._createSnippets();
   }
-  _createSnippets() {
+
+  _createSnippets(isThemeCenturyLink: boolean = false) {
     this.$data.codeSnippets.webcomponent = `<chi-main title="App title">
   <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon" class="-ml--1">
     <chi-icon icon="circle-question-outline"></chi-icon>
@@ -62,7 +73,7 @@ export default class BaseHelp extends Vue {
     Popover content.
   </chi-popover>
   <!-- App content goes here -->
-  ${_baseWebComponentFooter}
+  ${_getBaseWebComponentFooter(isThemeCenturyLink)}
 </chi-main>
 
 <script>
@@ -77,7 +88,7 @@ export default class BaseHelp extends Vue {
   <div class="chi-main__header">
     <div class="chi-main__header-start">
       <div class="chi-main__title">
-        <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">
+        <div class="-text--h3 -text--boldest -m--0 -pr--2">
           App title
           <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
             <div class="chi-button__content">
@@ -96,7 +107,7 @@ export default class BaseHelp extends Vue {
   <div class="chi-main__content">
     <!-- App content goes here -->
   </div>
-  ${_baseHtmlBlueprintFooter}
+  ${_getBaseHtmlBlueprintFooter(isThemeCenturyLink)}
 </div>
 
 <script>

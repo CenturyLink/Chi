@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { SvgPathData } from './utilities';
+import { SvgPathData } from './domain';
 @Component({
   props: {
     viewBox: String,
