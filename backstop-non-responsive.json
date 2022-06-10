@@ -1531,7 +1531,10 @@
       "postInteractionWait": "",
       "selectors": [
         ".test-toolbar-base",
-        ".test-toolbar-base-ribbon"
+        ".test-toolbar-save-view-base",
+        ".test-toolbar-save-view-save",
+        ".test-toolbar-save-view-edit",
+        ".test-toolbar-save-view-edit-delete"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
