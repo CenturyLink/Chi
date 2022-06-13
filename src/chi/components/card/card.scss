@@ -148,7 +148,7 @@
     padding: $card-tabs-padding;
 
     .chi-tabs {
-      border-bottom: $card-tabs-border-bottom;
+      box-shadow: $card-tabs-border-bottom;
     }
   }
 
@@ -250,6 +250,12 @@
 
     .chi-card__header {
       background-color: $color-background-white;
+    }
+
+    &.-widget {
+      .chi-card__header {
+        background-color: $color-background-secondary-light;
+      }
     }
   }
 }
