@@ -15,7 +15,13 @@ import {
   UTILITY_CLASSES,
 } from '@/constants/classes';
 import './data-table.scss';
-import { DataTablePageChange, DataTableSorting, DATA_TABLE_EVENTS, PAGINATION_EVENTS } from '@/constants/events';
+import {
+  DataTablePageChange,
+  DataTableSorting,
+  DATA_TABLE_EVENTS,
+  GENERIC_EVENTS,
+  PAGINATION_EVENTS,
+} from '@/constants/events';
 import {
   DataTableCellAlignment,
   DataTableConfig,
@@ -428,12 +434,16 @@ export default class DataTable extends Vue {
 
       const toggleChildRow = (childRow: DataTableRow) => {
         if (action === 'select') {
-          selectedRows.push(childRow.rowId);
+          if (!childRow.selectionDisabled) {
+            selectedRows.push(childRow.rowId);
+          }
         } else if (action === 'deselect') {
           const indexOfRowIdIndex = selectedRows.indexOf(childRow.rowId);
 
           if (indexOfRowIdIndex !== -1) {
-            selectedRows.splice(indexOfRowIdIndex, 1);
+            if (!childRow.selectionDisabled) {
+              selectedRows.splice(indexOfRowIdIndex, 1);
+            }
           }
         }
         if (childRow.nestedContent?.table?.data) {
@@ -471,13 +481,18 @@ export default class DataTable extends Vue {
       const parentRow = this._locateParentRow(rowData);
 
       if (parentRow?.nestedContent.table.data.every((row: DataTableRow) => this.selectedRows.includes(row.rowId))) {
-        this.selectedRows.push(parentRow.rowId);
+        if (!parentRow.selectionDisabled) {
+          this.selectedRows.push(parentRow.rowId);
+        }
 
         if (rowData.level === 2) {
           const rootLevelRow = this._locateParentRow(parentRow);
 
           if (
-            rootLevelRow?.nestedContent.table.data.every((row: DataTableRow) => this.selectedRows.includes(row.rowId))
+            rootLevelRow?.nestedContent.table.data.every((row: DataTableRow) =>
+              this.selectedRows.includes(row.rowId)
+            ) &&
+            !rootLevelRow.selectionDisabled
           ) {
             this.selectedRows.push(rootLevelRow.rowId);
           }
@@ -509,7 +524,9 @@ export default class DataTable extends Vue {
         const indexOfSelectedParent = this.selectedRows.indexOf(parentRow.rowId);
 
         if (indexOfSelectedParent !== -1) {
-          this.selectedRows.splice(indexOfSelectedParent, 1);
+          if (!parentRow.selectionDisabled) {
+            this.selectedRows.splice(indexOfSelectedParent, 1);
+          }
         }
 
         if (rowData.level === 2) {
@@ -642,7 +659,10 @@ export default class DataTable extends Vue {
           );
           const isGrandChildSelected = (rowId: string) => this.selectedRows.includes(rowId);
 
-          if (!grandChildren.every(isGrandChildSelected) && grandChildren.some(isGrandChildSelected)) {
+          if (
+            (!grandChildren.every(isGrandChildSelected) && grandChildren.some(isGrandChildSelected)) ||
+            (childRows.every(this._isRowSelectionDisabled) && grandChildren.some(isGrandChildSelected))
+          ) {
             return 'indeterminate';
           }
         }
@@ -650,6 +670,10 @@ export default class DataTable extends Vue {
 
       return false;
     }
+  }
+
+  _isRowSelectionDisabled(row: DataTableRow) {
+    return row.selectionDisabled;
   }
 
   _isRowSelected(row: DataTableRow) {
@@ -1182,7 +1206,7 @@ export default class DataTable extends Vue {
 
     this._mapRows = {};
     this.serializeData();
-    if (this._sortConfig) {
+    if (this._sortConfig && this.mode === DataTableModes.CLIENT) {
       this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
     }
     this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
@@ -1257,11 +1281,11 @@ export default class DataTable extends Vue {
       (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.SELECTED_ALL, () => {
         this.selectAllRows('select');
       });
-      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL, () => {
+      (this._bulkActionsComponent as Vue).$on(GENERIC_EVENTS.CANCEL, () => {
         this.selectedRows = [];
         this._showSelectedOnly = false;
         this._showAllRows();
-        this.$emit(DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL);
+        this.$emit(GENERIC_EVENTS.CANCEL);
       });
     }
 

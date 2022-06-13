@@ -10,14 +10,12 @@
         >
         <div class="-d--flex -w--100">
           <div class="-align-items--center -mr--1">
-            <img
+            <nuxt-img
               class="-favicon"
               width="16"
               height="16"
               :src="
-                '/themes/' +
-                  this.$store.state.themes.theme +
-                  '/images/favicon.svg'
+                `/themes/${getThemeSwitcherTriggerIcon()}/images/favicon.svg`
               "
             />
           </div>
@@ -34,13 +32,12 @@
           'theme-trigger-centurylink',
           'chi-dropdown__menu-item'
         ]"
-        href="#"
         @click="setTheme('centurylink')"
-        ><img
+        ><nuxt-img
           class="-mr--1"
           width="16"
           height="16"
-          src="/themes/centurylink/images/favicon.svg"
+          :src="`/themes/centurylink/images/favicon.svg`"
         />
         <div class="-theme-name">CenturyLink</div></a
       ><a
@@ -49,13 +46,12 @@
           'theme-trigger-lumen',
           'chi-dropdown__menu-item'
         ]"
-        href="#"
         @click="setTheme('lumen')"
-        ><img
+        ><nuxt-img
           class="-mr--1"
           width="16"
           height="16"
-          src="/themes/lumen/images/favicon.svg"
+          :src="`/themes/lumen/images/favicon.svg`"
         />
         <div class="-theme-name">Lumen</div></a
       ><a
@@ -64,30 +60,14 @@
           'theme-trigger-portal',
           'chi-dropdown__menu-item'
         ]"
-        href="#"
         @click="setTheme('portal')"
-        ><img
+        ><nuxt-img
           class="-mr--1"
           width="16"
           height="16"
-          src="/themes/lumen/images/favicon.svg"
+          :src="`/themes/lumen/images/favicon.svg`"
         />
         <div class="-theme-name">Lumen Enterprise Portal</div></a
-      ><a
-        v-bind:class="[
-          this.$store.state.themes.theme === 'brightspeed' ? '-active' : '',
-          'theme-trigger-brightspeed',
-          'chi-dropdown__menu-item'
-        ]"
-        href="#"
-        @click="setTheme('brightspeed')"
-        ><img
-          class="-mr--1"
-          width="16"
-          height="16"
-          src="/themes/brightspeed/images/favicon.svg"
-        />
-        <div class="-theme-name">Brightspeed</div></a
       >
     </div>
   </div>
@@ -95,8 +75,9 @@
 
 <script lang="ts">
 import { Themes } from '../models/models';
-import { THEMES, defaultCss, defaultDocsCss } from '../constants/constants';
+import { THEMES } from '../constants/constants';
 import { Component, Vue } from 'vue-property-decorator';
+import { BASE_URL } from '../constants/constants';
 
 declare const chi: any;
 interface AssetToReplace {
@@ -105,31 +86,32 @@ interface AssetToReplace {
 }
 
 @Component({
-  head() {
+  data: () => {
     return {
-      link: [
-        {
-          rel: 'stylesheet',
-          id: 'chi-css',
-          type: 'text/css',
-          href: defaultCss
-        },
-        {
-          rel: 'stylesheet',
-          type: 'text/css',
-          id: 'chi-docs-css',
-          href: defaultDocsCss
-        },
-      ],
-    }
+      BASE_URL
+    };
   }
 })
 export default class ThemeSwitcher extends Vue {
+  themeSwitcherDropdown: any;
   themes = THEMES;
 
+  getThemeSwitcherTriggerIcon() {
+    const theme = this.$store.state.themes.theme;
+
+    if (theme === 'portal') {
+      return 'lumen';
+    }
+
+    return theme;
+  }
+
   setTheme(theme: Themes): void {
-    const brandLogo = document.getElementById('header-logo') as any;
-    const assetsToReplace : AssetToReplace[] = [{type: 'css', id: 'chi-css'}, {type: 'docsCss', id: 'chi-docs-css'}];
+    const brandLogo = document.getElementById('header-logo') as HTMLElement;
+    const assetsToReplace: AssetToReplace[] = [
+      { type: 'css', id: 'chi-css' },
+      { type: 'docsCss', id: 'chi-docs-css' }
+    ];
 
     assetsToReplace.forEach((asset: AssetToReplace) => {
       const currentAsset = document.getElementById(asset.id);
@@ -140,8 +122,10 @@ export default class ThemeSwitcher extends Vue {
         replacementAsset.setAttribute('rel', 'stylesheet');
         replacementAsset.setAttribute('href', replacementHref);
         if (currentAsset.parentNode) {
-          currentAsset.parentNode
-            .insertBefore(replacementAsset, currentAsset.nextSibling);
+          currentAsset.parentNode.insertBefore(
+            replacementAsset,
+            currentAsset.nextSibling
+          );
         }
         replacementAsset.addEventListener('load', () => {
           replacementAsset.setAttribute('id', asset.id);
@@ -149,7 +133,10 @@ export default class ThemeSwitcher extends Vue {
         });
       }
     });
-    brandLogo.logo = theme === 'centurylink' ? 'centurylink' : 'brightspeed' ? 'brightspeed' : 'lumen';
+    brandLogo.setAttribute(
+      'logo',
+      theme === 'centurylink' ? 'centurylink' : 'lumen'
+    );
 
     this.$store.commit('themes/set', theme);
   }
@@ -157,7 +144,13 @@ export default class ThemeSwitcher extends Vue {
   mounted() {
     const themeSwitcherElement = this.$refs.switcher as HTMLElement;
 
-    chi.dropdown(themeSwitcherElement);
+    if (themeSwitcherElement) {
+      this.themeSwitcherDropdown = chi.dropdown(themeSwitcherElement);
+    }
+  }
+
+  beforeDestroy() {
+    this.themeSwitcherDropdown.dispose();
   }
 }
 </script>

@@ -1,4 +1,25 @@
 # CHANGELOG
+## 5.14.1 (June 13, 2022)
+### Components
+#### Fixed
+* Fixed: Sidenav component no longer throws a console error when clicking on a single-level menu item.
+* Fixed: Data table vue component now excludes from selection rows with `selectionDisabled` flag on all three levels.
+
+## 5.14.0 (May 27, 2022)
+### Components
+#### Added
+* Added: Tabs component now supports solid variant.
+#### Fixed
+* Fixed: Data table vue component no longer performs redundant sorting in server-side mode.
+
+## 5.13.1 (May 12, 2022)
+### Components
+#### Changed
+* Changed: Data table Advanced filters Vue component footer styling is now fully aligned with Lumen Enterprise Portal style guide.
+* Changed: Data table Column customization Vue component footer styling is now fully aligned with Lumen Enterprise Portal style guide.
+#### Fixed
+* Fixed: Popover component shown within the context of the Data table now automatically wraps text.
+
 ## 5.13.0 (April 20, 2022)
 ### Components
 #### Added

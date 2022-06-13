@@ -8,6 +8,7 @@ import {
   Watch
 } from '@stencil/core';
 import { CHECKBOX_CLASSES, SR_ONLY } from '../../constants/classes';
+import { ChiStates } from '../../constants/states';
 
 @Component({
   tag: 'chi-checkbox',
@@ -35,12 +36,24 @@ export class Checkbox {
    * To disable the checkbox
    */
   @Prop() disabled?: boolean;
+  /**
+   * To indicate which form field is required
+   */
+  @Prop() required = false;
+  /**
+   * To indicate the state
+   */
+  @Prop() state?: ChiStates;
+  /**
+   * To define -hover, -focus statuses
+   */
+  @Prop() _status: string;
 
   private input?: HTMLInputElement;
   id: string;
 
   /**
-   * Triggered when the user selects or deselects the chechbox
+   * Triggered when the user selects or deselects the checkbox
    */
   @Event() chiChange: EventEmitter<string | boolean>;
 
@@ -74,11 +87,16 @@ export class Checkbox {
   }
 
   render() {
+    const requiredField = this.required ? <abbr class="chi-label__required" title="Required field">*</abbr> : null;
+
     return (
       <div class={CHECKBOX_CLASSES.checkbox}>
         <input
-          class={`${CHECKBOX_CLASSES.INPUT} ${this.indeterminate &&
-            CHECKBOX_CLASSES.INDETERMINATE}`}
+          class={`
+            ${CHECKBOX_CLASSES.INPUT}
+            ${this.indeterminate && CHECKBOX_CLASSES.INDETERMINATE}
+            ${this._status ? `-${this._status}` : ''}
+          `}
           checked={this.checked}
           disabled={this.disabled}
           id={`${this.id}-control`}
@@ -87,12 +105,14 @@ export class Checkbox {
           onChange={(ev: Event) => this.toggle(ev)}
           type="checkbox"
         />
-        <label class={CHECKBOX_CLASSES.LABEL} htmlFor={`${this.id}-control`}>
+        <label class={`${CHECKBOX_CLASSES.LABEL} ${this.state ? `-${this.state}` : ''}`} htmlFor={`${this.id}-control`}>
           {this.label}
           <div class={SR_ONLY}>
             Select {this.label || this.name} {this.id}
           </div>
+          {requiredField}
         </label>
+        <slot name="chi-checkbox__help"></slot>
       </div>
     );
   }

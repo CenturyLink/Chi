@@ -85,21 +85,6 @@ export const CHECKBOX_CLASSES = {
 };
 //#endregion
 
-//#region Divider
-export const DIVIDER_CLASSES = {
-  DIVIDER: 'chi-divider',
-  VERTICAL: '-vertical',
-};
-//#endregion
-
-//#region Radio
-export const RADIO_CLASSES = {
-  RADIO: 'chi-radio',
-  INPUT: 'chi-radio__input',
-  LABEL: 'chi-radio__label',
-};
-//#endregion
-
 //#region Data Table
 export const DATA_TABLE_CLASSES = {
   DATA_TABLE: 'chi-data-table',
@@ -131,9 +116,10 @@ export const DATA_TABLE_CLASSES = {
 };
 //#endregion
 
-//#region Table
-export const TABLE_CLASSES = {
-  TABLE: 'chi-table',
+//#region Divider
+export const DIVIDER_CLASSES = {
+  DIVIDER: 'chi-divider',
+  VERTICAL: '-vertical',
 };
 //#endregion
 
@@ -144,6 +130,38 @@ export const DRAWER_CLASSES = {
   TITLE: 'chi-drawer__title',
   CONTENT: 'chi-drawer__content',
   TRIGGER: 'chi-drawer__trigger',
+};
+//#endregion
+
+//#region Expansion Panel
+export const EPANEL_CLASSES = {
+  ACTIVE_ONLY: '-active--only',
+  ACTION: 'chi-epanel__action',
+  BODY: 'chi-epanel__body',
+  BORDERED: '-bordered',
+  COLLAPSE: 'chi-epanel__collapse',
+  CONTENT: 'chi-epanel__content',
+  CONTENT_ACTIVE: 'chi-epanel__content-active',
+  DONE_ONLY: '-done--only',
+  EPANEL: 'chi-epanel',
+  FOOTER: 'chi-epanel__footer',
+  HEADER: 'chi-epanel__header',
+  NUMBER: 'chi-epanel__number',
+  TITLE: 'chi-epanel__title',
+};
+//#endregion
+
+//#region Radio
+export const RADIO_CLASSES = {
+  RADIO: 'chi-radio',
+  INPUT: 'chi-radio__input',
+  LABEL: 'chi-radio__label',
+};
+//#endregion
+
+//#region Table
+export const TABLE_CLASSES = {
+  TABLE: 'chi-table',
 };
 //#endregion
 
@@ -246,6 +264,8 @@ export const UTILITY_CLASSES = {
   },
   JUSTIFY: {
     CENTER: '-justify-content--center',
+    END: '-justify-content--end',
+    CONTENT_BETWEEN: '-justify-content--between',
     MD_START: '-justify-content-md--start',
     MD_CENTER: '-justify-content-md--center',
     MD_END: '-justify-content-md--end',
@@ -254,6 +274,13 @@ export const UTILITY_CLASSES = {
     TEXT_TRUNCATE: '-text--truncate',
     TEXT_NORMAL: '-text--normal',
     TEXT_BOLD: '-text--bold',
+    TEXT_UPPERCASE: '-text--uppercase',
+    COLOR: {
+      PRIMARY: '-text--primary',
+    },
+    SIZE: {
+      TWO_XS: '-text--2xs',
+    },
   },
   POSITION: {
     RELATIVE: '-position--relative',
@@ -275,6 +302,7 @@ export const UTILITY_CLASSES = {
       4: '-px--4',
     },
     Y: {
+      0: '-py--0',
       1: '-py--1',
       2: '-py--2',
       3: '-py--3',
@@ -325,12 +353,14 @@ export const UTILITY_CLASSES = {
       4: '-my--4',
     },
     LEFT: {
+      0: '-ml--0',
       1: '-ml--1',
       2: '-ml--2',
       3: '-ml--3',
       4: '-ml--4',
     },
     RIGHT: {
+      0: '-mr--0',
       1: '-mr--1',
       2: '-mr--2',
       3: '-mr--3',

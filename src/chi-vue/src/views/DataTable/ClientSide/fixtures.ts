@@ -369,6 +369,7 @@ export const exampleTableBody = [
   },
   {
     id: 'NTM0000210662',
+    selectionDisabled: true,
     nestedContent: {
       table: {
         data: [
@@ -409,6 +410,7 @@ export const exampleTableBody = [
                   {
                     id: 'a',
                     active: false,
+                    selectionDisabled: true,
                     data: [
                       {
                         template: 'ticketId',

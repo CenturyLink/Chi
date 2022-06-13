@@ -1318,6 +1318,22 @@ $range-slider-disabled-opacity:             $opacity-60;
 $range-slider-focus-color:                  $focus-color;
 $range-slider-tick-border-color:            $color-border-base-dark;
 
+// Save view
+$save-view-background-color:                $color-blue-30;
+$save-view-border-color:                    transparent;
+$save-view-divider-border-color:            $color-grey-50;
+$save-view-divider-height:                  1.25rem;
+$save-view-results-font-size:               $font-size-md;
+$save-view-label-font-size:                 $font-size-md;
+$save-view-label-font-weight:               $font-weight-semi-bold;
+$save-view-save-border-color:               $color-border-info;
+$save-view-save-border-style:               dashed;
+$save-view-ribbon-background-color:         $color-blue-70;
+$save-view-ribbon-label-color:              $color-text-white;
+$save-view-ribbon-label-font-style:         italic;
+$save-view-ribbon-arrow-border-color:       $color-blue-70;
+$save-view-ribbon-arrow-border-style:       solid;
+
 // Search input
 $search-input-xs-icon-top:                  0;
 $search-input-xs-close-top:                 0;
@@ -1545,40 +1561,55 @@ $tabs-inverse-item-active-border-color:     $color-border-white;
 $tabs-inverse-item-active-text-color:       $color-text-white;
 $tabs-inverse-item-hover-text-color:        $color-text-white;
 
+$tabs-horizontal-border-bottom-width:       0.125rem;
 $tabs-horizontal-border-bottom:             0.125rem solid $color-border-base;
+$tabs-horizontal-sliding-border-bottom-placement: -0.125rem;
 
 $tabs-horizontal-lg-font-size:              $font-size-lg;
 $tabs-horizontal-lg-font-weight:            $font-weight-bold;
+$tabs-horizontal-lg-height:                 4rem;
 $tabs-horizontal-lg-line-height:            $line-height-lg;
-$tabs-horizontal-lg-height:                 3rem;
-$tabs-horizontal-lg-padding:                0.75rem 0;
-$tabs-horizontal-lg-active-padding-bottom:  0.625rem;
-$tabs-horizontal-lg-trigger-icon-top:       1rem;
+$tabs-horizontal-lg-padding:                1.25rem 0;
+$tabs-horizontal-lg-solid-padding:          1.5rem 2rem;
+$tabs-horizontal-lg-trigger-icon-top:       1.5rem;
 $tabs-horizontal-lg-trigger-padding-right:  1.5rem;
 
 $tabs-horizontal-md-font-size:              $font-size-lg;
 $tabs-horizontal-md-font-weight:            $font-weight-bold;
 $tabs-horizontal-md-height:                 2.5rem;
 $tabs-horizontal-md-padding:                0.8125rem 0 0.6875rem;
-$tabs-horizontal-md-active-padding-bottom:  0.5625rem;
+$tabs-horizontal-md-solid-padding:          0.75rem 1rem;
 $tabs-horizontal-md-trigger-icon-top:       0.8125rem;
 $tabs-horizontal-md-trigger-padding-right:  1.5rem;
 
 $tabs-horizontal-sm-font-size:              $font-size-base;
 $tabs-horizontal-sm-font-weight:            $font-weight-bold;
 $tabs-horizontal-sm-height:                 2rem;
-$tabs-horizontal-sm-padding:                0.5rem 0;
-$tabs-horizontal-sm-active-padding-bottom:  0.375rem;
-$tabs-horizontal-sm-trigger-icon-top:       0.5rem;
+$tabs-horizontal-sm-padding:                0.4375rem 0;
+$tabs-horizontal-sm-solid-padding:          0.5rem 0.75rem;
+$tabs-horizontal-sm-trigger-icon-top:       0.4375rem;
 $tabs-horizontal-sm-trigger-padding-right:  1.25rem;
 
 $tabs-horizontal-xs-font-size:              $font-size-sm;
 $tabs-horizontal-xs-font-weight:            $font-weight-semi-bold;
 $tabs-horizontal-xs-height:                 1.5rem;
 $tabs-horizontal-xs-padding:                0.25rem 0;
-$tabs-horizontal-xs-active-padding-bottom:  0.1875rem;
+$tabs-horizontal-xs-solid-padding:          0.25rem 0.5rem;
 $tabs-horizontal-xs-trigger-icon-top:       0.25rem;
 $tabs-horizontal-xs-trigger-padding-right:  1.125rem;
+
+$tabs-vertical-lg-font-size:                $font-size-lg;
+$tabs-vertical-xl-font-size:                $font-size-lg;
+$tabs-vertical-lg-description-font-size:    $font-size-base;
+
+$tabs-solid-xl-font-size:                   $font-size-lg;
+$tabs-solid-xl-font-weight:                 $font-weight-bold;
+$tabs-solid-vertical-xl-active-border-width: 0.25rem;
+$tabs-solid-horizontal-lg-active-border-width: 0.25rem;
+$tabs-solid-horizontal-md-active-border-width: 0.125rem;
+$tabs-solid-background-color:               $color-blue-10;
+$tabs-solid-active-border-color:            $color-border-secondary;
+$tabs-solid-active-background-color:        $color-background-white;
 
 // Text input
 $text-input-border-color:                   $color-border-base;
@@ -1790,12 +1821,6 @@ $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 // Toolbar
 $toolbar-header-background-color:           $color-grey-10;
 $toolbar-header-divider-height:             2.5rem;
-$toolbar-ribbon-background-color:           $color-blue-30;
-$toolbar-ribbon-border-color:               transparent;
-$toolbar-ribbon-divider-border-color:       $color-blue-40;
-$toolbar-ribbon-divider-height:             1.25rem;
-$toolbar-results-font-size:                 $font-size-md;
-$toolbar-label-font-weight:                 $font-weight-semi-bold;
 
 // Tooltip
 $tooltip-light-background-color:            rgba($color-white, 0.96);

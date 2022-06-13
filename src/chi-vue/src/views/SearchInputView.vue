@@ -29,6 +29,8 @@
       <SearchInput class="-mt--2" placeholder="placeholder" />
       <h3>name</h3>
       <SearchInput class="-mt--2" name="name" />
+      <h3>readonly</h3>
+      <SearchInput class="-mt--2" :readOnly="true" value="Value" />
     </div>
   </div>
 </template>
