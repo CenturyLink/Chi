@@ -247,9 +247,17 @@ export default class DataTable extends Vue {
     );
   }
 
+  _saveView() {
+    const slot = this.$scopedSlots['saveView'];
+
+    return slot ? slot({}) : null;
+  }
+
   _toolbar() {
-    if (this.$scopedSlots['toolbar']) {
-      return <div class="">{this.$scopedSlots['toolbar']({})}</div>;
+    const slot = this.$scopedSlots['toolbar'];
+
+    if (slot) {
+      return <div>{slot({})}</div>;
     }
     return null;
   }
@@ -1638,10 +1646,12 @@ export default class DataTable extends Vue {
       printHead = this._printHead(),
       printBody = this._printBody(),
       printFooter = this._printFooter(),
+      saveView = this._saveView(),
       screen =
         this.printMode === 'screenonly' || this.printMode === 'full' ? (
           <div class={`${UTILITY_CLASSES.DISPLAY.SCREEN_ONLY}`}>
             {toolbar}
+            {saveView}
             {bulkActions}
             {head}
             {body}

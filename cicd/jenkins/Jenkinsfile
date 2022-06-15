@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20220505',
+        identifier: 'jsl-jenkins-shared-library-local@release/20220622.0.0',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-        identifier: 'jsl-jenkins-shared-library@release/20220505',
+        identifier: 'jsl-jenkins-shared-library@release/20220622.0.0',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -54,7 +54,7 @@ pipeline {
       //  QUALITY_GATE_CREDENTIALS Credentials to gather all the contract validation gates expected to be crossed.
       //  PROJECT_MAL The MAL of the project
 
-      GITHUB_TOKEN_CREDENTIALS = 'SCMAUTO_GITHUB'
+      GITHUB_TOKEN_CREDENTIALS = 'GITHUB_APP_CREDENTIALS'
       GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
       GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
       GITHUB_PUBLISH_TOKEN_CREDENTIALS = 'allyourbotsarebelongtous-token'

@@ -92,3 +92,13 @@ export const ADVANCED_FILTER_EVENTS = {
   APPLY: 'chiFiltersApply',
 };
 //#endregion
+
+//#region Save View
+export const SAVE_VIEW_EVENTS = {
+  SAVE: 'chiViewSave',
+  DELETE: 'chiViewDelete',
+  SHOWN: 'chiSaveViewShown',
+  HIDE: 'chiSaveViewHide',
+  HIDDEN: 'chiSaveViewHidden',
+};
+//#endregion
