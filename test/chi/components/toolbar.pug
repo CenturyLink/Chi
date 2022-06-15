@@ -124,85 +124,6 @@ h3 Toolbar and save view - Mode base
           .chi-button__content
             i.chi-icon.icon-x(aria-hidden="true")
 
-h3 Toolbar and save view - Mode save
-.test-toolbar-save-view-save.-w--100
-  .chi-toolbar
-    .chi-toolbar__header
-      .chi-toolbar__start
-        .chi-toolbar__search
-          .chi-form__item
-            chi-search-input(id="example__base-1")
-        .chi-toolbar__views 
-          .chi-toolbar__views-desktop 
-            .chi-form__item
-              select(class="chi-select", id="example-views")
-                option(value="") View
-                option View 1
-                option View 2
-        .chi-toolbar__filters
-          .chi-toolbar__filters-desktop
-            .chi-form__item
-              select(class="chi-select", id="example-ba3")
-                option(value="") Select
-                option Option 1
-                option Option 2
-                option Option 3
-            .chi-form__item
-              select(class="chi-select", id="example-ba4")
-                option(value="") Select
-                option Option 1
-                option Option 2
-                option Option 3
-            button.chi-button.-icon.-flat(aria-label="Button action")
-              .chi-button__content
-                i.chi-icon.icon-filter(aria-hidden="true")
-          .chi-toolbar__filters-mobile
-            button#drawer-trigger-filter1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
-              .chi-button__content
-                i.chi-icon.icon-filter(aria-hidden="true")
-      .chi-toolbar__end
-        .chi-toolbar__actions
-          .chi-toolbar__actions-desktop
-            button.chi-button.-icon.-flat(aria-label="Button action")
-              .chi-button__content
-                i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
-            button.chi-button.-icon.-flat(aria-label="Button action")
-              .chi-button__content
-                i.chi-icon.icon-refresh(aria-hidden="true")
-            button.chi-button.-icon.-flat(aria-label="Button action")
-              .chi-button__content
-                i.chi-icon.icon-table-column-settings(aria-hidden="true")
-          .chi-toolbar__actions-mobile
-            button#drawer-trigger-actions1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-2' aria-label="Button action")
-              .chi-button__content
-                i.chi-icon.icon-more-vert(aria-hidden="true")
-  .chi-save-view
-    .chi-save-view__save
-      .chi-save-view__start
-        .chi-save-view__ribbon
-          .chi-save-view__ribbon-content
-            span.chi-save-view__label New View
-            button.chi-button.-light.-icon.-flat.-xs(id="button-info" aria-label="Edit" data-target="#popover-in-html" data-position="right-start")
-              .chi-button__content
-                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
-          .chi-save-view__ribbon-arrow
-          section#popover-in-html.chi-popover(aria-modal='true' role='dialog' aria-label='Popover title')
-            header.chi-popover__header
-              h2.chi-popover__title Popover title
-            .chi-popover__content
-              p.chi-popover__text Popover content
-        i.chi-icon.icon-arrow-down.-xs(aria-hidden="true")
-        .chi-save-view__results
-          span.chi-save-view__label View
-        input#example__base.chi-input(type="text" aria-label="Save view")
-        .chi-divider.-vertical
-        .chi-checkbox
-          input#example__base.chi-checkbox__input(type='checkbox')
-          label.chi-checkbox__label(for='example__base') Default
-      .chi-save-view__end
-        button.chi-button.-xs(aria-label="Button cancel") Cancel
-        button.chi-button.-primary.-xs(aria-label="Button save") Save
-
 h3 Toolbar and save view - Mode edit
 .test-toolbar-save-view-edit.-w--100
   .chi-toolbar
@@ -258,6 +179,85 @@ h3 Toolbar and save view - Mode edit
   .chi-save-view
     .chi-save-view__edit
       .chi-save-view__start
+        .chi-save-view__ribbon
+          .chi-save-view__ribbon-content
+            span.chi-save-view__label New View
+            button.chi-button.-light.-icon.-flat.-xs(id="button-info" aria-label="Edit" data-target="#popover-in-html" data-position="right-start")
+              .chi-button__content
+                i.chi-icon.icon-circle-info-outline(aria-hidden="true")
+          .chi-save-view__ribbon-arrow
+          section#popover-in-html.chi-popover(aria-modal='true' role='dialog' aria-label='Popover title')
+            header.chi-popover__header
+              h2.chi-popover__title Popover title
+            .chi-popover__content
+              p.chi-popover__text Popover content
+        i.chi-icon.icon-arrow-down.-xs(aria-hidden="true")
+        .chi-save-view__results
+          span.chi-save-view__label View
+        input#example__base.chi-input(type="text" aria-label="Save view")
+        .chi-divider.-vertical
+        .chi-checkbox
+          input#example__base.chi-checkbox__input(type='checkbox')
+          label.chi-checkbox__label(for='example__base') Default
+      .chi-save-view__end
+        button.chi-button.-xs(aria-label="Button cancel") Cancel
+        button.chi-button.-primary.-xs(aria-label="Button save") Save
+
+h3 Toolbar and save view - Mode saved
+.test-toolbar-save-view-saved.-w--100
+  .chi-toolbar
+    .chi-toolbar__header
+      .chi-toolbar__start
+        .chi-toolbar__search
+          .chi-form__item
+            chi-search-input(id="example__base-1")
+        .chi-toolbar__views 
+          .chi-toolbar__views-desktop 
+            .chi-form__item
+              select(class="chi-select", id="example-views")
+                option(value="") View
+                option View 1
+                option View 2
+        .chi-toolbar__filters
+          .chi-toolbar__filters-desktop
+            .chi-form__item
+              select(class="chi-select", id="example-ba3")
+                option(value="") Select
+                option Option 1
+                option Option 2
+                option Option 3
+            .chi-form__item
+              select(class="chi-select", id="example-ba4")
+                option(value="") Select
+                option Option 1
+                option Option 2
+                option Option 3
+            button.chi-button.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-filter(aria-hidden="true")
+          .chi-toolbar__filters-mobile
+            button#drawer-trigger-filter1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-1', aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-filter(aria-hidden="true")
+      .chi-toolbar__end
+        .chi-toolbar__actions
+          .chi-toolbar__actions-desktop
+            button.chi-button.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
+            button.chi-button.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-refresh(aria-hidden="true")
+            button.chi-button.-icon.-flat(aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-table-column-settings(aria-hidden="true")
+          .chi-toolbar__actions-mobile
+            button#drawer-trigger-actions1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-2' aria-label="Button action")
+              .chi-button__content
+                i.chi-icon.icon-more-vert(aria-hidden="true")
+  .chi-save-view
+    .chi-save-view__saved
+      .chi-save-view__start
         i.chi-icon.icon-arrow-down.-xs(aria-hidden="true")
         .chi-save-view__results
           span.chi-save-view__label View
@@ -273,7 +273,7 @@ h3 Toolbar and save view - Mode edit
           .chi-button__content
             i.chi-icon.icon-x(aria-hidden="true")
 
-h3 Toolbar and save view - Mode edit and delete
+h3 Toolbar and save view - delete
 .test-toolbar-save-view-edit-delete.-w--100
   .chi-toolbar
     .chi-toolbar__header
@@ -326,16 +326,16 @@ h3 Toolbar and save view - Mode edit and delete
               .chi-button__content
                 i.chi-icon.icon-more-vert(aria-hidden="true")
   .chi-save-view
-    .chi-save-view__edit
+    .chi-save-view__saved
       .chi-save-view__start
         i.chi-icon.icon-arrow-down.-xs(aria-hidden="true")
         .chi-save-view__results
           span.chi-save-view__label View
         .chi-divider.-vertical
-        button.chi-button.-icon.-flat.-sm(id="button-edit" aria-label="Edit" data-tooltip="Edit" data-position="top")
+        button.chi-button.-icon.-flat.-sm(id="button-edit" aria-label="Edit" data-tooltip="Edit" data-position="top" disabled)
           .chi-button__content
             i.chi-icon.icon-edit(aria-hidden="true")
-        button.chi-button.-icon.-flat.-sm(id="button-delete" aria-label="Delete" data-tooltip="Delete" data-position="top")
+        button.chi-button.-icon.-flat.-sm(id="button-delete" aria-label="Delete" data-tooltip="Delete" data-position="top" disabled)
           .chi-button__content
             i.chi-icon.icon-delete(aria-hidden="true")
         .chi-save-view__delete

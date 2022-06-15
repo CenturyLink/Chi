@@ -59,6 +59,7 @@ export const BUTTON_CLASSES = {
   ICON_BUTTON: '-icon',
   CONTENT: 'chi-button__content',
   FLAT: '-flat',
+  LIGHT: '-light',
   NO_HOVER: '-no-hover',
   PRIMARY: '-primary',
   OUTLINE: '-outline',
@@ -151,6 +152,12 @@ export const EPANEL_CLASSES = {
 };
 //#endregion
 
+//#region Link
+export const LINK_CLASSES = {
+  LINK: 'chi-link',
+};
+//#endregion
+
 //#region Radio
 export const RADIO_CLASSES = {
   RADIO: 'chi-radio',
@@ -218,6 +225,23 @@ export const PAGINATION_CLASSES = {
   CENTER: 'chi-pagination__center',
   END: 'chi-pagination__end',
   JUMPER: 'chi-pagination__jumper',
+};
+//#endregion
+
+//#region Save view
+export const SAVE_VIEW_CLASSES = {
+  SAVE_VIEW: 'chi-save-view',
+  BASE: 'chi-save-view__base',
+  DELETE: 'chi-save-view__delete',
+  END: 'chi-save-view__end',
+  LABEL: 'chi-save-view__label',
+  START: 'chi-save-view__start',
+  RESULTS: 'chi-save-view__results',
+  RIBBON: 'chi-save-view__ribbon',
+  RIBBON_ARROW: 'chi-save-view__ribbon-arrow',
+  RIBBON_CONTENT: 'chi-save-view__ribbon-content',
+  SAVED: 'chi-save-view__saved',
+  EDIT: 'chi-save-view__edit',
 };
 //#endregion
 
