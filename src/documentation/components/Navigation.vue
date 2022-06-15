@@ -194,6 +194,9 @@ export default class Navigation extends Vue {
 
     if (accordionElement) {
       this.chiAccordion = chi.accordion(accordionElement);
+      if(window.location.pathname.indexOf('foundations') >= 0) {
+        this.chiAccordion._trigger.click();
+      }
     }
   }
 
