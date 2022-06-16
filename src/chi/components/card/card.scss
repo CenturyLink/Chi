@@ -193,11 +193,19 @@
       box-shadow: none;
       justify-content: space-between;
       padding: 1rem;
+
+      & + .chi-card__content {
+        padding-top: 0;
+      }
     }
 
     .chi-card__title {
       font-size: $card-widget-title-font-size;
       font-weight: $card-widget-title-font-weight;
+    }
+
+    .chi-card__content {
+      padding: $card-widget-content-padding;
     }
   }
 
