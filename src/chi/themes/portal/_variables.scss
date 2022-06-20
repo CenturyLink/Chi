@@ -762,9 +762,16 @@ $card-empty-border-color:                   rgba($color-black, 0.12);
 $card-empty-icon-color:                     $color-text-muted-light;
 $card-content-padding:                      2rem;
 $card-tabs-padding:                         1rem 2rem;
-$card-tabs-border-bottom:                   0.125rem solid $color-border-base;
+$card-tabs-border-bottom:                   inset 0 -0.125rem 0 0 $color-border-base;
 $card-highlight-background-color:           $color-background-secondary-light;
 $card-highlight-header-background-color:    $color-background-white;
+
+$card-widget-background-color:              $color-grey-10;
+$card-widget-border:                        0.0625rem solid rgba($color-black, 0.12);
+$card-widget-title-font-size:               $font-size-7;
+$card-widget-title-font-weight:             $font-weight-extra-bold;
+$card-widget-content-padding:               1rem;
+$card-widget-header-sm-padding:             0.75rem 1rem;
 
 $card-title-font-size:                      $font-size-7;
 $card-title-font-weight:                    $font-weight-extra-bold;
