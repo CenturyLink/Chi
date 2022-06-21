@@ -2,348 +2,366 @@
   div
     <TitleBar title="Design Tokens" description="Design tokens are used in place of hard-coded values to maintain consistent and scalable design system development." />
     .chi-grid__container.-pt--3
-      p.-text
-        | Chi colors are designed to comply with U.S. <a href="https://www.section508.gov/">Section 508</a> federal requirements.
-        | Section 508 follows the Web Content Accessibility Guidelines (<a href="https://www.w3.org/TR/WCAG20/">WCAG 2.0</a>) Level AA
-        | standards which require text and background color contrast ratios of 4.5:1 or higher.
-        | All Chi colors either meet (AA) or exceed (AAA) these standards and have been marked below accordingly.
+      h2 Color
+      h3 Text
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+                th
+                  div Example
+                th
+                  div Contrast
+            tbody
+              tr(v-for="(value, index) in getColor('text')")
+                td(width='35%')
+                  code {{`$color-text-${index}`}}
+                td(width='25%')
+                  div.-text {{value.hex}}
+                td(width='20%')
+                  div.-text--lg.-lh--2.-rounded.-d--inline-block(:style="`background-color:#000;padding:2px;color:${value.hex};`" v-if="index === 'white' || index === 'secondary'") Aa
+                  div.-text--lg.-lh--2(:style="`color:${value.hex};`" v-else) Aa
+                td(width='20%')
+                  div.-text
+                    i.chi-icon.icon-warning.-xs.-icon--warning.-mr--1(aria-hidden="true" v-if="(index === 'secondary-dark' || (index === 'primary-alt' && (isLumenTheme || isPortalTheme)) ) && (isLumenTheme || isPortalTheme || isCenturyLinkTheme)")
+                    i.chi-icon.icon-check.-xs.-icon--success.-mr--1(aria-hidden="true" v-else)
+                    span {{value.contrast}}
+                      div.-text--sm.-text--muted.-lh--2(v-if="isLumenTheme || isPortalTheme || isCenturyLinkTheme") {{index === 'secondary-dark' ? '| 20px+ text only' : index === 'primary-alt' && (isLumenTheme || isPortalTheme) ? '| White backgrounds only' : ''}}
+      
+      h3 Icon
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+                th
+                  div Example
+                th
+                  div Contrast
+            tbody
+              tr(v-for="(value, index) in getColor('icon')")
+                td(width='35%')
+                  code {{`$color-icon-${index}`}}
+                td(width='25%')
+                  div.-text {{value.hex}}
+                td(width='20%')
+                  div.-text--lg.-lh--1.-rounded.-d--inline-block(:style="`background-color:#000;padding:2px;color:${value.hex};`" v-if="index === 'white' || index === 'secondary'")
+                    i.chi-icon.icon-circle(aria-hidden="true" :style="isPortalTheme || isBrightspeedTheme ? `color:${value.hex};` : ''")
+                  div.-text--lg.-lh--1(:style="`color:${value.hex};`" v-else)
+                    i.chi-icon.icon-circle(aria-hidden="true" :style="`color:${value.hex};`")
+                td(width='20%')
+                  div.-text
+                    i.chi-icon.icon-check.-xs.-icon--success.-mr--1(aria-hidden="true")
+                    span {{value.contrast}}
 
-      h2 Brand
-      div.chi-grid
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--6.-mb--3
-          h3 Primary Accent
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-pt--10.-text--white(style="background-color:#0075C9;")
-              .chi-col.-w--12
-                .-text--bold Blue 70
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #0075C9
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--6.-mb--3
-          h3 Secondary Accent
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-pt--10.-text--body(style="background-color:#38C6F4;")
-              .chi-col.-w--12
-                .-text--bold Cyan 40
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #38C6F4
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-      div.chi-grid
-        .chi-col.-w--12
-          h3 Supporting Colors
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body.-bg--white(style="box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1)")
-              .chi-col.-w--12
-                .-text--bold White
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #FFFFFF
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#0C9ED9;")
-              .chi-col.-w--12
-                .-text--bold Cyan 50
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #0C9ED9
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#083176;")
-              .chi-col.-w--12
-                .-text--bold Navy 100
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #083176
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white.-bg--black
-              .chi-col.-w--12
-                .-text--bold Black
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #000000
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-      .chi-divider.-mt--3.-mb--5
-      h2 Neutral
-      div.chi-grid
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#242526;")
-              .chi-col.-w--12
-                .-text--bold Grey 100
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #242526
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          p.-text--sm.-mb--0 Used for primary text color on white and low-contrast backgrounds on black.
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#313336;")
-              .chi-col.-w--12
-                .-text--bold Grey 90
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #313336
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          p.-text--sm.-mb--0 Used for low-contrast borders on black and medium-contrast backgrounds on black.
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#3F4145;")
-              .chi-col.-w--12
-                .-text--bold Grey 80
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #3F4145
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          p.-text--sm.-mb--0 Used for medium-contrast borders on black and high-contrast backgrounds on black.
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#53565A;")
-              .chi-col.-w--12
-                .-text--bold Grey 70
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #53565A
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-          p.-text--sm.-mb--0 Used for secondary text on white and high-contrast borders on black.
-      div.chi-grid
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#65686C;")
-              .chi-col.-w--12
-                .-text--bold Grey 60
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #65686C
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-          p.-text--sm.-mb--0 Used for muted or disabled text and icons on white.
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#8E9399;")
-              .chi-col.-w--12
-                .-text--bold Grey 50
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #8E9399
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-          p.-text--sm.-mb--0 Used for muted or disabled text and icons on black.
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#ACB0B5;")
-              .chi-col.-w--12
-                .-text--bold Grey 40
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #ACB0B5
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          p.-text--sm.-mb--0 Used for high-contrast borders on white.
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#D0D4D9;")
-              .chi-col.-w--12
-                .-text--bold Grey 30
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #D0D4D9
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          p.-text--sm.-mb--0 Used for medium-contrast borders on white.
-      div.chi-grid
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#DADEE2;")
-              .chi-col.-w--12
-                .-text--bold Grey 25
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #DADEE2
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          p.-text--sm.-mb--0 Used for medium-contrast borders and high-contrast backgrounds on white.
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#EDF0F2;")
-              .chi-col.-w--12
-                .-text--bold Grey 20
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #EDF0F2
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          p.-text--sm.-mb--0 Used for low-contrast borders and medium-contrast backgrounds on white.
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#F4F5F6;")
-              .chi-col.-w--12
-                .-text--bold Grey 15
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #F4F5F6
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          p.-text--sm.-mb--0 Used for low-contrast backgrounds on white.
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#F8F9F9;")
-              .chi-col.-w--12
-                .-text--bold Grey 10
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #F8F9F9
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          p.-text--sm.-mb--0 Used for low-contrast backgrounds on white.
-      .chi-divider.-mt--3.-mb--5
-      h2 Semantic
-      p.-text
-        | Use semantic colors to communicate meaning to users.
-        | Examples include displaying alerts, form field validation, user status, application state and more.
-        | Use green (success) for positive, blue (info) for informative, red (danger) for negative, and yellow (warning) for needs attention.
-        | Semantic colors should never be used for decorative purposes.
-      div.chi-grid.-my--3
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#007E44;")
-              .chi-col.-w--12
-                .-text--bold Green 70
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #007E44
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#009054;")
-              .chi-col.-w--12
-                .-text--bold Green 60
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #009054
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#95E9C9")
-              .chi-col.-w--12
-                .-text--bold Green 30
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #95E9C9
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#DBFAEE")
-              .chi-col.-w--12
-                .-text--bold Green 20
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #DBFAEE
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#0262B9;")
-              .chi-col.-w--12
-                .-text--bold Blue 75
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #0262B9
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#0080DC;")
-              .chi-col.-w--12
-                .-text--bold Blue 60
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #0080DC
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#AEDEFF;")
-              .chi-col.-w--12
-                .-text--bold Blue 30
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #AEDEFF
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#E0F3FF;")
-              .chi-col.-w--12
-                .-text--bold Blue 20
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #E0F3FF
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#D62015;")
-              .chi-col.-w--12
-                .-text--bold Red 70
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #D62015
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#EE3026;")
-              .chi-col.-w--12
-                .-text--bold Red 60
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #EE3026
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#FFC2BD;")
-              .chi-col.-w--12
-                .-text--bold Red 30
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #FFC2BD
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#FFE8E5;")
-              .chi-col.-w--12
-                .-text--bold Red 20
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #FFE8E5
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#A15C00;")
-              .chi-col.-w--12
-                .-text--bold Yellow 70
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #A15C00
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#B96B00;")
-              .chi-col.-w--12
-                .-text--bold Yellow 60
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #B96B00
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AA
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#FFCC89;")
-              .chi-col.-w--12
-                .-text--bold Yellow 30
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #FFCC89
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
-          .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#FAECD9;")
-              .chi-col.-w--12
-                .-text--bold Yellow 20
-              .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #FAECD9
-              .chi-col.-w--6.-text--right.-text--sm
-                .a11y AAA
+      
+      h3 Background
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+                th
+                  div Example
+                th
+                  div Contrast
+            tbody
+              tr(v-for="(value, index) in getColor('background')")
+                td(width='35%')
+                  code {{`$color-background-${index}`}}
+                td(width='25%')
+                  div.-text {{value.hex}}
+                td(width='20%')
+                  div.-text.-rounded.-w--80.-s--1(:style="`height:1rem;background-color:${value.hex};`" v-if="index === 'base' || index === 'white'")
+                  div.-text.-rounded.-w--80(:style="`height:1rem;background-color:${value.hex};`" v-else)
+                td(width='20%')
+                  div.-text
+                    i.chi-icon.icon-check.-xs.-icon--success.-mr--1(aria-hidden="true")
+                    span {{value.contrast}}
+
+      h3 Border
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+                th
+                  div Example
+                th
+                  div Contrast
+            tbody
+              tr(v-for="(value, index) in getColor('border')")
+                td(width='35%')
+                  code {{`$color-border-${index}`}}
+                td(width='25%')
+                  div.-text {{value.hex}}
+                td(width='20%')
+                  div.-text.-rounded.-w--80(:style="`background-color:#000;height:1.25rem;padding:2px;`" v-if="index === 'white'")
+                    div.-text.-rounded(:style="`height:1rem;border:1px solid ${value.hex};`")
+                  div.-text.-rounded.-w--80(:style="`height:1rem;border:1px solid ${value.hex};`" v-else)
+                td(width='20%')
+                  div.-text —
+
+      h3 Color System
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+                th
+                  div Example
+            tbody
+              tr(v-for="(value, index) in getColor('colorSystem')")
+                td(width='35%')
+                  code {{`$color-${index}`}}
+                td(width='25%')
+                  div.-text {{value.hex}}
+                td(width='40%')
+                  div.-text.-rounded.-w--100.-w-lg--60.-s--1(:style="`height:1rem;background-color:${value.hex};`" v-if="index === 'white'")
+                  div.-text.-rounded.-w--100.-w-lg--60(:style="`height:1rem;background-color:${value.hex};`" v-else)
+
+      h2 Font
+      h3 Font family
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+                th
+                  div Example
+            tbody
+              tr
+                td(width='35%')
+                  code=`$font-family-base`
+                td(width='45%')
+                  div.-text
+                    | 'Inter', Arial, Helvetica, Verdana, sans-serif
+                td(width='20%')
+                  div.-text--lg.-lh--2 Aa
+              tr
+                td(width='35%')
+                  code=`$font-family-mono`
+                td(width='45%')
+                  div.-text
+                    | Menlo, Consolas, 'Liberation Mono', Courier, monospace
+                td(width='20%')
+                  div.-text--lg.-lh--2(:style="`font-family: Menlo, Consolas, 'Liberation Mono', Courier, monospace;`") Aa
+
+      h3 Font weight
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+                th
+                  div Example
+            tbody
+              tr(v-for="(value, index) in fontWeight")
+                td(width='35%')
+                  code {{`$font-weight-${index}`}}
+                td(width='25%')
+                  div.-text {{value.weight}}
+                td(width='40%')
+                  div.-text(:style="`font-weight:${value.weight};`") Aa
+
+      h3 Font size - text
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+                th
+                  div Example
+            tbody
+              tr(v-for="(value, index) in fontSize")
+                td(width='35%')
+                  code {{`$font-size-${index}`}}
+                td(width='25%')
+                  div.-text {{value.rem}}
+                  div.-text {{value.size}}
+                td(width='40%')
+                  div.-text(:style="`font-size:${value.rem};`") Aa
+
+      h3 Font size - headings
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+                th
+                  div Example
+            tbody
+              tr(v-for="(value, index) in fontHeadingSize")
+                td(width='35%')
+                  code {{`$font-size-${index}`}}
+                td(width='25%')
+                  div.-text {{value.rem}}
+                  div.-text {{value.size}}
+                td(width='40%')
+                  div.-text(:style="`font-size:${value.rem};line-height:1;`") Aa
+
+      h3 Font size - system
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+                th
+                  div Example
+            tbody
+              tr(v-for="(value, index) in fontSystemSize")
+                td(width='35%')
+                  code {{`$font-size-${index}`}}
+                td(width='25%')
+                  div.-text {{value.rem}}
+                  div.-text {{value.size}}
+                td(width='40%')
+                  div.-text(:style="`font-size:${value.rem};line-height:${value.rem};`") Aa
+
+      h2 Border radius
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+                th
+                  div Example
+            tbody
+              tr(v-for="(value, index) in borderRadius")
+                td(width='35%')
+                  code {{`$border-radius-${index}`}}
+                td(width='25%')
+                  div.-text {{value.radius}}
+                    div.-text(v-if="value.rem") {{value.rem}}
+                td(width='40%')
+                  div.-text.-bg--black(:style="`height:1rem;width:1rem;border-radius:${value.radius};`")
+
+      h2 Opacity
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+                th
+                  div Example
+            tbody
+              tr(v-for="(value, index) in elementOpacity")
+                td(width='35%')
+                  code {{`$opacity-${index}`}}
+                td(width='25%')
+                  div.-text {{value.opacity}}
+                td(width='40%')
+                  div.example-opacity.-rounded(:style="`height:3rem;`")
+                    div.-text.-bg--black.-rounded(:style="`height:3rem;opacity:${value.opacity};`")
+
+      h2 Z-index
+      section.chi-table.-xs.-mt--2.-mb--4
+        div
+          table.-text
+            thead
+              tr.-text--grey
+                th
+                  div Token
+                th
+                  div Value
+            tbody
+                tr(v-for="(value, index) in elementZindex")
+                  td(width='35%')
+                    code {{`$z-index-${index}`}}
+                  td(width='65%')
+                    div.-text {{value.zindex}}
+
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
+import tokens, {fontWeight, fontSize, fontHeadingSize, fontSystemSize, borderRadius, elementZindex, elementOpacity} from './fixtures';
 
 @Component({
-  data(){
-    return {}
+  data() {
+    return {
+      fontWeight,
+      fontSize,
+      fontHeadingSize,
+      fontSystemSize,
+      borderRadius,
+      elementZindex,
+      elementOpacity,
+    }
+  },
+  computed: {
+      isBrightspeedTheme() {
+        return this.$store.state.themes.theme === 'brightspeed';
+      },
+      isLumenTheme() {
+        return this.$store.state.themes.theme === 'lumen';
+      },
+      isPortalTheme() {
+        return this.$store.state.themes.theme === 'portal';
+      },
+      isCenturyLinkTheme() {
+        return this.$store.state.themes.theme === 'centurylink';
+      },
+  },
+  methods: {
+    getColor: function(context) {
+      switch (this.$store.state.themes.theme) {
+        case 'lumen': return (tokens as any)[context]['lumen'];
+        case 'portal': return (tokens as any)[context]['portal'];
+        case 'centurylink': return (tokens as any)[context]['centurylink'];
+        case 'brightspeed': return (tokens as any)[context]['brightspeed'];
+        default: return;
+      }
+    }
   }
 })
 export default class DesignTokens extends Vue {}

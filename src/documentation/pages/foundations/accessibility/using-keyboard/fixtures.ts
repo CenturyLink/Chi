@@ -1,4 +1,4 @@
-import { KeyStrokesItem, TitleSubtag, PassData, KeyboardUsageType } from "./domain";
+import { KeyStrokesItem, TitleTag, TitleSubtag, TitelSubtagMap, PassData, UsageType } from "./domain";
 
 export const KEY_STROKES: KeyStrokesItem[] = [
     {
@@ -27,7 +27,26 @@ export const KEY_STROKES: KeyStrokesItem[] = [
     }
 ];
 
-const INFO_RELATIONSHIP_SUBTAGS: TitleSubtag[] = [
+const commonTitleSubtagMap: TitelSubtagMap = {
+    perceivable: {
+        label: 'Perceivable',
+        tooltip: 'Content must be presentable to users in ways they can perceive.'
+    },
+    levelA: {
+        label: 'Level A',
+        tooltip: 'Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria.'
+    },
+    operable: {
+        label: 'Operable',
+        tooltip: 'Users must be able to operate the interface.'
+    },
+    levelAA: {
+        label: 'Level AA',
+        tooltip: 'Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria.'
+    }
+};
+
+const infoRelationshipTags: TitleTag[] = [
     {
         label: 'WCAG 2.0 Guideline',
         href: 'https://www.w3.org/TR/WCAG20'
@@ -42,7 +61,9 @@ const INFO_RELATIONSHIP_SUBTAGS: TitleSubtag[] = [
     }
 ];
 
-const INFO_RELATIONSHIP_PASS_DATA: PassData = {
+const infoRelationshipSubtags: TitleSubtag[] = [ commonTitleSubtagMap['perceivable'], commonTitleSubtagMap['levelA'] ];
+
+const infoRelationshipPassData: PassData = {
     passDescription: 'Use a screen reader (with your eyes closed):',
     passPoints: [
         'Is all content and functionality available to a screen reader?',
@@ -51,13 +72,16 @@ const INFO_RELATIONSHIP_PASS_DATA: PassData = {
     ]
 }
 
-export const INFO_RELATIONSHIP_KEYBOARD_TYPE: KeyboardUsageType = {
+const infoRelationshipUsageType: UsageType = {
+    title: 'Info and Relationships',
     benefits: 'Blind keyboard user',
     explanation: 'Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.',
-    titleSubtags: INFO_RELATIONSHIP_SUBTAGS,
-    passData: INFO_RELATIONSHIP_PASS_DATA
+    titleTags: infoRelationshipTags,
+    titleSubtags: infoRelationshipSubtags,
+    passData: infoRelationshipPassData
 }
-export const KEYBOARD_SUBTAGS: TitleSubtag[] = [
+
+const keyboardTags: TitleTag[] = [
     {
         label: 'WCAG 2.0 Guideline',
         href: 'https://www.w3.org/TR/WCAG20'
@@ -72,7 +96,9 @@ export const KEYBOARD_SUBTAGS: TitleSubtag[] = [
     }
 ];
 
-export const KEYBOARD_PASS_DATA: PassData = {
+const keyboardSubtags: TitleSubtag[] = [ commonTitleSubtagMap['operable'], commonTitleSubtagMap['levelA'] ];
+
+const keyboardPassData: PassData = {
     passDescription: 'Fully interact with every interactive aspect of a web page using your keyboard alone - do not use a mouse.',
     passPoints: [
         'Can the user access the full functionality of the page or application using a keyboard alone?',
@@ -80,7 +106,17 @@ export const KEYBOARD_PASS_DATA: PassData = {
     ]
 };
 
-export const NO_KEYBOARD_TRAP_SUBTAGS: TitleSubtag[] = [
+const keyboardUsageType: UsageType = {
+    title: 'Keyboard',
+    benefits: 'Keyboard users (typically people with visual and/or motor/physical disabilities).',
+    explanation: `All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes,
+    except where the underlying function requires input that depends on the path of the user's movement and not just the endpoints.`,
+    titleTags: keyboardTags,
+    titleSubtags: keyboardSubtags,
+    passData: keyboardPassData
+}
+
+const noKeyboardTrapTags: TitleTag[] = [
     {
         label: 'WCAG 2.0 Guideline',
         href: 'https://www.w3.org/TR/WCAG20'
@@ -93,9 +129,11 @@ export const NO_KEYBOARD_TRAP_SUBTAGS: TitleSubtag[] = [
         label: '2.1.2 No Keyboard Trap',
         href: 'https://www.w3.org/TR/WCAG20/#keyboard-operation-trapping'
     }
-]
+];
 
-export const NO_KEYBOARD_TRAP_PASS_DATA: PassData = {
+const noKeyboardTrapSubtags: TitleSubtag[] = [ commonTitleSubtagMap['perceivable'], commonTitleSubtagMap['levelA'] ];
+
+const noKeyboardTrapPassData: PassData = {
     passPoints: [
         'Can the keyboard user be trapped in a subset of the content that can only be exited using a mouse or pointing device?',
         'Is there a keyboard mechanism to return focus to the parent window?',
@@ -107,7 +145,18 @@ export const NO_KEYBOARD_TRAP_PASS_DATA: PassData = {
     ]
 };
 
-export const FOCUS_ORDER_SUBTAGS: TitleSubtag[] = [
+const noKeyboardTrapUsageType: UsageType = {
+    title: 'No keyboard trap',
+    benefits: 'Keyboard users (typically people with visual and/or motor/physical disabilities).',
+    explanation: `If keyboard focus can be moved to a component of the page (such as a plugin) using a keyboard interface, then focus can be moved away
+    from that component using only a keyboard interface, and, if it requires more than unmodified arrow or tab keys or other standard 
+    exit methods, the user is advised of the method for moving focus away.`,
+    titleTags: noKeyboardTrapTags,
+    titleSubtags: noKeyboardTrapSubtags,
+    passData: noKeyboardTrapPassData
+}
+
+const focusOrderTags: TitleTag[] = [
     {
         label: 'WCAG 2.0 Guideline',
         href: 'https://www.w3.org/TR/WCAG20'
@@ -120,9 +169,11 @@ export const FOCUS_ORDER_SUBTAGS: TitleSubtag[] = [
         label: '2.4.3 Focus Order',
         href: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-order'
     }
-]
+];
 
-export const FOCUS_ORDER_PASS_DATA: PassData = {
+const focusOrderSubtags: TitleSubtag[] = [ commonTitleSubtagMap['perceivable'], commonTitleSubtagMap['levelA'] ];
+
+const focusOrderPassData: PassData = {
     passDescription: 'Tab through the page using only the keyboard.',
     passPoints: [
         'Is the navigation order logical and intuitive?',
@@ -130,7 +181,17 @@ export const FOCUS_ORDER_PASS_DATA: PassData = {
     ]
 };
 
-export const FOCUS_VISIBLE_SUBTAGS: TitleSubtag[] = [
+const focusOrderUsageType: UsageType = {
+    title: 'Focus order',
+    benefits: 'Keyboard users (typically people with visual and/or motor/physical disabilities).',
+    explanation: `If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive
+    focus in an order that preserves meaning and operability.`,
+    titleTags: focusOrderTags,
+    titleSubtags: focusOrderSubtags,
+    passData: focusOrderPassData
+}
+
+const focusVisibleTags: TitleTag[] = [
     {
         label: 'WCAG 2.0 Guideline',
         href: 'https://www.w3.org/TR/WCAG20'
@@ -143,11 +204,30 @@ export const FOCUS_VISIBLE_SUBTAGS: TitleSubtag[] = [
         label: '2.4.7 Focus Visible',
         href: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-visible'
     }
-]
+];
 
-export const FOCUS_VISIBLE_PASS_DATA: PassData = {
+const focusVisibleSubtags: TitleSubtag[] = [ commonTitleSubtagMap['perceivable'], commonTitleSubtagMap['levelAA'] ];
+
+const focusVisiblePassData: PassData = {
     passDescription: 'Tab through the page using only the keyboard.',
     passPoints: [
         'Can the user always see which element on the page has focus?'
     ]
 };
+
+const focusVisibleUsageType: UsageType = {
+    title: 'Focus visible',
+    benefits: 'Keyboard users (typically people with visual and/or motor/physical disabilities).',
+    explanation: 'Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible.',
+    titleTags: focusVisibleTags,
+    titleSubtags: focusVisibleSubtags,
+    passData: focusVisiblePassData
+};
+
+export const USAGE_TYPES = [
+    infoRelationshipUsageType,
+    keyboardUsageType,
+    noKeyboardTrapUsageType,
+    focusOrderUsageType,
+    focusVisibleUsageType
+]

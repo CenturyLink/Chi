@@ -5,9 +5,18 @@ export interface KeyStrokesItem {
     description: string;
 }
 
-export interface TitleSubtag {
+export interface TitleTag {
     label: string;
     href: string;
+}
+
+export interface TitleSubtag {
+    label: string;
+    tooltip: string;
+}
+
+export interface TitelSubtagMap {
+    [key: string]: TitleSubtag
 }
 
 export interface PassData {
@@ -15,9 +24,11 @@ export interface PassData {
     passPoints: string[];
 }
 
-export interface KeyboardUsageType {
+export interface UsageType {
+    title: string;
     benefits: string;
     explanation: string;
+    titleTags: TitleTag[];
     titleSubtags: TitleSubtag[];
     passData: PassData;
 }
