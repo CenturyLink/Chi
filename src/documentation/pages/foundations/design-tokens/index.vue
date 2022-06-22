@@ -9,14 +9,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
-                th
-                  div Example
-                th
-                  div Contrast
+                th(v-for="(value, index) in getTokenHeaders('text')")
+                  div {{value}}
             tbody
               tr(v-for="(value, index) in getColor('text')")
                 td(width='35%')
@@ -39,14 +33,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
-                th
-                  div Example
-                th
-                  div Contrast
+                th(v-for="(value, index) in getTokenHeaders('icon')")
+                  div {{value}}
             tbody
               tr(v-for="(value, index) in getColor('icon')")
                 td(width='35%')
@@ -70,14 +58,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
-                th
-                  div Example
-                th
-                  div Contrast
+                th(v-for="(value, index) in getTokenHeaders('background')")
+                  div {{value}}
             tbody
               tr(v-for="(value, index) in getColor('background')")
                 td(width='35%')
@@ -98,14 +80,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
-                th
-                  div Example
-                th
-                  div Contrast
+                th(v-for="(value, index) in getTokenHeaders('border')")
+                  div {{value}}
             tbody
               tr(v-for="(value, index) in getColor('border')")
                 td(width='35%')
@@ -125,12 +101,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
-                th
-                  div Example
+                th(v-for="(value, index) in getTokenHeaders('colorSystem')")
+                  div {{value}}
             tbody
               tr(v-for="(value, index) in getColor('colorSystem')")
                 td(width='35%')
@@ -148,12 +120,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
-                th
-                  div Example
+                th(v-for="(value, index) in getTokenHeaders('font')")
+                  div {{value}}
             tbody
               tr
                 td(width='35%')
@@ -178,12 +146,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
-                th
-                  div Example
+                th(v-for="(value, index) in getTokenHeaders('fontWeight')")
+                  div {{value}}
             tbody
               tr(v-for="(value, index) in fontWeight")
                 td(width='35%')
@@ -199,12 +163,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
-                th
-                  div Example
+                th(v-for="(value, index) in getTokenHeaders('fontSizeText')")
+                  div {{value}}
             tbody
               tr(v-for="(value, index) in fontSize")
                 td(width='35%')
@@ -221,12 +181,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
-                th
-                  div Example
+                th(v-for="(value, index) in getTokenHeaders('fontSizeHeading')")
+                  div {{value}}
             tbody
               tr(v-for="(value, index) in fontHeadingSize")
                 td(width='35%')
@@ -243,12 +199,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
-                th
-                  div Example
+                th(v-for="(value, index) in getTokenHeaders('fontSizeSystem')")
+                  div {{value}}
             tbody
               tr(v-for="(value, index) in fontSystemSize")
                 td(width='35%')
@@ -265,12 +217,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
-                th
-                  div Example
+                th(v-for="(value, index) in getTokenHeaders('borderRadius')")
+                  div {{value}}
             tbody
               tr(v-for="(value, index) in borderRadius")
                 td(width='35%')
@@ -287,12 +235,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
-                th
-                  div Example
+                th(v-for="(value, index) in getTokenHeaders('opacity')")
+                  div {{value}}
             tbody
               tr(v-for="(value, index) in elementOpacity")
                 td(width='35%')
@@ -309,10 +253,8 @@
           table.-text
             thead
               tr.-text--grey
-                th
-                  div Token
-                th
-                  div Value
+                th(v-for="(value, index) in getTokenHeaders('zIndex')")
+                  div {{value}}
             tbody
                 tr(v-for="(value, index) in elementZindex")
                   td(width='35%')
@@ -360,6 +302,25 @@ import tokens, {fontWeight, fontSize, fontHeadingSize, fontSystemSize, borderRad
         case 'centurylink': return (tokens as any)[context]['centurylink'];
         case 'brightspeed': return (tokens as any)[context]['brightspeed'];
         default: return;
+      }
+    },
+    getTokenHeaders: function(context) {
+      switch (context) {
+        case 'text':
+        case 'icon':
+        case 'border':
+        case 'background':
+          return ['Token', 'Value', 'Example', 'Contrast'];
+        case 'colorSystem':
+        case 'font':
+        case 'fontWeight':
+        case 'fontSizeText':
+        case 'fontSizeHeading':
+        case 'fontSizeSystem':
+        case 'borderRadius':
+        case 'opacity':
+          return ['Token', 'Value', 'Example']
+        case 'zIndex': return ['Token', 'Value']
       }
     }
   }

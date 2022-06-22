@@ -35,38 +35,38 @@
           h3 Supporting Colors
         .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
           .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body.-bg--white(style="box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1)")
+            .palette.-p--2.chi-grid.-no-gutter.-text(style="box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1)" :style="{'background-color' : (isBrightSpeedTheme ? '#FA4628' : isCenturyLinkTheme ? '#FFFFFF' : '#FFFFFF')}" :class="isBrightSpeedTheme ? '-text--black' : isCenturyLinkTheme ? '-text--body' : '-text--body'")
               .chi-col.-w--12
-                .-text--bold White
+                .-text--bold {{isBrightSpeedTheme ? 'Red 50' : isCenturyLinkTheme ? 'White' : 'White'}}
               .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #FFFFFF
+                code.-bg--none.-text--inherit.-p--0 {{isBrightSpeedTheme ? '#FA4628' : isCenturyLinkTheme ? '#FFFFFF' : '#FFFFFF'}}
               .chi-col.-w--6.-text--right.-text--sm
                 .a11y AAA
         .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
           .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--body(style="background-color:#0C9ED9;")
+            .palette.-p--2.chi-grid.-no-gutter.-text(:style="{'background-color' : (isBrightSpeedTheme ? '#FFFFFF' : isCenturyLinkTheme ? '#02BCB2' : '#0C9ED9')}" :class="isBrightSpeedTheme ? '-text--body' : isCenturyLinkTheme ? '-text--body' : '-text--body'")
               .chi-col.-w--12
-                .-text--bold Cyan 50
+                .-text--bold {{isBrightSpeedTheme ? 'White' : isCenturyLinkTheme ? 'Teal Blue 40' : 'Cyan 50'}}
               .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #0C9ED9
+                code.-bg--none.-text--inherit.-p--0 {{isBrightSpeedTheme ? '#FFFFFF' : isCenturyLinkTheme ? '#02BCB2' : '#0C9ED9'}}
               .chi-col.-w--6.-text--right.-text--sm
                 .a11y AA
         .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
           .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(style="background-color:#083176;")
+            .palette.-p--2.chi-grid.-no-gutter.-text(:style="{'background-color': (isBrightSpeedTheme ? '#000000' : isCenturyLinkTheme ? '#F9F162' : '#083176')}" :class="isBrightSpeedTheme ? '-text--white' : isCenturyLinkTheme ? '-text--body' : '-text--white'")
               .chi-col.-w--12
-                .-text--bold Navy 100
+                .-text--bold {{isBrightSpeedTheme ? 'Black' : isCenturyLinkTheme ? 'Yellow 35' : 'Navy 100'}}
               .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #083176
+                code.-bg--none.-text--inherit.-p--0 {{isBrightSpeedTheme ? '#000000' : isCenturyLinkTheme ? '#F9F162' : '#083176'}}
               .chi-col.-w--6.-text--right.-text--sm
                 .a11y AAA
-        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3
+        .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3(v-if="!isBrightSpeedTheme")
           .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white.-bg--black
+            .palette.-p--2.chi-grid.-no-gutter.-text(:style="{'background-color': (isCenturyLinkTheme ? '#6FD16F' : '#000000')}" :class="isCenturyLinkTheme ? '-text--body' : '-text--white'")
               .chi-col.-w--12
-                .-text--bold Black
+                .-text--bold {{isCenturyLinkTheme ? 'Green 35' : 'Black'}}
               .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 #000000
+                code.-bg--none.-text--inherit.-p--0 {{isCenturyLinkTheme ? '#6FD16F' : '#000000'}}
               .chi-col.-w--6.-text--right.-text--sm
                 .a11y AAA
       .chi-divider.-mt--3.-mb--5
