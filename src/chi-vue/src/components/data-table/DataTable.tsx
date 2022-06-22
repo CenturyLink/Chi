@@ -330,7 +330,7 @@ export default class DataTable extends Vue {
       return this.selectedRows.includes(row.rowId);
     });
 
-    return selectedRows.length;
+    return 1;
   }
 
   _handleBulkActionsDeselection() {
