@@ -1,42 +1,40 @@
 <template lang="pug">
-  <ComponentExample title="Page Structure" id="base" :tabs="exampleTabs">
-    .chi-avatar(slot="example")
-      | Sensory
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  div
+    <TitleBar title="Page Structure" />
+    .chi-grid__container.-pt--3
+      p.-text
+        | Pages with well-structured content are essential for many web users.  
+      ul.-text
+        template(v-for="pageStructurePointer in $data.pageStructurePointers")
+          li <strong>{{pageStructurePointer.highlighter}}</strong>{{pageStructurePointer.description}}
+      template(v-for="pageStructureUsageType in $data.pageStructureUsageTypes")
+        h2 {{pageStructureUsageType.title}}
+        <UsageTypeComponent :usageTypeData="pageStructureUsageType"/>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import UsageTypeComponent from '../common-assets/_usage-type.vue';
+import { PAGE_STRUCTURE_USAGE_TYPES, PAGE_STRUCTURE_POINTERS } from './fixtures';
+
+declare const chi: any;
 
 @Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web component',
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<div class="chi-avatar">
-  <img src="path/to/image.jpg" alt="avatar">
-</div>`,
-      },
-    };
+  components: {
+    UsageTypeComponent
   },
+  mounted(){
+    chi.expansionPanel(
+      document.querySelectorAll('[data-chi-epanel-group="web-component-details"]'),
+      {mode: 'accordion'}
+    );
+  },
+  data(){
+    return {
+      pageStructureUsageTypes: PAGE_STRUCTURE_USAGE_TYPES,
+      pageStructurePointers: PAGE_STRUCTURE_POINTERS
+    }
+  }
 })
-export default class Accessibility extends Vue {}
+export default class PageStructure extends Vue {}
 </script>

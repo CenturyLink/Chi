@@ -14,8 +14,14 @@
     .chi-col.-w--12
       p.-text
         | <strong>Benefits:</strong> {{$props.usageTypeData.benefits}}
-      p.-text
+      template(v-if="Array.isArray($props.usageTypeData.explanation)")
+        template(v-for="explanationItem in $props.usageTypeData.explanation")
+          p.-text
+            | {{explanationItem}}
+      p.-text(v-else)
         | {{$props.usageTypeData.explanation}}
+      ul.-text(v-if="$props.usageTypeData.explanationList")
+        li(v-for="listItem in $props.usageTypeData.explanationList") <strong>{{listItem.label}}</strong> {{listItem.description}}
     .chi-col.-w--12
       .chi-card.-s--1.-rounded.-mb--3.-mt--1
         .chi-card__header
@@ -47,5 +53,5 @@ declare const chi: any;
     chi.tooltip(document.querySelectorAll('[data-tooltip]'));
   }
 })
-export default class KeyboardUsageComponent extends Vue {}
+export default class UsageTypeComponent extends Vue {}
 </script>

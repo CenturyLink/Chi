@@ -1,4 +1,6 @@
-import { KeyStrokesItem, TitleTag, TitleSubtag, TitelSubtagMap, PassData, UsageType } from "./domain";
+import { KeyStrokesItem } from "./domain";
+import {  TitleTag, TitleSubtag, PassData, UsageType } from '../common-assets/domain'
+import { commonTitleSubtagMap, WCAG_2_0_TITLE_TAG, ADAPTABLE_1_3_TITLE_TAG } from '../common-assets/fixtures';
 
 export const KEY_STROKES: KeyStrokesItem[] = [
     {
@@ -27,34 +29,9 @@ export const KEY_STROKES: KeyStrokesItem[] = [
     }
 ];
 
-const commonTitleSubtagMap: TitelSubtagMap = {
-    perceivable: {
-        label: 'Perceivable',
-        tooltip: 'Content must be presentable to users in ways they can perceive.'
-    },
-    levelA: {
-        label: 'Level A',
-        tooltip: 'Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria.'
-    },
-    operable: {
-        label: 'Operable',
-        tooltip: 'Users must be able to operate the interface.'
-    },
-    levelAA: {
-        label: 'Level AA',
-        tooltip: 'Requirements must be satisfied to pass WCAG 2.0 Level AA Success Criteria.'
-    }
-};
-
 const infoRelationshipTags: TitleTag[] = [
-    {
-        label: 'WCAG 2.0 Guideline',
-        href: 'https://www.w3.org/TR/WCAG20'
-    },
-    {
-        label: '1.3 Adaptable',
-        href: 'https://www.w3.org/TR/WCAG20/#content-structure-separation'
-    },
+    WCAG_2_0_TITLE_TAG,
+    ADAPTABLE_1_3_TITLE_TAG,
     {
         label: '1.3.1 Info and Relationships',
         href: 'https://www.w3.org/TR/WCAG20/#content-structure-separation-programmatic'
@@ -82,10 +59,7 @@ const infoRelationshipUsageType: UsageType = {
 }
 
 const keyboardTags: TitleTag[] = [
-    {
-        label: 'WCAG 2.0 Guideline',
-        href: 'https://www.w3.org/TR/WCAG20'
-    },
+    WCAG_2_0_TITLE_TAG,
     {
         label: '2.1 Keyboard accessible',
         href: 'https://www.w3.org/TR/WCAG20/#keyboard-operation'
@@ -117,10 +91,7 @@ const keyboardUsageType: UsageType = {
 }
 
 const noKeyboardTrapTags: TitleTag[] = [
-    {
-        label: 'WCAG 2.0 Guideline',
-        href: 'https://www.w3.org/TR/WCAG20'
-    },
+    WCAG_2_0_TITLE_TAG,
     {
         label: '2.1 Keyboard accessible',
         href: 'https://www.w3.org/TR/WCAG20/#keyboard-operation'
@@ -131,7 +102,7 @@ const noKeyboardTrapTags: TitleTag[] = [
     }
 ];
 
-const noKeyboardTrapSubtags: TitleSubtag[] = [ commonTitleSubtagMap['perceivable'], commonTitleSubtagMap['levelA'] ];
+const noKeyboardTrapSubtags: TitleSubtag[] = [ commonTitleSubtagMap['operable'], commonTitleSubtagMap['levelA'] ];
 
 const noKeyboardTrapPassData: PassData = {
     passPoints: [
@@ -157,10 +128,7 @@ const noKeyboardTrapUsageType: UsageType = {
 }
 
 const focusOrderTags: TitleTag[] = [
-    {
-        label: 'WCAG 2.0 Guideline',
-        href: 'https://www.w3.org/TR/WCAG20'
-    },
+    WCAG_2_0_TITLE_TAG,
     {
         label: '2.4 Navigable',
         href: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms'
@@ -171,7 +139,7 @@ const focusOrderTags: TitleTag[] = [
     }
 ];
 
-const focusOrderSubtags: TitleSubtag[] = [ commonTitleSubtagMap['perceivable'], commonTitleSubtagMap['levelA'] ];
+const focusOrderSubtags: TitleSubtag[] = [ commonTitleSubtagMap['operable'], commonTitleSubtagMap['levelA'] ];
 
 const focusOrderPassData: PassData = {
     passDescription: 'Tab through the page using only the keyboard.',
@@ -192,10 +160,7 @@ const focusOrderUsageType: UsageType = {
 }
 
 const focusVisibleTags: TitleTag[] = [
-    {
-        label: 'WCAG 2.0 Guideline',
-        href: 'https://www.w3.org/TR/WCAG20'
-    },
+    WCAG_2_0_TITLE_TAG,
     {
         label: '2.4 Navigable',
         href: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms'
@@ -206,7 +171,7 @@ const focusVisibleTags: TitleTag[] = [
     }
 ];
 
-const focusVisibleSubtags: TitleSubtag[] = [ commonTitleSubtagMap['perceivable'], commonTitleSubtagMap['levelAA'] ];
+const focusVisibleSubtags: TitleSubtag[] = [ commonTitleSubtagMap['operable'], commonTitleSubtagMap['levelAA'] ];
 
 const focusVisiblePassData: PassData = {
     passDescription: 'Tab through the page using only the keyboard.',
@@ -224,7 +189,7 @@ const focusVisibleUsageType: UsageType = {
     passData: focusVisiblePassData
 };
 
-export const USAGE_TYPES = [
+export const KEYBOARD_USAGE_TYPES = [
     infoRelationshipUsageType,
     keyboardUsageType,
     noKeyboardTrapUsageType,
