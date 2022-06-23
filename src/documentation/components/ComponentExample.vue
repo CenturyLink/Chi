@@ -138,8 +138,17 @@
         v-for="tab in tabs"
         :key="tab.id"
         :id="'example-' + id + '-' + tab.id"
+        :ref="`tab-panel-${tab.id}`"
         role="tabpanel"
       >
+        <div class="clipboard">
+          <button
+            class="clipboard__button chi-button -xs -flat"
+            @click="() => copy(`tab-panel-${tab.id}`)"
+          >
+            Copy
+          </button>
+        </div>
         <slot :name="'code-' + tab.id"></slot>
       </div>
     </div>
@@ -183,6 +192,20 @@ export default class ComponentExample extends Vue {
 
   chiTabs: any;
   chiHeadTabs: any;
+
+  copy(id: string) {
+    const tabElement = (this.$refs[id] as HTMLElement[])[0];
+
+    if (tabElement) {
+      const codeElement = (tabElement as HTMLElement).querySelector('code');
+      const codeSnippet = codeElement?.textContent;
+
+      if(navigator.clipboard && codeSnippet) {
+        navigator.clipboard
+          .writeText(codeSnippet);
+      }
+    }
+  }
 
   mounted() {
     const chiTabs = document.getElementById(
