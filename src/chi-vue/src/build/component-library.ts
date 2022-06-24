@@ -23,6 +23,7 @@ const exportComponent: ComponentLibrary = {
       import(/* webpackChunkName: "expansion-panel" */ '../components/expansion-panel/ExpansionPanel'),
     ChiPagination: () => import(/* webpackChunkName: "pagination" */ '../components/pagination/pagination'),
     ChiSearchInput: () => import(/* webpackChunkName: "search-input" */ '../components/search-input/SearchInput'),
+    ChiSaveView: () => import(/* webpackChunkName: "save-view" */ '../components/data-table-save-view/SaveView'),
     ChiTooltip: () => import(/* webpackChunkName: "tooltip" */ '../components/tooltip/tooltip'),
   },
 };

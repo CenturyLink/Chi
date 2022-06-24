@@ -16,16 +16,11 @@ export default class Tooltip extends Vue {
 
   _tooltipElement?: JSX.Element;
   _tooltipElementNode!: HTMLElement;
-  _shown: boolean;
+  _shown = false;
   _uuid!: string;
   _animationTimeout?: number;
   _animation?: ThreeStepsAnimation;
   _popper!: PopoverInstance;
-
-  constructor() {
-    super();
-    this._shown = false;
-  }
 
   generateTooltipElement() {
     this._tooltipElement = (
@@ -37,7 +32,7 @@ export default class Tooltip extends Vue {
     );
   }
 
-  beforeMount() {
+  created() {
     this._uuid = `tooltip-${uuid4()}`;
     this.generateTooltipElement();
   }
