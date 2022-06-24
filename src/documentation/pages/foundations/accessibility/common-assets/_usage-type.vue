@@ -16,12 +16,15 @@
         | <strong>Benefits:</strong> {{$props.usageTypeData.benefits}}
       template(v-if="Array.isArray($props.usageTypeData.explanation)")
         template(v-for="explanationItem in $props.usageTypeData.explanation")
-          p.-text
-            | {{explanationItem}}
+          p.-text(v-html="explanationItem")
       p.-text(v-else)
         | {{$props.usageTypeData.explanation}}
       ul.-text(v-if="$props.usageTypeData.explanationList")
         li(v-for="listItem in $props.usageTypeData.explanationList") <strong>{{listItem.label}}</strong> {{listItem.description}}
+      p.-text(v-if="$props.usageTypeData.additionalExplanation")
+        | {{$props.usageTypeData.additionalExplanation}}
+      ul.-text(v-if="$props.usageTypeData.additionalExplanationList")
+        li(v-for="item in $props.usageTypeData.additionalExplanationList") <strong>{{item.label}}</strong> {{item.description}}
     .chi-col.-w--12
       .chi-card.-s--1.-rounded.-mb--3.-mt--1
         .chi-card__header
@@ -33,8 +36,13 @@
               | {{$props.usageTypeData.passData.passDescription}}
           ul.accessibility-checklist
             template(v-for="passPoint in $props.usageTypeData.passData.passPoints")
-              li 
+              li(v-if="typeof passPoint === 'string'") 
                 | {{passPoint}}
+              li(v-else)
+                | {{passPoint.mainContent}}
+                div
+                  ul.-text
+                    li(v-for="passSublistItem in passPoint.sublist") {{passSublistItem}}
 </template>
 
 <script lang="ts">

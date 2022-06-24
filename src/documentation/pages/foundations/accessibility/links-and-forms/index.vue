@@ -1,42 +1,35 @@
 <template lang="pug">
-  <ComponentExample title="Links and Forms" id="base" :tabs="exampleTabs">
-    .chi-avatar(slot="example")
-      | Sensory
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
-  </ComponentExample>
+  div
+    <TitleBar title="Links and forms" />
+    .chi-grid__container.-pt--3
+      template(v-for="linksAndFormsUsageType in $data.linksAndFormsUsageTypes")
+        h2 {{linksAndFormsUsageType.title}}
+        <UsageTypeComponent :usageTypeData="linksAndFormsUsageType"/>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import UsageTypeComponent from '../common-assets/_usage-type.vue';
+import { LINKS_AND_FORMS_USAGE_TYPES } from './fixtures';
+
+declare const chi: any;
 
 @Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          disabled: true,
-          id: 'webcomponent',
-          label: 'Web component',
-        },
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML blueprint',
-        },
-      ],
-      codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `<div class="chi-avatar">
-  <img src="path/to/image.jpg" alt="avatar">
-</div>`,
-      },
-    };
+  components: {
+    UsageTypeComponent
   },
+  mounted(){
+    chi.expansionPanel(
+      document.querySelectorAll('[data-chi-epanel-group="web-component-details"]'),
+      {mode: 'accordion'}
+    );
+  },
+  data(){
+    return {
+      linksAndFormsUsageTypes: LINKS_AND_FORMS_USAGE_TYPES,
+    }
+  }
 })
-export default class Accessibility extends Vue {}
+
+export default class LinksAndForms extends Vue {}
 </script>

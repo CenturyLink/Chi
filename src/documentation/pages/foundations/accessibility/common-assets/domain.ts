@@ -12,9 +12,14 @@ export interface TitelSubtagMap {
     [key: string]: TitleSubtag
 }
 
+export interface PassPointSublist {
+    mainContent: string;
+    sublist: string[]
+}
+
 export interface PassData {
     passDescription?: string;
-    passPoints: string[];
+    passPoints: (string | PassPointSublist)[];
 }
 
 export interface ExplanationListItem {
@@ -22,16 +27,13 @@ export interface ExplanationListItem {
     description: string;
 }
 
-export interface MultiExplanationList {
-    explanation: string;
-    explanationList: ExplanationListItem[]
-}
 export interface UsageType {
     title: string;
     benefits: string;
     explanation?: string | string[];
     explanationList?: ExplanationListItem[];
-    multiExplanationLists?: MultiExplanationList[];
+    additionalExplanation?: string;
+    additionalExplanationList?: ExplanationListItem[];
     titleTags: TitleTag[];
     titleSubtags: TitleSubtag[];
     passData: PassData;

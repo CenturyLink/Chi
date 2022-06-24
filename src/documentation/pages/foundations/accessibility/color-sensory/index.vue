@@ -2,9 +2,6 @@
   div
     <TitleBar title="Color and sensory" />
     .chi-grid__container.-pt--3
-      ul.-text
-        template(v-for="pageStructurePointer in $data.pageStructurePointers")
-          li <strong>{{pageStructurePointer.highlighter}}</strong>{{pageStructurePointer.description}}
       template(v-for="sensoryColorUsageType in $data.sensoryColorUsageTypes")
         h2 {{sensoryColorUsageType.title}}
         <UsageTypeComponent :usageTypeData="sensoryColorUsageType"/>

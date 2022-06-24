@@ -1,6 +1,11 @@
 import { KeyStrokesItem } from "./domain";
 import {  TitleTag, TitleSubtag, PassData, UsageType } from '../common-assets/domain'
-import { commonTitleSubtagMap, WCAG_2_0_TITLE_TAG, ADAPTABLE_1_3_TITLE_TAG } from '../common-assets/fixtures';
+import {
+    commonTitleSubtagMap,
+    WCAG_2_0_TITLE_TAG,
+    ADAPTABLE_1_3_TITLE_TAG,
+    INFO_RELATIONSHIPS_1_3_1_TITLE_TAG
+} from '../common-assets/fixtures';
 
 export const KEY_STROKES: KeyStrokesItem[] = [
     {
@@ -32,10 +37,7 @@ export const KEY_STROKES: KeyStrokesItem[] = [
 const infoRelationshipTags: TitleTag[] = [
     WCAG_2_0_TITLE_TAG,
     ADAPTABLE_1_3_TITLE_TAG,
-    {
-        label: '1.3.1 Info and Relationships',
-        href: 'https://www.w3.org/TR/WCAG20/#content-structure-separation-programmatic'
-    }
+    INFO_RELATIONSHIPS_1_3_1_TITLE_TAG
 ];
 
 const infoRelationshipSubtags: TitleSubtag[] = [ commonTitleSubtagMap['perceivable'], commonTitleSubtagMap['levelA'] ];

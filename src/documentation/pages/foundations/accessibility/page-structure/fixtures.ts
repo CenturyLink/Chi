@@ -2,11 +2,12 @@ import { PageStructurePointer } from "./domain";
 import {  TitleTag, TitleSubtag, PassData, UsageType } from '../common-assets/domain';
 import {
     commonTitleSubtagMap,
-    PREDICTABLE_3_2_TITLE_TAG,
-    NAVIGABLE_2_4_TITLE_TAG,
+    ADAPTABLE_1_3_TITLE_TAG,
     WCAG_2_0_TITLE_TAG,
+    NAVIGABLE_2_4_TITLE_TAG,
     READABLE_3_1_TITLE_TAG,
-    ADAPTABLE_1_3_TITLE_TAG
+    PREDICTABLE_3_2_TITLE_TAG,
+    COMPATIBLE_4_1_TITLE_TAG
 } from '../common-assets/fixtures';
 
 export const PAGE_STRUCTURE_POINTERS: PageStructurePointer[] = [
@@ -279,10 +280,7 @@ const languageOfPartsUsageType: UsageType = {
 
 const parsingTags: TitleTag[] = [
     WCAG_2_0_TITLE_TAG,
-    {
-        label: '4.1 Compatible',
-        href: 'https://www.w3.org/TR/WCAG20/#ensure-compat'
-    },
+    COMPATIBLE_4_1_TITLE_TAG,
     {
         label: '4.1.1 Parsing',
         href: 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#ensure-compat-parses'
