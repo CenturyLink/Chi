@@ -105,30 +105,14 @@
       max-width: 688px;
       padding-left: 1rem;
       padding-right: 1rem;
-    }
-  }
 
-  @include respond-to(md) {
-    &.-fixed-width {
-      .chi-main__content,
-      .chi-main__header,
-      .chi-footer__internal-content {
-        margin-left: auto;
-        margin-right: auto;
+      @include respond-to(md) {
         max-width: 744px;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
       }
-    }
-  }
 
-  @include respond-to(lg) {
-    &.-fixed-width {
-      .chi-main__content,
-      .chi-main__header,
-      .chi-footer__internal-content {
-        margin-left: auto;
-        margin-right: auto;
+      @include respond-to(lg) {
         max-width: 1280px;
         padding-left: 4rem;
         padding-right: 4rem;
