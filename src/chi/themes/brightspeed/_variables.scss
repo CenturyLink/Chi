@@ -382,6 +382,8 @@ $alert-sm-text-line-height:                 $line-height;
 
 // App layout
 $app-layout-background-color:               $color-background-base;
+$app-layout-header-background-color:        $color-orange-40;
+$app-layout-header-title-color:             $color-text-base;
 
 // Avatar
 $avatar-background-color:                   $color-grey-20;
@@ -767,10 +769,11 @@ $card-content-padding:                      2rem;
 $card-tabs-padding:                         1rem 2rem;
 $card-tabs-border-bottom:                   inset 0 -0.125rem 0 0 $color-border-base;
 $card-highlight-background-color:           $color-background-secondary-light;
+$card-highlight-border-color:               $color-yellow-30;
 $card-highlight-header-background-color:    $color-background-white;
 
 $card-widget-background-color:              $color-grey-10;
-$card-widget-border:                        0.0625rem solid rgba($color-black, 0.12);
+$card-widget-border:                        0.0625rem solid $color-grey-15;
 $card-widget-title-font-size:               $font-size-7;
 $card-widget-title-font-weight:             $font-weight-extra-bold;
 $card-widget-content-padding:               1rem;

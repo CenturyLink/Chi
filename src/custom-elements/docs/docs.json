@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-06-20T14:00:16",
+  "timestamp": "2022-06-25T01:12:04",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2181,6 +2181,22 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "headerBackground",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "header-background",
+          "reflectToAttr": true,
+          "docs": "To define app layout header background",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,

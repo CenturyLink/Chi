@@ -1,5 +1,5 @@
 import { Component, Element, Prop, Watch, h, State, Event, EventEmitter } from '@stencil/core';
-import { AppLayoutFormats, APP_LAYOUT_FORMATS } from '../../constants/constants';
+import { AppLayoutFormats, APP_LAYOUT_FORMATS} from '../../constants/constants';
 
 @Component({
   tag: 'chi-main',
@@ -30,6 +30,11 @@ export class AppLayout {
    @Prop({ reflect: true }) subtitle: string;
 
   /**
+   *  To define app layout header background
+   */
+   @Prop({ reflect: true }) headerBackground: boolean;
+
+  /**
    *  To define app layout title
    */
   @State() appLayoutTitle: string;
@@ -50,7 +55,7 @@ export class AppLayout {
   @Watch('format')
   typeValidation(newValue: string) {
     if (newValue && !APP_LAYOUT_FORMATS.includes(newValue)) {
-      throw new Error(`${newValue} is not a valid type for app layout. Valid values are base or no-margin.`);
+      throw new Error(`${newValue} is not a valid type for app layout. Valid values are base, no-margin, or fixed-width.`);
     }
   }
 
@@ -93,10 +98,11 @@ export class AppLayout {
   render() {
     const appLayoutBackLink = this.backlink && <a class="chi-link" onClick={() => this._handlerBacklinkClick()} href={this.backlinkHref}><div class="chi-link__content"><i class="chi-icon icon-chevron-left -xs"></i><span class="-text--md">{this.backlink}</span></div></a>;
     const appLayoutHelpIcon = this.appLayoutHelpIcon && <slot name="help-icon"></slot>;
-    const appLayoutTitle = this.appLayoutTitle && <div class="-text--h3 -text--boldest -text--navy -m--0 -pr--2">{this.appLayoutTitle}{appLayoutHelpIcon}</div>;
+    const appLayoutTitle = this.appLayoutTitle && <div class="chi-main__title-heading">{this.appLayoutTitle}{appLayoutHelpIcon}</div>;
     const appLayoutSubTitle = this.subtitle && <div class="-text--md -pl--2 -bl--1">{this.subtitle}</div>;
     const appLayoutHeaderActions = this.appLayoutHeaderActions && <div class="chi-main__header-end"><slot name="header-actions"></slot></div>;
     const appLayoutPageLevelActions = this.appLayoutPageLevelActions && <div class="-d--flex -align-items--center -justify-content--end -py--3 -my--2 -bt--1"><slot name="page-level__actions"></slot></div>;
+    const appLayoutBackground = this.headerBackground && <div class="chi-main__background"><div class="chi-main__background-image"></div></div>;
     const appLayoutFooter = this.appLayoutFooter && <slot name="footer"></slot>;
 
     return (
@@ -117,6 +123,7 @@ export class AppLayout {
           <slot></slot>
           {appLayoutPageLevelActions}
         </div>
+        {appLayoutBackground}
         {appLayoutFooter}
       </div>
     );
