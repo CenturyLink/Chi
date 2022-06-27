@@ -132,6 +132,10 @@
       box-shadow: $stat-active-box-shadow;
       color: $stat-active-text-color;
 
+      &:hover {
+        border: $stat-active-border;
+      }
+
       .chi-stat-metric {
         &__title {
           color: $stat-active-metric-title-color;
@@ -147,11 +151,19 @@
         color: $stat-active-submetric-text-color;
       }
 
-      .chi-stat-background-icon {
-        opacity: $stat-active-background-icon-opacity;
+      .chi-stat__content {
+        .chi-stat-background-icon {
+          opacity: $stat-active-background-icon-opacity;
 
-        & > .chi-icon {
-          color: $stat-active-background-icon-color;
+          .chi-icon {
+            color: $stat-active-background-icon-color;
+          }
+
+          .chi-marketing-icon {
+            &.outline {
+              color: $stat-active-background-icon-color;
+            }
+          }
         }
       }
 
