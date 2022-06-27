@@ -1,14 +1,6 @@
 import { PageStructurePointer } from "./domain";
 import {  TitleTag, TitleSubtag, PassData, UsageType } from '../common-assets/domain';
-import {
-    commonTitleSubtagMap,
-    ADAPTABLE_1_3_TITLE_TAG,
-    WCAG_2_0_TITLE_TAG,
-    NAVIGABLE_2_4_TITLE_TAG,
-    READABLE_3_1_TITLE_TAG,
-    PREDICTABLE_3_2_TITLE_TAG,
-    COMPATIBLE_4_1_TITLE_TAG
-} from '../common-assets/fixtures';
+import { commonTitleSubtagMap, titleTags } from '../common-assets/fixtures';
 
 export const PAGE_STRUCTURE_POINTERS: PageStructurePointer[] = [
     {
@@ -48,8 +40,8 @@ export const PAGE_STRUCTURE_POINTERS: PageStructurePointer[] = [
 ];
 
 const meaningfulSequenceTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    ADAPTABLE_1_3_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.ADAPTABLE_1_3_TITLE_TAG,
     {
         label: '1.3.2 Meaningful Sequence',
         href: 'https://www.w3.org/TR/WCAG20/#content-structure-separation-sequence'
@@ -75,8 +67,8 @@ const meaningfulSequenceUsageType: UsageType = {
 }
 
 const bypassBlocksTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    NAVIGABLE_2_4_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.NAVIGABLE_2_4_TITLE_TAG,
     {
         label: '2.4.1 Bypass Blocks',
         href: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-skip'
@@ -103,8 +95,8 @@ const bypassBlocksUsageType: UsageType = {
 }
 
 const pageTitledTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    NAVIGABLE_2_4_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.NAVIGABLE_2_4_TITLE_TAG,
     {
         label: '2.4.2 Page Titled',
         href: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-title'
@@ -130,8 +122,8 @@ const pageTitledUsageType: UsageType = {
 }
 
 const linkPurposeTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    NAVIGABLE_2_4_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.NAVIGABLE_2_4_TITLE_TAG,
     {
         label: '2.4.4 Link Purpose (In Context)',
         href: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-refs'
@@ -160,8 +152,8 @@ const linkPurposeUsageType: UsageType = {
 }
 
 const multipleWaysTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    NAVIGABLE_2_4_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.NAVIGABLE_2_4_TITLE_TAG,
     {
         label: '2.4.5 Multiple Ways',
         href: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-mult-loc'
@@ -187,8 +179,8 @@ const multipleWaysUsageType: UsageType = {
 }
 
 const headingsAndLabelsTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    NAVIGABLE_2_4_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.NAVIGABLE_2_4_TITLE_TAG,
     {
         label: '2.4.6 Headings and Labels',
         href: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-descriptive'
@@ -215,8 +207,8 @@ const headingsAndLabelsUsageType: UsageType = {
 }
 
 const languageOfPageTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    READABLE_3_1_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.READABLE_3_1_TITLE_TAG,
     {
         label: '3.1.1 Language of Page',
         href: 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#meaning-doc-lang-id'
@@ -248,8 +240,8 @@ const languageOfPageUsageType: UsageType = {
 }
 
 const languageOfPartsTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    READABLE_3_1_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.READABLE_3_1_TITLE_TAG,
     {
         label: '3.1.2 Language of Parts',
         href: 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#meaning-other-lang-id'
@@ -279,8 +271,8 @@ const languageOfPartsUsageType: UsageType = {
 }
 
 const parsingTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    COMPATIBLE_4_1_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.COMPATIBLE_4_1_TITLE_TAG,
     {
         label: '4.1.1 Parsing',
         href: 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#ensure-compat-parses'
@@ -310,8 +302,8 @@ const parsingUsageType: UsageType = {
 }
 
 const consistentNavigationTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    PREDICTABLE_3_2_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.PREDICTABLE_3_2_TITLE_TAG,
     {
         label: '3.2.3 Consistent Navigation',
         href: 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#consistent-behavior-consistent-locations'
@@ -339,8 +331,8 @@ const consistentNavigationUsageType: UsageType = {
 }
 
 const consistentIdentificationTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    PREDICTABLE_3_2_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.PREDICTABLE_3_2_TITLE_TAG,
     {
         label: '3.2.4 Consistent Identification',
         href: 'https://www.w3.org/TR/2008/REC-WCAG20-20081211/#consistent-behavior-consistent-functionality'

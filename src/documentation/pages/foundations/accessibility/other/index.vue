@@ -1,16 +1,16 @@
 <template lang="pug">
   div
-    <TitleBar title="Images" />
+    <TitleBar title="Other" />
     .chi-grid__container.-pt--3
-      template(v-for="imagesUsageType in $data.imagesUsageTypes")
-        h2 {{imagesUsageType.title}}
-        <UsageTypeComponent :usageTypeData="imagesUsageType"/>
+      template(v-for="otherUsageType in $data.otherUsageTypes")
+        h2 {{otherUsageType.title}}
+        <UsageTypeComponent :usageTypeData="otherUsageType"/>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import UsageTypeComponent from '../common-assets/_usage-type.vue';
-import { IMAGES_USAGE_TYPES } from './fixtures';
+import { otherUsageTypes } from './fixtures';
 
 declare const chi: any;
 
@@ -26,7 +26,7 @@ declare const chi: any;
   },
   data(){
     return {
-      imagesUsageTypes: IMAGES_USAGE_TYPES
+      otherUsageTypes: otherUsageTypes
     }
   }
 })

@@ -1,15 +1,10 @@
 import { ExplanationListItem } from '../common-assets/domain';
 import {  TitleTag, TitleSubtag, PassData, UsageType } from '../common-assets/domain'
-import {
-    commonTitleSubtagMap,
-    WCAG_2_0_TITLE_TAG,
-    ADAPTABLE_1_3_TITLE_TAG,
-    DISTINGUISHABLE_1_4_TITLE_TAG
-} from '../common-assets/fixtures';
+import { commonTitleSubtagMap, titleTags } from '../common-assets/fixtures';
 
 const sensoryCharacteristicsTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    ADAPTABLE_1_3_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.ADAPTABLE_1_3_TITLE_TAG,
     {
         label: '1.3.3 Sensory Characteristics',
         href: 'https://www.w3.org/TR/WCAG20/#content-structure-separation-understanding'
@@ -38,8 +33,8 @@ const sensoryCharacteristicsUsageType: UsageType = {
 }
 
 const useOfColorTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    DISTINGUISHABLE_1_4_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.DISTINGUISHABLE_1_4_TITLE_TAG,
     {
         label: '1.4.1 Use of Color',
         href: 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast-without-color'
@@ -66,8 +61,8 @@ const useOfColorUsageType: UsageType = {
 }
 
 const contrastTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    DISTINGUISHABLE_1_4_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.DISTINGUISHABLE_1_4_TITLE_TAG,
     {
         label: '1.4.3 Contrast (Minimum)',
         href: 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast'
@@ -86,7 +81,7 @@ const contrastPassData: PassData = {
     ]
 }
 
-export const contrastExplanationList: ExplanationListItem[] = [
+const contrastExplanationList: ExplanationListItem[] = [
     {
         label: 'Large Text:',
         description: 'Large-scale text and images of large-scale text have a contrast ratio of at least 3:1.'
@@ -112,7 +107,7 @@ const contrastUsageType: UsageType = {
     passData: contrastPassData
 }
 
-export const SENSORY_COLOR_USAGE_TYPES = [
+export const sensoryColorUsageTypes = [
     sensoryCharacteristicsUsageType,
     useOfColorUsageType,
     contrastUsageType

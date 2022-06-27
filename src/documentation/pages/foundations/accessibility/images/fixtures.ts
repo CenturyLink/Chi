@@ -1,14 +1,9 @@
 import { ExplanationListItem } from '../common-assets/domain';
 import {  TitleTag, TitleSubtag, PassData, UsageType } from '../common-assets/domain'
-import {
-    commonTitleSubtagMap,
-    WCAG_2_0_TITLE_TAG,
-    IMAGES_OF_TEXT_1_4_5_TITLE_TAG,
-    DISTINGUISHABLE_1_4_TITLE_TAG
-} from '../common-assets/fixtures';
+import { commonTitleSubtagMap, titleTags } from '../common-assets/fixtures';
 
 const nonTextContentTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
     {
         label: '1.1 Text alternatives',
         href: 'https://www.w3.org/TR/WCAG20/#text-equiv'
@@ -88,9 +83,9 @@ const nonTextContentUsageType: UsageType = {
 }
 
 const imagesOfTextTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    DISTINGUISHABLE_1_4_TITLE_TAG,
-    IMAGES_OF_TEXT_1_4_5_TITLE_TAG
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.DISTINGUISHABLE_1_4_TITLE_TAG,
+    titleTags.IMAGES_OF_TEXT_1_4_5_TITLE_TAG
 ];
 
 const imagesOfTextSubtags: TitleSubtag[] = [ commonTitleSubtagMap['perceivable'], commonTitleSubtagMap['levelAA'] ];

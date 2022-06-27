@@ -10,7 +10,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import UsageTypeComponent from '../common-assets/_usage-type.vue';
-import { SENSORY_COLOR_USAGE_TYPES } from './fixtures';
+import { sensoryColorUsageTypes } from './fixtures';
 
 declare const chi: any;
 
@@ -26,7 +26,7 @@ declare const chi: any;
   },
   data(){
     return {
-      sensoryColorUsageTypes: SENSORY_COLOR_USAGE_TYPES
+      sensoryColorUsageTypes: sensoryColorUsageTypes
     }
   }
 })

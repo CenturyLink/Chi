@@ -1,11 +1,6 @@
 import { KeyStrokesItem } from "./domain";
 import {  TitleTag, TitleSubtag, PassData, UsageType } from '../common-assets/domain'
-import {
-    commonTitleSubtagMap,
-    WCAG_2_0_TITLE_TAG,
-    ADAPTABLE_1_3_TITLE_TAG,
-    INFO_RELATIONSHIPS_1_3_1_TITLE_TAG
-} from '../common-assets/fixtures';
+import { commonTitleSubtagMap, titleTags } from '../common-assets/fixtures';
 
 export const KEY_STROKES: KeyStrokesItem[] = [
     {
@@ -35,9 +30,9 @@ export const KEY_STROKES: KeyStrokesItem[] = [
 ];
 
 const infoRelationshipTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    ADAPTABLE_1_3_TITLE_TAG,
-    INFO_RELATIONSHIPS_1_3_1_TITLE_TAG
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.ADAPTABLE_1_3_TITLE_TAG,
+    titleTags.INFO_RELATIONSHIPS_1_3_1_TITLE_TAG
 ];
 
 const infoRelationshipSubtags: TitleSubtag[] = [ commonTitleSubtagMap['perceivable'], commonTitleSubtagMap['levelA'] ];
@@ -61,7 +56,7 @@ const infoRelationshipUsageType: UsageType = {
 }
 
 const keyboardTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
     {
         label: '2.1 Keyboard accessible',
         href: 'https://www.w3.org/TR/WCAG20/#keyboard-operation'
@@ -93,7 +88,7 @@ const keyboardUsageType: UsageType = {
 }
 
 const noKeyboardTrapTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
     {
         label: '2.1 Keyboard accessible',
         href: 'https://www.w3.org/TR/WCAG20/#keyboard-operation'
@@ -130,7 +125,7 @@ const noKeyboardTrapUsageType: UsageType = {
 }
 
 const focusOrderTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
     {
         label: '2.4 Navigable',
         href: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms'
@@ -162,7 +157,7 @@ const focusOrderUsageType: UsageType = {
 }
 
 const focusVisibleTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
     {
         label: '2.4 Navigable',
         href: 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms'

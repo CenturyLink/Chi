@@ -1,18 +1,10 @@
 import {  TitleTag, TitleSubtag, PassData, UsageType, ExplanationListItem } from '../common-assets/domain'
-import {
-    commonTitleSubtagMap,
-    ADAPTABLE_1_3_TITLE_TAG,
-    INFO_RELATIONSHIPS_1_3_1_TITLE_TAG,
-    WCAG_2_0_TITLE_TAG,
-    PREDICTABLE_3_2_TITLE_TAG,
-    INPUT_ASSISTANCE_3_3_TITLE_TAG,
-    COMPATIBLE_4_1_TITLE_TAG
-} from '../common-assets/fixtures';
+import { commonTitleSubtagMap, titleTags } from '../common-assets/fixtures';
 
 const infoAndRelationshipTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    ADAPTABLE_1_3_TITLE_TAG,
-    INFO_RELATIONSHIPS_1_3_1_TITLE_TAG
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.ADAPTABLE_1_3_TITLE_TAG,
+    titleTags.INFO_RELATIONSHIPS_1_3_1_TITLE_TAG
 ];
 
 const infoAndRelationshipSubtags: TitleSubtag[] = [ commonTitleSubtagMap['perceivable'], commonTitleSubtagMap['levelA'] ];
@@ -37,8 +29,8 @@ const infoAndRelationshipUsageType: UsageType = {
 }
 
 const onFocusTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    PREDICTABLE_3_2_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.PREDICTABLE_3_2_TITLE_TAG,
     {
         label: '3.2.1 On Focus',
         href: 'https://www.w3.org/TR/WCAG20/#consistent-behavior-receive-focus'
@@ -64,8 +56,8 @@ const onFocusUsageType: UsageType = {
 }
 
 const onInputTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    PREDICTABLE_3_2_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.PREDICTABLE_3_2_TITLE_TAG,
     {
         label: '3.2.2 On Input',
         href: 'https://www.w3.org/TR/WCAG20/#consistent-behavior-unpredictable-change'
@@ -94,8 +86,8 @@ const onInputUsageType: UsageType = {
 }
 
 const errorIdentificationTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    INPUT_ASSISTANCE_3_3_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.INPUT_ASSISTANCE_3_3_TITLE_TAG,
     {
         label: '3.3.1 Error Identification',
         href: 'https://www.w3.org/TR/WCAG20/#minimize-error-identified'
@@ -122,8 +114,8 @@ const errorIdentificationUsageType: UsageType = {
 }
 
 const labelsOrInstructionsTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    INPUT_ASSISTANCE_3_3_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.INPUT_ASSISTANCE_3_3_TITLE_TAG,
     {
         label: '3.3.2 Labels or Instructions',
         href: 'https://www.w3.org/TR/WCAG20/#minimize-error-cues'
@@ -152,8 +144,8 @@ const labelsOrInstructionsUsageType: UsageType = {
 }
 
 const errorSuggestionTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    INPUT_ASSISTANCE_3_3_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.INPUT_ASSISTANCE_3_3_TITLE_TAG,
     {
         label: '3.3.3 Error Suggestion',
         href: 'https://www.w3.org/TR/WCAG20/#minimize-error-suggestions'
@@ -179,8 +171,8 @@ const errorSuggestionUsageType: UsageType = {
 }
 
 const errorPreventionTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    INPUT_ASSISTANCE_3_3_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.INPUT_ASSISTANCE_3_3_TITLE_TAG,
     {
         label: '3.3.4 Error Prevention (Legal, Financial, Data)',
         href: 'https://www.w3.org/TR/WCAG20/#minimize-error-reversible'
@@ -224,8 +216,8 @@ const errorPreventionUsageType: UsageType = {
 }
 
 const nameRoleValueTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    COMPATIBLE_4_1_TITLE_TAG,
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.COMPATIBLE_4_1_TITLE_TAG,
     {
         label: '4.1.2 Name, Role, Value',
         href: 'https://www.w3.org/TR/WCAG20/#ensure-compat-rsv'

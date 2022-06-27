@@ -1,15 +1,10 @@
 import {  TitleTag, TitleSubtag, PassData, UsageType } from '../common-assets/domain'
-import {
-    commonTitleSubtagMap,
-    WCAG_2_0_TITLE_TAG,
-    ADAPTABLE_1_3_TITLE_TAG,
-    INFO_RELATIONSHIPS_1_3_1_TITLE_TAG
-} from '../common-assets/fixtures';
+import { commonTitleSubtagMap, titleTags } from '../common-assets/fixtures';
 
 const infoAndRelationshipTags: TitleTag[] = [
-    WCAG_2_0_TITLE_TAG,
-    ADAPTABLE_1_3_TITLE_TAG,
-    INFO_RELATIONSHIPS_1_3_1_TITLE_TAG
+    titleTags.WCAG_2_0_TITLE_TAG,
+    titleTags.ADAPTABLE_1_3_TITLE_TAG,
+    titleTags.INFO_RELATIONSHIPS_1_3_1_TITLE_TAG
 ];
 
 const infoAndRelationshipSubtags: TitleSubtag[] = [ commonTitleSubtagMap['perceivable'], commonTitleSubtagMap['levelA'] ];
