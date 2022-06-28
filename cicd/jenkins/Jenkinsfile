@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20220505',
+        identifier: 'jsl-jenkins-shared-library-local@release/20220622.0.0',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-        identifier: 'jsl-jenkins-shared-library@release/20220505',
+        identifier: 'jsl-jenkins-shared-library@release/20220622.0.0',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -54,7 +54,7 @@ pipeline {
       //  QUALITY_GATE_CREDENTIALS Credentials to gather all the contract validation gates expected to be crossed.
       //  PROJECT_MAL The MAL of the project
 
-      GITHUB_TOKEN_CREDENTIALS = 'SCMAUTO_GITHUB'
+      GITHUB_TOKEN_CREDENTIALS = 'GITHUB_APP_CREDENTIALS'
       GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
       GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
       GITHUB_PUBLISH_TOKEN_CREDENTIALS = 'allyourbotsarebelongtous-token'
@@ -337,7 +337,11 @@ pipeline {
               script {
                 dir('src/documentation') {
                   jslNpmWrapper('install', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-                  jslNpmWrapper('run generate')
+                  if (isVersionBump()) {
+                    jslNpmWrapper('run generate-production')
+                  } else {
+                    jslNpmWrapper('run generate-pr')
+                  }
                   sh "ls -la ${pwd()}"
                   stash name: "DIST-CHI-DOCUMENTATION", includes: "dist/**"
                 }
@@ -882,16 +886,13 @@ PolicyDocument
                 sh "rm -rf dist"
                 unstash name: "DIST-CHI-DOCUMENTATION"
                 unstash name: "DIST-CHI"
-                sh "ls -la ${pwd()}"
                 jslBuildAndPushToNexus('./cicd/docker/nginx/Dockerfile')
-
                 def chiManifest = 'chiManifest.yml'
                 def chiManifestFile = "./${chiManifest}"
                 sh "rm -rf ${chiManifestFile}"
                 jslGenerateManifestForSimpleNginx(chiManifestFile)
                 jslDeployK8s(chiManifestFile)
                 archiveArtifacts artifacts: chiManifest, fingerprint: true
-
                 echo "This will publish dev build to K8s"
                 if (env.CHANGE_ID != null) {
                   echo "Sending Jira Deployment for DEV"
@@ -1120,7 +1121,7 @@ PRDesc
       */
       success {
         jslNotification('success')
-        jslGitHubMessage("You can check this PRs instance in https://${GIT_COMMIT}-chi-pr.enterprise.ctl.io (external) and in https://nginx-${BRANCH_NAME == 'master' ? BRANCH_NAME : PULL_REQUEST}-ux-chi.kubeodc-test.corp.intranet/ (internal)", env.CHANGE_ID)
+        jslGitHubMessage("You can check this PRs instance in http://${GIT_COMMIT}-chi-pr-po-ctl.s3-website-us-east-1.amazonaws.com (external) and in https://nginx-${BRANCH_NAME == 'master' ? BRANCH_NAME : PULL_REQUEST}-ux-chi.kubeodc-test.corp.intranet/ (internal)", env.CHANGE_ID)
       }
       failure {
         script {
