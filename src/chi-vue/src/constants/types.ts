@@ -192,6 +192,16 @@ export const PAGINATION_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
 export type PaginationSizes = typeof PAGINATION_SIZES[number];
 //#endregion
 
+//#region Save View
+export enum SaveViewModes {
+  BASE = 'base',
+  CREATE = 'create',
+  EDIT = 'edit',
+  SAVED = 'saved',
+  DELETE = 'delete',
+}
+//#endregion
+
 //#region Search Input
 export const SEARCH_INPUT_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
 export type SearchInputSizes = typeof SEARCH_INPUT_SIZES[number];

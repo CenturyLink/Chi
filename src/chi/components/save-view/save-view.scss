@@ -18,8 +18,8 @@
   }
 
   &__base,
-  &__save,
-  &__edit {
+  &__edit,
+  &__saved {
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -35,8 +35,8 @@
     }
   }
 
-  &__save {
-    border: 0.0625rem $save-view-save-border-style $save-view-save-border-color;
+  &__edit {
+    border: 0.0625rem $save-view-edit-border-style $save-view-edit-border-color;
     padding: 0.4375rem 1.5rem 0.4375rem 0;
 
     .chi-save-view__results {
@@ -71,19 +71,24 @@
     border-radius: 0 0.25rem 0.25rem 0;
     display: flex;
     flex: 1 0 auto;
+    height: 2rem;
     justify-content: flex-start;
     margin-right: 2rem;
     padding: 0.25rem 0.25rem 0.25rem 1rem;
     position: relative;
 
-    .chi-save-view__label {
-      color: $save-view-ribbon-label-color;
-      font-size: $save-view-label-font-size;
-      font-style: $save-view-ribbon-label-font-style;
-      font-weight: $save-view-label-font-weight;
+    &-content {
+      z-index: 1;
 
-      + .chi-button {
-        margin-left: 0.375rem;
+      .chi-save-view__label {
+        color: $save-view-ribbon-label-color;
+        font-size: $save-view-label-font-size;
+        font-style: $save-view-ribbon-label-font-style;
+        font-weight: $save-view-label-font-weight;
+
+        + .chi-button {
+          margin-left: 0.375rem;
+        }
       }
     }
 
@@ -93,6 +98,7 @@
       right: -1.0625rem;
       top: calc(50% - 0.75rem);
       width: 2rem;
+      z-index: 0;
 
       &::after {
         border: 0.75rem $save-view-ribbon-arrow-border-style $save-view-ribbon-arrow-border-color;

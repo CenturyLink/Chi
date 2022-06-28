@@ -8,6 +8,7 @@
       <DrawerView />
       <TooltipView />
       <SearchInputView />
+      <SaveViewView />
     </div>
   </div>
 </template>
@@ -21,6 +22,7 @@ import TooltipView from './views/TooltipView.vue';
 import DataTableClientView from './views/DataTable/ClientSide/DataTableClientView.vue';
 import DataTableServerView from './views/DataTable/ServerSide/DataTableServerView.vue';
 import SearchInputView from './views/SearchInputView.vue';
+import SaveViewView from './views/SaveView.vue';
 
 @Component({
   components: {
@@ -29,6 +31,7 @@ import SearchInputView from './views/SearchInputView.vue';
     DrawerView,
     ExpansionPanelView,
     PaginationView,
+    SaveViewView,
     SearchInputView,
     TooltipView,
   },

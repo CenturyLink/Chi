@@ -783,6 +783,13 @@ $card-tabs-border-bottom:                   none;
 $card-highlight-background-color:           $color-background-secondary-light;
 $card-highlight-header-background-color:    $color-background-white;
 
+$card-widget-background-color:              $color-grey-10;
+$card-widget-border:                        $card-border;
+$card-widget-title-font-size:               $font-size-7;
+$card-widget-title-font-weight:             $font-weight-extra-bold;
+$card-widget-content-padding:               1rem;
+$card-widget-header-sm-padding:             0.75rem 1rem;
+
 $card-title-font-size:                      $font-size-lg;
 $card-title-font-weight:                    $font-weight-semi-bold;
 $card-title-line-height:                    $line-height-lg;
@@ -1338,8 +1345,8 @@ $save-view-divider-height:                  1.25rem;
 $save-view-results-font-size:               $font-size-md;
 $save-view-label-font-size:                 $font-size-md;
 $save-view-label-font-weight:               $font-weight-semi-bold;
-$save-view-save-border-color:               $color-border-info;
-$save-view-save-border-style:               dashed;
+$save-view-edit-border-color:               $color-border-info;
+$save-view-edit-border-style:               dashed;
 $save-view-ribbon-background-color:         $color-blue-70;
 $save-view-ribbon-label-color:              $color-text-white;
 $save-view-ribbon-label-font-style:         italic;
