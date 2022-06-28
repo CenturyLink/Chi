@@ -10,7 +10,7 @@ export class AppLayout {
   @Element() el;
 
   /**
-   *  to set app layout format
+   *  to set app layout format { base, no-margin, fixed-width }.
    */
   @Prop({ reflect: true }) format: AppLayoutFormats = 'base';
 

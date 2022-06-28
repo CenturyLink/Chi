@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-06-25T02:01:00",
+  "timestamp": "2022-06-28T00:03:08",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2175,7 +2175,7 @@
           "mutable": false,
           "attr": "format",
           "reflectToAttr": true,
-          "docs": "to set app layout format",
+          "docs": "to set app layout format { base, no-margin, fixed-width }.",
           "docsTags": [],
           "default": "'base'",
           "values": [
