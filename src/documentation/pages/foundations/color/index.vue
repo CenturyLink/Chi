@@ -245,7 +245,7 @@
               .chi-col.-w--6.-text--right.-text--sm
                 .a11y AA
           .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(:style="isCenturyLinkTheme ? 'background-color: #468AF1;' : 'background-color: #0080DC'")
+            .palette.-p--2.chi-grid.-no-gutter.-text(:style="isCenturyLinkTheme ? 'background-color: #468AF1;' : 'background-color: #0080DC'" :class="isCenturyLinkTheme ? '-text--black' : '-text--white'")
               .chi-col.-w--12
                 .-text--bold {{isCenturyLinkTheme ? 'Blue 50' : 'Blue 60' }}
               .chi-col.-w--6.-text--sm
@@ -278,7 +278,7 @@
               .chi-col.-w--6.-text--right.-text--sm
                 .a11y AA
           .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(:style="isCenturyLinkTheme ? 'background-color: #FA5056;' : isBrightSpeedTheme ? 'background-color: #D52C10' : 'background-color: #EE3026'")
+            .palette.-p--2.chi-grid.-no-gutter.-text(:style="isCenturyLinkTheme ? 'background-color: #FA5056;' : isBrightSpeedTheme ? 'background-color: #D52C10' : 'background-color: #EE3026'" :class="isCenturyLinkTheme ? '-text--black' : '-text--white'")
               .chi-col.-w--12
                 .-text--bold {{isCenturyLinkTheme ? 'Red 50' : 'Red 60' }}
               .chi-col.-w--6.-text--sm
@@ -311,11 +311,11 @@
               .chi-col.-w--6.-text--right.-text--sm
                 .a11y AA
           .palette-container
-            .palette.-p--2.chi-grid.-no-gutter.-text.-text--white(:style="isCenturyLinkTheme ? 'background-color: #946300;' : isBrightSpeedTheme ? 'background-color: #AD7600' : 'background-color: #B96B00'")
+            .palette.-p--2.chi-grid.-no-gutter.-text(:style="isCenturyLinkTheme ? 'background-color: #D19110;' : isBrightSpeedTheme ? 'background-color: #AD7600' : 'background-color: #B96B00'" :class="isCenturyLinkTheme ? '-text--black' : '-text--white'")
               .chi-col.-w--12
                 .-text--bold {{isCenturyLinkTheme ? 'Yellow 50' : 'Yellow 60' }}
               .chi-col.-w--6.-text--sm
-                code.-bg--none.-text--inherit.-p--0 {{isCenturyLinkTheme ? '#946300' : isBrightSpeedTheme ? '#AD7600' : '#B96B00' }}
+                code.-bg--none.-text--inherit.-p--0 {{isCenturyLinkTheme ? '#D19110' : isBrightSpeedTheme ? '#AD7600' : '#B96B00' }}
               .chi-col.-w--6.-text--right.-text--sm
                 .a11y AA
           .palette-container
