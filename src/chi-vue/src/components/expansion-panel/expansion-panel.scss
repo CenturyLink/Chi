@@ -1,0 +1,30 @@
+@import '../../../../chi/global-mixins';
+
+.slide-fade-enter-active {
+  height: auto !important;
+  overflow: hidden;
+  transition: all 0.2s ease-out;
+}
+.slide-fade-leave-active {
+  height: 0 !important;
+  overflow: hidden;
+  transition: all 0.2s ease-out;
+}
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  height: 0 !important;
+  overflow: hidden;
+  transform: translateY(-1.25rem);
+}
+
+.chi-epanel {
+  &:not(.-bordered) {
+    .chi-epanel__content-active {
+      margin-left: 0;
+
+      @include respond-to(sm) {
+        margin-left: 7.5%;
+      }
+    }
+  }
+}

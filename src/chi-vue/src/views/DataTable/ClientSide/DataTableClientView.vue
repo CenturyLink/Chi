@@ -143,6 +143,20 @@
           </div>
         </div>
       </template>
+      <template #saveView>
+        <ChiDataTableSaveView :active="true" :default="true" mode="saved" title="Title goes here">
+          <button
+            id="chi-save-view__info-trigger"
+            class="chi-button -light -icon -flat -xs"
+            aria-label="Edit"
+            slot="info-icon"
+          >
+            <div class="chi-button__content">
+              <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+            </div>
+          </button>
+        </ChiDataTableSaveView>
+      </template>
       <template #loadingSkeleton>
         <div class="-d--flex -flex--column -w--100">
           <div class="chi-skeleton -w--85 -w-md--75 -w-lg--50"></div>
@@ -168,6 +182,7 @@ import { DataTableRow } from '../../../constants/types';
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
 import { exampleConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
 import DataTableViews from '../../../components/data-table-views/DataTableViews';
+import SaveView from '../../../components/data-table-save-view/SaveView';
 
 @Component({
   components: {
@@ -177,6 +192,7 @@ import DataTableViews from '../../../components/data-table-views/DataTableViews'
     ChiDataTableBulkActions: DataTableBulkActions,
     ChiDataTableFilters: DataTableFilters,
     ChiColumnCustomization: ColumnCustomization,
+    ChiDataTableSaveView: SaveView,
     Actions,
     TicketPopover,
     ChiDataTableViews: DataTableViews,

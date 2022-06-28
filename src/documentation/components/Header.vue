@@ -89,10 +89,6 @@
         line-height: 1.5rem;
         padding: 0.75rem 0;
       }
-      .chi.theme-portal .example .example-tabs .chi-tabs > li.-active > a,
-      .chi.theme-brightspeed .example .example-tabs .chi-tabs > li.-active > a {
-        padding-bottom: 0.625rem;
-      }
     nav.chi-header__content
       #header-brand.chi-header__brand
         button#drawer-trigger-1.chi-button.-icon.-flat.-mr-md--2.-d--flex.-d-lg--none.chi-drawer__trigger(
