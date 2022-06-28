@@ -23,7 +23,7 @@
     }
 
     + .chi-toolbar__ribbon {
-      border-top: 0.0625rem solid $toolbar-ribbon-border-color;
+      border-top: 0.0625rem solid $save-view-border-color;
     }
 
     .chi-divider {
@@ -47,14 +47,15 @@
     }
   }
 
+  // To-do, moved to save views component. Left as an abstract container.
   &__ribbon {
-    background-color: $toolbar-ribbon-background-color;
+    background-color: $save-view-background-color;
     justify-content: space-between;
     padding: 0.25rem 0.875rem 0.25rem 1.5rem;
 
     .chi-divider {
-      border-color: $toolbar-ribbon-divider-border-color;
-      height: $toolbar-ribbon-divider-height;
+      border-color: $save-view-divider-border-color;
+      height: $save-view-divider-height;
       margin: 0 1rem;
     }
   }
@@ -66,11 +67,11 @@
   }
 
   &__results {
-    font-size: $toolbar-results-font-size;
+    font-size: $save-view-results-font-size;
     margin-left: 0.5rem;
 
     .chi-toolbar__label {
-      font-weight: 600;
+      font-weight: $save-view-label-font-weight;
     }
   }
 
@@ -100,5 +101,9 @@
 
   + .chi-bulk-actions {
     margin-top: 0.125rem;
+  }
+
+  + .chi-save-view {
+    border-top: 0.0625rem solid $save-view-border-color;
   }
 }
