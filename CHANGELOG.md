@@ -1,4 +1,10 @@
 # CHANGELOG
+## 5.14.1 (June 13, 2022)
+### Components
+#### Fixed
+* Fixed: Sidenav component no longer throws a console error when clicking on a single-level menu item.
+* Fixed: Data table vue component now excludes from selection rows with `selectionDisabled` flag on all three levels.
+
 ## 5.14.0 (May 27, 2022)
 ### Components
 #### Added
