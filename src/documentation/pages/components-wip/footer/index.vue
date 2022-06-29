@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import Examples from './examples/index.vue';
 import PageContentTabs from '../../../components/PageContentTabs.vue';
 import Properties from './_properties.vue';
