@@ -247,9 +247,17 @@ export default class DataTable extends Vue {
     );
   }
 
+  _saveView() {
+    const slot = this.$scopedSlots['saveView'];
+
+    return slot ? slot({}) : null;
+  }
+
   _toolbar() {
-    if (this.$scopedSlots['toolbar']) {
-      return <div class="">{this.$scopedSlots['toolbar']({})}</div>;
+    const slot = this.$scopedSlots['toolbar'];
+
+    if (slot) {
+      return <div>{slot({})}</div>;
     }
     return null;
   }
@@ -434,12 +442,16 @@ export default class DataTable extends Vue {
 
       const toggleChildRow = (childRow: DataTableRow) => {
         if (action === 'select') {
-          selectedRows.push(childRow.rowId);
+          if (!childRow.selectionDisabled) {
+            selectedRows.push(childRow.rowId);
+          }
         } else if (action === 'deselect') {
           const indexOfRowIdIndex = selectedRows.indexOf(childRow.rowId);
 
           if (indexOfRowIdIndex !== -1) {
-            selectedRows.splice(indexOfRowIdIndex, 1);
+            if (!childRow.selectionDisabled) {
+              selectedRows.splice(indexOfRowIdIndex, 1);
+            }
           }
         }
         if (childRow.nestedContent?.table?.data) {
@@ -477,13 +489,18 @@ export default class DataTable extends Vue {
       const parentRow = this._locateParentRow(rowData);
 
       if (parentRow?.nestedContent.table.data.every((row: DataTableRow) => this.selectedRows.includes(row.rowId))) {
-        this.selectedRows.push(parentRow.rowId);
+        if (!parentRow.selectionDisabled) {
+          this.selectedRows.push(parentRow.rowId);
+        }
 
         if (rowData.level === 2) {
           const rootLevelRow = this._locateParentRow(parentRow);
 
           if (
-            rootLevelRow?.nestedContent.table.data.every((row: DataTableRow) => this.selectedRows.includes(row.rowId))
+            rootLevelRow?.nestedContent.table.data.every((row: DataTableRow) =>
+              this.selectedRows.includes(row.rowId)
+            ) &&
+            !rootLevelRow.selectionDisabled
           ) {
             this.selectedRows.push(rootLevelRow.rowId);
           }
@@ -515,7 +532,9 @@ export default class DataTable extends Vue {
         const indexOfSelectedParent = this.selectedRows.indexOf(parentRow.rowId);
 
         if (indexOfSelectedParent !== -1) {
-          this.selectedRows.splice(indexOfSelectedParent, 1);
+          if (!parentRow.selectionDisabled) {
+            this.selectedRows.splice(indexOfSelectedParent, 1);
+          }
         }
 
         if (rowData.level === 2) {
@@ -648,7 +667,10 @@ export default class DataTable extends Vue {
           );
           const isGrandChildSelected = (rowId: string) => this.selectedRows.includes(rowId);
 
-          if (!grandChildren.every(isGrandChildSelected) && grandChildren.some(isGrandChildSelected)) {
+          if (
+            (!grandChildren.every(isGrandChildSelected) && grandChildren.some(isGrandChildSelected)) ||
+            (childRows.every(this._isRowSelectionDisabled) && grandChildren.some(isGrandChildSelected))
+          ) {
             return 'indeterminate';
           }
         }
@@ -656,6 +678,10 @@ export default class DataTable extends Vue {
 
       return false;
     }
+  }
+
+  _isRowSelectionDisabled(row: DataTableRow) {
+    return row.selectionDisabled;
   }
 
   _isRowSelected(row: DataTableRow) {
@@ -1188,7 +1214,7 @@ export default class DataTable extends Vue {
 
     this._mapRows = {};
     this.serializeData();
-    if (this._sortConfig) {
+    if (this._sortConfig && this.mode === DataTableModes.CLIENT) {
       this.sortData(this._sortConfig.key, this._sortConfig.direction, this._sortConfig.sortBy);
     }
     this.slicedData = this.sliceData(this._sortedData || this._serializedDataBody);
@@ -1620,10 +1646,12 @@ export default class DataTable extends Vue {
       printHead = this._printHead(),
       printBody = this._printBody(),
       printFooter = this._printFooter(),
+      saveView = this._saveView(),
       screen =
         this.printMode === 'screenonly' || this.printMode === 'full' ? (
           <div class={`${UTILITY_CLASSES.DISPLAY.SCREEN_ONLY}`}>
             {toolbar}
+            {saveView}
             {bulkActions}
             {head}
             {body}

@@ -34,40 +34,6 @@
     }
   }
 
-  &.-icons {
-    & > li {
-      &.-active {
-        & > a {
-          position: relative;
-
-          & > .chi-icon {
-            color: $color-text-primary;
-            left: 1.5rem;
-          }
-        }
-      }
-
-      & > a {
-        padding-left: 3.5rem;
-        position: relative;
-
-        & > .chi-icon {
-          color: inherit;
-          left: 1.5rem;
-          position: absolute;
-        }
-      }
-
-      .chi-tabs__subtabs {
-        & > li {
-          & > a {
-            padding-left: 4.5rem;
-          }
-        }
-      }
-    }
-  }
-
   & > li {
     &.chi-sliding-border {
       left: 0;
@@ -132,12 +98,17 @@
   &.-lg {
     & > li {
       & > a {
+        font-size: $tabs-vertical-lg-font-size;
         line-height: $line-height-sm;
         padding-bottom: 0.75rem;
         padding-top: 0.75rem;
 
         & > .chi-icon {
           margin-top: 0.0625rem;
+        }
+
+        .chi-tabs_item-text {
+          font-size: $tabs-vertical-lg-description-font-size;
         }
       }
     }
@@ -146,9 +117,10 @@
   &.-xl {
     & > li {
       & > a {
+        font-size: $tabs-vertical-xl-font-size;
         line-height: $line-height;
-        padding-bottom: 0.875rem;
-        padding-top: 0.875rem;
+        padding-bottom: 1.125rem;
+        padding-top: 1.125rem;
 
         & > .chi-icon {
           margin-top: 0.1875rem;
@@ -158,9 +130,13 @@
   }
 
   &.-border {
-    & > li {
-      border-bottom: 0.0625rem solid $color-border-base-dark;
+    &:not(.-inverse) {
+      & > li {
+        border-bottom: 0.0625rem solid $color-border-base-dark;
+      }
+    }
 
+    & > li {
       &.-active {
         & > a {
           &::before {
@@ -218,7 +194,7 @@
   }
 
   &.-list {
-    > li {
+    & > li {
       .chi-tabs_item {
         align-items: flex-start;
         display: flex;
@@ -384,9 +360,91 @@
       }
     }
   }
+
+  &.-solid {
+    &.-xl {
+      & > li {
+        & > a {
+          font-size: $tabs-solid-xl-font-size;
+          font-weight: $tabs-solid-xl-font-weight;
+        }
+
+        &.chi-sliding-border {
+          width: $tabs-solid-vertical-xl-active-border-width;
+        }
+      }
+    }
+  }
+
+  &.-icons {
+    & > li {
+      &.-active {
+        & > a {
+          position: relative;
+
+          & > .chi-icon {
+            color: inherit;
+            left: 1.5rem;
+          }
+        }
+      }
+
+      & > a {
+        padding-left: 3.5rem;
+        position: relative;
+
+        & > .chi-icon {
+          color: inherit;
+          left: 1.5rem;
+          position: absolute;
+        }
+      }
+
+      .chi-tabs__subtabs {
+        & > li {
+          & > a {
+            padding-left: 4.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  &:not(.-sliding) {
+    &:not(.-inverse) {
+      &.-solid {
+        & > li {
+          &.-active:not(.-has-active) > a {
+            box-shadow: inset 0.125rem 0 0 $tabs-solid-active-border-color;
+          }
+        }
+
+        &.-animated > li {
+          &.-active:not(.-has-active) > a {
+            box-shadow: inset 0.125rem 0 0 $tabs-solid-active-border-color;
+          }
+
+          & .chi-tabs__subtabs > li {
+            &.-active:not(.-has-active) > a {
+              box-shadow: inset 0.125rem 0 0 $tabs-solid-active-border-color;
+            }
+          }
+        }
+
+        &.-xl {
+          & > li {
+            &.-active:not(.-has-active) > a {
+              box-shadow: inset $tabs-solid-vertical-xl-active-border-width 0 0 $tabs-solid-active-border-color;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @mixin tabs-not-vertical {
+  display: flex;
   height: $tabs-horizontal-md-height;
 
   &.-icons {
@@ -396,93 +454,73 @@
           color: $color-text-primary;
         }
       }
-
-      & > a {
-        padding-left: 1.5rem;
-        position: relative;
-
-        .chi-icon {
-          color: inherit;
-          left: 0;
-          position: absolute;
-        }
-      }
-    }
-  }
-
-  &.-border {
-    border-bottom: $tabs-horizontal-border-bottom;
-
-    & > li {
-      &.chi-sliding-border {
-        bottom: -0.0625rem;
-      }
     }
   }
 
   & > li {
+    display: flex;
+
     &:not(:first-child) {
       margin-left: 1.5rem;
     }
 
     & > a {
+      align-items: center;
+      display: flex;
       font-size: $tabs-horizontal-md-font-size;
       font-weight: $tabs-horizontal-md-font-weight;
       line-height: $line-height-sm;
       padding: $tabs-horizontal-md-padding;
+      position: relative;
+      white-space: nowrap;
 
       &.chi-dropdown__trigger {
         padding-right: $tabs-horizontal-md-trigger-padding-right;
-
-        &:not(.-primary) {
-          &:not(.-secondary) {
-            &:not(.-dark) {
-              &:not(.-light) {
-                &:not(.-danger) {
-                  background-color: transparent;
-
-                  &:hover {
-                    background-color: transparent;
-                  }
-                }
-              }
-            }
-          }
-        }
 
         &::after {
           top: $tabs-horizontal-md-trigger-icon-top;
         }
       }
+
+      .chi-icon {
+        color: inherit;
+        margin-right: 0.5rem;
+      }
     }
 
     &.chi-sliding-border {
       bottom: 0;
-      height: 0.125rem;
+      height: $tabs-solid-horizontal-md-active-border-width;
       margin-left: 0;
     }
   }
 
-  &:not(.-sliding) > li {
-    &.-active > a {
-      border-bottom: 0.125rem solid $color-border-primary;
-      padding-bottom: $tabs-horizontal-md-active-padding-bottom;
 
-      &.chi-dropdown__trigger {
-        &:not(.-primary) {
-          &:not(.-secondary) {
-            &:not(.-dark) {
-              &:not(.-light) {
-                &:not(.-danger) {
-                  background-color: transparent;
-                  border-bottom: 0.125rem solid $color-border-primary;
-                  color: $color-text-primary;
+  &:not(.-sliding) {
+    &:not(.-solid) {
+      &:not(.-inverse) {
+        & > li {
+          &.-active > a {
+            box-shadow: inset 0 (-$tabs-solid-horizontal-md-active-border-width) 0 $color-border-primary;
 
-                  &:hover,
-                  &:active,
-                  &.-active {
-                    background-color: transparent;
-                    border-bottom: 0.125rem solid $color-border-primary;
+            &.chi-dropdown__trigger {
+              &:not(.-primary) {
+                &:not(.-secondary) {
+                  &:not(.-dark) {
+                    &:not(.-light) {
+                      &:not(.-danger) {
+                        background-color: transparent;
+                        box-shadow: inset 0 (-$tabs-solid-horizontal-md-active-border-width) 0 $color-border-primary;
+                        color: $color-text-primary;
+
+                        &:hover,
+                        &:active,
+                        &.-active {
+                          background-color: transparent;
+                          box-shadow: inset 0 (-$tabs-solid-horizontal-md-active-border-width) 0 $color-border-primary;
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -493,14 +531,49 @@
     }
   }
 
+  &:not(.-solid) {
+    & > li {
+      & > a {
+        &.chi-dropdown__trigger {
+          &:not(.-primary) {
+            &:not(.-secondary) {
+              &:not(.-dark) {
+                &:not(.-light) {
+                  &:not(.-danger) {
+                    background-color: transparent;
+
+                    &:hover {
+                      background-color: transparent;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &:not(.-inverse) {
+      &.-border {
+        box-shadow: inset 0 $tabs-horizontal-sliding-border-bottom-placement 0 0 $color-border-base;
+
+        & > li {
+          &:not(.-active) {
+            & > a {
+              box-shadow: inset 0 $tabs-horizontal-sliding-border-bottom-placement 0 0 $color-border-base;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
   &.-xs {
     height: $tabs-horizontal-xs-height;
 
     & > li {
-      &.-active > a {
-        padding-bottom: $tabs-horizontal-xs-active-padding-bottom;
-      }
-
       & > a {
         font-size: $tabs-horizontal-xs-font-size;
         font-weight: $tabs-horizontal-xs-font-weight;
@@ -521,10 +594,6 @@
     height: $tabs-horizontal-sm-height;
 
     & > li {
-      &.-active > a {
-        padding-bottom: $tabs-horizontal-sm-active-padding-bottom;
-      }
-
       & > a {
         font-size: $tabs-horizontal-sm-font-size;
         font-weight: $tabs-horizontal-sm-font-weight;
@@ -548,10 +617,6 @@
     & > li:not(.chi-sliding-border) {
       &:not(:first-child) {
         margin-left: 2rem;
-      }
-
-      &.-active > a {
-        padding-bottom: $tabs-horizontal-lg-active-padding-bottom;
       }
 
       & > a {
@@ -581,7 +646,136 @@
 
     &.-border {
       border-bottom: 0.125rem solid $color-border-base;
+    }
+  }
 
+  &.-solid {
+    & > li {
+      &:not(.chi-sliding-border) {
+        &:not(:first-child) {
+          margin-left: 0;
+        }
+      }
+
+      &.chi-sliding-border {
+        top: 0;
+        bottom: auto;
+      }
+
+      &.-active {
+        & > a {
+          box-shadow: none;
+        }
+      }
+    }
+
+    &:not(.-sliding) {
+      & > li {
+        &.-active {
+          & > a {
+            box-shadow: inset 0 $tabs-solid-horizontal-md-active-border-width 0 $tabs-solid-active-border-color;
+          }
+        }
+      }
+    }
+
+    &,
+    &.-md {
+      & > li:not(.chi-sliding-border) {
+        & > a {
+          padding: $tabs-horizontal-md-solid-padding;
+
+          &.chi-dropdown__trigger {
+            padding-right: 2rem;
+
+            &::after {
+              right: 1rem;
+              top: 0.625rem;
+            }
+          }
+        }
+      }
+    }
+
+    &.-xs {
+      & > li:not(.chi-sliding-border) {
+        & > a {
+          padding: $tabs-horizontal-xs-solid-padding;
+
+          &.chi-dropdown__trigger {
+            padding-right: 1.5rem;
+
+            &::after {
+              right: 0.5rem;
+              top: $tabs-horizontal-xs-trigger-icon-top;
+            }
+          }
+        }
+      }
+    }
+
+    &.-sm {
+      & > li:not(.chi-sliding-border) {
+        & > a {
+          padding: $tabs-horizontal-sm-solid-padding;
+
+          &.chi-dropdown__trigger {
+            &::after {
+              right: 1rem;
+              top: $tabs-horizontal-sm-trigger-icon-top;
+            }
+          }
+        }
+      }
+    }
+
+    &.-lg {
+      & > li:not(.chi-sliding-border) {
+        & > a {
+          padding: $tabs-horizontal-lg-solid-padding;
+
+          &.chi-dropdown__trigger {
+            padding-right: 3rem;
+
+            &::after {
+              right: 1.75rem;
+              top: $tabs-horizontal-lg-trigger-icon-top;
+            }
+          }
+        }
+      }
+
+      & > li {
+        &.chi-sliding-border {
+          height: $tabs-solid-horizontal-lg-active-border-width;
+        }
+      }
+
+      &:not(.-sliding) {
+        &:not(.-inverse) {
+          & > li {
+            &.-active {
+              & > a {
+                box-shadow: inset 0 $tabs-solid-horizontal-lg-active-border-width 0 $tabs-solid-active-border-color;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &:not(.-inverse) {
+      &.-border {
+        box-shadow: inset 0 -0.0625rem 0 0 $color-border-base;
+
+        & > li {
+          &:not(.-active) {
+            & > a {
+              box-shadow: inset 0 -0.0625rem 0 0 $color-border-base;
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -659,6 +853,12 @@
         &:hover {
           color: $tabs-inverse-item-hover-text-color;
         }
+
+        &.chi-dropdown__trigger {
+          &::after {
+            color: $color-text-white;
+          }
+        }
       }
 
       &.-disabled {
@@ -678,7 +878,7 @@
 
     &:not(.-vertical):not(.-responsive):not(.-sliding) > li {
       &.-active > a {
-        border-bottom: 0.125rem solid $tabs-inverse-item-active-border-color;
+        box-shadow: inset 0 -0.125rem 0 0 $tabs-inverse-item-active-border-color;
 
         .chi-icon {
           color: $tabs-inverse-item-active-text-color;
@@ -686,15 +886,10 @@
       }
     }
 
-    &:not(.-vertical):not(.-responsive) {
-      &.-border {
-        border-bottom: 0.0625rem solid $color-grey-80;
-      }
-    }
-
     &.-vertical {
       // sass-lint:disable-block force-element-nesting
       &:not(.-sliding) > li.-active:not(.-has-active) > a,
+      &.-solid:not(.-sliding) > li.-active:not(.-has-active) > a,
       &:not(.-sliding).-animated > li.-active:not(.-has-active) > a,
       &:not(.-sliding).-animated .chi-tabs__subtabs > li.-active:not(.-has-active) > a {
         box-shadow: inset 0.125rem 0 0 $tabs-inverse-item-active-border-color;
@@ -718,7 +913,7 @@
 
       &.-border {
         > li {
-          border-bottom: 0.0625rem solid $color-grey-80;
+          box-shadow: inset 0 (-$tabs-horizontal-border-bottom-width) 0 0 $color-grey-80;
 
           &:first-child {
             border-top: 0.0625rem solid $color-grey-80;
@@ -743,6 +938,56 @@
             &:hover {
               color: $color-text-white;
             }
+          }
+        }
+      }
+    }
+
+    &:not(.-vertical):not(.-responsive) {
+      &.-border {
+        box-shadow: inset 0 (-$tabs-horizontal-border-bottom-width) 0 0 $color-grey-80;
+      }
+
+      &.-solid {
+        &:not(.-sliding) {
+          & > li {
+            &.-active {
+              & > a {
+                // sass-lint:disable-block max-line-length
+                box-shadow: inset 0 $tabs-solid-horizontal-md-active-border-width 0 $tabs-inverse-item-active-border-color;
+              }
+            }
+          }
+        }
+
+        &.-border {
+          & > li {
+            &:not(.-active) {
+              & > a {
+                box-shadow: inset 0 (-$tabs-horizontal-border-bottom-width) 0 0 $color-grey-80;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.-vertical,
+    &:not(.-vertical):not(.-responsive) {
+      &.-solid {
+        & > li {
+          &.-active {
+            & > a {
+              background-color: $color-background-black;
+            }
+          }
+
+          & > a {
+            background-color: $color-grey-100;
+          }
+
+          &.chi-sliding-border {
+            background-color: $tabs-inverse-item-active-border-color;
           }
         }
       }
@@ -782,6 +1027,27 @@
                 }
               }
             }
+          }
+        }
+      }
+    }
+  }
+
+  &.-vertical,
+  &:not(.-vertical) {
+    &.-solid {
+      & > li {
+        & > a {
+          background-color: $tabs-solid-background-color;
+        }
+
+        &.chi-sliding-border {
+          background-color: $tabs-solid-active-border-color;
+        }
+
+        &.-active {
+          & > a {
+            background-color: $tabs-solid-active-background-color;
           }
         }
       }

@@ -182,9 +182,24 @@ export type DrawerPositions = typeof GENERAL_POSITIONS[number];
 export type Backdrop = 'inverse' | '';
 //#endregion
 
+//#region Expansion Panel
+export const EXPANSION_PANEL_STATES = ['done', 'active', 'pending', 'disabled'] as const;
+export type ExpansionPanelState = typeof EXPANSION_PANEL_STATES[number];
+//#endregion
+
 //#region Pagination
 export const PAGINATION_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
 export type PaginationSizes = typeof PAGINATION_SIZES[number];
+//#endregion
+
+//#region Save View
+export enum SaveViewModes {
+  BASE = 'base',
+  CREATE = 'create',
+  EDIT = 'edit',
+  SAVED = 'saved',
+  DELETE = 'delete',
+}
 //#endregion
 
 //#region Search Input
