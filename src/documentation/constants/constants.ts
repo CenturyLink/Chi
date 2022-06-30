@@ -85,9 +85,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/breadcrumb`,
+    to: `components/breadcrumb`,
     label: 'Breadcrumb',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/button`,
@@ -125,9 +125,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/divider`,
+    to: `components/divider`,
     label: 'Divider',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/drawer`,
@@ -145,9 +145,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/forms/file-input`,
+    to: `components/forms/file-input`,
     label: 'File input',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/flag-icon`,
