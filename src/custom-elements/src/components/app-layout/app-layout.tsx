@@ -107,7 +107,8 @@ export class AppLayout {
 
     return (
       <div class={`chi-main
-        ${this.format ? `-${this.format}` : ''}`}
+        ${this.format ? `-${this.format}` : ''}
+        ${this.headerBackground ? '-header-background' : ''}`}
       >
         <div class="chi-main__header">
           <div class="chi-main__header-start">
