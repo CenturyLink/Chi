@@ -1,32 +1,28 @@
-<template>
-  <ComponentExample title="Sizes" id="sizes" :tabs="exampleTabs">
-    <p class="-text" slot="example-description">
-      File inputs support sizes:
-      <span v-html="getSizesByTheme()"></span>. The default size is
-      <code>-md</code>.
-    </p>
-    <div slot="example">
-      <div
+<template lang="pug">
+  ComponentExample(title="Sizes" id="sizes" :tabs="exampleTabs")
+    p.-text(slot="example-description")
+      | File inputs support sizes:
+      span(v-html="getSizesByTheme()")
+      | . The default size is <code>-md</code>.
+    div(slot="example")
+      .-p--2(
         v-for="(size, index) in sizes[$store.state.themes.theme]"
-        class="-p--2"
         :key="index"
-      >
-        <p class="-text--bold -mt--0">-{{ size }}</p>
-        <input
+        )
+        p.-text--bold.-mt--0
+          | -{{ size }}
+        input(
           :class="`chi-file-input -${size}`"
           type="file"
           :id="`example-file-${size}`"
           aria-label="Choose file"
-        /><label :for="`example-file-${size}`">No file chosen</label>
-      </div>
-    </div>
-    <pre class="language-html" slot="code-webcomponent">
-    <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
-    <code v-highlight="getHtmlBlueprintByTheme()" class="html"></code>
-    </pre>
-  </ComponentExample>
+          )
+        label(:for="`example-file-${size}`")
+          | No file chosen
+    pre.language-html(slot="code-webcomponent")
+      code.html(v-highlight="$data.codeSnippets.webcomponent")
+    pre.language-html(slot="code-htmlblueprint")
+      code.html(v-highlight="getHtmlBlueprintByTheme()")
 </template>
 
 <script lang="ts">
