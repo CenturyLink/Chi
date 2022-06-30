@@ -53,5 +53,5 @@ export type TimePickerFormats = typeof TIME_PICKER_FORMATS[number];
 
 export type MouseCursorPosition = { x: number, y: number };
 
-export const APP_LAYOUT_FORMATS = ['base', 'no-margin'];
+export const APP_LAYOUT_FORMATS = ['base', 'no-margin', 'fixed-width'];
 export type AppLayoutFormats = typeof APP_LAYOUT_FORMATS[number];
