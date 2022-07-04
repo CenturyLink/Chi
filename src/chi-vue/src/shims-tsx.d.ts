@@ -11,6 +11,7 @@ declare global {
     }
     interface ElementAttributesProperty {
       $props: {};
+      slot: JSXElements.SlotAttributes;
     }
   }
 }

@@ -16,7 +16,7 @@ import { PAGINATION_EVENTS } from '@/constants/events';
 
 @Component
 export default class Pagination extends Vue {
-  @Prop() ariaLabel!: boolean;
+  @Prop() ariaLabel!: string;
   @Prop() currentPage!: number;
   @Prop() compact!: boolean;
   @Prop() firstLast!: boolean;
@@ -291,7 +291,7 @@ export default class Pagination extends Vue {
       ${this.compact ? PAGINATION_CLASSES.COMPACT : ''}
     `}
         role="navigation"
-        aria-label={this.ariaLabel}>
+        aria-label={this.ariaLabel || undefined}>
         <div class={PAGINATION_CLASSES.CONTENT}>
           <div class={PAGINATION_CLASSES.START}>
             {this._results}

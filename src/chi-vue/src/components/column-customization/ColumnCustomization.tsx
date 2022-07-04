@@ -49,7 +49,7 @@ export default class ColumnCustomization extends Vue {
               <h2 class={MODAL_CLASSES.TITLE}>Customize Columns</h2>
               <button
                 class={`${BUTTON_CLASSES.BUTTON} -icon -close`}
-                onclick={this._cancelColumnsChange}
+                onClick={this._cancelColumnsChange}
                 aria-label="Close">
                 <div class={BUTTON_CLASSES.CONTENT}>
                   <i class={`${ICON_CLASS} icon-x`} aria-hidden="true"></i>
@@ -72,7 +72,7 @@ export default class ColumnCustomization extends Vue {
                   ${BUTTON_CLASSES.FLAT}
                   ${BUTTON_CLASSES.SIZES.XS}
                   ${UTILITY_CLASSES.PADDING.Y[0]}`}
-                onclick={this._reset}
+                onClick={this._reset}
                 disabled>
                 <div
                   class={`${BUTTON_CLASSES.CONTENT} ${UTILITY_CLASSES.FLEX.COLUMN} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>
@@ -87,12 +87,12 @@ export default class ColumnCustomization extends Vue {
               </button>
               <div
                 class={`${DIVIDER_CLASSES.DIVIDER} ${DIVIDER_CLASSES.VERTICAL} ${UTILITY_CLASSES.MARGIN.RIGHT[2]}`}></div>
-              <button class={`${BUTTON_CLASSES.BUTTON}`} onclick={this._cancelColumnsChange}>
+              <button class={`${BUTTON_CLASSES.BUTTON}`} onClick={this._cancelColumnsChange}>
                 Cancel
               </button>
               <button
                 ref="saveButton"
-                onclick={this._submitColumnsChange}
+                onClick={this._submitColumnsChange}
                 class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY}`}
                 disabled>
                 Save

@@ -139,7 +139,7 @@ export default class DataTable extends Vue {
 
     Object.keys(this.data.head).forEach((column: string) => {
       const infoPopoverId = `info-popover-${dataTableNumber}-${column}`,
-        label = this.data.head[column].label || this.data.head[column],
+        label = this.data.head[column].label || this.data.head[column] || '',
         infoIcon = this.data.head[column].description ? (
           <chi-button
             id={infoPopoverId}
@@ -200,7 +200,7 @@ export default class DataTable extends Vue {
           data-sort-by={sortBy}
           data-sort={this._sortConfig && this._sortConfig.direction ? this._sortConfig.direction : ''}
           data-label={label}
-          onclick={(e: PointerEvent) => {
+          onClick={(e: PointerEvent) => {
             if (!this._preventSortOnResize && e.pointerType !== '') {
               this.sortColumn(e);
             }
@@ -743,7 +743,7 @@ export default class DataTable extends Vue {
                 onChange={() => {
                   if (rowData) this.selectRow(rowData);
                 }}
-                checked={checkedState}
+                checked={!!checkedState}
               />
               <label class={RADIO_CLASSES.LABEL} for={radioButtonId}>
                 <div class={SR_ONLY}>Select row {radioButtonId}</div>

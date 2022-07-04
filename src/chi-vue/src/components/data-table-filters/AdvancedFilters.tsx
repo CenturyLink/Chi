@@ -200,7 +200,7 @@ export default class AdvancedFilters extends Vue {
           }`}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'input')}
-          placeholder={filter.placeholder || null}
+          placeholder={filter.placeholder || undefined}
           type="text"
           value={this.filterElementValueLive[filter.id]}
         />
@@ -224,7 +224,7 @@ export default class AdvancedFilters extends Vue {
           class={`${INPUT_CLASSES.INPUT} ${this.mobile && '-mb--1'} ${
             this._chiMajorVersion === 4 ? GENERIC_SIZE_CLASSES.LG : ''
           }`}
-          placeholder={filter.placeholder || null}
+          placeholder={filter.placeholder || undefined}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'textarea')}
         />
       </div>
@@ -318,7 +318,7 @@ export default class AdvancedFilters extends Vue {
     const advancedFiltersButton = (
       <button
         id={this._advancedFilterButtonId}
-        onclick={() => this._toggleAdvancedFiltersPopover()}
+        onClick={() => this._toggleAdvancedFiltersPopover()}
         class={`
           ${BUTTON_CLASSES.BUTTON}
           ${BUTTON_CLASSES.ICON_BUTTON}
@@ -361,7 +361,7 @@ export default class AdvancedFilters extends Vue {
             closable>
             <button
               class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.SIZES.SM} ${BUTTON_CLASSES.NO_HOVER} ${UTILITY_CLASSES.PADDING.X[0]} ${UTILITY_CLASSES.TYPOGRAPHY.TEXT_NORMAL} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}
-              onclick={(event: Event) => this._expandCollapseAccordions(event)}>
+              onClick={(event: Event) => this._expandCollapseAccordions(event)}>
               {this.isExpanded ? 'Collapse All' : 'Expand All'}
             </button>
             <div

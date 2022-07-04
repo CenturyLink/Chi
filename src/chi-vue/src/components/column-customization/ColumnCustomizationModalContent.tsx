@@ -79,7 +79,7 @@ export default class ColumnCustomizationContent extends Vue {
         <button
           disabled={isDisabled}
           ref={refButton}
-          onclick={() => action()}
+          onClick={() => action()}
           class={`
             ${BUTTON_CLASSES.BUTTON}
             ${BUTTON_CLASSES.ICON_BUTTON}
