@@ -312,7 +312,7 @@ pipeline {
             steps {
               script {
                 dir('src/chi-vue') {
-                  jslYarnWrapper('install')
+                  jslNpmWrapper('ci')
                   jslNpmWrapper('run build:component')
                   stash name: "DIST-CHI-VUE", includes: "dist/**"
                   jslNpmWrapper('run build:umd')
@@ -336,7 +336,7 @@ pipeline {
             steps {
               script {
                 dir('src/documentation') {
-                  jslNpmWrapper('install', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+                  jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
                   if (isVersionBump()) {
                     jslNpmWrapper('run generate-production')
                   } else {
