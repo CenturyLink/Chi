@@ -1,4 +1,14 @@
 # CHANGELOG
+## 5.15.0 (July 4, 2022)
+### Components
+#### Added
+* Added: App layout now supports dashboard style with header background.
+* Added: Save View Vue component.
+* Added: Card component now supports widget variant for portal dashboard.
+* Added: Expansion Panel Vue component.
+#### Fixed
+* Fixed: Outline marketing icon is now visible inside active Stat component items.
+
 ## 5.14.1 (June 13, 2022)
 ### Components
 #### Fixed
