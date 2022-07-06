@@ -6,23 +6,20 @@
 
     <Base />
     <Disabled />
-    <SizesPortal v-if="$store.state.themes.theme === 'portal'" />
-    <SizesLumenCenturyLink v-else/>
+    <Sizes />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Base from './_base.vue';
 import Disabled from './_disabled.vue';
-import SizesLumenCenturyLink from './_sizes-lumen-centurylink.vue';
-import SizesPortal from './_portal/_sizes.vue'
+import Sizes from './_sizes.vue';
 
 @Component({
   components: {
     Base,
     Disabled,
-    SizesLumenCenturyLink,
-    SizesPortal
+    Sizes,
   }
 })
 export default class Examples extends Vue {}
