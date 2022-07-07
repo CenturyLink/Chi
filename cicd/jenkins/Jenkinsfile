@@ -337,12 +337,11 @@ pipeline {
               script {
                 dir('src/documentation') {
                   jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-                  if (isVersionBump()) {
+                  if (isVersionBump() || env.BRANCH_NAME=='master') {
                     jslNpmWrapper('run generate-production')
                   } else {
                     jslNpmWrapper('run generate-pr')
                   }
-                  sh "ls -la ${pwd()}"
                   stash name: "DIST-CHI-DOCUMENTATION", includes: "dist/**"
                 }
               }
