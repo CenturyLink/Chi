@@ -777,6 +777,7 @@ pipeline {
                   """,
                   returnStdout: true
                 ).trim()
+                env.GITHUB_USER='lumen-jenkins-prod'
                 jslHubWrapper("release create -F shortCHANGELOG.md v${env.VERSION}")
               }
             }
