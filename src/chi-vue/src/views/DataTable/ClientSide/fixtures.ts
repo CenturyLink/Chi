@@ -266,7 +266,7 @@ export const exampleTableBody = [
       isNestedContentPrintDisabled: true,
     },
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021063' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021063' } },
       {
         template: 'icon',
         payload: { icon: 'circle-check', color: 'success' },
@@ -274,7 +274,7 @@ export const exampleTableBody = [
       { template: 'status', payload: { status: 'active' } },
       'Colocation A',
       0,
-      { template: 'date', payload: { date: new Date('02/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('02/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -287,12 +287,12 @@ export const exampleTableBody = [
     id: 'NTM000021071',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021071' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021071' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation B',
       1,
-      { template: 'date', payload: { date: new Date('03/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('03/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -308,12 +308,12 @@ export const exampleTableBody = [
       value: 'asdasdasd',
     },
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021064' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021064' } },
       '',
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation B',
       2,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -326,7 +326,7 @@ export const exampleTableBody = [
     id: 'NTM000021065',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021065' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021065' } },
       {
         label: 'Alert Column',
         template: 'icon',
@@ -335,7 +335,7 @@ export const exampleTableBody = [
       { template: 'status', payload: { status: 'active' } },
       'Colocation C',
       3,
-      { template: 'date', payload: { date: new Date('05/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('05/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -353,12 +353,12 @@ export const exampleTableBody = [
       },
     },
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021066' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021066' } },
       '',
       { template: 'status', payload: { status: 'active' } },
       'Colocation a',
       4,
-      { template: 'date', payload: { date: new Date('06/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('06/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -378,6 +378,7 @@ export const exampleTableBody = [
             data: [
               {
                 template: 'ticketId',
+                searchBy: 'id',
                 payload: { id: 'NTM0000210661' },
               },
               {
@@ -392,7 +393,7 @@ export const exampleTableBody = [
               },
               'Colocation',
               5,
-              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+              { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -414,6 +415,7 @@ export const exampleTableBody = [
                     data: [
                       {
                         template: 'ticketId',
+                        searchBy: 'id',
                         payload: { id: 'NTM0000210661' },
                       },
                       {
@@ -431,7 +433,7 @@ export const exampleTableBody = [
                       },
                       'Colocation',
                       6,
-                      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+                      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                       'SVUJW034781A',
                       {
                         template: 'actions',
@@ -478,6 +480,7 @@ export const exampleTableBody = [
             data: [
               {
                 template: 'ticketId',
+                searchBy: 'id',
                 payload: { id: 'NTM0000210662' },
               },
               {
@@ -492,7 +495,7 @@ export const exampleTableBody = [
               },
               'Colocation',
               10,
-              { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+              { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
               {
                 template: 'actions',
@@ -505,12 +508,12 @@ export const exampleTableBody = [
       },
     },
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021067' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021067' } },
       '',
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation b',
       11,
-      { template: 'date', payload: { date: new Date('07/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('07/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -523,12 +526,12 @@ export const exampleTableBody = [
     id: 'NTM000021072',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021072' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021072' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation c',
       12,
-      { template: 'date', payload: { date: new Date('01/06/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('01/06/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -541,7 +544,7 @@ export const exampleTableBody = [
     id: 'NTM0000210651',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM0000210651' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM0000210651' } },
       {
         label: 'Alerts',
         template: 'icon',
@@ -550,7 +553,7 @@ export const exampleTableBody = [
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       13,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -563,12 +566,12 @@ export const exampleTableBody = [
     id: 'NTM000021068',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021068' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021068' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       14,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -581,12 +584,12 @@ export const exampleTableBody = [
     id: 'NTM000021069',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021069' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021069' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       15,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -599,12 +602,12 @@ export const exampleTableBody = [
     id: 'NTM000021070',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021070' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021070' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       16,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -617,12 +620,12 @@ export const exampleTableBody = [
     id: 'NTM000021073',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021073' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021073' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       17,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -635,12 +638,12 @@ export const exampleTableBody = [
     id: 'NTM000021074',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021074' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021074' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       18,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -653,12 +656,12 @@ export const exampleTableBody = [
     id: 'NTM000021075',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021075' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021075' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       19,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -671,12 +674,12 @@ export const exampleTableBody = [
     id: 'NTM000021076',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021076' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021076' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       20,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -689,12 +692,12 @@ export const exampleTableBody = [
     id: 'NTM000021077',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021077' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021077' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       21,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -707,12 +710,12 @@ export const exampleTableBody = [
     id: 'NTM000021078',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021078' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021078' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       22,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -725,12 +728,12 @@ export const exampleTableBody = [
     id: 'NTM000021079',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021079' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021079' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       23,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -743,12 +746,12 @@ export const exampleTableBody = [
     id: 'NTM000021080',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021080' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021080' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       24,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -761,12 +764,12 @@ export const exampleTableBody = [
     id: 'NTM000021081',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021081' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021081' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       25,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -779,12 +782,12 @@ export const exampleTableBody = [
     id: 'NTM000021082',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021082' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021082' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       26,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -797,12 +800,12 @@ export const exampleTableBody = [
     id: 'NTM000021083',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021083' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021083' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       27,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -815,12 +818,12 @@ export const exampleTableBody = [
     id: 'NTM000021084',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021084' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021084' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       28,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -833,12 +836,12 @@ export const exampleTableBody = [
     id: 'NTM000021085',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021085' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021085' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       29,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -851,12 +854,12 @@ export const exampleTableBody = [
     id: 'NTM000021086',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021086' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021086' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       30,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -869,12 +872,12 @@ export const exampleTableBody = [
     id: 'NTM000021087',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021087' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021087' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       31,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -887,12 +890,12 @@ export const exampleTableBody = [
     id: 'NTM000021088',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021088' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021088' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       32,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -905,12 +908,12 @@ export const exampleTableBody = [
     id: 'NTM000021089',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021089' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021089' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       33,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -923,12 +926,12 @@ export const exampleTableBody = [
     id: 'NTM000021090',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021090' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021090' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       34,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -941,12 +944,12 @@ export const exampleTableBody = [
     id: 'NTM000021091',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021091' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021091' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       35,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -959,12 +962,12 @@ export const exampleTableBody = [
     id: 'NTM000021092',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021092' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021092' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       36,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -977,12 +980,12 @@ export const exampleTableBody = [
     id: 'NTM000021093',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021093' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021093' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       37,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -995,12 +998,12 @@ export const exampleTableBody = [
     id: 'NTM000021094',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021094' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021094' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       38,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -1013,12 +1016,12 @@ export const exampleTableBody = [
     id: 'NTM000021095',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021095' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021095' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       39,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -1031,12 +1034,12 @@ export const exampleTableBody = [
     id: 'NTM000021096',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021096' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021096' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       40,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -1049,12 +1052,12 @@ export const exampleTableBody = [
     id: 'NTM000021097',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021097' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021097' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       41,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -1067,12 +1070,12 @@ export const exampleTableBody = [
     id: 'NTM000021098',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021098' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021098' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       42,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -1085,12 +1088,12 @@ export const exampleTableBody = [
     id: 'NTM000021099',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021099' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021099' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       43,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -1103,12 +1106,12 @@ export const exampleTableBody = [
     id: 'NTM000021100',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021100' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021100' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       44,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -1121,12 +1124,12 @@ export const exampleTableBody = [
     id: 'NTM000021101',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021101' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021101' } },
       {},
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation',
       -0.5,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',
@@ -1139,12 +1142,12 @@ export const exampleTableBody = [
     id: 'NTM000021102',
     active: false,
     data: [
-      { template: 'ticketId', payload: { id: 'NTM000021102' } },
+      { template: 'ticketId', searchBy: 'id', payload: { id: 'NTM000021102' } },
       {},
       { template: 'status', payload: { status: 'active' } },
       'Colocation',
       -1,
-      { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
+      { template: 'date', searchBy: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
       {
         template: 'actions',

@@ -232,8 +232,8 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     dataSorting: e => {
       console.log('chiDataSorting', e);
     },
-    chiToolbarSearch: e => {
-      console.log('chiToolbarSearch', e);
+    chiToolbarSearch(e) {
+      this.$data.searchValue = e.toLowerCase();
     },
     chiToolbarFiltersChange: e => {
       console.log('chiToolbarFiltersChange', e);
@@ -265,17 +265,54 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     printTable() {
       (this.$refs.dataTable as DataTable).print('DataTable Client - Print');
     },
+    search(row) {
+      const cellMatchesSearch = (item: any) => {
+        const checkType = (checkItem: any) =>
+          typeof checkItem === 'string' ? checkItem.toLowerCase() : checkItem.toString().toLowerCase();
+
+        if (item.payload && item.searchBy) {
+          const searchBy = item.payload[item.searchBy];
+
+          if (searchBy) {
+            const searchByLowerCase = checkType(searchBy);
+
+            return searchByLowerCase === this.$data.searchValue || searchByLowerCase.includes(this.$data.searchValue);
+          }
+        } else if (!item.payload) {
+          const searchItem = checkType(item);
+
+          return searchItem === this.$data.searchValue || searchItem.includes(this.$data.searchValue);
+        }
+
+        return false;
+      };
+
+      return row.data.some(cellMatchesSearch);
+    },
   },
   data: () => {
     return {
       config: exampleConfig,
       toolbar: exampleToolbar,
-      table: {
-        head: exampleTableHead,
-        body: exampleTableBody,
-      },
+      searchValue: '',
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     };
+  },
+  computed: {
+    table() {
+      const table = {
+        head: exampleTableHead,
+        body: exampleTableBody,
+      };
+
+      if (this.$data.searchValue !== '') {
+        const searchResults = table.body.filter((row: any) => this.search(row));
+
+        table.body = searchResults;
+      }
+
+      return table;
+    },
   },
 })
 export default class DataTableView extends Vue {
