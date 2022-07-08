@@ -1,4 +1,4 @@
-FROM nexusprod.corp.intranet:4567/node:fermium-buster
+FROM nexusprod.corp.intranet:4567/node:fermium-buster-slim
 
 LABEL Description="This is a base image, which provides a cypress environment"
 
@@ -15,6 +15,10 @@ USER root
 
 # https://www.slimjet.com/chrome/download-chrome.php?file=files%2F86.0.4240.75%2Fgoogle-chrome-stable_current_amd64.deb
 # https://www.slimjet.com/chrome/download-chrome.php?file=files%2F71.0.3578.80%2Fgoogle-chrome-stable_current_amd64.deb
+
+RUN apt-get update && \
+    apt-get -y install wget unzip jq yajl-tools default-jre && \
+    apt-get clean
 
 RUN wget "https://github.com/github/hub/releases/download/v2.14.2/hub-linux-amd64-2.14.2.tgz" -O hub.tgz \
     && tar xzvf hub.tgz \
@@ -41,7 +45,7 @@ RUN wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-s
     unzip sonar-scanner-cli-4.3.0.2102-linux.zip
 
 ENV PATH="/home/node/sonar-scanner-4.3.0.2102-linux/bin:${PATH}"
-ENV JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre"
+ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/jre"
 
 RUN echo -n | openssl s_client -connect sonar.foss.corp.intranet:443 </dev/null 2>/dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /home/node/sonar-scanner-4.3.0.2102-linux/sonar.crt
 
