@@ -1,6 +1,6 @@
 import { Component, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core';
 import { ACTIVE_CLASS, CAROUSEL_CLASSES, TRANSITIONING_CLASS, UTILITY_CLASSES } from '../../constants/classes';
-import { ANIMATION_DURATION } from '../../constants/constants';
+import { ANIMATION_DURATION, CAROUSEL_SWIPE_DELTA } from '../../constants/constants';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 
 const CAROUSEL_BOUNCE_DISTANCE = 25;
@@ -46,9 +46,10 @@ export class Carousel {
   private fullScrollLength: number;
   private animation: ThreeStepsAnimation;
   private _animationClasses: string;
-  private startPos: any;
-  private moveEndPosition: any;
+  private moveEndPosition: number;
+  private moveStartPosition: number;
   private isDragging = false;
+
   private resizeHandler = () => {
     this.fullScrollLength = this.calculateWidth(this.el);
 
@@ -63,7 +64,6 @@ export class Carousel {
     }
     this.calculateScrollBreakpoints(this.fullScrollLength, wrapperWidth, remainder);
   };
-  carouselElement: HTMLElement;
 
   calculateWidth(element: HTMLElement) {
     return element.offsetWidth;
@@ -163,19 +163,9 @@ export class Carousel {
     );
   }
 
-  touchEnd = (e: TouchEvent) => {
-    console.log(e);
+  touchEnd = () => {
     if (this.isDragging) {
-      const delta = this.getMoveDelta();
-
       this.isDragging = false;
-      if (delta > this.fullScrollLength / 4) {
-        if (this.isMoveToNext()) {
-          this.nextView();
-        } else {
-          this.prevView();
-        }
-      }
       this.wrapper.style.transform = this.getWrapperTransform();
     }
   }
@@ -183,36 +173,43 @@ export class Carousel {
   touchMove = (e: TouchEvent) => {
     if (this.isDragging) {
       const currentPosition = this.getPositionX(e);
-      // const delta = this.getMoveDelta();
+      const previousPosition = this.scrollBreakpoints[this.view + 1];
+      const delta = this.getMoveDelta();
+      const newPosition = this.isMoveToNext() ? previousPosition - delta : previousPosition + delta;
 
-      console.log('translateX', new WebKitCSSMatrix(window.getComputedStyle(this.wrapper).transform).m41);
-      console.log('currentPosition', currentPosition);
       this.moveEndPosition = currentPosition;
-      this.wrapper.style.transform = this.getWrapperTransform();
+      this.wrapper.style.transform = `translateX(${newPosition}px)`;
+
+      if (delta > CAROUSEL_SWIPE_DELTA) {
+        if (this.isMoveToNext()) {
+          this.nextView();
+        } else {
+          this.prevView();
+        }
+        this.isDragging = false;
+      }
     }
   }
 
   isMoveToNext() {
-    return this.startPos > this.moveEndPosition;
+    return this.moveStartPosition > this.moveEndPosition;
   }
 
   getMoveDelta() {
-    return Math.abs(this.moveEndPosition - this.startPos);
+    return Math.abs(this.moveEndPosition - this.moveStartPosition);
   }
 
   getWrapperTransform() {
-    return `translateX(${this.scrollBreakpoints[this.view + 1]}px) scale(${this.isDragging ? 0.95 : 1})`
+    return `translateX(${this.scrollBreakpoints[this.view + 1]}px)`;
   }
 
   touchStart = (e: TouchEvent) => {
-    this.startPos = this.getPositionX(e);
+    this.moveStartPosition = this.getPositionX(e);
     this.isDragging = true;
   }
 
   getPositionX = (event: TouchEvent) => {
-    const positionX = event.touches[0].clientX;
-
-    return positionX;
+    return event.touches[0].clientX;
   }
 
   _applySizeToItems() {
@@ -279,8 +276,7 @@ export class Carousel {
       class={`
         ${CAROUSEL_CLASSES.CAROUSEL}
         ${this.dots ? CAROUSEL_CLASSES.DOTS_ADDITION : ''}
-        ${this.pagination ? CAROUSEL_CLASSES.PAGINATION_ADDITION : ''}`}
-      ref={el => this.carouselElement = el as HTMLElement}>
+        ${this.pagination ? CAROUSEL_CLASSES.PAGINATION_ADDITION : ''}`}>
       <div class={CAROUSEL_CLASSES.CONTENT}>
         <div
           class={`
