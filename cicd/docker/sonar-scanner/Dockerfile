@@ -13,14 +13,17 @@ VOLUME /ux-chi
 
 USER root
 
-RUN echo 
-
 # https://www.slimjet.com/chrome/download-chrome.php?file=files%2F86.0.4240.75%2Fgoogle-chrome-stable_current_amd64.deb
 # https://www.slimjet.com/chrome/download-chrome.php?file=files%2F71.0.3578.80%2Fgoogle-chrome-stable_current_amd64.deb
 
+RUN wget "https://github.com/github/hub/releases/download/v2.14.2/hub-linux-amd64-2.14.2.tgz" -O hub.tgz \
+    && tar xzvf hub.tgz \
+    && mv hub-linux-amd64-2.14.2/bin/hub /usr/local/bin \
+    && chmod +x /usr/local/bin/hub
+
 RUN wget https://www.slimjet.com/chrome/download-chrome.php?file=files%2F71.0.3578.80%2Fgoogle-chrome-stable_current_amd64.deb -O google-chrome-stable_current_amd64.deb \
  && apt-get update \
- && apt-get install -y ./google-chrome-stable_current_amd64.deb expect libgconf-2-4 xvfb busybox hub \
+ && apt-get install -y ./google-chrome-stable_current_amd64.deb expect libgconf-2-4 xvfb busybox \
  && apt-get clean \
  && rm ./google-chrome-stable_current_amd64.deb
 
@@ -31,9 +34,6 @@ ENV TERM=xterm-256color
 
 RUN ls -la /root
 RUN chmod 755 /root
-
-RUN apt-get -y update && \
-    apt-get -y install jq yajl-tools default-jre
 
 WORKDIR /home/node
 

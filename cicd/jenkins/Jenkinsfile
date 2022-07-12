@@ -10,7 +10,7 @@
 */
 try {
   library(
-        identifier: 'jsl-jenkins-shared-library-local@release/20220622.0.0',
+        identifier: 'jsl-jenkins-shared-library-local@release/20220627.0.0',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ try {
       ) _
 } catch (Exception Ex) {
   library(
-        identifier: 'jsl-jenkins-shared-library@release/20220622.0.0',
+        identifier: 'jsl-jenkins-shared-library@release/20220627.0.0',
         retriever: modernSCM(
           [
             $class: 'GitSCMSource',
@@ -312,7 +312,7 @@ pipeline {
             steps {
               script {
                 dir('src/chi-vue') {
-                  jslYarnWrapper('install')
+                  jslNpmWrapper('ci')
                   jslNpmWrapper('run build:component')
                   stash name: "DIST-CHI-VUE", includes: "dist/**"
                   jslNpmWrapper('run build:umd')
@@ -336,13 +336,12 @@ pipeline {
             steps {
               script {
                 dir('src/documentation') {
-                  jslNpmWrapper('install', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-                  if (isVersionBump()) {
+                  jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+                  if (isVersionBump() || env.BRANCH_NAME=='master') {
                     jslNpmWrapper('run generate-production')
                   } else {
                     jslNpmWrapper('run generate-pr')
                   }
-                  sh "ls -la ${pwd()}"
                   stash name: "DIST-CHI-DOCUMENTATION", includes: "dist/**"
                 }
               }
@@ -778,6 +777,7 @@ pipeline {
                   """,
                   returnStdout: true
                 ).trim()
+                env.GITHUB_USER='lumen-jenkins-prod'
                 jslHubWrapper("release create -F shortCHANGELOG.md v${env.VERSION}")
               }
             }
