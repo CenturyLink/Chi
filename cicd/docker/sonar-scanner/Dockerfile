@@ -17,7 +17,7 @@ USER root
 # https://www.slimjet.com/chrome/download-chrome.php?file=files%2F71.0.3578.80%2Fgoogle-chrome-stable_current_amd64.deb
 
 RUN apt-get update && \
-    apt-get -y install wget unzip jq yajl-tools default-jre && \
+    apt-get -y install wget unzip jq yajl-tools default-jre git && \
     apt-get clean
 
 RUN wget "https://github.com/github/hub/releases/download/v2.14.2/hub-linux-amd64-2.14.2.tgz" -O hub.tgz \
