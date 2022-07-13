@@ -75,7 +75,6 @@
   &__content {
     margin: 0 1rem 1rem;
     position: relative;
-    z-index: 2;
 
     @include respond-to(sm) {
       margin: 0 1.5rem 1rem;
@@ -122,13 +121,18 @@
     }
   }
 
+  &.-header-background {
+    .chi-main__background {
+      z-index: 1;
+    }
+  }
+
   &__background {
     position: absolute;
     height: 12rem;
     overflow: hidden;
     width: 100%;
     top: 0;
-    z-index: 1;
   }
 
   &__background-image {
