@@ -220,9 +220,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/price`,
+    to: `components/price`,
     label: 'Price',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/progress`,
