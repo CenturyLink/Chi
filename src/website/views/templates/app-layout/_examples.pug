@@ -280,7 +280,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
         | Page content goes here
       chi-button(id='example__help-button' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
         chi-icon(icon='circle-question-outline')
-      chi-popover(id='example__help-popover' position='top' variant='text' arrow reference='#example__help-button' slot='help-icon')
+      chi-popover(id='example__help-popover' position='right-start' variant='text' arrow reference='#example__help-button' slot='help-icon')
         | Popover content.
       footer.chi-footer(slot="footer")
         .chi-footer__content
@@ -368,7 +368,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
           </chi-button>
-          <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button" slot="help-icon">
+          <chi-popover id="example__help-popover" position="right-start" variant="text" arrow reference="#example__help-button" slot="help-icon">
             Popover content.
           </chi-popover>
           <!-- Page content goes here -->
@@ -471,12 +471,12 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
                   Page title
-                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
+                  <div class="chi-button -icon -flat -sm" id="example__help-button"  data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
                     <div class="chi-popover__content">
                       <p class="chi-popover__text">Popover content.</p>
                     </div>
@@ -1836,7 +1836,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
         | Page content goes here
       chi-button(id='example__help-button3' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
         chi-icon(icon='circle-question-outline')
-      chi-popover(id='example__help-popover3' position='top' variant='text' arrow reference='#example__help-button3' slot='help-icon')
+      chi-popover(id='example__help-popover3' position='right-start' variant='text' arrow reference='#example__help-button3' slot='help-icon')
         | Popover content.
       footer.chi-footer(slot="footer")
         .chi-footer__content
@@ -1942,7 +1942,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
                     <div class="chi-popover__content">
                       <p class="chi-popover__text">Popover content.</p>
                     </div>
@@ -2564,7 +2564,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
               | Content here
       chi-button(id='example__help-button4' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
         chi-icon(icon='circle-question-outline')
-      chi-popover(id='example__help-popover4' position='top' variant='text' arrow reference='#example__help-button4' slot='help-icon')
+      chi-popover(id='example__help-popover4' position='right-start' variant='text' arrow reference='#example__help-button4' slot='help-icon')
         | Popover content.
       footer.chi-footer(slot="footer")
         .chi-footer__content
@@ -2704,12 +2704,12 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
                   Page title
-                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
+                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
                     <div class="chi-popover__content">
                       <p class="chi-popover__text">Popover content.</p>
                     </div>
@@ -2857,7 +2857,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
               | Content here
       chi-button(id='example__help-button6' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
         chi-icon(icon='circle-question-outline')
-      chi-popover(id='example__help-popover6' position='top' variant='text' arrow reference='#example__help-button6' slot='help-icon')
+      chi-popover(id='example__help-popover6' position='right-start' variant='text' arrow reference='#example__help-button6' slot='help-icon')
         | Popover content.
       footer.chi-footer(slot="footer")
         .chi-footer__content
@@ -3100,7 +3100,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
                     <div class="chi-popover__content">
                       <p class="chi-popover__text">Popover content.</p>
                     </div>
@@ -3307,7 +3307,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
               | Content here
       chi-button(id='example__help-button5' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
         chi-icon(icon='circle-question-outline')
-      chi-popover(id='example__help-popover5' position='top' variant='text' arrow reference='#example__help-button5' slot='help-icon')
+      chi-popover(id='example__help-popover5' position='right-start' variant='text' arrow reference='#example__help-button5' slot='help-icon')
         | Popover content.
       footer.chi-footer(slot="footer")
         .chi-footer__content
@@ -3395,7 +3395,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
           </chi-button>
-          <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button" slot="help-icon">
+          <chi-popover id="example__help-popover" position="right-start" variant="text" arrow reference="#example__help-button" slot="help-icon">
             Popover content.
           </chi-popover>
           <chi-button size="xs" slot="header-actions">
@@ -3543,17 +3543,21 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
     .chi-tabs-panel#html-custom-background-portal
       :code(lang="html")
         <div class="chi-main -fixed-width -header-background">
+          <div class="chi-main__background">
+            <div class="chi-main__background-image">
+            </div>
+          </div>
           <div class="chi-main__header">
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
                   Page title
-                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
+                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
                     <div class="chi-popover__content">
                       <p class="chi-popover__text">Popover content.</p>
                     </div>
@@ -3617,10 +3621,6 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="chi-main__background">
-            <div class="chi-main__background-image">
             </div>
           </div>
           <footer class="chi-footer">
