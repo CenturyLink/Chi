@@ -1,0 +1,600 @@
+---
+title: App Layout
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+.chi-grid.-no-gutter.-w--100
+  .chi-col.-w--12.-mb--2
+    h3 Base
+    .test-layout-base.-bg--none.-s--3.-p--0
+      chi-main(title='Page title')
+        .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
+          | Page content goes here
+        footer.chi-footer(slot='footer')
+          .chi-footer__content
+            .chi-footer__internal
+              .chi-footer__internal-content
+                .chi-dropdown.chi-footer__language
+                  a#language-dropdown-button.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(data-position='top-start' aria-label='Select your preferred language')
+                    .chi-button__content
+                      i.chi-icon.icon-globe-network(aria-hidden='true')
+                      span English
+                  .chi-dropdown__menu.-w--sm.-text--body
+                    a.chi-dropdown__menu-item.-active(href='#') English
+                    a.chi-dropdown__menu-item(href='#') Español
+                    a.chi-dropdown__menu-item(href='#') Português
+                    a.chi-dropdown__menu-item(href='#') Français
+                    a.chi-dropdown__menu-item(href='#') Deutsch
+                    a.chi-dropdown__menu-item(href='#') 简体中文
+                    a.chi-dropdown__menu-item(href='#') 日本語
+                .chi-footer__links
+                  ul
+                    li
+                      a(href='https://www.lumen.com/en-us/about.html') About Us
+                    li
+                      a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                    li
+                      a(href='https://jobs.lumen.com' target='_blank') Careers
+                    li
+                      a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                    // OneTrust Cookies Settings button start
+                    li
+                      a.optanon-toggle-display(href='#') Cookie Settings
+                    // OneTrust Cookies Settings button end
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal.html' target='_blank') Legal
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html' target='_blank') Legal Notices
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                    li
+                      a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html' target='_blank') Public Policy
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts' target='_blank') Support
+                    li
+                      a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3' target='_blank') Gender Pay Gap 2020 (UK)
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80' target='_blank') Modern Slavery Statement 2020 (UK)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                  .chi-footer__copyright
+                    | © 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
+  .chi-col.-w--12.-mb--2
+    h3 Base with back link
+    .test-layout-backlink.-bg--none.-s--3.-p--0
+      chi-main(backlink='Back link' title='Page title')
+        .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
+          | Page content goes here
+        footer.chi-footer(slot='footer')
+          .chi-footer__content
+            .chi-footer__internal
+              .chi-footer__internal-content
+                .chi-dropdown.chi-footer__language
+                  a#language-dropdown-button.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(data-position='top-start' aria-label='Select your preferred language')
+                    .chi-button__content
+                      i.chi-icon.icon-globe-network
+                      span English
+                  .chi-dropdown__menu.-w--sm.-text--body
+                    a.chi-dropdown__menu-item.-active(href='#') English
+                    a.chi-dropdown__menu-item(href='#') Español
+                    a.chi-dropdown__menu-item(href='#') Português
+                    a.chi-dropdown__menu-item(href='#') Français
+                    a.chi-dropdown__menu-item(href='#') Deutsch
+                    a.chi-dropdown__menu-item(href='#') 简体中文
+                    a.chi-dropdown__menu-item(href='#') 日本語
+                .chi-footer__links
+                  ul
+                    li
+                      a(href='https://www.lumen.com/en-us/about.html') About Us
+                    li
+                      a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                    li
+                      a(href='https://jobs.lumen.com' target='_blank') Careers
+                    li
+                      a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                    // OneTrust Cookies Settings button start
+                    li
+                      a.optanon-toggle-display(href='#') Cookie Settings
+                    // OneTrust Cookies Settings button end
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal.html' target='_blank') Legal
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html' target='_blank') Legal Notices
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                    li
+                      a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html' target='_blank') Public Policy
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts' target='_blank') Support
+                    li
+                      a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3' target='_blank') Gender Pay Gap 2020 (UK)
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80' target='_blank') Modern Slavery Statement 2020 (UK)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                  .chi-footer__copyright
+                    | © 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
+  .chi-col.-w--12.-mb--2
+    h3 Base with back link and subtitle
+    .test-layout-backlink-subtitle.-bg--none.-s--3.-p--0
+      chi-main(backlink='Back link' title='Page title' subtitle='Page subtitle')
+        .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
+          | Page content goes here
+        footer.chi-footer(slot='footer')
+          .chi-footer__content
+            .chi-footer__internal
+              .chi-footer__internal-content
+                .chi-dropdown.chi-footer__language
+                  a#language-dropdown-button.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(data-position='top-start' aria-label='Select your preferred language')
+                    .chi-button__content
+                      i.chi-icon.icon-globe-network(aria-hidden='true')
+                      span English
+                  .chi-dropdown__menu.-w--sm.-text--body
+                    a.chi-dropdown__menu-item.-active(href='#') English
+                    a.chi-dropdown__menu-item(href='#') Español
+                    a.chi-dropdown__menu-item(href='#') Português
+                    a.chi-dropdown__menu-item(href='#') Français
+                    a.chi-dropdown__menu-item(href='#') Deutsch
+                    a.chi-dropdown__menu-item(href='#') 简体中文
+                    a.chi-dropdown__menu-item(href='#') 日本語
+                .chi-footer__links
+                  ul
+                    li
+                      a(href='https://www.lumen.com/en-us/about.html') About Us
+                    li
+                      a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                    li
+                      a(href='https://jobs.lumen.com' target='_blank') Careers
+                    li
+                      a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                    // OneTrust Cookies Settings button start
+                    li
+                      a.optanon-toggle-display(href='#') Cookie Settings
+                    // OneTrust Cookies Settings button end
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal.html' target='_blank') Legal
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html' target='_blank') Legal Notices
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                    li
+                      a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html' target='_blank') Public Policy
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts' target='_blank') Support
+                    li
+                      a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3' target='_blank') Gender Pay Gap 2020 (UK)
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80' target='_blank') Modern Slavery Statement 2020 (UK)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                  .chi-footer__copyright
+                    | © 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
+  .chi-col.-w--12.-mb--2
+    h3 Base with back link, subtitle, and buttons
+    .test-layout-backlink-subtitle-buttons.-bg--none.-s--3.-p--0
+      chi-main(backlink='Back link' title='Page title' subtitle='Page subtitle')
+        button.chi-button.-primary(slot='header-actions') Primary
+        .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
+          | Page content goes here
+        footer.chi-footer(slot='footer')
+          .chi-footer__content
+            .chi-footer__internal
+              .chi-footer__internal-content
+                .chi-dropdown.chi-footer__language
+                  a#language-dropdown-button.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(data-position='top-start' aria-label='Select your preferred language')
+                    .chi-button__content
+                      i.chi-icon.icon-globe-network(aria-hidden='true')
+                      span English
+                  .chi-dropdown__menu.-w--sm.-text--body
+                    a.chi-dropdown__menu-item.-active(href='#') English
+                    a.chi-dropdown__menu-item(href='#') Español
+                    a.chi-dropdown__menu-item(href='#') Português
+                    a.chi-dropdown__menu-item(href='#') Français
+                    a.chi-dropdown__menu-item(href='#') Deutsch
+                    a.chi-dropdown__menu-item(href='#') 简体中文
+                    a.chi-dropdown__menu-item(href='#') 日本語
+                .chi-footer__links
+                  ul
+                    li
+                      a(href='https://www.lumen.com/en-us/about.html') About Us
+                    li
+                      a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                    li
+                      a(href='https://jobs.lumen.com' target='_blank') Careers
+                    li
+                      a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                    // OneTrust Cookies Settings button start
+                    li
+                      a.optanon-toggle-display(href='#') Cookie Settings
+                    // OneTrust Cookies Settings button end
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal.html' target='_blank') Legal
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html' target='_blank') Legal Notices
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                    li
+                      a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html' target='_blank') Public Policy
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts' target='_blank') Support
+                    li
+                      a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3' target='_blank') Gender Pay Gap 2020 (UK)
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80' target='_blank') Modern Slavery Statement 2020 (UK)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                  .chi-footer__copyright
+                    | © 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
+  .chi-col.-w--12.-mb--2
+    h3 Base with page-level actions
+    .test-layout-page-level-actions.-bg--none.-s--3.-p--0
+      chi-main(backlink='Back link' title='Page title' subtitle='Page subtitle')
+        .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
+          | Page content goes here
+        button.chi-button.-primary.-outline.-bg--white(slot='page-level__actions') Cancel
+        button.chi-button.-primary.-ml--1(slot='page-level__actions') Submit
+        footer.chi-footer(slot='footer')
+          .chi-footer__content
+            .chi-footer__internal
+              .chi-footer__internal-content
+                .chi-dropdown.chi-footer__language
+                  a#language-dropdown-button.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(data-position='top-start' aria-label='Select your preferred language')
+                    .chi-button__content
+                      i.chi-icon.icon-globe-network(aria-hidden='true')
+                      span English
+                  .chi-dropdown__menu.-w--sm.-text--body
+                    a.chi-dropdown__menu-item.-active(href='#') English
+                    a.chi-dropdown__menu-item(href='#') Español
+                    a.chi-dropdown__menu-item(href='#') Português
+                    a.chi-dropdown__menu-item(href='#') Français
+                    a.chi-dropdown__menu-item(href='#') Deutsch
+                    a.chi-dropdown__menu-item(href='#') 简体中文
+                    a.chi-dropdown__menu-item(href='#') 日本語
+                .chi-footer__links
+                  ul
+                    li
+                      a(href='https://www.lumen.com/en-us/about.html') About Us
+                    li
+                      a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                    li
+                      a(href='https://jobs.lumen.com' target='_blank') Careers
+                    li
+                      a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                    // OneTrust Cookies Settings button start
+                    li
+                      a.optanon-toggle-display(href='#') Cookie Settings
+                    // OneTrust Cookies Settings button end
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal.html' target='_blank') Legal
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html' target='_blank') Legal Notices
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                    li
+                      a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html' target='_blank') Public Policy
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts' target='_blank') Support
+                    li
+                      a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3' target='_blank') Gender Pay Gap 2020 (UK)
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80' target='_blank') Modern Slavery Statement 2020 (UK)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                  .chi-footer__copyright
+                    | © 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
+  .chi-col.-w--12.-mb--2
+    h3 No Margin
+    .test-layout-no-margin.-bg--none.-s--3.-position--relative.-p--0
+      chi-main(title='Page title' format='no-margin')
+        chi-button#example__help-button4(type='icon' size='sm' variant='flat' alternative-text='Help' slot='help-icon')
+          chi-icon(icon='circle-question-outline')
+        chi-button(size='xs' slot='header-actions')
+          chi-icon(icon='settings')
+          span Customize
+        .chi-grid
+          .chi-col.-w--12.-w-lg--8
+            .chi-card.-highlight.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+          .chi-col.-w--12.-w-md--6.-w-lg--4
+            .chi-card.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+          .chi-col.-w--12.-w-md--6.-w-lg--4
+            .chi-card.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+          .chi-col.-w--12.-w-md--6.-w-lg--4
+            .chi-card.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+          .chi-col.-w--12.-w-md--6.-w-lg--4
+            .chi-card.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+        footer.chi-footer(slot='footer')
+          .chi-footer__content
+            .chi-footer__internal
+              .chi-footer__internal-content
+                .chi-dropdown.chi-footer__language
+                  a#language-dropdown-button.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(data-position='top-start' aria-label='Select your preferred language')
+                    .chi-button__content
+                      i.chi-icon.icon-globe-network
+                      span English
+                  .chi-dropdown__menu.-w--sm.-text--body
+                    a.chi-dropdown__menu-item.-active(href='#') English
+                    a.chi-dropdown__menu-item(href='#') Español
+                    a.chi-dropdown__menu-item(href='#') Português
+                    a.chi-dropdown__menu-item(href='#') Français
+                    a.chi-dropdown__menu-item(href='#') Deutsch
+                    a.chi-dropdown__menu-item(href='#') 简体中文
+                    a.chi-dropdown__menu-item(href='#') 日本語
+                .chi-footer__links
+                  ul
+                    li
+                      a(href='https://www.lumen.com/en-us/about.html') About Us
+                    li
+                      a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                    li
+                      a(href='https://jobs.lumen.com' target='_blank') Careers
+                    li
+                      a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                    // OneTrust Cookies Settings button start
+                    li
+                      a.optanon-toggle-display(href='#') Cookie Settings
+                    // OneTrust Cookies Settings button end
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal.html' target='_blank') Legal
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html' target='_blank') Legal Notices
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                    li
+                      a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html' target='_blank') Public Policy
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts' target='_blank') Support
+                    li
+                      a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3' target='_blank') Gender Pay Gap 2020 (UK)
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80' target='_blank') Modern Slavery Statement 2020 (UK)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                  .chi-footer__copyright
+                    | © 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
+  .chi-col.-w--12.-mb--2
+    h3 Fixed width
+    .test-layout-fixed-width.-bg--none.-s--3.-position--relative.-p--0
+      chi-main(title='Page title' format='fixed-width')
+        chi-button#example__help-button2(type='icon' size='sm' variant='flat' alternative-text='Help' slot='help-icon')
+          chi-icon(icon='circle-question-outline')
+        chi-button(size='xs' slot='header-actions')
+          chi-icon(icon='settings')
+          span Customize
+        .chi-grid
+          .chi-col.-w--12.-w-lg--8
+            .chi-card.-highlight.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+          .chi-col.-w--12.-w-md--6.-w-lg--4
+            .chi-card.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+          .chi-col.-w--12.-w-md--6.-w-lg--4
+            .chi-card.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+          .chi-col.-w--12.-w-md--6.-w-lg--4
+            .chi-card.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+          .chi-col.-w--12.-w-md--6.-w-lg--4
+            .chi-card.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+        footer.chi-footer(slot='footer')
+          .chi-footer__content
+            .chi-footer__internal
+              .chi-footer__internal-content
+                .chi-dropdown.chi-footer__language
+                  a#language-dropdown-button.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(data-position='top-start' aria-label='Select your preferred language')
+                    .chi-button__content
+                      i.chi-icon.icon-globe-network
+                      span English
+                  .chi-dropdown__menu.-w--sm.-text--body
+                    a.chi-dropdown__menu-item.-active(href='#') English
+                    a.chi-dropdown__menu-item(href='#') Español
+                    a.chi-dropdown__menu-item(href='#') Português
+                    a.chi-dropdown__menu-item(href='#') Français
+                    a.chi-dropdown__menu-item(href='#') Deutsch
+                    a.chi-dropdown__menu-item(href='#') 简体中文
+                    a.chi-dropdown__menu-item(href='#') 日本語
+                .chi-footer__links
+                  ul
+                    li
+                      a(href='https://www.lumen.com/en-us/about.html') About Us
+                    li
+                      a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                    li
+                      a(href='https://jobs.lumen.com' target='_blank') Careers
+                    li
+                      a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                    // OneTrust Cookies Settings button start
+                    li
+                      a.optanon-toggle-display(href='#') Cookie Settings
+                    // OneTrust Cookies Settings button end
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal.html' target='_blank') Legal
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html' target='_blank') Legal Notices
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                    li
+                      a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html' target='_blank') Public Policy
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts' target='_blank') Support
+                    li
+                      a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3' target='_blank') Gender Pay Gap 2020 (UK)
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80' target='_blank') Modern Slavery Statement 2020 (UK)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                  .chi-footer__copyright
+                    | © 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
+  .chi-col.-w--12.-mb--2
+    h3 Fixed width with header background
+    .test-layout-fixed-width-header-background.-bg--none.-s--3.-position--relative.-p--0
+      chi-main(title='Page title' format='fixed-width' header-background)
+        chi-button#example__help-button3(type='icon' size='sm' variant='flat' alternative-text='Help' slot='help-icon')
+          chi-icon(icon='circle-question-outline')
+        chi-button(size='xs' slot='header-actions')
+          chi-icon(icon='settings')
+          span Customize
+        .chi-grid
+          .chi-col.-w--12.-w-lg--8
+            .chi-card.-highlight.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+          .chi-col.-w--12.-w-md--6.-w-lg--4
+            .chi-card.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+          .chi-col.-w--12.-w-md--6.-w-lg--4
+            .chi-card.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+          .chi-col.-w--12.-w-md--6.-w-lg--4
+            .chi-card.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+          .chi-col.-w--12.-w-md--6.-w-lg--4
+            .chi-card.-widget.-mb--3
+              .chi-card__header
+                .chi-card__title Widget
+                a.chi-link.-md.-cta(href='#') View
+              .chi-card__content(style='height:10rem;') Content here
+        footer.chi-footer(slot='footer')
+          .chi-footer__content
+            .chi-footer__internal
+              .chi-footer__internal-content
+                .chi-dropdown.chi-footer__language
+                  a#language-dropdown-button.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(data-position='top-start' aria-label='Select your preferred language')
+                    .chi-button__content
+                      i.chi-icon.icon-globe-network
+                      span English
+                  .chi-dropdown__menu.-w--sm.-text--body
+                    a.chi-dropdown__menu-item.-active(href='#') English
+                    a.chi-dropdown__menu-item(href='#') Español
+                    a.chi-dropdown__menu-item(href='#') Português
+                    a.chi-dropdown__menu-item(href='#') Français
+                    a.chi-dropdown__menu-item(href='#') Deutsch
+                    a.chi-dropdown__menu-item(href='#') 简体中文
+                    a.chi-dropdown__menu-item(href='#') 日本語
+                .chi-footer__links
+                  ul
+                    li
+                      a(href='https://www.lumen.com/en-us/about.html') About Us
+                    li
+                      a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
+                    li
+                      a(href='https://jobs.lumen.com' target='_blank') Careers
+                    li
+                      a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
+                    // OneTrust Cookies Settings button start
+                    li
+                      a.optanon-toggle-display(href='#') Cookie Settings
+                    // OneTrust Cookies Settings button end
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal.html' target='_blank') Legal
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html' target='_blank') Legal Notices
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
+                    li
+                      a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html' target='_blank') Public Policy
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts' target='_blank') Support
+                    li
+                      a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3' target='_blank') Gender Pay Gap 2020 (UK)
+                    li
+                      a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
+                    li
+                      a(href='https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80' target='_blank') Modern Slavery Statement 2020 (UK)
+                    li
+                      a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
+                  .chi-footer__copyright
+                    | © 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
