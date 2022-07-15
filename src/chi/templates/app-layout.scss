@@ -107,16 +107,22 @@
       padding-left: 1rem;
       padding-right: 1rem;
 
-      @include respond-to(md) {
-        max-width: 744px;
+      @include respond-to(lg) {
+        max-width: 792px;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
       }
 
+      @include respond-to(xl) {
+        max-width: 1176px;
+      }
+    }
+
+    .chi-main__content {
+      padding-bottom: 1.5rem;
+
       @include respond-to(lg) {
-        max-width: 1280px;
-        padding-left: 4rem;
-        padding-right: 4rem;
+        padding-bottom: 2.5rem;
       }
     }
   }
