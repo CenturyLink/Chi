@@ -71,7 +71,7 @@ script(src=`../../js/chi.js`)
           chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
             | Finish
         div(slot='change')
-          chi-button(color='primary' variant='flat' @click="active = 2" data-chi-epanel-action='change')
+          chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
 
       h3.-pt--6 State
@@ -90,10 +90,10 @@ script(src=`../../js/chi.js`)
           br
           | (e.g.) a package selection
         div(slot='footer')
-          chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
+          chi-button(color='primary' data-chi-epanel-action='next')
             | Continue
         div(slot='change')
-          chi-button(color='primary' variant='flat' @click="active = 0" data-chi-epanel-action='change')
+          chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
       chi-vue-expansion-panel(step="2" title="Panel title 2" state="active" data-cy="state-expansion-panel-active")
         div(slot='active')
@@ -110,12 +110,12 @@ script(src=`../../js/chi.js`)
           br
           | (e.g.) a package selection
         div(slot='footer')
-          chi-button(color='primary' @click="active -= 1" data-chi-epanel-action='previous')
+          chi-button(color='primary' data-chi-epanel-action='previous')
             | Previous
-          chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
+          chi-button(color='primary' data-chi-epanel-action='next')
             | Continue
         div(slot='change')
-          chi-button(color='primary' variant='flat' @click="active = 1" data-chi-epanel-action='change')
+          chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
       chi-vue-expansion-panel(step="3" title="Panel title 3" state="pending" data-cy="state-expansion-panel-pending")
         div(slot='active')
@@ -132,16 +132,16 @@ script(src=`../../js/chi.js`)
           br
           | (e.g.) a package selection
         div(slot='footer')
-          chi-button(color='primary' @click="active -= 1" data-chi-epanel-action='previous')
+          chi-button(color='primary' data-chi-epanel-action='previous')
             | Previous
-          chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
+          chi-button(color='primary' data-chi-epanel-action='next')
             | Finish
         div(slot='change')
-          chi-button(color='primary' variant='flat' @click="active = 2" data-chi-epanel-action='change')
+          chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
 
       h3.-pt--6 Number
-      chi-vue-expansion-panel(step="1" title="Panel title 1" state="done" data-cy="number-expansion-panel-numbered")
+      chi-vue-expansion-panel(step="1" title="With number" state="active" data-cy="number-expansion-panel-numbered")
         div(slot='active')
           .chi-epanel__subtitle
             | Optional subtitle
@@ -156,12 +156,12 @@ script(src=`../../js/chi.js`)
           br
           | (e.g.) a package selection
         div(slot='footer')
-          chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
+          chi-button(color='primary' data-chi-epanel-action='next')
             | Continue
         div(slot='change')
-          chi-button(color='primary' variant='flat' @click="active = 0" data-chi-epanel-action='change')
+          chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
-      chi-vue-expansion-panel(title="Panel title 2" state="active" data-cy="number-expansion-panel-non-numbered")
+      chi-vue-expansion-panel(title="Without number" state="active" data-cy="number-expansion-panel-non-numbered")
         div(slot='active')
           .chi-epanel__subtitle
             | Optional subtitle
@@ -176,12 +176,12 @@ script(src=`../../js/chi.js`)
           br
           | (e.g.) a package selection
         div(slot='footer')
-          chi-button(color='primary' @click="active -= 1" data-chi-epanel-action='previous')
+          chi-button(color='primary' data-chi-epanel-action='previous')
             | Previous
-          chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
+          chi-button(color='primary' data-chi-epanel-action='next')
             | Continue
         div(slot='change')
-          chi-button(color='primary' variant='flat' @click="active = 1" data-chi-epanel-action='change')
+          chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
       
       h3.-pt--6 Border
@@ -200,12 +200,12 @@ script(src=`../../js/chi.js`)
           br
           | (e.g.) a package selection
         div(slot='footer')
-          chi-button(color='primary' @click="active -= 1" data-chi-epanel-action='previous')
+          chi-button(color='primary' data-chi-epanel-action='previous')
             | Previous
-          chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
+          chi-button(color='primary' data-chi-epanel-action='next')
             | Continue
         div(slot='change')
-          chi-button(color='primary' variant='flat' @click="active = 1" data-chi-epanel-action='change')
+          chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
       chi-vue-expansion-panel(step="1" title="Bordered Panel" :bordered="true" state="active" data-cy="border-expansion-panel-bordered")
         div(slot='active')
@@ -222,12 +222,12 @@ script(src=`../../js/chi.js`)
           br
           | (e.g.) a package selection
         div(slot='footer')
-          chi-button(color='primary' @click="active -= 1" data-chi-epanel-action='previous')
+          chi-button(color='primary' data-chi-epanel-action='previous')
             | Previous
-          chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
+          chi-button(color='primary' data-chi-epanel-action='next')
             | Continue
         div(slot='change')
-          chi-button(color='primary' variant='flat' @click="active = 1" data-chi-epanel-action='change')
+          chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
 
       h3.-pt--6 Slots
@@ -246,16 +246,15 @@ script(src=`../../js/chi.js`)
           br
           | (e.g.) a package selection
         div(slot='footer')
-          | >>
-        div.-p--2(slot='footerStart')
+        div.-p--2.footer-start-slot(slot='footerStart')
           | Sample footer text
-        div(slot='footerEnd')
-          chi-button(color='primary' @click="active -= 1" data-chi-epanel-action='previous')
+        div.footer-end-slot(slot='footerEnd')
+          chi-button(color='primary' data-chi-epanel-action='previous')
             | Previous
-          chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
+          chi-button(color='primary' data-chi-epanel-action='next')
             | Continue
-        div(slot='change')
-          chi-button(color='primary' variant='flat' @click="active = 1" data-chi-epanel-action='change')
+        div.change-slot(slot='change')
+          chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
       chi-vue-expansion-panel(step="2" title="Panel title 2" :bordered="true" state="active" data-cy="slot-expansion-panel-active")
         div(slot='active')
@@ -272,16 +271,14 @@ script(src=`../../js/chi.js`)
           br
           | (e.g.) a package selection
         div(slot='footer')
-          | >>
-        div.-p--2(slot='footerStart')
-          | Sample footer text
-        div(slot='footerEnd')
-          chi-button(color='primary' @click="active -= 1" data-chi-epanel-action='previous')
+        div.-p--2.footer-start-slot(slot='footerStart')
+          chi-button(color='primary' data-chi-epanel-action='previous')
             | Previous
-          chi-button(color='primary' @click="active += 1" data-chi-epanel-action='next')
+        div.footer-end-slot(slot='footerEnd')
+          chi-button(color='primary' data-chi-epanel-action='next')
             | Continue
-        div(slot='change')
-          chi-button(color='primary' variant='flat' @click="active = 1" data-chi-epanel-action='change')
+        div.change-slot(slot='change')
+          chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
 
 script.
@@ -294,9 +291,5 @@ script.
         active: 0,
         states: ['done', 'active', 'pending', 'disabled'],
       };
-    },
-    mounted() {
-      console.log('Mounted vue component jay', typeof chi);
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example8"]'))
     }
   }).$mount("#app")

@@ -34,11 +34,11 @@ const NUMBER_CLASS = 'chi-epanel__number';
 const BORDER_CLASS= '-bordered';
 
 const ACTIVE_SLOT_CLASS= 'chi-epanel__content-active';
-const CHANGE_SLOT_CLASS= 'chi-epanel__action';
+const CHANGE_SLOT_CLASS= 'change-slot';
 const DONE_SLOT_CLASS= 'done-slot';
 const FOOTER_SLOT_CLASS= 'chi-epanel__footer';
-const FOOTER_START_SLOT_CLASS= 'chi-epanel__content-active';
-const FOOTER_END_SLOT_CLASS= 'chi-epanel__content-active';
+const FOOTER_START_SLOT_CLASS= 'footer-start-slot';
+const FOOTER_END_SLOT_CLASS= 'footer-end-slot';
 
 describe('Expansion Panel', () => {
   before(() => {
@@ -98,32 +98,6 @@ describe('Expansion Panel', () => {
   });
 
   describe('State', () => {
-    it('Should check if expansion panel has state as done', () => {
-      // Given - First panel item has state active
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST).find(EXPANSION_PANEL_DATA_CY.BASE.CHANGE_BUTTON).click();
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST).should('have.class', `${ACTIVE_CLASS}`);
-
-      // When - continue button is clicked
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST).find(EXPANSION_PANEL_DATA_CY.BASE.NEXT_BUTTON).click();
-      
-      // Then - First panel item has state done
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST).should('have.class', `${DONE_CLASS}`);
-    });
-
-    it('Should check if expansion panel has state as active', () => {
-      // Given - Continue button was clicked on first panel
-      // Then - Sate of second panel should be active
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_SECOND).should('have.class', `${ACTIVE_CLASS}`);
-    });
-
-    it('Should check if expansion panel has state as pending', () => {
-      // Given - Sate of second panel is active
-      // Then - Sate of third panel should be pending
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_THIRD).should('have.class', `${PENDING_CLASS}`);
-    });
-  });
-
-  describe('State - 2', () => {
     it('Should check if expansion panel has state as done', () => {      
       // Assert - Panel item has state done
       cy.get(EXPANSION_PANEL_DATA_CY.STATE.EXPANSION_PANEL_DONE).should('have.class', `${DONE_CLASS}`);
@@ -171,8 +145,24 @@ describe('Expansion Panel', () => {
       cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.DONE_EXPANSION_PANEL}`).find(`.${DONE_SLOT_CLASS}`).should('exist').should('be.visible');
     });
 
-    it('Should check if non bordered expansion panel has no border', () => {
-      cy.get(`${EXPANSION_PANEL_DATA_CY.BORDER.NON_BORDERED_EXPANSION_PANEL}`).should('not.have.class', BORDER_CLASS);
+    it('Should check if change slot is available in the panel', () => {
+      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.ACTIVE_EXPANSION_PANEL}`).find(`.${CHANGE_SLOT_CLASS}`).should('exist').should('not.be.visible');
+      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.DONE_EXPANSION_PANEL}`).find(`.${CHANGE_SLOT_CLASS}`).should('exist').should('be.visible');
+    });
+
+    it('Should check if footer slot is available in the panel', () => {
+      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.ACTIVE_EXPANSION_PANEL}`).find(`.${FOOTER_SLOT_CLASS}`).should('exist').should('be.visible');
+      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.DONE_EXPANSION_PANEL}`).find(`.${FOOTER_SLOT_CLASS}`).should('exist').should('not.be.visible');
+    });
+
+    it('Should check if footer start slot is available in the panel', () => {
+      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.ACTIVE_EXPANSION_PANEL}`).find(`.${FOOTER_START_SLOT_CLASS}`).should('exist').should('be.visible');
+      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.DONE_EXPANSION_PANEL}`).find(`.${FOOTER_START_SLOT_CLASS}`).should('exist').should('not.be.visible');
+    });
+
+    it('Should check if footer end slot is available in the panel', () => {
+      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.ACTIVE_EXPANSION_PANEL}`).find(`.${FOOTER_END_SLOT_CLASS}`).should('exist').should('be.visible');
+      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.DONE_EXPANSION_PANEL}`).find(`.${FOOTER_END_SLOT_CLASS}`).should('exist').should('not.be.visible');
     });
   });
 });
