@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { CENTURY_FOOTER_LINKS, ILink } from './fixtures';
+import { CENTURY_FOOTER_LINKS, ILink } from '../../.././../models/models';
 
 @Component({
   data: () => {

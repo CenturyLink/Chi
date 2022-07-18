@@ -2,7 +2,7 @@
   #docs-container.docs-container
     <script v-html="redirectionScript"></script>
     <Header />
-    main.docs-body.chi-grid__container-wide.-non-doc
+    main.docs-body.-non-doc
       nav.docs-sidenav
         <Navigation />
       .docs-article
