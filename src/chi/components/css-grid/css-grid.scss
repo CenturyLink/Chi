@@ -1,0 +1,98 @@
+@import '_global-variables';
+@import '_global-mixins';
+
+.chi-css-grid {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-gap: $css-grid-gap;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  @include respond-to(md) {
+    grid-gap: $css-grid-md-gap;
+  }
+
+  .chi-css-grid {
+    grid-auto-rows: auto;
+    grid-template-rows: repeat(1, 1fr);
+  }
+
+  // Row Utilities
+  &.-grid-rows--176 {
+    grid-auto-rows: minmax(176px, auto);
+    grid-template-rows: minmax(176px, auto);
+  }
+
+
+  .chi-css-col {
+    grid-column: auto / span 12;
+    position: relative;
+
+    // Column Sizing
+
+    @for $i from 1 through 12 {
+      &.-col--#{$i} {
+        grid-column: auto / span $i;
+      }
+    }
+
+    // Column Sizing by Viewport
+
+    @each $size in sm md lg xl {
+      @include respond-to($size) {
+        @for $i from 1 through 12 {
+          &.-col-#{$size}--#{$i} {
+            grid-column: auto / span $i;
+          }
+        }
+      }
+    }
+
+    // Row Sizing
+
+    @for $i from 1 through 3 {
+      &.-row--#{$i} {
+        grid-row: auto / span $i;
+      }
+    }
+
+    // Row Sizing by Viewport
+
+    @each $size in sm md lg xl {
+      @include respond-to($size) {
+        @for $i from 1 through 3 {
+          &.-col-#{$size}--#{$i} {
+            grid-row: auto / span $i;
+          }
+        }
+      }
+    }
+  }
+
+  // Gap Sizing
+
+  @for $i from 0 through 6 {
+    &.-gap--#{$i} {
+      grid-gap: ($i / 2) + rem;
+    }
+  }
+
+  &.-gap--05 {
+    grid-gap: 0.25rem;
+  }
+
+  // Gap Sizing by Viewport
+
+  @each $size in sm md lg xl {
+    @include respond-to($size) {
+      @for $i from 0 through 6 {
+        &.-gap-#{$size}--#{$i} {
+          grid-gap: ($i / 2) + rem;
+        }
+      }
+
+      &.-gap-#{$size}--05 {
+        grid-gap: 0.25rem;
+      }
+    }
+  }
+}
