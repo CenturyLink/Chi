@@ -75,6 +75,7 @@ script(src=`../../js/chi.js`)
             | Change
 
       h3.-pt--6 State
+      h4 Done State
       chi-vue-expansion-panel(step="1" title="Panel title 1" state="done" data-cy="state-expansion-panel-done")
         div(slot='active')
           .chi-epanel__subtitle
@@ -95,6 +96,7 @@ script(src=`../../js/chi.js`)
         div(slot='change')
           chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
+      h4.-pt--3 Active State
       chi-vue-expansion-panel(step="2" title="Panel title 2" state="active" data-cy="state-expansion-panel-active")
         div(slot='active')
           .chi-epanel__subtitle
@@ -117,6 +119,7 @@ script(src=`../../js/chi.js`)
         div(slot='change')
           chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
+      h4.-pt--3 Pending State
       chi-vue-expansion-panel(step="3" title="Panel title 3" state="pending" data-cy="state-expansion-panel-pending")
         div(slot='active')
           .chi-epanel__subtitle
@@ -141,7 +144,8 @@ script(src=`../../js/chi.js`)
             | Change
 
       h3.-pt--6 Number
-      chi-vue-expansion-panel(step="1" title="With number" state="active" data-cy="number-expansion-panel-numbered")
+      h4 Numbered Expansion Panel 
+      chi-vue-expansion-panel(step="1" title="Panel Title 1" state="active" data-cy="number-expansion-panel-numbered")
         div(slot='active')
           .chi-epanel__subtitle
             | Optional subtitle
@@ -161,7 +165,8 @@ script(src=`../../js/chi.js`)
         div(slot='change')
           chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
-      chi-vue-expansion-panel(title="Without number" state="active" data-cy="number-expansion-panel-non-numbered")
+      h4.-pt--3 Non Numbered Expansion Panel
+      chi-vue-expansion-panel(title="Panel Title 2" state="active" data-cy="number-expansion-panel-non-numbered")
         div(slot='active')
           .chi-epanel__subtitle
             | Optional subtitle
@@ -185,7 +190,8 @@ script(src=`../../js/chi.js`)
             | Change
       
       h3.-pt--6 Border
-      chi-vue-expansion-panel(step="1" title="Non Bordered Panel" :bordered="false" state="active" data-cy="border-expansion-panel-non-bordered")
+      h4 Non Bordered Expansion Panel
+      chi-vue-expansion-panel(step="1" title="Panel Title 1" :bordered="false" state="active" data-cy="border-expansion-panel-non-bordered")
         div(slot='active')
           .chi-epanel__subtitle
             | Optional subtitle
@@ -207,7 +213,8 @@ script(src=`../../js/chi.js`)
         div(slot='change')
           chi-button(color='primary' variant='flat' data-chi-epanel-action='change')
             | Change
-      chi-vue-expansion-panel(step="1" title="Bordered Panel" :bordered="true" state="active" data-cy="border-expansion-panel-bordered")
+      h4.-pt--3 Bordered Expansion Panel
+      chi-vue-expansion-panel(step="1" title="Panel Title 2" :bordered="true" state="active" data-cy="border-expansion-panel-bordered")
         div(slot='active')
           .chi-epanel__subtitle
             | Optional subtitle
