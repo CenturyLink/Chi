@@ -86,6 +86,8 @@ export const CAROUSEL_CLASSES = {
   PREVIOUS: '-previous',
   NEXT: '-next',
   DOTS: 'chi-carousel__dots',
+  DOTS_ADDITION: '-dots',
+  PAGINATION_ADDITION: '-pagination',
   DOT: 'chi-carousel__dot',
   PAGINATION: 'chi-carousel__pagination',
 };
