@@ -5,8 +5,43 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 - var positions = ['top', 'right', 'bottom', 'left', 'top-start', 'top-end', 'right-start', 'right-end', 'bottom-start', 'bottom-end', 'left-start', 'left-end'];
+- var methods = ['toggle', 'show', 'hide']
 
 each position in positions
-  .test-base.-mt--5(style='width: 500px; height: 500px;')
+  div(class=`test-${position}`).-mt--5(style='width: 500px; height: 500px;')
+    span.-text--h2=`Position - ${position}`
     .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
       chi-dropdown(position=`${position}` active base-button-value=`${position}`)
+
+each method in methods
+  div(class=`test-${method} -mt--5` style='width: 500px; height: 250px;')
+    span.-text--h2=`Method - ${method}`
+    chi-button(id=`test-${method}-trigger`) Test #{method}
+    chi-dropdown(id=`test-${method}-dropdown` active=method == 'hide' ? true : false)
+
+script.
+  const dropdowns = [
+    {trigger: '#test-toggle-trigger', dropdown: '#test-toggle-dropdown', method: 'toggle'},
+    {trigger: '#test-show-trigger', dropdown: '#test-show-dropdown', method: 'show'},
+    {trigger: '#test-hide-trigger', dropdown: '#test-hide-dropdown', method: 'hide'},
+  ];
+
+  Array.prototype.forEach.call(dropdowns, function(dropdownData){
+    const trigger = document.querySelector(dropdownData.trigger);
+    const dropdown = document.querySelector(dropdownData.dropdown);
+
+    if (trigger && dropdown) {
+      trigger.addEventListener('chiClick', function(e) {
+        switch (dropdownData.method) {
+          case 'show':
+            dropdown.show();
+            break;
+          case 'hide':
+            dropdown.hide();
+            break;
+          default:
+            dropdown.toggle();
+        }
+      });
+    }
+  });

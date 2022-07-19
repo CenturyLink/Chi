@@ -1,8 +1,8 @@
 import {
   Component,
-  Element,
   Event,
   EventEmitter,
+  Method,
   Prop,
   State,
   h,
@@ -22,7 +22,6 @@ import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
   scoped: true
 })
 export class Dropdown {
-  @Element() el: HTMLElement;
   /**
    * To set the state of Dropdown
    */
@@ -42,9 +41,9 @@ export class Dropdown {
   /**
    * To set position of the Dropdown
    */
-  @Prop() position: '';
+  @Prop() position: string;
   /**
-   *  View
+   *  
    */
   @State() activeState = false;
   /**
@@ -56,21 +55,21 @@ export class Dropdown {
   private _componentLoaded = false;
   private _popper: any;
   private _referenceElement: any;
-  dropdownMenuElement: any;
+  private _dropdownMenuElement: any;
 
   @Watch('position')
   positionValidation(newValue: string) {
     if (newValue && !CARDINAL_EXTENDED_POSITIONS.includes(newValue)) {
       throw new Error(
-        `Not valid position ${newValue} for Dropdown. Valid values are ${CARDINAL_EXTENDED_POSITIONS.join(', ')}.`
+        `${newValue} is not a valid position for Dropdown. Valid values are ${CARDINAL_EXTENDED_POSITIONS.join(', ')}.`
       );
     }
     if (this._componentLoaded) {
-      this._configurePopoverPopper();
+      this._configureDropdownPopper();
     }
   }
 
-  private _configurePopoverPopper() {
+  private _configureDropdownPopper() {
     if (!this._referenceElement) {
       if (this._popper) {
         this._popper.destroy();
@@ -84,7 +83,7 @@ export class Dropdown {
   }
 
   _initializePopper() {
-    this._popper = new Popper(this._referenceElement, this.dropdownMenuElement, {
+    this._popper = new Popper(this._referenceElement, this._dropdownMenuElement, {
       modifiers: {
         applyStyle: { enabled: true },
         applyChiStyle: {
@@ -103,24 +102,12 @@ export class Dropdown {
     });
   }
 
-  componentWillLoad() {
+  connectedCallback() {
     this.activeState = this.active;
   }
 
-  componentDidLoad(): void {
-    // this._documentClickHandler = () => {
-    //   !this._closePrevented && !this.preventAutoHide && this.hide();
-    // };
-    // this._documentKeyHandler = e => {
-    //   if (
-    //     !this.preventAutoHide &&
-    //     'key' in e &&
-    //     (e.key === 'Escape' || e.key === 'Esc' || e.key === ESCAPE_KEYCODE)
-    //   ) {
-    //     this.hide();
-    //   }
-    // };
-    this._configurePopoverPopper();
+  componentDidLoad() {
+    this._configureDropdownPopper();
     this._componentLoaded = true;
   }
 
@@ -128,11 +115,20 @@ export class Dropdown {
     this.activeState = !this.activeState;
   };
 
-  hide() {}
+  @Method()
+  async hide() {
+    this.activeState = false;
+    this._shown = false;
+  }
 
-  show() {}
+  @Method()
+  async show() {
+    this.activeState = true;
+    this._shown = true;
+  }
 
-  toggle() {
+  @Method()
+  async toggle() {
     if (this._shown) {
       this.hide();
     } else {
@@ -157,13 +153,12 @@ export class Dropdown {
         class={`${DROPDOWN_CLASSES.MENU} ${
           this.activeState ? ACTIVE_CLASS : ''
         }`}
-        ref={ref => this.dropdownMenuElement = ref}
+        ref={ref => this._dropdownMenuElement = ref}
       >
         <a class={DROPDOWN_CLASSES.MENU_ITEM} href="">Lorem ipsum chi rules</a>
       </div>
     );
 
-    console.log(this.activeState);
     return (
       <div
         class={`${DROPDOWN_CLASSES.DROPDOWN} ${
