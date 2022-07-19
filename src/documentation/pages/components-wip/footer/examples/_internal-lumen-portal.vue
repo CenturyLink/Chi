@@ -112,7 +112,7 @@ export default class InternalLumenPortal extends Vue {
   }
 
   mounted() {
-    this.dropdown = chi.dropdown(this.$refs[`language-dropdown-button`] as HTMLElement);
+    this.dropdown = chi?.dropdown(this.$refs[`language-dropdown-button`] as HTMLElement);
   }
 
   beforeDestroy() {

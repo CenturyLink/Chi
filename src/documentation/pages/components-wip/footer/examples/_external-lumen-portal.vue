@@ -252,7 +252,8 @@ export default class ExternalLumenPortal extends Vue {
   }
 
   mounted() {
-    this.dropdown = chi.dropdown(this.$refs[`language-dropdown-button`] as HTMLElement);
+    console.log(typeof chi);
+    this.dropdown = chi?.dropdown(this.$refs[`language-dropdown-button`] as HTMLElement);
   }
 
   beforeDestroy() {
