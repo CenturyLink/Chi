@@ -6,6 +6,7 @@ export const LIGHT_CLASS = '-light';
 export const DISABLED_CLASS = '-disabled';
 export const DISABLED_SCROLL = '-disable-scroll';
 export const INVERSE_CLASS = '-inverse';
+export const ANIMATE_CLASS = '-animate';
 export const ANIMATED_CLASS = '-animated';
 export const PORTAL_CLASS = '-portal';
 export const TRANSITIONING_CLASS = '-transitioning';

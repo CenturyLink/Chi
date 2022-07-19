@@ -1,0 +1,12 @@
+---
+title: Dropdown
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+- var positions = ['top', 'right', 'bottom', 'left', 'top-start', 'top-end', 'right-start', 'right-end', 'bottom-start', 'bottom-end', 'left-start', 'left-end'];
+
+each position in positions
+  .test-base.-mt--5(style='width: 500px; height: 500px;')
+    .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+      chi-dropdown(position=`${position}` active base-button-value=`${position}`)
