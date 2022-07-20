@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-06-22T18:45:50",
+  "timestamp": "2022-07-15T07:07:26",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2175,12 +2175,28 @@
           "mutable": false,
           "attr": "format",
           "reflectToAttr": true,
-          "docs": "to set app layout format",
+          "docs": "to set app layout format { base, no-margin, fixed-width }.",
           "docsTags": [],
           "default": "'base'",
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "headerBackground",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "header-background",
+          "reflectToAttr": true,
+          "docs": "To define app layout header background",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,
