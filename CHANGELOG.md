@@ -1,4 +1,12 @@
 # CHANGELOG
+## 5.16.0 (July 15, 2022)
+### Components
+#### Added
+* Added: CSS grid component.
+* Added: Carousel web component now support swipe interaction.
+#### Fixed
+* Fixed: App layout component dashboard example elements now render with a better arrangement of layers.
+
 ## 5.15.0 (July 4, 2022)
 ### Components
 #### Added

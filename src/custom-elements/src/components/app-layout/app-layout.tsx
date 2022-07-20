@@ -110,6 +110,7 @@ export class AppLayout {
         ${this.format ? `-${this.format}` : ''}
         ${this.headerBackground ? '-header-background' : ''}`}
       >
+        {appLayoutBackground}
         <div class="chi-main__header">
           <div class="chi-main__header-start">
             {appLayoutBackLink}
@@ -124,7 +125,6 @@ export class AppLayout {
           <slot></slot>
           {appLayoutPageLevelActions}
         </div>
-        {appLayoutBackground}
         {appLayoutFooter}
       </div>
     );

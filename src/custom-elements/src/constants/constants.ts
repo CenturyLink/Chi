@@ -36,6 +36,8 @@ export const TEXT_INPUT_TYPES = [
 ] as const;
 export type TextInputTypes = typeof TEXT_INPUT_TYPES[number];
 
+export const CAROUSEL_SWIPE_DELTA = 100;
+
 export const DATE_PICKER_MODES = ['date', 'datetime'];
 export type DatePickerModes = typeof DATE_PICKER_MODES[number];
 

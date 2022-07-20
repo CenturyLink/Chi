@@ -3,9 +3,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 .-centurylink--hide
   h3 Base
   .example.-mb--3
-    chi-main(title="App title")
+    chi-main(title="Page title")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | App content goes here
+        | Page content goes here
       footer.chi-footer(slot="footer")
         .chi-footer__content
           .chi-footer__internal
@@ -90,8 +90,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>title=""</code> attribute to display a title above the application layout.
       :code(lang="html")
-        <chi-main title="App title">
-          <!-- App content goes here -->
+        <chi-main title="Page title">
+          <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
               <div class="chi-footer__internal">
@@ -182,12 +182,12 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           <div class="chi-main__header">
             <div class="chi-main__header-start">
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">App title</div>
+                <div class="chi-main__title-heading">Page title</div>
               </div>
             </div>
           </div>
           <div class="chi-main__content">
-            <!-- App content goes here -->
+            <!-- Page content goes here -->
           </div>
           <footer class="chi-footer">
             <div class="chi-footer__content">
@@ -275,12 +275,12 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with help icon
   .example.-mb--3
-    chi-main(title="App title")
+    chi-main(title="Page title")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | App content goes here
+        | Page content goes here
       chi-button(id='example__help-button' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
         chi-icon(icon='circle-question-outline')
-      chi-popover(id='example__help-popover' position='top' variant='text' arrow reference='#example__help-button' slot='help-icon')
+      chi-popover(id='example__help-popover' position='right-start' variant='text' arrow reference='#example__help-button' slot='help-icon')
         | Popover content.
       footer.chi-footer(slot="footer")
         .chi-footer__content
@@ -364,14 +364,14 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-help-icon
       :code(lang="html")
-        <chi-main title="App title">
+        <chi-main title="Page title">
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
           </chi-button>
-          <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button" slot="help-icon">
+          <chi-popover id="example__help-popover" position="right-start" variant="text" arrow reference="#example__help-button" slot="help-icon">
             Popover content.
           </chi-popover>
-          <!-- App content goes here -->
+          <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
               <div class="chi-footer__internal">
@@ -470,13 +470,13 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  App title
-                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
+                  Page title
+                  <div class="chi-button -icon -flat -sm" id="example__help-button"  data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
                     <div class="chi-popover__content">
                       <p class="chi-popover__text">Popover content.</p>
                     </div>
@@ -486,7 +486,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             </div>
           </div>
           <div class="chi-main__content">
-            <!-- App content goes here -->
+            <!-- Page content goes here -->
           </div>
           <footer class="chi-footer">
             <div class="chi-footer__content">
@@ -577,9 +577,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link
   .example.-mb--3
-    chi-main(backlink="Back link", title="App title")
+    chi-main(backlink="Back link", title="Page title")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | App content goes here
+        | Page content goes here
       footer.chi-footer(slot="footer")
         .chi-footer__content
           .chi-footer__internal
@@ -664,8 +664,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>backlink=""</code> attribute to display a link above the title of the application layout.
       :code(lang="html")
-        <chi-main backlink="Back link" title="App title">
-          <!-- App content goes here -->
+        <chi-main backlink="Back link" title="Page title">
+          <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
               <div class="chi-footer__internal">
@@ -762,12 +762,12 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">App title</div>
+                <div class="chi-main__title-heading">Page title</div>
               </div>
             </div>
           </div>
           <div class="chi-main__content">
-            <!-- App content goes here -->
+            <!-- Page content goes here -->
           </div>
           <footer class="chi-footer">
             <div class="chi-footer__content">
@@ -855,9 +855,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link and subtitle
   .example.-mb--3
-    chi-main(backlink="Back link", title="App title", subtitle="App subtitle")
+    chi-main(backlink="Back link", title="Page title", subtitle="Page subtitle")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | App content goes here
+        | Page content goes here
       footer.chi-footer(slot="footer")
         .chi-footer__content
           .chi-footer__internal
@@ -942,8 +942,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>subtitle=""</code> attribute to display a subtitle next to the title of the application layout.
       :code(lang="html")
-        <chi-main backlink="Back link" title="App title" subtitle="App subtitle">
-          <!-- App content goes here -->
+        <chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
+          <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
               <div class="chi-footer__internal">
@@ -1040,13 +1040,13 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">App title</div>
-                <div class="chi-main__title-subheading">App subtitle</div>
+                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-subheading">Page subtitle</div>
               </div>
             </div>
           </div>
           <div class="chi-main__content">
-            <!-- App content goes here -->
+            <!-- Page content goes here -->
           </div>
           <footer class="chi-footer">
             <div class="chi-footer__content">
@@ -1134,10 +1134,10 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link, subtitle and buttons
   .example.-mb--3
-    chi-main(backlink="Back link", title="App title", subtitle="App subtitle")
+    chi-main(backlink="Back link", title="Page title", subtitle="Page subtitle")
       button.chi-button.-primary(slot="header-actions") Primary
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | App content goes here
+        | Page content goes here
       footer.chi-footer(slot="footer")
         .chi-footer__content
           .chi-footer__internal
@@ -1222,9 +1222,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Add buttons in the header of the application layout by defining <code>slot="header-actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
-        <chi-main backlink="Back link" title="App title" subtitle="App subtitle">
+        <chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
           <button class="chi-button -primary" slot="header-actions">Primary</button>
-          <!-- App content goes here -->
+          <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
               <div class="chi-footer__internal">
@@ -1321,8 +1321,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">App title</div>
-                <div class="chi-main__title-subheading">App subtitle</div>
+                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-subheading">Page subtitle</div>
               </div>
             </div>
             <div class="chi-main__header-end">
@@ -1330,7 +1330,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             </div>
           </div>
           <div class="chi-main__content">
-            <!-- App content goes here -->
+            <!-- Page content goes here -->
           </div>
           <footer class="chi-footer">
             <div class="chi-footer__content">
@@ -1418,9 +1418,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link, subtitle, buttons and page-level actions
   .example.-mb--3
-    chi-main(backlink="Back link", title="App title", subtitle="App subtitle")
+    chi-main(backlink="Back link", title="Page title", subtitle="Page subtitle")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | App content goes here
+        | Page content goes here
       button.chi-button.-primary.-outline(slot="page-level__actions") Cancel
       button.chi-button.-primary.-ml--1(slot="page-level__actions") Submit
       footer.chi-footer(slot="footer")
@@ -1507,8 +1507,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Add page-level actions at the bottom of the application layout by defining <code>slot="page-level__actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
-        <chi-main backlink="Back link" title="App title" subtitle="App subtitle">
-          <!-- App content goes here -->
+        <chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
+          <!-- Page content goes here -->
           <button class="chi-button -primary -outline -bg--white" slot="page-level__actions">Cancel</button>
           <button class="chi-button -primary -ml--1" slot="page-level__actions">Submit</button>
           <footer class="chi-footer" slot="footer">
@@ -1607,13 +1607,13 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">App title</div>
-                <div class="chi-main__title-subheading">App subtitle</div>
+                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-subheading">Page subtitle</div>
               </div>
             </div>
           </div>
           <div class="chi-main__content">
-            <!-- App content goes here -->
+            <!-- Page content goes here -->
             <div class="-d--flex -align-items--center -justify-content--end -py--3 -my--2 -bt--1">
               <button class="chi-button -primary -outline -bg--white">Cancel</button>
               <button class="chi-button -primary -ml--1">Submit</button>
@@ -1706,9 +1706,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 .-centurylink--show
   h3 Base
   .example.-mb--3
-    chi-main(title="App title")
+    chi-main(title="Page title")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | App content goes here
+        | Page content goes here
       footer.chi-footer(slot="footer")
         .chi-footer__content
           .chi-footer__internal
@@ -1761,8 +1761,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>title=""</code> attribute to display a title above the application layout.
       :code(lang="html")
-        <chi-main title="App title">
-          <!-- App content goes here -->
+        <chi-main title="Page title">
+          <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
               <div class="chi-footer__internal">
@@ -1794,12 +1794,12 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           <div class="chi-main__header">
             <div class="chi-main__header-start">
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">App title</div>
+                <div class="chi-main__title-heading">Page title</div>
               </div>
             </div>
           </div>
           <div class="chi-main__content">
-            <!-- App content goes here -->
+            <!-- Page content goes here -->
           </div>
           <footer class="chi-footer">
             <div class="chi-footer__content">
@@ -1831,12 +1831,12 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with help icon
   .example.-mb--3
-    chi-main(title="App title")
+    chi-main(title="Page title")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | App content goes here
+        | Page content goes here
       chi-button(id='example__help-button3' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
         chi-icon(icon='circle-question-outline')
-      chi-popover(id='example__help-popover3' position='top' variant='text' arrow reference='#example__help-button3' slot='help-icon')
+      chi-popover(id='example__help-popover3' position='right-start' variant='text' arrow reference='#example__help-button3' slot='help-icon')
         | Popover content.
       footer.chi-footer(slot="footer")
         .chi-footer__content
@@ -1888,14 +1888,14 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-centurylink-help-icon
       :code(lang="html")
-        <chi-main title="App title">
+        <chi-main title="Page title">
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
           </chi-button>
-          <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button" slot="help-icon">
+          <chi-popover id="example__help-popover" position="right-start" variant="text" arrow reference="#example__help-button" slot="help-icon">
             Popover content.
           </chi-popover>
-          <!-- App content goes here -->
+          <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
               <div class="chi-footer__internal">
@@ -1936,13 +1936,13 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  App title
+                  Page title
                   <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
                     <div class="chi-popover__content">
                       <p class="chi-popover__text">Popover content.</p>
                     </div>
@@ -1952,7 +1952,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             </div>
           </div>
           <div class="chi-main__content">
-            <!-- App content goes here -->
+            <!-- Page content goes here -->
           </div>
           <footer class="chi-footer">
             <div class="chi-footer__content">
@@ -1985,9 +1985,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link
   .example.-mb--3
-    chi-main(backlink="Back link", title="App title")
+    chi-main(backlink="Back link", title="Page title")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | App content goes here
+        | Page content goes here
       footer.chi-footer(slot="footer")
         .chi-footer__content
           .chi-footer__internal
@@ -2040,8 +2040,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>backlink=""</code> attribute to display a link above the title of the application layout.
       :code(lang="html")
-        <chi-main backlink="Back link" title="App title">
-          <!-- App content goes here -->
+        <chi-main backlink="Back link" title="Page title">
+          <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
               <div class="chi-footer__internal">
@@ -2079,12 +2079,12 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">App title</div>
+                <div class="chi-main__title-heading">Page title</div>
               </div>
             </div>
           </div>
           <div class="chi-main__content">
-            <!-- App content goes here -->
+            <!-- Page content goes here -->
           </div>
           <footer class="chi-footer">
             <div class="chi-footer__content">
@@ -2113,9 +2113,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link and subtitle
   .example.-mb--3
-    chi-main(backlink="Back link", title="App title", subtitle="App subtitle")
+    chi-main(backlink="Back link", title="Page title", subtitle="Page subtitle")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | App content goes here
+        | Page content goes here
       footer.chi-footer(slot="footer")
         .chi-footer__content
           .chi-footer__internal
@@ -2168,8 +2168,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>subtitle=""</code> attribute to display a subtitle next to the title of the application layout.
       :code(lang="html")
-        <chi-main backlink="Back link" title="App title" subtitle="App subtitle">
-          <!-- App content goes here -->
+        <chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
+          <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
               <div class="chi-footer__internal">
@@ -2207,13 +2207,13 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">App title</div>
-                <div class="chi-main__title-subheading">App subtitle</div>
+                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-subheading">Page subtitle</div>
               </div>
             </div>
           </div>
           <div class="chi-main__content">
-            <!-- App content goes here -->
+            <!-- Page content goes here -->
           </div>
           <footer class="chi-footer">
             <div class="chi-footer__content">
@@ -2242,10 +2242,10 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link, subtitle and buttons
   .example.-mb--3
-    chi-main(backlink="Back link", title="App title", subtitle="App subtitle")
+    chi-main(backlink="Back link", title="Page title", subtitle="Page subtitle")
       button.chi-button.-primary(slot="header-actions") Primary
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | App content goes here
+        | Page content goes here
       footer.chi-footer(slot="footer")
         .chi-footer__content
           .chi-footer__internal
@@ -2298,9 +2298,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Add buttons in the header of the application layout by defining <code>slot="header-actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
-        <chi-main backlink="Back link" title="App title" subtitle="App subtitle">
+        <chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
           <button class="chi-button -primary" slot="header-actions">Primary</button>
-          <!-- App content goes here -->
+          <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
               <div class="chi-footer__internal">
@@ -2338,8 +2338,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">App title</div>
-                <div class="chi-main__title-subheading">App subtitle</div>
+                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-subheading">Page subtitle</div>
               </div>
             </div>
             <div class="chi-main__header-end">
@@ -2347,7 +2347,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             </div>
           </div>
           <div class="chi-main__content">
-            <!-- App content goes here -->
+            <!-- Page content goes here -->
           </div>
           <footer class="chi-footer">
             <div class="chi-footer__content">
@@ -2376,9 +2376,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link, subtitle, buttons and page-level actions
   .example.-mb--3
-    chi-main(backlink="Back link", title="App title", subtitle="App subtitle")
+    chi-main(backlink="Back link", title="Page title", subtitle="Page subtitle")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | App content goes here
+        | Page content goes here
       button.chi-button.-primary.-outline(slot="page-level__actions") Cancel
       button.chi-button.-primary.-ml--1(slot="page-level__actions") Submit
       footer.chi-footer(slot="footer")
@@ -2433,8 +2433,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Add page-level actions at the bottom of the application layout by defining <code>slot="page-level__actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
-        <chi-main backlink="Back link" title="App title" subtitle="App subtitle">
-          <!-- App content goes here -->
+        <chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
+          <!-- Page content goes here -->
           <button class="chi-button -primary -outline -bg--white" slot="page-level__actions">Cancel</button>
           <button class="chi-button -primary -ml--1" slot="page-level__actions">Submit</button>
           <footer class="chi-footer" slot="footer">
@@ -2474,13 +2474,13 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">App title</div>
-                <div class="chi-main__title-subheading">App subtitle</div>
+                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-subheading">Page subtitle</div>
               </div>
             </div>
           </div>
           <div class="chi-main__content">
-            <!-- App content goes here -->
+            <!-- Page content goes here -->
             <div class="-d--flex -align-items--center -justify-content--end -py--3 -my--2 -bt--1">
               <button class="chi-button -primary -outline -bg--white">Cancel</button>
               <button class="chi-button -primary -ml--1">Submit</button>
@@ -2513,58 +2513,90 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Dashboard with header background
   .example.-mb--3
-    chi-main(title="App title" format="fixed-width" header-background)
+    chi-main(title="Page title" format="fixed-width" header-background)
       chi-button(color='primary' size='sm' slot='header-actions')
         | Button
-      .chi-grid
-        .chi-col.-w--12.-w-md--8
-          .chi-card.-widget.-mb--3
+      .chi-css-grid.-grid-rows--176
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
             .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
-        .chi-col.-w--12.-w-md--4
-          .chi-card.-widget.-mb--3
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
             .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
-        .chi-col.-w--12.-w-md--4
-          .chi-card.-widget.-mb--3
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
             .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
-        .chi-col.-w--12.-w-md--4
-          .chi-card.-widget.-mb--3
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content
+              ul.chi-css-grid.-gap--05.-no-style.-m--0
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
             .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
-        .chi-col.-w--12.-w-md--4
-          .chi-card.-widget.-mb--3
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
             .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
       chi-button(id='example__help-button4' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
         chi-icon(icon='circle-question-outline')
-      chi-popover(id='example__help-popover4' position='top' variant='text' arrow reference='#example__help-button4' slot='help-icon')
+      chi-popover(id='example__help-popover4' position='right-start' variant='text' arrow reference='#example__help-button4' slot='help-icon')
         | Popover content.
       footer.chi-footer(slot="footer")
         .chi-footer__content
@@ -2616,56 +2648,128 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-custom-background-centurylink
       :code(lang="html")
-        <chi-main title="App title" format="fixed-width" header-background>
+        <chi-main title="Page title" format="fixed-width" header-background>
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
           </chi-button>
-          <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button" slot="help-icon">
+          <chi-popover id="example__help-popover" position="right-start" variant="text" arrow reference="#example__help-button" slot="help-icon">
             Popover content.
           </chi-popover>
           <chi-button color="primary" size="sm" slot="header-actions">Button</chi-button>
-          <div class="chi-grid">
-            <div class="chi-col -w--12 -w-md--8">
-              <div class="chi-card -widget -mb--3">
+          <div class="chi-css-grid -grid-rows--176">
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <chi-link href="#" cta>View</chi-link>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
             </div>
-            <div class="chi-col -w--12 -w-md--4">
-              <div class="chi-card -widget -mb--3">
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <chi-link href="#" cta>View</chi-link>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
             </div>
-            <div class="chi-col -w--12 -w-md--4">
-              <div class="chi-card -widget -mb--3">
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <chi-link href="#" cta>View</chi-link>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">
+                  <ul class="chi-css-grid -gap--05 -no-style -m--0">
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
             </div>
-            <div class="chi-col -w--12 -w-md--4">
-              <div class="chi-card -widget -mb--3">
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <chi-link href="#" cta>View</chi-link>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
             </div>
-            <div class="chi-col -w--12 -w-md--4">
-              <div class="chi-card -widget -mb--3">
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <chi-link href="#" cta>View</chi-link>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
@@ -2703,13 +2807,13 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  App title
-                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
+                  Page title
+                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
                     <div class="chi-popover__content">
                       <p class="chi-popover__text">Popover content.</p>
                     </div>
@@ -2722,9 +2826,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             </div>
           </div>
           <div class="chi-main__content">
-            <div class="chi-grid">
-              <div class="chi-col -w--12 -w-md--8">
-                <div class="chi-card -widget -mb--3">
+            <div class="chi-css-grid -grid-rows--176">
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -2732,8 +2836,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-              <div class="chi-col -w--12 -w-md--4">
-                <div class="chi-card -widget -mb--3">
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -2741,8 +2845,44 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-              <div class="chi-col -w--12 -w-md--4">
-                <div class="chi-card -widget -mb--3">
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">
+                    <ul class="chi-css-grid -gap--05 -no-style -m--0">
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -2750,8 +2890,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-              <div class="chi-col -w--12 -w-md--4">
-                <div class="chi-card -widget -mb--3">
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -2759,8 +2899,44 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-              <div class="chi-col -w--12 -w-md--4">
-                <div class="chi-card -widget -mb--3">
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -2806,59 +2982,91 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 .-lumen--show
   h3 Dashboard with header background
   .example.-mb--3
-    chi-main(title="App title" format="fixed-width" header-background)
+    chi-main(title="Page title" format="fixed-width" header-background)
       chi-button(color='primary' size='sm' slot='header-actions')
         | Button
-      .chi-grid
-        .chi-col.-w--12.-w-md--8
-          .chi-card.-highlight.-widget.-mb--3
-            .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
-        .chi-col.-w--12.-w-md--4
-          .chi-card.-widget.-mb--3
-            .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
-        .chi-col.-w--12.-w-md--4
-          .chi-card.-widget.-mb--3
-            .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
-        .chi-col.-w--12.-w-md--4
-          .chi-card.-widget.-mb--3
-            .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
-        .chi-col.-w--12.-w-md--4
-          .chi-card.-widget.-mb--3
-            .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
       chi-button(id='example__help-button6' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
         chi-icon(icon='circle-question-outline')
-      chi-popover(id='example__help-popover6' position='top' variant='text' arrow reference='#example__help-button6' slot='help-icon')
+      chi-popover(id='example__help-popover6' position='right-start' variant='text' arrow reference='#example__help-button6' slot='help-icon')
         | Popover content.
+      .chi-css-grid.-grid-rows--176
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-highlight.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content
+              ul.chi-css-grid.-gap--05.-no-style.-m--0
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
       footer.chi-footer(slot="footer")
         .chi-footer__content
           .chi-footer__internal
@@ -2941,56 +3149,128 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-custom-background-lumen
       :code(lang="html")
-        <chi-main title="App title" format="fixed-width" header-background>
+        <chi-main title="Page title" format="fixed-width" header-background>
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
           </chi-button>
-          <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button" slot="help-icon">
+          <chi-popover id="example__help-popover" position="right-start" variant="text" arrow reference="#example__help-button" slot="help-icon">
             Popover content.
           </chi-popover>
           <chi-button color="primary" size="sm" slot="header-actions">Button</chi-button>
-          <div class="chi-grid">
-            <div class="chi-col -w--12 -w-md--8">
-              <div class="chi-card -widget -highlight -mb--3">
+          <div class="chi-css-grid -grid-rows--176">
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -highlight -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <chi-link href="#" cta>View</chi-link>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
             </div>
-            <div class="chi-col -w--12 -w-md--4">
-              <div class="chi-card -widget -mb--3">
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <chi-link href="#" cta>View</chi-link>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
             </div>
-            <div class="chi-col -w--12 -w-md--4">
-              <div class="chi-card -widget -mb--3">
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <chi-link href="#" cta>View</chi-link>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">
+                  <ul class="chi-css-grid -gap--05 -no-style -m--0">
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
             </div>
-            <div class="chi-col -w--12 -w-md--4">
-              <div class="chi-card -widget -mb--3">
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <chi-link href="#" cta>View</chi-link>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
             </div>
-            <div class="chi-col -w--12 -w-md--4">
-              <div class="chi-card -widget -mb--3">
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <chi-link href="#" cta>View</chi-link>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
@@ -3094,13 +3374,13 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  App title
+                  Page title
                   <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
                     <div class="chi-popover__content">
                       <p class="chi-popover__text">Popover content.</p>
                     </div>
@@ -3113,9 +3393,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             </div>
           </div>
           <div class="chi-main__content">
-            <div class="chi-grid">
-              <div class="chi-col -w--12 -w-md--8">
-                <div class="chi-card -highlight -widget -mb--3">
+            <div class="chi-css-grid -grid-rows--176">
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -highlight -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -3123,8 +3403,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-              <div class="chi-col -w--12 -w-md--4">
-                <div class="chi-card -widget -mb--3">
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -3132,8 +3412,44 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-              <div class="chi-col -w--12 -w-md--4">
-                <div class="chi-card -widget -mb--3">
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">
+                    <ul class="chi-css-grid -gap--05 -no-style -m--0">
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -3141,8 +3457,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-              <div class="chi-col -w--12 -w-md--4">
-                <div class="chi-card -widget -mb--3">
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -3150,8 +3466,44 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-              <div class="chi-col -w--12 -w-md--4">
-                <div class="chi-card -widget -mb--3">
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -3255,60 +3607,92 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 .-portal--show.-brightspeed--show
   h3 Dashboard with header background
   .example.-mb--3
-    chi-main(title="App title" format="fixed-width" header-background)
+    chi-main(title="Page title" format="fixed-width" header-background)
       chi-button(size='xs' slot='header-actions')
         chi-icon(icon='settings')
         span Customize
-      .chi-grid
-        .chi-col.-w--12.-w-md--8
-          .chi-card.-highlight.-widget.-mb--3
-            .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
-        .chi-col.-w--12.-w-md--4
-          .chi-card.-widget.-mb--3
-            .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
-        .chi-col.-w--12.-w-md--4
-          .chi-card.-widget.-mb--3
-            .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
-        .chi-col.-w--12.-w-md--4
-          .chi-card.-widget.-mb--3
-            .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
-        .chi-col.-w--12.-w-md--4
-          .chi-card.-widget.-mb--3
-            .chi-card__header
-              .chi-card__title
-                | Widget
-              a.chi-link.-md.-cta(href="#")
-                | View
-            .chi-card__content(style="height:10rem;")
-              | Content here
       chi-button(id='example__help-button5' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
         chi-icon(icon='circle-question-outline')
-      chi-popover(id='example__help-popover5' position='top' variant='text' arrow reference='#example__help-button5' slot='help-icon')
+      chi-popover(id='example__help-popover5' position='right-start' variant='text' arrow reference='#example__help-button5' slot='help-icon')
         | Popover content.
+      .chi-css-grid.-grid-rows--176
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-highlight.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content
+              ul.chi-css-grid.-gap--05.-no-style.-m--0
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
       footer.chi-footer(slot="footer")
         .chi-footer__content
           .chi-footer__internal
@@ -3391,59 +3775,131 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-custom-background-portal
       :code(lang="html")
-        <chi-main title="App title" format="fixed-width" header-background>
+        <chi-main title="Page title" format="fixed-width" header-background>
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
           </chi-button>
-          <chi-popover id="example__help-popover" position="top" variant="text" arrow reference="#example__help-button" slot="help-icon">
+          <chi-popover id="example__help-popover" position="right-start" variant="text" arrow reference="#example__help-button" slot="help-icon">
             Popover content.
           </chi-popover>
           <chi-button size="xs" slot="header-actions">
             <chi-icon icon="settings"></chi-icon>
             <span>Customize</span>
           </chi-button>
-          <div class="chi-grid">
-            <div class="chi-col -w--12 -w-md--8">
-              <div class="chi-card -widget -highlight -mb--3">
+          <div class="chi-css-grid -grid-rows--176">
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -highlight -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <a class="chi-link -md -cta" href="#">View</a>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
             </div>
-            <div class="chi-col -w--12 -w-md--4">
-              <div class="chi-card -widget -mb--3">
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <a class="chi-link -md -cta" href="#">View</a>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
             </div>
-            <div class="chi-col -w--12 -w-md--4">
-              <div class="chi-card -widget -mb--3">
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <a class="chi-link -md -cta" href="#">View</a>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">
+                  <ul class="chi-css-grid -gap--05 -no-style -m--0">
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
             </div>
-            <div class="chi-col -w--12 -w-md--4">
-              <div class="chi-card -widget -mb--3">
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <a class="chi-link -md -cta" href="#">View</a>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
             </div>
-            <div class="chi-col -w--12 -w-md--4">
-              <div class="chi-card -widget -mb--3">
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
                 <div class="chi-card__header">
                   <div class="chi-card__title">Widget</div>
-                  <a class="chi-link -md -cta" href="#">View</a>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
                 </div>
                 <div class="chi-card__content">Content here</div>
               </div>
@@ -3543,17 +3999,21 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
     .chi-tabs-panel#html-custom-background-portal
       :code(lang="html")
         <div class="chi-main -fixed-width -header-background">
+          <div class="chi-main__background">
+            <div class="chi-main__background-image">
+            </div>
+          </div>
           <div class="chi-main__header">
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  App title
-                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
+                  Page title
+                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
                     </div>
                   </div>
-                  <section class="chi-popover chi-popover--top" id="example__help-popover" aria-modal="true" role="dialog">
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
                     <div class="chi-popover__content">
                       <p class="chi-popover__text">Popover content.</p>
                     </div>
@@ -3571,9 +4031,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             </div>
           </div>
           <div class="chi-main__content">
-            <div class="chi-grid">
-              <div class="chi-col -w--12 -w-md--8">
-                <div class="chi-card -highlight -widget -mb--3">
+            <div class="chi-css-grid -grid-rows--176">
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -highlight -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -3581,8 +4041,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-              <div class="chi-col -w--12 -w-md--4">
-                <div class="chi-card -widget -mb--3">
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -3590,8 +4050,44 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-              <div class="chi-col -w--12 -w-md--4">
-                <div class="chi-card -widget -mb--3">
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">
+                    <ul class="chi-css-grid -gap--05 -no-style -m--0">
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -3599,8 +4095,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-              <div class="chi-col -w--12 -w-md--4">
-                <div class="chi-card -widget -mb--3">
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -3608,8 +4104,8 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-              <div class="chi-col -w--12 -w-md--4">
-                <div class="chi-card -widget -mb--3">
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
                   <div class="chi-card__header">
                     <div class="chi-card__title">Widget</div>
                     <a class="chi-link -md -cta" href="#">View</a>
@@ -3617,10 +4113,42 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                   <div class="chi-card__content">Content here</div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="chi-main__background">
-            <div class="chi-main__background-image">
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
             </div>
           </div>
           <footer class="chi-footer">

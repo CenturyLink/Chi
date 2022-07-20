@@ -75,7 +75,6 @@
   &__content {
     margin: 0 1rem 1rem;
     position: relative;
-    z-index: 2;
 
     @include respond-to(sm) {
       margin: 0 1.5rem 1rem;
@@ -108,17 +107,29 @@
       padding-left: 1rem;
       padding-right: 1rem;
 
-      @include respond-to(md) {
-        max-width: 744px;
+      @include respond-to(lg) {
+        max-width: 792px;
         padding-left: 1.5rem;
         padding-right: 1.5rem;
       }
 
-      @include respond-to(lg) {
-        max-width: 1280px;
-        padding-left: 4rem;
-        padding-right: 4rem;
+      @include respond-to(xl) {
+        max-width: 1176px;
       }
+    }
+
+    .chi-main__content {
+      padding-bottom: 1.5rem;
+
+      @include respond-to(lg) {
+        padding-bottom: 2.5rem;
+      }
+    }
+  }
+
+  &.-header-background {
+    .chi-main__background {
+      z-index: 0;
     }
   }
 
@@ -128,7 +139,6 @@
     overflow: hidden;
     width: 100%;
     top: 0;
-    z-index: 1;
   }
 
   &__background-image {
@@ -140,6 +150,5 @@
     width: 100%;
     height: 100%;
     background-color: $app-layout-header-background-color;
-    z-index: 1;
   }
 }
