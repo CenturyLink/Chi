@@ -35,7 +35,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS, ILink, ILanguage } from '../../.././../models/models';
+import { ILanguage, ILink } from '../../../../models/models';
+import { FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from '../fixtures';
 
 declare const chi: any;
 

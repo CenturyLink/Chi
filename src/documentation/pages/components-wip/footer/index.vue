@@ -31,8 +31,8 @@ import { standardComponentPageTabs } from '../../../constants/constants';
       pageTabs: standardComponentPageTabs,
     }
   },
-  mounted(){
-    document.getElementsByTagName('main')[0].classList.add('chi-grid__container-wide');
+  layout() {
+    return 'wide';
   }
 })
 export default class Footer extends Vue {}

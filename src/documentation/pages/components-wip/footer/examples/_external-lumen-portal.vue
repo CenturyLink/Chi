@@ -106,7 +106,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { EXTERNAL_CONTENTS, FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS, ILanguage, ILink } from '../../.././../models/models';
+import { ILanguage, ILink } from '../../.././../models/models';
+import { EXTERNAL_CONTENTS, FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from '../fixtures';
 
 declare const chi: any;
 
@@ -252,14 +253,12 @@ export default class ExternalLumenPortal extends Vue {
   }
 
   mounted() {
-    this.$nextTick(()=>{
-      console.log(typeof chi);
-      console.log(this.$refs);
-      console.log(typeof this.$refs[`language-dropdown-button`]);
-      console.log(this.$refs[`language-dropdown-button`]);
-      console.log(document.getElementById('example__footer_language_dropdown_button'));
-      this.dropdown = chi.dropdown(document.getElementById('example__footer_language_dropdown_button'));
-    });
+    console.log(typeof chi);
+    console.log(this.$refs);
+    console.log(typeof this.$refs[`language-dropdown-button`]);
+    console.log(this.$refs[`language-dropdown-button`]);
+    console.log(document.getElementById('example__footer_language_dropdown_button'));
+    this.dropdown = chi.dropdown(this.$refs[`language-dropdown-button`] as HTMLElement);
   }
 
   beforeDestroy() {
