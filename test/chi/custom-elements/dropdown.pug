@@ -11,13 +11,54 @@ each position in positions
   div(class=`test-${position}`).-mt--5(style='width: 500px; height: 500px;')
     span.-text--h2=`Position - ${position}`
     .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
-      chi-dropdown(position=`${position}` active base-button-value=`${position}`)
+      chi-dropdown(active position=`${position}` base-button-value=`${position}`)
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
 each method in methods
-  div(class=`test-${method} -mt--5` style='width: 500px; height: 250px;')
+  div(class=`test-${method} -mt--5` style='width: 500px; height: 500px;')
     span.-text--h2=`Method - ${method}`
-    chi-button(id=`test-${method}-trigger`) Test #{method}
-    chi-dropdown(id=`test-${method}-dropdown` active=method == 'hide' ? true : false)
+    .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+      chi-dropdown(id=`test-${method}-dropdown` position="bottom" active=method == 'hide' ? true : false)
+        chi-button(
+          alternative-text="Button action"
+          id=`test-${method}-trigger`
+          slot="trigger"
+          type="icon"
+          variant="flat")
+          chi-icon(icon="more-vert")
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+
+.test-hover.-mt--5(style='width: 500px; height: 500px;')
+  span.-text--h2 Hover
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    chi-dropdown(id=`test-hover-dropdown` position="bottom" active hover base-button-value='Test hover')
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+
+.test-reference.-mt--5(style='width: 500px; height: 500px;')
+  span.-text--h2 External Reference
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    chi-button#test-reference-trigger Test external reference
+    chi-dropdown#test-reference-dropdown(position="bottom" reference="#test-reference-trigger")
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+
+.test-nesting.-mt--5(style='width: 1000px; height: 500px;')
+  span.-text--h2 Nesting
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    chi-dropdown#test-nesting-dropdown(active position="bottom" prevent-auto-hide)
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item#test-nesting-level-2(href='#' slot='menu') Menu item 2
+
+chi-dropdown(active position="right-start" reference="#test-nesting-level-2" prevent-auto-hide)
+  a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+  a.chi-dropdown__menu-item#test-nesting-level-3(href='#' slot='menu') Menu item 2
+
+chi-dropdown(active position="right-start" reference="#test-nesting-level-3" prevent-auto-hide)
+  a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+  a.chi-dropdown__menu-item#test-nesting-level-4(href='#' slot='menu') Menu item 2
 
 script.
   const dropdowns = [
@@ -25,13 +66,16 @@ script.
     {trigger: '#test-show-trigger', dropdown: '#test-show-dropdown', method: 'show'},
     {trigger: '#test-hide-trigger', dropdown: '#test-hide-dropdown', method: 'hide'},
   ];
+  const referenceDropdownTrigger = document.getElementById('test-reference-trigger');
+  const referenceDropdown = document.getElementById('test-reference-dropdown');
+  let isReferenceDropdownActive = false;
 
   Array.prototype.forEach.call(dropdowns, function(dropdownData){
     const trigger = document.querySelector(dropdownData.trigger);
     const dropdown = document.querySelector(dropdownData.dropdown);
 
     if (trigger && dropdown) {
-      trigger.addEventListener('chiClick', function(e) {
+      trigger.addEventListener('click', function(e) {
         switch (dropdownData.method) {
           case 'show':
             dropdown.show();
@@ -44,4 +88,14 @@ script.
         }
       });
     }
+  });
+
+  referenceDropdownTrigger.addEventListener('chiClick', function() {
+    if (isReferenceDropdownActive) {
+      referenceDropdown.hide();
+    } else {
+      referenceDropdown.show();
+    }
+
+    isReferenceDropdownActive = !isReferenceDropdownActive;
   });
