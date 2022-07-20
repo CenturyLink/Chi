@@ -252,11 +252,14 @@ export default class ExternalLumenPortal extends Vue {
   }
 
   mounted() {
-    console.log(typeof chi);
-    console.log(typeof this.$refs[`language-dropdown-button`]);
-    console.log(this.$refs[`language-dropdown-button`]);
-    console.log(document.getElementById('example__footer_language_dropdown_button'));
-    this.dropdown = chi.dropdown(document.getElementById('example__footer_language_dropdown_button'));
+    this.$nextTick(()=>{
+      console.log(typeof chi);
+      console.log(this.$refs);
+      console.log(typeof this.$refs[`language-dropdown-button`]);
+      console.log(this.$refs[`language-dropdown-button`]);
+      console.log(document.getElementById('example__footer_language_dropdown_button'));
+      this.dropdown = chi.dropdown(document.getElementById('example__footer_language_dropdown_button'));
+    });
   }
 
   beforeDestroy() {
