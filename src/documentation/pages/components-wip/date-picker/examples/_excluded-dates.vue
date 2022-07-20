@@ -19,8 +19,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-declare const chi: any;
-
 @Component({
   data: () => {
     return {
@@ -44,7 +42,5 @@ declare const chi: any;
     };
   },
 })
-export default class ExcludedDates extends Vue {
- 
-}
+export default class ExcludedDates extends Vue {}
 </script>
