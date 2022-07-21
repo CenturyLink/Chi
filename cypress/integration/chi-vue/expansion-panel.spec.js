@@ -3,9 +3,6 @@ const EXPANSION_PANEL_DATA_CY = {
     EXPANSION_PANEL_FIRST: '[data-cy="base-expansion-panel-1"]',
     EXPANSION_PANEL_SECOND: '[data-cy="base-expansion-panel-2"]',
     EXPANSION_PANEL_THIRD: '[data-cy="base-expansion-panel-3"]',
-    NEXT_BUTTON: `[data-chi-epanel-action='next']`,
-    PREVIOUS_BUTTON: `[data-chi-epanel-action='previous']`,
-    CHANGE_BUTTON: `[data-chi-epanel-action='change']`
   },
   STATE: {
     EXPANSION_PANEL_DONE: '[data-cy="state-expansion-panel-done"]',
@@ -25,17 +22,23 @@ const EXPANSION_PANEL_DATA_CY = {
     DONE_EXPANSION_PANEL: `[data-cy="slot-expansion-panel-done"]`
   }
 };
+const EXPANSION_PANEL_BUTTONS = {
+  NEXT_BUTTON: `[data-chi-epanel-action='next']`,
+  PREVIOUS_BUTTON: `[data-chi-epanel-action='previous']`,
+  CHANGE_BUTTON: `[data-chi-epanel-action='change']`
+}
 const ACTIVE_CLASS = '-active';
 const DONE_CLASS = '-done';
 const PENDING_CLASS = '-pending';
-
 const NUMBER_CLASS = 'chi-epanel__number';
-
 const BORDER_CLASS = '-bordered';
-
 const SLOT_CLASS_ACTIVE = 'chi-epanel__content-active';
 const SLOT_CLASS_DONE = 'done-slot';
 const SLOT_CLASS_FOOTER = 'chi-epanel__footer';
+
+const hasClassAssertion = (el, value) => {
+  cy.get(el).should('have.class', value);
+};
 
 describe('Expansion Panel', () => {
   before(() => {
@@ -43,211 +46,168 @@ describe('Expansion Panel', () => {
   });
 
   describe('Base', () => {
+    beforeEach(() => {
+      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST).as(
+        'firstExpansionPanel'
+      );
+      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_SECOND).as(
+        'secondExpansionPanel'
+      );
+      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_THIRD).as(
+        'thirdExpansionPanel'
+      );
+    });
+
     it('Should check if the first expansion panel is active', () => {
-      cy.get(`${EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST}`)
-        .first()
-        .should('have.class', `${ACTIVE_CLASS}`);
+      hasClassAssertion(`@firstExpansionPanel`, ACTIVE_CLASS);
     });
 
     it('Should check if clicking Continue opens the next expansion panel and closes the current one', () => {
-      // Given - first panel is active/open and second panel is collapsed/pending
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST)
-        .should('have.class', `${ACTIVE_CLASS}`);
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_SECOND)
-        .should('have.class', `${PENDING_CLASS}`);
-
-      // When - continue button is clicked
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST)
-        .find(EXPANSION_PANEL_DATA_CY.BASE.NEXT_BUTTON)
+      hasClassAssertion(`@secondExpansionPanel`, PENDING_CLASS);
+      cy.get(`@firstExpansionPanel`)
+        .find(EXPANSION_PANEL_BUTTONS.NEXT_BUTTON)
         .click();
-      
-      // Then - First panel item is collapsed/done and second panel item is open/active
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST)
-        .should('have.class', `${DONE_CLASS}`);
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_SECOND)
-        .should('have.class', `${ACTIVE_CLASS}`);
+      hasClassAssertion(`@firstExpansionPanel`, DONE_CLASS);
+      hasClassAssertion(`@secondExpansionPanel`, ACTIVE_CLASS);
     });
 
     it('Should check if clicking Previous opens the previous expansion panel and closes the current one', () => {
-      // When - previous button is clicked
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_SECOND)
-        .find(EXPANSION_PANEL_DATA_CY.BASE.PREVIOUS_BUTTON)
+      cy.get(`@secondExpansionPanel`)
+        .find(EXPANSION_PANEL_BUTTONS.PREVIOUS_BUTTON)
         .click();
-      
-      // Then - First panel item is open/active and second panel item is collapsed/pending
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST)
-        .should('have.class', `${ACTIVE_CLASS}`);
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_SECOND)
-        .should('have.class', `${PENDING_CLASS}`);
+      hasClassAssertion(`@firstExpansionPanel`, ACTIVE_CLASS);
+      hasClassAssertion(`@secondExpansionPanel`, PENDING_CLASS);
     });
 
     it('Should check if clicking the Change button enables the expansion panel of the current one and closes the opened panel', () => {
-      // Given - First Panel is done as continue button for first panel was clicked
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST)
-        .find(EXPANSION_PANEL_DATA_CY.BASE.NEXT_BUTTON)
+      cy.get(`@firstExpansionPanel`)
+        .find(EXPANSION_PANEL_BUTTONS.NEXT_BUTTON)
         .click();
-
-      // When - change button of first panel is clicked
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST)
-        .find(EXPANSION_PANEL_DATA_CY.BASE.CHANGE_BUTTON)
+      cy.get(`@firstExpansionPanel`)
+        .find(EXPANSION_PANEL_BUTTONS.CHANGE_BUTTON)
         .click();
-      
-      // Then - First panel item is collapsed/done and second panel item is open/active
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST)
-        .should('have.class', `${ACTIVE_CLASS}`);
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_SECOND)
-        .should('have.class', `${PENDING_CLASS}`);
+      hasClassAssertion(`@firstExpansionPanel`, ACTIVE_CLASS);
+      hasClassAssertion(`@secondExpansionPanel`, PENDING_CLASS);
     });
 
     it('Should check if clicking the Finish button completes the selection steps of all the panels with read only state', () => {
-      // When - change button of first panel is clicked
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST)
-        .find(EXPANSION_PANEL_DATA_CY.BASE.NEXT_BUTTON)
-        .click();
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_SECOND)
-        .find(EXPANSION_PANEL_DATA_CY.BASE.NEXT_BUTTON)
-        .click();
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_THIRD)
-        .find(EXPANSION_PANEL_DATA_CY.BASE.NEXT_BUTTON)
-        .click();
+      const selectors = [`@firstExpansionPanel`, `@secondExpansionPanel`, `@thirdExpansionPanel`];
 
-      // Then - All panels have are collapsed/done
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_FIRST)
-        .should('have.class', `${DONE_CLASS}`);
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_SECOND)
-        .should('have.class', `${DONE_CLASS}`);
-      cy.get(EXPANSION_PANEL_DATA_CY.BASE.EXPANSION_PANEL_THIRD)
-        .should('have.class', `${DONE_CLASS}`);
+      selectors.forEach(sel => {
+        cy.get(sel)
+          .find(EXPANSION_PANEL_BUTTONS.NEXT_BUTTON)
+          .click();
+        hasClassAssertion(sel, DONE_CLASS);
+      })
     });
   });
 
   describe('State', () => {
-    it('Should check if expansion panel has state as done', () => {      
-      // Assert - Panel item has state done
-      cy.get(EXPANSION_PANEL_DATA_CY.STATE.EXPANSION_PANEL_DONE)
-        .should('have.class', `${DONE_CLASS}`);
+    beforeEach(() => {
+      cy.get(EXPANSION_PANEL_DATA_CY.STATE.EXPANSION_PANEL_DONE).as(
+        'doneExpansionPanel'
+      );
+      cy.get(EXPANSION_PANEL_DATA_CY.STATE.EXPANSION_PANEL_ACTIVE).as(
+        'activeExpansionPanel'
+      );
+      cy.get(EXPANSION_PANEL_DATA_CY.STATE.EXPANSION_PANEL_PENDING).as(
+        'pendingExpansionPanel'
+      );
+    });
+
+    it('Should check if expansion panel has state as done', () => {
+      hasClassAssertion(`@doneExpansionPanel`, DONE_CLASS);
     });
 
     it('Should check if expansion panel has state as active', () => {
-      // Assert - Panel item has state active
-      cy.get(EXPANSION_PANEL_DATA_CY.STATE.EXPANSION_PANEL_ACTIVE)
-        .should('have.class', `${ACTIVE_CLASS}`);
+      hasClassAssertion(`@activeExpansionPanel`, ACTIVE_CLASS);
     });
 
     it('Should check if expansion panel has state as pending', () => {
-      // Assert - Panel item has state pending
-      cy.get(EXPANSION_PANEL_DATA_CY.STATE.EXPANSION_PANEL_PENDING)
-        .should('have.class', `${PENDING_CLASS}`);
+      hasClassAssertion(`@pendingExpansionPanel`, PENDING_CLASS);
     });
   });
 
   describe('Number', () => {
+    beforeEach(() => {
+      cy.get(EXPANSION_PANEL_DATA_CY.NUMBER.NUMBERED_EXPANSION_PANEL).as(
+        'numberedExpansionPanel'
+      );
+      cy.get(EXPANSION_PANEL_DATA_CY.NUMBER.NON_NUMBERED_EXPANSION_PANEL).as(
+        'noNumberedExpansionPanel'
+      );
+    });
+
     it('Should check if expansion panel has step number', () => {
-      // Assert - Panel has number class
-      cy.get(`${EXPANSION_PANEL_DATA_CY.NUMBER.NUMBERED_EXPANSION_PANEL}`)
+      cy.get(`@numberedExpansionPanel`)
         .find(`.${NUMBER_CLASS}`)
         .should('exist');
     });
 
     it('Should check if expansion panel has no step number', () => {
-      // Assert - Panel does not have number class
-      cy.get(`${EXPANSION_PANEL_DATA_CY.NUMBER.NON_NUMBERED_EXPANSION_PANEL}`)
+      cy.get(`@noNumberedExpansionPanel`)
         .find(`.${NUMBER_CLASS}`)
         .should('not.exist');
     });
   });
 
   describe('Border', () => {
+    beforeEach(() => {
+      cy.get(EXPANSION_PANEL_DATA_CY.BORDER.BORDERED_EXPANSION_PANEL).as(
+        'borderedExpansionPanel'
+      );
+      cy.get(EXPANSION_PANEL_DATA_CY.BORDER.NON_BORDERED_EXPANSION_PANEL).as(
+        'nonBorderedExpansionPanel'
+      );
+    });
+
     it('Should check if bordered expansion panel has border', () => {
-      // Assert - Panel has border class
-      cy.get(`${EXPANSION_PANEL_DATA_CY.BORDER.BORDERED_EXPANSION_PANEL}`)
-        .should('have.class', BORDER_CLASS);
+      hasClassAssertion(`@borderedExpansionPanel`, BORDER_CLASS);
     });
 
     it('Should check if non bordered expansion panel has no border', () => {
-      // Assert - Panel does not have border class
-      cy.get(`${EXPANSION_PANEL_DATA_CY.BORDER.NON_BORDERED_EXPANSION_PANEL}`)
+      cy.get(`@nonBorderedExpansionPanel`)
         .should('not.have.class', BORDER_CLASS);
     });
   });
 
   describe('Slot', () => {
-    it('Should check if active slot is available in the panel', () => {
-      // Assert - Panel has active slot class and it is visible when expansion panel state is active
-      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.ACTIVE_EXPANSION_PANEL}`)
-        .find(`.${SLOT_CLASS_ACTIVE}`)
-        .should('exist')
-        .should('be.visible');
-      // Assert - Panel has active slot class but it is visible if expansion panel state is not active
-      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.DONE_EXPANSION_PANEL}`)
-        .find(`.${SLOT_CLASS_ACTIVE}`)
-        .should('exist')
-        .should('not.be.visible');
+    beforeEach(() => {
+      cy.get(EXPANSION_PANEL_DATA_CY.SLOT.ACTIVE_EXPANSION_PANEL).as(
+        'slotActiveExpansionPanel'
+      );
+      cy.get(EXPANSION_PANEL_DATA_CY.SLOT.DONE_EXPANSION_PANEL).as(
+        'slotDoneExpansionPanel'
+      );
     });
 
-    it('Should check if done slot is available in the panel', () => {
-      // Assert - Panel has done slot class and it is visible when expansion panel state is done
-      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.DONE_EXPANSION_PANEL}`)
-        .find(`.${SLOT_CLASS_DONE}`)
-        .should('exist')
-        .should('be.visible');
-      // Assert - Panel has done slot class and it is not visible when expansion panel state is not done
-      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.ACTIVE_EXPANSION_PANEL}`)
-        .find(`.${SLOT_CLASS_DONE}`)
-        .should('exist')
-        .should('not.be.visible');
+    const slotSelectors = [
+      { el: `@slotActiveExpansionPanel`, slot: 'active', class: SLOT_CLASS_ACTIVE },
+      { el: `@slotDoneExpansionPanel`, slot: 'done', class: SLOT_CLASS_DONE },
+      { el: `@slotActiveExpansionPanel`, slot: 'footer', class: SLOT_CLASS_FOOTER },
+    ];
+    const buttonsSelectors = [
+      { slot: 'change', button: 'Change' },
+      { slot: 'footer start', button: 'Previous' },
+      { slot: 'footer end', button: 'Continue' },
+    ];
+
+    slotSelectors.forEach(sel => {
+      it(`Should check if ${sel.slot} is available in the panel`, () => {
+        cy.get(sel.el)
+          .find(`.${sel.class}`)
+          .should('exist')
+          .should('be.visible');
+      });
     });
 
-    it('Should check if change slot is available in the panel', () => {
-      // Assert - Panel has change slot class and it is visible when expansion panel state is done
-      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.DONE_EXPANSION_PANEL}`) 
-        .find('button')
-        .contains('Change')
-        .should('be.visible');
-      // Assert - Panel has change slot class and it is not visible when expansion panel state is not done
-      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.ACTIVE_EXPANSION_PANEL}`)
-        .find('button')
-        .contains('Change')
-        .should('not.be.visible');
-    });
-
-    it('Should check if footer slot is available in the panel', () => {
-      // Assert - Panel has footer slot class and it is visible when expansion panel state is active
-      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.ACTIVE_EXPANSION_PANEL}`)
-        .find(`.${SLOT_CLASS_FOOTER}`)
-        .should('exist')
-        .should('be.visible');
-      // Assert - Panel has footer slot class and it is not visible when expansion panel state is not done
-      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.DONE_EXPANSION_PANEL}`)
-        .find(`.${SLOT_CLASS_FOOTER}`)
-        .should('exist')
-        .should('not.be.visible');
-    });
-
-    it('Should check if footer start slot is available in the panel', () => {
-      // Assert - Panel has footer start slot class and it is visible when expansion panel state is active
-      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.ACTIVE_EXPANSION_PANEL}`)
-        .find('button')
-        .contains('Previous')
-        .should('be.visible');
-      // Assert - Panel has footer start slot class and it is not visible when expansion panel state is not done
-      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.DONE_EXPANSION_PANEL}`)
-        .find('button')
-        .contains('Previous')
-        .should('not.be.visible');
-    });
-
-    it('Should check if footer end slot is available in the panel', () => {
-      // Assert - Panel has footer end slot class and it is visible when expansion panel state is active
-      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.ACTIVE_EXPANSION_PANEL}`)
-        .find('button')
-        .contains('Continue')
-        .should('be.visible');
-      // Assert - Panel has footer end slot class and it is not visible when expansion panel state is not done
-      cy.get(`${EXPANSION_PANEL_DATA_CY.SLOT.DONE_EXPANSION_PANEL}`)
-        .find('button')
-        .contains('Continue')
-        .should('not.be.visible');
+    buttonsSelectors.forEach(sel => {
+      it(`Should check if ${sel.slot} slot is available in the panel`, () => {
+        cy.get(`@slotActiveExpansionPanel`)
+          .find('button')
+          .contains(sel.button)
+          .should(sel.slot === 'change' ? 'not.be.visible' : 'be.visible');
+      });
     });
   });
 });
