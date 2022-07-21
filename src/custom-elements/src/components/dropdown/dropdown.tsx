@@ -8,20 +8,19 @@ import {
   h,
   Watch
 } from '@stencil/core';
-import Popper from 'popper.js';
+import Popper, { Placement } from 'popper.js';
 import {
   ACTIVE_CLASS,
-  ANIMATE_CLASS,
   DROPDOWN_CLASSES
 } from '../../constants/classes';
 import { DROPDOWN_EVENTS } from '../../constants/events';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
-import { GeneralPositionsExtended } from '../../constants/types';
 import { contains } from '../../utils/utils';
 
 @Component({
   tag: 'chi-dropdown',
-  scoped: true,
+  styleUrl: 'dropdown.scss',
+  scoped: true
 })
 export class Dropdown {
   /**
@@ -29,27 +28,23 @@ export class Dropdown {
    */
   @Prop() active: boolean;
   /**
-   * To configure activation of the Dropdown with hover
+   * To configure activation on hover of the Dropdown with base-style button trigger
    */
   @Prop() hover: boolean;
   /**
-   * To enable animation of the chevron icon
+   * To provide the value of base-style button as trigger of the Dropdown
    */
-  @Prop() animated: boolean;
-  /**
-   * To provide the value of the default trigger button
-   */
-  @Prop() baseButtonValue?: string;
+  @Prop() button?: string;
   /**
    * To set position of the Dropdown
    */
-  @Prop() position: GeneralPositionsExtended;
+  @Prop() position: Placement;
   /**
-   * To set position of the Dropdown
+   * To provide selector of an external reference element
    */
   @Prop() reference: string;
   /**
-   * Prevents hiding the Dropdown when clicking outside of its bounds
+   * To prevent hiding of the Dropdown when clicking outside its bounds
    */
   @Prop({ reflect: true }) preventAutoHide: boolean;
   /**
@@ -67,13 +62,13 @@ export class Dropdown {
   private _popper: any;
   private _referenceElement: any;
   private _dropdownMenuElement: any;
-  private customTrigger: boolean;
+  private _customTrigger: boolean;
 
   connectedCallback() {
     const triggerSlotElement = this.el.querySelector('[slot="trigger"]');
 
-    this.customTrigger = !!triggerSlotElement;
-    if (this.customTrigger) {
+    this._customTrigger = !!triggerSlotElement;
+    if (this._customTrigger) {
       this._referenceElement = triggerSlotElement;
     } else if (this.reference) {
       const reference = document.querySelector(this.reference);
@@ -88,6 +83,10 @@ export class Dropdown {
     this._configureDropdownPopper();
     this._componentLoaded = true;
     document.body.addEventListener('click', this.handlerClick);
+  }
+
+  componentDidUnload() {
+    document.body.removeEventListener('click', this.handlerClick);
   }
 
   @Watch('position')
@@ -197,7 +196,7 @@ export class Dropdown {
   }
 
   render() {
-    const trigger = this.baseButtonValue ? (
+    const trigger = this.button ? (
       <chi-button
         onChiClick={this.handlerClickTrigger}
         onChiMouseEnter={this.handlerMouseEnter}
@@ -206,9 +205,9 @@ export class Dropdown {
         }`}
         ref={ref => (this._referenceElement = ref)}
       >
-        {this.baseButtonValue}
+        {this.button}
       </chi-button>
-    ) : this.customTrigger ? (
+    ) : this._customTrigger ? (
       <slot name="trigger" />
     ) : null;
     const menu = (
@@ -225,7 +224,7 @@ export class Dropdown {
         <div
           class={`${DROPDOWN_CLASSES.DROPDOWN} ${
             this.active ? ACTIVE_CLASS : ''
-          } ${this.animated ? ANIMATE_CLASS : ''}`}
+          }`}
           onMouseLeave={this.handlerMouseLeave}
         >
           {trigger}

@@ -8,18 +8,18 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 - var methods = ['toggle', 'show', 'hide']
 
 each position in positions
-  div(class=`test-${position}`).-mt--5(style='width: 500px; height: 500px;')
+  .-mt--5(class=`test-${position}` style='width: 500px; height: 500px;')
     span.-text--h2=`Position - ${position}`
     .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
-      chi-dropdown(active position=`${position}` base-button-value=`${position}`)
+      chi-dropdown(active position=`${position}` button=`${position}`)
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
 each method in methods
-  div(class=`test-${method} -mt--5` style='width: 500px; height: 500px;')
+  .-mt--5(class=`test-${method}` style='width: 500px; height: 500px;')
     span.-text--h2=`Method - ${method}`
     .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
-      chi-dropdown(id=`test-${method}-dropdown` position="bottom" active=method == 'hide' ? true : false)
+      chi-dropdown(id=`test-${method}-dropdown` position="bottom" prevent-auto-hide=method == 'hide' ? true : false active=method == 'hide' ? true : false)
         chi-button(
           alternative-text="Button action"
           id=`test-${method}-trigger`
@@ -30,12 +30,13 @@ each method in methods
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
-.test-hover.-mt--5(style='width: 500px; height: 500px;')
-  span.-text--h2 Hover
-  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
-    chi-dropdown(id=`test-hover-dropdown` position="bottom" active hover base-button-value='Test hover')
-      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
-      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+each position in positions
+  .-mt--5(class=`test-${position}` style='width: 500px; height: 500px;')
+    span.-text--h2 Hover - #{position}
+    .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+      chi-dropdown(position=position active hover button=`Test hover - ${position}`)
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
 .test-reference.-mt--5(style='width: 500px; height: 500px;')
   span.-text--h2 External Reference
@@ -45,26 +46,29 @@ each method in methods
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
-.test-nesting.-mt--5(style='width: 1000px; height: 500px;')
-  span.-text--h2 Nesting
-  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
-    chi-dropdown#test-nesting-dropdown(active position="bottom" prevent-auto-hide)
-      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
-      a.chi-dropdown__menu-item#test-nesting-level-2(href='#' slot='menu') Menu item 2
+.test-nesting.-d--flex.-mt--5(style='width: 500px; height: 500px;')
+  span.-text--h2 Multi-level referencing
+  chi-dropdown#test-nesting-dropdown(active position="bottom" prevent-auto-hide)
+    a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+    a.chi-dropdown__menu-item#test-nesting-level-2(href='#' slot='menu') Hover me
 
-chi-dropdown(active position="right-start" reference="#test-nesting-level-2" prevent-auto-hide)
+chi-dropdown#dropdown-level-3(position="right-start" reference="#test-nesting-level-2" prevent-auto-hide)
   a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
-  a.chi-dropdown__menu-item#test-nesting-level-3(href='#' slot='menu') Menu item 2
+  a.chi-dropdown__menu-item#test-nesting-level-3(href='#' slot='menu') Hover me
 
-chi-dropdown(active position="right-start" reference="#test-nesting-level-3" prevent-auto-hide)
+chi-dropdown#dropdown-level-4(position="right-start" reference="#test-nesting-level-3" prevent-auto-hide)
   a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
-  a.chi-dropdown__menu-item#test-nesting-level-4(href='#' slot='menu') Menu item 2
+  a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
 script.
   const dropdowns = [
     {trigger: '#test-toggle-trigger', dropdown: '#test-toggle-dropdown', method: 'toggle'},
     {trigger: '#test-show-trigger', dropdown: '#test-show-dropdown', method: 'show'},
     {trigger: '#test-hide-trigger', dropdown: '#test-hide-dropdown', method: 'hide'},
+  ];
+  const multiLevelDropdowns = [
+    {trigger: '#test-nesting-level-2', dropdown: '#dropdown-level-3'},
+    {trigger: '#test-nesting-level-3', dropdown: '#dropdown-level-4'},
   ];
   const referenceDropdownTrigger = document.getElementById('test-reference-trigger');
   const referenceDropdown = document.getElementById('test-reference-dropdown');
@@ -88,6 +92,15 @@ script.
         }
       });
     }
+  });
+
+  Array.prototype.forEach.call(multiLevelDropdowns, function(dropdownData){
+    const trigger = document.querySelector(dropdownData.trigger);
+    const dropdown = document.querySelector(dropdownData.dropdown);
+
+    trigger.addEventListener('mouseenter', function() {
+      dropdown.show();
+    });
   });
 
   referenceDropdownTrigger.addEventListener('chiClick', function() {
