@@ -80,7 +80,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { ILanguage, ILink } from '../../../../models/models';
-import { EXTERNAL_CONTENTS, FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from '../fixtures';
+import { EXTERNAL_CONTENTS, FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from '../../../../fixtures/fixtures';
 
 declare const chi: any;
 
