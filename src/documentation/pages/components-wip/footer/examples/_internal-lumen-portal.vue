@@ -7,7 +7,7 @@
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
             .chi-dropdown.chi-footer__language
-              a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language__dropdown_button" ref="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language")
+              a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(ref="languageDropdownTrigger" data-position="top-start" aria-label="Select your preferred language")
                 .chi-button__content
                   i.chi-icon.icon-globe-network(aria-hidden="true")
                   span English
@@ -36,7 +36,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { ILanguage, ILink } from '../../../../models/models';
-import { FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from '../fixtures';
+import { FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from '../../../../fixtures/fixtures';
 
 declare const chi: any;
 
@@ -65,11 +65,7 @@ declare const chi: any;
   }
 })
 export default class InternalLumenPortal extends Vue {
-  dropdown: any;
-
-  created() {
-    this._setCodeSnippets()
-  }
+  languageDropdownInstance: any;
 
   _setCodeSnippets() {
     let languageOptions = '', footerLinks = '';
@@ -112,12 +108,34 @@ export default class InternalLumenPortal extends Vue {
 <script>chi.dropdown(document.getElementById('example__footer_language_dropdown_button'));<\/script>`
   }
 
+  _initializeDropdown() {
+    const dropdownTrigger = this.$refs.languageDropdownTrigger as HTMLElement;
+
+    if (dropdownTrigger) {
+      this.languageDropdownInstance = chi.dropdown(dropdownTrigger);
+    }
+  }
+
+  //#region Lifecycle Hooks
+  created() {
+    this._setCodeSnippets()
+  }
+
   mounted() {
-    this.dropdown = chi.dropdown(this.$refs[`language-dropdown-button`] as HTMLElement);
+    this._initializeDropdown();
+  }
+
+  updated() {
+    if (!this.languageDropdownInstance) {
+      this._initializeDropdown();
+    }
   }
 
   beforeDestroy() {
-    this.dropdown.dispose();
+    if (this.languageDropdownInstance) {
+      this.languageDropdownInstance.dispose();
+    }
   }
+  //#endregion
 }
 </script>

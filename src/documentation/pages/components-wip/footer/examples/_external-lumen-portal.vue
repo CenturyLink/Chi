@@ -78,7 +78,7 @@
         .chi-footer__internal
           .chi-footer__internal-content.-mw--1200
             .chi-dropdown.chi-footer__language
-              a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="example__footer_language_dropdown_button" ref="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language")
+              a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(ref="languageDropdownTrigger" data-position="top-start" aria-label="Select your preferred language")
                 .chi-button__content
                   i.chi-icon.icon-globe-network(aria-hidden="true")
                   span English
@@ -107,7 +107,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { ILanguage, ILink } from '../../.././../models/models';
-import { EXTERNAL_CONTENTS, FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from '../fixtures';
+import { EXTERNAL_CONTENTS, FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from '../../../../fixtures/fixtures';
 
 declare const chi: any;
 
@@ -137,11 +137,7 @@ declare const chi: any;
   }
 })
 export default class ExternalLumenPortal extends Vue {
-  dropdown: any;
-
-  created() {
-    this._setCodeSnippet();
-  }
+  languageDropdownInstance: any;
 
   _setCodeSnippet() {
     let socialLinks = '', languageItemLinks = '', footerItemLinks = '';
@@ -241,6 +237,14 @@ export default class ExternalLumenPortal extends Vue {
 <script>chi.dropdown(document.getElementById('example__footer_language_dropdown_button'));<\/script>`
   }
 
+  _initializeDropdown() {
+    const dropdownTrigger = this.$refs.languageDropdownTrigger as HTMLElement;
+
+    if (dropdownTrigger) {
+      this.languageDropdownInstance = chi.dropdown(dropdownTrigger);
+    }
+  }
+
   generateLinkCodeSnippet(keyName: string) {
     let linkCodeSnippet = '';
     this.$data.externalContents[keyName].forEach((link: ILink) => {
@@ -252,17 +256,26 @@ export default class ExternalLumenPortal extends Vue {
     return linkCodeSnippet;
   }
 
+  created() {
+    this._setCodeSnippet();
+  }
+
+  //#region Lifecycle Hooks
   mounted() {
-    console.log(typeof chi);
-    console.log(this.$refs);
-    console.log(typeof this.$refs[`language-dropdown-button`]);
-    console.log(this.$refs[`language-dropdown-button`]);
-    console.log(document.getElementById('example__footer_language_dropdown_button'));
-    this.dropdown = chi.dropdown(this.$refs[`language-dropdown-button`] as HTMLElement);
+    this._initializeDropdown();
+  }
+
+  updated() {
+    if (!this.languageDropdownInstance) {
+      this._initializeDropdown();
+    }
   }
 
   beforeDestroy() {
-    this.dropdown.dispose();
+    if (this.languageDropdownInstance) {
+      this.languageDropdownInstance.dispose();
+    }
   }
+  //#endregion
 }
 </script>
