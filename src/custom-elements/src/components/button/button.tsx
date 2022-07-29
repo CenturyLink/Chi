@@ -19,6 +19,11 @@ export class Button {
   @Prop({ reflect: true }) variant: string;
 
   /**
+   *  to set data position of a button { outline, flat }.
+   */
+   @Prop({ reflect: true }) dataPosition?: string;
+
+  /**
    *  to disable chi-button.
    */
   @Prop({ reflect: true }) disabled = false;
@@ -141,6 +146,7 @@ export class Button {
           ${this.fluid && this.center ? '-justify-content--center' : ''}
           ${this.disabled ? '-disabled' : ''}
           ${this.extraClass ? this.extraClass : ''}`}
+          {...(this.dataPosition && {'data-position': this.dataPosition})}
           onClick={() => this._buttonClicked()}
           onMouseEnter={() => this._buttonMouseEnter()}
           onMouseLeave={() => this._buttonMouseLeave()}
