@@ -39,7 +39,7 @@ export class Dropdown {
   /**
    * To animate the accordion of Dropdown
    */
-  @Prop() animateDropdown?: boolean;
+  @Prop() animate?: boolean;
   /**
    * To set position of the Dropdown
    */
@@ -49,7 +49,7 @@ export class Dropdown {
    */
   @Prop() reference: string;
   /**
-   * To provide width of dropdown menu
+   * To provide style for dropdown menu
    */
   @Prop() menuStyle?: string;
   /**
@@ -211,7 +211,7 @@ export class Dropdown {
         onChiMouseEnter={this.handlerMouseEnter}
         extra-class={`${DROPDOWN_CLASSES.TRIGGER} ${
           this.active ? ACTIVE_CLASS : ''
-        } ${this.animateDropdown ? ANIMATE_CLASS : ''}`}
+        } ${this.animate ? ANIMATE_CLASS : ''}`}
         ref={ref => (this._referenceElement = ref)}
         data-position={this.position}
       >
