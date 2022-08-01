@@ -2,7 +2,7 @@
   #docs-container.docs-container
     <script v-html="redirectionScript"></script>
     <Header />
-    main.docs-body.-non-doc
+    main.chi-grid__container-wide.docs-body.-non-doc
       nav.docs-sidenav
         <Navigation />
       .docs-article
@@ -22,5 +22,5 @@ import redirectionScript from '../constants/utilities';
     }
   }
 })
-export default class Default extends Vue {}
+export default class Wide extends Vue {}
 </script>
