@@ -1,13 +1,13 @@
 <template lang="pug">
   div
-    <TitleBar title="Toolbar" description="Toolbar provides the ability of performing actions such as searching for elements and filtering complex structures." :tabs="pageTabs" />
+    TitleBar(title="Toolbar" description="Toolbar provides the ability of performing actions such as searching for elements and filtering complex structures." :tabs="pageTabs")
     .chi-grid__container.-pt--3
       .chi-tabs-panel.-active#examples
-        <Examples />
+        Examples
       .chi-tabs-panel#properties
-        <Properties />
+        Properties
       .chi-tabs-panel#accessibility
-        <Accessibility />
+        Accessibility
 </template>
 
 <script lang="ts">

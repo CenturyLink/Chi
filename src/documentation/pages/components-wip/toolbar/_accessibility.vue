@@ -1,5 +1,5 @@
 <template lang="pug">
-  <AccessibilityComingSoon />
+  AccessibilityComingSoon
 </template>
 
 <script lang="ts">
