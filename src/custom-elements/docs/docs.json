@@ -1613,6 +1613,210 @@
       }
     },
     {
+      "filePath": "src/components/dropdown/dropdown.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-dropdown",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "active",
+          "reflectToAttr": false,
+          "docs": "to set the state of Dropdown.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "hover",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "hover",
+          "reflectToAttr": false,
+          "docs": "to configure activation on hover of the Dropdown with base-style button trigger.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "button",
+          "type": "string",
+          "mutable": false,
+          "attr": "button",
+          "reflectToAttr": false,
+          "docs": "to provide the value of base-style button as trigger of the Dropdown.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "animateChevron",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "animate-chevron",
+          "reflectToAttr": false,
+          "docs": "to animate the chevron of Dropdown.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "position",
+          "type": "string",
+          "mutable": false,
+          "attr": "position",
+          "reflectToAttr": false,
+          "docs": "to set position of the Dropdown.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "value": "auto-start",
+              "type": "string"
+            },
+            {
+              "value": "auto",
+              "type": "string"
+            },
+            {
+              "value": "auto-end",
+              "type": "string"
+            },
+            {
+              "value": "top-start",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            },
+            {
+              "value": "top-end",
+              "type": "string"
+            },
+            {
+              "value": "right-start",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "value": "right-end",
+              "type": "string"
+            },
+            {
+              "value": "bottom-end",
+              "type": "string"
+            },
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "bottom-start",
+              "type": "string"
+            },
+            {
+              "value": "left-end",
+              "type": "string"
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "left-start",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "reference",
+          "type": "string",
+          "mutable": false,
+          "attr": "reference",
+          "reflectToAttr": false,
+          "docs": "to provide selector of an external reference element.",
+          "docsTags": [],
+          "default": "undefined",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "preventAutoHide",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "prevent-auto-hide",
+          "reflectToAttr": true,
+          "docs": "to prevent hiding of the Dropdown when clicking outside its bounds.",
+          "docsTags": [],
+          "default": false,
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-icon",
+        "chi-button"
+      ],
+      "dependencyGraph": {
+        "chi-dropdown": [
+          "chi-icon",
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ]
+      }
+    },
+    {
       "filePath": "src/components/expansion-panel/expansion-panel.tsx",
       "encapsulation": "scoped",
       "tag": "chi-expansion-panel",

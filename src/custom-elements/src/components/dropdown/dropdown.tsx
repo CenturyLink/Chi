@@ -37,9 +37,9 @@ export class Dropdown {
    */
   @Prop() button?: string;
   /**
-   * To animate the accordion of Dropdown
+   * To animate the chevron of Dropdown
    */
-  @Prop() animate?: boolean;
+  @Prop() animateChevron?: boolean;
   /**
    * To set position of the Dropdown
    */
@@ -48,10 +48,6 @@ export class Dropdown {
    * To provide selector of an external reference element
    */
   @Prop() reference: string;
-  /**
-   * To provide style for dropdown menu
-   */
-  @Prop() menuStyle?: string;
   /**
    * To prevent hiding of the Dropdown when clicking outside its bounds
    */
@@ -211,9 +207,8 @@ export class Dropdown {
         onChiMouseEnter={this.handlerMouseEnter}
         extra-class={`${DROPDOWN_CLASSES.TRIGGER} ${
           this.active ? ACTIVE_CLASS : ''
-        } ${this.animate ? ANIMATE_CLASS : ''}`}
+        } ${this.animateChevron ? ANIMATE_CLASS : ''}`}
         ref={ref => (this._referenceElement = ref)}
-        data-position={this.position}
       >
         {this.button}
       </chi-button>
@@ -222,7 +217,6 @@ export class Dropdown {
     ) : null;
     const menu = (
       <div
-        {...(this.menuStyle && {style: JSON.parse(this.menuStyle)})}
         class={`${DROPDOWN_CLASSES.MENU} ${this.active ? ACTIVE_CLASS : ''}`}
         ref={ref => (this._dropdownMenuElement = ref)}
       >
