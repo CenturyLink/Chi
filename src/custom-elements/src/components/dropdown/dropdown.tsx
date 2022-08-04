@@ -174,6 +174,9 @@ export class Dropdown {
     }
   };
 
+  /**
+   * Hides the dropdown
+   */
   @Method()
   async hide() {
     this._dropdownMenuElement.style.display = 'none';
@@ -181,6 +184,9 @@ export class Dropdown {
     this.emitHide();
   }
 
+  /**
+   * Shows the dropdown
+   */
   @Method()
   async show() {
     this._dropdownMenuElement.style.display = 'block';
@@ -191,6 +197,9 @@ export class Dropdown {
     this.emitShow();
   }
 
+  /**
+   * Toggles active state (show/hide)
+   */
   @Method()
   async toggle() {
     if (this.active) {
