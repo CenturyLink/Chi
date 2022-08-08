@@ -13,6 +13,11 @@ export class Drag {
     y: 0
   };
   private component: any;
+  private screenWidth: number = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  private screenHeight: number = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+  private auxClientCoord: number = Number.MAX_SAFE_INTEGER;
+  private auxClientCoord2: number = Number.MIN_SAFE_INTEGER;
+
   private dragMouseDownHandler = (e: MouseEvent) => {
     e.preventDefault();
     this.positionInitial.x = e.clientX;
@@ -31,14 +36,27 @@ export class Drag {
     this.trigger.addEventListener('touchmove', this.elementDragOnTouchHandler);
   };
 
-  private setPosition = (clientX: number, clientY: number) => {
+  private setPosition = (clientX: number, clientY: number, rect: DOMRect) => {
     this.positionEnd.x = this.positionInitial.x - clientX;
     this.positionEnd.y = this.positionInitial.y - clientY;
     this.positionInitial.x = clientX;
     this.positionInitial.y = clientY;
     this.elementToMove.style.transform = this.initialTransformStyling;
-    this.elementToMove.style.top = this.elementToMove.offsetTop - this.positionEnd.y + 'px';
-    this.elementToMove.style.left = this.elementToMove.offsetLeft - this.positionEnd.x + 'px';
+
+    if (rect.top < 0 && this.auxClientCoord > clientY) {
+      this.auxClientCoord = clientY;
+    } else if (rect.left < 0 && this.auxClientCoord > clientX) {
+      this.auxClientCoord = clientX;
+    } else if (rect.right > this.screenWidth && this.auxClientCoord2 < clientX) {
+        this.auxClientCoord2 = clientX;
+    } else if (rect.bottom > this.screenHeight && this.auxClientCoord2 < clientY) {
+          this.auxClientCoord2 = clientY;
+    } else {
+      this.elementToMove.style.top = this.elementToMove.offsetTop - this.positionEnd.y + 'px';
+      this.elementToMove.style.left = this.elementToMove.offsetLeft - this.positionEnd.x + 'px';
+      this.auxClientCoord = Number.MAX_SAFE_INTEGER;
+      this.auxClientCoord2 = Number.MIN_SAFE_INTEGER;
+    }
   };
   private elementDragHandler = (e: MouseEvent) => {
     e.preventDefault();
@@ -46,7 +64,8 @@ export class Drag {
       this.component._popper.destroy();
       this.component._popper = null;
     }
-    this.setPosition(e.clientX, e.clientY);
+    const rect = this.elementToMove.getBoundingClientRect();
+    this.setPosition(e.clientX, e.clientY, rect);
   };
   private elementDragOnTouchHandler = (e: TouchEvent) => {
     e.preventDefault();
@@ -56,7 +75,8 @@ export class Drag {
       this.component._popper.destroy();
       this.component._popper = null;
     }
-    this.setPosition(touch.clientX, touch.clientY);
+    const rect = this.elementToMove.getBoundingClientRect();
+    this.setPosition(touch.clientX, touch.clientY, rect);
   };
   private closeDragElement = () => {
     document.removeEventListener('mouseup', this.closeDragElement);
