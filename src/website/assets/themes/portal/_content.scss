@@ -50,7 +50,7 @@
 
           .docs-titlebar__title {
             font-size: $font-size-h2;
-            font-weight: $font-weight-bold;
+            font-weight: $font-weight-black;
             margin-bottom: 0.5rem;
             @include respond-to(lg) {
               font-size: 3rem;
