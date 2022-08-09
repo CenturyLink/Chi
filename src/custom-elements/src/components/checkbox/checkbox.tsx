@@ -21,6 +21,10 @@ export class Checkbox {
    */
   @Prop() label: string;
   /**
+   * To add icon beside the checkbox
+   */
+   @Prop() iconCheckbox?: string;
+  /**
    * To render the checkbox input with a respective name attribute
    */
   @Prop() name: string;
@@ -106,6 +110,7 @@ export class Checkbox {
           type="checkbox"
         />
         <label class={`${CHECKBOX_CLASSES.LABEL} ${this.state ? `-${this.state}` : ''}`} htmlFor={`${this.id}-control`}>
+          {this.iconCheckbox && <i class={`chi-icon icon-${this.iconCheckbox}`} aria-hidden="true"></i>}
           {this.label}
           <div class={SR_ONLY}>
             Select {this.label || this.name} {this.id}
