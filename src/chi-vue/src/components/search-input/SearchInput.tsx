@@ -23,6 +23,7 @@ export default class SearchInput extends Vue {
   @Prop() value?: string;
   @Prop() dataTableSearch?: boolean;
   @Prop() portal?: boolean;
+  @Prop() readOnly?: boolean;
 
   cleanButtonVisible = !!(this.$props.value && !this.$props.disabled);
   inputValue = this.$props.value || '';
@@ -88,6 +89,7 @@ export default class SearchInput extends Vue {
         }}
         autocomplete="off"
         aria-label="search input"
+        readonly={this.$props.readOnly}
       />
     );
 
@@ -97,7 +99,11 @@ export default class SearchInput extends Vue {
         ${BUTTON_CLASSES.ICON_BUTTON}
         ${CLOSE_CLASS}
         ${this._chiMajorVersion === 4 ? '-sm' : '-xs'}`}
-        onClick={() => this._cleanInput()}
+        onClick={() => {
+          if (!this.$props.readOnly) {
+            this._cleanInput();
+          }
+        }}
         aria-label="Clear">
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-x`} aria-hidden="true"></i>

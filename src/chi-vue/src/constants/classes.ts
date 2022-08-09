@@ -59,6 +59,7 @@ export const BUTTON_CLASSES = {
   ICON_BUTTON: '-icon',
   CONTENT: 'chi-button__content',
   FLAT: '-flat',
+  LIGHT: '-light',
   NO_HOVER: '-no-hover',
   PRIMARY: '-primary',
   OUTLINE: '-outline',
@@ -82,21 +83,6 @@ export const CHECKBOX_CLASSES = {
   INPUT: 'chi-checkbox__input',
   LABEL: 'chi-checkbox__label',
   INDETERMINATE: '-indeterminate',
-};
-//#endregion
-
-//#region Divider
-export const DIVIDER_CLASSES = {
-  DIVIDER: 'chi-divider',
-  VERTICAL: '-vertical',
-};
-//#endregion
-
-//#region Radio
-export const RADIO_CLASSES = {
-  RADIO: 'chi-radio',
-  INPUT: 'chi-radio__input',
-  LABEL: 'chi-radio__label',
 };
 //#endregion
 
@@ -131,9 +117,10 @@ export const DATA_TABLE_CLASSES = {
 };
 //#endregion
 
-//#region Table
-export const TABLE_CLASSES = {
-  TABLE: 'chi-table',
+//#region Divider
+export const DIVIDER_CLASSES = {
+  DIVIDER: 'chi-divider',
+  VERTICAL: '-vertical',
 };
 //#endregion
 
@@ -144,6 +131,44 @@ export const DRAWER_CLASSES = {
   TITLE: 'chi-drawer__title',
   CONTENT: 'chi-drawer__content',
   TRIGGER: 'chi-drawer__trigger',
+};
+//#endregion
+
+//#region Expansion Panel
+export const EPANEL_CLASSES = {
+  ACTIVE_ONLY: '-active--only',
+  ACTION: 'chi-epanel__action',
+  BODY: 'chi-epanel__body',
+  BORDERED: '-bordered',
+  COLLAPSE: 'chi-epanel__collapse',
+  CONTENT: 'chi-epanel__content',
+  CONTENT_ACTIVE: 'chi-epanel__content-active',
+  DONE_ONLY: '-done--only',
+  EPANEL: 'chi-epanel',
+  FOOTER: 'chi-epanel__footer',
+  HEADER: 'chi-epanel__header',
+  NUMBER: 'chi-epanel__number',
+  TITLE: 'chi-epanel__title',
+};
+//#endregion
+
+//#region Link
+export const LINK_CLASSES = {
+  LINK: 'chi-link',
+};
+//#endregion
+
+//#region Radio
+export const RADIO_CLASSES = {
+  RADIO: 'chi-radio',
+  INPUT: 'chi-radio__input',
+  LABEL: 'chi-radio__label',
+};
+//#endregion
+
+//#region Table
+export const TABLE_CLASSES = {
+  TABLE: 'chi-table',
 };
 //#endregion
 
@@ -203,6 +228,23 @@ export const PAGINATION_CLASSES = {
 };
 //#endregion
 
+//#region Save view
+export const SAVE_VIEW_CLASSES = {
+  SAVE_VIEW: 'chi-save-view',
+  BASE: 'chi-save-view__base',
+  DELETE: 'chi-save-view__delete',
+  END: 'chi-save-view__end',
+  LABEL: 'chi-save-view__label',
+  START: 'chi-save-view__start',
+  RESULTS: 'chi-save-view__results',
+  RIBBON: 'chi-save-view__ribbon',
+  RIBBON_ARROW: 'chi-save-view__ribbon-arrow',
+  RIBBON_CONTENT: 'chi-save-view__ribbon-content',
+  SAVED: 'chi-save-view__saved',
+  EDIT: 'chi-save-view__edit',
+};
+//#endregion
+
 //#region Search Input
 export const SEARCH_INPUT_CLASSES = {
   SEARCH_INPUT: 'chi-search__input',
@@ -246,6 +288,8 @@ export const UTILITY_CLASSES = {
   },
   JUSTIFY: {
     CENTER: '-justify-content--center',
+    END: '-justify-content--end',
+    CONTENT_BETWEEN: '-justify-content--between',
     MD_START: '-justify-content-md--start',
     MD_CENTER: '-justify-content-md--center',
     MD_END: '-justify-content-md--end',
@@ -333,6 +377,7 @@ export const UTILITY_CLASSES = {
       4: '-my--4',
     },
     LEFT: {
+      0: '-ml--0',
       1: '-ml--1',
       2: '-ml--2',
       3: '-ml--3',

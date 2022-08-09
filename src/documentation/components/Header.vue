@@ -89,10 +89,6 @@
         line-height: 1.5rem;
         padding: 0.75rem 0;
       }
-      .chi.theme-portal .example .example-tabs .chi-tabs > li.-active > a,
-      .chi.theme-brightspeed .example .example-tabs .chi-tabs > li.-active > a {
-        padding-bottom: 0.625rem;
-      }
     nav.chi-header__content
       #header-brand.chi-header__brand
         button#drawer-trigger-1.chi-button.-icon.-flat.-mr-md--2.-d--flex.-d-lg--none.chi-drawer__trigger(
@@ -101,7 +97,7 @@
         )
           .chi-button__content
             i.chi-icon.-sm--2.icon-menu(aria-hidden='true')
-        <a class="docs-header__logo" aria-label='Portal' href="/">
+        <a class="docs-header__logo" aria-label='Portal' :href="BASE_URL">
           chi-brand#header-logo(logo='lumen')
         </a>
         span.chi-header__title.-d--none.-d-lg--flex Chi Design System
@@ -164,7 +160,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { CHI_VISIBLE_VERSION } from '../constants/constants';
+import { BASE_URL, CHI_VISIBLE_VERSION } from '../constants/constants';
 import { CHI_VERSION as ACTIVE_CHI_VERSION } from '../constants/configs';
 
 declare const chi: any;
@@ -174,7 +170,8 @@ Vue.config.ignoredElements = ['chi-brand'];
   data: () => {
     return {
       CHI_VISIBLE_VERSION,
-      ACTIVE_CHI_VERSION
+      ACTIVE_CHI_VERSION,
+      BASE_URL
     };
   }
 })

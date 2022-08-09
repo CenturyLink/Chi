@@ -1,5 +1,6 @@
 <template lang="pug">
   #docs-container.docs-container
+    <script v-html="redirectionScript"></script>
     <Header />
     main.docs-body.-non-doc
       nav.docs-sidenav
@@ -10,11 +11,16 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { CHI_VERSION } from '../constants/configs';
+import redirectionScript from '../constants/utilities';
 
-@Component({})
-export default class Default extends Vue {
-  mounted() {
-    document.body.classList.add('chi');
+@Component({
+  data: () => {
+    return {
+      CHI_VERSION,
+      redirectionScript: redirectionScript(CHI_VERSION)
+    }
   }
-}
+})
+export default class Default extends Vue {}
 </script>

@@ -10,6 +10,48 @@
   position: relative;
   word-wrap: break-word;
 
+  &.-widget {
+    background-color: $card-widget-background-color;
+    border: $card-widget-border;
+
+    .chi-card__header {
+      background: none;
+      box-shadow: none;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      padding: 1rem;
+
+      & + .chi-card__content {
+        padding-top: 0;
+      }
+
+      &.-align--left {
+        justify-content: flex-start;
+      }
+
+      &.-align--right {
+        justify-content: flex-end;
+      }
+
+      &.-align--center {
+        justify-content: center;
+      }
+
+      &.-sm {
+        padding: $card-widget-header-sm-padding;
+      }
+    }
+
+    .chi-card__title {
+      font-size: $card-widget-title-font-size;
+      font-weight: $card-widget-title-font-weight;
+    }
+
+    .chi-card__content {
+      padding: $card-widget-content-padding;
+    }
+  }
+
   &__hero {
     width: 100%;
   }
@@ -148,7 +190,7 @@
     padding: $card-tabs-padding;
 
     .chi-tabs {
-      border-bottom: $card-tabs-border-bottom;
+      box-shadow: $card-tabs-border-bottom;
     }
   }
 
@@ -229,10 +271,17 @@
   }
 
   &.-highlight {
-    background-color: $color-background-secondary-light;
+    background-color: $card-highlight-background-color;
+    border-color: $card-highlight-border-color;
 
     .chi-card__header {
       background-color: $color-background-white;
+    }
+
+    &.-widget {
+      .chi-card__header {
+        background-color: $card-highlight-background-color;
+      }
     }
   }
 }

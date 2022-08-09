@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-05-12T10:25:50",
+  "timestamp": "2022-08-04T15:53:14",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -566,6 +566,7 @@
       "dependents": [
         "chi-alert",
         "chi-carousel",
+        "chi-dropdown",
         "chi-popover"
       ],
       "dependencies": [
@@ -579,6 +580,9 @@
           "chi-button"
         ],
         "chi-carousel": [
+          "chi-button"
+        ],
+        "chi-dropdown": [
           "chi-button"
         ],
         "chi-popover": [
@@ -1613,6 +1617,238 @@
       }
     },
     {
+      "filePath": "src/components/dropdown/dropdown.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-dropdown",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "active",
+          "reflectToAttr": false,
+          "docs": "To set the state of Dropdown",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "button",
+          "type": "string",
+          "mutable": false,
+          "attr": "button",
+          "reflectToAttr": false,
+          "docs": "To provide the value of base-style button as trigger of the Dropdown",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "hover",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "hover",
+          "reflectToAttr": false,
+          "docs": "To configure activation on hover of the Dropdown with base-style button trigger",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "position",
+          "type": "\"auto\" | \"auto-end\" | \"auto-start\" | \"bottom\" | \"bottom-end\" | \"bottom-start\" | \"left\" | \"left-end\" | \"left-start\" | \"right\" | \"right-end\" | \"right-start\" | \"top\" | \"top-end\" | \"top-start\"",
+          "mutable": false,
+          "attr": "position",
+          "reflectToAttr": false,
+          "docs": "To set position of the Dropdown",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "auto",
+              "type": "string"
+            },
+            {
+              "value": "auto-end",
+              "type": "string"
+            },
+            {
+              "value": "auto-start",
+              "type": "string"
+            },
+            {
+              "value": "bottom",
+              "type": "string"
+            },
+            {
+              "value": "bottom-end",
+              "type": "string"
+            },
+            {
+              "value": "bottom-start",
+              "type": "string"
+            },
+            {
+              "value": "left",
+              "type": "string"
+            },
+            {
+              "value": "left-end",
+              "type": "string"
+            },
+            {
+              "value": "left-start",
+              "type": "string"
+            },
+            {
+              "value": "right",
+              "type": "string"
+            },
+            {
+              "value": "right-end",
+              "type": "string"
+            },
+            {
+              "value": "right-start",
+              "type": "string"
+            },
+            {
+              "value": "top",
+              "type": "string"
+            },
+            {
+              "value": "top-end",
+              "type": "string"
+            },
+            {
+              "value": "top-start",
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "preventAutoHide",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "prevent-auto-hide",
+          "reflectToAttr": true,
+          "docs": "To prevent hiding of the Dropdown when clicking outside its bounds",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "reference",
+          "type": "string",
+          "mutable": false,
+          "attr": "reference",
+          "reflectToAttr": false,
+          "docs": "To provide selector of an external reference element",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "hide",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "hide() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        },
+        {
+          "name": "show",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "show() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        },
+        {
+          "name": "toggle",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "toggle() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
+        }
+      ],
+      "events": [
+        {
+          "event": "eventHide",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when hiding the Dropdown",
+          "docsTags": []
+        },
+        {
+          "event": "eventShow",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when showing the Dropdown",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-button"
+      ],
+      "dependencyGraph": {
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ]
+      }
+    },
+    {
       "filePath": "src/components/expansion-panel/expansion-panel.tsx",
       "encapsulation": "scoped",
       "tag": "chi-expansion-panel",
@@ -2175,12 +2411,28 @@
           "mutable": false,
           "attr": "format",
           "reflectToAttr": true,
-          "docs": "to set app layout format",
+          "docs": "to set app layout format { base, no-margin, fixed-width }.",
           "docsTags": [],
           "default": "'base'",
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "headerBackground",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "header-background",
+          "reflectToAttr": true,
+          "docs": "To define app layout header background",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,

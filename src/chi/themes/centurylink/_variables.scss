@@ -398,6 +398,8 @@ $alert-sm-text-line-height:                 $line-height-sm;
 
 // App layout
 $app-layout-background-color:               $color-background-base;
+$app-layout-header-background-color:        $color-navy-20;
+$app-layout-header-title-color:             $color-text-primary-darker;
 
 // Avatar
 $avatar-background-color:                   $color-grey-20;
@@ -781,7 +783,15 @@ $card-content-padding:                      1rem;
 $card-tabs-padding:                         0 1rem;
 $card-tabs-border-bottom:                   none;
 $card-highlight-background-color:           $color-background-secondary-light;
+$card-highlight-border-color:               $color-mint-30;
 $card-highlight-header-background-color:    $color-background-white;
+
+$card-widget-background-color:              $color-grey-10;
+$card-widget-border:                        0.0625rem solid $color-grey-20;
+$card-widget-title-font-size:               $font-size-7;
+$card-widget-title-font-weight:             $font-weight-extra-bold;
+$card-widget-content-padding:               1rem;
+$card-widget-header-sm-padding:             0.75rem 1rem;
 
 $card-title-font-size:                      $font-size-lg;
 $card-title-font-weight:                    $font-weight-semi-bold;
@@ -808,6 +818,10 @@ $checkbox-checked-icon-color:               $color-background-white;
 $checkbox-label-danger-text-color:          $color-text-base;
 $checkbox-label-disabled-text-color:        $color-text-muted;
 $checkbox-label-disabled-opacity:           $opacity-60;
+
+// CSS Grid
+$css-grid-gap:                              1rem;
+$css-grid-md-gap:                           1.5rem;
 
 // Date picker
 $date-picker-input-width:                   14rem;
@@ -1330,6 +1344,22 @@ $range-slider-disabled-opacity:             $opacity-60;
 $range-slider-focus-color:                  $focus-color;
 $range-slider-tick-border-color:            $color-border-base-dark;
 
+// Save view
+$save-view-background-color:                $color-background-base;
+$save-view-border-color:                    $color-border-base;
+$save-view-divider-border-color:            $color-border-base;
+$save-view-divider-height:                  1.25rem;
+$save-view-results-font-size:               $font-size-md;
+$save-view-label-font-size:                 $font-size-md;
+$save-view-label-font-weight:               $font-weight-semi-bold;
+$save-view-edit-border-color:               $color-border-info;
+$save-view-edit-border-style:               dashed;
+$save-view-ribbon-background-color:         $color-blue-70;
+$save-view-ribbon-label-color:              $color-text-white;
+$save-view-ribbon-label-font-style:         italic;
+$save-view-ribbon-arrow-border-color:       $color-blue-70;
+$save-view-ribbon-arrow-border-style:       solid;
+
 // Search input
 $search-input-xs-icon-top:                  0;
 $search-input-xs-close-top:                 0;
@@ -1558,14 +1588,16 @@ $tabs-inverse-item-active-border-color:     $color-border-secondary;
 $tabs-inverse-item-active-text-color:       $color-text-secondary;
 $tabs-inverse-item-hover-text-color:        $color-text-secondary;
 
+$tabs-horizontal-border-bottom-width:       0.0625rem;
 $tabs-horizontal-border-bottom:             0.0625rem solid $color-border-base;
+$tabs-horizontal-sliding-border-bottom-placement: -0.0625rem;
 
-$tabs-horizontal-lg-font-size:              $font-size-base;
-$tabs-horizontal-lg-font-weight:            $font-weight-semi-bold;
+$tabs-horizontal-lg-font-size:              $font-size-lg;
+$tabs-horizontal-lg-font-weight:            $font-weight-bold;
 $tabs-horizontal-lg-height:                 4rem;
 $tabs-horizontal-lg-line-height:            $line-height-lg;
 $tabs-horizontal-lg-padding:                1.25rem 0;
-$tabs-horizontal-lg-active-padding-bottom:  1.125rem;
+$tabs-horizontal-lg-solid-padding:          1.5rem 2rem;
 $tabs-horizontal-lg-trigger-icon-top:       1.5rem;
 $tabs-horizontal-lg-trigger-padding-right:  1.5rem;
 
@@ -1573,7 +1605,7 @@ $tabs-horizontal-md-font-size:              $font-size-base;
 $tabs-horizontal-md-font-weight:            $font-weight-semi-bold;
 $tabs-horizontal-md-height:                 3.5rem;
 $tabs-horizontal-md-padding:                1.25rem 0;
-$tabs-horizontal-md-active-padding-bottom:  1.125rem;
+$tabs-horizontal-md-solid-padding:          1.25rem 1.5rem;
 $tabs-horizontal-md-trigger-icon-top:       1.25rem;
 $tabs-horizontal-md-trigger-padding-right:  1.5rem;
 
@@ -1581,18 +1613,30 @@ $tabs-horizontal-sm-font-size:              $font-size-base;
 $tabs-horizontal-sm-font-weight:            $font-weight-bold;
 $tabs-horizontal-sm-height:                 3rem;
 $tabs-horizontal-sm-padding:                1rem 0;
-$tabs-horizontal-sm-active-padding-bottom:  0.875rem;
+$tabs-horizontal-sm-solid-padding:          1rem 0.75rem;
 $tabs-horizontal-sm-trigger-icon-top:       1rem;
 $tabs-horizontal-sm-trigger-padding-right:  1.5rem;
 
 $tabs-horizontal-xs-font-size:              $font-size-base;
 $tabs-horizontal-xs-font-weight:            $font-weight-semi-bold;
 $tabs-horizontal-xs-height:                 2.5rem;
-$tabs-horizontal-xs-padding:                0.8125rem 0 0.6875rem 0;
-$tabs-horizontal-xs-active-padding-bottom:  0.5625rem;
+$tabs-horizontal-xs-padding:                0.75rem 0;
+$tabs-horizontal-xs-solid-padding:          0.75rem;
 $tabs-horizontal-xs-trigger-icon-top:       0.8125rem;
 $tabs-horizontal-xs-trigger-padding-right:  1.25rem;
 
+$tabs-vertical-lg-font-size:                $font-size-lg;
+$tabs-vertical-xl-font-size:                $font-size-lg;
+$tabs-vertical-lg-description-font-size:    $font-size-base;
+
+$tabs-solid-xl-font-size:                   $font-size-lg;
+$tabs-solid-xl-font-weight:                 $font-weight-bold;
+$tabs-solid-vertical-xl-active-border-width: 0.125rem;
+$tabs-solid-horizontal-lg-active-border-width: 0.125rem;
+$tabs-solid-horizontal-md-active-border-width: 0.125rem;
+$tabs-solid-background-color:               $color-grey-10;
+$tabs-solid-active-border-color:            $color-border-primary;
+$tabs-solid-active-background-color:        $color-background-white;
 
 // Text input
 $text-input-border-color:                   $color-border-base-dark;
@@ -1804,17 +1848,11 @@ $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 // Toolbar
 $toolbar-header-background-color:           $color-background-base;
 $toolbar-header-divider-height:             2.5rem;
-$toolbar-ribbon-background-color:           $color-background-base;
-$toolbar-ribbon-border-color:               $color-border-base;
-$toolbar-ribbon-divider-border-color:       $color-border-base;
-$toolbar-ribbon-divider-height:             1.25rem;
-$toolbar-results-font-size:                 $font-size-md;
-$toolbar-label-font-weight:                 $font-weight-semi-bold;
 
 // Tooltip
 $tooltip-light-background-color:            rgba($color-white, 0.96);
 $tooltip-light-text-color:                  $color-text-base;
-$tooltip-light-box-shadow:                  0 4px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 20px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+$tooltip-light-box-shadow:                  0 4px 10px 0 rgba(136, 53, 53, 0.14), 0 1px 20px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
 $tooltip-dark-background-color:             rgba($color-grey-100, 0.95);
 $tooltip-dark-text-color:                   $color-text-white;
 $tooltip-dark-box-shadow:                   none;

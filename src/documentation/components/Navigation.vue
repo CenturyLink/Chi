@@ -7,20 +7,22 @@
       <li>
         <div class="chi-collection__title">Getting Started</div>
         <ul class="chi-tabs__subtabs">
-          <li><a href="/getting-started">Introduction</a></li>
+          <li><a :href="`${BASE_URL}getting-started`">Introduction</a></li>
           <li>
-            <a href="/getting-started/installation">Installation</a>
+            <a :href="`${BASE_URL}getting-started/installation`">Installation</a>
           </li>
           <li>
-            <a href="/getting-started/development-workflow"
+            <a :href="`${BASE_URL}getting-started/development-workflow`"
               >Development workflow</a
             >
           </li>
           <li>
-            <a href="/getting-started/browsers-devices">Browser support</a>
+            <a :href="`${BASE_URL}getting-started/browsers-devices`"
+              >Browser support</a
+            >
           </li>
           <li>
-            <a href="/getting-started/whats-new">What's new</a>
+            <a :href="`${BASE_URL}getting-started/whats-new`">What's new</a>
           </li>
         </ul>
       </li>
@@ -43,52 +45,60 @@
                 <div class="chi-accordion__content -p--0">
                   <ul class="chi-tabs__subtabs">
                     <li>
-                      <a href="/foundations/accessibility/overview"
+                      <a :href="`${BASE_URL}foundations/accessibility/overview`"
                         >Overview</a
                       >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/using-keyboard"
+                      <a :href="`${BASE_URL}foundations/accessibility/using-keyboard`"
                         >Using the keyboard</a
                       >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/page-structure"
+                      <a :href="`${BASE_URL}foundations/accessibility/page-structure`"
                         >Page structure</a
                       >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/color-sensory"
+                      <a :href="`${BASE_URL}foundations/accessibility/color-sensory`"
                         >Color and sensory</a
                       >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/images">Images</a>
+                      <a :href="`${BASE_URL}foundations/accessibility/images`"
+                        >Images</a
+                      >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/text">Text</a>
+                      <a :href="`${BASE_URL}foundations/accessibility/text`"
+                        >Text</a
+                      >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/links-and-forms"
+                      <a :href="`${BASE_URL}foundations/accessibility/links-and-forms`"
                         >Links and forms</a
                       >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/tables">Tables</a>
+                      <a :href="`${BASE_URL}foundations/accessibility/tables`"
+                        >Tables</a
+                      >
                     </li>
                     <li>
-                      <a href="/foundations/accessibility/other">Other</a>
+                      <a :href="`${BASE_URL}foundations/accessibility/other`"
+                        >Other</a
+                      >
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           </li>
-          <li><a href="/foundations/color">Color</a></li>
+          <li><a :href="`${BASE_URL}foundations/color`">Color</a></li>
           <li>
-            <a href="/foundations/design-tokens">Design tokens</a>
+            <a :href="`${BASE_URL}foundations/design-tokens`">Design tokens</a>
           </li>
-          <li><a href="/foundations/grid">Grid</a></li>
+          <li><a :href="`${BASE_URL}foundations/grid`">Grid</a></li>
         </ul>
       </li>
       <li class="-active">
@@ -104,7 +114,7 @@
                 navigationComponentItem.to &&
                   navigationComponentItem.source === 'vue'
               "
-              :to="navigationComponentItem.to"
+              :to="`/${navigationComponentItem.to}`"
               >{{ navigationComponentItem.label }}</NuxtLink
             >
             <a
@@ -112,7 +122,7 @@
                 navigationComponentItem.href &&
                   navigationComponentItem.source === 'pug'
               "
-              :href="navigationComponentItem.href"
+              :href="`${BASE_URL}${navigationComponentItem.href}`"
               >{{ navigationComponentItem.label }}</a
             >
           </li>
@@ -121,35 +131,37 @@
       <li>
         <div class="chi-collection__title">Utilities</div>
         <ul class="chi-tabs__subtabs">
-          <li><a href="/utilities/border">Border</a></li>
-          <li><a href="/utilities/color">Color</a></li>
-          <li><a href="/utilities/display">Display</a></li>
-          <li><a href="/utilities/flex">Flex</a></li>
-          <li><a href="/utilities/image">Image</a></li>
-          <li><a href="/utilities/opacity">Opacity</a></li>
-          <li><a href="/utilities/overflow">Overflow</a></li>
-          <li><a href="/utilities/position">Position</a></li>
-          <li><a href="/utilities/shadow">Shadow</a></li>
-          <li><a href="/utilities/sizing">Sizing</a></li>
-          <li><a href="/utilities/spacing">Spacing</a></li>
-          <li><a href="/utilities/text">Text</a></li>
-          <li><a href="/utilities/vertical-align">Vertical-align</a></li>
-          <li><a href="/utilities/zindex">Z-index</a></li>
+          <li><a :href="`${BASE_URL}utilities/border`">Border</a></li>
+          <li><a :href="`${BASE_URL}utilities/color`">Color</a></li>
+          <li><a :href="`${BASE_URL}utilities/display`">Display</a></li>
+          <li><a :href="`${BASE_URL}utilities/flex`">Flex</a></li>
+          <li><a :href="`${BASE_URL}utilities/image`">Image</a></li>
+          <li><a :href="`${BASE_URL}utilities/opacity`">Opacity</a></li>
+          <li><a :href="`${BASE_URL}utilities/overflow`">Overflow</a></li>
+          <li><a :href="`${BASE_URL}utilities/position`">Position</a></li>
+          <li><a :href="`${BASE_URL}utilities/shadow`">Shadow</a></li>
+          <li><a :href="`${BASE_URL}utilities/sizing`">Sizing</a></li>
+          <li><a :href="`${BASE_URL}utilities/spacing`">Spacing</a></li>
+          <li><a :href="`${BASE_URL}utilities/text`">Text</a></li>
+          <li>
+            <a :href="`${BASE_URL}utilities/vertical-align`">Vertical-align</a>
+          </li>
+          <li><a :href="`${BASE_URL}utilities/zindex`">Z-index</a></li>
         </ul>
       </li>
       <li>
         <div class="chi-collection__title">Templates</div>
         <ul class="chi-tabs__subtabs">
           <li>
-            <a href="templates/app-layout">App layout</a>
+            <a :href="`${BASE_URL}templates/app-layout`">App layout</a>
           </li>
           <li>
-            <a href="templates/error-404">Error 404</a>
+            <a :href="`${BASE_URL}templates/error-404`">Error 404</a>
           </li>
           <li>
-            <a href="templates/error-500">Error 500</a>
+            <a :href="`${BASE_URL}templates/error-500`">Error 500</a>
           </li>
-          <li><a href="templates/state">State</a></li>
+          <li><a :href="`${BASE_URL}templates/state`">State</a></li>
         </ul>
       </li>
     </ul>
@@ -159,10 +171,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import ThemeSwitcher from './ThemeSwitcher.vue';
-import {
-  CHI_ROOT_URL,
-  NAVIGATION_COMPONENTS_ITEMS
-} from '../constants/constants';
+import { NAVIGATION_COMPONENTS_ITEMS, BASE_URL } from '../constants/constants';
 
 declare const chi: any;
 
@@ -172,8 +181,8 @@ declare const chi: any;
   },
   data: () => {
     return {
-      NAVIGATION_COMPONENTS_ITEMS,
-      CHI_ROOT_URL
+      BASE_URL,
+      NAVIGATION_COMPONENTS_ITEMS
     };
   }
 })
