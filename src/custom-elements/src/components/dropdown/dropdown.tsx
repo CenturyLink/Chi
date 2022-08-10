@@ -31,7 +31,7 @@ export class Dropdown {
   /**
    * To set the description of Dropdown menu item
    */
-   @Prop() enableDescription?: boolean;
+   @Prop() description?: boolean;
   /**
    * To configure activation on hover of the Dropdown with base-style button trigger
    */
@@ -230,7 +230,7 @@ export class Dropdown {
     ) : null;
     const menu = (
       <div
-        class={`${DROPDOWN_CLASSES.MENU} ${this.active ? ACTIVE_CLASS : ''} ${this.enableDescription ? '-list' : ''}`}
+        class={`${DROPDOWN_CLASSES.MENU} ${this.active ? ACTIVE_CLASS : ''} ${this.description ? '-list' : ''}`}
         ref={ref => (this._dropdownMenuElement = ref)}
       >
         <slot name="menu" />
