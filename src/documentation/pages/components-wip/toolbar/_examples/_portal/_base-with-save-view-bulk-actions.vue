@@ -1,5 +1,5 @@
 <template lang="pug">
-  ComponentExample(title="Base with ribbon and bulk actions" id="base-with-ribbon-and-bulk-actions-portal" additionalClasses="-position--relative" :tabs="exampleTabs")
+  ComponentExample(title="Base with save view and bulk actions" id="base-with-save-view-and-bulk-actions-portal" additionalClasses="-position--relative" :tabs="exampleTabs")
     div(slot="example")
       chi-data-table-toolbar
         template(v-slot:start)
@@ -9,10 +9,10 @@
           .chi-divider.-vertical
           chi-data-table-filters(:filters-data='toolbar.filtersData', :custom-items='toolbar.customItemsData')
             template(v-slot:custom-one)
-              chi-label(for='example__base_with_ribbon_and_bulk_actions_input-1') City
-              chi-text-input#example__base_with_ribbon_and_bulk_actions_input-1
-              chi-label(for='example__base_with_ribbon_and_bulk_actions_input-2') Zip Code
-              chi-text-input#example__base_with_ribbon_and_bulk_actions_input-2
+              chi-label(for='example__base_with_save_view_and_bulk_actions_input-1') City
+              chi-text-input#example__base_with_save_view_and_bulk_actions_input-1
+              chi-label(for='example__base_with_save_view_and_bulk_actions_input-2') Zip Code
+              chi-text-input#example__base_with_save_view_and_bulk_actions_input-2
             template(v-slot:custom-two)
               chi-date-picker
         template(v-slot:end)
@@ -107,10 +107,10 @@ import { exampleToolbar, exampleSaveView } from '../../../../../fixtures/fixture
     <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
       <template v-slot:customAdvanced>
         <div class="chi-form__item">
-          <chi-label for="example__base_with_ribbon_and_bulk_actions_filter_input-1">City</chi-label>
-          <chi-text-input id="example__base_with_ribbon_and_bulk_actions_filter_input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
-          <chi-label for="example__base_with_ribbon_and_bulk_actions_filter_input-2">Zip Code</chi-label>
-          <chi-text-input id="example__base_with_ribbon_and_bulk_actions_filter_input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+          <chi-label for="example__base_with_save_view_and_bulk_actions_filter_input-1">City</chi-label>
+          <chi-text-input id="example__base_with_save_view_and_bulk_actions_filter_input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+          <chi-label for="example__base_with_save_view_and_bulk_actions_filter_input-2">Zip Code</chi-label>
+          <chi-text-input id="example__base_with_save_view_and_bulk_actions_filter_input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
         </div>
       </template>
       <template v-slot:customAdvanced2>
@@ -345,7 +345,7 @@ data: () => {
       <div class="chi-toolbar__search">
         <div class="chi-form__item">
           <chi-search-input
-            id="example__base_with_ribbon_and_bulk_actions"
+            id="example__base_with_save_view_and_bulk_actions"
           ></chi-search-input>
         </div>
       </div>
@@ -355,7 +355,7 @@ data: () => {
           <div class="chi-form__item">
             <select
               class="chi-select"
-              id="example__base_with_ribbon_and_bulk_actions_views-1"
+              id="example__base_with_save_view_and_bulk_actions_views-1"
             >
               <option>View 1</option>
               <option>View 2</option>
@@ -369,7 +369,7 @@ data: () => {
           <div class="chi-form__item">
             <select
               class="chi-select"
-              id="example__base_with_ribbon_and_bulk_actions_filter-select-1"
+              id="example__base_with_save_view_and_bulk_actions_filter-select-1"
             >
               <option value="">Select</option>
               <option>Option 1</option>
@@ -380,7 +380,7 @@ data: () => {
           <div class="chi-form__item">
             <select
               class="chi-select"
-              id="example__base_with_ribbon_and_bulk_actions_filter-select-2"
+              id="example__base_with_save_view_and_bulk_actions_filter-select-2"
             >
               <option value="">Select</option>
               <option>Option 1</option>
@@ -390,7 +390,7 @@ data: () => {
           </div>
           <button
             class="chi-button -icon -flat"
-            id="example__base_with_ribbon_and_bulk_actions_filter_button"
+            id="example__base_with_save_view_and_bulk_actions_filter_button"
             aria-label="Filters"
             data-tooltip="Filters"
             data-position="top"
@@ -403,8 +403,8 @@ data: () => {
         <div class="chi-toolbar__filters-mobile">
           <button
             class="chi-button -icon -flat chi-drawer__trigger"
-            id="example__base_with_ribbon_and_bulk_actions_drawer_trigger-1"
-            data-target="#example__base_with_ribbon_and_bulk_actions_drawer-1"
+            id="example__base_with_save_view_and_bulk_actions_drawer_trigger-1"
+            data-target="#example__base_with_save_view_and_bulk_actions_drawer-1"
             aria-label="Button action"
           >
             <div class="chi-button__content">
@@ -419,7 +419,7 @@ data: () => {
         <div class="chi-toolbar__actions-desktop">
           <button
             class="chi-button -icon -flat"
-            id="example__base_with_ribbon_and_bulk_actions_download_button"
+            id="example__base_with_save_view_and_bulk_actions_download_button"
             aria-label="Download"
             data-tooltip="Download"
             data-position="top"
@@ -433,7 +433,7 @@ data: () => {
           </button>
           <button
             class="chi-button -icon -flat"
-            id="example__base_with_ribbon_and_bulk_actions_refresh_button"
+            id="example__base_with_save_view_and_bulk_actions_refresh_button"
             aria-label="Refresh"
             data-tooltip="Refresh"
             data-position="top"
@@ -444,7 +444,7 @@ data: () => {
           </button>
           <button
             class="chi-button -icon -flat"
-            id="example__base_with_ribbon_and_bulk_actions_column_customization_button"
+            id="example__base_with_save_view_and_bulk_actions_column_customization_button"
             aria-label="Column Customization"
             data-tooltip="Column Customization"
             data-position="top"
@@ -460,8 +460,8 @@ data: () => {
         <div class="chi-toolbar__actions-mobile">
           <button
             class="chi-button -icon -flat chi-drawer__trigger"
-            id="example__base_with_ribbon_and_bulk_actions_drawer_trigger-2"
-            data-target="#example__base_with_ribbon_and_bulk_actions_drawer-2"
+            id="example__base_with_save_view_and_bulk_actions_drawer_trigger-2"
+            data-target="#example__base_with_save_view_and_bulk_actions_drawer-2"
             aria-label="Button action"
           >
             <div class="chi-button__content">
@@ -479,7 +479,7 @@ data: () => {
   <div class="chi-backdrop__wrapper">
     <div
       class="chi-drawer -left -menu -position--absolute"
-      id="example__base_with_ribbon_and_bulk_actions_drawer-1"
+      id="example__base_with_save_view_and_bulk_actions_drawer-1"
     >
       <div class="chi-drawer__header">
         <span class="chi-drawer__title">Filters</span>
@@ -493,12 +493,12 @@ data: () => {
         <div class="chi-form__item -mb--2">
           <label
             class="chi-label"
-            for="example__base_with_ribbon_and_bulk_actions_drawer-1_label-1"
+            for="example__base_with_save_view_and_bulk_actions_drawer-1_label-1"
             >Label</label
           >
           <select
             class="chi-select"
-            id="example__base_with_ribbon_and_bulk_actions_drawer-1_select-1"
+            id="example__base_with_save_view_and_bulk_actions_drawer-1_select-1"
           >
             <option value="">Select</option>
             <option>Option 1</option>
@@ -509,12 +509,12 @@ data: () => {
         <div class="chi-form__item -mb--2">
           <label
             class="chi-label"
-            for="example__base_with_ribbon_and_bulk_actions_drawer-1_label-2"
+            for="example__base_with_save_view_and_bulk_actions_drawer-1_label-2"
             >Label</label
           >
           <select
             class="chi-select"
-            id="example__base_with_ribbon_and_bulk_actions_drawer-1_select-2"
+            id="example__base_with_save_view_and_bulk_actions_drawer-1_select-2"
           >
             <option value="">Select</option>
             <option>Option 1</option>
@@ -525,12 +525,12 @@ data: () => {
         <div class="chi-form__item -mb--2">
           <label
             class="chi-label"
-            for="example__base_with_ribbon_and_bulk_actions_drawer-1_label-3"
+            for="example__base_with_save_view_and_bulk_actions_drawer-1_label-3"
             >Label</label
           >
           <select
             class="chi-select"
-            id="example__base_with_ribbon_and_bulk_actions_drawer-1_select-3"
+            id="example__base_with_save_view_and_bulk_actions_drawer-1_select-3"
           >
             <option value="">Select</option>
             <option>Option 1</option>
@@ -541,12 +541,12 @@ data: () => {
         <div class="chi-form__item -mb--2">
           <label
             class="chi-label"
-            for="example__base_with_ribbon_and_bulk_actions_drawer-1_label-4"
+            for="example__base_with_save_view_and_bulk_actions_drawer-1_label-4"
             >Label</label
           >
           <select
             class="chi-select"
-            id="example__base_with_ribbon_and_bulk_actions_drawer-1_select-4"
+            id="example__base_with_save_view_and_bulk_actions_drawer-1_select-4"
           >
             <option value="">Select</option>
             <option>Option 1</option>
@@ -566,7 +566,7 @@ data: () => {
   <div class="chi-backdrop__wrapper">
     <div
       class="chi-drawer -right -menu -position--absolute"
-      id="example__base_with_ribbon_and_bulk_actions_drawer-2"
+      id="example__base_with_save_view_and_bulk_actions_drawer-2"
     >
       <div class="chi-drawer__header">
         <span class="chi-drawer__title">Actions</span>
@@ -587,7 +587,7 @@ data: () => {
     </div>
   </div>
   </div>
-  <div class="chi-toolbar__ribbon">
+  <div class="chi-toolbar__save_view">
   <div class="chi-toolbar__start">
     <i class="chi-icon icon-arrow-down -xs" aria-hidden="true"></i>
     <div class="chi-toolbar__results">
@@ -685,13 +685,13 @@ data: () => {
 
 <!-- Javascript -->
 <script>
-  chi.drawer(document.getElementById('example__base_with_ribbon_and_bulk_actions_drawer_trigger-1'));
-  chi.drawer(document.getElementById('example__base_with_ribbon_and_bulk_actions_drawer_trigger-2'));
+  chi.drawer(document.getElementById('example__base_with_save_view_and_bulk_actions_drawer_trigger-1'));
+  chi.drawer(document.getElementById('example__base_with_save_view_and_bulk_actions_drawer_trigger-2'));
   chi.tooltip(document.querySelectorAll('[data-tooltip]'));
 <\/script>`
       }
     };
   }
 })
-export default class BaseWithRibbonAndBulkActionsPortal extends Vue {}
+export default class BaseWithSaveViewAndBulkActionsPortalBrightSpeed extends Vue {}
 </script>

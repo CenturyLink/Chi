@@ -1,5 +1,5 @@
 <template lang="pug">
-  ComponentExample(:title="title" :id="id" :tabs="exampleTabs")
+  ComponentExample(title="Base with save view" :id="id" :tabs="exampleTabs")
     div(slot="example")
       chi-data-table-toolbar
         template(v-slot:start)
@@ -41,7 +41,7 @@ import { exampleToolbar, exampleSaveView } from '../../../../fixtures/fixtures';
     return {
       toolbar: exampleToolbar,
       saveView: exampleSaveView,
-      id: 'base_with_ribbon_save_view',
+      id: 'base_with_save_view',
       exampleTabs: [
         {
           disabled: true,
@@ -64,17 +64,8 @@ import { exampleToolbar, exampleSaveView } from '../../../../fixtures/fixtures';
       }
     };
   },
-  computed: {
-    title() {
-      const portalTitle = 'Base with Save view (Base mode)';
-      const baseTitle = 'Base with ribbon';
-
-      return this.$props.theme === 'portal' ? portalTitle : baseTitle;
-    },
-  },
-  props: ['theme']
 })
-export default class BaseWithRibbonSaveView extends Vue {
+export default class BaseWithSaveView extends Vue {
   created() {
     this._setCodeSnippets();
   }

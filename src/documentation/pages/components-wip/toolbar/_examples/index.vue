@@ -3,21 +3,21 @@
     h2 Examples
     client-only(placeholder="loading...")
       Base
-      BaseWithRibbonSaveView(:theme="$store.state.themes.theme")
-      BaseWithRibbonAndBulkActionsPortal(v-if="$store.state.themes.theme === 'portal'")
+      BaseWithSaveView
+      BaseWithSaveViewAndBulkActionsPortalBrightSpeed(v-if="['portal', 'brightspeed'].includes($store.state.themes.theme)")
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Base from './_base.vue';
-import BaseWithRibbonSaveView from './_base-with-ribbon-save-view.vue';
-import BaseWithRibbonAndBulkActionsPortal from './_portal/_base-with-ribbon-bulk-actions.vue';
+import BaseWithSaveView from './_base-with-save-view.vue';
+import BaseWithSaveViewAndBulkActionsPortalBrightSpeed from './_portal/_base-with-save-view-bulk-actions.vue';
 
 @Component({
   components: {
     Base,
-    BaseWithRibbonSaveView,
-    BaseWithRibbonAndBulkActionsPortal
+    BaseWithSaveView,
+    BaseWithSaveViewAndBulkActionsPortalBrightSpeed
   }
 })
 export default class Examples extends Vue {}
