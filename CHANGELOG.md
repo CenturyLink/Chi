@@ -1,4 +1,9 @@
 # CHANGELOG
+## 5.17.0 (August 4, 2022)
+### Components
+#### Added
+* Added: Icons `icon-circle-pie`, `icon-cloud-outline`, `icon-cloud-products`, `icon-dashboard`, `icon-edit-reload`, and `icon-file-invoice-gear`.
+
 ## 5.16.0 (July 15, 2022)
 ### Components
 #### Added
