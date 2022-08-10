@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Disabled" id="date-disabled" :tabs="exampleTabs">
+  <ComponentExample title="Disabled" id="date-disabled" :tabs="exampleTabs" additionalStyle="z-index: 1;">
     div(style="max-width: 14rem;" slot="example")
       chi-label(for='example__datepicker_date_2') Date
       chi-date-picker(id="example__datepicker_date_2", disabled)
