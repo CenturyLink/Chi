@@ -445,7 +445,6 @@ h3 Positioning
       <script>chi.dropdown(document.querySelectorAll('.chi-dropdown .chi-dropdown__trigger'));</script>
 
 h2 Menu
-
 h3 Menu item states
 p.-text
   | Menu items support the following states: <code>initial</code>, <code>active</code>, <code>disabled</code> and
@@ -466,7 +465,7 @@ p.-text
         a(href=`#html-states`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-states
     :code(lang="html")
-      <chi-dropdown active prevent-auto-hide>
+      <chi-dropdown active>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item</a>
         <a class="chi-dropdown__menu-item -active" href="#" slot="menu">Active item</a>
         <a class="chi-dropdown__menu-item -disabled" href="#" slot="menu">Disabled Item</a>
@@ -485,7 +484,7 @@ h3 Description
 .example.-mb--3
   .-p--3(style="background-color:#eee;")
     .chi-col.-w--12.-w-sm--7.-w-md--8.-w-lg--6.-w-xl--4
-      chi-dropdown(active enable-description prevent-auto-hide)
+      chi-dropdown(active description prevent-auto-hide)
         a.chi-dropdown__menu-item(href='#' slot='menu')
           span.chi-dropdown__menu-item_title(slot='menu') Item
           span.chi-dropdown__menu-item_text(slot='menu') Item description
@@ -506,7 +505,7 @@ h3 Description
         a(href=`#html-states-description`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-states-description
     :code(lang="html")
-      <chi-dropdown active enable-description prevent-auto-hide>
+      <chi-dropdown active description>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">
           <span class="chi-dropdown__menu-item_title" slot="menu">Item</span>
           <span class="chi-dropdown__menu-item_text" slot="menu">Item description</span>
@@ -565,7 +564,7 @@ p.-text
         a(href=`#html-states-divider`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-states-divider
     :code(lang="html")
-      <chi-dropdown active prevent-auto-hide>
+      <chi-dropdown active>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
@@ -617,7 +616,7 @@ p.-text
           a(href=`#html-states-icons`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-states-icons
       :code(lang="html")
-        <chi-dropdown active prevent-auto-hide>
+        <chi-dropdown active>
           <a class="chi-dropdown__menu-item" href="#" slot="menu">
             <i class="chi-icon icon-file-outline" aria-hidden="true"></i>
             New
@@ -678,7 +677,11 @@ p.-text
   .-p--3(style="background-color:#eee;")
     .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
       chi-dropdown(active prevent-auto-hide)
-        chi-text-input(id='search' value='Search' size='sm' slot='menu' icon-right='search' class='-px--1')
+        .chi-input__wrapper.-icon--right(slot="menu")
+          input.chi-input.chi-search__input.-sm(type="search" placeholder="Search" aria-label="search input")
+          button.chi-button.-icon.-flat.-sm.-bg--none(aria-label="Search")
+            .chi-button__content
+              i.chi-icon.icon-search(aria-hidden="true")
         a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
         a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
         a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
@@ -691,8 +694,15 @@ p.-text
         a(href=`#html-search`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-search
     :code(lang="html")
-      <chi-dropdown active prevent-auto-hide>
-        <chi-text-input class="-px--1" id="search" value="Search" size="sm" slot="menu" icon-right="search"></chi-text-input>
+      <chi-dropdown active>
+         <div class="chi-input__wrapper -icon--right" slot="menu">
+          <input class="chi-input chi-search__input -sm" type="search" placeholder="Search" aria-label="search input" />
+          <button class="chi-button -icon -flat -sm -bg--none" aria-label="Search">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-search" aria-hidden="true"></i>
+            </div>
+          </button>
+        </div>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
@@ -704,7 +714,9 @@ p.-text
         <div class="chi-input__wrapper -icon--right">
           <input class="chi-input chi-search__input -sm" type="search" placeholder="Search" aria-label="search input" />
           <button class="chi-button -icon -flat -sm -bg--none" aria-label="Search">
-            <div class="chi-button__content"><i class="chi-icon icon-search" aria-hidden="true"></i></div>
+            <div class="chi-button__content">
+              <i class="chi-icon icon-search" aria-hidden="true"></i>
+            </div>
           </button>
         </div>
         <a class="chi-dropdown__menu-item" href="#">Item 1</a>
@@ -719,13 +731,13 @@ h4 Base
   .-p--3(style="background-color:#eee;")
     .chi-col.-w--7.-w-sm--4.-w-md--5.-w-lg--3
       chi-dropdown(active prevent-auto-hide)
-        div.chi-dropdown__menu-item(slot='menu')
+        .chi-dropdown__menu-item(slot='menu')
           chi-checkbox(id='checkbox1' label='Item 1')
-        div.chi-dropdown__menu-item(slot='menu')
+        .chi-dropdown__menu-item(slot='menu')
           chi-checkbox(id='checkbox2' label='Item 2' disabled)
-        div.chi-dropdown__menu-item(slot='menu')
+        .chi-dropdown__menu-item(slot='menu')
           chi-checkbox(id='checkbox3' label='Item 3' checked)
-        div.chi-dropdown__menu-item(slot='menu')
+        .chi-dropdown__menu-item(slot='menu')
           chi-checkbox(id='checkbox4' label='Item 4')
   .example-tabs.-pl--2
     ul.chi-tabs#example-checkbox
@@ -735,7 +747,7 @@ h4 Base
         a(href=`#html-checkbox`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-checkbox
     :code(lang="html")
-      <chi-dropdown active prevent-auto-hide>
+      <chi-dropdown active>
         <div class="chi-dropdown__menu-item" slot="menu">
           <chi-checkbox id="checkbox1" label="Item 1"></chi-checkbox>
         </div>
@@ -783,14 +795,30 @@ h4 With Icons
   .-p--3(style="background-color:#eee;")
     .chi-col.-w--10.-w-sm--6.-w-md--7.-w-lg--5.-w-xl--3
       chi-dropdown(active prevent-auto-hide)
-        div.chi-dropdown__menu-item(slot='menu')
-          chi-checkbox(id='checkbox1' label='Item 1' icon-checkbox='logo-centurylink')
-        div.chi-dropdown__menu-item(slot='menu')
-          chi-checkbox(id='checkbox2' label='Item 2' disabled icon-checkbox='logo-centurylink')
-        div.chi-dropdown__menu-item(slot='menu')
-          chi-checkbox(id='checkbox3' label='Item 3' checked icon-checkbox='logo-centurylink')
-        div.chi-dropdown__menu-item(slot='menu')
-          chi-checkbox(id='checkbox4' label='Item 4' icon-checkbox='logo-centurylink')
+        .chi-dropdown__menu-item(slot='menu')
+          .chi-checkbox
+            input.chi-checkbox__input(type="checkbox" id="checkbox1")
+            label.chi-checkbox__label(for="checkbox1")
+              i.chi-icon.icon-logo-centurylink(aria-hidden="true")
+              | Item 1
+        .chi-dropdown__menu-item(slot='menu')
+         .chi-checkbox
+            input.chi-checkbox__input(type="checkbox" id="checkbox2" disabled)
+            label.chi-checkbox__label(for="checkbox2")
+              i.chi-icon.icon-logo-centurylink(aria-hidden="true")
+              | Item 2
+        .chi-dropdown__menu-item(slot='menu')
+          .chi-checkbox
+            input.chi-checkbox__input(type="checkbox" id="checkbox3" checked)
+            label.chi-checkbox__label(for="checkbox3")
+              i.chi-icon.icon-logo-centurylink(aria-hidden="true")
+              | Item 3
+        .chi-dropdown__menu-item(slot='menu')
+          .chi-checkbox
+            input.chi-checkbox__input(type="checkbox" id="checkbox4")
+            label.chi-checkbox__label(for="checkbox4")
+              i.chi-icon.icon-logo-centurylink(aria-hidden="true")
+              | Item 4
   .example-tabs.-pl--2
     ul.chi-tabs#example-checkbox-icons
       li.-active
@@ -799,18 +827,41 @@ h4 With Icons
         a(href=`#html-checkbox-icons`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-checkbox-icons
     :code(lang="html")
-      <chi-dropdown active prevent-auto-hide>
+      <chi-dropdown active>
         <div class="chi-dropdown__menu-item" slot="menu">
-          <chi-checkbox id="checkbox1" label="Item 1" icon-checkbox="logo-centurylink"></chi-checkbox>
+          <div class="chi-checkbox">
+            <input class="chi-checkbox__input" type="checkbox" id="checkbox1">
+            <label class="chi-checkbox__label" for="checkbox1">
+              <i class="chi-icon icon-logo-centurylink" aria-hidden="true"></i>
+              Item 1
+            </label>
+          </div>
         </div>
         <div class="chi-dropdown__menu-item" slot="menu">
-          <chi-checkbox id="checkbox2" label="Item 2" disabled icon-checkbox="logo-centurylink"></chi-checkbox>
+          <div class="chi-checkbox">
+            <input class="chi-checkbox__input" type="checkbox" id="checkbox2" disabled>
+            <label class="chi-checkbox__label" for="checkbox2">
+              <i class="chi-icon icon-logo-centurylink" aria-hidden="true"></i>
+              Item 2
+            </label>
+          </div>
         </div>
         <div class="chi-dropdown__menu-item" slot="menu">
-          <chi-checkbox id="checkbox3" label="Item 3" checked icon-checkbox="logo-centurylink"></chi-checkbox>
-        </div>
+          <div class="chi-checkbox">
+            <input class="chi-checkbox__input" type="checkbox" id="checkbox3" checked>
+            <label class="chi-checkbox__label" for="checkbox3">
+              <i class="chi-icon icon-logo-centurylink" aria-hidden="true"></i>
+              Item 3
+            </label>
+          </div>
         <div class="chi-dropdown__menu-item" slot="menu">
-          <chi-checkbox id="checkbox4" label="Item 4" icon-checkbox="logo-centurylink"></chi-checkbox>
+         <div class="chi-checkbox">
+            <input class="chi-checkbox__input" type="checkbox" id="checkbox4">
+            <label class="chi-checkbox__label" for="checkbox4">
+              <i class="chi-icon icon-logo-centurylink" aria-hidden="true"></i>
+              Item 4
+            </label>
+          </div>
         </div>
       </chi-dropdown>
   .chi-tabs-panel#html-checkbox-icons
@@ -884,7 +935,7 @@ h3 Radio Buttons
         a(href=`#html-radio`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-radio
     :code(lang="html")
-      <chi-dropdown active prevent-auto-hide>
+      <chi-dropdown active>
         <legend class="chi-dropdown__menu-item" slot="menu">Select an option</legend>
         <div class="chi-dropdown__menu-item" slot="menu">
           <div class="chi-radio">
@@ -964,7 +1015,7 @@ h3 Range Input
         a(href=`#html-range`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-range
     :code(lang="html")
-      <chi-dropdown active prevent-auto-hide>
+      <chi-dropdown active>
         <div class="chi-dropdown__menu-item" slot="menu">
           <span class="-text -mr--2">200GB</span>
           <input class="chi-input" type="range" aria-label="Range description" />
@@ -1026,7 +1077,7 @@ h3 Toggle Switch
         a(href=`#html-switch`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-switch
     :code(lang="html")
-      <chi-dropdown active prevent-auto-hide>
+      <chi-dropdown active>
         <legend class="chi-dropdown__menu-item" slot="menu">Configure options</legend>
         <div class="chi-dropdown__menu-item" slot="menu">
           <div class="chi-form__item">
@@ -1121,7 +1172,7 @@ p.-text Use a <code>span</code> tag to include text without rendering as a link.
         a(href=`#html-text`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-text
     :code(lang="html")
-      <chi-dropdown active prevent-auto-hide>
+      <chi-dropdown active>
         <span class="chi-dropdown__menu-item" href="#" slot="menu">Text 1</span>
         <span class="chi-dropdown__menu-item" href="#" slot="menu">Text 2</span>
         <span class="chi-dropdown__menu-item" href="#" slot="menu">Text 3</span>

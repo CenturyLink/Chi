@@ -12,7 +12,8 @@ import Popper, { Placement } from 'popper.js';
 import {
   ACTIVE_CLASS,
   ANIMATE_CLASS,
-  DROPDOWN_CLASSES
+  DROPDOWN_CLASSES,
+  LIST_CLASS
 } from '../../constants/classes';
 import { DROPDOWN_EVENTS } from '../../constants/events';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
@@ -29,9 +30,9 @@ export class Dropdown {
    */
   @Prop() active: boolean;
   /**
-   * To set the description of Dropdown menu item
+   * To enable the description of Dropdown menu item
    */
-   @Prop() description?: boolean;
+  @Prop() description?: boolean;
   /**
    * To configure activation on hover of the Dropdown with base-style button trigger
    */
@@ -218,9 +219,11 @@ export class Dropdown {
       <chi-button
         onChiClick={this.handlerClickTrigger}
         onChiMouseEnter={this.handlerMouseEnter}
-        extra-class={`${DROPDOWN_CLASSES.TRIGGER} ${
-          this.active ? ACTIVE_CLASS : ''
-        } ${this.animateChevron ? ANIMATE_CLASS : ''}`}
+        extra-class={`
+          ${DROPDOWN_CLASSES.TRIGGER} 
+          ${this.active ? ACTIVE_CLASS : ''} 
+          ${this.animateChevron ? ANIMATE_CLASS : ''}
+        `}
         ref={ref => (this._referenceElement = ref)}
       >
         {this.button}
@@ -230,7 +233,11 @@ export class Dropdown {
     ) : null;
     const menu = (
       <div
-        class={`${DROPDOWN_CLASSES.MENU} ${this.active ? ACTIVE_CLASS : ''} ${this.description ? '-list' : ''}`}
+        class={`
+          ${DROPDOWN_CLASSES.MENU} 
+          ${this.active ? ACTIVE_CLASS : ''} 
+          ${this.description ? LIST_CLASS : ''}
+        `}
         ref={ref => (this._dropdownMenuElement = ref)}
       >
         <slot name="menu" />
