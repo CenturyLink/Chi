@@ -1,4 +1,11 @@
 # CHANGELOG
+## 5.18.0 (August 12, 2022)
+### Components
+#### Added
+* Added: Dropdown web component.
+#### Fixed
+* Fixed: Draggable Popover improved behavior by not allowing it to move outside the available boundaries of the screen.
+
 ## 5.17.0 (August 4, 2022)
 ### Components
 #### Added
