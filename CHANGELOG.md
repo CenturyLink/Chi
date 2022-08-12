@@ -3,8 +3,10 @@
 ### Components
 #### Added
 * Added: Dropdown web component.
+#### Changed
+* Changed: Improved size and color contrast of drag icon in Draggable Popover.
 #### Fixed
-* Fixed: Draggable Popover improved behavior by not allowing it to move outside the available boundaries of the screen.
+* Fixed: Draggable Popover behavior has been improved to no longer move outside the available boundaries of the screen.
 
 ## 5.17.0 (August 4, 2022)
 ### Components
