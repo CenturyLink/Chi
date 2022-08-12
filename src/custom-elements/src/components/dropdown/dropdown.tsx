@@ -11,7 +11,9 @@ import {
 import Popper, { Placement } from 'popper.js';
 import {
   ACTIVE_CLASS,
-  DROPDOWN_CLASSES
+  ANIMATE_CLASS,
+  DROPDOWN_CLASSES,
+  LIST_CLASS
 } from '../../constants/classes';
 import { DROPDOWN_EVENTS } from '../../constants/events';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
@@ -28,6 +30,10 @@ export class Dropdown {
    */
   @Prop() active: boolean;
   /**
+   * To enable the description of Dropdown menu item
+   */
+  @Prop() description?: boolean;
+  /**
    * To configure activation on hover of the Dropdown with base-style button trigger
    */
   @Prop() hover: boolean;
@@ -35,6 +41,10 @@ export class Dropdown {
    * To provide the value of base-style button as trigger of the Dropdown
    */
   @Prop() button?: string;
+  /**
+   * To animate the chevron of Dropdown
+   */
+  @Prop() animateChevron?: boolean;
   /**
    * To set position of the Dropdown
    */
@@ -169,6 +179,9 @@ export class Dropdown {
     }
   };
 
+  /**
+   * Hides the dropdown
+   */
   @Method()
   async hide() {
     this._dropdownMenuElement.style.display = 'none';
@@ -176,6 +189,9 @@ export class Dropdown {
     this.emitHide();
   }
 
+  /**
+   * Shows the dropdown
+   */
   @Method()
   async show() {
     this._dropdownMenuElement.style.display = 'block';
@@ -186,6 +202,9 @@ export class Dropdown {
     this.emitShow();
   }
 
+  /**
+   * Toggles active state (show/hide)
+   */
   @Method()
   async toggle() {
     if (this.active) {
@@ -200,9 +219,11 @@ export class Dropdown {
       <chi-button
         onChiClick={this.handlerClickTrigger}
         onChiMouseEnter={this.handlerMouseEnter}
-        extra-class={`${DROPDOWN_CLASSES.TRIGGER} ${
-          this.active ? ACTIVE_CLASS : ''
-        }`}
+        extra-class={`
+          ${DROPDOWN_CLASSES.TRIGGER} 
+          ${this.active ? ACTIVE_CLASS : ''} 
+          ${this.animateChevron ? ANIMATE_CLASS : ''}
+        `}
         ref={ref => (this._referenceElement = ref)}
       >
         {this.button}
@@ -212,7 +233,11 @@ export class Dropdown {
     ) : null;
     const menu = (
       <div
-        class={`${DROPDOWN_CLASSES.MENU} ${this.active ? ACTIVE_CLASS : ''}`}
+        class={`
+          ${DROPDOWN_CLASSES.MENU} 
+          ${this.active ? ACTIVE_CLASS : ''} 
+          ${this.description ? LIST_CLASS : ''}
+        `}
         ref={ref => (this._dropdownMenuElement = ref)}
       >
         <slot name="menu" />
