@@ -144,6 +144,10 @@ $flex-basis-a: 5;
   flex-basis: auto !important;
 }
 
+.-flex-basis--0 {
+  flex-basis: 0 !important;
+}
+
 @each $size in sm md lg xl {
   @include respond-to($size) {
     $flex-basis-b: 5;
@@ -157,6 +161,10 @@ $flex-basis-a: 5;
 
     .-flex-basis-#{$size}--auto {
       flex-basis: auto !important;
+    }
+
+    .-flex-basis-#{$size}--0 {
+      flex-basis: 0 !important;
     }
   }
 }
