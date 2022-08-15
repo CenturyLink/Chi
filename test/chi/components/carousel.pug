@@ -2,13 +2,13 @@
 title: Carousel
 ---
 
-.test-base
+.test-base(style="max-width: 55rem;")
   h2 Base
   .chi-carousel
     .chi-carousel__content
       .chi-carousel__wrapper(style='transform: translateX(0px);')
         .-d--flex(slot='items')
-          each item in [1, 2, 3]
+          each item in [1, 2, 3, 4]
             .chi-carousel__item.-p--1(style='width: 18.1rem; height: 7rem;')
               .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
     .chi-carousel__control.-previous
@@ -24,13 +24,14 @@ title: Carousel
             svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
               use(xlink:href='#icon-chevron-right')
 
-.test-single
+.test-single(style="max-width: 55rem;")
   h2 Single
   .chi-carousel
     .chi-carousel__content
       .chi-carousel__wrapper.-d--flex(style='transform: translateX(0px);')
-        .chi-carousel__item.-p--1(style='height: 10rem; width: 858px;', slot='items')
-          .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center 1
+        each item in [1, 2]
+          .chi-carousel__item.-p--1(style='height: 10rem; width: 858px;', slot='items')
+            .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
     .chi-carousel__control.-previous
       button.chi-button.-float.-sm.-disabled(disabled='', aria-label='Carousel previous', style="border: none")
         .chi-button__content
@@ -52,7 +53,7 @@ title: Carousel
     .chi-carousel__content
       .chi-carousel__wrapper(style='transform: translateX(0px);')
         .-d--flex(slot='items')
-          each item in [1, 2, 3]
+          each item in [1, 2, 3, 4, 5]
             .chi-carousel__item.-p--1(style='width: 18.1rem; height: 7rem;')
               .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
     .chi-carousel__control.-previous
@@ -78,8 +79,9 @@ title: Carousel
     .chi-carousel__content
       .chi-carousel__wrapper.-d--flex(style='transform: translateX(0px);')
         .-d--flex(slot='items')
-          .chi-carousel__item.-p--1(style='width: 858px; height: 7rem;')
-            .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center 1
+          each item in [1, 2, 3]
+            .chi-carousel__item.-p--1(style='width: 858px; height: 7rem;')
+              .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center 1
     .chi-carousel__control.-previous
       button.chi-button.-float.-sm.-disabled(disabled='', aria-label='Carousel previous', style="border: none")
         .chi-button__content
