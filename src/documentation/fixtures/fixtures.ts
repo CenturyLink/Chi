@@ -311,43 +311,16 @@ const customItems = [
 
 const filters = [
   {
-    name: 'status',
-    type: 'select',
-    id: 'myoption1',
-    label: 'Selector',
-    options: [
-      {
-        label: 'Active',
-        value: 'active'
-      },
-      {
-        label: 'Inactive',
-        value: 'inactive'
-      }
-    ],
-    value: 'active'
-  },
-  {
-    name: 'input',
-    placeholder: 'Input filter',
-    type: 'input',
-    value: '',
-    id: 'myoption2',
-    label: 'Input Filter'
-  },
-  {
-    name: 'checkbox',
-    type: 'checkbox',
-    checked: false,
-    id: 'myoption3',
-    label: 'Checkbox'
-  },
-  {
     name: 'statusAdvanced',
     label: 'Status',
     type: 'select',
-    id: 'myoption4',
+    id: 'myoption1',
     options: [
+      {
+        label: 'Pending Active',
+        value: 'pending',
+        selected: false
+      },
       {
         label: 'Active',
         value: 'active',
@@ -360,24 +333,24 @@ const filters = [
       }
     ],
     advanced: true,
-    value: 'active'
+    value: 'pending'
   },
   {
     name: 'inputAdvanced',
     label: 'Label',
-    id: 'myoption5',
+    id: 'myoption2',
     advanced: true
   },
   {
     name: 'textareaAdvanced',
     label: 'textarea',
-    id: 'myoption6',
+    id: 'myoption3',
     type: 'textarea',
     advanced: true
   },
   {
     name: 'checkboxAdvanced',
-    id: 'myoption7',
+    id: 'myoption4',
     label: 'Advanced Checkbox',
     type: 'checkbox',
     advanced: true

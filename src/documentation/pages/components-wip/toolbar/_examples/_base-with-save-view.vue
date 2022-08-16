@@ -7,16 +7,31 @@
           .chi-divider.-vertical
           chi-data-table-views(:views='toolbar.viewsData')
           .chi-divider.-vertical
-          chi-data-table-filters(:filters-data='toolbar.filtersData', :custom-items='toolbar.customItemsData')
-            template(v-slot:custom-one)
-              chi-label(for=`example__${id}_filter_input-1`) City
-              chi-text-input(id=`example__${id}_filter_input-1`)
-              chi-label(for=`example__${id}_filter_input-2`) Zip Code
-              chi-text-input(id=`example__${id}_filter_input-2`)
-            template(v-slot:custom-two)
-            chi-date-picker
+          .chi-form__item.-ml--1
+            select.chi-select
+              option Pending Active
+              option Active
+              option Inactive
+          chi-tooltip(message="Filters")
+            chi-data-table-filters(:filters-data='toolbar.filtersData', :custom-items='toolbar.customItemsData')
+              template(v-slot:custom-one)
+                chi-label(for=`example__${id}_filter_input-1`) City
+                chi-text-input(id=`example__${id}_filter_input-1`)
+                chi-label(for=`example__${id}_filter_input-2`) Zip Code
+                chi-text-input(id=`example__${id}_filter_input-2`)
+              template(v-slot:custom-two)
+                chi-date-picker
         template(v-slot:end)
-          chi-column-customization(:columns-data='toolbar.columnsData')
+          chi-tooltip(message="Refresh")
+            button.chi-button.-icon.-flat(aria-label="Refresh")
+              .chi-button__content
+                i.chi-icon.icon-refresh(aria-hidden="true")
+          chi-tooltip(message="Download")
+            button.chi-button.-icon.-flat(aria-label="Download")
+              .chi-button__content
+                i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
+          chi-tooltip(message="Column Customization")
+            chi-column-customization(:columns-data='toolbar.columnsData')
       chi-save-view(:active="saveView.active" :default="saveView.default" :mode="saveView.mode" :results="saveView.results" :title="saveView.title")
     pre(class="language-html" slot="code-webcomponent")
       code(v-highlight="$data.codeSnippets.webcomponent" class="html")
@@ -79,24 +94,49 @@ export default class BaseWithSaveView extends Vue {
     <!-- To render views, use Views sub-module of Toolbar -->
     <ChiDataTableViews :views="toolbar.viewsData" />
     <div class="chi-divider -vertical"></div>
+    <div class="chi-form__item -ml--1>
+      <select class="chi-select">
+        <option>Pending Active</option>
+        <option>Active</option>
+        <option>Inactive</option>
+      </select>
+    </div>
     <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
-    <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
-      <template v-slot:customAdvanced>
-        <div class="chi-form__item">
-          <chi-label for="example__${this.$data.id}_filter_input-1">City</chi-label>
-          <chi-text-input id="example__${this.$data.id}_filter_input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
-          <chi-label for="example__${this.$data.id}_filter_input-2">Zip Code</chi-label>
-          <chi-text-input id="example__${this.$data.id}_filter_input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
-        </div>
-      </template>
-      <template v-slot:customAdvanced2>
-        <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
-      </template>
-    </ChiDataTableFilters>
+    <ChiTooltip message="Filters">
+      <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
+        <template v-slot:customAdvanced>
+          <div class="chi-form__item">
+            <chi-label for="example__${this.$data.id}_filter_input-1">City</chi-label>
+            <chi-text-input id="example__${this.$data.id}_filter_input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+            <chi-label for="example__${this.$data.id}_filter_input-2">Zip Code</chi-label>
+            <chi-text-input id="example__${this.$data.id}_filter_input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+          </div>
+        </template>
+        <template v-slot:customAdvanced2>
+          <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
+        </template>
+      </ChiDataTableFilters>
+    </ChiTooltip>
   </template>
   <template v-slot:end>
+    <ChiTooltip message="Refresh">
+      <button class="chi-button -icon -flat" aria-label="Refresh">
+        <div class="chi-button__content">
+          <i class="chi-icon icon-refresh" aria-hidden="true"></i>
+        </div>
+      </button>
+    </ChiTooltip>
+    <ChiTooltip message="Download">
+      <button class="chi-button -icon -flat" aria-label="Download">
+        <div class="chi-button__content">
+          <i class="chi-icon icon-arrow-to-bottom" aria-hidden="true"></i>
+        </div>
+      </button>
+    </ChiTooltip>
     <!-- To enable customization of columns, use Column Customization sub-module of Toolbar by providing it with respective data -->
-    <ChiColumnCustomization :columnsData="toolbar.columnsData" />
+    <ChiTooltip message="Column Customization">
+      <ChiColumnCustomization :columnsData="toolbar.columnsData" />
+    </ChiTooltip>
   </template>
 </ChiDataTableToolbar>
 <ChiSaveView :active="saveView.active" :default="saveView.default" :mode="saveView.mode" :results="saveView.results" :title="saveView.title"></ChiSaveView>
@@ -274,7 +314,7 @@ data: () => {
     <div class="chi-toolbar__start">
       <div class="chi-toolbar__search">
         <div class="chi-form__item">
-            <chi-search-input id="example__${this.$data.id}"></chi-search-input>
+          <chi-search-input id="example__${this.$data.id}"></chi-search-input>
         </div>
       </div>
       <div class="chi-divider -vertical"></div>
@@ -289,6 +329,13 @@ data: () => {
         </div>
       </div>
       <div class="chi-divider -vertical"></div>
+      <div class="chi-form__item -ml--1>
+        <select class="chi-select">
+          <option>Pending Active</option>
+          <option>Active</option>
+          <option>Inactive</option>
+        </select>
+      </div>
       <div class="chi-toolbar__filters">
         <div class="chi-toolbar__filters-desktop">
           <div class="chi-form__item">
@@ -325,14 +372,14 @@ data: () => {
     <div class="chi-toolbar__end">
       <div class="chi-toolbar__actions">
         <div class="chi-toolbar__actions-desktop">
-          <button class="chi-button -icon -flat" id="example__${this.$data.id}_download_button" aria-label="Download" data-tooltip="Download" data-position="top">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-arrow-to-bottom" aria-hidden="true"></i>
-            </div>
-          </button>
           <button class="chi-button -icon -flat" id="example__${this.$data.id}_refresh_button" aria-label="Refresh" data-tooltip="Refresh" data-position="top">
             <div class="chi-button__content">
               <i class="chi-icon icon-refresh" aria-hidden="true"></i>
+            </div>
+          </button>
+          <button class="chi-button -icon -flat" id="example__${this.$data.id}_download_button" aria-label="Download" data-tooltip="Download" data-position="top">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-arrow-to-bottom" aria-hidden="true"></i>
             </div>
           </button>
           <button class="chi-button -icon -flat" id="example__${this.$data.id}_column_customization_button" aria-label="Column Customization" data-tooltip="Column Customization" data-position="top">
