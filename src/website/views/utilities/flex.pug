@@ -431,12 +431,14 @@ section.chi-table.-bordered.-mt--3.-mb--3
           th
             div Value
       tbody
-        each type in ['auto', '*']
+        each type in ['auto', '0', '*']
           tr
             td(width='40%')
               code= '-flex-basis--' + type
             td
               if (type == 'auto')
+                code= 'flex-basis: ' + type + ';'
+              else if (type == '0')
                 code= 'flex-basis: ' + type + ';'
               else
                 = 'can be incremented by 5%'
@@ -454,12 +456,14 @@ section.chi-table.-bordered.-mt--3.-mb--3
             div Value
       tbody
         each size in ['sm', 'md', 'lg', 'xl']
-          each type in ['auto', '*']
+          each type in ['auto', '0', '*']
             tr
               td.-text(width='40%')
                 code= '-flex-basis-' + size + '--' + type
               td
                 if (type == 'auto')
+                  | Visible only from <code>#{size}</code>
+                else if (type == '0')
                   | Visible only from <code>#{size}</code>
                 else
                   | Visible only from <code>#{size}</code>, can be incremented by 5%
