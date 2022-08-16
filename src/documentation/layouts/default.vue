@@ -12,20 +12,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { CHI_VERSION } from '../constants/configs';
+import redirectionScript from '../constants/utilities';
 
 @Component({
   data: () => {
     return {
       CHI_VERSION,
-      redirectionScript: `
-        const pageURL = window.location.href;
-
-        if (pageURL.includes('latest')) {
-            const redirectionURL = pageURL.split('latest').join('${CHI_VERSION}');
-
-            window.location.href = redirectionURL;
-        }
-      `
+      redirectionScript: redirectionScript(CHI_VERSION)
     }
   }
 })
