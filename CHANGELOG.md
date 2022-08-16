@@ -1,4 +1,18 @@
 # CHANGELOG
+## 5.18.0 (August 12, 2022)
+### Components
+#### Added
+* Added: Dropdown web component.
+#### Changed
+* Changed: Improved size and color contrast of drag icon in Draggable Popover.
+#### Fixed
+* Fixed: Draggable Popover behavior has been improved to no longer move outside the available boundaries of the screen.
+
+## 5.17.0 (August 4, 2022)
+### Components
+#### Added
+* Added: Icons `icon-circle-pie`, `icon-cloud-outline`, `icon-cloud-products`, `icon-dashboard`, `icon-edit-reload`, and `icon-file-invoice-gear`.
+
 ## 5.16.0 (July 15, 2022)
 ### Components
 #### Added

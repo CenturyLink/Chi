@@ -4,7 +4,8 @@
 .chi-main {
   background-color: $app-layout-background-color;
   height: 100%;
-  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  position: relative;
 
   &__header {
     align-items: flex-start;
