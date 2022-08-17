@@ -49,6 +49,7 @@ import { alignmentUtilityClasses, expansionIcons } from './constants/constants';
 import { NormalizedScopedSlot } from 'vue/types/vnode';
 import Checkbox from '../checkbox/Checkbox';
 import { printElement } from '../../utils/utils';
+import { ColumnResize } from './utils/Resize';
 
 Vue.config.ignoredElements = ['chi-popover'];
 
@@ -277,60 +278,6 @@ export default class DataTable extends Vue {
       return bulkActionSlot;
     }
     return null;
-  }
-
-  _generateColumnResize(elem: HTMLElement) {
-    const columnHeaders = elem.querySelectorAll(`.${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`);
-    let thElm: HTMLElement | null;
-    let startOffset: number;
-
-    columnHeaders.forEach(th => {
-      const grip = document.createElement('div');
-
-      th.classList.add(UTILITY_CLASSES.POSITION.RELATIVE);
-      grip.innerHTML = '&nbsp;';
-      grip.style.top = '0';
-      grip.style.right = '0';
-      grip.style.bottom = '0';
-      grip.style.width = '1rem';
-      grip.classList.add(UTILITY_CLASSES.POSITION.ABSOLUTE);
-      grip.style.cursor = 'col-resize';
-      grip.classList.add('resize-handle');
-      grip.addEventListener('mousedown', e => {
-        this._preventSortOnResize = true;
-        thElm = th as HTMLElement;
-        startOffset = (th as HTMLElement).offsetWidth - e.pageX;
-      });
-      th.appendChild(grip);
-    });
-    (this.$refs.dataTable as HTMLElement).addEventListener('mousemove', e => {
-      let columnCellsToResize: HTMLElement[] = [];
-
-      if (thElm) {
-        thElm.setAttribute('style', `width: ${startOffset + e.pageX + 'px'} !important; flex: none !important;`);
-        for (let i = 0; i < columnHeaders.length; ++i) {
-          if (columnHeaders[i] === thElm) {
-            columnCellsToResize = Array.from(
-              elem.querySelectorAll(
-                `.${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW} .${DATA_TABLE_CLASSES.CELL}:nth-child(${i + 1})`
-              )
-            );
-          }
-        }
-
-        columnCellsToResize.forEach(column => {
-          if (thElm) {
-            column.setAttribute('style', `width: ${thElm.style.width} !important; flex: none !important`);
-          }
-        });
-      }
-    });
-    (this.$refs.dataTable as HTMLElement).addEventListener('mouseup', () => {
-      setTimeout(() => {
-        this._preventSortOnResize = false;
-      }, 0);
-      thElm = null;
-    });
   }
 
   _getSelectedFirstLevelRowsCount() {
@@ -1266,7 +1213,7 @@ export default class DataTable extends Vue {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
 
     if (dataTableComponent && this.config.columnResize) {
-      this._generateColumnResize(dataTableComponent);
+      new ColumnResize(this);
     }
 
     if (this._bulkActionsComponent) {
