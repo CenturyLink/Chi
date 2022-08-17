@@ -1,7 +1,10 @@
 docsearch({
-  apiKey: 'eca842579cddf86c49f883528ef56f79',
+  apiKey: 'cecdb53a454667c4acaa4c4a3957a5d6',
   indexName: 'centurylink_chi',
-  inputSelector: '.searchbox',
-  algoliaOptions: { 'facetFilters': [`version:v${chiCurrentVersion}`] },
-  debug: false
+  container: 'docsearch',
+  appId: 'K3K4BIQ1R4',
+  searchParameters: {
+    facetFilters: [`version:v${chiCurrentVersion}`]
+  },
+  debug: true
 });
