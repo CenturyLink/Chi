@@ -12,15 +12,14 @@
               option Pending Active
               option Active
               option Inactive
-          chi-tooltip(message="Filters")
-            chi-data-table-filters(:filters-data='toolbar.filtersData', :custom-items='toolbar.customItemsData')
-              template(v-slot:custom-one)
-                chi-label(for='example__base_with_save_view_and_bulk_actions_input-1') City
-                chi-text-input#example__base_with_save_view_and_bulk_actions_input-1
-                chi-label(for='example__base_with_save_view_and_bulk_actions_input-2') Zip Code
-                chi-text-input#example__base_with_save_view_and_bulk_actions_input-2
-              template(v-slot:custom-two)
-                chi-date-picker
+          chi-data-table-filters(:filters-data='toolbar.filtersData', :custom-items='toolbar.customItemsData')
+            template(v-slot:custom-one)
+              chi-label(for='example__base_with_save_view_and_bulk_actions_input-1') City
+              chi-text-input#example__base_with_save_view_and_bulk_actions_input-1
+              chi-label(for='example__base_with_save_view_and_bulk_actions_input-2') Zip Code
+              chi-text-input#example__base_with_save_view_and_bulk_actions_input-2
+            template(v-slot:custom-two)
+              chi-date-picker
         template(v-slot:end)
           chi-tooltip(message="Refresh")
             button.chi-button.-icon.-flat(aria-label="Refresh")
@@ -30,8 +29,7 @@
             button.chi-button.-icon.-flat(aria-label="Download")
               .chi-button__content
                 i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
-          chi-tooltip(message="Column Customization")
-            chi-column-customization(:columns-data='toolbar.columnsData')
+          chi-column-customization(:columns-data='toolbar.columnsData')
       chi-save-view(:active="saveView.active" :default="saveView.default" :mode="saveView.mode" :results="saveView.results" :title="saveView.title")
       .chi-bulk-actions
         .chi-bulk-actions__top.-position--absolute
@@ -86,7 +84,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { exampleToolbar, exampleSaveView } from '../../../../../fixtures/fixtures';
+import {
+  exampleToolbar,
+  exampleSaveView
+} from '../../../../../fixtures/fixtures';
 
 @Component({
   data: () => {
@@ -126,21 +127,19 @@ import { exampleToolbar, exampleSaveView } from '../../../../../fixtures/fixture
       </select>
     </div>
     <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
-    <ChiTooltip message="Filters">
-      <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
-        <template v-slot:customAdvanced>
-          <div class="chi-form__item">
-            <chi-label for="example__base_with_save_view_and_bulk_actions_filter_input-1">City</chi-label>
-            <chi-text-input id="example__base_with_save_view_and_bulk_actions_filter_input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
-            <chi-label for="example__base_with_save_view_and_bulk_actions_filter_input-2">Zip Code</chi-label>
-            <chi-text-input id="example__base_with_save_view_and_bulk_actions_filter_input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
-          </div>
-        </template>
-        <template v-slot:customAdvanced2>
-          <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
-        </template>
-      </ChiDataTableFilters>
-    </ChiTooltip>
+    <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
+      <template v-slot:customAdvanced>
+        <div class="chi-form__item">
+          <chi-label for="example__base_with_save_view_and_bulk_actions_filter_input-1">City</chi-label>
+          <chi-text-input id="example__base_with_save_view_and_bulk_actions_filter_input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+          <chi-label for="example__base_with_save_view_and_bulk_actions_filter_input-2">Zip Code</chi-label>
+          <chi-text-input id="example__base_with_save_view_and_bulk_actions_filter_input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+        </div>
+      </template>
+      <template v-slot:customAdvanced2>
+        <chi-date-picker @chiDateChange="e => dateChangeHandler(e)" />
+      </template>
+    </ChiDataTableFilters>
   </template>
   <template v-slot:end>
    <ChiTooltip message="Refresh">
@@ -158,9 +157,7 @@ import { exampleToolbar, exampleSaveView } from '../../../../../fixtures/fixture
       </button>
     </ChiTooltip>
     <!-- To enable customization of columns, use Column Customization sub-module of Toolbar by providing it with respective data -->
-    <ChiTooltip message="Column Customization">
-      <ChiColumnCustomization :columnsData="toolbar.columnsData" />
-    </ChiTooltip>
+    <ChiColumnCustomization :columnsData="toolbar.columnsData" />
   </template>
 </ChiDataTableToolbar>
 <ChiSaveView :active="saveView.active" :default="saveView.default" :mode="saveView.mode" :results="saveView.results" :title="saveView.title"></ChiSaveView>
