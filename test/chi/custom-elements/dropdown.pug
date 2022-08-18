@@ -40,7 +40,7 @@ each method in methods
   .-mt--5(class=`test-${method}` style='width: 500px; height: 500px;')
     span.-text--h2=`Method - ${method}`
     .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
-      chi-dropdown(id=`test-${method}-dropdown` position="bottom" prevent-auto-hide=method == 'hide' ? true : false active=method == 'hide' ? true : false)
+      chi-dropdown(id=`test-${method}-dropdown` data-cy=`method-dropdown-${method}` position="bottom" prevent-auto-hide=method == 'hide' ? true : false active=method == 'hide' ? true : false)
         chi-button(
           alternative-text="Button action"
           id=`test-${method}-trigger`

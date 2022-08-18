@@ -76,6 +76,20 @@ const DROPDOWN_DATA_CY = {
   SLOT: {
     ACTIVE_EXPANSION_PANEL: `[data-cy="slot-expansion-panel-active"]`,
     DONE_EXPANSION_PANEL: `[data-cy="slot-expansion-panel-done"]`
+  },
+  METHOD: {
+    TOGGLE: {
+      EXPANSION_PANEL: '[data-cy="method-dropdown-toggle"]',
+      TRIGGER: '#test-toggle-trigger'
+    },
+    SHOW: {
+      EXPANSION_PANEL: '[data-cy="method-dropdown-show"]',
+      TRIGGER: '#test-show-trigger'
+    },
+    HIDE: {
+      EXPANSION_PANEL: '[data-cy="method-dropdown-hide"]',
+      TRIGGER: '#test-hide-trigger'
+    }
   }
 };
 const EXPANSION_PANEL_BUTTONS = {
@@ -308,6 +322,71 @@ describe('Dropdown', () => {
           .find('button')
           .contains(sel.button)
           .should(sel.slot === 'change' ? 'not.be.visible' : 'be.visible');
+      });
+    });
+  });
+
+  describe.only('Methods', () => {
+    describe('Toggle', () => {
+      beforeEach(() => {
+        cy.get(DROPDOWN_DATA_CY.METHOD.TOGGLE.TRIGGER).as(
+          'dropdownTrigger'
+        );
+        cy.get(DROPDOWN_DATA_CY.METHOD.TOGGLE.EXPANSION_PANEL).find(DROPDOWN_MENU).as(
+          'dropdownMenu'
+        );
+      });
+      it('Should toggle the dropdown', () => {
+        cy.get(`@dropdownMenu`)
+          .should('not.be.visible');
+        cy.get(`@dropdownTrigger`).click();
+        cy.get(`@dropdownMenu`)
+          .should('be.visible');
+        cy.get(`@dropdownTrigger`).click();
+        cy.get(`@dropdownMenu`)
+          .should('not.be.visible');
+      });
+    });
+
+    describe('Show', () => {
+      beforeEach(() => {
+        cy.get(DROPDOWN_DATA_CY.METHOD.SHOW.TRIGGER).as(
+          'dropdownTrigger'
+        );
+        cy.get(DROPDOWN_DATA_CY.METHOD.SHOW.EXPANSION_PANEL).find(DROPDOWN_MENU).as(
+          'dropdownMenu'
+        );
+      });
+      it('Should always show the dropdown menu once opened', () => {
+        cy.get(`@dropdownMenu`)
+          .should('not.be.visible');
+        cy.get(`@dropdownTrigger`).click();
+        cy.get(`@dropdownMenu`)
+          .should('be.visible');
+        cy.get(`@dropdownTrigger`).click();
+        cy.get(`@dropdownMenu`)
+          .should('be.visible');
+      });
+    });
+
+    describe('Hide', () => {
+      beforeEach(() => {
+        cy.get(DROPDOWN_DATA_CY.METHOD.HIDE.TRIGGER).as(
+          'dropdownTrigger'
+        );
+        cy.get(DROPDOWN_DATA_CY.METHOD.HIDE.EXPANSION_PANEL).find(DROPDOWN_MENU).as(
+          'dropdownMenu'
+        );
+      });
+      it('Should always hide the dropdown menu once it has been opened and closed', () => {
+        cy.get(`@dropdownMenu`)
+          .should('be.visible');
+        cy.get(`@dropdownTrigger`).click();
+        cy.get(`@dropdownMenu`)
+          .should('not.be.visible');
+        cy.get(`@dropdownTrigger`).click();
+        cy.get(`@dropdownMenu`)
+          .should('not.be.visible');
       });
     });
   });
