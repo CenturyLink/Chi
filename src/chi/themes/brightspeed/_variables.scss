@@ -7,6 +7,15 @@ $state-colors: (success: green, warning: yellow, danger: red);
 $font-family-base: 'Inter', Arial, Helvetica, Verdana, sans-serif;
 $font-family-mono: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
 
+// Font weight
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-black: 900;
+$font-weight-base: $font-weight-normal;
+
 // System color
 // sass-lint:disable no-color-hex
 $color-grey-100:    #000000;
@@ -1297,7 +1306,7 @@ $popover-modal-background-color:            $popover-background-color;
 $popover-modal-header-background-color:     $color-yellow-40;
 $popover-modal-header-background-image:     none;
 $popover-modal-close-icon-color:            $modal-close-icon-color;
-$popover-drag-icon-color:                   $color-icon-white;
+$popover-drag-icon-color:                   $color-icon-body;
 
 // Progress
 $progress-background-color:                 $color-grey-20;

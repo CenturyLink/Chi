@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-08-03T00:29:47",
+  "timestamp": "2022-08-17T15:45:38",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1641,6 +1641,22 @@
           "required": false
         },
         {
+          "name": "animateChevron",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "animate-chevron",
+          "reflectToAttr": false,
+          "docs": "To animate the chevron of Dropdown",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "button",
           "type": "string",
           "mutable": false,
@@ -1651,6 +1667,22 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "description",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "description",
+          "reflectToAttr": false,
+          "docs": "To enable the description of Dropdown menu item",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": true,
@@ -1787,7 +1819,7 @@
           },
           "signature": "hide() => Promise<void>",
           "parameters": [],
-          "docs": "",
+          "docs": "Hides the dropdown",
           "docsTags": []
         },
         {
@@ -1798,7 +1830,7 @@
           },
           "signature": "show() => Promise<void>",
           "parameters": [],
-          "docs": "",
+          "docs": "Shows the dropdown",
           "docsTags": []
         },
         {
@@ -1809,7 +1841,7 @@
           },
           "signature": "toggle() => Promise<void>",
           "parameters": [],
-          "docs": "",
+          "docs": "Toggles active state (show/hide)",
           "docsTags": []
         }
       ],
