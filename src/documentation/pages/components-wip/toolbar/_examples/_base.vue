@@ -1,5 +1,5 @@
 <template lang="pug">
-  ComponentExample(title="Base" id="base" :tabs="exampleTabs")
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
     chi-data-table-toolbar(slot="example")
       template(v-slot:start)
         chi-search-input(:data-table-search='true')
@@ -31,16 +31,19 @@
         chi-column-customization(:columns-data='toolbar.columnsData')
     pre(class="language-html" slot="code-webcomponent")
       code(v-highlight="$data.codeSnippets.webcomponent" class="html")
-    Wrapper(slot="code-vue")
+    <Wrapper slot="code-vue">
       .chi-tab__description
         | Use the slots <code>start</code> to add elements to the left side area of the Toolbar Header and the <code>end</code> - to the right side.
       pre(class="language-html")
         code(v-highlight="$data.codeSnippets.vue" class="html")
-    Wrapper(slot="code-htmlblueprint")
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
       .chi-tab__description
         | To render toolbar, use the class <code>chi-toolbar</code>.
       pre(class="language-html")
         code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
+    </Wrapper>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
