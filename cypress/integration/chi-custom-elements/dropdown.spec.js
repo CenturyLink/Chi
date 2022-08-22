@@ -1,11 +1,11 @@
 const positions = [
   {
     placement:'top',
-    transform: 'translate3d(-20px, -80px, 0px)',
+    transform: 'translate3d(-21px, -80px, 0px)',
   },
   {
     placement:'right',
-    transform: 'translate3d(84px, -20px, 0px)',
+    transform: 'translate3d(86px, -20px, 0px)',
   },
   {
     placement:'bottom',
@@ -13,7 +13,7 @@ const positions = [
   },
   {
     placement:'left',
-    transform: 'translate3d(-114px, -20px, 0px)',
+    transform: 'translate3d(-117px, -20px, 0px)',
   },
   {
     placement:'top-start',
@@ -21,15 +21,15 @@ const positions = [
   },
   {
     placement:'top-end',
-    transform: 'translate3d(-7px, -80px, 0px)',
+    transform: 'translate3d(-8px, -80px, 0px)',
   },
   {
     placement:'right-start',
-    transform: 'translate3d(122px, 0px, 0px)',
+    transform: 'translate3d(124px, 0px, 0px)',
   },
   {
     placement:'right-end',
-    transform: 'translate3d(116px, -40px, 0px)',
+    transform: 'translate3d(118px, -40px, 0px)',
   },
   {
     placement:'bottom-start',
@@ -41,11 +41,11 @@ const positions = [
   },
   {
     placement:'left-start',
-    transform: 'translate3d(-114px, 0px, 0px)',
+    transform: 'translate3d(-117px, 0px, 0px)',
   },
   {
     placement:'left-end',
-    transform: 'translate3d(-114px, -40px, 0px)',
+    transform: 'translate3d(-117px, -40px, 0px)',
   },
 ];
 const DROPDOWN_DATA_CY = {
@@ -59,7 +59,6 @@ const DROPDOWN_DATA_CY = {
       transform: position.transform
     };
   }),
-  // POSITION: [positions.map((position) => `[data-cy="position-dropdown-${position}"]`)],
   STATE: {
     EXPANSION_PANEL_DONE: '[data-cy="state-expansion-panel-done"]',
     EXPANSION_PANEL_ACTIVE: '[data-cy="state-expansion-panel-active"]',
@@ -144,34 +143,7 @@ describe('Dropdown', () => {
     });
   });
 
-  describe('Hover', () => {
-    beforeEach(() => {
-      cy.get(DROPDOWN_DATA_CY.HOVER).find(DROPDOWN_TRIGGER).as(
-        'dropdownTrigger'
-      );
-      cy.get(DROPDOWN_DATA_CY.HOVER).find(DROPDOWN_MENU).as(
-        'dropdownMenu'
-      );
-    });
-
-    it('Should open the dropdown upon hover', () => {
-      cy.get(`@dropdownMenu`)
-        .should('not.be.visible');
-      cy.get(`@dropdownTrigger`).trigger('mouseover');
-      cy.get(`@dropdownMenu`)
-        .should('be.visible');
-    });
-
-    it('Should close the dropdown when not in hover state', () => {
-      cy.get(`@dropdownMenu`)
-        .should('be.visible');
-      cy.get(`@dropdownTrigger`).click();
-      cy.get(`@dropdownMenu`)
-        .should('not.be.visible');
-    });
-  });
-
-  describe('Animate', () => {
+  describe.only('Animate', () => {
     beforeEach(() => {
       cy.get(DROPDOWN_DATA_CY.ANIMATE).find(DROPDOWN_TRIGGER).as(
         'dropdownTrigger'
@@ -181,25 +153,23 @@ describe('Dropdown', () => {
       );
     });
 
-    it('Should have class active with transform when chevron is active', () => {
+    it('Should transform the accordion when dropdown is in active or inactive state', () => {
       cy.get(`@dropdownTrigger`)
         .find(`.${ACTIVE_CLASS}`)
         .should('not.exist');
-      cy.get(`@dropdownTrigger`).click();
-      hasClassAssertion('@dropdownTrigger', ACTIVE_CLASS);
-      cy.get(`@dropdownMenu`)
-        .should('be.visible');
 
-      cy.get('@dropdownTrigger')
+      cy.get('@dropdownTrigger').click().wait(500)
       .then($els => {
-        // get Window reference from element
-        const win = $els[0].ownerDocument.defaultView
-        // use getComputedStyle to read the pseudo selector
-        const after = win.getComputedStyle($els[0], ':after')
-        // read the value of the `content` CSS property
-        const transformValue = after.transform;
-        // the returned value will have double quotes around it, but this is correct
-        expect(transformValue).to.eq('"\e91e"')
+        hasClassAssertion('@dropdownTrigger', ACTIVE_CLASS);
+        cy.get(`@dropdownMenu`).should('be.visible');
+        const win = $els[0].ownerDocument.defaultView;
+        const after = win.getComputedStyle($els[0], ':after');
+        const tr = after.transform;
+        const values = tr.split('(')[1].split(')')[0].split(',');
+        const a = values[0];
+        const b = values[1];
+        const angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+        expect(angle).to.equal(180);
       });
     });
   });
