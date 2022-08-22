@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base with save view and bulk actions" id="base-with-save-view-and-bulk-actions-portal" additionalClasses="-position--relative" :tabs="exampleTabs">
+  <ComponentExample title="Base with save view and bulk actions" id="base-with-save-view-and-bulk-actions-portal" additionalStyle="position: static;" additionalClasses="-position--relative" :tabs="exampleTabs">
     div(slot="example")
       chi-data-table-toolbar
         template(v-slot:start)

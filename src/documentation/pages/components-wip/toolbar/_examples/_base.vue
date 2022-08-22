@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs" additionalStyle="position: static;">
     chi-data-table-toolbar(slot="example")
       template(v-slot:start)
         chi-search-input(:data-table-search='true')

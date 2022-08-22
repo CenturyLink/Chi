@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base with save view" :id="id" :tabs="exampleTabs">
+  <ComponentExample title="Base with save view" :id="id" :tabs="exampleTabs" additionalStyle="position: static;">
     div(slot="example")
       chi-data-table-toolbar
         template(v-slot:start)
