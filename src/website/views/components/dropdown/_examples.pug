@@ -7,7 +7,7 @@ p.-text
 h3 Base
 .example.-mb--3
   .-p--3
-    chi-dropdown(active='false' position='bottom' button='Dropdown, click me')
+    chi-dropdown(position='bottom' button='Dropdown, click me')
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
@@ -20,7 +20,7 @@ h3 Base
         a(href=`#html-base`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-base
     :code(lang="html")
-      <chi-dropdown active="false" position="bottom" button="Dropdown, click me">
+      <chi-dropdown position="bottom" button="Dropdown, click me">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
@@ -88,7 +88,7 @@ p.-text
 h3 Hover
 .example.-mb--3
   .-p--3
-    chi-dropdown(active='false' hover="true" position='bottom' button='Dropdown component')
+    chi-dropdown(hover position='bottom' button='Dropdown component')
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
@@ -100,7 +100,7 @@ h3 Hover
         a(href=`#html-hover`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-hover
     :code(lang="html")
-      <chi-dropdown active="false" hover="true" position="bottom" button="Dropdown component">
+      <chi-dropdown hover position="bottom" button="Dropdown component">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
@@ -122,7 +122,7 @@ h3 Hover
 h3 Animate
 .example.-mb--3
   .-p--3
-    chi-dropdown(active='false' position='bottom' button='Animated dropdown trigger' animate-chevron='true')
+    chi-dropdown(position='bottom' button='Animated dropdown trigger' animate-chevron)
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
       a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
@@ -134,7 +134,7 @@ h3 Animate
         a(href=`#html-animation`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-animation
     :code(lang="html")
-      <chi-dropdown active="false" position="bottom" button="Animated dropdown trigger" animate-chevron="true">
+      <chi-dropdown position="bottom" button="Animated dropdown trigger" animate-chevron>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
@@ -166,33 +166,33 @@ h3 Positioning
     .chi-grid.-no-gutter.-px-xl--3
       .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
         .-p--1
-          chi-dropdown(active='false' position=`top-start` button=`Top start`)
+          chi-dropdown(position=`top-start` button=`Top start`)
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 3
         .-p--1
-          chi-dropdown(active='false' position=`top` button=`Top`)
+          chi-dropdown(position=`top` button=`Top`)
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 3
         .-p--1
-          chi-dropdown(active='false' position=`top-end` button=`Top end`)
+          chi-dropdown(position=`top-end` button=`Top end`)
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 3
       .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-flex--wrap
         .-p--1.-py-sm--3
-          chi-dropdown(active='false' position=`left-start` button=`Left start`)
+          chi-dropdown(position=`left-start` button=`Left start`)
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 3
         .-p--1.-py-sm--3
-          chi-dropdown(active='false' position=`left` button=`Left`)
+          chi-dropdown(position=`left` button=`Left`)
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 3
         .-p--1.-py-sm--3
-          chi-dropdown(active='false' position=`left-end` button=`Left end`)
+          chi-dropdown(position=`left-end` button=`Left end`)
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 3
@@ -200,33 +200,33 @@ h3 Positioning
         .-w--75.-text.-text--muted.-text--center.-lh--2 Click buttons to see Dropdown positions
       .chi-col.-w--12.-w-sm--4.-d--flex.-flex-sm--column.-align-items-sm--end.-flex--wrap
         .-p--1.-py-sm--3
-          chi-dropdown(active='false' position=`right-start` button=`Right start`)
+          chi-dropdown(position=`right-start` button=`Right start`)
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 3
         .-p--1.-py-sm--3
-          chi-dropdown(active='false' position=`right` button=`Right`)
+          chi-dropdown(position=`right` button=`Right`)
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 3
         .-p--1.-py-sm--3
-          chi-dropdown(active='false' position=`right-end` button=`Right end`)
+          chi-dropdown(position=`right-end` button=`Right end`)
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 3
       .chi-col.-w--12.-w-xl--10.-o-xl--1.-d--flex.-justify-content-sm--around.-flex--wrap
         .-p--1
-          chi-dropdown(active='false' position=`bottom-start` button=`Bottom start`)
+          chi-dropdown(position=`bottom-start` button=`Bottom start`)
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 3
         .-p--1
-          chi-dropdown(active='false' position=`bottom` button=`Bottom`)
+          chi-dropdown(position=`bottom` button=`Bottom`)
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 3
         .-p--1
-          chi-dropdown(active='false' position=`bottom-end` button=`Bottom End`)
+          chi-dropdown(position=`bottom-end` button=`Bottom End`)
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Dropdown item 3
@@ -245,73 +245,73 @@ h3 Positioning
       | <code>bottom-start</code>, <code>bottom-end</code>, <code>left-start</code>, <code>left-end</code>.
     :code(lang="html")
       <!-- Top start -->
-      <chi-dropdown active="false" position="top-start" button="Top start">
+      <chi-dropdown position="top-start" button="Top start">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 3</a>
       </chi-dropdown>
       <!-- Top -->
-      <chi-dropdown active="false" position="top" button="Top">
+      <chi-dropdown position="top" button="Top">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 3</a>
       </chi-dropdown>
       <!-- Top end -->
-      <chi-dropdown active="false" position="top-end" button="Top end">
+      <chi-dropdown position="top-end" button="Top end">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 3</a>
       </chi-dropdown>
       <!-- Left start -->
-      <chi-dropdown active="false" position="left-start" button="Left start">
+      <chi-dropdown position="left-start" button="Left start">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 3</a>
       </chi-dropdown>
       <!-- Left -->
-      <chi-dropdown active="false" position="left" button="Left">
+      <chi-dropdown position="left" button="Left">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 3</a>
       </chi-dropdown>
       <!-- Left end -->
-      <chi-dropdown active="false" position="left-end" button="Left end">
+      <chi-dropdown position="left-end" button="Left end">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 3</a>
       </chi-dropdown>
       <!-- Right start -->
-      <chi-dropdown active="false" position="right-start" button="Right start">
+      <chi-dropdown position="right-start" button="Right start">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 3</a>
       </chi-dropdown>
       <!-- Right -->
-      <chi-dropdown active="false" position="right" button="Right">
+      <chi-dropdown position="right" button="Right">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 3</a>
       </chi-dropdown>
       <!-- Right end -->
-      <chi-dropdown active="false" position="right-end" button="Right end">
+      <chi-dropdown position="right-end" button="Right end">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 3</a>
       </chi-dropdown>
       <!-- Bottom start -->
-      <chi-dropdown active="false" position="bottom-start" button="Bottom start">
+      <chi-dropdown position="bottom-start" button="Bottom start">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 3</a>
       </chi-dropdown>
       <!-- Bottom -->
-      <chi-dropdown active="false" position="bottom" button="Bottom">
+      <chi-dropdown position="bottom" button="Bottom">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 3</a>
       </chi-dropdown>
       <!-- Bottom end -->
-      <chi-dropdown active="false" position="bottom-end" button="Bottom end">
+      <chi-dropdown position="bottom-end" button="Bottom end">
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 1</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 2</a>
         <a class="chi-dropdown__menu-item" href="#" slot="menu">Dropdown item 3</a>
