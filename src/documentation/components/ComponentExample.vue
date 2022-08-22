@@ -73,7 +73,7 @@
               <li
                 :class="[
                   tab.active ? '-active' : '',
-                  tab.disabled ? '-disabled' : ''
+                  tab.disabled ? '-disabled' : '',
                 ]"
                 :key="tab.id"
                 v-for="tab in tabs"
@@ -117,7 +117,7 @@
             <li
               :class="[
                 tab.active ? '-active' : '',
-                tab.disabled ? '-disabled' : ''
+                tab.disabled ? '-disabled' : '',
               ]"
               v-for="tab in tabs"
               :key="tab.id"
@@ -139,8 +139,17 @@
           v-for="tab in tabs"
           :key="tab.id"
           :id="'example-' + id + '-' + tab.id"
+          :ref="`tab-panel-${tab.id}`"
           role="tabpanel"
         >
+          <div class="clipboard">
+            <button
+              class="clipboard__button chi-button -xs -flat"
+              @click="() => copy(`tab-panel-${tab.id}`)"
+            >
+              Copy
+            </button>
+          </div>
           <slot :name="'code-' + tab.id"></slot>
         </div>
       </template>
@@ -162,6 +171,7 @@ pre code.hljs {
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { TabsInterface, HeadTabsInterface } from '../models/models';
 import { COMPONENT_EXAMPLE_EVENTS } from '../constants/constants';
+import { SR_ONLY } from '../../chi-vue/src/constants/classes';
 
 declare const chi: any;
 
@@ -175,7 +185,34 @@ Vue.config.warnHandler = (msg: string, _vm: Vue, trace: string) => {
   }
 };
 
-@Component({})
+@Component({
+  methods: {
+    copy(id: string) {
+      const tabElement = (this.$refs[id] as HTMLElement[])[0];
+
+      if (tabElement) {
+        const codeElement = (tabElement as HTMLElement).querySelector('code');
+        const codeSnippet = codeElement?.textContent;
+
+        if (codeSnippet || typeof codeSnippet === 'string') {
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(codeSnippet);
+          } else {
+            const textArea = document.createElement('textarea');
+
+            textArea.value = codeSnippet as string;
+            textArea.classList.add(SR_ONLY);
+            tabElement.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            document.execCommand('copy');
+            textArea.remove();
+          }
+        }
+      }
+    },
+  },
+})
 export default class ComponentExample extends Vue {
   @Prop() id?: string;
   @Prop() title?: string;
@@ -207,7 +244,7 @@ export default class ComponentExample extends Vue {
       });
 
       this.chiHeadTabs = chi.tab(chiHeadTabs);
-    };
+    }
   }
 
   emitHeadTabsChange(tab: HeadTabsInterface) {

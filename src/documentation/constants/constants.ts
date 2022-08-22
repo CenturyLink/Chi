@@ -1,7 +1,7 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
-export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.13.1`;
 export const BASE_ASSETS_URL = `https://assets.ctl.io/chi/${CHI_VERSION}/`;
+export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.19.0`;
 export const THEMES = {
   centurylink: {
     label: 'CenturyLink',
@@ -86,9 +86,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/breadcrumb`,
+    to: `components/breadcrumb`,
     label: 'Breadcrumb',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/button`,
@@ -126,9 +126,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/divider`,
+    to: `components/divider`,
     label: 'Divider',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/drawer`,
@@ -146,9 +146,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/forms/file-input`,
+    to: `components/forms/file-input`,
     label: 'File input',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/flag-icon`,
@@ -221,9 +221,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/price`,
+    to: `components/price`,
     label: 'Price',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/progress`,
@@ -318,6 +318,12 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '5.19.0',
+  '5.18.0',
+  '5.17.0',
+  '5.16.0',
+  '5.15.0',
+  '5.14.1',
   '5.14.0',
   '5.13.1',
   '5.13.0',

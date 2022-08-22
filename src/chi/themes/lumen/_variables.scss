@@ -7,6 +7,15 @@ $state-colors: (success: green, warning: yellow, danger: red);
 $font-family-base: 'Inter', Arial, Helvetica, Verdana, sans-serif;
 $font-family-mono: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
 
+// Font weight
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-black: 900;
+$font-weight-base: $font-weight-normal;
+
 // System color
 // sass-lint:disable no-color-hex
 $color-grey-100:    #242526;
@@ -379,6 +388,8 @@ $alert-sm-text-line-height:                 $line-height-sm;
 
 // App layout
 $app-layout-background-color:               $color-background-base;
+$app-layout-header-background-color:        $color-blue-30;
+$app-layout-header-title-color:             $color-text-primary-darker;
 
 // Avatar
 $avatar-background-color:                   $color-grey-20;
@@ -764,7 +775,15 @@ $card-content-padding:                      1rem;
 $card-tabs-padding:                         0 1rem;
 $card-tabs-border-bottom:                   none;
 $card-highlight-background-color:           $color-background-secondary-light;
+$card-highlight-border-color:               $color-cyan-20;
 $card-highlight-header-background-color:    $color-background-white;
+
+$card-widget-background-color:              $color-grey-10;
+$card-widget-border:                        0.0625rem solid $color-grey-15;
+$card-widget-title-font-size:               $font-size-7;
+$card-widget-title-font-weight:             $font-weight-extra-bold;
+$card-widget-content-padding:               1rem;
+$card-widget-header-sm-padding:             0.75rem 1rem;
 
 $card-title-font-size:                      $font-size-lg;
 $card-title-font-weight:                    $font-weight-semi-bold;
@@ -791,6 +810,10 @@ $checkbox-checked-icon-color:               $color-background-white;
 $checkbox-label-danger-text-color:          $color-text-base;
 $checkbox-label-disabled-text-color:        $color-text-muted;
 $checkbox-label-disabled-opacity:           $opacity-60;
+
+// CSS Grid
+$css-grid-gap:                              1rem;
+$css-grid-md-gap:                           1.5rem;
 
 // Date picker
 $date-picker-input-width:                   14rem;
@@ -1313,6 +1336,22 @@ $range-slider-disabled-opacity:             $opacity-60;
 $range-slider-focus-color:                  $focus-color;
 $range-slider-tick-border-color:            $color-border-base-dark;
 
+// Save view
+$save-view-background-color:                $color-background-base;
+$save-view-border-color:                    $color-border-base;
+$save-view-divider-border-color:            $color-border-base;
+$save-view-divider-height:                  1.25rem;
+$save-view-results-font-size:               $font-size-md;
+$save-view-label-font-size:                 $font-size-md;
+$save-view-label-font-weight:               $font-weight-semi-bold;
+$save-view-edit-border-color:               $color-border-info;
+$save-view-edit-border-style:               dashed;
+$save-view-ribbon-background-color:         $color-blue-70;
+$save-view-ribbon-label-color:              $color-text-white;
+$save-view-ribbon-label-font-style:         italic;
+$save-view-ribbon-arrow-border-color:       $color-blue-70;
+$save-view-ribbon-arrow-border-style:       solid;
+
 // Search input
 $search-input-xs-icon-top:                  0;
 $search-input-xs-close-top:                 0;
@@ -1800,12 +1839,6 @@ $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 // Toolbar
 $toolbar-header-background-color:           $color-background-base;
 $toolbar-header-divider-height:             2.5rem;
-$toolbar-ribbon-background-color:           $color-background-base;
-$toolbar-ribbon-border-color:               $color-border-base;
-$toolbar-ribbon-divider-border-color:       $color-border-base;
-$toolbar-ribbon-divider-height:             1.25rem;
-$toolbar-results-font-size:                 $font-size-md;
-$toolbar-label-font-weight:                 $font-weight-semi-bold;
 
 // Tooltip
 $tooltip-light-background-color:            rgba($color-white, 0.96);

@@ -153,6 +153,34 @@
           </div>
         </div>
 
+  h3 Widget
+  p.-text
+    | Render a widget styled card for dashboard pages with the class <code>-widget</code>.
+  .example.-mb--3
+    .-p--3
+      .chi-card.-widget(style="max-width:20rem;")
+        .chi-card__header
+          .chi-card__title Title
+        .chi-card__content
+          .chi-card__caption This is a widget card
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-widget
+        li.-disabled
+          a(href=`#webcomponent-widget`) Web Component
+        li.-active
+          a(href=`#html-widget`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-widget
+    .chi-tabs-panel.-active#html-widget
+      :code(lang="html")
+        <div class="chi-card -widget">
+          <div class="chi-card__header">
+            <div class="chi-card__title">Title</div>
+          </div>
+          <div class="chi-card__content">
+            <div class="chi-card__caption">This is a widget card</div>
+          </div>
+        </div>
+
   h3 Titled with content and icon
   .example.-mb--3
     .-p--3.chi-grid
@@ -715,6 +743,34 @@
           </div>
           <div class="chi-card__content">
             <div class="chi-card__caption">Aenean pretium massa sed vehicula porta. Phasellus id metus felis. Ut felis magna, facilisis ut malesuada nec.</div>
+          </div>
+        </div>
+
+  h3 Widget
+  p.-text
+    | Render a widget styled card for dashboard pages with the class <code>-widget</code>.
+  .example.-mb--3
+    .-p--3
+      .chi-card.-widget(style="max-width:20rem;")
+        .chi-card__header
+          .chi-card__title Title
+        .chi-card__content
+          .chi-card__caption This is a widget card
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-widget
+        li.-disabled
+          a(href=`#webcomponent-portal-widget`) Web Component
+        li.-active
+          a(href=`#html-portal-widget`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-portal-widget
+    .chi-tabs-panel.-active#html-portal-widget
+      :code(lang="html")
+        <div class="chi-card -widget">
+          <div class="chi-card__header">
+            <div class="chi-card__title">Title</div>
+          </div>
+          <div class="chi-card__content">
+            <div class="chi-card__caption">This is a widget card</div>
           </div>
         </div>
 

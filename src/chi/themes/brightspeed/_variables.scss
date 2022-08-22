@@ -7,6 +7,15 @@ $state-colors: (success: green, warning: yellow, danger: red);
 $font-family-base: 'Inter', Arial, Helvetica, Verdana, sans-serif;
 $font-family-mono: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
 
+// Font weight
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
+$font-weight-black: 900;
+$font-weight-base: $font-weight-normal;
+
 // System color
 // sass-lint:disable no-color-hex
 $color-grey-100:    #000000;
@@ -382,6 +391,8 @@ $alert-sm-text-line-height:                 $line-height;
 
 // App layout
 $app-layout-background-color:               $color-background-base;
+$app-layout-header-background-color:        $color-orange-40;
+$app-layout-header-title-color:             $color-text-base;
 
 // Avatar
 $avatar-background-color:                   $color-grey-20;
@@ -765,9 +776,17 @@ $card-empty-border-color:                   rgba($color-black, 0.12);
 $card-empty-icon-color:                     $color-text-muted-light;
 $card-content-padding:                      2rem;
 $card-tabs-padding:                         1rem 2rem;
-$card-tabs-border-bottom:                   0.125rem solid $color-border-base;
+$card-tabs-border-bottom:                   inset 0 -0.125rem 0 0 $color-border-base;
 $card-highlight-background-color:           $color-background-secondary-light;
+$card-highlight-border-color:               $color-yellow-30;
 $card-highlight-header-background-color:    $color-background-white;
+
+$card-widget-background-color:              $color-grey-10;
+$card-widget-border:                        0.0625rem solid $color-grey-15;
+$card-widget-title-font-size:               $font-size-7;
+$card-widget-title-font-weight:             $font-weight-extra-bold;
+$card-widget-content-padding:               1rem;
+$card-widget-header-sm-padding:             0.75rem 1rem;
 
 $card-title-font-size:                      $font-size-7;
 $card-title-font-weight:                    $font-weight-extra-bold;
@@ -794,6 +813,10 @@ $checkbox-checked-icon-color:               $color-background-white;
 $checkbox-label-danger-text-color:          $color-text-base;
 $checkbox-label-disabled-text-color:        $color-text-muted;
 $checkbox-label-disabled-opacity:           $opacity-60;
+
+// CSS Grid
+$css-grid-gap:                              1rem;
+$css-grid-md-gap:                           1.5rem;
 
 // Date picker
 $date-picker-input-width:                   14rem;
@@ -1283,7 +1306,7 @@ $popover-modal-background-color:            $popover-background-color;
 $popover-modal-header-background-color:     $color-yellow-40;
 $popover-modal-header-background-image:     none;
 $popover-modal-close-icon-color:            $modal-close-icon-color;
-$popover-drag-icon-color:                   $color-icon-white;
+$popover-drag-icon-color:                   $color-icon-body;
 
 // Progress
 $progress-background-color:                 $color-grey-20;
@@ -1315,6 +1338,22 @@ $range-slider-track-value-background-color: $color-background-black;
 $range-slider-disabled-opacity:             $opacity-60;
 $range-slider-focus-color:                  $focus-color;
 $range-slider-tick-border-color:            $color-border-base-dark;
+
+// Save view
+$save-view-background-color:                $color-yellow-30;
+$save-view-border-color:                    transparent;
+$save-view-divider-border-color:            rgba($color-black, 0.5);
+$save-view-divider-height:                  1.25rem;
+$save-view-results-font-size:               $font-size-md;
+$save-view-label-font-size:                 $font-size-md;
+$save-view-label-font-weight:               $font-weight-semi-bold;
+$save-view-edit-border-color:               $color-border-info;
+$save-view-edit-border-style:               dashed;
+$save-view-ribbon-background-color:         $color-black;
+$save-view-ribbon-label-color:              $color-text-white;
+$save-view-ribbon-label-font-style:         italic;
+$save-view-ribbon-arrow-border-color:       $color-black;
+$save-view-ribbon-arrow-border-style:       solid;
 
 // Search input
 $search-input-xs-icon-top:                  0;
@@ -1427,8 +1466,8 @@ $stat-background-icon-left:                 0;
 $stat-background-icon-right:                auto;
 $stat-background-icon-icon-left:            -1rem;
 $stat-active-background-color:              $color-yellow-40;
-$stat-active-background-icon-opacity:       0.5;
-$stat-active-background-icon-color:         $color-yellow-50;
+$stat-active-background-icon-opacity:       0.25;
+$stat-active-background-icon-color:         $color-icon-black;
 $stat-active-box-shadow:                    none;
 $stat-active-text-color:                    $color-text-base;
 $stat-border:                               0.0625rem solid $color-border-base-dark;
@@ -1803,12 +1842,6 @@ $toggle-switch-xs-checked-thumb-after-left: 1.125rem;
 // Toolbar
 $toolbar-header-background-color:           $color-grey-10;
 $toolbar-header-divider-height:             2.5rem;
-$toolbar-ribbon-background-color:           $color-yellow-30;
-$toolbar-ribbon-border-color:               transparent;
-$toolbar-ribbon-divider-border-color:       rgba($color-black, 0.5);
-$toolbar-ribbon-divider-height:             1.25rem;
-$toolbar-results-font-size:                 $font-size-md;
-$toolbar-label-font-weight:                 $font-weight-semi-bold;
 
 // Tooltip
 $tooltip-light-background-color:            rgba($color-white, 0.96);

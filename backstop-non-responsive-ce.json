@@ -105,6 +105,34 @@
       "requireSameDimensions": true
     },
     {
+      "label": "app-layout",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/app-layout.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-layout-base",
+        ".test-layout-backlink",
+        ".test-layout-backlink-subtitle",
+        ".test-layout-backlink-subtitle-buttons",
+        ".test-layout-page-level-actions",
+        ".test-layout-no-margin",
+        ".test-layout-fixed-width",
+        ".test-layout-fixed-width-header-background",
+        ".test-layout-fixed-width-header-background-css-grid"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "brand",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/custom-elements/brand.html",
