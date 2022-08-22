@@ -36,6 +36,8 @@ export const TEXT_INPUT_TYPES = [
 ] as const;
 export type TextInputTypes = typeof TEXT_INPUT_TYPES[number];
 
+export const CAROUSEL_SWIPE_DELTA = 100;
+
 export const DATE_PICKER_MODES = ['date', 'datetime'];
 export type DatePickerModes = typeof DATE_PICKER_MODES[number];
 
@@ -53,5 +55,5 @@ export type TimePickerFormats = typeof TIME_PICKER_FORMATS[number];
 
 export type MouseCursorPosition = { x: number, y: number };
 
-export const APP_LAYOUT_FORMATS = ['base', 'no-margin'];
+export const APP_LAYOUT_FORMATS = ['base', 'no-margin', 'fixed-width'];
 export type AppLayoutFormats = typeof APP_LAYOUT_FORMATS[number];

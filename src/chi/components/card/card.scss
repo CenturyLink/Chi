@@ -17,6 +17,7 @@
     .chi-card__header {
       background: none;
       box-shadow: none;
+      flex-wrap: nowrap;
       justify-content: space-between;
       padding: 1rem;
 
@@ -270,7 +271,8 @@
   }
 
   &.-highlight {
-    background-color: $color-background-secondary-light;
+    background-color: $card-highlight-background-color;
+    border-color: $card-highlight-border-color;
 
     .chi-card__header {
       background-color: $color-background-white;
@@ -278,7 +280,7 @@
 
     &.-widget {
       .chi-card__header {
-        background-color: $color-background-secondary-light;
+        background-color: $card-highlight-background-color;
       }
     }
   }

@@ -1,4 +1,44 @@
 # CHANGELOG
+## 5.19.0 (August 19, 2022)
+### Components
+#### Added
+* Added: Icons `icon-file-check-outline`, `icon-file-check`, `icon-drag-vertical`, `icon-drag-vertical-outline`, `icon-mail-outgoing`, `icon-mail-outgoing-outline`, `icon-mail-incoming`, `icon-mail-incoming-outline`, `icon-lightbulb-magic-outline`, `icon-lightbulb-magic`, `icon-filter-alt-outline`, `icon-filter-alt`, `icon-filter-alt-off`, `icon-filter-alt-off-outline`, `icon-diagram`, `icon-diagram-outline`, `icon-check-double`, `icon-sun`, `icon-sun-outline`, `icon-moon`, `icon-moon-outline`,  `icon-fact-check`,  `icon-fact-check-outline`, `icon-computer`, `icon-checklist`, and `icon-checklist-outline`.
+* Added: Data Table now supports column resize on all levels of nesting.
+* Added: Picker Group component now supports additional description labels for picker items.
+* Added: Utility class `-flex-basis--0`.
+
+## 5.18.0 (August 12, 2022)
+### Components
+#### Added
+* Added: Dropdown web component.
+#### Changed
+* Changed: Improved size and color contrast of drag icon in Draggable Popover.
+#### Fixed
+* Fixed: Draggable Popover behavior has been improved to no longer move outside the available boundaries of the screen.
+
+## 5.17.0 (August 4, 2022)
+### Components
+#### Added
+* Added: Icons `icon-circle-pie`, `icon-cloud-outline`, `icon-cloud-products`, `icon-dashboard`, `icon-edit-reload`, and `icon-file-invoice-gear`.
+
+## 5.16.0 (July 15, 2022)
+### Components
+#### Added
+* Added: CSS grid component.
+* Added: Carousel web component now support swipe interaction.
+#### Fixed
+* Fixed: App layout component dashboard example elements now render with a better arrangement of layers.
+
+## 5.15.0 (July 4, 2022)
+### Components
+#### Added
+* Added: App layout now supports dashboard style with header background.
+* Added: Save View Vue component.
+* Added: Card component now supports widget variant for portal dashboard.
+* Added: Expansion Panel Vue component.
+#### Fixed
+* Fixed: Outline marketing icon is now visible inside active Stat component items.
+
 ## 5.14.1 (June 13, 2022)
 ### Components
 #### Fixed
