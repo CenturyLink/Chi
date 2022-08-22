@@ -22,3 +22,18 @@ export interface HeadTabsInterface {
     htmlBlueprint: CodeSnippets;
   }
 };
+
+export interface ILanguage {
+  href: string;
+  name: string;
+}
+
+export interface ILink {
+  href: string;
+  title?: string;
+  target?: string;
+  class?: string;
+  ariaLabel?: string;
+  iconName?: string;
+}
+

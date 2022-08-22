@@ -10,7 +10,7 @@
 */
 try {
 library(
-      identifier: 'jsl-jenkins-shared-library-local@release/20220117',
+      identifier: 'jsl-jenkins-shared-library-local@stable',
       retriever: modernSCM(
         [
           $class: 'GitSCMSource',
@@ -21,7 +21,7 @@ library(
     ) _
 } catch (Exception Ex) {
 library(
-  identifier: 'jsl-jenkins-shared-library@release/20220117',
+  identifier: 'jsl-jenkins-shared-library@stable',
   retriever: modernSCM(
     [
       $class: 'GitSCMSource',
@@ -53,19 +53,19 @@ pipeline {
         QUALITY_GATE_CREDENTIALS Credentials to gather
         PROJECT_MAL The MAL of the project
       */
-      GITHUB_TOKEN_CREDENTIALS = 'SCMAUTO_GITHUB'
+      GITHUB_TOKEN_CREDENTIALS = 'GITHUB_APP_CREDENTIALS'
       GITHUB_SSH_CREDENTIALS = 'SCMAUTO_SSH_DEVOPS_PIPELINE'
       GITHUB_ALTER_CREDENTIALS = 'JANITOKEN'
-      DOCKER_CREDENTIALS = 'nexus-secrets'
+      DOCKER_CREDENTIALS = 'nexus-secrets-file'
       KUBE_CREDENTIALS = 'kube-secret'
       KUBE_CREDENTIALS_TEST = 'kube-secret-test'
       AMAZON_CREDENTIALS = 'awsCredentialsPR'
       AMAZON_CREDENTIALS_PR = 'awsCredentials'
-      SONARQUBE_CREDENTIALS = 'sonar-credentials'
+      SONARQUBE_CREDENTIALS = 'sonartokenprod'
       GCP_CREDENTIALS = ''
       JIRA_CREDENTIALS = 'jira-credentials'
       MSTEAMS_CREDENTIALS = 'TEAMS-SECRET'
-      QUALITY_GATE_CREDENTIALS = 'CRUMBS-FILE'
+      QUALITY_GATE_CREDENTIALS = 'qg-creds'
       //Deployment control credentialsId
       AUTHORIZED_USERS = ''
       DEPLOY_AUTH_TOKEN = ''
@@ -125,11 +125,11 @@ pipeline {
            }
          steps {
            script {
-             string closed_prs = jslGetClosedPRs()
-             if (closed_prs.trim()) {
-               closed_prs.split(' ').each {
-                   jslProcessClosedPR(it.trim())
-               }
+             def closed_prs = jslGetClosedPRs()
+             if (closed_prs.size()!=0) {
+              closed_prs.each {
+                  jslProcessClosedPR(it)
+                }
              }
              else {
                println "There are no closed PRs in the time slice to check."
