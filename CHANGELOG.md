@@ -1,4 +1,12 @@
 # CHANGELOG
+## 5.19.0 (August 19, 2022)
+### Components
+#### Added
+* Added: Icons `icon-file-check-outline`, `icon-file-check`, `icon-drag-vertical`, `icon-drag-vertical-outline`, `icon-mail-outgoing`, `icon-mail-outgoing-outline`, `icon-mail-incoming`, `icon-mail-incoming-outline`, `icon-lightbulb-magic-outline`, `icon-lightbulb-magic`, `icon-filter-alt-outline`, `icon-filter-alt`, `icon-filter-alt-off`, `icon-filter-alt-off-outline`, `icon-diagram`, `icon-diagram-outline`, `icon-check-double`, `icon-sun`, `icon-sun-outline`, `icon-moon`, `icon-moon-outline`,  `icon-fact-check`,  `icon-fact-check-outline`, `icon-computer`, `icon-checklist`, and `icon-checklist-outline`.
+* Added: Data Table now supports column resize on all levels of nesting.
+* Added: Picker Group component now supports additional description labels for picker items.
+* Added: Utility class `-flex-basis--0`.
+
 ## 5.18.0 (August 12, 2022)
 ### Components
 #### Added
