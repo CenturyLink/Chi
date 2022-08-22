@@ -22,6 +22,7 @@ export const GENERIC_SIZES = {
   LG: '-lg',
   XL: '-xl',
 };
+export const LIST_CLASS = '-list';
 //#endregion
 
 //#region Accordion

@@ -122,6 +122,19 @@ $sizes: (
             }
           }
 
+          &.chi-picker-label__wrapper {
+            flex-direction: column;
+
+            & > .chi-picker-label {
+              &:not(:last-child) {
+                margin-right: 0;
+              }
+
+              & + .chi-picker-label {
+                font-weight: $font-weight-base;
+              }
+            }
+          }
         }
       }
 
