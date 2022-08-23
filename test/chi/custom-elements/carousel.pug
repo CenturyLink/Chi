@@ -8,15 +8,15 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
   h2 Base
   chi-carousel(data-cy="base")
     .-d--flex(slot="items")
-      each item in [1, 2, 3, 4]
+      each item in [1, 2, 3, 4, 5, 6, 7, 8]
         .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;")
           .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
 
 .test-single(style="max-width: 55rem;")
-  h2 Single
+  h2 Single hool
   chi-carousel(single data-cy="single")
     .chi-carousel__wrapper.-d--flex(slot="items")
-      each item in [1, 2]
+      each item in [1, 2, 3, 4, 5, 6, 7, 8]
         .chi-carousel__item.-p--1(style='height: 10rem; width: 858px;', slot="items")
           .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
 
@@ -24,7 +24,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
   h2 Dots
   chi-carousel(dots data-cy="dots")
     .-d--flex(slot="items")
-      each item in [1, 2, 3, 4, 5]
+      each item in [1, 2, 3, 4, 5, 6, 7, 8]
         .chi-carousel__item.-p--1(style="width: 18.1rem; height: 7rem;")
           .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
 
@@ -32,7 +32,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
   h2 Pagination
   chi-carousel(pagination single data-cy="pagination")
     .-d--flex(slot="items")
-      each item in [1, 2, 3]
+      each item in [1, 2, 3, 4, 5, 6, 7, 8]
         .chi-carousel__item.-p--1(style='width: 858px; height: 7rem;')
           .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
 

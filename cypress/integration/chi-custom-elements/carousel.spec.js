@@ -23,10 +23,10 @@ describe('Carousel', () => {
       cy.get('@base').find(`.${CAROUSEL_CLASS}`).should.exist;
     });
 
-    it('Should have 4 carousel items', () => {
+    it('Should have 8 carousel items', () => {
       cy.get('@base')
         .find(`.${CAROUSEL_ITEM_CLASS}`)
-        .should('have.length', 4);
+        .should('have.length', 8);
     });
 
     it('Should show the previous button as disabled by default', () => {
@@ -40,22 +40,22 @@ describe('Carousel', () => {
       cy.get('@base')
         .find(`.${CAROUSEL_NEXT_CLASS}`)
         .find('button')
-        .as('nextButton')
-        .click()
-        .then(() => {
-          cy.get('@nextButton').should('be.disabled');
-        });
+        .as('nextButton');
+      for (let i = 1; i < 3; i++) {
+        cy.get('@nextButton').click();
+      }
+      cy.get('@nextButton').should('be.disabled');
     });
 
     it('Should show the previous button as disabled once the first item is shown', () => {
       cy.get('@base')
         .find(`.${CAROUSEL_PREVIOUS_CLASS}`)
         .find('button')
-        .as('prevButton')
-        .click()
-        .then(() => {
-          cy.get('@prevButton').should('be.disabled');
-        });
+        .as('prevButton');
+      for (let i = 2; i > 0; i--) {
+        cy.get('@prevButton').click();
+      }
+      cy.get('@prevButton').should('be.disabled');
     });
 
     it.skip(`Should trigger the ${CAROUSEL_VIEW_CHANGE_EVENT} event`, () => {
@@ -85,7 +85,9 @@ describe('Carousel', () => {
         .find(`.${CAROUSEL_NEXT_CLASS}`)
         .find('button')
         .as('nextButton');
-      cy.get('@nextButton').click();
+      for (let i = 1; i < 8; i++) {
+        cy.get('@nextButton').click();
+      }
       cy.get('@nextButton').should('be.disabled');
     });
 
@@ -94,7 +96,9 @@ describe('Carousel', () => {
         .find(`.${CAROUSEL_PREVIOUS_CLASS}`)
         .find('button')
         .as('prevButton');
-      cy.get('@prevButton').click();
+      for (let i = 7; i > 0; i--) {
+        cy.get('@prevButton').click();
+      }
       cy.get('@prevButton').should('be.disabled');
     });
   });
@@ -108,8 +112,8 @@ describe('Carousel', () => {
         .as('controls');
     });
 
-    it('Should have 2 dot controls', () => {
-      cy.get('@controls').should('have.length', 2);
+    it('Should have 3 dot controls', () => {
+      cy.get('@controls').should('have.length', 3);
     });
 
     it('Should show the first dot as active by default', () => {
@@ -128,6 +132,13 @@ describe('Carousel', () => {
           cy.get('@controls')
             .eq(1)
             .should('have.class', ACTIVE_CLASS);
+          });
+          cy.get('@nextButton')
+            .click()
+            .then(() => {
+              cy.get('@controls')
+                .last()
+                .should('have.class', ACTIVE_CLASS);
           cy.get('@nextButton').should('be.disabled');
         });
     });
@@ -140,10 +151,18 @@ describe('Carousel', () => {
         .click()
         .then(() => {
           cy.get('@controls')
-            .eq(0)
-            .should('have.class', ACTIVE_CLASS);
-          cy.get('@prevButton').should('be.disabled');
-        });
+          .eq(1)
+          .should('have.class', ACTIVE_CLASS);
+      });
+      cy.get('@prevButton')
+      .click()
+      .then(() => {
+        cy.get('@controls')
+          .first()
+          .eq(0)
+          .should('have.class', ACTIVE_CLASS);
+        cy.get('@prevButton').should('be.disabled');
+      });
     });
   });
 
@@ -152,10 +171,10 @@ describe('Carousel', () => {
       cy.get("[data-cy='pagination']").as('pagination');
     });
 
-    it('Should show pagination of 1 of 3 by default', () => {
+    it('Should show pagination of 1 of 8 by default', () => {
       cy.get('@pagination')
         .find(`.${CAROUSEL_PAGINATION_CLASS}`)
-        .should('contain', '1 of 3');
+        .should('contain', '1 of 8');
     });
 
     it('Should show the next button as disabled when going to the last item', () => {
@@ -163,10 +182,10 @@ describe('Carousel', () => {
         .find(`.${CAROUSEL_NEXT_CLASS}`)
         .find('button')
         .as('nextButton');
-      for (let i = 1; i < 3; i++) {
+      for (let i = 1; i < 8; i++) {
         cy.get('@pagination')
           .find(`.${CAROUSEL_PAGINATION_CLASS}`)
-          .should('contain', `${i} of 3`);
+          .should('contain', `${i} of 8`);
         cy.get('@nextButton').click();
       }
       cy.get('@nextButton').should('be.disabled');
@@ -177,11 +196,11 @@ describe('Carousel', () => {
         .find(`.${CAROUSEL_PREVIOUS_CLASS}`)
         .find('button')
         .as('prevButton');
-      for (let i = 2; i > 0; i--) {
+      for (let i = 7; i > 0; i--) {
         cy.get('@prevButton').click();
         cy.get('@pagination')
           .find(`.${CAROUSEL_PAGINATION_CLASS}`)
-          .should('contain', `${i} of 3`);
+          .should('contain', `${i} of 8`);
       }
       cy.get('@prevButton').should('be.disabled');
     });
