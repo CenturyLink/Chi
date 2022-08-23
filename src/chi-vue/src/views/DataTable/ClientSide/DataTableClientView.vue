@@ -52,13 +52,17 @@
       <template #toolbar>
         <ChiDataTableToolbar
           @chiToolbarFiltersChange="e => chiToolbarFiltersChange(e)"
-          @chiToolbarSearch="e => chiToolbarSearch(e)"
           @chiToolbarColumnsChange="e => chiToolbarColumnsChange(e)"
           @chiToolbarColumnsReset="e => chiToolbarColumnsReset(e)"
           @chiToolbarViewsChange="e => chiToolbarViewsChange(e)"
         >
           <template v-slot:start>
-            <ChiSearchInput :portal="true" :dataTableSearch="true" />
+            <ChiSearchInput
+              :portal="true"
+              :dataTableSearch="true"
+              @chiClean="searchValue = ''"
+              @chiSearch="e => chiToolbarSearch(e)"
+            />
             <div class="chi-divider -vertical"></div>
             <ChiDataTableViews :views="toolbar.viewsData" defaultView="view-2" />
             <div class="chi-divider -vertical"></div>
@@ -232,8 +236,8 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     dataSorting: e => {
       console.log('chiDataSorting', e);
     },
-    chiToolbarSearch: e => {
-      console.log('chiToolbarSearch', e);
+    chiToolbarSearch(e) {
+      this.$data.searchValue = e.toLowerCase();
     },
     chiToolbarFiltersChange: e => {
       console.log('chiToolbarFiltersChange', e);
@@ -270,12 +274,57 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     return {
       config: exampleConfig,
       toolbar: exampleToolbar,
-      table: {
-        head: exampleTableHead,
-        body: exampleTableBody,
-      },
+      searchValue: '',
       months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     };
+  },
+  computed: {
+    table() {
+      const filter = (array: DataTableRow[], fn: Function) => {
+        return array.reduce((acc: DataTableRow[], curr: DataTableRow) => {
+          const nestedContent = filter(
+            curr.nestedContent && curr.nestedContent.table && curr.nestedContent.table.data
+              ? curr.nestedContent.table.data
+              : [],
+            fn
+          );
+
+          if (fn(curr) || nestedContent.length) {
+            acc.push(
+              Object.assign({}, curr, nestedContent.length && { nestedContent: { table: { data: nestedContent } } })
+            );
+          }
+          return acc;
+        }, []);
+      };
+      const fn = (row: DataTableRow) => {
+        return row.data.some((cell: any) => {
+          if (cell.payload) {
+            if (cell.searchBy) {
+              const searchBy = cell.payload[cell.searchBy];
+
+              if (searchBy) {
+                const cellData = String(searchBy).toLowerCase();
+
+                return cellData === this.$data.searchValue || cellData.includes(this.$data.searchValue);
+              }
+            }
+          } else {
+            const cellData = String(cell).toLowerCase();
+
+            return cellData === this.$data.searchValue || cellData.includes(this.$data.searchValue);
+          }
+
+          return false;
+        });
+      };
+      const tableData = {
+        head: exampleTableHead,
+        body: this.$data.searchValue !== '' ? filter(exampleTableBody as any, fn) : exampleTableBody,
+      };
+
+      return tableData;
+    },
   },
 })
 export default class DataTableView extends Vue {
