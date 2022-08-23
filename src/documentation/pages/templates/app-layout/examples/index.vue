@@ -9,6 +9,7 @@
     <BaseSubtitle />
     <BaseSubtitleButtons />
     <BasePageLevelActions />
+    <DashboardWithHeaderBackground />
 </template>
 
 <script lang="ts">
@@ -18,6 +19,7 @@ import BaseSubtitle from './_base-back-link-subtitle.vue';
 import BaseBackLink from './_base-back-link.vue';
 import BaseHelp from './_base-help.vue';
 import BasePageLevelActions from './_base-page-level-actions.vue';
+import DashboardWithHeaderBackground from './_dashboard-with-header-background.vue';
 import Base from './_base.vue';
 
 @Component({
@@ -27,7 +29,8 @@ import Base from './_base.vue';
     BaseBackLink,
     BaseSubtitle,
     BaseSubtitleButtons,
-    BasePageLevelActions
+    BasePageLevelActions,
+    DashboardWithHeaderBackground
   },
 })
 export default class Examples extends Vue {}
