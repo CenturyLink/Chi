@@ -40,22 +40,24 @@ describe('Carousel', () => {
       cy.get('@base')
         .find(`.${CAROUSEL_NEXT_CLASS}`)
         .find('button')
-        .as('nextButton');
-      for (let i = 1; i < 3; i++) {
-        cy.get('@nextButton').click();
-      }
-      cy.get('@nextButton').should('be.disabled');
+        .as('nextButton')
+        .click()
+        .click()
+        .then(() => {
+          cy.get('@nextButton').should('be.disabled');
+        });
     });
 
     it('Should show the previous button as disabled once the first item is shown', () => {
       cy.get('@base')
         .find(`.${CAROUSEL_PREVIOUS_CLASS}`)
         .find('button')
-        .as('prevButton');
-      for (let i = 2; i > 0; i--) {
-        cy.get('@prevButton').click();
-      }
-      cy.get('@prevButton').should('be.disabled');
+        .as('prevButton')
+        .click()
+        .click()
+        .then(() => {
+          cy.get('@prevButton').should('be.disabled');
+        });
     });
 
     it.skip(`Should trigger the ${CAROUSEL_VIEW_CHANGE_EVENT} event`, () => {
@@ -85,7 +87,7 @@ describe('Carousel', () => {
         .find(`.${CAROUSEL_NEXT_CLASS}`)
         .find('button')
         .as('nextButton');
-      for (let i = 1; i < 8; i++) {
+      for (let i = 0; i < 7; i++) {
         cy.get('@nextButton').click();
       }
       cy.get('@nextButton').should('be.disabled');
@@ -96,7 +98,7 @@ describe('Carousel', () => {
         .find(`.${CAROUSEL_PREVIOUS_CLASS}`)
         .find('button')
         .as('prevButton');
-      for (let i = 7; i > 0; i--) {
+      for (let i = 0; i < 7; i++) {
         cy.get('@prevButton').click();
       }
       cy.get('@prevButton').should('be.disabled');
@@ -159,7 +161,6 @@ describe('Carousel', () => {
       .then(() => {
         cy.get('@controls')
           .first()
-          .eq(0)
           .should('have.class', ACTIVE_CLASS);
         cy.get('@prevButton').should('be.disabled');
       });
