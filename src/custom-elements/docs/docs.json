@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-09-12T23:04:53",
+  "timestamp": "2022-08-26T10:18:46",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -5032,6 +5032,133 @@
           "cancelable": true,
           "composed": true,
           "docs": "emitting a custom event toggle.",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/tabs/tabs.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-tabs",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "activeTab",
+          "type": "string",
+          "mutable": false,
+          "attr": "active-tab",
+          "reflectToAttr": false,
+          "docs": "To provide ID of the active tab",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "border",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "border",
+          "reflectToAttr": false,
+          "docs": "Border",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "slidingBorder",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "sliding-border",
+          "reflectToAttr": false,
+          "docs": "Animated",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "solid",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "solid",
+          "reflectToAttr": false,
+          "docs": "Solid",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "triggers",
+          "type": "TabTrigger[]",
+          "mutable": false,
+          "reflectToAttr": false,
+          "docs": "To provide the data for Tabs' triggers",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "TabTrigger[]"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "vertical",
+          "reflectToAttr": false,
+          "docs": "Vertical",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiTabChange",
+          "detail": "string",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user activates a tab",
           "docsTags": []
         }
       ],
