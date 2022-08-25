@@ -1,0 +1,105 @@
+---
+title: Tabs
+---
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+
+h2 Base
+.-w--100
+  chi-tabs(active-tab='tab-a' id='base' sliding-border)
+
+h2 Border
+.-w--100
+  chi-tabs(active-tab='tab-a' border id='base' sliding-border)
+
+h2 Vertical
+chi-tabs(active-tab='tab-a' id='vertical' vertical sliding-border)
+
+h2 Solid
+.-w--100
+  chi-tabs(active-tab='tab-a' id='solid' solid sliding-border)
+
+h2 No animation
+.-w--100
+  chi-tabs(active-tab='tab-a' id='no-animation')
+
+h2 No animation, Solid
+.-w--100
+  chi-tabs(active-tab='tab-a' id='no-animation-solid' solid)
+
+script.
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabElements = document.querySelectorAll('#base, #border, #vertical, #solid, #no-animation, #no-animation-solid');
+
+    tabElements.forEach(tabElement => {
+      tabElement.addEventListener('chiTabChange', e => {
+        console.log(e);
+      });
+      tabElement.triggers = [
+        {
+          label: 'Tab A test',
+          id: 'tab-a'
+        },
+        {
+          label: 'Tab B',
+          id: 'tab-b'
+        },
+        {
+          label: 'Tab C',
+          id: 'tab-c'
+        },
+        {
+          label: 'Tab D',
+          id: 'tab-d'
+        },
+        {
+          label: 'Tab E',
+          id: 'tab-e'
+        },
+        {
+          label: 'Tab F',
+          id: 'tab-f'
+        },
+        {
+          label: 'Tab G',
+          id: 'tab-g'
+        },
+        {
+          label: 'Tab H',
+          id: 'tab-h'
+        },
+        {
+          label: 'Tab I',
+          id: 'tab-i'
+        },
+        {
+          label: 'Tab J',
+          id: 'tab-j'
+        },
+        {
+          label: 'Tab K',
+          id: 'tab-k'
+        },
+        {
+          label: 'Tab L',
+          id: 'tab-l'
+        },
+        {
+          label: 'Tab M',
+          id: 'tab-m'
+        },
+        {
+          label: 'Tab N',
+          id: 'tab-n'
+        },
+        {
+          label: 'Tab O',
+          id: 'tab-o'
+        },
+        {
+          label: 'Tab P',
+          id: 'tab-P'
+        },
+      ];
+    });
+  });
