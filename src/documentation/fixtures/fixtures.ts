@@ -311,6 +311,30 @@ const customItems = [
 
 const filters = [
   {
+    name: 'status',
+    type: 'select',
+    id: 'myoption1',
+    options: [
+      {
+        label: 'Pending Active',
+        value: 'pending',
+        selected: true
+      },
+      {
+        label: 'Active',
+        value: 'active',
+        selected: false
+      },
+      {
+        label: 'Inactive',
+        value: 'inactive',
+        selected: false
+      }
+    ],
+    advanced: false,
+    value: 'pending'
+  },
+  {
     name: 'statusAdvanced',
     label: 'Status',
     type: 'select',

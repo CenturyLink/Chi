@@ -7,11 +7,6 @@
           .chi-divider.-vertical
           chi-data-table-views(:views='toolbar.viewsData')
           .chi-divider.-vertical
-          .chi-form__item.-ml--1
-            select.chi-select
-              option Pending Active
-              option Active
-              option Inactive
           chi-data-table-filters(:filters-data='toolbar.filtersData', :custom-items='toolbar.customItemsData')
             template(v-slot:custom-one)
               chi-label(for='example__base_with_save_view_and_bulk_actions_input-1') City
@@ -122,13 +117,6 @@ import {
     <!-- To render views, use Views sub-module of Toolbar -->
     <ChiDataTableViews :views="toolbar.viewsData" />
     <div class="chi-divider -vertical"></div>
-    <div class="chi-form__item -ml--1>
-      <select class="chi-select">
-        <option>Pending Active</option>
-        <option>Active</option>
-        <option>Inactive</option>
-      </select>
-    </div>
     <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
     <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
       <template v-slot:customAdvanced>
@@ -297,53 +285,76 @@ data: () => {
       advanced: true,
     },
   ];
-  const columns = [
+  const filters = [
     {
-      name: 'columnA',
-      label: 'Column A',
+      name: 'status',
+      type: 'select',
+      id: 'myoption1',
+      options: [
+        {
+          label: 'Pending Active',
+          value: 'pending',
+          selected: true
+        },
+        {
+          label: 'Active',
+          value: 'active',
+          selected: false
+        },
+        {
+          label: 'Inactive',
+          value: 'inactive',
+          selected: false
+        }
+      ],
+      advanced: false,
+      value: 'pending'
     },
     {
-      name: 'columnB',
-      label: 'Column B',
+      name: 'statusAdvanced',
+      label: 'Status',
+      type: 'select',
+      id: 'myoption1',
+      options: [
+        {
+          label: 'Pending Active',
+          value: 'pending',
+          selected: false
+        },
+        {
+          label: 'Active',
+          value: 'active',
+          selected: false
+        },
+        {
+          label: 'Inactive',
+          value: 'inactive',
+          selected: false
+        }
+      ],
+      advanced: true,
+      value: 'pending'
     },
     {
-      name: 'columnC',
-      label: 'Column C',
-      locked: true,
-      selected: true,
+      name: 'inputAdvanced',
+      label: 'Label',
+      id: 'myoption2',
+      advanced: true
     },
     {
-      name: 'columnD',
-      label: 'Column D',
-      locked: true,
-      selected: true,
+      name: 'textareaAdvanced',
+      label: 'textarea',
+      id: 'myoption3',
+      type: 'textarea',
+      advanced: true
     },
     {
-      name: 'columnE',
-      label: 'Column E',
-      selected: true,
-    },
-    {
-      name: 'columnF',
-      label: 'Column F',
-      selected: true,
-    },
-    {
-      name: 'columnG',
-      label: 'Column G',
-    },
-    {
-      name: 'columnH',
-      label: 'Column H',
-    },
-    {
-      name: 'columnI',
-      label: 'Column I',
-    },
-    {
-      name: 'columnJ',
-      label: 'Column J',
-    },
+      name: 'checkboxAdvanced',
+      id: 'myoption4',
+      label: 'Advanced Checkbox',
+      type: 'checkbox',
+      advanced: true
+    }
   ];
 
   return {

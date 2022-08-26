@@ -7,11 +7,6 @@
           .chi-divider.-vertical
           chi-data-table-views(:views='toolbar.viewsData')
           .chi-divider.-vertical
-          .chi-form__item.-ml--1
-            select.chi-select
-              option Pending Active
-              option Active
-              option Inactive
           chi-data-table-filters(:filters-data='toolbar.filtersData', :custom-items='toolbar.customItemsData')
             template(v-slot:custom-one)
               chi-label(for=`example__${id}_filter_input-1`) City
@@ -95,13 +90,6 @@ export default class BaseWithSaveView extends Vue {
     <!-- To render views, use Views sub-module of Toolbar -->
     <ChiDataTableViews :views="toolbar.viewsData" />
     <div class="chi-divider -vertical"></div>
-    <div class="chi-form__item -ml--1>
-      <select class="chi-select">
-        <option>Pending Active</option>
-        <option>Active</option>
-        <option>Inactive</option>
-      </select>
-    </div>
     <!-- To render filters, use Filters sub-module of Toolbar by providing it with respective data -->
     <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
       <template v-slot:customAdvanced>
@@ -150,80 +138,78 @@ data: () => {
       label: 'Custom 2',
     },
   ];
-  const filters = [
+ const filters = [
     {
       name: 'status',
       type: 'select',
       id: 'myoption1',
-      label: 'Selector',
       options: [
+        {
+          label: 'Pending Active',
+          value: 'pending',
+          selected: true
+        },
         {
           label: 'Active',
           value: 'active',
+          selected: false
         },
         {
           label: 'Inactive',
           value: 'inactive',
-        },
+          selected: false
+        }
       ],
-      value: 'active',
-    },
-    {
-      name: 'input',
-      placeholder: 'Input filter',
-      type: 'input',
-      value: '',
-      id: 'myoption2',
-      label: 'Input Filter',
-    },
-    {
-      name: 'checkbox',
-      type: 'checkbox',
-      checked: false,
-      id: 'myoption3',
-      label: 'Checkbox',
+      advanced: false,
+      value: 'pending'
     },
     {
       name: 'statusAdvanced',
       label: 'Status',
       type: 'select',
-      id: 'myoption4',
+      id: 'myoption1',
       options: [
+        {
+          label: 'Pending Active',
+          value: 'pending',
+          selected: false
+        },
         {
           label: 'Active',
           value: 'active',
-          selected: false,
+          selected: false
         },
         {
           label: 'Inactive',
           value: 'inactive',
-          selected: false,
-        },
+          selected: false
+        }
       ],
       advanced: true,
-      value: 'active',
+      value: 'pending'
     },
     {
       name: 'inputAdvanced',
       label: 'Label',
-      id: 'myoption5',
-      advanced: true,
+      id: 'myoption2',
+      advanced: true
     },
     {
       name: 'textareaAdvanced',
       label: 'textarea',
-      id: 'myoption6',
+      id: 'myoption3',
       type: 'textarea',
-      advanced: true,
+      advanced: true
     },
     {
       name: 'checkboxAdvanced',
-      id: 'myoption7',
+      id: 'myoption4',
       label: 'Advanced Checkbox',
       type: 'checkbox',
-      advanced: true,
-    },
+      advanced: true
+    }
   ];
+  
   const columns = [
     {
       name: 'columnA',
