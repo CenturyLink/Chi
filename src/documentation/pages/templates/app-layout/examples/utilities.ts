@@ -72,3 +72,14 @@ export const _getBaseHtmlBlueprintFooter = (isCenturyLinkTheme?: boolean): strin
       </div>
     </div>
   </footer>`;
+
+export const _getDashboardWidgetList = (isWebComponent: boolean) => {
+  let widgetList = '';
+    [...Array(8)].forEach((item, index) => {
+      widgetList += `${index===0 ? '' : `
+              `}<li class="chi-css-col -col-sm--6">
+                ${isWebComponent ? `<chi-link href="#">Widget Link</chi-link>` : `<a class="chi-link" href="#">Widget Link</a>`}
+              </li>`;
+    });
+    return widgetList;
+}
