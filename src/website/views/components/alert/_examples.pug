@@ -553,13 +553,155 @@ p.-text
         </div>
 
 .-portal--hide
-  h4 Actionable
+  h4 Clickable
+  p.-text
+    | Make an Alert clickable by placing it inside a link component.
+  .example.-mb--3
+    .-p--3
+      chi-link.-d--block.-mb--2(href='#' no-hover-underline)
+        chi-alert.-w--100(color='info' icon='file')
+          .-d--flex
+            span.-text--primary.-text--semi-bold.-flex--grow1
+              | Complete platform setup
+            chi-icon(icon='chevron-right' color='primary' size='sm--2')
+      chi-button(color='primary' variant='flat' extra-class='-p--0 -text--no-transform -no-hover' fluid)
+        chi-alert.-w--100(color='info' icon='settings')
+          .-d--flex
+            span.-text--primary.-text--semi-bold.-flex--grow1
+              | Configure your first device
+            chi-icon(icon='chevron-right' color='primary' size='sm--2')
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-clickable
+        li.-active
+          a(href=`#webcomponent-clickable`) Web Component
+        li
+          a(href=`#html-clickable`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-clickable
+      :code(lang="html")
+        <!-- Clickable alert using chi-link -->
+        <chi-link href="#" class="-d--block" no-hover-underline>
+          <chi-alert color="info" icon="file" class="-w--100">
+            <div class="-d--flex">
+              <span class="-text--primary -text--semi-bold -flex--grow1">Complete platform setup</span>
+              <chi-icon icon="chevron-right" size="sm--2"></chi-icon>
+            </div>
+          </chi-alert>
+        </chi-link>
+
+        <!-- Clickable alert using chi-button -->
+        <chi-button color="primary" variant="flat" extra-class="-p--0 -text--no-transform -no-hover" fluid>
+          <chi-alert color="info" icon="settings" class="-w--100">
+            <div class="-d--flex">
+              <span class="-text--primary -text--semi-bold -flex--grow1">Configure your first device</span>
+              <chi-icon icon="chevron-right" color="primary" size="sm--2"></chi-icon>
+            </div>
+          </chi-alert>
+        </chi-button>
+    .chi-tabs-panel#html-clickable
+      :code(lang="html")
+        <!-- Clickable alert using chi-link -->
+        <a href="#" class="chi-link -no-hover-underline">
+          <div class="chi-alert -info" role="alert">
+            <i class="chi-alert__icon chi-icon icon-flag" aria-hidden="true"></i>
+            <div class="chi-alert__content">
+              <p class="chi-alert__text -text--primary -text--semi-bold">Complete platform setup</p>
+            </div>
+            <i class="chi-icon icon-chevron-right -mr--0"></i>
+          </div>
+        </a>
+
+        <!-- Clickable alert using chi-button -->
+        <button class="chi-button -flat -primary -fluid -p--0 -text--no-transform -no-hover">
+          <div class="chi-button__content">
+            <div class="chi-alert -info -w--100" role="alert">
+              <i class="chi-alert__icon chi-icon icon-settings -icon--info" aria-hidden="true"></i>
+              <div class="chi-alert__content">
+                <p class="chi-alert__text -text--primary -text--semi-bold">Configure your first device</p>
+              </div>
+              <i class="chi-icon icon-chevron-right -icon--primary -mr--0"></i>
+            </div>
+          </div>
+        </button>
+
+.-portal--show
+  h4 Clickable
+  p.-text
+    | Make an Alert clickable by placing it inside a link or button component.
+  .example.-mb--3
+    .-p--3
+      chi-link.-d--block.-mb--2(href='#' no-hover-underline)
+        chi-alert.-w--100(color='info' icon='file')
+          .-d--flex
+            span.-text--primary.-text--semi-bold.-flex--grow1
+              | Complete platform setup
+            chi-icon(icon='chevron-right' size='sm--2')
+      chi-button(color='primary' variant='flat' extra-class='-p--0 -text--no-transform -no-hover' fluid)
+        chi-alert.-w--100(color='info' icon='settings')
+          .-d--flex
+            span.-text--primary.-text--semi-bold.-flex--grow1
+              | Configure your first device
+            chi-icon(icon='chevron-right' color='primary' size='sm--2')
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-portal-clickable
+        li.-active
+          a(href=`#webcomponent-portal-clickable`) Web Component
+        li
+          a(href=`#html-portal-clickable`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-portal-clickable
+      :code(lang="html")
+        <!-- Clickable alert using chi-link -->
+        <chi-link href="#" class="-d--block" no-hover-underline>
+          <chi-alert color="info" icon="file" class="-w--100">
+            <div class="-d--flex">
+              <span class="-text--primary -text--semi-bold -flex--grow1">Complete platform setup</span>
+              <chi-icon icon="chevron-right" size="sm--2"></chi-icon>
+            </div>
+          </chi-alert>
+        </chi-link>
+
+        <!-- Clickable alert using chi-button -->
+        <chi-button color="primary" variant="flat" extra-class="-p--0 -text--no-transform -no-hover" fluid>
+          <chi-alert color="info" icon="settings" class="-w--100">
+            <div class="-d--flex">
+              <span class="-text--primary -text--semi-bold -flex--grow1">Configure your first device</span>
+              <chi-icon icon="chevron-right" color="primary" size="sm--2"></chi-icon>
+            </div>
+          </chi-alert>
+        </chi-button>
+    .chi-tabs-panel#html-portal-clickable
+      :code(lang="html")
+        <!-- Clickable alert using chi-link -->
+        <a href="#" class="chi-link -no-hover-underline">
+          <div class="chi-alert -info" role="alert">
+            <i class="chi-alert__icon chi-icon icon-flag" aria-hidden="true"></i>
+            <div class="chi-alert__content">
+              <p class="chi-alert__text -text--primary -text--semi-bold">Complete platform setup</p>
+            </div>
+            <i class="chi-icon icon-chevron-right -mr--0"></i>
+          </div>
+        </a>
+
+        <!-- Clickable alert using chi-button -->
+        <button class="chi-button -flat -primary -fluid -p--0 -text--no-transform -no-hover">
+          <div class="chi-button__content">
+            <div class="chi-alert -info -w--100" role="alert">
+              <i class="chi-alert__icon chi-icon icon-settings -icon--info" aria-hidden="true"></i>
+              <div class="chi-alert__content">
+                <p class="chi-alert__text -text--primary -text--semi-bold">Configure your first device</p>
+              </div>
+              <i class="chi-icon icon-chevron-right -icon--primary -mr--0"></i>
+            </div>
+          </div>
+        </button>
+
+.-portal--hide
+  h4 Actions
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable)
+      chi-alert.-m--2(color='success' icon='circle-check' size='lg' title="Success" closable)
         | This is a large closable success alert
         chi-button(slot="chi-alert__actions") Secondary action
-        chi-button(slot="chi-alert__actions", color='primary') Primary action
+        chi-button(slot="chi-alert__actions" color='primary') Primary action
     .example-tabs.-pl--2
       ul.chi-tabs#example-actionable
         li.-active
@@ -599,7 +741,7 @@ p.-text
         </div>
 
 .-portal--show
-  h4 Actionable
+  h4 Actions
   .example.-mb--3
     .-p--1
       chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable)
