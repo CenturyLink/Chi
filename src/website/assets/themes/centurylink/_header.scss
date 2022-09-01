@@ -93,6 +93,7 @@
           border: 0.0625rem solid $text-input-border-color;
           border-radius: $border-radius-base;
           color: $text-input-placeholder-text-color;
+          font-weight: $font-weight-normal;
 
           &:hover {
             border-color: $text-input-hover-border-color;
