@@ -6,5 +6,5 @@ docsearch({
   searchParameters: {
     facetFilters: [`version:v${chiCurrentVersion}`]
   },
-  debug: true
+  debug: false
 });

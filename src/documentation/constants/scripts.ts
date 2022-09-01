@@ -19,6 +19,6 @@ docsearch({
   searchParameters: {
     facetFilters: [\`version:v${CHI_VERSION}\`]
   },
-  debug: true
+  debug: false
 });
 `;
