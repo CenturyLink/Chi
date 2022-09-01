@@ -134,13 +134,13 @@ describe('Carousel', () => {
           cy.get('@controls')
             .eq(1)
             .should('have.class', ACTIVE_CLASS);
-        });
-      cy.get('@nextButton')
-        .click()
-        .then(() => {
-          cy.get('@controls')
-            .last()
-            .should('have.class', ACTIVE_CLASS);
+          });
+          cy.get('@nextButton')
+            .click()
+            .then(() => {
+              cy.get('@controls')
+                .last()
+                .should('have.class', ACTIVE_CLASS);
           cy.get('@nextButton').should('be.disabled');
         });
     });
@@ -153,17 +153,17 @@ describe('Carousel', () => {
         .click()
         .then(() => {
           cy.get('@controls')
-            .eq(1)
-            .should('have.class', ACTIVE_CLASS);
-        });
+          .eq(1)
+          .should('have.class', ACTIVE_CLASS);
+      });
       cy.get('@prevButton')
-        .click()
-        .then(() => {
-          cy.get('@controls')
-            .first()
-            .should('have.class', ACTIVE_CLASS);
-          cy.get('@prevButton').should('be.disabled');
-        });
+      .click()
+      .then(() => {
+        cy.get('@controls')
+          .first()
+          .should('have.class', ACTIVE_CLASS);
+        cy.get('@prevButton').should('be.disabled');
+      });
     });
   });
 
