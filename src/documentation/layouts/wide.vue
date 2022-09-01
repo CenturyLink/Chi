@@ -1,4 +1,4 @@
-\<template lang="pug">
+<template lang="pug">
   #docs-container.docs-container
     <script v-html="redirectionScript"></script>
     <Header />
