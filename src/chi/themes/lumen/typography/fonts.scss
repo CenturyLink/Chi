@@ -1,51 +1,55 @@
-$inter-url: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap';
+$font-url: 'https://lib.lumen.com/fonts/gotham/';
 
-@import url($inter-url);
+@font-face {
+  font-display: swap;
+  font-family: 'Gotham';
+  src: url('#{$font-url}Gotham-Book_Web.woff2') format('woff2'),
+  url('#{$font-url}Gotham-Book_Web.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
 
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Gotham';
-//   src: url('https://lib.lumen.com/fonts/gotham/Gotham-Book_Web.woff2') format('woff2'), url('https://lib.lumen.com/fonts/gotham/Gotham/Gotham-Book_Web.woff') format('woff');
-//   font-weight: 400;
-//   font-style: normal;
-// }
+@font-face {
+  font-display: swap;
+  font-family: 'Gotham';
+  src: url('#{$font-url}Gotham-BookItalic_Web.woff2') format('woff2'),
+  url('#{$font-url}Gotham-BookItalic_Web.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
 
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Gotham';
-//   src: url('https://lib.lumen.com/fonts/gotham/Gotham-BookItalic_Web.woff2') format('woff2'), url('https://lib.lumen.com/fonts/gotham/Gotham-BookItalic_Web.woff') format('woff');
-//   font-weight: 400;
-//   font-style: italic;
-// }
+@font-face {
+  font-display: swap;
+  font-family: 'Gotham';
+  src: url('#{$font-url}Gotham-Medium_Web.woff2') format('woff2'),
+  url('#{$font-url}Gotham-Medium_Web.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
 
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Gotham';
-//   src: url('https://lib.lumen.com/fonts/gotham/Gotham-Medium_Web.woff2') format('woff2'), url('https://lib.lumen.com/fonts/gotham/Gotham-Medium_Web.woff') format('woff');
-//   font-weight: 500;
-//   font-style: normal;
-// }
+@font-face {
+  font-display: swap;
+  font-family: 'Gotham';
+  src: url('#{$font-url}Gotham-Bold_Web.woff2') format('woff2'),
+  url('#{$font-url}Gotham-Bold_Web.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
 
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Gotham';
-//   src: url('https://lib.lumen.com/fonts/gotham/Gotham-Bold_Web.woff2') format('woff2'), url('https://lib.lumen.com/fonts/gotham/Gotham-Bold_Web.woff') format('woff');
-//   font-weight: 700;
-//   font-style: normal;
-// }
+@font-face {
+  font-display: swap;
+  font-family: 'Gotham';
+  src: url('#{$font-url}Gotham-BoldItalic_Web.woff2') format('woff2'),
+  url('#{$font-url}Gotham-BoldItalic_Web.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+}
 
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Gotham';
-//   src: url('https://lib.lumen.com/fonts/gotham/Gotham-BoldItalic_Web.woff2') format('woff2'), url('https://lib.lumen.com/fonts/gotham/Gotham-BoldItalic_Web.woff') format('woff');
-//   font-weight: 700;
-//   font-style: italic;
-// }
-
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Gotham';
-//   src: url('https://lib.lumen.com/fonts/gotham/Gotham-Black_Web.woff2') format('woff2'), url('https://lib.lumen.com/fonts/gotham/Gotham-Black_Web.woff') format('woff');
-//   font-weight: 800;
-//   font-style: normal;
-// }
+@font-face {
+  font-display: swap;
+  font-family: 'Gotham';
+  src: url('#{$font-url}Gotham-Black_Web.woff2') format('woff2'),
+  url('#{$font-url}Gotham-Black_Web.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
