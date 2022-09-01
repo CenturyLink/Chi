@@ -1,16 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Tabbed Navigation" id="tabbed-navigation-lumen-centurylink" :tabs="exampleTabs">
-    p.-text(slot="example-description")
-      | The navigation component is a combination of Chi tabs and dropdowns components. You must use
-      | <code>chi.navigation</code> function to instantiate the whole group of components, and there is no need for
-      | instantiating the tabs nor the dropdowns independently. The navigation components will manage the lifecycle of the
-      | descendants' tabs and dropdowns.
-
-    p.-text(slot="example-description")
-      | Although navigation reproduces all the functionality that tabs and dropdowns have, like the sliding border or the
-      | animated chevron in the dropdowns, it also adds some other new functionalities like the automatic overflow menu,
-      | or a wait-for-animation option.
-
+  <ComponentExample title="Flat" titleSize="h4" id="tabbed-navigation-lumen-centurylink" :tabs="exampleTabs">
     ul.chi-tabs.chi-navigationExample#example-tabbed-navigation(ref="example__tabs_tabbed_navigation" slot="example")
       li.chi-dropdown.-active
         a.chi-dropdown__trigger(href='#') Active tab
@@ -70,7 +59,7 @@ declare const chi: any;
     };
   },
 })
-export default class TabbedNavigationLumenCenturyLink extends Vue {
+export default class TabbedNavigationFlatLumenCenturyLink extends Vue {
   navigation: any;
 
   _setcodeSnippet() {

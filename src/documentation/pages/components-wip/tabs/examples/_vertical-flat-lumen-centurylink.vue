@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Vertical" id="vertical-lumen-centurylink" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
+  <ComponentExample title="Flat" titleSize="h4" id="vertical-lumen-centurylink" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
     .chi-grid.-no-gutter(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'}`" slot="example")
       .chi-col.-w--6.-w-sm--4.-p--3
         ul.chi-tabs.-vertical(:class="selectedTabId === 'base' ? '' : '-inverse'" :id="'example-vertical-' + selectedTabId" role="tablist" :aria-label="selectedTabId === 'base' ? 'chi-tabs-vertical-base' : 'vertical-inverse'" :ref="`example__tabs_vertical_${selectedTabId}`")
@@ -84,7 +84,7 @@ declare const chi: any;
     }
   },
 })
-export default class VerticalLumenCenturyLink extends Vue {
+export default class VerticalFlatLumenCenturyLink extends Vue {
 selectedTab: any;
   tab: any;
 

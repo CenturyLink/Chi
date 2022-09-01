@@ -7,10 +7,26 @@
       <BorderedPortal />
       <VerticalPortal />
     div(v-else)
-      <HorizontalLumenCenturyLink />
-      <VerticalLumenCenturyLink />
+      h3 Horizontal
+      <HorizontalFlatLumenCenturyLink />
+      <HorizontalSolidLumenCenturyLink />
+      h3 Vertical
+      <VerticalFlatLumenCenturyLink />
+      <VerticalSolidLumenCenturyLink />
       <DefaultLinkLumenCenturyLink />
-      <TabbedNavigationLumenCenturyLink />
+      h3 Tabbed Navigation
+      p.-text(slot="example-description")
+        | The navigation component is a combination of Chi tabs and dropdowns components. You must use
+        | <code>chi.navigation</code> function to instantiate the whole group of components, and there is no need for
+        | instantiating the tabs nor the dropdowns independently. The navigation components will manage the lifecycle of the
+        | descendants' tabs and dropdowns.
+
+      p.-text(slot="example-description")
+        | Although navigation reproduces all the functionality that tabs and dropdowns have, like the sliding border or the
+        | animated chevron in the dropdowns, it also adds some other new functionalities like the automatic overflow menu,
+        | or a wait-for-animation option.
+      <TabbedNavigationFlatLumenCenturyLink />
+      <TabbedNavigationSolidLumenCenturyLink />
       <ContainedComponentLumenCenturyLink />
       <WaitAnimationsLumenCenturyLink />
       h2 Icons
@@ -26,10 +42,14 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import VerticalLumenCenturyLink from './_vertical-lumen-centurylink.vue';
+import VerticalFlatLumenCenturyLink from './_vertical-flat-lumen-centurylink.vue';
+import VerticalSolidLumenCenturyLink from './_vertical-solid-lumen-centurylink.vue';
+import HorizontalFlatLumenCenturyLink from './_horizontal-flat-lumen-centurylink.vue';
+import HorizontalSolidLumenCenturyLink from './_horizontal-solid-lumen-centurylink.vue';
 import HorizontalLumenCenturyLink from './_horizontal-lumen-centurylink.vue';
 import DefaultLinkLumenCenturyLink from './_default-link-lumen-centurylink.vue';
-import TabbedNavigationLumenCenturyLink from './_tabbed-navigation-lumen-centurylink.vue';
+import TabbedNavigationFlatLumenCenturyLink from './_tabbed-navigation-flat-lumen-centurylink.vue';
+import TabbedNavigationSolidLumenCenturyLink from './_tabbed-navigation-solid-lumen-centurylink.vue';
 import WaitAnimationsLumenCenturyLink from './_wait-animations-lumen-centurylink.vue';
 import IconsVerticalLumenCenturyLink from './_icons-vertical-lumen-centurylink.vue';
 import IconsHorizontalLumenCenturyLink from './_icons-horizontal-lumen-centurylink.vue';
@@ -46,9 +66,13 @@ import VerticalPortal from './_vertical-portal.vue';
 @Component({
   components: {
     HorizontalLumenCenturyLink,
-    VerticalLumenCenturyLink,
+    HorizontalFlatLumenCenturyLink,
+    HorizontalSolidLumenCenturyLink,
+    VerticalFlatLumenCenturyLink,
+    VerticalSolidLumenCenturyLink,
     DefaultLinkLumenCenturyLink,
-    TabbedNavigationLumenCenturyLink,
+    TabbedNavigationFlatLumenCenturyLink,
+    TabbedNavigationSolidLumenCenturyLink,
     ContainedComponentLumenCenturyLink,
     WaitAnimationsLumenCenturyLink,
     IconsHorizontalLumenCenturyLink,
