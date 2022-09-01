@@ -102,7 +102,7 @@
         </a>
         span.chi-header__title.-d--none.-d-lg--flex Chi Design System
       .chi-header__start
-        #docsearch.-d--flex.-justify-content--center.-w--100
+        #docsearch.-chi-search
         script(v-html="algoliaScript")
       .chi-header__end
         .chi-dropdown
