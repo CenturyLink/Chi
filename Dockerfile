@@ -1,4 +1,4 @@
-FROM node:dubnium-buster
+FROM node:14
 
 ENV BABEL_DISABLE_CACHE=1
 
@@ -20,19 +20,16 @@ RUN mkdir /tmp/{chi,custom-elements,chi-vue,documentation}
 COPY package_chi.json /tmp/chi/package.json
 COPY package_custom-elements.json /tmp/custom-elements/package.json
 COPY package_vue.json /tmp/chi-vue/package.json
+COPY package_lock_vue.json /tmp/chi-vue/package-lock.json
 COPY package_documentation.json /tmp/documentation/package.json
 
 RUN  cd /tmp/chi \
  && yarn install \
  && cd /tmp/custom-elements \
  && yarn install \
+ && yarn cache clean \
  && cd /tmp/chi-vue \
- && yarn install \
-  --prefer-offline \
-  --frozen-lockfile \
-  --non-interactive \
-  --production=false \
- && yarn cache clean
+ && npm ci
 
 COPY entrypoint.sh /
 ENTRYPOINT ["/tini", "--", "/entrypoint.sh"]
