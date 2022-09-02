@@ -197,11 +197,7 @@ header.chi-header.docs-header.-z--20
       span.chi-header__title.-d--none.-d-lg--flex
         | Chi Design System
     .chi-header__start
-      form.-chi-search
-        .chi-input__wrapper.-icon--right.-flex--grow1
-          label.chi-label.-d--none(for="chi-docs-search") Search Chi documentation
-          input.chi-input.searchbox(id="chi-docs-search", type="text", placeholder="Search")
-          i.chi-icon.icon-search(aria-hidden="true")
+      #docsearch.-chi-search
     .chi-header__end
       .chi-dropdown
         button.chi-button.-flat.-px--1.chi-dropdown__trigger.-animate(data-position='bottom-end', id='version-dropdown', aria-label="Toggle Chi version") v5.20.0
