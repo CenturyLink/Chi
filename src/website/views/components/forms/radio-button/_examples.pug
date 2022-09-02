@@ -5,7 +5,7 @@ h3 Base
   .-p--3
     fieldset
       legend.chi-label Select an option
-      .chi-form__item
+      .chi-form__item.-mb--1
         .chi-radio
           input(class="chi-radio__input", type="radio", name="radios", id="radio-ba1")
           label.chi-radio__label(for="radio-ba1") Option 1
@@ -24,7 +24,7 @@ h3 Base
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Select an option</legend>
-        <div class="chi-form__item">
+        <div class="chi-form__item -mb--1">
           <div class="chi-radio">
             <input class="chi-radio__input" type="radio" name="radios" id="radio-ba1">
             <label class="chi-radio__label" for="radio-ba1">Option 1</label>
@@ -46,7 +46,7 @@ p.-text
   .-p--3
     fieldset
       legend.chi-label Select an option
-      .chi-form__item
+      .chi-form__item.-mb--1
         .chi-radio
           input(class="chi-radio__input", type="radio", name="radios", id="radio-ch1" checked)
           label.chi-radio__label(for="radio-ch1") Option 1
@@ -65,7 +65,7 @@ p.-text
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Select an option</legend>
-        <div class="chi-form__item">
+        <div class="chi-form__item -mb--1">
           <div class="chi-radio">
             <input class="chi-radio__input" type="radio" name="radios" id="radio-ch1" checked>
             <label class="chi-radio__label" for="radio-ch1">Option 1</label>
@@ -87,11 +87,11 @@ p.-text
   .-p--3
     fieldset
       legend.chi-label Select an option
-      .chi-form__item
+      .chi-form__item.-mb--1
         .chi-radio
           input(class="chi-radio__input", type="radio", name="radios", id="radio-di1" disabled)
           label.chi-radio__label(for="radio-di1") Option 1
-      .chi-form__item
+      .chi-form__item.-mb--1
         .chi-radio
           input(class="chi-radio__input", type="radio", name="radios", id="radio-di2")
           label.chi-radio__label(for="radio-di2") Option 2
@@ -110,13 +110,13 @@ p.-text
     :code(lang="html")
       <fieldset>
         <legend class="chi-label">Select an option</legend>
-        <div class="chi-form__item">
+        <div class="chi-form__item -mb--1">
           <div class="chi-radio">
             <input class="chi-radio__input" type="radio" name="radios" id="radio-di1" disabled>
             <label class="chi-radio__label" for="radio-di1">Option 1</label>
           </div>
         </div>
-        <div class="chi-form__item">
+        <div class="chi-form__item -mb--1">
           <div class="chi-radio">
             <input class="chi-radio__input" type="radio" name="radios" id="radio-di2">
             <label class="chi-radio__label" for="radio-di2">Option 2</label>
@@ -139,7 +139,7 @@ p.-text
       legend.chi-label
         | Select an option
         abbr.chi-label__required(title="Required field") *
-      .chi-form__item
+      .chi-form__item.-mb--1
         .chi-radio
           input(class="chi-radio__input", type="radio", name="radios", id="radio-re1", required)
           label.chi-radio__label(for="radio-re1") Option 1
@@ -161,7 +161,7 @@ p.-text
           Select an option
           <abbr class="chi-label__required" title="Required field">*</abbr>
         </legend>
-        <div class="chi-form__item">
+        <div class="chi-form__item -mb--1">
           <div class="chi-radio">
             <input class="chi-radio__input" type="radio" name="radios" id="radio-re1" required>
             <label class="chi-radio__label" for="radio-re1">Option 1</label>
@@ -184,7 +184,7 @@ p.-text
       legend.chi-label
         | Select an option
         abbr.chi-label__optional(title="Optional field") (optional)
-      .chi-form__item
+      .chi-form__item.-mb--1
         .chi-radio
           input(class="chi-radio__input", type="radio", name="radios", id="radio-op1")
           label.chi-radio__label(for="radio-op1") Option 1
@@ -206,7 +206,7 @@ p.-text
           Select an option
           <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
         </legend>
-        <div class="chi-form__item">
+        <div class="chi-form__item -mb--1">
           <div class="chi-radio">
             <input class="chi-radio__input" type="radio" name="radios" id="radio-op1">
             <label class="chi-radio__label" for="radio-op1">Option 1</label>
@@ -236,7 +236,7 @@ p.-text
             .chi-popover__content
               p.chi-popover__text
                 | Helpful information goes here.
-      .chi-form__item
+      .chi-form__item.-mb--1
         .chi-radio
           input(class="chi-radio__input", type="radio", name="radios", id="radio-he1")
           label.chi-radio__label(for="radio-he1") Option 1
@@ -272,7 +272,7 @@ p.-text
             </section>
           </div>
         </div>
-        <div class="chi-form__item">
+        <div class="chi-form__item -mb--1">
           <div class="chi-radio">
             <input class="chi-radio__input" type="radio" name="radios" id="radio-he1">
             <label class="chi-radio__label" for="radio-he1">Option 1</label>
@@ -299,7 +299,7 @@ p.-text
       legend.chi-label
         | Select an option
         abbr.chi-label__required(title="Required field") *
-      .chi-form__item
+      .chi-form__item.-mb--1
         .chi-radio
           input(class="chi-radio__input -danger", type="radio", name="radios", id="radio-er1", required)
           label.chi-radio__label(for="radio-er1") Option 1
@@ -324,7 +324,7 @@ p.-text
           Select an option
           <abbr class="chi-label__required" title="Required field">*</abbr>
         </legend>
-        <div class="chi-form__item">
+        <div class="chi-form__item -mb--1">
           <div class="chi-radio">
             <input class="chi-radio__input -danger" type="radio" name="radios" id="radio-er1" required>
             <label class="chi-radio__label" for="radio-er1">Option 1</label>

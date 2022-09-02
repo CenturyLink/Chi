@@ -1,4 +1,20 @@
 # CHANGELOG
+## 5.20.1 (September 1, 2022)
+### Components
+#### Fixed
+* Fixed: Picker group text alignment has been improved for better responsive behavior.
+### Documentation
+#### Changed
+* Changed: Documentation examples of Checkbox and Radio button components now render with increased margins.
+#### Fixed
+* Fixed: Documentation search functionality.
+
+## 5.20.0 (August 31, 2022)
+### Components
+#### Changed
+* Changed: The base font of the Lumen theme has been changed from Inter to Gotham.
+* Changed: The base font of the CenturyLink theme has been changed from Inter to Maison Neue.
+
 ## 5.19.0 (August 19, 2022)
 ### Components
 #### Added
