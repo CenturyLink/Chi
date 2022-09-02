@@ -58,33 +58,33 @@ each size in ['default', 'sm', 'lg']
   div(class=`test-bubble-clickable-link-${size} -w--100`)
     each val, type in {base:'circle-info', success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
       if (type === 'base')
-        chi-link.-d--block.-mb--2(href='#' no-hover-underline)
-          chi-alert.-w--100(class=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-clickable-link-${type}-${size}`)
-            .-d--flex
+        .-m--2
+          chi-link.-d--block(href='#' no-hover-underline)
+            chi-alert.-w--100(class=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-clickable-link-${type}-${size}`)
               span(class=`-text--semi-bold -text--${type} -flex--grow1`)
-                =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`
-              chi-icon(icon='chevron-right')
+                =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`
+              chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
       else
-        chi-link.-d--block.-mb--2(href='#' no-hover-underline)
-          chi-alert.-w--100(color=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-clickable-link-${type}-${size}`)
-            .-d--flex
+        .-m--2
+          chi-link.-d--block(href='#' no-hover-underline)
+            chi-alert.-w--100(color=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-clickable-link-${type}-${size}`)
               span(class=`-text--semi-bold -text--${type} -flex--grow1`)
-                =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`
-              chi-icon(icon='chevron-right')
+                =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`
+              chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
   h4 Clickable Button Alert / #{size}
   div(class=`test-bubble-clickable-button-${size} -w--100`)
     each val, type in {base:'circle-info', success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
       if (type === 'base')
-        chi-button(variant='flat' extra-class='-p--0 -text--no-transform -no-hover -mb--2' fluid)
-          chi-alert.-w--100(class=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-clickable-button-${type}-${size}`)
-            .-d--flex
+        .-m--2
+          chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform -no-hover' fluid)
+            chi-alert.-w--100(class=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-clickable-button-${type}-${size}`)
               span(class=`-text--semi-bold -text--${type} -flex--grow1`)
                 =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`
-              chi-icon(icon='chevron-right')
+              chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
       else
-        chi-button(variant='flat' extra-class='-p--0 -text--no-transform -no-hover -mb--2' fluid)
-          chi-alert.-w--100(color=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-clickable-button-${type}-${size}`)
-            .-d--flex
+        .-m--2
+          chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform -no-hover' fluid)
+            chi-alert.-w--100(color=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-clickable-button-${type}-${size}`)
               span(class=`-text--semi-bold -text--${type} -flex--grow1`)
                 =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`
-              chi-icon(icon='chevron-right')
+              chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')

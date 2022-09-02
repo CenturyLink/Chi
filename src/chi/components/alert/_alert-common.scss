@@ -97,7 +97,8 @@ $states: (
 
   > .chi-icon,
   > chi-icon .chi-icon, // sass-lint:disable-line force-element-nesting
-  .chi-alert__icon {
+  .chi-alert__icon,
+  .chi-alert__clickable-icon .chi-icon { // sass-lint:disable-line force-element-nesting
     &:not(.icon-x) {
       flex-shrink: 0;
       font-size: $alert-md-icon-size;
@@ -106,6 +107,17 @@ $states: (
       margin-right: $alert-md-icon-margin-right;
       margin-top: $alert-md-icon-margin-y;
       width: $alert-md-icon-size;
+    }
+  }
+
+  .chi-alert__clickable-icon {
+    display: flex;
+    padding-left: 1rem;
+
+    .chi-icon {
+      &:not(.icon-x) {
+        margin: 0;
+      }
     }
   }
 
@@ -157,6 +169,7 @@ $states: (
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    white-space: normal;
     width: 100%;
 
     .chi-alert__title {
@@ -214,7 +227,8 @@ $states: (
 
     > .chi-icon,
     > chi-icon .chi-icon, // sass-lint:disable-line force-element-nesting
-    .chi-alert__icon {
+    .chi-alert__icon,
+    .chi-alert__clickable-icon .chi-icon { // sass-lint:disable-line force-element-nesting
       &:not(.icon-x) {
         font-size: $alert-lg-icon-size;
         height: $alert-lg-icon-size;
@@ -274,7 +288,8 @@ $states: (
 
     > .chi-icon,
     > chi-icon .chi-icon, // sass-lint:disable-line force-element-nesting
-    .chi-alert__icon {
+    .chi-alert__icon,
+    .chi-alert__clickable-icon .chi-icon { // sass-lint:disable-line force-element-nesting
       &:not(.icon-x) {
         font-size: $alert-sm-icon-size;
         height: $alert-sm-icon-size;
