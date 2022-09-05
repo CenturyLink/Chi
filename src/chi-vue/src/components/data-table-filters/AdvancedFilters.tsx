@@ -72,6 +72,7 @@ export default class AdvancedFilters extends Vue {
   _planeAdvancedData = {};
   _chiMajorVersion = 5;
   isExpanded = false;
+  _filtersTooltip?: any;
 
   get filterElementValue() {
     return this.storeModule.filterConfig;
@@ -114,6 +115,10 @@ export default class AdvancedFilters extends Vue {
 
     if (dataTableFiltersComponent) {
       (dataTableFiltersComponent as DataTableFilters)._advancedFilterComponent = this;
+    }
+
+    if (!this._filtersTooltip) {
+      this._filtersTooltip = chi.tooltip(this.$refs.filtersButton as HTMLElement);
     }
   }
 
@@ -264,6 +269,10 @@ export default class AdvancedFilters extends Vue {
     this._chiMajorVersion = detectMajorChiVersion();
   }
 
+  beforeDestroy() {
+    this._filtersTooltip.dispose();
+  }
+
   _createCustomItem(filter: DataTableCustomItem) {
     const customItemSlot =
       this.$scopedSlots?.default &&
@@ -319,6 +328,8 @@ export default class AdvancedFilters extends Vue {
       <button
         id={this._advancedFilterButtonId}
         onclick={() => this._toggleAdvancedFiltersPopover()}
+        data-tooltip="Filters"
+        ref="filtersButton"
         class={`
           ${BUTTON_CLASSES.BUTTON}
           ${BUTTON_CLASSES.ICON_BUTTON}
