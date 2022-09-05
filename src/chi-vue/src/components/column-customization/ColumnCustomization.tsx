@@ -10,13 +10,13 @@ import {
   ICON_CLASS,
   MODAL_CLASSES,
   PORTAL_CLASS,
-  GENERIC_SIZE_CLASSES,
 } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { DataTableColumn, DataTableColumnsData } from '@/constants/types';
 import ColumnCustomizationContent from './ColumnCustomizationModalContent';
 import { checkColumns } from './utils';
+import Tooltip from '../tooltip/tooltip';
 
 declare const chi: any;
 
@@ -225,11 +225,12 @@ export default class ColumnCustomization extends Vue {
         </div>
       </button>
     );
+    const modalTooltip = <Tooltip message="Column Customization">{modalButton}</Tooltip>;
     const modal = this._modal();
 
     return (
       <div class={DATA_TABLE_CLASSES.COLUMNS}>
-        {modalButton}
+        {modalTooltip}
         {modal}
       </div>
     );
