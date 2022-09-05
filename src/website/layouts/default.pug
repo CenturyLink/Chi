@@ -28,14 +28,14 @@ html.chi(lang="en")
         if styles
             each style in styles
                 link(rel="stylesheet", media="all", href=`${rootPath}${style}.css`)
-        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css")
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/@docsearch/css@3")
 
     body.show-grid
       script.
         const pageURL = window.location.href;
 
         if (pageURL.includes('latest')) {
-            const redirectionURL = pageURL.split('latest').join('5.18.0');
+            const redirectionURL = pageURL.split('latest').join('5.20.1');
 
             window.location.href = redirectionURL;
         }
@@ -72,7 +72,7 @@ html.chi(lang="en")
                         include partials/titlebar
                     section.chi-grid__container.-pt--3
                         != contents
-      script(type="text/javascript", src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js")
+      script(type="text/javascript", src="https://cdn.jsdelivr.net/npm/@docsearch/js@3")
       script(type="text/javascript", src=`${rootPath}assets/scripts/algoliaSearch.js`)
       script(src=`${rootPath}assets/scripts/chi-docs.js`)
 

@@ -12,13 +12,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { CHI_VERSION } from '../constants/configs';
-import redirectionScript from '../constants/utilities';
+import { redirectionScript } from '../constants/scripts';
 
 @Component({
   data: () => {
     return {
       CHI_VERSION,
-      redirectionScript: redirectionScript(CHI_VERSION)
+      redirectionScript,
     }
   }
 })
