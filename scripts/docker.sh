@@ -22,6 +22,7 @@ cp ${REPO_PATH}/Dockerfile ${TMPDIR}/
 cp ${REPO_PATH}/package.json ${TMPDIR}/package_chi.json
 cp ${REPO_PATH}/src/custom-elements/package.json ${TMPDIR}/package_custom-elements.json
 cp ${REPO_PATH}/src/chi-vue/package.json ${TMPDIR}/package_vue.json
+cp ${REPO_PATH}/src/chi-vue/package-lock.json ${TMPDIR}/package_lock_vue.json
 cp ${REPO_PATH}/src/documentation/package.json ${TMPDIR}/package_documentation.json
 cp ${REPO_PATH}/scripts/entrypoint.sh ${TMPDIR}/
 

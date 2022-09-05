@@ -1,68 +1,66 @@
-$inter-url: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap';
+$font-url: 'https://lib.lumen.com/fonts/maisonneue/';
 
-@import url($inter-url);
+@font-face {
+  font-display: swap;
+  font-family: 'Maison Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: url('#{$font-url}MaisonNeue-Book.otf') format('opentype'),
+  url('#{$font-url}MaisonNeue-Book.woff') format('woff');
+}
 
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Maison Neue';
-//   font-style: normal;
-//   font-weight: 400;
-//   src: url('https://lib.lumen.com/fonts/maisonneue/MaisonNeue-Book.otf') format('opentype'),
-//   url('https://lib.lumen.com/fonts/maisonneue/MaisonNeue-Book.woff') format('woff');
-// }
+@font-face {
+  font-display: swap;
+  font-family: 'Maison Neue';
+  font-style: normal;
+  font-weight: 300;
+  src: url('#{$font-url}MaisonNeue-Light.otf') format('opentype'),
+  url('#{$font-url}MaisonNeue-Light.woff') format('woff');
+}
 
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Maison Neue';
-//   font-style: normal;
-//   font-weight: 300;
-//   src: url('https://lib.lumen.com/fonts/maisonneue/MaisonNeue-Light.otf') format('opentype'),
-//   url('https://lib.lumen.com/fonts/maisonneue/MaisonNeue-Light.woff') format('woff');
-// }
+@font-face {
+  font-display: swap;
+  font-family: 'Maison Neue';
+  font-style: normal;
+  font-weight: 500;
+  src: url('#{$font-url}MaisonNeue-Medium.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url}MaisonNeue-Medium.otf') format('opentype'),
+  url('#{$font-url}MaisonNeue-Medium.woff') format('woff');
+}
 
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Maison Neue';
-//   font-style: normal;
-//   font-weight: 500;
-//   src: url('https://lib.lumen.com/fonts/maisonneue/MaisonNeue-Medium.eot?#iefix') format('embedded-opentype'),
-//   url('https://lib.lumen.com/fonts/maisonneue/MaisonNeue-Medium.otf') format('opentype'),
-//   url('https://lib.lumen.com/fonts/maisonneue/MaisonNeue-Medium.woff') format('woff');
-// }
+@font-face {
+  font-display: swap;
+  font-family: 'Maison Neue';
+  font-style: normal;
+  font-weight: 700;
+  src: url('#{$font-url}MaisonNeue-Bold.otf') format('opentype'),
+  url('#{$font-url}MaisonNeue-Bold.woff') format('woff');
+}
 
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Maison Neue';
-//   font-style: normal;
-//   font-weight: 700;
-//   src: url('https://lib.lumen.com/fonts/maisonneue/MaisonNeue-Bold.otf') format('opentype'),
-//   url('https://lib.lumen.com/fonts/maisonneue/MaisonNeue-Bold.woff') format('woff');
-// }
+@font-face {
+  font-display: swap;
+  font-family: 'Maison Neue';
+  font-style: normal;
+  font-weight: 800;
+  src: url('#{$font-url}MaisonNeue-ExtraBold.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url}MaisonNeue-ExtraBold.otf') format('opentype'),
+  url('#{$font-url}MaisonNeue-ExtraBold.woff') format('woff');
+}
 
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Maison Neue';
-//   font-style: normal;
-//   font-weight: 800;
-//   src: url('https://lib.lumen.com/fonts/maisonneue/MaisonNeue-ExtraBold.eot?#iefix') format('embedded-opentype'),
-//   url('https://lib.lumen.com/fonts/maisonneue/MaisonNeue-ExtraBold.otf') format('opentype'),
-//   url('https://lib.lumen.com/fonts/maisonneue/MaisonNeue-ExtraBold.woff') format('woff');
-// }
+@font-face {
+  font-display: swap;
+  font-family: 'Maison Neue';
+  font-style: normal;
+  font-weight: 100;
+  src: url('#{$font-url}MaisonNeueThin.otf') format('opentype'),
+  url('#{$font-url}MaisonNeueThin.woff') format('woff');
+}
 
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Maison Neue';
-//   font-style: normal;
-//   font-weight: 100;
-//   src: url('https://lib.lumen.com/fonts/maisonneue/MaisonNeueThin.otf') format('opentype'),
-//   url('https://lib.lumen.com/fonts/maisonneue/MaisonNeueThin.woff') format('woff');
-// }
-
-// @font-face {
-//   font-display: swap;
-//   font-family: 'Maison Neue Extended';
-//   font-style: normal;
-//   font-weight: 100;
-//   src: url('https://lib.lumen.com/fonts/maisonneue/MaisonNeueExtendedThin.otf') format('opentype'),
-//   url('https://lib.lumen.com/fonts/maisonneue/MaisonNeueExtendedThin.woff') format('woff');
-// }
+@font-face {
+  font-display: swap;
+  font-family: 'Maison Neue Extended';
+  font-style: normal;
+  font-weight: 100;
+  src: url('#{$font-url}MaisonNeueExtendedThin.otf') format('opentype'),
+  url('#{$font-url}MaisonNeueExtendedThin.woff') format('woff');
+}
