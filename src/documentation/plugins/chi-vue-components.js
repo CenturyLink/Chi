@@ -11,7 +11,8 @@ const components = {
   ChiDrawer: library.components['ChiDrawer'],
   ChiSearchInput: library.components['ChiSearchInput'],
   ChiTooltip: library.components['ChiTooltip'],
-  ChiColumnCustomization: library.components['ChiColumnCustomization']
+  ChiColumnCustomization: library.components['ChiColumnCustomization'],
+  ChiSaveView: library.components['ChiSaveView'],
 };
 
 Object.entries(components).forEach(([name, component]) => {
