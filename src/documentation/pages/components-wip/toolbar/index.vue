@@ -37,6 +37,9 @@ Vue.config.ignoredElements = [
     return {
       pageTabs: standardComponentPageTabs
     };
+  },
+  layout() {
+    return 'wide';
   }
 })
 export default class Tooltip extends Vue {}
