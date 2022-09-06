@@ -14,7 +14,7 @@
       li(v-for="(link, index) in tabLinks" :index="index") 
         a(href='#exampleHashTarget') {{ link }}
       li.chi-dropdown
-        a.chi-dropdown__trigger(href='#') Tab Dropdown
+        a.chi-dropdown__trigger(ref="example__tabs_tabbed_dropdown" href='#') Tab Dropdown
         .chi-dropdown__menu
           a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="(elem, index) in tabElements" :index="index") {{ elem }}
     <pre class="language-html" slot="code-webcomponent">
@@ -61,6 +61,7 @@ declare const chi: any;
 })
 export default class TabbedNavigationSolidLumenCenturyLink extends Vue {
   navigation: any;
+  dropdown: any;
 
   _setcodeSnippet() {
     let tabLinks = '', tabElements = '', activeElements = '';
@@ -100,10 +101,12 @@ export default class TabbedNavigationSolidLumenCenturyLink extends Vue {
 
   mounted() {
     this.navigation = chi.navigation(this.$refs['example__tabs_tabbed_navigation'] as HTMLElement);
+    this.dropdown = chi.dropdown(this.$refs['example__tabs_tabbed_dropdown'] as HTMLElement);
   }
 
   beforeDestroy() {
     this.navigation.dispose();
+    this.dropdown.dispose();
   }
 }
 </script>
