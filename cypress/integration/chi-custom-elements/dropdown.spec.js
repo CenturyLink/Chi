@@ -1,11 +1,11 @@
 const positions = [
   {
     placement:'top',
-    transform: 'translate3d(-20px, -80px, 0px)',
+    transform: 'translate3d(-21px, -80px, 0px)',
   },
   {
     placement:'right',
-    transform: 'translate3d(84px, -20px, 0px)',
+    transform: 'translate3d(86px, -20px, 0px)',
   },
   {
     placement:'bottom',
@@ -13,7 +13,7 @@ const positions = [
   },
   {
     placement:'left',
-    transform: 'translate3d(-114px, -20px, 0px)',
+    transform: 'translate3d(-117px, -20px, 0px)',
   },
   {
     placement:'top-start',
@@ -21,15 +21,15 @@ const positions = [
   },
   {
     placement:'top-end',
-    transform: 'translate3d(-7px, -80px, 0px)',
+    transform: 'translate3d(-8px, -80px, 0px)',
   },
   {
     placement:'right-start',
-    transform: 'translate3d(123px, 0px, 0px)',
+    transform: 'translate3d(124px, 0px, 0px)',
   },
   {
     placement:'right-end',
-    transform: 'translate3d(116px, -40px, 0px)',
+    transform: 'translate3d(118px, -40px, 0px)',
   },
   {
     placement:'bottom-start',
@@ -41,11 +41,11 @@ const positions = [
   },
   {
     placement:'left-start',
-    transform: 'translate3d(-114px, 0px, 0px)',
+    transform: 'translate3d(-117px, 0px, 0px)',
   },
   {
     placement:'left-end',
-    transform: 'translate3d(-114px, -40px, 0px)',
+    transform: 'translate3d(-117px, -40px, 0px)',
   },
 ];
 const DROPDOWN_DATA_CY = {
@@ -72,6 +72,10 @@ const DROPDOWN_DATA_CY = {
       DROPDOWN_HIDE: '[data-cy="method-dropdown-hide"]',
       TRIGGER: '#test-hide-trigger'
     }
+  },
+  EVENT: {
+    SHOW: '[data-cy="event-dropdown-show"]',
+    HIDE: '[data-cy="event-dropdown-hide"]',
   }
 };
 
@@ -95,7 +99,7 @@ describe('Dropdown', () => {
     cy.visit('tests/custom-elements/dropdown.html');
   });
 
-  describe.only('Base', () => {
+  describe('Base', () => {
     beforeEach(() => {
       cy.get(DROPDOWN_DATA_CY.BASE).find(DROPDOWN_TRIGGER).as(
         'dropdownTrigger'
@@ -105,7 +109,7 @@ describe('Dropdown', () => {
       );
     });
 
-    it.only('Should open the dropdown', () => {
+    it('Should open the dropdown', () => {
       cy.get(`@dropdownMenu`)
         .should('not.be.visible');
       cy.get(`@dropdownTrigger`).click();
@@ -113,7 +117,7 @@ describe('Dropdown', () => {
         .should('be.visible');
     });
 
-    it.only('Should close the dropdown', () => {
+    it('Should close the dropdown', () => {
       cy.get(`@dropdownMenu`)
         .should('be.visible');
       cy.get(`@dropdownTrigger`).click();
@@ -122,7 +126,7 @@ describe('Dropdown', () => {
     });
   });
 
-  describe.only('Animate', () => {
+  describe('Animate', () => {
     beforeEach(() => {
       cy.get(DROPDOWN_DATA_CY.ANIMATE).find(DROPDOWN_TRIGGER).as(
         'dropdownTrigger'
@@ -132,7 +136,7 @@ describe('Dropdown', () => {
       );
     });
 
-    it('Should transform the accordion when dropdown is in active or inactive state', () => {
+    it('Should rotate trigger chevron when toggling Dropdown visibility', () => {
       cy.get(`@dropdownTrigger`)
         .find(`.${ACTIVE_CLASS}`)
         .should('not.exist');
@@ -153,10 +157,9 @@ describe('Dropdown', () => {
     });
   });
 
-  describe.only('Position', () => {
-
+  describe('Position', () => {
     DROPDOWN_DATA_CY.POSITION.forEach((position) => {
-      it.only(`Should be placed to the position ${position.placement}`, () => {
+      it(`Should be placed to the position ${position.placement}`, () => {
         cy.get(position.selector).click();
         cy.get(position.selector).find(DROPDOWN_MENU)
           .scrollIntoView({ offset: { top: -150, left: 0 } })
@@ -166,7 +169,7 @@ describe('Dropdown', () => {
     });
   });
 
-  describe.only('Methods', () => {
+  describe('Methods', () => {
     describe('Toggle', () => {
       beforeEach(() => {
         cy.get(DROPDOWN_DATA_CY.METHOD.TOGGLE.TRIGGER).as(
@@ -175,15 +178,26 @@ describe('Dropdown', () => {
         cy.get(DROPDOWN_DATA_CY.METHOD.TOGGLE.DROPDOWN_TOGGLE).find(DROPDOWN_MENU).as(
           'dropdownMenu'
         );
+        cy.get(DROPDOWN_DATA_CY.METHOD.TOGGLE.DROPDOWN_TOGGLE).as(
+          'dropdown'
+        );
       });
-      it('Should toggle the dropdown', () => {
-        cy.get(`@dropdownMenu`)
-          .should('not.be.visible');
-        cy.get(`@dropdownTrigger`).click();
-        cy.get(`@dropdownMenu`)
-          .should('be.visible');
-        cy.get(`@dropdownTrigger`).click();
-        cy.get(`@dropdownMenu`)
+
+      it('Should toggle the dropdown menu when toggle method is called', () => {
+        cy.get(`@dropdownMenu`).should(('not.be.visible'));
+        cy.get(`@dropdown`)
+        .then(function(dropdown){
+          dropdown[0].toggle();
+          return new Promise(resolve => resolve(dropdown));
+        })
+        .find(DROPDOWN_MENU)
+        .should('be.visible');
+        cy.get(`@dropdown`)
+          .then(function(dropdown){
+            dropdown[0].toggle();
+            return new Promise(resolve => resolve(dropdown));
+          })
+          .find(DROPDOWN_MENU)
           .should('not.be.visible');
       });
     });
@@ -196,16 +210,19 @@ describe('Dropdown', () => {
         cy.get(DROPDOWN_DATA_CY.METHOD.SHOW.DROPDOWN_SHOW).find(DROPDOWN_MENU).as(
           'dropdownMenu'
         );
+        cy.get(DROPDOWN_DATA_CY.METHOD.SHOW.DROPDOWN_SHOW).as(
+          'dropdown'
+        );
       });
-      it('Should always show the dropdown menu once opened', () => {
-        cy.get(`@dropdownMenu`)
-          .should('not.be.visible');
-        cy.get(`@dropdownTrigger`).click();
-        cy.get(`@dropdownMenu`)
-          .should('be.visible');
-        cy.get(`@dropdownTrigger`).click();
-        cy.get(`@dropdownMenu`)
-          .should('be.visible');
+      it('Should show the dropdown menu when show method is called', () => {
+        cy.get(`@dropdownMenu`).should(('not.be.visible'));
+        cy.get(`@dropdown`)
+        .then(function(dropdown){
+          dropdown[0].show();
+          return new Promise(resolve => resolve(dropdown));
+        })
+        .find(DROPDOWN_MENU)
+        .should('be.visible');
       });
     });
 
@@ -217,17 +234,88 @@ describe('Dropdown', () => {
         cy.get(DROPDOWN_DATA_CY.METHOD.HIDE.DROPDOWN_HIDE).find(DROPDOWN_MENU).as(
           'dropdownMenu'
         );
+        cy.get(DROPDOWN_DATA_CY.METHOD.HIDE.DROPDOWN_HIDE).as(
+          'dropdown'
+        );
       });
+
       it('Should always hide the dropdown menu once it has been opened and closed', () => {
         cy.get(`@dropdownMenu`)
           .should('be.visible');
-        cy.get(`@dropdownTrigger`).click();
-        cy.get(`@dropdownMenu`)
-          .should('not.be.visible');
-        cy.get(`@dropdownTrigger`).click();
-        cy.get(`@dropdownMenu`)
+        cy.get(`@dropdown`)
+          .then(function(dropdown){
+            dropdown[0].hide();
+            return new Promise(resolve => resolve(dropdown));
+          })
+          .find(DROPDOWN_MENU)
           .should('not.be.visible');
       });
     });
   });
+
+  describe('Events', () => {
+    describe('EventShow', () => {
+      beforeEach(() => {
+        cy.get(DROPDOWN_DATA_CY.EVENT.SHOW).find(DROPDOWN_TRIGGER).as(
+          'dropdownTrigger'
+        );
+        cy.get(DROPDOWN_DATA_CY.EVENT.SHOW).find(DROPDOWN_MENU).as(
+          'dropdownMenu'
+        );
+        cy.get(DROPDOWN_DATA_CY.EVENT.SHOW).as(
+          'dropdown'
+        );
+      });
+
+      it('should trigger the appropriate hide event when the dropdown menu is opened', () => {
+        const spy = cy.spy();
+
+        cy.get('@dropdown').then(el => {
+          el.on('eventShow', spy);
+        });
+
+        cy.get(`@dropdownMenu`)
+          .should('not.be.visible');
+        cy.get(`@dropdownTrigger`)
+          .click()
+          .then(() => {
+            expect(spy).to.be.called;
+          });
+        cy.get(`@dropdownMenu`)
+        .should('be.visible');
+      });
+    });
+    
+    describe('EventHide', () => {
+      beforeEach(() => {
+        cy.get(DROPDOWN_DATA_CY.EVENT.HIDE).find(DROPDOWN_TRIGGER).as(
+          'dropdownTrigger'
+        );
+        cy.get(DROPDOWN_DATA_CY.EVENT.HIDE).find(DROPDOWN_MENU).as(
+          'dropdownMenu'
+        );
+        cy.get(DROPDOWN_DATA_CY.EVENT.HIDE).as(
+          'dropdown'
+        );
+      });
+
+      it('should trigger the appropriate hide event when the dropdown menu is hidden', () => {
+        const spy = cy.spy();
+
+        cy.get('@dropdown').then(el => {
+          el.on('eventHide', spy);
+        });
+
+        cy.get(`@dropdownMenu`)
+          .should('be.visible');
+        cy.get(`@dropdownTrigger`)
+          .click()
+          .then(() => {
+            expect(spy).to.be.called;
+          });
+        cy.get(`@dropdownMenu`)
+        .should('not.be.visible');
+      });
+    });
+  })
 });

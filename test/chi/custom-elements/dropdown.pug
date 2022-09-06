@@ -27,6 +27,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 - var positions = ['top', 'right', 'bottom', 'left', 'top-start', 'top-end', 'right-start', 'right-end', 'bottom-start', 'bottom-end', 'left-start', 'left-end'];
 - var methods = ['toggle', 'show', 'hide']
+- var events = ['show', 'hide']
 
 each position in positions
   .-mt--5(class=`test-${position}` style='width: 500px; height: 500px;')
@@ -56,6 +57,14 @@ each position in positions
     span.-text--h2 Hover - #{position}
     .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
       chi-dropdown(position=position active hover button=`Test hover - ${position}`)
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+
+each event in events
+  .-mt--5(class=`test-${event}` style='width: 500px; height: 500px;')
+    span.-text--h2=`Event - ${event}`
+    .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+      chi-dropdown(id=`test-event-${event}-dropdown` data-cy=`event-dropdown-${event}` button=`event-${event}` prevent-auto-hide=event == 'hide' ? true : false active=event == 'hide' ? true : false)
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
