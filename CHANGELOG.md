@@ -1,4 +1,14 @@
 # CHANGELOG
+## 5.20.1 (September 1, 2022)
+### Components
+#### Fixed
+* Fixed: Picker group text alignment has been improved for better responsive behavior.
+### Documentation
+#### Changed
+* Changed: Documentation examples of Checkbox and Radio button components now render with increased margins.
+#### Fixed
+* Fixed: Documentation search functionality.
+
 ## 5.20.0 (August 31, 2022)
 ### Components
 #### Changed

@@ -297,3 +297,169 @@ export const EXTERNAL_CENTURYLINKS_CONTENTS: { [key: string]: ILink[] } = {
     }
   ]
 };
+
+const customItems = [
+  {
+    template: 'custom-one',
+    label: 'Custom 1'
+  },
+  {
+    template: 'custom-two',
+    label: 'Custom 2'
+  }
+];
+
+const filters = [
+  {
+    name: 'status',
+    type: 'select',
+    id: 'myoption1',
+    options: [
+      {
+        label: 'Pending Active',
+        value: 'pending',
+        selected: true
+      },
+      {
+        label: 'Active',
+        value: 'active',
+        selected: false
+      },
+      {
+        label: 'Inactive',
+        value: 'inactive',
+        selected: false
+      }
+    ],
+    advanced: false,
+    value: 'pending'
+  },
+  {
+    name: 'statusAdvanced',
+    label: 'Status',
+    type: 'select',
+    id: 'myoption1',
+    options: [
+      {
+        label: 'Pending Active',
+        value: 'pending',
+        selected: false
+      },
+      {
+        label: 'Active',
+        value: 'active',
+        selected: false
+      },
+      {
+        label: 'Inactive',
+        value: 'inactive',
+        selected: false
+      }
+    ],
+    advanced: true,
+    value: 'pending'
+  },
+  {
+    name: 'inputAdvanced',
+    label: 'Label',
+    id: 'myoption2',
+    advanced: true
+  },
+  {
+    name: 'textareaAdvanced',
+    label: 'textarea',
+    id: 'myoption3',
+    type: 'textarea',
+    advanced: true
+  },
+  {
+    name: 'checkboxAdvanced',
+    id: 'myoption4',
+    label: 'Advanced Checkbox',
+    type: 'checkbox',
+    advanced: true
+  }
+];
+
+const columns = [
+  {
+    name: 'columnA',
+    label: 'Column A'
+  },
+  {
+    name: 'columnB',
+    label: 'Column B'
+  },
+  {
+    name: 'columnC',
+    label: 'Column C',
+    locked: true,
+    selected: true
+  },
+  {
+    name: 'columnD',
+    label: 'Column D',
+    locked: true,
+    selected: true
+  },
+  {
+    name: 'columnE',
+    label: 'Column E',
+    selected: true
+  },
+  {
+    name: 'columnF',
+    label: 'Column F',
+    selected: true
+  },
+  {
+    name: 'columnG',
+    label: 'Column G'
+  },
+  {
+    name: 'columnH',
+    label: 'Column H'
+  },
+  {
+    name: 'columnI',
+    label: 'Column I'
+  },
+  {
+    name: 'columnJ',
+    label: 'Column J'
+  }
+];
+
+const views = [
+  {
+    id: 'view-1',
+    label: 'View 1',
+    columns: columns,
+    searchString: 'abc',
+    filters: filters
+  },
+  {
+    id: 'view-2',
+    label: 'View 2',
+    columns: [],
+    searchString: 'abcde',
+    filters: []
+  }
+];
+
+export const exampleToolbar = {
+  customItemsData: customItems,
+  filtersData: filters,
+  columnsData: {
+    columns: columns
+  },
+  viewsData: views
+};
+
+export const exampleSaveView = {
+  title: 'Search Results',
+  results: '(1-40 of 78)',
+  mode: 'base',
+  active: true,
+  default: true
+};

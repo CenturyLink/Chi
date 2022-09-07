@@ -102,21 +102,8 @@
         </a>
         span.chi-header__title.-d--none.-d-lg--flex Chi Design System
       .chi-header__start
-        form.-chi-search
-          .chi-input__wrapper.-icon--right.-flex--grow1
-            label.chi-label.-d--none(for='chi-docs-search') Search Chi documentation
-            span.algolia-autocomplete
-              input#chi-docs-search.chi-input.searchbox.ds-input(
-                type='text',
-                placeholder='Search',
-                autocomplete='off',
-                spellcheck='false',
-                role='combobox',
-                aria-autocomplete='list',
-                aria-expanded='false',
-                aria-label='search input',
-              )
-            i.chi-icon.icon-search(aria-hidden='true')
+        #docsearch.-chi-search
+        script(v-html="algoliaScript")
       .chi-header__end
         .chi-dropdown
           button.chi-button.-flat.-px--1.chi-dropdown__trigger.-animate(
@@ -162,6 +149,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { BASE_URL, CHI_VISIBLE_VERSION } from '../constants/constants';
 import { CHI_VERSION as ACTIVE_CHI_VERSION } from '../constants/configs';
+import { algoliaScript } from '../constants/scripts';
 
 declare const chi: any;
 
@@ -169,6 +157,7 @@ Vue.config.ignoredElements = ['chi-brand'];
 @Component({
   data: () => {
     return {
+      algoliaScript,
       CHI_VISIBLE_VERSION,
       ACTIVE_CHI_VERSION,
       BASE_URL

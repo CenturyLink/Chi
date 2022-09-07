@@ -107,6 +107,93 @@
               td
                 div
                   | undefined
+    h4 Save views
+    section.chi-table.chi-table__options.-bordered.-my--3
+      div(style='overflow-x:auto;')
+        table.-text(cellpadding='0' cellspacing='0')
+          thead
+            tr
+              th
+                div Property
+              th
+                div Description
+              th
+                div Type
+              th
+                div Default
+          tbody
+            tr
+              td
+                div
+                  code active
+              td
+                div To show the save view.
+              td
+                div
+                  code boolean
+              td
+                div
+                  code false
+            tr
+              td
+                div
+                  code default
+              td
+                div To set the default.
+              td
+                div
+                  code boolean
+              td
+                div
+                  code false
+            tr
+              td
+                div
+                  code id
+              td
+                div To set the id.
+              td
+                div
+                  code string
+              td
+                div
+                  code null
+            tr
+              td
+                div
+                  code mode
+              td
+                div To set the mode.
+              td
+                div
+                  code 'base' | 'create' | 'edit' | 'saved' | 'delete'
+              td
+                div
+                  code 'base'
+            tr
+              td
+                div
+                  code results
+              td
+                div To show the results.
+              td
+                div
+                  code string
+              td
+                div
+                  | undefined
+            tr
+              td
+                div
+                  code title
+              td
+                div To set the title.
+              td
+                div
+                  code string
+              td
+                div
+                  code ''
     h3 Interfaces and types
     section.chi-table.chi-table__options.-bordered.-my--3
       div(style='overflow-x:auto;')
