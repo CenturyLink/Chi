@@ -90,15 +90,17 @@ $states: (
     }
   }
 
+  // sass-lint:disable-block force-element-nesting
   .chi-alert__icon,
-  > chi-icon .chi-icon { // sass-lint:disable-line force-element-nesting
+  > chi-icon .chi-icon {
     color: $alert-icon-color;
   }
 
+  // sass-lint:disable-block force-element-nesting
   > .chi-icon,
-  > chi-icon .chi-icon, // sass-lint:disable-line force-element-nesting
+  > chi-icon .chi-icon,
   .chi-alert__icon,
-  .chi-alert__clickable-icon .chi-icon { // sass-lint:disable-line force-element-nesting
+  .chi-alert__clickable-icon .chi-icon {
     &:not(.icon-x) {
       flex-shrink: 0;
       font-size: $alert-md-icon-size;
@@ -118,6 +120,11 @@ $states: (
       &:not(.icon-x) {
         margin: 0;
       }
+    }
+
+    & > .chi-icon,
+    & > chi-icon {
+      align-self: center;
     }
   }
 
@@ -225,10 +232,11 @@ $states: (
   &.-lg {
     padding: $alert-lg-padding;
 
+    // sass-lint:disable-block force-element-nesting
     > .chi-icon,
-    > chi-icon .chi-icon, // sass-lint:disable-line force-element-nesting
+    > chi-icon .chi-icon,
     .chi-alert__icon,
-    .chi-alert__clickable-icon .chi-icon { // sass-lint:disable-line force-element-nesting
+    .chi-alert__clickable-icon .chi-icon {
       &:not(.icon-x) {
         font-size: $alert-lg-icon-size;
         height: $alert-lg-icon-size;
@@ -286,10 +294,11 @@ $states: (
   &.-sm {
     padding: $alert-sm-padding;
 
+    // sass-lint:disable-block force-element-nesting
     > .chi-icon,
-    > chi-icon .chi-icon, // sass-lint:disable-line force-element-nesting
+    > chi-icon .chi-icon,
     .chi-alert__icon,
-    .chi-alert__clickable-icon .chi-icon { // sass-lint:disable-line force-element-nesting
+    .chi-alert__clickable-icon .chi-icon {
       &:not(.icon-x) {
         font-size: $alert-sm-icon-size;
         height: $alert-sm-icon-size;
@@ -322,6 +331,22 @@ $states: (
 
     &.-close {
       padding-right: 1rem;
+    }
+  }
+}
+
+.chi-button {
+  .chi-alert {
+    // sass-lint:disable-block force-element-nesting
+    .chi-alert__icon,
+    & > chi-icon .chi-icon {
+      color: $alert-icon-color;
+    }
+
+    .chi-alert__clickable-icon {
+      .chi-icon {
+        color: inherit;
+      }
     }
   }
 }

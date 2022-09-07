@@ -30,15 +30,11 @@ describe('Alert', () => {
     'alert-bubble-dismissible-success-sm',
     'alert-bubble-titled-success-sm',
     'alert-bubble-actionable-success-sm',
-    'alert-bubble-clickable-link-success-sm',
-    'alert-bubble-clickable-button-success-sm',
     'alert-bubble-success-lg',
     'alert-bubble-center-success-lg',
     'alert-bubble-dismissible-success-lg',
     'alert-bubble-titled-success-lg',
-    'alert-bubble-actionable-success-lg',
-    'alert-bubble-clickable-link-success-lg',
-    'alert-bubble-clickable-button-success-lg'
+    'alert-bubble-actionable-success-lg'
   ];
 
   const alertAssertion = (el, value) => {

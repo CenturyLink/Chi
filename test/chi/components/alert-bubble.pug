@@ -63,32 +63,32 @@ each size in ['default', 'sm', 'lg']
             div.chi-alert__actions
               button.chi-button(class=`-${size}`) Secondary action
               button.chi-button.-primary(class=`-${size}`) Primary action
-  h4 Clickable Link Alert / #{size}
-  div(class=`test-bubble-clickable-link-${size} -w--100`)
-    each val, type in {base:'icon-circle-info', success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .-m--2
-        a.chi-link.-no-hover-underline(href='#')
-          .chi-alert(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+h4 Clickable Link Alert / default
+div(class=`test-bubble-clickable-link-default -w--100`)
+  each val, type in {base:'icon-circle-info', success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
+    .-m--2
+      a.chi-link.-no-hover-underline(href='#')
+        .chi-alert(class=`-${type}`)
+          div(class=`chi-alert__icon chi-icon -icon--${type}`)
+            svg
+              use(xlink:href=`#${val}`)
+          .chi-alert__content
+            p(class=`chi-alert__text -text--semi-bold -text--${type}`)
+              =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`
+          .chi-alert__clickable-icon
+            i.chi-icon.icon-chevron-right
+h4 Clickable Button Alert / default
+div(class=`test-bubble-clickable-button-default -w--100`)
+  each val, type in {base:'icon-circle-info', success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
+    .-m--2
+      button.chi-button.-flat.-fluid.-b--0.-p--0.-text--no-transform.-no-hover
+        .chi-button__content
+          .chi-alert(class=`-${type} -w--100`)
             div(class=`chi-alert__icon chi-icon -icon--${type}`)
               svg
                 use(xlink:href=`#${val}`)
             .chi-alert__content
               p(class=`chi-alert__text -text--semi-bold -text--${type}`)
-                =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`
+                =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`
             .chi-alert__clickable-icon
               i.chi-icon.icon-chevron-right
-  h4 Clickable Button Alert / #{size}
-  div(class=`test-bubble-clickable-button-${size} -w--100`)
-    each val, type in {base:'icon-circle-info', success:'icon-circle-check', danger:'icon-circle-warning', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
-      .-m--2
-        button.chi-button.-flat.-fluid.-b--0.-p--0.-text--no-transform.-no-hover
-          .chi-button__content
-            .chi-alert(class=`-${type} ${size === 'default' ? '' : '-' + size} -w--100`)
-              div(class=`chi-alert__icon chi-icon -icon--${type}`)
-                svg
-                  use(xlink:href=`#${val}`)
-              .chi-alert__content
-                p(class=`chi-alert__text -text--semi-bold -text--${type}`)
-                  =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`
-              .chi-alert__clickable-icon
-                i.chi-icon.icon-chevron-right
