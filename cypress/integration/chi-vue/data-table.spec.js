@@ -90,6 +90,7 @@ const BULK_ACTIONS_CLASSES = {
   LABEL: 'chi-bulk-actions__label',
 }
 const CHECKBOXES_CLASSES = {
+  CHECKBOX: 'chi-checkbox',
   LABEL: 'chi-checkbox__label'
 }
 
@@ -120,6 +121,14 @@ const isSelected = elements => {
 const isNotSelected = elements => {
   elements.forEach(el => expect(el.selected).to.be.false);
 };
+
+const getRowCheckbox = (row, element) => {
+  return cy.get(row)
+    .first()
+    .children()
+    .first()
+    .find(element);
+}
 
 describe('Data Table', () => {
   before(() => {
@@ -1205,9 +1214,9 @@ describe('Data Table', () => {
         .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
         .as('selectables');
       cy.get(`[data-cy='data-table-bulk-actions'] 
-        .${PAGINATION_CLASSES.PAGINATION}`).as('pagination');
+          .${PAGINATION_CLASSES.PAGINATION}`).as('pagination');
       cy.get(`[data-cy='data-table-bulk-actions'] 
-        .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`)
+          .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`)
         .as('rows');
     });
 
@@ -1232,7 +1241,7 @@ describe('Data Table', () => {
           dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY}`, spy);
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-            .${CHECKBOXES_CLASSES.LABEL}`)
+              .${CHECKBOXES_CLASSES.LABEL}`)
             .click()
             .then(() => {
               cy.get('@selectables')
@@ -1240,13 +1249,13 @@ describe('Data Table', () => {
                 .should('be.checked');
               cy.get(
                 `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
-                    .${PAGINATION_CLASSES.RESULTS}`
+                      .${PAGINATION_CLASSES.RESULTS}`
               )
                 .find('span')
                 .contains(`${paginationResults} results`);
               cy.get(`[data-cy='data-table-bulk-actions']`)
                 .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-                  .${BULK_ACTIONS_CLASSES.LABEL}`)
+                    .${BULK_ACTIONS_CLASSES.LABEL}`)
                 .contains(`Actions (${selected} Selected)`);
               cy.get("@rows").should("have.length", 1);
               expect(spy).to.be.calledOnce;
@@ -1266,7 +1275,7 @@ describe('Data Table', () => {
           dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY}`, spy);
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-            .${CHECKBOXES_CLASSES.LABEL}`)
+              .${CHECKBOXES_CLASSES.LABEL}`)
             .click()
             .then(() => {
               cy.get(`[data-cy='data-table-bulk-actions']`)
@@ -1282,13 +1291,13 @@ describe('Data Table', () => {
                 .should('not.be.checked');
               cy.get(
                 `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
-                    .${PAGINATION_CLASSES.RESULTS}`
+                      .${PAGINATION_CLASSES.RESULTS}`
               )
                 .find('span')
                 .contains(`${paginationResults} results`);
               cy.get(`[data-cy='data-table-bulk-actions']`)
                 .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-                  .${BULK_ACTIONS_CLASSES.LABEL}`)
+                    .${BULK_ACTIONS_CLASSES.LABEL}`)
                 .contains(`Actions (${selected} Selected)`);
               cy.get("@rows").should("have.length", 3);
               expect(spy).to.be.calledOnce;
@@ -1318,7 +1327,7 @@ describe('Data Table', () => {
               cy.get("@rows").should("have.length", 3);
               cy.get(
                 `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
-                    .${PAGINATION_CLASSES.RESULTS}`
+                      .${PAGINATION_CLASSES.RESULTS}`
               )
                 .find('span')
                 .contains(`${paginationResults} results`);
@@ -1341,7 +1350,7 @@ describe('Data Table', () => {
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-            .${CHECKBOXES_CLASSES.LABEL}`)
+              .${CHECKBOXES_CLASSES.LABEL}`)
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END} .${BUTTON_CLASS} .${CLOSE_CLASS}`)
@@ -1356,7 +1365,7 @@ describe('Data Table', () => {
               cy.get("@rows").should("have.length", 3);
               cy.get(
                 `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
-                  .${PAGINATION_CLASSES.RESULTS}`
+                    .${PAGINATION_CLASSES.RESULTS}`
               )
                 .find('span')
                 .contains(`${paginationResults} results`);
@@ -1371,11 +1380,11 @@ describe('Data Table', () => {
         .click();
       cy.get(`[data-cy='data-table-bulk-actions']`)
         .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.BUTTONS} 
-          .${BULK_ACTIONS_CLASSES.BUTTONS_DESKTOP}`)
+            .${BULK_ACTIONS_CLASSES.BUTTONS_DESKTOP}`)
         .should('be.visible');
       cy.get(`[data-cy='data-table-bulk-actions']`)
         .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.BUTTONS} 
-          .${BULK_ACTIONS_CLASSES.BUTTONS_MOBILE}`)
+            .${BULK_ACTIONS_CLASSES.BUTTONS_MOBILE}`)
         .should('not.be.visible');
     });
 
@@ -1395,7 +1404,7 @@ describe('Data Table', () => {
         .then(() => {
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-                  .${BULK_ACTIONS_CLASSES.LABEL}`)
+                    .${BULK_ACTIONS_CLASSES.LABEL}`)
             .contains(`Actions (${selected} Selected)`);
         });
       cy.get(`@pagination`)
@@ -1417,7 +1426,7 @@ describe('Data Table', () => {
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-                .${BULK_ACTIONS_CLASSES.LABEL}`)
+                  .${BULK_ACTIONS_CLASSES.LABEL}`)
             .contains(`Actions (${selected} Selected)`);
           cy.get(`@pagination`)
             .find(`.${ICON_BUTTON}`)
@@ -1425,12 +1434,677 @@ describe('Data Table', () => {
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-                  .${BULK_ACTIONS_CLASSES.LABEL}`)
+                    .${BULK_ACTIONS_CLASSES.LABEL}`)
             .contains(`Actions (${selected} Selected)`);
         });
     });
   });
-});
+
+  describe('Selection disabled', () => {
+    beforeEach(() => {
+      cy.get(`[data-cy='data-table-selection-disabled']`)
+        .children()
+        .first()
+        .children()
+        .eq(1)
+        .as('body');
+      cy.get(`@body`)
+        .children()
+        .first()
+        .as('parentRow');
+      cy.get(`@body`)
+        .children()
+        .eq(1)
+        .as('childRow');
+      cy.get(`@childRow`)
+        .children()
+        .eq(1)
+        .as('grandChildRow');
+      cy.get(`[data-cy='data-table-selection-disabled']`)
+        .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
+        .first()
+        .as('selectAll');
+    });
+
+    it('Should not check parent, child and grandchild when clicking select all checkbox', () => {
+      cy.get(`@selectAll`)
+        .click();
+      getRowCheckbox('@parentRow')
+        .should('not.be.checked');
+      getRowCheckbox('@childRow')
+        .should('not.be.checked');
+      getRowCheckbox('@grandChildRow')
+        .should('not.be.checked');
+    });
+
+    it('Should disabled parent and grandchild', () => {
+      getRowCheckbox('@parentRow', 'input')
+        .should('have.attr', 'disabled');
+      getRowCheckbox('@grandChildRow', 'input')
+        .should('have.attr', 'disabled');
+    });
+
+    it('Should not select grandchild when clicking on child', () => {
+      getRowCheckbox('@childRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+        .click();
+      getRowCheckbox('@grandChildRow')
+        .should('not.be.checked');
+      getRowCheckbox('@parentRow', 'input')
+        .should('have.attr', 'disabled');
+    });
+  });
+
+  describe('Tree selection', () => {
+    describe('Enabled', () => {
+      beforeEach(() => {
+        const rows = [0, 1];
+
+        cy.get(`[data-cy='data-table-tree-selection-enabled']`)
+          .children()
+          .first()
+          .children()
+          .eq(1)
+          .as('body');
+        cy.get(`@body`)
+          .children()
+          .first()
+          .as('parentRow');
+        rows.forEach((row) => {
+          cy.get(`@body`)
+            .children()
+            .eq(1)
+            .children()
+            .eq(row)
+            .as(`childRow${row + 1}`);
+          cy.get(`@body`)
+            .children()
+            .eq(1)
+            .children()
+            .eq(2)
+            .first()
+            .children()
+            .eq(row)
+            .as(`grandChildRow${row + 1}`);
+        });
+        cy.get(`[data-cy='data-table-tree-selection-enabled']`)
+          .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
+          .first()
+          .as('selectAll');
+      });
+
+      it('Should select all including children and grand children when clicking on select all checkbox', () => {
+        cy.get('@selectAll')
+          .click()
+          .then(() => {
+            const rows = [0, 1];
+
+            cy.get(
+              `[data-cy='data-table-tree-selection-enabled'] .${DATA_TABLE_CLASSES.ROW}`
+            ).as('rows');
+            hasClassAssertion('@rows', `${ACTIVE_CLASS}`);
+            cy.get('@rows')
+              .find('input')
+              .as('checkboxes')
+              .should('be.checked');
+            rows.forEach((row) => {
+              getRowCheckbox(`@childRow${row + 1}`, 'input')
+                .should('be.checked');
+              getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                .should('be.checked');
+            })
+          });
+        cy.get('@selectAll')
+          .click();
+      });
+
+      it('Should select all children and grand children when clicking parent and select all checkbox should be indeterminate', () => {
+        getRowCheckbox('@parentRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            const rows = [0, 1];
+
+            rows.forEach((row) => {
+              getRowCheckbox(`@childRow${row + 1}`, 'input')
+                .should('be.checked');
+              getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                .should('be.checked');
+            });
+            getRowCheckbox('@selectAll', 'input')
+              .should('have.prop', 'indeterminate');
+          });
+        getRowCheckbox('@parentRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+      });
+
+      it('Should select grand children when clicking children, parent and select all checkboxes should be indeterminate', () => {
+        getRowCheckbox('@childRow2', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            const rows = [0, 1];
+
+            rows.forEach((row) => {
+              getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                .should('be.checked');
+            });
+
+            getRowCheckbox(`@childRow2`, 'input')
+              .should('be.checked');
+            getRowCheckbox(`@parentRow`, 'input')
+              .should('have.prop', 'indeterminate');
+            getRowCheckbox('@selectAll', 'input')
+              .should('have.prop', 'indeterminate');
+          });
+        getRowCheckbox('@parentRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click();
+      });
+
+      it('Should indeterminate parent and select all checkbox with only one child selected', () => {
+        getRowCheckbox('@childRow1', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            getRowCheckbox(`@parentRow`, 'input')
+              .should('have.prop', 'indeterminate');
+            getRowCheckbox('@selectAll', 'input')
+              .should('have.prop', 'indeterminate');
+          });
+        getRowCheckbox('@childRow1', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click();
+      });
+
+      it('Should select parent when clicking first and second child and select all is indeterminate', () => {
+        const rows = [0, 1];
+
+        rows.forEach((row) => {
+          getRowCheckbox(`@childRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+            .click();
+        });
+        getRowCheckbox(`@parentRow`, 'input')
+          .should('be.checked');
+        cy.get('@selectAll')
+          .click();
+      });
+
+      it('Should indeterminate children row with only one grand children selected, parent and select all checkboxes should be indeterminate', () => {
+        getRowCheckbox('@grandChildRow1', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            getRowCheckbox(`@parentRow`, 'input')
+              .should('have.prop', 'indeterminate');
+            getRowCheckbox('@childRow2', 'input')
+              .should('have.prop', 'indeterminate');
+            getRowCheckbox('@selectAll', 'input')
+              .should('have.prop', 'indeterminate');
+          });
+        getRowCheckbox('@grandChildRow1', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+      });
+
+      it('Should check children row when all grand children selected, parent and select all checkboxes should be indeterminate', () => {
+        const rows = [0, 1];
+
+        rows.forEach((row) => {
+          getRowCheckbox(`@grandChildRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+            .click();
+        });
+        getRowCheckbox(`@childRow2`, 'input')
+          .should('be.checked');
+        getRowCheckbox(`@parentRow`, 'input')
+          .should('have.prop', 'indeterminate');
+        getRowCheckbox('@selectAll', 'input')
+          .should('have.prop', 'indeterminate');
+        cy.get('@selectAll')
+          .click();
+      });
+
+      it('Should deselect parent row and all children and grand children should be deselected', () => {
+        getRowCheckbox('@parentRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            getRowCheckbox('@parentRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+              .click(() => {
+                const rows = [0, 1];
+
+                rows.forEach((row) => {
+                  getRowCheckbox(`@childRow${row + 1}`, 'input')
+                    .should('not.be.checked');
+                  getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                    .should('not.be.checked');
+                });
+              });
+          });
+      });
+
+      it('Should deselect parent row when is indeterminate, children and all grand children should be deselected', () => {
+        getRowCheckbox('@childRow2', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            getRowCheckbox('@parentRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+              .click()
+              .then(() => {
+                const rows = [0, 1];
+
+                rows.forEach((row) => {
+                  getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                    .should('not.be.checked');
+                });
+                getRowCheckbox(`@childRow2`, 'input')
+                  .should('not.be.checked');
+              });
+          });
+      });
+
+      it('Should deselect all grand children when deselect children row', () => {
+        getRowCheckbox('@childRow2', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            getRowCheckbox('@childRow2', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+              .click()
+              .then(() => {
+                const rows = [0, 1];
+
+                rows.forEach((row) => {
+                  getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                    .should('not.be.checked');
+                });
+                getRowCheckbox(`@childRow2`, 'input')
+                  .should('not.be.checked');
+              });
+          });
+      });
+
+      it('Should deselect children when is indeterminate and grand children should be deselected', () => {
+        getRowCheckbox('@grandChildRow2', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            getRowCheckbox('@childRow2', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+              .click()
+              .then(() => {
+                getRowCheckbox(`@grandChildRow2`, 'input')
+                  .should('not.be.checked');
+                getRowCheckbox(`@childRow2`, 'input')
+                  .should('not.be.checked');
+              });
+          });
+      });
+
+      it('Should deselect parent row when all children are deselected one by one', () => {
+        getRowCheckbox('@parentRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            const rows = [0, 1];
+
+            rows.forEach((row) => {
+              getRowCheckbox(`@childRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+                .click();
+            });
+            getRowCheckbox(`@parentRow`, 'input')
+              .should('not.be.checked');
+          });
+      });
+
+      it('Should deselect children row when all grand children are deselected one by one', () => {
+        getRowCheckbox('@childRow2', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            const rows = [0, 1];
+
+            rows.forEach((row) => {
+              getRowCheckbox(`@grandChildRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+                .click();
+            });
+            getRowCheckbox(`@childRow2`, 'input')
+              .should('not.be.checked');
+          });
+      });
+    });
+
+    describe('Disabled', () => {
+      beforeEach(() => {
+        const rows = [0, 1];
+
+        cy.get(`[data-cy='data-table-tree-selection-disabled']`)
+          .children()
+          .first()
+          .children()
+          .eq(1)
+          .as('body');
+        cy.get(`@body`)
+          .children()
+          .first()
+          .as('parentRow');
+        rows.forEach((row) => {
+          cy.get(`@body`)
+            .children()
+            .eq(1)
+            .children()
+            .eq(row)
+            .as(`childRow${row + 1}`);
+          cy.get(`@body`)
+            .children()
+            .eq(1)
+            .children()
+            .eq(2)
+            .first()
+            .children()
+            .eq(row)
+            .as(`grandChildRow${row + 1}`);
+        });
+        cy.get(`[data-cy='data-table-tree-selection-disabled']`)
+          .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
+          .eq(0)
+          .as('selectAll');
+      });
+
+      it('Should select all except children and grand children', () => {
+        cy.get('@selectAll')
+          .click()
+          .then(() => {
+            const rows = [0, 1];
+
+            cy.get(
+              `[data-cy='data-table-tree-selection-disabled'] .${DATA_TABLE_CLASSES.ROW}`
+            ).as('rows');
+            hasClassAssertion('@rows', `${ACTIVE_CLASS}`);
+            cy.get('@rows')
+              .find('input')
+              .as('checkboxes')
+              .should('be.checked');
+            rows.forEach((row) => {
+              getRowCheckbox(`@childRow${row + 1}`, 'input')
+                .should('not.be.checked');
+              getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                .should('not.be.checked');
+            })
+          });
+        cy.get('@selectAll')
+          .click();
+      });
+
+      it('Should not select all children and grand children level when clicking on parent', () => {
+        getRowCheckbox('@parentRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            const rows = [0, 1];
+
+            rows.forEach((row) => {
+              getRowCheckbox(`@childRow${row + 1}`, 'input')
+                .should('not.be.checked');
+              getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                .should('not.be.checked');
+            });
+            getRowCheckbox('@selectAll', 'input')
+              .should('have.prop', 'indeterminate');
+          });
+        getRowCheckbox('@parentRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+      });
+
+      it('Should select only children and should not select all grand children when clicking on children, parent and select all checkbox should be indeterminate', () => {
+        getRowCheckbox('@childRow2', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            const rows = [0, 1];
+
+            rows.forEach((row) => {
+              getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                .should('not.be.checked');
+            });
+            getRowCheckbox('@parentRow', 'input')
+              .should('have.prop', 'indeterminate');
+            getRowCheckbox('@selectAll', 'input')
+              .should('have.prop', 'indeterminate');
+          });
+        getRowCheckbox('@childRow2', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+      });
+
+      it('Should children still be selected when parent is deselected', () => {
+        getRowCheckbox('@parentRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click();
+        getRowCheckbox('@childRow1', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click();
+        getRowCheckbox('@parentRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click();
+        getRowCheckbox('@parentRow', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            getRowCheckbox(`@childRow1`, 'input')
+              .should('be.checked');
+          });
+        getRowCheckbox('@childRow1', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click();
+      });
+
+      it('Should grand children still be selected when child is deselected', () => {
+        getRowCheckbox('@childRow2', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click();
+        getRowCheckbox('@grandChildRow1', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click();
+        getRowCheckbox('@childRow2', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click();
+        getRowCheckbox('@childRow2', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            getRowCheckbox(`@grandChildRow1`, 'input')
+              .should('be.checked');
+          });
+        getRowCheckbox('@grandChildRow1', `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click();
+      })
+
+      it('Parent should be indeterminate when all children are selected', () => {
+        const rows = [0, 1];
+
+        rows.forEach((row) => {
+          getRowCheckbox(`@childRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+            .click();
+        });
+        getRowCheckbox('@parentRow', 'input')
+          .should('have.prop', 'indeterminate');
+        getRowCheckbox('@selectAll', 'input')
+          .should('have.prop', 'indeterminate');
+        cy.get('@selectAll')
+          .click();
+      });
+
+      // TO DO
+      it.skip('Parent and children should be indeterminate when all grand children are selected', () => {
+        const rows = [0, 1];
+
+        rows.forEach((row) => {
+          getRowCheckbox(`@grandChildRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+            .click();
+        });
+
+        getRowCheckbox('@parentRow', 'input')
+          .should('have.prop', 'indeterminate');
+        getRowCheckbox('@childRow2', 'input')
+          .should('have.prop', 'indeterminate');
+        getRowCheckbox('@parentRow', 'input')
+          .should('have.prop', 'indeterminate');
+        cy.get('@selectAll')
+          .click();
+      });
+
+      it('Should indeterminate parent when clicking on it and some children is selected', () => {
+        getRowCheckbox(`@parentRow`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            getRowCheckbox(`@childRow1`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+              .click();
+            getRowCheckbox(`@parentRow`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+              .click()
+              .then(() => {
+                getRowCheckbox('@parentRow', 'input')
+                  .should('have.prop', 'indeterminate');
+              });
+          });
+        cy.get('@selectAll')
+          .click()
+      });
+
+      it('Should indeterminate parent when clicking on it and all children and grand children are still selected', () => {
+        getRowCheckbox(`@parentRow`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            const rows = [0, 1];
+
+            rows.forEach((row) => {
+              getRowCheckbox(`@childRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+                .click();
+              getRowCheckbox(`@grandChildRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+                .click();
+            });
+            getRowCheckbox(`@childRow2`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+              .click();
+            getRowCheckbox(`@parentRow`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+              .click()
+              .then(() => {
+                rows.forEach((row) => {
+                  getRowCheckbox(`@childRow${row + 1}`, 'input')
+                    .should('be.checked');
+                  getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                    .should('be.checked');
+                });
+                getRowCheckbox('@parentRow', 'input')
+                  .should('have.prop', 'indeterminate');
+              });
+          });
+      });
+
+      it('Should deselect parent when clicking on it and all children and grand children are still selected', () => {
+        getRowCheckbox(`@parentRow`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            const rows = [0, 1];
+
+            rows.forEach((row) => {
+              getRowCheckbox(`@childRow${row + 1}`, 'input')
+                .should('be.checked');
+              getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                .should('be.checked');
+            });
+            getRowCheckbox('@parentRow', 'input')
+              .should('be.not.checked');
+          });
+        cy.get('@selectAll')
+          .click();
+      });
+
+      it('Should indeterminate child when clicking on it and all gran children are still selected', () => {
+        getRowCheckbox(`@childRow2`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            const rows = [0, 1];
+
+            rows.forEach((row) => {
+              getRowCheckbox(`@grandChildRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+                .click();
+            });
+            getRowCheckbox(`@childRow2`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+              .click()
+              .then(() => {
+                rows.forEach((row) => {
+                  getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                    .should('be.checked');
+                });
+                getRowCheckbox('@childRow2', 'input')
+                  .should('have.prop', 'indeterminate');
+              });
+          });
+      });
+
+      it('Should deselect child when clicking on it and all grand children are still selected', () => {
+        getRowCheckbox(`@childRow2`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click()
+          .then(() => {
+            const rows = [0, 1];
+
+            rows.forEach((row) => {
+              getRowCheckbox(`@grandChildRow${row + 1}`, 'input')
+                .should('be.checked');
+            });
+            getRowCheckbox('@childRow2', 'input')
+              .should('be.not.checked');
+          });
+        cy.get('@selectAll')
+          .click();
+        cy.get('@selectAll')
+          .click();
+        cy.get('@selectAll')
+          .click();
+      });
+
+      it('Should parent be still selected when all children are deselected one by one', () => {
+        const rows = [0, 1];
+
+        getRowCheckbox(`@parentRow`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click();
+        rows.forEach((row) => {
+          getRowCheckbox(`@childRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+            .click();
+        });
+        rows.forEach((row) => {
+          getRowCheckbox(`@childRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+            .click();
+        });
+        getRowCheckbox('@parentRow', 'input')
+          .should('be.checked');
+        cy.get('@selectAll')
+          .click();
+      });
+
+      it('Should parent be deselected when all children are deselected one by one and parent is not selected', () => {
+        const rows = [0, 1];
+
+        rows.forEach((row) => {
+          getRowCheckbox(`@childRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+            .click();
+        });
+        rows.forEach((row) => {
+          getRowCheckbox(`@childRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+            .click();
+        });
+        getRowCheckbox('@parentRow', 'input')
+          .should('be.not.checked');
+      });
+
+      it('Should child be still selected when all grand children are deselected one by one', () => {
+        const rows = [0, 1];
+
+        getRowCheckbox(`@childRow2`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+          .click();
+        rows.forEach((row) => {
+          getRowCheckbox(`@grandChildRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+            .click();
+        });
+        rows.forEach((row) => {
+          getRowCheckbox(`@grandChildRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+            .click();
+        });
+        getRowCheckbox('@childRow2', 'input')
+          .should('be.checked');
+        cy.get('@selectAll')
+          .click();
+      });
+
+      it('Should child be deselected when all children are deselected one by one and child is not selected', () => {
+        const rows = [0, 1];
+
+        rows.forEach((row) => {
+          getRowCheckbox(`@grandChildRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+            .click();
+        });
+        rows.forEach((row) => {
+          getRowCheckbox(`@grandChildRow${row + 1}`, `.${CHECKBOXES_CLASSES.CHECKBOX}`)
+            .click();
+        });
+        getRowCheckbox('@childRow2', 'input')
+          .should('be.not.checked');
+      });
+    });
+  });
+})
 
 describe('Data Table Portal', () => {
   before(() => {
