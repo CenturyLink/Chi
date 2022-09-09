@@ -62,7 +62,8 @@
       >
         <div class="example -mb--3" :style="additionalStyle">
           <div :class="[padding || '-p--3', additionalClasses]">
-            <slot name="example"></slot>
+            <slot v-if="headTabsExampleSlot" :name="`example-head-${headTab.id}`"></slot>
+            <slot v-else name="example"></slot>
           </div>
           <div class="example-tabs -pl--2">
             <ul
@@ -215,6 +216,7 @@ export default class ComponentExample extends Vue {
   @Prop() titleSize?: 'h3' | 'h4';
   @Prop() tabs?: TabsInterface[];
   @Prop() headTabs?: HeadTabsInterface[];
+  @Prop() headTabsExampleSlot?: boolean;
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
   @Prop() additionalStyle?: string;

@@ -1,17 +1,22 @@
 <template lang="pug">
-  <ComponentExample title="Flat" titleSize="h4" id="vertical-lumen-centurylink" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeSelectedTab(e)">
-    .chi-grid.-no-gutter(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'}`" slot="example")
+  <ComponentExample title="Flat" titleSize="h4" id="vertical-flat-lumen-centurylink" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" :headTabsExampleSlot="true" @chiHeadTabsChange="e => changeSelectedTab(e)">
+    .chi-grid.-no-gutter(v-for='headTab in headTabs' :slot="`example-head-${headTab.id}`" :class="`-bg--${headTab.id === 'base' ? 'white' : 'black'}`")
       .chi-col.-w--6.-w-sm--4.-p--3
-        ul.chi-tabs.-vertical(:class="selectedTabId === 'base' ? '' : '-inverse'" :id="'example-vertical-' + selectedTabId" role="tablist" :aria-label="selectedTabId === 'base' ? 'chi-tabs-vertical-base' : 'vertical-inverse'" :ref="`example__tabs_vertical_${selectedTabId}`")
-          li(v-for="item in [1,2,3]" :class="selectedTab.selectedItemId === item ? '-active' : ''" @click.prevent="tabClickHandler(item)")
+        ul.chi-tabs.-vertical(
+          :class="headTab.id === 'base' ? '' : '-inverse'"
+          :id="`example-vertical-${headTab.id}`"
+          role="tablist"
+          :aria-label="headTab.id === 'base' ? 'chi-tabs-vertical-base' : 'vertical-inverse'"
+          :ref="`example__tabs_vertical_flat_${headTab.id}`")
+          li(v-for="item in headTab.tabItems" :class="item === '1' ? '-active' : ''")
             a(
-              :href="'#vertical-' + selectedTabId + '-' + item"
+              :href="`#vertical-flat-${headTab.id}-${item}`"
               role="tab"
-              :tabIndex="item === 1 ? '' : '-1'"
-              :aria-selected="selectedTab.selectedItemId === item ? 'true' : 'false'"
-              :aria-controls="'vertical-' + selectedTabId + '-' + item") {{item === 1 ? 'Active Tab' : 'Tab Link'}}
-      .chi-col.-p--3(:class="selectedTabId === 'base' ? '' : '-bg--white'")
-        .chi-tabs-panel(:class="selectedTab.selectedItemId === item ? '-active' : ''" :id="'vertical-' + selectedTabId + '-' + item" :key="item" v-for="item in [1,2,3]" role="tabpanel")
+              :tabIndex="item === '1' ? '' : '-1'"
+              :aria-selected="item === '1' ? 'true' : 'false'"
+              :aria-controls="`vertical-${headTab.id}-${item}`") {{item === '1' ? 'Active Tab' : 'Tab Link'}}
+      .chi-col.-p--3(:class="headTab.id === 'base' ? '' : '-bg--white'")
+        .chi-tabs-panel(:class="item === '1' ? '-active' : ''" :id="`vertical-flat-${headTab.id}-${item}`" :key="`vertical-flat-${headTab.id}-${item}`" v-for="item in headTab.tabItems" role="tabpanel")
           .-text Tab {{item}} content    
     <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
       <pre class="language-html" slot="code-webcomponent">
@@ -37,13 +42,13 @@ declare const chi: any;
   data: () => {
     return {
       tabs: [1,2,3],
-       headTabs: [
+      headTabs: [
         {
           active: true,
           id: 'base',
           label: 'Base',
-          selectedItemId: 1,
-           codeSnippets: {
+          tabItems: ['1', '2', '3'],
+          codeSnippets: {
             webComponent: {
               code: ``
             },
@@ -55,7 +60,7 @@ declare const chi: any;
         {
           id: 'inverse',
           label: 'Inverse',
-          selectedItemId: 1,
+          tabItems: ['1', '2', '3'],
           codeSnippets: {
             webComponent: {
               code: ``,
@@ -85,8 +90,9 @@ declare const chi: any;
   },
 })
 export default class VerticalFlatLumenCenturyLink extends Vue {
-selectedTab: any;
-  tab: any;
+  selectedTab: any;
+  baseTab: any;
+  inverseTab: any;
 
   _setCodeSnippets() {
     this.$data.headTabs.forEach((headTab: any) => {
@@ -112,7 +118,8 @@ selectedTab: any;
   }
 
   mounted() {
-    this.tab = chi.tab(this.$refs['example__tabs_vertical_base'] as HTMLElement);
+    this.baseTab = chi.tab(this.$refs['example__tabs_vertical_flat_base'] as HTMLElement);
+    this.inverseTab = chi.tab(this.$refs['example__tabs_vertical_flat_inverse'] as HTMLElement);
   }
 
   changeSelectedTab(e: HeadTabsInterface) {
@@ -121,11 +128,8 @@ selectedTab: any;
   }
 
   beforeDestroy() {
-    this.tab.dispose();
-  }
-
-  tabClickHandler(tabId: number) {
-    this.selectedTab.selectedItemId = tabId;
+    this.baseTab.dispose();
+    this.inverseTab.dispose();
   }
 }
 </script>

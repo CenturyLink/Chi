@@ -3,19 +3,17 @@
     template(slot="example")
       .chi-grid.-no-gutter.-bg--white
         .chi-col.-w--6.-w-sm--4.-p--3
-          ul.chi-tabs.-vertical.-solid.-xl.-animated#example-portal-vertical-solid(
-            role="tablist"
-            aria-label="chi-tabs-portal-vertical-solid")
-            li(v-for="item in [1,2,3]" :class="selectedItemId === item ? '-active' : ''" @click.prevent="selectedItemId = item")
+          ul#example-portal-vertical-solid.chi-tabs.-vertical.-solid.-xl(role="tablist" aria-label="example-portal-vertical-solid" ref="example__portal_vertical_solid")
+            li(v-for="(tab, index) in tabs" :class="tab === '1' ? '-active' : ''")
               a(
-                :href="`#portal-vertical-solid-${item}`"
+                :href="`#portal-vertical-solid-${tab}`"
                 role="tab"
-                :aria-selected="selectedItemId === item ? 'true' : 'false'"
-                :aria-controls="`portal-vertical-solid-${item}`"
-                ) {{item === 1 ? 'Active Tab' : 'Tab Link'}}
+                :aria-selected="tab === '1' ? 'true' : 'false'"
+                :tabindex="tab === '1' ? 0 : -1"
+                :aria-controls="`portal-vertical-solid-${tab}`") {{tab === '1' ? 'Active Tab' : 'Tab Link'}}
         .chi-col.-p--3
-            .chi-tabs-panel(:class="selectedItemId === item ? '-active' : ''" v-for="item in [1,2,3]" :id="`portal-vertical-solid-${item}`" :key="item" role="tabpanel")
-              .-text Tab {{item}} content
+          .chi-tabs-panel(:class="tab === '1' ? '-active' : ''" :id="`portal-vertical-solid-${tab}`" :key="`portal-vertical-solid-${tab}`" v-for="tab in tabs" role="tabpanel")
+            .-text Tab {{tab}} content
     <Wrapper v-for="tab in exampleTabs" :slot="`code-${tab.id}`" :key="tab.id">
       <JSNeeded />
       <pre class="language-html">
@@ -33,7 +31,7 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
-      tabs: [1,2,3],
+      tabs: ['1', '2', '3'],
       exampleTabs: [
         {
           disabled: true,
@@ -48,12 +46,12 @@ declare const chi: any;
           codeSnippet: ''
         },
       ],
-      selectedItemId: 1,
       exampleId: 'horizontal-solid-lumen-centurylink'
     };
   },
 })
 export default class VerticalSolidLumenCenturyLink extends Vue {
+  tab: any;
   _setCodeSnippets() {
     this.$data.exampleTabs[1].codeSnippet = `<ul class="chi-tabs -vertical -solid -xl" id="example-portal-vertical-solid" role="tablist" aria-label="chi-tabs-portal-vertical-solid">
   <li class="-active">
@@ -96,6 +94,14 @@ export default class VerticalSolidLumenCenturyLink extends Vue {
 
   created() {
     this._setCodeSnippets();
+  }
+
+  mounted() {
+    this.tab = chi.tab(this.$refs['example__portal_vertical_solid'] as HTMLElement);
+  }
+
+  beforeDestroy() {
+    this.tab.dispose();
   }
 }
 </script>
