@@ -320,6 +320,10 @@ $sizes: (
   &.-fluid:not(.-float) {
     justify-content: center;
     width: 100%;
+
+    &.chi-dropdown__trigger {
+      justify-content: space-between;
+    }
   }
 
   &.-uppercase {
