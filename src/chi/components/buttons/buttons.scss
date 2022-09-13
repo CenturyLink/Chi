@@ -318,6 +318,10 @@ $sizes: (
 
   &.-fluid:not(.-float) {
     width: 100%;
+
+    &.chi-dropdown__trigger {
+      justify-content: space-between;
+    }
   }
 
   &.-uppercase {

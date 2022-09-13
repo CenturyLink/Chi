@@ -2,12 +2,12 @@
 title: Dropdown
 ---
 
-- var dropdownStates = ["", "-active"];
+- var dropdownStates = ["", "-active", "-fluid"];
 - var textCombinations = [{"t_text": "Click me", "d_text": "Element"}, {"t_text": "Long trigger text, click me", "d_text": "Element"}, {"t_text": "Click me", "d_text": "Long text dropdown element"}];
 - var menuItemStates = [{"title":"Normal", "class": ""}, {"title":"Active", "class": "-active"}, {"title":"Disabled", "class": "-disabled"}, {"title":"Hover", "class": "-hover"}];
 
 each menuItemState in menuItemStates
-  div(class=`test-basicDropdown${menuItemState.class}`)
+  div(class=`test-basicDropdown${menuItemState.class} -w--100`)
     span.-text--h2=menuItemState.title
     .-d--flex
       each textCombination in textCombinations
@@ -18,7 +18,7 @@ each menuItemState in menuItemStates
               each i in [1, 2, 3]
                 a(class=`chi-dropdown__menu-item ${menuItemState.class}`, href='#')=textCombination.d_text + " " + i
 
-div(class=`test-dropdown-list`)
+div(class=`test-dropdown-list -w--100`)
   span.-text--h2 List
   .-d--flex
     div(class=`chi-dropdown__menu -list -active`)
@@ -35,7 +35,7 @@ div(class=`test-dropdown-list`)
         p.chi-dropdown__menu-item_title Normal element
         p.chi-dropdown__menu-item_text Hovered item
 
-div(class=`test-dropdown-divider`)
+div(class=`test-dropdown-divider -w--100`)
   span.-text--h2 Divider
   .-d--flex
     div(class=`chi-dropdown__menu -active`)
@@ -45,7 +45,7 @@ div(class=`test-dropdown-divider`)
       each i in [3, 4]
         a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
 
-div(class=`test-dropdown-icons`)
+div(class=`test-dropdown-icons -w--100`)
   span.-text--h2 Icons
   .-d--flex
     .chi-dropdown__menu.-active
@@ -82,7 +82,7 @@ div(class=`test-dropdown-icons`)
             use(xlink:href='#icon-logout')
         = "Logout"
 
-div(class=`test-dropdown-searchBox`)
+div(class=`test-dropdown-searchBox -w--100`)
   span.-text--h2 Search box
   .-d--flex
     .chi-dropdown__menu.-active
@@ -95,52 +95,56 @@ div(class=`test-dropdown-searchBox`)
       a.chi-dropdown__menu-item(href='#') Element 2
 
 - var inputStates = ["", "disabled", "checked"]
-div(class=`test-dropdown-checkbox`)
+div(class=`test-dropdown-checkbox -w--100`)
   span.-text--h2 checkbox
-  .chi-dropdown__menu.-active
-    each inputState in inputStates
-      .chi-dropdown__menu-item
-        .chi-checkbox
-          input(type="checkbox", class="chi-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
-          label.chi-checkbox__label(for=`checkbox${inputState}`)="Element checkbox " + inputState
+  .-d--flex
+    .chi-dropdown__menu.-active
+      each inputState in inputStates
+        .chi-dropdown__menu-item
+          .chi-checkbox
+            input(type="checkbox", class="chi-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+            label.chi-checkbox__label(for=`checkbox${inputState}`)="Element checkbox " + inputState
 
-div(class=`test-dropdown-checkbox-icon`)
+div(class=`test-dropdown-checkbox-icon -w--100`)
   span.-text--h2 checkbox with icons
-  .chi-dropdown__menu.-active
-    each inputState in inputStates
-      .chi-dropdown__menu-item
-        .chi-checkbox
-          input(type="checkbox", class="chi-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
-          label.chi-checkbox__label(for=`checkbox${inputState}`)
-            .chi-icon
-              svg
-                use(xlink:href='#icon-logo-centurylink')
-            ="Element checkbox " + inputState
+  .-d--flex
+    .chi-dropdown__menu.-active
+      each inputState in inputStates
+        .chi-dropdown__menu-item
+          .chi-checkbox
+            input(type="checkbox", class="chi-checkbox__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+            label.chi-checkbox__label(for=`checkbox${inputState}`)
+              .chi-icon
+                svg
+                  use(xlink:href='#icon-logo-centurylink')
+              ="Element checkbox " + inputState
 
 - var inputStates = ["", "disabled", "checked"]
-div(class=`test-dropdown-radio`)
+div(class=`test-dropdown-radio -w--100`)
   span.-text--h2 radio
-  .chi-dropdown__menu.-active
-    each inputState in inputStates
-      .chi-dropdown__menu-item
-        .chi-radio
-          input(type="radio", class="chi-radio__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
-          label.chi-radio__label(for=`radio${inputState}`)="Element radio " + inputState
+  .-d--flex
+    .chi-dropdown__menu.-active
+      each inputState in inputStates
+        .chi-dropdown__menu-item
+          .chi-radio
+            input(type="radio", class="chi-radio__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+            label.chi-radio__label(for=`radio${inputState}`)="Element radio " + inputState
 
-div(class=`test-dropdown-radio-icon`)
+div(class=`test-dropdown-radio-icon -w--100`)
   span.-text--h2 radio with icons
-  .chi-dropdown__menu.-active
-    each inputState in inputStates
-      .chi-dropdown__menu-item
-        .chi-radio
-          input(type="radio", class="chi-radio__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
-          label.chi-radio__label(for=`radio${inputState}`)
-            .chi-icon
-              svg
-                use(xlink:href='#icon-logo-centurylink')
-            ="Element radio " + inputState
+  .-d--flex
+    .chi-dropdown__menu.-active
+      each inputState in inputStates
+        .chi-dropdown__menu-item
+          .chi-radio
+            input(type="radio", class="chi-radio__input", checked=(inputState==="checked"), disabled=(inputState==="disabled"))
+            label.chi-radio__label(for=`radio${inputState}`)
+              .chi-icon
+                svg
+                  use(xlink:href='#icon-logo-centurylink')
+              ="Element radio " + inputState
 
-div(class=`test-dropdown-text`)
+div(class=`test-dropdown-text -w--100`)
   span.-text--h2 Plain text
   .-d--flex
     .chi-dropdown__menu.-active
@@ -149,7 +153,7 @@ div(class=`test-dropdown-text`)
       span.chi-dropdown__menu-item Text 3
       span.chi-dropdown__menu-item Text 4
 
-div(class=`test-dropdown-range`)
+div(class=`test-dropdown-range -w--100`)
   span.-text--h2 Range
   .-d--flex
     .chi-dropdown__menu.-active
@@ -162,7 +166,7 @@ div(class=`test-dropdown-range`)
       .chi-dropdown__menu-item
         input.chi-input(type="range")
 
-div(class=`test-dropdown-toggle`)
+div(class=`test-dropdown-toggle -w--100`)
   span.-text--h2 Toggle input
   .-d--flex
     .chi-dropdown__menu.-active
@@ -189,7 +193,7 @@ div(class=`test-dropdown-toggle`)
             span.chi-switch__label Label
 
 
-div(class=`test-dropdown-ellipsis-helper`)
+div(class=`test-dropdown-ellipsis-helper -w--100`)
   span.-text--h2 Ellipsis helper
   .-d--flex
     .chi-dropdown__menu.-active(style="width:10rem")
@@ -199,7 +203,7 @@ div(class=`test-dropdown-ellipsis-helper`)
         .-flex--ellipsis Longer text element 3
       a.chi-dropdown__menu-item(href='#') Element 4
 
-div(class=`test-dropdown-higher-helper`)
+div(class=`test-dropdown-higher-helper -w--100`)
   span.-text--h2 Higher menu items helper
   .-d--flex
     .chi-dropdown__menu.-active(style="width:10rem")
@@ -212,7 +216,7 @@ div(class=`test-dropdown-higher-helper`)
 - var dropdownPositions = ["", "default", "initial", "top", "right", "bottom", "left", "top-start", "top-end", "right-start", "right-end", "bottom-start", "bottom-end", "left-start", "left-end"];
 
 each triggerSize in triggerSizes
-  div(class=`test-dropdown-button${triggerSize}`)
+  div(class=`test-dropdown-button${triggerSize} -w--100`)
     span.-text--h2=`Button${triggerSize}`
     each triggerState in triggerStates
       span.-text--h3=`State ${triggerState}`

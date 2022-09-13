@@ -5,6 +5,7 @@ export const CLOSED_CLASS = '-closed';
 export const LIGHT_CLASS = '-light';
 export const DISABLED_CLASS = '-disabled';
 export const DISABLED_SCROLL = '-disable-scroll';
+export const FLUID_CLASS = '-fluid';
 export const INVERSE_CLASS = '-inverse';
 export const ANIMATE_CLASS = '-animate';
 export const ANIMATED_CLASS = '-animated';
