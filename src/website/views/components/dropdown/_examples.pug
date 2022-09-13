@@ -160,6 +160,50 @@ h3 Animate
 
       <script>chi.dropdown(document.getElementById('dropdown-animate'));</script>
 
+h3 Fluid
+p.-text
+  | Use fluid to render Dropdowns that span the full width of the parent container.
+.example.-mb--3
+  .-p--3
+    chi-dropdown(position='bottom' button='Dropdown, click me' fluid)
+      a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
+      a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
+      a.chi-dropdown__menu-item(href='#' slot='menu') Item 4
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-fluid
+      li.-active
+        a(href=`#webcomponent-fluid`) Web Component
+      li
+        a(href=`#html-fluid`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-fluid
+    :code(lang="html")
+      <chi-dropdown position="bottom" button="Dropdown, click me" fluid>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 4</a>
+      </chi-dropdown>
+  .chi-tabs-panel#html-fluid
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-dropdown -fluid">
+        <button id="dropdown-1" class="chi-button chi-dropdown__trigger -fluid">Dropdown component</button>
+        <div class="chi-dropdown__menu">
+          <a class="chi-dropdown__menu-item" href="#">Item 1</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 2</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 3</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+        </div>
+      </div>
+
+      <script>chi.dropdown(document.getElementById('dropdown-1'));</script>
+
+
 h3 Positioning
 .example.-mb--3
   .-p--3.-px-xl--10
