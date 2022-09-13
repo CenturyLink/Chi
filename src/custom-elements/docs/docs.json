@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-09-01T11:50:59",
+  "timestamp": "2022-09-12T23:04:53",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1686,6 +1686,22 @@
             }
           ],
           "optional": true,
+          "required": false
+        },
+        {
+          "name": "fluid",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "fluid",
+          "reflectToAttr": false,
+          "docs": "To render Dropdowns that span the full width of the parent container",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
           "required": false
         },
         {

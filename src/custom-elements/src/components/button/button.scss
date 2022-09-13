@@ -4,8 +4,10 @@
   display: inline-flex;
   vertical-align: middle;
 
-  &[fluid]:not(.-float) {
+  &[fluid]:not(.-float),
+  &.-fluid {
     width: 100%;
+
     &[center] {
       .-justify-content--center {
         justify-content: center;
