@@ -334,8 +334,8 @@ pipeline {
               }
             }
             steps {
-              env.NODE_OPTIONS="--max-old-space-size=1024"
               script {
+                env.NODE_OPTIONS="--max-old-space-size=1024"
                 dir('src/documentation') {
                   jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
                   if (isVersionBump() || env.BRANCH_NAME=='master') {
