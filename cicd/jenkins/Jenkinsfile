@@ -98,19 +98,6 @@ pipeline {
       DEPLOY_TAG_PATTERN =  /(.*##DEPLOYMENT##.*)/
     }
 
-
-    // Add parameters if needed or if deployment control is in place.
-    // parameters {
-    //      //https://www.jenkins.io/doc/book/pipeline/syntax/#parameters
-    //  text(name: 'GCR', defaultValue: '', description: 'Enter the GCR description. Only used in deployment to production stage.')
-    //  text(name: 'VERSION', defaultValue: '', description: 'Version to deploy. Only used in deployment to production stage.')
-    // }
-
-
-
-    // https://www.jenkins.io/doc/book/pipeline/syntax/#agent
-    //Add agent sections in stages/stage if needed.
-
     agent {
         label 'Docker-enabled'
     }
