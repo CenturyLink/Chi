@@ -96,6 +96,8 @@ pipeline {
       RC_TAG_PATTERN =  /(.*##RC##.*)/
       PROMOTE_TAG_PATTERN =  /(.*##PROMOTE##.*)/
       DEPLOY_TAG_PATTERN =  /(.*##DEPLOYMENT##.*)/
+      NODE_OPTIONS = "--max-old-space-size=1536"
+      GENERATE_SOURCEMAP = "false"
     }
 
     agent {
@@ -322,7 +324,6 @@ pipeline {
             }
             steps {
               script {
-                env.NODE_OPTIONS="--max-old-space-size=1024"
                 dir('src/documentation') {
                   jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
                   if (isVersionBump() || env.BRANCH_NAME=='master') {
@@ -369,37 +370,13 @@ pipeline {
             jslNpmWrapper('run sri')
             jslNpmWrapper('run cicd:build:post:sri')
             stash name: "DIST-CHI", includes: "dist/**"
-            echo "/dist"
-            sh "ls -la ${pwd()}/dist"
-            echo "/dist/components"
-            sh "ls -la ${pwd()}/dist/components"
+            echo "/dist & /dist/components"
+            sh """
+            ls -la ${pwd()}/dist
+            ls -la ${pwd()}/dist/components
+            """
             stash name: "NODEMODULES-CHI", includes: "node_modules/**"
             jslJiraSendBuildInfo()
-          }
-        }
-      }
-      stage ('Cleaning reports & test folders before testing') {
-        agent {
-          dockerfile {
-            filename 'Dockerfile'
-            dir 'cicd/docker/sonar-scanner'
-            label 'Docker-enabled'
-            args '-m 2G --shm-size=2gb'
-            // registryUrl DOCKER_REGISTRY
-            // registryCredentialsId DOCKER_CREDENTIALS
-          }
-        }
-        when {
-            allOf {
-              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-            }
-        }
-        steps {
-          script {
-            sh script: """
-              rm -rf reports test/bitmaps_test
-            """, label: "Cleaning reports & test folders"
           }
         }
       }
@@ -568,15 +545,6 @@ pipeline {
         }
       }
       stage('Coverage') {
-        agent {
-          dockerfile {
-            filename 'Dockerfile'
-            dir 'cicd/docker/sonar-scanner'
-            label 'Docker-enabled'
-            // registryUrl DOCKER_REGISTRY
-            // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
-          }
-        }
         when {
           beforeAgent true
           allOf {
@@ -635,12 +603,9 @@ pipeline {
       }
       stage('Quality Gate Check'){
         agent {
-          dockerfile {
-            filename 'Dockerfile'
-            dir 'cicd/docker/sonar-scanner'
+          docker {
+            image 'nexusprod.corp.intranet:4567/jsl-docker-standard-images/sonarqube_agent:latest'
             label 'Docker-enabled'
-            // registryUrl DOCKER_REGISTRY
-            // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
           }
         }
         when {
@@ -659,11 +624,10 @@ pipeline {
       }
       stage('QualityGate1') {
           agent {
-              dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/qualitygate'
+            docker {
+                image 'nexusprod.corp.intranet:4567/jsl-docker-standard-images/jira_agent:latest'
                 label 'Docker-enabled'
-              }
+            }
           }
           when {
               beforeAgent true
@@ -1032,12 +996,9 @@ PRDesc
       }
       stage('Adoption Stats') {
         agent {
-          dockerfile {
-            filename 'Dockerfile'
-            dir 'cicd/docker/jira'
-            label 'Docker-enabled'
-            // registryUrl DOCKER_REGISTRY
-            // registryCredentialsId DOCKER_LOGIN_CREDENTIALS
+          docker {
+              image 'nexusprod.corp.intranet:4567/jsl-docker-standard-images/jira_agent:latest'
+              label 'Docker-enabled'
           }
         }
         when {
