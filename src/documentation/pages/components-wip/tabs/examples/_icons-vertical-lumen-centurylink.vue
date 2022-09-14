@@ -3,12 +3,12 @@
     .-p--3(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'}`" slot="example")
       ul.chi-tabs.-vertical.-icons(:class="selectedTabId === 'base' ? '' : '-inverse'")
         li(:class="index === 0 ? '-active' : ''" v-for="(tab, index) in tabs")
-          a(href='#')
+          a(href='/components-wip/tabs/#')
             i.chi-icon.icon-atom(aria-hidden="true")
             span {{tab}}
           ul.chi-tabs__subtabs(v-if="index === 0")
             li(:class="subTabindex === 0 ? '-active' : ''" v-for="(subTab, subTabindex) in ['Subtab Link', 'Subtab Link', 'Subtab Link']")
-              a(href='#') {{subTab}}           
+              a(href='/components-wip/tabs/#') {{subTab}}           
     <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
       <pre class="language-html">
         <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code>

@@ -6,10 +6,10 @@
         .chi-divider.-mb--3
         ul.chi-tabs.-vertical(:class="size.class")
           li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
-            a(href="#") {{link.link}}
+            a(href="/components-wip/tabs/#") {{link.link}}
             ul.chi-tabs__subtabs(v-if="link.subLinks && link.subLinks.length")
               li(:class="sublinkIndex === 0 ? '-active' : ''" v-for="(sublink, sublinkIndex) in link.subLinks")
-                a(href='#') {{sublink}}
+                a(href='/components-wip/tabs/#') {{sublink}}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

@@ -5,22 +5,22 @@
       .chi-divider.-mb--2
       ul.chi-tabs.-xs
         li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
-          a(href='#') {{ link }}
+          a(href='/components-wip/tabs/#') {{ link }}
       p.-text--bold.-mt--6 Small
       .chi-divider.-mb--2
       ul.chi-tabs.-sm
         li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
-          a(href='#') {{ link }}
+          a(href='/components-wip/tabs/#') {{ link }}
       p.-text--bold.-mt--6 Medium (Base)
       .chi-divider.-mb--2
       ul.chi-tabs
         li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
-          a(href='#') {{ link }}
+          a(href='/components-wip/tabs/#') {{ link }}
       p.-text--bold.-mt--6 Large
       .chi-divider.-mb--2
       ul.chi-tabs.-lg
         li(:class="index === 0 ? '-active' : ''" v-for="(link, index) in tabLinks")
-          a(href='#') {{ link }}
+          a(href='/components-wip/tabs/#') {{ link }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

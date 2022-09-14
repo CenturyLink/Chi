@@ -19,14 +19,14 @@
         .chi-tabs-panel(:class="item === '1' ? '-active' : ''" :id="`vertical-flat-${headTab.id}-${item}`" :key="`vertical-flat-${headTab.id}-${item}`" v-for="item in headTab.tabItems" role="tabpanel")
           .-text Tab {{item}} content    
     <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
-      <pre class="language-html" slot="code-webcomponent">
+      <pre class="language-html">
         <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code>
       </pre>
     </Wrapper>
     <Wrapper v-for="tab in headTabs" :slot="`code-${exampleId}-${tab.id}-htmlblueprint`" :key="tab.id">
       <JSNeeded />
       <pre class="language-html">
-      <code v-highlight="tab.codeSnippets.htmlBlueprint.code" class="html"></code>
+        <code v-highlight="tab.codeSnippets.htmlBlueprint.code" class="html"></code>
       </pre>
     </Wrapper>
   </ComponentExample>
@@ -84,7 +84,7 @@ declare const chi: any;
           label: 'HTML blueprint',
         },
       ],
-      exampleId: 'vertical-lumen-centurylink',
+      exampleId: 'vertical-flat-lumen-centurylink',
       selectedTabId: 'base'
     }
   },
@@ -95,7 +95,7 @@ export default class VerticalFlatLumenCenturyLink extends Vue {
   inverseTab: any;
 
   _setCodeSnippets() {
-    this.$data.headTabs.forEach((headTab: any) => {
+    this.$data.headTabs.forEach((headTab: any, index: number) => {
       let tabLinks = '', tabConents = '';
       this.$data.tabs.forEach((tab: number, index: number) => {
         tabLinks += `\n  <li ${index === 0 ? 'class="-active"' : 'role="tab"'}>
@@ -107,8 +107,7 @@ export default class VerticalFlatLumenCenturyLink extends Vue {
       aria-controls="vertical-${headTab.id}${index === 0 ? '-active' : ''}">${index === 0 ? 'Active Tab' : 'Tab Link'}</a>\n  </li>`;
         tabConents += `\n<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="example__tabs_vertical_${headTab.id}-${tab}" role="tabpanel">\n  Tab ${tab} content\n</div>`
       });
-
-      headTab.codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example__tabs_vertical_${headTab.id}" role="tablist" aria-label="chi-tabs-vertical${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}\n</ul>\n${tabConents}\n\n<script>chi.tab(document.getElementById('example__tabs_vertical_${headTab.id}'));<\/script>`
+      this.$data.headTabs[index].codeSnippets.htmlBlueprint.code = `<ul class="chi-tabs${headTab.id === 'inverse' ? ' -inverse' : ''}" id="example__tabs_vertical_${headTab.id}" role="tablist" aria-label="chi-tabs-vertical${headTab.id === 'inverse' ? '-inverse' : ''}">${tabLinks}\n</ul>\n${tabConents}\n\n<script>chi.tab(document.getElementById('example__tabs_vertical_${headTab.id}'));<\/script>`
     })
   }
 

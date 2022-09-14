@@ -3,13 +3,13 @@
     .-bg--white.-p--3(slot="example")
       ul.chi-tabs.-vertical.-icons.-list
         li(v-for="(tab, index) in tabs" :key="index" :class="index === 0 ? '-active' : ''")
-          a.chi-tabs_item(href='#')
+          a.chi-tabs_item(href='/components-wip/tabs/#')
             i.chi-icon.icon-atom(aria-hidden="true")
             span.chi-tabs_item-title {{tab}}
             span.chi-tabs_item-text Tab description
           ul.chi-tabs__subtabs(v-if="tab.includes('Active')")
             li(v-for="(subTab, subTabIndex) in subTabs" :key="subTabIndex")
-              a.chi-tabs_item(href='#')
+              a.chi-tabs_item(href='/components-wip/tabs/#')
                 span.chi-tabs_item-title {{subTab}}
                 span.chi-tabs_item-text Subtab description
     <pre class="language-html" slot="code-webcomponent">

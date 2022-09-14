@@ -12,7 +12,7 @@
       :class='index === 0 ? "-active" : ""',
       v-for='(link, index) in tabLinks'
     )
-      a(:href='`?tab=${index + 1}`') {{ link }}
+      a(:href='`/components-wip/tabs?tab=${index + 1}`') {{ link }}
   <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code> 

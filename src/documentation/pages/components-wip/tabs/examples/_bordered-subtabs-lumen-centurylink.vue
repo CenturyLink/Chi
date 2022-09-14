@@ -4,7 +4,7 @@
       .-p--3(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'}`")
         ul.chi-tabs(:class="selectedTabId === 'base' ? '' : '-inverse'").-border
           li(:class="index === 0 ? '-active' : ''" v-for="(tab, index) in tabs")
-            a(href='#') {{tab}}
+            a(href='/components-wip/tabs/#') {{tab}}
     <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
       <pre class="language-html">
         <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code>

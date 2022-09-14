@@ -3,10 +3,10 @@
     .-p--3(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'}`" slot="example")
       ul.chi-tabs.-vertical(:class="selectedTabId === 'base' ? '' : '-inverse'")
         li(:class="index === 0 ? '-active' : ''" v-for="(tab, index) in tabs")
-          a(href='#') {{tab}}
+          a(href='/components-wip/tabs/#') {{tab}}
           ul.chi-tabs__subtabs(v-if="index === 0")
             li(:class="subTabindex === 0 ? '-active' : ''" v-for="(subTab, subTabindex) in subTabs")
-              a(href='#') {{subTab}}
+              a(href='/components-wip/tabs/#') {{subTab}}
     <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
       <pre class="language-html">
         <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code>

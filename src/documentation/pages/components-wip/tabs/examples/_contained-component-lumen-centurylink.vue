@@ -17,9 +17,9 @@
               a.chi-dropdown__menu-item(href='#exampleHashTarget' v-for="(elem, index) in activeElements" :index="index") {{ elem }}
           a.chi-dropdown__menu-item(href='#') Elem 4
       li
-        a(href='#exampleHashTarget') Tab Link
+        a(href='#exampleHashTarget' @click.prevent="() => {}") Tab Link
       li
-        a(href='#exampleHashTarget') Tab Link
+        a(href='#exampleHashTarget' @click.prevent="() => {}") Tab Link
       li.chi-dropdown
         a.chi-dropdown__trigger.-animate(href='#') Tab Link
         .chi-dropdown__menu

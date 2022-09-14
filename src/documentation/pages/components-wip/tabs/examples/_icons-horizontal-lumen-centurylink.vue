@@ -3,7 +3,7 @@
     .-px--3(:class="`-bg--${selectedTabId === 'base' ? 'white' : 'black'}`" slot="example")
       ul.chi-tabs.-icons(:class="selectedTabId === 'base' ? '' : '-inverse'" :ref="`example-icons-horizontal-${selectedTabId}`")
         li(:class="index === 0 ? '-active' : ''" v-for="(tab, index) in tabs")
-          a(href='#')
+          a(href='/components-wip/tabs/#')
             i.chi-icon.icon-atom(aria-hidden="true")
             span {{tab}}
     <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
