@@ -64,6 +64,8 @@
         ".test-bubble-dismissible-default",
         ".test-bubble-titled-default",
         ".test-bubble-actionable-default",
+        ".test-bubble-clickable-link-default",
+        ".test-bubble-clickable-button-default",
         ".test-bubble-sm",
         ".test-bubble-center-sm",
         ".test-bubble-dismissible-sm",
@@ -252,6 +254,29 @@
         ".test-undefined-md",
         ".test-undefined-lg",
         ".test-undefined-xl"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
+      "label": "carousel",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/custom-elements/carousel.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-base",
+        ".test-single",
+        ".test-dots",
+        ".test-pagination"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,

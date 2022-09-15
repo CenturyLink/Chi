@@ -1,210 +1,61 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs" additionalStyle="position: static;">
     chi-data-table-toolbar(slot="example")
       template(v-slot:start)
         chi-search-input(:data-table-search='true')
         .chi-divider.-vertical
         chi-data-table-views(:views='toolbar.viewsData')
         .chi-divider.-vertical
-        chi-data-table-filters.-ml--2(:filters-data='toolbar.filtersData', :custom-items='toolbar.customItemsData')
+        chi-data-table-filters(:filters-data='toolbar.filtersData', :custom-items='toolbar.customItemsData')
           template(v-slot:custom-one)
-            .chi-form__item
-              chi-label(for='input-1') City
-              chi-text-input#input-1
-              chi-label(for='input-2') Zip Code
-              chi-text-input#input-2
+            chi-label(for='example__base_filter_input-1') City
+            chi-text-input#example__base_filter_input-1
+            chi-label(for='example__base_filter_input-2') Zip Code
+            chi-text-input#example__base_filter_input-2
           template(v-slot:custom-two)
             chi-date-picker
       template(v-slot:end)
+        chi-tooltip(message="Refresh")
+          button.chi-button.-icon.-flat(aria-label="Refresh")
+            .chi-button__content
+              i.chi-icon.icon-refresh(aria-hidden="true")
+        chi-tooltip(message="Download")
+          button.chi-button.-icon.-flat(aria-label="Download")
+            .chi-button__content
+              i.chi-icon.icon-arrow-to-bottom(aria-hidden="true")
         chi-column-customization(:columns-data='toolbar.columnsData')
-    <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre>
+    pre(class="language-html" slot="code-webcomponent")
+      code(v-highlight="$data.codeSnippets.webcomponent" class="html")
     <Wrapper slot="code-vue">
       .chi-tab__description
         | Use the slots <code>start</code> to add elements to the left side area of the Toolbar Header and the <code>end</code> - to the right side.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.vue" class="html"></code>
-      </pre>
+      pre(class="language-html")
+        code(v-highlight="$data.codeSnippets.vue" class="html")
     </Wrapper>
     <Wrapper slot="code-htmlblueprint">
       .chi-tab__description
         | To render toolbar, use the class <code>chi-toolbar</code>.
-      <pre class="language-html">
-        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
+      pre(class="language-html")
+        code(v-highlight="$data.codeSnippets.htmlblueprint" class="html")
     </Wrapper>
   </ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-const customItems = [
-  {
-    template: 'custom-one',
-    label: 'Custom 1'
-  },
-  {
-    template: 'custom-two',
-    label: 'Custom 2'
-  }
-];
-const filters = [
-  {
-    name: 'status',
-    type: 'select',
-    id: 'myoption1',
-    label: 'Selector',
-    options: [
-      {
-        label: 'Active',
-        value: 'active'
-      },
-      {
-        label: 'Inactive',
-        value: 'inactive'
-      }
-    ],
-    value: 'active'
-  },
-  {
-    name: 'input',
-    placeholder: 'Input filter',
-    type: 'input',
-    value: '',
-    id: 'myoption2',
-    label: 'Input Filter'
-  },
-  {
-    name: 'checkbox',
-    type: 'checkbox',
-    checked: false,
-    id: 'myoption3',
-    label: 'Checkbox'
-  },
-  {
-    name: 'statusAdvanced',
-    label: 'Status',
-    type: 'select',
-    id: 'myoption4',
-    options: [
-      {
-        label: 'Active',
-        value: 'active',
-        selected: false
-      },
-      {
-        label: 'Inactive',
-        value: 'inactive',
-        selected: false
-      }
-    ],
-    advanced: true,
-    value: 'active'
-  },
-  {
-    name: 'inputAdvanced',
-    label: 'Label',
-    id: 'myoption5',
-    advanced: true
-  },
-  {
-    name: 'textareaAdvanced',
-    label: 'textarea',
-    id: 'myoption6',
-    type: 'textarea',
-    advanced: true
-  },
-  {
-    name: 'checkboxAdvanced',
-    id: 'myoption7',
-    label: 'Advanced Checkbox',
-    type: 'checkbox',
-    advanced: true
-  }
-];
-const columns = [
-  {
-    name: 'columnA',
-    label: 'Column A'
-  },
-  {
-    name: 'columnB',
-    label: 'Column B'
-  },
-  {
-    name: 'columnC',
-    label: 'Column C',
-    locked: true,
-    selected: true
-  },
-  {
-    name: 'columnD',
-    label: 'Column D',
-    locked: true,
-    selected: true
-  },
-  {
-    name: 'columnE',
-    label: 'Column E',
-    selected: true
-  },
-  {
-    name: 'columnF',
-    label: 'Column F',
-    selected: true
-  },
-  {
-    name: 'columnG',
-    label: 'Column G'
-  },
-  {
-    name: 'columnH',
-    label: 'Column H'
-  },
-  {
-    name: 'columnI',
-    label: 'Column I'
-  },
-  {
-    name: 'columnJ',
-    label: 'Column J'
-  }
-];
+import { exampleToolbar } from '../../../../fixtures/fixtures';
 
 @Component({
   data: () => {
     return {
-      toolbar: {
-        customItemsData: customItems,
-        filtersData: filters,
-        columnsData: {
-          columns: columns
-        },
-        viewsData: [
-          {
-            id: 'view-1',
-            label: 'View 1',
-            columns: columns,
-            searchString: 'abc',
-            filters: filters
-          },
-          {
-            id: 'view-2',
-            label: 'View 2',
-            columns: [],
-            searchString: 'abcde',
-            filters: []
-          }
-        ]
-      },
+      toolbar: exampleToolbar,
       exampleTabs: [
         {
           disabled: true,
           id: 'webcomponent',
           label: 'Web component'
         },
+
         {
           active: true,
           id: 'vue',
@@ -217,7 +68,7 @@ const columns = [
       ],
       codeSnippets: {
         webcomponent: ``,
-        vue: `<!-- Vue component -->
+        vue: `<!-- Vue component -->
 <ChiDataTableToolbar>
   <template v-slot:start>
     <ChiSearchInput :dataTableSearch="true" />
@@ -229,10 +80,10 @@ const columns = [
     <ChiDataTableFilters :filtersData="toolbar.filtersData" :customItems="toolbar.customItemsData" class="-ml--2">
       <template v-slot:customAdvanced>
         <div class="chi-form__item">
-          <chi-label for="input-1">City</chi-label>
-          <chi-text-input id="input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
-          <chi-label for="input-2">Zip Code</chi-label>
-          <chi-text-input id="input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
+          <chi-label for="example__base_filter_input-1">City</chi-label>
+          <chi-text-input id="example__base_filter_input-1" @chiChange="e => inputOneChangeHandler(e)"></chi-text-input>
+          <chi-label for="example__base_filter_input-2">Zip Code</chi-label>
+          <chi-text-input id="example__base_filter_input-2" @chiChange="e => inputTwoChangeHandler(e)"></chi-text-input>
         </div>
       </template>
       <template v-slot:customAdvanced2>
@@ -241,12 +92,26 @@ const columns = [
     </ChiDataTableFilters>
   </template>
   <template v-slot:end>
+    <ChiTooltip message="Refresh">
+      <button class="chi-button -icon -flat" aria-label="Refresh">
+        <div class="chi-button__content">
+          <i class="chi-icon icon-refresh" aria-hidden="true"></i>
+        </div>
+      </button>
+    </ChiTooltip>
+    <ChiTooltip message="Download">
+      <button class="chi-button -icon -flat" aria-label="Download">
+        <div class="chi-button__content">
+          <i class="chi-icon icon-arrow-to-bottom" aria-hidden="true"></i>
+        </div>
+      </button>
+    </ChiTooltip>
     <!-- To enable customization of columns, use Column Customization sub-module of Toolbar by providing it with respective data -->
     <ChiColumnCustomization :columnsData="toolbar.columnsData" />
   </template>
 </ChiDataTableToolbar>
 
-<!-- Example Data -->
+<!-- Example Data -->
 data: () => {
   const customItems = [
     {
@@ -263,75 +128,73 @@ data: () => {
       name: 'status',
       type: 'select',
       id: 'myoption1',
-      label: 'Selector',
       options: [
+        {
+          label: 'Pending Active',
+          value: 'pending',
+          selected: true
+        },
         {
           label: 'Active',
           value: 'active',
+          selected: false
         },
         {
           label: 'Inactive',
           value: 'inactive',
-        },
+          selected: false
+        }
       ],
-      value: 'active',
-    },
-    {
-      name: 'input',
-      placeholder: 'Input filter',
-      type: 'input',
-      value: '',
-      id: 'myoption2',
-      label: 'Input Filter',
-    },
-    {
-      name: 'checkbox',
-      type: 'checkbox',
-      checked: false,
-      id: 'myoption3',
-      label: 'Checkbox',
+      advanced: false,
+      value: 'pending'
     },
     {
       name: 'statusAdvanced',
       label: 'Status',
       type: 'select',
-      id: 'myoption4',
+      id: 'myoption1',
       options: [
+        {
+          label: 'Pending Active',
+          value: 'pending',
+          selected: false
+        },
         {
           label: 'Active',
           value: 'active',
-          selected: false,
+          selected: false
         },
         {
           label: 'Inactive',
           value: 'inactive',
-          selected: false,
-        },
+          selected: false
+        }
       ],
       advanced: true,
-      value: 'active',
+      value: 'pending'
     },
     {
       name: 'inputAdvanced',
       label: 'Label',
-      id: 'myoption5',
-      advanced: true,
+      id: 'myoption2',
+      advanced: true
     },
     {
       name: 'textareaAdvanced',
       label: 'textarea',
-      id: 'myoption6',
+      id: 'myoption3',
       type: 'textarea',
-      advanced: true,
+      advanced: true
     },
     {
       name: 'checkboxAdvanced',
-      id: 'myoption7',
+      id: 'myoption4',
       label: 'Advanced Checkbox',
       type: 'checkbox',
-      advanced: true,
-    },
+      advanced: true
+    }
   ];
+
   const columns = [
     {
       name: 'columnA',
@@ -381,7 +244,7 @@ data: () => {
     },
   ];
 
-  return {
+  return {
     toolbar: {
       customItemsData: customItems,
       filtersData: filters,
@@ -412,14 +275,14 @@ data: () => {
     <div class="chi-toolbar__start">
       <div class="chi-toolbar__search">
         <div class="chi-form__item">
-            <chi-search-input id="example__base"></chi-search-input>
+          <chi-search-input id="example__base"></chi-search-input>
         </div>
       </div>
       <div class="chi-divider -vertical"></div>
       <div class="chi-toolbar__views">
         <div class="chi-toolbar__views-desktop">
           <div class="chi-form__item">
-            <select class="chi-select" id="example-views-1">
+            <select class="chi-select" id="example__base_views-1">
               <option>View 1</option>
               <option>View 2</option>
             </select>
@@ -427,10 +290,17 @@ data: () => {
         </div>
       </div>
       <div class="chi-divider -vertical"></div>
+      <div class="chi-form__item -ml--1>
+        <select class="chi-select">
+          <option>Pending Active</option>
+          <option>Active</option>
+          <option>Inactive</option>
+        </select>
+      </div>
       <div class="chi-toolbar__filters">
         <div class="chi-toolbar__filters-desktop">
           <div class="chi-form__item">
-            <select class="chi-select" id="example-ba1">
+            <select class="chi-select" id="example__base_filter-select-1">
               <option value="">Select</option>
               <option>Option 1</option>
               <option>Option 2</option>
@@ -438,21 +308,21 @@ data: () => {
             </select>
           </div>
           <div class="chi-form__item">
-            <select class="chi-select" id="example-ba2">
+            <select class="chi-select" id="example__base_filter-select-2">
               <option value="">Select</option>
               <option>Option 1</option>
               <option>Option 2</option>
               <option>Option 3</option>
             </select>
           </div>
-          <button class="chi-button -icon -flat" id="button-b-filters" aria-label="Filters" data-tooltip="Filters" data-position="top">
+          <button class="chi-button -icon -flat" id="example__base_filter_button" aria-label="Filters" data-tooltip="Filters" data-position="top">
             <div class="chi-button__content">
               <i class="chi-icon icon-filter" aria-hidden="true"></i>
             </div>
           </button>
         </div>
         <div class="chi-toolbar__filters-mobile">
-          <button class="chi-button -icon -flat chi-drawer__trigger" id="drawer-trigger-b1" data-target="#drawer-1" aria-label="Button action">
+          <button class="chi-button -icon -flat chi-drawer__trigger" id="example__base_drawer_trigger-1" data-target="#example__base_drawer-1" aria-label="Button action">
             <div class="chi-button__content">
               <i class="chi-icon icon-filter" aria-hidden="true"></i>
             </div>
@@ -463,24 +333,24 @@ data: () => {
     <div class="chi-toolbar__end">
       <div class="chi-toolbar__actions">
         <div class="chi-toolbar__actions-desktop">
-          <button class="chi-button -icon -flat" id="button-b-download" aria-label="Download" data-tooltip="Download" data-position="top">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-arrow-to-bottom" aria-hidden="true"></i>
-            </div>
-          </button>
-          <button class="chi-button -icon -flat" id="button-b-refresh" aria-label="Refresh" data-tooltip="Refresh" data-position="top">
+          <button class="chi-button -icon -flat" id="example__base_refresh_button" aria-label="Refresh" data-tooltip="Refresh" data-position="top">
             <div class="chi-button__content">
               <i class="chi-icon icon-refresh" aria-hidden="true"></i>
             </div>
           </button>
-          <button class="chi-button -icon -flat" id="button-b-column-customization" aria-label="Column Customization" data-tooltip="Column Customization" data-position="top">
+          <button class="chi-button -icon -flat" id="example__base_download_button" aria-label="Download" data-tooltip="Download" data-position="top">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-arrow-to-bottom" aria-hidden="true"></i>
+            </div>
+          </button>
+          <button class="chi-button -icon -flat" id="example__base_column_customization_button" aria-label="Column Customization" data-tooltip="Column Customization" data-position="top">
             <div class="chi-button__content">
               <i class="chi-icon icon-table-column-settings" aria-hidden="true"></i>
             </div>
           </button>
         </div>
         <div class="chi-toolbar__actions-mobile">
-          <button class="chi-button -icon -flat chi-drawer__trigger" id="drawer-trigger-b2" data-target="#drawer-2" aria-label="Button action">
+          <button class="chi-button -icon -flat chi-drawer__trigger" id="example__base_drawer_trigger-2" data-target="#example__base_drawer-2" aria-label="Button action">
             <div class="chi-button__content">
               <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
             </div>
@@ -494,7 +364,7 @@ data: () => {
 <!-- Drawer -->
 <div class="chi-backdrop -closed">
   <div class="chi-backdrop__wrapper">
-    <div class="chi-drawer -left -menu -position--absolute" id="drawer-1">
+    <div class="chi-drawer -left -menu -position--absolute" id="example__base_drawer-1">
       <div class="chi-drawer__header">
         <span class="chi-drawer__title">Filters</span>
         <button class="chi-button -icon -close" aria-label="Close">
@@ -505,8 +375,8 @@ data: () => {
       </div>
       <div class="chi-drawer__content -px--2 -py--3">
         <div class="chi-form__item -mb--2">
-          <label class="chi-label" for="example-ba11">Label</label>
-          <select class="chi-select" id="example-ba11">
+          <label class="chi-label" for="example__base_drawer-1_label-1">Label</label>
+          <select class="chi-select" id="example__base_drawer-1_select-1">
             <option value="">Select</option>
             <option>Option 1</option>
             <option>Option 2</option>
@@ -514,8 +384,8 @@ data: () => {
           </select>
         </div>
         <div class="chi-form__item -mb--2">
-          <label class="chi-label" for="example-ba12">Label</label>
-          <select class="chi-select" id="example-ba12">
+          <label class="chi-label" for="example__base_drawer-1_label-2">Label</label>
+          <select class="chi-select" id="example__base_drawer-1_select-2">
             <option value="">Select</option>
             <option>Option 1</option>
             <option>Option 2</option>
@@ -523,8 +393,8 @@ data: () => {
           </select>
         </div>
         <div class="chi-form__item -mb--2">
-          <label class="chi-label" for="example-ba13">Label</label>
-          <select class="chi-select" id="example-ba13">
+          <label class="chi-label" for="example__base_drawer-1_label-3">Label</label>
+          <select class="chi-select" id="example__base_drawer-1_select-3">
             <option value="">Select</option>
             <option>Option 1</option>
             <option>Option 2</option>
@@ -532,8 +402,8 @@ data: () => {
           </select>
         </div>
         <div class="chi-form__item -mb--2">
-          <label class="chi-label" for="example-ba14">Label</label>
-          <select class="chi-select" id="example-ba14">
+          <label class="chi-label" for="example__base_drawer-1_label-4">Label</label>
+          <select class="chi-select" id="example__base_drawer-1_select-4">
             <option value="">Select</option>
             <option>Option 1</option>
             <option>Option 2</option>
@@ -550,7 +420,7 @@ data: () => {
 </div>
 <div class="chi-backdrop -closed">
   <div class="chi-backdrop__wrapper">
-    <div class="chi-drawer -right -menu -position--absolute" id="drawer-2">
+    <div class="chi-drawer -right -menu -position--absolute" id="example__base_drawer-2">
       <div class="chi-drawer__header">
         <span class="chi-drawer__title">Actions</span>
         <button class="chi-button -icon -close" aria-label="Close">
@@ -573,8 +443,8 @@ data: () => {
 
 <!-- Javascript -->
 <script>
-  chi.drawer(document.getElementById('drawer-trigger-b1'));
-  chi.drawer(document.getElementById('drawer-trigger-b2'));
+  chi.drawer(document.getElementById('example__base_drawer_trigger-1'));
+  chi.drawer(document.getElementById('example__base_drawer_trigger-2'));
   chi.tooltip(document.querySelectorAll('[data-tooltip]'));
 <\/script>`
       }

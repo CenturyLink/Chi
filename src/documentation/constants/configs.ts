@@ -1,2 +1,2 @@
 export const DEFAULT_THEME = 'lumen';
-export const CHI_VERSION = '5.19.0';
+export const CHI_VERSION = '5.20.1';

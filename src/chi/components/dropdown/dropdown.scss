@@ -5,6 +5,14 @@
   display: inline-block;
   position: relative;
 
+  &.-fluid {
+    width: 100%;
+
+    .chi-dropdown__trigger {
+      justify-content: space-between;
+    }
+  }
+
   .chi-dropdown__menu {
     left: 0;
     min-width: 100%;

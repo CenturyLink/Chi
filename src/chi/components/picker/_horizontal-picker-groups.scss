@@ -73,11 +73,12 @@ $sizes: (
           display: flex;
           font-size: $picker-group-md-font-size;
           font-weight: $font-weight-semi-bold;
-          justify-content: space-between;
+          justify-content: center;
           line-height: $picker-group-md-line-height;
           margin-bottom: 0;
           min-height: $picker-group-md-min-height;
           padding: $picker-group-md-padding;
+          text-align: center;
           transition: border-color 0.2s, box-shadow 0.2s;
 
           @each $type in map-keys($sizes) {
