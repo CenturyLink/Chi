@@ -9,6 +9,7 @@ import {
   PORTAL_CLASS,
   UTILITY_CLASSES,
   GENERIC_SIZE_CLASSES,
+  GENERIC_SIZES,
 } from '@/constants/classes';
 import { DataTableCustomItem, DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
@@ -18,7 +19,6 @@ import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
 import { getModule } from 'vuex-module-decorators';
 import store from '@/store/index';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
-import { detectMajorChiVersion } from '@/utils/utils';
 import AdvancedFiltersPopoverFooter from './AdvancedFiltersPopoverFooter.vue';
 
 Vue.config.ignoredElements = [
@@ -152,9 +152,7 @@ export default class AdvancedFilters extends Vue {
           aria-label={`Filter by ${filter.label || filter.name}`}
           id={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
           value={this.filterElementValueLive[filter.id]}
-          class={`${SELECT_CLASSES.SELECT} ${this.mobile ? '-mb--1' : ''} ${
-            this._chiMajorVersion === 4 ? `${GENERIC_SIZE_CLASSES.LG} ${PORTAL_CLASS}` : ''
-          }`}
+          class={`${SELECT_CLASSES.SELECT} ${this.mobile ? UTILITY_CLASSES.MARGIN.BOTTOM[1] : ''}`}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select')}>
           {options}
@@ -200,9 +198,7 @@ export default class AdvancedFilters extends Vue {
         <input
           aria-label={`Filter by ${filter.label || filter.name}`}
           id={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
-          class={`${INPUT_CLASSES.INPUT} ${this.mobile && '-mb--1'} ${
-            this._chiMajorVersion === 4 ? GENERIC_SIZE_CLASSES.LG : ''
-          }`}
+          class={`${INPUT_CLASSES.INPUT} ${this.mobile && UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'input')}
           placeholder={filter.placeholder || null}
@@ -226,9 +222,7 @@ export default class AdvancedFilters extends Vue {
           value={this.filterElementValueLive[filter.id]}
           aria-label={`Filter by ${filter.label || filter.name}`}
           data-filter={filter.name}
-          class={`${INPUT_CLASSES.INPUT} ${this.mobile && '-mb--1'} ${
-            this._chiMajorVersion === 4 ? GENERIC_SIZE_CLASSES.LG : ''
-          }`}
+          class={`${INPUT_CLASSES.INPUT} ${this.mobile && UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}
           placeholder={filter.placeholder || null}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'textarea')}
         />
@@ -246,14 +240,16 @@ export default class AdvancedFilters extends Vue {
         <div
           class={[
             CHECKBOX_CLASSES.checkbox,
-            this.mobile ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} -mb--1` : UTILITY_CLASSES.ALIGN_SELF.CENTER,
+            this.mobile
+              ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`
+              : UTILITY_CLASSES.ALIGN_SELF.CENTER,
           ]}>
           <input
             id={this.mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
             aria-label={`Filter by ${filter.label || filter.name}`}
             data-filter={filter.name}
             type="checkbox"
-            class={`${CHECKBOX_CLASSES.INPUT} ${this.mobile && '-mb--1'}`}
+            class={`${CHECKBOX_CLASSES.INPUT} ${this.mobile && UTILITY_CLASSES.MARGIN.BOTTOM[1]}`}
             checked={this.filterElementValueLive[filter.id]}
             onChange={(ev: Event) => this._changeFormElementFilter(ev, 'checkbox')}
           />
@@ -263,10 +259,6 @@ export default class AdvancedFilters extends Vue {
         </div>
       </div>
     );
-  }
-
-  beforeMount() {
-    this._chiMajorVersion = detectMajorChiVersion();
   }
 
   beforeDestroy() {
@@ -303,12 +295,12 @@ export default class AdvancedFilters extends Vue {
           filter.type === 'select'
             ? this._createSelectFilter(filter)
             : filter.type === 'input'
-            ? this._createInputFilter(filter)
-            : filter.type === 'checkbox'
-            ? this._createCheckboxFilter(filter)
-            : filter.type === 'textarea'
-            ? this._createTextareaFilter(filter)
-            : null;
+              ? this._createInputFilter(filter)
+              : filter.type === 'checkbox'
+                ? this._createCheckboxFilter(filter)
+                : filter.type === 'textarea'
+                  ? this._createTextareaFilter(filter)
+                  : null;
 
         if (filterElement) {
           const accordionItem = (
@@ -334,7 +326,7 @@ export default class AdvancedFilters extends Vue {
           ${BUTTON_CLASSES.BUTTON}
           ${BUTTON_CLASSES.ICON_BUTTON}
           ${BUTTON_CLASSES.FLAT}
-          ${this._chiMajorVersion === 4 ? `${PORTAL_CLASS} ${BUTTON_CLASSES.PRIMARY}` : ''}`}>
+          `}>
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-filter`} aria-hidden="true" />
         </div>
@@ -366,8 +358,7 @@ export default class AdvancedFilters extends Vue {
             position="bottom"
             reference={`#${this._advancedFilterButtonId}`}
             title="Filters"
-            portal={this._chiMajorVersion === 4}
-            modal={this._chiMajorVersion === 5}
+            modal
             drag
             closable>
             <button
@@ -376,7 +367,7 @@ export default class AdvancedFilters extends Vue {
               {this.isExpanded ? 'Collapse All' : 'Expand All'}
             </button>
             <div
-              class={`${ACCORDION_CLASSES.ACCORDION} ${this._chiMajorVersion === 4 ? PORTAL_CLASS : ''} -sm`}
+              class={`${ACCORDION_CLASSES.ACCORDION} ${GENERIC_SIZES.SM}`}
               ref="advancedFiltersAccordion">
               {advancedFilters}
             </div>
