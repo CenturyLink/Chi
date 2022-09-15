@@ -83,7 +83,7 @@ export default class BasePortal extends Vue {
   }
 
   beforeDestroy() {
-    this.tab.dispose();
+    this.tab?.dispose();
   }
 }
 </script>

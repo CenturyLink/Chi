@@ -106,7 +106,7 @@ export default class IconsHorizontalLumenCenturyLink extends Vue {
   }
 
   beforeDestroy() {
-    this.tab.dispose();
+    this.tab?.dispose();
   }
 }
 </script>

@@ -105,7 +105,7 @@ export default class ContainedComponentLumenCenturyLink extends Vue {
   }
 
   beforeDestroy() {
-    this.navigation.dispose();
+    this.navigation?.dispose();
   }
 }
 </script>

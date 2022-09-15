@@ -105,8 +105,8 @@ export default class TabbedNavigationSolidLumenCenturyLink extends Vue {
   }
 
   beforeDestroy() {
-    this.navigation.dispose();
-    this.dropdown.dispose();
+    this.navigation?.dispose();
+    this.dropdown?.dispose();
   }
 }
 </script>

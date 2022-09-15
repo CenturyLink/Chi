@@ -122,7 +122,7 @@ export default class Horizontal extends Vue {
   }
 
   beforeDestroy() {
-    this.tab.dispose();
+    this.tab?.dispose();
   }
 }
 </script>

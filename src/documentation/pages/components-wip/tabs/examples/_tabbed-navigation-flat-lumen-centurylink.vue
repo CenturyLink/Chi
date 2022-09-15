@@ -103,7 +103,7 @@ export default class TabbedNavigationFlatLumenCenturyLink extends Vue {
   }
 
   beforeDestroy() {
-    this.navigation.dispose();
+    this.navigation?.dispose();
   }
 }
 </script>

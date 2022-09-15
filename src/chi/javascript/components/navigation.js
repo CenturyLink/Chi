@@ -170,7 +170,7 @@ class Navigation extends Component {
   dispose () {
     this._tabComponent.dispose();
     this._dropdowns.forEach(function(dropdown) {
-      dropdown.dispose();
+      if (dropdown) { dropdown.dispose() };
     });
     if (this._overflowMenu) {
       this._overflowMenu.dispose();

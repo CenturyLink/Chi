@@ -83,7 +83,7 @@ export default class BorderedPortal extends Vue {
   }
 
   beforeDestroy() {
-    this.tab.dispose();
+    this.tab?.dispose();
   }
 }
 </script>

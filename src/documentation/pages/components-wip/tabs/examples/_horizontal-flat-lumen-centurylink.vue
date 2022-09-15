@@ -123,8 +123,8 @@ export default class HorizontalFlatLumenCenturyLink extends Vue {
   }
 
   beforeDestroy() {
-    this.baseTab.dispose();
-    this.inverseTab.dispose();
+    this.baseTab?.dispose();
+    this.inverseTab?.dispose();
   }
 }
 </script>

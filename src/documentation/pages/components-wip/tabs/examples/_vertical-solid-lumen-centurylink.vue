@@ -53,43 +53,17 @@ declare const chi: any;
 export default class VerticalSolidLumenCenturyLink extends Vue {
   tab: any;
   _setCodeSnippets() {
-    this.$data.exampleTabs[1].codeSnippet = `<ul class="chi-tabs -vertical -solid -xl" id="example-portal-vertical-solid" role="tablist" aria-label="chi-tabs-portal-vertical-solid">
-  <li class="-active">
+    let tabLinks = '', tabConents = '';
+    this.$data.tabs.forEach((tab: number, index: number) => {
+      tabLinks += `\n  <li${index === 0 ? ' class="-active"' : ''}>
     <a
-      href="#portal-vertical-solid-1"
+      href="#portal-vertical-solid-${tab}"
       role="tab"
-      aria-selected="true"
-      aria-controls="portal-vertical-solid-1">Active Tab</a>
-  </li>
-  <li>
-    <a
-      href="#portal-vertical-solid-2"
-      role="tab"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="portal-vertical-solid-2">Tab Link</a>
-  </li>
-  <li>
-    <a
-      href="#portal-vertical-solid-3"
-      role="tab"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="portal-vertical-solid-3">Tab Link</a>
-  </li>
-</ul>
-
-<div class="chi-tabs-panel -active" id="portal-vertical-solid-1" role="tabpanel">
-  Tab 1 content
-</div>
-<div class="chi-tabs-panel" id="portal-vertical-solid-2" role="tabpanel">
-  Tab 2 content
-</div>
-<div class="chi-tabs-panel" id="portal-vertical-solid-3" role="tabpanel">
-  Tab 3 content
-</div>
-
-<script>chi.tab(document.getElementById('example-portal-vertical-solid'));<\/script>`;
+      aria-selected="${index === 0 ? 'true' : 'false'}"
+      aria-controls="portal-vertical-solid-${tab}">${index === 0 ? 'Active Tab' : 'Tab Link'}</a>\n  </li>`;
+      tabConents += `\n<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="portal-vertical-solid-${tab}" role="tabpanel">\n  Tab ${tab} content\n</div>`
+      });
+    this.$data.exampleTabs[1].codeSnippet = `<ul class="chi-tabs -vertical -solid -xl" id="example-portal-vertical-solid" role="tablist" aria-label="chi-tabs-portal-vertical-solid">${tabLinks}\n</ul>\n${tabConents}\n\n<script>chi.tab(document.getElementById('example-portal-vertical-solid'));<\/script>`;
   }
 
   created() {
@@ -101,7 +75,7 @@ export default class VerticalSolidLumenCenturyLink extends Vue {
   }
 
   beforeDestroy() {
-    this.tab.dispose();
+    this.tab?.dispose();
   }
 }
 </script>

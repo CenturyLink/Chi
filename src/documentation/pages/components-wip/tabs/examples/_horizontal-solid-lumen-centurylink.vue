@@ -55,35 +55,16 @@ declare const chi: any;
 export default class HorizontalSolidLumenCenturyLink extends Vue {
   tab: any
   _setCodeSnippets() {
-    this.$data.exampleTabs[1].codeSnippet = `<ul class="chi-tabs -solid -lg -border" id="example-horizontal-solid-bordered" role="tablist" aria-label="chi-tabs-horizontal">
-  <li class="-active">
-    <a
-      href="#horizontal-solid-bordered-1"
+    let tabLinks = '', tabConents = '';
+    this.$data.tabs.forEach((tab: string, index: number) => {
+        tabLinks += `\n  <li${index === 0 ? ' class="-active"' : ''}>\n    <a
+      href="#horizontal-solid-bordered-${tab}"
       role="tab"
-      aria-selected="true"
-      aria-controls="horizontal-solid-bordered-1">Active Tab</a>
-  </li>
-  <li role="tab">
-    <a
-      href="#horizontal-solid-bordered-2"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="horizontal-solid-bordered-2">Tab Link</a>
-  </li>
-  <li role="tab">
-    <a
-      href="#horizontal-solid-bordered-3"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="horizontal-solid-bordered-3">Tab Link</a>
-  </li>
-</ul>
-
-<div class="chi-tabs-panel -active" id="horizontal-solid-bordered-1" role="tabpanel">Tab 1 content</div>
-<div class="chi-tabs-panel" id="horizontal-solid-bordered-2" role="tabpanel">Tab 2 content</div>
-<div class="chi-tabs-panel" id="horizontal-solid-bordered-3" role="tabpanel">Tab 3 content</div>
-
-<script>chi.tab(document.getElementById('example-horizontal-solid-bordered'));<\/script>`;
+      aria-selected="${index === 0 ? 'true' : 'false'}"
+      aria-controls="horizontal-solid-bordered-${tab}">${index === 0 ? 'Active Tab' : 'Tab Link'}</a>\n  </li>`;
+        tabConents += `\n<div class="chi-tabs-panel${index === 0 ? ' -active' : ''}" id="horizontal-solid-bordered-${tab}" role="tabpanel">Tab ${tab} content</div>`
+      });
+    this.$data.exampleTabs[1].codeSnippet = `<ul class="chi-tabs -solid -lg -border" id="example-horizontal-solid-bordered" role="tablist" aria-label="chi-tabs-horizontal">${tabLinks}\n</ul>\n${tabConents}\n\n<script>chi.tab(document.getElementById('example-horizontal-solid-bordered'));<\/script>`;
   }
 
   mounted() {
@@ -95,7 +76,7 @@ export default class HorizontalSolidLumenCenturyLink extends Vue {
   }
 
   beforeDestroy() {
-    this.tab.dispose();
+    this.tab?.dispose();
   }
 }
 </script>
