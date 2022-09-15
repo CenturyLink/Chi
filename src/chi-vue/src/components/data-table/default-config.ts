@@ -27,4 +27,5 @@ export const defaultConfig: DataTableConfig = {
     isNestedContentPrintDisabled: false,
   },
   treeSelection: true,
+  cellWrapping: false,
 };

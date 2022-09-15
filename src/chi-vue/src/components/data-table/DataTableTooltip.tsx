@@ -7,6 +7,7 @@ import { UTILITY_CLASSES } from '@/constants/classes';
 export default class DataTableTooltip extends Vue {
   @Prop() msg!: string;
   @Prop() header?: boolean;
+  @Prop() wrapText?: boolean;
 
   tooltip = false;
 
@@ -22,23 +23,18 @@ export default class DataTableTooltip extends Vue {
 
   _isTruncated() {
     const wrapper = this.$refs.wrapper as HTMLElement;
-    const wrapperClone = wrapper.cloneNode(true) as HTMLElement;
-
-    wrapperClone.style.display = 'inline';
-    wrapperClone.style.width = 'auto';
-    wrapperClone.style.visibility = 'hidden';
-    wrapperClone.style.overflow = 'visible';
-
-    wrapper.parentNode?.appendChild(wrapperClone);
-
-    const isTruncated = wrapperClone.offsetWidth > wrapper.offsetWidth;
-
-    wrapperClone.parentNode?.removeChild(wrapperClone);
+    const isTruncated = wrapper.scrollHeight > wrapper.clientHeight || wrapper.scrollWidth > wrapper.clientWidth;
 
     return isTruncated;
   }
 
   render() {
+    const content = (
+      <div class={this.wrapText ? '-wrap-cells' : UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} ref="wrapper">
+        {this.msg}
+      </div>
+    );
+
     return (
       <div
         onMouseenter={() => this.onShow()}
@@ -46,17 +42,7 @@ export default class DataTableTooltip extends Vue {
         onMouseleave={() => this.onHide()}
         onBlur={() => this.onHide()}
         style={`max-width: fit-content; width: ${this.$props.header ? 'calc(100% - 20px)' : '100%'};`}>
-        {!this.tooltip ? (
-          <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} ref="wrapper">
-            {this.msg}
-          </div>
-        ) : (
-          <Tooltip message={this.msg}>
-            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} ref="wrapper">
-              {this.msg}
-            </div>
-          </Tooltip>
-        )}
+        {!this.tooltip ? content : <Tooltip message={this.msg}>{content}</Tooltip>}
       </div>
     );
   }
