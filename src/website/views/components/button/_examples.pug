@@ -208,8 +208,7 @@ h2 Examples
     | Use Fluid buttons to stretch the full width of the parent container.
   .example.-mb--3
     .-p--3
-      button(class=`chi-button -fluid -mb--2`) Button
-      button(class=`chi-button -fluid -justify-content--center`) Button
+      button(class=`chi-button -fluid`) Button
     .example-tabs.-pl--2
       ul.chi-tabs#examples-fluid
         li.-active
@@ -218,18 +217,10 @@ h2 Examples
           a(href=`#html-fluid`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-fluid
       :code(lang="html")
-        <!-- left aligned content -->
         <chi-button fluid>Button</chi-button>
-
-        <!-- center aligned content -->
-        <chi-button fluid center>Button</chi-button>
     .chi-tabs-panel#html-fluid
       :code(lang="html")
-        <!-- left aligned content -->
         <button class="chi-button -fluid">Button</button>
-
-        <!-- center aligned content -->
-        <button class="chi-button -fluid -justify-content--center">Button</button>
 
 .-portal--show.-brightspeed--show
   p.-text
@@ -317,8 +308,8 @@ h2 Examples
     | Use Fluid buttons to stretch the full width of the parent container.
   .example.-mb--3
     .-p--3
-      button(class=`chi-button -primary -fluid -justify-content--center -mb--2`) Primary
-      button(class=`chi-button -fluid -justify-content--center`) Secondary
+      button(class=`chi-button -primary -fluid -mb--2`) Primary
+      button(class=`chi-button -fluid`) Secondary
     .example-tabs.-pl--2
       ul.chi-tabs#examples-portal-fluid
         li.-active
@@ -327,12 +318,12 @@ h2 Examples
           a(href=`#html-portal-fluid`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-portal-fluid
       :code(lang="html")
-        <chi-button color="primary" fluid center>Primary</chi-button>
-        <chi-button color="primary" variant="outline" fluid center>Secondary</chi-button>
+        <chi-button color="primary" fluid>Primary</chi-button>
+        <chi-button color="primary" variant="outline" fluid>Secondary</chi-button>
     .chi-tabs-panel#html-portal-fluid
       :code(lang="html")
-        <button class="chi-button -primary -fluid -justify-content--center">Primary</button>
-        <button class="chi-button -fluid -justify-content--center">Secondary</button>
+        <button class="chi-button -primary -fluid">Primary</button>
+        <button class="chi-button -fluid">Secondary</button>
 
 .-portal--hide
   h2 Icon buttons
