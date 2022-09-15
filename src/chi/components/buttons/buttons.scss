@@ -222,6 +222,7 @@ $sizes: (
     align-items: center;
     display: inline-flex;
     justify-content: center;
+    width: 100%;
 
     & > :not(:last-child) {
       margin-right: 0.5rem;
@@ -317,7 +318,12 @@ $sizes: (
   }
 
   &.-fluid:not(.-float) {
+    justify-content: center;
     width: 100%;
+
+    &.chi-dropdown__trigger {
+      justify-content: space-between;
+    }
   }
 
   &.-uppercase {
@@ -417,9 +423,12 @@ $sizes: (
       box-shadow: none;
       color: $button-flat-hover-text-color;
 
-      .chi-icon {
-        color: inherit;
-        opacity: $button-flat-hover-icon-opacity;
+      .chi-button__content {
+        & > .chi-icon,
+        & > chi-icon .chi-icon { // sass-lint:disable-line force-element-nesting
+          color: inherit;
+          opacity: $button-flat-hover-icon-opacity;
+        }
       }
 
       @each $type in map-keys($sizes) {

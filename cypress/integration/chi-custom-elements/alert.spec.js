@@ -23,6 +23,8 @@ describe('Alert', () => {
     'alert-bubble-dismissible-success-default',
     'alert-bubble-titled-success-default',
     'alert-bubble-actionable-success-default',
+    'alert-bubble-clickable-link-success-default',
+    'alert-bubble-clickable-button-success-default',
     'alert-bubble-success-sm',
     'alert-bubble-center-success-sm',
     'alert-bubble-dismissible-success-sm',
