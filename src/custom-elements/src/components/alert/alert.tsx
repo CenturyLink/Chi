@@ -56,6 +56,8 @@ export class Alert {
 
   @State() alertActions: boolean;
 
+  @State() alertClickableIcon: boolean;
+
   private mutationObserver;
 
   @Watch('type')
@@ -118,6 +120,10 @@ export class Alert {
     if (Array.from(this.el.querySelectorAll("[slot=chi-alert__actions]")).length > 0) {
       this.alertActions = true;
     }
+
+    if (Array.from(this.el.querySelectorAll("[slot=chi-alert__clickable-icon]")).length > 0) {
+      this.alertClickableIcon = true;
+    }
   }
 
   _dismissAlert() {
@@ -131,6 +137,7 @@ export class Alert {
     const chiIcon = <chi-icon icon={this.icon} color={this.color || null} extraClass="chi-alert__icon"></chi-icon>;
     const alertTitle = this.alertTitle && <p class="chi-alert__title">{this.alertTitle}</p>;
     const chiActions = this.alertActions && <div class="chi-alert__actions"><slot name="chi-alert__actions"></slot></div>;
+    const chiClickableIcon = this.alertClickableIcon && <div class="chi-alert__clickable-icon"><slot name="chi-alert__clickable-icon"></slot></div>;
 
     return (
       <div class={`chi-alert
@@ -148,6 +155,7 @@ export class Alert {
           {chiActions}
         </div>
         {(this.closable || this.type === 'toast') && <chi-button extraClass="chi-alert__close-button" type="close" onChiClick={() => this._dismissAlert()} />}
+        {chiClickableIcon}
       </div>
     );
   }
