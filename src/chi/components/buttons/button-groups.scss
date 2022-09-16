@@ -15,11 +15,17 @@
       }
 
       &.-align--left {
-        justify-content: flex-start;
+        &,
+        & > .chi-button__content {
+          justify-content: flex-start;
+        }
       }
 
       &.-align--right {
-        justify-content: flex-end;
+        &,
+        & > .chi-button__content {
+          justify-content: flex-end;
+        }
       }
     }
   }
