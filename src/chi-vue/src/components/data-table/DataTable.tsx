@@ -73,7 +73,7 @@ export default class DataTable extends Vue {
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
-  _preventSortOnResize?= false;
+  _preventSortOnResize? = false;
   _resizeTimer?: number;
   _sortable = false;
   _sortedData?: DataTableRow[] = [];
@@ -171,13 +171,15 @@ export default class DataTable extends Vue {
           <chi-button variant="flat" type="icon" alternative-text="Sort icon">
             <i
               class={`
-              ${ICON_CLASS} -xs ${this._sortConfig &&
-                  (this._sortConfig.key === this.data.head[column].sortBy || this._sortConfig.key === column)
+              ${ICON_CLASS} -xs ${
+                this._sortConfig &&
+                (this._sortConfig.key === this.data.head[column].sortBy || this._sortConfig.key === column)
                   ? DATA_TABLE_SORT_ICONS.ARROW
                   : DATA_TABLE_SORT_ICONS.SORT
-                }`}
-              style={`${this._sortConfig && this._sortConfig.direction === 'descending' ? 'transform: rotate(180deg)' : ''
-                }`}
+              }`}
+              style={`${
+                this._sortConfig && this._sortConfig.direction === 'descending' ? 'transform: rotate(180deg)' : ''
+              }`}
             />
           </chi-button>
         ) : (
@@ -333,10 +335,11 @@ export default class DataTable extends Vue {
           <i
             class={`
           ${ICON_CLASS}
-          icon-${this.accordionsExpanded.includes(rowData.rowId)
-                ? expansionIcons[iconStyle].expanded
-                : expansionIcons[iconStyle].collapsed
-              }
+          icon-${
+            this.accordionsExpanded.includes(rowData.rowId)
+              ? expansionIcons[iconStyle].expanded
+              : expansionIcons[iconStyle].collapsed
+          }
           `}
           />
         </div>
@@ -635,8 +638,8 @@ export default class DataTable extends Vue {
         rowData && typeof rowData === 'object' && rowData.rowNumber
           ? `checkbox-select-${rowData?.rowId}`
           : selectAll
-            ? `checkbox-${this._dataTableId}-select-all-rows`
-            : '';
+          ? `checkbox-${this._dataTableId}-select-all-rows`
+          : '';
       const allVisibleRowsSelectionDisabled =
         this.slicedData.length > 0 && this.slicedData.every(row => row.selectionDisabled);
 
@@ -749,8 +752,8 @@ export default class DataTable extends Vue {
         rowLevel === 'grandChild'
           ? DATA_TABLE_CLASSES.ROW_GRAND_CHILD
           : rowLevel === 'child'
-            ? DATA_TABLE_CLASSES.ROW_CHILD
-            : DATA_TABLE_CLASSES.ROW;
+          ? DATA_TABLE_CLASSES.ROW_CHILD
+          : DATA_TABLE_CLASSES.ROW;
 
     if (this.config.selectable) {
       rowCells.push(
@@ -835,16 +838,18 @@ export default class DataTable extends Vue {
         data-rowlevel={bodyRow.level}
         class={`
         ${rowClass}
-        ${striped && (this.$props.config.style.striped || this.$props.config.style.portal)
+        ${
+          striped && (this.$props.config.style.striped || this.$props.config.style.portal)
             ? DATA_TABLE_CLASSES.STRIPED
             : ''
-          }
+        }
         ${this.$props.config.style.portal ? `-${this.$props.config.style.size}` : ''}
         ${this.selectedRows.includes(bodyRow.rowId) || bodyRow.active ? ACTIVE_CLASS : ''}
-        ${this._expandable && bodyRow.nestedContent
+        ${
+          this._expandable && bodyRow.nestedContent
             ? `${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}`
             : ''
-          }
+        }
         `}
         role="row">
         {rowCells}
@@ -1262,7 +1267,7 @@ export default class DataTable extends Vue {
           : data.data[columnIndex];
       };
 
-      const sortedData = arraySort(copiedData, function (a, b) {
+      const sortedData = arraySort(copiedData, function(a, b) {
         const aData = locateData(a, sortBy);
         const bData = locateData(b, sortBy);
 
@@ -1463,8 +1468,8 @@ export default class DataTable extends Vue {
         this._showSelectedOnlyRowsData?.length > 0
           ? this._showSelectedOnlyRowsData
           : this._sortedData && this._sortedData.length > 0
-            ? this._sortedData
-            : this._serializedDataBody;
+          ? this._sortedData
+          : this._serializedDataBody;
 
       return (
         <tbody>
