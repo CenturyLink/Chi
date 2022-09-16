@@ -6,9 +6,7 @@ import {
   FORM_CLASSES,
   INPUT_CLASSES,
   SELECT_CLASSES,
-  PORTAL_CLASS,
   UTILITY_CLASSES,
-  GENERIC_SIZE_CLASSES,
   GENERIC_SIZES,
 } from '@/constants/classes';
 import { DataTableCustomItem, DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
@@ -295,12 +293,12 @@ export default class AdvancedFilters extends Vue {
           filter.type === 'select'
             ? this._createSelectFilter(filter)
             : filter.type === 'input'
-              ? this._createInputFilter(filter)
-              : filter.type === 'checkbox'
-                ? this._createCheckboxFilter(filter)
-                : filter.type === 'textarea'
-                  ? this._createTextareaFilter(filter)
-                  : null;
+            ? this._createInputFilter(filter)
+            : filter.type === 'checkbox'
+            ? this._createCheckboxFilter(filter)
+            : filter.type === 'textarea'
+            ? this._createTextareaFilter(filter)
+            : null;
 
         if (filterElement) {
           const accordionItem = (
@@ -366,9 +364,7 @@ export default class AdvancedFilters extends Vue {
               onclick={(event: Event) => this._expandCollapseAccordions(event)}>
               {this.isExpanded ? 'Collapse All' : 'Expand All'}
             </button>
-            <div
-              class={`${ACCORDION_CLASSES.ACCORDION} ${GENERIC_SIZES.SM}`}
-              ref="advancedFiltersAccordion">
+            <div class={`${ACCORDION_CLASSES.ACCORDION} ${GENERIC_SIZES.SM}`} ref="advancedFiltersAccordion">
               {advancedFilters}
             </div>
             <AdvancedFiltersPopoverFooter

@@ -182,7 +182,9 @@ export default class DataTableFilters extends Vue {
         <div
           class={[
             CHECKBOX_CLASSES.checkbox,
-            mobile ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}` : UTILITY_CLASSES.ALIGN_SELF.CENTER,
+            mobile
+              ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`
+              : UTILITY_CLASSES.ALIGN_SELF.CENTER,
           ]}>
           <input
             id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
@@ -241,12 +243,12 @@ export default class DataTableFilters extends Vue {
     const filters = this.filterElementValue;
     return this._filtersData
       ? this._filtersData.filters.map((filter: DataTableFilter) => {
-        if (filter.id) {
-          const value = filters[filter.id];
-          return { ...filter, ...{ value: value } };
-        }
-        return filter;
-      })
+          if (filter.id) {
+            const value = filters[filter.id];
+            return { ...filter, ...{ value: value } };
+          }
+          return filter;
+        })
       : {};
   }
 
@@ -331,23 +333,23 @@ export default class DataTableFilters extends Vue {
         filter.type === 'select'
           ? this._createSelectFilter(filter)
           : filter.type === 'input'
-            ? this._createInputFilter(filter)
-            : filter.type === 'checkbox'
-              ? this._createCheckboxFilter(filter)
-              : filter.type === 'textarea'
-                ? this._createTextareaFilter(filter)
-                : null;
+          ? this._createInputFilter(filter)
+          : filter.type === 'checkbox'
+          ? this._createCheckboxFilter(filter)
+          : filter.type === 'textarea'
+          ? this._createTextareaFilter(filter)
+          : null;
 
       const filterElementMobile =
         filter.type === 'select'
           ? this._createSelectFilter(filter, true)
           : filter.type === 'input'
-            ? this._createInputFilter(filter, true)
-            : filter.type === 'checkbox'
-              ? this._createCheckboxFilter(filter, true)
-              : filter.type === 'textarea'
-                ? this._createTextareaFilter(filter, true)
-                : null;
+          ? this._createInputFilter(filter, true)
+          : filter.type === 'checkbox'
+          ? this._createCheckboxFilter(filter, true)
+          : filter.type === 'textarea'
+          ? this._createTextareaFilter(filter, true)
+          : null;
 
       if (filterElement && filterElementMobile) {
         if (!filter.advanced) {
