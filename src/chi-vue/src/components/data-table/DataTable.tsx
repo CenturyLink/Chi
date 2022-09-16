@@ -1111,6 +1111,11 @@ export default class DataTable extends Vue {
 
     return dataToRender;
   }
+
+  beforeMount() {
+    this.detectScreenBreakpoint();
+  }
+
   @Watch('data')
   dataChange() {
     this.serializeData();
