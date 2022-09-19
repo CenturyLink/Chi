@@ -658,19 +658,19 @@
       }
 
       &.chi-sliding-border {
+        bottom: auto;
         display: none;
         top: 0;
-        bottom: auto;
       }
 
       & > a {
         &::after {
           background: transparent;
           content: "";
+          height: 0;
+          left: 0;
           position: absolute;
           top: 0;
-          left: 0;
-          height: 0;
           transition: all 0.3s;
           width: 100%;
         }
