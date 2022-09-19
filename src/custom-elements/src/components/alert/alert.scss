@@ -1,6 +1,7 @@
 :host(chi-alert) {
   @import '../../global/styles/common';
   display: block;
+
   &[center] {
     .-center {
       justify-content: center;

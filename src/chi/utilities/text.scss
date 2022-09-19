@@ -206,6 +206,11 @@ $transforms: (lowercase, uppercase, capitalize);
   font-weight: $font-weight-black !important;
 }
 
+// text no-transform
+.-text--no-transform {
+  text-transform: none !important;
+}
+
 // text white-space
 .-text--nowrap {
   white-space: nowrap !important;

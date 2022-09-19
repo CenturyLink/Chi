@@ -6,6 +6,7 @@ import {
   DATA_TABLE_CLASSES,
   EXPANDED_CLASS,
   EXPAND_CLASS,
+  GENERIC_SIZES,
   GENERIC_SIZE_CLASSES,
   ICON_CLASS,
   ONE_LINK_TX,
@@ -43,7 +44,6 @@ import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import DataTableBulkActions from '../data-table-bulk-actions/DataTableBulkActions';
 import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
-import { detectMajorChiVersion } from '@/utils/utils';
 import { ICON_CLASSES } from '@/constants/icons';
 import { alignmentUtilityClasses, expansionIcons } from './constants/constants';
 import { NormalizedScopedSlot } from 'vue/types/vnode';
@@ -159,8 +159,7 @@ export default class DataTable extends Vue {
             reference={`#${infoPopoverId}`}
             position="top"
             title={(this.data.head[column].description as DataTableColumnDescription).title}
-            portal={this._chiMajorVersion === 4}
-            modal={this._chiMajorVersion === 5}
+            modal
             arrow>
             <div>{this._getDescription(this.data.head[column].description as string | DataTableColumnDescription)}</div>
           </chi-popover>
@@ -327,11 +326,7 @@ export default class DataTable extends Vue {
       ${BUTTON_CLASSES.ICON_BUTTON}
       ${BUTTON_CLASSES.FLAT}
       ${EXPAND_CLASS}
-      ${
-        this._chiMajorVersion === 4 // To be removed
-          ? GENERIC_SIZE_CLASSES.SM
-          : GENERIC_SIZE_CLASSES.XS
-      }
+      ${GENERIC_SIZE_CLASSES.XS}
       `}
         aria-label="Expand row"
         data-target={`#${rowData.rowId}-content`}
@@ -737,7 +732,7 @@ export default class DataTable extends Vue {
       }
     } else {
       return (
-        <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} -p--2`} role="row">
+        <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} ${UTILITY_CLASSES.PADDING[2]}`} role="row">
           {accordionData.value}
         </div>
       );
@@ -1118,7 +1113,6 @@ export default class DataTable extends Vue {
   }
 
   beforeMount() {
-    this._chiMajorVersion = detectMajorChiVersion();
     this.detectScreenBreakpoint();
   }
 
@@ -1345,14 +1339,14 @@ export default class DataTable extends Vue {
         columnSortBy = columnHeadSortButton.dataset.sortBy,
         sortIcon = columnHeadSortButton.querySelector(`[aria-label="Sort icon"] i.${ICON_CLASS}`),
         headSortColumnIcons = (this.$refs.dataTable as HTMLElement).querySelectorAll(
-          `.${DATA_TABLE_CLASSES.HEAD} [aria-label="Sort icon"] i.-xs.${ICON_CLASS}`
+          `.${DATA_TABLE_CLASSES.HEAD} [aria-label="Sort icon"] i.${GENERIC_SIZES.XS}.${ICON_CLASS}`
         );
 
       headSortColumnIcons.forEach(sortIcon => {
-        if (sortIcon.className !== `${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.SORT}`) {
+        if (sortIcon.className !== `${ICON_CLASS} ${GENERIC_SIZES.XS} ${DATA_TABLE_SORT_ICONS.SORT}`) {
           let element = sortIcon;
 
-          sortIcon.className = `${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.SORT}`;
+          sortIcon.className = `${ICON_CLASS} ${GENERIC_SIZES.XS} ${DATA_TABLE_SORT_ICONS.SORT}`;
           while (element && !element.classList.contains(DATA_TABLE_CLASSES.HEAD)) {
             if (element.classList.contains(DATA_TABLE_CLASSES.CELL) && element.classList.contains(ACTIVE_CLASS)) {
               element.classList.remove(ACTIVE_CLASS);
@@ -1369,7 +1363,7 @@ export default class DataTable extends Vue {
       });
 
       if (columnName && sortIcon) {
-        sortIcon.className = `${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.ARROW}`;
+        sortIcon.className = `${ICON_CLASS} ${GENERIC_SIZES.XS} ${DATA_TABLE_SORT_ICONS.ARROW}`;
         if (currentSort === 'ascending' && this._sortConfig && this._sortConfig.key === columnName) {
           const sortingData: DataTableSorting = {
             column: columnName,
@@ -1409,7 +1403,7 @@ export default class DataTable extends Vue {
             sortingData.data = undefined;
           }
 
-          sortIcon.className = `${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.SORT}`;
+          sortIcon.className = `${ICON_CLASS} ${GENERIC_SIZES.XS} ${DATA_TABLE_SORT_ICONS.SORT}`;
           columnHeadSortButton.removeAttribute('data-sort');
           (sortIcon as HTMLElement).removeAttribute('style');
           columnHeadSortButton.blur();

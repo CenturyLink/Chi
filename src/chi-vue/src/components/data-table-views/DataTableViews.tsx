@@ -1,16 +1,9 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { DataTableView } from '@/constants/types';
-import {
-  DATA_TABLE_CLASSES,
-  FORM_CLASSES,
-  GENERIC_SIZE_CLASSES,
-  PORTAL_CLASS,
-  SELECT_CLASSES,
-} from '@/constants/classes';
+import { DATA_TABLE_CLASSES, FORM_CLASSES, SELECT_CLASSES } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '../data-table-toolbar/DataTableToolbar';
-import { detectMajorChiVersion } from '@/utils/utils';
 
 @Component
 export default class DataTableViews extends Vue {
@@ -35,10 +28,6 @@ export default class DataTableViews extends Vue {
     this.$emit(DATA_TABLE_EVENTS.VIEWS_CHANGE, view);
   }
 
-  beforeMount() {
-    this._chiMajorVersion = detectMajorChiVersion();
-  }
-
   render() {
     const options = this.views?.map((view: DataTableView) => {
       return (
@@ -54,9 +43,7 @@ export default class DataTableViews extends Vue {
           <div class={`${FORM_CLASSES.FORM_ITEM}`}>
             <select
               aria-label={`Select a View`}
-              class={`${SELECT_CLASSES.SELECT} ${
-                this._chiMajorVersion === 4 ? `${GENERIC_SIZE_CLASSES.LG} ${PORTAL_CLASS}` : ''
-              }`}
+              class={`${SELECT_CLASSES.SELECT}`}
               onChange={(ev: Event) => this._emitViewsChanged(ev)}>
               {!this.views || !this.views.length ? <option>View</option> : options}
             </select>
