@@ -46,7 +46,6 @@ import VerticalFlatLumenCenturyLink from './_vertical-flat-lumen-centurylink.vue
 import VerticalSolidLumenCenturyLink from './_vertical-solid-lumen-centurylink.vue';
 import HorizontalFlatLumenCenturyLink from './_horizontal-flat-lumen-centurylink.vue';
 import HorizontalSolidLumenCenturyLink from './_horizontal-solid-lumen-centurylink.vue';
-import HorizontalLumenCenturyLink from './_horizontal-lumen-centurylink.vue';
 import DefaultLinkLumenCenturyLink from './_default-link-lumen-centurylink.vue';
 import TabbedNavigationFlatLumenCenturyLink from './_tabbed-navigation-flat-lumen-centurylink.vue';
 import TabbedNavigationSolidLumenCenturyLink from './_tabbed-navigation-solid-lumen-centurylink.vue';
@@ -65,7 +64,6 @@ import VerticalPortal from './_vertical-portal.vue';
 
 @Component({
   components: {
-    HorizontalLumenCenturyLink,
     HorizontalFlatLumenCenturyLink,
     HorizontalSolidLumenCenturyLink,
     VerticalFlatLumenCenturyLink,

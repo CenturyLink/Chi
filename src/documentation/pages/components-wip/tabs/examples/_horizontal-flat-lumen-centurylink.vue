@@ -2,10 +2,10 @@
   <ComponentExample title="Flat" titleSize="h4" :id="exampleId" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" :headTabsExampleSlot="true"  @chiHeadTabsChange="e => changeSelectedTab(e)">
     div(:slot="`example-head-${headTab.id}`" v-for='headTab in headTabs')
       div(:class="`-bg--${headTab.id === 'base' ? 'white' : 'black'}`").-px--3
-        ul.chi-tabs(:class="headTab.id === 'base' ? '' : '-inverse'" :id="`example-horizontal-${headTab.id}`"
+        ul.chi-tabs(:class="headTab.id === 'base' ? '' : '-inverse'" :id="`example-horizontal-flat-lumen-${headTab.id}`"
           role="tablist"
           :aria-label="headTab.id === 'base' ? 'chi-tabs-horizontal' : 'chi-tabs-horizontal-inverse'"
-          :ref="`example__tabs_horizontal_flat_${headTab.id}`")
+          :ref="`example-horizontal-flat-lumen-${headTab.id}`")
           li(v-for="item in headTab.tabItems" :class="item === '1' ? '-active' : ''")
             a(
               :href="`#horizontal-flat-lumen-centurylink-${headTab.id}-${item}`"
@@ -113,8 +113,8 @@ export default class HorizontalFlatLumenCenturyLink extends Vue {
   }
 
   mounted() {
-    this.baseTab = chi.tab(this.$refs['example__tabs_horizontal_flat_base'] as HTMLElement);
-    this.inverseTab = chi.tab(this.$refs['example__tabs_horizontal_flat_inverse'] as HTMLElement);
+    this.baseTab = chi.tab(this.$refs['example-horizontal-flat-lumen-base'] as HTMLElement);
+    this.inverseTab = chi.tab(this.$refs['example-horizontal-flat-lumen-inverse'] as HTMLElement);
   }
 
   changeSelectedTab(e: HeadTabsInterface) {
