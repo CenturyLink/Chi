@@ -16,7 +16,6 @@ import {
   LIST_CLASS,
   FLUID_CLASS
 } from '../../constants/classes';
-import { DROPDOWN_EVENTS } from '../../constants/events';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
 
@@ -29,7 +28,7 @@ export class Dropdown {
   /**
    * To set the state of Dropdown
    */
-  @Prop() active: boolean;
+  @Prop({ reflect: true }) active = false;
   /**
    * To enable the description of Dropdown menu item
    */
@@ -57,7 +56,7 @@ export class Dropdown {
   /**
    * To provide selector of an external reference element
    */
-  @Prop() reference: string;
+  @Prop({ reflect: true }) reference: string;
   /**
    * To prevent hiding of the Dropdown when clicking outside its bounds
    */
@@ -65,11 +64,11 @@ export class Dropdown {
   /**
    * Triggered when hiding the Dropdown
    */
-  @Event({ eventName: DROPDOWN_EVENTS.HIDE }) eventHide: EventEmitter;
+  @Event({ eventName: 'chiDropdownHide' }) eventHide: EventEmitter;
   /**
    * Triggered when showing the Dropdown
    */
-  @Event({ eventName: DROPDOWN_EVENTS.SHOW }) eventShow: EventEmitter;
+  @Event({ eventName: 'chiDropdownShow' }) eventShow: EventEmitter;
 
   @Element() el: HTMLElement;
 
@@ -118,6 +117,22 @@ export class Dropdown {
     }
   }
 
+  @Watch('active')
+  updateActive(newActiveState: boolean, oldActiveState: boolean) {
+    if (newActiveState !== oldActiveState) {
+      if (newActiveState) {
+        this.displayBlock();
+      } else {
+        this.displayNone();
+      }
+    }
+  }
+
+  @Method()
+  async updatePopper() {
+    this._popper.update();
+  }
+
   private _configureDropdownPopper() {
     if (!this._referenceElement) {
       if (this._popper) {
@@ -146,6 +161,14 @@ export class Dropdown {
         placement: this.position || 'bottom'
       }
     );
+  }
+
+  displayBlock() {
+    this._dropdownMenuElement.style.display = 'block';
+  }
+
+  displayNone() {
+    this._dropdownMenuElement.style.display = 'none';
   }
 
   emitHide() {
@@ -189,7 +212,7 @@ export class Dropdown {
    */
   @Method()
   async hide() {
-    this._dropdownMenuElement.style.display = 'none';
+    this.displayNone();
     this.active = false;
     this.emitHide();
   }
@@ -199,7 +222,7 @@ export class Dropdown {
    */
   @Method()
   async show() {
-    this._dropdownMenuElement.style.display = 'block';
+    this.displayBlock();
     this.active = true;
     if (this._popper) {
       this._popper.update();
