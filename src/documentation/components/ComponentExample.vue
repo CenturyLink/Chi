@@ -63,7 +63,7 @@
         <div class="example -mb--3" :style="additionalStyle">
           <div :class="[padding || '-p--3', additionalClasses]">
             <slot v-if="headTabsExampleSlot" :name="`example-head-${headTab.id}`"></slot>
-            <slot v-else name="example"></slot>
+            <slot name="example"></slot>
           </div>
           <div class="example-tabs -pl--2">
             <ul

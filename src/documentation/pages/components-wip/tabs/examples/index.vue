@@ -3,7 +3,9 @@
     h2 Examples
 
     div(v-if="$store.state.themes.theme === 'portal'")
-      <BasePortal />
+      h3 Horizontal
+      <HorizontalFlatPortal />
+      <HorizontalSolidPortal />
       <BorderedPortal />
       <VerticalPortal />
     div(v-else)
@@ -58,7 +60,8 @@ import VerticalSubtabsLumenCenturyLink from './_vertical-subtabs-lumen-centuryli
 import BorderedSubtabsLumenCenturyLink from './_bordered-subtabs-lumen-centurylink.vue';
 import AdditionalHorizontalLumenCenturyLink from './_additional-horizontal-lumen-centurylink.vue';
 import AdditionalVerticalLumenCenturyLink from './_additional-vertical-lumen-centurylink.vue';
-import BasePortal from './_base-portal.vue';
+import HorizontalFlatPortal from './_horizontal-flat-portal.vue';
+import HorizontalSolidPortal from './_horizontal-solid-portal.vue';
 import BorderedPortal from './_bordered-portal.vue';
 import VerticalPortal from './_vertical-portal.vue';
 
@@ -80,7 +83,8 @@ import VerticalPortal from './_vertical-portal.vue';
     BorderedSubtabsLumenCenturyLink,
     AdditionalHorizontalLumenCenturyLink,
     AdditionalVerticalLumenCenturyLink,
-    BasePortal,
+    HorizontalFlatPortal,
+    HorizontalSolidPortal,
     BorderedPortal,
     VerticalPortal,
   }

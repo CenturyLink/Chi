@@ -1,20 +1,23 @@
 <template lang="pug">
   <ComponentExample title="Flat" titleSize="h4" :id="exampleId" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" :headTabsExampleSlot="true"  @chiHeadTabsChange="e => changeSelectedTab(e)">
-    div(:slot="`example-head-${headTab.id}`" v-for='headTab in headTabs')
+    div(v-for="headTab in headTabs" :slot="`example-head-${headTab.id}`")
       div(:class="`-bg--${headTab.id === 'base' ? 'white' : 'black'}`").-px--3
-        ul.chi-tabs(:class="headTab.id === 'base' ? '' : '-inverse'" :id="`example-horizontal-flat-lumen-${headTab.id}`"
+        ul.chi-tabs(
+          :class="headTab.id === 'base' ? '' : '-inverse'"
+          :id="`example-horizontal-${headTab.id}`"
           role="tablist"
-          :aria-label="headTab.id === 'base' ? 'chi-tabs-horizontal' : 'chi-tabs-horizontal-inverse'"
-          :ref="`example-horizontal-flat-lumen-${headTab.id}`")
+          :aria-label="headTab.id === 'base' ? 'chi-tabs-horizontal-base' : 'chi-tabs-horizontal-inverse'"
+          :ref="`example__tabs_horizontal_flat_${headTab.id}`"
+        )
           li(v-for="item in headTab.tabItems" :class="item === '1' ? '-active' : ''")
             a(
-              :href="`#horizontal-flat-lumen-centurylink-${headTab.id}-${item}`"
+              :href="`#horizontal-flat-${headTab.id}-${item}`"
               role="tab"
               :aria-selected="item === '1' ? 'true' : 'false'"
               :aria-controls="`horizontal-${headTab.id}-${item}`"
             ) {{item === '1' ? 'Active Tab' : 'Tab Link'}}
       .-bg--white.-p--3
-        .chi-tabs-panel(v-for="item in headTab.tabItems" :class="item === '1' ? '-active' : ''" :id="`horizontal-flat-lumen-centurylink-${headTab.id}-${item}`" :key="`${headTab.id}-${item}`" role="tabpanel")
+        .chi-tabs-panel(:class="item === '1' ? '-active' : ''" :id="`horizontal-flat-${headTab.id}-${item}`" :key="`horizontal-flat-${headTab.id}-${item}`" v-for="item in headTab.tabItems" role="tabpanel")
           .-text Tab {{item}} content
     <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
       <pre class="language-html">
@@ -113,8 +116,8 @@ export default class HorizontalFlatLumenCenturyLink extends Vue {
   }
 
   mounted() {
-    this.baseTab = chi.tab(this.$refs['example-horizontal-flat-lumen-base'] as HTMLElement);
-    this.inverseTab = chi.tab(this.$refs['example-horizontal-flat-lumen-inverse'] as HTMLElement);
+    this.baseTab = chi.tab(this.$refs['example__tabs_horizontal_flat_base'] as HTMLElement);
+    this.inverseTab = chi.tab(this.$refs['example__tabs_horizontal_flat_inverse'] as HTMLElement);
   }
 
   changeSelectedTab(e: HeadTabsInterface) {
@@ -123,8 +126,12 @@ export default class HorizontalFlatLumenCenturyLink extends Vue {
   }
 
   beforeDestroy() {
-    this.baseTab?.dispose();
-    this.inverseTab?.dispose();
+    if (this.baseTab && this.baseTab.dispose) {
+      this.baseTab.dispose();
+    }
+    if (this.inverseTab && this.inverseTab.dispose) {
+      this.inverseTab.dispose();
+    }
   }
 }
 </script>

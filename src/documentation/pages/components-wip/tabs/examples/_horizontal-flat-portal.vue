@@ -1,20 +1,20 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base-portal" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
+  <ComponentExample title="Flat" titleSize="h4" id="horizontal-1" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
     .-bg--white.-px--3.-pt--2(slot="example")
-      ul.chi-tabs#example-portal-horizontal-base(
+      ul.chi-tabs.-border#example-horizontal-bordered(
         role="tablist"
         aria-label="chi-tabs-horizontal"
-        ref="example__tabs_portal_horizontal_base")
+        ref="example__tabs_portal_horizontal_bordered")
         li(v-for="(tab, index) in tabs" :class="index === 0 && '-active'")
           a(
-            :href="'#portal-horizontal-base-' + tab"
+            :href="'#horizontal-bordered-' + tab"
             role="tab"
             :aria-selected="index === 0 ? 'true' : 'false'"
             :tabindex="index === 0 ? '' : -1"
-            :aria-controls="'portal-horizontal-base-' + tab"
+            :aria-controls="'horizontal-bordered-' + tab"
             ) {{tab === 1 ? 'Active Tab' : 'Tab Link'}}
       .-py--3
-        .chi-tabs-panel(role="tabpanel" :id="'portal-horizontal-base-' + tab" v-for="(tab, index) in tabs" :class="index === 0 ? '-active' : ''")
+        .chi-tabs-panel(role="tabpanel" :id="'horizontal-bordered-' + tab" v-for="(tab, index) in tabs" :class="index === 0 ? '-active' : ''")
           .-text Tab {{tab}} content
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -56,22 +56,22 @@ declare const chi: any;
     };
   },
 })
-export default class BasePortal extends Vue {
+export default class HorizontalFlatPortal extends Vue {
   tab: any;
 
   _setCodeSnippet() {
     let tabLinks = '', tabPanels = '';
     this.$data.tabs.forEach((tab: number, tabIndex: number) => {
       tabLinks += `\n  <li${tabIndex === 0 ? ' class="-active"' : ' role="tab"'}>\n    <a
-      href="#horizontal-base-${tab}"${tabIndex === 0 ? `
+      href="#horizontal-bordered-${tab}"${tabIndex === 0 ? `
       role="tab"` : ''}
       aria-selected="${tabIndex === 0 ? 'true' : 'false'}"${tabIndex !== 0 ? `
       tabindex="-1"` : ''}
-      aria-controls="${'portal-horizontal-base-' + tab}">${tab === 1 ? 'Active Tab' : 'Tab Link'}</a>\n  </li>`
+      aria-controls="${'portal-horizontal-bordered-' + tab}">${tab === 1 ? 'Active Tab' : 'Tab Link'}</a>\n  </li>`
 
-      tabPanels += `\n<div class="chi-tabs-panel ${tabIndex === 0 ? '-active' : ''}" id="example__tabs_horizontal__base_${tab}" role="tabpanel">Tab ${tab} content</div>`
+      tabPanels += `\n<div class="chi-tabs-panel ${tabIndex === 0 ? '-active' : ''}" id="horizontal-bordered-${tab}" role="tabpanel">Tab ${tab} content</div>`
     })
-    this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs" id="example__tabs_horizontal_base" role="tablist" aria-label="chi-tabs-horizontal">${tabLinks}\n</ul>\n${tabPanels}\n\n<script>chi.tab(document.getElementById('example__tabs_portal_horizontal_base'));<\/script>`
+    this.$data.codeSnippets.htmlblueprint = `<ul class="chi-tabs" id="example-horizontal-bordered" role="tablist" aria-label="chi-tabs-horizontal">${tabLinks}\n</ul>\n${tabPanels}\n\n<script>chi.tab(document.getElementById('example-horizontal-bordered'));<\/script>`
   }
   
   created() {
@@ -79,7 +79,7 @@ export default class BasePortal extends Vue {
   }
 
   mounted() {
-    this.tab = chi.tab(this.$refs['example__tabs_portal_horizontal_base'] as HTMLElement);
+    this.tab = chi.tab(this.$refs['example__tabs_portal_horizontal_bordered'] as HTMLElement);
   }
 
   beforeDestroy() {
