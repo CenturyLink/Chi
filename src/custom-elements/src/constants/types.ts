@@ -11,3 +11,26 @@ export const MARKETING_ICON_MODES = ['filled', 'outline'] as const;
 export type ChiMarketingIconModes = typeof MARKETING_ICON_MODES[number];
 
 export type GeneralPositionsExtended = typeof CARDINAL_EXTENDED_POSITIONS[number];
+
+export interface TabTrigger {
+  children: TabTrigger[];
+  id: string;
+  label: string,
+  overflow: boolean;
+  target?: string;
+}
+
+export interface TabTriggerPosition {
+  left: number;
+  top: number;
+}
+
+export enum TabTriggerSizes {
+  Height = 'height',
+  Width = 'width'
+};
+
+export enum TabTriggerDirections {
+  Left = 'left',
+  Top = 'top'
+};
