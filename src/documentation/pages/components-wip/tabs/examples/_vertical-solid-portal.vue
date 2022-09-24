@@ -50,7 +50,7 @@ declare const chi: any;
     };
   },
 })
-export default class VerticalSolidLumenCenturyLink extends Vue {
+export default class VerticalSolidPortal extends Vue {
   tab: any;
   _setCodeSnippets() {
     let tabLinks = '', tabConents = '';

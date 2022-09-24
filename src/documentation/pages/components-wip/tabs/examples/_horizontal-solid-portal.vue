@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Flat" titleSize="h4" id="horizontal-1" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
+  <ComponentExample title="Solid" titleSize="h4" id="horizontal-1" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
     .-bg--white.-px--3.-pt--2(slot="example")
       ul.chi-tabs.-solid.-lg.-border#example-portal-horizontal-solid(
         role="tablist"

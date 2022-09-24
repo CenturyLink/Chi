@@ -101,9 +101,5 @@ export default class TabbedNavigationFlatLumenCenturyLink extends Vue {
   mounted() {
     this.navigation = chi.navigation(this.$refs['example__tabs_tabbed_navigation'] as HTMLElement);
   }
-
-  beforeDestroy() {
-    this.navigation?.dispose();
-  }
 }
 </script>

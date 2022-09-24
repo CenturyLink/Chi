@@ -6,7 +6,9 @@
       h3 Horizontal
       <HorizontalFlatPortal />
       <HorizontalSolidPortal />
-      <BorderedPortal />
+      h3 Vertical
+      <VerticalFlatPortal />
+      <VerticalSolidPortal />
       <VerticalPortal />
     div(v-else)
       h3 Horizontal
@@ -62,6 +64,8 @@ import AdditionalHorizontalLumenCenturyLink from './_additional-horizontal-lumen
 import AdditionalVerticalLumenCenturyLink from './_additional-vertical-lumen-centurylink.vue';
 import HorizontalFlatPortal from './_horizontal-flat-portal.vue';
 import HorizontalSolidPortal from './_horizontal-solid-portal.vue';
+import VerticalFlatPortal from './_vertical-flat-portal.vue';
+import VerticalSolidPortal from './_vertical-solid-portal.vue';
 import BorderedPortal from './_bordered-portal.vue';
 import VerticalPortal from './_vertical-portal.vue';
 
@@ -85,6 +89,8 @@ import VerticalPortal from './_vertical-portal.vue';
     AdditionalVerticalLumenCenturyLink,
     HorizontalFlatPortal,
     HorizontalSolidPortal,
+    VerticalFlatPortal,
+    VerticalSolidPortal,
     BorderedPortal,
     VerticalPortal,
   }

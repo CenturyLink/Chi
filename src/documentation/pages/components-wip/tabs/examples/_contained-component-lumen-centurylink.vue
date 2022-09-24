@@ -103,9 +103,5 @@ export default class ContainedComponentLumenCenturyLink extends Vue {
   mounted() {
     this.navigation = chi.navigation(this.$refs['example__tabs_navigation_components_contained'] as HTMLElement);
   }
-
-  beforeDestroy() {
-    this.navigation?.dispose();
-  }
 }
 </script>
