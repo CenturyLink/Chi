@@ -658,22 +658,31 @@
       }
 
       &.chi-sliding-border {
-        top: 0;
         bottom: auto;
+        display: none;
+        top: 0;
+      }
+
+      & > a {
+        &::after {
+          background: transparent;
+          content: "";
+          height: 0;
+          left: 0;
+          position: absolute;
+          top: 0;
+          transition: all 0.3s;
+          width: 100%;
+        }
       }
 
       &.-active {
         & > a {
           box-shadow: none;
-        }
-      }
-    }
 
-    &:not(.-sliding) {
-      & > li {
-        &.-active {
-          & > a {
-            box-shadow: inset 0 $tabs-solid-horizontal-md-active-border-width 0 $tabs-solid-active-border-color;
+          &::after {
+            background: $tabs-solid-active-border-color;
+            height: $tabs-solid-horizontal-md-active-border-width;
           }
         }
       }
@@ -744,20 +753,12 @@
           }
         }
       }
-
+ 
       & > li {
-        &.chi-sliding-border {
-          height: $tabs-solid-horizontal-lg-active-border-width;
-        }
-      }
-
-      &:not(.-sliding) {
-        &:not(.-inverse) {
-          & > li {
-            &.-active {
-              & > a {
-                box-shadow: inset 0 $tabs-solid-horizontal-lg-active-border-width 0 $tabs-solid-active-border-color;
-              }
+        &.-active {
+          & > a {
+            &::after {
+              height: $tabs-solid-horizontal-lg-active-border-width;
             }
           }
         }
@@ -949,12 +950,13 @@
       }
 
       &.-solid {
-        &:not(.-sliding) {
-          & > li {
-            &.-active {
-              & > a {
-                // sass-lint:disable-block max-line-length
-                box-shadow: inset 0 $tabs-solid-horizontal-md-active-border-width 0 $tabs-inverse-item-active-border-color;
+        & > li {
+          &.-active {
+            & > a {
+              box-shadow: none;
+
+              &::after {
+                background: $tabs-inverse-item-active-border-color;
               }
             }
           }
