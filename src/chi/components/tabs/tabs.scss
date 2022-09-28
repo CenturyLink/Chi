@@ -666,7 +666,7 @@
       & > a {
         &::after {
           background: transparent;
-          content: "";
+          content: '';
           height: 0;
           left: 0;
           position: absolute;
@@ -753,7 +753,7 @@
           }
         }
       }
- 
+
       & > li {
         &.-active {
           & > a {
