@@ -49,6 +49,7 @@ $sizes: (
       .chi-picker__checkbox {
         border: 0.0625rem solid $picker-checkbox-border-color;
         color: $picker-checkbox-text-color;
+        flex-shrink: 0;
         height: 1rem;
         position: relative;
         width: 1rem;
@@ -72,6 +73,7 @@ $sizes: (
         border: 0.0625rem solid $picker-radio-border-color;
         border-radius: 0.5rem;
         color: $picker-radio-text-color;
+        flex-shrink: 0;
         height: 1rem;
         position: relative;
         width: 1rem;
