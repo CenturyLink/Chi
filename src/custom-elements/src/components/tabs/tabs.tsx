@@ -131,9 +131,7 @@ export class Tabs {
   }
 
   calculateSize(element: HTMLElement, size: TabTriggerSizes): number {
-    const boundingClientRect = element.getBoundingClientRect();
-
-    return boundingClientRect[size];
+    return element ? element.getBoundingClientRect()[size] : 0;
   }
 
   calculateLisWidthSum() {
@@ -254,7 +252,7 @@ export class Tabs {
           const direction = this.vertical
             ? TabTriggerDirections.Top
             : TabTriggerDirections.Left;
-          const size = this.calculateSize(
+            const size = this.calculateSize(
             element,
             this.vertical ? TabTriggerSizes.Height : TabTriggerSizes.Width
           );
