@@ -13,7 +13,7 @@ const positions = [
   },
   {
     placement:'left',
-    transform: 'translate3d(-117px, -20px, 0px)',
+    transform: 'translate3d(-118px, -20px, 0px)',
   },
   {
     placement:'top-start',
@@ -21,7 +21,7 @@ const positions = [
   },
   {
     placement:'top-end',
-    transform: 'translate3d(-8px, -80px, 0px)',
+    transform: 'translate3d(-9px, -80px, 0px)',
   },
   {
     placement:'right-start',
