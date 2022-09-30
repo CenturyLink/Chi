@@ -664,7 +664,7 @@
       }
 
       & > a {
-        &::after {
+        &::before {
           background: transparent;
           content: '';
           height: 0;
@@ -680,7 +680,7 @@
         & > a {
           box-shadow: none;
 
-          &::after {
+          &::before {
             background: $tabs-solid-active-border-color;
             height: $tabs-solid-horizontal-md-active-border-width;
           }
@@ -757,7 +757,7 @@
       & > li {
         &.-active {
           & > a {
-            &::after {
+            &::before {
               height: $tabs-solid-horizontal-lg-active-border-width;
             }
           }
@@ -955,7 +955,7 @@
             & > a {
               box-shadow: none;
 
-              &::after {
+              &::before {
                 background: $tabs-inverse-item-active-border-color;
               }
             }
