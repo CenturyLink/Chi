@@ -128,10 +128,12 @@ describe('Dropdown', () => {
 
   describe('Animate', () => {
     beforeEach(() => {
-      cy.get(DROPDOWN_DATA_CY.ANIMATE).find(DROPDOWN_TRIGGER).as(
+      cy.get(DROPDOWN_DATA_CY.ANIMATE)
+        .find(DROPDOWN_TRIGGER).as(
         'dropdownTrigger'
       );
-      cy.get(DROPDOWN_DATA_CY.ANIMATE).find(DROPDOWN_MENU).as(
+      cy.get(DROPDOWN_DATA_CY.ANIMATE)
+        .find(DROPDOWN_MENU).as(
         'dropdownMenu'
       );
     });
@@ -143,8 +145,6 @@ describe('Dropdown', () => {
 
       cy.get('@dropdownTrigger').click().wait(500)
       .then($els => {
-        hasClassAssertion('@dropdownTrigger', ACTIVE_CLASS);
-        cy.get(`@dropdownMenu`).should('be.visible');
         const win = $els[0].ownerDocument.defaultView;
         const after = win.getComputedStyle($els[0], ':after');
         const tr = after.transform;
@@ -152,6 +152,9 @@ describe('Dropdown', () => {
         const a = values[0];
         const b = values[1];
         const angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+        hasClassAssertion('@dropdownTrigger', ACTIVE_CLASS);
+        cy.get(`@dropdownMenu`)
+          .should('be.visible');
         expect(angle).to.equal(180);
       });
     });
@@ -161,7 +164,8 @@ describe('Dropdown', () => {
     DROPDOWN_DATA_CY.POSITION.forEach((position) => {
       it(`Should be placed to the position ${position.placement}`, () => {
         cy.get(position.selector).click();
-        cy.get(position.selector).find(DROPDOWN_MENU)
+        cy.get(position.selector)
+          .find(DROPDOWN_MENU)
           .scrollIntoView({ offset: { top: -150, left: 0 } })
           .should('have.attr', 'style')
           .should('contain', `transform: ${position.transform}`);
@@ -175,7 +179,8 @@ describe('Dropdown', () => {
         cy.get(DROPDOWN_DATA_CY.METHOD.TOGGLE.TRIGGER).as(
           'dropdownTrigger'
         );
-        cy.get(DROPDOWN_DATA_CY.METHOD.TOGGLE.DROPDOWN_TOGGLE).find(DROPDOWN_MENU).as(
+        cy.get(DROPDOWN_DATA_CY.METHOD.TOGGLE.DROPDOWN_TOGGLE)
+          .find(DROPDOWN_MENU).as(
           'dropdownMenu'
         );
         cy.get(DROPDOWN_DATA_CY.METHOD.TOGGLE.DROPDOWN_TOGGLE).as(
@@ -184,14 +189,15 @@ describe('Dropdown', () => {
       });
 
       it('Should toggle the dropdown menu when toggle method is called', () => {
-        cy.get(`@dropdownMenu`).should(('not.be.visible'));
+        cy.get(`@dropdownMenu`)
+          .should(('not.be.visible'));
         cy.get(`@dropdown`)
-        .then(function(dropdown){
+          .then(function(dropdown){
           dropdown[0].toggle();
           return new Promise(resolve => resolve(dropdown));
-        })
-        .find(DROPDOWN_MENU)
-        .should('be.visible');
+          })
+          .find(DROPDOWN_MENU)
+          .should('be.visible');
         cy.get(`@dropdown`)
           .then(function(dropdown){
             dropdown[0].toggle();
@@ -207,7 +213,8 @@ describe('Dropdown', () => {
         cy.get(DROPDOWN_DATA_CY.METHOD.SHOW.TRIGGER).as(
           'dropdownTrigger'
         );
-        cy.get(DROPDOWN_DATA_CY.METHOD.SHOW.DROPDOWN_SHOW).find(DROPDOWN_MENU).as(
+        cy.get(DROPDOWN_DATA_CY.METHOD.SHOW.DROPDOWN_SHOW)
+          .find(DROPDOWN_MENU).as(
           'dropdownMenu'
         );
         cy.get(DROPDOWN_DATA_CY.METHOD.SHOW.DROPDOWN_SHOW).as(
@@ -215,9 +222,10 @@ describe('Dropdown', () => {
         );
       });
       it('Should show the dropdown menu when show method is called', () => {
-        cy.get(`@dropdownMenu`).should(('not.be.visible'));
+        cy.get(`@dropdownMenu`)
+          .should(('not.be.visible'));
         cy.get(`@dropdown`)
-        .then(function(dropdown){
+          .then(function(dropdown){
           dropdown[0].show();
           return new Promise(resolve => resolve(dropdown));
         })
@@ -231,7 +239,8 @@ describe('Dropdown', () => {
         cy.get(DROPDOWN_DATA_CY.METHOD.HIDE.TRIGGER).as(
           'dropdownTrigger'
         );
-        cy.get(DROPDOWN_DATA_CY.METHOD.HIDE.DROPDOWN_HIDE).find(DROPDOWN_MENU).as(
+        cy.get(DROPDOWN_DATA_CY.METHOD.HIDE.DROPDOWN_HIDE)
+          .find(DROPDOWN_MENU).as(
           'dropdownMenu'
         );
         cy.get(DROPDOWN_DATA_CY.METHOD.HIDE.DROPDOWN_HIDE).as(
@@ -256,10 +265,12 @@ describe('Dropdown', () => {
   describe('Events', () => {
     describe('EventShow', () => {
       beforeEach(() => {
-        cy.get(DROPDOWN_DATA_CY.EVENT.SHOW).find(DROPDOWN_TRIGGER).as(
+        cy.get(DROPDOWN_DATA_CY.EVENT.SHOW)
+          .find(DROPDOWN_TRIGGER).as(
           'dropdownTrigger'
         );
-        cy.get(DROPDOWN_DATA_CY.EVENT.SHOW).find(DROPDOWN_MENU).as(
+        cy.get(DROPDOWN_DATA_CY.EVENT.SHOW)
+          .find(DROPDOWN_MENU).as(
           'dropdownMenu'
         );
         cy.get(DROPDOWN_DATA_CY.EVENT.SHOW).as(
@@ -267,13 +278,11 @@ describe('Dropdown', () => {
         );
       });
 
-      it('should trigger the appropriate hide event when the dropdown menu is opened', () => {
+      it('Should trigger the appropriate hide event when the dropdown menu is opened', () => {
         const spy = cy.spy();
-
         cy.get('@dropdown').then(el => {
           el.on('eventShow', spy);
         });
-
         cy.get(`@dropdownMenu`)
           .should('not.be.visible');
         cy.get(`@dropdownTrigger`)
@@ -288,10 +297,12 @@ describe('Dropdown', () => {
     
     describe('EventHide', () => {
       beforeEach(() => {
-        cy.get(DROPDOWN_DATA_CY.EVENT.HIDE).find(DROPDOWN_TRIGGER).as(
+        cy.get(DROPDOWN_DATA_CY.EVENT.HIDE)
+          .find(DROPDOWN_TRIGGER).as(
           'dropdownTrigger'
         );
-        cy.get(DROPDOWN_DATA_CY.EVENT.HIDE).find(DROPDOWN_MENU).as(
+        cy.get(DROPDOWN_DATA_CY.EVENT.HIDE)
+          .find(DROPDOWN_MENU).as(
           'dropdownMenu'
         );
         cy.get(DROPDOWN_DATA_CY.EVENT.HIDE).as(
@@ -299,9 +310,8 @@ describe('Dropdown', () => {
         );
       });
 
-      it('should trigger the appropriate hide event when the dropdown menu is hidden', () => {
+      it('Should trigger the appropriate hide event when the dropdown menu is hidden', () => {
         const spy = cy.spy();
-
         cy.get('@dropdown').then(el => {
           el.on('eventHide', spy);
         });
