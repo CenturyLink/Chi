@@ -158,7 +158,7 @@ export class Tabs {
           >
             {tab.children.map(child => (
               <a
-                class={`${DROPDOWN_CLASSES.MENU_ITEM} ${UTILITY_CLASSES.JUSTIFY.BETWEEN}`}
+                class={`${DROPDOWN_CLASSES.MENU_ITEM} ${UTILITY_CLASSES.JUSTIFY.BETWEEN} ${this.activeTab} ${this.activeTab === child.id ? ACTIVE_CLASS : ''}`}
                 id={child.id}
                 onMouseEnter={() => this.handlerTabMouseenter(child)}
                 onClick={e => {
@@ -168,9 +168,13 @@ export class Tabs {
                   const firstLevelTriggerElement = this.el.querySelector(
                     `li#${firstLevelId} a`
                   ) as HTMLElement;
-
+                  // const selectedDropElement = dropdownElement.querySelector(`a#${child.id}`);
+                  // if(!selectedDropElement.classList.contains(ACTIVE_CLASS)) {
+                  //   selectedDropElement.classList.add(ACTIVE_CLASS);
+                  // }
                   this.handlerClickTab(e, child, firstLevelTriggerElement);
                   this.isSeeMoreActive = false;
+                  this.createDropdowns(this.tabs, 0);                  
                   if (dropdownElement) {
                     dropdownElement.hide();
                   }
