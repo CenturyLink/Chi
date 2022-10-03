@@ -31,7 +31,6 @@ export default class ColumnCustomization extends Vue {
   _ColumnCustomizationContentComponent?: ColumnCustomizationContent;
   _selectedData?: DataTableColumn[];
   _modalId?: string;
-  _chiMajorVersion = 5;
   _previousSelected?: DataTableColumn[];
 
   _modal() {
@@ -58,7 +57,6 @@ export default class ColumnCustomization extends Vue {
             </header>
             <div class={MODAL_CLASSES.CONTENT} key={this.key}>
               <ColumnCustomizationContent
-                version={this._chiMajorVersion}
                 available-columns={this._availableColumns}
                 selected-columns={this._selectedColumns}
               />

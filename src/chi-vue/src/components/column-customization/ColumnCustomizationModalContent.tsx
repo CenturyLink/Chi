@@ -11,7 +11,6 @@ import { _changeOrder } from '@/components/column-customization/utils';
 @Component
 export default class ColumnCustomizationContent extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
-  @Prop() version?: number;
   @Prop() selectedColumns?: DataTableColumn[];
 
   canMoveUp = true;
@@ -84,7 +83,6 @@ export default class ColumnCustomizationContent extends Vue {
             ${BUTTON_CLASSES.BUTTON}
             ${BUTTON_CLASSES.ICON_BUTTON}
             ${BUTTON_CLASSES.FLAT}
-            ${this.$props.version === 4 ? `${BUTTON_CLASSES.PRIMARY} ${PORTAL_CLASS}` : ''}
           `}
           aria-label={ariaLabel}>
           <div class={BUTTON_CLASSES.CONTENT}>
