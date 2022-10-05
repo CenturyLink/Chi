@@ -143,7 +143,6 @@ describe('Dropdown', () => {
       cy.get(`@dropdownTrigger`)
         .find(`.${ACTIVE_CLASS}`)
         .should('not.exist');
-
       cy.get('@dropdownTrigger')
         .click()
         .wait(500)
@@ -226,6 +225,7 @@ describe('Dropdown', () => {
           'dropdown'
         );
       });
+
       it('Should show the dropdown menu when show method is called', () => {
         cy.get(`@dropdownMenu`)
           .should(('not.be.visible'));
@@ -257,7 +257,7 @@ describe('Dropdown', () => {
         cy.get(`@dropdownMenu`)
           .should('be.visible');
         cy.get(`@dropdown`)
-          .then(function(dropdown){
+          .then(function(dropdown) {
             dropdown[0].hide();
             return new Promise(resolve => resolve(dropdown));
           })
