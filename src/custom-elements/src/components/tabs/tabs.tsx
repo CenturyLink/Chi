@@ -379,7 +379,13 @@ export class Tabs {
   }
 
   hideAllDropdowns() {
-    this.dropdowns.forEach(dropdown => dropdown.$elm$.hide());
+    Object.keys(this.dropdownKeys).forEach(id => {
+      const dropdownElement = this.el.querySelector(`#subLevelDropdown-${id}`);
+
+      if (dropdownElement) {
+        (dropdownElement as HTMLChiDropdownElement).hide();
+      }
+    });
   }
 
   render() {
@@ -450,6 +456,7 @@ export class Tabs {
             href="#"
             onClick={e => {
               this.handlerClickTab(e, tab, this.seeMoreTriggerAnchorElement);
+              this.seeMoreDropdown.hide();
               this.isSeeMoreActive = false;
             }}
             slot="menu"
