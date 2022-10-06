@@ -179,7 +179,9 @@ export default class DataTableFilters extends Vue {
         <div
           class={[
             CHECKBOX_CLASSES.checkbox,
-            mobile ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}` : UTILITY_CLASSES.ALIGN_SELF.CENTER,
+            mobile
+              ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`
+              : UTILITY_CLASSES.ALIGN_SELF.CENTER,
           ]}>
           <input
             id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
