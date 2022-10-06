@@ -182,7 +182,8 @@ export class Tabs {
               <a
                 class={`${DROPDOWN_CLASSES.MENU_ITEM} ${UTILITY_CLASSES.JUSTIFY.BETWEEN} ${DROPDOWN_CHILD_MENU_ITEM}`}
                 id={child.id}
-                onMouseEnter={() => this.handlerTabMouseenter(child)}
+                onMouseEnter={() => this.handlerTabMouseEnter(child)}
+                onMouseLeave={e => this.handlerMouseLeave(e)}
                 onClick={e => {
                   const dropdownElement = this.el.querySelector(
                     `chi-dropdown#subLevelDropdown-${tab.id}`
@@ -300,10 +301,10 @@ export class Tabs {
     this.isSeeMoreVisible = this.tabs.findIndex(li => li.overflow) !== -1;
     this.activeTabElement = this.getActiveTabTrigger();
     this.setSlidingBorderStyles();
-    this.dropdowns.forEach(dropdown => dropdown.$elm$.hide());
+    this.hideAllDropdowns();
   };
 
-  handlerTabMouseenter = (tabData: TabTrigger) => {
+  handlerTabMouseEnter = (tabData: TabTrigger) => {
     if (!tabData.children) return;
 
     this.dropdownKeys[tabData.id] += 1;
@@ -316,6 +317,21 @@ export class Tabs {
     }
   };
 
+  handlerMouseLeave = (e: MouseEvent) => {
+    const elementTarget =
+      e.target === this.ulElement
+        ? DROPDOWN_CLASSES.MENU
+        : DROPDOWN_CLASSES.MENU_ITEM;
+    const elements = Array.from(document.getElementsByClassName(
+      elementTarget
+    ) as HTMLCollectionOf<HTMLElement>);
+    const isElementTarget = elements.some(el => el === e.relatedTarget);
+
+    if (!isElementTarget) {
+      this.hideAllDropdowns();
+    }
+  };
+
   @Listen('chiDropdownHide')
   hideDropdown() {
     this.isSeeMoreActive = false;
@@ -323,9 +339,8 @@ export class Tabs {
 
   isActiveTabOverflown() {
     return (
-      this.tabs.findIndex(
-        tab => tab.id === this.activeTab && tab.overflow
-      ) !== -1
+      this.tabs.findIndex(tab => tab.id === this.activeTab && tab.overflow) !==
+      -1
     );
   }
 
@@ -385,6 +400,16 @@ export class Tabs {
     this.slidingBorderWidth = `${size}px`;
   }
 
+  hideAllDropdowns() {
+    Object.keys(this.dropdownKeys).forEach(id => {
+      const dropdownElement = this.el.querySelector(`#subLevelDropdown-${id}`);
+
+      if (dropdownElement) {
+        (dropdownElement as HTMLChiDropdownElement).hide();
+      }
+    });
+  }
+
   render() {
     const tabElements =
       this.tabs &&
@@ -398,7 +423,10 @@ export class Tabs {
               }`}
               data-index={index}
               id={tab.id}
-              onMouseEnter={() => this.handlerTabMouseenter(tab)}
+              onMouseEnter={() => {
+                this.hideAllDropdowns();
+                this.handlerTabMouseEnter(tab);
+              }}
             >
               <a
                 href={`#${tab.id}`}
@@ -449,11 +477,8 @@ export class Tabs {
             }`}
             href="#"
             onClick={e => {
-              this.handlerClickTab(
-                e,
-                tab,
-                this.seeMoreTriggerAnchorElement
-              );
+              this.handlerClickTab(e, tab, this.seeMoreTriggerAnchorElement);
+              this.seeMoreDropdown.hide();
               this.isSeeMoreActive = false;
             }}
             slot="menu"
@@ -481,16 +506,17 @@ export class Tabs {
       <Host id={this.tabNavigationId}>
         <ul
           class={`
-          ${TABS_CLASSES.TABS}
-          ${this.slidingBorder && TABS_CLASSES.ANIMATE}
-          ${this.border && TABS_CLASSES.BORDER}
-          ${this.vertical && TABS_CLASSES.VERTICAL}
-          ${this.solid && TABS_CLASSES.SOLID}
-          ${this.sliding && TABS_CLASSES.SLIDING}
+            ${TABS_CLASSES.TABS}
+            ${this.slidingBorder && TABS_CLASSES.ANIMATE}
+            ${this.border && TABS_CLASSES.BORDER}
+            ${this.vertical && TABS_CLASSES.VERTICAL}
+            ${this.solid && TABS_CLASSES.SOLID}
+            ${this.sliding && TABS_CLASSES.SLIDING}
           `}
           ref={el => {
             this.ulElement = el;
           }}
+          onMouseLeave={e => this.handlerMouseLeave(e)}
           role="tablist"
         >
           {tabElements}
