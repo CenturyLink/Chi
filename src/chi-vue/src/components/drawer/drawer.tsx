@@ -23,7 +23,6 @@ export default class Drawer extends Vue {
   @Prop() backdrop!: Backdrop;
   @Prop() noHeader!: boolean;
   @Prop() nonClosable!: boolean;
-  @Prop() portal!: boolean;
   @Prop() position!: DrawerPositions;
   @Prop() title!: string;
 
