@@ -2,7 +2,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import SelectedColumns from './SelectedColumns';
 import AvailableColumns from './AvailableColumns';
 import { DataTableColumn } from '@/constants/types';
-import { BUTTON_CLASSES, ICON_CLASS, PORTAL_CLASS, UTILITY_CLASSES } from '@/constants/classes';
+import { BUTTON_CLASSES, ICON_CLASS, UTILITY_CLASSES } from '@/constants/classes';
 import { copyArrayOfObjects, findComponent } from '@/utils/utils';
 import ColumnCustomization from '@/components/column-customization/ColumnCustomization';
 import { DATA_TABLE_EVENTS } from '@/constants/events';

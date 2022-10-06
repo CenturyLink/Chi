@@ -8,7 +8,6 @@ export const DISABLED_SCROLL = '-disable-scroll';
 export const FLUID_CLASS = '-fluid';
 export const INVERSE_CLASS = '-inverse';
 export const ANIMATED_CLASS = '-animated';
-export const PORTAL_CLASS = '-portal';
 export const TRANSITIONING_CLASS = '-transitioning';
 export const SR_ONLY = '-sr--only';
 export const EXPAND_CLASS = '-expand';

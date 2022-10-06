@@ -9,7 +9,6 @@ export const FLUID_CLASS = '-fluid';
 export const INVERSE_CLASS = '-inverse';
 export const ANIMATE_CLASS = '-animate';
 export const ANIMATED_CLASS = '-animated';
-export const PORTAL_CLASS = '-portal';
 export const TRANSITIONING_CLASS = '-transitioning';
 export const SR_ONLY = '-sr--only';
 export const EXPAND_CLASS = '-expand';
@@ -295,7 +294,7 @@ export const TABS_CLASSES = {
   SLIDING_BORDER: 'chi-sliding-border',
   SOLID: '-solid',
   TRIGGER: 'chi-tabs__trigger',
-  VERTICAL: '-vertical',
+  VERTICAL: '-vertical'
 };
 //#endregion
 
