@@ -516,6 +516,96 @@ h3 Radio button and description
         </div>
       </fieldset>
 
+h3 Radio button with description and price
+.example.-mb--3
+  .-p--4
+    fieldset
+      legend.chi-label Legend
+      .chi-picker
+        input(type='radio', class='chi-picker__input', name='unique-name-prdp', id='unique-id-prdp1', checked)
+        label(for='unique-id-prdp1')
+          .chi-picker__content
+            .chi-picker__content--start.-w--100.-w-sm--65
+              div.chi-form__item.-row
+                span.chi-picker__radio
+                span.chi-picker__label
+                  | Option 1
+              div.chi-picker__description
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex.
+            .chi-picker__content--end
+              .chi-picker__label
+                | $0.00
+                span.-text--normal
+                  | /mo
+      .chi-picker
+        input(type='radio', class='chi-picker__input', name='unique-name-prdp', id='unique-id-prdp2')
+        label(for='unique-id-prdp2')
+          .chi-picker__content
+            .chi-picker__content--start.-w--100.-w-sm--65
+              div.chi-form__item.-row
+                span.chi-picker__radio
+                span.chi-picker__label
+                  | Option 2
+              div.chi-picker__description
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex.
+            .chi-picker__content--end
+              .chi-picker__label
+                | $19.95
+                span.-text--normal
+                  | /mo
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-single-select-description-with-price
+      li.-disabled
+        a(href=`#webcomponent-single-select-description-with-price`) Web Component
+      li.-active
+        a(href=`#html-single-select-description-with-price`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-single-select-description-with-price
+  .chi-tabs-panel.-active#html-single-select-description-with-price
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">Legend</legend>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-prdp" type="radio" id="unique-id-prdp1" />
+          <label for="unique-id-prdp1">
+            <div class="chi-picker__content">
+              <div class="chi-picker__content--start -w--100 -w-sm--65">
+                <div class="chi-form__item -row">
+                  <span class="chi-picker__radio"></span>
+                  <span class="chi-picker__label">Option 1</span>
+                </div>
+                <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
+              </div>
+              <div class="chi-picker__content--end">
+                <div class="chi-picker__label">
+                  $0.00
+                  <span class="-text--normal">/mo</span>
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+        <div class="chi-picker">
+          <input class="chi-picker__input" name="unique-name-prdp" type="radio" id="unique-id-prdp2" />
+          <label for="unique-id-prdp2">
+            <div class="chi-picker__content">
+              <div class="chi-picker__content--start -w--100 -w-sm--6">
+                <div class="chi-form__item -row">
+                  <span class="chi-picker__radio"></span>
+                  <span class="chi-picker__label">Option 2</span>
+                </div>
+                <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
+              </div>
+              <div class="chi-picker__content--end">
+                <div class="chi-picker__label">
+                  $19.95
+                  <span class="-text--normal">/mo</span>
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+      </fieldset>
+
 script.
   document.addEventListener(
     'DOMContentLoaded',

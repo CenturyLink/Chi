@@ -26,7 +26,6 @@ import AdvancedFilters from './AdvancedFilters';
 import Drawer from '../drawer/drawer';
 import store, { STORE_KEY } from '@/store';
 import { getModule } from 'vuex-module-decorators';
-import { detectMajorChiVersion } from '@/utils/utils';
 import { ScopedSlotChildren } from 'vue/types/vnode';
 import './filters.scss';
 
@@ -115,8 +114,7 @@ export default class DataTableFilters extends Vue {
           value={!mobile ? this.filterElementValue[filter.id] : this.filterElementValueLive[filter.id]}
           class={`
             ${SELECT_CLASSES.SELECT}
-            ${mobile && '-mb--1'}
-            ${this._chiMajorVersion === 4 ? `${GENERIC_SIZE_CLASSES.LG} ${this.portal && PORTAL_CLASS}` : ''}
+            ${mobile && UTILITY_CLASSES.MARGIN.BOTTOM[1]}
           `}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select', mobile || false)}>
@@ -142,8 +140,8 @@ export default class DataTableFilters extends Vue {
           value={!mobile ? this.filterElementValue[filter.id] : this.filterElementValueLive[filter.id]}
           class={`
             ${INPUT_CLASSES.INPUT}
-            ${mobile && '-mb--1'}
-            ${this._chiMajorVersion === 4 ? GENERIC_SIZE_CLASSES.LG : ''}`}
+            ${mobile && UTILITY_CLASSES.MARGIN.BOTTOM[1]}
+            `}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'input', mobile || false)}
           placeholder={filter.placeholder || null}
@@ -166,7 +164,7 @@ export default class DataTableFilters extends Vue {
           value={!mobile ? this.filterElementValue[filter.id] : this.filterElementValueLive[filter.id]}
           id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
           data-filter={filter.name}
-          class={`${INPUT_CLASSES.INPUT} ${mobile && '-mb--1'} ${GENERIC_SIZE_CLASSES.LG}`}
+          class={`${INPUT_CLASSES.INPUT} ${mobile && UTILITY_CLASSES.MARGIN.BOTTOM[1]} ${GENERIC_SIZE_CLASSES.LG}`}
           placeholder={filter.placeholder || null}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'textarea', mobile || false)}
         />
@@ -184,7 +182,9 @@ export default class DataTableFilters extends Vue {
         <div
           class={[
             CHECKBOX_CLASSES.checkbox,
-            mobile ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} -mb--1` : UTILITY_CLASSES.ALIGN_SELF.CENTER,
+            mobile
+              ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`
+              : UTILITY_CLASSES.ALIGN_SELF.CENTER,
           ]}>
           <input
             id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
@@ -320,10 +320,6 @@ export default class DataTableFilters extends Vue {
     this.drawerActive = !this.drawerActive;
   }
 
-  beforeMount() {
-    this._chiMajorVersion = detectMajorChiVersion();
-  }
-
   render() {
     const standardFilters: JSX.Element[] = [];
     const standardFiltersMobile: JSX.Element[] = [];
@@ -398,11 +394,6 @@ export default class DataTableFilters extends Vue {
                 onClick={() => this.toggleDrawer()}
                 class={`
                 ${BUTTON_CLASSES.BUTTON}
-                ${
-                  this._chiMajorVersion === 4
-                    ? `${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.OUTLINE} ${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -bg--white -uppercase`
-                    : ''
-                }
                 `}>
                 Cancel
               </button>
@@ -415,11 +406,6 @@ export default class DataTableFilters extends Vue {
                 ${BUTTON_CLASSES.BUTTON}
                 ${BUTTON_CLASSES.PRIMARY}
                 ${UTILITY_CLASSES.MARGIN.LEFT[2]}
-                ${
-                  this._chiMajorVersion === 4
-                    ? `${BUTTON_CLASSES.SIZES.LG} ${UTILITY_CLASSES.PADDING.X[4]} -uppercase`
-                    : ''
-                }
                 `}>
                 Apply
               </button>

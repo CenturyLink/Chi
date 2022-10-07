@@ -13,9 +13,9 @@ import {
   ACTIVE_CLASS,
   ANIMATE_CLASS,
   DROPDOWN_CLASSES,
-  LIST_CLASS
+  LIST_CLASS,
+  FLUID_CLASS
 } from '../../constants/classes';
-import { DROPDOWN_EVENTS } from '../../constants/events';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
 
@@ -28,11 +28,15 @@ export class Dropdown {
   /**
    * To set the state of Dropdown
    */
-  @Prop() active: boolean;
+  @Prop({ reflect: true }) active = false;
   /**
    * To enable the description of Dropdown menu item
    */
   @Prop() description?: boolean;
+  /**
+   * To render Dropdowns that span the full width of the parent container
+   */
+   @Prop() fluid: boolean;
   /**
    * To configure activation on hover of the Dropdown with base-style button trigger
    */
@@ -52,7 +56,7 @@ export class Dropdown {
   /**
    * To provide selector of an external reference element
    */
-  @Prop() reference: string;
+  @Prop({ reflect: true }) reference: string;
   /**
    * To prevent hiding of the Dropdown when clicking outside its bounds
    */
@@ -60,11 +64,11 @@ export class Dropdown {
   /**
    * Triggered when hiding the Dropdown
    */
-  @Event({ eventName: DROPDOWN_EVENTS.HIDE }) eventHide: EventEmitter;
+  @Event({ eventName: 'chiDropdownHide' }) eventHide: EventEmitter;
   /**
    * Triggered when showing the Dropdown
    */
-  @Event({ eventName: DROPDOWN_EVENTS.SHOW }) eventShow: EventEmitter;
+  @Event({ eventName: 'chiDropdownShow' }) eventShow: EventEmitter;
 
   @Element() el: HTMLElement;
 
@@ -113,6 +117,22 @@ export class Dropdown {
     }
   }
 
+  @Watch('active')
+  updateActive(newActiveState: boolean, oldActiveState: boolean) {
+    if (newActiveState !== oldActiveState) {
+      if (newActiveState) {
+        this.displayBlock();
+      } else {
+        this.displayNone();
+      }
+    }
+  }
+
+  @Method()
+  async updatePopper() {
+    this._popper.update();
+  }
+
   private _configureDropdownPopper() {
     if (!this._referenceElement) {
       if (this._popper) {
@@ -141,6 +161,14 @@ export class Dropdown {
         placement: this.position || 'bottom'
       }
     );
+  }
+
+  displayBlock() {
+    this._dropdownMenuElement.style.display = 'block';
+  }
+
+  displayNone() {
+    this._dropdownMenuElement.style.display = 'none';
   }
 
   emitHide() {
@@ -184,7 +212,7 @@ export class Dropdown {
    */
   @Method()
   async hide() {
-    this._dropdownMenuElement.style.display = 'none';
+    this.displayNone();
     this.active = false;
     this.emitHide();
   }
@@ -194,7 +222,7 @@ export class Dropdown {
    */
   @Method()
   async show() {
-    this._dropdownMenuElement.style.display = 'block';
+    this.displayBlock();
     this.active = true;
     if (this._popper) {
       this._popper.update();
@@ -219,9 +247,13 @@ export class Dropdown {
       <chi-button
         onChiClick={this.handlerClickTrigger}
         onChiMouseEnter={this.handlerMouseEnter}
+        class={`
+          ${this.fluid ? FLUID_CLASS : ''}
+        `}
         extra-class={`
           ${DROPDOWN_CLASSES.TRIGGER} 
-          ${this.active ? ACTIVE_CLASS : ''} 
+          ${this.active ? ACTIVE_CLASS : ''}
+          ${this.fluid ? FLUID_CLASS : ''} 
           ${this.animateChevron ? ANIMATE_CLASS : ''}
         `}
         ref={ref => (this._referenceElement = ref)}
@@ -235,7 +267,8 @@ export class Dropdown {
       <div
         class={`
           ${DROPDOWN_CLASSES.MENU} 
-          ${this.active ? ACTIVE_CLASS : ''} 
+          ${this.active ? ACTIVE_CLASS : ''}
+          ${this.fluid ? FLUID_CLASS : ''} 
           ${this.description ? LIST_CLASS : ''}
         `}
         ref={ref => (this._dropdownMenuElement = ref)}
@@ -247,9 +280,11 @@ export class Dropdown {
     if (trigger) {
       return (
         <div
-          class={`${DROPDOWN_CLASSES.DROPDOWN} ${
-            this.active ? ACTIVE_CLASS : ''
-          }`}
+          class={`
+            ${DROPDOWN_CLASSES.DROPDOWN}
+            ${this.active ? ACTIVE_CLASS : ''}
+            ${this.fluid ? FLUID_CLASS : ''}
+          `}
           onMouseLeave={this.handlerMouseLeave}
         >
           {trigger}

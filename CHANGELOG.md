@@ -1,4 +1,13 @@
 # CHANGELOG
+## 5.21.0 (September 29, 2022)
+### Components
+#### Added
+* Added: Picker layout has been improved to better support pricing patterns.
+* Added: Dropdown now supports fluid option spanning full width of parent container.
+* Added: Alert now supports clickable option by placing it inside a link or button component.
+#### Changed
+* Changed: Solid Tabs active border animation has changed from lateral sliding to animating height.
+
 ## 5.20.1 (September 1, 2022)
 ### Components
 #### Fixed
