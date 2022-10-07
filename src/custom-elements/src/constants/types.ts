@@ -14,6 +14,7 @@ export type GeneralPositionsExtended = typeof CARDINAL_EXTENDED_POSITIONS[number
 
 export interface TabTrigger {
   children: TabTrigger[];
+  parent?: TabTrigger;
   id: string;
   label: string,
   overflow: boolean;
