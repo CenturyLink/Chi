@@ -48,8 +48,6 @@
   }
 
   &__trigger {
-    padding: $dropdown-trigger-md-padding;
-
     &,
     &.-xs,
     &.-sm,
@@ -60,23 +58,24 @@
     }
 
     &.-xs {
-      padding: $dropdown-trigger-xs-padding;
+      padding: $dropdown-trigger-base-xs-padding-y $dropdown-trigger-xs-padding-x;
     }
 
     &.-sm {
-      padding: $dropdown-trigger-sm-padding;
+      padding: $dropdown-trigger-base-sm-padding-y $dropdown-trigger-sm-padding-x;
     }
 
+    &,
     &.-md {
-      padding: $dropdown-trigger-md-padding;
+      padding: $dropdown-trigger-base-md-padding-y $dropdown-trigger-md-padding-x;
     }
 
     &.-lg {
-      padding: $dropdown-trigger-lg-padding;
+      padding: $dropdown-trigger-base-lg-padding-y $dropdown-trigger-lg-padding-x;
     }
 
     &.-xl {
-      padding: $dropdown-trigger-xl-padding;
+      padding: $dropdown-trigger-base-xl-padding-y $dropdown-trigger-xl-padding-x;
     }
 
     &.-primary,
@@ -90,6 +89,27 @@
         &::after {
           color: inherit;
         }
+      }
+
+      &.-xs {
+        padding: $dropdown-trigger-xs-padding-y $dropdown-trigger-xs-padding-x;
+      }
+
+      &.-sm {
+        padding: $dropdown-trigger-sm-padding-y $dropdown-trigger-sm-padding-x;
+      }
+
+      &,
+      &.-md {
+        padding: $dropdown-trigger-md-padding-y $dropdown-trigger-md-padding-x;
+      }
+
+      &.-lg {
+        padding: $dropdown-trigger-lg-padding-y $dropdown-trigger-lg-padding-x;
+      }
+
+      &.-xl {
+        padding: $dropdown-trigger-xl-padding-y $dropdown-trigger-xl-padding-x;
       }
     }
 
@@ -191,22 +211,24 @@
     }
 
     &.chi-button {
-      &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger) {
+      &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger):not(.-outline) {
         color: $dropdown-button-text-color;
-      }
 
-      &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger):not(.-flat) {
-        border-color: $dropdown-button-border-color;
+        &:not(.-flat) {
+          background-color: $dropdown-button-background-color;
+          border: $dropdown-button-border-width solid $dropdown-button-border-color;
+          box-shadow: $dropdown-button-box-shadow;
 
-        &:hover {
-          background-color: $dropdown-button-hover-background-color;
-          border-color: $dropdown-button-hover-border-color;
-        }
+          &:hover {
+            background-color: $dropdown-button-hover-background-color;
+            border-color: $dropdown-button-hover-border-color;
+          }
 
-        &:active,
-        &.-active {
-          background-color: $dropdown-button-active-background-color;
-          border-color: $dropdown-button-active-border-color;
+          &:active,
+          &.-active {
+            background-color: $dropdown-button-active-background-color;
+            border-color: $dropdown-button-active-border-color;
+          }
         }
       }
     }
