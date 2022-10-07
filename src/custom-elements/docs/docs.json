@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-09-12T23:04:53",
+  "timestamp": "2022-09-29T20:38:53",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1629,9 +1629,10 @@
           "type": "boolean",
           "mutable": false,
           "attr": "active",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "To set the state of Dropdown",
           "docsTags": [],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
@@ -1814,7 +1815,7 @@
           "type": "string",
           "mutable": false,
           "attr": "reference",
-          "reflectToAttr": false,
+          "reflectToAttr": true,
           "docs": "To provide selector of an external reference element",
           "docsTags": [],
           "values": [
@@ -1859,11 +1860,22 @@
           "parameters": [],
           "docs": "Toggles active state (show/hide)",
           "docsTags": []
+        },
+        {
+          "name": "updatePopper",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": ""
+          },
+          "signature": "updatePopper() => Promise<void>",
+          "parameters": [],
+          "docs": "",
+          "docsTags": []
         }
       ],
       "events": [
         {
-          "event": "eventHide",
+          "event": "chiDropdownHide",
           "detail": "any",
           "bubbles": true,
           "cancelable": true,
@@ -1872,7 +1884,7 @@
           "docsTags": []
         },
         {
-          "event": "eventShow",
+          "event": "chiDropdownShow",
           "detail": "any",
           "bubbles": true,
           "cancelable": true,
@@ -1883,7 +1895,9 @@
       ],
       "styles": [],
       "slots": [],
-      "dependents": [],
+      "dependents": [
+        "chi-tabs"
+      ],
       "dependencies": [
         "chi-button"
       ],
@@ -1893,6 +1907,9 @@
         ],
         "chi-button": [
           "chi-icon"
+        ],
+        "chi-tabs": [
+          "chi-dropdown"
         ]
       }
     },
@@ -5040,6 +5057,162 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/tabs/tabs.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-tabs",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "activeTab",
+          "type": "string",
+          "mutable": false,
+          "attr": "active-tab",
+          "reflectToAttr": false,
+          "docs": "To provide ID of the active tab",
+          "docsTags": [],
+          "default": "''",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "border",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "border",
+          "reflectToAttr": false,
+          "docs": "To enable border",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "seeMoreMessage",
+          "type": "string",
+          "mutable": false,
+          "attr": "see-more-message",
+          "reflectToAttr": false,
+          "docs": "To configure See more Dropdown trigger message",
+          "docsTags": [],
+          "default": "TABS_SEE_MORE_DEFAULT_MESSAGE",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "slidingBorder",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "sliding-border",
+          "reflectToAttr": false,
+          "docs": "To enable animation of the border",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "solid",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "solid",
+          "reflectToAttr": false,
+          "docs": "To enable solid style of Tabs",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "tabs",
+          "type": "TabTrigger[]",
+          "mutable": true,
+          "reflectToAttr": false,
+          "docs": "To provide the data for Tabs",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "TabTrigger[]"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "vertical",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "vertical",
+          "reflectToAttr": false,
+          "docs": "To enable vertical variant of Tabs",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [
+        {
+          "event": "chiTabChange",
+          "detail": "string",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when the user activates a tab",
+          "docsTags": []
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "dependents": [],
+      "dependencies": [
+        "chi-dropdown"
+      ],
+      "dependencyGraph": {
+        "chi-tabs": [
+          "chi-dropdown"
+        ],
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ]
+      }
     },
     {
       "filePath": "src/components/text-input/text-input.tsx",

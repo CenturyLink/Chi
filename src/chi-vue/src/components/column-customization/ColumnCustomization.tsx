@@ -1,5 +1,5 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import { detectMajorChiVersion, findComponent, uuid4 } from '@/utils/utils';
+import { findComponent, uuid4 } from '@/utils/utils';
 import {
   BACKDROP_CLASSES,
   BUTTON_CLASSES,
@@ -204,11 +204,6 @@ export default class ColumnCustomization extends Vue {
       });
     }
   }
-
-  beforeMount() {
-    this._chiMajorVersion = detectMajorChiVersion();
-  }
-
   render() {
     const modalButton = (
       <button
@@ -219,7 +214,7 @@ export default class ColumnCustomization extends Vue {
           ${BUTTON_CLASSES.BUTTON}
           ${BUTTON_CLASSES.ICON_BUTTON}
           ${BUTTON_CLASSES.FLAT}
-          ${this._chiMajorVersion === 4 ? `${PORTAL_CLASS} ${BUTTON_CLASSES.PRIMARY}` : ''}`}>
+          `}>
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-table-column-settings`} aria-hidden="true" />
         </div>
