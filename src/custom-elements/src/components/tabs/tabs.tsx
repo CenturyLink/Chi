@@ -145,7 +145,7 @@ export class Tabs {
     return sum;
   }
 
-  setParentTabActive = (tab: TabTrigger) => {
+  setParentTabActive(tab: TabTrigger) {
     if (tab.parent) {
       const parentTabElement = document.getElementById(
         tab.parent.id
@@ -154,7 +154,7 @@ export class Tabs {
       parentTabElement.classList.add(ACTIVE_CLASS);
       this.setParentTabActive(tab.parent);
     }
-  };
+  }
 
   removeActiveItems() {
     if (
@@ -167,7 +167,7 @@ export class Tabs {
     Object.keys(this.dropdownKeys).forEach(id => {
       const menuItemElement = document.getElementById(id);
 
-      if (menuItemElement.classList.contains(ACTIVE_CLASS)) {
+      if (menuItemElement && menuItemElement.classList.contains(ACTIVE_CLASS)) {
         menuItemElement.classList.remove(ACTIVE_CLASS);
       }
     });
