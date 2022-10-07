@@ -32,7 +32,6 @@ import { uuid4 } from '../../utils/utils';
 import _ from 'lodash';
 
 const MARGIN_LEFT = 24;
-const DROPDOWN_CHILD_MENU_ITEM = 'dropdown-child-menu-item'
 
 @Component({
   tag: 'chi-tabs',
@@ -93,12 +92,12 @@ export class Tabs {
   private ulElement: HTMLUListElement;
   private uuid4: string = uuid4();
   private seeMoreTriggerId: string = `see-more-trigger-${this.uuid4}`;
-  private tabNavigationId: string = `chi-tabbed-navigation-${this.uuid4}`;
   private slidingBorderLeft: any;
   private slidingBorderWidth: any;
   private dropdowns = [];
   private dropdownKeys = {};
   private seeMoreDropdown: HTMLChiDropdownElement;
+  private childActiveTab: HTMLAnchorElement;
 
   //#region Lifecycle hooks
   connectedCallback() {
@@ -127,7 +126,6 @@ export class Tabs {
   //#endregion
 
   activateTab(id: string, element: HTMLElement) {
-    this.removeActiveClassFromChildDropdownItems();
     this.activeTab = id;
     this.activeTabElement = element;
     this.chiTabChange.emit(this.activeTab);
@@ -147,21 +145,30 @@ export class Tabs {
     return sum;
   }
 
-  removeActiveClassFromChildDropdownItems() {
-    const activeDropdownChildElements = document.getElementById(this.tabNavigationId).getElementsByClassName(`${DROPDOWN_CHILD_MENU_ITEM} ${ACTIVE_CLASS}`);
-    Array.from(activeDropdownChildElements).forEach(dropdownChild => dropdownChild.classList.remove(ACTIVE_CLASS));
-  }
+  setParentTabActive = (tab: TabTrigger) => {
+    if (tab.parent) {
+      const parentTabElement = document.getElementById(
+        tab.parent.id
+      ) as HTMLAnchorElement;
 
-  addActiveClassForDropdown(dropdownSelectedItem: string) {
-    this.dropdowns.forEach(dropdownNode => {
-      const dropdownNodeId = dropdownNode.$attrs$.reference.replace('#', '');
-      if (dropdownSelectedItem.indexOf(dropdownNodeId) >= 0) {
-        const dropdownItemLinks = document.getElementById(this.tabNavigationId).querySelectorAll(`#${dropdownNode.$attrs$.id} a.${DROPDOWN_CHILD_MENU_ITEM}`);
-        Array.from(dropdownItemLinks).forEach((dropdownLink) => {
-          if (dropdownSelectedItem.indexOf(dropdownLink.id) >= 0) {
-            dropdownLink.classList.add(ACTIVE_CLASS)
-          }
-        })
+      parentTabElement.classList.add(ACTIVE_CLASS);
+      this.setParentTabActive(tab.parent);
+    }
+  };
+
+  removeActiveItems() {
+    if (
+      this.childActiveTab &&
+      this.childActiveTab.classList.contains(ACTIVE_CLASS)
+    ) {
+      this.childActiveTab.classList.remove(ACTIVE_CLASS);
+    }
+
+    Object.keys(this.dropdownKeys).forEach(id => {
+      const menuItemElement = document.getElementById(id);
+
+      if (menuItemElement.classList.contains(ACTIVE_CLASS)) {
+        menuItemElement.classList.remove(ACTIVE_CLASS);
       }
     });
   }
@@ -178,37 +185,44 @@ export class Tabs {
             position={level === 0 ? 'bottom-start' : 'right-start'}
             reference={`#${tab.id}`}
           >
-            {tab.children.map(child => (
-              <a
-                class={`${DROPDOWN_CLASSES.MENU_ITEM} ${UTILITY_CLASSES.JUSTIFY.BETWEEN} ${DROPDOWN_CHILD_MENU_ITEM}`}
-                id={child.id}
-                onMouseEnter={() => this.handlerTabMouseEnter(child)}
-                onMouseLeave={e => this.handlerMouseLeave(e)}
-                onClick={e => {
-                  const dropdownElement = this.el.querySelector(
-                    `chi-dropdown#subLevelDropdown-${tab.id}`
-                  ) as HTMLChiDropdownElement;
-                  const firstLevelTriggerElement = this.el.querySelector(
-                    `li#${firstLevelId} a`
-                  ) as HTMLElement;
-                  this.handlerClickTab(e, child, firstLevelTriggerElement);
-                  this.addActiveClassForDropdown(child.id);
-                  this.isSeeMoreActive = false;
-                  if (dropdownElement) {
-                    dropdownElement.hide();
-                  }
-                }}
-                slot="menu"
-              >
-                {child.label}
-                {child.children && child.children.length > 0 && (
-                  <i
-                    class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-right ${GENERIC_SIZES.XS}`}
-                    aria-hidden="true"
-                  ></i>
-                )}
-              </a>
-            ))}
+            {tab.children.map(child => {
+              child.parent = tab;
+
+              return (
+                <a
+                  class={`${DROPDOWN_CLASSES.MENU_ITEM} ${UTILITY_CLASSES.JUSTIFY.BETWEEN}`}
+                  id={child.id}
+                  onMouseEnter={() => this.handlerTabMouseEnter(child)}
+                  onMouseLeave={e => this.handlerMouseLeave(e)}
+                  onClick={e => {
+                    const dropdownElement = this.el.querySelector(
+                      `chi-dropdown#subLevelDropdown-${tab.id}`
+                    ) as HTMLChiDropdownElement;
+                    const firstLevelTriggerElement = this.el.querySelector(
+                      `li#${firstLevelId} a`
+                    ) as HTMLElement;
+
+                    this.handlerClickTab(e, child, firstLevelTriggerElement);
+                    this.isSeeMoreActive = false;
+                    if (dropdownElement) {
+                      this.childActiveTab = e.target as HTMLAnchorElement;
+                      this.childActiveTab.classList.add(ACTIVE_CLASS);
+                      this.setParentTabActive(child);
+                      dropdownElement.hide();
+                    }
+                  }}
+                  slot="menu"
+                >
+                  {child.label}
+                  {child.children && child.children.length > 0 && (
+                    <i
+                      class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-right ${GENERIC_SIZES.XS}`}
+                      aria-hidden="true"
+                    ></i>
+                  )}
+                </a>
+              );
+            })}
           </chi-dropdown>
         );
         this.createDropdowns(tab.children, level + 1, firstLevelId);
@@ -292,6 +306,7 @@ export class Tabs {
       );
     }
 
+    this.removeActiveItems();
     this.activateTab(tabData.id, element);
   }
 
@@ -502,8 +517,9 @@ export class Tabs {
       ),
       ...this.dropdowns
     ];
+
     return (
-      <Host id={this.tabNavigationId}>
+      <Host>
         <ul
           class={`
             ${TABS_CLASSES.TABS}
