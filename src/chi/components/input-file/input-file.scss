@@ -53,7 +53,7 @@ $sizes: (
       &::before {
         align-items: center;
         background-color: $file-input-button-background-color;
-        border: 0.0625rem solid $file-input-button-border-color;
+        border: $file-input-button-border-width solid $file-input-button-border-color;
         border-radius: $border-radius;
         box-shadow: $file-input-button-box-shadow;
         color: $file-input-button-text-color;
@@ -101,7 +101,7 @@ $sizes: (
     &:focus,
     &.-focus {
       & + label::before {
-        border: 0.0625rem solid $file-input-button-focus-border-color;
+        border: $file-input-button-border-width solid $file-input-button-focus-border-color;
         outline: 0.125rem solid $file-input-button-focus-outline-color;
         outline-offset: 0.0625rem;
         z-index: $zindex-prominent;
