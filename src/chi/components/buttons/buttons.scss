@@ -470,8 +470,10 @@ $sizes: (
         color: inherit;
       }
 
-      &.-icon {
-        padding: $button-icon-md-padding;
+      &:not(.chi-dropdown__trigger) {
+        &.-icon {
+          padding: $button-icon-md-padding;
+        }
       }
 
       @each $type in map-keys($sizes) {
@@ -496,8 +498,10 @@ $sizes: (
           }
 
           &.-icon {
-            padding: map-get(map-get(map-get($sizes, $type), icons), padding);
-            line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
+            &:not(.chi-dropdown__trigger) {
+              padding: map-get(map-get(map-get($sizes, $type), icons), padding);
+              line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
+            }
           }
         }
       }
