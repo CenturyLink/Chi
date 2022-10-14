@@ -8,20 +8,12 @@ export const DISABLED_SCROLL = '-disable-scroll';
 export const FLUID_CLASS = '-fluid';
 export const INVERSE_CLASS = '-inverse';
 export const ANIMATED_CLASS = '-animated';
-export const PORTAL_CLASS = '-portal';
 export const TRANSITIONING_CLASS = '-transitioning';
 export const SR_ONLY = '-sr--only';
 export const EXPAND_CLASS = '-expand';
 export const EXPANDED_CLASS = '-expanded';
 export const COLLAPSED_CLASS = '-collapsed';
 export const ONE_LINK_TX = 'OneLinkTx';
-export const GENERIC_SIZES = {
-  XS: '-xs',
-  SM: '-sm',
-  MD: '-md',
-  LG: '-lg',
-  XL: '-xl',
-};
 //#endregion
 
 //#region Accordion

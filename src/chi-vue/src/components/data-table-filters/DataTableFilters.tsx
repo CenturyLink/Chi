@@ -15,7 +15,6 @@ import {
   GENERIC_SIZE_CLASSES,
   ICON_CLASS,
   INPUT_CLASSES,
-  PORTAL_CLASS,
   SELECT_CLASSES,
   UTILITY_CLASSES,
 } from '@/constants/classes';
@@ -33,7 +32,6 @@ import './filters.scss';
 export default class DataTableFilters extends Vue {
   @Prop() filtersData?: DataTableFiltersData;
   @Prop() customItems?: DataTableCustomItem[];
-  @Prop() portal?: boolean;
 
   _filtersData?: DataTableFiltersData;
   _advancedFiltersData?: DataTableFilter[];
@@ -41,7 +39,6 @@ export default class DataTableFilters extends Vue {
   _drawerID?: string;
   drawerActive?: boolean = false;
   storeModule?: any;
-  _chiMajorVersion = 5;
 
   beforeCreate() {
     this._filtersData = {
@@ -367,7 +364,7 @@ export default class DataTableFilters extends Vue {
         </div>
         <div class={`${DATA_TABLE_CLASSES.FILTERS}-mobile`}>
           <button
-            class={`${BUTTON_CLASSES.BUTTON} ${PORTAL_CLASS} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT} ${DRAWER_CLASSES.TRIGGER}`}
+            class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT} ${DRAWER_CLASSES.TRIGGER}`}
             onclick={() => this.toggleDrawer()}
             data-target={this._drawerID}
             aria-label="Open Drawer">
