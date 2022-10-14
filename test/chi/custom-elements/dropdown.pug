@@ -4,6 +4,10 @@ title: Dropdown
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
+- var positions = ['top', 'right', 'bottom', 'left', 'top-start', 'top-end', 'right-start', 'right-end', 'bottom-start', 'bottom-end', 'left-start', 'left-end'];
+- var methods = ['toggle', 'show', 'hide']
+- var events = ['show', 'hide']
+
 .-mt--5(style='width: 500px; height: 500px;')
   span.-text--h2=`Base`
   .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
@@ -24,10 +28,6 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
     chi-dropdown(data-cy="animate-dropdown" active='false' button=`Animate` animate-chevron='true')
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
       a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
-
-- var positions = ['top', 'right', 'bottom', 'left', 'top-start', 'top-end', 'right-start', 'right-end', 'bottom-start', 'bottom-end', 'left-start', 'left-end'];
-- var methods = ['toggle', 'show', 'hide']
-- var events = ['show', 'hide']
 
 each position in positions
   .-mt--5(class=`test-${position}` style='width: 500px; height: 500px;')
