@@ -12,7 +12,7 @@ import {
 import {
   ACTIVE_CLASS,
   DROPDOWN_CLASSES,
-  GENERIC_SIZES,
+  GENERIC_SIZE_CLASSES,
   ICON_CLASS,
   TABS_CLASSES,
   UTILITY_CLASSES
@@ -216,7 +216,7 @@ export class Tabs {
                   {child.label}
                   {child.children && child.children.length > 0 && (
                     <i
-                      class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-right ${GENERIC_SIZES.XS}`}
+                      class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-right ${GENERIC_SIZE_CLASSES.XS}`}
                       aria-hidden="true"
                     ></i>
                   )}

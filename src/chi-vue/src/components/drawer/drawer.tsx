@@ -5,7 +5,6 @@ import {
   BACKDROP_CLASSES,
   CLOSED_CLASS,
   DRAWER_CLASSES,
-  PORTAL_CLASS,
   INVERSE_CLASS,
   BUTTON_CLASSES,
   ICON_CLASS,
@@ -24,7 +23,6 @@ export default class Drawer extends Vue {
   @Prop() backdrop!: Backdrop;
   @Prop() noHeader!: boolean;
   @Prop() nonClosable!: boolean;
-  @Prop() portal!: boolean;
   @Prop() position!: DrawerPositions;
   @Prop() title!: string;
 
@@ -167,7 +165,6 @@ export default class Drawer extends Vue {
           DRAWER_CLASSES.DRAWER,
           ANIMATED_CLASS,
           this.position ? `-${this.position}` : '',
-          this.portal ? PORTAL_CLASS : '',
           this.animationClasses.join(' '),
         ]
           .filter(cl => cl)
