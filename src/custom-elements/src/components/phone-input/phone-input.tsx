@@ -170,12 +170,16 @@ export class ChiPhoneInput {
     this.chiChange.emit(this.value);
   };
 
-  __validate = evt => {
-    const charCode = evt.which ? evt.which : evt.keyCode;
 
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) evt.preventDefault();
 
-    return true;
+  _keyPressHandler = (event: KeyboardEvent): void => {
+    this._checkNoCharactersInInput(event);
+  }
+  _checkNoCharactersInInput(event : KeyboardEvent) {
+    const inputKey = event.code;
+    if (!inputKey.includes('Digit')) {
+      event.preventDefault();
+    }
   };
 
   _inputHandler = (event: Event): void => {
@@ -293,7 +297,7 @@ export class ChiPhoneInput {
         value={this._suffix}
         onChiChange={this._suffixInputChangeHandler}
         onChiInput={this._inputHandler}
-        onKeyPress={this.__validate}
+        onKeyPress={this._keyPressHandler}
       />
     );
 
