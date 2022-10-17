@@ -6,12 +6,34 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 - var positions = ['top', 'right', 'bottom', 'left', 'top-start', 'top-end', 'right-start', 'right-end', 'bottom-start', 'bottom-end', 'left-start', 'left-end'];
 - var methods = ['toggle', 'show', 'hide']
+- var events = ['show', 'hide']
+
+.-mt--5(style='width: 500px; height: 500px;')
+  span.-text--h2=`Base`
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    chi-dropdown(data-cy="base-dropdown" active='false' button=`Base`)
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+
+.-mt--5(style='width: 500px; height: 500px;')
+  span.-text--h2=`Hover`
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    chi-dropdown(data-cy="hover-dropdown" active='false' hover='true' button=`Hover`)
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+
+.-mt--5(style='width: 500px; height: 500px;')
+  span.-text--h2=`Animate`
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    chi-dropdown(data-cy="animate-dropdown" active='false' button=`Animate` animate-chevron='true')
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
 each position in positions
   .-mt--5(class=`test-${position}` style='width: 500px; height: 500px;')
     span.-text--h2=`Position - ${position}`
     .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
-      chi-dropdown(active position=`${position}` button=`${position}`)
+      chi-dropdown(data-cy=`position-dropdown-${position}` active='false' position=`${position}` button=`${position}`)
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
@@ -19,7 +41,7 @@ each method in methods
   .-mt--5(class=`test-${method}` style='width: 500px; height: 500px;')
     span.-text--h2=`Method - ${method}`
     .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
-      chi-dropdown(id=`test-${method}-dropdown` position="bottom" prevent-auto-hide=method == 'hide' ? true : false active=method == 'hide' ? true : false)
+      chi-dropdown(id=`test-${method}-dropdown` data-cy=`method-dropdown-${method}` position="bottom" prevent-auto-hide=method == 'hide' ? true : false active=method == 'hide' ? true : false)
         chi-button(
           alternative-text="Button action"
           id=`test-${method}-trigger`
@@ -35,6 +57,14 @@ each position in positions
     span.-text--h2 Hover - #{position}
     .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
       chi-dropdown(position=position active hover button=`Test hover - ${position}`)
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+
+each event in events
+  .-mt--5(class=`test-${event}` style='width: 500px; height: 500px;')
+    span.-text--h2=`Event - ${event}`
+    .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+      chi-dropdown(id=`test-event-${event}-dropdown` data-cy=`event-dropdown-${event}` button=`event-${event}` prevent-auto-hide=event == 'hide' ? true : false active=event == 'hide' ? true : false)
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
         a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
