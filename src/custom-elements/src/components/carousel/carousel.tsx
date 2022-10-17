@@ -225,8 +225,14 @@ export class Carousel {
     this.chiViewChange.emit(view);
   }
 
+  _areThereMultipleItems() {
+    const carouselItems = this.el.querySelectorAll(`.${CAROUSEL_CLASSES.ITEM}`);
+
+    return carouselItems.length > 1;
+  }
+
   render() {
-    const prevButton = <div class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.PREVIOUS}`} onClick={() => this.prevView()}>
+    const prevButton = this._areThereMultipleItems() && <div class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.PREVIOUS}`} onClick={() => this.prevView()}>
       {
         this.customPrevButton ?
           <slot name="previous"></slot> :
@@ -235,7 +241,7 @@ export class Carousel {
           </chi-button>
       }
     </div>;
-    const nextButton = <div class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.NEXT}`} onClick={() => this.nextView()}>
+    const nextButton = this._areThereMultipleItems() && <div class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.NEXT}`} onClick={() => this.nextView()}>
       {
         this.customNextButton ?
           <slot name="next"></slot> :
