@@ -170,17 +170,17 @@ export class ChiPhoneInput {
     this.chiChange.emit(this.value);
   };
 
-
-
   _keyPressHandler = (event: KeyboardEvent): void => {
     this._checkNoCharactersInInput(event);
-  }
-  _checkNoCharactersInInput(event : KeyboardEvent) {
+  };
+
+  _checkNoCharactersInInput(event: KeyboardEvent) {
     const inputKey = event.code;
+    
     if (!inputKey.includes('Digit')) {
       event.preventDefault();
     }
-  };
+  }
 
   _inputHandler = (event: Event): void => {
     event.stopPropagation();
