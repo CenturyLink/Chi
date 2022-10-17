@@ -2,7 +2,7 @@ import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
 import SelectedColumns from './SelectedColumns';
 import AvailableColumns from './AvailableColumns';
 import { DataTableColumn } from '@/constants/types';
-import { BUTTON_CLASSES, ICON_CLASS, PORTAL_CLASS, UTILITY_CLASSES } from '@/constants/classes';
+import { BUTTON_CLASSES, ICON_CLASS, UTILITY_CLASSES } from '@/constants/classes';
 import { copyArrayOfObjects, findComponent } from '@/utils/utils';
 import ColumnCustomization from '@/components/column-customization/ColumnCustomization';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
@@ -11,7 +11,6 @@ import { _changeOrder } from '@/components/column-customization/utils';
 @Component
 export default class ColumnCustomizationContent extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
-  @Prop() version?: number;
   @Prop() selectedColumns?: DataTableColumn[];
 
   canMoveUp = true;
@@ -84,7 +83,6 @@ export default class ColumnCustomizationContent extends Vue {
             ${BUTTON_CLASSES.BUTTON}
             ${BUTTON_CLASSES.ICON_BUTTON}
             ${BUTTON_CLASSES.FLAT}
-            ${this.$props.version === 4 ? `${BUTTON_CLASSES.PRIMARY} ${PORTAL_CLASS}` : ''}
           `}
           aria-label={ariaLabel}>
           <div class={BUTTON_CLASSES.CONTENT}>
