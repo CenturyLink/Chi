@@ -80,6 +80,7 @@ describe('Carousel', () => {
   describe('Single element per view', () => {
     beforeEach(() => {
       cy.get("[data-cy='single']").as('single');
+      cy.get("[data-cy='single-one-item']").as('singleOneItem');
     });
 
     it('Should show the next button as disabled when going to the last item', () => {
@@ -102,6 +103,15 @@ describe('Carousel', () => {
         cy.get('@prevButton').click();
       }
       cy.get('@prevButton').should('be.disabled');
+    });
+
+    it('Should not have the next and previous button with only one item', () => {
+      cy.get('@singleOneItem')
+        .find(`.${CAROUSEL_PREVIOUS_CLASS}`)
+        .should('not.exist');
+      cy.get('@singleOneItem')
+        .find(`.${CAROUSEL_NEXT_CLASS}`)
+        .should('not.exist');
     });
   });
 
@@ -134,13 +144,13 @@ describe('Carousel', () => {
           cy.get('@controls')
             .eq(1)
             .should('have.class', ACTIVE_CLASS);
-          });
-          cy.get('@nextButton')
-            .click()
-            .then(() => {
-              cy.get('@controls')
-                .last()
-                .should('have.class', ACTIVE_CLASS);
+        });
+      cy.get('@nextButton')
+        .click()
+        .then(() => {
+          cy.get('@controls')
+            .last()
+            .should('have.class', ACTIVE_CLASS);
           cy.get('@nextButton').should('be.disabled');
         });
     });
@@ -153,17 +163,17 @@ describe('Carousel', () => {
         .click()
         .then(() => {
           cy.get('@controls')
-          .eq(1)
-          .should('have.class', ACTIVE_CLASS);
-      });
+            .eq(1)
+            .should('have.class', ACTIVE_CLASS);
+        });
       cy.get('@prevButton')
-      .click()
-      .then(() => {
-        cy.get('@controls')
-          .first()
-          .should('have.class', ACTIVE_CLASS);
-        cy.get('@prevButton').should('be.disabled');
-      });
+        .click()
+        .then(() => {
+          cy.get('@controls')
+            .first()
+            .should('have.class', ACTIVE_CLASS);
+          cy.get('@prevButton').should('be.disabled');
+        });
     });
   });
 
