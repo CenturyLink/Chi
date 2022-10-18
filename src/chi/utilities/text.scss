@@ -78,24 +78,6 @@ $transforms: (lowercase, uppercase, capitalize);
   }
 }
 
-// line heights
-@for $index from 1 through 9 {
-  .-lh--#{$index} {
-    line-height: ($index / 2) + rem !important;
-  }
-}
-
-// responsive line heights
-@each $screen-size in $screen-sizes {
-  @include respond-to($screen-size) {
-    @for $index from 1 through 9 {
-      .-lh-#{$screen-size}--#{$index} {
-        line-height: ($index / 2) + rem !important;
-      }
-    }
-  }
-}
-
 // text alignments
 @each $type in $alignments {
   .-text--#{$type} {
@@ -135,6 +117,24 @@ $transforms: (lowercase, uppercase, capitalize);
       .-text-#{$screen-size}--#{$type} {
         font-size: map-get(map-get($sizes, $type), font-size) !important;
         line-height: map-get(map-get($sizes, $type), line-height) !important;
+      }
+    }
+  }
+}
+
+// line heights
+@for $index from 1 through 9 {
+  .-lh--#{$index} {
+    line-height: ($index / 2) + rem !important;
+  }
+}
+
+// responsive line heights
+@each $screen-size in $screen-sizes {
+  @include respond-to($screen-size) {
+    @for $index from 1 through 9 {
+      .-lh-#{$screen-size}--#{$index} {
+        line-height: ($index / 2) + rem !important;
       }
     }
   }

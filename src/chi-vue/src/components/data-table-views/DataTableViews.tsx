@@ -11,7 +11,6 @@ export default class DataTableViews extends Vue {
   @Prop() defaultView?: string;
 
   _selectedView?: string;
-  _chiMajorVersion = 5;
 
   mounted(): void {
     const dataTableToolbarComponent = findComponent(this, 'DataTableToolbar');

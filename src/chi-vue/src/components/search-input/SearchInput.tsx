@@ -4,7 +4,7 @@ import {
   CLOSE_CLASS,
   DATA_TABLE_CLASSES,
   FORM_CLASSES,
-  GENERIC_SIZES,
+  GENERIC_SIZE_CLASSES,
   ICON_CLASS,
   INPUT_CLASSES,
   SEARCH_INPUT_CLASSES,
@@ -27,7 +27,6 @@ export default class SearchInput extends Vue {
 
   cleanButtonVisible = !!(this.$props.value && !this.$props.disabled);
   inputValue = this.$props.value || '';
-  _chiMajorVersion = 5;
 
   _handleValueInput(ev: Event) {
     const newValue = (ev.target as HTMLInputElement).value;
@@ -94,7 +93,7 @@ export default class SearchInput extends Vue {
         class={`${BUTTON_CLASSES.BUTTON}
         ${BUTTON_CLASSES.ICON_BUTTON}
         ${CLOSE_CLASS}
-        ${GENERIC_SIZES.XS}`}
+        ${GENERIC_SIZE_CLASSES.XS}`}
         onClick={() => {
           if (!this.$props.readOnly) {
             this._cleanInput();
