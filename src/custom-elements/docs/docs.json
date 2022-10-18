@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-10-13T22:42:39",
+  "timestamp": "2022-10-18T21:46:41",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1875,7 +1875,7 @@
       ],
       "events": [
         {
-          "event": "chiDropdownHide",
+          "event": "eventHide",
           "detail": "any",
           "bubbles": true,
           "cancelable": true,
@@ -1884,7 +1884,7 @@
           "docsTags": []
         },
         {
-          "event": "chiDropdownShow",
+          "event": "eventShow",
           "detail": "any",
           "bubbles": true,
           "cancelable": true,

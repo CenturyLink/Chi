@@ -47,193 +47,6 @@
     }
   }
 
-  &__trigger {
-    &,
-    &.-xs,
-    &.-sm,
-    &.-md,
-    &.-lg,
-    &.-xl {
-      text-transform: $dropdown-trigger-text-transform;
-    }
-
-    &.-xs {
-      padding: $dropdown-trigger-base-xs-padding-y $dropdown-trigger-xs-padding-x;
-    }
-
-    &.-sm {
-      padding: $dropdown-trigger-base-sm-padding-y $dropdown-trigger-sm-padding-x;
-    }
-
-    &,
-    &.-md {
-      padding: $dropdown-trigger-base-md-padding-y $dropdown-trigger-md-padding-x;
-    }
-
-    &.-lg {
-      padding: $dropdown-trigger-base-lg-padding-y $dropdown-trigger-lg-padding-x;
-    }
-
-    &.-xl {
-      padding: $dropdown-trigger-base-xl-padding-y $dropdown-trigger-xl-padding-x;
-    }
-
-    &.-primary,
-    &.-secondary,
-    &.-dark,
-    &.-light,
-    &.-danger {
-      &:not([data-position^='left']),
-      &[data-position^='left'] {
-        &::before,
-        &::after {
-          color: inherit;
-        }
-      }
-
-      &.-xs {
-        padding: $dropdown-trigger-xs-padding-y $dropdown-trigger-xs-padding-x;
-      }
-
-      &.-sm {
-        padding: $dropdown-trigger-sm-padding-y $dropdown-trigger-sm-padding-x;
-      }
-
-      &,
-      &.-md {
-        padding: $dropdown-trigger-md-padding-y $dropdown-trigger-md-padding-x;
-      }
-
-      &.-lg {
-        padding: $dropdown-trigger-lg-padding-y $dropdown-trigger-lg-padding-x;
-      }
-
-      &.-xl {
-        padding: $dropdown-trigger-xl-padding-y $dropdown-trigger-xl-padding-x;
-      }
-    }
-
-    &:not([data-position^='left']) {
-
-      &::after {
-        color: $dropdown-trigger-icon-color;
-        content: '\e91e';
-        display: block;
-        font-family: $font-family-icon;
-        font-size: 0.75rem;
-        font-weight: $font-weight-normal;
-        height: 1rem;
-        line-height: 1.2rem;
-        margin-left: $dropdown-trigger-icon-margin-left;
-        width: 0.75rem;
-      }
-
-      &.-lg,
-      &.-xl {
-        &::after {
-          height: 1.5rem;
-          line-height: 1.7rem;
-          margin-left: 0.75rem;
-        }
-      }
-
-      &.-xs::after {
-        font-size: 0.625rem;
-        height: 1rem;
-        margin-left: 0.25rem;
-      }
-
-      &.-animate {
-        &::after {
-          transition: transform 0.2s ease-in-out;
-        }
-
-        &.-active {
-          &::after {
-            transform: rotate(180deg);
-          }
-
-          &[data-position^='right']::after {
-            transform: rotate(90deg);
-          }
-
-          &[data-position^='top']::after {
-            transform: rotate(0deg);
-          }
-        }
-      }
-    }
-
-    &[data-position^='left'] {
-
-      &::before {
-        color: $dropdown-trigger-icon-color;
-        content: '\e91e';
-        display: block;
-        font-family: $font-family-icon;
-        font-size: 0.75rem;
-        font-weight: $font-weight-normal;
-        height: 1rem;
-        line-height: 1.2rem;
-        margin-right: 0.375rem;
-        width: 0.75rem;
-      }
-
-      &.-lg,
-      &.-xl {
-        &::before {
-          height: 1.5rem;
-          line-height: 1.7rem;
-          margin-right: 0.75rem;
-        }
-      }
-
-      &.-xs::before {
-        font-size: 0.625rem;
-        height: 1rem;
-        margin-right: 0.25rem;
-      }
-
-      &.-animate {
-        &::before {
-          transition: transform 0.2s ease-in-out;
-        }
-
-        &.-active::before {
-          transform: rotate(270deg);
-        }
-      }
-    }
-
-    &[data-position='bottom-end'] ~ .chi-dropdown__menu {
-      left: initial;
-      right: 0;
-    }
-
-    &.chi-button {
-      &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger):not(.-outline) {
-        color: $dropdown-button-text-color;
-
-        &:not(.-flat) {
-          background-color: $dropdown-button-background-color;
-          border: $dropdown-button-border-width solid $dropdown-button-border-color;
-          box-shadow: $dropdown-button-box-shadow;
-
-          &:hover {
-            background-color: $dropdown-button-hover-background-color;
-            border-color: $dropdown-button-hover-border-color;
-          }
-
-          &:active,
-          &.-active {
-            background-color: $dropdown-button-active-background-color;
-            border-color: $dropdown-button-active-border-color;
-          }
-        }
-      }
-    }
-  }
-
   &__menu {
     background-color: $dropdown-menu-background-color;
     border-radius: $dropdown-menu-border-radius;
@@ -429,6 +242,251 @@
 
     &.-w--xl {
       min-width: 30rem;
+    }
+  }
+}
+
+.chi-dropdown__trigger {
+  &.chi-button {
+    &:not(.-uppercase) {
+      text-transform: $dropdown-trigger-text-transform;
+    }
+
+    &:not(.-icon) {
+      &.-xs {
+        padding-left: $dropdown-trigger-xs-padding-x;
+        padding-right: $dropdown-trigger-xs-padding-x;
+      }
+
+      &.-sm {
+        padding-left: $dropdown-trigger-sm-padding-x;
+        padding-right: $dropdown-trigger-sm-padding-x;
+      }
+
+      &,
+      &.-md {
+        padding-left: $dropdown-trigger-md-padding-x;
+        padding-right: $dropdown-trigger-md-padding-x;
+      }
+
+      &.-lg {
+        padding-left: $dropdown-trigger-lg-padding-x;
+        padding-right: $dropdown-trigger-lg-padding-x;
+      }
+
+      &.-xl {
+        padding-left: $dropdown-trigger-xl-padding-x;
+        padding-right: $dropdown-trigger-xl-padding-x;
+      }
+    }
+
+    &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger):not(.-outline):not(.-flat) {
+      &.-xs {
+        padding-top: $dropdown-trigger-base-xs-padding-y;
+        padding-bottom: $dropdown-trigger-base-xs-padding-y;
+      }
+
+      &.-sm {
+        padding-top: $dropdown-trigger-base-sm-padding-y;
+        padding-bottom: $dropdown-trigger-base-sm-padding-y;
+      }
+
+      &,
+      &.-md {
+        padding-top: $dropdown-trigger-base-md-padding-y;
+        padding-bottom: $dropdown-trigger-base-md-padding-y;
+      }
+
+      &.-lg {
+        padding-top: $dropdown-trigger-base-lg-padding-y;
+        padding-bottom: $dropdown-trigger-base-lg-padding-y;
+      }
+
+      &.-xl {
+        padding-top: $dropdown-trigger-base-xl-padding-y;
+        padding-bottom: $dropdown-trigger-base-xl-padding-y;
+      }
+
+      &.-icon {
+        &.-xs {
+          padding-top: $dropdown-trigger-base-icon-xs-padding-y;
+          padding-bottom: $dropdown-trigger-base-icon-xs-padding-y;
+        }
+
+        &.-sm {
+          padding-top: $dropdown-trigger-base-icon-sm-padding-y;
+          padding-bottom: $dropdown-trigger-base-icon-sm-padding-y;
+        }
+
+        &,
+        &.-md {
+          padding-top: $dropdown-trigger-base-icon-md-padding-y;
+          padding-bottom: $dropdown-trigger-base-icon-md-padding-y;
+        }
+
+        &.-lg {
+          padding-top: $dropdown-trigger-base-icon-lg-padding-y;
+          padding-bottom: $dropdown-trigger-base-icon-lg-padding-y;
+        }
+
+        &.-xl {
+          padding-top: $dropdown-trigger-base-icon-xl-padding-y;
+          padding-bottom: $dropdown-trigger-base-icon-xl-padding-y;
+        }
+      }
+    }
+
+    &.-primary,
+    &.-secondary,
+    &.-dark,
+    &.-light,
+    &.-danger,
+    &.-disabled,
+    &[disabled] {
+      &:not([data-position^='left']),
+      &[data-position^='left'] {
+        &::before,
+        &::after {
+          color: inherit;
+        }
+      }
+    }
+
+    &:not([data-position^='left']) {
+
+      &::after {
+        color: $dropdown-trigger-icon-color;
+        content: '\e91e';
+        display: block;
+        font-family: $font-family-icon;
+        font-size: 0.75rem;
+        font-weight: $font-weight-normal;
+        height: 1rem;
+        line-height: 1rem;
+        margin-left: $dropdown-trigger-icon-margin-left;
+        width: 0.75rem;
+      }
+
+      &.-lg,
+      &.-xl {
+        &::after {
+          height: 1rem;
+          line-height: 1rem;
+          margin-left: 0.75rem;
+        }
+      }
+
+      &.-sm::after {
+        font-size: 0.625rem;
+        height: 0.75rem;
+        line-height: 0.75rem;
+        margin-left: 0.25rem;
+      }
+
+      &.-xs::after {
+        font-size: 0.625rem;
+        height: 0.75rem;
+        line-height: 0.75rem;
+        margin-left: 0.25rem;
+      }
+
+      &.-animate {
+        &::after {
+          transition: transform 0.2s ease-in-out;
+        }
+
+        &.-active {
+          &::after {
+            transform: rotate(180deg);
+          }
+
+          &[data-position^='right']::after {
+            transform: rotate(90deg);
+          }
+
+          &[data-position^='top']::after {
+            transform: rotate(0deg);
+          }
+        }
+      }
+    }
+
+    &[data-position^='left'] {
+
+      &::before {
+        color: $dropdown-trigger-icon-color;
+        content: '\e91e';
+        display: block;
+        font-family: $font-family-icon;
+        font-size: 0.75rem;
+        font-weight: $font-weight-normal;
+        height: 1rem;
+        line-height: 1rem;
+        margin-right: 0.375rem;
+        width: 0.75rem;
+      }
+
+      &.-lg,
+      &.-xl {
+        &::before {
+          height: 1rem;
+          line-height: 1rem;
+          margin-right: 0.75rem;
+        }
+      }
+
+      &.-xs::before {
+        font-size: 0.625rem;
+        height: 0.75rem;
+        line-height: 0.75rem;
+        margin-right: 0.25rem;
+      }
+
+      &.-animate {
+        &::before {
+          transition: transform 0.2s ease-in-out;
+        }
+
+        &.-active::before {
+          transform: rotate(270deg);
+        }
+      }
+    }
+
+    &[data-position='bottom-end'] ~ .chi-dropdown__menu {
+      left: initial;
+      right: 0;
+    }
+
+    &:not(.-primary):not(.-secondary):not(.-dark):not(.-light):not(.-danger):not(.-outline) {
+      color: $dropdown-button-text-color;
+
+      &:not(.-flat) {
+        border: $dropdown-button-border-width solid $dropdown-button-border-color;
+
+        &:hover {
+          border-color: $dropdown-button-hover-border-color;
+        }
+
+        &:active,
+        &.-active {
+          border-color: $dropdown-button-active-border-color;
+        }
+
+        &:not(.-disabled):not([disabled]) {
+          background-color: $dropdown-button-background-color;
+          box-shadow: $dropdown-button-box-shadow;
+
+          &:hover {
+            background-color: $dropdown-button-hover-background-color;
+          }
+
+          &:active,
+          &.-active {
+            background-color: $dropdown-button-active-background-color;
+          }
+        }
+      }
     }
   }
 }
