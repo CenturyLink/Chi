@@ -14,7 +14,8 @@ import {
   ANIMATE_CLASS,
   DROPDOWN_CLASSES,
   LIST_CLASS,
-  FLUID_CLASS
+  FLUID_CLASS,
+  UTILITY_CLASSES,
 } from '../../constants/classes';
 import { DROPDOWN_EVENTS } from '../../constants/events';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
@@ -267,7 +268,8 @@ export class Dropdown {
     const menu = (
       <div
         class={`
-          ${DROPDOWN_CLASSES.MENU} 
+          ${DROPDOWN_CLASSES.MENU}
+          ${UTILITY_CLASSES.Z_INDEX.Z_10}
           ${this.active ? ACTIVE_CLASS : ''}
           ${this.fluid ? FLUID_CLASS : ''} 
           ${this.description ? LIST_CLASS : ''}
