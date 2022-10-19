@@ -515,14 +515,14 @@ $button-solid-icon-color:                   $color-icon-black;
 $button-solid-hover-background-color:       $color-background-black;
 $button-solid-hover-border-color:           $color-border-black;
 $button-solid-hover-text-color:             $color-text-white;
-$button-solid-hover-icon-color:             $button-solid-hover-text-color;
+$button-solid-hover-icon-color:             inherit;
 $button-solid-focus-background-color:       $color-background-black;
 $button-solid-focus-border-color:           $color-border-black;
 $button-solid-focus-outline:                $focus-color;
 $button-solid-active-background-color:      $color-background-black;
 $button-solid-active-border-color:          $color-border-black;
 $button-solid-active-text-color:            $color-text-white;
-$button-solid-active-icon-color:            $button-solid-active-text-color;
+$button-solid-active-icon-color:            inherit;
 $button-solid-disabled-background-color:    $color-background-base-dark;
 $button-solid-disabled-border-color:        $color-border-base-dark;
 $button-solid-disabled-text-color:          $color-text-muted-light;
@@ -876,7 +876,7 @@ $dropdown-button-hover-border-color:        $color-border-base-dark;
 $dropdown-button-active-background-color:   $color-grey-25;
 $dropdown-button-active-border-color:       rgba($color-grey-70, 0.2);
 
-$dropdown-trigger-icon-color:               $color-icon-primary;
+$dropdown-trigger-icon-color:               inherit;
 $dropdown-trigger-icon-margin-left:         0.5rem;
 $dropdown-trigger-text-transform:           none;
 
