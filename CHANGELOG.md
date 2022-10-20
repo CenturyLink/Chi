@@ -1,4 +1,18 @@
 # CHANGELOG
+## 5.22.0 (October 20, 2022)
+### Components
+#### Added
+* Added: Carousel web component now removes the previous and next buttons on single element scenario when there is only one item.
+* Added: Icons `icon-link-broken`, `icon-globe-network-outline`, `icon-lightbulb-on`, `icon-lightbulb-on-outline`, `icon-building-outline`, `icon-building`, `icon-user-remove`, `icon-gears`, `icon-user-create`, `icon-file-invoice-create`, and `icon-arrow-to-top`.
+#### Changed
+* Changed: Icons `icon-delete`, and `icon-globe-network`.
+* Changed: Button styles in Lumen theme have been updated to better support Lumen brand guidelines.
+#### Fixed
+* Fixed: Picker behavior which caused checkboxes and radio buttons to shrink when picker label wrapped to multiple lines.
+### Documentation
+#### Added
+* Added: Expansion panel footer states example now includes an optional cancel button.
+
 ## 5.21.0 (September 29, 2022)
 ### Components
 #### Added

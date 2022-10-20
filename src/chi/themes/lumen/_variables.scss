@@ -513,7 +513,7 @@ $button-solid-hover-background-color:       $color-background-white;
 $button-solid-hover-border-color:           $color-navy-100;
 $button-solid-hover-text-color:             $color-navy-100;
 $button-solid-hover-icon-color:             $button-solid-icon-color;
-$button-solid-active-icon-color:            $color-navy-100;
+$button-solid-active-icon-color:            inherit;
 $button-solid-focus-background-color:       $color-background-white;
 $button-solid-focus-border-color:           $color-border-primary;
 $button-solid-focus-outline:                $focus-color;
@@ -891,8 +891,14 @@ $dropdown-trigger-xl-padding-x:             2rem;
 $dropdown-trigger-base-xs-padding-y:        0.1875rem;
 $dropdown-trigger-base-sm-padding-y:        0.4375rem;
 $dropdown-trigger-base-md-padding-y:        0.5625rem;
-$dropdown-trigger-base-lg-padding-y:        0.6875rem;
-$dropdown-trigger-base-xl-padding-y:        0.9375rem;
+$dropdown-trigger-base-lg-padding-y:        0.8125rem;
+$dropdown-trigger-base-xl-padding-y:        1.0625rem;
+
+$dropdown-trigger-base-icon-xs-padding-y:   0.3125rem;
+$dropdown-trigger-base-icon-sm-padding-y:   0.4375rem;
+$dropdown-trigger-base-icon-md-padding-y:   0.6875rem;
+$dropdown-trigger-base-icon-lg-padding-y:   0.9375rem;
+$dropdown-trigger-base-icon-xl-padding-y:   1.0625rem;
 
 $dropdown-menu-border-radius:               $border-radius-base;
 $dropdown-menu-shadow:                      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
