@@ -16,7 +16,6 @@ import {
   LIST_CLASS,
   FLUID_CLASS
 } from '../../constants/classes';
-import { DROPDOWN_EVENTS } from '../../constants/events';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
 
@@ -65,11 +64,11 @@ export class Dropdown {
   /**
    * Triggered when hiding the Dropdown
    */
-  @Event({ eventName: DROPDOWN_EVENTS.HIDE }) eventHide: EventEmitter;
+   @Event({ eventName: 'chiDropdownHide' }) eventHide: EventEmitter;
   /**
    * Triggered when showing the Dropdown
    */
-  @Event({ eventName: DROPDOWN_EVENTS.SHOW }) eventShow: EventEmitter;
+   @Event({ eventName: 'chiDropdownShow' }) eventShow: EventEmitter;
 
   @Element() el: HTMLElement;
 
