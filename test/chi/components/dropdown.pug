@@ -211,15 +211,99 @@ div(class=`test-dropdown-higher-helper -w--100`)
       .chi-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
       a.chi-dropdown__menu-item(href="#") Link 2
 
-- var triggerSizes = ["-lg", "", "-sm"];
-- var triggerStates = dropdownStates;
-- var dropdownPositions = ["", "default", "initial", "top", "right", "bottom", "left", "top-start", "top-end", "right-start", "right-end", "bottom-start", "bottom-end", "left-start", "left-end"];
 
-each triggerSize in triggerSizes
-  div(class=`test-dropdown-button${triggerSize} -w--100`)
-    span.-text--h2=`Button${triggerSize}`
-    each triggerState in triggerStates
-      span.-text--h3=`State ${triggerState}`
-      each position in dropdownPositions
-        .-d--flex
-          button(class=`chi-button chi-dropdown__trigger ${triggerSize} ${triggerState}`, data-position=position)=`Button ${triggerState} ${position}`
+each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
+  each type in ['solid', 'outline', 'flat', 'fluid', 'uppercase']
+    div(class={
+      [`test-dropdown-trigger-${type}`]: size === 'default',
+      [`test-dropdown-trigger-${type}-${size}`]: size !== 'default'
+    })
+      span.-text--h2= `Dropdown trigger / ${type} / ${size}`
+      table(cellpadding="0", cellspacing="0")
+        each state in ['initial', 'hover', 'active', 'focus', 'disabled']
+          tr
+            td
+              small= `${state}`
+            each style in ['default', 'primary', 'dark', 'danger', 'secondary', 'light']
+              if (style === 'secondary' || style === 'light')
+                td.-bg--black
+                  .-mr--2
+                    button.chi-button.chi-dropdown__trigger.-m--1.-mx--2(
+                    class={
+                      [`-${type}`]: type !== 'solid',
+                      [`-${style}`]: style !== 'default',
+                      [`-${state}`]: state !== 'initial',
+                      [`-${size}`]: size !== 'default'
+                    }
+                    disabled=state === 'disabled' ? 'disabled' : false
+                    )= "Button"
+                    a.chi-button.chi-dropdown__trigger.-icon.-m--1(
+                    href="#"
+                    class={
+                      [`-${type}`]: type !== 'solid',
+                      [`-${style}`]: style !== 'default',
+                      [`-${state}`]: state !== 'initial',
+                      [`-${size}`]: size !== 'default'
+                    }
+                    disabled=state === 'disabled' ? 'disabled' : false
+                    aria-label='Button action'
+                    )
+                      .chi-button__content
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-atom')
+                    button.chi-button.chi-dropdown__trigger.-m--1(
+                    class={
+                      [`-${type}`]: type !== 'solid',
+                      [`-${style}`]: style !== 'default',
+                      [`-${state}`]: state !== 'initial',
+                      [`-${size}`]: size !== 'default'
+                    }
+                    disabled=state === 'disabled' ? 'disabled' : false
+                    )
+                      .chi-button__content
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-atom')
+                        span Button
+              else
+                td
+                  .-mr--2
+                    button.chi-button.chi-dropdown__trigger.-m--1.-mx--2(
+                    class={
+                      [`-${type}`]: type !== 'solid',
+                      [`-${style}`]: style !== 'default',
+                      [`-${state}`]: state !== 'initial',
+                      [`-${size}`]: size !== 'default'
+                    }
+                    disabled=state === 'disabled' ? 'disabled' : false
+                    )= "Button"
+                    a.chi-button.chi-dropdown__trigger.-icon.-m--1(
+                    href="#"
+                    class={
+                      [`-${type}`]: type !== 'solid',
+                      [`-${style}`]: style !== 'default',
+                      [`-${state}`]: state !== 'initial',
+                      [`-${size}`]: size !== 'default'
+                    }
+                    disabled=state === 'disabled' ? 'disabled' : false
+                    aria-label='Button action'
+                    )
+                      .chi-button__content
+                        .chi-icon
+                          svg
+                            use(xlink:href='#icon-atom')
+                    button.chi-button.chi-dropdown__trigger.-m--1(
+                    class={
+                      [`-${type}`]: type !== 'solid',
+                      [`-${style}`]: style !== 'default',
+                      [`-${state}`]: state !== 'initial',
+                      [`-${size}`]: size !== 'default'
+                    }
+                    disabled=state === 'disabled' ? 'disabled' : false
+                    )
+                      .chi-button__content
+                          .chi-icon
+                            svg
+                              use(xlink:href='#icon-atom')
+                          span Button
