@@ -175,9 +175,9 @@ export class ChiPhoneInput {
   };
 
   _checkNoCharactersInInput(event: KeyboardEvent) {
-    const inputKey = event.code;
-    
-    if (!inputKey.includes('Digit')) {
+    const inputKey = event.key;
+
+    if (isNaN(Number(inputKey))) {
       event.preventDefault();
     }
   }

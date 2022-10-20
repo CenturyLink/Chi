@@ -19,6 +19,18 @@ const hasClassAssertion = (el, value) => {
   cy.get(el).should('have.class', value);
 };
 
+const compareInputValue = (el, value, expectedValue) => {
+  cy.get(el)
+    .clear()
+    .type(value)
+    .invoke('val')
+    .then(val =>{
+      const myVal = val;
+
+      expect(myVal).to.equal(expectedValue)
+    })
+};
+
 describe('Phone Input', () => {
   before(() => {
     cy.visit('tests/custom-elements/phone-input.html');
@@ -299,6 +311,11 @@ describe('Phone Input', () => {
           cy.get('@base').should('have.attr', 'value', '+358-829323');
         });
     });
+
+    it('Should not admit any character except number', () => {
+      compareInputValue('@phoneInput', 'abcdefghijklmnopqrstuwxyz', '')
+      compareInputValue('@phoneInput', '!|"@.#$~%€&¬/()=ªº!|@"·#$¢%∞&¬/÷(“)”=≠?´¿‚^[*]+{ç},„;_–', '')
+      compareInputValue('@phoneInput', '0123456789', '0123456789')
   });
 
   describe('Default Country', () => {
