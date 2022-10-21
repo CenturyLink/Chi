@@ -88,7 +88,7 @@
           </template>
           <template v-slot:end>
             <div class="chi-toolbar__actions-desktop">
-              <DownloadDropdownIcon />
+              <DownloadButtonIcon />
               <ChiColumnCustomization
                 @chiColumnsReset="e => chiToolbarColumnsReset(e)"
                 :columnsData="toolbar.columnsData"
@@ -174,7 +174,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import DataTable from '../../../components/data-table/DataTable';
 import Actions from '../DataTableTemplates/example-actions.vue';
-import DownloadDropdownIcon from '../DataTableTemplates/example-download.vue';
+import DownloadButtonIcon from '../DataTableTemplates/example-download.vue';
 import TicketPopover from '../DataTableTemplates/example-popover.vue';
 import DataTableBulkActions from '../../../components/data-table-bulk-actions/DataTableBulkActions';
 import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar';
@@ -196,7 +196,7 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     ChiColumnCustomization: ColumnCustomization,
     ChiDataTableSaveView: SaveView,
     Actions,
-    DownloadDropdownIcon,
+    DownloadButtonIcon,
     TicketPopover,
     ChiDataTableViews: DataTableViews,
   },
