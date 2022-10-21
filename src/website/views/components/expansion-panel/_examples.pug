@@ -279,6 +279,8 @@ p.-text
 p.-text
   | The four examples below differ only by state. Thanks to the state support and two internal hiding utility
   | classes we can represent the different states of the same content changing only the property.
+p.-text
+  | An optional cancel button can also be included to exit the expansion panel workflow.
 .example.-mb--3
   .-p--3.-p-lg--6
     .-mw--720.-mx--auto
@@ -324,6 +326,7 @@ p.-text
                 .chi-epanel__subtitle Optional subtitle
                 p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
               .chi-epanel__footer.-justify-content--end
+                button.chi-button.-primary.-flat Cancel
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
@@ -406,6 +409,12 @@ p.-text
           </p>
         </div>
         <div slot="footer">
+          <chi-button color="primary" variant="flat">
+            Cancel
+          </chi-button>
+          <chi-button color="primary" variant="outline">
+            Previous
+          </chi-button>
           <chi-button color="primary">
             Continue
           </chi-button>
@@ -489,6 +498,7 @@ p.-text
                 <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter shipping address)</p>
               </div>
               <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button -flat -primary">Cancel</button>
                 <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
                 <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
