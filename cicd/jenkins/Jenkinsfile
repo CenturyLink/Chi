@@ -921,7 +921,7 @@ PRDesc
                   git config user.email "scmauto@lumen.com"
                   git config user.name "SCMAUTO"
                   git commit -m "CHI_\$VERSION"
-                  git push -f origin CHI_\$VERSION
+                  git push --set-upstream origin CHI_\$VERSION
                 """, label: "Pushing branch to AssetsServer"
                 if ( env.CHECK == "NO" ) {
                   dir ('ux-chi-AssetsServer') {
