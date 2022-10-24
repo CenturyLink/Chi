@@ -316,6 +316,7 @@ describe('Phone Input', () => {
       compareInputValue('@phoneInput', 'abcdefghijklmnopqrstuwxyz', '')
       compareInputValue('@phoneInput', '!|"@.#$~%€&¬/()=ªº!|@"·#$¢%∞&¬/÷(“)”=≠?´¿‚^[*]+{ç},„;_–', '')
       compareInputValue('@phoneInput', '0123456789', '0123456789')
+    });
   });
 
   describe('Default Country', () => {
