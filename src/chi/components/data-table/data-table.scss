@@ -190,7 +190,7 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
       }
 
       // sass-lint:disable no-vendor-prefixes
-      .-wrap-cells {
+      .-cell-wrap {
         display: -webkit-box;
         overflow: hidden;
         white-space: normal;

@@ -7,7 +7,7 @@ import { UTILITY_CLASSES } from '@/constants/classes';
 export default class DataTableTooltip extends Vue {
   @Prop() msg!: string;
   @Prop() header?: boolean;
-  @Prop() wrapText?: boolean;
+  @Prop() textWrap?: boolean;
 
   tooltip = false;
 
@@ -30,7 +30,7 @@ export default class DataTableTooltip extends Vue {
 
   render() {
     const content = (
-      <div class={this.wrapText ? '-wrap-cells' : UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} ref="wrapper">
+      <div class={this.textWrap ? '-cell-wrap' : UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} ref="wrapper">
         {this.msg}
       </div>
     );
