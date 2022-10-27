@@ -91,7 +91,7 @@ pipeline {
       // ServiceNow Variables
       SERVICE_NOW_CREDENTIALS = 'snow-credentials'
       SERVICE_NOW_HOST = 'mysupportdesk.service-now.com'
-      DEVOPS_GCR_PREPROD_PAYLOAD = '{"u_implementers": "AC04119,AC59437,AC75080", "u_testers": "AB62977"}'
+      DEVOPS_GCR_PREPROD_PAYLOAD = '{"u_implementers": "AC04119,AC59437,AC96088", "u_testers": "AB62977"}'
 
       RC_TAG_PATTERN =  /(.*##RC##.*)/
       PROMOTE_TAG_PATTERN =  /(.*##PROMOTE##.*)/
