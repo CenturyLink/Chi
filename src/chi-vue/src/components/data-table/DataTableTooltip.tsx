@@ -25,7 +25,7 @@ export default class DataTableTooltip extends Vue {
     const wrapper = this.$refs.wrapper as HTMLElement;
     const isTruncated =
       Math.abs(wrapper.scrollHeight - wrapper.clientHeight) > DATA_TABLE_CELL_THRESHOLD ||
-      wrapper.scrollWidth > wrapper.clientWidth;
+      wrapper.offsetWidth < wrapper.scrollWidth;
 
     return isTruncated;
   }
@@ -44,7 +44,7 @@ export default class DataTableTooltip extends Vue {
         onMouseleave={() => this.onHide()}
         onBlur={() => this.onHide()}
         style={`max-width: fit-content; width: ${this.$props.header ? 'calc(100% - 20px)' : '100%'};`}>
-        {!this.tooltip ? content : <Tooltip message={this.msg}>{content}</Tooltip>}
+        {this.tooltip ? <Tooltip message={this.msg}>{content}</Tooltip> : content}
       </div>
     );
   }
