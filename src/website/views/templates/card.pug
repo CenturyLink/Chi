@@ -1,0 +1,102 @@
+---
+title: Card
+description: A collection of templates built with responsive Cards.
+wide_container: true
+---
+
+h2 Marketing feature cards
+p.-text
+  | Use this template to feature product content on marketing oriented webpages.
+.example.-mb--3
+  .-px--4.-pt--4
+    .chi-grid
+      .chi-col.-w--12.-w-lg--6.-w-xl--4.-mb--5
+        .chi-card.-s--2.-rounded.-bg--white.-b--base-light.-mx--1.-h--100
+          .-d--flex.-align-items--center.-justify-content--center.-bg--grey-10.-p--3
+            chi-marketing-icon(icon='people-it-professional' size='lg')
+          .chi-card__content.-p--4.-pb--6
+            .-text--h3.-text--bolder.-m--0 Find the right API
+            p.-text Browse our comprehensive API library
+            chi-link(href='#' cta='') Explore APIs
+      .chi-col.-w--12.-w-lg--6.-w-xl--4.-mb--5
+        .chi-card.-s--2.-rounded.-bg--white.-b--base-light.-mx--1.-h--100
+          .-d--flex.-align-items--center.-justify-content--center.-bg--grey-10.-p--3
+            chi-marketing-icon(icon='people-software-developer' size='lg')
+          .chi-card__content.-p--4.-pb--6
+            .-text--h3.-text--bolder.-m--0 Learn and build code
+            p.-text Learn how to use our APIs to power your applications
+            chi-link(href='#' cta='') View Guide
+      .chi-col.-w--12.-w-lg--6.-w-xl--4.-mb--5
+        .chi-card.-s--2.-rounded.-bg--white.-b--base-light.-mx--1.-h--100
+          .-d--flex.-align-items--center.-justify-content--center.-bg--grey-10.-p--3
+            chi-marketing-icon(icon='products-portal' size='lg')
+          .chi-card__content.-p--4.-pb--6
+            .-text--h3.-text--bolder.-m--0 Launch your application
+            p.-text Register your account and request access to APIs
+            chi-link(href='#' cta='') Get Started
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-feature-cards(role="tablist")
+      li.-active
+        a(
+          href=`#webcomponent-feature-cards`
+          role="tab"
+          aria-selected="true"
+          aria-controls="webcomponent-feature-cards"
+        ) Web Component
+      li.-disabled
+        a(
+          href=`#html-feature-cards`
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="html-feature-cards"
+        ) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-feature-cards
+    :code(lang="html")
+      <div class="chi-grid">
+        <div class="chi-col -w--12 -w-lg--6 -w-xl--4 -mb--5">
+          <div class="chi-card -s--2 -rounded -bg--white -b--base-light -mx--1 -h--100">
+            <div class="-d--flex -align-items--center -justify-content--center -bg--grey-10 -p--3">
+              <chi-marketing-icon icon="people-it-professional" size="lg"></chi-marketing-icon>
+            </div>
+            <div class="chi-card__content -p--4 -pb--6">
+              <div class="-text--h3 -text--bolder -m--0">Find the right API</div>
+              <p class="-text">Browse our comprehensive API library</p>
+              <chi-link href="#" cta>Explore APIs</chi-link>
+            </div>
+          </div>
+        </div>
+        <div class="chi-col -w--12 -w-lg--6 -w-xl--4 -mb--5">
+          <div class="chi-card -s--2 -rounded -bg--white -b--base-light -mx--1 -h--100">
+            <div class="-d--flex -align-items--center -justify-content--center -bg--grey-10 -p--3">
+              <chi-marketing-icon icon="people-software-developer" size="lg"></chi-marketing-icon>
+            </div>
+            <div class="chi-card__content -p--4 -pb--6">
+              <div class="-text--h3 -text--bolder -m--0">Learn and build code</div>
+              <p class="-text">Learn how to use our APIs to power your applications</p>
+              <chi-link href="#" cta>View Guide</chi-link>
+            </div>
+          </div>   
+        </div>
+        <div class="chi-col -w--12 -w-lg--6 -w-xl--4 -mb--5">
+          <div class="chi-card -s--2 -rounded -bg--white -b--base-light -mx--1 -h--100">
+            <div class="-d--flex -align-items--center -justify-content--center -bg--grey-10 -p--3">
+              <chi-marketing-icon icon="products-portal" size="lg"></chi-marketing-icon>
+            </div>
+            <div class="chi-card__content -p--4 -pb--6">
+              <div class="-text--h3 -text--bolder -m--0">Launch your application</div>
+              <p class="-text">Register your account and request access to APIs</p>
+              <chi-link href="#" cta>Get Started</chi-link>
+            </div>
+          </div>
+        </div>
+      </div>
+  .chi-tabs-panel#html-base
+
+
+script.
+  document.addEventListener(
+    'DOMContentLoaded',
+    function() {
+      chi.tab(document.querySelectorAll('.chi-grid__container .chi-tabs'));
+    });

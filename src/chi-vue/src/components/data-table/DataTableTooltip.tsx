@@ -1,6 +1,6 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import Tooltip from '@/components/tooltip/tooltip';
-import { TOOLTIP_ANIMATION_DELAY } from '@/constants/constants';
+import { DATA_TABLE_CELL_THRESHOLD, TOOLTIP_ANIMATION_DELAY } from '@/constants/constants';
 import { UTILITY_CLASSES } from '@/constants/classes';
 
 @Component({})
@@ -23,7 +23,9 @@ export default class DataTableTooltip extends Vue {
 
   _isTruncated() {
     const wrapper = this.$refs.wrapper as HTMLElement;
-    const isTruncated = wrapper.scrollHeight > wrapper.clientHeight || wrapper.scrollWidth > wrapper.clientWidth;
+    const isTruncated =
+      Math.abs(wrapper.scrollHeight - wrapper.clientHeight) > DATA_TABLE_CELL_THRESHOLD ||
+      wrapper.scrollWidth > wrapper.clientWidth;
 
     return isTruncated;
   }
