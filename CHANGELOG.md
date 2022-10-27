@@ -11,7 +11,7 @@
 ### Documentation
 #### Added
 * Added: Dropdown to download icon button in Toolbar component.
-* Added: Card templates section to feature product content on marketing oriented webpages.
+* Added: Card templates page.
 
 ## 5.22.0 (October 20, 2022)
 ### Components
