@@ -22,6 +22,7 @@ export const DATA_TABLE_SORT_ICONS = {
   SORT: 'icon-arrow-sort',
   ARROW: 'icon-arrow-up',
 };
+export const DATA_TABLE_CELL_THRESHOLD = 1;
 //#endregion
 
 //#region Expansion Panel
