@@ -356,7 +356,8 @@
       color: $dropdown-button-text-color;
 
       &:not(.-flat) {
-        border: $dropdown-button-border-width solid $dropdown-button-border-color;
+        border: $dropdown-button-border-width solid
+          $dropdown-button-border-color;
 
         &:hover {
           border-color: $dropdown-button-hover-border-color;
@@ -384,7 +385,6 @@
     }
   }
   &:not([data-position^='left']) {
-
     &::after {
       color: $dropdown-trigger-icon-color;
       content: '\e91e';
@@ -443,7 +443,6 @@
   }
 
   &[data-position^='left'] {
-
     &::before {
       color: $dropdown-trigger-icon-color;
       content: '\e91e';
@@ -493,7 +492,6 @@
 .chi-dropdown__hover:hover,
 .chi-dropdown__hover.-hover, // sass-lint:disable-line force-element-nesting
 .chi-dropdown__hover:active {
-
   .chi-dropdown__trigger {
     &:not([data-position^='left']) {
       &.-animate {
