@@ -1,4 +1,18 @@
 # CHANGELOG
+## 5.23.0 (October 28, 2022)
+### Components
+#### Added
+* Added: Accordion component now supports animation on the icon chevron right to represent collapsed and expanded states.
+#### Changed
+* Changed: Toolbar styles in Lumen and CenturyLink themes have been updated to better support Lumen brand guidelines.
+* Changed: Header nav dropdown styles have been improved to match Lumen.com. Rounded top left and top right border radius have been removed, padding has been increased, and notch arrow has been added.
+#### Fixed
+* Fixed: Header nav dropdown menus were disappearing when hovering from the dropdown trigger to the dropdown menu.
+### Documentation
+#### Added
+* Added: Dropdown to download icon button in Toolbar component.
+* Added: Card templates page.
+
 ## 5.22.0 (October 20, 2022)
 ### Components
 #### Added

@@ -68,6 +68,9 @@ export default class DataTable extends Vue {
   treeSelection = Object.prototype.hasOwnProperty.call(this.$props.config, 'treeSelection')
     ? this.$props.config.treeSelection
     : defaultConfig.treeSelection;
+  cellWrap = Object.prototype.hasOwnProperty.call(this.$props.config, 'cellWrap')
+    ? this.$props.config.cellWrap
+    : defaultConfig.cellWrap;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
@@ -796,9 +799,9 @@ export default class DataTable extends Vue {
           cellData = this.$scopedSlots[rowCell.template]!(rowCell.payload);
         }
       } else if (typeof rowCell === 'object' && !!rowCell.value) {
-        cellData = <DataTableTooltip msg={rowCell.value} class="-w--100" />;
+        cellData = <DataTableTooltip textWrap={this.cellWrap} msg={rowCell.value} class="-w--100" />;
       } else if (typeof rowCell === 'string' || typeof rowCell === 'number') {
-        cellData = <DataTableTooltip msg={rowCell} class="-w--100" />;
+        cellData = <DataTableTooltip textWrap={this.cellWrap} msg={rowCell} class="-w--100" />;
       } else {
         cellData = null;
       }
