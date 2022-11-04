@@ -9,7 +9,6 @@ import {
   UTILITY_CLASSES,
   ICON_CLASS,
   MODAL_CLASSES,
-  PORTAL_CLASS,
 } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
@@ -31,7 +30,6 @@ export default class ColumnCustomization extends Vue {
   _ColumnCustomizationContentComponent?: ColumnCustomizationContent;
   _selectedData?: DataTableColumn[];
   _modalId?: string;
-  _chiMajorVersion = 5;
   _previousSelected?: DataTableColumn[];
 
   _modal() {
@@ -41,7 +39,7 @@ export default class ColumnCustomization extends Vue {
           <section
             data-cy="chi-modal"
             id={this._modalId}
-            class={`${MODAL_CLASSES.MODAL} ${PORTAL_CLASS}`}
+            class={`${MODAL_CLASSES.MODAL}`}
             role="dialog"
             aria-label="Column Customization"
             aria-modal="true">
@@ -58,7 +56,6 @@ export default class ColumnCustomization extends Vue {
             </header>
             <div class={MODAL_CLASSES.CONTENT} key={this.key}>
               <ColumnCustomizationContent
-                version={this._chiMajorVersion}
                 available-columns={this._availableColumns}
                 selected-columns={this._selectedColumns}
               />

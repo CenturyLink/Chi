@@ -48,6 +48,97 @@ h3 Base
 
       <script>chi.dropdown(document.getElementById('dropdown-1'));</script>
 
+h3 Additional Styles
+.example.-mb--3
+  .-p--3
+    .chi-dropdown
+      button.chi-button.-primary.chi-dropdown__trigger(id="dropdown-styles-1") Dropdown
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#') Item 1
+        a.chi-dropdown__menu-item(href='#') Item 2
+        a.chi-dropdown__menu-item(href='#') Item 3
+        a.chi-dropdown__menu-item(href='#') Item 4
+    .chi-dropdown.-ml--2
+      button.chi-button.-primary.-outline.chi-dropdown__trigger(id="dropdown-styles-2") Dropdown
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#') Item 1
+        a.chi-dropdown__menu-item(href='#') Item 2
+        a.chi-dropdown__menu-item(href='#') Item 3
+        a.chi-dropdown__menu-item(href='#') Item 4
+    .chi-dropdown.-ml--2
+      button.chi-button.-primary.-flat.chi-dropdown__trigger(id="dropdown-styles-3") Dropdown
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#') Item 1
+        a.chi-dropdown__menu-item(href='#') Item 2
+        a.chi-dropdown__menu-item(href='#') Item 3
+        a.chi-dropdown__menu-item(href='#') Item 4
+    .chi-dropdown.-ml--2
+      button.chi-button.-flat.chi-dropdown__trigger(id="dropdown-styles-4") Dropdown
+      .chi-dropdown__menu
+        a.chi-dropdown__menu-item(href='#') Item 1
+        a.chi-dropdown__menu-item(href='#') Item 2
+        a.chi-dropdown__menu-item(href='#') Item 3
+        a.chi-dropdown__menu-item(href='#') Item 4
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-additional-styles
+      li.-disabled
+        a(href=`#webcomponent-additional-styles`) Web Component
+      li.-active
+        a(href=`#html-additional-styles`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-additional-styles
+  .chi-tabs-panel.-active#html-additional-styles
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <!-- Primary button -->
+      <div class="chi-dropdown">
+        <button id="dropdown-styles-1" class="chi-button -primary chi-dropdown__trigger">Dropdown</button>
+        <div class="chi-dropdown__menu">
+          <a class="chi-dropdown__menu-item" href="#">Item 1</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 2</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 3</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+        </div>
+      </div>
+
+      <!-- Primary outline button -->
+      <div class="chi-dropdown">
+        <button id="dropdown-styles-2" class="chi-button -primary -outline chi-dropdown__trigger">Dropdown</button>
+        <div class="chi-dropdown__menu">
+          <a class="chi-dropdown__menu-item" href="#">Item 1</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 2</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 3</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+        </div>
+      </div>
+
+      <!-- Primary flat button -->
+      <div class="chi-dropdown">
+        <button id="dropdown-styles-3" class="chi-button -primary -flat chi-dropdown__trigger">Dropdown</button>
+        <div class="chi-dropdown__menu">
+          <a class="chi-dropdown__menu-item" href="#">Item 1</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 2</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 3</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+        </div>
+      </div>
+
+      <!-- Base flat button -->
+      <div class="chi-dropdown">
+        <button id="dropdown-styles-4" class="chi-button -flat chi-dropdown__trigger">Dropdown</button>
+        <div class="chi-dropdown__menu">
+          <a class="chi-dropdown__menu-item" href="#">Item 1</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 2</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 3</a>
+          <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+        </div>
+      </div>
+
+      <script>chi.dropdown(document.querySelectorAll('.chi-dropdown .chi-button'));</script>
+
 h3 Data-target
 p.-text
   | Dropdown referenced by a <code>data-target</code> attribute in the activator.
@@ -202,7 +293,6 @@ p.-text
       </div>
 
       <script>chi.dropdown(document.getElementById('dropdown-1'));</script>
-
 
 h3 Positioning
 .example.-mb--3
