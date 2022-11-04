@@ -7,7 +7,7 @@ import {
   INPUT_CLASSES,
   SELECT_CLASSES,
   UTILITY_CLASSES,
-  GENERIC_SIZES,
+  GENERIC_SIZE_CLASSES,
 } from '@/constants/classes';
 import { DataTableCustomItem, DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
@@ -68,7 +68,6 @@ export default class AdvancedFilters extends Vue {
   _advancedFilterPopoverId?: string;
   storeModule?: any;
   _planeAdvancedData = {};
-  _chiMajorVersion = 5;
   isExpanded = false;
   _filtersTooltip?: any;
 
@@ -364,7 +363,7 @@ export default class AdvancedFilters extends Vue {
               onclick={(event: Event) => this._expandCollapseAccordions(event)}>
               {this.isExpanded ? 'Collapse All' : 'Expand All'}
             </button>
-            <div class={`${ACCORDION_CLASSES.ACCORDION} ${GENERIC_SIZES.SM}`} ref="advancedFiltersAccordion">
+            <div class={`${ACCORDION_CLASSES.ACCORDION} ${GENERIC_SIZE_CLASSES.SM}`} ref="advancedFiltersAccordion">
               {advancedFilters}
             </div>
             <AdvancedFiltersPopoverFooter

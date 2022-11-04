@@ -1,0 +1,22 @@
+h3 Single with one item
+.example.-mb--3
+  .-p--3
+    chi-carousel(single)
+      .chi-carousel__item.-p--1(style="height: 10rem;" slot="items")
+        .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center 1
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-accordion-base
+      li.-active
+        a(href=`#webcomponent-accordion-base`) Web Component
+      li.-disabled
+        a(href=`#html-accordion-base`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-accordion-base
+    :code(lang="html")
+      <chi-carousel single>
+        <div class="-d--flex" slot="items">
+          <div class="chi-carousel__item -p--1">
+            <!-- Custom item 1 -->
+          </div>
+        </div>
+      </chi-carousel>
+  .chi-tabs-panel#html-accordion-base

@@ -1,5 +1,3 @@
-$border: 0.0625rem;
-
 $sizes: (
   xs: (
     padding: $button-group-horizontal-xs-padding,
@@ -64,7 +62,7 @@ $sizes: (
         &.-hover,
         &:focus,
         &.-focus {
-          border-right-width: 0.0625rem;
+          border-right-width: $button-group-border-width;
 
           & + .chi-button {
             border-left-width: 0;
@@ -78,7 +76,7 @@ $sizes: (
 
         &:last-child {
           border-bottom-right-radius: $border-radius;
-          border-right-width: 0.0625rem;
+          border-right-width: $button-group-border-width;
           border-top-right-radius: $border-radius;
         }
       }

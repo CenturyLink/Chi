@@ -86,7 +86,8 @@ $sizes: (
         }
       }
 
-      .icon-chevron-down {
+      .icon-chevron-down,
+      .icon-chevron-right {
         transition-duration: $animation-duration;
       }
     }
@@ -121,6 +122,11 @@ $sizes: (
       & > .chi-accordion__trigger {
         .icon-chevron-down {
           transform: rotate(180deg);
+          transition: transform $animation-duration ease-in-out;
+        }
+
+        .icon-chevron-right {
+          transform: rotate(90deg);
           transition: transform $animation-duration ease-in-out;
         }
 
