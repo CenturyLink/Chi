@@ -1,4 +1,15 @@
 # CHANGELOG
+## 5.24.0 (November 4, 2022)
+### Components
+#### Added
+* Added: Data table now supports two lines in a cell with `cellWrap` config is set to true.
+* Added: Footer now supports unathenticated and authenticated simple mode when social media links, language selection, and international legal notice links are not needed.
+#### Fixed
+* Fixed: Dropdown arrow display bug in Tabs component.
+### Documentation
+#### Added
+* Added: Category layout in Card templates page.
+
 ## 5.23.0 (October 28, 2022)
 ### Components
 #### Added
