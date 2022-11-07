@@ -491,6 +491,8 @@ export class Tabs {
               this.activeTab === tab.id ? ACTIVE_CLASS : ''
             }`}
             href="#"
+            onMouseEnter={() => this.handlerTabMouseEnter(tab)}
+            onMouseLeave={e => this.handlerMouseLeave(e)}
             onClick={e => {
               this.handlerClickTab(e, tab, this.seeMoreTriggerAnchorElement);
               this.seeMoreDropdown.hide();
@@ -499,6 +501,12 @@ export class Tabs {
             slot="menu"
           >
             {tab.label}
+            {tab.children ? (
+              <i
+                class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-right ${GENERIC_SIZE_CLASSES.XS}`}
+                aria-hidden="true"
+              ></i>
+            ) : null}
           </a>
         );
       });
