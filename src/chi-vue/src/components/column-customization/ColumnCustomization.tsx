@@ -1,5 +1,5 @@
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import { detectMajorChiVersion, findComponent, uuid4 } from '@/utils/utils';
+import { findComponent, uuid4 } from '@/utils/utils';
 import {
   BACKDROP_CLASSES,
   BUTTON_CLASSES,
@@ -9,7 +9,6 @@ import {
   UTILITY_CLASSES,
   ICON_CLASS,
   MODAL_CLASSES,
-  PORTAL_CLASS,
 } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
@@ -31,7 +30,6 @@ export default class ColumnCustomization extends Vue {
   _ColumnCustomizationContentComponent?: ColumnCustomizationContent;
   _selectedData?: DataTableColumn[];
   _modalId?: string;
-  _chiMajorVersion = 5;
   _previousSelected?: DataTableColumn[];
 
   _modal() {
@@ -41,7 +39,7 @@ export default class ColumnCustomization extends Vue {
           <section
             data-cy="chi-modal"
             id={this._modalId}
-            class={`${MODAL_CLASSES.MODAL} ${PORTAL_CLASS}`}
+            class={`${MODAL_CLASSES.MODAL}`}
             role="dialog"
             aria-label="Column Customization"
             aria-modal="true">
@@ -58,7 +56,6 @@ export default class ColumnCustomization extends Vue {
             </header>
             <div class={MODAL_CLASSES.CONTENT} key={this.key}>
               <ColumnCustomizationContent
-                version={this._chiMajorVersion}
                 available-columns={this._availableColumns}
                 selected-columns={this._selectedColumns}
               />
@@ -204,11 +201,6 @@ export default class ColumnCustomization extends Vue {
       });
     }
   }
-
-  beforeMount() {
-    this._chiMajorVersion = detectMajorChiVersion();
-  }
-
   render() {
     const modalButton = (
       <button
@@ -219,7 +211,7 @@ export default class ColumnCustomization extends Vue {
           ${BUTTON_CLASSES.BUTTON}
           ${BUTTON_CLASSES.ICON_BUTTON}
           ${BUTTON_CLASSES.FLAT}
-          ${this._chiMajorVersion === 4 ? `${PORTAL_CLASS} ${BUTTON_CLASSES.PRIMARY}` : ''}`}>
+          `}>
         <div class={BUTTON_CLASSES.CONTENT}>
           <i class={`${ICON_CLASS} icon-table-column-settings`} aria-hidden="true" />
         </div>

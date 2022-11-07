@@ -35,6 +35,54 @@ i {
   }
 }
 
+.icon-link-broken::before {
+  content: '\ea10';
+}
+
+.icon-globe-network::before {
+  content: '\ea0b';
+}
+
+.icon-lightbulb-on::before {
+  content: '\ea0c';
+}
+
+.icon-lightbulb-on-outline::before {
+  content: '\ea0d';
+}
+
+.icon-building-outline::before {
+  content: '\ea0e';
+}
+
+.icon-building::before {
+  content: '\ea0f';
+}
+
+.icon-delete::before {
+  content: '\e946';
+}
+
+.icon-user-remove::before {
+  content: '\ea11';
+}
+
+.icon-gears::before {
+  content: '\ea12';
+}
+
+.icon-user-create::before {
+  content: '\ea13';
+}
+
+.icon-file-invoice-create::before {
+  content: '\ea14';
+}
+
+.icon-arrow-to-top::before {
+  content: '\ea15';
+}
+
 .icon-file-check-outline::before {
   content: '\e9ef';
 }
@@ -799,10 +847,6 @@ i {
   content: '\e944';
 }
 
-.icon-delete::before {
-  content: '\e946';
-}
-
 .icon-file-error-outline::before {
   content: '\e948';
 }
@@ -831,7 +875,7 @@ i {
   content: '\e94e';
 }
 
-.icon-globe-network::before {
+.icon-globe-network-outline::before {
   content: '\e94f';
 }
 

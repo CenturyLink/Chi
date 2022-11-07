@@ -4,6 +4,7 @@ import {
   CLOSE_CLASS,
   DATA_TABLE_CLASSES,
   FORM_CLASSES,
+  GENERIC_SIZE_CLASSES,
   ICON_CLASS,
   INPUT_CLASSES,
   SEARCH_INPUT_CLASSES,
@@ -12,7 +13,6 @@ import { SearchInputSizes } from '@/constants/types';
 import { SEARCH_INPUT_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
-import { detectMajorChiVersion } from '@/utils/utils';
 
 @Component
 export default class SearchInput extends Vue {
@@ -27,7 +27,6 @@ export default class SearchInput extends Vue {
 
   cleanButtonVisible = !!(this.$props.value && !this.$props.disabled);
   inputValue = this.$props.value || '';
-  _chiMajorVersion = 5;
 
   _handleValueInput(ev: Event) {
     const newValue = (ev.target as HTMLInputElement).value;
@@ -54,10 +53,6 @@ export default class SearchInput extends Vue {
         (dataTableToolbarComponent as DataTableToolbar)._searchComponent = this;
       }
     }
-  }
-
-  beforeMount() {
-    this._chiMajorVersion = detectMajorChiVersion();
   }
 
   @Watch('value')
@@ -98,7 +93,7 @@ export default class SearchInput extends Vue {
         class={`${BUTTON_CLASSES.BUTTON}
         ${BUTTON_CLASSES.ICON_BUTTON}
         ${CLOSE_CLASS}
-        ${this._chiMajorVersion === 4 ? '-sm' : '-xs'}`}
+        ${GENERIC_SIZE_CLASSES.XS}`}
         onClick={() => {
           if (!this.$props.readOnly) {
             this._cleanInput();
@@ -116,7 +111,6 @@ export default class SearchInput extends Vue {
         class={`
         ${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON}
         ${BUTTON_CLASSES.FLAT} ${BUTTON_CLASSES.BG_NONE}
-        ${this._chiMajorVersion === 4 && this.$props.size === 'sm' ? `-${this.$props.size}` : this.$props.size || ''}
         `}
         onClick={() => this.$emit(SEARCH_INPUT_EVENTS.SEARCH, this.inputValue)}
         aria-label="Search">

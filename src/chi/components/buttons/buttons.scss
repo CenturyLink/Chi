@@ -187,7 +187,7 @@ $sizes: (
 .chi-button {
   align-items: center;
   background-color: $button-solid-background-color;
-  border: $border solid $button-solid-border-color;
+  border: $button-solid-border-width solid $button-solid-border-color;
   border-radius: $border-radius;
   box-shadow: $button-solid-box-shadow;
   color: $button-solid-text-color;
@@ -262,7 +262,7 @@ $sizes: (
   &:hover,
   &.-hover {
     background-color: $button-solid-hover-background-color;
-    border: $border solid $button-solid-hover-border-color;
+    border: $button-solid-border-width solid $button-solid-hover-border-color;
     color: $button-solid-hover-text-color;
     text-decoration: none;
 
@@ -273,7 +273,7 @@ $sizes: (
 
   &:focus,
   &.-focus {
-    border: $border solid $button-solid-focus-border-color;
+    border: $button-solid-border-width solid $button-solid-focus-border-color;
     outline: 0.125rem solid $button-solid-focus-outline;
     outline-offset: 0.0625rem;
     z-index: $zindex-prominent;
@@ -282,7 +282,7 @@ $sizes: (
   &:active,
   &.-active {
     background-color: $button-solid-active-background-color;
-    border: $border solid $button-solid-active-border-color;
+    border: $button-solid-border-width solid $button-solid-active-border-color;
     color: $button-solid-active-text-color;
     outline: none;
 
@@ -303,6 +303,11 @@ $sizes: (
     0 1px 16px 0 rgba(0, 0, 0, 0.12);
     padding: $button-icon-md-padding;
     transition: box-shadow 0.15s ease-in, background-color 0.15s ease-in;
+
+    &:hover,
+    &.-hover {
+      border-color: $button-float-hover-border-color;
+    }
 
     &:active,
     &.-active {
@@ -354,7 +359,7 @@ $sizes: (
 
   &.-outline {
     background-color: $button-outline-background-color;
-    border: $border solid $button-outline-border-color;
+    border: $button-outline-border-width solid $button-outline-border-color;
 
     &:hover,
     &.-hover {
@@ -389,7 +394,7 @@ $sizes: (
 
   &.-flat {
     background-color: $button-flat-background-color;
-    border: $border solid $button-flat-border-color;
+    border: $button-flat-border-width solid $button-flat-border-color;
     box-shadow: none;
     color: $button-flat-text-color;
 
@@ -419,7 +424,7 @@ $sizes: (
     &:hover,
     &.-hover {
       background-color: $button-flat-hover-background-color;
-      border: $border solid $button-flat-hover-border-color;
+      border: $button-flat-border-width solid $button-flat-hover-border-color;
       box-shadow: none;
       color: $button-flat-hover-text-color;
 
@@ -458,15 +463,17 @@ $sizes: (
     &:active,
     &.-active {
       background-color: $button-flat-active-background-color;
-      border: $border solid $button-flat-active-border-color;
+      border: $button-flat-border-width solid $button-flat-active-border-color;
       color: $button-flat-active-text-color;
 
       .chi-icon {
         color: inherit;
       }
 
-      &.-icon {
-        padding: $button-icon-md-padding;
+      &:not(.chi-dropdown__trigger) {
+        &.-icon {
+          padding: $button-icon-md-padding;
+        }
       }
 
       @each $type in map-keys($sizes) {
@@ -491,8 +498,10 @@ $sizes: (
           }
 
           &.-icon {
-            padding: map-get(map-get(map-get($sizes, $type), icons), padding);
-            line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
+            &:not(.chi-dropdown__trigger) {
+              padding: map-get(map-get(map-get($sizes, $type), icons), padding);
+              line-height: map-get(map-get(map-get($sizes, $type), icons), line-height);
+            }
           }
         }
       }
@@ -505,6 +514,7 @@ $sizes: (
       opacity: $button-flat-disabled-opacity;
 
       & .chi-icon {
+        color: $button-flat-disabled-icon-color;
         opacity: $button-flat-disabled-opacity;
       }
     }
@@ -525,7 +535,7 @@ $sizes: (
   @each $color in map-keys($button-colors) {
     &.-#{$color} {
       background-color: map-get(map-get($button-colors, $color), background-color);
-      border: $border solid transparent;
+      border: $button-solid-border-width solid transparent;
       box-shadow: 0 1px 1px 0 rgba($color-black, 0.04);
       color: map-get(map-get($button-colors, $color), text-color);
 
@@ -542,7 +552,7 @@ $sizes: (
       &:hover,
       &.-hover {
         background-color: map-get(map-get($button-colors, $color), background-color-hover);
-        border: $border solid transparent;
+        border: $button-solid-border-width solid transparent;
         box-shadow: 0 1px 4px 0 rgba($color-black, 0.15);
         color: map-get(map-get($button-colors, $color), text-color);
       }
@@ -550,7 +560,7 @@ $sizes: (
       &:active,
       &.-active {
         background-color: map-get(map-get($button-colors, $color), background-color-active);
-        border: $border solid transparent;
+        border: $button-solid-border-width solid transparent;
         box-shadow: none;
         color: map-get(map-get($button-colors, $color), text-color);
       }
@@ -562,7 +572,7 @@ $sizes: (
 
       &.-outline {
         background-color: map-get(map-get($button-colors, $color), background-color-outline);
-        border: $border solid map-get(map-get($button-colors, $color), border-color-outline);
+        border: $button-outline-border-width solid map-get(map-get($button-colors, $color), border-color-outline);
         box-shadow: none;
         color: map-get(map-get($button-colors, $color), text-color-outline);
 
@@ -574,15 +584,17 @@ $sizes: (
 
         &:hover,
         &.-hover {
+          // sass-lint:disable-block max-line-length
           background-color: map-get(map-get($button-colors, $color), background-color-outline-hover);
-          border: $border solid map-get(map-get($button-colors, $color), border-color-outline-hover);
+          border: $button-outline-border-width solid map-get(map-get($button-colors, $color), border-color-outline-hover);
           color: map-get(map-get($button-colors, $color), text-color-outline-hover);
         }
 
         &:active,
         &.-active {
+          // sass-lint:disable-block max-line-length
           background-color: map-get(map-get($button-colors, $color), background-color-outline-active);
-          border: $border solid map-get(map-get($button-colors, $color), border-color-outline-active);
+          border: $button-outline-border-width solid map-get(map-get($button-colors, $color), border-color-outline-active);
           color: map-get(map-get($button-colors, $color), text-color-outline-active);
         }
 
@@ -594,7 +606,7 @@ $sizes: (
 
       &.-flat {
         background-color: $button-flat-background-color;
-        border: $border solid transparent;
+        border: $button-flat-border-width solid transparent;
         box-shadow: none;
         color: map-get(map-get($button-colors, $color), text-color-outline);
 
@@ -602,13 +614,13 @@ $sizes: (
           &:hover,
           &.-hover {
             background-color: map-get(map-get($button-colors, $color), background-color-flat-hover);
-            border: $border solid map-get(map-get($button-colors, $color), border-color-flat-hover);
+            border: $button-flat-border-width solid map-get(map-get($button-colors, $color), border-color-flat-hover);
           }
 
           &:active,
           &.-active {
             background-color: map-get(map-get($button-colors, $color), background-color-flat-active);
-            border: $border solid map-get(map-get($button-colors, $color), border-color-flat-active);
+            border: $button-flat-border-width solid map-get(map-get($button-colors, $color), border-color-flat-active);
             box-shadow: none;
           }
         }

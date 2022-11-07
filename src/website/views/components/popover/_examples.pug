@@ -809,10 +809,10 @@ h2 Popover with custom content
 
 h3 Destructive action confirmation
 .example.-mb--3
-  .-p--3(style='height: 185px')
+  .-p--3(style='height: 220px')
     .-position--relative
-      chi-popover(position="top", title="Are you sure?", variant="text", active, arrow, prevent-auto-hide)
-        | Are you sure you want to delete this?
+      chi-popover(position="top", title="Delete instance-1?", variant="text", active, arrow, prevent-auto-hide)
+        | Are you sure you want to delete instance-1?
         chi-button(slot="chi-popover__footer" color="danger") Delete
         chi-button(slot="chi-popover__footer") Cancel
   .example-tabs.-pl--2
@@ -825,8 +825,8 @@ h3 Destructive action confirmation
     .chi-tab__description
       | Add buttons to Popovers by setting slot attribute to <code>slot="chi-popover__footer"</code>.
     :code(lang="html")
-      <chi-popover position="top" title="Are you sure?" variant="text" active arrow>
-        Are you sure you want to delete this?
+      <chi-popover position="top" title="Delete instance-1?" variant="text" active arrow>
+        Are you sure you want to delete instance-1?
         <chi-button slot="chi-popover__footer" color="danger">Delete</chi-button>
         <chi-button slot="chi-popover__footer">Cancel</chi-button>
       </chi-popover>
@@ -834,12 +834,12 @@ h3 Destructive action confirmation
     .chi-tab__description
       | Add buttons to Popovers by placing them in <code>chi-popover__footer</code>.
     :code(lang="html")
-      <section class="chi-popover chi-popover--top -active" aria-label="Are you sure?" aria-modal="true" role="dialog">
+      <section class="chi-popover chi-popover--top -active" aria-label="Delete instance-1?" aria-modal="true" role="dialog">
         <header class="chi-popover__header">
-          <h2 class="chi-popover__title">Are you sure?</h2>
+          <h2 class="chi-popover__title">Delete instance-1?</h2>
         </header>
         <div class="chi-popover__content">
-          <p class="chi-popover__text">Are you sure you want to delete this?</p>
+          <p class="chi-popover__text">Are you sure you want to delete instance-1?</p>
         </div>
         <div class="chi-popover__footer">
           <button class="chi-button -danger">Delete</button>

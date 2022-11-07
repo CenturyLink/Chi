@@ -43,7 +43,6 @@ import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import DataTableBulkActions from '../data-table-bulk-actions/DataTableBulkActions';
 import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
-import { detectMajorChiVersion } from '@/utils/utils';
 import { ICON_CLASSES } from '@/constants/icons';
 import { alignmentUtilityClasses, expansionIcons } from './constants/constants';
 import { NormalizedScopedSlot } from 'vue/types/vnode';
@@ -69,6 +68,9 @@ export default class DataTable extends Vue {
   treeSelection = Object.prototype.hasOwnProperty.call(this.$props.config, 'treeSelection')
     ? this.$props.config.treeSelection
     : defaultConfig.treeSelection;
+  cellWrap = Object.prototype.hasOwnProperty.call(this.$props.config, 'cellWrap')
+    ? this.$props.config.cellWrap
+    : defaultConfig.cellWrap;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
@@ -84,7 +86,6 @@ export default class DataTable extends Vue {
   _bulkActionsComponent?: DataTableBulkActions;
   _paginationListenersAdded = false;
   _showSelectedOnly = false;
-  _chiMajorVersion = 5;
   _printDisabledColsIndexes: number[] = [];
   _mapRows: {
     [rowId: string]: {
@@ -159,8 +160,7 @@ export default class DataTable extends Vue {
             reference={`#${infoPopoverId}`}
             position="top"
             title={(this.data.head[column].description as DataTableColumnDescription).title}
-            portal={this._chiMajorVersion === 4}
-            modal={this._chiMajorVersion === 5}
+            modal
             arrow>
             <div>{this._getDescription(this.data.head[column].description as string | DataTableColumnDescription)}</div>
           </chi-popover>
@@ -327,11 +327,7 @@ export default class DataTable extends Vue {
       ${BUTTON_CLASSES.ICON_BUTTON}
       ${BUTTON_CLASSES.FLAT}
       ${EXPAND_CLASS}
-      ${
-        this._chiMajorVersion === 4 // To be removed
-          ? GENERIC_SIZE_CLASSES.SM
-          : GENERIC_SIZE_CLASSES.XS
-      }
+      ${GENERIC_SIZE_CLASSES.XS}
       `}
         aria-label="Expand row"
         data-target={`#${rowData.rowId}-content`}
@@ -737,7 +733,7 @@ export default class DataTable extends Vue {
       }
     } else {
       return (
-        <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} -p--2`} role="row">
+        <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} ${UTILITY_CLASSES.PADDING[2]}`} role="row">
           {accordionData.value}
         </div>
       );
@@ -803,9 +799,9 @@ export default class DataTable extends Vue {
           cellData = this.$scopedSlots[rowCell.template]!(rowCell.payload);
         }
       } else if (typeof rowCell === 'object' && !!rowCell.value) {
-        cellData = <DataTableTooltip msg={rowCell.value} class="-w--100" />;
+        cellData = <DataTableTooltip textWrap={this.cellWrap} msg={rowCell.value} class="-w--100" />;
       } else if (typeof rowCell === 'string' || typeof rowCell === 'number') {
-        cellData = <DataTableTooltip msg={rowCell} class="-w--100" />;
+        cellData = <DataTableTooltip textWrap={this.cellWrap} msg={rowCell} class="-w--100" />;
       } else {
         cellData = null;
       }
@@ -1118,7 +1114,6 @@ export default class DataTable extends Vue {
   }
 
   beforeMount() {
-    this._chiMajorVersion = detectMajorChiVersion();
     this.detectScreenBreakpoint();
   }
 
@@ -1345,14 +1340,14 @@ export default class DataTable extends Vue {
         columnSortBy = columnHeadSortButton.dataset.sortBy,
         sortIcon = columnHeadSortButton.querySelector(`[aria-label="Sort icon"] i.${ICON_CLASS}`),
         headSortColumnIcons = (this.$refs.dataTable as HTMLElement).querySelectorAll(
-          `.${DATA_TABLE_CLASSES.HEAD} [aria-label="Sort icon"] i.-xs.${ICON_CLASS}`
+          `.${DATA_TABLE_CLASSES.HEAD} [aria-label="Sort icon"] i.${GENERIC_SIZE_CLASSES.XS}.${ICON_CLASS}`
         );
 
       headSortColumnIcons.forEach(sortIcon => {
-        if (sortIcon.className !== `${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.SORT}`) {
+        if (sortIcon.className !== `${ICON_CLASS} ${GENERIC_SIZE_CLASSES.XS} ${DATA_TABLE_SORT_ICONS.SORT}`) {
           let element = sortIcon;
 
-          sortIcon.className = `${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.SORT}`;
+          sortIcon.className = `${ICON_CLASS} ${GENERIC_SIZE_CLASSES.XS} ${DATA_TABLE_SORT_ICONS.SORT}`;
           while (element && !element.classList.contains(DATA_TABLE_CLASSES.HEAD)) {
             if (element.classList.contains(DATA_TABLE_CLASSES.CELL) && element.classList.contains(ACTIVE_CLASS)) {
               element.classList.remove(ACTIVE_CLASS);
@@ -1369,7 +1364,7 @@ export default class DataTable extends Vue {
       });
 
       if (columnName && sortIcon) {
-        sortIcon.className = `${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.ARROW}`;
+        sortIcon.className = `${ICON_CLASS} ${GENERIC_SIZE_CLASSES.XS} ${DATA_TABLE_SORT_ICONS.ARROW}`;
         if (currentSort === 'ascending' && this._sortConfig && this._sortConfig.key === columnName) {
           const sortingData: DataTableSorting = {
             column: columnName,
@@ -1409,7 +1404,7 @@ export default class DataTable extends Vue {
             sortingData.data = undefined;
           }
 
-          sortIcon.className = `${ICON_CLASS} -xs ${DATA_TABLE_SORT_ICONS.SORT}`;
+          sortIcon.className = `${ICON_CLASS} ${GENERIC_SIZE_CLASSES.XS} ${DATA_TABLE_SORT_ICONS.SORT}`;
           columnHeadSortButton.removeAttribute('data-sort');
           (sortIcon as HTMLElement).removeAttribute('style');
           columnHeadSortButton.blur();
