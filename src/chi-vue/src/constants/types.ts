@@ -126,6 +126,7 @@ export interface DataTableConfig {
     isNestedContentPrintDisabled?: boolean;
   };
   treeSelection?: boolean;
+  cellWrap?: boolean;
 }
 export interface DataTableFilter {
   name: string;

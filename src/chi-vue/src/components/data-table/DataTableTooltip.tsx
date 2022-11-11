@@ -1,12 +1,13 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import Tooltip from '@/components/tooltip/tooltip';
-import { TOOLTIP_ANIMATION_DELAY } from '@/constants/constants';
+import { DATA_TABLE_CELL_THRESHOLD, TOOLTIP_ANIMATION_DELAY } from '@/constants/constants';
 import { UTILITY_CLASSES } from '@/constants/classes';
 
 @Component({})
 export default class DataTableTooltip extends Vue {
   @Prop() msg!: string;
   @Prop() header?: boolean;
+  @Prop() textWrap?: boolean;
 
   tooltip = false;
 
@@ -22,23 +23,20 @@ export default class DataTableTooltip extends Vue {
 
   _isTruncated() {
     const wrapper = this.$refs.wrapper as HTMLElement;
-    const wrapperClone = wrapper.cloneNode(true) as HTMLElement;
-
-    wrapperClone.style.display = 'inline';
-    wrapperClone.style.width = 'auto';
-    wrapperClone.style.visibility = 'hidden';
-    wrapperClone.style.overflow = 'visible';
-
-    wrapper.parentNode?.appendChild(wrapperClone);
-
-    const isTruncated = wrapperClone.offsetWidth > wrapper.offsetWidth;
-
-    wrapperClone.parentNode?.removeChild(wrapperClone);
+    const isTruncated =
+      Math.abs(wrapper.scrollHeight - wrapper.clientHeight) > DATA_TABLE_CELL_THRESHOLD ||
+      wrapper.offsetWidth < wrapper.scrollWidth;
 
     return isTruncated;
   }
 
   render() {
+    const content = (
+      <div class={this.textWrap ? '-cell-wrap' : UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} ref="wrapper">
+        {this.msg}
+      </div>
+    );
+
     return (
       <div
         onMouseenter={() => this.onShow()}
@@ -46,17 +44,7 @@ export default class DataTableTooltip extends Vue {
         onMouseleave={() => this.onHide()}
         onBlur={() => this.onHide()}
         style={`max-width: fit-content; width: ${this.$props.header ? 'calc(100% - 20px)' : '100%'};`}>
-        {!this.tooltip ? (
-          <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} ref="wrapper">
-            {this.msg}
-          </div>
-        ) : (
-          <Tooltip message={this.msg}>
-            <div class={UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} ref="wrapper">
-              {this.msg}
-            </div>
-          </Tooltip>
-        )}
+        {this.tooltip ? <Tooltip message={this.msg}>{content}</Tooltip> : content}
       </div>
     );
   }

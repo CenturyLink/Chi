@@ -1027,6 +1027,7 @@ $header-navbar-font-weight:                 $font-weight-semi-bold;
 $header-navbar-divider-color:               rgba($color-white, 0.5);
 $header-navbar-menu-text-transform:         uppercase;
 $header-navbar-menu-line-height:            $line-height-sm;
+$header-navbar-dropdown-arrow-color:        rgba($color-blue-75, 0.92);
 $header-end-text-color:                     $color-text-white;
 $header-navbar-tab-xs-height:               2rem;
 $header-navbar-tab-xs-link-font-size:       $font-size-base;
@@ -1365,9 +1366,9 @@ $range-slider-focus-color:                  $focus-color;
 $range-slider-tick-border-color:            $color-border-base-dark;
 
 // Save view
-$save-view-background-color:                $color-background-base;
-$save-view-border-color:                    $color-border-base;
-$save-view-divider-border-color:            $color-border-base;
+$save-view-background-color:                $color-blue-30;
+$save-view-border-color:                    transparent;
+$save-view-divider-border-color:            $color-grey-50;
 $save-view-divider-height:                  1.25rem;
 $save-view-results-font-size:               $font-size-md;
 $save-view-label-font-size:                 $font-size-md;

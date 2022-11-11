@@ -131,7 +131,7 @@ $color-yellow-60:   #ad7600;
 $color-yellow-50:   #ebaf00;
 $color-yellow-45:   #fabb00;
 $color-yellow-40:   #ffc800;
-$color-yellow-30:   #ffe37f;
+$color-yellow-30:   #ffe480;
 $color-yellow-20:   #fff1bf;
 $color-yellow-10:   #fff8e0;
 $color-orange-100:  #240b00;
@@ -391,7 +391,7 @@ $alert-sm-text-line-height:                 $line-height;
 
 // App layout
 $app-layout-background-color:               $color-background-base;
-$app-layout-header-background-color:        $color-orange-40;
+$app-layout-header-background-color:        $color-yellow-30;
 $app-layout-header-title-color:             $color-text-base;
 
 // Avatar
@@ -1030,6 +1030,7 @@ $header-navbar-font-weight:                 $font-weight-semi-bold;
 $header-navbar-divider-color:               rgba($color-black, 0.5);
 $header-navbar-menu-text-transform:         uppercase;
 $header-navbar-menu-line-height:            $line-height-sm;
+$header-navbar-dropdown-arrow-color:        $color-yellow-45;
 $header-end-text-color:                     $color-text-black;
 $header-navbar-tab-xs-height:               2rem;
 $header-navbar-tab-xs-link-font-size:       $font-size-base;
@@ -1041,7 +1042,7 @@ $header-height:                             3.5rem;
 $header-lg-height:                          4rem;
 $header-xl-height:                          6rem;
 $header-xl-content-padding:                 0 2rem;
-$header-xl-navbar-tab-link-font-size:       $font-size-base;
+$header-xl-navbar-tab-link-font-size:       $font-size-lg;
 $header-xl-navbar-tab-link-line-height:     $line-height;
 
 // Label

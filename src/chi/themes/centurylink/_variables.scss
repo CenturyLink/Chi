@@ -510,13 +510,13 @@ $badge-flat-muted-text-color:               $color-text-muted;
 $badge-flat-muted-icon-color:               $color-icon-muted;
 
 // Bulk actions
-$bulk-actions-background-color:             $color-background-secondary;
+$bulk-actions-background-color:             $color-blue-30;
 $bulk-actions-link-color:                   $color-text-base;
 $bulk-actions-link-font-weight:             $font-weight-semi-bold;
 $bulk-actions-results-font-size:            $font-size-md;
 $bulk-actions-label-font-weight:            $font-weight-semi-bold;
 $bulk-actions-divider-height:               1.25rem;
-$bulk-actions-divider-border-right-color:   $color-blue-30;
+$bulk-actions-divider-border-right-color:   $color-blue-40;
 $bulk-actions-button-icon-color:            $color-grey-80;
 
 // Button
@@ -1044,6 +1044,7 @@ $header-navbar-font-weight:                 $font-weight-semi-bold;
 $header-navbar-divider-color:               rgba($color-black, 0.12);
 $header-navbar-menu-text-transform:         uppercase;
 $header-navbar-menu-line-height:            $line-height-sm;
+$header-navbar-dropdown-arrow-color:        transparent;
 $header-end-text-color:                     $color-text-base;
 $header-navbar-tab-xs-height:               2rem;
 $header-navbar-tab-xs-link-font-size:       $font-size-base;
@@ -1055,7 +1056,7 @@ $header-height:                             3.5rem;
 $header-lg-height:                          4rem;
 $header-xl-height:                          6rem;
 $header-xl-content-padding:                 0 2rem;
-$header-xl-navbar-tab-link-font-size:       $font-size-base;
+$header-xl-navbar-tab-link-font-size:       $font-size-lg;
 $header-xl-navbar-tab-link-line-height:     $line-height;
 
 // Label
@@ -1382,7 +1383,7 @@ $range-slider-focus-color:                  $focus-color;
 $range-slider-tick-border-color:            $color-border-base-dark;
 
 // Save view
-$save-view-background-color:                $color-background-base;
+$save-view-background-color:                $color-blue-20;
 $save-view-border-color:                    $color-border-base;
 $save-view-divider-border-color:            $color-border-base;
 $save-view-divider-height:                  1.25rem;
