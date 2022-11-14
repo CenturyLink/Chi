@@ -146,12 +146,11 @@ export class Tabs {
   }
 
   setParentTabActive(tab: TabTrigger) {
-    if (tab.parent) {
-      const parentTabElement = document.getElementById(
-        tab.parent.id
-      ) as HTMLAnchorElement;
+    const id = tab.parent ? tab.parent.id : tab.id;
+    const parentTabElement = document.getElementById(id) as HTMLAnchorElement;
 
-      parentTabElement.classList.add(ACTIVE_CLASS);
+    parentTabElement.classList.add(ACTIVE_CLASS);
+    if (tab.parent) {
       this.setParentTabActive(tab.parent);
     }
   }
@@ -311,6 +310,7 @@ export class Tabs {
   }
 
   handlerResize = () => {
+    this._setSeeMoreTriggerElement();
     this.setAvailableSpace();
     this.setListOverflow();
     this.isSeeMoreVisible = this.tabs.findIndex(li => li.overflow) !== -1;
@@ -352,11 +352,29 @@ export class Tabs {
     this.isSeeMoreActive = false;
   }
 
-  isActiveTabOverflown() {
-    return (
-      this.tabs.findIndex(tab => tab.id === this.activeTab && tab.overflow) !==
-      -1
-    );
+  _isActiveTab(tab: TabTrigger) {
+    if (tab.children) {
+      return (
+        tab.id === this.activeTab ||
+        tab.children.some(tab => this._isActiveTab(tab))
+      );
+    } else {
+      return tab.id === this.activeTab;
+    }
+  }
+
+  isActiveTabOverflown(tabs: TabTrigger[]): boolean {
+    return tabs.some(tab => this._isActiveTab(tab) && !!tab.overflow);
+  }
+
+  _setSeeMoreTriggerElement() {
+    if (!this.seeMoreTriggerElement) {
+      const seeMoreElement = document.getElementById(
+        this.seeMoreTriggerId
+      ) as HTMLLIElement;
+
+      this.seeMoreTriggerElement = seeMoreElement;
+    }
   }
 
   setAvailableSpace() {
@@ -402,7 +420,7 @@ export class Tabs {
   }
 
   setSlidingBorderStyles() {
-    const element = this.isActiveTabOverflown()
+    const element = this.isActiveTabOverflown(this.tabs)
       ? this.seeMoreTriggerElement
       : this.activeTabElement;
     const position = this.getPosition(element);
@@ -434,7 +452,7 @@ export class Tabs {
           return (
             <li
               class={`${TABS_CLASSES.TRIGGER} ${
-                this.activeTab === tab.id ? ACTIVE_CLASS : ''
+                this._isActiveTab(tab) ? ACTIVE_CLASS : ''
               }`}
               data-index={index}
               id={tab.id}
@@ -446,7 +464,7 @@ export class Tabs {
               <a
                 href={`#${tab.id}`}
                 role="tab"
-                aria-selected={this.activeTab === tab.id}
+                aria-selected={this._isActiveTab(tab)}
                 aria-controls={`#${tab.id}`}
                 onClick={e => this.handlerClickTab(e, tab)}
               >
@@ -468,7 +486,7 @@ export class Tabs {
     const seeMoreTrigger = !this.vertical &&
       (this.isSeeMoreVisible || !this.isSeeMoreTriggerMeasured) && (
         <li
-          class={this.isActiveTabOverflown() ? ACTIVE_CLASS : ''}
+          class={this.isActiveTabOverflown(this.tabs) ? ACTIVE_CLASS : ''}
           id={this.seeMoreTriggerId}
           ref={el => (this.seeMoreTriggerElement = el)}
         >
@@ -488,9 +506,11 @@ export class Tabs {
         return (
           <a
             class={`${DROPDOWN_CLASSES.MENU_ITEM} ${
-              this.activeTab === tab.id ? ACTIVE_CLASS : ''
+              this._isActiveTab(tab) ? ACTIVE_CLASS : ''
             }`}
             href="#"
+            onMouseEnter={() => this.handlerTabMouseEnter(tab)}
+            onMouseLeave={e => this.handlerMouseLeave(e)}
             onClick={e => {
               this.handlerClickTab(e, tab, this.seeMoreTriggerAnchorElement);
               this.seeMoreDropdown.hide();
@@ -499,6 +519,12 @@ export class Tabs {
             slot="menu"
           >
             {tab.label}
+            {tab.children ? (
+              <i
+                class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-right ${GENERIC_SIZE_CLASSES.XS}`}
+                aria-hidden="true"
+              ></i>
+            ) : null}
           </a>
         );
       });
