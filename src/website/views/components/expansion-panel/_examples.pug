@@ -98,12 +98,12 @@ p.-text
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='done').-primary Finish
   .example-tabs.-pl--2
-    ul.chi-tabs#example-base
+    ul.chi-tabs#example__base
       li.-active
-        a(href='#web-example-base') Web Component
+        a(href='#web-example__base') Web Component
       li
-        a(href='#html-example-base') HTML Blueprint
-  #web-example-base.chi-tabs-panel.-active
+        a(href='#html-example__base') HTML Blueprint
+  #web-example__base.chi-tabs-panel.-active
     :code(lang="html")
       <chi-expansion-panel step="1" title="Panel title" state="active">
         <div slot="active">
@@ -123,7 +123,7 @@ p.-text
       <chi-expansion-panel step="2" title="Panel title"></chi-expansion-panel>
       <chi-expansion-panel step="3" title="Panel title"></chi-expansion-panel>
       <chi-expansion-panel step="4" title="Panel title"></chi-expansion-panel>
-  #html-example-base.chi-tabs-panel
+  #html-example__base.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -347,7 +347,7 @@ p.-text
                 p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='previous') Previous
-                button.chi-button(data-chi-epanel-action='next').-primary Continue
+                button.chi-button(data-chi-epanel-action='done').-primary Continue
 
       .chi-epanel.-disabled(data-chi-epanel-group='example__state')
         .chi-epanel__header
@@ -569,10 +569,10 @@ p.-text
 
 h3 No step number
 p.-text Step numbering is optional and can be easily omitted.
-.example.-mb--3#example__noStepNumber
+.example.-mb--3#example__no-step-number
   .-p--3.-p-lg--6.-bg--grey-10
     .-mw--720.-mx--auto
-      .chi-epanel.-no-step.-active(data-chi-epanel-group='example__noStepNumber')
+      .chi-epanel.-no-step.-active(data-chi-epanel-group='example__no-step-number')
         .chi-epanel__header
           .chi-epanel__title Panel title
           .chi-epanel__content
@@ -593,7 +593,7 @@ p.-text Step numbering is optional and can be easily omitted.
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel.-no-step(data-chi-epanel-group='example__noStepNumber')
+      .chi-epanel.-no-step(data-chi-epanel-group='example__no-step-number')
         .chi-epanel__header
           .chi-epanel__title Panel title
           .chi-epanel__content
@@ -615,7 +615,7 @@ p.-text Step numbering is optional and can be easily omitted.
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel.-no-step(data-chi-epanel-group='example__noStepNumber')
+      .chi-epanel.-no-step(data-chi-epanel-group='example__no-step-number')
         .chi-epanel__header
           .chi-epanel__title Panel title
           .chi-epanel__content
@@ -637,7 +637,7 @@ p.-text Step numbering is optional and can be easily omitted.
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel.-no-step(data-chi-epanel-group='example__noStepNumber')
+      .chi-epanel.-no-step(data-chi-epanel-group='example__no-step-number')
         .chi-epanel__header
           .chi-epanel__title Panel title
           .chi-epanel__content
@@ -698,10 +698,10 @@ p.-text Step numbering is optional and can be easily omitted.
       | and removing <code>chi-epanel__number</code>.
     :code(lang="html")
       <!-- JavaScript -->
-      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__noStepNumber"]'));</script>
+      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__no-step-number"]'));</script>
 
       <!-- HTML -->
-      <div class="chi-epanel -no-step -active" data-chi-epanel-group="example__noStepNumber">
+      <div class="chi-epanel -no-step -active" data-chi-epanel-group="example__no-step-number">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title">Panel title</div>
           <div class="chi-epanel__content">
@@ -732,7 +732,7 @@ p.-text Step numbering is optional and can be easily omitted.
           </div>
         </div>
       </div>
-      <div class="chi-epanel -no-step" data-chi-epanel-group="example__noStepNumber">
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example__no-step-number">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title">Panel title</div>
           <div class="chi-epanel__content">
@@ -764,7 +764,7 @@ p.-text Step numbering is optional and can be easily omitted.
           </div>
         </div>
       </div>
-      <div class="chi-epanel -no-step" data-chi-epanel-group="example__noStepNumber">
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example__no-step-number">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title">Panel title</div>
           <div class="chi-epanel__content">
@@ -796,7 +796,7 @@ p.-text Step numbering is optional and can be easily omitted.
           </div>
         </div>
       </div>
-      <div class="chi-epanel -no-step" data-chi-epanel-group="example__noStepNumber">
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example__no-step-number">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title">Panel title</div>
           <div class="chi-epanel__content">
@@ -895,7 +895,7 @@ p.-text
                 p.chi-epanel__text Content goes here
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='previous') Previous
-                button.chi-button(data-chi-epanel-action='next').-primary Continue
+                button.chi-button(data-chi-epanel-action='done').-primary Continue
 
       .chi-epanel.-bordered.-disabled(data-chi-epanel-group='example__bordered')
         .chi-epanel__header
@@ -1107,10 +1107,10 @@ p.-text
   | any other panel in the same group will be deactivated by putting it in the pending state. To activate this mode, add
   | the <code>mode: "accordion"</code> configuration parameter at the moment of creation. Done states should
   | not be used in this mode. In this example, titles have been configured to trigger the action <code>toggle</code>.
-.example.-mb--3#example__AccordionMode
+.example.-mb--3#example__accordion-mode
   .-p--3.-p-lg--6.-bg--grey-10
     .-mw--720.-mx--auto
-      .chi-epanel.-bordered.-active(data-chi-epanel-group='example__AccordionMode')
+      .chi-epanel.-bordered.-active(data-chi-epanel-group='example__accordion-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 1
         .chi-epanel__collapse
@@ -1119,7 +1119,7 @@ p.-text
               .chi-epanel__content
                 p.chi-epanel__text Content goes here
 
-      .chi-epanel.-bordered(data-chi-epanel-group='example__AccordionMode')
+      .chi-epanel.-bordered(data-chi-epanel-group='example__accordion-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 2
         .chi-epanel__collapse
@@ -1128,7 +1128,7 @@ p.-text
               .chi-epanel__content
                 p.chi-epanel__text Content goes here
 
-      .chi-epanel.-bordered(data-chi-epanel-group='example__AccordionMode')
+      .chi-epanel.-bordered(data-chi-epanel-group='example__accordion-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 3
         .chi-epanel__collapse
@@ -1137,7 +1137,7 @@ p.-text
               .chi-epanel__content
                 p.chi-epanel__text Content goes here
 
-      .chi-epanel.-bordered(data-chi-epanel-group='example__AccordionMode')
+      .chi-epanel.-bordered(data-chi-epanel-group='example__accordion-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 4
         .chi-epanel__collapse
@@ -1159,7 +1159,7 @@ p.-text
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-epanel -bordered -active" data-chi-epanel-group="example__AccordionMode">
+      <div class="chi-epanel -bordered -active" data-chi-epanel-group="example__accordion-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 1</div>
         </div>
@@ -1173,7 +1173,7 @@ p.-text
           </div>
         </div>
       </div>
-      <div class="chi-epanel -bordered" data-chi-epanel-group="example__AccordionMode">
+      <div class="chi-epanel -bordered" data-chi-epanel-group="example__accordion-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 2</div>
         </div>
@@ -1187,7 +1187,7 @@ p.-text
           </div>
         </div>
       </div>
-      <div class="chi-epanel -bordered" data-chi-epanel-group="example__AccordionMode">
+      <div class="chi-epanel -bordered" data-chi-epanel-group="example__accordion-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 3</div>
         </div>
@@ -1201,7 +1201,7 @@ p.-text
           </div>
         </div>
       </div>
-      <div class="chi-epanel -bordered" data-chi-epanel-group="example__AccordionMode">
+      <div class="chi-epanel -bordered" data-chi-epanel-group="example__accordion-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 4</div>
         </div>
@@ -1219,7 +1219,7 @@ p.-text
       <!-- JavaScript -->
       <script>
       chi.expansionPanel(
-        document.querySelectorAll('[data-chi-epanel-group="example__AccordionMode"]'),
+        document.querySelectorAll('[data-chi-epanel-group="example__accordion-mode"]'),
         {mode: 'accordion'}
       );
       </script>
@@ -1228,10 +1228,10 @@ h3 Free mode
 p.-text
   | In this mode there is no automated action triggered when an element activates,
   | so you will need to manage all custom behavior.
-.example.-mb--3#example__FreeMode
+.example.-mb--3#example__free-mode
   .-p--3.-p-lg--6.-bg--grey-10
     .-mw--720.-mx--auto
-      .chi-epanel.-no-step.-active(data-chi-epanel-group='example__FreeMode')
+      .chi-epanel.-no-step.-active(data-chi-epanel-group='example__free-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 1
           .chi-epanel__action.-done--only
@@ -1244,7 +1244,7 @@ p.-text
                 p.chi-epanel__text Content goes here
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
-      .chi-epanel.-no-step(data-chi-epanel-group='example__FreeMode')
+      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 2
           .chi-epanel__action.-done--only
@@ -1258,7 +1258,7 @@ p.-text
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
-      .chi-epanel.-no-step(data-chi-epanel-group='example__FreeMode')
+      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 3
           .chi-epanel__action.-done--only
@@ -1272,7 +1272,7 @@ p.-text
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
-      .chi-epanel.-no-step(data-chi-epanel-group='example__FreeMode')
+      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 4
           .chi-epanel__action.-done--only
@@ -1299,7 +1299,7 @@ p.-text
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-epanel -no-step -active" data-chi-epanel-group="example__FreeMode">
+      <div class="chi-epanel -no-step -active" data-chi-epanel-group="example__free-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 1</div>
         </div>
@@ -1317,7 +1317,7 @@ p.-text
           </div>
         </div>
       </div>
-      <div class="chi-epanel -no-step" data-chi-epanel-group="example__FreeMode">
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example__free-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 2</div>
         </div>
@@ -1336,7 +1336,7 @@ p.-text
           </div>
         </div>
       </div>
-      <div class="chi-epanel -no-step" data-chi-epanel-group="example__FreeMode">
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example__free-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 3</div>
         </div>
@@ -1355,7 +1355,7 @@ p.-text
           </div>
         </div>
       </div>
-      <div class="chi-epanel -no-step" data-chi-epanel-group="example__FreeMode">
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example__free-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 4</div>
         </div>
@@ -1377,7 +1377,7 @@ p.-text
       <!-- JavaScript -->
       <script>
         chi.expansionPanel(
-          document.querySelectorAll('[data-chi-epanel-group="example__FreeMode"]'),
+          document.querySelectorAll('[data-chi-epanel-group="example__free-mode"]'),
           {mode: 'free'}
         );
       </script>
@@ -1390,10 +1390,10 @@ p.-text
   | example, the component behaves similar to the accordion but alternates between <code>done</code> and
   | <code>pending</code> states instead of <code>active</code> and <code>pending</code> states. The overridden action
   | functions are for documentation purposes only because they clone the functionality of the default ones.
-.example.-mb--3#example__CustomMode
+.example.-mb--3#example__custom-mode
   .-p--3.-p-lg--6.-bg--grey-10
     .-mw--720.-mx--auto
-      .chi-epanel.-done(data-chi-epanel-group='example__CustomMode')
+      .chi-epanel.-done(data-chi-epanel-group='example__custom-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='done') Panel 1
           .chi-epanel__content
@@ -1402,7 +1402,7 @@ p.-text
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
                 | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
                 | Aenean eu sapien eget ante placerat pretium a sit amet ante.
-      .chi-epanel(data-chi-epanel-group='example__CustomMode')
+      .chi-epanel(data-chi-epanel-group='example__custom-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='done') Panel 2
           .chi-epanel__content
@@ -1411,7 +1411,7 @@ p.-text
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
                 | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
                 | Aenean eu sapien eget ante placerat pretium a sit amet ante.
-      .chi-epanel(data-chi-epanel-group='example__CustomMode')
+      .chi-epanel(data-chi-epanel-group='example__custom-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='done') Panel 3
           .chi-epanel__content
@@ -1420,7 +1420,7 @@ p.-text
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
                 | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
                 | Aenean eu sapien eget ante placerat pretium a sit amet ante.
-      .chi-epanel(data-chi-epanel-group='example__CustomMode')
+      .chi-epanel(data-chi-epanel-group='example__custom-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='done') Panel 4
           .chi-epanel__content
@@ -1443,7 +1443,7 @@ p.-text
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-epanel -done" data-chi-epanel-group="example__CustomMode">
+      <div class="chi-epanel -done" data-chi-epanel-group="example__custom-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="done">Panel 1</div>
           <div class="chi-epanel__content">
@@ -1457,7 +1457,7 @@ p.-text
           </div>
         </div>
       </div>
-      <div class="chi-epanel" data-chi-epanel-group="example__CustomMode">
+      <div class="chi-epanel" data-chi-epanel-group="example__custom-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="done">Panel 2</div>
           <div class="chi-epanel__content">
@@ -1471,7 +1471,7 @@ p.-text
           </div>
         </div>
       </div>
-      <div class="chi-epanel" data-chi-epanel-group="example__CustomMode">
+      <div class="chi-epanel" data-chi-epanel-group="example__custom-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="done">Panel 3</div>
           <div class="chi-epanel__content">
@@ -1485,9 +1485,9 @@ p.-text
           </div>
         </div>
       </div>
-      <div class="chi-epanel" data-chi-epanel-group="example__CustomMode">
+      <div class="chi-epanel" data-chi-epanel-group="example__custom-mode">
         <div class="chi-epanel__header">
-          <div class="chi-epanel__title" data-chi-epanel-action="done">Panel 5</div>
+          <div class="chi-epanel__title" data-chi-epanel-action="done">Panel 4</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
@@ -1502,7 +1502,7 @@ p.-text
       <!-- JavaScript -->
       <script>
         chi.expansionPanel(
-          document.querySelectorAll('[data-chi-epanel-group="example__CustomMode"]'),
+          document.querySelectorAll('[data-chi-epanel-group="example__custom-mode"]'),
           {
             mode: 'custom',
             changeHandler: function (newState, oldState, expansionPanel, panelGroup) {
@@ -1551,18 +1551,18 @@ script.
 
       chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__base"]'));
       chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example-portal-3"]'));
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__AccordionMode"]'), {mode: 'accordion'});
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__FreeMode"]'), {mode: 'free'});
+      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__accordion-mode"]'), {mode: 'accordion'});
+      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__free-mode"]'), {mode: 'free'});
       chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example-portal-5"]'), {mode: 'free'});
       chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__state"]'));
       chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example-portal-7"]'));
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__noStepNumber"]'));
+      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__no-step-number"]'));
       chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example-portal-8"]'));
       chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__bordered"]'));
       chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example-portal-9"]'));
 
       chi.expansionPanel(
-      document.querySelectorAll('[data-chi-epanel-group="example__CustomMode"]'),
+      document.querySelectorAll('[data-chi-epanel-group="example__custom-mode"]'),
       {
         mode: 'custom',
         changeHandler: function (newState, oldState, expansionPanel, panelGroup) {
