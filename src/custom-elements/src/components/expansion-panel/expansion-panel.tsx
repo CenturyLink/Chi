@@ -49,8 +49,8 @@ export class ExpansionPanel {
     };
 
     if (!this.mutationObserver) {
-      const subscriberCallback = (mutations) => {
-        mutations.forEach((mutation) => {
+      const subscriberCallback = mutations => {
+        mutations.forEach(mutation => {
           this.epanelTitle = mutation.target.title;
         });
       };
@@ -78,12 +78,16 @@ export class ExpansionPanel {
       <div
         class={`chi-epanel ${this.state === 'disabled' ? `-disabled` : ''} ${
           this.state === 'active' ? `-active` : ''
-          } ${this.state === 'done' ? `-done` : ''} ${
+        } ${this.state === 'done' ? `-done` : ''} ${
           this.bordered ? `-bordered` : ''
-          }`}
+        }`}
       >
         <div class="chi-epanel__header">
-          {this.step ? <span class="chi-epanel__number">{this.step}.</span> : ''}
+          {this.step ? (
+            <span class="chi-epanel__number">{this.step}.</span>
+          ) : (
+            ''
+          )}
           <div class="chi-epanel__title">{this.epanelTitle}</div>
           <div class={`chi-epanel__content ${this.step ? '' : '-ml--0'}`}>
             <div class="chi-epanel__collapse">
@@ -97,8 +101,8 @@ export class ExpansionPanel {
               <slot name="change" />
             </div>
           ) : (
-              ''
-            )}
+            ''
+          )}
         </div>
         <div class={`chi-epanel__collapse ${this.step ? '' : '-ml--0'}`}>
           <div class="-active--only">
@@ -106,7 +110,7 @@ export class ExpansionPanel {
               <div class="chi-epanel__content">
                 <slot name="active" />
               </div>
-              <div class="chi-epanel__footer">
+              <div class="chi-epanel__footer -justify-content--end">
                 <slot name="footer" />
               </div>
             </div>
