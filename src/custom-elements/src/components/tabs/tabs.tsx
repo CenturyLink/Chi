@@ -92,8 +92,8 @@ export class Tabs {
   private ulElement: HTMLUListElement;
   private uuid4: string = uuid4();
   private seeMoreTriggerId: string = `see-more-trigger-${this.uuid4}`;
-  private slidingBorderLeft: any;
-  private slidingBorderWidth: any;
+  private slidingBorderLeft: string;
+  private slidingBorderWidth: string;
   private dropdowns = [];
   private dropdownKeys = {};
   private seeMoreDropdown: HTMLChiDropdownElement;
@@ -275,10 +275,12 @@ export class Tabs {
         () => {
           this.sliding = true;
           if (slidingBorderElement) {
-            this.slidingBorderWidth = this.calculateSize(
+            const size = this.calculateSize(
               this.getActiveTabTrigger(),
               TabTriggerSizes.Width
             );
+
+            this.slidingBorderWidth = `${size}px`;
           }
         },
         () => {
@@ -479,7 +481,7 @@ export class Tabs {
         ref={el => (this.slidingBorderElement = el)}
         style={{
           left: this.slidingBorderLeft,
-          width: `${this.slidingBorderWidth}px`
+          width: this.slidingBorderWidth
         }}
       ></li>
     ) : null;
