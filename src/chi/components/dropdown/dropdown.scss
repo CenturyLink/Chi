@@ -356,8 +356,7 @@
       color: $dropdown-button-text-color;
 
       &:not(.-flat) {
-        border: $dropdown-button-border-width solid
-          $dropdown-button-border-color;
+        border: $dropdown-button-border-width solid $dropdown-button-border-color;
 
         &:hover {
           border-color: $dropdown-button-hover-border-color;
@@ -384,6 +383,7 @@
       }
     }
   }
+
   &:not([data-position^='left']) {
     &::after {
       color: $dropdown-trigger-icon-color;
