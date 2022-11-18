@@ -162,6 +162,7 @@ export class Dropdown {
       }
     );
   }
+  
   setDisplay(display: 'block' | 'none') {
     this._dropdownMenuElement.style.display = display;
   }
