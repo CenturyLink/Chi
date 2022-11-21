@@ -100,12 +100,6 @@ export class Tabs {
   private childActiveTab: HTMLAnchorElement;
 
   //#region Lifecycle hooks
-  connectedCallback() {
-    if (!this.vertical) {
-      this.createDropdowns(this.tabs, 0);
-    }
-  }
-
   componentDidLoad() {
     if (!this.vertical) {
       this.setAvailableSpace();
@@ -173,6 +167,10 @@ export class Tabs {
   }
 
   createDropdowns(tabs: TabTrigger[], level: number, firstLevel?: string) {
+    if (this.vertical) {
+      return [];
+    }
+
     tabs.forEach((tab: TabTrigger) => {
       const firstLevelId = level === 0 ? tab.id : firstLevel;
 
@@ -183,6 +181,7 @@ export class Tabs {
             id={`subLevelDropdown-${tab.id}`}
             position={level === 0 ? 'bottom-start' : 'right-start'}
             reference={`#${tab.id}`}
+            key={`${tab.id}-${this.dropdownKey}`}
           >
             {tab.children.map(child => {
               child.parent = tab;
@@ -227,6 +226,8 @@ export class Tabs {
         this.createDropdowns(tab.children, level + 1, firstLevelId);
       }
     });
+
+    return this.dropdowns;
   }
 
   getActiveTabTrigger(): HTMLElement {
@@ -334,11 +335,10 @@ export class Tabs {
     }
   };
 
-  handlerMouseLeave = (e: MouseEvent) => {
-    const elementTarget =
-      e.target === this.ulElement
-        ? DROPDOWN_CLASSES.MENU
-        : DROPDOWN_CLASSES.MENU_ITEM;
+  handlerMouseLeave = (e: MouseEvent, isTargetMenu?: boolean) => {
+    const elementTarget = isTargetMenu
+      ? DROPDOWN_CLASSES.MENU
+      : DROPDOWN_CLASSES.MENU_ITEM;
     const elements = Array.from(document.getElementsByClassName(
       elementTarget
     ) as HTMLCollectionOf<HTMLElement>);
@@ -446,6 +446,7 @@ export class Tabs {
   }
 
   render() {
+    this.dropdowns = [];
     const tabElements =
       this.tabs &&
       this.tabs
@@ -510,9 +511,10 @@ export class Tabs {
             class={`${DROPDOWN_CLASSES.MENU_ITEM} ${
               this._isActiveTab(tab) ? ACTIVE_CLASS : ''
             }`}
+            id={tab.id}
             href="#"
             onMouseEnter={() => this.handlerTabMouseEnter(tab)}
-            onMouseLeave={e => this.handlerMouseLeave(e)}
+            onMouseLeave={e => this.handlerMouseLeave(e, true)}
             onClick={e => {
               this.handlerClickTab(e, tab, this.seeMoreTriggerAnchorElement);
               this.seeMoreDropdown.hide();
@@ -543,7 +545,7 @@ export class Tabs {
           {overflowItems}
         </chi-dropdown>
       ),
-      ...this.dropdowns
+      this.createDropdowns(this.tabs, 0)
     ];
 
     return (
@@ -560,7 +562,7 @@ export class Tabs {
           ref={el => {
             this.ulElement = el;
           }}
-          onMouseLeave={e => this.handlerMouseLeave(e)}
+          onMouseLeave={e => this.handlerMouseLeave(e, true)}
           role="tablist"
         >
           {tabElements}
