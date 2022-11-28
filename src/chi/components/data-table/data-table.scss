@@ -318,6 +318,43 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
       }
     }
 
+    &.-actions,
+    &.-justify-content-md--end {
+      &.-flex-basis--5 {
+        &.-key {
+          position: relative;
+        }
+      }
+    }
+
+    &-mobile {
+      display: block;
+
+      &.-actions {
+        .chi-button {
+          &.-icon {
+            &.-flat {
+              position: absolute;
+              right: 1.375rem;
+              top: -1.25rem;
+            }
+          }
+        }
+      }
+
+      @include respond-to(md) {
+        display: none;
+      }
+    }
+
+    &-desktop {
+      display: none;
+
+      @include respond-to(md) {
+        display: block;
+      }
+    }
+
     .chi-button {
       &.-flat {
         &:not(.chi-dropdown__trigger) {
