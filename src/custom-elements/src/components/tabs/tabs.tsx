@@ -93,11 +93,9 @@ export class Tabs {
   private uuid4: string = uuid4();
   private seeMoreTriggerId: string = `see-more-trigger-${this.uuid4}`;
   private slidingBorderLeft: string;
-  private slidingBorderWidth: string;
   private dropdowns = [];
   private dropdownKeys = {};
   private seeMoreDropdown: HTMLChiDropdownElement;
-  private childActiveTab: HTMLAnchorElement;
 
   //#region Lifecycle hooks
   componentDidLoad() {
@@ -150,13 +148,6 @@ export class Tabs {
   }
 
   removeActiveItems() {
-    if (
-      this.childActiveTab &&
-      this.childActiveTab.classList.contains(ACTIVE_CLASS)
-    ) {
-      this.childActiveTab.classList.remove(ACTIVE_CLASS);
-    }
-
     Object.keys(this.dropdownKeys).forEach(id => {
       const menuItemElement = document.getElementById(id);
 
@@ -188,7 +179,9 @@ export class Tabs {
 
               return (
                 <a
-                  class={`${DROPDOWN_CLASSES.MENU_ITEM} ${UTILITY_CLASSES.JUSTIFY.BETWEEN}`}
+                  class={`${DROPDOWN_CLASSES.MENU_ITEM} ${
+                    UTILITY_CLASSES.JUSTIFY.BETWEEN
+                  } ${this._isActiveTab(child) ? ACTIVE_CLASS : ''}`}
                   id={child.id}
                   onMouseEnter={() => this.handlerTabMouseEnter(child)}
                   onMouseLeave={e => this.handlerMouseLeave(e)}
@@ -203,8 +196,6 @@ export class Tabs {
                     this.handlerClickTab(e, child, firstLevelTriggerElement);
                     this.isSeeMoreActive = false;
                     if (dropdownElement) {
-                      this.childActiveTab = e.target as HTMLAnchorElement;
-                      this.childActiveTab.classList.add(ACTIVE_CLASS);
                       this.setParentTabActive(child);
                       dropdownElement.hide();
                     }
@@ -245,15 +236,17 @@ export class Tabs {
     };
   }
 
-  getSlidingBorderElement() {
-    return this.el.querySelector(
-      `.${TABS_CLASSES.SLIDING_BORDER}`
-    ) as HTMLElement;
-  }
-
   handlerClickSeeMore = (e: Event) => {
     e.preventDefault();
     this.isSeeMoreActive = !this.isSeeMoreActive;
+    if (!this.seeMoreDropdown) {
+      const seeMoreDropdown = document.getElementById(
+        `${this.uuid4}-see-more-dropdown`
+      ) as HTMLChiDropdownElement;
+
+      this.seeMoreDropdown = seeMoreDropdown;
+    }
+
     this.seeMoreDropdown.toggle();
   };
 
@@ -269,20 +262,11 @@ export class Tabs {
 
     const element = slidingBorderNewPosition || (e.target as HTMLElement);
     const position = this.getPosition(element);
-    const slidingBorderElement = this.getSlidingBorderElement();
 
     if (this.slidingBorder) {
       this.animation = ThreeStepsAnimation.animationFactory(
         () => {
           this.sliding = true;
-          if (slidingBorderElement) {
-            const size = this.calculateSize(
-              this.getActiveTabTrigger(),
-              TabTriggerSizes.Width
-            );
-
-            this.slidingBorderWidth = `${size}px`;
-          }
         },
         () => {
           const dimension = this.vertical
@@ -302,6 +286,7 @@ export class Tabs {
           this.slidingBorderElement.style[dimension] = `${size}px`;
         },
         () => {
+          this.slidingBorderElement.style.width = '';
           this.sliding = false;
         },
         ANIMATION_DURATION.MEDIUM
@@ -426,13 +411,8 @@ export class Tabs {
       ? this.seeMoreTriggerElement
       : this.activeTabElement;
     const position = this.getPosition(element);
-    const size = this.calculateSize(
-      element,
-      this.vertical ? TabTriggerSizes.Height : TabTriggerSizes.Width
-    );
 
     this.slidingBorderLeft = `${position.left}px`;
-    this.slidingBorderWidth = `${size}px`;
   }
 
   hideAllDropdowns() {
@@ -482,7 +462,6 @@ export class Tabs {
         ref={el => (this.slidingBorderElement = el)}
         style={{
           left: this.slidingBorderLeft,
-          width: this.slidingBorderWidth
         }}
       ></li>
     ) : null;
