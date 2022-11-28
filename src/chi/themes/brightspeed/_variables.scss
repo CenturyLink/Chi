@@ -131,7 +131,7 @@ $color-yellow-60:   #ad7600;
 $color-yellow-50:   #ebaf00;
 $color-yellow-45:   #fabb00;
 $color-yellow-40:   #ffc800;
-$color-yellow-30:   #ffe37f;
+$color-yellow-30:   #ffe480;
 $color-yellow-20:   #fff1bf;
 $color-yellow-10:   #fff8e0;
 $color-orange-100:  #240b00;
@@ -391,7 +391,7 @@ $alert-sm-text-line-height:                 $line-height;
 
 // App layout
 $app-layout-background-color:               $color-background-base;
-$app-layout-header-background-color:        $color-orange-40;
+$app-layout-header-background-color:        $color-yellow-30;
 $app-layout-header-title-color:             $color-text-base;
 
 // Avatar
@@ -515,14 +515,14 @@ $button-solid-icon-color:                   $color-icon-black;
 $button-solid-hover-background-color:       $color-background-black;
 $button-solid-hover-border-color:           $color-border-black;
 $button-solid-hover-text-color:             $color-text-white;
-$button-solid-hover-icon-color:             $button-solid-hover-text-color;
+$button-solid-hover-icon-color:             inherit;
 $button-solid-focus-background-color:       $color-background-black;
 $button-solid-focus-border-color:           $color-border-black;
 $button-solid-focus-outline:                $focus-color;
 $button-solid-active-background-color:      $color-background-black;
 $button-solid-active-border-color:          $color-border-black;
 $button-solid-active-text-color:            $color-text-white;
-$button-solid-active-icon-color:            $button-solid-active-text-color;
+$button-solid-active-icon-color:            inherit;
 $button-solid-disabled-background-color:    $color-background-base-dark;
 $button-solid-disabled-border-color:        $color-border-base-dark;
 $button-solid-disabled-text-color:          $color-text-muted-light;
@@ -876,7 +876,7 @@ $dropdown-button-hover-border-color:        $color-border-base-dark;
 $dropdown-button-active-background-color:   $color-grey-25;
 $dropdown-button-active-border-color:       rgba($color-grey-70, 0.2);
 
-$dropdown-trigger-icon-color:               $color-icon-primary;
+$dropdown-trigger-icon-color:               inherit;
 $dropdown-trigger-icon-margin-left:         0.5rem;
 $dropdown-trigger-text-transform:           none;
 
@@ -896,6 +896,12 @@ $dropdown-trigger-base-sm-padding-y:        0.4375rem;
 $dropdown-trigger-base-md-padding-y:        0.5625rem;
 $dropdown-trigger-base-lg-padding-y:        0.6875rem;
 $dropdown-trigger-base-xl-padding-y:        0.9375rem;
+
+$dropdown-trigger-base-icon-xs-padding-y:   0.1875rem;
+$dropdown-trigger-base-icon-sm-padding-y:   0.4375rem;
+$dropdown-trigger-base-icon-md-padding-y:   0.5625rem;
+$dropdown-trigger-base-icon-lg-padding-y:   0.6875rem;
+$dropdown-trigger-base-icon-xl-padding-y:   0.9375rem;
 
 $dropdown-menu-border-radius:               $border-radius-base;
 $dropdown-menu-shadow:                      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
@@ -1024,18 +1030,18 @@ $header-navbar-font-weight:                 $font-weight-semi-bold;
 $header-navbar-divider-color:               rgba($color-black, 0.5);
 $header-navbar-menu-text-transform:         uppercase;
 $header-navbar-menu-line-height:            $line-height-sm;
+$header-navbar-dropdown-arrow-color:        $color-yellow-45;
 $header-end-text-color:                     $color-text-black;
 $header-navbar-tab-xs-height:               2rem;
 $header-navbar-tab-xs-link-font-size:       $font-size-base;
 $header-navbar-tab-xs-link-font-weight:     $font-weight-semi-bold;
 $header-navbar-tab-xs-link-padding:         0.5rem 0;
-$header-navbar-tab-xs-link-active-padding-bottom:  0.375rem;
 $header-navbar-tab-xs-link-hover-text-decoration:  underline;
 $header-height:                             3.5rem;
 $header-lg-height:                          4rem;
 $header-xl-height:                          6rem;
 $header-xl-content-padding:                 0 2rem;
-$header-xl-navbar-tab-link-font-size:       $font-size-base;
+$header-xl-navbar-tab-link-font-size:       $font-size-lg;
 $header-xl-navbar-tab-link-line-height:     $line-height;
 
 // Label

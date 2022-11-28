@@ -251,7 +251,7 @@ describe('Dropdown', () => {
 
         cy.get('@dropdown')
           .then(el => {
-            el.on('eventShow', spy);
+            el.on('chiDropdownShow', spy);
           });
         cy.get(`@dropdownMenu`)
           .should('not.be.visible');
@@ -279,7 +279,7 @@ describe('Dropdown', () => {
 
         cy.get('@dropdown')
           .then(el => {
-            el.on('eventHide', spy);
+            el.on('chiDropdownHide', spy);
           });
         cy.get(`@dropdownMenu`)
           .should('be.visible');

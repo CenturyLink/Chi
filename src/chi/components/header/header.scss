@@ -452,12 +452,6 @@
                 }
               }
             }
-
-            &.-active {
-              > a {
-                padding-bottom: $header-navbar-tab-xs-link-active-padding-bottom;
-              }
-            }
           }
         }
 
@@ -475,6 +469,9 @@
     }
 
     .chi-dropdown__menu {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+
       .chi-dropdown__menu-item {
         color: $color-text-base;
         font-size: $font-size-base;
@@ -526,6 +523,10 @@
           line-height: $line-height-sm;
         }
       }
+
+      .chi-tabs {
+        align-self: center;
+      }
     }
   }
 
@@ -566,6 +567,22 @@
       a {
         font-size: $font-size-base;
         line-height: $line-height-sm;
+      }
+
+      .chi-tabs {
+        &.-xs {
+          li {
+            .chi-dropdown {
+              .chi-dropdown__trigger {
+                padding: 0.5rem 0;
+              }
+            }
+          }
+
+          &:not(.-vertical):not(.-responsive) {
+            height: 2rem;
+          }
+        }
       }
     }
   }
@@ -614,25 +631,55 @@
       }
 
       .chi-tabs {
-        li {
-          @include respond-to(xl) {
-            &:not(:first-child) {
-              margin-left: 3.5rem;
+        &:not(.-vertical) {
+          li {
+            @include respond-to(xl) {
+              &:not(:first-child) {
+                margin-left: 3.5rem;
+              }
+            }
+
+            & > a {
+              font-size: $header-xl-navbar-tab-link-font-size;
+              font-weight: $font-weight-semi-bold;
             }
           }
 
-          .chi-dropdown {
-            .chi-dropdown__trigger {
-              padding: 0.75rem 0;
+          &.-sm {
+            &:not(.-vertical):not(.-responsive) {
+              height: 3rem;
+            }
+
+            .chi-dropdown {
+              .chi-dropdown__trigger {
+                padding: 0.875rem 0;
+              }
             }
           }
         }
       }
 
       .chi-dropdown__menu {
+        padding-bottom: 1rem;
+        padding-top: 1rem;
+
         .chi-dropdown__menu-item {
           font-size: $font-size-lg;
           height: 2.5rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        &::before {
+          border-color: $header-navbar-dropdown-arrow-color transparent transparent transparent;
+          border-style: solid;
+          border-width: 0.625rem 0.75rem 0 0.75rem;
+          content: '';
+          height: 1rem;
+          left: 1rem;
+          position: absolute;
+          top: 0;
+          width: 1rem;
         }
       }
     }

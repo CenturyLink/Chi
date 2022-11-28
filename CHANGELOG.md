@@ -1,4 +1,43 @@
 # CHANGELOG
+## 5.24.0 (November 4, 2022)
+### Components
+#### Added
+* Added: Data table now supports two lines in a cell with `cellWrap` config is set to true.
+* Added: Footer now supports unathenticated and authenticated simple mode when social media links, language selection, and international legal notice links are not needed.
+#### Fixed
+* Fixed: Dropdown arrow display bug in Tabs component.
+### Documentation
+#### Added
+* Added: Category layout in Card templates page.
+
+## 5.23.0 (October 28, 2022)
+### Components
+#### Added
+* Added: Accordion component now supports animation on the icon chevron right to represent collapsed and expanded states.
+#### Changed
+* Changed: Toolbar styles in Lumen and CenturyLink themes have been updated to better support Lumen brand guidelines.
+* Changed: Header nav dropdown styles have been improved to match Lumen.com. Rounded top left and top right border radius have been removed, padding has been increased, and notch arrow has been added.
+#### Fixed
+* Fixed: Header nav dropdown menus were disappearing when hovering from the dropdown trigger to the dropdown menu.
+### Documentation
+#### Added
+* Added: Dropdown to download icon button in Toolbar component.
+* Added: Card templates page.
+
+## 5.22.0 (October 20, 2022)
+### Components
+#### Added
+* Added: Carousel web component now removes the previous and next buttons on single element scenario when there is only one item.
+* Added: Icons `icon-link-broken`, `icon-globe-network-outline`, `icon-lightbulb-on`, `icon-lightbulb-on-outline`, `icon-building-outline`, `icon-building`, `icon-user-remove`, `icon-gears`, `icon-user-create`, `icon-file-invoice-create`, and `icon-arrow-to-top`.
+#### Changed
+* Changed: Icons `icon-delete`, and `icon-globe-network`.
+* Changed: Button styles in Lumen theme have been updated to better support Lumen brand guidelines.
+#### Fixed
+* Fixed: Picker behavior which caused checkboxes and radio buttons to shrink when picker label wrapped to multiple lines.
+### Documentation
+#### Added
+* Added: Expansion panel footer states example now includes an optional cancel button.
+
 ## 5.21.0 (September 29, 2022)
 ### Components
 #### Added

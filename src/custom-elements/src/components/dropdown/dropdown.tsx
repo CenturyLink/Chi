@@ -17,7 +17,6 @@ import {
   FLUID_CLASS,
   UTILITY_CLASSES,
 } from '../../constants/classes';
-import { DROPDOWN_EVENTS } from '../../constants/events';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
 
@@ -38,7 +37,7 @@ export class Dropdown {
   /**
    * To render Dropdowns that span the full width of the parent container
    */
-   @Prop() fluid: boolean;
+  @Prop() fluid: boolean;
   /**
    * To configure activation on hover of the Dropdown with base-style button trigger
    */
@@ -66,11 +65,11 @@ export class Dropdown {
   /**
    * Triggered when hiding the Dropdown
    */
-  @Event({ eventName: DROPDOWN_EVENTS.HIDE }) eventHide: EventEmitter;
+  @Event({ eventName: 'chiDropdownHide' }) eventHide: EventEmitter;
   /**
    * Triggered when showing the Dropdown
    */
-  @Event({ eventName: DROPDOWN_EVENTS.SHOW }) eventShow: EventEmitter;
+  @Event({ eventName: 'chiDropdownShow' }) eventShow: EventEmitter;
 
   @Element() el: HTMLElement;
 
@@ -123,9 +122,9 @@ export class Dropdown {
   updateActive(newActiveState: boolean, oldActiveState: boolean) {
     if (newActiveState !== oldActiveState) {
       if (newActiveState) {
-        this.displayBlock();
+        this.setDisplay('block');
       } else {
-        this.displayNone();
+        this.setDisplay('none');
       }
     }
   }
@@ -164,13 +163,9 @@ export class Dropdown {
       }
     );
   }
-
-  displayBlock() {
-    this._dropdownMenuElement.style.display = 'block';
-  }
-
-  displayNone() {
-    this._dropdownMenuElement.style.display = 'none';
+  
+  setDisplay(display: 'block' | 'none') {
+    this._dropdownMenuElement.style.display = display;
   }
 
   emitHide() {
@@ -214,7 +209,7 @@ export class Dropdown {
    */
   @Method()
   async hide() {
-    this.displayNone();
+    this.setDisplay('none');
     this.active = false;
     this.emitHide();
   }
@@ -224,7 +219,7 @@ export class Dropdown {
    */
   @Method()
   async show() {
-    this.displayBlock();
+    this.setDisplay('block');
     this.active = true;
     if (this._popper) {
       this._popper.update();
