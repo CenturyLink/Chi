@@ -510,13 +510,13 @@ $badge-flat-muted-text-color:               $color-text-muted;
 $badge-flat-muted-icon-color:               $color-icon-muted;
 
 // Bulk actions
-$bulk-actions-background-color:             $color-background-secondary;
+$bulk-actions-background-color:             $color-blue-30;
 $bulk-actions-link-color:                   $color-text-base;
 $bulk-actions-link-font-weight:             $font-weight-semi-bold;
 $bulk-actions-results-font-size:            $font-size-md;
 $bulk-actions-label-font-weight:            $font-weight-semi-bold;
 $bulk-actions-divider-height:               1.25rem;
-$bulk-actions-divider-border-right-color:   $color-blue-30;
+$bulk-actions-divider-border-right-color:   $color-blue-40;
 $bulk-actions-button-icon-color:            $color-grey-80;
 
 // Button
@@ -908,8 +908,14 @@ $dropdown-trigger-xl-padding-x:             2rem;
 $dropdown-trigger-base-xs-padding-y:        0.1875rem;
 $dropdown-trigger-base-sm-padding-y:        0.4375rem;
 $dropdown-trigger-base-md-padding-y:        0.5625rem;
-$dropdown-trigger-base-lg-padding-y:        0.6875rem;
-$dropdown-trigger-base-xl-padding-y:        0.9375rem;
+$dropdown-trigger-base-lg-padding-y:        0.8125rem;
+$dropdown-trigger-base-xl-padding-y:        1.0625rem;
+
+$dropdown-trigger-base-icon-xs-padding-y:   0.3125rem;
+$dropdown-trigger-base-icon-sm-padding-y:   0.4375rem;
+$dropdown-trigger-base-icon-md-padding-y:   0.6875rem;
+$dropdown-trigger-base-icon-lg-padding-y:   0.9375rem;
+$dropdown-trigger-base-icon-xl-padding-y:   1.0625rem;
 
 $dropdown-menu-border-radius:               $border-radius-base;
 $dropdown-menu-shadow:                      0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
@@ -1038,18 +1044,18 @@ $header-navbar-font-weight:                 $font-weight-semi-bold;
 $header-navbar-divider-color:               rgba($color-black, 0.12);
 $header-navbar-menu-text-transform:         uppercase;
 $header-navbar-menu-line-height:            $line-height-sm;
+$header-navbar-dropdown-arrow-color:        transparent;
 $header-end-text-color:                     $color-text-base;
 $header-navbar-tab-xs-height:               2rem;
 $header-navbar-tab-xs-link-font-size:       $font-size-base;
 $header-navbar-tab-xs-link-font-weight:     $font-weight-semi-bold;
 $header-navbar-tab-xs-link-padding:         0.5rem 0;
-$header-navbar-tab-xs-link-active-padding-bottom:  0.375rem;
 $header-navbar-tab-xs-link-hover-text-decoration:  underline;
 $header-height:                             3.5rem;
 $header-lg-height:                          4rem;
 $header-xl-height:                          6rem;
 $header-xl-content-padding:                 0 2rem;
-$header-xl-navbar-tab-link-font-size:       $font-size-base;
+$header-xl-navbar-tab-link-font-size:       $font-size-lg;
 $header-xl-navbar-tab-link-line-height:     $line-height;
 
 // Label
@@ -1376,7 +1382,7 @@ $range-slider-focus-color:                  $focus-color;
 $range-slider-tick-border-color:            $color-border-base-dark;
 
 // Save view
-$save-view-background-color:                $color-background-base;
+$save-view-background-color:                $color-blue-20;
 $save-view-border-color:                    $color-border-base;
 $save-view-divider-border-color:            $color-border-base;
 $save-view-divider-height:                  1.25rem;

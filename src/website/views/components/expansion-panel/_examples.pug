@@ -4,19 +4,19 @@ p.-text
   | Group expansion panels using the attribute <code>data-chi-epanel-group="name-of-the-group"</code>.
   | This will enable panels to work together as a sequential form. When a panel is activated,
   | the previous expanding panels will get the done state and the next will get the pending state.
-.example.-mb--3#example3
+.example.-mb--3#example__base
   .-p--3.-p-lg--6.-bg--grey-10
     .-mw--720.-mx--auto
-      .chi-epanel.-active(data-chi-epanel-group='example3')
+      .chi-epanel.-active(data-chi-epanel-group='example__base')
         .chi-epanel__header
           .chi-epanel__number 1.
           .chi-epanel__title Panel title
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
-                | entered or selected in step 1.<br />
+                | Use this area to present
+                | a read-only summary of what the user
+                | entered or selected in step 1.
                 | (e.g.) a package selection
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -29,16 +29,16 @@ p.-text
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel(data-chi-epanel-group='example3')
+      .chi-epanel(data-chi-epanel-group='example__base')
         .chi-epanel__header
           .chi-epanel__number 2.
           .chi-epanel__title Panel title
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
-                | entered or selected in step 2.<br />
+                | Use this area to present
+                | a read-only summary of what the user
+                | entered or selected in step 2.
                 | (e.g.) shipping address
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -52,16 +52,16 @@ p.-text
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel(data-chi-epanel-group='example3')
+      .chi-epanel(data-chi-epanel-group='example__base')
         .chi-epanel__header
           .chi-epanel__number 3.
           .chi-epanel__title Panel title
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
-                | entered or selected in step 3.<br />
+                | Use this area to present
+                | a read-only summary of what the user
+                | entered or selected in step 3.
                 | (e.g.) installation date
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -75,16 +75,16 @@ p.-text
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel(data-chi-epanel-group='example3')
+      .chi-epanel(data-chi-epanel-group='example__base')
         .chi-epanel__header
           .chi-epanel__number 4.
           .chi-epanel__title Panel title
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
-                | entered or selected in step 4.<br />
+                | Use this area to present
+                | a read-only summary of what the user
+                | entered or selected in step 4.
                 | (e.g.) payment method
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -98,12 +98,12 @@ p.-text
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='done').-primary Finish
   .example-tabs.-pl--2
-    ul.chi-tabs#example-base
+    ul.chi-tabs#example__base
       li.-active
-        a(href='#web-example-base') Web Component
+        a(href='#web-example__base') Web Component
       li
-        a(href='#html-example-base') HTML Blueprint
-  #web-example-base.chi-tabs-panel.-active
+        a(href='#html-example__base') HTML Blueprint
+  #web-example__base.chi-tabs-panel.-active
     :code(lang="html")
       <chi-expansion-panel step="1" title="Panel title" state="active">
         <div slot="active">
@@ -123,7 +123,7 @@ p.-text
       <chi-expansion-panel step="2" title="Panel title"></chi-expansion-panel>
       <chi-expansion-panel step="3" title="Panel title"></chi-expansion-panel>
       <chi-expansion-panel step="4" title="Panel title"></chi-expansion-panel>
-  #html-example-base.chi-tabs-panel
+  #html-example__base.chi-tabs-panel
     .chi-tab__description
       span.-text--grey
         | This HTML Blueprint requires JavaScript.
@@ -131,19 +131,19 @@ p.-text
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <!-- JavaScript -->
-      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example3"]'));</script>
+      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__base"]'));</script>
 
       <!-- HTML -->
-      <div class="chi-epanel -active" data-chi-epanel-group="example3">
+      <div class="chi-epanel -active" data-chi-epanel-group="example__base">
         <div class="chi-epanel__header">
           <div class="chi-epanel__number">1.</div>
           <div class="chi-epanel__title">Panel title</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
-                entered or selected in step 1.<br />
+                Use this area to present
+                a read-only summary of what the user
+                entered or selected in step 1.
                 (e.g.) a package selection
               </div>
             </div>
@@ -166,17 +166,16 @@ p.-text
           </div>
         </div>
       </div>
-
-      <div class="chi-epanel" data-chi-epanel-group="example3">
+      <div class="chi-epanel" data-chi-epanel-group="example__base">
         <div class="chi-epanel__header">
           <div class="chi-epanel__number">2.</div>
           <div class="chi-epanel__title">Panel title</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
-                entered or selected in step 2.<br />
+                Use this area to present
+                a read-only summary of what the user
+                entered or selected in step 2.
                 (e.g.) shipping address
               </div>
             </div>
@@ -200,17 +199,16 @@ p.-text
           </div>
         </div>
       </div>
-
-      <div class="chi-epanel" data-chi-epanel-group="example3">
+      <div class="chi-epanel" data-chi-epanel-group="example__base">
         <div class="chi-epanel__header">
           <div class="chi-epanel__number">3.</div>
           <div class="chi-epanel__title">Panel title</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
-                entered or selected in step 3.<br />
+                Use this area to present
+                a read-only summary of what the user
+                entered or selected in step 3.
                 (e.g.) installation date
               </div>
             </div>
@@ -228,23 +226,22 @@ p.-text
               </div>
               <div class="chi-epanel__footer -justify-content--end">
                 <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
-                <button class="chi-button -primary" data-chi-epanel-action="done">Continue</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="chi-epanel" data-chi-epanel-group="example3">
+      <div class="chi-epanel" data-chi-epanel-group="example__base">
         <div class="chi-epanel__header">
           <div class="chi-epanel__number">4.</div>
           <div class="chi-epanel__title">Panel title</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
-                entered or selected in step 4.<br />
+                Use this area to present
+                a read-only summary of what the user
+                entered or selected in step 4.
                 (e.g.) payment method
               </div>
             </div>
@@ -262,13 +259,12 @@ p.-text
               </div>
               <div class="chi-epanel__footer -justify-content--end">
                 <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
-                <button class="chi-button -primary" data-chi-epanel-action="next">Finish</button>
+                <button class="chi-button -primary" data-chi-epanel-action="done">Finish</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-
 h3 States
 p.-text
   | Expansion panels have four states: <code>active</code>, <code>pending</code>, <code>done</code> and
@@ -279,19 +275,21 @@ p.-text
 p.-text
   | The four examples below differ only by state. Thanks to the state support and two internal hiding utility
   | classes we can represent the different states of the same content changing only the property.
+p.-text
+  | An optional cancel button can also be included to exit the expansion panel workflow.
 .example.-mb--3
   .-p--3.-p-lg--6
     .-mw--720.-mx--auto
-      .chi-epanel.-done(data-chi-epanel-group='example7')
+      .chi-epanel.-done(data-chi-epanel-group='example__state')
         .chi-epanel__header
           .chi-epanel__number 1.
           .chi-epanel__title Done state
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
-                | entered or selected in step 1.<br />
+                | Use this area to present
+                | a read-only summary of what the user
+                | entered or selected in step 1.
                 | (e.g.) a package selection
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -304,16 +302,16 @@ p.-text
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel.-active(data-chi-epanel-group='example7')
+      .chi-epanel.-active(data-chi-epanel-group='example__state')
         .chi-epanel__header
           .chi-epanel__number 2.
           .chi-epanel__title Active state
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
-                | entered or selected in step 2.<br />
+                | Use this area to present
+                | a read-only summary of what the user
+                | entered or selected in step 2.
                 | (e.g.) shipping address
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -324,19 +322,20 @@ p.-text
                 .chi-epanel__subtitle Optional subtitle
                 p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
               .chi-epanel__footer.-justify-content--end
+                button.chi-button.-primary.-flat Cancel
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel.-pending(data-chi-epanel-group='example7')
+      .chi-epanel.-pending(data-chi-epanel-group='example__state')
         .chi-epanel__header
           .chi-epanel__number 3.
           .chi-epanel__title Pending state
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
-                | entered or selected in step 3.<br />
+                | Use this area to present
+                | a read-only summary of what the user
+                | entered or selected in step 3.
                 | (e.g.) installation date
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -348,18 +347,18 @@ p.-text
                 p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='previous') Previous
-                button.chi-button(data-chi-epanel-action='next').-primary Continue
+                button.chi-button(data-chi-epanel-action='done').-primary Continue
 
-      .chi-epanel.-disabled(data-chi-epanel-group='example7')
+      .chi-epanel.-disabled(data-chi-epanel-group='example__state')
         .chi-epanel__header
           .chi-epanel__number 4.
           .chi-epanel__title Disabled state
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
-                | entered or selected in step 4.<br />
+                | Use this area to present
+                | a read-only summary of what the user
+                | entered or selected in step 4.
                 | (e.g.) payment method
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -383,9 +382,9 @@ p.-text
       <!-- Done state -->
       <chi-expansion-panel step="1" title="Done panel" state="done">
         <div slot="done">
-          Use this area to present<br />
-          a read-only summary of what the user<br />
-          entered or selected in step 1.<br />
+          Use this area to present
+          a read-only summary of what the user
+          entered or selected in step 1.
           (e.g.) a package selection
         </div>
         <div slot="change">
@@ -394,7 +393,6 @@ p.-text
           </chi-button>
         </div>
       </chi-expansion-panel>
-
       <!-- Active state -->
       <chi-expansion-panel step="2" title="Active panel" state="active">
         <div slot="active">
@@ -406,15 +404,19 @@ p.-text
           </p>
         </div>
         <div slot="footer">
+          <chi-button color="primary" variant="flat">
+            Cancel
+          </chi-button>
+          <chi-button color="primary" variant="outline">
+            Previous
+          </chi-button>
           <chi-button color="primary">
             Continue
           </chi-button>
         </div>
       </chi-expansion-panel>
-
       <!-- Pending state -->
       <chi-expansion-panel step="3" title="Pending panel"></chi-expansion-panel>
-
       <!-- Disabled state -->
       <chi-expansion-panel step="4" title="Disabled panel" state="disabled"></chi-expansion-panel>
   .chi-tabs-panel#html-states
@@ -425,20 +427,20 @@ p.-text
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
       <!-- JavaScript -->
-      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example7"]'));</script>
+      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__state"]'));</script>
 
       <!-- HTML -->
       <!-- Done state -->
-      <div class="chi-epanel -done" data-chi-epanel-group="example7">
+      <div class="chi-epanel -done" data-chi-epanel-group="example__state">
         <div class="chi-epanel__header">
           <div class="chi-epanel__number">1.</div>
           <div class="chi-epanel__title">Done state</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
-                entered or selected in step 1.<br />
+                Use this area to present
+                a read-only summary of what the user
+                entered or selected in step 1.
                 (e.g.) a package selection
               </div>
             </div>
@@ -461,18 +463,17 @@ p.-text
           </div>
         </div>
       </div>
-
       <!-- Active state -->
-      <div class="chi-epanel -active" data-chi-epanel-group="example7">
+      <div class="chi-epanel -active" data-chi-epanel-group="example__state">
         <div class="chi-epanel__header">
           <div class="chi-epanel__number">2.</div>
           <div class="chi-epanel__title">Active state</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
-                entered or selected in step 2.<br />
+                Use this area to present
+                a read-only summary of what the user
+                entered or selected in step 2.
                 (e.g.) shipping address
               </div>
             </div>
@@ -489,6 +490,7 @@ p.-text
                 <p class="chi-epanel__text">Content in expansion panel (e.g. a form to enter shipping address)</p>
               </div>
               <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button -flat -primary">Cancel</button>
                 <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
                 <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
@@ -496,18 +498,17 @@ p.-text
           </div>
         </div>
       </div>
-
       <!-- Pending state -->
-      <div class="chi-epanel -pending" data-chi-epanel-group="example7">
+      <div class="chi-epanel -pending" data-chi-epanel-group="example__state">
         <div class="chi-epanel__header">
           <div class="chi-epanel__number">3.</div>
           <div class="chi-epanel__title">Pending state</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
-                entered or selected in step 3.<br />
+                Use this area to present
+                a read-only summary of what the user
+                entered or selected in step 3.
                 (e.g.) installation date
               </div>
             </div>
@@ -531,18 +532,17 @@ p.-text
           </div>
         </div>
       </div>
-
       <!-- Disabled state -->
-      <div class="chi-epanel -disabled" data-chi-epanel-group="example7">
+      <div class="chi-epanel -disabled" data-chi-epanel-group="example__state">
         <div class="chi-epanel__header">
           <div class="chi-epanel__number">4.</div>
-          <div class="chi-epanel__title">Done state</div>
+          <div class="chi-epanel__title">Disabled state</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
-                entered or selected in step 4.<br />
+                Use this area to present
+                a read-only summary of what the user
+                entered or selected in step 4.
                 (e.g.) payment method
               </div>
             </div>
@@ -569,18 +569,18 @@ p.-text
 
 h3 No step number
 p.-text Step numbering is optional and can be easily omitted.
-.example.-mb--3#example8
+.example.-mb--3#example__no-step-number
   .-p--3.-p-lg--6.-bg--grey-10
     .-mw--720.-mx--auto
-      .chi-epanel.-no-step.-active(data-chi-epanel-group='example8')
+      .chi-epanel.-no-step.-active(data-chi-epanel-group='example__no-step-number')
         .chi-epanel__header
           .chi-epanel__title Panel title
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
-                | entered or selected in step 1.<br />
+                | Use this area to present
+                | a read-only summary of what the user
+                | entered or selected in step 1.
                 | (e.g.) a package selection
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -593,15 +593,15 @@ p.-text Step numbering is optional and can be easily omitted.
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel.-no-step(data-chi-epanel-group='example8')
+      .chi-epanel.-no-step(data-chi-epanel-group='example__no-step-number')
         .chi-epanel__header
           .chi-epanel__title Panel title
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
-                | entered or selected in step 2.<br />
+                | Use this area to present
+                | a read-only summary of what the user
+                | entered or selected in step 2.
                 | (e.g.) shipping address
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -615,15 +615,15 @@ p.-text Step numbering is optional and can be easily omitted.
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel.-no-step(data-chi-epanel-group='example8')
+      .chi-epanel.-no-step(data-chi-epanel-group='example__no-step-number')
         .chi-epanel__header
           .chi-epanel__title Panel title
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
-                | entered or selected in step 3.<br />
+                | Use this area to present
+                | a read-only summary of what the user
+                | entered or selected in step 3.
                 | (e.g.) installation date
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -637,15 +637,15 @@ p.-text Step numbering is optional and can be easily omitted.
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel.-no-step(data-chi-epanel-group='example8')
+      .chi-epanel.-no-step(data-chi-epanel-group='example__no-step-number')
         .chi-epanel__header
           .chi-epanel__title Panel title
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
-                | entered or selected in step 4.<br />
+                | Use this area to present
+                | a read-only summary of what the user
+                | entered or selected in step 4.
                 | (e.g.) payment method
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -692,24 +692,24 @@ p.-text Step numbering is optional and can be easily omitted.
         | This HTML Blueprint requires JavaScript.
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
-      | <br>
-      | <br>
+      |
+      |
       | Step numbering can be omitted by applying <code>-no-step</code> to <code>chi-epanel</code>
       | and removing <code>chi-epanel__number</code>.
     :code(lang="html")
       <!-- JavaScript -->
-      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example8"]'));</script>
+      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__no-step-number"]'));</script>
 
       <!-- HTML -->
-      <div class="chi-epanel -no-step -active" data-chi-epanel-group="example8">
+      <div class="chi-epanel -no-step -active" data-chi-epanel-group="example__no-step-number">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title">Panel title</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse -ml--0">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
-                entered or selected in step 1.<br />
+                Use this area to present
+                a read-only summary of what the user
+                entered or selected in step 1.
                 (e.g.) a package selection
               </div>
             </div>
@@ -732,16 +732,15 @@ p.-text Step numbering is optional and can be easily omitted.
           </div>
         </div>
       </div>
-
-      <div class="chi-epanel -no-step" data-chi-epanel-group="example8">
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example__no-step-number">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title">Panel title</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse -ml--0">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
-                entered or selected in step 2.<br />
+                Use this area to present
+                a read-only summary of what the user
+                entered or selected in step 2.
                 (e.g.) shipping address
               </div>
             </div>
@@ -765,16 +764,15 @@ p.-text Step numbering is optional and can be easily omitted.
           </div>
         </div>
       </div>
-
-      <div class="chi-epanel -no-step" data-chi-epanel-group="example8">
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example__no-step-number">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title">Panel title</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse -ml--0">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
-                entered or selected in step 3.<br />
+                Use this area to present
+                a read-only summary of what the user
+                entered or selected in step 3.
                 (e.g.) installation date
               </div>
             </div>
@@ -792,22 +790,21 @@ p.-text Step numbering is optional and can be easily omitted.
               </div>
               <div class="chi-epanel__footer -justify-content--end">
                 <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
-                <button class="chi-button -primary" data-chi-epanel-action="done">Continue</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="chi-epanel -no-step" data-chi-epanel-group="example8">
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example__no-step-number">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title">Panel title</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse -ml--0">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
-                entered or selected in step 4.<br />
+                Use this area to present
+                a read-only summary of what the user
+                entered or selected in step 4.
                 (e.g.) payment method
               </div>
             </div>
@@ -825,7 +822,7 @@ p.-text Step numbering is optional and can be easily omitted.
               </div>
               <div class="chi-epanel__footer -justify-content--end">
                 <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
-                <button class="chi-button -primary" data-chi-epanel-action="next">Finish</button>
+                <button class="chi-button -primary" data-chi-epanel-action="done">Finish</button>
               </div>
             </div>
           </div>
@@ -838,14 +835,14 @@ p.-text
 .example.-mb--3
   .-p--3.-p-lg--6.-bg--grey-10
     .-mw--720.-mx--auto
-      .chi-epanel.-bordered.-active(data-chi-epanel-group='example9')
+      .chi-epanel.-bordered(data-chi-epanel-group='example__bordered')
         .chi-epanel__header
-          .chi-epanel__title Panel title
+          .chi-epanel__title Done State
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
+                | Use this area to present
+                | a read-only summary of what the user
                 | entered or selected in step 1.
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -858,14 +855,14 @@ p.-text
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel.-bordered(data-chi-epanel-group='example9')
+      .chi-epanel.-bordered.-active(data-chi-epanel-group='example__bordered')
         .chi-epanel__header
-          .chi-epanel__title Panel title
+          .chi-epanel__title Active State
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
+                | Use this area to present
+                | a read-only summary of what the user
                 | entered or selected in step 2.
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -879,14 +876,14 @@ p.-text
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
 
-      .chi-epanel.-bordered(data-chi-epanel-group='example9')
+      .chi-epanel.-bordered(data-chi-epanel-group='example__bordered')
         .chi-epanel__header
-          .chi-epanel__title Panel title
+          .chi-epanel__title Pending State
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
+                | Use this area to present
+                | a read-only summary of what the user
                 | entered or selected in step 3.
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -898,16 +895,16 @@ p.-text
                 p.chi-epanel__text Content goes here
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='previous') Previous
-                button.chi-button(data-chi-epanel-action='next').-primary Continue
+                button.chi-button(data-chi-epanel-action='done').-primary Continue
 
-      .chi-epanel.-bordered.-disabled(data-chi-epanel-group='example9')
+      .chi-epanel.-bordered.-disabled(data-chi-epanel-group='example__bordered')
         .chi-epanel__header
-          .chi-epanel__title Panel title
+          .chi-epanel__title Disabled State
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
-                | Use this area to present<br />
-                | a read-only summary of what the user<br />
+                | Use this area to present
+                | a read-only summary of what the user
                 | entered or selected in step 4.
           .chi-epanel__action.-done--only
             button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
@@ -933,8 +930,8 @@ p.-text
       <!-- Done state -->
       <chi-expansion-panel title="Done panel" bordered state="done">
         <div slot="done">
-          Use this area to present<br />
-          a read-only summary of what the user<br />
+          Use this area to present
+          a read-only summary of what the user
           entered or selected in step 1.
         </div>
         <div slot="change">
@@ -943,7 +940,6 @@ p.-text
           </chi-button>
         </div>
       </chi-expansion-panel>
-
       <!-- Active state -->
       <chi-expansion-panel title="Active panel" bordered state="active">
         <div slot="active">
@@ -960,10 +956,8 @@ p.-text
           </chi-button>
         </div>
       </chi-expansion-panel>
-
       <!-- Pending state -->
       <chi-expansion-panel title="Pending panel" bordered></chi-expansion-panel>
-
       <!-- Disabled state -->
       <chi-expansion-panel title="Disabled panel" bordered state="disabled"></chi-expansion-panel>
   .chi-tabs-panel#html-bordered-states
@@ -972,23 +966,22 @@ p.-text
         | This HTML Blueprint requires JavaScript.
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
-      | <br><br>
+      |
       | To render bordered panels, apply the class <code>-bordered</code>.
     :code(lang="html")
       <!-- JavaScript -->
-      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example9"]'));</script>
+      <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__bordered"]'));</script>
 
       <!-- HTML -->
       <!-- Done state -->
-      <div class="chi-epanel -bordered -done" data-chi-epanel-group="example9">
+      <div class="chi-epanel -bordered -done" data-chi-epanel-group="example__bordered">
         <div class="chi-epanel__header">
-          <div class="chi-epanel__number">1.</div>
           <div class="chi-epanel__title">Done state</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
+                Use this area to present
+                a read-only summary of what the user
                 entered or selected in step 1.
               </div>
             </div>
@@ -1011,17 +1004,15 @@ p.-text
           </div>
         </div>
       </div>
-
       <!-- Active state -->
-      <div class="chi-epanel -bordered -active" data-chi-epanel-group="example9">
+      <div class="chi-epanel -bordered -active" data-chi-epanel-group="example__bordered">
         <div class="chi-epanel__header">
-          <div class="chi-epanel__number">2.</div>
           <div class="chi-epanel__title">Active state</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
+                Use this area to present
+                a read-only summary of what the user
                 entered or selected in step 2.
               </div>
             </div>
@@ -1045,17 +1036,15 @@ p.-text
           </div>
         </div>
       </div>
-
       <!-- Pending state -->
-      <div class="chi-epanel -bordered -pending" data-chi-epanel-group="example9">
+      <div class="chi-epanel -bordered -pending" data-chi-epanel-group="example__bordered">
         <div class="chi-epanel__header">
-          <div class="chi-epanel__number">3.</div>
           <div class="chi-epanel__title">Pending state</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
+                Use this area to present
+                a read-only summary of what the user
                 entered or selected in step 3.
               </div>
             </div>
@@ -1079,17 +1068,15 @@ p.-text
           </div>
         </div>
       </div>
-
       <!-- Disabled state -->
-      <div class="chi-epanel -bordered -disabled" data-chi-epanel-group="example9">
+      <div class="chi-epanel -bordered -disabled" data-chi-epanel-group="example__bordered">
         <div class="chi-epanel__header">
-          <div class="chi-epanel__number">4.</div>
-          <div class="chi-epanel__title">Done state</div>
+          <div class="chi-epanel__title">Disabled state</div>
           <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
-                Use this area to present<br />
-                a read-only summary of what the user<br />
+                Use this area to present
+                a read-only summary of what the user
                 entered or selected in step 4.
               </div>
             </div>
@@ -1120,10 +1107,10 @@ p.-text
   | any other panel in the same group will be deactivated by putting it in the pending state. To activate this mode, add
   | the <code>mode: "accordion"</code> configuration parameter at the moment of creation. Done states should
   | not be used in this mode. In this example, titles have been configured to trigger the action <code>toggle</code>.
-.example.-mb--3#example4
+.example.-mb--3#example__accordion-mode
   .-p--3.-p-lg--6.-bg--grey-10
     .-mw--720.-mx--auto
-      .chi-epanel.-bordered.-active(data-chi-epanel-group='example4')
+      .chi-epanel.-bordered.-active(data-chi-epanel-group='example__accordion-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 1
         .chi-epanel__collapse
@@ -1132,7 +1119,7 @@ p.-text
               .chi-epanel__content
                 p.chi-epanel__text Content goes here
 
-      .chi-epanel.-bordered(data-chi-epanel-group='example4')
+      .chi-epanel.-bordered(data-chi-epanel-group='example__accordion-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 2
         .chi-epanel__collapse
@@ -1141,7 +1128,7 @@ p.-text
               .chi-epanel__content
                 p.chi-epanel__text Content goes here
 
-      .chi-epanel.-bordered(data-chi-epanel-group='example4')
+      .chi-epanel.-bordered(data-chi-epanel-group='example__accordion-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 3
         .chi-epanel__collapse
@@ -1150,7 +1137,7 @@ p.-text
               .chi-epanel__content
                 p.chi-epanel__text Content goes here
 
-      .chi-epanel.-bordered(data-chi-epanel-group='example4')
+      .chi-epanel.-bordered(data-chi-epanel-group='example__accordion-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 4
         .chi-epanel__collapse
@@ -1172,7 +1159,7 @@ p.-text
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-epanel -bordered -active" data-chi-epanel-group="example4">
+      <div class="chi-epanel -bordered -active" data-chi-epanel-group="example__accordion-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 1</div>
         </div>
@@ -1186,8 +1173,7 @@ p.-text
           </div>
         </div>
       </div>
-
-      <div class="chi-epanel -bordered" data-chi-epanel-group="example4">
+      <div class="chi-epanel -bordered" data-chi-epanel-group="example__accordion-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 2</div>
         </div>
@@ -1201,8 +1187,7 @@ p.-text
           </div>
         </div>
       </div>
-
-      <div class="chi-epanel -bordered" data-chi-epanel-group="example4">
+      <div class="chi-epanel -bordered" data-chi-epanel-group="example__accordion-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 3</div>
         </div>
@@ -1216,8 +1201,7 @@ p.-text
           </div>
         </div>
       </div>
-
-      <div class="chi-epanel -bordered" data-chi-epanel-group="example4">
+      <div class="chi-epanel -bordered" data-chi-epanel-group="example__accordion-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 4</div>
         </div>
@@ -1235,7 +1219,7 @@ p.-text
       <!-- JavaScript -->
       <script>
       chi.expansionPanel(
-        document.querySelectorAll('[data-chi-epanel-group="example4"]'),
+        document.querySelectorAll('[data-chi-epanel-group="example__accordion-mode"]'),
         {mode: 'accordion'}
       );
       </script>
@@ -1244,10 +1228,10 @@ h3 Free mode
 p.-text
   | In this mode there is no automated action triggered when an element activates,
   | so you will need to manage all custom behavior.
-.example.-mb--3#example5
+.example.-mb--3#example__free-mode
   .-p--3.-p-lg--6.-bg--grey-10
     .-mw--720.-mx--auto
-      .chi-epanel.-no-step.-active(data-chi-epanel-group='example5')
+      .chi-epanel.-no-step.-active(data-chi-epanel-group='example__free-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 1
           .chi-epanel__action.-done--only
@@ -1260,7 +1244,7 @@ p.-text
                 p.chi-epanel__text Content goes here
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
-      .chi-epanel.-no-step(data-chi-epanel-group='example5')
+      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 2
           .chi-epanel__action.-done--only
@@ -1274,7 +1258,7 @@ p.-text
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
-      .chi-epanel.-no-step(data-chi-epanel-group='example5')
+      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 3
           .chi-epanel__action.-done--only
@@ -1288,7 +1272,7 @@ p.-text
               .chi-epanel__footer.-justify-content--end
                 button.chi-button(data-chi-epanel-action='previous') Previous
                 button.chi-button(data-chi-epanel-action='next').-primary Continue
-      .chi-epanel.-no-step(data-chi-epanel-group='example5')
+      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='toggle') Panel 4
           .chi-epanel__action.-done--only
@@ -1315,7 +1299,7 @@ p.-text
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-epanel -no-step -active" data-chi-epanel-group="example5">
+      <div class="chi-epanel -no-step -active" data-chi-epanel-group="example__free-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 1</div>
         </div>
@@ -1333,8 +1317,7 @@ p.-text
           </div>
         </div>
       </div>
-
-      <div class="chi-epanel -no-step" data-chi-epanel-group="example5">
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example__free-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 2</div>
         </div>
@@ -1353,11 +1336,48 @@ p.-text
           </div>
         </div>
       </div>
-
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example__free-mode">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 3</div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content goes here</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chi-epanel -no-step" data-chi-epanel-group="example__free-mode">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="toggle">Panel 4</div>
+        </div>
+        <div class="chi-epanel__collapse">
+          <div class="-active--only">
+            <div class="chi-epanel__body">
+              <div class="chi-epanel__content">
+                <div class="chi-epanel__subtitle">Optional subtitle</div>
+                <p class="chi-epanel__text">Content goes here</p>
+              </div>
+              <div class="chi-epanel__footer -justify-content--end">
+                <button class="chi-button" data-chi-epanel-action="previous">Previous</button>
+                <button class="chi-button -primary" data-chi-epanel-action="next">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- JavaScript -->
       <script>
         chi.expansionPanel(
-          document.querySelectorAll('[data-chi-epanel-group="example5"]'),
+          document.querySelectorAll('[data-chi-epanel-group="example__free-mode"]'),
           {mode: 'free'}
         );
       </script>
@@ -1370,10 +1390,10 @@ p.-text
   | example, the component behaves similar to the accordion but alternates between <code>done</code> and
   | <code>pending</code> states instead of <code>active</code> and <code>pending</code> states. The overridden action
   | functions are for documentation purposes only because they clone the functionality of the default ones.
-.example.-mb--3#example6
+.example.-mb--3#example__custom-mode
   .-p--3.-p-lg--6.-bg--grey-10
     .-mw--720.-mx--auto
-      .chi-epanel.-done(data-chi-epanel-group='example6')
+      .chi-epanel.-done(data-chi-epanel-group='example__custom-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='done') Panel 1
           .chi-epanel__content
@@ -1382,7 +1402,7 @@ p.-text
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
                 | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
                 | Aenean eu sapien eget ante placerat pretium a sit amet ante.
-      .chi-epanel(data-chi-epanel-group='example6')
+      .chi-epanel(data-chi-epanel-group='example__custom-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='done') Panel 2
           .chi-epanel__content
@@ -1391,7 +1411,7 @@ p.-text
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
                 | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
                 | Aenean eu sapien eget ante placerat pretium a sit amet ante.
-      .chi-epanel(data-chi-epanel-group='example6')
+      .chi-epanel(data-chi-epanel-group='example__custom-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='done') Panel 3
           .chi-epanel__content
@@ -1400,7 +1420,7 @@ p.-text
                 | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
                 | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
                 | Aenean eu sapien eget ante placerat pretium a sit amet ante.
-      .chi-epanel(data-chi-epanel-group='example6')
+      .chi-epanel(data-chi-epanel-group='example__custom-mode')
         .chi-epanel__header
           .chi-epanel__title(data-chi-epanel-action='done') Panel 4
           .chi-epanel__content
@@ -1423,7 +1443,7 @@ p.-text
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
     :code(lang="html")
-      <div class="chi-epanel -done" data-chi-epanel-group="example6">
+      <div class="chi-epanel -done" data-chi-epanel-group="example__custom-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="done">Panel 1</div>
           <div class="chi-epanel__content">
@@ -1437,8 +1457,7 @@ p.-text
           </div>
         </div>
       </div>
-
-      <div class="chi-epanel" data-chi-epanel-group="example6">
+      <div class="chi-epanel" data-chi-epanel-group="example__custom-mode">
         <div class="chi-epanel__header">
           <div class="chi-epanel__title" data-chi-epanel-action="done">Panel 2</div>
           <div class="chi-epanel__content">
@@ -1452,11 +1471,38 @@ p.-text
           </div>
         </div>
       </div>
-
+      <div class="chi-epanel" data-chi-epanel-group="example__custom-mode">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="done">Panel 3</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
+                interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
+                Aenean eu sapien eget ante placerat pretium a sit amet ante.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chi-epanel" data-chi-epanel-group="example__custom-mode">
+        <div class="chi-epanel__header">
+          <div class="chi-epanel__title" data-chi-epanel-action="done">Panel 4</div>
+          <div class="chi-epanel__content">
+            <div class="chi-epanel__collapse">
+              <div class="-done--only">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
+                interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
+                Aenean eu sapien eget ante placerat pretium a sit amet ante.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- JavaScript -->
       <script>
         chi.expansionPanel(
-          document.querySelectorAll('[data-chi-epanel-group="example6"]'),
+          document.querySelectorAll('[data-chi-epanel-group="example__custom-mode"]'),
           {
             mode: 'custom',
             changeHandler: function (newState, oldState, expansionPanel, panelGroup) {
@@ -1503,20 +1549,15 @@ script.
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
 
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example3"]'));
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example-portal-3"]'));
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example4"]'), {mode: 'accordion'});
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example5"]'), {mode: 'free'});
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example-portal-5"]'), {mode: 'free'});
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example7"]'));
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example-portal-7"]'));
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example8"]'));
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example-portal-8"]'));
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example9"]'));
-      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example-portal-9"]'));
+      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__base"]'));
+      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__accordion-mode"]'), {mode: 'accordion'});
+      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__free-mode"]'), {mode: 'free'});
+      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__state"]'));
+      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__no-step-number"]'));
+      chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__bordered"]'));
 
       chi.expansionPanel(
-      document.querySelectorAll('[data-chi-epanel-group="example6"]'),
+      document.querySelectorAll('[data-chi-epanel-group="example__custom-mode"]'),
       {
         mode: 'custom',
         changeHandler: function (newState, oldState, expansionPanel, panelGroup) {

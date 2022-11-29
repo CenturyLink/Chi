@@ -188,6 +188,15 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           display: none;
         }
       }
+
+      // sass-lint:disable no-vendor-prefixes
+      .-cell-wrap {
+        display: -webkit-box;
+        overflow: hidden;
+        white-space: normal;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
     }
   }
 
@@ -311,17 +320,20 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
 
     .chi-button {
       &.-flat {
-        &.-icon {
-          padding: 0.0625rem;
-
-          &.-active,
-          &.-hover,
-          &:active,
-          &:hover {
-            background-color: transparent;
-            border-color: transparent;
-            box-shadow: none;
+        &:not(.chi-dropdown__trigger) {
+          &.-icon {
             padding: 0.0625rem;
+
+            &.-active,
+            &.-hover,
+            &:active,
+            &:hover {
+              background-color: transparent;
+              border-color: transparent;
+              box-shadow: none;
+              line-height: 1rem;
+              padding: 0.0625rem;
+            }
           }
         }
       }
@@ -701,20 +713,6 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
             display: flex;
           }
         }
-
-        .chi-button {
-          &.-expand {
-            display: none;
-
-            @include respond-to(md) {
-              display: block;
-
-              + div {
-                margin-left: 0.5rem;
-              }
-            }
-          }
-        }
       }
     }
 
@@ -752,27 +750,6 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
         background-repeat: initial;
         background-size: initial;
         z-index: initial;
-      }
-
-      &.-collapsed,
-      &.-expanded {
-        &::before {
-          color: $color-icon-primary;
-          content: '\e97d';
-          font-family: $font-family-icon;
-          font-weight: $font-weight-normal;
-          position: absolute;
-
-          @include respond-to(md) {
-            display: none;
-          }
-        }
-      }
-
-      &.-expanded {
-        &::before {
-          content: '\e974';
-        }
       }
 
       @each $type in map-keys($sizes) {
@@ -815,18 +792,39 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
 
       &.-collapsed,
       &.-expanded {
-        padding-left: 3rem;
+        padding-left: 1rem;
 
-        &::before {
-          font-size: $font-size-xs;
-          height: 1rem;
-          left: 1rem;
-          top: 1rem;
-          width: 0.75rem;
+        .chi-data-table__cell {
+          padding-left: 2rem;
+
+          &.-expandable {
+            display: block;
+            overflow: initial;
+            position: relative;
+
+            .chi-button {
+              &.-expand {
+                display: block;
+                left: -0.125rem;
+                position: absolute;
+                top: -0.0625rem;
+
+                @include respond-to(md) {
+                  left: 0;
+                  position: relative;
+                  top: 0;
+                }
+              }
+            }
+          }
         }
 
         @include respond-to(md) {
           padding-left: 0;
+
+          .chi-data-table__cell {
+            padding-left: 1rem;
+          }
         }
       }
 
@@ -839,22 +837,37 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           background-color: $data-table-row-expanded-background-color;
           padding: 0;
         }
+      }
 
-        &.-collapsed,
-        &.-expanded {
-          padding-left: 5rem;
+      &-child {
+        padding-left: 3rem;
 
-          &::before {
-            font-size: $font-size-xs;
-            height: 1rem;
-            left: 3rem;
-            top: 0.7rem;
-            width: 0.75rem;
+        .chi-data-table__cell {
+          align-items: center;
+          padding-left: 2rem;
+          position: relative;
+
+          .chi-button {
+            &.-expand {
+              display: block;
+              left: -0.125rem;
+              position: absolute;
+
+              @include respond-to(md) {
+                left: 0;
+                line-height: 0.75rem;
+                position: relative;
+
+                + div {
+                  margin-left: 0.5rem;
+                }
+              }
+            }
           }
+        }
 
-          @include respond-to(md) {
-            padding-left: 0;
-          }
+        @include respond-to(md) {
+          padding-left: 0;
         }
       }
 

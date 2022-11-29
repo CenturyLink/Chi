@@ -20,6 +20,13 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
         .chi-carousel__item.-p--1(style='height: 10rem; width: 858px;', slot="items")
           .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center= item
 
+.test-single-one-item(style="max-width: 55rem;")
+  h2 Single - One item
+  chi-carousel(single data-cy="single-one-item")
+    .chi-carousel__wrapper.-d--flex(slot="items")
+      .chi-carousel__item.-p--1(style='height: 10rem; width: 858px;', slot="items")
+        .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center 1
+
 .test-dots(style="max-width: 55rem;")
   h2 Dots
   chi-carousel(dots data-cy="dots")

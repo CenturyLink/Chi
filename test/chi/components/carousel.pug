@@ -45,6 +45,14 @@ title: Carousel
             svg(xmlns='http://www.w3.org/2000/svg', xmlnsxlink='http://www.w3.org/1999/xlink', aria-hidden='true')
               use(xlink:href='#icon-chevron-right')
 
+.test-single-one-item(style="max-width: 55rem;")
+  h2 Single - One item
+  .chi-carousel
+    .chi-carousel__content
+      .chi-carousel__wrapper.-d--flex(style='transform: translateX(0px);')
+        .chi-carousel__item.-p--1(style='height: 10rem; width: 858px;', slot="items")
+          .-w--100.-h--100.-bg--grey-10.-d--flex.-align-items--center.-justify-content--center 1
+
 .test-dots(style="max-width: 55rem;")
   h2 Dots
   .chi-carousel.-dots
