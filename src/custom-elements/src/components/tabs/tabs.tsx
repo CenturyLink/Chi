@@ -77,7 +77,7 @@ export class Tabs {
   /**
    * Triggered when the user activates a tab
    */
-  @Event({ eventName: 'chiTabChange' }) chiTabChange: EventEmitter<string>;
+  @Event({ eventName: 'chiTabChange' }) chiTabChange: EventEmitter<TabTrigger>;
 
   private activeTabElement: HTMLElement = null;
   private animation: ThreeStepsAnimation;
@@ -117,10 +117,10 @@ export class Tabs {
   }
   //#endregion
 
-  activateTab(id: string, element: HTMLElement) {
-    this.activeTab = id;
+  activateTab(tab: TabTrigger, element: HTMLElement) {
+    this.activeTab = tab.id;
     this.activeTabElement = element;
-    this.chiTabChange.emit(this.activeTab);
+    this.chiTabChange.emit(tab);
   }
 
   calculateSize(element: HTMLElement, size: TabTriggerSizes): number {
@@ -294,7 +294,7 @@ export class Tabs {
     }
 
     this.removeActiveItems();
-    this.activateTab(tabData.id, element);
+    this.activateTab(tabData, element);
   }
 
   handlerResize = () => {
@@ -461,7 +461,7 @@ export class Tabs {
         class={TABS_CLASSES.SLIDING_BORDER}
         ref={el => (this.slidingBorderElement = el)}
         style={{
-          left: this.slidingBorderLeft,
+          left: this.slidingBorderLeft
         }}
       ></li>
     ) : null;
