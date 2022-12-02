@@ -19,6 +19,14 @@ export class Carousel {
   /**
    * To render Carousel with pagination indicators
    */
+  @Prop() autoplay: boolean;
+   /**
+   * To render Carousel with pagination indicators
+   */
+  @Prop() delay: number;
+  /**
+   * To render Carousel with pagination indicators
+   */
   @Prop() pagination: boolean;
   /**
    * To render Carousel with a single item per view
@@ -102,11 +110,27 @@ export class Carousel {
     const remainder = wrapperWidth - (fullScrollLength * this.numberOfViews);
 
     this.calculateScrollBreakpoints(this.fullScrollLength, wrapperWidth, remainder);
+    this._autoPlay();
     window.addEventListener('resize', this.resizeHandler);
   }
 
   componentWillOnload() {
     window.removeEventListener('resize', this.resizeHandler);
+  }
+ 
+  _autoPlay() {
+    if (this.autoplay) {
+      setInterval(() => {
+        if(this.view === this.numberOfViews - 1)
+        {
+          this.view = -1;
+          this.nextView();
+        }
+        else{
+          this.nextView();
+        }
+      }, this.delay);
+    }
   }
 
   prevView() {
@@ -214,7 +238,6 @@ export class Carousel {
 
   _applySizeToItems() {
     const carouselItems = this.el.querySelectorAll(`.${CAROUSEL_CLASSES.ITEM}`);
-
     carouselItems?.forEach((item: HTMLElement) => {
       item.style.width = `${this.fullScrollLength}px`;
     });
