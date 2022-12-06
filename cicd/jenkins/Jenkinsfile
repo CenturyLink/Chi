@@ -273,7 +273,7 @@ pipeline {
             steps {
               script {
                 dir('src/custom-elements') {
-                  jslYarnWrapper('install')
+                  jslNpmWrapper('ci')
                   jslNpmWrapper('run build')
                   stash name: "DIST-CHI-CE", includes: "dist/**"
                   stash name: "NODEMODULES-CHI-CE", includes: "node_modules/**"
