@@ -23,14 +23,6 @@
       }
     }
 
-    &[disabled],
-    &.-disabled {
-      ~ .chi-button,
-      ~ chi-button {
-        cursor: not-allowed;
-      }
-    }
-
     // sass-lint:disable-block no-vendor-prefixes
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
