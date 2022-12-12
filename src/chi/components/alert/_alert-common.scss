@@ -132,6 +132,7 @@ $states: (
   p,
   .-text {
     font-size: $alert-md-text-font-size;
+    font-weight: normal;
     line-height: $alert-md-text-line-height;
     margin: 0;
     word-break: break-word;
@@ -193,7 +194,8 @@ $states: (
       }
 
       + .chi-alert__text {
-        margin-top: 0.25rem;
+        margin-top: 0;
+        padding-top: 0;
       }
     }
 
@@ -261,6 +263,10 @@ $states: (
     }
 
     .chi-alert__content {
+      .chi-alert__text {
+        padding-top: $alert-lg-text-padding-top;
+      }
+
       .chi-alert__title {
         font-size: $alert-lg-title-font-size;
         font-weight: $alert-lg-title-font-weight;
@@ -268,12 +274,9 @@ $states: (
         margin-bottom: $alert-lg-title-margin-bottom;
 
         + .chi-alert__text {
-          margin-top: 0.375rem;
+          margin-top: 0;
+          padding-top: 0;
         }
-      }
-
-      .chi-alert__text {
-        padding-top: $alert-lg-text-padding-top;
       }
 
       .chi-alert__actions {
@@ -308,6 +311,12 @@ $states: (
     }
 
     .chi-alert__content {
+      .chi-alert__text {
+        font-size: $alert-sm-text-font-size;
+        line-height: $alert-sm-text-line-height;
+        padding-top: $alert-sm-text-padding-top;
+      }
+
       .chi-alert__title {
         font-size: $alert-sm-title-font-size;
         margin-bottom: 0;
@@ -316,12 +325,6 @@ $states: (
           margin-top: 0;
           padding-top: 0;
         }
-      }
-
-      .chi-alert__text {
-        font-size: $alert-sm-text-font-size;
-        line-height: $alert-sm-text-line-height;
-        padding-top: $alert-sm-text-padding-top;
       }
 
       .chi-alert__actions {

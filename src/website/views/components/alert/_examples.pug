@@ -628,14 +628,10 @@ p.-text
   .example.-mb--3
     .-p--3
       chi-link.-d--block.-mb--2(href='#' no-hover-underline)
-        chi-alert.-w--100(color='info' icon='file')
-          span.-text--primary.-text--semi-bold.-flex--grow1
-            | Complete platform setup
+        chi-alert.-w--100(color='info' icon='file' title='Complete platform setup')
           chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
       chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform -no-hover' fluid)
-        chi-alert.-w--100(color='info' icon='settings')
-          span.-text--primary.-text--semi-bold.-flex--grow1
-            | Configure your first device
+        chi-alert.-w--100(color='info' icon='settings' title='Configure your first device')
           chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-clickable
@@ -647,16 +643,14 @@ p.-text
       :code(lang="html")
         <!-- Clickable alert using chi-link -->
         <chi-link href="#" class="-d--block" no-hover-underline>
-          <chi-alert color="info" icon="file" class="-w--100">
-            <span class="-text--primary -text--semi-bold -flex--grow1">Complete platform setup</span>
+          <chi-alert color="info" icon="file" title="Complete platform setup" class="-w--100">
             <chi-icon icon="chevron-right" slot="chi-alert__clickable-icon"></chi-icon>
           </chi-alert>
         </chi-link>
 
         <!-- Clickable alert using chi-button -->
         <chi-button variant="flat" extra-class="-b--0 -p--0 -text--no-transform -no-hover" fluid>
-          <chi-alert color="info" icon="settings" class="-w--100">
-            <span class="-text--primary -text--semi-bold -flex--grow1">Configure your first device</span>
+          <chi-alert color="info" icon="settings" title="Configure your first device" class="-w--100">
             <chi-icon icon="chevron-right" slot="chi-alert__clickable-icon"></chi-icon>
           </chi-alert>
         </chi-button>
@@ -667,7 +661,7 @@ p.-text
           <div class="chi-alert -info" role="alert">
             <i class="chi-alert__icon chi-icon icon-flag" aria-hidden="true"></i>
             <div class="chi-alert__content">
-              <p class="chi-alert__text -text--primary -text--semi-bold">Complete platform setup</p>
+              <p class="chi-alert__title">Complete platform setup</p>
             </div>
             <div class="chi-alert__clickable-icon">
               <i class="chi-icon icon-chevron-right"></i>
@@ -681,7 +675,7 @@ p.-text
             <div class="chi-alert -info -w--100" role="alert">
               <i class="chi-alert__icon chi-icon icon-settings -icon--info" aria-hidden="true"></i>
               <div class="chi-alert__content">
-                <p class="chi-alert__text -text--primary -text--semi-bold">Configure your first device</p>
+                <p class="chi-alert__title">Configure your first device</p>
               </div>
               <div class="chi-alert__clickable-icon">
                 <i class="chi-icon icon-chevron-right"></i>

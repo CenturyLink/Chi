@@ -8,18 +8,174 @@
   };
 
 h2 Examples
-h3 Interaction
+.-portal--hide
+  h3 Base
+  .example.-mb--3.-overflow--hidden
+    .-position--relative.-z--0.-overflow--hidden(style='height:35rem;')
+      .-p--3
+        .-d--flex.-align-items--center
+          button.chi-button.-icon.-flat#mobile-navigation-base-trigger(data-target="#mobile-navigation-base-example" aria-label="Open Menu")
+            .chi-button__content
+              i.chi-icon.icon-menu.-sm--2(aria-hidden="true")
+          b.-ml--2 Click menu button to open Mobile navigation
+        each i in [1, 2]
+          p.-text.-mb--3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
+      .chi-mobile-nav#mobile-navigation-base-example
+        .chi-backdrop.-closed.-position--absolute
+          .chi-backdrop__wrapper
+            .chi-drawer.-left.-animated.chi-mobile-nav__first-level.-position--absolute
+              .-position--relative
+                .chi-mobile-nav__first-level-content.-w--100
+                  .chi-drawer__header.chi-mobile-nav__header
+                    button.chi-button.-icon.-close(aria-label='Close')
+                      .chi-button__content
+                        i.chi-icon.icon-x(aria-hidden="true")
+                  .chi-drawer__content.chi-mobile-nav__content
+                    .-p--3
+                      a.chi-button.-outline.-primary.-fluid.-uppercase.-lg.-mb--1(href='#') Sign In
+                      a.chi-button.-primary.-uppercase.-fluid.-lg(href='#') Register
+                    .chi-divider.-mt--0.-mb--2
+                    ul.chi-tabs.-vertical.-icons.-lg
+                      li
+                        a.-pl--4(href='#tab-link') Home
+                      li
+                        a.-pl--4(href='#tab-link') APIs
+                      li.-active
+                        a.-pl--4(href='#base-second-level-1') Products
+                      li
+                        a.-pl--4(href='#tab-link') Help & Support
+                    .chi-divider.-mt--2.-mb--0
+                    .chi-search.-p--3
+                      .chi-input__wrapper.-icon--right
+                        input#example-search-id.chi-input.chi-search__input(type='text' placeholder='Search' aria-label='Search')
+                        i.chi-icon.icon-search(aria-hidden='true')
+              .chi-mobile-nav__drawers
+                .chi-drawer.-right.-position--absolute(id=`base-second-level-1`)
+                  .chi-drawer__header.chi-mobile-nav__header
+                    button.chi-button.-flat.-icon.-no-hover.-back(aria-label='Back')
+                      .chi-button__content
+                        i.chi-icon.icon-chevron-left(aria-hidden="true")
+                    .chi-mobile-nav__header-title Products
+                    button.chi-button.-icon.-close(aria-label='Close')
+                      .chi-button__content
+                        i.chi-icon.icon-x(aria-hidden="true")
+                  .chi-drawer__content.chi-mobile-nav__content
+                    .chi-accordion
+                      a(href='#')
+                        span Browse All Products
+                      a(href='#')
+                        span Business Management
+                      a(href='#')
+                        span CenturyLink Partner
+                      a(href='#')
+                        span Communications
+                      a(href='#')
+                        span Edge Services
+                      a(href='#')
+                        span Lumen Channel Partners
+                      a(href='#')
+                        span Networking
+                      a(href='#')
+                        span Security
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-base
+        li.-disabled
+          a(href=`#webcomponent-base`) Web Component
+        li.-active
+          a(href=`#html-base`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-base
+    .chi-tabs-panel.-active#html-base
+      :code(lang="html")
+        <!-- Trigger -->
+        <button class="chi-button -icon -flat" id="mobile-navigation-base-trigger" data-target="#mobile-navigation-base-example" aria-label="Open Menu">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-menu -sm--2" aria-hidden="true"></i>
+          </div>
+        </button>
+
+        <!-- Mobile Navigation -->
+        <div class="chi-mobile-nav" id="mobile-navigation-base-example">
+          <div class="chi-backdrop -position--absolute -animated">
+            <div class="chi-backdrop__wrapper">
+              <div class="chi-drawer -left -animated chi-mobile-nav__first-level -position--absolute -active">
+                <div class="-position--relative">
+                  <div class="chi-mobile-nav__first-level-content -w--100">
+                    <div class="chi-drawer__header chi-mobile-nav__header">
+                      <button class="chi-button -icon -close" aria-label="Close">
+                        <div class="chi-button__content">
+                          <i class="chi-icon icon-x" aria-hidden="true"></i>
+                        </div>
+                      </button>
+                    </div>
+                    <div class="chi-drawer__content chi-mobile-nav__content">
+                      <div class="-p--3">
+                        <a class="chi-button -outline -primary -fluid -uppercase -lg -mb--1" href="#">Sign In</a>
+                        <a class="chi-button -primary -uppercase -fluid -lg" href="#">Register</a>
+                      </div>
+                      <div class="chi-divider -mt--0 -mb--2"></div>
+                      <ul class="chi-tabs -vertical -icons -lg">
+                        <li><a class="-pl--4" href="#tab-link">Home</a></li>
+                        <li><a class="-pl--4" href="#tab-link">APIs</a></li>
+                        <li class="-active"><a class="-pl--4 chi-drawer__subitem-list-trigger" href="#base-second-level-1">Products</a></li>
+                        <li><a class="-pl--4" href="#tab-link">Help &amp; Support</a></li>
+                      </ul>
+                      <div class="chi-divider -mt--2 -mb--0"></div>
+                      <div class="chi-search -p--3">
+                        <div class="chi-input__wrapper -icon--right">
+                          <input class="chi-input chi-search__input" id="example-search-id" type="text" placeholder="Search" aria-label="Search">
+                          <i class="chi-icon icon-search" aria-hidden="true"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="chi-mobile-nav__drawers">
+                  <div class="chi-drawer -right -position--absolute" id="base-second-level-1">
+                    <div class="chi-drawer__header chi-mobile-nav__header">
+                      <button class="chi-button -flat -icon -no-hover -back" aria-label="Back">
+                        <div class="chi-button__content"><i class="chi-icon icon-chevron-left" aria-hidden="true"></i></div>
+                      </button>
+                      <div class="chi-mobile-nav__header-title">Products</div>
+                      <button class="chi-button -icon -close" aria-label="Close">
+                        <div class="chi-button__content"><i class="chi-icon icon-x" aria-hidden="true"></i></div>
+                      </button>
+                    </div>
+                    <div class="chi-drawer__content chi-mobile-nav__content">
+                      <div class="chi-accordion">
+                        <a href="#"><span>Browse All Products</span></a>
+                        <a href="#"><span>Business Management</span></a>
+                        <a href="#"><span>CenturyLink Partner</span></a>
+                        <a href="#"><span>Communications</span></a>
+                        <a href="#"><span>Edge Services</span></a>
+                        <a href="#"><span>Lumen Channel Partners</span></a>
+                        <a href="#"><span>Networking</span></a>
+                        <a href="#"><span>Security</span></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>
+          chi.mobilenav(document.querySelector("#mobile-navigation-base-trigger"));
+        </script>
+
+h3 Control Center
 .example.-mb--3.-overflow--hidden
-  .-position--relative.-z--0.-overflow--hidden(style='height:25rem;')
+  .-position--relative.-z--0.-overflow--hidden(style='height:35rem;')
     .-p--3
       .-d--flex.-align-items--center
-        button.chi-button.-icon.-flat#mobile-navigation-interaction-trigger(data-target="#mobile-navigation-example" aria-label="Open Menu")
+        button.chi-button.-icon.-flat#mobile-navigation-interaction-trigger(data-target="#mobile-navigation-cc-example" aria-label="Open Menu")
           .chi-button__content
             i.chi-icon.icon-menu.-sm--2(aria-hidden="true")
         b.-ml--2 Click menu button to open Mobile navigation
       each i in [1, 2]
         p.-text.-mb--3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eu dignissim nisi, gravida pharetra elit. Etiam eu urna orci. Nulla et lorem eleifend, ultrices massa id, molestie urna. Nulla nec quam in turpis fermentum dictum vitae ac nibh. Suspendisse lacus nisi, sollicitudin in commodo quis, euismod id enim. Donec semper nunc et tellus convallis, tristique varius turpis gravida. Quisque hendrerit magna ac bibendum molestie. Nullam scelerisque libero vitae lorem dignissim ullamcorper. Integer mollis auctor enim vel molestie. Etiam id vestibulum augue, vitae dapibus quam. Nunc tincidunt aliquet lacus nec malesuada. Donec ultricies augue non lorem eleifend, eget ullamcorper lacus elementum. Donec condimentum enim nec justo auctor, nec bibendum ipsum dapibus.
-    .chi-mobile-nav#mobile-navigation-example
+    .chi-mobile-nav#mobile-navigation-cc-example
       .chi-backdrop.-closed.-position--absolute
         .chi-backdrop__wrapper
           .chi-drawer.-left.-animated.chi-mobile-nav__first-level.-position--absolute
@@ -92,7 +248,7 @@ h3 Interaction
                     button.chi-button.-flat.-icon.-no-hover.-back(aria-label='Back')
                       .chi-button__content
                         i.chi-icon.icon-chevron-left(aria-hidden="true")
-                    .chi-mobile-nav__header-title Inventory
+                    .chi-mobile-nav__header-title Toggle me
                     button.chi-button.-icon.-close(aria-label='Close')
                       .chi-button__content
                         i.chi-icon.icon-x(aria-hidden="true")
@@ -120,7 +276,7 @@ h3 Interaction
                           | External
                           i.chi-icon.icon-external-link.-xs(aria-hidden="true")
   .example-tabs.-pl--2
-    ul.chi-tabs#examples-interaction
+    ul.chi-tabs#examples-control-center
       li.-disabled
         a(href=`#webcomponent-interaction`) Web Component
       li.-active
@@ -282,7 +438,7 @@ h3 Interaction
                         <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                       </div>
                     </button>
-                    <div class="chi-mobile-nav__header-title">Inventory</div>
+                    <div class="chi-mobile-nav__header-title">Toggle me</div>
                     <button class="chi-button -icon -close" aria-label="Close">
                       <div class="chi-button__content">
                         <i class="chi-icon icon-x" aria-hidden="true"></i>
@@ -540,8 +696,10 @@ script.
   document.addEventListener(
     'DOMContentLoaded',
     function() {
+      chi.mobilenav(document.querySelector('#mobile-navigation-base-trigger'));
       chi.mobilenav(document.querySelector('#mobile-navigation-interaction-trigger'));
-      chi.tab(document.querySelector('#examples-interaction'));
+      chi.tab(document.querySelector('#examples-base'));
+      chi.tab(document.querySelector('#examples-control-center'));
     },
     false
   );
