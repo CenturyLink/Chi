@@ -73,7 +73,7 @@ div(class=`test-bubble-clickable-link-default -w--100`)
             svg
               use(xlink:href=`#${val}`)
           .chi-alert__content
-            p(class=`chi-alert__text -text--semi-bold -text--${type}`)
+            p(class=`chi-alert__title`)
               =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`
           .chi-alert__clickable-icon
             i.chi-icon.icon-chevron-right
@@ -88,7 +88,7 @@ div(class=`test-bubble-clickable-button-default -w--100`)
               svg
                 use(xlink:href=`#${val}`)
             .chi-alert__content
-              p(class=`chi-alert__text -text--semi-bold -text--${type}`)
+              p(class=`chi-alert__title`)
                 =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`
             .chi-alert__clickable-icon
               i.chi-icon.icon-chevron-right
