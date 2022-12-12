@@ -905,6 +905,10 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
 
         @include respond-to(md) {
           padding-left: 0;
+
+          .chi-data-table__cell {
+            position: static;
+          }
         }
       }
 
