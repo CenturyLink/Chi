@@ -33,7 +33,8 @@
         </div>
       </template>
       <template #actions="payload">
-        <Actions :id="payload.id" />
+        <desktopActions :id="payload.id" />
+        <mobileActions :id="payload.id" />
       </template>
       <template #accordionContent="payload">
         <div class="chi-alert -success" role="alert">
@@ -173,7 +174,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import DataTable from '../../../components/data-table/DataTable';
-import Actions from '../DataTableTemplates/example-actions.vue';
+import desktopActions from '../DataTableTemplates/example-desktop-actions.vue';
+import mobileActions from '../DataTableTemplates/example-mobile-actions.vue';
 import DownloadButtonIcon from '../DataTableTemplates/example-download.vue';
 import TicketPopover from '../DataTableTemplates/example-popover.vue';
 import DataTableBulkActions from '../../../components/data-table-bulk-actions/DataTableBulkActions';
@@ -195,7 +197,8 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     ChiDataTableFilters: DataTableFilters,
     ChiColumnCustomization: ColumnCustomization,
     ChiDataTableSaveView: SaveView,
-    Actions,
+    desktopActions,
+    mobileActions,
     DownloadButtonIcon,
     TicketPopover,
     ChiDataTableViews: DataTableViews,

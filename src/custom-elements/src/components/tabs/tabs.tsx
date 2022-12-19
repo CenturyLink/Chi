@@ -92,20 +92,12 @@ export class Tabs {
   private ulElement: HTMLUListElement;
   private uuid4: string = uuid4();
   private seeMoreTriggerId: string = `see-more-trigger-${this.uuid4}`;
-  private slidingBorderLeft: any;
-  private slidingBorderWidth: any;
+  private slidingBorderLeft: string;
   private dropdowns = [];
   private dropdownKeys = {};
   private seeMoreDropdown: HTMLChiDropdownElement;
-  private childActiveTab: HTMLAnchorElement;
 
   //#region Lifecycle hooks
-  connectedCallback() {
-    if (!this.vertical) {
-      this.createDropdowns(this.tabs, 0);
-    }
-  }
-
   componentDidLoad() {
     if (!this.vertical) {
       this.setAvailableSpace();
@@ -156,13 +148,6 @@ export class Tabs {
   }
 
   removeActiveItems() {
-    if (
-      this.childActiveTab &&
-      this.childActiveTab.classList.contains(ACTIVE_CLASS)
-    ) {
-      this.childActiveTab.classList.remove(ACTIVE_CLASS);
-    }
-
     Object.keys(this.dropdownKeys).forEach(id => {
       const menuItemElement = document.getElementById(id);
 
@@ -173,6 +158,10 @@ export class Tabs {
   }
 
   createDropdowns(tabs: TabTrigger[], level: number, firstLevel?: string) {
+    if (this.vertical) {
+      return [];
+    }
+
     tabs.forEach((tab: TabTrigger) => {
       const firstLevelId = level === 0 ? tab.id : firstLevel;
 
@@ -183,13 +172,16 @@ export class Tabs {
             id={`subLevelDropdown-${tab.id}`}
             position={level === 0 ? 'bottom-start' : 'right-start'}
             reference={`#${tab.id}`}
+            key={`${tab.id}-${this.dropdownKey}`}
           >
             {tab.children.map(child => {
               child.parent = tab;
 
               return (
                 <a
-                  class={`${DROPDOWN_CLASSES.MENU_ITEM} ${UTILITY_CLASSES.JUSTIFY.BETWEEN}`}
+                  class={`${DROPDOWN_CLASSES.MENU_ITEM} ${
+                    UTILITY_CLASSES.JUSTIFY.BETWEEN
+                  } ${this._isActiveTab(child) ? ACTIVE_CLASS : ''}`}
                   id={child.id}
                   onMouseEnter={() => this.handlerTabMouseEnter(child)}
                   onMouseLeave={e => this.handlerMouseLeave(e)}
@@ -204,8 +196,6 @@ export class Tabs {
                     this.handlerClickTab(e, child, firstLevelTriggerElement);
                     this.isSeeMoreActive = false;
                     if (dropdownElement) {
-                      this.childActiveTab = e.target as HTMLAnchorElement;
-                      this.childActiveTab.classList.add(ACTIVE_CLASS);
                       this.setParentTabActive(child);
                       dropdownElement.hide();
                     }
@@ -227,6 +217,8 @@ export class Tabs {
         this.createDropdowns(tab.children, level + 1, firstLevelId);
       }
     });
+
+    return this.dropdowns;
   }
 
   getActiveTabTrigger(): HTMLElement {
@@ -244,15 +236,17 @@ export class Tabs {
     };
   }
 
-  getSlidingBorderElement() {
-    return this.el.querySelector(
-      `.${TABS_CLASSES.SLIDING_BORDER}`
-    ) as HTMLElement;
-  }
-
   handlerClickSeeMore = (e: Event) => {
     e.preventDefault();
     this.isSeeMoreActive = !this.isSeeMoreActive;
+    if (!this.seeMoreDropdown) {
+      const seeMoreDropdown = document.getElementById(
+        `${this.uuid4}-see-more-dropdown`
+      ) as HTMLChiDropdownElement;
+
+      this.seeMoreDropdown = seeMoreDropdown;
+    }
+
     this.seeMoreDropdown.toggle();
   };
 
@@ -268,18 +262,11 @@ export class Tabs {
 
     const element = slidingBorderNewPosition || (e.target as HTMLElement);
     const position = this.getPosition(element);
-    const slidingBorderElement = this.getSlidingBorderElement();
 
     if (this.slidingBorder) {
       this.animation = ThreeStepsAnimation.animationFactory(
         () => {
           this.sliding = true;
-          if (slidingBorderElement) {
-            this.slidingBorderWidth = this.calculateSize(
-              this.getActiveTabTrigger(),
-              TabTriggerSizes.Width
-            );
-          }
         },
         () => {
           const dimension = this.vertical
@@ -299,6 +286,7 @@ export class Tabs {
           this.slidingBorderElement.style[dimension] = `${size}px`;
         },
         () => {
+          this.slidingBorderElement.style.width = '';
           this.sliding = false;
         },
         ANIMATION_DURATION.MEDIUM
@@ -332,11 +320,10 @@ export class Tabs {
     }
   };
 
-  handlerMouseLeave = (e: MouseEvent) => {
-    const elementTarget =
-      e.target === this.ulElement
-        ? DROPDOWN_CLASSES.MENU
-        : DROPDOWN_CLASSES.MENU_ITEM;
+  handlerMouseLeave = (e: MouseEvent, isTargetMenu?: boolean) => {
+    const elementTarget = isTargetMenu
+      ? DROPDOWN_CLASSES.MENU
+      : DROPDOWN_CLASSES.MENU_ITEM;
     const elements = Array.from(document.getElementsByClassName(
       elementTarget
     ) as HTMLCollectionOf<HTMLElement>);
@@ -424,13 +411,8 @@ export class Tabs {
       ? this.seeMoreTriggerElement
       : this.activeTabElement;
     const position = this.getPosition(element);
-    const size = this.calculateSize(
-      element,
-      this.vertical ? TabTriggerSizes.Height : TabTriggerSizes.Width
-    );
 
     this.slidingBorderLeft = `${position.left}px`;
-    this.slidingBorderWidth = `${size}px`;
   }
 
   hideAllDropdowns() {
@@ -444,6 +426,7 @@ export class Tabs {
   }
 
   render() {
+    this.dropdowns = [];
     const tabElements =
       this.tabs &&
       this.tabs
@@ -479,7 +462,6 @@ export class Tabs {
         ref={el => (this.slidingBorderElement = el)}
         style={{
           left: this.slidingBorderLeft,
-          width: `${this.slidingBorderWidth}px`
         }}
       ></li>
     ) : null;
@@ -508,9 +490,10 @@ export class Tabs {
             class={`${DROPDOWN_CLASSES.MENU_ITEM} ${
               this._isActiveTab(tab) ? ACTIVE_CLASS : ''
             }`}
+            id={tab.id}
             href="#"
             onMouseEnter={() => this.handlerTabMouseEnter(tab)}
-            onMouseLeave={e => this.handlerMouseLeave(e)}
+            onMouseLeave={e => this.handlerMouseLeave(e, true)}
             onClick={e => {
               this.handlerClickTab(e, tab, this.seeMoreTriggerAnchorElement);
               this.seeMoreDropdown.hide();
@@ -541,7 +524,7 @@ export class Tabs {
           {overflowItems}
         </chi-dropdown>
       ),
-      ...this.dropdowns
+      this.createDropdowns(this.tabs, 0)
     ];
 
     return (
@@ -558,7 +541,7 @@ export class Tabs {
           ref={el => {
             this.ulElement = el;
           }}
-          onMouseLeave={e => this.handlerMouseLeave(e)}
+          onMouseLeave={e => this.handlerMouseLeave(e, true)}
           role="tablist"
         >
           {tabElements}
