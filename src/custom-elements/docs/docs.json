@@ -1,5 +1,5 @@
 {
-  "timestamp": "2022-12-12T13:13:56",
+  "timestamp": "2022-12-19T13:45:22",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -599,6 +599,22 @@
       "usage": {},
       "props": [
         {
+          "name": "autoplay",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "autoplay",
+          "reflectToAttr": false,
+          "docs": "To set the autoplay for the carousel",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "dots",
           "type": "boolean",
           "mutable": false,
@@ -609,6 +625,23 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "interval",
+          "type": "number",
+          "mutable": false,
+          "attr": "interval",
+          "reflectToAttr": false,
+          "docs": "To set the interval for the autoplay",
+          "docsTags": [],
+          "default": "5",
+          "values": [
+            {
+              "type": "number"
             }
           ],
           "optional": false,

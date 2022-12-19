@@ -37,9 +37,9 @@ export class Carousel {
    */
   @Prop() autoplay: boolean;
   /**
-   * To set the delay for the autoplay
+   * To set the interval for the autoplay
    */
-  @Prop() delay: number = 3000;
+  @Prop() interval: number = 5;
   /**
    * To render Carousel with pagination indicators
    */
@@ -58,6 +58,7 @@ export class Carousel {
   @State() numberOfViews = 0;
   @State() customPrevButton: boolean;
   @State() customNextButton: boolean;
+  @State() autoplayInterval: number;
   /**
    * Triggered when the user navigates to another view
    */
@@ -86,6 +87,7 @@ export class Carousel {
     if (this.single) {
       this._applySizeToItems();
     }
+
     this.calculateScrollBreakpoints(
       this.fullScrollLength,
       wrapperWidth,
@@ -139,28 +141,27 @@ export class Carousel {
       wrapperWidth,
       remainder
     );
+
+    this._autoPlay(false);
     window.addEventListener('resize', this.resizeHandler);
-    this._autoPlay(this.autoplay)
-  }
-
-  componentDidUpdate(prevProps){
-    debugger;
-
   }
 
   componentWillOnload() {
     window.removeEventListener('resize', this.resizeHandler);
   }
 
-  _autoPlay(autoplay: boolean) {
-    if (autoplay) {
-      setInterval(() => {
+  _autoPlay(isPaused: boolean) {
+    if (this.autoplay && !this.autoplayInterval && !isPaused) {
+      this.autoplayInterval = window.setInterval(() => {
         if (this.view === this.numberOfViews - 1) {
-          this.view = -1;
+          this._goToView(-1);
         }
 
-        this.nextView();
-      }, this.delay);
+        this._goToView(++this.view);
+      }, this.interval * 1000);
+    } else {
+      window.clearInterval(this.autoplayInterval);
+      this.autoplayInterval = null;
     }
   }
 
@@ -374,12 +375,8 @@ export class Carousel {
         onTouchStart={this.touchStart}
         onTouchEnd={this.touchEnd}
         onTouchMove={this.touchMove}
-        onMouseEnter={
-          this.autoplay ? () => this._autoPlay(!this.autoplay) : null
-        }
-        onMouseLeave={
-          this.autoplay ? () => this._autoPlay(this.autoplay) : null
-        }
+        onMouseEnter={() => this._autoPlay(true)}
+        onMouseLeave={() => this._autoPlay(false)}
         class={`
         ${CAROUSEL_CLASSES.CAROUSEL}
         ${this.dots ? CAROUSEL_CLASSES.DOTS_ADDITION : ''}
