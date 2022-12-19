@@ -1,6 +1,22 @@
-import { Component, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core';
-import { ACTIVE_CLASS, CAROUSEL_CLASSES, TRANSITIONING_CLASS, UTILITY_CLASSES } from '../../constants/classes';
-import { ANIMATION_DURATION, CAROUSEL_SWIPE_DELTA } from '../../constants/constants';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Prop,
+  State,
+  h
+} from '@stencil/core';
+import {
+  ACTIVE_CLASS,
+  CAROUSEL_CLASSES,
+  TRANSITIONING_CLASS,
+  UTILITY_CLASSES
+} from '../../constants/classes';
+import {
+  ANIMATION_DURATION,
+  CAROUSEL_SWIPE_DELTA
+} from '../../constants/constants';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 
 const CAROUSEL_BOUNCE_DISTANCE = 25;
@@ -17,13 +33,13 @@ export class Carousel {
    */
   @Prop() dots: boolean;
   /**
-   * To render Carousel with pagination indicators
+   * To set the autoplay for the carousel
    */
   @Prop() autoplay: boolean;
-   /**
-   * To render Carousel with pagination indicators
+  /**
+   * To set the delay for the autoplay
    */
-  @Prop() delay: number;
+  @Prop() delay: number = 3000;
   /**
    * To render Carousel with pagination indicators
    */
@@ -65,27 +81,36 @@ export class Carousel {
 
     this.numberOfViews = Math.ceil(wrapperWidth / this.fullScrollLength);
 
-    const remainder = wrapperWidth - (this.fullScrollLength * this.numberOfViews);
+    const remainder = wrapperWidth - this.fullScrollLength * this.numberOfViews;
 
     if (this.single) {
       this._applySizeToItems();
     }
-    this.calculateScrollBreakpoints(this.fullScrollLength, wrapperWidth, remainder);
+    this.calculateScrollBreakpoints(
+      this.fullScrollLength,
+      wrapperWidth,
+      remainder
+    );
   };
 
   calculateWidth(element: HTMLElement) {
     return element.offsetWidth;
   }
 
-  calculateScrollBreakpoints(fullScrollLength: number, wrapperWidth: number, remainder: number) {
+  calculateScrollBreakpoints(
+    fullScrollLength: number,
+    wrapperWidth: number,
+    remainder: number
+  ) {
     for (let view = 0; view < this.numberOfViews; view++) {
       this.scrollBreakpoints[view + 1] =
-        (view + 1) * fullScrollLength > wrapperWidth ?
-          (view * fullScrollLength * -1) - remainder :
-          view * fullScrollLength * -1;
+        (view + 1) * fullScrollLength > wrapperWidth
+          ? view * fullScrollLength * -1 - remainder
+          : view * fullScrollLength * -1;
 
       if (view === this.numberOfViews - 1) {
-        this.scrollBreakpoints[this.numberOfViews + 1] = (view * fullScrollLength * -1) - remainder - CAROUSEL_BOUNCE_DISTANCE;
+        this.scrollBreakpoints[this.numberOfViews + 1] =
+          view * fullScrollLength * -1 - remainder - CAROUSEL_BOUNCE_DISTANCE;
       }
     }
   }
@@ -107,28 +132,34 @@ export class Carousel {
 
     this.numberOfViews = Math.ceil(wrapperWidth / fullScrollLength);
 
-    const remainder = wrapperWidth - (fullScrollLength * this.numberOfViews);
+    const remainder = wrapperWidth - fullScrollLength * this.numberOfViews;
 
-    this.calculateScrollBreakpoints(this.fullScrollLength, wrapperWidth, remainder);
-    this._autoPlay();
+    this.calculateScrollBreakpoints(
+      this.fullScrollLength,
+      wrapperWidth,
+      remainder
+    );
     window.addEventListener('resize', this.resizeHandler);
+    this._autoPlay(this.autoplay)
+  }
+
+  componentDidUpdate(prevProps){
+    debugger;
+
   }
 
   componentWillOnload() {
     window.removeEventListener('resize', this.resizeHandler);
   }
- 
-  _autoPlay() {
-    if (this.autoplay) {
+
+  _autoPlay(autoplay: boolean) {
+    if (autoplay) {
       setInterval(() => {
-        if(this.view === this.numberOfViews - 1)
-        {
+        if (this.view === this.numberOfViews - 1) {
           this.view = -1;
-          this.nextView();
         }
-        else{
-          this.nextView();
-        }
+
+        this.nextView();
       }, this.delay);
     }
   }
@@ -192,14 +223,16 @@ export class Carousel {
       this.isDragging = false;
       this.wrapper.style.transform = this.getWrapperTransform();
     }
-  }
+  };
 
   touchMove = (e: TouchEvent) => {
     if (this.isDragging) {
       const currentPosition = this.getPositionX(e);
       const previousPosition = this.scrollBreakpoints[this.view + 1];
       const delta = this.getMoveDelta();
-      const newPosition = this.isMoveToNext() ? previousPosition - delta : previousPosition + delta;
+      const newPosition = this.isMoveToNext()
+        ? previousPosition - delta
+        : previousPosition + delta;
 
       this.moveEndPosition = currentPosition;
       this.wrapper.style.transform = `translateX(${newPosition}px)`;
@@ -213,7 +246,7 @@ export class Carousel {
         this.isDragging = false;
       }
     }
-  }
+  };
 
   isMoveToNext() {
     return this.moveStartPosition > this.moveEndPosition;
@@ -230,17 +263,20 @@ export class Carousel {
   touchStart = (e: TouchEvent) => {
     this.moveStartPosition = this.getPositionX(e);
     this.isDragging = true;
-  }
+  };
 
   getPositionX = (event: TouchEvent) => {
     return event.touches[0].clientX;
-  }
+  };
 
   _applySizeToItems() {
     const carouselItems = this.el.querySelectorAll(`.${CAROUSEL_CLASSES.ITEM}`);
-    carouselItems?.forEach((item: HTMLElement) => {
-      item.style.width = `${this.fullScrollLength}px`;
-    });
+
+    if (carouselItems) {
+      carouselItems.forEach((item: HTMLElement) => {
+        item.style.width = `${this.fullScrollLength}px`;
+      });
+    }
   }
 
   _goToView(view: number) {
@@ -255,73 +291,118 @@ export class Carousel {
   }
 
   render() {
-    const prevButton = this._areThereMultipleItems() && <div class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.PREVIOUS}`} onClick={() => this.prevView()}>
-      {
-        this.customPrevButton ?
-          <slot name="previous"></slot> :
-          <chi-button size="sm" type="float" alternative-text="Carousel previous" disabled={this.view === 0 || this.view === -1}>
+    const prevButton = this._areThereMultipleItems() && (
+      <div
+        class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.PREVIOUS}`}
+        onClick={() => this.prevView()}
+      >
+        {this.customPrevButton ? (
+          <slot name="previous"></slot>
+        ) : (
+          <chi-button
+            size="sm"
+            type="float"
+            alternative-text="Carousel previous"
+            disabled={this.view === 0 || this.view === -1}
+          >
             <chi-icon icon="chevron-left"></chi-icon>
           </chi-button>
-      }
-    </div>;
-    const nextButton = this._areThereMultipleItems() && <div class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.NEXT}`} onClick={() => this.nextView()}>
-      {
-        this.customNextButton ?
-          <slot name="next"></slot> :
-          <chi-button size="sm" type="float" alternative-text="Carousel next" disabled={this.view === this.numberOfViews || this.view + 1 === this.numberOfViews}>
+        )}
+      </div>
+    );
+    const nextButton = this._areThereMultipleItems() && (
+      <div
+        class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.NEXT}`}
+        onClick={() => this.nextView()}
+      >
+        {this.customNextButton ? (
+          <slot name="next"></slot>
+        ) : (
+          <chi-button
+            size="sm"
+            type="float"
+            alternative-text="Carousel next"
+            disabled={
+              this.view === this.numberOfViews ||
+              this.view + 1 === this.numberOfViews
+            }
+          >
             <chi-icon icon="chevron-right"></chi-icon>
           </chi-button>
-      }
-    </div>;
+        )}
+      </div>
+    );
     const items = <slot name="items"></slot>;
-    const dotControllers = this.dots ?
+    const dotControllers = this.dots ? (
       <div class={CAROUSEL_CLASSES.DOTS}>
-        {Array(this.numberOfViews).fill(0).map((_, i) => {
-          return <span
-            onClick={() => {
-              this._goToView(i);
-            }}
-            class={`
+        {Array(this.numberOfViews)
+          .fill(0)
+          .map((_, i) => {
+            return (
+              <span
+                onClick={() => {
+                  this._goToView(i);
+                }}
+                class={`
               ${CAROUSEL_CLASSES.DOT}
-              ${this.view === i ||
+              ${
+                this.view === i ||
                 (this.view === -1 && i === 0) ||
-                (this.view === this.numberOfViews && i === this.numberOfViews - 1) ? ACTIVE_CLASS : ''}`}
-          ></span>;
-        })}
-      </div> : null;
-    const pagination = this.pagination ?
+                (this.view === this.numberOfViews &&
+                  i === this.numberOfViews - 1)
+                  ? ACTIVE_CLASS
+                  : ''
+              }`}
+              ></span>
+            );
+          })}
+      </div>
+    ) : null;
+    const pagination = this.pagination ? (
       <div class={CAROUSEL_CLASSES.PAGINATION}>
-        {
-          this.view === 0 || this.view === -1 ? 1 :
-            this.view + 1 > this.numberOfViews ? this.numberOfViews :
-              this.view + 1
-        } of {this.numberOfViews}
-      </div> : null;
+        {this.view === 0 || this.view === -1
+          ? 1
+          : this.view + 1 > this.numberOfViews
+          ? this.numberOfViews
+          : this.view + 1}{' '}
+        of {this.numberOfViews}
+      </div>
+    ) : null;
 
-    return <div
-      onTouchStart={this.touchStart}
-      onTouchEnd={this.touchEnd}
-      onTouchMove={this.touchMove}
-      class={`
+    return (
+      <div
+        onTouchStart={this.touchStart}
+        onTouchEnd={this.touchEnd}
+        onTouchMove={this.touchMove}
+        onMouseEnter={
+          this.autoplay ? () => this._autoPlay(!this.autoplay) : null
+        }
+        onMouseLeave={
+          this.autoplay ? () => this._autoPlay(this.autoplay) : null
+        }
+        class={`
         ${CAROUSEL_CLASSES.CAROUSEL}
         ${this.dots ? CAROUSEL_CLASSES.DOTS_ADDITION : ''}
-        ${this.pagination ? CAROUSEL_CLASSES.PAGINATION_ADDITION : ''}`}>
-      <div class={CAROUSEL_CLASSES.CONTENT}>
-        <div
-          class={`
+        ${this.pagination ? CAROUSEL_CLASSES.PAGINATION_ADDITION : ''}`}
+      >
+        <div class={CAROUSEL_CLASSES.CONTENT}>
+          <div
+            class={`
             ${CAROUSEL_CLASSES.WRAPPER}
             ${this._animationClasses}
             ${this.single ? UTILITY_CLASSES.DISPLAY.FLEX : ''}
           `}
-          style={{ transform: this.getWrapperTransform() }}
-          ref={el => this.wrapper = el}>
-          {items}
+            style={{ transform: this.getWrapperTransform() }}
+            ref={el => (this.wrapper = el)}
+          >
+            {items}
+          </div>
         </div>
+        {prevButton}
+        {nextButton}
+        {dotControllers}
+        {pagination}
       </div>
-      {prevButton}
-      {nextButton}
-      {dotControllers}
-      {pagination}
-    </div>;
+    );
   }
 }
