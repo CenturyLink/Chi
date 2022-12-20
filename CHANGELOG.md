@@ -1,4 +1,21 @@
 # CHANGELOG
+## 5.25.0 (December 20, 2022)
+### Components
+#### Added
+* Added: Data table now supports expand/collapse rows functionality in mobile version.
+* Added: Header navbar now provides support for links.
+#### Changed
+* Changed: App layout title font weight has been updated from extra-bold to black to match Portal style guide.
+* Changed: Disabled cursor in search input, text input and text area components.
+* Changed: Alert title font-weight has been updated from semi-bold to bold for portal theme.
+#### Fixed
+* Fixed: Large Header padding has been improved to allow active border sits flush with the base of the navbar.
+### Documentation
+#### Added
+* Added: Mobile nav example to support Lumen.com and Developer center use cases.
+#### Fixed
+* Fixed: Expansion panel code snippets.
+
 ## 5.24.0 (November 4, 2022)
 ### Components
 #### Added
