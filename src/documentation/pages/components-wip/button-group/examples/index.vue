@@ -37,12 +37,9 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Base from './_base.vue';
-import FluidAlignment from './_fluid-alignment.vue';
-import FluidDisabled from './_fluid-disabled.vue';
 import FluidHorizontal from './_fluid-horizontal.vue';
 import FluidVertical from './_fluid-vertical.vue';
 import HybridButtons from './_hybrid-buttons.vue';
-import HybridFluid from './_hybrid-fluid.vue';
 import HybridSizesLumenCenturyLink from './_hybrid-sizes-lumen-centurylink.vue';
 import HybridSizesPortal from './_portal/_hybrid-sizes.vue';
 import SizesHorizontalPortal from './_portal/_sizes-horizontal.vue';
