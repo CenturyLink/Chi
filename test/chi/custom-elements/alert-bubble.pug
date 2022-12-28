@@ -60,16 +60,12 @@ div(class=`test-bubble-clickable-link-default -w--100`)
     if (type === 'base')
       .-m--2
         chi-link.-d--block(href='#' no-hover-underline)
-          chi-alert.-w--100(class=type, icon=val, data-cy=`alert-bubble-clickable-link-${type}-default`)
-            span(class=`-text--semi-bold -text--${type} -flex--grow1`)
-              =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`
+          chi-alert.-w--100(class=type, icon=val, title=`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`, data-cy=`alert-bubble-clickable-link-${type}-default`)
             chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
     else
       .-m--2
         chi-link.-d--block(href='#' no-hover-underline)
-          chi-alert.-w--100(color=type, icon=val, data-cy=`alert-bubble-clickable-link-${type}-default`)
-            span(class=`-text--semi-bold -text--${type} -flex--grow1`)
-              =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`
+          chi-alert.-w--100(color=type, icon=val, title=`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable link alert`, data-cy=`alert-bubble-clickable-link-${type}-default`)
             chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
 h4 Clickable Button Alert / default
 div(class=`test-bubble-clickable-button-default -w--100`)
@@ -77,14 +73,10 @@ div(class=`test-bubble-clickable-button-default -w--100`)
     if (type === 'base')
       .-m--2
         chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform -no-hover' fluid)
-          chi-alert.-w--100(class=type, icon=val, data-cy=`alert-bubble-clickable-button-${type}-default}`)
-            span(class=`-text--semi-bold -text--${type} -flex--grow1`)
-              =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`
+          chi-alert.-w--100(class=type, icon=val, title=`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`, data-cy=`alert-bubble-clickable-button-${type}-default}`)
             chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
     else
       .-m--2
         chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform -no-hover' fluid)
-          chi-alert.-w--100(color=type, icon=val, data-cy=`alert-bubble-clickable-button-${type}-default`)
-            span(class=`-text--semi-bold -text--${type} -flex--grow1`)
-              =`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`
+          chi-alert.-w--100(color=type, icon=val, title=`This is ${type === 'info' ? 'an' : 'a'} ${type} clickable button alert`, data-cy=`alert-bubble-clickable-button-${type}-default`)
             chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')

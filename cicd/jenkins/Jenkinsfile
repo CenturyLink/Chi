@@ -273,7 +273,7 @@ pipeline {
             steps {
               script {
                 dir('src/custom-elements') {
-                  jslYarnWrapper('install')
+                  jslNpmWrapper('ci')
                   jslNpmWrapper('run build')
                   stash name: "DIST-CHI-CE", includes: "dist/**"
                   stash name: "NODEMODULES-CHI-CE", includes: "node_modules/**"
@@ -884,10 +884,9 @@ PolicyDocument
                     VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
                     echo \${VERSION}
                     cat << PRDesc > ux-chi-AssetsServer/prepared-message.md
-  This PR is for CHI \${VERSION}
-
-  You can check staging in https://assets-dev.ctl.io/chi/staging
-  PRDesc
+This PR is for CHI \${VERSION}
+You can check staging in https://assets-dev.ctl.io/chi/staging
+PRDesc
                     mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
                     cp -R ${WORKSPACE}/dist/* ${WORKSPACE}/ux-chi-AssetsServer/chi/latest/
                     mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/\$VERSION
