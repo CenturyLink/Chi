@@ -122,6 +122,15 @@ $font-weight-semi-bold: 600;
     }
   }
 
+  &__row {
+    &-empty{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 7rem 3rem 7rem !important;
+    }
+  }
+
   &__cell {
     &.-actions,
     &.-justify-content-md--end {

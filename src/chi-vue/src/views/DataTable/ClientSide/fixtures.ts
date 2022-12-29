@@ -2,7 +2,7 @@ import { DataTableConfig } from '@/constants/types';
 
 export const exampleConfig: DataTableConfig = {
   columnResize: true,
-  noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+  noResultsMessage: 'Search for or select at least one filter to get results',
   style: {
     portal: true,
     noBorder: false,

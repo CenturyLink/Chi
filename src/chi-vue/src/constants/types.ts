@@ -107,6 +107,11 @@ export interface DataTableConfig {
   unsorted?: boolean;
   mode?: 'clientside' | 'serverside';
   noResultsMessage?: string;
+  messages?: {
+    isSearch?: boolean;
+    noResultsMessage?: string;
+    noFiltersMessage?: string;
+  };
   pagination: {
     activePage?: number;
     compact?: boolean;

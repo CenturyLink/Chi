@@ -36,7 +36,12 @@ import {
   DataTableRowLevels,
   DataTableColumnDescription,
 } from '@/constants/types';
-import { DATA_TABLE_NO_RESULTS_FOUND, DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
+import {
+  DATA_TABLE_NO_RESULTS_FOUND,
+  DATA_TABLE_SORT_ICONS,
+  SCREEN_BREAKPOINTS,
+  DATA_TABLE_NO_FILTERS,
+} from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
@@ -885,13 +890,19 @@ export default class DataTable extends Vue {
         return this.row(bodyRow, 'parent', striped);
       });
     } else {
-      const noResultsMessage = this.config.noResultsMessage
-        ? this.config.noResultsMessage
+      const noResultsMessage = this.config.messages?.noResultsMessage
+        ? this.config.messages?.noFiltersMessage
         : DATA_TABLE_NO_RESULTS_FOUND;
+      const noFiltersMessage = this.config.messages?.noFiltersMessage
+        ? this.config.messages?.noFiltersMessage
+        : DATA_TABLE_NO_FILTERS;
 
       tableBodyRows = (
         <div class={DATA_TABLE_CLASSES.EMPTY}>
-          <div>{noResultsMessage}</div>
+          <div>
+            <chi-icon class="-vertical-align--middle -m--1" icon="search" color="dark"></chi-icon>
+            {this.config.messages?.isSearch ? noResultsMessage : noFiltersMessage}
+          </div>
         </div>
       );
     }
