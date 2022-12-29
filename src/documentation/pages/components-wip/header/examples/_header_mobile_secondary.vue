@@ -19,8 +19,8 @@
               a.chi-button.-flat(href="#", style='text-transform: none') Item
               a.chi-button.-flat.-ml--1(href="#", style='text-transform: none') Item
         .chi-divider.-m--0.-w--100.-d--flex.-d-lg--none
-        nav.chi-header__toolbar.-d--flex.-d-lg--none#drawer-trigger-ms3.chi-drawer__trigger(data-target='#drawer-3')
-          .chi-header__start
+        nav#drawer-trigger-ms3.-d--flex.-d-lg--none.chi-drawer__trigger.-text.-w--100.-align-items--center.-px--2(data-target='#drawer-3')
+          .chi-header__start.-flex--grow1.-align-items--center
             i.chi-icon.icon-map-marker.-mx--1.-ml-lg--0(aria-hidden="true")
             span Menu
           .chi-header__end
@@ -83,15 +83,15 @@ import { Component, Vue } from 'vue-property-decorator';
     </div>
   </nav>
   <div class="chi-divider -m--0 -w--100"></div>
-    <nav class="chi-header__toolbar -d--flex -d-lg--none chi-drawer__trigger" id="drawer-trigger-ms3" data-target="#drawer-3">
-      <div class="chi-header__start">
-        <i class="chi-icon icon-map-marker -mx--1 -ml-lg--0" aria-hidden="true"></i>
-        <span>Menu</span>
-      </div>
-      <div class="chi-header__end">
-        <i class="chi-icon icon-chevron-down -mx--1 -mr-lg--0" aria-hidden="true"></i>
-      </div>
-    </nav>
+  <nav class="-d--flex -d-lg--none chi-drawer__trigger -text -w--100 -align-items--center -px--2" id="drawer-trigger-ms3" data-target="#drawer-3">
+    <div class="chi-header__start -flex--grow1 -align-items--center">
+      <i class="chi-icon icon-map-marker -mx--1 -ml-lg--0" aria-hidden="true"></i>
+      <span>Menu</span>
+    </div>
+    <div class="chi-header__end">
+      <i class="chi-icon icon-chevron-down -mx--1 -mr-lg--0" aria-hidden="true"></i>
+    </div>
+  </nav>
 </header>
 
 <!-- Drawer -->
