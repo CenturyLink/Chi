@@ -31,14 +31,6 @@
       padding: $header-content-padding-lg;
     }
 
-    ~ .chi-header__toolbar {
-      height: $header-toolbar-height;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
     > div {
       &:last-child {
         &.chi-header__brand {
@@ -122,6 +114,7 @@
 
     .chi-divider {
       &.-vertical {
+        align-self: center;
         height: 2rem;
       }
     }
@@ -253,108 +246,11 @@
     }
   }
 
-  &__toolbar {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    font-size: $header-toolbar-font-size;
-    height: 2rem;
-    justify-content: space-between;
-    margin-top: 0;
-    padding: 0 0.5rem;
-    position: relative;
-    width: 100%;
-
-    @include respond-to(sm) {
-      padding: 0 1rem;
-    }
-
-    @include respond-to(lg) {
-      padding: 0 1.5rem;
-    }
-
-    ~ .chi-header__content {
-      height: auto;
-      min-height: 3.5rem;
-    }
-
-    & .chi-tabs:not(.-vertical):not(.-responsive) {
-      height: 2rem;
-
-      & > li {
-        & > a {
-          font-size: $font-size-xs;
-          padding: 0.5rem 0;
-        }
-
-        &.chi-dropdown {
-          &.-active > a {
-            border-bottom-width: 0.0625rem;
-            padding-bottom: 0.4375rem;
-          }
-
-          .chi-dropdown__trigger {
-            padding-right: 1rem;
-
-            &::after {
-              top: 0.5rem;
-            }
-          }
-        }
-
-        &.chi-sliding-border {
-          height: 0.0625rem;
-        }
-      }
-
-      &:not(.-sliding) {
-        & > li {
-          &.-active > a {
-            padding-bottom: 0.4375rem;
-          }
-        }
-      }
-    }
-
-    .chi-header__start {
-      align-items: center;
-    }
-
-    .chi-header__end {
-      margin-left: 1rem;
-      padding-top: 0;
-
-      & a {
-        color: $header-toolbar-link-color;
-        font-size: $header-toolbar-link-font-size;
-        font-weight: $header-toolbar-link-font-weight;
-
-        &:hover {
-          color: $header-toolbar-link-hover-color;
-          text-decoration: none;
-        }
-      }
-    }
-  }
-
   &.-navbar {
     .chi-header__content {
       .chi-header__start {
         @include respond-to(md) {
           padding-right: 1rem;
-        }
-      }
-
-      .chi-header__end {
-        .toolbar__info {
-          border-right: 0;
-          display: inline-flex;
-          padding-right: 0.25rem;
-
-          @include respond-to(md) {
-            border-right: 1px solid $header-toolbar-border-color;
-            padding-right: 0.5rem;
-          }
         }
       }
     }
@@ -689,11 +585,6 @@
 /* IE11 CSS hack */
 // sass-lint:disable-block no-vendor-prefixes
 @media all and (-ms-high-contrast: none) {
-  .chi-header__content,
-  .chi-header__toolbar ~ .chi-header__content {
-    height: $header-height;
-  }
-
   .chi-header {
     .chi-search {
       &.-collapsed {
