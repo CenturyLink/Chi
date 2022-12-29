@@ -19,7 +19,6 @@
       <HeaderImpersonation />
       <HeaderTitleButtons />
       <HeaderCollapseSearch />
-      <HeaderTopToolBar />
       <HeaderMobileSecondary />
       h3 Sizes
       <SizesMedium />
@@ -35,7 +34,6 @@
       <HeaderTitleCenturylink />
       <HeaderTitleButtonCenturylink />
       <HeaderCollapseSearchCenturylink />
-      <HeaderTopToolbarCenturylink />
       <HeaderMobileSecondaryCenturylink />
       h3 Sizes
       <SizesMediumCenturylink />
@@ -55,13 +53,11 @@ import HeaderImpersonation from './_header_impersonation.vue';
 import HeaderImpersonationPortal from './_portal/_header_impersonation_portal.vue';
 import HeaderTitleButtons from './_header_title_buttons.vue';
 import HeaderCollapseSearch from './_header_collapse_search.vue';
-import HeaderTopToolBar from './_header_toptoolbar.vue';
 import HeaderMobileSecondary from './_header_mobile_secondary.vue';
 import HeaderTitleButtonCenturylink from './_centurylink/_header_buttons_centurylink.vue';
 import HeaderMobileSecondaryCenturylink from './_centurylink/_header_secondary_centurylink.vue';
 import HeaderTitleCenturylink from './_centurylink/_header_centurylink.vue';
 import HeaderCollapseSearchCenturylink from './_centurylink/_header_collapsible_centurylink.vue';
-import HeaderTopToolbarCenturylink from './_centurylink/_header_toolbar_centurylink.vue';
 import SizesMedium from './_sizes_medium.vue';
 import SizesLarge from './_sizes_large.vue';
 import SizesXLarge from './_sizes_xlarge.vue';
@@ -81,12 +77,10 @@ import SizesXLargeCenturylink from './_centurylink/_sizes_xlarge_centurylink.vue
     HeaderImpersonationPortal,
     HeaderTitleButtons,
     HeaderCollapseSearch,
-    HeaderTopToolBar,
     HeaderMobileSecondary,
     HeaderTitleButtonCenturylink,
     HeaderMobileSecondaryCenturylink,
     HeaderTitleCenturylink,
-    HeaderTopToolbarCenturylink,
     HeaderCollapseSearchCenturylink,
     SizesMedium,
     SizesLarge,
