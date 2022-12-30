@@ -3,24 +3,25 @@
 
 $sizes: (
   xs: (
-    padding: 0.25rem,
+    padding: 0.25rem
   ),
   sm: (
-    padding: 0.5rem,
+    padding: 0.5rem
   ),
   md: (
-    padding: 0.75rem 1rem,
+    padding: 0.75rem 1rem
   ),
   lg: (
-    padding: 1rem,
+    padding: 1rem
   ),
   xl: (
-    padding: 1.25rem 1rem,
+    padding: 1.25rem 1rem
   )
 );
 
 $bg-url: 'data:image/svg+xml,%3Csvg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath';
-$bg-url: $bg-url + ' d="M9.89 7.823l-6.732 6.963L4.331 16l7.292-7.542.677-.654L4.215 0 3 1.172l6.89 6.65z"';
+$bg-url: $bg-url +
+  ' d="M9.89 7.823l-6.732 6.963L4.331 16l7.292-7.542.677-.654L4.215 0 3 1.172l6.89 6.65z"';
 $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
 
 .chi-data-table {
@@ -249,11 +250,11 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
     }
 
     &-empty {
-      background-color: $color-background-base;
-      font-style: italic;
-      display: flex;
-      justify-content: center;
       align-items: center;
+      background-color: $color-background-base;
+      display: flex;
+      font-style: italic;
+      justify-content: center;
       padding: 3rem 7rem 3rem 7rem;
       text-align: center;
     }

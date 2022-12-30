@@ -124,9 +124,9 @@ $font-weight-semi-bold: 600;
 
   &__row {
     &-empty{
+      align-items: center;
       display: flex;
       justify-content: center;
-      align-items: center;
       padding: 3rem 7rem 3rem 7rem !important;
     }
   }
