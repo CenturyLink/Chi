@@ -1095,11 +1095,11 @@ h2 Examples
               children: [
                 {
                   label: 'Elem 1',
-                  id: 'tab-a-1',
+                  id: 'tab-a-1'
                 },
                 {
                   label: 'Elem 2',
-                  id: 'tab-a-2',
+                  id: 'tab-a-2'
                 },
                 {
                   label: 'Elem 3 more',
@@ -1107,26 +1107,40 @@ h2 Examples
                   children: [
                     {
                       label: 'Elem 3.1',
-                      id: 'tab-a-3-1',
+                      id: 'tab-a-3-1'
                     },
                     {
                       label: 'Elem 3.2',
                       id: 'tab-a-3-2',
+                      children: [
+                        {
+                          label: 'Elem 3.2.1',
+                          id: 'tab-a-3-2-1'
+                        },
+                        {
+                          label: 'Elem 3.2.2',
+                          id: 'tab-a-3-2-2'
+                        },
+                        {
+                          label: 'Elem 3.2.3',
+                          id: 'tab-a-3-2-3'
+                        }
+                      ]
                     },
                     {
                       label: 'Elem 3.3',
-                      id: 'tab-a-3-3',
+                      id: 'tab-a-3-3'
                     },
                     {
                       label: 'Elem 3.4',
-                      id: 'tab-a-3-4',
-                    },
-                  ],
+                      id: 'tab-a-3-4'
+                    }
+                  ]
                 },
                 {
                   label: 'Elem 4',
-                  id: 'tab-a-4',
-                },
+                  id: 'tab-a-4'
+                }
               ]
             },
             {
@@ -1154,23 +1168,55 @@ h2 Examples
               id: 'tab-g'
             },
             {
-              label: 'Tab Dropdown',
+              label: 'Tab Parent',
               id: 'tab-h',
               children: [
                 {
                   label: 'Element 1',
-                  id: 'tab-h-1',
+                  id: 'tab-h-1'
                 },
                 {
                   label: 'Element 2',
                   id: 'tab-h-2',
+                  children: [
+                    {
+                      label: 'Elem 1',
+                      id: 'tab-h-1'
+                    },
+                    {
+                      label: 'Elem 2',
+                      id: 'tab-h-2'
+                    },
+                    {
+                      label: 'Elem 3 more',
+                      id: 'tab-h-3',
+                      children: [
+                        {
+                          label: 'Elem 3.1',
+                          id: 'tab-h-3-1'
+                        },
+                        {
+                          label: 'Elem 3.2',
+                          id: 'tab-h-3-2'
+                        },
+                        {
+                          label: 'Elem 3.3',
+                          id: 'tab-h-3-3'
+                        }
+                      ]
+                    },
+                    {
+                      label: 'Elem 4',
+                      id: 'tab-h-4'
+                    }
+                  ]
                 },
                 {
                   label: 'Element 3',
-                  id: 'tab-h-3',
-                },
+                  id: 'tab-h-3'
+                }
               ]
-            },
+            }
           ];
         </script>
     .chi-tabs-panel#html-tabbed-navigation(role="tabpanel")
@@ -1251,11 +1297,11 @@ h2 Examples
               children: [
                 {
                   label: 'Elem 1',
-                  id: 'tab-aa-1',
+                  id: 'tab-aa-1'
                 },
                 {
                   label: 'Elem 2',
-                  id: 'tab-aa-2',
+                  id: 'tab-aa-2'
                 },
                 {
                   label: 'Elem 3 more',
@@ -1263,26 +1309,40 @@ h2 Examples
                   children: [
                     {
                       label: 'Elem 3.1',
-                      id: 'tab-aa-3-1',
+                      id: 'tab-aa-3-1'
                     },
                     {
                       label: 'Elem 3.2',
                       id: 'tab-aa-3-2',
+                      children: [
+                        {
+                          label: 'Elem 3.2.1',
+                          id: 'tab-aa-3-2-1'
+                        },
+                        {
+                          label: 'Elem 3.2.2',
+                          id: 'tab-aa-3-2-2'
+                        },
+                        {
+                          label: 'Elem 3.2.3',
+                          id: 'tab-aa-3-2-3'
+                        }
+                      ]
                     },
                     {
                       label: 'Elem 3.3',
-                      id: 'tab-aa-3-3',
+                      id: 'tab-aa-3-3'
                     },
                     {
                       label: 'Elem 3.4',
-                      id: 'tab-aa-3-4',
-                    },
-                  ],
+                      id: 'tab-aa-3-4'
+                    }
+                  ]
                 },
                 {
                   label: 'Elem 4',
-                  id: 'tab-aa-4',
-                },
+                  id: 'tab-aa-4'
+                }
               ]
             },
             {
@@ -1302,23 +1362,55 @@ h2 Examples
               id: 'tab-ee'
             },
             {
-              label: 'Tab Dropdown',
+              label: 'Tab Parent',
               id: 'tab-ff',
               children: [
                 {
                   label: 'Element 1',
-                  id: 'tab-ff-1',
+                  id: 'tab-ff-1'
                 },
                 {
                   label: 'Element 2',
                   id: 'tab-ff-2',
+                  children: [
+                    {
+                      label: 'Elem 1',
+                      id: 'tab-ff-1'
+                    },
+                    {
+                      label: 'Elem 2',
+                      id: 'tab-ff-2'
+                    },
+                    {
+                      label: 'Elem 3 more',
+                      id: 'tab-ff-3',
+                      children: [
+                        {
+                          label: 'Elem 3.1',
+                          id: 'tab-ff-3-1'
+                        },
+                        {
+                          label: 'Elem 3.2',
+                          id: 'tab-ff-3-2'
+                        },
+                        {
+                          label: 'Elem 3.3',
+                          id: 'tab-ff-3-3'
+                        }
+                      ]
+                    },
+                    {
+                      label: 'Elem 4',
+                      id: 'tab-ff-4'
+                    }
+                  ]
                 },
                 {
                   label: 'Element 3',
-                  id: 'tab-ff-3',
-                },
+                  id: 'tab-ff-3'
+                }
               ]
-            },
+            }
           ];
         </script>
     .chi-tabs-panel#html-solid-tabbed-navigation(role="tabpanel")
