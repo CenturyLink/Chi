@@ -8,8 +8,6 @@
       | Button groups can be expanded to fill the parent space by applying the class <code>-fluid</code>.
     <FluidHorizontal />
     <FluidVertical />
-    <FluidAlignment />
-    <FluidDisabled />
     div(v-if="['lumen', 'centurylink'].includes($store.state.themes.theme)")
       h3 Sizes
       p.-text
@@ -19,7 +17,6 @@
       <SizesHorizontalLumenCenturyLink />
       <SizesVerticalLumenCenturyLink />
       <HybridButtons />
-      <HybridFluid />
       <HybridSizesLumenCenturyLink />
     div(v-else)
       h3 Sizes
@@ -30,7 +27,6 @@
       <SizesHorizontalPortal />
       <SizesVerticalPortal />
       <HybridButtons />
-      <HybridFluid />
       <HybridSizesPortal />
 </template>
 
@@ -54,12 +50,9 @@ import Vertical from './_vertical.vue';
     Vertical,
     FluidHorizontal,
     FluidVertical,
-    FluidAlignment,
-    FluidDisabled,
     SizesHorizontalLumenCenturyLink,
     SizesVerticalLumenCenturyLink,
     HybridButtons,
-    HybridFluid,
     HybridSizesLumenCenturyLink,
     HybridSizesPortal,
     SizesHorizontalPortal,
