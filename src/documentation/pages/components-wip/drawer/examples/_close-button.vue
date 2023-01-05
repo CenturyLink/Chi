@@ -205,7 +205,7 @@ methods: {
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web component'
+          label: 'Web Component'
         },
         {
           id: 'vue',
@@ -213,7 +213,7 @@ methods: {
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML blueprint'
+          label: 'HTML Blueprint'
         }
       ],
       exampleId: 'close-button',
