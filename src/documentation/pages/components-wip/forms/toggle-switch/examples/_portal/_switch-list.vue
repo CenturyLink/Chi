@@ -32,12 +32,12 @@ import { Component, Vue } from 'vue-property-decorator';
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
+          label: 'HTML Blueprint',
         },
       ],
       toggleList: ['portal-toggle10', 'portal-toggle11', 'portal-toggle12', 'portal-toggle13', 'portal-toggle14'],

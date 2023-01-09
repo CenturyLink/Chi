@@ -30,11 +30,11 @@ declare const chi: any;
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web Component',
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
+          label: 'HTML Blueprint',
         },
       ],
       codeSnippets: {

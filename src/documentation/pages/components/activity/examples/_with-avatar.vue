@@ -53,12 +53,12 @@ import { Component, Vue } from 'vue-property-decorator';
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web Component',
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
+          label: 'HTML Blueprint',
         },
       ],
       items: [['2:50 PM', '2:38 PM', '11:37 PM'], ['5:00 PM', '5:00 PM', '11:20 AM']],

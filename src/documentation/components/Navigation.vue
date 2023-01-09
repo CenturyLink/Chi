@@ -212,9 +212,10 @@ nav.docs-sidenav
   > li
   > ul.chi-tabs__subtabs
   > li
-  > a.nuxt-link-exact-active {
+  > a.-active {
   background-color: #e0f3ff;
   box-shadow: inset 0.125rem 0 0 #0075c9;
   color: #0262b9;
+  font-weight: 500;
 }
 </style>
