@@ -520,7 +520,9 @@ h3 Save View interaction
         <button class="chi-button" @click="toggleSaveView">Toggle Save View</button>
         <ChiSaveView class="-mt--2" :active="active" results="(1-40 of 78)" @chiSave="saveView" @chiDelete="deleteView">
           <button class="chi-button -light -icon -flat -xs" id="chi-save-view__info-trigger" aria-label="Edit" @click="() => toggleInfoPopover()" slot="info-icon">
-            <div class="chi-button__content"><i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i></div>
+            <div class="chi-button__content">
+              <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+            </div>
           </button>
           <chi-popover :active="isInfoPopoverActive" position="right-start" title="Popover title" variant="text" arrow="" reference="#chi-save-view__info-trigger" slot="info-popover" @chiPopoverHidden="() =&gt; (isInfoPopoverActive = false)">Lorem ipsum test test</chi-popover>
         </ChiSaveView>
