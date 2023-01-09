@@ -116,7 +116,8 @@ export default {
     ]
   },
   router: {
-    base: BASE_URL
+    base: BASE_URL,
+    linkExactActiveClass: '-active'
   },
   target: 'static',
   generate: {
