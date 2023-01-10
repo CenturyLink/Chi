@@ -53,7 +53,7 @@ import { exampleToolbar } from '../../../../fixtures/fixtures';
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component'
+          label: 'Web Component'
         },
 
         {
@@ -63,7 +63,7 @@ import { exampleToolbar } from '../../../../fixtures/fixtures';
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML blueprint'
+          label: 'HTML Blueprint'
         }
       ],
       codeSnippets: {

@@ -35,7 +35,7 @@ declare const chi: any;
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web Component',
         },
         {
           active: true,
@@ -44,7 +44,7 @@ declare const chi: any;
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
+          label: 'HTML Blueprint',
         },
       ],
       tooltipButtons: [

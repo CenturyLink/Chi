@@ -36,12 +36,12 @@ import { Component, Vue } from 'vue-property-decorator';
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web component'
+          label: 'Web Component'
         },
         {
           active: false,
           id: 'htmlblueprint',
-          label: 'HTML blueprint'
+          label: 'HTML Blueprint'
         }
       ],
       codeSnippets: {
