@@ -291,7 +291,7 @@ export default class Pagination extends Vue {
       ${this.compact ? PAGINATION_CLASSES.COMPACT : ''}
     `}
         role="navigation"
-        aria-label={this.ariaLabel}>
+        aria-label="pagination">
         <div class={PAGINATION_CLASSES.CONTENT}>
           <div class={PAGINATION_CLASSES.START}>
             {this._results}

@@ -201,8 +201,8 @@ export default class DataTable extends Vue {
           data-sort-by={sortBy}
           data-sort={this._sortConfig && this._sortConfig.direction ? this._sortConfig.direction : ''}
           data-label={label}
-          onclick={(e: PointerEvent) => {
-            if (!this._preventSortOnResize && e.pointerType !== '') {
+          onClick={(e: MouseEvent) => {
+            if (!this._preventSortOnResize && e.type !== '') {
               this.sortColumn(e);
             }
           }}
@@ -217,7 +217,6 @@ export default class DataTable extends Vue {
       );
       const nonSortableColumnHead = (
         <div
-          aria-label={label}
           class={`${DATA_TABLE_CLASSES.CELL}
             ${alignment}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
@@ -662,9 +661,8 @@ export default class DataTable extends Vue {
   }
 
   _radioButton(rowLevel: DataTableRowLevels, rowData: DataTableRow | null = null) {
-    const checkedState = rowData && rowData.rowNumber && this.selectedRows.includes(rowData.rowId);
-
     if (rowData) {
+      const checkedState = this.selectedRows.includes(rowData.rowId);
       const radioButtonId =
         rowData && typeof rowData === 'object' && rowData.rowNumber
           ? `radio-button-${this._rowId(rowData.rowNumber)}`
