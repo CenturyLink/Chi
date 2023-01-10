@@ -5,7 +5,7 @@ const ASSET_PATH = '/';
 
 function PublicPathWebpackPlugin() {}
 
-PublicPathWebpackPlugin.prototype.apply = function (compiler) {
+PublicPathWebpackPlugin.prototype.apply = function(compiler) {
   compiler.hooks.entryOption.tap('PublicPathWebpackPlugin', (context, entry) => {
     if (entry['module.common']) {
       entry['module.common'] = path.resolve(__dirname, './src/main.js');
@@ -17,12 +17,12 @@ PublicPathWebpackPlugin.prototype.apply = function (compiler) {
       entry['module.umd.min'] = path.resolve(__dirname, './src/main.js');
     }
   });
-  compiler.hooks.beforeRun.tap('PublicPathWebpackPlugin', (compiler) => {
+  compiler.hooks.beforeRun.tap('PublicPathWebpackPlugin', compiler => {
     compiler.options.output.publicPath = ASSET_PATH;
   });
 };
 module.exports = {
-  configureWebpack: (config) => {
+  configureWebpack: config => {
     if (!config.externals) {
       config.externals = {};
     }
