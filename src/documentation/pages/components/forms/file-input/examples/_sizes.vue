@@ -38,12 +38,12 @@ const SIZES_LUMEN_CENTURYLINK = ['xs', 'sm', 'md', 'lg', 'xl'];
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component'
+          label: 'Web Component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint'
+          label: 'HTML Blueprint'
         }
       ],
       codeSnippets: {

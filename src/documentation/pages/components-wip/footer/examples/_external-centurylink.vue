@@ -79,12 +79,12 @@ import { CENTURY_FOOTER_LINKS, EXTERNAL_CENTURYLINKS_CONTENTS } from '../../../.
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component'
+          label: 'Web Component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint'
+          label: 'HTML Blueprint'
         }
       ],
       codeSnippets: {
