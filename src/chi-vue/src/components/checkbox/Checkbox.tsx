@@ -9,9 +9,8 @@ export default class Checkbox extends Vue {
   @Prop() label?: string;
   @Prop() name?: string;
   @Prop() selected?: CheckboxState;
+  @Prop() state?: CheckboxState;
   @Prop() disabled?: boolean;
-
-  state = this.selected;
 
   @Watch('selected')
   dataState(newValue: CheckboxState, oldValue: CheckboxState) {
