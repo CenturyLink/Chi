@@ -90,7 +90,7 @@
                 li(v-for="(item, index) in footerLinks" :key="index")
                   a(:href="item.href" :target="item.target" :class="item.class") {{item.title}}
               .chi-footer__copyright
-                | &copy; 2022 Lumen Technologies. All Rights Reserved.
+                | &copy; 2023 Lumen Technologies. All Rights Reserved.
                 | Lumen is a registered trademark in the United States, EU and certain other countries.
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -121,12 +121,12 @@ declare const chi: any;
         {
           disabled: true,
           id: 'webcomponent',
-          label: 'Web component'
+          label: 'Web Component'
         },
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML blueprint'
+          label: 'HTML Blueprint'
         }
       ],
       codeSnippets: {
@@ -227,7 +227,7 @@ export default class ExternalLumenPortal extends Vue {
         <div class="chi-footer__links">
           <ul>${footerItemLinks}
           </ul>
-          <div class="chi-footer__copyright">&copy; 2022 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
+          <div class="chi-footer__copyright">&copy; 2023 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
         </div>
       </div>
     </div>

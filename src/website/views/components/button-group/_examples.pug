@@ -91,55 +91,6 @@ h3 Vertical
         <button class="chi-button">Button</button>
       </div>
 
-h3 Alignment
-p.-text
-  | Button text is centered by default. However, this behavior can change by applying the modifiers
-  | <code>-align--left</code> or <code>-align--right</code>.
-.example.-mb--3
-  .-p--3
-    .chi-button-group.-fluid(style="width:100%")
-      button(class=`chi-button -align--left`) Button
-      button(class=`chi-button`) Button
-      button(class=`chi-button -align--right`) Button
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-alignment
-      li.-disabled
-        a(href=`#webcomponent-alignment`) Web Component
-      li.-active
-        a(href=`#html-alignment`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-alignment
-  .chi-tabs-panel.-active#html-alignment
-    :code(lang='html')
-      <div class="chi-button-group -fluid">
-        <button class="chi-button -align--left">Button</button>
-        <button class="chi-button">Button</button>
-        <button class="chi-button -align--right">Button</button>
-      </div>
-
-h3 Disable Fluidity
-p.-text
-  | To disable the fluidity of a specific button in a fluid button group, apply the class <code>-no-fluid</code> to the button.
-.example.-mb--3
-  .-p--3
-    .chi-button-group.-fluid(style="width:100%")
-      button(class=`chi-button`) Button
-      button(class=`chi-button -no-fluid`) Button
-      button(class=`chi-button`) Button
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-no-fluid
-      li.-disabled
-        a(href=`#webcomponent-no-fluid`) Web Component
-      li.-active
-        a(href=`#html-no-fluid`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-no-fluid
-  .chi-tabs-panel.-active#html-no-fluid
-    :code(lang='html')
-      <div class="chi-button-group -fluid">
-        <button class="chi-button">Button</button>
-        <button class="chi-button -no-fluid">Button</button>
-        <button class="chi-button">Button</button>
-      </div>
-
 .-portal--hide
   h2 Sizes
   p.-text
@@ -366,33 +317,6 @@ p.-text
       <div class="chi-button-group">
         <button class="chi-button">Button</button>
         <button class="chi-button -icon" aria-label="Button action">
-          <div class="chi-button__content">
-            <i class="chi-icon icon-atom" aria-hidden="true"></i>
-          </div>
-        </button>
-      </div>
-
-p.-text
-  | Hybrid buttons also support fluid rendering.
-.example.-mb--3
-  .-p--3
-    .chi-button-group.-fluid
-      button(class=`chi-button`) Button
-      button(class=`chi-button -icon -no-fluid`, aria-label="Button action")
-        .chi-button__content
-          i.chi-icon.icon-atom(aria-hidden="true")
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-hybrid-fluid
-      li.-disabled
-        a(href=`#webcomponent-hybrid-fluid`) Web Component
-      li.-active
-        a(href=`#html-hybrid-fluid`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-hybrid-fluid
-  .chi-tabs-panel.-active#html-hybrid-fluid
-    :code(lang='html')
-      <div class="chi-button-group -fluid">
-        <button class="chi-button">Button</button>
-        <button class="chi-button -icon -no-fluid" aria-label="Button action">
           <div class="chi-button__content">
             <i class="chi-icon icon-atom" aria-hidden="true"></i>
           </div>

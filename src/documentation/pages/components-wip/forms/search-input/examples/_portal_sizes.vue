@@ -32,7 +32,7 @@ import { Component, Vue } from 'vue-property-decorator';
         {
           active: true,
           id: 'webcomponent',
-          label: 'Web component',
+          label: 'Web Component',
         },
         {
           id: 'vue',
@@ -40,7 +40,7 @@ import { Component, Vue } from 'vue-property-decorator';
         },
         {
           id: 'htmlblueprint',
-          label: 'HTML blueprint',
+          label: 'HTML Blueprint',
         },
       ],
       sizes: ['xs', 'sm', 'md', 'lg'],

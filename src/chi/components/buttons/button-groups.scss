@@ -9,24 +9,6 @@
       display: flex;
       flex: 1 0 auto;
       justify-content: center;
-
-      &.-no-fluid {
-        flex: 0 0 auto;
-      }
-
-      &.-align--left {
-        &,
-        & > .chi-button__content {
-          justify-content: flex-start;
-        }
-      }
-
-      &.-align--right {
-        &,
-        & > .chi-button__content {
-          justify-content: flex-end;
-        }
-      }
     }
   }
 }
