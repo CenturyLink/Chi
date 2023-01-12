@@ -9,13 +9,12 @@ export default class Checkbox extends Vue {
   @Prop() label?: string;
   @Prop() name?: string;
   @Prop() selected?: CheckboxState;
-  @Prop() state?: CheckboxState;
   @Prop() disabled?: boolean;
 
   @Watch('selected')
   dataState(newValue: CheckboxState, oldValue: CheckboxState) {
     if (newValue !== oldValue) {
-      this.state = newValue;
+      this.selected = newValue;
       this._updateCheckboxState();
     }
   }
@@ -27,11 +26,7 @@ export default class Checkbox extends Vue {
   _updateCheckboxState() {
     const checkbox = this.$refs.checkbox as HTMLInputElement;
 
-    if (this.state === 'indeterminate') {
-      checkbox.indeterminate = true;
-    } else {
-      checkbox.indeterminate = false;
-    }
+    checkbox.indeterminate = this.selected === 'indeterminate';
   }
 
   mounted() {
@@ -42,8 +37,8 @@ export default class Checkbox extends Vue {
     return (
       <div class={CHECKBOX_CLASSES.checkbox} key={this.id}>
         <input
-          v-model={this.state}
-          class={`${CHECKBOX_CLASSES.INPUT} ${this.state === 'indeterminate' && CHECKBOX_CLASSES.INDETERMINATE}`}
+          v-model={this.selected}
+          class={`${CHECKBOX_CLASSES.INPUT} ${this.selected === 'indeterminate' && CHECKBOX_CLASSES.INDETERMINATE}`}
           disabled={this.disabled}
           id={this.id}
           name={this.name}

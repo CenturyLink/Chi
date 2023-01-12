@@ -41,7 +41,7 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
 
   beforeDestroy() {
     if (this._ColumnCustomizationContent) {
-      (this._ColumnCustomizationContent as ColumnCustomizationContent)._availableColumnsComponent = undefined;
+      (this._ColumnCustomizationContent as ColumnCustomizationContent)._selectedColumnsComponent = undefined;
     }
   }
 

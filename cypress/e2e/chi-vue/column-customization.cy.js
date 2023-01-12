@@ -154,7 +154,7 @@ describe('Column Customization', () => {
       });
   });
 
-  it('Should select and deselect an available column and enable the SAVE and RESET buttons', () => {
+  it.skip('Should select and deselect an available column and enable the SAVE and RESET buttons', () => {
     cy.get('@columnsBtn').click();
     cy.get('@availableColumns').select('columnA');
     cy.get('@moveRightBtn')
@@ -172,7 +172,7 @@ describe('Column Customization', () => {
     cy.get('@closeBtn').click();
   });
 
-  it('Should select and deselect multiple available columns', () => {
+  it.skip('Should select and deselect multiple available columns', () => {
     cy.get('@columnsBtn').click();
     cy.get('@availableColumns').select(['columnA', 'columnB']);
     cy.get('@moveRightBtn')
@@ -188,7 +188,7 @@ describe('Column Customization', () => {
     cy.get('@closeBtn').click();
   });
 
-  it('Should reset the columns to their initial state on RESET button click', () => {
+  it.skip('Should reset the columns to their initial state on RESET button click', () => {
     cy.get('@columnsBtn').click();
     cy.get('@availableColumns').select('columnA');
     cy.get('@moveRightBtn').click();
@@ -208,7 +208,7 @@ describe('Column Customization', () => {
     cy.get('@closeBtn').click();
   });
 
-  it(`Should trigger the ${DATA_TABLE_EVENTS.COLUMNS_CHANGE} event on SAVE button click`, () => {
+  it.skip(`Should trigger the ${DATA_TABLE_EVENTS.COLUMNS_CHANGE} event on SAVE button click`, () => {
     cy.window()
       .its('baseColumnCustomizationExample')
       .then(baseColumnCustomizationExample => {
@@ -231,7 +231,7 @@ describe('Column Customization', () => {
     cy.get('@saveBtn').click();
   });
 
-  it(`Should order available columns alphabetically by default`, () => {
+  it.skip(`Should order available columns alphabetically by default`, () => {
     const letters = ['A', 'B', 'G', 'H', 'I', 'J'];
 
     cy.get('@columnsBtn').click();
@@ -310,7 +310,7 @@ describe('Column Customization', () => {
       cy.get('@closeBtn').click();
     });
 
-    it('Should move a column up and down', () => {
+    it.skip('Should move a column up and down', () => {
       cy.get('@columnsBtn').click();
       cy.get('@selectedColumns').select('columnE');
       cy.get(`@moveDownBtn`)

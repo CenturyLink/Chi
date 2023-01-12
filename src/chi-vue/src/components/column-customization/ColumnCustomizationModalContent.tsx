@@ -78,7 +78,7 @@ export default class ColumnCustomizationContent extends Vue {
         <button
           disabled={isDisabled}
           ref={refButton}
-          onClick={() => action()}
+          onClick={action}
           class={`
             ${BUTTON_CLASSES.BUTTON}
             ${BUTTON_CLASSES.ICON_BUTTON}
@@ -202,13 +202,12 @@ export default class ColumnCustomizationContent extends Vue {
   _handleSelectColumn() {
     const columnsSelected: string[] = [];
     const filterSelectedColumns: DataTableColumn[] = [];
+    const selectedOptions = (this._selectedColumnsComponent?.$refs.select as HTMLSelectElement).selectedOptions;
 
     if (this._selectedColumns) {
-      Array.from((this._selectedColumnsComponent?.$refs.select as HTMLSelectElement).selectedOptions).forEach(
-        (option: HTMLOptionElement) => {
-          columnsSelected.push(option.value);
-        }
-      );
+      Array.from(selectedOptions).forEach((option: HTMLOptionElement) => {
+        columnsSelected.push(option.value);
+      });
 
       columnsSelected.forEach((columnSelected: string) => {
         this._selectedColumns?.forEach((standardColumn: DataTableColumn) => {
