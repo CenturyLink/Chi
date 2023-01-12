@@ -47,6 +47,8 @@ export class AppLayout {
 
   @State() appLayoutFooter: boolean;
 
+  @State() appLayoutPageLevelAlert: boolean;
+
   /**
    * The user has clicked the backlink
    */
@@ -89,6 +91,10 @@ export class AppLayout {
     if (this.el.querySelector("[slot=footer]")) {
       this.appLayoutFooter = true;
     }
+
+    if (this.el.querySelector("[slot=page-alert]")) {
+      this.appLayoutPageLevelAlert = true;
+    }
   }
 
   _handlerBacklinkClick() {
@@ -104,6 +110,7 @@ export class AppLayout {
     const appLayoutPageLevelActions = this.appLayoutPageLevelActions && <div class="-d--flex -align-items--center -justify-content--end -py--3 -my--2 -bt--1"><slot name="page-level__actions"></slot></div>;
     const appLayoutBackground = this.headerBackground && <div class="chi-main__background"><div class="chi-main__background-image"></div></div>;
     const appLayoutFooter = this.appLayoutFooter && <slot name="footer"></slot>;
+    const appLayoutPageLevelAlert = this.appLayoutPageLevelAlert && <div class="chi-main__alert"><slot name="page-alert"></slot></div>;
 
     return (
       <div class={`chi-main
@@ -111,6 +118,7 @@ export class AppLayout {
         ${this.headerBackground ? '-header-background' : ''}`}
       >
         {appLayoutBackground}
+        {appLayoutPageLevelAlert}
         <div class="chi-main__header">
           <div class="chi-main__header-start">
             {appLayoutBackLink}
