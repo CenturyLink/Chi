@@ -70,7 +70,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
     h3 Base with alert
     .test-layout-base-with-alert.-bg--none.-s--3.-p--0
       chi-main(title='Page title')
-        chi-alert(color="info" icon="circle-info" slot="page-alert" closable)
+        chi-alert(color="info" icon="circle-info" slot="page-alert")
           | This is a page level info alert
         .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
           | Page content goes here
@@ -825,7 +825,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
     h3 Fixed width with alert, header background and CSS grid
     .test-layout-fixed-width-alert-header-background-css-grid.-bg--none.-s--3.-position--relative.-p--0
       chi-main(title='Page title' format='fixed-width' header-background)
-        chi-alert(color="info" icon="circle-info" slot="page-alert" closable)
+        chi-alert(color="info" icon="circle-info" slot="page-alert")
           | This is a page level info alert
         chi-button#example__help-button4(type='icon' size='sm' variant='flat' alternative-text='Help' slot='help-icon')
           chi-icon(icon='circle-question-outline')
