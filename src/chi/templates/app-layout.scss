@@ -73,7 +73,8 @@
   }
 
   &__header,
-  &__content {
+  &__content,
+  &__alert {
     margin: 0 1rem 1rem;
     position: relative;
 
@@ -90,9 +91,22 @@
     }
   }
 
+  &__alert {
+    padding-bottom: 0.5rem;
+
+    & > chi-alert,
+    & > .chi-alert {
+      & + chi-alert,
+      & + .chi-alert {
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
   &.-no-margin {
     .chi-main__header,
-    .chi-main__content {
+    .chi-main__content,
+    .chi-main__alert {
       margin-left: 0;
       margin-right: 0;
     }
@@ -101,6 +115,7 @@
   &.-fixed-width {
     .chi-main__content,
     .chi-main__header,
+    .chi-main__alert,
     .chi-footer__internal-content {
       margin-left: auto;
       margin-right: auto;
