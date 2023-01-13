@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-01-10T18:20:50",
+  "timestamp": "2023-01-13T10:40:53",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -622,6 +622,23 @@
           "reflectToAttr": false,
           "docs": "To render Carousel with dot controllers",
           "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "hideButtonControllers",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "hide-button-controllers",
+          "reflectToAttr": false,
+          "docs": "To render Carousel without Button Controllers",
+          "docsTags": [],
+          "default": "false",
           "values": [
             {
               "type": "boolean"
