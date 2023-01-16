@@ -374,6 +374,7 @@ export class Carousel {
         of {this.numberOfViews}
       </div>
     ) : null;
+    
     return (
       <div
         onTouchStart={this.touchStart}
