@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-01-12T18:41:56",
+  "timestamp": "2023-01-16T10:31:20",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -642,6 +642,23 @@
           "values": [
             {
               "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "noButtonControllers",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "no-button-controllers",
+          "reflectToAttr": false,
+          "docs": "To render Carousel without Button Controllers",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,
