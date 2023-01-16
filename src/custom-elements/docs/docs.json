@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-01-13T10:40:53",
+  "timestamp": "2023-01-16T10:18:45",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -631,23 +631,6 @@
           "required": false
         },
         {
-          "name": "hideButtonControllers",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "hide-button-controllers",
-          "reflectToAttr": false,
-          "docs": "To render Carousel without Button Controllers",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
           "name": "interval",
           "type": "number",
           "mutable": false,
@@ -659,6 +642,23 @@
           "values": [
             {
               "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "noButtonControllers",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "no-button-controllers",
+          "reflectToAttr": false,
+          "docs": "To render Carousel without Button Controllers",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,

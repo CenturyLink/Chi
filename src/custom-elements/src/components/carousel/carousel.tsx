@@ -47,7 +47,7 @@ export class Carousel {
   /**
    * To render Carousel without Button Controllers
    */
-  @Prop() hideButtonControllers = false;
+  @Prop() noButtonControllers = false;
   /**
    * To render Carousel with a single item per view
    */
@@ -296,7 +296,7 @@ export class Carousel {
 
   render() {
     const prevButton = this._areThereMultipleItems() &&
-      !this.hideButtonControllers && (
+      !this.noButtonControllers && (
         <div
           class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.PREVIOUS}`}
           onClick={() => this.prevView()}
@@ -316,7 +316,7 @@ export class Carousel {
         </div>
       );
     const nextButton = this._areThereMultipleItems() &&
-      !this.hideButtonControllers && (
+      !this.noButtonControllers && (
         <div
           class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.NEXT}`}
           onClick={() => this.nextView()}
