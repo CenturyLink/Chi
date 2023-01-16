@@ -31,7 +31,7 @@ module.exports = {
     if (config.devtool) {
       delete config.devtool;
     }
-    
+
     switch (process.env.VUE_APP_MODE) {
       case 'prod':
         config.mode = 'production';
