@@ -23,22 +23,20 @@ PublicPathWebpackPlugin.prototype.apply = function(compiler) {
 };
 module.exports = {
   configureWebpack: config => {
+    const options = config.optimization.minimizer[0].options.minimizer.options;
+
     if (!config.externals) {
       config.externals = {};
     }
     if (config.devtool) {
       delete config.devtool;
     }
-
+    
     switch (process.env.VUE_APP_MODE) {
       case 'prod':
         config.mode = 'production';
-        config.optimization.minimize = true;
-        const terserOptions = config.optimization.minimizer[0].options.terserOptions;
-        terserOptions.compress.drop_console = true;
-        terserOptions.compress.drop_debugger = true;
-        terserOptions.keep_classnames = true;
-        terserOptions.keep_fnames = true;
+        options.compress.drop_console = true;
+        options.compress.drop_debugger = true;
         config.plugins.unshift(new PublicPathWebpackPlugin());
         break;
 
@@ -58,17 +56,22 @@ module.exports = {
     extract: process.env.VUE_APP_MODE === 'prod',
   },
   devServer: {
-    watchOptions: {
-      ignored: /node_modules/,
-      // if aggregateTimeout and poll values should be changed on local, create a .env.local file
-      aggregateTimeout: process.env.WEBPACK_AGGREGATE_TIMEOUT,
-      poll: process.env.WEBPACK_POLL,
+    webSocketServer: false,
+    compress: true,
+    watchFiles: {
+      options: {
+        ignored: /node_modules/,
+        // if aggregateTimeout and poll values should be changed on local, create a .env.local file
+        aggregateTimeout: process.env.WEBPACK_AGGREGATE_TIMEOUT,
+        poll: process.env.WEBPACK_POLL,
+      },
     },
-    overlay: {
-      warnings: true,
-      errors: true,
+    client: {
+      overlay: {
+        warnings: true,
+        errors: true,
+      },
     },
-    public: 'localhost:9090',
     port: 9090,
     https: true,
   },
