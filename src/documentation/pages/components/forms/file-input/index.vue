@@ -34,6 +34,25 @@ import { standardComponentPageTabs } from '../../../../constants/constants';
 })
 export default class FileInput extends Vue {
   mounted() {
+    this.saveFile();
+  }
+
+  saveFile() {
+    const inputFiles = document.querySelectorAll(
+      'input[type="file"].chi-file-input'
+    );
+
+    inputFiles.forEach((input: Element) => {
+      const label = input.nextElementSibling;
+
+      input.addEventListener('change', (e: Event) => {
+        const fileName = (e.target as HTMLInputElement).value.split('\\').pop();
+
+        if (label && fileName) {
+          label.innerHTML = fileName;
+        }
+      });
+    });
   }
 }
 </script>
