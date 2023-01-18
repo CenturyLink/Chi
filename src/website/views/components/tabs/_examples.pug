@@ -1084,10 +1084,11 @@ h2 Examples
           a(href=`#html-tabbed-navigation`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-tabbed-navigation(role="tabpanel")
       :code(lang='html')
-        <chi-tabs active-tab="tab-a" id="example__tabbednavigation_flat" sliding-border></chi-tabs>
+        <chi-tabs active-tab="tab-a" id="example__tabbed_navigation_flat" sliding-border></chi-tabs>
 
         <script>
-          const tabbedNavigationFlatElement = document.querySelector('#example__tabbednavigation_flat');
+          const tabbedNavigationFlatElement = document.querySelector('#example__tabbed_navigation_flat');
+          
           tabbedNavigationFlatElement.tabs = [
             {
               label: 'Active Tab',
@@ -1286,10 +1287,11 @@ h2 Examples
           a(href=`#html-solid-tabbed-navigation`) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-solid-tabbed-navigation(role="tabpanel")
       :code(lang='html')
-        <chi-tabs active-tab="tab-aa" id="example__tabbednavigation_solid" solid sliding-border></chi-tabs>
+        <chi-tabs active-tab="tab-a" id="example__tabbed_navigation_solid" solid sliding-border></chi-tabs>
 
         <script>
-          const tabbedNavigationSolidElement = document.querySelector('#example__tabbednavigation_solid');
+          const tabbedNavigationSolidElement = document.querySelector('#example__tabbed_navigation_solid');
+          
           tabbedNavigationSolidElement.tabs = [
             {
               label: 'Active Tab',
