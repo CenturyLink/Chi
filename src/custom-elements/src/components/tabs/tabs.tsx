@@ -202,7 +202,9 @@ export class Tabs {
                   }}
                   slot="menu"
                 >
+                  <slot name={`customBefore-${child.id}`}></slot>
                   {child.label}
+                  <slot name={`customAfter-${child.id}`}></slot>
                   {child.children && child.children.length > 0 && (
                     <i
                       class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-right ${GENERIC_SIZE_CLASSES.XS}`}
@@ -451,7 +453,9 @@ export class Tabs {
                 aria-controls={`#${tab.id}`}
                 onClick={e => this.handlerClickTab(e, tab)}
               >
+                <slot name={`customBefore-${tab.id}`}></slot>
                 {tab.label}
+                <slot name={`customAfter-${tab.id}`}></slot>
               </a>
             </li>
           );
@@ -501,7 +505,9 @@ export class Tabs {
             }}
             slot="menu"
           >
+            <slot name={`customBefore-${tab.id}`}></slot>
             {tab.label}
+            <slot name={`customAfter-${tab.id}`}></slot>
             {tab.children ? (
               <i
                 class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-right ${GENERIC_SIZE_CLASSES.XS}`}
