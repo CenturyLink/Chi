@@ -7,6 +7,8 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 h2 Base
 .-w--100
   chi-tabs(active-tab='tab-a' id='base' sliding-border)
+    div.-mr--1(slot='customBefore-tab-c') Tab
+    div.-ml--1(slot='customAfter-tab-c') &trade;
 
 //- h2 Border
 //- .-w--100
@@ -43,7 +45,7 @@ script.
           id: 'tab-b'
         },
         {
-          label: 'Tab C',
+          label: 'C',
           id: 'tab-c'
         },
         {
