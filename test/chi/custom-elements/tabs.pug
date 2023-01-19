@@ -9,6 +9,8 @@ h2 Base
   chi-tabs(active-tab='tab-a' id='base' sliding-border)
     div.-mr--1(slot='customBefore-tab-c') Tab
     div.-ml--1(slot='customAfter-tab-c') &trade;
+    div.-mr--1(slot='customBefore-tab-c-2') Tab
+    div.-ml--1(slot='customAfter-tab-c-2') &trade;
 
 //- h2 Border
 //- .-w--100
@@ -47,6 +49,10 @@ script.
         {
           label: 'C',
           id: 'tab-c'
+        },
+        {
+          label: 'C 2',
+          id: 'tab-c-2'
         },
         {
           label: 'Tab D',
