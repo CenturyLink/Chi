@@ -11,22 +11,22 @@
     "generate-production": "DOCS_ENV=production nuxt generate"
   },
   "dependencies": {
-    "@centurylink/chi-vue": "1.5.1",
-    "@nuxt/image": "^0.6.2",
+    "@centurylink/chi-vue": "1.5.2",
+    "@nuxt/image": "^0.7.1",
     "@nuxtjs/axios": "^5.13.6",
     "copy-webpack-plugin": "^5.1.1",
-    "core-js": "^3.20.3",
-    "highlight.js": "^11.5.0",
+    "core-js": "^3.27.1",
+    "highlight.js": "^11.7.0",
     "nuxt": "^2.15.8",
-    "nuxt-highlightjs": "^1.0.1",
-    "vue-class-component": "^7.2.3",
+    "nuxt-highlightjs": "^1.0.3",
+    "vue-class-component": "^7.2.6",
     "vue-property-decorator": "^9.1.2",
     "vuex-module-decorators": "^2.0.0"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.15.7",
+    "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",
-    "pug": ">=3.0.1",
-    "pug-plain-loader": "^1.0.0"
+    "pug": "3.0.2",
+    "pug-plain-loader": "^1.1.0"
   }
 }
