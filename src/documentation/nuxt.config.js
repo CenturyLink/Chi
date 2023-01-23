@@ -62,7 +62,7 @@ export default {
       {
         type: 'text/javascript',
         src: 'https://cdn.jsdelivr.net/npm/@docsearch/js@3'
-      },
+      }
     ]
   },
 
@@ -108,6 +108,7 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    postcss: false,
     plugins: [
       new CopyPlugin([{ from: '@centurylink/chi-vue/dist' }], {
         context: 'node_modules',
@@ -161,7 +162,7 @@ export default {
       '/templates/error-404',
       '/components/icon', // To-do, must be removed after full migration
       ...NAVIGATION_COMPONENTS_ITEMS.map(item => {
-        return `/${item.href}`
+        return `/${item.href}`;
       })
     ]
   }
