@@ -1,4 +1,23 @@
 # CHANGELOG
+## 5.26.0 (January 20, 2023)
+### Components
+#### Added
+* Added: Carrousel now supports `autoplay`, `interval` and `no-button-controllers` attributes.
+* Added: App layout now supports page level alerts.
+#### Changed
+* Changed: Icons `icon-logo-cloudstack`, `icon-logo-dimensiondata`, `icon-logo-hp`, `icon-logo-rackspace`, `icon-logo-vcloud`, `icon-logo-vsphere`, `icon-logo-linux`, `icon-logo-openstack`, `icon-logo-slack` have been removed as they are no longer needed.
+* Changed: Button group alignment and disable fluidity use cases can now be achieved with the flex utility classes.
+#### Fixed
+* Fixed: File input javascript file.
+### Documentation
+#### Added
+* Added: Save View Vue component in Toolbar.
+#### Changed
+* Changed: App layout and footer examples have changed copyright year to 2023.
+* Changed: Button group alignment and disable fluidity examples have been removed.
+* Changed: Header with top toolbar example has been removed.
+* Changed: License copyright year.
+
 ## 5.25.0 (December 20, 2022)
 ### Components
 #### Added
