@@ -1291,6 +1291,20 @@ $picker-checked-radio-icon-color:           $color-background-white;
 $picker-hover-border-color:                 $color-grey-40;
 $picker-focus-border-color:                 $color-grey-40;
 $picker-focus-background-color:             $color-grey-10;
+$picker-md-item-font-size:                  $font-size-base;
+$picker-md-item-padding:                    1rem;
+$picker-md-item-label-margin:               0.75rem;
+$picker-md-item-description-font-size:      $font-size-sm;
+$picker-md-item-description-line-height:    1.125rem;
+$picker-md-item-description-margin:         0 0 0 1.75rem;
+$picker-md-item-description-padding:        0.375rem 0 0;
+$picker-lg-item-font-size:                  $font-size-lg;
+$picker-lg-item-padding:                    1.5rem;
+$picker-lg-item-label-margin:               1rem;
+$picker-lg-item-description-font-size:      $font-size-md;
+$picker-lg-item-description-line-height:    $line-height-md;
+$picker-lg-item-description-margin:         0 0 0 2rem;
+$picker-lg-item-description-padding:        0.5rem 0 0;
 
 // Picker group
 $picker-group-hover-background-color:       $color-background-base-dark;
