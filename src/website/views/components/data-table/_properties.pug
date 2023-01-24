@@ -34,7 +34,11 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 defaultSort?: <code>DataTableSortConfig</code>;
                 unsorted?: <code>boolean</code>;
                 mode?: <code>'clientside' | 'serverside'</code>;
-                noResultsMessage?: <code>string</code>;
+                messages?: {
+                  isSearch?: <code>boolean</code>;
+                  noResultsMessage?: <code>string</code>;
+                  noFiltersMessage?: <code>string</code>;
+                };
                 pagination: {
                   activePage?: <code>number</code>;
                   compact?: <code>boolean</code>;

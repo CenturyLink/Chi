@@ -1,20 +1,21 @@
 h3 Empty
+h4 No Results
 
 .example.-mb--3
   .-p--3
-    #empty(style="min-height: 5.2rem;")
+    #no-results(style="min-height: 5.2rem;")
       chi-vue-data-table(:config='config', :data='table')
   .example-tabs.-pl--2
-    ul.chi-tabs#example-empty
+    ul.chi-tabs#example-no-results
       li.-disabled
-        a(href=`#webcomponent-empty`) Web Component
+        a(href=`#webcomponent-no-results`) Web Component
       li.-active
-        a(href=`#vue-empty`) Vue
+        a(href=`#vue-no-results`) Vue
       li
-        a(href=`#html-empty`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-empty
-  .chi-tabs-panel.-active#vue-empty
-    .chi-tab__description Use <code>noResultsMessage</code> config to customize the empty data message
+        a(href=`#html-no-results`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-no-results
+  .chi-tabs-panel.-active#vue-no-results
+    .chi-tab__description Use <code>messages.noFiltersMessage</code> and <code>messages.isSearch</code> to true config to customize the no results data message
     :code(lang='html')
       <!-- Vue component -->
       <ChiDataTable :config="config" :data="table"></ChiDataTable>
@@ -23,7 +24,10 @@ h3 Empty
       data: {
         config: {
           columnResize: true,
-          noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+          messages: { 
+            noResultMessage: "No matching results", 
+            isSearch: true
+          },
           style: {
             portal: false,
             noBorder: false,
@@ -49,7 +53,7 @@ h3 Empty
           body: []
         }
       }
-  .chi-tabs-panel#html-empty
+  .chi-tabs-panel#html-no-results
     :code(lang="html")
       <div class="chi-data-table">
         <div class="chi-data-table__head">
@@ -67,7 +71,82 @@ h3 Empty
         </div>
         <div class="chi-data-table__body">
           <div class="chi-data-table__row-empty">
-            <div>No matches found. Please revise search criteria and try again.</div>
+            <div>No matching results</div>
+          </div>
+        </div>
+      </div>
+
+h4 No filters
+.example.-mb--3
+  .-p--3
+    #no-filters(style="min-height: 5.2rem;")
+      chi-vue-data-table(:config='config', :data='table')
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-no-filters
+      li.-disabled
+        a(href=`#webcomponent-no-filters`) Web Component
+      li.-active
+        a(href=`#vue-no-filters`) Vue
+      li
+        a(href=`#html-no-filters`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-no-filters
+  .chi-tabs-panel.-active#vue-no-filters
+    .chi-tab__description Use <code>messages.noFiltersMessage</code> config to customize the no filters data message
+    :code(lang='html')
+      <!-- Vue component -->
+      <ChiDataTable :config="config" :data="table"></ChiDataTable>
+
+      <!-- Config and Data -->
+      data: {
+        config: {
+          columnResize: true,
+          messages: { 
+            noFiltersMessage: "Search for or select at least one filter to get results", 
+          },
+          style: {
+            portal: false,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: false,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: 'Name' },
+            id: { label: 'ID' },
+            lastLogin: { label: 'Last Login' },
+          },
+          body: []
+        }
+      }
+  .chi-tabs-panel#html-no-filters
+    :code(lang="html")
+      <div class="chi-data-table">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <div>Name</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>ID</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Last Login</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row-empty">
+            <div>Search for or select at least one filter to get results</div>
           </div>
         </div>
       </div>
@@ -80,7 +159,10 @@ script.
     data: {
       config: {
         columnResize: true,
-        noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+        messages: { 
+          noResultMessage: "No matching results", 
+          isSearch: true
+        },
         style: {
           portal: false,
           noBorder: false,
@@ -106,10 +188,48 @@ script.
         body: [],
       }
     }
-  }).$mount('#empty');
+  }).$mount('#no-results');
+  new Vue({
+    components: {
+      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        messages: { 
+          noFiltersMessage: "Search for or select at least one filter to get results", 
+        },
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: true,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [],
+      }
+    }
+  }).$mount('#no-filters');
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.querySelector('#example-empty'));
+      chi.tab(document.querySelector('#example-no-results'));
+      chi.tab(document.querySelector('#example-no-filters'));
     }
   );
+
