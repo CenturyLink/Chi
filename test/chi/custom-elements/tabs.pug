@@ -44,14 +44,20 @@ script.
         },
         {
           label: 'Tab C',
-          id: 'tab-c'
+          id: 'tab-c',
+          children: [
+            {
+              label: 'C 2',
+              id: 'tab-c-2'
+            }
+          ]
         },
         {
-          label: 'Tab D',
-          id: 'tab-d'
+          customLabel: '<chi-icon icon="settings"></chi-icon> Tab D',
+          id: 'tab-d',
         },
         {
-          label: 'Tab E',
+          customLabel: '<span>Tab E &trade;</span>',
           id: 'tab-e',
           children: [
             {
@@ -63,7 +69,7 @@ script.
               id: 'tab-e-1',
               children: [
                 {
-                  label: 'Tab E 1.1',
+                  customLabel: '<span>Tab E 1.1 &trade;</span>',
                   id: 'tab-e-1-1',
                 },
                 {

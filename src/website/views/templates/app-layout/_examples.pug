@@ -3,7 +3,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 .-centurylink--hide
   h3 Base
   .example.-mb--3
-    chi-main(title="Page title")
+    chi-main(title="Page Title")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | Page content goes here
       footer.chi-footer(slot="footer")
@@ -90,7 +90,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>title=""</code> attribute to display a title above the application layout.
       :code(lang="html")
-        <chi-main title="Page title">
+        <chi-main title="Page Title">
           <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
@@ -182,7 +182,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           <div class="chi-main__header">
             <div class="chi-main__header-start">
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-heading">Page Title</div>
               </div>
             </div>
           </div>
@@ -275,7 +275,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with help icon
   .example.-mb--3
-    chi-main(title="Page title")
+    chi-main(title="Page Title")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | Page content goes here
       chi-button(id='example__help-button' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
@@ -364,7 +364,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-help-icon
       :code(lang="html")
-        <chi-main title="Page title">
+        <chi-main title="Page Title">
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
           </chi-button>
@@ -470,7 +470,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  Page title
+                  Page Title
                   <div class="chi-button -icon -flat -sm" id="example__help-button"  data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
@@ -578,7 +578,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 .-lumen--show
   h3 Base with alert
   .example.-mb--3
-    chi-main(title="Page title")
+    chi-main(title="Page Title")
       chi-alert(color="info" icon="circle-info" slot="page-alert" closable)
         | This is a page level info alert
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
@@ -665,7 +665,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-base-with-alert
       :code(lang="html")
-        <chi-main title="Page title">
+        <chi-main title="Page Title">
           <chi-alert color="info" icon="circle-info" slot="page-alert" closable>This is a page level info alert</chi-alert>
           <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
@@ -774,300 +774,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  Page title
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="chi-main__content">
-            <!-- Page content goes here -->
-          </div>
-          <footer class="chi-footer">
-            <div class="chi-footer__content">
-              <div class="chi-footer__internal">
-                <div class="chi-footer__internal-content">
-                  <div class="chi-dropdown chi-footer__language">
-                    <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
-                      <div class="chi-button__content">
-                        <i class="chi-icon icon-globe-network-outline"></i>
-                        <span>English</span>
-                      </div>
-                    </a>
-                    <div class="chi-dropdown__menu -w--sm -text--body">
-                      <a class="chi-dropdown__menu-item -active" href="#">English</a>
-                      <a class="chi-dropdown__menu-item" href="#">Español</a>
-                      <a class="chi-dropdown__menu-item" href="#">Português</a>
-                      <a class="chi-dropdown__menu-item" href="#">Français</a>
-                      <a class="chi-dropdown__menu-item" href="#">Deutsch</a>
-                      <a class="chi-dropdown__menu-item" href="#">简体中文</a>
-                      <a class="chi-dropdown__menu-item" href="#">日本語</a>
-                    </div>
-                  </div>
-                  <div class="chi-footer__links">
-                    <ul>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/about.html">About Us</a>
-                      </li>
-                      <li>
-                        <a href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html">Accessibility</a>
-                      </li>
-                      <li>
-                        <a href="https://jobs.lumen.com" target="_blank">Careers</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/contact-us.html">Contact Us</a>
-                      </li>
-                      <!-- OneTrust Cookies Settings button start-->
-                      <li>
-                        <a class="optanon-toggle-display" href="#">Cookie Settings</a>
-                      </li>
-                      <!-- OneTrust Cookies Settings button end-->
-                      <li>
-                        <a href="https://www.centurylink.com/aboutus/legal.html" target="_blank">Legal</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html" target="_blank">Legal Notices</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/about/legal/privacy-notice.html">Privacy</a>
-                      </li>
-                      <li>
-                        <a href="https://www.centurylink.com/aboutus/company-information/public-policy.html" target="_blank">Public Policy</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts" target="_blank">Support</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/help/en-us/home.html">Canadian Ombudsman</a>
-                      </li>
-                      <li>
-                        <a href="https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3" target="_blank">Gender Pay Gap 2020 (UK)</a>
-                      </li>
-                      <li>
-                        <a href="https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html">Legal (Latin America)</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/about/legal/de-legal-notices.html">Legal Notices (Germany)</a>
-                      </li>
-                      <li>
-                        <a href="https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80" target="_blank">Modern Slavery Statement 2020 (UK)</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html">UK Tax Strategy</a>
-                      </li>
-                    </ul>
-                    <div class="chi-footer__copyright">&copy; 2023 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>
-        </div>
-
-        <script>
-          chi.dropdown(document.getElementById('language-dropdown-button'));
-        </script>
-
-.-portal--show.-brightspeed--show
-  h3 Base with alert
-  .example.-mb--3
-    chi-main(title="Page title")
-      chi-alert(color="info" icon="circle-info" size="sm" slot="page-alert" closable)
-        | This is a page level info alert
-      .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
-        | Page content goes here
-      footer.chi-footer(slot="footer")
-        .chi-footer__content
-          .chi-footer__internal
-            .chi-footer__internal-content.-mw--1200
-              .chi-dropdown.chi-footer__language
-                a.chi-button.-icon.-flat.-light.-sm.chi-dropdown__trigger(id="language-dropdown-button8" data-position="top-start" aria-label="Select your preferred language")
-                  .chi-button__content
-                    i.chi-icon.icon-globe-network-outline
-                    span English
-                .chi-dropdown__menu.-w--sm.-text--body
-                  a.chi-dropdown__menu-item.-active(href="#")
-                    | English
-                  a.chi-dropdown__menu-item(href="#")
-                    | Español
-                  a.chi-dropdown__menu-item(href="#")
-                    | Português
-                  a.chi-dropdown__menu-item(href="#")
-                    | Français
-                  a.chi-dropdown__menu-item(href="#")
-                    | Deutsch
-                  a.chi-dropdown__menu-item(href="#")
-                    | 简体中文
-                  a.chi-dropdown__menu-item(href="#")
-                    | 日本語
-              .chi-footer__links
-                ul
-                  li
-                    a(href='https://www.lumen.com/en-us/about.html') About Us
-                  li
-                    a(href='https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html') Accessibility
-                  li
-                    a(href='https://jobs.lumen.com', target='_blank') Careers
-                  li
-                    a(href='https://www.lumen.com/en-us/contact-us.html') Contact Us
-                  // OneTrust Cookies Settings button start
-                  li
-                    a.optanon-toggle-display(href='#') Cookie Settings
-                  // OneTrust Cookies Settings button end
-                  li
-                    a(href='https://www.centurylink.com/aboutus/legal.html', target='_blank') Legal
-                  li
-                    a(href='https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html', target='_blank') Legal Notices
-                  li
-                    a(href='https://www.lumen.com/en-us/about/legal/privacy-notice.html') Privacy
-                  li
-                    a(href='https://www.centurylink.com/aboutus/company-information/public-policy.html', target='_blank') Public Policy
-                  li
-                    a(href='https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts', target='_blank') Support
-                  li
-                    a(href='https://www.lumen.com/help/en-us/home.html') Canadian Ombudsman
-                  li
-                    a(href='https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3', target='_blank') Gender Pay Gap 2020 (UK)
-                  li
-                    a(href='https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html') Legal (Latin America)
-                  li
-                    a(href='https://www.lumen.com/en-us/about/legal/de-legal-notices.html') Legal Notices (Germany)
-                  li
-                    a(href='https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80', target='_blank') Modern Slavery Statement 2020 (UK)
-                  li
-                    a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
-                .chi-footer__copyright
-                  | &copy; 2023 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
-
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-base-with-alert-portal(role="tablist")
-        li.-active
-          a(
-            href=`#webcomponent-base-with-alert-portal`
-            role="tab"
-            aria-selected="true"
-            aria-controls="webcomponent-base-with-alert-portal"
-          ) Web Component
-        li
-          a(
-            href=`#html-base-with-alert-portal`
-            role="tab"
-            aria-selected="false"
-            tabindex="-1"
-            aria-controls="html-base-with-alert-portal"
-          ) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-base-with-alert-portal
-      :code(lang="html")
-        <chi-main title="Page title">
-          <chi-alert color="info" icon="circle-info" size="sm" slot="page-alert" closable>This is a page level info alert</chi-alert>
-          <!-- Page content goes here -->
-          <footer class="chi-footer" slot="footer">
-            <div class="chi-footer__content">
-              <div class="chi-footer__internal">
-                <div class="chi-footer__internal-content">
-                  <div class="chi-dropdown chi-footer__language">
-                    <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="language-dropdown-button" data-position="top-start" aria-label="Select your preferred language">
-                      <div class="chi-button__content">
-                        <i class="chi-icon icon-globe-network-outline"></i>
-                        <span>English</span>
-                      </div>
-                    </a>
-                    <div class="chi-dropdown__menu -w--sm -text--body">
-                      <a class="chi-dropdown__menu-item -active" href="#">English</a>
-                      <a class="chi-dropdown__menu-item" href="#">Español</a>
-                      <a class="chi-dropdown__menu-item" href="#">Português</a>
-                      <a class="chi-dropdown__menu-item" href="#">Français</a>
-                      <a class="chi-dropdown__menu-item" href="#">Deutsch</a>
-                      <a class="chi-dropdown__menu-item" href="#">简体中文</a>
-                      <a class="chi-dropdown__menu-item" href="#">日本語</a>
-                    </div>
-                  </div>
-                  <div class="chi-footer__links">
-                    <ul>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/about.html">About Us</a>
-                      </li>
-                      <li>
-                        <a href="https://www.centurylink.com/aboutus/community/community-development/programs-for-customers-with-disabilities.html">Accessibility</a>
-                      </li>
-                      <li>
-                        <a href="https://jobs.lumen.com" target="_blank">Careers</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/contact-us.html">Contact Us</a>
-                      </li>
-                      <!-- OneTrust Cookies Settings button start-->
-                      <li>
-                        <a class="optanon-toggle-display" href="#">Cookie Settings</a>
-                      </li>
-                      <!-- OneTrust Cookies Settings button end-->
-                      <li>
-                        <a href="https://www.centurylink.com/aboutus/legal.html" target="_blank">Legal</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/about/legal/acceptable-use-policy.html" target="_blank">Legal Notices</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/about/legal/privacy-notice.html">Privacy</a>
-                      </li>
-                      <li>
-                        <a href="https://www.centurylink.com/aboutus/company-information/public-policy.html" target="_blank">Public Policy</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/about/legal/commission-for-complaints-for-telecom-television-services-ccts" target="_blank">Support</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/help/en-us/home.html">Canadian Ombudsman</a>
-                      </li>
-                      <li>
-                        <a href="https://assets.lumen.com/is/content/Lumen/gender-pay-gap-report?Creativeid=b565bf28-6d55-4f86-a245-2f0eb40b91a3" target="_blank">Gender Pay Gap 2020 (UK)</a>
-                      </li>
-                      <li>
-                        <a href="https://www.centurylink.com/aboutus/legal/latam/tariffs-and-regulatory-information.html">Legal (Latin America)</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/about/legal/de-legal-notices.html">Legal Notices (Germany)</a>
-                      </li>
-                      <li>
-                        <a href="https://assets.lumen.com/is/content/Lumen/modern-slavery-statement-1?Creativeid=5dbb9687-e4a8-4a40-ae00-673ce51d6a80" target="_blank">Modern Slavery Statement 2020 (UK)</a>
-                      </li>
-                      <li>
-                        <a href="https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html">UK Tax Strategy</a>
-                      </li>
-                    </ul>
-                    <div class="chi-footer__copyright">&copy; 2023 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>
-        </chi-main>
-
-        <script>
-          chi.dropdown(document.getElementById('language-dropdown-button'));
-        </script>
-
-    .chi-tabs-panel#html-base-with-alert-portal
-      :code(lang="html")
-        <div class="chi-main">
-          <div class="chi-main__alert">
-            <div class="chi-alert -info -sm -close" role="alert">
-              <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
-              <div class="chi-alert__content">
-                <p class="chi-alert__text">This is a page level info alert</p>
-              </div>
-              <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-x" aria-hidden="true"></i>
-                </div>
-              </button>
-            </div>
-          </div>
-          <div class="chi-main__header">
-            <div class="chi-main__header-start">
-              <div class="chi-main__title">
-                <div class="chi-main__title-heading">
-                  Page title
+                  Page Title
                 </div>
               </div>
             </div>
@@ -1164,7 +871,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 .-centurylink--hide
   h3 Base with back link
   .example.-mb--3
-    chi-main(backlink="Back link", title="Page title")
+    chi-main(backlink="Back link", title="Page Title")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | Page content goes here
       footer.chi-footer(slot="footer")
@@ -1251,7 +958,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>backlink=""</code> attribute to display a link above the title of the application layout.
       :code(lang="html")
-        <chi-main backlink="Back link" title="Page title">
+        <chi-main backlink="Back link" title="Page Title">
           <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
@@ -1349,7 +1056,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-heading">Page Title</div>
               </div>
             </div>
           </div>
@@ -1442,7 +1149,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link and subtitle
   .example.-mb--3
-    chi-main(backlink="Back link", title="Page title", subtitle="Page subtitle")
+    chi-main(backlink="Back link", title="Page Title", subtitle="Page subtitle")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | Page content goes here
       footer.chi-footer(slot="footer")
@@ -1529,7 +1236,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>subtitle=""</code> attribute to display a subtitle next to the title of the application layout.
       :code(lang="html")
-        <chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
+        <chi-main backlink="Back link" title="Page Title" subtitle="Page subtitle">
           <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
@@ -1627,7 +1334,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-heading">Page Title</div>
                 <div class="chi-main__title-subheading">Page subtitle</div>
               </div>
             </div>
@@ -1721,7 +1428,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link, subtitle and buttons
   .example.-mb--3
-    chi-main(backlink="Back link", title="Page title", subtitle="Page subtitle")
+    chi-main(backlink="Back link", title="Page Title", subtitle="Page subtitle")
       button.chi-button.-primary(slot="header-actions") Primary
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | Page content goes here
@@ -1809,7 +1516,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Add buttons in the header of the application layout by defining <code>slot="header-actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
-        <chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
+        <chi-main backlink="Back link" title="Page Title" subtitle="Page subtitle">
           <button class="chi-button -primary" slot="header-actions">Primary</button>
           <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
@@ -1908,7 +1615,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-heading">Page Title</div>
                 <div class="chi-main__title-subheading">Page subtitle</div>
               </div>
             </div>
@@ -2005,7 +1712,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link, subtitle, buttons and page-level actions
   .example.-mb--3
-    chi-main(backlink="Back link", title="Page title", subtitle="Page subtitle")
+    chi-main(backlink="Back link", title="Page Title", subtitle="Page subtitle")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | Page content goes here
       button.chi-button.-primary.-outline(slot="page-level__actions") Cancel
@@ -2094,7 +1801,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Add page-level actions at the bottom of the application layout by defining <code>slot="page-level__actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
-        <chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
+        <chi-main backlink="Back link" title="Page Title" subtitle="Page subtitle">
           <!-- Page content goes here -->
           <button class="chi-button -primary -outline -bg--white" slot="page-level__actions">Cancel</button>
           <button class="chi-button -primary -ml--1" slot="page-level__actions">Submit</button>
@@ -2194,7 +1901,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-heading">Page Title</div>
                 <div class="chi-main__title-subheading">Page subtitle</div>
               </div>
             </div>
@@ -2293,7 +2000,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 .-centurylink--show
   h3 Base
   .example.-mb--3
-    chi-main(title="Page title")
+    chi-main(title="Page Title")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | Page content goes here
       footer.chi-footer(slot="footer")
@@ -2348,7 +2055,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>title=""</code> attribute to display a title above the application layout.
       :code(lang="html")
-        <chi-main title="Page title">
+        <chi-main title="Page Title">
           <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
@@ -2381,7 +2088,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           <div class="chi-main__header">
             <div class="chi-main__header-start">
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-heading">Page Title</div>
               </div>
             </div>
           </div>
@@ -2418,7 +2125,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with alert
   .example.-mb--3
-    chi-main(title="Page title")
+    chi-main(title="Page Title")
       chi-alert(color="info" icon="circle-info" slot="page-alert" closable)
         | This is a page level info alert
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
@@ -2475,7 +2182,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>title=""</code> attribute to display a title above the application layout.
       :code(lang="html")
-        <chi-main title="Page title">
+        <chi-main title="Page Title">
           <chi-alert color="info" icon="circle-info" slot="page-alert" closable>This is a page level info alert</chi-alert>
           <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
@@ -2522,7 +2229,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           <div class="chi-main__header">
             <div class="chi-main__header-start">
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-heading">Page Title</div>
               </div>
             </div>
           </div>
@@ -2559,7 +2266,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with help icon
   .example.-mb--3
-    chi-main(title="Page title")
+    chi-main(title="Page Title")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | Page content goes here
       chi-button(id='example__help-button3' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
@@ -2616,7 +2323,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-centurylink-help-icon
       :code(lang="html")
-        <chi-main title="Page title">
+        <chi-main title="Page Title">
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
           </chi-button>
@@ -2664,7 +2371,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  Page title
+                  Page Title
                   <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
@@ -2713,7 +2420,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link
   .example.-mb--3
-    chi-main(backlink="Back link", title="Page title")
+    chi-main(backlink="Back link", title="Page Title")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | Page content goes here
       footer.chi-footer(slot="footer")
@@ -2768,7 +2475,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>backlink=""</code> attribute to display a link above the title of the application layout.
       :code(lang="html")
-        <chi-main backlink="Back link" title="Page title">
+        <chi-main backlink="Back link" title="Page Title">
           <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
@@ -2807,7 +2514,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-heading">Page Title</div>
               </div>
             </div>
           </div>
@@ -2841,7 +2548,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link and subtitle
   .example.-mb--3
-    chi-main(backlink="Back link", title="Page title", subtitle="Page subtitle")
+    chi-main(backlink="Back link", title="Page Title", subtitle="Page subtitle")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | Page content goes here
       footer.chi-footer(slot="footer")
@@ -2896,7 +2603,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Use the <code>subtitle=""</code> attribute to display a subtitle next to the title of the application layout.
       :code(lang="html")
-        <chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
+        <chi-main backlink="Back link" title="Page Title" subtitle="Page subtitle">
           <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
             <div class="chi-footer__content">
@@ -2935,7 +2642,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-heading">Page Title</div>
                 <div class="chi-main__title-subheading">Page subtitle</div>
               </div>
             </div>
@@ -2970,7 +2677,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link, subtitle and buttons
   .example.-mb--3
-    chi-main(backlink="Back link", title="Page title", subtitle="Page subtitle")
+    chi-main(backlink="Back link", title="Page Title", subtitle="Page subtitle")
       button.chi-button.-primary(slot="header-actions") Primary
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | Page content goes here
@@ -3026,7 +2733,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Add buttons in the header of the application layout by defining <code>slot="header-actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
-        <chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
+        <chi-main backlink="Back link" title="Page Title" subtitle="Page subtitle">
           <button class="chi-button -primary" slot="header-actions">Primary</button>
           <!-- Page content goes here -->
           <footer class="chi-footer" slot="footer">
@@ -3066,7 +2773,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-heading">Page Title</div>
                 <div class="chi-main__title-subheading">Page subtitle</div>
               </div>
             </div>
@@ -3104,7 +2811,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Base with back link, subtitle, buttons and page-level actions
   .example.-mb--3
-    chi-main(backlink="Back link", title="Page title", subtitle="Page subtitle")
+    chi-main(backlink="Back link", title="Page Title", subtitle="Page subtitle")
       .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
         | Page content goes here
       button.chi-button.-primary.-outline(slot="page-level__actions") Cancel
@@ -3161,7 +2868,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
       .chi-tab__description
         | Add page-level actions at the bottom of the application layout by defining <code>slot="page-level__actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
-        <chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
+        <chi-main backlink="Back link" title="Page Title" subtitle="Page subtitle">
           <!-- Page content goes here -->
           <button class="chi-button -primary -outline -bg--white" slot="page-level__actions">Cancel</button>
           <button class="chi-button -primary -ml--1" slot="page-level__actions">Submit</button>
@@ -3202,7 +2909,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
                 </div>
               </a>
               <div class="chi-main__title">
-                <div class="chi-main__title-heading">Page title</div>
+                <div class="chi-main__title-heading">Page Title</div>
                 <div class="chi-main__title-subheading">Page subtitle</div>
               </div>
             </div>
@@ -3241,7 +2948,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Dashboard with header background
   .example.-mb--3
-    chi-main(title="Page title" format="fixed-width" header-background)
+    chi-main(title="Page Title" format="fixed-width" header-background)
       chi-button(color='primary' size='sm' slot='header-actions')
         | Button
       .chi-css-grid.-grid-rows--176
@@ -3376,7 +3083,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-custom-background-centurylink
       :code(lang="html")
-        <chi-main title="Page title" format="fixed-width" header-background>
+        <chi-main title="Page Title" format="fixed-width" header-background>
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
           </chi-button>
@@ -3535,7 +3242,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  Page title
+                  Page Title
                   <div class="chi-button -icon -flat -sm" id="example__help-button" data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
@@ -3709,7 +3416,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Dashboard with page-level alert
   .example.-mb--3
-    chi-main(title="Page title" format="fixed-width" header-background)
+    chi-main(title="Page Title" format="fixed-width" header-background)
       chi-alert(color="info" icon="circle-info" slot="page-alert" closable)
         | This is a page level info alert
       chi-button(color='primary' size='sm' slot='header-actions')
@@ -3846,7 +3553,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-page-level-alert-centurylink
       :code(lang="html")
-        <chi-main title="Page title" format="fixed-width" header-background>
+        <chi-main title="Page Title" format="fixed-width" header-background>
           <chi-alert color="info" icon="circle-info" slot="page-alert" closable>This is a page level info alert</chi-alert>
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
@@ -4019,7 +3726,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  Page title
+                  Page Title
                   <div class="chi-button -icon -flat -sm" id="example__help-button" data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
@@ -4191,11 +3898,10 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           chi.popover(document.getElementById('example__help-button'));
         </script>
 
-
 .-lumen--show
   h3 Dashboard with header background
   .example.-mb--3
-    chi-main(title="Page title" format="fixed-width" header-background)
+    chi-main(title="Page Title" format="fixed-width" header-background)
       chi-button(color='primary' size='sm' slot='header-actions')
         | Button
       chi-button(id='example__help-button6' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
@@ -4362,7 +4068,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-custom-background-lumen
       :code(lang="html")
-        <chi-main title="Page title" format="fixed-width" header-background>
+        <chi-main title="Page Title" format="fixed-width" header-background>
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
           </chi-button>
@@ -4587,7 +4293,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  Page title
+                  Page Title
                   <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
@@ -4819,7 +4525,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
 
   h3 Dashboard with page-level alert
   .example.-mb--3
-    chi-main(title="Page title" format="fixed-width" header-background)
+    chi-main(title="Page Title" format="fixed-width" header-background)
       chi-alert(color="info" icon="circle-info" slot="page-alert" closable)
         | This is a page level info alert
       chi-button(color='primary' size='sm' slot='header-actions')
@@ -4988,7 +4694,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-page-level-alert-lumen
       :code(lang="html")
-        <chi-main title="Page title" format="fixed-width" header-background>
+        <chi-main title="Page Title" format="fixed-width" header-background>
           <chi-alert color="info" icon="circle-info" slot="page-alert" closable>This is a page level info alert</chi-alert>
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
@@ -5227,7 +4933,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  Page title
+                  Page Title
                   <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
@@ -5457,11 +5163,10 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           chi.popover(document.getElementById('example__help-button'));
         </script>
 
-
 .-portal--show.-brightspeed--show
-  h3 Dashboard with header background
+  h3 Home page with header background
   .example.-mb--3
-    chi-main(title="Page title" format="fixed-width" header-background)
+    chi-main(title="Page Title" format="fixed-width" header-background)
       chi-button(size='xs' slot='header-actions')
         chi-icon(icon='settings')
         span Customize
@@ -5629,7 +5334,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-custom-background-portal
       :code(lang="html")
-        <chi-main title="Page title" format="fixed-width" header-background>
+        <chi-main title="Page Title" format="fixed-width" header-background>
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
           </chi-button>
@@ -5861,7 +5566,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  Page title
+                  Page Title
                   <div class="chi-button -icon -flat -sm" id="example__help-button" data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
@@ -6092,9 +5797,9 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           chi.popover(document.getElementById('example__help-button'));
         </script>
 
-  h3 Dashboard with page-level alert
+  h3 Home page with page-level alert
   .example.-mb--3
-    chi-main(title="Page title" format="fixed-width" header-background)
+    chi-main(title="Page Title" format="fixed-width" header-background)
       chi-alert(color="info" icon="circle-info" size="sm" slot="page-alert" closable)
         | This is a page level info alert
       chi-button(size='xs' slot='header-actions')
@@ -6264,7 +5969,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           ) HTML Blueprint
     .chi-tabs-panel.-active#webcomponent-page-level-alert-portal
       :code(lang="html")
-        <chi-main title="Page title" format="fixed-width" header-background>
+        <chi-main title="Page Title" format="fixed-width" header-background>
           <chi-alert color="info" icon="circle-info" size="sm" slot="page-alert" closable>This is a page level info alert</chi-alert>
           <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
             <chi-icon icon="circle-question-outline"></chi-icon>
@@ -6510,7 +6215,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
             <div class="chi-main__header-start">
               <div class="chi-main__title">
                 <div class="chi-main__title-heading">
-                  Page title
+                  Page Title
                   <div class="chi-button -icon -flat -sm" id="example__help-button" data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
                     <div class="chi-button__content">
                       <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
@@ -6754,7 +6459,6 @@ script.
       chi.dropdown(document.getElementById('language-dropdown-button5'));
       chi.dropdown(document.getElementById('language-dropdown-button6'));
       chi.dropdown(document.getElementById('language-dropdown-button7'));
-      chi.dropdown(document.getElementById('language-dropdown-button8'));
       chi.dropdown(document.getElementById('language-dropdown-button9'));
       chi.dropdown(document.getElementById('language-dropdown-button10'));
       chi.dropdown(document.getElementById('language-dropdown-button11'));
