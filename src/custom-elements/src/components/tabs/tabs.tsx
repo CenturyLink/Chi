@@ -200,17 +200,14 @@ export class Tabs {
                       dropdownElement.hide();
                     }
                   }}
+                  innerHTML={
+                    child.customLabel ? child.customLabel : child.label
+                  }
                   slot="menu"
                 >
-                  <slot name={`customBefore-${child.id}`}></slot>
-                  {child.label}
-                  <slot name={`customAfter-${child.id}`}></slot>
-                  {child.children && child.children.length > 0 && (
-                    <i
-                      class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-right ${GENERIC_SIZE_CLASSES.XS}`}
-                      aria-hidden="true"
-                    ></i>
-                  )}
+                  {child.children &&
+                    child.children.length > 0 &&
+                    this.dropdownIcon('right')}
                 </a>
               );
             })}
@@ -427,6 +424,16 @@ export class Tabs {
     });
   }
 
+  dropdownIcon(position: 'right' | 'down'): HTMLElement {
+    return (
+      <i
+        class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-${position} ${GENERIC_SIZE_CLASSES.XS}`}
+        aria-hidden="true"
+      ></i>
+    );
+  }
+
+  // TODO: Improve customLabels with slots once stencil V3 is deployed: https://github.com/ionic-team/stencil/issues/2257
   render() {
     this.dropdowns = [];
     const tabElements =
@@ -452,11 +459,8 @@ export class Tabs {
                 aria-selected={this._isActiveTab(tab)}
                 aria-controls={`#${tab.id}`}
                 onClick={e => this.handlerClickTab(e, tab)}
-              >
-                <slot name={`customBefore-${tab.id}`}></slot>
-                {tab.label}
-                <slot name={`customAfter-${tab.id}`}></slot>
-              </a>
+                innerHTML={tab.customLabel ? tab.customLabel : tab.label}
+              ></a>
             </li>
           );
         });
@@ -503,17 +507,10 @@ export class Tabs {
               this.seeMoreDropdown.hide();
               this.isSeeMoreActive = false;
             }}
+            innerHTML={tab.customLabel ? tab.customLabel : tab.label}
             slot="menu"
           >
-            <slot name={`customBefore-${tab.id}`}></slot>
-            {tab.label}
-            <slot name={`customAfter-${tab.id}`}></slot>
-            {tab.children ? (
-              <i
-                class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-right ${GENERIC_SIZE_CLASSES.XS}`}
-                aria-hidden="true"
-              ></i>
-            ) : null}
+            {tab.children && this.dropdownIcon('right')}
           </a>
         );
       });

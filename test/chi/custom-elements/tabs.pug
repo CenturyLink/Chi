@@ -7,10 +7,6 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 h2 Base
 .-w--100
   chi-tabs(active-tab='tab-a' id='base' sliding-border)
-    div.-mr--1(slot='customBefore-tab-c') Tab
-    div.-ml--1(slot='customAfter-tab-c') &trade;
-    div.-mr--1(slot='customBefore-tab-c-2') Tab
-    div.-ml--1(slot='customAfter-tab-c-2') &trade;
 
 //- h2 Border
 //- .-w--100
@@ -47,7 +43,7 @@ script.
           id: 'tab-b'
         },
         {
-          label: 'C',
+          label: 'Tab C',
           id: 'tab-c',
           children: [
             {
@@ -57,11 +53,11 @@ script.
           ]
         },
         {
-          label: 'Tab D',
-          id: 'tab-d'
+          customLabel: '<chi-icon icon="settings"></chi-icon> Tab D',
+          id: 'tab-d',
         },
         {
-          label: 'Tab E',
+          customLabel: '<span>Tab E &trade;</span>',
           id: 'tab-e',
           children: [
             {
@@ -73,7 +69,7 @@ script.
               id: 'tab-e-1',
               children: [
                 {
-                  label: 'Tab E 1.1',
+                  customLabel: '<span>Tab E 1.1 &trade;</span>',
                   id: 'tab-e-1-1',
                 },
                 {
