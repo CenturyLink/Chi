@@ -16,7 +16,8 @@ export interface TabTrigger {
   children: TabTrigger[];
   parent?: TabTrigger;
   id: string;
-  label: string,
+  label?: string;
+  customLabel?: string;
   overflow: boolean;
   target?: string;
 }
@@ -29,9 +30,9 @@ export interface TabTriggerPosition {
 export enum TabTriggerSizes {
   Height = 'height',
   Width = 'width'
-};
+}
 
 export enum TabTriggerDirections {
   Left = 'left',
   Top = 'top'
-};
+}
