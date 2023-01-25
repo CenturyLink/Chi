@@ -1306,10 +1306,10 @@ export default class DataTable extends Vue {
     const ascending: boolean = direction === 'ascending';
 
     if (columnData) {
-      const columnIndex = Object.keys(this.data.head).indexOf(column);
+      const columnIndex = !Array.isArray(this.data.head) ? Object.keys(this.data.head).indexOf(column) : column;
 
       const locateData = (data: DataTableRow, sortBy: string | undefined) => {
-        return sortBy && data.data[columnIndex].payload[sortBy]
+        return sortBy && data.data[columnIndex].payload && data.data[columnIndex].payload[sortBy]
           ? data.data[columnIndex].payload[sortBy]
           : data.data[columnIndex];
       };

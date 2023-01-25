@@ -77,7 +77,7 @@ export class Tabs {
   /**
    * Triggered when the user activates a tab
    */
-  @Event({ eventName: 'chiTabChange' }) chiTabChange: EventEmitter<string>;
+  @Event({ eventName: 'chiTabChange' }) chiTabChange: EventEmitter<TabTrigger>;
 
   private activeTabElement: HTMLElement = null;
   private animation: ThreeStepsAnimation;
@@ -117,10 +117,10 @@ export class Tabs {
   }
   //#endregion
 
-  activateTab(id: string, element: HTMLElement) {
-    this.activeTab = id;
+  activateTab(tab: TabTrigger, element: HTMLElement) {
+    this.activeTab = tab.id;
     this.activeTabElement = element;
-    this.chiTabChange.emit(this.activeTab);
+    this.chiTabChange.emit(tab);
   }
 
   calculateSize(element: HTMLElement, size: TabTriggerSizes): number {
@@ -200,15 +200,14 @@ export class Tabs {
                       dropdownElement.hide();
                     }
                   }}
+                  innerHTML={
+                    child.customLabel ? child.customLabel : child.label
+                  }
                   slot="menu"
                 >
-                  {child.label}
-                  {child.children && child.children.length > 0 && (
-                    <i
-                      class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-right ${GENERIC_SIZE_CLASSES.XS}`}
-                      aria-hidden="true"
-                    ></i>
-                  )}
+                  {child.children &&
+                    child.children.length > 0 &&
+                    this.dropdownIcon('right')}
                 </a>
               );
             })}
@@ -294,7 +293,7 @@ export class Tabs {
     }
 
     this.removeActiveItems();
-    this.activateTab(tabData.id, element);
+    this.activateTab(tabData, element);
   }
 
   handlerResize = () => {
@@ -425,6 +424,16 @@ export class Tabs {
     });
   }
 
+  dropdownIcon(position: 'right' | 'down'): HTMLElement {
+    return (
+      <i
+        class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-${position} ${GENERIC_SIZE_CLASSES.XS}`}
+        aria-hidden="true"
+      ></i>
+    );
+  }
+
+  // TODO: Improve customLabels with slots once stencil V3 is deployed: https://github.com/ionic-team/stencil/issues/2257
   render() {
     this.dropdowns = [];
     const tabElements =
@@ -450,9 +459,8 @@ export class Tabs {
                 aria-selected={this._isActiveTab(tab)}
                 aria-controls={`#${tab.id}`}
                 onClick={e => this.handlerClickTab(e, tab)}
-              >
-                {tab.label}
-              </a>
+                innerHTML={tab.customLabel ? tab.customLabel : tab.label}
+              ></a>
             </li>
           );
         });
@@ -461,7 +469,7 @@ export class Tabs {
         class={TABS_CLASSES.SLIDING_BORDER}
         ref={el => (this.slidingBorderElement = el)}
         style={{
-          left: this.slidingBorderLeft,
+          left: this.slidingBorderLeft
         }}
       ></li>
     ) : null;
@@ -499,15 +507,10 @@ export class Tabs {
               this.seeMoreDropdown.hide();
               this.isSeeMoreActive = false;
             }}
+            innerHTML={tab.customLabel ? tab.customLabel : tab.label}
             slot="menu"
           >
-            {tab.label}
-            {tab.children ? (
-              <i
-                class={`${ICON_CLASS} ${UTILITY_CLASSES.MARGIN.LEFT[2]} ${UTILITY_CLASSES.MARGIN.RIGHT[0]} icon-chevron-right ${GENERIC_SIZE_CLASSES.XS}`}
-                aria-hidden="true"
-              ></i>
-            ) : null}
+            {tab.children && this.dropdownIcon('right')}
           </a>
         );
       });
