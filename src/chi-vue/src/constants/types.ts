@@ -15,11 +15,15 @@ export type PrintModes = 'full' | 'printonly' | 'screenonly';
 export interface DataTableExpansionIcons {
   portal: {
     expanded: string;
+    expandedAll: string;
     collapsed: string;
+    collapsedAll: string;
   };
   base: {
     expanded: string;
+    expandedAll: string;
     collapsed: string;
+    collapsedAll: string;
   };
 }
 export type DataTableExpansionIconStyles = typeof DATA_TABLE_EXPANSION_ICON_STYLES[number];

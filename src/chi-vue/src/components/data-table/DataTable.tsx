@@ -130,12 +130,12 @@ export default class DataTable extends Vue {
   _headExpandable() {
     const iconStyle: DataTableExpansionIconStyles = this.config.style.portal ? 'portal' : 'base';
     const isExpanded = this._isExpandedRowInPage();
-    const expandableIcon = isExpanded ? expansionIcons[iconStyle].expanded : expansionIcons[iconStyle].collapsed;
+    const expandableIcon = isExpanded ? expansionIcons[iconStyle].expandedAll : expansionIcons[iconStyle].collapsedAll;
 
     return (
       <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`}>
         <button
-          class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT} ${EXPAND_CLASS} ${GENERIC_SIZE_CLASSES.XS}`}
+          class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT} ${EXPAND_CLASS} ${GENERIC_SIZE_CLASSES.SM}`}
           aria-label="Expand All Rows"
           onClick={() => this.toggleAllRows(isExpanded ? 'collapse' : 'expand')}>
           <div class={BUTTON_CLASSES.CONTENT}>
