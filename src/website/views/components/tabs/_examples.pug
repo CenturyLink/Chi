@@ -1075,7 +1075,7 @@ h2 Examples
   h3 Flat
   .example.-mb--3
     .-p--3.-pb--4
-      chi-tabs(active-tab='tab-a' id='example_tabbed_navigation_flat' sliding-border)
+      chi-tabs(active-tab='tab-a' id='example__tabbed_navigation_flat' sliding-border)
     .example-tabs.-pl--2
       ul.chi-tabs#example-tabs-tabbed-navigation
         li.-active
@@ -1278,7 +1278,7 @@ h2 Examples
   h3 Solid
   .example.-mb--3
     .-p--3.-pb--4
-      chi-tabs(active-tab='tab-aa' id='example_tabbed_navigation_solid' solid sliding-border)
+      chi-tabs(active-tab='tab-aa' id='example__tabbed_navigation_solid' solid sliding-border)
     .example-tabs.-pl--2
       ul.chi-tabs#example-tabs-solid-tabbed-navigation
         li.-active
@@ -2620,8 +2620,8 @@ script.
       chi.tab(document.getElementById('example-vertical-subtabs-inverse'));
       chi.navigation(document.getElementById('navigation-components-contained'));
 
-      const tabbedNavigationFlatElement = document.querySelector('#example_tabbed_navigation_flat');
-      const tabbedNavigationSolidElement = document.querySelector('#example_tabbed_navigation_solid');
+      const tabbedNavigationFlatElement = document.querySelector('#example__tabbed_navigation_flat');
+      const tabbedNavigationSolidElement = document.querySelector('#example__tabbed_navigation_solid');
 
       if (tabbedNavigationFlatElement) {
         tabbedNavigationFlatElement.tabs = [
