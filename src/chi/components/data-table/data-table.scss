@@ -528,6 +528,14 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
 
           .chi-data-table__cell {
             border-bottom: 0.0625rem solid $color-border-base-dark;
+
+            &.-selectable {
+              .chi-dropdown {
+                position: absolute;
+                left: 40px;
+                z-index: 1;
+              }
+            }
           }
 
           &:last-child {

@@ -4,6 +4,7 @@ import {
   BUTTON_CLASSES,
   COLLAPSED_CLASS,
   DATA_TABLE_CLASSES,
+  DROPDOWN_CLASSES,
   EXPANDED_CLASS,
   EXPAND_CLASS,
   GENERIC_SIZE_CLASSES,
@@ -50,6 +51,8 @@ import Checkbox from '../checkbox/Checkbox';
 import { printElement } from '../../utils/utils';
 import { ColumnResize } from './utils/Resize';
 
+declare const chi: any;
+
 Vue.config.ignoredElements = ['chi-popover'];
 
 let dataTableNumber = 0;
@@ -94,6 +97,7 @@ export default class DataTable extends Vue {
       rootLevelRowId: string | null;
     };
   } = {};
+  _chiDropdownSelectAll: any;
 
   _toggleInfoPopover(infoPopoverRef: string) {
     const popover: any = this.$refs[infoPopoverRef];
@@ -518,17 +522,18 @@ export default class DataTable extends Vue {
     return Math.max(Math.ceil(bodyLength / this.resultsPerPage), 1);
   }
 
-  async selectAllRows(action: 'select' | 'deselect') {
+  async selectAllRows(action: 'select' | 'deselect', selectAllPages?: boolean) {
     const numberOfPages = this._calculateNumberOfPages();
-    const data =
-      numberOfPages === 1
-        ? this._sortedData && this._sortedData.length > 0
-          ? this._sortedData
-          : this._serializedDataBody
-        : this.slicedData;
+    const data = selectAllPages
+      ? this._sortedData
+      : numberOfPages === 1
+      ? this._sortedData && this._sortedData.length > 0
+        ? this._sortedData
+        : this._serializedDataBody
+      : this.slicedData;
 
     if (action === 'select') {
-      data.forEach((row: DataTableRow) => {
+      data?.forEach((row: DataTableRow) => {
         if (!this.selectedRows.includes(row.rowId) && !row.selectionDisabled) {
           this.selectedRows.push(row.rowId);
           if (this.treeSelection) {
@@ -542,7 +547,7 @@ export default class DataTable extends Vue {
         this.slicedData.filter(row => !row.selectionDisabled)
       );
     } else {
-      data.forEach((row: DataTableRow) => {
+      data?.forEach((row: DataTableRow) => {
         const rowIndex = this.selectedRows.indexOf(row.rowId);
 
         this.selectedRows.splice(rowIndex, 1);
@@ -557,6 +562,7 @@ export default class DataTable extends Vue {
       );
     }
 
+    this._chiDropdownSelectAll.hide();
     this._emitSelectedRows();
   }
 
@@ -631,6 +637,37 @@ export default class DataTable extends Vue {
     return this.selectedRows.includes(row.rowId);
   }
 
+  _selectAllDropdown() {
+    const pageSelectionMessage = 'Select all items, this page';
+    const allPagesSelectionMessage = 'Select all items, all pages';
+    const deselectAllSelectionMessage = 'Deselect none';
+
+    return (
+      <div class={DROPDOWN_CLASSES.DROPDOWN}>
+        <button
+          ref="selectAllDropdown"
+          class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT}`}
+          aria-label="Select All Dropdown"
+          data-position="bottom-start">
+          <div class={BUTTON_CLASSES.CONTENT}>
+            <i class={`${ICON_CLASS} icon-chevron-down ${GENERIC_SIZE_CLASSES.XS}`} aria-hidden="true"></i>
+          </div>
+        </button>
+        <div class={DROPDOWN_CLASSES.MENU}>
+          <a class={DROPDOWN_CLASSES.MENU_ITEM}>
+            <span onClick={() => this.selectAllRows('select')}>{pageSelectionMessage}</span>
+          </a>
+          <a class={DROPDOWN_CLASSES.MENU_ITEM}>
+            <span onClick={() => this.selectAllRows('select', true)}>{allPagesSelectionMessage}</span>
+          </a>
+          <a class={DROPDOWN_CLASSES.MENU_ITEM}>
+            <span onClick={() => this.selectAllRows('deselect', true)}>{deselectAllSelectionMessage}</span>
+          </a>
+        </div>
+      </div>
+    );
+  }
+
   _selectRowCheckbox(selectAll: boolean, rowData: DataTableRow | undefined = undefined) {
     const selected = this._getCheckboxState(selectAll, rowData);
 
@@ -645,17 +682,14 @@ export default class DataTable extends Vue {
         this.slicedData.length > 0 && this.slicedData.every(row => row.selectionDisabled);
 
       return (
-        <div
-          class={`
-      ${DATA_TABLE_CLASSES.CELL}
-      ${DATA_TABLE_CLASSES.SELECTABLE}
-    `}>
+        <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.SELECTABLE}`}>
           <Checkbox
             disabled={rowData?.selectionDisabled || (selectAll && allVisibleRowsSelectionDisabled)}
             id={checkboxId}
             onChiChange={(ev: Event) => this._handleCheckboxChange(ev, selectAll, rowData)}
             selected={selected}
           />
+          {selectAll ? this._selectAllDropdown() : null}
         </div>
       );
     }
@@ -1206,6 +1240,7 @@ export default class DataTable extends Vue {
 
   mounted() {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
+    const selectAllDropdownComponent = this.$refs.selectAllDropdown;
 
     if (dataTableComponent && this.config.columnResize) {
       new ColumnResize(this);
@@ -1240,6 +1275,7 @@ export default class DataTable extends Vue {
     }
 
     this._addPaginationEventListener();
+    this._chiDropdownSelectAll = chi.dropdown(selectAllDropdownComponent);
     window.addEventListener('resize', this.resizeHandler);
   }
 
@@ -1254,6 +1290,7 @@ export default class DataTable extends Vue {
 
   beforeDestroy() {
     window.removeEventListener('resize', this.resizeHandler, true);
+    this._chiDropdownSelectAll.dispose();
   }
 
   sortData(column: string, direction: string, sortBy: string | undefined) {
