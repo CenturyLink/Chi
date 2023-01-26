@@ -524,16 +524,9 @@ export default class DataTable extends Vue {
 
   _setData(selectAllPages: boolean | undefined) {
     const numberOfPages = this._calculateNumberOfPages();
+    const allData = this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
 
-    if (selectAllPages) {
-      return this._sortedData;
-    }
-
-    if (numberOfPages === 1) {
-      return this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
-    } else {
-      return this.slicedData;
-    }
+    return selectAllPages || numberOfPages === 1 ? allData : this.slicedData;
   }
 
   async selectAllRows(action: 'select' | 'deselect', selectAllPages?: boolean) {
@@ -1281,8 +1274,11 @@ export default class DataTable extends Vue {
       });
     }
 
+    if (selectAllDropdownComponent) {
+      this._chiDropdownSelectAll = chi.dropdown(selectAllDropdownComponent);
+    }
+
     this._addPaginationEventListener();
-    this._chiDropdownSelectAll = chi.dropdown(selectAllDropdownComponent);
     window.addEventListener('resize', this.resizeHandler);
   }
 
