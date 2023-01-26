@@ -1287,8 +1287,10 @@ export default class DataTable extends Vue {
         if (columnData.sortDataType === 'date') {
           const aValue = new Date(aData);
           const bValue = new Date(bData);
+          const aTime = aValue.getTime() || 0;
+          const bTime = bValue.getTime() || 0;
 
-          return ascending ? aValue.getTime() - bValue.getTime() : bValue.getTime() - aValue.getTime();
+          return ascending ? aTime - bTime : bTime - aTime;
         }
 
         if (aData.payload && bData.payload && aData.template && bData.template) {
