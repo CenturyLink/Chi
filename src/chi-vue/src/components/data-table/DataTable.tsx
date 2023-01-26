@@ -640,7 +640,7 @@ export default class DataTable extends Vue {
   _selectAllDropdown() {
     const pageSelectionMessage = 'Select all items, this page';
     const allPagesSelectionMessage = 'Select all items, all pages';
-    const deselectAllSelectionMessage = 'Deselect none';
+    const deselectAllSelectionMessage = 'Deselect all';
 
     return (
       <div class={DROPDOWN_CLASSES.DROPDOWN}>
