@@ -522,15 +522,22 @@ export default class DataTable extends Vue {
     return Math.max(Math.ceil(bodyLength / this.resultsPerPage), 1);
   }
 
-  async selectAllRows(action: 'select' | 'deselect', selectAllPages?: boolean) {
+  _setData(selectAllPages: boolean | undefined) {
     const numberOfPages = this._calculateNumberOfPages();
-    const data = selectAllPages
-      ? this._sortedData
-      : numberOfPages === 1
-      ? this._sortedData && this._sortedData.length > 0
-        ? this._sortedData
-        : this._serializedDataBody
-      : this.slicedData;
+
+    if (selectAllPages) {
+      return this._sortedData;
+    }
+
+    if (numberOfPages === 1) {
+      return this._sortedData && this._sortedData.length > 0 ? this._sortedData : this._serializedDataBody;
+    } else {
+      return this.slicedData;
+    }
+  }
+
+  async selectAllRows(action: 'select' | 'deselect', selectAllPages?: boolean) {
+    const data = this._setData(selectAllPages);
 
     if (action === 'select') {
       data?.forEach((row: DataTableRow) => {
