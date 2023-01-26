@@ -266,4 +266,28 @@ describe('Date picker', function() {
       .find('input')
       .should('have.class', `${DANGER_CLASS}`);
   });
+
+  it('Date-picker should show Time Picker with 24hr format. ', function() {
+    const hours = '23';
+    const minutes = '37';
+    cy.get('[data-cy="test-time-format-24hr"]')
+      .find('input')
+      .scrollIntoView()
+      .focus()
+      .get('[data-cy="test-time-format-24hr"]')
+      .find('chi-popover[active]')
+      .should('have.attr', 'active')
+      .get('[data-cy="test-time-format-24hr"]')
+      .find('chi-popover[active]')
+      .find(`[data-hour="${hours}"]`)
+      .should('be.visible')
+      .click()
+      .get('[data-cy="test-time-format-24hr"]')
+      .find('.chi-time-picker__minute').contains(minutes)
+      .click()
+      .get('[data-cy="test-time-format-24hr"]')
+      .find('input.sc-chi-date-picker')
+      .should('have.value', `11/23/2018, ${hours}:${minutes}`);
+  });
+
 });

@@ -50,7 +50,7 @@ export type DateFormats = typeof DATE_FORMATS[number];
 export const CHI_TIME_AUTO_SCROLL_DELAY = 50;
 export const CHI_TIME_SCROLL_ADJUSTMENT = 24;
 
-export const TIME_PICKER_FORMATS = ['12hours', '24hours'];
+export const TIME_PICKER_FORMATS = ['12hr', '24hr'] as const;
 export type TimePickerFormats = typeof TIME_PICKER_FORMATS[number];
 
 export type MouseCursorPosition = { x: number, y: number };

@@ -11,6 +11,8 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 - const date1 = '11/23/2018';
 - const dateMin = '11/19/2018';
 - const date2 = '01/24/2019';
+- const mode = 'datetime';
+- const timeFormat = '24hr';
 
 .test-active.-py--2(data-cy="test-active")
   span.-text--h2 Active
@@ -46,3 +48,8 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
   span.-text--h2 Date Picker multiple dates
   .-position--relative(style="width:14rem;")
     chi-date-picker(data-cy="test-multiple-picker-calendar" multiple)
+
+.test-time-format-24hr.-py--2(data-cy="test-time-format-24hr")
+  span.-text--h2 Date Picker with 24 hours format Time Picker
+    .-position--relative
+      chi-date-picker(data-cy="test-time-format-24hr-picker" value=date1, min=dateMin, mode=mode, time-format=timeFormat, active)

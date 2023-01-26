@@ -1,6 +1,13 @@
 import { Component, Element, Listen, Method, Prop, Watch, h, Event, EventEmitter } from '@stencil/core';
 import { contains, uuid4 } from '../../utils/utils';
-import { ESCAPE_KEYCODE, CHI_TIME_AUTO_SCROLL_DELAY, DataLocales, DatePickerModes, DateFormats } from '../../constants/constants';
+import {
+  ESCAPE_KEYCODE,
+  CHI_TIME_AUTO_SCROLL_DELAY,
+  DataLocales,
+  DatePickerModes,
+  DateFormats,
+  TimePickerFormats
+} from '../../constants/constants';
 import dayjs, { Dayjs } from 'dayjs';
 import { TIME_CLASSES } from '../../constants/classes';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
@@ -69,6 +76,10 @@ export class DatePicker {
    * To define state color of Date Picker
    */
   @Prop({ reflect: true }) state?: ChiStates;
+  /**
+   * To specify format for the Time Picker. Applicable only if mode is equal to 'datetime'
+   */
+  @Prop({ reflect: true }) timeFormat?: TimePickerFormats;
 
   /**
    * Date change value event
@@ -255,11 +266,13 @@ export class DatePicker {
     if (this.mode === 'datetime') {
       const chiTime = this.el.querySelector('.chi-popover__content chi-time') as HTMLElement;
       const valueTime = chiTime.getAttribute('value');
+      const timeFormat = chiTime.getAttribute('format');
+      const is24hrTimeFormat = timeFormat === '24hr';
 
       if (valueTime) {
         const time = valueTime.split(':');
-        const period = parseInt(time[0]) >= 12 ? 'pm' : 'am';
-        const hours = parseInt(time[0]) > 12 ? parseInt(time[0]) - 12 : parseInt(time[0]);
+        const period = is24hrTimeFormat ? '' : parseInt(time[0]) >= 12 ? 'pm' : 'am';
+        const hours = !is24hrTimeFormat && parseInt(time[0]) > 12 ? parseInt(time[0]) - 12 : parseInt(time[0]);
         const hoursCalculated = this.formatTimePeriod(hours);
         const minutes = this.formatTimePeriod(parseInt(time[1]));
 
@@ -300,18 +313,19 @@ export class DatePicker {
   handleTimeChange(ev) {
     const currentTime = new Date();
     const chiDate = this.el.querySelector('.chi-popover__content chi-date') as HTMLElement;
-    const valueDate = chiDate.getAttribute('value');
-    const hour = ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
-    let activeDate: string;
+    let activeDate = chiDate.getAttribute('value');
 
-    if (valueDate) {
-      activeDate = valueDate;
-    } else {
+    if (!activeDate) {
       activeDate = `${currentTime.getMonth() + 1}/${currentTime.getDate()}/${currentTime.getFullYear()}`;
     }
 
     chiDate.setAttribute('value', activeDate);
-    this.value = `${activeDate}, ${this.formatTimePeriod(hour)}:${this.formatTimePeriod(ev.detail.minute)} ${this.formatTimePeriod(ev.detail.period)}`;
+    if (this.timeFormat === '24hr') {
+      this.value = `${activeDate}, ${this.formatTimePeriod(ev.detail.hour)}:${this.formatTimePeriod(ev.detail.minute)}`;
+    } else {
+      const hour = ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
+      this.value = `${activeDate}, ${this.formatTimePeriod(hour)}:${this.formatTimePeriod(ev.detail.minute)} ${this.formatTimePeriod(ev.detail.period)}`;
+    }
   }
 
   formatTimePeriod(period: number): string {
@@ -355,7 +369,7 @@ export class DatePicker {
       excluded-dates={this.excludedDates}
       multiple={this.multiple}
     />;
-    const time = this.mode === 'datetime' ? <chi-time /> : null;
+    const time = this.mode === 'datetime' ? <chi-time format={this.timeFormat} /> : null;
     const popoverContent = this.mode === 'datetime' ?
       <div class="-d--flex">
         {date}
