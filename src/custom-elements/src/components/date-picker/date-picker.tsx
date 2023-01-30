@@ -311,11 +311,11 @@ export class DatePicker {
 
   @Listen('chiTimeChange')
   handleTimeChange(ev) {
-    const currentTime = new Date();
     const chiDate = this.el.querySelector('.chi-popover__content chi-date') as HTMLElement;
     let activeDate = chiDate.getAttribute('value');
 
     if (!activeDate) {
+      const currentTime = new Date();
       activeDate = `${currentTime.getMonth() + 1}/${currentTime.getDate()}/${currentTime.getFullYear()}`;
     }
 
@@ -369,7 +369,8 @@ export class DatePicker {
       excluded-dates={this.excludedDates}
       multiple={this.multiple}
     />;
-    const time = this.mode === 'datetime' ? <chi-time format={this.timeFormat} /> : null;
+    const timeValue = (this.value?.split(', ') || [])[1];
+    const time = this.mode === 'datetime' ? <chi-time format={this.timeFormat} value={timeValue} /> : null;
     const popoverContent = this.mode === 'datetime' ?
       <div class="-d--flex">
         {date}

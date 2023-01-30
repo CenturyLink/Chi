@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-01-25T03:20:53",
+  "timestamp": "2023-01-28T12:58:31",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1334,6 +1334,27 @@
             },
             {
               "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
+          "name": "timeFormat",
+          "type": "\"12hr\" | \"24hr\"",
+          "mutable": false,
+          "attr": "time-format",
+          "reflectToAttr": true,
+          "docs": "To specify format for the Time Picker. Applicable only if mode is equal to 'datetime'",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "12hr",
+              "type": "string"
+            },
+            {
+              "value": "24hr",
               "type": "string"
             }
           ],
@@ -6105,7 +6126,7 @@
         },
         {
           "name": "format",
-          "type": "string",
+          "type": "\"12hr\" | \"24hr\"",
           "mutable": false,
           "attr": "format",
           "reflectToAttr": true,
@@ -6114,6 +6135,11 @@
           "default": "'12hr'",
           "values": [
             {
+              "value": "12hr",
+              "type": "string"
+            },
+            {
+              "value": "24hr",
               "type": "string"
             }
           ],
@@ -6242,7 +6268,7 @@
         },
         {
           "name": "format",
-          "type": "string",
+          "type": "\"12hr\" | \"24hr\"",
           "mutable": false,
           "attr": "format",
           "reflectToAttr": true,
@@ -6251,6 +6277,11 @@
           "default": "'12hr'",
           "values": [
             {
+              "value": "12hr",
+              "type": "string"
+            },
+            {
+              "value": "24hr",
               "type": "string"
             }
           ],
