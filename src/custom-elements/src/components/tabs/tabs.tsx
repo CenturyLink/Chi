@@ -455,6 +455,7 @@ export class Tabs {
             >
               <a
                 href={`#${tab.id}`}
+                class={tab.children ? 'has-child' : ''}
                 role="tab"
                 aria-selected={this._isActiveTab(tab)}
                 aria-controls={`#${tab.id}`}
