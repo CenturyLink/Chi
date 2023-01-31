@@ -26,7 +26,6 @@ import {
   DataTableCellAlignment,
   DataTableConfig,
   DataTableData,
-  DataTableExpansionIconStyles,
   DataTableRow,
   DataTableRowNestedContent,
   DataTableScreenBreakpoints,
@@ -44,7 +43,7 @@ import DataTableBulkActions from '../data-table-bulk-actions/DataTableBulkAction
 import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
 import { ICON_CLASSES } from '@/constants/icons';
-import { alignmentUtilityClasses, expansionIcons } from './constants/constants';
+import { alignmentUtilityClasses } from './constants/constants';
 import { NormalizedScopedSlot } from 'vue/types/vnode';
 import Checkbox from '../checkbox/Checkbox';
 import { printElement } from '../../utils/utils';
@@ -128,9 +127,8 @@ export default class DataTable extends Vue {
   }
 
   _headExpandable() {
-    const iconStyle: DataTableExpansionIconStyles = this.config.style.portal ? 'portal' : 'base';
     const isExpanded = this._isExpandedRowInPage();
-    const expandableIcon = isExpanded ? expansionIcons[iconStyle].expandedAll : expansionIcons[iconStyle].collapsedAll;
+    const expandableIcon = isExpanded ? 'minus' : 'plus';
 
     return (
       <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`}>
@@ -139,7 +137,7 @@ export default class DataTable extends Vue {
           aria-label="Expand All Rows"
           onClick={() => this.toggleAllRows(isExpanded ? 'collapse' : 'expand')}>
           <div class={BUTTON_CLASSES.CONTENT}>
-            <i class={`${ICON_CLASS} icon-${expandableIcon}`} />
+            <i class={`${ICON_CLASS} icon-squares-${expandableIcon}-outline`} />
           </div>
           <span class={SR_ONLY}>Expand All Rows</span>
         </button>
@@ -339,8 +337,6 @@ export default class DataTable extends Vue {
   }
 
   _expansionButton(rowData: DataTableRow) {
-    const iconStyle: DataTableExpansionIconStyles = this.config.style.portal ? 'portal' : 'base';
-
     return (
       <button
         class={`
@@ -357,11 +353,7 @@ export default class DataTable extends Vue {
           <i
             class={`
           ${ICON_CLASS}
-          icon-${
-            this.accordionsExpanded.includes(rowData.rowId)
-              ? expansionIcons[iconStyle].expanded
-              : expansionIcons[iconStyle].collapsed
-          }
+          icon-${this.accordionsExpanded.includes(rowData.rowId) ? 'minus' : 'plus'}
           `}
           />
         </div>
