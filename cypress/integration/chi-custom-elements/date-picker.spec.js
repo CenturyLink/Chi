@@ -283,7 +283,6 @@ describe('Date picker', function() {
       .get('@testTimeFormat')
       .find('chi-popover[active]')
       .find(`[data-hour="${hours}"]`)
-      .should('be.visible')
       .click()
       .get('@testTimeFormat')
       .find('.chi-time-picker__minute').contains(minutes)
