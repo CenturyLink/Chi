@@ -824,7 +824,7 @@
     }
 
     &.chi-tabs__trigger > a {
-      &.has-child {
+      &.-has-child {
         &::after {
           color: inherit;
           content: '\e91e';
