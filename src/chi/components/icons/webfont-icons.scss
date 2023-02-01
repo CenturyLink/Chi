@@ -35,6 +35,22 @@ i {
   }
 }
 
+.icon-squares-minus-outline::before {
+  content: '\e95e';
+}
+
+.icon-squares-plus-outline::before {
+  content: '\e95f';
+}
+
+.icon-shield-2fa::before {
+  content: '\e963';
+}
+
+.icon-gear-password::before {
+  content: '\e965';
+}
+
 .icon-link-broken::before {
   content: '\ea10';
 }
