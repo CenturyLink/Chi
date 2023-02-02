@@ -671,13 +671,13 @@ export default class DataTable extends Vue {
         </button>
         <div class={DROPDOWN_CLASSES.MENU}>
           <a class={DROPDOWN_CLASSES.MENU_ITEM} onClick={() => this.selectAllRows('select')}>
-            <span>{pageSelectionMessage}</span>
+            {pageSelectionMessage}
           </a>
           <a class={DROPDOWN_CLASSES.MENU_ITEM} onClick={() => this.selectAllRows('select', true)}>
-            <span>{allPagesSelectionMessage}</span>
+            {allPagesSelectionMessage}
           </a>
           <a class={DROPDOWN_CLASSES.MENU_ITEM} onClick={() => this.selectAllRows('deselect', true)}>
-            <span>{deselectAllSelectionMessage}</span>
+            {deselectAllSelectionMessage}
           </a>
         </div>
       </div>
