@@ -48,6 +48,7 @@ import { NormalizedScopedSlot } from 'vue/types/vnode';
 import Checkbox from '../checkbox/Checkbox';
 import { printElement } from '../../utils/utils';
 import { ColumnResize } from './utils/Resize';
+import Tooltip from '../tooltip/tooltip';
 
 Vue.config.ignoredElements = ['chi-popover'];
 
@@ -132,15 +133,17 @@ export default class DataTable extends Vue {
 
     return (
       <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`}>
-        <button
-          class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT} ${EXPAND_CLASS} ${GENERIC_SIZE_CLASSES.SM}`}
-          aria-label="Expand All Rows"
-          onClick={() => this.toggleAllRows(isExpanded ? 'collapse' : 'expand')}>
-          <div class={BUTTON_CLASSES.CONTENT}>
-            <i class={`${ICON_CLASS} icon-squares-${expandableIcon}-outline`} />
-          </div>
-          <span class={SR_ONLY}>Expand All Rows</span>
-        </button>
+        <Tooltip message={`${isExpanded ? 'Collapse' : 'Expand'} All`}>
+          <button
+            class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT} ${EXPAND_CLASS} ${GENERIC_SIZE_CLASSES.SM}`}
+            aria-label="Expand All Rows"
+            onClick={() => this.toggleAllRows(isExpanded ? 'collapse' : 'expand')}>
+            <div class={BUTTON_CLASSES.CONTENT}>
+              <i class={`${ICON_CLASS} icon-squares-${expandableIcon}-outline`} />
+            </div>
+            <span class={SR_ONLY}>Expand All Rows</span>
+          </button>
+        </Tooltip>
       </div>
     );
   }
@@ -717,12 +720,18 @@ export default class DataTable extends Vue {
       const accordionIndex = this.accordionsExpanded.indexOf(id);
 
       if (accordionIndex !== -1) {
-        this.accordionsExpanded.splice(this.accordionsExpanded.indexOf(id), 1);
-        !action ? this.$emit(DATA_TABLE_EVENTS.EXPANSION.COLLAPSED, rowData) : null;
+        this.accordionsExpanded.splice(accordionIndex, 1);
+
+        if (action === null || action === undefined) {
+          this.$emit(DATA_TABLE_EVENTS.EXPANSION.COLLAPSED, rowData);
+        }
       }
     } else {
       this.accordionsExpanded.push(id);
-      !action ? this.$emit(DATA_TABLE_EVENTS.EXPANSION.EXPANDED, rowData) : null;
+
+      if (action === null || action === undefined) {
+        this.$emit(DATA_TABLE_EVENTS.EXPANSION.EXPANDED, rowData);
+      }
     }
   }
 
@@ -733,7 +742,9 @@ export default class DataTable extends Vue {
           const children = row.nestedContent.table?.data;
 
           this.toggleRow(row, action);
-          if (children) toggleRows(children);
+          if (children) {
+            toggleRows(children);
+          }
         }
       });
 
