@@ -722,14 +722,14 @@ export default class DataTable extends Vue {
       if (accordionIndex !== -1) {
         this.accordionsExpanded.splice(accordionIndex, 1);
 
-        if (action === null || action === undefined) {
+        if (!action) {
           this.$emit(DATA_TABLE_EVENTS.EXPANSION.COLLAPSED, rowData);
         }
       }
     } else {
       this.accordionsExpanded.push(id);
 
-      if (action === null || action === undefined) {
+      if (!action) {
         this.$emit(DATA_TABLE_EVENTS.EXPANSION.EXPANDED, rowData);
       }
     }
