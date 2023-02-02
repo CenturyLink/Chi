@@ -127,6 +127,12 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           }
         }
       }
+
+      &.-expandable {
+        .chi-tooltip {
+          white-space: pre;
+        }
+      }
     }
 
     .-truncated {
@@ -309,7 +315,7 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
       .chi-icon {
         &.icon-plus,
         &.icon-minus {
-          color: $color-icon-primary;
+          color: $data-table-row-expandable-icon;
         }
       }
 
@@ -597,7 +603,7 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           .chi-icon {
             &.icon-plus,
             &.icon-minus {
-              color: $color-icon-primary;
+              color: $data-table-row-expandable-icon;
             }
           }
         }

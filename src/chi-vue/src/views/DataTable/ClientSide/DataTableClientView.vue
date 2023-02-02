@@ -15,6 +15,8 @@
       @chiRowDeselected="e => this.rowDeselected(e)"
       @chiSelectAll="e => this.chiSelectAll(e)"
       @chiDeselectAll="e => this.chiDeselectAll(e)"
+      @chiExpandAll="e => this.chiExpandAll(e)"
+      @chiCollapseAll="e => this.chiCollapseAll(e)"
     >
       <template #alertsDesc="payload">
         <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
@@ -270,6 +272,12 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     },
     printTable() {
       (this.$refs.dataTable as DataTable).print('DataTable Client - Print');
+    },
+    chiExpandAll: e => {
+      console.log('chiExpandAll', e);
+    },
+    chiCollapseAll: e => {
+      console.log('chiCollapseAll', e);
     },
   },
   data: () => {

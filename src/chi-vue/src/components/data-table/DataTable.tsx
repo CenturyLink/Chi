@@ -27,7 +27,6 @@ import {
   DataTableCellAlignment,
   DataTableConfig,
   DataTableData,
-  DataTableExpansionIconStyles,
   DataTableRow,
   DataTableRowNestedContent,
   DataTableScreenBreakpoints,
@@ -45,11 +44,12 @@ import DataTableBulkActions from '../data-table-bulk-actions/DataTableBulkAction
 import arraySort from 'array-sort';
 import { defaultConfig } from './default-config';
 import { ICON_CLASSES } from '@/constants/icons';
-import { alignmentUtilityClasses, expansionIcons } from './constants/constants';
+import { alignmentUtilityClasses } from './constants/constants';
 import { NormalizedScopedSlot } from 'vue/types/vnode';
 import Checkbox from '../checkbox/Checkbox';
 import { printElement } from '../../utils/utils';
 import { ColumnResize } from './utils/Resize';
+import Tooltip from '../tooltip/tooltip';
 
 declare const chi: any;
 
@@ -123,6 +123,35 @@ export default class DataTable extends Vue {
     return (description as DataTableColumnDescription).text;
   }
 
+  _isExpandedRowInPage() {
+    return this.slicedData.some((row: DataTableRow) => {
+      const id = row.rowId.toString();
+
+      return this.accordionsExpanded.includes(id);
+    });
+  }
+
+  _headExpandable() {
+    const isExpanded = this._isExpandedRowInPage();
+    const expandableIcon = isExpanded ? 'minus' : 'plus';
+
+    return (
+      <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`}>
+        <Tooltip message={`${isExpanded ? 'Collapse' : 'Expand'} All`}>
+          <button
+            class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT} ${EXPAND_CLASS} ${GENERIC_SIZE_CLASSES.SM}`}
+            aria-label="Expand All Rows"
+            onClick={() => this.toggleAllRows(isExpanded ? 'collapse' : 'expand')}>
+            <div class={BUTTON_CLASSES.CONTENT}>
+              <i class={`${ICON_CLASS} icon-squares-${expandableIcon}-outline`} />
+            </div>
+            <span class={SR_ONLY}>Expand All Rows</span>
+          </button>
+        </Tooltip>
+      </div>
+    );
+  }
+
   _head() {
     const tableHeadCells = [
       this.config.selectable ? (
@@ -132,13 +161,7 @@ export default class DataTable extends Vue {
           this._selectRowCheckbox(true)
         )
       ) : null,
-      this._expandable ? (
-        <div
-          class={`
-        ${DATA_TABLE_CLASSES.CELL}
-        ${DATA_TABLE_CLASSES.EXPANDABLE}`}
-        />
-      ) : null,
+      this._expandable ? this._headExpandable() : null,
     ];
 
     let cellIndex = 0;
@@ -205,8 +228,8 @@ export default class DataTable extends Vue {
           data-sort-by={sortBy}
           data-sort={this._sortConfig && this._sortConfig.direction ? this._sortConfig.direction : ''}
           data-label={label}
-          onclick={(e: PointerEvent) => {
-            if (!this._preventSortOnResize && e.pointerType !== '') {
+          onClick={(e: MouseEvent) => {
+            if (!this._preventSortOnResize && e.type !== '') {
               this.sortColumn(e);
             }
           }}
@@ -221,7 +244,6 @@ export default class DataTable extends Vue {
       );
       const nonSortableColumnHead = (
         <div
-          aria-label={label}
           class={`${DATA_TABLE_CLASSES.CELL}
             ${alignment}
             ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
@@ -322,8 +344,6 @@ export default class DataTable extends Vue {
   }
 
   _expansionButton(rowData: DataTableRow) {
-    const iconStyle: DataTableExpansionIconStyles = this.config.style.portal ? 'portal' : 'base';
-
     return (
       <button
         class={`
@@ -340,11 +360,7 @@ export default class DataTable extends Vue {
           <i
             class={`
           ${ICON_CLASS}
-          icon-${
-            this.accordionsExpanded.includes(rowData.rowId)
-              ? expansionIcons[iconStyle].expanded
-              : expansionIcons[iconStyle].collapsed
-          }
+          icon-${this.accordionsExpanded.includes(rowData.rowId) ? 'minus' : 'plus'}
           `}
           />
         </div>
@@ -695,15 +711,14 @@ export default class DataTable extends Vue {
     }
   }
 
-  _radioButton(rowLevel: DataTableRowLevels, rowData: DataTableRow | null = null) {
-    const checkedState = rowData && rowData.rowNumber && this.selectedRows.includes(rowData.rowId);
-
+  _radioButton(rowLevel: DataTableRowLevels, rowData: DataTableRow) {
     if (rowData) {
       const radioButtonId =
         rowData && typeof rowData === 'object' && rowData.rowNumber
           ? `radio-button-${this._rowId(rowData.rowNumber)}`
           : '';
       const radioButtonName = `radio-buttons-${this._dataTableId}`;
+      const checkedState = this.selectedRows.includes(rowData.rowId);
 
       if (rowLevel !== 'parent') {
         return <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.SELECTABLE}`}></div>;
@@ -732,16 +747,46 @@ export default class DataTable extends Vue {
     }
   }
 
-  toggleRow(rowData: DataTableRow) {
+  toggleRow(rowData: DataTableRow, action?: string) {
     const id = rowData.rowId.toString();
 
-    if (this.accordionsExpanded.includes(id)) {
-      this.accordionsExpanded.splice(this.accordionsExpanded.indexOf(id), 1);
-      this.$emit(DATA_TABLE_EVENTS.EXPANSION.COLLAPSED, rowData);
+    if (this.accordionsExpanded.includes(id) || action === 'collapse') {
+      const accordionIndex = this.accordionsExpanded.indexOf(id);
+
+      if (accordionIndex !== -1) {
+        this.accordionsExpanded.splice(accordionIndex, 1);
+
+        if (!action) {
+          this.$emit(DATA_TABLE_EVENTS.EXPANSION.COLLAPSED, rowData);
+        }
+      }
     } else {
       this.accordionsExpanded.push(id);
-      this.$emit(DATA_TABLE_EVENTS.EXPANSION.EXPANDED, rowData);
+
+      if (!action) {
+        this.$emit(DATA_TABLE_EVENTS.EXPANSION.EXPANDED, rowData);
+      }
     }
+  }
+
+  toggleAllRows(action: 'expand' | 'collapse') {
+    const toggleRows = (rows: DataTableRow[]) =>
+      rows.forEach((row: DataTableRow) => {
+        if (row.nestedContent) {
+          const children = row.nestedContent.table?.data;
+
+          this.toggleRow(row, action);
+          if (children) {
+            toggleRows(children);
+          }
+        }
+      });
+
+    this.$emit(
+      action === 'expand' ? DATA_TABLE_EVENTS.EXPANSION.EXPAND_ALL : DATA_TABLE_EVENTS.EXPANSION.COLLAPSE_ALL,
+      this.accordionsExpanded
+    );
+    toggleRows(this.slicedData);
   }
 
   _rowAccordionContent(accordionData: DataTableRowNestedContent, contentLevel: 'parent' | 'child') {
@@ -965,7 +1010,6 @@ export default class DataTable extends Vue {
             };
 
             if (this.mode === DataTableModes.CLIENT) {
-              this.accordionsExpanded.length = 0;
               this.activePage = ev;
               this.slicedData = this.sliceData(data);
               if (this._showSelectedOnly) {
@@ -1167,7 +1211,7 @@ export default class DataTable extends Vue {
   }
 
   @Watch('config')
-  dataconfigChange() {
+  dataConfigChange() {
     this.activePage = this.$props.config.pagination.activePage || 1;
   }
 
