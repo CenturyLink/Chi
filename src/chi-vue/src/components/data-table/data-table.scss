@@ -104,8 +104,8 @@ $font-weight-semi-bold: 600;
         
         &.-selectable {
           .chi-dropdown {
+            left: 2.5rem;
             position: absolute;
-            left: 40px;
             z-index: 1;
           }
         }
