@@ -23,18 +23,18 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-// eslint-disable-next-line
 declare const chi: any;
 
-@Component({
-  components: {},
-  props: {
-    id: String,
-  },
-})
-export default class ExampleActions extends Vue {
+@Component({})
+export default class DesktopActions extends Vue {
+  dropdown: any;
+
   mounted() {
-    chi.dropdown(this.$refs.dropdownTrigger);
+    this.dropdown = chi.dropdown(this.$refs.dropdownTrigger);
+  }
+
+  beforeDestroy() {
+    this.dropdown.dispose();
   }
 }
 </script>
