@@ -13,7 +13,13 @@ h3 Country/Region
             th
               div Class
         tbody
-          each val, type in {ar:'Argentina', au:'Australia', br:'Brazil', co:'Colombia', de:'Germany', hk:'Hong Kong', in:'India', jp:'Japan', mx:'Mexico', sg:'Singapore', gb:'United Kingdom', us:'United States'}
+        tr
+          td.-w--20
+            i(class=`chi-flag-icon`, aria-hidden='true')
+          td
+            p.-m--0 Base
+          td
+          each val, type in {ar:'Argentina', au:'Australia', be:'Belgium', br:'Brazil', ca:'Canada', cl:'Chile', cn:'China', co:'Colombia', ec:'Ecuador', fr:'France', de:'Germany', hk:'Hong Kong', in:'India', ie:'Ireland', it:'Italy', jp:'Japan', mx:'Mexico', nl:'Netherlands', pe:'Peru', sg:'Singapore', es:'Spain', gb:'United Kingdom', us:'United States', ve:'Venezuela'}
             tr
               td.-w--20
                 i(class=`chi-flag-icon icon-${type}`, aria-hidden='true')
@@ -31,18 +37,31 @@ h3 Country/Region
   #webcomponent-base.chi-tabs-panel
   #webfont-base.chi-tabs-panel.-active
     :code(lang="html")
+      <i class="chi-flag-icon" aria-hidden="true"></i>
       <i class="chi-flag-icon icon-ar" aria-hidden="true"></i>
       <i class="chi-flag-icon icon-au" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-be" aria-hidden="true"></i>
       <i class="chi-flag-icon icon-br" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-ca" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-cl" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-cn" aria-hidden="true"></i>
       <i class="chi-flag-icon icon-co" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-ec" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-fr" aria-hidden="true"></i>
       <i class="chi-flag-icon icon-de" aria-hidden="true"></i>
       <i class="chi-flag-icon icon-hk" aria-hidden="true"></i>
       <i class="chi-flag-icon icon-in" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-ie" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-it" aria-hidden="true"></i>
       <i class="chi-flag-icon icon-jp" aria-hidden="true"></i>
       <i class="chi-flag-icon icon-mx" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-nl" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-pe" aria-hidden="true"></i>
       <i class="chi-flag-icon icon-sg" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-es" aria-hidden="true"></i>
       <i class="chi-flag-icon icon-gb" aria-hidden="true"></i>
       <i class="chi-flag-icon icon-us" aria-hidden="true"></i>
+      <i class="chi-flag-icon icon-ve" aria-hidden="true"></i>
 
 h3 Sizes
 p.-text
