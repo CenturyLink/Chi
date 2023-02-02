@@ -1247,7 +1247,7 @@ describe('Data Table', () => {
               cy.get(`[data-cy='data-table-bulk-actions']`)
                 .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
                   .${BULK_ACTIONS_CLASSES.LABEL}`)
-                .contains(`Actions (${selected} Selected)`);
+                .contains(`Actions (${selected} Items selected)`);
               cy.get("@rows").should("have.length", 1);
               expect(spy).to.be.calledOnce;
             });
@@ -1289,7 +1289,7 @@ describe('Data Table', () => {
               cy.get(`[data-cy='data-table-bulk-actions']`)
                 .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
                   .${BULK_ACTIONS_CLASSES.LABEL}`)
-                .contains(`Actions (${selected} Selected)`);
+                .contains(`Actions (${selected} Items selected)`);
               cy.get("@rows").should("have.length", 3);
               expect(spy).to.be.calledOnce;
             });
@@ -1396,7 +1396,7 @@ describe('Data Table', () => {
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
                   .${BULK_ACTIONS_CLASSES.LABEL}`)
-            .contains(`Actions (${selected} Selected)`);
+            .contains(`Actions (${selected} Items selected)`);
         });
       cy.get(`@pagination`)
         .find(`.${ICON_BUTTON}`)
@@ -1418,7 +1418,7 @@ describe('Data Table', () => {
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
                 .${BULK_ACTIONS_CLASSES.LABEL}`)
-            .contains(`Actions (${selected} Selected)`);
+            .contains(`Actions (${selected} Items selected)`);
           cy.get(`@pagination`)
             .find(`.${ICON_BUTTON}`)
             .first()
@@ -1426,7 +1426,7 @@ describe('Data Table', () => {
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
                   .${BULK_ACTIONS_CLASSES.LABEL}`)
-            .contains(`Actions (${selected} Selected)`);
+            .contains(`Actions (${selected} Items selected)`);
         });
     });
   });
