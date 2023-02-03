@@ -732,6 +732,26 @@
       "requireSameDimensions": true
     },
     {
+      "label": "flag-icons",
+      "cookiePath": "",
+      "url": "http://localhost:8000/tests/components/flag-icons.html",
+      "referenceUrl": "",
+      "readyEvent": "",
+      "readySelector": "",
+      "delay": 0,
+      "hideSelectors": [],
+      "removeSelectors": [],
+      "hoverSelector": "",
+      "clickSelector": "",
+      "postInteractionWait": "",
+      "selectors": [
+        ".test-flag-icons"
+      ],
+      "selectorExpansion": true,
+      "misMatchThreshold": 0,
+      "requireSameDimensions": true
+    },
+    {
       "label": "footer",
       "cookiePath": "",
       "url": "http://localhost:8000/tests/components/footer.html",

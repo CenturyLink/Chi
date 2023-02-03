@@ -22,6 +22,12 @@
           }
         }
       }
+
+      &.-expandable {
+        .chi-tooltip {
+          white-space: pre;
+        }
+      }
     }
   }
 }

@@ -12,16 +12,6 @@ export type DataTableSizes = typeof DATA_TABLE_SIZE[number];
 export const DATA_TABLE_EXPANSION_ICON_STYLES = ['portal', 'base'] as const;
 export type DataTableRowLevels = 'parent' | 'child' | 'grandChild';
 export type PrintModes = 'full' | 'printonly' | 'screenonly';
-export interface DataTableExpansionIcons {
-  portal: {
-    expanded: string;
-    collapsed: string;
-  };
-  base: {
-    expanded: string;
-    collapsed: string;
-  };
-}
 export type DataTableExpansionIconStyles = typeof DATA_TABLE_EXPANSION_ICON_STYLES[number];
 export const DATA_TABLE_SCREEN_BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type DataTableScreenBreakpoints = typeof DATA_TABLE_SCREEN_BREAKPOINTS[number];
