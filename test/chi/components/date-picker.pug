@@ -10,6 +10,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 -  const weekS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 -  const today = 19;
 -  const active = 23;
+-  const padZero = value => ('0' + value).slice(-2);
 
 .test-base.-py--2
   span.-text--h2 Base
@@ -229,160 +230,6 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
           else
             .chi-datepicker__day=day++
 
-.test-time-format-24hr-picker.-py--2(style="height: 450px;")
-  span.-text--h2
-    | Date Picker with 24 hours format Time Picker
-    .-position--relative(style='width:14rem;')
-      .-time.sc-chi-date-picker
-        .chi-input__wrapper.-icon--right.sc-chi-date-picker
-          input#dp-36b2c6a9-65b1-4621-b224-df6249630352-control.chi-input.-focus.sc-chi-date-picker(type='text' value='11/22/2018, 00:00')
-          .chi-icon.undefined.sc-chi-icon
-            svg.sc-chi-icon(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-              use.sc-chi-icon(xlink:href='#icon-date')
-        section.chi-popover.-animated.chi-popover--bottom-start.-no-arrow.-active.chi-popover__input.sc-chi-popover(role='dialog' aria-modal='true' x-placement='bottom-start' style='position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);')
-          .chi-popover__content.sc-chi-popover.sc-chi-popover-s
-            .-d--flex.sc-chi-date-picker
-              .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu.sc-chi-date
-                .chi-datepicker__month-row.sc-chi-date
-                  .prev.-disabled.sc-chi-date
-                    .chi-icon.-sm.undefined.sc-chi-icon
-                      svg.sc-chi-icon(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                        use.sc-chi-icon(xlink:href='#icon-chevron-left')
-                  .chi-datepicker__month.sc-chi-date
-                    | November
-                    | 2018
-                  .next.sc-chi-date
-                    .chi-icon.-sm.undefined.sc-chi-icon
-                      svg.sc-chi-icon(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                        use.sc-chi-icon(xlink:href='#icon-chevron-right')
-                .chi-datepicker__day-names.sc-chi-date
-                  .chi-datepicker__week-day.sc-chi-date S
-                  .chi-datepicker__week-day.sc-chi-date M
-                  .chi-datepicker__week-day.sc-chi-date T
-                  .chi-datepicker__week-day.sc-chi-date W
-                  .chi-datepicker__week-day.sc-chi-date T
-                  .chi-datepicker__week-day.sc-chi-date F
-                  .chi-datepicker__week-day.sc-chi-date S
-                .chi-datepicker__days.sc-chi-date
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/01/2018') 1
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/02/2018') 2
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/03/2018') 3
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/04/2018') 4
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/05/2018') 5
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/06/2018') 6
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/07/2018') 7
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/08/2018') 8
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/09/2018') 9
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/10/2018') 10
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/11/2018') 11
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/12/2018') 12
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/13/2018') 13
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/14/2018') 14
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/15/2018') 15
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/16/2018') 16
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/17/2018') 17
-                  .chi-datepicker__day.-inactive.sc-chi-date(data-date='11/18/2018') 18
-                  .chi-datepicker__day.sc-chi-date(data-date='11/19/2018') 19
-                  .chi-datepicker__day.sc-chi-date(data-date='11/20/2018') 20
-                  .chi-datepicker__day.sc-chi-date(data-date='11/21/2018') 21
-                  .chi-datepicker__day.-active.sc-chi-date(data-date='11/22/2018') 22
-                  .chi-datepicker__day.sc-chi-date(data-date='11/23/2018') 23
-                  .chi-datepicker__day.sc-chi-date(data-date='11/24/2018') 24
-                  .chi-datepicker__day.sc-chi-date(data-date='11/25/2018') 25
-                  .chi-datepicker__day.sc-chi-date(data-date='11/26/2018') 26
-                  .chi-datepicker__day.sc-chi-date(data-date='11/27/2018') 27
-                  .chi-datepicker__day.sc-chi-date(data-date='11/28/2018') 28
-                  .chi-datepicker__day.sc-chi-date(data-date='11/29/2018') 29
-                  .chi-datepicker__day.sc-chi-date(data-date='11/30/2018') 30
-              .chi-time-picker.sc-chi-time
-                .chi-time-picker__content.sc-chi-time
-                  .chi-time-picker__hours.sc-chi-time
-                    .chi-time-picker__hour.-active.sc-chi-time(data-hour='00') 00
-                    .chi-time-picker__hour.sc-chi-time(data-hour='01') 01
-                    .chi-time-picker__hour.sc-chi-time(data-hour='02') 02
-                    .chi-time-picker__hour.sc-chi-time(data-hour='03') 03
-                    .chi-time-picker__hour.sc-chi-time(data-hour='04') 04
-                    .chi-time-picker__hour.sc-chi-time(data-hour='05') 05
-                    .chi-time-picker__hour.sc-chi-time(data-hour='06') 06
-                    .chi-time-picker__hour.sc-chi-time(data-hour='07') 07
-                    .chi-time-picker__hour.sc-chi-time(data-hour='08') 08
-                    .chi-time-picker__hour.sc-chi-time(data-hour='09') 09
-                    .chi-time-picker__hour.sc-chi-time(data-hour='10') 10
-                    .chi-time-picker__hour.sc-chi-time(data-hour='11') 11
-                    .chi-time-picker__hour.sc-chi-time(data-hour='12') 12
-                    .chi-time-picker__hour.sc-chi-time(data-hour='13') 13
-                    .chi-time-picker__hour.sc-chi-time(data-hour='14') 14
-                    .chi-time-picker__hour.sc-chi-time(data-hour='15') 15
-                    .chi-time-picker__hour.sc-chi-time(data-hour='16') 16
-                    .chi-time-picker__hour.sc-chi-time(data-hour='17') 17
-                    .chi-time-picker__hour.sc-chi-time(data-hour='18') 18
-                    .chi-time-picker__hour.sc-chi-time(data-hour='19') 19
-                    .chi-time-picker__hour.sc-chi-time(data-hour='20') 20
-                    .chi-time-picker__hour.sc-chi-time(data-hour='21') 21
-                    .chi-time-picker__hour.sc-chi-time(data-hour='22') 22
-                    .chi-time-picker__hour.sc-chi-time(data-hour='23') 23
-                  .chi-time-picker__minutes.sc-chi-time
-                    .chi-time-picker__minute.-active.sc-chi-time 00
-                    .chi-time-picker__minute.sc-chi-time 01
-                    .chi-time-picker__minute.sc-chi-time 02
-                    .chi-time-picker__minute.sc-chi-time 03
-                    .chi-time-picker__minute.sc-chi-time 04
-                    .chi-time-picker__minute.sc-chi-time 05
-                    .chi-time-picker__minute.sc-chi-time 06
-                    .chi-time-picker__minute.sc-chi-time 07
-                    .chi-time-picker__minute.sc-chi-time 08
-                    .chi-time-picker__minute.sc-chi-time 09
-                    .chi-time-picker__minute.sc-chi-time 10
-                    .chi-time-picker__minute.sc-chi-time 11
-                    .chi-time-picker__minute.sc-chi-time 12
-                    .chi-time-picker__minute.sc-chi-time 13
-                    .chi-time-picker__minute.sc-chi-time 14
-                    .chi-time-picker__minute.sc-chi-time 15
-                    .chi-time-picker__minute.sc-chi-time 16
-                    .chi-time-picker__minute.sc-chi-time 17
-                    .chi-time-picker__minute.sc-chi-time 18
-                    .chi-time-picker__minute.sc-chi-time 19
-                    .chi-time-picker__minute.sc-chi-time 20
-                    .chi-time-picker__minute.sc-chi-time 21
-                    .chi-time-picker__minute.sc-chi-time 22
-                    .chi-time-picker__minute.sc-chi-time 23
-                    .chi-time-picker__minute.sc-chi-time 24
-                    .chi-time-picker__minute.sc-chi-time 25
-                    .chi-time-picker__minute.sc-chi-time 26
-                    .chi-time-picker__minute.sc-chi-time 27
-                    .chi-time-picker__minute.sc-chi-time 28
-                    .chi-time-picker__minute.sc-chi-time 29
-                    .chi-time-picker__minute.sc-chi-time 30
-                    .chi-time-picker__minute.sc-chi-time 31
-                    .chi-time-picker__minute.sc-chi-time 32
-                    .chi-time-picker__minute.sc-chi-time 33
-                    .chi-time-picker__minute.sc-chi-time 34
-                    .chi-time-picker__minute.sc-chi-time 35
-                    .chi-time-picker__minute.sc-chi-time 36
-                    .chi-time-picker__minute.sc-chi-time 37
-                    .chi-time-picker__minute.sc-chi-time 38
-                    .chi-time-picker__minute.sc-chi-time 39
-                    .chi-time-picker__minute.sc-chi-time 40
-                    .chi-time-picker__minute.sc-chi-time 41
-                    .chi-time-picker__minute.sc-chi-time 42
-                    .chi-time-picker__minute.sc-chi-time 43
-                    .chi-time-picker__minute.sc-chi-time 44
-                    .chi-time-picker__minute.sc-chi-time 45
-                    .chi-time-picker__minute.sc-chi-time 46
-                    .chi-time-picker__minute.sc-chi-time 47
-                    .chi-time-picker__minute.sc-chi-time 48
-                    .chi-time-picker__minute.sc-chi-time 49
-                    .chi-time-picker__minute.sc-chi-time 50
-                    .chi-time-picker__minute.sc-chi-time 51
-                    .chi-time-picker__minute.sc-chi-time 52
-                    .chi-time-picker__minute.sc-chi-time 53
-                    .chi-time-picker__minute.sc-chi-time 54
-                    .chi-time-picker__minute.sc-chi-time 55
-                    .chi-time-picker__minute.sc-chi-time 56
-                    .chi-time-picker__minute.sc-chi-time 57
-                    .chi-time-picker__minute.sc-chi-time 58
-                    .chi-time-picker__minute.sc-chi-time 59
-
 .test-time-format-24hr-view.-py--2
   span.-text--h2 Test time format view
   .-d--flex
@@ -401,133 +248,21 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
                 svg.sc-chi-icon(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
                   use.sc-chi-icon(xlink:href='#icon-chevron-right')
         .chi-datepicker__day-names.sc-chi-date
-          .chi-datepicker__week-day.sc-chi-date S
-          .chi-datepicker__week-day.sc-chi-date M
-          .chi-datepicker__week-day.sc-chi-date T
-          .chi-datepicker__week-day.sc-chi-date W
-          .chi-datepicker__week-day.sc-chi-date T
-          .chi-datepicker__week-day.sc-chi-date F
-          .chi-datepicker__week-day.sc-chi-date S
+          each weekDay in weekS
+            .chi-datepicker__week-day.sc-chi-date=weekDay
         .chi-datepicker__days.sc-chi-date
-          .chi-datepicker__day.sc-chi-date(data-date='11/01/2018') 1
-          .chi-datepicker__day.sc-chi-date(data-date='11/02/2018') 2
-          .chi-datepicker__day.sc-chi-date(data-date='11/03/2018') 3
-          .chi-datepicker__day.sc-chi-date(data-date='11/04/2018') 4
-          .chi-datepicker__day.sc-chi-date(data-date='11/05/2018') 5
-          .chi-datepicker__day.sc-chi-date(data-date='11/06/2018') 6
-          .chi-datepicker__day.sc-chi-date(data-date='11/07/2018') 7
-          .chi-datepicker__day.sc-chi-date(data-date='11/08/2018') 8
-          .chi-datepicker__day.sc-chi-date(data-date='11/09/2018') 9
-          .chi-datepicker__day.sc-chi-date(data-date='11/10/2018') 10
-          .chi-datepicker__day.sc-chi-date(data-date='11/11/2018') 11
-          .chi-datepicker__day.sc-chi-date(data-date='11/12/2018') 12
-          .chi-datepicker__day.sc-chi-date(data-date='11/13/2018') 13
-          .chi-datepicker__day.sc-chi-date(data-date='11/14/2018') 14
-          .chi-datepicker__day.sc-chi-date(data-date='11/15/2018') 15
-          .chi-datepicker__day.sc-chi-date(data-date='11/16/2018') 16
-          .chi-datepicker__day.sc-chi-date(data-date='11/17/2018') 17
-          .chi-datepicker__day.sc-chi-date(data-date='11/18/2018') 18
-          .chi-datepicker__day.sc-chi-date(data-date='11/19/2018') 19
-          .chi-datepicker__day.sc-chi-date(data-date='11/20/2018') 20
-          .chi-datepicker__day.sc-chi-date(data-date='11/21/2018') 21
-          .chi-datepicker__day.sc-chi-date(data-date='11/22/2018') 22
-          .chi-datepicker__day.-active.sc-chi-date(data-date='11/23/2018') 23
-          .chi-datepicker__day.sc-chi-date(data-date='11/24/2018') 24
-          .chi-datepicker__day.sc-chi-date(data-date='11/25/2018') 25
-          .chi-datepicker__day.sc-chi-date(data-date='11/26/2018') 26
-          .chi-datepicker__day.sc-chi-date(data-date='11/27/2018') 27
-          .chi-datepicker__day.sc-chi-date(data-date='11/28/2018') 28
-          .chi-datepicker__day.sc-chi-date(data-date='11/29/2018') 29
-          .chi-datepicker__day.sc-chi-date(data-date='11/30/2018') 30
+          - for (let day = 1; day < 31; day++)
+            .chi-datepicker__day.sc-chi-date(class=day === 23 ? '-active' : '')=day
+
     div.sc-chi-time-h.sc-chi-time-s.hydrated
       .chi-time-picker.sc-chi-time
         .chi-time-picker__content.sc-chi-time
           .chi-time-picker__hours.sc-chi-time
-            .chi-time-picker__hour.-active.sc-chi-time(data-hour='00') 00
-            .chi-time-picker__hour.sc-chi-time(data-hour='01') 01
-            .chi-time-picker__hour.sc-chi-time(data-hour='02') 02
-            .chi-time-picker__hour.sc-chi-time(data-hour='03') 03
-            .chi-time-picker__hour.sc-chi-time(data-hour='04') 04
-            .chi-time-picker__hour.sc-chi-time(data-hour='05') 05
-            .chi-time-picker__hour.sc-chi-time(data-hour='06') 06
-            .chi-time-picker__hour.sc-chi-time(data-hour='07') 07
-            .chi-time-picker__hour.sc-chi-time(data-hour='08') 08
-            .chi-time-picker__hour.sc-chi-time(data-hour='09') 09
-            .chi-time-picker__hour.sc-chi-time(data-hour='10') 10
-            .chi-time-picker__hour.sc-chi-time(data-hour='11') 11
-            .chi-time-picker__hour.sc-chi-time(data-hour='12') 12
-            .chi-time-picker__hour.sc-chi-time(data-hour='13') 13
-            .chi-time-picker__hour.sc-chi-time(data-hour='14') 14
-            .chi-time-picker__hour.sc-chi-time(data-hour='15') 15
-            .chi-time-picker__hour.sc-chi-time(data-hour='16') 16
-            .chi-time-picker__hour.sc-chi-time(data-hour='17') 17
-            .chi-time-picker__hour.sc-chi-time(data-hour='18') 18
-            .chi-time-picker__hour.sc-chi-time(data-hour='19') 19
-            .chi-time-picker__hour.sc-chi-time(data-hour='20') 20
-            .chi-time-picker__hour.sc-chi-time(data-hour='21') 21
-            .chi-time-picker__hour.sc-chi-time(data-hour='22') 22
-            .chi-time-picker__hour.sc-chi-time(data-hour='23') 23
+            - for (let hour = 0; hour < 24; hour++)
+              .chi-time-picker__hour.sc-chi-time(class=hour === 0 ? '-active' : '')=padZero(hour)
           .chi-time-picker__minutes.sc-chi-time
-            .chi-time-picker__minute.-active.sc-chi-time 00
-            .chi-time-picker__minute.sc-chi-time 01
-            .chi-time-picker__minute.sc-chi-time 02
-            .chi-time-picker__minute.sc-chi-time 03
-            .chi-time-picker__minute.sc-chi-time 04
-            .chi-time-picker__minute.sc-chi-time 05
-            .chi-time-picker__minute.sc-chi-time 06
-            .chi-time-picker__minute.sc-chi-time 07
-            .chi-time-picker__minute.sc-chi-time 08
-            .chi-time-picker__minute.sc-chi-time 09
-            .chi-time-picker__minute.sc-chi-time 10
-            .chi-time-picker__minute.sc-chi-time 11
-            .chi-time-picker__minute.sc-chi-time 12
-            .chi-time-picker__minute.sc-chi-time 13
-            .chi-time-picker__minute.sc-chi-time 14
-            .chi-time-picker__minute.sc-chi-time 15
-            .chi-time-picker__minute.sc-chi-time 16
-            .chi-time-picker__minute.sc-chi-time 17
-            .chi-time-picker__minute.sc-chi-time 18
-            .chi-time-picker__minute.sc-chi-time 19
-            .chi-time-picker__minute.sc-chi-time 20
-            .chi-time-picker__minute.sc-chi-time 21
-            .chi-time-picker__minute.sc-chi-time 22
-            .chi-time-picker__minute.sc-chi-time 23
-            .chi-time-picker__minute.sc-chi-time 24
-            .chi-time-picker__minute.sc-chi-time 25
-            .chi-time-picker__minute.sc-chi-time 26
-            .chi-time-picker__minute.sc-chi-time 27
-            .chi-time-picker__minute.sc-chi-time 28
-            .chi-time-picker__minute.sc-chi-time 29
-            .chi-time-picker__minute.sc-chi-time 30
-            .chi-time-picker__minute.sc-chi-time 31
-            .chi-time-picker__minute.sc-chi-time 32
-            .chi-time-picker__minute.sc-chi-time 33
-            .chi-time-picker__minute.sc-chi-time 34
-            .chi-time-picker__minute.sc-chi-time 35
-            .chi-time-picker__minute.sc-chi-time 36
-            .chi-time-picker__minute.sc-chi-time 37
-            .chi-time-picker__minute.sc-chi-time 38
-            .chi-time-picker__minute.sc-chi-time 39
-            .chi-time-picker__minute.sc-chi-time 40
-            .chi-time-picker__minute.sc-chi-time 41
-            .chi-time-picker__minute.sc-chi-time 42
-            .chi-time-picker__minute.sc-chi-time 43
-            .chi-time-picker__minute.sc-chi-time 44
-            .chi-time-picker__minute.sc-chi-time 45
-            .chi-time-picker__minute.sc-chi-time 46
-            .chi-time-picker__minute.sc-chi-time 47
-            .chi-time-picker__minute.sc-chi-time 48
-            .chi-time-picker__minute.sc-chi-time 49
-            .chi-time-picker__minute.sc-chi-time 50
-            .chi-time-picker__minute.sc-chi-time 51
-            .chi-time-picker__minute.sc-chi-time 52
-            .chi-time-picker__minute.sc-chi-time 53
-            .chi-time-picker__minute.sc-chi-time 54
-            .chi-time-picker__minute.sc-chi-time 55
-            .chi-time-picker__minute.sc-chi-time 56
-            .chi-time-picker__minute.sc-chi-time 57
-            .chi-time-picker__minute.sc-chi-time 58
-            .chi-time-picker__minute.sc-chi-time 59
+            - for (let minute = 0; minute < 60; minute++)
+              .chi-time-picker__minute.sc-chi-time(class=minute === 0 ? '-active' : '')=padZero(minute)
 
 script.
   document.addEventListener(

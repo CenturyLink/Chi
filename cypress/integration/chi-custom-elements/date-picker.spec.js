@@ -279,15 +279,20 @@ describe('Date picker', function() {
       .focus()
       .get('@testTimeFormat')
       .find('chi-popover[active]')
-      .should('have.attr', 'active')
-      .get('@testTimeFormat')
+      .should('have.attr', 'active');
+
+    // Select hours
+    cy.get('@testTimeFormat')
       .find('chi-popover[active]')
       .find(`[data-hour="${hours}"]`)
-      .click()
-      .get('@testTimeFormat')
+      .click();
+
+    // Select minutes
+    cy.get('@testTimeFormat')
       .find('.chi-time-picker__minute').contains(minutes)
-      .click()
-      .get('@testTimeFormat')
+      .click();
+
+    cy.get('@testTimeFormat')
       .find('input.sc-chi-date-picker')
       .should('have.value', `11/22/2018, ${hours}:${minutes}`);
   });
