@@ -10,7 +10,7 @@ h4 Default
   .-p--1
     chi-alert(icon='circle-info').-m--2
       | This is a base alert
-    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+    each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(color=type, icon=val)
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
@@ -36,7 +36,7 @@ h4 Default
         This is a success alert
       </chi-alert>
       <!-- Danger -->
-      <chi-alert color="danger" icon="circle-warning">
+      <chi-alert color="danger" icon="circle-x">
         This is a danger alert
       </chi-alert>
       <!-- Warning -->
@@ -74,7 +74,7 @@ h4 Default
       </div>
       <!-- Danger -->
       <div class="chi-alert -danger" role="alert">
-        <i class="chi-alert__icon chi-icon icon-circle-warning" aria-hidden="true"></i>
+        <i class="chi-alert__icon chi-icon icon-circle-x" aria-hidden="true"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is a danger alert</p>
         </div>
@@ -109,7 +109,7 @@ h4 Default
     | Centered alerts do not support titles.
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(color='danger', icon='circle-warning', center)
+      chi-alert.-m--2(color='danger', icon='circle-x', center)
         | This is a centered danger alert
     .example-tabs.-pl--2
       ul.chi-tabs#example-centered
@@ -121,7 +121,7 @@ h4 Default
       .chi-tab__description
         | Use the attribute <code>center</code> to center the content of a Bubble Alert.
       :code(lang="html")
-        <chi-alert color="danger" icon="circle-warning" center>
+        <chi-alert color="danger" icon="circle-x" center>
           This is a centered danger alert
         </chi-alert>
     .chi-tabs-panel#html-centered
@@ -129,7 +129,7 @@ h4 Default
         | Apply the class <code>-center</code> to center the content of a Bubble Alert.
       :code(lang="html")
         <div class="chi-alert -danger -center" role="alert">
-          <i class="chi-alert__icon chi-icon icon-circle-warning" aria-hidden="true"></i>
+          <i class="chi-alert__icon chi-icon icon-circle-x" aria-hidden="true"></i>
           <div class="chi-alert__content">
             <p class="chi-alert__text">This is a centered danger alert</p>
           </div>
@@ -142,7 +142,7 @@ p.-text
   .-p--1
     chi-alert(icon='circle-info', title="Base").-m--2
       | This is a base alert
-    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+    each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(color=type, icon=val, title=type)
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
@@ -164,7 +164,7 @@ p.-text
         This is a success alert
       </chi-alert>
       <!-- Danger -->
-      <chi-alert color="danger" icon="circle-warning" title="Danger">
+      <chi-alert color="danger" icon="circle-x" title="Danger">
         This is a danger alert
       </chi-alert>
       <!-- Warning -->
@@ -202,7 +202,7 @@ p.-text
       </div>
       <!-- Danger -->
       <div class="chi-alert -danger" role="alert">
-        <i class="chi-alert__icon chi-icon icon-circle-warning" aria-hidden="true"></i>
+        <i class="chi-alert__icon chi-icon icon-circle-x" aria-hidden="true"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__title">Danger</p>
           <p class="chi-alert__text">This is a danger alert</p>
@@ -789,7 +789,7 @@ p.-text
     .-p--1
       chi-alert.-m--2(type='banner', icon='circle-info')
         | This is a base alert
-      each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
         chi-alert.-m--2(color=type, icon=val, type='banner')
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
     .example-tabs.-pl--2
@@ -809,7 +809,7 @@ p.-text
           This is a success alert
         </chi-alert>
         <!-- Danger -->
-        <chi-alert type="banner" icon="circle-warning" color="danger">
+        <chi-alert type="banner" icon="circle-x" color="danger">
           This is a danger alert
         </chi-alert>
         <!-- Warning -->
@@ -842,7 +842,7 @@ p.-text
         </div>
         <!-- Danger -->
         <div class="chi-alert -banner -danger" role="alert">
-          <i class="chi-alert__icon chi-icon icon-circle-warning" aria-hidden="true"></i>
+          <i class="chi-alert__icon chi-icon icon-circle-x" aria-hidden="true"></i>
           <div class="chi-alert__content">
             <p class="chi-alert__text">This is a danger alert</p>
           </div>
@@ -875,7 +875,7 @@ p.-text
     | Centered Banner alerts should only be used to render brief messages. Centered alerts do not support titles.
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(type='banner', icon='circle-warning', color='danger', center)
+      chi-alert.-m--2(type='banner', icon='circle-x', color='danger', center)
         | This is a centered danger alert
     .example-tabs.-pl--2
       ul.chi-tabs#example-banner-centered
@@ -887,7 +887,7 @@ p.-text
       .chi-tab__description
         | Use the attribute <code>center</code> to center the content of a Banner Alert.
       :code(lang="html")
-        <chi-alert type="banner" icon="circle-warning" color="danger" center>
+        <chi-alert type="banner" icon="circle-x" color="danger" center>
           This is a centered danger alert
         </chi-alert>
     .chi-tabs-panel#html-banner-centered
@@ -895,7 +895,7 @@ p.-text
         | Apply the class <code>-center</code> to center the content of a Banner Alert.
       :code(lang="html")
         <div class="chi-alert -banner -danger -center" role="alert">
-          <i class="chi-alert__icon chi-icon icon-circle-warning" aria-hidden="true"></i>
+          <i class="chi-alert__icon chi-icon icon-circle-x" aria-hidden="true"></i>
           <div class="chi-alert__content">
             <p class="chi-alert__text">This is a centered danger alert</p>
           </div>
@@ -909,7 +909,7 @@ p.-text
     .-p--1
       chi-alert.-m--2(type='banner', icon='circle-info', title="Base")
         | This is a base alert
-      each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+      each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
         chi-alert.-m--2(color=type, type='banner', icon=val, title=type)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
     .example-tabs.-pl--2
@@ -931,7 +931,7 @@ p.-text
           This is a success alert
         </chi-alert>
         <!-- Danger -->
-        <chi-alert type="banner" icon="circle-warning" color="danger" title="Danger">
+        <chi-alert type="banner" icon="circle-x" color="danger" title="Danger">
           This is a danger alert
         </chi-alert>
         <!-- Warning -->
@@ -968,7 +968,7 @@ p.-text
         </div>
         <!-- Danger -->
         <div class="chi-alert -banner -danger" role="alert">
-          <i class="chi-alert__icon chi-icon icon-circle-warning" aria-hidden="true"></i>
+          <i class="chi-alert__icon chi-icon icon-circle-x" aria-hidden="true"></i>
           <div class="chi-alert__content">
             <p class="chi-alert__title">Danger</p>
             <p class="chi-alert__text">This is a danger alert</p>
@@ -1229,7 +1229,7 @@ h4 Default
   .-p--1
     chi-alert.-m--2(type='toast', icon='circle-info')
       | This is a base alert
-    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+    each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(type='toast', icon=val, color=type)
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
@@ -1251,7 +1251,7 @@ h4 Default
         This is a success alert
       </chi-alert>
       <!-- Danger -->
-      <chi-alert type="toast" color="danger" icon="circle-warning">
+      <chi-alert type="toast" color="danger" icon="circle-x">
         This is a danger alert
       </chi-alert>
       <!-- Warning -->
@@ -1296,7 +1296,7 @@ h4 Default
       </div>
       <!-- Danger -->
       <div class="chi-alert -toast -danger" role="alert">
-        <i class="chi-alert__icon chi-icon icon-circle-warning" aria-hidden="true"></i>
+        <i class="chi-alert__icon chi-icon icon-circle-x" aria-hidden="true"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is a danger alert</p>
         </div>
@@ -1348,7 +1348,7 @@ h4 Titled
   .-p--1
     chi-alert.-m--2(type='toast', icon='circle-info', title="Base")
       | This is a base alert
-    each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
+    each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(type='toast', color=type, icon=val, title=type)
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
@@ -1368,7 +1368,7 @@ h4 Titled
         This is a success alert
       </chi-alert>
       <!-- Danger -->
-      <chi-alert type="toast" color="danger" icon="circle-warning" title="Danger">
+      <chi-alert type="toast" color="danger" icon="circle-x" title="Danger">
         This is a danger alert
       </chi-alert>
       <!-- Warning -->
@@ -1413,7 +1413,7 @@ h4 Titled
       </div>
       <!-- Danger -->
       <div class="chi-alert -toast -danger" role="alert">
-        <i class="chi-alert__icon chi-icon icon-circle-warning" aria-hidden="true"></i>
+        <i class="chi-alert__icon chi-icon icon-circle-x" aria-hidden="true"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__title">Danger</p>
           <p class="chi-alert__text">This is a danger alert</p>
