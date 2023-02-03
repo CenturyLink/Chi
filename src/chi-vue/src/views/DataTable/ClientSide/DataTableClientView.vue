@@ -15,6 +15,8 @@
       @chiRowDeselected="e => this.rowDeselected(e)"
       @chiSelectAll="e => this.chiSelectAll(e)"
       @chiDeselectAll="e => this.chiDeselectAll(e)"
+      @chiExpandAll="e => this.chiExpandAll(e)"
+      @chiCollapseAll="e => this.chiCollapseAll(e)"
     >
       <template #alertsDesc="payload">
         <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
@@ -33,8 +35,8 @@
         </div>
       </template>
       <template #actions="payload">
-        <desktopActions :id="payload.id" />
-        <mobileActions :id="payload.id" />
+        <DesktopActions :id="payload.id" />
+        <MobileActions :id="payload.id" />
       </template>
       <template #accordionContent="payload">
         <div class="chi-alert -success" role="alert">
@@ -174,8 +176,8 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import DataTable from '../../../components/data-table/DataTable';
-import desktopActions from '../DataTableTemplates/example-desktop-actions.vue';
-import mobileActions from '../DataTableTemplates/example-mobile-actions.vue';
+import DesktopActions from '../DataTableTemplates/example-desktop-actions.vue';
+import MobileActions from '../DataTableTemplates/example-mobile-actions.vue';
 import DownloadButtonIcon from '../DataTableTemplates/example-download.vue';
 import TicketPopover from '../DataTableTemplates/example-popover.vue';
 import DataTableBulkActions from '../../../components/data-table-bulk-actions/DataTableBulkActions';
@@ -197,8 +199,8 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     ChiDataTableFilters: DataTableFilters,
     ChiColumnCustomization: ColumnCustomization,
     ChiDataTableSaveView: SaveView,
-    desktopActions,
-    mobileActions,
+    DesktopActions,
+    MobileActions,
     DownloadButtonIcon,
     TicketPopover,
     ChiDataTableViews: DataTableViews,
@@ -270,6 +272,12 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     },
     printTable() {
       (this.$refs.dataTable as DataTable).print('DataTable Client - Print');
+    },
+    chiExpandAll: e => {
+      console.log('chiExpandAll', e);
+    },
+    chiCollapseAll: e => {
+      console.log('chiCollapseAll', e);
     },
   },
   data: () => {
