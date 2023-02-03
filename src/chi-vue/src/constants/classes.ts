@@ -256,6 +256,14 @@ export const TOOLTIP_CLASSES = {
 };
 //#endregion
 
+//#region Dropdown
+export const DROPDOWN_CLASSES = {
+  DROPDOWN: 'chi-dropdown',
+  MENU: 'chi-dropdown__menu',
+  MENU_ITEM: 'chi-dropdown__menu-item',
+};
+//#endregion
+
 //#region Utility Classes
 export const UTILITY_CLASSES = {
   Z_INDEX: {

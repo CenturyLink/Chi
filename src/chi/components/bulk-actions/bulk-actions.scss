@@ -67,6 +67,7 @@
 
     @include respond-to(md) {
       display: flex;
+      align-items: center;
       font-size: $bulk-actions-results-font-size;
     }
 
