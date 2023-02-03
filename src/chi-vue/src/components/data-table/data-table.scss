@@ -44,15 +44,6 @@
       }
     }
   }
-
-  // TODO: Remove once Chi version is updated
-  .-cell-wrap {
-    display: -webkit-box;
-    overflow: hidden;
-    white-space: normal;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-  }
 }
 
 // TODO: To be removed when all µApp's Chi version is higher than v5.0
@@ -116,6 +107,14 @@ $font-weight-semi-bold: 600;
         position: relative;
         text-align: start;
         white-space: normal;
+        
+        &.-selectable {
+          .chi-dropdown {
+            left: 2.5rem;
+            position: absolute;
+            z-index: 1;
+          }
+        }
       }
     }
 
