@@ -127,6 +127,12 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           }
         }
       }
+
+      &.-expandable {
+        .chi-tooltip {
+          white-space: pre;
+        }
+      }
     }
 
     .-truncated {
@@ -309,7 +315,7 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
       .chi-icon {
         &.icon-plus,
         &.icon-minus {
-          color: $color-icon-primary;
+          color: $data-table-row-expandable-icon;
         }
       }
 
@@ -528,6 +534,14 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
 
           .chi-data-table__cell {
             border-bottom: 0.0625rem solid $color-border-base-dark;
+
+            &.-selectable {
+              .chi-dropdown {
+                left: 2.5rem;
+                position: absolute;
+                z-index: 1;
+              }
+            }
           }
 
           &:last-child {
@@ -589,7 +603,7 @@ $bg-url: $bg-url + ' fill="%230262b9" fill-rule="evenodd"/%3E%3C/svg%3E';
           .chi-icon {
             &.icon-plus,
             &.icon-minus {
-              color: $color-icon-primary;
+              color: $data-table-row-expandable-icon;
             }
           }
         }

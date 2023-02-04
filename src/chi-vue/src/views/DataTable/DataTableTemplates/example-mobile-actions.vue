@@ -1,15 +1,15 @@
 <template>
   <div class="chi-data-table__cell-mobile -actions">
-    <button id="modal-trigger-1" class="chi-button -icon -flat chi-modal__trigger" data-target="#modal-1">
+    <button ref="modalTrigger" class="chi-button -icon -flat chi-modal__trigger" data-target="#modal-actions">
       <div class="chi-button__content">
         <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
       </div>
     </button>
 
     <!-- Modal -->
-    <div class="chi-backdrop -closed">
+    <div class="chi-backdrop -mobile-bottom -closed">
       <div class="chi-backdrop__wrapper">
-        <section id="modal-1" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+        <section id="modal-actions" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
           <header class="chi-modal__header">
             <h2 class="chi-modal__title">Modal Title</h2>
             <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
@@ -34,18 +34,18 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-// eslint-disable-next-line
 declare const chi: any;
 
-@Component({
-  components: {},
-  props: {
-    id: String,
-  },
-})
-export default class ExampleActions extends Vue {
+@Component({})
+export default class MobileActions extends Vue {
+  modalTrigger: any;
+
   mounted() {
-    chi.dropdown(this.$refs.dropdownTrigger);
+    this.modalTrigger = chi.modal(this.$refs.modalTrigger);
+  }
+
+  beforeDestroy() {
+    this.modalTrigger.dispose();
   }
 }
 </script>
