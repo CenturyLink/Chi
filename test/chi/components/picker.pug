@@ -2,170 +2,293 @@
 title: Picker
 ---
 
-- var sizes = ['sm', 'md', 'lg'];
+- var sizes = ['md', 'lg'];
 
-h2 Base
+.chi-grid.-no-gutter.-w--100
+  .chi-col.-w--12
+    h2 Multi-select pickers
+    .chi-grid.-no-gutter.-w--100
+      .chi-col.-w--12.-w-lg--6
+        h3 Base
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-base-${size}`)
+                fieldset
+                  legend.chi-label Select options
+                  each type in ['Checkbox1','Checkbox2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="checkbox", class="chi-picker__input", id=`i-${type}`)
+                      label(for=`i-${type}`)
+                        = type
+      .chi-col.-w--12.-w-lg--6
+        h3 Base checked
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-base-checked-${size}`)
+                fieldset
+                  legend.chi-label Select options
+                  each type in ['Checkbox1','Checkbox2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="checkbox", class="chi-picker__input", id=`i-checked-${type}`, checked=(type === 'Checkbox1'))
+                      label(for=`i-checked-${type}`)
+                        = type
+      .chi-col.-w--12.-w-lg--6
+        h3 Disabled
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-disabled-${size}`)
+                fieldset
+                  legend.chi-label Select options
+                  each type in ['Checkbox1','Checkbox2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="checkbox", class="chi-picker__input", id=`i-${type}`, disabled=(type === 'Checkbox1'))
+                      label(for=`i-${type}`)
+                        = type
+      .chi-col.-w--12.-w-lg--6
+        h3 Disabled checked
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-disabled-checked-${size}`)
+                fieldset
+                  legend.chi-label Select options
+                  each type in ['Checkbox1','Checkbox2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="checkbox", class="chi-picker__input", id=`i-checked-${type}`, checked=(type === 'Checkbox1'), disabled=(type === 'Checkbox1'))
+                      label(for=`i-checked-${type}`)
+                        = type
+      .chi-col.-w--12.-w-lg--6
+        h3 With checkbox
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-with-checkbox-${size}`)
+                fieldset
+                  legend.chi-label Select options
+                  each type in ['Checkbox1','Checkbox2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="checkbox", class="chi-picker__input", id=`ic-${type}`)
+                      label(for=`ic-${type}`)
+                        div.chi-form__item.-row
+                          span.chi-picker__checkbox
+                          span.chi-picker__label
+                            =type
+      .chi-col.-w--12.-w-lg--6
+        h3 With checkbox checked
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-with-checkbox-checked-${size}`)
+                fieldset
+                  legend.chi-label Select options
+                  each type in ['Checkbox1','Checkbox2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="checkbox", class="chi-picker__input", id=`ic-checked-${type}`, checked=(type === 'Checkbox1'))
+                      label(for=`ic-checked-${type}`)
+                        div.chi-form__item.-row
+                          span.chi-picker__checkbox
+                          span.chi-picker__label
+                            =type
+      .chi-col.-w--12.-w-lg--6
+        h3 With description
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-with-description-${size}`)
+                fieldset
+                  legend.chi-label Select options
+                  each type in ['Checkbox1','Checkbox2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="checkbox", class="chi-picker__input", id=`id-${type}`)
+                      label(for=`id-${type}`)
+                        .chi-picker__content--start
+                          .chi-form__item.-row
+                              span.chi-picker__checkbox
+                              span.chi-picker__label
+                                =type
+                          div.chi-picker__description
+                            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
+      .chi-col.-w--12.-w-lg--6
+        h3 With description checked
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-with-description-checked-${size}`)
+                fieldset
+                  legend.chi-label Select options
+                  each type in ['Checkbox1','Checkbox2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="checkbox", class="chi-picker__input", id=`id-checked-${type}`, checked=(type === 'Checkbox1'))
+                      label(for=`id-checked-${type}`)
+                        .chi-picker__content--start
+                          .chi-form__item.-row
+                              span.chi-picker__checkbox
+                              span.chi-picker__label
+                                =type
+                          div.chi-picker__description
+                            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
 
-h3 Type checkbox
-h4 Base
-.test-base
-  .example(style='width: 700px')
-    .-p--3
-      each type in ['Checkbox1','Checkbox2']
-        .chi-picker
-          input(type="checkbox", class="chi-picker__input", id=`i-${type}`)
-          label(for=`i-${type}`)
-            = type
-
-h4 Base checked
-.test-base-checked
-  .example(style='width: 700px')
-    .-p--3
-      each type in ['Checkbox1','Checkbox2']
-        .chi-picker
-          input(type="checkbox", class="chi-picker__input", id=`i-checked-${type}`, checked=(type === 'Checkbox1'))
-          label(for=`i-checked-${type}`)
-            = type
-
-h4 With checkbox
-.test-with-checkbox
-  .example(style='width: 700px')
-    .-p--3
-      each type in ['Checkbox1','Checkbox2']
-        .chi-picker
-          input(type="checkbox", class="chi-picker__input", id=`ic-${type}`)
-          label(for=`ic-${type}`)
-            div.chi-form__item.-row
-              span.chi-picker__checkbox
-              span.chi-picker__label
-                =type
-
-h4 With checkbox checked
-.test-with-checkbox-checked
-  .example(style='width: 700px')
-    .-p--3
-      each type in ['Checkbox1','Checkbox2']
-        .chi-picker
-          input(type="checkbox", class="chi-picker__input", id=`ic-checked-${type}`, checked=(type === 'Checkbox1'))
-          label(for=`ic-checked-${type}`)
-            div.chi-form__item.-row
-              span.chi-picker__checkbox
-              span.chi-picker__label
-                =type
-
-h4 With description
-.test-with-description
-  each type in ['Checkbox1','Checkbox2']
-    .chi-picker
-      input(type="checkbox", class="chi-picker__input", id=`id-${type}`)
-      label(for=`id-${type}`)
-        .chi-picker__content--start
-          .chi-form__item.-row
-              span.chi-picker__checkbox
-              span.chi-picker__label
-                =type
-          div.chi-picker__description
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
-
-h4 With description checked
-.test-with-description-checked
-  each type in ['Checkbox1','Checkbox2']
-    .chi-picker
-      input(type="checkbox", class="chi-picker__input", id=`id-checked-${type}`, checked=(type === 'Checkbox1'))
-      label(for=`id-checked-${type}`)
-        .chi-picker__content--start
-          .chi-form__item.-row
-              span.chi-picker__checkbox
-              span.chi-picker__label
-                =type
-          div.chi-picker__description
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
-
-h3 Type radio
-h4 Base
-.test-type-radio
-  .example(style='width: 700px')
-    .-p--3
-      fieldset(id='type-radio')
-        each type in ['Radio1','Radio2']
-          .chi-picker
-            input(type="radio", class="chi-picker__input", name='type-radio', id=`ei-${type}`)
-            label(for=`ei-${type}`)
-              = type
-
-h4 Base checked
-.test-type-radio-checked
-  .example(style='width: 700px')
-    .-p--3
-      fieldset(id='type-radio-checked')
-        each type in ['Radio1','Radio2']
-          .chi-picker
-            input(type="radio", class="chi-picker__input", name='type-radio-checked', id=`ei-checked-${type}`, checked=(type === 'Radio1'))
-            label(for=`ei-checked-${type}`)
-              = type
-
-h4 With radio
-.test-with-radio
-  .example.-mb--3(style='width: 700px')
-    .-p--3
-      fieldset(id='with-radio')
-        each type in ['Radio1','Radio2']
-          .chi-picker
-            input(type="radio", class="chi-picker__input", name='with-radio', id=`ri-${type}`)
-            label(for=`ri-${type}`)
-              .chi-form__item.-row
-                span.chi-picker__radio
-                span.chi-picker__label
-                  =type
-
-h4 With radio checked
-.test-with-radio-checked
-  .example.-mb--3(style='width: 700px')
-    .-p--3
-      fieldset(id='with-radio-checked')
-        each type in ['Radio1','Radio2']
-          .chi-picker
-            input(type="radio", class="chi-picker__input", name='with-radio-checked', id=`ri-checked-${type}`, checked=(type === 'Radio1'))
-            label(for=`ri-checked-${type}`)
-              .chi-form__item.-row
-                span.chi-picker__radio
-                span.chi-picker__label
-                  =type
-
-h4 With description
-.test-with-description
-  fieldset
-    legend.chi-label Legend
-    .chi-picker
-      input#ide-Radio1.chi-picker__input(name='with-radio-description', type='radio')
-      label(for='ide-Radio1')
-        .chi-picker__content--start
-          .chi-form__item.-row
-            span.chi-picker__radio
-            span.chi-picker__label(for='ri-Radio1') Radio1
-          .chi-picker__description
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
-    .chi-picker
-      input#ide-Radio2.chi-picker__input(name='with-radio-description', type='radio')
-      label(for='ide-Radio2')
-        .chi-picker__content--start
-          .chi-form__item.-row
-            span.chi-picker__radio
-            span.chi-picker__label(for='ri-Radio2') Radio2
-          .chi-picker__description
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
-
-h4 With description checked
-.test-with-description-checked
-  each type in ['Radio1','Radio2']
-    .chi-picker
-      input(type='radio', class='chi-picker__input', name='with-radio-description-checked', id=`id-checked-${type}`, checked=(type === 'Radio1'))
-      label(for=`id-checked-${type}`)
-        .chi-picker__content--start
-          .chi-form__item.-row
-              span.chi-picker__radio
-              span.chi-picker__label
-                =type
-          div.chi-picker__description
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
-
+  .chi-col.-w--12
+    h2 Single-select pickers
+    .chi-grid.-no-gutter.-w--100
+      .chi-col.-w--12.-w-lg--6
+        h3 Base
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-type-radio-${size}`)
+                fieldset(id='type-radio')
+                  legend.chi-label Legend
+                  each type in ['Radio1','Radio2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="radio", class="chi-picker__input", name='type-radio', id=`ei-${type}`)
+                      label(for=`ei-${type}`)
+                        = type
+      .chi-col.-w--12.-w-lg--6
+        h3 Base checked
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-type-radio-checked-${size}`)
+                fieldset(id='type-radio-checked')
+                  legend.chi-label Legend
+                  each type in ['Radio1','Radio2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="radio", class="chi-picker__input", name='type-radio-checked', id=`ei-checked-${type}`, checked=(type === 'Radio1'))
+                      label(for=`ei-checked-${type}`)
+                        = type
+      .chi-col.-w--12.-w-lg--6
+        h3 With radio
+        .example.-mb--3
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-with-radio-${size}`)
+                fieldset(id='with-radio')
+                  legend.chi-label Legend
+                  each type in ['Radio1','Radio2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="radio", class="chi-picker__input", name='with-radio', id=`ri-${type}`)
+                      label(for=`ri-${type}`)
+                        .chi-form__item.-row
+                          span.chi-picker__radio
+                          span.chi-picker__label
+                            =type
+      .chi-col.-w--12.-w-lg--6
+        h3 With radio checked
+        .example.-mb--3
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-with-radio-checked-${size}`)
+                fieldset(id='with-radio-checked')
+                  legend.chi-label Legend
+                  each type in ['Radio1','Radio2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="radio", class="chi-picker__input", name='with-radio-checked', id=`ri-checked-${type}`, checked=(type === 'Radio1'))
+                      label(for=`ri-checked-${type}`)
+                        .chi-form__item.-row
+                          span.chi-picker__radio
+                          span.chi-picker__label
+                            =type
+      .chi-col.-w--12.-w-lg--6
+        h3 With description
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-radio-with-description-${size}`)
+                fieldset
+                  legend.chi-label Legend
+                  each type in ['Radio1','Radio2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="radio", class="chi-picker__input", id=`id-checked-${type}`)
+                      label(for=`id-checked-${type}`)
+                        .chi-picker__content--start
+                          .chi-form__item.-row
+                              span.chi-picker__radio
+                              span.chi-picker__label
+                                =type
+                          div.chi-picker__description
+                            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
+      .chi-col.-w--12.-w-lg--6
+        h3 With description checked
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-radio-with-description-checked-${size}`)
+                fieldset
+                  legend.chi-label Legend
+                  each type in ['Radio1','Radio2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="radio", class="chi-picker__input", id=`id-checked-${type}`, checked=(type === 'Radio1'))
+                      label(for=`id-checked-${type}`)
+                        .chi-picker__content--start
+                          .chi-form__item.-row
+                              span.chi-picker__radio
+                              span.chi-picker__label
+                                =type
+                          div.chi-picker__description
+                            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
+      .chi-col.-w--12.-w-lg--6
+        h3 With price
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-radio-with-price-${size}`)
+                fieldset
+                  legend.chi-label Legend
+                  each type in ['Radio1','Radio2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="radio", class="chi-picker__input", id=`id-checked-${type}`)
+                      label(for=`id-checked-${type}`)
+                        .chi-picker__content
+                          .chi-picker__content--start.-w--100.-w-sm--65
+                            .chi-form__item.-row
+                              span.chi-picker__radio
+                              span.chi-picker__label Option 1
+                            .chi-picker__description
+                              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
+                          .chi-picker__content--end
+                            .chi-picker__label
+                              | $0.00
+                              span.-text--normal /mo
+      .chi-col.-w--12.-w-lg--6
+        h3 With price
+        .example
+          .-p--3
+            each size in sizes
+              h4= `${size}`
+              div(class=`test-radio-with-price-checked-${size}`)
+                fieldset
+                  legend.chi-label Legend
+                  each type in ['Radio1','Radio2']
+                    div(class=`chi-picker -${size}`)
+                      input(type="radio", class="chi-picker__input", id=`id-checked-${type}`, checked=(type === 'Radio1'))
+                      label(for=`id-checked-${type}`)
+                        .chi-picker__content
+                          .chi-picker__content--start.-w--100.-w-sm--65
+                            .chi-form__item.-row
+                              span.chi-picker__radio
+                              span.chi-picker__label Option 1
+                            .chi-picker__description
+                              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
+                          .chi-picker__content--end
+                            .chi-picker__label
+                              | $0.00
+                              span.-text--normal /mo
