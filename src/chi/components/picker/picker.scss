@@ -3,20 +3,23 @@
 
 $border: 0.0625rem;
 $sizes: (
-  sm: (
-    description-font-size: $font-size-sm,
-    description-line-height: $line-height-sm,
-    label-font-size: $font-size-sm
-  ),
   md: (
-    description-font-size: $font-size-md,
-    description-line-height: $line-height-md,
-    label-font-size: $font-size-md
+    item-font-size: $picker-md-item-font-size,
+    item-padding: $picker-md-item-padding,
+    item-label-margin: $picker-md-item-label-margin,
+    item-description-font-size: $picker-md-item-description-font-size,
+    item-description-line-height: $picker-md-item-description-line-height,
+    item-description-margin: $picker-md-item-description-margin,
+    item-description-padding: $picker-md-item-description-padding
   ),
   lg: (
-    description-font-size: $font-size-md,
-    description-line-height: $line-height-md,
-    label-font-size: $font-size-lg
+    item-font-size: $picker-lg-item-font-size,
+    item-padding: $picker-lg-item-padding,
+    item-label-margin: $picker-lg-item-label-margin,
+    item-description-font-size: $picker-lg-item-description-font-size,
+    item-description-line-height: $picker-lg-item-description-line-height,
+    item-description-margin: $picker-lg-item-description-margin,
+    item-description-padding: $picker-lg-item-description-padding
   )
 );
 
@@ -32,22 +35,22 @@ $sizes: (
     & + label {
       align-items: flex-start;
       background-color: $picker-background-color;
-      border: solid 0.0625rem $picker-border-color;
+      border: solid $border $picker-border-color;
       border-radius: $border-radius;
       box-shadow: map-get($shadow, 1);
       cursor: pointer;
       display: flex;
-      font-size: $font-size-base;
+      font-size: $picker-md-item-font-size;
       font-weight: $font-weight-normal;
       justify-content: space-between;
       margin-bottom: 0.5rem;
       min-height: 3rem;
-      padding: 1rem - $border;
+      padding: 1rem;
       transition: all 0.2s;
       width: 100%;
 
       .chi-picker__checkbox {
-        border: 0.0625rem solid $picker-checkbox-border-color;
+        border: $border solid $picker-checkbox-border-color;
         color: $picker-checkbox-text-color;
         flex-shrink: 0;
         height: 1rem;
@@ -70,7 +73,7 @@ $sizes: (
       }
 
       .chi-picker__radio {
-        border: 0.0625rem solid $picker-radio-border-color;
+        border: $border solid $picker-radio-border-color;
         border-radius: 0.5rem;
         color: $picker-radio-text-color;
         flex-shrink: 0;
@@ -93,7 +96,7 @@ $sizes: (
       }
 
       & .chi-picker__label {
-        margin-left: 0.5rem;
+        margin-left: $picker-md-item-label-margin;
       }
 
       .chi-picker__content {
@@ -105,40 +108,26 @@ $sizes: (
           flex-direction: column;
 
           .chi-form__item {
-            line-height: 1rem;
+            line-height: 1.25rem;
           }
         }
 
         &--start {
           .chi-form__item {
             font-weight: $font-weight-semi-bold;
-            margin: 0.5rem 0 0 0.5rem;
-
-            span {
-              &.chi-picker__label {
-                padding-left: 0.5rem;
-              }
-            }
           }
 
           .chi-picker__description {
             color: $color-text-base;
             font-weight: $font-weight-normal;
-            margin-left: 2.5rem;
-            padding: 0.5rem 0;
-          }
-
-          div:first-of-type + div {
-            margin-left: 2.5rem;
-            padding: 0.5rem 0;
+            margin: $picker-md-item-description-margin;
+            padding: $picker-md-item-description-padding;
           }
         }
 
         &--end {
           align-items: flex-end;
           flex-grow: 1;
-          padding-right: 0.5rem;
-          padding-top: 0.375rem;
           text-align: right;
 
           .chi-picker__label {
@@ -165,14 +154,14 @@ $sizes: (
 
     &:checked {
       & + label {
-        border: solid 0.0625rem $picker-checked-border-color;
-        box-shadow: inset 0 0 0 0.0625rem $picker-checked-border-color;
+        border: solid $border $picker-checked-border-color;
+        box-shadow: inset 0 0 0 $border $picker-checked-border-color;
         color: $picker-checked-text-color;
         font-weight: $font-weight-semi-bold;
 
         .chi-picker__checkbox {
           background-color: $picker-checked-checkbox-background-color;
-          border: 0.0625rem solid $picker-checked-checkbox-border-color;
+          border: $border solid $picker-checked-checkbox-border-color;
           color: $picker-checked-checkbox-text-color;
 
           &::before {
@@ -185,7 +174,7 @@ $sizes: (
 
         .chi-picker__radio {
           background-color: $picker-checked-radio-background-color;
-          border: 0.0625rem solid $picker-checked-radio-border-color;
+          border: $border solid $picker-checked-radio-border-color;
 
           &::before {
             background-color: $picker-checked-radio-icon-color;
@@ -228,18 +217,32 @@ $sizes: (
 
   @each $type in map-keys($sizes) {
     &.-#{$type} {
-      .chi-picker__label {
-        font-size: map-get(map-get($sizes, $type), label-font-size);
-      }
+      .chi-picker__input {
+        & + label,
+        .chi-picker__label {
+          font-size: map-get(map-get($sizes, $type), item-font-size);
+          padding: map-get(map-get($sizes, $type), item-padding);
 
-      .chi-picker__description {
-        font-size: map-get(map-get($sizes, $type), description-font-size);
-        line-height: map-get(map-get($sizes, $type), description-line-height);
+          .chi-picker__label {
+            margin-left: map-get(map-get($sizes, $type), item-label-margin);
+          }
+
+          .chi-picker__content {
+            &--start {
+              .chi-picker__description {
+                font-size: map-get(map-get($sizes, $type), item-description-font-size);
+                line-height: map-get(map-get($sizes, $type), item-description-line-height);
+                margin: map-get(map-get($sizes, $type), item-description-margin);
+                padding: map-get(map-get($sizes, $type), item-description-padding);
+              }
+            }
+          }
+        }
       }
 
       .chi-picker__content--end {
         .chi-picker__label {
-          font-size: map-get(map-get($sizes, $type), label-font-size);
+          font-size: map-get(map-get($sizes, $type), item-font-size);
           font-weight: $font-weight-semi-bold;
         }
       }

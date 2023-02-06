@@ -606,6 +606,301 @@ h3 Radio button with description and price
         </div>
       </fieldset>
 
+h2 Sizes
+p.-text
+  | Pickers support the following sizes: <code>-md</code>, <code>-lg</code>.
+  | The default size is <code>-md</code>.
+
+.example.-mb--3
+  .-p--3.-d--flex.-flex--column
+    each size in ['md', 'lg']
+      h4= '-' + size
+      .chi-divider
+      .-pb--2.-px--4
+        .chi-grid
+          .chi-col.-w--12
+            h5.-my--3 Base
+            fieldset
+              legend.chi-label Select an option
+              each i in [1, 2]
+                div(class=`chi-picker -${size}`)
+                  input.chi-picker__input(type="radio", name=`unique-name-${size}-base`, id=`unique-id-${size}-base-${i}`, checked=(i === 1))
+                  label(for=`unique-id-${size}-base-${i}`)
+                    = 'Option ' + `${i}`
+          .chi-col.-w--12
+            h5.-my--3 Icon
+            fieldset
+              legend.chi-label Select an option
+              each i in [1, 2]
+                div(class=`chi-picker -${size}`)
+                  input.chi-picker__input(type="radio", name=`unique-name-${size}-icon`, id=`unique-id-${size}-icon-${i}`, checked=(i === 1))
+                  label(for=`unique-id-${size}-icon-${i}`)
+                    div.chi-form__item.-row
+                      span.chi-picker__radio
+                      span.chi-picker__label
+                        = 'Option ' + `${i}`
+          .chi-col.-w--12
+            h5.-my--3 Description
+            fieldset
+              legend.chi-label Select an option
+              each i in [1, 2]
+                div(class=`chi-picker -${size}`)
+                  input.chi-picker__input(type="radio", name=`unique-name-${size}-description`, id=`unique-id-${size}-description-${i}`, checked=(i === 1))
+                  label(for=`unique-id-${size}-description-${i}`)
+                    .chi-picker__content--start
+                      div.chi-form__item.-row
+                        span.chi-picker__radio
+                        span.chi-picker__label
+                          = 'Option ' + `${i}`
+                      div.chi-picker__description
+                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.
+          .chi-col.-w--12
+            h5.-my--3 Description with Price
+            fieldset
+              legend.chi-label Select an option
+              each i in [1, 2]
+                div(class=`chi-picker -${size}`)
+                  input.chi-picker__input(type="radio", name=`unique-name-${size}-description-price`, id=`unique-id-${size}-description-price-${i}`, checked=(i === 1))
+                  label(for=`unique-id-${size}-description-price-${i}`)
+                    .chi-picker__content
+                      .chi-picker__content--start.-w--100.-w-sm--65
+                        div.chi-form__item.-row
+                          span.chi-picker__radio
+                          span.chi-picker__label
+                            = 'Option ' + `${i}`
+                        div.chi-picker__description
+                          | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex.
+                      .chi-picker__content--end
+                        .chi-picker__label
+                          | $0.00
+                          span.-text--normal
+                            | /mo
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-sizes
+      li.-disabled
+        a(href=`#webcomponent-sizes`) Web Component
+      li.-active
+        a(href=`#html-sizes`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-sizes
+  .chi-tabs-panel.-active#html-sizes
+    :code(lang='html')
+      <!-- md -->
+      <!-- Base -->
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-picker -md">
+          <input class="chi-picker__input" type="radio" name="unique-name-md-base" id="unique-id-md-base-1" checked>
+          <label for="unique-id-md-base-1">Option 1</label>
+        </div>
+        <div class="chi-picker -md">
+          <input class="chi-picker__input" type="radio" name="unique-name-md-base" id="unique-id-md-base-2">
+          <label for="unique-id-md-base-2">Option 2</label>
+        </div>
+      </fieldset>
+
+      <!-- Icon -->
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-picker -md">
+          <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md-icon-1" checked>
+          <label for="unique-id-md-icon-1">
+            <div class="chi-form__item -row">
+              <span class="chi-picker__radio"></span>
+              <span class="chi-picker__label">Option 1</span>
+            </div>
+          </label>
+        </div>
+        <div class="chi-picker -md">
+          <input class="chi-picker__input" type="radio" name="unique-name-md-icon" id="unique-id-md-icon-2">
+          <label for="unique-id-md-icon-2">
+            <div class="chi-form__item -row">
+              <span class="chi-picker__radio"></span>
+              <span class="chi-picker__label">Option 2</span>
+            </div>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Description -->
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-picker -md">
+          <input class="chi-picker__input" type="radio" name="unique-name-md-description" id="unique-id-md-description-1" checked>
+          <label for="unique-id-md-description-1">
+            <div class="chi-picker__content--start">
+              <div class="chi-form__item -row">
+                <span class="chi-picker__radio"></span>
+                <span class="chi-picker__label">Option 1</span>
+              </div>
+              <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
+            </div>
+          </label>
+        </div>
+        <div class="chi-picker -md">
+          <input class="chi-picker__input" type="radio" name="unique-name-md-description" id="unique-id-md-description-2">
+          <label for="unique-id-md-description-2">
+            <div class="chi-picker__content--start">
+              <div class="chi-form__item -row">
+                <span class="chi-picker__radio"></span>
+                <span class="chi-picker__label">Option 2</span>
+              </div>
+              <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
+            </div>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Description with Price -->
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-picker -md">
+          <input class="chi-picker__input" type="radio" name="unique-name-md-description-price" id="unique-id-md-description-price-1" checked>
+          <label for="unique-id-md-description-price-1">
+            <div class="chi-picker__content">
+              <div class="chi-picker__content--start -w--100 -w-sm--65">
+                <div class="chi-form__item -row">
+                  <span class="chi-picker__radio"></span>
+                  <span class="chi-picker__label">Option 1</span>
+                </div>
+                <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex.</div>
+              </div>
+              <div class="chi-picker__content--end">
+                <div class="chi-picker__label">
+                  $0.00<span class="-text--normal">/mo</span>
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+        <div class="chi-picker -md">
+          <input class="chi-picker__input" type="radio" name="unique-name-md-description-price" id="unique-id-md-description-price-2">
+          <label for="unique-id-md-description-price-2">
+            <div class="chi-picker__content">
+              <div class="chi-picker__content--start -w--100 -w-sm--65">
+                <div class="chi-form__item -row">
+                  <span class="chi-picker__radio"></span>
+                  <span class="chi-picker__label">Option 2</span>
+                </div>
+                <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex.</div>
+              </div>
+              <div class="chi-picker__content--end">
+                <div class="chi-picker__label">
+                  $0.00<span class="-text--normal">/mo</span>
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- lg -->
+      <!-- Base -->
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-picker -lg">
+          <input class="chi-picker__input" type="radio" name="unique-name-lg-base" id="unique-id-lg-base-1" checked>
+          <label for="unique-id-lg-base-1">Option 1</label>
+        </div>
+        <div class="chi-picker -lg">
+          <input class="chi-picker__input" type="radio" name="unique-name-lg-base" id="unique-id-lg-base-2">
+          <label for="unique-id-lg-base-2">Option 2</label>
+        </div>
+      </fieldset>
+
+      <!-- Icon -->
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-picker -lg">
+          <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg-icon-1" checked>
+          <label for="unique-id-lg-icon-1">
+            <div class="chi-form__item -row">
+              <span class="chi-picker__radio"></span>
+              <span class="chi-picker__label">Option 1</span>
+            </div>
+          </label>
+        </div>
+        <div class="chi-picker -lg">
+          <input class="chi-picker__input" type="radio" name="unique-name-lg-icon" id="unique-id-lg-icon-2">
+          <label for="unique-id-lg-icon-2">
+            <div class="chi-form__item -row">
+              <span class="chi-picker__radio"></span>
+              <span class="chi-picker__label">Option 2</span>
+            </div>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Description -->
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-picker -lg">
+          <input class="chi-picker__input" type="radio" name="unique-name-lg-description" id="unique-id-lg-description-1" checked>
+          <label for="unique-id-lg-description-1">
+            <div class="chi-picker__content--start">
+              <div class="chi-form__item -row">
+                <span class="chi-picker__radio"></span>
+                <span class="chi-picker__label">Option 1</span>
+              </div>
+              <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
+            </div>
+          </label>
+        </div>
+        <div class="chi-picker -lg">
+          <input class="chi-picker__input" type="radio" name="unique-name-lg-description" id="unique-id-lg-description-2">
+          <label for="unique-id-lg-description-2">
+            <div class="chi-picker__content--start">
+              <div class="chi-form__item -row">
+                <span class="chi-picker__radio"></span>
+                <span class="chi-picker__label">Option 2</span>
+              </div>
+              <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex. Nulla iaculis velit sed velit vehicula dictum. Donec ut ultrices tortor. Vivamus sit amet lorem augue.</div>
+            </div>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Description with Price -->
+      <fieldset>
+        <legend class="chi-label">Select an option</legend>
+        <div class="chi-picker -lg">
+          <input class="chi-picker__input" type="radio" name="unique-name-lg-description-price" id="unique-id-lg-description-price-1" checked>
+          <label for="unique-id-lg-description-price-1">
+            <div class="chi-picker__content">
+              <div class="chi-picker__content--start -w--100 -w-sm--65">
+                <div class="chi-form__item -row">
+                  <span class="chi-picker__radio"></span>
+                  <span class="chi-picker__label">Option 1</span>
+                </div>
+                <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex.</div>
+              </div>
+              <div class="chi-picker__content--end">
+                <div class="chi-picker__label">
+                  $0.00<span class="-text--normal">/mo</span>
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+        <div class="chi-picker -lg">
+          <input class="chi-picker__input" type="radio" name="unique-name-lg-description-price" id="unique-id-lg-description-price-2">
+          <label for="unique-id-lg-description-price-2">
+            <div class="chi-picker__content">
+              <div class="chi-picker__content--start -w--100 -w-sm--65">
+                <div class="chi-form__item -row">
+                  <span class="chi-picker__radio"></span>
+                  <span class="chi-picker__label">Option 2</span>
+                </div>
+                <div class="chi-picker__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula placerat iaculis. Ut rutrum pulvinar velit vitae molestie. Phasellus accumsan pharetra ex.</div>
+              </div>
+              <div class="chi-picker__content--end">
+                <div class="chi-picker__label">
+                  $0.00<span class="-text--normal">/mo</span>
+                </div>
+              </div>
+            </div>
+          </label>
+        </div>
+      </fieldset>
 script.
   document.addEventListener(
     'DOMContentLoaded',
