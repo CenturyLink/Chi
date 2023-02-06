@@ -35,6 +35,8 @@ export const DATA_TABLE_EVENTS = {
   EXPANSION: {
     EXPANDED: 'chiRowExpanded',
     COLLAPSED: 'chiRowCollapsed',
+    EXPAND_ALL: 'chiExpandAll',
+    COLLAPSE_ALL: 'chiCollapseAll',
   },
 };
 

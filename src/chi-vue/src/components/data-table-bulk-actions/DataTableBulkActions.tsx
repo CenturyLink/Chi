@@ -80,7 +80,9 @@ export default class DataTableBulkActions extends Vue {
             </div>
             <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_START} ${UTILITY_CLASSES.Z_INDEX.Z_10}`}>
               <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_RESULTS}`}>
-                <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_LABEL}`}>Actions ({this.selectedRows} Selected)</div>
+                <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_LABEL}`}>
+                  Actions ({this.selectedRows} Items Selected)
+                </div>
                 <div class={`${FORM_CLASSES.FORM_ITEM}`}>
                   <div class={`${CHECKBOX_CLASSES.checkbox}`}>
                     <input

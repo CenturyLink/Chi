@@ -3,73 +3,110 @@
 
 $regions: (
   ar: (
-    background-position-xs: 0 0,
-    background-position: 0 0,
-    background-position-md: 0 0
+    background-position-xs: -1.125rem 0,
+    background-position: -1.5rem 0
   ),
   au: (
-    background-position-xs: -1.125rem 0,
-    background-position: -1.5rem 0,
-    background-position-md: -2.25rem 0
+    background-position-xs: -2.25rem 0,
+    background-position: -3rem 0
+  ),
+  be: (
+    background-position-xs: 0 -0.75rem,
+    background-position: 0 -1rem
   ),
   br: (
-    background-position-xs: -2.25rem 0,
-    background-position: -3rem 0,
-    background-position-md: -4.5rem 0
+    background-position-xs: -1.125rem -0.75rem,
+    background-position: -1.5rem -1rem
+  ),
+  ca: (
+    background-position-xs: -2.25rem -0.75rem,
+    background-position: -3rem -1rem
+  ),
+  cl: (
+    background-position-xs: 0 -1.5rem,
+    background-position: 0 -2rem
+  ),
+  cn: (
+    background-position-xs: -1.125rem -1.5rem,
+    background-position: -1.5rem -2rem
   ),
   co: (
-    background-position-xs: 0 -0.75rem,
-    background-position: 0 -1rem,
-    background-position-md: 0 -1.5rem
+    background-position-xs: -2.25rem -1.5rem,
+    background-position: -3rem -2rem
+  ),
+  ec: (
+    background-position-xs: 0 -2.25rem,
+    background-position: 0 -3rem
+  ),
+  fr: (
+    background-position-xs: -1.125rem -2.25rem,
+    background-position: -1.5rem -3rem
   ),
   de: (
-    background-position-xs: -1.125rem -0.75rem,
-    background-position: -1.5rem -1rem,
-    background-position-md: -2.25rem -1.5rem
+    background-position-xs: -2.25rem -2.25rem,
+    background-position: -3rem -3rem
   ),
   hk: (
-    background-position-xs: -2.25rem -0.75rem,
-    background-position: -3rem -1rem,
-    background-position-md: -4.5rem -1.5rem
+    background-position-xs: 0 -3rem,
+    background-position: 0 -4rem
   ),
   in: (
-    background-position-xs: 0 -1.5rem,
-    background-position: 0 -2rem,
-    background-position-md: 0 -3rem
+    background-position-xs: -1.125rem -3rem,
+    background-position: -1.5rem -4rem
+  ),
+  ie: (
+    background-position-xs: -2.25rem -3rem,
+    background-position: -3rem -4rem
+  ),
+  it: (
+    background-position-xs: 0 -3.75rem,
+    background-position: 0 -5rem
   ),
   jp: (
-    background-position-xs: -1.125rem -1.5rem,
-    background-position: -1.5rem -2rem,
-    background-position-md: -2.25rem -3rem
+    background-position-xs: -1.125rem -3.75rem,
+    background-position: -1.5rem -5rem
   ),
   mx: (
-    background-position-xs: -2.25rem -1.5rem,
-    background-position: -3rem -2rem,
-    background-position-md: -4.5rem -3rem
+    background-position-xs: -2.25rem -3.75rem,
+    background-position: -3rem -5rem
+  ),
+  nl: (
+    background-position-xs: 0 -4.5rem,
+    background-position: 0 -6rem
+  ),
+  pe: (
+    background-position-xs: -1.125rem -4.5rem,
+    background-position: -1.5rem -6rem
   ),
   sg: (
-    background-position-xs: 0 -2.25rem,
-    background-position: 0 -3rem,
-    background-position-md: 0 -4.5rem
+    background-position-xs: -2.25rem -4.5rem,
+    background-position: -3rem -6rem
+  ),
+  es: (
+    background-position-xs: 0 -5.25rem,
+    background-position: 0 -7rem
   ),
   gb: (
-    background-position-xs: -1.125rem -2.25rem,
-    background-position: -1.5rem -3rem,
-    background-position-md: -2.25rem -4.5rem
+    background-position-xs: -1.125rem -5.25rem,
+    background-position: -1.5rem -7rem
   ),
   us: (
-    background-position-xs: -2.25rem -2.25rem,
-    background-position: -3rem -3rem,
-    background-position-md: -4.5rem -4.5rem
+    background-position-xs: -2.25rem -5.25rem,
+    background-position: -3rem -7rem
+  ),
+  ve: (
+    background-position-xs: 0 -6rem,
+    background-position: 0 -8rem
   )
 );
 
 .chi-flag-icon {
   // sass-lint:disable-block no-url-domains, no-url-protocols
-  background-image: url('//assets.ctl.io/images/icon-flags.svg');
+  background-color: $color-background-white;
+  background-image: url('//lib.lumen.com/images/icon-flags2.svg');
   background-position: 0 0;
   background-repeat: no-repeat;
-  background-size: 4.5rem 4rem;
+  background-size: 4.5rem;
   box-shadow: inset 0 0 1px 1px rgba($color-black, 0.2);
   display: inline-block;
   height: 1rem;
