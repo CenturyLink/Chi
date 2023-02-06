@@ -954,6 +954,17 @@ export default class DataTable extends Vue {
     return row;
   }
 
+  _searchMessage() {
+    const noResultsMessage = this.config.messages?.noResultsMessage
+      ? this.config.messages?.noFiltersMessage
+      : DATA_TABLE_NO_RESULTS_FOUND;
+    const noFiltersMessage = this.config.messages?.noFiltersMessage
+      ? this.config.messages?.noFiltersMessage
+      : DATA_TABLE_NO_FILTERS;
+
+    return this.config.messages?.isSearch ? noResultsMessage : noFiltersMessage;
+  }
+
   _body() {
     let tableBodyRows: JSX.Element;
 
@@ -969,19 +980,12 @@ export default class DataTable extends Vue {
         return this.row(bodyRow, 'parent', striped);
       });
     } else {
-      const noResultsMessage = this.config.messages?.noResultsMessage
-        ? this.config.messages?.noFiltersMessage
-        : DATA_TABLE_NO_RESULTS_FOUND;
-      const noFiltersMessage = this.config.messages?.noFiltersMessage
-        ? this.config.messages?.noFiltersMessage
-        : DATA_TABLE_NO_FILTERS;
+      const icon = <chi-icon class="-m--1" icon="search" color="dark"></chi-icon>;
 
       tableBodyRows = (
         <div class={DATA_TABLE_CLASSES.EMPTY}>
-          <div>
-            <chi-icon class="-vertical-align--middle -m--1" icon="search" color="dark"></chi-icon>
-            {this.config.messages?.isSearch ? noResultsMessage : noFiltersMessage}
-          </div>
+          {icon}
+          {this._searchMessage()}
         </div>
       );
     }
@@ -1587,7 +1591,7 @@ export default class DataTable extends Vue {
       <tbody>
         <tr>
           <td colspan={Object.keys(this.data.head).length} class={DATA_TABLE_CLASSES.EMPTY}>
-            {this.config.noResultsMessage ? this.config.noResultsMessage : DATA_TABLE_NO_RESULTS_FOUND}
+            {this._searchMessage()}
           </td>
         </tr>
       </tbody>

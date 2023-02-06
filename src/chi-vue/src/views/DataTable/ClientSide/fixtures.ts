@@ -2,7 +2,6 @@ import { DataTableConfig } from '@/constants/types';
 
 export const exampleConfig: DataTableConfig = {
   columnResize: true,
-  noResultsMessage: 'Search for or select at least one filter to get results',
   style: {
     portal: true,
     noBorder: false,

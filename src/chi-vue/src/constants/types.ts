@@ -74,6 +74,12 @@ export interface DataTableColumnDescription {
   payload?: any;
 }
 
+export interface DataTableMessages {
+  isSearch?: boolean;
+  noResultsMessage?: string;
+  noFiltersMessage?: string;
+}
+
 export interface DataTableSortConfig {
   key: string;
   sortBy?: string;
@@ -97,11 +103,7 @@ export interface DataTableConfig {
   unsorted?: boolean;
   mode?: 'clientside' | 'serverside';
   noResultsMessage?: string;
-  messages?: {
-    isSearch?: boolean;
-    noResultsMessage?: string;
-    noFiltersMessage?: string;
-  };
+  messages?: DataTableMessages;
   pagination: {
     activePage?: number;
     compact?: boolean;

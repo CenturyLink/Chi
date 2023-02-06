@@ -7,10 +7,15 @@ h3 Portal
   #portal
     chi-vue-data-table(data-cy='data-table-portal', :config="config", :data="table")
 
-h3 Portal Empty
+h3 Portal Empty no filters
 .test-data-table.-p--3.-w--100
-  #portalEmpty
-    chi-vue-data-table(data-cy='data-table-portal-empty', :config="config", :data="table")
+  #portal-empty-no-filters
+    chi-vue-data-table(data-cy='data-table-portal-empty-no-filters', :config="config", :data="table")
+
+h3 Portal Empty no results
+.test-data-table.-p--3.-w--100
+  #portal-empty-no-results
+    chi-vue-data-table(data-cy='data-table-portal-empty-no-results', :config="config", :data="table")
 
 h3 Portal Accordion
 .test-data-table.-p--3.-w--100
@@ -103,8 +108,6 @@ script.
     data: {
       config: {
         columnResize: true,
-        noResultsMessage:
-          "No matches found. Please revise search criteria and try again.",
         style: {
           portal: true,
           noBorder: false,
@@ -130,7 +133,44 @@ script.
         body: [],
       },
     },
-  }).$mount("#portalEmpty");
+  }).$mount("#portal-empty-no-filters");
+
+   new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+         messages: {
+          isSearch: true,
+        },
+        style: {
+          portal: true,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: "Name" },
+          id: { label: "ID" },
+          lastLogin: { label: "Last Login" },
+        },
+        body: [],
+      },
+    },
+  }).$mount("#portal-empty-no-results");
 
   new Vue({
     components: {
@@ -840,7 +880,6 @@ script.
       config: {
         columnResize: true,
         mode: 'serverside',
-        noResultsMessage: 'No matches found. Please revise search criteria and try again.',
         style: {
           portal: true,
           noBorder: false,

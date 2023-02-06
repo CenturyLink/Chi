@@ -393,28 +393,35 @@ describe('Data Table', () => {
 
   describe('Empty', () => {
     it(`Should have class .${DATA_TABLE_CLASSES.EMPTY}`, () => {
-      cy.get(`[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(`[data-cy='data-table-empty-no-filters'] .${DATA_TABLE_CLASSES.BODY}`)
         .children()
         .first()
         .as('empty');
       hasClassAssertion(`@empty`, DATA_TABLE_CLASSES.EMPTY);
     });
 
-    it(`Should show default message when it is empty`, () => {
-      cy.get(`[data-cy='data-table-empty']`).should(
+    it(`Should show default message when it is empty when no filters`, () => {
+      cy.get(`[data-cy='data-table-empty-no-filters']`).should(
         'contain',
-        'No matches found. Please revise search criteria and try again.'
+        'Search for or select at least one filter to get results'
+      );
+    });
+
+    it(`Should show default message when it is empty when no results`, () => {
+      cy.get(`[data-cy='data-table-empty-no-results']`).should(
+        'contain',
+        'No matching results'
       );
     });
 
     it('Should have no rows', () => {
       cy.get(
-        `[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+        `[data-cy='data-table-empty-no-filters'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
       ).should('not.exist');
     });
 
     it('Should have no footer', () => {
-      cy.get(`[data-cy='data-table-empty']`)
+      cy.get(`[data-cy='data-table-empty-no-filters']`)
         .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
         .should('not.exist');
     });
@@ -1500,28 +1507,35 @@ describe('Data Table Portal', () => {
 
   describe('Portal empty', () => {
     it(`Should have class .${DATA_TABLE_CLASSES.EMPTY}`, () => {
-      cy.get(`[data-cy='data-table-portal-empty'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(`[data-cy='data-table-portal-empty-no-filters'] .${DATA_TABLE_CLASSES.BODY}`)
         .children()
         .first()
         .as('portalEmpty');
       hasClassAssertion(`@portalEmpty`, DATA_TABLE_CLASSES.EMPTY);
     });
 
-    it(`Should show the message 'No matches found. Please revise search criteria and try again.' when it is empty`, () => {
-      cy.get(`[data-cy='data-table-portal-empty']`).should(
+    it(`Should show default message when it is empty when no filters`, () => {
+      cy.get(`[data-cy='data-table-portal-empty-no-filters']`).should(
         'contain',
-        'No matches found. Please revise search criteria and try again.'
+        'Search for or select at least one filter to get results'
+      );
+    });
+
+    it(`Should show default message when it is empty when no results`, () => {
+      cy.get(`[data-cy='data-table-portal-empty-no-results']`).should(
+        'contain',
+        'No matching results'
       );
     });
 
     it('Should have no rows', () => {
       cy.get(
-        `[data-cy='data-table-portal-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+        `[data-cy='data-table-portal-empty-no-filters'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
       ).should('not.exist');
     });
 
     it('Should have no footer', () => {
-      cy.get(`[data-cy='data-table-portal-empty']`)
+      cy.get(`[data-cy='data-table-portal-empty-no-filters']`)
         .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
         .should('not.exist');
     });

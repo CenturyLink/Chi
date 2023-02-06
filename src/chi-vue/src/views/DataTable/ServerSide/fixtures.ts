@@ -3,7 +3,6 @@ import { DataTableConfig } from '@/constants/types';
 export const exampleConfig: DataTableConfig = {
   columnResize: true,
   mode: 'serverside',
-  noResultsMessage: 'No matches found. Please revise search criteria and try again.',
   style: {
     portal: true,
     noBorder: false,
