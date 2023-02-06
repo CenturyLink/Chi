@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 const DANGER_CLASS = '-danger';
-
+const TIME_PICKER_MINUTE = 'chi-time-picker__minute';
 const clickDate = '11/14/2018';
 const clickDate2 = '01/26/2019';
 const thisMonthName = /November\s*2018/;
@@ -289,7 +289,7 @@ describe('Date picker', function() {
 
     // Select minutes
     cy.get('@testTimeFormat')
-      .find('.chi-time-picker__minute').contains(minutes)
+      .find(`.${TIME_PICKER_MINUTE}`).contains(minutes)
       .click();
 
     cy.get('@testTimeFormat')

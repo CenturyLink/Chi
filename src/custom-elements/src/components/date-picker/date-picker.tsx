@@ -316,6 +316,7 @@ export class DatePicker {
 
     if (!activeDate) {
       const currentTime = new Date();
+
       activeDate = `${currentTime.getMonth() + 1}/${currentTime.getDate()}/${currentTime.getFullYear()}`;
     }
 
@@ -324,6 +325,7 @@ export class DatePicker {
       this.value = `${activeDate}, ${this.formatTimePeriod(ev.detail.hour)}:${this.formatTimePeriod(ev.detail.minute)}`;
     } else {
       const hour = ev.detail.hour > 12 ? ev.detail.hour - 12 : ev.detail.hour;
+
       this.value = `${activeDate}, ${this.formatTimePeriod(hour)}:${this.formatTimePeriod(ev.detail.minute)} ${this.formatTimePeriod(ev.detail.period)}`;
     }
   }

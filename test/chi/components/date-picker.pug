@@ -7,6 +7,8 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 -  let day = 1;
+-  let minute = 0;
+-  let hour = 0;
 -  const weekS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 -  const today = 19;
 -  const active = 23;
@@ -230,39 +232,49 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
           else
             .chi-datepicker__day=day++
 
+- day = 1;
 .test-time-format-24hr-view.-py--2
   span.-text--h2 Test time format view
   .-d--flex
-    div.sc-chi-date-h.sc-chi-date-s.hydrated
-      .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu.sc-chi-date
-        .chi-datepicker__month-row.sc-chi-date
-          .prev.sc-chi-date
-            .chi-icon.-sm.undefined.sc-chi-icon
-              svg.sc-chi-icon(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                use.sc-chi-icon(xlink:href='#icon-chevron-left')
-          .chi-datepicker__month.sc-chi-date
+    div.hydrated
+      .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
+        .chi-datepicker__month-row
+          .prev
+            .chi-icon.-sm.undefined
+              svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                use(xlink:href='#icon-chevron-left')
+          .chi-datepicker__month
             | November
             | 2018
-          .next.sc-chi-date
-            .chi-icon.-sm.undefined.sc-chi-icon
-                svg.sc-chi-icon(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                  use.sc-chi-icon(xlink:href='#icon-chevron-right')
-        .chi-datepicker__day-names.sc-chi-date
+          .next
+            .chi-icon.-sm.undefined
+                svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                  use(xlink:href='#icon-chevron-right')
+        .chi-datepicker__day-names
           each weekDay in weekS
-            .chi-datepicker__week-day.sc-chi-date=weekDay
-        .chi-datepicker__days.sc-chi-date
-          - for (let day = 1; day < 31; day++)
-            .chi-datepicker__day.sc-chi-date(class=day === 23 ? '-active' : '')=day
+            .chi-datepicker__week-day=weekDay
+        .chi-datepicker__days
+          while day < 31
+            if day === 23
+              .chi-datepicker__day.-active=day++
+            else
+              .chi-datepicker__day=day++
 
-    div.sc-chi-time-h.sc-chi-time-s.hydrated
-      .chi-time-picker.sc-chi-time
-        .chi-time-picker__content.sc-chi-time
-          .chi-time-picker__hours.sc-chi-time
-            - for (let hour = 0; hour < 24; hour++)
-              .chi-time-picker__hour.sc-chi-time(class=hour === 0 ? '-active' : '')=padZero(hour)
-          .chi-time-picker__minutes.sc-chi-time
-            - for (let minute = 0; minute < 60; minute++)
-              .chi-time-picker__minute.sc-chi-time(class=minute === 0 ? '-active' : '')=padZero(minute)
+    div.hydrated
+      .chi-time-picker
+        .chi-time-picker__content
+          .chi-time-picker__hours
+            while hour < 24
+              if hour === 0
+                .chi-time-picker__hour.-active=padZero(hour++)
+              else
+                .chi-time-picker__hour=padZero(hour++)
+          .chi-time-picker__minutes
+            while minute < 60
+              if minute === 0
+                .chi-time-picker__minute.-active=padZero(minute++)
+              else
+                .chi-time-picker__minute=padZero(minute++)
 
 script.
   document.addEventListener(
