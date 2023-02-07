@@ -289,7 +289,8 @@ describe('Date picker', function() {
 
     // Select minutes
     cy.get('@testTimeFormat')
-      .find(`.${TIME_PICKER_MINUTE}`).contains(minutes)
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minutes)
       .click();
 
     cy.get('@testTimeFormat')
