@@ -38,12 +38,12 @@ export class NumberInput {
   /**
    * used to set a maximum allowed value
    */
-  @Prop({ reflect: true }) max: number = Number.MAX_SAFE_INTEGER;
+  @Prop({ reflect: true }) max: number;
 
   /**
    * used to set a minimum allowed value
    */
-  @Prop({ reflect: true }) min: number = Number.MIN_SAFE_INTEGER;
+  @Prop({ reflect: true }) min: number;
 
   /**
    * used to determine if component is disabled or not
@@ -98,7 +98,7 @@ export class NumberInput {
   @Event({ eventName: 'chiNumberInvalid' }) chiNumberInvalid: EventEmitter<
     void
   >;
-  
+
   _numberInput!: HTMLInputElement;
 
   connectedCallback() {
@@ -158,7 +158,7 @@ export class NumberInput {
     const input = (
       <input
         type="number"
-        ref={(el) => this._numberInput = el as HTMLInputElement}
+        ref={el => (this._numberInput = el as HTMLInputElement)}
         class={`chi-input ${this.inputstyle ? `-${this.inputstyle}` : ''} ${
           this.state ? `-${this.state}` : ''
         }`}
@@ -178,13 +178,16 @@ export class NumberInput {
       <div class={`chi-number-input ${this.size ? `-${this.size}` : ''}`}>
         {input}
         <button
-          disabled={+this.value <= this.min}
+          disabled={this.min ? Number(this.value) <= this.min : false}
           onClick={() => this.decrement()}
           aria-label="Decrease"
         ></button>
         <button
           disabled={
-            +this.value + this.step > this.max || +this.value >= this.max
+            this.max
+              ? Number(this.value) + this.step > this.max ||
+                Number(this.value) >= this.max
+              : false
           }
           onClick={() => this.increment()}
           aria-label="Increase"
@@ -199,7 +202,7 @@ export class NumberInput {
         {input}
         <button
           class="chi-button -icon"
-          disabled={+this.value <= this.min}
+          disabled={this.min ? Number(this.value) <= this.min : false}
           onClick={() => this.decrement()}
           aria-label="Decrease"
         >
@@ -210,7 +213,10 @@ export class NumberInput {
         <button
           class="chi-button -icon"
           disabled={
-            +this.value + this.step > this.max || +this.value >= this.max
+            this.max
+              ? Number(this.value) + this.step > this.max ||
+                Number(this.value) >= this.max
+              : false
           }
           onClick={() => this.increment()}
           aria-label="Increase"
