@@ -79,14 +79,16 @@ p.-text
   | Use the <code>min</code> and <code>max</code> attributes to define minimum and maximum values on number inputs.
   | Use the <code>step</code> attribute to indicate the expected granularity.
 p.-text
-  | This example only accepts values between <code>0</code> and <code>6</code>, and as the <code>step</code> is
-  | <code>2</code> and initial <code>value</code> is <code>1</code>, only odd values are valid. If you manually write
-  | any pair value, or a value greater than 5 or lesser than 1, the component will automatically correct the value.
+  | This example only accepts values between <code>1</code> and <code>6</code>, and as the <code>step</code> is
+  | <code>2</code> and initial <code>value</code> is <code>1</code>, only odd values are valid. 
+  
+  | Use the <code>chiNumberInvalid</code> event described in the <a href="./#events">events</a> section
+  | to check if the entered value is valid.
 .example.-mb--3
   .-p--3
     .chi-form__item
       chi-label(for="unique-id-mms1") Label
-      chi-number-input#unique-id-mms1(min="0", max="6", step="2", value="1")
+      chi-number-input#unique-id-mms1(min="1", max="6", step="2", value="1")
   .example-tabs.-pl--2
     ul.chi-tabs#examples-mms
       li.-active
@@ -96,7 +98,7 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-mms
     :code(lang="html")
       <chi-label for="unique-id-mms1">Label</chi-label>
-      <chi-number-input id="unique-id-mms1" min="0" max="6" step="2" value="1"></chi-number-input>
+      <chi-number-input id="unique-id-mms1" min="1" max="6" step="2" value="1"></chi-number-input>
   .chi-tabs-panel#html-mms
     .chi-tab__description
       span.-text--grey
@@ -615,15 +617,17 @@ h3 Min/Max/Step
 p.-text
   | Use the <code>min</code> and <code>max</code> attributes to define minimum and maximum values on number inputs.
   | Use the <code>step</code> attribute to indicate the expected granularity.
-p.-text
+p.-text 
   | This example only accepts values between <code>0</code> and <code>6</code>, and as the <code>step</code> is
-  | <code>2</code> and initial <code>value</code> is <code>1</code>, only odd values are valid. If you manually write
-  | any pair value, or a value greater than 5 or lesser than 1, the component will automatically correct the value.
+  | <code>2</code> and initial <code>value</code> is <code>1</code>, only odd values are valid. 
+  
+  | Use the <code>chiNumberInvalid</code> event described in the <a href="./#events">events</a> section
+  | to check if the entered value is valid.
 .example.-mb--3
   .-p--3
     .chi-form__item
       chi-label(for="unique-id-emm1") Label
-      chi-number-input(expanded=true, min="0", max="6", step="2", value="1")#unique-id-emm1
+      chi-number-input(expanded=true, min="1", max="6", step="2", value="1")#unique-id-emm1
   .example-tabs.-pl--2
     ul.chi-tabs#examples-expanded-minmax
       li.-active
@@ -633,7 +637,7 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-expanded-minmax
     :code(lang="html")
       <chi-label for="unique-id-emm1">Label</chi-label>
-      <chi-number-input expanded id="unique-id-emm1" min="0" max="6" "step="2" value="1"></chi-number-input>
+      <chi-number-input expanded id="unique-id-emm1" min="1" max="6" step="2" value="1"></chi-number-input>
   .chi-tabs-panel#html-expanded-minmax
     .chi-tab__description
       span.-text--grey
