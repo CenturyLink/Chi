@@ -126,9 +126,10 @@ $font-weight-semi-bold: 600;
       }
     }
   }
-
+  // TODO: To be removed when Chi 5.28.0 is alive
   &__row {
     &-empty{
+      align-items: center;
       display: flex;
       justify-content: center;
       padding: 3rem 7rem;

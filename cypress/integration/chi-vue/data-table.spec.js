@@ -392,8 +392,13 @@ describe('Data Table', () => {
   });
 
   describe('Empty', () => {
+    beforeEach(() => {
+      cy.get("[data-cy='data-table-empty-no-filters']").as('noFiltersTable');
+      cy.get("[data-cy='data-table-empty-no-results']").as('noResultsTable');
+    })
+    
     it(`Should have class .${DATA_TABLE_CLASSES.EMPTY}`, () => {
-      cy.get(`[data-cy='data-table-empty-no-filters'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(`@noFiltersTable .${DATA_TABLE_CLASSES.BODY}`)
         .children()
         .first()
         .as('empty');
@@ -401,14 +406,14 @@ describe('Data Table', () => {
     });
 
     it(`Should show default message when it is empty when no filters`, () => {
-      cy.get(`[data-cy='data-table-empty-no-filters']`).should(
+      cy.get(`@noFiltersTable`).should(
         'contain',
         'Search for or select at least one filter to get results'
       );
     });
 
     it(`Should show default message when it is empty when no results`, () => {
-      cy.get(`[data-cy='data-table-empty-no-results']`).should(
+      cy.get(`@noResultsTable`).should(
         'contain',
         'No matching results'
       );
@@ -416,12 +421,12 @@ describe('Data Table', () => {
 
     it('Should have no rows', () => {
       cy.get(
-        `[data-cy='data-table-empty-no-filters'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+        `@noFiltersTable .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
       ).should('not.exist');
     });
 
     it('Should have no footer', () => {
-      cy.get(`[data-cy='data-table-empty-no-filters']`)
+      cy.get(`@noFiltersTable`)
         .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
         .should('not.exist');
     });

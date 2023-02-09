@@ -980,7 +980,7 @@ export default class DataTable extends Vue {
         return this.row(bodyRow, 'parent', striped);
       });
     } else {
-      const icon = <chi-icon class="-m--1" icon="search" color="dark"></chi-icon>;
+      const icon = <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>;
 
       tableBodyRows = (
         <div class={DATA_TABLE_CLASSES.EMPTY}>
@@ -1570,6 +1570,8 @@ export default class DataTable extends Vue {
   }
 
   _printBody() {
+    const icon = <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>;
+
     if (this.data.body.length > 0) {
       const bodyRows =
         this._showSelectedOnlyRowsData?.length > 0
@@ -1591,6 +1593,7 @@ export default class DataTable extends Vue {
       <tbody>
         <tr>
           <td colspan={Object.keys(this.data.head).length} class={DATA_TABLE_CLASSES.EMPTY}>
+            {icon}
             {this._searchMessage()}
           </td>
         </tr>
