@@ -59,36 +59,34 @@ h4 No Results
       }
   .chi-tabs-panel#html-portal-no-results
     :code(lang="html")
-        <div class="chi-card -portal -bg--white -bg-md--grey-15">
-          <div class="chi-card__header -sm">
-            <div class="chi-card__title">Title</div>
-          </div>
-          <div class="chi-card__content -p--0">
-            <div class="chi-data-table -portal -compact">
-              <div class="chi-data-table__head">
-                <div class="chi-data-table__row">
-                  <div class="chi-data-table__cell">
-                    <div>Name</div>
-                  </div>
-                  <div class="chi-data-table__cell">
-                    <div>ID</div>
-                  </div>
-                  <div class="chi-data-table__cell">
-                    <div>Last Login</div>
-                  </div>
+      <div class="chi-card -portal -bg--white -bg-md--grey-15">
+        <div class="chi-card__header -sm">
+          <div class="chi-card__title">Title</div>
+        </div>
+        <div class="chi-card__content -p--0">
+          <div class="chi-data-table -portal -compact">
+            <div class="chi-data-table__head">
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell">
+                  <div>Name</div>
                 </div>
-              </div>
-              <div class="chi-data-table__body">
-                <div class="chi-data-table__row-empty">
-                  <div class="-d--flex -justify-content--center">
-                    <i class="-mr--1 chi-icon icon-search"></i>
-                    No matching results
-                  </div>
+                <div class="chi-data-table__cell">
+                  <div>ID</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Last Login</div>
                 </div>
               </div>
             </div>
+            <div class="chi-data-table__body">
+              <div class="chi-data-table__row-empty">
+                <i class="-mr--1 chi-icon icon-search"></i>
+                  No matching results
+              </div>
+            </div>
           </div>
-        </div> 
+        </div>
+      </div>
 
 h4 No Filters
 .example.-mb--3
@@ -148,29 +146,34 @@ h4 No Filters
       }
   .chi-tabs-panel#html-portal-no-filters
     :code(lang="html")
-      <div class="chi-data-table">
-          <div class="chi-data-table__head">
-            <div class="chi-data-table__row">
-              <div class="chi-data-table__cell">
-                <div>Name</div>
-              </div>
-              <div class="chi-data-table__cell">
-                <div>ID</div>
-              </div>
-              <div class="chi-data-table__cell">
-                <div>Last Login</div>
+      <div class="chi-card -portal -bg--white -bg-md--grey-15">
+        <div class="chi-card__header -sm">
+          <div class="chi-card__title">Title</div>
+        </div>
+        <div class="chi-card__content -p--0">
+          <div class="chi-data-table -portal -compact">
+            <div class="chi-data-table__head">
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell">
+                  <div>Name</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>ID</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Last Login</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="chi-data-table__body">
-            <div class="chi-data-table__row-empty">
-              <div class="-d--flex -justify-content--center">
+            <div class="chi-data-table__body">
+              <div class="chi-data-table__row-empty">
                 <i class="-mr--1 chi-icon icon-search"></i>
                 Search for or select at least one filter to get results
               </div>
             </div>
           </div>
         </div>
+      </div>  
 
 script.
   new Vue({
