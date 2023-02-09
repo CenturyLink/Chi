@@ -1,4 +1,23 @@
 # CHANGELOG
+## 5.27.0 (February 9, 2023)
+### Components
+#### Added
+* Added: Tabs web component.
+* Added: Data table now supports selecting all items in all pages.
+* Added: Picker component now supports sizes.
+* Added: Data table header sorting has been improved if a cell is empty.
+* Added: Data table now supports expand/collapse button in header that open and close all rows.
+* Added: Icons `icon-gear-password`, `icon-shield-2fa`, `icon-squares-minus-outline`, `icon-squares-plus-outline`.
+* Added: Flag icon component now supports blank flag as default and the following countries: Belgium, Canada, Chile, China, Ecuador, France, Ireland, Italy, Netherlands, Peru, Spain, Venezuela.
+#### Changed
+* Changed: Data table chevron icon that appears on mobile row has been removed.
+* Changed: Icon `icon-shield`.
+* Changed: Alert `icon-circle-warning` in danger mode has changed to `icon-circle-x`.
+* Changed: App layout component title styles.
+### Documentation
+#### Changed
+* Changed: Expansion panel accordion mode example has been removed.
+
 ## 5.26.0 (January 20, 2023)
 ### Components
 #### Added
