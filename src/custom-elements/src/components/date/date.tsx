@@ -91,10 +91,10 @@ export class Date {
       if (newValue) {
         if (this.multiple) {
           this._vm.dates =
-            this.value.split(',').map(valueDay => this.fromString(valueDay)) ||
+            newValue.split(',').map(valueDay => this.fromString(valueDay)) ||
             [];
         } else {
-          const date = dayjs(this.value).format(this.format);
+          const date = dayjs(newValue).format(this.format);
 
           this._vm.dates = [this.fromString(date)];
         }
