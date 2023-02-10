@@ -90,9 +90,9 @@ export class Date {
     if (newValue !== oldValue && (newValue || oldValue)) {
       if (newValue) {
         if (this.multiple) {
-          this._vm.dates = this.value
-            ? this.value.split(',').map(valueDay => this.fromString(valueDay))
-            : [];
+          this._vm.dates =
+            this.value.split(',').map(valueDay => this.fromString(valueDay)) ||
+            [];
         } else {
           const date = dayjs(this.value).format(this.format);
 
@@ -192,6 +192,25 @@ export class Date {
     }
   }
 
+  private _initDates() {
+    let dates = [];
+
+    if (this.value) {
+      if (this.multiple) {
+        dates = this.value
+          .replace(/ /g, '')
+          .split(',')
+          .map(valueDay => {
+            return this.fromString(valueDay);
+          });
+      } else {
+        dates = [this.fromString(this.value)];
+      }
+    }
+
+    return dates;
+  }
+
   private _initCalendarViewModel(): void {
     dayjs.locale(this.locale);
     dayjs.extend(customParseFormat);
@@ -203,16 +222,7 @@ export class Date {
     }
 
     this._vm = {
-      dates: this.value
-        ? this.multiple
-          ? this.value
-              .replace(/ /g, '')
-              .split(',')
-              .map(valueDay => {
-                return this.fromString(valueDay);
-              })
-          : [this.fromString(this.value)]
-        : [],
+      dates: this._initDates(),
       today: dayjs(),
       weekStartClass:
         dayjs()
