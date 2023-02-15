@@ -1,7 +1,7 @@
 /// <reference types="Cypress" />
 
 const DANGER_CLASS = '-danger';
-
+const TIME_PICKER_MINUTE = 'chi-time-picker__minute';
 const clickDate = '11/14/2018';
 const clickDate2 = '01/26/2019';
 const thisMonthName = /November\s*2018/;
@@ -266,4 +266,36 @@ describe('Date picker', function() {
       .find('input')
       .should('have.class', `${DANGER_CLASS}`);
   });
+
+  it('Date-picker should show Time Picker with 24hr format. ', function() {
+    const hours = '23';
+    const minutes = '37';
+
+    cy.get('[data-cy="test-time-format-24hr"]').as('testTimeFormat');
+
+    cy.get('@testTimeFormat')
+      .find('input')
+      .scrollIntoView()
+      .focus()
+      .get('@testTimeFormat')
+      .find('chi-popover[active]')
+      .should('have.attr', 'active');
+
+    // Select hours
+    cy.get('@testTimeFormat')
+      .find('chi-popover[active]')
+      .find(`[data-hour="${hours}"]`)
+      .click();
+
+    // Select minutes
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minutes)
+      .click();
+
+    cy.get('@testTimeFormat')
+      .find('input.sc-chi-date-picker')
+      .should('have.value', `11/22/2018, ${hours}:${minutes}`);
+  });
+
 });

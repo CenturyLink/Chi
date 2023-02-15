@@ -7,9 +7,12 @@ script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
 -  let day = 1;
+-  let minute = 0;
+-  let hour = 0;
 -  const weekS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 -  const today = 19;
 -  const active = 23;
+-  const padZero = value => ('0' + value).slice(-2);
 
 .test-base.-py--2
   span.-text--h2 Base
@@ -228,6 +231,50 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
             .chi-datepicker__day.-active=day++
           else
             .chi-datepicker__day=day++
+
+- day = 1;
+.test-time-format-24hr-view.-py--2
+  span.-text--h2 Test time format view
+  .-d--flex
+    div.hydrated
+      .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
+        .chi-datepicker__month-row
+          .prev
+            .chi-icon.-sm.undefined
+              svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                use(xlink:href='#icon-chevron-left')
+          .chi-datepicker__month
+            | November
+            | 2018
+          .next
+            .chi-icon.-sm.undefined
+                svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                  use(xlink:href='#icon-chevron-right')
+        .chi-datepicker__day-names
+          each weekDay in weekS
+            .chi-datepicker__week-day=weekDay
+        .chi-datepicker__days
+          while day < 31
+            if day === 23
+              .chi-datepicker__day.-active=day++
+            else
+              .chi-datepicker__day=day++
+
+    div.hydrated
+      .chi-time-picker
+        .chi-time-picker__content
+          .chi-time-picker__hours
+            while hour < 24
+              if hour === 0
+                .chi-time-picker__hour.-active=padZero(hour++)
+              else
+                .chi-time-picker__hour=padZero(hour++)
+          .chi-time-picker__minutes
+            while minute < 60
+              if minute === 0
+                .chi-time-picker__minute.-active=padZero(minute++)
+              else
+                .chi-time-picker__minute=padZero(minute++)
 
 script.
   document.addEventListener(
