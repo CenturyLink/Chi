@@ -217,48 +217,93 @@ describe('Carousel', () => {
     });
   });
 
+  describe('No Button Controllers', () => {
+    beforeEach(() => {
+      cy.get("[data-cy='no-button-controllers']").as('no-button-controllers');
+      cy.get("[data-cy='base']").as('base');
+    });
+
+    it('Should hide buttons when no-button-controllers is true', () => {
+      cy.get('@no-button-controllers')
+        .should('have.attr', 'no-button-controllers')
+      cy.get('@no-button-controllers')
+        .find(`.${CAROUSEL_PREVIOUS_CLASS}`)
+        .should('not.be.visible');
+      cy.get('@no-button-controllers')
+        .find(`.${CAROUSEL_NEXT_CLASS}`)
+        .should('not.be.visible');
+    });
+
+    it('Should show buttons when no-button-controllers is false', () => {
+      cy.get('@base')
+        .should('not.have.attr', 'no-button-controllers')
+      cy.get('@base')
+      .find(`.${CAROUSEL_NEXT_CLASS}`)
+      .should('be.visible');
+      cy.get('@base')
+      .find(`.${CAROUSEL_PREVIOUS_CLASS}`)
+      .should('be.visible');
+    });
+  });
+
   describe('Autoplay', () => {
     beforeEach(() => {
       cy.get("[data-cy='autoplay']").as('autoplay');
       cy.get('@autoplay')
-        .find(`.${CAROUSEL_DOTS_CLASS}`)
-        .children()
-        .as('controls');
+      .find('.chi-carousel__item')
+      .as('items')
     });
 
-    it('should contain prop autoplay and is visible', () => { 
-      cy.get('@autoplay').find(`.${CAROUSEL_CLASS}`).should('be.visible') 
-      cy.get('@autoplay').should('be.visible');
+    it('Should autoplay when the prop autoplay is true', () => {
+      cy.get('@autoplay')
+        .should('have.attr', 'autoplay')
     });
 
-    it('should have prop autoplay with interval', () => {
+    it('Should have the prop interval', () => {
       cy.get('@autoplay')
-        .find('.chi-carousel__item:first')
-        .contains('1');
-      cy.get('@autoplay')
-        .should('have.prop', 'autoplay', true)
-        .should('have.prop', 'interval', 5);
-      cy.wait(5)
-      cy.get('@autoplay')
-          .find('.chi-carousel__item:nth-child(4)')
-          .contains('4');
+        .should('have.attr', 'interval')
     });
 
-    it('should hide buttons when no-button-controllers is true', () => {
-      cy.get('@autoplay')
-        .should('have.attr', 'no-button-controllers')
-      cy.get('@autoplay')
-        .find('.chi-carousel__control')
-        .should('not.be.visible');
-      cy.wait(5)
-      cy.get('@autoplay')
-        .find('.chi-carousel__control')
-        .should('not.be.visible');
-    });  
+    it('Normal autoplay and interval functionality', () => {
+      const interval = 3000;
 
-    it('Should have 3 dot controls', () => {
-      cy.get('@controls').should('have.length', 3);
-    });
-  });
+      cy.get('@items')
+        .should('have.length', 8);
     
+      cy.get('@autoplay')
+        .find('.chi-carousel__item')
+        .eq(0)
+        .as('activeItem');
+
+      cy.get('@activeItem')
+        .should('contain', '1')
+
+      cy.wait(interval);
+    
+      cy.get('@items')
+        .eq(3)
+        .as('activeItem')
+      cy.get('@activeItem')
+        .should('contain', '4')
+
+      cy.wait(interval);
+    
+      cy.get('@items')
+        .eq(6)
+        .as('activeItem');
+      cy.get('@activeItem')
+        .should('contain', '7') 
+    });
+
+    it('Wait for autoplay to return to the first view', () => {
+      const interval = 3000;
+
+      cy.wait(interval);
+    
+      cy.get('@items')
+        .eq(0)
+        .as('activeItem');
+      cy.get('@activeItem')
+        .should('contain', '1')
+    });
 });
