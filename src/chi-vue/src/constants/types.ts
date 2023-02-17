@@ -117,6 +117,7 @@ export interface DataTableConfig {
   };
   treeSelection?: boolean;
   cellWrap?: boolean;
+  showExpandAll?: boolean;
 }
 export interface DataTableFilter {
   name: string;
