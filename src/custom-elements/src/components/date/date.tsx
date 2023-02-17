@@ -74,15 +74,15 @@ export class Date {
   @Watch('excludedDates')
   updateExcludedDates() {
     this.excludedDatesArray = this.excludedDates
-    ? this.excludedDates.split(',').map(date => date.trim())
-    : [];
+      ? this.excludedDates.split(',').map(date => date.trim())
+      : [];
   }
 
   @Watch('excludedWeekdays')
   updateExcludedWeekdays() {
     this.excludedWeekdaysArray = this.excludedWeekdays
-    ? this.excludedWeekdays.split(',').map(weekDay => parseInt(weekDay))
-    : [];
+      ? this.excludedWeekdays.split(',').map(weekDay => parseInt(weekDay))
+      : [];
   }
 
   @Watch('value')
@@ -90,10 +90,13 @@ export class Date {
     if (newValue !== oldValue && (newValue || oldValue)) {
       if (newValue) {
         if (this.multiple) {
-          this._vm.dates = this.value ?
-            this.value.split(',').map(valueDay => this.fromString(valueDay)) : [];
+          this._vm.dates =
+            newValue.split(',').map(valueDay => this.fromString(valueDay)) ||
+            [];
         } else {
-          this._vm.dates = [this.fromString(this.value)];
+          const date = dayjs(newValue).format(this.format);
+
+          this._vm.dates = [this.fromString(date)];
         }
 
         if (this._vm.dates.length > 0) {
@@ -164,8 +167,8 @@ export class Date {
   /**
    * Date change value event
    */
-   @Event({ eventName: 'chiDateChange', cancelable: true })
-   eventChange: EventEmitter;
+  @Event({ eventName: 'chiDateChange', cancelable: true })
+  eventChange: EventEmitter;
 
   _vm: {
     dates: Dayjs[];
@@ -178,17 +181,35 @@ export class Date {
     max: Dayjs;
   };
 
-  private _initViewMonth():void {
+  private _initViewMonth(): void {
     if (this.multiple && this.value) {
-      const valueDates = this.value.replace(/ /g, '')
-        .split(',');
+      const valueDates = this.value.replace(/ /g, '').split(',');
       const date = valueDates[valueDates.length - 1];
 
       this.viewMonth = date ? this.fromString(date) : dayjs();
     } else {
       this.viewMonth = this.value ? this.fromString(this.value) : dayjs();
     }
-  };
+  }
+
+  private _initDates() {
+    let dates = [];
+
+    if (this.value) {
+      if (this.multiple) {
+        dates = this.value
+          .replace(/ /g, '')
+          .split(',')
+          .map(valueDay => {
+            return this.fromString(valueDay);
+          });
+      } else {
+        dates = [this.fromString(this.value)];
+      }
+    }
+
+    return dates;
+  }
 
   private _initCalendarViewModel(): void {
     dayjs.locale(this.locale);
@@ -201,11 +222,7 @@ export class Date {
     }
 
     this._vm = {
-      dates: this.value ?
-        this.multiple ? this.value.replace(/ /g, '')
-          .split(',').map(valueDay => {
-          return this.fromString(valueDay)
-          }) : [this.fromString(this.value)] : [],
+      dates: this._initDates(),
       today: dayjs(),
       weekStartClass:
         dayjs()
@@ -271,14 +288,17 @@ export class Date {
   }
 
   addDate(date) {
-    if (this.multiple) this.value = `${this.value ? this.value + ',' : ''}${date}`;
+    if (this.multiple)
+      this.value = `${this.value ? this.value + ',' : ''}${date}`;
   }
 
   removeDate(day: Dayjs) {
     const formattedDate = this.toDayString(day);
     const currentValues = Array.from(this.value.split(','));
 
-    this.value = currentValues.filter(value => value !== formattedDate).join(',');
+    this.value = currentValues
+      .filter(value => value !== formattedDate)
+      .join(',');
     this.eventChange.emit(this.value);
   }
 
@@ -296,7 +316,11 @@ export class Date {
   checkIfExcluded(day: Dayjs) {
     if (this.excludedDates) {
       for (let i = 0; i < this.excludedDatesArray.length; i++) {
-        if (dayjs(this.excludedDatesArray[i]).startOf('day').isSame(day.startOf('day'))) {
+        if (
+          dayjs(this.excludedDatesArray[i])
+            .startOf('day')
+            .isSame(day.startOf('day'))
+        ) {
           return true;
         }
       }
@@ -315,9 +339,7 @@ export class Date {
 
     return (
       <div
-        class={`chi-datepicker ${this._vm.weekStartClass} ${
-          this._vm.monthStartClass
-        }`}
+        class={`chi-datepicker ${this._vm.weekStartClass} ${this._vm.monthStartClass}`}
       >
         <div class="chi-datepicker__month-row">
           <div
@@ -359,22 +381,32 @@ export class Date {
               ${
                 (this._vm.min && day.isBefore(this._vm.min)) ||
                 (this._vm.max && day.isAfter(this._vm.max)) ||
-                (this.checkIfExcluded(day))
+                this.checkIfExcluded(day)
                   ? CLASSES.INACTIVE
                   : ''
               }
-              ${Array.from(this._vm.dates).some(vmDay => day.isSame(vmDay, 'day')) ? CLASSES.ACTIVE : ''}
+              ${
+                Array.from(this._vm.dates).some(vmDay =>
+                  day.isSame(vmDay, 'day')
+                )
+                  ? CLASSES.ACTIVE
+                  : ''
+              }
               ${day.isSame(dayjs(), 'day') ? CLASSES.TODAY : ''}
             `}
               data-date={this.toDayString(day)}
               onClick={() => {
-                if (this.multiple &&
-                  Array.from(this._vm.dates).some(vmDay => day.isSame(vmDay, 'day'))) {
+                if (
+                  this.multiple &&
+                  Array.from(this._vm.dates).some(vmDay =>
+                    day.isSame(vmDay, 'day')
+                  )
+                ) {
                   return this.removeDate(day);
                 }
 
-                return this.selectDate(day)}
-              }
+                return this.selectDate(day);
+              }}
             >
               {day.date()}
             </div>

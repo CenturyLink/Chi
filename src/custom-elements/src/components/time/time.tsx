@@ -6,7 +6,7 @@ import {
   Watch,
   h, Element
 } from '@stencil/core';
-import { TIME_CLASSES, ACTIVE_CLASS, DISABLED_CLASS } from '../../constants/classes';
+import { TIME_CLASSES, ACTIVE_CLASS, DISABLED_CLASS, UTILITY_CLASSES } from '../../constants/classes';
 import { CHI_TIME_SCROLL_ADJUSTMENT, TimePickerFormats } from '../../constants/constants';
 
 @Component({
@@ -245,7 +245,7 @@ export class Time {
     });
 
     return (
-      <div class={TIME_CLASSES.HOURS}>
+      <div class={`${TIME_CLASSES.HOURS} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>
         {hoursToDisplay}
       </div>
     );
@@ -300,7 +300,7 @@ export class Time {
     });
 
     return (
-      <div class={TIME_CLASSES.MINUTES}>{
+      <div class={`${TIME_CLASSES.MINUTES} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>{
         minutesToDisplay
       }</div>
     );
@@ -356,7 +356,7 @@ export class Time {
 
     if (this.displaySeconds) {
       return (
-        <div class={TIME_CLASSES.SECONDS}>{
+        <div class={`${TIME_CLASSES.SECONDS} ${UTILITY_CLASSES.POSITION.RELATIVE}`}>{
           secondsToDisplay
         }</div>
       );
