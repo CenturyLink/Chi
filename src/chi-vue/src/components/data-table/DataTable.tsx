@@ -74,9 +74,7 @@ export default class DataTable extends Vue {
   cellWrap = Object.prototype.hasOwnProperty.call(this.$props.config, 'cellWrap')
     ? this.$props.config.cellWrap
     : defaultConfig.cellWrap;
-  showExpandAll = Object.prototype.hasOwnProperty.call(this.$props.config, 'showExpandAll')
-    ? this.$props.config.showExpandAll
-    : defaultConfig.showExpandAll;
+  showExpandAll = this.$props.config.showExpandAll || defaultConfig.showExpandAll;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
