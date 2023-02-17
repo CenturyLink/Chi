@@ -22,12 +22,12 @@ if (window.attachEvent) {
   window.attachEvent('onload', executeOnLoadCallbacks);
 } else {
   if (window.onload) {
-      const currentOnLoad = window.onload;
-      const newOnLoad = function(evt) {
-        currentOnLoad(evt);
-        executeOnLoadCallbacks(evt);
-      };
-      window.onload = newOnLoad;
+    const currentOnLoad = window.onload;
+    const newOnLoad = function(evt) {
+      currentOnLoad(evt);
+      executeOnLoadCallbacks(evt);
+    };
+    window.onload = newOnLoad;
   } else {
     window.onload = executeOnLoadCallbacks;
   }
@@ -65,7 +65,6 @@ function addId(item) {
 }
 
 function enableCopyToClipboardFeature(preElem) {
-
   const code = preElem.childNodes && preElem.childNodes[0];
 
   if (code.nodeName !== 'CODE' || !code.textContent) {
@@ -85,9 +84,9 @@ function enableCopyToClipboardFeature(preElem) {
   preElem.parentNode.insertBefore(copyButtonWrapper, preElem);
 
   const copy = function() {
-    const textArea = document.createElement("textarea");
+    const textArea = document.createElement('textarea');
     textArea.textContent = code.textContent;
-    textArea.style.opacity = "0.01";
+    textArea.style.opacity = '0.01';
     textAreaWrapper.appendChild(textArea);
     textArea.select();
     document.execCommand('copy');
@@ -95,11 +94,9 @@ function enableCopyToClipboardFeature(preElem) {
   };
 
   copyButton.addEventListener('click', copy);
-
 }
 
 onLoad(() => {
-
   var examples = document.querySelectorAll('.chi-example');
 
   Array.prototype.forEach.call(examples, function(example) {
@@ -129,19 +126,20 @@ onLoad(() => {
 
   var anchors = [];
 
-  Array.prototype.forEach.call(
-    document.querySelectorAll('h2,h3,h4'),
-    function(heading) {
-      const docs = document.querySelector('.docs-body:not(.-non-doc)');
+  Array.prototype.forEach.call(document.querySelectorAll('h2,h3,h4'), function(
+    heading
+  ) {
+    const docs = document.querySelector('.docs-body:not(.-non-doc)');
 
-      if (docs && docs.contains(heading)) {
-        anchors.push(heading);
-      }
-    });
+    if (docs && docs.contains(heading)) {
+      anchors.push(heading);
+    }
+  });
 
   // Polyfill element.closest IE9+
   if (!Element.prototype.matches) {
-    Element.prototype.matches = Element.prototype.msMatchesSelector ||
+    Element.prototype.matches =
+      Element.prototype.msMatchesSelector ||
       Element.prototype.webkitMatchesSelector;
   }
 
@@ -162,7 +160,7 @@ onLoad(() => {
     const anchorLink = document.createElement('a');
     const paramTheme = window.theme ? `?theme=${window.theme}` : '';
 
-    if (anchor.closest(".example")) {
+    if (anchor.closest('.example')) {
       return;
     } else {
       addClass(anchor, '-anchor');
@@ -202,20 +200,34 @@ onLoad(() => {
       }
     }
 
-    Array.prototype.forEach.call(document.querySelectorAll('article.docs-article > section.chi-grid__container > .chi-tabs-panel'), function(tabContent) {
-      if (document.querySelector(`article ${urlHash}`)) {
-        tabContent.classList.remove('-active');
+    Array.prototype.forEach.call(
+      document.querySelectorAll(
+        'article.docs-article > section.chi-grid__container > .chi-tabs-panel'
+      ),
+      function(tabContent) {
+        if (document.querySelector(`article ${urlHash}`)) {
+          tabContent.classList.remove('-active');
+        }
+        if (
+          tabContent &&
+          tabContent.contains(document.querySelector(`${urlHash}`))
+        ) {
+          tabContent.classList.add('-active');
+          tabContentId = tabContent.id;
+          document
+            .querySelector(`[href*=${tabContentId}]`)
+            .parentNode.classList.add('-active');
+        }
       }
-      if (tabContent && tabContent.contains(document.querySelector(`${urlHash}`))) {
-        tabContent.classList.add('-active');
-        tabContentId = tabContent.id;
-        document.querySelector(`[href*=${tabContentId}]`).parentNode.classList.add('-active');
-      }
-    });
+    );
   }
 
-  var docsSidenavAccessibilityAccordion = document.querySelector('nav.docs-sidenav .accessibility-accordion');
-  var drawerAccessibilityAccordion = document.querySelector('div#drawer-sidenav .accessibility-accordion');
+  var docsSidenavAccessibilityAccordion = document.querySelector(
+    'nav.docs-sidenav .accessibility-accordion'
+  );
+  var drawerAccessibilityAccordion = document.querySelector(
+    'div#drawer-sidenav .accessibility-accordion'
+  );
 
   if (docsSidenavAccessibilityAccordion) {
     chi.accordion(docsSidenavAccessibilityAccordion);
@@ -226,19 +238,21 @@ onLoad(() => {
   }
 
   var url = new URL(window.location.href);
-  var urlThemeParam = url.searchParams.get("theme");
+  var urlThemeParam = url.searchParams.get('theme');
   var themeAssets = {
     chiCss: document.getElementById('chi-css'),
     docsCss: document.getElementById('docs-css'),
     faviconSvg: document.getElementById('favicon-svg'),
     faviconIco: document.getElementById('favicon-ico')
   };
-  var rootUrl = window.location.hostname === 'assets.ctl.io' ?
-    'https://assets.ctl.io/chi/' + window.chiCurrentVersion + '/' :
-    window.location.hostname === 'assets-dev.ctl.io' ?
-      'https://assets-dev.ctl.io/chi/staging/' : 
-    window.location.hostname === 'lib.lumen.com' ?
-      'https://lib.lumen.com/chi/' + window.chiCurrentVersion + '/' : '/';
+  var rootUrl =
+    window.location.hostname === 'assets.ctl.io'
+      ? 'https://assets.ctl.io/chi/' + window.chiCurrentVersion + '/'
+      : window.location.hostname === 'assets-dev.ctl.io'
+      ? 'https://assets-dev.ctl.io/chi/staging/'
+      : window.location.hostname === 'lib.lumen.com'
+      ? 'https://lib.lumen.com/chi/' + window.chiCurrentVersion + '/'
+      : '/';
 
   var themes = {
     Lumen: {
@@ -268,18 +282,27 @@ onLoad(() => {
       faviconSvg: rootUrl + 'assets/themes/brightspeed/images/favicon.svg',
       faviconIco: rootUrl + 'assets/themes/brightspeed/images/favicon.ico',
       trigger: '.theme-trigger-brightspeed'
+    },
+    Colt: {
+      chiCss: rootUrl + 'chi-colt.css',
+      docsCss: rootUrl + 'assets/themes/colt/docs.css',
+      faviconSvg: rootUrl + 'assets/themes/colt/images/favicon.svg',
+      faviconIco: rootUrl + 'assets/themes/colt/images/favicon.ico',
+      trigger: '.theme-trigger-colt'
     }
   };
 
   function updateAnchorHrefs() {
     if (window.theme) {
       Array.prototype.forEach.call(
-        document.querySelectorAll('.-anchor'), function(anchor) {
+        document.querySelectorAll('.-anchor'),
+        function(anchor) {
           const anchorLink = anchor.querySelector('a');
           const paramTheme = window.theme ? `?theme=${window.theme}` : '';
 
           anchorLink.setAttribute('href', paramTheme + '#' + anchor.id);
-        });
+        }
+      );
     }
   }
 
@@ -293,8 +316,7 @@ onLoad(() => {
       if (theme === 'CenturyLink') {
         logoElement.logo = theme.toLowerCase();
         logoElement.color = 'black';
-      } 
-      else if (theme === 'Brightspeed') {
+      } else if (theme === 'Brightspeed') {
         logoElement.logo = theme.toLowerCase();
 
         if (logoElement.color) {
@@ -310,15 +332,19 @@ onLoad(() => {
     }
 
     localStorage.setItem('chiTheme', theme);
-    document.querySelector('html').setAttribute('class', `chi theme-${theme.toLowerCase()}`);
+    document
+      .querySelector('html')
+      .setAttribute('class', `chi theme-${theme.toLowerCase()}`);
 
     function replaceAsset(currentAsset, replacementHref) {
       const replacement = document.createElement('LINK');
 
       replacement.setAttribute('rel', 'stylesheet');
       replacement.setAttribute('href', replacementHref);
-      currentAsset.parentNode
-        .insertBefore(replacement, currentAsset.nextSibling);
+      currentAsset.parentNode.insertBefore(
+        replacement,
+        currentAsset.nextSibling
+      );
       replacement.addEventListener('load', function() {
         const assetId = currentAsset.getAttribute('id');
 
@@ -344,34 +370,36 @@ onLoad(() => {
       }
     );
 
-    Array.prototype.forEach.call(
-      themeSwitchButtons,
-      function(button) {
-        const buttonImg = button.querySelector('img.-favicon');
-        const buttonThemeName = button.querySelector('.-theme-name');
+    Array.prototype.forEach.call(themeSwitchButtons, function(button) {
+      const buttonImg = button.querySelector('img.-favicon');
+      const buttonThemeName = button.querySelector('.-theme-name');
 
-        if (anchorTarget) {
-          const themeFavicon = anchorTarget.querySelector('img').getAttribute('src');
-  
-          buttonImg.setAttribute('src', themeFavicon);
-          buttonThemeName.innerText = anchorTarget.dataset.theme;
-        }
+      if (anchorTarget) {
+        const themeFavicon = anchorTarget
+          .querySelector('img')
+          .getAttribute('src');
+
+        buttonImg.setAttribute('src', themeFavicon);
+        buttonThemeName.innerText = anchorTarget.dataset.theme;
       }
-    );
-    updateAnchorHrefs()
+    });
+    updateAnchorHrefs();
   };
 
   if (urlThemeParam && themes.hasOwnProperty(urlThemeParam)) {
-    switchTheme(urlThemeParam,
-      document.querySelector(themes[urlThemeParam].trigger));
+    switchTheme(
+      urlThemeParam,
+      document.querySelector(themes[urlThemeParam].trigger)
+    );
   } else if (window.localStorage.getItem('chiTheme')) {
     const localStorageTheme = window.localStorage.getItem('chiTheme');
 
-    switchTheme(localStorageTheme,
-      document.querySelector(themes[localStorageTheme].trigger));
+    switchTheme(
+      localStorageTheme,
+      document.querySelector(themes[localStorageTheme].trigger)
+    );
   } else {
-    switchTheme('Lumen',
-      document.querySelector(themes.Lumen.trigger));
+    switchTheme('Lumen', document.querySelector(themes.Lumen.trigger));
   }
 
   chi.dropdown(document.querySelectorAll('.-theme-switch'));
