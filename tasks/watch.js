@@ -14,7 +14,8 @@ export const serveAndWatch = gulp.parallel(
         'build:chi:styles',
         'build:ctl:styles',
         'build:portal:styles',
-        'build:brightspeed:styles'
+        'build:brightspeed:styles',
+        'build:colt:styles'
       ),
       'sri:chi:assets',
       'serve:notify:end'

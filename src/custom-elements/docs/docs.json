@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-02-06T20:07:28",
+  "timestamp": "2023-02-15T16:45:15",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2761,7 +2761,6 @@
           "reflectToAttr": true,
           "docs": "used to set a maximum allowed value",
           "docsTags": [],
-          "default": "Number.MAX_SAFE_INTEGER",
           "values": [
             {
               "type": "number"
@@ -2778,7 +2777,6 @@
           "reflectToAttr": true,
           "docs": "used to set a minimum allowed value",
           "docsTags": [],
-          "default": "Number.MIN_SAFE_INTEGER",
           "values": [
             {
               "type": "number"
