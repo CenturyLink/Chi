@@ -74,6 +74,7 @@ export default class DataTable extends Vue {
   cellWrap = Object.prototype.hasOwnProperty.call(this.$props.config, 'cellWrap')
     ? this.$props.config.cellWrap
     : defaultConfig.cellWrap;
+  showExpandAll = this.$props.config.showExpandAll || defaultConfig.showExpandAll;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
@@ -137,17 +138,19 @@ export default class DataTable extends Vue {
 
     return (
       <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`}>
-        <Tooltip message={`${isExpanded ? 'Collapse' : 'Expand'} All`}>
-          <button
-            class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT} ${EXPAND_CLASS} ${GENERIC_SIZE_CLASSES.SM}`}
-            aria-label="Expand All Rows"
-            onClick={() => this.toggleAllRows(isExpanded ? 'collapse' : 'expand')}>
-            <div class={BUTTON_CLASSES.CONTENT}>
-              <i class={`${ICON_CLASS} icon-squares-${expandableIcon}-outline`} />
-            </div>
-            <span class={SR_ONLY}>Expand All Rows</span>
-          </button>
-        </Tooltip>
+        {this.showExpandAll && (
+          <Tooltip message={`${isExpanded ? 'Collapse' : 'Expand'} All`}>
+            <button
+              class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.FLAT} ${EXPAND_CLASS} ${GENERIC_SIZE_CLASSES.SM}`}
+              aria-label="Expand All Rows"
+              onClick={() => this.toggleAllRows(isExpanded ? 'collapse' : 'expand')}>
+              <div class={BUTTON_CLASSES.CONTENT}>
+                <i class={`${ICON_CLASS} icon-squares-${expandableIcon}-outline`} />
+              </div>
+              <span class={SR_ONLY}>Expand All Rows</span>
+            </button>
+          </Tooltip>
+        )}
       </div>
     );
   }
