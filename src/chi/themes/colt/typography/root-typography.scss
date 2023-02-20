@@ -1,0 +1,10 @@
+@import '../../_global-variables';
+@import '../_variables';
+@import '../../_global-mixins';
+@import '../_mixins';
+
+%root-typography {
+  color: $color-text-base;
+  font-family: $font-family-base;
+  line-height: $line-height;
+}
