@@ -247,17 +247,47 @@ section.chi-table.chi-table__options.-bordered.-my--3
           td
             <code>DataTableRow</code>
         tr
-          td
+          td.-d--flex.-align-items--center
             div <code>chiSelectAll</code>
+            chi-badge(class='-ml--1', size="xs")= 'Deprecated'
           td
             div The user selected all the rows on the page
           td
             <code>DataTableRow[]</code>
         tr
           td
+            div <code>chiSelectAllThisPage</code>
+          td
+            div The user selected all the rows on the page
+          td
+            <code>DataTableRow[]</code>
+        tr
+          td.-d--flex.-align-items--center
             div <code>chiDeselectAll</code>
+            chi-badge(class='-m--1', size="xs")= 'Deprecated'
           td
             div The user deselected all the rows on the page
+          td
+            <code>DataTableRow[]</code>
+        tr
+          td
+            div <code>chiDeselectAllThisPage</code>
+          td
+            div The user deselected all the rows on the page
+          td
+            <code>DataTableRow[]</code>
+        tr
+          td
+            div <code>chiSelectAllPages</code>
+          td
+            div The user selected all the rows on the table
+          td
+            <code>DataTableRow[]</code>
+        tr
+          td
+            div <code>chiDeselectAllPages</code>
+          td
+            div The user deselected all the rows on the table
           td
             <code>DataTableRow[]</code>
         tr
