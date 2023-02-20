@@ -100,6 +100,7 @@ export default class DataTable extends Vue {
     };
   } = {};
   _chiDropdownSelectAll: any;
+  _dataTableNumber?: number;
 
   _toggleInfoPopover(infoPopoverRef: string) {
     const popover: any = this.$refs[infoPopoverRef];
@@ -171,7 +172,7 @@ export default class DataTable extends Vue {
     let cellIndex = 0;
 
     Object.keys(this.data.head).forEach((column: string) => {
-      const infoPopoverId = `info-popover-${dataTableNumber}-${column}`,
+      const infoPopoverId = `info-popover-${this._dataTableNumber}-${column}`,
         label = this.data.head[column].label || this.data.head[column],
         infoIcon = this.data.head[column].description ? (
           <chi-button
@@ -299,7 +300,7 @@ export default class DataTable extends Vue {
     if (bulkActionSlot) {
       if (this.mode === DataTableModes.CLIENT) {
         return (
-          <DataTableBulkActions uuid={dataTableNumber} selectedRows={this.selectedRows.length}>
+          <DataTableBulkActions uuid={this._dataTableNumber} selectedRows={this.selectedRows.length}>
             <template slot="start">{bulkActionSlot}</template>
           </DataTableBulkActions>
         );
@@ -582,7 +583,7 @@ export default class DataTable extends Vue {
       );
     }
 
-    this._chiDropdownSelectAll.hide();
+    this._chiDropdownSelectAll?.hide();
     this._emitSelectedRows();
   }
 
@@ -1220,8 +1221,10 @@ export default class DataTable extends Vue {
   }
 
   created() {
-    this._dataTableId = `dt-${dataTableNumber}`;
     dataTableNumber += 1;
+    this._dataTableNumber = dataTableNumber;
+    this._dataTableId = `dt-${this._dataTableNumber}`;
+
     if (
       this.$props.config.defaultSort &&
       this.$props.config.defaultSort.key &&
@@ -1288,7 +1291,6 @@ export default class DataTable extends Vue {
 
   mounted() {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
-    const selectAllDropdownComponent = this.$refs.selectAllDropdown;
 
     if (dataTableComponent && this.config.columnResize) {
       new ColumnResize(this);
@@ -1322,15 +1324,13 @@ export default class DataTable extends Vue {
       });
     }
 
-    if (selectAllDropdownComponent) {
-      this._chiDropdownSelectAll = chi.dropdown(selectAllDropdownComponent);
-    }
-
+    this._initializeSelectAllDropdown();
     this._addPaginationEventListener();
     window.addEventListener('resize', this.resizeHandler);
   }
 
   updated() {
+    this._initializeSelectAllDropdown();
     this._addPaginationEventListener();
   }
 
@@ -1350,6 +1350,14 @@ export default class DataTable extends Vue {
     }
 
     return column;
+  }
+
+  _initializeSelectAllDropdown() {
+    const selectAllDropdownComponent = this.$refs.selectAllDropdown;
+
+    if (!this._chiDropdownSelectAll && selectAllDropdownComponent) {
+      this._chiDropdownSelectAll = chi.dropdown(selectAllDropdownComponent);
+    }
   }
 
   sortData(column: string, direction: string, sortBy: string | undefined) {
@@ -1711,7 +1719,7 @@ export default class DataTable extends Vue {
         ) : null;
 
     return (
-      <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
+      <div class={classes} role="table" ref="dataTable" data-table-number={this._dataTableNumber}>
         {screen}
         {print}
       </div>
