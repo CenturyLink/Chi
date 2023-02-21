@@ -35,7 +35,6 @@ import {
   DataTableModes,
   DataTableRowLevels,
   DataTableColumnDescription,
-  DataTableColumn,
 } from '@/constants/types';
 import { DATA_TABLE_NO_RESULTS_FOUND, DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
@@ -75,7 +74,9 @@ export default class DataTable extends Vue {
   cellWrap = Object.prototype.hasOwnProperty.call(this.$props.config, 'cellWrap')
     ? this.$props.config.cellWrap
     : defaultConfig.cellWrap;
-  showExpandAll = this.$props.config.showExpandAll || defaultConfig.showExpandAll;
+  showExpandAll = Object.prototype.hasOwnProperty.call(this.$props.config, 'showExpandAll')
+    ? this.$props.config.showExpandAll
+    : defaultConfig.showExpandAll;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
@@ -1341,15 +1342,7 @@ export default class DataTable extends Vue {
 
   beforeDestroy() {
     window.removeEventListener('resize', this.resizeHandler, true);
-    this._chiDropdownSelectAll?.dispose();
-  }
-
-  _headIndex(column: string) {
-    if (Array.isArray(this.data.head) && isNaN(Number(column))) {
-      return this.data.head.findIndex((col: DataTableColumn) => col.name === column);
-    }
-
-    return column;
+    this._chiDropdownSelectAll.dispose();
   }
 
   sortData(column: string, direction: string, sortBy: string | undefined) {
@@ -1357,13 +1350,12 @@ export default class DataTable extends Vue {
       this._showSelectedOnlyRowsData && this._showSelectedOnlyRowsData.length > 0
         ? [...this._showSelectedOnlyRowsData]
         : [...this._serializedDataBody];
-    const columnData = this.data.head[this._headIndex(column)];
+    const columnData = this.data.head[column];
     const ascending: boolean = direction === 'ascending';
 
     if (columnData) {
-      const columnIndex = !Array.isArray(this.data.head)
-        ? Object.keys(this.data.head).indexOf(column)
-        : this._headIndex(column);
+      const columnIndex = !Array.isArray(this.data.head) ? Object.keys(this.data.head).indexOf(column) : column;
+
       const locateData = (data: DataTableRow, sortBy: string | undefined) => {
         return sortBy && data.data[columnIndex].payload && data.data[columnIndex].payload[sortBy]
           ? data.data[columnIndex].payload[sortBy]
