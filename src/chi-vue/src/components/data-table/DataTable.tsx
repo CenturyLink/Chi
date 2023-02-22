@@ -554,8 +554,15 @@ export default class DataTable extends Vue {
 
   async selectAllRows(action: 'select' | 'deselect', selectAllPages?: boolean) {
     const data = this._setData(selectAllPages);
+    const dataToEmit = (data: DataTableRow[]) => {
+      return data.filter((row: DataTableRow) => !row.selectionDisabled);
+    };
 
     if (action === 'select') {
+      // TODO: Change deprecated events when major version is released
+      const event = selectAllPages ? DATA_TABLE_EVENTS.SELECTED_ALL_PAGES : DATA_TABLE_EVENTS.SELECTED_ALL_DEPRECATED;
+      const eventData = selectAllPages ? dataToEmit(data) : dataToEmit(this.slicedData);
+
       data?.forEach((row: DataTableRow) => {
         if (!this.selectedRows.includes(row.rowId) && !row.selectionDisabled) {
           this.selectedRows.push(row.rowId);
@@ -564,12 +571,18 @@ export default class DataTable extends Vue {
           }
         }
       });
-
-      this.$emit(
-        DATA_TABLE_EVENTS.SELECTED_ALL,
-        this.slicedData.filter(row => !row.selectionDisabled)
-      );
+      this.$emit(event, eventData);
+      this.$emit(DATA_TABLE_EVENTS.SELECTED_ALL, eventData);
     } else {
+      const selectedRows = data.filter((row: DataTableRow) => {
+        return [...this.selectedRows].includes(row.rowId);
+      });
+      // TODO: Change deprecated events when major version is released
+      const event = selectAllPages
+        ? DATA_TABLE_EVENTS.DESELECTED_ALL_PAGES
+        : DATA_TABLE_EVENTS.DESELECTED_ALL_DEPRECATED;
+      const eventData = selectAllPages ? selectedRows : dataToEmit(this.slicedData);
+
       data?.forEach((row: DataTableRow) => {
         const rowIndex = this.selectedRows.indexOf(row.rowId);
 
@@ -579,10 +592,8 @@ export default class DataTable extends Vue {
         }
       });
       await this._handleBulkActionsDeselection();
-      this.$emit(
-        DATA_TABLE_EVENTS.DESELECTED_ALL,
-        this.slicedData.filter(row => !row.selectionDisabled)
-      );
+      this.$emit(event, eventData);
+      this.$emit(DATA_TABLE_EVENTS.DESELECTED_ALL, eventData);
     }
 
     this._chiDropdownSelectAll?.hide();
@@ -1315,7 +1326,8 @@ export default class DataTable extends Vue {
           this.$emit(DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY, isSelected);
         }
       );
-      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.SELECTED_ALL, () => {
+      // TODO: Change deprecated events when major version is released
+      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.SELECTED_ALL_DEPRECATED, () => {
         this.selectAllRows('select');
       });
       (this._bulkActionsComponent as Vue).$on(GENERIC_EVENTS.CANCEL, () => {
