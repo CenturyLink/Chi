@@ -4,7 +4,7 @@
     <ChiDataTable
       :data="table"
       :config="config"
-      ref="dataTable"
+      ref="dataTableClient"
       @chiSelectedRowsChange="e => this.chiSelectedRowsChange(e)"
       @chiPageChange="e => this.pageChange(e)"
       @chiPageSizeChange="e => this.pageSizeChange(e)"
@@ -271,7 +271,7 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
       console.log('inputTwoChangeHandler', e);
     },
     printTable() {
-      (this.$refs.dataTable as DataTable).print('DataTable Client - Print');
+      (this.$refs.dataTableClient as DataTable).print('DataTable Client - Print');
     },
     chiExpandAll: e => {
       console.log('chiExpandAll', e);
@@ -292,7 +292,7 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     };
   },
 })
-export default class DataTableView extends Vue {
+export default class DataTableClientView extends Vue {
   isTestAsynchronousUpdateEnabled = false; // Set to true to test asyncronous update of data
 
   mounted() {
