@@ -290,8 +290,7 @@ export default class Pagination extends Vue {
       ${this.inverse ? INVERSE_CLASS : ''}
       ${this.compact ? PAGINATION_CLASSES.COMPACT : ''}
     `}
-        role="navigation"
-        aria-label={this.ariaLabel}>
+        role="navigation">
         <div class={PAGINATION_CLASSES.CONTENT}>
           <div class={PAGINATION_CLASSES.START}>
             {this._results}
