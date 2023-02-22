@@ -72,6 +72,11 @@ h3 Accordion
   #accordion
     chi-vue-data-table(ref="accordion" data-cy='data-table-accordion', :config="config", :data="table")
 
+h3 Accordion with hidden Expand All
+.test-data-table.-p--3.-w--100
+  #accordion-hidden-expand-all
+    chi-vue-data-table(ref="accordion" data-cy='data-table-accordion-hidden-expand-all', :config="config", :data="table")
+
 h3 Sorting
 .test-data-table.-p--3.-w--100
   #sorting
@@ -856,6 +861,89 @@ script.
       }
     },
   }).$mount("#accordion");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+        showExpandAll: false,
+      },
+      table: {
+        head: {
+          name: { label: "Name" },
+          id: { label: "ID" },
+          lastLogin: { label: "Last Login" },
+        },
+        body: [
+          {
+            id: "name-1",
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-2",
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
+          },
+          {
+            id: "name-3",
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
+          },
+          {
+            id: "name-4",
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-5",
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
+          },
+          {
+            id: "name-6",
+            nestedContent: {
+              value: "Accordion content",
+            },
+            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
+          },
+        ],
+      },
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.accordionDataTable = this;
+      }
+    },
+  }).$mount("#accordion-hidden-expand-all");
 
   new Vue({
     components: {
@@ -1761,7 +1849,7 @@ script.
       id: "name-1",
       active: false,
       nestedContent: {
-        value: "Accordion content",
+        value: "eeeAccordion content",
       },
       data: [
         "Name 1",

@@ -838,6 +838,45 @@ describe('Data Table', () => {
           cy.get('@rows').should('not.have.class', `${EXPANDED_CLASS}`);
         });
     });
+
+    it(` Should expand and collapse all rows`, () => {
+      const rows = [0, 1, 2];
+
+      cy.get(`[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`button.-expand`)
+        .as('expandAllButton')
+        .click();
+      cy.get(`[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.BODY}`)
+        .find(`.${DATA_TABLE_CLASSES.ROW}`)
+        .as('rows')
+        .should('have.class', `${EXPANDED_CLASS}`);
+      rows.forEach(rowIndex => {
+        cy.get(
+          `[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`
+        )
+          .eq(rowIndex)
+          .should('not.have.css', 'display', 'none');
+      });
+      cy.get('@expandAllButton')
+        .click()
+        .then(() => {
+          cy.get('@rows')
+            .should('not.have.class', `${EXPANDED_CLASS}`);
+          rows.forEach(rowIndex => {
+            cy.get(
+              `[data-cy='data-table-accordion'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`
+            )
+              .eq(rowIndex)
+              .should('have.css', 'display', 'none');
+          });
+        });
+    });
+
+    it('Should hide Expand All icon', () => {
+      cy.get(`[data-cy='data-table-accordion-hidden-expand-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`button.-expand`)
+        .should('not.exist');
+    });
   });
 
   describe('Sorting', () => {
