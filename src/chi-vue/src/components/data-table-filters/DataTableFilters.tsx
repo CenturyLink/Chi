@@ -141,7 +141,7 @@ export default class DataTableFilters extends Vue {
             `}
           data-filter={filter.name}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'input', mobile || false)}
-          placeholder={filter.placeholder || null}
+          placeholder={filter.placeholder || ''}
           type="text"
         />
       </div>
@@ -162,7 +162,7 @@ export default class DataTableFilters extends Vue {
           id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
           data-filter={filter.name}
           class={`${INPUT_CLASSES.INPUT} ${mobile && UTILITY_CLASSES.MARGIN.BOTTOM[1]} ${GENERIC_SIZE_CLASSES.LG}`}
-          placeholder={filter.placeholder || null}
+          placeholder={filter.placeholder || ''}
           onChange={(ev: Event) => this._changeFormElementFilter(ev, 'textarea', mobile || false)}
         />
       </div>
@@ -365,7 +365,7 @@ export default class DataTableFilters extends Vue {
         <div class={`${DATA_TABLE_CLASSES.FILTERS}-mobile`}>
           <button
             class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT} ${DRAWER_CLASSES.TRIGGER}`}
-            onclick={() => this.toggleDrawer()}
+            onClick={() => this.toggleDrawer()}
             data-target={this._drawerID}
             aria-label="Open Drawer">
             <div class={BUTTON_CLASSES.CONTENT}>
