@@ -9,12 +9,17 @@ export const GENERIC_EVENTS = {
 //#endregion
 
 //#region Data Table
+// TODO: Remove deprecated events when major version is released
 export const DATA_TABLE_EVENTS = {
   SELECTED_ROWS_CHANGE: 'chiSelectedRowsChange',
   SELECTED_ROW: 'chiRowSelected',
   DESELECTED_ROW: 'chiRowDeselected',
-  SELECTED_ALL: 'chiSelectAll',
-  DESELECTED_ALL: 'chiDeselectAll',
+  SELECTED_ALL_DEPRECATED: 'chiSelectAll',
+  SELECTED_ALL: 'chiSelectAllThisPage',
+  SELECTED_ALL_PAGES: 'chiSelectAllPages',
+  DESELECTED_ALL_DEPRECATED: 'chiDeselectAll',
+  DESELECTED_ALL: 'chiDeselectAllThisPage',
+  DESELECTED_ALL_PAGES: 'chiDeselectAllPages',
   DATA_SORTING: 'chiDataSorting',
   FILTERS_CHANGE: 'chiFiltersChange',
   COLUMNS_CHANGE: 'chiColumnsChange',

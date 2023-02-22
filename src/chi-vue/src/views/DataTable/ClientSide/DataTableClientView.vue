@@ -14,7 +14,11 @@
       @chiRowSelected="e => this.rowSelected(e)"
       @chiRowDeselected="e => this.rowDeselected(e)"
       @chiSelectAll="e => this.chiSelectAll(e)"
+      @chiSelectAllThisPage="e => this.chiSelectAllThisPage(e)"
+      @chiSelectAllPages="e => this.chiSelectAllPages(e)"
       @chiDeselectAll="e => this.chiDeselectAll(e)"
+      @chiDeselectAllThisPage="e => this.chiDeselectAllThisPage(e)"
+      @chiDeselectAllPages="e => this.chiDeselectAllPages(e)"
       @chiExpandAll="e => this.chiExpandAll(e)"
       @chiCollapseAll="e => this.chiCollapseAll(e)"
     >
@@ -224,8 +228,20 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     chiDeselectAll: e => {
       console.log('chiDeselectAll', e);
     },
+    chiDeselectAllThisPage: e => {
+      console.log('chiDeselectAllThisPage', e);
+    },
+    chiDeselectAllPages: e => {
+      console.log('chiDeselectAllPages', e);
+    },
     chiSelectAll: e => {
       console.log('chiSelectAll', e);
+    },
+    chiSelectAllThisPage: e => {
+      console.log('chiSelectAllThisPage', e);
+    },
+    chiSelectAllPages: e => {
+      console.log('chiSelectAllPages', e);
     },
     chiCancel(e) {
       this.$data.showBottomNavOnMobileView = false;
