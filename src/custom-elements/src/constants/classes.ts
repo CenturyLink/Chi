@@ -92,7 +92,7 @@ export const CAROUSEL_CLASSES = {
 
 //#region Stat
 export const STAT_CLASSES = {
-  CAROUSEL: 'chi-stat',
+  STAT: 'chi-stat',
   ITEM: 'chi-stat__item',
 };
 //#endregion
