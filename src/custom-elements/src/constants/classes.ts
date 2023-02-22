@@ -77,6 +77,7 @@ export const BUTTON_GROUP_CLASSES = 'chi-button-group';
 export const CAROUSEL_CLASSES = {
   CAROUSEL: 'chi-carousel',
   ITEM: 'chi-carousel__item',
+  STAT_ITEM: 'chi-stat__item',
   CONTENT: 'chi-carousel__content',
   WRAPPER: 'chi-carousel__wrapper',
   CONTROL: 'chi-carousel__control',

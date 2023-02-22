@@ -289,7 +289,10 @@ export class Carousel {
   }
 
   _areThereMultipleItems() {
-    const carouselItems = this.el.querySelectorAll(`.${CAROUSEL_CLASSES.ITEM}`);
+    const carouselItemClasses = [CAROUSEL_CLASSES.ITEM, CAROUSEL_CLASSES.STAT_ITEM];
+    const carouselItems = this.el.querySelectorAll(
+      carouselItemClasses.map((itemClass) => `.${itemClass}`).join(', ')
+    );
 
     return carouselItems.length > 1;
   }
