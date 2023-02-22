@@ -9,7 +9,8 @@ import {
 } from '@stencil/core';
 import {
   ACTIVE_CLASS,
-  CAROUSEL_CLASSES, STAT_CLASSES,
+  CAROUSEL_CLASSES,
+  STAT_CLASSES,
   TRANSITIONING_CLASS,
   UTILITY_CLASSES
 } from '../../constants/classes';
