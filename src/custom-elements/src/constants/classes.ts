@@ -77,7 +77,6 @@ export const BUTTON_GROUP_CLASSES = 'chi-button-group';
 export const CAROUSEL_CLASSES = {
   CAROUSEL: 'chi-carousel',
   ITEM: 'chi-carousel__item',
-  STAT_ITEM: 'chi-stat__item',
   CONTENT: 'chi-carousel__content',
   WRAPPER: 'chi-carousel__wrapper',
   CONTROL: 'chi-carousel__control',
@@ -88,6 +87,13 @@ export const CAROUSEL_CLASSES = {
   PAGINATION_ADDITION: '-pagination',
   DOT: 'chi-carousel__dot',
   PAGINATION: 'chi-carousel__pagination'
+};
+//#endregion
+
+//#region Stat
+export const STAT_CLASSES = {
+  CAROUSEL: 'chi-stat',
+  ITEM: 'chi-stat__item',
 };
 //#endregion
 

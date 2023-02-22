@@ -9,7 +9,7 @@ import {
 } from '@stencil/core';
 import {
   ACTIVE_CLASS,
-  CAROUSEL_CLASSES,
+  CAROUSEL_CLASSES, STAT_CLASSES,
   TRANSITIONING_CLASS,
   UTILITY_CLASSES
 } from '../../constants/classes';
@@ -289,7 +289,7 @@ export class Carousel {
   }
 
   _areThereMultipleItems() {
-    const carouselItemClasses = [CAROUSEL_CLASSES.ITEM, CAROUSEL_CLASSES.STAT_ITEM];
+    const carouselItemClasses = [CAROUSEL_CLASSES.ITEM, STAT_CLASSES.ITEM];
     const carouselItems = this.el.querySelectorAll(
       carouselItemClasses.map((itemClass) => `.${itemClass}`).join(', ')
     );
