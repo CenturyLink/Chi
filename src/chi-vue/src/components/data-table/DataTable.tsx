@@ -78,6 +78,9 @@ export default class DataTable extends Vue {
   showExpandAll = Object.prototype.hasOwnProperty.call(this.$props.config, 'showExpandAll')
     ? this.$props.config.showExpandAll
     : defaultConfig.showExpandAll;
+  showSelectAllDropdown = Object.prototype.hasOwnProperty.call(this.$props.config, 'showSelectAllDropdown')
+    ? this.$props.config.showSelectAllDropdown
+    : defaultConfig.showSelectAllDropdown;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
@@ -712,7 +715,7 @@ export default class DataTable extends Vue {
             onChiChange={(ev: Event) => this._handleCheckboxChange(ev, selectAll, rowData)}
             selected={selected}
           />
-          {selectAll ? this._selectAllDropdown() : null}
+          {selectAll && this.showSelectAllDropdown ? this._selectAllDropdown() : null}
         </div>
       );
     }
