@@ -90,6 +90,13 @@ export const CAROUSEL_CLASSES = {
 };
 //#endregion
 
+//#region Stat
+export const STAT_CLASSES = {
+  STAT: 'chi-stat',
+  ITEM: 'chi-stat__item',
+};
+//#endregion
+
 //#region Dropdown
 export const DROPDOWN_CLASSES = {
   DROPDOWN: 'chi-dropdown',

@@ -10,6 +10,7 @@ import {
 import {
   ACTIVE_CLASS,
   CAROUSEL_CLASSES,
+  STAT_CLASSES,
   TRANSITIONING_CLASS,
   UTILITY_CLASSES
 } from '../../constants/classes';
@@ -289,7 +290,10 @@ export class Carousel {
   }
 
   _areThereMultipleItems() {
-    const carouselItems = this.el.querySelectorAll(`.${CAROUSEL_CLASSES.ITEM}`);
+    const carouselItemClasses = [CAROUSEL_CLASSES.ITEM, STAT_CLASSES.ITEM];
+    const carouselItems = this.el.querySelectorAll(
+      carouselItemClasses.map((itemClass) => `.${itemClass}`).join(', ')
+    );
 
     return carouselItems.length > 1;
   }
