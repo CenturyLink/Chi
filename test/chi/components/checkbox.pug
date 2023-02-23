@@ -18,7 +18,7 @@ title: Checkbox
         )
         label.chi-checkbox__label(for=`checkbox-${index}` class={[`-${state}`]: state == 'danger'}) Checkbox
           if state === 'required' || state === 'danger'
-            abbr.chi-label__required(title="Required field") *
+            abbr.chi-label__required(aria-label="Required field") *
     if state === 'danger' 
       .chi-label.-status(class={[`-${state}`]: state == 'danger'})
         i.chi-icon.icon-circle-warning(aria-hidden="true")

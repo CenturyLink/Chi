@@ -5,7 +5,7 @@
       | To meet accessibility requirements, danger inputs must include an error message explaining the failure and/or how to correct it.
     fieldset(slot="example")
       legend(class="chi-label") Select an option
-        abbr(class="chi-label__required" title="Required field") *
+        abbr(class="chi-label__required" aria-label="Required field") *
       .chi-form__item
         .chi-radio
           input(class="chi-radio__input -danger" type="radio" name="radios" id="radio-er1" required)
@@ -47,7 +47,7 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<fieldset>
   <legend class="chi-label">
     Select an option
-    <abbr class="chi-label__required" title="Required field">*</abbr>
+    <abbr class="chi-label__required" aria-label="Required field">*</abbr>
   </legend>
   <div class="chi-form__item">
     <div class="chi-radio">

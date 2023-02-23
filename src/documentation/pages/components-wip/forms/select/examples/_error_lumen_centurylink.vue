@@ -5,7 +5,7 @@
       | To meet accessibility requirements, danger inputs must include an error message explaining the failure and/or how to correct it.
     .chi-form__item(style="max-width:20rem" slot="example")
       label(class="chi-label" for="example-er1") Label
-        abbr(class="chi-label__required" title="Required field") *
+        abbr(class="chi-label__required" aria-label="Required field") *
       select(class="chi-select -danger" id="example-er1" required)
         option(value="") Select
         option Option 1
@@ -44,7 +44,7 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example-er1">
     Label
-    <abbr class="chi-label__required" title="Required field">*</abbr>
+    <abbr class="chi-label__required" aria-label="Required field">*</abbr>
   </label>
   <select class="chi-select -danger" id="example-er1" required>
     <option value="">Select</option>
