@@ -26,6 +26,7 @@ export const TEXT_INPUT_TYPES = [
   'datetime-local',
   'email',
   'month',
+  'number',
   'password',
   'search',
   'tel',

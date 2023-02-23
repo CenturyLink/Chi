@@ -72,6 +72,9 @@ export class TextInput {
    * To define -hover, -focus statuses
    */
   @Prop() _status: string;
+
+  @Prop() extraClass: string;
+
   /**
    * Triggered when an alteration to the element's value is committed by the user
    */
@@ -165,6 +168,7 @@ export class TextInput {
         ${this.state ? `-${this.state}` : ''}
         ${this.size ? `-${this.size}` : ''}
         ${this._status ? `-${this._status}` : ''}
+        ${this.extraClass ? this.extraClass : ''}
         `}
       placeholder={this.placeholder || ''}
       value={this.value}
