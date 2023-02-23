@@ -6,8 +6,8 @@ updates:
       interval: "weekly"
     ignore:
       - dependency-name: "nuxt"
-        versions: ["3.x"]
+        versions: [">=3.0.0"]
       - dependency-name: "@nuxt/types"
-        versions: ["3.x"]
+        versions: [">=3.0.0"]
       - dependency-name: "copy-webpack-plugin"
-        versions: ["7.x", "8.x", "9.x", "10.x", "11.x"]
+        versions: [">=7.0.0"]
