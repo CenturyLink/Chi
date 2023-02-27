@@ -1,10 +1,10 @@
 <template>
-  <div id="tadataTableServerView">
+  <div id="dataTableServerView">
     <h2>Data Table Server Side Pagination</h2>
     <ChiDataTable
       :data="table"
       :config="config"
-      ref="dataTable"
+      ref="dataTableServer"
       @chiDataSorting="e => sorting(e)"
       @chiPageChange="e => pagination(e)"
       @chiSelectedRowsChange="e => selection(e)"
@@ -131,7 +131,7 @@ import { DataTableRow } from '../../../constants/types';
     };
   },
 })
-export default class DataTableView extends Vue {
+export default class DataTableServerView extends Vue {
   mockApiCall(page: number) {
     return page === 1 ? exampleTablePage1 : page === 2 ? exampleTablePage2 : null;
   }

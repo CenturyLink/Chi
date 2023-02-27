@@ -75,7 +75,12 @@ export default class DataTable extends Vue {
   cellWrap = Object.prototype.hasOwnProperty.call(this.$props.config, 'cellWrap')
     ? this.$props.config.cellWrap
     : defaultConfig.cellWrap;
-  showExpandAll = this.$props.config.showExpandAll || defaultConfig.showExpandAll;
+  showExpandAll = Object.prototype.hasOwnProperty.call(this.$props.config, 'showExpandAll')
+    ? this.$props.config.showExpandAll
+    : defaultConfig.showExpandAll;
+  showSelectAllDropdown = Object.prototype.hasOwnProperty.call(this.$props.config, 'showSelectAllDropdown')
+    ? this.$props.config.showSelectAllDropdown
+    : defaultConfig.showSelectAllDropdown;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
@@ -100,6 +105,7 @@ export default class DataTable extends Vue {
     };
   } = {};
   _chiDropdownSelectAll: any;
+  _dataTableNumber?: number;
 
   _toggleInfoPopover(infoPopoverRef: string) {
     const popover: any = this.$refs[infoPopoverRef];
@@ -171,7 +177,7 @@ export default class DataTable extends Vue {
     let cellIndex = 0;
 
     Object.keys(this.data.head).forEach((column: string) => {
-      const infoPopoverId = `info-popover-${dataTableNumber}-${column}`,
+      const infoPopoverId = `info-popover-${this._dataTableNumber}-${column}`,
         label = this.data.head[column].label || this.data.head[column],
         infoIcon = this.data.head[column].description ? (
           <chi-button
@@ -299,7 +305,7 @@ export default class DataTable extends Vue {
     if (bulkActionSlot) {
       if (this.mode === DataTableModes.CLIENT) {
         return (
-          <DataTableBulkActions uuid={dataTableNumber} selectedRows={this.selectedRows.length}>
+          <DataTableBulkActions uuid={this._dataTableNumber} selectedRows={this.selectedRows.length}>
             <template slot="start">{bulkActionSlot}</template>
           </DataTableBulkActions>
         );
@@ -551,8 +557,15 @@ export default class DataTable extends Vue {
 
   async selectAllRows(action: 'select' | 'deselect', selectAllPages?: boolean) {
     const data = this._setData(selectAllPages);
+    const dataToEmit = (data: DataTableRow[]) => {
+      return data.filter((row: DataTableRow) => !row.selectionDisabled);
+    };
 
     if (action === 'select') {
+      // TODO: Change deprecated events when major version is released
+      const event = selectAllPages ? DATA_TABLE_EVENTS.SELECTED_ALL_PAGES : DATA_TABLE_EVENTS.SELECTED_ALL;
+      const eventData = selectAllPages ? dataToEmit(data) : dataToEmit(this.slicedData);
+
       data?.forEach((row: DataTableRow) => {
         if (!this.selectedRows.includes(row.rowId) && !row.selectionDisabled) {
           this.selectedRows.push(row.rowId);
@@ -561,12 +574,16 @@ export default class DataTable extends Vue {
           }
         }
       });
-
-      this.$emit(
-        DATA_TABLE_EVENTS.SELECTED_ALL,
-        this.slicedData.filter(row => !row.selectionDisabled)
-      );
+      this.$emit(event, eventData);
+      this.$emit(DATA_TABLE_EVENTS.SELECTED_ALL_DEPRECATED, eventData);
     } else {
+      const selectedRows = data.filter((row: DataTableRow) => {
+        return [...this.selectedRows].includes(row.rowId);
+      });
+      // TODO: Change deprecated events when major version is released
+      const event = selectAllPages ? DATA_TABLE_EVENTS.DESELECTED_ALL_PAGES : DATA_TABLE_EVENTS.DESELECTED_ALL;
+      const eventData = selectAllPages ? selectedRows : dataToEmit(this.slicedData);
+
       data?.forEach((row: DataTableRow) => {
         const rowIndex = this.selectedRows.indexOf(row.rowId);
 
@@ -576,13 +593,11 @@ export default class DataTable extends Vue {
         }
       });
       await this._handleBulkActionsDeselection();
-      this.$emit(
-        DATA_TABLE_EVENTS.DESELECTED_ALL,
-        this.slicedData.filter(row => !row.selectionDisabled)
-      );
+      this.$emit(event, eventData);
+      this.$emit(DATA_TABLE_EVENTS.DESELECTED_ALL_DEPRECATED, eventData);
     }
 
-    this._chiDropdownSelectAll.hide();
+    this._chiDropdownSelectAll?.hide();
     this._emitSelectedRows();
   }
 
@@ -709,7 +724,7 @@ export default class DataTable extends Vue {
             onChiChange={(ev: Event) => this._handleCheckboxChange(ev, selectAll, rowData)}
             selected={selected}
           />
-          {selectAll ? this._selectAllDropdown() : null}
+          {selectAll && this.showSelectAllDropdown ? this._selectAllDropdown() : null}
         </div>
       );
     }
@@ -1220,8 +1235,10 @@ export default class DataTable extends Vue {
   }
 
   created() {
-    this._dataTableId = `dt-${dataTableNumber}`;
     dataTableNumber += 1;
+    this._dataTableNumber = dataTableNumber;
+    this._dataTableId = `dt-${this._dataTableNumber}`;
+
     if (
       this.$props.config.defaultSort &&
       this.$props.config.defaultSort.key &&
@@ -1288,7 +1305,6 @@ export default class DataTable extends Vue {
 
   mounted() {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
-    const selectAllDropdownComponent = this.$refs.selectAllDropdown;
 
     if (dataTableComponent && this.config.columnResize) {
       new ColumnResize(this);
@@ -1311,7 +1327,8 @@ export default class DataTable extends Vue {
           this.$emit(DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY, isSelected);
         }
       );
-      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.SELECTED_ALL, () => {
+      // TODO: Change deprecated events when major version is released
+      (this._bulkActionsComponent as Vue).$on(DATA_TABLE_EVENTS.SELECTED_ALL_DEPRECATED, () => {
         this.selectAllRows('select');
       });
       (this._bulkActionsComponent as Vue).$on(GENERIC_EVENTS.CANCEL, () => {
@@ -1322,15 +1339,13 @@ export default class DataTable extends Vue {
       });
     }
 
-    if (selectAllDropdownComponent) {
-      this._chiDropdownSelectAll = chi.dropdown(selectAllDropdownComponent);
-    }
-
+    this._initializeSelectAllDropdown();
     this._addPaginationEventListener();
     window.addEventListener('resize', this.resizeHandler);
   }
 
   updated() {
+    this._initializeSelectAllDropdown();
     this._addPaginationEventListener();
   }
 
@@ -1350,6 +1365,14 @@ export default class DataTable extends Vue {
     }
 
     return column;
+  }
+
+  _initializeSelectAllDropdown() {
+    const selectAllDropdownComponent = this.$refs.selectAllDropdown;
+
+    if (!this._chiDropdownSelectAll && selectAllDropdownComponent) {
+      this._chiDropdownSelectAll = chi.dropdown(selectAllDropdownComponent);
+    }
   }
 
   sortData(column: string, direction: string, sortBy: string | undefined) {
@@ -1711,7 +1734,7 @@ export default class DataTable extends Vue {
         ) : null;
 
     return (
-      <div class={classes} role="table" ref="dataTable" data-table-number={dataTableNumber}>
+      <div class={classes} role="table" ref="dataTable" data-table-number={this._dataTableNumber}>
         {screen}
         {print}
       </div>

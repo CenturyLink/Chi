@@ -4,7 +4,7 @@
     <ChiDataTable
       :data="table"
       :config="config"
-      ref="dataTable"
+      ref="dataTableClient"
       @chiSelectedRowsChange="e => this.chiSelectedRowsChange(e)"
       @chiPageChange="e => this.pageChange(e)"
       @chiPageSizeChange="e => this.pageSizeChange(e)"
@@ -14,7 +14,11 @@
       @chiRowSelected="e => this.rowSelected(e)"
       @chiRowDeselected="e => this.rowDeselected(e)"
       @chiSelectAll="e => this.chiSelectAll(e)"
+      @chiSelectThisPage="e => this.chiSelectThisPage(e)"
+      @chiSelectAllPages="e => this.chiSelectAllPages(e)"
       @chiDeselectAll="e => this.chiDeselectAll(e)"
+      @chiDeselectThisPage="e => this.chiDeselectThisPage(e)"
+      @chiDeselectAllPages="e => this.chiDeselectAllPages(e)"
       @chiExpandAll="e => this.chiExpandAll(e)"
       @chiCollapseAll="e => this.chiCollapseAll(e)"
     >
@@ -224,8 +228,20 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     chiDeselectAll: e => {
       console.log('chiDeselectAll', e);
     },
+    chiDeselectThisPage: e => {
+      console.log('chiDeselectThisPage', e);
+    },
+    chiDeselectAllPages: e => {
+      console.log('chiDeselectAllPages', e);
+    },
     chiSelectAll: e => {
       console.log('chiSelectAll', e);
+    },
+    chiSelectThisPage: e => {
+      console.log('chiSelectThisPage', e);
+    },
+    chiSelectAllPages: e => {
+      console.log('chiSelectAllPages', e);
     },
     chiCancel(e) {
       this.$data.showBottomNavOnMobileView = false;
@@ -271,7 +287,7 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
       console.log('inputTwoChangeHandler', e);
     },
     printTable() {
-      (this.$refs.dataTable as DataTable).print('DataTable Client - Print');
+      (this.$refs.dataTableClient as DataTable).print('DataTable Client - Print');
     },
     chiExpandAll: e => {
       console.log('chiExpandAll', e);
@@ -292,7 +308,7 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     };
   },
 })
-export default class DataTableView extends Vue {
+export default class DataTableClientView extends Vue {
   isTestAsynchronousUpdateEnabled = false; // Set to true to test asyncronous update of data
 
   mounted() {
