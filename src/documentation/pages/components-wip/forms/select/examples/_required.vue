@@ -3,7 +3,7 @@
     p.-text(slot="example-description") Use the <code>required</code> boolean attribute to indicate which select must be completed before submitting a form.
     .chi-form__item(style="max-width:20rem" slot="example")
       label(class="chi-label" for="example-re1") Label
-        abbr(class="chi-label__required" title="Required field") *
+        abbr(class="chi-label__required" aria-label="Required field") *
       select(class="chi-select" id="example-re1" required)
         option(value="") Select
         option Option 1
@@ -41,7 +41,7 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example-re1">
     Label
-    <abbr class="chi-label__required" title="Required field">*</abbr>
+    <abbr class="chi-label__required" aria-label="Required field">*</abbr>
   </label>
   <select class="chi-select" id="example-re1" required>
     <option value="">Select</option>

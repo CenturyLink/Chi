@@ -47,7 +47,7 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example__required">
     Label
-    <abbr class="chi-label__required" title="Required field">*</abbr>
+    <abbr class="chi-label__required" aria-label="Required field">*</abbr>
   </label>
   <textarea class="chi-input" id="example__required" required></textarea>
 </div>`
