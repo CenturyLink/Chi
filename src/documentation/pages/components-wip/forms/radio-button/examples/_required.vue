@@ -4,7 +4,7 @@
       | Use the <code>required</code> boolean attribute to indicate which radio buttons must be completed before submitting a form.
     fieldset(slot="example")
       legend(class="chi-label") Select an option
-        abbr(class="chi-label__required" title="Required field") *
+        abbr(class="chi-label__required" aria-label="Required field") *
       .chi-form__item
         .chi-radio
           input(class="chi-radio__input" type="radio" name="radios" id="radio-re1" required)
@@ -45,7 +45,7 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<fieldset>
   <legend class="chi-label">
     Select an option
-    <abbr class="chi-label__required" title="Required field">*</abbr>
+    <abbr class="chi-label__required" aria-label="Required field">*</abbr>
   </legend>
   <div class="chi-form__item">
     <div class="chi-radio">

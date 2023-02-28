@@ -4,7 +4,7 @@
       | Use <code>optional</code> to help emphasize a group of radio button options are not required and can be skipped.
     fieldset(slot="example")
       legend(class="chi-label") Select an option
-        abbr(class="chi-label__optional" title="Optional field") (optional)
+        abbr(class="chi-label__optional" aria-label="Optional field") (optional)
       .chi-form__item
         .chi-radio
           input(class="chi-radio__input" type="radio" name="radios" id="radio-op1")
@@ -45,7 +45,7 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<fieldset>
   <legend class="chi-label">
     Select an option
-    <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
+    <abbr class="chi-label__optional" aria-label="Optional field">(optional)</abbr>
   </legend>
   <div class="chi-form__item">
     <div class="chi-radio">

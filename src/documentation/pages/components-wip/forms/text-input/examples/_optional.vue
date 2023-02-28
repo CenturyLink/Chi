@@ -47,7 +47,7 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example__optional">
     Label
-    <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
+    <abbr class="chi-label__optional" aria-label="Optional field">(optional)</abbr>
   </label>
   <input type="text" class="chi-input" id="example__optional">
 </div>`

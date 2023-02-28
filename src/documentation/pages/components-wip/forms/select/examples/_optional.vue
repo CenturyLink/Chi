@@ -3,7 +3,7 @@
     p.-text(slot="example-description") Use <code>optional</code> to help emphasize that a select is not required and can be skipped.
      .chi-form__item(style="max-width:20rem" slot="example")
       label(class="chi-label" for="example-op1") Label
-        abbr(class="chi-label__optional" title="Optional field") (optional)
+        abbr(class="chi-label__optional" aria-label="Optional field") (optional)
       select(class="chi-select" id="example-op1" required)
         option(value="") Select
         option Option 1
@@ -41,7 +41,7 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example-op1">
     Label
-    <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
+    <abbr class="chi-label__optional" aria-label="Optional field">(optional)</abbr>
   </label>
   <select class="chi-select" id="example-op1" required>
     <option value="">Select</option>

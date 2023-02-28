@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-02-15T16:45:15",
+  "timestamp": "2023-02-22T22:54:52",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -5309,6 +5309,22 @@
           "required": false
         },
         {
+          "name": "extraClass",
+          "type": "string",
+          "mutable": false,
+          "attr": "extra-class",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "iconLeft",
           "type": "string",
           "mutable": false,
@@ -5606,7 +5622,7 @@
         },
         {
           "name": "type",
-          "type": "\"date\" | \"datetime\" | \"datetime-local\" | \"email\" | \"month\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
+          "type": "\"date\" | \"datetime\" | \"datetime-local\" | \"email\" | \"month\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
           "mutable": false,
           "attr": "type",
           "reflectToAttr": false,
@@ -5632,6 +5648,10 @@
             },
             {
               "value": "month",
+              "type": "string"
+            },
+            {
+              "value": "number",
               "type": "string"
             },
             {

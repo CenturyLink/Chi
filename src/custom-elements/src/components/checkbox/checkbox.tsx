@@ -87,7 +87,7 @@ export class Checkbox {
   }
 
   render() {
-    const requiredField = this.required ? <abbr class="chi-label__required" title="Required field">*</abbr> : null;
+    const requiredField = this.required ? <abbr class="chi-label__required" aria-label="Required field">*</abbr> : null;
 
     return (
       <div class={CHECKBOX_CLASSES.checkbox}>
