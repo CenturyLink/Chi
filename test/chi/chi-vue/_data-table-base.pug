@@ -57,10 +57,20 @@ h3 Selectable
   #selectable
     chi-vue-data-table(ref="selectable" data-cy='data-table-selectable', :config="config", :data="table")
 
+h3 Data Table Dropdown Select All 
+.test-data-table.-p--3.-w--100
+  #dropdown-select-all
+    chi-vue-data-table(ref="selectable" data-cy='data-table-dropdown-select-all', :config="config", :data="table")
+
 h3 All Selected
 .test-data-table.-p--3.-w--100
   #allSelected
     chi-vue-data-table(data-cy='data-table-all-selected', :config="config", :data="table")
+
+h3 No Show Select All Dropdown icon
+.test-data-table.-p--3.-w--100
+  #no-show-select-all-dropdown
+    chi-vue-data-table(data-cy='data-table-no-show-select-all-dropdown', :config="config", :data="table")
 
 h3 Radio selection
 .test-data-table.-p--3.-w--100
@@ -659,6 +669,46 @@ script.
           id: { label: "ID" },
           lastLogin: { label: "Last Login" },
         },
+        body: exampleBody,
+      },
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.selectableDataTable = this;
+      }
+    },
+  }).$mount("#dropdown-select-all");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        selectable: true,
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: { label: "Name" },
+          id: { label: "ID" },
+          lastLogin: { label: "Last Login" },
+        },
         body: [
           {
             id: "name-1",
@@ -694,6 +744,47 @@ script.
       },
     },
   }).$mount("#allSelected");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        selectable: true,
+        resultsPerPage: 3,
+        showSelectAllDropdown: false,
+      },
+      table: {
+        head: {
+          name: { label: "Name" },
+          id: { label: "ID" },
+          lastLogin: { label: "Last Login" },
+        },
+        body: exampleBody,
+      },
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.selectableDataTable = this;
+      }
+    },
+  }).$mount("#no-show-select-all-dropdown");
 
   new Vue({
     components: {

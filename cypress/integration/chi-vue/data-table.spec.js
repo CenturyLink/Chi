@@ -9,6 +9,9 @@ const INFO_ICON_CLASS = 'icon-circle-info-outline';
 const ARROW_UP_CLASS = 'icon-arrow-up';
 const ARROW_SORT_CLASS = 'icon-arrow-sort';
 const CLOSE_CLASS = '-close';
+const CHI_DROPDOWN = 'chi-dropdown';
+const CHI_DROPDOWN_MENU = 'chi-dropdown__menu';
+const CHI_BUTTON_CONTENT = 'chi-button__content';
 const DATA_TABLE_CLASSES = {
   DATA_TABLE: 'chi-data-table',
   TOOLBAR: 'chi-data-table__toolbar',
@@ -631,6 +634,72 @@ describe('Data Table', () => {
         .then(() => {
           cy.get('@checkboxes').should('be.checked');
         });
+    });
+  });
+
+  describe('No show select all dropdown icon', () => {
+    it('Should hide Select All Dropdown icon',() => {
+      cy.get(`[data-cy='data-table-no-show-select-all-dropdown'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`.${CHI_DROPDOWN} .${BUTTON_CLASS}`)
+        .should('not.exist');
+    });
+  });
+
+  describe('Select and deselect all the rows of a table when you click on de options in the dropdown button', () => {
+    it('Should select all rows on the current page',() => {
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`.${CHI_DROPDOWN} .${BUTTON_CLASS}`)
+        .click()
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`.${CHI_DROPDOWN_MENU}`)
+        .contains('Select all items, this page')
+        .click()
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.ROW}`)
+        .as('rows')
+        .find('input')
+        .as('checkboxes')
+        .should('be.checked');
+    });
+
+    it('Should select all rows of all pages',() => {
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`.${CHI_DROPDOWN} .${BUTTON_CLASS}`)
+        .click()
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`.${CHI_DROPDOWN_MENU}`)
+        .contains('Select all items, all pages')
+        .click()
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.FOOTER}`)
+        .find(`.${PAGINATION_CLASSES.CENTER}`)
+        .find(`.${CHI_BUTTON_CONTENT}`).contains(2)
+        .click()
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.ROW}`)
+        .as('rows')
+        .find('input')
+        .as('checkboxes')
+        .should('be.checked');
+    });
+
+    it('Should deselect all rows of all pages',() => {
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`.${CHI_DROPDOWN} .${BUTTON_CLASS}`)
+        .click()
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`.${CHI_DROPDOWN_MENU}`)
+        .contains('Select all items, all pages')
+        .click()
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`.${CHI_DROPDOWN} .${BUTTON_CLASS}`)
+        .click()
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`.${CHI_DROPDOWN_MENU}`)
+        .contains('Deselect all')
+        .click()
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.ROW}`)
+        .as('rows')
+        .find('input')
+        .as('checkboxes')
+        .should('not.be.checked');
     });
   });
 
