@@ -8,7 +8,7 @@
         input(type="checkbox" class="chi-checkbox__input" id="checkbox-re1")
         label(for="checkbox-re1" class="chi-checkbox__label")
           | I accept the Terms of Service
-          abbr.chi-label__required(title="Required field") *
+          abbr.chi-label__required(aria-label="Required field") *
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -43,7 +43,7 @@ import { Component, Vue } from 'vue-property-decorator';
     <input type="checkbox" class="chi-checkbox__input" id="checkbox-re1" required>
     <label class="chi-checkbox__label" for="checkbox-re1">
       I accept the Terms of Service
-      <abbr class="chi-label__required" title="Required field">*</abbr>
+      <abbr class="chi-label__required" aria-label="Required field">*</abbr>
     </label>
   </div>
 </div>`

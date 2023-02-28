@@ -3,7 +3,7 @@
     p.-text(slot="example-description") Use the <code>required</code> boolean attribute to indicate which picker groups must be completed before submitting a form.
     fieldset(slot="example")
       legend.chi-label Select an option
-        abbr.chi-label__required(title="Required field") *
+        abbr.chi-label__required(aria-label="Required field") *
       .chi-picker-group
         .chi-picker-group__content
           template(v-for="item in pickers")
@@ -63,7 +63,7 @@ export default class Required extends Vue {
     this.$data.codeSnippets.htmlblueprint = `<fieldset>
   <legend class="chi-label">
     Select an option
-    <abbr class="chi-label__required" title="Required field">*</abbr>
+    <abbr class="chi-label__required" aria-label="Required field">*</abbr>
   </legend>
   <div class="chi-picker-group">
     <div class="chi-picker-group__content">${pickerInputs}
