@@ -43,13 +43,13 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<!-- Required -->
 <label class="chi-label">
   Label
-  <abbr class="chi-label__required" title="Required field">*</abbr>
+  <abbr class="chi-label__required" aria-label="Required field">*</abbr>
 </label>
 
 <!-- Optional -->
 <label class="chi-label">
   Label
-  <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
+  <abbr class="chi-label__optional" aria-label="Optional field">(optional)</abbr>
 </label>`
       }
     };
