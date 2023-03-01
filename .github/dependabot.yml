@@ -8,10 +8,7 @@ updates:
       time: "08:00"
       timezone: "Europe/Madrid"
     ignore:
-      # Ignoring these packages due to our Vue version 2.6.11
       - dependency-name: "nuxt"
-        versions: [">=2.15.8"]
-      - dependency-name: "@nuxt/types"
         versions: [">=2.15.8"]
       - dependency-name: "copy-webpack-plugin"
         versions: [">=7.0.0"]
