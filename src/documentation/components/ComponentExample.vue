@@ -2,7 +2,7 @@
   <div class="example-wrapper">
     <h4 v-if="titleSize === 'h4'" class="-anchor" :id="id">
       {{ title }}
-      <span>
+      <span v-if="title">
         <a
           class="-ml--1"
           :href="'?theme=' + $store.state.themes.theme + '#' + id"
@@ -12,7 +12,7 @@
     </h4>
     <h2 v-else-if="titleSize === 'h2'" class="-anchor" :id="id">
       {{ title }}
-      <span>
+      <span v-if="title">
         <a
           class="-ml--1"
           :href="'?theme=' + $store.state.themes.theme + '#' + id"
@@ -22,7 +22,7 @@
     </h2>
     <h3 v-else class="-anchor" :id="id">
       {{ title }}
-      <span>
+      <span v-if="title">
         <a
           class="-ml--1"
           :href="'?theme=' + $store.state.themes.theme + '#' + id"
