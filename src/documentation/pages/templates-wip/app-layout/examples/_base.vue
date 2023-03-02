@@ -29,11 +29,11 @@ declare const chi: any;
       footerTemplate: generateExampleFooter('base-language-dropdown-button').htmlblueprint,
       exampleTabs: [
         {
+          active: true,
           id: 'webcomponent',
           label: 'Web Component'
         },
         {
-          active: true,
           id: 'htmlblueprint',
           label: 'HTML Blueprint'
         }
@@ -120,7 +120,7 @@ export const generateExampleFooter = (id = 'language-dropdown-button') => {
                 <a href="${href}">${title}</a>
               </li>`).join('\n              ')}
             </ul>
-            <div class="chi-footer__copyright">&copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
+            <div class="chi-footer__copyright">&copy; 2023 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
           </div>
         </div>
       </div>

@@ -26,11 +26,11 @@ declare const chi: any;
       footerTemplate: generateExampleFooter('alert-language-dropdown-button').htmlblueprint,
       exampleTabs: [
         {
+          active: true,
           id: 'webcomponent',
           label: 'Web Component'
         },
         {
-          active: true,
           id: 'htmlblueprint',
           label: 'HTML Blueprint'
         }
