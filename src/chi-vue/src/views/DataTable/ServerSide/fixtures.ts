@@ -35,6 +35,8 @@ export const exampleConfig: DataTableConfig = {
     sortBy: 'id',
     direction: 'ascending',
   },
+  showExpandAll: true,
+  showSelectAllDropdown: true,
 };
 
 export const exampleTableHead = {

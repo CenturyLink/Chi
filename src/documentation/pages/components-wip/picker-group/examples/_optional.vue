@@ -3,7 +3,7 @@
     p.-text(slot="example-description") Use <code>optional</code> to help emphasize a picker group that is not required and can be skipped.
     fieldset(slot="example")
       legend.chi-label Select an option
-        abbr.chi-label__optional(title="Optional field") (optional)
+        abbr.chi-label__optional(aria-label="Optional field") (optional)
       .chi-picker-group
         .chi-picker-group__content
           template(v-for="item in pickers")
@@ -61,7 +61,7 @@ export default class Optional extends Vue {
     this.$data.codeSnippets.htmlblueprint = `<fieldset>
   <legend class="chi-label">
     Select an option
-    <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
+    <abbr class="chi-label__optional" aria-label="Optional field">(optional)</abbr>
   </legend>
   <div class="chi-picker-group">
     <div class="chi-picker-group__content">${pickerInputs}

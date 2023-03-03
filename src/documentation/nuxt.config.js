@@ -109,18 +109,20 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     postcss: false,
-    plugins: [
-      new CopyPlugin([{ from: '@centurylink/chi-vue/dist' }], {
-        context: 'node_modules',
-        ignore: ['.DS_Store']
+    plugins: [ 
+      new CopyPlugin({
+        patterns: [{ from: 'node_modules/@centurylink/chi-vue/dist' }]
       })
     ]
   },
+
   router: {
     base: BASE_URL,
     linkExactActiveClass: '-active'
   },
+
   target: 'static',
+
   generate: {
     exclude: [
       '/',

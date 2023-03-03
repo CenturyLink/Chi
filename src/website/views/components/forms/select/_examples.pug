@@ -68,7 +68,7 @@ p.-text
     .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example-re1")
         | Label
-        abbr.chi-label__required(title="Required field") *
+        abbr.chi-label__required(aria-label="Required field") *
       select(class="chi-select", id="example-re1" required)
         option(value="") Select
         option Option 1
@@ -86,7 +86,7 @@ p.-text
       <div class="chi-form__item">
         <label class="chi-label" for="example-re1">
           Label
-          <abbr class="chi-label__required" title="Required field">*</abbr>
+          <abbr class="chi-label__required" aria-label="Required field">*</abbr>
         </label>
         <select class="chi-select" id="example-re1" required>
           <option value="">Select</option>
@@ -104,7 +104,7 @@ p.-text
     .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example-op1")
         | Label
-        abbr.chi-label__optional(title="Optional field") (optional)
+        abbr.chi-label__optional(aria-label="Optional field") (optional)
       select(class="chi-select", id="example-op1" required)
         option(value="") Select
         option Option 1
@@ -122,7 +122,7 @@ p.-text
       <div class="chi-form__item">
         <label class="chi-label" for="example-op1">
           Label
-          <abbr class="chi-label__optional" title="Optional field">(optional)</abbr>
+          <abbr class="chi-label__optional" aria-label="Optional field">(optional)</abbr>
         </label>
         <select class="chi-select" id="example-op1" required>
           <option value="">Select</option>
@@ -234,7 +234,7 @@ p.-text
     .chi-form__item(style="max-width:20rem")
       label.chi-label(for="example-er1")
         | Label
-        abbr.chi-label__required(title="Required field") *
+        abbr.chi-label__required(aria-label="Required field") *
       select(class="chi-select -danger", id="example-er1" required)
         option(value="") Select
         option Option 1
@@ -255,7 +255,7 @@ p.-text
       <div class="chi-form__item">
         <label class="chi-label" for="example-er1">
           Label
-          <abbr class="chi-label__required" title="Required field">*</abbr>
+          <abbr class="chi-label__required" aria-label="Required field">*</abbr>
         </label>
         <select class="chi-select -danger" id="example-er1" required>
           <option value="">Select</option>

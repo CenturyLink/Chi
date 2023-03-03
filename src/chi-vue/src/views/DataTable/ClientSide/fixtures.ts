@@ -36,6 +36,8 @@ export const exampleConfig: DataTableConfig = {
   print: {
     isNestedContentPrintDisabled: true,
   },
+  showExpandAll: true,
+  showSelectAllDropdown: true,
 };
 
 const exampleColumns = [

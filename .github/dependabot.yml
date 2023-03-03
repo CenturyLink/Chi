@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/src/documentation"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "08:00"
+      timezone: "Europe/Madrid"
+    ignore:
+      - dependency-name: "nuxt"
+        versions: [">=2.15.8"]
+      - dependency-name: "copy-webpack-plugin"
+        versions: [">=7.0.0"]

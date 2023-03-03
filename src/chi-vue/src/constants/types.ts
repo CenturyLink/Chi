@@ -124,6 +124,8 @@ export interface DataTableConfig {
   };
   treeSelection?: boolean;
   cellWrap?: boolean;
+  showExpandAll?: boolean;
+  showSelectAllDropdown?: boolean;
 }
 export interface DataTableFilter {
   name: string;

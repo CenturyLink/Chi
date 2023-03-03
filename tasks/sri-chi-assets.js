@@ -7,6 +7,7 @@ gulp.task('sri:chi:assets', function () {
     'dist/chi-centurylink.css',
     'dist/chi-portal.css',
     'dist/chi-brightspeed.css',
+    'dist/chi-colt.css',
     'dist/js/chi.js',
     'dist/assets/themes/lumen/images/favicon.svg',
     'dist/assets/themes/lumen/images/favicon.ico',

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-02-06T20:07:28",
+  "timestamp": "2023-02-22T22:54:52",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2761,7 +2761,6 @@
           "reflectToAttr": true,
           "docs": "used to set a maximum allowed value",
           "docsTags": [],
-          "default": "Number.MAX_SAFE_INTEGER",
           "values": [
             {
               "type": "number"
@@ -2778,7 +2777,6 @@
           "reflectToAttr": true,
           "docs": "used to set a minimum allowed value",
           "docsTags": [],
-          "default": "Number.MIN_SAFE_INTEGER",
           "values": [
             {
               "type": "number"
@@ -5311,6 +5309,22 @@
           "required": false
         },
         {
+          "name": "extraClass",
+          "type": "string",
+          "mutable": false,
+          "attr": "extra-class",
+          "reflectToAttr": false,
+          "docs": "",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "iconLeft",
           "type": "string",
           "mutable": false,
@@ -5608,7 +5622,7 @@
         },
         {
           "name": "type",
-          "type": "\"date\" | \"datetime\" | \"datetime-local\" | \"email\" | \"month\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
+          "type": "\"date\" | \"datetime\" | \"datetime-local\" | \"email\" | \"month\" | \"number\" | \"password\" | \"search\" | \"tel\" | \"text\" | \"time\" | \"url\" | \"week\"",
           "mutable": false,
           "attr": "type",
           "reflectToAttr": false,
@@ -5634,6 +5648,10 @@
             },
             {
               "value": "month",
+              "type": "string"
+            },
+            {
+              "value": "number",
               "type": "string"
             },
             {

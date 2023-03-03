@@ -7,7 +7,7 @@
     fieldset(slot="example")
       legend.chi-label
         | Select options
-        abbr.chi-label__required(title="Required field") *
+        abbr.chi-label__required(aria-label="Required field") *
       each i in [1, 2]
         .chi-picker
           input(type="checkbox", class="chi-picker__input", name=`unique-name-mer`, id=`unique-id-mer${i}`, required=(i === 1))
@@ -47,7 +47,7 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<fieldset>
   <legend class="chi-label">
     Select options
-    <abbr class="chi-label__required" title="Required field">*</abbr>
+    <abbr class="chi-label__required" aria-label="Required field">*</abbr>
   </legend>
   <div class="chi-picker">
     <input class="chi-picker__input" name="unique-name-mer" type="checkbox" id="unique-id-mer1" required>

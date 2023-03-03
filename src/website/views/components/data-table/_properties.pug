@@ -59,6 +59,8 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 },
                 treeSelection: <code>boolean</code>;
                 cellWrap: <code>boolean</code>;
+                showExpandAll: <code>boolean</code>;
+                showSelectAllDropdown: <code>boolean</code>;
               }
           td
             div undefined
@@ -250,17 +252,47 @@ section.chi-table.chi-table__options.-bordered.-my--3
           td
             <code>DataTableRow</code>
         tr
-          td
+          td.-d--flex.-align-items--center
             div <code>chiSelectAll</code>
+            chi-badge(class='-ml--1', size="xs")= 'Deprecated'
           td
             div The user selected all the rows on the page
           td
             <code>DataTableRow[]</code>
         tr
           td
+            div <code>chiSelectThisPage</code>
+          td
+            div The user selected all the rows on the page
+          td
+            <code>DataTableRow[]</code>
+        tr
+          td.-d--flex.-align-items--center
             div <code>chiDeselectAll</code>
+            chi-badge(class='-m--1', size="xs")= 'Deprecated'
           td
             div The user deselected all the rows on the page
+          td
+            <code>DataTableRow[]</code>
+        tr
+          td
+            div <code>chiDeselectThisPage</code>
+          td
+            div The user deselected all the rows on the page
+          td
+            <code>DataTableRow[]</code>
+        tr
+          td
+            div <code>chiSelectAllPages</code>
+          td
+            div The user selected all the rows on the table
+          td
+            <code>DataTableRow[]</code>
+        tr
+          td
+            div <code>chiDeselectAllPages</code>
+          td
+            div The user deselected all the rows on the table
           td
             <code>DataTableRow[]</code>
         tr

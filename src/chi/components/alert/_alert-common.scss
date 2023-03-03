@@ -339,16 +339,20 @@ $states: (
 }
 
 .chi-button {
-  .chi-alert {
-    // sass-lint:disable-block force-element-nesting
-    .chi-alert__icon,
-    & > chi-icon .chi-icon {
-      color: $alert-icon-color;
-    }
+  &,
+  &:hover,
+  &.-hover {
+    .chi-alert {
+      // sass-lint:disable-block force-element-nesting
+      .chi-alert__icon,
+      & > chi-icon .chi-icon {
+        color: $alert-icon-color;
+      }
 
-    .chi-alert__clickable-icon {
-      .chi-icon {
-        color: $color-icon-base;
+      .chi-alert__clickable-icon {
+        .chi-icon {
+          color: $color-icon-base;
+        }
       }
     }
   }
