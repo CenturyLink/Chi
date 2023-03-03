@@ -38,6 +38,7 @@ h3 Selectable
             pageJumper: true,
           },
           selectable: true,
+          showSelectAllDropdown: true,
           resultsPerPage: 3,
         },
         table: {
@@ -109,6 +110,18 @@ h3 Selectable
                 <label class="chi-checkbox__label" for="checkbox-ba1">
                   <div class="-sr--only">Label</div>
                 </label>
+              </div>
+              <div class="chi-dropdown">
+                <button aria-label="Select All Dropdown" data-position="bottom-start" class="chi-button -icon -flat -has-active">
+                  <div class="chi-button__content">
+                    <i aria-hidden="true" class="chi-icon icon-chevron-down -xs"></i>
+                  </div>
+                </button>
+                <div class="chi-dropdown__menu" x-placement="bottom-start">
+                  <a class="chi-dropdown__menu-item">Select all items, this page</a>
+                  <a class="chi-dropdown__menu-item">Select all items, all pages</a>
+                  <a class="chi-dropdown__menu-item">Deselect all</a>
+                </div>
               </div>
             </div>
             <div class="chi-data-table__cell">
@@ -257,6 +270,7 @@ script.
           pageJumper: true,
         },
         selectable: true,
+        showSelectAllDropdown: true,
         resultsPerPage: 3,
       },
       table: {
