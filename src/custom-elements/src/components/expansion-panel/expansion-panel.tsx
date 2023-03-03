@@ -29,6 +29,11 @@ export class ExpansionPanel {
    */
   @State() epanelTitle: string;
 
+  /**
+   * to render a state icon within the panel
+   */
+  @Prop({ reflect: true }) stateIcon = false;
+
   private mutationObserver;
 
   @Watch('state')
@@ -76,11 +81,13 @@ export class ExpansionPanel {
   render() {
     return (
       <div
-        class={`chi-epanel ${this.state === 'disabled' ? `-disabled` : ''} ${
-          this.state === 'active' ? `-active` : ''
-        } ${this.state === 'done' ? `-done` : ''} ${
-          this.bordered ? `-bordered` : ''
-        }`}
+        class={`chi-epanel 
+        ${this.state === 'disabled' ? `-disabled` : ''}
+        ${this.state === 'active' ? `-active` : ''}
+        ${this.state === 'done' ? `-done` : ''}
+        ${this.bordered ? `-bordered` : ''}
+        ${this.stateIcon ? `-state-icon` : ''}
+        ${this.step ? '' : '-no-step'}`}
       >
         <div class="chi-epanel__header">
           {this.step ? (
@@ -89,7 +96,7 @@ export class ExpansionPanel {
             ''
           )}
           <div class="chi-epanel__title">{this.epanelTitle}</div>
-          <div class={`chi-epanel__content ${this.step ? '' : '-ml--0'}`}>
+          <div class="chi-epanel__content">
             <div class="chi-epanel__collapse">
               <div class="-done--only">
                 <slot name="done" />
@@ -104,7 +111,7 @@ export class ExpansionPanel {
             ''
           )}
         </div>
-        <div class={`chi-epanel__collapse ${this.step ? '' : '-ml--0'}`}>
+        <div class="chi-epanel__collapse">
           <div class="-active--only">
             <div class="chi-epanel__body">
               <div class="chi-epanel__content">
