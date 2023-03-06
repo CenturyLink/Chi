@@ -2,7 +2,7 @@
 ## 5.28.0 (March 3, 2023)
 ### Components
 #### Added
-* Added: Date picker now supports change the format time from 12h to 24h when `mode=datetime` is active.
+* Added: Date picker now supports changing the format time from 12h to 24h when `mode="datetime"` is active.
 * Added: Data table `showExpandAll` config for displaying expand/collapse all functionality.
 * Added: Data table `showSelectedAllDropdown` config for displaying select/deselect all functionality.
 * Added: Carousel condition to chi-stat__item to display prev and next buttons.
@@ -13,7 +13,7 @@
 * Changed: Alert base style in Lumen Enterprise Portal theme to better support brand guidelines.
 #### Fixed
 * Fixed: Date picker `invalid format` error in datetime mode.
-* Fixed: Data table select all and deselect all console errors when checkboxes are loaded dinamically.
+* Fixed: Data table select all and deselect all console errors when checkboxes are loaded dynamically.
 ### Documentation
 #### Added
 * Added: Save View Vue component properties.
