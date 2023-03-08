@@ -82,6 +82,7 @@ export default class DataTable extends Vue {
     ? this.$props.config.showSelectAllDropdown
     : defaultConfig.showSelectAllDropdown;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
+  noResultsMessage = '';
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -968,44 +969,58 @@ export default class DataTable extends Vue {
     return row;
   }
 
+  _getNoResultsMessage(areFiltersActive?: boolean) {
+    const isToolbarActive = !!this._toolbarComponent;
+    const noResultsMessage =
+      this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_FOUND;
+    const noFiltersMessage =
+      this.config.noFiltersMessage || defaultConfig.noFiltersMessage || DATA_TABLE_NO_RESULTS_FOUND;
+
+    this.noResultsMessage = !isToolbarActive || areFiltersActive ? noResultsMessage : noFiltersMessage;
+  }
+
   _body() {
-    let tableBodyRows: JSX.Element;
+    const getTableBodyRows = (): JSX.Element => {
+      if (!this.data.body.length) {
+        return (
+          <div class={DATA_TABLE_CLASSES.EMPTY}>
+            <chi-icon className="-mr--1" icon="search" color="dark"></chi-icon>
+            {this.noResultsMessage}
+          </div>
+        );
+      }
 
-    if (this.data.body.length > 0) {
-      const dataToRender = this.dataToRender();
-
-      let i = 0;
-      tableBodyRows = dataToRender.map((bodyRow: DataTableRow) => {
-        const striped = !(i % 2 === 0) && this.$props.config.style.striped;
-
-        i++;
+      return this.dataToRender().map((bodyRow: DataTableRow, index: number) => {
+        const striped = !(index % 2 === 0) && this.$props.config.style.striped;
 
         return this.row(bodyRow, 'parent', striped);
       });
-    } else {
-      const noResultsMessage = this.config.noResultsMessage
-        ? this.config.noResultsMessage
-        : DATA_TABLE_NO_RESULTS_FOUND;
-
-      tableBodyRows = (
-        <div class={DATA_TABLE_CLASSES.EMPTY}>
-          <div>{noResultsMessage}</div>
-        </div>
-      );
-    }
+    };
 
     if (this.config.selectable === 'radio') {
       return (
         <div class={DATA_TABLE_CLASSES.BODY}>
           <fieldset>
             <legend class={SR_ONLY}>Select row</legend>
-            {tableBodyRows}
+            {getTableBodyRows()}
           </fieldset>
         </div>
       );
-    } else {
-      return <div class={DATA_TABLE_CLASSES.BODY}>{tableBodyRows}</div>;
     }
+
+    return <div class={DATA_TABLE_CLASSES.BODY}>{getTableBodyRows()}</div>;
+  }
+
+  _addToolbarSearchEventListener() {
+    this._getNoResultsMessage();
+
+    if (!this._toolbarComponent) {
+      return;
+    }
+
+    (this._toolbarComponent as Vue).$on(DATA_TABLE_EVENTS.TOOLBAR.SEARCH, () => {
+      this._getNoResultsMessage(true);
+    });
   }
 
   _addPaginationEventListener() {
@@ -1341,6 +1356,7 @@ export default class DataTable extends Vue {
 
     this._initializeSelectAllDropdown();
     this._addPaginationEventListener();
+    this._addToolbarSearchEventListener();
     window.addEventListener('resize', this.resizeHandler);
   }
 

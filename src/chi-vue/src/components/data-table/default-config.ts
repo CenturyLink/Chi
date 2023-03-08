@@ -3,7 +3,8 @@ import { DataTableConfig, DataTableModes } from '@/constants/types';
 export const defaultConfig: DataTableConfig = {
   columnResize: false,
   mode: DataTableModes.CLIENT,
-  noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+  noResultsMessage: 'No matching results',
+  noFiltersMessage: 'Search for or select at least one filter to get results',
   pagination: {
     activePage: 1,
     compact: false,

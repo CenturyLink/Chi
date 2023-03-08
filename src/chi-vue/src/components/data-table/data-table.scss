@@ -46,6 +46,14 @@
   }
 }
 
+.chi-data-table__row-empty {
+  justify-content: center;
+  align-items: center;
+  min-height: 6rem;
+  display: flex;
+  gap: .4rem;
+}
+
 // TODO: To be removed when all µApp's Chi version is higher than v5.0
 
 @mixin respond-to($media, $only: false) {
