@@ -851,7 +851,7 @@ describe('Data Table', () => {
         .as('rows');
     });
 
-    it(` Should expand all rows`, () => {
+    it('Should expand all rows', () => {
       const rows = [0, 1, 2];
 
       cy.get('@expandAllButton')
@@ -873,7 +873,7 @@ describe('Data Table', () => {
       });
     });
 
-    it(` Should collapse all rows`, () => {
+    it('Should collapse all rows', () => {
       const rows = [0, 1, 2];
 
       cy.get(`[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.HEAD}`)
