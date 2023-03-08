@@ -1,4 +1,5 @@
 h3 Empty
+h4 No Results
 
 .example.-mb--3
   .-p--3
@@ -6,19 +7,19 @@ h3 Empty
       .chi-card__header.-sm
         .chi-card__title Title
       .chi-card__content.-p--0
-        #portal-empty(style="min-height: 5.25rem;")
+        #portal-no-results(style="min-height: 5.25rem;")
           chi-vue-data-table(:config='config', :data='table')
   .example-tabs.-pl--2
-    ul.chi-tabs#example-portal-empty
+    ul.chi-tabs#example-portal-no-results
       li.-disabled
-        a(href=`#webcomponent-portal-empty`) Web Component
+        a(href=`#webcomponent-portal-no-results`) Web Component
       li.-active
-        a(href=`#vue-portal-empty`) Vue
+        a(href=`#vue-portal-no-results`) Vue
       li
-        a(href=`#html-portal-empty`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-portal-empty
-  .chi-tabs-panel.-active#vue-portal-empty
-    .chi-tab__description Use <code>noResultsMessage</code> config to customize the empty data message
+        a(href=`#html-portal-no-results`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-no-results
+  .chi-tabs-panel.-active#vue-portal-no-results
+    .chi-tab__description Use <code>noResultsMessage</code> config to customize the no results data message
     :code(lang='html')
       <!-- Vue component -->
       <ChiDataTable :config="config" :data="table"></ChiDataTable>
@@ -53,7 +54,7 @@ h3 Empty
           body: []
         }
       }
-  .chi-tabs-panel#html-portal-empty
+  .chi-tabs-panel#html-portal-no-results
     :code(lang="html")
       <div class="chi-card -portal -bg--white -bg-md--grey-15">
         <div class="chi-card__header -sm">
@@ -82,6 +83,91 @@ h3 Empty
           </div>
         </div>
       </div> 
+
+h4 No Filters
+
+.example.-mb--3
+  .-p--3
+    .chi-card.-portal.-bg--white.-bg-md--grey-15
+      .chi-card__header.-sm
+        .chi-card__title Title
+      .chi-card__content.-p--0
+        #portal-no-filters(style="min-height: 5.25rem;")
+          chi-vue-data-table(:config='config', :data='table')
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-no-filters
+      li.-disabled
+        a(href=`#webcomponent-portal-no-results`) Web Component
+      li.-active
+        a(href=`#vue-portal-no-results`) Vue
+      li
+        a(href=`#html-portal-no-results`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-no-filters
+  .chi-tabs-panel.-active#vue-portal-no-filters
+    .chi-tab__description Use <code>noFiltersMessage</code> config to customize the no filters data message
+    :code(lang='html')
+      <!-- Vue component -->
+      <ChiDataTable :config="config" :data="table"></ChiDataTable>
+
+      <!-- Config and Data -->
+      data: {
+        config: {
+            columnResize: true,
+            noFiltersMessage: "Search for or select at least one filter to get results",
+            style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: true,
+            },
+            pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+            },
+            resultsPerPage: 3,
+        },
+        table: {
+          head: {
+            name: { label: 'Name' },
+            id: { label: 'ID' },
+            lastLogin: { label: 'Last Login' },
+          },
+          body: []
+        }
+      }
+  .chi-tabs-panel#html-portal-no-filters
+    :code(lang="html")
+      <div class="chi-card -portal -bg--white -bg-md--grey-15">
+        <div class="chi-card__header -sm">
+          <div class="chi-card__title">Title</div>
+        </div>
+        <div class="chi-card__content -p--0">
+          <div class="chi-data-table -portal -compact">
+            <div class="chi-data-table__head">
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell">
+                  <div>Name</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>ID</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Last Login</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-data-table__body">
+              <div class="chi-data-table__row-empty">
+                <div>Search for or select at least one filter to get results</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 script.
   new Vue({
@@ -117,10 +203,45 @@ script.
         body: [],
       }
     }
-  }).$mount('#portal-empty');
+  }).$mount('#portal-no-results');
+  new Vue({
+    components: {
+      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        noResultsMessage: 'Search for or select at least one filter to get results',
+        style: {
+          portal: true,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: true,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+      },
+      table: {
+        head: {
+          name: {label: 'Name'},
+          id: {label: 'ID'},
+          lastLogin: {label: 'Last Login'},
+        },
+        body: [],
+      }
+    }
+  }).$mount('#portal-no-filters');
   document.addEventListener(
     'DOMContentLoaded',
     function() {
-      chi.tab(document.querySelector('#example-portal-empty'));
+      chi.tab(document.querySelector('#example-portal-no-results'));
+      chi.tab(document.querySelector('#example-portal-no-filters'));
     }
   );
