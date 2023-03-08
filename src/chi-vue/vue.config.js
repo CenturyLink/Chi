@@ -1,5 +1,4 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const ASSET_PATH = '/';
 
@@ -23,7 +22,7 @@ PublicPathWebpackPlugin.prototype.apply = function(compiler) {
 };
 module.exports = {
   configureWebpack: config => {
-    const options = config.optimization.minimizer[0].options.minimizer.options;
+    const terserOptions = config.optimization.minimizer[0].options.terserOptions;
 
     if (!config.externals) {
       config.externals = {};
@@ -34,10 +33,11 @@ module.exports = {
 
     switch (process.env.VUE_APP_MODE) {
       case 'prod':
-        config.mode = 'production';
-        options.compress.drop_console = true;
-        options.compress.drop_debugger = true;
-        config.plugins.unshift(new PublicPathWebpackPlugin());
+        config.optimization.minimize = true;
+        terserOptions.compress.drop_console = true;
+        terserOptions.compress.drop_debugger = true;
+        terserOptions.keep_classnames = true;
+        terserOptions.keep_fnames = true;
         break;
 
       case 'dev':
@@ -56,22 +56,16 @@ module.exports = {
     extract: process.env.VUE_APP_MODE === 'prod',
   },
   devServer: {
-    webSocketServer: false,
-    compress: true,
-    watchFiles: {
-      options: {
-        ignored: /node_modules/,
-        // if aggregateTimeout and poll values should be changed on local, create a .env.local file
-        aggregateTimeout: process.env.WEBPACK_AGGREGATE_TIMEOUT,
-        poll: process.env.WEBPACK_POLL,
-      },
+    watchOptions: {
+      ignored: /node_modules/,
+      // if aggregateTimeout and poll values should be changed on local, create a .env.local file
+      aggregateTimeout: process.env.WEBPACK_AGGREGATE_TIMEOUT,
     },
-    client: {
-      overlay: {
-        warnings: true,
-        errors: true,
-      },
+    overlay: {
+      warnings: true,
+      errors: true,
     },
+    public: 'localhost:9090',
     port: 9090,
     https: true,
   },
