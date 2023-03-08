@@ -969,7 +969,7 @@ export default class DataTable extends Vue {
     return row;
   }
 
-  _getNoResultsMessage(areFiltersActive?: boolean) {
+  _generateNoResultsMessage(areFiltersActive?: boolean) {
     const isToolbarActive = !!this._toolbarComponent;
     const noResultsMessage =
       this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_FOUND;
@@ -1012,14 +1012,14 @@ export default class DataTable extends Vue {
   }
 
   _addToolbarSearchEventListener() {
-    this._getNoResultsMessage();
+    this._generateNoResultsMessage();
 
     if (!this._toolbarComponent) {
       return;
     }
 
     (this._toolbarComponent as Vue).$on(DATA_TABLE_EVENTS.TOOLBAR.SEARCH, () => {
-      this._getNoResultsMessage(true);
+      this._generateNoResultsMessage(true);
     });
   }
 
