@@ -400,14 +400,14 @@
       "clickSelector": "",
       "postInteractionWait": "",
       "selectors": [
-        ".test-expansion-panel-done",
-        ".test-expansion-panel-active",
-        ".test-expansion-panel-pending",
-        ".test-expansion-panel-disabled",
-        ".test-expansion-panel-done-bordered",
-        ".test-expansion-panel-active-bordered",
-        ".test-expansion-panel-pending-bordered",
-        ".test-expansion-panel-disabled-bordered"
+        ".test-expansion-panel-base",
+        ".test-expansion-panel-state-icon",
+        ".test-expansion-panel-no-step",
+        ".test-expansion-panel-no-step-state-icon",
+        ".test-expansion-panel-bordered",
+        ".test-expansion-panel-bordered-state-icon",
+        ".test-expansion-panel-bordered-no-step",
+        ".test-expansion-panel-bordered-no-step-state-icon"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
