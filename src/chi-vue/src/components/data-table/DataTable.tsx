@@ -37,7 +37,12 @@ import {
   DataTableColumnDescription,
   DataTableColumn,
 } from '@/constants/types';
-import { DATA_TABLE_NO_RESULTS_FOUND, DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
+import {
+  DATA_TABLE_NO_FILTERS_MESSAGE,
+  DATA_TABLE_NO_RESULTS_FOUND,
+  DATA_TABLE_SORT_ICONS,
+  SCREEN_BREAKPOINTS,
+} from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
@@ -82,7 +87,7 @@ export default class DataTable extends Vue {
     ? this.$props.config.showSelectAllDropdown
     : defaultConfig.showSelectAllDropdown;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
-  noResultsMessage = '';
+  emptyMessage = this.config.noFiltersMessage || defaultConfig.noFiltersMessage || DATA_TABLE_NO_FILTERS_MESSAGE;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -969,23 +974,13 @@ export default class DataTable extends Vue {
     return row;
   }
 
-  _generateNoResultsMessage(areFiltersActive?: boolean) {
-    const isToolbarActive = !!this._toolbarComponent;
-    const noResultsMessage =
-      this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_FOUND;
-    const noFiltersMessage =
-      this.config.noFiltersMessage || defaultConfig.noFiltersMessage || DATA_TABLE_NO_RESULTS_FOUND;
-
-    this.noResultsMessage = !isToolbarActive || areFiltersActive ? noResultsMessage : noFiltersMessage;
-  }
-
   _body() {
     const getTableBodyRows = (): JSX.Element => {
       if (!this.data.body.length) {
         return (
           <div class={DATA_TABLE_CLASSES.EMPTY}>
             <chi-icon className="-mr--1" icon="search" color="dark"></chi-icon>
-            {this.noResultsMessage}
+            {this.emptyMessage}
           </div>
         );
       }
@@ -1012,14 +1007,13 @@ export default class DataTable extends Vue {
   }
 
   _addToolbarSearchEventListener() {
-    this._generateNoResultsMessage();
-
     if (!this._toolbarComponent) {
+      this.emptyMessage = this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_FOUND;
       return;
     }
 
     (this._toolbarComponent as Vue).$on(DATA_TABLE_EVENTS.TOOLBAR.SEARCH, () => {
-      this._generateNoResultsMessage(true);
+      this.emptyMessage = this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_FOUND;
     });
   }
 
@@ -1628,7 +1622,8 @@ export default class DataTable extends Vue {
       <tbody>
         <tr>
           <td colspan={Object.keys(this.data.head).length} class={DATA_TABLE_CLASSES.EMPTY}>
-            {this.config.noResultsMessage ? this.config.noResultsMessage : DATA_TABLE_NO_RESULTS_FOUND}
+            <chi-icon className="-mr--1" icon="search" color="dark"></chi-icon>
+            {this.emptyMessage}
           </td>
         </tr>
       </tbody>
