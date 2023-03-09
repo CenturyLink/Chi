@@ -986,7 +986,7 @@ export default class DataTable extends Vue {
       }
 
       return this.dataToRender().map((bodyRow: DataTableRow, index: number) => {
-        const striped = !(index % 2 === 0) && this.$props.config.style.striped;
+        const striped = (index % 2 !== 0) && this.$props.config.style.striped;
 
         return this.row(bodyRow, 'parent', striped);
       });
