@@ -39,7 +39,7 @@ import {
 } from '@/constants/types';
 import {
   DATA_TABLE_NO_FILTERS_MESSAGE,
-  DATA_TABLE_NO_RESULTS_FOUND,
+  DATA_TABLE_NO_RESULTS_MESSAGE,
   DATA_TABLE_SORT_ICONS,
   SCREEN_BREAKPOINTS,
 } from '@/constants/constants';
@@ -979,7 +979,7 @@ export default class DataTable extends Vue {
       if (!this.data.body.length) {
         return (
           <div class={DATA_TABLE_CLASSES.EMPTY}>
-            <chi-icon className="-mr--1" icon="search" color="dark"></chi-icon>
+            <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
             {this.emptyMessage}
           </div>
         );
@@ -1008,12 +1008,14 @@ export default class DataTable extends Vue {
 
   _addToolbarSearchEventListener() {
     if (!this._toolbarComponent) {
-      this.emptyMessage = this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_FOUND;
+      this.emptyMessage =
+        this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_MESSAGE;
       return;
     }
 
     (this._toolbarComponent as Vue).$on(DATA_TABLE_EVENTS.TOOLBAR.SEARCH, () => {
-      this.emptyMessage = this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_FOUND;
+      this.emptyMessage =
+        this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_MESSAGE;
     });
   }
 
@@ -1622,7 +1624,7 @@ export default class DataTable extends Vue {
       <tbody>
         <tr>
           <td colspan={Object.keys(this.data.head).length} class={DATA_TABLE_CLASSES.EMPTY}>
-            <chi-icon className="-mr--1" icon="search" color="dark"></chi-icon>
+            <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
             {this.emptyMessage}
           </td>
         </tr>
