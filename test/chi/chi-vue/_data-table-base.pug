@@ -1000,11 +1000,6 @@ script.
         ],
       },
     },
-    mounted() {
-      if (window.Cypress) {
-        window.accordionDataTable = this;
-      }
-    },
   }).$mount("#data-table-expand-collapse");
 
   new Vue({
@@ -1061,11 +1056,6 @@ script.
           },
         ],
       },
-    },
-    mounted() {
-      if (window.Cypress) {
-        window.accordionDataTable = this;
-      }
     },
   }).$mount("#data-table-hidden-expand-all");
 
