@@ -1,10 +1,11 @@
+import { DATA_TABLE_NO_FILTERS_MESSAGE, DATA_TABLE_NO_RESULTS_FOUND } from '@/constants/constants';
 import { DataTableConfig, DataTableModes } from '@/constants/types';
 
 export const defaultConfig: DataTableConfig = {
   columnResize: false,
   mode: DataTableModes.CLIENT,
-  noResultsMessage: 'No matching results',
-  noFiltersMessage: 'Search for or select at least one filter to get results',
+  noResultsMessage: DATA_TABLE_NO_RESULTS_FOUND,
+  noFiltersMessage: DATA_TABLE_NO_FILTERS_MESSAGE,
   pagination: {
     activePage: 1,
     compact: false,
