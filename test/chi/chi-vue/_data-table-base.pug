@@ -77,11 +77,6 @@ h3 Expand/Collapse
   #data-table-expand-collapse
     chi-vue-data-table(ref="accordion" data-cy='data-table-expand-collapse', :config="config", :data="table")
 
-h3 Hidden expand all
-.test-data-table.-p--3.-w--100
-  #data-table-hidden-expand-all
-    chi-vue-data-table(ref="accordion" data-cy='data-table-hidden-expand-all', :config="config", :data="table")
-
 h3 Sorting
 .test-data-table.-p--3.-w--100
   #sorting
@@ -1001,63 +996,6 @@ script.
       },
     },
   }).$mount("#data-table-expand-collapse");
-
-  new Vue({
-    components: {
-      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
-    },
-    data: {
-      config: {
-        columnResize: true,
-        style: {
-          portal: false,
-          noBorder: false,
-          bordered: false,
-          hover: false,
-          size: "md",
-          striped: false,
-        },
-        pagination: {
-          activePage: 1,
-          compact: false,
-          firstLast: false,
-          pageJumper: true,
-        },
-        resultsPerPage: 3,
-        showExpandAll: false,
-      },
-      table: {
-        head: {
-          name: { label: "Name" },
-          id: { label: "ID" },
-          lastLogin: { label: "Last Login" },
-        },
-        body: [
-          {
-            id: "name-1",
-            nestedContent: {
-              value: "Accordion content",
-            },
-            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-2",
-            nestedContent: {
-              value: "Accordion content",
-            },
-            data: ["Name 2", "name-2", "Dec 18, 2020 3:26 PM"],
-          },
-          {
-            id: "name-3",
-            nestedContent: {
-              value: "Accordion content",
-            },
-            data: ["Name 3", "name-3", "Dec 18, 2020 3:26 PM"],
-          },
-        ],
-      },
-    },
-  }).$mount("#data-table-hidden-expand-all");
 
   new Vue({
     components: {

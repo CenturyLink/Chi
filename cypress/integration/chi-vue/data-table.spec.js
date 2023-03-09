@@ -181,6 +181,12 @@ describe('Data Table', () => {
         });
     });
 
+    it('Should hide Expand All icon', () => {
+      cy.get(`[data-cy='data-table-container'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`button.-expand`)
+        .should('not.exist');
+    });
+
     describe('Pagination', () => {
       beforeEach(() => {
         cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`).as(
@@ -876,11 +882,8 @@ describe('Data Table', () => {
     it('Should collapse all rows', () => {
       const rows = [0, 1, 2];
 
-      cy.get(`[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.HEAD}`)
-        .find(`button.-expand`)
-        .click()
-        .click();
-      cy.get('@rows').should('have.class', `${EXPANDED_CLASS}`);
+      cy.get('@expandAllButton').click();
+      cy.get('@rows').should('have.class', '-collapsed');
       rows.forEach(rowIndex => {
         cy.get(
           `[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`
@@ -890,11 +893,6 @@ describe('Data Table', () => {
       });
     });
 
-    it('Should hide Expand All icon', () => {
-      cy.get(`[data-cy='data-table-hidden-expand-all'] .${DATA_TABLE_CLASSES.HEAD}`)
-        .find(`button.-expand`)
-        .should('not.exist');
-    });
   });
 
   describe('Sorting', () => {
