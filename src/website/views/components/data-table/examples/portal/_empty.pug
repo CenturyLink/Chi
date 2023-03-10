@@ -28,7 +28,7 @@ h4 No Results
       data: {
         config: {
             columnResize: true,
-            noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+            noResultsMessage: 'No matching results',
             style: {
             portal: true,
             noBorder: false,
@@ -77,7 +77,7 @@ h4 No Results
             </div>
             <div class="chi-data-table__body">
               <div class="chi-data-table__row-empty">
-                <div>No matches found. Please revise search criteria and try again.</div>
+                <div>No matching results</div>
               </div>
             </div>
           </div>
@@ -97,11 +97,11 @@ h4 No Filters
   .example-tabs.-pl--2
     ul.chi-tabs#example-portal-no-filters
       li.-disabled
-        a(href=`#webcomponent-portal-no-results`) Web Component
+        a(href=`#webcomponent-portal-no-filters`) Web Component
       li.-active
-        a(href=`#vue-portal-no-results`) Vue
+        a(href=`#vue-portal-no-filters`) Vue
       li
-        a(href=`#html-portal-no-results`) HTML Blueprint
+        a(href=`#html-portal-no-filters`) HTML Blueprint
   .chi-tabs-panel#webcomponent-portal-no-filters
   .chi-tabs-panel.-active#vue-portal-no-filters
     .chi-tab__description Use <code>noFiltersMessage</code> config to customize the no filters data message
@@ -177,7 +177,7 @@ script.
     data: {
       config: {
         columnResize: true,
-        noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+        noResultsMessage: 'No matching results',
         style: {
           portal: true,
           noBorder: false,
