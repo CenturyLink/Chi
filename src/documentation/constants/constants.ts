@@ -19,6 +19,12 @@ export const THEMES = {
     favicon: '',
     css: `chi-portal.css`,
     docsCss: `assets/themes/portal/docs.css`
+  },
+  colt: {
+    label: 'Colt',
+    favicon: '',
+    css: `chi-colt.css`,
+    docsCss: `assets/themes/colt/docs.css`
   }
 };
 export const DEFAULT_CSS = THEMES[DEFAULT_THEME].css;
