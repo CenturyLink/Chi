@@ -483,7 +483,7 @@ export class Tabs {
           ref={el => (this.seeMoreTriggerElement = el)}
         >
           <a
-            class={}
+            class={`-has-child`}
             href={`#seeMore`}
             role="tab"
             onClick={(e: Event) => this.handlerClickSeeMore(e)}
