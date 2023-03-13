@@ -474,14 +474,16 @@ export class Tabs {
         }}
       ></li>
     ) : null;
+    const activeTabOverflownClass = this.isActiveTabOverflown(this.tabs) ? ACTIVE_CLASS : '';
     const seeMoreTrigger = !this.vertical &&
       (this.isSeeMoreVisible || !this.isSeeMoreTriggerMeasured) && (
         <li
-          class={this.isActiveTabOverflown(this.tabs) ? ACTIVE_CLASS : ''}
+          class={`chi-tabs__trigger ${activeTabOverflownClass}`}
           id={this.seeMoreTriggerId}
           ref={el => (this.seeMoreTriggerElement = el)}
         >
           <a
+            class={}
             href={`#seeMore`}
             role="tab"
             onClick={(e: Event) => this.handlerClickSeeMore(e)}
