@@ -251,10 +251,12 @@ $sizes: (
     }
 
     &-empty {
+      align-items: center;
       background-color: $color-background-base;
+      display: flex;
       font-style: italic;
-      padding: 0.75rem 1rem;
-      text-align: center;
+      justify-content: center;
+      padding: 3rem 7rem;
     }
 
     &-child,
