@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Application states" id="application_states" padding="-p--0" :tabs="exampleTabs" :hideTabsHead="true">
+  <ComponentExample title="Application states" id="application_states" padding="-p--0" :tabs="exampleTabs" :showTabsHead="false">
   .-p--3(slot="example")
     .chi-badge(:class="`-flat -m--1${indicator.className && ' -'}${indicator.className}`" v-for="indicator in indicators")
       .chi-badge__content

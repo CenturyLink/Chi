@@ -1,6 +1,6 @@
 <template>
   <div class="example-wrapper">
-    <h4 v-if="titleSize === 'h4' && !hideTitle" class="-anchor" :id="id">
+    <h4 v-if="titleSize === 'h4' && showTitle" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
@@ -10,7 +10,7 @@
         >
       </span>
     </h4>
-    <h2 v-else-if="titleSize === 'h2' && !hideTitle" class="-anchor" :id="id">
+    <h2 v-else-if="titleSize === 'h2' && showTitle" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
@@ -20,7 +20,7 @@
         >
       </span>
     </h2>
-    <h3 v-else-if="!hideTitle" class="-anchor" :id="id">
+    <h3 v-else-if="showTitle" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
@@ -107,7 +107,7 @@
       <div :class="[padding || '-p--3', additionalClasses]">
         <slot name="example"></slot>
       </div>
-      <div v-if="!hideTabsHead" class="example-tabs -pl--2">
+      <div v-if="showTabsHead" class="example-tabs -pl--2">
         <ul
           class="chi-tabs -animated"
           :id="'code-snippet-tabs-' + id"
@@ -134,7 +134,7 @@
         </ul>
       </div>
       <div
-        :class="[!hideTabsHead ? 'chi-tabs-panel' : '', tab.active ? '-active' : '']"
+        :class="[showTabsHead ? 'chi-tabs-panel' : '', tab.active ? '-active' : '']"
         v-for="tab in tabs"
         :key="tab.id"
         :id="'example-' + id + '-' + tab.id"
@@ -218,8 +218,8 @@ export default class ComponentExample extends Vue {
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
   @Prop() additionalStyle?: string;
-  @Prop() hideTabsHead?: boolean;
-  @Prop() hideTitle?: boolean;
+  @Prop({ default: true }) showTabsHead?: boolean;
+  @Prop({ default: true }) showTitle?: boolean;
 
   chiTabs: any;
   chiHeadTabs: any;

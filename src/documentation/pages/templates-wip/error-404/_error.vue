@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample padding="-p--0" :tabs="exampleTabs" :hideTabsHead="true" :hideTitle="true">
+  <ComponentExample padding="-p--0" :tabs="exampleTabs" :showTabsHead="false" :showTitle="false">
     .-p--3.-bg--grey-20(slot="example")
       .chi-app.-bg--grey-10
         header.chi-header
