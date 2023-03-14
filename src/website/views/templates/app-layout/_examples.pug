@@ -1,6 +1,6 @@
 h2 Examples
 p.-text To render application layout, use the tag <code>chi-main</code>.
-.-centurylink--hide
+.-centurylink--hide.-colt--hide
   h3 Base
   .example.-mb--3
     chi-main(title="Page Title")
@@ -868,7 +868,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           chi.dropdown(document.getElementById('language-dropdown-button'));
         </script>
 
-.-centurylink--hide
+.-centurylink--hide.-colt--hide
   h3 Base with back link
   .example.-mb--3
     chi-main(backlink="Back link", title="Page Title")
@@ -5163,7 +5163,7 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           chi.popover(document.getElementById('example__help-button'));
         </script>
 
-.-portal--show.-brightspeed--show.-colt--show
+.-portal--show.-brightspeed--show
   h3 Home page with header background
   .example.-mb--3
     chi-main(title="Page Title" format="fixed-width" header-background)
@@ -6446,6 +6446,1731 @@ p.-text To render application layout, use the tag <code>chi-main</code>.
           chi.popover(document.getElementById('example__help-button'));
         </script>
 
+.-colt--show
+  h3 Base
+  .example.-mb--3
+    chi-main(title="Page Title")
+      .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
+        | Page content goes here
+      footer.chi-footer(slot="footer")
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.colt.net/legal/code-of-business-conduct/' target='_blank') Colt Code of Business Conduct
+                  li
+                    a(href='https://www.colt.net/legal/#colt-group-of-companies' target='_blank') Colt Group of Companies
+                  li
+                    a(href='https://www.colt.net/support/' target='_blank') Help and Support
+                  li
+                    a(href='https://www.colt.net/legal/data-privacy/' target='_blank') Data Privacy Statement
+                  li
+                    a(href='https://www.colt.net/legal/terms-and-conditions/' target='_blank') Terms of Use
+                .chi-footer__copyright
+                  | © 2023 Colt Technology Services Group Limited
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-colt-base(role="tablist")
+        li.-active
+          a(
+            href=`#webcomponent-colt-base`
+            role="tab"
+            aria-selected="true"
+            aria-controls="webcomponent-colt-base"
+          ) Web Component
+        li
+          a(
+            href=`#html-colt-base`
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="html-colt-base"
+          ) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-colt-base
+      .chi-tab__description
+        | Use the <code>title=""</code> attribute to display a title above the application layout.
+      :code(lang="html")
+        <chi-main title="Page Title">
+          <!-- Page content goes here -->
+          <footer class="chi-footer" slot="footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </chi-main>
+
+    .chi-tabs-panel#html-colt-base
+      :code(lang="html")
+        <div class="chi-main">
+          <div class="chi-main__header">
+            <div class="chi-main__header-start">
+              <div class="chi-main__title">
+                <div class="chi-main__title-heading">Page Title</div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-main__content">
+            <!-- Page content goes here -->
+          </div>
+          <footer class="chi-footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+  h3 Base with alert
+  .example.-mb--3
+    chi-main(title="Page Title")
+      chi-alert(color="info" icon="circle-info" slot="page-alert" closable)
+        | This is a page level info alert
+      .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
+        | Page content goes here
+      footer.chi-footer(slot="footer")
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.colt.net/legal/code-of-business-conduct/' target='_blank') Colt Code of Business Conduct
+                  li
+                    a(href='https://www.colt.net/legal/#colt-group-of-companies' target='_blank') Colt Group of Companies
+                  li
+                    a(href='https://www.colt.net/support/' target='_blank') Help and Support
+                  li
+                    a(href='https://www.colt.net/legal/data-privacy/' target='_blank') Data Privacy Statement
+                  li
+                    a(href='https://www.colt.net/legal/terms-and-conditions/' target='_blank') Terms of Use
+                .chi-footer__copyright
+                  | © 2023 Colt Technology Services Group Limited
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-colt-base-with-alert(role="tablist")
+        li.-active
+          a(
+            href=`#webcomponent-colt-base-with-alert`
+            role="tab"
+            aria-selected="true"
+            aria-controls="webcomponent-colt-base-with-alert"
+          ) Web Component
+        li
+          a(
+            href=`#html-colt-base-with-alert`
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="html-colt-base-with-alert"
+          ) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-colt-base-with-alert
+      .chi-tab__description
+        | Use the <code>title=""</code> attribute to display a title above the application layout.
+      :code(lang="html")
+        <chi-main title="Page Title">
+          <chi-alert color="info" icon="circle-info" slot="page-alert" closable>This is a page level info alert</chi-alert>
+          <!-- Page content goes here -->
+          <footer class="chi-footer" slot="footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </chi-main>
+
+    .chi-tabs-panel#html-colt-base-with-alert
+      :code(lang="html")
+        <div class="chi-main">
+          <div class="chi-main__alert">
+            <div class="chi-alert -info -close" role="alert">
+              <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
+              <div class="chi-alert__content">
+                <p class="chi-alert__text">This is a page level info alert</p>
+              </div>
+              <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x" aria-hidden="true"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="chi-main__header">
+            <div class="chi-main__header-start">
+              <div class="chi-main__title">
+                <div class="chi-main__title-heading">Page Title</div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-main__content">
+            <!-- Page content goes here -->
+          </div>
+          <footer class="chi-footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+  h3 Base with help icon
+  .example.-mb--3
+    chi-main(title="Page Title")
+      .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
+        | Page content goes here
+      chi-button(id='example__help-button11' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
+        chi-icon(icon='circle-question-outline')
+      chi-popover(id='example__help-popover11' position='right-start' variant='text' arrow reference='#example__help-button11' slot='help-icon')
+        | Popover content.
+      footer.chi-footer(slot="footer")
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.colt.net/legal/code-of-business-conduct/' target='_blank') Colt Code of Business Conduct
+                  li
+                    a(href='https://www.colt.net/legal/#colt-group-of-companies' target='_blank') Colt Group of Companies
+                  li
+                    a(href='https://www.colt.net/support/' target='_blank') Help and Support
+                  li
+                    a(href='https://www.colt.net/legal/data-privacy/' target='_blank') Data Privacy Statement
+                  li
+                    a(href='https://www.colt.net/legal/terms-and-conditions/' target='_blank') Terms of Use
+                .chi-footer__copyright
+                  | © 2023 Colt Technology Services Group Limited
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-colt-help-icon(role="tablist")
+        li.-active
+          a(
+            href=`#webcomponent-colt-help-icon`
+            role="tab"
+            aria-selected="true"
+            aria-controls="webcomponent-colt-help-icon"
+          ) Web Component
+        li
+          a(
+            href=`#html-colt-help-icon`
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="html-colt-help-icon"
+          ) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-colt-help-icon
+      :code(lang="html")
+        <chi-main title="Page Title">
+          <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
+            <chi-icon icon="circle-question-outline"></chi-icon>
+          </chi-button>
+          <chi-popover id="example__help-popover" position="right-start" variant="text" arrow reference="#example__help-button" slot="help-icon">
+            Popover content.
+          </chi-popover>
+          <!-- Page content goes here -->
+          <footer class="chi-footer" slot="footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </chi-main>
+
+        <script>
+          document.querySelector("#example__help-button")
+            .addEventListener("click", function() {
+              var popoverElem = document.querySelector("#example__help-popover");
+              popoverElem.toggle();
+            });
+        </script>
+
+    .chi-tabs-panel#html-colt-help-icon
+      :code(lang="html")
+        <div class="chi-main">
+          <div class="chi-main__header">
+            <div class="chi-main__header-start">
+              <div class="chi-main__title">
+                <div class="chi-main__title-heading">
+                  Page Title
+                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
+                    <div class="chi-popover__content">
+                      <p class="chi-popover__text">Popover content.</p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-main__content">
+            <!-- Page content goes here -->
+          </div>
+          <footer class="chi-footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+        <script>
+          chi.popover(document.getElementById('example__help-button'));
+        </script>
+
+  h3 Base with back link
+  .example.-mb--3
+    chi-main(backlink="Back link", title="Page Title")
+      .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
+        | Page content goes here
+      footer.chi-footer(slot="footer")
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.colt.net/legal/code-of-business-conduct/' target='_blank') Colt Code of Business Conduct
+                  li
+                    a(href='https://www.colt.net/legal/#colt-group-of-companies' target='_blank') Colt Group of Companies
+                  li
+                    a(href='https://www.colt.net/support/' target='_blank') Help and Support
+                  li
+                    a(href='https://www.colt.net/legal/data-privacy/' target='_blank') Data Privacy Statement
+                  li
+                    a(href='https://www.colt.net/legal/terms-and-conditions/' target='_blank') Terms of Use
+                .chi-footer__copyright
+                  | © 2023 Colt Technology Services Group Limited
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-colt-back-link(role="tablist")
+        li.-active
+          a(
+            href=`#webcomponent-colt-back-link`
+            role="tab"
+            aria-selected="true"
+            aria-controls="webcomponent-colt-back-link"
+          ) Web Component
+        li
+          a(
+            href=`#html-colt-back-link`
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="html-colt-back-link"
+          ) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-colt-back-link
+      .chi-tab__description
+        | Use the <code>backlink=""</code> attribute to display a link above the title of the application layout.
+      :code(lang="html")
+        <chi-main backlink="Back link" title="Page Title">
+          <!-- Page content goes here -->
+          <footer class="chi-footer" slot="footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </chi-main>
+
+    .chi-tabs-panel#html-colt-back-link
+      :code(lang="html")
+        <div class="chi-main">
+          <div class="chi-main__header">
+            <div class="chi-main__header-start">
+              <a class="chi-link" href="#">
+                <div class="chi-link__content">
+                  <i class="chi-icon icon-chevron-left -xs" aria-hidden="true"></i>
+                  <span class="-text--md">Back link</span>
+                </div>
+              </a>
+              <div class="chi-main__title">
+                <div class="chi-main__title-heading">Page Title</div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-main__content">
+            <!-- Page content goes here -->
+          </div>
+          <footer class="chi-footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+  h3 Base with back link and subtitle
+  .example.-mb--3
+    chi-main(backlink="Back link", title="Page Title", subtitle="Page subtitle")
+      .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
+        | Page content goes here
+      footer.chi-footer(slot="footer")
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.colt.net/legal/code-of-business-conduct/' target='_blank') Colt Code of Business Conduct
+                  li
+                    a(href='https://www.colt.net/legal/#colt-group-of-companies' target='_blank') Colt Group of Companies
+                  li
+                    a(href='https://www.colt.net/support/' target='_blank') Help and Support
+                  li
+                    a(href='https://www.colt.net/legal/data-privacy/' target='_blank') Data Privacy Statement
+                  li
+                    a(href='https://www.colt.net/legal/terms-and-conditions/' target='_blank') Terms of Use
+                .chi-footer__copyright
+                  | © 2023 Colt Technology Services Group Limited
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-colt-subtitle(role="tablist")
+        li.-active
+          a(
+            href=`#webcomponent-colt-subtitle`
+            role="tab"
+            aria-selected="true"
+            aria-controls="webcomponent-colt-subtitle"
+          ) Web Component
+        li
+          a(
+            href=`#html-colt-subtitle`
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="html-colt-subtitle"
+          ) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-colt-subtitle
+      .chi-tab__description
+        | Use the <code>subtitle=""</code> attribute to display a subtitle next to the title of the application layout.
+      :code(lang="html")
+        <chi-main backlink="Back link" title="Page Title" subtitle="Page subtitle">
+          <!-- Page content goes here -->
+          <footer class="chi-footer" slot="footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </chi-main>
+
+    .chi-tabs-panel#html-colt-subtitle
+      :code(lang="html")
+        <div class="chi-main">
+          <div class="chi-main__header">
+            <div class="chi-main__header-start">
+              <a class="chi-link" href="#">
+                <div class="chi-link__content">
+                  <i class="chi-icon icon-chevron-left -xs" aria-hidden="true"></i>
+                  <span class="-text--md">Back link</span>
+                </div>
+              </a>
+              <div class="chi-main__title">
+                <div class="chi-main__title-heading">Page Title</div>
+                <div class="chi-main__title-subheading">Page subtitle</div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-main__content">
+            <!-- Page content goes here -->
+          </div>
+          <footer class="chi-footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+  h3 Base with back link, subtitle and buttons
+  .example.-mb--3
+    chi-main(backlink="Back link", title="Page Title", subtitle="Page subtitle")
+      button.chi-button.-primary(slot="header-actions") Primary
+      .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
+        | Page content goes here
+      footer.chi-footer(slot="footer")
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.colt.net/legal/code-of-business-conduct/' target='_blank') Colt Code of Business Conduct
+                  li
+                    a(href='https://www.colt.net/legal/#colt-group-of-companies' target='_blank') Colt Group of Companies
+                  li
+                    a(href='https://www.colt.net/support/' target='_blank') Help and Support
+                  li
+                    a(href='https://www.colt.net/legal/data-privacy/' target='_blank') Data Privacy Statement
+                  li
+                    a(href='https://www.colt.net/legal/terms-and-conditions/' target='_blank') Terms of Use
+                .chi-footer__copyright
+                  | © 2023 Colt Technology Services Group Limited
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-colt-header-actions(role="tablist")
+        li.-active
+          a(
+            href=`#webcomponent-colt-header-actions`
+            role="tab"
+            aria-selected="true"
+            aria-controls="webcomponent-colt-header-actions"
+          ) Web Component
+        li
+          a(
+            href=`#html-colt-header-actions`
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="html-colt-header-actions"
+          ) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-colt-header-actions
+      .chi-tab__description
+        | Add buttons in the header of the application layout by defining <code>slot="header-actions"</code> on each <code>chi-button</code>.
+      :code(lang="html")
+        <chi-main backlink="Back link" title="Page Title" subtitle="Page subtitle">
+          <button class="chi-button -primary" slot="header-actions">Primary</button>
+          <!-- Page content goes here -->
+          <footer class="chi-footer" slot="footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </chi-main>
+    .chi-tabs-panel#html-colt-header-actions
+      :code(lang="html")
+        <div class="chi-main">
+          <div class="chi-main__header">
+            <div class="chi-main__header-start">
+              <a class="chi-link" href="#">
+                <div class="chi-link__content">
+                  <i class="chi-icon icon-chevron-left -xs" aria-hidden="true"></i>
+                  <span class="-text--md">Back link</span>
+                </div>
+              </a>
+              <div class="chi-main__title">
+                <div class="chi-main__title-heading">Page Title</div>
+                <div class="chi-main__title-subheading">Page subtitle</div>
+              </div>
+            </div>
+            <div class="chi-main__header-end">
+              <button class="chi-button -primary">Primary</button>
+            </div>
+          </div>
+          <div class="chi-main__content">
+            <!-- Page content goes here -->
+          </div>
+          <footer class="chi-footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+  h3 Base with back link, subtitle, buttons and page-level actions
+  .example.-mb--3
+    chi-main(backlink="Back link", title="Page Title", subtitle="Page subtitle")
+      .-d--flex.-align-items--center.-justify-content--center(style="height:10rem;")
+        | Page content goes here
+      button.chi-button.-primary.-outline(slot="page-level__actions") Cancel
+      button.chi-button.-primary.-ml--1(slot="page-level__actions") Submit
+      footer.chi-footer(slot="footer")
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.colt.net/legal/code-of-business-conduct/' target='_blank') Colt Code of Business Conduct
+                  li
+                    a(href='https://www.colt.net/legal/#colt-group-of-companies' target='_blank') Colt Group of Companies
+                  li
+                    a(href='https://www.colt.net/support/' target='_blank') Help and Support
+                  li
+                    a(href='https://www.colt.net/legal/data-privacy/' target='_blank') Data Privacy Statement
+                  li
+                    a(href='https://www.colt.net/legal/terms-and-conditions/' target='_blank') Terms of Use
+                .chi-footer__copyright
+                  | © 2023 Colt Technology Services Group Limited
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-colt-page-level-actions(role="tablist")
+        li.-active
+          a(
+            href=`#webcomponent-colt-page-level-actions`
+            role="tab"
+            aria-selected="true"
+            aria-controls="webcomponent-colt-page-level-actions"
+          ) Web Component
+        li
+          a(
+            href=`#html-colt-page-level-actions`
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="html-colt-page-level-actions"
+          ) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-colt-page-level-actions
+      .chi-tab__description
+        | Add page-level actions at the bottom of the application layout by defining <code>slot="page-level__actions"</code> on each <code>chi-button</code>.
+      :code(lang="html")
+        <chi-main backlink="Back link" title="Page Title" subtitle="Page subtitle">
+          <!-- Page content goes here -->
+          <button class="chi-button -primary -outline -bg--white" slot="page-level__actions">Cancel</button>
+          <button class="chi-button -primary -ml--1" slot="page-level__actions">Submit</button>
+          <footer class="chi-footer" slot="footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </chi-main>
+
+    .chi-tabs-panel#html-colt-page-level-actions
+      :code(lang="html")
+        <div class="chi-main">
+          <div class="chi-main__header">
+            <div class="chi-main__header-start">
+              <a class="chi-link" href="#">
+                <div class="chi-link__content">
+                  <i class="chi-icon icon-chevron-left -xs" aria-hidden="true"></i>
+                  <span class="-text--md">Back link</span>
+                </div>
+              </a>
+              <div class="chi-main__title">
+                <div class="chi-main__title-heading">Page Title</div>
+                <div class="chi-main__title-subheading">Page subtitle</div>
+              </div>
+            </div>
+          </div>
+          <div class="chi-main__content">
+            <!-- Page content goes here -->
+            <div class="-d--flex -align-items--center -justify-content--end -py--3 -my--2 -bt--1">
+              <button class="chi-button -primary -outline -bg--white">Cancel</button>
+              <button class="chi-button -primary -ml--1">Submit</button>
+            </div>
+          </div>
+          <footer class="chi-footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+  h3 Home page with header background
+  .example.-mb--3
+    chi-main(title="Page Title" format="fixed-width" header-background)
+      chi-button(size='xs' slot='header-actions')
+        chi-icon(icon='settings')
+        span Customize
+      chi-button(id='example__help-button9' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
+        chi-icon(icon='circle-question-outline')
+      chi-popover(id='example__help-popover9' position='right-start' variant='text' arrow reference='#example__help-button9' slot='help-icon')
+        | Popover content.
+      .chi-css-grid.-grid-rows--176
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-highlight.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content
+              ul.chi-css-grid.-gap--05.-no-style.-m--0
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+      footer.chi-footer(slot="footer")
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.colt.net/legal/code-of-business-conduct/' target='_blank') Colt Code of Business Conduct
+                  li
+                    a(href='https://www.colt.net/legal/#colt-group-of-companies' target='_blank') Colt Group of Companies
+                  li
+                    a(href='https://www.colt.net/support/' target='_blank') Help and Support
+                  li
+                    a(href='https://www.colt.net/legal/data-privacy/' target='_blank') Data Privacy Statement
+                  li
+                    a(href='https://www.colt.net/legal/terms-and-conditions/' target='_blank') Terms of Use
+                .chi-footer__copyright
+                  | © 2023 Colt Technology Services Group Limited
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-custom-background-colt(role="tablist")
+        li.-active
+          a(
+            href=`#webcomponent-custom-background-colt`
+            role="tab"
+            aria-selected="true"
+            aria-controls="webcomponent-custom-background-colt"
+          ) Web Component
+        li
+          a(
+            href=`#html-custom-background-colt`
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="html-custom-background-colt"
+          ) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-custom-background-colt
+      :code(lang="html")
+        <chi-main title="Page Title" format="fixed-width" header-background>
+          <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
+            <chi-icon icon="circle-question-outline"></chi-icon>
+          </chi-button>
+          <chi-popover id="example__help-popover" position="right-start" variant="text" arrow reference="#example__help-button" slot="help-icon">
+            Popover content.
+          </chi-popover>
+          <chi-button size="xs" slot="header-actions">
+            <chi-icon icon="settings"></chi-icon>
+            <span>Customize</span>
+          </chi-button>
+          <div class="chi-css-grid -grid-rows--176">
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -highlight -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">
+                  <ul class="chi-css-grid -gap--05 -no-style -m--0">
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+          </div>
+          <footer class="chi-footer" slot="footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </chi-main>
+
+        <script>
+          chi.dropdown(document.getElementById('language-dropdown-button'));
+          document.querySelector("#example__help-button")
+            .addEventListener("click", function() {
+              var popoverElem = document.querySelector("#example__help-popover");
+              popoverElem.toggle();
+            });
+        </script>
+
+    .chi-tabs-panel#html-custom-background-colt
+      :code(lang="html")
+        <div class="chi-main -fixed-width -header-background">
+          <div class="chi-main__background">
+            <div class="chi-main__background-image">
+            </div>
+          </div>
+          <div class="chi-main__header">
+            <div class="chi-main__header-start">
+              <div class="chi-main__title">
+                <div class="chi-main__title-heading">
+                  Page Title
+                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
+                    <div class="chi-popover__content">
+                      <p class="chi-popover__text">Popover content.</p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <div class="chi-main__header-end">
+              <button class="chi-button -xs">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-settings"></i>
+                  <span>Customize</span>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="chi-main__content">
+            <div class="chi-css-grid -grid-rows--176">
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -highlight -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">
+                    <ul class="chi-css-grid -gap--05 -no-style -m--0">
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer class="chi-footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+        <script>
+          chi.dropdown(document.getElementById('language-dropdown-button'));
+          chi.popover(document.getElementById('example__help-button'));
+        </script>
+
+  h3 Home page with page-level alert
+  .example.-mb--3
+    chi-main(title="Page Title" format="fixed-width" header-background)
+      chi-alert(color="info" icon="circle-info" size="sm" slot="page-alert" closable)
+        | This is a page level info alert
+      chi-button(size='xs' slot='header-actions')
+        chi-icon(icon='settings')
+        span Customize
+      chi-button(id='example__help-button10' type='icon' size='sm' variant='flat' alternative-text="Help" slot="help-icon")
+        chi-icon(icon='circle-question-outline')
+      chi-popover(id='example__help-popover10' position='right-start' variant='text' arrow reference='#example__help-button10' slot='help-icon')
+        | Popover content.
+      .chi-css-grid.-grid-rows--176
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-highlight.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content
+              ul.chi-css-grid.-gap--05.-no-style.-m--0
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+                li.chi-css-col.-col-sm--6
+                  chi-link(href='#') Widget Link
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+        .chi-css-col.-col-lg--6.-col-xl--4
+          .chi-card.-widget.-h--100
+            .chi-card__header
+              .chi-card__title Widget
+              chi-link(size='md' href='#' cta) View
+            .chi-card__content Content here
+      footer.chi-footer(slot="footer")
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.colt.net/legal/code-of-business-conduct/' target='_blank') Colt Code of Business Conduct
+                  li
+                    a(href='https://www.colt.net/legal/#colt-group-of-companies' target='_blank') Colt Group of Companies
+                  li
+                    a(href='https://www.colt.net/support/' target='_blank') Help and Support
+                  li
+                    a(href='https://www.colt.net/legal/data-privacy/' target='_blank') Data Privacy Statement
+                  li
+                    a(href='https://www.colt.net/legal/terms-and-conditions/' target='_blank') Terms of Use
+                .chi-footer__copyright
+                  | © 2023 Colt Technology Services Group Limited
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-page-level-alert-colt(role="tablist")
+        li.-active
+          a(
+            href=`#webcomponent-page-level-alert-colt`
+            role="tab"
+            aria-selected="true"
+            aria-controls="webcomponent-page-level-alert-colt"
+          ) Web Component
+        li
+          a(
+            href=`#html-page-level-alert-colt`
+            role="tab"
+            aria-selected="false"
+            tabindex="-1"
+            aria-controls="html-page-level-alert-colt"
+          ) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-page-level-alert-colt
+      :code(lang="html")
+        <chi-main title="Page Title" format="fixed-width" header-background>
+          <chi-alert color="info" icon="circle-info" size="sm" slot="page-alert" closable>This is a page level info alert</chi-alert>
+          <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
+            <chi-icon icon="circle-question-outline"></chi-icon>
+          </chi-button>
+          <chi-popover id="example__help-popover" position="right-start" variant="text" arrow reference="#example__help-button" slot="help-icon">
+            Popover content.
+          </chi-popover>
+          <chi-button size="xs" slot="header-actions">
+            <chi-icon icon="settings"></chi-icon>
+            <span>Customize</span>
+          </chi-button>
+          <div class="chi-css-grid -grid-rows--176">
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -highlight -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">
+                  <ul class="chi-css-grid -gap--05 -no-style -m--0">
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                    <li class="chi-css-col -col-sm--6">
+                      <chi-link href="#">Widget Link</chi-link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+            <div class="chi-css-col -col-lg--6 -col-xl--4">
+              <div class="chi-card -widget -h--100">
+                <div class="chi-card__header">
+                  <div class="chi-card__title">Widget</div>
+                  <chi-link size="md" href="#" cta="cta">View</chi-link>
+                </div>
+                <div class="chi-card__content">Content here</div>
+              </div>
+            </div>
+          </div>
+          <footer class="chi-footer" slot="footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </chi-main>
+
+        <script>
+          chi.dropdown(document.getElementById('language-dropdown-button'));
+          document.querySelector("#example__help-button")
+            .addEventListener("click", function() {
+              var popoverElem = document.querySelector("#example__help-popover");
+              popoverElem.toggle();
+            });
+        </script>
+
+    .chi-tabs-panel#html-page-level-alert-colt
+      :code(lang="html")
+        <div class="chi-main -fixed-width -header-background">
+          <div class="chi-main__background">
+            <div class="chi-main__background-image">
+            </div>
+          </div>
+          <div class="chi-main__alert">
+            <div class="chi-alert -info -sm -close" role="alert">
+              <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
+              <div class="chi-alert__content">
+                <p class="chi-alert__text">This is a page level info alert</p>
+              </div>
+              <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-x" aria-hidden="true"></i>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="chi-main__header">
+            <div class="chi-main__header-start">
+              <div class="chi-main__title">
+                <div class="chi-main__title-heading">
+                  Page Title
+                  <div class="chi-button -icon -flat -sm" id="example__help-button" data-position="right-start" data-target="#example__help-popover" aria-label="Help" slot="help-icon">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-circle-question-outline" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                  <section class="chi-popover chi-popover--right-start" id="example__help-popover" aria-modal="true" role="dialog">
+                    <div class="chi-popover__content">
+                      <p class="chi-popover__text">Popover content.</p>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+            <div class="chi-main__header-end">
+              <button class="chi-button -xs">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-settings"></i>
+                  <span>Customize</span>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div class="chi-main__content">
+            <div class="chi-css-grid -grid-rows--176">
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -highlight -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">
+                    <ul class="chi-css-grid -gap--05 -no-style -m--0">
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                      <li class="chi-css-col -col-sm--6">
+                        <a class="chi-link" href="#">Widget Link</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4 -row--2">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+              <div class="chi-css-col -col-lg--6 -col-xl--4">
+                <div class="chi-card -widget -h--100">
+                  <div class="chi-card__header">
+                    <div class="chi-card__title">Widget</div>
+                    <a class="chi-link -md -cta" href="#">View</a>
+                  </div>
+                  <div class="chi-card__content">Content here</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <footer class="chi-footer">
+            <div class="chi-footer__content">
+              <div class="chi-footer__internal">
+                <div class="chi-footer__internal-content -mw--1200">
+                  <div class="chi-footer__links">
+                    <ul>
+                      <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                      <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                      <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                      <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                      <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                    </ul>
+                    <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+
+        <script>
+          chi.dropdown(document.getElementById('language-dropdown-button'));
+          chi.popover(document.getElementById('example__help-button'));
+        </script>
+
 
 script.
   document.addEventListener(
@@ -6472,7 +8197,10 @@ script.
         {button: '#example__help-button5',            popover: '#example__help-popover5'},
         {button: '#example__help-button6',            popover: '#example__help-popover6'},
         {button: '#example__help-button7',            popover: '#example__help-popover7'},
-        {button: '#example__help-button8',            popover: '#example__help-popover8'}
+        {button: '#example__help-button8',            popover: '#example__help-popover8'},
+        {button: '#example__help-button9',            popover: '#example__help-popover9'},
+        {button: '#example__help-button10',           popover: '#example__help-popover10'},
+        {button: '#example__help-button11',           popover: '#example__help-popover11'}
       ];
 
       Array.prototype.forEach.call(popovers, function(popover){
