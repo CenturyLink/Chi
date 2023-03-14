@@ -1,6 +1,6 @@
 <template>
   <div class="example-wrapper">
-    <h4 v-if="titleSize === 'h4' && !hideTitle" class="-anchor" :id="id">
+    <h4 v-if="titleSize === 'h4' && showTitle" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
@@ -10,7 +10,7 @@
         >
       </span>
     </h4>
-    <h2 v-else-if="titleSize === 'h2' && !hideTitle" class="-anchor" :id="id">
+    <h2 v-else-if="titleSize === 'h2' && showTitle" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
@@ -20,7 +20,7 @@
         >
       </span>
     </h2>
-    <h3 v-else-if="!hideTitle" class="-anchor" :id="id">
+    <h3 v-else-if="showTitle" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
