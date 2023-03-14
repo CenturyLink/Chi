@@ -781,11 +781,11 @@
   }
 }
 
-@mixin chevron-icon {
+@mixin dropdown-icon {
   color: inherit;
   content: '\e91e';
   display: block;
-  font-family: chi;
+  font-family: $font-family-icon;
   font-size: 0.75rem;
   font-weight: 400;
   height: 1rem;
@@ -839,13 +839,13 @@
     &.chi-tabs__trigger > a {
       &.-has-child {
         &::after {
-          @include chevron-icon;
+          @include dropdown-icon;
         }
       }
     }
 
     &.chi-tabs__show-more > a::after {
-      @include chevron-icon;
+      @include dropdown-icon;
     }
   }
 
