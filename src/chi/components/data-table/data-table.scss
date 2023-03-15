@@ -525,10 +525,10 @@ $sizes: (
   &.-portal {
     .chi-data-table__head {
       @include respond-to(md) {
-        background-color: $color-background-muted-lighter;
+        background-color: $data-table-head-background-color;
 
         .chi-data-table__row {
-          background-color: $color-background-muted-lighter;
+          background-color: $data-table-head-background-color;
 
           .chi-data-table__cell {
             border-bottom: 0.0625rem solid $color-border-base-dark;
@@ -622,7 +622,7 @@ $sizes: (
       display: none;
 
       @include respond-to(md) {
-        background-color: $color-grey-10;
+        background-color: $data-table-footer-background-color;
         display: block;
         padding: 0.5rem 1rem;
 

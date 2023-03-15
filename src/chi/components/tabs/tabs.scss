@@ -1049,7 +1049,7 @@
             &:not(.-dark) {
               &:not(.-light) {
                 &:not(.-danger) {
-                  background-color: $color-blue-20;
+                  background-color: $color-background-primary-light;
                   color: $color-text-primary;
                 }
               }

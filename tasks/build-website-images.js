@@ -28,8 +28,9 @@ function buildWebsiteImages() {
   const centurylinkImages = buildIamges('src/website/assets/themes/centurylink/images/**/*', 'dist/assets/themes/centurylink/images');
   const lumenImages = buildIamges('src/website/assets/themes/lumen/images/**/*', 'dist/assets/themes/lumen/images');
   const brightspeedImages = buildIamges('src/website/assets/themes/brightspeed/images/**/*', 'dist/assets/themes/brightspeed/images');
+  const coltImages = buildIamges('src/website/assets/themes/colt/images/**/*', 'dist/assets/themes/colt/images');
 
-  return merge(globalImages, centurylinkImages, lumenImages, brightspeedImages);
+  return merge(globalImages, centurylinkImages, lumenImages, brightspeedImages, coltImages);
 }
 
 buildWebsiteImages.description = 'Optimizes website images and puts them in ' +
