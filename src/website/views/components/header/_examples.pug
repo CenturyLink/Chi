@@ -2694,6 +2694,329 @@ p.-text
           .-px--2.-pt--2.-text
             | Drawer content here
 
+.-colt--show
+  h3 Base header
+  .example.-mb--3
+    .-p--3(style='background-color:#eee;')
+      header.chi-header.-lg
+        nav.chi-header__content
+          .chi-header__brand
+            a.chi-brand.-colt(href='/' aria-label='Colt')
+              svg(viewBox='0 0 82 32' xmlns='http://www.w3.org/2000/svg' aria-hidden='true')
+                path(fill='#00D7BD' fill-rule='evenodd' d='M60.873 31.06c-1.51-.328-2.627-1.207-3.303-2.582l-.05-.103c-.065-.13-.123-.248-.175-.368-.451-1.038-.451-2.272-.451-14.212V0h5.86v12.773c0 12.604 0 12.762.226 13.134.35.575.79.7 2.48.7h1.465v4.621l-2.671-.011c-1.803 0-2.908-.056-3.381-.158ZM26.924 20.021c.553 6.415 5.287 11.24 11.632 11.872 4.26.417 8.33-.981 11.023-3.788 2.615-2.729 4.013-6.73 3.607-10.395-.767-7.091-6.019-11.837-13.12-11.849-3.629 0-6.728 1.184-9.14 3.495-2.908 2.796-4.351 6.63-4.002 10.665Zm19.533 2.65c-.823 1.555-2.412 2.886-4.103 3.415-2.637.835-5.545.158-7.416-1.724-1.262-1.286-1.927-2.661-2.153-4.521-.405-3.258 1.195-6.415 3.934-7.768 2.953-1.454 6.21-.924 8.51 1.387 1.521 1.522 2.13 3.078 2.13 5.423.011 1.533-.214 2.468-.902 3.788ZM.246 21.532c1.195 5.604 5.557 9.651 11.17 10.361 3.99.496 7.923-.755 10.763-3.438.812-.778 1.792-1.995 2.3-2.875l.293-.507-2.435-1.387c-1.33-.766-2.446-1.375-2.457-1.353-.017.017-.11.194-.233.425l-.128.24c-.44.835-1.848 2.221-2.716 2.684-2.074 1.093-5.106 1.093-7.168 0-.98-.519-2.3-1.86-2.818-2.853-.643-1.262-.902-2.367-.902-3.89 0-2.39.688-4.17 2.176-5.647 1.499-1.488 3.144-2.097 5.41-1.984 2.67.124 4.824 1.42 5.962 3.573l.307.58.002.004.097.183c.022.023 4.734-2.627 4.891-2.75.023-.023-.101-.283-.27-.576-1.555-2.694-4.125-4.78-7.135-5.783-1.69-.564-2.784-.71-4.812-.643-2.288.068-3.483.35-5.41 1.308C3.278 9.12.798 12.582.122 16.967c-.203 1.319-.147 3.27.124 4.566Zm70.32 5.694c.63 2.153 1.995 3.518 3.854 3.867.316.056 1.995.113 3.754.124l3.178.011v-4.622h-2.006c-2.254 0-2.593-.09-2.976-.8-.191-.361-.203-.812-.203-7.227v-6.854h4.734v-4.51h-4.734V0h-5.872l.034 13.28c.034 12.289.056 13.315.237 13.946Z' clip-rule='evenodd')
+          .chi-header__start
+            .-d--flex.-d-lg--none
+              button#drawer-trigger-colt-pib1.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-colt-1', aria-label="Toggle navigation")
+                .chi-button__content
+                  i.chi-icon.-sm--2.icon-menu(aria-hidden="true")
+            .chi-dropdown.-d--none.-d-lg--flex
+              button.chi-button.-flat.chi-dropdown__trigger.-text--xl.-px--1.-animate(id="button-colt-site-menu") App Name
+              .chi-dropdown__menu.-list.-w--lg
+                a.chi-dropdown__menu-item.-h--auto.-active(href="#")
+                  span.chi-dropdown__menu-item_title App Name
+                  span.chi-dropdown__menu-item_text App description
+                a.chi-dropdown__menu-item.-h--auto(href="#")
+                  span.chi-dropdown__menu-item_title App Name 2
+                  span.chi-dropdown__menu-item_text App description
+                a.chi-dropdown__menu-item.-h--auto(href="#")
+                  span.chi-dropdown__menu-item_title App Name 3
+                  span.chi-dropdown__menu-item_text App description
+          .chi-header__end
+            div.-d--none.-d-lg--flex
+              button.chi-button.-flat.-icon(id="button-colt-notification" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom")
+                .chi-button__content
+                  i.chi-icon.icon-bell-outline.-icon--primary(aria-hidden="true")
+                  div.chi-badge.-dark.-xs 2
+              .chi-divider.-vertical
+              .chi-dropdown.-d--none.-d-lg--flex
+                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-colt-user-menu", data-position="bottom-end") Menu
+                .chi-dropdown__menu.-w--sm
+                  a.chi-dropdown__menu-item(href="#")
+                    i.chi-icon.icon-user(aria-hidden="true")
+                    span Item 1
+                  a.chi-dropdown__menu-item(href="#")
+                    i.chi-icon.icon-logout(aria-hidden="true")
+                    span Item 2
+              .chi-dropdown.-d--none.-d-lg--flex
+                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-colt-eid-menu", data-position="bottom-end") Menu
+                .chi-dropdown__menu.-w--sm
+                  a.chi-dropdown__menu-item(href="#")
+                    i.chi-icon.icon-user(aria-hidden="true")
+                    span Item 1
+                  a.chi-dropdown__menu-item(href="#")
+                    i.chi-icon.icon-logout(aria-hidden="true")
+                    span Item 2
+        nav.chi-header__navbar
+          .chi-header__start
+          .chi-header__end
+            ul.chi-header__navbar-menu
+              li
+                a(href='#' target='_blank') Explore Lumen
+              li
+                a(href='#' target='_blank') Help
+              li
+                a(href='#' target='_blank')
+                  | Contact Us
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-colt-size-lg
+        li.-disabled
+          a(href=`#webcomponent-colt-size-lg`) Web Component
+        li.-active
+          a(href=`#html-colt-size-lg`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-colt-size-lg
+    .chi-tabs-panel.-active#html-colt-size-lg
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <header class="chi-header -lg">
+          <nav class="chi-header__content">
+            <div class="chi-header__brand">
+              <a class="chi-brand -colt" href="/" aria-label="Colt">
+                <svg viewBox="0 0 82 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#00D7BD" fill-rule="evenodd" d="M60.873 31.06c-1.51-.328-2.627-1.207-3.303-2.582l-.05-.103c-.065-.13-.123-.248-.175-.368-.451-1.038-.451-2.272-.451-14.212V0h5.86v12.773c0 12.604 0 12.762.226 13.134.35.575.79.7 2.48.7h1.465v4.621l-2.671-.011c-1.803 0-2.908-.056-3.381-.158ZM26.924 20.021c.553 6.415 5.287 11.24 11.632 11.872 4.26.417 8.33-.981 11.023-3.788 2.615-2.729 4.013-6.73 3.607-10.395-.767-7.091-6.019-11.837-13.12-11.849-3.629 0-6.728 1.184-9.14 3.495-2.908 2.796-4.351 6.63-4.002 10.665Zm19.533 2.65c-.823 1.555-2.412 2.886-4.103 3.415-2.637.835-5.545.158-7.416-1.724-1.262-1.286-1.927-2.661-2.153-4.521-.405-3.258 1.195-6.415 3.934-7.768 2.953-1.454 6.21-.924 8.51 1.387 1.521 1.522 2.13 3.078 2.13 5.423.011 1.533-.214 2.468-.902 3.788ZM.246 21.532c1.195 5.604 5.557 9.651 11.17 10.361 3.99.496 7.923-.755 10.763-3.438.812-.778 1.792-1.995 2.3-2.875l.293-.507-2.435-1.387c-1.33-.766-2.446-1.375-2.457-1.353-.017.017-.11.194-.233.425l-.128.24c-.44.835-1.848 2.221-2.716 2.684-2.074 1.093-5.106 1.093-7.168 0-.98-.519-2.3-1.86-2.818-2.853-.643-1.262-.902-2.367-.902-3.89 0-2.39.688-4.17 2.176-5.647 1.499-1.488 3.144-2.097 5.41-1.984 2.67.124 4.824 1.42 5.962 3.573l.307.58.002.004.097.183c.022.023 4.734-2.627 4.891-2.75.023-.023-.101-.283-.27-.576-1.555-2.694-4.125-4.78-7.135-5.783-1.69-.564-2.784-.71-4.812-.643-2.288.068-3.483.35-5.41 1.308C3.278 9.12.798 12.582.122 16.967c-.203 1.319-.147 3.27.124 4.566Zm70.32 5.694c.63 2.153 1.995 3.518 3.854 3.867.316.056 1.995.113 3.754.124l3.178.011v-4.622h-2.006c-2.254 0-2.593-.09-2.976-.8-.191-.361-.203-.812-.203-7.227v-6.854h4.734v-4.51h-4.734V0h-5.872l.034 13.28c.034 12.289.056 13.315.237 13.946Z" clip-rule="evenodd"/></svg>
+              </a>
+            </div>
+            <div class="chi-header__start">
+              <div class="-d--flex -d-lg--none">
+                <button class="chi-button -icon -flat chi-drawer__trigger" id="drawer-trigger-pib1" data-target="#drawer-1" aria-label="Toggle navigation">
+                  <div class="chi-button__content"><i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i></div>
+                </button>
+              </div>
+              <div class="chi-dropdown -d--none -d-lg--flex">
+                <button class="chi-button -flat chi-dropdown__trigger -text--xl -px--1 -animate" id="button-portal-site-menu">App Name</button>
+                <div class="chi-dropdown__menu -list -w--lg"><a class="chi-dropdown__menu-item -h--auto -active" href="#"><span class="chi-dropdown__menu-item_title">App Name</span><span class="chi-dropdown__menu-item_text">App description</span></a><a class="chi-dropdown__menu-item -h--auto" href="#"><span class="chi-dropdown__menu-item_title">App Name 2</span><span class="chi-dropdown__menu-item_text">App description</span></a><a class="chi-dropdown__menu-item -h--auto" href="#"><span class="chi-dropdown__menu-item_title">App Name 3</span><span class="chi-dropdown__menu-item_text">App description</span></a></div>
+              </div>
+            </div>
+            <div class="chi-header__end">
+              <div class="-d--none -d-lg--flex">
+                <button class="chi-button -flat -icon" id="button-portal-notification" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom">
+                  <div class="chi-button__content"><i class="chi-icon icon-bell-outline -icon--primary" aria-hidden="true"></i>
+                    <div class="chi-badge -dark -xs">2</div>
+                  </div>
+                </button>
+                <div class="chi-divider -vertical"></div>
+                <div class="chi-dropdown -d--none -d-lg--flex">
+                  <button class="chi-button -flat chi-dropdown__trigger -px--1 -animate" id="button-portal-user-menu" data-position="bottom-end">Menu</button>
+                  <div class="chi-dropdown__menu -w--sm"><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-user" aria-hidden="true"></i><span>Item 1</span></a><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-logout" aria-hidden="true"></i><span>Item 2</span></a></div>
+                </div>
+                <div class="chi-dropdown -d--none -d-lg--flex">
+                  <button class="chi-button -flat chi-dropdown__trigger -px--1 -animate" id="button-portal-eid-menu" data-position="bottom-end">Menu</button>
+                  <div class="chi-dropdown__menu -w--sm"><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-user" aria-hidden="true"></i><span>Item 1</span></a><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-logout" aria-hidden="true"></i><span>Item 2</span></a></div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </header>
+
+        <!-- Drawer -->
+        <div class="chi-backdrop -closed">
+          <div class="chi-backdrop__wrapper">
+            <div class="chi-drawer -left -menu -position--absolute" id="drawer-1">
+              <div class="chi-drawer__header">
+                <button class="chi-button -icon -close" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x" aria-hidden="true"></i>
+                  </div>
+                </button>
+              </div>
+              <div class="chi-drawer__content">
+                <div class="-px--2 -text">Drawer content here</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>
+          chi.drawer(document.getElementById('drawer-trigger-pib1'));
+          chi.dropdown(document.getElementById('button-portal-site-menu'));
+          chi.dropdown(document.getElementById('button-portal-user-menu'));
+          chi.dropdown(document.getElementById('button-portal-eid-menu'));
+          chi.tooltip(document.getElementById('button-portal-notification'));
+        </script>
+
+  h3 Impersonation header
+  .example.-mb--3
+    .-p--3(style='background-color:#eee;')
+      header.chi-header.-lg.-impersonation
+        .chi-impersonation-bar
+          .chi-impersonation-bar__content
+            span.chi-impersonation-bar__label Signed in as:
+            strong.chi-impersonation-bar__username User
+            div.chi-impersonation-bar__divider.chi-divider.-vertical.-h--75
+            button.chi-button.-flat.-xs.-icon(id="button-colt-logout", aria-label="Sign out", data-tooltip="Sign out", data-position="bottom")
+              .chi-button__content
+                i.chi-icon.icon-logout.-icon--primary(aria-hidden="true")
+        nav.chi-header__content
+          .chi-header__brand
+            a.chi-brand.-colt(href='/' aria-label='Colt')
+              svg(viewBox='0 0 82 32' xmlns='http://www.w3.org/2000/svg' aria-hidden='true')
+                path(fill='#00D7BD' fill-rule='evenodd' d='M60.873 31.06c-1.51-.328-2.627-1.207-3.303-2.582l-.05-.103c-.065-.13-.123-.248-.175-.368-.451-1.038-.451-2.272-.451-14.212V0h5.86v12.773c0 12.604 0 12.762.226 13.134.35.575.79.7 2.48.7h1.465v4.621l-2.671-.011c-1.803 0-2.908-.056-3.381-.158ZM26.924 20.021c.553 6.415 5.287 11.24 11.632 11.872 4.26.417 8.33-.981 11.023-3.788 2.615-2.729 4.013-6.73 3.607-10.395-.767-7.091-6.019-11.837-13.12-11.849-3.629 0-6.728 1.184-9.14 3.495-2.908 2.796-4.351 6.63-4.002 10.665Zm19.533 2.65c-.823 1.555-2.412 2.886-4.103 3.415-2.637.835-5.545.158-7.416-1.724-1.262-1.286-1.927-2.661-2.153-4.521-.405-3.258 1.195-6.415 3.934-7.768 2.953-1.454 6.21-.924 8.51 1.387 1.521 1.522 2.13 3.078 2.13 5.423.011 1.533-.214 2.468-.902 3.788ZM.246 21.532c1.195 5.604 5.557 9.651 11.17 10.361 3.99.496 7.923-.755 10.763-3.438.812-.778 1.792-1.995 2.3-2.875l.293-.507-2.435-1.387c-1.33-.766-2.446-1.375-2.457-1.353-.017.017-.11.194-.233.425l-.128.24c-.44.835-1.848 2.221-2.716 2.684-2.074 1.093-5.106 1.093-7.168 0-.98-.519-2.3-1.86-2.818-2.853-.643-1.262-.902-2.367-.902-3.89 0-2.39.688-4.17 2.176-5.647 1.499-1.488 3.144-2.097 5.41-1.984 2.67.124 4.824 1.42 5.962 3.573l.307.58.002.004.097.183c.022.023 4.734-2.627 4.891-2.75.023-.023-.101-.283-.27-.576-1.555-2.694-4.125-4.78-7.135-5.783-1.69-.564-2.784-.71-4.812-.643-2.288.068-3.483.35-5.41 1.308C3.278 9.12.798 12.582.122 16.967c-.203 1.319-.147 3.27.124 4.566Zm70.32 5.694c.63 2.153 1.995 3.518 3.854 3.867.316.056 1.995.113 3.754.124l3.178.011v-4.622h-2.006c-2.254 0-2.593-.09-2.976-.8-.191-.361-.203-.812-.203-7.227v-6.854h4.734v-4.51h-4.734V0h-5.872l.034 13.28c.034 12.289.056 13.315.237 13.946Z' clip-rule='evenodd')
+          .chi-header__start
+            .-d--flex.-d-lg--none
+              button#drawer-trigger-colt-pib2.chi-button.-icon.-flat.chi-drawer__trigger(data-target='#drawer-colt-1', aria-label="Toggle navigation")
+                .chi-button__content
+                  i.chi-icon.-sm--2.icon-menu(aria-hidden="true")
+            .chi-dropdown.-d--none.-d-lg--flex
+              button.chi-button.-flat.chi-dropdown__trigger.-text--xl.-px--1.-animate(id="button-colt-site-menu2") App Name
+              .chi-dropdown__menu.-list.-w--lg
+                a.chi-dropdown__menu-item.-h--auto.-active(href="#")
+                  span.chi-dropdown__menu-item_title App Name
+                  span.chi-dropdown__menu-item_text App description
+                a.chi-dropdown__menu-item.-h--auto(href="#")
+                  span.chi-dropdown__menu-item_title App Name 2
+                  span.chi-dropdown__menu-item_text App description
+                a.chi-dropdown__menu-item.-h--auto(href="#")
+                  span.chi-dropdown__menu-item_title App Name 3
+                  span.chi-dropdown__menu-item_text App description
+          .chi-header__end
+            div.-d--none.-d-lg--flex
+              button.chi-button.-flat.-icon(id="button-colt-notification2" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom")
+                .chi-button__content
+                  i.chi-icon.icon-bell-outline.-icon--primary(aria-hidden="true")
+                  div.chi-badge.-dark.-xs 2
+              .chi-divider.-vertical
+              .chi-dropdown.-d--none.-d-lg--flex
+                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-colt-user-menu2", data-position="bottom-end") Menu
+                .chi-dropdown__menu.-w--sm
+                  a.chi-dropdown__menu-item(href="#")
+                    i.chi-icon.icon-user(aria-hidden="true")
+                    span Item 1
+                  a.chi-dropdown__menu-item(href="#")
+                    i.chi-icon.icon-logout(aria-hidden="true")
+                    span Item 2
+              .chi-dropdown.-d--none.-d-lg--flex
+                button.chi-button.-flat.chi-dropdown__trigger.-px--1.-animate(id="button-colt-eid-menu2", data-position="bottom-end") Menu
+                .chi-dropdown__menu.-w--sm
+                  a.chi-dropdown__menu-item(href="#")
+                    i.chi-icon.icon-user(aria-hidden="true")
+                    span Item 1
+                  a.chi-dropdown__menu-item(href="#")
+                    i.chi-icon.icon-logout(aria-hidden="true")
+                    span Item 2
+        nav.chi-header__navbar
+          .chi-header__start
+          .chi-header__end
+            ul.chi-header__navbar-menu
+              li
+                a(href='#' target='_blank') Explore Lumen
+              li
+                a(href='#' target='_blank') Help
+              li
+                a(href='#' target='_blank')
+                  | Contact Us
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-colt-impersonation
+        li.-disabled
+          a(href=`#webcomponent-colt-impersonation`) Web Component
+        li.-active
+          a(href=`#html-colt-impersonation`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-colt-impersonation
+    .chi-tabs-panel.-active#html-colt-impersonation
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang='html')
+        <header class="chi-header -lg -impersonation">
+          <div class="chi-impersonation-bar">
+            <div class="chi-impersonation-bar__content"><span class="chi-impersonation-bar__label">Signed in as:</span><strong class="chi-impersonation-bar__username">User</strong>
+              <div class="chi-impersonation-bar__divider chi-divider -vertical -h--75"></div>
+              <button class="chi-button -flat -xs -icon" id="button-portal-logout" aria-label="Sign out" data-tooltip="Sign out" data-position="bottom">
+                <div class="chi-button__content"><i class="chi-icon icon-logout -icon--primary" aria-hidden="true"></i></div>
+              </button>
+            </div>
+          </div>
+          <nav class="chi-header__content">
+            <div class="chi-header__brand">
+              <a class="chi-brand -colt" href="/" aria-label="Colt">
+                <svg viewBox="0 0 82 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="#00D7BD" fill-rule="evenodd" d="M60.873 31.06c-1.51-.328-2.627-1.207-3.303-2.582l-.05-.103c-.065-.13-.123-.248-.175-.368-.451-1.038-.451-2.272-.451-14.212V0h5.86v12.773c0 12.604 0 12.762.226 13.134.35.575.79.7 2.48.7h1.465v4.621l-2.671-.011c-1.803 0-2.908-.056-3.381-.158ZM26.924 20.021c.553 6.415 5.287 11.24 11.632 11.872 4.26.417 8.33-.981 11.023-3.788 2.615-2.729 4.013-6.73 3.607-10.395-.767-7.091-6.019-11.837-13.12-11.849-3.629 0-6.728 1.184-9.14 3.495-2.908 2.796-4.351 6.63-4.002 10.665Zm19.533 2.65c-.823 1.555-2.412 2.886-4.103 3.415-2.637.835-5.545.158-7.416-1.724-1.262-1.286-1.927-2.661-2.153-4.521-.405-3.258 1.195-6.415 3.934-7.768 2.953-1.454 6.21-.924 8.51 1.387 1.521 1.522 2.13 3.078 2.13 5.423.011 1.533-.214 2.468-.902 3.788ZM.246 21.532c1.195 5.604 5.557 9.651 11.17 10.361 3.99.496 7.923-.755 10.763-3.438.812-.778 1.792-1.995 2.3-2.875l.293-.507-2.435-1.387c-1.33-.766-2.446-1.375-2.457-1.353-.017.017-.11.194-.233.425l-.128.24c-.44.835-1.848 2.221-2.716 2.684-2.074 1.093-5.106 1.093-7.168 0-.98-.519-2.3-1.86-2.818-2.853-.643-1.262-.902-2.367-.902-3.89 0-2.39.688-4.17 2.176-5.647 1.499-1.488 3.144-2.097 5.41-1.984 2.67.124 4.824 1.42 5.962 3.573l.307.58.002.004.097.183c.022.023 4.734-2.627 4.891-2.75.023-.023-.101-.283-.27-.576-1.555-2.694-4.125-4.78-7.135-5.783-1.69-.564-2.784-.71-4.812-.643-2.288.068-3.483.35-5.41 1.308C3.278 9.12.798 12.582.122 16.967c-.203 1.319-.147 3.27.124 4.566Zm70.32 5.694c.63 2.153 1.995 3.518 3.854 3.867.316.056 1.995.113 3.754.124l3.178.011v-4.622h-2.006c-2.254 0-2.593-.09-2.976-.8-.191-.361-.203-.812-.203-7.227v-6.854h4.734v-4.51h-4.734V0h-5.872l.034 13.28c.034 12.289.056 13.315.237 13.946Z" clip-rule="evenodd"/></svg>
+              </a>
+            </div>
+            <div class="chi-header__start">
+              <div class="-d--flex -d-lg--none">
+                <button class="chi-button -icon -flat chi-drawer__trigger" id="drawer-trigger-pib2" data-target="#drawer-1" aria-label="Toggle navigation">
+                  <div class="chi-button__content"><i class="chi-icon -sm--2 icon-menu" aria-hidden="true"></i></div>
+                </button>
+              </div>
+              <div class="chi-dropdown -d--none -d-lg--flex">
+                <button class="chi-button -flat chi-dropdown__trigger -text--xl -px--1 -animate" id="button-portal-site-menu2">App Name</button>
+                <div class="chi-dropdown__menu -list -w--lg"><a class="chi-dropdown__menu-item -h--auto -active" href="#"><span class="chi-dropdown__menu-item_title">App Name</span><span class="chi-dropdown__menu-item_text">App description</span></a><a class="chi-dropdown__menu-item -h--auto" href="#"><span class="chi-dropdown__menu-item_title">App Name 2</span><span class="chi-dropdown__menu-item_text">App description</span></a><a class="chi-dropdown__menu-item -h--auto" href="#"><span class="chi-dropdown__menu-item_title">App Name 3</span><span class="chi-dropdown__menu-item_text">App description</span></a></div>
+              </div>
+            </div>
+            <div class="chi-header__end">
+              <div class="-d--none -d-lg--flex">
+                <button class="chi-button -flat -icon" id="button-portal-notification2" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom">
+                  <div class="chi-button__content"><i class="chi-icon icon-bell-outline -icon--primary" aria-hidden="true"></i>
+                    <div class="chi-badge -dark -xs">2</div>
+                  </div>
+                </button>
+                <div class="chi-divider -vertical"></div>
+                <div class="chi-dropdown -d--none -d-lg--flex">
+                  <button class="chi-button -flat chi-dropdown__trigger -px--1 -animate" id="button-portal-user-menu2" data-position="bottom-end">Menu</button>
+                  <div class="chi-dropdown__menu -w--sm"><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-user" aria-hidden="true"></i><span>Item 1</span></a><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-logout" aria-hidden="true"></i><span>Item 2</span></a></div>
+                </div>
+                <div class="chi-dropdown -d--none -d-lg--flex">
+                  <button class="chi-button -flat chi-dropdown__trigger -px--1 -animate" id="button-portal-eid-menu2" data-position="bottom-end">Menu</button>
+                  <div class="chi-dropdown__menu -w--sm"><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-user" aria-hidden="true"></i><span>Item 1</span></a><a class="chi-dropdown__menu-item" href="#"><i class="chi-icon icon-logout" aria-hidden="true"></i><span>Item 2</span></a></div>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <nav class="chi-header__navbar">
+            <div class="chi-header__start"></div>
+            <div class="chi-header__end">
+              <ul class="chi-header__navbar-menu">
+                <li><a href="#" target="_blank">Explore Lumen</a></li>
+                <li><a href="#" target="_blank">Help</a></li>
+                <li><a href="#" target="_blank">Contact Us</a></li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+
+        <!-- Drawer -->
+        <div class="chi-backdrop -closed">
+          <div class="chi-backdrop__wrapper">
+            <div class="chi-drawer -left -menu -position--absolute" id="drawer-1">
+              <div class="chi-drawer__header">
+                <button class="chi-button -icon -close" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x" aria-hidden="true"></i>
+                  </div>
+                </button>
+              </div>
+              <div class="chi-drawer__content">
+                <div class="-px--2 -text">Drawer content here</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- JavaScript -->
+        <script>
+          chi.drawer(document.getElementById('drawer-trigger-pib2'));
+          chi.dropdown(document.getElementById('button-portal-site-menu2'));
+          chi.dropdown(document.getElementById('button-portal-user-menu2'));
+          chi.dropdown(document.getElementById('button-portal-eid-menu2'));
+          chi.tooltip(document.getElementById('button-portal-logout'));
+          chi.tooltip(document.getElementById('button-portal-notification2'));
+        </script>
+
+  .chi-backdrop.-closed
+    .chi-backdrop__wrapper
+      div#drawer-colt-1.chi-drawer.-left.-menu.-position--absolute
+        .chi-drawer__header
+          button(class='chi-button -icon -close', aria-label='Close')
+            .chi-button__content
+              i.chi-icon.icon-x(aria-hidden="true")
+        .chi-drawer__content
+          .-px--2.-pt--2.-text
+            | Drawer content here
+
 
 script.
   document.addEventListener(
@@ -2749,6 +3072,19 @@ script.
       chi.dropdown(document.getElementById('button-brightspeed-eid-menu2'));
       chi.tooltip(document.getElementById('button-brightspeed-logout'));
       chi.tooltip(document.getElementById('button-brightspeed-notification2'));
+
+      chi.drawer(document.getElementById('drawer-trigger-colt-pib1'));
+      chi.dropdown(document.getElementById('button-colt-site-menu'));
+      chi.dropdown(document.getElementById('button-colt-user-menu'));
+      chi.dropdown(document.getElementById('button-colt-eid-menu'));
+      chi.tooltip(document.getElementById('button-colt-notification'));
+
+      chi.drawer(document.getElementById('drawer-trigger-colt-pib2'));
+      chi.dropdown(document.getElementById('button-colt-site-menu2'));
+      chi.dropdown(document.getElementById('button-colt-user-menu2'));
+      chi.dropdown(document.getElementById('button-colt-eid-menu2'));
+      chi.tooltip(document.getElementById('button-colt-logout'));
+      chi.tooltip(document.getElementById('button-colt-notification2'));
     },
     false
   );
