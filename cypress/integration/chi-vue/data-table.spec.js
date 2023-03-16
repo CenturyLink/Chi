@@ -397,9 +397,9 @@ describe('Data Table', () => {
     });
   });
 
-  describe('Empty', () => {
+  describe('No results', () => {
     it(`Should have class .${DATA_TABLE_CLASSES.EMPTY}`, () => {
-      cy.get(`[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(`[data-cy='data-table-no-results'] .${DATA_TABLE_CLASSES.BODY}`)
         .children()
         .first()
         .as('empty');
@@ -407,7 +407,7 @@ describe('Data Table', () => {
     });
 
     it(`Should show default message when it is empty`, () => {
-      cy.get(`[data-cy='data-table-empty']`).should(
+      cy.get(`[data-cy='data-table-no-results']`).should(
         'contain',
         'No matches found. Please revise search criteria and try again.'
       );
@@ -415,12 +415,41 @@ describe('Data Table', () => {
 
     it('Should have no rows', () => {
       cy.get(
-        `[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+        `[data-cy='data-table-no-results'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
       ).should('not.exist');
     });
 
     it('Should have no footer', () => {
-      cy.get(`[data-cy='data-table-empty']`)
+      cy.get(`[data-cy='data-table-no-results']`)
+        .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
+        .should('not.exist');
+    });
+  });
+
+  describe.only('No filters', () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.EMPTY}`, () => {
+      cy.get(`[data-cy='data-table-no-filters'] .${DATA_TABLE_CLASSES.BODY}`)
+        .children()
+        .first()
+        .as('empty');
+      hasClassAssertion(`@empty`, DATA_TABLE_CLASSES.EMPTY);
+    });
+
+    it(`Should show no filters message when it is empty`, () => {
+      cy.get(`[data-cy='data-table-no-filters']`).should(
+        'contain',
+        'No active filters'
+      );
+    });
+
+    it('Should have no rows', () => {
+      cy.get(
+        `[data-cy='data-table-no-filters'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+      ).should('not.exist');
+    });
+
+    it('Should have no footer', () => {
+      cy.get(`[data-cy='data-table-no-filters']`)
         .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
         .should('not.exist');
     });

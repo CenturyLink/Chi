@@ -22,10 +22,20 @@ h3 Truncation
   #truncation
     chi-vue-data-table(data-cy='data-table-truncation', :config="config", :data="table")
 
-h3 Empty
+h3 No results
 .test-data-table.-p--3.-w--100
-  #empty
-    chi-vue-data-table(data-cy='data-table-empty', :config="config", :data="table")
+  #noResults
+    chi-vue-data-table(data-cy='data-table-no-results', :config="config", :data="table")
+
+h3 No filters
+.test-data-table.-p--3.-w--100
+  #noFilters
+    div(ref="container")
+    chi-vue-data-table(data-cy='data-table-no-filters', ref="data-table-no-filters", :config="config", :data="table")
+      template(#toolbar)
+        chi-vue-data-table-toolbar
+          template(slot="start")
+            chi-vue-search-input(:portal='true', :dataTableSearch='true')
 
 h3 No Border
 .test-data-table.-p--3.-w--100
@@ -395,7 +405,45 @@ script.
         body: [],
       },
     },
-  }).$mount("#empty");
+  }).$mount("#noResults");
+
+  new Vue({
+    components: {
+      chiVueSearchInput: window["chi-vue"].library.components.ChiSearchInput,
+      chiVueDataTableToolbar: window["chi-vue"].library.components.ChiDataTableToolbar,
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+        noFiltersMessage:
+          "No active filters",
+      },
+      table: {
+        head: {
+          name: { label: "Name" },
+          id: { label: "ID" },
+          lastLogin: { label: "Last Login" },
+        },
+        body: [],
+      },
+    },
+  }).$mount("#noFilters");
 
   new Vue({
     components: {

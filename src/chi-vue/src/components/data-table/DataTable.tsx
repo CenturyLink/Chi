@@ -53,7 +53,7 @@ import { ICON_CLASSES } from '@/constants/icons';
 import { alignmentUtilityClasses } from './constants/constants';
 import { NormalizedScopedSlot } from 'vue/types/vnode';
 import Checkbox from '../checkbox/Checkbox';
-import { printElement } from '../../utils/utils';
+import { findComponent, printElement } from '../../utils/utils';
 import { ColumnResize } from './utils/Resize';
 import Tooltip from '../tooltip/tooltip';
 
@@ -1006,16 +1006,29 @@ export default class DataTable extends Vue {
     return <div class={DATA_TABLE_CLASSES.BODY}>{getTableBodyRows()}</div>;
   }
 
+  _lastToolbarUid: number | null = null;
   _addToolbarSearchEventListener() {
-    if (!this._toolbarComponent) {
-      this.emptyMessage =
-        this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_MESSAGE;
+    const tooltipComponent = this.$children.find(child => child.$options.name === 'DataTableToolbar');
+    const tooltipComponentUid = (tooltipComponent && ((tooltipComponent as unknown) as { _uid: number })._uid) || null;
+    const isNewInstance = !this._lastToolbarUid || this._lastToolbarUid !== tooltipComponentUid;
+    const noResultsMessage =
+      this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_MESSAGE;
+    const noFiltersMessage =
+      this.config.noFiltersMessage || defaultConfig.noFiltersMessage || DATA_TABLE_NO_FILTERS_MESSAGE;
+
+    if (!tooltipComponent) {
+      this.emptyMessage = noResultsMessage;
+      this._lastToolbarUid = null;
       return;
     }
 
-    (this._toolbarComponent as Vue).$on(DATA_TABLE_EVENTS.TOOLBAR.SEARCH, () => {
-      this.emptyMessage =
-        this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_MESSAGE;
+    if (isNewInstance) {
+      this.emptyMessage = noFiltersMessage;
+    }
+
+    this._lastToolbarUid = tooltipComponentUid;
+    (tooltipComponent as Vue).$on(DATA_TABLE_EVENTS.TOOLBAR.SEARCH, () => {
+      this.emptyMessage = noResultsMessage;
     });
   }
 
@@ -1314,6 +1327,11 @@ export default class DataTable extends Vue {
     this.slicedData = this.sliceData(rowsToShow);
   }
 
+  _setListeners() {
+    this._addPaginationEventListener();
+    this._addToolbarSearchEventListener();
+  }
+
   mounted() {
     const dataTableComponent = this.$refs.dataTable as HTMLElement;
 
@@ -1351,14 +1369,13 @@ export default class DataTable extends Vue {
     }
 
     this._initializeSelectAllDropdown();
-    this._addPaginationEventListener();
-    this._addToolbarSearchEventListener();
+    this._setListeners();
     window.addEventListener('resize', this.resizeHandler);
   }
 
   updated() {
     this._initializeSelectAllDropdown();
-    this._addPaginationEventListener();
+    this._setListeners();
   }
 
   resizeHandler() {
