@@ -87,6 +87,11 @@ export default class SaveView extends Vue {
     this.$emit(SAVE_VIEW_EVENTS.HIDE);
   }
 
+  handlerClickSaveLink() {
+    this.setMode(SaveViewModes.CREATE);
+    this.$emit(SAVE_VIEW_EVENTS.SAVE_LINK);
+  }
+
   disableSaveButton() {
     if (this.saveButtonDisabled !== undefined) {
       return this.saveButtonDisabled;
@@ -134,7 +139,7 @@ export default class SaveView extends Vue {
                 href="#"
                 onClick={(e: Event) => {
                   e.preventDefault();
-                  this.setMode(SaveViewModes.CREATE);
+                  this.handlerClickSaveLink();
                 }}>
                 {`Save ${this.mainLabel}`}
               </a>
