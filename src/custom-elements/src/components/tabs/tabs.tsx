@@ -98,9 +98,9 @@ export class Tabs {
   private seeMoreDropdown: HTMLChiDropdownElement;
 
   //#region Lifecycle hooks
-  componentDidLoad() {
+  async componentDidLoad() {
     if (!this.vertical) {
-      this.setAvailableSpace();
+      await this.setAvailableSpaceAsync();
       this.setLiSizes();
       this.seeMoreTriggerElementWidth =
         this.calculateSize(this.seeMoreTriggerElement, TabTriggerSizes.Width) +
@@ -361,6 +361,25 @@ export class Tabs {
 
       this.seeMoreTriggerElement = seeMoreElement;
     }
+  }
+
+  setAvailableSpaceAsync() {
+    return new Promise((resolve) => {
+      const startTime = Date.now();
+      const waitLimit = 1000; // milliseconds
+      const asyncCheck = () => setTimeout(() => {
+        const { height, width } = this.el.getBoundingClientRect();
+        // fallback for case when height or width equals 0
+        const isWaitingTooLong = (Date.now() - startTime)  > waitLimit;
+        if (height && width || isWaitingTooLong) {
+          this.setAvailableSpace();
+          resolve();
+          return;
+        }
+        asyncCheck();
+      }, 0);
+      asyncCheck();
+    });
   }
 
   setAvailableSpace() {
