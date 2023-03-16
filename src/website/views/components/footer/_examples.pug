@@ -3,7 +3,7 @@ p.-text
   | To use footers, apply the class <code>chi-footer</code> to <code>&lt;footer&gt;</code>
   | and wrap all content in <code>chi-footer__content</code>.
 
-.-centurylink--hide
+.-centurylink--hide.-colt--hide.-brightspeed--hide
   .chi-alert.-info.-mb--2
     i.chi-alert__icon.chi-icon.icon-circle-info
     .chi-alert__content
@@ -793,7 +793,6 @@ p.-text
             </div>
           </div>
         </footer>
-
 
 .-centurylink--show
   h3 External
@@ -1591,6 +1590,59 @@ p.-text
         </footer>
 
         <script>chi.dropdown(document.getElementById('language-dropdown-button'));</script>
+
+.-colt--show
+  h3 Authenticated - Simple
+  p.-text
+    | Show the authenticated simple footer for all logged in views where social media links,
+    | language selection, and international legal notice links are not needed (e.g. Developer Center).
+  .example.-mb--3
+    .-p--3
+      footer.chi-footer
+        .chi-footer__content
+          .chi-footer__internal
+            .chi-footer__internal-content.-mw--1200
+              .chi-footer__links
+                ul
+                  li
+                    a(href='https://www.colt.net/legal/code-of-business-conduct/' target='_blank') Colt Code of Business Conduct
+                  li
+                    a(href='https://www.colt.net/legal/#colt-group-of-companies' target='_blank') Colt Group of Companies
+                  li
+                    a(href='https://www.colt.net/support/' target='_blank') Help and Support
+                  li
+                    a(href='https://www.colt.net/legal/data-privacy/' target='_blank') Data Privacy Statement
+                  li
+                    a(href='https://www.colt.net/legal/terms-and-conditions/' target='_blank') Terms of Use
+                .chi-footer__copyright
+                  | © 2023 Colt Technology Services Group Limited
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-colt-internal-simple
+        li.-disabled
+          a(href=`#webcomponent-colt-internal-simple`) Web Component
+        li.-active
+          a(href=`#html-colt-internal-simple`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-colt-internal-simple
+    .chi-tabs-panel.-active#html-colt-internal-simple
+      :code(lang="html")
+        <footer class="chi-footer">
+          <div class="chi-footer__content">
+            <div class="chi-footer__internal">
+              <div class="chi-footer__internal-content -mw--1200">
+                <div class="chi-footer__links">
+                  <ul>
+                    <li><a href="https://www.colt.net/legal/code-of-business-conduct/" target="_blank">Colt Code of Business Conduct</a></li>
+                    <li><a href="https://www.colt.net/legal/#colt-group-of-companies" target="_blank">Colt Group of Companies</a></li>
+                    <li><a href="https://www.colt.net/support/" target="_blank">Help and Support</a></li>
+                    <li><a href="https://www.colt.net/legal/data-privacy/" target="_blank">Data Privacy Statement</a></li>
+                    <li><a href="https://www.colt.net/legal/terms-and-conditions/" target="_blank">Terms of Use</a></li>
+                  </ul>
+                  <div class="chi-footer__copyright">© 2023 Colt Technology Services Group Limited</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
 
 
 script.
