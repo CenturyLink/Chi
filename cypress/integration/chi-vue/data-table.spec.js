@@ -426,7 +426,7 @@ describe('Data Table', () => {
     });
   });
 
-  describe.only('No filters', () => {
+  describe('No filters', () => {
     it(`Should have class .${DATA_TABLE_CLASSES.EMPTY}`, () => {
       cy.get(`[data-cy='data-table-no-filters'] .${DATA_TABLE_CLASSES.BODY}`)
         .children()
