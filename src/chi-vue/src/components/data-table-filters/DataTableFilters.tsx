@@ -178,7 +178,7 @@ export default class DataTableFilters extends Vue {
         ${UTILITY_CLASSES.JUSTIFY.CENTER}`}>
         <div
           class={[
-            CHECKBOX_CLASSES.checkbox,
+            CHECKBOX_CLASSES.CHECKBOX,
             mobile
               ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`
               : UTILITY_CLASSES.ALIGN_SELF.CENTER,

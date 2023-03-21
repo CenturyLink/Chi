@@ -4,8 +4,7 @@
     <button class="chi-button" @click="toggleSaveView">Toggle Save View</button>
     <SaveView
       class="-mt--2"
-      :active="active"
-      results="(1-40 of 78)"
+      :config="interactiveSaveViewConfig"
       @chiViewSave="saveView"
       @chiViewDelete="deleteView"
       @chiSaveViewShown="saveViewShown"
@@ -36,18 +35,9 @@
       </chi-popover>
     </SaveView>
     <h3>Modes</h3>
-    <div class="-mt--2" v-for="(mode, key) in modes" :key="key">
-      <h4>{{ mode.mode }}</h4>
-      <SaveView
-        :active="true"
-        :mode="mode.mode.toLowerCase()"
-        results="(1-40 of 78)"
-        :default="mode.default"
-        :id="mode.id"
-        :title="mode.title"
-        @chiViewSave="saveView"
-        @chiViewDelete="deleteView"
-      ></SaveView>
+    <div class="-mt--2" v-for="(config, key) in configs" :key="key">
+      <h4>{{ setLabel(config.mode) }}</h4>
+      <SaveView :config="setSaveViewConfig(config)" @chiViewSave="saveView" @chiViewDelete="deleteView"></SaveView>
     </div>
   </div>
 </template>
@@ -55,6 +45,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import SaveView from '../components/data-table-save-view/SaveView';
+import { SaveViewConfig, SaveViewModes } from '../constants/types';
 
 @Component({
   components: {
@@ -62,11 +53,15 @@ import SaveView from '../components/data-table-save-view/SaveView';
   },
   data: () => {
     return {
-      modes: [
+      interactiveSaveViewConfig: {
+        active: false,
+        results: '(1-40 of 78)',
+      },
+      configs: [
         {
-          mode: 'Base',
+          mode: SaveViewModes.BASE,
         },
-        { id: 'example-mode-saved', mode: 'Saved', title: 'Title example saved' },
+        { id: 'example-mode-saved', mode: SaveViewModes.SAVED, title: 'Title example saved' },
       ],
     };
   },
@@ -101,6 +96,25 @@ export default class SaveViewView extends Vue {
 
   toggleSaveView() {
     this.active = !this.active;
+
+    this.$data.interactiveSaveViewConfig = {
+      ...this.$data.interactiveSaveViewConfig,
+      active: this.active,
+    };
+  }
+
+  setLabel(label: SaveViewModes): string {
+    return label[0].toUpperCase() + label.substring(1);
+  }
+
+  setSaveViewConfig(config: SaveViewConfig): SaveViewConfig {
+    return {
+      active: true,
+      results: '(1-40 of 78)',
+      id: config.id,
+      mode: config.mode,
+      title: config.title,
+    };
   }
 }
 </script>

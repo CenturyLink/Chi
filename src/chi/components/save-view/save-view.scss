@@ -26,12 +26,18 @@
     padding: 0.5rem 0.875rem 0.5rem 1.5rem;
 
     .chi-save-view__results {
+      flex: 1 0 auto;
       font-size: $save-view-results-font-size;
       margin-left: 0.5rem;
 
       .chi-save-view__label {
         font-weight: $save-view-label-font-weight;
       }
+    }
+
+    .chi-save-view__no_actions {
+      align-items: center;
+      display: flex;
     }
   }
 
@@ -41,6 +47,10 @@
 
     .chi-save-view__results {
       margin-right: 1rem;
+    }
+
+    .chi-checkbox {
+      flex: 1 0 auto;
     }
 
     .chi-save-view__end {
