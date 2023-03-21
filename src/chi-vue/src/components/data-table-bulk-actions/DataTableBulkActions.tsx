@@ -84,7 +84,7 @@ export default class DataTableBulkActions extends Vue {
                   Actions ({this.selectedRows} Items Selected)
                 </div>
                 <div class={`${FORM_CLASSES.FORM_ITEM}`}>
-                  <div class={`${CHECKBOX_CLASSES.checkbox}`}>
+                  <div class={`${CHECKBOX_CLASSES.CHECKBOX}`}>
                     <input
                       id={`checkbox-ba-${this.uuid}-${this.selectedRows}`}
                       class={`${CHECKBOX_CLASSES.INPUT}`}

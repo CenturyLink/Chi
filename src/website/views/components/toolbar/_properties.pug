@@ -113,7 +113,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
 h4 Save View
 section.chi-table.chi-table__options.-bordered.-my--3
   div(style='overflow-x:auto;')
-    table.-text(cellpadding='0' cellspacing='0')
+    table.-types.-text(cellpadding='0' cellspacing='0')
       thead
         tr
           th
@@ -121,82 +121,40 @@ section.chi-table.chi-table__options.-bordered.-my--3
           th
             div Description
           th
-            div Type
+            div Interface
           th
             div Default
       tbody
         tr
           td
             div
-              code active
+              code config
           td
-            div To specify if SaveView is active.
-          td
-            div
-              code boolean
-          td
-            div
-              | false
-        tr
-          td
-            div
-              code results
-          td
-            div To be displayed after "Search Results".
-          td
-            div
-              code string
-          td
-            div
-              | undefined
-        tr
-          td
-            div
-              code default
-          td
-            div To specify if default checkbox should be checked.
-          td
-            div
-              code boolean
-          td
-            div
-              | false
-        tr
-          td
-            div
-              code id
-          td
-            div SaveView id.
-          td
-            div
-              code string
+            div To customize Save View behavior
+          td.-p--0
+             pre.-mb--0.
+              {
+                active: <code>boolean</code>;
+                results: <code>string</code>;
+                default?: <code>boolean</code>;
+                id?: <code>string</code>;
+                mode?: <code>'base' | 'create' | 'edit' | 'saved' | 'delete</code>;
+                title?: <code>string</code>;
+                saveButtonDisabled?: <code>boolean</code>;
+                readonly?: <code>boolean</code>;
+                label?: {
+                  delete?: <code>string</code>;
+                  main?: <code>string</code>;
+                  results?: <code>string</code>;
+                };
+                input?: {
+                  label?: <code>string</code>;
+                  placeholder?: <code>string</code>;
+                };
+              }
           td
             div
               | undefined
-        tr
-          td
-            div
-              code mode
-          td
-            div Mode for displaying SaveView.
-          td
-            div
-              code SaveViewModes
-          td
-            div
-              | SaveViewModes.BASE
-        tr
-          td
-            div
-              code title
-          td
-            div View title.
-          td
-            div
-              code string
-          td
-            div
-              | ''
 
 h3 Interfaces and types
 section.chi-table.chi-table__options.-bordered.-my--3
@@ -262,7 +220,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
 h3 Events
 section.chi-table.chi-table__options.-bordered.-my--3
   div(style='overflow-x:auto;')
-    table.-text(cellpadding='0' cellspacing='0')
+    table.-types.-text(cellpadding='0' cellspacing='0')
       thead
         tr
           th
@@ -313,14 +271,29 @@ section.chi-table.chi-table__options.-bordered.-my--3
             div
               code chiViewSave
           td
-            div Fired on save or delete button click
+            div The user has created or edited a view
+          td.-p--0
+            pre.-mb--0.
+              {
+                id: <code>string</code>;
+                title: <code>string</code>;
+                default: <code>boolean</code>;
+              }
+        tr
           td
+            div
+              code chiViewDelete
+          td
+            div The user has deleted a view
+          td
+            div
+              code string
         tr
           td
             div
               code chiSaveViewShown
           td
-            div Fired when the enter transition has finished
+            div The user shows the save view ribbon
           td
             div
               code undefined
@@ -329,7 +302,7 @@ section.chi-table.chi-table__options.-bordered.-my--3
             div
               code chiSaveViewHide
           td
-            div Fired on close button click
+            div The user closes the save view ribbon
           td
             div
               code undefined
@@ -338,7 +311,16 @@ section.chi-table.chi-table__options.-bordered.-my--3
             div
               code chiSaveViewHidden
           td
-            div Fired when the leave transition has finished and the element(SaveView) has been removed from the DOM
+            div The save view ribbon has been removed from the DOM
+          td
+            div
+              code undefined
+        tr
+          td
+            div
+              code chiSaveLink
+          td
+            div The user has clicked the Save link
           td
             div
               code undefined
