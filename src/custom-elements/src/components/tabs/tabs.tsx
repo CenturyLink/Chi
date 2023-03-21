@@ -7,7 +7,8 @@ import {
   Prop,
   State,
   h,
-  Listen
+  Listen,
+  Watch
 } from '@stencil/core';
 import {
   ACTIVE_CLASS,
@@ -30,8 +31,6 @@ import {
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { uuid4 } from '../../utils/utils';
 import _ from 'lodash';
-
-const MARGIN_LEFT = 24;
 
 @Component({
   tag: 'chi-tabs',
@@ -65,6 +64,10 @@ export class Tabs {
    */
   @Prop() vertical = false;
   /**
+   *  to set button size { xs, sm, md, lg, xl }.
+   */
+  @Prop({ reflect: true }) size: string;
+  /**
    *  To configure See more Dropdown trigger message
    */
   @Prop() seeMoreMessage = TABS_SEE_MORE_DEFAULT_MESSAGE;
@@ -78,6 +81,13 @@ export class Tabs {
    * Triggered when the user activates a tab
    */
   @Event({ eventName: 'chiTabChange' }) chiTabChange: EventEmitter<TabTrigger>;
+
+  @Watch('size')
+  sizeValidation(newValue: string) {
+    if (newValue && !['', 'xs', 'sm', 'md', 'lg', 'xl'].includes(newValue)) {
+      throw new Error(`${newValue} is not a valid size for tabs. Valid values are xs, sm, md, lg, xl, ''. `);
+    }
+  }
 
   private activeTabElement: HTMLElement = null;
   private animation: ThreeStepsAnimation;
@@ -96,6 +106,11 @@ export class Tabs {
   private dropdowns = [];
   private dropdownKeys = {};
   private seeMoreDropdown: HTMLChiDropdownElement;
+  private marginLeftValue: number = this.size === 'lg' ? 32 : 24;
+
+  componentWillLoad(): void {
+    this.sizeValidation(this.size);
+  }
 
   //#region Lifecycle hooks
   componentDidLoad() {
@@ -104,7 +119,7 @@ export class Tabs {
       this.setLiSizes();
       this.seeMoreTriggerElementWidth =
         this.calculateSize(this.seeMoreTriggerElement, TabTriggerSizes.Width) +
-        (this.solid ? 0 : MARGIN_LEFT);
+        (this.solid ? 0 : this.marginLeftValue);
       this.isSeeMoreTriggerMeasured = true;
       this.activeTabElement = this.getActiveTabTrigger();
       this.setSlidingBorderStyles();
@@ -376,7 +391,7 @@ export class Tabs {
     await liElements.forEach((li: HTMLElement, index) => {
       this.liSizes[li.dataset.index] =
         this.calculateSize(li, TabTriggerSizes.Width) +
-        (index === 0 || this.solid ? 0 : MARGIN_LEFT);
+        (index === 0 || this.solid ? 0 : this.marginLeftValue);
     });
     this.setListOverflow();
   }
@@ -541,6 +556,7 @@ export class Tabs {
             ${this.vertical && TABS_CLASSES.VERTICAL}
             ${this.solid && TABS_CLASSES.SOLID}
             ${this.sliding && TABS_CLASSES.SLIDING}
+            ${this.size ? `-${this.size}` : ''}
           `}
           ref={el => {
             this.ulElement = el;
