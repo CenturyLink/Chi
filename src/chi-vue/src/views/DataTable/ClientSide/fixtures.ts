@@ -1,4 +1,4 @@
-import { DataTableConfig } from '@/constants/types';
+import { DataTableConfig, SaveViewConfig, SaveViewModes } from '@/constants/types';
 
 export const exampleConfig: DataTableConfig = {
   columnResize: true,
@@ -39,6 +39,14 @@ export const exampleConfig: DataTableConfig = {
   },
   showExpandAll: true,
   showSelectAllDropdown: true,
+};
+
+export const exampleSaveViewConfig: SaveViewConfig = {
+  active: true,
+  results: '(1-40 of 78)',
+  default: true,
+  mode: SaveViewModes.CREATE,
+  title: 'Title goes here',
 };
 
 const exampleColumns = [
