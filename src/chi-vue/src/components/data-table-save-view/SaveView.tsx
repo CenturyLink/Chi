@@ -10,33 +10,33 @@ import {
   SAVE_VIEW_CLASSES,
 } from '@/constants/classes';
 import { SAVE_VIEW_EVENTS } from '@/constants/events';
-import { SaveViewModes } from '@/constants/types';
+import { SaveViewConfig, SaveViewModes } from '@/constants/types';
 import Tooltip from '../tooltip/tooltip';
 import { uuid4 } from '@/utils/utils';
 import './save-view.scss';
+import { defaultConfig } from './default-config';
 
 @Component
 export default class SaveView extends Vue {
-  @Prop() active!: boolean;
-  @Prop() results!: string;
-  @Prop() default?: boolean;
-  @Prop() id?: string;
-  @Prop() isPopoverActive?: boolean;
-  @Prop() mode?: SaveViewModes;
-  @Prop() title?: string;
+  @Prop() config!: SaveViewConfig;
 
-  isRibbonShown = !!this.$props.active;
-  isSaveViewVisible = !!this.$props.active;
-  isInfoPopoverActive = !!this.$props.isInfoPopoverActive;
-  isDefaultChecked = !!this.$props.default;
-  viewMode: SaveViewModes = this.$props.mode || SaveViewModes.BASE;
-  viewTitle = this.$props.title || '';
-  uuid: string | null = this.$props.id || null;
+  isRibbonShown = !!this.$props.config.active;
+  isSaveViewVisible = !!this.$props.config.active;
+  isDefaultChecked = !!this.$props.config.default;
+  isReadOnly = !!this.$props.config.readonly;
+  viewMode: SaveViewModes = this.$props.config.mode || defaultConfig.mode;
+  viewTitle = this.$props.config.title || defaultConfig.title;
+  uuid: string | null = this.$props.config.id || null;
+  deleteLabel = this.$props.config.label?.delete || defaultConfig.label?.delete;
+  mainLabel = this.$props.config.label?.main || defaultConfig.label?.main;
+  inputLabel = this.$props.config.input?.label || defaultConfig.input?.label;
+  resultsLabel = this.$props.config.label?.results || defaultConfig.label?.results;
+  saveButtonDisabled = !!this.$props.config.saveButtonDisabled || defaultConfig.saveButtonDisabled;
 
-  @Watch('active')
-  updateVisibility(newValue: boolean, oldValue: boolean) {
-    if (newValue !== oldValue) {
-      this.isSaveViewVisible = newValue;
+  @Watch('config')
+  dataConfigChange(newValue: SaveViewConfig, oldValue: SaveViewConfig) {
+    if (newValue.active !== oldValue.active) {
+      this.isSaveViewVisible = newValue.active;
     }
   }
 
@@ -87,12 +87,31 @@ export default class SaveView extends Vue {
     this.$emit(SAVE_VIEW_EVENTS.HIDE);
   }
 
+  handlerClickSaveLink() {
+    this.setMode(SaveViewModes.CREATE);
+    this.$emit(SAVE_VIEW_EVENTS.SAVE_LINK);
+  }
+
+  disableSaveButton() {
+    if (this.saveButtonDisabled !== undefined) {
+      return this.saveButtonDisabled;
+    }
+
+    return (
+      this.viewTitle.length === 0 ||
+      (this.viewTitle === this.$props.config.title && this.isDefaultChecked === !!this.$props.default)
+    );
+  }
+
   render() {
     const infoIcon = this.$scopedSlots['info-icon'] && this.$scopedSlots['info-icon']({});
     const infoPopover = this.$scopedSlots['info-popover'] && this.$scopedSlots['info-popover']({});
+    const customActions = this.$scopedSlots['custom-actions'] && this.$scopedSlots['custom-actions']({});
     const arrowDown = <i class={`${ICON_CLASS} icon-arrow-down ${GENERIC_SIZE_CLASSES.XS}`} aria-hidden="true" />;
     const ribbonLabel = (
-      <span class={SAVE_VIEW_CLASSES.LABEL}>{this.viewMode === SaveViewModes.CREATE ? 'New' : 'Edit'} View</span>
+      <span class={SAVE_VIEW_CLASSES.LABEL}>
+        {this.viewMode === SaveViewModes.CREATE ? 'New' : 'Edit'} {this.mainLabel}
+      </span>
     );
     const closeButton = (
       <button
@@ -109,19 +128,23 @@ export default class SaveView extends Vue {
         <div class={SAVE_VIEW_CLASSES.START}>
           {arrowDown}
           <div class={SAVE_VIEW_CLASSES.RESULTS}>
-            <span class={SAVE_VIEW_CLASSES.LABEL}>Search Results </span>
-            <span>{this.$props.results}</span>
+            <span class={SAVE_VIEW_CLASSES.LABEL}>{this.resultsLabel} </span>
+            <span>{this.$props.config.results}</span>
           </div>
-          <div class={`${DIVIDER_CLASSES.DIVIDER} ${DIVIDER_CLASSES.VERTICAL}`}></div>
-          <a
-            class={`${LINK_CLASSES.LINK} ${GENERIC_SIZE_CLASSES.MD}`}
-            href="#"
-            onClick={(e: Event) => {
-              e.preventDefault();
-              this.setMode(SaveViewModes.CREATE);
-            }}>
-            Save View
-          </a>
+          {!this.isReadOnly && (
+            <template class={SAVE_VIEW_CLASSES.NO_ACTIONS}>
+              <div class={`${DIVIDER_CLASSES.DIVIDER} ${DIVIDER_CLASSES.VERTICAL}`}></div>
+              <a
+                class={`${LINK_CLASSES.LINK} ${GENERIC_SIZE_CLASSES.MD}`}
+                href="#"
+                onClick={(e: Event) => {
+                  e.preventDefault();
+                  this.handlerClickSaveLink();
+                }}>
+                {`Save ${this.mainLabel}`}
+              </a>
+            </template>
+          )}
         </div>
         <div class={SAVE_VIEW_CLASSES.END}>{closeButton}</div>
       </div>
@@ -138,11 +161,17 @@ export default class SaveView extends Vue {
           </div>
           {arrowDown}
           <div class={SAVE_VIEW_CLASSES.RESULTS}>
-            <span class={SAVE_VIEW_CLASSES.LABEL}>View</span>
+            <span class={SAVE_VIEW_CLASSES.LABEL}>{this.inputLabel}</span>
           </div>
-          <input v-model={this.viewTitle} class={INPUT_CLASSES.INPUT} type="text" aria-label="Save view" />
+          <input
+            v-model={this.viewTitle}
+            class={INPUT_CLASSES.INPUT}
+            placeholder={this.config.input?.placeholder}
+            type="text"
+            aria-label="Save view"
+          />
           <div class={`${DIVIDER_CLASSES.DIVIDER} ${DIVIDER_CLASSES.VERTICAL}`}></div>
-          <div class={CHECKBOX_CLASSES.checkbox}>
+          <div class={CHECKBOX_CLASSES.CHECKBOX}>
             <input
               v-model={this.isDefaultChecked}
               class={CHECKBOX_CLASSES.INPUT}
@@ -153,6 +182,7 @@ export default class SaveView extends Vue {
               Default
             </label>
           </div>
+          {customActions}
           {infoPopover}
         </div>
         <div class={SAVE_VIEW_CLASSES.END}>
@@ -166,10 +196,7 @@ export default class SaveView extends Vue {
             class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.PRIMARY} ${GENERIC_SIZE_CLASSES.XS}`}
             aria-label="Button save"
             onClick={() => this.handlerClickSave()}
-            disabled={
-              this.viewTitle.length === 0 ||
-              (this.viewTitle === this.$props.title && this.isDefaultChecked === !!this.$props.default)
-            }>
+            disabled={this.disableSaveButton()}>
             Save
           </button>
         </div>
@@ -206,9 +233,13 @@ export default class SaveView extends Vue {
           <div class={SAVE_VIEW_CLASSES.RESULTS}>
             <span class={SAVE_VIEW_CLASSES.LABEL}>{this.viewTitle}</span>
           </div>
-          <div class={`${DIVIDER_CLASSES.DIVIDER} ${DIVIDER_CLASSES.VERTICAL}`}></div>
-          {this.isRibbonShown ? editTooltip : editIconButton}
-          {this.isRibbonShown ? deleteTooltip : deleteIconButton}
+          {!this.isReadOnly && (
+            <template class={SAVE_VIEW_CLASSES.NO_ACTIONS}>
+              <div class={`${DIVIDER_CLASSES.DIVIDER} ${DIVIDER_CLASSES.VERTICAL}`}></div>
+              {this.isRibbonShown ? editTooltip : editIconButton}
+              {this.isRibbonShown ? deleteTooltip : deleteIconButton}
+            </template>
+          )}
         </div>
         <div class={SAVE_VIEW_CLASSES.END}>{closeButton}</div>
       </div>
@@ -226,7 +257,7 @@ export default class SaveView extends Vue {
           <div class={SAVE_VIEW_CLASSES.DELETE}>
             <div class={`${DIVIDER_CLASSES.DIVIDER} ${DIVIDER_CLASSES.VERTICAL}`}></div>
             <div class={SAVE_VIEW_CLASSES.RESULTS}>
-              <span class={SAVE_VIEW_CLASSES.LABEL}>Are you sure you want to delete this Saved View?</span>
+              <span class={SAVE_VIEW_CLASSES.LABEL}>{`Are you sure you want to delete this ${this.deleteLabel}?`}</span>
             </div>
             <button
               class={`${BUTTON_CLASSES.BUTTON} ${GENERIC_SIZE_CLASSES.XS}`}
