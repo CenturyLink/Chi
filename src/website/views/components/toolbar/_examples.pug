@@ -770,7 +770,7 @@ h3 Save View interaction
   .-p--3
     #save-view.-w--100
       button.chi-button(@click="toggleSaveView") Toggle Save View
-      chi-save-view.-mt--2(:active="active" results='(1-40 of 78)', @chiSave="saveView", @chiDelete="deleteView")
+      chi-save-view.-mt--2(:config="config", @chiSave="saveView", @chiDelete="deleteView")
         button#chi-save-view__info-trigger.chi-button.-light.-icon.-flat.-xs(aria-label='Edit', @click="() => toggleInfoPopover()" slot='info-icon')
           .chi-button__content
             i.chi-icon.icon-circle-info-outline(aria-hidden='true')
@@ -805,7 +805,7 @@ h3 Save View interaction
     :code(lang='html')
       <div class="-w--100" id="save-view">
         <button class="chi-button" @click="toggleSaveView">Toggle Save View</button>
-        <ChiSaveView class="-mt--2" :active="active" results="(1-40 of 78)" @chiSave="saveView" @chiDelete="deleteView">
+        <ChiSaveView class="-mt--2" :config="config" @chiSave="saveView" @chiDelete="deleteView">
           <button class="chi-button -light -icon -flat -xs" id="chi-save-view__info-trigger" aria-label="Edit" @click="() => toggleInfoPopover()" slot="info-icon">
             <div class="chi-button__content">
               <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
@@ -817,30 +817,39 @@ h3 Save View interaction
 
       <!-- Example Data -->
       new Vue({
-          data: () => {
-            return {
+        data: () => {
+          return {
+            config: {
               active: false,
-              isInfoPopoverActive: false,
-            }
+              results: '(1-40 of 78)',
+            },
+            isInfoPopoverActive: false,
+          }
+        },
+        components: {
+          ChiSaveView: window["chi-vue"].library.components.ChiSaveView,
+        },
+        methods: {
+          deleteView(e) {
+            console.log(e);
           },
-          components: {
-            ChiSaveView: window["chi-vue"].library.components.ChiSaveView,
+          saveView(e) {
+            console.log(e);
           },
-          methods: {
-            deleteView(e) {
-              console.log(e);
-            },
-            saveView(e) {
-              console.log(e);
-            },
-            toggleInfoPopover() {
-              this.isInfoPopoverActive = !this.isInfoPopoverActive;
-            },
-            toggleSaveView() {
-              this.active = !this.active;
-            },
+          toggleInfoPopover() {
+            this.isInfoPopoverActive = !this.isInfoPopoverActive;
           },
-        }).$mount("#save-view");
+          toggleSaveView() {
+            const activeSaveViews = !this.$data.config.active
+
+            this.$data.config = {
+              ...this.$data.config,
+              active: activeSaveViews
+            };
+          },
+        },
+      }).$mount("#save-view");
+      
   .chi-tabs-panel#html-save-view-interaction
 
 h3 Base with Save View and Bulk Actions
@@ -1303,7 +1312,10 @@ script.
   new Vue({
     data: () => {
       return {
-        active: false,
+        config: {
+          active: false,
+          results: '(1-40 of 78)',
+        },
         isInfoPopoverActive: false,
       }
     },
@@ -1321,7 +1333,12 @@ script.
         this.isInfoPopoverActive = !this.isInfoPopoverActive;
       },
       toggleSaveView() {
-        this.active = !this.active;
+        const activeSaveViews = !this.$data.config.active
+
+        this.$data.config = {
+          ...this.$data.config,
+          active: activeSaveViews
+        };
       },
     },
   }).$mount("#save-view");
