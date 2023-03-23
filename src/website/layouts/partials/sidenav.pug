@@ -40,7 +40,7 @@ ul.chi-tabs.-vertical.-lg.-animated
                 else if section.accessibilityAccordion
                   li
                     .chi-accordion.accessibility-accordion
-                      .chi-accordion__item.-bg--none.-expanded
+                      .chi-accordion__item.-bg--none
                         button.chi-accordion__trigger
                           .chi-accordion__title #{section.title}
                           i.chi-icon.icon-chevron-down.-xs(aria-hidden="true")
@@ -147,3 +147,17 @@ ul.chi-tabs.-vertical.-lg.-animated
     else
       li
         a(href=`#`, disabled="disabled") #{key}
+
+script.
+  (function() {
+    var accordions = document.querySelectorAll('.chi-accordion');
+
+    accordions.forEach((accordion) => {
+      var accordionItem = accordion.querySelector('.chi-accordion__item');
+      var hasActiveChild = !!accordion.querySelector('.-active');
+
+      if (hasActiveChild) {
+        accordionItem.classList.add('-expanded');
+      }
+    });
+  })();
