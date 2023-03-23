@@ -37,17 +37,17 @@ h3 Accordion
           },
           pagination: {
             activePage: 1,
-            compact: false,
-            firstLast: false,
-            pageJumper: true,
+            compact: true,
+            firstLast: true,
+            pageJumper: false,
           },
           showExpandAll: true,
           resultsPerPage: 3,
         },
         table: {
           head: {
-            name: { label: 'Name' },
-            id: { label: 'ID' },
+            name: { label: 'Name', key: true, bold: true },
+            id: { label: 'ID', key: true },
             lastLogin: { label: 'Last Login' },
           },
           body: [
@@ -121,6 +121,7 @@ h3 Accordion
           ]
         }
       }
+
   .chi-tabs-panel#html-portal-accordion
     :code(lang="html")
       <div class="chi-card -portal -bg--white -bg-md--grey-15">
@@ -150,7 +151,7 @@ h3 Accordion
               </div>
             </div>
             <div class="chi-data-table__body">
-              <div class="chi-data-table__row -collapsed -xl">
+              <div class="chi-data-table__row -expanded -md">
                 <div class="chi-data-table__cell -expandable">
                   <button class="chi-button -icon -flat -sm" aria-label="Expand row">
                     <div class="chi-button__content">
@@ -168,7 +169,7 @@ h3 Accordion
                   <div>18 Dec 2020 3:26 p.m.</div>
                 </div>
               </div>
-              <div class="chi-data-table__row -expanded -striped -xl">
+              <div class="chi-data-table__row -collapsed -striped -md">
                 <div class="chi-data-table__cell -expandable">
                   <button class="chi-button -icon -flat -sm" aria-label="Expand row">
                     <div class="chi-button__content">
@@ -186,7 +187,7 @@ h3 Accordion
                   <div>18 Dec 2020 2:38 a.m.</div>
                 </div>
               </div>
-              <div class="chi-data-table__row-child -xl">
+              <div class="chi-data-table__row-child -md">
                 <div class="chi-data-table__cell -expandable"></div>
                 <div class="chi-data-table__cell -key -bold">
                   <div>Child Name 1</div>
@@ -198,7 +199,7 @@ h3 Accordion
                   <div>18 Dec 2020 2:38 a.m.</div>
                 </div>
               </div>
-              <div class="chi-data-table__row -collapsed -xl">
+              <div class="chi-data-table__row -collapsed -md">
                 <div class="chi-data-table__cell -expandable">
                   <button class="chi-button -icon -flat -sm" aria-label="Expand row">
                     <div class="chi-button__content">
@@ -227,12 +228,12 @@ h3 Accordion
                   </div>
                   <div class="chi-pagination__center">
                     <div class="chi-pagination__button-group chi-button-group">
-                      <button class="chi-button -icon -flat -primary -sm" aria-label="First page">
+                      <button class="chi-button -icon -flat -primary -xs" aria-label="First page">
                         <div class="chi-button__content">
                           <i class="chi-icon icon-page-first" aria-hidden="true"></i>
                         </div>
                       </button>
-                      <button class="chi-button -icon -flat -primary -sm" aria-label="Previous page">
+                      <button class="chi-button -icon -flat -primary -xs" aria-label="Previous page">
                         <div class="chi-button__content">
                           <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                         </div>
@@ -244,12 +245,12 @@ h3 Accordion
                       <strong>3</strong>
                     </div>
                     <div class="chi-pagination__button-group chi-button-group">
-                      <button class="chi-button -icon -flat -primary -sm" aria-label="Next page">
+                      <button class="chi-button -icon -flat -primary -xs" aria-label="Next page">
                         <div class="chi-button__content">
                           <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                         </div>
                       </button>
-                      <button class="chi-button -icon -flat -primary -sm" aria-label="Last page">
+                      <button class="chi-button -icon -flat -primary -xs" aria-label="Last page">
                         <div class="chi-button__content">
                           <i class="chi-icon icon-page-last" aria-hidden="true"></i>
                         </div>
@@ -262,7 +263,6 @@ h3 Accordion
             </div>
           </div>
         </div>
-      </div>
 
 script.
   new Vue({
@@ -282,9 +282,9 @@ script.
         },
         pagination: {
           activePage: 1,
-          compact: false,
+          compact: true,
           firstLast: true,
-          pageJumper: true,
+          pageJumper: false,
         },
         showExpandAll: true,
         resultsPerPage: 3,
@@ -367,6 +367,7 @@ script.
       }
     }
   }).$mount('#portal-accordion');
+
   document.addEventListener(
     'DOMContentLoaded',
     function() {
