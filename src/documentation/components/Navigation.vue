@@ -206,6 +206,7 @@ export default class Navigation extends Vue {
 </script>
 
 <style>
+.-theme-lumen 
 nav.docs-sidenav
   > nav
   > ul.chi-tabs.-vertical

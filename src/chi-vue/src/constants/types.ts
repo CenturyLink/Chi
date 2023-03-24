@@ -187,6 +187,26 @@ export type PaginationSizes = typeof PAGINATION_SIZES[number];
 //#endregion
 
 //#region Save View
+export interface SaveViewConfig {
+  active: boolean;
+  results: string;
+  default?: boolean;
+  id?: string;
+  mode?: SaveViewModes;
+  title?: string;
+  saveButtonDisabled?: boolean;
+  readonly?: boolean;
+  label?: {
+    delete?: string;
+    main?: string;
+    results?: string;
+  };
+  input?: {
+    label?: string;
+    placeholder?: string;
+  };
+}
+
 export enum SaveViewModes {
   BASE = 'base',
   CREATE = 'create',

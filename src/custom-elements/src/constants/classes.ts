@@ -301,6 +301,7 @@ export const TABS_CLASSES = {
   SLIDING_BORDER: 'chi-sliding-border',
   SOLID: '-solid',
   TRIGGER: 'chi-tabs__trigger',
+  SHOW_MORE: 'chi-tabs__show-more',
   VERTICAL: '-vertical'
 };
 //#endregion
