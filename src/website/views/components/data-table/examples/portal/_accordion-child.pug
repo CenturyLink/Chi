@@ -265,82 +265,213 @@ h3 Accordion Child
               </div>
             </div>
             <div class="chi-data-table__body">
-              <div class="chi-data-table__row -expanded -md">
-                <div class="chi-data-table__cell -expandable">
-                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
+              <div id="row-dt-1-name-1" data-rownumber="0" data-rowlevel="0" role="row" class="chi-data-table__row -md -expanded">
+                <div role="cell" class="chi-data-table__cell -expandable">
+                  <button aria-label="Expand row" data-target="#row-dt-1-name-1-content" class="chi-button -icon -flat -expand -xs">
                     <div class="chi-button__content">
-                      <i class="chi-icon icon-plus" aria-hidden="true"></i>
+                      <i class="chi-icon icon-minus"></i>
                     </div>
+                    <span class="-sr--only">Expand Row</span>
                   </button>
                 </div>
-                <div class="chi-data-table__cell -key -bold">
-                  <div>Name 1</div>
+                <div aria-label="Name" data-label="Name" role="cell" class="chi-data-table__cell -key -bold">
+                  <div class="-w--100">
+                    <div class="-text--truncate">Name 1</div>
+                  </div>
                 </div>
-                <div class="chi-data-table__cell -key">
-                  <div>name-1</div>
+                <div aria-label="ID" data-label="ID" role="cell" class="chi-data-table__cell -key">
+                  <div class="-w--100">
+                    <div class="-text--truncate">name-1</div>
+                  </div>
                 </div>
-                <div class="chi-data-table__cell">
-                  <div>18 Dec 2020 3:26 p.m.</div>
+                <div aria-label="Last Login" data-label="Last Login" role="cell" class="chi-data-table__cell">
+                  <div class="-w--100">
+                    <div class="-text--truncate">18 Dec 2020 3:26 p.m.</div>
+                  </div>
                 </div>
               </div>
-              <div class="chi-data-table__row -collapsed -striped -md">
-                <div class="chi-data-table__cell -expandable">
-                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-minus" aria-hidden="true"></i>
+              <div id="row-dt-1-name-1-content">
+                <div id="row-dt-1-name-1-0" data-rownumber="2-1" data-rowlevel="1" role="row" class="chi-data-table__row-child -md -collapsed">
+                  <div class="chi-data-table__cell -expandable"></div>
+                  <div aria-label="Name" data-label="Name" role="cell" class="chi-data-table__cell -key -bold">
+                    <button aria-label="Expand row" data-target="#row-dt-1-name-1-0-content" class="chi-button -icon -flat -expand -xs">
+                      <div class="chi-button__content">
+                        <i class="chi-icon icon-plus"></i>
+                      </div>
+                      <span class="-sr--only">Expand Row</span>
+                    </button>
+                    <div class="-w--100">
+                      <div class="-text--truncate">Child Name 1</div>
                     </div>
+                  </div>
+                  <div aria-label="ID" data-label="ID" role="cell" class="chi-data-table__cell -key">
+                    <div class="-w--100">
+                      <div class="-text--truncate">child-name-1</div>
+                    </div>
+                  </div>
+                  <div aria-label="Last Login" data-label="Last Login" role="cell" class="chi-data-table__cell">
+                    <div class="-w--100">
+                      <div class="-text--truncate">18 Dec 2020 2:38 a.m.</div>
+                    </div>
+                  </div>
+                </div>
+                <div id="row-dt-1-name-1-1" data-rownumber="2-0-1" data-rowlevel="2" role="row" class="chi-data-table__row-grand-child -md">
+                  <div role="cell" class="chi-data-table__cell -expandable"></div>
+                  <div aria-label="Name" data-label="Name" role="cell" class="chi-data-table__cell -key -bold">
+                    <div class="-w--100">
+                      <div class="-text--truncate">Child Name 2</div>
+                    </div>
+                  </div>
+                  <div aria-label="ID" data-label="ID" role="cell" class="chi-data-table__cell -key">
+                    <div class="-w--100">
+                      <div class="-text--truncate">child-name-2</div>
+                    </div>
+                  </div>
+                  <div aria-label="Last Login" data-label="Last Login" role="cell" class="chi-data-table__cell">
+                    <div class="-w--100">
+                      <div class="-text--truncate">18 Dec 2020 2:38 a.m.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="row-dt-1-name-2" data-rownumber="1" data-rowlevel="0" role="row" class="chi-data-table__row -striped -md -collapsed">
+                <div role="cell" class="chi-data-table__cell -expandable">
+                  <button aria-label="Expand row" data-target="#row-dt-1-name-2-content" class="chi-button -icon -flat -expand -xs">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-plus"></i>
+                    </div>
+                    <span class="-sr--only">Expand Row</span>
                   </button>
                 </div>
-                <div class="chi-data-table__cell -key -bold">
-                  <div>Name 2</div>
+                <div aria-label="Name" data-label="Name" role="cell" class="chi-data-table__cell -key -bold">
+                  <div class="-w--100">
+                    <div class="-text--truncate">Name 2</div>
+                  </div>
                 </div>
-                <div class="chi-data-table__cell -key">
-                  <div>name-2</div>
+                <div aria-label="ID" data-label="ID" role="cell" class="chi-data-table__cell -key">
+                  <div class="-w--100">
+                    <div class="-text--truncate">name-2</div>
+                  </div>
                 </div>
-                <div class="chi-data-table__cell">
-                  <div>18 Dec 2020 2:38 a.m.</div>
-                </div>
-              </div>
-              <div class="chi-data-table__row-child -collapsed -md">
-                <div class="chi-data-table__cell -expandable"></div>
-                <div class="chi-data-table__cell -key -bold">
-                  <div>Child Name 1</div>
-                </div>
-                <div class="chi-data-table__cell -key">
-                  <div>Child name-1</div>
-                </div>
-                <div class="chi-data-table__cell">
-                  <div>18 Dec 2020 2:38 a.m.</div>
+                <div aria-label="Last Login" data-label="Last Login" role="cell" class="chi-data-table__cell">
+                  <div class="-w--100">
+                    <div class="-text--truncate">18 Dec 2020 2:38 a.m.</div>
+                  </div>
                 </div>
               </div>
-              <div class="chi-data-table__row-child -collapsed -md">
-                <div class="chi-data-table__cell -expandable"></div>
-                <div class="chi-data-table__cell -key -bold">
-                  <div>Child Name 2</div>
-                </div>
-                <div class="chi-data-table__cell -key">
-                  <div>Child name-2</div>
-                </div>
-                <div class="chi-data-table__cell">
-                  <div>18 Dec 2020 2:38 a.m.</div>
-                </div>
-              </div>
-              <div class="chi-data-table__row -collapsed -md">
-                <div class="chi-data-table__cell -expandable">
-                  <button class="chi-button -icon -flat -sm" aria-label="Expand row">
-                    <div class="chi-button__content">
-                      <i class="chi-icon icon-plus" aria-hidden="true"></i>
+              <div id="row-dt-1-name-2-content" style="display: none;">
+                <div id="row-dt-1-name-2-0" data-rownumber="2-1" data-rowlevel="1" role="row" class="chi-data-table__row-child -md -collapsed">
+                  <div class="chi-data-table__cell -expandable"></div>
+                  <div aria-label="Name" data-label="Name" role="cell" class="chi-data-table__cell -key -bold">
+                    <button aria-label="Expand row" data-target="#row-dt-1-name-2-0-content" class="chi-button -icon -flat -expand -xs">
+                      <div class="chi-button__content">
+                        <i class="chi-icon icon-plus"></i>
+                      </div>
+                      <span class="-sr--only">Expand Row</span>
+                    </button>
+                    <div class="-w--100">
+                      <div class="-text--truncate">Child Name 1</div>
                     </div>
+                  </div>
+                  <div aria-label="ID" data-label="ID" role="cell" class="chi-data-table__cell -key">
+                    <div class="-w--100">
+                      <div class="-text--truncate">child-name-1</div>
+                    </div>
+                  </div>
+                  <div aria-label="Last Login" data-label="Last Login" role="cell" class="chi-data-table__cell">
+                    <div class="-w--100">
+                      <div class="-text--truncate">18 Dec 2020 2:38 a.m.</div>
+                    </div>
+                  </div>
+                </div>
+                <div id="row-dt-1-name-2-1" data-rownumber="2-0-1" data-rowlevel="2" role="row" class="chi-data-table__row-grand-child -md">
+                  <div role="cell" class="chi-data-table__cell -expandable"></div>
+                  <div aria-label="Name" data-label="Name" role="cell" class="chi-data-table__cell -key -bold">
+                    <div class="-w--100">
+                      <div class="-text--truncate">Child Name 2</div>
+                    </div>
+                  </div>
+                  <div aria-label="ID" data-label="ID" role="cell" class="chi-data-table__cell -key">
+                    <div class="-w--100">
+                      <div class="-text--truncate">child-name-2</div>
+                    </div>
+                  </div>
+                  <div aria-label="Last Login" data-label="Last Login" role="cell" class="chi-data-table__cell">
+                    <div class="-w--100">
+                      <div class="-text--truncate">18 Dec 2020 2:38 a.m.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="row-dt-1-name-3" data-rownumber="2-0" data-rowlevel="1" role="row" class="chi-data-table__row -md -collapsed">
+                <div role="cell" class="chi-data-table__cell -expandable">
+                  <button aria-label="Expand row" data-target="#row-dt-1-name-3-content" class="chi-button -icon -flat -expand -xs">
+                    <div class="chi-button__content">
+                      <i class="chi-icon icon-plus"></i>
+                    </div>
+                    <span class="-sr--only">Expand Row</span>
                   </button>
                 </div>
-                <div class="chi-data-table__cell -key -bold">
-                  <div>Name 3</div>
+                <div aria-label="Name" data-label="Name" role="cell" class="chi-data-table__cell -key -bold">
+                  <div class="-w--100">
+                    <div class="-text--truncate">Name 3</div>
+                  </div>
                 </div>
-                <div class="chi-data-table__cell -key">
-                  <div>name-3</div>
+                <div aria-label="ID" data-label="ID" role="cell" class="chi-data-table__cell -key">
+                  <div class="-w--100">
+                    <div class="-text--truncate">name-3</div>
+                  </div>
                 </div>
-                <div class="chi-data-table__cell">
-                  <div>5 Nov 2020 10:15 a.m.</div>
+                <div aria-label="Last Login" data-label="Last Login" role="cell" class="chi-data-table__cell">
+                  <div class="-w--100">
+                    <div class="-text--truncate">5 Nov 2020 10:15 a.m.</div>
+                  </div>
+                </div>
+              </div>
+              <div id="row-dt-1-name-3-content" style="display: none;">
+                <div id="row-dt-1-name-3-0" data-rownumber="2-1" data-rowlevel="1" role="row" class="chi-data-table__row-child -md -collapsed">
+                  <div class="chi-data-table__cell -expandable"></div>
+                  <div aria-label="Name" data-label="Name" role="cell" class="chi-data-table__cell -key -bold">
+                    <button aria-label="Expand row" data-target="#row-dt-1-name-3-0-content" class="chi-button -icon -flat -expand -xs">
+                      <div class="chi-button__content">
+                        <i class="chi-icon icon-plus"></i>
+                      </div>
+                      <span class="-sr--only">Expand Row</span>
+                    </button>
+                    <div class="-w--100">
+                      <div class="-text--truncate">Child Name 1</div>
+                    </div>
+                  </div>
+                  <div aria-label="ID" data-label="ID" role="cell" class="chi-data-table__cell -key">
+                    <div class="-w--100">
+                      <div class="-text--truncate">child-name-1</div>
+                    </div>
+                  </div>
+                  <div aria-label="Last Login" data-label="Last Login" role="cell" class="chi-data-table__cell">
+                    <div class="-w--100">
+                      <div class="-text--truncate">18 Dec 2020 2:38 a.m.</div>
+                    </div>
+                  </div>
+                </div>
+                <div id="row-dt-1-name-3-1" data-rownumber="2-0-1" data-rowlevel="2" role="row" class="chi-data-table__row-grand-child -md">
+                  <div role="cell" class="chi-data-table__cell -expandable"></div>
+                  <div aria-label="Name" data-label="Name" role="cell" class="chi-data-table__cell -key -bold">
+                    <div class="-w--100">
+                      <div class="-text--truncate">Child Name 2</div>
+                    </div>
+                  </div>
+                  <div aria-label="ID" data-label="ID" role="cell" class="chi-data-table__cell -key">
+                    <div class="-w--100">
+                      <div class="-text--truncate">child-name-2</div>
+                    </div>
+                  </div>
+                  <div aria-label="Last Login" data-label="Last Login" role="cell" class="chi-data-table__cell">
+                    <div class="-w--100">
+                      <div class="-text--truncate">18 Dec 2020 2:38 a.m.</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
