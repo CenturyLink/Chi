@@ -28,9 +28,13 @@ import {
   TabTriggerPosition,
   TabTriggerDirections
 } from '../../constants/types';
+import {TABS_SIZES, TabsSizes} from '../../constants/size';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { uuid4 } from '../../utils/utils';
 import _ from 'lodash';
+
+const MARGIN_LEFT_BASE = 24;
+const MARGIN_LEFT_LG  = 32;
 
 @Component({
   tag: 'chi-tabs',
@@ -64,9 +68,9 @@ export class Tabs {
    */
   @Prop() vertical = false;
   /**
-   *  to set button size { xs, sm, md, lg, xl }.
+   *  to set tab size { xs, sm, md, lg, xl }.
    */
-  @Prop({ reflect: true }) size: string;
+  @Prop({ reflect: true }) size ?: TabsSizes = 'md';
   /**
    *  To configure See more Dropdown trigger message
    */
@@ -83,9 +87,11 @@ export class Tabs {
   @Event({ eventName: 'chiTabChange' }) chiTabChange: EventEmitter<TabTrigger>;
 
   @Watch('size')
-  sizeValidation(newValue: string) {
-    if (newValue && !['', 'xs', 'sm', 'md', 'lg', 'xl'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid size for tabs. Valid values are xs, sm, md, lg, xl, ''. `);
+  sizeValidation(newValue: TabsSizes) {
+    const validValues = TABS_SIZES.join(', ');
+
+    if (newValue && !TABS_SIZES.includes(newValue)) {
+      throw new Error(`${newValue} is not a valid size for tabs. Valid values are: ${validValues}. `);
     }
   }
 
@@ -106,7 +112,7 @@ export class Tabs {
   private dropdowns = [];
   private dropdownKeys = {};
   private seeMoreDropdown: HTMLChiDropdownElement;
-  private marginLeftValue: number = this.size === 'lg' ? 32 : 24;
+  private liMarginLeft: number = this.size === 'lg' ? MARGIN_LEFT_LG : MARGIN_LEFT_BASE;
 
   componentWillLoad(): void {
     this.sizeValidation(this.size);
@@ -119,7 +125,7 @@ export class Tabs {
       this.setLiSizes();
       this.seeMoreTriggerElementWidth =
         this.calculateSize(this.seeMoreTriggerElement, TabTriggerSizes.Width) +
-        (this.solid ? 0 : this.marginLeftValue);
+        (this.solid ? 0 : this.liMarginLeft);
       this.isSeeMoreTriggerMeasured = true;
       this.activeTabElement = this.getActiveTabTrigger();
       this.setSlidingBorderStyles();
@@ -391,7 +397,7 @@ export class Tabs {
     await liElements.forEach((li: HTMLElement, index) => {
       this.liSizes[li.dataset.index] =
         this.calculateSize(li, TabTriggerSizes.Width) +
-        (index === 0 || this.solid ? 0 : this.marginLeftValue);
+        (index === 0 || this.solid ? 0 : this.liMarginLeft);
     });
     this.setListOverflow();
   }
