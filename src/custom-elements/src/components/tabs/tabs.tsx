@@ -28,7 +28,7 @@ import {
   TabTriggerPosition,
   TabTriggerDirections
 } from '../../constants/types';
-import {TABS_SIZES, TabsSizes} from '../../constants/size';
+import { TABS_SIZES, TabsSizes } from '../../constants/size';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { uuid4 } from '../../utils/utils';
 import _ from 'lodash';
@@ -68,9 +68,9 @@ export class Tabs {
    */
   @Prop() vertical = false;
   /**
-   *  to set tab size { xs, sm, md, lg, xl }.
+   *  To set tab size { xs, sm, md, lg, xl }.
    */
-  @Prop({ reflect: true }) size ?: TabsSizes = 'md';
+  @Prop({ reflect: true }) size?: TabsSizes = 'md';
   /**
    *  To configure See more Dropdown trigger message
    */
