@@ -181,6 +181,12 @@ describe('Data Table', () => {
         });
     });
 
+    it('Should hide Expand All icon', () => {
+      cy.get(`[data-cy='data-table-container'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`button.-expand`)
+        .should('not.exist');
+    });
+
     describe('Pagination', () => {
       beforeEach(() => {
         cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`).as(
@@ -838,6 +844,55 @@ describe('Data Table', () => {
           cy.get('@rows').should('not.have.class', `${EXPANDED_CLASS}`);
         });
     });
+  });
+
+  describe('Expand/Collapse', () => {
+    beforeEach(() => {
+      cy.get(`[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`button.-expand`)
+        .as('expandAllButton');
+
+      cy.get(`[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY}`)
+        .find(`.${DATA_TABLE_CLASSES.ROW}`)
+        .as('rows');
+    });
+
+    it('Should expand all rows', () => {
+      const rows = [0, 1, 2];
+
+      cy.get('@expandAllButton')
+        .click();
+
+      cy.get('@rows').should('have.class', `${EXPANDED_CLASS}`);
+      rows.forEach(rowIndex => {
+        cy.get(
+          `[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`
+        )
+          .eq(rowIndex)
+          .should('not.have.css', 'display', 'none');
+
+        cy.get(
+          `[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"][id*="-child"]`
+        )
+          .eq(rowIndex)
+          .should('not.have.css', 'display', 'none');
+      });
+    });
+
+    it('Should collapse all rows', () => {
+      const rows = [0, 1, 2];
+
+      cy.get('@expandAllButton').click();
+      cy.get('@rows').should('have.class', '-collapsed');
+      rows.forEach(rowIndex => {
+        cy.get(
+          `[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY} div[id$="-content"]`
+        )
+          .eq(rowIndex)
+          .should('not.have.css', 'display', 'none');
+      });
+    });
+
   });
 
   describe('Sorting', () => {

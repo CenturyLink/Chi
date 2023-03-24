@@ -1,0 +1,88 @@
+@import '../../../../chi/_global-variables';
+@import '../../../../chi/_global-mixins';
+
+.docs-container {
+  .-non-doc {
+    .docs-article {
+      .docs-titlebar {
+        background: $color-grey-10 url('images/background-hero.png') 0 0 no-repeat;
+        background-size: cover;
+      }
+
+      .chi-grid__container {
+        &.-introduction {
+          padding-top: 14rem;
+          text-align: center;
+          @include respond-to(lg) {
+            padding-top: 0;
+            text-align: left;
+          }
+
+          .docs-titlebar__title {
+            display: flex;
+            font-size: $font-size-h2;
+            font-weight: $font-weight-black;
+            justify-content: center;
+            line-height: 2.5rem;
+            margin-bottom: 0.5rem;
+            margin-top: 1rem;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            @include respond-to(lg) {
+              font-size: 3rem;
+              justify-content: flex-start;
+              line-height: 4rem;
+              margin-bottom: 1.5rem;
+              padding-left: 0;
+              padding-right: 0;
+            }
+          }
+
+          .docs-titlebar__description {
+            color: $color-grey-80;
+            display: flex;
+            font-size: $font-size-base;
+            font-weight: $font-weight-normal;
+            justify-content: center;
+            line-height: 1.25rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            @include respond-to(lg) {
+              font-size: 1.125rem;
+              justify-content: flex-start;
+              line-height: 1.5rem;
+              margin: 0 0 1rem;
+              padding-left: 0;
+              padding-right: 0;
+            }
+          }
+
+          .docs-titlebar__buttons {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            margin: 2rem 0;
+            @include respond-to(sm) {
+              flex-direction: row;
+              justify-content: center;
+            }
+            @include respond-to(lg) {
+              justify-content: flex-start;
+              margin: 3rem 0;
+            }
+
+            .chi-button {
+              display: flex;
+              justify-content: center;
+              width: 80%;
+              @include respond-to(sm) {
+                display: inline-flex;
+                width: auto;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

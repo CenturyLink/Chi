@@ -495,10 +495,11 @@ export class Tabs {
         }}
       ></li>
     ) : null;
+    const activeTabOverflownClass = this.isActiveTabOverflown(this.tabs) ? ACTIVE_CLASS : '';
     const seeMoreTrigger = !this.vertical &&
       (this.isSeeMoreVisible || !this.isSeeMoreTriggerMeasured) && (
         <li
-          class={this.isActiveTabOverflown(this.tabs) ? ACTIVE_CLASS : ''}
+          class={`${TABS_CLASSES.SHOW_MORE} ${activeTabOverflownClass}`}
           id={this.seeMoreTriggerId}
           ref={el => (this.seeMoreTriggerElement = el)}
         >
