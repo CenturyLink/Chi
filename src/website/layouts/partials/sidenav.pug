@@ -142,16 +142,4 @@ ul.chi-tabs.-vertical.-lg.-animated
       li
         a(href=`#`, disabled="disabled") #{key}
 
-script.
-  (function() {
-    var accordions = document.querySelectorAll('.chi-accordion');
-
-    accordions.forEach((accordion) => {
-      var accordionItem = accordion.querySelector('.chi-accordion__item');
-      var hasActiveChild = !!accordion.querySelector('.-active');
-
-      if (hasActiveChild) {
-        accordionItem.classList.add('-expanded');
-      }
-    });
-  })();
+script(type="text/javascript", src=`${rootPath}assets/scripts/sidenav.js`)
