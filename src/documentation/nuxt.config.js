@@ -93,29 +93,33 @@ export default {
     ],
     '@nuxtjs/axios'
   ],
-
   axios: {
     proxy: true,
     baseURL: 'http://localhost:3000'
   },
-
   proxy: {
     '/api/': {
       target: 'http://localhost:8000',
       pathRewrite: { '^/api/': '' }
     }
   },
-
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     postcss: false,
-    plugins: [ 
+    plugins: [
       new CopyPlugin({
-        patterns: [{ from: 'node_modules/@centurylink/chi-vue/dist' }]
+        patterns: [
+          {
+            from: '@centurylink/chi-vue/dist',
+            context: 'node_modules',
+            globOptions: {
+              ignore: ['.DS_Store']
+            }
+          }
+        ]
       })
     ]
   },
-
   router: {
     base: BASE_URL,
     linkExactActiveClass: '-active'
