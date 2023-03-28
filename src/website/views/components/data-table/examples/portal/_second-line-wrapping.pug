@@ -45,7 +45,13 @@ h3 Second line wrapping
         },
         table: {
           head: {
-            name: { label: 'Name' },
+            name: {
+              label: 'This is a long Header content with a second line wrapping with tooltip: This is a long content for the tooltip in the wrapped cell',
+              key: true,
+              bold: true,
+              sortable: true,
+              description: 'Helpful information goes here.'
+          },
             id: { label: 'ID' },
             lastLogin: { label: 'Last Login' },
           },
@@ -111,8 +117,55 @@ h3 Second line wrapping
           <div class="chi-data-table -portal -compact">
             <div class="chi-data-table__head">
               <div class="chi-data-table__row">
-                <div class="chi-data-table__cell">
-                  <div>Name</div>
+                <div
+                  data-label="Header - This is a long content with a second line wrapping with tooltip: This is a long content for the tooltip in the wrapped cell"
+                  data-column="name"
+                  aria-label="Sort Column Header - This is a long content with a second line wrapping with tooltip: This is a long content for the tooltip in the wrapped cell"
+                  class="chi-data-table__cell -justify-content-md--start null -sorting -position--relative"
+                  data-sort="">
+                  <div class="-w--100">
+                    <div class="-cell-wrap">
+                      Header - This is a long content with a second line wrapping with tooltip:
+                      This is a long content for the tooltip in the wrapped cell
+                    </div>
+                  </div>
+                  <chi-button
+                    id="info-popover-1-name"
+                    variant="flat"
+                    type="icon"
+                    alternative-text="Info icon"
+                    class="sc-chi-button-h sc-chi-button-s hydrated">
+                    <button class="chi-button -flat -icon sc-chi-button sc-chi-button-s" aria-label="Info icon">
+                      <i aria-hidden="true" class="chi-icon -xs icon-circle-info-outline"></i>
+                    </button>
+                  </chi-button>
+                  <chi-popover
+                    reference="#info-popover-1-name"
+                    position="top"
+                    arrow=""
+                    class="sc-chi-popover-h sc-chi-popover-s hydrated"
+                    aria-hidden="true">
+                    <section
+                      class="chi-popover -animated chi-popover--top sc-chi-popover"
+                      role="dialog"
+                      aria-modal="true"
+                      x-placement="top">
+                      <div class="chi-popover__content sc-chi-popover sc-chi-popover-s">
+                        <div>Helpful information goes here.</div>
+                      </div>
+                      <div class="chi-popover__arrow sc-chi-popover"></div>
+                    </section>
+                  </chi-popover>
+                  <chi-button
+                    variant="flat"
+                    type="icon"
+                    alternative-text="Sort icon"
+                    class="sc-chi-button-h sc-chi-button-s hydrated">
+                    <button class="chi-button -flat -icon sc-chi-button sc-chi-button-s" aria-label="Sort icon">
+                      <i class="chi-icon -xs icon-arrow-sort"></i>
+                      </button>
+                  </chi-button>
+                  <div class="-position--absolute resize-handle">&nbsp;</div>
                 </div>
                 <div class="chi-data-table__cell">
                   <div>ID</div>
@@ -231,7 +284,13 @@ script.
       },
       table: {
         head: {
-          name: { label: 'Name', key: true, bold: true },
+          name: {
+              label: 'This is a long Header content with a second line wrapping with tooltip: This is a long content for the tooltip in the wrapped cell',
+              key: true,
+              bold: true,
+              sortable: true,
+              description: 'Helpful information goes here.'
+          },
           id: { label: 'ID', key: true },
           lastLogin: { label: 'Last Login' },
         },

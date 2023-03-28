@@ -168,118 +168,156 @@ export default class DataTable extends Vue {
     );
   }
 
-  _head() {
-    const tableHeadCells = [
-      this.config.selectable ? (
-        this.config.selectable === 'radio' ? (
-          <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.SELECTABLE}`}></div>
-        ) : (
-          this._selectRowCheckbox(true)
-        )
-      ) : null,
-      this._expandable ? this._headExpandable() : null,
-    ];
+  _createPopover(infoPopoverId: string, description?: DataTableColumnDescription | string) {
+    if (!description) return null;
 
-    let cellIndex = 0;
+    return (
+      <chi-popover
+        ref={infoPopoverId}
+        reference={`#${infoPopoverId}`}
+        position="top"
+        title={(description as DataTableColumnDescription).title}
+        arrow>
+        <div>{this._getDescription(description)}</div>
+      </chi-popover>
+    );
+  }
 
-    Object.keys(this.data.head).forEach((column: string) => {
-      const infoPopoverId = `info-popover-${this._dataTableNumber}-${column}`,
-        label = this.data.head[column].label || this.data.head[column],
-        infoIcon = this.data.head[column].description ? (
-          <chi-button
-            id={infoPopoverId}
-            variant="flat"
-            type="icon"
-            alternative-text="Info icon"
-            onChiClick={() => {
-              this._toggleInfoPopover(infoPopoverId);
-            }}>
-            <i class={`${ICON_CLASS} -xs ${ICON_CLASSES.ICON_INFO}`} aria-hidden="true"></i>
-          </chi-button>
-        ) : null,
-        infoPopover = this.data.head[column].description ? (
-          <chi-popover
-            ref={infoPopoverId}
-            reference={`#${infoPopoverId}`}
-            position="top"
-            title={(this.data.head[column].description as DataTableColumnDescription).title}
-            arrow>
-            <div>{this._getDescription(this.data.head[column].description as string | DataTableColumnDescription)}</div>
-          </chi-popover>
-        ) : null,
-        sortBy = this.data.head[column].sortBy,
-        sortable = this.data.head[column].sortable,
-        alignment = this._cellAlignment(this.data.head[column].align || 'left'),
-        sortIcon = sortable ? (
-          <chi-button variant="flat" type="icon" alternative-text="Sort icon">
-            <i
-              class={`
+  _getInfoPopover(infoPopoverId: string, description?: DataTableColumnDescription | string) {
+    if (!description) return null;
+
+    const infoPopover = this._createPopover(infoPopoverId, description);
+
+    return (
+      <div>
+        <chi-button
+          id={infoPopoverId}
+          variant="flat"
+          type="icon"
+          alternative-text="Info icon"
+          onChiClick={() => this._toggleInfoPopover(infoPopoverId)}>
+          <i class={`${ICON_CLASS} -xs ${ICON_CLASSES.ICON_INFO}`} aria-hidden="true"></i>
+        </chi-button>
+
+        {infoPopover}
+      </div>
+    );
+  }
+
+  _getSortableIcon(column: string, sortable?: boolean) {
+    if (!sortable) return null;
+
+    return (
+      <chi-button variant="flat" type="icon" alternative-text="Sort icon">
+        <i
+          class={`
               ${ICON_CLASS} -xs ${
-                this._sortConfig &&
-                (this._sortConfig.key === this.data.head[column].sortBy || this._sortConfig.key === column)
-                  ? DATA_TABLE_SORT_ICONS.ARROW
-                  : DATA_TABLE_SORT_ICONS.SORT
-              }`}
-              style={`${
-                this._sortConfig && this._sortConfig.direction === 'descending' ? 'transform: rotate(180deg)' : ''
-              }`}
-            />
-          </chi-button>
-        ) : (
-          ''
-        ),
-        cellWidth =
-          this.config.columnSizes && this._currentScreenBreakpoint
-            ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
-            : null;
+            this._sortConfig &&
+            (this._sortConfig.key === this.data.head[column].sortBy || this._sortConfig.key === column)
+              ? DATA_TABLE_SORT_ICONS.ARROW
+              : DATA_TABLE_SORT_ICONS.SORT
+          }`}
+          style={`${
+            this._sortConfig && this._sortConfig.direction === 'descending' ? 'transform: rotate(180deg)' : ''
+          }`}
+        />
+      </chi-button>
+    );
+  }
+
+  _getLabel(label: string) {
+    return this.config.truncation ? (
+      <DataTableTooltip msg={label} header />
+    ) : this.cellWrap ? (
+      <DataTableTooltip msg={label} textWrap header class="-w--100" />
+    ) : (
+      label
+    );
+  }
+
+  _getSelectableColumn() {
+    return this.config.selectable === 'radio' ? (
+      <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.SELECTABLE}`}></div>
+    ) : (
+      this._selectRowCheckbox(true)
+    );
+  }
+
+  _getSelectableAndExpandableColumns() {
+    return {
+      ...(this.config.selectable && { selectableColumn: this.config.selectable }),
+      ...(this._expandable && { expandableColumn: this._expandable }),
+    };
+  }
+
+  _getCellWidth(currentCellIndex: number) {
+    const columnSizes = this.config.columnSizes;
+    const breakpoint = this._currentScreenBreakpoint;
+
+    const hasSelectableAndExandableColumns = Object.keys(this._getSelectableAndExpandableColumns()).length;
+    const cellIndex = currentCellIndex - hasSelectableAndExandableColumns;
+
+    return columnSizes && breakpoint ? columnSizes[breakpoint][cellIndex] : null;
+  }
+
+  _handleClickSortableColumn(event: MouseEvent) {
+    if (this._preventSortOnResize && event.type === '') return;
+
+    this.sortColumn(event);
+  }
+
+  _head() {
+    const columns = {
+      ...this._getSelectableAndExpandableColumns(),
+      ...this.data.head,
+    };
+
+    const tableHeadCells = Object.keys(columns).map((column: string, cellIndex: number) => {
+      if (column === 'selectableColumn') return this._getSelectableColumn();
+      if (column === 'expandableColumn') return this._headExpandable();
+
+      const infoPopoverId = `info-popover-${this._dataTableNumber}-${column}`;
+      const label = this.data.head[column].label || this.data.head[column];
+      const sortBy = this.data.head[column].sortBy;
+      const sortable = this.data.head[column].sortable;
+      const alignment = this._cellAlignment(this.data.head[column].align || 'left');
+      const infoIcon = this._getInfoPopover(infoPopoverId, this.data.head[column].description);
+      const sortIcon = this._getSortableIcon(column, sortable);
+      const customLabel = this._getLabel(label as string);
+      const cellWidth = this._getCellWidth(cellIndex);
+      const style = `${cellWidth === 0 && 'display: none;'} ${this.data.head[column].allowOverflow &&
+        'overflow: visible;'}`;
+      const defaultClassName = `${DATA_TABLE_CLASSES.CELL} ${alignment}
+      ${cellWidth && cellWidth > 0 && `-flex-basis--${cellWidth}`}`;
+
       const sortableColumnHead = (
         <div
-          aria-label={`Sort Column ${label}`}
-          class={`${DATA_TABLE_CLASSES.CELL}
-            ${alignment}
-            ${sortable ? DATA_TABLE_CLASSES.SORTING : ''}
-            ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
+          data-label={label}
+          style={style}
+          class={`${defaultClassName} ${sortable && DATA_TABLE_CLASSES.SORTING}`}
           data-column={column}
           data-sort-by={sortBy}
-          data-sort={this._sortConfig && this._sortConfig.direction ? this._sortConfig.direction : ''}
-          data-label={label}
-          onClick={(e: MouseEvent) => {
-            if (!this._preventSortOnResize && e.type !== '') {
-              this.sortColumn(e);
-            }
-          }}
-          style={`
-            ${cellWidth === 0 ? 'display: none;' : ''}
-            ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
-            `}>
-          {this.config.truncation ? <DataTableTooltip msg={label} header /> : label}
+          data-sort={this._sortConfig?.direction ?? ''}
+          aria-label={`Sort Column ${label}`}
+          onClick={this._handleClickSortableColumn}>
+          {customLabel}
           {infoIcon}
           {sortIcon}
         </div>
       );
+
       const nonSortableColumnHead = (
-        <div
-          class={`${DATA_TABLE_CLASSES.CELL}
-            ${alignment}
-            ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
-          data-label={label}
-          style={`
-            ${cellWidth === 0 ? 'display: none;' : ''}
-            ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
-            `}>
-          {this.config.truncation ? <DataTableTooltip msg={label} header /> : label}
+        <div data-label={label} style={style} class={defaultClassName}>
+          {customLabel}
           {infoIcon}
         </div>
       );
-
-      tableHeadCells.push(sortable ? sortableColumnHead : nonSortableColumnHead);
-      if (infoPopover) tableHeadCells.push(infoPopover as JSX.Element);
 
       if (this.data.head[column].sortable && !this._sortable) {
         this._sortable = true;
       }
 
-      cellIndex++;
+      return sortable ? sortableColumnHead : nonSortableColumnHead;
     });
 
     return (
