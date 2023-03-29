@@ -1058,417 +1058,417 @@ h2 Examples
 
         <script>chi.tab(document.getElementById('example-tabs-2'));</script>
 
-.-portal--hide
-  h2 Tabbed navigation bar
 
-  p.-text
-    | The navigation component is a combination of Chi tabs and dropdowns components. You must use
-    | <code>chi.navigation</code> function to instantiate the whole group of components, and there is no need for
-    | instantiating the tabs nor the dropdowns independently. The navigation components will manage the lifecycle of the
-    | descendants' tabs and dropdowns.
+h2 Tabbed navigation bar
 
-  p.-text
-    | Although navigation reproduces all the functionality that tabs and dropdowns have, like the sliding border or the
-    | animated chevron in the dropdowns, it also adds some other new functionalities like the automatic overflow menu,
-    | or a wait-for-animation option.
+p.-text
+  | The navigation component is a combination of Chi tabs and dropdowns components. You must use
+  | <code>chi.navigation</code> function to instantiate the whole group of components, and there is no need for
+  | instantiating the tabs nor the dropdowns independently. The navigation components will manage the lifecycle of the
+  | descendants' tabs and dropdowns.
 
-  h3 Flat
-  .example.-mb--3
-    .-p--3.-pb--4
-      chi-tabs(active-tab='tab-a' id='example__tabbed_navigation_flat' sliding-border)
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-tabs-tabbed-navigation
-        li.-active
-          a(href=`#webcomponent-tabbed-navigation`) Web Component
-        li
-          a(href=`#html-tabbed-navigation`) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-tabbed-navigation(role="tabpanel")
-      :code(lang='html')
-        <chi-tabs active-tab="tab-a" id="example__tabbed_navigation_flat" sliding-border></chi-tabs>
+p.-text
+  | Although navigation reproduces all the functionality that tabs and dropdowns have, like the sliding border or the
+  | animated chevron in the dropdowns, it also adds some other new functionalities like the automatic overflow menu,
+  | or a wait-for-animation option.
 
-        <script>
-          const tabbedNavigationFlatElement = document.querySelector('#example__tabbed_navigation_flat');
-          
-          tabbedNavigationFlatElement.tabs = [
-            {
-              label: 'Active Tab',
-              id: 'tab-a',
-              children: [
-                {
-                  label: 'Elem 1',
-                  id: 'tab-a-1'
-                },
-                {
-                  label: 'Elem 2',
-                  id: 'tab-a-2'
-                },
-                {
-                  label: 'Elem 3 more',
-                  id: 'tab-a-3',
-                  children: [
-                    {
-                      label: 'Elem 3.1',
-                      id: 'tab-a-3-1'
-                    },
-                    {
-                      label: 'Elem 3.2',
-                      id: 'tab-a-3-2',
-                      children: [
-                        {
-                          label: 'Elem 3.2.1',
-                          id: 'tab-a-3-2-1'
-                        },
-                        {
-                          label: 'Elem 3.2.2',
-                          id: 'tab-a-3-2-2'
-                        },
-                        {
-                          label: 'Elem 3.2.3',
-                          id: 'tab-a-3-2-3'
-                        }
-                      ]
-                    },
-                    {
-                      label: 'Elem 3.3',
-                      id: 'tab-a-3-3'
-                    },
-                    {
-                      label: 'Elem 3.4',
-                      id: 'tab-a-3-4'
-                    }
-                  ]
-                },
-                {
-                  label: 'Elem 4',
-                  id: 'tab-a-4'
-                }
-              ]
-            },
-            {
-              label: 'Tab Link',
-              id: 'tab-b'
-            },
-            {
-              label: 'Tab Link',
-              id: 'tab-c'
-            },
-            {
-              label: 'Tab Link',
-              id: 'tab-d'
-            },
-            {
-              label: 'Tab Link',
-              id: 'tab-e'
-            },
-            {
-              label: 'Tab Link',
-              id: 'tab-f'
-            },
-            {
-              label: 'Tab Link',
-              id: 'tab-g'
-            },
-            {
-              label: 'Tab Dropdown',
-              id: 'tab-h',
-              children: [
-                {
-                  label: 'Element 1',
-                  id: 'tab-h-1'
-                },
-                {
-                  label: 'Element 2',
-                  id: 'tab-h-2',
-                  children: [
-                    {
-                      label: 'Elem 1',
-                      id: 'tab-h-2-1'
-                    },
-                    {
-                      label: 'Elem 2',
-                      id: 'tab-h-2-2'
-                    },
-                    {
-                      label: 'Elem 3 more',
-                      id: 'tab-h-2-3',
-                      children: [
-                        {
-                          label: 'Elem 3.1',
-                          id: 'tab-h-2-3-1'
-                        },
-                        {
-                          label: 'Elem 3.2',
-                          id: 'tab-h-2-3-2'
-                        },
-                        {
-                          label: 'Elem 3.3',
-                          id: 'tab-h-2-3-3'
-                        }
-                      ]
-                    },
-                    {
-                      label: 'Elem 4',
-                      id: 'tab-h-2-4'
-                    }
-                  ]
-                },
-                {
-                  label: 'Element 3',
-                  id: 'tab-h-3'
-                }
-              ]
-            }
-          ];
-        </script>
-    .chi-tabs-panel#html-tabbed-navigation(role="tabpanel")
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../getting-started/installation">Chi.js</a>.
-      :code(lang='html')
-        <ul id="navigationExample-1" class="chi-tabs">
-          <li class="chi-dropdown -active">
-            <a class="chi-dropdown__trigger" href="#">Active tab</a>
-            <div class="chi-dropdown__menu">
-              <a class="chi-dropdown__menu-item" href="#">Elem 1</a>
-              <a class="chi-dropdown__menu-item" href="#">Elem 2</a>
-              <div>
-                <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
-                <div class="chi-dropdown__menu">
-                  <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
-                </div>
+h3 Flat
+.example.-mb--3
+  .-p--3.-pb--4
+    chi-tabs(active-tab='tab-a' id='example__tabbed_navigation_flat' sliding-border)
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-tabs-tabbed-navigation
+      li.-active
+        a(href=`#webcomponent-tabbed-navigation`) Web Component
+      li
+        a(href=`#html-tabbed-navigation`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-tabbed-navigation(role="tabpanel")
+    :code(lang='html')
+      <chi-tabs active-tab="tab-a" id="example__tabbed_navigation_flat" sliding-border></chi-tabs>
+
+      <script>
+        const tabbedNavigationFlatElement = document.querySelector('#example__tabbed_navigation_flat');
+
+        tabbedNavigationFlatElement.tabs = [
+          {
+            label: 'Active Tab',
+            id: 'tab-a',
+            children: [
+              {
+                label: 'Elem 1',
+                id: 'tab-a-1'
+              },
+              {
+                label: 'Elem 2',
+                id: 'tab-a-2'
+              },
+              {
+                label: 'Elem 3 more',
+                id: 'tab-a-3',
+                children: [
+                  {
+                    label: 'Elem 3.1',
+                    id: 'tab-a-3-1'
+                  },
+                  {
+                    label: 'Elem 3.2',
+                    id: 'tab-a-3-2',
+                    children: [
+                      {
+                        label: 'Elem 3.2.1',
+                        id: 'tab-a-3-2-1'
+                      },
+                      {
+                        label: 'Elem 3.2.2',
+                        id: 'tab-a-3-2-2'
+                      },
+                      {
+                        label: 'Elem 3.2.3',
+                        id: 'tab-a-3-2-3'
+                      }
+                    ]
+                  },
+                  {
+                    label: 'Elem 3.3',
+                    id: 'tab-a-3-3'
+                  },
+                  {
+                    label: 'Elem 3.4',
+                    id: 'tab-a-3-4'
+                  }
+                ]
+              },
+              {
+                label: 'Elem 4',
+                id: 'tab-a-4'
+              }
+            ]
+          },
+          {
+            label: 'Tab Link',
+            id: 'tab-b'
+          },
+          {
+            label: 'Tab Link',
+            id: 'tab-c'
+          },
+          {
+            label: 'Tab Link',
+            id: 'tab-d'
+          },
+          {
+            label: 'Tab Link',
+            id: 'tab-e'
+          },
+          {
+            label: 'Tab Link',
+            id: 'tab-f'
+          },
+          {
+            label: 'Tab Link',
+            id: 'tab-g'
+          },
+          {
+            label: 'Tab Dropdown',
+            id: 'tab-h',
+            children: [
+              {
+                label: 'Element 1',
+                id: 'tab-h-1'
+              },
+              {
+                label: 'Element 2',
+                id: 'tab-h-2',
+                children: [
+                  {
+                    label: 'Elem 1',
+                    id: 'tab-h-2-1'
+                  },
+                  {
+                    label: 'Elem 2',
+                    id: 'tab-h-2-2'
+                  },
+                  {
+                    label: 'Elem 3 more',
+                    id: 'tab-h-2-3',
+                    children: [
+                      {
+                        label: 'Elem 3.1',
+                        id: 'tab-h-2-3-1'
+                      },
+                      {
+                        label: 'Elem 3.2',
+                        id: 'tab-h-2-3-2'
+                      },
+                      {
+                        label: 'Elem 3.3',
+                        id: 'tab-h-2-3-3'
+                      }
+                    ]
+                  },
+                  {
+                    label: 'Elem 4',
+                    id: 'tab-h-2-4'
+                  }
+                ]
+              },
+              {
+                label: 'Element 3',
+                id: 'tab-h-3'
+              }
+            ]
+          }
+        ];
+      </script>
+  .chi-tabs-panel#html-tabbed-navigation(role="tabpanel")
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang='html')
+      <ul id="navigationExample-1" class="chi-tabs">
+        <li class="chi-dropdown -active">
+          <a class="chi-dropdown__trigger" href="#">Active tab</a>
+          <div class="chi-dropdown__menu">
+            <a class="chi-dropdown__menu-item" href="#">Elem 1</a>
+            <a class="chi-dropdown__menu-item" href="#">Elem 2</a>
+            <div>
+              <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
+              <div class="chi-dropdown__menu">
+                <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
               </div>
-              <a class="chi-dropdown__menu-item" href="#">Elem 4</a>
             </div>
-          </li>
-          <li>
-            <a href="#">Tab Link</a>
-          </li>
-          <li>
-            <a href="#">Tab Link</a>
-          </li>
-          <li>
-            <a href="#">Tab Link</a>
-          </li>
-          <li>
-            <a href="#">Tab Link</a>
-          </li>
-          <li>
-            <a href="#">Tab Link</a>
-          </li>
-          <li>
-            <a href="#">Tab Link</a>
-          </li>
-          <li class="chi-dropdown">
-            <a class="chi-dropdown__trigger" href="#">Tab Dropdown</a>
-            <div class="chi-dropdown__menu">
-              <a class="chi-dropdown__menu-item" href="#">Element 1</a>
-              <a class="chi-dropdown__menu-item" href="#">Element 2</a>
-              <a class="chi-dropdown__menu-item" href="#">Element 3</a>
-            </div>
-          </li>
-        </ul>
+            <a class="chi-dropdown__menu-item" href="#">Elem 4</a>
+          </div>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li class="chi-dropdown">
+          <a class="chi-dropdown__trigger" href="#">Tab Dropdown</a>
+          <div class="chi-dropdown__menu">
+            <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+            <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+            <a class="chi-dropdown__menu-item" href="#">Element 3</a>
+          </div>
+        </li>
+      </ul>
 
-        <script>
-          const navigationElem = document.getElementById('#navigationExample-1');
-          chi.navigation(navigationElem);
-        </script>
+      <script>
+        const navigationElem = document.getElementById('#navigationExample-1');
+        chi.navigation(navigationElem);
+      </script>
 
-  h3 Solid
-  .example.-mb--3
-    .-p--3.-pb--4
-      chi-tabs(active-tab='tab-aa' id='example__tabbed_navigation_solid' solid sliding-border)
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-tabs-solid-tabbed-navigation
-        li.-active
-          a(href=`#webcomponent-solid-tabbed-navigation`) Web Component
-        li
-          a(href=`#html-solid-tabbed-navigation`) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-solid-tabbed-navigation(role="tabpanel")
-      :code(lang='html')
-        <chi-tabs active-tab="tab-a" id="example__tabbed_navigation_solid" solid sliding-border></chi-tabs>
+h3 Solid
+.example.-mb--3
+  .-p--3.-pb--4
+    chi-tabs(active-tab='tab-aa' id='example__tabbed_navigation_solid' size='lg' solid sliding-border)
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-tabs-solid-tabbed-navigation
+      li.-active
+        a(href=`#webcomponent-solid-tabbed-navigation`) Web Component
+      li
+        a(href=`#html-solid-tabbed-navigation`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-solid-tabbed-navigation(role="tabpanel")
+    :code(lang='html')
+      <chi-tabs active-tab="tab-a" id="example__tabbed_navigation_solid" solid sliding-border></chi-tabs>
 
-        <script>
-          const tabbedNavigationSolidElement = document.querySelector('#example__tabbed_navigation_solid');
-          
-          tabbedNavigationSolidElement.tabs = [
-            {
-              label: 'Active Tab',
-              id: 'tab-a',
-              children: [
-                {
-                  label: 'Elem 1',
-                  id: 'tab-a-1'
-                },
-                {
-                  label: 'Elem 2',
-                  id: 'tab-a-2'
-                },
-                {
-                  label: 'Elem 3 more',
-                  id: 'tab-a-3',
-                  children: [
-                    {
-                      label: 'Elem 3.1',
-                      id: 'tab-a-3-1'
-                    },
-                    {
-                      label: 'Elem 3.2',
-                      id: 'tab-a-3-2',
-                      children: [
-                        {
-                          label: 'Elem 3.2.1',
-                          id: 'tab-a-3-2-1'
-                        },
-                        {
-                          label: 'Elem 3.2.2',
-                          id: 'tab-a-3-2-2'
-                        },
-                        {
-                          label: 'Elem 3.2.3',
-                          id: 'tab-a-3-2-3'
-                        }
-                      ]
-                    },
-                    {
-                      label: 'Elem 3.3',
-                      id: 'tab-a-3-3'
-                    },
-                    {
-                      label: 'Elem 3.4',
-                      id: 'tab-a-3-4'
-                    }
-                  ]
-                },
-                {
-                  label: 'Elem 4',
-                  id: 'tab-a-4'
-                }
-              ]
-            },
-            {
-              label: 'Tab Link',
-              id: 'tab-b'
-            },
-            {
-              label: 'Tab Link',
-              id: 'tab-c'
-            },
-            {
-              label: 'Tab Link',
-              id: 'tab-d'
-            },
-            {
-              label: 'Tab Link',
-              id: 'tab-e'
-            },
-            {
-              label: 'Tab Dropdown',
-              id: 'tab-f',
-              children: [
-                {
-                  label: 'Element 1',
-                  id: 'tab-f-1'
-                },
-                {
-                  label: 'Element 2',
-                  id: 'tab-f-2',
-                  children: [
-                    {
-                      label: 'Elem 1',
-                      id: 'tab-f-2-1'
-                    },
-                    {
-                      label: 'Elem 2',
-                      id: 'tab-f-2-2'
-                    },
-                    {
-                      label: 'Elem 3 more',
-                      id: 'tab-f-2-3',
-                      children: [
-                        {
-                          label: 'Elem 3.1',
-                          id: 'tab-f-2-3-1'
-                        },
-                        {
-                          label: 'Elem 3.2',
-                          id: 'tab-f-2-3-2'
-                        },
-                        {
-                          label: 'Elem 3.3',
-                          id: 'tab-f-2-3-3'
-                        }
-                      ]
-                    },
-                    {
-                      label: 'Elem 4',
-                      id: 'tab-f-2-4'
-                    }
-                  ]
-                },
-                {
-                  label: 'Element 3',
-                  id: 'tab-f-3'
-                }
-              ]
-            }
-          ];
-        </script>
-    .chi-tabs-panel#html-solid-tabbed-navigation(role="tabpanel")
-      .chi-tab__description
-        span.-text--grey
-          | This HTML Blueprint requires JavaScript.
-          | You may use your own solution, or use Chi's vanilla JavaScript solution,
-          | <a href="../../getting-started/installation">Chi.js</a>.
-      :code(lang='html')
-        <ul id="navigationExample-1" class="chi-tabs -solid -border -lg">
-          <li class="chi-dropdown -active">
-            <a class="chi-dropdown__trigger" href="#">Active tab</a>
-            <div class="chi-dropdown__menu">
-              <a class="chi-dropdown__menu-item" href="#">Elem 1</a>
-              <a class="chi-dropdown__menu-item" href="#">Elem 2</a>
-              <div>
-                <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
-                <div class="chi-dropdown__menu">
-                  <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
-                </div>
+      <script>
+        const tabbedNavigationSolidElement = document.querySelector('#example__tabbed_navigation_solid');
+
+        tabbedNavigationSolidElement.tabs = [
+          {
+            label: 'Active Tab',
+            id: 'tab-a',
+            children: [
+              {
+                label: 'Elem 1',
+                id: 'tab-a-1'
+              },
+              {
+                label: 'Elem 2',
+                id: 'tab-a-2'
+              },
+              {
+                label: 'Elem 3 more',
+                id: 'tab-a-3',
+                children: [
+                  {
+                    label: 'Elem 3.1',
+                    id: 'tab-a-3-1'
+                  },
+                  {
+                    label: 'Elem 3.2',
+                    id: 'tab-a-3-2',
+                    children: [
+                      {
+                        label: 'Elem 3.2.1',
+                        id: 'tab-a-3-2-1'
+                      },
+                      {
+                        label: 'Elem 3.2.2',
+                        id: 'tab-a-3-2-2'
+                      },
+                      {
+                        label: 'Elem 3.2.3',
+                        id: 'tab-a-3-2-3'
+                      }
+                    ]
+                  },
+                  {
+                    label: 'Elem 3.3',
+                    id: 'tab-a-3-3'
+                  },
+                  {
+                    label: 'Elem 3.4',
+                    id: 'tab-a-3-4'
+                  }
+                ]
+              },
+              {
+                label: 'Elem 4',
+                id: 'tab-a-4'
+              }
+            ]
+          },
+          {
+            label: 'Tab Link',
+            id: 'tab-b'
+          },
+          {
+            label: 'Tab Link',
+            id: 'tab-c'
+          },
+          {
+            label: 'Tab Link',
+            id: 'tab-d'
+          },
+          {
+            label: 'Tab Link',
+            id: 'tab-e'
+          },
+          {
+            label: 'Tab Dropdown',
+            id: 'tab-f',
+            children: [
+              {
+                label: 'Element 1',
+                id: 'tab-f-1'
+              },
+              {
+                label: 'Element 2',
+                id: 'tab-f-2',
+                children: [
+                  {
+                    label: 'Elem 1',
+                    id: 'tab-f-2-1'
+                  },
+                  {
+                    label: 'Elem 2',
+                    id: 'tab-f-2-2'
+                  },
+                  {
+                    label: 'Elem 3 more',
+                    id: 'tab-f-2-3',
+                    children: [
+                      {
+                        label: 'Elem 3.1',
+                        id: 'tab-f-2-3-1'
+                      },
+                      {
+                        label: 'Elem 3.2',
+                        id: 'tab-f-2-3-2'
+                      },
+                      {
+                        label: 'Elem 3.3',
+                        id: 'tab-f-2-3-3'
+                      }
+                    ]
+                  },
+                  {
+                    label: 'Elem 4',
+                    id: 'tab-f-2-4'
+                  }
+                ]
+              },
+              {
+                label: 'Element 3',
+                id: 'tab-f-3'
+              }
+            ]
+          }
+        ];
+      </script>
+  .chi-tabs-panel#html-solid-tabbed-navigation(role="tabpanel")
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang='html')
+      <ul id="navigationExample-1" class="chi-tabs -solid -border -lg">
+        <li class="chi-dropdown -active">
+          <a class="chi-dropdown__trigger" href="#">Active tab</a>
+          <div class="chi-dropdown__menu">
+            <a class="chi-dropdown__menu-item" href="#">Elem 1</a>
+            <a class="chi-dropdown__menu-item" href="#">Elem 2</a>
+            <div>
+              <a class="chi-dropdown__menu-item chi-dropdown__trigger" href="#">Elem 3 more</a>
+              <div class="chi-dropdown__menu">
+                <a class="chi-dropdown__menu-item" href="#">Elem 3.1</a><a class="chi-dropdown__menu-item" href="#">Elem 3.2</a><a class="chi-dropdown__menu-item" href="#">Elem 3.3</a><a class="chi-dropdown__menu-item" href="#">Elem 3.4</a>
               </div>
-              <a class="chi-dropdown__menu-item" href="#">Elem 4</a>
             </div>
-          </li>
-          <li>
-            <a href="#">Tab Link</a>
-          </li>
-          <li>
-            <a href="#">Tab Link</a>
-          </li>
-          <li>
-            <a href="#">Tab Link</a>
-          </li>
-          <li>
-            <a href="#">Tab Link</a>
-          </li>
-          <li>
-            <a href="#">Tab Link</a>
-          </li>
-          <li>
-            <a href="#">Tab Link</a>
-          </li>
-          <li class="chi-dropdown">
-            <a class="chi-dropdown__trigger" href="#">Tab Dropdown</a>
-            <div class="chi-dropdown__menu">
-              <a class="chi-dropdown__menu-item" href="#">Element 1</a>
-              <a class="chi-dropdown__menu-item" href="#">Element 2</a>
-              <a class="chi-dropdown__menu-item" href="#">Element 3</a>
-            </div>
-          </li>
-        </ul>
+            <a class="chi-dropdown__menu-item" href="#">Elem 4</a>
+          </div>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li>
+          <a href="#">Tab Link</a>
+        </li>
+        <li class="chi-dropdown">
+          <a class="chi-dropdown__trigger" href="#">Tab Dropdown</a>
+          <div class="chi-dropdown__menu">
+            <a class="chi-dropdown__menu-item" href="#">Element 1</a>
+            <a class="chi-dropdown__menu-item" href="#">Element 2</a>
+            <a class="chi-dropdown__menu-item" href="#">Element 3</a>
+          </div>
+        </li>
+      </ul>
 
-        <script>
-          const navigationElem = document.getElementById('#navigationExample-1');
-          chi.navigation(navigationElem);
-        </script>
+      <script>
+        const navigationElem = document.getElementById('#navigationExample-1');
+        chi.navigation(navigationElem);
+      </script>
 
 .-portal--hide
   h3 Components contained
