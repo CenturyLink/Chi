@@ -1,4 +1,25 @@
 # CHANGELOG
+## 5.29.0 (March 29, 2023)
+### Components
+#### Added
+* Added: Expansion panel now supports state icons.
+* Added: Data table `noResultsMessage` config for displaying no results message.
+* Added: Data table `noFiltersMessage` config for displaying no filters message.
+* Added: Tabs web component now supports sizes.
+#### Changed
+* Changed: Tabs navigation bar `See more...` item has changed to `More`.
+#### Fixed
+* Fixed: Data table description popover in header has removed `modal` class that was causing incorrect width.
+### Documentation
+#### Added
+* Added: Data table radio selection example has been added in Lumen Enterprise Portal theme.
+* Added: Data table complex example has been added in Lumen and Centurylink theme.
+* Added: Tabs tabbed navigation example has been added in Lumen Enterprise Portal theme.
+#### Changed
+* Changed: Browser support page has removed ie11 from the support list.
+#### Fixed
+* Fixed: Data table code snippets.
+
 ## 5.28.0 (March 3, 2023)
 ### Components
 #### Added
