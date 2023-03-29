@@ -13,8 +13,12 @@
 ### Documentation
 #### Added
 * Added: Data table radio selection example has been added in Lumen Enterprise Portal theme.
+* Added: Data table complex example has been added in Lumen and Centurylink theme.
+* Added: Tabs tabbed navigation example has been added in Lumen Enterprise Portal theme.
 #### Changed
 * Changed: Browser support page has removed ie11 from the support list.
+#### Fixed
+* Fixed: Data table code snippets.
 
 ## 5.28.0 (March 3, 2023)
 ### Components
