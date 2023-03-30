@@ -4,10 +4,10 @@ export const CLASSES = {
   CLOSED: '-closed',
   DISABLED: '-disabled',
   INACTIVE: '-inactive',
-  TRANSITIONING : '-transitioning',
+  TRANSITIONING: '-transitioning',
   TODAY: '-today'
 };
-export const RESPONSIVE_BREAKPOINTS =  {
+export const RESPONSIVE_BREAKPOINTS = {
   sm: 576,
   md: 768,
   lg: 992,
@@ -18,6 +18,10 @@ export const ANIMATION_DURATION = {
   MEDIUM: 500,
   LONG: 1000
 };
+export enum CAROUSEL_DIRECTION {
+  NEXT = -1,
+  PREVIOUS = 1
+}
 
 export const ESCAPE_KEYCODE = '27';
 export const TEXT_INPUT_TYPES = [
@@ -54,7 +58,7 @@ export const CHI_TIME_SCROLL_ADJUSTMENT = 24;
 export const TIME_PICKER_FORMATS = ['12hr', '24hr'] as const;
 export type TimePickerFormats = typeof TIME_PICKER_FORMATS[number];
 
-export type MouseCursorPosition = { x: number, y: number };
+export type MouseCursorPosition = { x: number; y: number };
 
 export const APP_LAYOUT_FORMATS = ['base', 'no-margin', 'fixed-width'];
 export type AppLayoutFormats = typeof APP_LAYOUT_FORMATS[number];
