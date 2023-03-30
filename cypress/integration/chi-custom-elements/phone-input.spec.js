@@ -24,6 +24,40 @@ describe('Phone Input', () => {
     cy.visit('tests/custom-elements/phone-input.html');
   });
 
+  describe('Masking', () => {
+    const compareInputValue = (el, value, expectedValue) => {
+      cy.get(el)
+        .clear()
+        .type(value)
+        .invoke('val')
+        .then(val =>{
+          const myVal = val;
+
+          expect(myVal).to.equal(expectedValue);
+        });
+    };
+
+    beforeEach(() => {
+      cy.get(`[data-cy='phone-input-base']`)
+        .as('base')
+        .find('input[type="tel"]')
+        .as('phoneInput');
+    });
+
+    it('Should accept only numbers', () => {
+      compareInputValue('@phoneInput', 'abcdefghijklmnopqrstuwxyz', '');
+      compareInputValue(
+        '@phoneInput',
+        '!|"@.#$~%€&¬/()=ªº!|@"·#$¢%∞&¬/÷(“)”=≠?´¿‚^[*]+{ç},„;_–',
+        '');
+      compareInputValue(
+        '@phoneInput',
+        '¨^ó^¨ī¨^ī¨†¨ī¨ī^¨ó^Ļ^ó',
+        '');
+      compareInputValue('@phoneInput', '0123456789', '0123456789');
+    });
+  });
+
   describe('Base', () => {
     beforeEach(() => {
       cy.get(`[data-cy='phone-input-base']`)

@@ -168,7 +168,7 @@ export class ChiPhoneInput {
     }
     this.value = this._getValue();
     this.chiChange.emit(this.value);
-  };
+  }
 
   _inputHandler = (event: Event): void => {
     event.stopPropagation();
@@ -176,7 +176,30 @@ export class ChiPhoneInput {
     this.chiInput.emit(
       this._prefix + '-' + (event.target as HTMLInputElement).value
     );
-  };
+  }
+
+  _pasteHandler = (event: ClipboardEvent) => {
+    const phoneNumberRegex = new RegExp('^[0-9()+-_ ]+$');
+    const clipboardData = event.clipboardData.getData('text');
+    const containsOnlyAllowedChars = phoneNumberRegex.test(clipboardData);
+
+    if (!containsOnlyAllowedChars) {
+      event.preventDefault();
+    }
+  }
+
+  _keyPressHandler = (event: KeyboardEvent): void => {
+    const onlyNumbersRegex = new RegExp('^[0-9]+$');
+    const isKeyNumber = onlyNumbersRegex.test(event.key);
+
+    if (event.key === 'Enter') {
+      return;
+    }
+
+    if (!isKeyNumber) {
+      event.preventDefault();
+    }
+  }
 
   _prefixChangeHandler(event: Event, country: Country): void {
     event.preventDefault();
@@ -202,7 +225,7 @@ export class ChiPhoneInput {
     this._clickedOnComponent
       ? (this._clickedOnComponent = false)
       : (this._isDropdownActive = false);
-  };
+  }
 
   _getValue(): string {
     return `${this._prefix}-${this._suffix.replace(/[- )(]/g, '')}`;
@@ -285,6 +308,8 @@ export class ChiPhoneInput {
         value={this._suffix}
         onChiChange={this._suffixInputChangeHandler}
         onChiInput={this._inputHandler}
+        onKeyPress={this._keyPressHandler}
+        onPaste={this._pasteHandler}
       />
     );
 
