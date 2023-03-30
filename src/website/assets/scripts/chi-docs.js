@@ -322,6 +322,12 @@ onLoad(() => {
         if (logoElement.color) {
           logoElement.removeAttribute('color');
         }
+      } else if (theme === 'Colt') {
+        logoElement.logo = theme.toLowerCase();
+
+        if (logoElement.color) {
+          logoElement.removeAttribute('color');
+        }
       } else {
         logoElement.logo = 'lumen';
 

@@ -1,9 +1,11 @@
+import { DATA_TABLE_NO_FILTERS_MESSAGE, DATA_TABLE_NO_RESULTS_MESSAGE } from '@/constants/constants';
 import { DataTableConfig, DataTableModes } from '@/constants/types';
 
 export const defaultConfig: DataTableConfig = {
   columnResize: false,
   mode: DataTableModes.CLIENT,
-  noResultsMessage: 'No matches found. Please revise search criteria and try again.',
+  noResultsMessage: DATA_TABLE_NO_RESULTS_MESSAGE,
+  noFiltersMessage: DATA_TABLE_NO_FILTERS_MESSAGE,
   pagination: {
     activePage: 1,
     compact: false,
@@ -28,6 +30,6 @@ export const defaultConfig: DataTableConfig = {
   },
   treeSelection: true,
   cellWrap: false,
-  showExpandAll: true,
-  showSelectAllDropdown: true,
+  showExpandAll: false,
+  showSelectAllDropdown: false,
 };

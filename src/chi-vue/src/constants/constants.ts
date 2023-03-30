@@ -17,7 +17,8 @@ export const SCREEN_BREAKPOINTS = {
 //#endregion
 
 //#region Data Table
-export const DATA_TABLE_NO_RESULTS_FOUND = 'No results found';
+export const DATA_TABLE_NO_RESULTS_MESSAGE = 'No matching results';
+export const DATA_TABLE_NO_FILTERS_MESSAGE = 'Search for or select at least one filter to get results';
 export const DATA_TABLE_SORT_ICONS = {
   SORT: 'icon-arrow-sort',
   ARROW: 'icon-arrow-up',

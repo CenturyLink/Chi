@@ -1,14 +1,18 @@
 var versions;
 
-if (window.location.hostname === 'assets.ctl.io') {
+if (
+  window.location.hostname === 'assets.ctl.io' ||
+  window.location.hostname === 'lib.lumen.com'
+) {
   var xmlhttp = new XMLHttpRequest();
+  var hostname = window.location.hostname;
 
   xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState === XMLHttpRequest.DONE) {
       if (xmlhttp.status === 200) {
         versions = JSON.parse(xmlhttp.responseText);
-        if (localStorage.getItem("chiVersions") !== JSON.stringify(versions))  {
-          localStorage.setItem("chiVersions", JSON.stringify(versions));
+        if (localStorage.getItem('chiVersions') !== JSON.stringify(versions)) {
+          localStorage.setItem('chiVersions', JSON.stringify(versions));
           checkChiCurrentVersion(versions[0]);
         }
       }
@@ -16,7 +20,11 @@ if (window.location.hostname === 'assets.ctl.io') {
   };
 
   var time = Date.now();
-  xmlhttp.open("GET", "https://assets.ctl.io/chi/versions.json?time="+time, true);
+  xmlhttp.open(
+    'GET',
+    `https://${hostname}/chi/versions.json?time=${time}`,
+    true
+  );
   xmlhttp.send();
 }
 
@@ -30,9 +38,12 @@ function fillDropdown() {
   for (var version in versions.slice(0, 4)) {
     var versionAnchor = document.createElement('a');
 
-    versionAnchor.setAttribute("href", "https://assets.ctl.io/chi/"+versions[version]);
-    versionAnchor.setAttribute("class", "chi-dropdown__menu-item");
-    versionAnchor.innerText = "v" + versions[version];
+    versionAnchor.setAttribute(
+      'href',
+      `https://${hostname}/chi/${versions[version]}`
+    );
+    versionAnchor.setAttribute('class', 'chi-dropdown__menu-item');
+    versionAnchor.innerText = 'v' + versions[version];
     if (window.chiCurrentVersion === versions[version]) {
       versionAnchor.classList.add('-active');
     }
@@ -42,20 +53,20 @@ function fillDropdown() {
 
 function versionCompare(v1, v2) {
   var v1parts = v1.split('.'),
-      v2parts = v2.split('.');
+    v2parts = v2.split('.');
 
   for (var i = 0; i < v1parts.length; ++i) {
-      if (v2parts.length == i) {
-          return false;
-      }
+    if (v2parts.length == i) {
+      return false;
+    }
 
-      if (Number(v1parts[i]) == Number(v2parts[i])) {
-          continue;
-      } else if (Number(v1parts[i]) > Number(v2parts[i])) {
-          return false;
-      } else {
-          return true;
-      }
+    if (Number(v1parts[i]) == Number(v2parts[i])) {
+      continue;
+    } else if (Number(v1parts[i]) > Number(v2parts[i])) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   return false;
@@ -68,13 +79,22 @@ function checkChiCurrentVersion(currentVersion) {
     var newVersionMessage = document.createElement('div');
 
     fillDropdown();
-    newVersionMessage.setAttribute("class", "chi-alert -banner -center -warning -w--100");
-    newVersionMessage.setAttribute("role", "alert");
-    newVersionMessage.innerHTML = '<i class="chi-icon chi-alert__icon icon-warning -icon--warning" aria-hidden="true"></i><div class="chi-alert__content"><p class="chi-alert__text">A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/'+currentVersion+'">Learn more &#8250;</a></p>';
+    newVersionMessage.setAttribute(
+      'class',
+      'chi-alert -banner -center -warning -w--100'
+    );
+    newVersionMessage.setAttribute('role', 'alert');
+    newVersionMessage.innerHTML =
+      '<i class="chi-icon chi-alert__icon icon-warning -icon--warning" aria-hidden="true"></i><div class="chi-alert__content"><p class="chi-alert__text">A new version of Chi is available! &nbsp;<a href="https://assets.ctl.io/chi/' +
+      currentVersion +
+      '">Learn more &#8250;</a></p>';
     while (chiVersionCheckSelector.childNodes.length > 0) {
       chiVersionCheckSelector.removeChild(chiVersionCheckSelector.firstChild);
     }
-    chiVersionCheckSelector.appendChild(newVersionMessage, chiVersionCheckSelector.childNodes[0]);
-    docsContainerSelector.classList.add("outdated-version");
+    chiVersionCheckSelector.appendChild(
+      newVersionMessage,
+      chiVersionCheckSelector.childNodes[0]
+    );
+    docsContainerSelector.classList.add('outdated-version');
   }
 }

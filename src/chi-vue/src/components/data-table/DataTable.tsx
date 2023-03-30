@@ -37,7 +37,12 @@ import {
   DataTableColumnDescription,
   DataTableColumn,
 } from '@/constants/types';
-import { DATA_TABLE_NO_RESULTS_FOUND, DATA_TABLE_SORT_ICONS, SCREEN_BREAKPOINTS } from '@/constants/constants';
+import {
+  DATA_TABLE_NO_FILTERS_MESSAGE,
+  DATA_TABLE_NO_RESULTS_MESSAGE,
+  DATA_TABLE_SORT_ICONS,
+  SCREEN_BREAKPOINTS,
+} from '@/constants/constants';
 import DataTableTooltip from './DataTableTooltip';
 import Pagination from '../pagination/pagination';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
@@ -82,6 +87,7 @@ export default class DataTable extends Vue {
     ? this.$props.config.showSelectAllDropdown
     : defaultConfig.showSelectAllDropdown;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
+  emptyMessage = this.config.noFiltersMessage || defaultConfig.noFiltersMessage || DATA_TABLE_NO_FILTERS_MESSAGE;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -197,7 +203,6 @@ export default class DataTable extends Vue {
             reference={`#${infoPopoverId}`}
             position="top"
             title={(this.data.head[column].description as DataTableColumnDescription).title}
-            modal
             arrow>
             <div>{this._getDescription(this.data.head[column].description as string | DataTableColumnDescription)}</div>
           </chi-popover>
@@ -969,43 +974,48 @@ export default class DataTable extends Vue {
   }
 
   _body() {
-    let tableBodyRows: JSX.Element;
+    const getTableBodyRows = (): JSX.Element => {
+      if (!this.data.body.length) {
+        return (
+          <div class={DATA_TABLE_CLASSES.EMPTY}>
+            <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
+            {this.emptyMessage}
+          </div>
+        );
+      }
 
-    if (this.data.body.length > 0) {
-      const dataToRender = this.dataToRender();
-
-      let i = 0;
-      tableBodyRows = dataToRender.map((bodyRow: DataTableRow) => {
-        const striped = !(i % 2 === 0) && this.$props.config.style.striped;
-
-        i++;
+      return this.dataToRender().map((bodyRow: DataTableRow, index: number) => {
+        const striped = index % 2 !== 0 && this.$props.config.style.striped;
 
         return this.row(bodyRow, 'parent', striped);
       });
-    } else {
-      const noResultsMessage = this.config.noResultsMessage
-        ? this.config.noResultsMessage
-        : DATA_TABLE_NO_RESULTS_FOUND;
-
-      tableBodyRows = (
-        <div class={DATA_TABLE_CLASSES.EMPTY}>
-          <div>{noResultsMessage}</div>
-        </div>
-      );
-    }
+    };
 
     if (this.config.selectable === 'radio') {
       return (
         <div class={DATA_TABLE_CLASSES.BODY}>
           <fieldset>
             <legend class={SR_ONLY}>Select row</legend>
-            {tableBodyRows}
+            {getTableBodyRows()}
           </fieldset>
         </div>
       );
-    } else {
-      return <div class={DATA_TABLE_CLASSES.BODY}>{tableBodyRows}</div>;
     }
+
+    return <div class={DATA_TABLE_CLASSES.BODY}>{getTableBodyRows()}</div>;
+  }
+
+  _addToolbarSearchEventListener() {
+    if (!this._toolbarComponent) {
+      this.emptyMessage =
+        this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_MESSAGE;
+      return;
+    }
+
+    (this._toolbarComponent as Vue).$on(DATA_TABLE_EVENTS.TOOLBAR.SEARCH, () => {
+      this.emptyMessage =
+        this.config.noResultsMessage || defaultConfig.noResultsMessage || DATA_TABLE_NO_RESULTS_MESSAGE;
+    });
   }
 
   _addPaginationEventListener() {
@@ -1341,6 +1351,7 @@ export default class DataTable extends Vue {
 
     this._initializeSelectAllDropdown();
     this._addPaginationEventListener();
+    this._addToolbarSearchEventListener();
     window.addEventListener('resize', this.resizeHandler);
   }
 
@@ -1612,7 +1623,8 @@ export default class DataTable extends Vue {
       <tbody>
         <tr>
           <td colspan={Object.keys(this.data.head).length} class={DATA_TABLE_CLASSES.EMPTY}>
-            {this.config.noResultsMessage ? this.config.noResultsMessage : DATA_TABLE_NO_RESULTS_FOUND}
+            <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
+            {this.emptyMessage}
           </td>
         </tr>
       </tbody>

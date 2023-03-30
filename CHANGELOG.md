@@ -1,4 +1,44 @@
 # CHANGELOG
+## 5.29.0 (March 29, 2023)
+### Components
+#### Added
+* Added: Expansion panel now supports state icons.
+* Added: Data table `noResultsMessage` config for displaying no results message.
+* Added: Data table `noFiltersMessage` config for displaying no filters message.
+* Added: Tabs web component now supports sizes.
+#### Changed
+* Changed: Tabs navigation bar `See more...` item has changed to `More`.
+#### Fixed
+* Fixed: Data table description popover in header has removed `modal` class that was causing incorrect width.
+### Documentation
+#### Added
+* Added: Data table radio selection example has been added in Lumen Enterprise Portal theme.
+* Added: Data table complex example has been added in Lumen and Centurylink theme.
+* Added: Tabs tabbed navigation example has been added in Lumen Enterprise Portal theme.
+#### Changed
+* Changed: Browser support page has removed ie11 from the support list.
+#### Fixed
+* Fixed: Data table code snippets.
+
+## 5.28.0 (March 3, 2023)
+### Components
+#### Added
+* Added: Date picker now supports changing the format time from 12h to 24h when `mode="datetime"` is active.
+* Added: Data table `showExpandAll` config for displaying expand/collapse all functionality.
+* Added: Data table `showSelectedAllDropdown` config for displaying select/deselect all functionality.
+* Added: Carousel condition to chi-stat__item to display prev and next buttons.
+* Added: Events for select/deselect all items in all pages.
+* Added: Text input now supports `type="number"`.
+#### Changed
+* Changed: Label cursor and attributes on `abbr` html elements  in form field labels.
+* Changed: Alert base style in Lumen Enterprise Portal theme to better support brand guidelines.
+#### Fixed
+* Fixed: Date picker `invalid format` error in datetime mode.
+* Fixed: Data table select all and deselect all console errors when checkboxes are loaded dynamically.
+### Documentation
+#### Added
+* Added: Save View Vue component properties.
+
 ## 5.27.0 (February 9, 2023)
 ### Components
 #### Added
