@@ -36,6 +36,7 @@ import {
   DataTableRowLevels,
   DataTableColumnDescription,
   DataTableColumn,
+  DataTableHeadCell,
 } from '@/constants/types';
 import {
   DATA_TABLE_NO_FILTERS_MESSAGE,
@@ -168,9 +169,7 @@ export default class DataTable extends Vue {
     );
   }
 
-  _createPopover(infoPopoverId: string, description?: DataTableColumnDescription | string) {
-    if (!description) return null;
-
+  _createPopover(infoPopoverId: string, description: DataTableColumnDescription | string) {
     return (
       <chi-popover
         ref={infoPopoverId}
@@ -184,7 +183,9 @@ export default class DataTable extends Vue {
   }
 
   _getInfoPopover(infoPopoverId: string, description?: DataTableColumnDescription | string) {
-    if (!description) return null;
+    if (!description) {
+      return null;
+    }
 
     const infoPopover = this._createPopover(infoPopoverId, description);
 
@@ -204,43 +205,40 @@ export default class DataTable extends Vue {
     );
   }
 
-  _getSortableIcon(column: string, sortable?: boolean) {
-    if (!sortable) return null;
+  _getSortableIcon(column: DataTableHeadCell, sortable?: boolean) {
+    if (!sortable) {
+      return null;
+    }
+
+    const sortConfig = this._sortConfig;
+    const hasSortConfig = [column.sortBy, column].includes(sortConfig?.key);
+    const classNames = `${ICON_CLASS} -xs ${hasSortConfig ? DATA_TABLE_SORT_ICONS.ARROW : DATA_TABLE_SORT_ICONS.SORT}`;
 
     return (
       <chi-button variant="flat" type="icon" alternative-text="Sort icon">
-        <i
-          class={`
-              ${ICON_CLASS} -xs ${
-            this._sortConfig &&
-            (this._sortConfig.key === this.data.head[column].sortBy || this._sortConfig.key === column)
-              ? DATA_TABLE_SORT_ICONS.ARROW
-              : DATA_TABLE_SORT_ICONS.SORT
-          }`}
-          style={`${
-            this._sortConfig && this._sortConfig.direction === 'descending' ? 'transform: rotate(180deg)' : ''
-          }`}
-        />
+        <i class={classNames} style={sortConfig?.direction === 'descending' && 'transform: rotate(180deg);'} />
       </chi-button>
     );
   }
 
   _getLabel(label: string) {
-    return this.config.truncation ? (
-      <DataTableTooltip msg={label} header />
-    ) : this.cellWrap ? (
-      <DataTableTooltip msg={label} textWrap header class="-w--100" />
-    ) : (
-      label
-    );
+    if (this.cellWrap) {
+      return <DataTableTooltip msg={label} textWrap header class="-w--100" />;
+    }
+
+    if (this.config.truncation) {
+      return <DataTableTooltip msg={label} header />;
+    }
+
+    return label;
   }
 
   _getSelectableColumn() {
-    return this.config.selectable === 'radio' ? (
-      <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.SELECTABLE}`}></div>
-    ) : (
-      this._selectRowCheckbox(true)
-    );
+    if (this.config.selectable === 'radio') {
+      return <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.SELECTABLE}`}></div>;
+    }
+
+    return this._selectRowCheckbox(true);
   }
 
   _getSelectableAndExpandableColumns() {
@@ -261,9 +259,66 @@ export default class DataTable extends Vue {
   }
 
   _handleClickSortableColumn(event: MouseEvent) {
-    if (this._preventSortOnResize && event.type === '') return;
+    if (this._preventSortOnResize && event.type === '') {
+      return;
+    }
 
     this.sortColumn(event);
+  }
+
+  _createTableHeadCell(column: string, cellIndex: number) {
+    if (column === 'selectableColumn') {
+      return this._getSelectableColumn();
+    }
+
+    if (column === 'expandableColumn') {
+      return this._headExpandable();
+    }
+
+    const cell = this.data.head[column];
+
+    const infoPopoverId = `info-popover-${this._dataTableNumber}-${column}`;
+    const label = cell.label || cell;
+    const { sortBy, sortable, align, description, allowOverflow } = cell;
+
+    const alignment = this._cellAlignment(align || 'left');
+    const infoIcon = this._getInfoPopover(infoPopoverId, description);
+    const sortIcon = this._getSortableIcon(cell, sortable);
+    const customLabel = this._getLabel(label as string);
+    const cellWidth = this._getCellWidth(cellIndex);
+
+    const style = `${cellWidth === 0 && 'display: none;'} ${allowOverflow && 'overflow: visible;'}`;
+    const defaultClassName = `${DATA_TABLE_CLASSES.CELL} ${alignment}
+    ${cellWidth && cellWidth > 0 && `-flex-basis--${cellWidth}`}`;
+
+    const sortableColumnHead = (
+      <div
+        data-label={label}
+        style={style}
+        class={`${defaultClassName} ${sortable && DATA_TABLE_CLASSES.SORTING}`}
+        data-column={column}
+        data-sort-by={sortBy}
+        data-sort={this._sortConfig?.direction ?? ''}
+        aria-label={`Sort Column ${label}`}
+        onClick={this._handleClickSortableColumn}>
+        {customLabel}
+        {infoIcon}
+        {sortIcon}
+      </div>
+    );
+
+    const nonSortableColumnHead = (
+      <div data-label={label} style={style} class={defaultClassName}>
+        {customLabel}
+        {infoIcon}
+      </div>
+    );
+
+    if (sortable && !this._sortable) {
+      this._sortable = true;
+    }
+
+    return sortable ? sortableColumnHead : nonSortableColumnHead;
   }
 
   _head() {
@@ -273,51 +328,7 @@ export default class DataTable extends Vue {
     };
 
     const tableHeadCells = Object.keys(columns).map((column: string, cellIndex: number) => {
-      if (column === 'selectableColumn') return this._getSelectableColumn();
-      if (column === 'expandableColumn') return this._headExpandable();
-
-      const infoPopoverId = `info-popover-${this._dataTableNumber}-${column}`;
-      const label = this.data.head[column].label || this.data.head[column];
-      const sortBy = this.data.head[column].sortBy;
-      const sortable = this.data.head[column].sortable;
-      const alignment = this._cellAlignment(this.data.head[column].align || 'left');
-      const infoIcon = this._getInfoPopover(infoPopoverId, this.data.head[column].description);
-      const sortIcon = this._getSortableIcon(column, sortable);
-      const customLabel = this._getLabel(label as string);
-      const cellWidth = this._getCellWidth(cellIndex);
-      const style = `${cellWidth === 0 && 'display: none;'} ${this.data.head[column].allowOverflow &&
-        'overflow: visible;'}`;
-      const defaultClassName = `${DATA_TABLE_CLASSES.CELL} ${alignment}
-      ${cellWidth && cellWidth > 0 && `-flex-basis--${cellWidth}`}`;
-
-      const sortableColumnHead = (
-        <div
-          data-label={label}
-          style={style}
-          class={`${defaultClassName} ${sortable && DATA_TABLE_CLASSES.SORTING}`}
-          data-column={column}
-          data-sort-by={sortBy}
-          data-sort={this._sortConfig?.direction ?? ''}
-          aria-label={`Sort Column ${label}`}
-          onClick={this._handleClickSortableColumn}>
-          {customLabel}
-          {infoIcon}
-          {sortIcon}
-        </div>
-      );
-
-      const nonSortableColumnHead = (
-        <div data-label={label} style={style} class={defaultClassName}>
-          {customLabel}
-          {infoIcon}
-        </div>
-      );
-
-      if (this.data.head[column].sortable && !this._sortable) {
-        this._sortable = true;
-      }
-
-      return sortable ? sortableColumnHead : nonSortableColumnHead;
+      return this._createTableHeadCell(column, cellIndex);
     });
 
     return (

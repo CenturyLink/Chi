@@ -49,20 +49,23 @@ export interface DataTableRow {
     isNestedContentPrintDisabled?: boolean;
   };
 }
+
+export interface DataTableHeadCell {
+  label: string;
+  sortable?: boolean;
+  sortBy?: string;
+  sortDataType?: 'string' | 'number' | 'date' | 'boolean';
+  align?: 'left' | 'center' | 'right';
+  allowOverflow?: 'visible' | 'hidden';
+  key?: boolean;
+  bold?: boolean;
+  description?: string | DataTableColumnDescription;
+  isPrintDisabled?: boolean;
+}
+
 export interface DataTableData {
   head: {
-    [code: string]: {
-      label: string;
-      sortable?: boolean;
-      sortBy?: string;
-      sortDataType?: 'string' | 'number' | 'date' | 'boolean';
-      align?: 'left' | 'center' | 'right';
-      allowOverflow?: 'visible' | 'hidden';
-      key?: boolean;
-      bold?: boolean;
-      description?: string | DataTableColumnDescription;
-      isPrintDisabled?: boolean;
-    };
+    [code: string]: DataTableHeadCell;
   };
   body: DataTableRow[];
 }
