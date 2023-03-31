@@ -68,20 +68,6 @@
           :src="`/themes/lumen/images/favicon.svg`"
         />
         <div class="-theme-name">Lumen Enterprise Portal</div></a
-      ><a
-        v-bind:class="[
-          this.$store.state.themes.theme === 'colt' ? '-active' : '',
-          'theme-trigger-colt',
-          'chi-dropdown__menu-item'
-        ]"
-        @click="setTheme('colt')"
-        ><nuxt-img
-          class="-mr--1"
-          width="16"
-          height="16"
-          :src="`/themes/colt/images/favicon.svg`"
-        />
-        <div class="-theme-name">Colt</div></a
       >
     </div>
   </div>
