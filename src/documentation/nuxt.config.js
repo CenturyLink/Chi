@@ -91,15 +91,15 @@ export default {
         style: 'github'
       }
     ],
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
   axios: {
     proxy: true,
-    baseURL: 'http://localhost:3000'
   },
   proxy: {
     '/api/': {
-      target: 'http://localhost:8000',
+      target: CHI_ASSETS_SOURCE_URL,
       pathRewrite: { '^/api/': '' }
     }
   },

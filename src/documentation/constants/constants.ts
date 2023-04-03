@@ -81,9 +81,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/badge`,
+    to: `components/badge`,
     label: 'Badge',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/brand`,
