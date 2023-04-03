@@ -1,7 +1,9 @@
 <template lang="pug">
   div
     h2 Web Component
-    <PropertiesGenerator tag="chi-icon" />
+    <client-only placeholder="loading...">
+      <PropertiesGenerator tag="chi-icon" />
+    </client-only>
 </template>
 
 <script lang="ts">
