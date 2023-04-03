@@ -1,9 +1,7 @@
 <template lang="pug">
   div
     h2 Web Component
-    <client-only placeholder="loading...">
-      <PropertiesGenerator tag="chi-carousel" />
-    </client-only>
+    <PropertiesGenerator tag="chi-carousel" />
 </template>
 
 <script lang="ts">

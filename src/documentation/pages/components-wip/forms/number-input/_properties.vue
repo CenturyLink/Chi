@@ -1,9 +1,7 @@
 <template lang="pug">
   div
     h2 Web Component
-    <client-only placeholder="loading...">
-      <PropertiesGenerator tag="chi-number-input" />
-    </client-only>
+    <PropertiesGenerator tag="chi-number-input" />
 
     .chi-divider.-my--5
 

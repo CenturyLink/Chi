@@ -1,9 +1,7 @@
 <template lang="pug">
   div
     h2 Web Component
-    <client-only placeholder="loading...">
-      <PropertiesGenerator tag="chi-pagination" />
-    </client-only>
+    <PropertiesGenerator tag="chi-pagination" />
 
     h2 Chi Vue
     h3 Props

@@ -1,9 +1,7 @@
 <template lang="pug">
   div
     h2 Web Component
-    <client-only placeholder="loading...">
-      <PropertiesGenerator tag="chi-search-input" />
-    </client-only>
+    <PropertiesGenerator tag="chi-search-input" />
 
     h2 Chi Vue 
     h3 Props

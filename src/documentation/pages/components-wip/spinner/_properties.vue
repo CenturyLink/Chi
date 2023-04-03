@@ -1,9 +1,7 @@
 <template lang="pug">
   div
     h2 Web Component
-    <client-only placeholder="loading...">
-      <PropertiesGenerator tag="chi-spinner" />
-    </client-only>
+    <PropertiesGenerator tag="chi-spinner" />
 </template>
 
 <script lang="ts">

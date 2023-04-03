@@ -1,9 +1,7 @@
 <template lang="pug">
   div
     h2 Web Component
-    <client-only placeholder="loading...">
-      <PropertiesGenerator tag="chi-phone-input" />
-    </client-only>
+    <PropertiesGenerator tag="chi-phone-input" />
 </template>
 
 <script lang="ts">

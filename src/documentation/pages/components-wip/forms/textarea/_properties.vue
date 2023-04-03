@@ -1,9 +1,7 @@
 <template lang="pug">
   div
     h2 Web Component
-    <client-only placeholder="loading...">
-      <PropertiesGenerator tag="chi-textarea" />
-    </client-only>
+    <PropertiesGenerator tag="chi-textarea" />
 </template>
 
 <script lang="ts">

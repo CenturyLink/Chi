@@ -1,13 +1,9 @@
 <template lang="pug">
   div
     h2 chi-date-picker
-    <client-only placeholder="loading...">
-      <PropertiesGenerator tag="chi-date-picker" />
-    </client-only>
+    <PropertiesGenerator tag="chi-date-picker" />
     h2 chi-date
-    <client-only placeholder="loading...">
-      <PropertiesGenerator tag="chi-date" />
-    </client-only>
+    <PropertiesGenerator tag="chi-date" />
     h2 JavaScript
     p.-text This component accepts options to configure its behavior.
 

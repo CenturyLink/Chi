@@ -1,9 +1,7 @@
 <template lang="pug">
   div
     h2 Web Component
-    <client-only placeholder="loading...">
-      <PropertiesGenerator tag="chi-progress" />
-    </client-only>
+    <PropertiesGenerator tag="chi-progress" />
 </template>
 
 <script lang="ts">

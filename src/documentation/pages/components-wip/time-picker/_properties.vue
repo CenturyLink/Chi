@@ -1,14 +1,10 @@
 <template lang="pug">
     div
       h2 chi-time-picker
-      <client-only placeholder="loading...">
-        <PropertiesGenerator tag="chi-time-picker" />
-      </client-only>
+      <PropertiesGenerator tag="chi-time-picker" />
       .chi-divider.-my--5
       h2 chi-time
-      <client-only placeholder="loading...">
-        <PropertiesGenerator tag="chi-time" />
-      </client-only>
+      <PropertiesGenerator tag="chi-time" />
 </template>
 
 <script lang="ts">
