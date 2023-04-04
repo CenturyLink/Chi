@@ -93,7 +93,7 @@ export default class Base extends Vue {
   ${footerTemplate}
 </div>
 
-<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`;
+${this.$store.state.themes.theme === 'centurylink' ? '' : '<script>chi.dropdown(document.getElementById(\'language-dropdown-button\'));<\/script>'}`;
   }
 }
 </script>

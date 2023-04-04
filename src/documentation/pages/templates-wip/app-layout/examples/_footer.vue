@@ -20,9 +20,7 @@ const generateLumenFooter = (dropdownId) => {
           </div>
           <div class="chi-footer__links">
             <ul>
-              ${FOOTER_LINKS.map(({href, title}) => `<li>
-                <a href="${href}">${title}</a>
-              </li>`).join('\n              ')}
+              ${FOOTER_LINKS.map(({href, title}) => `<li><a href="${href}">${title}</a></li>`).join('\n              ')}
             </ul>
             <div class="chi-footer__copyright">&copy; 2023 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
           </div>
@@ -39,16 +37,14 @@ const generateCenturylinkFooter = () => {
         <div class="chi-footer__internal-content -mw--1200">
           <div class="chi-footer__links">
             <ul>
-                ${FOOTER_LINKS.map(({href, title}) => `<li>
-                  <a href="${href}">${title}</a>
-                </li>`).join('\n              ')}
-              </ul>
+              ${FOOTER_LINKS.map(({href, title}) => `<li><a href="${href}">${title}</a></li>`).join('\n              ')}
+            </ul>
             <div class="chi-footer__copyright">&copy; 2023 CenturyLink. All Rights Reserved. Third party marks are the property of their respective owners.</div>
           </div>
         </div>
       </div>
     </div>
-</footer>`
+  </footer>`
 };
 
 const generateBrightspeedFooter = (dropdownId) => {
@@ -78,7 +74,7 @@ const generateBrightspeedFooter = (dropdownId) => {
         </div>
       </div>
     </div>
-</footer>`
+  </footer>`
 };
 
 export const generateExampleFooter = (dropdownId = 'language-dropdown-button', theme) => {

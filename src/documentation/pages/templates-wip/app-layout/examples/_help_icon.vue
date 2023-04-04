@@ -89,7 +89,7 @@ export default class HelpIcon extends Vue {
 </chi-main>
 
 <script>
-  chi.dropdown(document.getElementById('language-dropdown-button'));
+  ${this.$store.state.themes.theme === 'centurylink' ? `` : 'chi.dropdown(document.getElementById(\'language-dropdown-button\'));'}
   document.querySelector("#example__help-button")
     .addEventListener("click", function() {
       var popoverElem = document.querySelector("#example__help-popover");
@@ -123,7 +123,7 @@ export default class HelpIcon extends Vue {
 </div>
 
 <script>
-  chi.dropdown(document.getElementById('language-dropdown-button'));
+  ${this.$store.state.themes.theme === 'centurylink' ? '' : 'chi.dropdown(document.getElementById(\'language-dropdown-button\'));'}
   chi.popover(document.getElementById('example__help-button'));
 <\/script>`;
   }
