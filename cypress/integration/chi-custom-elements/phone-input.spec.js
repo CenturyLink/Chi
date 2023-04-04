@@ -36,7 +36,7 @@ describe('Phone Input', () => {
     cy.visit('tests/custom-elements/phone-input.html');
   });
 
-  describe.only('Base', () => {
+  describe('Base', () => {
     beforeEach(() => {
       cy.get(`[data-cy='phone-input-base']`)
         .as('base')
