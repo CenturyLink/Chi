@@ -29,16 +29,16 @@
                           .chi-accordion__title Item {{val2}}.{{val3}}
                           i.chi-icon.icon-chevron-down(aria-hidden="true")
                         .chi-accordion__content
-                          a(v-for="val4 in drawerMenuItems" href=`#exampleHashTarget` :class="`${val1 === activeMenuItem && val2 === activeDrawerMenuItem && val3 === activeDrawerMenuItem && val4 === activeDrawerMenuItem ? '-active' : ''}`")
+                          a(v-for="val4 in drawerMenuItems" v-on:click.prevent href=`#exampleHashTarget` :class="`${val1 === activeMenuItem && val2 === activeDrawerMenuItem && val3 === activeDrawerMenuItem && val4 === activeDrawerMenuItem ? '-active' : ''}`")
                             span Item {{val2}}.{{val3}}.{{val4}}
-                a(href=`#exampleHashTarget`)
+                a(href=`#exampleHashTarget` v-on:click.prevent)
                   span
                     | External
                     i.chi-icon.icon-external-link.-xs(aria-hidden="true")
       .-flex--grow1.-p--3.-pb--4
-        p(v-for="itm in [1, 2, 3, 4]") Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-          | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+        p(v-for="itm in [1, 2, 3, 4]") Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           | Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
