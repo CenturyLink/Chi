@@ -27,12 +27,12 @@ export class AppLayout {
   /**
    *  To define app layout subtitle
    */
-   @Prop({ reflect: true }) subtitle: string;
+  @Prop({ reflect: true }) subtitle: string;
 
   /**
    *  To define app layout header background
    */
-   @Prop({ reflect: true }) headerBackground: boolean;
+  @Prop({ reflect: true }) headerBackground: boolean;
 
   /**
    *  To define app layout title
@@ -54,6 +54,8 @@ export class AppLayout {
    */
   @Event({ eventName: 'chiBacklinkClick' }) eventBacklinkClick: EventEmitter;
 
+  private mutationObserver;
+
   @Watch('format')
   typeValidation(newValue: string) {
     if (newValue && !APP_LAYOUT_FORMATS.includes(newValue)) {
@@ -62,10 +64,28 @@ export class AppLayout {
   }
 
   connectedCallback() {
-    if (this.el.getAttribute('title')) {
-      this.appLayoutTitle = this.el.getAttribute('title');
-      this.el.removeAttribute('title');
+    const observerTarget = this.el;
+    const mutationObserverConfig = {
+      attributes: true,
+      attributeOldValue: true,
+      attributeFilter: ['title']
+    };
+
+    if (!this.mutationObserver) {
+      const subscriberCallback = mutations => {
+        mutations.forEach(mutation => {
+          this.appLayoutTitle = mutation.target.title;
+        });
+      };
+
+      this.mutationObserver = new MutationObserver(subscriberCallback);
     }
+
+    this.mutationObserver.observe(observerTarget, mutationObserverConfig);
+  }
+
+  disconnectedCallback() {
+    this.mutationObserver.disconnect();
   }
 
   componentWillLoad() {
