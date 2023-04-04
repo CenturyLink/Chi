@@ -92,18 +92,9 @@ export default {
       }
     ],
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
   ],
-  axios: {
-    proxy: true
-  },
-  proxy: {
-    '/docs': {
-      target: `${CHI_ASSETS_SOURCE_URL}/js/ce/docs.json`,
-      pathRewrite: {
-        '^/docs': ''
-      }
-    }
+  env: {
+    docs: `${CHI_ASSETS_SOURCE_URL}js/ce/docs.json`
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
