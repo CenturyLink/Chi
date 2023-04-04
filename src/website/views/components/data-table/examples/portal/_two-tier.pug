@@ -8,18 +8,22 @@ h3 Two tier header
         .chi-data-table.-portal.-compact
           .chi-data-table__head
             .chi-data-table__row
-              button.chi-data-table__cell.-sorting.-active
-                div Location
-                i.chi-icon.-xs.icon-arrow-up(aria-hidden="true")
-              button.chi-data-table__cell.-sorting
-                div High Utilization
-                i.chi-icon.-xs.icon-arrow-sort(aria-hidden="true")
-              button.chi-data-table__cell.-sorting
-                div Elevated Utilization
-                i.chi-icon.-xs.icon-arrow-sort(aria-hidden="true")
-              button.chi-data-table__cell.-sorting
-                div Highest %
-                i.chi-icon.-xs.icon-arrow-sort(aria-hidden="true")
+              div.chi-data-table__cell.-justify-content-md--start.-sorting(aria-label="Sort Column Location",
+                  data-column="localization", data-sort="ascending", data-label="Location") Location
+                chi-button(variant='flat' type='icon')
+                  chi-icon(icon='arrow-up', size='xs')
+              div.chi-data-table__cell.-justify-content-md--start.-sorting(aria-label="Sort Column High Utilization",
+                  data-column="highUtilization", data-sort="ascending", data-label="High Utilization") High Utilization
+                chi-button(variant='flat' type='icon')
+                  chi-icon(icon='arrow-sort', size='xs')
+              div.chi-data-table__cell.-justify-content-md--start.-sorting(aria-label="Sort Column Elevated Utilization",
+                  data-column="elevatedUtilization", data-sort="ascending", data-label="Elevated Utilization") Elevated Utilization
+                chi-button(variant='flat' type='icon')
+                  chi-icon(icon='arrow-sort', size='xs')
+              div.chi-data-table__cell.-justify-content-md--start.-sorting(aria-label="Sort Column Highest %",
+                  data-column="highest", data-sort="ascending", data-label="Highest %") Highest %
+                chi-button(variant='flat' type='icon')
+                  chi-icon(icon='arrow-sort', size='xs')
             .chi-data-table__row
               .chi-data-table__cell
               .chi-data-table__cell
@@ -30,7 +34,7 @@ h3 Two tier header
                 div.-associated %
               .chi-data-table__cell
           .chi-data-table__body
-            .chi-data-table__row.-xl
+            .chi-data-table__row.-md
               .chi-data-table__cell.-key.-bold
                 div Location 1
               .chi-data-table__cell
@@ -41,7 +45,7 @@ h3 Two tier header
                 div.-associated -
               .chi-data-table__cell
                 div 98%
-            .chi-data-table__row.-striped.-xl
+            .chi-data-table__row.-striped.-md
               .chi-data-table__cell.-key.-bold
                 div Location 2
               .chi-data-table__cell
@@ -52,7 +56,7 @@ h3 Two tier header
                 div.-associated 67%
               .chi-data-table__cell
                 div 98%
-            .chi-data-table__row.-xl
+            .chi-data-table__row.-md
               .chi-data-table__cell.-key.-bold
                 div Location 3
               .chi-data-table__cell
@@ -62,19 +66,19 @@ h3 Two tier header
                 div.-associated 2
                 div.-associated 66
               .chi-data-table__cell
-                div 66%    
+                div 66%
           .chi-data-table__footer
             nav.chi-pagination.-compact(role='navigation', aria-label='Pagination')
               .chi-pagination__content
                 .chi-pagination__start
-                  .chi-pagination__results
+                  .chi-pagination__results.-text--xs
                     span.chi-pagination__label 240 Results
                 .chi-pagination__center
                   .chi-pagination__button-group.chi-button-group
-                    button.chi-button.-icon.-flat.-primary.-sm(aria-label='First page')
+                    button.chi-button.-icon.-flat.-primary.-xs(aria-label='First page')
                       .chi-button__content
                         i.chi-icon.icon-page-first(aria-hidden='true')
-                    button.chi-button.-icon.-flat.-primary.-sm(aria-label='Previous page')
+                    button.chi-button.-icon.-flat.-primary.-xs(aria-label='Previous page')
                       .chi-button__content
                         i.chi-icon.icon-chevron-left(aria-hidden='true')
                   .chi-pagination__label
@@ -82,10 +86,10 @@ h3 Two tier header
                     span of
                     strong 3
                   .chi-pagination__button-group.chi-button-group
-                    button.chi-button.-icon.-flat.-primary.-sm(aria-label='Next page')
+                    button.chi-button.-icon.-flat.-primary.-xs(aria-label='Next page')
                       .chi-button__content
                         i.chi-icon.icon-chevron-right(aria-hidden='true')
-                    button.chi-button.-icon.-flat.-primary.-sm(aria-label='Last page')
+                    button.chi-button.-icon.-flat.-primary.-xs(aria-label='Last page')
                       .chi-button__content
                         i.chi-icon.icon-page-last(aria-hidden='true')
                 .chi-pagination__end
@@ -107,22 +111,34 @@ h3 Two tier header
           <div class="chi-data-table -portal -compact">
             <div class="chi-data-table__head">
               <div class="chi-data-table__row">
-                <button class="chi-data-table__cell -sorting -active">
-                  <div>Location</div>
-                  <i class="chi-icon icon-arrow-up" aria-hidden="true"></i>
-                </button>
-                <button class="chi-data-table__cell -sorting">
-                  <div>High Utilization</div>
-                  <i class="chi-icon icon-arrow-sort" aria-hidden="true"></i>
-                </button>
-                <button class="chi-data-table__cell -sorting">
-                  <div>Elevated Utilization</div>
-                  <i class="chi-icon icon-arrow-sort" aria-hidden="true"></i>
-                </button>
-                <button class="chi-data-table__cell -sorting">
-                  <div>Highest %</div>
-                  <i class="chi-icon icon-arrow-sort" aria-hidden="true"></i>
-                </button>
+                <div class="chi-data-table__cell -justify-content-md--start -sorting" aria-label="Sort Column Location"
+                  data-column="location" data-sort="ascending" data-label="Location">
+                  Location
+                  <chi-button variant="flat" type="icon>
+                    <chi-icon icon="arrow-up" size="xs"></chi-icon>
+                  </chi-button>
+                </div>
+                <div class="chi-data-table__cell -justify-content-md--start -sorting" aria-label="Sort Column High Utilization"
+                  data-column="highUtilization" data-sort="ascending" data-label="High Utilization">
+                  High Utilization
+                  <chi-button variant="flat" type="icon>
+                    <chi-icon icon="arrow-sort" size="xs"></chi-icon>
+                  </chi-button>
+                </div>
+                <div class="chi-data-table__cell -justify-content-md--start -sorting" aria-label="Sort Column Elevated Utilization"
+                  data-column="elevatedUtilization" data-sort="ascending" data-label="Elevated Utilization">
+                  Elevated Utilization
+                  <chi-button variant="flat" type="icon>
+                    <chi-icon icon="arrow-sort" size="xs"></chi-icon>
+                  </chi-button>
+                </div>
+                <div class="chi-data-table__cell -justify-content-md--start -sorting" aria-label="Sort Column Highest %"
+                  data-column="highest" data-sort="ascending" data-label="Highest %">
+                  Highest %
+                  <chi-button variant="flat" type="icon>
+                    <chi-icon icon="arrow-sort" size="xs"></chi-icon>
+                  </chi-button>
+                </div>
               </div>
               <div class="chi-data-table__row">
                 <div class="chi-data-table__cell"></div>
@@ -138,7 +154,7 @@ h3 Two tier header
               </div>
             </div>
             <div class="chi-data-table__body">
-              <div class="chi-data-table__row -xl">
+              <div class="chi-data-table__row -md">
                 <div class="chi-data-table__cell -key -bold">
                   <div>Location 1</div>
                 </div>
@@ -154,7 +170,7 @@ h3 Two tier header
                   <div>98%</div>
                 </div>
               </div>
-              <div class="chi-data-table__row -striped -xl">
+              <div class="chi-data-table__row -striped -md">
                 <div class="chi-data-table__cell -key -bold">
                   <div>Location 2</div>
                 </div>
@@ -170,7 +186,7 @@ h3 Two tier header
                   <div>98%</div>
                 </div>
               </div>
-              <div class="chi-data-table__row -xl">
+              <div class="chi-data-table__row -md">
                 <div class="chi-data-table__cell -key -bold">
                   <div>Location 3</div>
                 </div>
@@ -197,12 +213,12 @@ h3 Two tier header
                   </div>
                   <div class="chi-pagination__center">
                     <div class="chi-pagination__button-group chi-button-group">
-                      <button class="chi-button -icon -flat -primary -sm" aria-label="First page">
+                      <button class="chi-button -icon -flat -primary -xs" aria-label="First page">
                         <div class="chi-button__content">
                           <i class="chi-icon icon-page-first" aria-hidden="true"></i>
                         </div>
                       </button>
-                      <button class="chi-button -icon -flat -primary -sm" aria-label="Previous page">
+                      <button class="chi-button -icon -flat -primary -xs" aria-label="Previous page">
                         <div class="chi-button__content">
                           <i class="chi-icon icon-chevron-left" aria-hidden="true"></i>
                         </div>
@@ -214,12 +230,12 @@ h3 Two tier header
                       <strong>3</strong>
                     </div>
                     <div class="chi-pagination__button-group chi-button-group">
-                      <button class="chi-button -icon -flat -primary -sm" aria-label="Next page">
+                      <button class="chi-button -icon -flat -primary -xs" aria-label="Next page">
                         <div class="chi-button__content">
                           <i class="chi-icon icon-chevron-right" aria-hidden="true"></i>
                         </div>
                       </button>
-                      <button class="chi-button -icon -flat -primary -sm" aria-label="Last page">
+                      <button class="chi-button -icon -flat -primary -xs" aria-label="Last page">
                         <div class="chi-button__content">
                           <i class="chi-icon icon-page-last" aria-hidden="true"></i>
                         </div>

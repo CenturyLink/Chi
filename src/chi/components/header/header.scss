@@ -389,7 +389,7 @@
         margin: 0 3rem 0 0;
       }
 
-      &:not(.-centurylink):not(.-brightspeed) {
+      &:not(.-centurylink):not(.-brightspeed):not(.-colt) {
         margin: 0 0.5rem;
         width: 8.75rem;
 
@@ -438,7 +438,7 @@
         margin: 0 3rem 0 0;
       }
 
-      &:not(.-centurylink):not(.-brightspeed) {
+      &:not(.-centurylink):not(.-brightspeed):not(.-colt) {
         margin: 0 0.5rem;
         width: 9.0625rem;
 
@@ -494,7 +494,7 @@
     }
 
     .chi-brand {
-      &:not(.-centurylink):not(.-brightspeed) {
+      &:not(.-centurylink):not(.-brightspeed):not(.-colt) {
         @include respond-to(md) {
           margin: 0 1rem 0 0;
           width: 10rem;

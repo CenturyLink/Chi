@@ -1,6 +1,6 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
-export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.28.0`;
+export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.29.0`;
 export const THEMES = {
   centurylink: {
     label: 'CenturyLink',
@@ -19,6 +19,12 @@ export const THEMES = {
     favicon: '',
     css: `chi-portal.css`,
     docsCss: `assets/themes/portal/docs.css`
+  },
+  colt: {
+    label: 'Colt',
+    favicon: '',
+    css: `chi-colt.css`,
+    docsCss: `assets/themes/colt/docs.css`
   }
 };
 export const DEFAULT_CSS = THEMES[DEFAULT_THEME].css;
@@ -317,6 +323,7 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '5.29.0',
   '5.28.0',
   '5.27.0',
   '5.26.0',

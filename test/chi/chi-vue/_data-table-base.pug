@@ -72,6 +72,11 @@ h3 Accordion
   #accordion
     chi-vue-data-table(ref="accordion" data-cy='data-table-accordion', :config="config", :data="table")
 
+h3 Expand/Collapse
+.test-data-table.-p--3.-w--100
+  #data-table-expand-collapse
+    chi-vue-data-table(ref="accordion" data-cy='data-table-expand-collapse', :config="config", :data="table")
+
 h3 Sorting
 .test-data-table.-p--3.-w--100
   #sorting
@@ -856,6 +861,141 @@ script.
       }
     },
   }).$mount("#accordion");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+        showExpandAll: true,
+      },
+      table: {
+        head: {
+          name: { label: "Name" },
+          id: { label: "ID" },
+          lastLogin: { label: "Last Login" },
+        },
+        body: [
+          {
+            id: "name-1",
+            nestedContent: {
+              table: {
+                data: [
+                  {
+                    id: "child-name-1",
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "grandchild-name-1-0",
+                            data: [
+                            "Grand-child Name 1",
+                            "grandchild-name-1-0",
+                            "Dec 18, 2020 2:38 AM",
+                            ],
+                          },
+                        ],
+                        },
+                      },
+                    expanded: false,
+                    data: [
+                      "Child Name 1",
+                      "child-name-1",
+                      "Dec 18, 2020 3:26 PM",
+                    ],
+                  },
+                ]
+              }
+            },
+            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-2",
+            nestedContent: {
+              table: {
+                data: [
+                  {
+                    id: "child-name-2",
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "grandchild-name-2-0",
+                            data: [
+                            "Grand-child Name 2",
+                            "grandchild-name-2-0",
+                            "Dec 18, 2020 2:38 AM",
+                            ],
+                          },
+                        ],
+                        },
+                      },
+                    expanded: false,
+                    data: [
+                      "Child Name 2",
+                      "child-name-2",
+                      "Dec 18, 2020 3:26 PM",
+                    ],
+                  },
+                ]
+              }
+            },
+            data: ["Name 2", "name-2", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-3",
+            nestedContent: {
+              table: {
+                data: [
+                  {
+                    id: "child-name-3",
+                    nestedContent: {
+                      table: {
+                        data: [
+                          {
+                            id: "grandchild-name-3-0",
+                            data: [
+                            "Grand-child Name 3",
+                            "grandchild-name-3-0",
+                            "Dec 18, 2020 2:38 AM",
+                            ],
+                          },
+                        ],
+                        },
+                      },
+                    expanded: false,
+                    data: [
+                      "Child Name 3",
+                      "child-name-3",
+                      "Dec 18, 2020 3:26 PM",
+                    ],
+                  },
+                ]
+              }
+            },
+            data: ["Name 3", "name-3", "Dec 18, 2020 3:26 PM"],
+          },
+        ],
+      },
+    },
+  }).$mount("#data-table-expand-collapse");
 
   new Vue({
     components: {

@@ -4,48 +4,171 @@ title: Expansion panel
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
-.test-expansion-panel-done.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(title='Expansion panel #1', state="done", data-cy='test-done')
+.chi-grid.-no-gutter.-w--100
+  .chi-col.-w--12.-w-xl--6.-pb--4.-px--4
+    h2 Base
+    .test-expansion-panel-base.-w--100.-bg--none
+      chi-expansion-panel(title='Done state', step='1', state='done', data-cy='test-done')
         div(slot='done')
-            | Done content in expansion panel.
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          | Pellentesque ac tellus sed tellus tempus consectetur.
+          | Quisque mattis sapien sem, vitae luctus leo gravida in.
         div(slot='change')
-            button.chi-button.-primary.-flat Change
-
-.test-expansion-panel-active.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(title='Expansion panel #2', state="active", data-cy='test-active')
+          chi-button(color='primary', variant='flat') Change
+      chi-expansion-panel(title='Active state', step='2', state='active', data-cy='test-active')
         div(slot='active')
-            .chi-epanel__subtitle Active
-            p.chi-epanel__text.-mb--0 Active content in expansion panel.
+          .chi-epanel__subtitle Active
+          p.chi-epanel__text.-mb--0 Active content in expansion panel.
         div(slot='footer')
-            button.chi-button.-flat.-primary Cancel
-            button.chi-button Previous
-            button.chi-button.-primary Continue
+          chi-button(color='primary', variant='flat') Cancel
+          chi-button Previous
+          chi-button(color='primary') Continue
+      chi-expansion-panel(title='Pending state', step='3', data-cy='test-pending')
+      chi-expansion-panel(title='Disabled state', step='4', state='disabled', data-cy='test-disabled')
 
-.test-expansion-panel-pending.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(title='Expansion panel #3', data-cy='test-pending')
-
-.test-expansion-panel-disabled.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(title='Expansion panel #4', state="disabled", data-cy='test-disabled')
-
-.test-expansion-panel-done-bordered.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(title='Expansion panel #5', state="done", bordered=true, data-cy='test-done-bordered')
+  .chi-col.-w--12.-w-xl--6.-pb--4.-px--4
+    h2 Base / State Icon
+    .test-expansion-panel-state-icon.-w--100.-bg--none
+      chi-expansion-panel(title='Done state', step='1', state='done', state-icon)
         div(slot='done')
-            | Done content in expansion panel.
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          | Pellentesque ac tellus sed tellus tempus consectetur.
+          | Quisque mattis sapien sem, vitae luctus leo gravida in.
         div(slot='change')
-            button.chi-button.-primary.-flat Change
-
-.test-expansion-panel-active-bordered.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(title='Expansion panel #6', state="active", bordered=true, data-cy='test-active-bordered')
+          chi-button(color='primary', variant='flat') Change
+      chi-expansion-panel(title='Active state', step='2', state='active', state-icon)
         div(slot='active')
-            .chi-epanel__subtitle Active
-            p.chi-epanel__text.-mb--0 Active content in expansion panel.
+          .chi-epanel__subtitle Active
+          p.chi-epanel__text.-mb--0 Active content in expansion panel.
         div(slot='footer')
-            button.chi-button.-primary.-flat Cancel
-            button.chi-button Previous
-            button.chi-button.-primary Continue
+          chi-button(color='primary', variant='flat') Cancel
+          chi-button Previous
+          chi-button(color='primary') Continue
+      chi-expansion-panel(title='Pending state', step='3', state-icon)
+      chi-expansion-panel(title='Disabled state', step='4', state='disabled', state-icon)
 
-.test-expansion-panel-pending-bordered.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(title='Expansion panel #7', bordered=true, data-cy='test-pending-bordered')
+  .chi-col.-w--12.-w-xl--6.-pb--4.-px--4
+    h2 No Step Number
+    .test-expansion-panel-no-step.-w--100.-bg--none
+      chi-expansion-panel(title='Done state', state='done')
+        div(slot='done')
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          | Pellentesque ac tellus sed tellus tempus consectetur.
+          | Quisque mattis sapien sem, vitae luctus leo gravida in.
+        div(slot='change')
+          chi-button(color='primary', variant='flat') Change
+      chi-expansion-panel(title='Active state', state='active')
+        div(slot='active')
+          .chi-epanel__subtitle Active
+          p.chi-epanel__text.-mb--0 Active content in expansion panel.
+        div(slot='footer')
+          chi-button(color='primary', variant='flat') Cancel
+          chi-button Previous
+          chi-button(color='primary') Continue
+      chi-expansion-panel(title='Pending state')
+      chi-expansion-panel(title='Disabled state', state='disabled')
 
-.test-expansion-panel-disabled-bordered.-mb--3(style="min-width: 20rem")
-    chi-expansion-panel(title='Expansion panel #8', state="disabled", bordered=true, data-cy='test-disabled-bordered')
+  .chi-col.-w--12.-w-xl--6.-pb--4.-px--4
+    h2 No Step Number / State Icon
+    .test-expansion-panel-no-step-state-icon.-w--100.-bg--none
+      chi-expansion-panel(title='Done state', state='done', state-icon)
+        div(slot='done')
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          | Pellentesque ac tellus sed tellus tempus consectetur.
+          | Quisque mattis sapien sem, vitae luctus leo gravida in.
+        div(slot='change')
+          chi-button(color='primary', variant='flat') Change
+      chi-expansion-panel(title='Active state', state='active', state-icon)
+        div(slot='active')
+          .chi-epanel__subtitle Active
+          p.chi-epanel__text.-mb--0 Active content in expansion panel.
+        div(slot='footer')
+          chi-button(color='primary', variant='flat') Cancel
+          chi-button Previous
+          chi-button(color='primary') Continue
+      chi-expansion-panel(title='Pending state', state-icon)
+      chi-expansion-panel(title='Disabled state', state='disabled', state-icon)
+
+  .chi-col.-w--12.-w-xl--6.-pb--4.-px--4
+    h2 Bordered
+    .test-expansion-panel-bordered.-w--100.-bg--none
+      chi-expansion-panel(title='Done state', step='1', state='done', bordered)
+        div(slot='done')
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          | Pellentesque ac tellus sed tellus tempus consectetur.
+          | Quisque mattis sapien sem, vitae luctus leo gravida in.
+        div(slot='change')
+          chi-button(color='primary', variant='flat') Change
+      chi-expansion-panel(title='Active state', step='2', state='active', bordered)
+        div(slot='active')
+          .chi-epanel__subtitle Active
+          p.chi-epanel__text.-mb--0 Active content in expansion panel.
+        div(slot='footer')
+          chi-button(color='primary', variant='flat') Cancel
+          chi-button Previous
+          chi-button(color='primary') Continue
+      chi-expansion-panel(title='Pending state', step='3', bordered)
+      chi-expansion-panel(title='Disabled state', step='4', state='disabled', bordered)
+
+  .chi-col.-w--12.-w-xl--6.-pb--4.-px--4
+    h2 Bordered / State Icon
+    .test-expansion-panel-bordered-state-icon.-w--100.-bg--none
+      chi-expansion-panel(title='Done state', step='1', state='done', state-icon, bordered)
+        div(slot='done')
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          | Pellentesque ac tellus sed tellus tempus consectetur.
+          | Quisque mattis sapien sem, vitae luctus leo gravida in.
+        div(slot='change')
+          chi-button(color='primary', variant='flat') Change
+      chi-expansion-panel(title='Active state', step='2', state='active', state-icon, bordered)
+        div(slot='active')
+          .chi-epanel__subtitle Active
+          p.chi-epanel__text.-mb--0 Active content in expansion panel.
+        div(slot='footer')
+          chi-button(color='primary', variant='flat') Cancel
+          chi-button Previous
+          chi-button(color='primary') Continue
+      chi-expansion-panel(title='Pending state', step='3', state-icon, bordered)
+      chi-expansion-panel(title='Disabled state', step='4', state='disabled', state-icon, bordered)
+
+  .chi-col.-w--12.-w-xl--6.-pb--4.-px--4
+    h2 Bordered / No Step Number
+    .test-expansion-panel-bordered-no-step.-w--100.-bg--none
+      chi-expansion-panel(title='Done state', state='done', bordered)
+        div(slot='done')
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          | Pellentesque ac tellus sed tellus tempus consectetur.
+          | Quisque mattis sapien sem, vitae luctus leo gravida in.
+        div(slot='change')
+          chi-button(color='primary', variant='flat') Change
+      chi-expansion-panel(title='Active state', state='active', bordered)
+        div(slot='active')
+          .chi-epanel__subtitle Active
+          p.chi-epanel__text.-mb--0 Active content in expansion panel.
+        div(slot='footer')
+          chi-button(color='primary', variant='flat') Cancel
+          chi-button Previous
+          chi-button(color='primary') Continue
+      chi-expansion-panel(title='Pending state', bordered)
+      chi-expansion-panel(title='Disabled state', state='disabled', bordered)
+
+  .chi-col.-w--12.-w-xl--6.-pb--4.-px--4
+    h2 Bordered / No Step Number / State Icon
+    .test-expansion-panel-bordered-no-step-state-icon.-w--100.-bg--none
+      chi-expansion-panel(title='Done state', state='done', state-icon, bordered)
+        div(slot='done')
+          | Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          | Pellentesque ac tellus sed tellus tempus consectetur.
+          | Quisque mattis sapien sem, vitae luctus leo gravida in.
+        div(slot='change')
+          chi-button(color='primary', variant='flat') Change
+      chi-expansion-panel(title='Active state', state='active', state-icon, bordered)
+        div(slot='active')
+          .chi-epanel__subtitle Active
+          p.chi-epanel__text.-mb--0 Active content in expansion panel.
+        div(slot='footer')
+          chi-button(color='primary', variant='flat') Cancel
+          chi-button Previous
+          chi-button(color='primary') Continue
+      chi-expansion-panel(title='Pending state', state-icon, bordered)
+      chi-expansion-panel(title='Disabled state', state='disabled', state-icon, bordered)
