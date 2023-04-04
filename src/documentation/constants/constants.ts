@@ -63,9 +63,6 @@ export const BASE_URL =
     ? BASE_URLS_FOR_ENVS[DOCS_ENV]
     : '/';
 
-export const DOCS_URL =
-  DOCS_ENV && (DOCS_ENV === 'production' || DOCS_ENV === 'pr') ? '' : '/api';
-
 export const NAVIGATION_COMPONENTS_ITEMS = [
   {
     href: `components/accordion`,

@@ -102,7 +102,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { DOCS_URL } from '../constants/constants';
 
 @Component({
   data: () => {
@@ -121,8 +120,8 @@ export default class PropertiesGenerator extends Vue {
   }
 
   async getDocs() {
-    const docUrl = '/js/ce/docs.json';
-    const { data } = await this.$axios.get(`${DOCS_URL}${docUrl}`);
+    const docUrl = 'js/ce/docs.json';
+    const { data } = await this.$axios.get(`/api/${docUrl}`);
 
     return data;
   }
