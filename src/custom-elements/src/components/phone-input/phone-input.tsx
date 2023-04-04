@@ -178,7 +178,7 @@ export class ChiPhoneInput {
     );
   }
 
-  _pasteHandler = (event: ClipboardEvent) => {
+  _pasteHandler = (event: ClipboardEvent): void => {
     const phoneNumberRegex = new RegExp('^[0-9()+-_ ]+$');
     const clipboardData = event.clipboardData.getData('text');
     const containsOnlyAllowedChars = phoneNumberRegex.test(clipboardData);
