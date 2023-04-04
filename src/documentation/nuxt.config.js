@@ -93,9 +93,6 @@ export default {
     ],
     '@nuxtjs/axios',
   ],
-  env: {
-    docs: `${CHI_ASSETS_SOURCE_URL}js/ce/docs.json`
-  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     postcss: false,

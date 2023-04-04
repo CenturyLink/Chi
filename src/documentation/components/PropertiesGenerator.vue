@@ -120,11 +120,9 @@ export default class PropertiesGenerator extends Vue {
   }
 
   async getDocs() {
-    if (process.env.docs) {
-      const { data } = await this.$axios.get(process.env.docs);
+    const { data } = await this.$axios.get('https://assets.ctl.io/chi/5.29.0/js/ce/docs.json');
 
-      return data;
-    }
+    return data;
   }
 
   async created() {
