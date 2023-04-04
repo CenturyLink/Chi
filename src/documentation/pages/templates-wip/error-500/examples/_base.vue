@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample :tabs="exampleTabs">
+  <ComponentExample :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     .chi-app.-bg--grey-10(slot="example")
       header.chi-header
         .chi-header__content.-justify-content--center
@@ -14,9 +14,9 @@
               h2.-text--h3 Internal Server Error
               p.-text.-pb--2
                 | We're sorry, the server encountered an internal error and was unable to complete your request.
-  <pre class="language-html" slot="code-htmlblueprint">
-    <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-  </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 

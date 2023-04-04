@@ -1,10 +1,13 @@
 <template lang="pug">
-  <ComponentExample title="Base with back link, subtitle, buttons and page-level actions" id="base_with_back_link_subtitle_buttons_page_level_actions" :tabs="exampleTabs">
+  <ComponentExample title="Base with back link, subtitle, buttons and page-level actions" id="base_with_back_link_subtitle_buttons_page_level_actions" :tabs="exampleTabs" padding="0">
     chi-main(backlink='Back link' title='Page title' subtitle='Page subtitle' slot="example")
       .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
       button.chi-button.-primary.-outline.-bg--white(slot='page-level__actions') Cancel
       button.chi-button.-primary.-ml--1(slot='page-level__actions') Submit
-      div(v-html="footerTemplate" slot="footer")
+      div(slot="footer")
+        div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes($store.state.themes.theme)")
+        div(v-html="footers.centurylink" v-if="$store.state.themes.theme === 'centurylink'")
+        div(v-html="footers.brightspeed" v-if="$store.state.themes.theme === 'brightspeed'")
 
     <Wrapper slot='code-webcomponent'>
       .chi-tab__description
@@ -21,14 +24,18 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { generateExampleFooter } from './_base.vue';
+import { generateExampleFooter } from '~/pages/templates-wip/app-layout/examples/_footer.vue';
 
 declare const chi: any;
 
 @Component({
   data: () => {
     return {
-      footerTemplate: generateExampleFooter('back-link-subtitle-buttons-page-level-actions-language-dropdown-button').htmlblueprint,
+      footers: {
+        lumen: generateExampleFooter('back-link-subtitle-buttons-page-level-actions-language-dropdown-button'),
+        centurylink: generateExampleFooter('back-link-subtitle-buttons-page-level-actions-language-dropdown-button', 'centurylink'),
+        brightspeed: generateExampleFooter('back-link-subtitle-buttons-page-level-actions-language-dropdown-button', 'brightspeed'),
+      },
       exampleTabs: [
         {
           active: true,
@@ -41,15 +48,42 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `<chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
+        webcomponent: '',
+        htmlblueprint: ''
+      }
+    };
+  }
+})
+export default class BackLinkSubtitleButtonsPageLevelActions extends Vue {
+  mounted() {
+    const languageDropdown = document.getElementById('back-link-subtitle-buttons-page-level-actions-language-dropdown-button');
+
+    if (languageDropdown) {
+      chi.dropdown(languageDropdown);
+    }
+
+    this._setCodeSnippets();
+  }
+
+  updated() {
+    this._setCodeSnippets();
+  }
+
+  _setCodeSnippets() {
+    const footerTemplate = generateExampleFooter(
+      'language-dropdown-button',
+      this.$store.state.themes.theme
+    );
+
+    this.$data.codeSnippets.webcomponent = `<chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
   <!-- Page content goes here -->
   <button class="chi-button -primary -outline -bg--white" slot="page-level__actions">Cancel</button>
   <button class="chi-button -primary -ml--1" slot="page-level__actions">Submit</button>
-  ${generateExampleFooter().webcomponent}
+  ${footerTemplate}
 </chi-main>
 
-<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`,
-        htmlblueprint: `<div class="chi-main">
+<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`;
+    this.$data.codeSnippets.htmlblueprint = `<div class="chi-main">
   <div class="chi-main__header">
     <div class="chi-main__header-start">
       <a class="chi-link" href="#">
@@ -71,17 +105,10 @@ declare const chi: any;
       <button class="chi-button -primary -ml--1">Submit</button>
     </div>
   </div>
-  ${generateExampleFooter().htmlblueprint}
+  ${footerTemplate}
 </div>
 
-<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
-      }
-    };
-  }
-})
-export default class BackLinkSubtitleButtonsPageLevelActions extends Vue {
-  mounted() {
-    chi.dropdown(document.getElementById('back-link-subtitle-buttons-page-level-actions-language-dropdown-button'));
+<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`;
   }
 }
 </script>

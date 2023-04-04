@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Dashboard with header background" id="dashboard" :tabs="exampleTabs">
+  <ComponentExample title="Dashboard with header background" id="dashboard" :tabs="exampleTabs" padding="0">
     chi-main(title='Page title' format='fixed-width' header-background slot="example")
       chi-button#dashboard__help-button(type='icon' size='sm' variant='flat' alternative-text='Help' slot='help-icon' @click="togglePopover")
         chi-icon(icon='circle-question-outline')
@@ -84,7 +84,10 @@
               .chi-card__title Widget
               chi-link(size='md' href='#' cta='cta') View
             .chi-card__content Content here
-      div(v-html="footerTemplate" slot="footer")
+      div(slot="footer")
+        div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes($store.state.themes.theme)")
+        div(v-html="footers.centurylink" v-if="$store.state.themes.theme === 'centurylink'")
+        div(v-html="footers.brightspeed" v-if="$store.state.themes.theme === 'brightspeed'")
 
   <pre class="language-html" slot="code-webcomponent">
     <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -97,14 +100,18 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { generateExampleFooter } from './_base.vue';
+import { generateExampleFooter } from '~/pages/templates-wip/app-layout/examples/_footer.vue';
 
 declare const chi: any;
 
 @Component({
   data: () => {
     return {
-      footerTemplate: generateExampleFooter('dashboard-language-dropdown-button').htmlblueprint,
+      footers: {
+        lumen: generateExampleFooter('dashboard-language-dropdown-button'),
+        centurylink: generateExampleFooter('dashboard-language-dropdown-button', 'centurylink'),
+        brightspeed: generateExampleFooter('dashboard-language-dropdown-button', 'brightspeed'),
+      },
       exampleTabs: [
         {
           active: true,
@@ -117,7 +124,38 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `<chi-main title="Page title" format="fixed-width" header-background>
+        webcomponent: '',
+        htmlblueprint: ''
+      }
+    };
+  }
+})
+export default class Dashboard extends Vue {
+  mounted() {
+    const languageDropdown = document.getElementById('dashboard-language-dropdown-button');
+
+    if (languageDropdown) {
+      chi.dropdown(languageDropdown);
+    }
+
+    this._setCodeSnippets();
+  }
+
+  updated() {
+    this._setCodeSnippets();
+  }
+
+  togglePopover() {
+    (this.$refs.popover as any).toggle();
+  }
+
+  _setCodeSnippets() {
+    const footerTemplate = generateExampleFooter(
+      'language-dropdown-button',
+      this.$store.state.themes.theme
+    );
+
+    this.$data.codeSnippets.webcomponent = `<chi-main title="Page title" format="fixed-width" header-background>
   <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
     <chi-icon icon="circle-question-outline"></chi-icon>
   </chi-button>
@@ -244,7 +282,7 @@ declare const chi: any;
       </div>
     </div>
   </div>
-  ${generateExampleFooter().webcomponent}
+  ${footerTemplate}
 </chi-main>
 
 <script>
@@ -254,8 +292,8 @@ declare const chi: any;
       var popoverElem = document.querySelector("#example__help-popover");
       popoverElem.toggle();
     });
-<\/script>`,
-        htmlblueprint: `<div class="chi-main -fixed-width -header-background">
+<\/script>`;
+    this.$data.codeSnippets.htmlblueprint = `<div class="chi-main -fixed-width -header-background">
   <div class="chi-main__header">
     <div class="chi-main__header-start">
       <div class="chi-main__title">
@@ -403,24 +441,13 @@ declare const chi: any;
     <div class="chi-main__background-image">
     </div>
   </div>
-  ${generateExampleFooter().htmlblueprint}
+  ${footerTemplate}
 </div>
 
 <script>
   chi.dropdown(document.getElementById('language-dropdown-button'));
   chi.popover(document.getElementById('example__help-button'));
-<\/script>`
-      }
-    };
-  }
-})
-export default class Dashboard extends Vue {
-  mounted() {
-    chi.dropdown(document.getElementById('dashboard-language-dropdown-button'));
-  }
-
-  togglePopover() {
-    (this.$refs.popover as any).toggle();
+<\/script>`;
   }
 }
 </script>

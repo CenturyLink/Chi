@@ -1,8 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs">
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs" padding="0">
     chi-main(title='Page title' slot="example")
       .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
-      div(v-html="footerTemplate" slot="footer")
+      div(slot="footer")
+        div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes($store.state.themes.theme)")
+        div(v-html="footers.centurylink" v-if="$store.state.themes.theme === 'centurylink'")
+        div(v-html="footers.brightspeed" v-if="$store.state.themes.theme === 'brightspeed'")
 
     <Wrapper slot='code-webcomponent'>
       .chi-tab__description
@@ -19,14 +22,18 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { FOOTER_LANGUAGE_DROPDOWN_ITEMS, FOOTER_LINKS } from '~/fixtures/fixtures';
+import { generateExampleFooter } from '~/pages/templates-wip/app-layout/examples/_footer.vue';
 
 declare const chi: any;
 
 @Component({
   data: () => {
     return {
-      footerTemplate: generateExampleFooter('base-language-dropdown-button').htmlblueprint,
+      footers: {
+        lumen: generateExampleFooter('language-dropdown-button'),
+        centurylink: generateExampleFooter('language-dropdown-button', 'centurylink'),
+        brightspeed: generateExampleFooter('language-dropdown-button', 'brightspeed'),
+      },
       exampleTabs: [
         {
           active: true,
@@ -39,13 +46,40 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `<chi-main title="Page title">
+        webcomponent: '',
+        htmlblueprint: ''
+      }
+    };
+  }
+})
+export default class Base extends Vue {
+  mounted() {
+    const languageDropdown = document.getElementById('base-language-dropdown-button');
+
+    if (languageDropdown) {
+      chi.dropdown(languageDropdown);
+    }
+
+    this._setCodeSnippets();
+  }
+
+  updated() {
+    this._setCodeSnippets();
+  }
+
+  _setCodeSnippets() {
+    const footerTemplate = generateExampleFooter(
+      'language-dropdown-button',
+      this.$store.state.themes.theme
+    );
+
+    this.$data.codeSnippets.webcomponent = `<chi-main title="Page title">
   <!-- Page content goes here -->
-  ${generateExampleFooter().webcomponent}
+  ${footerTemplate}
 </chi-main>
 
-<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`,
-        htmlblueprint: `<div class="chi-main">
+<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`;
+    this.$data.codeSnippets.htmlblueprint = `<div class="chi-main">
   <div class="chi-main__header">
     <div class="chi-main__header-start">
       <div class="chi-main__title">
@@ -56,76 +90,10 @@ declare const chi: any;
   <div class="chi-main__content">
     <!-- Page content goes here -->
   </div>
-  ${generateExampleFooter().htmlblueprint}
+  ${footerTemplate}
 </div>
 
-<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`
-      }
-    };
-  }
-})
-export default class Base extends Vue {
-  mounted() {
-    chi.dropdown(document.getElementById('base-language-dropdown-button'));
+<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`;
   }
 }
-
-export const generateExampleFooter = (id = 'language-dropdown-button') => {
-  return {
-    webcomponent: `<footer class="chi-footer" slot="footer">
-    <div class="chi-footer__content">
-      <div class="chi-footer__internal">
-        <div class="chi-footer__internal-content">
-          <div class="chi-dropdown chi-footer__language">
-            <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="${id}" data-position="top-start" aria-label="Select your preferred language">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-globe-network-outline" aria-hidden="true"></i>
-                <span>English</span>
-              </div>
-            </a>
-            <div class="chi-dropdown__menu -w--sm -text--body">
-              ${FOOTER_LANGUAGE_DROPDOWN_ITEMS.map(({href, name}, index) => `<a class="chi-dropdown__menu-item${ index === 0 ? ' -active' : ''}" href="${href}">${name}</a>`).join('\n              ')}
-            </div>
-          </div>
-          <div class="chi-footer__links">
-            <ul>
-              ${FOOTER_LINKS.map(({href, title}) => `<li>
-                <a href="${href}">${title}</a>
-              </li>`).join('\n              ')}
-            </ul>
-            <div class="chi-footer__copyright">&copy; 2021 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>`,
-    htmlblueprint: `<footer class="chi-footer">
-    <div class="chi-footer__content">
-      <div class="chi-footer__internal">
-        <div class="chi-footer__internal-content">
-          <div class="chi-dropdown chi-footer__language">
-            <a class="chi-button -icon -flat -light -sm chi-dropdown__trigger" id="${id}" data-position="top-start" aria-label="Select your preferred language">
-              <div class="chi-button__content">
-                <i class="chi-icon icon-globe-network-outline" aria-hidden="true"></i>
-                <span>English</span>
-              </div>
-            </a>
-            <div class="chi-dropdown__menu -w--sm -text--body">
-              ${FOOTER_LANGUAGE_DROPDOWN_ITEMS.map(({href, name}, index) => `<a class="chi-dropdown__menu-item${ index === 0 ? ' -active' : ''}" href="${href}">${name}</a>`).join('\n              ')}
-            </div>
-          </div>
-          <div class="chi-footer__links">
-            <ul>
-              ${FOOTER_LINKS.map(({href, title}) => `<li>
-                <a href="${href}">${title}</a>
-              </li>`).join('\n              ')}
-            </ul>
-            <div class="chi-footer__copyright">&copy; 2023 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>`
-  }
-};
 </script>

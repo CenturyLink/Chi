@@ -1,12 +1,15 @@
 <template lang="pug">
-  <ComponentExample title="Base with help icon" id="base_with_help_icon" :tabs="exampleTabs">
+  <ComponentExample title="Base with help icon" id="base_with_help_icon" :tabs="exampleTabs" padding="0">
   chi-main(title='Page title' slot="example")
     chi-button#help-icon__help-button(type='icon' size='sm' variant='flat' alternative-text='Help' slot='help-icon' @click="togglePopover")
       chi-icon(icon='circle-question-outline')
     chi-popover(ref="popover" position='right-start' variant='text' arrow reference='#help-icon__help-button' slot='help-icon')
       | Popover content.
     .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
-    div(v-html="footerTemplate" slot="footer")
+    div(slot="footer")
+      div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes($store.state.themes.theme)")
+      div(v-html="footers.centurylink" v-if="$store.state.themes.theme === 'centurylink'")
+      div(v-html="footers.brightspeed" v-if="$store.state.themes.theme === 'brightspeed'")
 
   <pre class="language-html" slot="code-webcomponent">
     <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -19,14 +22,18 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { generateExampleFooter } from './_base.vue';
+import { generateExampleFooter } from '~/pages/templates-wip/app-layout/examples/_footer.vue';
 
 declare const chi: any;
 
 @Component({
   data: () => {
     return {
-      footerTemplate: generateExampleFooter('help-icon-language-dropdown-button').htmlblueprint,
+      footers: {
+        lumen: generateExampleFooter('help-icon-language-dropdown-button'),
+        centurylink: generateExampleFooter('help-icon-language-dropdown-button', 'centurylink'),
+        brightspeed: generateExampleFooter('help-icon-language-dropdown-button', 'brightspeed'),
+      },
       exampleTabs: [
         {
           active: true,
@@ -39,7 +46,38 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `<chi-main title="Page title">
+        webcomponent: '',
+        htmlblueprint: ''
+      }
+    };
+  }
+})
+export default class HelpIcon extends Vue {
+  mounted() {
+    const languageDropdown = document.getElementById('help-icon-language-dropdown-button');
+
+    if (languageDropdown) {
+      chi.dropdown(languageDropdown);
+    }
+
+    this._setCodeSnippets();
+  }
+
+  updated() {
+    this._setCodeSnippets();
+  }
+
+  togglePopover() {
+    (this.$refs.popover as any).toggle();
+  }
+
+  _setCodeSnippets() {
+    const footerTemplate = generateExampleFooter(
+      'language-dropdown-button',
+      this.$store.state.themes.theme
+    );
+
+    this.$data.codeSnippets.webcomponent = `<chi-main title="Page title">
   <chi-button id="example__help-button" type="icon" size="sm" variant="flat" alternative-text="Help" slot="help-icon">
     <chi-icon icon="circle-question-outline"></chi-icon>
   </chi-button>
@@ -47,7 +85,7 @@ declare const chi: any;
     Popover content.
   </chi-popover>
   <!-- Page content goes here -->
-  ${generateExampleFooter().webcomponent}
+  ${footerTemplate}
 </chi-main>
 
 <script>
@@ -57,8 +95,8 @@ declare const chi: any;
       var popoverElem = document.querySelector("#example__help-popover");
       popoverElem.toggle();
     });
-<\/script>`,
-        htmlblueprint: `<div class="chi-main">
+<\/script>`;
+    this.$data.codeSnippets.htmlblueprint = `<div class="chi-main">
   <div class="chi-main__header">
     <div class="chi-main__header-start">
       <div class="chi-main__title">
@@ -81,24 +119,13 @@ declare const chi: any;
   <div class="chi-main__content">
     <!-- Page content goes here -->
   </div>
-  ${generateExampleFooter().htmlblueprint}
+  ${footerTemplate}
 </div>
 
 <script>
   chi.dropdown(document.getElementById('language-dropdown-button'));
   chi.popover(document.getElementById('example__help-button'));
-<\/script>`
-      }
-    };
-  }
-})
-export default class HelpIcon extends Vue {
-  mounted() {
-    chi.dropdown(document.getElementById('help-icon-language-dropdown-button'));
-  }
-
-  togglePopover() {
-    (this.$refs.popover as any).toggle();
+<\/script>`;
   }
 }
 </script>

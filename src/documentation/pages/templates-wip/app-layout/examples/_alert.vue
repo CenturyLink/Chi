@@ -1,9 +1,12 @@
 <template lang="pug">
-  <ComponentExample title="Base with alert" id="base_with_alert" :tabs="exampleTabs">
+  <ComponentExample title="Base with alert" id="base_with_alert" :tabs="exampleTabs" padding="0">
     chi-main(title='Page Title' slot="example")
       chi-alert(color='info' icon='circle-info' slot='page-alert' closable) This is a page level info alert
       .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;') Page content goes here
-      div(v-html="footerTemplate" slot="footer")
+      div(slot="footer")
+        div(v-html="footers.lumen" v-if="['lumen', 'portal'].includes($store.state.themes.theme)")
+        div(v-html="footers.centurylink" v-if="$store.state.themes.theme === 'centurylink'")
+        div(v-html="footers.brightspeed" v-if="$store.state.themes.theme === 'brightspeed'")
 
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
@@ -16,14 +19,18 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { generateExampleFooter } from './_base.vue';
+import { generateExampleFooter } from '~/pages/templates-wip/app-layout/examples/_footer.vue';
 
 declare const chi: any;
 
 @Component({
   data: () => {
     return {
-      footerTemplate: generateExampleFooter('alert-language-dropdown-button').htmlblueprint,
+      footers: {
+        lumen: generateExampleFooter('alert-language-dropdown-button'),
+        centurylink: generateExampleFooter('alert-language-dropdown-button', 'centurylink'),
+        brightspeed: generateExampleFooter('alert-language-dropdown-button', 'brightspeed'),
+      },
       exampleTabs: [
         {
           active: true,
@@ -36,16 +43,43 @@ declare const chi: any;
         }
       ],
       codeSnippets: {
-        webcomponent: `<chi-main title="Page Title">
+        webcomponent: '',
+        htmlblueprint: ''
+      }
+    };
+  }
+})
+export default class Alert extends Vue {
+  mounted() {
+    const languageDropdown = document.getElementById('alert-language-dropdown-button');
+
+    if (languageDropdown) {
+      chi.dropdown(languageDropdown);
+    }
+
+    this._setCodeSnippets();
+  }
+
+  updated() {
+    this._setCodeSnippets();
+  }
+
+  _setCodeSnippets() {
+    const footerTemplate = generateExampleFooter(
+      'language-dropdown-button',
+      this.$store.state.themes.theme
+    );
+
+    this.$data.codeSnippets.webcomponent = `<chi-main title="Page Title">
   <chi-alert color="info" icon="circle-info" slot="page-alert" closable>This is a page level info alert</chi-alert>
   <!-- Page content goes here -->
-  ${generateExampleFooter().webcomponent}
+  ${footerTemplate}
 </chi-main>
 
 <script>
   chi.dropdown(document.getElementById('language-dropdown-button'));
-<\/script>`,
-        htmlblueprint: `<div class="chi-main">
+<\/script>`
+    this.$data.codeSnippets.htmlblueprint = `<div class="chi-main">
   <div class="chi-main__alert">
     <div class="chi-alert -info -close" role="alert">
       <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
@@ -71,19 +105,12 @@ declare const chi: any;
   <div class="chi-main__content">
     <!-- Page content goes here -->
   </div>
-  ${generateExampleFooter().htmlblueprint}
+  ${footerTemplate}
 </div>
 
 <script>
   chi.dropdown(document.getElementById('language-dropdown-button'));
 <\/script>`
-      }
-    };
-  }
-})
-export default class Alert extends Vue {
-  mounted() {
-    chi.dropdown(document.getElementById('alert-language-dropdown-button'));
   }
 }
 </script>
