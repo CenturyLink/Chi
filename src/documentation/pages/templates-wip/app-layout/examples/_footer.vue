@@ -65,9 +65,7 @@ const generateBrightspeedFooter = (dropdownId) => {
           </div>
           <div class="chi-footer__links">
             <ul>
-              ${FOOTER_LINKS.map(({href, title}) => `<li>
-                <a href="${href}">${title}</a>
-              </li>`).join('\n              ')}
+              ${FOOTER_LINKS.map(({href, title}) => `<li><a href="${href}">${title}</a></li>`).join('\n              ')}
             </ul>
             <div class="chi-footer__copyright">&copy; 2023 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.</div>
           </div>
@@ -77,7 +75,7 @@ const generateBrightspeedFooter = (dropdownId) => {
   </footer>`
 };
 
-export const generateExampleFooter = (dropdownId = 'language-dropdown-button', theme) => {
+export const generateExampleFooter = (theme = 'lumen', dropdownId = 'language-dropdown-button') => {
   switch (theme) {
     case 'brightspeed':
       return generateBrightspeedFooter(dropdownId);
@@ -87,6 +85,12 @@ export const generateExampleFooter = (dropdownId = 'language-dropdown-button', t
       return generateLumenFooter(dropdownId);
   }
 };
+
+export const generateAllExampleFooters = (dropdownId = 'language-dropdown-button') => ({
+  lumen: generateExampleFooter(dropdownId),
+  centurylink: generateExampleFooter('centurylink', dropdownId),
+  brightspeed: generateExampleFooter('brightspeed', dropdownId),
+});
 
 export default class Footer extends Vue {
 }

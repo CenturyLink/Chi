@@ -23,18 +23,17 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { generateExampleFooter } from '~/pages/templates-wip/app-layout/examples/_footer.vue';
+import {
+  generateAllExampleFooters,
+  generateExampleFooter
+} from '~/pages/templates-wip/app-layout/examples/_footer.vue';
 
 declare const chi: any;
 
 @Component({
   data: () => {
     return {
-      footers: {
-        lumen: generateExampleFooter('back-link-subtitle-buttons-language-dropdown-button'),
-        centurylink: generateExampleFooter('back-link-subtitle-buttons-language-dropdown-button', 'centurylink'),
-        brightspeed: generateExampleFooter('back-link-subtitle-buttons-language-dropdown-button', 'brightspeed'),
-      },
+      footers: generateAllExampleFooters('back-link-subtitle-buttons-language-dropdown-button'),
       exampleTabs: [
         {
           active: true,
@@ -69,10 +68,7 @@ export default class BackLinkSubtitleButtons extends Vue {
   }
 
   _setCodeSnippets() {
-    const footerTemplate = generateExampleFooter(
-      'language-dropdown-button',
-      this.$store.state.themes.theme
-    );
+    const footerTemplate = generateExampleFooter(this.$store.state.themes.theme);
 
     this.$data.codeSnippets.webcomponent = `<chi-main backlink="Back link" title="Page title" subtitle="Page subtitle">
   <button class="chi-button -primary" slot="header-actions">Primary</button>
