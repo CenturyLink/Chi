@@ -74,7 +74,10 @@ export class AppLayout {
     if (!this.mutationObserver) {
       const subscriberCallback = mutations => {
         mutations.forEach(mutation => {
-          this.appLayoutTitle = mutation.target.title;
+          if (mutation.target.title) {
+            this.appLayoutTitle = mutation.target.title;
+            this.el.removeAttribute('title');
+          }
         });
       };
 
@@ -93,6 +96,7 @@ export class AppLayout {
 
     if (this.el.getAttribute('title')) {
       this.appLayoutTitle = this.el.getAttribute('title');
+      this.el.removeAttribute('title');
     }
 
     if (this.el.querySelector("[slot=help-icon]")) {
