@@ -274,6 +274,7 @@ $border-radius-base: 0;
 $border-radius-sharp: 0;
 $border-radius-circle: 50%;
 $border-radius: $border-radius-base;
+$border-radius-rounded-pill: 10rem;
 
 // Semantic colors
 $color-semantic: (
@@ -1284,6 +1285,12 @@ $picker-checked-radio-icon-color:           $color-background-white;
 $picker-hover-border-color:                 $color-grey-40;
 $picker-focus-border-color:                 $color-grey-40;
 $picker-focus-background-color:             $color-grey-10;
+$picker-xs-item-font-size:                  $font-size-xs;
+$picker-xs-item-padding:                    0.1875rem 0.75rem;
+$picker-xs-item-description-line-height:    1rem;
+$picker-sm-item-font-size:                  $font-size-sm;
+$picker-sm-item-padding:                    0.4375rem 1rem;
+$picker-sm-item-description-line-height:    1rem;
 $picker-md-item-font-size:                  $font-size-base;
 $picker-md-item-padding:                    1rem;
 $picker-md-item-label-margin:               0.75rem;
