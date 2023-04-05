@@ -76,7 +76,7 @@ export default class BackLinkSubtitleButtons extends Vue {
   ${footerTemplate}
 </chi-main>
 
-${this.$store.state.themes.theme === 'centurylink' ? '' : '<script>chi.dropdown(document.getElementById(\'language-dropdown-button\'));<\/script>'}`;
+${this.$store.state.themes.theme === 'centurylink' ? '' : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`}`;
     this.$data.codeSnippets.htmlblueprint = `<div class="chi-main">
   <div class="chi-main__header">
     <div class="chi-main__header-start">
@@ -91,7 +91,7 @@ ${this.$store.state.themes.theme === 'centurylink' ? '' : '<script>chi.dropdown(
   ${footerTemplate}
 </div>
 
-${this.$store.state.themes.theme === 'centurylink' ? '' : '<script>chi.dropdown(document.getElementById(\'language-dropdown-button\'));<\/script>'}`;
+${this.$store.state.themes.theme === 'centurylink' ? '' : `<script>chi.dropdown(document.getElementById('language-dropdown-button'));<\/script>`}`;
   }
 }
 </script>
