@@ -102,6 +102,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { DOCS_URL } from '../constants/constants';
 
 @Component({
   data: () => {
@@ -115,26 +116,33 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 export default class PropertiesGenerator extends Vue {
   @Prop({required: true}) tag!: string;
 
+  docs: any;
+
   getEventDetailType(detail: string): string {
     return `CustomEvent<${detail}>`;
   }
 
-  async getDocs() {
-    const { data } = await this.$axios.get('https://assets.ctl.io/chi/5.29.0/js/ce/docs.json');
-
-    return data;
+  getDocs() {
+    return this.$axios.get(DOCS_URL)
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => console.log(error));
   }
 
   async created() {
-    const docs = await this.getDocs();
-    const component = docs?.components?.find(
-      (component: {tag: string}) => component.tag === this.tag
-    );
+    this.docs = await this.getDocs();
 
-    if (component) {
-      this.$data.props = component.props;
-      this.$data.events = component.events;
-      this.$data.methods = component.methods;
+    if (this.docs) {
+      const component = this.docs.components?.find(
+        (component: {tag: string}) => component.tag === this.tag
+      );
+
+      if (component) {
+        this.$data.props = component.props;
+        this.$data.events = component.events;
+        this.$data.methods = component.methods;
+      }
     }
   }
 }
