@@ -91,6 +91,7 @@ export class Carousel {
   private remainingSpace: number = 0;
   private isLastView: boolean = false;
   private isLastStep: boolean = false;
+  private restItemsShown: number = 0;
 
   private resizeHandler = () => {
     this._calculateCarouselWidth();
@@ -111,7 +112,10 @@ export class Carousel {
       itemsShown % 1 > MAX_ITEMS_THRESHOLD
         ? Math.ceil(itemsShown)
         : Math.floor(itemsShown);
+
     this.numberOfViews = Math.ceil(carouselItems.length / this.maxItemsShown);
+
+    this.restItemsShown = carouselItems.length % this.maxItemsShown;
 
     if (this.isLastView) {
       this._calculateView(CAROUSEL_DIRECTION.NEXT, this.currentStep);
@@ -379,49 +383,74 @@ export class Carousel {
     return carouselItems.length > 1;
   }
 
-  render() {
-    const prevButton = this._areThereMultipleItems() &&
-      !this.noButtonControllers && (
-        <div
-          class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.PREVIOUS}`}
-          onClick={() => this.prevView()}
-        >
-          {this.customPrevButton ? (
-            <slot name="previous"></slot>
-          ) : (
-            <chi-button
-              size="sm"
-              type="float"
-              alternative-text="Carousel previous"
-              disabled={this.currentStep <= 0}
-            >
-              <chi-icon icon="chevron-left"></chi-icon>
-            </chi-button>
-          )}
-        </div>
-      );
-    const nextButton = this._areThereMultipleItems() &&
-      !this.noButtonControllers && (
-        <div
-          class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.NEXT}`}
-          onClick={() => this.nextView()}
-        >
-          {this.customNextButton ? (
-            <slot name="next"></slot>
-          ) : (
-            <chi-button
-              size="sm"
-              type="float"
-              alternative-text="Carousel next"
-              disabled={this.isLastView}
-            >
-              <chi-icon icon="chevron-right"></chi-icon>
-            </chi-button>
-          )}
-        </div>
-      );
-    const items = <slot name="items"></slot>;
-    const dotControllers = this.dots ? (
+  _getItemVisibility(index) {
+    let minActiveItem = this.view * this.maxItemsShown;
+    const maxActiveItem = minActiveItem + this.maxItemsShown;
+
+    if (this.isLastView && this.restItemsShown > 0) {
+      minActiveItem =
+        minActiveItem - (this.maxItemsShown - this.restItemsShown);
+    }
+
+    return index >= minActiveItem && index < maxActiveItem;
+  }
+
+  setActiveClass() {
+    const carouselItems = this._getCarouselItems();
+
+    carouselItems.forEach((item, index) => {
+      const isVisible = this._getItemVisibility(index);
+
+      item.classList.toggle(ACTIVE_CLASS, isVisible);
+    });
+  }
+
+  _prevButton() {
+    return (
+      <div
+        class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.PREVIOUS}`}
+        onClick={() => this.prevView()}
+      >
+        {this.customPrevButton ? (
+          <slot name="previous"></slot>
+        ) : (
+          <chi-button
+            size="sm"
+            type="float"
+            alternative-text="Carousel previous"
+            disabled={this.currentStep <= 0}
+          >
+            <chi-icon icon="chevron-left"></chi-icon>
+          </chi-button>
+        )}
+      </div>
+    );
+  }
+
+  _nextButton() {
+    return (
+      <div
+        class={`${CAROUSEL_CLASSES.CONTROL} ${CAROUSEL_CLASSES.NEXT}`}
+        onClick={() => this.nextView()}
+      >
+        {this.customNextButton ? (
+          <slot name="next"></slot>
+        ) : (
+          <chi-button
+            size="sm"
+            type="float"
+            alternative-text="Carousel next"
+            disabled={this.isLastView}
+          >
+            <chi-icon icon="chevron-right"></chi-icon>
+          </chi-button>
+        )}
+      </div>
+    );
+  }
+
+  _dotsButton() {
+    return (
       <div class={CAROUSEL_CLASSES.DOTS}>
         {Array(this.numberOfViews)
           .fill(0)
@@ -445,8 +474,11 @@ export class Carousel {
             );
           })}
       </div>
-    ) : null;
-    const pagination = this.pagination ? (
+    );
+  }
+
+  _pagination() {
+    return (
       <div class={CAROUSEL_CLASSES.PAGINATION}>
         {this.view === 0 || this.view === -1
           ? 1
@@ -455,7 +487,20 @@ export class Carousel {
           : this.view + 1}{' '}
         of {this.numberOfViews}
       </div>
-    ) : null;
+    );
+  }
+
+  render() {
+    this.setActiveClass();
+
+    const hasButtonControl =
+      this._areThereMultipleItems() && !this.noButtonControllers;
+
+    const prevButton = hasButtonControl && this._prevButton();
+    const nextButton = hasButtonControl && this._nextButton();
+    const dotControllers = this.dots && this._dotsButton();
+    const pagination = this.pagination && this._pagination();
+    const items = <slot name="items"></slot>;
 
     return (
       <div
@@ -465,9 +510,9 @@ export class Carousel {
         onMouseEnter={() => this._autoPlay(true)}
         onMouseLeave={() => this._autoPlay(false)}
         class={`
-        ${CAROUSEL_CLASSES.CAROUSEL}
-        ${this.dots ? CAROUSEL_CLASSES.DOTS_ADDITION : ''}
-        ${this.pagination ? CAROUSEL_CLASSES.PAGINATION_ADDITION : ''}`}
+          ${CAROUSEL_CLASSES.CAROUSEL}
+          ${this.dots ? CAROUSEL_CLASSES.DOTS_ADDITION : ''}
+          ${this.pagination ? CAROUSEL_CLASSES.PAGINATION_ADDITION : ''}`}
       >
         <div class={CAROUSEL_CLASSES.CONTENT}>
           <div
@@ -482,6 +527,7 @@ export class Carousel {
             {items}
           </div>
         </div>
+
         {prevButton}
         {nextButton}
         {dotControllers}
