@@ -308,7 +308,20 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
         head: exampleTableHead,
         body: exampleTableBody,
       },
-      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      months: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ],
     };
   },
 })
