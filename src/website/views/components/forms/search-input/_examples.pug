@@ -123,7 +123,7 @@ h3 With Dropdown
       .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-form__item
           chi-search-input#example__with_dropdown
-          chi-dropdown#example__dropdown(position='bottom')
+          chi-dropdown#example__dropdown(prevent-auto-hide position='bottom')
             a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
             a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
             a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
@@ -150,7 +150,7 @@ h3 With Dropdown
     :code(lang="html")
       <div class="chi-form__item">
         <chi-search-input id="example__with_dropdown"></chi-search-input>
-        <chi-dropdown id="example__dropdown" position="bottom">
+        <chi-dropdown id="example__dropdown" position="bottom" prevent-auto-hide>
           <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
           <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
           <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
@@ -162,19 +162,11 @@ h3 With Dropdown
         const input = document.getElementById("example__with_dropdown");
         const dropdown = document.getElementById("example__dropdown");
 
-        input.addEventListener("chiInput", () => {
-          dropdown.show();
-        });
-
         input.addEventListener("chiFocus", () => {
           dropdown.show();
         });
 
         input.addEventListener("chiBlur", () => {
-          dropdown.hide();
-        });
-
-        input.addEventListener("chiClean", () => {
           dropdown.hide();
         });
       </script>
@@ -484,19 +476,11 @@ script.
       const input = document.getElementById("example__with_dropdown");
       const dropdown = document.getElementById("example__dropdown");
 
-      input.addEventListener("chiInput", () => {
-        dropdown.show();
-      });
-
       input.addEventListener("chiFocus", () => {
         dropdown.show();
       });
 
       input.addEventListener("chiBlur", () => {
-        dropdown.hide();
-      });
-
-      input.addEventListener("chiClean", () => {
         dropdown.hide();
       });
     }
