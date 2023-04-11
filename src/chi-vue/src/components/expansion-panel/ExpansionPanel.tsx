@@ -10,6 +10,7 @@ export default class ExpansionPanel extends Vue {
   @Prop() title!: string;
   @Prop() step!: string;
   @Prop() bordered?: boolean;
+  @Prop() stateIcon?: boolean;
 
   @Watch('state')
   stateValidation(newValue: ExpansionPanelState) {
@@ -43,7 +44,7 @@ export default class ExpansionPanel extends Vue {
     return (
       <div
         class={`${EPANEL_CLASSES.EPANEL} ${this.state ? `-${this.state}` : ''}
-      ${this.bordered ? EPANEL_CLASSES.BORDERED : ''}`}>
+      ${this.bordered ? EPANEL_CLASSES.BORDERED : ''} ${this.stateIcon ? EPANEL_CLASSES.STATE_ICON : ''}`}>
         <div class={EPANEL_CLASSES.HEADER}>
           {this.step ? <span class={EPANEL_CLASSES.NUMBER}>{this.step}.</span> : ''}
           <div class={EPANEL_CLASSES.TITLE}>{this.title}</div>

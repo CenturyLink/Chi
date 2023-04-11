@@ -16,11 +16,14 @@ import {
 } from '../../constants/classes';
 import {
   ANIMATION_DURATION,
+  CAROUSEL_DIRECTION,
   CAROUSEL_SWIPE_DELTA
 } from '../../constants/constants';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 
 const CAROUSEL_BOUNCE_DISTANCE = 25;
+const CAROUSEL_BOUNCE_TIME = 200;
+const MAX_ITEMS_THRESHOLD = 0.95;
 
 @Component({
   tag: 'chi-carousel',
@@ -61,9 +64,14 @@ export class Carousel {
    *  Number of views
    */
   @State() numberOfViews = 0;
+  /**
+   *  Max number of items shown in a view
+   */
+  @State() maxItemsShown: number;
   @State() customPrevButton: boolean;
   @State() customNextButton: boolean;
   @State() autoplayInterval: number;
+  @State() transformX: number = 0;
   /**
    * Triggered when the user navigates to another view
    */
@@ -79,46 +87,34 @@ export class Carousel {
   private moveEndPosition: number;
   private moveStartPosition: number;
   private isDragging = false;
+  private currentStep: number = 0;
+  private remainingSpace: number = 0;
+  private isLastView: boolean = false;
+  private isLastStep: boolean = false;
 
   private resizeHandler = () => {
-    this.fullScrollLength = this.calculateWidth(this.el);
-
-    const wrapperWidth = this.calculateWidth(this.wrapper);
-
-    this.numberOfViews = Math.ceil(wrapperWidth / this.fullScrollLength);
-
-    const remainder = wrapperWidth - this.fullScrollLength * this.numberOfViews;
-
-    if (this.single) {
-      this._applySizeToItems();
-    }
-
-    this.calculateScrollBreakpoints(
-      this.fullScrollLength,
-      wrapperWidth,
-      remainder
-    );
+    this._calculateCarouselWidth();
   };
 
-  calculateWidth(element: HTMLElement) {
-    return element.offsetWidth;
-  }
+  _calculateCarouselWidth() {
+    const carouselItems = this._getCarouselItems();
 
-  calculateScrollBreakpoints(
-    fullScrollLength: number,
-    wrapperWidth: number,
-    remainder: number
-  ) {
-    for (let view = 0; view < this.numberOfViews; view++) {
-      this.scrollBreakpoints[view + 1] =
-        (view + 1) * fullScrollLength > wrapperWidth
-          ? view * fullScrollLength * -1 - remainder
-          : view * fullScrollLength * -1;
+    this.fullScrollLength = this.el.offsetWidth || this.fullScrollLength;
+    if (this.single) {
+      this._applySizeToItems();
+      this.transformX = -(this.currentStep * carouselItems[0].clientWidth);
+    }
 
-      if (view === this.numberOfViews - 1) {
-        this.scrollBreakpoints[this.numberOfViews + 1] =
-          view * fullScrollLength * -1 - remainder - CAROUSEL_BOUNCE_DISTANCE;
-      }
+    const itemsShown = this.fullScrollLength / carouselItems[0].clientWidth;
+
+    this.maxItemsShown =
+      itemsShown % 1 > MAX_ITEMS_THRESHOLD
+        ? Math.ceil(itemsShown)
+        : Math.floor(itemsShown);
+    this.numberOfViews = Math.ceil(carouselItems.length / this.maxItemsShown);
+
+    if (this.isLastView) {
+      this._calculateView(CAROUSEL_DIRECTION.NEXT, this.currentStep);
     }
   }
 
@@ -128,24 +124,7 @@ export class Carousel {
   }
 
   componentDidLoad() {
-    const fullScrollLength = this.calculateWidth(this.el);
-
-    this.fullScrollLength = fullScrollLength;
-    if (this.single) {
-      this._applySizeToItems();
-    }
-
-    const wrapperWidth = this.calculateWidth(this.wrapper);
-
-    this.numberOfViews = Math.ceil(wrapperWidth / fullScrollLength);
-
-    const remainder = wrapperWidth - fullScrollLength * this.numberOfViews;
-
-    this.calculateScrollBreakpoints(
-      this.fullScrollLength,
-      wrapperWidth,
-      remainder
-    );
+    this._calculateCarouselWidth();
     this._autoPlay(false);
     window.addEventListener('resize', this.resizeHandler);
   }
@@ -169,7 +148,88 @@ export class Carousel {
     }
   }
 
+  _calculateView(direction: CAROUSEL_DIRECTION, customNextStep?: number) {
+    const carouselItems = this._getCarouselItems();
+    const itemWidth = carouselItems[0].clientWidth;
+    let nextStep =
+      customNextStep !== undefined
+        ? customNextStep
+        : this.maxItemsShown * -direction + this.currentStep;
+    const remainingItems = carouselItems.length - nextStep;
+    const isCurrentLastView = this.isLastView;
+
+    this.isLastView = remainingItems <= this.maxItemsShown;
+    this.isLastStep = remainingItems <= 0;
+
+    if (nextStep < 0) nextStep = 0;
+    if (this.isLastStep && direction === CAROUSEL_DIRECTION.NEXT) return;
+
+    if (this.isLastView) {
+      this._moveLastView(customNextStep, remainingItems, itemWidth);
+    } else if (nextStep === 0) {
+      this.transformX = 0;
+    } else {
+      this._moveView(
+        customNextStep,
+        itemWidth,
+        nextStep,
+        direction,
+        isCurrentLastView
+      );
+    }
+
+    if (nextStep >= 0) {
+      this.currentStep = Math.abs(nextStep);
+    }
+  }
+
+  _moveView(
+    customNextStep: number,
+    itemWidth: number,
+    nextStep: number,
+    direction: CAROUSEL_DIRECTION,
+    currentLastView: boolean
+  ) {
+    if (customNextStep) {
+      this.transformX = customNextStep * itemWidth * -1;
+    } else {
+      this.transformX += currentLastView
+        ? this.remainingSpace
+        : Math.abs(nextStep - this.currentStep) * itemWidth * direction;
+    }
+  }
+
+  _moveLastView(
+    customNextStep: number,
+    remainingItems: number,
+    itemWidth: number
+  ) {
+    this.remainingSpace = Math.abs(
+      this.fullScrollLength - (this.maxItemsShown + remainingItems) * itemWidth
+    );
+
+    if (customNextStep) {
+      this.transformX =
+        this.fullScrollLength - (customNextStep + remainingItems) * itemWidth;
+    } else {
+      this.transformX -= this.remainingSpace;
+    }
+  }
+
+  _bounceView(direction: CAROUSEL_DIRECTION) {
+    if (this.isLastStep) {
+      this.transformX += CAROUSEL_BOUNCE_DISTANCE * direction;
+    } else {
+      this.transformX = CAROUSEL_BOUNCE_DISTANCE * direction;
+    }
+
+    setTimeout(() => {
+      this.transformX -= CAROUSEL_BOUNCE_DISTANCE * direction;
+    }, CAROUSEL_BOUNCE_TIME);
+  }
+
   prevView() {
+    this._calculateView(CAROUSEL_DIRECTION.PREVIOUS);
     if (this.animation && !this.animation.isStopped()) {
       this.animation.stop();
     }
@@ -195,9 +255,14 @@ export class Carousel {
         ANIMATION_DURATION.SHORT
       );
     }
+
+    if (this.currentStep === 0 || this.isLastStep) {
+      this._bounceView(CAROUSEL_DIRECTION.PREVIOUS);
+    }
   }
 
   nextView() {
+    this._calculateView(CAROUSEL_DIRECTION.NEXT);
     if (this.animation && !this.animation.isStopped()) {
       this.animation.stop();
     }
@@ -221,6 +286,10 @@ export class Carousel {
       },
       ANIMATION_DURATION.SHORT
     );
+
+    if (this.currentStep === 0 || this.isLastStep) {
+      this._bounceView(CAROUSEL_DIRECTION.NEXT);
+    }
   }
 
   touchEnd = () => {
@@ -262,7 +331,7 @@ export class Carousel {
   }
 
   getWrapperTransform() {
-    return `translateX(${this.scrollBreakpoints[this.view + 1]}px)`;
+    return `translateX(${this.transformX}px)`;
   }
 
   touchStart = (e: TouchEvent) => {
@@ -275,7 +344,7 @@ export class Carousel {
   };
 
   _applySizeToItems() {
-    const carouselItems = this.el.querySelectorAll(`.${CAROUSEL_CLASSES.ITEM}`);
+    const carouselItems = this._getCarouselItems();
 
     if (carouselItems) {
       carouselItems.forEach((item: HTMLElement) => {
@@ -285,15 +354,27 @@ export class Carousel {
   }
 
   _goToView(view: number) {
+    const nextStep = this.maxItemsShown * view;
+    const direction =
+      nextStep > this.currentStep
+        ? CAROUSEL_DIRECTION.NEXT
+        : CAROUSEL_DIRECTION.PREVIOUS;
+
+    this._calculateView(direction, nextStep);
     this.view = view;
     this.chiViewChange.emit(view);
   }
 
-  _areThereMultipleItems() {
+  _getCarouselItems(): NodeListOf<Element> {
     const carouselItemClasses = [CAROUSEL_CLASSES.ITEM, STAT_CLASSES.ITEM];
-    const carouselItems = this.el.querySelectorAll(
-      carouselItemClasses.map((itemClass) => `.${itemClass}`).join(', ')
+
+    return this.el.querySelectorAll(
+      carouselItemClasses.map(itemClass => `.${itemClass}`).join(', ')
     );
+  }
+
+  _areThereMultipleItems() {
+    const carouselItems = this._getCarouselItems();
 
     return carouselItems.length > 1;
   }
@@ -312,7 +393,7 @@ export class Carousel {
               size="sm"
               type="float"
               alternative-text="Carousel previous"
-              disabled={this.view === 0 || this.view === -1}
+              disabled={this.currentStep <= 0}
             >
               <chi-icon icon="chevron-left"></chi-icon>
             </chi-button>
@@ -332,10 +413,7 @@ export class Carousel {
               size="sm"
               type="float"
               alternative-text="Carousel next"
-              disabled={
-                this.view === this.numberOfViews ||
-                this.view + 1 === this.numberOfViews
-              }
+              disabled={this.isLastView}
             >
               <chi-icon icon="chevron-right"></chi-icon>
             </chi-button>
@@ -378,7 +456,7 @@ export class Carousel {
         of {this.numberOfViews}
       </div>
     ) : null;
-    
+
     return (
       <div
         onTouchStart={this.touchStart}
