@@ -164,11 +164,19 @@ h3 With Dropdown
 
         input.addEventListener("chiInput", () => {
           dropdown.show();
-        })
+        });
+
+        input.addEventListener("chiFocus", () => {
+          dropdown.show();
+        });
 
         input.addEventListener("chiBlur", () => {
           dropdown.hide();
-        })
+        });
+
+        input.addEventListener("chiClean", () => {
+          dropdown.hide();
+        });
       </script>
   .chi-tabs-panel#html-with-dropdown
     .chi-tab__description
@@ -195,7 +203,7 @@ h3 With Dropdown
       </div>
 
       <script>
-        chi.dropdown(document.getElementById('with-dropdown'))
+        chi.dropdown(document.getElementById('with-dropdown'));
       </script>
 
 .-portal--hide.-colt--show
@@ -478,10 +486,18 @@ script.
 
       input.addEventListener("chiInput", () => {
         dropdown.show();
-      })
+      });
+
+      input.addEventListener("chiFocus", () => {
+        dropdown.show();
+      });
 
       input.addEventListener("chiBlur", () => {
         dropdown.hide();
-      })
+      });
+
+      input.addEventListener("chiClean", () => {
+        dropdown.hide();
+      });
     }
   );
