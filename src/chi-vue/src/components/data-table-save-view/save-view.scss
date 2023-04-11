@@ -11,15 +11,3 @@
   opacity: 0;
   transform: translateY(-8px);
 }
-
-// TODO: Remove after new Chi 5.29.0 version
-.chi-save-view {
-  &__base,
-  &__edit,
-  &__saved {
-    .chi-save-view__no_actions {
-      align-items: center;
-      display: flex;
-    }
-  }
-}
