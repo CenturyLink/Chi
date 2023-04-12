@@ -228,6 +228,7 @@ export class Popover {
   }
 
   private _show(): void {
+    if (!this._popper) this._initializePopper();
     if (this.currentAnimation && !this.currentAnimation.isStopped()) {
       this.currentAnimation.stop();
     }
