@@ -130,7 +130,7 @@ export default class PropertiesGenerator extends Vue {
       .catch((error) => console.log(error));
   }
 
-  async created() {
+  async mounted() {
     this.docs = await this.getDocs();
 
     if (this.docs) {
