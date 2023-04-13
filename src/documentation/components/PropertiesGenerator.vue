@@ -122,16 +122,8 @@ export default class PropertiesGenerator extends Vue {
     return `CustomEvent<${detail}>`;
   }
 
-  getDocs() {
-    return this.$axios.get(DOCS_URL)
-      .then((response) => {
-        return response.data;
-      })
-      .catch((error) => console.log(error));
-  }
-
-  async mounted() {
-    this.docs = await this.getDocs();
+  created() {
+    this.docs = Vue.prototype.$chiDocs;
 
     if (this.docs) {
       const component = this.docs.components?.find(
