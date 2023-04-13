@@ -1,4 +1,17 @@
 # CHANGELOG
+## 5.30.0 (April 12, 2023)
+### Components
+#### Added
+* Added: Carousel recalculates item position when resizing the viewport.
+#### Fixed
+* Fixed: Data table description popover in header now supports column customization.
+### Documentation
+#### Added
+* Added: Search input with dropdown example.
+#### Fixed
+* Fixed: Prevent opening Accessibility accordion in sidenav when clicking on another item in Foundations section.
+* Fixed: Vue documentation sidenav `-active` class was missing in a selected item.
+
 ## 5.29.0 (March 29, 2023)
 ### Components
 #### Added
