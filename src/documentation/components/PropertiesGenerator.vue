@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div(v-if="props.length")
+    div(v-show="props.length")
       h3 Properties
       section.chi-table.chi-table__options.-bordered.-my--3
         div(style='overflow-x:auto,')
@@ -39,7 +39,7 @@
                     code(v-if="prop.default") {{prop.default}}
                     em(v-else) undefined
 
-    div(v-if="events.length")
+    div(v-show="events.length")
       h3 Events
       section.chi-table.chi-table__options.-bordered.-my--3
         div(style='overflow-x:auto,')
@@ -63,7 +63,7 @@
                   div
                     code {{getEventDetailType(ev.detail)}}
 
-    div(v-if="methods.length")
+    div(v-show="methods.length")
       h3 Methods
       section.chi-table.chi-table__options.-bordered.-my--3
         div(style='overflow-x:auto,')
@@ -102,7 +102,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { DOCS_URL } from '../constants/constants';
 
 @Component({
   data: () => {
@@ -122,7 +121,7 @@ export default class PropertiesGenerator extends Vue {
     return `CustomEvent<${detail}>`;
   }
 
-  beforeCreate() {
+  created() {
     this.docs = Vue.prototype.$chiDocs;
 
     if (this.docs) {
