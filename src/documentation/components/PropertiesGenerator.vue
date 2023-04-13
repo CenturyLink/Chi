@@ -122,7 +122,7 @@ export default class PropertiesGenerator extends Vue {
     return `CustomEvent<${detail}>`;
   }
 
-  mounted() {
+  beforeCreate() {
     this.docs = Vue.prototype.$chiDocs;
 
     if (this.docs) {
