@@ -113,21 +113,16 @@ describe('Alert', () => {
         .should('match', 'chi-icon');
     });
 
-    it('Alert banner dismiss button should trigger appropriate event', () => {
-      const spy = cy.spy();
-
-      cy.get('body').then(el => {
-        el.on('dismissAlert', spy);
+    it('dismissible alert banner should be removed after clicking the X button', () => {
+      cy.get('@alert-banner-dismissible-success-default').within($alert => {
+        return cy
+          .get('chi-button')
+          .should('have.length', 1)
+          .click()
+          .then(() => {
+            expect($alert).not.to.exist;
+          });
       });
-
-      cy.get('@alert-banner-dismissible-success-default')
-        .children()
-        .last()
-        .should('match', 'chi-button')
-        .click()
-        .then(() => {
-          expect(spy).to.be.called;
-        });
     });
   });
 

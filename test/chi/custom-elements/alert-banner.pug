@@ -27,10 +27,10 @@ each size in ['default', 'sm', 'lg']
   div(class=`test-banner-dismissible-${size} -w--100`)
     each val, type in {base: 'circle-info', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       if (type === 'base')
-        chi-alert.-m--2(class=type, icon=val, type="banner" closable, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-dismissible-${type}-${size}`)
+        chi-alert.-m--2(class=type, icon=val, type="banner" closable, mutable, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-dismissible-${type}-${size}`)
           =`This is a dismissible ${type} alert`
       else
-        chi-alert.-m--2(color=type, icon=val, type="banner" closable, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-dismissible-${type}-${size}`)
+        chi-alert.-m--2(color=type, icon=val, type="banner" closable, mutable, size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-dismissible-${type}-${size}`)
           =`This is a dismissible ${type} alert`
   h4 Titled / #{size}
   div(class=`test-banner-titled-${size} -w--100`)
