@@ -1,9 +1,9 @@
 <template lang="pug">
   div
-    div(v-show="props.length")
+    div(v-if="props.length")
       h3 Properties
       section.chi-table.chi-table__options.-bordered.-my--3
-        div(style='overflow-x:auto,')
+        div(style='overflow-x:auto')
           table.-text(cellpadding='0', cellspacing='0')
             thead
               tr
@@ -21,7 +21,7 @@
               tr(v-for="prop in props")
                 td(v-if="prop.name !== 'extraClass'")
                   div
-                    code {{prop.name}}
+                    code {{ prop.name }}
                     strong(v-if="prop.required") (required)
                 td(v-if="prop.name !== 'extraClass'")
                   div
@@ -29,20 +29,20 @@
                     div(v-else)| --
                 td(v-if="prop.name !== 'extraClass'")
                   div
-                    div(v-if="prop.deprecation !== undefined").-text--danger **[DEPRECATED]** {{prop.deprecation}}
-                    | {{prop.docs}}
+                    div(v-if="prop.deprecation !== undefined").-text--danger **[DEPRECATED]** {{ prop.deprecation }}
+                    | {{ prop.docs }}
                 td(v-if="prop.name !== 'extraClass'")
                   div
-                    code {{prop.type}}
+                    code {{ prop.type }}
                 td(v-if="prop.name !== 'extraClass'")
                   div
-                    code(v-if="prop.default") {{prop.default}}
+                    code(v-if="prop.default") {{ prop.default }}
                     em(v-else) undefined
 
-    div(v-show="events.length")
+    div(v-if="events.length")
       h3 Events
       section.chi-table.chi-table__options.-bordered.-my--3
-        div(style='overflow-x:auto,')
+        div(style='overflow-x:auto')
           table.-text(cellpadding='0', cellspacing='0')
             thead
               tr
@@ -56,17 +56,17 @@
               tr(v-for="ev in events")
                 td
                   div
-                    code {{ev.event}}
+                    code {{ ev.event }}
                 td
-                  div {{ev.docs}}
+                  div {{ ev.docs }}
                 td
                   div
-                    code {{getEventDetailType(ev.detail)}}
+                    code {{ getEventDetailType(ev.detail) }}
 
-    div(v-show="methods.length")
+    div(v-if="methods.length")
       h3 Methods
       section.chi-table.chi-table__options.-bordered.-my--3
-        div(style='overflow-x:auto,')
+        div(style='overflow-x:auto')
           table.-text(cellpadding='0', cellspacing='0')
             thead
               tr
@@ -82,20 +82,20 @@
               tr(v-for="method in methods")
                 td
                   div
-                    code {{method.signature}}
+                    code {{ method.signature }}
                 td
-                  div {{method.docs}}
+                  div {{ method.docs }}
                 td
                   div
-                    p(v-if="method.returns").-text Type: {{method.returns.type}}
+                    p(v-if="method.returns").-text Type: {{ method.returns.type }}
                 td
                   div(v-if="method.parameters.length")
                     div(v-for="parameter in method.parameters")
-                      |{{parameter.name}}:
-                      code {{parameter.type}}
+                      |{{ parameter.name }}:
+                      code {{ parameter.type }}
                       div(v-if="parameter.docs")
                         | Description:
-                        code {{parameter.docs}}
+                        code {{ parameter.docs }}
                   div.-text--center(v-else)
                     | -
 </template>
@@ -108,24 +108,21 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
     return {
       props: [],
       events: [],
-      methods: []
+      methods: [],
+      docs: Vue.prototype.$chiDocs
     };
   }
 })
 export default class PropertiesGenerator extends Vue {
-  @Prop({required: true}) tag!: string;
-
-  docs: any;
+  @Prop({ required: true }) tag!: string;
 
   getEventDetailType(detail: string): string {
     return `CustomEvent<${detail}>`;
   }
 
   created() {
-    this.docs = Vue.prototype.$chiDocs;
-
-    if (this.docs) {
-      const component = this.docs.components?.find(
+    if (this.$data.docs) {
+      const component = this.$data.docs.components?.find(
         (component: {tag: string}) => component.tag === this.tag
       );
 
