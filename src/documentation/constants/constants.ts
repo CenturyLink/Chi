@@ -1,6 +1,6 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
-export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.29.0`;
+export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.30.0`;
 export const THEMES = {
   centurylink: {
     label: 'CenturyLink',
@@ -323,6 +323,7 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '5.30.0',
   '5.29.0',
   '5.28.0',
   '5.27.0',
