@@ -2,9 +2,10 @@
 div
   TitleBar(title="Border" description="Use shorthand border utility classes to control border, border width and border color on elements.")
   section.chi-grid__container.-pt--3
-    h2 Notation
+    AnchorTitle(title="Notation", tag="h2", :anchor="`?theme=${$store.state.themes.theme}#notation`")
     p.-text Border utility classes can be defined using the format <code>-b{sides}[-{breakpoint}]--{size}</code>.
-    h3 {sides}
+
+    AnchorTitle(title="{sides}", tag="h3", :anchor="`?theme=${$store.state.themes.theme}#sides`")
     ul.-text
       li <code>t</code> - use to apply <code>border-top</code>
       li <code>b</code> - use to apply <code>border-bottom</code>
@@ -13,7 +14,8 @@ div
       li <code>x</code> - use to apply <code>border-left</code> and <code>border-right</code>
       li <code>y</code> - use to apply <code>border-top</code> and <code>border-bottom</code>
       li blank - leave blank to apply <code>border</code> to all 4 sides.
-    h3 {breakpoint}
+
+    AnchorTitle(title="{breakpoint}", tag="h3", :anchor="`?theme=${$store.state.themes.theme}#breakpoint`")
     p.-text
       | Optionally, include -{breakpoint} to apply the utility behaviour to some breakpoints. As a mobile-first library,
       | any applying to smaller breakpoints will also modify larger ones unless another class overrides this behaviour.
@@ -23,7 +25,8 @@ div
       li <code>md</code> - use to apply <code>border</code> to ms and larger breakpoints.
       li <code>lg</code> - use to apply <code>border</code> to lg and larger breakpoints.
       li <code>xl</code> - use to apply <code>border</code> to xl breakpoints.
-    h3 {size}
+
+    AnchorTitle(title="{size}", tag="h3", :anchor="`?theme=${$store.state.themes.theme}#size`")
     ul.-text
       li <code>0</code> - use to eliminate existing <code>border</code> and set to <code>0</code>
       li <code>1</code> - use to set <code>border</code> to <code>1px</code>
