@@ -106,7 +106,9 @@
         <div class="chi-collection__title">Utilities</div>
         <ul class="chi-tabs__subtabs">
           <li>
-            <a :href="`${BASE_URL}utilities/border`">Border</a>
+            <NuxtLink :to="`/utilities/border`">
+              Border
+            </NuxtLink>
           </li>
           <li>
             <a :href="`${BASE_URL}utilities/color`">Color</a>
