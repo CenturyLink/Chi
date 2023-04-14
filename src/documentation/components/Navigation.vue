@@ -109,7 +109,9 @@
             <a :href="`${BASE_URL}utilities/border`">Border</a>
           </li>
           <li>
-            <a :href="`${BASE_URL}utilities/color`">Color</a>
+            <NuxtLink :to="`/utilities/color`">
+              Color
+            </NuxtLink>
           </li>
           <li>
             <a :href="`${BASE_URL}utilities/display`">Display</a>
