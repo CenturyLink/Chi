@@ -1,41 +1,42 @@
 <template lang="pug">
-  h3 Properties
-  section.chi-table.chi-table__options.-bordered.-my--3
-    div(style='overflow-x:auto')
-      table.-text(cellpadding='0', cellspacing='0')
-        thead
-          tr
-            th
-              div Property
-            th
-              div Attribute
-            th
-              div Description
-            th
-              div Type
-            th
-              div Default
-        tbody
-          tr(v-for="prop in props")
-            td(v-if="prop.name !== 'extraClass'")
-              div
-                code {{ prop.name }}
-                strong(v-if="prop.required") (required)
-            td(v-if="prop.name !== 'extraClass'")
-              div
-                code(v-if="prop.attr") {{prop.attr}}
-                div(v-else)| --
-            td(v-if="prop.name !== 'extraClass'")
-              div
-                div(v-if="prop.deprecation !== undefined").-text--danger **[DEPRECATED]** {{ prop.deprecation }}
-                | {{ prop.docs }}
-            td(v-if="prop.name !== 'extraClass'")
-              div
-                code {{ prop.type }}
-            td(v-if="prop.name !== 'extraClass'")
-              div
-                code(v-if="prop.default") {{ prop.default }}
-                em(v-else) undefined
+  div
+    h3 Properties
+    section.chi-table.chi-table__options.-bordered.-my--3
+      div(style='overflow-x:auto')
+        table.-text(cellpadding='0', cellspacing='0')
+          thead
+            tr
+              th
+                div Property
+              th
+                div Attribute
+              th
+                div Description
+              th
+                div Type
+              th
+                div Default
+          tbody
+            tr(v-for="prop in props")
+              td(v-if="prop.name !== 'extraClass'")
+                div
+                  code {{ prop.name }}
+                  strong(v-if="prop.required") (required)
+              td(v-if="prop.name !== 'extraClass'")
+                div
+                  code(v-if="prop.attr") {{prop.attr}}
+                  div(v-else)| --
+              td(v-if="prop.name !== 'extraClass'")
+                div
+                  div(v-if="prop.deprecation !== undefined").-text--danger **[DEPRECATED]** {{ prop.deprecation }}
+                  | {{ prop.docs }}
+              td(v-if="prop.name !== 'extraClass'")
+                div
+                  code {{ prop.type }}
+              td(v-if="prop.name !== 'extraClass'")
+                div
+                  code(v-if="prop.default") {{ prop.default }}
+                  em(v-else) undefined
 </template>
 
 <script lang="ts">
