@@ -25,7 +25,7 @@
                     strong(v-if="prop.required") (required)
                 td(v-if="prop.name !== 'extraClass'")
                   div
-                    code(v-if="prop.attr") {{prop.attr}}
+                    code(v-if="prop.attr") {{ prop.attr }}
                     div(v-else)| --
                 td(v-if="prop.name !== 'extraClass'")
                   div
