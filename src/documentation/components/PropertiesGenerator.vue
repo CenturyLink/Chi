@@ -109,7 +109,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
       props: [],
       events: [],
       methods: [],
-      docs: Vue.prototype.$chiDocs
+      docs: require('../static/docs.json')
     };
   }
 })
