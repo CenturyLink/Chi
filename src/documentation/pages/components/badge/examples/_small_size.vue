@@ -1,27 +1,26 @@
 <template lang="pug">
-  div
-    <ComponentExample title="Small" titleSize="h4" id="small_size" :tabs="exampleTabs" padding="-p--2">
-      <Wrapper slot="example">
-        chi-badge(size='sm', class='-m--1')= 'Badge'
-        chi-badge(size='sm', class='-m--1', variant='flat')
-          chi-icon(icon='atom')
-          span Badge
-      </Wrapper>
-      <Wrapper slot="code-webcomponent">
-        .chi-tab__description
-          | Set the attribute <code>size</code> to <code>sm</code> to render small badges.
-        <pre class="language-html">
-          <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-        </pre>
-      </Wrapper>
-      <Wrapper slot="code-htmlblueprint">
-        .chi-tab__description
-          | Use the <code>-sm</code> modifier class to render small badges.
-        <pre class="language-html">
-          <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-        </pre>
-      </Wrapper>
-    </ComponentExample>
+  <ComponentExample title="Small" titleSize="h4" id="small_size" :tabs="exampleTabs" padding="-p--2">
+    <Wrapper slot="example">
+      chi-badge(size='sm', class='-m--1')= 'Badge'
+      chi-badge(size='sm', class='-m--1', variant='flat')
+        chi-icon(icon='atom')
+        span Badge
+    </Wrapper>
+    <Wrapper slot="code-webcomponent">
+      .chi-tab__description
+        | Set the attribute <code>size</code> to <code>sm</code> to render small badges.
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+      </pre>
+    </Wrapper>
+    <Wrapper slot="code-htmlblueprint">
+      .chi-tab__description
+        | Use the <code>-sm</code> modifier class to render small badges.
+      <pre class="language-html">
+        <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+    </Wrapper>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
