@@ -6,6 +6,7 @@
 
     <Solid />
     <Outline />
+    <Flat />
 </template>
 
 <script lang="ts">
