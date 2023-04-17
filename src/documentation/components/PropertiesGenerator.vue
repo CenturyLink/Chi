@@ -1,28 +1,5 @@
 <template lang="pug">
-  div
-    h3 Properties
-    section.chi-table.chi-table__options.-bordered.-my--3
-      div(style='overflow-x:auto')
-        table.-text(cellpadding='0', cellspacing='0')
-          thead
-            tr
-              th
-                div Property
-              th
-                div Attribute
-              th
-                div Description
-              th
-                div Type
-              th
-                div Default
-          tbody
-            tr
-              td
-                div
-                  code hola
-                  strong (required)
-
+  
 </template>
 
 <script lang="ts">
