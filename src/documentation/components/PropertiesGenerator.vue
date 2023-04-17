@@ -17,25 +17,25 @@
               th
                 div Default
           tbody
-            tr(v-for="prop in props")
-              td(v-if="prop.name !== 'extraClass'")
+            tr
+              td(v-if="props[0].name !== 'extraClass'")
                 div
-                  code {{ prop.name }}
-                  strong(v-if="prop.required") (required)
-              td(v-if="prop.name !== 'extraClass'")
+                  code {{ props[0].name }}
+                  strong(v-if="props[0].required") (required)
+              td(v-if="props[0].name !== 'extraClass'")
                 div
-                  code(v-if="prop.attr") {{prop.attr}}
+                  code(v-if="props[0].attr") {{ props[0].attr }}
                   div(v-else)| --
-              td(v-if="prop.name !== 'extraClass'")
+              td(v-if="props[0].name !== 'extraClass'")
                 div
-                  div(v-if="prop.deprecation !== undefined").-text--danger **[DEPRECATED]** {{ prop.deprecation }}
-                  | {{ prop.docs }}
-              td(v-if="prop.name !== 'extraClass'")
+                  div(v-if="props[0].deprecation !== undefined").-text--danger **[DEPRECATED]** {{ props[0].deprecation }}
+                  | {{ props[0].docs }}
+              td(v-if="props[0].name !== 'extraClass'")
                 div
-                  code {{ prop.type }}
-              td(v-if="prop.name !== 'extraClass'")
+                  code {{ props[0].type }}
+              td(v-if="props[0].name !== 'extraClass'")
                 div
-                  code(v-if="prop.default") {{ prop.default }}
+                  code(v-if="props[0].default") {{ props[0].default }}
                   em(v-else) undefined
 </template>
 

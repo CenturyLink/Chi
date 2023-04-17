@@ -21,6 +21,12 @@ export const THEMES = {
     css: `chi-portal.css`,
     docsCss: `assets/themes/portal/docs.css`
   },
+  brightspeed: {
+    label: 'Brightspeed',
+    favicon: '',
+    css: `chi-brightspeed.css`,
+    docsCss: `assets/themes/brightspeed/docs.css`
+  },
   colt: {
     label: 'Colt',
     favicon: '',
