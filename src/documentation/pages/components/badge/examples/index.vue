@@ -7,6 +7,7 @@
     <Solid />
     <Outline />
     <Flat />
+    <IconBadges />
 </template>
 
 <script lang="ts">
