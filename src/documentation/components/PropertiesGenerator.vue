@@ -18,25 +18,11 @@
                 div Default
           tbody
             tr
-              td(v-if="props[0].name !== 'extraClass'")
+              td
                 div
                   code {{ props[0].name }}
-                  strong(v-if="props[0].required") (required)
-              td(v-if="props[0].name !== 'extraClass'")
-                div
-                  code(v-if="props[0].attr") {{ props[0].attr }}
-                  div(v-else)| --
-              td(v-if="props[0].name !== 'extraClass'")
-                div
-                  div(v-if="props[0].deprecation !== undefined").-text--danger **[DEPRECATED]** {{ props[0].deprecation }}
-                  | {{ props[0].docs }}
-              td(v-if="props[0].name !== 'extraClass'")
-                div
-                  code {{ props[0].type }}
-              td(v-if="props[0].name !== 'extraClass'")
-                div
-                  code(v-if="props[0].default") {{ props[0].default }}
-                  em(v-else) undefined
+                  strong (required)
+
 </template>
 
 <script lang="ts">
