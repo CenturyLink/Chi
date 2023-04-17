@@ -20,7 +20,7 @@
             tr
               td
                 div
-                  code {{ props[0].name }}
+                  code hola
                   strong (required)
 
 </template>
