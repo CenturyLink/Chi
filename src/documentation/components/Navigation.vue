@@ -115,7 +115,9 @@
             <a :href="`${BASE_URL}utilities/display`">Display</a>
           </li>
           <li>
-            <a :href="`${BASE_URL}utilities/flex`">Flex</a>
+            <NuxtLink :to="`/utilities/flex`">
+              Flex
+            </NuxtLink>
           </li>
           <li>
             <a :href="`${BASE_URL}utilities/image`">Image</a>
