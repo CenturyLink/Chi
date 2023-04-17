@@ -5,6 +5,7 @@
       | base or <code>outline</code> badges for medium emphasis, and <code>flat</code> badges for low emphasis.
 
     <Solid />
+    <Outline />
 </template>
 
 <script lang="ts">
