@@ -113,12 +113,22 @@ export default class DataTable extends Vue {
   _chiDropdownSelectAll: any;
   _dataTableNumber?: number;
 
-  _toggleInfoPopover(infoPopoverRef: string) {
-    const popover: any = this.$refs[infoPopoverRef];
+  _toggleInfoPopover(infoPopoverId: string) {
+    const popover = this._getInfoPopover(infoPopoverId);
 
     if (popover) {
+      if (!popover.reference && !popover.active) {
+        popover.reference = `#${infoPopoverId}-reference`;
+      }
+
       popover.toggle();
     }
+  }
+
+  _getInfoPopover(infoPopoverId: string) {
+    const dataTable = this.$refs.dataTable as HTMLElement;
+
+    return dataTable.querySelector(`#${infoPopoverId}`) as any;
   }
 
   _getDescription(description: string | DataTableColumnDescription) {
@@ -180,15 +190,17 @@ export default class DataTable extends Vue {
       this._expandable ? this._headExpandable() : null,
     ];
     const heads = Array.isArray(this.data.head) ? this.data.head : Object.keys(this.data.head);
+    const infoPopovers: JSX.Element[] = [];
 
     heads.forEach((column: string | DataTableColumn, cellIndex: number) => {
       const columnIndex = String(Array.isArray(this.data.head) ? cellIndex : column);
       const columnName = Array.isArray(this.data.head) ? (column as DataTableColumn).name : column;
       const infoPopoverId = `info-popover-${this._dataTableNumber}-${columnName}`,
+        buttonId = `info-popover-${this._dataTableNumber}-${columnName}-reference`,
         label = this.data.head[columnIndex].label || this.data.head[columnIndex],
         infoIcon = this.data.head[columnIndex].description ? (
           <chi-button
-            id={infoPopoverId}
+            id={buttonId}
             variant="flat"
             type="icon"
             alternative-text="Info icon"
@@ -200,12 +212,18 @@ export default class DataTable extends Vue {
         ) : null,
         infoPopover = this.data.head[columnIndex].description ? (
           <chi-popover
-            ref={infoPopoverId}
-            reference={`#${infoPopoverId}`}
+            id={infoPopoverId}
+            reference=""
             position="top"
             title={(this.data.head[columnIndex].description as DataTableColumnDescription).title}
-            modal
-            arrow>
+            arrow
+            onChiPopoverHidden={() => {
+              const popover = this._getInfoPopover(infoPopoverId);
+
+              if (popover) {
+                popover.reference = '';
+              }
+            }}>
             <div>
               {this._getDescription(this.data.head[columnIndex].description as string | DataTableColumnDescription)}
             </div>
@@ -277,7 +295,7 @@ export default class DataTable extends Vue {
       );
 
       tableHeadCells.push(sortable ? sortableColumnHead : nonSortableColumnHead);
-      if (infoPopover) tableHeadCells.push(infoPopover as JSX.Element);
+      if (infoPopover) infoPopovers.push(infoPopover as JSX.Element);
 
       if (this.data.head[columnIndex].sortable && !this._sortable) {
         this._sortable = true;
@@ -286,7 +304,10 @@ export default class DataTable extends Vue {
 
     return (
       <div class={`${DATA_TABLE_CLASSES.HEAD} ${ONE_LINK_TX}`} role="row">
-        <div class={DATA_TABLE_CLASSES.ROW}>{tableHeadCells}</div>
+        <div class={DATA_TABLE_CLASSES.ROW}>
+          {tableHeadCells}
+          {infoPopovers}
+        </div>
       </div>
     );
   }
