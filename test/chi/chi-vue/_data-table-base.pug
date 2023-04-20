@@ -62,6 +62,11 @@ h3 All Selected
   #allSelected
     chi-vue-data-table(data-cy='data-table-all-selected', :config="config", :data="table")
 
+h3 Data Table Select All (Dropdown)
+.test-data-table.-p--3.-w--100
+  #dropdown-select-all
+    chi-vue-data-table(data-cy='data-table-dropdown-select-all', :config="config", :data="table")
+
 h3 Radio selection
 .test-data-table.-p--3.-w--100
   #radio
@@ -721,6 +726,83 @@ script.
           firstLast: false,
           pageJumper: true,
         },
+        selectable: true,
+        resultsPerPage: 3,
+        showSelectAllDropdown: true
+      },
+
+      table: {
+        head: {
+          name: { label: "Name" },
+          id: { label: "ID" },
+          lastLogin: { label: "Last Login" },
+        },
+        body: [
+          {
+            id: "name-1",
+            data: ["Name 1", "name-1", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-2",
+            data: ["Name 2", "name-2", "Dec 18, 2020 2:38 AM"],
+          },
+          {
+            id: "name-3",
+            data: ["Name 3", "name-3", "Nov 5, 2020 10:15 AM"],
+            expanded: true,
+            nestedContent: {
+              table: {
+                data: [
+                  {
+                    id: "name-3-0",
+                    data: [
+                      "Child Name 1",
+                      "child-name-1",
+                      "Dec 18, 2020 2:38 AM",
+                    ],
+                  },
+                ],
+              },
+            },
+          },
+          {
+            id: "name-4",
+            data: ["Name 4", "name-4", "Dec 18, 2020 3:26 PM"],
+          },
+          {
+            id: "name-5",
+            data: ["Name 5", "name-5", "Dec 18, 2020 2:38 AM"],
+          },
+          {
+            id: "name-6",
+            data: ["Name 6", "name-6", "Nov 5, 2020 10:15 AM"],
+          },
+        ],
+      },
+    },
+  }).$mount("#dropdown-select-all");
+
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
         selectable: 'radio',
         resultsPerPage: 3,
       },
@@ -1047,11 +1129,11 @@ script.
                   status: "active",
                 },
               },
-              { 
-                template: 'date', 
-                payload: { 
-                  date: new Date('01/06/2018 8:00 AM') 
-                } 
+              {
+                template: 'date',
+                payload: {
+                  date: new Date('01/06/2018 8:00 AM')
+                }
               },
             ],
           },
@@ -1065,11 +1147,11 @@ script.
                   status: "inact",
                 },
               },
-              { 
-                template: 'date', 
-                payload: { 
-                  date: new Date('07/05/2018 8:00 AM') 
-                } 
+              {
+                template: 'date',
+                payload: {
+                  date: new Date('07/05/2018 8:00 AM')
+                }
               },
             ],
           },
@@ -1217,11 +1299,11 @@ script.
                   status: "active",
                 },
               },
-              { 
-                template: 'date', 
-                payload: { 
-                  date: new Date('01/06/2018 8:00 AM') 
-                } 
+              {
+                template: 'date',
+                payload: {
+                  date: new Date('01/06/2018 8:00 AM')
+                }
               },
             ],
           },
@@ -1235,11 +1317,11 @@ script.
                   status: "inact",
                 },
               },
-              { 
-                template: 'date', 
-                payload: { 
-                  date: new Date('07/05/2018 8:00 AM') 
-                } 
+              {
+                template: 'date',
+                payload: {
+                  date: new Date('07/05/2018 8:00 AM')
+                }
               },
             ],
           },
@@ -1779,11 +1861,11 @@ script.
       table: {
         head: {
           name: { label: "Name", description: { title: "Name", text: "This is Name description"} },
-          status: { label: 'Status', sortable: true, description: { title: 'Status', template: 'statusdesc', 
-            payload: { 
-              overdue: { status: "Overdue", icon: "circle-alert", color: "danger" }, 
+          status: { label: 'Status', sortable: true, description: { title: 'Status', template: 'statusdesc',
+            payload: {
+              overdue: { status: "Overdue", icon: "circle-alert", color: "danger" },
               due: { status: "Due", icon: 'warning', color: 'warning' }
-              } 
+              }
             }
           },
           lastLogin: { label: "Last Login" },
@@ -1845,11 +1927,11 @@ script.
       table: {
         head: {
           name: { label: "Name", description: { title: "Name", text: "This is Name description"} },
-          status: { label: 'Status', sortable: true, description: { title: 'Status', template: 'statusdesc', 
-            payload: { 
-              overdue: { status: "Overdue", icon: "circle-alert", color: "danger" }, 
+          status: { label: 'Status', sortable: true, description: { title: 'Status', template: 'statusdesc',
+            payload: {
+              overdue: { status: "Overdue", icon: "circle-alert", color: "danger" },
               due: { status: "Due", icon: 'warning', color: 'warning' }
-              } 
+              }
             }
           },
           lastLogin: { label: "Last Login" },
@@ -1857,34 +1939,34 @@ script.
         body: exampleBody,
       },
       buttonsMobile: [
-        { 
-          label: 'Edit', 
+        {
+          label: 'Edit',
           icon: 'edit'
         },
-        { 
-          label: 'Compose', 
+        {
+          label: 'Compose',
           icon: 'compose'
         },
-        { 
-          label: 'Delete', 
+        {
+          label: 'Delete',
           icon: 'delete'
         },
-        { 
-          label: 'Print', 
+        {
+          label: 'Print',
           icon: 'print'
         },
       ],
       buttonsDesktop: [
-        { 
-          label: 'Download', 
+        {
+          label: 'Download',
         },
-        { 
-          label: 'Compose', 
+        {
+          label: 'Compose',
         },
-        { 
-          label: 'Delete', 
+        {
+          label: 'Delete',
         },
-        { 
+        {
           label: 'Print',
         },
       ],
@@ -1925,7 +2007,7 @@ script.
             status: "inact",
           },
         },
-        "Dec 18, 2020 2:38 AM" 
+        "Dec 18, 2020 2:38 AM"
       ],
     },
     {
@@ -1969,7 +2051,7 @@ script.
         value: "Accordion content",
       },
       data: [
-        "Name 5", 
+        "Name 5",
         {
           template: "status",
           payload: {
