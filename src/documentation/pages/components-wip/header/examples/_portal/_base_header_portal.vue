@@ -125,7 +125,7 @@ declare const chi: any;
     <div class="chi-header__end">
         <div class="-d--none -d-lg--flex">
         <button class="chi-button -flat -icon" id="button-portal-notification" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom">
-            <div class="chi-button__content"><i class="chi-icon icon-bell-outline -icon--primary" aria-hidden="true"></i>
+            <div class="chi-button__content"><i class="chi-icon icon-bell-outline" aria-hidden="true"></i>
             <div class="chi-badge -dark -xs">2</div>
             </div>
         </button>
