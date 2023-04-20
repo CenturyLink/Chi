@@ -1,8 +1,12 @@
 # Welcome to Chi
 
-Chi is Lumen's design system for building consistent digital products and experiences. ntegrating Chi with your project is as simple as loading the Chi stylesheet from the [Lumen Assets Server](https://assets.ctl.io). Not only is this a great way to get started with Chi, it is also a highly available and performant option for loading the required assets into your project.
+Chi is Lumen's design system for building consistent digital products and experiences.
 
-Begin by adding the Chi stylesheet to your project's layout template, replacing `VERS` with the most recent release of Chi:
+## Getting Started
+
+Integrating Chi with your project is as simple as loading the Chi stylesheet from the [Lumen Assets Server](https://assets.ctl.io). Not only is this a great way to get started with Chi, it is also a highly available and performant option for loading the required assets into your project.
+
+Begin by adding the Chi stylesheet to your project's layout template, replacing `VERSION` with the most recent release of Chi:
 
 ``` html
 <link rel="stylesheet" href="https://assets.ctl.io/chi/VERSION/chi.css">
