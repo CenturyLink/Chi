@@ -1,12 +1,8 @@
 # Welcome to Chi
 
-Chi is Lumen's design system for building consistent digital products and experiences.
+Chi is Lumen's design system for building consistent digital products and experiences. ntegrating Chi with your project is as simple as loading the Chi stylesheet from the [Lumen Assets Server](https://assets.ctl.io). Not only is this a great way to get started with Chi, it is also a highly available and performant option for loading the required assets into your project.
 
-## Getting Started
-
-Integrating Chi with your project is as simple as loading the Chi stylesheet from the [Lumen Assets Server](https://assets.ctl.io). Not only is this a great way to get started with Chi, it is also a highly available and performant option for loading the required assets into your project.
-
-Begin by adding the Chi stylesheet to your project's layout template, replacing `VERSION` with the most recent release of Chi:
+Begin by adding the Chi stylesheet to your project's layout template, replacing `VERS` with the most recent release of Chi:
 
 ``` html
 <link rel="stylesheet" href="https://assets.ctl.io/chi/VERSION/chi.css">
@@ -42,6 +38,19 @@ $ chi start
 Once the container has been bootstrapped and the Chi project has started, connect to [http://localhost:8000](http://localhost:8000) in your browser to load Chi. While running, any changes to the Chi source will automatically be reloaded in your browser.
 
 The project has been configured to run inside a Docker container so it won't work as a regular node application.
+
+### Steps for Linux (Ubuntu)
+
+- install docker https://docs.docker.com/desktop/install/ubuntu/
+- change this in the [docker.sh](/scripts/docker.sh) script:
+  - `REPO_PATH=$(cd $(dirname $0)/..; pwd)` -> `REPO_PATH=$(pwd)`
+  - `bash_profile` -> `profile`
+- run:
+``` sh
+  . scripts/docker.sh alias
+  source ~/.bash_profile
+  chi start
+ ```
 
 ## Testing Changes
 
