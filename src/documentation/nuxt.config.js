@@ -70,7 +70,10 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['./plugins/chi-vue-components.js'],
+  plugins: [
+    './plugins/chi-vue-components.js',
+    './plugins/vue-fragment.client.ts'
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
