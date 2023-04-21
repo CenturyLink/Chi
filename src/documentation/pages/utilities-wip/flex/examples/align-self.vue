@@ -3,11 +3,8 @@ fragment
   <AnchorTitle title="Align self" tag="h2" :anchor="`?theme=${$store.state.themes.theme}#align-self`" />
   p.-text Use align-self utilities to alter the alignment of individual flex items on the cross axis.
 
-  <AlignSelfStart />
-  <AlignSelfEnd />
-  <AlignSelfCenter />
-  <AlignSelfBaseline />
-  <StretchBrowserDefault />
+  fragment(v-for="(type, index) in types", :key="index")
+    <AlignSelfExample :title="type.title" :id="type.id" />
 
   p.-text Target specific breakpoints with Align self responsive classes.
   ul.-mb--3
@@ -23,19 +20,22 @@ fragment
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import AlignSelfStart from './_align-self-start.vue';
-import AlignSelfEnd from './_align-self-end.vue';
-import AlignSelfCenter from './_align-self-center.vue';
-import AlignSelfBaseline from './_align-self-baseline.vue';
-import StretchBrowserDefault from './_align-self-stretch-browser-default.vue';
+import AlignSelfExample from './_align-self-example.vue';
 
 @Component({
+  data() {
+    return {
+      types: [
+        { id: 'start', title: 'Start' },
+        { id: 'end', title: 'End' },
+        { id: 'center', title: 'Center' },
+        { id: 'baseline', title: 'Baseline' },
+        { id: 'stretch', title: 'Stretch (Browser default)' }
+      ]
+    };
+  },
   components: {
-    AlignSelfStart,
-    AlignSelfEnd,
-    AlignSelfCenter,
-    AlignSelfBaseline,
-    StretchBrowserDefault
+    AlignSelfExample
   }
 })
 export default class AlignSelf extends Vue {}

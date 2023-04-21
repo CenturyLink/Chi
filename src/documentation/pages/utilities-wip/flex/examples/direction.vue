@@ -3,10 +3,8 @@ fragment
   <AnchorTitle title="Direction" tag="h2" :anchor="`?theme=${$store.state.themes.theme}#direction`" />
   p.-text Use direction utilities to define how items will be placed in flex containers.
 
-  <RowDefault />
-  <RowReverse />
-  <Column />
-  <columnReverse />
+  fragment(v-for="(type, index) in types", :key="index")
+    <DirectionExample :title="type.title" :id="type.id" />
 
   p.-text Target specific breakpoints with Direction responsive classes.
   ul.-mb--3
@@ -28,17 +26,21 @@ fragment
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import RowDefault from './_row-default.vue';
-import RowReverse from './_row-reverse.vue';
-import Column from './_column.vue';
-import columnReverse from './_column-reverse.vue';
+import DirectionExample from './_direction-example.vue';
 
 @Component({
+  data() {
+    return {
+      types: [
+        { id: 'row', title: 'Row (default)' },
+        { id: 'row-reverse', title: 'Row reverse' },
+        { id: 'column', title: 'Column' },
+        { id: 'column-reverse', title: 'Column reverse' }
+      ]
+    };
+  },
   components: {
-    RowDefault,
-    RowReverse,
-    Column,
-    columnReverse
+    DirectionExample
   }
 })
 export default class Direction extends Vue {}

@@ -3,12 +3,8 @@ fragment
   <AnchorTitle title="Align content" tag="h2" :anchor="`?theme=${$store.state.themes.theme}#align-content`" />
   p.-text Use align-content utilities on flexbox containers to alter the alignment of flex items <strong>together</strong> on the cross axis.
 
-  <AlignContentStart />
-  <AlignContentEnd />
-  <AlignContentCenter />
-  <AlignContentAround />
-  <AlignContentBetween />
-  <AlignContentStretch />
+  fragment(v-for="(type, index) in types", :key="index")
+    <AlignContentExample :title="type.title" :id="type.id" />
 
   p.-text Target specific breakpoints with Align content responsive classes.
   ul.-mb--3
@@ -23,21 +19,23 @@ fragment
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import AlignContentStart from './_align-content-start.vue';
-import AlignContentEnd from './_align-content-end.vue';
-import AlignContentCenter from './_align-content-center.vue';
-import AlignContentAround from './_align-content-around.vue';
-import AlignContentBetween from './_align-content-between.vue';
-import AlignContentStretch from './_align-content-stretch.vue';
+import AlignContentExample from './_align-content-example.vue';
 
 @Component({
   components: {
-    AlignContentStart,
-    AlignContentEnd,
-    AlignContentCenter,
-    AlignContentAround,
-    AlignContentBetween,
-    AlignContentStretch
+    AlignContentExample
+  },
+  data() {
+    return {
+      types: [
+        { id: 'start', title: 'Start (default)' },
+        { id: 'end', title: 'End' },
+        { id: 'center', title: 'Center' },
+        { id: 'around', title: 'Around' },
+        { id: 'between', title: 'Between' },
+        { id: 'stretch', title: 'Stretch' }
+      ]
+    };
   }
 })
 export default class AlignContent extends Vue {}
