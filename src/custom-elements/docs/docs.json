@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-03-29T10:03:57",
+  "timestamp": "2023-04-20T11:01:01",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2599,6 +2599,23 @@
           "reflectToAttr": true,
           "docs": "To define app layout subtitle",
           "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "mutable": false,
+          "attr": "title",
+          "reflectToAttr": true,
+          "docs": "to define app layout title.",
+          "docsTags": [],
+          "default": false,
           "values": [
             {
               "type": "string"
