@@ -1,5 +1,5 @@
 <template>
-  <fragment class="example-wrapper">
+  <div class="example-wrapper">
     <AnchorTitle
       :title="title"
       :tag="titleSize || 'h3'"
@@ -131,7 +131,7 @@
         <slot :name="'code-' + tab.id"></slot>
       </div>
     </div>
-  </fragment>
+  </div>
 </template>
 
 <style>
