@@ -44,6 +44,37 @@ export interface IThemes {
   brightspeed: string;
   colt: string;
 }
+export interface TabsInterface {
+  active: boolean;
+  disabled: boolean;
+  id: string;
+  label: string;
+}
+
+interface TabComponentInterface {
+  label: string;
+  id: string;
+  children?: TabComponentInterface[];
+}
+
+export interface TabsListInterface extends HTMLElement {
+  tabs: TabComponentInterface[];
+}
+
+export interface HeadTabInterface {
+  active: boolean;
+  id: string;
+  label: string;
+  codeSnippets: {
+    webComponent: {
+      code: string;
+    };
+    htmlBlueprint: {
+      code: string;
+    };
+  };
+}
+
 
 export interface IBorderUtility {
   className: string;
@@ -51,13 +82,13 @@ export interface IBorderUtility {
 }
 
 export interface IZIndex {
-  key: string, 
-  color: string, 
-  margin: number, 
+  key: string,
+  color: string,
+  margin: number,
   text: string,
 }
 
 export interface INotation {
-  class: string, 
-  value: string, 
+  class: string,
+  value: string,
 }
