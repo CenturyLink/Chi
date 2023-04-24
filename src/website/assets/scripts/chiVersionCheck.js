@@ -56,7 +56,7 @@ function hasNewVersion(version1, version2) {
   const v1 = version1.split('.');
   const v2 = version2.split('.');
 
-  return v1.some((element, index) => element < v2[index]);
+  return v1.some((element, index) => element !== (v2[index] || '0'));
 }
 
 function createAlertBar(currentVersion) {
