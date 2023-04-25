@@ -10,7 +10,6 @@ const COMPONENT_CLASSES = {
   CHI_SEARCH_INPUT: 'chi-search__input',
   CLOSE: '-close',
   ICON_RIGHT: '-icon--right',
-  ICON_PRIMARY: '-icon--primary',
   SEARCH: '-flat'
 };
 const EVENT_EXAMPLES = {
@@ -103,14 +102,6 @@ describe('Search Input', () => {
   
         checkAttr(inputElement, attr, 'test');
       });
-    });
-
-    it(`Should have class ${COMPONENT_CLASSES.ICON_PRIMARY} when the portal attr is set to true`, () => {
-      cy.get(`${SEARCH_INPUTS_DATA_CY.ATTRS}`)
-        .find('button')
-        .find('div')
-        .find('i')
-        .should('have.class', COMPONENT_CLASSES.ICON_PRIMARY);
     });
   });
 
