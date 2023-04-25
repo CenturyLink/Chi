@@ -17,7 +17,6 @@ export interface TabTrigger {
   parent?: TabTrigger;
   id: string;
   label?: string;
-  customLabel?: string;
   overflow: boolean;
   target?: string;
 }

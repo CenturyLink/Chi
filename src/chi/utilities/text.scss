@@ -181,6 +181,14 @@ $transforms: (lowercase, uppercase, capitalize);
   }
 }
 
+.-text--capitalize-fl {
+  text-transform: lowercase !important;
+
+  &::first-letter {
+    text-transform: capitalize !important;
+  }
+}
+
 // text weight
 .-text--thin {
   font-weight: $font-weight-light !important;
