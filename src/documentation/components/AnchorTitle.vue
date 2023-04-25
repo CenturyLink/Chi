@@ -11,8 +11,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 
 @Component({})
-
-export default class UtilityExample extends Vue {
+export default class AnchorTitle extends Vue {
   @Prop() anchor?: string;
   @Prop() title?: string;
   @Prop() id?: string;
