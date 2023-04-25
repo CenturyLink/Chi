@@ -11,7 +11,8 @@
     "generate-production": "DOCS_ENV=production nuxt generate"
   },
   "dependencies": {
-    "@centurylink/chi-vue": "2.0.0"
+    "@centurylink/chi-vue": "2.0.0",
+    "vue-fragment": "^1.6.0"
   },
   "devDependencies": {
     "@nuxt/image": "^0.7.1",

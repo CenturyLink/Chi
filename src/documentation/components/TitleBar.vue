@@ -1,9 +1,9 @@
 <template lang="pug">
-  header.docs-titlebar
-    .chi-grid__container
-      <h1 class="docs-titlebar__title">{{title}}</h1>
-      .docs-titlebar__description(v-if="description") {{description}}
-    <PageContentTabs v-if="$props.tabs" :tabs="$props.tabs" />
+header.docs-titlebar
+  .chi-grid__container
+    h1.docs-titlebar__title {{title}}
+    .docs-titlebar__description(v-if="description") {{description}}
+  PageContentTabs(v-if="$props?.tabs?.length", :tabs="$props.tabs")
 </template>
 
 <script lang="ts">
@@ -23,6 +23,10 @@ export default class BaseExample extends Vue {
   chiTabs: any;
 
   mounted() {
+    if (!this.tabs?.length) {
+      return
+    }
+
     const chiTabs = document.getElementById('page-content-tabs');
 
     this.chiTabs = chi.tab(chiTabs);
