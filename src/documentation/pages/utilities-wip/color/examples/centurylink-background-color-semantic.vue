@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  AnchorTitle(title="Semantic", tag="h3", :anchor="`?theme=${$store.state.themes.theme}#background-color-semantic`")
+  <AnchorTitle title="Semantic" tag="h3" :anchor="`?theme=${$store.state.themes.theme}#centurylink-background-color-semantic`" />
   p.-text
     | Use semantic background-colors to communicate meaning to users. Examples include displaying alerts, form field
     | validation, user status, application state and more. Use green (success) for positive, blue (info)
@@ -16,7 +16,7 @@ fragment
             th Value
             th Result
         tbody
-          each val, type in {'success': '#007E44', 'success-light': '#DBFAEE', 'success-lighter': '#F1FEF8', 'info': '#0075C9', 'info-light': '#F5F9FC', 'info-lighter': '#E0F3FF', 'warning': '#A15C00', 'warning-light': '#FAECD9', 'warning-lighter': '#FFF8ED', 'danger': '#D62015', 'danger-light': '#FFE8E5', 'danger-lighter': '#FFF5F5', 'muted': '#53565A', 'muted-light': '#EDF0F2', 'muted-lighter': '#F8F9F9'}
+          each val, type in {'success': '#008000', 'success-light': '#CEF2CE', 'success-lighter': '#E6FAE6', 'info': '#0060FA', 'info-light': '#E6F0FF', 'info-lighter': '#F5F8FC', 'warning': '#946300', 'warning-light': '#F9F5BE', 'warning-lighter': '#FDFBD8', 'danger': '#D81820', 'danger-light': '#FCE8E9', 'danger-lighter': '#FFF5F5', 'muted': '#53565A', 'muted-light': '#EDF0F2', 'muted-lighter': '#F8F9F9'}
             tr
               td(width='25%')
                 code=`-bg--${type}`
@@ -27,17 +27,8 @@ fragment
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import {Fragment} from 'vue-fragment'
+import { Component, Vue } from 'vue-property-decorator';
 
-  @Component({
-    components: {
-      Fragment
-    },
-    data: ()=> {
-      return {}
-    }
-  })
-
-  export default class BackgroundColorSemantic extends Vue {}
+@Component({})
+export default class CenturylinkBackgroundColorSemantic extends Vue {}
 </script>

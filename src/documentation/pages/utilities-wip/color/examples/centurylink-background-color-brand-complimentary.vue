@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  AnchorTitle(title="Brand complimentary", tag="h3", :anchor="`?theme=${$store.state.themes.theme}#background-color-complimentary`")
+  <AnchorTitle title="Brand complimentary" tag="h3" :anchor="`?theme=${$store.state.themes.theme}#centurylink-background-color-complimentary`"/>
   p.-text More background-colors that can be used to compliment the primary brand palette.
 
   section.chi-table.-bordered.-mt--3.-mb--3
@@ -23,17 +23,8 @@ fragment
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import {Fragment} from 'vue-fragment'
+import { Component, Vue } from 'vue-property-decorator';
 
-  @Component({
-    components: {
-      Fragment
-    },
-    data: ()=> {
-      return {}
-    }
-  })
-
-  export default class BackgroundColorComplimentary extends Vue {}
+@Component({})
+export default class CenturylinkBackgroundColorComplimentary extends Vue {}
 </script>

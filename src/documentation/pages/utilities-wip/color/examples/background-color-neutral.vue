@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  AnchorTitle(title="Neutral", tag="h3", :anchor="`?theme=${$store.state.themes.theme}#background-color-neutral`")
+  <AnchorTitle title="Neutral" tag="h3" :anchor="`?theme=${$store.state.themes.theme}#background-color-neutral`" />
   p.-text
     | Neutral background-colors provide low-contrast backgrounds for application containers, cards, and more.
 
@@ -24,17 +24,8 @@ fragment
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import {Fragment} from 'vue-fragment'
+import { Component, Vue } from 'vue-property-decorator';
 
-  @Component({
-    components: {
-      Fragment
-    },
-    data: ()=> {
-      return {}
-    }
-  })
-
-  export default class BackgroundColorNeutral extends Vue {}
+@Component({})
+export default class BackgroundColorNeutral extends Vue {}
 </script>

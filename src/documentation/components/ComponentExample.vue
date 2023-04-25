@@ -1,36 +1,13 @@
 <template>
-  <div class="example-wrapper">
-    <h4 v-if="titleSize === 'h4'" class="-anchor" :id="id">
-      {{ title }}
-      <span>
-        <a
-          class="-ml--1"
-          :href="'?theme=' + $store.state.themes.theme + '#' + id"
-          >#</a
-        >
-      </span>
-    </h4>
-    <h2 v-else-if="titleSize === 'h2'" class="-anchor" :id="id">
-      {{ title }}
-      <span>
-        <a
-          class="-ml--1"
-          :href="'?theme=' + $store.state.themes.theme + '#' + id"
-          >#</a
-        >
-      </span>
-    </h2>
-    <h3 v-else class="-anchor" :id="id">
-      {{ title }}
-      <span>
-        <a
-          class="-ml--1"
-          :href="'?theme=' + $store.state.themes.theme + '#' + id"
-          >#</a
-        >
-      </span>
-    </h3>
+  <fragment class="example-wrapper">
+    <AnchorTitle
+      :title="title"
+      :tag="titleSize || 'h3'"
+      :anchor="`?theme=${$store.state.themes.theme}#${id}`"
+    />
+
     <slot name="example-description"></slot>
+
     <div v-if="headTabs">
       <ul
         :id="'head-tabs-' + id"
@@ -103,12 +80,14 @@
         </div>
       </div>
     </div>
+
     <div v-else class="example -mb--3" :style="additionalStyle">
       <div :class="[padding || '-p--3', additionalClasses]">
         <slot name="example"></slot>
       </div>
       <div class="example-tabs -pl--2">
         <ul
+          v-if="!hideTabs"
           class="chi-tabs -animated"
           :id="'code-snippet-tabs-' + id"
           role="tabs"
@@ -152,7 +131,7 @@
         <slot :name="'code-' + tab.id"></slot>
       </div>
     </div>
-  </div>
+  </fragment>
 </template>
 
 <style>
@@ -218,6 +197,7 @@ export default class ComponentExample extends Vue {
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
   @Prop() additionalStyle?: string;
+  @Prop() hideTabs?: boolean;
 
   chiTabs: any;
   chiHeadTabs: any;

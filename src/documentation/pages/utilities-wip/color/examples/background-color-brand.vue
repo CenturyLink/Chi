@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  AnchorTitle(title="Brand", tag="h3", :anchor="`?theme=${$store.state.themes.theme}#background-color-brand`")
+  <AnchorTitle title="Brand" tag="h3" :anchor="`?theme=${$store.state.themes.theme}#background-color-brand`" />
   p.-text Brand background-colors reinforce Lumen's brand.
 
   section.chi-table.-bordered.-mt--3.-mb--3
@@ -23,17 +23,8 @@ fragment
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import {Fragment} from 'vue-fragment'
+import { Component, Vue } from 'vue-property-decorator';
 
-  @Component({
-    components: {
-      Fragment
-    },
-    data: ()=> {
-      return {}
-    }
-  })
-
-  export default class BackgroundColorBrand extends Vue {}
+@Component({})
+export default class BackgroundColorBrand extends Vue {}
 </script>

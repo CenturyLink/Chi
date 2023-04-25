@@ -1,6 +1,6 @@
 <template lang="pug">
-div.-centurylink--hide
-  AnchorTitle(title="Brand complimentary", tag="h3", :anchor="`?theme=${$store.state.themes.theme}#centurylink-background-color-complimentary`")
+fragment
+  <AnchorTitle title="Brand complimentary" tag="h3" :anchor="`?theme=${$store.state.themes.theme}#background-color-complimentary`" />
   p.-text More background-colors that can be used to compliment the primary brand palette.
 
   section.chi-table.-bordered.-mt--3.-mb--3
@@ -23,13 +23,8 @@ div.-centurylink--hide
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 
-  @Component({
-    data: ()=> {
-      return {}
-    }
-  })
-
-  export default class CenturylinkBackgroundColorComplimentary extends Vue {}
+@Component({})
+export default class BackgroundColorComplimentary extends Vue {}
 </script>

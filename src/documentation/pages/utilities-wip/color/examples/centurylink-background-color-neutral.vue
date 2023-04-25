@@ -1,8 +1,7 @@
 <template lang="pug">
 fragment
-  AnchorTitle(title="Neutral", tag="h3", :anchor="`?theme=${$store.state.themes.theme}#centurylink-background-color-neutral`")
-  p.-text
-    | Neutral background-colors provide low-contrast backgrounds for application containers, cards, and more.
+  <AnchorTitle title="Neutral" tag="h3" :anchor="`?theme=${$store.state.themes.theme}#centurylink-background-color-neutral`" />
+  p.-text Neutral background-colors provide low-contrast backgrounds for application containers, cards, and more.
 
   section.chi-table.-bordered.-mt--3.-mb--3
     div
@@ -24,17 +23,8 @@ fragment
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import {Fragment} from 'vue-fragment'
+import { Component, Vue } from 'vue-property-decorator';
 
-  @Component({
-    components: {
-      Fragment
-    },
-    data: ()=> {
-      return {}
-    }
-  })
-
-  export default class CenturylinkBackgroundColorNeutral extends Vue {}
+@Component({})
+export default class CenturylinkBackgroundColorNeutral extends Vue {}
 </script>

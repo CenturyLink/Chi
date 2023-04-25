@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  AnchorTitle(title="None", tag="h3", :anchor="`?theme=${$store.state.themes.theme}#background-color-none`")
+  <AnchorTitle title="None" tag="h3" :anchor="`?theme=${$store.state.themes.theme}#background-color-none`" />
   p.-text Use to render an element with no background-color.
 
   section.chi-table.-bordered.-mt--3.-mb--3
@@ -22,17 +22,8 @@ fragment
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator';
-  import {Fragment} from 'vue-fragment'
+import { Component, Vue } from 'vue-property-decorator';
 
-  @Component({
-    components: {
-      Fragment
-    },
-    data: ()=> {
-      return {}
-    }
-  })
-
-  export default class BackgroundColorNone extends Vue {}
+@Component({})
+export default class BackgroundColorNone extends Vue {}
 </script>
