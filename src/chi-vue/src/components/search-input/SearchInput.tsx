@@ -118,7 +118,6 @@ export default class SearchInput extends Vue {
           <i
             class={`
           ${ICON_CLASS} icon-search
-          ${this.portal && '-icon--primary'}
           `}
             aria-hidden="true"></i>
         </div>
