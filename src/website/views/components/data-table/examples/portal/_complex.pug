@@ -1,49 +1,53 @@
 h3 Complex
 .example.-mb--3
   .-p--3
-    #complex
-      chi-vue-data-table(
-        :config="config",
-        :data="table",
-        ref="dataTableComplex"
-      )
-        template(#status="payload")
-          i(:class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true")
-          span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.status }}
-        template(#name="payload")
-          chi-popover-example(:name="payload.name", :id="payload.id")
-        template(#actions="payload")
-          chi-dropdown-example(:id="payload.id")
-        template(#toolbar)
-          chi-vue-data-table-toolbar
-            template(v-slot:start)
-            template(v-slot:end)
-              chi-button(@click="printTable" variant="flat" type="icon" aria-label="Print data table complex example")
-                chi-icon(icon="print")
-        template(slot='bulkActions')
-          .chi-bulk-actions__buttons
-            .chi-bulk-actions__buttons-mobile.-z--40
-              chi-button(variant='flat' type='icon' aria-label='Edit')
-                chi-icon(icon='edit')
-              chi-button(variant='flat' type='icon' aria-label='Compose')
-                chi-icon(icon='compose')
-              chi-button(variant='flat' type='icon' aria-label='Delete')
-                chi-icon(icon='delete')
-              chi-button(variant='flat' type='icon' aria-label='Print')
-                chi-icon(icon='print')
-            .chi-bulk-actions__buttons-desktop
-              chi-button(size='xs' aria-label='Download')
-                chi-icon(icon='arrow-to-bottom')
-                span Download
-              chi-button(size='xs' aria-label='Compose')
-                chi-icon(icon='arrow-to-bottom')
-                span Compose
-              chi-button(size='xs' aria-label='Delete')
-                chi-icon(icon='arrow-to-bottom')
-                span Delete
-              chi-button(size='xs' aria-label='Print')
-                chi-icon(icon='arrow-to-bottom')
-                span Print
+    .chi-card.-portal.-bg--white.-bg-md--grey-15
+      .chi-card__header.-sm
+        .chi-card__title Title
+      .chi-card__content.-p--0
+        #complex
+          chi-vue-data-table(
+            :config="config",
+            :data="table",
+            ref="dataTableComplex"
+          )
+            template(#status="payload")
+              i(:class="`chi-icon icon-${payload.icon} -icon--${payload.color}`" aria-hidden="true")
+              span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.status }}
+            template(#name="payload")
+              chi-popover-example(:name="payload.name", :id="payload.id")
+            template(#actions="payload")
+              chi-dropdown-example(:id="payload.id")
+            template(#toolbar)
+              chi-vue-data-table-toolbar
+                template(v-slot:start)
+                template(v-slot:end)
+                  chi-button(@click="printTable" variant="flat" type="icon" aria-label="Print data table complex example")
+                    chi-icon(icon="print")
+            template(slot='bulkActions')
+              .chi-bulk-actions__buttons
+                .chi-bulk-actions__buttons-mobile.-z--40
+                  chi-button(variant='flat' type='icon' aria-label='Edit')
+                    chi-icon(icon='edit')
+                  chi-button(variant='flat' type='icon' aria-label='Compose')
+                    chi-icon(icon='compose')
+                  chi-button(variant='flat' type='icon' aria-label='Delete')
+                    chi-icon(icon='delete')
+                  chi-button(variant='flat' type='icon' aria-label='Print')
+                    chi-icon(icon='print')
+                .chi-bulk-actions__buttons-desktop
+                  chi-button(size='xs' aria-label='Download')
+                    chi-icon(icon='arrow-to-bottom')
+                    span Download
+                  chi-button(size='xs' aria-label='Compose')
+                    chi-icon(icon='arrow-to-bottom')
+                    span Compose
+                  chi-button(size='xs' aria-label='Delete')
+                    chi-icon(icon='arrow-to-bottom')
+                    span Delete
+                  chi-button(size='xs' aria-label='Print')
+                    chi-icon(icon='arrow-to-bottom')
+                    span Print
   .example-tabs.-pl--2
     ul.chi-tabs#example-portal-complex
       li.-disabled
