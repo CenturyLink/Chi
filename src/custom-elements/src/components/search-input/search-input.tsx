@@ -167,7 +167,7 @@ export class SearchInput {
         onClick={() => this.eventSearch.emit(this.value)}
         aria-label="Search">
           <div class="chi-button__content">
-            <i class={`chi-icon icon-search ${this.portal ? '-icon--primary' : ''}`} aria-hidden="true"></i>
+            <i class={`chi-icon icon-search`} aria-hidden="true"></i>
           </div>
       </button>;
 
