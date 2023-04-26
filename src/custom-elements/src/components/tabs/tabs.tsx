@@ -7,7 +7,8 @@ import {
   Prop,
   State,
   h,
-  Listen
+  Listen,
+  Watch
 } from '@stencil/core';
 import {
   ACTIVE_CLASS,
@@ -27,11 +28,13 @@ import {
   TabTriggerPosition,
   TabTriggerDirections
 } from '../../constants/types';
+import { TABS_SIZES, TabsSizes } from '../../constants/size';
 import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { uuid4 } from '../../utils/utils';
 import _ from 'lodash';
 
-const MARGIN_LEFT = 24;
+const MARGIN_LEFT_BASE = 24;
+const MARGIN_LEFT_LG = 32;
 
 @Component({
   tag: 'chi-tabs',
@@ -65,6 +68,10 @@ export class Tabs {
    */
   @Prop() vertical = false;
   /**
+   *  To set tab size { xs, sm, md, lg, xl }.
+   */
+  @Prop({ reflect: true }) size?: TabsSizes = 'md';
+  /**
    *  To configure See more Dropdown trigger message
    */
   @Prop() seeMoreMessage = TABS_SEE_MORE_DEFAULT_MESSAGE;
@@ -78,6 +85,17 @@ export class Tabs {
    * Triggered when the user activates a tab
    */
   @Event({ eventName: 'chiTabChange' }) chiTabChange: EventEmitter<TabTrigger>;
+
+  @Watch('size')
+  sizeValidation(newValue: TabsSizes) {
+    const validValues = TABS_SIZES.join(', ');
+
+    if (newValue && !TABS_SIZES.includes(newValue)) {
+      throw new Error(
+        `${newValue} is not a valid size for tabs. Valid values are: ${validValues}. `
+      );
+    }
+  }
 
   private activeTabElement: HTMLElement = null;
   private animation: ThreeStepsAnimation;
@@ -96,6 +114,12 @@ export class Tabs {
   private dropdowns = [];
   private dropdownKeys = {};
   private seeMoreDropdown: HTMLChiDropdownElement;
+  private liMarginLeft: number =
+    this.size === 'lg' ? MARGIN_LEFT_LG : MARGIN_LEFT_BASE;
+
+  componentWillLoad(): void {
+    this.sizeValidation(this.size);
+  }
 
   //#region Lifecycle hooks
   async componentDidLoad() {
@@ -104,7 +128,7 @@ export class Tabs {
       this.setLiSizes();
       this.seeMoreTriggerElementWidth =
         this.calculateSize(this.seeMoreTriggerElement, TabTriggerSizes.Width) +
-        (this.solid ? 0 : MARGIN_LEFT);
+        (this.solid ? 0 : this.liMarginLeft);
       this.isSeeMoreTriggerMeasured = true;
       this.activeTabElement = this.getActiveTabTrigger();
       this.setSlidingBorderStyles();
@@ -200,9 +224,7 @@ export class Tabs {
                       dropdownElement.hide();
                     }
                   }}
-                  innerHTML={
-                    child.customLabel ? child.customLabel : child.label
-                  }
+                  innerHTML={child.label}
                   slot="menu"
                 >
                   {child.children &&
@@ -395,7 +417,7 @@ export class Tabs {
     await liElements.forEach((li: HTMLElement, index) => {
       this.liSizes[li.dataset.index] =
         this.calculateSize(li, TabTriggerSizes.Width) +
-        (index === 0 || this.solid ? 0 : MARGIN_LEFT);
+        (index === 0 || this.solid ? 0 : this.liMarginLeft);
     });
     this.setListOverflow();
   }
@@ -452,7 +474,7 @@ export class Tabs {
     );
   }
 
-  // TODO: Improve customLabels with slots once stencil V3 is deployed: https://github.com/ionic-team/stencil/issues/2257
+  // TODO: Improve labels with slots to support custom content once stencil V3 is deployed: https://github.com/ionic-team/stencil/issues/2257
   render() {
     this.dropdowns = [];
     const tabElements =
@@ -479,7 +501,7 @@ export class Tabs {
                 aria-selected={this._isActiveTab(tab)}
                 aria-controls={`#${tab.id}`}
                 onClick={e => this.handlerClickTab(e, tab)}
-                innerHTML={tab.customLabel ? tab.customLabel : tab.label}
+                innerHTML={tab.label}
               ></a>
             </li>
           );
@@ -493,7 +515,9 @@ export class Tabs {
         }}
       ></li>
     ) : null;
-    const activeTabOverflownClass = this.isActiveTabOverflown(this.tabs) ? ACTIVE_CLASS : '';
+    const activeTabOverflownClass = this.isActiveTabOverflown(this.tabs)
+      ? ACTIVE_CLASS
+      : '';
     const seeMoreTrigger = !this.vertical &&
       (this.isSeeMoreVisible || !this.isSeeMoreTriggerMeasured) && (
         <li
@@ -528,7 +552,7 @@ export class Tabs {
               this.seeMoreDropdown.hide();
               this.isSeeMoreActive = false;
             }}
-            innerHTML={tab.customLabel ? tab.customLabel : tab.label}
+            innerHTML={tab.label}
             slot="menu"
           >
             {tab.children && this.dropdownIcon('right')}
@@ -561,6 +585,7 @@ export class Tabs {
             ${this.vertical && TABS_CLASSES.VERTICAL}
             ${this.solid && TABS_CLASSES.SOLID}
             ${this.sliding && TABS_CLASSES.SLIDING}
+            ${this.size ? `-${this.size}` : ''}
           `}
           ref={el => {
             this.ulElement = el;

@@ -1,4 +1,4 @@
-import { DataTableConfig } from '@/constants/types';
+import { DataTableConfig, SaveViewConfig, SaveViewModes } from '@/constants/types';
 
 export const exampleConfig: DataTableConfig = {
   columnResize: true,
@@ -28,9 +28,9 @@ export const exampleConfig: DataTableConfig = {
   },
   resultsPerPage: 10,
   defaultSort: {
-    key: 'ticketId',
-    sortBy: 'id',
-    direction: 'ascending',
+    key: 'date',
+    sortBy: 'date',
+    direction: 'descending',
   },
   truncation: true,
   treeSelection: true,
@@ -39,6 +39,14 @@ export const exampleConfig: DataTableConfig = {
   },
   showExpandAll: true,
   showSelectAllDropdown: true,
+};
+
+export const exampleSaveViewConfig: SaveViewConfig = {
+  active: true,
+  results: '(1-40 of 78)',
+  default: true,
+  mode: SaveViewModes.CREATE,
+  title: 'Title goes here',
 };
 
 const exampleColumns = [
@@ -220,6 +228,44 @@ export const exampleToolbar = {
     },
   ],
 };
+
+export const exampleTableArrayHead = [
+  {
+    name: 'ticketId',
+    label: 'Ticket ID',
+    sortable: true,
+    sortBy: 'id',
+    sortDataType: 'string',
+    key: true,
+    bold: true,
+    description: { title: 'Ticket ID', text: 'This is content for ticket id' },
+  },
+  {
+    name: 'alerts',
+    label: 'Alerts',
+    align: 'center',
+    description: {
+      template: 'alertsDesc',
+      payload: {
+        success: { icon: 'circle-check', color: 'success' },
+        warning: { icon: 'warning', color: 'warning' },
+      },
+    },
+  },
+  {
+    name: 'status',
+    label: 'Status',
+    sortable: true,
+    sortBy: 'status',
+    sortDataType: 'string',
+    align: 'center',
+  },
+  { name: 'string', label: 'Product', sortable: true, sortDataType: 'string', key: true },
+  { name: 'number', label: 'Number', sortable: true, sortDataType: 'number' },
+  { name: 'date', label: 'Created', sortable: true, sortBy: 'date', sortDataType: 'date' },
+  { name: 'productId', label: 'Service ID', sortable: true, sortDataType: 'string' },
+  { name: 'actions', label: ' ', align: 'right', allowOverflow: true, isPrintDisabled: true, key: true },
+];
 
 export const exampleTableHead = {
   ticketId: {

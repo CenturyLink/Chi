@@ -110,3 +110,13 @@
     }
   }
 }
+
+chi-search-input {
+  ~ chi-dropdown {
+    .chi-dropdown__menu {
+      &.-active {
+        position: absolute;
+      }
+    }
+  }
+}

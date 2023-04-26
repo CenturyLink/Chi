@@ -236,7 +236,7 @@ export default class AdvancedFilters extends Vue {
               ${UTILITY_CLASSES.JUSTIFY.CENTER}`}>
         <div
           class={[
-            CHECKBOX_CLASSES.checkbox,
+            CHECKBOX_CLASSES.CHECKBOX,
             this.mobile
               ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`
               : UTILITY_CLASSES.ALIGN_SELF.CENTER,

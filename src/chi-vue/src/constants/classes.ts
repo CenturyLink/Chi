@@ -72,7 +72,7 @@ export const BUTTON_GROUP_CLASSES = 'chi-button-group';
 
 //#region Checkbox
 export const CHECKBOX_CLASSES = {
-  checkbox: 'chi-checkbox',
+  CHECKBOX: 'chi-checkbox',
   INPUT: 'chi-checkbox__input',
   LABEL: 'chi-checkbox__label',
   INDETERMINATE: '-indeterminate',
@@ -142,6 +142,7 @@ export const EPANEL_CLASSES = {
   HEADER: 'chi-epanel__header',
   NUMBER: 'chi-epanel__number',
   TITLE: 'chi-epanel__title',
+  STATE_ICON: '-state-icon',
 };
 //#endregion
 
@@ -235,6 +236,7 @@ export const SAVE_VIEW_CLASSES = {
   RIBBON_CONTENT: 'chi-save-view__ribbon-content',
   SAVED: 'chi-save-view__saved',
   EDIT: 'chi-save-view__edit',
+  NO_ACTIONS: 'chi-save-view__no_actions',
 };
 //#endregion
 

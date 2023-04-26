@@ -179,13 +179,14 @@ export default class DataTable extends Vue {
       ) : null,
       this._expandable ? this._headExpandable() : null,
     ];
+    const heads = Array.isArray(this.data.head) ? this.data.head : Object.keys(this.data.head);
 
-    let cellIndex = 0;
-
-    Object.keys(this.data.head).forEach((column: string) => {
-      const infoPopoverId = `info-popover-${this._dataTableNumber}-${column}`,
-        label = this.data.head[column].label || this.data.head[column],
-        infoIcon = this.data.head[column].description ? (
+    heads.forEach((column: string | DataTableColumn, cellIndex: number) => {
+      const columnIndex = String(Array.isArray(this.data.head) ? cellIndex : column);
+      const columnName = Array.isArray(this.data.head) ? (column as DataTableColumn).name : column;
+      const infoPopoverId = `info-popover-${this._dataTableNumber}-${columnName}`,
+        label = this.data.head[columnIndex].label || this.data.head[columnIndex],
+        infoIcon = this.data.head[columnIndex].description ? (
           <chi-button
             id={infoPopoverId}
             variant="flat"
@@ -197,27 +198,29 @@ export default class DataTable extends Vue {
             <i class={`${ICON_CLASS} -xs ${ICON_CLASSES.ICON_INFO}`} aria-hidden="true"></i>
           </chi-button>
         ) : null,
-        infoPopover = this.data.head[column].description ? (
+        infoPopover = this.data.head[columnIndex].description ? (
           <chi-popover
             ref={infoPopoverId}
             reference={`#${infoPopoverId}`}
             position="top"
-            title={(this.data.head[column].description as DataTableColumnDescription).title}
+            title={(this.data.head[columnIndex].description as DataTableColumnDescription).title}
             modal
             arrow>
-            <div>{this._getDescription(this.data.head[column].description as string | DataTableColumnDescription)}</div>
+            <div>
+              {this._getDescription(this.data.head[columnIndex].description as string | DataTableColumnDescription)}
+            </div>
           </chi-popover>
         ) : null,
-        sortBy = this.data.head[column].sortBy,
-        sortable = this.data.head[column].sortable,
-        alignment = this._cellAlignment(this.data.head[column].align || 'left'),
+        sortBy = this.data.head[columnIndex].sortBy,
+        sortable = this.data.head[columnIndex].sortable,
+        alignment = this._cellAlignment(this.data.head[columnIndex].align || 'left'),
         sortIcon = sortable ? (
           <chi-button variant="flat" type="icon" alternative-text="Sort icon">
             <i
               class={`
-              ${ICON_CLASS} -xs ${
+                ${ICON_CLASS} -xs ${
                 this._sortConfig &&
-                (this._sortConfig.key === this.data.head[column].sortBy || this._sortConfig.key === column)
+                (this._sortConfig.key === this.data.head[columnIndex].sortBy || this._sortConfig.key === columnIndex)
                   ? DATA_TABLE_SORT_ICONS.ARROW
                   : DATA_TABLE_SORT_ICONS.SORT
               }`}
@@ -237,10 +240,10 @@ export default class DataTable extends Vue {
         <div
           aria-label={`Sort Column ${label}`}
           class={`${DATA_TABLE_CLASSES.CELL}
-            ${alignment}
-            ${sortable ? DATA_TABLE_CLASSES.SORTING : ''}
-            ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
-          data-column={column}
+              ${alignment}
+              ${sortable ? DATA_TABLE_CLASSES.SORTING : ''}
+              ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
+          data-column={columnName}
           data-sort-by={sortBy}
           data-sort={this._sortConfig && this._sortConfig.direction ? this._sortConfig.direction : ''}
           data-label={label}
@@ -250,9 +253,9 @@ export default class DataTable extends Vue {
             }
           }}
           style={`
-            ${cellWidth === 0 ? 'display: none;' : ''}
-            ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
-            `}>
+              ${cellWidth === 0 ? 'display: none;' : ''}
+              ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
+              `}>
           {this.config.truncation ? <DataTableTooltip msg={label} header /> : label}
           {infoIcon}
           {sortIcon}
@@ -261,13 +264,13 @@ export default class DataTable extends Vue {
       const nonSortableColumnHead = (
         <div
           class={`${DATA_TABLE_CLASSES.CELL}
-            ${alignment}
-            ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
+              ${alignment}
+              ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}`}
           data-label={label}
           style={`
-            ${cellWidth === 0 ? 'display: none;' : ''}
-            ${this.data.head[column].allowOverflow ? 'overflow: visible;' : ''}
-            `}>
+              ${cellWidth === 0 ? 'display: none;' : ''}
+              ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
+              `}>
           {this.config.truncation ? <DataTableTooltip msg={label} header /> : label}
           {infoIcon}
         </div>
@@ -276,11 +279,9 @@ export default class DataTable extends Vue {
       tableHeadCells.push(sortable ? sortableColumnHead : nonSortableColumnHead);
       if (infoPopover) tableHeadCells.push(infoPopover as JSX.Element);
 
-      if (this.data.head[column].sortable && !this._sortable) {
+      if (this.data.head[columnIndex].sortable && !this._sortable) {
         this._sortable = true;
       }
-
-      cellIndex++;
     });
 
     return (
@@ -886,54 +887,67 @@ export default class DataTable extends Vue {
     let cellIndex = 0;
 
     bodyRow.data.forEach((rowCell: any) => {
-      const columnSettings = this.data.head[Object.keys(this.data.head)[cellIndex]],
-        alignment = this._cellAlignment(rowCell.align ? rowCell.align : columnSettings.align || null),
-        cellLabel = rowCell.label || columnSettings.label,
-        cellKey = columnSettings.key || cellIndex === 0,
-        cellBold = columnSettings.bold || cellIndex === 0,
-        cellWidth =
-          this.config.columnSizes && this._currentScreenBreakpoint
-            ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
-            : null;
-      let cellData;
+      const columnSettings = this.data.head[Object.keys(this.data.head)[cellIndex]];
 
-      if (!!rowCell.template && !!this.$scopedSlots[rowCell.template]) {
-        if (typeof rowCell === 'object' && rowCell.payload) {
-          // eslint-disable-next-line
-          cellData = this.$scopedSlots[rowCell.template]!(rowCell.payload);
+      if (columnSettings) {
+        const alignment = this._cellAlignment(rowCell.align ? rowCell.align : columnSettings.align || null),
+          cellLabel = rowCell.label || columnSettings.label,
+          cellKey = columnSettings.key || cellIndex === 0,
+          cellBold = columnSettings.bold || cellIndex === 0,
+          cellWidth =
+            this.config.columnSizes && this._currentScreenBreakpoint
+              ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
+              : null;
+        let cellData;
+
+        if (!!rowCell.template && !!this.$scopedSlots[rowCell.template]) {
+          if (typeof rowCell === 'object' && rowCell.payload) {
+            // eslint-disable-next-line
+            const slot = this.$scopedSlots[rowCell.template]!(rowCell.payload);
+
+            if (slot) {
+              const text = slot[0].text;
+
+              if (text) {
+                cellData = <DataTableTooltip textWrap={this.cellWrap} msg={text} class="-w--100" />;
+              } else {
+                cellData = slot;
+              }
+            }
+          }
+        } else if (typeof rowCell === 'object' && !!rowCell.value) {
+          cellData = <DataTableTooltip textWrap={this.cellWrap} msg={rowCell.value} class="-w--100" />;
+        } else if (typeof rowCell === 'string' || typeof rowCell === 'number') {
+          cellData = <DataTableTooltip textWrap={this.cellWrap} msg={rowCell} class="-w--100" />;
+        } else {
+          cellData = null;
         }
-      } else if (typeof rowCell === 'object' && !!rowCell.value) {
-        cellData = <DataTableTooltip textWrap={this.cellWrap} msg={rowCell.value} class="-w--100" />;
-      } else if (typeof rowCell === 'string' || typeof rowCell === 'number') {
-        cellData = <DataTableTooltip textWrap={this.cellWrap} msg={rowCell} class="-w--100" />;
-      } else {
-        cellData = null;
+
+        const rowChildExpansion =
+          rowLevel === 'child' && cellIndex === 0 && bodyRow.nestedContent ? this._expansionButton(bodyRow) : null;
+
+        rowCells.push(
+          <div
+            aria-label={cellLabel}
+            class={`
+              ${DATA_TABLE_CLASSES.CELL}
+              ${alignment}
+              ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}
+              ${cellKey ? '-key' : ''}
+              ${cellBold ? '-bold' : ''}`}
+            data-label={cellLabel}
+            role="cell"
+            style={`
+              ${cellWidth === 0 ? 'display: none' : ''}
+              ${columnSettings.allowOverflow ? 'overflow: visible;' : ''}
+              `}>
+            {rowChildExpansion}
+            {cellData}
+          </div>
+        );
+
+        cellIndex++;
       }
-
-      const rowChildExpansion =
-        rowLevel === 'child' && cellIndex === 0 && bodyRow.nestedContent ? this._expansionButton(bodyRow) : null;
-
-      rowCells.push(
-        <div
-          aria-label={cellLabel}
-          class={`
-            ${DATA_TABLE_CLASSES.CELL}
-            ${alignment}
-            ${cellWidth && cellWidth > 0 ? `-flex-basis--${cellWidth}` : ''}
-            ${cellKey ? '-key' : ''}
-            ${cellBold ? '-bold' : ''}`}
-          data-label={cellLabel}
-          role="cell"
-          style={`
-            ${cellWidth === 0 ? 'display: none' : ''}
-            ${columnSettings.allowOverflow ? 'overflow: visible;' : ''}
-            `}>
-          {rowChildExpansion}
-          {cellData}
-        </div>
-      );
-
-      cellIndex++;
     });
 
     row.push(

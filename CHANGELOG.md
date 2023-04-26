@@ -1,4 +1,51 @@
 # CHANGELOG
+## 5.31.0 (April 27, 2023)
+### Components
+#### Added
+* Added: App layout title now supports title mutation.
+* Added: Text utility class `-text--capitalize-fl` to capitalize first letter.
+#### Changed
+* Changed: Tabs web component no longer needs `customLabel` property.
+#### Fixed
+* Fixed: Theme support in header and data table pagination by removing `-icon--primary` and `-primary` classes.
+### Documentation
+#### Fixed
+* Fixed: Tabs in data table complex example.
+
+## 5.30.0 (April 12, 2023)
+### Components
+#### Added
+* Added: Carousel recalculates item position when resizing the viewport.
+#### Fixed
+* Fixed: Data table description popover in header now supports column customization.
+### Documentation
+#### Added
+* Added: Search input with dropdown example.
+#### Fixed
+* Fixed: Prevent opening Accessibility accordion in sidenav when clicking on another item in Foundations section.
+* Fixed: Vue documentation sidenav `-active` class was missing in a selected item.
+
+## 5.29.0 (March 29, 2023)
+### Components
+#### Added
+* Added: Expansion panel now supports state icons.
+* Added: Data table `noResultsMessage` config for displaying no results message.
+* Added: Data table `noFiltersMessage` config for displaying no filters message.
+* Added: Tabs web component now supports sizes.
+#### Changed
+* Changed: Tabs navigation bar `See more...` item has changed to `More`.
+#### Fixed
+* Fixed: Data table description popover in header has removed `modal` class that was causing incorrect width.
+### Documentation
+#### Added
+* Added: Data table radio selection example has been added in Lumen Enterprise Portal theme.
+* Added: Data table complex example has been added in Lumen and Centurylink theme.
+* Added: Tabs tabbed navigation example has been added in Lumen Enterprise Portal theme.
+#### Changed
+* Changed: Browser support page has removed ie11 from the support list.
+#### Fixed
+* Fixed: Data table code snippets.
+
 ## 5.28.0 (March 3, 2023)
 ### Components
 #### Added

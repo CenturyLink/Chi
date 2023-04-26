@@ -1,5 +1,5 @@
 script(src='https://cdn.jsdelivr.net/npm/vue@2.6.11')
-script(src='../../../chi-vue/umd/chi-vue.umd.js')
+script(src='../../chi-vue/umd/chi-vue.umd.js')
 
 h2 Examples
 h3 Base
@@ -115,6 +115,88 @@ p.-text
           </button>
         </div>
       </div>
+
+h3 With Dropdown
+.example.-mb--3
+  .-p--3
+    .chi-grid
+      .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
+        .chi-form__item
+          chi-search-input#example__with_dropdown
+          chi-dropdown#example__dropdown(prevent-auto-hide position='bottom')
+            a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
+            a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
+            a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
+            a.chi-dropdown__menu-item(href='#' slot='menu') Item 4
+
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-with-dropdown(role="tablist")
+      li.-active
+        a(
+          href=`#webcomponent-with-dropdown`
+          role="tab"
+          aria-selected="true"
+          aria-controls="webcomponent-with-dropdown"
+        ) Web Component
+      li
+        a(
+          href=`#html-with-dropdown`
+          role="tab"
+          aria-selected="false"
+          tabindex="-1"
+          aria-controls="html-with-dropdown"
+        ) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-with-dropdown
+    :code(lang="html")
+      <div class="chi-form__item">
+        <chi-search-input id="example__with_dropdown"></chi-search-input>
+        <chi-dropdown id="example__dropdown" position="bottom" prevent-auto-hide>
+          <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
+          <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
+          <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
+          <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 4</a>
+        </chi-dropdown>
+      </div>
+
+      <script>
+        const input = document.getElementById("example__with_dropdown");
+        const dropdown = document.getElementById("example__dropdown");
+
+        input.addEventListener("chiFocus", () => {
+          dropdown.show();
+        });
+
+        input.addEventListener("chiBlur", () => {
+          dropdown.hide();
+        });
+      </script>
+  .chi-tabs-panel#html-with-dropdown
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires JavaScript.
+        | You may use your own solution, or use Chi's vanilla JavaScript solution,
+        | <a href="../../getting-started/installation">Chi.js</a>.
+    :code(lang="html")
+      <div class="chi-dropdown">
+         <div id="with-dropdown" class="chi-input__wrapper -icon--right">
+            <input class="chi-input chi-search__input" type="search" aria-label="search input" />
+            <button class="chi-button -icon -flat -bg--none" aria-label="Search">
+               <div class="chi-button__content">
+                  <i class="chi-icon icon-search" aria-hidden="true"></i>
+               </div>
+            </button>
+         </div>
+         <div class="chi-dropdown__menu">
+            <a class="chi-dropdown__menu-item" href="#">Item 1</a>
+            <a class="chi-dropdown__menu-item" href="#">Item 2</a>
+            <a class="chi-dropdown__menu-item" href="#">Item 3</a>
+            <a class="chi-dropdown__menu-item" href="#">Item 4</a>
+         </div>
+      </div>
+
+      <script>
+        chi.dropdown(document.getElementById('with-dropdown'));
+      </script>
 
 .-portal--hide.-colt--show
   h2 Sizes
@@ -390,5 +472,16 @@ script.
     'DOMContentLoaded',
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+
+      const input = document.getElementById("example__with_dropdown");
+      const dropdown = document.getElementById("example__dropdown");
+
+      input.addEventListener("chiFocus", () => {
+        dropdown.show();
+      });
+
+      input.addEventListener("chiBlur", () => {
+        dropdown.hide();
+      });
     }
   );

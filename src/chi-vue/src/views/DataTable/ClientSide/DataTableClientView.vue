@@ -152,7 +152,7 @@
         </div>
       </template>
       <template #saveView>
-        <ChiDataTableSaveView :active="true" :default="true" mode="saved" title="Title goes here">
+        <ChiDataTableSaveView :config="saveViewConfig">
           <button
             id="chi-save-view__info-trigger"
             class="chi-button -light -icon -flat -xs"
@@ -163,6 +163,9 @@
               <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
             </div>
           </button>
+          <div class="-d--flex -ml--2" slot="custom-actions">
+            <chi-switch id="toggle-save-view" label="Toogle" size="xs"></chi-switch>
+          </div>
         </ChiDataTableSaveView>
       </template>
       <template #loadingSkeleton>
@@ -190,7 +193,7 @@ import SearchInput from '../../../components/search-input/SearchInput';
 import DataTableFilters from '../../../components/data-table-filters/DataTableFilters';
 import { DataTableRow } from '../../../constants/types';
 import ColumnCustomization from '../../../components/column-customization/ColumnCustomization';
-import { exampleConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
+import { exampleConfig, exampleSaveViewConfig, exampleToolbar, exampleTableHead, exampleTableBody } from './fixtures';
 import DataTableViews from '../../../components/data-table-views/DataTableViews';
 import SaveView from '../../../components/data-table-save-view/SaveView';
 
@@ -299,12 +302,26 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
   data: () => {
     return {
       config: exampleConfig,
+      saveViewConfig: exampleSaveViewConfig,
       toolbar: exampleToolbar,
       table: {
         head: exampleTableHead,
         body: exampleTableBody,
       },
-      months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      months: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ],
     };
   },
 })
