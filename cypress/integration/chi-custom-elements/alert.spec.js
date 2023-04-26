@@ -113,7 +113,7 @@ describe('Alert', () => {
         .should('match', 'chi-icon');
     });
 
-    it('dismissible alert banner should be removed after clicking the X button', () => {
+    it('Should remove alert banner after clicking the X button', () => {
       cy.get('@alert-banner-dismissible-success-default').within($alert => {
         return cy
           .get('chi-button')
