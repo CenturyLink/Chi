@@ -9,7 +9,7 @@
             div.chi-impersonation-bar__divider.chi-divider.-vertical.-h--75
             button.chi-button.-flat.-xs.-icon(id="button-portal-logout", ref="button-portal-logout", aria-label="Sign out", data-tooltip="Sign out", data-position="bottom")
               .chi-button__content
-                i.chi-icon.icon-logout.-icon--primary(aria-hidden="true")
+                i.chi-icon.icon-logout(aria-hidden="true")
         nav.chi-header__content
           .chi-header__brand
             a.chi-brand(href="#", aria-label="Lumen")
@@ -37,7 +37,7 @@
             div.-d--none.-d-lg--flex
               button.chi-button.-flat.-icon(id="button-portal-notification2" ref="button-portal-notification2" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom")
                 .chi-button__content
-                  i.chi-icon.icon-bell-outline.-icon--primary(aria-hidden="true")
+                  i.chi-icon.icon-bell-outline(aria-hidden="true")
                   div.chi-badge.-dark.-xs 2
               .chi-divider.-vertical
               .chi-dropdown.-d--none.-d-lg--flex
@@ -117,7 +117,7 @@ declare const chi: any;
   <div class="chi-impersonation-bar__content"><span class="chi-impersonation-bar__label">Signed in as:</span><strong class="chi-impersonation-bar__username">User</strong>
     <div class="chi-impersonation-bar__divider chi-divider -vertical -h--75"></div>
     <button class="chi-button -flat -xs -icon" id="button-portal-logout" aria-label="Sign out" data-tooltip="Sign out" data-position="bottom">
-      <div class="chi-button__content"><i class="chi-icon icon-logout -icon--primary" aria-hidden="true"></i></div>
+      <div class="chi-button__content"><i class="chi-icon icon-logout" aria-hidden="true"></i></div>
     </button>
   </div>
 </div>
@@ -144,7 +144,7 @@ declare const chi: any;
   <div class="chi-header__end">
     <div class="-d--none -d-lg--flex">
       <button class="chi-button -flat -icon" id="button-portal-notification2" aria-label="Notifications" data-tooltip="Notifications" data-position="bottom">
-        <div class="chi-button__content"><i class="chi-icon icon-bell-outline -icon--primary" aria-hidden="true"></i>
+        <div class="chi-button__content"><i class="chi-icon icon-bell-outline" aria-hidden="true"></i>
           <div class="chi-badge -dark -xs">2</div>
         </div>
       </button>
