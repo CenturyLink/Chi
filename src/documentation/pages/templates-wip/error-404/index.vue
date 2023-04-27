@@ -2,13 +2,12 @@
   div
     <TitleBar title="Error 404" description="Basic 404 level error page template. Indicates a client error, such as a
     |  misspelled URL." />
-    .chi-grid__container.-pt--3
-      <Error />
+    <Examples />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Error from './_error.vue';
+import Examples from './examples/index.vue';
 @Component({
   head() {
     return {
@@ -16,7 +15,7 @@ import Error from './_error.vue';
     }
   },
   components: {
-    Error
+    Examples
   },
 })
 export default class Error404 extends Vue {}

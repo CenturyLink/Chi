@@ -37,8 +37,10 @@ export interface ILink {
   iconName?: string;
 }
 
-export interface ThemeObject {
+export interface IThemes {
   lumen: string;
   centurylink: string;
   portal: string;
+  brightspeed: string;
+  colt: string;
 }

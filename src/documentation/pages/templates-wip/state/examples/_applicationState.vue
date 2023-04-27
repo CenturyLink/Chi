@@ -1,29 +1,34 @@
 <template lang="pug">
-  <ComponentExample title="Application states" id="application_states" padding="-p--0" :tabs="exampleTabs" :showTabsHead="false">
-  .-p--3(slot="example")
-    .chi-badge(:class="`-flat -m--1${indicator.className && ' -'}${indicator.className}`" v-for="indicator in indicators")
-      .chi-badge__content
-        i(v-if="!indicator.svgIcon" :class="`chi-icon ${indicator.icon}`" aria-hidden="true")
-        div(v-else v-html="indicator.svgIcon")
-        span {{ indicator.text }}
-  <pre class="language-html" slot="code-htmlblueprint">
-  <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-  </pre>
+  <ComponentExample title="Application states" id="application_states" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
+    .-p--3(slot="example")
+      .chi-badge(:class="`-flat -m--1${indicator.className && ' -'}${indicator.className}`" v-for="indicator in indicators")
+        .chi-badge__content
+          i(v-if="!indicator.svgIcon" :class="`chi-icon ${indicator.icon}`" aria-hidden="true")
+          div(v-else v-html="indicator.svgIcon")
+          span {{ indicator.text }}
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component({})
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          active: true,
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint'
+        }
+      ]
+    }
+  }
+})
 export default class ApplicationState extends Vue {
-  exampleTabs = [
-    {
-      active: true,
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint',
-    },
-  ]
   indicators = [
     {
       icon: 'icon-circle',

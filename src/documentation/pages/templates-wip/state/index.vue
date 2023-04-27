@@ -2,15 +2,12 @@
   div
     <TitleBar title="State" description="A collection of templates built with Badges, Icons, and Spinners for
     |  presenting the state of users, applications, and more." />
-    .chi-grid__container.-pt--3
-        <UserState />
-        <ApplicationState />
+    <Examples />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import UserState from './_userState.vue';
-import ApplicationState from './_applicationState.vue';
+import Examples from './examples/index.vue';
 
 @Component({
   head() {
@@ -19,8 +16,7 @@ import ApplicationState from './_applicationState.vue';
     }
   },
   components: {
-    UserState,
-    ApplicationState
+    Examples
   }
 })
 export default class State extends Vue {}
