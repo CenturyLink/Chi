@@ -2,17 +2,16 @@
   <ComponentExample title="Marketing feature cards" id="marketing_feature_cards" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Use this template to feature product content on marketing oriented webpages.
-    div(slot="example")
-      .-px--4.-pt--4
-        .chi-grid
-          .chi-col.-w--12.-w-lg--6.-w-xl--4.-mb--5(v-for="card in cards")
-            .chi-card.-s--2.-rounded.-bg--white.-b--base-light.-mx--1.-h--100
-              .-d--flex.-align-items--center.-justify-content--center.-bg--grey-10.-p--3
-                chi-marketing-icon(:icon='card.icon' size='lg')
-              .chi-card__content.-p--4.-pb--6
-                .-text--h3.-text--bolder.-m--0 {{ card.title }}
-                p.-text {{ card.description }}
-                chi-link(href='#' cta='') {{card.buttonText}}
+    .-px--4.-pt--4(slot="example")
+      .chi-grid
+        .chi-col.-w--12.-w-lg--6.-w-xl--4.-mb--5(v-for="card in cards")
+          .chi-card.-s--2.-rounded.-bg--white.-b--base-light.-mx--1.-h--100
+            .-d--flex.-align-items--center.-justify-content--center.-bg--grey-10.-p--3
+              chi-marketing-icon(:icon='card.icon' size='lg')
+            .chi-card__content.-p--4.-pb--6
+              .-text--h3.-text--bolder.-m--0 {{ card.title }}
+              p.-text {{ card.description }}
+              chi-link(href='#' cta='') {{card.buttonText}}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -25,20 +24,25 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component({})
-export default class MarketingFeatureCards extends Vue {
-  exampleTabs = [
-    {
-      active: true,
-      id: 'webcomponent',
-      label: 'Web Component',
-    },
-    {
-      disabled: true,
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint',
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          active: true,
+          id: 'webcomponent',
+          label: 'Web Component'
+        },
+        {
+          disabled: true,
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint'
+        }
+      ]
     }
-  ]
+  }
+})
+export default class MarketingFeatureCards extends Vue {
   cards = [
     {
       icon: 'people-it-professional',

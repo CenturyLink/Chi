@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="User states" id="user_states" padding="-p--0" :tabs="exampleTabs" :showTabsHead="false">
+  <ComponentExample title="User states" id="user_states" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
     .-p--3(slot="example")
       .chi-badge(:class="`-flat -m--1 -${indicator.className}`" v-for="indicator in indicators")
         .chi-badge__content
@@ -14,15 +14,20 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component({})
-export default class UserState extends Vue {
-  exampleTabs = [
-    {
-      active: true,
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint',
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          active: true,
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint',
+        }
+      ]
     }
-  ]
+  }
+})
+export default class UserState extends Vue {
   indicators = [
     {
       icon: 'icon-circle',

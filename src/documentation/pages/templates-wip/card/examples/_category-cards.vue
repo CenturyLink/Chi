@@ -2,18 +2,17 @@
   <ComponentExample title="Category cards" id="category_cards" padding="-p--0" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | This template can be used to visually represent categories or groups to help browse and filter data.
-    div(slot="example")
-      .-px--4.-pt--4
-        .chi-grid
-          .chi-col.-w--12.-w-md--6.-w-lg--4.-w-xl--3.-mb--3(v-for="card in cards")
-            a.chi-card.-s--1.-rounded.-b--base-light.-h--100.-hover--animate.chi-link.-no-hover-underline(href='#')
-              .-d--flex.-align-items--center.-justify-content--center.-bg--info-light.-p--3
-                chi-marketing-icon(:icon='card.icon' variant='outline')
-              .chi-card__content.-p--3.-h--100.-justify-content--between
-                .chi-card__text
-                  .chi-card__title {{ card.title }}
-                  .chi-card__caption.-text--body.-mt--1 {{ card.description }}
-                .chi-link.-cta.-mt--2 {{ card.buttonText }}
+    .-px--4.-pt--4(slot="example")
+      .chi-grid
+        .chi-col.-w--12.-w-md--6.-w-lg--4.-w-xl--3.-mb--3(v-for="card in cards")
+          a.chi-card.-s--1.-rounded.-b--base-light.-h--100.-hover--animate.chi-link.-no-hover-underline(href='#')
+            .-d--flex.-align-items--center.-justify-content--center.-bg--info-light.-p--3
+              chi-marketing-icon(:icon='card.icon' variant='outline')
+            .chi-card__content.-p--3.-h--100.-justify-content--between
+              .chi-card__text
+                .chi-card__title {{ card.title }}
+                .chi-card__caption.-text--body.-mt--1 {{ card.description }}
+              .chi-link.-cta.-mt--2 {{ card.buttonText }}
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -26,20 +25,25 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component({})
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          active: true,
+          id: 'webcomponent',
+          label: 'Web Component'
+        },
+        {
+          disabled: true,
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint'
+        }
+      ]
+    }
+  }
+})
 export default class CategoryCards extends Vue {
-  exampleTabs = [
-    {
-      active: true,
-      id: 'webcomponent',
-      label: 'Web Component',
-    },
-    {
-      disabled: true,
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint',
-    },
-  ]
   cards = [
     {
       icon: 'products-services',
