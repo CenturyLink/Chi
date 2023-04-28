@@ -295,7 +295,10 @@ export default class DataTable extends Vue {
       );
 
       tableHeadCells.push(sortable ? sortableColumnHead : nonSortableColumnHead);
-      if (infoPopover) infoPopovers.push(infoPopover as JSX.Element);
+
+      if (infoPopover) {
+        infoPopovers.push(infoPopover as JSX.Element);
+      }
 
       if (this.data.head[columnIndex].sortable && !this._sortable) {
         this._sortable = true;

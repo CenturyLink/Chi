@@ -13,14 +13,8 @@ export class Drag {
     y: 0
   };
   private component: any;
-  private screenWidth: number =
-    window.innerWidth ||
-    document.documentElement.clientWidth ||
-    document.body.clientWidth;
-  private screenHeight: number =
-    window.innerHeight ||
-    document.documentElement.clientHeight ||
-    document.body.clientHeight;
+  private screenWidth: number = this.setScreenWidth();
+  private screenHeight: number = this.setScreenHeight();
   private auxClientCoord: number = Number.MAX_SAFE_INTEGER;
   private auxClientCoord2: number = Number.MIN_SAFE_INTEGER;
 
@@ -105,17 +99,27 @@ export class Drag {
     document.removeEventListener('mousemove', this.elementDragHandler);
   };
 
+  private setScreenWidth() {
+    return (
+      window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth
+    );
+  }
+
+  private setScreenHeight() {
+    return (
+      window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.body.clientHeight
+    );
+  }
+
   private handlerResize = () => {
     const rect = this.elementToMove.getBoundingClientRect();
 
-    this.screenHeight =
-      window.innerHeight ||
-      document.documentElement.clientHeight ||
-      document.body.clientHeight;
-    this.screenWidth =
-      window.innerWidth ||
-      document.documentElement.clientWidth ||
-      document.body.clientWidth;
+    this.screenWidth = this.setScreenWidth();
+    this.screenHeight = this.setScreenHeight();
 
     if (rect.right >= this.screenWidth) {
       this.elementToMove.style.left =
