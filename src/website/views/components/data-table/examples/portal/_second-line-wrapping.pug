@@ -45,7 +45,7 @@ h3 Second line wrapping
         },
         table: {
           head: {
-            name: { label: 'Name', key: true, bold: true },
+            name: { label: 'This is a long header content with a second line wrapping without tooltip: This is a long content for the tooltip in the wrapped cell', key: true, bold: true },
             id: { label: 'ID', key: true },
             lastLogin: { label: 'Last Login' },
           },
@@ -112,7 +112,7 @@ h3 Second line wrapping
             <div class="chi-data-table__head">
               <div class="chi-data-table__row">
                 <div class="chi-data-table__cell">
-                  <div>Name</div>
+                  <div>This is a long header content with a second line wrapping without tooltip: This is a long content for the tooltip in the wrapped cell</div>
                 </div>
                 <div class="chi-data-table__cell">
                   <div>ID</div>
@@ -230,7 +230,11 @@ script.
       },
       table: {
         head: {
-          name: { label: 'Name', key: true, bold: true },
+          name: {
+            label: 'This is a long header content with a second line wrapping without tooltip: This is a long content for the tooltip in the wrapped cell',
+            key: true,
+            bold: true,
+          },
           id: { label: 'ID', key: true },
           lastLogin: { label: 'Last Login' },
         },
