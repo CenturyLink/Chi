@@ -37,6 +37,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 
+  // TODO: Remove it once a new version of Chi is released
   .-cell-wrap {
     display: -webkit-box;
     overflow: hidden;

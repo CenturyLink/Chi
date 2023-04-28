@@ -168,7 +168,7 @@ export default class DataTable extends Vue {
     );
   }
 
-  _getLabel(label: string) {
+  _getHeadLabel(label: string) {
     if (this.cellWrap) {
       return <DataTableTooltip textWrap={this.cellWrap} msg={label} class="-w--100" />;
     }
