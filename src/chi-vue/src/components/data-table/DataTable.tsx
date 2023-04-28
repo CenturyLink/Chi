@@ -269,7 +269,7 @@ export default class DataTable extends Vue {
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}>
-          {this._getLabel(label as string)}
+          {this._getHeadLabel(label as string)}
           {infoIcon}
           {sortIcon}
         </div>
@@ -284,7 +284,7 @@ export default class DataTable extends Vue {
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}>
-          {this._getLabel(label as string)}
+          {this._getHeadLabel(label as string)}
           {infoIcon}
         </div>
       );
