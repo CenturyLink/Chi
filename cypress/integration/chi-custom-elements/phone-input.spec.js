@@ -19,18 +19,6 @@ const hasClassAssertion = (el, value) => {
   cy.get(el).should('have.class', value);
 };
 
-const compareInputValue = (el, value, expectedValue) => {
-  cy.get(el)
-    .clear()
-    .type(value)
-    .invoke('val')
-    .then(val =>{
-      const myVal = val;
-
-      expect(myVal).to.equal(expectedValue);
-    });
-};
-
 describe('Phone Input', () => {
   before(() => {
     cy.visit('tests/custom-elements/phone-input.html');
@@ -312,12 +300,14 @@ describe('Phone Input', () => {
         });
     });
 
-    it.skip('Should accept only numbers', () => {
-      cy.get('@phoneInput').clear();
-
-      compareInputValue('@phoneInput', 'abcxyz', '');
-      compareInputValue('@phoneInput', '!@#$%^&*()_+', '');
-      compareInputValue('@phoneInput', '1234', '1234');
+    it('Should accept only numbers', () => {
+      cy.get('@phoneInput')
+        .clear()
+        .type('1234!@#$abc')
+        .invoke('val')
+        .then(val => {
+          expect(val).to.equal('1234');
+        });
     });
   });
 
