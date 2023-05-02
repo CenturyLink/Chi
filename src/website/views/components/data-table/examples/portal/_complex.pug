@@ -62,17 +62,17 @@ h3 Complex
       | Create reusable Vue components based on your needs and use them as custom templates for Data Table cells and row accordions
     .-d--flex.-no-gutter.-bt--1
       .-bg--grey-15.-pt--3.-br--1(style="width: 14rem;")
-        ul#example-vertical-base.chi-tabs.-vertical(role='tablist' aria-label='chi-tabs-vertical-base')
+        ul#example-vertical-portal.chi-tabs.-vertical(role='tablist' aria-label='chi-tabs-vertical-portal')
           li.-active
-            a(href='#vertical-base-1' role='tab' aria-selected='true' aria-controls='vertical-base-1') ExampleDataTable.vue
+            a(href='#vertical-portal-1' role='tab' aria-selected='true' aria-controls='vertical-portal-1') ExampleDataTable.vue
           li
-            a(href='#vertical-base-2' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-2') ExamplePopover.vue
+            a(href='#vertical-portal-2' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-portal-2') ExamplePopover.vue
           li
-            a(href='#vertical-base-3' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-3') ExampleDropdown.vue
+            a(href='#vertical-portal-3' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-portal-3') ExampleDropdown.vue
         script.
-          chi.tab(document.getElementById('example-vertical-base'));
+          chi.tab(document.getElementById('example-vertical-portal'));
       .-flex--grow1
-        #vertical-base-1.chi-tabs-panel.-active(role='tabpanel')
+        #vertical-portal-1.chi-tabs-panel.-active(role='tabpanel')
           :code(lang='html')
             <!-- Vue component -->
             <ChiDataTable :config="config" :data="table" ref="dataTableComplex">
@@ -956,7 +956,7 @@ h3 Complex
                 this.$refs.dataTableComplex.print('Data table - Complex')
               }
             }
-        #vertical-base-2.chi-tabs-panel(role='tabpanel')
+        #vertical-portal-2.chi-tabs-panel(role='tabpanel')
           :code(lang='html')
             <!-- Template -->
             <template>
@@ -1009,7 +1009,7 @@ h3 Complex
             beforeDestroy() {
               this.popover.dispose();
             }
-        #vertical-base-3.chi-tabs-panel(role='tabpanel')
+        #vertical-portal-3.chi-tabs-panel(role='tabpanel')
           :code(lang='html')
             <!-- Template -->
             <template>

@@ -9,6 +9,9 @@ const INFO_ICON_CLASS = 'icon-circle-info-outline';
 const ARROW_UP_CLASS = 'icon-arrow-up';
 const ARROW_SORT_CLASS = 'icon-arrow-sort';
 const CLOSE_CLASS = '-close';
+const CHI_BUTTON_CONTENT = 'chi-button__content';
+const CHI_DROPDOWN = 'chi-dropdown';
+const CHI_DROPDOWN_MENU = 'chi-dropdown__menu';
 const DATA_TABLE_CLASSES = {
   DATA_TABLE: 'chi-data-table',
   TOOLBAR: 'chi-data-table__toolbar',
@@ -184,6 +187,12 @@ describe('Data Table', () => {
     it('Should hide Expand All icon', () => {
       cy.get(`[data-cy='data-table-container'] .${DATA_TABLE_CLASSES.HEAD}`)
         .find(`button.-expand`)
+        .should('not.exist');
+    });
+
+    it('Should hide Select All Dropdown icon',() => {
+      cy.get(`[data-cy='data-table-container'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`.${CHI_DROPDOWN} .${BUTTON_CLASS}`)
         .should('not.exist');
     });
 
@@ -637,6 +646,103 @@ describe('Data Table', () => {
         .then(() => {
           cy.get('@checkboxes').should('be.checked');
         });
+    });
+  });
+
+  describe('Data Table Select All (Dropdown)', () => {
+    beforeEach(() => {
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`.${CHI_DROPDOWN} .${BUTTON_CLASS}`)
+        .as('selectAllDropdown');
+
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+        .find(`.${CHI_DROPDOWN_MENU}`)
+        .as('selectAllDropdownMenu');
+
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.BODY}`)
+        .find(`.${DATA_TABLE_CLASSES.ROW}`)
+        .as('rows');
+
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.FOOTER}`)
+        .find(`.${PAGINATION_CLASSES.CENTER}`)
+        .find(`.${CHI_BUTTON_CONTENT}`)
+        .as('pages');
+    });
+
+    afterEach(() => {
+      cy.get('@pages')
+        .contains(1)
+        .click();
+    });
+
+    it('Should select all rows on the current page',() => {
+      cy.get('@selectAllDropdown').click();
+      cy.get('@selectAllDropdownMenu')
+        .contains('Select all items, this page')
+        .click();
+
+      cy.get('@rows')
+        .find('input')
+        .should('be.checked');
+
+      cy.get('@rows').should('have.class', `${ACTIVE_CLASS}`);
+
+      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.FOOTER}`)
+        .find(`.${PAGINATION_CLASSES.CENTER}`)
+        .find(`.${CHI_BUTTON_CONTENT}`).contains(2)
+        .click();
+
+      cy.get('@rows')
+        .find('input')
+        .should('not.be.checked');
+
+      cy.get('@rows').should('not.have.class', `${ACTIVE_CLASS}`);
+    });
+
+    it('Should select all rows on each page',() => {
+      cy.get('@selectAllDropdown').click();
+      cy.get('@selectAllDropdownMenu')
+        .contains('Select all items, all pages')
+        .click();
+
+      cy.get('@rows')
+        .find('input')
+        .should('be.checked');
+
+      cy.get('@rows').should('have.class', `${ACTIVE_CLASS}`);
+
+      cy.get('@pages')
+        .contains(2)
+        .click();
+
+      cy.get('@rows')
+        .find('input')
+        .should('be.checked');
+
+      cy.get('@rows').should('have.class', `${ACTIVE_CLASS}`);
+    });
+
+    it('Should deselect all rows on each page',() => {
+      cy.get('@selectAllDropdown').click();
+      cy.get('@selectAllDropdownMenu')
+        .contains('Deselect all')
+        .click();
+
+      cy.get('@rows')
+        .find('input')
+        .should('not.be.checked');
+
+      cy.get('@rows').should('not.have.class', `${ACTIVE_CLASS}`);
+
+      cy.get('@pages')
+        .contains(2)
+        .click();
+
+      cy.get('@rows')
+        .find('input')
+        .should('not.be.checked');
+
+      cy.get('@rows').should('not.have.class', `${ACTIVE_CLASS}`);
     });
   });
 
