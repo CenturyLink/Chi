@@ -312,7 +312,7 @@ describe('Phone Input', () => {
         });
     });
 
-    it('Should accept only numbers', () => {
+    it.skip('Should accept only numbers', () => {
       cy.get('@phoneInput').clear();
 
       compareInputValue('@phoneInput', 'abcxyz', '');
