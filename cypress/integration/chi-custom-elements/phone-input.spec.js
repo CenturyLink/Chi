@@ -318,7 +318,7 @@ describe('Phone Input', () => {
         });
     });
 
-    it('Should accept only numbers', { defaultCommandTimeout: 10000 }, () => {
+    it('Should accept only numbers', () => {
       compareInputValue('@phoneInput', 'abcxyz', '');
       compareInputValue('@phoneInput', '!@#$%^&*()_+', '');
       compareInputValue('@phoneInput', '¨^ó^¨ī', '');
