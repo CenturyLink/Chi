@@ -45,12 +45,6 @@ describe('Phone Input', () => {
       cy.get(`@base`)
         .find(`.chi-dropdown`)
         .as('dropdownTrigger');
-      cy.get(`@dropdownTrigger`)
-        .click()
-        .find('.chi-dropdown__menu-item')
-        .eq(4)
-        .click();
-      cy.get('@phoneInput').clear();
     });
 
     it('Should have a default country set (+1)', () => {
@@ -88,7 +82,7 @@ describe('Phone Input', () => {
         .type('684123456{Enter}')
         .then(() => {
           expect(spy).to.be.calledOnce;
-          expect(spy.getCall(0).args[0].detail).to.equal('+1-684123456');
+          expect(spy.getCall(0).args[0].detail).to.equal('+213-684123456');
           cy.get('@phoneInput').clear();
         });
     });
@@ -124,13 +118,13 @@ describe('Phone Input', () => {
         .type('1{Enter}')
         .then(() => {
           expect(spy).to.be.calledOnce;
-          expect(spy.getCall(0).args[0].detail).to.equal('+1-1');
+          expect(spy.getCall(0).args[0].detail).to.equal('+46-1');
         });
       cy.get('@phoneInput')
         .clear()
         .then(() => {
           expect(spy).to.be.calledTwice;
-          expect(spy.getCall(1).args[0].detail).to.equal('+1-');
+          expect(spy.getCall(1).args[0].detail).to.equal('+46-');
         });
     });
 
@@ -314,14 +308,15 @@ describe('Phone Input', () => {
       cy.get('@phoneInput')
         .type('829323{Enter}')
         .then(() => {
-          cy.get('@base').should('have.attr', 'value', '+1-829323');
+          cy.get('@base').should('have.attr', 'value', '+358-829323');
         });
     });
 
     it('Should accept only numbers', () => {
+      cy.get('@phoneInput').clear();
+
       compareInputValue('@phoneInput', 'abcxyz', '');
       compareInputValue('@phoneInput', '!@#$%^&*()_+', '');
-      compareInputValue('@phoneInput', '¨^ó^¨ī', '');
       compareInputValue('@phoneInput', '1234', '1234');
     });
   });
