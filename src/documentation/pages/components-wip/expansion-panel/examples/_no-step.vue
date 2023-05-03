@@ -95,6 +95,9 @@
       pre.language-html
         code(v-highlight="$data.codeSnippets.webcomponent" class="html")
     </Wrapper>
+    <pre class="language-html" slot="code-vue">
+      <code v-highlight="$data.codeSnippets.vue" class="html"></code>
+    </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       .p--text(class="chi-tab__description")
@@ -122,6 +125,10 @@ declare const chi: any;
           label: 'Web Component'
         },
         {
+          id: 'vue',
+          label: 'Vue'
+        },
+        {
           id: 'htmlblueprint',
           label: 'HTML Blueprint'
         }
@@ -145,6 +152,54 @@ declare const chi: any;
 <chi-expansion-panel title="Panel title"></chi-expansion-panel>
 <chi-expansion-panel title="Panel title"></chi-expansion-panel>
 <chi-expansion-panel title="Panel title"></chi-expansion-panel>`,
+        vue:
+`<chi-vue-expansion-panel v-for="(panel, index) in panels" :key="index" title="Title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'">
+  <div slot="active">
+    <div class="chi-epanel__subtitle">
+      {{panel.title}}
+    </div>
+    <p class="chi-epanel__text">
+      {{panel.content}}
+    </p>
+  </div>
+  <div slot="done">
+    Use this area to present<br />
+    a read-only summary of what the user<br />
+    entered or selected in step 1.<br />
+    (e.g.) a package selection
+  </div>
+  <button slot="footerStart" class="chi-button" @click="active -= 1">Previous</button>
+  <button slot="footerEnd" class="chi-button -primary" @click="active += 1">
+    Continue
+  </button>
+  <div slot="change">
+    <button class="chi-button -primary -flat" data-chi-epanel-action="active" @click="active = index">Change</button>
+  </div>
+</chi-vue-expansion-panel>
+
+<!-- Data and Methods -->
+data: {
+  active: 0,
+  panels: [
+    {
+      content: "Content for the panel in done state",
+      title: "Panel title"
+    },
+    {
+      content: "Content for the panel in active state",
+      title: "Panel title"
+    },
+    {
+      content: "Content for the panel in pending state",
+      title: "Panel title"
+    },
+    {
+      content: "Content for the panel in disabled state",
+      title: "Panel title"
+    }
+  ]
+}
+`,
         htmlblueprint: `<!-- JavaScript -->
 <script>chi.expansionPanel(document.querySelectorAll('[data-chi-epanel-group="example__no-step-number"]'));<\/script>
 

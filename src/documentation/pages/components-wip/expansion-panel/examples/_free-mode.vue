@@ -84,6 +84,11 @@ declare const chi: any;
           disabled: true
         },
         {
+          id: 'vue',
+          label: 'Vue',
+          disabled: true
+        },
+        {
           active: true,
           id: 'htmlblueprint',
           label: 'HTML Blueprint',
