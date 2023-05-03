@@ -1,8 +1,8 @@
 <template lang="pug">
-  <ComponentExample title="No step number" id="no-step-number" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="No step number" id="no-step-number" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
     p.-text(slot="example-description") Step numbering is optional and can be easily omitted.
-    .example.-mb--3#example__no-step-number
-      .-mw--720.-mx--auto.-mt--4
+    #example__no-step-number(slot="example")
+      .-mw--720.-mx--auto
         .chi-epanel.-no-step.-active(data-chi-epanel-group='example__no-step-number')
           .chi-epanel__header
             .chi-epanel__title Panel title
@@ -89,7 +89,7 @@
                 .chi-epanel__footer.-justify-content--end
                   button.chi-button(data-chi-epanel-action='previous') Previous
                   button.chi-button(data-chi-epanel-action='done').-primary Finish
-    <Wrapper slot='code-webcomponent'>
+    <Wrapper slot="code-webcomponent">
       .chi-tab__description
         | Step numbering can be omitted by removing the <code>step</code> property.
       pre.language-html

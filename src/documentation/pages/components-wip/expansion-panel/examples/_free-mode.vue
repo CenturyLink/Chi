@@ -1,10 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="Free mode" id="free-mode" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Free mode" id="free-mode" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
     p.-text(slot="example-description")
       | In this mode there is no automated action triggered when an element activates,
       | so you will need to manage all custom behavior.
-    .example.-mb--3#example__free-mode(slot="example")
-      .-mw--720.-mx--auto.-mt--4
+    #example__free-mode(slot="example")
+      .-mw--720.-mx--auto
         .chi-epanel.-no-step.-active(data-chi-epanel-group='example__free-mode')
           .chi-epanel__header
             .chi-epanel__title(data-chi-epanel-action='toggle') Panel 1

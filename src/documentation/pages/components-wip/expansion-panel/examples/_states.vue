@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="States" id="states" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="States" id="states" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
     div(slot="example-description")
       p.-text
         | Expansion panels have four states: <code>active</code>, <code>pending</code>, <code>done</code> and
@@ -12,8 +12,8 @@
         | classes we can represent the different states of the same content changing only the property.
       p.-text
         | An optional cancel button can also be included to exit the expansion panel workflow.
-    .example.-mb--3#example__state(slot="example")
-      .-mw--720.-mx--auto.-mt--4
+    #example__state(slot="example")
+      .-mw--720.-mx--auto
         .chi-epanel.-done(data-chi-epanel-group='example__state')
           .chi-epanel__header
             .chi-epanel__number 1.

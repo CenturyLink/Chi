@@ -1,11 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs" additionalClasses="-bg--grey-10">
     p.-text(slot="example-description")
       |Group expansion panels using the attribute <code>data-chi-epanel-group="name-of-the-group"</code>.
       |This will enable panels to work together as a sequential form. When a panel is activated,
       |the previous expanding panels will get the done state and the next will get the pending state.
-    .example.-mb--3#example__base(slot="example")
-      .-mw--720.-mx--auto.-mt--4
+    #example__base(slot="example")
+      .-mw--720.-mx--auto
         .chi-epanel.-active(data-chi-epanel-group='example__base')
           .chi-epanel__header
             .chi-epanel__number 1.

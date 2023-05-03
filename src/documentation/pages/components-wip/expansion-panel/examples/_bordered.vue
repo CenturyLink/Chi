@@ -1,8 +1,8 @@
 <template lang="pug">
-  <ComponentExample title="Bordered" id="bordered" :tabs="exampleTabs" padding="-p--0">
+  <ComponentExample title="Bordered" id="bordered" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
     p.-text(slot="example-description") Use bordered to apply borders to panels and contain them in card styled boxes.
-    .example.-mb--3#example__bordered
-      .-mw--720.-mx--auto.-mt--4
+    #example__bordered(slot="example")
+      .-mw--720.-mx--auto
         .chi-epanel.-bordered(data-chi-epanel-group='example__bordered')
           .chi-epanel__header
             .chi-epanel__title Done State
