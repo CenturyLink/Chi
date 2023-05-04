@@ -288,7 +288,7 @@ describe('Phone Input', () => {
         .first()
         .click()
         .then(() => {
-          cy.get('@base').should('have.attr', 'value', '+358-');
+          cy.get('@base').should('have.attr', 'value', '+358-1');
         });
     });
 
