@@ -17,7 +17,7 @@ export class Alert {
   /**
    *  to hide the alert when dismissed.
    */
-  @Prop({ reflect: true }) mutable = false;
+  @Prop({ reflect: true }) mutable = true;
 
   /**
    *  to set alert state.

@@ -1,4 +1,17 @@
 # CHANGELOG
+## 5.31.0 (April 27, 2023)
+### Components
+#### Added
+* Added: App layout title now supports title mutation.
+* Added: Text utility class `-text--capitalize-fl` to capitalize first letter.
+#### Changed
+* Changed: Tabs web component no longer needs `customLabel` property.
+#### Fixed
+* Fixed: Theme support in header and data table pagination by removing `-icon--primary` and `-primary` classes.
+### Documentation
+#### Fixed
+* Fixed: Tabs in data table complex example.
+
 ## 5.30.0 (April 12, 2023)
 ### Components
 #### Added
