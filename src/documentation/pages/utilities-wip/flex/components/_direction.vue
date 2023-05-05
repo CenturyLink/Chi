@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  <AnchorTitle title="Direction" tag="h2" :anchor="`?theme=${$store.state.themes.theme}#direction`" />
+  <AnchorTitle title="Direction" tag="h2" id="direction" />
   p.-text Use direction utilities to define how items will be placed in flex containers.
 
   fragment(v-for="(type, index) in types", :key="index")

@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  <AnchorTitle title="Target all breakpoints" tag="h3" :anchor="`?theme=${$store.state.themes.theme}#target-all-breakpoints`" />
+  <AnchorTitle title="Target all breakpoints" tag="h3" id="target-all-breakpoints" />
   p.-text Flex-basis utility classes with no breakpoint defined apply to all screen sizes.
 
   section.chi-table.-bordered.-mt--3.-mb--3

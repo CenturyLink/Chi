@@ -1,10 +1,6 @@
 <template>
   <fragment class="example-wrapper">
-    <AnchorTitle
-      :title="title"
-      :tag="titleSize || 'h3'"
-      :anchor="`?theme=${$store.state.themes.theme}#${id}`"
-    />
+    <AnchorTitle :title="title" :tag="titleSize || 'h3'" :id="id" />
 
     <slot name="example-description"></slot>
 

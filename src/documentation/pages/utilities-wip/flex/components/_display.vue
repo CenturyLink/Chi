@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  <AnchorTitle title="Display" tag="h2" :anchor="`?theme=${$store.state.themes.theme}#display`" />
+  <AnchorTitle title="Display" tag="h2" id="display" />
   p.-text To enable flex, apply a flex display utility class. This will transform your element into a flexbox container and its direct children into flex items.
 
   <FlexboxContainer />

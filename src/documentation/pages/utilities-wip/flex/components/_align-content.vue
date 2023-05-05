@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  <AnchorTitle title="Align content" tag="h2" :anchor="`?theme=${$store.state.themes.theme}#align-content`" />
+  <AnchorTitle title="Align content" tag="h2" id="align-content" />
   p.-text Use align-content utilities on flexbox containers to alter the alignment of flex items <strong>together</strong> on the cross axis.
 
   fragment(v-for="(type, index) in types", :key="index")

@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  <AnchorTitle title="Wrap" tag="h2" :anchor="`?theme=${$store.state.themes.theme}#wrap`" />
+  <AnchorTitle title="Wrap" tag="h2" id="wrap" />
   p.-text Use wrap utilities to define how flex items wrap in a flex container.
 
   <NoWrapDefault />

@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  <AnchorTitle title="Target specific breakpoints" tag="h3" :anchor="`?theme=${$store.state.themes.theme}#target-specific-breakpoints`" />
+  <AnchorTitle title="Target specific breakpoints" tag="h3" id="target-specific-breakpoints" />
   p.-text To target a specific breakpoint, add the breakpoint abbreviation to the class.
   section.chi-table.-bordered.-mt--3.-mb--3
     div

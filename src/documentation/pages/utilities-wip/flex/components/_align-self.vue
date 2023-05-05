@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  <AnchorTitle title="Align self" tag="h2" :anchor="`?theme=${$store.state.themes.theme}#align-self`" />
+  <AnchorTitle title="Align self" tag="h2" id="align-self" />
   p.-text Use align-self utilities to alter the alignment of individual flex items on the cross axis.
 
   fragment(v-for="(type, index) in types", :key="index")

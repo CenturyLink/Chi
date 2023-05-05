@@ -1,6 +1,6 @@
 <template lang="pug">
 fragment
-  <AnchorTitle title="Basis" tag="h2" :anchor="`?theme=${$store.state.themes.theme}#basis`" />
+  <AnchorTitle title="Basis" tag="h2" id="basis" />
   p.-text Use the <code>-flex--basis*</code> class to specify the initial size of the flex item, before any available space is distributed according to the flex factors.
   p.-text
     | Flex-basis utility classes can be defined using the format <code>-flex-basis-{breakpoint}--{value}</code>.
