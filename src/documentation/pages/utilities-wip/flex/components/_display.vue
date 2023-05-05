@@ -23,8 +23,8 @@ fragment
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import FlexboxContainer from './_flexbox-container.vue';
-import InlineFlexboxContainer from './_inline-flexbox-container.vue';
+import FlexboxContainer from './examples/_flexbox-container.vue';
+import InlineFlexboxContainer from './examples/_inline-flexbox-container.vue';
 
 @Component({
   components: {

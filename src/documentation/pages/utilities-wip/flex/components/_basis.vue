@@ -14,9 +14,9 @@ fragment
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import BasisTargetAllBreakpoints from './_basis-target-all-breakpoints.vue';
-import BasisTargetSpecificBreakpoints from './_basis-target-specific-breakpoints.vue';
-import BasisExamples from './_basis-examples.vue';
+import BasisExamples from './examples/_basis-examples.vue';
+import BasisTargetAllBreakpoints from './examples/_basis-target-all-breakpoints.vue';
+import BasisTargetSpecificBreakpoints from './examples/_basis-target-specific-breakpoints.vue';
 
 @Component({
   data() {

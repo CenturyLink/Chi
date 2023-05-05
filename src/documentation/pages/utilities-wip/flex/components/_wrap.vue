@@ -21,9 +21,9 @@ fragment
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import NoWrapDefault from './_no-wrap.vue';
-import WrapDefault from './_wrap.vue';
-import WrapReverse from './_wrap-reverse.vue';
+import NoWrapDefault from './examples/_no-wrap.vue';
+import WrapReverse from './examples/_wrap-reverse.vue';
+import WrapDefault from './examples/_wrap.vue';
 
 @Component({
   components: {

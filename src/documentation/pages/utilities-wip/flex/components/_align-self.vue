@@ -20,7 +20,7 @@ fragment
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import AlignSelfExample from './_align-self-example.vue';
+import AlignSelfExample from './examples/_align-self-example.vue';
 
 @Component({
   data() {

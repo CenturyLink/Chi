@@ -19,7 +19,8 @@ fragment
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import AlignContentExample from './_align-content-example.vue';
+
+import AlignContentExample from './examples/_align-content-example.vue';
 
 @Component({
   components: {

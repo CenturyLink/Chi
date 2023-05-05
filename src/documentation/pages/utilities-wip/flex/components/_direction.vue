@@ -26,7 +26,7 @@ fragment
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import DirectionExample from './_direction-example.vue';
+import DirectionExample from './examples/_direction-example.vue';
 
 @Component({
   data() {
