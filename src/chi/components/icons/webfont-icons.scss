@@ -35,6 +35,30 @@ i {
   }
 }
 
+.icon-box-circle-arrow-left::before {
+  content: '\e966';
+}
+
+.icon-box-circle-check::before {
+  content: '\e967';
+}
+
+.icon-calendar-circle-check::before {
+  content: '\e968';
+}
+
+.icon-clipboard::before {
+  content: '\e96a';
+}
+
+.icon-nodes-circle-check::before {
+  content: '\e96b';
+}
+
+.icon-pause-arrow-rotate-right::before {
+  content: '\ea16';
+}
+
 .icon-squares-minus-outline::before {
   content: '\e95e';
 }
