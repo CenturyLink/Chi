@@ -417,11 +417,11 @@ p.-text
     | To allow users to dismiss an alert.
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(color='warning', icon='warning', closable)
+      chi-alert.-m--2(color='warning', icon='warning', closable, mutable='false')
         | This is a closable warning alert
-      chi-alert.-m--2(color='warning', icon='warning', title="Warning", closable)
+      chi-alert.-m--2(color='warning', icon='warning', title="Warning", closable, mutable='false')
         | This is a closable warning alert
-      chi-alert.-m--2(color='warning', icon='warning', size='lg', title="Warning", closable)
+      chi-alert.-m--2(color='warning', icon='warning', size='lg', title="Warning", closable, mutable='false')
         | This is a large closable warning alert
     .example-tabs.-pl--2
       ul.chi-tabs#example-closable
@@ -436,15 +436,15 @@ p.-text
         | Use attribute <code>mutable</code> to remove alert once close buttons is clicked.
       :code(lang="html")
         <!-- closable -->
-        <chi-alert color="warning" icon="warning" closable>
+        <chi-alert color="warning" icon="warning" closable mutable="false">
           This is a closable warning alert
         </chi-alert>
         <!-- closable Titled -->
-        <chi-alert color="warning" icon="warning" title="Warning" closable>
+        <chi-alert color="warning" icon="warning" title="Warning" closable mutable="false">
           This is a closable warning alert
         </chi-alert>
         <!-- Large closable Titled -->
-        <chi-alert color="warning" icon="warning" size="lg" title="Warning" closable>
+        <chi-alert color="warning" icon="warning" size="lg" title="Warning" closable mutable="false">
           This is a large closable warning alert
         </chi-alert>
     .chi-tabs-panel#html-closable
@@ -494,12 +494,12 @@ p.-text
 .-portal--show.-brightspeed--show.-colt--show
   h4 Closable
   p.-text
-    | To allow users to dismiss an alert.
+    | To allow users to dismiss an alert.2223
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(color='warning', icon='warning', closable, mutable="false")
+      chi-alert.-m--2(color='warning', icon='warning', closable, mutable='false')
         | This is a closable warning alert
-      chi-alert.-m--2(color='warning', icon='warning', title="Warning", closable, mutable="false")
+      chi-alert.-m--2(color='warning', icon='warning', title="Warning", closable, mutable='false')
         | This is a closable warning alert
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-closable
@@ -514,11 +514,11 @@ p.-text
         | Use attribute <code>mutable</code> to remove alert once close buttons is clicked.
       :code(lang="html")
         <!-- closable -->
-        <chi-alert color="warning" icon="warning" closable>
+        <chi-alert color="warning" icon="warning" closable mutable="false">
           This is a closable warning alert
         </chi-alert>
         <!-- closable Titled -->
-        <chi-alert color="warning" icon="warning" title="Warning" closable>
+        <chi-alert color="warning" icon="warning" title="Warning" closable mutable="false">
           This is a closable warning alert
         </chi-alert>
     .chi-tabs-panel#html-portal-closable
@@ -688,7 +688,7 @@ p.-text
   h4 Actions
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(color='success' icon='circle-check' size='lg' title="Success" closable)
+      chi-alert.-m--2(color='success' icon='circle-check' size='lg' title="Success" closable, mutable='false')
         | This is a large closable success alert
         chi-button(slot="chi-alert__actions") Secondary action
         chi-button(slot="chi-alert__actions" color='primary') Primary action
@@ -702,7 +702,7 @@ p.-text
       .chi-tab__description
         | Add buttons to an alert by defining <code>slot="chi-alert__actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
-        <chi-alert color="success" icon="circle-check" size="lg" title="Success" closable>
+        <chi-alert color="success" icon="circle-check" size="lg" title="Success" closable mutable="false">
           This is a large closable success alert
           <chi-button slot="chi-alert__actions">Secondary action</chi-button>
           <chi-button slot="chi-alert__actions" color="primary">Primary action</chi-button>
@@ -734,7 +734,7 @@ p.-text
   h4 Actions
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable, mutable="false")
+      chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable, mutable='false')
         | This is a large closable success alert
         chi-button(slot="chi-alert__actions", variant='outline', color='primary', uppercase) Secondary action
         chi-button(slot="chi-alert__actions", color='primary', uppercase) Primary action
@@ -748,7 +748,7 @@ p.-text
       .chi-tab__description
         | Add buttons to an alert by defining <code>slot="chi-alert__actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
-        <chi-alert color="success" icon="circle-check" size="lg" title="Success" closable>
+        <chi-alert color="success" icon="circle-check" size="lg" title="Success" closable mutable="false">
           This is a large closable success alert
           <chi-button slot="chi-alert__actions">Secondary action</chi-button>
           <chi-button slot="chi-alert__actions" color="primary">Primary action</chi-button>
@@ -1104,11 +1104,11 @@ p.-text
   h4 Closable
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(type='banner', icon='warning', color='warning', closable)
+      chi-alert.-m--2(type='banner', icon='warning', color='warning', closable, mutable='false')
         | This is a closable warning alert
-      chi-alert.-m--2(type='banner', color='warning', icon='warning', title="Warning", closable)
+      chi-alert.-m--2(type='banner', color='warning', icon='warning', title="Warning", closable, mutable='false')
         | This is a closable warning alert
-      chi-alert.-m--2(type='banner', color='warning', icon='warning', size='lg', title="Warning", closable)
+      chi-alert.-m--2(type='banner', color='warning', icon='warning', size='lg', title="Warning", closable, mutable='false')
         | This is a large closable warning alert
     .example-tabs.-pl--2
       ul.chi-tabs#example-banner-closable
@@ -1121,15 +1121,15 @@ p.-text
         | Use the <code>closable</code> attribute to render a close button that allows users to dismiss an alert.
       :code(lang="html")
         <!-- closable -->
-        <chi-alert type="banner" color="warning" icon="warning" closable>
+        <chi-alert type="banner" color="warning" icon="warning" closable mutable="false">
           This is a closable warning alert
         </chi-alert>
         <!-- closable Titled -->
-        <chi-alert type="banner" color="warning" icon="warning" title="Warning" closable>
+        <chi-alert type="banner" color="warning" icon="warning" title="Warning" closable mutable="false">
           This is a closable warning alert
         </chi-alert>
         <!-- Large closable Titled -->
-        <chi-alert type="banner" color="warning" icon="warning" size="lg" title="Warning" closable>
+        <chi-alert type="banner" color="warning" icon="warning" size="lg" title="Warning" closable mutable="false">
           This is a large closable warning alert
         </chi-alert>
     .chi-tabs-panel#html-banner-closable
@@ -1179,7 +1179,7 @@ p.-text
   h4 Actionable
   .example.-mb--3
     .-p--1.-bg--grey-20
-      chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", closable)
+      chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", closable, mutable='false')
         | This is a large closable alert
         chi-button(slot="chi-alert__actions") Secondary action
         chi-button(slot="chi-alert__actions", color='primary') Primary action
@@ -1193,7 +1193,7 @@ p.-text
       .chi-tab__description
         | Add buttons to an alert by defining <code>slot="chi-alert__actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
-        <chi-alert type="banner" icon="circle-info" size="lg" title="Base" closable>
+        <chi-alert type="banner" icon="circle-info" size="lg" title="Base" closable mutable="false">
           This is a large closable alert
           <chi-button slot="chi-alert__actions">Secondary action</chi-button>
           <chi-button slot="chi-alert__actions" color="primary">Primary action</chi-button>
@@ -1227,10 +1227,10 @@ p.-text
 h4 Default
 .example.-mb--3
   .-p--1
-    chi-alert.-m--2(type='toast', icon='circle-info', mutable="false")
+    chi-alert.-m--2(type='toast', icon='circle-info', mutable='false')
       | This is a base alert
     each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(type='toast', icon=val, color=type, mutable="false")
+      chi-alert.-m--2(type='toast', icon=val, color=type, mutable='false')
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
     ul.chi-tabs#example-toast-default
@@ -1243,27 +1243,27 @@ h4 Default
       | To use a toast alert, set the <code>type</code> attribute to <code>toast</code>.
     :code(lang="html")
       <!-- Base - No semantic color defined -->
-      <chi-alert type="toast" icon="circle-info">
+      <chi-alert type="toast" icon="circle-info" mutable="false">
         This is a base alert
       </chi-alert>
       <!-- Success -->
-      <chi-alert type="toast" color="success" icon="circle-check">
+      <chi-alert type="toast" color="success" icon="circle-check" mutable="false">
         This is a success alert
       </chi-alert>
       <!-- Danger -->
-      <chi-alert type="toast" color="danger" icon="circle-x">
+      <chi-alert type="toast" color="danger" icon="circle-x" mutable="false">
         This is a danger alert
       </chi-alert>
       <!-- Warning -->
-      <chi-alert type="toast" color="warning" icon="warning">
+      <chi-alert type="toast" color="warning" icon="warning" mutable="false">
         This is a warning alert
       </chi-alert>
       <!-- Info -->
-      <chi-alert type="toast" color="info" icon="circle-info">
+      <chi-alert type="toast" color="info" icon="circle-info" mutable="false">
         This is an info alert
       </chi-alert>
       <!-- Muted -->
-      <chi-alert type="toast" color="muted" icon="circle-info">
+      <chi-alert type="toast" color="muted" icon="circle-info" mutable="false">
         This is a muted alert
       </chi-alert>
   .chi-tabs-panel#html-toast-default
@@ -1346,10 +1346,10 @@ h4 Default
 h4 Titled
 .example.-mb--3
   .-p--1
-    chi-alert.-m--2(type='toast', icon='circle-info', title="Base", mutable="false")
+    chi-alert.-m--2(type='toast', icon='circle-info', title="Base", mutable='false')
       | This is a base alert
     each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(type='toast', color=type, icon=val, title=type, mutable="false")
+      chi-alert.-m--2(type='toast', color=type, icon=val, title=type, mutable='false')
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
     ul.chi-tabs#example-toast-titled
@@ -1360,27 +1360,27 @@ h4 Titled
   .chi-tabs-panel.-active#webcomponent-toast-titled
     :code(lang="html")
       <!-- Base - No semantic color defined -->
-      <chi-alert type="toast" icon="circle-info" title="Base">
+      <chi-alert type="toast" icon="circle-info" title="Base" mutable="false">
         This is a base alert
       </chi-alert>
       <!-- Success -->
-      <chi-alert type="toast" icon="circle-check" color="success" title="Success">
+      <chi-alert type="toast" icon="circle-check" color="success" title="Success" mutable="false">
         This is a success alert
       </chi-alert>
       <!-- Danger -->
-      <chi-alert type="toast" color="danger" icon="circle-x" title="Danger">
+      <chi-alert type="toast" color="danger" icon="circle-x" title="Danger" mutable="false">
         This is a danger alert
       </chi-alert>
       <!-- Warning -->
-      <chi-alert type="toast" color="warning" icon="warning" title="Warning">
+      <chi-alert type="toast" color="warning" icon="warning" title="Warning" mutable="false">
         This is a warning alert
       </chi-alert>
       <!-- Info -->
-      <chi-alert type="toast" color="info" icon="circle-info" title="Info">
+      <chi-alert type="toast" color="info" icon="circle-info" title="Info" mutable="false">
         This is an info alert
       </chi-alert>
       <!-- Muted -->
-      <chi-alert type="toast" color="muted" icon="circle-info" title="Muted">
+      <chi-alert type="toast" color="muted" icon="circle-info" title="Muted" mutable="false">
         This is a muted alert
       </chi-alert>
   .chi-tabs-panel#html-toast-titled
@@ -1469,19 +1469,19 @@ h4 Titled
   .example.-mb--3
     .-p--1
       p.-text--bold.-ml--2 sm
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', mutable='false')
         | This is a small success alert
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', title='Success')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', title='Success', mutable='false')
         | This is a small success alert
       p.-text--bold.-ml--2 md (default)
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', mutable='false')
         | This is a success alert
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', title='Success')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', title='Success', mutable='false')
         | This is a success alert
       p.-text--bold.-ml--2 lg
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg', mutable='false')
         | This is a large success alert
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg', title='Success')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg', title='Success', mutable='false')
         | This is a large success alert
     .example-tabs.-pl--2
       ul.chi-tabs#example-toast-sizes
@@ -1494,27 +1494,27 @@ h4 Titled
         | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>, and <code>lg</code>.
       :code(lang="html")
         <!-- Small -->
-        <chi-alert type="toast" color="success" icon="circle-check" size="sm">
+        <chi-alert type="toast" color="success" icon="circle-check" size="sm" mutable="false">
           This is a small success alert
         </chi-alert>
         <!-- Small Titled -->
-        <chi-alert type="toast" color="success" icon="circle-check" size="sm" title="Success">
+        <chi-alert type="toast" color="success" icon="circle-check" size="sm" title="Success" mutable="false">
           This is a small success alert
         </chi-alert>
         <!-- Medium -->
-        <chi-alert type="toast" color="success" icon="circle-check">
+        <chi-alert type="toast" color="success" icon="circle-check" mutable="false">
           This is a success alert
         </chi-alert>
         <!-- Medium Titled -->
-        <chi-alert type="toast" color="success" icon="circle-check" title="Success">
+        <chi-alert type="toast" color="success" icon="circle-check" title="Success" mutable="false">
           This is a success alert
         </chi-alert>
         <!-- Large -->
-        <chi-alert type="toast" color="success" icon="circle-check" size="lg">
+        <chi-alert type="toast" color="success" icon="circle-check" size="lg" mutable="false">
           This is a large success alert
         </chi-alert>
         <!-- Large Titled -->
-        <chi-alert type="toast" color="success" icon="circle-check" size="lg" title="Success">
+        <chi-alert type="toast" color="success" icon="circle-check" size="lg" title="Success" mutable="false">
           This is a large success alert
         </chi-alert>
     .chi-tabs-panel#html-toast-sizes
@@ -1602,14 +1602,14 @@ h4 Titled
   .example.-mb--3
     .-p--1
       p.-text--bold.-ml--2 sm
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', mutable="false")
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', mutable='false')
         | This is a small success alert
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', title='Success', mutable="false")
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', title='Success', mutable='false')
         | This is a small success alert
       p.-text--bold.-ml--2 md (default)
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', mutable="false")
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', mutable='false')
         | This is a success alert
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', title='Success', mutable="false")
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', title='Success', mutable='false')
         | This is a success alert
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-toast-sizes
@@ -1622,19 +1622,19 @@ h4 Titled
         | Use the <code>size=""</code> attribute to customize the size of an alert. Supported sizes are <code>sm</code>, <code>md</code>.
       :code(lang="html")
         <!-- Small -->
-        <chi-alert type="toast" color="success" icon="circle-check" size="sm">
+        <chi-alert type="toast" color="success" icon="circle-check" size="sm" mutable="false">
           This is a small success alert
         </chi-alert>
         <!-- Small Titled -->
-        <chi-alert type="toast" color="success" icon="circle-check" size="sm" title="Success">
+        <chi-alert type="toast" color="success" icon="circle-check" size="sm" title="Success" mutable="false">
           This is a small success alert
         </chi-alert>
         <!-- Medium -->
-        <chi-alert type="toast" color="success" icon="circle-check">
+        <chi-alert type="toast" color="success" icon="circle-check" mutable="false">
           This is a success alert
         </chi-alert>
         <!-- Medium Titled -->
-        <chi-alert type="toast" color="success" icon="circle-check" title="Success">
+        <chi-alert type="toast" color="success" icon="circle-check" title="Success" mutable="false">
           This is a success alert
         </chi-alert>
     .chi-tabs-panel#html-portal-toast-sizes
