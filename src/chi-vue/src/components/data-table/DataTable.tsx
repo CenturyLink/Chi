@@ -204,7 +204,6 @@ export default class DataTable extends Vue {
             reference={`#${infoPopoverId}`}
             position="top"
             title={(this.data.head[columnIndex].description as DataTableColumnDescription).title}
-            modal
             arrow>
             <div>
               {this._getDescription(this.data.head[columnIndex].description as string | DataTableColumnDescription)}
