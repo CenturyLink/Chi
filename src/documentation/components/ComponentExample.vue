@@ -107,7 +107,7 @@
       <div :class="[padding || '-p--3', additionalClasses]">
         <slot name="example"></slot>
       </div>
-      <div class="example-tabs -pl--2">
+      <div v-if="showSnippetTabs" class="example-tabs -pl--2">
         <ul
           class="chi-tabs -animated"
           :id="'code-snippet-tabs-' + id"
@@ -134,7 +134,7 @@
         </ul>
       </div>
       <div
-        :class="['chi-tabs-panel', tab.active ? '-active' : '']"
+        :class="[showSnippetTabs ? 'chi-tabs-panel' : '', tab.active ? '-active' : '']"
         v-for="tab in tabs"
         :key="tab.id"
         :id="'example-' + id + '-' + tab.id"
@@ -218,6 +218,7 @@ export default class ComponentExample extends Vue {
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
   @Prop() additionalStyle?: string;
+  @Prop({ default: true }) showSnippetTabs?: boolean;
 
   chiTabs: any;
   chiHeadTabs: any;

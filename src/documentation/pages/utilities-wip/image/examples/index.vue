@@ -1,16 +1,16 @@
 <template lang="pug">
   .chi-grid__container.-pt--3
     h2 Examples
-    <Base />
+    <ResponsiveImages />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Base from './_base.vue';
+import ResponsiveImages from './_responsiveImages.vue';
 
 @Component({
   components: {
-    Base
+    ResponsiveImages
   }
 })
 export default class Examples extends Vue {}

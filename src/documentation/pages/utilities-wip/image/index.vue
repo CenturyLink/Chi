@@ -7,6 +7,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Examples from './examples/index.vue';
+
 @Component({
   head() {
     return {
@@ -17,5 +18,5 @@ import Examples from './examples/index.vue';
     Examples
   }
 })
-export default class Image extends Vue {}
+export default class ImageUtility extends Vue {}
 </script>
