@@ -1,13 +1,13 @@
 <template lang="pug">
   div
-    <TitleBar title="Error 404" description="Basic 404 level error page template. Indicates a client error, such as a
-    |  misspelled URL." />
+    <TitleBar title="Error 404" description="Basic 404 level error page template. Indicates a client error, such as a misspelled URL." />
     <Examples />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Examples from './examples/index.vue';
+
 @Component({
   head() {
     return {

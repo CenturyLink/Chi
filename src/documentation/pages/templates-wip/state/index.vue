@@ -1,7 +1,6 @@
 <template lang="pug">
   div
-    <TitleBar title="State" description="A collection of templates built with Badges, Icons, and Spinners for
-    |  presenting the state of users, applications, and more." />
+    <TitleBar title="State" description="A collection of templates built with Badges, Icons, and Spinners for presenting the state of users, applications, and more." />
     <Examples />
 </template>
 

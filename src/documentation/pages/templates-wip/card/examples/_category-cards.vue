@@ -118,8 +118,7 @@ export default class CategoryCards extends Vue {
         <div class="chi-link -cta -mt--2">${buttonText}</div>
       </div>
     </a>
-  </div>
-</div>`
+  </div>`
       )
     }).join('\n');
   }
