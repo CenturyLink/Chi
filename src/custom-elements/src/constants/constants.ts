@@ -64,3 +64,5 @@ export const APP_LAYOUT_FORMATS = ['base', 'no-margin', 'fixed-width'];
 export type AppLayoutFormats = typeof APP_LAYOUT_FORMATS[number];
 
 export const TABS_SEE_MORE_DEFAULT_MESSAGE = 'More';
+
+export type SearchInputModes = 'autocomplete';

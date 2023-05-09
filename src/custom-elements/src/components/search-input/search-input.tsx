@@ -1,5 +1,6 @@
 import { Component, Element, Event, EventEmitter, Prop, State, Watch, h } from '@stencil/core';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
+import { SearchInputModes } from "../../constants/constants";
 
 @Component({
   tag: 'chi-search-input',
@@ -31,7 +32,7 @@ export class SearchInput {
   /**
    * To enable portal styling
    */
-   @Prop({ reflect: true }) portal = false;
+  @Prop({ reflect: true }) portal = false;
   /**
    * To disable Value attribute mutation
    */
@@ -48,6 +49,11 @@ export class SearchInput {
   @Element() el: HTMLElement;
 
   @State() _cleanButtonVisible = (this.value && !this.disabled) ? true : false;
+
+  /**
+   * To render Search Input with Autocomplete
+   */
+  @Prop({ reflect: true }) mode?: SearchInputModes;
 
   /**
    * Triggered when an alteration to the element's value is committed by the user
@@ -72,7 +78,7 @@ export class SearchInput {
   /**
    * Triggered when the user clicked the Search button.
    */
-   @Event({ eventName: 'chiSearch' }) eventSearch: EventEmitter;
+  @Event({ eventName: 'chiSearch' }) eventSearch: EventEmitter;
 
   @Watch('size')
   sizeValidation(newValue: TextInputSizes) {
@@ -124,6 +130,29 @@ export class SearchInput {
     this.sizeValidation(this.size);
   }
 
+  _getAutocompleteDropdown(type = 'blur') {
+    const isAutocomplete = this.mode === 'autocomplete';
+    const dropdown = this.el.parentNode.querySelector('chi-dropdown');
+
+    if (!isAutocomplete || !dropdown) {
+      return
+    }
+
+    return type === 'focus' ? dropdown.show() : dropdown.hide()
+  }
+
+  _handleOnFocus() {
+    this._getAutocompleteDropdown('focus')
+
+    this.eventFocus.emit();
+  }
+
+  _handleOnBlur() {
+    this._getAutocompleteDropdown()
+
+    this.eventBlur.emit();
+  }
+
   render() {
     const searchInputElement = <input
       type="search"
@@ -137,8 +166,8 @@ export class SearchInput {
       name={this.name || ''}
       disabled={this.disabled}
       id={this.el.id ? `${this.el.id}-control` : null}
-      onFocus={() => this.eventFocus.emit()}
-      onBlur={() => this.eventBlur.emit()}
+      onFocus={() => this._handleOnFocus()}
+      onBlur={() => this._handleOnBlur()}
       onInput={(ev) => this._handleValueInput(ev)}
       onChange={(ev) => this._handleValueChange(ev)}
       autocomplete="off"
