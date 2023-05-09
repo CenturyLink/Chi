@@ -264,7 +264,6 @@ export class Dropdown {
       <div
         class={`
           ${DROPDOWN_CLASSES.MENU}
-          ${trigger ? '' : UTILITY_CLASSES.POSITION.ABSOLUTE}
           ${UTILITY_CLASSES.Z_INDEX.Z_10}
           ${this.active ? ACTIVE_CLASS : ''}
           ${this.fluid ? FLUID_CLASS : ''} 

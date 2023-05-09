@@ -98,6 +98,24 @@ export const config: Config = {
           required: false
         };
 
+        const appLayoutTitleProp = {
+          name: 'title',
+          type: 'string',
+          mutable: false,
+          attr: 'title',
+          reflectToAttr: true,
+          docs: 'to define app layout title.',
+          docsTags: [],
+          default: false,
+          values: [
+            {
+              type: 'string'
+            }
+          ],
+          optional: false,
+          required: false
+        };
+
         // @ts-ignore
         docs['components'].find(x => x.tag === 'chi-alert')['props'].push(alertTitleProp);
         docs['components'].find(x => x.tag === 'chi-alert')['props'].sort((a, b) => {
@@ -125,6 +143,14 @@ export const config: Config = {
         // @ts-ignore
         docs['components'].find(x => x.tag === 'chi-expansion-panel')['props'].push(epanelTitleProp);
         docs['components'].find(x => x.tag === 'chi-expansion-panel')['props'].sort((a, b) => {
+          if (a.name > b.name) return 1
+          else if (a.name < b.name) return -1
+          return 0
+        });
+
+        // @ts-ignore
+        docs['components'].find(x => x.tag === 'chi-main')['props'].push(appLayoutTitleProp);
+        docs['components'].find(x => x.tag === 'chi-main')['props'].sort((a, b) => {
           if (a.name > b.name) return 1
           else if (a.name < b.name) return -1
           return 0

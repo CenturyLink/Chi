@@ -43,6 +43,19 @@ Once the container has been bootstrapped and the Chi project has started, connec
 
 The project has been configured to run inside a Docker container so it won't work as a regular node application.
 
+### Steps for Linux (Ubuntu)
+
+- install docker https://docs.docker.com/desktop/install/ubuntu/
+- change this in the [docker.sh](/scripts/docker.sh) script:
+  - `REPO_PATH=$(cd $(dirname $0)/..; pwd)` -> `REPO_PATH=$(pwd)`
+  - `bash_profile` -> `profile`
+- run:
+``` sh
+  . scripts/docker.sh alias
+  source ~/.bash_profile
+  chi start
+ ```
+
 ## Testing Changes
 
 We use [BackstopJS](https://garris.github.io/BackstopJS) for visual regression testing of our CSS components. In order to account for differences in development environments we always run these tests in a consistent Docker container. To execute the test suite, run the following command:
