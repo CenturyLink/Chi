@@ -130,7 +130,7 @@ export class SearchInput {
     this.sizeValidation(this.size);
   }
 
-  _getAutocompleteDropdown(type = 'blur') {
+  _handleAutocompleteDropdown(type = 'blur') {
     const isAutocomplete = this.mode === 'autocomplete';
     const dropdown = this.el.parentNode.querySelector('chi-dropdown');
 
@@ -142,13 +142,13 @@ export class SearchInput {
   }
 
   _handleOnFocus() {
-    this._getAutocompleteDropdown('focus')
+    this._handleAutocompleteDropdown('focus')
 
     this.eventFocus.emit();
   }
 
   _handleOnBlur() {
-    this._getAutocompleteDropdown()
+    this._handleAutocompleteDropdown()
 
     this.eventBlur.emit();
   }
