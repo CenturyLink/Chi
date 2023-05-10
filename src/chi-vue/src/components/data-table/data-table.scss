@@ -37,6 +37,15 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 
+  // TODO: Remove it once a new version of Chi is released
+  .-cell-wrap {
+    display: -webkit-box;
+    overflow: hidden;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
   &.-selectable {
     .chi-radio {
       .chi-radio__label {
@@ -107,7 +116,7 @@ $font-weight-semi-bold: 600;
         position: relative;
         text-align: start;
         white-space: normal;
-        
+
         &.-selectable {
           .chi-dropdown {
             left: 2.5rem;
