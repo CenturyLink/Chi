@@ -23,3 +23,17 @@ each size in sizes
                     _status= status,
                     size= size != 'default' && size,
                     value='Value')
+
+.test-default
+  span.-text--h2 Search Input
+  table(cellpadding='0', cellspacing='0', width='600px')
+    each status in statuses
+      tr
+        td
+          small= `${status}`
+        td
+          .chi-form__item.-m--1
+            chi-search-input(id="example__with_dropdown", mode="autocomplete", _status= status, value='Value')
+            chi-dropdown(id="example__dropdown", position="bottom", prevent-auto-hide, active= status == 'focus')
+              each element in [1, 2, 3, 4, 5]
+                a.chi-dropdown__menu-item(href="#", slot="menu") Item #{element}
