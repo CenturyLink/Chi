@@ -168,6 +168,18 @@ export default class DataTable extends Vue {
     );
   }
 
+  _getHeadLabel(label: string) {
+    if (this.cellWrap) {
+      return <DataTableTooltip textWrap={this.cellWrap} msg={label} class="-w--100" />;
+    }
+
+    if (this.config.truncation) {
+      return <DataTableTooltip msg={label} header />;
+    }
+
+    return label;
+  }
+
   _head() {
     const tableHeadCells = [
       this.config.selectable ? (
@@ -204,7 +216,6 @@ export default class DataTable extends Vue {
             reference={`#${infoPopoverId}`}
             position="top"
             title={(this.data.head[columnIndex].description as DataTableColumnDescription).title}
-            modal
             arrow>
             <div>
               {this._getDescription(this.data.head[columnIndex].description as string | DataTableColumnDescription)}
@@ -236,6 +247,7 @@ export default class DataTable extends Vue {
           this.config.columnSizes && this._currentScreenBreakpoint
             ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
             : null;
+
       const sortableColumnHead = (
         <div
           aria-label={`Sort Column ${label}`}
@@ -256,7 +268,7 @@ export default class DataTable extends Vue {
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}>
-          {this.config.truncation ? <DataTableTooltip msg={label} header /> : label}
+          {this._getHeadLabel(label as string)}
           {infoIcon}
           {sortIcon}
         </div>
@@ -271,7 +283,7 @@ export default class DataTable extends Vue {
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}>
-          {this.config.truncation ? <DataTableTooltip msg={label} header /> : label}
+          {this._getHeadLabel(label as string)}
           {infoIcon}
         </div>
       );
