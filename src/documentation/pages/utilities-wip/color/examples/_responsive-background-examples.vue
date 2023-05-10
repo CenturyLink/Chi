@@ -2,11 +2,10 @@
   <ComponentExample title="Responsive background-color examples" id="responsive-background-examples" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
     <Wrapper slot="example">
       .-mb--3
-        .-p--3
-          .-text.-b--1.-p--3.-m--1(
-            v-for="example in examples"
-            :class="example.className"
-            :style="`color:${example.textColor ? example.textColor : 'white'}`") {{ example.className }}
+        .-text.-b--1.-p--3.-m--1(
+          v-for="example in examples"
+          :class="example.className"
+          :style="`color:${example.textColor ? example.textColor : 'white'}`") {{ example.className }}
     </Wrapper>
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>

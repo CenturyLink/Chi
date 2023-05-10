@@ -18,5 +18,5 @@ import Examples from './examples/index.vue';
     Examples
   }
 })
-export default class Border extends Vue {}
+export default class Color extends Vue {}
 </script>
