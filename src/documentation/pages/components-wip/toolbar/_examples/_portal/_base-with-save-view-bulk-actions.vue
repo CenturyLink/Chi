@@ -503,8 +503,8 @@ data: () => {
           <button
             class="chi-button -icon -flat"
             id="example__base_with_save_view_and_bulk_actions_column_customization_button"
-            aria-label="Column Customization"
-            data-tooltip="Column Customization"
+            aria-label="Customize Columns"
+            data-tooltip="Customize Columns"
             data-position="top"
           >
             <div class="chi-button__content">

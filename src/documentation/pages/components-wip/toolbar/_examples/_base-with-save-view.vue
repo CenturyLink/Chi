@@ -209,7 +209,7 @@ data: () => {
       advanced: true
     }
   ];
-  
+
   const columns = [
     {
       name: 'columnA',
@@ -365,7 +365,7 @@ data: () => {
               <i class="chi-icon icon-arrow-to-bottom" aria-hidden="true"></i>
             </div>
           </button>
-          <button class="chi-button -icon -flat" id="example__${this.$data.id}_column_customization_button" aria-label="Column Customization" data-tooltip="Column Customization" data-position="top">
+          <button class="chi-button -icon -flat" id="example__${this.$data.id}_column_customization_button" aria-label="Customize Columns" data-tooltip="Customize Columns" data-position="top">
             <div class="chi-button__content">
               <i class="chi-icon icon-table-column-settings" aria-hidden="true"></i>
             </div>

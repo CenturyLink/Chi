@@ -105,7 +105,7 @@
               <button
                 class="chi-button -portal -icon -primary -flat chi-drawer__trigger"
                 data-target="#drawer-2"
-                aria-label="Column Customization Open"
+                aria-label="Customize Columns Open"
               >
                 <div class="chi-button__content">
                   <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
