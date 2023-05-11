@@ -36,7 +36,9 @@ each size in sizes
             .chi-form__item.-row
               .chi-input__wrapper.-icon--right
                 .chi-form__item
-                  chi-search-input(id="example__with_dropdown", mode="autocomplete", _status= status, value='Value')
-                  chi-dropdown(id="example__dropdown", position="bottom", prevent-auto-hide, active= status == 'focus')
-                    each element in [1, 2, 3, 4, 5]
-                      a.chi-dropdown__menu-item(href="#", slot="menu") Item #{element}
+                  chi-search-input(
+                    id="example__with_dropdown",
+                    mode="autocomplete",
+                    _status= status,
+                    value='Value',
+                    options='[{ "title":"Item 1", "href":"#" }, { "title":"Item 2", "href":"#" }, { "title":"Item 3", "href":"#" }, { "title":"Item 4", "href":"#" }, { "title":"Item 5", "href":"#" }]')

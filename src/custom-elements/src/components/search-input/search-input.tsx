@@ -56,6 +56,11 @@ export class SearchInput {
   @Prop({ reflect: true }) mode?: SearchInputModes;
 
   /**
+   * List of options to be used in the dropdown - Autocomplete mode
+   */
+  @Prop({ reflect: true }) options: string;
+
+  /**
    * Triggered when an alteration to the element's value is committed by the user
    */
   @Event({ eventName: 'chiChange' }) eventChange: EventEmitter<string>;
@@ -130,11 +135,11 @@ export class SearchInput {
     this.sizeValidation(this.size);
   }
 
-  _handleAutocompleteDropdown(type = 'blur') {
+  _handleAutocompleteDropdown(type?: string) {
     const isAutocomplete = this.mode === 'autocomplete';
-    const dropdown = this.el.parentNode.querySelector('chi-dropdown');
+    const dropdown = this.el.querySelector('chi-dropdown');
 
-    if (!isAutocomplete || !dropdown) {
+    if (!isAutocomplete) {
       return
     }
 
@@ -200,12 +205,26 @@ export class SearchInput {
           </div>
       </button>;
 
-    const input = <div
-      class="chi-input__wrapper -icon--right">
-        {searchInputElement}
-        {searchXIcon}
-        {searchIcon}
+    const input = <div class="chi-input__wrapper -icon--right">
+      {searchInputElement}
+      {searchXIcon}
+      {searchIcon}
     </div>;
+
+
+    if (this.mode === 'autocomplete') {
+      const options = JSON.parse(this.options);
+
+      return <div class="chi-form__item">
+        {input}
+
+        <chi-dropdown position="bottom" prevent-auto-hide>
+          {options.map((item) =>
+            <a class="chi-dropdown__menu-item" href={item.href} slot="menu">{item.title}</a>
+          )}
+        </chi-dropdown>
+      </div>
+    }
 
     return input;
   }
