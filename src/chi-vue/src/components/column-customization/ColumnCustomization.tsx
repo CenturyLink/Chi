@@ -41,7 +41,7 @@ export default class ColumnCustomization extends Vue {
             id={this._modalId}
             class={`${MODAL_CLASSES.MODAL}`}
             role="dialog"
-            aria-label="Column Customization"
+            aria-label="Customize Columns"
             aria-modal="true">
             <header class={MODAL_CLASSES.HEADER}>
               <h2 class={MODAL_CLASSES.TITLE}>Customize Columns</h2>
@@ -217,7 +217,7 @@ export default class ColumnCustomization extends Vue {
         </div>
       </button>
     );
-    const modalTooltip = <Tooltip message="Column Customization">{modalButton}</Tooltip>;
+    const modalTooltip = <Tooltip message="Customize Columns">{modalButton}</Tooltip>;
     const modal = this._modal();
 
     return (
