@@ -1,4 +1,15 @@
 # CHANGELOG
+## 5.32.0 (May 12, 2023)
+### Components
+#### Added
+* Added: Alert `closable` is now dismissible by default when clicking on close icon.
+* Added: Data table Vue component header now supports two lines in a cell when `cellWrap` config is set to true.
+* Added: Add support for new icons: `icon-box-circle-arrow-left`, `icon-box-circle-check`, `icon-calendar-circle-check`, `icon-clipboard`, `icon-nodes-circle-check`, `icon-pause-arrow-rotate-right`.
+#### Changed
+* Changed: Toolbar `Column customization` tooltip text to `Customize columns`.
+#### Fixed
+* Fixed: Version check alert banner.
+
 ## 5.31.0 (April 27, 2023)
 ### Components
 #### Added
