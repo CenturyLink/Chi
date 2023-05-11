@@ -4,7 +4,6 @@
     h2 Examples
     <BorderSides />
     <Breakpoints />
-    <Breakpoints />
     <BorderSizes />
     h3 Border Colors
     p.-text
