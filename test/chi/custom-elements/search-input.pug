@@ -24,21 +24,25 @@ each size in sizes
                     size= size != 'default' && size,
                     value='Value')
 
-.test-default
-  span.-text--h2 Search Input with dropdown
+.test-autocomplete
+  h2 Search Input - Autocomplete
   table(cellpadding='0', cellspacing='0', width='600px')
-    each status in statuses
-      tr
-        td
-          small= `${status}`
-        td
-          .-m--1
-            .chi-form__item.-row
-              .chi-input__wrapper.-icon--right
-                .chi-form__item
-                  chi-search-input(
-                    id="example__with_dropdown",
-                    mode="autocomplete",
-                    _status= status,
-                    value='Value',
-                    options='[{ "title":"Item 1", "href":"#" }, { "title":"Item 2", "href":"#" }, { "title":"Item 3", "href":"#" }, { "title":"Item 4", "href":"#" }, { "title":"Item 5", "href":"#" }]')
+    tr
+      td Initial
+      td
+        .chi-form__item.-row.-m--1
+          .chi-input__wrapper.-icon--right
+            chi-search-input(id="autocomplete", mode="autocomplete")
+
+script.
+  document.addEventListener('DOMContentLoaded', () => {
+    const autocompleteElement = document.querySelector('#autocomplete');
+
+    autocompleteElement.menuItems = [
+      { title: "Item 1", href: "#" },
+      { title: "Item 2", href: "#" },
+      { title: "Item 3", href: "#" },
+      { title: "Item 4", href: "#" },
+      { title: "Item 5", href: "#" }
+    ];
+  });
