@@ -26,13 +26,8 @@ each size in sizes
 
 .test-autocomplete
   h2 Search Input - Autocomplete
-  table(cellpadding='0', cellspacing='0', width='600px')
-    tr
-      td Initial
-      td
-        .chi-form__item.-row.-m--1
-          .chi-input__wrapper.-icon--right
-            chi-search-input(id="autocomplete", mode="autocomplete")
+  .chi-form__item
+    chi-search-input(id="autocomplete", mode="autocomplete")
 
 script.
   document.addEventListener('DOMContentLoaded', () => {
