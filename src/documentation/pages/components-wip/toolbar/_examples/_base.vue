@@ -343,7 +343,7 @@ data: () => {
               <i class="chi-icon icon-arrow-to-bottom" aria-hidden="true"></i>
             </div>
           </button>
-          <button class="chi-button -icon -flat" id="example__base_column_customization_button" aria-label="Customize Columns" data-tooltip="Customize Columns" data-position="top">
+          <button class="chi-button -icon -flat" id="example__base_column_customization_button" aria-label="Customize columns" data-tooltip="Customize columns" data-position="top">
             <div class="chi-button__content">
               <i class="chi-icon icon-table-column-settings" aria-hidden="true"></i>
             </div>
