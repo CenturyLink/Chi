@@ -131,6 +131,14 @@ $sizes: (
       }
     }
 
+    .-cell-wrap {
+      display: -webkit-box;
+      overflow: hidden;
+      white-space: normal;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
     .-truncated {
       @include respond-to(md) {
         overflow: hidden;
