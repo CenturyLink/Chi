@@ -156,6 +156,9 @@
             <a :href="`${BASE_URL}templates/app-layout`">App layout</a>
           </li>
           <li>
+            <a :href="`${BASE_URL}templates/card`">Card</a>
+          </li>
+          <li>
             <a :href="`${BASE_URL}templates/error-404`">Error 404</a>
           </li>
           <li>

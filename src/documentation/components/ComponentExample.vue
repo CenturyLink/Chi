@@ -1,32 +1,32 @@
 <template>
   <div class="example-wrapper">
-    <h4 v-if="titleSize === 'h4'" class="-anchor" :id="id">
+    <h4 v-if="titleSize === 'h4' && showTitle" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
           class="-ml--1"
           :href="'?theme=' + $store.state.themes.theme + '#' + id"
-          >#</a
+        >#</a
         >
       </span>
     </h4>
-    <h2 v-else-if="titleSize === 'h2'" class="-anchor" :id="id">
+    <h2 v-else-if="titleSize === 'h2' && showTitle" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
           class="-ml--1"
           :href="'?theme=' + $store.state.themes.theme + '#' + id"
-          >#</a
+        >#</a
         >
       </span>
     </h2>
-    <h3 v-else class="-anchor" :id="id">
+    <h3 v-else-if="showTitle" class="-anchor" :id="id">
       {{ title }}
       <span>
         <a
           class="-ml--1"
           :href="'?theme=' + $store.state.themes.theme + '#' + id"
-          >#</a
+        >#</a
         >
       </span>
     </h3>
@@ -49,7 +49,7 @@
             :aria-selected="headTab.active ? true : false"
             :aria-controls="'#head-tabs-' + id + '-' + headTab.id"
             @click="emitHeadTabsChange(headTab)"
-            >{{ headTab.label }}</a
+          >{{ headTab.label }}</a
           >
         </li>
       </ul>
@@ -219,6 +219,7 @@ export default class ComponentExample extends Vue {
   @Prop() additionalClasses?: string;
   @Prop() additionalStyle?: string;
   @Prop({ default: true }) showSnippetTabs?: boolean;
+  @Prop({ default: true }) showTitle?: boolean;
 
   chiTabs: any;
   chiHeadTabs: any;
@@ -240,7 +241,7 @@ export default class ComponentExample extends Vue {
       });
 
       this.chiHeadTabs = chi.tab(chiHeadTabs);
-    };
+    }
   }
 
   emitHeadTabsChange(tab: HeadTabsInterface) {
