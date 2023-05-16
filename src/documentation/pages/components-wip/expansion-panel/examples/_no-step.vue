@@ -1,94 +1,21 @@
 <template lang="pug">
   <ComponentExample title="No step number" id="no-step-number" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
     p.-text(slot="example-description") Step numbering is optional and can be easily omitted.
-    #example__no-step-number(slot="example")
-      .-mw--720.-mx--auto
-        .chi-epanel.-no-step.-active(data-chi-epanel-group='example__no-step-number')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present
-                  | a read-only summary of what the user
-                  | entered or selected in step 1.
-                  | (e.g.) a package selection
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select a product package)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='next').-primary Continue
-
-        .chi-epanel.-no-step(data-chi-epanel-group='example__no-step-number')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present
-                  | a read-only summary of what the user
-                  | entered or selected in step 2.
-                  | (e.g.) shipping address
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='previous') Previous
-                  button.chi-button(data-chi-epanel-action='next').-primary Continue
-
-        .chi-epanel.-no-step(data-chi-epanel-group='example__no-step-number')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present
-                  | a read-only summary of what the user
-                  | entered or selected in step 3.
-                  | (e.g.) installation date
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='previous') Previous
-                  button.chi-button(data-chi-epanel-action='next').-primary Continue
-
-        .chi-epanel.-no-step(data-chi-epanel-group='example__no-step-number')
-          .chi-epanel__header
-            .chi-epanel__title Panel title
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present
-                  | a read-only summary of what the user
-                  | entered or selected in step 4.
-                  | (e.g.) payment method
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter payment method)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='previous') Previous
-                  button.chi-button(data-chi-epanel-action='done').-primary Finish
+    .-mw--720.-mx--auto(slot="example")
+      chi-expansion-panel(v-for="(panel, index) in panels" :key="index" title="Title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'")
+        div(slot='active')
+          .chi-epanel__subtitle
+            | {{panel.title}}
+          p.chi-epanel__text
+            | {{panel.content}}
+        div(slot="done")
+          | Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection
+        chi-button(slot="footerStart" @click="active -= 1")
+          | Previous
+        chi-button(slot="footerEnd" @click="active += 1" color="primary") Continue
+        div(slot='change')
+          chi-button(@click="active = index" color="primary" variant="flat")
+            | Change
     <Wrapper slot="code-webcomponent">
       .chi-tab__description
         | Step numbering can be omitted by removing the <code>step</code> property.
@@ -100,7 +27,7 @@
     </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
-      .p--text(class="chi-tab__description")
+      .p--text.chi-tab__description
         | Step numbering can be omitted by applying <code>-no-step</code> to <code>chi-epanel</code>
         | and removing <code>chi-epanel__number</code>.
       <pre class="language-html">
@@ -131,6 +58,29 @@ declare const chi: any;
         {
           id: 'htmlblueprint',
           label: 'HTML Blueprint'
+        }
+      ],
+      active: 0,
+      panels: [
+        {
+          state: "done",
+          content: "Content for the panel in done state",
+          title: "Optional subtitle 1"
+        },
+        {
+          state: "active",
+          content: "Content for the panel in active state",
+          title: "Optional subtitle 2"
+        },
+        {
+          state: "pending",
+          content: "Content for the panel in pending state",
+          title: "Optional subtitle 3"
+        },
+        {
+          state: "disabled",
+          content: "Content for the panel in disabled state",
+          title: "Optional subtitle 4"
         }
       ],
       codeSnippets: {
@@ -336,11 +286,6 @@ data: {
   }
 })
 
-export default class Base extends Vue {
-  mounted() {
-    const panel = document.querySelectorAll('[data-chi-epanel-group="example__no-step-number"]');
-    chi.expansionPanel(panel);
-  }
-}
+export default class NoStep extends Vue {}
 
 </script>

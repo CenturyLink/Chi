@@ -1,101 +1,22 @@
 <template lang="pug">
   <ComponentExample title="State Icon" id="states" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
-    div(slot="example-description")
-      p.-text
-        | Use state icon to render an icon that corresponds with the state of the panel.
-    #example__state(slot="example")
-      .-mw--720.-mx--auto
-        .chi-epanel.-done.-state-icon(data-chi-epanel-group='example__state')
-          .chi-epanel__header
-            .chi-epanel__number 1.
-            .chi-epanel__title Done state
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present
-                  | a read-only summary of what the user
-                  | entered or selected in step 1.
-                  | (e.g.) a package selection
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select a product package)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='next').-primary Continue
-
-        .chi-epanel.-active.-state-icon(data-chi-epanel-group='example__state')
-          .chi-epanel__header
-            .chi-epanel__number 2.
-            .chi-epanel__title Active state
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present
-                  | a read-only summary of what the user
-                  | entered or selected in step 2.
-                  | (e.g.) shipping address
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter shipping address)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button.-primary.-flat Cancel
-                  button.chi-button(data-chi-epanel-action='previous') Previous
-                  button.chi-button(data-chi-epanel-action='next').-primary Continue
-
-        .chi-epanel.-pending.-state-icon(data-chi-epanel-group='example__state')
-          .chi-epanel__header
-            .chi-epanel__number 3.
-            .chi-epanel__title Pending state
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present
-                  | a read-only summary of what the user
-                  | entered or selected in step 3.
-                  | (e.g.) installation date
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to select installation date)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='previous') Previous
-                  button.chi-button(data-chi-epanel-action='done').-primary Continue
-
-        .chi-epanel.-disabled.-state-icon(data-chi-epanel-group='example__state')
-          .chi-epanel__header
-            .chi-epanel__number 4.
-            .chi-epanel__title Disabled state
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present
-                  | a read-only summary of what the user
-                  | entered or selected in step 4.
-                  | (e.g.) payment method
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content in expansion panel (e.g. a form to enter payment method)
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='previous') Previous
-                  button.chi-button(data-chi-epanel-action='done').-primary Finish
+    p.-text(slot="example-description")
+      | Use state icon to render an icon that corresponds with the state of the panel.
+    .-mw--720.-mx--auto(slot="example")
+      chi-expansion-panel(v-for="(panel, index) in panels" :key="index" title="Title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'" :state-icon="true")
+        div(slot='active')
+          .chi-epanel__subtitle
+            | {{panel.title}}
+          p.chi-epanel__text
+            | {{panel.content}}
+        div(slot="done")
+          | Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection
+        chi-button(slot="footerStart" @click="active -= 1")
+          | Previous
+        chi-button(slot="footerEnd" @click="active += 1" color="primary") Continue
+        div(slot='change')
+          chi-button(@click="active = index" color="primary" variant="flat")
+            | Change
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -132,6 +53,29 @@ declare const chi: any;
         {
           id: 'htmlblueprint',
           label: 'HTML Blueprint'
+        }
+      ],
+      active: 0,
+      panels: [
+        {
+          state: "done",
+          content: "Content for the panel in done state",
+          title: "Optional subtitle 1"
+        },
+        {
+          state: "active",
+          content: "Content for the panel in active state",
+          title: "Optional subtitle 2"
+        },
+        {
+          state: "pending",
+          content: "Content for the panel in pending state",
+          title: "Optional subtitle 3"
+        },
+        {
+          state: "disabled",
+          content: "Content for the panel in disabled state",
+          title: "Optional subtitle 4"
         }
       ],
       codeSnippets: {
@@ -367,11 +311,6 @@ data: {
   }
 })
 
-export default class Base extends Vue {
-  mounted() {
-    const panel = document.querySelectorAll('[data-chi-epanel-group="example__state"]');
-    chi.expansionPanel(panel);
-  }
-}
+export default class StateIcon extends Vue {}
 
 </script>

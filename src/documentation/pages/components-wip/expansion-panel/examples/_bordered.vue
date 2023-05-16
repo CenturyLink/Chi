@@ -1,91 +1,21 @@
 <template lang="pug">
   <ComponentExample title="Bordered" id="bordered" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
     p.-text(slot="example-description") Use bordered to apply borders to panels and contain them in card styled boxes.
-    #example__bordered(slot="example")
-      .-mw--720.-mx--auto
-        .chi-epanel.-bordered(data-chi-epanel-group='example__bordered')
-          .chi-epanel__header
-            .chi-epanel__title Done State
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present
-                  | a read-only summary of what the user
-                  | entered or selected in step 1.
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='next').-primary Continue
-
-        .chi-epanel.-bordered.-active(data-chi-epanel-group='example__bordered')
-          .chi-epanel__header
-            .chi-epanel__title Active State
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present
-                  | a read-only summary of what the user
-                  | entered or selected in step 2.
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='previous') Previous
-                  button.chi-button(data-chi-epanel-action='next').-primary Continue
-
-        .chi-epanel.-bordered(data-chi-epanel-group='example__bordered')
-          .chi-epanel__header
-            .chi-epanel__title Pending State
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present
-                  | a read-only summary of what the user
-                  | entered or selected in step 3.
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='previous') Previous
-                  button.chi-button(data-chi-epanel-action='done').-primary Continue
-
-        .chi-epanel.-bordered.-disabled(data-chi-epanel-group='example__bordered')
-          .chi-epanel__header
-            .chi-epanel__title Disabled State
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Use this area to present
-                  | a read-only summary of what the user
-                  | entered or selected in step 4.
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action="active") Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='previous') Previous
-                  button.chi-button(data-chi-epanel-action='done').-primary Finish
-
+      .-mw--720.-mx--auto(slot="example")
+        chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :step="index + 1" title="Title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'" :bordered="true")
+          div(slot='active')
+            .chi-epanel__subtitle
+              | {{panel.title}}
+            p.chi-epanel__text
+              | {{panel.content}}
+          div(slot="done")
+            | Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection
+          chi-button(slot="footerStart" @click="active -= 1")
+            | Previous
+          chi-button(slot="footerEnd" @click="active += 1" color="primary") Continue
+          div(slot='change')
+            chi-button(@click="active = index" color="primary" variant="flat")
+              | Change
     <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         | To render bordered panels, apply the property <code>bordered</code>.
@@ -97,7 +27,7 @@
     </pre>
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
-      .p--text(class="chi-tab__description")
+      .p--text.chi-tab__description
         | To render bordered panels, apply the class <code>-bordered</code>.
       <pre class="language-html">
         <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
@@ -127,6 +57,29 @@ declare const chi: any;
         {
           id: 'htmlblueprint',
           label: 'HTML Blueprint'
+        }
+      ],
+      active: 0,
+      panels: [
+        {
+          state: "done",
+          content: "Content for the panel in done state",
+          title: "Optional subtitle 1"
+        },
+        {
+          state: "active",
+          content: "Content for the panel in active state",
+          title: "Optional subtitle 2"
+        },
+        {
+          state: "pending",
+          content: "Content for the panel in pending state",
+          title: "Optional subtitle 3"
+        },
+        {
+          state: "disabled",
+          content: "Content for the panel in disabled state",
+          title: "Optional subtitle 4"
         }
       ],
       codeSnippets: {
@@ -348,11 +301,6 @@ data: {
   }
 })
 
-export default class Base extends Vue {
-  mounted() {
-    const panel = document.querySelectorAll('[data-chi-epanel-group="example__bordered"]');
-    chi.expansionPanel(panel);
-  }
-}
+export default class Bordered extends Vue {}
 
 </script>

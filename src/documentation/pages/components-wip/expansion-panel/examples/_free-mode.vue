@@ -3,62 +3,61 @@
     p.-text(slot="example-description")
       | In this mode there is no automated action triggered when an element activates,
       | so you will need to manage all custom behavior.
-    #example__free-mode(slot="example")
-      .-mw--720.-mx--auto
-        .chi-epanel.-no-step.-active(data-chi-epanel-group='example__free-mode')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='toggle') Panel 1
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='next').-primary Continue
-        .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='toggle') Panel 2
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='previous') Previous
-                  button.chi-button(data-chi-epanel-action='next').-primary Continue
-        .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='toggle') Panel 3
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='previous') Previous
-                  button.chi-button(data-chi-epanel-action='next').-primary Continue
-        .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='toggle') Panel 4
-            .chi-epanel__action.-done--only
-              button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
-          .chi-epanel__collapse
-            .-active--only
-              .chi-epanel__body
-                .chi-epanel__content
-                  .chi-epanel__subtitle Optional subtitle
-                  p.chi-epanel__text Content goes here
-                .chi-epanel__footer.-justify-content--end
-                  button.chi-button(data-chi-epanel-action='previous') Previous
+    .-mw--720.-mx--auto(slot="example")
+      .chi-epanel.-no-step.-active(data-chi-epanel-group='example__free-mode')
+        .chi-epanel__header
+          .chi-epanel__title(data-chi-epanel-action='toggle') Panel 1
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content goes here
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
+        .chi-epanel__header
+          .chi-epanel__title(data-chi-epanel-action='toggle') Panel 2
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content goes here
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
+        .chi-epanel__header
+          .chi-epanel__title(data-chi-epanel-action='toggle') Panel 3
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content goes here
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
+                button.chi-button(data-chi-epanel-action='next').-primary Continue
+      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
+        .chi-epanel__header
+          .chi-epanel__title(data-chi-epanel-action='toggle') Panel 4
+          .chi-epanel__action.-done--only
+            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
+        .chi-epanel__collapse
+          .-active--only
+            .chi-epanel__body
+              .chi-epanel__content
+                .chi-epanel__subtitle Optional subtitle
+                p.chi-epanel__text Content goes here
+              .chi-epanel__footer.-justify-content--end
+                button.chi-button(data-chi-epanel-action='previous') Previous
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">

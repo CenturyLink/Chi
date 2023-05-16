@@ -7,44 +7,43 @@
       | example, the component behaves similar to the accordion but alternates between <code>done</code> and
       | <code>pending</code> states instead of <code>active</code> and <code>pending</code> states. The overridden action
       | functions are for documentation purposes only because they clone the functionality of the default ones.
-    #example__custom-mode(slot="example")
-      .-mw--720.-mx--auto
-        .chi-epanel.-done(data-chi-epanel-group='example__custom-mode')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='done') Panel 1
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
-                  | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
-                  | Aenean eu sapien eget ante placerat pretium a sit amet ante.
-        .chi-epanel(data-chi-epanel-group='example__custom-mode')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='done') Panel 2
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
-                  | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
-                  | Aenean eu sapien eget ante placerat pretium a sit amet ante.
-        .chi-epanel(data-chi-epanel-group='example__custom-mode')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='done') Panel 3
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
-                  | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
-                  | Aenean eu sapien eget ante placerat pretium a sit amet ante.
-        .chi-epanel(data-chi-epanel-group='example__custom-mode')
-          .chi-epanel__header
-            .chi-epanel__title(data-chi-epanel-action='done') Panel 4
-            .chi-epanel__content
-              .chi-epanel__collapse
-                .-done--only
-                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
-                  | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
-                  | Aenean eu sapien eget ante placerat pretium a sit amet ante.
+    .-mw--720.-mx--auto(slot="example")
+      .chi-epanel.-done(data-chi-epanel-group='example__custom-mode')
+        .chi-epanel__header
+          .chi-epanel__title(data-chi-epanel-action='done') Panel 1
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
+                | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
+                | Aenean eu sapien eget ante placerat pretium a sit amet ante.
+      .chi-epanel(data-chi-epanel-group='example__custom-mode')
+        .chi-epanel__header
+          .chi-epanel__title(data-chi-epanel-action='done') Panel 2
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
+                | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
+                | Aenean eu sapien eget ante placerat pretium a sit amet ante.
+      .chi-epanel(data-chi-epanel-group='example__custom-mode')
+        .chi-epanel__header
+          .chi-epanel__title(data-chi-epanel-action='done') Panel 3
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
+                | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
+                | Aenean eu sapien eget ante placerat pretium a sit amet ante.
+      .chi-epanel(data-chi-epanel-group='example__custom-mode')
+        .chi-epanel__header
+          .chi-epanel__title(data-chi-epanel-action='done') Panel 4
+          .chi-epanel__content
+            .chi-epanel__collapse
+              .-done--only
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
+                | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
+                | Aenean eu sapien eget ante placerat pretium a sit amet ante.
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">
