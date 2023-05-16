@@ -66,6 +66,10 @@ export class SearchInput {
    */
   @Prop({ mutable: true, reflect: true }) menuItems: AutocompleteItems[];
 
+  @State() menuItemsFiltered: AutocompleteItems[] = [];
+
+  @State() selectedItem?: AutocompleteItems;
+
   /**
    * Triggered when an alteration to the element's value is committed by the user
    */
@@ -121,6 +125,10 @@ export class SearchInput {
   disconnectedCallback(): void {
     document.removeEventListener('click', this._handleClickInDocument);
   }
+
+  connectedCallback() {
+    this.menuItemsFiltered = this.menuItems;
+  }
   //#endregion
 
   _handleValueInput(valueChange: Event): void {
@@ -138,6 +146,49 @@ export class SearchInput {
     this.eventInput.emit(newValue);
   }
 
+  _clearFilterMenuItems(): void {
+    this.menuItemsFiltered = this.menuItems;
+  }
+
+  _getDropdown() {
+    return this.el.querySelector('#dropdown-autocomplete') as HTMLChiDropdownElement;
+  }
+
+  _handleSearch(text: string): void {
+    const list = this.menuItems?.filter(item => {
+      return item.title.toLowerCase().includes(text.toLowerCase())
+    });
+
+    this.menuItemsFiltered = list;
+  }
+
+  _handleKeyUp = (valueChange: Event): void  => {
+    if (!this._isAutocomplete()) {
+      return;
+    }
+
+    const value = (valueChange.target as HTMLInputElement).value;
+    this._handleSearch(value);
+  }
+
+  _handleSelectItem = (ev: Event): void => {
+    const isAutocomplete = this._isAutocomplete();
+    if (!isAutocomplete) {
+      return;
+    }
+
+    ev.preventDefault();
+
+    const title = (ev.target as HTMLInputElement).innerText;
+    const href = (ev.target as HTMLInputElement).getAttribute('href');
+    const dropdown = this._getDropdown();
+
+    this.selectedItem = { title, href };
+    this.value = title;
+    dropdown.hide();
+    this._clearFilterMenuItems();
+  }
+
   _handleValueChange(valueChange: Event): void {
     const newValue = (valueChange.target as HTMLInputElement).value;
 
@@ -146,9 +197,7 @@ export class SearchInput {
 
   _handleFocus(): void {
     const isAutocomplete = this._isAutocomplete();
-    const dropdown = this.el.querySelector(
-      '#dropdown-autocomplete'
-    ) as HTMLChiDropdownElement;
+    const dropdown = this._getDropdown();
 
     if (isAutocomplete) {
       dropdown.show();
@@ -160,17 +209,15 @@ export class SearchInput {
   _handleClickInDocument(event: Event): void {
     const isAutocomplete = this._isAutocomplete();
 
-    if (isAutocomplete) {
-      const isClickInsideSearchInput = this.el.contains(
-        event.target as HTMLElement
-      );
-      const dropdown = this.el.querySelector(
-        '#dropdown-autocomplete'
-      ) as HTMLChiDropdownElement;
+    if (!isAutocomplete) {
+      return
+    }
 
-      if (!isClickInsideSearchInput) {
-        dropdown.hide();
-      }
+    const isClickInsideSearchInput = this.el.contains(event.target as HTMLElement);
+    const dropdown = this._getDropdown();
+
+    if (!isClickInsideSearchInput) {
+      dropdown.hide();
     }
   }
 
@@ -194,26 +241,43 @@ export class SearchInput {
         position="bottom"
         prevent-auto-hide
       >
-        {this.menuItems?.map(item => (
-          <a class={DROPDOWN_CLASSES.MENU_ITEM} href={item.href} slot="menu">
-            {item.title}
-          </a>
-        ))}
+        {this.menuItemsFiltered.length ?
+          this.menuItemsFiltered.map(item => (
+            <a
+              class={DROPDOWN_CLASSES.MENU_ITEM}
+              href={item.href}
+              slot="menu"
+              onClick={this._handleSelectItem}
+            >
+              {item.title}
+            </a>
+          )) : (
+            <span class="chi-dropdown__menu-item -disabled" slot="menu">No options</span>
+          )}
       </chi-dropdown>
     );
   }
 
+  _clearInputField = (): void => {
+    if (!this.readonly) {
+      this._cleanInput();
+    }
+
+    if (this._isAutocomplete()) {
+      this._clearFilterMenuItems();
+    }
+  }
+
   render() {
     const isAutocomplete = this._isAutocomplete();
-    const autocomplete = isAutocomplete ? 'on' : 'off';
     const searchInputElement = (
       <input
         type="search"
         class={`
-        chi-input chi-search__input
-        ${this.size ? `-${this.size}` : ''}
-        ${this._status ? `-${this._status}` : ''}
-      `}
+          chi-input chi-search__input
+          ${this.size ? `-${this.size}` : ''}
+          ${this._status ? `-${this._status}` : ''}
+        `}
         placeholder={this.placeholder || ''}
         value={this.value}
         name={this.name || ''}
@@ -223,7 +287,8 @@ export class SearchInput {
         onBlur={() => this.eventBlur.emit()}
         onInput={ev => this._handleValueInput(ev)}
         onChange={ev => this._handleValueChange(ev)}
-        autocomplete={autocomplete}
+        onKeyUp={this._handleKeyUp}
+        autocomplete="off"
         aria-label="search input"
         readonly={this.readonly}
       />
@@ -232,11 +297,7 @@ export class SearchInput {
     const searchXIcon = this._cleanButtonVisible ? (
       <button
         class="chi-button -icon -close -xs"
-        onClick={() => {
-          if (!this.readonly) {
-            this._cleanInput();
-          }
-        }}
+        onClick={this._clearInputField}
         aria-label="Clear"
       >
         <div class="chi-button__content">
