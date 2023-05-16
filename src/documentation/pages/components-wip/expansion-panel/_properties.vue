@@ -2,12 +2,10 @@
   div
     h2 Web Component
     <PropertiesGenerator tag="chi-expansion-panel" />
-
     h2 JavaScript
     h3 Actions
     p.-text
       | You can bind actions to activators inside the expansion panel with the <code>data-chi-epanel-action</code> attribute.
-
     table.chi-table.chi-table__options.-bordered
       thead
         tr
@@ -52,25 +50,20 @@
           td
             code(style='word-break: initial') previous
           td Sets the previous panel in <code>active</code> status.
-
     p.-text
       | You can freely add, remove or change the <code>data-chi-epanel-action</code> attribute on the fly, as is the main
       | element with the <code>chi-epanel</code> class, the one which listens for the events.
-
     h3 Preventing memory leaks
     p.-text
       | Expansion panel components have a dispose function to free all resources attached to the element, such as event
       | listeners and object data. You should call this method when you want to remove the component.
     pre.language-javascript
       code.javascript(v-highlight="$data.code1")
-
     p.-text
       | It is safe to call the <code>expansionPanel</code> method more than once, as it will return any previously created
       | expansion panel component associated to the element.
     pre.language-javascript
       code.javascript(v-highlight="$data.code2")
-
-
 </template>
 
 <script lang="ts">
