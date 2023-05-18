@@ -2,13 +2,11 @@
   <ComponentExample title="Border Sizes" id="border-sizes" titleSize="h4" padding="-p--2" :tabs="exampleTabs" :showSnippetTabs="false">
     p.-text(slot="example-description")
       | Control an element's border size by adjusting the size from <code>0</code> - <code>4</code>.
-    <Wrapper slot="example">
-      .chi-grid.-text.-no-gutter.-text--center
-        .chi-col.-w--6.-w-md--3.-w-xl--2(v-for="index in 5" :key="index")
-          .-m--1.-p--1.-py--5.-b--0.-bg--grey-10(:class="`-b--${index - 1}`") -b--{{ index - 1 }}
-    </Wrapper>
+    .chi-grid.-text.-no-gutter.-text--center(slot="example")
+      .chi-col.-w--6.-w-md--3.-w-xl--2(v-for="border in borders")
+        .-m--1.-p--1.-py--5.-b--0.-bg--grey-10(:class="border") -b--{{ border }}
     <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
   </ComponentExample>
 </template>
@@ -25,16 +23,25 @@ import { Component, Vue } from 'vue-property-decorator';
           id: 'htmlblueprint',
           label: 'HTML Blueprint'
         }
-      ],
-      codeSnippets: {
-        htmlblueprint: `<div class="-b--0"></div>
-<div class="-b--1"></div>
-<div class="-b--2"></div>
-<div class="-b--3"></div>
-<div class="-b--4"></div>`
-      }
+      ]
     };
   }
 })
-export default class BorderSizes extends Vue {}
+export default class BorderSizes extends Vue {
+  borders = ['-b--0', '-b--1', '-b--2', '-b--3', '-b--4']
+
+  get codeSnippets() {
+    return {
+      htmlblueprint: this.generateHtml()
+    }
+  }
+
+  generateHtml() {
+    return this.borders.map(item => {
+      return (
+        `<div class="${item}"></div>`
+      )
+    }).join('\n');
+  }
+}
 </script>

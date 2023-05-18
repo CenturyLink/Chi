@@ -44,3 +44,8 @@ export interface IThemes {
   brightspeed: string;
   colt: string;
 }
+
+export interface IBorder {
+  className: string;
+  title: string;
+}
