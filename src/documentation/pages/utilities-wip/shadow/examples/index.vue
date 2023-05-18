@@ -1,5 +1,5 @@
 <template lang="pug">
-  .chi-grid__container.-pt--3
+  .chi-grid__container
     <ComponentExample title="Examples" id="examples" :tabs="exampleTabs" :showSnippetTabs="false" padding="0" additionalStyle="border: none;" />
     <Default />
     <Responsive />

@@ -1,5 +1,5 @@
 <template lang="pug">
-  .chi-grid__container.-pt--3
+  .chi-grid__container
     <ComponentExample title="Notation" id="supportedValues" :tabs="exampleTabs" :showSnippetTabs="false" padding="0" additionalStyle="border: none;" >
     p.-text(slot="example-description")
       | Shadow utility classes can be defined using the format <code>-s[-{breakpoint}]--{size}</code>.

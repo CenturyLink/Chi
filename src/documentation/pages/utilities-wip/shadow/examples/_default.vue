@@ -1,7 +1,7 @@
 <template lang="pug">
-    <ComponentExample title="Default" titleSize="h4" id="default" padding="-p--0" :tabs="exampleTabs">
+    <ComponentExample title="Default" titleSize="h4" id="default" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
     <Wrapper slot="example">
-      .chi-grid.-text.-no-gutter.-text--center
+      .chi-grid.-text.-no-gutter.-text--center(style="background:#F5F5F5;")
         .-p--5.-m--2.-s--0(style="background:#FFFFFF;") -s--0
         .-p--5.-m--2.-s--1(style="background:#FFFFFF;") -s--1
         .-p--5.-m--2.-s--2(style="background:#FFFFFF;") -s--2

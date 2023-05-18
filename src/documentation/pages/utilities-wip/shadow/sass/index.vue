@@ -1,5 +1,5 @@
 <template lang="pug">
-  .chi-grid__container.-pt--3
+  .chi-grid__container
     <ComponentExample title="SASS" id="examples" :tabs="exampleTabs" :showSnippetTabs="false" padding="0" additionalStyle="border: none;">
       p.-text(slot="example-description")
         | Chi defines shadows with Saas maps. The following example will render a shadow equivalent to <code>-s--1</code> / <code>1px</code>.
