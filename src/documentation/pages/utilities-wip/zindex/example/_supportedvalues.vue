@@ -1,6 +1,6 @@
 <template lang="pug">
   <div>
-    <ComponentExample title="Supported valuess" id="supportedValuess" :tabs="exampleTabs" :showSnippetTabs="false" padding="0" additionalStyle="border: none;" />
+    <ComponentExample title="Supported valuess" id="supportedValuess" :tabs="exampleTabs" :showSnippetTabs="false" padding="0" additionalStyle="border: none;" showClipboard="false" />
       <Wrapper slot="example">
         section.chi-table.-sm
           div
