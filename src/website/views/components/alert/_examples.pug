@@ -417,11 +417,11 @@ p.-text
     | To allow users to dismiss an alert.
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(color='warning', icon='warning', closable)
+      chi-alert.-m--2(color='warning', icon='warning', closable, mutable='false')
         | This is a closable warning alert
-      chi-alert.-m--2(color='warning', icon='warning', title="Warning", closable)
+      chi-alert.-m--2(color='warning', icon='warning', title="Warning", closable, mutable='false')
         | This is a closable warning alert
-      chi-alert.-m--2(color='warning', icon='warning', size='lg', title="Warning", closable)
+      chi-alert.-m--2(color='warning', icon='warning', size='lg', title="Warning", closable, mutable='false')
         | This is a large closable warning alert
     .example-tabs.-pl--2
       ul.chi-tabs#example-closable
@@ -497,9 +497,9 @@ p.-text
     | To allow users to dismiss an alert.
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(color='warning', icon='warning', closable)
+      chi-alert.-m--2(color='warning', icon='warning', closable, mutable='false')
         | This is a closable warning alert
-      chi-alert.-m--2(color='warning', icon='warning', title="Warning", closable)
+      chi-alert.-m--2(color='warning', icon='warning', title="Warning", closable, mutable='false')
         | This is a closable warning alert
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-closable
@@ -688,7 +688,7 @@ p.-text
   h4 Actions
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(color='success' icon='circle-check' size='lg' title="Success" closable)
+      chi-alert.-m--2(color='success' icon='circle-check' size='lg' title='Success' closable mutable='false')
         | This is a large closable success alert
         chi-button(slot="chi-alert__actions") Secondary action
         chi-button(slot="chi-alert__actions" color='primary') Primary action
@@ -734,7 +734,7 @@ p.-text
   h4 Actions
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable)
+      chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable, mutable='false')
         | This is a large closable success alert
         chi-button(slot="chi-alert__actions", variant='outline', color='primary', uppercase) Secondary action
         chi-button(slot="chi-alert__actions", color='primary', uppercase) Primary action
@@ -1104,11 +1104,11 @@ p.-text
   h4 Closable
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(type='banner', icon='warning', color='warning', closable)
+      chi-alert.-m--2(type='banner', icon='warning', color='warning', closable, mutable='false')
         | This is a closable warning alert
-      chi-alert.-m--2(type='banner', color='warning', icon='warning', title="Warning", closable)
+      chi-alert.-m--2(type='banner', color='warning', icon='warning', title="Warning", closable, mutable='false')
         | This is a closable warning alert
-      chi-alert.-m--2(type='banner', color='warning', icon='warning', size='lg', title="Warning", closable)
+      chi-alert.-m--2(type='banner', color='warning', icon='warning', size='lg', title="Warning", closable, mutable='false')
         | This is a large closable warning alert
     .example-tabs.-pl--2
       ul.chi-tabs#example-banner-closable
@@ -1179,7 +1179,7 @@ p.-text
   h4 Actionable
   .example.-mb--3
     .-p--1.-bg--grey-20
-      chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", closable)
+      chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", closable, mutable='false')
         | This is a large closable alert
         chi-button(slot="chi-alert__actions") Secondary action
         chi-button(slot="chi-alert__actions", color='primary') Primary action
@@ -1227,10 +1227,10 @@ p.-text
 h4 Default
 .example.-mb--3
   .-p--1
-    chi-alert.-m--2(type='toast', icon='circle-info')
+    chi-alert.-m--2(type='toast', icon='circle-info', mutable='false')
       | This is a base alert
     each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(type='toast', icon=val, color=type)
+      chi-alert.-m--2(type='toast', icon=val, color=type, mutable='false')
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
     ul.chi-tabs#example-toast-default
@@ -1346,10 +1346,10 @@ h4 Default
 h4 Titled
 .example.-mb--3
   .-p--1
-    chi-alert.-m--2(type='toast', icon='circle-info', title="Base")
+    chi-alert.-m--2(type='toast', icon='circle-info', title="Base", mutable='false')
       | This is a base alert
     each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(type='toast', color=type, icon=val, title=type)
+      chi-alert.-m--2(type='toast', color=type, icon=val, title=type, mutable='false')
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
     ul.chi-tabs#example-toast-titled
@@ -1469,19 +1469,19 @@ h4 Titled
   .example.-mb--3
     .-p--1
       p.-text--bold.-ml--2 sm
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', mutable='false')
         | This is a small success alert
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', title='Success')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', title='Success', mutable='false')
         | This is a small success alert
       p.-text--bold.-ml--2 md (default)
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', mutable='false')
         | This is a success alert
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', title='Success')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', title='Success', mutable='false')
         | This is a success alert
       p.-text--bold.-ml--2 lg
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg', mutable='false')
         | This is a large success alert
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg', title='Success')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='lg', title='Success', mutable='false')
         | This is a large success alert
     .example-tabs.-pl--2
       ul.chi-tabs#example-toast-sizes
@@ -1602,14 +1602,14 @@ h4 Titled
   .example.-mb--3
     .-p--1
       p.-text--bold.-ml--2 sm
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', mutable='false')
         | This is a small success alert
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', title='Success')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', size='sm', title='Success', mutable='false')
         | This is a small success alert
       p.-text--bold.-ml--2 md (default)
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', mutable='false')
         | This is a success alert
-      chi-alert.-m--2(type='toast', color='success', icon='circle-check', title='Success')
+      chi-alert.-m--2(type='toast', color='success', icon='circle-check', title='Success', mutable='false')
         | This is a success alert
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-toast-sizes
