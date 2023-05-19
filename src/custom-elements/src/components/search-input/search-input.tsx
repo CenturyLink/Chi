@@ -7,6 +7,7 @@ import {
   Prop,
   State,
   Watch,
+  Listen,
   h
 } from '@stencil/core';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
@@ -51,24 +52,16 @@ export class SearchInput {
    * To define -hover, -focus statuses
    */
   @Prop() _status: string;
-
-  @Element() el: HTMLElement;
-
-  @State() _cleanButtonVisible = this.value && !this.disabled ? true : false;
-
   /**
    * To set the mode to search input
    */
   @Prop({ reflect: true }) mode?: SearchInputModes;
-
   /**
    * To set the list of items to be used in the dropdown menu in autocomplete mode
    */
   @Prop({ mutable: true, reflect: true }) menuItems: AutocompleteItems[];
 
-  @State() menuItemsFiltered: AutocompleteItems[] = [];
-
-  @State() selectedItem?: AutocompleteItems;
+  @Element() el: HTMLElement;
 
   /**
    * Triggered when an alteration to the element's value is committed by the user
@@ -95,6 +88,10 @@ export class SearchInput {
    */
   @Event({ eventName: 'chiSearch' }) eventSearch: EventEmitter;
 
+  @State() _cleanButtonVisible = this.value && !this.disabled ? true : false;
+  @State() menuItemsFiltered: AutocompleteItems[] = [];
+  @State() selectedItem?: AutocompleteItems;
+
   @Watch('size')
   sizeValidation(newValue: TextInputSizes) {
     const validValues = TEXT_INPUT_SIZES.join(', ');
@@ -113,7 +110,18 @@ export class SearchInput {
     }
   }
 
+  @Listen('keydown')
+  handleKeyDown(ev: KeyboardEvent) {
+    if (ev.key === 'ArrowUp' || ev.key === 'ArrowDown') {
+      this._changeItemFocus(ev.key)
+    }
+  }
+
   //#region Lifecycle hooks
+  connectedCallback(): void {
+    this.menuItemsFiltered = this.menuItems;
+  }
+
   componentWillLoad(): void {
     this.sizeValidation(this.size);
   }
@@ -125,58 +133,89 @@ export class SearchInput {
   disconnectedCallback(): void {
     document.removeEventListener('click', this._handleClickInDocument);
   }
-
-  connectedCallback() {
-    this.menuItemsFiltered = this.menuItems;
-  }
   //#endregion
 
   _handleValueInput(valueChange: Event): void {
     const newValue = (valueChange.target as HTMLInputElement).value;
+    const isAutocomplete = this._isAutocomplete();
 
     if (!this.preventValueMutation) {
       this.value = newValue;
     }
 
-    if (newValue === '') {
-      this._cleanButtonVisible = false;
-    } else {
-      this._cleanButtonVisible = true;
-    }
+    this._cleanButtonVisible = !!newValue;
     this.eventInput.emit(newValue);
+
+    if (!isAutocomplete) {
+      return
+    }
+
+    this._handleFilter(newValue);
+  }
+
+  _setHightlightValue(list: AutocompleteItems[], text: string): AutocompleteItems[] {
+    if (!text) {
+      return list;
+    }
+
+    return list.map((item) => {
+      const regex = new RegExp(text, "gi");
+      const newValue = item.title.replace(regex, `<strong>${text}</strong>`);
+
+      return { ...item, title: newValue };
+    })
   }
 
   _clearFilterMenuItems(): void {
-    this.menuItemsFiltered = this.menuItems;
+    const isAutocomplete = this._isAutocomplete();
+
+    if (isAutocomplete) {
+      this.menuItemsFiltered = this.menuItems;
+    }
   }
 
   _getDropdown() {
-    return this.el.querySelector('#dropdown-autocomplete') as HTMLChiDropdownElement;
+    return this.el.querySelector(
+      '#dropdown-autocomplete'
+    ) as HTMLChiDropdownElement;
   }
 
-  _handleSearch(text: string): void {
-    const list = this.menuItems?.filter(item => {
-      return item.title.toLowerCase().includes(text.toLowerCase())
-    });
+  _changeItemFocus(direction: string): void {
+    const dropdown = this._getDropdown();
+    const menuItems = Array.from(dropdown.querySelectorAll('.chi-dropdown__menu-item'));
 
-    this.menuItemsFiltered = list;
-  }
+    const currentIndex = menuItems.indexOf(document.activeElement);
+    let nextIndex = 0;
 
-  _handleKeyUp = (valueChange: Event): void  => {
-    if (!this._isAutocomplete()) {
-      return;
+    if (direction === 'ArrowUp') {
+      nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
     }
 
-    const value = (valueChange.target as HTMLInputElement).value;
-    this._handleSearch(value);
+    if (direction === 'ArrowDown') {
+      nextIndex = currentIndex + 1 < menuItems.length ? currentIndex + 1 : currentIndex;
+    }
+
+    (menuItems[nextIndex] as HTMLElement).focus();
+  }
+
+
+  _handleFilter(text: string): void {
+    const dropdown = this._getDropdown();
+    const list = this.menuItems?.filter((item: AutocompleteItems) => {
+      return item.title.toLowerCase().includes(text.toLowerCase());
+    });
+    const highlightedMenuItems = this._setHightlightValue(list, text);
+
+    if (!highlightedMenuItems.length) {
+      dropdown.hide();
+      return
+    }
+
+    this.menuItemsFiltered = highlightedMenuItems;
+    dropdown.show();
   }
 
   _handleSelectItem = (ev: Event): void => {
-    const isAutocomplete = this._isAutocomplete();
-    if (!isAutocomplete) {
-      return;
-    }
-
     ev.preventDefault();
 
     const title = (ev.target as HTMLInputElement).innerText;
@@ -187,7 +226,7 @@ export class SearchInput {
     this.value = title;
     dropdown.hide();
     this._clearFilterMenuItems();
-  }
+  };
 
   _handleValueChange(valueChange: Event): void {
     const newValue = (valueChange.target as HTMLInputElement).value;
@@ -195,12 +234,13 @@ export class SearchInput {
     this.eventChange.emit(newValue);
   }
 
-  _handleFocus(): void {
+  _handleFocus(ev: Event): void {
     const isAutocomplete = this._isAutocomplete();
-    const dropdown = this._getDropdown();
 
     if (isAutocomplete) {
-      dropdown.show();
+      const currentItem = (ev.target as HTMLInputElement).value;
+
+      this._handleFilter(currentItem);
     }
 
     this.eventFocus.emit();
@@ -210,10 +250,12 @@ export class SearchInput {
     const isAutocomplete = this._isAutocomplete();
 
     if (!isAutocomplete) {
-      return
+      return;
     }
 
-    const isClickInsideSearchInput = this.el.contains(event.target as HTMLElement);
+    const isClickInsideSearchInput = this.el.contains(
+      event.target as HTMLElement
+    );
     const dropdown = this._getDropdown();
 
     if (!isClickInsideSearchInput) {
@@ -229,6 +271,8 @@ export class SearchInput {
     const input = this.el.querySelector('input[type=search]');
 
     this.value = '';
+    (input as HTMLInputElement).value = this.value;
+    this._clearFilterMenuItems();
     (input as HTMLInputElement).focus();
     this._cleanButtonVisible = false;
     this.eventClean.emit();
@@ -241,19 +285,16 @@ export class SearchInput {
         position="bottom"
         prevent-auto-hide
       >
-        {this.menuItemsFiltered.length ?
-          this.menuItemsFiltered.map(item => (
-            <a
-              class={DROPDOWN_CLASSES.MENU_ITEM}
-              href={item.href}
-              slot="menu"
-              onClick={this._handleSelectItem}
-            >
-              {item.title}
-            </a>
-          )) : (
-            <span class="chi-dropdown__menu-item -disabled" slot="menu">No options</span>
-          )}
+        {this.menuItemsFiltered.map(item => (
+          <a
+            class={DROPDOWN_CLASSES.MENU_ITEM}
+            href={item.href}
+            slot="menu"
+            onClick={this._handleSelectItem}
+            innerHTML={item.title}
+          >
+          </a>
+        ))}
       </chi-dropdown>
     );
   }
@@ -262,11 +303,7 @@ export class SearchInput {
     if (!this.readonly) {
       this._cleanInput();
     }
-
-    if (this._isAutocomplete()) {
-      this._clearFilterMenuItems();
-    }
-  }
+  };
 
   render() {
     const isAutocomplete = this._isAutocomplete();
@@ -283,11 +320,10 @@ export class SearchInput {
         name={this.name || ''}
         disabled={this.disabled}
         id={this.el.id ? `${this.el.id}-control` : null}
-        onFocus={() => this._handleFocus()}
+        onFocus={ev => this._handleFocus(ev)}
         onBlur={() => this.eventBlur.emit()}
         onInput={ev => this._handleValueInput(ev)}
         onChange={ev => this._handleValueChange(ev)}
-        onKeyUp={this._handleKeyUp}
         autocomplete="off"
         aria-label="search input"
         readonly={this.readonly}
