@@ -1,14 +1,13 @@
 <template lang="pug">
-  <ComponentExample title="Hidden" id="hidden" :tabs="exampleTabs" :showSnippetTabs="false">
+  <ComponentExample title="Hidden" id="hidden" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--2">
     p.-text(slot="example-description")
       | Use <code>-overflow--hidden</code> to hide content that overflows its box. No scrollbars are shown.
-    .-mb--3(slot="example")
-      .chi-grid.-no-gutter
-        .chi-col.-w--6.-w-md--4.-p--1
-          .-overflow--hidden.-b--1.-p--1(style=`height:4rem;`)
-            p.-text.-m--0
-              | This is an example of an element with a defined height
-              | using <code>-overflow--hidden</code> to hide its overflow.
+    .chi-grid.-no-gutter(slot="example")
+      .chi-col.-w--6.-w-md--4.-p--1
+        .-overflow--hidden.-b--1.-p--1(style="height:4rem;")
+          p.-text.-m--0
+            | This is an example of an element with a defined height
+            | using <code>-overflow--hidden</code> to hide its overflow.
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>

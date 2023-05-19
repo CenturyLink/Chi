@@ -1,15 +1,14 @@
 <template lang="pug">
-  <ComponentExample title="Auto" id="auto" :tabs="exampleTabs" :showSnippetTabs="false">
+  <ComponentExample title="Auto" id="auto" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--2">
     p.-text(slot="example-description")
       | Use <code>-overflow--auto</code> to show scrollbars if content overflows its box.
       | If content fits within its box, no scrollbars are shown.
-    .-mb--3(slot="example")
-      .chi-grid.-no-gutter
-        .chi-col.-w--6.-w-md--4.-p--1
-          .-overflow--auto.-b--1.-p--1(style=`height:4rem;`)
-            p.-text.-m--0
-              | This is an example of an element with a defined height
-              | using <code>-overflow--auto</code> to scroll the content overflowing its box.
+    .chi-grid.-no-gutter(slot="example")
+      .chi-col.-w--6.-w-md--4.-p--1
+        .-overflow--auto.-b--1.-p--1(style="height:4rem;")
+          p.-text.-m--0
+            | This is an example of an element with a defined height
+            | using <code>-overflow--auto</code> to scroll the content overflowing its box.
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>

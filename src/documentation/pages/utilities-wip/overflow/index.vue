@@ -18,5 +18,5 @@ import Examples from './examples/index.vue';
     Examples
   }
 })
-export default class OverflowUtility extends Vue {}
+export default class Overflow extends Vue {}
 </script>
