@@ -4,7 +4,7 @@
       | Control an element's border size by adjusting the size from <code>0</code> - <code>4</code>.
     .chi-grid.-text.-no-gutter.-text--center(slot="example")
       .chi-col.-w--6.-w-md--3.-w-xl--2(v-for="border in borders")
-        .-m--1.-p--1.-py--5.-b--0.-bg--grey-10(:class="border") -b--{{ border }}
+        .-m--1.-p--1.-py--5.-bg--grey-10(:class="border") {{ border }}
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>

@@ -1,13 +1,16 @@
 <template lang="pug">
   .chi-grid__container.-pt--3
     <Notation />
+
     h2 Examples
     <BorderSides />
     <Breakpoints />
     <BorderSizes />
+
     h3 Border Colors
     p.-text
       | Use contextual color classes to change a border's color.
+
     <BrandBorderColor />
     <SemanticBorderColor />
     <TransparentBorderColor />

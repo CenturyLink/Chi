@@ -45,7 +45,7 @@ export interface IThemes {
   colt: string;
 }
 
-export interface IBorder {
+export interface IBorderUtility {
   className: string;
   title: string;
 }

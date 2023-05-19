@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { IBorder } from '~/models/models';
+import { IBorderUtility } from '~/models/models';
 
 @Component({
   data: () => {
@@ -79,7 +79,7 @@ ${this.generateHtml(this.bordersLight)}
     }
   }
 
-  generateHtml(items: IBorder[]) {
+  generateHtml(items: IBorderUtility[]) {
     return items.map(({ className }) => {
       return (
         `<div class="-b--1 -b--${className}"></div>`
