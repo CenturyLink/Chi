@@ -1,23 +1,23 @@
 <template lang="pug">
   .chi-grid__container.-pt--3
     <SupportedValues :indexes="indexes" />
-    <Example :indexes="indexes" />
+    <ZIndexExample :indexes="indexes" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import SupportedValues from './_supportedvalues.vue';
-import Example from './_example.vue';
+import SupportedValues from './_supportedValues.vue';
+import ZIndexExample from './_zindexexample.vue';
 
 @Component({
   components: {
     SupportedValues,
-    Example
+    ZIndexExample
   },
   data: () => {
     return {
       indexes: [
-        {key: '0', value:    {color: '-bg--black',    margin: 1, text: 'Initial value'},},
+        {key: '0', value:    {color: ' -bg--black',    margin: 1, text: 'Initial value'},},
         {key: '1', value:    {color: '',              margin: 0, text: 'Prominent elements (E.g. focused buttons)'},},
         {key: '10', value:   {color: '-bg--danger',   margin: 2, text: 'Dropdowns'},},
         {key: '20', value:   {color: '-bg--warning',  margin: 3, text: 'Fixed elements (E.g. drawer)'},},
@@ -31,5 +31,5 @@ import Example from './_example.vue';
     }
   }
 })
-export default class Examples extends Vue {}
+export default class ZIndexExamples extends Vue {}
 </script>
