@@ -2,20 +2,20 @@
   <ComponentExample title="No step number" id="no-step-number" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
     p.-text(slot="example-description") Step numbering is optional and can be easily omitted.
     .-mw--720.-mx--auto(slot="example")
-      chi-expansion-panel(v-for="(panel, index) in panels" :key="index" title="Title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'")
+      chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :title="panel.title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'")
         div(slot='active')
           .chi-epanel__subtitle
-            | {{panel.title}}
+            | {{panel.subtitle}}
           p.chi-epanel__text
             | {{panel.content}}
         div(slot="done")
-          | Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection
-        chi-button(slot="footerStart" @click="active -= 1")
-          | Previous
-        chi-button(slot="footerEnd" @click="active += 1" color="primary") Continue
-        div(slot='change')
-          chi-button(@click="active = index" color="primary" variant="flat")
-            | Change
+          | {{panel.doneContent}}
+        div(slot="footer")
+          chi-button(@click="active -= 1" v-if="index")
+            | PREVIOUS
+          chi-button(@click="active += 1" color="primary") {{index + 1 === panels.length ? 'FINISH' : 'CONTINUE'}}
+        chi-button(slot='change' @click="active = index" color="primary" variant="flat")
+            | CHANGE
     <Wrapper slot="code-webcomponent">
       .chi-tab__description
         | Step numbering can be omitted by removing the <code>step</code> property.
@@ -64,23 +64,31 @@ declare const chi: any;
       panels: [
         {
           state: "done",
-          content: "Content for the panel in done state",
-          title: "Optional subtitle 1"
+          subtitle: "Optional subtitle",
+          title: "Panel title",
+          content: "Content in expansion panel (e.g. a form to select a product package)",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection",
         },
         {
           state: "active",
-          content: "Content for the panel in active state",
-          title: "Optional subtitle 2"
+          subtitle: "Optional subtitle",
+          title: "Panel title",
+          content: "Content in expansion panel (e.g. a form to enter shipping address)",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 2. (e.g.) shipping address",
         },
         {
           state: "pending",
-          content: "Content for the panel in pending state",
-          title: "Optional subtitle 3"
+          subtitle: "Optional subtitle",
+          title: "Panel title",
+          content: "Content in expansion panel (e.g. a form to select installation date)",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 3. (e.g.) installation date",
         },
         {
           state: "disabled",
-          content: "Content for the panel in disabled state",
-          title: "Optional subtitle 4"
+          subtitle: "Optional subtitle",
+          title: "Panel title",
+          content: "Content in expansion panel (e.g. a form to enter payment method)",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 4. (e.g.) payment method",
         }
       ],
       codeSnippets: {

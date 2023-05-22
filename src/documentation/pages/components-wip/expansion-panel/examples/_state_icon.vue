@@ -3,20 +3,21 @@
     p.-text(slot="example-description")
       | Use state icon to render an icon that corresponds with the state of the panel.
     .-mw--720.-mx--auto(slot="example")
-      chi-expansion-panel(v-for="(panel, index) in panels" :key="index" title="Title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'" :state-icon="true")
+      chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :step="index + 1" :title="panel.title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'" :state-icon="true")
         div(slot='active')
           .chi-epanel__subtitle
-            | {{panel.title}}
+            | {{panel.subtitle}}
           p.chi-epanel__text
             | {{panel.content}}
         div(slot="done")
-          | Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection
-        chi-button(slot="footerStart" @click="active -= 1")
-          | Previous
-        chi-button(slot="footerEnd" @click="active += 1" color="primary") Continue
+          | {{panel.doneContent}}
+        div(slot="footer")
+          chi-button(@click="active -= 1" v-if="index")
+            | PREVIOUS
+          chi-button(@click="active += 1" color="primary") {{index + 1 === panels.length ? 'FINISH' : 'CONTINUE'}}
         div(slot='change')
           chi-button(@click="active = index" color="primary" variant="flat")
-            | Change
+            | CHANGE
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -55,27 +56,35 @@ declare const chi: any;
           label: 'HTML Blueprint'
         }
       ],
-      active: 0,
+      active: 1,
       panels: [
         {
+          title: "Panel title",
           state: "done",
-          content: "Content for the panel in done state",
-          title: "Optional subtitle 1"
+          content: "Content in expansion panel (e.g. a form to select a product package)",
+          subtitle: "Optional subtitle",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection"
         },
         {
+          title: "Panel title",
           state: "active",
-          content: "Content for the panel in active state",
-          title: "Optional subtitle 2"
+          content: "Content in expansion panel (e.g. a form to enter shipping address)",
+          subtitle: "Optional subtitle",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 2. (e.g.) shipping address"
         },
         {
+          title: "Panel title",
           state: "pending",
-          content: "Content for the panel in pending state",
-          title: "Optional subtitle 3"
+          content: "Content in expansion panel (e.g. a form to select installation date)",
+          subtitle: "Optional subtitle",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 3. (e.g.) installation date"
         },
         {
+          title: "Panel title",
           state: "disabled",
-          content: "Content for the panel in disabled state",
-          title: "Optional subtitle 4"
+          content: "Content in expansion panel (e.g. a form to enter payment method)",
+          subtitle: "Optional subtitle",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 4. (e.g.) payment method"
         }
       ],
       codeSnippets: {

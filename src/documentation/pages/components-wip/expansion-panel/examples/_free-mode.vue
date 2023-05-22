@@ -184,7 +184,7 @@ declare const chi: any;
 export default class Base extends Vue {
   mounted() {
     const panel = document.querySelectorAll('[data-chi-epanel-group="example__free-mode"]');
-    chi.expansionPanel(panel);
+    chi.expansionPanel(panel, {mode: 'free'});
   }
 }
 

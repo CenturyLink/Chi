@@ -13,20 +13,20 @@
       p.-text
         | An optional cancel button can also be included to exit the expansion panel workflow.
     .-mw--720.-mx--auto(slot="example")
-      chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :title="panel.title" :state="getState(panel.state, active, index)")
+      chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :step="index + 1" :title="panel.title" :state="getState(panel.state, active, index)")
         div(slot='active')
           .chi-epanel__subtitle
             | {{panel.subtitle}}
           p.chi-epanel__text
             | {{panel.content}}
         div(slot="done")
-          | Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection
-        chi-button(slot="footerStart" @click="active -= 1")
-          | Previous
-        chi-button(slot="footerEnd" @click="active += 1" color="primary") Continue
-        div(slot='change')
-          chi-button(@click="active = index" color="primary" variant="flat")
-            | Change
+          | {{panel.doneContent}}
+        div(slot="footer")
+          chi-button(@click="active -= 1" v-if="index")
+            | PREVIOUS
+          chi-button(@click="active += 1" color="primary") CONTINUE
+        chi-button(slot="change" @click="active = index" color="primary" variant="flat")
+          | CHANGE
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -71,25 +71,29 @@ declare const chi: any;
           state: "done",
           content: "Content for the panel in done state",
           title: "Done state",
-          subtitle: "Optional subtitle"
+          subtitle: "Optional subtitle",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection"
         },
         {
           state: "active",
           content: "Content for the panel in active state",
           title: "Active state",
-          subtitle: "Optional subtitle"
+          subtitle: "Optional subtitle",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) shipping address"
         },
         {
           state: "pending",
           content: "Content for the panel in pending state",
           title: "Pending state",
-          subtitle: "Optional subtitle"
+          subtitle: "Optional subtitle",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) installation date"
         },
         {
           state: "disabled",
           content: "Content for the panel in disabled state",
           title: "Disabled state",
-          subtitle: "Optional subtitle"
+          subtitle: "Optional subtitle",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.)"
         }
       ],
       codeSnippets: {

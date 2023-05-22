@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs" additionalClasses="-bg--grey-10">
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs" additionalClasses="-bg--grey-10 -p-lg--6">
     p.-text(slot="example-description")
       | Group expansion panels using the attribute <code>data-chi-epanel-group="name-of-the-group"</code>.
       | This will enable panels to work together as a sequential form. When a panel is activated,
@@ -12,13 +12,13 @@
             p.chi-epanel__text
               | {{panel.content}}
           div(slot="done")
-            | Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection
-          chi-button(slot="footerStart" @click="active -= 1")
-            | Previous
-          chi-button(slot="footerEnd" @click="active += 1" color="primary") Continue
-          div(slot='change')
-            chi-button(@click="active = index" color="primary" variant="flat")
-              | Change
+            | {{panel.doneContent}}
+          div(slot="footer")
+            chi-button(@click="active -= 1" v-if="index")
+              | PREVIOUS
+            chi-button(@click="active += 1" color="primary") {{index + 1 === panels.length ? 'FINISH' : 'CONTINUE'}}
+          chi-button(slot='change' @click="active = index" color="primary" variant="flat")
+              | CHANGE
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -61,23 +61,27 @@ declare const chi: any;
       panels: [
         {
           state: "done",
-          content: "Content for the panel in done state",
-          title: "Optional subtitle 1"
+          content: "Content in expansion panel (e.g. a form to select a product package)",
+          title: "Optional subtitle",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection"
         },
         {
           state: "active",
-          content: "Content for the panel in active state",
-          title: "Optional subtitle 2"
+          content: "Content in expansion panel (e.g. a form to enter shipping address)",
+          title: "Optional subtitle",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 2. (e.g.) shipping address"
         },
         {
           state: "pending",
-          content: "Content for the panel in pending state",
-          title: "Optional subtitle 3"
+          content: "Content in expansion panel (e.g. a form to select installation date)",
+          title: "Optional subtitle",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 3. (e.g.) installation date"
         },
         {
           state: "disabled",
-          content: "Content for the panel in disabled state",
-          title: "Optional subtitle 4"
+          content: "Content in expansion panel (e.g. a form to enter payment method)",
+          title: "Optional subtitle",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 4. (e.g.) payment method"
         }
       ],
       codeSnippets: {

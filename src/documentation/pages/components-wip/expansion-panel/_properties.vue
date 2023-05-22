@@ -2,6 +2,83 @@
   div
     h2 Web Component
     <PropertiesGenerator tag="chi-expansion-panel" />
+
+    h2 Chi Vue
+    h3 Props
+    section.chi-table.chi-table__options.-bordered.-my--3
+      div(style='overflow-x:auto;')
+        table.-text(cellpadding='0' cellspacing='0')
+          thead
+            tr
+              th
+                div Property
+              th
+                div Description
+              th
+                div Type
+              th
+                div Default
+          tbody
+            tr
+              td
+                div
+                  code state
+              td
+                div to set expansion panel state. Possible values are: {'done', 'active', 'pending' (default value), and 'disabled'}
+              td
+                div
+                  code string
+              td
+                div
+                  em 'pending'
+            tr
+              td
+                div
+                  code step
+              td
+                div to set a step number next to the title of the panel
+              td
+                div
+                  code string
+              td
+                div
+                  em undefined
+            tr
+              td
+                div
+                  code bordered
+              td
+                div to set the panel style to bordered
+              td
+                div
+                  code boolean
+              td
+                div
+                  em undefined
+            tr
+              td
+                div
+                  code stateIcon
+              td
+                div to render a state icon within the panel
+              td
+                div
+                  code boolean
+              td
+                div
+                  code false
+            tr
+              td
+                div
+                  code title
+              td
+                div to define expansion panel title
+              td
+                div
+                  code string
+              td
+                div
+                  code undefined
     h2 JavaScript
     h3 Actions
     p.-text

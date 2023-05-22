@@ -187,7 +187,18 @@ chi.expansionPanel(
 export default class Base extends Vue {
   mounted() {
     const panel = document.querySelectorAll('[data-chi-epanel-group="example__custom-mode"]');
-    chi.expansionPanel(panel);
+    chi.expansionPanel(panel, {
+      mode: 'custom',
+      changeHandler: function (newState, oldState, expansionPanel, panelGroup) {
+        if (newState === chi.EXPANSION_PANEL_STATES.DONE) {
+          panelGroup.expansion_panels.forEach(function (exPa) {
+            if (exPa !== expansionPanel) {
+              exPa.setState(chi.EXPANSION_PANEL_STATES.PENDING.NAME);
+            }
+          });
+        }
+      }
+    });
   }
 }
 

@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    <TitleBar title="Expansion Panel" description="Expansion panels organize content into collapsible panels and reveal them to users in a progressive, step-by-step way." :tabs="pageTabs" />
+    <TitleBar title="Expansion panel" description="Expansion panels organize content into collapsible panels and reveal them to users in a progressive, step-by-step way." :tabs="pageTabs" />
     .chi-grid__container.-pt--3
       #examples.chi-tabs-panel.-active
         <Examples />

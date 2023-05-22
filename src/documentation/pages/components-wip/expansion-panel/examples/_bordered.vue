@@ -2,20 +2,20 @@
   <ComponentExample title="Bordered" id="bordered" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
     p.-text(slot="example-description") Use bordered to apply borders to panels and contain them in card styled boxes.
       .-mw--720.-mx--auto(slot="example")
-        chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :step="index + 1" title="Title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'" :bordered="true")
+        chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :title="panel.title" :state="getState(panel.state, active, index)" :bordered="true")
           div(slot='active')
             .chi-epanel__subtitle
-              | {{panel.title}}
+              | {{panel.subtitle}}
             p.chi-epanel__text
               | {{panel.content}}
           div(slot="done")
-            | Use this area to present a read-only summary of what the user entered or selected in step 1. (e.g.) a package selection
-          chi-button(slot="footerStart" @click="active -= 1")
-            | Previous
-          chi-button(slot="footerEnd" @click="active += 1" color="primary") Continue
-          div(slot='change')
-            chi-button(@click="active = index" color="primary" variant="flat")
-              | Change
+            | {{panel.doneContent}}
+          div(slot="footer")
+            chi-button(@click="active -= 1" v-if="index")
+              | PREVIOUS
+            chi-button(@click="active += 1" color="primary") CONTINUE
+          chi-button(slot='change' @click="active = index" color="primary" variant="flat")
+            | CHANGE
     <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         | To render bordered panels, apply the property <code>bordered</code>.
@@ -59,27 +59,35 @@ declare const chi: any;
           label: 'HTML Blueprint'
         }
       ],
-      active: 0,
+      active: 1,
       panels: [
         {
           state: "done",
-          content: "Content for the panel in done state",
-          title: "Optional subtitle 1"
+          content: "Content goes here",
+          subtitle: "Optional subtitle",
+          title: "Done State",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 1.",
         },
         {
           state: "active",
-          content: "Content for the panel in active state",
-          title: "Optional subtitle 2"
+          content: "Content goes here",
+          subtitle: "Optional subtitle",
+          title: "Active State",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 2.",
         },
         {
           state: "pending",
-          content: "Content for the panel in pending state",
-          title: "Optional subtitle 3"
+          content: "Content goes here",
+          subtitle: "Optional subtitle",
+          title: "Pending State",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 3.",
         },
         {
           state: "disabled",
-          content: "Content for the panel in disabled state",
-          title: "Optional subtitle 4"
+          content: "Content goes here",
+          subtitle: "Optional subtitle",
+          title: "Disabled State",
+          doneContent: "Use this area to present a read-only summary of what the user entered or selected in step 4.",
         }
       ],
       codeSnippets: {
@@ -298,6 +306,15 @@ data: {
 </div>`
       }
     };
+  },
+  methods: {
+    getState: (state: string, active: number, index: number) => {
+      if (state === 'disabled') {
+        return 'disabled';
+      }
+
+      return active === index ? 'active' : active > index ? 'done' : 'pending';
+    }
   }
 })
 
