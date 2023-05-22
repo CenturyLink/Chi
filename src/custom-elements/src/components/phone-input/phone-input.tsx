@@ -131,7 +131,10 @@ export class ChiPhoneInput {
   valueChanged(newValue: string, oldValue: string): void {
     if (newValue !== oldValue) {
       this.value = newValue;
-      this._initCountry(newValue);
+
+      if (this.dynamicValue) {
+        this._initCountry(newValue);
+      }
     }
   }
 
