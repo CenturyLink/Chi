@@ -44,3 +44,10 @@ export interface IThemes {
   brightspeed: string;
   colt: string;
 }
+
+export interface IZIndexes {
+  key: string, 
+  color: string, 
+  margin: number, 
+  text: string,
+}

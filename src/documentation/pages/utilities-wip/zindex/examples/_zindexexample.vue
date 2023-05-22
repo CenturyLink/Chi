@@ -1,7 +1,7 @@
 <template lang="pug">
-  <ComponentExample title="Example" id="example" :tabs="exampleTabs" :showSnippetTabs="false">
+  <ComponentExample title="Example"  :tabs="exampleTabs" :showSnippetTabs="false">
     .-position--relative(style='height:20rem' slot="example")
-      <div v-for="index in indexes" :key="index.key" v-if="index && index.value.color !== ''" :class="['-position--absolute -z--' + index.key + ' ' + index.value.color + ' -text--center -text--white -text--bold']" :style="'width:11rem; height:11rem; top:' + index.value.margin + 'rem; left:' + index.value.margin + 'rem; line-height:11rem;'">-z--{{index.key}}</div>
+      <div v-for="index in indexes" :key="index.key" v-if="index.color" :class="generatedClass(index)" :style="generatedStyle(index)">-z--{{index.key}}</div>
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -9,7 +9,8 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import { IZIndexes } from '../../../../models/models';
 
 @Component({
   props: {
@@ -28,15 +29,22 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class ZIndexExample extends Vue {
+  @Prop() indexes: IZIndexes[];
+
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
     }
   }
-
+  generatedClass(index: IZIndexes) {
+    return `-position--absolute -z--${index.key} ${index.color} -text--center -text--white -text--bold`
+  }
+  generatedStyle(index: IZIndexes) {
+    return `width:11rem; height:11rem; top:${index.margin}rem; left:${index.margin}rem; line-height:11rem;`
+  }
   generateHtml() {
-    const iteration = this.$props.indexes.filter(({value}) => value.color !== '').map(({ key, value }) => {
-      return (value.color && `  <div class="-position--absolute -z--${key} ${value.color}">-z--${key}</div>`)
+    const iteration = this.indexes.filter(({color}) => color !== '').map(({ key, color }) => {
+      return (`  <div class="-position--absolute -z--${key} ${color}">-z--${key}</div>`)
     }).join('\n');
     
       return (
@@ -44,6 +52,6 @@ export default class ZIndexExample extends Vue {
 ${iteration}
 </div>`
       )
-}
+  }
 }
 </script>
