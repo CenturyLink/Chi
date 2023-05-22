@@ -23,23 +23,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { IZIndexes } from '../../../../models/models';
 
-@Component({
-  data: () => {
-    return {
-      exampleTabs: [
-        {
-          active: true,
-          id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ],
-      codeSnippets: {
-        htmlblueprint: `<img src="" class="-img--responsive" alt="" />`
-      }
-    };
-  }
-})
-
+@Component({})
 export default class SupportedValues extends Vue {
   @Prop() indexes: IZIndexes[];
 }

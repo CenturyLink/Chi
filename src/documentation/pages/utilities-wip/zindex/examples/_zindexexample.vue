@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Example"  :tabs="exampleTabs" :showSnippetTabs="false">
+  <ComponentExample title="Example" :tabs="exampleTabs" :showSnippetTabs="false">
     .-position--relative(style='height:20rem' slot="example")
       <div v-for="index in indexes" :key="index.key" v-if="index.color" :class="generatedClass(index)" :style="generatedStyle(index)">-z--{{index.key}}</div>
     <pre class="language-html" slot="code-htmlblueprint">
@@ -10,12 +10,9 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import { IZIndexes } from '../../../../models/models';
+import { IZIndexes } from '~/models/models';
 
 @Component({
-  props: {
-    indexes: Array
-  },
   data: () => {
     return {
       exampleTabs: [
