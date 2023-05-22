@@ -58,6 +58,10 @@ export class ChiPhoneInput {
    * To define value of Phone input
    */
   @Prop({ mutable: true, reflect: true }) value: string;
+  /**
+   * To define dynamic value of Phone input
+   */
+  @Prop({ reflect: true }) dynamicValue: boolean = false;
 
   /**
    * Triggered when an alteration to the element's value is committed by the user
@@ -104,7 +108,7 @@ export class ChiPhoneInput {
     );
     document.addEventListener('click', this._closeDropdown);
     this.stateValidation(this.state);
-    this._initCountry();
+    this._initCountry(this.value);
     this._uuid = this.el.id ? this.el.id : `dp-${uuid4()}`;
   }
 
@@ -127,35 +131,56 @@ export class ChiPhoneInput {
   valueChanged(newValue: string, oldValue: string): void {
     if (newValue !== oldValue) {
       this.value = newValue;
-      this._suffix = new AsYouType(this._country.countryAbbr).input(
-        this.value.substring(this.value.indexOf('-') + 1)
+      this._initCountry(newValue);
+    }
+  }
+
+  _setCountry(prefix: string) {
+    if (this.dynamicValue) {
+      this._checkCountry(prefix);
+    } else if (isSupportedCountry(this.defaultCountry)) {
+      this._checkCountry(this.defaultCountry);
+    }
+  }
+
+  _checkCountry(prefix: string) {
+    const prevCountry = this._country;
+
+    this._country = this._countries.find(country =>
+      this.dynamicValue
+        ? country.dialCode === prefix
+        : country.countryAbbr === prefix
+    );
+
+    if (prevCountry && this._country.dialCode === prevCountry.dialCode) {
+      this._country = prevCountry;
+      return;
+    }
+
+    if (this._country.dialCode == '1' && this.dynamicValue) {
+      this._country = this._countries.find(
+        country => country.countryAbbr === 'US'
+      );
+    }
+
+    if (!isSupportedCountry(this._country.countryAbbr)) {
+      throw new Error(
+        `"${this._country.countryAbbr}" is not a valid country for phone input.`
       );
     }
   }
 
-  _initCountry(): void {
-    if (isSupportedCountry(this.defaultCountry)) {
-      this._country = this._countries.find(
-        country => country.countryAbbr === this.defaultCountry
-      );
-      this._prefix = `+${this._country.dialCode}`;
+  _initCountry(value: string) {
+    const prefix = value ? value.split('-')[0].replace('+', '') : '1';
+    const suffix = value ? value.split('-')[1] : '';
 
-      if (this.value) {
-        this._suffix = new AsYouType(this._country.countryAbbr).input(
-          this.value.substring(this.value.indexOf('-') + 1)
-        );
+    this._setCountry(prefix);
+    this._prefix = `+${this._country.dialCode}`;
+    this._suffix = new AsYouType(this._country.countryAbbr).input(suffix);
 
-        const valuePrefix = this.value.substring(0, this.value.indexOf('-'));
-
-        if (valuePrefix !== this._prefix) {
-          throw new Error(
-            `Country code prefix of the provided value (${valuePrefix}) does not match the provided default country's prefix (${this._prefix}).`
-          );
-        }
-      }
-    } else {
+    if (`+${prefix}` !== this._prefix) {
       throw new Error(
-        `${this.defaultCountry} is not a valid country for phone input.`
+        `Country code prefix of the provided value (+${prefix}) does not match the provided default country's prefix (${this._prefix}).`
       );
     }
   }
