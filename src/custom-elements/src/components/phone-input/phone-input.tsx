@@ -108,7 +108,7 @@ export class ChiPhoneInput {
     );
     document.addEventListener('click', this._closeDropdown);
     this.stateValidation(this.state);
-    this._initCountry(this.value);
+    this._initCountry();
     this._uuid = this.el.id ? this.el.id : `dp-${uuid4()}`;
   }
 
@@ -133,8 +133,13 @@ export class ChiPhoneInput {
       this.value = newValue;
 
       if (this.dynamicValue) {
-        this._initCountry(newValue);
+        this._initCountry();
+        return;
       }
+
+      const suffix = this.value.split('-')[1];
+      
+      this._suffix = new AsYouType(this._country.countryAbbr).input(suffix);
     }
   }
 
@@ -173,9 +178,9 @@ export class ChiPhoneInput {
     }
   }
 
-  _initCountry(value: string) {
-    const prefix = value ? value.split('-')[0].replace('+', '') : '1';
-    const suffix = value ? value.split('-')[1] : '';
+  _initCountry() {
+    const prefix = this.value?.split('-')[0].replace('+', '') || '1';
+    const suffix = this.value?.split('-')[1] || '';
 
     this._setCountry(prefix);
     this._prefix = `+${this._country.dialCode}`;
