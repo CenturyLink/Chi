@@ -40,13 +40,13 @@ export default class ZIndexExample extends Vue {
     return `width:11rem; height:11rem; top:${index.margin}rem; left:${index.margin}rem; line-height:11rem;`
   }
   generateHtml() {
-    const iteration = this.indexes.filter(({color}) => color !== '').map(({ key, color }) => {
+    const newIndexes = this.indexes.filter(({color}) => color !== '').map(({ key, color }) => {
       return (`  <div class="-position--absolute -z--${key} ${color}">-z--${key}</div>`)
     }).join('\n');
     
       return (
         `<div class="-position--relative">
-${iteration}
+${newIndexes}
 </div>`
       )
   }

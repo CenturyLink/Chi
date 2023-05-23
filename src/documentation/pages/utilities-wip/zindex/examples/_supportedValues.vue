@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import { IZIndexes } from '../../../../models/models';
+import { IZIndexes } from '~/models/models';
 
 @Component({})
 export default class SupportedValues extends Vue {
