@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Example" :tabs="exampleTabs" :showSnippetTabs="false" id="example">
+  <ComponentExample title="Example" :tabs="exampleTabs" :showSnippetTabs="false" id="z-index-example">
     .-position--relative(style='height:20rem' slot="example")
       <div v-for="value in zIndexValues" :key="value.key" v-if="value.color" :class="generatedClass(value)" :style="generatedStyle(value)">-z--{{value.key}}</div>
     <pre class="language-html" slot="code-htmlblueprint">
@@ -9,14 +9,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import { IZIndex } from '~/models/models';
 import { zIndexValues } from '~/fixtures/fixtures';
 
 @Component({
   data: () => {
     return {
-      zIndexValues: zIndexValues,
+      zIndexValues,
       exampleTabs: [
         {
           active: true,

@@ -26,7 +26,7 @@ import { zIndexValues } from '~/fixtures/fixtures';
 @Component({
   data: () => {
     return {
-      zIndexValues: zIndexValues
+      zIndexValues
     }
   }
 })

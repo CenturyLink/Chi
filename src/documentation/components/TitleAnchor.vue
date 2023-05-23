@@ -24,7 +24,7 @@ export default class TitleAnchor extends Vue {
   @Prop({ default: true }) showTitle?: boolean;
 
   get anchor() {
-    return `<a class="-ml--1" :href="?theme=${this.$store.state.themes.theme}#${this.id}">#</a>`
+    return `<a class="-ml--1" href="?theme=${this.$store.state.themes.theme}#${this.id}">#</a>`
   }
 }
 </script>
