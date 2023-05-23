@@ -19,7 +19,6 @@
     },
     "types": ["@nuxt/types", "@types/node", "@nuxtjs/axios"],
     "resolveJsonModule": true,
-    "strictPropertyInitialization": false,
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
 }

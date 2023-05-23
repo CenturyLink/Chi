@@ -1,35 +1,11 @@
 <template>
   <div class="example-wrapper">
-    <h4 v-if="titleSize === 'h4' && showTitle" class="-anchor" :id="id">
-      {{ title }}
-      <span>
-        <a
-          class="-ml--1"
-          :href="'?theme=' + $store.state.themes.theme + '#' + id"
-        >#</a
-        >
-      </span>
-    </h4>
-    <h2 v-else-if="titleSize === 'h2' && showTitle" class="-anchor" :id="id">
-      {{ title }}
-      <span>
-        <a
-          class="-ml--1"
-          :href="'?theme=' + $store.state.themes.theme + '#' + id"
-        >#</a
-        >
-      </span>
-    </h2>
-    <h3 v-else-if="showTitle" class="-anchor" :id="id">
-      {{ title }}
-      <span>
-        <a
-          class="-ml--1"
-          :href="'?theme=' + $store.state.themes.theme + '#' + id"
-        >#</a
-        >
-      </span>
-    </h3>
+    <TitleAnchor 
+      :id="id" 
+      :title="title" 
+      :titleSize="titleSize" 
+      :showTitle="showTitle" 
+    />
     <slot name="example-description"></slot>
     <div v-if="headTabs">
       <ul
@@ -141,7 +117,7 @@
         :ref="`tab-panel-${tab.id}`"
         role="tabpanel"
       >
-        <div class="clipboard" v-if="showClipboard === true">
+        <div class="clipboard" v-if="showClipboard">
           <button
             class="clipboard__button chi-button -xs -flat"
             @click="() => copy(`tab-panel-${tab.id}`)"

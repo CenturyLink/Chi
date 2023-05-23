@@ -50,7 +50,7 @@ export interface IBorderUtility {
   title: string;
 }
 
-export interface IZIndexes {
+export interface IZIndex {
   key: string, 
   color: string, 
   margin: number, 
