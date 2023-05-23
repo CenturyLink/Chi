@@ -2,24 +2,7 @@
   div
     h4 Neutral
     p.-text Neutral background-colors provide low-contrast backgrounds for application containers, cards, and more.
-    section.chi-table.-bordered.-mt--3.-mb--3
-      table.-text(cellpadding='0', cellspacing='0')
-        thead
-          tr
-            th
-              div Color Class
-            th
-              div Value
-            th
-              div Result
-        tbody
-          tr(v-for="color in colors")
-            td(width='25%')
-              code {{ `-bg--${ color.name }` }}
-            td(width='35%')
-              code {{ `background-color: ${color.value}` }}
-            td(width='40%')
-              .-text.-b--1(:style='`background-color:${color.value}; height:15px;`')
+    <DataTable title="Color Class" :data="colors" />
 </template>
 
 <script lang="ts">

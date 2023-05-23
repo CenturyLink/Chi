@@ -1,14 +1,12 @@
 <template lang="pug">
   <ComponentExample title="Responsive background-color examples" id="responsive-background-examples" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
-    <Wrapper slot="example">
-      .-mb--3
-        .-text.-b--1.-p--3.-m--1(
-          v-for="example in examples"
-          :class="example.className"
-          :style="`color:${example.textColor ? example.textColor : 'white'}`") {{ example.className }}
-    </Wrapper>
+    .-text.-b--1.-p--3.-m--1(
+      slot="example"
+      v-for="example in examples"
+      :class="generateClassName(example.className, example.additionalClassName)"
+      :style="`color:${example.textColor ? example.textColor : 'white'}`") {{ generateClassName(example.className, example.additionalClassName) }}
     <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
   </ComponentExample>
 </template>
@@ -25,45 +23,64 @@ import { Component, Vue } from 'vue-property-decorator';
           id: 'htmlblueprint',
           label: 'HTML Blueprint'
         }
-      ],
-      examples: [
-        {
-          className: '-bg--primary'
-        },
-        {
-          className: '-bg-sm--secondary',
-          textColor: 'black'
-        },
-        {
-          className: '-bg-md--warning'
-        },
-        {
-          className: '-bg-lg--danger'
-        },
-        {
-          className: '-bg-xl--black'
-        },
-        {
-          className: '-bg--none',
-          textColor: 'black'
-        }
-      ],
-      codeSnippets: {
-        htmlblueprint: `<!-- background-color primary on all breakpoints -->
-<div class="-bg--primary"></div>
-<!-- background-color secondary from sm -->
-<div class="-bg-sm--secondary"></div>
-<!-- background-color warning from md -->
-<div class="-bg-md--warning"></div>
-<!-- background-color danger from lg -->
-<div class="-bg-lg--danger"></div>
-<!-- background-color black from xl -->
-<div class="-bg-xl--black"></div>
-<!-- background none on all breakpoints -->
-<div class="-bg--none"></div>`
-      }
+      ]
     };
   }
 })
-export default class ResponsiveBackgroundExamples extends Vue {}
+export default class ResponsiveBackgroundExamples extends Vue {
+  examples = [
+    {
+      className: 'primary',
+      size: 'on all breakpoints',
+      additionalClassName: ''
+    },
+    {
+      className: 'secondary',
+      textColor: 'black',
+      additionalClassName: 'sm',
+      size: 'from sm'
+    },
+    {
+      className: 'warning',
+      additionalClassName: 'md',
+      size: 'from md'
+    },
+    {
+      className: 'danger',
+      additionalClassName: 'lg',
+      size: 'from lg'
+    },
+    {
+      className: 'black',
+      additionalClassName: 'xl',
+      size: 'from xl'
+    },
+    {
+      className: 'none',
+      textColor: 'black',
+      size: 'on all breakpoints',
+      additionalClassName: '',
+      noColor: true
+    }
+  ]
+
+  get codeSnippets() {
+    return {
+      htmlblueprint: this.generateHtml()
+    }
+  }
+
+  generateHtml() {
+    return this.examples.map(({ className, size, additionalClassName, noColor }) => {
+      return (
+        `<!-- background${noColor ? '' : '-color'} ${className} ${size} -->
+<div class="${this.generateClassName(className, additionalClassName)}"></div>`
+      )
+    }).join('\n');
+  }
+
+  generateClassName(base = '', additional = '') {
+    return `-bg${additional ? `-${additional}` : ''}--${base}`
+  }
+}
 </script>

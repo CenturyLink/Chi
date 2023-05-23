@@ -51,8 +51,19 @@ export interface IBorderUtility {
 }
 
 export interface IZIndex {
-  key: string, 
-  color: string, 
-  margin: number, 
+  key: string,
+  color: string,
+  margin: number,
   text: string,
+}
+
+export interface ITableColumn {
+  title: string;
+  key: string;
+  width: string;
+}
+
+export interface ITableContent {
+  name: string;
+  value: string;
 }

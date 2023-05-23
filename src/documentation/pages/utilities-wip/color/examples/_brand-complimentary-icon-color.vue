@@ -2,11 +2,9 @@
   <ComponentExample title="Brand complimentary" id="brand-complimentary-icon-color" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0">
     p.-text(slot="example-description")
       | More icon colors that can be used to compliment the primary brand palette.
-    <Wrapper slot="example">
-      .chi-grid.-no-gutter
-        .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
-          i(v-for="icon in icons" :class="`chi-icon icon-atom -md -${icon} -m--1`", aria-hidden='true')
-    </Wrapper>
+    .chi-grid.-no-gutter(slot="example")
+      .chi-col.-w--12-text--center.-p--1.-d--flex.-justify-content--center
+        i(v-for="icon in icons" :class="`chi-icon icon-atom -md -${icon} -m--1`", aria-hidden='true')
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>

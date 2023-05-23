@@ -6,24 +6,7 @@
       | validation, user status, application state and more. Use green (success) for positive, blue (info)
       | for informative, red (danger) for negative, yellow (warning) for needs attention, and grey (muted)
       | for neutral. Semantic colors should never be used for decorative purposes.
-    section.chi-table.-bordered.-mt--3.-mb--3
-      table.-text(cellpadding='0', cellspacing='0')
-        thead
-          tr
-            th
-              div Color Class
-            th
-              div Value
-            th
-              div Result
-        tbody
-          tr(v-for="color in colors")
-            td(width='25%')
-              code {{ `-bg--${ color.name }` }}
-            td(width='35%')
-              code {{ `background-color: ${color.value}` }}
-            td(width='40%')
-              .-text.-b--1(:style='`background-color:${color.value}; height:15px;`')
+    <DataTable title="Color Class" :data="colors" />
 </template>
 
 <script lang="ts">

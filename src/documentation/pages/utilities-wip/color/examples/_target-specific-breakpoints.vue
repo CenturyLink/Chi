@@ -1,34 +1,49 @@
 <template lang="pug">
   div
-    h3 Target specific breakpoints
+    h4 Target specific breakpoints
     p.-text To target a specific breakpoint, add the breakpoint abbreviation to the class.
-    section.chi-table.-bordered.-mt--3.-mb--3
-      table(cellpadding='0', cellspacing='0')
-        thead
-          tr
-            th
-              div Color Class
-            th
-              div Value
-        tbody
-         template(v-for="size in sizes")
-            tr(v-for="type in types")
-              td(width='40%')
-                code {{ `-bg-${ size }--${type}` }}
-              td.-text Visible only from
-                code {{ ` ${size}` }}
+    <DataTable :data="values" :columns="columns" :getContent="getContent" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { ITableColumn, ITableContent } from "~/models/models";
+
+const sizes = ['sm', 'md', 'lg', 'xl']
+const colors = ['none', 'primary', 'secondary', 'white', 'black', 'muted', 'grey', 'grey-20', 'grey-30', 'success', 'info', 'warning', 'danger']
 
 @Component({
   data: () => {
     return {
-      sizes: ['sm', 'md', 'lg', 'xl'],
-      types: ['none', 'primary', 'secondary', 'white', 'black', 'muted', 'grey', 'grey-20', 'grey-20', 'grey-30', 'success', 'info', 'warning', 'danger']
+      columns: [
+        {
+          title: 'Color Class',
+          key: 'class',
+          width: '40%'
+        },
+        {
+          title: 'Value',
+          key: 'value',
+          width: ''
+        }
+      ]
     };
   }
 })
-export default class TargetSpecificBreakpoints extends Vue {}
+export default class TargetSpecificBreakpoints extends Vue {
+  get values() {
+    return sizes.map(size => colors.map(color => { return { name: `${ size }--${color}`, value: size } })).flat()
+  }
+
+  getContent(column: ITableColumn, content: ITableContent) {
+    switch (column.key) {
+      case 'class':
+        return `<code>-bg--${content.name}</code>`;
+      case 'value':
+        return `<div class="-text">Visible only from <code>${content.value}</code></div>`;
+      default:
+        return '';
+    }
+  }
+}
 </script>
