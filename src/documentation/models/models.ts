@@ -45,6 +45,11 @@ export interface IThemes {
   colt: string;
 }
 
+export interface IBorderUtility {
+  className: string;
+  title: string;
+}
+
 export interface IZIndexes {
   key: string, 
   color: string, 
