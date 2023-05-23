@@ -12,21 +12,21 @@
             th
               div Used in
         tbody
-          tr(v-for="index in indexes" :key="index.key")
+          tr(v-for="value in zIndexValues" :key="value.key")
             td
-              code -z--{{index.key}}
-            td {{index.key}}
-            td {{index.text}}
+              code -z--{{value.key}}
+            td {{value.key}}
+            td {{value.text}}
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { indexes } from '~/fixtures/fixtures';
+import { zIndexValues } from '~/fixtures/fixtures';
 
 @Component({
   data: () => {
     return {
-      indexes: indexes
+      zIndexValues: zIndexValues
     }
   }
 })

@@ -1,14 +1,14 @@
 <template>
   <h2 v-if="titleSize === 'h2' && showTitle" class="-anchor" :id="id">
-    {{title}}
+    {{ title }}
     <span v-html="anchor" />
   </h2>
   <h3 v-else-if="titleSize === 'h3' && showTitle" class="-anchor" :id="id">
-    {{title}}
+    {{ title }}
     <span v-html="anchor" />
   </h3>
   <h4 v-else-if="titleSize === 'h4' && showTitle" class="-anchor" :id="id">
-    {{title}}
+    {{ title }}
     <span v-html="anchor" />
   </h4>
 </template>

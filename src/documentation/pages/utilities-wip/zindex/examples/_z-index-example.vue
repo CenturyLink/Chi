@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Example" :tabs="exampleTabs" :showSnippetTabs="false" id="example">
     .-position--relative(style='height:20rem' slot="example")
-      <div v-for="index in indexes" :key="index.key" v-if="index.color" :class="generatedClass(index)" :style="generatedStyle(index)">-z--{{index.key}}</div>
+      <div v-for="value in zIndexValues" :key="value.key" v-if="value.color" :class="generatedClass(value)" :style="generatedStyle(value)">-z--{{value.key}}</div>
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -11,12 +11,12 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { IZIndex } from '~/models/models';
-import { indexes } from '~/fixtures/fixtures';
+import { zIndexValues } from '~/fixtures/fixtures';
 
 @Component({
   data: () => {
     return {
-      indexes: indexes,
+      zIndexValues: zIndexValues,
       exampleTabs: [
         {
           active: true,
@@ -43,7 +43,7 @@ export default class ZIndexExample extends Vue {
   }
 
   generateHtml() {
-    const newIndexes = indexes.filter(({color}) => color !== '').map(({ key, color }) => {
+    const newIndexes = zIndexValues.filter(({color}) => color !== '').map(({ key, color }) => {
       return (`  <div class="-position--absolute -z--${key} ${color}">-z--${key}</div>`)
     }).join('\n');
     
