@@ -105,6 +105,8 @@ export class SearchInput {
 
   @Watch('value')
   updateValue(newValue: string, oldValue: string) {
+    this._cleanButtonVisible = !!newValue;
+
     if (newValue !== oldValue) {
       this.value = newValue;
     }
@@ -160,7 +162,7 @@ export class SearchInput {
 
     return list.map((item) => {
       const regex = new RegExp(text, "gi");
-      const newValue = item.title.replace(regex, `<strong>${text}</strong>`);
+      const newValue = item.title.replace(regex, (match) => `<strong>${match}</strong>`);
 
       return { ...item, title: newValue };
     })
@@ -204,6 +206,7 @@ export class SearchInput {
     const list = this.menuItems?.filter((item: AutocompleteItems) => {
       return item.title.toLowerCase().includes(text.toLowerCase());
     });
+
     const highlightedMenuItems = this._setHightlightValue(list, text);
 
     if (!highlightedMenuItems.length) {
@@ -218,8 +221,8 @@ export class SearchInput {
   _handleSelectItem = (ev: Event): void => {
     ev.preventDefault();
 
-    const title = (ev.target as HTMLInputElement).innerText;
-    const href = (ev.target as HTMLInputElement).getAttribute('href');
+    const title = (ev.currentTarget as HTMLInputElement).innerText;
+    const href = (ev.currentTarget as HTMLInputElement).getAttribute('href');
     const dropdown = this._getDropdown();
 
     this.selectedItem = { title, href };
