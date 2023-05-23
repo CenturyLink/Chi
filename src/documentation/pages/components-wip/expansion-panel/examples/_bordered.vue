@@ -12,10 +12,10 @@
             | {{panel.doneContent}}
           div(slot="footer")
             chi-button(@click="active -= 1" v-if="index")
-              | PREVIOUS
-            chi-button(@click="active += 1" color="primary") CONTINUE
+              | Previous
+            chi-button(@click="active += 1" color="primary") Continue
           chi-button(slot='change' @click="active = index" color="primary" variant="flat")
-            | CHANGE
+            | Change
     <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         | To render bordered panels, apply the property <code>bordered</code>.

@@ -22,11 +22,13 @@
         div(slot="done")
           | {{panel.doneContent}}
         div(slot="footer")
+          chi-button(color="primary" variant="flat")
+            | Change
           chi-button(@click="active -= 1" v-if="index")
-            | PREVIOUS
-          chi-button(@click="active += 1" color="primary") CONTINUE
+            | Previous
+          Fchi-button(@click="active += 1" color="primary") Continue
         chi-button(slot="change" @click="active = index" color="primary" variant="flat")
-          | CHANGE
+          | Change
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

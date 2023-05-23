@@ -13,11 +13,11 @@
           | {{panel.doneContent}}
         div(slot="footer")
           chi-button(@click="active -= 1" v-if="index")
-            | PREVIOUS
+            | Previous
           chi-button(@click="active += 1" color="primary") {{index + 1 === panels.length ? 'FINISH' : 'CONTINUE'}}
         div(slot='change')
           chi-button(@click="active = index" color="primary" variant="flat")
-            | CHANGE
+            | Change
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>

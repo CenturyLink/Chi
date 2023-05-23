@@ -189,9 +189,9 @@ export default class Base extends Vue {
     const panel = document.querySelectorAll('[data-chi-epanel-group="example__custom-mode"]');
     chi.expansionPanel(panel, {
       mode: 'custom',
-      changeHandler: function (newState, oldState, expansionPanel, panelGroup) {
+      changeHandler: function (newState: string, oldState: string, expansionPanel: any, panelGroup: any) {
         if (newState === chi.EXPANSION_PANEL_STATES.DONE) {
-          panelGroup.expansion_panels.forEach(function (exPa) {
+          panelGroup.expansion_panels.forEach(function (exPa: any) {
             if (exPa !== expansionPanel) {
               exPa.setState(chi.EXPANSION_PANEL_STATES.PENDING.NAME);
             }

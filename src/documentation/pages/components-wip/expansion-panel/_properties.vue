@@ -22,30 +22,6 @@
             tr
               td
                 div
-                  code state
-              td
-                div to set expansion panel state. Possible values are: {'done', 'active', 'pending' (default value), and 'disabled'}
-              td
-                div
-                  code string
-              td
-                div
-                  em 'pending'
-            tr
-              td
-                div
-                  code step
-              td
-                div to set a step number next to the title of the panel
-              td
-                div
-                  code string
-              td
-                div
-                  em undefined
-            tr
-              td
-                div
                   code bordered
               td
                 div to set the panel style to bordered
@@ -55,6 +31,18 @@
               td
                 div
                   em undefined
+            tr
+              td
+                div
+                  code state
+              td
+                div to set expansion panel state. Possible values are: {'done', 'active', 'pending' (default value), and 'disabled'}
+              td
+                div
+                  code string
+              td
+                div
+                  code 'pending'
             tr
               td
                 div
@@ -70,6 +58,18 @@
             tr
               td
                 div
+                  code step
+              td
+                div to set a step number next to the title of the panel
+              td
+                div
+                  code string
+              td
+                div
+                  em undefined
+            tr
+              td
+                div
                   code title
               td
                 div to define expansion panel title
@@ -78,7 +78,7 @@
                   code string
               td
                 div
-                  code undefined
+                  em undefined
     h2 JavaScript
     h3 Actions
     p.-text

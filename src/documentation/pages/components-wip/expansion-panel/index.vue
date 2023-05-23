@@ -21,6 +21,11 @@ import { standardComponentPageTabs } from '../../../constants/constants';
 Vue.config.ignoredElements = ['chi-alert', 'chi-button', 'chi-brand'];
 
 @Component({
+  head() {
+    return {
+      title: 'Chi - Expansion panel'
+    }
+  },
   components: {
     Accessibility,
     Examples,
