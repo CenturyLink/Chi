@@ -1,4 +1,5 @@
 import {
+  Listen,
   Component,
   Element,
   Event,
@@ -163,7 +164,7 @@ export class Dropdown {
       }
     );
   }
-  
+
   setDisplay(display: 'block' | 'none') {
     this._dropdownMenuElement.style.display = display;
   }
@@ -227,6 +228,35 @@ export class Dropdown {
     this.emitShow();
   }
 
+  @Listen('keydown', { target: 'window' })
+  onKeydown(ev: KeyboardEvent) {
+    if (!this.active) {
+      return;
+    }
+
+    if (ev.key === 'ArrowUp' || ev.key === 'ArrowDown') {
+      this._handleFocusDropdownItem(ev.key)
+    }
+  }
+
+  _handleFocusDropdownItem(direction: string) {
+    const dropdown = this.el.querySelector('.chi-dropdown__menu');
+    const menuItems = Array.from(dropdown.querySelectorAll('.chi-dropdown__menu-item'));
+
+    const currentIndex = menuItems.indexOf(document.activeElement);
+    let nextIndex = 0;
+
+    if (direction === 'ArrowUp') {
+      nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
+    }
+
+    if (direction === 'ArrowDown') {
+      nextIndex = currentIndex + 1 < menuItems.length ? currentIndex + 1 : currentIndex;
+    }
+
+    (menuItems[nextIndex] as HTMLElement).focus();
+  }
+
   /**
    * Toggles active state (show/hide)
    */
@@ -248,9 +278,9 @@ export class Dropdown {
           ${this.fluid ? FLUID_CLASS : ''}
         `}
         extra-class={`
-          ${DROPDOWN_CLASSES.TRIGGER} 
+          ${DROPDOWN_CLASSES.TRIGGER}
           ${this.active ? ACTIVE_CLASS : ''}
-          ${this.fluid ? FLUID_CLASS : ''} 
+          ${this.fluid ? FLUID_CLASS : ''}
           ${this.animateChevron ? ANIMATE_CLASS : ''}
         `}
         ref={ref => (this._referenceElement = ref)}
@@ -266,7 +296,7 @@ export class Dropdown {
           ${DROPDOWN_CLASSES.MENU}
           ${UTILITY_CLASSES.Z_INDEX.Z_10}
           ${this.active ? ACTIVE_CLASS : ''}
-          ${this.fluid ? FLUID_CLASS : ''} 
+          ${this.fluid ? FLUID_CLASS : ''}
           ${this.description ? LIST_CLASS : ''}
         `}
         ref={ref => (this._dropdownMenuElement = ref)}
