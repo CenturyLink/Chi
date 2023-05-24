@@ -1,16 +1,9 @@
 <template lang="pug">
     <ComponentExample title="Default" titleSize="h4" id="default" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
-    <Wrapper slot="example">
-      .chi-grid.-text.-no-gutter.-text--center(style="background:#F5F5F5;")
-        .-p--5.-m--2.-s--0(style="background:#FFFFFF;") -s--0
-        .-p--5.-m--2.-s--1(style="background:#FFFFFF;") -s--1
-        .-p--5.-m--2.-s--2(style="background:#FFFFFF;") -s--2
-        .-p--5.-m--2.-s--3(style="background:#FFFFFF;") -s--3
-        .-p--5.-m--2.-s--4(style="background:#FFFFFF;") -s--4
-        .-p--5.-m--2.-s--5(style="background:#FFFFFF;") -s--5
-    </Wrapper>
+    .chi-grid.-text.-no-gutter.-text--center.-p--2(style="background:#F5F5F5;" slot="example")
+      .-p--5.-m--2(style="background:#FFFFFF;" v-for="index in indexes" :class="'-s--' + index") -s--{{index}}
     <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
     </ComponentExample>
 </template>
@@ -21,6 +14,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
+      indexes: [ 0, 1, 2, 3, 4, 5 ],
       exampleTabs: [
         {
           active: true,
@@ -28,16 +22,18 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML Blueprint'
         }
       ],
-      codeSnippets: {
-        htmlblueprint: `<div class="-s--0"></div>
-<div class="-s--1"></div>
-<div class="-s--2"></div>
-<div class="-s--3"></div>
-<div class="-s--4"></div>
-<div class="-s--5"></div>`,
-      },
     };
   }
 })
-export default class Default extends Vue {}
+export default class Default extends Vue {
+  get codeSnippets() {
+    return {
+      htmlblueprint: this.generateHtml()
+    }
+  }
+
+  generateHtml() {
+    return this.$data.indexes.map((index: number) => `<div class="-s--${index}"></div>`).join('\n');
+  }
+}
 </script>

@@ -1,13 +1,11 @@
 <template lang="pug">
-  .chi-grid__container
-    <ComponentExample title="SASS" id="examples" :tabs="exampleTabs" :showSnippetTabs="false" padding="0" additionalStyle="border: none;">
-      p.-text(slot="example-description")
-        | Chi defines shadows with Saas maps. The following example will render a shadow equivalent to <code>-s--1</code> / <code>1px</code>.
-
+  <ComponentExample title="SASS" id="sass" :tabs="exampleTabs" :showSnippetTabs="false" padding="0" additionalStyle="border: none;">
+    p.-text(slot="example-description")
+      | Chi defines shadows with Saas maps. The following example will render a shadow equivalent to <code>-s--1</code> / <code>1px</code>.
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>
-    </ComponentExample>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
@@ -34,5 +32,5 @@ import { Component, Vue } from 'vue-property-decorator';
     };
   }
 })
-export default class Examples extends Vue {}
+export default class SASS extends Vue {}
 </script>

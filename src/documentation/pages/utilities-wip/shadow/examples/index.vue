@@ -1,19 +1,25 @@
 <template lang="pug">
   .chi-grid__container
-    <ComponentExample title="Examples" id="examples" :tabs="exampleTabs" :showSnippetTabs="false" padding="0" additionalStyle="border: none;" />
+    <Notation />
+    <TitleAnchor title="Examples" id="examples" titleSize="h2" />
     <Default />
     <Responsive />
+    <SASS />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Default from './_default.vue'
 import Responsive from './_responsive.vue'
+import SASS from './_sass.vue';
+import Notation from './_notation.vue';
 
 @Component({
   components: {
     Default,
-    Responsive
+    Responsive,
+    SASS,
+    Notation
   }
 })
 export default class Examples extends Vue {}

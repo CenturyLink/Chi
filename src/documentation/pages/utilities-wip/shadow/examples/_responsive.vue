@@ -1,9 +1,9 @@
 <template lang="pug">
-    <ComponentExample title="Responsive" titleSize="h4" id="default" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
+    <ComponentExample title="Responsive" titleSize="h4" id="responsive" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
       p.-text(slot="example-description")
         | Change viewport size to view the effect. You can do it by resizing your browser window.
       <Wrapper slot="example">
-        .chi-grid.-text.-no-gutter.-text--center(style="background:#F5F5F5;")
+        .chi-grid.-text.-no-gutter.-text--center.-p--2(style="background:#F5F5F5;")
           .-p--5.-m--2.-s--5.-s-md--0(style="background:#FFFFFF;") -s--5 -s-md--0
           .-p--5.-m--2.-s-md--5.-s-xl--0(style="background:#FFFFFF;") -s-md--5 -s-xl--0
           .-p--5.-m--2.-s-xl--5(style="background:#FFFFFF;") -s-xl--5
