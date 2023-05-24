@@ -49,3 +49,10 @@ export interface IBorderUtility {
   className: string;
   title: string;
 }
+
+export interface IZIndex {
+  key: string, 
+  color: string, 
+  margin: number, 
+  text: string,
+}
