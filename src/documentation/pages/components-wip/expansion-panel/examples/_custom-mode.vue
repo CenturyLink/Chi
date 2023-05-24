@@ -8,36 +8,9 @@
       | <code>pending</code> states instead of <code>active</code> and <code>pending</code> states. The overridden action
       | functions are for documentation purposes only because they clone the functionality of the default ones.
     .-mw--720.-mx--auto(slot="example")
-      .chi-epanel.-done(data-chi-epanel-group='example__custom-mode')
+      .chi-epanel(data-chi-epanel-group='example__custom-mode' v-for="(panel, index) in panels" :class="panel.isDone ? '-done' : ''")
         .chi-epanel__header
-          .chi-epanel__title(data-chi-epanel-action='done') Panel 1
-          .chi-epanel__content
-            .chi-epanel__collapse
-              .-done--only
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
-                | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
-                | Aenean eu sapien eget ante placerat pretium a sit amet ante.
-      .chi-epanel(data-chi-epanel-group='example__custom-mode')
-        .chi-epanel__header
-          .chi-epanel__title(data-chi-epanel-action='done') Panel 2
-          .chi-epanel__content
-            .chi-epanel__collapse
-              .-done--only
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
-                | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
-                | Aenean eu sapien eget ante placerat pretium a sit amet ante.
-      .chi-epanel(data-chi-epanel-group='example__custom-mode')
-        .chi-epanel__header
-          .chi-epanel__title(data-chi-epanel-action='done') Panel 3
-          .chi-epanel__content
-            .chi-epanel__collapse
-              .-done--only
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius arcu nisl, non accumsan elit
-                | interdum et. Nunc ut gravida justo. Nulla sit amet est accumsan, condimentum elit nec, dapibus nulla.
-                | Aenean eu sapien eget ante placerat pretium a sit amet ante.
-      .chi-epanel(data-chi-epanel-group='example__custom-mode')
-        .chi-epanel__header
-          .chi-epanel__title(data-chi-epanel-action='done') Panel 4
+          .chi-epanel__title(data-chi-epanel-action='done') {{ panel.title }}
           .chi-epanel__content
             .chi-epanel__collapse
               .-done--only
@@ -79,6 +52,7 @@ declare const chi: any;
           label: 'HTML Blueprint',
         }
       ],
+      panels: [{ title: 'Panel 1', isDone: true }, { title: 'Panel 2', isDone: false }, { title: 'Panel 3', isDone: false }, { title: 'Panel 4', isDone: false }],
       codeSnippets: {
         htmlblueprint: `<div class="chi-epanel -done" data-chi-epanel-group="example__custom-mode">
   <div class="chi-epanel__header">
@@ -184,7 +158,7 @@ chi.expansionPanel(
   }
 })
 
-export default class Base extends Vue {
+export default class CustomMode extends Vue {
   mounted() {
     const panel = document.querySelectorAll('[data-chi-epanel-group="example__custom-mode"]');
     chi.expansionPanel(panel, {

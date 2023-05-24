@@ -5,11 +5,11 @@
         chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :title="panel.title" :state="getState(panel.state, active, index)" :bordered="true")
           div(slot='active')
             .chi-epanel__subtitle
-              | {{panel.subtitle}}
+              | {{ panel.subtitle }}
             p.chi-epanel__text
-              | {{panel.content}}
+              | {{ panel.content }}
           div(slot="done")
-            | {{panel.doneContent}}
+            | {{ panel.doneContent }}
           div(slot="footer")
             chi-button(@click="active -= 1" v-if="index")
               | Previous
@@ -38,8 +38,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
-declare const chi: any;
 
 @Component({
   data: () => {
@@ -129,10 +127,10 @@ declare const chi: any;
             :state="active === index ? 'active' : active > index ? 'done' : 'pending'" :bordered="true" >
   <div slot="active">
     <div class="chi-epanel__subtitle">
-      {{panel.title}}
+      {{ panel.title }}
     </div>
     <p class="chi-epanel__text">
-      {{panel.content}}
+      {{ panel.content }}
     </p>
   </div>
   <div slot="done">

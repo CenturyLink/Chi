@@ -4,60 +4,20 @@
       | In this mode there is no automated action triggered when an element activates,
       | so you will need to manage all custom behavior.
     .-mw--720.-mx--auto(slot="example")
-      .chi-epanel.-no-step.-active(data-chi-epanel-group='example__free-mode')
-        .chi-epanel__header
-          .chi-epanel__title(data-chi-epanel-action='toggle') Panel 1
-          .chi-epanel__action.-done--only
-            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
-        .chi-epanel__collapse
-          .-active--only
-            .chi-epanel__body
-              .chi-epanel__content
-                .chi-epanel__subtitle Optional subtitle
-                p.chi-epanel__text Content goes here
-              .chi-epanel__footer.-justify-content--end
-                button.chi-button(data-chi-epanel-action='next').-primary Continue
-      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
-        .chi-epanel__header
-          .chi-epanel__title(data-chi-epanel-action='toggle') Panel 2
-          .chi-epanel__action.-done--only
-            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
-        .chi-epanel__collapse
-          .-active--only
-            .chi-epanel__body
-              .chi-epanel__content
-                .chi-epanel__subtitle Optional subtitle
-                p.chi-epanel__text Content goes here
-              .chi-epanel__footer.-justify-content--end
-                button.chi-button(data-chi-epanel-action='previous') Previous
-                button.chi-button(data-chi-epanel-action='next').-primary Continue
-      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
-        .chi-epanel__header
-          .chi-epanel__title(data-chi-epanel-action='toggle') Panel 3
-          .chi-epanel__action.-done--only
-            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
-        .chi-epanel__collapse
-          .-active--only
-            .chi-epanel__body
-              .chi-epanel__content
-                .chi-epanel__subtitle Optional subtitle
-                p.chi-epanel__text Content goes here
-              .chi-epanel__footer.-justify-content--end
-                button.chi-button(data-chi-epanel-action='previous') Previous
-                button.chi-button(data-chi-epanel-action='next').-primary Continue
-      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode')
-        .chi-epanel__header
-          .chi-epanel__title(data-chi-epanel-action='toggle') Panel 4
-          .chi-epanel__action.-done--only
-            button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
-        .chi-epanel__collapse
-          .-active--only
-            .chi-epanel__body
-              .chi-epanel__content
-                .chi-epanel__subtitle Optional subtitle
-                p.chi-epanel__text Content goes here
-              .chi-epanel__footer.-justify-content--end
-                button.chi-button(data-chi-epanel-action='previous') Previous
+      .chi-epanel.-no-step(data-chi-epanel-group='example__free-mode' v-for="(panel, index) in panels" :class="panel.isActive ? '-active' : ''")
+          .chi-epanel__header
+            .chi-epanel__title(data-chi-epanel-action='toggle') {{ panel.title }}
+            .chi-epanel__action.-done--only
+              button.chi-button.-primary.-flat(data-chi-epanel-action='active') Change
+          .chi-epanel__collapse
+            .-active--only
+              .chi-epanel__body
+                .chi-epanel__content
+                  .chi-epanel__subtitle Optional subtitle
+                  p.chi-epanel__text Content goes here
+                .chi-epanel__footer.-justify-content--end
+                  button.chi-button(data-chi-epanel-action='previous' v-if="index !== 0") Previous
+                  button.chi-button(data-chi-epanel-action='next' v-if="index !== 3").-primary Continue
     <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
       <pre class="language-html">
@@ -93,6 +53,7 @@ declare const chi: any;
           label: 'HTML Blueprint',
         }
       ],
+      panels: [{ title: 'Panel 1', isActive: true }, { title: 'Panel 2', isActive: false }, { title: 'Panel 3', isActive: false }, { title: 'Panel 4', isActive: false }],
       codeSnippets: {
         htmlblueprint: `<div class="chi-epanel -no-step -active" data-chi-epanel-group="example__free-mode">
   <div class="chi-epanel__header">
@@ -181,7 +142,7 @@ declare const chi: any;
   }
 })
 
-export default class Base extends Vue {
+export default class FreeMode extends Vue {
   mounted() {
     const panel = document.querySelectorAll('[data-chi-epanel-group="example__free-mode"]');
     chi.expansionPanel(panel, {mode: 'free'});
