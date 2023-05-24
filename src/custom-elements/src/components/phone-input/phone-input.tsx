@@ -129,7 +129,7 @@ export class ChiPhoneInput {
 
   @Watch('value')
   valueChanged(newValue: string, oldValue: string): void {
-    if (newValue !== oldValue) {
+    if (newValue && newValue !== oldValue) {
       this.value = newValue;
 
       if (this.dynamicValue) {
@@ -138,7 +138,7 @@ export class ChiPhoneInput {
       }
 
       const suffix = this.value.split('-')[1];
-      
+
       this._suffix = new AsYouType(this._country.countryAbbr).input(suffix);
     }
   }
