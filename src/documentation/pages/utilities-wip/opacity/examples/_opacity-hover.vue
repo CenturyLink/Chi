@@ -4,8 +4,8 @@
       | Use <code>-opacity-hover--{value}</code> to change the opacity of an element on hover.
     h4 Use <code>-opacity-hover--{value}</code> to change the opacity of an element on hover.
     .chi-grid.-no-gutter(slot="example")
-      .chi-col.-w--6.-w-md--4.-w-lg--2(v-for="index in 6")
-        .-text.-text--center.-b--1.-rounded.-m--1.-p--2(:class="[`-opacity-hover--${(index - 1)  * 20}`, index === 6 ? '-opacity--60' : '']") {{(index - 1)  * 20 + '% on hover'}}
+      .chi-col.-w--6.-w-md--4.-w-lg--2(v-for="index in opacities")
+        .-text.-text--center.-b--1.-rounded.-m--1.-p--2(:class="[`-opacity-hover--${index * 20}`, index === 5 ? '-opacity--60' : '']") {{index * 20 + '% on hover'}}
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -30,7 +30,7 @@ import { Component, Vue } from 'vue-property-decorator';
 })
 
 export default class OpacityHover extends Vue {
-  opacities = [0, 1, 2, 3, 4]
+  opacities = [0, 1, 2, 3, 4, 5]
 
   get codeSnippets() {
     return {
@@ -39,7 +39,7 @@ export default class OpacityHover extends Vue {
   }
 
   generateHtml() {
-    return this.opacities.map(item => `<div class="-opacity-hover--${20 * item}">...</div>\n`).join('') +
+    return this.opacities.slice(0, 5).map(item => `<div class="-opacity-hover--${20 * item}">...</div>\n`).join('') +
   `<div class="-opacity--60 -opacity-hover--100">...</div>`;
   }
 }

@@ -5,9 +5,9 @@
     div
     <Wrapper slot="example">
       .chi-grid.-no-gutter
-        .chi-col.-w--6.-w-md--4.-w-lg--2.-p--1(v-for="index in 6" :key="index")
+        .chi-col.-w--6.-w-md--4.-w-lg--2.-p--1(v-for="index in opacities" :key="index")
           .example-opacity.-rounded(style=`height:3rem;`)
-            .-text.-bg--black.-rounded(:class="`-opacity--${(index - 1)  * 20}`")(style=`height:3rem;`)
+            .-text.-bg--black.-rounded(:class="`-opacity--${index}`")(style=`height:3rem;`)
     </Wrapper>
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
