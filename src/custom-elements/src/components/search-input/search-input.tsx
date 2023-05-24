@@ -7,7 +7,6 @@ import {
   Prop,
   State,
   Watch,
-  Listen,
   h
 } from '@stencil/core';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
@@ -112,13 +111,6 @@ export class SearchInput {
     }
   }
 
-  @Listen('keydown')
-  handleKeyDown(ev: KeyboardEvent) {
-    if (ev.key === 'ArrowUp' || ev.key === 'ArrowDown') {
-      this._changeItemFocus(ev.key)
-    }
-  }
-
   //#region Lifecycle hooks
   connectedCallback(): void {
     this.menuItemsFiltered = this.menuItems;
@@ -149,7 +141,7 @@ export class SearchInput {
     this.eventInput.emit(newValue);
 
     if (!isAutocomplete) {
-      return
+      return;
     }
 
     this._handleFilter(newValue);
@@ -181,25 +173,6 @@ export class SearchInput {
       '#dropdown-autocomplete'
     ) as HTMLChiDropdownElement;
   }
-
-  _changeItemFocus(direction: string): void {
-    const dropdown = this._getDropdown();
-    const menuItems = Array.from(dropdown.querySelectorAll('.chi-dropdown__menu-item'));
-
-    const currentIndex = menuItems.indexOf(document.activeElement);
-    let nextIndex = 0;
-
-    if (direction === 'ArrowUp') {
-      nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
-    }
-
-    if (direction === 'ArrowDown') {
-      nextIndex = currentIndex + 1 < menuItems.length ? currentIndex + 1 : currentIndex;
-    }
-
-    (menuItems[nextIndex] as HTMLElement).focus();
-  }
-
 
   _handleFilter(text: string): void {
     const dropdown = this._getDropdown();
