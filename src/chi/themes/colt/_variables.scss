@@ -145,6 +145,7 @@ $color-orange-80:   #974308;
 $color-orange-70:   #b35009;
 $color-orange-60:   #c96010;
 $color-orange-50:   #e77528;
+$color-orange-45:   #FF8400; // Colt Orange
 $color-orange-40:   #f79950;
 $color-orange-30:   #facaa8;
 $color-orange-20:   #fde7d8;
@@ -498,6 +499,41 @@ $badge-muted-text-color:                    $color-text-white;
 $badge-muted-icon-color:                    $color-icon-white;
 $badge-flat-muted-text-color:               $color-text-muted;
 $badge-flat-muted-icon-color:               $color-icon-muted;
+
+$badge-accent-1-background-color:           $color-blue-70;
+$badge-accent-1-border-color:               $color-blue-70;
+$badge-accent-1-text-color:                 $color-text-white;
+$badge-accent-1-icon-color:                 $color-icon-white;
+$badge-flat-accent-1-text-color:            $color-blue-70;
+$badge-flat-accent-1-icon-color:            $color-blue-70;
+
+$badge-accent-2-background-color:           $color-blue-60;
+$badge-accent-2-border-color:               $color-blue-60;
+$badge-accent-2-text-color:                 $color-text-white;
+$badge-accent-2-icon-color:                 $color-icon-white;
+$badge-flat-accent-2-text-color:            $color-blue-60;
+$badge-flat-accent-2-icon-color:            $color-blue-60;
+
+$badge-accent-3-background-color:           $color-pink-50;
+$badge-accent-3-border-color:               $color-pink-50;
+$badge-accent-3-text-color:                 $color-text-white;
+$badge-accent-3-icon-color:                 $color-icon-white;
+$badge-flat-accent-3-text-color:            $color-pink-50;
+$badge-flat-accent-3-icon-color:            $color-pink-50;
+
+$badge-accent-4-background-color:           $color-orange-45;
+$badge-accent-4-border-color:               $color-orange-45;
+$badge-accent-4-text-color:                 $color-text-white;
+$badge-accent-4-icon-color:                 $color-icon-white;
+$badge-flat-accent-4-text-color:            $color-orange-45;
+$badge-flat-accent-4-icon-color:            $color-orange-45;
+
+$badge-accent-5-background-color:           $color-purple-90;
+$badge-accent-5-border-color:               $color-purple-90;
+$badge-accent-5-text-color:                 $color-text-white;
+$badge-accent-5-icon-color:                 $color-icon-white;
+$badge-flat-accent-5-text-color:            $color-purple-90;
+$badge-flat-accent-5-icon-color:            $color-purple-90;
 
 // Bulk actions
 $bulk-actions-background-color:             $color-navy-30;
