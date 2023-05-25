@@ -72,6 +72,11 @@ export class Dropdown {
    */
   @Event({ eventName: 'chiDropdownShow' }) eventShow: EventEmitter;
 
+  /**
+   * Triggered when showing the Dropdown
+   */
+  @Event({ eventName: 'chiDropdownItemSelect' }) eventDropdownItemSelect: EventEmitter;
+
   @Element() el: HTMLElement;
 
   private _componentLoaded = false;
@@ -234,27 +239,9 @@ export class Dropdown {
       return;
     }
 
-    if (ev.key === 'ArrowUp' || ev.key === 'ArrowDown') {
-      this._handleFocusDropdownItem(ev.key)
+    if (['ArrowUp', 'ArrowDown'].includes(ev.key)) {
+      this._handleDropdownItemFocus(ev.key)
     }
-  }
-
-  _handleFocusDropdownItem(direction: string) {
-    const dropdown = this.el.querySelector('.chi-dropdown__menu');
-    const menuItems = Array.from(dropdown.querySelectorAll('.chi-dropdown__menu-item'));
-
-    const currentIndex = menuItems.indexOf(document.activeElement);
-    let nextIndex = 0;
-
-    if (direction === 'ArrowUp') {
-      nextIndex = currentIndex > 0 ? currentIndex - 1 : 0;
-    }
-
-    if (direction === 'ArrowDown') {
-      nextIndex = currentIndex + 1 < menuItems.length ? currentIndex + 1 : currentIndex;
-    }
-
-    (menuItems[nextIndex] as HTMLElement).focus();
   }
 
   /**
@@ -267,6 +254,36 @@ export class Dropdown {
     } else {
       this.show();
     }
+  }
+
+  handleClickSelectItem() {
+    this.eventDropdownItemSelect.emit();
+  }
+
+  _getDropdownItems(): HTMLElement[] {
+    return Array.from(this.el.querySelectorAll('.chi-dropdown__menu-item'));
+  }
+
+  _handleDropdownItemFocus(direction: string) {
+    const menuItems = this._getDropdownItems();
+    const activeElement = document.activeElement as HTMLElement
+
+    if (!menuItems.includes(activeElement)) {
+      return menuItems[0].focus()
+    }
+
+    const currentIndex = menuItems.indexOf(activeElement)
+    let index = direction === 'ArrowUp' ? currentIndex - 1 : currentIndex + 1;
+
+    if (index === -1) {
+      index = menuItems.length - 1;
+    }
+
+    if (index === menuItems.length) {
+      index = 0;
+    }
+
+    menuItems[index].focus();
   }
 
   render() {
