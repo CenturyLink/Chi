@@ -5,8 +5,8 @@ title: Badges
 each type in ['solid', 'outline', 'flat']
   div(class=`test-${type}`)
     span.-text--h2= `Badge / ${type}`
-    div
-      each style in ['base', 'primary', 'secondary', 'success', 'warning', 'danger', 'dark', 'muted', 'light']
+    div.-d--flex.-flex--wrap(style="gap: 1rem;")
+      each style in ['base', 'primary', 'secondary', 'success', 'warning', 'danger', 'dark', 'muted', 'light', 'accent-1', 'accent-2', 'accent-3', 'accent-4', 'accent-5']
         div(
         class="chi-badge -mr--1"
         class={
@@ -69,4 +69,20 @@ h2 Text Transform
     .p.-text--bold
       | capitalized
       .chi-badge.-text--capitalized.-m--1
+        span Badge
+
+h2 Text Weight
+.test-text-weight
+  .example.-mb--1
+    .p.-text--bold
+      | normal
+      .chi-badge.-text--normal.-m--1
+        span Badge
+    .p.-text--bold
+      | semi-bold
+      .chi-badge.-text--semi-bold.-m--1
+        span Badge
+    .p.-text--bold
+      | bold
+      .chi-badge.-text--bold.-m--1
         span Badge
