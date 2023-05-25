@@ -1,21 +1,21 @@
 <template lang="pug">
-  <ComponentExample title="Bordered" id="bordered" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
+  <ComponentExample title="Bordered" id="bordered" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
     p.-text(slot="example-description") Use bordered to apply borders to panels and contain them in card styled boxes.
-      .-mw--720.-mx--auto(slot="example")
-        chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :title="panel.title" :state="getState(panel.state, active, index)" :bordered="true")
-          div(slot='active')
-            .chi-epanel__subtitle
-              | {{ panel.subtitle }}
-            p.chi-epanel__text
-              | {{ panel.content }}
-          div(slot="done")
-            | {{ panel.doneContent }}
-          div(slot="footer")
-            chi-button(@click="active -= 1" v-if="index")
-              | Previous
-            chi-button(@click="active += 1" color="primary") Continue
-          chi-button(slot='change' @click="active = index" color="primary" variant="flat")
-            | Change
+    .-mw--720.-mx--auto(slot="example")
+      chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :title="panel.title" :state="getState(panel.state, active, index)" :bordered="true")
+        div(slot='active')
+          .chi-epanel__subtitle
+            | {{ panel.subtitle }}
+          p.chi-epanel__text
+            | {{ panel.content }}
+        div(slot="done")
+          | {{ panel.doneContent }}
+        div(slot="footer")
+          chi-button(@click="active -= 1" v-if="index")
+            | Previous
+          chi-button(@click="active += 1" color="primary") Continue
+        chi-button(slot='change' @click="active = index" color="primary" variant="flat")
+          | Change
     <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         | To render bordered panels, apply the property <code>bordered</code>.
@@ -315,7 +315,5 @@ data: {
     }
   }
 })
-
 export default class Bordered extends Vue {}
-
 </script>

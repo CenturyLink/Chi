@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="State Icon" id="states" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
+  <ComponentExample title="State Icon" id="states" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
     p.-text(slot="example-description")
       | Use state icon to render an icon that corresponds with the state of the panel.
     .-mw--720.-mx--auto(slot="example")
@@ -14,7 +14,7 @@
         div(slot="footer")
           chi-button(@click="active -= 1" v-if="index")
             | Previous
-          chi-button(@click="active += 1" color="primary") {{ index + 1 === panels.length ? 'FINISH' : 'CONTINUE' }}
+          chi-button(@click="active += 1" color="primary") {{ index + 1 === panels.length ? 'Finish' : 'Continue' }}
         div(slot='change')
           chi-button(@click="active = index" color="primary" variant="flat")
             | Change
@@ -317,7 +317,5 @@ data: {
     };
   }
 })
-
 export default class StateIcon extends Vue {}
-
 </script>

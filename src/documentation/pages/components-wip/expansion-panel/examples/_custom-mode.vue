@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Custom mode" id="custom-mode" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
+  <ComponentExample title="Custom mode" id="custom-mode" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
     p.-text(slot="example-description")
       | Write your own custom mode by adding a handler for state changes of the expansion panels in the configuration, and
       | writing your own functions for the <code>active</code>, <code>done</code>, <code>pending</code>,
@@ -157,7 +157,6 @@ chi.expansionPanel(
     };
   }
 })
-
 export default class CustomMode extends Vue {
   mounted() {
     const panel = document.querySelectorAll('[data-chi-epanel-group="example__custom-mode"]');
@@ -175,5 +174,4 @@ export default class CustomMode extends Vue {
     });
   }
 }
-
 </script>

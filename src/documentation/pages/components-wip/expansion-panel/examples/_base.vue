@@ -1,24 +1,24 @@
 <template lang="pug">
-  <ComponentExample title="Base" id="base" :tabs="exampleTabs" additionalClasses="-bg--grey-10 -p-lg--6">
+  <ComponentExample title="Base" id="base" :tabs="exampleTabs" padding="-p-lg--6" additionalClasses="-bg--grey-10">
     p.-text(slot="example-description")
       | Group expansion panels using the attribute <code>data-chi-epanel-group="name-of-the-group"</code>.
       | This will enable panels to work together as a sequential form. When a panel is activated,
       | the previous expanding panels will get the done state and the next will get the pending state.
-      .-mw--720.-mx--auto(slot="example")
-        chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :step="index + 1" title="Panel title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'")
-          div(slot='active')
-            .chi-epanel__subtitle
-              | {{ panel.title }}
-            p.chi-epanel__text
-              | {{ panel.content }}
-          div(slot="done")
-            | {{ panel.doneContent }}
-          div(slot="footer")
-            chi-button(@click="active -= 1" v-if="index")
-              | Previous
-            chi-button(@click="active += 1" color="primary") {{ index + 1 === panels.length ? 'Finish' : 'Continue' }}
-          chi-button(slot='change' @click="active = index" color="primary" variant="flat")
-              | Change
+    .-mw--720.-mx--auto(slot="example")
+      chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :step="index + 1" title="Panel title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'")
+        div(slot='active')
+          .chi-epanel__subtitle
+            | {{ panel.title }}
+          p.chi-epanel__text
+            | {{ panel.content }}
+        div(slot="done")
+          | {{ panel.doneContent }}
+        div(slot="footer")
+          chi-button(@click="active -= 1" v-if="index")
+            | Previous
+          chi-button(@click="active += 1" color="primary") {{ index + 1 === panels.length ? 'Finish' : 'Continue' }}
+        chi-button(slot='change' @click="active = index" color="primary" variant="flat")
+            | Change
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -290,7 +290,5 @@ data: {
     };
   }
 })
-
 export default class Base extends Vue {}
-
 </script>

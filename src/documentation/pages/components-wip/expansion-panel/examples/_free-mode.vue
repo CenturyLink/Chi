@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Free mode" id="free-mode" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
+  <ComponentExample title="Free mode" id="free-mode" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
     p.-text(slot="example-description")
       | In this mode there is no automated action triggered when an element activates,
       | so you will need to manage all custom behavior.
@@ -141,12 +141,10 @@ declare const chi: any;
     };
   }
 })
-
 export default class FreeMode extends Vue {
   mounted() {
     const panel = document.querySelectorAll('[data-chi-epanel-group="example__free-mode"]');
     chi.expansionPanel(panel, {mode: 'free'});
   }
 }
-
 </script>

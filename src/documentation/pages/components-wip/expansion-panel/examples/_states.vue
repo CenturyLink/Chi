@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="States" id="states" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
+  <ComponentExample title="States" id="states" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
     div(slot="example-description")
       p.-text
         | Expansion panels have four states: <code>active</code>, <code>pending</code>, <code>done</code> and
@@ -341,7 +341,5 @@ data: {
     }
   }
 })
-
 export default class States extends Vue {}
-
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="No step number" id="no-step-number" :tabs="exampleTabs" additionalClasses="-p--3 -p-lg--6 -bg--grey-10">
+  <ComponentExample title="No step number" id="no-step-number" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
     p.-text(slot="example-description") Step numbering is optional and can be easily omitted.
     .-mw--720.-mx--auto(slot="example")
       chi-expansion-panel(v-for="(panel, index) in panels" :key="index" :title="panel.title" :state="active === index ? 'active' : active > index ? 'done' : 'pending'")
@@ -291,7 +291,5 @@ data: {
     };
   }
 })
-
 export default class NoStep extends Vue {}
-
 </script>
