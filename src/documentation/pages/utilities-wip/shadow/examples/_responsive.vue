@@ -2,10 +2,8 @@
     <ComponentExample title="Responsive" titleSize="h4" id="responsive" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
       p.-text(slot="example-description")
         | Change viewport size to view the effect. You can do it by resizing your browser window.
-      <Wrapper slot="example">
-        .chi-grid.-text.-no-gutter.-text--center.-p--2(style="background:#F5F5F5;")
-          .-p--5.-m--2(style="background:#FFFFFF;" v-for="size in responsiveSizes" :class="size") {{ size }}
-      </Wrapper>
+      .chi-grid.-text.-no-gutter.-text--center.-p--2(style="background:#F5F5F5;" slot="example")
+        .-p--5.-m--2(style="background:#FFFFFF;" v-for="size in responsiveSizes" :class="size") {{ size }}
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
