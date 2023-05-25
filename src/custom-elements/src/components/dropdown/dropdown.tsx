@@ -1,4 +1,5 @@
 import {
+  Listen,
   Component,
   Element,
   Event,
@@ -70,6 +71,11 @@ export class Dropdown {
    * Triggered when showing the Dropdown
    */
   @Event({ eventName: 'chiDropdownShow' }) eventShow: EventEmitter;
+
+  /**
+   * Triggered when showing the Dropdown
+   */
+  @Event({ eventName: 'chiDropdownItemSelect' }) chiDropdownItemSelect: EventEmitter
 
   @Element() el: HTMLElement;
 
@@ -163,7 +169,7 @@ export class Dropdown {
       }
     );
   }
-  
+
   setDisplay(display: 'block' | 'none') {
     this._dropdownMenuElement.style.display = display;
   }
@@ -227,6 +233,17 @@ export class Dropdown {
     this.emitShow();
   }
 
+  @Listen('keydown')
+  onKeydown(ev: KeyboardEvent) {
+    if (['ArrowUp', 'ArrowDown'].includes(ev.key)) {
+      this._handleDropdownItemFocus(ev.key)
+    }
+
+    if (ev.key === 'Enter') {
+      this.handleClickSelectItem(ev);
+    }
+  }
+
   /**
    * Toggles active state (show/hide)
    */
@@ -239,6 +256,36 @@ export class Dropdown {
     }
   }
 
+  handleClickSelectItem(ev: Event) {
+    this.chiDropdownItemSelect.emit(ev);
+  }
+
+  _getDropdownItems(): HTMLElement[] {
+    return Array.from(this.el.querySelectorAll('.chi-dropdown__menu-item'));
+  }
+
+  _handleDropdownItemFocus(direction: string) {
+    const menuItems = this._getDropdownItems();
+    const activeElement = document.activeElement as HTMLElement;
+
+    if (!menuItems.includes(activeElement)) {
+      return menuItems[0].focus();
+    }
+
+    const currentIndex = menuItems.indexOf(activeElement);
+    let index = direction === 'ArrowUp' ? currentIndex - 1 : currentIndex + 1;
+
+    if (index === -1) {
+      index = menuItems.length - 1;
+    }
+
+    if (index === menuItems.length) {
+      index = 0;
+    }
+
+    menuItems[index].focus();
+  }
+
   render() {
     const trigger = this.button ? (
       <chi-button
@@ -248,9 +295,9 @@ export class Dropdown {
           ${this.fluid ? FLUID_CLASS : ''}
         `}
         extra-class={`
-          ${DROPDOWN_CLASSES.TRIGGER} 
+          ${DROPDOWN_CLASSES.TRIGGER}
           ${this.active ? ACTIVE_CLASS : ''}
-          ${this.fluid ? FLUID_CLASS : ''} 
+          ${this.fluid ? FLUID_CLASS : ''}
           ${this.animateChevron ? ANIMATE_CLASS : ''}
         `}
         ref={ref => (this._referenceElement = ref)}
@@ -266,7 +313,7 @@ export class Dropdown {
           ${DROPDOWN_CLASSES.MENU}
           ${UTILITY_CLASSES.Z_INDEX.Z_10}
           ${this.active ? ACTIVE_CLASS : ''}
-          ${this.fluid ? FLUID_CLASS : ''} 
+          ${this.fluid ? FLUID_CLASS : ''}
           ${this.description ? LIST_CLASS : ''}
         `}
         ref={ref => (this._dropdownMenuElement = ref)}
