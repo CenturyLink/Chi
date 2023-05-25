@@ -11,6 +11,7 @@
       <IconBadges />
       <AdditionalSizes />
       <TextTransform />
+      <TextWeight />
     </client-only>
 </template>
 
@@ -22,6 +23,7 @@ import Flat from './_flat.vue';
 import IconBadges from './_icon_badges.vue';
 import AdditionalSizes from './_additional_sizes.vue';
 import TextTransform from './_text_transform.vue';
+import TextWeight from './_text_weight.vue';
 
 @Component({
   components: {
@@ -30,7 +32,8 @@ import TextTransform from './_text_transform.vue';
     Flat,
     IconBadges,
     AdditionalSizes,
-    TextTransform
+    TextTransform,
+    TextWeight
   }
 })
 export default class Examples extends Vue {}
