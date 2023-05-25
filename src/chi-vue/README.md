@@ -24,6 +24,15 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # CHANGELOG
+## 2.1.0 (May 12, 2023)
+### Components
+#### Added
+* Added: Data table Vue component header now supports two lines in a cell when `cellWrap` config is set to true.
+#### Changed
+* Changed: Toolbar `Column customization` tooltip text to `Customize columns`.
+#### Fixed
+* Fixed: Data table description popover in header has removed `modal` class that was causing incorrect width.
+
 ## 2.0.0 (April 12, 2023)
 ### Components
 #### Added

@@ -21,7 +21,7 @@ export interface HeadTabsInterface {
     vue: CodeSnippets;
     htmlBlueprint: CodeSnippets;
   }
-};
+}
 
 export interface ILanguage {
   href: string;
@@ -37,3 +37,22 @@ export interface ILink {
   iconName?: string;
 }
 
+export interface IThemes {
+  lumen: string;
+  centurylink: string;
+  portal: string;
+  brightspeed: string;
+  colt: string;
+}
+
+export interface IBorderUtility {
+  className: string;
+  title: string;
+}
+
+export interface IZIndex {
+  key: string, 
+  color: string, 
+  margin: number, 
+  text: string,
+}
