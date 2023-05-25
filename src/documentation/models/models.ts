@@ -44,3 +44,25 @@ export interface IThemes {
   brightspeed: string;
   colt: string;
 }
+
+export interface IBorderUtility {
+  className: string;
+  title: string;
+}
+
+export interface IZIndex {
+  key: string, 
+  color: string, 
+  margin: number, 
+  text: string,
+}
+
+export interface ISize {
+  class: number, 
+  value: string, 
+}
+
+export interface IBreakpoint {
+  class: string, 
+  value: string, 
+}

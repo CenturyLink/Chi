@@ -1,7 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="SASS" id="sass" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false" additionalStyle="border: none;">
+  <ComponentExample title="Transparent" id="transparent" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
     p.-text(slot="example-description")
-      | Chi defines shadows with Saas maps. The following example will render a shadow equivalent to <code>-s--1</code> / <code>1px</code>.
+      | Use the transparent border color as a method to hide an element's border without altering its size.
+    .chi-grid.-no-gutter.-text.-text--center(slot="example")
+      .chi-col.-w--6.-w-md--3.-w-xl--2
+        .-m--1.-p--1.-py--5.-b--1.-b--transparent.-bg--grey-10 Transparent
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -22,15 +25,10 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: ``,
-        htmlblueprint: `@import '@centurylink/chi/src/chi/_global-variables';
-
-.example {
-  box-shadow: map-get($shadow, 1);
-}`,
-      },
+        htmlblueprint: `<div class="-b--1 -b--transparent"></div>`
+      }
     };
   }
 })
-export default class SASS extends Vue {}
+export default class Transparent extends Vue {}
 </script>
