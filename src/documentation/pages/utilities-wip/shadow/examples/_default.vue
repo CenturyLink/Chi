@@ -14,7 +14,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      indexes: [ 0, 1, 2, 3, 4, 5 ],
       exampleTabs: [
         {
           active: true,
@@ -26,6 +25,8 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class Default extends Vue {
+  indexes = [ 0, 1, 2, 3, 4, 5 ];
+
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
@@ -33,7 +34,7 @@ export default class Default extends Vue {
   }
 
   generateHtml() {
-    return this.$data.indexes.map((index: number) => `<div class="-s--${index}"></div>`).join('\n');
+    return this.indexes.map((index: number) => `<div class="-s--${index}"></div>`).join('\n');
   }
 }
 </script>

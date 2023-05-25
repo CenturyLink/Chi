@@ -1,4 +1,4 @@
-import {IBreakpoint, ILanguage, ILink, ISize, IThemes, IZIndex} from '~/models/models';
+import {ILanguage, ILink, IThemes, IZIndex} from '~/models/models';
 
 export const FOOTER_LINKS: ILink[] = [
   { href: 'https://www.lumen.com/en-us/about.html', title: 'About Us' },
@@ -493,27 +493,4 @@ export const zIndexValues: IZIndex[] = [
   { key: "60", color: "-bg--grey-10", margin: 7, text: "Popovers" },
   { key: "70", color: "-bg--primary", margin: 8, text: "Tooltips" },
   { key: "auto", color: "", margin: 0, text: "-" },
-];
-
-export const sizes: ISize[] = [
-  { class: 0, value: 'none' },
-  { class: 1, value: '1px' },
-  { class: 2, value: '4px' },
-  { class: 3, value: '6px' },
-  { class: 4, value: '8px' },
-  { class: 5, value: '12px' },
-];
-
-export const breakpoints: IBreakpoint[] = [
-  { class: 'blank', value: 'all' },
-  { class: 'sm', value: 'sm and larger' },
-  { class: 'md', value: 'md and larger' },
-  { class: 'lg', value: 'lg and larger' },
-  { class: 'xl', value: 'xl' },
-];
-
-export const responsiveSizes: string[] = [
-  "-s--5 -s-md--0",
-  "-s-md--5 -s-xl--0",
-  "-s-xl--5"
 ];

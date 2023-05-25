@@ -7,19 +7,17 @@
           .-p--5.-m--2(style="background:#FFFFFF;" v-for="size in responsiveSizes" :class="size") {{ size }}
       </Wrapper>
     <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
     </ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { responsiveSizes } from '~/fixtures/fixtures';
 
 @Component({
   data: () => {
     return {
-      responsiveSizes,
       exampleTabs: [
         {
           active: true,
@@ -27,11 +25,20 @@ import { responsiveSizes } from '~/fixtures/fixtures';
           label: 'HTML Blueprint'
         }
       ],
-      codeSnippets: {
-        htmlblueprint: responsiveSizes.map((size: string) => `<div class="${size}"></div>`).join('\n')
-      },
     };
   }
 })
-export default class Responsive extends Vue {}
+export default class Responsive extends Vue {
+  responsiveSizes: string[] = [
+    "-s--5 -s-md--0",
+    "-s-md--5 -s-xl--0",
+    "-s-xl--5"
+  ];
+
+  get codeSnippets() {
+    return { 
+      htmlblueprint: this.responsiveSizes.map((size: string) => `<div class="${size}"></div>`).join('\n')
+    }
+  }
+}
 </script>

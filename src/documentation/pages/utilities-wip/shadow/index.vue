@@ -15,7 +15,7 @@ import Examples from './examples/index.vue';
     }
   },
   components: {
-    Examples,
+    Examples
   }
 })
 export default class ShadowUtility extends Vue {}

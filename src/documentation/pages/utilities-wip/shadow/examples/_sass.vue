@@ -22,7 +22,7 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: ``,
+        webcomponent: '',
         htmlblueprint: `@import '@centurylink/chi/src/chi/_global-variables';
 
 .example {
