@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-05-11T11:31:15",
+  "timestamp": "2023-05-22T14:00:27",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -4173,6 +4173,23 @@
           "attr": "disabled",
           "reflectToAttr": true,
           "docs": "To disable Phone input",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "dynamicValue",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "dynamic-value",
+          "reflectToAttr": true,
+          "docs": "To define dynamic value of Phone input",
           "docsTags": [],
           "default": "false",
           "values": [
