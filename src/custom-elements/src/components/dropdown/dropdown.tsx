@@ -75,7 +75,7 @@ export class Dropdown {
   /**
    * Triggered when showing the Dropdown
    */
-  @Event({ eventName: 'chiDropdownItemSelect' }) eventDropdownItemSelect: EventEmitter;
+  @Event({ eventName: 'chiDropdownItemSelect' }) chiDropdownItemSelect: EventEmitter<KeyboardEvent>
 
   @Element() el: HTMLElement;
 
@@ -242,6 +242,10 @@ export class Dropdown {
     if (['ArrowUp', 'ArrowDown'].includes(ev.key)) {
       this._handleDropdownItemFocus(ev.key)
     }
+
+    if (ev.key === 'Enter') {
+      this.handleClickSelectItem(ev);
+    }
   }
 
   /**
@@ -256,8 +260,8 @@ export class Dropdown {
     }
   }
 
-  handleClickSelectItem() {
-    this.eventDropdownItemSelect.emit();
+  handleClickSelectItem(ev: Event) {
+    this.chiDropdownItemSelect.emit(ev);
   }
 
   _getDropdownItems(): HTMLElement[] {
