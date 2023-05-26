@@ -196,7 +196,6 @@ export default class ComponentExample extends Vue {
   @Prop() additionalStyle?: string;
   @Prop({ default: true }) showSnippetTabs?: boolean;
   @Prop({ default: true }) showTitle?: boolean;
-  @Prop({ default: true }) showClipboard?: boolean;
 
   chiTabs: any;
   chiHeadTabs: any;
