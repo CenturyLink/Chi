@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-05-11T11:31:15",
+  "timestamp": "2023-05-26T11:09:24",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -209,7 +209,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "to set color of a badge { primary, success, warning, danger, dark, muted, secondary, light }.",
+          "docs": "to set color of a badge { primary, success, warning, danger, dark, muted, secondary, light, accent-1, accent-2, accent-3, accent-4, accent-5 }.",
           "docsTags": [],
           "values": [
             {
@@ -242,6 +242,22 @@
           "attr": "text-transform",
           "reflectToAttr": true,
           "docs": "to transform the badge text { uppercase, lowercase, capitalize }.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "textWeight",
+          "type": "string",
+          "mutable": false,
+          "attr": "text-weight",
+          "reflectToAttr": true,
+          "docs": "to set weight of the badge text { normal, semi-bold, bold }.",
           "docsTags": [],
           "values": [
             {
@@ -4173,6 +4189,23 @@
           "attr": "disabled",
           "reflectToAttr": true,
           "docs": "To disable Phone input",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "dynamicValue",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "dynamic-value",
+          "reflectToAttr": true,
+          "docs": "To define dynamic value of Phone input",
           "docsTags": [],
           "default": "false",
           "values": [
