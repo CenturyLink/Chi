@@ -181,7 +181,7 @@ export class Time {
       } else {
         if (hour === '12') {
           if (this._period === 'am') {
-            hourToSet = '00';
+            hourToSet = '12';
           } else {
             hourToSet = hour;
           }
@@ -194,7 +194,7 @@ export class Time {
         }
       }
 
-      this._hour = hour;
+      this._hour = hourToSet;
       this.value = `${hourToSet}:${this._minute}:${this._second}`;
       this.emitTimeValueEvent();
     };
@@ -207,7 +207,7 @@ export class Time {
           this._period === 'pm' &&
           parseInt(hour) + 12 === parseInt(this._hour)
         ) ||
-        (parseInt(hour) === 12 && valueHour === 0)
+        (this._period === 'am' && (parseInt(hour) === 12 && valueHour === 0))
       ) {
         hourStatus = ACTIVE_CLASS;
       } else {
@@ -386,7 +386,7 @@ export class Time {
             currentHour = currentHour - 12;
           }
           if (currentHour === 12) {
-            currentHour = 0;
+            currentHour = 12;
           }
         } else if (period === 'pm') {
           if (currentHour < 12) {
