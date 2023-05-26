@@ -18,21 +18,21 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { IBreakpoint, ISize } from '~/models/models';
+import { INotation } from '~/models/models';
 
 @Component({})
 
 export default class Notation extends Vue {
-  sizes: ISize[] = [
-    { class: 0, value: 'none' },
-    { class: 1, value: '1px' },
-    { class: 2, value: '4px' },
-    { class: 3, value: '6px' },
-    { class: 4, value: '8px' },
-    { class: 5, value: '12px' },
+  sizes: INotation[] = [
+    { class: '0', value: 'none' },
+    { class: '1', value: '1px' },
+    { class: '2', value: '4px' },
+    { class: '3', value: '6px' },
+    { class: '4', value: '8px' },
+    { class: '5', value: '12px' },
   ];
 
-  breakpoints: IBreakpoint[] = [
+  breakpoints: INotation[] = [
     { class: 'sm', value: 'sm and larger' },
     { class: 'md', value: 'md and larger' },
     { class: 'lg', value: 'lg and larger' },

@@ -57,12 +57,7 @@ export interface IZIndex {
   text: string,
 }
 
-export interface ISize {
-  class: number, 
-  value: string, 
-}
-
-export interface IBreakpoint {
+export interface INotation {
   class: string, 
   value: string, 
 }
