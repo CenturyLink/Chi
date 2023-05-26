@@ -1,11 +1,11 @@
 <template lang="pug">
-    <ComponentExample title="Default" titleSize="h4" id="default" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
+  <ComponentExample title="Default" titleSize="h4" id="default" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
     .chi-grid.-text.-no-gutter.-text--center.-p--2(style="background:#F5F5F5;" slot="example")
       .-p--5.-m--2(style="background:#FFFFFF;" v-for="index in indexes" :class="'-s--' + index") -s--{{index}}
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
-    </ComponentExample>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
