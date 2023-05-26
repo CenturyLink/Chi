@@ -1,13 +1,14 @@
 <template lang="pug">
   .chi-grid__container.-pt--3
     <Notation />
-    h2 Examples
+    <TitleAnchor title="Examples" id="examples" titleSize="h2" />
     <Margins />
     <SideMargins />
     <Padding />
     <SidePadding />
     <MarginPadding />
     <AutoMargin />
+    <Breakpoints />
 </template>
 
 <script lang="ts">
@@ -19,6 +20,7 @@ import Padding from './_paddings.vue';
 import SidePadding from './_side-paddings.vue';
 import MarginPadding from './_margin-padding.vue';
 import AutoMargin from './_auto-margin.vue';
+import Breakpoints from './_breakpoints.vue';
 
 @Component({
   components: {
@@ -28,7 +30,8 @@ import AutoMargin from './_auto-margin.vue';
     Padding,
     SidePadding,
     MarginPadding,
-    AutoMargin
+    AutoMargin,
+    Breakpoints
   }
 })
 export default class Examples extends Vue {}

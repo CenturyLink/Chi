@@ -1,15 +1,13 @@
 <template lang="pug">
-  <ComponentExample title="Paddings" id="paddings" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
+  <ComponentExample title="Padding" id="paddings" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
     p.-text(slot="example-description")
-      | In this example, various margin classes have been applied to render margin
-      | on all 4 sides of the blue squares. The margin can be visualized in blue.
-    <Wrapper slot="example">
-      .chi-grid.-no-gutter
-        .-mr--3.example-spacing-padding(v-for="className in classNames" :class="className")
-          div.example-spacing-padding__block
-    </Wrapper>
+      | In this example, various padding classes have been applied to render padding
+      | on all 4 sides of the blue squares. The padding can be visualized in yellow.
+    .chi-grid.-no-gutter(slot="example")
+      .-mr--3.example-spacing-padding(v-for="className in classNames" :class="className")
+        .example-spacing-padding__block
     <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
   </ComponentExample>
 </template>
@@ -26,15 +24,17 @@ import { Component, Vue } from 'vue-property-decorator';
           id: 'htmlblueprint',
           label: 'HTML Blueprint'
         }
-      ],
-      codeSnippets: {
-        htmlblueprint: `<div class="-p--2"></div>
-<div class="-p--4"></div>
-<div class="-p--6"></div>`
-      },
-      classNames: ['-p--2', '-p--4', '-p--6']
+      ]
     };
   }
 })
-export default class Paddings extends Vue {}
+export default class Paddings extends Vue {
+  classNames = ['-p--2', '-p--4', '-p--6']
+
+  get codeSnippets() {
+    return {
+      htmlblueprint: this.classNames.map(className => `<div class="${className}"></div>`).join('\n')
+    }
+  }
+}
 </script>

@@ -1,12 +1,9 @@
 <template lang="pug">
   <ComponentExample title="Auto margin" id="auto-margin" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
-    p.-text(slot="example-description")
-      | Apply margin auto to an element
-    <Wrapper slot="example">
-      .example-spacing-margin.-d--flex
-        .-m--auto.example-spacing-padding
-          .example-spacing-padding__block
-    </Wrapper>
+    p.-text(slot="example-description") Apply margin auto to an element
+    .example-spacing-margin.-d--flex(slot="example")
+      .-m--auto.example-spacing-padding
+        .example-spacing-padding__block
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>

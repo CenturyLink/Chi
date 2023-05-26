@@ -1,15 +1,14 @@
 <template lang="pug">
   <ComponentExample title="Side Margins" id="side-margins" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
     p.-text(slot="example-description")
-      | In this example, various margin classes have been applied to render margin
-      | on all 4 sides of the blue squares. The margin can be visualized in blue.
-    <Wrapper slot="example">
-      .chi-grid.-no-gutter
-        .-mr--3.example-spacing-margin(v-for="className in classNames")
-          .example-spacing-margin__block(:class="className")
-    </Wrapper>
+      | Apply margin to specific sides of an element by adding <code>t</code>,
+      | <code>b</code>, <code>l</code>, <code>r</code>, <code>x</code> or <code>y</code>
+      | to the class name.
+    .chi-grid.-no-gutter(slot="example")
+      .-mr--3.example-spacing-margin(v-for="className in classNames")
+        .example-spacing-margin__block(:class="className.name")
     <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
   </ComponentExample>
 </template>
@@ -26,24 +25,51 @@ import { Component, Vue } from 'vue-property-decorator';
           id: 'htmlblueprint',
           label: 'HTML Blueprint'
         }
-      ],
-      codeSnippets: {
-        htmlblueprint: `<!-- margin-top -->
-<div class="-mt--3"></div>
-<!-- margin-bottom -->
-<div class="-mb--3"></div>
-<!-- margin-left -->
-<div class="-ml--3"></div>
-<!-- margin-right -->
-<div class="-mr--3"></div>
-<!-- margin-left and margin-right -->
-<div class="-mx--3"></div>
-<!-- margin-top and margin-bottom -->
-<div class="-my--3"></div>`
-      },
-      classNames: ['-mt--3', '-mb--3', '-ml--3', '-mr--3', '-mx--3', '-my--3']
+      ]
     };
   }
 })
-export default class SideMargins extends Vue {}
+export default class SideMargins extends Vue {
+  classNames = [
+    {
+      name: '-mt--3',
+      value: 'margin-top'
+    },
+    {
+      name: '-mb--3',
+      value: 'margin-bottom'
+    },
+    {
+      name: '-ml--3',
+      value: 'margin-left'
+    },
+    {
+      name: '-mr--3',
+      value: 'margin-right'
+    },
+    {
+      name: '-mx--3',
+      value: 'margin-left and margin-right'
+    },
+    {
+      name: '-my--3',
+      value: 'margin-top and margin-bottom'
+    }
+  ]
+
+  get codeSnippets() {
+    return {
+      htmlblueprint: this.generateHtml()
+    }
+  }
+
+  generateHtml() {
+    return this.classNames.map(({name, value}) => {
+      return (
+        `<!-- ${value} -->
+<div class="${name}"></div>`
+      )
+    }).join('\n');
+  }
+}
 </script>

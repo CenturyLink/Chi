@@ -1,13 +1,10 @@
 <template lang="pug">
   <ComponentExample title="Breakpoints" id="breakpoints" titleSize="h4" :tabs="exampleTabs" :showSnippetTabs="false">
-    p.-text(slot="example-description")
-      | Target specific breakpoints with responsive classes.
-    <Wrapper slot="example">
-      .chi-grid.-no-gutter
-        .example-spacing-margin
-          .-mx--0.-px--0.-mx-lg--6.-px-lg--6.example-spacing-padding
-            .example-spacing-padding__block
-    </Wrapper>
+    p.-text(slot="example-description") Target specific breakpoints with responsive classes.
+    .chi-grid.-no-gutter(slot="example")
+      .example-spacing-margin
+        .-mx--0.-px--0.-mx-lg--6.-px-lg--6.example-spacing-padding
+          .example-spacing-padding__block
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>
