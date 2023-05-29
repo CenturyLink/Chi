@@ -1,36 +1,36 @@
 <template lang="pug">
   .chi-grid__container.-pt--3
-    <TitleAnchor title="Notation" id="notation" />
-    p.-text
-      | Position utility classes can be defined using the format <code>-position-{viewport}--{value}</code>.
-      | Viewports supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
+      <TitleAnchor title="Notation" id="notation" titleSize="h2" />
+      p.-text
+        | Position utility classes can be defined using the format <code>-position-{viewport}--{value}</code>.
+        | Viewports supported are <code>sm</code>, <code>md</code>, <code>lg</code>, and <code>xl</code>.
 
-    <TitleAnchor title="Target all viewports" id="targetAllViewports" />
-    p.-text Use to set an elements position on all viewports.
+      <TitleAnchor title="Target all viewports" id="targetAllViewports" titleSize="h2" />
+      p.-text Use to set an elements position on all viewports.
 
-    <TitleAnchor title="Base" id="base" titleSize="h3" additionalClasses="-py--2" />
-    <Static />
-    <Relative />
-    <Fixed />
-    <Absolute />
-    <Sticky />
+      <TitleAnchor title="Base" id="base" additionalClasses="-py--2" titleSize="h2" />
+      <Static />
+      <Relative />
+      <Fixed />
+      <Absolute />
+      <Sticky />
 
-    <TitleAnchor title="Additional classes" id="additional-classes" additionalClasses="-py--3" />
-    <FixedTop />
-    <FixedBottom />
+      <TitleAnchor title="Additional classes" id="additional-classes" additionalClasses="-py--3" titleSize="h2" />
+      <FixedTop />
+      <FixedBottom />
 
-    <TitleAnchor title="Target specific viewports" id="target-specific-viewports" additionalClasses="-py--3" />
-    p.-text
-      | To target a specific viewport, add the viewport abbreviation to the class.
-      | It's important to note that viewport-specific classes apply to their respective
-      | viewport and any larger viewport (unless overridden by a larger viewport class).
-    <TargetStatic />
-    <TargetRelative />
-    <TargetFixed />
-    <TargetAbsolute />
-    <TargetSticky />
-    <TargetFixedTop />
-    <TargetFixedBottom />
+      <TitleAnchor title="Target specific viewports" id="target-specific-viewports" additionalClasses="-py--3" titleSize="h2" />
+      p.-text
+        | To target a specific viewport, add the viewport abbreviation to the class.
+        | It's important to note that viewport-specific classes apply to their respective
+        | viewport and any larger viewport (unless overridden by a larger viewport class).
+      <TargetStatic />
+      <TargetRelative />
+      <TargetFixed />
+      <TargetAbsolute />
+      <TargetSticky />
+      <TargetFixedTop />
+      <TargetFixedBottom />
 </template>
 
 <script lang="ts">
@@ -66,7 +66,7 @@ import TargetSticky from './_target-sticky.vue';
     TargetRelative,
     TargetStatic,
     TargetSticky
-  },
+  }
 })
 export default class Examples extends Vue {}
 </script>

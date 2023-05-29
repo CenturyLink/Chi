@@ -27,11 +27,13 @@ export default class TargetAbsolute extends Vue {
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
-    }
+    };
   }
 
   generateHtml() {
-    return positionValues.map((value: string) => `<div class="${value}--fixed-absolute"></div>`).join('\n');
+    return positionValues
+      .map((value: string) => `<div class="${value}-absolute"></div>`)
+      .join('\n');
   }
 }
 </script>
