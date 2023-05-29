@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="State Icon" id="states" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
+  <ComponentExample title="State Icon" id="stateIcon" :tabs="exampleTabs" padding="-p--3 -p-lg--6" additionalClasses="-bg--grey-10">
     p.-text(slot="example-description")
       | Use state icon to render an icon that corresponds with the state of the panel.
     .-mw--720.-mx--auto(slot="example")
