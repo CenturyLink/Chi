@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { positionValues } from '~/fixtures/fixtures';
 
 @Component({
   data: () => {
@@ -25,11 +26,12 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class TargetSticky extends Vue {
   get codeSnippets() {
     return {
-      htmlblueprint: `<div class="-position-sm--sticky"></div>
-<div class="-position-md--sticky"></div>
-<div class="-position-lg--sticky"></div>
-<div class="-position-xl--sticky"></div>`
+      htmlblueprint: this.generateHtml()
     }
+  }
+
+  generateHtml() {
+    return positionValues.map((value: string) => `<div class="${value}--sticky"></div>`).join('\n');
   }
 }
 </script>

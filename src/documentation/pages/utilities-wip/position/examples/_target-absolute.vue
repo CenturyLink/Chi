@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { positionValues } from '~/fixtures/fixtures';
 
 @Component({
   data: () => {
@@ -25,11 +26,12 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class TargetAbsolute extends Vue {
   get codeSnippets() {
     return {
-      htmlblueprint: `<div class="-position-sm--absolute"></div>
-<div class="-position-md--absolute"></div>
-<div class="-position-lg--absolute"></div>
-<div class="-position-xl--absolute"></div>`
+      htmlblueprint: this.generateHtml()
     }
+  }
+
+  generateHtml() {
+    return positionValues.map((value: string) => `<div class="${value}--fixed-absolute"></div>`).join('\n');
   }
 }
 </script>

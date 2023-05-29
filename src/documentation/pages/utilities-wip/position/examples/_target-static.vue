@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { positionValues } from '~/fixtures/fixtures';
 
 @Component({
   data: () => {
@@ -25,11 +26,12 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class TargetStatic extends Vue {
   get codeSnippets() {
     return {
-      htmlblueprint: `<div class="-position-sm--static"></div>
-<div class="-position-md--static"></div>
-<div class="-position-lg--static"></div>
-<div class="-position-xl--static"></div>`
+      htmlblueprint: this.generateHtml()
     }
+  }
+
+  generateHtml() {
+    return positionValues.map((value: string) => `<div class="${value}--static"></div>`).join('\n');
   }
 }
 </script>

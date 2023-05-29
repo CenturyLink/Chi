@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { positionValues } from '~/fixtures/fixtures';
 
 @Component({
   data: () => {
@@ -25,11 +26,12 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class TargetFixedBottom extends Vue {
   get codeSnippets() {
     return {
-      htmlblueprint: `<div class="-position-sm--fixed-bottom"></div>
-<div class="-position-md--fixed-bottom"></div>
-<div class="-position-lg--fixed-bottom"></div>
-<div class="-position-xl--fixed-bottom"></div>`
+      htmlblueprint: this.generateHtml()
     }
+  }
+
+  generateHtml() {
+    return positionValues.map((value: string) => `<div class="${value}--fixed-bottom"></div>`).join('\n');
   }
 }
 </script>

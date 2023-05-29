@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { positionValues } from '~/fixtures/fixtures';
 
 @Component({
   data: () => {
@@ -25,11 +26,12 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class TargetRelative extends Vue {
   get codeSnippets() {
     return {
-      htmlblueprint: `<div class="-position-sm--relative"></div>
-<div class="-position-md--relative"></div>
-<div class="-position-lg--relative"></div>
-<div class="-position-xl--relative"></div>`
+      htmlblueprint: this.generateHtml()
     }
+  }
+
+  generateHtml() {
+    return positionValues.map((value: string) => `<div class="${value}--relative"></div>`).join('\n');
   }
 }
 </script>

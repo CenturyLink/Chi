@@ -494,3 +494,10 @@ export const zIndexValues: IZIndex[] = [
   { key: "70", color: "-bg--primary", margin: 8, text: "Tooltips" },
   { key: "auto", color: "", margin: 0, text: "-" },
 ];
+
+export const positionValues: string[] = [
+  '-position-sm',
+  '-position-md',
+  '-position-lg',
+  '-position-xl',
+]
