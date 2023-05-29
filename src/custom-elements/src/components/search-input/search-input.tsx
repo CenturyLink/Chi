@@ -122,6 +122,7 @@ export class SearchInput {
 
   componentDidLoad(): void {
     document.addEventListener('click', this._handleClickInDocument.bind(this));
+    document.addEventListener('chiDropdownItemSelect', this._handleSelectItem);
   }
 
   disconnectedCallback(): void {
@@ -154,9 +155,9 @@ export class SearchInput {
 
     return list.map((item) => {
       const regex = new RegExp(text, "gi");
-      const newValue = item.title.replace(regex, (match) => `<strong>${match}</strong>`);
+      const newValue = item.title.replace(regex, (match) => `<span class="-text--normal">${match}</span>`);
 
-      return { ...item, title: newValue };
+      return { ...item, title: `<strong>${newValue}</strong>` };
     })
   }
 
@@ -191,11 +192,11 @@ export class SearchInput {
     dropdown.show();
   }
 
-  _handleSelectItem = (ev: Event): void => {
+  _handleSelectItem = (ev: CustomEvent): void => {
     ev.preventDefault();
 
-    const title = (ev.currentTarget as HTMLInputElement).innerText;
-    const href = (ev.currentTarget as HTMLInputElement).getAttribute('href');
+    const title = ev.detail.target.innerText;
+    const href = ev.detail.target.getAttribute('href');
     const dropdown = this._getDropdown();
 
     this.selectedItem = { title, href };
@@ -266,7 +267,6 @@ export class SearchInput {
             class={DROPDOWN_CLASSES.MENU_ITEM}
             href={item.href}
             slot="menu"
-            onClick={this._handleSelectItem}
             innerHTML={item.title}
           >
           </a>
