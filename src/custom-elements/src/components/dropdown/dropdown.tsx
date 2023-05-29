@@ -233,14 +233,17 @@ export class Dropdown {
     this.emitShow();
   }
 
-  @Listen('keydown')
+  @Listen('keydown', { target: 'document' })
   onKeydown(ev: KeyboardEvent) {
     if (['ArrowUp', 'ArrowDown'].includes(ev.key)) {
       this._handleDropdownItemFocus(ev.key)
     }
+  }
 
-    if (ev.key === 'Enter') {
-      this.handleClickSelectItem(ev);
+  @Listen('click')
+  onClickSelectDropdownItem(ev) {
+    if (ev.target.classList.contains(DROPDOWN_CLASSES.MENU_ITEM)) {
+      this.handleSelectItem(ev);
     }
   }
 
@@ -249,30 +252,26 @@ export class Dropdown {
    */
   @Method()
   async toggle() {
-    if (this.active) {
-      this.hide();
-    } else {
-      this.show();
-    }
+    this.active ? this.hide() : this.show();
   }
 
-  handleClickSelectItem(ev: Event) {
+  handleSelectItem(ev: Event) {
     this.chiDropdownItemSelect.emit(ev);
   }
 
   _getDropdownItems(): HTMLElement[] {
-    return Array.from(this.el.querySelectorAll('.chi-dropdown__menu-item'));
+    return Array.from(this.el.querySelectorAll(`.${DROPDOWN_CLASSES.MENU_ITEM}`));
   }
 
   _handleDropdownItemFocus(direction: string) {
     const menuItems = this._getDropdownItems();
-    const activeElement = document.activeElement as HTMLElement
+    const activeElement = document.activeElement as HTMLElement;
 
     if (!menuItems.includes(activeElement)) {
-      return menuItems[0].focus()
+      return menuItems[0].focus();
     }
 
-    const currentIndex = menuItems.indexOf(activeElement)
+    const currentIndex = menuItems.indexOf(activeElement);
     let index = direction === 'ArrowUp' ? currentIndex - 1 : currentIndex + 1;
 
     if (index === -1) {
