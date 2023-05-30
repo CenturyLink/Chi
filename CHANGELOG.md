@@ -1,4 +1,17 @@
 # CHANGELOG
+## 5.33.0 (May 30, 2023)
+### Components
+#### Added
+* Added: Phone input now supports dynamically change of country code.
+* Added: Badge supports new extended color palette.
+* Added: Badge supports new `text-weight` property to give developers the ability to set normal, semi-bold, and bold font-weights.
+#### Changed
+* Changed: Data table description popover in header has been repositioned in the DOM to improve rendering.
+#### Fixed
+* Fixed: Date picker in `mode="datetime"` has changed incorrect value from 24 to 00 when `time-format="24hr"` is set and `00` hours selected.
+* Fixed: Data table headers styles in nested data tables.
+* Fixed: Draggable Popover behavior has been improved to recalculate position dynamically.
+
 ## 5.32.0 (May 12, 2023)
 ### Components
 #### Added
