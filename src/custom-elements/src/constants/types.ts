@@ -25,7 +25,7 @@ export interface TabTriggerPosition {
   top: number;
 }
 
-export interface AutocompleteItems {
+export interface DropdownMenuItem {
   title: string;
   href: string;
 }

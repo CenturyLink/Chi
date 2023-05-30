@@ -11,7 +11,7 @@ import {
 } from '@stencil/core';
 import { TEXT_INPUT_SIZES, TextInputSizes } from '../../constants/size';
 import { DROPDOWN_CLASSES } from '../../constants/classes';
-import { AutocompleteItems, SearchInputModes } from '../../constants/types';
+import { DropdownMenuItem, SearchInputModes } from '../../constants/types';
 
 @Component({
   tag: 'chi-search-input',
@@ -58,7 +58,7 @@ export class SearchInput {
   /**
    * To set the list of items to be used in the dropdown menu in autocomplete mode
    */
-  @Prop({ mutable: true, reflect: true }) menuItems: AutocompleteItems[];
+  @Prop({ mutable: true, reflect: true }) menuItems: DropdownMenuItem[];
 
   @Element() el: HTMLElement;
 
@@ -88,8 +88,8 @@ export class SearchInput {
   @Event({ eventName: 'chiSearch' }) eventSearch: EventEmitter;
 
   @State() _cleanButtonVisible = this.value && !this.disabled ? true : false;
-  @State() menuItemsFiltered: AutocompleteItems[] = [];
-  @State() selectedItem?: AutocompleteItems;
+  @State() menuItemsFiltered: DropdownMenuItem[] = [];
+  @State() selectedItem?: DropdownMenuItem;
 
   @Watch('size')
   sizeValidation(newValue: TextInputSizes) {
@@ -149,17 +149,23 @@ export class SearchInput {
     this._handleFilter(newValue);
   }
 
-  _setHightlightValue(list: AutocompleteItems[], text: string): AutocompleteItems[] {
+  _setHighlightedValue(
+    list: DropdownMenuItem[],
+    text: string
+  ): DropdownMenuItem[] {
     if (!text) {
       return list;
     }
 
-    return list.map((item) => {
-      const regex = new RegExp(text, "gi");
-      const newValue = item.title.replace(regex, (match) => `<span class="-text--normal">${match}</span>`);
+    return list.map(item => {
+      const regex = new RegExp(text, 'gi');
+      const newValue = item.title.replace(
+        regex,
+        match => `<span class="-text--normal">${match}</span>`
+      );
 
       return { ...item, title: `<strong>${newValue}</strong>` };
-    })
+    });
   }
 
   _clearFilterMenuItems(): void {
@@ -170,24 +176,24 @@ export class SearchInput {
     }
   }
 
-  _getDropdown() {
+  _getAutocompleteDropdown() {
     return this.el.querySelector(
       '#dropdown-autocomplete'
     ) as HTMLChiDropdownElement;
   }
 
   _handleFilter(text: string): void {
-    const dropdown = this._getDropdown();
-    const list = this.menuItems?.filter((item: AutocompleteItems) => {
+    const dropdown = this._getAutocompleteDropdown();
+    const list = this.menuItems?.filter((item: DropdownMenuItem) => {
       return item.title.toLowerCase().includes(text.toLowerCase());
     });
 
-    const highlightedMenuItems = this._setHightlightValue(list, text);
-
-    if (!highlightedMenuItems.length) {
+    if (!list.length) {
       dropdown.hide();
-      return
+      return;
     }
+
+    const highlightedMenuItems = this._setHighlightedValue(list, text);
 
     this.menuItemsFiltered = highlightedMenuItems;
     dropdown.show();
@@ -198,7 +204,7 @@ export class SearchInput {
 
     const title = (ev.target as HTMLAnchorElement).innerText;
     const href = (ev.target as HTMLAnchorElement).getAttribute('href');
-    const dropdown = this._getDropdown();
+    const dropdown = this._getAutocompleteDropdown();
 
     this.selectedItem = { title, href };
     this.value = title;
@@ -234,7 +240,7 @@ export class SearchInput {
     const isClickInsideSearchInput = this.el.contains(
       event.target as HTMLElement
     );
-    const dropdown = this._getDropdown();
+    const dropdown = this._getAutocompleteDropdown();
 
     if (!isClickInsideSearchInput) {
       dropdown.hide();
@@ -270,8 +276,7 @@ export class SearchInput {
             slot="menu"
             innerHTML={item.title}
             onClick={this._handleSelectItem}
-          >
-          </a>
+          ></a>
         ))}
       </chi-dropdown>
     );
@@ -342,14 +347,16 @@ export class SearchInput {
         {searchIcon}
       </div>
     );
-
     const dropdown = isAutocomplete ? this._dropdownAutocomplete() : null;
-
-    return (
+    const searchInput = isAutocomplete ? (
       <Host>
         {input}
         {dropdown}
       </Host>
+    ) : (
+      input
     );
+
+    return searchInput;
   }
 }
