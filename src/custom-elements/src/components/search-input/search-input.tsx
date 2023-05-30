@@ -122,7 +122,8 @@ export class SearchInput {
 
   componentDidLoad(): void {
     document.addEventListener('click', this._handleClickInDocument.bind(this));
-    document.addEventListener('chiDropdownItemSelect', this._handleSelectItem);
+    // TODO: Uncomment when chi-dropdown is ready
+    // document.addEventListener('chiDropdownItemSelect', this._handleSelectItem);
   }
 
   disconnectedCallback(): void {
@@ -192,11 +193,11 @@ export class SearchInput {
     dropdown.show();
   }
 
-  _handleSelectItem = (ev: CustomEvent): void => {
+  _handleSelectItem = (ev: Event): void => {
     ev.preventDefault();
 
-    const title = ev.detail.target.innerText;
-    const href = ev.detail.target.getAttribute('href');
+    const title = (ev.target as HTMLAnchorElement).innerText;
+    const href = (ev.target as HTMLAnchorElement).getAttribute('href');
     const dropdown = this._getDropdown();
 
     this.selectedItem = { title, href };
@@ -268,6 +269,7 @@ export class SearchInput {
             href={item.href}
             slot="menu"
             innerHTML={item.title}
+            onClick={this._handleSelectItem}
           >
           </a>
         ))}
