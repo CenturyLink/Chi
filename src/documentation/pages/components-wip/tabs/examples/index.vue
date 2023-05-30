@@ -2,13 +2,13 @@
   div
     h2 Examples
     h3 Horizontal
-    <Flat />
-    <Solid />
+    <HorizontalFlat isPortal="!hidePortal" />
+    <HorizontalSolid />
     h3 Vertical
     <VerticalFlat />
     <VerticalSolid />
     <LinkDefaultBehavior v-if="hidePortal" />
-    h2 Tabbed navigation bar
+    h3 Tabbed navigation bar
     p.-text
       | The navigation component is a combination of Chi tabs and dropdowns components. You must use
       | <code>chi.navigation</code> function to instantiate the whole group of components, and there is no need for
@@ -27,13 +27,13 @@
     <VerticalTreeTabs v-if="!hidePortal" />
 
     template(v-if="hidePortal")
-      h2 Icons
+      h3 Icons
       <HorizontalTabsWithIcon />
       <VerticalTabsWithIcon />
       <VerticalTabsWithIconAndDescription />
       <VerticalSubtabs />
       <Bordered />
-      h2 Additional Size
+      h3 Additional Size
       <AdditionalSizesHorizontal />
       <AdditionalSizesVertical />
 
@@ -42,10 +42,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Flat from './_flat.vue';
+import HorizontalFlat from './_horizontal-flat.vue';
 import VerticalFlat from './_vertical-flat.vue';
 import VerticalSolid from './_vertical-solid.vue';
-import Solid from './_solid.vue';
+import HorizontalSolid from './_horizontal-solid.vue';
 import LinkDefaultBehavior from './_link-default-behavior.vue';
 import HorizontalTabsWithIcon from './_horizontal-tabs-with-icons.vue';
 import VerticalTabsWithIconAndDescription from './_vertical-tabs-with-icons-and-description.vue';
@@ -66,8 +66,8 @@ import VerticalTreeTabs from './_vertical-tree-tabs.vue';
     TabbedNavigationSolid,
     ComponentsContained,
     WaitForAnimation,
-    Flat,
-    Solid,
+    HorizontalFlat,
+    HorizontalSolid,
     VerticalFlat,
     VerticalSolid,
     LinkDefaultBehavior,
@@ -86,7 +86,7 @@ export default class Examples extends Vue {
     return this.$store.state.themes.theme;
   }
   get hidePortal() {
-    return this.theme !== 'portal'
+    return this.theme !== 'portal' && this.theme !== 'colt' && this.theme !== 'brightspeed'
   }
 }
 </script>

@@ -1,125 +1,108 @@
 <template lang="pug">
-  <ComponentExample title="Bordered" id="bordered" additionalClasses="-bg--grey-20"
-    | :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="changeHeadTab">
-    div(slot="example")
-      div(:class="['-p--3', isInverse ? '-bg--black' : '-bg--white']")
-        ul.chi-tabs.-border(
-          :id="`example-vertical-with-icons-${activeHeadTab}`"
-          :class="[isInverse ? '-inverse' : '']"
-          role="tablist"
-          aria-label="chi-tabs-vertical")
-          li(v-for="link in tabLinks" :class="[link.active ? '-active' : '']")
-            a(
-              :href="`#${link.href}`"
-              role="tab"
-              aria-selected="true"
-              :aria-controls="link.href"
-            ) {{link.text}}
-    <Wrapper v-for="tab in headTabs" :slot="`code-bordered-${tab.id}-webcomponent`" :key="tab.id">
-      <pre class="language-html">
-        <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code>
-      </pre>
-    </Wrapper>
-    <Wrapper v-for="tab in headTabs" :slot="`code-bordered-${tab.id}-htmlblueprint`" :key="tab.id">
-      <pre class="language-html">
-        <code v-highlight="tab.codeSnippets.htmlBlueprint.code" class="html"></code>
-      </pre>
-    </Wrapper>
+  <ComponentExample title="Bordered" id="bordered" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
+    .-p--3.-bg--white(slot="example")
+      chi-tabs(:active-tab='activeTab' id='example__bordered' border @chiTabChange='chiTabChange')
+
+    <pre class="language-html" slot="code-webcomponent">
+      <code v-highlight="codeSnippets.webcomponent" class="html"></code>
+    </pre>
+    <pre class="language-html" slot="code-htmlblueprint">
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
   </ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { HeadTabInterface } from '~/models/models';
+import { TabsListInterface } from '~/models/models';
 
-@Component({})
-
-export default class TabbedNavigationFlat extends Vue {
-  activeHeadTab = 'base'
-
-  exampleTabs = [
-    {
-      disabled: true,
-      id: 'webcomponent',
-      label: 'Web Component'
-    },
-    {
-      active: true,
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint'
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          active: true,
+          id: 'webcomponent',
+          label: 'Web Component'
+        },
+        {
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint'
+        }
+      ]
     }
-  ]
+  }
+})
+
+export default class Bordered extends Vue {
+  activeTab = 'tab-a'
 
   tabLinks = [
     {
-      href: '',
-      text: 'Active Tab',
-      active: true
+      label: 'Active Tab',
+      id: 'tab-a'
     },
     {
-      href: '',
-      text: 'Tab Link'
+      label: 'Tab Link',
+      id: 'tab-b'
     },
     {
-      href: '',
-      text: 'Tab Link'
+      label: 'Tab Link',
+      id: 'tab-c'
     }
   ]
 
-  headTabs = [
+  get codeSnippets() {
+    return {
+      webcomponent: `<chi-tabs active-tab="tab-a" id="example__bordered" border></chi-tabs>
+
+<script>
+  const tabsElement = document.querySelector('example__bordered');
+
+  if (tabsElement) {
+    tabsElement.tabs = [
       {
-        active: true,
-        id: 'base',
-        label: 'Base',
-        codeSnippets: {
-          webComponent: {
-            code: ''
-          },
-          htmlBlueprint: {
-            code: `<ul class="chi-tabs -border">
-  <li class="-active">
-    <a href="#">Active tab</a>
-  </li>
-  <li>
-    <a href="#">Tab link</a>
-  </li>
-  <li>
-    <a href="#">Tab link</a>
-  </li>
-</ul>`
-          }
-        }
+        label: 'Active Tab',
+        id: 'tab-a'
       },
       {
-        id: 'inverse',
-        label: 'Inverse',
-        codeSnippets: {
-          webComponent: {
-            code: ''
-          },
-          htmlBlueprint: {
-            code: `<ul class="chi-tabs -inverse -border">
-  <li class="-active">
-    <a href="#">Active tab</a>
-  </li>
-  <li>
-    <a href="#">Tab link</a>
-  </li>
-  <li>
-    <a href="#">Tab link</a>
-  </li>
-</ul>`
-        }
+        label: 'Tab Link',
+        id: 'tab-b'
+      },
+      {
+        label: 'Tab Link',
+        id: 'tab-c'
       }
+    ];
+  }
+<\/script>`,
+      htmlblueprint: `<ul class="chi-tabs -border">
+${this.generateTabsHtml()}
+</ul>`
     }
-  ]
-
-  get isInverse() {
-    return this.activeHeadTab === 'inverse'
   }
 
-  changeHeadTab(headTab: HeadTabInterface) {
-    this.activeHeadTab = headTab.id
+  chiTabChange(tab: any) {
+    this.activeTab = tab.detail.id
+  }
+
+  generateTabsHtml() {
+    return this.tabLinks.map(({ label, id }, index) => {
+      const isFirstItem = index === 0;
+      return (
+        `  <li${isFirstItem ? ' class="-active"' : ''}>
+    <a href="#">${isFirstItem ? 'Active tab' : 'Tab link'}</a>
+  </li>`
+      )
+    }).join('\n');
+  }
+
+  mounted() {
+    const element = document.querySelector('#example__bordered') as TabsListInterface
+
+    if (element) {
+      element.tabs = this.tabLinks
+    }
   }
 }
 </script>

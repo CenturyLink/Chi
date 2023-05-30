@@ -1,6 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Horizontal tabs with icons" id="horizontal-tabs-with-icons"
-    | :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="changeHeadTab" additionalClasses="-bg--grey-20">
+  <ComponentExample title="Horizontal tabs with icons" id="horizontal-tabs-with-icons" :tabs="exampleTabs" titleSize="h4" :headTabs="headTabs" @chiHeadTabsChange="changeHeadTab" additionalClasses="-bg--grey-20">
     div(slot="example")
       div(:class="['-px--3', isInverse ? '-bg--black' : '-bg--white']")
         ul.chi-tabs.-icons(
@@ -34,23 +33,27 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { HeadTabInterface } from '~/models/models';
 
-@Component({})
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          disabled: true,
+          id: 'webcomponent',
+          label: 'Web Component'
+        },
+        {
+          active: true,
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint'
+        }
+      ]
+    }
+  }
+})
 
 export default class TabbedNavigationFlat extends Vue {
   activeHeadTab = 'base'
-
-  exampleTabs = [
-    {
-      disabled: true,
-      id: 'webcomponent',
-      label: 'Web Component'
-    },
-    {
-      active: true,
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint'
-    }
-  ]
 
   tabLinks = [
     {
@@ -68,7 +71,8 @@ export default class TabbedNavigationFlat extends Vue {
     }
   ]
 
-  headTabs = [
+  get headTabs() {
+    return [
       {
         active: true,
         id: 'base',
@@ -78,25 +82,8 @@ export default class TabbedNavigationFlat extends Vue {
             code: ''
           },
           htmlBlueprint: {
-            code: `<ul class="chi-tabs -icons" id="example-horizontal-with-icons-base">
-  <li class="-active">
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>Active Tab</span>
-    </a>
-  </li>
-  <li>
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>Tab Link</span>
-    </a>
-  </li>
-  <li>
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>Tab Link</span>
-    </a>
-  </li>
+            code: `<ul class="chi-tabs -icons">
+${this.tabsLinksHtml}
 </ul>`
           }
         }
@@ -109,30 +96,26 @@ export default class TabbedNavigationFlat extends Vue {
             code: ''
           },
           htmlBlueprint: {
-            code: `<ul class="chi-tabs -inverse -icons" id="example-horizontal-with-icons-inverse">
-  <li class="-active">
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>Active Tab</span>
-    </a>
-  </li>
-  <li>
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>Tab Link</span>
-    </a>
-  </li>
-  <li>
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>Tab Link</span>
-    </a>
-  </li>
+            code: `<ul class="chi-tabs -inverse -icons">
+${this.tabsLinksHtml}
 </ul>`
+          }
         }
       }
-    }
-  ]
+    ]
+  }
+
+  get tabsLinksHtml() {
+    return this.tabLinks.map(({text, active}) => {
+      return (`  <li${active ? ' class="-active"' : ''}>
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>${ text }</span>
+    </a>
+  </li>`
+      )
+    }).join('\n');
+  }
 
   get isInverse() {
     return this.activeHeadTab === 'inverse'

@@ -1,6 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Vertical tabs with icons and description" id="vertical-tabs-with-icons-and-description"
-    | :tabs="exampleTabs" additionalClasses="-bg--grey-20">
+  <ComponentExample title="Vertical tabs with icons and description" id="vertical-tabs-with-icons-and-description" titleSize="h4" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
     .-bg--white(slot="example")
       .-p--3
         ul.chi-tabs.-icons.-vertical.-list(
@@ -24,10 +23,10 @@
                   span.chi-tabs_item-text(v-if="subLink.description" ) {{subLink.description}}
 
     <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webComponent" class="html"></code>
+      <code v-highlight="codeSnippets.webComponent" class="html"></code>
     </pre>
     <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlBlueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlBlueprint" class="html"></code>
     </pre>
   </ComponentExample>
 </template>
@@ -35,33 +34,41 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component({})
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          disabled: true,
+          id: 'webcomponent',
+          label: 'Web Component'
+        },
+        {
+          active: true,
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint'
+        }
+      ]
+    }
+  }
+})
 
 export default class VerticalTabsWithIconsAndDescription extends Vue {
-  exampleTabs = [
-    {
-      disabled: true,
-      id: 'webcomponent',
-      label: 'Web Component'
-    },
-    {
-      active: true,
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint'
-    }
-  ]
-
   tabLinks = [
     {
       href: '',
-      text: 'Active Tab',
+      text: 'Tab Link',
+      description: 'Tab description',
       active: true,
+    },
+    {
+      href: '',
+      text: 'Active Tab',
       description: 'Tab description',
       subLinks: [
         {
           href: '',
           text: 'Subtab Link',
-          active: true,
           description: 'Subtab description'
         },
         {
@@ -80,17 +87,13 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
       href: '',
       text: 'Tab Link',
       description: 'Tab description'
-    },
-    {
-      href: '',
-      text: 'Tab Link',
-      description: 'Tab description'
     }
   ]
 
-  codeSnippets = {
-    webComponent: '',
-    htmlBlueprint: `<ul class="chi-tabs -vertical -icons -list">
+  get codeSnippets() {
+    return {
+      webComponent: '',
+      htmlBlueprint: `<ul class="chi-tabs -vertical -icons -list">
   <li class="-active">
     <a class="chi-tabs_item" href="#">
       <i class="chi-icon icon-atom" aria-hidden="true"></i>
@@ -105,24 +108,7 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
       <span class="chi-tabs_item-text">Tab description</span>
     </a>
     <ul class="chi-tabs__subtabs">
-      <li>
-        <a class="chi-tabs_item" href="#">
-          <span class="chi-tabs_item-title">Subtab Link</span>
-          <span class="chi-tabs_item-text">Subtab description</span>
-        </a>
-      </li>
-      <li>
-        <a class="chi-tabs_item" href="#">
-          <span class="chi-tabs_item-title">Subtab Link</span>
-          <span class="chi-tabs_item-text">Subtab description</span>
-        </a>
-      </li>
-      <li>
-        <a class="chi-tabs_item" href="#">
-          <span class="chi-tabs_item-title">Subtab Link</span>
-          <span class="chi-tabs_item-text">Subtab description</span>
-        </a>
-      </li>
+${this.subTabsLinksHtml}
     </ul>
   </li>
   <li>
@@ -133,6 +119,19 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
     </a>
   </li>
 </ul>`
+    }
+  }
+
+  get subTabsLinksHtml() {
+    return this.tabLinks.map(() => {
+      return (`      <li>
+        <a class="chi-tabs_item" href="#">
+          <span class="chi-tabs_item-title">Subtab Link</span>
+          <span class="chi-tabs_item-text">Subtab description</span>
+        </a>
+      </li>`
+      )
+    }).join('\n');
   }
 }
 </script>

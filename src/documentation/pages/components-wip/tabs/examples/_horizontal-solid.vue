@@ -1,9 +1,8 @@
 <template lang="pug">
-  <ComponentExample title="Flat" id="vertical-flat" :tabs="exampleTabs" titleSize="h4" additionalClasses="-bg--grey-20">
-    .chi-grid.-no-gutter.-bg--white(slot="example")
-      .chi-col.-w--6.-w-sm--4.-p--3
-        chi-tabs(:active-tab='activeTab' id='example__vertical-flat' vertical @chiTabChange='chiTabChange')
-      .chi-col.-p--3
+  <ComponentExample title="Solid" id="horizontal-solid" :tabs="exampleTabs" titleSize="h4" additionalClasses="-bg--grey-20">
+    .-px--3.-pt--2.-bg--white(slot="example")
+      chi-tabs(:active-tab='activeTab' id='example__horizontal-solid' size='lg' solid @chiTabChange='chiTabChange')
+      .-py--3
         div(v-for="tabContent in tabsContent" :class="['chi-tabs-panel', activeTab === tabContent.id ? '-active' : '']" role="tabpanel")
           .-text {{tabContent.text}}
 
@@ -41,7 +40,7 @@ import { TabsListInterface } from '~/models/models';
   }
 })
 
-export default class VerticalFlat extends Vue {
+export default class HorizontalSolid extends Vue {
   activeTab = 'tab-a'
 
   tabLinks = [
@@ -76,12 +75,12 @@ export default class VerticalFlat extends Vue {
 
   get codeSnippets() {
     return {
-      webcomponent: `<chi-tabs active-tab="tab-a" id="example__vertical-flat" vertical></chi-tabs>
+      webcomponent: `<chi-tabs active-tab="tab-a" id="example__horizontal-solid" size="lg" solid></chi-tabs>
 
 ${this.generateTabsContentHtml(true)}
 
 <script>
-  const tabsElement = document.querySelector('example__vertical-flat');
+  const tabsElement = document.querySelector('#example__solid');
 
   if (tabsElement) {
     tabsElement.tabs = [
@@ -113,11 +112,11 @@ ${this.generateTabsContentHtml(true)}
     });
   }
 <\/script>`,
-      htmlblueprint: `<ul class="chi-tabs -vertical" id="example-vertical-base" role="tablist" aria-label="chi-tabs-vertical">\n${this.generateTabsHtml()}\n</ul>
+        htmlblueprint: `<ul class="chi-tabs -solid -lg -border" id="example-horizontal-solid-bordered" role="tablist" aria-label="chi-tabs-horizontal">\n${this.generateTabsHtml()}\n</ul>
 
 ${this.generateTabsContentHtml(false)}
 
-<script>chi.tab(document.getElementById('example-vertical-base'));<\/script>`
+<script>chi.tab(document.getElementById('example-horizontal-solid-bordered'));<\/script>`
     }
   }
 
@@ -150,7 +149,7 @@ ${this.generateTabsContentHtml(false)}
   }
 
   mounted() {
-    const element = document.querySelector('#example__vertical-flat') as TabsListInterface
+    const element = document.querySelector('#example__horizontal-solid') as TabsListInterface
 
     if (element) {
       element.tabs = this.tabLinks

@@ -1,6 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Vertical Tree Tabs" id="vertical-tree-tabs"
-    | :tabs="exampleTabs">
+  <ComponentExample title="Vertical Tree Tabs" id="vertical-tree-tabs" titleSize="h4" :tabs="exampleTabs">
     div(slot="example")
       .-p--3
         ul.chi-tabs.-vertical.-icons.-list.-tree.-lg(
@@ -28,6 +27,14 @@
                   button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
                     .chi-button__content
                       i.chi-icon.icon-more-vert(aria-hidden="true")
+                ul.chi-tabs__subtabs(v-if="subLink.subLinks")
+                  li(v-for="innerSubLink in subLink.subLinks" :class="[innerSubLink.active ? '-active' : '']")
+                    a.chi-tabs_item(href='#')
+                      span.chi-tabs_item-title {{innerSubLink.text}}
+                      span.chi-tabs_item-text(v-if="innerSubLink.description" ) {{innerSubLink.description}}
+                      button.chi-button.-icon.-flat.-no-hover(aria-label="Button action")
+                        .chi-button__content
+                          i.chi-icon.icon-more-vert(aria-hidden="true")
 
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webComponent" class="html"></code>
@@ -41,23 +48,27 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component({})
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          disabled: true,
+          id: 'webcomponent',
+          label: 'Web Component'
+        },
+        {
+          active: true,
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint'
+        }
+      ]
+    }
+  }
+})
 
 export default class VerticalTabsWithIconsAndDescription extends Vue {
-  exampleTabs = [
-    {
-      disabled: true,
-      id: 'webcomponent',
-      label: 'Web Component'
-    },
-    {
-      active: true,
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint'
-    }
-  ]
-
-  tabLinks = [
+    tabLinks = [
     {
       href: '',
       text: 'Active Tab',
@@ -76,7 +87,19 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
         {
           href: '',
           text: 'Subtab Link',
-          description: 'Subtab description'
+          description: 'Subtab description',
+          subLinks: [
+            {
+              href: '',
+              text: 'Subtab Link',
+              description: 'Subtab description'
+            },
+            {
+              href: '',
+              text: 'Subtab Link',
+              description: 'Subtab description'
+            }
+          ]
         },
         {
           href: '',
@@ -89,13 +112,45 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
       href: '',
       text: 'Tab Link',
       description: 'Tab description'
-    },
-    {
-      href: '',
-      text: 'Tab Link',
-      description: 'Tab description'
     }
   ]
+
+  tabLink = (
+    `<a class="chi-tabs_item" href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span class="chi-tabs_item-title">Tab Link</span>
+      <span class="chi-tabs_item-text">Tab description</span>
+      <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
+        <div class="chi-button__content">
+          <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
+        </div>
+      </button>
+    </a>`
+  )
+
+  subLink = (
+    `<a class="chi-tabs_item" href="#">
+          <span class="chi-tabs_item-title">Subtab Link</span>
+          <span class="chi-tabs_item-text">Subtab description</span>
+          <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
+            <div class="chi-button__content">
+              <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
+            </div>
+          </button>
+        </a>`
+  )
+
+  innerSubLink = (
+    `<a class="chi-tabs_item" href="#">
+              <span class="chi-tabs_item-title">Subtab Link</span>
+              <span class="chi-tabs_item-text">Subtab description</span>
+              <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
+                <div class="chi-button__content">
+                  <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
+                </div>
+              </button>
+            </a>`
+  )
 
   codeSnippets = {
     webComponent: '',
@@ -112,87 +167,29 @@ export default class VerticalTabsWithIconsAndDescription extends Vue {
     </a>
   </li>
   <li>
-    <a class="chi-tabs_item" href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span class="chi-tabs_item-title">Tab Link</span>
-      <span class="chi-tabs_item-text">Tab description</span>
-      <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
-        </div>
-      </button>
-    </a>
+    ${this.tabLink}
     <ul class="chi-tabs__subtabs">
       <li>
-        <a class="chi-tabs_item" href="#">
-          <span class="chi-tabs_item-title">Subtab Link</span>
-          <span class="chi-tabs_item-text">Subtab description</span>
-          <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
-            </div>
-          </button>
-        </a>
+        ${this.subLink}
       </li>
       <li>
-        <a class="chi-tabs_item" href="#">
-          <span class="chi-tabs_item-title">Subtab Link</span>
-          <span class="chi-tabs_item-text">Subtab description</span>
-          <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
-            </div>
-          </button>
-        </a>
+        ${this.subLink}
         <ul class="chi-tabs__subtabs">
           <li>
-            <a class="chi-tabs_item" href="#">
-              <span class="chi-tabs_item-title">Subtab Link</span>
-              <span class="chi-tabs_item-text">Subtab description</span>
-              <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
-                </div>
-              </button>
-            </a>
+            ${this.innerSubLink}
           </li>
           <li>
-            <a class="chi-tabs_item" href="#">
-              <span class="chi-tabs_item-title">Subtab Link</span>
-              <span class="chi-tabs_item-text">Subtab description</span>
-              <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
-                </div>
-              </button>
-            </a>
+            ${this.innerSubLink}
           </li>
         </ul>
       </li>
       <li>
-        <a class="chi-tabs_item" href="#">
-          <span class="chi-tabs_item-title">Subtab Link</span>
-          <span class="chi-tabs_item-text">Subtab description</span>
-          <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
-            </div>
-          </button>
-        </a>
+        ${this.subLink}
       </li>
     </ul>
   </li>
   <li>
-    <a class="chi-tabs_item" href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span class="chi-tabs_item-title">Tab Link</span>
-      <span class="chi-tabs_item-text">Tab description</span>
-      <button class="chi-button -icon -flat -no-hover" aria-label="Button action">
-        <div class="chi-button__content">
-          <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
-        </div>
-      </button>
-    </a>
+    ${this.tabLink}
   </li>
 </ul>`
   }

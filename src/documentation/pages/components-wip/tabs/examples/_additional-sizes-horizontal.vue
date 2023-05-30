@@ -1,6 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Horizontal" id="additional-sizes-horizontal"
-    | :tabs="exampleTabs" additionalClasses="-pb--4">
+  <ComponentExample title="Horizontal" id="additional-sizes-horizontal" :tabs="exampleTabs" additionalClasses="-pb--4" titleSize="h4">
     div(slot="example")
       p.-text--bold X-small
       .chi-divider.-mb--2
@@ -15,10 +14,10 @@
       .chi-divider.-mb--2
       chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-lg' size='lg')
     <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webComponent" class="html"></code>
+      <code v-highlight="codeSnippets.webComponent" class="html"></code>
     </pre>
     <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlBlueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlBlueprint" class="html"></code>
     </pre>
   </ComponentExample>
 </template>
@@ -27,7 +26,23 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { TabsListInterface } from '~/models/models';
 
-@Component({})
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          active: true,
+          id: 'webcomponent',
+          label: 'Web Component'
+        },
+        {
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint'
+        }
+      ]
+    }
+  }
+})
 
 export default class AdditionalSizesHorizontal extends Vue {
   exampleTabs = [
@@ -57,69 +72,60 @@ export default class AdditionalSizesHorizontal extends Vue {
     }
   ]
 
-  codeSnippets = {
-    webComponent: `<!-- X-small -->
-<chi-tabs active-tab="tab-a" id="example__additional-sizes-horizontal-xs" size="xs"></chi-tabs>
+  sizes = [
+    {
+      name: 'X-small',
+      value: 'xs'
+    },
+    {
+      name: 'Small',
+      value: 'sm'
+    },
+    {
+      name: 'Medium (Base)',
+      value: 'md'
+    },
+    {
+      name: 'Large',
+      value: 'lg'
+    }
+  ]
 
-<!-- Small -->
-<chi-tabs active-tab="tab-a" id="example__additional-sizes-horizontal-sm" size="sm"></chi-tabs>
+  get codeSnippets() {
+    return {
+      webComponent: this.webComponentHtml,
+      htmlBlueprint: this.blueprintHtml
+    }
+  }
 
-<!-- Medium (Base) -->
-<chi-tabs active-tab="tab-a" id="example__additional-sizes-horizontal-md"></chi-tabs>
+  get tabsHtml() {
+    return this.tabLinks.map((_, index) => {
+      const isFirstItem = index === 0;
+      return (`  <li${isFirstItem ? ' class="-active"' : ''}>
+    <a href="#">${isFirstItem ? 'Active tab' : 'Tab link'}</a>
+  </li>`
+      )
+    }).join('\n');
+  }
 
-<!-- Large -->
-<chi-tabs active-tab="tab-a" id="example__additional-sizes-horizontal-lg" size="lg"></chi-tabs>`,
-    htmlBlueprint: `<!-- X-small -->
-<ul class="chi-tabs -xs">
-  <li class="-active">
-    <a href="#">Active Tab</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-</ul>
+  get webComponentHtml() {
+    return this.sizes.map(({ name, value }) => {
+      return (
+        `<!-- ${name} -->
+<chi-tabs active-tab="tab-a" id="example__additional-sizes-horizontal-${value}"${value === 'md' ? '' : ` size="${value}`}></chi-tabs>`
+      )
+    }).join('\n\n');
+  }
 
-<!-- Small -->
-<ul class="chi-tabs -sm">
-  <li class="-active">
-    <a href="#">Active Tab</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-</ul>
-
-<!-- Medium (Base) -->
-<ul class="chi-tabs">
-  <li class="-active">
-    <a href="#">Active Tab</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-</ul>
-
-<!-- Large -->
-<ul class="chi-tabs -lg">
-  <li class="-active">
-    <a href="#">Active Tab</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
+  get blueprintHtml() {
+    return this.sizes.map(({ name, value }) => {
+      return (
+        `<!-- ${name} -->
+<ul class="chi-tabs${value === 'md' ? '' : ` -${value}`}">
+${this.tabsHtml}
 </ul>`
+      )
+    }).join('\n\n');
   }
 
   mounted() {

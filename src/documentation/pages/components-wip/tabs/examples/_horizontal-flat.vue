@@ -1,9 +1,8 @@
 <template lang="pug">
-  <ComponentExample title="Flat" id="vertical-flat" :tabs="exampleTabs" titleSize="h4" additionalClasses="-bg--grey-20">
-    .chi-grid.-no-gutter.-bg--white(slot="example")
-      .chi-col.-w--6.-w-sm--4.-p--3
-        chi-tabs(:active-tab='activeTab' id='example__vertical-flat' vertical @chiTabChange='chiTabChange')
-      .chi-col.-p--3
+  <ComponentExample title="Flat" id="horizontal-flat" :tabs="exampleTabs" titleSize="h4" additionalClasses="-bg--grey-20">
+    .-px--3.-bg--white(slot="example" :class="isPortal ? '-pt--2' : ''")
+      chi-tabs(:active-tab='activeTab' id='example__horizontal-flat' @chiTabChange='chiTabChange')
+      .-py--3
         div(v-for="tabContent in tabsContent" :class="['chi-tabs-panel', activeTab === tabContent.id ? '-active' : '']" role="tabpanel")
           .-text {{tabContent.text}}
 
@@ -20,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import { TabsListInterface } from '~/models/models';
 
 @Component({
@@ -41,7 +40,9 @@ import { TabsListInterface } from '~/models/models';
   }
 })
 
-export default class VerticalFlat extends Vue {
+export default class HorizontalFlat extends Vue {
+  @Prop() isPortal?: boolean;
+
   activeTab = 'tab-a'
 
   tabLinks = [
@@ -76,12 +77,12 @@ export default class VerticalFlat extends Vue {
 
   get codeSnippets() {
     return {
-      webcomponent: `<chi-tabs active-tab="tab-a" id="example__vertical-flat" vertical></chi-tabs>
+      webcomponent: `<chi-tabs active-tab="tab-a" id="example__horizontal-flat"></chi-tabs>
 
 ${this.generateTabsContentHtml(true)}
 
 <script>
-  const tabsElement = document.querySelector('example__vertical-flat');
+  const tabsElement = document.querySelector('example__horizontal-flat');
 
   if (tabsElement) {
     tabsElement.tabs = [
@@ -113,11 +114,11 @@ ${this.generateTabsContentHtml(true)}
     });
   }
 <\/script>`,
-      htmlblueprint: `<ul class="chi-tabs -vertical" id="example-vertical-base" role="tablist" aria-label="chi-tabs-vertical">\n${this.generateTabsHtml()}\n</ul>
+        htmlblueprint: `<ul class="chi-tabs" id="example-horizontal-base" role="tablist" aria-label="chi-tabs-horizontal">\n${this.generateTabsHtml()}\n</ul>
 
 ${this.generateTabsContentHtml(false)}
 
-<script>chi.tab(document.getElementById('example-vertical-base'));<\/script>`
+<script>chi.tab(document.getElementById('example-horizontal-base'));<\/script>`
     }
   }
 
@@ -129,7 +130,7 @@ ${this.generateTabsContentHtml(false)}
     return this.tabLinks.map(({ label, id }, index) => {
       const isFirstItem = index === 0;
       return (
-        `  <li${isFirstItem ? ' class="-active"' : ''}>
+  `  <li${isFirstItem ? ' class="-active"' : ''}>
     <a
       href="#${id}"
       role="tab"${!isFirstItem ? '\n      tabindex="-1"' : ''}
@@ -150,7 +151,7 @@ ${this.generateTabsContentHtml(false)}
   }
 
   mounted() {
-    const element = document.querySelector('#example__vertical-flat') as TabsListInterface
+    const element = document.querySelector('#example__horizontal-flat') as TabsListInterface
 
     if (element) {
       element.tabs = this.tabLinks

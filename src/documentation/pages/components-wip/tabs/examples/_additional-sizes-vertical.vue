@@ -1,6 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Vertical" id="additional-sizes-vertical"
-    | :tabs="exampleTabs" additionalClasses="-pb--4">
+  <ComponentExample title="Vertical" id="additional-sizes-vertical" :tabs="exampleTabs" additionalClasses="-pb--4" titleSize="h4">
     div(slot="example")
       p.-text--bold Small
       .chi-divider.-mb--2
@@ -55,10 +54,10 @@
             li(v-for="subLink in link.subLinks" :class="[subLink.active ? '-active' : '']")
               a(href='#') {{subLink.text}}
     <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webComponent" class="html"></code>
+      <code v-highlight="codeSnippets.webComponent" class="html"></code>
     </pre>
     <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlBlueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlBlueprint" class="html"></code>
     </pre>
   </ComponentExample>
 </template>
@@ -113,94 +112,51 @@ export default class AdditionalSizesVertical extends Vue {
     }
   ]
 
-  codeSnippets = {
-    webComponent: '',
-    htmlBlueprint: `<!-- Small -->
-<ul class="chi-tabs -vertical -sm">
-  <li class="-active">
-    <a href="#">Active Tab</a>
-    <ul class="chi-tabs__subtabs">
-      <li class="-active">
-        <a href="#">Subtab Link</a>
-      </li>
-      <li>
-        <a href="#">Subtab Link</a>
-      </li>
-      <li>
-        <a href="#">Subtab Link</a>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-</ul>
+  sizes = [
+    {
+      name: 'Small',
+      value: 'sm'
+    },
+    {
+      name: 'Medium (Base)',
+      value: 'md'
+    },
+    {
+      name: 'Large',
+      value: 'lg'
+    },
+    {
+      name: 'X-Large',
+      value: 'xl'
+    },
+  ]
 
-<!-- Medium (Base) -->
-<ul class="chi-tabs -vertical">
-  <li class="-active">
-    <a href="#">Active Tab</a>
-    <ul class="chi-tabs__subtabs">
-      <li class="-active">
-        <a href="#">Subtab Link</a>
-      </li>
-      <li>
-        <a href="#">Subtab Link</a>
-      </li>
-      <li>
-        <a href="#">Subtab Link</a>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-</ul>
+  get codeSnippets() {
+    return {
+      webComponent: '',
+      htmlBlueprint: this.tabsHtml
+    }
+  }
 
-<!-- Large -->
-<ul class="chi-tabs -vertical -lg">
-  <li class="-active">
-    <a href="#">Active Tab</a>
-    <ul class="chi-tabs__subtabs">
-      <li class="-active">
+  get subTabsHtml() {
+    return this.tabLinks.map((_, index) => {
+      const isFirstItem = index === 0;
+      return (`      <li${isFirstItem ? ' class="-active"' : ''}>
         <a href="#">Subtab Link</a>
-      </li>
-      <li>
-        <a href="#">Subtab Link</a>
-      </li>
-      <li>
-        <a href="#">Subtab Link</a>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-  <li>
-    <a href="#">Tab Link</a>
-  </li>
-</ul>
+      </li>`
+      )
+    }).join('\n');
+  }
 
-<!-- X-Large -->
-<ul class="chi-tabs -vertical -xl">
+  get tabsHtml() {
+    return this.sizes.map(({ name, value }) => {
+      return (
+        `<!-- ${name} -->
+<ul class="chi-tabs -vertical${value === 'md' ? '' : ` -${value}`}">
   <li class="-active">
     <a href="#">Active Tab</a>
     <ul class="chi-tabs__subtabs">
-      <li class="-active">
-        <a href="#">Subtab Link</a>
-      </li>
-      <li>
-        <a href="#">Subtab Link</a>
-      </li>
-      <li>
-        <a href="#">Subtab Link</a>
-      </li>
+${this.subTabsHtml}
     </ul>
   </li>
   <li>
@@ -210,6 +166,8 @@ export default class AdditionalSizesVertical extends Vue {
     <a href="#">Tab Link</a>
   </li>
 </ul>`
+      )
+    }).join('\n\n');
   }
 }
 </script>

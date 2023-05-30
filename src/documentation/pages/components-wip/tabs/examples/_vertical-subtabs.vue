@@ -1,6 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Vertical Subtabs" id="vertical-subtabs" additionalClasses="-bg--grey-20"
-    | :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="changeHeadTab">
+  <ComponentExample title="Vertical Subtabs" id="vertical-subtabs" additionalClasses="-bg--grey-20" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="changeHeadTab">
     div(slot="example")
       div(:class="['-p--3', isInverse ? '-bg--black' : '-bg--white']")
         ul.chi-tabs.-vertical(
@@ -76,11 +75,11 @@ export default class VerticalSubtabs extends Vue {
     },
     {
       href: '',
-      text: 'Tab Link'
+      text: 'Tab link'
     },
     {
       href: '',
-      text: 'Tab Link'
+      text: 'Tab link'
     }
   ]
 
@@ -98,15 +97,7 @@ export default class VerticalSubtabs extends Vue {
   <li class="-active">
     <a href="#">Active tab</a>
     <ul class="chi-tabs__subtabs">
-      <li class="-active">
-        <a href="#">Subtab Link</a>
-      </li>
-      <li>
-        <a href="#">Subtab Link</a>
-      </li>
-      <li>
-        <a href="#">Subtab Link</a>
-      </li>
+${this.tabsLinksHtml}
     </ul>
   </li>
   <li>
@@ -131,15 +122,7 @@ export default class VerticalSubtabs extends Vue {
   <li class="-active">
     <a href="#">Active tab</a>
     <ul class="chi-tabs__subtabs">
-      <li class="-active">
-        <a href="#">Subtab Link</a>
-      </li>
-      <li>
-        <a href="#">Subtab Link</a>
-      </li>
-      <li>
-        <a href="#">Subtab Link</a>
-      </li>
+${this.tabsLinksHtml}
     </ul>
   </li>
   <li>
@@ -156,6 +139,15 @@ export default class VerticalSubtabs extends Vue {
 
   get isInverse() {
     return this.activeHeadTab === 'inverse'
+  }
+
+  get tabsLinksHtml() {
+    return this.tabLinks.map((_, index) => {
+      return (`      <li${index === 0 ? ' class="-active"' : ''}>
+        <a href="#">Subtab Link</a>
+      </li>`
+      )
+    }).join('\n');
   }
 
 

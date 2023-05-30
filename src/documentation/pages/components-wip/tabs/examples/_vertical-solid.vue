@@ -1,20 +1,21 @@
 <template lang="pug">
-  <ComponentExample title="Solid" id="vertical-solid" :tabs="exampleTabs" additionalClasses="-bg--grey-20">
-    .-bg--white(slot="example")
-      .chi-grid.-no-gutter.-bg--white
-        .chi-col.-w--6.-w-sm--4.-p--3
-          chi-tabs(:active-tab='activeTab' id='example__vertical-solid' size='xl' vertical solid @chiTabChange='chiTabChange')
-        .chi-col.-p--3
-          div(v-for="tabContent in tabsContent" :class="['chi-tabs-panel', activeTab === tabContent.id ? '-active' : '']" role="tabpanel")
-            .-text {{tabContent.text}}
+  <ComponentExample title="Solid" id="vertical-solid" :tabs="exampleTabs" titleSize="h4" additionalClasses="-bg--grey-20">
+    .chi-grid.-no-gutter.-bg--white(slot="example")
+      .chi-col.-w--6.-w-sm--4.-p--3
+        chi-tabs(:active-tab='activeTab' id='example__vertical-solid' size='xl' solid vertical @chiTabChange='chiTabChange')
+      .chi-col.-p--3
+        div(v-for="tabContent in tabsContent" :class="['chi-tabs-panel', activeTab === tabContent.id ? '-active' : '']" role="tabpanel")
+          .-text {{tabContent.text}}
 
     <pre class="language-html" slot="code-webcomponent">
-      <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
+      <code v-highlight="codeSnippets.webcomponent" class="html"></code>
     </pre>
-    <pre class="language-html" slot="code-htmlblueprint">
+    <Wrapper slot="code-htmlblueprint">
       <JSNeeded />
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
-    </pre>
+      <pre class="language-html">
+        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+      </pre>
+    </Wrapper>
   </ComponentExample>
 </template>
 
@@ -22,25 +23,26 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { TabsListInterface } from '~/models/models';
 
-@Component({})
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          active: true,
+          id: 'webcomponent',
+          label: 'Web Component'
+        },
+        {
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint'
+        }
+      ]
+    }
+  }
+})
 
 export default class VerticalSolid extends Vue {
   activeTab = 'tab-a'
-
-  tabsContent = [
-    {
-      id: 'tab-a',
-      text: 'Tab 1 content'
-    },
-    {
-      id: 'tab-b',
-      text: 'Tab 2 content'
-    },
-    {
-      id: 'tab-c',
-      text: 'Tab 3 content'
-    }
-  ]
 
   tabLinks = [
     {
@@ -57,27 +59,29 @@ export default class VerticalSolid extends Vue {
     }
   ]
 
-  exampleTabs = [
+  tabsContent = [
     {
-      active: true,
-      id: 'webcomponent',
-      label: 'Web Component'
+      id: 'tab-a',
+      text: 'Tab 1 content'
     },
     {
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint'
+      id: 'tab-b',
+      text: 'Tab 2 content'
+    },
+    {
+      id: 'tab-c',
+      text: 'Tab 3 content'
     }
   ]
 
-  codeSnippets = {
-    webcomponent: `<chi-tabs active-tab="tab-a" id="example__vertical-solid" size="xl" vertical solid></chi-tabs>
+  get codeSnippets() {
+    return {
+      webcomponent: `<chi-tabs active-tab="tab-a" id="example__vertical-solid" size='xl' solid vertical></chi-tabs>
 
-<div class="chi-tabs-panel -active" id="tab-a_content" role="tabpanel">Tab 1 content</div>
-<div class="chi-tabs-panel" id="tab-b_content" role="tabpanel">Tab 2 content</div>
-<div class="chi-tabs-panel" id="tab-c_content" role="tabpanel">Tab 3 content</div>
+${this.generateTabsContentHtml(true)}
 
 <script>
-  const tabsElement = document.querySelector('#example__vertical-solid');
+  const tabsElement = document.querySelector('#example__solid');
 
   if (tabsElement) {
     tabsElement.tabs = [
@@ -109,54 +113,47 @@ export default class VerticalSolid extends Vue {
     });
   }
 <\/script>`,
-    htmlblueprint: `<ul class="chi-tabs -vertical -solid -xl" id="example-vertical-solid" role="tablist" aria-label="chi-tabs-portal-vertical-solid">
-  <li class="-active">
-    <a
-      href="#vertical-solid-1"
-      role="tab"
-      aria-selected="true"
-      aria-controls="vertical-solid-1">Active Tab</a>
-  </li>
-  <li>
-    <a
-      href="#vertical-solid-2"
-      role="tab"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="vertical-solid-2">Tab Link</a>
-  </li>
-  <li>
-    <a
-      href="#vertical-solid-3"
-      role="tab"
-      aria-selected="false"
-      tabindex="-1"
-      aria-controls="vertical-solid-3">Tab Link</a>
-  </li>
-</ul>
+      htmlblueprint: `<ul class="chi-tabs -vertical -solid -xl" id="example-vertical-solid-bordered" role="tablist" aria-label="chi-tabs-vertical">\n${this.generateTabsHtml()}\n</ul>
 
-<div class="chi-tabs-panel -active" id="vertical-solid-1" role="tabpanel">
-  Tab 1 content
-</div>
-<div class="chi-tabs-panel" id="vertical-solid-2" role="tabpanel">
-  Tab 2 content
-</div>
-<div class="chi-tabs-panel" id="vertical-solid-3" role="tabpanel">
-  Tab 3 content
-</div>
+${this.generateTabsContentHtml(false)}
 
-<script>chi.tab(document.getElementById('example-vertical-solid'));<\/script>`
+<script>chi.tab(document.getElementById('example-vertical-solid-bordered'));<\/script>`
+    }
   }
 
   chiTabChange(tab: any) {
     this.activeTab = tab.detail.id
   }
 
-  mounted() {
-    const solidElement = document.querySelector('#example__vertical-solid') as TabsListInterface
+  generateTabsHtml() {
+    return this.tabLinks.map(({ label, id }, index) => {
+      const isFirstItem = index === 0;
+      return (
+        `  <li${isFirstItem ? ' class="-active"' : ''}>
+    <a
+      href="#${id}"
+      role="tab"${!isFirstItem ? '\n      tabindex="-1"' : ''}
+      aria-selected="${isFirstItem ? 'true' : 'false'}"
+      aria-controls="${id}">${label}</a>
+  </li>`
+      )
+    }).join('\n');
+  }
 
-    if (solidElement) {
-      solidElement.tabs = this.tabLinks
+  generateTabsContentHtml(isWebComponent: boolean) {
+    return this.tabsContent.map(({ text, id }, index) => {
+      const isFirstItem = index === 0;
+      return (
+        `class="chi-tabs-panel${isFirstItem ? ' -active' : ''}" id="${isWebComponent ? `${id}_content` : id}" role="tabpanel">${text}</div>`
+      )
+    }).join('\n');
+  }
+
+  mounted() {
+    const element = document.querySelector('#example__vertical-solid') as TabsListInterface
+
+    if (element) {
+      element.tabs = this.tabLinks
     }
   }
 }

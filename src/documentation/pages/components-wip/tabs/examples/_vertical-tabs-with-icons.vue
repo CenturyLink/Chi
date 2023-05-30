@@ -1,6 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Vertical tabs with icons" id="vertical-tabs-with-icons"
-    | :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="changeHeadTab" additionalClasses="-bg--grey-20">
+  <ComponentExample title="Vertical tabs with icons" id="vertical-tabs-with-icons" :tabs="exampleTabs" :headTabs="headTabs" titleSize="h4" @chiHeadTabsChange="changeHeadTab" additionalClasses="-bg--grey-20">
     div(slot="example")
       div(:class="['-p--3', isInverse ? '-bg--black' : '-bg--white']")
         ul.chi-tabs.-icons.-vertical(
@@ -37,23 +36,27 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { HeadTabInterface } from '~/models/models';
 
-@Component({})
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          disabled: true,
+          id: 'webcomponent',
+          label: 'Web Component'
+        },
+        {
+          active: true,
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint'
+        }
+      ]
+    }
+  }
+})
 
 export default class VerticalTabsWithIcons extends Vue {
   activeHeadTab = 'base'
-
-  exampleTabs = [
-    {
-      disabled: true,
-      id: 'webcomponent',
-      label: 'Web Component'
-    },
-    {
-      active: true,
-      id: 'htmlblueprint',
-      label: 'HTML Blueprint'
-    }
-  ]
 
   tabLinks = [
     {
@@ -86,7 +89,8 @@ export default class VerticalTabsWithIcons extends Vue {
     }
   ]
 
-  headTabs = [
+  get headTabs() {
+    return [
       {
         active: true,
         id: 'base',
@@ -97,24 +101,7 @@ export default class VerticalTabsWithIcons extends Vue {
           },
           htmlBlueprint: {
             code: `<ul class="chi-tabs -vertical -icons">
-  <li class="-active">
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>Active Tab</span>
-    </a>
-  </li>
-  <li>
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>Tab link</span>
-    </a>
-  </li>
-  <li>
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>Tab link</span>
-    </a>
-  </li>
+${this.tabsLinksHtml}
 </ul>`
           }
         }
@@ -127,30 +114,26 @@ export default class VerticalTabsWithIcons extends Vue {
             code: ''
           },
           htmlBlueprint: {
-            code: `<ul class="chi-tabs -inverse -vertical -icons">
-  <li class="-active">
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>Active Tab</span>
-    </a>
-  </li>
-  <li>
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>Tab link</span>
-    </a>
-  </li>
-  <li>
-    <a href="#">
-      <i class="chi-icon icon-atom" aria-hidden="true"></i>
-      <span>Tab link</span>
-    </a>
-  </li>
+            code: `<ul class="chi-tabs -vertical -inverse -icons">
+${this.tabsLinksHtml}
 </ul>`
+          }
         }
       }
-    }
-  ]
+    ]
+  }
+
+  get tabsLinksHtml() {
+    return this.tabLinks.map(({text, active}) => {
+      return (`  <li${active ? ' class="-active"' : ''}>
+    <a href="#">
+      <i class="chi-icon icon-atom" aria-hidden="true"></i>
+      <span>${text}</span>
+    </a>
+  </li>`
+      )
+    }).join('\n');
+  }
 
   get isInverse() {
     return this.activeHeadTab === 'inverse'
