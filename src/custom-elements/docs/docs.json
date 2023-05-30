@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-05-29T12:05:55",
+  "timestamp": "2023-05-30T16:36:50",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1983,6 +1983,7 @@
       "styles": [],
       "slots": [],
       "dependents": [
+        "chi-search-input",
         "chi-tabs"
       ],
       "dependencies": [
@@ -1994,6 +1995,9 @@
         ],
         "chi-button": [
           "chi-icon"
+        ],
+        "chi-search-input": [
+          "chi-dropdown"
         ],
         "chi-tabs": [
           "chi-dropdown"
@@ -4350,6 +4354,15 @@
           "chi-search-input",
           "chi-text-input"
         ],
+        "chi-search-input": [
+          "chi-dropdown"
+        ],
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
         "chi-text-input": [
           "chi-icon",
           "chi-spinner"
@@ -4793,6 +4806,38 @@
           "required": false
         },
         {
+          "name": "menuItems",
+          "type": "DropdownMenuItem[]",
+          "mutable": true,
+          "reflectToAttr": false,
+          "docs": "To set the list of items to be used in the dropdown menu in autocomplete mode",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "DropdownMenuItem[]"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "mode",
+          "type": "\"autocomplete\"",
+          "mutable": false,
+          "attr": "mode",
+          "reflectToAttr": true,
+          "docs": "To set the mode to search input",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "autocomplete",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "name",
           "type": "string",
           "mutable": false,
@@ -4819,23 +4864,6 @@
           "values": [
             {
               "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "portal",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "portal",
-          "reflectToAttr": true,
-          "docs": "To enable portal styling",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
             }
           ],
           "optional": false,
@@ -4989,8 +5017,19 @@
       "dependents": [
         "chi-phone-input"
       ],
-      "dependencies": [],
+      "dependencies": [
+        "chi-dropdown"
+      ],
       "dependencyGraph": {
+        "chi-search-input": [
+          "chi-dropdown"
+        ],
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
         "chi-phone-input": [
           "chi-search-input"
         ]
