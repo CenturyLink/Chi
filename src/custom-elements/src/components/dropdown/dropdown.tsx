@@ -1,5 +1,4 @@
 import {
-  Listen,
   Component,
   Element,
   Event,
@@ -7,7 +6,8 @@ import {
   Method,
   Prop,
   h,
-  Watch
+  Watch,
+  Listen
 } from '@stencil/core';
 import Popper, { Placement } from 'popper.js';
 import {
@@ -16,7 +16,7 @@ import {
   DROPDOWN_CLASSES,
   LIST_CLASS,
   FLUID_CLASS,
-  UTILITY_CLASSES,
+  UTILITY_CLASSES
 } from '../../constants/classes';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
@@ -71,11 +71,15 @@ export class Dropdown {
    * Triggered when showing the Dropdown
    */
   @Event({ eventName: 'chiDropdownShow' }) eventShow: EventEmitter;
-
   /**
-   * Triggered when showing the Dropdown
+   * Triggered when press key to up/down the Dropdown menu items
    */
-  @Event({ eventName: 'chiDropdownItemSelect' }) chiDropdownItemSelect: EventEmitter
+  @Event({ eventName: 'chiDropdownKeyDown' }) eventKeyDown: EventEmitter;
+  /**
+   * Triggered when select an item in the dropdown menu
+   */
+  @Event({ eventName: 'chiDropdownItemSelected' })
+  eventItemSelected: EventEmitter;
 
   @Element() el: HTMLElement;
 
@@ -103,11 +107,11 @@ export class Dropdown {
   componentDidLoad() {
     this._configureDropdownPopper();
     this._componentLoaded = true;
-    document.body.addEventListener('click', this.handlerClick);
+    this._addEventListeners();
   }
 
   componentDidUnload() {
-    document.body.removeEventListener('click', this.handlerClick);
+    this._removeEventListeners();
   }
 
   @Watch('position')
@@ -194,6 +198,25 @@ export class Dropdown {
     }
   };
 
+  handlerSelectedMenuItem = () => {
+    this.eventItemSelected.emit();
+  };
+
+  handlerMouseOverMenuItem = (ev: MouseEvent) => {
+    (ev.target as HTMLElement).focus();
+  };
+
+  handlerKeyDown = ({ code }: KeyboardEvent) => {
+    const allowedKeys = ['ArrowDown', 'ArrowUp'];
+
+    if (!allowedKeys.includes(code)) {
+      return;
+    }
+    
+    this._focusMenuItem(code);
+    this.eventKeyDown.emit();
+  };
+
   handlerClickTrigger = () => {
     this.toggle();
   };
@@ -233,20 +256,6 @@ export class Dropdown {
     this.emitShow();
   }
 
-  @Listen('keydown', { target: 'document' })
-  onKeydown(ev: KeyboardEvent) {
-    if (['ArrowUp', 'ArrowDown'].includes(ev.key)) {
-      this._handleDropdownItemFocus(ev.key)
-    }
-  }
-
-  @Listen('click')
-  onClickSelectDropdownItem(ev) {
-    if (ev.target.classList.contains(DROPDOWN_CLASSES.MENU_ITEM)) {
-      this.handleSelectItem(ev);
-    }
-  }
-
   /**
    * Toggles active state (show/hide)
    */
@@ -255,34 +264,55 @@ export class Dropdown {
     this.active ? this.hide() : this.show();
   }
 
-  handleSelectItem(ev: Event) {
-    this.chiDropdownItemSelect.emit(ev);
-  }
+  _focusMenuItem(keyCode: string) {
+    const menuItems = this._getDropdownMenuItems();
+    const focusedElement = document.activeElement as HTMLElement;
+    const currentIndex = menuItems.indexOf(focusedElement);
+    let index = keyCode === 'ArrowUp' ? currentIndex - 1 : currentIndex + 1;
 
-  _getDropdownItems(): HTMLElement[] {
-    return Array.from(this.el.querySelectorAll(`.${DROPDOWN_CLASSES.MENU_ITEM}`));
-  }
+    if (!menuItems.includes(focusedElement)) {
+      const startIndex = keyCode === 'ArrowUp' ? menuItems.length - 1 : 0;
 
-  _handleDropdownItemFocus(direction: string) {
-    const menuItems = this._getDropdownItems();
-    const activeElement = document.activeElement as HTMLElement;
-
-    if (!menuItems.includes(activeElement)) {
-      return menuItems[0].focus();
+      return menuItems[startIndex].focus();
     }
-
-    const currentIndex = menuItems.indexOf(activeElement);
-    let index = direction === 'ArrowUp' ? currentIndex - 1 : currentIndex + 1;
 
     if (index === -1) {
       index = menuItems.length - 1;
-    }
-
-    if (index === menuItems.length) {
+    } else if (index === menuItems.length) {
       index = 0;
     }
 
     menuItems[index].focus();
+  }
+
+  _getDropdownMenuItems(): HTMLElement[] {
+    const children = this._dropdownMenuElement.children as HTMLAnchorElement[];
+
+    return Array.from(children).filter((item: HTMLElement) =>
+      item.classList.contains(DROPDOWN_CLASSES.MENU_ITEM)
+    );
+  }
+
+  _addEventListeners() {
+    const menuItems = this._getDropdownMenuItems();
+
+    document.body.addEventListener('click', this.handlerClick);
+    this.el.addEventListener('keydown', this.handlerKeyDown.bind(this));
+    menuItems.forEach((item: HTMLElement) => {
+      item.addEventListener('click', this.handlerSelectedMenuItem);
+      item.addEventListener('mouseover', this.handlerMouseOverMenuItem);
+    });
+  }
+
+  _removeEventListeners() {
+    const menuItems = this._getDropdownMenuItems();
+
+    document.body.removeEventListener('click', this.handlerClick);
+    this.el.removeEventListener('keydown', this.handlerKeyDown);
+    menuItems.forEach((item: HTMLElement) => {
+      item.removeEventListener('click', this.handlerSelectedMenuItem);
+      item.removeEventListener('mouseover', this.handlerMouseOverMenuItem);
+    });
   }
 
   render() {
