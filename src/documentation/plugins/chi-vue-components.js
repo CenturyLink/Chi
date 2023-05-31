@@ -13,6 +13,7 @@ const components = {
   ChiTooltip: library.components['ChiTooltip'],
   ChiColumnCustomization: library.components['ChiColumnCustomization'],
   ChiSaveView: library.components['ChiSaveView'],
+  ChiExpansionPanel: library.components['ChiExpansionPanel'],
 };
 
 Object.entries(components).forEach(([name, component]) => {
