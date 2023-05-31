@@ -44,3 +44,31 @@ export interface IThemes {
   brightspeed: string;
   colt: string;
 }
+
+interface Palette {
+  code: string,
+  text: string,
+  class?: string,
+  a11y?: string,
+}
+type NeutralSection = (Palette & { description: string })[][];
+type SupportingSection = (Palette & { wrapperClass?: string })[];
+
+interface Color {
+  brand: {
+    primary: Palette,
+    secondary: Palette,
+    supporting: SupportingSection,
+  },
+  neutral: NeutralSection,
+  semantic: {
+    green: Palette[],
+    blue: Palette[],
+    red: Palette[],
+    yellow: Palette[],
+  }
+}
+
+export type ThemesColor = {
+  [Property in keyof IThemes]: Color | null
+}

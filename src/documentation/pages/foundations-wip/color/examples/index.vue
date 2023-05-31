@@ -1,0 +1,21 @@
+<template lang="pug">
+  .chi-grid__container.-pt--3
+    p.-text
+      | Chi colors are designed to comply with U.S. <a href="https://www.section508.gov/">Section 508</a> federal requirements.
+      | Section 508 follows the Web Content Accessibility Guidelines (<a href="https://www.w3.org/TR/WCAG20/">WCAG 2.0</a>) Level AA
+      | standards which require text and background color contrast ratios of 4.5:1 or higher.
+      | All Chi colors either meet (AA) or exceed (AAA) these standards and have been marked below accordingly.
+    <Color />
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import Color from './_color.vue';
+
+@Component({
+  components: {
+    Color
+  }
+})
+export default class Examples extends Vue {}
+</script>
