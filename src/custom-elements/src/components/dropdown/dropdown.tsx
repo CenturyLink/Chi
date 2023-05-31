@@ -7,7 +7,6 @@ import {
   Prop,
   h,
   Watch,
-  Listen
 } from '@stencil/core';
 import Popper, { Placement } from 'popper.js';
 import {
@@ -212,7 +211,8 @@ export class Dropdown {
     if (!allowedKeys.includes(code)) {
       return;
     }
-    
+
+    this.el.requestPointerLock();
     this._focusMenuItem(code);
     this.eventKeyDown.emit();
   };
@@ -302,6 +302,7 @@ export class Dropdown {
       item.addEventListener('click', this.handlerSelectedMenuItem);
       item.addEventListener('mouseover', this.handlerMouseOverMenuItem);
     });
+    document.body.addEventListener('mousemove', () => document.exitPointerLock());
   }
 
   _removeEventListeners() {
@@ -313,6 +314,7 @@ export class Dropdown {
       item.removeEventListener('click', this.handlerSelectedMenuItem);
       item.removeEventListener('mouseover', this.handlerMouseOverMenuItem);
     });
+    document.body.removeEventListener('mousemove', () => document.exitPointerLock());
   }
 
   render() {
