@@ -24,6 +24,11 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # CHANGELOG
+## 2.1.1 (May 30, 2023)
+### Components
+#### Changed
+* Changed: Data table description popover in header has been repositioned in the DOM to improve rendering.
+
 ## 2.1.0 (May 12, 2023)
 ### Components
 #### Added
