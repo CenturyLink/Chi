@@ -37,7 +37,7 @@ export default class Base extends Vue {
   }
 
   generateHtml() {
-    return this.$data.opacities.map(opacity => `<div class="-opacity--${ opacity }">...</div>`).join('\n');
+    return this.$data.opacities.map((opacity: number) => `<div class="-opacity--${ opacity }">...</div>`).join('\n');
   }
 }
 </script>

@@ -37,7 +37,7 @@ export default class Hover extends Vue {
   }
 
   generateHtml() {
-    return this.$data.opacities.slice(0, 5).map(opacity => `<div class="-opacity-hover--${ opacity }">...</div>\n`).join('') +
+    return this.$data.opacities.slice(0, 5).map((opacity: number) => `<div class="-opacity-hover--${ opacity }">...</div>\n`).join('') +
   '<div class="-opacity--60 -opacity-hover--100">...</div>';
   }
 }
