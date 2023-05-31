@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    h4 Hover
+    <TitleAnchor title="Hover" id="specific-hover" titleSize="h4"/>
     table.chi-table.-bordered.-mb--3
       thead
         tr
@@ -11,13 +11,14 @@
       tbody
           tr(v-for="size in sizes")
             td.-text(width='40%')
-              code {{ `-opacity-hover-${size}--60` }}
-            td.-text 60% opacity on hover on <code>{{size}}</code> and up.
+              code {{ `-opacity-hover-${ size }--60` }}
+            td.-text 60% opacity on hover on <code>{{ size }}</code> and up.
 
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+
 @Component({
   data: () => {
     return {
