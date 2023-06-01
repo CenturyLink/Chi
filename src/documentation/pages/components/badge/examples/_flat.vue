@@ -10,6 +10,13 @@
           chi-badge(class='-m--1', color='dark', variant='flat')= 'Dark'
           chi-badge(class='-m--1', color='muted', variant='flat')= 'Muted'
       .chi-col.-w--12
+        .-p--2.-text--center
+          chi-badge(class='-m--1', color='accent-1', variant='flat')= 'Accent-1'
+          chi-badge(class='-m--1', color='accent-2', variant='flat')= 'Accent-2'
+          chi-badge(class='-m--1', color='accent-3', variant='flat')= 'Accent-3'
+          chi-badge(class='-m--1', color='accent-4', variant='flat')= 'Accent-4'
+          chi-badge(class='-m--1', color='accent-5', variant='flat')= 'Accent-5'
+      .chi-col.-w--12
         .-p--2.-bg--black.-text--center
           chi-badge(class='-m--1', color='secondary', variant='flat')= 'Secondary'
           chi-badge(class='-m--1', color='light', variant='flat')= 'Light'
@@ -56,6 +63,12 @@ import { Component, Vue } from 'vue-property-decorator';
 <chi-badge color="dark" variant="flat">Dark</chi-badge>
 <chi-badge color="muted" variant="flat">Muted</chi-badge>
 
+<chi-badge color="accent-1" variant="flat">Accent-1</chi-badge>
+<chi-badge color="accent-2" variant="flat">Accent-2</chi-badge>
+<chi-badge color="accent-3" variant="flat">Accent-3</chi-badge>
+<chi-badge color="accent-4" variant="flat">Accent-4</chi-badge>
+<chi-badge color="accent-5" variant="flat">Accent-5</chi-badge>
+
 <!-- For dark backgrounds -->
 <chi-badge color="secondary" variant="flat">Secondary</chi-badge>
 <chi-badge color="light" variant="flat">Light</chi-badge>`,
@@ -77,6 +90,22 @@ import { Component, Vue } from 'vue-property-decorator';
 </div>
 <div class="chi-badge -muted -flat">
   <span>Muted</span>
+</div>
+
+<div class="chi-badge -accent-1 -flat">
+  <span>Accent-1</span>
+</div>
+<div class="chi-badge -accent-2 -flat">
+  <span>Accent-2</span>
+</div>
+<div class="chi-badge -accent-3 -flat">
+  <span>Accent-3</span>
+</div>
+<div class="chi-badge -accent-4 -flat">
+  <span>Accent-4</span>
+</div>
+<div class="chi-badge -accent-5 -flat">
+  <span>Accent-5</span>
 </div>
 
 <!-- For dark backgrounds -->

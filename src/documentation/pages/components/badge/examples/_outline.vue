@@ -10,6 +10,13 @@
           chi-badge(class='-m--1', color='dark', variant='outline')= 'Dark'
           chi-badge(class='-m--1', color='muted', variant='outline')= 'Muted'
       .chi-col.-w--12
+        .-p--2.-text--center
+          chi-badge(class='-m--1', color='accent-1', variant='outline')= 'Accent-1'
+          chi-badge(class='-m--1', color='accent-2', variant='outline')= 'Accent-2'
+          chi-badge(class='-m--1', color='accent-3', variant='outline')= 'Accent-3'
+          chi-badge(class='-m--1', color='accent-4', variant='outline')= 'Accent-4'
+          chi-badge(class='-m--1', color='accent-5', variant='outline')= 'Accent-5'
+      .chi-col.-w--12
         .-p--2.-bg--black.-text--center
           chi-badge(class='-m--1', color='secondary', variant='outline')= 'Secondary'
           chi-badge(class='-m--1', color='light', variant='outline')= 'Light'
@@ -57,6 +64,12 @@ import { Component, Vue } from 'vue-property-decorator';
 <chi-badge color="dark" variant="outline">Dark</chi-badge>
 <chi-badge color="muted" variant="outline">Muted</chi-badge>
 
+<chi-badge color="accent-1" variant="outline">Accent-1</chi-badge>
+<chi-badge color="accent-2" variant="outline">Accent-2</chi-badge>
+<chi-badge color="accent-3" variant="outline">Accent-3</chi-badge>
+<chi-badge color="accent-4" variant="outline">Accent-4</chi-badge>
+<chi-badge color="accent-5" variant="outline">Accent-5</chi-badge>
+
 <!-- For dark backgrounds -->
 <chi-badge color="secondary" variant="outline">Secondary</chi-badge>
 <chi-badge color="light" variant="outline">Light</chi-badge>`,
@@ -79,6 +92,23 @@ import { Component, Vue } from 'vue-property-decorator';
 <div class="chi-badge -muted -outline">
   <span>Muted</span>
 </div>
+
+<div class="chi-badge -accent-1 -outline">
+  <span>Accent-1</span>
+</div>
+<div class="chi-badge -accent-2 -outline">
+  <span>Accent-2</span>
+</div>
+<div class="chi-badge -accent-3 -outline">
+  <span>Accent-3</span>
+</div>
+<div class="chi-badge -accent-4 -outline">
+  <span>Accent-4</span>
+</div>
+<div class="chi-badge -accent-5 -outline">
+  <span>Accent-5</span>
+</div>
+
 <!-- For dark backgrounds -->
 <div class="chi-badge -secondary -outline">
   <span>Secondary</span>
