@@ -14,7 +14,6 @@
             code {{ `-opacity-hover--${ opacity.class }` }}
           td
             code {{ `opacity: ${ opacity.value };` }}
-
 </template>
 
 <script lang="ts">

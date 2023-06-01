@@ -13,7 +13,6 @@
             td.-text(width='40%')
               code {{ `-opacity-hover-${ size }--60` }}
             td.-text 60% opacity on hover on <code>{{ size }}</code> and up.
-
 </template>
 
 <script lang="ts">

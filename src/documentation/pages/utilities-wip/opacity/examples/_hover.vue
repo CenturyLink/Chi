@@ -1,8 +1,7 @@
 <template lang="pug">
-  <ComponentExample padding="-p--2" title="Hover" id="opacity-hover" titleSize="h3" :tabs="exampleTabs" :showSnippetTabs="false">
+  <ComponentExample padding="-p--2" title="Hover" id="opacity-hover" :tabs="exampleTabs" :showSnippetTabs="false">
     p.-text(slot="example-description")
       | Use <code>-opacity-hover--{value}</code> to change the opacity of an element on hover.
-    div
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--6.-w-md--4.-w-lg--2(v-for="opacity in opacities")
         .-text.-text--center.-b--1.-rounded.-m--1.-p--2(:class="[`-opacity-hover--${ opacity }`, opacity === 100 ? '-opacity--60' : '']") {{ opacity + '% on hover' }}

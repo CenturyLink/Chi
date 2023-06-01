@@ -1,11 +1,11 @@
 <template lang="pug">
-  <ComponentExample padding="-p--2" title="Base" id="opacity-base" titleSize="h3" :tabs="exampleTabs" :showSnippetTabs="false">
+  <ComponentExample padding="-p--2" title="Base" id="opacity-base" :tabs="exampleTabs" :showSnippetTabs="false">
     p.-text(slot="example-description")
       | Use <code>-opacity--{value}</code> to change the opacity of an element.
-    div.chi-grid.-no-gutter(slot="example")
+    .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--6.-w-md--4.-w-lg--2.-p--1(v-for="opacity in opacities" :key="opacity")
         .example-opacity.-rounded(style='height: 3rem;')
-          .-text.-bg--black.-rounded(:class="`-opacity--${ opacity }`")(style='height: 3rem;')
+          .-text.-bg--black.-rounded(:class="`-opacity--${ opacity }`" style='height: 3rem;')
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
