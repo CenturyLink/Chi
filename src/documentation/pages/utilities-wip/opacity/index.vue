@@ -11,12 +11,12 @@ import Examples from './examples/index.vue';
 @Component({
   head() {
     return {
-      title: 'Chi - Opacity'
-    }
+      title: 'Chi - Opacity',
+    };
   },
   components: {
-    Examples
-  }
+    Examples,
+  },
 })
 export default class Opacity extends Vue {}
 </script>

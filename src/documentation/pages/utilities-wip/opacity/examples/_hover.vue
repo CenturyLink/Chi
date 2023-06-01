@@ -22,22 +22,29 @@ import { Component, Vue } from 'vue-property-decorator';
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ]
+          label: 'HTML Blueprint',
+        },
+      ],
     };
-  }
+  },
 })
 export default class Hover extends Vue {
   get codeSnippets() {
     return {
-      htmlblueprint: this.generateHtml()
-    }
+      htmlblueprint: this.generateHtml(),
+    };
   }
 
   generateHtml() {
-    return this.$data.opacities.slice(0, 5).map((opacity: number) => `<div class="-opacity-hover--${ opacity }">...</div>\n`).join('') +
-  '<div class="-opacity--60 -opacity-hover--100">...</div>';
+    return (
+      this.$data.opacities
+        .slice(0, 5)
+        .map(
+          (opacity: number) =>
+            `<div class="-opacity-hover--${opacity}">...</div>\n`
+        )
+        .join('') + '<div class="-opacity--60 -opacity-hover--100">...</div>'
+    );
   }
 }
 </script>

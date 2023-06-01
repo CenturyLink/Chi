@@ -23,21 +23,23 @@ import { Component, Vue } from 'vue-property-decorator';
         {
           active: true,
           id: 'htmlblueprint',
-          label: 'HTML Blueprint'
-        }
-      ]
+          label: 'HTML Blueprint',
+        },
+      ],
     };
-  }
+  },
 })
 export default class Base extends Vue {
-    get codeSnippets() {
+  get codeSnippets() {
     return {
-      htmlblueprint: this.generateHtml()
-    }
+      htmlblueprint: this.generateHtml(),
+    };
   }
 
   generateHtml() {
-    return this.$data.opacities.map((opacity: number) => `<div class="-opacity--${ opacity }">...</div>`).join('\n');
+    return this.$data.opacities
+      .map((opacity: number) => `<div class="-opacity--${opacity}">...</div>`)
+      .join('\n');
   }
 }
 </script>

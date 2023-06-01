@@ -21,9 +21,9 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      sizes: ['sm', 'md', 'lg', 'xl']
+      sizes: ['sm', 'md', 'lg', 'xl'],
     };
-  }
+  },
 })
 export default class BreakpointsSpecificHover extends Vue {}
 </script>

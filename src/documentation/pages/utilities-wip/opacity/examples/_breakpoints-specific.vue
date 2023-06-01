@@ -10,7 +10,7 @@
             div Value
       tbody
           tr(v-for="size in sizes")
-            td.-text(width='40%')
+            td.-text(width="40%")
               code {{ `-opacity-${ size }--60` }}
             td.-text 60% opacity on <code>{{ size }}</code> and up.
 </template>
@@ -21,7 +21,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      sizes: ['sm', 'md', 'lg', 'xl']
+  sizes: ["sm", 'md', 'lg', 'xl']
     };
   }
 })
