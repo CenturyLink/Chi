@@ -299,8 +299,9 @@ describe('Date picker', function() {
       .contains(minutes)
       .click();
 
-    cy.get('@testTimeFormat')
-      .find('input.sc-chi-date-picker')
+    cy.get('[data-cy="test-time-format-24hr"]')
+      .as('testTimeFormat')
+      .find('input')
       .should('have.value', `11/22/2018, ${hours}:${minutes}`);
   });
 
@@ -327,6 +328,11 @@ describe('Date picker', function() {
         .find(`[data-hour="${hours}"]`)
         .click();
 
+      cy.get('@testTimeFormat')
+        .find('chi-popover[active]')
+        .find(`[data-hour="${hours}"]`)
+        .should('have.class', '-active');
+
       // Select minutes
       cy.get('@testTimeFormat')
         .find(`.${TIME_PICKER_MINUTE}`)
@@ -334,7 +340,12 @@ describe('Date picker', function() {
         .click();
 
       cy.get('@testTimeFormat')
-        .find('input.sc-chi-date-picker')
+        .find(`.${TIME_PICKER_MINUTE}`)
+        .contains(minutes)
+        .should('have.class', '-active');
+
+      cy.get('@testTimeFormat')
+        .find('input')
         .should('have.value', `11/22/2018, ${hours}:${minutes}`);
     }
   );
@@ -360,11 +371,21 @@ describe('Date picker', function() {
       .find(`[data-hour="${hours}"]`)
       .click();
 
+    cy.get('@testTimeFormat')
+      .find('chi-popover[active]')
+      .find(`[data-hour="${hours}"]`)
+      .should('have.class', '-active');
+
     // Select minutes
     cy.get('@testTimeFormat')
       .find(`.${TIME_PICKER_MINUTE}`)
       .contains(minutes)
       .click();
+
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minutes)
+      .should('have.class', '-active');
 
     // Select period
     cy.get('@testTimeFormat')
@@ -373,10 +394,87 @@ describe('Date picker', function() {
       .click();
 
     cy.get('@testTimeFormat')
-      .find('input.sc-chi-date-picker')
+      .find(`.${TIME_PICKER_PERIOD}`)
+      .contains(period)
+      .should('have.class', '-active');
+
+    cy.get('@testTimeFormat')
+      .find('input')
       .should(
         'have.value',
         `11/22/2018, ${hours}:${minutes} ${period.toLowerCase()}`
       );
+  });
+
+  it('Date-picker should show selected time after changing it several times.', function() {
+    const hours1 = '01';
+    const minutes1 = '30';
+
+    const hours2 = '00';
+    const minutes2 = '00';
+
+    cy.get('[data-cy="test-time-format-24hr"]').as('testTimeFormat');
+
+    cy.get('@testTimeFormat')
+      .find('input')
+      .scrollIntoView()
+      .focus()
+      .get('@testTimeFormat')
+      .find('chi-popover[active]')
+      .should('have.attr', 'active');
+
+    // Select hours
+    cy.get('@testTimeFormat')
+      .find('chi-popover[active]')
+      .find(`[data-hour="${hours1}"]`)
+      .click();
+
+    cy.get('@testTimeFormat')
+      .find('chi-popover[active]')
+      .find(`[data-hour="${hours1}"]`)
+      .should('have.class', '-active');
+
+    // Select minutes
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minutes1)
+      .click();
+
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minutes1)
+      .should('have.class', '-active');
+
+    cy.get('@testTimeFormat')
+      .find('input')
+      .should('have.value', `11/22/2018, ${hours1}:${minutes1}`);
+
+    cy.get('[data-cy="test-time-format-24hr"]').as('testTimeFormat');
+
+    // Select hours
+    cy.get('@testTimeFormat')
+      .find('chi-popover[active]')
+      .find(`[data-hour="${hours2}"]`)
+      .click();
+
+    cy.get('@testTimeFormat')
+      .find('chi-popover[active]')
+      .find(`[data-hour="${hours2}"]`)
+      .should('have.class', '-active');
+
+    // Select minutes
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minutes2)
+      .click();
+
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minutes2)
+      .should('have.class', '-active');
+
+    cy.get('@testTimeFormat')
+      .find('input')
+      .should('have.value', `11/22/2018, ${hours2}:${minutes2}`);
   });
 });
