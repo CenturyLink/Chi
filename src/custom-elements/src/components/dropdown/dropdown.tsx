@@ -205,17 +205,18 @@ export class Dropdown {
     (ev.target as HTMLElement).focus();
   };
 
-  handlerKeyDown = ({ code }: KeyboardEvent) => {
+  handlerKeyDown = (event: KeyboardEvent) => {
+    event.preventDefault();
     const allowedKeys = ['ArrowDown', 'ArrowUp'];
 
-    if (!allowedKeys.includes(code)) {
+    if (!allowedKeys.includes(event.code)) {
       return;
     }
 
-    this.el.requestPointerLock();
-    this._focusMenuItem(code);
+    this._focusMenuItem(event.code);
     this.eventKeyDown.emit();
   };
+
 
   handlerClickTrigger = () => {
     this.toggle();
@@ -302,7 +303,6 @@ export class Dropdown {
       item.addEventListener('click', this.handlerSelectedMenuItem);
       item.addEventListener('mouseover', this.handlerMouseOverMenuItem);
     });
-    document.body.addEventListener('mousemove', () => document.exitPointerLock());
   }
 
   _removeEventListeners() {
@@ -314,7 +314,6 @@ export class Dropdown {
       item.removeEventListener('click', this.handlerSelectedMenuItem);
       item.removeEventListener('mouseover', this.handlerMouseOverMenuItem);
     });
-    document.body.removeEventListener('mousemove', () => document.exitPointerLock());
   }
 
   render() {
