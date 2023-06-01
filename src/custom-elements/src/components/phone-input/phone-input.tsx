@@ -63,6 +63,10 @@ export class ChiPhoneInput {
    * To define dynamic value of Phone input
    */
   @Prop({ reflect: true }) dynamicValue: boolean = false;
+  /**
+   * To define two letter ISO country codes to exclude from Phone input dropdown
+   */
+  @Prop({ reflect: true }) excludeCountries?: string;
 
   /**
    * Triggered when an alteration to the element's value is committed by the user
@@ -94,7 +98,12 @@ export class ChiPhoneInput {
 
   componentWillLoad(): void {
     const countryObjs = this._getCorrectCountryList();
-    const dialCodes = getCountries();
+    let dialCodes = getCountries();
+
+    if (this.excludeCountries) {
+      const excludeCountriesArray = this.excludeCountries.replace(/[^A-Z,]+/g, '').split(',');
+      if (excludeCountriesArray) dialCodes = dialCodes.filter(code => !excludeCountriesArray.includes(code));
+    }
 
     countryObjs.forEach((countryObj: ExtraCountry) => {
       if (dialCodes.find(code => code === countryObj.country_code)) {
