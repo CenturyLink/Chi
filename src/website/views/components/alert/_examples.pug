@@ -491,56 +491,6 @@ p.-text
           </button>
         </div>
 
-.-portal--hide
-  h4 Interactive
-  p.-text
-    | Closable property adds close button - use mutable to make this button remove an alert from DOM
-  .example.-mb--3
-    .-p--3#alert-container
-      button#modal-trigger-1.chi-button.-primary.chi-modal__trigger(onclick="showAlert()")
-        | Click me to show the alert
-        chi-alert#alert-to-trigger(icon='circle-info', closable, mutable).-m--2
-          | This is a base alert
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-actionable
-        li.-active
-          a(href=`#webcomponent-actionable`) Web Component
-        li
-          a(href=`#html-actionable`) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-actionable
-      .chi-tab__description
-        | Use the <code>closable</code> and <code>mutable</code> properties
-      :code(lang="html")
-        <chi-alert icon="circle-info" closable mutable>
-          This is a base alert
-        </chi-alert>
-    .chi-tabs-panel#html-actionable
-      .chi-tab__description
-        | Use the <code>closable</code> and <code>mutable</code> properties
-      :code(lang="html")
-        <div class="chi-alert" role="alert">
-          <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
-          <div class="chi-alert__content">
-            <p class="chi-alert__text">This is a base alert</p>
-          </div>
-          <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-x" aria-hidden="true"></i>
-            </div>
-          </button>
-        </div>
-
-script.
-  let alertToTrigger = document.getElementById('alert-to-trigger');
-  alertToTrigger.parentNode.removeChild(alertToTrigger);
-
-  function showAlert() {
-    let modalContainer = document.getElementById('alert-container');
-    if (modalContainer.children.length === 1) {
-      modalContainer.appendChild(alertToTrigger.cloneNode(true));
-    }
-  }
-
 .-portal--show.-brightspeed--show.-colt--show
   h4 Closable
   p.-text
@@ -602,55 +552,40 @@ script.
           </button>
         </div>
 
-.-portal--show.-brightspeed--show.-colt--show
-  h4 Interactive
-  p.-text
-    | Closable property adds close button - use mutable to make this button remove an alert from DOM
-  .example.-mb--3
-    .-p--3#alert-container-ent
-      button#modal-trigger-1.chi-button.-primary.chi-modal__trigger(onclick="showAlertEnt()")
-        | Click me to show the alert
-        chi-alert#alert-to-trigger-ent(icon='circle-info', closable, mutable).-m--2
-          | This is a base alert
-    .example-tabs.-pl--2
-      ul.chi-tabs#example-actionable
-        li.-active
-          a(href=`#webcomponent-portal-actionable`) Web Component
-        li
-          a(href=`#html-portal-actionable`) HTML Blueprint
-    .chi-tabs-panel.-active#webcomponent-portal-actionable
-      .chi-tab__description
-        | Use the <code>closable</code> and <code>mutable</code> properties
-      :code(lang="html")
-        <chi-alert icon="circle-info" closable mutable>
-          This is a base alert
-        </chi-alert>
-    .chi-tabs-panel#html-portal-actionable
-      .chi-tab__description
-        | Use the <code>closable</code> and <code>mutable</code> properties
-      :code(lang="html")
-        <div class="chi-alert" role="alert">
-          <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
-          <div class="chi-alert__content">
-            <p class="chi-alert__text">This is a base alert</p>
-          </div>
-          <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-x" aria-hidden="true"></i>
-            </div>
-          </button>
+h4 Interactive
+p.-text
+.example.-mb--3
+  .-p--3#interactive-wrapper
+    button#alert-trigger-button.chi-button.-primary.chi-modal__trigger
+      | Click me to show the alert
+    chi-alert#interactive-alert(icon='circle-info', closable, mutable).-m--2
+      | This is a base alert
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-interactive
+      li.-active
+        a(href=`#webcomponent-portal-interactive`) Web Component
+      li
+        a(href=`#html-portal-interactive`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-portal-interactive
+    .chi-tab__description
+    :code(lang="html")
+      <chi-alert icon="circle-info" closable mutable>
+        This is a base alert
+      </chi-alert>
+  .chi-tabs-panel#html-portal-interactive
+    .chi-tab__description
+    :code(lang="html")
+      <div class="chi-alert" role="alert">
+        <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
+        <div class="chi-alert__content">
+          <p class="chi-alert__text">This is a base alert</p>
         </div>
-
-script.
-  let alertToTriggerEnt = document.getElementById('alert-to-trigger-ent');
-  alertToTriggerEnt.parentNode.removeChild(alertToTriggerEnt);
-
-  function showAlertEnt() {
-    let modalContainerEnt = document.getElementById('alert-container-ent');
-    if (modalContainerEnt.children.length === 1) {
-      modalContainerEnt.appendChild(alertToTriggerEnt.cloneNode(true));
-    }
-  }
+        <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
+          <div class="chi-button__content">
+            <i class="chi-icon icon-x" aria-hidden="true"></i>
+          </div>
+        </button>
+      </div>
 
 .-portal--hide
   h4 Clickable
@@ -1799,3 +1734,16 @@ script.
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
     });
+    setupInteractiveAlert();
+    
+    function setupInteractiveAlert() {
+      let interactiveAlert = document.getElementById('interactive-alert');
+      let modalContainerEnt = document.getElementById('interactive-wrapper');
+      interactiveAlert.parentNode.removeChild(interactiveAlert);
+      
+      document.getElementById('alert-trigger-button').addEventListener('click', () => {
+        if (modalContainerEnt.children.length === 1) {
+          modalContainerEnt.appendChild(interactiveAlert.cloneNode(true));
+        }
+      })
+    }
