@@ -58,6 +58,75 @@ $sizes: (
     }
   }
 
+  &__body {
+    fieldset {
+      min-inline-size: auto;
+    }
+
+    @include respond-to(md) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chi-data-table__row {
+      &.-expanded {
+        @include respond-to(md) {
+          font-weight: $font-weight-semi-bold;
+        }
+
+        .chi-data-table__cell {
+          border-bottom-color: transparent;
+        }
+      }
+    }
+
+    .chi-data-table__cell {
+      display: flex;
+      padding: 0.25rem 0.75rem;
+
+      @include respond-to(md) {
+        border-bottom: 0.0625rem solid $color-border-base-light;
+        padding: 0.75rem 1rem;
+        word-break: break-word;
+
+        &.-selectable {
+          .chi-radio {
+            .chi-radio__label {
+              position: initial;
+            }
+          }
+        }
+      }
+
+      &::before {
+        content: attr(data-label);
+        display: block;
+        font-weight: $font-weight-semi-bold;
+        min-width: 10rem;
+
+        @include respond-to(md) {
+          display: none;
+        }
+      }
+
+      // sass-lint:disable no-vendor-prefixes
+      .-cell-wrap {
+        display: -webkit-box;
+        overflow: hidden;
+        white-space: normal;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+    }
+  }
+
+  &__footer {
+    @include respond-to(md) {
+      background-color: $color-background-white;
+      padding: 1.5rem 1rem;
+    }
+  }
+
   &__head {
     display: none;
 
@@ -131,6 +200,7 @@ $sizes: (
       }
     }
 
+    // sass-lint:disable-block no-vendor-prefixes
     .-cell-wrap {
       display: -webkit-box;
       overflow: hidden;
@@ -145,75 +215,6 @@ $sizes: (
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-    }
-  }
-
-  &__body {
-    fieldset {
-      min-inline-size: auto;
-    }
-
-    @include respond-to(md) {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .chi-data-table__row {
-      &.-expanded {
-        @include respond-to(md) {
-          font-weight: $font-weight-semi-bold;
-        }
-
-        .chi-data-table__cell {
-          border-bottom-color: transparent;
-        }
-      }
-    }
-
-    .chi-data-table__cell {
-      display: flex;
-      padding: 0.25rem 0.75rem;
-
-      @include respond-to(md) {
-        border-bottom: 0.0625rem solid $color-border-base-light;
-        padding: 0.75rem 1rem;
-        word-break: break-word;
-
-        &.-selectable {
-          .chi-radio {
-            .chi-radio__label {
-              position: initial;
-            }
-          }
-        }
-      }
-
-      &::before {
-        content: attr(data-label);
-        display: block;
-        font-weight: $font-weight-semi-bold;
-        min-width: 10rem;
-
-        @include respond-to(md) {
-          display: none;
-        }
-      }
-
-      // sass-lint:disable no-vendor-prefixes
-      .-cell-wrap {
-        display: -webkit-box;
-        overflow: hidden;
-        white-space: normal;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-      }
-    }
-  }
-
-  &__footer {
-    @include respond-to(md) {
-      background-color: $color-background-white;
-      padding: 1.5rem 1rem;
     }
   }
 
@@ -531,34 +532,6 @@ $sizes: (
   }
 
   &.-portal {
-    .chi-data-table__head {
-      @include respond-to(md) {
-        background-color: $data-table-head-background-color;
-
-        .chi-data-table__row {
-          background-color: $data-table-head-background-color;
-
-          .chi-data-table__cell {
-            border-bottom: 0.0625rem solid $color-border-base-dark;
-
-            &.-selectable {
-              .chi-dropdown {
-                left: 2.5rem;
-                position: absolute;
-                z-index: 1;
-              }
-            }
-          }
-
-          &:last-child {
-            .chi-data-table__cell {
-              border-bottom: 0;
-            }
-          }
-        }
-      }
-    }
-
     &:not(.-bordered) {
       .chi-data-table__body {
         @include respond-to(md) {
@@ -647,6 +620,37 @@ $sizes: (
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    }
+
+    .chi-data-table__head {
+      @include respond-to(md) {
+        background-color: $data-table-head-background-color;
+
+        .chi-data-table__row {
+          &,
+          &:hover {
+            background-color: $data-table-head-background-color;
+          }
+
+          .chi-data-table__cell {
+            border-bottom: 0.0625rem solid $color-border-base-dark;
+
+            &.-selectable {
+              .chi-dropdown {
+                left: 2.5rem;
+                position: absolute;
+                z-index: 1;
+              }
+            }
+          }
+
+          &:last-child {
+            .chi-data-table__cell {
+              border-bottom: 0;
             }
           }
         }

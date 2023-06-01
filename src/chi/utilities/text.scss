@@ -219,6 +219,11 @@ $transforms: (lowercase, uppercase, capitalize);
   text-transform: none !important;
 }
 
+// text italic
+.-text--italic {
+  font-style: italic !important;
+}
+
 // text white-space
 .-text--nowrap {
   white-space: nowrap !important;

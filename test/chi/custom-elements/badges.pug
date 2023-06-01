@@ -7,8 +7,8 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 each type in ['solid', 'outline', 'flat']
   div(class=`test-${type}`)
     span.-text--h2= `Badge / ${type}`
-    div
-      each style in ['base', 'primary', 'secondary', 'success', 'warning', 'danger', 'dark', 'muted', 'light']
+    div.-d--flex.-flex--wrap(style="gap: 1rem;")
+      each style in ['base', 'primary', 'secondary', 'success', 'warning', 'danger', 'dark', 'muted', 'light', 'accent-1', 'accent-2', 'accent-3', 'accent-4', 'accent-5']
         chi-badge(class='-mr--1', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-${type}-${style}` )= `${style}`
         chi-badge(class='-mr--1', variant=`${type === 'solid' ? '' : type}`, color=`${style === 'base' ? '' : style}`, id=`badge-icon-${type}-${style}` )
           chi-icon(icon='atom')
@@ -36,3 +36,10 @@ h2 Text Transform
     each transform, text in { BADGE: 'uppercase', badge: 'lowercase', Badge: 'capitalized' }
       .p.-text--bold= transform
         chi-badge(text-transform= transform, class='-m--1', id=`badge-${transform}`)= text
+
+h2 Text Weight
+.test-text-weight
+  .example.-mb--1
+    each weight in ['normal', 'semi-bold', 'bold']
+      .p.-text--bold= weight
+        chi-badge(text-weight= weight, class='-m--1', id=`badge-${weight}`) Badge

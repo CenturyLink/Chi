@@ -378,4 +378,64 @@ describe('Phone Input', () => {
       });
     });
   });
+
+  describe('Dynamic Value', () => {
+    beforeEach(() => {
+      cy.get(`[data-cy='phone-input-dynamic-value']`)
+        .as('dynamicPhoneInput');
+      cy.get('@dynamicPhoneInput')
+        .find('.chi-dropdown')
+        .as('dropdownTrigger');
+    });
+
+    it('Should have the dynamic-value prop as true', () => {
+      cy.get('@dynamicPhoneInput')
+        .should('have.attr', 'dynamic-value');
+    });
+
+    it('Should change the prefix dynamically and change the country dropdown value', () => {
+      cy.get('@dynamicPhoneInput')
+        .invoke('attr', 'value', '+1-999999999{Enter}')
+        .then(() => {
+          cy.get('@dropdownTrigger')
+            .find('button')
+            .should('have.text', '+1');
+        });
+    });
+
+    it('Should have changed the format automatically after changing the prefix dynamically', () => {
+      cy.get('@dynamicPhoneInput')
+        .find('input[type="tel"]')
+        .should('have.value', '(999) 999-999');
+    });
+
+    it('Should have United States as a selected country after changing the prefix dynamically', () => {
+      cy.get(`@dropdownTrigger`)
+        .click()
+        .contains('United States')
+        .as('UnitedStates')
+        .then(() => {
+          hasClassAssertion('@UnitedStates', ACTIVE_CLASS);
+        });
+    });
+
+    it('Should change the country to CA, change the value dynamically and the country dropdown value should be still CA', () => {
+      cy.get(`@dropdownTrigger`)
+        .contains('Canada')
+        .as('Canada')
+        .click()
+        .then(() => {
+          cy.get(`@dropdownTrigger`)
+          .click()
+          .then(() => {
+            cy.get('@dynamicPhoneInput').invoke(
+              'attr',
+              'value',
+              '+1-999999998{Enter}'
+            );
+            hasClassAssertion('@Canada', ACTIVE_CLASS);
+          });
+        });
+    });
+  });
 });

@@ -16,7 +16,7 @@ export class Badge {
   @Prop({ reflect: true }) variant: string;
 
   /**
-   *  to set color of a badge { primary, success, warning, danger, dark, muted, secondary, light }.
+   *  to set color of a badge { primary, success, warning, danger, dark, muted, secondary, light, accent-1, accent-2, accent-3, accent-4, accent-5 }.
    */
   @Prop({ reflect: true }) color: string;
 
@@ -24,6 +24,11 @@ export class Badge {
    *  to transform the badge text { uppercase, lowercase, capitalize }.
    */
   @Prop({ reflect: true }) textTransform: string;
+
+  /**
+   *  to set weight of the badge text { normal, semi-bold, bold }.
+   */
+    @Prop({ reflect: true }) textWeight: string;
 
   /**
    *  to set size of a badge { xs or sm }.
@@ -39,8 +44,8 @@ export class Badge {
 
   @Watch('color')
   colorValidation(newValue: string) {
-    if (newValue && !['', 'primary', 'success', 'warning', 'danger', 'dark', 'muted', 'secondary', 'light'].includes(newValue)) {
-      throw new Error(`${newValue} is not a valid color for badge. Valid values are primary, success, danger, warning, dark, muted, secondary, light or ''. `);
+    if (newValue && !['', 'primary', 'success', 'warning', 'danger', 'dark', 'muted', 'secondary', 'light', 'accent-1', 'accent-2', 'accent-3', 'accent-4', 'accent-5'].includes(newValue)) {
+      throw new Error(`${newValue} is not a valid color for badge. Valid values are primary, success, danger, warning, dark, muted, secondary, light, accent-1, accent-2, accent-3, accent-4, accent-5 or ''. `);
     }
   }
 
@@ -66,7 +71,8 @@ export class Badge {
 	        ${this.size ? `-${this.size}` : ''}
 	        ${this.color ? `-${this.color}` : ''}
 	        ${this.variant ? `-${this.variant}` : ''}
-	        ${this.textTransform ? `-text--${this.textTransform}` : ''}`}
+	        ${this.textTransform ? `-text--${this.textTransform}` : ''}
+          ${this.textWeight ? `-text--${this.textWeight}` : ''}`}
       >
         {this.slotBadgeContent ?
           <div class="chi-badge__content">
