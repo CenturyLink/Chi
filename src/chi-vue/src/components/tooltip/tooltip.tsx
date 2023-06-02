@@ -1,4 +1,4 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Prop } from 'vue-property-decorator';
 import { uuid4 } from '../../utils/utils';
 import { ACTIVE_CLASS, LIGHT_CLASS, TOOLTIP_CLASSES, TRANSITIONING_CLASS } from '../../constants/classes';
 import { TOOLTIP_EVENTS } from '../../constants/events';
@@ -7,6 +7,7 @@ import { ThreeStepsAnimation } from '../../utils/ThreeStepsAnimation';
 import { TOOLTIP_ANIMATION_DELAY as ANIMATION_DELAY, ANIMATION_DURATION } from '../../constants/constants';
 import { createPopper } from '@popperjs/core';
 import { Instance as PopoverInstance } from '@popperjs/core/lib/types';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 @Component
 export default class Tooltip extends Vue {

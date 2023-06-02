@@ -1,9 +1,10 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Prop } from 'vue-property-decorator';
 import { DataTableView } from '@/constants/types';
 import { DATA_TABLE_CLASSES, FORM_CLASSES, SELECT_CLASSES } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '../data-table-toolbar/DataTableToolbar';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 @Component
 export default class DataTableViews extends Vue {

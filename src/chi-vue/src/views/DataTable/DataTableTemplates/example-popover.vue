@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 // eslint-disable-next-line
 declare const chi: any;
