@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Sticky" titleSize="h4" id="target-sticky" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+  <ComponentExample title="Sticky" titleSize="h3" id="target-sticky" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
     <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -27,11 +27,13 @@ export default class TargetSticky extends Vue {
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
-    }
+    };
   }
 
   generateHtml() {
-    return positionValues.map((value: string) => `<div class="${value}--sticky"></div>`).join('\n');
+    return positionValues
+      .map((value: string) => `<div class="${value}--sticky"></div>`)
+      .join('\n');
   }
 }
 </script>
