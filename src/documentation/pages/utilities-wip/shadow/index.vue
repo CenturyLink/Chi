@@ -12,11 +12,11 @@ import Examples from './examples/index.vue';
   head() {
     return {
       title: 'Chi - Shadow'
-    }
+    };
   },
   components: {
     Examples
   }
 })
-export default class ShadowUtility extends Vue {}
+export default class Shadow extends Vue {}
 </script>

@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Default from './_default.vue'
-import Responsive from './_responsive.vue'
+import Default from './_default.vue';
+import Responsive from './_responsive.vue';
 import SASS from './_sass.vue';
 import Notation from './_notation.vue';
 

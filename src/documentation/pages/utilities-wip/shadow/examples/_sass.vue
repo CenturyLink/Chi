@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="SASS" id="sass" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false" additionalStyle="border: none;">
+  <ComponentExample title="SASS" id="sass" titleSize="h2" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false" additionalStyle="border: none;">
     p.-text(slot="example-description")
       | Chi defines shadows with Saas maps. The following example will render a shadow equivalent to <code>-s--1</code> / <code>1px</code>.
     <pre class="language-html -mb--4" slot="code-htmlblueprint">
@@ -27,8 +27,8 @@ import { Component, Vue } from 'vue-property-decorator';
 
 .example {
   box-shadow: map-get($shadow, 1);
-}`,
-      },
+}`
+      }
     };
   }
 })
