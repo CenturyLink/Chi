@@ -1,4 +1,3 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 const ASSET_PATH = '/';
 
@@ -20,10 +19,9 @@ PublicPathWebpackPlugin.prototype.apply = function(compiler) {
     compiler.options.output.publicPath = ASSET_PATH;
   });
 };
+
 module.exports = {
   configureWebpack: config => {
-    const terserOptions = config.optimization.minimizer[0].options.terserOptions;
-
     if (!config.externals) {
       config.externals = {};
     }
@@ -31,19 +29,22 @@ module.exports = {
       delete config.devtool;
     }
 
+    config.output.filename = '[name].js';
+    config.output.chunkFilename = '[name].js';
+
     switch (process.env.VUE_APP_MODE) {
       case 'prod':
+        config.mode = 'production';
         config.optimization.minimize = true;
-        terserOptions.compress.drop_console = true;
-        terserOptions.compress.drop_debugger = true;
-        terserOptions.keep_classnames = true;
-        terserOptions.keep_fnames = true;
+        config.plugins.unshift(new PublicPathWebpackPlugin());
+        config.optimization.splitChunks = {
+          maxSize: 90000,
+        };
         break;
 
       case 'dev':
         config.mode = 'development';
         config.devtool = 'source-map';
-        config.plugins.push(new BundleAnalyzerPlugin());
         config.output.filename = '[name].js';
         config.output.chunkFilename = '[name].js';
         config.externals.vue = 'Vue';
@@ -52,20 +53,43 @@ module.exports = {
       default:
     }
   },
+  chainWebpack: config => {
+    if (process.env.VUE_APP_MODE === 'prod') {
+      config.optimization.minimizer('terser').tap(args => {
+        args[0].terserOptions = {
+          compress: {
+            drop_console: true,
+            drop_debugger: true,
+          },
+          keep_classnames: true,
+          keep_fnames: true,
+        };
+
+        return args;
+      });
+    }
+  },
+  publicPath: '/',
   css: {
     extract: process.env.VUE_APP_MODE === 'prod',
   },
   devServer: {
-    watchOptions: {
-      ignored: /node_modules/,
-      // if aggregateTimeout and poll values should be changed on local, create a .env.local file
-      aggregateTimeout: process.env.WEBPACK_AGGREGATE_TIMEOUT,
+    client: {
+      progress: false,
+      overlay: {
+        warnings: true,
+        errors: true,
+      },
     },
-    overlay: {
-      warnings: true,
-      errors: true,
+    static: {
+      watch: {
+        ignored: /node_modules/,
+        // if aggregateTimeout and poll values should be changed on local, create a .env.local file
+        aggregateTimeout: process.env.WEBPACK_AGGREGATE_TIMEOUT,
+        poll: process.env.WEBPACK_POLL,
+      },
     },
-    public: 'localhost:9090',
+    host: 'localhost',
     port: 9090,
     https: true,
   },

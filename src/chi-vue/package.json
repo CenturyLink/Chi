@@ -1,6 +1,6 @@
 {
   "name": "@centurylink/chi-vue",
-  "version": "2.0.0",
+  "version": "2.1.1",
   "private": false,
   "main": "dist/@centurylink/chi-vue.common.js",
   "types": "index.d.ts",
@@ -8,6 +8,10 @@
     "dist/**/*",
     "index.d.ts"
   ],
+  "engines": {
+    "node": "14.17.6",
+    "npm": ">=6.14.15 <7.0.0"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -26,8 +30,8 @@
     "directory": "src/chi-vue"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.20.2",
-    "@popperjs/core": "^2.11.7",
+    "@babel/preset-env": "^7.22.4",
+    "@popperjs/core": "^2.11.8",
     "@rollup/plugin-babel": "^5.2.1",
     "@rollup/plugin-buble": "^0.21.3",
     "@rollup/plugin-node-resolve": "^10.0.0",
@@ -38,11 +42,11 @@
     "@typescript-eslint/parser": "^5.48.1",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.2.1",
     "@vue/babel-preset-jsx": "1.2.4",
-    "@vue/cli-plugin-babel": "4.5.19",
-    "@vue/cli-plugin-eslint": "4.5.19",
-    "@vue/cli-plugin-typescript": "4.5.19",
-    "@vue/cli-service": "4.5.19",
-    "@vue/compiler-sfc": "^3.0.2",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-plugin-typescript": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
+    "@vue/compiler-sfc": "^3.3.4",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",
     "array-sort": "^1.0.0",
@@ -50,11 +54,10 @@
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "babel-preset-env": "^1.7.0",
-    "core-js": "^3.29.0",
+    "core-js": "^3.30.2",
     "eslint": "^7.1.0",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-vue": "7.1.0",
-    "sass": "1.49.10",
     "prettier": "^1.19.1",
     "rollup": "^2.33.3",
     "rollup-plugin-buble": "^0.19.8",
@@ -62,14 +65,15 @@
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.29.0",
     "rollup-plugin-vue": "^6.0.0",
-    "sass-loader": "^8.0.2",
+    "sass": "1.49.10",
+    "sass-loader": "12.6.0",
     "typescript": "^3.9.10",
     "vue": "2.6.14",
-    "vue-template-compiler": "2.6.14",
-    "vue-server-renderer": "2.6.14",
-    "vuex": "^3.1.1",
-    "vuex-module-decorators": "^2.0.0",
     "vue-class-component": "^7.2.6",
-    "vue-property-decorator": "^9.1.2"
+    "vue-property-decorator": "^9.1.2",
+    "vue-server-renderer": "2.6.14",
+    "vue-template-compiler": "2.6.14",
+    "vuex": "^3.1.1",
+    "vuex-module-decorators": "^2.0.0"
   }
 }
