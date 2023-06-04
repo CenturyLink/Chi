@@ -7,6 +7,7 @@ import {
   Prop,
   h,
   Watch,
+  Listen,
 } from '@stencil/core';
 import Popper, { Placement } from 'popper.js';
 import {
@@ -143,6 +144,20 @@ export class Dropdown {
     this._popper.update();
   }
 
+  @Listen('keydown', { target: 'parent' })
+  handleKeyDown(event: KeyboardEvent) {
+    const allowedKeys = ['ArrowDown', 'ArrowUp'];
+
+    if (!allowedKeys.includes(event.code)) {
+      return;
+    }
+
+    event.preventDefault();
+
+    this._focusMenuItem(event.code);
+    this.eventKeyDown.emit();
+  }
+
   private _configureDropdownPopper() {
     if (!this._referenceElement) {
       if (this._popper) {
@@ -200,23 +215,6 @@ export class Dropdown {
   handlerSelectedMenuItem = () => {
     this.eventItemSelected.emit();
   };
-
-  handlerMouseOverMenuItem = (ev: MouseEvent) => {
-    (ev.target as HTMLElement).focus();
-  };
-
-  handlerKeyDown = (event: KeyboardEvent) => {
-    event.preventDefault();
-    const allowedKeys = ['ArrowDown', 'ArrowUp'];
-
-    if (!allowedKeys.includes(event.code)) {
-      return;
-    }
-
-    this._focusMenuItem(event.code);
-    this.eventKeyDown.emit();
-  };
-
 
   handlerClickTrigger = () => {
     this.toggle();
@@ -298,10 +296,8 @@ export class Dropdown {
     const menuItems = this._getDropdownMenuItems();
 
     document.body.addEventListener('click', this.handlerClick);
-    this.el.addEventListener('keydown', this.handlerKeyDown.bind(this));
     menuItems.forEach((item: HTMLElement) => {
       item.addEventListener('click', this.handlerSelectedMenuItem);
-      item.addEventListener('mouseover', this.handlerMouseOverMenuItem);
     });
   }
 
@@ -309,10 +305,8 @@ export class Dropdown {
     const menuItems = this._getDropdownMenuItems();
 
     document.body.removeEventListener('click', this.handlerClick);
-    this.el.removeEventListener('keydown', this.handlerKeyDown);
     menuItems.forEach((item: HTMLElement) => {
       item.removeEventListener('click', this.handlerSelectedMenuItem);
-      item.removeEventListener('mouseover', this.handlerMouseOverMenuItem);
     });
   }
 
