@@ -545,5 +545,9 @@ a {
     &.focus:not(.-disabled):not(.-active) {
       background-color: $dropdown-menu-item-hover-background-color;
     }
+
+    &:focus-visible:not(.-disabled):not(.-active) {
+      outline: 2px solid;
+    }
   }
 }
