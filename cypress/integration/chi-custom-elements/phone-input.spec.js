@@ -452,4 +452,30 @@ describe('Phone Input', () => {
         });
     });
   });
+
+  describe('Exclude Countries', () => {
+    beforeEach(() => {
+      cy.get(`[data-cy='phone-input-exclude-countries']`)
+        .as('excludeCountriesPhoneInput');
+      cy.get('@excludeCountriesPhoneInput')
+        .find('.chi-dropdown')
+        .as('dropdownTrigger');
+    });
+
+    it('Should have the exclude-countries prop', () => {
+      cy.get('@excludeCountriesPhoneInput')
+        .should('have.attr', 'exclude-countries');
+    });
+
+    it('Should exclude specified countries from the dropdown list', () => {
+      cy.get('@excludeCountriesPhoneInput')
+        .invoke('attr', 'exclude-countries', '["AG", "AF"]')
+        .then(() => {
+          cy.get('@dropdownTrigger').click();
+          cy.get('@excludeCountriesPhoneInput')
+            .find('.chi-dropdown__menu-item')
+            .should('not.contain', 'Albania');
+        });
+    });
+  });
 });
