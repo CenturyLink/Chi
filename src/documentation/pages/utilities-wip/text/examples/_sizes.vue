@@ -21,12 +21,8 @@
         li <code>lg</code> - use to apply an <code>large</code> size to <code>text</code>
         li <code>xl</code> - use to apply an <code>x-large</code> size to <code>text</code>
       ul.-text
-        li <code>h6</code> - use to apply an <code>h6</code> size to <code>text</code>
-        li <code>h5</code> - use to apply an <code>h5</code> size to <code>text</code>
-        li <code>h4</code> - use to apply an <code>h4</code> size to <code>text</code>
-        li <code>h3</code> - use to apply an <code>h3</code> size to <code>text</code>
-        li <code>h2</code> - use to apply an <code>h2</code> size to <code>text</code>
-        li <code>h1</code> - use to apply an <code>h1</code> size to <code>text</code>
+        li(v-for="(index) in 6" :key="index")
+          | <code>h{{`${ 7 - index }`}}</code> - use to apply an <code>h{{`${ 7 - index }`}}</code> size to <code>text</code>
     .-mb--3(slot="example")
       p.-text.-text-md--lg.-m--3
         | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus lacus, dictum quis mauris vel,
