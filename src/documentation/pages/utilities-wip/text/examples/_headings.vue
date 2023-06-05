@@ -19,7 +19,7 @@
               dt.-text--bold.-mt--1 Line-height:
               dt {{`${ heading.line }`}}
           td.-br--0(:class="index === Object.keys(headings).length - 1 ? '-bb--0' : ''")
-            p(:class="`-text--${ key }`")
+            p.-px--2(:class="`-text--${ key }`")
               | The quick brown fox jumps over the lazy dog.
     <pre class="language-html" slot="code-htmlblueprint">
        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
@@ -34,12 +34,12 @@ import { Component, Vue } from 'vue-property-decorator';
   data: () => {
     return {
       headings: {
-        'h1': {font:'48px (3rem)',        line:'64px (4rem)'},
-        'h2': {font:'32px (2rem)',        line:'48px (3rem)'},
-        'h3': {font:'24px (1.5rem)',      line:'32px (2rem)'},
-        'h4': {font:'18px (1.125rem)',    line:'32px (2rem)'},
-        'h5': {font:'16px (1rem)',        line:'24px (1.5rem)'},
-        'h6': {font:'14px (0.875rem)',    line:'24px (1.5rem)'}
+        'h1': { font:'48px (3rem)',        line:'64px (4rem)' },
+        'h2': { font:'32px (2rem)',        line:'48px (3rem)' },
+        'h3': { font:'24px (1.5rem)',      line:'32px (2rem)' },
+        'h4': { font:'18px (1.125rem)',    line:'32px (2rem)' },
+        'h5': { font:'16px (1rem)',        line:'24px (1.5rem)' },
+        'h6': { font:'14px (0.875rem)',    line:'24px (1.5rem)' }
       },
       exampleTabs: [
         {
