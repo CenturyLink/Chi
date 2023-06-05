@@ -16,15 +16,8 @@
       <TitleAnchor title="{size}" id="text-sizes-inner" titleSize="h4"/>
       ul.-text
         li <code>0</code> - use to set <code>line-height</code> and set to <code>0</code>
-        li <code>1</code> - use to set <code>line-height</code> to <code>$base-unit * 1</code>
-        li <code>2</code> - use to set <code>line-height</code> to <code>$base-unit * 2</code>
-        li <code>3</code> - use to set <code>line-height</code> to <code>$base-unit * 3</code>
-        li <code>4</code> - use to set <code>line-height</code> to <code>$base-unit * 4</code>
-        li <code>5</code> - use to set <code>line-height</code> to <code>$base-unit * 5</code>
-        li <code>6</code> - use to set <code>line-height</code> to <code>$base-unit * 6</code>
-        li <code>7</code> - use to set <code>line-height</code> to <code>$base-unit * 7</code>
-        li <code>8</code> - use to set <code>line-height</code> to <code>$base-unit * 8</code>
-        li <code>9</code> - use to set <code>line-height</code> to <code>$base-unit * 9</code>
+        li(v-for="(index) in 9" :key="index")
+          | <code>{{`${ index }`}}</code> - use to set <code>line-height</code> to <code>$base-unit * {{`${ index }`}}</code>
     .-mb--3(slot="example")
       .-m--3.-show--example
         p.-text.-pl--1.-lh-md--2 -lh-md--2
