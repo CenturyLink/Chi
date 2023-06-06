@@ -15,7 +15,7 @@ import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class SearchInput extends Vue {
   @Prop() size?: SearchInputSizes;
   @Prop() disabled?: boolean;

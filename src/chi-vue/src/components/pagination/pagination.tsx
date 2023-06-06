@@ -15,7 +15,7 @@ import { PaginationSizes } from '@/constants/types';
 import { PAGINATION_EVENTS } from '@/constants/events';
 import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class Pagination extends Vue {
   @Prop() ariaLabel!: boolean;
   @Prop() currentPage!: number;

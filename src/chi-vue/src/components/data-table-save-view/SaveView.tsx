@@ -17,7 +17,7 @@ import './save-view.scss';
 import { defaultConfig } from './default-config';
 import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class SaveView extends Vue {
   @Prop() config!: SaveViewConfig;
 

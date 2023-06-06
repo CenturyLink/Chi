@@ -9,7 +9,7 @@ import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { _changeOrder } from '@/components/column-customization/utils';
 import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class ColumnCustomizationContent extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
   @Prop() selectedColumns?: DataTableColumn[];

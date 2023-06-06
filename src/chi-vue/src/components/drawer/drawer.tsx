@@ -18,7 +18,7 @@ import { contains } from '@/utils/utils';
 import { Backdrop, DrawerPositions } from '@/constants/types';
 import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class Drawer extends Vue {
   @Prop() active!: boolean;
   @Prop() backdrop!: Backdrop;
