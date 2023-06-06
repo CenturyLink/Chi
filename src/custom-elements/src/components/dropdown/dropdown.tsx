@@ -6,7 +6,8 @@ import {
   Method,
   Prop,
   h,
-  Watch
+  Watch,
+  Listen,
 } from '@stencil/core';
 import Popper, { Placement } from 'popper.js';
 import {
@@ -15,7 +16,7 @@ import {
   DROPDOWN_CLASSES,
   LIST_CLASS,
   FLUID_CLASS,
-  UTILITY_CLASSES,
+  UTILITY_CLASSES
 } from '../../constants/classes';
 import { CARDINAL_EXTENDED_POSITIONS } from '../../constants/positions';
 import { contains } from '../../utils/utils';
@@ -70,6 +71,15 @@ export class Dropdown {
    * Triggered when showing the Dropdown
    */
   @Event({ eventName: 'chiDropdownShow' }) eventShow: EventEmitter;
+  /**
+   * Triggered when press key to up/down the Dropdown menu items
+   */
+  @Event({ eventName: 'chiDropdownKeyDown' }) eventKeyDown: EventEmitter;
+  /**
+   * Triggered when select an item in the dropdown menu
+   */
+  @Event({ eventName: 'chiDropdownItemSelected' })
+  eventItemSelected: EventEmitter;
 
   @Element() el: HTMLElement;
 
@@ -97,11 +107,11 @@ export class Dropdown {
   componentDidLoad() {
     this._configureDropdownPopper();
     this._componentLoaded = true;
-    document.body.addEventListener('click', this.handlerClick);
+    this._addEventListeners();
   }
 
   componentDidUnload() {
-    document.body.removeEventListener('click', this.handlerClick);
+    this._removeEventListeners();
   }
 
   @Watch('position')
@@ -134,6 +144,20 @@ export class Dropdown {
     this._popper.update();
   }
 
+  @Listen('keydown', { target: 'parent' })
+  handleKeyDown(event: KeyboardEvent) {
+    const allowedKeys = ['ArrowDown', 'ArrowUp'];
+
+    if (!allowedKeys.includes(event.code)) {
+      return;
+    }
+
+    event.preventDefault();
+
+    this._focusMenuItem(event.code);
+    this.eventKeyDown.emit();
+  }
+
   private _configureDropdownPopper() {
     if (!this._referenceElement) {
       if (this._popper) {
@@ -163,7 +187,7 @@ export class Dropdown {
       }
     );
   }
-  
+
   setDisplay(display: 'block' | 'none') {
     this._dropdownMenuElement.style.display = display;
   }
@@ -186,6 +210,10 @@ export class Dropdown {
     ) {
       this.hide();
     }
+  };
+
+  handlerSelectedMenuItem = () => {
+    this.eventItemSelected.emit();
   };
 
   handlerClickTrigger = () => {
@@ -232,11 +260,54 @@ export class Dropdown {
    */
   @Method()
   async toggle() {
-    if (this.active) {
-      this.hide();
-    } else {
-      this.show();
+    this.active ? this.hide() : this.show();
+  }
+
+  _focusMenuItem(keyCode: string) {
+    const menuItems = this._getDropdownMenuItems();
+    const focusedElement = document.activeElement as HTMLElement;
+    const currentIndex = menuItems.indexOf(focusedElement);
+    let index = keyCode === 'ArrowUp' ? currentIndex - 1 : currentIndex + 1;
+
+    if (!menuItems.includes(focusedElement)) {
+      const startIndex = keyCode === 'ArrowUp' ? menuItems.length - 1 : 0;
+
+      return menuItems[startIndex].focus();
     }
+
+    if (index === -1) {
+      index = menuItems.length - 1;
+    } else if (index === menuItems.length) {
+      index = 0;
+    }
+
+    menuItems[index].focus();
+  }
+
+  _getDropdownMenuItems(): HTMLElement[] {
+    const children = this._dropdownMenuElement.children as HTMLAnchorElement[];
+
+    return Array.from(children).filter((item: HTMLElement) =>
+      item.classList.contains(DROPDOWN_CLASSES.MENU_ITEM)
+    );
+  }
+
+  _addEventListeners() {
+    const menuItems = this._getDropdownMenuItems();
+
+    document.body.addEventListener('click', this.handlerClick);
+    menuItems.forEach((item: HTMLElement) => {
+      item.addEventListener('click', this.handlerSelectedMenuItem);
+    });
+  }
+
+  _removeEventListeners() {
+    const menuItems = this._getDropdownMenuItems();
+
+    document.body.removeEventListener('click', this.handlerClick);
+    menuItems.forEach((item: HTMLElement) => {
+      item.removeEventListener('click', this.handlerSelectedMenuItem);
+    });
   }
 
   render() {
@@ -248,9 +319,9 @@ export class Dropdown {
           ${this.fluid ? FLUID_CLASS : ''}
         `}
         extra-class={`
-          ${DROPDOWN_CLASSES.TRIGGER} 
+          ${DROPDOWN_CLASSES.TRIGGER}
           ${this.active ? ACTIVE_CLASS : ''}
-          ${this.fluid ? FLUID_CLASS : ''} 
+          ${this.fluid ? FLUID_CLASS : ''}
           ${this.animateChevron ? ANIMATE_CLASS : ''}
         `}
         ref={ref => (this._referenceElement = ref)}
@@ -266,7 +337,7 @@ export class Dropdown {
           ${DROPDOWN_CLASSES.MENU}
           ${UTILITY_CLASSES.Z_INDEX.Z_10}
           ${this.active ? ACTIVE_CLASS : ''}
-          ${this.fluid ? FLUID_CLASS : ''} 
+          ${this.fluid ? FLUID_CLASS : ''}
           ${this.description ? LIST_CLASS : ''}
         `}
         ref={ref => (this._dropdownMenuElement = ref)}

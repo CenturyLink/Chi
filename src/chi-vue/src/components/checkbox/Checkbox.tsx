@@ -1,7 +1,8 @@
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import { CHECKBOX_CLASSES, SR_ONLY } from '@/constants/classes';
 import { GENERIC_EVENTS } from '@/constants/events';
 import { CheckboxState } from '@/constants/types';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 @Component({})
 export default class Checkbox extends Vue {
