@@ -93,7 +93,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from '@/build/vue-wrapper';
 import DataTable from '../../../components/data-table/DataTable';
 import desktopActions from '../DataTableTemplates/example-desktop-actions.vue';
 import mobileActions from '../DataTableTemplates/example-mobile-actions.vue';

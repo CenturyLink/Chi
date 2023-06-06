@@ -48,6 +48,11 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
   span.-text--h2 Date Picker multiple dates
   .-position--relative(style="width:14rem;")
     chi-date-picker(data-cy="test-multiple-picker-calendar" multiple)
+    
+.test-time-format-12hr-picker.-py--2(data-cy="test-time-format-12hr", style="height: 450px;")
+  span.-text--h2 Date Picker with 12 hours format Time Picker
+    .-position--relative(style="width:14rem;")
+      chi-date-picker(data-cy="test-time-format-12hr-picker" value='11/22/2018, 02:00', min=dateMin, mode=mode, active)
 
 .test-time-format-24hr-picker.-py--2(data-cy="test-time-format-24hr", style="height: 450px;")
   span.-text--h2 Date Picker with 24 hours format Time Picker

@@ -540,10 +540,14 @@ a {
     }
 
     &:hover:not(.-disabled):not(.-active),
-    &.-hover:not(.-disabled):not(.-active),
-    &:focus:not(.-disabled):not(.-active),
-    &.focus:not(.-disabled):not(.-active) {
+    &.-hover:not(.-disabled):not(.-active) {
       background-color: $dropdown-menu-item-hover-background-color;
+    }
+
+    &:focus:not(.-disabled):not(.-active),
+    &.focus:not(.-disabled):not(.-active),
+    &:focus-visible:not(.-disabled):not(.-active) {
+      box-shadow: 0 0 0 0.0625rem $dropdown-menu-item-focus-border-color inset;
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import {
   ACTIVE_CLASS,
   ANIMATED_CLASS,
@@ -16,8 +16,9 @@ import { ThreeStepsAnimation } from '@/utils/ThreeStepsAnimation';
 import { ANIMATION_DURATION } from '@/constants/constants';
 import { contains } from '@/utils/utils';
 import { Backdrop, DrawerPositions } from '@/constants/types';
+import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class Drawer extends Vue {
   @Prop() active!: boolean;
   @Prop() backdrop!: Backdrop;
