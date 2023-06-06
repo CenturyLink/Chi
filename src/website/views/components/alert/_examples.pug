@@ -552,14 +552,14 @@ p.-text
           </button>
         </div>
 
-h4 Interactive
+h4 Closable alert interaction
 p.-text
 .example.-mb--3
   .-p--3#interactive-wrapper
     chi-button#alert-trigger-button(variant='outline')
       | Click me to show the alert
-    chi-alert#interactive-alert(icon='circle-info', closable, mutable).-m--2
-      | This is a base alert
+    chi-alert.-mt--2#interactive-alert(title='Warning', color='warning', icon='warning', closable)
+      | This is a closable warning alert
   .example-tabs.-pl--2
     ul.chi-tabs#example-interactive
       li.-active
@@ -567,7 +567,6 @@ p.-text
       li
         a(href=`#html-portal-interactive`) HTML Blueprint
   .chi-tabs-panel.-active#webcomponent-portal-interactive
-    .chi-tab__description
     :code(lang="html")
       <chi-alert icon="circle-info" closable mutable>
         This is a base alert
@@ -1734,16 +1733,15 @@ script.
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
     });
-    setupInteractiveAlert();
-    
-    function setupInteractiveAlert() {
-      let interactiveAlert = document.getElementById('interactive-alert');
-      let modalContainerEnt = document.getElementById('interactive-wrapper');
-      interactiveAlert.parentNode.removeChild(interactiveAlert);
-      
-      document.getElementById('alert-trigger-button').addEventListener('click', () => {
-        if (modalContainerEnt.children.length === 1) {
-          modalContainerEnt.appendChild(interactiveAlert.cloneNode(true));
-        }
-      })
-    }
+
+    const interactiveAlert = document.getElementById('interactive-alert');
+    const interactiveAlertWrapper = document.getElementById('interactive-wrapper');
+    const interactiveAlertTrigger = document.getElementById('alert-trigger-button');
+
+    interactiveAlert.parentNode.removeChild(interactiveAlert);
+
+    interactiveAlertTrigger.addEventListener('chiClick', () => {
+      if (interactiveAlertWrapper.children.length === 1) {
+        interactiveAlertWrapper.appendChild(interactiveAlert.cloneNode(true));
+      }
+    })
