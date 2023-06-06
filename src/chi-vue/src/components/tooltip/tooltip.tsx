@@ -9,7 +9,7 @@ import { createPopper } from '@popperjs/core';
 import { Instance as PopoverInstance } from '@popperjs/core/lib/types';
 import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class Tooltip extends Vue {
   @Prop() message!: string;
   @Prop({ default: 'base' }) color?: TooltipColors;

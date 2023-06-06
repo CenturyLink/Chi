@@ -5,7 +5,7 @@ import ColumnCustomizationContent from '@/components/column-customization/Column
 import { UTILITY_CLASSES } from '@/constants/classes';
 import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class ColumnCustomizationAvailableColumns extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
 

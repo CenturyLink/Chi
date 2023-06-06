@@ -6,7 +6,7 @@ import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '../data-table-toolbar/DataTableToolbar';
 import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class DataTableViews extends Vue {
   @Prop({ default: () => [] }) views?: DataTableView[];
   @Prop() defaultView?: string;

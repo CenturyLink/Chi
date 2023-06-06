@@ -20,7 +20,7 @@ import { Component, Vue } from '@/build/vue-wrapper';
 
 declare const chi: any;
 
-@Component
+@Component({})
 export default class ColumnCustomization extends Vue {
   @Prop() columnsData?: DataTableColumnsData;
 

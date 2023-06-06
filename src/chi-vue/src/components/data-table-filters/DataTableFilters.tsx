@@ -29,7 +29,7 @@ import { ScopedSlotChildren } from 'vue/types/vnode';
 import './filters.scss';
 import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class DataTableFilters extends Vue {
   @Prop() filtersData?: DataTableFiltersData;
   @Prop() customItems?: DataTableCustomItem[];

@@ -7,7 +7,7 @@ import { UTILITY_CLASSES } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class ColumnCustomizationSelectedColumns extends Vue {
   @Prop() standardColumns?: DataTableColumn[];
 
