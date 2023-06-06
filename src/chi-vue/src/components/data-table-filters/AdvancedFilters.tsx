@@ -10,7 +10,7 @@ import {
   GENERIC_SIZE_CLASSES,
 } from '@/constants/classes';
 import { DataTableCustomItem, DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Prop } from 'vue-property-decorator';
 import { compareFilters, getElementFilterData } from './FilterUtils';
 import { findComponent, uuid4 } from '@/utils/utils';
 import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
@@ -18,6 +18,7 @@ import { getModule } from 'vuex-module-decorators';
 import store from '@/store/index';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import AdvancedFiltersPopoverFooter from './AdvancedFiltersPopoverFooter.vue';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 Vue.config.ignoredElements = [
   'chi-alert',

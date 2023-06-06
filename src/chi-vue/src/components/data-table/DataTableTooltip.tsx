@@ -1,7 +1,8 @@
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Prop } from 'vue-property-decorator';
 import Tooltip from '@/components/tooltip/tooltip';
 import { DATA_TABLE_CELL_THRESHOLD, TOOLTIP_ANIMATION_DELAY } from '@/constants/constants';
 import { UTILITY_CLASSES } from '@/constants/classes';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 @Component({})
 export default class DataTableTooltip extends Vue {

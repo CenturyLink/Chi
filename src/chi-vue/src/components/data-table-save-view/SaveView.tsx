@@ -1,4 +1,4 @@
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import {
   BUTTON_CLASSES,
   CHECKBOX_CLASSES,
@@ -15,6 +15,7 @@ import Tooltip from '../tooltip/tooltip';
 import { uuid4 } from '@/utils/utils';
 import './save-view.scss';
 import { defaultConfig } from './default-config';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 @Component
 export default class SaveView extends Vue {

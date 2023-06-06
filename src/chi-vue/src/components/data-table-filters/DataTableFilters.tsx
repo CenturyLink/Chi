@@ -1,4 +1,4 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Prop } from 'vue-property-decorator';
 import {
   DataTableCustomItem,
   DataTableFilter,
@@ -27,6 +27,7 @@ import store, { STORE_KEY } from '@/store';
 import { getModule } from 'vuex-module-decorators';
 import { ScopedSlotChildren } from 'vue/types/vnode';
 import './filters.scss';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 @Component
 export default class DataTableFilters extends Vue {

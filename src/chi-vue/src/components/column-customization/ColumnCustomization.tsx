@@ -1,4 +1,4 @@
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import { findComponent, uuid4 } from '@/utils/utils';
 import {
   BACKDROP_CLASSES,
@@ -16,6 +16,7 @@ import { DataTableColumn, DataTableColumnsData } from '@/constants/types';
 import ColumnCustomizationContent from './ColumnCustomizationModalContent';
 import { checkColumns } from './utils';
 import Tooltip from '../tooltip/tooltip';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 declare const chi: any;
 
