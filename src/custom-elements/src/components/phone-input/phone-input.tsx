@@ -98,28 +98,13 @@ export class ChiPhoneInput {
   private excludeCountriesArray: CountryCode[];
 
   componentWillLoad(): void {
-    const countryObjs = this._getCorrectCountryList();
-    let dialCodes = getCountries();
 
-    if (this.excludeCountries) {
-      const excludeCountriesArray = this.excludeCountries.replace(/[^A-Z,]+/g, '').split(',');
-      if (excludeCountriesArray) dialCodes = dialCodes.filter(code => !excludeCountriesArray.includes(code));
-    }
 
-    countryObjs.forEach((countryObj: ExtraCountry) => {
-      if (dialCodes.find(code => code === countryObj.country_code)) {
-        const country: Country = {
-          name: countryObj.country,
-          countryAbbr: countryObj.country_code as CountryCode,
-          dialCode: getCountryCallingCode(
-            countryObj.country_code as CountryCode
-          )
-        };
 
-        this._countries.push(country);
-        }
-      }
-    );
+    this._generateCountryObjs(this.excludeCountries);
+
+
+
     document.addEventListener('click', this._closeDropdown);
     this.stateValidation(this.state);
     this._initCountry();
@@ -201,13 +186,43 @@ export class ChiPhoneInput {
     return [...country.countryList(), ...EXTRA_COUNTRIES].sort((a, b) => a.country.localeCompare(b.country));
   }
 
-  _getCountryList(): CountryCode[] {
+  @Watch('excludeCountries')
+  excludeCountriesChanged(newValue: string, oldValue: string): void {
+    if (newValue && newValue !== oldValue) {
+      this._generateCountryObjs(newValue);
+    }
+  }
+
+  _generateCountryObjs(excludeCountries: string): void {
+    const countryObjs = country.countryList();
+    const dialCodes = this._getCountryList(excludeCountries);
+    const countries = [];
+    countryObjs.forEach(
+      (countryObj: { country: string; country_code: CountryCode }) => {
+        if (dialCodes.find(code => code === countryObj.country_code)) {
+          const country: Country = {
+            name: countryObj.country,
+            countryAbbr: countryObj.country_code as CountryCode,
+            dialCode: getCountryCallingCode(
+              countryObj.country_code as CountryCode
+            )
+          };
+
+          countries.push(country);
+        }
+      }
+    );
+    this._countries = countries;
+  }
+
+  _getCountryList(excludeCountries: string | undefined): CountryCode[] {
     let dialCodes: CountryCode[] = getCountries();
 
-    if (this.excludeCountries) {
-      this.excludeCountriesArray = this.excludeCountries
+    if (excludeCountries) {
+      this.excludeCountriesArray = excludeCountries
         .replace(/[^A-Z,]+/g, '')
-        .split(',') as CountryCode[];
+        .split(',')
+        .filter(item => item !== this.defaultCountry) as CountryCode[];
       if (this.excludeCountriesArray) {
         dialCodes = dialCodes.filter(code => !this.excludeCountriesArray.includes(code));
       }

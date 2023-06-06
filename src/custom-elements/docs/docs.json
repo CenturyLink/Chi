@@ -4239,6 +4239,22 @@
           "required": false
         },
         {
+          "name": "excludeCountries",
+          "type": "string",
+          "mutable": true,
+          "attr": "exclude-countries",
+          "reflectToAttr": true,
+          "docs": "To define two letter ISO country codes to exclude from Phone input dropdown",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "placeholder",
           "type": "string",
           "mutable": false,

@@ -467,14 +467,97 @@ describe('Phone Input', () => {
         .should('have.attr', 'exclude-countries');
     });
 
-    it('Should exclude specified countries from the dropdown list', () => {
+    it('Should exclude a single country specified by ISO country code', () => {
       cy.get('@excludeCountriesPhoneInput')
-        .invoke('attr', 'exclude-countries', '["AG", "AF"]')
+        .invoke('attr', 'exclude-countries', 'AL')
+        .then(() => {
+          cy.get('@dropdownTrigger').click({force: true});
+          cy.get('@excludeCountriesPhoneInput')
+            .find('.chi-dropdown__menu-item')
+            .should('not.contain', 'Albania');
+        });
+    });
+
+    it('Should exclude multiple countries specified by ISO country codes', () => {
+      cy.get('@excludeCountriesPhoneInput')
+        .invoke('attr', 'exclude-countries', 'AL, DZ')
         .then(() => {
           cy.get('@dropdownTrigger').click();
           cy.get('@excludeCountriesPhoneInput')
             .find('.chi-dropdown__menu-item')
             .should('not.contain', 'Albania');
+          cy.get('@excludeCountriesPhoneInput')
+            .find('.chi-dropdown__menu-item')
+            .should('not.contain', 'Algeria');
+        });
+    });
+
+    it('Should not exclude default country from countries list if default country is in specified exclude countries', () => {
+      cy.get('@excludeCountriesPhoneInput')
+        .invoke('attr', 'default-country', 'US')
+        .invoke('attr', 'exclude-countries', 'US, AL')
+        .then(() => {
+          cy.get('@dropdownTrigger').click();
+          cy.get('@excludeCountriesPhoneInput')
+            .find('.chi-dropdown__menu-item')
+            .should('contain', 'United States');
+        });
+    });
+
+    it('Should exclude specified countries from the dropdown list if countries passed as array of strings', () => {
+      cy.get('@excludeCountriesPhoneInput')
+        .invoke('attr', 'exclude-countries', '["DE", "FR"]')
+        .then(() => {
+          cy.get('@dropdownTrigger').click();
+          cy.get('@excludeCountriesPhoneInput')
+            .find('.chi-dropdown__menu-item')
+            .should('not.contain', 'Germany');
+          cy.get('@excludeCountriesPhoneInput')
+            .find('.chi-dropdown__menu-item')
+            .should('not.contain', 'France');
+        });
+    });
+
+    it('Should not exclude specified countries if countries passed not as ISO country codes', () => {
+      cy.get('@excludeCountriesPhoneInput')
+        .invoke('attr', 'exclude-countries', 'ca, +44')
+        .then(() => {
+          cy.get('@dropdownTrigger').click();
+          cy.get('@excludeCountriesPhoneInput')
+            .find('.chi-dropdown__menu-item')
+            .should('contain', 'Canada');
+          cy.get('@excludeCountriesPhoneInput')
+            .find('.chi-dropdown__menu-item')
+            .should('contain', 'United Kingdom');
+        });
+    });
+
+    it('Should not fail if exclude countries not passed', () => {
+      cy.get('@excludeCountriesPhoneInput')
+        .invoke('attr', 'exclude-countries')
+        .then(() => {
+          cy.get('@dropdownTrigger').click();
+          cy.get('@excludeCountriesPhoneInput')
+            .find('.chi-dropdown__menu-item')
+            .should('have.length', 235);
+        });
+    });
+
+    it('Should include only specified countries when excludeCountries is set to one country and then overridden', () => {
+      cy.get('@excludeCountriesPhoneInput')
+        .invoke('attr', 'exclude-countries', 'DE')
+        .then(() => {
+          cy.get('@excludeCountriesPhoneInput')
+            .invoke('attr', 'exclude-countries', 'FR')
+            .then(() => {
+              cy.get('@dropdownTrigger').click();
+              cy.get('@excludeCountriesPhoneInput')
+                .find('.chi-dropdown__menu-item')
+                .should('contain', 'Germany');
+              cy.get('@excludeCountriesPhoneInput')
+                .find('.chi-dropdown__menu-item')
+                .should('not.contain', 'France');
+            });
         });
     });
   });
