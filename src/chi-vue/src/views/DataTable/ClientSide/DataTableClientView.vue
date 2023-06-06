@@ -181,7 +181,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from '@/build/vue-wrapper';
 import DataTable from '../../../components/data-table/DataTable';
 import DesktopActions from '../DataTableTemplates/example-desktop-actions.vue';
 import MobileActions from '../DataTableTemplates/example-mobile-actions.vue';

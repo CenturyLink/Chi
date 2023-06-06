@@ -1,4 +1,4 @@
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import {
   ACTIVE_CLASS,
   BUTTON_CLASSES,
@@ -56,6 +56,7 @@ import Checkbox from '../checkbox/Checkbox';
 import { printElement } from '../../utils/utils';
 import { ColumnResize } from './utils/Resize';
 import Tooltip from '../tooltip/tooltip';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 declare const chi: any;
 
