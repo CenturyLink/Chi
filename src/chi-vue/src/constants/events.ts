@@ -43,6 +43,7 @@ export const DATA_TABLE_EVENTS = {
     EXPAND_ALL: 'chiExpandAll',
     COLLAPSE_ALL: 'chiCollapseAll',
   },
+  ADD_SERVICE_ON_NO_DATA: 'chiAddServiceOnNoData',
 };
 
 export interface DataTableSorting {

@@ -32,4 +32,5 @@ export const defaultConfig: DataTableConfig = {
   cellWrap: false,
   showExpandAll: false,
   showSelectAllDropdown: false,
+  isDataEmpty: false,
 };

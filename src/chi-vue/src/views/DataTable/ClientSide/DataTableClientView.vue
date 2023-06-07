@@ -21,6 +21,7 @@
       @chiDeselectAllPages="e => this.chiDeselectAllPages(e)"
       @chiExpandAll="e => this.chiExpandAll(e)"
       @chiCollapseAll="e => this.chiCollapseAll(e)"
+      @chiAddServiceOnNoData="e => this.chiAddServiceOnNoData(e)"
     >
       <template #alertsDesc="payload">
         <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
@@ -298,6 +299,10 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     chiCollapseAll: e => {
       console.log('chiCollapseAll', e);
     },
+    chiAddServiceOnNoData(e) {
+      console.log(this.$data.config);
+      // this.$data.config.isDataEmpty = false;
+    },
   },
   data: () => {
     return {
@@ -306,7 +311,7 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
       toolbar: exampleToolbar,
       table: {
         head: exampleTableHead,
-        body: exampleTableBody,
+        body: [], // TODO CHANGE [] TO exampleTableBody,
       },
       months: [
         'January',

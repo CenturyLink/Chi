@@ -57,6 +57,7 @@ import { printElement } from '../../utils/utils';
 import { ColumnResize } from './utils/Resize';
 import Tooltip from '../tooltip/tooltip';
 import { Component, Vue } from '@/build/vue-wrapper';
+import NoData from '../empty-state/NoData';
 
 declare const chi: any;
 
@@ -89,6 +90,9 @@ export default class DataTable extends Vue {
     : defaultConfig.showSelectAllDropdown;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   emptyMessage = this.config.noFiltersMessage || defaultConfig.noFiltersMessage || DATA_TABLE_NO_FILTERS_MESSAGE;
+  isDataEmpty = Object.prototype.hasOwnProperty.call(this.$props.config, 'isDataEmpty')
+    ? this.$props.config.isDataEmpty
+    : defaultConfig.isDataEmpty;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -1028,7 +1032,11 @@ export default class DataTable extends Vue {
 
   _body() {
     const getTableBodyRows = (): JSX.Element => {
+      console.log(this.$props.config);
       if (!this.data.body.length) {
+        if (!this.isDataEmpty) {
+          return <NoData onChiChange={(ev: Event) => this.$emit(DATA_TABLE_EVENTS.ADD_SERVICE_ON_NO_DATA, ev)} />;
+        }
         return (
           <div class={DATA_TABLE_CLASSES.EMPTY}>
             <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
