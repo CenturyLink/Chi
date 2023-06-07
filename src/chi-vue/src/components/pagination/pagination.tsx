@@ -1,4 +1,4 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Prop } from 'vue-property-decorator';
 import { uuid4 } from '@/utils/utils';
 import {
   ACTIVE_CLASS,
@@ -13,8 +13,9 @@ import {
 } from '@/constants/classes';
 import { PaginationSizes } from '@/constants/types';
 import { PAGINATION_EVENTS } from '@/constants/events';
+import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class Pagination extends Vue {
   @Prop() ariaLabel!: boolean;
   @Prop() currentPage!: number;

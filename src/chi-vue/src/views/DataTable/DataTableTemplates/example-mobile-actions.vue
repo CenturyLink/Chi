@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 declare const chi: any;
 

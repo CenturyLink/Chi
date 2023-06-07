@@ -1,9 +1,15 @@
 /// <reference types="Cypress" />
 
 const DANGER_CLASS = '-danger';
+const TIME_PICKER_HOUR = 'chi-time-picker__hour';
 const TIME_PICKER_MINUTE = 'chi-time-picker__minute';
+const TIME_PICKER_PERIOD = 'chi-time-picker__period';
 const clickDate = '11/14/2018';
 const clickDate2 = '01/26/2019';
+const hour = '07';
+const noonHour = '00';
+const minute = '30';
+const period = 'PM';
 const thisMonthName = /November\s*2018/;
 const nextMonthName = /December\s*2018/;
 const dateObject = new Date();
@@ -196,57 +202,62 @@ describe('Date picker', function() {
       .should('have.value', '12/31/2099');
   });
 
-  it('Should render calendar with multiple active days when attribute' +
-    ' multiple is present and more then one date is provided as value',
+  it(
+    'Should render calendar with multiple active days when attribute' +
+      ' multiple is present and more then one date is provided as value',
     function() {
+      cy.get('[data-cy="test-multiple-selection"]')
+        .find(
+          '[data-date="11/28/2018"], [data-date="11/29/2018"],' +
+            '[data-date="11/30/2018"]'
+        )
+        .each($el => {
+          const classList = Array.from($el[0].classList);
+
+          expect(classList).to.include('-active');
+        });
+    }
+  );
+
+  it('Should select the clicked day', function() {
     cy.get('[data-cy="test-multiple-selection"]')
-      .find('[data-date="11/28/2018"], [data-date="11/29/2018"],' +
-        '[data-date="11/30/2018"]')
-      .each(($el) => {
-        const classList = Array.from($el[0].classList);
-
-        expect(classList).to.include('-active');
-      });
-  });
-
-  it('Should select the clicked day',
-    function() {
-      cy.get('[data-cy="test-multiple-selection"]')
-        .scrollIntoView()
-        .wait(300)
-        .find('[data-date="11/27/2018"]')
-        .should('not.have.class', '-active')
-        .click({force: true})
-        .wait(300)
-        .should('have.class', '-active');
-    });
-
-  it('Should deselect the active day when clicked',
-    function() {
-      cy.get('[data-cy="test-multiple-selection"]')
-        .find('[data-date="11/28/2018"]')
-        .click()
-        .wait(300)
-        .should('not.have.class', '-active');
-    });
-
-  it('Should render the calendar with the respective active dates ' +
-    'when the user types new input value', function() {
-    cy.get('[data-cy="test-multiple-picker"]')
-      .find('input')
-      .clear()
-      .type('03/29/2021, 03/30/2021')
-      .trigger('change')
+      .scrollIntoView()
       .wait(300)
-      .get('[data-cy="test-multiple-picker-calendar"]')
-      .should('have.value', '03/29/2021,03/30/2021')
-      .find('[data-date="03/29/2021"], [data-date="03/30/2021"]')
-      .each(($el) => {
-        const classList = Array.from($el[0].classList);
-
-        expect(classList).to.include('-active');
-      });
+      .find('[data-date="11/27/2018"]')
+      .should('not.have.class', '-active')
+      .click({ force: true })
+      .wait(300)
+      .should('have.class', '-active');
   });
+
+  it('Should deselect the active day when clicked', function() {
+    cy.get('[data-cy="test-multiple-selection"]')
+      .find('[data-date="11/28/2018"]')
+      .click()
+      .wait(300)
+      .should('not.have.class', '-active');
+  });
+
+  it(
+    'Should render the calendar with the respective active dates ' +
+      'when the user types new input value',
+    function() {
+      cy.get('[data-cy="test-multiple-picker"]')
+        .find('input')
+        .clear()
+        .type('03/29/2021, 03/30/2021')
+        .trigger('change')
+        .wait(300)
+        .get('[data-cy="test-multiple-picker-calendar"]')
+        .should('have.value', '03/29/2021,03/30/2021')
+        .find('[data-date="03/29/2021"], [data-date="03/30/2021"]')
+        .each($el => {
+          const classList = Array.from($el[0].classList);
+
+          expect(classList).to.include('-active');
+        });
+    }
+  );
 
   it('Should accept only valid user inputs', function() {
     cy.get('[data-cy="test-multiple-picker"]')
@@ -268,9 +279,6 @@ describe('Date picker', function() {
   });
 
   it('Date-picker should show Time Picker with 24hr format. ', function() {
-    const hours = '23';
-    const minutes = '37';
-
     cy.get('[data-cy="test-time-format-24hr"]').as('testTimeFormat');
 
     cy.get('@testTimeFormat')
@@ -283,19 +291,181 @@ describe('Date picker', function() {
 
     // Select hours
     cy.get('@testTimeFormat')
-      .find('chi-popover[active]')
-      .find(`[data-hour="${hours}"]`)
+      .find(`.${TIME_PICKER_HOUR}`)
+      .contains(hour)
       .click();
 
     // Select minutes
     cy.get('@testTimeFormat')
       .find(`.${TIME_PICKER_MINUTE}`)
-      .contains(minutes)
+      .contains(minute)
+      .click();
+
+    cy.get('[data-cy="test-time-format-24hr"]')
+      .as('testTimeFormat')
+      .find('input')
+      .should('have.value', `11/22/2018, ${hour}:${minute}`);
+  });
+
+  it(
+    'Date-picker should have 00 as the selected hour when clicked 00 as ' +
+      'hour in the Time Picker with 24hr format. ',
+    function() {
+      cy.get('[data-cy="test-time-format-24hr"]').as('testTimeFormat');
+
+      cy.get('@testTimeFormat')
+        .find('input')
+        .scrollIntoView()
+        .focus()
+        .get('@testTimeFormat')
+        .find('chi-popover[active]')
+        .should('have.attr', 'active');
+
+      // Select hours
+      cy.get('@testTimeFormat')
+        .find(`.${TIME_PICKER_HOUR}`)
+        .contains(hour)
+        .click();
+
+      // Select hours
+      cy.get('@testTimeFormat')
+        .find(`.${TIME_PICKER_HOUR}`)
+        .contains(hour)
+        .should('have.class', '-active');
+
+      // Select minutes
+      cy.get('@testTimeFormat')
+        .find(`.${TIME_PICKER_MINUTE}`)
+        .contains(minute)
+        .click();
+
+      cy.get('@testTimeFormat')
+        .find(`.${TIME_PICKER_MINUTE}`)
+        .contains(minute)
+        .should('have.class', '-active');
+
+      cy.get('@testTimeFormat')
+        .find('input')
+        .should('have.value', `11/22/2018, ${hour}:${minute}`);
+    }
+  );
+
+  it('Date-picker should show Time Picker with 12hr format.', function() {
+    cy.get('[data-cy="test-time-format-12hr"]').as('testTimeFormat');
+
+    cy.get('@testTimeFormat')
+      .find('input')
+      .scrollIntoView()
+      .focus()
+      .get('@testTimeFormat')
+      .find('chi-popover[active]')
+      .should('have.attr', 'active');
+
+    // Select hours
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_HOUR}`)
+      .contains(hour)
+      .click();
+
+    // Select hours
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_HOUR}`)
+      .contains(hour)
+      .should('have.class', '-active');
+
+    // Select minutes
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minute)
       .click();
 
     cy.get('@testTimeFormat')
-      .find('input.sc-chi-date-picker')
-      .should('have.value', `11/22/2018, ${hours}:${minutes}`);
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minute)
+      .should('have.class', '-active');
+
+    // Select period
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_PERIOD}`)
+      .contains(period)
+      .click();
+
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_PERIOD}`)
+      .contains(period)
+      .should('have.class', '-active');
+
+    cy.get('@testTimeFormat')
+      .find('input')
+      .should(
+        'have.value',
+        `11/22/2018, ${hour}:${minute} ${period.toLowerCase()}`
+      );
   });
 
+  it('Date-picker should show selected time after changing it several times.', function() {
+    cy.get('[data-cy="test-time-format-24hr"]').as('testTimeFormat');
+
+    cy.get('@testTimeFormat')
+      .find('input')
+      .scrollIntoView()
+      .focus()
+      .get('@testTimeFormat')
+      .find('chi-popover[active]')
+      .should('have.attr', 'active');
+
+    // Select hours
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_HOUR}`)
+      .contains(hour)
+      .click();
+
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_HOUR}`)
+      .contains(hour)
+      .should('have.class', '-active');
+
+    // Select minutes
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minute)
+      .click();
+
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minute)
+      .should('have.class', '-active');
+
+    cy.get('@testTimeFormat')
+      .find('input')
+      .should('have.value', `11/22/2018, ${hour}:${minute}`);
+
+    cy.get('[data-cy="test-time-format-24hr"]').as('testTimeFormat');
+
+    // Select hours
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_HOUR}`)
+      .contains(noonHour)
+      .click();
+
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_HOUR}`)
+      .contains(noonHour)
+      .should('have.class', '-active');
+
+    // Select minutes
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minute)
+      .click();
+
+    cy.get('@testTimeFormat')
+      .find(`.${TIME_PICKER_MINUTE}`)
+      .contains(minute)
+      .should('have.class', '-active');
+
+    cy.get('@testTimeFormat')
+      .find('input')
+      .should('have.value', `11/22/2018, ${noonHour}:${minute}`);
+  });
 });

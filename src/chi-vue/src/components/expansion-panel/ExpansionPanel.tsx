@@ -1,8 +1,9 @@
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import { EXPANSION_PANEL_STATES, ExpansionPanelState } from '@/constants/types';
 import { EPANEL_CLASSES, UTILITY_CLASSES } from '@/constants/classes';
 import './expansion-panel.scss';
 import { EPANEL } from '@/constants/constants';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 @Component({})
 export default class ExpansionPanel extends Vue {
