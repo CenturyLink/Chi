@@ -57,6 +57,7 @@ import { printElement } from '../../utils/utils';
 import { ColumnResize } from './utils/Resize';
 import Tooltip from '../tooltip/tooltip';
 import { Component, Vue } from '@/build/vue-wrapper';
+import DataTableEmpty from './DataTableEmpty';
 
 declare const chi: any;
 
@@ -89,6 +90,7 @@ export default class DataTable extends Vue {
     : defaultConfig.showSelectAllDropdown;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   emptyMessage = this.config.noFiltersMessage || defaultConfig.noFiltersMessage || DATA_TABLE_NO_FILTERS_MESSAGE;
+  isDataEmpty = this.config.emptyConfig?.isDataEmpty || defaultConfig.emptyConfig?.isDataEmpty;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -1029,12 +1031,21 @@ export default class DataTable extends Vue {
   _body() {
     const getTableBodyRows = (): JSX.Element => {
       if (!this.data.body.length) {
-        return (
-          <div class={DATA_TABLE_CLASSES.EMPTY}>
-            <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
-            {this.emptyMessage}
-          </div>
-        );
+        if (this.isDataEmpty) {
+          return (
+            <DataTableEmpty
+              onChiChange={(ev: Event) => this.$emit(DATA_TABLE_EVENTS.EMPTY_LINK, ev)}
+              config={this.$props.config.emptyConfig}
+            />
+          );
+        } else {
+          return (
+            <div class={DATA_TABLE_CLASSES.EMPTY}>
+              <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
+              {this.emptyMessage}
+            </div>
+          );
+        }
       }
 
       return this.dataToRender().map((bodyRow: DataTableRow, index: number) => {
