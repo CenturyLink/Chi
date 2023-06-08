@@ -1,4 +1,14 @@
 # CHANGELOG
+## 5.34.0 (June 9, 2023)
+### Components
+#### Added
+* Added: Text utility classes now support `-text--italic`.
+* Added: Dropdown supports keyboard events `arrowUp` and `arrowDown` to improve accessibility.
+#### Changed
+* Changed: Dropdown focus state has changed for consisitency with another components.
+#### Fixed
+* Fixed: Data table spacing and colors in nested data tables.
+
 ## 5.33.0 (May 30, 2023)
 ### Components
 #### Added
