@@ -229,11 +229,7 @@ $pillSizes: (
 
   &.-pill {
     .chi-picker__input + label {
-      padding: $picker-sm-item-padding;
-      font-size: $picker-sm-item-font-size;
       border-radius: $border-radius-rounded-pill;
-      min-height: inherit;
-      line-height: $picker-sm-item-description-line-height;
     }
 
     & ~ .-pill {
