@@ -11,11 +11,11 @@ const PAGINATION_CLASSES = {
   START: 'chi-pagination__start',
   CENTER: 'chi-pagination__center',
   END: 'chi-pagination__end',
-  JUMPER: 'chi-pagination__jumper'
+  JUMPER: 'chi-pagination__jumper',
 };
 const PAGINATION_EVENTS = {
   PAGE_CHANGE: 'chiPageChange',
-  PAGE_SIZE: 'chiPageSizeChange'
+  PAGE_SIZE: 'chiPageSizeChange',
 };
 
 const hasClassAssertion = (el, value) => {
@@ -67,7 +67,7 @@ describe('Pagination', () => {
     const selectors = [
       {
         el: `[data-cy='pagination-base']`,
-        class: PAGINATION_CLASSES.PAGINATION
+        class: PAGINATION_CLASSES.PAGINATION,
       },
       { el: '@paginationContent', class: PAGINATION_CLASSES.CONTENT },
       { el: '@paginationStart', class: PAGINATION_CLASSES.START },
@@ -75,27 +75,24 @@ describe('Pagination', () => {
       { el: `@paginationEnd`, class: PAGINATION_CLASSES.END },
       {
         el: `[data-cy='pagination-base-inverse']`,
-        class: PAGINATION_CLASSES.PAGINATION
+        class: PAGINATION_CLASSES.PAGINATION,
       },
       { el: '@paginationContentInverse', class: PAGINATION_CLASSES.CONTENT },
       { el: '@paginationStartInverse', class: PAGINATION_CLASSES.START },
       { el: `@paginationCenterInverse`, class: PAGINATION_CLASSES.CENTER },
-      { el: `@paginationEndInverse`, class: PAGINATION_CLASSES.END }
+      { el: `@paginationEndInverse`, class: PAGINATION_CLASSES.END },
     ];
 
-    selectors.forEach(sel => {
+    selectors.forEach((sel) => {
       it(`${sel.el} should have class .${sel.class}`, () => {
         hasClassAssertion(sel.el, sel.class);
       });
     });
 
     it(`should show current page with .${ACTIVE_CLASS} class`, () => {
-      const rootSelectors = [
-        `[data-cy='pagination-base']`,
-        `[data-cy='pagination-base-inverse']`
-      ];
+      const rootSelectors = [`[data-cy='pagination-base']`, `[data-cy='pagination-base-inverse']`];
 
-      rootSelectors.forEach(sel => {
+      rootSelectors.forEach((sel) => {
         cy.get(`${sel}`)
           .find(`[data-page='3']`)
           .as('currentPage');
@@ -106,7 +103,7 @@ describe('Pagination', () => {
     it('should show the correct number of pages', () => {
       const centerSelectors = [`@paginationCenter`, `@paginationCenterInverse`];
 
-      centerSelectors.forEach(sel => {
+      centerSelectors.forEach((sel) => {
         cy.get(`${sel}`)
           .find('.chi-button-group')
           .children()
@@ -117,18 +114,18 @@ describe('Pagination', () => {
     it(`should trigger the ${PAGINATION_EVENTS.PAGE_CHANGE} event`, () => {
       cy.window()
         .its('basePagination')
-        .then(basePagination => {
+        .then((basePagination) => {
           const component = basePagination.$refs.base;
-          const spy = cy.spy();
 
-          component.$on(`${PAGINATION_EVENTS.PAGE_CHANGE}`, spy);
+          cy.spy(component, '_emitPageChange').as('pageChangeSpy');
+
           cy.get(`@paginationCenter`)
             .find(`.${ICON_BUTTON}`)
             .as('paginationIcons')
             .eq(1)
             .click()
             .then(() => {
-              expect(spy).to.be.calledOnce;
+              cy.get('@pageChangeSpy').should('have.been.called');
             });
           cy.get(`@paginationCenter`)
             .find(`.${ICON_BUTTON}`)
@@ -136,7 +133,7 @@ describe('Pagination', () => {
             .eq(0)
             .click()
             .then(() => {
-              expect(spy).to.be.calledTwice;
+              cy.get('@pageChangeSpy').should('have.been.called');
             });
         });
     });
@@ -144,8 +141,8 @@ describe('Pagination', () => {
     it(`should change the current .${ACTIVE_CLASS} class on page change`, () => {
       cy.get(`[data-cy='pagination-base']`)
         .find(`[data-page='4']`)
-        .as('fourthPage')
         .eq(0)
+        .as('fourthPage')
         .click()
         .then(() => {
           hasClassAssertion('@fourthPage', `${ACTIVE_CLASS}`);
@@ -163,12 +160,9 @@ describe('Pagination', () => {
 
   describe('disabled', () => {
     it('should have the previous button be disabled when the active page is 1', () => {
-      const prevSelectors = [
-        `[data-cy='pagination-disabled-prev']`,
-        `[data-cy='pagination-disabled-prev-inverse']`
-      ];
+      const prevSelectors = [`[data-cy='pagination-disabled-prev']`, `[data-cy='pagination-disabled-prev-inverse']`];
 
-      prevSelectors.forEach(sel => {
+      prevSelectors.forEach((sel) => {
         cy.get(`${sel}`)
           .find(`.${ICON_BUTTON}`)
           .eq(0)
@@ -177,12 +171,9 @@ describe('Pagination', () => {
     });
 
     it('should have the next button be disabled', () => {
-      const nextSelectors = [
-        `[data-cy='pagination-disabled-next']`,
-        `[data-cy='pagination-disabled-next-inverse']`
-      ];
+      const nextSelectors = [`[data-cy='pagination-disabled-next']`, `[data-cy='pagination-disabled-next-inverse']`];
 
-      nextSelectors.forEach(sel => {
+      nextSelectors.forEach((sel) => {
         cy.get(`${sel}`)
           .find(`.${ICON_BUTTON}`)
           .eq(1)
@@ -193,12 +184,9 @@ describe('Pagination', () => {
 
   describe('truncation', () => {
     it('should truncate', () => {
-      const truncationSelectors = [
-        `[data-cy='pagination-truncation']`,
-        `[data-cy='pagination-truncation-inverse']`
-      ];
+      const truncationSelectors = [`[data-cy='pagination-truncation']`, `[data-cy='pagination-truncation-inverse']`];
 
-      truncationSelectors.forEach(sel => {
+      truncationSelectors.forEach((sel) => {
         cy.get(`${sel}`)
           .find(`.${PAGINATION_CLASSES.CENTER}`)
           .children()
@@ -210,10 +198,10 @@ describe('Pagination', () => {
     it('should double-truncate', () => {
       const doubleTruncationSelectors = [
         `[data-cy='pagination-double-truncation']`,
-        `[data-cy='pagination-double-truncation-inverse']`
+        `[data-cy='pagination-double-truncation-inverse']`,
       ];
 
-      doubleTruncationSelectors.forEach(sel => {
+      doubleTruncationSelectors.forEach((sel) => {
         cy.get(`${sel}`)
           .find(`.${PAGINATION_CLASSES.CENTER}`)
           .children()
@@ -225,12 +213,9 @@ describe('Pagination', () => {
 
   describe('results label', () => {
     it('should show a results label', () => {
-      const selectors = [
-        `[data-cy='pagination-results-label']`,
-        `[data-cy='pagination-results-label-inverse']`
-      ];
+      const selectors = [`[data-cy='pagination-results-label']`, `[data-cy='pagination-results-label-inverse']`];
 
-      selectors.forEach(sel => {
+      selectors.forEach((sel) => {
         cy.get(`${sel}`)
           .find(`.${PAGINATION_CLASSES.RESULTS}`)
           .should('contain', '240 results');
@@ -240,12 +225,9 @@ describe('Pagination', () => {
 
   describe('page size', () => {
     it('should show a page size', () => {
-      const selectors = [
-        `[data-cy='pagination-page-size']`,
-        `[data-cy='pagination-page-size-inverse']`
-      ];
+      const selectors = [`[data-cy='pagination-page-size']`, `[data-cy='pagination-page-size-inverse']`];
 
-      selectors.forEach(sel => {
+      selectors.forEach((sel) => {
         cy.get(`${sel}`)
           .find(`.${PAGINATION_CLASSES.PAGE_SIZE}`)
           .as('pageSize')
@@ -259,22 +241,22 @@ describe('Pagination', () => {
     it(`should trigger the ${PAGINATION_EVENTS.PAGE_SIZE} event`, () => {
       cy.window()
         .its('pageSizePagination')
-        .then(pageSizePagination => {
+        .then((pageSizePagination) => {
           const component = pageSizePagination.$refs.pageSize;
-          const spy = cy.spy();
 
-          component.$on(`${PAGINATION_EVENTS.PAGE_SIZE}`, spy);
+          cy.spy(component, '_emitPageSize').as('pageSizeSpy');
+
           cy.get(`[data-cy='pagination-page-size']`)
             .find(`.${PAGINATION_CLASSES.PAGE_SIZE} select`)
             .as('pageSelect')
             .select('40')
             .then(() => {
-              expect(spy).to.be.calledOnce;
+              cy.get('@pageSizeSpy').should('have.been.called');
             });
           cy.get(`@pageSelect`)
             .select('20')
             .then(() => {
-              expect(spy).to.be.calledTwice;
+              cy.get('@pageSizeSpy').should('have.been.called');
             });
         });
     });
@@ -299,12 +281,9 @@ describe('Pagination', () => {
 
   describe('page jumper', () => {
     it('should show a page jumper', () => {
-      const selectors = [
-        `[data-cy='pagination-page-jumper']`,
-        `[data-cy='pagination-page-jumper-inverse']`
-      ];
+      const selectors = [`[data-cy='pagination-page-jumper']`, `[data-cy='pagination-page-jumper-inverse']`];
 
-      selectors.forEach(sel => {
+      selectors.forEach((sel) => {
         cy.get(`${sel}`)
           .find(`.${PAGINATION_CLASSES.JUMPER}`)
           .as('pageJumper')
@@ -320,12 +299,9 @@ describe('Pagination', () => {
   describe('compact', () => {
     describe('base', () => {
       it(`should have class .${PAGINATION_CLASSES.COMPACT}`, () => {
-        const selectors = [
-          `[data-cy='pagination-compact-base']`,
-          `[data-cy='pagination-compact-page-jumper-inverse']`
-        ];
+        const selectors = [`[data-cy='pagination-compact-base']`, `[data-cy='pagination-compact-page-jumper-inverse']`];
 
-        selectors.forEach(sel => {
+        selectors.forEach((sel) => {
           cy.get(`${sel}`).should('have.class', PAGINATION_CLASSES.COMPACT);
         });
       });
@@ -335,10 +311,10 @@ describe('Pagination', () => {
       it('should show a compact page jumper', () => {
         const selectors = [
           `[data-cy='pagination-compact-page-jumper']`,
-          `[data-cy='pagination-compact-page-jumper-inverse']`
+          `[data-cy='pagination-compact-page-jumper-inverse']`,
         ];
 
-        selectors.forEach(sel => {
+        selectors.forEach((sel) => {
           cy.get(`${sel}`)
             .find(`.${PAGINATION_CLASSES.JUMPER}`)
             .as('pageJumper')
@@ -356,10 +332,10 @@ describe('Pagination', () => {
       it('should show first and last page buttons', () => {
         const selectors = [
           `[data-cy='pagination-compact-first-last']`,
-          `[data-cy='pagination-compact-first-last-inverse']`
+          `[data-cy='pagination-compact-first-last-inverse']`,
         ];
 
-        selectors.forEach(sel => {
+        selectors.forEach((sel) => {
           cy.get(`${sel}`)
             .find('.icon-page-first')
             .should('have.length', 1);
@@ -393,20 +369,11 @@ describe('Pagination', () => {
     describe('additional sizes', () => {
       const sizes = ['-sm', '-md', '-lg', '-xl'];
 
-      sizes.forEach(size => {
+      sizes.forEach((size) => {
         it(`should have class .${size}`, () => {
-          hasClassAssertion(
-            `[data-cy='pagination-compact${size}'] .chi-button`,
-            size
-          );
-          hasClassAssertion(
-            `[data-cy='pagination-compact-inverse${size}'] .chi-button`,
-            size
-          );
-          hasClassAssertion(
-            `[data-cy='pagination-compact-inverse${size}']`,
-            `${INVERSE_CLASS}`
-          );
+          hasClassAssertion(`[data-cy='pagination-compact${size}'] .chi-button`, size);
+          hasClassAssertion(`[data-cy='pagination-compact-inverse${size}'] .chi-button`, size);
+          hasClassAssertion(`[data-cy='pagination-compact-inverse${size}']`, `${INVERSE_CLASS}`);
         });
       });
     });

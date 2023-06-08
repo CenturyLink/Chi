@@ -30,7 +30,7 @@ export class Compare {
     return (
       (Array.isArray(obj) && this.isEmptyArray(obj)) ||
       !this.hasProperties(obj) ||
-      !Object.keys(obj).some(field => {
+      !Object.keys(obj).some((field) => {
         if (Array.isArray(obj[field])) {
           return obj[field].length > 0;
         } else if (obj[field] === Object(obj[field])) {

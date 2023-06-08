@@ -1,5 +1,5 @@
-script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
-script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(src="https://cdn.jsdelivr.net/npm/vue@3.3.4")
+script(src="/chi-vue/umd/index.umd.js")
 
 h2 Examples
 h3 Base
@@ -770,12 +770,14 @@ h3 Save View interaction
   .-p--3
     #save-view.-w--100
       button.chi-button(@click="toggleSaveView") Toggle Save View
-      chi-save-view.-mt--2(:config="config", @chiSave="saveView", @chiDelete="deleteView")
-        button#chi-save-view__info-trigger.chi-button.-light.-icon.-flat.-xs(aria-label='Edit', @click="() => toggleInfoPopover()" slot='info-icon')
-          .chi-button__content
-            i.chi-icon.icon-circle-info-outline(aria-hidden='true')
-        chi-popover(:active="isInfoPopoverActive" position='right-start' title='Popover title' variant='text' arrow='' reference='#chi-save-view__info-trigger' slot='info-popover', @chiPopoverHidden="() => (isInfoPopoverActive = false)")
-          | Popover content
+      chi-save-view.-mt--2(:config="config", @chi-view-save="saveView", @chi-view-delete="deleteView")
+        template(v-slot:info-icon)
+          button#chi-save-view__info-trigger.chi-button.-light.-icon.-flat.-xs(aria-label='Edit', @click="() => toggleInfoPopover()")
+            .chi-button__content
+              i.chi-icon.icon-circle-info-outline(aria-hidden='true')
+        template(v-slot:info-popover)
+          chi-popover(:active="isInfoPopoverActive" position='right-start' title='Popover title' variant='text' arrow='' reference='#chi-save-view__info-trigger' @chi-popover-hidden="() => (isInfoPopoverActive = false)")
+            | Popover content
   .example-tabs.-pl--2
     ul.chi-tabs#example-save-view-interaction(role="tablist")
       li.-disabled
@@ -805,29 +807,31 @@ h3 Save View interaction
     :code(lang='html')
       <div class="-w--100" id="save-view">
         <button class="chi-button" @click="toggleSaveView">Toggle Save View</button>
-        <ChiSaveView class="-mt--2" :config="config" @chiSave="saveView" @chiDelete="deleteView">
-          <button class="chi-button -light -icon -flat -xs" id="chi-save-view__info-trigger" aria-label="Edit" @click="() => toggleInfoPopover()" slot="info-icon">
-            <div class="chi-button__content">
-              <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
-            </div>
-          </button>
-          <chi-popover :active="isInfoPopoverActive" position="right-start" title="Popover title" variant="text" arrow="" reference="#chi-save-view__info-trigger" slot="info-popover" @chiPopoverHidden="() => (isInfoPopoverActive = false)">Popover content</chi-popover>
+        <ChiSaveView class="-mt--2" :config="config" @chiViewSave="saveView" @chiViewDelete="deleteView">
+          <template v-slot:info-icon>
+            <button class="chi-button -light -icon -flat -xs" id="chi-save-view__info-trigger" aria-label="Edit" @click="() => toggleInfoPopover()" slot="info-icon">
+              <div class="chi-button__content">
+                <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+              </div>
+            </button>
+          </template>
+          <template v-slot:info-popover>
+            <chi-popover :active="isInfoPopoverActive" position="right-start" title="Popover title" variant="text" arrow="" reference="#chi-save-view__info-trigger" @chiPopoverHidden="() => (isInfoPopoverActive = false)">Popover content</chi-popover>
+          </template>
         </ChiSaveView>
       </div>
 
       <!-- Example Data -->
-      new Vue({
-        data: () => {
+      const saveViewApp = Vue.createApp({
+        data() {
           return {
             config: {
               active: false,
               results: '(1-40 of 78)',
             },
             isInfoPopoverActive: false,
+            isSaveViewActive: false,
           }
-        },
-        components: {
-          ChiSaveView: window["chi-vue"].library.components.ChiSaveView,
         },
         methods: {
           deleteView(e) {
@@ -840,15 +844,18 @@ h3 Save View interaction
             this.isInfoPopoverActive = !this.isInfoPopoverActive;
           },
           toggleSaveView() {
-            const activeSaveViews = !this.$data.config.active
+            this.isSaveViewActive = !this.isSaveViewActive;
 
-            this.$data.config = {
-              ...this.$data.config,
-              active: activeSaveViews
+            this.config = {
+              ...this.config,
+              active: this.isSaveViewActive,
             };
           },
-        },
-      }).$mount("#save-view");
+        }
+      });
+
+      saveViewApp.component('ChiSaveView', window["chi-vue"].library.components.ChiSaveView);
+      saveViewApp.mount('#save-view');
       
   .chi-tabs-panel#html-save-view-interaction
 
@@ -1309,18 +1316,16 @@ h3 Base with Save View and Bulk Actions
           .chi-divider
 
 script.
-  new Vue({
-    data: () => {
+  const saveViewApp = Vue.createApp({
+    data() {
       return {
         config: {
           active: false,
           results: '(1-40 of 78)',
         },
         isInfoPopoverActive: false,
+        isSaveViewActive: false,
       }
-    },
-    components: {
-      ChiSaveView: window["chi-vue"].library.components.ChiSaveView,
     },
     methods: {
       deleteView(e) {
@@ -1333,15 +1338,18 @@ script.
         this.isInfoPopoverActive = !this.isInfoPopoverActive;
       },
       toggleSaveView() {
-        const activeSaveViews = !this.$data.config.active
+        this.isSaveViewActive = !this.isSaveViewActive;
 
-        this.$data.config = {
-          ...this.$data.config,
-          active: activeSaveViews
+        this.config = {
+          ...this.config,
+          active: this.isSaveViewActive,
         };
       },
-    },
-  }).$mount("#save-view");
+    }
+  });
+
+  saveViewApp.component('ChiSaveView', window["chi-vue"].library.components.ChiSaveView);
+  saveViewApp.mount('#save-view');
 
   document.addEventListener(
     'DOMContentLoaded',
@@ -1358,11 +1366,14 @@ script.
           chi.drawer(el);
         }
       );
+
       downloadDropdowns.forEach((id) => {
         const dropdown = document.getElementById(id);
         chi.dropdown(dropdown);
       })
+
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
+
       setTimeout(() => {
         chi.tooltip(document.querySelectorAll('[data-tooltip]'));
       }, 1000);

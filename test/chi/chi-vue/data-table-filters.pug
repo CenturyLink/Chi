@@ -1,29 +1,30 @@
-script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
-script(src="https://unpkg.com/vuex@3.6.2/dist/vuex.js")
-script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(src="https://cdn.jsdelivr.net/npm/vue@3.3.4")
+script(src="https://cdn.jsdelivr.net/npm/vue-demi@0.14.6")
+script(src="https://cdn.jsdelivr.net/npm/pinia@2.1.4") 
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
-script(src='../../js/chi.js')
+script(src="../../chi-vue/umd/index.umd.js")
+script(src=`../../js/chi.js`)
 
 h2 Data Table Filters
 h3 Base
-.-p--3.-w--100#base
+.-p--3#base
   chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' :custom-items='toolbar.customItemsData' data-cy="data-table-filters" ref="filtersRef")
-    template(slot='custom-one')
+    template(v-slot:custom-one)
       chi-label(for='input-1') City
       chi-text-input#input-1
       chi-label(for='input-2') Zip Code
       chi-text-input#input-2
-    template3(slot='custom-two')
+    template(v-slot:custom-two)
       chi-date-picker
 
 h3 No Advanced Filters
-.-p--3.-w--100#noAdvancedFilters
+.-p--3#noAdvancedFilters
   chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' data-cy="data-table-filters-no-advanced")
 
 
 script.
-  const store = new Vuex.Store({});
+  const pinia = Pinia.createPinia();
   const customItems = [
     {
       template: 'custom-one',
@@ -109,65 +110,73 @@ script.
     },
   ];
 
-  new Vue({
-    store,
-    components: {
-      chiVueDataTableFilters: window["chi-vue"].library.components.ChiDataTableFilters,
+  const baseApp = Vue.createApp({
+    data() {
+      return {
+        toolbar: {
+          customItemsData: customItems,
+          filtersData: {
+            filters: filters
+          },
+        }
+      }
     },
     mounted() {
       if (window.Cypress) {
         window.filtersExample = this;
       }
-    },
-    data: {
-      toolbar: {
-        customItemsData: customItems,
-        filtersData: filters,
-      }
     }
-  }).$mount("#base");
+  });
 
-  new Vue({
-    store,
-    components: {
-      chiVueDataTableFilters: window["chi-vue"].library.components.ChiDataTableFilters,
-    },
-    data: {
-      toolbar: {
-        filtersData: [
-          {
-            name: 'status',
-            type: 'select',
-            id: 'myoption100',
-            label: 'Selector',
-            options: [
+  baseApp.component('chiVueDataTableFilters', window["chi-vue"].library.components.ChiDataTableFilters);
+  baseApp.use(pinia);
+  baseApp.mount('#base');
+
+  const noAdvancedFiltersApp = Vue.createApp({
+    data() {
+      return {
+        toolbar: {
+          filtersData: {
+            filters: [
               {
-                label: 'Active',
+                name: 'status',
+                type: 'select',
+                id: 'myoption100',
+                label: 'Selector',
+                options: [
+                  {
+                    label: 'Active',
+                    value: 'active',
+                  },
+                  {
+                    label: 'Inactive',
+                    value: 'inactive',
+                  },
+                ],
                 value: 'active',
               },
               {
-                label: 'Inactive',
-                value: 'inactive',
+                name: 'input',
+                placeholder: 'Input filter',
+                type: 'input',
+                value: '',
+                id: 'myoption101',
+                label: 'Input Filter',
+              },
+              {
+                name: 'checkbox',
+                type: 'checkbox',
+                checked: false,
+                id: 'myoption102',
+                label: 'Checkbox',
               },
             ],
-            value: 'active',
-          },
-          {
-            name: 'input',
-            placeholder: 'Input filter',
-            type: 'input',
-            value: '',
-            id: 'myoption101',
-            label: 'Input Filter',
-          },
-          {
-            name: 'checkbox',
-            type: 'checkbox',
-            checked: false,
-            id: 'myoption102',
-            label: 'Checkbox',
-          },
-        ],
+          }
+        }
       }
-    }
-  }).$mount("#noAdvancedFilters");
+    },
+  });
+
+  noAdvancedFiltersApp.component('chiVueDataTableFilters', window["chi-vue"].library.components.ChiDataTableFilters);
+  noAdvancedFiltersApp.use(pinia);
+  noAdvancedFiltersApp.mount('#noAdvancedFilters');

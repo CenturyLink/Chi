@@ -112,6 +112,22 @@ export const DATA_TABLE_CLASSES = {
 };
 //#endregion
 
+//#region Transfer List
+export const TRANSFER_LIST_CLASSES = {
+  ACTIONS: 'chi-transfer-list__actions',
+  COLUMN: 'chi-transfer-list__column',
+  CONTENT: 'chi-transfer-list__content',
+  FOOTER: 'chi-transfer-list__footer',
+  HEADER: 'chi-transfer-list__header',
+  HEADER_ACTIONS: 'chi-transfer-list__header-actions',
+  MENU: 'chi-transfer-list__menu',
+  MENU_ITEM: 'chi-transfer-list__menu-item',
+  SEARCH: 'chi-transfer-list__search',
+  TITLE: 'chi-transfer-list__title',
+  TRANSFER_LIST: 'chi-transfer-list',
+};
+//#endregion
+
 //#region Divider
 export const DIVIDER_CLASSES = {
   DIVIDER: 'chi-divider',

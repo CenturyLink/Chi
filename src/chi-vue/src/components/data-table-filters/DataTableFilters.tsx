@@ -1,4 +1,4 @@
-import { Prop } from 'vue-property-decorator';
+import { Emit, Prop, Watch } from 'vue-property-decorator';
 import {
   DataTableCustomItem,
   DataTableFilter,
@@ -23,17 +23,18 @@ import { DATA_TABLE_EVENTS } from '@/constants/events';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import AdvancedFilters from './AdvancedFilters';
 import Drawer from '../drawer/drawer';
-import store, { STORE_KEY } from '@/store';
-import { getModule } from 'vuex-module-decorators';
-import { ScopedSlotChildren } from 'vue/types/vnode';
+import { useFilterStore } from '@/store';
 import './filters.scss';
 import { Component, Vue } from '@/build/vue-wrapper';
+import EventBus from '@/utils/EventBus';
 import { Compare } from '@/utils/Compare';
 
 @Component({})
 export default class DataTableFilters extends Vue {
-  @Prop() filtersData?: DataTableFiltersData;
+  @Prop() filtersData!: DataTableFiltersData;
   @Prop() customItems?: DataTableCustomItem[];
+
+  name = 'DataTableFilters';
 
   _filtersData?: DataTableFiltersData;
   _advancedFiltersData?: DataTableFilter[];
@@ -41,6 +42,30 @@ export default class DataTableFilters extends Vue {
   _drawerID?: string;
   drawerActive?: boolean = false;
   storeModule?: any;
+
+  @Emit(DATA_TABLE_EVENTS.FILTERS_CHANGE)
+  _emitFiltersChanged() {
+    EventBus.emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._getUpdatedFiltersObject());
+
+    return this._getUpdatedFiltersObject();
+  }
+
+  @Watch('filtersData')
+  filtersDataChanged(newFilterData: DataTableFiltersData, oldFilterData: DataTableFiltersData) {
+    if (!Compare.deepEqual(newFilterData, oldFilterData)) {
+      newFilterData.filters?.forEach((currentValue: DataTableFilter) => {
+        const filterPayload = {
+          id: currentValue.id,
+          value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
+        };
+
+        this.storeModule.updateFilterConfig(filterPayload);
+        this.storeModule.updateFilterConfigLive(filterPayload);
+      });
+
+      this._filtersData = newFilterData;
+    }
+  }
 
   beforeCreate() {
     this._filtersData = {
@@ -50,29 +75,23 @@ export default class DataTableFilters extends Vue {
   }
 
   created() {
-    const isModuleRegistered = Object.keys(this.$store.state).includes(STORE_KEY);
-
     this._drawerID = `drawer_${uuid4()}`;
 
-    if (!isModuleRegistered) {
-      this.$store.registerModule(STORE_KEY, store);
+    if (!this.storeModule) {
+      this.storeModule = useFilterStore();
     }
 
-    if (!this.storeModule && this.$store) {
-      this.storeModule = getModule(store, this.$store);
-    }
-
-    const advancedFilters = this.$props.filtersData.filter((filter: DataTableFilter) => filter.advanced);
+    const advancedFilters = this.filtersData.filters?.filter((filter: DataTableFilter) => filter.advanced);
 
     if (this._filtersData) {
       this._filtersData = {
-        filters: copyArrayOfObjects(this.$props.filtersData),
+        filters: copyArrayOfObjects(this.filtersData.filters),
       };
     }
 
     this._advancedFiltersData = copyArrayOfObjects(advancedFilters);
 
-    this.$props.filtersData.forEach((currentValue: DataTableFilter) => {
+    this.filtersData.filters?.forEach((currentValue: DataTableFilter) => {
       const filterPayload = {
         id: currentValue.id,
         value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
@@ -92,7 +111,7 @@ export default class DataTableFilters extends Vue {
   }
 
   _createSelectFilter(filter: DataTableFilter, mobile?: boolean) {
-    const options = filter.options?.map(option => {
+    const options = filter.options?.map((option) => {
       return (
         <option value={option.value} selected={filter.value === option.value}>
           {option.label}
@@ -107,20 +126,18 @@ export default class DataTableFilters extends Vue {
     );
 
     return (
-      <div
-        class={`
-          ${FORM_CLASSES.FORM_ITEM}`}>
+      <div class={FORM_CLASSES.FORM_ITEM}>
         {label}
         <select
           aria-label={`Filter by ${filter.label || filter.name}`}
           id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
-          value={!mobile ? this.filterElementValue[filter.id] : this.filterElementValueLive[filter.id]}
           class={`
             ${SELECT_CLASSES.SELECT}
             ${mobile && UTILITY_CLASSES.MARGIN.BOTTOM[1]}
           `}
           data-filter={filter.name}
-          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select', mobile || false)}>
+          onChange={(ev: Event) => this._changeFormElementFilter(ev, 'select', mobile || false)}
+        >
           {options}
         </select>
       </div>
@@ -129,9 +146,7 @@ export default class DataTableFilters extends Vue {
 
   _createInputFilter(filter: DataTableFilter, mobile?: boolean) {
     return (
-      <div
-        class={`
-          ${FORM_CLASSES.FORM_ITEM}`}>
+      <div class={FORM_CLASSES.FORM_ITEM}>
         {mobile && (
           <label for={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`} class={FORM_CLASSES.LABEL}>
             {filter.label}
@@ -156,7 +171,7 @@ export default class DataTableFilters extends Vue {
 
   _createTextareaFilter(filter: DataTableFilter, mobile?: boolean) {
     return (
-      <div class={`${FORM_CLASSES.FORM_ITEM}`}>
+      <div class={FORM_CLASSES.FORM_ITEM}>
         {mobile && (
           <label for={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`} class={FORM_CLASSES.LABEL}>
             {filter.label}
@@ -181,14 +196,16 @@ export default class DataTableFilters extends Vue {
         class={`
           ${FORM_CLASSES.FORM_ITEM}
           ${UTILITY_CLASSES.DISPLAY.FLEX}
-        ${UTILITY_CLASSES.JUSTIFY.CENTER}`}>
+        ${UTILITY_CLASSES.JUSTIFY.CENTER}`}
+      >
         <div
           class={[
             CHECKBOX_CLASSES.CHECKBOX,
             mobile
               ? `${UTILITY_CLASSES.ALIGN_SELF.LEFT} ${UTILITY_CLASSES.MARGIN.BOTTOM[1]}`
               : UTILITY_CLASSES.ALIGN_SELF.CENTER,
-          ]}>
+          ]}
+        >
           <input
             id={mobile ? `${filter.id}-mobile` : `${filter.id}-desktop`}
             aria-label={`Filter by ${filter.label || filter.name}`}
@@ -234,6 +251,7 @@ export default class DataTableFilters extends Vue {
       ? this._filtersData.filters.map((filter: DataTableFilter) => {
           if (filter.id) {
             const value = filters[filter.id];
+
             return { ...filter, ...{ value: value } };
           }
           return filter;
@@ -249,10 +267,6 @@ export default class DataTableFilters extends Vue {
     }
   }
 
-  _emitFiltersChanged() {
-    this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._getUpdatedFiltersObject());
-  }
-
   getCustomItemsSlots() {
     return this.customItems?.reduce((accumulator, currentValue) => {
       if (this.$slots[currentValue.template]) {
@@ -261,7 +275,7 @@ export default class DataTableFilters extends Vue {
           [currentValue.template]: this.$slots[currentValue.template],
         };
       }
-    }, {} as { [key: string]: ScopedSlotChildren } | undefined);
+    }, {} as { [key: string]: any } | undefined);
   }
 
   _advancedFiltersPopOver() {
@@ -273,7 +287,8 @@ export default class DataTableFilters extends Vue {
           onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={false}
           advancedFiltersData={this._advancedFiltersData}
-          customItems={this.customItems}>
+          customItems={this.customItems}
+        >
           {customItemsSlots}
         </AdvancedFilters>
       );
@@ -290,7 +305,8 @@ export default class DataTableFilters extends Vue {
           onChiAdvancedFiltersChange={() => this._emitFiltersChanged()}
           mobile={true}
           advancedFiltersData={this._advancedFiltersData}
-          customItems={this.customItems}>
+          customItems={this.customItems}
+        >
           {customItemsSlots}
         </AdvancedFilters>
       );
@@ -314,7 +330,7 @@ export default class DataTableFilters extends Vue {
     const advancedFilters =
       this._advancedFiltersData && this._advancedFiltersData.length > 0 ? this._advancedFiltersFields() : null;
 
-    this.$props.filtersData.forEach((filter: DataTableFilter) => {
+    this.filtersData.filters.forEach((filter: DataTableFilter) => {
       const filterElement =
         filter.type === 'select'
           ? this._createSelectFilter(filter)
@@ -354,9 +370,15 @@ export default class DataTableFilters extends Vue {
         <div class={`${DATA_TABLE_CLASSES.FILTERS}-mobile`}>
           <button
             class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT} ${DRAWER_CLASSES.TRIGGER}`}
-            onClick={() => this.toggleDrawer()}
+            onClick={(event: MouseEvent) => {
+              event.stopPropagation();
+
+              this.toggleDrawer();
+            }}
             data-target={this._drawerID}
-            aria-label="Open Drawer">
+            aria-label="Open Drawer"
+            type="button"
+          >
             <div class={BUTTON_CLASSES.CONTENT}>
               <i class={`${ICON_CLASS} icon-filter`} aria-hidden="true"></i>
             </div>
@@ -370,12 +392,14 @@ export default class DataTableFilters extends Vue {
           portal={true}
           active={this.drawerActive}
           onChiDrawerHide={() => (this.drawerActive = false)}
-          onChiDrawerClickOutside={() => (this.drawerActive = false)}>
+          onChiDrawerClickOutside={() => (this.drawerActive = false)}
+        >
           <div class={[UTILITY_CLASSES.PADDING.X[2], UTILITY_CLASSES.PADDING.Y[3]]}>
             {standardFiltersMobile}
             {advancedFilters}
             <div
-              class={`${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.JUSTIFY.CENTER} ${UTILITY_CLASSES.PADDING.Y[2]}`}>
+              class={`${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.JUSTIFY.CENTER} ${UTILITY_CLASSES.PADDING.Y[2]}`}
+            >
               <button onClick={() => this.toggleDrawer()} class={BUTTON_CLASSES.BUTTON}>
                 Cancel
               </button>
@@ -388,7 +412,8 @@ export default class DataTableFilters extends Vue {
                   ${BUTTON_CLASSES.BUTTON}
                   ${BUTTON_CLASSES.PRIMARY}
                   ${UTILITY_CLASSES.MARGIN.LEFT[2]}
-                  `}>
+                `}
+              >
                 Apply
               </button>
             </div>

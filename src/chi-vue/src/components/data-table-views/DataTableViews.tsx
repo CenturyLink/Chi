@@ -1,17 +1,38 @@
-import { Prop } from 'vue-property-decorator';
+import { Emit, Prop, Watch } from 'vue-property-decorator';
 import { DataTableView } from '@/constants/types';
 import { DATA_TABLE_CLASSES, FORM_CLASSES, SELECT_CLASSES } from '@/constants/classes';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '../data-table-toolbar/DataTableToolbar';
 import { Component, Vue } from '@/build/vue-wrapper';
+import EventBus from '@/utils/EventBus';
+import { Compare } from '@/utils/Compare';
 
 @Component({})
 export default class DataTableViews extends Vue {
   @Prop({ default: () => [] }) views?: DataTableView[];
   @Prop() defaultView?: string;
+  @Prop() selectedView?: string;
 
-  _selectedView?: string;
+  _selectedView? = this.selectedView || this.defaultView || '';
+
+  @Emit(DATA_TABLE_EVENTS.VIEWS_CHANGE)
+  _emitViewsChanged(view: DataTableView | undefined) {
+    EventBus.emit(DATA_TABLE_EVENTS.VIEWS_CHANGE, view);
+
+    return view;
+  }
+
+  @Watch('selectedView')
+  selectedViewChange(newValue: string, oldValue: string) {
+    if (!Compare.deepEqual(newValue, oldValue)) {
+      this._selectedView = newValue;
+    }
+  }
+
+  beforeMount(): void {
+    this._selectedView = this.selectedView || this.defaultView || '';
+  }
 
   mounted(): void {
     const dataTableToolbarComponent = findComponent(this, 'DataTableToolbar');
@@ -21,17 +42,18 @@ export default class DataTableViews extends Vue {
     }
   }
 
-  _emitViewsChanged(ev: Event): void {
+  _handleViewsChange(ev: Event): void {
     const value = (ev.target as HTMLFormElement).value;
     const view = this.views?.find((view: DataTableView) => view.id === value);
+
     this._selectedView = view?.id;
-    this.$emit(DATA_TABLE_EVENTS.VIEWS_CHANGE, view);
+    this._emitViewsChanged(view);
   }
 
   render() {
     const options = this.views?.map((view: DataTableView) => {
       return (
-        <option value={view.id} selected={this.defaultView === view.id}>
+        <option value={view.id} selected={this._selectedView === view.id}>
           {view.label || view.id}
         </option>
       );
@@ -44,7 +66,8 @@ export default class DataTableViews extends Vue {
             <select
               aria-label={`Select a View`}
               class={`${SELECT_CLASSES.SELECT}`}
-              onChange={(ev: Event) => this._emitViewsChanged(ev)}>
+              onChange={(ev: Event) => this._handleViewsChange(ev)}
+            >
               {!this.views || !this.views.length ? <option>View</option> : options}
             </select>
           </div>

@@ -194,8 +194,6 @@ ul#chi-vue-tabs.chi-tabs.-border
             a(href='#npm--package' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-2') package.json
           li
             a(href='#npm--main' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-3') main.ts
-          li
-            a(href='#npm--vueconfig' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-3') vue.config.js
 
       .-flex--grow1.-h--100
         #npm--npmrc.chi-tabs-panel.-active(role='tabpanel')
@@ -205,46 +203,63 @@ ul#chi-vue-tabs.chi-tabs.-border
             //npm.pkg.github.com/:_authToken=${GH_TOKEN}
         #npm--package.chi-tabs-panel(role='tabpanel')
           :code(lang='javascript')
-            "@centurylink/chi-vue": "2.6.0",
-            "copy-webpack-plugin": "^5.1.1",
+            "@centurylink/chi-vue": "3.0.0"
         #npm--main.chi-tabs-panel(role='tabpanel')
           .chi-tab__description
             | Import Chi Vue and register its components globally
           :code(lang='javascript')
-            import(/* webpackChunkName: "chi-vue" */ '@centurylink/chi-vue').then(chiVue => {
-              Object.keys(chiVue.library.components).forEach((name: string) => {
-                Vue.component(name, chiVue.library.components[name]);
-              });
-            }).finally(() =>{
-              new Vue({
-                render: h => h(App),
-              }).$mount('#app')
-            }).catch(() => {
-              throw('@centurylink/chi-vue library is not loaded correctly!');
-            }); 
-        #npm--vueconfig.chi-tabs-panel(role='tabpanel')
-          .chi-tab__description
-            | Use <code>CopyWebpackPlugin</code> in vue.config.js to copy Chi Vue assets to dist
-          :code(lang='javascript')
-            const CopyWebpackPlugin = require('copy-webpack-plugin');
+            import { createApp } from 'vue';
+            import { ChiVue, ChiSearchInput } from "@centurylink/chi-vue";
+            import App from './App.vue';
 
-            module.exports = {
-                configureWebpack: config => {
-                  if (!config.externals) {
-                    config.externals = {};
-                  }
+            const app = createApp(App);
+            
+            app.use(ChiVue, {});
+            app.component("ChiSearchInput", ChiSearchInput);
+            
+            app.mount('#app');
 
-                  config.output.filename = '[name].js';
-                  config.output.chunkFilename = '[name].js';
+    p.-text 
+      | Chi Vue plugin is optional to be installed with the use function to set up the default configuration
 
-                  let plugins = [{ from: '@centurylink/chi-vue/dist' }];
-                  config.plugins.push(
-                    new CopyWebpackPlugin(plugins, {
-                      context: 'node_modules',
-                      ignore: ['.DS_Store'],
-                    }));
-                },
-              };
+    :code(lang='html')
+      import { createApp } from 'vue';
+      import { ChiVue } from "@centurylink/chi-vue";
+      
+      const app = createApp(App);
+
+      app.use(ChiVue, {});
+
+    p.-text 
+      | It is not necessary to pass any options to the plugin 
+      | to install all Chi dependencies (CSS, JS and Web Components) as it uses the portal 
+      | theme and the latest available version of Chi by default.
+
+      | If you want to pass a specific theme or version, the plugin accepts a configuration object: 
+
+    :code(lang='html')
+      {
+        chiOptions: {
+          theme: 'lumen' | 'portal' | 'centuryLink',
+          forceVersion: string;
+        }
+      }
+
+    p.-text 
+      | Here you can see an example installation with a theme and a customized version:
+
+    :code(lang='html')
+      import { createApp } from 'vue';
+      import { ChiVue } from "@centurylink/chi-vue";
+
+      const app = createApp(App);
+
+      app.use(ChiVue, {
+        chiOptions: {
+          theme: 'centurylink',
+          forceVersion: '5.38.0'
+        }
+      });
 
   #chi-vue-tabs--umd.chi-tabs-panel
     .chi-tab__description
@@ -254,11 +269,19 @@ ul#chi-vue-tabs.chi-tabs.-border
       <script src="https://assets.ctl.io/chi/5.43.0/chi-vue/umd/chi-vue.umd.js"></script>
 
       <!-- Vue component example -->
-      new Vue({
-        components: {
-          chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+      const exampleVueComponent = Vue.createApp({
+        data() {
+          return {
+            // Your data
+          }
+        },
+        methods: {
+          // Your methods
         }
       });
+
+      exampleVueComponent.component('ChiVuePagination', window["chi-vue"].library.components.ChiPagination);
+      exampleVueComponent.mount('#example');
 
       <!-- Vue template example -->
       <chi-vue-pagination :pages="5" :current-page="currentPage"></chi-vue-pagination>

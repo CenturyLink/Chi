@@ -1,5 +1,8 @@
-
 # CHANGELOG
+## 3.0.0 (December 18, 2023)
+Migration from Vue 2 to Vue 3
+https://ctl.atlassian.net/wiki/spaces/CDS/pages/673472971184/Chi+Vue+3+Migration+Guide
+
 ## 2.6.0 (October 17, 2023)
 ### Components
 #### Added
