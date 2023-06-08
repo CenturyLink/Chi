@@ -37,14 +37,14 @@ import { Component, Vue } from '@/build/vue-wrapper';
 declare const chi: any;
 
 @Component({})
-export default class MobileActions extends Vue {
+export default class ExampleMobileActions extends Vue {
   modalTrigger: any;
 
   mounted() {
     this.modalTrigger = chi.modal(this.$refs.modalTrigger);
   }
 
-  beforeDestroy() {
+  beforeUnmount() {
     this.modalTrigger.dispose();
   }
 }

@@ -5,34 +5,37 @@
     <SaveView
       class="-mt--2"
       :config="interactiveSaveViewConfig"
-      @chiViewSave="saveView"
-      @chiViewDelete="deleteView"
-      @chiSaveViewShown="saveViewShown"
-      @chiSaveViewHide="saveViewHide"
-      @chiSaveViewHidden="saveViewHidden"
+      @chiViewSave="(e) => saveView(e)"
+      @chiViewDelete="(e) => deleteView(e)"
+      @chiSaveViewShown="(e) => saveViewShown(e)"
+      @chiSaveViewHide="(e) => saveViewHide(e)"
+      @chiSaveViewHidden="(e) => saveViewHidden(e)"
     >
-      <button
-        class="chi-button -light -icon -flat -xs"
-        aria-label="Edit"
-        @click="() => toggleInfoPopover()"
-        slot="info-icon"
-      >
-        <div class="chi-button__content">
-          <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
-        </div>
-      </button>
-      <chi-popover
-        :active="isInfoPopoverActive"
-        position="right-start"
-        title="Popover title"
-        variant="text"
-        arrow
-        reference="#chi-save-view__info-trigger"
-        slot="info-popover"
-        @chiPopoverHidden="() => (isInfoPopoverActive = false)"
-      >
-        Lorem ipsum test test
-      </chi-popover>
+      <template v-slot:info-icon>
+        <button
+          id="chi-save-view__info-trigger-interactive"
+          class="chi-button -light -icon -flat -xs"
+          aria-label="Edit"
+          @click="() => toggleInfoPopover()"
+        >
+          <div class="chi-button__content">
+            <i class="chi-icon icon-circle-info-outline" aria-hidden="true"></i>
+          </div>
+        </button>
+      </template>
+      <template v-slot:info-popover>
+        <chi-popover
+          :active.prop="isInfoPopoverActive"
+          position="right-start"
+          title="Popover title"
+          variant="text"
+          arrow
+          reference="#chi-save-view__info-trigger-interactive"
+          @chiPopoverHidden="() => (isInfoPopoverActive = false)"
+        >
+          Lorem ipsum test test
+        </chi-popover>
+      </template>
     </SaveView>
     <h3>Modes</h3>
     <div class="-mt--2" v-for="(config, key) in configs" :key="key">
@@ -51,22 +54,26 @@ import { SaveViewConfig, SaveViewModes } from '../constants/types';
   components: {
     SaveView,
   },
-  data: () => {
-    return {
-      interactiveSaveViewConfig: {
-        active: false,
-        results: '(1-40 of 78)',
-      },
-      configs: [
-        {
-          mode: SaveViewModes.BASE,
-        },
-        { id: 'example-mode-saved', mode: SaveViewModes.SAVED, title: 'Title example saved' },
-      ],
-    };
-  },
 })
 export default class SaveViewView extends Vue {
+  interactiveSaveViewConfig = {
+    active: false,
+    results: '(1-40 of 78)',
+  };
+  configs = [
+    {
+      active: false,
+      results: '(1-40 of 78)',
+      mode: SaveViewModes.BASE,
+    },
+    {
+      id: 'example-mode-saved',
+      mode: SaveViewModes.SAVED,
+      title: 'Title example saved',
+      active: false,
+      results: '(1-40 of 78)',
+    },
+  ];
   active = false;
   isInfoPopoverActive = false;
 
@@ -97,8 +104,8 @@ export default class SaveViewView extends Vue {
   toggleSaveView() {
     this.active = !this.active;
 
-    this.$data.interactiveSaveViewConfig = {
-      ...this.$data.interactiveSaveViewConfig,
+    this.interactiveSaveViewConfig = {
+      ...this.interactiveSaveViewConfig,
       active: this.active,
     };
   }

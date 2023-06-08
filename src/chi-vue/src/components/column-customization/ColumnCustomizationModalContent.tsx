@@ -1,4 +1,4 @@
-import { Prop, Watch } from 'vue-property-decorator';
+import { Emit, Prop, Watch } from 'vue-property-decorator';
 import SelectedColumns from './SelectedColumns';
 import AvailableColumns from './AvailableColumns';
 import { DataTableColumn } from '@/constants/types';
@@ -11,21 +11,33 @@ import { Component, Vue } from '@/build/vue-wrapper';
 
 @Component({})
 export default class ColumnCustomizationContent extends Vue {
-  @Prop() availableColumns?: DataTableColumn[];
-  @Prop() selectedColumns?: DataTableColumn[];
+  @Prop() availableColumns!: DataTableColumn[];
+  @Prop() selectedColumns!: DataTableColumn[];
+
+  name = 'ColumnCustomizationContent';
+
+  columnsSelected?: DataTableColumn[] = [];
+  columnsAvailable?: DataTableColumn[] = [];
 
   canMoveUp = true;
   canMoveDown = true;
   key = 0;
-  _availableColumns?: DataTableColumn[] = [];
-  _selectedColumns?: DataTableColumn[] = [];
   _preSelection?: HTMLOptionElement;
   _availableColumnsComponent?: AvailableColumns;
   _selectedColumnsComponent?: SelectedColumns;
 
+  @Emit(DATA_TABLE_EVENTS.COLUMNS_CHANGE)
+  _emitSelectedColumnsChange() {
+    if (this.columnsSelected) {
+      const eventData = [...this.columnsSelected];
+
+      return eventData;
+    }
+  }
+
   beforeCreate() {
-    this._availableColumns = [];
-    this._selectedColumns = [];
+    this.columnsAvailable = [];
+    this.columnsSelected = [];
   }
 
   created() {
@@ -35,8 +47,8 @@ export default class ColumnCustomizationContent extends Vue {
   @Watch('availableColumns')
   @Watch('selectedColumns')
   _processData() {
-    this._availableColumns = copyArrayOfObjects(this.$props.availableColumns);
-    this._selectedColumns = copyArrayOfObjects(this.$props.selectedColumns).sort(this.sortByLocked);
+    this.columnsAvailable = copyArrayOfObjects(this.availableColumns);
+    this.columnsSelected = copyArrayOfObjects(this.selectedColumns).sort(this.sortByLocked);
   }
 
   sortByLocked = (a: DataTableColumn, b: DataTableColumn): number => {
@@ -99,64 +111,54 @@ export default class ColumnCustomizationContent extends Vue {
     if (
       this._availableColumnsComponent &&
       this._selectedColumnsComponent &&
-      this._selectedColumns &&
-      this._availableColumns
+      this.columnsSelected &&
+      this.columnsAvailable
     ) {
-      const newAvailableColumns: DataTableColumn[] = [...this._availableColumns];
+      const newAvailableColumns: DataTableColumn[] = [...this.columnsAvailable];
       const selectedColumnsComponentSelect = this._selectedColumnsComponent.$refs.select;
 
       if (selectedColumnsComponentSelect) {
         Array.from((selectedColumnsComponentSelect as HTMLSelectElement).selectedOptions).forEach(
           (option: HTMLOptionElement) => {
-            const column = this._selectedColumns?.find((column: DataTableColumn) => column.name === option.value);
+            const column = this.columnsSelected?.find((column: DataTableColumn) => column.name === option.value);
 
             if (column) {
               newAvailableColumns.push(column);
-              this._selectedColumns = this._selectedColumns?.filter(
-                (oldColumn: DataTableColumn) => column !== oldColumn
-              );
+              this.columnsSelected = this.columnsSelected?.filter((oldColumn: DataTableColumn) => column !== oldColumn);
             }
           }
         );
-        this._availableColumns = newAvailableColumns;
+        this.columnsAvailable = newAvailableColumns;
       }
     }
     this.key += 1;
     this._emitSelectedColumnsChange();
   }
 
-  _emitSelectedColumnsChange() {
-    if (this._selectedColumns) {
-      const eventData = [...this._selectedColumns];
-
-      this.$emit(DATA_TABLE_EVENTS.COLUMNS_CHANGE, eventData);
-    }
-  }
-
   _select() {
     if (
       this._availableColumnsComponent &&
       this._selectedColumnsComponent &&
-      this._selectedColumns &&
-      this._availableColumns
+      this.columnsSelected &&
+      this.columnsAvailable
     ) {
-      const newSelectedStandardColumns: DataTableColumn[] = [...this._selectedColumns];
+      const newSelectedStandardColumns: DataTableColumn[] = [...this.columnsSelected];
       const availableColumnsSelect = this._availableColumnsComponent.$refs.select;
 
       if (availableColumnsSelect) {
         Array.from((availableColumnsSelect as HTMLSelectElement).selectedOptions).forEach(
           (option: HTMLOptionElement) => {
-            const column = this._availableColumns?.find((column: DataTableColumn) => column.name === option.value);
+            const column = this.columnsAvailable?.find((column: DataTableColumn) => column.name === option.value);
 
             if (column) {
               newSelectedStandardColumns.push(column);
-              this._availableColumns = this._availableColumns?.filter(
+              this.columnsAvailable = this.columnsAvailable?.filter(
                 (oldColumn: DataTableColumn) => column !== oldColumn
               );
             }
           }
         );
-        this._selectedColumns = newSelectedStandardColumns.sort(this.sortByLocked);
+        this.columnsSelected = newSelectedStandardColumns.sort(this.sortByLocked);
       }
       this.key += 1;
       this._emitSelectedColumnsChange();
@@ -164,7 +166,7 @@ export default class ColumnCustomizationContent extends Vue {
   }
 
   _move(direction: 'up' | 'down') {
-    const columns = this._selectedColumns ? [...this._selectedColumns] : [];
+    const columns = this.columnsSelected ? [...this.columnsSelected] : [];
 
     Array.from((this._selectedColumnsComponent?.$refs.select as HTMLSelectElement).selectedOptions).forEach(
       (option: HTMLOptionElement) => {
@@ -173,12 +175,12 @@ export default class ColumnCustomizationContent extends Vue {
         option.selected = false;
         this._preSelection = option;
         if (columnName && columns) {
-          const columnData = columns.find(columnData => columnData.name === columnName);
+          const columnData = columns.find((columnData) => columnData.name === columnName);
 
           if (columnData) {
             const index = columns.indexOf(columnData);
             const newIndex = index + (direction === 'up' ? -1 : 1);
-            const lastLockedColumnIndex = columns.filter(column => column.locked).length - 1;
+            const lastLockedColumnIndex = columns.filter((column) => column.locked).length - 1;
 
             this.canMoveUp = newIndex !== lastLockedColumnIndex + 1;
             this.canMoveDown = newIndex !== columns.length - 1;
@@ -187,7 +189,7 @@ export default class ColumnCustomizationContent extends Vue {
         }
       }
     );
-    this._selectedColumns = columns;
+    this.columnsSelected = columns;
     this.key += 1;
     this._emitSelectedColumnsChange();
   }
@@ -204,7 +206,7 @@ export default class ColumnCustomizationContent extends Vue {
     const columnsSelected: string[] = [];
     const filterSelectedColumns: DataTableColumn[] = [];
 
-    if (this._selectedColumns) {
+    if (this.columnsSelected) {
       Array.from((this._selectedColumnsComponent?.$refs.select as HTMLSelectElement).selectedOptions).forEach(
         (option: HTMLOptionElement) => {
           columnsSelected.push(option.value);
@@ -212,7 +214,7 @@ export default class ColumnCustomizationContent extends Vue {
       );
 
       columnsSelected.forEach((columnSelected: string) => {
-        this._selectedColumns?.forEach((standardColumn: DataTableColumn) => {
+        this.columnsSelected?.forEach((standardColumn: DataTableColumn) => {
           if (columnSelected === standardColumn.name) {
             filterSelectedColumns.push(standardColumn);
           }
@@ -223,7 +225,7 @@ export default class ColumnCustomizationContent extends Vue {
     const selectElement = this._selectedColumnsComponent?.$refs.select as HTMLSelectElement;
     const selectedOptionIndex = Array.from(selectElement.options).indexOf(selectElement.selectedOptions[0]);
     const lastLockedColumnIndex =
-      (this._selectedColumns as DataTableColumn[]).filter(column => column.locked).length - 1;
+      (this.columnsSelected as DataTableColumn[]).filter((column) => column.locked).length - 1;
 
     (this.$refs.buttonMoveUp as HTMLButtonElement).disabled = selectedOptionIndex === lastLockedColumnIndex + 1;
     (this.$refs.buttonMoveDown as HTMLButtonElement).disabled = selectedOptionIndex === selectElement.length - 1;
@@ -238,7 +240,7 @@ export default class ColumnCustomizationContent extends Vue {
     return (
       <div class={UTILITY_CLASSES.DISPLAY.FLEX} key={this.key}>
         <div class={UTILITY_CLASSES.FLEX.FLEX_GROW1}>
-          <AvailableColumns available-columns={this._availableColumns} />
+          <AvailableColumns available-columns={this.columnsAvailable} />
         </div>
         <div class={`-px--1 ${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>
           <div class={`${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.FLEX.COLUMN}`}>
@@ -249,7 +251,7 @@ export default class ColumnCustomizationContent extends Vue {
         <div class={UTILITY_CLASSES.FLEX.FLEX_GROW1}>
           <SelectedColumns
             onChiToolbarColumnsSelected={this._handleSelectColumn}
-            standard-columns={this._selectedColumns}
+            standard-columns={this.columnsSelected}
           />
         </div>
         <div class={`-px--1 ${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>

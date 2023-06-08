@@ -1,10 +1,14 @@
-import Vue from 'vue';
+import { configureCompat } from '@vue/compat';
+import { createApp } from 'vue';
+import ChiVue from '@/store';
 import App from './App.vue';
 import Vuex from 'vuex';
-import ChiVue from '@/store';
 
-Vue.config.productionTip = false;
-Vue.use(Vuex);
+configureCompat({
+  MODE: 3,
+});
+
+const app = createApp(App);
 
 const store = new Vuex.Store({
   state: {},
@@ -13,7 +17,4 @@ const store = new Vuex.Store({
   },
 });
 
-new Vue({
-  render: h => h(App),
-  store: store,
-}).$mount('#app');
+app.use(store).mount('#app');

@@ -44,7 +44,7 @@ export default class DataTableTooltip extends Vue {
         onFocus={() => this.onShow()}
         onMouseleave={() => this.onHide()}
         onBlur={() => this.onHide()}
-        style={`max-width: fit-content; width: ${this.$props.header ? 'calc(100% - 20px)' : '100%'};`}>
+        style={`max-width: fit-content; width: ${this.header ? 'calc(100% - 20px)' : '100%'};`}>
         {this.tooltip ? <Tooltip message={this.msg}>{content}</Tooltip> : content}
       </div>
     );

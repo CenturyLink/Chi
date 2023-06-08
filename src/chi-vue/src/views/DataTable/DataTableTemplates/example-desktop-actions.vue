@@ -8,11 +8,11 @@
       </button>
       <div class="chi-dropdown__menu">
         <a class="chi-dropdown__menu-item" href="#">
-          <span><i class="chi-icon -sm -icon--primary icon-edit" aria-hidden="true"/></span>
+          <span><i class="chi-icon -sm -icon--primary icon-edit" aria-hidden="true" /></span>
           <span>Edit</span>
         </a>
         <a class="chi-dropdown__menu-item" href="#">
-          <span><i class="chi-icon -sm -icon--primary icon-delete" aria-hidden="true"/></span>
+          <span><i class="chi-icon -sm -icon--primary icon-delete" aria-hidden="true" /></span>
           <span>Delete</span>
         </a>
       </div>
@@ -26,14 +26,14 @@ import { Component, Vue } from '@/build/vue-wrapper';
 declare const chi: any;
 
 @Component({})
-export default class DesktopActions extends Vue {
+export default class ExampleDesktopActions extends Vue {
   dropdown: any;
 
   mounted() {
     this.dropdown = chi.dropdown(this.$refs.dropdownTrigger);
   }
 
-  beforeDestroy() {
+  beforeUnmount() {
     this.dropdown.dispose();
   }
 }
