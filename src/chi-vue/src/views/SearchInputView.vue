@@ -4,12 +4,12 @@
       <h2>Search Input</h2>
       <h3>xs</h3>
       <SearchInput
-        @chiInput="ev => input(ev)"
-        @chiChange="ev => change(ev)"
-        @chiClean="ev => clean(ev)"
-        @chiFocus="ev => focus(ev)"
-        @chiBlur="ev => blur(ev)"
-        @chiSearch="ev => search(ev)"
+        @chiInput="(ev) => input(ev)"
+        @chiChange="(ev) => change(ev)"
+        @chiClean="() => clean()"
+        @chiFocus="() => focus()"
+        @chiBlur="() => blur()"
+        @chiSearch="(ev) => search(ev)"
         class="-mt--2"
         size="xs"
       />
@@ -37,7 +37,7 @@
 
 <script lang="ts">
 import { Component, Vue } from '@/build/vue-wrapper';
-import SearchInput from '../components/search-input/SearchInput';
+import SearchInput from '@/components/search-input/SearchInput';
 
 @Component({
   components: {

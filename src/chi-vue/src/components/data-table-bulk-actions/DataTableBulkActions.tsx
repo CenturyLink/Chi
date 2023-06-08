@@ -1,4 +1,4 @@
-import { Prop, Watch } from 'vue-property-decorator';
+import { Emit, Prop, Watch } from 'vue-property-decorator';
 import { findComponent } from '@/utils/utils';
 import {
   BULK_ACTIONS_CLASSES,
@@ -13,6 +13,8 @@ import DataTable from '../data-table/DataTable';
 import { ICON_CLASSES } from '@/constants/icons';
 import { DATA_TABLE_EVENTS, GENERIC_EVENTS } from '@/constants/events';
 import { Component, Vue } from '@/build/vue-wrapper';
+import { Transition } from 'vue';
+import EventBus from '@/utils/EventBus';
 
 @Component({})
 export default class DataTableBulkActions extends Vue {
@@ -21,20 +23,32 @@ export default class DataTableBulkActions extends Vue {
 
   isBulkActionsVisible = this._checkBulkActionVisibility();
 
+  @Emit(DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY)
   _emitSelectedRows(e: any) {
-    this.$emit(DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY, e.srcElement.checked);
+    EventBus.emit(DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY, e.srcElement.checked);
+
+    return e.srcElement.checked;
   }
 
+  @Emit(DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY)
   _emitSelectedAll(e: Event) {
-    this.$emit(DATA_TABLE_EVENTS.SELECTED_ALL, e);
+    EventBus.emit(DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY, e);
+
+    return e;
+  }
+
+  @Emit(GENERIC_EVENTS.CANCEL)
+  _emitCancel() {
+    EventBus.emit(GENERIC_EVENTS.CANCEL);
   }
 
   _cancel() {
     this.isBulkActionsVisible = false;
+    this._emitCancel();
   }
 
   _checkBulkActionVisibility() {
-    return this.$props.selectedRows > 0;
+    return this.selectedRows > 0;
   }
 
   @Watch('selectedRows')
@@ -55,10 +69,10 @@ export default class DataTableBulkActions extends Vue {
   }
 
   render() {
-    const startSlot = this.$scopedSlots['start'] ? this.$scopedSlots['start']({}) : null;
+    const startSlot = this.$slots['start'] ? this.$slots['start']({}) : null;
 
     return (
-      <transition name="slide-fade">
+      <Transition name="slide-fade">
         {this.isBulkActionsVisible && (
           <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS}`}>
             <div class={`${BULK_ACTIONS_CLASSES.BULK_ACTIONS_TOP} ${UTILITY_CLASSES.Z_INDEX.Z_10}`}>
@@ -72,10 +86,7 @@ export default class DataTableBulkActions extends Vue {
               </button>
               <button
                 class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.FLAT} ${UTILITY_CLASSES.PADDING.X[1]}`}
-                onClick={() => {
-                  this._cancel();
-                  this.$emit(GENERIC_EVENTS.CANCEL);
-                }}>
+                onClick={() => this._cancel()}>
                 Cancel
               </button>
             </div>
@@ -109,7 +120,7 @@ export default class DataTableBulkActions extends Vue {
                 class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${CLOSE_CLASS}`}
                 onClick={() => {
                   this.isBulkActionsVisible = false;
-                  this.$emit(GENERIC_EVENTS.CANCEL);
+                  this._emitCancel();
                 }}>
                 <div class={`${BUTTON_CLASSES.CONTENT} ${BUTTON_CLASSES.ICON_BUTTON} ${CLOSE_CLASS}`}>
                   <i aria-hidden="true" class={`${ICON_CLASS} ${ICON_CLASSES.ICON_X}`}></i>
@@ -118,7 +129,7 @@ export default class DataTableBulkActions extends Vue {
             </div>
           </div>
         )}
-      </transition>
+      </Transition>
     );
   }
 }

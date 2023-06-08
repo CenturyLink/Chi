@@ -10,7 +10,7 @@ import {
   GENERIC_SIZE_CLASSES,
 } from '@/constants/classes';
 import { DataTableCustomItem, DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
-import { Prop } from 'vue-property-decorator';
+import { Emit, Prop } from 'vue-property-decorator';
 import { compareFilters, getElementFilterData } from './FilterUtils';
 import { findComponent, uuid4 } from '@/utils/utils';
 import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
@@ -20,36 +20,8 @@ import { DATA_TABLE_EVENTS } from '@/constants/events';
 import AdvancedFiltersPopoverFooter from './AdvancedFiltersPopoverFooter.vue';
 import { Component, Vue } from '@/build/vue-wrapper';
 
-Vue.config.ignoredElements = [
-  'chi-alert',
-  'chi-app-layout',
-  'chi-badge',
-  'chi-brand',
-  'chi-button',
-  'chi-carousel',
-  'chi-date',
-  'chi-date-picker',
-  'chi-drawer',
-  'chi-expansion-panel',
-  'chi-icon',
-  'chi-label',
-  'chi-link',
-  'chi-marketing-icon',
-  'chi-number-input',
-  'chi-pagination',
-  'chi-phone-input',
-  'chi-popover',
-  'chi-progress',
-  'chi-search-input',
-  'chi-spinner',
-  'chi-text-input',
-  'chi-textarea',
-  'chi-time',
-  'chi-time-picker',
-  'chi-toggle-switch',
-];
-
 declare const chi: any;
+
 @Component({
   components: {
     AdvancedFiltersPopoverFooter,
@@ -68,7 +40,7 @@ export default class AdvancedFilters extends Vue {
   _advancedFilterButtonId?: string;
   _advancedFilterPopoverId?: string;
   storeModule?: any;
-  _planeAdvancedData = {};
+  planeAdvancedData = {};
   isExpanded = false;
   _filtersTooltip?: any;
 
@@ -90,7 +62,7 @@ export default class AdvancedFilters extends Vue {
       this.storeModule = getModule(store, this.$store);
 
       if (this.advancedFiltersData) {
-        this._planeAdvancedData = this.advancedFiltersData.reduce((accumulator: any, currentValue: any) => {
+        this.planeAdvancedData = this.advancedFiltersData.reduce((accumulator: any, currentValue: any) => {
           return {
             ...accumulator,
             [currentValue.id]: currentValue.type === 'checkbox' ? false : currentValue.value || '',
@@ -115,7 +87,7 @@ export default class AdvancedFilters extends Vue {
       (dataTableFiltersComponent as DataTableFilters)._advancedFilterComponent = this;
     }
 
-    if (!this._filtersTooltip) {
+    if (!this._filtersTooltip && this.$refs.filtersButton) {
       this._filtersTooltip = chi.tooltip(this.$refs.filtersButton as HTMLElement);
     }
   }
@@ -125,7 +97,7 @@ export default class AdvancedFilters extends Vue {
   }
 
   _createSelectFilter(filter: DataTableFilter) {
-    const options = filter.options?.map(option => {
+    const options = filter.options?.map((option) => {
       return (
         <option value={option.value} selected={filter.value === option.value}>
           {option.label}
@@ -259,14 +231,13 @@ export default class AdvancedFilters extends Vue {
     );
   }
 
-  beforeDestroy() {
+  beforeUnmount() {
     this._filtersTooltip.dispose();
   }
 
   _createCustomItem(filter: DataTableCustomItem) {
-    const customItemSlot =
-      this.$scopedSlots?.default &&
-      this.$scopedSlots.default(null)?.find(item => item[filter.template as keyof typeof item]);
+    const slot = this.$slots[filter.template];
+    const customItemSlot = slot ? slot({}) : null;
 
     return (
       <div class={`${FORM_CLASSES.FORM_ITEM}`}>
@@ -277,7 +248,7 @@ export default class AdvancedFilters extends Vue {
             {filter.label}
           </label>
         )}
-        {customItemSlot && customItemSlot[filter.template as keyof typeof customItemSlot]}
+        {customItemSlot}
       </div>
     );
   }
@@ -382,8 +353,9 @@ export default class AdvancedFilters extends Vue {
     return advancedFiltersRender;
   }
 
+  @Emit(DATA_TABLE_EVENTS.ADVANCED_FILTERS_CHANGE)
   _emitAdvancedFiltersChange() {
-    this.$emit(DATA_TABLE_EVENTS.ADVANCED_FILTERS_CHANGE);
+    // This is intentional
   }
 
   async _applyAdvancedFiltersChange() {
@@ -404,8 +376,8 @@ export default class AdvancedFilters extends Vue {
   }
 
   async _resetAdvancedFilters() {
-    await this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...this._planeAdvancedData });
-    await this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...this._planeAdvancedData });
+    await this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...this.planeAdvancedData });
+    await this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...this.planeAdvancedData });
     this._emitAdvancedFiltersChange();
   }
 

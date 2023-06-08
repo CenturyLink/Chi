@@ -1,4 +1,4 @@
-import { Prop } from 'vue-property-decorator';
+import { Emit, Prop } from 'vue-property-decorator';
 import {
   DataTableCustomItem,
   DataTableFilter,
@@ -25,14 +25,16 @@ import AdvancedFilters from './AdvancedFilters';
 import Drawer from '../drawer/drawer';
 import store, { STORE_KEY } from '@/store';
 import { getModule } from 'vuex-module-decorators';
-import { ScopedSlotChildren } from 'vue/types/vnode';
 import './filters.scss';
 import { Component, Vue } from '@/build/vue-wrapper';
+import EventBus from '@/utils/EventBus';
 
 @Component({})
 export default class DataTableFilters extends Vue {
-  @Prop() filtersData?: DataTableFiltersData;
+  @Prop() filtersData!: DataTableFiltersData;
   @Prop() customItems?: DataTableCustomItem[];
+
+  name = 'DataTableFilters';
 
   _filtersData?: DataTableFiltersData;
   _advancedFiltersData?: DataTableFilter[];
@@ -40,6 +42,13 @@ export default class DataTableFilters extends Vue {
   _drawerID?: string;
   drawerActive?: boolean = false;
   storeModule?: any;
+
+  @Emit(DATA_TABLE_EVENTS.FILTERS_CHANGE)
+  _emitFiltersChanged() {
+    EventBus.emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._getUpdatedFiltersObject());
+
+    return this._getUpdatedFiltersObject();
+  }
 
   beforeCreate() {
     this._filtersData = {
@@ -60,17 +69,17 @@ export default class DataTableFilters extends Vue {
       this.storeModule = getModule(store, this.$store);
     }
 
-    const advancedFilters = this.$props.filtersData.filter((filter: DataTableFilter) => filter.advanced);
+    const advancedFilters = this.filtersData.filters?.filter((filter: DataTableFilter) => filter.advanced);
 
     if (this._filtersData) {
       this._filtersData = {
-        filters: copyArrayOfObjects(this.$props.filtersData),
+        filters: copyArrayOfObjects(this.filtersData.filters),
       };
     }
 
     this._advancedFiltersData = copyArrayOfObjects(advancedFilters);
 
-    const plainFiltersData = this.$props.filtersData.reduce((accumulator: any, currentValue: any) => {
+    const plainFiltersData = this.filtersData.filters.reduce((accumulator: any, currentValue: any) => {
       return { ...accumulator, [currentValue.id]: currentValue.type === 'checkbox' ? false : currentValue.value || '' };
     }, {});
 
@@ -87,7 +96,7 @@ export default class DataTableFilters extends Vue {
   }
 
   _createSelectFilter(filter: DataTableFilter, mobile?: boolean) {
-    const options = filter.options?.map(option => {
+    const options = filter.options?.map((option) => {
       return (
         <option value={option.value} selected={filter.value === option.value}>
           {option.label}
@@ -258,10 +267,6 @@ export default class DataTableFilters extends Vue {
     }
   }
 
-  _emitFiltersChanged() {
-    this.$emit(DATA_TABLE_EVENTS.FILTERS_CHANGE, this._getUpdatedFiltersObject());
-  }
-
   getCustomItemsSlots() {
     return this.customItems?.reduce((accumulator, currentValue) => {
       if (this.$slots[currentValue.template]) {
@@ -270,7 +275,7 @@ export default class DataTableFilters extends Vue {
           [currentValue.template]: this.$slots[currentValue.template],
         };
       }
-    }, {} as { [key: string]: ScopedSlotChildren } | undefined);
+    }, {} as { [key: string]: any } | undefined);
   }
 
   _advancedFiltersPopOver() {
@@ -326,7 +331,7 @@ export default class DataTableFilters extends Vue {
     const advancedFilters =
       this._advancedFiltersData && this._advancedFiltersData.length > 0 ? this._advancedFiltersFields() : null;
 
-    this.$props.filtersData.forEach((filter: DataTableFilter) => {
+    this.filtersData.filters.forEach((filter: DataTableFilter) => {
       const filterElement =
         filter.type === 'select'
           ? this._createSelectFilter(filter)

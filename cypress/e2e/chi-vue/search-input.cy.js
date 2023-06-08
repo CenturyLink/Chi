@@ -3,14 +3,14 @@ const SEARCH_INPUTS_DATA_CY = {
   DISABLED: '[data-cy="disabled-search-input-test"]',
   ATTRS: '[data-cy="attrs-search-input-test"]',
   DELETE: '[data-cy="delete-value-search-input-test"]',
-  EVENTS: '[data-cy="chi-events-trigger-search-input-test"]'
+  EVENTS: '[data-cy="chi-events-trigger-search-input-test"]',
 };
 const COMPONENT_CLASSES = {
   CHI_FORM_ITEM: 'chi-form__item',
   CHI_SEARCH_INPUT: 'chi-search__input',
   CLOSE: '-close',
   ICON_RIGHT: '-icon--right',
-  SEARCH: '-flat'
+  SEARCH: '-flat',
 };
 const EVENT_EXAMPLES = {
   BLUR: 'eventExampleChiBlur',
@@ -52,18 +52,17 @@ describe('Search Input', () => {
 
   describe('Base', () => {
     it('Should exist base search input', () => {
-      cy.get(`${SEARCH_INPUTS_DATA_CY.BASE}`)
-        .should('exist');
+      cy.get(`${SEARCH_INPUTS_DATA_CY.BASE}`).should('exist');
     });
 
     it(`Should have the class ${COMPONENT_CLASSES.CHI_FORM_ITEM}`, () => {
-      cy.get(`${SEARCH_INPUTS_DATA_CY.BASE}`)
-        .should('have.class', `${COMPONENT_CLASSES.CHI_FORM_ITEM}`);
+      cy.get(`${SEARCH_INPUTS_DATA_CY.BASE}`).should('have.class', `${COMPONENT_CLASSES.CHI_FORM_ITEM}`);
     });
 
     it(`Should have the class ${COMPONENT_CLASSES.ICON_RIGHT}`, () => {
       cy.get(`${SEARCH_INPUTS_DATA_CY.BASE}`)
-        .find('div').should('have.class', `${COMPONENT_CLASSES.ICON_RIGHT}`);
+        .find('div')
+        .should('have.class', `${COMPONENT_CLASSES.ICON_RIGHT}`);
     });
 
     it(`Should render an input with the class ${COMPONENT_CLASSES.CHI_SEARCH_INPUT}`, () => {
@@ -87,7 +86,7 @@ describe('Search Input', () => {
     sizes.forEach((size) => {
       it(`Should have the class -${size}`, () => {
         const element = cy.get(`[data-cy='${size}-search-input-test']`).find('input');
-  
+
         checkSizeClass(element, `-${size}`);
       });
     });
@@ -99,7 +98,7 @@ describe('Search Input', () => {
     attrs.forEach((attr) => {
       it(`Should have ${attr} attr`, () => {
         const inputElement = cy.get(`${SEARCH_INPUTS_DATA_CY.ATTRS}`).find('input');
-  
+
         checkAttr(inputElement, attr, 'test');
       });
     });
@@ -109,14 +108,17 @@ describe('Search Input', () => {
     it(`Should emit ${EVENTS.BLUR}`, () => {
       cy.window()
         .its(`${EVENT_EXAMPLES.BLUR}`)
-        .then(chiBlur => {
+        .then((chiBlur) => {
           const component = chiBlur.$refs.testEvents;
-          const spy = cy.spy();
 
-          component.$on(`${EVENTS.BLUR}`, spy);
-          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`).find(`input`).focus().blur()
+          cy.spy(component, '_emitBlur').as('blurSpy');
+
+          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`)
+            .find(`input`)
+            .focus()
+            .blur()
             .then(() => {
-              expect(spy).to.be.called;
+              cy.get('@blurSpy').should('have.been.called');
             });
         });
     });
@@ -124,16 +126,19 @@ describe('Search Input', () => {
     it(`Should emit ${EVENTS.CHANGE}`, () => {
       cy.window()
         .its(`${EVENT_EXAMPLES.CHANGE}`)
-        .then(chiChange => {
+        .then((chiChange) => {
           const component = chiChange.$refs.testEvents;
-          const spy = cy.spy();
           const value = 'test change';
 
-          component.$on(`${EVENTS.CHANGE}`, spy);
-          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`).find('input').type(value).blur()
+          cy.spy(component, '_emitChange').as('changeSpy');
+
+          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`)
+            .find('input')
+            .type(value)
+            .blur()
             .then(() => {
               checkValue(cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`).find('input'), value);
-              expect(spy).to.be.called;
+              cy.get('@changeSpy').should('have.been.called');
             });
         });
     });
@@ -141,16 +146,20 @@ describe('Search Input', () => {
     it(`Should emit ${EVENTS.CLEAN}`, () => {
       cy.window()
         .its(`${EVENT_EXAMPLES.CLEAN}`)
-        .then(chiClean => {
+        .then((chiClean) => {
           const component = chiClean.$refs.testEvents;
-          const spy = cy.spy();
 
-          component.$on(`${EVENTS.CLEAN}`, spy);
-          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`).find('input').type('test');
-          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`).find(`.${COMPONENT_CLASSES.CLOSE}`).click()
+          cy.spy(component, '_emitClean').as('cleanSpy');
+
+          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`)
+            .find('input')
+            .type('test');
+          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`)
+            .find(`.${COMPONENT_CLASSES.CLOSE}`)
+            .click()
             .then(() => {
               checkValue(cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`).find('input'), '');
-              expect(spy).to.be.called;
+              cy.get('@cleanSpy').should('have.been.called');
             });
         });
     });
@@ -158,14 +167,16 @@ describe('Search Input', () => {
     it(`Should emit ${EVENTS.FOCUS}`, () => {
       cy.window()
         .its(`${EVENT_EXAMPLES.FOCUS}`)
-        .then(chiFocus => {
+        .then((chiFocus) => {
           const component = chiFocus.$refs.testEvents;
-          const spy = cy.spy();
 
-          component.$on(`${EVENTS.FOCUS}`, spy);
-          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`).find('input').focus()
+          cy.spy(component, '_emitFocus').as('focusSpy');
+
+          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`)
+            .find('input')
+            .focus()
             .then(() => {
-              expect(spy).to.be.called;
+              cy.get('@focusSpy').should('have.been.called');
             });
         });
     });
@@ -173,16 +184,18 @@ describe('Search Input', () => {
     it(`Should emit ${EVENTS.INPUT}`, () => {
       cy.window()
         .its(`${EVENT_EXAMPLES.INPUT}`)
-        .then(chiInput => {
+        .then((chiInput) => {
           const component = chiInput.$refs.testEvents;
-          const spy = cy.spy();
           const value = 'test';
 
-          component.$on(`${EVENTS.INPUT}`, spy);
-          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`).find('input').type(value)
+          cy.spy(component, '_emitInput').as('inputSpy');
+
+          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`)
+            .find('input')
+            .type(value)
             .then(() => {
               checkValue(cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`).find('input'), value);
-              expect(spy).to.be.called;
+              cy.get('@inputSpy').should('have.been.called');
             });
         });
     });
@@ -190,14 +203,16 @@ describe('Search Input', () => {
     it(`Should emit ${EVENTS.SEARCH}`, () => {
       cy.window()
         .its(`${EVENT_EXAMPLES.SEARCH}`)
-        .then(chiSearch => {
+        .then((chiSearch) => {
           const component = chiSearch.$refs.testEvents;
-          const spy = cy.spy();
 
-          component.$on(`${EVENTS.SEARCH}`, spy);
-          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`).find(`.${COMPONENT_CLASSES.SEARCH}`).click()
+          cy.spy(component, '_emitSearch').as('searchSpy');
+
+          cy.get(`${SEARCH_INPUTS_DATA_CY.EVENTS}`)
+            .find(`.${COMPONENT_CLASSES.SEARCH}`)
+            .click()
             .then(() => {
-              expect(spy).to.be.calledOnce;
+              cy.get('@searchSpy').should('have.been.called');
             });
         });
     });

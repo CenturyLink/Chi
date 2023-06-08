@@ -1,4 +1,4 @@
-import { Prop, Watch } from 'vue-property-decorator';
+import { Emit, Prop, Watch } from 'vue-property-decorator';
 import {
   ACTIVE_CLASS,
   ANIMATED_CLASS,
@@ -8,12 +8,9 @@ import {
   INVERSE_CLASS,
   BUTTON_CLASSES,
   ICON_CLASS,
-  TRANSITIONING_CLASS,
-  DISABLED_SCROLL,
 } from '@/constants/classes';
 import { DRAWER_EVENTS } from '@/constants/events';
 import { ThreeStepsAnimation } from '@/utils/ThreeStepsAnimation';
-import { ANIMATION_DURATION } from '@/constants/constants';
 import { contains } from '@/utils/utils';
 import { Backdrop, DrawerPositions } from '@/constants/types';
 import { Component, Vue } from '@/build/vue-wrapper';
@@ -28,82 +25,103 @@ export default class Drawer extends Vue {
   @Prop() title!: string;
 
   animation!: ThreeStepsAnimation;
-
   animationClasses!: string[];
-
   backdropAnimationClasses!: string[];
 
-  constructor() {
-    super();
-    this.animationClasses = [];
-    this.backdropAnimationClasses = [];
+  @Emit(DRAWER_EVENTS.CLICK_OUTSIDE)
+  _emitClickOutside() {
+    // This is intentional
+  }
+
+  @Emit(DRAWER_EVENTS.HIDE)
+  _emitHide() {
+    // This is intentional
+  }
+
+  @Emit(DRAWER_EVENTS.SHOW)
+  _emitShow() {
+    // This is intentional
+  }
+
+  @Emit(DRAWER_EVENTS.HIDDEN)
+  _emitHidden() {
+    // This is intentional
+  }
+
+  @Emit(DRAWER_EVENTS.SHOWN)
+  _emitShown() {
+    // This is intentional
   }
 
   show() {
-    if (this.animation && !this.animation.isStopped()) {
-      this.animation.stop();
-    }
+    // if (this.animation && !this.animation.isStopped()) {
+    //   this.animation.stop();
+    // }
 
-    if (this.backdropAnimationClasses.length !== 0 || !this.animationClasses.includes(ACTIVE_CLASS)) {
-      this.animation = ThreeStepsAnimation.animationFactory(
-        () => {
-          this.animationClasses.length = 0;
-          this.animationClasses.push(TRANSITIONING_CLASS);
-          this.backdropAnimationClasses.length = 0;
-          this.backdropAnimationClasses.push(TRANSITIONING_CLASS, CLOSED_CLASS);
-          document.body.classList.add(DISABLED_SCROLL);
-        },
-        () => {
-          this.animationClasses.length = 0;
-          this.animationClasses.push(TRANSITIONING_CLASS, ACTIVE_CLASS);
-          this.backdropAnimationClasses.length = 0;
-          this.backdropAnimationClasses.push(TRANSITIONING_CLASS);
-        },
-        () => {
-          this.animationClasses.length = 0;
-          this.animationClasses.push(ACTIVE_CLASS);
-          this.backdropAnimationClasses.length = 0;
-          this.$emit(DRAWER_EVENTS.SHOWN);
-        },
-        ANIMATION_DURATION.MEDIUM
-      );
-    }
+    // if (this.backdropAnimationClasses.length !== 0 || !this.animationClasses.includes(ACTIVE_CLASS)) {
+    //   this.animation = ThreeStepsAnimation.animationFactory(
+    //     () => {
+    //       this.animationClasses.length = 0;
+    //       this.animationClasses.push(TRANSITIONING_CLASS);
+    //       this.backdropAnimationClasses.length = 0;
+    //       this.backdropAnimationClasses.push(TRANSITIONING_CLASS, CLOSED_CLASS);
+    //       document.body.classList.add(DISABLED_SCROLL);
+    //     },
+    //     () => {
+    //       this.animationClasses.length = 0;
+    //       this.animationClasses.push(TRANSITIONING_CLASS, ACTIVE_CLASS);
+    //       this.backdropAnimationClasses.length = 0;
+    //       this.backdropAnimationClasses.push(TRANSITIONING_CLASS);
+    //     },
+    //     () => {
+    //       this.animationClasses.length = 0;
+    //       this.animationClasses.push(ACTIVE_CLASS);
+    //       this.backdropAnimationClasses.length = 0;
+    //       this._emitShown();
+    //     },
+    //     ANIMATION_DURATION.MEDIUM
+    //   );
+    // }
 
-    this.$emit(DRAWER_EVENTS.SHOW);
+    this.animationClasses.length = 0;
+    this.animationClasses.push(ACTIVE_CLASS);
+    this._emitShow();
   }
 
   hide() {
-    if (this.animation && !this.animation.isStopped()) {
-      this.animation.stop();
-    }
+    // if (this.animation && !this.animation.isStopped()) {
+    //   this.animation.stop();
+    // }
 
-    if (!this.backdropAnimationClasses.includes(CLOSED_CLASS) || this.animationClasses.length !== 0) {
-      this.animation = ThreeStepsAnimation.animationFactory(
-        () => {
-          this.animationClasses.length = 0;
-          this.animationClasses.push(TRANSITIONING_CLASS, ACTIVE_CLASS);
-          this.backdropAnimationClasses.length = 0;
-          this.backdropAnimationClasses.push(TRANSITIONING_CLASS);
-        },
-        () => {
-          this.animationClasses.length = 0;
-          this.animationClasses.push(TRANSITIONING_CLASS);
-          this.backdropAnimationClasses.length = 0;
-          this.backdropAnimationClasses.push(TRANSITIONING_CLASS, CLOSED_CLASS);
-        },
-        () => {
-          this.animationClasses.length = 0;
-          this.animationClasses.push('');
-          this.backdropAnimationClasses.length = 0;
-          this.backdropAnimationClasses.push(CLOSED_CLASS);
-          document.body.classList.remove(DISABLED_SCROLL);
-          this.$emit(DRAWER_EVENTS.HIDDEN);
-        },
-        ANIMATION_DURATION.MEDIUM
-      );
-    }
+    // if (!this.backdropAnimationClasses.includes(CLOSED_CLASS) || this.animationClasses.length !== 0) {
+    //   this.animation = ThreeStepsAnimation.animationFactory(
+    //     () => {
+    //       this.animationClasses.length = 0;
+    //       this.animationClasses.push(TRANSITIONING_CLASS, ACTIVE_CLASS);
+    //       this.backdropAnimationClasses.length = 0;
+    //       this.backdropAnimationClasses.push(TRANSITIONING_CLASS);
+    //     },
+    //     () => {
+    //       this.animationClasses.length = 0;
+    //       this.animationClasses.push(TRANSITIONING_CLASS);
+    //       this.backdropAnimationClasses.length = 0;
+    //       this.backdropAnimationClasses.push(TRANSITIONING_CLASS, CLOSED_CLASS);
+    //     },
+    //     () => {
+    //       this.animationClasses.length = 0;
+    //       this.animationClasses.push('');
+    //       this.backdropAnimationClasses.length = 0;
+    //       this.backdropAnimationClasses.push(CLOSED_CLASS);
+    //       document.body.classList.remove(DISABLED_SCROLL);
+    //       this._emitHidden();
+    //     },
+    //     ANIMATION_DURATION.MEDIUM
+    //   );
+    // }
 
-    this.$emit(DRAWER_EVENTS.HIDE);
+    this.animationClasses.length = 0;
+    this.animationClasses.push('');
+    this._emitHide();
   }
 
   @Watch('active')
@@ -113,14 +131,14 @@ export default class Drawer extends Vue {
     }
   }
 
-  documentClickHandler = (ev: Event): void => {
-    const drawerElement = this.$refs.drawerElement as HTMLElement;
+  documentClickHandler(ev: Event) {
+    const drawerElement = this.$refs?.drawerElement as HTMLElement;
     const clickTarget = ev.target as HTMLElement;
 
-    if (drawerElement.classList.contains(ACTIVE_CLASS) && !contains(drawerElement, clickTarget)) {
-      this.$emit(DRAWER_EVENTS.CLICK_OUTSIDE);
+    if (drawerElement?.classList.contains(ACTIVE_CLASS) && !contains(drawerElement, clickTarget)) {
+      this._emitClickOutside();
     }
-  };
+  }
 
   async toggle() {
     if (this.active) {
@@ -131,13 +149,13 @@ export default class Drawer extends Vue {
   }
 
   beforeMount() {
-    this.animationClasses.length = 0;
+    this.animationClasses = [];
     this.animationClasses.push(this.active ? ACTIVE_CLASS : '');
-    this.backdropAnimationClasses.length = 0;
+    this.backdropAnimationClasses = [];
     this.backdropAnimationClasses.push(this.active ? '' : CLOSED_CLASS);
   }
 
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('click', this.documentClickHandler);
   }
 
@@ -146,13 +164,14 @@ export default class Drawer extends Vue {
   }
 
   render() {
+    const defaultSlot = this.$slots.default ? this.$slots.default() : null;
     const closeButton = (
       <button
         class={`
       ${BUTTON_CLASSES.BUTTON}
       -icon
       -close`}
-        onClick={() => this.$emit(DRAWER_EVENTS.HIDE)}
+        onClick={() => this._emitHide()}
         aria-label="Close">
         <div class={`${BUTTON_CLASSES.CONTENT}`}>
           <i class={`${ICON_CLASS} icon-x`} aria-hidden="true"></i>
@@ -168,13 +187,13 @@ export default class Drawer extends Vue {
           this.position ? `-${this.position}` : '',
           this.animationClasses.join(' '),
         ]
-          .filter(cl => cl)
+          .filter((cl) => cl)
           .join(' ')}
         ref="drawerElement">
         {this.noHeader
           ? !this.nonClosable
-            ? [closeButton, this.$slots.default]
-            : this.$slots.default
+            ? [closeButton, defaultSlot]
+            : defaultSlot
           : !this.nonClosable
           ? [
               <div
@@ -184,13 +203,13 @@ export default class Drawer extends Vue {
                 <span class={`${DRAWER_CLASSES.TITLE}`}>{this.title}</span>
                 {closeButton}
               </div>,
-              <div class={`${DRAWER_CLASSES.CONTENT}`}>{this.$slots.default}</div>,
+              <div class={`${DRAWER_CLASSES.CONTENT}`}>{defaultSlot}</div>,
             ]
           : [
               <div class={`${DRAWER_CLASSES.HEADER}`}>
                 <span class={`${DRAWER_CLASSES.TITLE}`}>{this.title}</span>
               </div>,
-              <div class={`${DRAWER_CLASSES.CONTENT}`}>{this.$slots.default}</div>,
+              <div class={`${DRAWER_CLASSES.CONTENT}`}>{defaultSlot}</div>,
             ]}
       </div>
     );
@@ -199,8 +218,8 @@ export default class Drawer extends Vue {
       return (
         <div
           class={`
-        ${BACKDROP_CLASSES.BACKDROP}
-        ${ANIMATED_CLASS}
+          ${BACKDROP_CLASSES.BACKDROP}
+          ${ANIMATED_CLASS}
           ${this.backdrop === 'inverse' ? `-${INVERSE_CLASS}` : ''}
           ${this.backdropAnimationClasses}
         `}>
