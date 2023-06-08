@@ -4,7 +4,7 @@
     <h2>Base</h2>
     <div class="chi-grid -mx--1">
       <div class="chi-col -w--12 -w-md--6 -py--2">
-        <Pagination :pages="5" :currentPage="3" @chiPageChange="e => pageChange(e)" />
+        <Pagination :pages="5" :currentPage="3" @chiPageChange="(e) => pageChange(e)" />
       </div>
       <div class="chi-col -w--12 -w-md--6 -py--2 -bg--black">
         <Pagination :pages="5" :currentPage="3" :inverse="true" />
@@ -59,7 +59,7 @@
           :currentPage="3"
           :results="240"
           :page-size="true"
-          @chiPageSizeChange="e => pageSizeChange(e)"
+          @chiPageSizeChange="(e) => pageSizeChange(e)"
         />
       </div>
       <div class="chi-col -w--12 -py--2 -bg--black">
@@ -76,7 +76,7 @@
           :results="240"
           :page-size="true"
           :page-jumper="true"
-          @chiPageChange="e => pageChange(e)"
+          @chiPageChange="(e) => pageChange(e)"
         />
       </div>
       <div class="chi-col -w--12 -py--2 -bg--black">
@@ -166,5 +166,3 @@ export default class PaginationView extends Vue {
   }
 }
 </script>
-
-<style lang="scss"></style>

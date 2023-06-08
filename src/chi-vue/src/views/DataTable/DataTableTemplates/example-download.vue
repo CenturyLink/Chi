@@ -1,5 +1,5 @@
 <template>
-  <ChiTooltip message="Download">
+  <Tooltip message="Download">
     <div class="chi-dropdown">
       <button ref="dropdownTrigger" class="chi-button -icon -flat" aria-label="Download" data-position="bottom-end">
         <div class="chi-button__content">
@@ -11,7 +11,7 @@
         <a class="chi-dropdown__menu-item" href="#">Download All Current Results</a>
       </div>
     </div>
-  </ChiTooltip>
+  </Tooltip>
 </template>
 
 <script lang="ts">
@@ -22,7 +22,7 @@ declare const chi: any;
 
 @Component({
   components: {
-    ChiTooltip: Tooltip,
+    Tooltip,
   },
 })
 export default class ExampleDownloadIcon extends Vue {

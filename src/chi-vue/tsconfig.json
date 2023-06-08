@@ -3,7 +3,9 @@
     "target": "esnext",
     "module": "esnext",
     "strict": true,
+    "declaration": true,
     "jsx": "preserve",
+    "jsxImportSource": "vue",
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -12,6 +14,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "noImplicitAny": false,
     "resolveJsonModule": true,
     "types": ["webpack-env"],
     "paths": {

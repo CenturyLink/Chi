@@ -4,11 +4,11 @@ const DRAWER_CLASSES = {
   DRAWER: 'chi-drawer',
   HEADER: 'chi-drawer__header',
   TITLE: 'chi-drawer__title',
-  CONTENT: 'chi-drawer__content'
+  CONTENT: 'chi-drawer__content',
 };
 const DRAWER_EVENTS = {
   HIDE: 'chiDrawerHide',
-  CLICK_OUTSIDE: 'chiDrawerClickOutside'
+  CLICK_OUTSIDE: 'chiDrawerClickOutside',
 };
 
 const hasClassAssertion = (el, value) => {
@@ -45,10 +45,10 @@ describe('Drawer', () => {
       { el: `[data-cy='drawer-left']`, class: '-left' },
       { el: `[data-cy='drawer-right']`, class: '-right' },
       { el: `[data-cy='drawer-top']`, class: '-top' },
-      { el: `[data-cy='drawer-bottom']`, class: '-bottom' }
+      { el: `[data-cy='drawer-bottom']`, class: '-bottom' },
     ];
 
-    selectors.forEach(sel => {
+    selectors.forEach((sel) => {
       it(`${sel.el} should have class .${sel.class}`, () => {
         hasClassAssertion(sel.el, sel.class);
       });
@@ -109,10 +109,10 @@ describe('Drawer', () => {
       { el: `[data-cy='drawer-portal-left']`, class: '-left' },
       { el: `[data-cy='drawer-portal-right']`, class: '-right' },
       { el: `[data-cy='drawer-portal-top']`, class: '-top' },
-      { el: `[data-cy='drawer-portal-bottom']`, class: '-bottom' }
+      { el: `[data-cy='drawer-portal-bottom']`, class: '-bottom' },
     ];
 
-    selectors.forEach(sel => {
+    selectors.forEach((sel) => {
       it(`${sel.el} should have class .${sel.class}`, () => {
         hasClassAssertion(sel.el, sel.class);
       });
@@ -134,7 +134,7 @@ describe('Drawer', () => {
         .as('openDrawerBtn');
       cy.window()
         .its('showHideDrawer')
-        .then(showHideDrawer => {
+        .then((showHideDrawer) => {
           drawerComponent = showHideDrawer.$refs.drawer;
         });
     });
@@ -148,17 +148,13 @@ describe('Drawer', () => {
       cy.get('@openDrawerBtn')
         .click()
         .then(() => {
-          cy.get(`[data-cy="drawer-show-hide"]`).should(
-            'not.have.class',
-            `.${ACTIVE_CLASS}`
-          );
+          cy.get(`[data-cy="drawer-show-hide"]`).should('not.have.class', `.${ACTIVE_CLASS}`);
         });
     });
 
     it('should hide on close button click', () => {
-      const spy = cy.spy();
+      cy.spy(drawerComponent, '_emitHide').as('hideSpy');
 
-      drawerComponent.$on(`${DRAWER_EVENTS.HIDE}`, spy);
       cy.get('@openDrawerBtn')
         .click()
         .then(() => {
@@ -168,18 +164,14 @@ describe('Drawer', () => {
         .find(`button.${CLOSE_CLASS}`)
         .click()
         .then(() => {
-          expect(spy).to.be.called;
-          cy.get(`[data-cy="drawer-show-hide"]`).should(
-            'not.have.class',
-            `.${ACTIVE_CLASS}`
-          );
+          cy.get('@hideSpy').should('have.been.called');
+          cy.get(`[data-cy="drawer-show-hide"]`).should('not.have.class', `.${ACTIVE_CLASS}`);
         });
     });
 
     it('should hide when clicking outside the drawer', () => {
-      const spy = cy.spy();
+      cy.spy(drawerComponent, '_emitClickOutside').as('clickOutSideSpy');
 
-      drawerComponent.$on(`${DRAWER_EVENTS.CLICK_OUTSIDE}`, spy);
       cy.get('@openDrawerBtn')
         .click()
         .then(() => {
@@ -188,11 +180,8 @@ describe('Drawer', () => {
       cy.get(`[data-cy="drawer-show-hide-container"]`)
         .click()
         .then(() => {
-          expect(spy).to.be.called;
-          cy.get(`[data-cy="drawer-show-hide"]`).should(
-            'not.have.class',
-            `.${ACTIVE_CLASS}`
-          );
+          cy.get('@clickOutSideSpy').should('have.been.called');
+          cy.get(`[data-cy="drawer-show-hide"]`).should('not.have.class', `.${ACTIVE_CLASS}`);
         });
     });
   });

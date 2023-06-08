@@ -1,4 +1,5 @@
-import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
+import { Prop, Emit } from 'vue-property-decorator';
+import { Component, Vue } from '@/build/vue-wrapper';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { defaultConfig } from './default-config';
 import { DataTableEmptyActionableContent } from '@/constants/types';
@@ -12,16 +13,21 @@ export default class DataTableEmptyActionable extends Vue {
     // This is intentional
   }
 
-  icon = this.$props.content.icon || defaultConfig.emptyActionable?.icon;
-  message = this.$props.content.message || defaultConfig.emptyActionable?.message;
+  icon = defaultConfig.emptyActionable?.icon;
+  message = defaultConfig.emptyActionable?.message;
+
+  beforeMount(): void {
+    this.icon = this.content.icon || defaultConfig.emptyActionable?.icon;
+    this.message = this.content.message || defaultConfig.emptyActionable?.message;
+  }
 
   render() {
     return (
       <div>
         <chi-icon icon={this.icon} color="grey"></chi-icon>
         <span>
-          <a onClick={() => this._emitEmptyActionableLink()}>{this.message.actionLink}</a>
-          {this.message.text}
+          <a onClick={() => this._emitEmptyActionableLink()}>{this.message?.actionLink}</a>
+          {this.message?.text}
         </span>
       </div>
     );

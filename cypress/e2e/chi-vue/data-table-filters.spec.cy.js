@@ -270,11 +270,9 @@ describe('Data Table Filters', () => {
       cy.window()
         .its('filtersExample')
         .then(filtersExample => {
-          console.log('filtersExample.$refs', filtersExample.$refs);
           const component = filtersExample.$refs.filtersRef;
-          const spy = cy.spy();
 
-          component.$on(`${FILTERS_EVENTS.FILTERS_CHANGE}`, spy);
+          cy.spy(component, '_emitFiltersChanged').as('changeSpy');
           cy.get('@advancedFilter').click();
           cy.get('@popover')
             .find(`.${ACCORDION_CLASSES.TRIGGER}`)
@@ -294,7 +292,7 @@ describe('Data Table Filters', () => {
             .contains('Apply')
             .click()
             .then(() => {
-              expect(spy).to.be.called;
+              cy.get('@changeSpy').should('have.been.called');
             });
           cy.get('@popover')
             .find(`.${CLOSE_CLASS}`)

@@ -1,6 +1,9 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/ban-types */
 declare module '*.vue' {
-  import Vue from 'vue';
-  export default Vue;
+  import type { DefineComponent } from 'vue';
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
 }
 
 declare module '*.json' {

@@ -1,28 +1,33 @@
 import { ChiVueLibrary } from 'index';
+import Checkbox from '@/components/checkbox/Checkbox';
+import ColumnCustomization from '@/components/column-customization/ColumnCustomization';
+import DataTable from '@/components/data-table/DataTable';
+import DataTableBulkActions from '@/components/data-table-bulk-actions/DataTableBulkActions';
+import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
+import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
+import DataTableViews from '@/components/data-table-views/DataTableViews';
+import Drawer from '@/components/drawer/drawer';
+import ExpansionPanel from '@/components/expansion-panel/ExpansionPanel';
+import Pagination from '@/components/pagination/pagination';
+import SearchInput from '@/components/search-input/SearchInput';
+import SaveView from '@/components/data-table-save-view/SaveView';
+import Tooltip from '@/components/tooltip/tooltip';
 
 const exportComponent: ChiVueLibrary = {
   components: {
-    ChiCheckbox: () => import(/* webpackChunkName: "checkbox" */ '../components/checkbox/Checkbox'),
-    ChiColumnCustomization: () =>
-      import(/* webpackChunkName: "column-customization" */ '../components/column-customization/ColumnCustomization'),
-    ChiDataTable: () => import(/* webpackChunkName: "data-table" */ '../components/data-table/DataTable'),
-    ChiDataTableBulkActions: () =>
-      import(
-        /* webpackChunkName: "data-table-bulk-actions" */ '../components/data-table-bulk-actions/DataTableBulkActions'
-      ),
-    ChiDataTableToolbar: () =>
-      import(/* webpackChunkName: "data-table-toolbar" */ '../components/data-table-toolbar/DataTableToolbar'),
-    ChiDataTableFilters: () =>
-      import(/* webpackChunkName: "data-table-filters" */ '../components/data-table-filters/DataTableFilters'),
-    ChiDataTableViews: () =>
-      import(/* webpackChunkName: "data-table-views" */ '../components/data-table-views/DataTableViews'),
-    ChiDrawer: () => import(/* webpackChunkName: "drawer" */ '../components/drawer/drawer'),
-    ChiExpansionPanel: () =>
-      import(/* webpackChunkName: "expansion-panel" */ '../components/expansion-panel/ExpansionPanel'),
-    ChiPagination: () => import(/* webpackChunkName: "pagination" */ '../components/pagination/pagination'),
-    ChiSearchInput: () => import(/* webpackChunkName: "search-input" */ '../components/search-input/SearchInput'),
-    ChiSaveView: () => import(/* webpackChunkName: "save-view" */ '../components/data-table-save-view/SaveView'),
-    ChiTooltip: () => import(/* webpackChunkName: "tooltip" */ '../components/tooltip/tooltip'),
+    ChiCheckbox: Checkbox,
+    ChiColumnCustomization: ColumnCustomization,
+    ChiDataTable: DataTable,
+    ChiDataTableBulkActions: DataTableBulkActions,
+    ChiDataTableToolbar: DataTableToolbar,
+    ChiDataTableFilters: DataTableFilters,
+    ChiDataTableViews: DataTableViews,
+    ChiDrawer: Drawer,
+    ChiExpansionPanel: ExpansionPanel,
+    ChiPagination: Pagination,
+    ChiSearchInput: SearchInput,
+    ChiSaveView: SaveView,
+    ChiTooltip: Tooltip,
   },
 };
 

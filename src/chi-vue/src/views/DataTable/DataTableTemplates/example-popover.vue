@@ -22,30 +22,27 @@
 
 <script lang="ts">
 import { Component, Vue } from '@/build/vue-wrapper';
+import { Prop } from 'vue-property-decorator';
 
-// eslint-disable-next-line
 declare const chi: any;
 
-@Component({
-  components: {},
-  props: {
-    id: String,
-  },
-})
+@Component({})
 export default class ExamplePopover extends Vue {
+  @Prop() id?: string;
+
   mounted() {
-    const buttonOpenOnHover = document.getElementById(`ticket-popover-button-${this.$props.id}`);
+    const buttonOpenOnHover = document.getElementById(`ticket-popover-button-${this.id}`);
     const popover = chi.popover(buttonOpenOnHover);
     let hoverAnimationTimeout: number;
 
     if (buttonOpenOnHover) {
-      buttonOpenOnHover.addEventListener('mouseenter', function() {
+      buttonOpenOnHover.addEventListener('mouseenter', function () {
         hoverAnimationTimeout = setTimeout(() => {
           popover.show();
         }, 300);
       });
 
-      buttonOpenOnHover.addEventListener('mouseleave', function() {
+      buttonOpenOnHover.addEventListener('mouseleave', function () {
         if (hoverAnimationTimeout) {
           clearTimeout(hoverAnimationTimeout);
         }

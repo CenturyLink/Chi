@@ -213,23 +213,23 @@ ul#chi-vue-tabs.chi-tabs.-border
             //npm.pkg.github.com/:_authToken=${GH_TOKEN}
         #npm--package.chi-tabs-panel(role='tabpanel')
           :code(lang='javascript')
-            "@centurylink/chi-vue": "2.6.0",
+            "@centurylink/chi-vue": "0.0.5-alpha.1",
             "copy-webpack-plugin": "^5.1.1",
         #npm--main.chi-tabs-panel(role='tabpanel')
           .chi-tab__description
             | Import Chi Vue and register its components globally
           :code(lang='javascript')
-            import(/* webpackChunkName: "chi-vue" */ '@centurylink/chi-vue').then(chiVue => {
-              Object.keys(chiVue.library.components).forEach((name: string) => {
-                Vue.component(name, chiVue.library.components[name]);
-              });
-            }).finally(() =>{
-              new Vue({
-                render: h => h(App),
-              }).$mount('#app')
-            }).catch(() => {
-              throw('@centurylink/chi-vue library is not loaded correctly!');
-            }); 
+            import { createApp } from 'vue';
+            import * as chiVue from '@centurylink/chi-vue';
+            import App from './App.vue';
+
+            const app = createApp(App);
+
+            Object.entries(chiVue.library.components).forEach(([name, component]) => {
+                app.component(name, component);
+            });
+
+            app.mount('#app');
         #npm--vueconfig.chi-tabs-panel(role='tabpanel')
           .chi-tab__description
             | Use <code>CopyWebpackPlugin</code> in vue.config.js to copy Chi Vue assets to dist
@@ -262,11 +262,19 @@ ul#chi-vue-tabs.chi-tabs.-border
       <script src="https://assets.ctl.io/chi/5.41.0/chi-vue/umd/chi-vue.umd.js"></script>
 
       <!-- Vue component example -->
-      new Vue({
-        components: {
-          chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+      const exampleVueComponent = Vue.createApp({
+        data() {
+          return {
+            // Your data
+          }
+        },
+        methods: {
+          // Your methods
         }
       });
+
+      exampleVueComponent.component('ChiVuePagination', window["chi-vue"].library.components.ChiPagination);
+      exampleVueComponent.mount('#example');
 
       <!-- Vue template example -->
       <chi-vue-pagination :pages="5" :current-page="currentPage"></chi-vue-pagination>

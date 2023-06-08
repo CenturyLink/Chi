@@ -25,40 +25,39 @@
       </div>
     </button>
     <div :class="[DIVIDER_CLASSES.DIVIDER, DIVIDER_CLASSES.VERTICAL]"></div>
-    <chi-button @chiClick="cancel">Cancel</chi-button>
-    <chi-button @chiClick="apply" :disabled="disabledButtons" color="primary">Apply</chi-button>
+    <chi-button @click="cancel">Cancel</chi-button>
+    <chi-button @click="apply" :disabled="disabledButtons" color="primary">Apply</chi-button>
   </div>
 </template>
 
 <script lang="ts">
-import { Prop } from 'vue-property-decorator';
+import { Emit, Prop } from 'vue-property-decorator';
 import { ADVANCED_FILTER_EVENTS, GENERIC_EVENTS } from '../../constants/events';
 import { BUTTON_CLASSES, DIVIDER_CLASSES, ICON_CLASS, UTILITY_CLASSES } from '../../constants/classes';
 import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component({
-  data: () => {
-    return {
-      BUTTON_CLASSES,
-      DIVIDER_CLASSES,
-      ICON_CLASS,
-      UTILITY_CLASSES,
-    };
-  },
-})
+@Component({})
 export default class AdvancedFiltersPopoverFooter extends Vue {
   @Prop() disabledButtons?: boolean;
 
+  BUTTON_CLASSES = BUTTON_CLASSES;
+  DIVIDER_CLASSES = DIVIDER_CLASSES;
+  ICON_CLASS = ICON_CLASS;
+  UTILITY_CLASSES = UTILITY_CLASSES;
+
+  @Emit(ADVANCED_FILTER_EVENTS.CLEAR)
   clear() {
-    this.$emit(ADVANCED_FILTER_EVENTS.CLEAR);
+    // This is intentional
   }
 
+  @Emit(GENERIC_EVENTS.CANCEL)
   cancel() {
-    this.$emit(GENERIC_EVENTS.CANCEL);
+    // This is intentional
   }
 
+  @Emit(ADVANCED_FILTER_EVENTS.APPLY)
   apply() {
-    this.$emit(ADVANCED_FILTER_EVENTS.APPLY);
+    // This is intentional
   }
 }
 </script>
