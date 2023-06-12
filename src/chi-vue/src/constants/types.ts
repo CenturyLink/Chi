@@ -121,6 +121,7 @@ export interface DataTableConfig {
   showExpandAll?: boolean;
   showSelectAllDropdown?: boolean;
   isDataEmpty?: boolean;
+  emptyConfig?: DataTableEmptyConfig;
 }
 export interface DataTableFilter {
   name: string;
@@ -217,7 +218,7 @@ export enum SaveViewModes {
 }
 //#endregion
 
-//#region Search Input
+//#region Search Inputc
 export const SEARCH_INPUT_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
 export type SearchInputSizes = typeof SEARCH_INPUT_SIZES[number];
 //#endregion
@@ -227,3 +228,13 @@ export type TooltipPositions = typeof GENERAL_POSITIONS[number];
 export const TOOLTIP_COLORS = ['light', 'base'] as const;
 export type TooltipColors = typeof TOOLTIP_COLORS[number];
 //#endregion
+
+//#region DataTableEmpty
+export interface DataTableEmptyConfig {
+  icon: string;
+  message: {
+    anchor: string;
+    span: string;
+  };
+}
+//#region

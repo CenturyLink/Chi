@@ -26,6 +26,7 @@ export const DATA_TABLE_EVENTS = {
   COLUMNS_RESET: 'chiColumnsReset',
   ADVANCED_FILTERS_CHANGE: 'chiAdvancedFiltersChange',
   VIEWS_CHANGE: 'chiViewsChange',
+  HANDLE_EMPTY_STATE: 'chiHandleEmptyState',
   TOOLBAR: {
     COLUMNS_CHANGE: 'chiToolbarColumnsChange',
     COLUMNS_RESET: 'chiToolbarColumnsReset',
@@ -43,7 +44,6 @@ export const DATA_TABLE_EVENTS = {
     EXPAND_ALL: 'chiExpandAll',
     COLLAPSE_ALL: 'chiCollapseAll',
   },
-  ADD_SERVICE_ON_NO_DATA: 'chiAddServiceOnNoData',
 };
 
 export interface DataTableSorting {

@@ -40,6 +40,13 @@ export const exampleConfig: DataTableConfig = {
   showExpandAll: true,
   showSelectAllDropdown: true,
   isDataEmpty: true,
+  emptyConfig: {
+    icon: 'circle-plus-outline',
+    message: {
+      anchor: 'Add a new or existing service',
+      span: ', then manage here.',
+    },
+  },
 };
 
 export const exampleSaveViewConfig: SaveViewConfig = {

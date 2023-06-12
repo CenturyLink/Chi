@@ -1,6 +1,9 @@
 <template>
   <div id="dataTableClientView">
-    <h2>Data Table</h2>
+    <div class="-d--flex -justify-content--between -align-items--baseline">
+      <h2>Data Table</h2>
+      <chi-button color="primary" @click="removeData">REMOVE ALL DATA</chi-button>
+    </div>
     <ChiDataTable
       :data="table"
       :config="config"
@@ -21,7 +24,7 @@
       @chiDeselectAllPages="e => this.chiDeselectAllPages(e)"
       @chiExpandAll="e => this.chiExpandAll(e)"
       @chiCollapseAll="e => this.chiCollapseAll(e)"
-      @chiAddServiceOnNoData="e => this.chiAddServiceOnNoData(e)"
+      @chiHandleEmptyState="e => this.habdleEmptyState(e)"
     >
       <template #alertsDesc="payload">
         <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
@@ -299,9 +302,26 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     chiCollapseAll: e => {
       console.log('chiCollapseAll', e);
     },
-    chiAddServiceOnNoData(e) {
+    habdleEmptyState(e) {
       console.log(this.$data.config);
-      // this.$data.config.isDataEmpty = false;
+      this.$data.config = {
+        ...this.$data.config,
+        isDataEmpty: false,
+      };
+      this.$data.table = {
+        ...this.$data.table,
+        body: exampleTableBody,
+      };
+    },
+    removeData(e) {
+      this.$data.config = {
+        ...this.$data.config,
+        isDataEmpty: true,
+      };
+      this.$data.table = {
+        ...this.$data.table,
+        body: [],
+      };
     },
   },
   data: () => {
@@ -311,7 +331,7 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
       toolbar: exampleToolbar,
       table: {
         head: exampleTableHead,
-        body: [], // TODO CHANGE [] TO exampleTableBody,
+        body: [],
       },
       months: [
         'January',
