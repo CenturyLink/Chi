@@ -51,7 +51,7 @@ export default class ExpansionPanel extends Vue {
           <div class={EPANEL_CLASSES.TITLE}>{this.title}</div>
           <div class={`${EPANEL_CLASSES.CONTENT} ${this.step ? '' : UTILITY_CLASSES.MARGIN.LEFT[0]}`}>
             <transition name={EPANEL.TRANSITIONS.SLIDE_FADE}>
-              <div v-show={this.$props.state === 'done'}>{slots.done}</div>
+              <div v-show={this.$props.state === 'done'} class={EPANEL_CLASSES.DONE_ONLY}>{slots.done}</div>
             </transition>
           </div>
           <transition name={EPANEL.TRANSITIONS.SLIDE_FADE}>
