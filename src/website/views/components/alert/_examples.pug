@@ -556,7 +556,7 @@ h4 Closable alert interaction
 p.-text
 .example.-mb--3
   .-p--3#interactive-wrapper
-    chi-button#alert-trigger-button(variant='outline')
+    chi-button#alert-trigger-button(color='primary')
       | Click me to show the alert
     chi-alert.-mt--2#interactive-alert(title='Warning', color='warning', icon='warning', closable)
       | This is a closable warning alert
@@ -574,7 +574,7 @@ p.-text
       <!-- Wrapper -->
       <div id="interactive-wrapper">
         <!-- Trigger -->
-        <chi-button id="alert-trigger-button" variant="outline">Click me to show the alert</chi-button>
+        <chi-button id="alert-trigger-button" color="primary">Click me to show the alert</chi-button>
 
         <!-- Alert -->
         <chi-alert id="interactive-alert" icon="circle-info" closable mutable>
@@ -604,7 +604,7 @@ p.-text
       <!-- Wrapper -->
       <div id="interactive-wrapper">
           <!-- Trigger -->
-          <button class="chi-button -outline" id="alert-trigger-button">Click me to show the alert</button>
+          <button class="chi-button -primary" id="alert-trigger-button">Click me to show the alert</button>
 
           <!-- Alert -->
           <div class="chi-alert" role="alert" id="interactive-alert">
