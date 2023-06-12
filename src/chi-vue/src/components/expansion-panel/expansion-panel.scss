@@ -26,5 +26,13 @@
         margin-left: 7.5%;
       }
     }
+
+    &.-state-icon {
+      .chi-epanel__content-active {
+        @include respond-to(sm) {
+          margin-left: calc(7.5% + 2.5rem);
+        }
+      }
+    }
   }
 }
