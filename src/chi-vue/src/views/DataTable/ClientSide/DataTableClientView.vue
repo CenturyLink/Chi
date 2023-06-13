@@ -331,7 +331,7 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
       toolbar: exampleToolbar,
       table: {
         head: exampleTableHead,
-        body: [],
+        body: exampleTableBody,
       },
       months: [
         'January',
