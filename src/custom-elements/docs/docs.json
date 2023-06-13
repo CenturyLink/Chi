@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-06-02T14:35:40",
+  "timestamp": "2023-06-08T09:02:34",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1968,6 +1968,24 @@
           "cancelable": true,
           "composed": true,
           "docs": "Triggered when hiding the Dropdown",
+          "docsTags": []
+        },
+        {
+          "event": "chiDropdownItemSelected",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when select an item in the dropdown menu",
+          "docsTags": []
+        },
+        {
+          "event": "chiDropdownKeyDown",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when press key to up/down the Dropdown menu items",
           "docsTags": []
         },
         {
