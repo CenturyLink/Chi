@@ -321,6 +321,41 @@ p.-text
         </div>
       </fieldset>
 
+h2 Pill
+p Use the <code>-pill</code> modifier class to render picker with a more pronounced border-radius.
+p Picker pills support the following sizes: <code>-sm</code>, <code>-xs</code>.
+.example.-mb--3
+  .-p--4
+    fieldset
+      legend.chi-label Legend
+      .-d--flex
+        each i in [1, 2]
+          .chi-picker.-pill.-sm
+            input(type="radio", class="chi-picker__input", name='unique-name-sba', id=`unique-id-pill-${i}`, checked=(i === 1))
+            label(for=`unique-id-pill-${i}`) Option #{i}
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-pill-base
+      li.-disabled
+        a(href=`#webcomponent-pill-base`) Web Component
+      li.-active
+        a(href=`#html-pill-base`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-pill-base
+  .chi-tabs-panel.-active#html-pill-base
+    :code(lang="html")
+      <fieldset>
+        <legend class="chi-label">Legend</legend>
+        <div class="-d--flex">
+          <div class="chi-picker -pill -sm">
+            <input class="chi-picker__input" type="radio" name="unique-name-sba" id="unique-id-pill-1" checked />
+            <label for="unique-id-pill-1">Option 1</label>
+          </div>
+          <div class="chi-picker -pill -sm">
+            <input class="chi-picker__input" type="radio" name="unique-name-sba" id="unique-id-pill-2" />
+            <label for="unique-id-pill-2">Option 2</label>
+          </div>
+        </div>
+      </fieldset>
+
 h2 Content Variations
 h3 Checkbox
 .example.-mb--3
