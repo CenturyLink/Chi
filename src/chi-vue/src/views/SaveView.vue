@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from '@/build/vue-wrapper';
 import SaveView from '../components/data-table-save-view/SaveView';
 import { SaveViewConfig, SaveViewModes } from '../constants/types';
 

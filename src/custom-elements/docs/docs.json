@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-04-26T08:45:49",
+  "timestamp": "2023-06-08T09:02:34",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -105,7 +105,7 @@
           "reflectToAttr": true,
           "docs": "to hide the alert when dismissed.",
           "docsTags": [],
-          "default": "false",
+          "default": "true",
           "values": [
             {
               "type": "boolean"
@@ -209,7 +209,7 @@
           "mutable": false,
           "attr": "color",
           "reflectToAttr": true,
-          "docs": "to set color of a badge { primary, success, warning, danger, dark, muted, secondary, light }.",
+          "docs": "to set color of a badge { primary, success, warning, danger, dark, muted, secondary, light, accent-1, accent-2, accent-3, accent-4, accent-5 }.",
           "docsTags": [],
           "values": [
             {
@@ -242,6 +242,22 @@
           "attr": "text-transform",
           "reflectToAttr": true,
           "docs": "to transform the badge text { uppercase, lowercase, capitalize }.",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "textWeight",
+          "type": "string",
+          "mutable": false,
+          "attr": "text-weight",
+          "reflectToAttr": true,
+          "docs": "to set weight of the badge text { normal, semi-bold, bold }.",
           "docsTags": [],
           "values": [
             {
@@ -1955,6 +1971,24 @@
           "docsTags": []
         },
         {
+          "event": "chiDropdownItemSelected",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when select an item in the dropdown menu",
+          "docsTags": []
+        },
+        {
+          "event": "chiDropdownKeyDown",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when press key to up/down the Dropdown menu items",
+          "docsTags": []
+        },
+        {
           "event": "chiDropdownShow",
           "detail": "any",
           "bubbles": true,
@@ -1967,6 +2001,7 @@
       "styles": [],
       "slots": [],
       "dependents": [
+        "chi-search-input",
         "chi-tabs"
       ],
       "dependencies": [
@@ -1978,6 +2013,9 @@
         ],
         "chi-button": [
           "chi-icon"
+        ],
+        "chi-search-input": [
+          "chi-dropdown"
         ],
         "chi-tabs": [
           "chi-dropdown"
@@ -4184,6 +4222,23 @@
           "required": false
         },
         {
+          "name": "dynamicValue",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "dynamic-value",
+          "reflectToAttr": true,
+          "docs": "To define dynamic value of Phone input",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "placeholder",
           "type": "string",
           "mutable": false,
@@ -4316,6 +4371,15 @@
         "chi-phone-input": [
           "chi-search-input",
           "chi-text-input"
+        ],
+        "chi-search-input": [
+          "chi-dropdown"
+        ],
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
         ],
         "chi-text-input": [
           "chi-icon",
@@ -4760,6 +4824,38 @@
           "required": false
         },
         {
+          "name": "menuItems",
+          "type": "DropdownMenuItem[]",
+          "mutable": true,
+          "reflectToAttr": false,
+          "docs": "To set the list of items to be used in the dropdown menu in autocomplete mode",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "DropdownMenuItem[]"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "mode",
+          "type": "\"autocomplete\"",
+          "mutable": false,
+          "attr": "mode",
+          "reflectToAttr": true,
+          "docs": "To set the mode to search input",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "autocomplete",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "name",
           "type": "string",
           "mutable": false,
@@ -4786,23 +4882,6 @@
           "values": [
             {
               "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "portal",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "portal",
-          "reflectToAttr": true,
-          "docs": "To enable portal styling",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
             }
           ],
           "optional": false,
@@ -4956,8 +5035,19 @@
       "dependents": [
         "chi-phone-input"
       ],
-      "dependencies": [],
+      "dependencies": [
+        "chi-dropdown"
+      ],
       "dependencyGraph": {
+        "chi-search-input": [
+          "chi-dropdown"
+        ],
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
         "chi-phone-input": [
           "chi-search-input"
         ]

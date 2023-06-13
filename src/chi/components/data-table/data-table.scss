@@ -58,6 +58,75 @@ $sizes: (
     }
   }
 
+  &__body {
+    fieldset {
+      min-inline-size: auto;
+    }
+
+    @include respond-to(md) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chi-data-table__row {
+      &.-expanded {
+        @include respond-to(md) {
+          font-weight: $font-weight-semi-bold;
+        }
+
+        .chi-data-table__cell {
+          border-bottom-color: transparent;
+        }
+      }
+    }
+
+    .chi-data-table__cell {
+      display: flex;
+      padding: 0.25rem 0.75rem;
+
+      @include respond-to(md) {
+        border-bottom: 0.0625rem solid $color-border-base-light;
+        padding: 0.75rem 1rem;
+        word-break: break-word;
+
+        &.-selectable {
+          .chi-radio {
+            .chi-radio__label {
+              position: initial;
+            }
+          }
+        }
+      }
+
+      &::before {
+        content: attr(data-label);
+        display: block;
+        font-weight: $font-weight-semi-bold;
+        min-width: 10rem;
+
+        @include respond-to(md) {
+          display: none;
+        }
+      }
+
+      // sass-lint:disable no-vendor-prefixes
+      .-cell-wrap {
+        display: -webkit-box;
+        overflow: hidden;
+        white-space: normal;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+    }
+  }
+
+  &__footer {
+    @include respond-to(md) {
+      background-color: $color-background-white;
+      padding: 1.5rem 1rem;
+    }
+  }
+
   &__head {
     display: none;
 
@@ -131,81 +200,21 @@ $sizes: (
       }
     }
 
+    // sass-lint:disable-block no-vendor-prefixes
+    .-cell-wrap {
+      display: -webkit-box;
+      overflow: hidden;
+      white-space: normal;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+
     .-truncated {
       @include respond-to(md) {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-    }
-  }
-
-  &__body {
-    fieldset {
-      min-inline-size: auto;
-    }
-
-    @include respond-to(md) {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .chi-data-table__row {
-      &.-expanded {
-        @include respond-to(md) {
-          font-weight: $font-weight-semi-bold;
-        }
-
-        .chi-data-table__cell {
-          border-bottom-color: transparent;
-        }
-      }
-    }
-
-    .chi-data-table__cell {
-      display: flex;
-      padding: 0.25rem 0.75rem;
-
-      @include respond-to(md) {
-        border-bottom: 0.0625rem solid $color-border-base-light;
-        padding: 0.75rem 1rem;
-        word-break: break-word;
-
-        &.-selectable {
-          .chi-radio {
-            .chi-radio__label {
-              position: initial;
-            }
-          }
-        }
-      }
-
-      &::before {
-        content: attr(data-label);
-        display: block;
-        font-weight: $font-weight-semi-bold;
-        min-width: 10rem;
-
-        @include respond-to(md) {
-          display: none;
-        }
-      }
-
-      // sass-lint:disable no-vendor-prefixes
-      .-cell-wrap {
-        display: -webkit-box;
-        overflow: hidden;
-        white-space: normal;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
-      }
-    }
-  }
-
-  &__footer {
-    @include respond-to(md) {
-      background-color: $color-background-white;
-      padding: 1.5rem 1rem;
     }
   }
 
@@ -227,16 +236,16 @@ $sizes: (
     }
 
     &.-active {
-      background-color: $color-background-primary-light;
+      background-color: $data-table-row-active-background-color;
       box-shadow: inset 0.125rem 0 0 $color-border-primary;
     }
 
     &.-selected {
-      background-color: $color-background-primary-light;
+      background-color: $data-table-row-active-background-color;
     }
 
     &.-expanded {
-      background-color: $color-background-primary-light;
+      background-color: $data-table-row-active-background-color;
       border-bottom: 0;
       box-shadow: inset 0.25rem 0 0 $color-border-primary;
 
@@ -261,7 +270,7 @@ $sizes: (
 
     &-child,
     &-grand-child {
-      background-color: $color-background-primary-light;
+      background-color: $data-table-row-active-background-color;
       box-shadow: inset 0.25rem 0 0 $color-border-primary;
 
       @include respond-to(md) {
@@ -277,6 +286,12 @@ $sizes: (
         @include respond-to(md) {
           background-color: $color-background-primary-lighter;
           padding: 1.5rem 2rem;
+        }
+      }
+
+      @include respond-to(md) {
+        .chi-data-table {
+          margin-left: 3rem;
         }
       }
     }
@@ -467,7 +482,7 @@ $sizes: (
             &.-active,
             &.-selected,
             &.-expanded {
-              background-color: $color-background-primary-light;
+              background-color: $data-table-row-active-background-color;
             }
           }
         }
@@ -523,34 +538,6 @@ $sizes: (
   }
 
   &.-portal {
-    .chi-data-table__head {
-      @include respond-to(md) {
-        background-color: $data-table-head-background-color;
-
-        .chi-data-table__row {
-          background-color: $data-table-head-background-color;
-
-          .chi-data-table__cell {
-            border-bottom: 0.0625rem solid $color-border-base-dark;
-
-            &.-selectable {
-              .chi-dropdown {
-                left: 2.5rem;
-                position: absolute;
-                z-index: 1;
-              }
-            }
-          }
-
-          &:last-child {
-            .chi-data-table__cell {
-              border-bottom: 0;
-            }
-          }
-        }
-      }
-    }
-
     &:not(.-bordered) {
       .chi-data-table__body {
         @include respond-to(md) {
@@ -645,6 +632,37 @@ $sizes: (
       }
     }
 
+    .chi-data-table__head {
+      @include respond-to(md) {
+        background-color: $data-table-head-background-color;
+
+        .chi-data-table__row {
+          &,
+          &:hover {
+            background-color: $data-table-head-background-color;
+          }
+
+          .chi-data-table__cell {
+            border-bottom: 0.0625rem solid $color-border-base-dark;
+
+            &.-selectable {
+              .chi-dropdown {
+                left: 2.5rem;
+                position: absolute;
+                z-index: 1;
+              }
+            }
+          }
+
+          &:last-child {
+            .chi-data-table__cell {
+              border-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+
     &.-no-border {
       .chi-data-table__head,
       .chi-data-table__body {
@@ -662,12 +680,12 @@ $sizes: (
           &:hover,
           &.-hover {
             @include respond-to(md) {
-              background-color: $color-background-primary-light;
+              background-color: $data-table-row-active-background-color;
 
               &.-active,
               &.-selected,
               &.-expanded {
-                background-color: $color-background-primary-light;
+                background-color: $data-table-row-active-background-color;
               }
             }
           }
@@ -813,7 +831,7 @@ $sizes: (
 
       &.-active,
       &.-expanded {
-        background-color: $color-background-primary-light;
+        background-color: $data-table-row-active-background-color;
 
         .chi-data-table__cell {
           &.-key {
@@ -844,11 +862,17 @@ $sizes: (
                 left: -0.125rem;
                 position: absolute;
                 top: -0.0625rem;
+                z-index: 1;
+
+                &.-flat {
+                  border-width: 0.0625rem;
+                }
 
                 @include respond-to(md) {
                   left: 0;
                   position: relative;
                   top: 0;
+                  z-index: auto;
                 }
               }
             }
@@ -880,8 +904,11 @@ $sizes: (
 
         .chi-data-table__cell {
           align-items: center;
-          padding-left: 2rem;
           position: relative;
+
+          @media only screen and (max-width: $md-breakpoint) {
+            padding-left: 2rem;
+          }
 
           .chi-button {
             &.-expand {

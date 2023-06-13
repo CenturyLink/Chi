@@ -105,7 +105,7 @@
               <button
                 class="chi-button -portal -icon -primary -flat chi-drawer__trigger"
                 data-target="#drawer-2"
-                aria-label="Column Customization Open"
+                aria-label="Customize columns Open"
               >
                 <div class="chi-button__content">
                   <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
@@ -181,7 +181,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from '@/build/vue-wrapper';
 import DataTable from '../../../components/data-table/DataTable';
 import DesktopActions from '../DataTableTemplates/example-desktop-actions.vue';
 import MobileActions from '../DataTableTemplates/example-mobile-actions.vue';

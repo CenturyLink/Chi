@@ -1,35 +1,11 @@
 <template>
   <div class="example-wrapper">
-    <h4 v-if="titleSize === 'h4'" class="-anchor" :id="id">
-      {{ title }}
-      <span>
-        <a
-          class="-ml--1"
-          :href="'?theme=' + $store.state.themes.theme + '#' + id"
-          >#</a
-        >
-      </span>
-    </h4>
-    <h2 v-else-if="titleSize === 'h2'" class="-anchor" :id="id">
-      {{ title }}
-      <span>
-        <a
-          class="-ml--1"
-          :href="'?theme=' + $store.state.themes.theme + '#' + id"
-          >#</a
-        >
-      </span>
-    </h2>
-    <h3 v-else class="-anchor" :id="id">
-      {{ title }}
-      <span>
-        <a
-          class="-ml--1"
-          :href="'?theme=' + $store.state.themes.theme + '#' + id"
-          >#</a
-        >
-      </span>
-    </h3>
+    <TitleAnchor 
+      :id="id" 
+      :title="title" 
+      :titleSize="titleSize" 
+      :showTitle="showTitle" 
+    />
     <slot name="example-description"></slot>
     <div v-if="headTabs">
       <ul
@@ -49,7 +25,7 @@
             :aria-selected="headTab.active ? true : false"
             :aria-controls="'#head-tabs-' + id + '-' + headTab.id"
             @click="emitHeadTabsChange(headTab)"
-            >{{ headTab.label }}</a
+          >{{ headTab.label }}</a
           >
         </li>
       </ul>
@@ -107,7 +83,7 @@
       <div :class="[padding || '-p--3', additionalClasses]">
         <slot name="example"></slot>
       </div>
-      <div class="example-tabs -pl--2">
+      <div v-if="showSnippetTabs" class="example-tabs -pl--2">
         <ul
           class="chi-tabs -animated"
           :id="'code-snippet-tabs-' + id"
@@ -134,14 +110,14 @@
         </ul>
       </div>
       <div
-        :class="['chi-tabs-panel', tab.active ? '-active' : '']"
+        :class="[showSnippetTabs ? 'chi-tabs-panel' : '', tab.active ? '-active' : '']"
         v-for="tab in tabs"
         :key="tab.id"
         :id="'example-' + id + '-' + tab.id"
         :ref="`tab-panel-${tab.id}`"
         role="tabpanel"
       >
-        <div class="clipboard">
+        <div class="clipboard" v-if="showClipboard">
           <button
             class="clipboard__button chi-button -xs -flat"
             @click="() => copy(`tab-panel-${tab.id}`)"
@@ -218,6 +194,9 @@ export default class ComponentExample extends Vue {
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
   @Prop() additionalStyle?: string;
+  @Prop({ default: true }) showSnippetTabs?: boolean;
+  @Prop({ default: true }) showTitle?: boolean;
+  @Prop({ default: true }) showClipboard?: boolean;
 
   chiTabs: any;
   chiHeadTabs: any;
@@ -239,7 +218,7 @@ export default class ComponentExample extends Vue {
       });
 
       this.chiHeadTabs = chi.tab(chiHeadTabs);
-    };
+    }
   }
 
   emitHeadTabsChange(tab: HeadTabsInterface) {
