@@ -217,7 +217,7 @@ export enum SaveViewModes {
 }
 //#endregion
 
-//#region Search Input
+//#region Search Inputc
 export const SEARCH_INPUT_SIZES = ['sm', 'md', 'lg', 'xl'] as const;
 export type SearchInputSizes = typeof SEARCH_INPUT_SIZES[number];
 //#endregion

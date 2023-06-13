@@ -68,6 +68,7 @@ let dataTableNumber = 0;
 export default class DataTable extends Vue {
   @Prop() data!: DataTableData;
   @Prop() config!: DataTableConfig;
+  // @Prop() isEmptyOnInit?: boolean;
 
   accordionsExpanded: string[] = [];
   activePage =
