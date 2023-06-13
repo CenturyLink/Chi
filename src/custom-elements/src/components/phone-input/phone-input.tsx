@@ -90,7 +90,7 @@ export class ChiPhoneInput {
   @State() _uuid: string;
 
   componentWillLoad(): void {
-    const countryObjs = country.countryList();
+    const countryObjs = this._getCorrectCountryList();
     const dialCodes = getCountries();
 
     countryObjs.forEach(
@@ -141,6 +141,12 @@ export class ChiPhoneInput {
 
       this._suffix = new AsYouType(this._country.countryAbbr).input(suffix);
     }
+  }
+
+  _getCorrectCountryList() {
+    const serbiaObj = {country: 'Serbia', country_code: 'RS'}
+    const montenegroObj = {country: 'Montenegro', country_code: 'ME'}
+    return [...country.countryList(), serbiaObj, montenegroObj].sort((a, b) => a.country.localeCompare(b.country));
   }
 
   _setCountry(prefix: string) {
