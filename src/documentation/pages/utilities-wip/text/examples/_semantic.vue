@@ -7,9 +7,9 @@
       | for neutral. Semantic colors should never be used for decorative purposes.
     .chi-grid.-no-gutter(slot="example")
       .chi-col.-w--12.-p--1.-d--flex.-justify-content--center.-flex--wrap
-          div.-p--1.-p-sm--2.-text--center(v-for="_class in classes")
-            p.-text(:class="`-text--${ _class }`")
-              | {{`-text--${ _class }`}}
+          .-p--1.-p-sm--2.-text--center(v-for="className in classes")
+            p.-text(:class="`-text--${ className }`")
+              | -text--{{ className }}
     <pre class="language-html" slot="code-htmlblueprint">
        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -22,7 +22,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      classes: ['success', 'info', 'danger', 'warning', 'muted'],
       exampleTabs: [
         {
           active: true,
@@ -34,14 +33,14 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class Semantic extends Vue {
-  get codeSnippets() {
-    return {
-      htmlblueprint: '<p class="-text--success">-text--success</p>\n' +
-        '<p class="-text--info">-text--info</p>\n' +
-        '<p class="-text--warning">-text--warning</p>\n' +
-        '<p class="-text--danger">-text--danger</p>\n' +
-        '<p class="-text--muted">-text--muted</p>'
-    };
+  classes = ['success', 'info', 'danger', 'warning', 'muted'];
+
+  codeSnippets = {
+    htmlblueprint: '<p class="-text--success">-text--success</p>\n' +
+      '<p class="-text--info">-text--info</p>\n' +
+      '<p class="-text--warning">-text--warning</p>\n' +
+      '<p class="-text--danger">-text--danger</p>\n' +
+      '<p class="-text--muted">-text--muted</p>'
   }
 }
 </script>

@@ -7,20 +7,20 @@
       thead
         tr
           th.-bt--0.-bl--0.-text(width='20%')
-            div Size
+            | Size
           th.-bt--0.-br--0
-            div Example
+            | Example
       tbody
-        tr(v-for="(size, key, index) in sizes")
-          td.-bl--0.-text(width='20%', :class="index === Object.keys(sizes).length - 1 ? '-bb--0' : ''")
-            code {{`-text--${ key }`}}
+        tr(v-for="(size, index) in sizes")
+          td.-bl--0.-text(width='20%', :class="index === sizes.length - 1 ? '-bb--0' : ''")
+            code {{`-text--${ size.size }`}}
             dl.-text.-text--xs.-mt--2
               dt.-text--bold Font-size:
               dd {{`${ size.font }`}}
               dt.-text--bold.-mt--1 Line-height:
               dt {{`${ size.line }`}}
-          td.-br--0(:class="index === Object.keys(sizes).length - 1 ? '-bb--0' : ''")
-            p(:class="`-text--${ key }`")
+          td.-br--0(:class="index === sizes.length - 1 ? '-bb--0' : ''")
+            p(:class="`-text--${ size.size }`")
               | The quick brown fox jumps over the lazy dog.
     <pre class="language-html" slot="code-htmlblueprint">
        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
@@ -34,14 +34,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      sizes: {
-        'xl': { font:'18px (1.125rem)',    line:'28px (1.75rem)' },
-        'lg': { font:'16px (1rem)',        line:'24px (1.5rem)' },
-        'md': { font:'14px (0.875rem)',    line:'24px (1.5rem)' },
-        'sm': { font:'13px (0.8125rem)',   line:'20px (1.25rem)' },
-        'xs': { font:'12px (0.75rem)',     line:'16px (1rem)' },
-        '2xs': { font:'11px (0.6875rem)',  line:'16px (1rem)' }
-      },
       exampleTabs: [
         {
           active: true,
@@ -53,6 +45,15 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class Size extends Vue {
+  sizes = [
+    { size: 'xl', font:'18px (1.125rem)', line:'28px (1.75rem)' },
+    { size: 'lg', font:'16px (1rem)', line:'24px (1.5rem)' },
+    { size: 'md', font:'14px (0.875rem)', line:'24px (1.5rem)' },
+    { size: 'sm', font:'13px (0.8125rem)', line:'20px (1.25rem)' },
+    { size: 'xs', font:'12px (0.75rem)', line:'16px (1rem)' },
+    { size: '2xs', font:'11px (0.6875rem)', line:'16px (1rem)' }
+  ];
+
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml(),
@@ -60,8 +61,8 @@ export default class Size extends Vue {
   }
 
   generateHtml() {
-    return Object.keys(this.$data.sizes)
-      .map((size: string) => `<p class="-text--${ size }">The quick brown fox jumps over the lazy dog.</p>`)
+    return this.sizes
+      .map(size => `<p class="-text--${ size.size }">The quick brown fox jumps over the lazy dog.</p>`)
       .join('\n');
   }
 }

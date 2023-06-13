@@ -7,6 +7,7 @@
       p.-text.-text--uppercase This text will render as uppercase
       p.-text.-text--capitalize This text will render as capitalize
       p.-text.-text--capitalize-fl This text will convert UPPERCASE TEXT to lowercase and capitalize the first letter
+      p.-text.-text--italic This text will render as italic
       p.-text.-text--no-transform This text will render with no transform
     <pre class="language-html" slot="code-htmlblueprint">
        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
@@ -31,14 +32,13 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class Transform extends Vue {
-  get codeSnippets() {
-    return {
-      htmlblueprint: '<p class="-text--lowercase">This text will render as lowercase</p>\n' +
-        '<p class="-text--uppercase">This text will render as uppercase</p>\n' +
-        '<p class="-text--capitalize">This text will render as capitalize</p>\n' +
-        '<p class="-text--capitalize-fl">This text will convert UPPERCASE TEXT to lowercase and capitalize the first letter</p>\n' +
-        '<p class="-text--no-transform">This text will render with no transform</p>'
-    };
+  codeSnippets = {
+    htmlblueprint: '<p class="-text--lowercase">This text will render as lowercase</p>\n' +
+      '<p class="-text--uppercase">This text will render as uppercase</p>\n' +
+      '<p class="-text--capitalize">This text will render as capitalize</p>\n' +
+      '<p class="-text--capitalize-fl">This text will convert UPPERCASE TEXT to lowercase and capitalize the first letter</p>\n' +
+      '<p class="-text--italic">This text will render as italic</p>\n' +
+      '<p class="-text--no-transform">This text will render with no transform</p>'
   }
 }
 </script>

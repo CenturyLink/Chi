@@ -30,13 +30,11 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class Alignment extends Vue {
-  get codeSnippets() {
-    return {
-      htmlblueprint: '<p class="-text--justify">This text will render as justified</p>\n' +
-        '<p class="-text--left">This text will render as left aligned</p>\n' +
-        '<p class="-text--center">This text will render as center aligned</p>\n' +
-        '<p class="-text--right">This text will render as right aligned</p>',
-    };
+  codeSnippets = {
+    htmlblueprint: '<p class="-text--justify">This text will render as justified</p>\n' +
+      '<p class="-text--left">This text will render as left aligned</p>\n' +
+      '<p class="-text--center">This text will render as center aligned</p>\n' +
+      '<p class="-text--right">This text will render as right aligned</p>',
   }
 }
 </script>

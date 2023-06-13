@@ -48,13 +48,11 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class AlignmentResponsiveness extends Vue {
-  get codeSnippets() {
-    return {
-      htmlblueprint: '<p class="-text-md--justify">This text will render as justified from md and larger breakpoints</p>\n' +
-        '<p class="-text-lg--left">This text will render as left aligned from lg and larger breakpoints</p>\n' +
-        '<p class="-text-sm--center">This text will render as center aligned from sm and larger breakpoints</p>\n' +
-        '<p class="-text-xl--right">This text will render as right aligned from xl and larger breakpoints</p>'
-    };
-  }
+  codeSnippets = {
+    htmlblueprint: '<p class="-text-md--justify">This text will render as justified from md and larger breakpoints</p>\n' +
+      '<p class="-text-lg--left">This text will render as left aligned from lg and larger breakpoints</p>\n' +
+      '<p class="-text-sm--center">This text will render as center aligned from sm and larger breakpoints</p>\n' +
+      '<p class="-text-xl--right">This text will render as right aligned from xl and larger breakpoints</p>'
+    }
 }
 </script>

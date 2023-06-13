@@ -29,12 +29,10 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class Decoration extends Vue {
-  get codeSnippets() {
-    return {
-      htmlblueprint: '<p class="-text--no-decoration">This text will render with no decoration</p>\n' +
-        '<p class="-text--underline">This text will render with an underline</p>\n' +
-        '<p class="-text--line-through">This text will render with a line through</p>'
-    };
+  codeSnippets = {
+    htmlblueprint: '<p class="-text--no-decoration">This text will render with no decoration</p>\n' +
+      '<p class="-text--underline">This text will render with an underline</p>\n' +
+      '<p class="-text--line-through">This text will render with a line through</p>'
   }
 }
 </script>

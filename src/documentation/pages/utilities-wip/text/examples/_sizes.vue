@@ -56,12 +56,10 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class Sizes extends Vue {
-  get codeSnippets() {
-    return {
-      htmlblueprint: '<p class="-text-md--lg"></p>\n' +
-        '<p class="-text-xl--xs"></p>\n' +
-        '<p class="-text-lg--xl"></p>'
-    };
+  codeSnippets = {
+    htmlblueprint: '<p class="-text-md--lg"></p>\n' +
+      '<p class="-text-xl--xs"></p>\n' +
+      '<p class="-text-lg--xl"></p>'
   }
 }
 </script>

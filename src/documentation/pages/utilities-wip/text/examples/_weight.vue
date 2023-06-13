@@ -3,12 +3,7 @@
     p.-text(slot="example-description")
       | Change text weight to thin, normal, semi-bold, bold, bolder, or boldest.
     .-m--3(slot="example")
-      p.-text.-text--thin This text will render as thin
-      p.-text.-text--normal This text will render as normal
-      p.-text.-text--semi-bold This text will render as semi-bold
-      p.-text.-text--bold This text will render as bold
-      p.-text.-text--bolder This text will render as bolder
-      p.-text.-text--boldest This text will render as boldest
+      p.-text(v-for="textSize of textSizes", :class="`-text--${ textSize }`") {{`This text will render as ${ textSize }`}}
     <pre class="language-html" slot="code-htmlblueprint">
        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -32,15 +27,11 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class Weight extends Vue {
-  get codeSnippets() {
-    return {
-      htmlblueprint: '<p class="-text--thin">This text will render as thin</p>\n' +
-        '<p class="-text--normal">This text will render as normal</p>\n' +
-        '<p class="-text--semi-bold">This text will render as semi-bold</p>\n' +
-        '<p class="-text--bold">This text will render as bold</p>\n' +
-        '<p class="-text--bolder">This text will render as bolder</p>\n' +
-        '<p class="-text--boldest">This text will render as boldest</p>'
-    };
+  textSizes = [ 'thin', 'normal', 'semi-bold', 'bold', 'bolder', 'boldest' ]
+  codeSnippets = {
+    htmlblueprint: this.textSizes
+      .map(textSize => `<p class="-text--${ textSize }">This text will render as ${ textSize }</p>`)
+      .join('\n')
   }
 }
 </script>

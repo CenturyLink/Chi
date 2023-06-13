@@ -47,13 +47,11 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class LineHeights extends Vue {
-  get codeSnippets() {
-    return {
-      htmlblueprint: '<p class="-text -lh-md--2">-lh-md--2</p>\n' +
-        '<p class="-text -lh-lg--4">-lh-lg--4</p>\n' +
-        '<p class="-text -lh-sm--5">-lh-sm--5</p>\n' +
-        '<p class="-text -lh-xl--7">-lh-xl--7</p>'
-    };
+  codeSnippets = {
+    htmlblueprint: '<p class="-text -lh-md--2">-lh-md--2</p>\n' +
+      '<p class="-text -lh-lg--4">-lh-lg--4</p>\n' +
+      '<p class="-text -lh-sm--5">-lh-sm--5</p>\n' +
+      '<p class="-text -lh-xl--7">-lh-xl--7</p>'
   }
 }
 </script>

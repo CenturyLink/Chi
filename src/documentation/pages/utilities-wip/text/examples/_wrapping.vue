@@ -28,11 +28,9 @@ import { Component, Vue } from 'vue-property-decorator';
   },
 })
 export default class Wrapping extends Vue {
-  get codeSnippets() {
-    return {
-      htmlblueprint: '<p class="-text--nowrap">This text will render without wrapping</p>\n' +
-        '<p class="-text--truncate">This text will truncate with an ellipsis</p>'
-    };
+  codeSnippets = {
+    htmlblueprint: '<p class="-text--nowrap">This text will render without wrapping</p>\n' +
+      '<p class="-text--truncate">This text will truncate with an ellipsis</p>'
   }
 }
 </script>
