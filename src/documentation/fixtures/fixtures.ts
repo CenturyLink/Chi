@@ -584,17 +584,23 @@ const neutralColors = [
 export const colors: ThemesColor = {
   lumen: {
     brand: {
-      primary: {
-        code: '#0075C9',
-        a11y: 'AA',
-        text: 'Blue 70',
-        class: '-text--white',
-      },
-      secondary: {
-        code: '#38C6F4',
-        text: 'Cyan 40',
-        a11y: 'AAA',
-      },
+      main: [
+        {
+          title: 'Primary Accent',
+          id: 'primary-accent',
+          code: '#0075C9',
+          a11y: 'AA',
+          text: 'Blue 70',
+          class: '-text--white',
+        },
+        {
+          title: 'Secondary Accent',
+          id: 'secondary-accent',
+          code: '#38C6F4',
+          text: 'Cyan 40',
+          a11y: 'AAA',
+        }
+      ],
       supporting: [
         {
           text: 'White',
@@ -622,8 +628,8 @@ export const colors: ThemesColor = {
       ]
     },
     neutral: neutralColors,
-    semantic: {
-      green: [
+    semantic: [
+      [
         {
           code: '#007E44',
           text: 'Green 70',
@@ -643,7 +649,7 @@ export const colors: ThemesColor = {
           text: 'Green 20',
           a11y: 'AAA',
         }],
-      blue: [
+      [
         {
           code: '#0262B9',
           text: 'Blue 75',
@@ -667,7 +673,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         }
       ],
-      red: [
+      [
         {
           code: '#D62015',
           text: 'Red 70',
@@ -691,7 +697,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         }
       ],
-      yellow: [
+      [
         {
           code: '#A15C00',
           text: 'Yellow 70',
@@ -715,20 +721,27 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         }
       ],
-    }
+    ],
   },
   centurylink: {
     brand: {
-      primary: {
-        code: '#0047BB',
-        a11y: 'AAA',
-        text: 'Blue 70',
-        class: '-text--white',
-      },
-      secondary: {
-        code: '#48D597',
-        text: 'Mint 40',
-      },
+      main: [
+        {
+          title: 'Primary Accent',
+          id: 'primary-accent',
+          code: '#0047BB',
+          a11y: 'AAA',
+          text: 'Blue 70',
+          class: '-text--white',
+        },
+        {
+          title: 'Secondary Accent',
+          id: 'secondary-accent',
+          code: '#48D597',
+          a11y: 'AAA',
+          text: 'Mint 40',
+        }
+      ],
       supporting: [
         {
           text: 'White',
@@ -739,20 +752,23 @@ export const colors: ThemesColor = {
         {
           text: 'Teal Blue 40',
           code: '#02BCB2',
+          a11y: 'AA',
         },
         {
           text: 'Yellow 35',
           code: '#F9F162',
+          a11y: 'AAA',
         },
         {
           text: 'Green 35',
           code: '#6FD16F',
+          a11y: 'AAA',
         },
       ]
     },
     neutral: neutralColors,
-    semantic: {
-      green: [
+    semantic: [
+      [
         {
           code: '#008000',
           text: 'Green 60',
@@ -776,7 +792,7 @@ export const colors: ThemesColor = {
           a11y: 'AA',
         }
       ],
-      blue: [
+      [
         {
           code: '#0060FA',
           text: 'Blue 60',
@@ -799,7 +815,7 @@ export const colors: ThemesColor = {
           a11y: 'AA',
         }
       ],
-      red: [
+      [
         {
           code: '#D81820',
           text: 'Red 60',
@@ -822,7 +838,7 @@ export const colors: ThemesColor = {
           a11y: 'AA',
         }
       ],
-      yellow: [
+      [
         {
           code: '#946300',
           text: 'Yellow 60',
@@ -845,21 +861,27 @@ export const colors: ThemesColor = {
           a11y: 'AA',
         }
       ],
-    },
+    ],
   },
   brightspeed: {
     brand: {
-      primary: {
-        code: '#FFC800',
-        text: 'Yellow 40',
-        a11y: 'AAA',
-      },
-      secondary: {
-        code: '#FA783C',
-        text: 'Orange 40',
-        class: '-text--black',
-        a11y: 'AAA',
-      },
+      main: [
+        {
+          title: 'Primary Accent',
+          id: 'primary-accent',
+          code: '#FFC800',
+          text: 'Yellow 40',
+          a11y: 'AAA',
+        },
+        {
+          title: 'Secondary Accent',
+          id: 'secondary-accent',
+          code: '#FA783C',
+          text: 'Orange 40',
+          class: '-text--black',
+          a11y: 'AAA',
+        },
+      ],
       supporting: [
         {
           text: 'Red 50',
@@ -968,8 +990,8 @@ export const colors: ThemesColor = {
         },
       ],
     ],
-    semantic: {
-      green: [
+    semantic: [
+      [
         {
           code: '#007E44',
           text: 'Green 70',
@@ -993,7 +1015,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         }
       ],
-      blue: [
+      [
         {
           code: '#0262B9',
           text: 'Blue 75',
@@ -1017,7 +1039,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         }
       ],
-      red: [
+      [
         {
           code: '#A01903',
           text: 'Red 70',
@@ -1041,7 +1063,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         }
       ],
-      yellow: [
+      [
         {
           code: '#A15C00',
           text: 'Yellow 70',
@@ -1065,21 +1087,27 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         }
       ],
-    },
+    ],
   },
   portal: {
     brand: {
-      primary: {
-        code: '#0075C9',
-        a11y: 'AA',
-        text: 'Blue 70',
-        class: '-text--white',
-      },
-      secondary: {
-        code: '#38C6F4',
-        text: 'Cyan 40',
-        a11y: 'AAA',
-      },
+      main: [
+        {
+          title: 'Primary Accent',
+          id: 'primary-accent',
+          code: '#0075C9',
+          a11y: 'AA',
+          text: 'Blue 70',
+          class: '-text--white',
+        },
+        {
+          title: 'Secondary Accent',
+          id: 'secondary-accent',
+          code: '#38C6F4',
+          text: 'Cyan 40',
+          a11y: 'AAA',
+        }
+      ],
       supporting: [
         {
           text: 'White',
@@ -1107,8 +1135,8 @@ export const colors: ThemesColor = {
       ]
     },
     neutral: neutralColors,
-    semantic: {
-      green: [
+    semantic: [
+      [
         {
           code: '#007E44',
           text: 'Green 70',
@@ -1132,7 +1160,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         }
       ],
-      blue: [
+      [
         {
           code: '#0262B9',
           text: 'Blue 75',
@@ -1156,7 +1184,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         }
       ],
-      red: [
+      [
         {
           code: '#D62015',
           text: 'Red 70',
@@ -1180,7 +1208,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         }
       ],
-      yellow: [
+      [
         {
           code: '#A15C00',
           text: 'Yellow 70',
@@ -1204,7 +1232,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         }
       ],
-    },
+    ],
   },
   colt: null,
 }

@@ -5,16 +5,22 @@
       | Section 508 follows the Web Content Accessibility Guidelines (<a href="https://www.w3.org/TR/WCAG20/">WCAG 2.0</a>) Level AA
       | standards which require text and background color contrast ratios of 4.5:1 or higher.
       | All Chi colors either meet (AA) or exceed (AAA) these standards and have been marked below accordingly.
-    <Color />
+    <Brand />
+    <Neutral />
+    <Semantic />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Color from './_color.vue';
+import Brand from './_brand.vue';
+import Neutral from './_neutral.vue';
+import Semantic from './_semantic.vue';
 
 @Component({
   components: {
-    Color
+    Brand,
+    Neutral,
+    Semantic,
   }
 })
 export default class Examples extends Vue {}

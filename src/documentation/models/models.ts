@@ -65,20 +65,19 @@ interface Palette {
 }
 type NeutralSection = (Palette & { description: string })[][];
 type SupportingSection = (Palette & { wrapperClass?: string })[];
+type MainColor = (Palette & {
+  title: string,
+  id: string
+  wrapperClass?: string,
+});
 
 interface Color {
   brand: {
-    primary: Palette,
-    secondary: Palette,
+    main: MainColor[],
     supporting: SupportingSection,
   },
   neutral: NeutralSection,
-  semantic: {
-    green: Palette[],
-    blue: Palette[],
-    red: Palette[],
-    yellow: Palette[],
-  }
+  semantic: Palette[][]
 }
 
 export type ThemesColor = {
