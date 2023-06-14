@@ -577,7 +577,7 @@ p.-text
         <chi-button id="alert-trigger-button" color="primary">Click me to show the alert</chi-button>
 
         <!-- Alert -->
-        <chi-alert id="interactive-alert" icon="circle-info" closable mutable>
+        <chi-alert id="interactive-alert" icon="warning" closable mutable>
           This is a closable warning alert
         </chi-alert>
       </div>
@@ -596,6 +596,7 @@ p.-text
           }
         })
       </script>
+
   .chi-tabs-panel#html-portal-interactive
     .chi-tab__description
       span.-text--grey
@@ -608,11 +609,11 @@ p.-text
 
           <!-- Alert -->
           <div class="chi-alert" role="alert" id="interactive-alert">
-              <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
+              <i class="chi-alert__icon chi-icon icon-warning" aria-hidden="true"></i>
               <div class="chi-alert__content">
                   <p class="chi-alert__text">This is a closable warning alert</p>
               </div>
-              <button id="close-button" class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
+              <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
                   <div class="chi-button__content">
                       <i class="chi-icon icon-x" aria-hidden="true"></i>
                   </div>
@@ -630,16 +631,10 @@ p.-text
 
           interactiveAlertTrigger.addEventListener('click', () => {
               if (interactiveAlertWrapper.children.length === 1) {
-                  let alert = interactiveAlert.cloneNode(true);
-                  interactiveAlertWrapper.appendChild(alert);
-
-                  document.getElementById('close-button').addEventListener('click', () => {
-                      alert.parentNode.removeChild(alert);
-                  })
+                  interactiveAlertWrapper.appendChild(interactiveAlert.cloneNode(true));
               }
           })
       </script>
-
 .-portal--hide
   h4 Clickable
   p.-text
