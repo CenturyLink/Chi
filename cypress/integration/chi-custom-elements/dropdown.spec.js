@@ -298,24 +298,32 @@ describe('Dropdown', () => {
 
     describe('EventKeydown', () => {
       beforeEach(() => {
-        cy.get(DROPDOWN_DATA_CY.EVENT.KEYDOWN).find(DROPDOWN_TRIGGER).as('dropdownTrigger');
+        cy.get(DROPDOWN_DATA_CY.EVENT.KEYDOWN)
+          .find(DROPDOWN_TRIGGER).as('dropdownTrigger');
+        cy.get(DROPDOWN_DATA_CY.EVENT.KEYDOWN)
+          .find(DROPDOWN_MENU_ITEM).as('dropdownMenuItem');
         cy.get(DROPDOWN_DATA_CY.EVENT.KEYDOWN).as('dropdown');
-        cy.get(DROPDOWN_DATA_CY.EVENT.KEYDOWN).find(DROPDOWN_MENU_ITEM).as('dropdownMenuItem');
       });
 
       it('Should be able to move down and up the dropdown menu with the keyboard', () => {
         cy.get(`@dropdownTrigger`).click();
 
-        cy.get('@dropdown').type('{downArrow}{downArrow}{upArrow}').then(() => {
-          cy.get('@dropdownMenuItem').first().should('have.focus');
-        });
+        cy.get('@dropdown')
+          .type('{downArrow}{downArrow}{upArrow}')
+          .then(() => {
+            cy.get('@dropdownMenuItem')
+              .first()
+              .should('have.focus');
+          });
       });
     });
 
     describe('EventItemSelected', () => {
       beforeEach(() => {
-        cy.get(DROPDOWN_DATA_CY.EVENT.ITEM_SELECTED).find(DROPDOWN_TRIGGER).as('dropdownTrigger');
-        cy.get(DROPDOWN_DATA_CY.EVENT.ITEM_SELECTED).find(DROPDOWN_MENU_ITEM).as('dropdownMenuItem');
+        cy.get(DROPDOWN_DATA_CY.EVENT.ITEM_SELECTED)
+          .find(DROPDOWN_TRIGGER).as('dropdownTrigger');
+        cy.get(DROPDOWN_DATA_CY.EVENT.ITEM_SELECTED)
+          .find(DROPDOWN_MENU_ITEM).as('dropdownMenuItem');
         cy.get(DROPDOWN_DATA_CY.EVENT.ITEM_SELECTED).as('dropdown');
       });
 
@@ -327,9 +335,12 @@ describe('Dropdown', () => {
         });
         cy.get(`@dropdownTrigger`).click();
 
-        cy.get('@dropdownMenuItem').first().click().then(() => {
-          expect(spy).to.be.calledOnce;
-        });
+        cy.get('@dropdownMenuItem')
+          .first()
+          .click()
+          .then(() => {
+            expect(spy).to.be.calledOnce;
+          });
       });
     });
   });
