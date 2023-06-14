@@ -75,11 +75,14 @@ const DROPDOWN_DATA_CY = {
   },
   EVENT: {
     SHOW: '[data-cy="event-dropdown-show"]',
-    HIDE: '[data-cy="event-dropdown-hide"]'
+    HIDE: '[data-cy="event-dropdown-hide"]',
+    KEYDOWN: '[data-cy="event-dropdown-keydown"]',
+    ITEM_SELECTED: '[data-cy="event-dropdown-item-selected"]',
   }
 };
 const DROPDOWN_TRIGGER = '.chi-button.chi-dropdown__trigger';
 const DROPDOWN_MENU = '.chi-dropdown__menu';
+const DROPDOWN_MENU_ITEM = '.chi-dropdown__menu-item';
 const ACTIVE_CLASS = '-active';
 
 const hasClassAssertion = (el, value) => {
@@ -290,6 +293,54 @@ describe('Dropdown', () => {
           });
         cy.get(`@dropdownMenu`)
           .should('not.be.visible');
+      });
+    });
+
+    describe('EventKeydown', () => {
+      beforeEach(() => {
+        cy.get(DROPDOWN_DATA_CY.EVENT.KEYDOWN)
+          .find(DROPDOWN_TRIGGER).as('dropdownTrigger');
+        cy.get(DROPDOWN_DATA_CY.EVENT.KEYDOWN)
+          .find(DROPDOWN_MENU_ITEM).as('dropdownMenuItem');
+        cy.get(DROPDOWN_DATA_CY.EVENT.KEYDOWN).as('dropdown');
+      });
+
+      it('Should be able to move down and up the dropdown menu with the keyboard', () => {
+        cy.get(`@dropdownTrigger`).click();
+
+        cy.get('@dropdown')
+          .type('{downArrow}{downArrow}{upArrow}')
+          .then(() => {
+            cy.get('@dropdownMenuItem')
+              .first()
+              .should('have.focus');
+          });
+      });
+    });
+
+    describe('EventItemSelected', () => {
+      beforeEach(() => {
+        cy.get(DROPDOWN_DATA_CY.EVENT.ITEM_SELECTED)
+          .find(DROPDOWN_TRIGGER).as('dropdownTrigger');
+        cy.get(DROPDOWN_DATA_CY.EVENT.ITEM_SELECTED)
+          .find(DROPDOWN_MENU_ITEM).as('dropdownMenuItem');
+        cy.get(DROPDOWN_DATA_CY.EVENT.ITEM_SELECTED).as('dropdown');
+      });
+
+      it('Should receive an event when a menu item is selected', () => {
+        const spy = cy.spy();
+
+        cy.get('@dropdown').then(el => {
+          el.on('chiDropdownItemSelected', spy);
+        });
+        cy.get(`@dropdownTrigger`).click();
+
+        cy.get('@dropdownMenuItem')
+          .first()
+          .click()
+          .then(() => {
+            expect(spy).to.be.calledOnce;
+          });
       });
     });
   });
