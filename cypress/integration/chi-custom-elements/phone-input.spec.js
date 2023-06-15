@@ -304,7 +304,7 @@ describe('Phone Input', () => {
       cy.get('@dropdownTrigger').click();
       cy.get('@base')
         .find('.chi-dropdown__menu-item')
-        .should('contain', 'France');
+        .should('contain', 'Serbia');
       cy.get('@base')
         .find('.chi-dropdown__menu-item')
         .should('contain', 'Montenegro');
