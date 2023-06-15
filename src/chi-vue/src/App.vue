@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from '@/build/vue-wrapper';
 import ExpansionPanelView from './views/ExpansionPanelView.vue';
 import PaginationView from './views/PaginationView.vue';
 import DrawerView from './views/DrawerView.vue';
