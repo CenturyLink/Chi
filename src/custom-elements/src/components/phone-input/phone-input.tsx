@@ -96,16 +96,17 @@ export class ChiPhoneInput {
     const countryObjs = this._getCorrectCountryList();
     const dialCodes = getCountries();
 
-    countryObjs.forEach(
-      (countryObj: ExtraCountry) => {
-        if (dialCodes.find(code => code === countryObj.country_code)) {
-          const country: Country = {
-            name: countryObj.country,
-            countryAbbr: countryObj.country_code,
-            dialCode: getCountryCallingCode(countryObj.country_code)
-          };
+    countryObjs.forEach((countryObj: ExtraCountry) => {
+      if (dialCodes.find(code => code === countryObj.country_code)) {
+        const country: Country = {
+          name: countryObj.country,
+          countryAbbr: countryObj.country_code as CountryCode,
+          dialCode: getCountryCallingCode(
+            countryObj.country_code as CountryCode
+          )
+        };
 
-          this._countries.push(country);
+        this._countries.push(country);
         }
       }
     );
@@ -152,6 +153,7 @@ export class ChiPhoneInput {
         value.substring(5, 7),
         value.substring(7, 9)
       ];
+
       return formattedNumbers.join(' ').trim();
     }
     return value;
@@ -163,9 +165,15 @@ export class ChiPhoneInput {
 
   _formatPhoneNumber(): void {
     const suffix = this.value?.split('-')[1] || '';
+
     if (this._isSpecialNumber()) {
-      const specialCountry: ExtraCountry = EXTRA_COUNTRIES.find(country => this._country.countryAbbr === country.country_code);
-      this._suffix = specialCountry?.formatNumber ? specialCountry.formatNumber(suffix) : this._basicNumberFormatting(suffix)
+      const specialCountry: ExtraCountry = EXTRA_COUNTRIES.find(
+        country => this._country.countryAbbr === country.country_code
+      );
+
+      this._suffix = specialCountry?.formatNumber
+        ? specialCountry.formatNumber(suffix)
+        : this._basicNumberFormatting(suffix)
     } else {
       this._suffix = new AsYouType(this._country.countryAbbr).input(suffix)
     }
@@ -175,6 +183,7 @@ export class ChiPhoneInput {
     if (this._isSpecialNumber()) {
       return suffix.length === 9;
     }
+
     return isValidPhoneNumber(suffix, this._country.countryAbbr)
   }
 
@@ -234,10 +243,13 @@ export class ChiPhoneInput {
   _suffixInputChangeHandler = (event: Event): void => {
     event.stopPropagation();
     const suffix = (event.target as HTMLInputElement).value;
+
     this._suffix = suffix;
+
     if (!this._isPhoneNumberValid(suffix)) {
       this.chiNumberInvalid.emit();
     }
+
     this.value = this._getValue();
     this.chiChange.emit(this.value);
   };

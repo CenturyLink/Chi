@@ -66,6 +66,6 @@ export type AppLayoutFormats = typeof APP_LAYOUT_FORMATS[number];
 export const TABS_SEE_MORE_DEFAULT_MESSAGE = 'More';
 
 export const EXTRA_COUNTRIES = [
-  {country: 'Serbia', country_code: 'RS'},
-  {country: 'Montenegro', country_code: 'ME'}
+  { country: 'Serbia', country_code: 'RS' },
+  { country: 'Montenegro', country_code: 'ME' }
 ];
