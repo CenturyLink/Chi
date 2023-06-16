@@ -37,7 +37,22 @@ const removeNotNumbers = (str: string): string => {
 const formatNumber = (value: string): string => {
   const onlyNumberValue = removeNotNumbers(value);
   if (onlyNumberValue.length <= 9) {
-    return onlyNumberValue.replace(/(\d{2})(\d{3})?(\d{2})?(\d{2})?/, "$1 $2 $3 $4").trim();
+    const formattedNumbers = [];
+    const numbersArray = onlyNumberValue.split('');
+    numbersArray.forEach((item, index) => {
+      if (index === 0 || index === 1) {
+        formattedNumbers[0] = (formattedNumbers[0] || '') + item
+      } else if (index === 2 || index === 3 || index === 4) {
+        formattedNumbers[1] = (formattedNumbers[1] || '') + item
+      } else if (index === 5 || index === 6) {
+        formattedNumbers[2] = (formattedNumbers[2] || '') + item
+      } else if (index === 7 || index === 8) {
+        formattedNumbers[3] = (formattedNumbers[3] || '') + item
+      } else {
+        formattedNumbers[4] = item
+      }
+    })
+    return formattedNumbers.join(' ');
   }
   return onlyNumberValue;
 }
