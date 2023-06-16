@@ -8,7 +8,8 @@ export interface Country {
 }
 export interface ExtraCountry {
   country: string;
-  country_code: CountryCode
+  country_code: CountryCode,
+  formatNumber?: (country: string) => string
 }
 export const MARKETING_ICON_MODES = ['filled', 'outline'] as const;
 export type ChiMarketingIconModes = typeof MARKETING_ICON_MODES[number];

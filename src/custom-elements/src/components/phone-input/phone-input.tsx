@@ -30,36 +30,6 @@ import {
 } from '../../constants/classes';
 import { Country, ExtraCountry } from '../../constants/types';
 
-const removeNotNumbers = (str: string): string => {
-  return str.replace(/[^0-9]/g, '');
-}
-
-const formatNumber = (value: string): string => {
-  const onlyNumberValue = removeNotNumbers(value);
-  if (onlyNumberValue.length <= 9) {
-    const formattedNumbers = [];
-    const numbersArray = onlyNumberValue.split('');
-    numbersArray.forEach((item, index) => {
-      if (index === 0 || index === 1) {
-        formattedNumbers[0] = (formattedNumbers[0] || '') + item
-      } else if (index === 2 || index === 3 || index === 4) {
-        formattedNumbers[1] = (formattedNumbers[1] || '') + item
-      } else if (index === 5 || index === 6) {
-        formattedNumbers[2] = (formattedNumbers[2] || '') + item
-      } else if (index === 7 || index === 8) {
-        formattedNumbers[3] = (formattedNumbers[3] || '') + item
-      } else {
-        formattedNumbers[4] = item
-      }
-    })
-    return formattedNumbers.join(' ');
-  }
-  return onlyNumberValue;
-}
-
-const SERBIA_CODE = 'RS';
-const MONTENEGRO_CODE = 'ME';
-
 @Component({
   tag: 'chi-phone-input',
   scoped: true
@@ -120,6 +90,8 @@ export class ChiPhoneInput {
   @State() _suffix = '';
   @State() _uuid: string;
 
+  _extraCountryCodes: string[] = EXTRA_COUNTRIES.map(item => item.country_code);
+
   componentWillLoad(): void {
     const countryObjs = this._getCorrectCountryList();
     const dialCodes = getCountries();
@@ -172,18 +144,36 @@ export class ChiPhoneInput {
     }
   }
 
+  _basicNumberFormatting(value: string): string {
+    if (value.length <= 9) {
+      const formattedNumbers = [
+        value.substring(0, 2),
+        value.substring(2, 5),
+        value.substring(5, 7),
+        value.substring(7, 9)
+      ];
+      return formattedNumbers.join(' ').trim();
+    }
+    return value;
+  }
+
+  _isSpecialNumber() {
+    return this._extraCountryCodes.includes(this._country.countryAbbr);
+  }
+
   _formatPhoneNumber(): void {
     const suffix = this.value?.split('-')[1] || '';
-    if (this._country.countryAbbr === SERBIA_CODE || this._country.countryAbbr === MONTENEGRO_CODE) {
-      this._suffix = formatNumber(suffix);
+    if (this._isSpecialNumber()) {
+      const specialCountry: ExtraCountry = EXTRA_COUNTRIES.find(country => this._country.countryAbbr === country.country_code);
+      this._suffix = specialCountry?.formatNumber ? specialCountry.formatNumber(suffix) : this._basicNumberFormatting(suffix)
     } else {
       this._suffix = new AsYouType(this._country.countryAbbr).input(suffix)
     }
   }
 
   _isPhoneNumberValid(suffix: string): boolean {
-    if (this._country.countryAbbr === SERBIA_CODE || this._country.countryAbbr === MONTENEGRO_CODE) {
-      return removeNotNumbers(suffix).length === 9;
+    if (this._isSpecialNumber()) {
+      return suffix.length === 9;
     }
     return isValidPhoneNumber(suffix, this._country.countryAbbr)
   }
