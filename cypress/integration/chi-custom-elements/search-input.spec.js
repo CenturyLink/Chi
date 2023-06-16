@@ -21,6 +21,10 @@ describe('Search input', () => {
       cy.get('@searchInput').clear();
     });
 
+    it('Should have mode="autocomplete" attribute to enable autocomplete functionality', () => {
+      cy.get(SEARCH_INPUT_CY.AUTOCOMPLETE).should('have.attr', 'mode', 'autocomplete');
+    });
+
     it('Should open the dropdown', () => {
       cy.get('@searchInput').focus();
 
@@ -46,7 +50,7 @@ describe('Search input', () => {
       cy.get('@dropdown').should('not.have.attr', 'active');
     });
 
-    it('should be able to clear search input and filtered dropdown menu items on click close button', () => {
+    it('Should be able to clear search input and filtered dropdown menu items on click close button', () => {
       cy.get('@searchInput')
         .focus()
         .type('2');
@@ -58,7 +62,7 @@ describe('Search input', () => {
       cy.get('@dropdown').should('have.attr', 'active');
     });
 
-    it('should be able navigate between the menu items with keyboard arrow up and down', () => {
+    it('Should be able navigate between the menu items with keyboard arrow up and down', () => {
       cy.get('@searchInput')
         .focus()
         .then(($el) => {
