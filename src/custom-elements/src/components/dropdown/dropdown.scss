@@ -2,4 +2,8 @@
   @import '../../global/styles/common';
 
   display: flex;
+
+  .-fluid {
+    width: 100%;
+  }
 }

@@ -268,6 +268,7 @@ export class SearchInput {
         id="dropdown-autocomplete"
         position="bottom"
         prevent-auto-hide
+        fluid
       >
         {this.menuItemsFiltered.map(item => (
           <a
