@@ -288,7 +288,7 @@ describe('Phone Input', () => {
         .first()
         .click()
         .then(() => {
-          cy.get('@base').should('have.attr', 'value', '+358-1');
+          cy.get('@base').should('have.attr', 'value', '+93-1');
         });
     });
 
@@ -296,8 +296,22 @@ describe('Phone Input', () => {
       cy.get('@phoneInput')
         .type('829323{Enter}')
         .then(() => {
-          cy.get('@base').should('have.attr', 'value', '+358-829323');
+          cy.get('@base').should('have.attr', 'value', '+93-829323');
         });
+    });
+
+    it('Should contain Serbia and Montenegro as separate countries', () => {
+      cy.get('@dropdownTrigger').click();
+      cy.get('@base')
+        .find('.chi-dropdown__menu-item')
+        .should('contain', 'Serbia');
+      cy.get('@base')
+        .find('.chi-dropdown__menu-item')
+        .should('contain', 'Montenegro');
+      cy.get('@base')
+        .find('.chi-dropdown__menu-item')
+        .should('not.contain', 'Serbia and Montenegro');
+      cy.get('@dropdownTrigger').click();
     });
   });
 
