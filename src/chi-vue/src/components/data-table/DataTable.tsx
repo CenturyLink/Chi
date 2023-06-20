@@ -90,7 +90,9 @@ export default class DataTable extends Vue {
     : defaultConfig.showSelectAllDropdown;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   emptyMessage = this.config.noFiltersMessage || defaultConfig.noFiltersMessage || DATA_TABLE_NO_FILTERS_MESSAGE;
-  isDataEmpty = this.config.emptyConfig?.isDataEmpty || defaultConfig.emptyConfig?.isDataEmpty;
+  isDataEmptyConfig = Object.prototype.hasOwnProperty.call(this.$props.config, 'emptyConfig')
+    ? this.$props.config.emptyConfig
+    : defaultConfig.emptyConfig;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -1031,21 +1033,21 @@ export default class DataTable extends Vue {
   _body() {
     const getTableBodyRows = (): JSX.Element => {
       if (!this.data.body.length) {
-        if (this.isDataEmpty) {
-          return (
-            <DataTableEmpty
-              onChiChange={(ev: Event) => this.$emit(DATA_TABLE_EVENTS.EMPTY_LINK, ev)}
-              config={this.$props.config.emptyConfig}
-            />
-          );
-        } else {
-          return (
-            <div class={DATA_TABLE_CLASSES.EMPTY}>
-              <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
-              {this.emptyMessage}
-            </div>
-          );
-        }
+        return (
+          <div class={DATA_TABLE_CLASSES.EMPTY}>
+            {this.isDataEmptyConfig.isDataEmpty ? (
+              <DataTableEmpty
+                onChiChange={(ev: Event) => this.$emit(DATA_TABLE_EVENTS.EMPTY_LINK, ev)}
+                config={this.isDataEmptyConfig}
+              />
+            ) : (
+              <template>
+                <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
+                {this.emptyMessage}
+              </template>
+            )}
+          </div>
+        );
       }
 
       return this.dataToRender().map((bodyRow: DataTableRow, index: number) => {
