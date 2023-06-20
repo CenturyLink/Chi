@@ -126,7 +126,7 @@ p.-text
     .chi-grid
       .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-form__item
-          chi-search-input#example_autocomplete(mode="autocomplete")
+          chi-search-input#example__autocomplete(mode="autocomplete")
   .example-tabs.-pl--2
     ul.chi-tabs#example-with-dropdown(role="tablist")
       li.-active
@@ -147,11 +147,11 @@ p.-text
   .chi-tabs-panel.-active#webcomponent-with-dropdown
     :code(lang="html")
       <div class="chi-form__item">
-        <chi-search-input id="example_autocomplete" mode="autocomplete"></chi-search-input>
+        <chi-search-input id="example__autocomplete" mode="autocomplete"></chi-search-input>
       </div>
 
       <script>
-        const input = document.getElementById("example_autocomplete");
+        const input = document.getElementById("example__autocomplete");
 
         input.menuItems = [
           { title: "Item 1", href: "#" },
@@ -464,7 +464,8 @@ script.
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
 
-      const input = document.getElementById("example_autocomplete");
+      const input = document.getElementById("example__autocomplete");
+      
       input.menuItems = [
         { title: "Item 1", href: "#" },
         { title: "Item 2", href: "#" },
