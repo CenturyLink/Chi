@@ -3,4 +3,8 @@
 
     display: block;
     width: 100%;
+
+    &[mode="autocomplete"] {
+      position: relative;
+    }
   }

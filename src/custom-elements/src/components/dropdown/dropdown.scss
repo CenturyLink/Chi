@@ -3,6 +3,10 @@
 
   display: flex;
 
+  .-active {
+    position: absolute;
+  }
+
   .-fluid {
     width: 100%;
   }
