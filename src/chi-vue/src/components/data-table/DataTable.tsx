@@ -1,4 +1,4 @@
-import { Prop, Watch } from 'vue-property-decorator';
+import { Emit, Prop, Watch } from 'vue-property-decorator';
 import {
   ACTIVE_CLASS,
   BUTTON_CLASSES,
@@ -1036,10 +1036,7 @@ export default class DataTable extends Vue {
         return (
           <div class={DATA_TABLE_CLASSES.EMPTY}>
             {this.isDataEmptyConfig.isDataEmpty ? (
-              <DataTableEmpty
-                onChiChange={(ev: Event) => this.$emit(DATA_TABLE_EVENTS.EMPTY_LINK, ev)}
-                config={this.isDataEmptyConfig}
-              />
+              this.returnNoData()
             ) : (
               <template>
                 <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
@@ -1069,6 +1066,15 @@ export default class DataTable extends Vue {
     }
 
     return <div class={DATA_TABLE_CLASSES.BODY}>{getTableBodyRows()}</div>;
+  }
+
+  @Emit(DATA_TABLE_EVENTS.EMPTY_LINK)
+  _emitEmptyLink() {
+    // this is intentional
+  }
+
+  returnNoData() {
+    return <DataTableEmpty onChiEmptyLink={() => this._emitEmptyLink()} config={this.isDataEmptyConfig} />;
   }
 
   _addToolbarSearchEventListener() {

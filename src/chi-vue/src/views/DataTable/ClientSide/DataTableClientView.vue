@@ -2,7 +2,7 @@
   <div id="dataTableClientView">
     <div class="-d--flex -justify-content--between -align-items--baseline">
       <h2>Data Table</h2>
-      <chi-button color="primary" @click="removeData">REMOVE ALL DATA</chi-button>
+      <chi-button color="primary" @click="changeData(true)">REMOVE ALL DATA</chi-button>
     </div>
     <ChiDataTable
       :data="table"
@@ -24,7 +24,7 @@
       @chiDeselectAllPages="e => this.chiDeselectAllPages(e)"
       @chiExpandAll="e => this.chiExpandAll(e)"
       @chiCollapseAll="e => this.chiCollapseAll(e)"
-      @chiEmptyLink="e => this.emptyLink(e)"
+      @chiEmptyLink="e => chiEmptyLink()"
     >
       <template #alertsDesc="payload">
         <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
@@ -302,27 +302,6 @@ import SaveView from '../../../components/data-table-save-view/SaveView';
     chiCollapseAll: e => {
       console.log('chiCollapseAll', e);
     },
-    emptyLink(e) {
-      console.log(this.$data.config);
-      this.$data.config = {
-        ...this.$data.config,
-        isDataEmpty: false,
-      };
-      this.$data.table = {
-        ...this.$data.table,
-        body: exampleTableBody,
-      };
-    },
-    removeData(e) {
-      this.$data.config = {
-        ...this.$data.config,
-        isDataEmpty: true,
-      };
-      this.$data.table = {
-        ...this.$data.table,
-        body: [],
-      };
-    },
   },
   data: () => {
     return {
@@ -396,6 +375,21 @@ export default class DataTableClientView extends Vue {
         };
       }, MOCK_API_RESPONSE_DELAY);
     }
+  }
+
+  chiEmptyLink() {
+    this.changeData(false);
+  }
+
+  changeData(state: boolean) {
+    this.$data.config = {
+      ...this.$data.config,
+      isDataEmpty: state,
+    };
+    this.$data.table = {
+      ...this.$data.table,
+      body: state ? [] : exampleTableBody,
+    };
   }
 }
 </script>

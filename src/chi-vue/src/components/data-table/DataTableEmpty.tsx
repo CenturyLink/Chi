@@ -1,24 +1,27 @@
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import { GENERIC_EVENTS } from '@/constants/events';
+import { Component, Vue, Prop, Emit } from 'vue-property-decorator';
+import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { defaultConfig } from './default-config';
 import { DataTableEmptyConfig } from '@/constants/types';
+import { DATA_TABLE_CLASSES } from '@/constants/classes';
 
 @Component({})
 export default class DataTableEmpty extends Vue {
-  @Prop() config?: DataTableEmptyConfig;
+  @Prop() config!: DataTableEmptyConfig;
+
+  @Emit(DATA_TABLE_EVENTS.EMPTY_LINK)
+  _emitEmptyLink() {
+    // this is intentional
+  }
 
   icon = this.$props.config.icon || defaultConfig.emptyConfig?.icon;
   message = this.$props.config.message || defaultConfig.emptyConfig?.message;
 
-  _emitChange(ev: Event) {
-    this.$emit(GENERIC_EVENTS.CHANGE, ev);
-  }
   render() {
     return (
-      <div class="-d--flex -flex--column -align-items--center -py--10">
-        <chi-icon class="-mb--1" icon={this.icon} color="grey" size="md"></chi-icon>
+      <div class={DATA_TABLE_CLASSES.EMPTY_DATA}>
+        <chi-icon icon={this.icon} color="grey"></chi-icon>
         <span>
-          <a onClick={(ev: Event) => this._emitChange(ev)}>{this.message.actionLink}</a>
+          <a onClick={() => this._emitEmptyLink()}>{this.message.actionLink}</a>
           {this.message.text}
         </span>
       </div>
