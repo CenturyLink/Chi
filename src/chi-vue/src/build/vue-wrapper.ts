@@ -1,10 +1,14 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { ComponentOptions } from 'vue';
 
-function ComponentDecorator(options: ComponentOptions<Vue>) {
-  const componentDecorator = Component;
+function ComponentFunction(options: ComponentOptions<Vue>) {
+  return Component(options);
+}
 
-  return componentDecorator(options);
+let ComponentDecorator = ComponentFunction;
+
+if (window['@centurylink/vue-wrapper']) {
+  ComponentDecorator = window['@centurylink/vue-wrapper'].Component;
 }
 
 export { ComponentDecorator as Component, Vue };
