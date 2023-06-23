@@ -65,6 +65,14 @@ label,
     }
   }
 
+  &.-warning {
+    color: $label-status-warning-text-color;
+
+    .chi-icon {
+      color: $color-icon-warning;
+    }
+  }
+
   .chi-label__required,
   .chi-label__optional {
     margin-left: 0.25rem;
