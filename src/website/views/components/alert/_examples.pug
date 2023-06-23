@@ -552,6 +552,89 @@ p.-text
           </button>
         </div>
 
+h4 Closable alert interaction
+p.-text
+.example.-mb--3
+  .-p--3#interactive-wrapper
+    chi-button#alert-trigger-button(color='primary')
+      | Click me to show the alert
+    chi-alert.-mt--2#interactive-alert(title='Warning', color='warning', icon='warning', closable)
+      | This is a closable warning alert
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-interactive
+      li.-active
+        a(href=`#webcomponent-portal-interactive`) Web Component
+      li
+        a(href=`#html-portal-interactive`) HTML Blueprint
+  .chi-tabs-panel.-active#webcomponent-portal-interactive
+    .chi-tab__description
+      span.-text--grey
+        | This HTML example requires additional JavaScript.
+    :code(lang="html")
+      <!-- Wrapper -->
+      <div id="interactive-wrapper">
+        <!-- Trigger -->
+        <chi-button id="alert-trigger-button" color="primary">Click me to show the alert</chi-button>
+
+        <!-- Alert -->
+        <chi-alert id="interactive-alert" icon="warning" closable mutable>
+          This is a closable warning alert
+        </chi-alert>
+      </div>
+
+      <!-- Javascript -->
+      <script>
+        const interactiveAlert = document.getElementById('interactive-alert');
+        const interactiveAlertWrapper = document.getElementById('interactive-wrapper');
+        const interactiveAlertTrigger = document.getElementById('alert-trigger-button');
+
+        interactiveAlert.parentNode.removeChild(interactiveAlert);
+
+        interactiveAlertTrigger.addEventListener('chiClick', () => {
+          if (interactiveAlertWrapper.children.length === 1) {
+            interactiveAlertWrapper.appendChild(interactiveAlert.cloneNode(true));
+          }
+        })
+      </script>
+
+  .chi-tabs-panel#html-portal-interactive
+    .chi-tab__description
+      span.-text--grey
+        | This HTML Blueprint requires additional JavaScript.
+    :code(lang="html")
+      <!-- Wrapper -->
+      <div id="interactive-wrapper">
+          <!-- Trigger -->
+          <button class="chi-button -primary" id="alert-trigger-button">Click me to show the alert</button>
+
+          <!-- Alert -->
+          <div class="chi-alert" role="alert" id="interactive-alert">
+              <i class="chi-alert__icon chi-icon icon-warning" aria-hidden="true"></i>
+              <div class="chi-alert__content">
+                  <p class="chi-alert__text">This is a closable warning alert</p>
+              </div>
+              <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
+                  <div class="chi-button__content">
+                      <i class="chi-icon icon-x" aria-hidden="true"></i>
+                  </div>
+              </button>
+          </div>
+      </div>
+
+      <!-- Javascript -->
+      <script>
+          const interactiveAlert = document.getElementById('interactive-alert');
+          const interactiveAlertWrapper = document.getElementById('interactive-wrapper');
+          const interactiveAlertTrigger = document.getElementById('alert-trigger-button');
+
+          interactiveAlert.parentNode.removeChild(interactiveAlert);
+
+          interactiveAlertTrigger.addEventListener('click', () => {
+              if (interactiveAlertWrapper.children.length === 1) {
+                  interactiveAlertWrapper.appendChild(interactiveAlert.cloneNode(true));
+              }
+          })
+      </script>
 .-portal--hide
   h4 Clickable
   p.-text
@@ -1699,3 +1782,15 @@ script.
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
     });
+
+    const interactiveAlert = document.getElementById('interactive-alert');
+    const interactiveAlertWrapper = document.getElementById('interactive-wrapper');
+    const interactiveAlertTrigger = document.getElementById('alert-trigger-button');
+
+    interactiveAlert.parentNode.removeChild(interactiveAlert);
+
+    interactiveAlertTrigger.addEventListener('chiClick', () => {
+      if (interactiveAlertWrapper.children.length === 1) {
+        interactiveAlertWrapper.appendChild(interactiveAlert.cloneNode(true));
+      }
+    })
