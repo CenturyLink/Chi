@@ -145,6 +145,7 @@ $color-orange-80:   #974308;
 $color-orange-70:   #b35009;
 $color-orange-60:   #c96010;
 $color-orange-50:   #e77528;
+$color-orange-45:   #ff8400; // Colt Orange
 $color-orange-40:   #f79950;
 $color-orange-30:   #facaa8;
 $color-orange-20:   #fde7d8;
@@ -275,6 +276,7 @@ $border-radius-base: 0;
 $border-radius-sharp: 0;
 $border-radius-circle: 50%;
 $border-radius: $border-radius-base;
+$border-radius-rounded-pill: 10rem;
 
 // Semantic colors
 $color-semantic: (
@@ -498,6 +500,41 @@ $badge-muted-text-color:                    $color-text-white;
 $badge-muted-icon-color:                    $color-icon-white;
 $badge-flat-muted-text-color:               $color-text-muted;
 $badge-flat-muted-icon-color:               $color-icon-muted;
+
+$badge-accent-1-background-color:           $color-blue-70;
+$badge-accent-1-border-color:               $color-blue-70;
+$badge-accent-1-text-color:                 $color-text-white;
+$badge-accent-1-icon-color:                 $color-icon-white;
+$badge-flat-accent-1-text-color:            $color-blue-70;
+$badge-flat-accent-1-icon-color:            $color-blue-70;
+
+$badge-accent-2-background-color:           $color-blue-60;
+$badge-accent-2-border-color:               $color-blue-60;
+$badge-accent-2-text-color:                 $color-text-white;
+$badge-accent-2-icon-color:                 $color-icon-white;
+$badge-flat-accent-2-text-color:            $color-blue-60;
+$badge-flat-accent-2-icon-color:            $color-blue-60;
+
+$badge-accent-3-background-color:           $color-pink-50;
+$badge-accent-3-border-color:               $color-pink-50;
+$badge-accent-3-text-color:                 $color-text-white;
+$badge-accent-3-icon-color:                 $color-icon-white;
+$badge-flat-accent-3-text-color:            $color-pink-50;
+$badge-flat-accent-3-icon-color:            $color-pink-50;
+
+$badge-accent-4-background-color:           $color-orange-45;
+$badge-accent-4-border-color:               $color-orange-45;
+$badge-accent-4-text-color:                 $color-text-white;
+$badge-accent-4-icon-color:                 $color-icon-white;
+$badge-flat-accent-4-text-color:            $color-orange-45;
+$badge-flat-accent-4-icon-color:            $color-orange-45;
+
+$badge-accent-5-background-color:           $color-purple-90;
+$badge-accent-5-border-color:               $color-purple-90;
+$badge-accent-5-text-color:                 $color-text-white;
+$badge-accent-5-icon-color:                 $color-icon-white;
+$badge-flat-accent-5-text-color:            $color-purple-90;
+$badge-flat-accent-5-icon-color:            $color-purple-90;
 
 // Bulk actions
 $bulk-actions-background-color:             $color-navy-30;
@@ -926,6 +963,7 @@ $dropdown-menu-item-disabled-text-color:    $color-grey-70;
 $dropdown-menu-item-disabled-icon-color:    $color-grey-70;
 $dropdown-menu-item-disabled-opacity:       $opacity-60;
 $dropdown-menu-item-hover-background-color: $color-grey-20;
+$dropdown-menu-item-focus-outline:          $focus-color;
 
 // Expansion panel
 $expansion-panel-border-color:              $color-border-base;
@@ -1285,6 +1323,12 @@ $picker-checked-radio-icon-color:           $color-background-white;
 $picker-hover-border-color:                 $color-grey-40;
 $picker-focus-border-color:                 $color-grey-40;
 $picker-focus-background-color:             $color-grey-10;
+$picker-xs-item-font-size:                  $font-size-xs;
+$picker-xs-item-padding:                    0.1875rem 0.75rem;
+$picker-xs-item-description-line-height:    1rem;
+$picker-sm-item-font-size:                  $font-size-sm;
+$picker-sm-item-padding:                    0.4375rem 1rem;
+$picker-sm-item-description-line-height:    1rem;
 $picker-md-item-font-size:                  $font-size-base;
 $picker-md-item-padding:                    1rem;
 $picker-md-item-label-margin:               0.75rem;

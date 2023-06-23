@@ -1,4 +1,51 @@
 # CHANGELOG
+## 5.34.0 (June 9, 2023)
+### Components
+#### Added
+* Added: Text utility classes now support `-text--italic`.
+* Added: Dropdown supports keyboard events `arrowUp` and `arrowDown` to improve accessibility.
+#### Changed
+* Changed: Dropdown focus state has changed for consisitency with another components.
+#### Fixed
+* Fixed: Data table spacing and colors in nested data tables.
+
+## 5.33.0 (May 30, 2023)
+### Components
+#### Added
+* Added: Phone input now supports dynamically change of country code.
+* Added: Badge supports new extended color palette.
+* Added: Badge supports new `text-weight` property to give developers the ability to set normal, semi-bold, and bold font-weights.
+#### Changed
+* Changed: Data table description popover in header has been repositioned in the DOM to improve rendering.
+#### Fixed
+* Fixed: Date picker in `mode="datetime"` has changed incorrect value from 24 to 00 when `time-format="24hr"` is set and `00` hours selected.
+* Fixed: Data table headers styles in nested data tables.
+* Fixed: Draggable Popover behavior has been improved to recalculate position dynamically.
+
+## 5.32.0 (May 12, 2023)
+### Components
+#### Added
+* Added: Alert `closable` is now dismissible by default when clicking on close icon.
+* Added: Data table Vue component header now supports two lines in a cell when `cellWrap` config is set to true.
+* Added: Add support for new icons: `icon-box-circle-arrow-left`, `icon-box-circle-check`, `icon-calendar-circle-check`, `icon-clipboard`, `icon-nodes-circle-check`, `icon-pause-arrow-rotate-right`.
+#### Changed
+* Changed: Toolbar `Column customization` tooltip text to `Customize columns`.
+#### Fixed
+* Fixed: Version check alert banner.
+
+## 5.31.0 (April 27, 2023)
+### Components
+#### Added
+* Added: App layout title now supports title mutation.
+* Added: Text utility class `-text--capitalize-fl` to capitalize first letter.
+#### Changed
+* Changed: Tabs web component no longer needs `customLabel` property.
+#### Fixed
+* Fixed: Theme support in header and data table pagination by removing `-icon--primary` and `-primary` classes.
+### Documentation
+#### Fixed
+* Fixed: Tabs in data table complex example.
+
 ## 5.30.0 (April 12, 2023)
 ### Components
 #### Added

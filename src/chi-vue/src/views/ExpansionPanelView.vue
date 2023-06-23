@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from '@/build/vue-wrapper';
 import ExpansionPanel from '../components/expansion-panel/ExpansionPanel';
 import { EXPANSION_PANEL_STATES } from '../constants/types';
 

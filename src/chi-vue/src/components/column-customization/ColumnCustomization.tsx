@@ -1,4 +1,4 @@
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import { findComponent, uuid4 } from '@/utils/utils';
 import {
   BACKDROP_CLASSES,
@@ -16,10 +16,11 @@ import { DataTableColumn, DataTableColumnsData } from '@/constants/types';
 import ColumnCustomizationContent from './ColumnCustomizationModalContent';
 import { checkColumns } from './utils';
 import Tooltip from '../tooltip/tooltip';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 declare const chi: any;
 
-@Component
+@Component({})
 export default class ColumnCustomization extends Vue {
   @Prop() columnsData?: DataTableColumnsData;
 
@@ -41,10 +42,10 @@ export default class ColumnCustomization extends Vue {
             id={this._modalId}
             class={`${MODAL_CLASSES.MODAL}`}
             role="dialog"
-            aria-label="Column Customization"
+            aria-label="Customize columns"
             aria-modal="true">
             <header class={MODAL_CLASSES.HEADER}>
-              <h2 class={MODAL_CLASSES.TITLE}>Customize Columns</h2>
+              <h2 class={MODAL_CLASSES.TITLE}>Customize columns</h2>
               <button
                 class={`${BUTTON_CLASSES.BUTTON} -icon -close`}
                 onClick={this._cancelColumnsChange}
@@ -217,7 +218,7 @@ export default class ColumnCustomization extends Vue {
         </div>
       </button>
     );
-    const modalTooltip = <Tooltip message="Column Customization">{modalButton}</Tooltip>;
+    const modalTooltip = <Tooltip message="Customize columns">{modalButton}</Tooltip>;
     const modal = this._modal();
 
     return (
