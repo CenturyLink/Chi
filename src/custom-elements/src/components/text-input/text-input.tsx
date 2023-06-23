@@ -45,6 +45,10 @@ export class TextInput {
    */
   @Prop({ reflect: true }) placeholder: string;
   /**
+   * To display an additional helper text below the Text input
+   */
+  @Prop({ reflect: true }) helperText: string;
+  /**
    * To define value of Text input
    */
   @Prop({ mutable: true, reflect: true }) value = '';
@@ -161,7 +165,7 @@ export class TextInput {
   }
 
   render() {
-    const inputElement = <input
+    const input = <input
       type={this.type}
       class={
         `chi-input
@@ -194,14 +198,19 @@ export class TextInput {
     const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
     const iconRight = (this.iconRight && !this.spinner) && <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
     const spinner = this.spinner && <chi-spinner size={spinnerSizeMapping[this.size] || 'sm'} />;
+    const helperText = this.helperText && <helper-message state={this.state}>{this.helperText}</helper-message>;
 
-    const input = this.iconLeft || this.iconRight || this.spinner ?
-      <div class={`chi-input__wrapper ${iconClasses}`}>
-        {inputElement}
-        {iconLeft}
-        {iconRight}
-        {spinner}
-      </div> : inputElement;
+    if (this.iconLeft || this.iconRight || this.spinner || this.helperText) {
+      return (
+        <div class={`chi-input__wrapper ${iconClasses}`}>
+          {input}
+          {iconLeft}
+          {iconRight}
+          {spinner}
+          {helperText}
+        </div>
+      )
+    }
 
     return input;
   }
