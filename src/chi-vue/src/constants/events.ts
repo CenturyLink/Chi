@@ -26,7 +26,7 @@ export const DATA_TABLE_EVENTS = {
   COLUMNS_RESET: 'chiColumnsReset',
   ADVANCED_FILTERS_CHANGE: 'chiAdvancedFiltersChange',
   VIEWS_CHANGE: 'chiViewsChange',
-  EMPTY_LINK: 'chiEmptyLink',
+  EMPTY_ACTIONABLE: 'chiEmptyActionable',
   TOOLBAR: {
     COLUMNS_CHANGE: 'chiToolbarColumnsChange',
     COLUMNS_RESET: 'chiToolbarColumnsReset',

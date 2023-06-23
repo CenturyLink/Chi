@@ -33,3 +33,9 @@ export const EPANEL = {
   },
 };
 //#endregion
+
+//#region Data Table Empty actionable
+export const DATA_TABLE_EMPTY_ACTIONABLE_ICON = 'circle-plus-outline';
+export const DATA_TABLE_EMPTY_ACTIONABLE_MESSAGE_LINK = 'Add a new or existing service';
+export const DATA_TABLE_EMPTY_ACTIONABLE_MESSAGE_TEXT = ', then manage here.';
+//#endregion

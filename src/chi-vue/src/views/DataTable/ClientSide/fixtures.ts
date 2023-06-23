@@ -41,11 +41,6 @@ export const exampleConfig: DataTableConfig = {
   showSelectAllDropdown: true,
   emptyConfig: {
     isDataEmpty: true,
-    icon: 'circle-plus-outline',
-    message: {
-      actionLink: 'Add a new or existing service',
-      text: ', then manage here.',
-    },
   },
 };
 

@@ -2,7 +2,7 @@
   <div id="dataTableClientView">
     <div class="-d--flex -justify-content--between -align-items--baseline">
       <h2>Data Table</h2>
-      <chi-button color="primary" @click="changeData(true)">REMOVE ALL DATA</chi-button>
+      <chi-button color="primary" @click="changeEmptyActionable(true)">REMOVE ALL DATA</chi-button>
     </div>
     <ChiDataTable
       :data="table"
@@ -24,7 +24,7 @@
       @chiDeselectAllPages="e => this.chiDeselectAllPages(e)"
       @chiExpandAll="e => this.chiExpandAll(e)"
       @chiCollapseAll="e => this.chiCollapseAll(e)"
-      @chiEmptyLink="e => chiEmptyLink()"
+      @chiEmptyActionable="e => chiEmptyActionableLink()"
     >
       <template #alertsDesc="payload">
         <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
@@ -377,11 +377,11 @@ export default class DataTableClientView extends Vue {
     }
   }
 
-  chiEmptyLink() {
-    this.changeData(false);
+  chiEmptyActionableLink() {
+    this.changeEmptyActionable(false);
   }
 
-  changeData(state: boolean) {
+  changeEmptyActionable(state: boolean) {
     this.$data.config = {
       ...this.$data.config,
       isDataEmpty: state,

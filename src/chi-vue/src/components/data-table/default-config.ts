@@ -1,5 +1,11 @@
-import { DATA_TABLE_NO_FILTERS_MESSAGE, DATA_TABLE_NO_RESULTS_MESSAGE } from '@/constants/constants';
-import { DataTableConfig, DataTableEmptyConfig, DataTableModes } from '@/constants/types';
+import {
+  DATA_TABLE_EMPTY_ACTIONABLE_ICON,
+  DATA_TABLE_EMPTY_ACTIONABLE_MESSAGE_LINK,
+  DATA_TABLE_EMPTY_ACTIONABLE_MESSAGE_TEXT,
+  DATA_TABLE_NO_FILTERS_MESSAGE,
+  DATA_TABLE_NO_RESULTS_MESSAGE,
+} from '@/constants/constants';
+import { DataTableConfig, DataTableModes } from '@/constants/types';
 
 export const defaultConfig: DataTableConfig = {
   columnResize: false,
@@ -33,11 +39,11 @@ export const defaultConfig: DataTableConfig = {
   showExpandAll: false,
   showSelectAllDropdown: false,
   emptyConfig: {
-    isDataEmpty: true,
-    icon: 'circle-plus-outline',
+    isDataEmpty: false,
+    icon: DATA_TABLE_EMPTY_ACTIONABLE_ICON,
     message: {
-      actionLink: 'Add a new or existing service',
-      text: ', then manage here.',
+      actionLink: DATA_TABLE_EMPTY_ACTIONABLE_MESSAGE_LINK,
+      text: DATA_TABLE_EMPTY_ACTIONABLE_MESSAGE_TEXT,
     },
   },
 };

@@ -120,7 +120,7 @@ export interface DataTableConfig {
   cellWrap?: boolean;
   showExpandAll?: boolean;
   showSelectAllDropdown?: boolean;
-  emptyConfig?: DataTableEmptyConfig;
+  emptyConfig?: DataTableEmptyActionable;
 }
 export interface DataTableFilter {
   name: string;
@@ -229,7 +229,7 @@ export type TooltipColors = typeof TOOLTIP_COLORS[number];
 //#endregion
 
 //#region DataTableEmpty
-export interface DataTableEmptyConfig {
+export interface DataTableEmptyActionable {
   isDataEmpty?: boolean;
   icon?: string;
   message?: {

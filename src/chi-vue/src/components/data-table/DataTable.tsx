@@ -69,6 +69,11 @@ export default class DataTable extends Vue {
   @Prop() data!: DataTableData;
   @Prop() config!: DataTableConfig;
 
+  @Emit(DATA_TABLE_EVENTS.EMPTY_ACTIONABLE)
+  _emitEmptyActionable() {
+    // this is intentional
+  }
+
   accordionsExpanded: string[] = [];
   activePage =
     this.$props.config.pagination.activePage || this.$props.config.activePage || defaultConfig.pagination.activePage;
@@ -90,7 +95,7 @@ export default class DataTable extends Vue {
     : defaultConfig.showSelectAllDropdown;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   emptyMessage = this.config.noFiltersMessage || defaultConfig.noFiltersMessage || DATA_TABLE_NO_FILTERS_MESSAGE;
-  isDataEmptyConfig = Object.prototype.hasOwnProperty.call(this.$props.config, 'emptyConfig')
+  isEmptyActionable = Object.prototype.hasOwnProperty.call(this.$props.config, 'emptyConfig')
     ? this.$props.config.emptyConfig
     : defaultConfig.emptyConfig;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
@@ -1032,16 +1037,21 @@ export default class DataTable extends Vue {
 
   _body() {
     const getTableBodyRows = (): JSX.Element => {
+      const emptyActionable = this.returnNoData();
       if (!this.data.body.length) {
         return (
-          <div class={DATA_TABLE_CLASSES.EMPTY}>
-            {this.isDataEmptyConfig.isDataEmpty ? (
-              this.returnNoData()
+          <div
+            class={[
+              DATA_TABLE_CLASSES.EMPTY,
+              this.isEmptyActionable.isDataEmpty && DATA_TABLE_CLASSES.EMPTY_ACTIONABLE,
+            ]}>
+            {this.isEmptyActionable.isDataEmpty ? (
+              emptyActionable
             ) : (
-              <template>
+              <div>
                 <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
                 {this.emptyMessage}
-              </template>
+              </div>
             )}
           </div>
         );
@@ -1068,13 +1078,8 @@ export default class DataTable extends Vue {
     return <div class={DATA_TABLE_CLASSES.BODY}>{getTableBodyRows()}</div>;
   }
 
-  @Emit(DATA_TABLE_EVENTS.EMPTY_LINK)
-  _emitEmptyLink() {
-    // this is intentional
-  }
-
   returnNoData() {
-    return <DataTableEmpty onChiEmptyLink={() => this._emitEmptyLink()} config={this.isDataEmptyConfig} />;
+    return <DataTableEmpty onChiEmptyActionable={() => this._emitEmptyActionable()} config={this.isEmptyActionable} />;
   }
 
   _addToolbarSearchEventListener() {
