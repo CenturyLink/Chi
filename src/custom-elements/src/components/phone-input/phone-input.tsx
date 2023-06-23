@@ -94,17 +94,11 @@ export class ChiPhoneInput {
   @State() _suffix = '';
   @State() _uuid: string;
 
-  _extraCountryCodes: string[] = EXTRA_COUNTRIES.map(item => item.country_code);
+  private _extraCountryCodes: string[] = EXTRA_COUNTRIES.map(item => item.country_code);
   private excludeCountriesArray: CountryCode[];
 
   componentWillLoad(): void {
-
-
-
     this._generateCountryObjs(this.excludeCountries);
-
-
-
     document.addEventListener('click', this._closeDropdown);
     this.stateValidation(this.state);
     this._initCountry();
@@ -137,6 +131,13 @@ export class ChiPhoneInput {
       }
 
       this._formatPhoneNumber();
+    }
+  }
+
+  @Watch('excludeCountries')
+  excludeCountriesChanged(newValue: string, oldValue: string): void {
+    if (newValue && newValue !== oldValue) {
+      this._generateCountryObjs(newValue);
     }
   }
 
@@ -176,7 +177,7 @@ export class ChiPhoneInput {
 
   _isPhoneNumberValid(suffix: string): boolean {
     if (this._isSpecialNumber()) {
-      return suffix.length === 9;
+      return suffix.replace(/\s/g, '').length === 9;
     }
 
     return isValidPhoneNumber(suffix, this._country.countryAbbr)
@@ -186,17 +187,11 @@ export class ChiPhoneInput {
     return [...country.countryList(), ...EXTRA_COUNTRIES].sort((a, b) => a.country.localeCompare(b.country));
   }
 
-  @Watch('excludeCountries')
-  excludeCountriesChanged(newValue: string, oldValue: string): void {
-    if (newValue && newValue !== oldValue) {
-      this._generateCountryObjs(newValue);
-    }
-  }
-
   _generateCountryObjs(excludeCountries: string): void {
-    const countryObjs = country.countryList();
+    const countryObjs = this._getCorrectCountryList();
     const dialCodes = this._getCountryList(excludeCountries);
     const countries = [];
+
     countryObjs.forEach(
       (countryObj: { country: string; country_code: CountryCode }) => {
         if (dialCodes.find(code => code === countryObj.country_code)) {
@@ -212,6 +207,7 @@ export class ChiPhoneInput {
         }
       }
     );
+
     this._countries = countries;
   }
 
