@@ -38,7 +38,7 @@ export const defaultConfig: DataTableConfig = {
   cellWrap: false,
   showExpandAll: false,
   showSelectAllDropdown: false,
-  emptyConfig: {
+  emptyActionable: {
     isDataEmpty: false,
     icon: DATA_TABLE_EMPTY_ACTIONABLE_ICON,
     message: {

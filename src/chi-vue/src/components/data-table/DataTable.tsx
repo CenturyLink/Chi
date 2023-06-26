@@ -95,9 +95,9 @@ export default class DataTable extends Vue {
     : defaultConfig.showSelectAllDropdown;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   emptyMessage = this.config.noFiltersMessage || defaultConfig.noFiltersMessage || DATA_TABLE_NO_FILTERS_MESSAGE;
-  isEmptyActionable = Object.prototype.hasOwnProperty.call(this.$props.config, 'emptyConfig')
-    ? this.$props.config.emptyConfig
-    : defaultConfig.emptyConfig;
+  isEmptyActionable = Object.prototype.hasOwnProperty.call(this.$props.config, 'emptyActionable')
+    ? this.$props.config.emptyActionable
+    : defaultConfig.emptyActionable;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -1037,7 +1037,8 @@ export default class DataTable extends Vue {
 
   _body() {
     const getTableBodyRows = (): JSX.Element => {
-      const emptyActionable = this.returnNoData();
+      const emptyActionable = this.dataTableEmptyActionable();
+
       if (!this.data.body.length) {
         return (
           <div
@@ -1078,7 +1079,7 @@ export default class DataTable extends Vue {
     return <div class={DATA_TABLE_CLASSES.BODY}>{getTableBodyRows()}</div>;
   }
 
-  returnNoData() {
+  dataTableEmptyActionable() {
     return <DataTableEmpty onChiEmptyActionable={() => this._emitEmptyActionable()} config={this.isEmptyActionable} />;
   }
 

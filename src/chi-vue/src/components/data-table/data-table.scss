@@ -176,12 +176,15 @@ $font-weight-semi-bold: 600;
   }
 }
 
-.actionable template {
-  align-items: center !important;
-  display: flex !important;
-  flex-direction: column !important;
+.chi-data-table__row-empty.-actionable {
   padding-bottom: 5rem;
   padding-top: 5rem;
+
+  div {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
 
   chi-icon .chi-icon {
     height: 3rem;

@@ -39,7 +39,7 @@ export const exampleConfig: DataTableConfig = {
   },
   showExpandAll: true,
   showSelectAllDropdown: true,
-  emptyConfig: {
+  emptyActionable: {
     isDataEmpty: true,
   },
 };

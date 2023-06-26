@@ -120,7 +120,7 @@ export interface DataTableConfig {
   cellWrap?: boolean;
   showExpandAll?: boolean;
   showSelectAllDropdown?: boolean;
-  emptyConfig?: DataTableEmptyActionable;
+  emptyActionable?: DataTableEmptyActionable;
 }
 export interface DataTableFilter {
   name: string;
