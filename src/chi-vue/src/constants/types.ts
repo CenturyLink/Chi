@@ -230,7 +230,7 @@ export type TooltipColors = typeof TOOLTIP_COLORS[number];
 
 //#region DataTableEmpty
 export interface DataTableEmptyActionableContent {
-  isDataEmpty?: boolean;
+  isActionable?: boolean;
   icon?: string;
   message?: {
     actionLink?: string;

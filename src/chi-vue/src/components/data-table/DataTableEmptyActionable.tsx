@@ -5,15 +5,15 @@ import { DataTableEmptyActionableContent } from '@/constants/types';
 
 @Component({})
 export default class DataTableEmptyActionable extends Vue {
-  @Prop() config!: DataTableEmptyActionableContent;
+  @Prop() content!: DataTableEmptyActionableContent;
 
   @Emit(DATA_TABLE_EVENTS.EMPTY_ACTIONABLE_LINK)
   _emitEmptyActionableLink() {
     // This is intentional
   }
 
-  icon = this.$props.config.icon || defaultConfig.emptyActionable?.icon;
-  message = this.$props.config.message || defaultConfig.emptyActionable?.message;
+  icon = this.$props.content.icon || defaultConfig.emptyActionable?.icon;
+  message = this.$props.content.message || defaultConfig.emptyActionable?.message;
 
   render() {
     return (

@@ -39,7 +39,7 @@ export const defaultConfig: DataTableConfig = {
   showExpandAll: false,
   showSelectAllDropdown: false,
   emptyActionable: {
-    isDataEmpty: false,
+    isActionable: false,
     icon: DATA_TABLE_EMPTY_ACTIONABLE_ICON,
     message: {
       actionLink: DATA_TABLE_EMPTY_ACTIONABLE_MESSAGE_LINK,

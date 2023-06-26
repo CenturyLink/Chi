@@ -71,7 +71,7 @@ export default class DataTable extends Vue {
 
   @Emit(DATA_TABLE_EVENTS.EMPTY_ACTIONABLE_LINK)
   _emitEmptyActionableLink() {
-    // this is intentional
+    // This is intentional
   }
 
   accordionsExpanded: string[] = [];
@@ -95,7 +95,7 @@ export default class DataTable extends Vue {
     : defaultConfig.showSelectAllDropdown;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   emptyMessage = this.config.noFiltersMessage || defaultConfig.noFiltersMessage || DATA_TABLE_NO_FILTERS_MESSAGE;
-  isEmptyActionable = Object.prototype.hasOwnProperty.call(this.$props.config, 'emptyActionable')
+  emptyActionableContent = Object.prototype.hasOwnProperty.call(this.$props.config, 'emptyActionable')
     ? this.$props.config.emptyActionable
     : defaultConfig.emptyActionable;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
@@ -1044,9 +1044,9 @@ export default class DataTable extends Vue {
           <div
             class={[
               DATA_TABLE_CLASSES.EMPTY,
-              this.isEmptyActionable.isDataEmpty && DATA_TABLE_CLASSES.EMPTY_ACTIONABLE,
+              this.emptyActionableContent.isActionable && DATA_TABLE_CLASSES.EMPTY_ACTIONABLE,
             ]}>
-            {this.isEmptyActionable.isDataEmpty ? (
+            {this.emptyActionableContent.isActionable ? (
               emptyActionable
             ) : (
               <div>
@@ -1083,7 +1083,7 @@ export default class DataTable extends Vue {
     return (
       <DataTableEmptyActionable
         onChiEmptyActionableLink={() => this._emitEmptyActionableLink()}
-        config={this.isEmptyActionable}
+        content={this.emptyActionableContent}
       />
     );
   }

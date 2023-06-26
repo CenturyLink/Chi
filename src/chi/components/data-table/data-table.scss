@@ -266,6 +266,28 @@ $sizes: (
       font-style: italic;
       justify-content: center;
       padding: 3rem 7rem;
+
+      &.-actionable {
+        padding-bottom: 5rem;
+        padding-top: 5rem;
+
+        & > div {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+
+          chi-icon .chi-icon {
+            height: 3rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.4;
+            width: 3rem;
+          }
+
+          span {
+            font-style: normal;
+          }
+        }
+      }
     }
 
     &-child,
@@ -955,28 +977,6 @@ $sizes: (
           }
         }
       }
-    }
-  }
-}
-
-.chi-data-table__row-empty.-actionable {
-  padding-bottom: 5rem;
-  padding-top: 5rem;
-
-  div {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-
-    chi-icon .chi-icon {
-      height: 3rem;
-      margin-bottom: 0.5rem;
-      opacity: 0.4;
-      width: 3rem;
-    }
-
-    span {
-      font-style: normal;
     }
   }
 }
