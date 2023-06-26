@@ -223,7 +223,7 @@ describe('Carousel', () => {
       cy.get("[data-cy='no-button-controllers']").as('no-button-controllers');
     });
 
-    it('should have attribute no-button-controllers', () => {
+    it('Should have attribute no-button-controllers', () => {
       cy.get('@no-button-controllers').should(
         'have.attr',
         'no-button-controllers'
@@ -247,15 +247,15 @@ describe('Carousel', () => {
         .as('items');
     });
 
-    it('should have attribute autoplay', () => {
+    it('Should have attribute autoplay', () => {
       cy.get('@autoplay').should('have.attr', 'autoplay');
     });
 
-    it('should have attribute interval', () => {
+    it('Should have attribute interval', () => {
       cy.get('@autoplay').should('have.attr', 'interval', 3);
     });
 
-    it('should autoplay with 3 seconds interval', () => {
+    it('Should autoplay with 3 seconds interval', () => {
       cy.get('@autoplay').within(() => {
         cy.get(`${CAROUSEL_DIRECTION_CONTROL_CLASS}.${CAROUSEL_PREVIOUS_CLASS}`)
           .find('button')
