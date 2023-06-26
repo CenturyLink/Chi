@@ -1,9 +1,11 @@
 :host(chi-search-input) {
   @import '../../global/styles/common';
 
-  display: flex;
+  display: block;
+  width: 100%;
 
   &[mode="autocomplete"] {
+    display: flex;
     flex-direction: column-reverse;
     position: relative;
   }
