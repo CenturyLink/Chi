@@ -1,4 +1,10 @@
-import { DATA_TABLE_NO_FILTERS_MESSAGE, DATA_TABLE_NO_RESULTS_MESSAGE } from '@/constants/constants';
+import {
+  DATA_TABLE_EMPTY_ACTIONABLE_ICON,
+  DATA_TABLE_EMPTY_ACTIONABLE_MESSAGE_LINK,
+  DATA_TABLE_EMPTY_ACTIONABLE_MESSAGE_TEXT,
+  DATA_TABLE_NO_FILTERS_MESSAGE,
+  DATA_TABLE_NO_RESULTS_MESSAGE,
+} from '@/constants/constants';
 import { DataTableConfig, DataTableModes } from '@/constants/types';
 
 export const defaultConfig: DataTableConfig = {
@@ -32,4 +38,12 @@ export const defaultConfig: DataTableConfig = {
   cellWrap: false,
   showExpandAll: false,
   showSelectAllDropdown: false,
+  emptyActionable: {
+    isActionable: false,
+    icon: DATA_TABLE_EMPTY_ACTIONABLE_ICON,
+    message: {
+      actionLink: DATA_TABLE_EMPTY_ACTIONABLE_MESSAGE_LINK,
+      text: DATA_TABLE_EMPTY_ACTIONABLE_MESSAGE_TEXT,
+    },
+  },
 };
