@@ -57,7 +57,7 @@ import { printElement } from '../../utils/utils';
 import { ColumnResize } from './utils/Resize';
 import Tooltip from '../tooltip/tooltip';
 import { Component, Vue } from '@/build/vue-wrapper';
-import DataTableEmpty from './DataTableEmpty';
+import DataTableEmptyActionable from './DataTableEmptyActionable';
 
 declare const chi: any;
 
@@ -69,8 +69,8 @@ export default class DataTable extends Vue {
   @Prop() data!: DataTableData;
   @Prop() config!: DataTableConfig;
 
-  @Emit(DATA_TABLE_EVENTS.EMPTY_ACTIONABLE)
-  _emitEmptyActionable() {
+  @Emit(DATA_TABLE_EVENTS.EMPTY_ACTIONABLE_LINK)
+  _emitEmptyActionableLink() {
     // this is intentional
   }
 
@@ -1080,7 +1080,12 @@ export default class DataTable extends Vue {
   }
 
   dataTableEmptyActionable() {
-    return <DataTableEmpty onChiEmptyActionable={() => this._emitEmptyActionable()} config={this.isEmptyActionable} />;
+    return (
+      <DataTableEmptyActionable
+        onChiEmptyActionableLink={() => this._emitEmptyActionableLink()}
+        config={this.isEmptyActionable}
+      />
+    );
   }
 
   _addToolbarSearchEventListener() {

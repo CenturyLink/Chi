@@ -184,16 +184,16 @@ $font-weight-semi-bold: 600;
     align-items: center;
     display: flex;
     flex-direction: column;
-  }
 
-  chi-icon .chi-icon {
-    height: 3rem;
-    margin-bottom: 0.5rem;
-    opacity: 0.4;
-    width: 3rem;
-  }
+    chi-icon .chi-icon {
+      height: 3rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.4;
+      width: 3rem;
+    }
 
-  span {
-    font-style: normal;
+    span {
+      font-style: normal;
+    }
   }
 }

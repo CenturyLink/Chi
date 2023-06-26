@@ -24,7 +24,7 @@
       @chiDeselectAllPages="e => this.chiDeselectAllPages(e)"
       @chiExpandAll="e => this.chiExpandAll(e)"
       @chiCollapseAll="e => this.chiCollapseAll(e)"
-      @chiEmptyActionable="e => chiEmptyActionableLink()"
+      @chiEmptyActionableLink="e => chiEmptyActionableLink()"
     >
       <template #alertsDesc="payload">
         <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
