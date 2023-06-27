@@ -1,5 +1,6 @@
 import { Component, Element, Prop, h } from '@stencil/core';
-import { ChiStates, TEXT_FIELD_STATES } from "../../constants/states";
+import { ChiStates, STATES } from "../../constants/states";
+import { FORM_CLASSES, STATUS_CLASS } from "../../constants/classes";
 
 @Component({
   tag: 'helper-message',
@@ -16,14 +17,14 @@ export class Label {
   @Prop({ reflect: true }) state?: ChiStates;
 
   render() {
-    const stateIcon = this.state ? TEXT_FIELD_STATES[this.state].icon : null;
-    const stateClass = this.state ? TEXT_FIELD_STATES[this.state].class : null;
+    const stateIcon = this.state ? STATES[this.state].icon : null;
+    const stateClass = this.state ? STATES[this.state].class : null;
 
     return (
-      <label class={`chi-label -status ${stateClass}`}>
+      <div class={`${FORM_CLASSES.LABEL} ${STATUS_CLASS} ${stateClass}`}>
         {stateIcon && <chi-icon icon={stateIcon}></chi-icon>}
         <slot></slot>
-      </label>
+      </div>
     );
   }
 }
