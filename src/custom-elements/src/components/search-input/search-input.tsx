@@ -122,8 +122,6 @@ export class SearchInput {
 
   componentDidLoad(): void {
     document.addEventListener('click', this._handleClickInDocument.bind(this));
-    // TODO: Uncomment when chi-dropdown is ready
-    // document.addEventListener('chiDropdownItemSelect', this._handleSelectItem);
   }
 
   disconnectedCallback(): void {
@@ -268,6 +266,8 @@ export class SearchInput {
         id="dropdown-autocomplete"
         position="bottom"
         prevent-auto-hide
+        reference={this.el}
+        fluid
       >
         {this.menuItemsFiltered.map(item => (
           <a
