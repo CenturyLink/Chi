@@ -1,0 +1,173 @@
+script(src="https://cdn.jsdelivr.net/npm/vue@2.6.11")
+script(src="https://unpkg.com/vuex@3.6.2/dist/vuex.js")
+script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
+script(src='../../js/chi.js')
+
+h2 Data Table Filters
+h3 Base
+.-p--3.-w--100#base
+  chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' :custom-items='toolbar.customItemsData' data-cy="data-table-filters" ref="filtersRef")
+    template(v-slot:custom-one='')
+      chi-label(for='input-1') City
+      chi-text-input#input-1
+      chi-label(for='input-2') Zip Code
+      chi-text-input#input-2
+    template(v-slot:custom-two='')
+      chi-date-picker
+
+h3 No Advanced Filters
+.-p--3.-w--100#noAdvancedFilters
+  chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' data-cy="data-table-filters-no-advanced")
+
+
+script.
+  const store = new Vuex.Store({});
+  const customItems = [
+    {
+      template: 'custom-one',
+      label: 'Custom 1',
+    },
+    {
+      template: 'custom-two',
+      label: 'Custom 2',
+    },
+  ];
+  const filters = [
+    {
+      name: 'status',
+      type: 'select',
+      id: 'myoption1',
+      label: 'Selector',
+      options: [
+        {
+          label: 'Active',
+          value: 'active',
+        },
+        {
+          label: 'Inactive',
+          value: 'inactive',
+        },
+      ],
+      value: 'active',
+    },
+    {
+      name: 'input',
+      placeholder: 'Input filter',
+      type: 'input',
+      value: '',
+      id: 'myoption2',
+      label: 'Input Filter',
+    },
+    {
+      name: 'checkbox',
+      type: 'checkbox',
+      checked: false,
+      id: 'myoption3',
+      label: 'Checkbox',
+    },
+    {
+      name: 'statusAdvanced',
+      label: 'Status',
+      type: 'select',
+      id: 'myoption4',
+      options: [
+        {
+          label: 'Active',
+          value: 'active',
+          selected: false,
+        },
+        {
+          label: 'Inactive',
+          value: 'inactive',
+          selected: false,
+        },
+      ],
+      advanced: true,
+      value: 'active',
+    },
+    {
+      name: 'inputAdvanced',
+      label: 'Label',
+      id: 'myoption5',
+      advanced: true,
+    },
+    {
+      name: 'textareaAdvanced',
+      label: 'Textarea',
+      id: 'myoption6',
+      type: 'textarea',
+      advanced: true,
+    },
+    {
+      name: 'checkboxAdvanced',
+      id: 'myoption7',
+      label: 'Advanced Checkbox',
+      type: 'checkbox',
+      advanced: true,
+    },
+  ];
+
+  new Vue({
+    store,
+    components: {
+      chiVueDataTableFilters: window["chi-vue"].library.components.ChiDataTableFilters,
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.filtersExample = this;
+      }
+    },
+    data: {
+      toolbar: {
+        customItemsData: customItems,
+        filtersData: filters,
+      }
+    }
+  }).$mount("#base");
+
+  new Vue({
+    store,
+    components: {
+      chiVueDataTableFilters: window["chi-vue"].library.components.ChiDataTableFilters,
+    },
+    data: {
+      toolbar: {
+        filtersData: [
+          {
+            name: 'status',
+            type: 'select',
+            id: 'myoption100',
+            label: 'Selector',
+            options: [
+              {
+                label: 'Active',
+                value: 'active',
+              },
+              {
+                label: 'Inactive',
+                value: 'inactive',
+              },
+            ],
+            value: 'active',
+          },
+          {
+            name: 'input',
+            placeholder: 'Input filter',
+            type: 'input',
+            value: '',
+            id: 'myoption101',
+            label: 'Input Filter',
+          },
+          {
+            name: 'checkbox',
+            type: 'checkbox',
+            checked: false,
+            id: 'myoption102',
+            label: 'Checkbox',
+          },
+        ],
+      }
+    }
+  }).$mount("#noAdvancedFilters");
