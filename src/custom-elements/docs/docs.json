@@ -1899,13 +1899,16 @@
         },
         {
           "name": "reference",
-          "type": "string",
+          "type": "HTMLElement | string",
           "mutable": false,
           "attr": "reference",
           "reflectToAttr": true,
           "docs": "To provide selector of an external reference element",
           "docsTags": [],
           "values": [
+            {
+              "type": "HTMLElement"
+            },
             {
               "type": "string"
             }
