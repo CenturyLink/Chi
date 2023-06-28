@@ -6,7 +6,9 @@
       | standards which require text and background color contrast ratios of 4.5:1 or higher.
       | All Chi colors either meet (AA) or exceed (AAA) these standards and have been marked below accordingly.
     <Brand />
+    .chi-divider.-mt--3.-mb--5
     <Neutral />
+    .chi-divider.-mt--3.-mb--5
     <Semantic />
 </template>
 

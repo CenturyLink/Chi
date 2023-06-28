@@ -1,7 +1,6 @@
 <template lang="pug">
-  <ComponentExample id="neutral" padding="-p--0" :showSnippetTabs="false" :showTitle="false" additionalStyle="border: 0;">
+  <ComponentExample title="Neutral" titleSize="h2" id="neutral" padding="-p--0" :showSnippetTabs="false" additionalStyle="border: 0;">
     div(slot="example" v-if="color")
-      <TitleAnchor title="Neutral" id="neutral" titleSize="h2"/>
       .chi-grid(v-for="grid in color?.neutral")
         .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3(v-for="col in grid")
           .palette-container
@@ -13,7 +12,6 @@
               .chi-col.-w--6.-text--right.-text--sm
                 .a11y {{ col.a11y }}
           p.-text--sm.-mb--0 {{ col.description }}
-      .chi-divider.-mt--3.-mb--5
   </ComponentExample>
 </template>
 

@@ -1,12 +1,11 @@
 <template lang="pug">
-  <ComponentExample id="semantic" padding="-p--0" :showSnippetTabs="false" :showTitle="false" additionalStyle="border: 0;">
+  <ComponentExample title="Semantic" titleSize="h2" id="semantic" padding="-p--0" :showSnippetTabs="false" additionalStyle="border: 0;">
+    p.-text(slot="example-description")
+      | Use semantic colors to communicate meaning to users.
+      | Examples include displaying alerts, form field validation, user status, application state and more.
+      | Use green (success) for positive, blue (info) for informative, red (danger) for negative, and yellow (warning) for needs attention.
+      | Semantic colors should never be used for decorative purposes.
     div(slot="example" v-if="color")
-      <TitleAnchor title="Semantic" id="semantic" titleSize="h2"/>
-      p.-text
-        | Use semantic colors to communicate meaning to users.
-        | Examples include displaying alerts, form field validation, user status, application state and more.
-        | Use green (success) for positive, blue (info) for informative, red (danger) for negative, and yellow (warning) for needs attention.
-        | Semantic colors should never be used for decorative purposes.
       .chi-grid.-my--3
         .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3(v-for="semanticColors in color.semantic")
           .palette-container(v-for="semanticColor in semanticColors")

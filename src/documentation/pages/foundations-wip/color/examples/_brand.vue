@@ -1,7 +1,6 @@
 <template lang="pug">
-  <ComponentExample id="brand" padding="-p--0" :showSnippetTabs="false" :showTitle="false" additionalStyle="border: 0;">
+  <ComponentExample title="Brand" id="brand" titleSize="h2" padding="-p--0" :showSnippetTabs="false" additionalStyle="border: 0;">
     div(slot="example" v-if="color")
-      <TitleAnchor title="Brand" id="brand" titleSize="h2"/>
       .chi-grid
         .chi-col.-w-sm--12.-w-md--6.-w-lg--6.-mb--3(v-for="mainColor in color.brand.main")
           <TitleAnchor :title="mainColor.title" :id="mainColor.id" />
@@ -25,7 +24,6 @@
                 code.-bg--none.-text--inherit.-p--0 {{ supportingColor.code }}
               .chi-col.-w--6.-text--right.-text--sm
                 .a11y {{ supportingColor.a11y }}
-      .chi-divider.-mt--3.-mb--5
   </ComponentExample>
 </template>
 
@@ -35,7 +33,7 @@ import { IThemes } from '~/models/models';
 import { colors } from '~/fixtures/fixtures';
 
 @Component({})
-export default class Error extends Vue {
+export default class Brand extends Vue {
   get theme() {
     return this.$store.state.themes.theme;
   }
