@@ -242,9 +242,7 @@ describe('Carousel', () => {
 
     beforeEach(() => {
       cy.get("[data-cy='autoplay']").as('autoplay');
-      cy.get('@autoplay')
-        .find(`.${CAROUSEL_ITEM_CLASS}`)
-        .as('items');
+      cy.get(`.${CAROUSEL_ITEM_CLASS}.${ACTIVE_CLASS}`).as('activeItems');
     });
 
     it('Should have attribute autoplay', () => {
@@ -256,13 +254,15 @@ describe('Carousel', () => {
     });
 
     it('Should autoplay with 3 seconds interval', () => {
+      cy.visit('tests/custom-elements/carousel.html');
+
       cy.get('@autoplay').within(() => {
         cy.get(`${CAROUSEL_DIRECTION_CONTROL_CLASS}.${CAROUSEL_PREVIOUS_CLASS}`)
           .find('button')
           .should('be.disabled');
 
         return cy
-          .get(`.${CAROUSEL_ITEM_CLASS}.${ACTIVE_CLASS}`)
+          .get('@activeItems')
           .should($item => {
             expect($item).to.have.length(3);
             expect($item.eq(0)).to.contain(1);
@@ -278,7 +278,7 @@ describe('Carousel', () => {
           .should('not.be.disabled');
 
         return cy
-          .get(`.${CAROUSEL_ITEM_CLASS}.${ACTIVE_CLASS}`)
+          .get('@activeItems')
           .should($item => {
             expect($item.eq(0)).to.contain(4);
             expect($item.eq(2)).to.contain(6);
@@ -293,7 +293,7 @@ describe('Carousel', () => {
           .should('be.disabled');
 
         return cy
-          .get(`.${CAROUSEL_ITEM_CLASS}.${ACTIVE_CLASS}`)
+          .get('@activeItems')
           .should($item => {
             expect($item.eq(0)).to.contain(6);
             expect($item.eq(2)).to.contain(8);
