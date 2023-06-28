@@ -9,12 +9,12 @@ h2 Data Table Filters
 h3 Base
 .-p--3.-w--100#base
   chi-vue-data-table-filters.-ml--2(:filters-data='toolbar.filtersData' :custom-items='toolbar.customItemsData' data-cy="data-table-filters" ref="filtersRef")
-    template(v-slot:custom-one='')
+    template
       chi-label(for='input-1') City
       chi-text-input#input-1
       chi-label(for='input-2') Zip Code
       chi-text-input#input-2
-    template(v-slot:custom-two='')
+    template
       chi-date-picker
 
 h3 No Advanced Filters
