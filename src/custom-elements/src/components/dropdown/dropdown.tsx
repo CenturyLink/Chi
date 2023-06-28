@@ -58,7 +58,7 @@ export class Dropdown {
   /**
    * To provide selector of an external reference element
    */
-  @Prop({ reflect: true }) reference: string;
+  @Prop({ reflect: true }) reference: string | HTMLElement;
   /**
    * To prevent hiding of the Dropdown when clicking outside its bounds
    */
@@ -96,7 +96,9 @@ export class Dropdown {
     if (this._customTrigger) {
       this._referenceElement = triggerSlotElement;
     } else if (this.reference) {
-      const reference = document.querySelector(this.reference);
+      const reference = typeof this.reference === 'string'
+        ? document.querySelector(this.reference)
+        : this.reference;
 
       if (reference) {
         this._referenceElement = reference;
@@ -331,6 +333,7 @@ export class Dropdown {
     ) : this._customTrigger ? (
       <slot name="trigger" />
     ) : null;
+
     const menu = (
       <div
         class={`
@@ -346,7 +349,7 @@ export class Dropdown {
       </div>
     );
 
-    if (trigger) {
+    if (trigger || this._referenceElement) {
       return (
         <div
           class={`
