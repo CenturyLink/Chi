@@ -230,7 +230,7 @@ describe('Carousel', () => {
       );
     });
 
-    it('should not have direction buttons controller', () => {
+    it('Should not have direction buttons controller', () => {
       cy.get('@no-button-controllers')
         .find(CAROUSEL_DIRECTION_CONTROL_CLASS)
         .should('not.exist');
@@ -243,6 +243,8 @@ describe('Carousel', () => {
     beforeEach(() => {
       cy.get("[data-cy='autoplay']").as('autoplay');
       cy.get(`.${CAROUSEL_ITEM_CLASS}.${ACTIVE_CLASS}`).as('activeItems');
+      cy.get(`.${CAROUSEL_PREVIOUS_CLASS}`).find('button').as('prevButton');
+      cy.get(`.${CAROUSEL_NEXT_CLASS}`).find('button').as('nextButton');
     });
 
     it('Should have attribute autoplay', () => {
@@ -257,9 +259,7 @@ describe('Carousel', () => {
       cy.visit('tests/custom-elements/carousel.html');
 
       cy.get('@autoplay').within(() => {
-        cy.get(`${CAROUSEL_DIRECTION_CONTROL_CLASS}.${CAROUSEL_PREVIOUS_CLASS}`)
-          .find('button')
-          .should('be.disabled');
+        cy.get('@prevButton').should('be.disabled');
 
         return cy
           .get('@activeItems')
@@ -273,7 +273,7 @@ describe('Carousel', () => {
       cy.wait(interval);
 
       cy.get('@autoplay').within(() => {
-        cy.get(`${CAROUSEL_DIRECTION_CONTROL_CLASS}.${CAROUSEL_PREVIOUS_CLASS}`)
+        cy.get('@prevButton')
           .find('button')
           .should('not.be.disabled');
 
@@ -288,9 +288,7 @@ describe('Carousel', () => {
       cy.wait(interval);
 
       cy.get('@autoplay').within(() => {
-        cy.get(`${CAROUSEL_DIRECTION_CONTROL_CLASS}.${CAROUSEL_NEXT_CLASS}`)
-          .find('button')
-          .should('be.disabled');
+        cy.get('@nextButton').should('be.disabled');
 
         return cy
           .get('@activeItems')
