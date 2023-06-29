@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-06-15T05:54:20",
+  "timestamp": "2023-06-27T11:17:52",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1899,13 +1899,16 @@
         },
         {
           "name": "reference",
-          "type": "string",
+          "type": "HTMLElement | string",
           "mutable": false,
           "attr": "reference",
           "reflectToAttr": true,
           "docs": "To provide selector of an external reference element",
           "docsTags": [],
           "values": [
+            {
+              "type": "HTMLElement"
+            },
             {
               "type": "string"
             }

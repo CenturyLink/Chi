@@ -116,19 +116,17 @@ p.-text
         </div>
       </div>
 
-h3 With Dropdown
+h3 Autocomplete
+p.-text
+  | Use the <code>mode="autocomplete"</code> attribute to enable autocomplete functionality.
+  | To fully implement the autocomplete field, you must provide a list of menu items by setting
+  | the <code>menuItems</code> property to the input search field, as in the example below.
 .example.-mb--3
   .-p--3
     .chi-grid
       .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-form__item
-          chi-search-input#example__with_dropdown
-          chi-dropdown#example__dropdown(prevent-auto-hide position='bottom')
-            a.chi-dropdown__menu-item(href='#' slot='menu') Item 1
-            a.chi-dropdown__menu-item(href='#' slot='menu') Item 2
-            a.chi-dropdown__menu-item(href='#' slot='menu') Item 3
-            a.chi-dropdown__menu-item(href='#' slot='menu') Item 4
-
+          chi-search-input#example__autocomplete(mode="autocomplete")
   .example-tabs.-pl--2
     ul.chi-tabs#example-with-dropdown(role="tablist")
       li.-active
@@ -149,26 +147,19 @@ h3 With Dropdown
   .chi-tabs-panel.-active#webcomponent-with-dropdown
     :code(lang="html")
       <div class="chi-form__item">
-        <chi-search-input id="example__with_dropdown"></chi-search-input>
-        <chi-dropdown id="example__dropdown" position="bottom" prevent-auto-hide>
-          <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
-          <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
-          <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
-          <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 4</a>
-        </chi-dropdown>
+        <chi-search-input id="example__autocomplete" mode="autocomplete"></chi-search-input>
       </div>
 
       <script>
-        const input = document.getElementById("example__with_dropdown");
-        const dropdown = document.getElementById("example__dropdown");
+        const input = document.getElementById("example__autocomplete");
 
-        input.addEventListener("chiFocus", () => {
-          dropdown.show();
-        });
-
-        input.addEventListener("chiBlur", () => {
-          dropdown.hide();
-        });
+        input.menuItems = [
+          { title: "Item 1", href: "#" },
+          { title: "Item 2", href: "#" },
+          { title: "Item 3", href: "#" },
+          { title: "Item 4", href: "#" },
+          { title: "Item 5", href: "#" }
+        ];
       </script>
   .chi-tabs-panel#html-with-dropdown
     .chi-tab__description
@@ -248,7 +239,7 @@ h3 With Dropdown
         <div class="chi-form__item">
           <chi-search-input size="xl" value="Sample Text"></chi-search-input>
         </div>
-    .chi-tabs-panel#vue-input-sizes 
+    .chi-tabs-panel#vue-input-sizes
       :code(lang="html")
         <div class="chi-form__item">
           <ChiSearchInput value="Sample Text" size="xs" />
@@ -390,7 +381,7 @@ h3 With Dropdown
         <div class="chi-form__item">
           <chi-search-input size="lg" value="Sample Text"></chi-search-input>
         </div>
-    .chi-tabs-panel#vue-portal-input-sizes 
+    .chi-tabs-panel#vue-portal-input-sizes
       :code(lang="html")
         <div class="chi-form__item">
           <ChiSearchInput value="Sample Text" size="xs" />
@@ -473,15 +464,14 @@ script.
     function() {
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
 
-      const input = document.getElementById("example__with_dropdown");
-      const dropdown = document.getElementById("example__dropdown");
-
-      input.addEventListener("chiFocus", () => {
-        dropdown.show();
-      });
-
-      input.addEventListener("chiBlur", () => {
-        dropdown.hide();
-      });
+      const input = document.getElementById("example__autocomplete");
+      
+      input.menuItems = [
+        { title: "Item 1", href: "#" },
+        { title: "Item 2", href: "#" },
+        { title: "Item 3", href: "#" },
+        { title: "Item 4", href: "#" },
+        { title: "Item 5", href: "#" }
+      ];
     }
   );
