@@ -1,4 +1,12 @@
 # CHANGELOG
+## 5.36.0 (June 28, 2023)
+### Components
+#### Added
+* Added: Search input web componet now supports `mode="autocomplete"`.
+### Documentation
+#### Added
+* Added: Alert closable interactive example.
+
 ## 5.35.0 (June 16, 2023)
 ### Components
 #### Added
