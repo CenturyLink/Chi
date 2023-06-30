@@ -66,7 +66,7 @@ export class ChiPhoneInput {
   /**
    * To define two letter ISO country codes to exclude from Phone input dropdown
    */
-  @Prop({ mutable: true, reflect: true }) excludeCountries?: string;
+  @Prop({ mutable: true, reflect: true }) excludedCountries?: string;
 
   /**
    * Triggered when an alteration to the element's value is committed by the user
@@ -95,10 +95,10 @@ export class ChiPhoneInput {
   @State() _uuid: string;
 
   private _extraCountryCodes: string[] = EXTRA_COUNTRIES.map(item => item.country_code);
-  private excludeCountriesArray: CountryCode[];
+  private excludedCountriesArray: CountryCode[];
 
   componentWillLoad(): void {
-    this._generateCountryObjs(this.excludeCountries);
+    this._setCountries(this.excludedCountries);
     document.addEventListener('click', this._closeDropdown);
     this.stateValidation(this.state);
     this._initCountry();
@@ -134,10 +134,10 @@ export class ChiPhoneInput {
     }
   }
 
-  @Watch('excludeCountries')
-  excludeCountriesChanged(newValue: string, oldValue: string): void {
+  @Watch('excludedCountries')
+  excludedCountriesChanged(newValue: string, oldValue: string): void {
     if (newValue && newValue !== oldValue) {
-      this._generateCountryObjs(newValue);
+      this._setCountries(newValue);
     }
   }
 
@@ -187,9 +187,9 @@ export class ChiPhoneInput {
     return [...country.countryList(), ...EXTRA_COUNTRIES].sort((a, b) => a.country.localeCompare(b.country));
   }
 
-  _generateCountryObjs(excludeCountries: string): void {
+  _setCountries(excludedCountries: string): void {
     const countryObjs = this._getCorrectCountryList();
-    const dialCodes = this._getCountryList(excludeCountries);
+    const dialCodes = this._getCountryList(excludedCountries);
     const countries = [];
 
     countryObjs.forEach(
@@ -211,16 +211,16 @@ export class ChiPhoneInput {
     this._countries = countries;
   }
 
-  _getCountryList(excludeCountries: string | undefined): CountryCode[] {
+  _getCountryList(excludedCountries: string | undefined): CountryCode[] {
     let dialCodes: CountryCode[] = getCountries();
 
-    if (excludeCountries) {
-      this.excludeCountriesArray = excludeCountries
+    if (excludedCountries) {
+      this.excludedCountriesArray = excludedCountries
         .replace(/[^A-Z,]+/g, '')
         .split(',')
         .filter(item => item !== this.defaultCountry) as CountryCode[];
-      if (this.excludeCountriesArray) {
-        dialCodes = dialCodes.filter(code => !this.excludeCountriesArray.includes(code));
+      if (this.excludedCountriesArray) {
+        dialCodes = dialCodes.filter(code => !this.excludedCountriesArray.includes(code));
       }
     }
 
