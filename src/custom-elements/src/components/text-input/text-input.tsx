@@ -45,9 +45,9 @@ export class TextInput {
    */
   @Prop({ reflect: true }) placeholder: string;
   /**
-   * To display an additional helper text below the Text input
+   * To display an additional helper text message below the Text input
    */
-  @Prop({ reflect: true }) helperText: string;
+  @Prop({ reflect: true }) helperMessage: string;
   /**
    * To define value of Text input
    */
@@ -198,16 +198,16 @@ export class TextInput {
     const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
     const iconRight = (this.iconRight && !this.spinner) && <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
     const spinner = this.spinner && <chi-spinner size={spinnerSizeMapping[this.size] || 'sm'} />;
-    const helperText = this.helperText && <helper-message state={this.state}>{this.helperText}</helper-message>;
+    const helperMessage = this.helperMessage && <helper-message state={this.state}>{this.helperMessage}</helper-message>;
 
-    if (this.iconLeft || this.iconRight || this.spinner || this.helperText) {
+    if (this.iconLeft || this.iconRight || this.spinner || this.helperMessage) {
       return (
         <div class={`chi-input__wrapper ${iconClasses}`}>
           {input}
           {iconLeft}
           {iconRight}
           {spinner}
-          {helperText}
+          {helperMessage}
         </div>
       )
     }
