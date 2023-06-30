@@ -395,16 +395,14 @@ describe('Phone Input', () => {
 
   describe('Dynamic Value', () => {
     beforeEach(() => {
-      cy.get(`[data-cy='phone-input-dynamic-value']`)
-        .as('dynamicPhoneInput');
+      cy.get(`[data-cy='phone-input-dynamic-value']`).as('dynamicPhoneInput');
       cy.get('@dynamicPhoneInput')
         .find('.chi-dropdown')
         .as('dropdownTrigger');
     });
 
     it('Should have the dynamic-value prop as true', () => {
-      cy.get('@dynamicPhoneInput')
-        .should('have.attr', 'dynamic-value');
+      cy.get('@dynamicPhoneInput').should('have.attr', 'dynamic-value');
     });
 
     it('Should change the prefix dynamically and change the country dropdown value', () => {
@@ -440,121 +438,124 @@ describe('Phone Input', () => {
         .click()
         .then(() => {
           cy.get(`@dropdownTrigger`)
-          .click()
-          .then(() => {
-            cy.get('@dynamicPhoneInput').invoke(
-              'attr',
-              'value',
-              '+1-999999998{Enter}'
-            );
-            hasClassAssertion('@Canada', ACTIVE_CLASS);
-          });
+            .click()
+            .then(() => {
+              cy.get('@dynamicPhoneInput').invoke(
+                'attr',
+                'value',
+                '+1-999999998{Enter}'
+              );
+              hasClassAssertion('@Canada', ACTIVE_CLASS);
+            });
         });
     });
   });
 
-  describe('Exclude Countries', () => {
+  describe('excluded Countries', () => {
     beforeEach(() => {
-      cy.get(`[data-cy='phone-input-exclude-countries']`)
-        .as('excludeCountriesPhoneInput');
-      cy.get('@excludeCountriesPhoneInput')
+      cy.get(`[data-cy='phone-input-exclude-countries']`).as(
+        'excludedCountriesPhoneInput'
+      );
+      cy.get('@excludedCountriesPhoneInput')
         .find('.chi-dropdown')
         .as('dropdownTrigger');
     });
 
-    it('Should have the exclude-countries prop', () => {
-      cy.get('@excludeCountriesPhoneInput')
-        .should('have.attr', 'exclude-countries');
+    it('Should have the excluded-countries prop', () => {
+      cy.get('@excludedCountriesPhoneInput').should(
+        'have.attr',
+        'excluded-countries'
+      );
     });
 
     it('Should exclude a single country specified by ISO country code', () => {
-      cy.get('@excludeCountriesPhoneInput')
-        .invoke('attr', 'exclude-countries', 'AL')
+      cy.get('@excludedCountriesPhoneInput')
+        .invoke('attr', 'excluded-countries', 'AL')
         .then(() => {
-          cy.get('@dropdownTrigger').click({force: true});
-          cy.get('@excludeCountriesPhoneInput')
+          cy.get('@dropdownTrigger').click({ force: true });
+          cy.get('@excludedCountriesPhoneInput')
             .find('.chi-dropdown__menu-item')
             .should('not.contain', 'Albania');
         });
     });
 
     it('Should exclude multiple countries specified by ISO country codes', () => {
-      cy.get('@excludeCountriesPhoneInput')
-        .invoke('attr', 'exclude-countries', 'AL, DZ')
+      cy.get('@excludedCountriesPhoneInput')
+        .invoke('attr', 'excluded-countries', 'AL, DZ')
         .then(() => {
           cy.get('@dropdownTrigger').click();
-          cy.get('@excludeCountriesPhoneInput')
+          cy.get('@excludedCountriesPhoneInput')
             .find('.chi-dropdown__menu-item')
             .should('not.contain', 'Albania');
-          cy.get('@excludeCountriesPhoneInput')
+          cy.get('@excludedCountriesPhoneInput')
             .find('.chi-dropdown__menu-item')
             .should('not.contain', 'Algeria');
         });
     });
 
-    it('Should not exclude default country from countries list if default country is in specified exclude countries', () => {
-      cy.get('@excludeCountriesPhoneInput')
+    it('Should not exclude default country from countries list if default country is in specified excluded countries', () => {
+      cy.get('@excludedCountriesPhoneInput')
         .invoke('attr', 'default-country', 'US')
-        .invoke('attr', 'exclude-countries', 'US, AL')
+        .invoke('attr', 'excluded-countries', 'US, AL')
         .then(() => {
           cy.get('@dropdownTrigger').click();
-          cy.get('@excludeCountriesPhoneInput')
+          cy.get('@excludedCountriesPhoneInput')
             .find('.chi-dropdown__menu-item')
             .should('contain', 'United States');
         });
     });
 
     it('Should exclude specified countries from the dropdown list if countries passed as array of strings', () => {
-      cy.get('@excludeCountriesPhoneInput')
-        .invoke('attr', 'exclude-countries', '["DE", "FR"]')
+      cy.get('@excludedCountriesPhoneInput')
+        .invoke('attr', 'excluded-countries', '["DE", "FR"]')
         .then(() => {
           cy.get('@dropdownTrigger').click();
-          cy.get('@excludeCountriesPhoneInput')
+          cy.get('@excludedCountriesPhoneInput')
             .find('.chi-dropdown__menu-item')
             .should('not.contain', 'Germany');
-          cy.get('@excludeCountriesPhoneInput')
+          cy.get('@excludedCountriesPhoneInput')
             .find('.chi-dropdown__menu-item')
             .should('not.contain', 'France');
         });
     });
 
     it('Should not exclude specified countries if countries passed not as ISO country codes', () => {
-      cy.get('@excludeCountriesPhoneInput')
-        .invoke('attr', 'exclude-countries', 'ca, +44')
+      cy.get('@excludedCountriesPhoneInput')
+        .invoke('attr', 'excluded-countries', 'ca, +44')
         .then(() => {
           cy.get('@dropdownTrigger').click();
-          cy.get('@excludeCountriesPhoneInput')
+          cy.get('@excludedCountriesPhoneInput')
             .find('.chi-dropdown__menu-item')
             .should('contain', 'Canada');
-          cy.get('@excludeCountriesPhoneInput')
+          cy.get('@excludedCountriesPhoneInput')
             .find('.chi-dropdown__menu-item')
             .should('contain', 'United Kingdom');
         });
     });
 
-    it('Should not fail if exclude countries not passed', () => {
-      cy.get('@excludeCountriesPhoneInput')
-        .invoke('attr', 'exclude-countries')
+    it('Should not fail if excluded countries not passed', () => {
+      cy.get('@excludedCountriesPhoneInput')
+        .invoke('attr', 'excluded-countries')
         .then(() => {
           cy.get('@dropdownTrigger').click();
-          cy.get('@excludeCountriesPhoneInput')
+          cy.get('@excludedCountriesPhoneInput')
             .find('.chi-dropdown__menu-item')
-            .should('have.length', 235);
+            .should('have.length', 237);
         });
     });
 
-    it('Should include only specified countries when excludeCountries is set to one country and then overridden', () => {
-      cy.get('@excludeCountriesPhoneInput')
-        .invoke('attr', 'exclude-countries', 'DE')
+    it('Should include only specified countries when excludedCountries is set to one country and then overridden', () => {
+      cy.get('@excludedCountriesPhoneInput')
+        .invoke('attr', 'excluded-countries', 'DE')
         .then(() => {
-          cy.get('@excludeCountriesPhoneInput')
-            .invoke('attr', 'exclude-countries', 'FR')
+          cy.get('@excludedCountriesPhoneInput')
+            .invoke('attr', 'excluded-countries', 'FR')
             .then(() => {
               cy.get('@dropdownTrigger').click();
-              cy.get('@excludeCountriesPhoneInput')
+              cy.get('@excludedCountriesPhoneInput')
                 .find('.chi-dropdown__menu-item')
                 .should('contain', 'Germany');
-              cy.get('@excludeCountriesPhoneInput')
+              cy.get('@excludedCountriesPhoneInput')
                 .find('.chi-dropdown__menu-item')
                 .should('not.contain', 'France');
             });
