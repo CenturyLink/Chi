@@ -36,6 +36,7 @@ import {
   DataTableRowLevels,
   DataTableColumnDescription,
   DataTableColumn,
+  DataTableHeadColumn,
 } from '@/constants/types';
 import {
   DATA_TABLE_NO_FILTERS_MESSAGE,
@@ -200,6 +201,20 @@ export default class DataTable extends Vue {
     return label;
   }
 
+  _getHeadColumnIcon({ icon, label }: DataTableHeadColumn) {
+    if (!icon?.code || !label) {
+      return null;
+    }
+
+    const { code, size, color } = icon;
+
+    return (
+      <Tooltip message={label}>
+        <chi-icon icon={code} size={size} color={color}></chi-icon>
+      </Tooltip>
+    );
+  }
+
   _head() {
     const tableHeadCells = [
       this.config.selectable ? (
@@ -211,12 +226,15 @@ export default class DataTable extends Vue {
       ) : null,
       this._expandable ? this._headExpandable() : null,
     ];
+
     const heads = Array.isArray(this.data.head) ? this.data.head : Object.keys(this.data.head);
+
     const infoPopovers: JSX.Element[] = [];
 
     heads.forEach((column: string | DataTableColumn, cellIndex: number) => {
       const columnIndex = String(Array.isArray(this.data.head) ? cellIndex : column);
       const columnName = Array.isArray(this.data.head) ? (column as DataTableColumn).name : column;
+      const icon = this._getHeadColumnIcon({ ...this.data.head[columnIndex] });
       const infoPopoverId = `info-popover-${this._dataTableNumber}-${columnName}`,
         buttonId = `info-popover-${this._dataTableNumber}-${columnName}-reference`,
         label = this.data.head[columnIndex].label || this.data.head[columnIndex],
@@ -297,7 +315,7 @@ export default class DataTable extends Vue {
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}>
-          {this._getHeadLabel(label as string)}
+          {icon ?? this._getHeadLabel(label as string)}
           {infoIcon}
           {sortIcon}
         </div>
@@ -312,7 +330,7 @@ export default class DataTable extends Vue {
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}>
-          {this._getHeadLabel(label as string)}
+          {icon ?? this._getHeadLabel(label as string)}
           {infoIcon}
         </div>
       );
