@@ -20,7 +20,7 @@ export interface HeadTabsInterface {
     webComponent: CodeSnippets;
     vue: CodeSnippets;
     htmlBlueprint: CodeSnippets;
-  }
+  };
 }
 
 export interface ILanguage {
@@ -51,8 +51,13 @@ export interface IBorderUtility {
 }
 
 export interface IZIndex {
-  key: string, 
-  color: string, 
-  margin: number, 
-  text: string,
+  key: string;
+  color: string;
+  margin: number;
+  text: string;
+}
+
+export interface IBreakpoints {
+  name: string;
+  value: string;
 }
