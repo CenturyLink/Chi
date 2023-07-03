@@ -1,10 +1,11 @@
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Prop } from 'vue-property-decorator';
 import { DataTableColumn } from '@/constants/types';
 import { findComponent } from '@/utils/utils';
 import ColumnCustomizationContent from '@/components/column-customization/ColumnCustomizationModalContent';
 import { UTILITY_CLASSES } from '@/constants/classes';
+import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class ColumnCustomizationAvailableColumns extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
 

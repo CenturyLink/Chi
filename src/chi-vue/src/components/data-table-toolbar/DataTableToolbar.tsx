@@ -1,4 +1,3 @@
-import { Component, Vue } from 'vue-property-decorator';
 import { findComponent } from '@/utils/utils';
 import { DATA_TABLE_CLASSES } from '@/constants/classes';
 import SearchInput from '../../components/search-input/SearchInput';
@@ -7,6 +6,7 @@ import DataTableColumns from '@/components/column-customization/ColumnCustomizat
 import DataTable from '../data-table/DataTable';
 import { DATA_TABLE_EVENTS, SEARCH_INPUT_EVENTS } from '@/constants/events';
 import DataTableViews from '../data-table-views/DataTableViews';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 @Component({})
 export default class DataTableToolbar extends Vue {
