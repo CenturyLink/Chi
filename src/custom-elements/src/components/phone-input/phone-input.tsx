@@ -63,6 +63,10 @@ export class ChiPhoneInput {
    * To define dynamic value of Phone input
    */
   @Prop({ reflect: true }) dynamicValue: boolean = false;
+  /**
+   * To define two letter ISO country codes to exclude from Phone input dropdown
+   */
+  @Prop({ mutable: true, reflect: true }) excludedCountries?: string;
 
   /**
    * Triggered when an alteration to the element's value is committed by the user
@@ -90,26 +94,11 @@ export class ChiPhoneInput {
   @State() _suffix = '';
   @State() _uuid: string;
 
-  _extraCountryCodes: string[] = EXTRA_COUNTRIES.map(item => item.country_code);
+  private _extraCountryCodes: string[] = EXTRA_COUNTRIES.map(item => item.country_code);
+  private excludedCountriesArray: CountryCode[];
 
   componentWillLoad(): void {
-    const countryObjs = this._getCorrectCountryList();
-    const dialCodes = getCountries();
-
-    countryObjs.forEach((countryObj: ExtraCountry) => {
-      if (dialCodes.find(code => code === countryObj.country_code)) {
-        const country: Country = {
-          name: countryObj.country,
-          countryAbbr: countryObj.country_code as CountryCode,
-          dialCode: getCountryCallingCode(
-            countryObj.country_code as CountryCode
-          )
-        };
-
-        this._countries.push(country);
-        }
-      }
-    );
+    this._setCountries(this.excludedCountries);
     document.addEventListener('click', this._closeDropdown);
     this.stateValidation(this.state);
     this._initCountry();
@@ -142,6 +131,13 @@ export class ChiPhoneInput {
       }
 
       this._formatPhoneNumber();
+    }
+  }
+
+  @Watch('excludedCountries')
+  excludedCountriesChanged(newValue: string, oldValue: string): void {
+    if (newValue && newValue !== oldValue) {
+      this._setCountries(newValue);
     }
   }
 
@@ -181,7 +177,7 @@ export class ChiPhoneInput {
 
   _isPhoneNumberValid(suffix: string): boolean {
     if (this._isSpecialNumber()) {
-      return suffix.length === 9;
+      return suffix.replace(/\s/g, '').length === 9;
     }
 
     return isValidPhoneNumber(suffix, this._country.countryAbbr)
@@ -189,6 +185,46 @@ export class ChiPhoneInput {
 
   _getCorrectCountryList(): ExtraCountry[] {
     return [...country.countryList(), ...EXTRA_COUNTRIES].sort((a, b) => a.country.localeCompare(b.country));
+  }
+
+  _setCountries(excludedCountries: string): void {
+    const countryObjs = this._getCorrectCountryList();
+    const dialCodes = this._getCountryList(excludedCountries);
+    const countries = [];
+
+    countryObjs.forEach(
+      (countryObj: { country: string; country_code: CountryCode }) => {
+        if (dialCodes.find(code => code === countryObj.country_code)) {
+          const country: Country = {
+            name: countryObj.country,
+            countryAbbr: countryObj.country_code as CountryCode,
+            dialCode: getCountryCallingCode(
+              countryObj.country_code as CountryCode
+            )
+          };
+
+          countries.push(country);
+        }
+      }
+    );
+
+    this._countries = countries;
+  }
+
+  _getCountryList(excludedCountries: string | undefined): CountryCode[] {
+    let dialCodes: CountryCode[] = getCountries();
+
+    if (excludedCountries) {
+      this.excludedCountriesArray = excludedCountries
+        .replace(/[^A-Z,]+/g, '')
+        .split(',')
+        .filter(item => item !== this.defaultCountry) as CountryCode[];
+      if (this.excludedCountriesArray) {
+        dialCodes = dialCodes.filter(code => !this.excludedCountriesArray.includes(code));
+      }
+    }
+
+    return dialCodes;
   }
 
   _setCountry(prefix: string) {
