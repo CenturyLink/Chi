@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-06-23T07:07:41",
+  "timestamp": "2023-07-03T11:12:35",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1899,16 +1899,13 @@
         },
         {
           "name": "reference",
-          "type": "HTMLElement | string",
+          "type": "string",
           "mutable": false,
           "attr": "reference",
           "reflectToAttr": true,
           "docs": "To provide selector of an external reference element",
           "docsTags": [],
           "values": [
-            {
-              "type": "HTMLElement"
-            },
             {
               "type": "string"
             }
@@ -4242,10 +4239,10 @@
           "required": false
         },
         {
-          "name": "excludeCountries",
+          "name": "excludedCountries",
           "type": "string",
           "mutable": true,
-          "attr": "exclude-countries",
+          "attr": "excluded-countries",
           "reflectToAttr": true,
           "docs": "To define two letter ISO country codes to exclude from Phone input dropdown",
           "docsTags": [],
