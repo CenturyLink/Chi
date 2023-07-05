@@ -24,10 +24,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        "test-accordion-base",
-        "test-accordion-sizes"
-      ],
+      "selectors": ["test-accordion-base", "test-accordion-sizes"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -242,11 +239,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-base",
-        ".test-alternative-separator",
-        ".test-sizes"
-      ],
+      "selectors": [".test-base", ".test-alternative-separator", ".test-sizes"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -503,7 +496,9 @@
         ".test-single",
         ".test-single-one-item",
         ".test-dots",
-        ".test-pagination"
+        ".test-pagination",
+        ".test-autoplay",
+        ".test-no-button-controllers"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -522,9 +517,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-states"
-      ],
+      "selectors": [".test-states"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -746,9 +739,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-flag-icons"
-      ],
+      "selectors": [".test-flag-icons"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -766,10 +757,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-external",
-        ".test-internal"
-      ],
+      "selectors": [".test-external", ".test-internal"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -1083,11 +1071,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-link-base",
-        ".test-link-disabled",
-        ".test-link-cta"
-      ],
+      "selectors": [".test-link-base", ".test-link-disabled", ".test-link-cta"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -1130,9 +1114,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-backdrops"
-      ],
+      "selectors": [".test-backdrops"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -1265,9 +1247,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-phone-input-base"
-      ],
+      "selectors": [".test-phone-input-base"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -1325,10 +1305,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-base",
-        ".test-sizes"
-      ],
+      "selectors": [".test-base", ".test-sizes"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -1375,9 +1352,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-states"
-      ],
+      "selectors": [".test-states"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -1703,11 +1678,7 @@
       "hoverSelector": "",
       "clickSelector": "",
       "postInteractionWait": "",
-      "selectors": [
-        ".test-states",
-        ".test-hide-label-states",
-        ".test-sizes"
-      ],
+      "selectors": [".test-states", ".test-hide-label-states", ".test-sizes"],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
       "requireSameDimensions": true
@@ -1720,9 +1691,7 @@
     "html_report": "reports/html_report/non_responsive",
     "ci_report": "reports/ci_report/non_responsive"
   },
-  "report": [
-    "CI"
-  ],
+  "report": ["CI"],
   "engine": "chrome",
   "engineOptions": {
     "waitTimeout": 120000
