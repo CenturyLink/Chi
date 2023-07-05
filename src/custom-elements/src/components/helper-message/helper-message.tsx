@@ -8,8 +8,8 @@ import { FORM_CLASSES, STATUS_CLASS } from "../../constants/classes";
   scoped: true
 })
 
-export class Label {
-  @Element() el: HTMLLabelElement;
+export class HelperMessage {
+  @Element() el: HTMLElement;
 
   /**
    * To define state color of message text
