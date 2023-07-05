@@ -1,5 +1,3 @@
-import { ICON_COLORS, ICON_SIZES } from './icons';
-
 //#region GENERAL
 export const GENERAL_POSITIONS = ['left', 'top', 'right', 'bottom'] as const;
 //#endregion
@@ -51,27 +49,21 @@ export interface DataTableRow {
     isNestedContentPrintDisabled?: boolean;
   };
 }
-interface DataTableHeadColumnIcon {
-  code: string;
-  size?: ICON_SIZES;
-  color?: ICON_COLORS;
-}
-export interface DataTableHeadColumn {
-  label: string;
-  sortable?: boolean;
-  sortBy?: string;
-  sortDataType?: 'string' | 'number' | 'date' | 'boolean';
-  align?: 'left' | 'center' | 'right';
-  allowOverflow?: 'visible' | 'hidden';
-  key?: boolean;
-  bold?: boolean;
-  description?: string | DataTableColumnDescription;
-  isPrintDisabled?: boolean;
-  icon?: DataTableHeadColumnIcon;
-}
 export interface DataTableData {
   head: {
-    [code: string]: DataTableHeadColumn;
+    [code: string]: {
+      label: string;
+      sortable?: boolean;
+      sortBy?: string;
+      sortDataType?: 'string' | 'number' | 'date' | 'boolean';
+      align?: 'left' | 'center' | 'right';
+      allowOverflow?: 'visible' | 'hidden';
+      key?: boolean;
+      bold?: boolean;
+      description?: string | DataTableColumnDescription;
+      isPrintDisabled?: boolean;
+      icon?: string;
+    };
   };
   body: DataTableRow[];
 }

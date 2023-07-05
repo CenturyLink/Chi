@@ -303,11 +303,7 @@ export const exampleTableHead = {
     sortable: true,
     sortDataType: 'string',
     key: true,
-    icon: {
-      code: 'circle-check',
-      color: 'navy',
-      size: 'sm',
-    },
+    icon: 'circle-check',
   },
   number: { label: 'Number', sortable: true, sortDataType: 'number' },
   date: { label: 'Created', sortable: true, sortBy: 'date', sortDataType: 'date' },

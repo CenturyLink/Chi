@@ -36,7 +36,6 @@ import {
   DataTableRowLevels,
   DataTableColumnDescription,
   DataTableColumn,
-  DataTableHeadColumn,
 } from '@/constants/types';
 import {
   DATA_TABLE_NO_FILTERS_MESSAGE,
@@ -189,7 +188,15 @@ export default class DataTable extends Vue {
     );
   }
 
-  _getHeadLabel(label: string) {
+  _getHeadContent(label: string, icon?: string) {
+    if (icon) {
+      return (
+        <Tooltip message={label}>
+          <chi-icon icon={icon} size="sm" color="dark" />
+        </Tooltip>
+      );
+    }
+
     if (this.cellWrap) {
       return <DataTableTooltip textWrap={this.cellWrap} msg={label} class="-w--100" />;
     }
@@ -199,20 +206,6 @@ export default class DataTable extends Vue {
     }
 
     return label;
-  }
-
-  _getHeadColumnIcon({ icon, label }: DataTableHeadColumn) {
-    if (!icon?.code || !label) {
-      return null;
-    }
-
-    const { code, size, color } = icon;
-
-    return (
-      <Tooltip message={label}>
-        <chi-icon icon={code} size={size} color={color}></chi-icon>
-      </Tooltip>
-    );
   }
 
   _head() {
@@ -234,7 +227,7 @@ export default class DataTable extends Vue {
     heads.forEach((column: string | DataTableColumn, cellIndex: number) => {
       const columnIndex = String(Array.isArray(this.data.head) ? cellIndex : column);
       const columnName = Array.isArray(this.data.head) ? (column as DataTableColumn).name : column;
-      const icon = this._getHeadColumnIcon({ ...this.data.head[columnIndex] });
+      const icon = this.data.head[columnIndex].icon;
       const infoPopoverId = `info-popover-${this._dataTableNumber}-${columnName}`,
         buttonId = `info-popover-${this._dataTableNumber}-${columnName}-reference`,
         label = this.data.head[columnIndex].label || this.data.head[columnIndex],
@@ -315,7 +308,7 @@ export default class DataTable extends Vue {
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}>
-          {icon ?? this._getHeadLabel(label as string)}
+          {this._getHeadContent(label as string, icon)}
           {infoIcon}
           {sortIcon}
         </div>
@@ -330,7 +323,7 @@ export default class DataTable extends Vue {
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}>
-          {icon ?? this._getHeadLabel(label as string)}
+          {this._getHeadContent(label as string, icon)}
           {infoIcon}
         </div>
       );

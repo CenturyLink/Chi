@@ -8,28 +8,4 @@ export const ICON_CLASSES = {
   ICON_ARROW_BOTTOM: 'icon-arrow-to-bottom',
   ICON_INFO: 'icon-circle-info-outline',
 };
-export enum ICON_SIZES {
-  'xs',
-  'sm',
-  'sm--2',
-  'sm--3',
-  'md',
-  'lg',
-  'xl',
-  'xxl',
-}
-export enum ICON_COLORS {
-  'primary',
-  'success',
-  'warning',
-  'danger',
-  'light',
-  'dark',
-  'muted',
-  'info',
-  'grey',
-  'secondary',
-  'navy',
-  'orange',
-}
 //#endregion
