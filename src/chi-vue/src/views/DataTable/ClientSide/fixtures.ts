@@ -39,6 +39,9 @@ export const exampleConfig: DataTableConfig = {
   },
   showExpandAll: true,
   showSelectAllDropdown: true,
+  emptyActionable: {
+    isActionable: true,
+  },
 };
 
 export const exampleSaveViewConfig: SaveViewConfig = {

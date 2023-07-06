@@ -31,9 +31,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Prop } from 'vue-property-decorator';
 import { ADVANCED_FILTER_EVENTS, GENERIC_EVENTS } from '../../constants/events';
 import { BUTTON_CLASSES, DIVIDER_CLASSES, ICON_CLASS, UTILITY_CLASSES } from '../../constants/classes';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 @Component({
   data: () => {

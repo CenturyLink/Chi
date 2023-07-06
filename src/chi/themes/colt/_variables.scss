@@ -276,6 +276,7 @@ $border-radius-base: 0;
 $border-radius-sharp: 0;
 $border-radius-circle: 50%;
 $border-radius: $border-radius-base;
+$border-radius-rounded-pill: 10rem;
 
 // Semantic colors
 $color-semantic: (
@@ -962,6 +963,7 @@ $dropdown-menu-item-disabled-text-color:    $color-grey-70;
 $dropdown-menu-item-disabled-icon-color:    $color-grey-70;
 $dropdown-menu-item-disabled-opacity:       $opacity-60;
 $dropdown-menu-item-hover-background-color: $color-grey-20;
+$dropdown-menu-item-focus-outline:          $focus-color;
 
 // Expansion panel
 $expansion-panel-border-color:              $color-border-base;
@@ -1065,7 +1067,7 @@ $header-navbar-link-color:                  $color-text-white;
 $header-navbar-font-size:                   $font-size-xs;
 $header-navbar-font-weight:                 $font-weight-semi-bold;
 $header-navbar-divider-color:               rgba($color-white, 0.5);
-$header-navbar-menu-text-transform:         none;
+$header-navbar-menu-text-transform:         uppercase;
 $header-navbar-menu-line-height:            $line-height-sm;
 $header-navbar-dropdown-arrow-color:        rgba($color-teal-70, 0.86);
 $header-end-text-color:                     $color-text-white;
@@ -1321,6 +1323,12 @@ $picker-checked-radio-icon-color:           $color-background-white;
 $picker-hover-border-color:                 $color-grey-40;
 $picker-focus-border-color:                 $color-grey-40;
 $picker-focus-background-color:             $color-grey-10;
+$picker-xs-item-font-size:                  $font-size-xs;
+$picker-xs-item-padding:                    0.1875rem 0.75rem;
+$picker-xs-item-description-line-height:    1rem;
+$picker-sm-item-font-size:                  $font-size-sm;
+$picker-sm-item-padding:                    0.4375rem 1rem;
+$picker-sm-item-description-line-height:    1rem;
 $picker-md-item-font-size:                  $font-size-base;
 $picker-md-item-padding:                    1rem;
 $picker-md-item-label-margin:               0.75rem;

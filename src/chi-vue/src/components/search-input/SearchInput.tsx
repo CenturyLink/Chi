@@ -1,4 +1,4 @@
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import {
   BUTTON_CLASSES,
   CLOSE_CLASS,
@@ -13,8 +13,9 @@ import { SearchInputSizes } from '@/constants/types';
 import { SEARCH_INPUT_EVENTS } from '@/constants/events';
 import { findComponent } from '@/utils/utils';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
+import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class SearchInput extends Vue {
   @Prop() size?: SearchInputSizes;
   @Prop() disabled?: boolean;

@@ -1,4 +1,4 @@
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import { findComponent } from '@/utils/utils';
 import {
   BULK_ACTIONS_CLASSES,
@@ -12,6 +12,7 @@ import {
 import DataTable from '../data-table/DataTable';
 import { ICON_CLASSES } from '@/constants/icons';
 import { DATA_TABLE_EVENTS, GENERIC_EVENTS } from '@/constants/events';
+import { Component, Vue } from '@/build/vue-wrapper';
 
 @Component({})
 export default class DataTableBulkActions extends Vue {
