@@ -276,6 +276,59 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
               else
                 .chi-time-picker__minute=padZero(minute++)
 
+- day = 1;
+- hours = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+- minute = 0;
+- periods = ['AM', 'PM'];
+.test-time-format-12hr-view.-py--2
+  span.-text--h2 Test time 12 hour format view
+  .-d--flex
+    div.hydrated
+      .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
+        .chi-datepicker__month-row
+          .prev
+            .chi-icon.-sm.undefined
+              svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                use(xlink:href='#icon-chevron-left')
+          .chi-datepicker__month
+            | November
+            | 2018
+          .next
+            .chi-icon.-sm.undefined
+                svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                  use(xlink:href='#icon-chevron-right')
+        .chi-datepicker__day-names
+          each weekDay in weekS
+            .chi-datepicker__week-day=weekDay
+        .chi-datepicker__days
+          while day < 31
+            if day === 23
+              .chi-datepicker__day.-active=day++
+            else
+              .chi-datepicker__day=day++
+
+    div.hydrated
+      .chi-time-picker
+        .chi-time-picker__content
+          .chi-time-picker__hours
+            each hour in hours
+              if hour === 12
+                .chi-time-picker__hour.-active=padZero(hour)
+              else
+                .chi-time-picker__hour=padZero(hour)
+          .chi-time-picker__minutes
+            while minute < 60
+              if minute === 0
+                .chi-time-picker__minute.-active=padZero(minute++)
+              else
+                .chi-time-picker__minute=padZero(minute++)
+          .chi-time-picker__periods
+            each period in periods
+              if period === 'AM'
+                .chi-time-picker__period.-active=period
+              else
+                .chi-time-picker__period=period
+
 script.
   document.addEventListener(
     'DOMContentLoaded',
