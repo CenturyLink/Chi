@@ -22,7 +22,7 @@ $sizes: (
     item-description-padding: $picker-lg-item-description-padding
   )
 );
-$pillSizes: (
+$pill-sizes: (
   xs: (
     item-padding: $picker-xs-item-padding,
     item-font-size: $picker-xs-item-font-size,
@@ -236,14 +236,14 @@ $pillSizes: (
       margin-left: 0.5rem;
     }
 
-    @each $type in map-keys($pillSizes) {
+    @each $type in map-keys($pill-sizes) {
       &.-#{$type} {
         .chi-picker__input + label {
-          font-size: map-get(map-get($pillSizes, $type), item-font-size);
-          padding: map-get(map-get($pillSizes, $type), item-padding);
+          font-size: map-get(map-get($pill-sizes, $type), item-font-size);
+          padding: map-get(map-get($pill-sizes, $type), item-padding);
           border-radius: $border-radius-rounded-pill;
           min-height: inherit;
-          line-height: map-get(map-get($pillSizes, $type), item-description-line-height);
+          line-height: map-get(map-get($pill-sizes, $type), item-description-line-height);
         }
       }
     }

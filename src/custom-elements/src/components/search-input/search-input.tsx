@@ -3,7 +3,6 @@ import {
   Element,
   Event,
   EventEmitter,
-  Host,
   Prop,
   State,
   Watch,
@@ -122,8 +121,6 @@ export class SearchInput {
 
   componentDidLoad(): void {
     document.addEventListener('click', this._handleClickInDocument.bind(this));
-    // TODO: Uncomment when chi-dropdown is ready
-    // document.addEventListener('chiDropdownItemSelect', this._handleSelectItem);
   }
 
   disconnectedCallback(): void {
@@ -262,13 +259,15 @@ export class SearchInput {
     this.eventClean.emit();
   }
 
-  _dropdownAutocomplete(): HTMLChiDropdownElement {
+  _dropdownAutocomplete(trigger: HTMLElement): HTMLChiDropdownElement {
     return (
       <chi-dropdown
         id="dropdown-autocomplete"
         position="bottom"
         prevent-auto-hide
+        fluid
       >
+        {trigger}
         {this.menuItemsFiltered.map(item => (
           <a
             class={DROPDOWN_CLASSES.MENU_ITEM}
@@ -341,21 +340,13 @@ export class SearchInput {
     );
 
     const input = (
-      <div class="chi-input__wrapper -icon--right">
+      <div class="chi-input__wrapper -icon--right" slot="trigger">
         {searchInputElement}
         {searchXIcon}
         {searchIcon}
       </div>
     );
-    const dropdown = isAutocomplete ? this._dropdownAutocomplete() : null;
-    const searchInput = isAutocomplete ? (
-      <Host>
-        {input}
-        {dropdown}
-      </Host>
-    ) : (
-      input
-    );
+    const searchInput = isAutocomplete ? this._dropdownAutocomplete(input) : input;
 
     return searchInput;
   }

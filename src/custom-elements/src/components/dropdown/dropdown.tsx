@@ -7,7 +7,7 @@ import {
   Prop,
   h,
   Watch,
-  Listen,
+  Listen
 } from '@stencil/core';
 import Popper, { Placement } from 'popper.js';
 import {
@@ -331,6 +331,7 @@ export class Dropdown {
     ) : this._customTrigger ? (
       <slot name="trigger" />
     ) : null;
+
     const menu = (
       <div
         class={`

@@ -83,6 +83,27 @@ p.-text
       <chi-phone-input id="phone-input-value" default-country="US" value="+1-6045551212"></chi-phone-input>
   #phone-input-html-value.chi-tabs-panel
 
+h3 Excluded Countries
+p.-text
+  | Use the <code>excluded-countries</code> attribute to set excluded countries.
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 18rem;")
+      chi-label(for="phone-input-excluded-countries") Phone Number
+      chi-phone-input(id="phone-input-excluded-countries" excluded-countries="GB,DE,FR")
+
+  .example-tabs.-pl--2
+    ul.chi-tabs
+      li.-active
+        a(href='#phone-input-wc-excluded-countries') Web Component
+      li.-disabled
+        a(href='#phone-input-html-excluded-countries') HTML Blueprint
+  #phone-input-wc-excluded-countries.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="phone-input-excluded-countries">Phone Number</chi-label>
+      <chi-phone-input id="phone-input-excluded-countries" excluded-countries="GB,DE,FR"></chi-phone-input>
+  #phone-input-html-excluded-countries.chi-tabs-panel
+
 h3 Disabled
 p.-text
   | Use the <code>disabled</code> boolean attribute to prevent users from interacting with the phone input.
