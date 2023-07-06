@@ -1,11 +1,11 @@
 <template lang="pug">
-  <ComponentExample title="SASS" id="sass" titleSize="h2" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false" additionalStyle="border: none;">
+  div
+    <TitleAnchor title="SASS" id="sass" titleSize="h2"/>
     p.-text(slot="example-description")
       | Chi defines shadows with Saas maps. The following example will render a shadow equivalent to <code>-s--1</code> / <code>1px</code>.
     <pre class="language-html -mb--4" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>
-  </ComponentExample>
 </template>
 
 <script lang="ts">
