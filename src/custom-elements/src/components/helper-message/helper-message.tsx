@@ -3,7 +3,7 @@ import { ChiStates, STATES } from "../../constants/states";
 import { FORM_CLASSES, STATUS_CLASS } from "../../constants/classes";
 
 @Component({
-  tag: 'helper-message',
+  tag: 'chi-helper-message',
   styleUrl: 'helper-message.scss',
   scoped: true
 })

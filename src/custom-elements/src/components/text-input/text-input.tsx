@@ -198,7 +198,7 @@ export class TextInput {
     const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
     const iconRight = (this.iconRight && !this.spinner) && <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
     const spinner = this.spinner && <chi-spinner size={spinnerSizeMapping[this.size] || 'sm'} />;
-    const helperMessage = this.helperMessage && <helper-message state={this.state}>{this.helperMessage}</helper-message>;
+    const helperMessage = this.helperMessage && <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>;
 
     if (this.iconLeft || this.iconRight || this.spinner || this.helperMessage) {
       return (
