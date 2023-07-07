@@ -56,3 +56,8 @@ export interface IZIndex {
   margin: number, 
   text: string,
 }
+
+export interface INotation {
+  class: string, 
+  value: string, 
+}
