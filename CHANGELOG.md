@@ -1,4 +1,44 @@
 # CHANGELOG
+## 5.36.0 (June 28, 2023)
+### Components
+#### Added
+* Added: Search input web componet now supports `mode="autocomplete"`.
+### Documentation
+#### Added
+* Added: Alert closable interactive example.
+
+## 5.35.0 (June 16, 2023)
+### Components
+#### Added
+* Added: Picker component now supports `pill` version by adding `-pill` class.
+* Added: Phone input now supports Serbia, `+381`, and Montenegro, `+382`, code countries.
+#### Fixed
+* Fixed: Expansion panel margin-left alignment in Vue component when `state-icon` is present in `active` state.
+* Fixed: Expansion panel Vue component was missing `-done-only` class to render correct font-size in `done` state.
+
+## 5.34.0 (June 9, 2023)
+### Components
+#### Added
+* Added: Text utility classes now support `-text--italic`.
+* Added: Dropdown supports keyboard events `arrowUp` and `arrowDown` to improve accessibility.
+#### Changed
+* Changed: Dropdown focus state has changed for consisitency with another components.
+#### Fixed
+* Fixed: Data table spacing and colors in nested data tables.
+
+## 5.33.0 (May 30, 2023)
+### Components
+#### Added
+* Added: Phone input now supports dynamically change of country code.
+* Added: Badge supports new extended color palette.
+* Added: Badge supports new `text-weight` property to give developers the ability to set normal, semi-bold, and bold font-weights.
+#### Changed
+* Changed: Data table description popover in header has been repositioned in the DOM to improve rendering.
+#### Fixed
+* Fixed: Date picker in `mode="datetime"` has changed incorrect value from 24 to 00 when `time-format="24hr"` is set and `00` hours selected.
+* Fixed: Data table headers styles in nested data tables.
+* Fixed: Draggable Popover behavior has been improved to recalculate position dynamically.
+
 ## 5.32.0 (May 12, 2023)
 ### Components
 #### Added

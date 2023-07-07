@@ -1,4 +1,5 @@
 import Vue, { VNode } from 'vue';
+import { Component } from 'vue-property-decorator';
 
 declare global {
   namespace JSX {
@@ -12,5 +13,11 @@ declare global {
     interface ElementAttributesProperty {
       $props: {};
     }
+  }
+
+  interface Window {
+    '@centurylink/vue-wrapper': {
+      Component: typeof Component;
+    };
   }
 }
