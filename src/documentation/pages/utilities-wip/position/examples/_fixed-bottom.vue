@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Fixed Bottom" titleSize="h3" id="fixed-bottom" :tabs="exampleTabs" :showSnippetTabs="false" padding="0" additionalStyle="border: none;" >
+  <ComponentExample title="Fixed Bottom" id="fixed-bottom" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
     p.-text(slot="example-description")
       | Use the <code>-position--fixed-bottom</code> class to position an element at the bottom of the viewport.
     <pre class="language-html" slot="code-htmlblueprint">

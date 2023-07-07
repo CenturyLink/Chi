@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Absolute" titleSize="h3" id="target-absolute" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+  <ComponentExample title="Absolute" id="target-absolute" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
     <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { positionValues } from '~/fixtures/fixtures';
+import { SIZES } from '~/constants/constants';
 
 @Component({
   data: () => {
@@ -31,9 +31,9 @@ export default class TargetAbsolute extends Vue {
   }
 
   generateHtml() {
-    return positionValues
-      .map((value: string) => `<div class="${value}-absolute"></div>`)
-      .join('\n');
+    return SIZES.map(
+      (size: string) => `<div class="-position-${size}--absolute"></div>`
+    ).join('\n');
   }
 }
 </script>

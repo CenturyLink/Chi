@@ -1,7 +1,7 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
 export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.32.0`;
-export const DOCS_URL = `${TEMP_DEVELOPMENT_FALLBACK_URL}/js/ce/docs.json`
+export const DOCS_URL = `${TEMP_DEVELOPMENT_FALLBACK_URL}/js/ce/docs.json`;
 export const THEMES = {
   centurylink: {
     label: 'CenturyLink',
@@ -403,3 +403,5 @@ export const CHI_VISIBLE_VERSION = [
   '2.1.0',
   '2.0.0'
 ];
+
+export const SIZES: string[] = ['sm', 'md', 'lg', 'xl'];
