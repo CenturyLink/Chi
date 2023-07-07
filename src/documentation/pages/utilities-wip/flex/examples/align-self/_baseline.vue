@@ -1,0 +1,37 @@
+<template lang="pug">
+  <ComponentExample title="Baseline" id="baseline" titleSize="h4" padding="-p--3" :tabs="exampleTabs" :showSnippetTabs="false">
+    .-d--flex.-show--example.-bg--grey-10(slot="example" style="height:7rem;")
+      .-text.-p--2 Item
+      .-text.-p--2.-align-self--baseline Aligned Item
+      .-text.-p--2 Item
+    <pre class="language-html" slot="code-htmlblueprint">
+    <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
+  </ComponentExample>
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component({
+  data: () => {
+    return {
+      exampleTabs: [
+        {
+          active: true,
+          id: 'htmlblueprint',
+          label: 'HTML Blueprint'
+        }
+      ],
+      codeSnippets: {
+        htmlblueprint: `<div class="-d--flex">
+  <div>Item</div>
+  <div class="-align-self--baseline">Aligned Item</div>
+  <div>Item</div>
+</div>`
+      }
+    };
+  }
+})
+export default class Baseline extends Vue {}
+</script>
