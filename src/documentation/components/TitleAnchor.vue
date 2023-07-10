@@ -33,7 +33,7 @@ export default class TitleAnchor extends Vue {
   @Prop() title?: string;
   @Prop({ default: 'h3' }) titleSize?: 'h2' | 'h3' | 'h4';
   @Prop({ default: true }) showTitle?: boolean;
-  @Prop({ default: '' }) additionalClasses?: string;
+  @Prop() additionalClasses?: string;
 
   get anchor() {
     return `<a class="-ml--1" href="?theme=${this.$store.state.themes.theme}#${this.id}">#</a>`;
@@ -41,9 +41,11 @@ export default class TitleAnchor extends Vue {
 
   get titleAnchorClassnames() {
     const classes = ['-anchor'];
+
     if (this.additionalClasses) {
       classes.push(this.additionalClasses);
     }
+
     return classes;
   }
 }
