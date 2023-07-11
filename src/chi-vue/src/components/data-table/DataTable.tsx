@@ -1,4 +1,4 @@
-import { Prop, Watch } from 'vue-property-decorator';
+import { Emit, Prop, Watch } from 'vue-property-decorator';
 import {
   ACTIVE_CLASS,
   BUTTON_CLASSES,
@@ -57,6 +57,7 @@ import { printElement } from '../../utils/utils';
 import { ColumnResize } from './utils/Resize';
 import Tooltip from '../tooltip/tooltip';
 import { Component, Vue } from '@/build/vue-wrapper';
+import DataTableEmptyActionable from './DataTableEmptyActionable';
 
 declare const chi: any;
 
@@ -67,6 +68,11 @@ let dataTableNumber = 0;
 export default class DataTable extends Vue {
   @Prop() data!: DataTableData;
   @Prop() config!: DataTableConfig;
+
+  @Emit(DATA_TABLE_EVENTS.EMPTY_ACTIONABLE_LINK)
+  _emitEmptyActionableLink() {
+    // This is intentional
+  }
 
   accordionsExpanded: string[] = [];
   activePage =
@@ -89,6 +95,9 @@ export default class DataTable extends Vue {
     : defaultConfig.showSelectAllDropdown;
   printMode = this.$props.config?.print?.mode || defaultConfig.print?.mode;
   emptyMessage = this.config.noFiltersMessage || defaultConfig.noFiltersMessage || DATA_TABLE_NO_FILTERS_MESSAGE;
+  emptyActionableContent = Object.prototype.hasOwnProperty.call(this.$props.config, 'emptyActionable')
+    ? this.$props.config.emptyActionable
+    : defaultConfig.emptyActionable;
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -179,7 +188,15 @@ export default class DataTable extends Vue {
     );
   }
 
-  _getHeadLabel(label: string) {
+  _getHeadContent(label: string, icon?: string) {
+    if (icon) {
+      return (
+        <Tooltip message={label}>
+          <chi-icon icon={icon} size="sm" color="dark" />
+        </Tooltip>
+      );
+    }
+
     if (this.cellWrap) {
       return <DataTableTooltip textWrap={this.cellWrap} msg={label} class="-w--100" />;
     }
@@ -202,12 +219,15 @@ export default class DataTable extends Vue {
       ) : null,
       this._expandable ? this._headExpandable() : null,
     ];
+
     const heads = Array.isArray(this.data.head) ? this.data.head : Object.keys(this.data.head);
+
     const infoPopovers: JSX.Element[] = [];
 
     heads.forEach((column: string | DataTableColumn, cellIndex: number) => {
       const columnIndex = String(Array.isArray(this.data.head) ? cellIndex : column);
       const columnName = Array.isArray(this.data.head) ? (column as DataTableColumn).name : column;
+      const icon = this.data.head[columnIndex].icon;
       const infoPopoverId = `info-popover-${this._dataTableNumber}-${columnName}`,
         buttonId = `info-popover-${this._dataTableNumber}-${columnName}-reference`,
         label = this.data.head[columnIndex].label || this.data.head[columnIndex],
@@ -288,7 +308,7 @@ export default class DataTable extends Vue {
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}>
-          {this._getHeadLabel(label as string)}
+          {this._getHeadContent(label as string, icon)}
           {infoIcon}
           {sortIcon}
         </div>
@@ -303,7 +323,7 @@ export default class DataTable extends Vue {
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}>
-          {this._getHeadLabel(label as string)}
+          {this._getHeadContent(label as string, icon)}
           {infoIcon}
         </div>
       );
@@ -1028,11 +1048,23 @@ export default class DataTable extends Vue {
 
   _body() {
     const getTableBodyRows = (): JSX.Element => {
+      const emptyActionable = this.dataTableEmptyActionable();
+
       if (!this.data.body.length) {
         return (
-          <div class={DATA_TABLE_CLASSES.EMPTY}>
-            <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
-            {this.emptyMessage}
+          <div
+            class={[
+              DATA_TABLE_CLASSES.EMPTY,
+              this.emptyActionableContent.isActionable && DATA_TABLE_CLASSES.EMPTY_ACTIONABLE,
+            ]}>
+            {this.emptyActionableContent.isActionable ? (
+              emptyActionable
+            ) : (
+              <div>
+                <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
+                {this.emptyMessage}
+              </div>
+            )}
           </div>
         );
       }
@@ -1056,6 +1088,15 @@ export default class DataTable extends Vue {
     }
 
     return <div class={DATA_TABLE_CLASSES.BODY}>{getTableBodyRows()}</div>;
+  }
+
+  dataTableEmptyActionable() {
+    return (
+      <DataTableEmptyActionable
+        onChiEmptyActionableLink={() => this._emitEmptyActionableLink()}
+        content={this.emptyActionableContent}
+      />
+    );
   }
 
   _addToolbarSearchEventListener() {
