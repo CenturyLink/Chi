@@ -57,6 +57,12 @@
 
 // TODO: To be removed when new Chi version 5.36.0 is released
 .chi-data-table__row-empty {
+  & > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
   &.-actionable {
     padding-bottom: 5rem;
     padding-top: 5rem;
