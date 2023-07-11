@@ -55,31 +55,6 @@
   }
 }
 
-// TODO: To be removed when new Chi version 5.36.0 is released
-.chi-data-table__row-empty {
-  &.-actionable {
-    padding-bottom: 5rem;
-    padding-top: 5rem;
-
-    & > div {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-
-      chi-icon .chi-icon {
-        height: 3rem;
-        margin-bottom: 0.5rem;
-        opacity: 0.4;
-        width: 3rem;
-      }
-
-      span {
-        font-style: normal;
-      }
-    }
-  }
-}
-
 // TODO: To be removed when all µApp's Chi version is higher than v5.0
 @mixin respond-to($media, $only: false) {
   @if $media == xs {
