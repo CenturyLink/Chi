@@ -1,3 +1,5 @@
+import { STATES_CLASSES } from './states';
+
 //#region GENERAL
 export const GENERAL_POSITIONS = ['left', 'top', 'right', 'bottom'] as const;
 //#endregion
@@ -48,6 +50,7 @@ export interface DataTableRow {
   print?: {
     isNestedContentPrintDisabled?: boolean;
   };
+  state?: keyof typeof STATES_CLASSES;
 }
 export interface DataTableData {
   head: {

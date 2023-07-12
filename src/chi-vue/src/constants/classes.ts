@@ -91,6 +91,7 @@ export const DATA_TABLE_CLASSES = {
   HEAD: 'chi-data-table__head',
   BODY: 'chi-data-table__body',
   ROW: 'chi-data-table__row',
+  ROW_CHILD_WRAPPER: 'chi-data-table__row-child-wrapper',
   ROW_CHILD: 'chi-data-table__row-child',
   ROW_GRAND_CHILD: 'chi-data-table__row-grand-child',
   EMPTY: 'chi-data-table__row-empty',

@@ -561,6 +561,7 @@ export const exampleTableBody = [
         ],
       },
     },
+    state: 'danger',
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021067' } },
       '',
@@ -597,6 +598,7 @@ export const exampleTableBody = [
   {
     id: 'NTM0000210651',
     active: false,
+    state: 'warning',
     data: [
       { template: 'ticketId', payload: { id: 'NTM0000210651' } },
       {
@@ -637,6 +639,7 @@ export const exampleTableBody = [
   {
     id: 'NTM000021069',
     active: false,
+    state: 'success',
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021069' } },
       {},
@@ -673,6 +676,7 @@ export const exampleTableBody = [
   {
     id: 'NTM000021073',
     active: false,
+    state: 'info',
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021073' } },
       {},

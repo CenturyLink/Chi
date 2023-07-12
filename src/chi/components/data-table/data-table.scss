@@ -326,6 +326,40 @@ $sizes: (
         line-height: $line-height-sm;
       }
     }
+
+    &.-expanded {
+      &.-bordered {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  &__row-child-wrapper {
+    &.-expanded {
+      &.-bordered {
+        border-top: 0;
+      }
+    }
+  }
+
+  &__row,
+  &__row-child-wrapper {
+    &.-bordered {
+      border: 1px solid;
+    }
+
+    &.-warning {
+      border-color: $color-yellow-60;
+    }
+    &.-danger {
+      border-color: $color-red-60;
+    }
+    &.-success {
+      border-color: $color-green-60;
+    }
+    &.-info {
+      border-color: $color-blue-60;
+    }
   }
 
   &__cell {
@@ -841,9 +875,12 @@ $sizes: (
 
     .chi-data-table__row {
       background-color: $color-background-muted-lighter;
-      border-bottom: 0;
       margin-top: 0.5rem;
       padding: 1rem;
+
+      &:not(.-bordered) {
+        border-bottom: 0;
+      }
 
       @include respond-to(md) {
         background-color: transparent;

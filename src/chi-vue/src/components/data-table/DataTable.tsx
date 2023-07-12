@@ -58,6 +58,7 @@ import { ColumnResize } from './utils/Resize';
 import Tooltip from '../tooltip/tooltip';
 import { Component, Vue } from '@/build/vue-wrapper';
 import DataTableEmptyActionable from './DataTableEmptyActionable';
+import { STATES_CLASSES } from '@/constants/states';
 
 declare const chi: any;
 
@@ -1008,6 +1009,8 @@ export default class DataTable extends Vue {
       }
     });
 
+    const state = bodyRow.state ? STATES_CLASSES[bodyRow.state] : null;
+
     row.push(
       <div
         id={rowId}
@@ -1027,6 +1030,7 @@ export default class DataTable extends Vue {
             ? `${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}`
             : ''
         }
+        ${state ? `${DATA_TABLE_CLASSES.BORDERED} ${state}` : ''}
         `}
         role="row">
         {rowCells}
@@ -1036,7 +1040,14 @@ export default class DataTable extends Vue {
     if (bodyRow.nestedContent) {
       row.push(
         <transition name="slide-fade">
-          <div v-show={this.accordionsExpanded.includes(rowId)} id={`${rowId}-content`}>
+          <div
+            v-show={this.accordionsExpanded.includes(rowId)}
+            class={`
+              ${DATA_TABLE_CLASSES.ROW_CHILD_WRAPPER}
+              ${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}
+              ${state ? `${DATA_TABLE_CLASSES.BORDERED} ${state}` : ''}
+            `}
+            id={`${rowId}-content`}>
             {rowAccordionContent}
           </div>
         </transition>
