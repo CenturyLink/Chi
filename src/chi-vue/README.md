@@ -24,6 +24,11 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # CHANGELOG
+## 2.2.0 (July 12, 2023)
+### Components
+#### Added
+* Added: Data table header now supports icons with `icon` property.
+
 ## 2.1.2 (June 14, 2023)
 ### Components
 #### Fixed
