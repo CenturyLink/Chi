@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    <ComponentExample title="Automatic Layout" titleSize="h3" id="automatic-layout" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+    <ComponentExample title="Automatic Layout" id="automatic-layout" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
       p.-text(slot="example")
         | Grid layouts are defined as a grid container that is composed of 
         | one or more rows of columns. By default, columns within a grid container 
@@ -9,7 +9,7 @@
         | not widen to accommodate its contents).
       
       .chi-grid.-mb--2.-show--example(slot="example")
-        .chi-col(v-for="i in grid3Columns" :key="i")
+        .chi-col(v-for="item in grid3Columns" :key="item")
       
       <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
         <code v-highlight="codeSnippets.htmlblueprint3Cols" class="html"></code>
@@ -18,7 +18,7 @@
 
     <ComponentExample id="automatic-layout" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
       .chi-grid.-mb--2.-show--example(slot="example")
-        .chi-col(v-for="i in grid5Columns" :key="i")
+        .chi-col(v-for="item in grid5Columns" :key="item")
 
 
       <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
@@ -29,13 +29,10 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { grid3Columns, grid5Columns } from '../../../../fixtures/fixtures';
 
 @Component({
   data: () => {
     return {
-      grid3Columns,
-      grid5Columns,
       exampleTabs: [
         {
           active: true,
@@ -47,6 +44,9 @@ import { grid3Columns, grid5Columns } from '../../../../fixtures/fixtures';
   }
 })
 export default class AutomaticLayout extends Vue {
+  grid3Columns = Array(3).fill('chi-col');
+  grid5Columns = Array(5).fill('chi-col');
+
   get codeSnippets() {
     return {
       htmlblueprint3Cols: this.generateHtml3Cols(),
@@ -56,14 +56,18 @@ export default class AutomaticLayout extends Vue {
   generateHtml3Cols() {
     return `<!-- three columns of equal width -->
 <div class="chi-grid">
-${grid3Columns.map((item: string) => `  <div class=${item}></div>`).join('\n')}
+${this.grid3Columns
+  .map((item: string) => `  <div class="${item}"></div>`)
+  .join('\n')}
 </div>`;
   }
 
   generateHtml5Cols() {
     return `<!-- five columns of equal width -->
 <div class="chi-grid">
-${grid5Columns.map((item: string) => `  <div class=${item}></div>`).join('\n')}
+${this.grid5Columns
+  .map((item: string) => `  <div class="${item}"></div>`)
+  .join('\n')}
 </div>`;
   }
 }

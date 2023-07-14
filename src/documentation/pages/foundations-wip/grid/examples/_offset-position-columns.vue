@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    <ComponentExample title="Offset Positioning of Columns" titleSize="h3" id="offset-position-columns" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+    <ComponentExample title="Offset Positioning of Columns" id="offset-position-columns" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
       p.-text(slot="example")
         | You may position columns with an offset of one or more column units 
         | by specifying an offset size class on your column.

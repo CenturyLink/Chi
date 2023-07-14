@@ -1,8 +1,7 @@
 <template lang="pug">
   <ComponentExample title="-align--bottom" titleSize="h4" id="-align--bottom" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
-    .chi-grid.-align--bottom.-show--example.-mb--3(style="height: 160px")(slot="example")
-      each i in [1, 2, 3]
-        .chi-col
+    .chi-grid.-align--bottom.-show--example.-mb--3(style="height: 160px" slot="example")
+      .chi-col(:key="item" v-for="item in gridCols")
 
     <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
@@ -35,7 +34,9 @@ export default class AlignBottom extends Vue {
   }
   generateHtml() {
     return `<div class="chi-grid -align--bottom" style="height: 160px;">
-${this.gridCols.map((item: number) => `<div class="chi-col"></div>`)}
+${this.$data.gridCols
+  .map((item: number) => `  <div class="chi-col"></div>`)
+  .join('\n')}
 </div>`;
   }
 }

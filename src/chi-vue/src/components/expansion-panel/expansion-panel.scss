@@ -35,4 +35,36 @@
       }
     }
   }
+
+  &__footer {
+    > div {
+      flex-direction: column;
+
+      @include respond-to(sm) {
+        flex-direction: row;
+      }
+
+      div {
+        & + div {
+          margin-top: 1rem;
+
+          @include respond-to(sm) {
+            margin-left: 1rem;
+            margin-top: 0;
+          }
+        }
+
+        .chi-button,
+        chi-button {
+          justify-content: center;
+          width: 100%;
+
+          @include respond-to(sm) {
+            justify-content: unset;
+            width: auto;
+          }
+        }
+      }
+    }
+  }
 }

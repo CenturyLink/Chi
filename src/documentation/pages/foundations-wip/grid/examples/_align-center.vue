@@ -1,8 +1,7 @@
 <template lang="pug">
   <ComponentExample title="-align--center" titleSize="h4" id="-align--center" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
-    .chi-grid.-align--center.-show--example.-mb--3(style="height: 160px")(slot="example")
-      each i in [1, 2, 3]
-        .chi-col
+    .chi-grid.-align--center.-show--example.-mb--3(style="height: 160px" slot="example")
+      .chi-col(:key="item" v-for="item in gridCols")
 
     <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
@@ -16,7 +15,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      gridCols: [1, 2, 3],
       exampleTabs: [
         {
           active: true,
@@ -28,6 +26,8 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class AlignCenter extends Vue {
+  gridCols = [1, 2, 3];
+
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
@@ -35,7 +35,9 @@ export default class AlignCenter extends Vue {
   }
   generateHtml() {
     return `<div class="chi-grid -align--center" style="height: 160px;">
-${this.gridCols.map((item: number) => `<div class="chi-col"></div>`)}
+${this.gridCols
+  .map((item: number) => `  <div class="chi-col"></div>`)
+  .join('\n')}
 </div>`;
   }
 }

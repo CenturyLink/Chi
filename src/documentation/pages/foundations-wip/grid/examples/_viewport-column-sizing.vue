@@ -1,13 +1,13 @@
 <template lang="pug">
   div
-    <ComponentExample title="Viewport-Specific Column Sizing" titleSize="h3" id="viewport-specific-column-sizing" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+    <ComponentExample title="Viewport-Specific Column Sizing" id="viewport-specific-column-sizing" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
       p.-text(slot="example")
         | The columns in the following rows will be 50% wide until they are in 
         | the configured viewport, at which point they will become 12 column 
         | units wide.
       
       .chi-grid.-show--example.-mb--2(slot="example")
-        .chi-col.-w--6.-mb--3(v-for="i in gridColumns" :key="i" :class="`-w-${i}--12`")
+        .chi-col.-w--6.-mb--3(v-for="item in gridColumns" :key="item" :class="`-w-${item}--12`")
 
       <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
         <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>

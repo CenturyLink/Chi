@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    <ComponentExample title="Column Sizing" titleSize="h3" id="column-sizing" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+    <ComponentExample title="Column Sizing" id="column-sizing" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
       p.-text(slot="example")
         | You can specify the amount of horizontal space that a column may consume
         |  by adding size classes to your column markup. For example, to create a 
@@ -9,8 +9,7 @@
         | <code>-w--3</code> and <code>-w--9</code> to your each column, respectively:
       
       .chi-grid.-show--example.-mb--2(slot="example")
-        .chi-col.-w--3
-        .chi-col.-w--9
+        .chi-col(v-for="item in gridCols" :key="item"  :class="`${item}`")
       
       <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
         <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
@@ -39,6 +38,8 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class ColumnSizing extends Vue {
+  gridCols = ['-w--3', '-w--9'];
+
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
@@ -46,8 +47,9 @@ export default class ColumnSizing extends Vue {
   }
   generateHtml() {
     return `<div class="chi-grid -no-gutter">
-  <div class="chi-col -w--3"></div>
-  <div class="chi-col -w--9"></div>
+${this.gridCols
+  .map((item: string) => `  <div class="chi-col ${item}"></div>`)
+  .join('\n')}
 </div>`;
   }
 }

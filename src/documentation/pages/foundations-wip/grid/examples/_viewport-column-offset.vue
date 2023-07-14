@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    <ComponentExample title="Viewport-Specific Column Offsets" titleSize="h3" id="viewport-specific-column-offset" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+    <ComponentExample title="Viewport-Specific Column Offsets" id="viewport-specific-column-offset" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
       p.-text(slot="example")
         | You may also use offsets on a per-viewport basis. For example, it 
         | may make sense to offset content on a desktop, but where space is 
@@ -9,8 +9,8 @@
         | 50% when on medium viewports, but will not be offset on extra small 
         | or small viewports.
       
-      .chi-grid.-show--example(slot="example")
-        .chi-col.-o-md--6.-mb--3
+      .chi-grid.-show--example.-mb--3(slot="example")
+        .chi-col.-o-md--6
 
       <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
         <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>

@@ -19,10 +19,10 @@
       <CustomizingGridLayout />
       <ColumnSizing />
       <MixingSizesAutomatic />
-      <AvailabeColumnSizes />
+      <AvailableColumnSizes />
       <ColumnWrapping />
       <OffsetPositionColumns />
-      <AvailabeOffsetSizes />
+      <AvailableOffsetSizes />
       <ReorderingColumns />
       <ResponsiveLayout />
       <ViewportColumnSizing />
@@ -44,10 +44,10 @@ import RemovingGutters from './_removing-gutters.vue';
 import CustomizingGridLayout from './_customizing-grid-layouts.vue';
 import ColumnSizing from './_column-sizing.vue';
 import MixingSizesAutomatic from './_mixing-sizes-automatic.vue';
-import AvailabeColumnSizes from './_available-column-sizes.vue';
+import AvailableColumnSizes from './_available-column-sizes.vue';
 import ColumnWrapping from './_column-wrapping.vue';
 import OffsetPositionColumns from './_offset-position-columns.vue';
-import AvailabeOffsetSizes from './_available-offset-sizes.vue';
+import AvailableOffsetSizes from './_available-offset-sizes.vue';
 import ReorderingColumns from './_reordering-columns.vue';
 import ResponsiveLayout from './_responsive-layout.vue';
 import ViewportColumnSizing from './_viewport-column-sizing.vue';
@@ -67,10 +67,10 @@ import ColumnSpecificVerticalAlignment from './_column-specific-vertical-alignme
     CustomizingGridLayout,
     ColumnSizing,
     MixingSizesAutomatic,
-    AvailabeColumnSizes,
+    AvailableColumnSizes,
     ColumnWrapping,
     OffsetPositionColumns,
-    AvailabeOffsetSizes,
+    AvailableOffsetSizes,
     ReorderingColumns,
     ResponsiveLayout,
     ViewportColumnSizing,

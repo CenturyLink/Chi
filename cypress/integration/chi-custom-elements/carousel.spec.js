@@ -8,6 +8,7 @@ const CAROUSEL_DOTS_CLASS = 'chi-carousel__dots';
 const CAROUSEL_PAGINATION_CLASS = 'chi-carousel__pagination';
 const CAROUSEL_VIEW_CHANGE_EVENT = 'chiViewChange';
 const ACTIVE_CLASS = '-active';
+const CAROUSEL_DIRECTION_CONTROL_CLASS = '.chi-carousel__control';
 
 describe('Carousel', () => {
   before(() => {
@@ -214,6 +215,88 @@ describe('Carousel', () => {
           .should('contain', `${i} of 8`);
       }
       cy.get('@prevButton').should('be.disabled');
+    });
+  });
+
+  describe('No Button Controllers', () => {
+    beforeEach(() => {
+      cy.get("[data-cy='no-button-controllers']").as('no-button-controllers');
+    });
+
+    it('Should have attribute no-button-controllers', () => {
+      cy.get('@no-button-controllers').should(
+        'have.attr',
+        'no-button-controllers'
+      );
+    });
+
+    it('Should not have direction buttons controller', () => {
+      cy.get('@no-button-controllers')
+        .find(CAROUSEL_DIRECTION_CONTROL_CLASS)
+        .should('not.exist');
+    });
+  });
+
+  describe('Autoplay', () => {
+    const interval = 3000;
+
+    beforeEach(() => {
+      cy.get("[data-cy='autoplay']").as('autoplay');
+      cy.get(`.${CAROUSEL_ITEM_CLASS}.${ACTIVE_CLASS}`).as('activeItems');
+      cy.get(`.${CAROUSEL_PREVIOUS_CLASS}`).find('button').as('prevButton');
+      cy.get(`.${CAROUSEL_NEXT_CLASS}`).find('button').as('nextButton');
+    });
+
+    it('Should have attribute autoplay', () => {
+      cy.get('@autoplay').should('have.attr', 'autoplay');
+    });
+
+    it('Should have attribute interval', () => {
+      cy.get('@autoplay').should('have.attr', 'interval', 3);
+    });
+
+    it('Should autoplay with 3 seconds interval', () => {
+      cy.visit('tests/custom-elements/carousel.html');
+
+      cy.get('@autoplay').within(() => {
+        cy.get('@prevButton').should('be.disabled');
+
+        return cy
+          .get('@activeItems')
+          .should($item => {
+            expect($item).to.have.length(3);
+            expect($item.eq(0)).to.contain(1);
+            expect($item.eq(2)).to.contain(3);
+          });
+      });
+
+      cy.wait(interval);
+
+      cy.get('@autoplay').within(() => {
+        cy.get('@prevButton')
+          .find('button')
+          .should('not.be.disabled');
+
+        return cy
+          .get('@activeItems')
+          .should($item => {
+            expect($item.eq(0)).to.contain(4);
+            expect($item.eq(2)).to.contain(6);
+          });
+      });
+
+      cy.wait(interval);
+
+      cy.get('@autoplay').within(() => {
+        cy.get('@nextButton').should('be.disabled');
+
+        return cy
+          .get('@activeItems')
+          .should($item => {
+            expect($item.eq(0)).to.contain(6);
+            expect($item.eq(2)).to.contain(8);
+          });
+      });
     });
   });
 });

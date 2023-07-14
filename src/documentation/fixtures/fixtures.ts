@@ -509,13 +509,3 @@ export const zIndexValues: IZIndex[] = [
   { key: '70', color: '-bg--primary', margin: 8, text: 'Tooltips' },
   { key: 'auto', color: '', margin: 0, text: '-' }
 ];
-
-export const grid2Columns = ['chi-col', 'chi-col'];
-export const grid3Columns = ['chi-col', 'chi-col', 'chi-col'];
-export const grid5Columns = [
-  'chi-col',
-  'chi-col',
-  'chi-col',
-  'chi-col',
-  'chi-col'
-];

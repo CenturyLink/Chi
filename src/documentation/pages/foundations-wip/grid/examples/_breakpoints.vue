@@ -11,13 +11,13 @@
             th Columns
             th Gutters (px)
         tbody
-          tr(v-for="breakpoint in breakpoints")
-            td {{ breakpoint.device }}
-            td {{ breakpoint.range }}
+          tr(v-for="({ device, range, size, columns, gutters }) in breakpoints")
+            td {{ device }}
+            td {{ range }}
             td
-              code {{ breakpoint.size }}
-            td {{ breakpoint.columns }}
-            td {{ breakpoint.gutters }}
+              code {{ size }}
+            td {{ columns }}
+            td {{ gutters }}
               
 </template>
 

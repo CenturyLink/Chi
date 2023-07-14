@@ -1,13 +1,12 @@
 <template lang="pug">
-  <ComponentExample title="Removing Gutters" titleSize="h3" id="removing-gutters" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+  <ComponentExample title="Removing Gutters" id="removing-gutters" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
     p.-text(slot="example")
       | Columns are rendered with a consistent amount of spacing between them. 
       | To collapse these margins, you may use the <code>-no-gutter</code> 
       | modifier class on the grid container.
     
     .chi-grid.-no-gutter.-mb--2.-show--example(slot="example")
-      each i in [1, 2, 3]
-        .chi-col
+      .chi-col(v-for="item in [1, 2, 3]" :key="item")
     
     <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
@@ -17,7 +16,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { grid3Columns } from '../../../../fixtures/fixtures';
 
 @Component({
   data: () => {
@@ -33,6 +31,8 @@ import { grid3Columns } from '../../../../fixtures/fixtures';
   }
 })
 export default class RemovingGutters extends Vue {
+  grid3Columns = Array(3).fill('chi-col');
+
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
@@ -41,7 +41,9 @@ export default class RemovingGutters extends Vue {
   generateHtml() {
     return `<!-- grid container with collapsed margins -->
 <div class="chi-grid -no-gutter">
-${grid3Columns.map((item: string) => `  <div class=${item}></div>`).join('\n')}
+${this.grid3Columns
+  .map((item: string) => `  <div class=${item}></div>`)
+  .join('\n')}
 </div>`;
   }
 }
