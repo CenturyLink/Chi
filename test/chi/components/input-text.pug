@@ -260,17 +260,18 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
             .-m--1
               .chi-input__wrapper
                 input.chi-input.-md(type='text' class=`-${style}`)
-                .chi-label.-status(class=`-${style}`)
-                  if style == 'success'
-                    .chi-icon.-icon--success
-                      svg
-                        use(xlink:href='#icon-circle-check')
-                  else if style == 'warning'
-                    .chi-icon.-icon--warning
-                      svg
-                        use(xlink:href='#icon-warning')
-                  else if style == 'danger'
-                    .chi-icon.-icon--danger
-                      svg
-                        use(xlink:href='#icon-circle-warning')
-                  | Optional input message
+                .-d--flex
+                  .chi-label.-status(class=`-${style}`)
+                    if style == 'success'
+                      .chi-icon.-icon--success
+                        svg
+                          use(xlink:href='#icon-circle-check')
+                    else if style == 'warning'
+                      .chi-icon.-icon--warning
+                        svg
+                          use(xlink:href='#icon-warning')
+                    else if style == 'danger'
+                      .chi-icon.-icon--danger
+                        svg
+                          use(xlink:href='#icon-circle-warning')
+                    | Optional input message
