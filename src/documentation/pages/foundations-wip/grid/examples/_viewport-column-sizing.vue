@@ -1,18 +1,17 @@
 <template lang="pug">
-  div
-    <ComponentExample title="Viewport-Specific Column Sizing" id="viewport-specific-column-sizing" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
-      p.-text(slot="example")
-        | The columns in the following rows will be 50% wide until they are in 
-        | the configured viewport, at which point they will become 12 column 
-        | units wide.
-      
-      .chi-grid.-show--example.-mb--2(slot="example")
-        .chi-col.-w--6.-mb--3(v-for="item in gridColumns" :key="item" :class="`-w-${item}--12`")
+  <ComponentExample title="Viewport-Specific Column Sizing" id="viewport-specific-column-sizing" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+    p.-text(slot="example-description")
+      | The columns in the following rows will be 50% wide until they are in 
+      | the configured viewport, at which point they will become 12 column 
+      | units wide.
+    
+    .chi-grid.-show--example.-mb--2(slot="example")
+      .chi-col.-w--6.-mb--3(v-for="item in gridColumns" :key="item" :class="`-w-${item}--12`")
 
-      <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
-        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
-      </pre>
-    </ComponentExample>
+    <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+    </pre>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
@@ -21,7 +20,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      gridColumns: ['sm', 'md', 'lg', 'xl'],
       exampleTabs: [
         {
           active: true,
@@ -33,6 +31,7 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class ViewportColumnSizing extends Vue {
+  gridColumns = ['sm', 'md', 'lg', 'xl'];
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()

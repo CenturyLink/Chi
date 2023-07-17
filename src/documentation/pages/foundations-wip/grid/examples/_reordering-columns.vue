@@ -1,14 +1,14 @@
 <template lang="pug">
   div
     <ComponentExample title="Reordering Columns" id="reordering-columns" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
-      p.-text(slot="example")
+      p.-text(slot="example-description")
         | To display a column or columns in an order that is different than 
         | that which they appear in the markup, you may apply a 
         | reordering modifier class.
       
       .test-reordering.-w--100(slot="example")
         .chi-grid.-mb--2.-show--example
-          .chi-col(v-for="item in grid3Columns" :key="item" :class="`-n--${item}ㅤ`")
+          .chi-col(v-for="item in gridColumns" :key="item" :class="`-n--${item}ㅤ`")
       
       <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
         <code v-highlight="codeSnippets.htmlblueprint3Cols" class="html"></code>
@@ -22,7 +22,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      grid3Columns: [1, 2, 3],
       exampleTabs: [
         {
           active: true,
@@ -34,6 +33,7 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class ReorderingColumns extends Vue {
+  gridColumns = [2, 1, 3];
   get codeSnippets() {
     return {
       htmlblueprint3Cols: this.generateHtml3Cols()

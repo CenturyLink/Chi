@@ -1,16 +1,16 @@
 <template lang="pug">
   div
     <ComponentExample title="Automatic Layout" id="automatic-layout" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
-      p.-text(slot="example")
+      p.-text(slot="example-description")
         | Grid layouts are defined as a grid container that is composed of 
         | one or more rows of columns. By default, columns within a grid container 
         | will occupy an equal amount of horizontal space. Content within those 
         | columns is constrained to the width of the column (i.e. the column will 
         | not widen to accommodate its contents).
-      
+
       .chi-grid.-mb--2.-show--example(slot="example")
         .chi-col(v-for="item in grid3Columns" :key="item")
-      
+
       <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
         <code v-highlight="codeSnippets.htmlblueprint3Cols" class="html"></code>
       </pre>

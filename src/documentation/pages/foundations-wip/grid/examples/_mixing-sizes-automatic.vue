@@ -1,7 +1,7 @@
 <template lang="pug">
   div  
     <ComponentExample title="Mixing Column Sizes w/Automatic Layout" id="mixing-column-sizes-w-automatic-layout" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
-      p.-text(slot="example")
+      p.-text(slot="example-description")
         | When specifying a column size, it is often not necessary to assign an 
         | explicit size to each column. In the case above, we could have easily 
         | omitted the <code>-w--9</code> size class from the second column and 
@@ -14,9 +14,7 @@
         | with the following:
       
       .chi-grid.-mb--2.-show--example(slot="example")
-        .chi-col.-w--2
-        .chi-col
-        .chi-col.-w--2
+        .chi-col(v-for="item in gridColumns" :key="item" :class="item")
       
       <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
         <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
@@ -43,6 +41,7 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class MixingSizesAutomatic extends Vue {
+  gridColumns = ['chi-col -w--2', 'chi-col', 'chi-col -w--2'];
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
@@ -50,9 +49,7 @@ export default class MixingSizesAutomatic extends Vue {
   }
   generateHtml() {
     return `<div class="chi-grid">
-  <div class="chi-col -w--2"></div>
-  <div class="chi-col"></div>
-  <div class="chi-col -w--2"></div>
+${this.gridColumns.map(item => `  <div class="${item}"></div>`).join('\n')}
 </div>`;
   }
 }

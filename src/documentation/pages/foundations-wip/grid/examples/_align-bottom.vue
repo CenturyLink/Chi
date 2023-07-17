@@ -35,7 +35,7 @@ export default class AlignBottom extends Vue {
   generateHtml() {
     return `<div class="chi-grid -align--bottom" style="height: 160px;">
 ${this.$data.gridCols
-  .map((item: number) => `  <div class="chi-col"></div>`)
+  .map((_: any) => `  <div class="chi-col"></div>`)
   .join('\n')}
 </div>`;
   }

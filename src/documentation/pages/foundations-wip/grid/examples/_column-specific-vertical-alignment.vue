@@ -1,11 +1,11 @@
 <template lang="pug">
   <ComponentExample title="Column-Specific Vertical Alignment" id="column-specific-vertical-alignment" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
-    p.-text(slot="example")
+    p.-text(slot="example-description")
       | Changing the alignment of an individual column is as easy as applying 
       | an alignment modifier to the column in question.
       
     .chi-grid.-show--example.-mb--3(style="height: 160px" slot="example")
-      .chi-col(v-for="item in gridCols" :class="`${item}`" :key="item")
+      .chi-col(v-for="item in gridCols" :class="item" :key="item")
 
     <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
@@ -19,7 +19,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      gridCols: ['-align--top', '-align--center', '-align--bottom'],
       exampleTabs: [
         {
           active: true,
@@ -31,6 +30,7 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class ColumnSpecificVerticalAlignment extends Vue {
+  gridCols = ['-align--top', '-align--center', '-align--bottom'];
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
@@ -38,7 +38,7 @@ export default class ColumnSpecificVerticalAlignment extends Vue {
   }
   generateHtml() {
     return `<div class="chi-grid" style="height: 160px;">
-${this.$data.gridCols
+${this.gridCols
   .map((item: string) => `  <div class="chi-col ${item}"></div>`)
   .join('\n')}
 </div>`;

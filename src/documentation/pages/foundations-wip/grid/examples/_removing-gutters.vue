@@ -1,11 +1,11 @@
 <template lang="pug">
   <ComponentExample title="Removing Gutters" id="removing-gutters" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
-    p.-text(slot="example")
+    p.-text(slot="example-description")
       | Columns are rendered with a consistent amount of spacing between them. 
       | To collapse these margins, you may use the <code>-no-gutter</code> 
       | modifier class on the grid container.
     
-    .chi-grid.-no-gutter.-mb--2.-show--example(slot="example")
+    .chi-grid.-no-gutter.-mb--2(slot="example")
       .chi-col(v-for="item in [1, 2, 3]" :key="item")
     
     <pre class="language-html" slot="code-htmlblueprint" style="border:none;">

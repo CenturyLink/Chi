@@ -35,9 +35,7 @@ export default class AlignTop extends Vue {
   }
   generateHtml() {
     return `<div class="chi-grid -align--top" style="height: 160px;">
-${this.gridCols
-  .map((item: number) => `  <div class="chi-col"></div>`)
-  .join('\n')}
+${this.gridCols.map((_: any) => `  <div class="chi-col"></div>`).join('\n')}
 </div>`;
   }
 }

@@ -1,21 +1,20 @@
 <template lang="pug">
-  div
-    <ComponentExample title="Column Wrapping" id="column-wrapping" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
-      p.-text(slot="example")
-        | Grid containers can accommodate any number of columns, however, the 
-        | grid system is restricted to a maximum of 12 column units per row. 
-        | Overflowing the 12 column units will automatically wrap additional 
-        | columns onto a new row. For example, the following layout is the 
-        | result of having 24 column units in a single container:
-      
-      .chi-grid.-mb--2.-show--example(slot="example")
-        .chi-col(v-for="item in grid4Columns" :key="item" class="-w--3")
-        .chi-col(v-for="item in grid2Columns" :key="item" class="-w--6")
-      
-      <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
-        <code v-highlight="codeSnippets.htmlblueprint3Cols" class="html"></code>
-      </pre>
-    </ComponentExample>
+  <ComponentExample title="Column Wrapping" id="column-wrapping" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+    p.-text(slot="example-description")
+      | Grid containers can accommodate any number of columns, however, the 
+      | grid system is restricted to a maximum of 12 column units per row. 
+      | Overflowing the 12 column units will automatically wrap additional 
+      | columns onto a new row. For example, the following layout is the 
+      | result of having 24 column units in a single container:
+    
+    .chi-grid.-mb--2.-show--example(slot="example")
+      .chi-col(v-for="item in grid4Columns" :key="item" class="-w--3")
+      .chi-col(v-for="item in grid2Columns" :key="item" class="-w--6")
+    
+    <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
+      <code v-highlight="codeSnippets.htmlblueprint3Cols" class="html"></code>
+    </pre>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
