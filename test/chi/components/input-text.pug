@@ -251,7 +251,7 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
 
   div(class="test-helper-message")
     span.-text--h2="Text Input / Helper Message"
-    table(cellpadding="0" cellspacing="0" width="1200px")
+    table(cellpadding="0" cellspacing="0" width="480px")
       each style in ['default', 'success', 'warning', 'danger']
         tr
           td
@@ -263,15 +263,15 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
                 .-d--flex
                   .chi-label.-status(class=`-${style}`)
                     if style == 'success'
-                      .chi-icon.-icon--success
+                      .chi-icon
                         svg
                           use(xlink:href='#icon-circle-check')
                     else if style == 'warning'
-                      .chi-icon.-icon--warning
+                      .chi-icon
                         svg
                           use(xlink:href='#icon-warning')
                     else if style == 'danger'
-                      .chi-icon.-icon--danger
+                      .chi-icon
                         svg
                           use(xlink:href='#icon-circle-warning')
                     | Optional input message
