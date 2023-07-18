@@ -240,8 +240,9 @@ each size in sizes
                     value='Value',
                     disabled=status=='disabled'?'disabled':false)
 
-  div(class="test-helper-message")
-    span.-text--h2="Text Input / Helper Message"
+each size in ['xs', 'sm', 'md', 'lg', 'xl']
+  div(class=`test-helper-message-${size}`)
+    span.-text--h2=`Text Input / Helper Message / ${size}`
     table(cellpadding="0" cellspacing="0" width="480px")
       each state in states
         tr
@@ -249,7 +250,10 @@ each size in sizes
             small= `${state}`
           td
             .-m--1
-              chi-text-input(state= state != 'default' && state, helper-message="Optional input message")
+              chi-text-input(
+                size= size, 
+                state= state != 'default' && state, 
+                helper-message="Optional input message")
 
 script.
   function checkAllInputsHydrated() {
