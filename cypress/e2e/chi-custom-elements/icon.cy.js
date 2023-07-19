@@ -1,8 +1,7 @@
 /// <reference types="Cypress" />
 
 describe('Icons', function() {
-
-  beforeEach(()=>{
+  beforeEach(() => {
     cy.fixture('chidata.json').as('chidata');
   });
 
@@ -17,11 +16,9 @@ describe('Icons', function() {
       .children()
       .first()
       .should('match', 'svg');
-
   });
 
   it('Sized icons should have appropriate class', function() {
-
     cy.get('[data-cy="icon-size"]')
       .should('have.class', 'hydrated')
       .children()
@@ -31,11 +28,9 @@ describe('Icons', function() {
       .children()
       .first()
       .should('match', 'svg');
-
   });
 
   it('Colored icons should have appropriate class', function() {
-
     cy.get('[data-cy="icon-color"]')
       .should('have.class', 'hydrated')
       .children()
@@ -45,14 +40,11 @@ describe('Icons', function() {
       .children()
       .first()
       .should('match', 'svg');
-
   });
 
   it('should show all the icons', function() {
-
     cy.get('[data-cy="icon-list"]')
       .children()
       .should('have.length', this.chidata.icons.length);
   });
-
 });

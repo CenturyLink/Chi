@@ -1,7 +1,6 @@
 /// <reference types="Cypress" />
 
 describe('Buttons', () => {
-
   it('Base button should be included inside the custom element', () => {
     cy.visit('tests/custom-elements/buttons.html');
 
@@ -11,7 +10,6 @@ describe('Buttons', () => {
       .children()
       .first()
       .should('match', 'button.chi-button');
-
   });
 
   it('Colored buttons should have appropriate class', () => {
@@ -22,7 +20,6 @@ describe('Buttons', () => {
       .first()
       .should('match', 'button.chi-button.-primary')
       .and('not.have.class', 'primary');
-
   });
 
   it('Sized buttons should have appropriate class', () => {
@@ -61,7 +58,7 @@ describe('Buttons', () => {
   it('Click button should trigger appropriate event', () => {
     const spy = cy.spy();
 
-    cy.get('body').then((el) => {
+    cy.get('body').then(el => {
       el.on('chiClick', spy);
     });
 
