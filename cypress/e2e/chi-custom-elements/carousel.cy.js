@@ -242,9 +242,17 @@ describe('Carousel', () => {
 
     beforeEach(() => {
       cy.get("[data-cy='autoplay']").as('autoplay');
-      cy.get(`.${CAROUSEL_ITEM_CLASS}.${ACTIVE_CLASS}`).as('activeItems');
-      cy.get(`.${CAROUSEL_PREVIOUS_CLASS}`).find('button').as('prevButton');
-      cy.get(`.${CAROUSEL_NEXT_CLASS}`).find('button').as('nextButton');
+      cy.get('@autoplay')
+        .find(`.${CAROUSEL_ITEM_CLASS}.${ACTIVE_CLASS}`)
+        .as('activeItems');
+      cy.get('@autoplay')
+        .find(`.${CAROUSEL_PREVIOUS_CLASS}`)
+        .find('button')
+        .as('prevButton');
+      cy.get('@autoplay')
+        .find(`.${CAROUSEL_NEXT_CLASS}`)
+        .find('button')
+        .as('nextButton');
     });
 
     it('Should have attribute autoplay', () => {
@@ -261,28 +269,22 @@ describe('Carousel', () => {
       cy.get('@autoplay').within(() => {
         cy.get('@prevButton').should('be.disabled');
 
-        return cy
-          .get('@activeItems')
-          .should($item => {
-            expect($item).to.have.length(3);
-            expect($item.eq(0)).to.contain(1);
-            expect($item.eq(2)).to.contain(3);
-          });
+        return cy.get('@activeItems').should($item => {
+          expect($item).to.have.length(3);
+          expect($item.eq(0)).to.contain(1);
+          expect($item.eq(2)).to.contain(3);
+        });
       });
 
       cy.wait(interval);
 
       cy.get('@autoplay').within(() => {
-        cy.get('@prevButton')
-          .find('button')
-          .should('not.be.disabled');
+        cy.get('@prevButton').should('not.be.disabled');
 
-        return cy
-          .get('@activeItems')
-          .should($item => {
-            expect($item.eq(0)).to.contain(4);
-            expect($item.eq(2)).to.contain(6);
-          });
+        return cy.get('@activeItems').should($item => {
+          expect($item.eq(0)).to.contain(4);
+          expect($item.eq(2)).to.contain(6);
+        });
       });
 
       cy.wait(interval);
@@ -290,12 +292,10 @@ describe('Carousel', () => {
       cy.get('@autoplay').within(() => {
         cy.get('@nextButton').should('be.disabled');
 
-        return cy
-          .get('@activeItems')
-          .should($item => {
-            expect($item.eq(0)).to.contain(6);
-            expect($item.eq(2)).to.contain(8);
-          });
+        return cy.get('@activeItems').should($item => {
+          expect($item.eq(0)).to.contain(6);
+          expect($item.eq(2)).to.contain(8);
+        });
       });
     });
   });
