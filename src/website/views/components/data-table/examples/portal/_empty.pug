@@ -190,7 +190,6 @@ h4 Empty Actionable
         a(href=`#html-portal-empty-actionable`) HTML Blueprint
   .chi-tabs-panel#webcomponent-portal-empty-actionable
   .chi-tabs-panel.-active#vue-portal-empty-actionable
-    .chi-tab__description Use <code>noResultsMessage</code> config to customize the no results data message
     :code(lang='html')
       <!-- Vue component -->
       <ChiDataTable :config="config" :data="table"></ChiDataTable>
@@ -199,7 +198,6 @@ h4 Empty Actionable
       data: {
         config: {
           columnResize: true,
-          noResultsMessage: 'No matching results',
           style: {
             portal: true,
             noBorder: false,
@@ -215,6 +213,9 @@ h4 Empty Actionable
             pageJumper: true,
           },
           resultsPerPage: 3,
+          emptyActionable: {
+            isActionable: true,
+          },
         },
         table: {
           head: {
@@ -248,8 +249,20 @@ h4 Empty Actionable
               </div>
             </div>
             <div class="chi-data-table__body">
-              <div class="chi-data-table__row-empty">
-                <div>No matching results</div>
+              <div class="chi-data-table__row-empty -actionable">
+                <div>
+                  <chi-icon icon="circle-plus-outline" color="grey" class="sc-chi-icon-h sc-chi-icon-s hydrated">
+                    <div class="chi-icon -icon--grey undefined sc-chi-icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" aria-hidden="true" class="sc-chi-icon">
+                        <use xlink:href="#icon-circle-plus-outline" class="sc-chi-icon">
+                        </use>
+                      </svg>
+                    </div>
+                  </chi-icon>
+                  <span>
+                    <a>Add a new or existing service</a>, then manage here.
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -264,7 +277,6 @@ script.
     data: {
       config: {
         columnResize: true,
-        noResultsMessage: 'No matching results',
         style: {
           portal: true,
           noBorder: false,
@@ -334,7 +346,6 @@ script.
     data: {
       config: {
         columnResize: true,
-        noResultsMessage: 'Search for or select at least one filter to get results',
         style: {
           portal: true,
           noBorder: false,

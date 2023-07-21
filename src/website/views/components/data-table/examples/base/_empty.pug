@@ -164,44 +164,42 @@ h4 Empty Actionable
         a(href=`#html-empty-actionable`) HTML Blueprint
   .chi-tabs-panel#webcomponent-empty-actionable
   .chi-tabs-panel.-active#vue-empty-actionable
-    .chi-tab__description Use <code>noFiltersMessage</code> config to customize the no filters data message
-    :code(lang='html')
-      <!-- Vue component -->
-      <ChiDataTable :config="config" :data="table"></ChiDataTable>
+  :code(lang='html')
+    <!-- Vue component -->
+    <ChiDataTable :config="config" :data="table"></ChiDataTable>
 
-      <!-- Config and Data -->
-      data: {
-        config: {
-          columnResize: true,
-          noFiltersMessage: "Search for or select at least one filter to get results",
-          style: {
-            portal: false,
-            noBorder: false,
-            bordered: false,
-            hover: false,
-            size: 'md',
-            striped: false,
-          },
-          pagination: {
-            activePage: 1,
-            compact: false,
-            firstLast: false,
-            pageJumper: true,
-          },
-          resultsPerPage: 3,
-          emptyActionable: {
-            isActionable: true,
-          },
+    <!-- Config and Data -->
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
         },
-        table: {
-          head: {
-            name: { label: 'Name' },
-            id: { label: 'ID' },
-            lastLogin: { label: 'Last Login' },
-          },
-          body: []
-        }
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+        emptyActionable: {
+          isActionable: true,
+        },
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: []
       }
+    }
   .chi-tabs-panel#html-empty-actionable
     :code(lang="html")
       <div class="chi-data-table">
@@ -219,9 +217,16 @@ h4 Empty Actionable
           </div>
         </div>
         <div class="chi-data-table__body">
-          <div class="chi-data-table__row-empty">
-            <i class="-mr--1 chi-icon icon-search"></i>
-            Search for or select at least one filter to get results
+          <div class="chi-data-table__row-empty -actionable">
+            <div>
+              <chi-icon icon="circle-plus-outline" color="grey" class="sc-chi-icon-h sc-chi-icon-s hydrated">
+                <div class="chi-icon -icon--grey undefined sc-chi-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" aria-hidden="true" class="sc-chi-icon">
+                    <use xlink:href="#icon-circle-plus-outline" class="sc-chi-icon"></use>
+                  </svg>
+                </div>
+              </chi-icon>
+            </div>
           </div>
         </div>
       </div>
@@ -302,7 +307,6 @@ script.
     data: {
       config: {
         columnResize: true,
-        noResultsMessage: "Search for or select at least one filter to get results",
         style: {
           portal: false,
           noBorder: false,
