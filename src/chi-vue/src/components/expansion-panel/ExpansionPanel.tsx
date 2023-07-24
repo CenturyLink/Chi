@@ -4,6 +4,9 @@ import { EPANEL_CLASSES, UTILITY_CLASSES } from '@/constants/classes';
 import './expansion-panel.scss';
 import { EPANEL } from '@/constants/constants';
 import { Component, Vue } from '@/build/vue-wrapper';
+import Tooltip from '@/components/tooltip/tooltip';
+
+const DEFAULT_TOOLTIP_CONTENT = 'Done';
 
 @Component({})
 export default class ExpansionPanel extends Vue {
@@ -12,6 +15,7 @@ export default class ExpansionPanel extends Vue {
   @Prop() step!: string;
   @Prop() bordered?: boolean;
   @Prop() stateIcon?: boolean;
+  @Prop() stateTooltip?: string;
 
   @Watch('state')
   stateValidation(newValue: ExpansionPanelState) {
@@ -47,6 +51,16 @@ export default class ExpansionPanel extends Vue {
         class={`${EPANEL_CLASSES.EPANEL} ${this.state ? `-${this.state}` : ''}
       ${this.bordered ? EPANEL_CLASSES.BORDERED : ''} ${this.stateIcon ? EPANEL_CLASSES.STATE_ICON : ''}`}>
         <div class={EPANEL_CLASSES.HEADER}>
+          {this.stateIcon && (
+            <Tooltip message={this.stateTooltip || DEFAULT_TOOLTIP_CONTENT}>
+              <chi-icon
+                icon="circle-check"
+                color="success"
+                size="sm--2"
+                extra-class={EPANEL_CLASSES.INNER_STATE_ICON}
+              />
+            </Tooltip>
+          )}
           {this.step ? <span class={EPANEL_CLASSES.NUMBER}>{this.step}.</span> : ''}
           <div class={EPANEL_CLASSES.TITLE}>{this.title}</div>
           <div class={`${EPANEL_CLASSES.CONTENT} ${this.step ? '' : UTILITY_CLASSES.MARGIN.LEFT[0]}`}>
