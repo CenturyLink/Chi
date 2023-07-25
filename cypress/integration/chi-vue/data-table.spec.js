@@ -447,6 +447,25 @@ describe('Data Table', () => {
         .as('empty');
       hasClassAssertion(`@empty`, DATA_TABLE_CLASSES.EMPTY);
     });
+
+    it(`Should show default message when it is empty`, () => {
+      cy.get(`[data-cy='data-table-empty']`).should(
+        'contain',
+        'Add a new or existing service, then manage here.'
+      );
+    });
+
+    it('Should have no rows', () => {
+      cy.get(
+        `[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+      ).should('not.exist');
+    });
+
+    it('Should have no footer', () => {
+      cy.get(`[data-cy='data-table-empty']`)
+        .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
+        .should('not.exist');
+    });
   });
 
   describe('No border', () => {
