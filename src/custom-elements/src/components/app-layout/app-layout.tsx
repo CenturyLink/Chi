@@ -136,26 +136,28 @@ export class AppLayout {
     const appLayoutPageLevelAlert = this.appLayoutPageLevelAlert && <div class="chi-main__alert"><slot name="page-alert"></slot></div>;
 
     return (
-      <div class={`chi-main
+      <div class={`chi-main -d--flex -flex--column -justify-content--between
         ${this.format ? `-${this.format}` : ''}
         ${this.headerBackground ? '-header-background' : ''}`}
       >
-        {appLayoutBackground}
-        {appLayoutPageLevelAlert}
-        <div class="chi-main__header">
-          <div class="chi-main__header-start">
-            {appLayoutBackLink}
-            <div class="chi-main__title">
-              {appLayoutTitle}
-              {appLayoutSubTitle}
+        <main>
+          {appLayoutBackground}
+          {appLayoutPageLevelAlert}
+          <div class="chi-main__header">
+            <div class="chi-main__header-start">
+              {appLayoutBackLink}
+              <div class="chi-main__title">
+                {appLayoutTitle}
+                {appLayoutSubTitle}
+              </div>
             </div>
+            {appLayoutHeaderActions}
           </div>
-          {appLayoutHeaderActions}
-        </div>
-        <div class="chi-main__content">
-          <slot></slot>
-          {appLayoutPageLevelActions}
-        </div>
+          <div class="chi-main__content">
+            <slot></slot>
+            {appLayoutPageLevelActions}
+          </div>
+        </main>
         {appLayoutFooter}
       </div>
     );
