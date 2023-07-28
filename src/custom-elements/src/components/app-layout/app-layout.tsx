@@ -136,7 +136,7 @@ export class AppLayout {
     const appLayoutPageLevelAlert = this.appLayoutPageLevelAlert && <div class="chi-main__alert"><slot name="page-alert"></slot></div>;
 
     return (
-      <div class={`chi-main -d--flex -flex--column -justify-content--between
+      <div class={`chi-main
         ${this.format ? `-${this.format}` : ''}
         ${this.headerBackground ? '-header-background' : ''}`}
       >
