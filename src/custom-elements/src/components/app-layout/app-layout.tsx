@@ -140,22 +140,24 @@ export class AppLayout {
         ${this.format ? `-${this.format}` : ''}
         ${this.headerBackground ? '-header-background' : ''}`}
       >
-        {appLayoutBackground}
-        {appLayoutPageLevelAlert}
-        <div class="chi-main__header">
-          <div class="chi-main__header-start">
-            {appLayoutBackLink}
-            <div class="chi-main__title">
-              {appLayoutTitle}
-              {appLayoutSubTitle}
+        <main>
+          {appLayoutBackground}
+          {appLayoutPageLevelAlert}
+          <div class="chi-main__header">
+            <div class="chi-main__header-start">
+              {appLayoutBackLink}
+              <div class="chi-main__title">
+                {appLayoutTitle}
+                {appLayoutSubTitle}
+              </div>
             </div>
+            {appLayoutHeaderActions}
           </div>
-          {appLayoutHeaderActions}
-        </div>
-        <div class="chi-main__content">
-          <slot></slot>
-          {appLayoutPageLevelActions}
-        </div>
+          <div class="chi-main__content">
+            <slot></slot>
+            {appLayoutPageLevelActions}
+          </div>
+        </main>
         {appLayoutFooter}
       </div>
     );
