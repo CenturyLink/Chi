@@ -197,245 +197,245 @@ describe('Data Table', () => {
         .should('not.exist');
     });
 
-  //   describe('Pagination', () => {
-  //     beforeEach(() => {
-  //       cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`).as(
-  //         'pagination'
-  //       );
-  //     });
+    describe('Pagination', () => {
+      beforeEach(() => {
+        cy.get(`[data-cy='data-table'] .${PAGINATION_CLASSES.PAGINATION}`).as(
+          'pagination'
+        );
+      });
 
-  //     it(`Should show label 'per page'`, () => {
-  //       cy.get(`@pagination`)
-  //         .find(`select`)
-  //         .should('contain', '20');
-  //       cy.get(`@pagination`)
-  //         .find(`.${PAGINATION_CLASSES.LABEL}`)
-  //         .should('contain', 'per page');
-  //     });
+      it(`Should show label 'per page'`, () => {
+        cy.get(`@pagination`)
+          .find(`select`)
+          .should('contain', '20');
+        cy.get(`@pagination`)
+          .find(`.${PAGINATION_CLASSES.LABEL}`)
+          .should('contain', 'per page');
+      });
 
-  //     it('Should trigger next and prev page', () => {
-  //       cy.window()
-  //         .its('baseDataTable')
-  //         .then(baseDataTable => {
-  //           const component = baseDataTable.$refs.base;
-  //           const spy = cy.spy();
+      it('Should trigger next and prev page', () => {
+        cy.window()
+          .its('baseDataTable')
+          .then(baseDataTable => {
+            const component = baseDataTable.$refs.base;
+            const spy = cy.spy();
 
-  //           component.$on(`${PAGINATION_EVENTS.PAGE_CHANGE}`, spy);
-  //           cy.get(`@pagination`)
-  //             .find(`.${ICON_BUTTON}`)
-  //             .as('paginationIcons')
-  //             .eq(2)
-  //             .click()
-  //             .then(() => {
-  //               expect(spy).to.be.calledOnce;
-  //               cy.get(`@pagination`)
-  //                 .find(`button[data-page='2']`)
-  //                 .eq(0)
-  //                 .as('pageTwoButton');
-  //               hasClassAssertion(`@pageTwoButton`, `${ACTIVE_CLASS}`);
-  //               cy.get(`@row`).should('contain', 'Name 4');
-  //             });
-  //           cy.get('@paginationIcons')
-  //             .eq(1)
-  //             .click()
-  //             .then(() => {
-  //               expect(spy).to.be.calledTwice;
-  //               cy.get(`@pagination`)
-  //                 .find(`button[data-page='1']`)
-  //                 .eq(1)
-  //                 .as('pageOneButton');
-  //               hasClassAssertion(`@pageOneButton`, `${ACTIVE_CLASS}`);
-  //               cy.get(`@row`).should('contain', 'Updated Name 1');
-  //             });
-  //         });
-  //     });
+            component.$on(`${PAGINATION_EVENTS.PAGE_CHANGE}`, spy);
+            cy.get(`@pagination`)
+              .find(`.${ICON_BUTTON}`)
+              .as('paginationIcons')
+              .eq(2)
+              .click()
+              .then(() => {
+                expect(spy).to.be.calledOnce;
+                cy.get(`@pagination`)
+                  .find(`button[data-page='2']`)
+                  .eq(0)
+                  .as('pageTwoButton');
+                hasClassAssertion(`@pageTwoButton`, `${ACTIVE_CLASS}`);
+                cy.get(`@row`).should('contain', 'Name 4');
+              });
+            cy.get('@paginationIcons')
+              .eq(1)
+              .click()
+              .then(() => {
+                expect(spy).to.be.calledTwice;
+                cy.get(`@pagination`)
+                  .find(`button[data-page='1']`)
+                  .eq(1)
+                  .as('pageOneButton');
+                hasClassAssertion(`@pageOneButton`, `${ACTIVE_CLASS}`);
+                cy.get(`@row`).should('contain', 'Updated Name 1');
+              });
+          });
+      });
 
-  //     it('Should jump page correctly on input', () => {
-  //       cy.get(`@pagination`)
-  //         .find(`.${PAGINATION_CLASSES.JUMPER} input`)
-  //         .as('pagJumperInput')
-  //         .type('2{enter}')
-  //         .then(() => {
-  //           cy.get(`@row`).should('contain', 'Name 4');
-  //           cy.get(`@pagination`)
-  //             .find(`button[data-page='2']`)
-  //             .as('secondPageBtn');
-  //           hasClassAssertion('@secondPageBtn', ACTIVE_CLASS);
-  //         });
-  //       cy.get('@pagJumperInput')
-  //         .type('{backspace}1{enter}')
-  //         .then(() => {
-  //           cy.get(`@row`).should('contain', 'Updated Name 1');
-  //           cy.get(`@pagination`)
-  //             .find(`button[data-page='1']`)
-  //             .as('firstPageBtn');
-  //           hasClassAssertion('@firstPageBtn', ACTIVE_CLASS);
-  //         });
-  //       cy.get('@pagJumperInput').type('{backspace}');
-  //       cy.get(`@firstPageBtn`)
-  //         .eq(1)
-  //         .click();
-  //     });
+      it('Should jump page correctly on input', () => {
+        cy.get(`@pagination`)
+          .find(`.${PAGINATION_CLASSES.JUMPER} input`)
+          .as('pagJumperInput')
+          .type('2{enter}')
+          .then(() => {
+            cy.get(`@row`).should('contain', 'Name 4');
+            cy.get(`@pagination`)
+              .find(`button[data-page='2']`)
+              .as('secondPageBtn');
+            hasClassAssertion('@secondPageBtn', ACTIVE_CLASS);
+          });
+        cy.get('@pagJumperInput')
+          .type('{backspace}1{enter}')
+          .then(() => {
+            cy.get(`@row`).should('contain', 'Updated Name 1');
+            cy.get(`@pagination`)
+              .find(`button[data-page='1']`)
+              .as('firstPageBtn');
+            hasClassAssertion('@firstPageBtn', ACTIVE_CLASS);
+          });
+        cy.get('@pagJumperInput').type('{backspace}');
+        cy.get(`@firstPageBtn`)
+          .eq(1)
+          .click();
+      });
 
-  //     it('Should change page correctly on page number click', () => {
-  //       cy.get(`@pagination`)
-  //         .find(`button[data-page='2']`)
-  //         .eq(0)
-  //         .as('pageTwoButton')
-  //         .click()
-  //         .then(() => {
-  //           hasClassAssertion('@pageTwoButton', `${ACTIVE_CLASS}`);
-  //           cy.get(`@row`).should('contain', 'Name 4');
-  //         });
-  //       cy.get(`@pagination`)
-  //         .find(`button[data-page='1']`)
-  //         .eq(2)
-  //         .as('pageOneButton')
-  //         .click()
-  //         .then(() => {
-  //           hasClassAssertion('@pageOneButton', `${ACTIVE_CLASS}`);
-  //           cy.get(`@row`).should('contain', 'Updated Name 1');
-  //         });
-  //     });
+      it('Should change page correctly on page number click', () => {
+        cy.get(`@pagination`)
+          .find(`button[data-page='2']`)
+          .eq(0)
+          .as('pageTwoButton')
+          .click()
+          .then(() => {
+            hasClassAssertion('@pageTwoButton', `${ACTIVE_CLASS}`);
+            cy.get(`@row`).should('contain', 'Name 4');
+          });
+        cy.get(`@pagination`)
+          .find(`button[data-page='1']`)
+          .eq(2)
+          .as('pageOneButton')
+          .click()
+          .then(() => {
+            hasClassAssertion('@pageOneButton', `${ACTIVE_CLASS}`);
+            cy.get(`@row`).should('contain', 'Updated Name 1');
+          });
+      });
 
-  //     it('Should go to first and last pages', () => {
-  //       cy.get(`@pagination`)
-  //         .find(`.${ICON_BUTTON}`)
-  //         .as('paginationIcons')
-  //         .eq(2)
-  //         .click()
-  //         .then(() => {
-  //           cy.get(`@pagination`)
-  //             .find(`button[data-page='2']`)
-  //             .as('pageTwoButton');
-  //           hasClassAssertion(`@pageTwoButton`, `${ACTIVE_CLASS}`);
-  //           cy.get(`@row`).should('contain', 'Name 4');
-  //         });
-  //       cy.get('@paginationIcons')
-  //         .eq(0)
-  //         .click()
-  //         .then(() => {
-  //           cy.get(`@pagination`)
-  //             .find(`button[data-page='1']`)
-  //             .as('pageOneButton');
-  //           hasClassAssertion(`@pageOneButton`, `${ACTIVE_CLASS}`);
-  //           cy.get(`@row`).should('contain', 'Updated Name 1');
-  //         });
-  //     });
+      it('Should go to first and last pages', () => {
+        cy.get(`@pagination`)
+          .find(`.${ICON_BUTTON}`)
+          .as('paginationIcons')
+          .eq(2)
+          .click()
+          .then(() => {
+            cy.get(`@pagination`)
+              .find(`button[data-page='2']`)
+              .as('pageTwoButton');
+            hasClassAssertion(`@pageTwoButton`, `${ACTIVE_CLASS}`);
+            cy.get(`@row`).should('contain', 'Name 4');
+          });
+        cy.get('@paginationIcons')
+          .eq(0)
+          .click()
+          .then(() => {
+            cy.get(`@pagination`)
+              .find(`button[data-page='1']`)
+              .as('pageOneButton');
+            hasClassAssertion(`@pageOneButton`, `${ACTIVE_CLASS}`);
+            cy.get(`@row`).should('contain', 'Updated Name 1');
+          });
+      });
 
-  //     it('Should change number of page results', () => {
-  //       cy.window()
-  //         .its('baseDataTable')
-  //         .then(baseDataTable => {
-  //           const component = baseDataTable.$refs.base;
-  //           const spy = cy.spy();
+      it('Should change number of page results', () => {
+        cy.window()
+          .its('baseDataTable')
+          .then(baseDataTable => {
+            const component = baseDataTable.$refs.base;
+            const spy = cy.spy();
 
-  //           component.$on(`${PAGINATION_EVENTS.PAGE_SIZE}`, spy);
-  //           cy.get('@body')
-  //             .find(`.${DATA_TABLE_CLASSES.ROW}`)
-  //             .should('have.length', 3);
-  //           cy.get(`@pagination`)
-  //             .find(`.${PAGINATION_CLASSES.PAGE_SIZE} select`)
-  //             .as('pagSelect')
-  //             .select('40')
-  //             .then(() => {
-  //               expect(spy).to.be.called;
-  //               cy.get(`@pagination`)
-  //                 .find(`button[data-page='2']`)
-  //                 .should('have.attr', 'disabled');
-  //               cy.get('@body')
-  //                 .find(`.${DATA_TABLE_CLASSES.ROW}`)
-  //                 .should('have.length', 6);
-  //               cy.get('@pagSelect').should('contain', '40');
-  //             });
-  //         });
-  //     });
-  //   });
+            component.$on(`${PAGINATION_EVENTS.PAGE_SIZE}`, spy);
+            cy.get('@body')
+              .find(`.${DATA_TABLE_CLASSES.ROW}`)
+              .should('have.length', 3);
+            cy.get(`@pagination`)
+              .find(`.${PAGINATION_CLASSES.PAGE_SIZE} select`)
+              .as('pagSelect')
+              .select('40')
+              .then(() => {
+                expect(spy).to.be.called;
+                cy.get(`@pagination`)
+                  .find(`button[data-page='2']`)
+                  .should('have.attr', 'disabled');
+                cy.get('@body')
+                  .find(`.${DATA_TABLE_CLASSES.ROW}`)
+                  .should('have.length', 6);
+                cy.get('@pagSelect').should('contain', '40');
+              });
+          });
+      });
+    });
 
-  //   describe('Default (non-truncation)', () => {
-  //     it(`Should not have head cells with class .${DATA_TABLE_CLASSES.TRUNCATED}`, () => {
-  //       cy.get(
-  //         `[data-cy='data-table'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
-  //       ).should('not.have.class', DATA_TABLE_CLASSES.TRUNCATED);
-  //     });
+    describe('Default (non-truncation)', () => {
+      it(`Should not have head cells with class .${DATA_TABLE_CLASSES.TRUNCATED}`, () => {
+        cy.get(
+          `[data-cy='data-table'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
+        ).should('not.have.class', DATA_TABLE_CLASSES.TRUNCATED);
+      });
 
-  //     it(`Should not contain class .${UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} within the head cells`, () => {
-  //       cy.get(
-  //         `[data-cy='data-table'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
-  //       )
-  //         .children()
-  //         .should('not.have.class', UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE);
-  //     });
-  //   });
-  // });
+      it(`Should not contain class .${UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} within the head cells`, () => {
+        cy.get(
+          `[data-cy='data-table'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
+        )
+          .children()
+          .should('not.have.class', UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE);
+      });
+    });
+  });
 
-  // describe('Truncation', () => {
-  //   it(`Should not have body cells with class .${DATA_TABLE_CLASSES.TRUNCATED}`, () => {
-  //     cy.get(
-  //       `[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.CELL}`
-  //     ).should('not.have.class', DATA_TABLE_CLASSES.TRUNCATED);
-  //   });
+  describe('Truncation', () => {
+    it(`Should not have body cells with class .${DATA_TABLE_CLASSES.TRUNCATED}`, () => {
+      cy.get(
+        `[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.CELL}`
+      ).should('not.have.class', DATA_TABLE_CLASSES.TRUNCATED);
+    });
 
-  //   it(`Should contain class .${UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} within the head cells`, () => {
-  //     cy.get(
-  //       `[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
-  //     )
-  //       .find(`.${UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}`)
-  //       .should('exist');
-  //   });
+    it(`Should contain class .${UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE} within the head cells`, () => {
+      cy.get(
+        `[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD} .${DATA_TABLE_CLASSES.CELL}`
+      )
+        .find(`.${UTILITY_CLASSES.TYPOGRAPHY.TEXT_TRUNCATE}`)
+        .should('exist');
+    });
 
-  //   const headCellsTooltips = [false, false, true, true, true];
+    const headCellsTooltips = [false, false, true, true, true];
 
-  //   headCellsTooltips.forEach((isVisible, index) => {
-  //     const assertion = !isVisible ? 'not.exist' : 'exist';
+    headCellsTooltips.forEach((isVisible, index) => {
+      const assertion = !isVisible ? 'not.exist' : 'exist';
 
-  //     it(`Tooltip element ${index} should ${
-  //       !isVisible ? 'not' : ''
-  //     } exist as the label is ${!isVisible ? 'not' : ''} truncated`, () => {
-  //       cy.get(`[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD}`)
-  //         .find(`.${DATA_TABLE_CLASSES.CELL}`)
-  //         .eq(index)
-  //         .children()
-  //         .first()
-  //         .as('trigger')
-  //         .trigger('mouseenter')
-  //         .then(() => {
-  //           cy.get('@trigger')
-  //             .find(`.${TOOLTIP_CLASSES.TOOLTIP}`)
-  //             .should(assertion);
-  //         });
-  //     });
-  //   });
-  // });
+      it(`Tooltip element ${index} should ${
+        !isVisible ? 'not' : ''
+      } exist as the label is ${!isVisible ? 'not' : ''} truncated`, () => {
+        cy.get(`[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD}`)
+          .find(`.${DATA_TABLE_CLASSES.CELL}`)
+          .eq(index)
+          .children()
+          .first()
+          .as('trigger')
+          .trigger('mouseenter')
+          .then(() => {
+            cy.get('@trigger')
+              .find(`.${TOOLTIP_CLASSES.TOOLTIP}`)
+              .should(assertion);
+          });
+      });
+    });
+  });
 
-  // describe('Empty', () => {
-  //   it(`Should have class .${DATA_TABLE_CLASSES.EMPTY}`, () => {
-  //     cy.get(`[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY}`)
-  //       .children()
-  //       .first()
-  //       .as('empty');
-  //     hasClassAssertion(`@empty`, DATA_TABLE_CLASSES.EMPTY);
-  //   });
+  describe('Empty', () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.EMPTY}`, () => {
+      cy.get(`[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY}`)
+        .children()
+        .first()
+        .as('empty');
+      hasClassAssertion(`@empty`, DATA_TABLE_CLASSES.EMPTY);
+    });
 
-  //   it(`Should show default message when it is empty`, () => {
-  //     cy.get(`[data-cy='data-table-empty']`).should(
-  //       'contain',
-  //       'No matches found. Please revise search criteria and try again.'
-  //     );
-  //   });
+    it(`Should show default message when it is empty`, () => {
+      cy.get(`[data-cy='data-table-empty']`).should(
+        'contain',
+        'No matches found. Please revise search criteria and try again.'
+      );
+    });
 
-  //   it('Should have no rows', () => {
-  //     cy.get(
-  //       `[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
-  //     ).should('not.exist');
-  //   });
+    it('Should have no rows', () => {
+      cy.get(
+        `[data-cy='data-table-empty'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+      ).should('not.exist');
+    });
 
-  //   it('Should have no footer', () => {
-  //     cy.get(`[data-cy='data-table-empty']`)
-  //       .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
-  //       .should('not.exist');
-  //   });
-  // });
+    it('Should have no footer', () => {
+      cy.get(`[data-cy='data-table-empty']`)
+        .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
+        .should('not.exist');
+    });
+  });
 
   describe('Empty Actionable', () => {
     it(`Should have class .${DATA_TABLE_CLASSES.EMPTY_ACTIONABLE}`, () => {
