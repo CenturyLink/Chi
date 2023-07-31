@@ -79,6 +79,7 @@ pipeline {
       PROJECT_MAL = "chi"
       DOCKER_REPO = 'chi'
 
+      VUE3_BRANCH = 'master-vue3'
       BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
       COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
       PULL_REQUEST="pr-${env.CHANGE_ID}"
@@ -86,7 +87,7 @@ pipeline {
       IMAGE_TAG = "${env.PULL_REQUEST}"
       KUBE_DOCKER_SECRET_NAME = "${env.PROJECT_NAME}-${env.PULL_REQUEST}"
       KUBE_DOCKER_SECRET_NAME_TEST = "${env.PROJECT_NAME}-${env.BRANCH_NAME}"
-      PROD_BRANCH="master"
+      PROD_BRANCH="${(BRANCH_NAME == 'master' || CHANGE_TARGET == 'master' ) ? 'master' : 'master-vue3'}"
 
       // ServiceNow Variables
       SERVICE_NOW_CREDENTIALS = 'snow-credentials'
@@ -98,6 +99,10 @@ pipeline {
       DEPLOY_TAG_PATTERN =  /(.*##DEPLOYMENT##.*)/
       NODE_OPTIONS = "--max-old-space-size=1536"
       GENERATE_SOURCEMAP = "false"
+
+      SONAR_PROPERTIES_FILE = "./cicd/docker/SonarQube/sonar-project.properties"
+      SONAR_QG_THRESHOLD_FILE = "cicd/qgatethresholds/qgate1-sonar.json"
+      DOCKER_BUILDKIT=1
     }
 
     agent {
@@ -122,6 +127,10 @@ pipeline {
       issueCommentTrigger('.*test this please.*')
     }
 
+    parameters{
+        booleanParam(name: 'isVue3', defaultValue: false, description: 'isVue3')
+    }
+
     stages {
       stage('Summary') {
         steps {
@@ -132,25 +141,21 @@ pipeline {
       }
       stage('Promote and Deployment tagging') {
         when {
-            tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"
+          beforeAgent true
+          tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"
         }
         steps {
           script {
-             def tagAttributes = jslGCRGetTagAttributes()
-             echo "Processing ${tagAttributes['tagType']} tag for DevOps ${tagAttributes['gcrNumber']}"
-             jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
-             def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
-             def currentJob = env.JOB_NAME.toString()
-             def currentBaseName = env.JOB_BASE_NAME.toString()
-             def pathJob = currentJob - currentBaseName
-             echo "Triggering deployment to production job ${pathJob} with tag ${tagName}"
-             jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6)
+            promoteDeployTagGCR()
           }
         }
       }
       stage('Authorize - Prod only') {
         when {
-          tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
+          beforeAgent true
+          anyOf {
+            tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
+          }
         }
         steps {
           script {
@@ -159,28 +164,32 @@ pipeline {
           }
         }
       }
+
       stage('Static Code Analysis') {
+        when {
+          beforeAgent true
+          allOf {
+            not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+            not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+          }
+        }
         parallel {
           stage('Linting Standard CHI') {
             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/sonar-scanner'
+                filename getNodeAgentBlock()
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
             }
             when {
               beforeAgent true
-              allOf {
-                  not {branch PROD_BRANCH}
-                  not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-                  not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              }
+              not {branch PROD_BRANCH}
             }
             steps {
               script{
-                jslYarnWrapper('install')
+                ghYarnWrap('install')
                 jslNpmWrapper('run lint:css')
               }
             }
@@ -188,24 +197,20 @@ pipeline {
           stage('Linting Chi-vue') {
             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/chi-vue'
+                filename getNodeAgentBlock('chi-vue')
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
             }
             when {
               beforeAgent true
-              allOf {
-                  not {branch PROD_BRANCH}
-                  not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-                  not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              }
+              not {branch PROD_BRANCH}
             }
             steps {
               script{
                 dir ('src/chi-vue') {
-                  jslYarnWrapper('install')
+                  ghYarnWrap('install')
                   jslNpmWrapper('run prettier:checker')
                 }
                 echo "No full linting implemented in repo"
@@ -213,48 +218,63 @@ pipeline {
             }
           }
           stage('DevSecOps') {
-            when {
-                allOf {
-                  not { tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-                  not { tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-                }
-            }
             steps {
               script {
                 jslGitHubSecurityAlert()
               }
             }
           }
-          stage('Package Version') {
-            when {
-              anyOf {
-                branch PROD_BRANCH
-                tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
-              }
-            }
-            steps {
-              script {
-                sh(script: """
-                    set +x
-                    git whatchanged -1 --format=oneline
-                    git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
-                    rm -rf version_bump
-                    if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
-                      echo -n "yes" > version_bump
-                    else
-                      echo -n "no" > version_bump
-                    fi
-                    cat version_bump
-                    echo "All good."
-                """, label: "Package version validation")
-                stash name: "VERSION_BUMP", includes: "version_bump"
-              }
-            }
+          // to check chi-vue while introducing devopsGCR
+        }
+      }
+
+      stage('Package Version') {
+        when {
+          beforeAgent true
+          anyOf {
+            branch PROD_BRANCH
+            tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
+          }
+        }
+        steps {
+          script {
+            sh(script: """
+                set +x
+                git whatchanged -1 --format=oneline
+                git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
+                rm -rf chi_version_bump
+                if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
+                  echo -n "yes" > chi_version_bump
+                else
+                  echo -n "no" > chi_version_bump
+                fi
+                cat chi_version_bump
+                echo "All good."
+            """, label: "Package version validation")
+            stash name: "CHI_VERSION_BUMP", includes: "chi_version_bump"
+            isVersionBump()
+            sh(script: """
+                set +x
+                git whatchanged -1 --format=oneline src/chi-vue
+                git diff HEAD~2 src/chi-vue/package.json | grep '"version":' || echo No package.json changes
+                rm -rf chi_vue_version_bump
+                if [ \$(git diff HEAD~2 src/chi-vue/package.json | grep '"version":' | wc -l) -eq 2 ]; then
+                  echo -n "yes" > chi_vue_version_bump
+                else
+                  echo -n "no" > chi_vue_version_bump
+                fi
+                cat chi_vue_version_bump
+                echo "All good."
+            """, label: "CHI-VUE Package version validation")
+            stash name: "CHI_VUE_VERSION_BUMP", includes: "chi_vue_version_bump"
+            isVersionBump('chi-vue')
           }
         }
       }
+
       stage('CE, Vue & Documentation Build') {
         when {
+            beforeAgent true
             allOf {
               not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
               not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
@@ -264,8 +284,8 @@ pipeline {
           stage ('Building Custom elements') {
             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/sonar-scanner'
+                filename getNodeAgentBlock()
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -284,8 +304,8 @@ pipeline {
           stage ('Building Chi-vue') {
             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/chi-vue'
+                filename getNodeAgentBlock('chi-vue')
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -293,6 +313,9 @@ pipeline {
             steps {
               script {
                 dir('src/chi-vue') {
+                  def packageJson = readJSON file: 'package.json'
+                  packageJson.version = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+                  writeJSON file: 'package.json', json: packageJson
                   jslNpmWrapper('ci')
                   jslNpmWrapper('run build:component')
                   stash name: "DIST-CHI-VUE", includes: "dist/**"
@@ -304,10 +327,10 @@ pipeline {
             }
           }
           stage ('Building Vue documentation system') {
-            agent {
+             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/sonar-scanner'
+                filename getNodeAgentBlock()
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -316,7 +339,7 @@ pipeline {
               script {
                 dir('src/documentation') {
                   jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-                  if (isVersionBump() || env.BRANCH_NAME=='master') {
+                  if (isVersionBump() || env.BRANCH_NAME==env.PROD_BRANCH) {
                     jslNpmWrapper('run generate-production')
                   } else {
                     jslNpmWrapper('run generate-pr')
@@ -331,13 +354,14 @@ pipeline {
       stage ('Building Chi') {
         agent {
           dockerfile {
-            filename 'Dockerfile'
-            dir 'cicd/docker/sonar-scanner'
+            filename getNodeAgentBlock()
+            dir 'cicd/docker/agent_images'
             label 'Docker-enabled'
             args '-m 2G --shm-size=2gb'
           }
         }
         when {
+            beforeAgent true
             allOf {
               not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
               not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
@@ -353,7 +377,10 @@ pipeline {
               unstash name: "DIST-CHI-CE"
             }
             sh "sleep 10s"
-            jslYarnWrapper('install')
+            def packageJson = readJSON file: 'package.json'
+            packageJson.version = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+            writeJSON file: 'package.json', json: packageJson
+            ghYarnWrap('install')
             jslNpmWrapper('run cicd:build:pre:sri')
             jslNpmWrapper('run sri')
             jslNpmWrapper('run cicd:build:post:sri')
@@ -381,8 +408,8 @@ pipeline {
           stage ('BackstopJS Responsive Test') {
             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/sonar-scanner'
+                filename getNodeAgentBlock()
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -412,8 +439,8 @@ pipeline {
           stage ('BackstopJS Non-Responsive Test') {
             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/sonar-scanner'
+                filename getNodeAgentBlock()
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -443,8 +470,8 @@ pipeline {
           stage ('BackstopJS Custom Elements Test') {
             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/sonar-scanner'
+                filename getNodeAgentBlock()
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -474,8 +501,8 @@ pipeline {
           stage ('Cypress local Testing') {
             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/sonar-scanner'
+                filename getNodeAgentBlock()
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -486,8 +513,8 @@ pipeline {
                   rm -rf dist
                   rm -rf node_modules
                 """
-                jslYarnWrapper('install')
-                jslYarnWrapper('cache clean')
+                ghYarnWrap('install')
+                ghYarnWrap('cache clean')
                 unstash name: "DIST-CHI"
                 dir ('src/custom-elements') {
                   sh """
@@ -524,18 +551,31 @@ pipeline {
           }
         }
       }
-      stage('Coverage') {
+      stage('Sonarqube Static Analysis') {
+        agent {
+          dockerfile {
+            filename getNodeAgentBlock()
+            dir 'cicd/docker/agent_images'
+            label 'Docker-enabled'
+            args '-m 2G --shm-size=2gb'
+          }
+        }
         when {
-          beforeAgent true
-          allOf {
+            beforeAgent true
+            allOf {
               not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
               not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
               not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-          }
+            }
         }
         steps {
           script {
-            // jslYarnWrapper('install')
+            unstash name: "BACKSTOP-CE-CI"
+            unstash name: "BACKSTOP-NON-RES-CI"
+            unstash name: "BACKSTOP-RES-CI"
+            // For performance optimization the coverage has been moved here, however, if in the future the project enable coverage check using lcov or similar tools
+            // according to Sonar specification, then it need to have all needed parts of the coverage in the same stage or separated one, example can be seen below:
+            // ghYarnWrap('install')
             // sh "rm -rf .nyc_output*"
             // sh "rm -rf coverage/"
             // unstash name: "NYC_OUTPUT_UNIT"
@@ -545,170 +585,76 @@ pipeline {
             // jslNpmWrapper('run cover:report:jenkins || echo Error when evaluating coverage report!')
             // stash name: "COVERAGE", includes: "coverage/**"
             // archiveArtifacts artifacts: 'coverage/**'
-            jslQualityGateCodeCoverage('./cicd/docker/SonarQube/sonar-project.properties')
-          }
-        }
-      }
-      stage('Coverage upload to Sonarqube') {
-        agent {
-          dockerfile {
-            filename 'Dockerfile'
-            dir 'cicd/docker/sonar-scanner'
-            label 'Docker-enabled'
-          }
-        }
-        when {
-            beforeAgent true
-            allOf {
-              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-            }
-        }
-        steps {
-          script {
-            try {
-              unstash name: "COVERAGE"
-            }  catch (Exception e) {
-              echo "No coverage data"
-            }
-            unstash name: "BACKSTOP-CE-CI"
-            unstash name: "BACKSTOP-NON-RES-CI"
-            unstash name: "BACKSTOP-RES-CI"
-            jslSonarQubeStaticAnalysis('./cicd/docker/SonarQube/sonar-project.properties', env.SONARQUBE_CREDENTIALS)
-          }
-        }
-      }
-      stage('Quality Gate Check'){
-        agent {
-          docker {
-            image 'nexusprod.corp.intranet:4567/jsl-docker-standard-images/sonarqube_agent:latest'
-            label 'Docker-enabled'
-          }
-        }
-        when {
-            beforeAgent true
-            allOf {
-              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-              not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-            }
-        }
-        steps {
-          script {
+            jslQualityGateCodeCoverage(env.SONAR_PROPERTIES_FILE)
+            jslSonarQubeStaticAnalysis(env.SONAR_PROPERTIES_FILE, env.SONARQUBE_CREDENTIALS)
             jslQualityGate()
           }
         }
       }
       stage('QualityGate1') {
-          agent {
-            docker {
-                image 'nexusprod.corp.intranet:4567/jsl-docker-standard-images/jira_agent:latest'
-                label 'Docker-enabled'
+        agent {
+          docker {
+              image 'nexusprod.corp.intranet:4567/jsl-docker-standard-images/jira_agent:latest'
+              label 'Docker-enabled'
+          }
+        }
+        when {
+            beforeAgent true
+            allOf {
+              not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
+              not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
+            }
+        }
+        steps {
+          script {
+            def isTestAvailable = true
+            try {
+              unstash name: "BACKSTOP-NON-RES-CI"
+            } catch (Exception e) {
+              echo "No BACKSTOP-NON-RES-CI tests: ${e.getMessage()}"
+              isTestAvailable = false
+            }
+            if (isTestAvailable) {
+              echo "QualityGate1-Unit"
+              jslCheckQualityGates('reports/ci_report/non_responsive/xunit.xml', 'QualityGate1-Unit')
             }
           }
-          when {
-              beforeAgent true
-              allOf {
-                not {tag pattern: RC_TAG_PATTERN, comparator: "REGEXP"}
-                not {tag pattern: PROMOTE_TAG_PATTERN, comparator: "REGEXP"}
-                not {tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"}
-              }
-          }
-          steps {
-              script {
-                  def isTestAvailable = true
-                  try {
-                    unstash name: "BACKSTOP-NON-RES-CI"
-                  } catch (Exception e) {
-                    echo "No BACKSTOP-NON-RES-CI tests: ${e.getMessage()}"
-                    isTestAvailable = false
-                  }
-                  if (isTestAvailable) {
-                    echo "QualityGate1-Unit"
-                    jslCheckQualityGates('reports/ci_report/non_responsive/xunit.xml', 'QualityGate1-Unit')
-                  }
-                  echo "QualityGate1-StaticCodeAnalysis"
-                  jslAdoptionSonarStats('sonarqubeStats.json')
-                  jslCheckSonarQualityGate('cicd/qgatethresholds/qgate1-sonar.json', 'sonarqubeStats.json')
-                  if ("${currentBuild.currentResult}" != "UNSTABLE") {
-                    jslCheckQualityGates('sonarqubeStats.json', 'QualityGate1-StaticCodeAnalysis', 'sonarqubestats', 'cicd/qgatethresholds/qgate1-sonar.json')
-                  } else {
-                    echo "skipping CheckQualityGate of StaticCodeAnalysis: jslCheckSonarQualityGate failed"
-                  }
-              }
-          }
+        }
       }
       stage('Version check & Publish') {
         when {
           beforeAgent true
           allOf {
+            anyOf {
               tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
-              expression {
-                return isVersionBump()
-              }
+            }
+            expression {
+              return isVersionBump(env.VERSION_BUMP_SCOPE)
+            }
           }
         }
         stages {
           stage('GitHub Release') {
             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/sonar-scanner'
+                filename getNodeAgentBlock()
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
               }
             }
             steps {
               script {
-                sh script: """#!/bin/bash
-                  VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
-                  major=\$(echo \$VERSION | awk -F '.' '{print \$1}')
-                  minor=\$(echo \$VERSION | awk -F '.' '{print \$2}')
-                  patch=\$(echo \$VERSION | awk -F '.' '{print \$3}')
-
-                  if [[ \$major == 0 ]]
-                  then
-                      echo "Major digit Already Zero"
-                      majorold="0"
-                  elif [[ \$minor == 0 ]]
-                  then
-                      majorold=\$(( \$major - 1 ))
-                  else
-                      majorold="\$major"
-                  fi
-
-                  if [[ \$minor == 0 ]]
-                  then
-                      echo "Minor digit Already Zero"
-                      minorold="0"
-                  elif [[ \$patch == 0 ]]
-                  then
-                      minorold=\$(( \$minor - 1 ))
-                  else
-                      minorold="\$minor"
-                  fi
-
-                  if [[ \$patch == 0 ]]
-                  then
-                      echo "Patch digit Already Zero"
-                      patchold="0"
-                  else
-                      patchold=\$(( \$patch - 1 ))
-                  fi
-
-                  echo "READING CHANGELOG FOR VERSION: \$major.\$minor.\$patch"
-                  echo "v\$major.\$minor.\$patch" > shortCHANGELOG.md
-                  echo "" >> shortCHANGELOG.md
-                  sed -n -e "/\$major.\$minor.\$patch/,/\$majorold.\$minorold.\$patchold/ p" CHANGELOG.md | head -n -2 >> shortCHANGELOG.md
-                """
-                env.VERSION = sh (
-                  script: """
-                    cat package.json | grep '"version":' | cut -f4 -d '"'
-                  """,
-                  returnStdout: true
-                ).trim()
-                env.GITHUB_USER='lumen-jenkins-prod'
-                jslHubWrapper("release create -F shortCHANGELOG.md v${env.VERSION}")
+                def bumpScope = ['chi']
+                if (env.VERSION_BUMP_SCOPE == 'chi-vue') {
+                  bumpScope = ['chi-vue']
+                } else if (env.VERSION_BUMP_SCOPE == 'all') {
+                  bumpScope = ['chi', 'chi-vue']
+                }
+                bumpScope.each { scope ->
+                  gitHubReleaser(scope) 
+                }
               }
             }
           }
@@ -717,22 +663,35 @@ pipeline {
       stage('Publish Chi-Vue') {
         when {
           beforeAgent true
-          branch 'chi-vue'
+          allOf {
+            anyOf {
+              tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
+              branch VUE3_BRANCH
+            }
+            expression {
+              return isVersionBump('chi-vue')
+            }
+          }
         }
         parallel {
           stage('to GitHub') {
             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/chi-vue'
+                filename getNodeAgentBlock('chi-vue')
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
               }
             }
             steps {
               script {
                 dir('src/chi-vue') {
-                  jslYarnWrapper('install')
+                  def packageJson = readJSON file: 'package.json'
+                  packageJson.version = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+                  writeJSON file: 'package.json', json: packageJson
+                  ghYarnWrap('install')
                   jslNpmWrapper('run build:component')
+                  jslNpmWrapper('pack')
                   jslNpmPublish(false, env.GITHUB_ALTER_CREDENTIALS)
                 }
               }
@@ -741,14 +700,18 @@ pipeline {
           stage('to Nexus') {
             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/chi-vue'
+                filename getNodeAgentBlock('chi-vue')
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
               }
             }
             steps {
               script {
                 dir('src/chi-vue') {
+                  def packageJson = readJSON file: 'package.json'
+                  packageJson.version = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+                  writeJSON file: 'package.json', json: packageJson
                   chiVueNexusPublish()
                 }
               }
@@ -842,9 +805,10 @@ PolicyDocument
             }
             agent {
               dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/sonar-scanner'
+                filename getNodeAgentBlock()
+                dir 'cicd/docker/agent_images'
                 label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
               }
             }
             steps {
@@ -930,9 +894,10 @@ PRDesc
       stage('Smoke Tests') {
         agent {
           dockerfile {
-            filename 'Dockerfile'
-            dir 'cicd/docker/sonar-scanner'
+            filename getNodeAgentBlock()
+            dir 'cicd/docker/agent_images'
             label 'Docker-enabled'
+            args '-m 2G --shm-size=2gb'
           }
         }
         when {
@@ -988,7 +953,7 @@ PRDesc
         steps {
           script {
             if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
-              env.DEVOPS_GCR_PREPROD_BRANCH = 'master'
+              env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
               unstash name: "smokeTests"
               zip zipFile: 'smoke_tests.zip', dir: "cypress/reports/smokeTests"
               if (env.SMOKE_TEST_FAILURE != null && env.VERSION != null) {
@@ -1003,7 +968,7 @@ PRDesc
                 }
               }
               echo "Adding smoke Tests / smoke Test hook to Adoption Stats"
-              jslAdoptionMain('cypress/reports/smokeTests/*.xml')
+              jslAdoptionMain('cypress/reports/smokeTests/*.xml', env.SCAN_BRANCH, env.COMMIT_ID, env.JOB_NAME, env.GITHUB_TOKEN_CRENDENTIALS, "yyyy-MM-dd'T'HH:mm:ss'Z'" , [booleanParam(name:'isVue3',value: env.IS_VUE3_TRIGGER.toBoolean())] )
 
             } else {
               try {
@@ -1028,11 +993,10 @@ PRDesc
               }
               if (isVersionBump()) {
                 //Set variable to trigger DevOps GCR Creation
-                env.DEVOPS_GCR_PREPROD_BRANCH = 'master'
+                env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
               }
-              jslAdoptionMain('reports/ci_report/xunitfinal.xml')
+              jslAdoptionMain('reports/ci_report/xunitfinal.xml',  env.SCAN_BRANCH, env.COMMIT_ID, env.JOB_NAME, env.GITHUB_TOKEN_CRENDENTIALS, "yyyy-MM-dd'T'HH:mm:ss'Z'" , [booleanParam(name:'isVue3',value: env.IS_VUE3_TRIGGER.toBoolean())])
             }
-
           }
         }
       }
@@ -1054,7 +1018,7 @@ PRDesc
           def gcrInProgress = env.TAG_NAME==null?env.GCR_NUMBER:env.TAG_NAME
           if (gcrInProgress) {
             echo "DEVOPS GCR of ${gcrInProgress} will be updated as cancelled / backed out. Please review your backout plan!!!"
-            env.DEVOPS_GCR_PREPROD_BRANCH = 'master'
+            env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
             jslGCRDevOpsFallbackUpdate("The job ${env.BUILD_URL} failed unexpectly")
           }
           jslNotification('failure')
@@ -1066,42 +1030,87 @@ PRDesc
   }
 }
 
-def isVersionBump() {
-  try {
-    unstash name: "VERSION_BUMP"
-  } catch (Exception e) {
-    echo "No VERSION_BUMP done"
+def isVersionBump(def type = 'chi') {
+
+  def checkScopes = ['chi']
+  if (type == 'chi-vue') {
+    checkScopes = ['chi-vue']
+  } else if (type == 'all') {
+    checkScopes = ['chi', 'chi-vue']
+  } else if (type == 'chi') {
+    echo "Continue with CHI version bump"
+  } else {
+    echo "No correct scope provided"
     return false
   }
-  def versionBump = readFile file: "version_bump"
-  echo "Publish condition: GIT_BRANCH is _${env.GIT_BRANCH.trim().toLowerCase()}_"
-  echo "Publish condition: currentResult is _${currentBuild.currentResult.toLowerCase()}_"
-  echo "Publish condition: versionBump is _${versionBump.trim()}_"
-  def isVersionBumpResult = true
-  isVersionBumpResult = isVersionBumpResult && versionBump.trim() == "yes"
-  isVersionBumpResult = isVersionBumpResult && currentBuild.currentResult.toLowerCase() == "success"
-  isVersionBumpResult = isVersionBumpResult && ( ['origin/master', 'origin/main', 'master', 'main', PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase()) || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1))
+  def isVersionBumpResult = false
+
+  checkScopes.each { scope ->
+    if (isVersionBumpResult == true) {
+      return
+    }
+    stashName = "${scope.toUpperCase()}_VERSION_BUMP"
+    bumpFile = "${scope}_version_bump"
+    try {
+      unstash name: stashName
+    } catch (Exception e) {
+      echo "No VERSION_BUMP done"
+      isVersionBumpResult = false
+      return
+    }
+    def versionBump = readFile file:bumpFile
+    echo "Publish condition: GIT_BRANCH is _${env.GIT_BRANCH.trim().toLowerCase()}_"
+    echo "Publish condition: currentResult is _${currentBuild.currentResult.toLowerCase()}_"
+    echo "Publish condition: versionBump is _${versionBump.trim()}_"
+    
+    isVersionBumpResult = isVersionBumpResult && versionBump.trim() == "yes"
+    isVersionBumpResult = isVersionBumpResult && currentBuild.currentResult.toLowerCase() == "success"
+    isVersionBumpResult = isVersionBumpResult && ( ['origin/master', 'origin/main', 'master', 'main', PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase()) || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1))
+
+    if (!isVersionBumpResult) {
+      return
+    } else if (scope == 'chi-vue') {
+      if (env.VERSION_BUMP_SCOPE == 'all' || env.VERSION_BUMP_SCOPE == 'chi') {
+        env.VERSION_BUMP_SCOPE = 'all'
+      } else {
+        env.VERSION_BUMP_SCOPE = 'chi-vue'
+      }
+    } else if (scope == 'chi') {
+      if (env.VERSION_BUMP_SCOPE == 'all' || env.VERSION_BUMP_SCOPE == 'chi-vue') {
+        env.VERSION_BUMP_SCOPE = 'all'
+      } else {
+        env.VERSION_BUMP_SCOPE = 'chi'
+      }
+    }
+  }
   return isVersionBumpResult
 }
 
+
+
 def chiVueNexusPublish() {
-    jslYarnWrapper('install')
+    ghYarnWrap('install')
     jslNpmWrapper('run build:component')
     // skipping errors temporarily to allow existing publishing on GitHub
+    def nodeMajorVersion = sh (script: "node --version | cut -d '.' -f 1 | cut -d 'v' -f 2", returnStdout: true).trim()
+
+    def nexusNpmRc = nodeMajorVersion.toInteger() <= 14 ? 'NEXUS_NPMRC' : 'NEXUS_NPMRC_NODE20' 
+
     try {
-      configFileProvider([configFile(fileId: 'NEXUS_NPMRC', targetLocation: '.npmrc', variable: 'NEXUS_NPMRC'),
+      configFileProvider([configFile(fileId: nexusNpmRc, targetLocation: '.npmrc', variable: 'NEXUS_NPMRC'),
                           configFile(fileId: 'INTERNAL_CERT_CHAIN', targetLocation: 'internal-ca.pem', variable: 'INTERNAL_CERT_CHAIN')]) {
         sh "sed -i -e 's/\"name\": \"@centurylink/\"name\": \"@chi/g' package.json"
         def commitJson = readJSON file: "package.json"
         def versionExists = ''
         try {
-            versionExists = npmNexusWrapper("info ${commitJson.name}@${commitJson.version} version")
+            versionExists = jslNpmWrapper("info ${commitJson.name}@${commitJson.version} version")
         } catch (Exception e) {
             echo "package not found, first time publish? Error message: ${e.getMessage()}"
         }
         echo "package.json version '${commitJson.version}', version found on repo '${versionExists}'"
         if (versionExists.trim() != commitJson.version) {
-            npmNexusWrapper("publish --verbose --access restricted")
+            jslNpmWrapper("pack")
+            jslNpmWrapper("publish --verbose --access restricted")
         } else {
             echo "version ${commitJson.version} is already published, skipping"
         }
@@ -1112,18 +1121,24 @@ def chiVueNexusPublish() {
     }
 }
 
-def npmNexusWrapper(def args) {
-	withCredentials([string(credentialsId: NEXUS_NPM_CREDENTIALS, variable: 'NEXUS_TOKEN')]) {
-    def output = sh script: """
-        set +x
-        export NEXUS_TOKEN=${NEXUS_TOKEN}
-        npm ${args}
-    """, label: "npm ${args}", returnStdout: true
-    return output
-  }
-}
 
 def printSummary() {
+  def buildCauses = currentBuild.getBuildCauses()
+  def startedFromUpstream = buildCauses.any { cause -> cause._class == 'org.jenkinsci.plugins.workflow.support.steps.build.BuildUpstreamCause' }
+  def baseJobName = env.JOB_NAME.replace("${env.JOB_BASE_NAME}", "${env.VUE3_BRANCH}")
+  def causeUpstream = false
+  def isDevOpsGCR = false
+  if (startedFromUpstream) {
+    causeUpstream = buildCuauses.any { cause -> cause.upstreamProject =~ /${baseJobName}/ }
+    isDevOpsGCR = buildCauses.any { cause -> cause.upstreamProject =~ /.*##(RC|PROMOTE|DEPLOYMENT)##.*/ }
+  }
+  env.IS_VUE3_TRIGGER = (startedFromUpstream && (causeUpstream || isDevOpsGCR) && params.isVue3) ? true : false
+  if (env.BRANCH_NAME == env.VUE3_BRANCH || env.CHANGE_TARGET == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean()) {
+    env.PROD_BRANCH = env.VUE3_BRANCH
+  } else {
+    env.PROD_BRANCH = 'master'
+  }
+
   def chivueProjectJson = readJSON file: 'src/chi-vue/package.json', returnPojo: true;
   env.CHIVUE_PACKAGE_SCOPE = chivueProjectJson['name'].split('/')[0].replaceFirst("@", "")
   env.GITHUB_ORGANIZATION = jslGitGetRepoOwner()
@@ -1137,6 +1152,8 @@ def printSummary() {
   PULL_REQUEST: ${env.PULL_REQUEST}
   CHANGE_ID: ${env.CHANGE_ID}
   TAG: ${env.TAG_NAME}
+  PROD_BRANCH: ${env.PROD_BRANCH}
+  IS_VUE3_TRIGGER: ${env.IS_VUE3_TRIGGER}
 
   CHIVUE_PACKAGE_SCOPE: ${env.CHIVUE_PACKAGE_SCOPE}
   GITHUB_ORGANIZATION: ${env.GITHUB_ORGANIZATION}
@@ -1146,4 +1163,88 @@ def printSummary() {
   } else if ( BRANCH_NAME != PROD_BRANCH && BRANCH_NAME == "pr-*" && BRANCH_NAME == "PR-*" ) {
     currentBuild.description = "<a href='https://github.com/${env.GITHUB_ORGANIZATION}/Chi/pull/${CHANGE_ID}'>PR#${CHANGE_ID}</a> - <a href='http://${GIT_COMMIT}-chi-pr-po-ctl.s3-website-us-east-1.amazonaws.com' target='_blank'> WEB </a> : ${PULL_REQUEST}";
   }
+}
+
+
+
+def gitHubReleaser(def scope = 'chi') {
+
+  def rootPath = ''
+  if (scope == 'chi-vue') {
+    rootPath = 'src/chi-vue/'
+
+  }
+  def packageJsonPath = "${rootPath}package.json"
+  def packageFile = readJSON file: packageJsonPath
+  def packageVersion = packageFile['version']
+  def plainVersion = packageVersion.tokenize('-')[0]
+  def versionMajor = plainVersion.tokenize('.')[0]
+  def versionMinor = plainVersion.tokenize('.')[1] ? plainVersion.tokenize('.')[1] : '0'
+  def versionPatch = plainVersion.tokenize('.')[2] ? plainVersion.tokenize('.')[2] : '0'
+
+  def versionMajorOld = versionMajor.toInteger() == 0 ? '0' : (versionMajor.toInteger() - 1).toString()
+  def versionMinorOld = versionMinor.toInteger() == 0 ? '0' : (versionMinor.toInteger() - 1).toString()
+  def versionPatchOld = versionPatch.toInteger() == 0 ? '0' : (versionPatch.toInteger() - 1).toString()
+  
+  def classifier = scope == 'chi-vue' ? "-${scope}" : ''
+
+  if (env.BRANCH_NAME == env.VUE3_BRANCH) {
+    classifier = "${classifier}-vue3"
+  }
+
+  def pusblishVersion = "v${versionMajor}.${versionMinor}.${versionPatch}${classifier}"
+
+  sh script: """#!/bin/bash
+                  echo "READING CHANGELOG FOR VERSION: ${pusblishVersion}"
+                  echo "${pusblishVersion}" > ${rootPath}shortCHANGELOG.md
+                  echo "" >> ${rootPath}shortCHANGELOG.md
+                  sed -n -e "/${versionMajor}.${versionMinor}.${versionPatch}/,/${versionMajorOld}.${versionMinorOld}.${versionPatchOld}/ p" ${rootPath}CHANGELOG.md | head -n -2 >> ${rootPath}shortCHANGELOG.md
+                """
+
+                if (scope == 'chi-vue') {
+                  env.VERSION_CHI_VUE = ${packageVersion}
+                } else {
+                  env.VERSION = packageVersion
+                }
+
+                env.GITHUB_USER='lumen-jenkins-prod'
+                jslHubWrapper("release create -F ${rootPath}shortCHANGELOG.md ${pusblishVersion}")
+}
+
+
+
+def getNodeAgentBlock(def scope = null) {
+
+	def nodeVersion = '14'
+
+  if ( (env.BRANCH_NAME == 'master-vue3' || env.CHANGE_TARGET == 'master-vue3' || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1 && env.IS_VUE3_TRIGGER.toBoolean()) ) && scope == 'chi-vue' ) {
+    nodeVersion = '20'
+  } else if ( scope == 'chi-vue') {
+    nodeVersion = '12'
+  }
+
+  def fileName = "Dockerfile_node${nodeVersion}"
+	
+	return fileName
+
+}
+
+
+def ghYarnWrap(def args, def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS) {
+  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: githubCredentials,
+      usernameVariable: 'USERNAME', passwordVariable: 'GH_TOKEN']]) {
+        jslYarnWrapper(args)
+      }
+}
+
+def promoteDeployTagGCR() {
+  def tagAttributes = jslGCRGetTagAttributes()
+  echo "Processing ${tagAttributes['tagType']} tag for DevOps ${tagAttributes['gcrNumber']}"
+  jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
+  def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
+  def currentJob = env.JOB_NAME.toString()
+  def currentBaseName = env.JOB_BASE_NAME.toString()
+  def pathJob = currentJob - currentBaseName
+  echo "Triggering deployment to production job ${pathJob} with tag ${tagName}"
+  jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6, [booleanParam(name:'isVue3',value: env.IS_VUE3_TRIGGER.toBoolean())] )
 }
