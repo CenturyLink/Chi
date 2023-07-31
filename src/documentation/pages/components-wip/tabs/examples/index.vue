@@ -2,12 +2,12 @@
   div
     h2 Examples
     h3 Horizontal
-    <HorizontalFlat isPortal="!hidePortal" />
+    <HorizontalFlat isPortal="!hideThemes" />
     <HorizontalSolid />
     h3 Vertical
     <VerticalFlat />
     <VerticalSolid />
-    <LinkDefaultBehavior v-if="hidePortal" />
+    <LinkDefaultBehavior v-if="hideThemes" />
     h3 Tabbed navigation bar
     p.-text
       | The navigation component is a combination of Chi tabs and dropdowns components. You must use
@@ -21,12 +21,12 @@
     <TabbedNavigationFlat />
     <TabbedNavigationSolid />
 
-    <ComponentsContained v-if="hidePortal" />
-    <WaitForAnimation v-if="hidePortal" />
+    <ComponentsContained v-if="hideThemes" />
+    <WaitForAnimation v-if="hideThemes" />
 
-    <VerticalTreeTabs v-if="!hidePortal" />
+    <VerticalTreeTabs v-if="!hideThemes" />
 
-    template(v-if="hidePortal")
+    template(v-if="hideThemes")
       h3 Icons
       <HorizontalTabsWithIcon />
       <VerticalTabsWithIcon />
@@ -85,7 +85,7 @@ export default class Examples extends Vue {
   get theme() {
     return this.$store.state.themes.theme;
   }
-  get hidePortal() {
+  get hideThemes() {
     return this.theme !== 'portal' && this.theme !== 'colt' && this.theme !== 'brightspeed'
   }
 }

@@ -2,7 +2,6 @@
   <ComponentExample title="Bordered" id="bordered" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
     .-p--3.-bg--white(slot="example")
       chi-tabs(:active-tab='activeTab' id='example__bordered' border @chiTabChange='chiTabChange')
-
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -33,7 +32,6 @@ import { TabsListInterface } from '~/models/models';
     }
   }
 })
-
 export default class Bordered extends Vue {
   activeTab = 'tab-a'
 

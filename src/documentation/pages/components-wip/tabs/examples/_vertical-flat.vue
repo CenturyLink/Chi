@@ -2,7 +2,7 @@
   <ComponentExample title="Flat" id="vertical-flat" :tabs="exampleTabs" titleSize="h4" additionalClasses="-bg--grey-20">
     .chi-grid.-no-gutter.-bg--white(slot="example")
       .chi-col.-w--6.-w-sm--4.-p--3
-        chi-tabs(:active-tab='activeTab' id='example__vertical-flat' vertical @chiTabChange='chiTabChange')
+        chi-tabs(:active-tab='activeTab' id='example__vertical-flat' vertical @chiTabChange='chiTabChange' sliding-border)
       .chi-col.-p--3
         div(v-for="tabContent in tabsContent" :class="['chi-tabs-panel', activeTab === tabContent.id ? '-active' : '']" role="tabpanel")
           .-text {{tabContent.text}}
@@ -98,19 +98,6 @@ ${this.generateTabsContentHtml(true)}
         id: 'tab-c'
       }
     ];
-
-    function clearActiveTab () {
-      const tabItems = document.querySelectorAll('.chi-tabs-panel');
-      tabItems.forEach(tab => {
-        tab.classList.remove('-active');
-      });
-    }
-
-    tabsElement.addEventListener("chiTabChange", function(event) {
-      const content = document.getElementById(event.detail.id + '_content');
-      clearActiveTab();
-      content.classList.add('-active');
-    });
   }
 <\/script>`,
       htmlblueprint: `<ul class="chi-tabs -vertical" id="example-vertical-base" role="tablist" aria-label="chi-tabs-vertical">\n${this.generateTabsHtml()}\n</ul>

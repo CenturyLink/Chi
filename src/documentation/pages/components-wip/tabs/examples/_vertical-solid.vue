@@ -2,7 +2,7 @@
   <ComponentExample title="Solid" id="vertical-solid" :tabs="exampleTabs" titleSize="h4" additionalClasses="-bg--grey-20">
     .chi-grid.-no-gutter.-bg--white(slot="example")
       .chi-col.-w--6.-w-sm--4.-p--3
-        chi-tabs(:active-tab='activeTab' id='example__vertical-solid' size='xl' solid vertical @chiTabChange='chiTabChange')
+        chi-tabs(:active-tab='activeTab' id='example__vertical-solid' size='xl' solid vertical sliding-border @chiTabChange='chiTabChange')
       .chi-col.-p--3
         div(v-for="tabContent in tabsContent" :class="['chi-tabs-panel', activeTab === tabContent.id ? '-active' : '']" role="tabpanel")
           .-text {{tabContent.text}}
@@ -98,19 +98,6 @@ ${this.generateTabsContentHtml(true)}
         id: 'tab-c'
       }
     ];
-
-    function clearActiveTab () {
-      const tabItems = document.querySelectorAll('.chi-tabs-panel');
-      tabItems.forEach(tab => {
-        tab.classList.remove('-active');
-      });
-    }
-
-    tabsElement.addEventListener("chiTabChange", function(event) {
-      const content = document.getElementById(event.detail.id + '_content');
-      clearActiveTab();
-      content.classList.add('-active');
-    });
   }
 <\/script>`,
       htmlblueprint: `<ul class="chi-tabs -vertical -solid -xl" id="example-vertical-solid-bordered" role="tablist" aria-label="chi-tabs-vertical">\n${this.generateTabsHtml()}\n</ul>
@@ -144,7 +131,7 @@ ${this.generateTabsContentHtml(false)}
     return this.tabsContent.map(({ text, id }, index) => {
       const isFirstItem = index === 0;
       return (
-        `class="chi-tabs-panel${isFirstItem ? ' -active' : ''}" id="${isWebComponent ? `${id}_content` : id}" role="tabpanel">${text}</div>`
+        `<div class="chi-tabs-panel${isFirstItem ? ' -active' : ''}" id="${isWebComponent ? `${id}_content` : id}" role="tabpanel">${text}</div>`
       )
     }).join('\n');
   }

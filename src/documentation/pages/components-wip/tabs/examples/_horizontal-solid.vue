@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Solid" id="horizontal-solid" :tabs="exampleTabs" titleSize="h4" additionalClasses="-bg--grey-20">
     .-px--3.-pt--2.-bg--white(slot="example")
-      chi-tabs(:active-tab='activeTab' id='example__horizontal-solid' size='lg' solid @chiTabChange='chiTabChange')
+      chi-tabs(:active-tab='activeTab' id='example__horizontal-solid' size='lg' sliding-border solid @chiTabChange='chiTabChange')
       .-py--3
         div(v-for="tabContent in tabsContent" :class="['chi-tabs-panel', activeTab === tabContent.id ? '-active' : '']" role="tabpanel")
           .-text {{tabContent.text}}
@@ -97,19 +97,6 @@ ${this.generateTabsContentHtml(true)}
         id: 'tab-c'
       }
     ];
-
-    function clearActiveTab () {
-      const tabItems = document.querySelectorAll('.chi-tabs-panel');
-      tabItems.forEach(tab => {
-        tab.classList.remove('-active');
-      });
-    }
-
-    tabsElement.addEventListener("chiTabChange", function(event) {
-      const content = document.getElementById(event.detail.id + '_content');
-      clearActiveTab();
-      content.classList.add('-active');
-    });
   }
 <\/script>`,
         htmlblueprint: `<ul class="chi-tabs -solid -lg -border" id="example-horizontal-solid-bordered" role="tablist" aria-label="chi-tabs-horizontal">\n${this.generateTabsHtml()}\n</ul>

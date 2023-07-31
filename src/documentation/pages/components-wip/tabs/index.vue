@@ -31,5 +31,5 @@ import { standardComponentPageTabs } from '~/constants/constants';
     };
   }
 })
-export default class Steps extends Vue {}
+export default class Tabs extends Vue {}
 </script>

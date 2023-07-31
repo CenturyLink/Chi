@@ -120,7 +120,7 @@ ${this.generateTabsContentHtml()}
       const isFirstItem = index === 0;
       return (
         `<div class="chi-tabs-panel${isFirstItem ? ' -active' : ''}" id="${id}" role="tabpanel">
-    <p class="-text">${text}</p>
+  <p class="-text">${text}</p>
 </div>`
       )
     }).join('\n');

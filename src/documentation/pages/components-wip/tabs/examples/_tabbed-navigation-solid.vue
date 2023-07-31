@@ -168,121 +168,121 @@ export default class TabbedNavigationFlat extends Vue {
   tabbedNavigationFlatElement.tabs = [
     {
       label: 'Active Tab',
-      id: 'tab-tns-a',
+      id: 'tab-a',
       children: [
         {
           label: 'Elem 1',
-          id: 'tab-tns-a-1'
+          id: 'tab-a-1'
         },
         {
           label: 'Elem 2',
-          id: 'tab-tns-a-2'
+          id: 'tab-a-2'
         },
         {
           label: 'Elem 3 more',
-          id: 'tab-tns-a-3',
+          id: 'tab-a-3',
           children: [
             {
               label: 'Elem 3.1',
-              id: 'tab-tns-a-3-1'
+              id: 'tab-a-3-1'
             },
             {
               label: 'Elem 3.2',
-              id: 'tab-tns-a-3-2',
+              id: 'tab-a-3-2',
               children: [
                 {
                   label: 'Elem 3.2.1',
-                  id: 'tab-tns-a-3-2-1'
+                  id: 'tab-a-3-2-1'
                 },
                 {
                   label: 'Elem 3.2.2',
-                  id: 'tab-tns-a-3-2-2'
+                  id: 'tab-a-3-2-2'
                 },
                 {
                   label: 'Elem 3.2.3',
-                  id: 'tab-tns-a-3-2-3'
+                  id: 'tab-a-3-2-3'
                 }
               ]
             },
             {
               label: 'Elem 3.3',
-              id: 'tab-tns-a-3-3'
+              id: 'tab-a-3-3'
             },
             {
               label: 'Elem 3.4',
-              id: 'tab-tns-a-3-4'
+              id: 'tab-a-3-4'
             }
           ]
         },
         {
           label: 'Elem 4',
-          id: 'tab-tns-a-4'
+          id: 'tab-a-4'
         }
       ]
     },
     {
       label: 'Tab Link',
-      id: 'tab-tns-b'
+      id: 'tab-b'
     },
     {
       label: 'Tab Link',
-      id: 'tab-tns-c'
+      id: 'tab-c'
     },
     {
       label: 'Tab Link',
-      id: 'tab-tns-d'
+      id: 'tab-d'
     },
     {
       label: 'Tab Link',
-      id: 'tab-tns-e'
+      id: 'tab-e'
     },
     {
       label: 'Tab Dropdown',
-      id: 'tab-tns-f',
+      id: 'tab-f',
       children: [
         {
           label: 'Element 1',
-          id: 'tab-tns-f-1'
+          id: 'tab-f-1'
         },
         {
           label: 'Element 2',
-          id: 'tab-tns-f-2',
+          id: 'tab-f-2',
           children: [
             {
               label: 'Elem 1',
-              id: 'tab-tns-f-2-1'
+              id: 'tab-f-2-1'
             },
             {
               label: 'Elem 2',
-              id: 'tab-tns-f-2-2'
+              id: 'tab-f-2-2'
             },
             {
               label: 'Elem 3 more',
-              id: 'tab-tns-f-2-3',
+              id: 'tab-f-2-3',
               children: [
                 {
                   label: 'Elem 3.1',
-                  id: 'tab-tns-f-2-3-1'
+                  id: 'tab-f-2-3-1'
                 },
                 {
                   label: 'Elem 3.2',
-                  id: 'tab-tns-f-2-3-2'
+                  id: 'tab-f-2-3-2'
                 },
                 {
                   label: 'Elem 3.3',
-                  id: 'tab-tns-f-2-3-3'
+                  id: 'tab-f-2-3-3'
                 }
               ]
             },
             {
               label: 'Elem 4',
-              id: 'tab-tns-f-2-4'
+              id: 'tab-f-2-4'
             }
           ]
         },
         {
           label: 'Element 3',
-          id: 'tab-tns-f-3'
+          id: 'tab-f-3'
         }
       ]
     }

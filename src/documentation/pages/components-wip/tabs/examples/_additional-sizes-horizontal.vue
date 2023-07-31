@@ -3,16 +3,16 @@
     div(slot="example")
       p.-text--bold X-small
       .chi-divider.-mb--2
-      chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-xs' size='xs')
+      chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-xs' size='xs' sliding-border)
       p.-text--bold.-mt--6 Small
       .chi-divider.-mb--2
-      chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-sm' size='sm')
+      chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-sm' size='sm' sliding-border)
       p.-text--bold.-mt--6 Medium (Base)
       .chi-divider.-mb--2
-      chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-md')
+      chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-md' sliding-border)
       p.-text--bold.-mt--6 Large
       .chi-divider.-mb--2
-      chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-lg' size='lg')
+      chi-tabs(active-tab='tab-a' id='example__additional-sizes-horizontal-lg' size='lg' sliding-border)
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="codeSnippets.webComponent" class="html"></code>
     </pre>

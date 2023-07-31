@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Flat" id="horizontal-flat" :tabs="exampleTabs" titleSize="h4" additionalClasses="-bg--grey-20">
     .-px--3.-bg--white(slot="example" :class="isPortal ? '-pt--2' : ''")
-      chi-tabs(:active-tab='activeTab' id='example__horizontal-flat' @chiTabChange='chiTabChange')
+      chi-tabs(:active-tab='activeTab' id='example__horizontal-flat' @chiTabChange='chiTabChange' sliding-border)
       .-py--3
         div(v-for="tabContent in tabsContent" :class="['chi-tabs-panel', activeTab === tabContent.id ? '-active' : '']" role="tabpanel")
           .-text {{tabContent.text}}
