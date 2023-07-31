@@ -5,7 +5,7 @@
       | takes up ~8.3% of the width to <code>-o--11</code>, which consumes 
       | ~91.6% of the row.
     
-    .chi-grid.-mb--3(slot="example" v-for="item in columns")
+    .-show--example.chi-grid.-mb--3(slot="example" v-for="item in columns")
       .chi-col(:class="`-o--${item}`" :key="item")
   </ComponentExample>
 </template>

@@ -17,10 +17,8 @@
     
     .chi-alert.-info.-my--3
       i.chi-alert__icon.chi-icon.icon-circle-info
-        .chi-alert__content
-          p.chi-alert__text 
-            | Try resizing your browser window to see the following examples 
-            | in action as you change the viewport size.
+      .chi-alert__content
+        p.chi-alert__text Try resizing your browser window to see the following examples in action as you change the viewport size.
 </template>
 
 <script lang="ts">

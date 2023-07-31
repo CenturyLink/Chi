@@ -8,7 +8,7 @@
       
       .test-reordering.-w--100(slot="example")
         .chi-grid.-mb--2.-show--example
-          .chi-col(v-for="item in gridColumns" :key="item" :class="`-n--${item}ㅤ`")
+          .chi-col(v-for="item in gridColumns" :key="item" :class="`${item.class}`")
       
       <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
         <code v-highlight="codeSnippets.htmlblueprint3Cols" class="html"></code>
@@ -33,7 +33,20 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class ReorderingColumns extends Vue {
-  gridColumns = [2, 1, 3];
+  gridColumns = [
+    {
+      class: '-n--3',
+      comment: '<!-- displayed last -->'
+    },
+    {
+      class: '-n--1',
+      comment: '<!-- displayed first -->'
+    },
+    {
+      class: '-n--2',
+      comment: '<!-- displayed between -->'
+    }
+  ];
   get codeSnippets() {
     return {
       htmlblueprint3Cols: this.generateHtml3Cols()
@@ -41,9 +54,12 @@ export default class ReorderingColumns extends Vue {
   }
   generateHtml3Cols() {
     return `<div class="chi-grid">
-  <div class="chi-col -n--1"></div> <!-- displayed last -->
-  <div class="chi-col -n--2"></div> <!-- displayed first -->
-  <div class="chi-col -n--3"></div> <!-- displayed between -->
+${this.gridColumns
+  .map(
+    (item: { class: string; comment: string }) =>
+      `  <div class="chi-col ${item.class}"></div> ${item.comment}`
+  )
+  .join('\n')}
 </div>`;
   }
 }

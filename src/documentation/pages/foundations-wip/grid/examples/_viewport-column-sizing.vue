@@ -5,8 +5,8 @@
       | the configured viewport, at which point they will become 12 column 
       | units wide.
     
-    .chi-grid.-show--example.-mb--2(slot="example")
-      .chi-col.-w--6.-mb--3(v-for="item in gridColumns" :key="item" :class="`-w-${item}--12`")
+    .-show--example.chi-grid.-mb--3(slot="example" v-for="item in gridColumns" :key="item")
+      .chi-col.-w--6(:class="`${item.class}`")
 
     <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
@@ -31,32 +31,42 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class ViewportColumnSizing extends Vue {
-  gridColumns = ['sm', 'md', 'lg', 'xl'];
+  gridColumns = [
+    {
+      comment:
+        '<!-- 50% on xs viewports; 100% on sm, md, lg and xl viewports -->',
+      class: '-w-sm--12'
+    },
+    {
+      comment:
+        '<!-- 50% on xs and sm viewports; 100% on md, lg and xl viewports -->',
+      class: '-w-md--12'
+    },
+    {
+      comment:
+        '<!-- 50% on xs, sm and md viewports; 100% on lg and xl viewports -->',
+      class: '-w-lg--12'
+    },
+    {
+      comment:
+        '<!-- 50% on xs, sm, md and lg viewports; 100% on xl viewports -->',
+      class: '-w-xl--12'
+    }
+  ];
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
     };
   }
   generateHtml() {
-    return `<!-- 50% on xs viewports; 100% on sm, md, lg and xl viewports -->
-<div class="chi-grid">
-  <div class="chi-col -w--6 -w-sm--12"></div>
-</div>
-
-<!-- 50% on xs and sm viewports; 100% on md, lg and xl viewports -->
-<div class="chi-grid">
-  <div class="chi-col -w--6 -w-md--12"></div>
-</div>
-
-<!-- 50% on xs, sm and md viewports; 100% on lg and xl viewports -->
-<div class="chi-grid">
-  <div class="chi-col -w--6 -w-lg--12"></div>
-</div>
-
-<!-- 50% on xs, sm, md and lg viewports; 100% on xl viewports -->
-<div class="chi-grid">
-  <div class="chi-col -w--6 -w-xl--12"></div>
-</div>`;
+    return this.gridColumns
+      .map(
+        (item: { comment: string; class: string }) => `${item.comment}
+  <div class="chi-grid">
+    <div class="chi-col -w--6 ${item.class}"></div>
+  </div>`
+      )
+      .join('\n');
   }
 }
 </script>

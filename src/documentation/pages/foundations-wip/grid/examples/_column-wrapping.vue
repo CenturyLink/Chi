@@ -43,23 +43,20 @@ export default class ColumnWrapping extends Vue {
     };
   }
 
-  col3Markup = Array.from(
-    { length: this.grid4Columns.length },
-    () => `  <div class="chi-col -w--3"></div>`
-  ).join('\n');
-  col6Markup = Array.from(
-    { length: this.grid2Columns.length },
-    () => `  <div class="chi-col -w--6"></div>`
-  ).join('\n');
-
   generateHtml3Cols() {
     return `<div class="chi-grid">
 
   <!-- first 12 column units -->
-${this.col3Markup}
+${Array.from(
+  { length: this.grid4Columns.length },
+  () => `  <div class="chi-col -w--3"></div>`
+).join('\n')}
 
   <!-- ... and another row consisting of 12 more units -->
-${this.col6Markup}
+${Array.from(
+  { length: this.grid2Columns.length },
+  () => `  <div class="chi-col -w--6"></div>`
+).join('\n')}
 
 </div>`;
   }

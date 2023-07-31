@@ -5,8 +5,9 @@
       | To collapse these margins, you may use the <code>-no-gutter</code> 
       | modifier class on the grid container.
     
-    .chi-grid.-no-gutter.-mb--2(slot="example")
-      .chi-col(v-for="item in [1, 2, 3]" :key="item")
+    .-show--example.-mb--2(slot="example")
+      .chi-grid.-no-gutter.-mb--2
+        .chi-col(v-for="item in grid3Columns" :key="item")
     
     <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>

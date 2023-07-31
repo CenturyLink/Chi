@@ -15,7 +15,6 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      gridCols: [1, 2, 3],
       exampleTabs: [
         {
           active: true,
@@ -27,6 +26,8 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class AlignBottom extends Vue {
+  gridCols = [1, 2, 3];
+
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
@@ -34,9 +35,7 @@ export default class AlignBottom extends Vue {
   }
   generateHtml() {
     return `<div class="chi-grid -align--bottom" style="height: 160px;">
-${this.$data.gridCols
-  .map((_: any) => `  <div class="chi-col"></div>`)
-  .join('\n')}
+${this.gridCols.map((_: any) => `  <div class="chi-col"></div>`).join('\n')}
 </div>`;
   }
 }
