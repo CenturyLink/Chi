@@ -20,7 +20,6 @@
       .chi-grid.-mb--2.-show--example(slot="example")
         .chi-col(v-for="item in grid5Columns" :key="item")
 
-
       <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
         <code v-highlight="codeSnippets.htmlblueprint5Cols" class="html"></code>
       </pre>
@@ -49,25 +48,21 @@ export default class AutomaticLayout extends Vue {
 
   get codeSnippets() {
     return {
-      htmlblueprint3Cols: this.generateHtml3Cols(),
-      htmlblueprint5Cols: this.generateHtml5Cols()
+      htmlblueprint3Cols: this.generateHtml(
+        '<!-- three columns of equal width -->',
+        this.grid3Columns
+      ),
+      htmlblueprint5Cols: this.generateHtml(
+        '<!-- five columns of equal width -->',
+        this.grid5Columns
+      )
     };
   }
-  generateHtml3Cols() {
-    return `<!-- three columns of equal width -->
-<div class="chi-grid">
-${this.grid3Columns
-  .map((item: string) => `  <div class="${item}"></div>`)
-  .join('\n')}
-</div>`;
-  }
 
-  generateHtml5Cols() {
-    return `<!-- five columns of equal width -->
+  generateHtml(comment: string, columns: string[]) {
+    return `${comment}
 <div class="chi-grid">
-${this.grid5Columns
-  .map((item: string) => `  <div class="${item}"></div>`)
-  .join('\n')}
+${columns.map((item: string) => `  <div class="${item}"></div>`).join('\n')}
 </div>`;
   }
 }

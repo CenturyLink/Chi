@@ -39,25 +39,26 @@ export default class ColumnWrapping extends Vue {
 
   get codeSnippets() {
     return {
-      htmlblueprint3Cols: this.generateHtml3Cols()
+      htmlblueprint3Cols: this.generateHtml()
     };
   }
 
-  generateHtml3Cols() {
+  generateHtml() {
     return `<div class="chi-grid">
 
   <!-- first 12 column units -->
-${Array.from(
-  { length: this.grid4Columns.length },
-  () => `  <div class="chi-col -w--3"></div>`
-).join('\n')}
+${this.generateHtmlList(this.grid4Columns, '3')}
 
   <!-- ... and another row consisting of 12 more units -->
-${Array.from(
-  { length: this.grid2Columns.length },
-  () => `  <div class="chi-col -w--6"></div>`
-).join('\n')}
+${this.generateHtmlList(this.grid2Columns, '6')}
 
+</div>`;
+  }
+
+  generateHtmlList(array: string[], length: string) {
+    return `${array
+      .map(() => `<div class="chi-col -w--${length}"></div>`)
+      .join('\n')}
 </div>`;
   }
 }

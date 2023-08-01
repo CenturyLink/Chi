@@ -5,8 +5,8 @@
       | the configured viewport, at which point they will become 12 column 
       | units wide.
     
-    .-show--example.chi-grid.-mb--3(slot="example" v-for="item in gridColumns" :key="item")
-      .chi-col.-w--6(:class="`${item.class}`")
+    .-show--example.chi-grid.-mb--3(slot="example" v-for="{className} in gridColumns" :key="className")
+      .chi-col.-w--6(:class="className")
 
     <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
       <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
@@ -35,22 +35,22 @@ export default class ViewportColumnSizing extends Vue {
     {
       comment:
         '<!-- 50% on xs viewports; 100% on sm, md, lg and xl viewports -->',
-      class: '-w-sm--12'
+      className: '-w-sm--12'
     },
     {
       comment:
         '<!-- 50% on xs and sm viewports; 100% on md, lg and xl viewports -->',
-      class: '-w-md--12'
+      className: '-w-md--12'
     },
     {
       comment:
         '<!-- 50% on xs, sm and md viewports; 100% on lg and xl viewports -->',
-      class: '-w-lg--12'
+      className: '-w-lg--12'
     },
     {
       comment:
         '<!-- 50% on xs, sm, md and lg viewports; 100% on xl viewports -->',
-      class: '-w-xl--12'
+      className: '-w-xl--12'
     }
   ];
   get codeSnippets() {
@@ -61,9 +61,9 @@ export default class ViewportColumnSizing extends Vue {
   generateHtml() {
     return this.gridColumns
       .map(
-        (item: { comment: string; class: string }) => `${item.comment}
+        (item: { comment: string; className: string }) => `${item.comment}
   <div class="chi-grid">
-    <div class="chi-col -w--6 ${item.class}"></div>
+    <div class="chi-col -w--6 ${item.className}"></div>
   </div>`
       )
       .join('\n');

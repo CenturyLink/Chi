@@ -1,19 +1,18 @@
 <template lang="pug">
-  div
-    <ComponentExample title="Reordering Columns" id="reordering-columns" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
-      p.-text(slot="example-description")
-        | To display a column or columns in an order that is different than 
-        | that which they appear in the markup, you may apply a 
-        | reordering modifier class.
-      
-      .test-reordering.-w--100(slot="example")
-        .chi-grid.-mb--2.-show--example
-          .chi-col(v-for="item in gridColumns" :key="item" :class="`${item.class}`")
-      
-      <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
-        <code v-highlight="codeSnippets.htmlblueprint3Cols" class="html"></code>
-      </pre>
-    </ComponentExample>
+  <ComponentExample title="Reordering Columns" id="reordering-columns" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+    p.-text(slot="example-description")
+      | To display a column or columns in an order that is different than 
+      | that which they appear in the markup, you may apply a 
+      | reordering modifier class.
+    
+    .test-reordering.-w--100(slot="example")
+      .chi-grid.-mb--2.-show--example
+        .chi-col(v-for="{className} in gridColumns" :key="className" :class="className")
+    
+    <pre class="language-html" slot="code-htmlblueprint" style="border:none;">
+      <code v-highlight="codeSnippets.htmlblueprint3Cols" class="html"></code>
+    </pre>
+  </ComponentExample>
 </template>
 
 <script lang="ts">
@@ -35,15 +34,15 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class ReorderingColumns extends Vue {
   gridColumns = [
     {
-      class: '-n--3',
+      className: '-n--3',
       comment: '<!-- displayed last -->'
     },
     {
-      class: '-n--1',
+      className: '-n--1',
       comment: '<!-- displayed first -->'
     },
     {
-      class: '-n--2',
+      className: '-n--2',
       comment: '<!-- displayed between -->'
     }
   ];
@@ -56,8 +55,8 @@ export default class ReorderingColumns extends Vue {
     return `<div class="chi-grid">
 ${this.gridColumns
   .map(
-    (item: { class: string; comment: string }) =>
-      `  <div class="chi-col ${item.class}"></div> ${item.comment}`
+    (item: { className: string; comment: string }) =>
+      `  <div class="chi-col ${item.className}"></div> ${item.comment}`
   )
   .join('\n')}
 </div>`;

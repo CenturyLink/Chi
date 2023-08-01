@@ -15,7 +15,6 @@
         <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
       </pre>
 
-
     </ComponentExample>
 
     p.-text(slot="example") Remember that the grid system consists of 12 columns, so each column unit is approximately 8.3% in width. So, to achieve this layout we are using 3 grid column units (1 unit * 3, or 8.3% * 3) to claim 25% of the width for the first column.
@@ -46,7 +45,7 @@ export default class ColumnSizing extends Vue {
     };
   }
   generateHtml() {
-    return `<div class="chi-grid -no-gutter">
+    return `<div class="chi-grid">
 ${this.gridCols
   .map((item: string) => `  <div class="chi-col ${item}"></div>`)
   .join('\n')}
