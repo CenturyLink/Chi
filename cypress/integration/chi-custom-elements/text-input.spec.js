@@ -1,13 +1,14 @@
 const SELECTORS = {
-  chi_text_input: 'chi-text-input',
-  chi_helper_message: 'chi-helper-message',
-  chi_icon: 'chi-icon',
-  label: '.chi-label'
+  CHI_TEXT_INPUT: 'chi-text-input',
+  CHI_ICON: 'chi-icon',
+  LABEL: '.chi-label',
+  CHI_HELPER_MESSAGE: 'chi-helper-message',
+  HELPER_MESSAGE_MD: '.test-helper-message-md'
 };
 const CLASSES = {
-  warning: '-warning',
-  danger: '-danger',
-  success: '-success'
+  WARNING: '-warning',
+  DANGER: '-danger',
+  SUCCESS: '-success'
 };
 
 describe('Text Input', () => {
@@ -17,11 +18,11 @@ describe('Text Input', () => {
 
   describe('Helper Message', () => {
     beforeEach(() => {
-      cy.get('.test-helper-message-md')
-        .find(SELECTORS.chi_text_input)
+      cy.get(SELECTORS.HELPER_MESSAGE_MD)
+        .find(SELECTORS.CHI_TEXT_INPUT)
         .as('textInput');
-      cy.get('.test-helper-message-md')
-        .find(SELECTORS.chi_helper_message)
+      cy.get(SELECTORS.HELPER_MESSAGE_MD)
+        .find(SELECTORS.CHI_HELPER_MESSAGE)
         .as('helperMessage');
     });
 
@@ -35,7 +36,7 @@ describe('Text Input', () => {
             'Optional input message'
           );
           cy.get(textInput)
-            .find(SELECTORS.chi_helper_message)
+            .find(SELECTORS.CHI_HELPER_MESSAGE)
             .should('exist');
         });
     });
@@ -46,10 +47,10 @@ describe('Text Input', () => {
         .then(textInput => {
           cy.get(textInput).should('have.attr', 'state', 'danger');
           cy.get(textInput)
-            .find(SELECTORS.label)
-            .should('have.class', CLASSES.danger);
+            .find(SELECTORS.LABEL)
+            .should('have.class', CLASSES.DANGER);
           cy.get(textInput)
-            .find(SELECTORS.chi_icon)
+            .find(SELECTORS.CHI_ICON)
             .find('use')
             .should('have.attr', 'href', '#icon-circle-warning')
             .should('exist');
