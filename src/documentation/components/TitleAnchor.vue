@@ -36,7 +36,7 @@ export default class TitleAnchor extends Vue {
   @Prop() additionalClasses?: string;
 
   get anchor() {
-    return `<a class="-ml--1" href="?theme=${this.$store.state.themes.theme}#${this.id}">#</a>`;
+    return `<a class="-ml--1" href="${this.$store.$router.currentRoute.fullPath}?theme=${this.$store.state.themes.theme}#${this.id}">#</a>`;
   }
 
   get titleAnchorClassnames() {
