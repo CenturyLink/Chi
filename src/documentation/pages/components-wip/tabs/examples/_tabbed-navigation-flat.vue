@@ -169,7 +169,7 @@ export default class TabbedNavigationFlat extends Vue {
 
   get codeSnippets() {
     return {
-      webcomponent: `<chi-tabs active-tab="tab-tnf-a" id="example__tabbed_navigation_flat" sliding-border></chi-tabs>
+      webcomponent: `<chi-tabs active-tab="tab-a" id="example__tabbed_navigation_flat" sliding-border></chi-tabs>
 
 <script>
   const tabbedNavigationFlatElement = document.querySelector('#example__tabbed_navigation_flat');

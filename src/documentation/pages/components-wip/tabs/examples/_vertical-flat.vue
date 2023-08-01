@@ -76,7 +76,7 @@ export default class VerticalFlat extends Vue {
 
   get codeSnippets() {
     return {
-      webcomponent: `<chi-tabs active-tab="tab-a" id="example__vertical-flat" vertical></chi-tabs>
+      webcomponent: `<chi-tabs active-tab="tab-a" id="example__vertical-flat" vertical sliding-border></chi-tabs>
 
 ${this.generateTabsContentHtml(true)}
 

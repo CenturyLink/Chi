@@ -77,7 +77,7 @@ export default class HorizontalFlat extends Vue {
 
   get codeSnippets() {
     return {
-      webcomponent: `<chi-tabs active-tab="tab-a" id="example__horizontal-flat"></chi-tabs>
+      webcomponent: `<chi-tabs active-tab="tab-a" id="example__horizontal-flat" sliding-border></chi-tabs>
 
 ${this.generateTabsContentHtml(true)}
 
@@ -99,19 +99,6 @@ ${this.generateTabsContentHtml(true)}
         id: 'tab-c'
       }
     ];
-
-    function clearActiveTab () {
-      const tabItems = document.querySelectorAll('.chi-tabs-panel');
-      tabItems.forEach(tab => {
-        tab.classList.remove('-active');
-      });
-    }
-
-    tabsElement.addEventListener("chiTabChange", function(event) {
-      const content = document.getElementById(event.detail.id + '_content');
-      clearActiveTab();
-      content.classList.add('-active');
-    });
   }
 <\/script>`,
         htmlblueprint: `<ul class="chi-tabs" id="example-horizontal-base" role="tablist" aria-label="chi-tabs-horizontal">\n${this.generateTabsHtml()}\n</ul>

@@ -76,7 +76,7 @@ export default class VerticalSolid extends Vue {
 
   get codeSnippets() {
     return {
-      webcomponent: `<chi-tabs active-tab="tab-a" id="example__vertical-solid" size='xl' solid vertical></chi-tabs>
+      webcomponent: `<chi-tabs active-tab="tab-a" id="example__vertical-solid" size='xl' solid vertical sliding-border></chi-tabs>
 
 ${this.generateTabsContentHtml(true)}
 

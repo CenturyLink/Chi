@@ -112,7 +112,7 @@ export default class AdditionalSizesHorizontal extends Vue {
     return this.sizes.map(({ name, value }) => {
       return (
         `<!-- ${name} -->
-<chi-tabs active-tab="tab-a" id="example__additional-sizes-horizontal-${value}"${value === 'md' ? '' : ` size="${value}`}></chi-tabs>`
+<chi-tabs active-tab="tab-a" id="example__additional-sizes-horizontal-${value}"${value === 'md' ? '' : ` size="${value}`} sliding-border></chi-tabs>`
       )
     }).join('\n\n');
   }

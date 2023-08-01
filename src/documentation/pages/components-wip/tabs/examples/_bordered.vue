@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Bordered" id="bordered" additionalClasses="-bg--grey-20" :tabs="exampleTabs">
     .-p--3.-bg--white(slot="example")
-      chi-tabs(:active-tab='activeTab' id='example__bordered' border @chiTabChange='chiTabChange')
+      chi-tabs(:active-tab='activeTab' id='example__bordered' border @chiTabChange='chiTabChange' sliding-border)
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -52,7 +52,7 @@ export default class Bordered extends Vue {
 
   get codeSnippets() {
     return {
-      webcomponent: `<chi-tabs active-tab="tab-a" id="example__bordered" border></chi-tabs>
+      webcomponent: `<chi-tabs active-tab="tab-a" id="example__bordered" border sliding-border></chi-tabs>
 
 <script>
   const tabsElement = document.querySelector('example__bordered');
