@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { HeadTabInterface } from '~/models/models';
+import { IHeadTabs } from '~/models/models';
 
 @Component({})
 
@@ -151,7 +151,7 @@ ${this.tabsLinksHtml}
   }
 
 
-  changeHeadTab(headTab: HeadTabInterface) {
+  changeHeadTab(headTab: IHeadTabs) {
     this.activeHeadTab = headTab.id
   }
 }
