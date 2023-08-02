@@ -2,11 +2,15 @@
   div
     h4 Neutral
     p.-text Neutral background-colors provide low-contrast backgrounds for application containers, cards, and more.
-    <DataTable title="Color Class" :data="colors" />
+    <TableComponent title="Color Class" :data="colors" :getContent="getContent" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { ITableColumn, ITableContent } from '~/models/models';
+import { generateBasicUtilitiesColorContent } from '~/utilities/utilities';
+import { COLORS } from '~/constants/constants';
+
 
 @Component({
   data: () => {
@@ -14,28 +18,28 @@ import { Component, Vue } from 'vue-property-decorator';
       colors: [
         {
           name: 'grey-20',
-          value: '#F8F9F9',
+          value: COLORS['GREY-20']
         },
         {
           name: 'grey-15',
-          value: '#F4F5F6',
-        },
-        {
-          name: 'grey-20',
-          value: '#EDF0F2'
+          value: COLORS['GREY-15'],
         },
         {
           name: 'grey-25',
-          value: '#DADEE2'
+          value: COLORS['GREY-25']
         },
         {
           name: 'grey-30',
-          value: '#D0D4D9'
+          value: COLORS['GREY-30']
         }
       ]
     }
   }
 })
 
-export default class NeutralBackgroundColor extends Vue {}
+export default class NeutralBackgroundColor extends Vue {
+  getContent(column: ITableColumn, content: ITableContent) {
+    return generateBasicUtilitiesColorContent(column, content);
+  }
+}
 </script>

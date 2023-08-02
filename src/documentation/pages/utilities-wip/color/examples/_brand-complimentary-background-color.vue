@@ -2,11 +2,14 @@
   div
     h4 Brand complimentary
     p.-text More background-colors that can be used to compliment the primary brand palette.
-    <DataTable :data="colors" />
+    <TableComponent :data="colors" :getContent="getContent" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { ITableColumn, ITableContent } from '~/models/models';
+import { generateBasicUtilitiesColorContent } from '~/utilities/utilities';
+import { COLORS } from '~/constants/constants';
 
 @Component({
   data: () => {
@@ -14,16 +17,20 @@ import { Component, Vue } from 'vue-property-decorator';
       colors: [
         {
           name: 'navy',
-          value: '#083176',
+          value: COLORS.NAVY,
         },
         {
           name: 'grey',
-          value: '#3F4145',
+          value: COLORS.GREY,
         }
       ]
     }
   }
 })
 
-export default class BrandComplimentaryBackgroundColor extends Vue {}
+export default class BrandComplimentaryBackgroundColor extends Vue {
+  getContent(column: ITableColumn, content: ITableContent) {
+    return generateBasicUtilitiesColorContent(column, content);
+  }
+}
 </script>

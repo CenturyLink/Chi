@@ -6,11 +6,14 @@
       | validation, user status, application state and more. Use green (success) for positive, blue (info)
       | for informative, red (danger) for negative, yellow (warning) for needs attention, and grey (muted)
       | for neutral. Semantic colors should never be used for decorative purposes.
-    <DataTable title="Color Class" :data="colors" />
+    <TableComponent title="Color Class" :data="colors" :getContent="getContent" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { ITableColumn, ITableContent } from '~/models/models';
+import { generateBasicUtilitiesColorContent } from '~/utilities/utilities';
+import { COLORS } from '~/constants/constants';
 
 @Component({
   data: () => {
@@ -18,68 +21,72 @@ import { Component, Vue } from 'vue-property-decorator';
       colors: [
         {
           name: 'success',
-          value: '#007E44',
+          value: COLORS.SUCCESS,
         },
         {
           name: 'success-light',
-          value: '#DBFAEE',
+          value: COLORS['SUCCESS-LIGHT'],
         },
         {
           name: 'success-lighter',
-          value: '#F1FEF8',
+          value: COLORS['SUCCESS-LIGHTER'],
         },
         {
           name: 'info',
-          value: '#0075C9',
+          value: COLORS.INFO,
         },
         {
           name: 'info-light',
-          value: '#F5F9FC',
+          value: COLORS['INFO-LIGHT'],
         },
         {
           name: 'info-lighter',
-          value: '#E0F3FF',
+          value: COLORS['INFO-LIGHTER'],
         },
         {
           name: 'warning',
-          value: '#A15C00',
+          value: COLORS.WARNING,
         },
         {
           name: 'warning-light',
-          value: '#FAECD9',
+          value: COLORS['WARNING-LIGHT'],
         },
         {
           name: 'warning-lighter',
-          value: '#FFF8ED',
+          value: COLORS['WARNING-LIGHTER'],
         },
         {
           name: 'danger',
-          value: '#D62015',
+          value: COLORS.DANGER,
         },
         {
           name: 'danger-light',
-          value: '#FFE8E5',
+          value: COLORS['DANGER-LIGHT'],
         },
         {
           name: 'danger-lighter',
-          value: '#FFF5F5',
+          value: COLORS['DANGER-LIGHTER'],
         },
         {
           name: 'muted',
-          value: '#53565A',
+          value: COLORS.MUTED,
         },
         {
           name: 'muted-light',
-          value: '#EDF0F2',
+          value: COLORS['MUTED-LIGHT'],
         },
         {
           name: 'muted-lighter',
-          value: '#F8F9F9',
+          value: COLORS['MUTED-LIGHTER'],
         }
       ]
     }
   }
 })
 
-export default class SemanticBackgroundColor extends Vue {}
+export default class SemanticBackgroundColor extends Vue {
+  getContent(column: ITableColumn, content: ITableContent) {
+    return generateBasicUtilitiesColorContent(column, content);
+  }
+}
 </script>

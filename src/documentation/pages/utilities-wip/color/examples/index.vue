@@ -5,6 +5,7 @@
     <BrandIconColor />
     <SemanticIconColor />
     <BrandComplimentaryIconColor v-if="hideCenturylink" />
+
     h2 Background-color
     p.-text
       | Define background-color classes using the format <code>-bg-{breakpoint}--{value}</code>.

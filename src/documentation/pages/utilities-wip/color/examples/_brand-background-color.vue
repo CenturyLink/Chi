@@ -2,11 +2,14 @@
   div
     h4 Brand
     p.-text More background-colors that can be used to compliment the primary brand palette.
-    <DataTable title="Color Class" :data="colors" />
+    <TableComponent title="Color Class" :data="colors" :getContent="getContent" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { generateBasicUtilitiesColorContent } from '~/utilities/utilities';
+import { ITableColumn, ITableContent } from '~/models/models';
+import { COLORS } from '~/constants/constants';
 
 @Component({})
 export default class BrandBackgroundColor extends Vue {
@@ -20,21 +23,25 @@ export default class BrandBackgroundColor extends Vue {
     return [
       {
         name: 'primary',
-        value: this.isNotCenturylink ? '#0075C9' : '#0047BB',
+        value: this.isNotCenturylink ? COLORS.PRIMARY : COLORS['PRIMARY-CENTURYLINK'],
       },
       {
         name: 'secondary',
-        value: this.isNotCenturylink ? '#38C6F4' : '#48D597',
+        value: this.isNotCenturylink ? COLORS.SECONDARY : COLORS['SECONDARY-CENTURYLINK'],
       },
       {
         name: 'black',
-        value: '#000000',
+        value: COLORS.BLACK,
       },
       {
         name: 'white',
-        value: '#FFFFFF',
+        value: COLORS.WHITE,
       }
     ]
+  }
+
+  getContent(column: ITableColumn, content: ITableContent) {
+    return generateBasicUtilitiesColorContent(column, content);
   }
 }
 </script>

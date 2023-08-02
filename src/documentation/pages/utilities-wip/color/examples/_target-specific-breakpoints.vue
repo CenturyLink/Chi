@@ -2,12 +2,12 @@
   div
     h4 Target specific breakpoints
     p.-text To target a specific breakpoint, add the breakpoint abbreviation to the class.
-    <DataTable :data="values" :columns="columns" :getContent="getContent" />
+    <TableComponent :data="values" :columns="columns" :getContent="getContent" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn, ITableContent } from "~/models/models";
+import { ITableColumn, ITableContent } from '~/models/models';
 
 const sizes = ['sm', 'md', 'lg', 'xl']
 const colors = ['none', 'primary', 'secondary', 'white', 'black', 'muted', 'grey', 'grey-20', 'grey-30', 'success', 'info', 'warning', 'danger']
