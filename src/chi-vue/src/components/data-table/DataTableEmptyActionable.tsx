@@ -16,12 +16,14 @@ export default class DataTableEmptyActionable extends Vue {
   message = this.$props.content.message || defaultConfig.emptyActionable?.message;
 
   render() {
-    return [
-      <chi-icon icon={this.icon} color="grey"></chi-icon>,
-      <span>
-        <a onClick={() => this._emitEmptyActionableLink()}>{this.message.actionLink}</a>
-        {this.message.text}
-      </span>,
-    ];
+    return (
+      <div>
+        <chi-icon icon={this.icon} color="grey"></chi-icon>
+        <span>
+          <a onClick={() => this._emitEmptyActionableLink()}>{this.message.actionLink}</a>
+          {this.message.text}
+        </span>
+      </div>
+    );
   }
 }
