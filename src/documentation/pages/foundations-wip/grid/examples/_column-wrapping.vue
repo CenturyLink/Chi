@@ -57,9 +57,8 @@ ${this.generateHtmlList(this.grid2Columns, '6')}
 
   generateHtmlList(array: string[], length: string) {
     return `${array
-      .map(() => `<div class="chi-col -w--${length}"></div>`)
-      .join('\n')}
-</div>`;
+      .map(() => `  <div class="chi-col -w--${length}"></div>`)
+      .join('\n')}`;
   }
 }
 </script>

@@ -31,11 +31,13 @@ import { Component, Vue } from 'vue-property-decorator';
 })
 export default class OffsetPositionColumns extends Vue {
   gridColumns = ['-w--5 -o--1', '-w--3 -o--3'];
+
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
     };
   }
+
   generateHtml() {
     return `<div class="chi-grid">
 ${this.gridColumns

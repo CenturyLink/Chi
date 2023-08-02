@@ -33,6 +33,7 @@ export default class AlignCenter extends Vue {
       htmlblueprint: this.generateHtml()
     };
   }
+
   generateHtml() {
     return `<div class="chi-grid -align--center" style="height: 160px;">
 ${this.gridCols.map((_: any) => `  <div class="chi-col"></div>`).join('\n')}

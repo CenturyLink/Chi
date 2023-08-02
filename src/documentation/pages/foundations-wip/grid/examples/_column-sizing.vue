@@ -44,6 +44,7 @@ export default class ColumnSizing extends Vue {
       htmlblueprint: this.generateHtml()
     };
   }
+
   generateHtml() {
     return `<div class="chi-grid">
 ${this.gridCols

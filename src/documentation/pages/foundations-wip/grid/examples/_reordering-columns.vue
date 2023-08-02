@@ -46,11 +46,13 @@ export default class ReorderingColumns extends Vue {
       comment: '<!-- displayed between -->'
     }
   ];
+
   get codeSnippets() {
     return {
       htmlblueprint3Cols: this.generateHtml3Cols()
     };
   }
+
   generateHtml3Cols() {
     return `<div class="chi-grid">
 ${this.gridColumns

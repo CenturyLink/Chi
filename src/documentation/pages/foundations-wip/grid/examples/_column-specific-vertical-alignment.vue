@@ -31,11 +31,13 @@ import { Component, Vue } from 'vue-property-decorator';
 })
 export default class ColumnSpecificVerticalAlignment extends Vue {
   gridCols = ['-align--top', '-align--center', '-align--bottom'];
+
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
     };
   }
+
   generateHtml() {
     return `<div class="chi-grid" style="height: 160px;">
 ${this.gridCols

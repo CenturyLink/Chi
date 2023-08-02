@@ -39,6 +39,7 @@ export default class ColumnOffset extends Vue {
       htmlblueprint: this.generateHtml()
     };
   }
+
   generateHtml() {
     return `<div class="chi-grid">
   <div class="chi-col -o-md--6"></div>

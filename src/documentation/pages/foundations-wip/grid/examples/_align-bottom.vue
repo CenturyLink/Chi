@@ -33,6 +33,7 @@ export default class AlignBottom extends Vue {
       htmlblueprint: this.generateHtml()
     };
   }
+
   generateHtml() {
     return `<div class="chi-grid -align--bottom" style="height: 160px;">
 ${this.gridCols.map((_: any) => `  <div class="chi-col"></div>`).join('\n')}

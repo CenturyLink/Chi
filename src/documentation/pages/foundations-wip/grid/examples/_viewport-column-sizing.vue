@@ -53,11 +53,13 @@ export default class ViewportColumnSizing extends Vue {
       className: '-w-xl--12'
     }
   ];
+
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
     };
   }
+
   generateHtml() {
     return this.gridColumns
       .map(

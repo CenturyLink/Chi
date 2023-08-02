@@ -37,11 +37,13 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class ColumnStacking extends Vue {
   smallViewport = ['-w-sm--2', '-w-sm--4', '-w-sm'];
   normalViewport = ['-w-sm', '-w-sm', '-w-sm'];
+
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
     };
   }
+
   generateHtml() {
     return `<div class="chi-grid">
 ${this.smallViewport

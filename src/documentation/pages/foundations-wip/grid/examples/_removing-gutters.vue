@@ -39,6 +39,7 @@ export default class RemovingGutters extends Vue {
       htmlblueprint: this.generateHtml()
     };
   }
+
   generateHtml() {
     return `<!-- grid container with collapsed margins -->
 <div class="chi-grid -no-gutter">

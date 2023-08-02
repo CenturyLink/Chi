@@ -41,15 +41,19 @@ import { Component, Vue } from 'vue-property-decorator';
   }
 })
 export default class MixingSizesAutomatic extends Vue {
-  gridColumns = ['chi-col -w--2', 'chi-col', 'chi-col -w--2'];
+  gridColumns = [' -w--2', '', ' -w--2'];
+
   get codeSnippets() {
     return {
       htmlblueprint: this.generateHtml()
     };
   }
+
   generateHtml() {
     return `<div class="chi-grid">
-${this.gridColumns.map(item => `  <div class="${item}"></div>`).join('\n')}
+${this.gridColumns
+  .map(item => `  <div class="chi-col${item}"></div>`)
+  .join('\n')}
 </div>`;
   }
 }
