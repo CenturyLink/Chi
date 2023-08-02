@@ -64,9 +64,10 @@ export default class ViewportColumnSizing extends Vue {
     return this.gridColumns
       .map(
         (item: { comment: string; className: string }) => `${item.comment}
-  <div class="chi-grid">
-    <div class="chi-col -w--6 ${item.className}"></div>
-  </div>`
+<div class="chi-grid">
+  <div class="chi-col -w--6 ${item.className}"></div>
+</div>
+`
       )
       .join('\n');
   }
