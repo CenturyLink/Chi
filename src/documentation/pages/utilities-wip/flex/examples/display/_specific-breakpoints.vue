@@ -2,9 +2,9 @@
   div
     p.-text
       | Target specific breakpoints with Display responsive classes.
-    ul.-text
+    ul.-mb--3
       li(v-for="type in types")
-        code {{ `-d-${ type }` }}
+        code {{ `-d--${ type }` }}
       template(v-for="breakpoint in breakpoints")
         li(v-for="type in types")
           code {{ `-d-${ breakpoint }--${ type }` }}

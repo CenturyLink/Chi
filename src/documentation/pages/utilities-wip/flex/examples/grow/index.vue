@@ -7,7 +7,7 @@
       .-text.-p--2 Item
       .-text.-p--2 Item
     <pre class="language-html" slot="code-htmlblueprint">
-    <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
     </ComponentExample>
     <SpecificBreakpoints/>
@@ -30,15 +30,23 @@ import SpecificBreakpoints from './_specific-breakpoints.vue';
           label: 'HTML Blueprint'
         }
       ],
-      codeSnippets: {
-        htmlblueprint: `<div class="-d--flex">
-  <div class="-flex--grow1">Item</div>
-  <div>Item</div>
-  <div>Item</div>
-</div>`
-      }
     };
   }
 })
-export default class Grow extends Vue {}
+export default class Grow extends Vue {
+  get codeSnippets() {
+    return {
+      htmlblueprint: this.generateHtml()
+    }
+  }
+
+  generateHtml() {
+    const content = Array(3).fill(0).map((_, i) => `  <div${i ? "" : " class=\"-flex--grow1\""}>Item</div>`).join('\n');
+
+    return (
+      `<div class="-d--flex">
+${content}
+</div>`)
+  }
+}
 </script>

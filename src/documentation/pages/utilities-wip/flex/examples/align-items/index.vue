@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div.-mb--3
     <ComponentExample title="Align Items" id="align-items" titleSize="h3" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
       p.-text(slot="example-description") Use align-items utilities to alter the alignment of flex items on the cross axis.
       .-p--3(slot="example")
@@ -8,7 +8,7 @@
           .-text.-p--2 Item 2
           .-text.-p--2 Item 3
       <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+        <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
       </pre>
     </ComponentExample>
     <SpecificBreakpoints />
@@ -18,13 +18,15 @@
 import { Component, Vue } from 'vue-property-decorator';
 import SpecificBreakpoints from "./_specific-breakpoints.vue";
 
+const types = ['start', 'end', 'center', 'baseline', 'stretch'];
+
 @Component({
   components: {
     SpecificBreakpoints,
   },
   data: () => {
     return {
-      types: ['start', 'end', 'center', 'baseline', 'stretch'],
+      types,
       exampleTabs: [
         {
           active: true,
@@ -32,15 +34,20 @@ import SpecificBreakpoints from "./_specific-breakpoints.vue";
           label: 'HTML Blueprint'
         }
       ],
-      codeSnippets: {
-        htmlblueprint: `<div class="-d--flex -align-items--start"></div>
-<div class="-d--flex -align-items--end"></div>
-<div class="-d--flex -align-items--center"></div>
-<div class="-d--flex -align-items--baseline"></div>
-<div class="-d--flex -align-items--stretch"></div>`
-      }
     };
   }
 })
-export default class AlignItems extends Vue {}
+export default class AlignItems extends Vue {
+  types = types
+
+  get codeSnippets() {
+    return {
+      htmlblueprint: this.generateHtml()
+    }
+  }
+
+  generateHtml() {
+    return this.types.map(type => `<div class="-d--flex -align-items--${type}"></div>`).join('\n');
+  }
+}
 </script>

@@ -4,11 +4,9 @@
     p.-text(slot="example-description") Use justify-content utilities to alter the alignment of flex items on the main axis.
     .-p--3(slot="example")
       .-mb--2.-d--flex.-show--example.-bg--grey-10(v-for="type in types" :class="'-justify-content--' + type")
-        .-text.-p--2 Item 1
-        .-text.-p--2 Item 2
-        .-text.-p--2 Item 3
+        .-text.-p--2(v-for="i in 3") Item {{i}}
     <pre class="language-html" slot="code-htmlblueprint">
-    <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
     </ComponentExample>
     <SpecificBreakpoints/>
@@ -18,13 +16,15 @@
 import { Component, Vue } from 'vue-property-decorator';
 import SpecificBreakpoints from './_specific-breakpoints.vue';
 
+const types = ['start', 'end', 'center', 'between', 'around'];
+
 @Component({
   components: {
     SpecificBreakpoints,
   },
   data: () => {
     return {
-      types: ['start', 'end', 'center', 'between', 'around'],
+      types,
       exampleTabs: [
         {
           active: true,
@@ -32,16 +32,21 @@ import SpecificBreakpoints from './_specific-breakpoints.vue';
           label: 'HTML Blueprint'
         }
       ],
-      codeSnippets: {
-        htmlblueprint: `<div class="-d--flex -justify-content--start"/>
-<div class="-d--flex -justify-content--end"/>
-<div class="-d--flex -justify-content--center"/>
-<div class="-d--flex -justify-content--between"/>
-<div class="-d--flex -justify-content--around"/>`
-      }
     };
   }
 })
-export default class JustifyContent extends Vue {}
+export default class JustifyContent extends Vue {
+  types = types
+
+  get codeSnippets() {
+    return {
+      htmlblueprint: this.generateHtml()
+    }
+  }
+
+  generateHtml() {
+    return this.types.map(type => `<div class="-d--flex -justify-content--${type}"></div>`).join('\n');
+  }
+}
 </script>
 

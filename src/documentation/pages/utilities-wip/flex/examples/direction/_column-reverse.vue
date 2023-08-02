@@ -1,12 +1,10 @@
 <template lang="pug">
-  <ComponentExample title="Column reverse" id="colemn-reverse" titleSize="h4" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
+  <ComponentExample title="Column reverse" id="column-reverse" titleSize="h4" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
     p.-text(slot="example-description") Use <code>-flex--column-reverse</code> to display the items vertically in reverse.
     .-p--3.-d--flex.-flex--column-reverse.-show--example(slot="example")
-      .-text.-p--2 Item 1
-      .-text.-p--2 Item 2
-      .-text.-p--2 Item 3
+      .-text.-p--2(v-for="i in 3" ) Item {{i}}
     <pre class="language-html" slot="code-htmlblueprint">
-    <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
   </ComponentExample>
 </template>
@@ -24,15 +22,23 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML Blueprint'
         }
       ],
-      codeSnippets: {
-        htmlblueprint: `<div class="-d--flex -flex--column-reverse">
-  <div>Item 1</div>
-  <div>Item 2</div>
-  <div>Item 3</div>
-</div>`
-      }
     };
   }
 })
-export default class ColumnReverse extends Vue {}
+export default class ColumnReverse extends Vue {
+  get codeSnippets() {
+    return {
+      htmlblueprint: this.generateHtml()
+    }
+  }
+
+  generateHtml() {
+    const content = Array(3).fill(0).map((_, i) => `  <div>Item ${i + 1}</div>`).join('\n');
+
+    return (
+      `<div class="-d--flex -flex--column-reverse">
+${content}
+</div>`)
+  }
+}
 </script>

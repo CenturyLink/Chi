@@ -5,13 +5,26 @@
       .-text.-p--2.-align-self--stretch Aligned Item
       .-text.-p--2 Item
     <pre class="language-html" slot="code-htmlblueprint">
-    <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
   </ComponentExample>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+
+const htmlSource = [
+  {
+    value: "Item",
+  },
+  {
+    className: "-align-self--stretch",
+    value: "Aligned Item",
+  },
+  {
+    value: "Item",
+  },
+];
 
 @Component({
   data: () => {
@@ -23,15 +36,23 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML Blueprint'
         }
       ],
-      codeSnippets: {
-        htmlblueprint: `<div class="-d--flex">
-  <div>Item</div>
-  <div class="-align-self--stretch">Aligned Item</div>
-  <div>Item</div>
-</div>`
-      }
     };
   }
 })
-export default class Stretch extends Vue {}
+export default class Stretch extends Vue {
+  get codeSnippets() {
+    return {
+      htmlblueprint: this.generateHtml()
+    }
+  }
+
+  generateHtml() {
+    const content = htmlSource.map(({ value, className }) => `  <div${className ? ` class="${className}"` : ""}>${value}</div>`).join('\n');
+
+    return (
+      `<div class="-d--flex">
+${content}
+</div>`)
+  }
+}
 </script>

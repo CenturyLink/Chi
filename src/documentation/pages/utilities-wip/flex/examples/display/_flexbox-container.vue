@@ -3,7 +3,7 @@
     .-p--3.-show--example(slot="example")
       .-text.-p--2.-m--1.-d--flex -d--flex
     <pre class="language-html" slot="code-htmlblueprint">
-    <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
   </ComponentExample>
 </template>

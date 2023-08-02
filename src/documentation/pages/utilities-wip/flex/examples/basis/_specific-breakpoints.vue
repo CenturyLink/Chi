@@ -3,7 +3,7 @@
     <TitleAnchor title="Target specific breakpoints" id="basis-specific-breakpoints" titleSize="h4"/>
     p.-text
       | To target a specific breakpoint, add the breakpoint abbreviation to the class.
-    table.chi-table.-bordered.-mb--3
+    table.chi-table.-bordered.-mb--3.-mt--3
       thead
         tr
           th

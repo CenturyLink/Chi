@@ -6,7 +6,7 @@
       .-text.-p--2(style="width:100%;") Item
       .-text.-p--2.-flex--shrink1 Shrink Item
     <pre class="language-html" slot="code-htmlblueprint">
-    <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
     </ComponentExample>
     <SpecificBreakpoints/>

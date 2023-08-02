@@ -3,7 +3,7 @@
     <TitleAnchor title="Target all breakpoints" id="basis-all-breakpoints" titleSize="h4"/>
     p.-text
       | Flex-basis utility classes with no breakpoint defined apply to all screen sizes.
-    table.chi-table.-bordered.-mb--3
+    table.chi-table.-bordered.-mb--3.-mt--3
       thead
         tr
           th
@@ -12,9 +12,9 @@
             div Value
       tbody
         tr(v-for="type in types")
-          td.-text(width="40%")
+          td(width="40%")
             code="-flex-basis--{{type}}"
-          td.-text
+          td
             template(v-if="type=='*'")="can be incremented by 5%"
             code(v-else)="flex-basis: {{type}}"
 </template>

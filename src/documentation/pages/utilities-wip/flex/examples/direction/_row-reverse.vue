@@ -2,11 +2,9 @@
   <ComponentExample title="Row reverse" id="row-reverse" titleSize="h4" padding="-p--0" :tabs="exampleTabs" :showSnippetTabs="false">
     p.-text(slot="example-description") Use <code>-flex--row-reverse</code> to display the items horizontally in reverse.
     .-p--3.-d--flex.-flex--row-reverse.-show--example(slot="example")
-      .-text.-p--2 Item 1
-      .-text.-p--2 Item 2
-      .-text.-p--2 Item 3
+      .-text.-p--2(v-for="i in 3" ) Item {{i}}
     <pre class="language-html" slot="code-htmlblueprint">
-    <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
   </ComponentExample>
 </template>
@@ -24,15 +22,23 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML Blueprint'
         }
       ],
-      codeSnippets: {
-        htmlblueprint: `<div class="-d--flex -flex--row-reverse">
-  <div>Item 1</div>
-  <div>Item 2</div>
-  <div>Item 3</div>
-</div>`
-      }
     };
   }
 })
-export default class RowReverse extends Vue {}
+export default class RowReverse extends Vue {
+  get codeSnippets() {
+    return {
+      htmlblueprint: this.generateHtml()
+    }
+  }
+
+  generateHtml() {
+    const content = Array(3).fill(0).map((_, i) => `  <div>Item ${i + 1}</div>`).join('\n');
+
+    return (
+      `<div class="-d--flex -flex--row-reverse">
+${content}
+</div>`)
+  }
+}
 </script>
