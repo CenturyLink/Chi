@@ -7,13 +7,14 @@ title: App Layout
     h3 Base
     .test-layout-base.-bg--none.-s--3.-p--0
       .chi-main
-        .chi-main__header
-          .chi-main__header-start
-            .chi-main__title
-              .chi-main__title-heading Page Title
-        .chi-main__content
-          .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
-            | Page content goes here
+        main
+          .chi-main__header
+            .chi-main__header-start
+              .chi-main__title
+                .chi-main__title-heading Page Title
+          .chi-main__content
+            .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
+              | Page content goes here
         footer.chi-footer
           .chi-footer__content
             .chi-footer__internal
@@ -73,18 +74,19 @@ title: App Layout
     h3 Base with alert
     .test-layout-base-with-alert.-bg--none.-s--3.-p--0
       .chi-main
-        .chi-main__alert
-          .chi-alert.-info(role='alert')
-            i.chi-alert__icon.chi-icon.icon-circle-info(aria-hidden='true')
-            .chi-alert__content
-              p.chi-alert__text This is a page level info alert
-        .chi-main__header
-          .chi-main__header-start
-            .chi-main__title
-              .chi-main__title-heading Page Title
-        .chi-main__content
-          .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
-            | Page content goes here
+        main
+          .chi-main__alert
+            .chi-alert.-info(role='alert')
+              i.chi-alert__icon.chi-icon.icon-circle-info(aria-hidden='true')
+              .chi-alert__content
+                p.chi-alert__text This is a page level info alert
+          .chi-main__header
+            .chi-main__header-start
+              .chi-main__title
+                .chi-main__title-heading Page Title
+          .chi-main__content
+            .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
+              | Page content goes here
         footer.chi-footer
           .chi-footer__content
             .chi-footer__internal
@@ -144,17 +146,18 @@ title: App Layout
     h3 Base with back link
     .test-layout-backlink.-bg--none.-s--3.-p--0
       .chi-main
-        .chi-main__header
-          .chi-main__header-start
-            a.chi-link(href='#')
-              .chi-link__content
-                i.chi-icon.icon-chevron-left.-xs
-                span.-text--md Back link
-            .chi-main__title
-              .chi-main__title-heading Page Title
-        .chi-main__content
-          .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
-            | Page content goes here
+        main
+          .chi-main__header
+            .chi-main__header-start
+              a.chi-link(href='#')
+                .chi-link__content
+                  i.chi-icon.icon-chevron-left.-xs
+                  span.-text--md Back link
+              .chi-main__title
+                .chi-main__title-heading Page Title
+          .chi-main__content
+            .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
+              | Page content goes here
         footer.chi-footer
           .chi-footer__content
             .chi-footer__internal
@@ -214,18 +217,19 @@ title: App Layout
     h3 Base with back link and subtitle
     .test-layout-backlink-subtitle.-bg--none.-s--3.-p--0
       .chi-main
-        .chi-main__header
-          .chi-main__header-start
-            a.chi-link(href='#')
-              .chi-link__content
-                i.chi-icon.icon-chevron-left.-xs(aria-hidden='true')
-                span.-text--md Back link
-            .chi-main__title
-              .chi-main__title-heading Page Title
-              .chi-main__title-subheading Page subtitle
-        .chi-main__content
-          .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
-            | Page content goes here
+        main
+          .chi-main__header
+            .chi-main__header-start
+              a.chi-link(href='#')
+                .chi-link__content
+                  i.chi-icon.icon-chevron-left.-xs(aria-hidden='true')
+                  span.-text--md Back link
+              .chi-main__title
+                .chi-main__title-heading Page Title
+                .chi-main__title-subheading Page subtitle
+          .chi-main__content
+            .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
+              | Page content goes here
         footer.chi-footer
           .chi-footer__content
             .chi-footer__internal
@@ -285,20 +289,21 @@ title: App Layout
     h3 Base with back link, subtitle, and buttons
     .test-layout-backlink-subtitle-buttons.-bg--none.-s--3.-p--0
       .chi-main
-        .chi-main__header
-          .chi-main__header-start
-            a.chi-link(href='#')
-              .chi-link__content
-                i.chi-icon.icon-chevron-left.-xs(aria-hidden='true')
-                span.-text--md Back link
-            .chi-main__title
-              .chi-main__title-heading Page Title
-              .chi-main__title-subheading Page subtitle
-          .chi-main__header-end
-            button.chi-button.-primary Primary
-        .chi-main__content
-          .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
-            | Page content goes here
+        main
+          .chi-main__header
+            .chi-main__header-start
+              a.chi-link(href='#')
+                .chi-link__content
+                  i.chi-icon.icon-chevron-left.-xs(aria-hidden='true')
+                  span.-text--md Back link
+              .chi-main__title
+                .chi-main__title-heading Page Title
+                .chi-main__title-subheading Page subtitle
+            .chi-main__header-end
+              button.chi-button.-primary Primary
+          .chi-main__content
+            .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
+              | Page content goes here
         footer.chi-footer
           .chi-footer__content
             .chi-footer__internal
@@ -358,21 +363,22 @@ title: App Layout
     h3 Base with page-level actions
     .test-layout-page-level-actions.-bg--none.-s--3.-p--0
       .chi-main
-        .chi-main__header
-          .chi-main__header-start
-            a.chi-link(href='#')
-              .chi-link__content
-                i.chi-icon.icon-chevron-left.-xs(aria-hidden='true')
-                span.-text--md Back link
-            .chi-main__title
-              .chi-main__title-heading Page Title
-              .chi-main__title-subheading Page subtitle
-        .chi-main__content
-          .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
-            | Page content goes here
-          .-d--flex.-align-items--center.-justify-content--end.-py--3.-my--2.-bt--1
-            button.chi-button.-primary.-outline.-bg--white Cancel
-            button.chi-button.-primary.-ml--1 Submit
+        main
+          .chi-main__header
+            .chi-main__header-start
+              a.chi-link(href='#')
+                .chi-link__content
+                  i.chi-icon.icon-chevron-left.-xs(aria-hidden='true')
+                  span.-text--md Back link
+              .chi-main__title
+                .chi-main__title-heading Page Title
+                .chi-main__title-subheading Page subtitle
+          .chi-main__content
+            .-d--flex.-align-items--center.-justify-content--center(style='height:10rem;')
+              | Page content goes here
+            .-d--flex.-align-items--center.-justify-content--end.-py--3.-my--2.-bt--1
+              button.chi-button.-primary.-outline.-bg--white Cancel
+              button.chi-button.-primary.-ml--1 Submit
         footer.chi-footer
           .chi-footer__content
             .chi-footer__internal
@@ -432,61 +438,62 @@ title: App Layout
     h3 No Margin
     .test-layout-no-margin.-bg--none.-s--3.-position--relative.-p--0
       .chi-main.-no-margin
-        .chi-main__header
-          .chi-main__header-start
-            .chi-main__title
-              .chi-main__title-heading
-                | Page Title
-                button.chi-button.-flat.-icon.-sm(aria-label='Help')
-                  .chi-button__content
-                    .chi-icon
-                      svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                        use(xlink:href='#icon-circle-question-outline')
-          .chi-main__header-end
-            button.chi-button.-xs
-              .chi-button__content
-                .chi-icon
-                  svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                    use(xlink:href='#icon-settings')
-                span Customize
-        .chi-main__content
-          .chi-grid
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-highlight.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
+        main
+          .chi-main__header
+            .chi-main__header-start
+              .chi-main__title
+                .chi-main__title-heading
+                  | Page Title
+                  button.chi-button.-flat.-icon.-sm(aria-label='Help')
+                    .chi-button__content
+                      .chi-icon
+                        svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                          use(xlink:href='#icon-circle-question-outline')
+            .chi-main__header-end
+              button.chi-button.-xs
+                .chi-button__content
+                  .chi-icon
+                    svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                      use(xlink:href='#icon-settings')
+                  span Customize
+          .chi-main__content
+            .chi-grid
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-highlight.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
         footer.chi-footer
           .chi-footer__content
             .chi-footer__internal
@@ -546,61 +553,62 @@ title: App Layout
     h3 Fixed width
     .test-layout-fixed-width.-bg--none.-s--3.-position--relative.-p--0
       .chi-main.-fixed-width
-        .chi-main__header
-          .chi-main__header-start
-            .chi-main__title
-              .chi-main__title-heading
-                | Page Title
-                button.chi-button.-flat.-icon.-sm(aria-label='Help')
-                  .chi-button__content
-                    .chi-icon
-                      svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                        use(xlink:href='#icon-circle-question-outline')
-          .chi-main__header-end
-            button.chi-button.-xs
-              .chi-button__content
-                .chi-icon
-                  svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                    use(xlink:href='#icon-settings')
-                span Customize
-        .chi-main__content
-          .chi-grid
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-highlight.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
+        main
+          .chi-main__header
+            .chi-main__header-start
+              .chi-main__title
+                .chi-main__title-heading
+                  | Page Title
+                  button.chi-button.-flat.-icon.-sm(aria-label='Help')
+                    .chi-button__content
+                      .chi-icon
+                        svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                          use(xlink:href='#icon-circle-question-outline')
+            .chi-main__header-end
+              button.chi-button.-xs
+                .chi-button__content
+                  .chi-icon
+                    svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                      use(xlink:href='#icon-settings')
+                  span Customize
+          .chi-main__content
+            .chi-grid
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-highlight.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
         footer.chi-footer
           .chi-footer__content
             .chi-footer__internal
@@ -660,63 +668,64 @@ title: App Layout
     h3 Fixed width with header background
     .test-layout-fixed-width-header-background.-bg--none.-s--3.-position--relative.-p--0
       .chi-main.-fixed-width.-header-background
-        .chi-main__background
-          .chi-main__background-image
-        .chi-main__header
-          .chi-main__header-start
-            .chi-main__title
-              .chi-main__title-heading
-                | Page Title
-                button.chi-button.-flat.-icon.-sm(aria-label='Help')
-                  .chi-button__content
-                    .chi-icon
-                      svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                        use(xlink:href='#icon-circle-question-outline')
-          .chi-main__header-end
-            button.chi-button.-xs
-              .chi-button__content
-                .chi-icon
-                  svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                    use(xlink:href='#icon-settings')
-                span Customize
-        .chi-main__content
-          .chi-grid
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-highlight.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
-            .chi-col.-w--12.-w-lg--6.-w-xl--4
-              .chi-card.-widget.-mb--3
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content(style='height:10rem;') Content here
+        main
+          .chi-main__background
+            .chi-main__background-image
+          .chi-main__header
+            .chi-main__header-start
+              .chi-main__title
+                .chi-main__title-heading
+                  | Page Title
+                  button.chi-button.-flat.-icon.-sm(aria-label='Help')
+                    .chi-button__content
+                      .chi-icon
+                        svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                          use(xlink:href='#icon-circle-question-outline')
+            .chi-main__header-end
+              button.chi-button.-xs
+                .chi-button__content
+                  .chi-icon
+                    svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                      use(xlink:href='#icon-settings')
+                  span Customize
+          .chi-main__content
+            .chi-grid
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-highlight.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
+              .chi-col.-w--12.-w-lg--6.-w-xl--4
+                .chi-card.-widget.-mb--3
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content(style='height:10rem;') Content here
         footer.chi-footer
           .chi-footer__content
             .chi-footer__internal
@@ -776,104 +785,105 @@ title: App Layout
     h3 Fixed width with header background and CSS grid
     .test-layout-fixed-width-header-background-css-grid.-bg--none.-s--3.-position--relative.-p--0
       .chi-main.-fixed-width.-header-background
-        .chi-main__background
-          .chi-main__background-image
-        .chi-main__header
-          .chi-main__header-start
-            .chi-main__title
-              .chi-main__title-heading
-                | Page Title
-                button.chi-button.-flat.-icon.-sm(aria-label='Help')
-                  .chi-button__content
-                    .chi-icon
-                      svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                        use(xlink:href='#icon-circle-question-outline')
-          .chi-main__header-end
-            button.chi-button.-xs
-              .chi-button__content
-                .chi-icon
-                  svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                    use(xlink:href='#icon-settings')
-                span Customize
-        .chi-main__content
-          .chi-css-grid.-grid-rows--176
-            .chi-css-col.-col-lg--6.-col-xl--4.-row--2
-              .chi-card.-highlight.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content
-                  ul.chi-css-grid.-gap--05.-no-style.-m--0
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-            .chi-css-col.-col-lg--6.-col-xl--4
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4.-row--2
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4.-row--2
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4.-row--2
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4.-row--2
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
+        main
+          .chi-main__background
+            .chi-main__background-image
+          .chi-main__header
+            .chi-main__header-start
+              .chi-main__title
+                .chi-main__title-heading
+                  | Page Title
+                  button.chi-button.-flat.-icon.-sm(aria-label='Help')
+                    .chi-button__content
+                      .chi-icon
+                        svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                          use(xlink:href='#icon-circle-question-outline')
+            .chi-main__header-end
+              button.chi-button.-xs
+                .chi-button__content
+                  .chi-icon
+                    svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                      use(xlink:href='#icon-settings')
+                  span Customize
+          .chi-main__content
+            .chi-css-grid.-grid-rows--176
+              .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+                .chi-card.-highlight.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content
+                    ul.chi-css-grid.-gap--05.-no-style.-m--0
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+              .chi-css-col.-col-lg--6.-col-xl--4
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
         footer.chi-footer
           .chi-footer__content
             .chi-footer__internal
@@ -933,109 +943,110 @@ title: App Layout
     h3 Fixed width with alert, header background and CSS grid
     .test-layout-fixed-width-alert-header-background-css-grid.-bg--none.-s--3.-position--relative.-p--0
       .chi-main.-fixed-width.-header-background
-        .chi-main__background
-          .chi-main__background-image
-        .chi-main__alert
-          .chi-alert.-info(role='alert')
-            i.chi-alert__icon.chi-icon.icon-circle-info(aria-hidden='true')
-            .chi-alert__content
-              p.chi-alert__text This is a page level info alert
-        .chi-main__header
-          .chi-main__header-start
-            .chi-main__title
-              .chi-main__title-heading
-                | Page Title
-                button.chi-button.-flat.-icon.-sm(aria-label='Help')
-                  .chi-button__content
-                    .chi-icon
-                      svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                        use(xlink:href='#icon-circle-question-outline')
-          .chi-main__header-end
-            button.chi-button.-xs
-              .chi-button__content
-                .chi-icon
-                  svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
-                    use(xlink:href='#icon-settings')
-                span Customize
-        .chi-main__content
-          .chi-css-grid.-grid-rows--176
-            .chi-css-col.-col-lg--6.-col-xl--4.-row--2
-              .chi-card.-highlight.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content
-                  ul.chi-css-grid.-gap--05.-no-style.-m--0
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-                    li.chi-css-col.-col-sm--6
-                      a.chi-link(href='#') Widget Link
-            .chi-css-col.-col-lg--6.-col-xl--4
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4.-row--2
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4.-row--2
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4.-row--2
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4.-row--2
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
-            .chi-css-col.-col-lg--6.-col-xl--4
-              .chi-card.-widget.-h--100
-                .chi-card__header
-                  .chi-card__title Widget
-                  a.chi-link.-md.-cta(href='#') View
-                .chi-card__content Content here
+        main
+          .chi-main__background
+            .chi-main__background-image
+          .chi-main__alert
+            .chi-alert.-info(role='alert')
+              i.chi-alert__icon.chi-icon.icon-circle-info(aria-hidden='true')
+              .chi-alert__content
+                p.chi-alert__text This is a page level info alert
+          .chi-main__header
+            .chi-main__header-start
+              .chi-main__title
+                .chi-main__title-heading
+                  | Page Title
+                  button.chi-button.-flat.-icon.-sm(aria-label='Help')
+                    .chi-button__content
+                      .chi-icon
+                        svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                          use(xlink:href='#icon-circle-question-outline')
+            .chi-main__header-end
+              button.chi-button.-xs
+                .chi-button__content
+                  .chi-icon
+                    svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                      use(xlink:href='#icon-settings')
+                  span Customize
+          .chi-main__content
+            .chi-css-grid.-grid-rows--176
+              .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+                .chi-card.-highlight.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content
+                    ul.chi-css-grid.-gap--05.-no-style.-m--0
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+                      li.chi-css-col.-col-sm--6
+                        a.chi-link(href='#') Widget Link
+              .chi-css-col.-col-lg--6.-col-xl--4
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4.-row--2
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
+              .chi-css-col.-col-lg--6.-col-xl--4
+                .chi-card.-widget.-h--100
+                  .chi-card__header
+                    .chi-card__title Widget
+                    a.chi-link.-md.-cta(href='#') View
+                  .chi-card__content Content here
         footer.chi-footer
           .chi-footer__content
             .chi-footer__internal
@@ -1091,4 +1102,3 @@ title: App Layout
                       a(href='https://www.lumen.com/en-us/about/legal/uk-tax-strategy.html') UK Tax Strategy
                   .chi-footer__copyright
                     | © 2023 Lumen Technologies. All Rights Reserved. Lumen is a registered trademark in the United States, EU and certain other countries.
-
