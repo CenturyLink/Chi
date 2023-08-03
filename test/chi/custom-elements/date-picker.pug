@@ -64,3 +64,9 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
   .-d--flex
     chi-date(value=date1)
     chi-time(value="00:00", format=timeFormat)
+
+.test-time-format-12hr-view.-py--2(data-cy="test-time-format-12hr")
+  span.-text--h2 Test time 12 hour format view
+  .-d--flex
+    chi-date(value=date1)
+    chi-time(value="00:00", format='12hr')

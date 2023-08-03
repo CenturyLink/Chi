@@ -1,4 +1,15 @@
 # CHANGELOG
+## 5.37.0 (July 12, 2023)
+### Components
+#### Added
+* Added: Data table header now supports icons with `icon` property.
+* Added: Helper message web component to provide users with addtional information, validation feedback, and other helpful information.
+* Added: Phone input `excluded-countries` attribute to set excluded countries.
+* Added: Icons `icon-flag-off` and, `icon-mail-circle-check`.
+### Documentation
+#### Added
+* Added: Helper message to text input in message section.
+
 ## 5.36.0 (June 28, 2023)
 ### Components
 #### Added

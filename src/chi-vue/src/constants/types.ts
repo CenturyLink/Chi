@@ -62,6 +62,7 @@ export interface DataTableData {
       bold?: boolean;
       description?: string | DataTableColumnDescription;
       isPrintDisabled?: boolean;
+      icon?: string;
     };
   };
   body: DataTableRow[];
