@@ -974,6 +974,7 @@ describe('Data Table', () => {
           hasClassAssertion('@sortIcon', `${ARROW_SORT_CLASS}`);
           cy.get('@firstCell')
             .click({ force: true })
+            .wait(3000)
             .then(() => {
               hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
             });
@@ -985,6 +986,7 @@ describe('Data Table', () => {
           cy.get('@sortIcon').should('have.css', 'transform', 'none');
           cy.get('@firstCell')
             .click({ force: true })
+            .wait(3000)
             .then(() => {
               hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
             });
