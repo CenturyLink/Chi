@@ -2,7 +2,7 @@
   div
     p.-text
       | Target specific breakpoints with Align items responsive classes.
-    ul.-text
+    ul.-mb--3
       li(v-for="type in types")
         code {{ `-align-items--${ type }` }}
       template(v-for="breakpoint in breakpoints")

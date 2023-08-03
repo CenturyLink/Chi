@@ -2,7 +2,7 @@
   div
     p.-text
       | Target specific breakpoints with Wrap responsive classes.
-    ul.-text
+    ul.-mb--3
       li(v-for="type in types")
         code {{ `-flex--${ type }` }}
       template(v-for="breakpoint in breakpoints")

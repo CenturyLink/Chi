@@ -2,7 +2,7 @@
   div
     p.-text
       | Target specific breakpoints with Justify content responsive classes.
-    ul.-text
+    ul.-mb--3
       li(v-for="type in types")
         code {{ `-justify-content--${ type }` }}
       template(v-for="breakpoint in breakpoints")

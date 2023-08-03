@@ -2,7 +2,7 @@
   div
     p.-text
       | Target specific breakpoints with Shrink responsive classes.
-    ul.-text
+    ul.-mb--3
       li(v-for="i in 2")
         code {{ `-flex--shrink${ i - 1 }` }}
       template(v-for="breakpoint in breakpoints")
