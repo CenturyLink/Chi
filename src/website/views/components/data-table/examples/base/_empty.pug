@@ -148,6 +148,86 @@ h4 No Filters
         </div>
       </div>
 
+h4 Empty Actionable
+
+.example.-mb--3
+  .-p--3
+    #empty-actionable
+      chi-vue-data-table(:config='config', :data='table')
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-empty-actionable
+      li.-disabled
+        a(href=`#webcomponent-empty-actionable`) Web Component
+      li.-active
+        a(href=`#vue-empty-actionable`) Vue
+      li
+        a(href=`#html-empty-actionable`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-empty-actionable
+  .chi-tabs-panel.-active#vue-empty-actionable
+  :code(lang='html')
+    <!-- Vue component -->
+    <ChiDataTable :config="config" :data="table"></ChiDataTable>
+
+    <!-- Config and Data -->
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+        emptyActionable: {
+          isActionable: true,
+        },
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: []
+      }
+    }
+  .chi-tabs-panel#html-empty-actionable
+    :code(lang="html")
+      <div class="chi-data-table">
+        <div class="chi-data-table__head">
+          <div class="chi-data-table__row">
+            <div class="chi-data-table__cell">
+              <div>Name</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>ID</div>
+            </div>
+            <div class="chi-data-table__cell">
+              <div>Last Login</div>
+            </div>
+          </div>
+        </div>
+        <div class="chi-data-table__body">
+          <div class="chi-data-table__row-empty -actionable">
+            <div>
+              <i class="chi-icon icon-circle-plus-outline -icon--grey" aria-hidden="true"></i>
+              <span>
+                <a>Add a new or existing service</a>, then manage here.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
 script.
   new Vue({
     components: {
@@ -217,10 +297,47 @@ script.
       }
     }
   }).$mount('#no-filters');
+  new Vue({
+    components: {
+      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: true,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+        emptyActionable: {
+          isActionable: true,
+        },
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [],
+      }
+    }
+  }).$mount('#empty-actionable');
   document.addEventListener(
     'DOMContentLoaded',
     function() {
       chi.tab(document.querySelector('#example-no-results'));
       chi.tab(document.querySelector('#example-no-filters'));
+      chi.tab(document.querySelector('#example-empty-actionable'));
     }
   );
