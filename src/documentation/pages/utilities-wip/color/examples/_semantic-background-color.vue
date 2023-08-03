@@ -19,66 +19,21 @@ import { COLORS } from '~/constants/constants';
   data: () => {
     return {
       colors: [
-        {
-          name: 'success',
-          value: COLORS.SUCCESS,
-        },
-        {
-          name: 'success-light',
-          value: COLORS['SUCCESS-LIGHT'],
-        },
-        {
-          name: 'success-lighter',
-          value: COLORS['SUCCESS-LIGHTER'],
-        },
-        {
-          name: 'info',
-          value: COLORS.INFO,
-        },
-        {
-          name: 'info-light',
-          value: COLORS['INFO-LIGHT'],
-        },
-        {
-          name: 'info-lighter',
-          value: COLORS['INFO-LIGHTER'],
-        },
-        {
-          name: 'warning',
-          value: COLORS.WARNING,
-        },
-        {
-          name: 'warning-light',
-          value: COLORS['WARNING-LIGHT'],
-        },
-        {
-          name: 'warning-lighter',
-          value: COLORS['WARNING-LIGHTER'],
-        },
-        {
-          name: 'danger',
-          value: COLORS.DANGER,
-        },
-        {
-          name: 'danger-light',
-          value: COLORS['DANGER-LIGHT'],
-        },
-        {
-          name: 'danger-lighter',
-          value: COLORS['DANGER-LIGHTER'],
-        },
-        {
-          name: 'muted',
-          value: COLORS.MUTED,
-        },
-        {
-          name: 'muted-light',
-          value: COLORS['MUTED-LIGHT'],
-        },
-        {
-          name: 'muted-lighter',
-          value: COLORS['MUTED-LIGHTER'],
-        }
+        COLORS.SUCCESS,
+        COLORS['SUCCESS-LIGHT'],
+        COLORS['SUCCESS-LIGHTER'],
+        COLORS.INFO,
+        COLORS['INFO-LIGHT'],
+        COLORS['INFO-LIGHTER'],
+        COLORS.WARNING,
+        COLORS['WARNING-LIGHT'],
+        COLORS['WARNING-LIGHTER'],
+        COLORS.DANGER,
+        COLORS['DANGER-LIGHT'],
+        COLORS['DANGER-LIGHTER'],
+        COLORS.MUTED,
+        COLORS['MUTED-LIGHT'],
+        COLORS['MUTED-LIGHTER']
       ]
     }
   }

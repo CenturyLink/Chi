@@ -15,14 +15,8 @@ import { COLORS } from '~/constants/constants';
   data: () => {
     return {
       colors: [
-        {
-          name: 'navy',
-          value: COLORS.NAVY,
-        },
-        {
-          name: 'grey',
-          value: COLORS.GREY,
-        }
+        COLORS.NAVY,
+        COLORS.GREY
       ]
     }
   }
