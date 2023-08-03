@@ -547,7 +547,8 @@
         ".test-input-error",
         ".test-disabled",
         ".test-multiple",
-        ".test-time-format-24hr-view"
+        ".test-time-format-24hr-view",
+        ".test-time-format-12hr-view"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
@@ -1015,7 +1016,12 @@
         ".test-xl-icon-right",
         ".test-xl-icon-left-right",
         ".test-xl-label-inline",
-        ".test-xl-label-with-icon"
+        ".test-xl-label-with-icon",
+        ".test-helper-message-xs",
+        ".test-helper-message-sm",
+        ".test-helper-message-md",
+        ".test-helper-message-lg",
+        ".test-helper-message-xl"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,
