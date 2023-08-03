@@ -117,7 +117,7 @@
         :ref="`tab-panel-${tab.id}`"
         role="tabpanel"
       >
-        <div class="clipboard" v-if="showClipboard">
+        <div class="clipboard">
           <button
             class="clipboard__button chi-button -xs -flat"
             @click="() => copy(`tab-panel-${tab.id}`)"
@@ -140,7 +140,7 @@ pre code.hljs {
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { TabsInterface, HeadTabsInterface } from '../models/models';
+import { ITabs, IHeadTabs } from '../models/models';
 import { COMPONENT_EXAMPLE_EVENTS } from '../constants/constants';
 import { SR_ONLY } from '../../chi-vue/src/constants/classes';
 
@@ -189,14 +189,13 @@ export default class ComponentExample extends Vue {
   @Prop() id?: string;
   @Prop() title?: string;
   @Prop() titleSize?: 'h3' | 'h4';
-  @Prop() tabs?: TabsInterface[];
-  @Prop() headTabs?: HeadTabsInterface[];
+  @Prop() tabs?: ITabs[];
+  @Prop() headTabs?: IHeadTabs[];
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
   @Prop() additionalStyle?: string;
   @Prop({ default: true }) showSnippetTabs?: boolean;
   @Prop({ default: true }) showTitle?: boolean;
-  @Prop({ default: true }) showClipboard?: boolean;
 
   chiTabs: any;
   chiHeadTabs: any;
@@ -209,7 +208,7 @@ export default class ComponentExample extends Vue {
 
     if (chiTabs) this.chiTabs = chi.tab(chiTabs);
     if (chiHeadTabs) {
-      this.headTabs?.forEach((tab: HeadTabsInterface) => {
+      this.headTabs?.forEach((tab: IHeadTabs) => {
         const codeSnippetTab = document.getElementById(
           `code-snippet-tabs-${this.$props.id}-${tab.id}`
         );
@@ -221,7 +220,7 @@ export default class ComponentExample extends Vue {
     }
   }
 
-  emitHeadTabsChange(tab: HeadTabsInterface) {
+  emitHeadTabsChange(tab: IHeadTabs) {
     this.$emit(COMPONENT_EXAMPLE_EVENTS.CHI_HEAD_TABS_CHANGE, tab);
   }
 }

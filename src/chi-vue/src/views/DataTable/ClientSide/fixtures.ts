@@ -39,6 +39,9 @@ export const exampleConfig: DataTableConfig = {
   },
   showExpandAll: true,
   showSelectAllDropdown: true,
+  emptyActionable: {
+    isActionable: true,
+  },
 };
 
 export const exampleSaveViewConfig: SaveViewConfig = {
@@ -295,7 +298,13 @@ export const exampleTableHead = {
     sortDataType: 'string',
     align: 'center',
   },
-  string: { label: 'Product', sortable: true, sortDataType: 'string', key: true },
+  string: {
+    label: 'Product',
+    sortable: true,
+    sortDataType: 'string',
+    key: true,
+    icon: 'circle-check',
+  },
   number: { label: 'Number', sortable: true, sortDataType: 'number' },
   date: { label: 'Created', sortable: true, sortBy: 'date', sortDataType: 'date' },
   productId: { label: 'Service ID', sortable: true, sortDataType: 'string' },

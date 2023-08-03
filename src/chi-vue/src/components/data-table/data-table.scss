@@ -56,7 +56,6 @@
 }
 
 // TODO: To be removed when all µApp's Chi version is higher than v5.0
-
 @mixin respond-to($media, $only: false) {
   @if $media == xs {
     @media only screen and (max-width: $sm-breakpoint - 1) {
