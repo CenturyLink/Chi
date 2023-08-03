@@ -216,7 +216,7 @@ pipeline {
               script{
                 dir ('src/chi-vue') {
                   ghYarnWrap('install')
-                  jslNpmWrapper('run prettier:checker')
+                  jslNpmWrapper('run lint:checker')
                 }
                 echo "No full linting implemented in repo"
               }
