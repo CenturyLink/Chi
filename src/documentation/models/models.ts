@@ -71,3 +71,14 @@ export interface INotation {
   class: string,
   value: string,
 }
+
+export interface ITableColumn {
+  title: string;
+  key: string;
+  width: string;
+}
+
+export interface ITableContent {
+  name: string;
+  value: string;
+}
