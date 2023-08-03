@@ -966,31 +966,30 @@ describe('Data Table', () => {
           .eq(0)
           .find(`.${DATA_TABLE_CLASSES.CELL}`)
           .eq(0)
-          .as('firstCell')
+          .as('firstCell');
+        cy.get('@firstCell')
           .find(`.${ICON_CLASS}`)
           .as('sortIcon');
 
-        cy.get('@sortIcon').then(() => {
-          hasClassAssertion('@sortIcon', `${ARROW_SORT_CLASS}`);
+        cy.get('@sortIcon').then(icon => {
+          hasClassAssertion(icon, `${ARROW_SORT_CLASS}`);
           cy.get('@firstCell')
-            .click({ force: true })
-            .wait(3000)
+            .click()
             .then(() => {
-              hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
+              hasClassAssertion(icon, `${ARROW_UP_CLASS}`);
             });
         });
         cy.get('@rows')
           .eq(0)
           .should('contain', 'Name 1');
-        cy.get('@sortIcon').then(() => {
-          cy.get('@sortIcon').should('have.css', 'transform', 'none');
+        cy.get('@sortIcon').then(icon => {
+          cy.get(icon).should('have.css', 'transform', 'none');
           cy.get('@firstCell')
-            .click({ force: true })
-            .wait(3000)
+            .click()
             .then(() => {
-              hasClassAssertion('@sortIcon', `${ARROW_UP_CLASS}`);
+              hasClassAssertion(icon, `${ARROW_UP_CLASS}`);
             });
-          cy.get('@sortIcon')
+          cy.get(icon)
             .should('have.attr', 'style')
             .should('contain', 'transform: rotate(180deg);');
         });
