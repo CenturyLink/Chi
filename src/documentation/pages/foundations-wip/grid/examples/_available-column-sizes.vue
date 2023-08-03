@@ -15,7 +15,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].reverse()
+      columns: Array.from({ length: 12 }, (_, i) => i + 1).reverse()
     };
   }
 })

@@ -16,7 +16,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      columns: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+      columns: Array.from({ length: 11 }, (_, i) => i + 1)
     };
   }
 })
