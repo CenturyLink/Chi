@@ -448,7 +448,7 @@ describe('Data Table', () => {
       hasClassAssertion(`@empty`, DATA_TABLE_CLASSES.EMPTY);
     });
 
-    it(`Should show default message when it is empty`, () => {
+    it(`Should show default message when it is empty actionable`, () => {
       cy.get(`[data-cy='data-table-empty-actionable']`).should(
         'contain',
         'Add a new or existing service, then manage here.'
@@ -465,6 +465,13 @@ describe('Data Table', () => {
       cy.get(`[data-cy='data-table-empty-actionable']`)
         .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
         .should('not.exist');
+    });
+
+    //TODO add test to see if icon exists
+    it('Should show an icon', () => {
+      cy.get(
+        `[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY}`
+      ).find(`.chi-icon`);
     });
   });
 
