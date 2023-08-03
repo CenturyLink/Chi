@@ -467,8 +467,7 @@ describe('Data Table', () => {
         .should('not.exist');
     });
 
-    //TODO add test to see if icon exists
-    it('Should show an icon', () => {
+    it('Should show the correct icon', () => {
       cy.get(
         `[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY}`
       ).find(`.chi-icon`);
