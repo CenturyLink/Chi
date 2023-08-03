@@ -5,14 +5,14 @@ interface CodeSnippets {
   code: string;
   description: string;
 }
-export interface TabsInterface {
+export interface ITabs {
   active: boolean;
   disabled: boolean;
   id: string;
   label: string;
 }
 
-export interface HeadTabsInterface {
+export interface IHeadTabs {
   active: boolean;
   id: string;
   label: string;
@@ -20,7 +20,7 @@ export interface HeadTabsInterface {
     webComponent: CodeSnippets;
     vue: CodeSnippets;
     htmlBlueprint: CodeSnippets;
-  }
+  };
 }
 
 export interface ILanguage {
@@ -43,6 +43,16 @@ export interface IThemes {
   portal: string;
   brightspeed: string;
   colt: string;
+}
+
+interface TabComponentInterface {
+  label: string;
+  id: string;
+  children?: TabComponentInterface[];
+}
+
+export interface TabsListInterface extends HTMLElement {
+  tabs: TabComponentInterface[];
 }
 
 export interface IBorderUtility {
