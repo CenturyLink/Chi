@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Reordering Columns" id="reordering-columns" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+  <ComponentExample title="Reordering Columns" id="reordering-columns" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
     p.-text(slot="example-description")
       | To display a column or columns in an order that is different than 
       | that which they appear in the markup, you may apply a 

@@ -22,8 +22,6 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-
-@Component({})
+import { Vue } from 'vue-property-decorator';
 export default class ResponsiveLayout extends Vue {}
 </script>

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Column Wrapping" id="column-wrapping" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+  <ComponentExample title="Column Wrapping" id="column-wrapping" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
     p.-text(slot="example-description")
       | Grid containers can accommodate any number of columns, however, the 
       | grid system is restricted to a maximum of 12 column units per row. 

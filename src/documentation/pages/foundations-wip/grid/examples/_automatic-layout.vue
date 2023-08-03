@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    <ComponentExample title="Automatic Layout" id="automatic-layout" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+    <ComponentExample title="Automatic Layout" id="automatic-layout" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
       p.-text(slot="example-description")
         | Grid layouts are defined as a grid container that is composed of 
         | one or more rows of columns. By default, columns within a grid container 

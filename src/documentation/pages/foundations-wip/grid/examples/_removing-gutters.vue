@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Removing Gutters" id="removing-gutters" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+  <ComponentExample title="Removing Gutters" id="removing-gutters" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
     p.-text(slot="example-description")
       | Columns are rendered with a consistent amount of spacing between them. 
       | To collapse these margins, you may use the <code>-no-gutter</code> 

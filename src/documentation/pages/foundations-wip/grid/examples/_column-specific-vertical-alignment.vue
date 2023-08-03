@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Column-Specific Vertical Alignment" id="column-specific-vertical-alignment" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+  <ComponentExample title="Column-Specific Vertical Alignment" id="column-specific-vertical-alignment" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
     p.-text(slot="example-description")
       | Changing the alignment of an individual column is as easy as applying 
       | an alignment modifier to the column in question.

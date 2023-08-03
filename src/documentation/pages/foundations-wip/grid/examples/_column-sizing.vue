@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    <ComponentExample title="Column Sizing" id="column-sizing" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+    <ComponentExample title="Column Sizing" id="column-sizing" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
       p.-text(slot="example-description")
         | You can specify the amount of horizontal space that a column may consume
         |  by adding size classes to your column markup. For example, to create a 
@@ -17,7 +17,10 @@
 
     </ComponentExample>
 
-    p.-text(slot="example") Remember that the grid system consists of 12 columns, so each column unit is approximately 8.3% in width. So, to achieve this layout we are using 3 grid column units (1 unit * 3, or 8.3% * 3) to claim 25% of the width for the first column.
+    p.-text 
+      | Remember that the grid system consists of 12 columns, so each column unit is approximately 8.3% in width. 
+      | So, to achieve this layout we are using 3 grid column units (1 unit * 3, or 8.3% * 3) to claim 25% of the 
+      | width for the first column.
 </template>
 
 <script lang="ts">

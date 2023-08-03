@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="-align--top" titleSize="h4" id="-align--top" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;" >
+  <ComponentExample title="-align--top" titleSize="h4" id="-align--top" :tabs="exampleTabs" :showSnippetTabs="false" padding="-p--0" additionalStyle="border: none;">
     .chi-grid.-align--top.-show--example.-mb--3(style="height: 160px" slot="example")
       .chi-col(:key="item" v-for="item in gridCols")
 
