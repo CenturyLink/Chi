@@ -117,7 +117,7 @@
         :ref="`tab-panel-${tab.id}`"
         role="tabpanel"
       >
-        <div class="clipboard" v-if="showClipboard">
+        <div class="clipboard">
           <button
             class="clipboard__button chi-button -xs -flat"
             @click="() => copy(`tab-panel-${tab.id}`)"
@@ -196,7 +196,6 @@ export default class ComponentExample extends Vue {
   @Prop() additionalStyle?: string;
   @Prop({ default: true }) showSnippetTabs?: boolean;
   @Prop({ default: true }) showTitle?: boolean;
-  @Prop({ default: true }) showClipboard?: boolean;
 
   chiTabs: any;
   chiHeadTabs: any;

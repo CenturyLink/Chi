@@ -24,6 +24,22 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # CHANGELOG
+## 2.2.0 (July 12, 2023)
+### Components
+#### Added
+* Added: Data table header now supports icons with `icon` property.
+
+## 2.1.2 (June 14, 2023)
+### Components
+#### Fixed
+* Fixed: Expansion panel margin-left alignment when `state-icon` is present in `active` state.
+* Fixed: Expansion panel Vue component was missing `-done-only` class to render correct font-size in `done` state.
+
+## 2.1.1 (May 30, 2023)
+### Components
+#### Changed
+* Changed: Data table description popover in header has been repositioned in the DOM to improve rendering.
+
 ## 2.1.0 (May 12, 2023)
 ### Components
 #### Added

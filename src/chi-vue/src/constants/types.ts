@@ -62,6 +62,7 @@ export interface DataTableData {
       bold?: boolean;
       description?: string | DataTableColumnDescription;
       isPrintDisabled?: boolean;
+      icon?: string;
     };
   };
   body: DataTableRow[];
@@ -120,6 +121,7 @@ export interface DataTableConfig {
   cellWrap?: boolean;
   showExpandAll?: boolean;
   showSelectAllDropdown?: boolean;
+  emptyActionable?: DataTableEmptyActionableContent;
 }
 export interface DataTableFilter {
   name: string;
@@ -226,3 +228,14 @@ export type TooltipPositions = typeof GENERAL_POSITIONS[number];
 export const TOOLTIP_COLORS = ['light', 'base'] as const;
 export type TooltipColors = typeof TOOLTIP_COLORS[number];
 //#endregion
+
+//#region DataTableEmpty
+export interface DataTableEmptyActionableContent {
+  isActionable?: boolean;
+  icon?: string;
+  message?: {
+    actionLink?: string;
+    text?: string;
+  };
+}
+//#region

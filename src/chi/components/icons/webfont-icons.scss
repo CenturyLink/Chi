@@ -35,6 +35,14 @@ i {
   }
 }
 
+.icon-flag-off::before {
+  content: '\ea17';
+}
+
+.icon-mail-circle-check::before {
+  content: '\ea18';
+}
+
 .icon-box-circle-arrow-left::before {
   content: '\e966';
 }

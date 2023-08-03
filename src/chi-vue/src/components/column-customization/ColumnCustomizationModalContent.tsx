@@ -1,4 +1,4 @@
-import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import SelectedColumns from './SelectedColumns';
 import AvailableColumns from './AvailableColumns';
 import { DataTableColumn } from '@/constants/types';
@@ -7,8 +7,9 @@ import { copyArrayOfObjects, findComponent } from '@/utils/utils';
 import ColumnCustomization from '@/components/column-customization/ColumnCustomization';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import { _changeOrder } from '@/components/column-customization/utils';
+import { Component, Vue } from '@/build/vue-wrapper';
 
-@Component
+@Component({})
 export default class ColumnCustomizationContent extends Vue {
   @Prop() availableColumns?: DataTableColumn[];
   @Prop() selectedColumns?: DataTableColumn[];

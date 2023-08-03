@@ -57,6 +57,11 @@ export interface IZIndex {
   text: string,
 }
 
+export interface INotation {
+  class: string,
+  value: string,
+}
+
 export interface ITableColumn {
   title: string;
   key: string;

@@ -23,3 +23,21 @@ each size in sizes
                     _status= status,
                     size= size != 'default' && size,
                     value='Value')
+
+.test-autocomplete
+  h2 Search Input - Autocomplete
+  .chi-form__item
+    chi-search-input(id="autocomplete", mode="autocomplete", data-cy="autocomplete")
+
+script.
+  document.addEventListener('DOMContentLoaded', () => {
+    const autocompleteElement = document.querySelector('#autocomplete');
+
+    autocompleteElement.menuItems = [
+      { title: "Item 1", href: "#" },
+      { title: "Item 2", href: "#" },
+      { title: "Item 3", href: "#" },
+      { title: "Item 4", href: "#" },
+      { title: "Item 5", href: "#" }
+    ];
+  });
