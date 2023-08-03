@@ -1,9 +1,9 @@
 <template lang="pug">
-  <ComponentExample title="Brand" id="brand" titleSize="h2" padding="-p--0" :showSnippetTabs="false" additionalStyle="border: 0;">
+  <ComponentExample title="Brand" id="brand" titleSize="h3" padding="-p--0" :showSnippetTabs="false" additionalStyle="border: 0;">
     div(slot="example" v-if="color")
       .chi-grid
         .chi-col.-w-sm--12.-w-md--6.-w-lg--6.-mb--3(v-for="mainColor in color.brand.main")
-          <TitleAnchor :title="mainColor.title" :id="mainColor.id" />
+          <TitleAnchor :title="mainColor.title" :id="mainColor.id" titleSize="h4" />
           .palette-container
             .palette.-p--2.chi-grid.-no-gutter.-text.-pt--10(:style="`background-color:${mainColor.code};`" :class="mainColor.class || '-text--body'")
               .chi-col.-w--12
@@ -14,7 +14,7 @@
                 .a11y {{ mainColor.a11y }}
       .chi-grid
         .chi-col.-w--12
-          <TitleAnchor title="Supporting Colors" id="supporting-colors" />
+          <TitleAnchor title="Supporting Colors" id="supporting-colors" titleSize="h4" />
         .chi-col.-w-sm--12.-w-md--6.-mb--3(v-for="supportingColor in color.brand.supporting" :class="supportingColor.wrapperClass || '-w-lg--3'")
           .palette-container
             .palette.-p--2.chi-grid.-no-gutter.-text.-text--black(:style="`background-color:${supportingColor.code};`" :class="supportingColor.class")

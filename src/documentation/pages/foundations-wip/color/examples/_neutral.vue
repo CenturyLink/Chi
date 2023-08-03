@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Neutral" titleSize="h2" id="neutral" padding="-p--0" :showSnippetTabs="false" additionalStyle="border: 0;">
+  <ComponentExample title="Neutral" titleSize="h3" id="neutral" padding="-p--0" :showSnippetTabs="false" additionalStyle="border: 0;">
     div(slot="example" v-if="color")
       .chi-grid(v-for="grid in color?.neutral")
         .chi-col.-w-sm--12.-w-md--6.-w-lg--3.-mb--3(v-for="col in grid")

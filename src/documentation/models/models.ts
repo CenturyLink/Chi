@@ -72,7 +72,6 @@ export interface INotation {
   value: string,
 }
 
-
 interface Palette {
   code: string,
   text: string,

@@ -1,5 +1,5 @@
 <template lang="pug">
-  <ComponentExample title="Semantic" titleSize="h2" id="semantic" padding="-p--0" :showSnippetTabs="false" additionalStyle="border: 0;">
+  <ComponentExample title="Semantic" titleSize="h3" id="semantic" padding="-p--0" :showSnippetTabs="false" additionalStyle="border: 0;">
     p.-text(slot="example-description")
       | Use semantic colors to communicate meaning to users.
       | Examples include displaying alerts, form field validation, user status, application state and more.
