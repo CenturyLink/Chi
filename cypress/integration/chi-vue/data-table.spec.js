@@ -470,7 +470,9 @@ describe('Data Table', () => {
     it('Should show the correct icon', () => {
       cy.get(
         `[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY}`
-      ).find(`.chi-icon`);
+      )
+        .find(`chi-icon`)
+        .should('have.attr', 'icon', 'circle-plus-outline');
     });
   });
 
