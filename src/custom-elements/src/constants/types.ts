@@ -6,11 +6,15 @@ export interface Country {
   countryAbbr: CountryCode;
   dialCode: CountryCallingCode;
 }
+export interface ExtraCountry {
+  country: string;
+  country_code: CountryCode | string,
+  formatNumber?: (country: string) => string
+}
 export const MARKETING_ICON_MODES = ['filled', 'outline'] as const;
-
 export type ChiMarketingIconModes = typeof MARKETING_ICON_MODES[number];
-
 export type GeneralPositionsExtended = typeof CARDINAL_EXTENDED_POSITIONS[number];
+export type SearchInputModes = 'autocomplete';
 
 export interface TabTrigger {
   children: TabTrigger[];
@@ -24,6 +28,11 @@ export interface TabTrigger {
 export interface TabTriggerPosition {
   left: number;
   top: number;
+}
+
+export interface DropdownMenuItem {
+  title: string;
+  href: string;
 }
 
 export enum TabTriggerSizes {

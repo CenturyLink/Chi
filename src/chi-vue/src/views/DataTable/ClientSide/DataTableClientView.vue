@@ -1,6 +1,9 @@
 <template>
   <div id="dataTableClientView">
-    <h2>Data Table</h2>
+    <div class="-d--flex -justify-content--between -align-items--baseline">
+      <h2>Data Table</h2>
+      <chi-button color="primary" @click="changeEmptyActionable(true)">REMOVE ALL DATA</chi-button>
+    </div>
     <ChiDataTable
       :data="table"
       :config="config"
@@ -21,6 +24,7 @@
       @chiDeselectAllPages="e => this.chiDeselectAllPages(e)"
       @chiExpandAll="e => this.chiExpandAll(e)"
       @chiCollapseAll="e => this.chiCollapseAll(e)"
+      @chiEmptyActionableLink="e => chiEmptyActionableLink()"
     >
       <template #alertsDesc="payload">
         <i :class="`chi-icon icon-${payload.success.icon} -icon--${payload.success.color}`" aria-hidden="true"></i>
@@ -181,7 +185,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue } from '@/build/vue-wrapper';
 import DataTable from '../../../components/data-table/DataTable';
 import DesktopActions from '../DataTableTemplates/example-desktop-actions.vue';
 import MobileActions from '../DataTableTemplates/example-mobile-actions.vue';
@@ -371,6 +375,21 @@ export default class DataTableClientView extends Vue {
         };
       }, MOCK_API_RESPONSE_DELAY);
     }
+  }
+
+  chiEmptyActionableLink() {
+    this.changeEmptyActionable(false);
+  }
+
+  changeEmptyActionable(state: boolean) {
+    this.$data.config = {
+      ...this.$data.config,
+      isDataEmpty: state,
+    };
+    this.$data.table = {
+      ...this.$data.table,
+      body: state ? [] : exampleTableBody,
+    };
   }
 }
 </script>
