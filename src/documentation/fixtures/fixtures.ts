@@ -509,3 +509,16 @@ export const zIndexValues: IZIndex[] = [
   { key: '70', color: '-bg--primary', margin: 8, text: 'Tooltips' },
   { key: 'auto', color: '', margin: 0, text: '-' }
 ];
+
+export const displayColorColumns = [
+  {
+    title: 'Display Class',
+    key: 'class',
+    width: '40%'
+  },
+  {
+    title: 'Value',
+    key: 'value',
+    width: ''
+  }
+];

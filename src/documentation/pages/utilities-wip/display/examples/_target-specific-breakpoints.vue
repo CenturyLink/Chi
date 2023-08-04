@@ -1,34 +1,35 @@
 <template lang="pug">
   div
-    h4 Target specific breakpoints
+    h3 Target specific breakpoints
     p.-text
       | To target a specific breakpoint, add the breakpoint abbreviation to the class. As a mobile first framework, it will
       | apply to that specific breakpoint and up.
-    section.chi-table.-bordered.-mt--3.-mb--3
-      table(cellpadding='0', cellspacing='0')
-        thead
-          tr
-            th
-              div Display Class
-            th
-              div Value
-        tbody
-          tr(v-for="size in sizes")
-            td(width='40%')
-              code {{ `-d-${ size }--none` }}
-            td.-text Hidden only on
-              code {{ `${ size }` }}
+    <TableComponent :data="values" :columns="columns" :getContent="getContent" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { displayColorColumns } from "~/fixtures/fixtures";
+import { ITableColumn, ITableContent } from "~/models/models";
 
 @Component({
   data: () => {
     return {
-      sizes: ['sm', 'md', 'lg', 'xl']
+      values: ['sm', 'md', 'lg', 'xl'],
+      columns: displayColorColumns
     };
   }
 })
-export default class TargetSpecificBreakpoints extends Vue {}
+export default class TargetSpecificBreakpoints extends Vue {
+  getContent(column: ITableColumn, content: ITableContent) {
+    switch (column.key) {
+      case 'class':
+        return `<code>-d--${content}--none</code>`;
+      case 'value':
+        return `<div class="-text">Hidden only on <code>${content}</code></div>`;
+      default:
+        return '';
+    }
+  }
+}
 </script>
