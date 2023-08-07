@@ -16,6 +16,7 @@ export const EXPANDED_CLASS = '-expanded';
 export const COLLAPSED_CLASS = '-collapsed';
 export const ONE_LINK_TX = 'OneLinkTx';
 export const LIST_CLASS = '-list';
+export const STATUS_CLASS = '-status';
 //#endregion
 
 //#region Accordion

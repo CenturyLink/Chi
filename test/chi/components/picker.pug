@@ -3,6 +3,7 @@ title: Picker
 ---
 
 - var sizes = ['md', 'lg'];
+- var pickerSizes = ['sm', 'xs'];
 
 .chi-grid.-no-gutter.-w--100
   .chi-col.-w--12
@@ -292,3 +293,18 @@ title: Picker
                             .chi-picker__label
                               | $0.00
                               span.-text--normal /mo
+.chi-col.-w--12
+  h2 Pill
+  .-w--100
+    .example
+      each size in pickerSizes
+        h4= `${size}`
+        div(class=`test-type-pill-${size}`)
+          fieldset(id=`type-pill-${size}`)
+            legend.chi-label Legend
+            .-d--flex
+              each type in ['Radio1','Radio2']
+                div(class=`chi-picker -pill -${size}`)
+                  input(type="radio", class="chi-picker__input", name=`type-pill-${size}`, id=`pill-ei-${size}-${type}`)
+                  label(for=`pill-ei-${size}-${type}`)
+                    = type
