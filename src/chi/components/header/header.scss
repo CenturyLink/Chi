@@ -427,7 +427,7 @@
   }
 
   &.-lg {
-    min-height: $header-lg-height;
+    min-height: $header-lg-navbar-height;
 
     .chi-header__content {
       height: $header-lg-height;
@@ -460,6 +460,8 @@
     }
 
     .chi-header__navbar {
+      min-height: $header-lg-navbar-height;
+
       a {
         font-size: $font-size-base;
         line-height: $line-height-sm;
