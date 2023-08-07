@@ -1,8 +1,5 @@
 describe('Toggle Switch', () => {
-  const selectors = [
-    'toggle1',
-    'toggle4',
-  ];
+  const selectors = ['toggle1', 'toggle4'];
 
   const assertion = (el, chainer, value) => {
     cy.get(el)
@@ -35,9 +32,9 @@ describe('Toggle Switch', () => {
     const spy = cy.spy();
     let ans;
 
-    cy.get('body').then((el) => {
+    cy.get('body').then(el => {
       el.on('toggle', spy);
-      el.on('toggle', (e) => {
+      el.on('toggle', e => {
         ans = e.detail;
       });
     });

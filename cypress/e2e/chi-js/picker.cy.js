@@ -1,4 +1,4 @@
-const PICKER_CLASS = '.chi-picker';
+const PICKER_CLASS = 'chi-picker';
 const PICKER_PILL_CLASS = '-pill';
 
 describe('Picker', function() {
@@ -10,7 +10,7 @@ describe('Picker', function() {
     beforeEach(() => {
       cy.get('.test-type-pill-sm').as('pickerPillWrapper');
       cy.get('@pickerPillWrapper')
-        .find(PICKER_CLASS)
+        .find(`.${PICKER_CLASS}`)
         .as('pickerPill');
     });
 
