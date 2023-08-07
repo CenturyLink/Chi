@@ -9,14 +9,14 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { displayColorColumns } from "~/fixtures/fixtures";
+import { displayDefaultColumns } from "~/fixtures/fixtures";
 import { ITableColumn, ITableContent } from "~/models/models";
 
 @Component({
   data: () => {
     return {
       values: ['sm', 'md', 'lg', 'xl'],
-      columns: displayColorColumns
+      columns: displayDefaultColumns
     };
   }
 })

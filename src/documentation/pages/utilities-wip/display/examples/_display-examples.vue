@@ -5,7 +5,7 @@
         v-for="{ className } in examples"
         :class="className") {{ className }}
     <pre class="language-html" slot="code-htmlblueprint">
-      <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
+      <code v-highlight="codeSnippets.htmlblueprint" class="html"></code>
     </pre>
   </ComponentExample>
 </template>
@@ -23,16 +23,6 @@ import { Component, Vue } from 'vue-property-decorator';
           label: 'HTML Blueprint'
         }
       ],
-      codeSnippets: {
-        htmlblueprint: `<!-- hidden on all breakpoints except xl -->
-<div class="-d--none -d-xl--inline-flex"></div>
-<!-- hidden on sm breakpoints -->
-<div class="-d-sm--none"></div>
-<!-- inline-flex on all breakpoints -->
-<div class="-d--inline-flex"></div>
-<!-- flex on all breakpoints -->
-<div class="-d--flex"></div>`
-      }
     };
   }
 })

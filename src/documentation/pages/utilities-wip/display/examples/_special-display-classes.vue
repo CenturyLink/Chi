@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { displayColorColumns } from "~/fixtures/fixtures";
+import { displayDefaultColumns } from "~/fixtures/fixtures";
 import { ITableColumn, ITableContent } from "~/models/models";
 
 @Component({
@@ -21,23 +21,19 @@ import { ITableColumn, ITableContent } from "~/models/models";
         {
           name: '-d-screen--only',
           value: {
-            code: 'display: block;',
-            code2: 'display: none;',
-            text: 'on @media screen,',
-            text2: 'on @media print.'
+            code: ['display: block;', 'display: none;'],
+            text: ['on @media screen,', 'on @media print.']
           }
         },
         {
           name: '-d-print--only',
           value: {
-            code: 'display: none;',
-            code2: 'display: block;',
-            text: 'on @media screen,',
-            text2: 'on @media print.'
+            code: ['display: none;', 'display: block;'],
+            text: ['on @media screen,', 'on @media print.']
           }
         }
       ],
-      columns: displayColorColumns
+      columns: displayDefaultColumns
     };
   }
 })
@@ -50,7 +46,7 @@ export default class SpecialDisplayClasses extends Vue {
         if (typeof content.value === 'string') {
           return content.value;
         }
-        return `<code>${content.value.code}</code>${content.value.text} <code>${content.value.code2}</code>${content.value.text2}`;
+        return `<code>${content.value.code[0]}</code>${content.value.text[0]} <code>${content.value.code[1]}</code>${content.value.text[1]}`;
       default:
         return '';
     }

@@ -8,13 +8,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { ITableColumn, ITableContent } from "~/models/models";
-import { displayColorColumns } from "~/fixtures/fixtures";
+import { displayDefaultColumns } from "~/fixtures/fixtures";
 
 @Component({
   data: () => {
     return {
       values: ['none', 'inline', 'inline-block', 'block', 'table', 'table-cell', 'table-row', 'flex', 'inline-flex'],
-      columns: displayColorColumns
+      columns: displayDefaultColumns
     };
   }
 })

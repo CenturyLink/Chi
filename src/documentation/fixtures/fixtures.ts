@@ -510,7 +510,7 @@ export const zIndexValues: IZIndex[] = [
   { key: 'auto', color: '', margin: 0, text: '-' }
 ];
 
-export const displayColorColumns = [
+export const displayDefaultColumns = [
   {
     title: 'Display Class',
     key: 'class',

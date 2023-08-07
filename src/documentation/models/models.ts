@@ -79,10 +79,8 @@ export interface ITableColumn {
 }
 
 interface ITableContentValue {
-  code: string;
-  text: string;
-  code2?: string;
-  text2?: string;
+  code: string[];
+  text: string[];
 }
 
 export interface ITableContent {
