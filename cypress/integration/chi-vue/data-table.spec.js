@@ -23,6 +23,7 @@ const DATA_TABLE_CLASSES = {
   ROW_CHILD: 'chi-data-table__row-child',
   ROW_GRAND_CHILD: 'chi-data-table__row-grand-child',
   EMPTY: 'chi-data-table__row-empty',
+  EMPTY_ACTIONABLE: '-actionable',
   CELL: 'chi-data-table__cell',
   FOOTER: 'chi-data-table__footer',
   EXPANDABLE: '-expandable',
@@ -433,6 +434,45 @@ describe('Data Table', () => {
       cy.get(`[data-cy='data-table-empty']`)
         .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
         .should('not.exist');
+    });
+  });
+
+  describe('Empty Actionable', () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.EMPTY_ACTIONABLE}`, () => {
+      cy.get(
+        `[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY}`
+      )
+        .children()
+        .first()
+        .as('empty');
+      hasClassAssertion(`@empty`, DATA_TABLE_CLASSES.EMPTY);
+    });
+
+    it(`Should show default message when it is empty actionable`, () => {
+      cy.get(`[data-cy='data-table-empty-actionable']`).should(
+        'contain',
+        'Add a new or existing service, then manage here.'
+      );
+    });
+
+    it('Should have no rows', () => {
+      cy.get(
+        `[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+      ).should('not.exist');
+    });
+
+    it('Should have no footer', () => {
+      cy.get(`[data-cy='data-table-empty-actionable']`)
+        .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
+        .should('not.exist');
+    });
+
+    it('Should show the correct icon', () => {
+      cy.get(
+        `[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY}`
+      )
+        .find(`chi-icon`)
+        .should('have.attr', 'icon', 'circle-plus-outline');
     });
   });
 
