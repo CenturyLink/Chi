@@ -192,7 +192,7 @@ Vue.config.warnHandler = (msg: string, _vm: Vue, trace: string) => {
 export default class ComponentExample extends Vue {
   @Prop() id?: string;
   @Prop() title?: string;
-  @Prop() titleSize?: 'h3' | 'h4';
+  @Prop() titleSize?: 'h2' | 'h3' | 'h4';
   @Prop() tabs?: ITabs[];
   @Prop() headTabs?: IHeadTabs[];
   @Prop() padding?: string;
