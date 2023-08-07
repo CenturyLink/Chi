@@ -1011,10 +1011,12 @@ describe('Data Table', () => {
           .as('sortIcon');
 
         cy.get('@sortIcon').then(icon => {
+          cy.wait(500);
           hasClassAssertion(icon, `${ARROW_SORT_CLASS}`);
           cy.get('@firstCell')
             .click()
             .then(() => {
+              cy.wait(500);
               hasClassAssertion(icon, `${ARROW_UP_CLASS}`);
             });
         });
@@ -1080,8 +1082,6 @@ describe('Data Table', () => {
         checkDateSorting(datesAsc);
         cy.get('@dateCell').click();
         checkDateSorting(datesDesc);
-
-        cy.reload();
       });
 
       it(`Should sort correctly on page change`, () => {
