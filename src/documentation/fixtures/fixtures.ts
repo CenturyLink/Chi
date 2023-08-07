@@ -522,3 +522,17 @@ export const breakpoints: IBreakpoints[] = [
   { name: 'lg', value: 'lg and larger' },
   { name: 'xl', value: 'xl' }
 ];
+
+
+export const displayDefaultColumns = [
+  {
+    title: 'Display Class',
+    key: 'class',
+    width: '40%'
+  },
+  {
+    title: 'Value',
+    key: 'value',
+    width: ''
+  }
+];

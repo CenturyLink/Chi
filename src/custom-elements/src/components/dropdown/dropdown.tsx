@@ -7,7 +7,7 @@ import {
   Prop,
   h,
   Watch,
-  Listen,
+  Listen
 } from '@stencil/core';
 import Popper, { Placement } from 'popper.js';
 import {
@@ -58,7 +58,7 @@ export class Dropdown {
   /**
    * To provide selector of an external reference element
    */
-  @Prop({ reflect: true }) reference: string | HTMLElement;
+  @Prop({ reflect: true }) reference: string;
   /**
    * To prevent hiding of the Dropdown when clicking outside its bounds
    */
@@ -96,9 +96,7 @@ export class Dropdown {
     if (this._customTrigger) {
       this._referenceElement = triggerSlotElement;
     } else if (this.reference) {
-      const reference = typeof this.reference === 'string'
-        ? document.querySelector(this.reference)
-        : this.reference;
+      const reference = document.querySelector(this.reference);
 
       if (reference) {
         this._referenceElement = reference;
@@ -349,7 +347,7 @@ export class Dropdown {
       </div>
     );
 
-    if (trigger || this._referenceElement) {
+    if (trigger) {
       return (
         <div
           class={`

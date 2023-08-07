@@ -1,20 +1,20 @@
 <template lang="pug">
   <ComponentExample title="Close button" :id="exampleId" :tabs="exampleTabs" :headTabs="headTabs" @chiHeadTabsChange="e => changeClosable(e)" padding="-p--0">
-    p.-text(slot="example-description") Close buttons provide users with a consistent way to exit Drawers. 
-      | For special cases, such as requiring users to perform a task 
+    p.-text(slot="example-description") Close buttons provide users with a consistent way to exit Drawers.
+      | For special cases, such as requiring users to perform a task
       | that auto-closes the Drawer when complete, a close button may be removed.
     .-position--relative.-z--0.-overflow--hidden(style='height:15rem;' slot="example")
       chi-drawer(position='left' :non-closable="closable ? true : false" active backdrop prevent-auto-hide no-header)
         .-p--2.-pt--6.-text Drawer content here
     <Wrapper :slot="`code-${exampleId}-${tab.id}-webcomponent`" v-for="tab in headTabs" :key="tab.id">
-      .chi-tab__description(v-if="tab.codeSnippets.webComponent.description" v-html="tab.codeSnippets.webComponent.description")  
+      .chi-tab__description(v-if="tab.codeSnippets.webComponent.description" v-html="tab.codeSnippets.webComponent.description")
         | {{ tab.codeSnippets.webComponent.description }}
       <pre class="language-html">
         <code v-highlight="tab.codeSnippets.webComponent.code" class="html"></code>
       </pre>
     </Wrapper>
     <Wrapper :slot="`code-${exampleId}-${tab.id}-vue`" v-for="tab in headTabs" :key="tab.id">
-      .chi-tab__description(v-if="tab.codeSnippets.vue.description" v-html="tab.codeSnippets.vue.description") 
+      .chi-tab__description(v-if="tab.codeSnippets.vue.description" v-html="tab.codeSnippets.vue.description")
         | {{ tab.codeSnippets.vue.description }}
       <pre class="language-html">
         <code v-highlight="tab.codeSnippets.vue.code" class="html"></code>
@@ -31,7 +31,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { HeadTabsInterface } from '../../../../models/models';
+import { IHeadTabs } from '../../../../models/models';
 
 @Component({
   data: () => {
@@ -89,8 +89,8 @@ methods: {
     this.drawerActive = !this.drawerActive;
   }
 }`,
-              description: `Drawer visibility depends on the prop <code>active</code>. 
-              Chi Vue Drawer component does not automatically hide when the close button is clicked as prop mutation is an anti-pattern in Vue. 
+              description: `Drawer visibility depends on the prop <code>active</code>.
+              Chi Vue Drawer component does not automatically hide when the close button is clicked as prop mutation is an anti-pattern in Vue.
               Use the events <code>chiDrawerHide</code> and <code>chiDrawerClickOutside</code> to set <code>active</code> to false and hide the Drawer.`
             },
             htmlBlueprint: {
@@ -222,7 +222,7 @@ methods: {
   }
 })
 export default class CloseButton extends Vue {
-  changeClosable(e: HeadTabsInterface) {
+  changeClosable(e: IHeadTabs) {
     this.$data.closable = e.id === 'closable' ? false : true;
   }
 }

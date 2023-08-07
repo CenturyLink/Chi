@@ -9,7 +9,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Themes } from '../models/models';
-import { TabsInterface } from '../models/models';
+import { ITabs } from '../models/models';
 
 declare const chi: any;
 
@@ -17,7 +17,7 @@ declare const chi: any;
 export default class BaseExample extends Vue {
   @Prop() title?: string;
   @Prop() description?: string;
-  @Prop() tabs?: TabsInterface[];
+  @Prop() tabs?: ITabs[];
 
   theme: Themes = this.$store.state.themes.theme;
   chiTabs: any;
