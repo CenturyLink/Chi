@@ -23,6 +23,7 @@ const DATA_TABLE_CLASSES = {
   ROW_CHILD: 'chi-data-table__row-child',
   ROW_GRAND_CHILD: 'chi-data-table__row-grand-child',
   EMPTY: 'chi-data-table__row-empty',
+  EMPTY_ACTIONABLE: '-actionable',
   CELL: 'chi-data-table__cell',
   FOOTER: 'chi-data-table__footer',
   EXPANDABLE: '-expandable',
@@ -90,11 +91,11 @@ const BULK_ACTIONS_CLASSES = {
   BUTTONS: 'chi-bulk-actions__buttons',
   BUTTONS_DESKTOP: 'chi-bulk-actions__buttons-desktop',
   BUTTONS_MOBILE: 'chi-bulk-actions__buttons-mobile',
-  LABEL: 'chi-bulk-actions__label',
-}
+  LABEL: 'chi-bulk-actions__label'
+};
 const CHECKBOXES_CLASSES = {
   LABEL: 'chi-checkbox__label'
-}
+};
 
 const hasClassAssertion = (el, value) => {
   cy.get(el).should('have.class', value);
@@ -190,7 +191,7 @@ describe('Data Table', () => {
         .should('not.exist');
     });
 
-    it('Should hide Select All Dropdown icon',() => {
+    it('Should hide Select All Dropdown icon', () => {
       cy.get(`[data-cy='data-table-container'] .${DATA_TABLE_CLASSES.HEAD}`)
         .find(`.${CHI_DROPDOWN} .${BUTTON_CLASS}`)
         .should('not.exist');
@@ -388,21 +389,22 @@ describe('Data Table', () => {
     headCellsTooltips.forEach((isVisible, index) => {
       const assertion = !isVisible ? 'not.exist' : 'exist';
 
-      it(`Tooltip element ${index} should ${!isVisible ? 'not' : ''
-        } exist as the label is ${!isVisible ? 'not' : ''} truncated`, () => {
-          cy.get(`[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD}`)
-            .find(`.${DATA_TABLE_CLASSES.CELL}`)
-            .eq(index)
-            .children()
-            .first()
-            .as('trigger')
-            .trigger('mouseenter')
-            .then(() => {
-              cy.get('@trigger')
-                .find(`.${TOOLTIP_CLASSES.TOOLTIP}`)
-                .should(assertion);
-            });
-        });
+      it(`Tooltip element ${index} should ${
+        !isVisible ? 'not' : ''
+      } exist as the label is ${!isVisible ? 'not' : ''} truncated`, () => {
+        cy.get(`[data-cy='data-table-truncation'] .${DATA_TABLE_CLASSES.HEAD}`)
+          .find(`.${DATA_TABLE_CLASSES.CELL}`)
+          .eq(index)
+          .children()
+          .first()
+          .as('trigger')
+          .trigger('mouseenter')
+          .then(() => {
+            cy.get('@trigger')
+              .find(`.${TOOLTIP_CLASSES.TOOLTIP}`)
+              .should(assertion);
+          });
+      });
     });
   });
 
@@ -432,6 +434,45 @@ describe('Data Table', () => {
       cy.get(`[data-cy='data-table-empty']`)
         .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
         .should('not.exist');
+    });
+  });
+
+  describe('Empty Actionable', () => {
+    it(`Should have class .${DATA_TABLE_CLASSES.EMPTY_ACTIONABLE}`, () => {
+      cy.get(
+        `[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY}`
+      )
+        .children()
+        .first()
+        .as('empty');
+      hasClassAssertion(`@empty`, DATA_TABLE_CLASSES.EMPTY);
+    });
+
+    it(`Should show default message when it is empty actionable`, () => {
+      cy.get(`[data-cy='data-table-empty-actionable']`).should(
+        'contain',
+        'Add a new or existing service, then manage here.'
+      );
+    });
+
+    it('Should have no rows', () => {
+      cy.get(
+        `[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+      ).should('not.exist');
+    });
+
+    it('Should have no footer', () => {
+      cy.get(`[data-cy='data-table-empty-actionable']`)
+        .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
+        .should('not.exist');
+    });
+
+    it('Should show the correct icon', () => {
+      cy.get(
+        `[data-cy='data-table-empty-actionable'] .${DATA_TABLE_CLASSES.BODY}`
+      )
+        .find(`chi-icon`)
+        .should('have.attr', 'icon', 'circle-plus-outline');
     });
   });
 
@@ -651,19 +692,27 @@ describe('Data Table', () => {
 
   describe('Data Table Select All (Dropdown)', () => {
     beforeEach(() => {
-      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+      cy.get(
+        `[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`
+      )
         .find(`.${CHI_DROPDOWN} .${BUTTON_CLASS}`)
         .as('selectAllDropdown');
 
-      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`)
+      cy.get(
+        `[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.HEAD}`
+      )
         .find(`.${CHI_DROPDOWN_MENU}`)
         .as('selectAllDropdownMenu');
 
-      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(
+        `[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.BODY}`
+      )
         .find(`.${DATA_TABLE_CLASSES.ROW}`)
         .as('rows');
 
-      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.FOOTER}`)
+      cy.get(
+        `[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.FOOTER}`
+      )
         .find(`.${PAGINATION_CLASSES.CENTER}`)
         .find(`.${CHI_BUTTON_CONTENT}`)
         .as('pages');
@@ -675,7 +724,7 @@ describe('Data Table', () => {
         .click();
     });
 
-    it('Should select all rows on the current page',() => {
+    it('Should select all rows on the current page', () => {
       cy.get('@selectAllDropdown').click();
       cy.get('@selectAllDropdownMenu')
         .contains('Select all items, this page')
@@ -687,9 +736,12 @@ describe('Data Table', () => {
 
       cy.get('@rows').should('have.class', `${ACTIVE_CLASS}`);
 
-      cy.get(`[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.FOOTER}`)
+      cy.get(
+        `[data-cy='data-table-dropdown-select-all'] .${DATA_TABLE_CLASSES.FOOTER}`
+      )
         .find(`.${PAGINATION_CLASSES.CENTER}`)
-        .find(`.${CHI_BUTTON_CONTENT}`).contains(2)
+        .find(`.${CHI_BUTTON_CONTENT}`)
+        .contains(2)
         .click();
 
       cy.get('@rows')
@@ -699,7 +751,7 @@ describe('Data Table', () => {
       cy.get('@rows').should('not.have.class', `${ACTIVE_CLASS}`);
     });
 
-    it('Should select all rows on each page',() => {
+    it('Should select all rows on each page', () => {
       cy.get('@selectAllDropdown').click();
       cy.get('@selectAllDropdownMenu')
         .contains('Select all items, all pages')
@@ -722,7 +774,7 @@ describe('Data Table', () => {
       cy.get('@rows').should('have.class', `${ACTIVE_CLASS}`);
     });
 
-    it('Should deselect all rows on each page',() => {
+    it('Should deselect all rows on each page', () => {
       cy.get('@selectAllDropdown').click();
       cy.get('@selectAllDropdownMenu')
         .contains('Deselect all')
@@ -954,11 +1006,15 @@ describe('Data Table', () => {
 
   describe('Expand/Collapse', () => {
     beforeEach(() => {
-      cy.get(`[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.HEAD}`)
+      cy.get(
+        `[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.HEAD}`
+      )
         .find(`button.-expand`)
         .as('expandAllButton');
 
-      cy.get(`[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY}`)
+      cy.get(
+        `[data-cy='data-table-expand-collapse'] .${DATA_TABLE_CLASSES.BODY}`
+      )
         .find(`.${DATA_TABLE_CLASSES.ROW}`)
         .as('rows');
     });
@@ -966,8 +1022,7 @@ describe('Data Table', () => {
     it('Should expand all rows', () => {
       const rows = [0, 1, 2];
 
-      cy.get('@expandAllButton')
-        .click();
+      cy.get('@expandAllButton').click();
 
       cy.get('@rows').should('have.class', `${EXPANDED_CLASS}`);
       rows.forEach(rowIndex => {
@@ -998,7 +1053,6 @@ describe('Data Table', () => {
           .should('not.have.css', 'display', 'none');
       });
     });
-
   });
 
   describe('Sorting', () => {
@@ -1365,11 +1419,14 @@ describe('Data Table', () => {
       cy.get(`[data-cy='data-table-bulk-actions']`)
         .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
         .as('selectables');
-      cy.get(`[data-cy='data-table-bulk-actions'] 
-        .${PAGINATION_CLASSES.PAGINATION}`).as('pagination');
-      cy.get(`[data-cy='data-table-bulk-actions'] 
-        .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`)
-        .as('rows');
+      cy.get(
+        `[data-cy='data-table-bulk-actions'] 
+        .${PAGINATION_CLASSES.PAGINATION}`
+      ).as('pagination');
+      cy.get(
+        `[data-cy='data-table-bulk-actions'] 
+        .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
+      ).as('rows');
     });
 
     it('Should create bulk actions when row is selected', () => {
@@ -1388,12 +1445,18 @@ describe('Data Table', () => {
           const paginationResults = '1';
           const selected = '1';
           const spy = cy.spy();
-          const dataTableRef = dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
+          const dataTableRef =
+            dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
 
-          dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY}`, spy);
+          dataTableRef.$on(
+            `${DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY}`,
+            spy
+          );
           cy.get(`[data-cy='data-table-bulk-actions']`)
-            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-            .${CHECKBOXES_CLASSES.LABEL}`)
+            .find(
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+            .${CHECKBOXES_CLASSES.LABEL}`
+            )
             .click()
             .then(() => {
               cy.get('@selectables')
@@ -1406,13 +1469,15 @@ describe('Data Table', () => {
                 .find('span')
                 .contains(`${paginationResults} results`);
               cy.get(`[data-cy='data-table-bulk-actions']`)
-                .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-                  .${BULK_ACTIONS_CLASSES.LABEL}`)
+                .find(
+                  `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+                  .${BULK_ACTIONS_CLASSES.LABEL}`
+                )
                 .contains(`Actions (${selected} Items Selected)`);
-              cy.get("@rows").should("have.length", 1);
+              cy.get('@rows').should('have.length', 1);
               expect(spy).to.be.calledOnce;
             });
-        })
+        });
     });
 
     it('Should deselect "Show selected only" and show data table is still in its original state', () => {
@@ -1422,12 +1487,18 @@ describe('Data Table', () => {
           const paginationResults = '6';
           const selected = '1';
           const spy = cy.spy();
-          const dataTableRef = dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
+          const dataTableRef =
+            dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
 
-          dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY}`, spy);
+          dataTableRef.$on(
+            `${DATA_TABLE_EVENTS.BULK_ACTIONS.SHOW_SELECTED_ONLY}`,
+            spy
+          );
           cy.get(`[data-cy='data-table-bulk-actions']`)
-            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-            .${CHECKBOXES_CLASSES.LABEL}`)
+            .find(
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+            .${CHECKBOXES_CLASSES.LABEL}`
+            )
             .click()
             .then(() => {
               cy.get(`[data-cy='data-table-bulk-actions']`)
@@ -1448,10 +1519,12 @@ describe('Data Table', () => {
                 .find('span')
                 .contains(`${paginationResults} results`);
               cy.get(`[data-cy='data-table-bulk-actions']`)
-                .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-                  .${BULK_ACTIONS_CLASSES.LABEL}`)
+                .find(
+                  `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+                  .${BULK_ACTIONS_CLASSES.LABEL}`
+                )
                 .contains(`Actions (${selected} Items Selected)`);
-              cy.get("@rows").should("have.length", 3);
+              cy.get('@rows').should('have.length', 3);
               expect(spy).to.be.calledOnce;
             });
         });
@@ -1462,12 +1535,15 @@ describe('Data Table', () => {
         .its('dataTableBulkActionsExample')
         .then(dataTableBulkActionsExample => {
           const spy = cy.spy();
-          const dataTableRef = dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
+          const dataTableRef =
+            dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
           const paginationResults = '6';
 
           dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL}`, spy);
           cy.get(`[data-cy='data-table-bulk-actions']`)
-            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END} .${BUTTON_CLASS} .${CLOSE_CLASS}`)
+            .find(
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END} .${BUTTON_CLASS} .${CLOSE_CLASS}`
+            )
             .click()
             .then(() => {
               cy.get(`[data-cy='data-table-bulk-actions']`)
@@ -1476,7 +1552,7 @@ describe('Data Table', () => {
               cy.get('@selectables')
                 .find('input')
                 .should('not.be.checked');
-              cy.get("@rows").should("have.length", 3);
+              cy.get('@rows').should('have.length', 3);
               cy.get(
                 `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
                     .${PAGINATION_CLASSES.RESULTS}`
@@ -1493,7 +1569,8 @@ describe('Data Table', () => {
         .its('dataTableBulkActionsExample')
         .then(dataTableBulkActionsExample => {
           const spy = cy.spy();
-          const dataTableRef = dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
+          const dataTableRef =
+            dataTableBulkActionsExample.$refs.dataTableBulkActionsRef;
           const paginationResults = '6';
 
           dataTableRef.$on(`${DATA_TABLE_EVENTS.BULK_ACTIONS.CANCEL}`, spy);
@@ -1501,11 +1578,15 @@ describe('Data Table', () => {
             .eq(1)
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
-            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-            .${CHECKBOXES_CLASSES.LABEL}`)
+            .find(
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+            .${CHECKBOXES_CLASSES.LABEL}`
+            )
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
-            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END} .${BUTTON_CLASS} .${CLOSE_CLASS}`)
+            .find(
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.END} .${BUTTON_CLASS} .${CLOSE_CLASS}`
+            )
             .click()
             .then(() => {
               cy.get(`[data-cy='data-table-bulk-actions']`)
@@ -1514,7 +1595,7 @@ describe('Data Table', () => {
               cy.get('@selectables')
                 .find('input')
                 .should('not.be.checked');
-              cy.get("@rows").should("have.length", 3);
+              cy.get('@rows').should('have.length', 3);
               cy.get(
                 `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
                   .${PAGINATION_CLASSES.RESULTS}`
@@ -1531,12 +1612,16 @@ describe('Data Table', () => {
         .eq(1)
         .click();
       cy.get(`[data-cy='data-table-bulk-actions']`)
-        .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.BUTTONS} 
-          .${BULK_ACTIONS_CLASSES.BUTTONS_DESKTOP}`)
+        .find(
+          `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.BUTTONS} 
+          .${BULK_ACTIONS_CLASSES.BUTTONS_DESKTOP}`
+        )
         .should('be.visible');
       cy.get(`[data-cy='data-table-bulk-actions']`)
-        .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.BUTTONS} 
-          .${BULK_ACTIONS_CLASSES.BUTTONS_MOBILE}`)
+        .find(
+          `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.BUTTONS} 
+          .${BULK_ACTIONS_CLASSES.BUTTONS_MOBILE}`
+        )
         .should('not.be.visible');
     });
 
@@ -1555,8 +1640,10 @@ describe('Data Table', () => {
         .click()
         .then(() => {
           cy.get(`[data-cy='data-table-bulk-actions']`)
-            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-                  .${BULK_ACTIONS_CLASSES.LABEL}`)
+            .find(
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+                  .${BULK_ACTIONS_CLASSES.LABEL}`
+            )
             .contains(`Actions (${selected} Items Selected)`);
         });
       cy.get(`@pagination`)
@@ -1577,16 +1664,20 @@ describe('Data Table', () => {
             .eq(1)
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
-            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-                .${BULK_ACTIONS_CLASSES.LABEL}`)
+            .find(
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+                .${BULK_ACTIONS_CLASSES.LABEL}`
+            )
             .contains(`Actions (${selected} Items Selected)`);
           cy.get(`@pagination`)
             .find(`.${ICON_BUTTON}`)
             .first()
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
-            .find(`.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
-                  .${BULK_ACTIONS_CLASSES.LABEL}`)
+            .find(
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+                  .${BULK_ACTIONS_CLASSES.LABEL}`
+            )
             .contains(`Actions (${selected} Items Selected)`);
         });
     });

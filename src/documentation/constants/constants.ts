@@ -1,7 +1,7 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
-export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.33.0`;
-export const DOCS_URL = `${TEMP_DEVELOPMENT_FALLBACK_URL}/js/ce/docs.json`
+export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.37.0`;
+export const DOCS_URL = `${TEMP_DEVELOPMENT_FALLBACK_URL}/js/ce/docs.json`;
 export const THEMES = {
   centurylink: {
     label: 'CenturyLink',
@@ -330,6 +330,10 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '5.37.0',
+  '5.36.0',
+  '5.35.0',
+  '5.34.0',
   '5.33.0',
   '5.32.0',
   '5.31.0',
@@ -404,3 +408,120 @@ export const CHI_VISIBLE_VERSION = [
   '2.1.0',
   '2.0.0'
 ];
+
+export const SIZES: string[] = ['sm', 'md', 'lg', 'xl'];
+
+export const COLORS = {
+  SUCCESS: {
+    name: 'success',
+    value: '#007E44'
+  },
+  'SUCCESS-LIGHT': {
+    name: 'success-light',
+    value: '#DBFAEE'
+  },
+  'SUCCESS-LIGHTER': {
+    name: 'success-lighter',
+    value: '#F1FEF8'
+  },
+  INFO: {
+    name: 'info',
+    value: '#0075C9'
+  },
+  'INFO-LIGHT': {
+    name: 'info-light',
+    value: '#F5F9FC'
+  },
+  'INFO-LIGHTER': {
+    name: 'info-lighter',
+    value: '#E0F3FF'
+  },
+  WARNING: {
+    name: 'warning',
+    value: '#A15C00'
+  },
+  'WARNING-LIGHT': {
+    name: 'warning-light',
+    value: '#FAECD9'
+  },
+  'WARNING-LIGHTER': {
+    name: 'warning-lighter',
+    value: '#FFF8ED'
+  },
+  DANGER: {
+    name: 'danger',
+    value: '#D62015'
+  },
+  'DANGER-LIGHT': {
+    name: 'danger-light',
+    value: '#FFE8E5'
+  },
+  'DANGER-LIGHTER': {
+    name: 'danger-lighter',
+    value: '#FFF5F5'
+  },
+  MUTED: {
+    name: 'muted',
+    value: '#53565A'
+  },
+  'MUTED-LIGHT': {
+    name: 'muted-light',
+    value: '#EDF0F2'
+  },
+  'MUTED-LIGHTER': {
+    name: 'muted-lighter',
+    value: '#F8F9F9'
+  },
+  'BG-NONE': {
+    name: '-bg--none',
+    value: 'none'
+  },
+  'GREY-15': {
+    name: 'grey-15',
+    value: '#F4F5F6'
+  },
+  'GREY-20': {
+    name: 'grey-20',
+    value: '#EDF0F2'
+  },
+  'GREY-25': {
+    name: 'grey-25',
+    value: '#DADEE2'
+  },
+  'GREY-30': {
+    name: 'grey-30',
+    value: '#D0D4D9'
+  },
+  NAVY: {
+    name: 'navy',
+    value: '#083176'
+  },
+  GREY: {
+    name: 'grey',
+    value: '#3F4145'
+  },
+  BLACK: {
+    name: 'black',
+    value: '#000000'
+  },
+  WHITE: {
+    name: 'white',
+    value: '#FFFFFF'
+  },
+  PRIMARY: {
+    name: 'primary',
+    value: '#0075C9'
+  },
+  'PRIMARY-CENTURYLINK': {
+    name: 'primary',
+    value: '#0047BB'
+  },
+  SECONDARY: {
+    name: 'secondary',
+    value: '#38C6F4'
+  },
+  'SECONDARY-CENTURYLINK': {
+    name: 'primary',
+    value: '#48D597'
+  }
+};

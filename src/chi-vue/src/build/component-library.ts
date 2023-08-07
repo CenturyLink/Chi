@@ -1,8 +1,6 @@
-declare class ComponentLibrary {
-  components: Record<string, () => void>;
-}
+import { ChiVueLibrary } from 'index';
 
-const exportComponent: ComponentLibrary = {
+const exportComponent: ChiVueLibrary = {
   components: {
     ChiCheckbox: () => import(/* webpackChunkName: "checkbox" */ '../components/checkbox/Checkbox'),
     ChiColumnCustomization: () =>

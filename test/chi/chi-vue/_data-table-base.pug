@@ -27,6 +27,11 @@ h3 Empty
   #empty
     chi-vue-data-table(data-cy='data-table-empty', :config="config", :data="table")
 
+h3 Empty Actionable
+.test-data-table.-p--3.-w--100
+  #empty-actionable
+    chi-vue-data-table(data-cy='data-table-empty-actionable', :config="config", :data="table")
+
 h3 No Border
 .test-data-table.-p--3.-w--100
   #noBorder
@@ -401,6 +406,44 @@ script.
       },
     },
   }).$mount("#empty");
+
+  
+  new Vue({
+    components: {
+      chiVueDataTable: window["chi-vue"].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: false,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: "md",
+          striped: false,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+        emptyActionable: {
+          isActionable: true,
+        },
+      },
+      table: {
+        head: {
+          name: { label: "Name" },
+          id: { label: "ID" },
+          lastLogin: { label: "Last Login" },
+        },
+        body: [],
+      },
+    },
+  }).$mount("#empty-actionable");
 
   new Vue({
     components: {

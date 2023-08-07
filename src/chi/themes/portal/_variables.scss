@@ -268,6 +268,7 @@ $border-radius-base: 0.25rem; // 4px
 $border-radius-sharp: 0;
 $border-radius-circle: 50%;
 $border-radius: $border-radius-base;
+$border-radius-rounded-pill: 10rem;
 
 // Semantic colors
 $color-semantic: (
@@ -930,7 +931,7 @@ $dropdown-trigger-xl-padding-x:             2rem;
 $dropdown-trigger-base-xs-padding-y:        0.1875rem;
 $dropdown-trigger-base-sm-padding-y:        0.4375rem;
 $dropdown-trigger-base-md-padding-y:        0.5625rem;
-$dropdown-trigger-base-lg-padding-y:        0.6875rem;
+$dropdown-trigger-base-lg-padding-y:        0.8125rem;
 $dropdown-trigger-base-xl-padding-y:        0.9375rem;
 
 $dropdown-trigger-base-icon-xs-padding-y:   0.1875rem;
@@ -954,6 +955,7 @@ $dropdown-menu-item-disabled-text-color:    $color-grey-70;
 $dropdown-menu-item-disabled-icon-color:    $color-grey-70;
 $dropdown-menu-item-disabled-opacity:       $opacity-60;
 $dropdown-menu-item-hover-background-color: $color-grey-20;
+$dropdown-menu-item-focus-outline:          $focus-color;
 
 // Expansion panel
 $expansion-panel-border-color:              $color-border-base;
@@ -1075,10 +1077,13 @@ $header-xl-navbar-tab-link-line-height:     $line-height;
 
 // Label
 $label-status-text-color:                   $color-text-muted;
-$label-status-danger-text-color:            $color-text-danger;
-$label-status-success-text-color:           $color-text-success;
 $label-required-text-color:                 $color-text-danger;
-
+$label-status-danger-text-color:            $color-text-danger;
+$label-status-danger-icon-color:            $color-text-danger;
+$label-status-success-text-color:           $color-text-success;
+$label-status-success-icon-color:           $color-text-success;
+$label-status-warning-text-color:           $color-text-warning;
+$label-status-warning-icon-color:           $color-text-warning;
 $label-help-icon-color:                     $color-icon-primary;
 $label-help-hover-icon-color:               $color-icon-primary;
 
@@ -1313,6 +1318,12 @@ $picker-checked-radio-icon-color:           $color-background-white;
 $picker-hover-border-color:                 $color-grey-40;
 $picker-focus-border-color:                 $color-grey-40;
 $picker-focus-background-color:             $color-grey-10;
+$picker-xs-item-font-size:                  $font-size-xs;
+$picker-xs-item-padding:                    0.1875rem 0.75rem;
+$picker-xs-item-description-line-height:    1rem;
+$picker-sm-item-font-size:                  $font-size-sm;
+$picker-sm-item-padding:                    0.4375rem 1rem;
+$picker-sm-item-description-line-height:    1rem;
 $picker-md-item-font-size:                  $font-size-base;
 $picker-md-item-padding:                    1rem;
 $picker-md-item-label-margin:               0.75rem;

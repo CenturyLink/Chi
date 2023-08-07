@@ -91,6 +91,7 @@ export class Carousel {
   private remainingSpace: number = 0;
   private isLastView: boolean = false;
   private isLastStep: boolean = false;
+  private restItemsShown: number = 0;
 
   private resizeHandler = () => {
     this._calculateCarouselWidth();
@@ -112,6 +113,8 @@ export class Carousel {
         ? Math.ceil(itemsShown)
         : Math.floor(itemsShown);
     this.numberOfViews = Math.ceil(carouselItems.length / this.maxItemsShown);
+
+    this.restItemsShown = carouselItems.length % this.maxItemsShown;
 
     if (this.isLastView) {
       this._calculateView(CAROUSEL_DIRECTION.NEXT, this.currentStep);
@@ -379,7 +382,31 @@ export class Carousel {
     return carouselItems.length > 1;
   }
 
+  _getItemVisibility(index) {
+    let minActiveItem = this.view * this.maxItemsShown;
+    const maxActiveItem = minActiveItem + this.maxItemsShown;
+
+    if (this.isLastView && this.restItemsShown > 0) {
+      minActiveItem =
+        minActiveItem - (this.maxItemsShown - this.restItemsShown);
+    }
+
+    return index >= minActiveItem && index < maxActiveItem;
+  }
+
+  setActiveClass() {
+    const carouselItems = this._getCarouselItems();
+
+    carouselItems.forEach((item, index) => {
+      const isVisible = this._getItemVisibility(index);
+
+      item.classList.toggle(ACTIVE_CLASS, isVisible);
+    });
+  }
+
   render() {
+    this.setActiveClass();
+
     const prevButton = this._areThereMultipleItems() &&
       !this.noButtonControllers && (
         <div

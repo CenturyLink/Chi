@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-05-29T12:05:55",
+  "timestamp": "2023-07-11T11:48:00",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1971,6 +1971,24 @@
           "docsTags": []
         },
         {
+          "event": "chiDropdownItemSelected",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when select an item in the dropdown menu",
+          "docsTags": []
+        },
+        {
+          "event": "chiDropdownKeyDown",
+          "detail": "any",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "Triggered when press key to up/down the Dropdown menu items",
+          "docsTags": []
+        },
+        {
           "event": "chiDropdownShow",
           "detail": "any",
           "bubbles": true,
@@ -1983,6 +2001,7 @@
       "styles": [],
       "slots": [],
       "dependents": [
+        "chi-search-input",
         "chi-tabs"
       ],
       "dependencies": [
@@ -1994,6 +2013,9 @@
         ],
         "chi-button": [
           "chi-icon"
+        ],
+        "chi-search-input": [
+          "chi-dropdown"
         ],
         "chi-tabs": [
           "chi-dropdown"
@@ -2099,6 +2121,59 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/helper-message/helper-message.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-helper-message",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "state",
+          "type": "\"danger\" | \"success\" | \"warning\"",
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": true,
+          "docs": "To define state color of message text",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "dependents": [
+        "chi-text-input"
+      ],
+      "dependencies": [
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-helper-message": [
+          "chi-icon"
+        ],
+        "chi-text-input": [
+          "chi-helper-message"
+        ]
+      }
     },
     {
       "filePath": "src/components/icon/icon.tsx",
@@ -2230,6 +2305,7 @@
         "chi-date",
         "chi-date-picker",
         "chi-drawer",
+        "chi-helper-message",
         "chi-number-input",
         "chi-text-input",
         "chi-textarea",
@@ -2253,6 +2329,9 @@
           "chi-icon"
         ],
         "chi-drawer": [
+          "chi-icon"
+        ],
+        "chi-helper-message": [
           "chi-icon"
         ],
         "chi-number-input": [
@@ -4217,6 +4296,22 @@
           "required": false
         },
         {
+          "name": "excludedCountries",
+          "type": "string",
+          "mutable": true,
+          "attr": "excluded-countries",
+          "reflectToAttr": true,
+          "docs": "To define two letter ISO country codes to exclude from Phone input dropdown",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "placeholder",
           "type": "string",
           "mutable": false,
@@ -4350,9 +4445,22 @@
           "chi-search-input",
           "chi-text-input"
         ],
+        "chi-search-input": [
+          "chi-dropdown"
+        ],
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
         "chi-text-input": [
           "chi-icon",
-          "chi-spinner"
+          "chi-spinner",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
         ]
       }
     },
@@ -4793,6 +4901,38 @@
           "required": false
         },
         {
+          "name": "menuItems",
+          "type": "DropdownMenuItem[]",
+          "mutable": true,
+          "reflectToAttr": false,
+          "docs": "To set the list of items to be used in the dropdown menu in autocomplete mode",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "DropdownMenuItem[]"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "mode",
+          "type": "\"autocomplete\"",
+          "mutable": false,
+          "attr": "mode",
+          "reflectToAttr": true,
+          "docs": "To set the mode to search input",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "autocomplete",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        },
+        {
           "name": "name",
           "type": "string",
           "mutable": false,
@@ -4819,23 +4959,6 @@
           "values": [
             {
               "type": "string"
-            }
-          ],
-          "optional": false,
-          "required": false
-        },
-        {
-          "name": "portal",
-          "type": "boolean",
-          "mutable": false,
-          "attr": "portal",
-          "reflectToAttr": true,
-          "docs": "To enable portal styling",
-          "docsTags": [],
-          "default": "false",
-          "values": [
-            {
-              "type": "boolean"
             }
           ],
           "optional": false,
@@ -4989,8 +5112,19 @@
       "dependents": [
         "chi-phone-input"
       ],
-      "dependencies": [],
+      "dependencies": [
+        "chi-dropdown"
+      ],
       "dependencyGraph": {
+        "chi-search-input": [
+          "chi-dropdown"
+        ],
+        "chi-dropdown": [
+          "chi-button"
+        ],
+        "chi-button": [
+          "chi-icon"
+        ],
         "chi-phone-input": [
           "chi-search-input"
         ]
@@ -5426,6 +5560,22 @@
           "required": false
         },
         {
+          "name": "helperMessage",
+          "type": "string",
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": true,
+          "docs": "To display an additional helper text message below the Text input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "iconLeft",
           "type": "string",
           "mutable": false,
@@ -5851,12 +6001,17 @@
       ],
       "dependencies": [
         "chi-icon",
-        "chi-spinner"
+        "chi-spinner",
+        "chi-helper-message"
       ],
       "dependencyGraph": {
         "chi-text-input": [
           "chi-icon",
-          "chi-spinner"
+          "chi-spinner",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
         ],
         "chi-phone-input": [
           "chi-text-input"
