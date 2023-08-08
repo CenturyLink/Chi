@@ -1,7 +1,6 @@
 /// <reference types="Cypress" />
 
 describe('Badges', () => {
-
   it('Base badge should be included inside the custom element', () => {
     cy.visit('tests/custom-elements/badges.html');
 

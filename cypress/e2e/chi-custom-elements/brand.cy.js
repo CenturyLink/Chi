@@ -7,14 +7,21 @@ describe('Brand', () => {
       .and('include', value);
   };
 
-  const selectors = ['brand-base-default', 'brand-inverse-sm', 'brand-white-md', 'brand-black-lg', 'brand-black-default', 'brand-white-xxl'];
+  const selectors = [
+    'brand-base-default',
+    'brand-inverse-sm',
+    'brand-white-md',
+    'brand-black-lg',
+    'brand-black-default',
+    'brand-white-xxl'
+  ];
 
   before(() => {
     cy.visit('tests/custom-elements/brand.html');
   });
 
   beforeEach(() => {
-    selectors.forEach((s) => {
+    selectors.forEach(s => {
       cy.get(`[data-cy=${s}]`, { timeout: 5000 })
         .should('have.class', 'hydrated')
         .children()
@@ -41,12 +48,10 @@ describe('Brand', () => {
   });
 
   it('Brand should have default appropriate class for size', () => {
-    cy.get('@brand-black-default')
-      .should('not.have.class', '-md');
+    cy.get('@brand-black-default').should('not.have.class', '-md');
   });
 
   it('Sized brand should have appropriate class', () => {
-    cy.get('@brand-white-xxl')
-      .should('have.class', '-xxl');
+    cy.get('@brand-white-xxl').should('have.class', '-xxl');
   });
 });
