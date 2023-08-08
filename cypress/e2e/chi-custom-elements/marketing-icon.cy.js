@@ -1,8 +1,7 @@
 /// <reference types="Cypress" />
 
 describe('Marketing icons', function() {
-
-  beforeEach(()=>{
+  beforeEach(() => {
     cy.fixture('chidata.json').as('chidata');
   });
 
@@ -17,11 +16,9 @@ describe('Marketing icons', function() {
       .children()
       .first()
       .should('match', 'svg');
-
   });
 
   it('Sized icons should have appropriate class', function() {
-
     cy.get('[data-cy="marketing-icon-size"]')
       .should('have.class', 'hydrated')
       .children()
@@ -31,14 +28,11 @@ describe('Marketing icons', function() {
       .children()
       .first()
       .should('match', 'svg');
-
   });
 
   it('should show all the icons', function() {
-
     cy.get('[data-cy="marketing-icon-list"]')
       .children()
       .should('have.length', this.chidata.marketingIcons.length);
   });
-
 });
