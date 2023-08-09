@@ -77,7 +77,8 @@
 import { Themes } from '../models/models';
 import { THEMES } from '../constants/constants';
 import { Component, Vue } from 'vue-property-decorator';
-import { BASE_URL } from '../constants/constants';
+import { BASE_URL, TEMP_DEVELOPMENT_FALLBACK_URL } from '../constants/constants';
+
 
 declare const chi: any;
 interface AssetToReplace {
@@ -116,8 +117,8 @@ export default class ThemeSwitcher extends Vue {
     assetsToReplace.forEach((asset: AssetToReplace) => {
       const currentAsset = document.getElementById(asset.id);
       const replacementAsset = document.createElement('LINK');
-      const replacementHref = THEMES[theme][asset.type];
-
+      const replacementHref = `${TEMP_DEVELOPMENT_FALLBACK_URL}/${THEMES[theme][asset.type]}`;
+      
       if (currentAsset && replacementAsset) {
         replacementAsset.setAttribute('rel', 'stylesheet');
         replacementAsset.setAttribute('href', replacementHref);
