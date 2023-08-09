@@ -79,7 +79,6 @@ import { THEMES } from '../constants/constants';
 import { Component, Vue } from 'vue-property-decorator';
 import { BASE_URL, TEMP_DEVELOPMENT_FALLBACK_URL } from '../constants/constants';
 
-
 declare const chi: any;
 interface AssetToReplace {
   type: 'css' | 'docsCss';
