@@ -11,11 +11,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Description from './_description.vue';
-import InfoAndRelationships from './_infoAndRelationships.vue';
+import InfoAndRelationships from './_info-and-relationships.vue';
 import Keyboard from './_keyboard.vue';
-import NoKeyboard from './_noKeyboard.vue';
-import FocusOrder from './_focusOrder.vue';
-import FocusVisible from './_focusVisible.vue';
+import NoKeyboard from './_no-keyboard.vue';
+import FocusOrder from './_focus-order.vue';
+import FocusVisible from './_focus-visible.vue';
 
 @Component({
   components: {
