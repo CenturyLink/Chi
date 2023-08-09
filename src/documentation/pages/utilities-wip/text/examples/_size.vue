@@ -49,7 +49,7 @@ export default class Size extends Vue {
   generateHtml() {
     return this.sizes
       .map(({ name }) => `<p class="-text--${ name }">The quick brown fox jumps over the lazy dog.</p>`)
-      .join();
+      .join('\n');
   }
 
   getContent(column: ITableColumn, content: ITableContent) {
