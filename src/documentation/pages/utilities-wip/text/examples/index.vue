@@ -15,7 +15,7 @@
 
     <Brand />
     <Semantic />
-    <Complimentary />
+    <Complimentary v-if="$store.state.themes.theme === 'lumen'" />
 
     <TitleAnchor title="Responsiveness" id="text-responsiveness" titleSize="h2"/>
     <Sizes />

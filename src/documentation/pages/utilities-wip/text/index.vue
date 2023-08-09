@@ -18,5 +18,5 @@ import Examples from './examples/index.vue';
     Examples
   }
 })
-export default class TextComponent extends Vue {}
+export default class TextUtility extends Vue {}
 </script>

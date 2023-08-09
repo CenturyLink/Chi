@@ -78,18 +78,12 @@ export interface ITableColumn {
   width: string;
 }
 
-interface ITableContentValue {
-  code: string[];
-  text: string[];
-}
-
 export interface IBreakpoints {
   name: string;
   value: string;
 }
 
-
 export interface ITableContent {
   name: string;
-  value: string | ITableContentValue;
+  value: string | string[];
 }

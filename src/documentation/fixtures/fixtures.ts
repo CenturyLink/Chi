@@ -523,7 +523,6 @@ export const breakpoints: IBreakpoints[] = [
   { name: 'xl', value: 'xl' }
 ];
 
-
 export const displayDefaultColumns = [
   {
     title: 'Display Class',
@@ -532,6 +531,19 @@ export const displayDefaultColumns = [
   },
   {
     title: 'Value',
+    key: 'value',
+    width: ''
+  }
+];
+
+export const utilitiesTextColumns = [
+  {
+    title: 'Size',
+    key: 'class',
+    width: '20%'
+  },
+  {
+    title: 'Example',
     key: 'value',
     width: ''
   }
