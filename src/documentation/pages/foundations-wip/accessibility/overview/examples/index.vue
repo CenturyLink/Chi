@@ -23,7 +23,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import Descriptions from './_descriptions.vue'
-import KeyAccessibilityConcepts from './_keyAccessibilityConcepts.vue'
+import KeyAccessibilityConcepts from './_key-accessibility-concepts.vue'
 import Foundations from './_foundations.vue'
 
 @Component({
