@@ -20,17 +20,11 @@ import { ITableColumn, ITableContent } from "~/models/models";
         },
         {
           name: '-d-screen--only',
-          value: {
-            code: ['display: block;', 'display: none;'],
-            text: ['on @media screen,', 'on @media print.']
-          }
+          value: ['display: block;', 'on @media screen,', 'display: none;', 'on @media print.']
         },
         {
           name: '-d-print--only',
-          value: {
-            code: ['display: none;', 'display: block;'],
-            text: ['on @media screen,', 'on @media print.']
-          }
+          value: ['display: none;', 'on @media screen,', 'display: block;', 'on @media print.']
         }
       ],
       columns: displayDefaultColumns
@@ -46,7 +40,7 @@ export default class SpecialDisplayClasses extends Vue {
         if (typeof content.value === 'string') {
           return content.value;
         }
-        return `<code>${content.value.code[0]}</code>${content.value.text[0]} <code>${content.value.code[1]}</code>${content.value.text[1]}`;
+        return `<code>${content.value[0]}</code>${content.value[1]} <code>${content.value[2]}</code>${content.value[3]}`;
       default:
         return '';
     }
