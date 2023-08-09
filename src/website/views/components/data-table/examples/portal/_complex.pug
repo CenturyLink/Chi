@@ -1110,7 +1110,9 @@ script.
       }
     },
     beforeDestroy() {
-      this.popover.dispose();
+      if (this.popover) {
+        this.popover.dispose();
+      }
     },
     template: `<div class="-text--truncate">
         <a :id="'name-popover-button-'+this.id" href="#" :data-target="'#name-popover-'+this.id" position="top-start">{{this.name}}</a>
@@ -1126,14 +1128,14 @@ script.
     props: ["id"],
     mounted() {
       this.dropdown = window.chi.dropdown(
-        document.getElementById(`action-button-${this.id}`)
+        document.getElementById(`action-button-portal-${this.id}`)
       );
     },
     beforeDestroy() {
       this.dropdown.dispose();
     },
     template: `<div class="chi-dropdown -position--absolute">
-        <button :id="'action-button-'+this.id" class="chi-button -icon -primary -flat" aria-label="More options" data-position="left-start">
+        <button :id="'action-button-portal-'+this.id" class="chi-button -icon -flat" aria-label="More options" data-position="left-start">
           <div class="chi-button__content">
             <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
           </div>
