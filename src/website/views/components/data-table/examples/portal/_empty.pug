@@ -170,6 +170,98 @@ h4 No Filters
         </div>
       </div>
 
+h4 Empty Actionable
+
+.example.-mb--3
+  .-p--3
+    .chi-card.-portal.-bg--white.-bg-md--grey-15
+      .chi-card__header.-sm
+        .chi-card__title Title
+      .chi-card__content.-p--0
+        #portal-empty-actionable
+          chi-vue-data-table(:config='config', :data='table')
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-portal-empty-actionable
+      li.-disabled
+        a(href=`#webcomponent-portal-empty-actionable`) Web Component
+      li.-active
+        a(href=`#vue-portal-empty-actionable`) Vue
+      li
+        a(href=`#html-portal-empty-actionable`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-portal-empty-actionable
+  .chi-tabs-panel.-active#vue-portal-empty-actionable
+    :code(lang='html')
+      <!-- Vue component -->
+      <ChiDataTable :config="config" :data="table"></ChiDataTable>
+
+      <!-- Config and Data -->
+      data: {
+        config: {
+          columnResize: true,
+          style: {
+            portal: true,
+            noBorder: false,
+            bordered: false,
+            hover: false,
+            size: 'md',
+            striped: true,
+          },
+          pagination: {
+            activePage: 1,
+            compact: false,
+            firstLast: false,
+            pageJumper: true,
+          },
+          resultsPerPage: 3,
+          emptyActionable: {
+            isActionable: true,
+          },
+        },
+        table: {
+          head: {
+            name: { label: 'Name' },
+            id: { label: 'ID' },
+            lastLogin: { label: 'Last Login' },
+          },
+          body: [],
+        }
+      }
+
+  .chi-tabs-panel#html-portal-empty-actionable
+    :code(lang="html")
+      <div class="chi-card -portal -bg--white -bg-md--grey-15">
+        <div class="chi-card__header -sm">
+          <div class="chi-card__title">Title</div>
+        </div>
+        <div class="chi-card__content -p--0">
+          <div class="chi-data-table -portal -compact">
+            <div class="chi-data-table__head">
+              <div class="chi-data-table__row">
+                <div class="chi-data-table__cell">
+                  <div>Name</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>ID</div>
+                </div>
+                <div class="chi-data-table__cell">
+                  <div>Last Login</div>
+                </div>
+              </div>
+            </div>
+            <div class="chi-data-table__body">
+              <div class="chi-data-table__row-empty -actionable">
+                <div>
+                  <i class="chi-icon icon-circle-plus-outline -icon--grey" aria-hidden="true"></i>
+                  <span>
+                    <a>Add a new or existing service</a>, then manage here.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 script.
   new Vue({
     components: {
@@ -178,7 +270,6 @@ script.
     data: {
       config: {
         columnResize: true,
-        noResultsMessage: 'No matching results',
         style: {
           portal: true,
           noBorder: false,
@@ -241,10 +332,48 @@ script.
     }
   }).$mount('#portal-no-filters');
 
+  new Vue({
+    components: {
+      ChiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
+    },
+    data: {
+      config: {
+        columnResize: true,
+        style: {
+          portal: true,
+          noBorder: false,
+          bordered: false,
+          hover: false,
+          size: 'md',
+          striped: true,
+        },
+        pagination: {
+          activePage: 1,
+          compact: false,
+          firstLast: false,
+          pageJumper: true,
+        },
+        resultsPerPage: 3,
+        emptyActionable: {
+          isActionable: true,
+        },
+      },
+      table: {
+        head: {
+          name: { label: 'Name' },
+          id: { label: 'ID' },
+          lastLogin: { label: 'Last Login' },
+        },
+        body: [],
+      }
+    }
+  }).$mount('#portal-empty-actionable');
+
   document.addEventListener(
     'DOMContentLoaded',
     function() {
       chi.tab(document.querySelector('#example-portal-no-results'));
       chi.tab(document.querySelector('#example-portal-no-filters'));
+      chi.tab(document.querySelector('#example-portal-empty-actionable'));
     }
   );

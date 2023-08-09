@@ -1055,16 +1055,11 @@ export default class DataTable extends Vue {
           <div
             class={[
               DATA_TABLE_CLASSES.EMPTY,
-              this.emptyActionableContent.isActionable && DATA_TABLE_CLASSES.EMPTY_ACTIONABLE,
+              this.emptyActionableContent.isActionable ? DATA_TABLE_CLASSES.EMPTY_ACTIONABLE : '',
             ]}>
-            {this.emptyActionableContent.isActionable ? (
-              emptyActionable
-            ) : (
-              <div>
-                <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
-                {this.emptyMessage}
-              </div>
-            )}
+            {this.emptyActionableContent.isActionable
+              ? emptyActionable
+              : [<chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>, <span>{this.emptyMessage}</span>]}
           </div>
         );
       }

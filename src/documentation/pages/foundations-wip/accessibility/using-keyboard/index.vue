@@ -11,7 +11,7 @@ import Examples from './examples/index.vue';
 @Component({
   head() {
     return {
-      title: 'Chi -- Using the keyboard'
+      title: 'Chi - Using the keyboard'
     }
   },
   components: {
