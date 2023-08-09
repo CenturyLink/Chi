@@ -1,10 +1,11 @@
 <template>
   <div class="example-wrapper">
-    <TitleAnchor 
-      :id="id" 
-      :title="title" 
-      :titleSize="titleSize" 
-      :showTitle="showTitle" 
+    <TitleAnchor
+      v-if="title"
+      :id="id"
+      :title="title"
+      :titleSize="titleSize"
+      :showTitle="showTitle"
     />
     <slot name="example-description"></slot>
     <div v-if="headTabs">
@@ -25,7 +26,7 @@
             :aria-selected="headTab.active ? true : false"
             :aria-controls="'#head-tabs-' + id + '-' + headTab.id"
             @click="emitHeadTabsChange(headTab)"
-          >{{ headTab.label }}</a
+            >{{ headTab.label }}</a
           >
         </li>
       </ul>
@@ -110,7 +111,10 @@
         </ul>
       </div>
       <div
-        :class="[showSnippetTabs ? 'chi-tabs-panel' : '', tab.active ? '-active' : '']"
+        :class="[
+          showSnippetTabs ? 'chi-tabs-panel' : '',
+          tab.active ? '-active' : ''
+        ]"
         v-for="tab in tabs"
         :key="tab.id"
         :id="'example-' + id + '-' + tab.id"
@@ -140,7 +144,7 @@ pre code.hljs {
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { TabsInterface, HeadTabsInterface } from '../models/models';
+import { ITabs, IHeadTabs } from '../models/models';
 import { COMPONENT_EXAMPLE_EVENTS } from '../constants/constants';
 import { SR_ONLY } from '../../chi-vue/src/constants/classes';
 
@@ -188,9 +192,9 @@ Vue.config.warnHandler = (msg: string, _vm: Vue, trace: string) => {
 export default class ComponentExample extends Vue {
   @Prop() id?: string;
   @Prop() title?: string;
-  @Prop() titleSize?: 'h3' | 'h4';
-  @Prop() tabs?: TabsInterface[];
-  @Prop() headTabs?: HeadTabsInterface[];
+  @Prop() titleSize?: 'h2' | 'h3' | 'h4';
+  @Prop() tabs?: ITabs[];
+  @Prop() headTabs?: IHeadTabs[];
   @Prop() padding?: string;
   @Prop() additionalClasses?: string;
   @Prop() additionalStyle?: string;
@@ -208,7 +212,7 @@ export default class ComponentExample extends Vue {
 
     if (chiTabs) this.chiTabs = chi.tab(chiTabs);
     if (chiHeadTabs) {
-      this.headTabs?.forEach((tab: HeadTabsInterface) => {
+      this.headTabs?.forEach((tab: IHeadTabs) => {
         const codeSnippetTab = document.getElementById(
           `code-snippet-tabs-${this.$props.id}-${tab.id}`
         );
@@ -220,7 +224,7 @@ export default class ComponentExample extends Vue {
     }
   }
 
-  emitHeadTabsChange(tab: HeadTabsInterface) {
+  emitHeadTabsChange(tab: IHeadTabs) {
     this.$emit(COMPONENT_EXAMPLE_EVENTS.CHI_HEAD_TABS_CHANGE, tab);
   }
 }
