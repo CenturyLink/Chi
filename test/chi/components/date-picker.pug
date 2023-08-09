@@ -6,13 +6,16 @@ scripts:
 script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
 script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 
--  let day = 1;
--  let minute = 0;
--  let hour = 0;
+-  const hours = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 -  const weekS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+-  const periods = ['AM', 'PM'];
 -  const today = 19;
 -  const active = 23;
 -  const padZero = value => ('0' + value).slice(-2);
+
+-  let day = 1;
+-  let minute = 0;
+-  let hour = 0;
 
 .test-base.-py--2
   span.-text--h2 Base
@@ -117,7 +120,6 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
           else
             .chi-datepicker__day=day++
 
-
 - day = 1;
 
 .test-inactive.-py--2
@@ -203,6 +205,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
           use(xlink:href="#icon-date")
 
 - day = 1;
+
 .test-multiple.-py--2
   span.-text--h2 Multiple Dates selection
   .-position--relative
@@ -233,10 +236,11 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
             .chi-datepicker__day=day++
 
 - day = 1;
+
 .test-time-format-24hr-view.-py--2
   span.-text--h2 Test time format view
   .-d--flex
-    div.hydrated
+    div
       .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
         .chi-datepicker__month-row
           .prev
@@ -260,7 +264,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
             else
               .chi-datepicker__day=day++
 
-    div.hydrated
+    div
       .chi-time-picker
         .chi-time-picker__content
           .chi-time-picker__hours
@@ -276,37 +280,78 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
               else
                 .chi-time-picker__minute=padZero(minute++)
 
+- day = 1;
+- hour = 0;
+- minute = 0;
+
+.test-time-format-12hr-view.-py--2
+  span.-text--h2 Test time 12 hour format view
+  .-d--flex
+    div
+      .chi-datepicker.-week-starts-on-sun.-month-starts-on-thu
+        .chi-datepicker__month-row
+          .prev
+            .chi-icon.-sm
+              svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                use(xlink:href='#icon-chevron-left')
+          .chi-datepicker__month
+            | November
+            | 2018
+          .next
+            .chi-icon.-sm
+                svg(xmlns='http://www.w3.org/2000/svg' xmlnsxlink='http://www.w3.org/1999/xlink' aria-hidden='true')
+                  use(xlink:href='#icon-chevron-right')
+        .chi-datepicker__day-names
+          each weekDay in weekS
+            .chi-datepicker__week-day=weekDay
+        .chi-datepicker__days
+          while day < 31
+            if day === 23
+              .chi-datepicker__day.-active=day++
+            else
+              .chi-datepicker__day=day++
+
+    div
+      .chi-time-picker
+        .chi-time-picker__content
+          .chi-time-picker__hours
+            each hour in hours
+              if hour === 12
+                .chi-time-picker__hour.-active=padZero(hour)
+              else
+                .chi-time-picker__hour=padZero(hour)
+          .chi-time-picker__minutes
+            while minute < 60
+              if minute === 0
+                .chi-time-picker__minute.-active=padZero(minute++)
+              else
+                .chi-time-picker__minute=padZero(minute++)
+          .chi-time-picker__periods
+            each period in periods
+              if period === 'AM'
+                .chi-time-picker__period.-active=period
+              else
+                .chi-time-picker__period=period
+
 script.
-  document.addEventListener(
-    'DOMContentLoaded',
-    function() {
-      chi.datePicker(
+  document.addEventListener('DOMContentLoaded', () => {
+      const datePickerElements = [
         document.getElementById('datepicker-1'),
-        {
-          date: '01/24/2019',
-          min: '01/24/2019'
-        }
-      );
-      chi.datePicker(
         document.getElementById('datepicker-2'),
-        {
-          date: '01/24/2019',
-          min: '01/24/2019'
-        }
-      );
-      chi.datePicker(
-        document.getElementById('datepicker-3'),
-        {
-          date: '01/24/2019',
-          min: '01/24/2019'
-        }
-      );
+        document.getElementById('datepicker-3')
+      ];
+      const datePickerConfig = {
+        date: '01/24/2019',
+        min: '01/24/2019'
+      };
 
-      document.getElementById('datepicker-1').focus();
-      document.getElementById('datepicker-2').focus();
-      document.getElementById('datepicker-3').focus();
-      document.getElementById('datepicker-3').blur();
-      document.getElementById('datepicker-2').blur();
+      datePickerElements.forEach(datePicker => {
+        chi.datePicker(datePicker, datePickerConfig);
 
+        datePicker.focus();
+      });
+
+      datePickerElements[2].blur();
+      datePickerElements[1].blur();
     }
   );
