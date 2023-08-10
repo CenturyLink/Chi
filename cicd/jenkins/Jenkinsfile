@@ -238,36 +238,7 @@ pipeline {
         }
         steps {
           script {
-            sh(script: """
-                set +x
-                git whatchanged -1 --format=oneline
-                git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
-                rm -rf chi_version_bump
-                if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
-                  echo -n "yes" > chi_version_bump
-                else
-                  echo -n "no" > chi_version_bump
-                fi
-                cat chi_version_bump
-                echo "All good."
-            """, label: "Package version validation")
-            stash name: "CHI_VERSION_BUMP", includes: "chi_version_bump"
-            isVersionBump()
-            sh(script: """
-                set +x
-                git whatchanged -1 --format=oneline src/chi-vue
-                git diff HEAD~2 src/chi-vue/package.json | grep '"version":' || echo No package.json changes
-                rm -rf chi_vue_version_bump
-                if [ \$(git diff HEAD~2 src/chi-vue/package.json | grep '"version":' | wc -l) -eq 2 ]; then
-                  echo -n "yes" > chi_vue_version_bump
-                else
-                  echo -n "no" > chi_vue_version_bump
-                fi
-                cat chi_vue_version_bump
-                echo "All good."
-            """, label: "CHI-VUE Package version validation")
-            stash name: "CHI_VUE_VERSION_BUMP", includes: "chi_vue_version_bump"
-            isVersionBump('chi-vue')
+            packageVersionCheck()
           }
         }
       }
@@ -293,10 +264,7 @@ pipeline {
             steps {
               script {
                 dir('src/custom-elements') {
-                  jslNpmWrapper('ci')
-                  jslNpmWrapper('run build')
-                  stash name: "DIST-CHI-CE", includes: "dist/**"
-                  stash name: "NODEMODULES-CHI-CE", includes: "node_modules/**"
+                  customElementsBuild()
                 }
               }
             }
@@ -313,15 +281,7 @@ pipeline {
             steps {
               script {
                 dir('src/chi-vue') {
-                  def packageJson = readJSON file: 'package.json'
-                  packageJson.version = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
-                  writeJSON file: 'package.json', json: packageJson
-                  jslNpmWrapper('ci')
-                  jslNpmWrapper('run build:component')
-                  stash name: "DIST-CHI-VUE", includes: "dist/**"
-                  jslNpmWrapper('run build:umd')
-                  stash name: "DIST-CHI-VUE-UMD", includes: "umd/**"
-                  stash name: "NODEMODULES-CHI-VUE", includes: "node_modules/**"
+                  chiVueBuild()
                 }
               }
             }
@@ -338,13 +298,7 @@ pipeline {
             steps {
               script {
                 dir('src/documentation') {
-                  jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
-                  if (isVersionBump() || env.BRANCH_NAME==env.PROD_BRANCH) {
-                    jslNpmWrapper('run generate-production')
-                  } else {
-                    jslNpmWrapper('run generate-pr')
-                  }
-                  stash name: "DIST-CHI-DOCUMENTATION", includes: "dist/**"
+                  buildDocumentation()
                 }
               }
             }
@@ -369,29 +323,7 @@ pipeline {
         }
         steps {
           script {
-            dir ('src/chi-vue') {
-              unstash name: "DIST-CHI-VUE-UMD"
-            }
-            sh "sleep 10s"
-            dir ('src/custom-elements') {
-              unstash name: "DIST-CHI-CE"
-            }
-            sh "sleep 10s"
-            def packageJson = readJSON file: 'package.json'
-            packageJson.version = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
-            writeJSON file: 'package.json', json: packageJson
-            ghYarnWrap('install')
-            jslNpmWrapper('run cicd:build:pre:sri')
-            jslNpmWrapper('run sri')
-            jslNpmWrapper('run cicd:build:post:sri')
-            stash name: "DIST-CHI", includes: "dist/**"
-            echo "/dist & /dist/components"
-            sh """
-            ls -la ${pwd()}/dist
-            ls -la ${pwd()}/dist/components
-            """
-            stash name: "NODEMODULES-CHI", includes: "node_modules/**"
-            jslJiraSendBuildInfo()
+            buildChi()
           }
         }
       }
@@ -968,7 +900,7 @@ PRDesc
                 }
               }
               echo "Adding smoke Tests / smoke Test hook to Adoption Stats"
-              jslAdoptionMain('cypress/reports/smokeTests/*.xml', env.SCAN_BRANCH, env.COMMIT_ID, env.JOB_NAME, env.GITHUB_TOKEN_CRENDENTIALS, "yyyy-MM-dd'T'HH:mm:ss'Z'" , [booleanParam(name:'isVue3',value: env.IS_VUE3_TRIGGER.toBoolean())] )
+              jslAdoptionMain('cypress/reports/smokeTests/*.xml', env.SCAN_BRANCH, env.COMMIT_ID, env.JOB_NAME, env.GITHUB_TOKEN_CREDENTIALS, "yyyy-MM-dd'T'HH:mm:ss'Z'" , [booleanParam(name:'isVue3',value: env.IS_VUE3_TRIGGER.toBoolean())] )
 
             } else {
               try {
@@ -995,7 +927,7 @@ PRDesc
                 //Set variable to trigger DevOps GCR Creation
                 env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
               }
-              jslAdoptionMain('reports/ci_report/xunitfinal.xml',  env.SCAN_BRANCH, env.COMMIT_ID, env.JOB_NAME, env.GITHUB_TOKEN_CRENDENTIALS, "yyyy-MM-dd'T'HH:mm:ss'Z'" , [booleanParam(name:'isVue3',value: env.IS_VUE3_TRIGGER.toBoolean())])
+              jslAdoptionMain('reports/ci_report/xunitfinal.xml',  env.SCAN_BRANCH, env.COMMIT_ID, env.JOB_NAME, env.GITHUB_TOKEN_CREDENTIALS, "yyyy-MM-dd'T'HH:mm:ss'Z'" , [booleanParam(name:'isVue3',value: env.IS_VUE3_TRIGGER.toBoolean())])
             }
           }
         }
@@ -1247,4 +1179,93 @@ def promoteDeployTagGCR() {
   def pathJob = currentJob - currentBaseName
   echo "Triggering deployment to production job ${pathJob} with tag ${tagName}"
   jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6, [booleanParam(name:'isVue3',value: env.IS_VUE3_TRIGGER.toBoolean())] )
+}
+
+
+def packageVersionCheck() {
+  sh(script: """
+    set +x
+    git whatchanged -1 --format=oneline
+    git diff HEAD~2 package.json | grep '"version":' || echo No package.json changes
+    rm -rf chi_version_bump
+    if [ \$(git diff HEAD~2 package.json | grep '"version":' | wc -l) -eq 2 ]; then
+      echo -n "yes" > chi_version_bump
+    else
+      echo -n "no" > chi_version_bump
+    fi
+    cat chi_version_bump
+    echo "All good."
+  """, label: "Package version validation")
+  stash name: "CHI_VERSION_BUMP", includes: "chi_version_bump"
+  isVersionBump()
+  sh(script: """
+    set +x
+    git whatchanged -1 --format=oneline src/chi-vue
+    git diff HEAD~2 src/chi-vue/package.json | grep '"version":' || echo No package.json changes
+    rm -rf chi_vue_version_bump
+    if [ \$(git diff HEAD~2 src/chi-vue/package.json | grep '"version":' | wc -l) -eq 2 ]; then
+      echo -n "yes" > chi_vue_version_bump
+    else
+      echo -n "no" > chi_vue_version_bump
+    fi
+    cat chi_vue_version_bump
+    echo "All good."
+  """, label: "CHI-VUE Package version validation")
+  stash name: "CHI_VUE_VERSION_BUMP", includes: "chi_vue_version_bump"
+  isVersionBump('chi-vue')
+}
+
+def customElementsBuild() {
+    jslNpmWrapper('ci')
+    jslNpmWrapper('run build')
+    stash name: "DIST-CHI-CE", includes: "dist/**"
+    stash name: "NODEMODULES-CHI-CE", includes: "node_modules/**"
+}
+
+def chiVueBuild() {
+  def packageJson = readJSON file: 'package.json'
+  packageJson.version = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+  writeJSON file: 'package.json', json: packageJson
+  jslNpmWrapper('ci')
+  jslNpmWrapper('run build:component')
+  stash name: "DIST-CHI-VUE", includes: "dist/**"
+  jslNpmWrapper('run build:umd')
+  stash name: "DIST-CHI-VUE-UMD", includes: "umd/**"
+  stash name: "NODEMODULES-CHI-VUE", includes: "node_modules/**"
+}
+
+def buildDocumentation() {
+  jslNpmWrapper('ci', GITHUB_PUBLISH_TOKEN_CREDENTIALS)
+  if (isVersionBump() || env.BRANCH_NAME==env.PROD_BRANCH) {
+    jslNpmWrapper('run generate-production')
+  } else {
+    jslNpmWrapper('run generate-pr')
+  }
+  stash name: "DIST-CHI-DOCUMENTATION", includes: "dist/**"
+}
+
+def buildChi() {
+  dir ('src/chi-vue') {
+    unstash name: "DIST-CHI-VUE-UMD"
+  }
+  sh "sleep 10s"
+  dir ('src/custom-elements') {
+    unstash name: "DIST-CHI-CE"
+  }
+  sh "sleep 10s"
+  def packageJson = readJSON file: 'package.json'
+  packageJson.version = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+  writeJSON file: 'package.json', json: packageJson
+  ghYarnWrap('install')
+  jslNpmWrapper('run cicd:build:pre:sri')
+  jslNpmWrapper('run sri')
+  jslNpmWrapper('run cicd:build:post:sri')
+  stash name: "DIST-CHI", includes: "dist/**"
+  echo "/dist & /dist/components"
+  sh """
+  ls -la ${pwd()}/dist
+  ls -la ${pwd()}/dist/components
+  """
+  stash name: "NODEMODULES-CHI", includes: "node_modules/**"
+  jslJiraSendBuildInfo()
 }
