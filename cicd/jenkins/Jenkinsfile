@@ -79,7 +79,7 @@ pipeline {
       PROJECT_MAL = "chi"
       DOCKER_REPO = 'chi'
 
-      VUE3_BRANCH = 'master-vue3'
+      VUE3_BRANCH = 'test-pipe-vue3'
       BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
       COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
       PULL_REQUEST="pr-${env.CHANGE_ID}"
@@ -87,11 +87,13 @@ pipeline {
       IMAGE_TAG = "${env.PULL_REQUEST}"
       KUBE_DOCKER_SECRET_NAME = "${env.PROJECT_NAME}-${env.PULL_REQUEST}"
       KUBE_DOCKER_SECRET_NAME_TEST = "${env.PROJECT_NAME}-${env.BRANCH_NAME}"
-      PROD_BRANCH="${(BRANCH_NAME == 'master' || CHANGE_TARGET == 'master' ) ? 'master' : 'master-vue3'}"
 
       // ServiceNow Variables
-      SERVICE_NOW_CREDENTIALS = 'snow-credentials'
-      SERVICE_NOW_HOST = 'mysupportdesk.service-now.com'
+      // SERVICE_NOW_CREDENTIALS = 'snow-credentials'
+      // SERVICE_NOW_HOST = 'mysupportdesk.service-now.com'
+
+      SERVICE_NOW_CREDENTIALS = 'snow-credentials-dev'
+      SERVICE_NOW_HOST = 'mysupportdeskdev.service-now.com'
       DEVOPS_GCR_PREPROD_PAYLOAD = '{"u_implementers": "AC04119,AC59437,AC96088", "u_testers": "AB62977"}'
 
       RC_TAG_PATTERN =  /(.*##RC##.*)/
@@ -624,7 +626,7 @@ pipeline {
                   ghYarnWrap('install')
                   jslNpmWrapper('run build:component')
                   jslNpmWrapper('pack')
-                  jslNpmPublish(false, env.GITHUB_ALTER_CREDENTIALS)
+                  // jslNpmPublish(false, env.GITHUB_ALTER_CREDENTIALS)
                 }
               }
             }
@@ -793,11 +795,11 @@ PRDesc
                     git config user.email "scmauto@lumen.com"
                     git config user.name "SCMAUTO"
                     git commit -m "CHI_\$VERSION"
-                    git push --set-upstream origin CHI_\$VERSION
+                    echo " push --set-upstream origin CHI_\$VERSION"
                   """, label: "Pushing branch to AssetsServer"
                   if ( env.CHECK == "NO" ) {
                     dir ('ux-chi-AssetsServer') {
-                      jslHubWrapper('pull-request -F prepared-message.md')
+                      echo('pull-request -F prepared-message.md')
                     }
                   } else {
                     echo "NO PR CREATED THIS TIME; REQUIRES VERSION BUMP"
@@ -1068,7 +1070,7 @@ def printSummary() {
   if (env.BRANCH_NAME == env.VUE3_BRANCH || env.CHANGE_TARGET == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean()) {
     env.PROD_BRANCH = env.VUE3_BRANCH
   } else {
-    env.PROD_BRANCH = 'master'
+    env.PROD_BRANCH = 'test-pipe'
   }
 
   def chivueProjectJson = readJSON file: 'src/chi-vue/package.json', returnPojo: true;
@@ -1127,20 +1129,29 @@ def gitHubReleaser(def scope = 'chi') {
   def pusblishVersion = "v${versionMajor}.${versionMinor}.${versionPatch}${classifier}"
 
   sh script: """#!/bin/bash
-                  echo "READING CHANGELOG FOR VERSION: ${pusblishVersion}"
-                  echo "${pusblishVersion}" > ${rootPath}shortCHANGELOG.md
-                  echo "" >> ${rootPath}shortCHANGELOG.md
-                  sed -n -e "/${versionMajor}.${versionMinor}.${versionPatch}/,/${versionMajorOld}.${versionMinorOld}.${versionPatchOld}/ p" ${rootPath}CHANGELOG.md | head -n -2 >> ${rootPath}shortCHANGELOG.md
-                """
+    echo "READING CHANGELOG FOR VERSION: ${pusblishVersion}"
+    echo "${pusblishVersion}" > ${rootPath}shortCHANGELOG.md
+    echo "" >> ${rootPath}shortCHANGELOG.md
+    sed -n -e "/${versionMajor}.${versionMinor}.${versionPatch}/,/${versionMajorOld}.${versionMinorOld}.${versionPatchOld}/ p" ${rootPath}CHANGELOG.md | head -n -2 >> ${rootPath}shortCHANGELOG.md
+  """
+  def releaseNotes = readFile "${rootPath}shortCHANGELOG.md"
 
-                if (scope == 'chi-vue') {
-                  env.VERSION_CHI_VUE = ${packageVersion}
-                } else {
-                  env.VERSION = packageVersion
-                }
+  if (scope == 'chi-vue') {
+    env.VERSION_CHI_VUE = ${packageVersion}
+  } else {
+    env.VERSION = packageVersion
+  }
 
-                env.GITHUB_USER='lumen-jenkins-prod'
-                jslHubWrapper("release create -F ${rootPath}shortCHANGELOG.md ${pusblishVersion}")
+  env.GITHUB_USER='lumen-jenkins-prod'
+  def repoOwner=jslGitGetRepoOwner()
+  def repoName=jslGitGetRepoName()
+                // jslHubWrapper("release create -F ${rootPath}shortCHANGELOG.md ${pusblishVersion}")
+  // def releaseId = jslGitHubReleaseCreate(pusblishVersion,env.BRANCH_NAME,env.GITHUB_TOKEN_CREDENTIALS,releaseNotes, false, false,false, repoOwner, repoName, 'true')
+  def releaseId = jslGitHubReleaseCreate(pusblishVersion,env.BRANCH_NAME,env.GITHUB_TOKEN_CREDENTIALS,releaseNotes, true, false,false, repoOwner, repoName)
+
+  if (releaseId == null) {
+    error("There was an error publishing the release")
+  }
 }
 
 
@@ -1149,7 +1160,7 @@ def getNodeAgentBlock(def scope = null) {
 
 	def nodeVersion = '14'
 
-  if ( (env.BRANCH_NAME == 'master-vue3' || env.CHANGE_TARGET == 'master-vue3' || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1 && env.IS_VUE3_TRIGGER.toBoolean()) ) && scope == 'chi-vue' ) {
+  if ( (env.BRANCH_NAME == env.VUE3_BRANCH || env.CHANGE_TARGET == env.VUE3_BRANCH || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1 && env.IS_VUE3_TRIGGER.toBoolean()) ) && scope == 'chi-vue' ) {
     nodeVersion = '20'
   } else if ( scope == 'chi-vue') {
     nodeVersion = '12'
