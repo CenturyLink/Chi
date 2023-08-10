@@ -3,30 +3,57 @@
     <TitleAnchor title="Target all breakpoints" id="breakpoints-base-vertical" />
     p.-text
       | Vertical-align utility classes with no breakpoint defined apply to all screen sizes.
-    table.chi-table.-bordered.-mt--3.-mb--3
-      thead
-        tr
-          th
-            div Class
-          th
-            div Value
-      tbody
-        tr(v-for="value in values")
-          td.-text(width='40%')
-            code -vertical-align--{{ value }}
-          td
-            code vertical-align: {{ value }}
+    <TableComponent :columns="columns" :data="values" :getContent="getContent" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { ITableColumn, ITableContent } from "~/models/models";
+import { defaultColumns } from "~/fixtures/fixtures";
 
 @Component({
   data: () => {
     return {
-      values: ['baseline', 'top', 'middle', 'bottom', 'text-top', 'text-bottom'],
+      columns: defaultColumns,
+      values: [
+        {
+          name: 'baseline',
+          value: 'baseline'
+        },
+        {
+          name: 'top',
+          value: 'top'
+        },
+        {
+          name: 'middle',
+          value: 'middle'
+        },
+        {
+          name: 'bottom',
+          value: 'bottom'
+        },
+        {
+          name: 'text-top',
+          value: 'text-top'
+        },
+        {
+          name: 'text-bottom',
+          value: 'text-bottom'
+        }
+      ]
     };
   },
 })
-export default class Breakpoints extends Vue {}
+export default class Breakpoints extends Vue {
+  getContent(column: ITableColumn, content: ITableContent) {
+    switch (column.key) {
+      case 'class':
+        return `<code>-vertical-align--${content.name}</code>`;
+      case 'value':
+        return `<code>vertical-align: ${content.value}</code>`;
+      default:
+        return '';
+    }
+  };
+}
 </script>
