@@ -1,4 +1,10 @@
-import { ILanguage, ILink, IThemes, IZIndex } from '~/models/models';
+import {
+  ILanguage,
+  ILink,
+  IThemes,
+  IZIndex,
+  IBreakpoints
+} from '~/models/models';
 
 export const FOOTER_LINKS: ILink[] = [
   { href: 'https://www.lumen.com/en-us/about.html', title: 'About Us' },
@@ -510,6 +516,13 @@ export const zIndexValues: IZIndex[] = [
   { key: 'auto', color: '', margin: 0, text: '-' }
 ];
 
+export const breakpoints: IBreakpoints[] = [
+  { name: 'sm', value: 'sm and larger' },
+  { name: 'md', value: 'md and larger' },
+  { name: 'lg', value: 'lg and larger' },
+  { name: 'xl', value: 'xl' }
+];
+
 export const displayDefaultColumns = [
   {
     title: 'Display Class',
@@ -518,6 +531,19 @@ export const displayDefaultColumns = [
   },
   {
     title: 'Value',
+    key: 'value',
+    width: ''
+  }
+];
+
+export const utilitiesTextColumns = [
+  {
+    title: 'Size',
+    key: 'class',
+    width: '20%'
+  },
+  {
+    title: 'Example',
     key: 'value',
     width: ''
   }
