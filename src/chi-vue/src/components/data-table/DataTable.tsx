@@ -58,6 +58,7 @@ import { ColumnResize } from './utils/Resize';
 import Tooltip from '../tooltip/tooltip';
 import { Component, Vue } from '@/build/vue-wrapper';
 import DataTableEmptyActionable from './DataTableEmptyActionable';
+import DataTableActions from '@/views/DataTable/DataTableTemplates/datatable-actions.vue';
 
 declare const chi: any;
 
@@ -122,6 +123,7 @@ export default class DataTable extends Vue {
   } = {};
   _chiDropdownSelectAll: any;
   _dataTableNumber?: number;
+  actions = this.$props.config.actions;
 
   _toggleInfoPopover(infoPopoverId: string) {
     const popover = this._getInfoPopover(infoPopoverId);
@@ -943,6 +945,7 @@ export default class DataTable extends Vue {
     }
 
     let cellIndex = 0;
+    const hasActions = !!this.actions?.length;
 
     bodyRow.data.forEach((rowCell: any) => {
       const columnSettings = this.data.head[Object.keys(this.data.head)[cellIndex]];
@@ -1007,6 +1010,19 @@ export default class DataTable extends Vue {
         cellIndex++;
       }
     });
+
+    if (hasActions) {
+      rowCells.push(
+        <div
+          class={`${DATA_TABLE_CLASSES.CELL}
+          -flex-basis--5
+          -key
+        `}
+          style="overflow: visible">
+          <DataTableActions actions={this.actions} rowData={bodyRow.data} />
+        </div>
+      );
+    }
 
     row.push(
       <div
@@ -1668,6 +1684,10 @@ export default class DataTable extends Vue {
   }
 
   _printHead() {
+    if (this.actions?.length) {
+      this.data.head = { ...this.data.head, newActions: { label: ' ' } };
+    }
+
     return (
       <thead>
         <tr>
