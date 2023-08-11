@@ -76,6 +76,7 @@ export interface ITableColumn {
   title: string;
   key: string;
   width: string;
+  class?: string;
 }
 
 export interface IBreakpoints {

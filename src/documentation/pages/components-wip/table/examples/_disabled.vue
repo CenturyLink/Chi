@@ -2,20 +2,12 @@
   <ComponentExample titleSize="h4" title="Disabled" id="disabled" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Disable a row by applying the attribute <code>disabled</code>.
-    table.chi-table(slot="example")
-      thead
-        tr.-disabled
-          th Name
-          th ID
-          th Last Login
-      tbody
-        tr(v-for="(row, index) in rows" :key="index" :disabled="index === 1")
-          td {{ row.cell1 }}
-          td {{ row.cell2 }}
-          td {{ row.cell3 }}
+    <Wrapper slot="example">
+      <TableComponent :data="rows" :columns="columns" :getContent="getContent" additionalClasses="" />
+    </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre> 
+    </pre>
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -24,13 +16,14 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { ITableColumn } from "~/models/models";
 
 @Component({
   data: () => {
     return {
       rows: [
         { cell1: 'Name 1', cell2: 'name-1', cell3: 'Dec 18, 2020 3:26 PM' },
-        { cell1: 'Name 2', cell2: 'name-2', cell3: 'Dec 18, 2020 2:38 AM' },
+        { cell1: 'Name 2', cell2: 'name-2', cell3: 'Dec 18, 2020 2:38 AM', disabled: true },
         { cell1: 'Name 3', cell2: 'name-3', cell3: 'Nov 5, 2020 10:15 AM' }
       ],
       exampleTabs: [
@@ -73,9 +66,30 @@ import { Component, Vue } from 'vue-property-decorator';
         </tr>
     </tbody>
 </table>`
-      }
+      },
+      columns: [
+        {
+          title: 'Name',
+          key: 'cell1',
+          width: ''
+        },
+        {
+          title: 'ID',
+          key: 'cell2',
+          width: ''
+        },
+        {
+          title: 'Last Login',
+          key: 'cell3',
+          width: ''
+        }
+      ]
     };
   }
 })
-export default class Disabled extends Vue {}
+export default class Disabled extends Vue {
+  getContent(column: ITableColumn, content: any) {
+    return content[column.key];
+  }
+}
 </script>

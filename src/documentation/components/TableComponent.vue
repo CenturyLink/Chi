@@ -1,14 +1,14 @@
 <template>
-  <section :class="['chi-table -bordered', additionalClasses]">
+  <section :class="['chi-table', additionalClasses]">
     <table class="-text">
       <thead>
       <tr>
-        <th v-for="column in tableColumns">{{ column.title }}</th>
+        <th v-for="column in tableColumns" :class="column.class" v-html="column.title" />
       </tr>
       </thead>
       <tbody>
-      <tr v-for="content in data">
-        <td v-for="column in tableColumns" :style="`width: ${column.width}`">
+      <tr v-for="content in data" :disabled="content.disabled" :class="content.class">
+        <td v-for="column in tableColumns" :style="`width: ${column.width}`" :class="content[column.key]?.class">
           <span v-html="generateContent(column, content)" />
         </td>
       </tr>
@@ -26,7 +26,7 @@ export default class TableComponent extends Vue {
   @Prop() columns?: ITableColumn[];
   @Prop({ default: [] }) data!: any[];
   @Prop({ default: () => {} }) getContent!: Function;
-  @Prop({ default: '-mt--3 -mb--3' }) additionalClasses?: string;
+  @Prop({ default: '-mt--3 -mb--3 -bordered' }) additionalClasses?: string;
   @Prop() title?: string;
 
   get basicColumns() {

@@ -2,20 +2,12 @@
   <ComponentExample titleSize="h4" title="Size -md" id="size-md" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Render a <strong>-md</strong> size by applying the modifier class <code>-md</code>. <strong>-md</strong> is the default size.
-    table.chi-table.-md(slot="example")
-      thead
-        tr
-          th Name
-          th ID
-          th Last Login
-      tbody
-        tr(v-for="(row, index) in rows" :key="index")
-          td {{ row.cell1 }}
-          td {{ row.cell2 }}
-          td {{ row.cell3 }}
+    <Wrapper slot="example">
+      <TableComponent :data="rows" :columns="columns" :getContent="getContent" additionalClasses="-md" />
+    </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre> 
+    </pre>
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -24,6 +16,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import {ITableColumn} from "~/models/models";
 
 @Component({
   data: () => {
@@ -73,9 +66,30 @@ import { Component, Vue } from 'vue-property-decorator';
         </tr>
     </tbody>
 </table>`
-      }
+      },
+      columns: [
+        {
+          title: 'Name',
+          key: 'cell1',
+          width: ''
+        },
+        {
+          title: 'ID',
+          key: 'cell2',
+          width: ''
+        },
+        {
+          title: 'Last Login',
+          key: 'cell3',
+          width: ''
+        }
+      ]
     };
   }
 })
-export default class SizeMd extends Vue {}
+export default class SizeMd extends Vue {
+  getContent(column: ITableColumn, content: any) {
+    return content[column.key];
+  }
+}
 </script>

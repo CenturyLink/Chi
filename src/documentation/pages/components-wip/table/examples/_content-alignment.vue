@@ -1,22 +1,14 @@
 <template lang="pug">
   <ComponentExample title="Content Alignment" id="content-alignment" :tabs="exampleTabs">
     p.-text(slot="example-description")
-      | Chi also supports additional content alignment with inline text align utilities applying the modifier class 
+      | Chi also supports additional content alignment with inline text align utilities applying the modifier class
       | <code>-text--left</code>, <code>-text--center</code> or <code>-text--right</code>.
-    table.chi-table(slot="example")
-      thead
-        tr
-          th.-text--left Name
-          th.-text--center ID
-          th.-text--right Last Login
-      tbody
-        tr.-md(v-for="(row, index) in rows" :key="index")
-          td.-text--left {{ row.cell1 }}
-          td.-text--center {{ row.cell2 }}
-          td.-text--right {{ row.cell3 }}
+    <Wrapper slot="example">
+      <TableComponent :data="rows" :columns="columns" :getContent="getContent" additionalClasses="" />
+    </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre> 
+    </pre>
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -25,14 +17,27 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { ITableColumn } from "~/models/models";
 
 @Component({
   data: () => {
     return {
       rows: [
-        { cell1: 'Name 1', cell2: 'name-1', cell3: 'Dec 18, 2020 3:26 PM' },
-        { cell1: 'Name 2', cell2: 'name-2', cell3: 'Dec 18, 2020 2:38 AM' },
-        { cell1: 'Name 3', cell2: 'name-3', cell3: 'Nov 5, 2020 10:15 AM' }
+        {
+          cell1: { name: 'Name 1', class: '-text--left' },
+          cell2: { name: 'name-1', class: '-text--center' },
+          cell3: { name: 'Dec 18, 2020 3:26 PM', class: '-text--right' }
+        },
+        {
+          cell1: { name: 'Name 2', class: '-text--left' },
+          cell2: { name: 'name-2', class: '-text--center' },
+          cell3: { name: 'Dec 18, 2020 2:38 AM', class: '-text--right' }
+        },
+        {
+          cell1: { name: 'Name 3', class: '-text--left' },
+          cell2: { name: 'name-3', class: '-text--center' },
+          cell3: { name: 'Nov 5, 2020 10:15 AM', class: '-text--right' }
+        },
       ],
       exampleTabs: [
         {
@@ -74,9 +79,33 @@ import { Component, Vue } from 'vue-property-decorator';
         </tr>
     </tbody>
 </table>`
-      }
+      },
+      columns: [
+        {
+          title: 'Name',
+          key: 'cell1',
+          width: '',
+          class: '-text--left'
+        },
+        {
+          title: 'ID',
+          key: 'cell2',
+          width: '',
+          class: '-text--center'
+        },
+        {
+          title: 'Last Login',
+          key: 'cell3',
+          width: '',
+          class: '-text--right'
+        }
+      ]
     };
   }
 })
-export default class ContentAlignment extends Vue {}
+export default class ContentAlignment extends Vue {
+  getContent(column: ITableColumn, content: any) {
+    return content[column.key].name;
+  }
+}
 </script>

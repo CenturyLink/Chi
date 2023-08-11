@@ -1,20 +1,11 @@
 <template lang="pug">
   <ComponentExample titleSize="h4" title="Descending" id="descending" :tabs="exampleTabs">
-    table.chi-table(slot="example")
-      thead
-        tr
-          th.-sorted.-descending
-            div Name
-          th ID
-          th Last Login
-      tbody
-        tr(v-for="(row, index) in rows" :key="index")
-          td {{ row.cell1 }}
-          td {{ row.cell2 }}
-          td {{ row.cell3 }}
+    <Wrapper slot="example">
+      <TableComponent :data="rows" :columns="columns" :getContent="getContent" additionalClasses="" />
+    </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre> 
+    </pre>
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -23,6 +14,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { ITableColumn } from "~/models/models";
 
 @Component({
   data: () => {
@@ -74,9 +66,31 @@ import { Component, Vue } from 'vue-property-decorator';
         </tr>
     </tbody>
 </table>`
-      }
+      },
+      columns: [
+        {
+          title: `<div>Name</div>`,
+          key: 'cell1',
+          width: '',
+          class: '-sorted -descending'
+        },
+        {
+          title: 'ID',
+          key: 'cell2',
+          width: ''
+        },
+        {
+          title: 'Last Login',
+          key: 'cell3',
+          width: ''
+        }
+      ]
     };
   }
 })
-export default class Descending extends Vue {}
+export default class Descending extends Vue {
+  getContent(column: ITableColumn, content: any) {
+    return content[column.key];
+  }
+}
 </script>
