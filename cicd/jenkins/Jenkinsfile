@@ -434,11 +434,9 @@ pipeline {
           }
           stage ('Cypress local Testing') {
             agent {
-              dockerfile {
-                filename getNodeAgentBlock()
-                dir 'cicd/docker/agent_images'
+              docker {
+                image getNodeAgentBlock(null, 'image')
                 label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
               }
             }
             steps {
@@ -477,7 +475,7 @@ pipeline {
                   }
                 }
                 sh script: """
-                  ./node_modules/.bin/cypress run
+                  ./node_modules/.bin/cypress run --browser chrome --headless
                 """, label: "Running NPX before adding JSL file, TEST."
                 jslNpxWrapper('gulp serve:stop')
               }
@@ -980,6 +978,7 @@ def isVersionBump(def type = 'chi') {
   def isVersionBumpResult = false
 
   checkScopes.each { scope ->
+    scope = scope.replace('-', '_')
     if (isVersionBumpResult == true) {
       return
     }
@@ -997,7 +996,7 @@ def isVersionBump(def type = 'chi') {
     echo "Publish condition: currentResult is _${currentBuild.currentResult.toLowerCase()}_"
     echo "Publish condition: versionBump is _${versionBump.trim()}_"
     
-    isVersionBumpResult = isVersionBumpResult && versionBump.trim() == "yes"
+    isVersionBumpResult = versionBump.trim() == "yes"
     isVersionBumpResult = isVersionBumpResult && currentBuild.currentResult.toLowerCase() == "success"
     isVersionBumpResult = isVersionBumpResult && ( ['origin/master', 'origin/main', 'master', 'main', PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase()) || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1))
 
@@ -1063,7 +1062,7 @@ def printSummary() {
   def causeUpstream = false
   def isDevOpsGCR = false
   if (startedFromUpstream) {
-    causeUpstream = buildCuauses.any { cause -> cause.upstreamProject =~ /${baseJobName}/ }
+    causeUpstream = buildCauses.any { cause -> cause.upstreamProject =~ /${baseJobName}/ }
     isDevOpsGCR = buildCauses.any { cause -> cause.upstreamProject =~ /.*##(RC|PROMOTE|DEPLOYMENT)##.*/ }
   }
   env.IS_VUE3_TRIGGER = (startedFromUpstream && (causeUpstream || isDevOpsGCR) && params.isVue3) ? true : false
@@ -1108,6 +1107,7 @@ def gitHubReleaser(def scope = 'chi') {
     rootPath = 'src/chi-vue/'
 
   }
+  def latestRelease = 'true'
   def packageJsonPath = "${rootPath}package.json"
   def packageFile = readJSON file: packageJsonPath
   def packageVersion = packageFile['version']
@@ -1116,14 +1116,14 @@ def gitHubReleaser(def scope = 'chi') {
   def versionMinor = plainVersion.tokenize('.')[1] ? plainVersion.tokenize('.')[1] : '0'
   def versionPatch = plainVersion.tokenize('.')[2] ? plainVersion.tokenize('.')[2] : '0'
 
-  def versionMajorOld = versionMajor.toInteger() == 0 ? '0' : (versionMajor.toInteger() - 1).toString()
-  def versionMinorOld = versionMinor.toInteger() == 0 ? '0' : (versionMinor.toInteger() - 1).toString()
+  def versionMajorOld = versionMajor.toInteger() == 0 ? '0' : versionMinor.toInteger() == 0 ? (versionMajor.toInteger() - 1).toString() : versionMajor
+  def versionMinorOld = versionMinor.toInteger() == 0 ? '0' : versionPatch.toInteger() == 0 ? (versionMinor.toInteger() - 1).toString() : versionMinor
   def versionPatchOld = versionPatch.toInteger() == 0 ? '0' : (versionPatch.toInteger() - 1).toString()
   
   def classifier = scope == 'chi-vue' ? "-${scope}" : ''
 
   if (env.BRANCH_NAME == env.VUE3_BRANCH) {
-    classifier = "${classifier}-vue3"
+    classifier = classifier == '' ? '-vue3' : classifier.replace('-vue', '-vue3')
   }
 
   def pusblishVersion = "v${versionMajor}.${versionMinor}.${versionPatch}${classifier}"
@@ -1138,6 +1138,7 @@ def gitHubReleaser(def scope = 'chi') {
 
   if (scope == 'chi-vue') {
     env.VERSION_CHI_VUE = ${packageVersion}
+    latestRelease = 'false'
   } else {
     env.VERSION = packageVersion
   }
@@ -1146,8 +1147,8 @@ def gitHubReleaser(def scope = 'chi') {
   def repoOwner=jslGitGetRepoOwner()
   def repoName=jslGitGetRepoName()
                 // jslHubWrapper("release create -F ${rootPath}shortCHANGELOG.md ${pusblishVersion}")
-  // def releaseId = jslGitHubReleaseCreate(pusblishVersion,env.BRANCH_NAME,env.GITHUB_TOKEN_CREDENTIALS,releaseNotes, false, false,false, repoOwner, repoName, 'true')
-  def releaseId = jslGitHubReleaseCreate(pusblishVersion,env.BRANCH_NAME,env.GITHUB_TOKEN_CREDENTIALS,releaseNotes, true, false,false, repoOwner, repoName)
+  // def releaseId = jslGitHubReleaseCreate(pusblishVersion,env.GIT_COMMIT,env.GITHUB_TOKEN_CREDENTIALS,releaseNotes, false, false,false, repoOwner, repoName, latestRelease)
+  def releaseId = jslGitHubReleaseCreate(pusblishVersion,env.GIT_COMMIT,env.GITHUB_TOKEN_CREDENTIALS,releaseNotes, true, false,false, repoOwner, repoName, latestRelease)
 
   if (releaseId == null) {
     error("There was an error publishing the release")
@@ -1156,7 +1157,7 @@ def gitHubReleaser(def scope = 'chi') {
 
 
 
-def getNodeAgentBlock(def scope = null) {
+def getNodeAgentBlock(def scope = null, def type = null) {
 
 	def nodeVersion = '14'
 
@@ -1167,6 +1168,9 @@ def getNodeAgentBlock(def scope = null) {
   }
 
   def fileName = "Dockerfile_node${nodeVersion}"
+  if (type == 'image') {
+    fileName = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/node${nodeVersion}_agent:latest"
+  }
 	
 	return fileName
 
@@ -1183,8 +1187,8 @@ def ghYarnWrap(def args, def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS) {
 def promoteDeployTagGCR() {
   def tagAttributes = jslGCRGetTagAttributes()
   echo "Processing ${tagAttributes['tagType']} tag for DevOps ${tagAttributes['gcrNumber']}"
-  jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
-  def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
+  jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
+  def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
   def currentJob = env.JOB_NAME.toString()
   def currentBaseName = env.JOB_BASE_NAME.toString()
   def pathJob = currentJob - currentBaseName
