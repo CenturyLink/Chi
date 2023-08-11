@@ -1,8 +1,0 @@
-{
-  "baseUrl": "http://localhost:8000/",
-  "reporter": "junit",
-  "reporterOptions": {
-    "mochaFile": "cypress/reports/cypress-pr.[hash].xml"
-  },
-  "video": false
-}
