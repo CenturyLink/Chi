@@ -61,15 +61,31 @@ export interface IBorderUtility {
 }
 
 export interface IZIndex {
-  key: string,
-  color: string,
-  margin: number,
-  text: string,
+  key: string;
+  color: string;
+  margin: number;
+  text: string;
 }
 
 export interface INotation {
-  class: string,
-  value: string,
+  class: string;
+  value: string;
+}
+
+export interface ITableColumn {
+  title: string;
+  key: string;
+  width: string;
+}
+
+export interface IBreakpoints {
+  name: string;
+  value: string;
+}
+
+export interface ITableContent {
+  name: string;
+  value: string | string[];
 }
 
 interface Palette {
