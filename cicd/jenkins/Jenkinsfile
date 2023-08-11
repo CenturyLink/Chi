@@ -434,11 +434,9 @@ pipeline {
           }
           stage ('Cypress local Testing') {
             agent {
-              dockerfile {
-                filename getNodeAgentBlock()
-                dir 'cicd/docker/agent_images'
+              docker {
+                image getNodeAgentBlock(null, 'image')
                 label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
               }
             }
             steps {
@@ -477,7 +475,7 @@ pipeline {
                   }
                 }
                 sh script: """
-                  ./node_modules/.bin/cypress run
+                  ./node_modules/.bin/cypress run --browser chrome --headless
                 """, label: "Running NPX before adding JSL file, TEST."
                 jslNpxWrapper('gulp serve:stop')
               }
@@ -1156,7 +1154,7 @@ def gitHubReleaser(def scope = 'chi') {
 
 
 
-def getNodeAgentBlock(def scope = null) {
+def getNodeAgentBlock(def scope = null, def type = null) {
 
 	def nodeVersion = '14'
 
@@ -1167,6 +1165,9 @@ def getNodeAgentBlock(def scope = null) {
   }
 
   def fileName = "Dockerfile_node${nodeVersion}"
+  if (type == 'image') {
+    fileName = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/node${nodeVersion}_agent:latest"
+  }
 	
 	return fileName
 
