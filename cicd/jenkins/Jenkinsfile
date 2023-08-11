@@ -241,6 +241,7 @@ pipeline {
         steps {
           script {
             packageVersionCheck()
+            echo "${env.VERSION_BUMP_SCOPE}"
           }
         }
       }
@@ -434,11 +435,9 @@ pipeline {
           }
           stage ('Cypress local Testing') {
             agent {
-              dockerfile {
-                filename getNodeAgentBlock()
-                dir 'cicd/docker/agent_images'
+              docker {
+                image getNodeAgentBlock(null, 'image')
                 label 'Docker-enabled'
-                args '-m 2G --shm-size=2gb'
               }
             }
             steps {
@@ -477,7 +476,7 @@ pipeline {
                   }
                 }
                 sh script: """
-                  ./node_modules/.bin/cypress run
+                  ./node_modules/.bin/cypress run --browser chrome --headless
                 """, label: "Running NPX before adding JSL file, TEST."
                 jslNpxWrapper('gulp serve:stop')
               }
@@ -580,8 +579,9 @@ pipeline {
             }
             steps {
               script {
+                echo "${env.VERSION_BUMP_SCOPE}"
                 def bumpScope = ['chi']
-                if (env.VERSION_BUMP_SCOPE == 'chi-vue') {
+                if (env.VERSION_BUMP_SCOPE == 'chi_vue') {
                   bumpScope = ['chi-vue']
                 } else if (env.VERSION_BUMP_SCOPE == 'all') {
                   bumpScope = ['chi', 'chi-vue']
@@ -600,7 +600,6 @@ pipeline {
           allOf {
             anyOf {
               tag pattern: DEPLOY_TAG_PATTERN, comparator: "REGEXP"
-              branch VUE3_BRANCH
             }
             expression {
               return isVersionBump('chi-vue')
@@ -621,7 +620,8 @@ pipeline {
               script {
                 dir('src/chi-vue') {
                   def packageJson = readJSON file: 'package.json'
-                  packageJson.version = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+                  def newVersion = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+                  packageJson.version = newVersion.toString()
                   writeJSON file: 'package.json', json: packageJson
                   ghYarnWrap('install')
                   jslNpmWrapper('run build:component')
@@ -644,7 +644,8 @@ pipeline {
               script {
                 dir('src/chi-vue') {
                   def packageJson = readJSON file: 'package.json'
-                  packageJson.version = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+                  def newVersion = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+                  packageJson.version = newVersion.toString()
                   writeJSON file: 'package.json', json: packageJson
                   chiVueNexusPublish()
                 }
@@ -751,6 +752,11 @@ PolicyDocument
                   sh "rm -rf dist node_modules"
                   unstash name: "DIST-CHI-DOCUMENTATION"
                   unstash name: "DIST-CHI"
+                  def packageJson = readJSON file: 'package.json'
+                  def packageVersion = packageJson.version
+                  def newVersion = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+                  packageJson.version = newVersion.toString()
+                  writeJSON file: 'package.json', json: packageJson
                   sh script:"""
                     sed -i 's#/getting-started#getting-started#g' dist/index.html
 
@@ -764,8 +770,7 @@ PolicyDocument
                   jslGitHubCloneRepo('ux-chi-AssetsServer')
                   env.CHECK = sh (
                     script: """#!/bin/bash
-                      VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
-                      if [[ -d ux-chi-AssetsServer/chi/\$VERSION ]]
+                      if [[ -d ux-chi-AssetsServer/chi/${packageJson.version} ]]
                       then
                           check="EXISTS"
                       else
@@ -775,27 +780,23 @@ PolicyDocument
                     """,
                     returnStdout: true
                   ).trim()
-
-
                   sh script:"""
                     ls -lah
-                    VERSION=\$(cat package.json | grep '"version":' | cut -f4 -d '"')
-                    echo \${VERSION}
                     cat << PRDesc > ux-chi-AssetsServer/prepared-message.md
-This PR is for CHI \${VERSION}
+This PR is for CHI ${packageJson.version}
 You can check staging in https://assets-dev.ctl.io/chi/staging
 PRDesc
                     mkdir -p ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
                     cp -R ${WORKSPACE}/dist/* ${WORKSPACE}/ux-chi-AssetsServer/chi/latest/
-                    mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/\$VERSION
+                    mv ${WORKSPACE}/dist ${WORKSPACE}/ux-chi-AssetsServer/chi/${packageJson.version}
                     cd ${WORKSPACE}/ux-chi-AssetsServer
-                    git checkout -b "CHI_\$VERSION"
-                    git add ${WORKSPACE}/ux-chi-AssetsServer/chi/\$VERSION
+                    git checkout -b "CHI_${packageJson.version}"
+                    git add ${WORKSPACE}/ux-chi-AssetsServer/chi/${packageJson.version}
                     git add ${WORKSPACE}/ux-chi-AssetsServer/chi/latest
                     git config user.email "scmauto@lumen.com"
                     git config user.name "SCMAUTO"
-                    git commit -m "CHI_\$VERSION"
-                    echo " push --set-upstream origin CHI_\$VERSION"
+                    git commit -m "CHI_${packageJson.version}"
+                    echo " push --set-upstream origin CHI_${packageJson.version}"
                   """, label: "Pushing branch to AssetsServer"
                   if ( env.CHECK == "NO" ) {
                     dir ('ux-chi-AssetsServer') {
@@ -841,30 +842,17 @@ PRDesc
         steps {
           script {
             sh "rm -rf cypress/reports/smokeTests && mkdir -p cypress/reports/smokeTests"
-            if (env.VERSION != null) {
-              echo "Starting SMOKE TESTS with the published release ${env.VERSION}"
-
-              def latestRelease = ""
-              withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: env.GITHUB_TOKEN_CREDENTIALS,
-                                usernameVariable: 'USERNAME', passwordVariable: 'ACCESS_TOKEN']]) {
-                try {
-                  latestRelease = sh script: """
-                   curl -s -H "Authorization: token \${ACCESS_TOKEN}" "https://api.github.com/repos/${env.GITHUB_ORGANIZATION}/chi/releases/latest" | grep '"name":' | cut -d: -f 2,3 | tr -d '"' | tr -d ','
-                   """, label: 'Getting Latest Release Version', returnStdout: true
-                   latestRelease = latestRelease.trim()
-                } catch (Exception e) {
-                  echo "Error checking chi releases: ${e.getMessage()}"
-                }
-              }
-
-              jslGenerateManualTestReport("Version Release", "Check Version", "v${env.VERSION}", (latestRelease == "v${env.VERSION}").toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
-              env.SMOKE_TEST_FAILURE = (latestRelease != "v${env.VERSION}")
-              echo "Smoke Test Failure? ${env.SMOKE_TEST_FAILURE}"
+            def bumpScope = ['chi']
+            if (env.VERSION_BUMP_SCOPE == 'chi_vue') {
+              bumpScope = ['chi-vue']
+            } else if (env.VERSION_BUMP_SCOPE == 'all') {
+              bumpScope = ['chi', 'chi-vue']
             } else {
-              echo "Smoke Test hook without release"
-              jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
+              bumpScope = ['none']
             }
-
+            bumpScope.each { scope ->
+              smokeTestChecker(scope) 
+            }
             stash name: 'smokeTests', includes:"cypress/reports/smokeTests/**"
             jslPublishTestResults('cypress/reports/smokeTests/**')
           }
@@ -925,9 +913,12 @@ PRDesc
                   touch reports/ci_report/xunitfinal.xml
                 """
               }
-              if (isVersionBump()) {
+              def vueTrigger = false
+              if (isVersionBump(env.VERSION_BUMP_SCOPE)) {
                 //Set variable to trigger DevOps GCR Creation
                 env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
+                vueTrigger = ( env.IS_VUE3_TRIGGER.toBoolean() || env.BRANCH_NAME == env.VUE3_BRANCH )
+                println("Vue Trigger: ${vueTrigger} ; ${env.DEVOPS_GCR_PREPROD_BRANCH}")
               }
               jslAdoptionMain('reports/ci_report/xunitfinal.xml',  env.SCAN_BRANCH, env.COMMIT_ID, env.JOB_NAME, env.GITHUB_TOKEN_CREDENTIALS, "yyyy-MM-dd'T'HH:mm:ss'Z'" , [booleanParam(name:'isVue3',value: env.IS_VUE3_TRIGGER.toBoolean())])
             }
@@ -980,6 +971,7 @@ def isVersionBump(def type = 'chi') {
   def isVersionBumpResult = false
 
   checkScopes.each { scope ->
+    scope = scope.replace('-', '_')
     if (isVersionBumpResult == true) {
       return
     }
@@ -997,34 +989,36 @@ def isVersionBump(def type = 'chi') {
     echo "Publish condition: currentResult is _${currentBuild.currentResult.toLowerCase()}_"
     echo "Publish condition: versionBump is _${versionBump.trim()}_"
     
-    isVersionBumpResult = isVersionBumpResult && versionBump.trim() == "yes"
+    isVersionBumpResult = versionBump.trim() == "yes"
     isVersionBumpResult = isVersionBumpResult && currentBuild.currentResult.toLowerCase() == "success"
     isVersionBumpResult = isVersionBumpResult && ( ['origin/master', 'origin/main', 'master', 'main', PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase()) || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1))
-
+    echo "${scope} - ${env.VERSION_BUMP_SCOPE}"
     if (!isVersionBumpResult) {
       return
-    } else if (scope == 'chi-vue') {
+    } else if (scope == 'chi_vue') {
       if (env.VERSION_BUMP_SCOPE == 'all' || env.VERSION_BUMP_SCOPE == 'chi') {
         env.VERSION_BUMP_SCOPE = 'all'
       } else {
-        env.VERSION_BUMP_SCOPE = 'chi-vue'
+        env.VERSION_BUMP_SCOPE = 'chi_vue'
       }
+      echo "${scope} - ${env.VERSION_BUMP_SCOPE}"
     } else if (scope == 'chi') {
-      if (env.VERSION_BUMP_SCOPE == 'all' || env.VERSION_BUMP_SCOPE == 'chi-vue') {
+      echo "${scope} - ${env.VERSION_BUMP_SCOPE}"
+      if (env.VERSION_BUMP_SCOPE == 'all' || env.VERSION_BUMP_SCOPE == 'chi_vue') {
         env.VERSION_BUMP_SCOPE = 'all'
       } else {
         env.VERSION_BUMP_SCOPE = 'chi'
       }
     }
   }
+  echo "${env.VERSION_BUMP_SCOPE}"
   return isVersionBumpResult
 }
 
 
 
 def chiVueNexusPublish() {
-    ghYarnWrap('install')
-    jslNpmWrapper('run build:component')
+
     // skipping errors temporarily to allow existing publishing on GitHub
     def nodeMajorVersion = sh (script: "node --version | cut -d '.' -f 1 | cut -d 'v' -f 2", returnStdout: true).trim()
 
@@ -1033,25 +1027,37 @@ def chiVueNexusPublish() {
     try {
       configFileProvider([configFile(fileId: nexusNpmRc, targetLocation: '.npmrc', variable: 'NEXUS_NPMRC'),
                           configFile(fileId: 'INTERNAL_CERT_CHAIN', targetLocation: 'internal-ca.pem', variable: 'INTERNAL_CERT_CHAIN')]) {
-        sh "sed -i -e 's/\"name\": \"@centurylink/\"name\": \"@chi/g' package.json"
-        def commitJson = readJSON file: "package.json"
-        def versionExists = ''
-        try {
-            versionExists = jslNpmWrapper("info ${commitJson.name}@${commitJson.version} version")
-        } catch (Exception e) {
-            echo "package not found, first time publish? Error message: ${e.getMessage()}"
+        withEnv(['NODE_EXTRA_CA_CERTS=internal-ca.pem']) {
+          def commitJson = readJSON file: "package.json"
+          commitJson.name = commitJson.name.replace("@centurylink", "@chi")
+          writeJSON(json: commitJson, file: "package.json")
+          sh '''
+            cat package.json
+          '''
+          def versionExists = ''
+          ghYarnWrap('install')
+          jslNpmWrapper('run build:component')
+          try {
+              versionExists = jslNpmWrapper("info ${commitJson.name}@${commitJson.version} version", true)
+          } catch (Exception e) {
+              echo "package not found, first time publish? Error message: ${e.getMessage()}"
+          }
+          echo "package.json version '${commitJson.version}', version found on repo '${versionExists}'"
+          if ((versionExists ? versionExists.trim() : '') != commitJson.version) {
+              jslNpmWrapper("pack")
+              jslNpmWrapper("publish --verbose --access restricted")
+          } else {
+              echo "version ${commitJson.version} is already published, skipping"
+          }
+          commitJson.name = commitJson.name.replace("@chi", "@centiurylink")
+          writeJSON(json: commitJson, file: "package.json")
+          sh '''
+            cat package.json
+          '''
         }
-        echo "package.json version '${commitJson.version}', version found on repo '${versionExists}'"
-        if (versionExists.trim() != commitJson.version) {
-            jslNpmWrapper("pack")
-            jslNpmWrapper("publish --verbose --access restricted")
-        } else {
-            echo "version ${commitJson.version} is already published, skipping"
-        }
-        sh "sed -i -e 's/\"name\": \"@chi/\"name\": \"@centurylink/g' package.json"
       }
     } catch (Exception e) {
-      echo "An error ocurred while publishing chi-vue to Nexus: ${e.getMessage()}"
+      unstable "An error ocurred while publishing chi-vue to Nexus: ${e.getMessage()}"
     }
 }
 
@@ -1063,7 +1069,7 @@ def printSummary() {
   def causeUpstream = false
   def isDevOpsGCR = false
   if (startedFromUpstream) {
-    causeUpstream = buildCuauses.any { cause -> cause.upstreamProject =~ /${baseJobName}/ }
+    causeUpstream = buildCauses.any { cause -> cause.upstreamProject =~ /${baseJobName}/ }
     isDevOpsGCR = buildCauses.any { cause -> cause.upstreamProject =~ /.*##(RC|PROMOTE|DEPLOYMENT)##.*/ }
   }
   env.IS_VUE3_TRIGGER = (startedFromUpstream && (causeUpstream || isDevOpsGCR) && params.isVue3) ? true : false
@@ -1108,6 +1114,7 @@ def gitHubReleaser(def scope = 'chi') {
     rootPath = 'src/chi-vue/'
 
   }
+  def latestRelease = 'true'
   def packageJsonPath = "${rootPath}package.json"
   def packageFile = readJSON file: packageJsonPath
   def packageVersion = packageFile['version']
@@ -1116,38 +1123,39 @@ def gitHubReleaser(def scope = 'chi') {
   def versionMinor = plainVersion.tokenize('.')[1] ? plainVersion.tokenize('.')[1] : '0'
   def versionPatch = plainVersion.tokenize('.')[2] ? plainVersion.tokenize('.')[2] : '0'
 
-  def versionMajorOld = versionMajor.toInteger() == 0 ? '0' : (versionMajor.toInteger() - 1).toString()
-  def versionMinorOld = versionMinor.toInteger() == 0 ? '0' : (versionMinor.toInteger() - 1).toString()
+  def versionMajorOld = versionMajor.toInteger() == 0 ? '0' : versionMinor.toInteger() == 0 ? (versionMajor.toInteger() - 1).toString() : versionMajor
+  def versionMinorOld = versionMinor.toInteger() == 0 ? '0' : versionPatch.toInteger() == 0 ? (versionMinor.toInteger() - 1).toString() : versionMinor
   def versionPatchOld = versionPatch.toInteger() == 0 ? '0' : (versionPatch.toInteger() - 1).toString()
   
   def classifier = scope == 'chi-vue' ? "-${scope}" : ''
 
   if (env.BRANCH_NAME == env.VUE3_BRANCH) {
-    classifier = "${classifier}-vue3"
+    classifier = classifier == '' ? '-vue3' : classifier.replace('-vue', '-vue3')
   }
 
-  def pusblishVersion = "v${versionMajor}.${versionMinor}.${versionPatch}${classifier}"
+  def publishVersion = "v${versionMajor}.${versionMinor}.${versionPatch}${classifier}"
 
   sh script: """#!/bin/bash
-    echo "READING CHANGELOG FOR VERSION: ${pusblishVersion}"
-    echo "${pusblishVersion}" > ${rootPath}shortCHANGELOG.md
+    echo "READING CHANGELOG FOR VERSION: ${publishVersion}"
+    echo "${publishVersion}" > ${rootPath}shortCHANGELOG.md
     echo "" >> ${rootPath}shortCHANGELOG.md
     sed -n -e "/${versionMajor}.${versionMinor}.${versionPatch}/,/${versionMajorOld}.${versionMinorOld}.${versionPatchOld}/ p" ${rootPath}CHANGELOG.md | head -n -2 >> ${rootPath}shortCHANGELOG.md
   """
   def releaseNotes = readFile "${rootPath}shortCHANGELOG.md"
 
   if (scope == 'chi-vue') {
-    env.VERSION_CHI_VUE = ${packageVersion}
+    env.VERSION_CHI_VUE = publishVersion
+    latestRelease = 'false'
   } else {
-    env.VERSION = packageVersion
+    env.VERSION = publishVersion
   }
 
   env.GITHUB_USER='lumen-jenkins-prod'
   def repoOwner=jslGitGetRepoOwner()
   def repoName=jslGitGetRepoName()
-                // jslHubWrapper("release create -F ${rootPath}shortCHANGELOG.md ${pusblishVersion}")
-  // def releaseId = jslGitHubReleaseCreate(pusblishVersion,env.BRANCH_NAME,env.GITHUB_TOKEN_CREDENTIALS,releaseNotes, false, false,false, repoOwner, repoName, 'true')
-  def releaseId = jslGitHubReleaseCreate(pusblishVersion,env.BRANCH_NAME,env.GITHUB_TOKEN_CREDENTIALS,releaseNotes, true, false,false, repoOwner, repoName)
+                // jslHubWrapper("release create -F ${rootPath}shortCHANGELOG.md ${publishVersion}")
+  // def releaseId = jslGitHubReleaseCreate(publishVersion,env.GIT_COMMIT,env.GITHUB_TOKEN_CREDENTIALS,releaseNotes, false, false,false, repoOwner, repoName, latestRelease)
+  def releaseId = jslGitHubReleaseCreate(publishVersion,env.GIT_COMMIT,env.GITHUB_TOKEN_CREDENTIALS,releaseNotes, true, false,false, repoOwner, repoName, latestRelease)
 
   if (releaseId == null) {
     error("There was an error publishing the release")
@@ -1156,17 +1164,21 @@ def gitHubReleaser(def scope = 'chi') {
 
 
 
-def getNodeAgentBlock(def scope = null) {
+def getNodeAgentBlock(def scope = null, def type = null) {
 
 	def nodeVersion = '14'
 
   if ( (env.BRANCH_NAME == env.VUE3_BRANCH || env.CHANGE_TARGET == env.VUE3_BRANCH || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1 && env.IS_VUE3_TRIGGER.toBoolean()) ) && scope == 'chi-vue' ) {
-    nodeVersion = '20'
+    // nodeVersion = '20'
+    nodeVersion = '12'
   } else if ( scope == 'chi-vue') {
     nodeVersion = '12'
   }
 
   def fileName = "Dockerfile_node${nodeVersion}"
+  if (type == 'image') {
+    fileName = "nexusprod.corp.intranet:4567/jsl-docker-standard-images/node${nodeVersion}_agent:latest"
+  }
 	
 	return fileName
 
@@ -1183,8 +1195,8 @@ def ghYarnWrap(def args, def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS) {
 def promoteDeployTagGCR() {
   def tagAttributes = jslGCRGetTagAttributes()
   echo "Processing ${tagAttributes['tagType']} tag for DevOps ${tagAttributes['gcrNumber']}"
-  jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
-  def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'])
+  jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
+  def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
   def currentJob = env.JOB_NAME.toString()
   def currentBaseName = env.JOB_BASE_NAME.toString()
   def pathJob = currentJob - currentBaseName
@@ -1209,6 +1221,7 @@ def packageVersionCheck() {
   """, label: "Package version validation")
   stash name: "CHI_VERSION_BUMP", includes: "chi_version_bump"
   isVersionBump()
+  echo "${env.VERSION_BUMP_SCOPE}"
   sh(script: """
     set +x
     git whatchanged -1 --format=oneline src/chi-vue
@@ -1224,6 +1237,7 @@ def packageVersionCheck() {
   """, label: "CHI-VUE Package version validation")
   stash name: "CHI_VUE_VERSION_BUMP", includes: "chi_vue_version_bump"
   isVersionBump('chi-vue')
+  echo "${env.VERSION_BUMP_SCOPE}"
 }
 
 def customElementsBuild() {
@@ -1235,9 +1249,10 @@ def customElementsBuild() {
 
 def chiVueBuild() {
   def packageJson = readJSON file: 'package.json'
-  packageJson.version = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+  def newVersion = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+  packageJson.version = newVersion.toString()
   writeJSON file: 'package.json', json: packageJson
-  jslNpmWrapper('ci')
+  jslNpmWrapper('ci --loglevel verbose')
   jslNpmWrapper('run build:component')
   stash name: "DIST-CHI-VUE", includes: "dist/**"
   jslNpmWrapper('run build:umd')
@@ -1265,7 +1280,8 @@ def buildChi() {
   }
   sh "sleep 10s"
   def packageJson = readJSON file: 'package.json'
-  packageJson.version = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+  def newVersion = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
+  packageJson.version = newVersion.toString()
   writeJSON file: 'package.json', json: packageJson
   ghYarnWrap('install')
   jslNpmWrapper('run cicd:build:pre:sri')
@@ -1279,4 +1295,55 @@ def buildChi() {
   """
   stash name: "NODEMODULES-CHI", includes: "node_modules/**"
   jslJiraSendBuildInfo()
+}
+
+
+def smokeTestChecker(def scope) {
+  def version = env.VERSION
+  if (scope == 'chi-vue') {
+    version = env.VERSION_CHI_VUE
+  }
+  if (version != null) {
+    echo "Starting SMOKE TESTS with the published release ${version}"
+
+    def latestRelease = ""
+    def latestChiVueRelease = ""
+
+    try {
+        latestRelease = jslGitHubReleaseGet().data.name.trim()
+    } catch (Exception e) {
+      echo "Error checking chi releases: ${e.getMessage()}"
+    }
+
+    try {
+        def repoOwner=jslGitGetRepoOwner()
+        def repoName=jslGitGetRepoName()
+        def allReleases = jslGitHubRequestsHandler("https://api.github.com/repos/${repoOwner}/${repoName}/releases", "Get GitHub release for ${version}", ["Accept: application/vnd.github+json"], 'GET', null, env.GITHUB_TOKEN_CREDENTIALS, true)
+        if (version =~ /.*vue3.*/) {
+          latestChiVueRelease = allReleases.data.find { release -> release.name =~ /.*chi-vue3/ }
+        } else {
+          latestChiVueRelease = allReleases.data.find { release -> release.name =~ /.*chi-vue/ }
+        }
+    } catch (Exception e) {
+      echo "Error checking chi-vue releases: ${e.getMessage()}"
+    }
+
+    if (scope == 'chi-vue') {
+      latestRelease = latestChiVueRelease.name.trim()
+    }
+    jslGenerateManualTestReport("Version Release", "Check Version - ${scope}", "${version}", (latestRelease == version).toBoolean(), 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
+
+    if (env.SMOKE_TEST_FAILURE == null) {
+      env.SMOKE_TEST_FAILURE = (latestRelease != version)
+    } else if (!env.SMOKE_TEST_FAILURE) {
+      env.SMOKE_TEST_FAILURE = (latestRelease != version)
+    }
+    echo """
+    Smoke Test Failure for ${scope}? ${latestRelease != version}
+    Current Overall Smoke Test Failure Status: ${env.SMOKE_TEST_FAILURE}
+    """
+  } else {
+    echo "Smoke Test hook without release"
+    jslGenerateManualTestReport("Change without Release", "Hook test", "hookTest", true, 1.0, "cypress/reports/smokeTests/smoke_test_result.xml")
+  }
 }

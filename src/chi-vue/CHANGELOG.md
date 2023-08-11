@@ -1,5 +1,5 @@
 # CHANGELOG
-## 2.1.2 (AUG 10, 2023)
+## 2.2.1 (AUG 10, 2023)
 ### TEST
 #### Added
 * Test GCR
