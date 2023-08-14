@@ -8,6 +8,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { ITableColumn, ITableContent } from '~/models/models';
+import { defaultColumns } from "~/fixtures/fixtures";
 
 const sizes = ['sm', 'md', 'lg', 'xl']
 const colors = ['none', 'primary', 'secondary', 'white', 'black', 'muted', 'grey', 'grey-20', 'grey-30', 'success', 'info', 'warning', 'danger']
@@ -15,18 +16,7 @@ const colors = ['none', 'primary', 'secondary', 'white', 'black', 'muted', 'grey
 @Component({
   data: () => {
     return {
-      columns: [
-        {
-          title: 'Color Class',
-          key: 'class',
-          width: '40%'
-        },
-        {
-          title: 'Value',
-          key: 'value',
-          width: ''
-        }
-      ]
+      columns: defaultColumns
     };
   }
 })
