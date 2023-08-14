@@ -548,3 +548,16 @@ export const utilitiesTextColumns = [
     width: ''
   }
 ];
+
+export const defaultColumns = [
+  {
+    title: 'Class',
+    key: 'class',
+    width: '40%'
+  },
+  {
+    title: 'Value',
+    key: 'value',
+    width: ''
+  }
+];
