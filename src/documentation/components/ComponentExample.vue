@@ -1,10 +1,11 @@
 <template>
   <div class="example-wrapper">
-    <TitleAnchor 
-      :id="id" 
-      :title="title" 
-      :titleSize="titleSize" 
-      :showTitle="showTitle" 
+    <TitleAnchor
+      v-if="title"
+      :id="id"
+      :title="title"
+      :titleSize="titleSize"
+      :showTitle="showTitle"
     />
     <slot name="example-description"></slot>
     <div v-if="headTabs">
@@ -25,7 +26,7 @@
             :aria-selected="headTab.active ? true : false"
             :aria-controls="'#head-tabs-' + id + '-' + headTab.id"
             @click="emitHeadTabsChange(headTab)"
-          >{{ headTab.label }}</a
+            >{{ headTab.label }}</a
           >
         </li>
       </ul>
@@ -110,7 +111,10 @@
         </ul>
       </div>
       <div
-        :class="[showSnippetTabs ? 'chi-tabs-panel' : '', tab.active ? '-active' : '']"
+        :class="[
+          showSnippetTabs ? 'chi-tabs-panel' : '',
+          tab.active ? '-active' : ''
+        ]"
         v-for="tab in tabs"
         :key="tab.id"
         :id="'example-' + id + '-' + tab.id"
@@ -188,7 +192,7 @@ Vue.config.warnHandler = (msg: string, _vm: Vue, trace: string) => {
 export default class ComponentExample extends Vue {
   @Prop() id?: string;
   @Prop() title?: string;
-  @Prop() titleSize?: 'h3' | 'h4';
+  @Prop() titleSize?: 'h2' | 'h3' | 'h4';
   @Prop() tabs?: ITabs[];
   @Prop() headTabs?: IHeadTabs[];
   @Prop() padding?: string;

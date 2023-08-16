@@ -1,4 +1,11 @@
-import { ILanguage, ILink, IThemes, IZIndex, ThemesColor } from '~/models/models';
+import {
+  ILanguage,
+  ILink,
+  IThemes,
+  IZIndex,
+  IBreakpoints,
+  ThemesColor
+} from '~/models/models';
 
 export const FOOTER_LINKS: ILink[] = [
   { href: 'https://www.lumen.com/en-us/about.html', title: 'About Us' },
@@ -508,6 +515,52 @@ export const zIndexValues: IZIndex[] = [
   { key: '60', color: '-bg--grey-10', margin: 7, text: 'Popovers' },
   { key: '70', color: '-bg--primary', margin: 8, text: 'Tooltips' },
   { key: 'auto', color: '', margin: 0, text: '-' }
+];
+
+export const breakpoints: IBreakpoints[] = [
+  { name: 'sm', value: 'sm and larger' },
+  { name: 'md', value: 'md and larger' },
+  { name: 'lg', value: 'lg and larger' },
+  { name: 'xl', value: 'xl' }
+];
+
+export const displayDefaultColumns = [
+  {
+    title: 'Display Class',
+    key: 'class',
+    width: '40%'
+  },
+  {
+    title: 'Value',
+    key: 'value',
+    width: ''
+  }
+];
+
+export const utilitiesTextColumns = [
+  {
+    title: 'Size',
+    key: 'class',
+    width: '20%'
+  },
+  {
+    title: 'Example',
+    key: 'value',
+    width: ''
+  }
+];
+
+export const defaultColumns = [
+  {
+    title: 'Class',
+    key: 'class',
+    width: '40%'
+  },
+  {
+    title: 'Value',
+    key: 'value',
+    width: ''
+  }
 ];
 
 const neutralColors = [
