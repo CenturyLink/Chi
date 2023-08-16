@@ -78,8 +78,12 @@ export class Drag {
       this.component._popper.destroy();
       this.component._popper = null;
     }
-    const rect = this.elementToMove.getBoundingClientRect();
-    this.setPosition(e.clientX, e.clientY, rect);
+
+    if (this.elementToMove) {
+      const rect = this.elementToMove.getBoundingClientRect();
+
+      this.setPosition(e.clientX, e.clientY, rect);
+    }
   };
 
   private elementDragOnTouchHandler = (e: TouchEvent) => {
@@ -90,8 +94,12 @@ export class Drag {
       this.component._popper.destroy();
       this.component._popper = null;
     }
-    const rect = this.elementToMove.getBoundingClientRect();
-    this.setPosition(touch.clientX, touch.clientY, rect);
+
+    if (this.elementToMove) {
+      const rect = this.elementToMove.getBoundingClientRect();
+
+      this.setPosition(touch.clientX, touch.clientY, rect);
+    }
   };
 
   private closeDragElement = () => {
@@ -116,17 +124,19 @@ export class Drag {
   }
 
   private handlerResize = () => {
-    const rect = this.elementToMove.getBoundingClientRect();
+    if (this.elementToMove) {
+      const rect = this.elementToMove.getBoundingClientRect();
 
-    this.screenWidth = this.setScreenWidth();
-    this.screenHeight = this.setScreenHeight();
+      this.screenWidth = this.setScreenWidth();
+      this.screenHeight = this.setScreenHeight();
 
-    if (rect.right >= this.screenWidth) {
-      this.elementToMove.style.left =
-        Math.abs(rect.width + rect.width / 2 - this.screenWidth) + 'px';
-    } else if (rect.bottom >= this.screenHeight) {
-      this.elementToMove.style.top =
-        Math.abs(rect.height * 2 - this.screenHeight) + 'px';
+      if (rect.right >= this.screenWidth) {
+        this.elementToMove.style.left =
+          Math.abs(rect.width + rect.width / 2 - this.screenWidth) + 'px';
+      } else if (rect.bottom >= this.screenHeight) {
+        this.elementToMove.style.top =
+          Math.abs(rect.height * 2 - this.screenHeight) + 'px';
+      }
     }
   };
 
