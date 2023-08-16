@@ -6,6 +6,7 @@ import {
   IBreakpoints,
   ThemesColor
 } from '~/models/models';
+import { COLORS } from  '~/constants/constants';
 
 export const FOOTER_LINKS: ILink[] = [
   { href: 'https://www.lumen.com/en-us/about.html', title: 'About Us' },
@@ -580,14 +581,14 @@ const neutralColors = [
       class: '-text--white',
     },
     {
-      code: '#3F4145',
+      code: COLORS.GREY.value,
       text: 'Grey 80',
       description: 'Used for medium-contrast borders on black and high-contrast backgrounds on black.',
       a11y: 'AAA',
       class: '-text--white',
     },
     {
-      code: '#53565A',
+      code: COLORS.MUTED.value,
       text: 'Grey 70',
       description: 'Used for secondary text on white and high-contrast borders on black.',
       a11y: 'AA',
@@ -615,7 +616,7 @@ const neutralColors = [
       a11y: 'AAA',
     },
     {
-      code: '#D0D4D9',
+      code: COLORS['GREY-30'].value,
       text: 'Grey 30',
       description: 'Used for medium-contrast borders on white.',
       a11y: 'AAA',
@@ -623,25 +624,25 @@ const neutralColors = [
   ],
   [
     {
-      code: '#DADEE2',
+      code: COLORS['GREY-25'].value,
       text: 'Grey 25',
       description: 'Used for medium-contrast borders and high-contrast backgrounds on white.',
       a11y: 'AAA',
     },
     {
-      code: '#EDF0F2',
+      code: COLORS['MUTED-LIGHT'].value,
       text: 'Grey 20',
       description: 'Used for low-contrast borders and medium-contrast backgrounds on white.',
       a11y: 'AAA',
     },
     {
-      code: '#F4F5F6',
+      code: COLORS['GREY-15'].value,
       text: 'Grey 15',
       description: 'Used for low-contrast backgrounds on white.',
       a11y: 'AAA',
     },
     {
-      code: '#F8F9F9',
+      code: COLORS['MUTED-LIGHTER'].value,
       text: 'Grey 10',
       description: 'Used for low-contrast backgrounds on white.',
       a11y: 'AAA',
@@ -656,7 +657,7 @@ export const colors: ThemesColor = {
         {
           title: 'Primary Accent',
           id: 'primary-accent',
-          code: '#0075C9',
+          code: COLORS.INFO.value,
           a11y: 'AA',
           text: 'Blue 70',
           class: '-text--white',
@@ -664,7 +665,7 @@ export const colors: ThemesColor = {
         {
           title: 'Secondary Accent',
           id: 'secondary-accent',
-          code: '#38C6F4',
+          code: COLORS.SECONDARY.value,
           text: 'Cyan 40',
           a11y: 'AAA',
         }
@@ -672,7 +673,7 @@ export const colors: ThemesColor = {
       supporting: [
         {
           text: 'White',
-          code: '#FFFFFF',
+          code: COLORS.WHITE.value,
           a11y: 'AAA',
           class: '-b--1',
         },
@@ -683,13 +684,13 @@ export const colors: ThemesColor = {
         },
         {
           text: 'Navy 100',
-          code: '#083176',
+          code: COLORS.NAVY.value,
           class: '-text--white',
           a11y: 'AAA',
         },
         {
           text: 'Black',
-          code: '#000000',
+          code: COLORS.BLACK.value,
           class: '-text--white',
           a11y: 'AAA',
         },
@@ -699,7 +700,7 @@ export const colors: ThemesColor = {
     semantic: [
       [
         {
-          code: '#007E44',
+          code: COLORS.SUCCESS.value,
           text: 'Green 70',
           a11y: 'AA',
           class: '-text--white',
@@ -713,7 +714,7 @@ export const colors: ThemesColor = {
           text: 'Green 30',
           a11y: 'AAA',
         }, {
-          code: '#DBFAEE',
+          code: COLORS['SUCCESS-LIGHT'].value,
           text: 'Green 20',
           a11y: 'AAA',
         }],
@@ -736,14 +737,14 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         },
         {
-          code: '#E0F3FF',
+          code: COLORS['INFO-LIGHTER'].value,
           text: 'Blue 20',
           a11y: 'AAA',
         }
       ],
       [
         {
-          code: '#D62015',
+          code: COLORS.DANGER.value,
           text: 'Red 70',
           a11y: 'AA',
           class: '-text--white',
@@ -760,14 +761,14 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         },
         {
-          code: '#FFE8E5',
+          code: COLORS['DANGER-LIGHTER'].value,
           text: 'Red 20',
           a11y: 'AAA',
         }
       ],
       [
         {
-          code: '#A15C00',
+          code: COLORS.WARNING.value,
           text: 'Yellow 70',
           a11y: 'AA',
           class: '-text--white',
@@ -784,7 +785,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         },
         {
-          code: '#FAECD9',
+          code: COLORS['WARNING-LIGHT'].value,
           text: 'Yellow 20',
           a11y: 'AAA',
         }
@@ -797,7 +798,7 @@ export const colors: ThemesColor = {
         {
           title: 'Primary Accent',
           id: 'primary-accent',
-          code: '#0047BB',
+          code: COLORS['PRIMARY-CENTURYLINK'].value,
           a11y: 'AAA',
           text: 'Blue 70',
           class: '-text--white',
@@ -805,7 +806,7 @@ export const colors: ThemesColor = {
         {
           title: 'Secondary Accent',
           id: 'secondary-accent',
-          code: '#48D597',
+          code: COLORS['SECONDARY-CENTURYLINK'].value,
           a11y: 'AAA',
           text: 'Mint 40',
         }
@@ -813,7 +814,7 @@ export const colors: ThemesColor = {
       supporting: [
         {
           text: 'White',
-          code: '#FFFFFF',
+          code: COLORS.WHITE.value,
           a11y: 'AAA',
           class: '-b--1',
         },
@@ -959,14 +960,14 @@ export const colors: ThemesColor = {
         },
         {
           text: 'White',
-          code: '#FFFFFF',
+          code: COLORS.WHITE.value,
           class: '-b--1',
           wrapperClass: '-w-lg--4',
           a11y: 'AAA',
         },
         {
           text: 'Black',
-          code: '#000000',
+          code: COLORS.BLACK.value,
           class: '-text--white -bg--black',
           wrapperClass: '-w-lg--4',
           a11y: 'AAA',
@@ -976,7 +977,7 @@ export const colors: ThemesColor = {
     neutral: [
       [
         {
-          code: '#000000',
+          code: COLORS.BLACK.value,
           text: 'Grey 100',
           description: 'Used for primary text color on white and low-contrast backgrounds on black.',
           a11y: 'AAA',
@@ -1061,7 +1062,7 @@ export const colors: ThemesColor = {
     semantic: [
       [
         {
-          code: '#007E44',
+          code: COLORS.SUCCESS.value,
           text: 'Green 70',
           class: '-text--white',
           a11y: 'AA',
@@ -1078,7 +1079,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         },
         {
-          code: '#DBFAEE',
+          code: COLORS['SUCCESS-LIGHT'].value,
           text: 'Green 20',
           a11y: 'AAA',
         }
@@ -1102,7 +1103,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         },
         {
-          code: '#E0F3FF',
+          code: COLORS['INFO-LIGHTER'].value,
           text: 'Blue 20',
           a11y: 'AAA',
         }
@@ -1133,7 +1134,7 @@ export const colors: ThemesColor = {
       ],
       [
         {
-          code: '#A15C00',
+          code: COLORS.WARNING.value,
           text: 'Yellow 70',
           class: '-text--white',
           a11y: 'AA',
@@ -1163,7 +1164,7 @@ export const colors: ThemesColor = {
         {
           title: 'Primary Accent',
           id: 'primary-accent',
-          code: '#0075C9',
+          code: COLORS.INFO.value,
           a11y: 'AA',
           text: 'Blue 70',
           class: '-text--white',
@@ -1171,7 +1172,7 @@ export const colors: ThemesColor = {
         {
           title: 'Secondary Accent',
           id: 'secondary-accent',
-          code: '#38C6F4',
+          code: COLORS.SECONDARY.value,
           text: 'Cyan 40',
           a11y: 'AAA',
         }
@@ -1179,7 +1180,7 @@ export const colors: ThemesColor = {
       supporting: [
         {
           text: 'White',
-          code: '#FFFFFF',
+          code: COLORS.WHITE.value,
           a11y: 'AAA',
           class: '-b--1',
         },
@@ -1190,13 +1191,13 @@ export const colors: ThemesColor = {
         },
         {
           text: 'Navy 100',
-          code: '#083176',
+          code: COLORS.NAVY.value,
           class: '-text--white',
           a11y: 'AAA',
         },
         {
           text: 'Black',
-          code: '#000000',
+          code: COLORS.BLACK.value,
           class: '-text--white -bg--black',
           a11y: 'AAA',
         },
@@ -1206,7 +1207,7 @@ export const colors: ThemesColor = {
     semantic: [
       [
         {
-          code: '#007E44',
+          code: COLORS.SUCCESS.value,
           text: 'Green 70',
           class: '-text--white',
           a11y: 'AA',
@@ -1223,7 +1224,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         },
         {
-          code: '#DBFAEE',
+          code: COLORS['SUCCESS-LIGHT'].value,
           text: 'Green 20',
           a11y: 'AAA',
         }
@@ -1247,14 +1248,14 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         },
         {
-          code: '#E0F3FF',
+          code: COLORS['INFO-LIGHTER'].value,
           text: 'Blue 20',
           a11y: 'AAA',
         }
       ],
       [
         {
-          code: '#D62015',
+          code: COLORS.DANGER.value,
           text: 'Red 70',
           class: '-text--white',
           a11y: 'AA',
@@ -1271,14 +1272,14 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         },
         {
-          code: '#FFE8E5',
+          code: COLORS['DANGER-LIGHTER'].value,
           text: 'Red 20',
           a11y: 'AAA',
         }
       ],
       [
         {
-          code: '#A15C00',
+          code: COLORS.WARNING.value,
           text: 'Yellow 70',
           class: '-text--white',
           a11y: 'AA',
@@ -1295,7 +1296,7 @@ export const colors: ThemesColor = {
           a11y: 'AAA',
         },
         {
-          code: '#FAECD9',
+          code: COLORS['WARNING-LIGHT'].value,
           text: 'Yellow 20',
           a11y: 'AAA',
         }
