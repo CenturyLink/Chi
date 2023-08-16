@@ -1,6 +1,6 @@
 import { Component, Element, Prop, h } from '@stencil/core';
 import { ChiStates, STATES } from "../../constants/states";
-import { FORM_CLASSES, STATUS_CLASS } from "../../constants/classes";
+import { FORM_CLASSES, UTILITY_CLASSES, STATUS_CLASS } from "../../constants/classes";
 
 @Component({
   tag: 'chi-helper-message',
@@ -21,7 +21,7 @@ export class HelperMessage {
     const stateClass = this.state ? STATES[this.state].class : null;
 
     return (
-      <div class={`${FORM_CLASSES.LABEL} ${STATUS_CLASS} ${stateClass}`}>
+      <div class={`${FORM_CLASSES.LABEL} ${UTILITY_CLASSES.TYPOGRAPHY.TEXT_ITALIC} ${STATUS_CLASS} ${stateClass}`}>
         {stateIcon && <chi-icon icon={stateIcon}></chi-icon>}
         <slot></slot>
       </div>
