@@ -17,17 +17,43 @@
           td
             template(v-if="type=='*'")="can be incremented by 5%"
             code(v-else)="flex-basis: {{type}}"
+
+    //        todo finish when TableComponent will be updated
+    <TableComponent :data="rows" :columns="columns" :getContent="getContent" additionalClasses="" />
+
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { ITableColumn } from "~/models/models";
 
 @Component({
   data: () => {
     return {
-      types: ['auto', '0', '*'],
+      types: ['auto;', '0;', '*'],
+      columns: [
+      {
+        title: `Flex-basis Class`,
+        key: 'cell1',
+        width: '40%',
+      },
+      {
+        title: 'Value',
+        key: 'cell2',
+        width: ''
+      },
+    ],
+      rows: [
+        { cell1: 'Name 1', cell2: 'name-1' },
+        { cell1: 'Name 2', cell2: 'name-2' },
+        { cell1: 'Name 3', cell2: 'name-3' }
+      ],
     };
   }
 })
-export default class AllBreakpoints extends Vue {}
+export default class AllBreakpoints extends Vue {
+  getContent(column: ITableColumn, content: any) {
+    return content[column.key];
+  }
+}
 </script>
