@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { HeadTabsInterface } from '../../../../models/models';
+import { IHeadTabs } from '../../../../models/models';
 
 @Component({
   data: () => {
@@ -217,7 +217,7 @@ methods: {
 export default class HeaderTitle extends Vue {
   key = 0;
 
-  changeHeader(e: HeadTabsInterface) {
+  changeHeader(e: IHeadTabs) {
     this.$data.showHeader = e.id === 'header' ? true : false;
     this.key += 1;
   }

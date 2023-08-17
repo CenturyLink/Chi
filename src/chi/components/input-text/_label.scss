@@ -53,7 +53,7 @@ label,
     color: $label-status-danger-text-color;
 
     .chi-icon {
-      color: $color-icon-danger;
+      color: $label-status-danger-icon-color;
     }
   }
 
@@ -61,7 +61,15 @@ label,
     color: $label-status-success-text-color;
 
     .chi-icon {
-      color: $color-icon-success;
+      color: $label-status-success-icon-color;
+    }
+  }
+
+  &.-warning {
+    color: $label-status-warning-text-color;
+
+    .chi-icon {
+      color: $label-status-warning-icon-color;
     }
   }
 
