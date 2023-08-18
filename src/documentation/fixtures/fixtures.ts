@@ -3,7 +3,8 @@ import {
   ILink,
   IThemes,
   IZIndex,
-  IBreakpoints
+  IBreakpoints,
+  ITableHead,
 } from '~/models/models';
 
 export const FOOTER_LINKS: ILink[] = [
@@ -561,3 +562,23 @@ export const defaultColumns = [
     width: ''
   }
 ];
+
+export const getTableHead = (data: Partial<ITableHead> = {}) => [
+    {
+      title: data.col1?.title || 'Name',
+      key: 'cell1',
+      width: '',
+      className: data.col1?.className || ''
+    },
+    {
+      title: 'ID',
+      key: 'cell2',
+      width: ''
+    },
+    {
+      title: 'Last Login',
+      key: 'cell3',
+      width: ''
+    }
+  ];
+

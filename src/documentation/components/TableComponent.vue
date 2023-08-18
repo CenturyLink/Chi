@@ -3,12 +3,12 @@
     <table class="-text">
       <thead>
       <tr>
-        <th v-for="column in tableColumns" :class="column.class" v-html="column.title" />
+        <th v-for="{ className, title } in tableColumns" :class="className" v-html="title" />
       </tr>
       </thead>
       <tbody>
-      <tr v-for="content in data" :disabled="content.disabled" :class="content.class">
-        <td v-for="column in tableColumns" :style="`width: ${column.width}`" :class="content[column.key]?.class">
+      <tr v-for="content in data" :disabled="content.disabled" :class="content.className">
+        <td v-for="column in tableColumns" :style="`width: ${column.width}`" :class="content[column.key]?.className">
           <span v-html="generateContent(column, content)" />
         </td>
       </tr>
@@ -25,7 +25,11 @@ import { ITableColumn, ITableContent } from '~/models/models';
 export default class TableComponent extends Vue {
   @Prop() columns?: ITableColumn[];
   @Prop({ default: [] }) data!: any[];
-  @Prop({ default: () => {} }) getContent!: Function;
+  @Prop(
+    {
+      type: Function,
+      default: (column: ITableColumn, content: any) => content[column.key]
+    }) getContent!: Function;
   @Prop({ default: '-mt--3 -mb--3 -bordered' }) additionalClasses?: string;
   @Prop() title?: string;
 

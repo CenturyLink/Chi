@@ -2,9 +2,7 @@
   <ComponentExample title="No Border" id="no-border" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Remove all borders by applying the modifier class <code>-no-border</code>.
-    <Wrapper slot="example">
-      <TableComponent :data="rows" :columns="columns" :getContent="getContent" additionalClasses="-no-border" />
-    </Wrapper>
+    <TableComponent :data="rows" :columns="tableHead" additionalClasses="-no-border" slot="example" />
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -16,7 +14,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn } from "~/models/models";
+import { getTableHead } from "~/fixtures/fixtures";
 
 @Component({
   data: () => {
@@ -67,29 +65,13 @@ import { ITableColumn } from "~/models/models";
     </tbody>
 </table>`
       },
-      columns: [
-        {
-          title: 'Name',
-          key: 'cell1',
-          width: ''
-        },
-        {
-          title: 'ID',
-          key: 'cell2',
-          width: ''
-        },
-        {
-          title: 'Last Login',
-          key: 'cell3',
-          width: ''
-        }
-      ]
     };
   }
 })
 export default class NoBorder extends Vue {
-  getContent(column: ITableColumn, content: any) {
-    return content[column.key];
+
+  get tableHead() {
+    return getTableHead();
   }
 }
 </script>

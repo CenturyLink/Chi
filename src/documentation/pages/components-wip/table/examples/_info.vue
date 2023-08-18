@@ -2,9 +2,7 @@
   <ComponentExample titleSize="h4" title="Info" id="info" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Render an info state by applying the modifier class <code>-row--info</code>.
-    <Wrapper slot="example">
-      <TableComponent :data="rows" :columns="columns" :getContent="getContent" additionalClasses="" />
-    </Wrapper>
+    <TableComponent :data="rows" :columns="tableHead" additionalClasses="" slot="example" />
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -16,14 +14,14 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn } from "~/models/models";
+import { getTableHead } from "~/fixtures/fixtures";
 
 @Component({
   data: () => {
     return {
       rows: [
         { cell1: 'Name 1', cell2: 'name-1', cell3: 'Dec 18, 2020 3:26 PM' },
-        { cell1: 'Name 2', cell2: 'name-2', cell3: 'Dec 18, 2020 2:38 AM', class: "-row--info" },
+        { cell1: 'Name 2', cell2: 'name-2', cell3: 'Dec 18, 2020 2:38 AM', className: "-row--info" },
         { cell1: 'Name 3', cell2: 'name-3', cell3: 'Nov 5, 2020 10:15 AM' }
       ],
       exampleTabs: [
@@ -67,29 +65,12 @@ import { ITableColumn } from "~/models/models";
     </tbody>
 </table>`
       },
-      columns: [
-        {
-          title: 'Name',
-          key: 'cell1',
-          width: ''
-        },
-        {
-          title: 'ID',
-          key: 'cell2',
-          width: ''
-        },
-        {
-          title: 'Last Login',
-          key: 'cell3',
-          width: ''
-        }
-      ]
     };
   }
 })
 export default class Info extends Vue {
-  getContent(column: ITableColumn, content: any) {
-    return content[column.key];
+  get tableHead() {
+    return getTableHead();
   }
 }
 </script>

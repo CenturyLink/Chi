@@ -1,8 +1,6 @@
 <template lang="pug">
   <ComponentExample titleSize="h4" title="Descending" id="descending" :tabs="exampleTabs">
-    <Wrapper slot="example">
-      <TableComponent :data="rows" :columns="columns" :getContent="getContent" additionalClasses="" />
-    </Wrapper>
+    <TableComponent :data="rows" :columns="tableHead" additionalClasses="" slot="example" />
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -14,7 +12,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn } from "~/models/models";
+import { getTableHead } from "~/fixtures/fixtures";
 
 @Component({
   data: () => {
@@ -67,30 +65,12 @@ import { ITableColumn } from "~/models/models";
     </tbody>
 </table>`
       },
-      columns: [
-        {
-          title: `<div>Name</div>`,
-          key: 'cell1',
-          width: '',
-          class: '-sorted -descending'
-        },
-        {
-          title: 'ID',
-          key: 'cell2',
-          width: ''
-        },
-        {
-          title: 'Last Login',
-          key: 'cell3',
-          width: ''
-        }
-      ]
     };
   }
 })
 export default class Descending extends Vue {
-  getContent(column: ITableColumn, content: any) {
-    return content[column.key];
+  get tableHead() {
+    return getTableHead({ col1: { title: `<div>Name</div>`, className: '-sorted -descending' } });
   }
 }
 </script>

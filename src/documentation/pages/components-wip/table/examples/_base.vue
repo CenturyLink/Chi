@@ -1,8 +1,6 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    <Wrapper slot="example">
-      <TableComponent :data="rows" :columns="columns" :getContent="getContent" additionalClasses="" />
-    </Wrapper>
+    <TableComponent :data="rows" :columns="tableHead" additionalClasses="" slot="example" />
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -14,7 +12,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { ITableColumn } from '~/models/models';
+import { getTableHead } from "~/fixtures/fixtures";
 
 @Component({
   data: () => {
@@ -65,30 +63,13 @@ import { ITableColumn } from '~/models/models';
     </tbody>
 </table>`
       },
-      columns: [
-        {
-          title: 'Name',
-          key: 'cell1',
-          width: ''
-        },
-        {
-          title: 'ID',
-          key: 'cell2',
-          width: ''
-        },
-        {
-          title: 'Last Login',
-          key: 'cell3',
-          width: ''
-        }
-      ]
     };
   }
 })
 
 export default class Base extends Vue {
-  getContent(column: ITableColumn, content: any) {
-    return content[column.key];
+  get tableHead() {
+    return getTableHead();
   }
 }
 </script>
