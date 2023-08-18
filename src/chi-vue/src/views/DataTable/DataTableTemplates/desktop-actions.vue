@@ -25,15 +25,15 @@
 
 <script lang="ts">
 import { Component, Vue } from '@/build/vue-wrapper';
-import { DataTableAction, DataTableColumnProps, DataTableVisibilityAction } from '@/constants/types';
+import { DataTableAction, DataTableColumnProps, DataTableActionItemResponsiveness } from '@/constants/types';
 import { Prop } from 'vue-property-decorator';
 
 declare const chi: any;
 
 @Component({
   methods: {
-    showOnDesktop(value: DataTableVisibilityAction[] = []) {
-      return !value.includes(DataTableVisibilityAction.DESKTOP);
+    showOnDesktop(value: DataTableActionItemResponsiveness[] = []) {
+      return !value.includes(DataTableActionItemResponsiveness.DESKTOP);
     },
   },
 })

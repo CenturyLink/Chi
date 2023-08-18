@@ -155,6 +155,11 @@ $font-weight-semi-bold: 600;
               position: absolute;
               right: 1.375rem;
               top: -1.25rem;
+
+              &.-centered {
+                top: 50%;
+                transform: translateY(-50%);
+              }
             }
           }
         }

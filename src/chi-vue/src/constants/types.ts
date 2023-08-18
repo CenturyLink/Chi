@@ -241,16 +241,17 @@ export interface DataTableEmptyActionableContent {
 }
 //#region
 
-export type DataTableColumnProps = string | DataTableColumnDescription | undefined;
+export type DataTableColumnProps = DataTableRow | undefined;
 
-export enum DataTableVisibilityAction {
-  DESKTOP,
-  MOBILE,
+export enum DataTableActionItemResponsiveness {
+  DESKTOP = 'desktop',
+  TABLET = 'tablet',
+  MOBILE = 'mobile',
 }
 
 export type DataTableAction = {
   label: string;
   icon: string;
   onClick: (props: DataTableColumnProps) => void;
-  hide?: DataTableVisibilityAction[];
+  hide?: DataTableActionItemResponsiveness[];
 };

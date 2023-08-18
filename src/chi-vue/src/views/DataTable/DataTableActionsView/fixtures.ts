@@ -1,4 +1,4 @@
-import { DataTableColumnProps, DataTableConfig, DataTableVisibilityAction } from '@/constants/types';
+import { DataTableColumnProps, DataTableConfig, DataTableActionItemResponsiveness } from '@/constants/types';
 
 export const exampleConfig: DataTableConfig = {
   columnResize: true,
@@ -28,13 +28,13 @@ export const exampleConfig: DataTableConfig = {
     {
       label: 'Edit',
       icon: 'icon-edit',
-      hide: [DataTableVisibilityAction.MOBILE],
+      hide: [DataTableActionItemResponsiveness.MOBILE],
       onClick: () => (location.href = 'https://www.google.com'),
     },
     {
       label: 'Download',
       icon: 'icon-circle-arrow-down',
-      hide: [DataTableVisibilityAction.DESKTOP],
+      hide: [DataTableActionItemResponsiveness.DESKTOP],
       onClick: () => console.log(`downloaded`),
     },
     {
