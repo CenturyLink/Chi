@@ -573,12 +573,14 @@ export const getTableHead = (data: Partial<ITableHead> = {}) => [
     {
       title: 'ID',
       key: 'cell2',
-      width: ''
+      width: '',
+      className: data.col2?.className || ''
     },
     {
       title: 'Last Login',
       key: 'cell3',
-      width: ''
+      width: '',
+      className: data.col3?.className || ''
     }
   ];
 
