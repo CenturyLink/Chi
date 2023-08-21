@@ -76,6 +76,7 @@ export interface ITableColumn {
   title: string;
   key: string;
   width: string;
+  className?: string;
 }
 
 export interface IBreakpoints {
@@ -86,4 +87,10 @@ export interface IBreakpoints {
 export interface ITableContent {
   name: string;
   value: string | string[];
+}
+
+export interface ITableHead {
+  col1: Partial<ITableColumn>;
+  col2: Partial<ITableColumn>;
+  col3: Partial<ITableColumn>;
 }
