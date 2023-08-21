@@ -52,6 +52,7 @@ const DROPDOWN_DATA_CY = {
   BASE: '[data-cy="base-dropdown"]',
   HOVER: '[data-cy="hover-dropdown"]',
   ANIMATE: '[data-cy="animate-dropdown"]',
+  VISIBLE_ITEMS: '[data-cy="visible-items-dropdown"]',
   POSITION: positions.map(position => {
     return {
       selector: `[data-cy="position-dropdown-${position.placement}"]`,
@@ -152,6 +153,27 @@ describe('Dropdown', () => {
         });
     });
   });
+
+  describe('VisibleItems', () => {
+    beforeEach(() => {
+      cy.get(DROPDOWN_DATA_CY.VISIBLE_ITEMS)
+        .find(DROPDOWN_TRIGGER).as('dropdownTrigger');
+      cy.get(DROPDOWN_DATA_CY.BASE)
+        .find(DROPDOWN_MENU).as('dropdownMenu');
+    });
+
+    it('Should set max-height according to number of items given', () => {
+      cy.get(`@dropdownMenu`)
+        .should('not.be.visible');
+      cy.get(`@dropdownTrigger`)
+        .click();
+      cy.get(`@dropdownMenu`)
+        .should('be.visible');
+      cy.get(`@dropdownMenu`)
+        .should('be.visible').
+        and(`@dropdownMenu`).invoke('height').should('equal', 142)
+    })
+  })
 
   describe('Position', () => {
     DROPDOWN_DATA_CY.POSITION.forEach(position => {

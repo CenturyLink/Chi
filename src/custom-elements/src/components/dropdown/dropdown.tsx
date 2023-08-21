@@ -64,6 +64,10 @@ export class Dropdown {
    */
   @Prop({ reflect: true }) preventAutoHide: boolean;
   /**
+   * To provide number of items in the dropdown to be displayed, and apply scroll if needed
+   */
+  @Prop() visibleItems?: number;
+  /**
    * Triggered when hiding the Dropdown
    */
   @Event({ eventName: 'chiDropdownHide' }) eventHide: EventEmitter;
@@ -188,6 +192,20 @@ export class Dropdown {
     );
   }
 
+  setMenuHeight() {
+    if(this.visibleItems) {
+      const menuItems = this._getDropdownMenuItems();
+      let newHeight = 0
+      for (let i = 0; i < this.visibleItems; i++) {
+        newHeight += menuItems[i].offsetHeight;
+      }
+      const padding = parseInt(getComputedStyle(this._dropdownMenuElement).getPropertyValue('padding-top'), 10) + 
+      parseInt(getComputedStyle(this._dropdownMenuElement).getPropertyValue('padding-bottom'), 10)
+
+      this._dropdownMenuElement.style.height = `${newHeight + padding}px`
+    }
+  }
+
   setDisplay(display: 'block' | 'none') {
     this._dropdownMenuElement.style.display = display;
   }
@@ -249,6 +267,9 @@ export class Dropdown {
   async show() {
     this.setDisplay('block');
     this.active = true;
+
+    if (this.visibleItems) this.setMenuHeight()
+
     if (this._popper) {
       this._popper.update();
     }
