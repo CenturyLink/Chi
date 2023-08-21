@@ -338,7 +338,6 @@ export const UTILITY_CLASSES = {
     MD_END: '-justify-content-md--end'
   },
   TYPOGRAPHY: {
-    TEXT_ITALIC: '-text--italic',
     TEXT_TRUNCATE: '-text--truncate',
     TEXT_NORMAL: '-text--normal',
     TEXT_BOLD: '-text--bold'
