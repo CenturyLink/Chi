@@ -5,7 +5,7 @@
       | Section 508 follows the Web Content Accessibility Guidelines (<a href="https://www.w3.org/TR/WCAG20/">WCAG 2.0</a>) Level AA
       | standards which require text and background color contrast ratios of 4.5:1 or higher.
       | All Chi colors either meet (AA) or exceed (AAA) these standards and have been marked below accordingly.
-    div(v-if="theme != 'colt'")
+    div(v-if="theme !== 'colt'")
       <Brand />
       .chi-divider.-mt--3.-mb--5
       <Neutral />

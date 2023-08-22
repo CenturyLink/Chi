@@ -521,14 +521,14 @@ export const zIndexValues: IZIndex[] = [
 const neutralColors = [
   [
     {
-      code: '#242526',
+      code: COLORS.GRAY_100.value,
       text: 'Grey 100',
       description: 'Used for primary text color on white and low-contrast backgrounds on black.',
       a11y: 'AAA',
       class: '-text--white',
     },
     {
-      code: '#313336',
+      code: COLORS.GRAY_90.value,
       text: 'Grey 90',
       description: 'Used for low-contrast borders on black and medium-contrast backgrounds on black.',
       a11y: 'AAA',
@@ -551,26 +551,26 @@ const neutralColors = [
   ],
   [
     {
-      code: '#65686C',
+      code: COLORS.GRAY_60.value,
       text: 'Grey 60',
       description: 'Used for muted or disabled text and icons on white.',
-      a11y: 'AAA',
+      a11y: 'AA',
       class: '-text--white',
     },
     {
-      code: '#8E9399',
+      code: COLORS.GRAY_50.value,
       text: 'Grey 50',
       description: 'Used for muted or disabled text and icons on black.',
       a11y: 'AA',
     },
     {
-      code: '#ACB0B5',
+      code: COLORS.GRAY_40.value,
       text: 'Grey 40',
       description: 'Used for high-contrast borders on white.',
       a11y: 'AAA',
     },
     {
-      code: COLORS['GREY-30'].value,
+      code: COLORS.GREY_30.value,
       text: 'Grey 30',
       description: 'Used for medium-contrast borders on white.',
       a11y: 'AAA',
@@ -578,25 +578,25 @@ const neutralColors = [
   ],
   [
     {
-      code: COLORS['GREY-25'].value,
+      code: COLORS.GREY_25.value,
       text: 'Grey 25',
       description: 'Used for medium-contrast borders and high-contrast backgrounds on white.',
       a11y: 'AAA',
     },
     {
-      code: COLORS['MUTED-LIGHT'].value,
+      code: COLORS.MUTED_LIGHT.value,
       text: 'Grey 20',
       description: 'Used for low-contrast borders and medium-contrast backgrounds on white.',
       a11y: 'AAA',
     },
     {
-      code: COLORS['GREY-15'].value,
+      code: COLORS.GREY_15.value,
       text: 'Grey 15',
       description: 'Used for low-contrast backgrounds on white.',
       a11y: 'AAA',
     },
     {
-      code: COLORS['MUTED-LIGHTER'].value,
+      code: COLORS.MUTED_LIGHTER.value,
       text: 'Grey 10',
       description: 'Used for low-contrast backgrounds on white.',
       a11y: 'AAA',
@@ -633,7 +633,7 @@ export const colors: ThemesColor = {
         },
         {
           text: 'Cyan 50',
-          code: '#0C9ED9',
+          code: COLORS.CYAN_50.value,
           a11y: 'AA',
         },
         {
@@ -659,39 +659,39 @@ export const colors: ThemesColor = {
           a11y: 'AA',
           class: '-text--white',
         }, {
-          code: '#009054',
+          code: COLORS.GREEN_60.value,
           text: 'Green 60',
           a11y: 'AA',
           class: '-text--white',
         }, {
-          code: '#95E9C9',
+          code: COLORS.GREEN_30.value,
           text: 'Green 30',
           a11y: 'AAA',
         }, {
-          code: COLORS['SUCCESS-LIGHT'].value,
+          code: COLORS.SUCCESS_LIGHT.value,
           text: 'Green 20',
           a11y: 'AAA',
         }],
       [
         {
-          code: '#0262B9',
+          code: COLORS.BLUE_75.value,
           text: 'Blue 75',
           a11y: 'AA',
           class: '-text--white',
         },
         {
-          code: '#0080DC',
+          code: COLORS.BLUE_60.value,
           text: 'Blue 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#AEDEFF',
+          code: COLORS.BLUE_30.value,
           text: 'Blue 30',
           a11y: 'AAA',
         },
         {
-          code: COLORS['INFO-LIGHTER'].value,
+          code: COLORS.INFO_LIGHTER.value,
           text: 'Blue 20',
           a11y: 'AAA',
         }
@@ -704,18 +704,18 @@ export const colors: ThemesColor = {
           class: '-text--white',
         },
         {
-          code: '#EE3026',
+          code: COLORS.RED_60.value,
           text: 'Red 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#FFC2BD',
+          code: COLORS.RED_30.value,
           text: 'Red 30',
           a11y: 'AAA',
         },
         {
-          code: COLORS['DANGER-LIGHTER'].value,
+          code: COLORS.DANGER_LIGHT.value,
           text: 'Red 20',
           a11y: 'AAA',
         }
@@ -728,18 +728,18 @@ export const colors: ThemesColor = {
           class: '-text--white',
         },
         {
-          code: '#B96B00',
+          code: COLORS.YELLOW_60.value,
           text: 'Yellow 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#FFCC89',
+          code: COLORS.YELLOW_30.value,
           text: 'Yellow 30',
           a11y: 'AAA',
         },
         {
-          code: COLORS['WARNING-LIGHT'].value,
+          code: COLORS.WARNING_LIGHT.value,
           text: 'Yellow 20',
           a11y: 'AAA',
         }
@@ -752,7 +752,7 @@ export const colors: ThemesColor = {
         {
           title: 'Primary Accent',
           id: 'primary-accent',
-          code: COLORS['PRIMARY-CENTURYLINK'].value,
+          code: COLORS.PRIMARY_CENTURYLINK.value,
           a11y: 'AAA',
           text: 'Blue 70',
           class: '-text--white',
@@ -760,7 +760,7 @@ export const colors: ThemesColor = {
         {
           title: 'Secondary Accent',
           id: 'secondary-accent',
-          code: COLORS['SECONDARY-CENTURYLINK'].value,
+          code: COLORS.SECONDARY_CENTURYLINK.value,
           a11y: 'AAA',
           text: 'Mint 40',
         }
@@ -774,17 +774,17 @@ export const colors: ThemesColor = {
         },
         {
           text: 'Teal Blue 40',
-          code: '#02BCB2',
+          code: COLORS.TEAL_BLUE_40.value,
           a11y: 'AA',
         },
         {
           text: 'Yellow 35',
-          code: '#F9F162',
+          code: COLORS.YELLOW_35.value,
           a11y: 'AAA',
         },
         {
           text: 'Green 35',
-          code: '#6FD16F',
+          code: COLORS.GREEN_35.value,
           a11y: 'AAA',
         },
       ]
@@ -793,95 +793,95 @@ export const colors: ThemesColor = {
     semantic: [
       [
         {
-          code: '#008000',
+          code: COLORS.GREEN_60_CENTURYLINK.value,
           text: 'Green 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#189E18',
+          code: COLORS.GREEN_50.value,
           text: 'Green 50',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#A7DBA7',
+          code: COLORS.GREEN_30_CENTURYLINK.value,
           text: 'Green 30',
-          a11y: 'AA',
+          a11y: 'AAA',
         },
         {
-          code: '#CEF2CE',
+          code: COLORS.GREEN_20.value,
           text: 'Green 20',
-          a11y: 'AA',
+          a11y: 'AAA',
         }
       ],
       [
         {
-          code: '#0060FA',
+          code: COLORS.BLUE_60_CENTURYLINK.value,
           text: 'Blue 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#468AF1',
+          code: COLORS.BLUE_50_CENTURYLINK.value,
           text: 'Blue 50',
           a11y: 'AA',
         },
         {
-          code: '#C0D7FA',
+          code: COLORS.BLUE_30_CENTURYLINK.value,
           text: 'Blue 30',
-          a11y: 'AA',
+          a11y: 'AAA',
         },
         {
-          code: '#E6F0FF',
+          code: COLORS.BLUE_20.value,
           text: 'Blue 20',
-          a11y: 'AA',
+          a11y: 'AAA',
         }
       ],
       [
         {
-          code: '#D81820',
+          code: COLORS.RED_60_CENTURYLINK.value,
           text: 'Red 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#FA5056',
+          code: COLORS.RED_50_CENTURYLINK.value,
           text: 'Red 50',
           a11y: 'AA',
         },
         {
-          code: '#FCC7C9',
+          code: COLORS.RED_30_CENTURYLINK.value,
           text: 'Red 30',
-          a11y: 'AA',
+          a11y: 'AAA',
         },
         {
-          code: '#FCE8E9',
+          code: COLORS.RED_20_CENTURYLINK.value,
           text: 'Red 20',
-          a11y: 'AA',
+          a11y: 'AAA',
         }
       ],
       [
         {
-          code: '#946300',
+          code: COLORS.YELLOW_60_CENTURYLINK.value,
           text: 'Yellow 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#D19110',
+          code: COLORS.YELLOW_50.value,
           text: 'Yellow 50',
           a11y: 'AA',
         },
         {
-          code: '#F6ED79',
+          code: COLORS.YELLOW_30_CENTURYLINK.value,
           text: 'Yellow 30',
-          a11y: 'AA',
+          a11y: 'AAA',
         },
         {
-          code: '#F9F5BE',
+          code: COLORS.YELLOW_20_CENTURYLINK.value,
           text: 'Yellow 20',
-          a11y: 'AA',
+          a11y: 'AAA',
         }
       ],
     ],
@@ -892,14 +892,14 @@ export const colors: ThemesColor = {
         {
           title: 'Primary Accent',
           id: 'primary-accent',
-          code: '#FFC800',
+          code: COLORS.YELLOW_40.value,
           text: 'Yellow 40',
           a11y: 'AAA',
         },
         {
           title: 'Secondary Accent',
           id: 'secondary-accent',
-          code: '#FA783C',
+          code: COLORS.ORANGE_40.value,
           text: 'Orange 40',
           class: '-text--black',
           a11y: 'AAA',
@@ -908,7 +908,7 @@ export const colors: ThemesColor = {
       supporting: [
         {
           text: 'Red 50',
-          code: '#FA4628',
+          code: COLORS.RED_50.value,
           wrapperClass: '-w-lg--4',
           a11y: 'AA',
         },
@@ -938,21 +938,21 @@ export const colors: ThemesColor = {
           class: '-text--white',
         },
         {
-          code: '#191919',
+          code: COLORS.GRAY_90_BRIGHTSPEED.value,
           text: 'Grey 90',
           description: 'Used for low-contrast borders on black and medium-contrast backgrounds on black.',
           a11y: 'AAA',
           class: '-text--white',
         },
         {
-          code: '#333333',
+          code: COLORS.GRAY_80.value,
           text: 'Grey 80',
           description: 'Used for medium-contrast borders on black and high-contrast backgrounds on black.',
           a11y: 'AAA',
           class: '-text--white',
         },
         {
-          code: '#4C4C4C',
+          code: COLORS.GRAY_70.value,
           text: 'Grey 70',
           description: 'Used for secondary text on white and high-contrast borders on black.',
           a11y: 'AA',
@@ -961,26 +961,26 @@ export const colors: ThemesColor = {
       ],
       [
         {
-          code: '#666666',
+          code: COLORS.GRAY_60_BRIGHTSPEED.value,
           text: 'Grey 60',
           description: 'Used for muted or disabled text and icons on white.',
           a11y: 'AAA',
           class: '-text--white',
         },
         {
-          code: '#7F7F7F',
+          code: COLORS.GRAY_50_BRIGHTSPEED.value,
           text: 'Grey 50',
           description: 'Used for muted or disabled text and icons on black.',
           a11y: 'AA',
         },
         {
-          code: '#999999',
+          code: COLORS.GRAY_40_BRIGHTSPEED.value,
           text: 'Grey 40',
           description: 'Used for high-contrast borders on white.',
           a11y: 'AAA',
         },
         {
-          code: '#B2B2B2',
+          code: COLORS.GRAY_30.value,
           text: 'Grey 30',
           description: 'Used for medium-contrast borders on white.',
           a11y: 'AAA',
@@ -988,25 +988,25 @@ export const colors: ThemesColor = {
       ],
       [
         {
-          code: '#DDDEDF',
+          code: COLORS.GRAY_25.value,
           text: 'Grey 25',
           description: 'Used for medium-contrast borders and high-contrast backgrounds on white.',
           a11y: 'AAA',
         },
         {
-          code: '#E6E7E8',
+          code: COLORS.GRAY_20.value,
           text: 'Grey 20',
           description: 'Used for low-contrast borders and medium-contrast backgrounds on white.',
           a11y: 'AAA',
         },
         {
-          code: '#F0F1F1',
+          code: COLORS.GRAY_15.value,
           text: 'Grey 15',
           description: 'Used for low-contrast backgrounds on white.',
           a11y: 'AAA',
         },
         {
-          code: '#F2F2F2',
+          code: COLORS.GRAY_10.value,
           text: 'Grey 10',
           description: 'Used for low-contrast backgrounds on white.',
           a11y: 'AAA',
@@ -1022,66 +1022,66 @@ export const colors: ThemesColor = {
           a11y: 'AA',
         },
         {
-          code: '#009054',
+          code: COLORS.GREEN_60.value,
           text: 'Green 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#95E9C9',
+          code: COLORS.GREEN_30.value,
           text: 'Green 30',
           a11y: 'AAA',
         },
         {
-          code: COLORS['SUCCESS-LIGHT'].value,
+          code: COLORS.SUCCESS_LIGHT.value,
           text: 'Green 20',
           a11y: 'AAA',
         }
       ],
       [
         {
-          code: '#0262B9',
+          code: COLORS.BLUE_75.value,
           text: 'Blue 75',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#0080DC',
+          code: COLORS.BLUE_60.value,
           text: 'Blue 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#AEDEFF',
+          code: COLORS.BLUE_30.value,
           text: 'Blue 30',
           a11y: 'AAA',
         },
         {
-          code: COLORS['INFO-LIGHTER'].value,
+          code: COLORS.INFO_LIGHTER.value,
           text: 'Blue 20',
           a11y: 'AAA',
         }
       ],
       [
         {
-          code: '#A01903',
+          code: COLORS.RED_70.value,
           text: 'Red 70',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#D52C10',
+          code: COLORS.RED_60_BRIGHTSPEED.value,
           text: 'Red 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#FCA293',
+          code: COLORS.RED_30_BRIGHTSPEED.value,
           text: 'Red 30',
           a11y: 'AAA',
         },
         {
-          code: '#FBDFDB',
+          code: COLORS.RED_20.value,
           text: 'Red 20',
           a11y: 'AAA',
         }
@@ -1094,18 +1094,18 @@ export const colors: ThemesColor = {
           a11y: 'AA',
         },
         {
-          code: '#AD7600',
+          code: COLORS.YELLOW_60_BRIGHTSPEED.value,
           text: 'Yellow 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#FFE37F',
+          code: COLORS.YELLOW_30_BRIGHTSPEED.value,
           text: 'Yellow 30',
           a11y: 'AAA',
         },
         {
-          code: '#FFF1BF',
+          code: COLORS.YELLOW_20.value,
           text: 'Yellow 20',
           a11y: 'AAA',
         }
@@ -1140,7 +1140,7 @@ export const colors: ThemesColor = {
         },
         {
           text: 'Cyan 50',
-          code: '#0C9ED9',
+          code: COLORS.CYAN_50.value,
           a11y: 'AA',
         },
         {
@@ -1167,42 +1167,42 @@ export const colors: ThemesColor = {
           a11y: 'AA',
         },
         {
-          code: '#009054',
+          code: COLORS.GREEN_60.value,
           text: 'Green 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#95E9C9',
+          code: COLORS.GREEN_30.value,
           text: 'Green 30',
           a11y: 'AAA',
         },
         {
-          code: COLORS['SUCCESS-LIGHT'].value,
+          code: COLORS.SUCCESS_LIGHT.value,
           text: 'Green 20',
           a11y: 'AAA',
         }
       ],
       [
         {
-          code: '#0262B9',
+          code: COLORS.BLUE_75.value,
           text: 'Blue 75',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#0080DC',
+          code: COLORS.BLUE_60.value,
           text: 'Blue 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#AEDEFF',
+          code: COLORS.BLUE_30.value,
           text: 'Blue 30',
           a11y: 'AAA',
         },
         {
-          code: COLORS['INFO-LIGHTER'].value,
+          code: COLORS.INFO_LIGHTER.value,
           text: 'Blue 20',
           a11y: 'AAA',
         }
@@ -1215,18 +1215,18 @@ export const colors: ThemesColor = {
           a11y: 'AA',
         },
         {
-          code: '#EE3026',
+          code: COLORS.RED_60.value,
           text: 'Red 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#FFC2BD',
+          code: COLORS.RED_30.value,
           text: 'Red 30',
           a11y: 'AAA',
         },
         {
-          code: COLORS['DANGER-LIGHTER'].value,
+          code: COLORS.DANGER_LIGHT.value,
           text: 'Red 20',
           a11y: 'AAA',
         }
@@ -1239,18 +1239,18 @@ export const colors: ThemesColor = {
           a11y: 'AA',
         },
         {
-          code: '#B96B00',
+          code: COLORS.YELLOW_60.value,
           text: 'Yellow 60',
           class: '-text--white',
           a11y: 'AA',
         },
         {
-          code: '#FFCC89',
+          code: COLORS.YELLOW_30.value,
           text: 'Yellow 30',
           a11y: 'AAA',
         },
         {
-          code: COLORS['WARNING-LIGHT'].value,
+          code: COLORS.WARNING_LIGHT.value,
           text: 'Yellow 20',
           a11y: 'AAA',
         }
