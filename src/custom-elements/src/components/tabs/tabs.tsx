@@ -349,7 +349,7 @@ export class Tabs {
       item => !idsToRemove.includes(item)
     );
 
-    this.hideNotActiveDropdowns(filteredDropdownKeys);
+    this.hideSpecificDropdowns(filteredDropdownKeys);
   }
 
   handlerTabMouseEnter = (tabData: TabTrigger) => {
@@ -476,7 +476,7 @@ export class Tabs {
     this.hideDropdowns(Object.keys(this.dropdownKeys));
   }
 
-  hideNotActiveDropdowns(array) {
+  hideSpecificDropdowns(array) {
     this.hideDropdowns(array);
   }
 
