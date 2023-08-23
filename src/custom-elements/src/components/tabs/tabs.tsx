@@ -328,7 +328,33 @@ export class Tabs {
     this.hideAllDropdowns();
   };
 
+  getParentIds(data: TabTrigger) {
+    const parentIds = [];
+
+    const collectParentIds = item => {
+      if (item.parent && item.parent.children) {
+        parentIds.push(item.parent.id);
+        collectParentIds(item.parent);
+      }
+    };
+
+    collectParentIds(data);
+    return parentIds;
+  }
+
+  hideInactiveDropdowns(tabData: TabTrigger) {
+    const parentIdsArray = this.getParentIds(tabData);
+    const idsToRemove = [...parentIdsArray, tabData.id];
+    const filteredDropdownKeys = Object.keys(this.dropdownKeys).filter(
+      item => !idsToRemove.includes(item)
+    );
+
+    this.hideNotActiveDropdowns(filteredDropdownKeys);
+  }
+
   handlerTabMouseEnter = (tabData: TabTrigger) => {
+    this.hideInactiveDropdowns(tabData);
+
     if (!tabData.children) return;
 
     this.dropdownKeys[tabData.id] += 1;
@@ -436,14 +462,22 @@ export class Tabs {
     this.slidingBorderLeft = `${position.left}px`;
   }
 
-  hideAllDropdowns() {
-    Object.keys(this.dropdownKeys).forEach(id => {
+  hideDropdowns(hideArray) {
+    hideArray.forEach(id => {
       const dropdownElement = this.el.querySelector(`#subLevelDropdown-${id}`);
 
       if (dropdownElement) {
         (dropdownElement as HTMLChiDropdownElement).hide();
       }
     });
+  }
+
+  hideAllDropdowns() {
+    this.hideDropdowns(Object.keys(this.dropdownKeys));
+  }
+
+  hideNotActiveDropdowns(array) {
+    this.hideDropdowns(array);
   }
 
   dropdownIcon(position: 'right' | 'down'): HTMLElement {
