@@ -3,22 +3,7 @@
     <TitleAnchor title="Target specific breakpoints" id="basis-specific-breakpoints" titleSize="h4"/>
     p.-text
       | To target a specific breakpoint, add the breakpoint abbreviation to the class.
-    table.chi-table.-bordered.-mb--3.-mt--3
-      thead
-        tr
-          th
-            div Flex-basis Class
-          th
-            div Value
-      tbody
-        template(v-for="breakpoint in breakpoints")
-          tr(v-for="type in types")
-            td.-text(width="40%")
-              code="-flex-basis-{{breakpoint}}--{{type}}"
-            td.-text
-              template
-                | Visible only from <code>{{breakpoint}}</code>
-                template(v-if="type=='*'") , can be incremented by 5%
+    <TableComponent :data="getRows()" :columns="columns" additionalClasses="-bordered" />
 </template>
 
 <script lang="ts">
@@ -27,10 +12,31 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   data: () => {
     return {
-      types: ['auto', '0', '*'],
-      breakpoints: ['sm', 'md', 'lg', 'xl'],
+      columns: [
+        {
+          title: `Flex-basis Class`,
+          key: 'cell1',
+          width: '40%',
+        },
+        {
+          title: 'Value',
+          key: 'cell2',
+          width: ''
+        },
+      ],
     };
   }
 })
-export default class SpecificBreakpoints extends Vue {}
+export default class SpecificBreakpoints extends Vue {
+  types = ['auto', '0', '*'];
+  breakpoints = ['sm', 'md', 'lg', 'xl'];
+
+  getRows() {
+    return this.breakpoints.map(breakpoint =>
+      this.types.map(type => ({
+        cell1: `<code>-flex-basis-${breakpoint}--${type}</code>`,
+        cell2: `Visible only from <code>${breakpoint}</code>${type === '*' ? ', can be incremented by 5%' : ''}`
+      }))).flat();
+  }
+}
 </script>
