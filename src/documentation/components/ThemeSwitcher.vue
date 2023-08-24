@@ -20,7 +20,7 @@
             />
           </div>
           <div class="-theme-name">
-            {{ themes[this.$store.state.themes.theme].label }}
+            {{ themeLabel }}
           </div>
         </div>
       </div>
@@ -78,6 +78,7 @@ import { Themes } from '../models/models';
 import { THEMES } from '../constants/constants';
 import { Component, Vue } from 'vue-property-decorator';
 import { BASE_URL, TEMP_DEVELOPMENT_FALLBACK_URL } from '../constants/constants';
+import { getThemeByMapValue} from './../store/themes'
 
 declare const chi: any;
 interface AssetToReplace {
@@ -99,11 +100,15 @@ export default class ThemeSwitcher extends Vue {
   getThemeSwitcherTriggerIcon() {
     const theme = this.$store.state.themes.theme;
 
-    if (theme === 'portal') {
+    if (['portal', 'colt', 'brightspeed'].includes(theme)) {
       return 'lumen';
     }
 
     return theme;
+  }
+
+  get themeLabel() {
+    return ['portal', 'colt', 'brightspeed'].includes(this.$store.state.themes.theme)? 'Lumen' : THEMES[this.$store.state.themes.theme as keyof typeof THEMES].label
   }
 
   setTheme(theme: Themes): void {
@@ -146,6 +151,16 @@ export default class ThemeSwitcher extends Vue {
 
     if (themeSwitcherElement) {
       this.themeSwitcherDropdown = chi.dropdown(themeSwitcherElement);
+    }
+
+    this.getThemeFromUrl()
+  }
+
+  getThemeFromUrl() {
+    const theme = getThemeByMapValue(this.$store.$router.currentRoute.query?.theme as string)
+    if(theme) {
+      this.$store.commit('themes/set', theme);
+      this.setTheme(theme as Themes)
     }
   }
 
