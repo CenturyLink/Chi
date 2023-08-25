@@ -4,7 +4,8 @@ import {
   IThemes,
   IZIndex,
   IBreakpoints,
-  ThemesColor
+  ThemesColor,
+  ITableHead,
 } from '~/models/models';
 import { COLORS } from  '~/constants/constants';
 
@@ -1305,3 +1306,25 @@ export const defaultColumns = [
     width: ''
   }
 ];
+
+export const getTableHead = (data: Partial<ITableHead> = {}) => [
+    {
+      title: data.col1?.title || 'Name',
+      key: 'cell1',
+      width: '',
+      className: data.col1?.className || ''
+    },
+    {
+      title: 'ID',
+      key: 'cell2',
+      width: '',
+      className: data.col2?.className || ''
+    },
+    {
+      title: 'Last Login',
+      key: 'cell3',
+      width: '',
+      className: data.col3?.className || ''
+    }
+  ];
+

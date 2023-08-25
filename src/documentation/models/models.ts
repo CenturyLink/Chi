@@ -76,6 +76,7 @@ export interface ITableColumn {
   title: string;
   key: string;
   width: string;
+  className?: string;
 }
 
 export interface IBreakpoints {
@@ -113,4 +114,10 @@ interface Color {
 
 export type ThemesColor = {
   [Property in keyof IThemes]: Color | null
+}
+
+export interface ITableHead {
+  col1: Partial<ITableColumn>;
+  col2: Partial<ITableColumn>;
+  col3: Partial<ITableColumn>;
 }
