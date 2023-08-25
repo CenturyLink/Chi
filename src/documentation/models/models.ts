@@ -89,6 +89,33 @@ export interface ITableContent {
   value: string | string[];
 }
 
+interface Palette {
+  code: string,
+  text: string,
+  class?: string,
+  a11y?: string,
+}
+type NeutralSection = (Palette & { description: string })[][];
+type SupportingSection = (Palette & { wrapperClass?: string })[];
+type MainColor = (Palette & {
+  title: string,
+  id: string
+  wrapperClass?: string,
+});
+
+interface Color {
+  brand: {
+    main: MainColor[],
+    supporting: SupportingSection,
+  },
+  neutral: NeutralSection,
+  semantic: Palette[][]
+}
+
+export type ThemesColor = {
+  [Property in keyof IThemes]: Color | null
+}
+
 export interface ITableHead {
   col1: Partial<ITableColumn>;
   col2: Partial<ITableColumn>;
