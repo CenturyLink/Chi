@@ -45,6 +45,13 @@ div(class=`test-dropdown-divider -w--100`)
       each i in [3, 4]
         a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
 
+div(class=`test-dropdown-visible-items -w--100`)
+  span.-text--h2 Visible items
+  .-d--flex
+    div(class=`chi-dropdown__menu -active visible-items-3`)
+      each i in [1, 2, 3, 4, 5, 6]
+        a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
+
 div(class=`test-dropdown-icons -w--100`)
   span.-text--h2 Icons
   .-d--flex

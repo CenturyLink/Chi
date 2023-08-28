@@ -61,6 +61,18 @@
       display: block;
     }
 
+    &.visible-items {
+      @mixin generate-max-height($value) {
+        &-#{$value} {
+          max-height: calc(#{$dropdown-menu-item-height} * #{$value} + 0.5rem * 2);
+          overflow: overlay;
+        }
+      }
+      @for $i from 1 through 10 {
+        @include generate-max-height($i);
+      } 
+    }
+
     &-item {
       align-items: center;
       display: flex;
