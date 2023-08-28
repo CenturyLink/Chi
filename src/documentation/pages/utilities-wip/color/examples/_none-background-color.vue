@@ -15,7 +15,7 @@ import { COLORS } from '~/constants/constants';
   data: () => {
     return {
       colors: [
-        COLORS['BG-NONE']
+        COLORS.BG_NONE
       ]
     }
   }
