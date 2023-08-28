@@ -6,7 +6,7 @@
         .chi-form__item(style="max-width:20rem")
           label(class="chi-label" :for="`example-size-${size}`") Label
           select(:class="`chi-select -${size}`" :id="`example-size-${size}`")
-            option(value="" selected disabled hidden) -{{size}} Select
+            option(value="" selected disabled hidden) -{{size}} - Select -
             option(v-for="opt in [1, 2, 3]") Option {{opt}}
     </Wrapper>
     <pre class="language-html" slot="code-webcomponent">
@@ -42,7 +42,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <div class="chi-form__item">
   <label class="chi-label" for="example-size-xs">Label</label>
   <select class="chi-select -xs" id="example-size-xs">
-    <option>-xs Select</option>
+    <option>-xs - Select -</option>
   </select>
 </div>
 
@@ -50,7 +50,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <div class="chi-form__item">
   <label class="chi-label" for="example-size-sm">Label</label>
   <select class="chi-select -sm" id="example-size-sm">
-    <option>-sm Select</option>
+    <option>-sm - Select -</option>
   </select>
 </div>
 
@@ -58,7 +58,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <div class="chi-form__item">
   <label class="chi-label" for="example-size-md">Label</label>
   <select class="chi-select -md" id="example-size-md">
-    <option>-md Select</option>
+    <option>-md - Select -</option>
   </select>
 </div>
 
@@ -66,7 +66,7 @@ import { Component, Vue } from 'vue-property-decorator';
 <div class="chi-form__item">
   <label class="chi-label" for="example-size-lg">Label</label>
   <select class="chi-select -lg" id="example-size-lg">
-    <option>-lg Select</option>
+    <option>-lg - Select -</option>
   </select>
 </div>`
       }
