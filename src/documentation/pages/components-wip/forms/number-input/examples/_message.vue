@@ -5,7 +5,7 @@
     .chi-form__item(slot="example")
       chi-label(for="unique-id-me1") Label
       chi-number-input#unique-id-me1
-      .chi-label.-status Optional input message
+      .chi-label.-status Optional helper message
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -38,7 +38,7 @@ import { Component, Vue } from 'vue-property-decorator';
       codeSnippets: {
         webcomponent: `<chi-label for="unique-id-me1">Label</chi-label>
 <chi-number-input id="unique-id-me1"></chi-number-input>
-<div class="chi-label -status">Optional input message</div>`,
+<div class="chi-label -status">Optional helper message</div>`,
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="unique-id-me1">Label</label>
   <div class="chi-number-input">
@@ -46,7 +46,7 @@ import { Component, Vue } from 'vue-property-decorator';
     <button aria-label="Decrease"></button>
     <button aria-label="Increase"></button>
   </div>
-  <div class="chi-label -status">Optional input message</div>
+  <div class="chi-label -status">Optional helper message</div>
 </div>
 
 <script>chi.numberInput(document.getElementById('unique-id-me1'));<\/script>`
