@@ -333,10 +333,10 @@ describe('Data Table', () => {
       ).should('not.exist');
     });
 
-    it('Should have no footer', () => {
+    it('Should have footer', () => {
       cy.get(`[data-cy='data-table-empty']`)
         .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
-        .should('not.exist');
+        .should('exist');
     });
   });
 
@@ -1321,11 +1321,11 @@ describe('Data Table', () => {
         .find(`.${DATA_TABLE_CLASSES.SELECTABLE}`)
         .as('selectables');
       cy.get(
-        `[data-cy='data-table-bulk-actions'] 
+        `[data-cy='data-table-bulk-actions']
           .${PAGINATION_CLASSES.PAGINATION}`
       ).as('pagination');
       cy.get(
-        `[data-cy='data-table-bulk-actions'] 
+        `[data-cy='data-table-bulk-actions']
           .${DATA_TABLE_CLASSES.BODY} .${DATA_TABLE_CLASSES.ROW}`
       ).as('rows');
     });
@@ -1355,7 +1355,7 @@ describe('Data Table', () => {
           );
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(
-              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START}
               .${CHECKBOXES_CLASSES.LABEL}`
             )
             .click()
@@ -1364,14 +1364,14 @@ describe('Data Table', () => {
                 .find('input')
                 .should('be.checked');
               cy.get(
-                `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
+                `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION}
                       .${PAGINATION_CLASSES.RESULTS}`
               )
                 .find('span')
                 .contains(`${paginationResults} results`);
               cy.get(`[data-cy='data-table-bulk-actions']`)
                 .find(
-                  `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+                  `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START}
                     .${BULK_ACTIONS_CLASSES.LABEL}`
                 )
                 .contains(`Actions (${selected} Items Selected)`);
@@ -1397,7 +1397,7 @@ describe('Data Table', () => {
           );
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(
-              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START}
               .${CHECKBOXES_CLASSES.LABEL}`
             )
             .click()
@@ -1414,14 +1414,14 @@ describe('Data Table', () => {
                 .find('input')
                 .should('not.be.checked');
               cy.get(
-                `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
+                `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION}
                       .${PAGINATION_CLASSES.RESULTS}`
               )
                 .find('span')
                 .contains(`${paginationResults} results`);
               cy.get(`[data-cy='data-table-bulk-actions']`)
                 .find(
-                  `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+                  `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START}
                     .${BULK_ACTIONS_CLASSES.LABEL}`
                 )
                 .contains(`Actions (${selected} Items Selected)`);
@@ -1455,7 +1455,7 @@ describe('Data Table', () => {
                 .should('not.be.checked');
               cy.get('@rows').should('have.length', 3);
               cy.get(
-                `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
+                `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION}
                       .${PAGINATION_CLASSES.RESULTS}`
               )
                 .find('span')
@@ -1480,7 +1480,7 @@ describe('Data Table', () => {
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(
-              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START}
               .${CHECKBOXES_CLASSES.LABEL}`
             )
             .click();
@@ -1498,7 +1498,7 @@ describe('Data Table', () => {
                 .should('not.be.checked');
               cy.get('@rows').should('have.length', 3);
               cy.get(
-                `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION} 
+                `[data-cy='data-table-bulk-actions'] .${PAGINATION_CLASSES.PAGINATION}
                     .${PAGINATION_CLASSES.RESULTS}`
               )
                 .find('span')
@@ -1514,13 +1514,13 @@ describe('Data Table', () => {
         .click();
       cy.get(`[data-cy='data-table-bulk-actions']`)
         .find(
-          `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.BUTTONS} 
+          `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.BUTTONS}
             .${BULK_ACTIONS_CLASSES.BUTTONS_DESKTOP}`
         )
         .should('be.visible');
       cy.get(`[data-cy='data-table-bulk-actions']`)
         .find(
-          `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.BUTTONS} 
+          `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.BUTTONS}
             .${BULK_ACTIONS_CLASSES.BUTTONS_MOBILE}`
         )
         .should('not.be.visible');
@@ -1542,7 +1542,7 @@ describe('Data Table', () => {
         .then(() => {
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(
-              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START}
                     .${BULK_ACTIONS_CLASSES.LABEL}`
             )
             .contains(`Actions (${selected} Items Selected)`);
@@ -1566,7 +1566,7 @@ describe('Data Table', () => {
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(
-              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START}
                   .${BULK_ACTIONS_CLASSES.LABEL}`
             )
             .contains(`Actions (${selected} Items Selected)`);
@@ -1576,7 +1576,7 @@ describe('Data Table', () => {
             .click();
           cy.get(`[data-cy='data-table-bulk-actions']`)
             .find(
-              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START} 
+              `.${BULK_ACTIONS_CLASSES.BULK_ACTIONS} .${BULK_ACTIONS_CLASSES.START}
                     .${BULK_ACTIONS_CLASSES.LABEL}`
             )
             .contains(`Actions (${selected} Items Selected)`);
