@@ -2,20 +2,10 @@
   <ComponentExample titleSize="h4" title="Info" id="info" :tabs="exampleTabs">
     p.-text(slot="example-description")
       | Render an info state by applying the modifier class <code>-row--info</code>.
-    table.chi-table(slot="example")
-      thead
-        tr.-row--info 
-          th Name
-          th ID
-          th Last Login
-      tbody
-        tr(v-for="(row, index) in rows" :key="index" :class="{'-row--info': index === 1}")
-          td {{ row.cell1 }}
-          td {{ row.cell2 }}
-          td {{ row.cell3 }}
+    <TableComponent :data="rows" :columns="tableHead" additionalClasses="" slot="example" />
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre> 
+    </pre>
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -24,13 +14,14 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { getTableHead } from "~/fixtures/fixtures";
 
 @Component({
   data: () => {
     return {
       rows: [
         { cell1: 'Name 1', cell2: 'name-1', cell3: 'Dec 18, 2020 3:26 PM' },
-        { cell1: 'Name 2', cell2: 'name-2', cell3: 'Dec 18, 2020 2:38 AM' },
+        { cell1: 'Name 2', cell2: 'name-2', cell3: 'Dec 18, 2020 2:38 AM', className: "-row--info" },
         { cell1: 'Name 3', cell2: 'name-3', cell3: 'Nov 5, 2020 10:15 AM' }
       ],
       exampleTabs: [
@@ -73,9 +64,13 @@ import { Component, Vue } from 'vue-property-decorator';
         </tr>
     </tbody>
 </table>`
-      }
+      },
     };
   }
 })
-export default class Info extends Vue {}
+export default class Info extends Vue {
+  get tableHead() {
+    return getTableHead();
+  }
+}
 </script>

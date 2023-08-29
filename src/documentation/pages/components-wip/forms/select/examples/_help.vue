@@ -13,7 +13,7 @@
             .chi-popover__content
               p(class="chi-popover__text") Helpful information goes here.
       select(class="chi-select" id="example-he1")
-        option(value="") Select
+        option(value="") - Select -
         option Option 1
         option Option 2
         option Option 3
@@ -66,7 +66,7 @@ declare const chi: any;
     </div>
   </div>
   <select class="chi-select" id="example-he1">
-    <option value="">Select</option>
+    <option value="">- Select -</option>
     <option>Option 1</option>
     <option>Option 2</option>
     <option>Option 3</option>

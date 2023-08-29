@@ -7,7 +7,7 @@
         .chi-form__item
           chi-label(for='example__message') Label
           chi-text-input(id='example__message')
-          .chi-label.-status Optional input message
+          .chi-label.-status Optional helper message
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -38,12 +38,12 @@ import { Component, Vue } from 'vue-property-decorator';
         webcomponent: `<div class="chi-form__item">
   <chi-label for="example__message">Label</chi-label>
   <chi-text-input id="example__message"></chi-text-input>
-  <div class="chi-label -status">Optional input message</div>
+  <div class="chi-label -status">Optional helper message</div>
 </div>`,
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example__message">Label</label>
   <input class="chi-input" id="example__message" type="text">
-  <div class="chi-label -status">Optional input message</div>
+  <div class="chi-label -status">Optional helper message</div>
 </div>`
       }
     };

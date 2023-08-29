@@ -20,20 +20,20 @@ import { COLORS } from '~/constants/constants';
     return {
       colors: [
         COLORS.SUCCESS,
-        COLORS['SUCCESS-LIGHT'],
-        COLORS['SUCCESS-LIGHTER'],
+        COLORS.SUCCESS_LIGHT,
+        COLORS.SUCCESS_LIGHTER,
         COLORS.INFO,
-        COLORS['INFO-LIGHT'],
-        COLORS['INFO-LIGHTER'],
+        COLORS.INFO_LIGHT,
+        COLORS.INFO_LIGHTER,
         COLORS.WARNING,
-        COLORS['WARNING-LIGHT'],
-        COLORS['WARNING-LIGHTER'],
+        COLORS.WARNING_LIGHT,
+        COLORS.WARNING_LIGHTER,
         COLORS.DANGER,
-        COLORS['DANGER-LIGHT'],
-        COLORS['DANGER-LIGHTER'],
+        COLORS.DANGER_LIGHT,
+        COLORS.DANGER_LIGHTER,
         COLORS.MUTED,
-        COLORS['MUTED-LIGHT'],
-        COLORS['MUTED-LIGHTER']
+        COLORS.MUTED_LIGHT,
+        COLORS.MUTED_LIGHTER
       ]
     }
   }
