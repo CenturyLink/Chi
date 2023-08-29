@@ -108,7 +108,7 @@ export default class ThemeSwitcher extends Vue {
   }
 
   get themeLabel() {
-    return ['portal', 'colt', 'brightspeed'].includes(this.$store.state.themes.theme)? 'Lumen' : THEMES[this.$store.state.themes.theme as keyof typeof THEMES].label
+    return ['colt', 'brightspeed'].includes(this.$store.state.themes.theme)? 'Lumen' : THEMES[this.$store.state.themes.theme as keyof typeof THEMES].label
   }
 
   setTheme(theme: Themes): void {
