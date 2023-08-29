@@ -122,16 +122,7 @@ pipeline {
       disableConcurrentBuilds()
     }
 
-
     // https://www.jenkins.io/doc/book/pipeline/syntax/#triggers
-
-    triggers {
-      issueCommentTrigger('.*test this please.*')
-    }
-
-    parameters{
-        booleanParam(name: 'isVue3', defaultValue: false, description: 'isVue3')
-    }
 
     stages {
       stage('Summary') {
@@ -356,8 +347,8 @@ pipeline {
                   rm -rf node_modules
                   rm -rf reports/html_report/responsive
                 """
+                ghYarnWrap('install')
                 unstash name: "DIST-CHI"
-                unstash name: "NODEMODULES-CHI"
                 sh script: """
                   mkdir -p reports/html_report/responsive
                   cp -a config/backstop_data/bitmaps_reference/responsive reports/html_report/responsive/bitmaps_reference
@@ -387,8 +378,8 @@ pipeline {
                   rm -rf node_modules
                   rm -rf reports/html_report/non_responsive
                 """
+                ghYarnWrap('install')
                 unstash name: "DIST-CHI"
-                unstash name: "NODEMODULES-CHI"
                 sh script: """
                   mkdir -p reports/html_report/non_responsive
                   cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive/bitmaps_reference
@@ -418,8 +409,8 @@ pipeline {
                   rm -rf node_modules
                   rm -rf reports/html_report/non_responsive_ce
                 """
+                ghYarnWrap('install')
                 unstash name: "DIST-CHI"
-                unstash name: "NODEMODULES-CHI"
                 sh script: """
                   mkdir -p reports/html_report/non_responsive_ce
                   cp -a config/backstop_data/bitmaps_reference/non_responsive reports/html_report/non_responsive_ce/bitmaps_reference
@@ -455,7 +446,7 @@ pipeline {
                     rm -rf node_modules
                   """
                   unstash name: "DIST-CHI-CE"
-                  unstash name: "NODEMODULES-CHI-CE"
+                  
                 }
                 dir ('src/chi-vue') {
                   sh """
@@ -463,7 +454,6 @@ pipeline {
                     rm -rf node_modules
                   """
                   unstash name: "DIST-CHI-VUE"
-                  unstash name: "NODEMODULES-CHI-VUE"
                 }
                 def retries = 3
                 while (retries != 0) {
@@ -991,7 +981,7 @@ def isVersionBump(def type = 'chi') {
     
     isVersionBumpResult = versionBump.trim() == "yes"
     isVersionBumpResult = isVersionBumpResult && currentBuild.currentResult.toLowerCase() == "success"
-    isVersionBumpResult = isVersionBumpResult && ( ['origin/master', 'origin/main', 'master', 'main', PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase()) || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1))
+    isVersionBumpResult = isVersionBumpResult && ( ['origin/master', 'origin/main', 'master', 'main', env.PROD_BRANCH].contains(env.GIT_BRANCH.trim().toLowerCase()) || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1))
     echo "${scope} - ${env.VERSION_BUMP_SCOPE}"
     if (!isVersionBumpResult) {
       return
@@ -1067,12 +1057,12 @@ def printSummary() {
   def startedFromUpstream = buildCauses.any { cause -> cause._class == 'org.jenkinsci.plugins.workflow.support.steps.build.BuildUpstreamCause' }
   def baseJobName = env.JOB_NAME.replace("${env.JOB_BASE_NAME}", "${env.VUE3_BRANCH}")
   def causeUpstream = false
-  def isDevOpsGCR = false
+  def isDevOpsGCRVue3 = false
   if (startedFromUpstream) {
     causeUpstream = buildCauses.any { cause -> cause.upstreamProject =~ /${baseJobName}/ }
-    isDevOpsGCR = buildCauses.any { cause -> cause.upstreamProject =~ /.*##(RC|PROMOTE|DEPLOYMENT)##.*/ }
+    isDevOpsGCRVue3 = buildCauses.any { cause -> cause.upstreamProject =~ /.*##(PROMOTE|DEPLOYMENT)##VUE3##.*/ }
   }
-  env.IS_VUE3_TRIGGER = (startedFromUpstream && (causeUpstream || isDevOpsGCR) && params.isVue3) ? true : false
+  env.IS_VUE3_TRIGGER = (causeUpstream || isDevOpsGCRVue3) ? true : false
   if (env.BRANCH_NAME == env.VUE3_BRANCH || env.CHANGE_TARGET == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean()) {
     env.PROD_BRANCH = env.VUE3_BRANCH
   } else {
@@ -1129,7 +1119,7 @@ def gitHubReleaser(def scope = 'chi') {
   
   def classifier = scope == 'chi-vue' ? "-${scope}" : ''
 
-  if (env.BRANCH_NAME == env.VUE3_BRANCH) {
+  if (env.BRANCH_NAME == env.VUE3_BRANCH || env.CHANGE_TARGET == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean()) {
     classifier = classifier == '' ? '-vue3' : classifier.replace('-vue', '-vue3')
   }
 
@@ -1195,8 +1185,8 @@ def ghYarnWrap(def args, def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS) {
 def promoteDeployTagGCR() {
   def tagAttributes = jslGCRGetTagAttributes()
   echo "Processing ${tagAttributes['tagType']} tag for DevOps ${tagAttributes['gcrNumber']}"
-  jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
-  def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
+  jslGCRTag('PROMOTE##VUE3', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
+  def tagName = jslGCRTag('DEPLOYMENT##VUE3', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
   def currentJob = env.JOB_NAME.toString()
   def currentBaseName = env.JOB_BASE_NAME.toString()
   def pathJob = currentJob - currentBaseName
@@ -1244,7 +1234,6 @@ def customElementsBuild() {
     jslNpmWrapper('ci')
     jslNpmWrapper('run build')
     stash name: "DIST-CHI-CE", includes: "dist/**"
-    stash name: "NODEMODULES-CHI-CE", includes: "node_modules/**"
 }
 
 def chiVueBuild() {
@@ -1252,12 +1241,11 @@ def chiVueBuild() {
   def newVersion = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
   packageJson.version = newVersion.toString()
   writeJSON file: 'package.json', json: packageJson
-  jslNpmWrapper('ci --loglevel verbose')
+  jslNpmWrapper('ci')
   jslNpmWrapper('run build:component')
   stash name: "DIST-CHI-VUE", includes: "dist/**"
   jslNpmWrapper('run build:umd')
   stash name: "DIST-CHI-VUE-UMD", includes: "umd/**"
-  stash name: "NODEMODULES-CHI-VUE", includes: "node_modules/**"
 }
 
 def buildDocumentation() {
@@ -1293,7 +1281,6 @@ def buildChi() {
   ls -la ${pwd()}/dist
   ls -la ${pwd()}/dist/components
   """
-  stash name: "NODEMODULES-CHI", includes: "node_modules/**"
   jslJiraSendBuildInfo()
 }
 
