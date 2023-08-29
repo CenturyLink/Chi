@@ -1,5 +1,5 @@
 # CHANGELOG
-## 5.37.1 (AUG 10, 2023)
+## 5.37.1 (AUG 29, 2023)
 ### TEST
 #### Added
 * Test GCR
