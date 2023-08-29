@@ -17,6 +17,7 @@
     "prettier": "prettier './{src/**/*(*.ts|*.vue|*.tsx),*.js,tests/**/*(*.js)}' --write",
     "prettier:checker": "prettier './{src/**/*(*.ts|*.vue|*.tsx),*.js,tests/**/*(*.js)}' --check"
   },
+  
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
