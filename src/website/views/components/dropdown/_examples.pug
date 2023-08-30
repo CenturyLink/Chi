@@ -603,7 +603,7 @@ h3 Visible items
   .chi-tabs-panel#html-visible-items
     .chi-tab__description
       span.-text--grey
-        | Using pure HTML we are able only to adjust item height to fixed height. If the items height is not default, we need to use webcomponent.
+        | Max-height can be adjusted according to the needs, using styles. 
         | This HTML Blueprint requires JavaScript.
         | You may use your own solution, or use Chi's vanilla JavaScript solution,
         | <a href="../../getting-started/installation">Chi.js</a>.
@@ -613,7 +613,7 @@ h3 Visible items
     :code(lang="html")
       <div class="chi-dropdown">
         <button id="dropdown-1" class="chi-button chi-dropdown__trigger">Dropdown component</button>
-        <div class="chi-dropdown__menu visible-items-3">
+        <div class="chi-dropdown__menu" style="overflow: overlay; max-height: 7rem">
           <a class="chi-dropdown__menu-item" href="#">Item 1</a>
           <a class="chi-dropdown__menu-item" href="#">Item 2</a>
           <a class="chi-dropdown__menu-item" href="#">Item 3</a>

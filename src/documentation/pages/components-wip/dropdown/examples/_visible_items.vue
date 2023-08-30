@@ -9,7 +9,6 @@
             a.chi-dropdown__menu-item(href='#exampleLink') Item 3
             a.chi-dropdown__menu-item(href='#exampleLink') Item 4
             a.chi-dropdown__menu-item(href='#exampleLink') Item 5
-            a.chi-dropdown__menu-item(href='#exampleLink') Item 6
     
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>

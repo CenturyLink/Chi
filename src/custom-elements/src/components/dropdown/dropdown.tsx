@@ -195,8 +195,9 @@ export class Dropdown {
   setMenuHeight() {
     if(this.visibleItems) {
       const menuItems = this._getDropdownMenuItems();
+      const countGuard =   menuItems.length < this.visibleItems ? menuItems.length : this.visibleItems
       let newHeight = 0
-      for (let i = 0; i < this.visibleItems; i++) {
+      for (let i = 0; i < countGuard; i++) {
         newHeight += menuItems[i].offsetHeight;
       }
       const padding = parseInt(getComputedStyle(this._dropdownMenuElement).getPropertyValue('padding-top'), 10) + 

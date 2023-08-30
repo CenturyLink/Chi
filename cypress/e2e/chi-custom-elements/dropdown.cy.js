@@ -171,7 +171,7 @@ describe('Dropdown', () => {
         .should('be.visible');
       cy.get(`@dropdownMenu`)
         .should('be.visible').
-        and(`@dropdownMenu`).invoke('height').should('equal', 142)
+        and(`@dropdownMenu`).invoke('height').should('equal', 112)
     })
   })
 
