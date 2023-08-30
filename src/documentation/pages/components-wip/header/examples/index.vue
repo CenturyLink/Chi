@@ -14,9 +14,6 @@
     div(v-if="$store.state.themes.theme === 'lumen'")
       <Base />
       <HeaderTitle />
-      <PortalHeader />
-      <PortalHeaderNavbar />
-      <HeaderImpersonation />
       <HeaderTitleButtons />
       <HeaderCollapseSearch />
       <HeaderMobileSecondary />
