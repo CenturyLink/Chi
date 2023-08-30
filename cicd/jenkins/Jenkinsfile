@@ -169,9 +169,8 @@ pipeline {
         parallel {
           stage('Linting Standard CHI') {
             agent {
-              dockerfile {
-                filename getNodeAgentBlock()
-                dir 'cicd/docker/agent_images'
+              docker {
+                image getNodeAgentBlock(null, 'image')
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -248,9 +247,8 @@ pipeline {
         parallel {
           stage ('Building Custom elements') {
             agent {
-              dockerfile {
-                filename getNodeAgentBlock()
-                dir 'cicd/docker/agent_images'
+              docker {
+                image getNodeAgentBlock(null, 'image')
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -281,10 +279,9 @@ pipeline {
             }
           }
           stage ('Building Vue documentation system') {
-             agent {
-              dockerfile {
-                filename getNodeAgentBlock()
-                dir 'cicd/docker/agent_images'
+            agent {
+              docker {
+                image getNodeAgentBlock(null, 'image')
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -301,9 +298,8 @@ pipeline {
       }
       stage ('Building Chi') {
         agent {
-          dockerfile {
-            filename getNodeAgentBlock()
-            dir 'cicd/docker/agent_images'
+          docker {
+            image getNodeAgentBlock(null, 'image')
             label 'Docker-enabled'
             args '-m 2G --shm-size=2gb'
           }
@@ -476,9 +472,8 @@ pipeline {
       }
       stage('Sonarqube Static Analysis') {
         agent {
-          dockerfile {
-            filename getNodeAgentBlock()
-            dir 'cicd/docker/agent_images'
+          docker {
+            image getNodeAgentBlock(null, 'image')
             label 'Docker-enabled'
             args '-m 2G --shm-size=2gb'
           }
@@ -560,9 +555,8 @@ pipeline {
         stages {
           stage('GitHub Release') {
             agent {
-              dockerfile {
-                filename getNodeAgentBlock()
-                dir 'cicd/docker/agent_images'
+              docker {
+                image getNodeAgentBlock(null, 'image')
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -729,9 +723,8 @@ PolicyDocument
               }
             }
             agent {
-              dockerfile {
-                filename getNodeAgentBlock()
-                dir 'cicd/docker/agent_images'
+              docker {
+                image getNodeAgentBlock(null, 'image')
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }
@@ -818,9 +811,8 @@ PRDesc
       }
       stage('Smoke Tests') {
         agent {
-          dockerfile {
-            filename getNodeAgentBlock()
-            dir 'cicd/docker/agent_images'
+          docker {
+            image getNodeAgentBlock(null, 'image')
             label 'Docker-enabled'
             args '-m 2G --shm-size=2gb'
           }
