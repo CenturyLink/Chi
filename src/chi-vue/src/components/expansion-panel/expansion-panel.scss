@@ -36,31 +36,6 @@
     }
   }
 
-  &.-state-icon {
-    & > .chi-epanel__header {
-      padding-left: 0 !important;
-    }
-
-    .inner-state-icon {
-      margin-right: 0.75rem;
-      visibility: hidden;
-    }
-
-    &.-done {
-      .inner-state-icon {
-        margin-top: 0.375rem;
-      }
-      & > .chi-epanel__header {
-        &::before {
-          content: '' !important;
-        }
-        .inner-state-icon {
-          visibility: visible;
-        }
-      }
-    }
-  }
-
   &__footer {
     > div {
       flex-direction: column;
