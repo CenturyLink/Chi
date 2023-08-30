@@ -2,6 +2,10 @@ import { Component, Prop, Watch, h, Element, State } from '@stencil/core';
 
 const EP_MODES = ['done', 'active', 'pending', 'disabled'];
 
+const DEFAULT_TOOLTIP_CONTENT = 'Done';
+
+declare const chi: any;
+
 @Component({
   tag: 'chi-expansion-panel',
   styleUrl: 'expansion-panel.scss',
@@ -33,6 +37,11 @@ export class ExpansionPanel {
    * to render a state icon within the panel
    */
   @Prop({ reflect: true }) stateIcon = false;
+
+  /**
+   * to render a state tooltip
+   */
+  @Prop({ reflect: true }) stateIconTooltip: string;
 
   private mutationObserver;
 
@@ -78,6 +87,10 @@ export class ExpansionPanel {
     this.stateValidation(this.state);
   }
 
+  componentDidLoad() {
+    chi.tooltip(document.getElementById('state-icon-tooltip'));
+  }
+
   render() {
     return (
       <div
@@ -90,6 +103,11 @@ export class ExpansionPanel {
         ${this.step ? '' : '-no-step'}`}
       >
         <div class="chi-epanel__header">
+          {this.stateIcon && (
+            <i class="chi-icon -icon--success icon-circle-check -sm--2"
+               id="state-icon-tooltip"
+               data-tooltip={this.stateIconTooltip || DEFAULT_TOOLTIP_CONTENT} />
+          )}
           {this.step ? (
             <span class="chi-epanel__number">{this.step}.</span>
           ) : (
