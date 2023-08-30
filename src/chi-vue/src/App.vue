@@ -1,9 +1,6 @@
 <template>
   <div id="app">
     <div class="-p--4">
-      <!-- Temporary: for testing purposes -->
-      <DataTableActionsView />
-
       <DataTableClientView />
       <DataTableServerView class="-mt--10" />
       <ExpansionPanelView />
@@ -22,7 +19,6 @@ import ExpansionPanelView from './views/ExpansionPanelView.vue';
 import PaginationView from './views/PaginationView.vue';
 import DrawerView from './views/DrawerView.vue';
 import TooltipView from './views/TooltipView.vue';
-import DataTableActionsView from './views/DataTable/DataTableActionsView/DataTableActionsView.vue';
 import DataTableClientView from './views/DataTable/ClientSide/DataTableClientView.vue';
 import DataTableServerView from './views/DataTable/ServerSide/DataTableServerView.vue';
 import SearchInputView from './views/SearchInputView.vue';
@@ -30,7 +26,6 @@ import SaveViewView from './views/SaveView.vue';
 
 @Component({
   components: {
-    DataTableActionsView,
     DataTableClientView,
     DataTableServerView,
     DrawerView,
