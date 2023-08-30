@@ -522,3 +522,16 @@ export const displayDefaultColumns = [
     width: ''
   }
 ];
+
+export const sizingColumns = [
+  {
+    title: 'Sizing Class',
+    key: 'class',
+    width: '40%'
+  },
+  {
+    title: 'Value',
+    key: 'value',
+    width: ''
+  }
+];
