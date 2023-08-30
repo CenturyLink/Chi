@@ -1,19 +1,9 @@
 <template lang="pug">
   <ComponentExample title="Base" id="base" :tabs="exampleTabs">
-    table.chi-table(slot="example")
-      thead
-        tr
-          th Name
-          th ID
-          th Last Login
-      tbody
-        tr(v-for="(row, index) in rows" :key="index")
-          td {{ row.cell1 }}
-          td {{ row.cell2 }}
-          td {{ row.cell3 }}
+    <TableComponent :data="rows" :columns="tableHead" additionalClasses="" slot="example" />
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
-    </pre> 
+    </pre>
     <pre class="language-html" slot="code-htmlblueprint">
       <code v-highlight="$data.codeSnippets.htmlblueprint" class="html"></code>
     </pre>
@@ -22,6 +12,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { getTableHead } from "~/fixtures/fixtures";
 
 @Component({
   data: () => {
@@ -71,9 +62,14 @@ import { Component, Vue } from 'vue-property-decorator';
         </tr>
     </tbody>
 </table>`
-      }
+      },
     };
   }
 })
-export default class Base extends Vue {}
+
+export default class Base extends Vue {
+  get tableHead() {
+    return getTableHead();
+  }
+}
 </script>

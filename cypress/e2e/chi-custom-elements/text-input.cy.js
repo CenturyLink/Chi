@@ -33,7 +33,7 @@ describe('Text Input', () => {
           cy.get(textInput).should(
             'have.attr',
             'helper-message',
-            'Optional input message'
+            'Optional helper message'
           );
           cy.get(textInput)
             .find(SELECTORS.CHI_HELPER_MESSAGE)
