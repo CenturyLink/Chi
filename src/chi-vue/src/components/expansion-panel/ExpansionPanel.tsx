@@ -15,7 +15,7 @@ export default class ExpansionPanel extends Vue {
   @Prop() step!: string;
   @Prop() bordered?: boolean;
   @Prop() stateIcon?: boolean;
-  @Prop() stateTooltip?: string;
+  @Prop() stateIconTooltip?: string;
 
   @Watch('state')
   stateValidation(newValue: ExpansionPanelState) {
@@ -52,13 +52,8 @@ export default class ExpansionPanel extends Vue {
       ${this.bordered ? EPANEL_CLASSES.BORDERED : ''} ${this.stateIcon ? EPANEL_CLASSES.STATE_ICON : ''}`}>
         <div class={EPANEL_CLASSES.HEADER}>
           {this.stateIcon && (
-            <Tooltip message={this.stateTooltip || DEFAULT_TOOLTIP_CONTENT}>
-              <chi-icon
-                icon="circle-check"
-                color="success"
-                size="sm--2"
-                extra-class={EPANEL_CLASSES.INNER_STATE_ICON}
-              />
+            <Tooltip message={this.stateIconTooltip || DEFAULT_TOOLTIP_CONTENT}>
+              <i class="chi-icon -icon--success icon-circle-check -sm--2" id="state-icon-tooltip" />
             </Tooltip>
           )}
           {this.step ? <span class={EPANEL_CLASSES.NUMBER}>{this.step}.</span> : ''}
