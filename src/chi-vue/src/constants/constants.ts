@@ -34,5 +34,6 @@ export const EPANEL = {
   TRANSITIONS: {
     SLIDE_FADE: 'slide-fade',
   },
+  DEFAULT_TOOLTIP_CONTENT: 'Done',
 };
 //#endregion

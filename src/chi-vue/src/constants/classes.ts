@@ -144,6 +144,7 @@ export const EPANEL_CLASSES = {
   NUMBER: 'chi-epanel__number',
   TITLE: 'chi-epanel__title',
   STATE_ICON: '-state-icon',
+  STATE: '-state',
 };
 //#endregion
 
@@ -191,11 +192,15 @@ export const GENERIC_SIZE_CLASSES = {
   MD: '-md',
   LG: '-lg',
   XL: '-xl',
+  SM_2: '-sm--2',
 };
 //#endregion
 
 //#region Icon
 export const ICON_CLASS = 'chi-icon';
+export const ICONS = {
+  SUCCESS: '-icon--success',
+};
 //#endregion
 
 //#region Input

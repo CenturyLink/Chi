@@ -1,12 +1,10 @@
 import { Prop, Watch } from 'vue-property-decorator';
 import { EXPANSION_PANEL_STATES, ExpansionPanelState } from '@/constants/types';
-import { EPANEL_CLASSES, UTILITY_CLASSES } from '@/constants/classes';
+import { EPANEL_CLASSES, UTILITY_CLASSES, ICON_CLASS, ICONS, GENERIC_SIZE_CLASSES } from '@/constants/classes';
 import './expansion-panel.scss';
 import { EPANEL } from '@/constants/constants';
 import { Component, Vue } from '@/build/vue-wrapper';
 import Tooltip from '@/components/tooltip/tooltip';
-
-const DEFAULT_TOOLTIP_CONTENT = 'Done';
 
 @Component({})
 export default class ExpansionPanel extends Vue {
@@ -15,7 +13,7 @@ export default class ExpansionPanel extends Vue {
   @Prop() step!: string;
   @Prop() bordered?: boolean;
   @Prop() stateIcon?: boolean;
-  @Prop() stateIconTooltip?: string;
+  @Prop({ default: EPANEL.DEFAULT_TOOLTIP_CONTENT }) stateIconTooltip?: string;
 
   @Watch('state')
   stateValidation(newValue: ExpansionPanelState) {
@@ -52,8 +50,11 @@ export default class ExpansionPanel extends Vue {
       ${this.bordered ? EPANEL_CLASSES.BORDERED : ''} ${this.stateIcon ? EPANEL_CLASSES.STATE_ICON : ''}`}>
         <div class={EPANEL_CLASSES.HEADER}>
           {this.stateIcon && (
-            <Tooltip message={this.stateIconTooltip || DEFAULT_TOOLTIP_CONTENT}>
-              <i class="chi-icon -icon--success icon-circle-check -sm--2" id="state-icon-tooltip" />
+            <Tooltip message={this.stateIconTooltip}>
+              <i
+                class={`${ICON_CLASS} ${ICONS.SUCCESS} icon-circle-check ${GENERIC_SIZE_CLASSES.SM_2} ${EPANEL_CLASSES.STATE}`}
+                id="state-icon-tooltip"
+              />
             </Tooltip>
           )}
           {this.step ? <span class={EPANEL_CLASSES.NUMBER}>{this.step}.</span> : ''}
