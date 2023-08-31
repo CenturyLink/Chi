@@ -67,6 +67,7 @@
 
       @include respond-to(lg) {
         font-size: $header-content-title-lg-font-size;
+        margin-left: 1.5rem;
         margin-right: 1rem;
       }
     }
@@ -443,7 +444,7 @@
         width: 9.0625rem;
 
         @include respond-to(md) {
-          margin: 0 4.5rem 0 0;
+          margin: 0 3rem 0 0;
           width: 9.0625rem;
         }
 
