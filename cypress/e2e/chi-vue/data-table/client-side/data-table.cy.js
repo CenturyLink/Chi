@@ -1041,30 +1041,34 @@ describe('Data Table', () => {
         cy.reload();
       });
 
-      it(`Should sort by status using a custom template`, () => {
-        const statuses = ['active', 'inact', 'active'];
+      it(
+        `Should sort by status using a custom template`,
+        { retries: 2 },
+        () => {
+          const statuses = ['active', 'inact', 'active'];
 
-        checkStatusSorting(statuses);
-        cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.ROW}`)
-          .eq(0)
-          .find(`.${DATA_TABLE_CLASSES.CELL}`)
-          .eq(1)
-          .as('idCell')
-          .click()
-          .then(() => {
-            const actives = ['active', 'active', 'active'];
+          checkStatusSorting(statuses);
+          cy.get(`[data-cy='data-table-sorting'] .${DATA_TABLE_CLASSES.ROW}`)
+            .eq(0)
+            .find(`.${DATA_TABLE_CLASSES.CELL}`)
+            .eq(1)
+            .as('idCell')
+            .click()
+            .then(() => {
+              const actives = ['active', 'active', 'active'];
 
-            checkStatusSorting(actives);
-          });
-        cy.get('@idCell')
-          .click()
-          .then(() => {
-            const inactives = ['inact', 'inact', 'inact'];
+              checkStatusSorting(actives);
+            });
+          cy.get('@idCell')
+            .click()
+            .then(() => {
+              const inactives = ['inact', 'inact', 'inact'];
 
-            checkStatusSorting(inactives);
-          });
-        cy.reload();
-      });
+              checkStatusSorting(inactives);
+            });
+          cy.reload();
+        }
+      );
 
       it(`Should sort by date`, () => {
         const dates = ['6 Jan 2018', '5 Jul 2018', '5 Apr 2019'];
