@@ -147,6 +147,7 @@ export default class ThemeSwitcher extends Vue {
     );
 
     this.$store.commit('themes/set', theme);
+    this.setNewRoute(theme);
   }
 
   mounted() {
@@ -172,8 +173,9 @@ export default class ThemeSwitcher extends Vue {
 
   setNewRoute(theme: string) {
     const currentRoute = this.$store.$router.currentRoute;
+    const currentTheme = this.$store.$router.currentRoute.query.theme.toString();
     const newTheme = theme !== 'centurylink' ? capitalize(theme) : 'CenturyLink';
-    const newRoute = currentRoute.fullPath.replace(theme, newTheme);
+    const newRoute = currentRoute.fullPath.replace(currentTheme, newTheme);
 
     this.$router.push(newRoute);
   }
