@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { mapThemeNames } from './../store/themes'
+import { themeNames } from './../store/themes';
 
 @Component({})
 export default class TitleAnchor extends Vue {
@@ -37,9 +37,12 @@ export default class TitleAnchor extends Vue {
   @Prop({ default: true }) showTitle?: boolean;
   @Prop() additionalClasses?: string;
 
-
   get anchor() {
-    return `<a class="-ml--1" href="${this.$store.$router.currentRoute.path}?theme=${mapThemeNames.get(this.$store.state.themes.theme)}#${this.id}">#</a>`;
+    return `<a class="-ml--1" href="${this.$store.$router.currentRoute.path}?theme=${this.theme}#${this.id}">#</a>`;
+  }
+
+  get theme() {
+    return themeNames.find((theme: string) => theme === this.$store.state.themes.theme);
   }
 
   get titleAnchorClassnames() {
