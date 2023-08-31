@@ -73,7 +73,10 @@ export default class ColumnCustomizationContent extends Vue {
         refButton = 'buttonMoveDown';
       }
 
-      const isDisabled = (icon === 'chevron-up' && !this.canMoveUp) || (icon === 'chevron-down' && !this.canMoveDown);
+      const isDisabled =
+        (icon === 'chevron-up' && !this.canMoveUp) ||
+        (icon === 'chevron-down' && !this.canMoveDown) ||
+        (icon === 'chevron-right' && this._availableColumns?.length === 0);
 
       return (
         <button
@@ -122,6 +125,7 @@ export default class ColumnCustomizationContent extends Vue {
       }
     }
     this.key += 1;
+    this.canMoveUp = this.canMoveDown = !!this._selectedColumns?.length;
     this._emitSelectedColumnsChange();
   }
 
@@ -159,6 +163,7 @@ export default class ColumnCustomizationContent extends Vue {
         this._selectedColumns = newSelectedStandardColumns.sort(this.sortByLocked);
       }
       this.key += 1;
+      this.canMoveUp = this.canMoveDown = !!this._selectedColumns?.length;
       this._emitSelectedColumnsChange();
     }
   }
@@ -180,7 +185,7 @@ export default class ColumnCustomizationContent extends Vue {
             const newIndex = index + (direction === 'up' ? -1 : 1);
             const lastLockedColumnIndex = columns.filter(column => column.locked).length - 1;
 
-            this.canMoveUp = newIndex !== lastLockedColumnIndex + 1;
+            this.canMoveUp = columnData.wild ? newIndex !== 0 : newIndex !== lastLockedColumnIndex + 1;
             this.canMoveDown = newIndex !== columns.length - 1;
             _changeOrder(columns, index, newIndex);
           }
@@ -224,8 +229,12 @@ export default class ColumnCustomizationContent extends Vue {
     const selectedOptionIndex = Array.from(selectElement.options).indexOf(selectElement.selectedOptions[0]);
     const lastLockedColumnIndex =
       (this._selectedColumns as DataTableColumn[]).filter(column => column.locked).length - 1;
+    const isSomeWildColumns = filterSelectedColumns.some(column => column.wild);
+    const buttonMoveUpIsDisabled = isSomeWildColumns
+      ? selectedOptionIndex === 0
+      : selectedOptionIndex === lastLockedColumnIndex + 1;
 
-    (this.$refs.buttonMoveUp as HTMLButtonElement).disabled = selectedOptionIndex === lastLockedColumnIndex + 1;
+    (this.$refs.buttonMoveUp as HTMLButtonElement).disabled = buttonMoveUpIsDisabled;
     (this.$refs.buttonMoveDown as HTMLButtonElement).disabled = selectedOptionIndex === selectElement.length - 1;
   }
 
