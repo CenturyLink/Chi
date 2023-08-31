@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-08-24T09:53:06",
+  "timestamp": "2023-08-31T17:41:51",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2075,6 +2075,22 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "stateIconTooltip",
+          "type": "string",
+          "mutable": false,
+          "attr": "state-icon-tooltip",
+          "reflectToAttr": true,
+          "docs": "to render a state tooltip",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,

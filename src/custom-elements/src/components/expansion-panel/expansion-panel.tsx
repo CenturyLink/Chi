@@ -104,7 +104,7 @@ export class ExpansionPanel {
       >
         <div class="chi-epanel__header">
           {this.stateIcon && (
-            <i class="chi-icon -icon--success icon-circle-check -sm--2"
+            <i class="chi-icon -icon--success icon-circle-check -sm--2 -state"
                id="state-icon-tooltip"
                data-tooltip={this.stateIconTooltip || DEFAULT_TOOLTIP_CONTENT} />
           )}
