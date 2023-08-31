@@ -364,10 +364,10 @@ describe('Data Table', () => {
       ).should('not.exist');
     });
 
-    it('Should have no footer', () => {
+    it('Should have footer', () => {
       cy.get(`[data-cy='data-table-empty-actionable']`)
         .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
-        .should('not.exist');
+        .should('exist');
     });
 
     it('Should show the correct icon', () => {
