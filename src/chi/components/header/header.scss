@@ -67,6 +67,7 @@
 
       @include respond-to(lg) {
         font-size: $header-content-title-lg-font-size;
+        margin-left: 1.5rem;
         margin-right: 1rem;
       }
     }

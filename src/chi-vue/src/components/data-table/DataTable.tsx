@@ -1179,29 +1179,26 @@ export default class DataTable extends Vue {
           : this.data.body.length
         : this.config.pagination.results;
 
-    if (
-      (pages === 1 && this.config.pagination.hideOnSinglePage) ||
-      (this.$props.data.body.length === 0 && this.mode === DataTableModes.CLIENT)
-    ) {
+    if (pages === 1 && this.config.pagination.hideOnSinglePage) {
       return null;
-    } else {
-      return (
-        <div class={DATA_TABLE_CLASSES.FOOTER}>
-          <Pagination
-            ref="pagination"
-            compact={this.config.style.portal || this.config.pagination.compact}
-            firstLast={this.config.pagination.firstLast}
-            currentPage={this.activePage}
-            pages={pages}
-            results={results}
-            pageSize={!this.config.style.portal}
-            pageJumper={this.config.pagination.pageJumper}
-            portal={this.config.style.portal}
-            size={this.config.style.portal ? 'xs' : 'md'}
-          />
-        </div>
-      );
     }
+
+    return (
+      <div class={DATA_TABLE_CLASSES.FOOTER}>
+        <Pagination
+          ref="pagination"
+          compact={this.config.style.portal || this.config.pagination.compact}
+          firstLast={this.config.pagination.firstLast}
+          currentPage={this.activePage}
+          pages={pages}
+          results={results}
+          pageSize={!this.config.style.portal}
+          pageJumper={this.config.pagination.pageJumper}
+          portal={this.config.style.portal}
+          size={this.config.style.portal ? 'xs' : 'md'}
+        />
+      </div>
+    );
   }
 
   sliceData(data: DataTableRow[]): DataTableRow[] {
