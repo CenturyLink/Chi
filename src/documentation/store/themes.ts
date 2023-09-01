@@ -1,4 +1,4 @@
-import { DEFAULT_THEME } from "~/constants/configs";
+import { DEFAULT_THEME } from '~/constants/configs';
 import { THEMES } from '../constants/constants';
 
 export const state = () => ({
@@ -11,15 +11,16 @@ export const mutations = {
   }
 };
 
-export const mapThemeNames = new Map([
-  ['centurylink', "CenturyLink"],
-  ['lumen', "Lumen"],
-  ['portal', "Portal"],
-  ['brightspeed', "Brightspeed"],
-  ['colt', "Colt"],
-]);
+export const themeNames = [
+  'centurylink',
+  'lumen',
+  'portal',
+  'brightspeed',
+  'colt'
+];
 
-export function getThemeByMapValue( value: string) {
-  const entry = [...mapThemeNames.entries()].find(([key, val]) => val === value);
-  return entry ? entry[0] : null;
+export function getTheme(theme: string) {
+  const entry = themeNames.find((name: string) => name === theme?.toLowerCase());
+
+  return entry ? entry : null;
 }
