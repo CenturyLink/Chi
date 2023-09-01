@@ -14,9 +14,6 @@
     div(v-if="$store.state.themes.theme === 'lumen'")
       <Base />
       <HeaderTitle />
-      <PortalHeader />
-      <PortalHeaderNavbar />
-      <HeaderImpersonation />
       <HeaderTitleButtons />
       <HeaderCollapseSearch />
       <HeaderMobileSecondary />
@@ -47,9 +44,6 @@ import Base from './_base.vue';
 import BasePortal from './_portal/_base_header_portal.vue';
 import BaseCenturylink from './_centurylink/_base_centurylink.vue';
 import HeaderTitle from './_header_title.vue';
-import PortalHeader from './_portal_header.vue';
-import PortalHeaderNavbar from './_portal_header_navbar.vue';
-import HeaderImpersonation from './_header_impersonation.vue';
 import HeaderImpersonationPortal from './_portal/_header_impersonation_portal.vue';
 import HeaderTitleButtons from './_header_title_buttons.vue';
 import HeaderCollapseSearch from './_header_collapse_search.vue';
@@ -71,9 +65,6 @@ import SizesXLargeCenturylink from './_centurylink/_sizes_xlarge_centurylink.vue
     BasePortal,
     BaseCenturylink,
     HeaderTitle,
-    PortalHeader,
-    PortalHeaderNavbar,
-    HeaderImpersonation,
     HeaderImpersonationPortal,
     HeaderTitleButtons,
     HeaderCollapseSearch,

@@ -78,7 +78,13 @@ export class Drag {
       this.component._popper.destroy();
       this.component._popper = null;
     }
+
+    if (!this.elementToMove) {
+      return;
+    }
+
     const rect = this.elementToMove.getBoundingClientRect();
+
     this.setPosition(e.clientX, e.clientY, rect);
   };
 
@@ -90,7 +96,13 @@ export class Drag {
       this.component._popper.destroy();
       this.component._popper = null;
     }
+
+    if (!this.elementToMove) {
+      return;
+    }
+
     const rect = this.elementToMove.getBoundingClientRect();
+
     this.setPosition(touch.clientX, touch.clientY, rect);
   };
 
@@ -116,6 +128,10 @@ export class Drag {
   }
 
   private handlerResize = () => {
+    if (!this.elementToMove) {
+      return;
+    }
+
     const rect = this.elementToMove.getBoundingClientRect();
 
     this.screenWidth = this.setScreenWidth();
