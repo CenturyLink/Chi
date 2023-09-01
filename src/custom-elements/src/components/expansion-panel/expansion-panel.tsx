@@ -44,6 +44,7 @@ export class ExpansionPanel {
   @Prop({ reflect: true }) stateIconTooltip: string;
 
   private mutationObserver;
+  private tooltip: any;
 
   @Watch('state')
   stateValidation(newValue: string) {
@@ -88,7 +89,14 @@ export class ExpansionPanel {
   }
 
   componentDidLoad() {
-    chi.tooltip(document.getElementById('state-icon-tooltip'));
+    this.tooltip = chi.tooltip(document.getElementById('state-icon-tooltip'));
+  }
+
+  componentDidUnload() {
+    if (this.tooltip) {
+      this.tooltip.dispose();
+      this.tooltip = null;
+    }
   }
 
   render() {
