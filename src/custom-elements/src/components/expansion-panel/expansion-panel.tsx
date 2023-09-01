@@ -1,8 +1,8 @@
 import { Component, Prop, Watch, h, Element, State } from '@stencil/core';
+import { EPANEL_CLASSES, GENERIC_SIZE_CLASSES, ICON_CLASS, ICONS, UTILITY_CLASSES } from "../../constants/classes";
+import { EPANEL_TOOLTIP_CONTENT } from "../../constants/constants";
 
 const EP_MODES = ['done', 'active', 'pending', 'disabled'];
-
-const DEFAULT_TOOLTIP_CONTENT = 'Done';
 
 declare const chi: any;
 
@@ -41,7 +41,7 @@ export class ExpansionPanel {
   /**
    * to render a state tooltip
    */
-  @Prop({ reflect: true }) stateIconTooltip: string;
+  @Prop({ reflect: true }) stateIconTooltip = EPANEL_TOOLTIP_CONTENT;
 
   private mutationObserver;
   private tooltip: any;
@@ -102,48 +102,48 @@ export class ExpansionPanel {
   render() {
     return (
       <div
-        class={`chi-epanel 
+        class={`${EPANEL_CLASSES.EPANEL} 
         ${this.state === 'disabled' ? `-disabled` : ''}
         ${this.state === 'active' ? `-active` : ''}
         ${this.state === 'done' ? `-done` : ''}
-        ${this.bordered ? `-bordered` : ''}
-        ${this.stateIcon ? `-state-icon` : ''}
+        ${this.bordered ? EPANEL_CLASSES.BORDERED : ''}
+        ${this.stateIcon ? EPANEL_CLASSES.STATE_ICON : ''}
         ${this.step ? '' : '-no-step'}`}
       >
-        <div class="chi-epanel__header">
+        <div class={EPANEL_CLASSES.HEADER}>
           {this.stateIcon && (
-            <i class="chi-icon -icon--success icon-circle-check -sm--2 -state"
+            <i class={`${ICON_CLASS} ${ICONS.SUCCESS} icon-circle-check ${GENERIC_SIZE_CLASSES.SM_2} ${EPANEL_CLASSES.STATE}`}
                id="state-icon-tooltip"
-               data-tooltip={this.stateIconTooltip || DEFAULT_TOOLTIP_CONTENT} />
+               data-tooltip={this.stateIconTooltip} />
           )}
           {this.step ? (
-            <span class="chi-epanel__number">{this.step}.</span>
+            <span class={EPANEL_CLASSES.NUMBER}>{this.step}.</span>
           ) : (
             ''
           )}
-          <div class="chi-epanel__title">{this.epanelTitle}</div>
-          <div class="chi-epanel__content">
-            <div class="chi-epanel__collapse">
-              <div class="-done--only">
+          <div class={EPANEL_CLASSES.TITLE}>{this.epanelTitle}</div>
+          <div class={EPANEL_CLASSES.CONTENT}>
+            <div class={EPANEL_CLASSES.COLLAPSE}>
+              <div class={EPANEL_CLASSES.DONE_ONLY}>
                 <slot name="done" />
               </div>
             </div>
           </div>
           {this.state === 'done' || this.state === 'active' ? (
-            <div class="chi-epanel__action">
+            <div class={EPANEL_CLASSES.ACTION}>
               <slot name="change" />
             </div>
           ) : (
             ''
           )}
         </div>
-        <div class="chi-epanel__collapse">
-          <div class="-active--only">
-            <div class="chi-epanel__body">
-              <div class="chi-epanel__content">
+        <div class={EPANEL_CLASSES.COLLAPSE}>
+          <div class={EPANEL_CLASSES.ACTIVE_ONLY}>
+            <div class={EPANEL_CLASSES.BODY}>
+              <div class={EPANEL_CLASSES.CONTENT}>
                 <slot name="active" />
               </div>
-              <div class="chi-epanel__footer -justify-content--end">
+              <div class={`${EPANEL_CLASSES.FOOTER} ${UTILITY_CLASSES.JUSTIFY.END}`}>
                 <slot name="footer" />
               </div>
             </div>
