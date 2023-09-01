@@ -1,4 +1,10 @@
-import { DataTableConfig, SaveViewConfig, SaveViewModes } from '@/constants/types';
+import {
+  DataTableActionItemResponsiveness,
+  DataTableColumnProps,
+  DataTableConfig,
+  SaveViewConfig,
+  SaveViewModes,
+} from '@/constants/types';
 
 export const exampleConfig: DataTableConfig = {
   columnResize: true,
@@ -42,6 +48,32 @@ export const exampleConfig: DataTableConfig = {
   emptyActionable: {
     isActionable: true,
   },
+  actions: [
+    {
+      label: 'View',
+      icon: 'icon-check-alt',
+      onClick: (props: DataTableColumnProps) => {
+        alert(`viewed props! ${JSON.stringify(props)}`);
+      },
+    },
+    {
+      label: 'Edit',
+      icon: 'icon-edit',
+      hide: [DataTableActionItemResponsiveness.MOBILE],
+      onClick: () => (location.href = 'https://www.google.com'),
+    },
+    {
+      label: 'Download',
+      icon: 'icon-circle-arrow-down',
+      hide: [DataTableActionItemResponsiveness.DESKTOP],
+      onClick: () => console.log(`downloaded`),
+    },
+    {
+      label: 'Delete',
+      icon: 'icon-delete',
+      onClick: () => console.log('deleted'),
+    },
+  ],
 };
 
 export const exampleSaveViewConfig: SaveViewConfig = {
@@ -267,7 +299,6 @@ export const exampleTableArrayHead = [
   { name: 'number', label: 'Number', sortable: true, sortDataType: 'number' },
   { name: 'date', label: 'Created', sortable: true, sortBy: 'date', sortDataType: 'date' },
   { name: 'productId', label: 'Service ID', sortable: true, sortDataType: 'string' },
-  { name: 'actions', label: ' ', align: 'right', allowOverflow: true, isPrintDisabled: true, key: true },
 ];
 
 export const exampleTableHead = {
@@ -308,7 +339,6 @@ export const exampleTableHead = {
   number: { label: 'Number', sortable: true, sortDataType: 'number' },
   date: { label: 'Created', sortable: true, sortBy: 'date', sortDataType: 'date' },
   productId: { label: 'Service ID', sortable: true, sortDataType: 'string' },
-  actions: { label: ' ', align: 'right', allowOverflow: true, isPrintDisabled: true, key: true },
 };
 
 export const exampleTableBody = [
@@ -333,11 +363,6 @@ export const exampleTableBody = [
       0,
       { template: 'date', payload: { date: new Date('02/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021063' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -351,11 +376,6 @@ export const exampleTableBody = [
       1,
       { template: 'date', payload: { date: new Date('03/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021071' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -372,11 +392,6 @@ export const exampleTableBody = [
       2,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021064' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -394,11 +409,6 @@ export const exampleTableBody = [
       3,
       { template: 'date', payload: { date: new Date('05/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021065' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -417,11 +427,6 @@ export const exampleTableBody = [
       4,
       { template: 'date', payload: { date: new Date('06/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021066' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -451,11 +456,6 @@ export const exampleTableBody = [
               5,
               { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
-              {
-                template: 'actions',
-                payload: { id: 'NTM0000210661' },
-                align: 'right',
-              },
             ],
           },
           {
@@ -490,11 +490,6 @@ export const exampleTableBody = [
                       6,
                       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                       'SVUJW034781A',
-                      {
-                        template: 'actions',
-                        payload: { id: 'NTM0000210661' },
-                        align: 'right',
-                      },
                     ],
                   },
                   {
@@ -522,11 +517,6 @@ export const exampleTableBody = [
                       9,
                       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                       'SVUJW034781A',
-                      {
-                        template: 'actions',
-                        payload: { id: 'NTM0000210662' },
-                        align: 'right',
-                      },
                     ],
                   },
                 ],
@@ -551,11 +541,6 @@ export const exampleTableBody = [
               10,
               { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
-              {
-                template: 'actions',
-                payload: { id: 'NTM0000210662' },
-                align: 'right',
-              },
             ],
           },
         ],
@@ -569,11 +554,6 @@ export const exampleTableBody = [
       11,
       { template: 'date', payload: { date: new Date('07/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021067' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -587,11 +567,6 @@ export const exampleTableBody = [
       12,
       { template: 'date', payload: { date: new Date('01/06/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021072' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -609,11 +584,6 @@ export const exampleTableBody = [
       13,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM0000210651' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -627,11 +597,6 @@ export const exampleTableBody = [
       14,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021068' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -645,11 +610,6 @@ export const exampleTableBody = [
       15,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021069' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -663,11 +623,6 @@ export const exampleTableBody = [
       16,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021070' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -681,11 +636,6 @@ export const exampleTableBody = [
       17,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021073' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -699,11 +649,6 @@ export const exampleTableBody = [
       18,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021074' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -717,11 +662,6 @@ export const exampleTableBody = [
       19,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021075' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -735,11 +675,6 @@ export const exampleTableBody = [
       20,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021076' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -753,11 +688,6 @@ export const exampleTableBody = [
       21,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021077' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -771,11 +701,6 @@ export const exampleTableBody = [
       22,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021078' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -789,11 +714,6 @@ export const exampleTableBody = [
       23,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021079' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -807,11 +727,6 @@ export const exampleTableBody = [
       24,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021080' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -825,11 +740,6 @@ export const exampleTableBody = [
       25,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021081' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -843,11 +753,6 @@ export const exampleTableBody = [
       26,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021082' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -861,11 +766,6 @@ export const exampleTableBody = [
       27,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021083' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -879,11 +779,6 @@ export const exampleTableBody = [
       28,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021084' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -897,11 +792,6 @@ export const exampleTableBody = [
       29,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021085' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -915,11 +805,6 @@ export const exampleTableBody = [
       30,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021086' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -933,11 +818,6 @@ export const exampleTableBody = [
       31,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021087' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -951,11 +831,6 @@ export const exampleTableBody = [
       32,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021088' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -969,11 +844,6 @@ export const exampleTableBody = [
       33,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021089' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -987,11 +857,6 @@ export const exampleTableBody = [
       34,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021090' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -1005,11 +870,6 @@ export const exampleTableBody = [
       35,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021091' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -1023,11 +883,6 @@ export const exampleTableBody = [
       36,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021092' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -1041,11 +896,6 @@ export const exampleTableBody = [
       37,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021093' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -1059,11 +909,6 @@ export const exampleTableBody = [
       38,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021094' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -1077,11 +922,6 @@ export const exampleTableBody = [
       39,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021095' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -1095,11 +935,6 @@ export const exampleTableBody = [
       40,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021096' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -1113,11 +948,6 @@ export const exampleTableBody = [
       41,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021097' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -1131,11 +961,6 @@ export const exampleTableBody = [
       42,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021098' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -1149,11 +974,6 @@ export const exampleTableBody = [
       43,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021099' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -1167,11 +987,6 @@ export const exampleTableBody = [
       44,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021100' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -1185,11 +1000,6 @@ export const exampleTableBody = [
       -0.5,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021101' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -1203,11 +1013,6 @@ export const exampleTableBody = [
       -1,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTM000021102' },
-        align: 'right',
-      },
     ],
   },
 ];
