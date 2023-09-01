@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Emit, Prop, Watch } from 'vue-property-decorator';
 import {
   ACTIVE_CLASS,
@@ -227,6 +226,11 @@ export default class DataTable extends Vue {
 
     const infoPopovers: JSX.Element[] = [];
 
+    if (this.actions?.length) {
+      heads.push('actions');
+      this.data.head.actions = { label: ' ' };
+    }
+
     heads.forEach((column: string | DataTableColumn, cellIndex: number) => {
       const columnIndex = String(Array.isArray(this.data.head) ? cellIndex : column);
       const columnName = Array.isArray(this.data.head) ? (column as DataTableColumn).name : column;
@@ -290,10 +294,6 @@ export default class DataTable extends Vue {
           this.config.columnSizes && this._currentScreenBreakpoint
             ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
             : null;
-
-      if (this.actions?.length) {
-        this.data.head = { ...this.data.head, actions: { label: ' ' } };
-      }
 
       const sortableColumnHead = (
         <div

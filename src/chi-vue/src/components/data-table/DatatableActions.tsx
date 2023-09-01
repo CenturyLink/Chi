@@ -75,20 +75,18 @@ export default class DataTableActions extends Vue {
                 </button>
               </header>
               <div class="chi-modal__content -p--0">
-                <div class="chi-dropdown__menu -active -py--0">
-                  {this.actions?.map((button, index) => {
-                    if (!this._hideOn(button.hide, DataTableActionItemResponsiveness.MOBILE)) {
-                      return (
-                        <a
-                          key={index}
-                          class="chi-dropdown__menu-item -text--lg -text--bold -text--primary -py--4 -bb--1"
-                          onClick={() => button.onClick(this.rowData)}>
-                          {button.label}
-                        </a>
-                      );
-                    }
-                  })}
-                </div>
+                {this.actions?.map((button, index) => {
+                  if (!this._hideOn(button.hide, DataTableActionItemResponsiveness.MOBILE)) {
+                    return (
+                      <a
+                        key={index}
+                        class="-d--block -text--lg -text--bold -text--primary -p--3 -bb--1"
+                        onClick={() => button.onClick(this.rowData)}>
+                        {button.label}
+                      </a>
+                    );
+                  }
+                })}
               </div>
             </section>
           </div>
