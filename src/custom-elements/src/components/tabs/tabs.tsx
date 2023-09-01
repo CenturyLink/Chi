@@ -328,11 +328,11 @@ export class Tabs {
     this.hideAllDropdowns();
   };
 
-  getParentIds(data: TabTrigger) {
+  getParentIds(data: TabTrigger): string[] {
     const parentIds = [];
 
-    const collectParentIds = item => {
-      if (item.parent && item.parent.children) {
+    const collectParentIds = (item: TabTrigger) => {
+      if (item.parent) {
         parentIds.push(item.parent.id);
         collectParentIds(item.parent);
       }
@@ -343,13 +343,13 @@ export class Tabs {
   }
 
   hideInactiveDropdowns(tabData: TabTrigger) {
-    const parentIdsArray = this.getParentIds(tabData);
-    const idsToRemove = [...parentIdsArray, tabData.id];
+    const parentIds = this.getParentIds(tabData);
+    const idsToRemove = [...parentIds, tabData.id];
     const filteredDropdownKeys = Object.keys(this.dropdownKeys).filter(
       item => !idsToRemove.includes(item)
     );
 
-    this.hideSpecificDropdowns(filteredDropdownKeys);
+    this.hideSelectedDropdowns(filteredDropdownKeys);
   }
 
   handlerTabMouseEnter = (tabData: TabTrigger) => {
@@ -462,8 +462,8 @@ export class Tabs {
     this.slidingBorderLeft = `${position.left}px`;
   }
 
-  hideDropdowns(hideArray) {
-    hideArray.forEach(id => {
+  hideDropdowns(dropdowns: string[]) {
+    dropdowns.forEach(id => {
       const dropdownElement = this.el.querySelector(`#subLevelDropdown-${id}`);
 
       if (dropdownElement) {
@@ -476,8 +476,8 @@ export class Tabs {
     this.hideDropdowns(Object.keys(this.dropdownKeys));
   }
 
-  hideSpecificDropdowns(array) {
-    this.hideDropdowns(array);
+  hideSelectedDropdowns(dropdowns: string[]) {
+    this.hideDropdowns(dropdowns);
   }
 
   dropdownIcon(position: 'right' | 'down'): HTMLElement {
