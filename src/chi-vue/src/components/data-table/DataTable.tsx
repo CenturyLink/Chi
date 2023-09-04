@@ -58,6 +58,7 @@ import { ColumnResize } from './utils/Resize';
 import Tooltip from '../tooltip/tooltip';
 import { Component, Vue } from '@/build/vue-wrapper';
 import DataTableEmptyActionable from './DataTableEmptyActionable';
+import DataTableActions from './DatatableActions';
 
 declare const chi: any;
 
@@ -122,6 +123,7 @@ export default class DataTable extends Vue {
   } = {};
   _chiDropdownSelectAll: any;
   _dataTableNumber?: number;
+  actions = this.$props.config.actions;
 
   _toggleInfoPopover(infoPopoverId: string) {
     const popover = this._getInfoPopover(infoPopoverId);
@@ -188,7 +190,15 @@ export default class DataTable extends Vue {
     );
   }
 
-  _getHeadLabel(label: string) {
+  _getHeadContent(label: string, icon?: string) {
+    if (icon) {
+      return (
+        <Tooltip message={label}>
+          <chi-icon icon={icon} size="sm" color="dark" />
+        </Tooltip>
+      );
+    }
+
     if (this.cellWrap) {
       return <DataTableTooltip textWrap={this.cellWrap} msg={label} class="-w--100" />;
     }
@@ -211,12 +221,20 @@ export default class DataTable extends Vue {
       ) : null,
       this._expandable ? this._headExpandable() : null,
     ];
+
     const heads = Array.isArray(this.data.head) ? this.data.head : Object.keys(this.data.head);
+
     const infoPopovers: JSX.Element[] = [];
+
+    if (this.actions?.length) {
+      heads.push('actions');
+      this.data.head.actions = { label: ' ' };
+    }
 
     heads.forEach((column: string | DataTableColumn, cellIndex: number) => {
       const columnIndex = String(Array.isArray(this.data.head) ? cellIndex : column);
       const columnName = Array.isArray(this.data.head) ? (column as DataTableColumn).name : column;
+      const icon = this.data.head[columnIndex].icon;
       const infoPopoverId = `info-popover-${this._dataTableNumber}-${columnName}`,
         buttonId = `info-popover-${this._dataTableNumber}-${columnName}-reference`,
         label = this.data.head[columnIndex].label || this.data.head[columnIndex],
@@ -297,7 +315,7 @@ export default class DataTable extends Vue {
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}>
-          {this._getHeadLabel(label as string)}
+          {this._getHeadContent(label as string, icon)}
           {infoIcon}
           {sortIcon}
         </div>
@@ -312,7 +330,7 @@ export default class DataTable extends Vue {
               ${cellWidth === 0 ? 'display: none;' : ''}
               ${this.data.head[columnIndex].allowOverflow ? 'overflow: visible;' : ''}
               `}>
-          {this._getHeadLabel(label as string)}
+          {this._getHeadContent(label as string, icon)}
           {infoIcon}
         </div>
       );
@@ -932,6 +950,7 @@ export default class DataTable extends Vue {
     }
 
     let cellIndex = 0;
+    const hasActions = !!this.actions?.length;
 
     bodyRow.data.forEach((rowCell: any) => {
       const columnSettings = this.data.head[Object.keys(this.data.head)[cellIndex]];
@@ -997,6 +1016,19 @@ export default class DataTable extends Vue {
       }
     });
 
+    if (hasActions) {
+      rowCells.push(
+        <div
+          class={`${DATA_TABLE_CLASSES.CELL}
+          -flex-basis--5
+          -key
+        `}
+          style="overflow: visible">
+          <DataTableActions actions={this.actions} rowData={bodyRow} />
+        </div>
+      );
+    }
+
     row.push(
       <div
         id={rowId}
@@ -1044,16 +1076,11 @@ export default class DataTable extends Vue {
           <div
             class={[
               DATA_TABLE_CLASSES.EMPTY,
-              this.emptyActionableContent.isActionable && DATA_TABLE_CLASSES.EMPTY_ACTIONABLE,
+              this.emptyActionableContent.isActionable ? DATA_TABLE_CLASSES.EMPTY_ACTIONABLE : '',
             ]}>
-            {this.emptyActionableContent.isActionable ? (
-              emptyActionable
-            ) : (
-              <div>
-                <chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>
-                {this.emptyMessage}
-              </div>
-            )}
+            {this.emptyActionableContent.isActionable
+              ? emptyActionable
+              : [<chi-icon class="-mr--1" icon="search" color="dark"></chi-icon>, <span>{this.emptyMessage}</span>]}
           </div>
         );
       }
@@ -1152,29 +1179,26 @@ export default class DataTable extends Vue {
           : this.data.body.length
         : this.config.pagination.results;
 
-    if (
-      (pages === 1 && this.config.pagination.hideOnSinglePage) ||
-      (this.$props.data.body.length === 0 && this.mode === DataTableModes.CLIENT)
-    ) {
+    if (pages === 1 && this.config.pagination.hideOnSinglePage) {
       return null;
-    } else {
-      return (
-        <div class={DATA_TABLE_CLASSES.FOOTER}>
-          <Pagination
-            ref="pagination"
-            compact={this.config.style.portal || this.config.pagination.compact}
-            firstLast={this.config.pagination.firstLast}
-            currentPage={this.activePage}
-            pages={pages}
-            results={results}
-            pageSize={!this.config.style.portal}
-            pageJumper={this.config.pagination.pageJumper}
-            portal={this.config.style.portal}
-            size={this.config.style.portal ? 'xs' : 'md'}
-          />
-        </div>
-      );
     }
+
+    return (
+      <div class={DATA_TABLE_CLASSES.FOOTER}>
+        <Pagination
+          ref="pagination"
+          compact={this.config.style.portal || this.config.pagination.compact}
+          firstLast={this.config.pagination.firstLast}
+          currentPage={this.activePage}
+          pages={pages}
+          results={results}
+          pageSize={!this.config.style.portal}
+          pageJumper={this.config.pagination.pageJumper}
+          portal={this.config.style.portal}
+          size={this.config.style.portal ? 'xs' : 'md'}
+        />
+      </div>
+    );
   }
 
   sliceData(data: DataTableRow[]): DataTableRow[] {

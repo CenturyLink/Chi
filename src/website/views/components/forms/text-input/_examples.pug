@@ -161,7 +161,7 @@ p.-text
   | encouraged but not mandatory to apply a <code>required</code> attribute to the corresponding label of the input which
   | will automatically render a red asterisk. <strong>Note:</strong> For HTML Blueprint implementations,
   | the <code>required</code> attribute is not supported on the label. Please use the alternate method
-  | specified below for rendering a red asterisk within the label. 
+  | specified below for rendering a red asterisk within the label.
 .example.-mb--3
   .-p--3
     .chi-grid
@@ -199,7 +199,7 @@ p.-text
   | suite, or unit number, applying <code>optional</code> to <code>chi-label</code> will help convey the labels
   | corresponding input is not required and can be skipped. <strong>Note:</strong> For HTML Blueprint implementations,
   | the <code>optional</code> boolean attribute is not supported on the label. Please use the alternate method
-  | specified below for rendering optional text within the label. 
+  | specified below for rendering optional text within the label.
 
 .example.-mb--3
   .-p--3
@@ -308,7 +308,8 @@ p.-text
 
 h3 Message
 p.-text
-  | Add a message below an input to store descriptions, validation feedback, and other helpful information.
+  | Use the <code>helper-message</code> attribute to provide users with additional information,
+  | validation feedback, and other helpful information.
 
 .example.-mb--3
   .-p--3
@@ -316,8 +317,7 @@ p.-text
       .chi-col.-w--12.-w-sm--8.-w-md--6.-w-lg--5
         .chi-form__item
           chi-label(for='example__message') Label
-          chi-text-input(id='example__message')
-          .chi-label.-status Optional input message
+          chi-text-input(id='example__message' helper-message='Optional helper message')
   .example-tabs.-pl--2
     ul.chi-tabs#example-message
       li.-active
@@ -328,15 +328,14 @@ p.-text
     :code(lang="html")
       <div class="chi-form__item">
         <chi-label for="example__message">Label</chi-label>
-        <chi-text-input id="example__message"></chi-text-input>
-        <div class="chi-label -status">Optional input message</div>
+        <chi-text-input id="example__message" helper-message="Optional helper message"></chi-text-input>
       </div>
   .chi-tabs-panel#html-message
     :code(lang="html")
       <div class="chi-form__item">
         <label class="chi-label" for="example__message">Label</label>
         <input class="chi-input" id="example__message" type="text">
-        <div class="chi-label -status">Optional input message</div>
+        <div class="chi-label -status">Optional helper message</div>
       </div>
 
 
@@ -354,10 +353,7 @@ p.-text
           chi-text-input(
             id="example__portal-danger"
             state="danger"
-            )
-          .chi-label.-status.-danger
-            i.chi-icon.icon-circle-warning(aria-hidden="true")
-            | Please enter a name.
+            helper-message="Please enter a name.")
   .example-tabs.-pl--2
     ul.chi-tabs#example-portal-error
       li.-active
@@ -368,11 +364,7 @@ p.-text
     :code(lang="html")
       <div class="chi-form__item">
         <chi-label for="example__danger">Name</chi-label>
-        <chi-text-input id="example__danger" state="danger"></chi-text-input>
-        <div class="chi-label -status -danger">
-          <chi-icon icon="circle-warning"></chi-icon>
-          Please enter a name.
-        </div>
+        <chi-text-input id="example__danger" state="danger" helper-message="Please enter a name."></chi-text-input>
       </div>
   .chi-tabs-panel#html-portal-error
     :code(lang="html")

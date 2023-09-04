@@ -1073,6 +1073,7 @@ $header-navbar-tab-xs-link-padding:         0.5rem 0;
 $header-navbar-tab-xs-link-hover-text-decoration:  underline;
 $header-height:                             3.5rem;
 $header-lg-height:                          4rem;
+$header-lg-navbar-height:                   2rem;
 $header-xl-height:                          6rem;
 $header-xl-content-padding:                 0 2rem;
 $header-xl-navbar-tab-link-font-size:       $font-size-lg;
@@ -1080,10 +1081,13 @@ $header-xl-navbar-tab-link-line-height:     $line-height;
 
 // Label
 $label-status-text-color:                   $color-text-muted;
-$label-status-danger-text-color:            $color-text-danger;
-$label-status-success-text-color:           $color-text-success;
 $label-required-text-color:                 $color-text-danger;
-
+$label-status-danger-text-color:            $color-text-danger;
+$label-status-danger-icon-color:            $color-text-danger;
+$label-status-success-text-color:           $color-text-success;
+$label-status-success-icon-color:           $color-text-success;
+$label-status-warning-text-color:           $color-text-warning;
+$label-status-warning-icon-color:           $color-text-warning;
 $label-help-icon-color:                     $color-icon-primary;
 $label-help-hover-icon-color:               $color-icon-primary;
 

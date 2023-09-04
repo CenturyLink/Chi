@@ -41,6 +41,7 @@ label,
 
   &.-status {
     color: $label-status-text-color;
+    font-style: italic;
     font-weight: $font-weight-normal;
     margin-top: 0.25rem;
 
@@ -51,17 +52,28 @@ label,
 
   &.-danger {
     color: $label-status-danger-text-color;
+    font-style: normal;
 
     .chi-icon {
-      color: $color-icon-danger;
+      color: $label-status-danger-icon-color;
     }
   }
 
   &.-success {
     color: $label-status-success-text-color;
+    font-style: normal;
 
     .chi-icon {
-      color: $color-icon-success;
+      color: $label-status-success-icon-color;
+    }
+  }
+
+  &.-warning {
+    color: $label-status-warning-text-color;
+    font-style: normal;
+
+    .chi-icon {
+      color: $label-status-warning-icon-color;
     }
   }
 

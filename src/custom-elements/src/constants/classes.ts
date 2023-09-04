@@ -16,6 +16,7 @@ export const EXPANDED_CLASS = '-expanded';
 export const COLLAPSED_CLASS = '-collapsed';
 export const ONE_LINK_TX = 'OneLinkTx';
 export const LIST_CLASS = '-list';
+export const STATUS_CLASS = '-status';
 //#endregion
 
 //#region Accordion
@@ -201,12 +202,16 @@ export const GENERIC_SIZE_CLASSES = {
   SM: '-sm',
   MD: '-md',
   LG: '-lg',
-  XL: '-xl'
+  XL: '-xl',
+  SM_2: '-sm--2'
 };
 //#endregion
 
 //#region Icon
 export const ICON_CLASS = 'chi-icon';
+export const ICONS = {
+  SUCCESS: '-icon--success',
+};
 //#endregion
 
 //#region Input
@@ -332,6 +337,7 @@ export const UTILITY_CLASSES = {
   JUSTIFY: {
     CENTER: '-justify-content--center',
     BETWEEN: '-justify-content--between',
+    END: '-justify-content--end',
     MD_START: '-justify-content-md--start',
     MD_CENTER: '-justify-content-md--center',
     MD_END: '-justify-content-md--end'
@@ -436,5 +442,24 @@ export const UTILITY_CLASSES = {
       4: '-mb--4'
     }
   }
+};
+//#endregion
+
+//#region Expansion Panel
+export const EPANEL_CLASSES = {
+  ACTIVE_ONLY: '-active--only',
+  ACTION: 'chi-epanel__action',
+  BODY: 'chi-epanel__body',
+  BORDERED: '-bordered',
+  COLLAPSE: 'chi-epanel__collapse',
+  CONTENT: 'chi-epanel__content',
+  DONE_ONLY: '-done--only',
+  EPANEL: 'chi-epanel',
+  FOOTER: 'chi-epanel__footer',
+  HEADER: 'chi-epanel__header',
+  NUMBER: 'chi-epanel__number',
+  TITLE: 'chi-epanel__title',
+  STATE_ICON: '-state-icon',
+  STATE: '-state',
 };
 //#endregion

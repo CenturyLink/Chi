@@ -5,7 +5,7 @@
       label(class="chi-label" for="example-op1") Label
         abbr(class="chi-label__optional" aria-label="Optional field") (optional)
       select(class="chi-select" id="example-op1" required)
-        option(value="") Select
+        option(value="") - Select -
         option Option 1
         option Option 2
         option Option 3
@@ -44,7 +44,7 @@ import { Component, Vue } from 'vue-property-decorator';
     <abbr class="chi-label__optional" aria-label="Optional field">(optional)</abbr>
   </label>
   <select class="chi-select" id="example-op1" required>
-    <option value="">Select</option>
+    <option value="">- Select -</option>
     <option>Option 1</option>
     <option>Option 2</option>
     <option>Option 3</option>

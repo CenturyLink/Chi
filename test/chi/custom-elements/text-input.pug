@@ -240,6 +240,21 @@ each size in sizes
                     value='Value',
                     disabled=status=='disabled'?'disabled':false)
 
+each size in ['xs', 'sm', 'md', 'lg', 'xl']
+  div(class=`test-helper-message-${size}`)
+    span.-text--h2=`Text Input / Helper Message / ${size}`
+    table(cellpadding="0" cellspacing="0" width="480px")
+      each state in states
+        tr
+          td
+            small= `${state}`
+          td
+            .-m--1
+              chi-text-input(
+                size= size, 
+                state= state != 'default' && state, 
+                helper-message="Optional helper message")
+
 script.
   function checkAllInputsHydrated() {
     const inputs = document.querySelectorAll('chi-text-input');
