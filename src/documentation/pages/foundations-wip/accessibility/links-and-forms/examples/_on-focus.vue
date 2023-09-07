@@ -1,0 +1,66 @@
+<template lang="pug">
+  div
+    <TitleAnchor title="On focus" id="on-focus" titleSize="h2" />
+    .chi-grid
+      .chi-col.-w--12
+        .chi-breadcrumb
+          ol.-text--normal
+            li.chi-breadcrumb__item(v-for="({ url, text }) in breadcrumbs")
+              a(:href="url" rel="noopener" target="_blank") {{ text }}
+      .chi-col.-w--12
+        .-lh--3
+          .chi-badge.-dark.-outline.-xs.-mr--1(v-for="({ tooltipText, mainText }) in badges" :data-tooltip="tooltipText" data-position="bottom")
+            span {{ mainText }}
+      .chi-col.-w--12
+        p.-text
+          | <strong>Benefits:</strong> Blind, low vision, cognitive/intellectual, motor disabilities.
+        p.-text
+          | When any component receives focus, it does not initiate a change of context.
+      .chi-col.-w--12
+        .chi-card.-s--1.-rounded.-mb--3.-mt--1
+          .chi-card__header
+            .chi-card__title How to pass
+          .chi-card__content.-px--3
+            ul.accessibility-checklist
+              li(v-for="item in checklist") {{ item }}
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component({
+  data: () => {
+    return {
+      breadcrumbs: [
+        {
+          url: 'https://www.w3.org/TR/WCAG20',
+          text: 'WCAG 2.0 Guideline'
+        },
+        {
+          url: 'https://www.w3.org/TR/WCAG20/#consistent-behavior',
+          text: '3.2 Predictable'
+        },
+        {
+          url: 'https://www.w3.org/TR/WCAG20/#consistent-behavior-receive-focus',
+          text: '3.2.1 On Focus'
+        }
+      ],
+      badges: [
+        {
+          tooltipText: 'Users must be able to understand the information as well as the operation of the user interface.',
+          mainText: 'Understandable'
+        },
+        {
+          tooltipText: 'Requirements must be satisfied to pass WCAG 2.0 Level A Success Criteria.',
+          mainText: 'Level A'
+        }
+      ],
+      checklist: [
+        'Is functionality predictable as the user navigates their way through a document?',
+        'Is an unexpected change of context avoided when a component receives focus?'
+      ]
+    }
+  }
+})
+export default class OnFocus extends Vue {}
+</script>
