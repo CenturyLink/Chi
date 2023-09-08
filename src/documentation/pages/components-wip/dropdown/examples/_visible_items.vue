@@ -37,7 +37,13 @@ import { Component, Vue } from 'vue-property-decorator';
         }
       ],
       codeSnippets: {
-        webcomponent: ``,
+        webcomponent: `<chi-dropdown visible-items="3" button="Dropdown, click me">
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 1</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 2</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 3</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 4</a>
+        <a class="chi-dropdown__menu-item" href="#" slot="menu">Item 5</a>
+      </chi-dropdown>`,
         htmlblueprint: `<div class="chi-dropdown">
       <button id="dropdown-1" class="chi-button chi-dropdown__trigger">Dropdown component</button>
       <div class="chi-dropdown__menu" style="overflow-y: auto; max-height: 7rem">

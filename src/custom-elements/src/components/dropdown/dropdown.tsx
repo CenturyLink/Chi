@@ -194,17 +194,18 @@ export class Dropdown {
 
   setMenuHeight() {
     const menuItems = this._getDropdownMenuItems();
-    const itemsToShow = menuItems.length < this.visibleItems ? menuItems.length : this.visibleItems
-    let newHeight = 0
-    const padding = this.getPadding('top') + this.getPadding('bottom')
+    const itemsToShow = menuItems.length < this.visibleItems ? menuItems.length : this.visibleItems;
+    const padding = this.getPadding('top') + this.getPadding('bottom');
+    let newHeight = 0;
     
     for (let i = 0; i < itemsToShow; i++) {
       newHeight += menuItems[i].offsetHeight;
     }
+
     this._dropdownMenuElement.style.height = `${newHeight + padding}px`
   }
 
-  getPadding(direction: 'top' | 'bottom'){
+  getPadding(direction: 'top' | 'bottom') {
     return parseInt(getComputedStyle(this._dropdownMenuElement).getPropertyValue(`padding-${direction}`), 10)
   }
 
@@ -270,7 +271,6 @@ export class Dropdown {
     this.setDisplay('block');
     this.active = true;
 
-    console.log(this.visibleItems)
     if (this.visibleItems) this.setMenuHeight()
 
     if (this._popper) {

@@ -162,9 +162,8 @@ describe('Dropdown', () => {
         .find(DROPDOWN_MENU).as('dropdownMenu');
     });
 
-    const maxHeight = 96
-
     it('Should set max-height according to number of items given', () => {
+      const maxHeight = 96
       cy.get(`@dropdownMenu`)
         .should('not.be.visible');
       cy.get(`@dropdownTrigger`)
