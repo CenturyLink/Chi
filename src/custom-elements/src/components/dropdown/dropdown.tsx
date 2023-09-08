@@ -202,11 +202,11 @@ export class Dropdown {
       newHeight += menuItems[i].offsetHeight;
     }
 
-    this._dropdownMenuElement.style.height = `${newHeight + padding}px`
+    this._dropdownMenuElement.style.height = `${newHeight + padding}px`;
   }
 
   getPadding(direction: 'top' | 'bottom') {
-    return parseInt(getComputedStyle(this._dropdownMenuElement).getPropertyValue(`padding-${direction}`), 10)
+    return parseInt(getComputedStyle(this._dropdownMenuElement).getPropertyValue(`padding-${direction}`), 10);
   }
 
   setDisplay(display: 'block' | 'none') {
