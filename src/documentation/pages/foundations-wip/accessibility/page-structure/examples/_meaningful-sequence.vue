@@ -13,9 +13,9 @@
             span {{ mainText }}
       .chi-col.-w--12
         p.-text
-          | <strong>Benefits:</strong> Blind keyboard user
+          | <strong>Benefits:</strong> Blind disabilities
         p.-text
-          | Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.
+          | When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined.
       .chi-col.-w--12
         .chi-card.-s--1.-rounded.-mb--3.-mt--1
           .chi-card__header
