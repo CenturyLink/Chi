@@ -3,7 +3,7 @@
     .chi-form__item(style="max-width:20rem" slot="example")
       label(class="chi-label" for="example-ba1") Label
       select(class="chi-select" id="example-ba1")
-        option(value="") Select
+        option(value="") - Select -
         option Option 1
         option Option 2
         option Option 3
@@ -39,7 +39,7 @@ import { Component, Vue } from 'vue-property-decorator';
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example-ba1">Label</label>
   <select class="chi-select" id="example-ba1">
-    <option value="">Select</option>
+    <option value="">- Select -</option>
     <option>Option 1</option>
     <option>Option 2</option>
     <option>Option 3</option>

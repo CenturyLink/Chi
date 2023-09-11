@@ -23,11 +23,11 @@ export default class BrandBackgroundColor extends Vue {
     return [
       {
         name: COLORS.PRIMARY.name,
-        value: this.isNotCenturylink ? COLORS.PRIMARY.value : COLORS['PRIMARY-CENTURYLINK'].value,
+        value: this.isNotCenturylink ? COLORS.PRIMARY.value : COLORS.PRIMARY_CENTURYLINK.value,
       },
       {
         name: COLORS.SECONDARY.name,
-        value: this.isNotCenturylink ? COLORS.SECONDARY.value : COLORS['SECONDARY-CENTURYLINK'].value,
+        value: this.isNotCenturylink ? COLORS.SECONDARY.value : COLORS.SECONDARY_CENTURYLINK.value,
       },
       COLORS.BLACK,
       COLORS.WHITE

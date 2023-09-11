@@ -24,10 +24,6 @@
           <span class="-text--truncate">{{ payload.status }}</span>
         </div>
       </template>
-      <template #actions="payload">
-        <desktopActions :id="payload.id" />
-        <mobileActions :id="payload.id" />
-      </template>
       <template #accordionContent="payload">
         <div class="chi-alert -success" role="alert">
           <i class="chi-alert__icon chi-icon icon-circle-check" aria-hidden="true"></i>
@@ -95,8 +91,6 @@
 <script lang="ts">
 import { Component, Vue } from '@/build/vue-wrapper';
 import DataTable from '../../../components/data-table/DataTable';
-import desktopActions from '../DataTableTemplates/example-desktop-actions.vue';
-import mobileActions from '../DataTableTemplates/example-mobile-actions.vue';
 import TicketPopover from '../DataTableTemplates/example-popover.vue';
 import DataTableToolbar from '../../../components/data-table-toolbar/DataTableToolbar';
 import DataTableBulkActions from '../../../components/data-table-bulk-actions/DataTableBulkActions';
@@ -115,8 +109,6 @@ import { DataTableRow } from '../../../constants/types';
     ChiSearchInput: SearchInput,
     ChiDataTableFilters: DataTableFilters,
     ChiColumnCustomization: ColumnCustomization,
-    desktopActions,
-    mobileActions,
     TicketPopover,
   },
   data: () => {
