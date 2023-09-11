@@ -2,6 +2,7 @@ import {
   Component,
   Event,
   EventEmitter,
+  Listen,
   Method,
   Prop,
   State,
@@ -164,6 +165,75 @@ export class Date {
     return Promise.resolve(this.value);
   }
 
+  @Listen('keydown', { target: 'window' })
+  handleKeyDown({ key }: KeyboardEvent) {
+    const isArrowKey = ['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(key);
+    const isEnter = key === 'Enter';
+
+    if (isArrowKey) {
+      return this._handleDatePickerNavigation(key);
+    }
+
+    if (isEnter) {
+      return this._handleSelectDate();
+    }
+  }
+
+  _handleSelectDate() {
+    const focusedElement = document.activeElement as HTMLElement;
+
+    if (focusedElement.hasAttribute('data-date')) {
+      focusedElement.click();
+    }
+  }
+
+  _handleDatePickerNavigation(keyCode: string) {
+    const currentValue = this.value ?? dayjs().format(this.format);
+    const focusedElement = document.activeElement as HTMLElement;
+    const hasFocus = focusedElement.hasAttribute('data-date');
+    const currentFocusedDate = hasFocus ? focusedElement.dataset.date : currentValue;
+
+    this._onArrowNavigation(keyCode, currentFocusedDate);
+  }
+
+  _onArrowNavigation(keyCode: string, currentValue: string) {
+    const index = this._getNextPosition(keyCode);
+    const nextValue = dayjs(currentValue).add(index, 'day').format(this.format);
+    const isSameMonth = dayjs(currentValue).isSame(nextValue, 'month');
+
+    if (!isSameMonth) {
+      return this._updateMonthViewAndSetFocus(keyCode, nextValue);
+    }
+
+    return this._setFocusDate(nextValue);
+  }
+
+  _updateMonthViewAndSetFocus(keyCode: string, nextValue: string) {
+    const isPrevMonth = ['ArrowUp', 'ArrowLeft'].includes(keyCode);
+
+    isPrevMonth ? this.prevMonth() : this.nextMonth();
+
+    this._updateViewMonth(() => {
+      setTimeout(() => {
+        this._setFocusDate(nextValue);
+      });
+    });
+  }
+
+  _setFocusDate(value) {
+    const chiDate = document.querySelector(`.chi-datepicker__day[data-date="${value}"]`) as HTMLElement;
+
+    chiDate?.focus();
+  }
+
+  _getNextPosition(keyCode: string) {
+    return {
+      ArrowUp: -7,
+      ArrowDown: 7,
+      ArrowLeft: -1,
+      ArrowRight: 1
+    }[keyCode];
+  }
   /**
    * Date change value event
    */
@@ -238,7 +308,7 @@ export class Date {
     };
   }
 
-  private _updateViewMonth() {
+  private _updateViewMonth(callback?: () => void) {
     if (this._vm && this._vm.min && this._vm.min.isAfter(this.viewMonth)) {
       this.viewMonth = this._vm.min;
     }
@@ -258,9 +328,9 @@ export class Date {
     }
     this._vm.monthDays = month;
 
-    this._vm.monthStartClass = `-month-starts-on-${
-      WEEK_CLASS_PART[this.viewMonth.set('date', 1).day()]
-    }`;
+    this._vm.monthStartClass = `-month-starts-on-${WEEK_CLASS_PART[this.viewMonth.set('date', 1).day()]}`;
+
+    callback?.();
   }
 
   fromString(dateStr: string): Dayjs {
@@ -343,11 +413,10 @@ export class Date {
       >
         <div class="chi-datepicker__month-row">
           <div
-            class={`prev ${
-              this._vm.min && endOfLastMonth.isBefore(this._vm.min)
-                ? CLASSES.DISABLED
-                : ''
-            }`}
+            class={`prev ${this._vm.min && endOfLastMonth.isBefore(this._vm.min)
+              ? CLASSES.DISABLED
+              : ''
+              }`}
             onClick={() => this.prevMonth()}
           >
             <chi-icon icon="chevron-left" size="sm" />
@@ -357,11 +426,10 @@ export class Date {
               ${this.viewMonth.format('YYYY')}`}
           </div>
           <div
-            class={`next ${
-              this._vm.max && startOfNextMonth.isAfter(this._vm.max)
-                ? CLASSES.DISABLED
-                : ''
-            }`}
+            class={`next ${this._vm.max && startOfNextMonth.isAfter(this._vm.max)
+              ? CLASSES.DISABLED
+              : ''
+              }`}
             onClick={() => this.nextMonth()}
           >
             <chi-icon icon="chevron-right" size="sm" />
@@ -378,23 +446,22 @@ export class Date {
           {this._vm.monthDays.map(day => (
             <div
               class={`chi-datepicker__day
-              ${
-                (this._vm.min && day.isBefore(this._vm.min)) ||
-                (this._vm.max && day.isAfter(this._vm.max)) ||
-                this.checkIfExcluded(day)
+              ${(this._vm.min && day.isBefore(this._vm.min)) ||
+                  (this._vm.max && day.isAfter(this._vm.max)) ||
+                  this.checkIfExcluded(day)
                   ? CLASSES.INACTIVE
                   : ''
-              }
-              ${
-                Array.from(this._vm.dates).some(vmDay =>
+                }
+              ${Array.from(this._vm.dates).some(vmDay =>
                   day.isSame(vmDay, 'day')
                 )
                   ? CLASSES.ACTIVE
                   : ''
-              }
+                }
               ${day.isSame(dayjs(), 'day') ? CLASSES.TODAY : ''}
             `}
               data-date={this.toDayString(day)}
+              tabIndex={this.value ? 0 : -1}
               onClick={() => {
                 if (
                   this.multiple &&
