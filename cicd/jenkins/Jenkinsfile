@@ -63,7 +63,7 @@ pipeline {
       KUBE_CREDENTIALS_TEST = 'kube-secret-test'
       AMAZON_CREDENTIALS = 'awsCredentialsPR'
       AMAZON_CREDENTIALS_PR = 'awsCredentials'
-      SONARQUBE_CREDENTIALS = 'sonar-credentials'
+      SONARQUBE_CREDENTIALS = 'sonarcicdent'
       GCP_CREDENTIALS = ''
       JIRA_CREDENTIALS = 'jira-credentials'
       MSTEAMS_CREDENTIALS = 'TEAMS-SECRET'
