@@ -47,7 +47,7 @@ RUN wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-s
 ENV PATH="/home/node/sonar-scanner-4.3.0.2102-linux/bin:${PATH}"
 ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/jre"
 
-RUN echo -n | openssl s_client -connect sonar.foss.corp.intranet:443 </dev/null 2>/dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /home/node/sonar-scanner-4.3.0.2102-linux/sonar.crt
+RUN echo -n | openssl s_client -connect sonarent.corp.intranet:443 </dev/null 2>/dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /home/node/sonar-scanner-4.3.0.2102-linux/sonar.crt
 
 RUN openssl x509 -outform der -in /home/node/sonar-scanner-4.3.0.2102-linux/sonar.crt -out /home/node/sonar-scanner-4.3.0.2102-linux/sonar.der
 
