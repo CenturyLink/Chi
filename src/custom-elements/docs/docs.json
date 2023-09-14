@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-08-31T17:41:51",
+  "timestamp": "2023-09-14T11:40:51",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2088,6 +2088,7 @@
           "reflectToAttr": true,
           "docs": "to render a state tooltip",
           "docsTags": [],
+          "default": "EPANEL_TOOLTIP_CONTENT",
           "values": [
             {
               "type": "string"
