@@ -73,7 +73,7 @@ export default class ColumnCustomizationContent extends Vue {
         refButton = 'buttonMoveDown';
       }
 
-      const everyColumnsSelected = (this._selectedColumns as DataTableColumn[]).every(
+      const everyColumnLocked = (this._selectedColumns as DataTableColumn[]).every(
         (column: DataTableColumn) => column.locked
       );
 
@@ -81,7 +81,7 @@ export default class ColumnCustomizationContent extends Vue {
         (icon === 'chevron-up' && !this.canMoveUp) ||
         (icon === 'chevron-down' && !this.canMoveDown) ||
         (icon === 'chevron-right' && this._availableColumns?.length === 0) ||
-        (icon !== 'chevron-right' && everyColumnsSelected);
+        (icon !== 'chevron-right' && everyColumnLocked);
 
       return (
         <button
