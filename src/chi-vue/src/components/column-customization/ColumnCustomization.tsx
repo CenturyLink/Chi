@@ -71,7 +71,9 @@ export default class ColumnCustomization extends Vue {
                   ${BUTTON_CLASSES.ICON_BUTTON}
                   ${BUTTON_CLASSES.FLAT}
                   ${BUTTON_CLASSES.SIZES.XS}
-                  ${UTILITY_CLASSES.PADDING.Y[0]}`}
+                  ${UTILITY_CLASSES.PADDING.Y[0]}
+                  chi-column-customization__reset-button
+                `}
                 onClick={this._reset}
                 disabled>
                 <div
@@ -80,7 +82,6 @@ export default class ColumnCustomization extends Vue {
                     aria-hidden="true"
                     class={`${ICON_CLASS} icon-reset -sm--2 ${UTILITY_CLASSES.MARGIN.RIGHT[0]}`}></i>
                   <span
-                    ref="resetText"
                     class={`${UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE} ${UTILITY_CLASSES.TYPOGRAPHY.SIZE.TWO_XS}`}>
                     Reset
                   </span>
@@ -113,7 +114,6 @@ export default class ColumnCustomization extends Vue {
       this._processData();
       (this.$refs.saveButton as HTMLButtonElement).disabled = false;
       (this.$refs.resetButton as HTMLButtonElement).disabled = true;
-      (this.$refs.resetText as HTMLElement).classList.remove(UTILITY_CLASSES.TYPOGRAPHY.COLOR.PRIMARY);
 
       this._resetTooltip?.hide();
       this.key += 1;
@@ -201,7 +201,6 @@ export default class ColumnCustomization extends Vue {
       this._ColumnCustomizationContentComponent.$on(DATA_TABLE_EVENTS.COLUMNS_CHANGE, (ev: DataTableColumn[]) => {
         const originalSelectedColumns = this.columnsData?.columns.filter((column: DataTableColumn) => column.selected);
         const resetButton = this.$refs.resetButton as HTMLButtonElement;
-        const resetText = this.$refs.resetText as HTMLElement;
 
         if (!this._previousSelected) {
           this._previousSelected = originalSelectedColumns;
@@ -214,7 +213,6 @@ export default class ColumnCustomization extends Vue {
         }
 
         this._resetTooltip = chi.tooltip(resetButton);
-        resetText.classList.toggle(UTILITY_CLASSES.TYPOGRAPHY.COLOR.PRIMARY, !resetButton.disabled);
       });
     }
   }

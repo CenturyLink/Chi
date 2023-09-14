@@ -109,19 +109,19 @@ const exampleColumns = [
     name: 'columnE',
     label: 'Column E',
     selected: true,
-    wild: true,
+    wildcard: true,
   },
   {
     name: 'columnF',
     label: 'Column F',
     selected: true,
-    wild: true,
+    wildcard: true,
   },
   {
     name: 'columnG',
     label: 'Column G',
     selected: true,
-    wild: true,
+    wildcard: true,
   },
   {
     name: 'columnH',

@@ -153,11 +153,9 @@ export default class ColumnCustomizationContent extends Vue {
       const availableColumnsSelect = this._availableColumnsComponent.$refs.select;
 
       if (availableColumnsSelect) {
-        let column: DataTableColumn | undefined;
-
         Array.from((availableColumnsSelect as HTMLSelectElement).selectedOptions).forEach(
           (option: HTMLOptionElement) => {
-            column = this._availableColumns?.find((column: DataTableColumn) => column.name === option.value);
+            const column = this._availableColumns?.find((column: DataTableColumn) => column.name === option.value);
 
             if (column) {
               newSelectedStandardColumns.push(column);
@@ -167,7 +165,7 @@ export default class ColumnCustomizationContent extends Vue {
             }
           }
         );
-        this._selectedColumns = newSelectedStandardColumns.sort(this.sortByLocked);
+        this._selectedColumns = newSelectedStandardColumns;
       }
       this.key += 1;
       this.canMoveUp = this.canMoveDown = !!this._selectedColumns?.length;
@@ -195,7 +193,7 @@ export default class ColumnCustomizationContent extends Vue {
 
             const lastLockedColumnIndex = this.getLastLockedColumnIndex(columns);
 
-            this.canMoveUp = columnData.wild ? newIndex !== 0 : newIndex !== lastLockedColumnIndex + 1;
+            this.canMoveUp = columnData.wildcard ? newIndex !== 0 : newIndex !== lastLockedColumnIndex + 1;
             this.canMoveDown = newIndex !== columns.length - 1;
           }
         }
@@ -237,7 +235,7 @@ export default class ColumnCustomizationContent extends Vue {
     const selectElement = this._selectedColumnsComponent?.$refs.select as HTMLSelectElement;
     const selectedOptionIndex = Array.from(selectElement.options).indexOf(selectElement.selectedOptions[0]);
     const lastLockedColumnIndex = this.getLastLockedColumnIndex(this._selectedColumns as DataTableColumn[]);
-    const isSomeWildColumns = filterSelectedColumns.some((column: DataTableColumn) => column.wild);
+    const isSomeWildColumns = filterSelectedColumns.some((column: DataTableColumn) => column.wildcard);
     const buttonMoveUpIsDisabled = isSomeWildColumns
       ? selectedOptionIndex === 0
       : selectedOptionIndex === lastLockedColumnIndex + 1;
