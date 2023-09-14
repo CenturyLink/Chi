@@ -18,5 +18,5 @@ import Examples from './examples/index.vue';
     Examples
   }
 })
-export default class LinksForms extends Vue {}
+export default class Other extends Vue {}
 </script>
