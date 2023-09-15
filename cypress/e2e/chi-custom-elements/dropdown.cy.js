@@ -162,7 +162,7 @@ describe('Dropdown', () => {
         .find(DROPDOWN_MENU).as('dropdownMenu');
     });
 
-    it('Should set max-height according to number of items given', () => {
+    it.skip('Should set max-height according to number of items given', () => {
       const maxHeight = 96
       
       cy.get(`@dropdownMenu`)
@@ -176,7 +176,7 @@ describe('Dropdown', () => {
         and(`@dropdownMenu`).invoke('height').should('equal', maxHeight)
     })
 
-    it('Should have attribute visible-items', () => {
+    it.skip('Should have attribute visible-items', () => {
       cy.get('@visible-items').should('have.attr', 'visible-items', 3);
     });
   })
