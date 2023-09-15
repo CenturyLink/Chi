@@ -32,6 +32,7 @@ export default class ColumnCustomization extends Vue {
   _selectedData?: DataTableColumn[];
   _modalId?: string;
   _previousSelected?: DataTableColumn[];
+  _resetTooltip?: any;
 
   _modal() {
     return (
@@ -42,10 +43,10 @@ export default class ColumnCustomization extends Vue {
             id={this._modalId}
             class={`${MODAL_CLASSES.MODAL}`}
             role="dialog"
-            aria-label="Customize columns"
+            aria-label="Customize Columns"
             aria-modal="true">
             <header class={MODAL_CLASSES.HEADER}>
-              <h2 class={MODAL_CLASSES.TITLE}>Customize columns</h2>
+              <h2 class={MODAL_CLASSES.TITLE}>Customize Columns</h2>
               <button
                 class={`${BUTTON_CLASSES.BUTTON} -icon -close`}
                 onClick={this._cancelColumnsChange}
@@ -64,21 +65,24 @@ export default class ColumnCustomization extends Vue {
             <footer class={MODAL_CLASSES.FOOTER}>
               <button
                 ref="resetButton"
+                data-tooltip="Reset to default columns and order"
                 class={`
                   ${BUTTON_CLASSES.BUTTON}
                   ${BUTTON_CLASSES.ICON_BUTTON}
                   ${BUTTON_CLASSES.FLAT}
                   ${BUTTON_CLASSES.SIZES.XS}
-                  ${UTILITY_CLASSES.PADDING.Y[0]}`}
+                  ${UTILITY_CLASSES.PADDING.Y[0]}
+                  chi-column-customization__reset-button
+                `}
                 onClick={this._reset}
                 disabled>
                 <div
                   class={`${BUTTON_CLASSES.CONTENT} ${UTILITY_CLASSES.FLEX.COLUMN} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>
                   <i
                     aria-hidden="true"
-                    class={`${ICON_CLASS} icon-reload -sm--2 ${UTILITY_CLASSES.MARGIN.RIGHT[0]}`}></i>
+                    class={`${ICON_CLASS} icon-reset -sm--2 ${UTILITY_CLASSES.MARGIN.RIGHT[0]}`}></i>
                   <span
-                    class={`${UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE} ${UTILITY_CLASSES.TYPOGRAPHY.COLOR.PRIMARY} ${UTILITY_CLASSES.TYPOGRAPHY.SIZE.TWO_XS}`}>
+                    class={`${UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE} ${UTILITY_CLASSES.TYPOGRAPHY.SIZE.TWO_XS}`}>
                     Reset
                   </span>
                 </div>
@@ -110,6 +114,8 @@ export default class ColumnCustomization extends Vue {
       this._processData();
       (this.$refs.saveButton as HTMLButtonElement).disabled = false;
       (this.$refs.resetButton as HTMLButtonElement).disabled = true;
+
+      this._resetTooltip?.hide();
       this.key += 1;
     }
   }
@@ -177,6 +183,7 @@ export default class ColumnCustomization extends Vue {
     if (dataTableToolbarComponent) {
       (dataTableToolbarComponent as DataTableToolbar)._columns = this;
     }
+
     this._chiModal = chi.modal(modalButton);
     this._watchContentComponentChanges();
   }
@@ -185,10 +192,15 @@ export default class ColumnCustomization extends Vue {
     this._watchContentComponentChanges();
   }
 
+  beforeDestroy() {
+    this._resetTooltip?.dispose();
+  }
+
   _watchContentComponentChanges() {
     if (this._ColumnCustomizationContentComponent) {
       this._ColumnCustomizationContentComponent.$on(DATA_TABLE_EVENTS.COLUMNS_CHANGE, (ev: DataTableColumn[]) => {
         const originalSelectedColumns = this.columnsData?.columns.filter((column: DataTableColumn) => column.selected);
+        const resetButton = this.$refs.resetButton as HTMLButtonElement;
 
         if (!this._previousSelected) {
           this._previousSelected = originalSelectedColumns;
@@ -197,8 +209,10 @@ export default class ColumnCustomization extends Vue {
         this._selectedData = ev;
         if (this._previousSelected && originalSelectedColumns) {
           (this.$refs.saveButton as HTMLButtonElement).disabled = checkColumns(this._previousSelected, ev);
-          (this.$refs.resetButton as HTMLButtonElement).disabled = checkColumns(originalSelectedColumns, ev);
+          resetButton.disabled = checkColumns(originalSelectedColumns, ev);
         }
+
+        this._resetTooltip = chi.tooltip(resetButton);
       });
     }
   }
