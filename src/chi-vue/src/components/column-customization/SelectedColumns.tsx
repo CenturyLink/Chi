@@ -20,10 +20,6 @@ export default class ColumnCustomizationSelectedColumns extends Vue {
       this._ColumnCustomizationContent = columnCustomizationModalContent as ColumnCustomizationContent;
       (columnCustomizationModalContent as ColumnCustomizationContent)._selectedColumnsComponent = this;
     }
-
-    if (this._ColumnCustomizationContent?._preSelection) {
-      (this.$refs.select as HTMLSelectElement).value = this._ColumnCustomizationContent._preSelection.value;
-    }
   }
 
   _generateOptions(data: DataTableColumn[]) {

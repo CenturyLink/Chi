@@ -147,11 +147,15 @@ export interface DataTableCustomItem {
   template: string;
   label: string;
 }
+export interface DataTableColumnDefinition {
+  availables: DataTableColumn[];
+  selecteds: DataTableColumn[];
+}
 export interface DataTableColumn {
   name: string;
   label: string;
-  selected: boolean;
-  locked: true;
+  selected?: boolean;
+  locked?: true;
 }
 export interface DataTableColumnsData {
   columns: DataTableColumn[];

@@ -89,3 +89,17 @@ export function printElement(content: string, title: string) {
     }, 0);
   });
 }
+
+export function sortByArray<T>(values: T[], key: keyof T) {
+  return values.sort((a, b) => {
+    if (a[key] < b[key]) {
+      return -1;
+    }
+
+    if (a[key] > b[key]) {
+      return 1;
+    }
+
+    return 0;
+  });
+}
