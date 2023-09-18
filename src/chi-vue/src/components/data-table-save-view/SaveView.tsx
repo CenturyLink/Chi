@@ -16,6 +16,7 @@ import { uuid4 } from '@/utils/utils';
 import './save-view.scss';
 import { defaultConfig } from './default-config';
 import { Component, Vue } from '@/build/vue-wrapper';
+import { Compare } from '@/utils/Compare';
 
 @Component({})
 export default class SaveView extends Vue {
@@ -36,7 +37,7 @@ export default class SaveView extends Vue {
 
   @Watch('config')
   dataConfigChange(newValue: SaveViewConfig, oldValue: SaveViewConfig) {
-    if (newValue !== oldValue) {
+    if (!Compare.deepEqual(newValue, oldValue)) {
       this.isSaveViewVisible = newValue.active;
       this.saveButtonDisabled = newValue.saveButtonDisabled;
     }
