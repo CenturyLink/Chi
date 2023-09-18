@@ -1,7 +1,8 @@
 <template>
   <div>
     <h3>Interactive</h3>
-    <button class="chi-button" @click="toggleSaveView">Toggle Save View</button>
+    <button class="chi-button -mr--2" @click="toggleSaveView">Toggle Save View</button>
+    <button class="chi-button" @click="toggleSaveButton">Toggle Save Button</button>
     <SaveView
       class="-mt--2"
       :config="interactiveSaveViewConfig"
@@ -10,6 +11,7 @@
       @chiSaveViewShown="saveViewShown"
       @chiSaveViewHide="saveViewHide"
       @chiSaveViewHidden="saveViewHidden"
+      @chiSaveViewInput="saveViewInput"
     >
       <button
         class="chi-button -light -icon -flat -xs"
@@ -69,6 +71,8 @@ import { SaveViewConfig, SaveViewModes } from '../constants/types';
 export default class SaveViewView extends Vue {
   active = false;
   isInfoPopoverActive = false;
+  rowSelected = true;
+  title = '';
 
   deleteView(e: Event) {
     console.log(e);
@@ -90,6 +94,19 @@ export default class SaveViewView extends Vue {
     console.log(e);
   }
 
+  saveViewInput(e: string) {
+    this.title = e;
+
+    this.checkSaveViewButton();
+  }
+
+  checkSaveViewButton() {
+    this.$data.interactiveSaveViewConfig = {
+      ...this.$data.interactiveSaveViewConfig,
+      saveButtonDisabled: !(this.title && this.title.length !== 0 && this.rowSelected),
+    };
+  }
+
   toggleInfoPopover() {
     this.isInfoPopoverActive = !this.isInfoPopoverActive;
   }
@@ -101,6 +118,12 @@ export default class SaveViewView extends Vue {
       ...this.$data.interactiveSaveViewConfig,
       active: this.active,
     };
+  }
+
+  toggleSaveButton() {
+    this.rowSelected = !this.rowSelected;
+
+    this.checkSaveViewButton();
   }
 
   setLabel(label: SaveViewModes): string {
