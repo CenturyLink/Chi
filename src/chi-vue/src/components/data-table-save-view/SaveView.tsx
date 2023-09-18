@@ -36,8 +36,9 @@ export default class SaveView extends Vue {
 
   @Watch('config')
   dataConfigChange(newValue: SaveViewConfig, oldValue: SaveViewConfig) {
-    if (newValue.active !== oldValue.active) {
+    if (newValue !== oldValue) {
       this.isSaveViewVisible = newValue.active;
+      this.saveButtonDisabled = newValue.saveButtonDisabled;
     }
   }
 
@@ -91,6 +92,10 @@ export default class SaveView extends Vue {
   handlerClickSaveLink() {
     this.setMode(SaveViewModes.CREATE);
     this.$emit(SAVE_VIEW_EVENTS.SAVE_LINK);
+  }
+
+  handlerInput() {
+    this.$emit(SAVE_VIEW_EVENTS.INPUT, this.viewTitle);
   }
 
   disableSaveButton() {
@@ -170,6 +175,7 @@ export default class SaveView extends Vue {
             placeholder={this.config.input?.placeholder}
             type="text"
             aria-label="Save view"
+            onInput={() => this.handlerInput()}
           />
           <div class={`${DIVIDER_CLASSES.DIVIDER} ${DIVIDER_CLASSES.VERTICAL}`}></div>
           <div class={CHECKBOX_CLASSES.CHECKBOX}>
