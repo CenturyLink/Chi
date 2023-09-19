@@ -182,16 +182,44 @@ export class Date {
   _handleSelectDate() {
     const focusedElement = document.activeElement as HTMLElement;
 
+    if (focusedElement.classList.contains('prev')) {
+      return this.prevMonth();
+    }
+
+    if (focusedElement.classList.contains('next')) {
+      return this.nextMonth();
+    }
+
     if (focusedElement.hasAttribute('data-date')) {
       focusedElement.click();
     }
   }
 
+  _getFocusedElement(focusedElement: HTMLElement, currentValue: string) {
+    const isDateControl = focusedElement.hasAttribute('data-date')
+    const isPrevMonth = focusedElement.classList.contains('prev')
+    const isNextMonth = focusedElement.classList.contains('next')
+
+
+    if (isDateControl) {
+      return focusedElement.dataset.date
+    }
+
+    if (isPrevMonth) {
+      return dayjs().subtract(1, 'month').startOf("month").format(this.format);
+    }
+
+    if (isNextMonth) {
+      return dayjs().add(1, 'month').startOf("month").format(this.format);
+    }
+
+    return currentValue;
+  }
+
   _handleDatePickerNavigation(keyCode: string) {
     const currentValue = this.value ?? dayjs().format(this.format);
     const focusedElement = document.activeElement as HTMLElement;
-    const hasFocus = focusedElement.hasAttribute('data-date');
-    const currentFocusedDate = hasFocus ? focusedElement.dataset.date : currentValue;
+    const currentFocusedDate = this._getFocusedElement(focusedElement, currentValue);
 
     this._onArrowNavigation(keyCode, currentFocusedDate);
   }
@@ -418,6 +446,7 @@ export class Date {
               : ''
               }`}
             onClick={() => this.prevMonth()}
+            tabIndex={0}
           >
             <chi-icon icon="chevron-left" size="sm" />
           </div>
@@ -431,6 +460,7 @@ export class Date {
               : ''
               }`}
             onClick={() => this.nextMonth()}
+            tabIndex={0}
           >
             <chi-icon icon="chevron-right" size="sm" />
           </div>

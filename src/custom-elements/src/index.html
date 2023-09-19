@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en" class="chi">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <link rel="stylesheet" href="http://localhost:8000/chi.css">
-  <title>Stencil Component Starter</title>
-  <script src="/build/ux-chi-ce.js"></script>
-
-</head>
-<body>
-
-  <em>Place you element here</em>
-  <chi-steps></chi-steps>
-
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <link rel="stylesheet" href="https://assets.ctl.io/chi/5.38.0/chi.css" />
+    <title>Stencil Component Starter</title>
+    <script type="module" src="/build/ux-chi-ce.esm.js"></script>
+    <script nomodule src="/build/ux-chi-ce.js"></script>
+  </head>
+  <body>
+    <chi-label for="date">Date</chi-label>
+    <chi-date-picker id="date"></chi-date-picker>
+  </body>
 </html>
