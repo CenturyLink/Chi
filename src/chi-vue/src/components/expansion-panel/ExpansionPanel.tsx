@@ -1,6 +1,6 @@
 import { Prop, Watch } from 'vue-property-decorator';
 import { EXPANSION_PANEL_STATES, ExpansionPanelState } from '@/constants/types';
-import { EPANEL_CLASSES, UTILITY_CLASSES, ICON_CLASS, ICONS, GENERIC_SIZE_CLASSES } from '@/constants/classes';
+import { EPANEL_CLASSES, UTILITY_CLASSES } from '@/constants/classes';
 import './expansion-panel.scss';
 import { EPANEL } from '@/constants/constants';
 import { Component, Vue } from '@/build/vue-wrapper';
@@ -51,10 +51,7 @@ export default class ExpansionPanel extends Vue {
         <div class={EPANEL_CLASSES.HEADER}>
           {this.stateIcon && (
             <Tooltip message={this.stateIconTooltip}>
-              <i
-                class={`${ICON_CLASS} ${ICONS.SUCCESS} icon-circle-check ${GENERIC_SIZE_CLASSES.SM_2} ${EPANEL_CLASSES.STATE}`}
-                id="state-icon-tooltip"
-              />
+              <chi-icon icon="circle-check" size="sm--2" color="success" class={EPANEL_CLASSES.STATE}></chi-icon>
             </Tooltip>
           )}
           {this.step ? <span class={EPANEL_CLASSES.NUMBER}>{this.step}.</span> : ''}
