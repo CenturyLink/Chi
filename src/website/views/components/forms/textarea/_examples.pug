@@ -318,10 +318,7 @@ p.-text
       .chi-col.-w--12.-w-sm--8.-w-md--6
         .chi-form__item
           chi-label(for="example__danger" required) Describe the issue
-          chi-textarea(id="example__danger" state="danger" required)
-          div.chi-label.-status.-danger
-            chi-icon(icon="circle-warning")
-            | Please describe the issue
+          chi-textarea(id="example__danger" state="danger" helper-message="Please describe the issue" required)
   .example-tabs.-pl--2
     ul.chi-tabs#example-state-danger
       li.-active
@@ -332,11 +329,7 @@ p.-text
     :code(lang="html")
       <div class="chi-form__item">
         <chi-label for="example__danger" required>Describe the issue</chi-label>
-        <chi-textarea id="example__danger" state="danger" required></chi-textarea>
-        <div class="chi-label -status -danger">
-          <chi-icon icon="circle-warning"></chi-icon>
-          Please describe the issue
-        </div>
+        <chi-textarea id="example__danger" state="danger" helper-message="Please describe the issue" required></chi-textarea>
       </div>
   .chi-tabs-panel#html-state-danger
     :code(lang="html")
