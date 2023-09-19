@@ -254,7 +254,7 @@ p.-text
     .chi-form__item
       chi-label(for="unique-id-me1") Label
       chi-number-input#unique-id-me1
-      .chi-label.-status Optional input message
+      .chi-label.-status Optional helper message
   .example-tabs.-pl--2
     ul.chi-tabs#examples-message
       li.-active
@@ -265,7 +265,7 @@ p.-text
     :code(lang="html")
       <chi-label for="unique-id-me1">Label</chi-label>
       <chi-number-input id="unique-id-me1"></chi-number-input>
-      <div class="chi-label -status">Optional input message</div>
+      <div class="chi-label -status">Optional helper message</div>
   .chi-tabs-panel#html-message
     .chi-tab__description
       span.-text--grey
@@ -280,7 +280,7 @@ p.-text
           <button aria-label="Decrease"></button>
           <button aria-label="Increase"></button>
         </div>
-        <div class="chi-label -status">Optional input message</div>
+        <div class="chi-label -status">Optional helper message</div>
       </div>
 
       <script>chi.numberInput(document.getElementById('unique-id-me1'));</script>

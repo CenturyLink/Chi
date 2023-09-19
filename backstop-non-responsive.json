@@ -601,6 +601,7 @@
         ".test-dropdown-icons",
         ".test-dropdown-searchBox",
         ".test-dropdown-checkbox",
+        ".test-dropdown-visible-items",
         ".test-dropdown-radio",
         ".test-dropdown-checkbox-icon",
         ".test-dropdown-radio-icon",
@@ -1016,7 +1017,12 @@
         ".test-xl-icon-right",
         ".test-xl-icon-left-right",
         ".test-xl-label-inline",
-        ".test-xl-label-with-icon"
+        ".test-xl-label-with-icon",
+        ".test-helper-message-xs",
+        ".test-helper-message-sm",
+        ".test-helper-message-md",
+        ".test-helper-message-lg",
+        ".test-helper-message-xl"
       ],
       "selectorExpansion": true,
       "misMatchThreshold": 0,

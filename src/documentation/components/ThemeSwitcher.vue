@@ -20,7 +20,7 @@
             />
           </div>
           <div class="-theme-name">
-            {{ themes[this.$store.state.themes.theme].label }}
+            {{ themeName }}
           </div>
         </div>
       </div>
@@ -77,7 +77,9 @@
 import { Themes } from '../models/models';
 import { THEMES } from '../constants/constants';
 import { Component, Vue } from 'vue-property-decorator';
-import { BASE_URL } from '../constants/constants';
+import { BASE_URL, TEMP_DEVELOPMENT_FALLBACK_URL } from '../constants/constants';
+import { getTheme } from './../store/themes'
+import { capitalize } from '@/utilities/utilities';
 
 declare const chi: any;
 interface AssetToReplace {
@@ -98,12 +100,18 @@ export default class ThemeSwitcher extends Vue {
 
   getThemeSwitcherTriggerIcon() {
     const theme = this.$store.state.themes.theme;
+    const excludedThemes = ['portal', 'colt', 'brightspeed'];
 
-    if (theme === 'portal') {
-      return 'lumen';
-    }
+    return excludedThemes.includes(theme) ? 'lumen' : theme;
+  }
 
-    return theme;
+  get themeName() {
+    const theme = this.$store.state.themes.theme;
+    const excludedThemes = ['colt', 'brightspeed'];
+
+    return excludedThemes.includes(theme)
+      ? 'Lumen'
+      : THEMES[theme as keyof typeof THEMES].label;
   }
 
   setTheme(theme: Themes): void {
@@ -116,7 +124,7 @@ export default class ThemeSwitcher extends Vue {
     assetsToReplace.forEach((asset: AssetToReplace) => {
       const currentAsset = document.getElementById(asset.id);
       const replacementAsset = document.createElement('LINK');
-      const replacementHref = THEMES[theme][asset.type];
+      const replacementHref = `${TEMP_DEVELOPMENT_FALLBACK_URL}/${THEMES[theme][asset.type]}`;
 
       if (currentAsset && replacementAsset) {
         replacementAsset.setAttribute('rel', 'stylesheet');
@@ -139,6 +147,7 @@ export default class ThemeSwitcher extends Vue {
     );
 
     this.$store.commit('themes/set', theme);
+    this.setNewRoute(theme);
   }
 
   mounted() {
@@ -147,6 +156,28 @@ export default class ThemeSwitcher extends Vue {
     if (themeSwitcherElement) {
       this.themeSwitcherDropdown = chi.dropdown(themeSwitcherElement);
     }
+
+    this.setThemeFromUrl();
+  }
+
+  setThemeFromUrl() {
+    const urlTheme = this.$store.$router.currentRoute.query?.theme as string;
+    const theme = getTheme(urlTheme);
+
+    if (theme) {
+      this.$store.commit('themes/set', theme);
+      this.setTheme(theme as Themes);
+      this.setNewRoute(theme);
+    }
+  }
+
+  setNewRoute(theme: string) {
+    const currentRoute = this.$store.$router.currentRoute;
+    const currentTheme = this.$store.$router.currentRoute.query.theme.toString();
+    const newTheme = theme !== 'centurylink' ? capitalize(theme) : 'CenturyLink';
+    const newRoute = currentRoute.fullPath.replace(currentTheme, newTheme);
+
+    this.$router.push(newRoute);
   }
 
   beforeDestroy() {
