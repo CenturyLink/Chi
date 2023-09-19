@@ -211,6 +211,12 @@ div(class=`test-dropdown-higher-helper -w--100`)
       .chi-dropdown__menu-item.-h--auto.-py--1 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
       a.chi-dropdown__menu-item(href="#") Link 2
 
+div(class=`test-dropdown-visible-items -w--100 -mb--2`)
+  span.-text--h2 Visible items
+  .-d--flex
+    div(class=`chi-dropdown__menu -active` style="overflow-y: auto; max-height: 7rem")
+      each i in [1, 2, 3, 4, 5]
+        a(class=`chi-dropdown__menu-item`, href='#')="Text " + i
 
 each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
   each type in ['solid', 'outline', 'flat', 'fluid', 'uppercase']

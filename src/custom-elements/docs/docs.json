@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-09-08T09:20:20",
+  "timestamp": "2023-09-14T11:40:51",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1911,6 +1911,22 @@
             }
           ],
           "optional": false,
+          "required": false
+        },
+        {
+          "name": "visibleItems",
+          "type": "number",
+          "mutable": false,
+          "attr": "visible-items",
+          "reflectToAttr": false,
+          "docs": "To provide number of items in the dropdown to be displayed, and apply scroll if needed",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
           "required": false
         }
       ],
