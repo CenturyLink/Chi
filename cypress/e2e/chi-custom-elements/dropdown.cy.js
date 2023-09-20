@@ -52,6 +52,7 @@ const DROPDOWN_DATA_CY = {
   BASE: '[data-cy="base-dropdown"]',
   HOVER: '[data-cy="hover-dropdown"]',
   ANIMATE: '[data-cy="animate-dropdown"]',
+  VISIBLE_ITEMS: '[data-cy="visible-items-dropdown"]',
   POSITION: positions.map(position => {
     return {
       selector: `[data-cy="position-dropdown-${position.placement}"]`,
@@ -150,6 +151,35 @@ describe('Dropdown', () => {
           cy.get(`@dropdownMenu`).should('be.visible');
           expect(angle).to.equal(180);
         });
+    });
+  });
+
+  describe('VisibleItems', () => {
+    beforeEach(() => {
+      cy.get(DROPDOWN_DATA_CY.VISIBLE_ITEMS)
+        .find(DROPDOWN_TRIGGER)
+        .as('dropdownTrigger');
+      cy.get(DROPDOWN_DATA_CY.VISIBLE_ITEMS)
+        .find(DROPDOWN_MENU)
+        .as('dropdownMenu');
+    });
+
+    it('Should have attribute visible-items', () => {
+      cy.get(DROPDOWN_DATA_CY.VISIBLE_ITEMS).should('have.attr', 'visible-items', 3);
+    });
+
+    it('Should set max-height according to number of items given', () => {
+      const maxHeight = 96;
+
+      cy.get('@dropdownMenu')
+        .should('not.be.visible');
+      cy.get('@dropdownTrigger')
+        .click();
+      cy.get('@dropdownMenu')
+        .should('be.visible')
+      cy.get('@dropdownMenu')
+        .invoke('height')
+        .should('equal', maxHeight);
     });
   });
 
