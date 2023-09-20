@@ -144,6 +144,7 @@ export const EPANEL_CLASSES = {
   NUMBER: 'chi-epanel__number',
   TITLE: 'chi-epanel__title',
   STATE_ICON: '-state-icon',
+  STATE: '-state',
 };
 //#endregion
 
