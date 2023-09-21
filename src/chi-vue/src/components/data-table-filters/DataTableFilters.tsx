@@ -18,7 +18,7 @@ import {
   SELECT_CLASSES,
   UTILITY_CLASSES,
 } from '@/constants/classes';
-import { compareFilters, getElementFilterData } from './FilterUtils';
+import { getElementFilterData } from './FilterUtils';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import AdvancedFilters from './AdvancedFilters';
@@ -28,6 +28,7 @@ import { getModule } from 'vuex-module-decorators';
 import { ScopedSlotChildren } from 'vue/types/vnode';
 import './filters.scss';
 import { Component, Vue } from '@/build/vue-wrapper';
+import { Compare } from '@/utils/Compare';
 
 @Component({})
 export default class DataTableFilters extends Vue {
@@ -48,8 +49,9 @@ export default class DataTableFilters extends Vue {
     this._advancedFiltersData = [];
   }
 
-  async created() {
+  created() {
     const isModuleRegistered = Object.keys(this.$store.state).includes(STORE_KEY);
+
     this._drawerID = `drawer_${uuid4()}`;
 
     if (!isModuleRegistered) {
@@ -70,12 +72,15 @@ export default class DataTableFilters extends Vue {
 
     this._advancedFiltersData = copyArrayOfObjects(advancedFilters);
 
-    const plainFiltersData = this.$props.filtersData.reduce((accumulator: any, currentValue: any) => {
-      return { ...accumulator, [currentValue.id]: currentValue.type === 'checkbox' ? false : currentValue.value || '' };
-    }, {});
+    this.$props.filtersData.forEach((currentValue: any) => {
+      const filterPayload = {
+        id: currentValue.id,
+        value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
+      };
 
-    await this.storeModule.updateFilterConfig(plainFiltersData);
-    await this.storeModule.updateFilterConfigLive(plainFiltersData);
+      this.storeModule.updateFilterConfig(filterPayload);
+      this.storeModule.updateFilterConfigLive(filterPayload);
+    });
   }
 
   get filterElementValue() {
@@ -201,44 +206,30 @@ export default class DataTableFilters extends Vue {
     );
   }
 
-  async _changeFormElementFilter(ev: Event, elementType: DataTableFormElementFilters, mobile: boolean) {
+  _changeFormElementFilter(ev: Event, elementType: DataTableFormElementFilters, mobile: boolean) {
     if (ev.target) {
       const newFilterData = getElementFilterData(ev, elementType);
+      const filterPayload = {
+        id: newFilterData?.id?.replace(/-desktop|-mobile/gi, '') || 'no-id',
+        value: elementType !== 'checkbox' ? newFilterData?.value : newFilterData?.checked,
+      };
 
       if (!mobile) {
-        await this.storeModule.updateFilterConfig({
-          ...this.filterElementValue,
-          ...{
-            [newFilterData?.id?.replace(/-desktop|-mobile/gi, '') || 'no-id']:
-              elementType !== 'checkbox' ? newFilterData?.value : newFilterData?.checked,
-          },
-        });
-
-        await this.storeModule.updateFilterConfigLive({
-          ...this.filterElementValueLive,
-          ...{
-            [newFilterData?.id?.replace(/-desktop|-mobile/gi, '') || 'no-id']:
-              elementType !== 'checkbox' ? newFilterData?.value : newFilterData?.checked,
-          },
-        });
+        this.storeModule.updateFilterConfig(filterPayload);
+        this.storeModule.updateFilterConfigLive(filterPayload);
 
         if (this._filtersData && newFilterData) {
           this._emitFiltersChanged();
         }
       } else {
-        await this.storeModule.updateFilterConfigLive({
-          ...this.filterElementValueLive,
-          ...{
-            [newFilterData?.id?.replace(/-desktop|-mobile/gi, '') || 'no-id']:
-              elementType !== 'checkbox' ? newFilterData?.value : newFilterData?.checked,
-          },
-        });
+        this.storeModule.updateFilterConfigLive(filterPayload);
       }
     }
   }
 
   _getUpdatedFiltersObject() {
     const filters = this.filterElementValue;
+
     return this._filtersData
       ? this._filtersData.filters.map((filter: DataTableFilter) => {
           if (filter.id) {
@@ -307,10 +298,10 @@ export default class DataTableFilters extends Vue {
     return null;
   }
 
-  async applyChanges() {
-    await this.storeModule.updateFilterConfig({
-      ...this.filterElementValueLive,
-    });
+  applyChanges() {
+    // this.storeModule.updateFilterConfig({
+    //   ...this.filterElementValueLive,
+    // });
     this._emitFiltersChanged();
   }
 
@@ -388,23 +379,19 @@ export default class DataTableFilters extends Vue {
             {advancedFilters}
             <div
               class={`${UTILITY_CLASSES.DISPLAY.FLEX} ${UTILITY_CLASSES.JUSTIFY.CENTER} ${UTILITY_CLASSES.PADDING.Y[2]}`}>
-              <button
-                onClick={() => this.toggleDrawer()}
-                class={`
-                ${BUTTON_CLASSES.BUTTON}
-                `}>
+              <button onClick={() => this.toggleDrawer()} class={BUTTON_CLASSES.BUTTON}>
                 Cancel
               </button>
               <button
                 onClick={() => this.applyChanges()}
                 disabled={
-                  this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
+                  this.filterElementValueLive && Compare.deepEqual(this.filterElementValue, this.filterElementValueLive)
                 }
                 class={`
-                ${BUTTON_CLASSES.BUTTON}
-                ${BUTTON_CLASSES.PRIMARY}
-                ${UTILITY_CLASSES.MARGIN.LEFT[2]}
-                `}>
+                  ${BUTTON_CLASSES.BUTTON}
+                  ${BUTTON_CLASSES.PRIMARY}
+                  ${UTILITY_CLASSES.MARGIN.LEFT[2]}
+                  `}>
                 Apply
               </button>
             </div>
