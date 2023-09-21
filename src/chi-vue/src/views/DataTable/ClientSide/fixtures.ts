@@ -115,7 +115,7 @@ const exampleColumns = [
     name: 'columnF',
     label: 'Column F',
     selected: true,
-    wildcard: true,
+    wildcard: false,
   },
   {
     name: 'columnG',

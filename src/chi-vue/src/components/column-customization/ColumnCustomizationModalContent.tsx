@@ -16,12 +16,19 @@ export default class ColumnCustomizationContent extends Vue {
   _availableColumnsComponent?: AvailableColumns;
   _selectedColumnsComponent?: SelectedColumns;
 
+  buttonMoveUp = true;
+  buttonMoveDown = true;
+  buttonDeselect = true;
+  buttonRows = true;
+
   mounted() {
     const columnCustomizationComponent = findComponent(this, 'ColumnCustomization');
 
     if (columnCustomizationComponent) {
       (columnCustomizationComponent as ColumnCustomization)._ColumnCustomizationContentComponent = this;
     }
+
+    this._listenColumnsSelect();
   }
 
   _getAvailableColumns(): DataTableColumn[] {
@@ -32,12 +39,49 @@ export default class ColumnCustomizationContent extends Vue {
     return this.$props.columnsDefinition.selecteds;
   }
 
+  _listenColumnsSelect() {
+    const selectedColumn = this?._selectedColumnsComponent?.$refs?.select as HTMLSelectElement;
+    const availableColumn = this?._availableColumnsComponent?.$refs?.select as HTMLSelectElement;
+
+    selectedColumn.addEventListener('change', () => {
+      this.buttonDeselect = false;
+
+      this._checkMoveUpDownButtons();
+    });
+
+    availableColumn.addEventListener('change', () => {
+      this.buttonRows = false;
+    });
+  }
+
+  _checkMoveUpDownButtons() {
+    const selectedColumn = this._getSelectedColumn();
+    const focusedOptions = this._getFocusedItems(this._selectedColumnsComponent?.$refs.select as HTMLSelectElement);
+    const indexes = this._findColumnIndexes(focusedOptions, selectedColumn);
+    // eslint-disable-next-line
+    // @ts-ignore
+    const lastLocked = selectedColumn.findLastIndex(({ locked }) => locked);
+
+    indexes.forEach(index => {
+      const isWildCard = selectedColumn[index].wildcard === true;
+      const canMoveUp = isWildCard ? index - 1 >= 0 : index - 1 > lastLocked;
+      const canMoveDown = isWildCard ? index + 1 < selectedColumn.length : index + 1 < selectedColumn.length;
+
+      this.buttonMoveUp = !canMoveUp;
+      this.buttonMoveDown = !canMoveDown;
+    });
+  }
+
   _controlButton(icon: keyof typeof icons, action: () => void) {
     const { ariaLabel, ref } = icons[icon];
+    // eslint-disable-next-line
+    // @ts-ignore
+    const isDisabled = this[ref];
 
     return (
       <button
         ref={ref}
+        disabled={isDisabled}
         onClick={action}
         class={`
             ${BUTTON_CLASSES.BUTTON}
@@ -118,15 +162,6 @@ export default class ColumnCustomizationContent extends Vue {
       selecteds: newOrder,
       availables: this._getAvailableColumns(),
     });
-  }
-
-  getLastLockedColumnIndex(columns: DataTableColumn[]): number {
-    return columns.reduceRight((acc: number, column: DataTableColumn, index: number) => {
-      if (column.locked && acc === -1) {
-        return index;
-      }
-      return acc;
-    }, -1);
   }
 
   render() {
