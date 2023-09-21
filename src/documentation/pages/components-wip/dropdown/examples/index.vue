@@ -19,6 +19,7 @@
     <Divider />
     <Icons />
     <SearchBox />
+    <VisibleItems />
 
     h3 Checkboxes
     <CheckboxesBase />
@@ -54,6 +55,7 @@ import ToggleSwitch from './_toggle_switch.vue';
 import PlainText from './_plain_text.vue';
 import TruncateLongMenuItems from './_truncate_long_menu_items.vue';
 import FlexibleHeight from './_flexible_height.vue';
+import VisibleItems from './_visible_items.vue';
 
 @Component({
   components: {
@@ -74,7 +76,8 @@ import FlexibleHeight from './_flexible_height.vue';
     SearchBox,
     States,
     ToggleSwitch,
-    TruncateLongMenuItems
+    TruncateLongMenuItems,
+    VisibleItems
   }
 })
 export default class Examples extends Vue {}

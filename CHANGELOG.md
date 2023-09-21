@@ -1,4 +1,24 @@
 # CHANGELOG
+## 5.38.0 (September 15, 2023)
+### Components
+#### Added
+* Added: Expansion panel state icons now supports tooltip.
+* Added: Data table Vue component now supports empty actionable view with `emptyActionable` config.
+* Added: Column customization reset button now supports tooltip.
+* Added: Column customization now supports `wildcard` config for columns that enable a specified column to appear before locked columns.
+#### Changed
+* Changed: Helper message `font-style` from `regular` to `italic` if no state is present.
+* Changed: Toggle switch `xs` size to `sm` by default in Portal theme for consistency with Brand guidelines.
+* Changed: Data table Vue component pagination footer is always present in empty states (`no results`, `no filters` and `empty actionable`) for consistency with Brand guidelines.
+* Changed: Column customization reset button.
+#### Fixed
+* Fixed: Phone input `lg` size height mismatch between the country code dropdown and the input field.
+* Fixed: Header navbar `lg` size height has been increased from 24px to 32px in Portal theme for consistency with Brand guidelines.
+* Fixed: Header margin between logo and title for consistency with Brand guidelines.
+* Fixed: Draggable popover resize addEventListener that was causing console errors.
+* Fixed: Tabbed navigation bar with children dropdown now close automatically when hovering out.
+* Fixed: Column customization chevrons icon button disabled states.
+
 ## 5.37.0 (July 12, 2023)
 ### Components
 #### Added

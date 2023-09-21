@@ -109,9 +109,8 @@ export default class ColumnCustomizationContent extends Vue {
   }
 
   _handleMoveOption(direction: 'up' | 'down') {
-    const selectedOptions = this._getFocusedItems(this._selectedColumnsComponent?.$refs.select as HTMLSelectElement);
-
     const columns = this._getSelectedColumn();
+    const selectedOptions = this._getFocusedItems(this._selectedColumnsComponent?.$refs.select as HTMLSelectElement);
     const indexes = this._findColumnIndexes(selectedOptions, columns);
     const newOrder = changeMultiplesColumnIndex(columns, indexes, direction);
 

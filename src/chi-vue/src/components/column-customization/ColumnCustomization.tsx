@@ -14,7 +14,7 @@ import { DATA_TABLE_EVENTS } from '@/constants/events';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { DataTableColumn, DataTableColumnDefinition, DataTableColumnsData } from '@/constants/types';
 import ColumnCustomizationContent from './ColumnCustomizationModalContent';
-import { checkColumns } from './utils';
+import { checkColumnsAreEqual } from './utils';
 import Tooltip from '../tooltip/tooltip';
 import { Component, Vue } from '@/build/vue-wrapper';
 
@@ -32,6 +32,8 @@ export default class ColumnCustomization extends Vue {
   _chiModal: any;
   _ColumnCustomizationContentComponent?: ColumnCustomizationContent;
   _modalId?: string;
+
+  _resetTooltip?: any;
 
   /**
    * Hooks
@@ -56,9 +58,29 @@ export default class ColumnCustomization extends Vue {
     this._watchContentComponentChanges();
   }
 
+  beforeDestroy() {
+    this._resetTooltip?.dispose();
+  }
+
   /**
    * Private methods
    */
+  @Watch('columnsData')
+  _processDataOnLoad() {
+    const columnDefinition = this.$props.columnsData.columns.reduce(
+      (acc: DataTableColumnDefinition, column: DataTableColumn) => {
+        return column.selected
+          ? { ...acc, selecteds: [...acc.selecteds, column] }
+          : { ...acc, availables: [...acc.availables, column] };
+      },
+      { availables: [], selecteds: [] }
+    );
+
+    this.columnsDefinition = columnDefinition;
+    this.prevColumnsDefinition = columnDefinition;
+    this.originalColumnsDefinition = columnDefinition;
+  }
+
   _getOriginalColumnsDefinition() {
     return this.originalColumnsDefinition;
   }
@@ -84,20 +106,28 @@ export default class ColumnCustomization extends Vue {
   }
 
   _updateButtonsState() {
-    const originalColumns = this._getOriginalColumnsDefinition()?.selecteds || [];
-    const currentColumns = this._getColumnsDefinition()?.selecteds || [];
-    const prevColumnsDefinition = this.prevColumnsDefinition?.selecteds || [];
+    const originalColumns = this._getOriginalColumnsDefinition()?.selecteds as DataTableColumn[];
+    const currentColumns = this._getColumnsDefinition()?.selecteds as DataTableColumn[];
+    const prevColumnsDefinition = this.prevColumnsDefinition?.selecteds as DataTableColumn[];
 
-    const disableResetButton = checkColumns(originalColumns, currentColumns);
-    const disableSaveButton = checkColumns(currentColumns, prevColumnsDefinition);
+    const saveButton = this.$refs.saveButton as HTMLButtonElement;
+    const resetButton = this.$refs.resetButton as HTMLButtonElement;
 
-    (this.$refs.saveButton as HTMLButtonElement).disabled = disableSaveButton;
-    (this.$refs.resetButton as HTMLButtonElement).disabled = disableResetButton;
+    const saveIsEqual = checkColumnsAreEqual(prevColumnsDefinition, currentColumns);
+    const resetIsEqual = checkColumnsAreEqual(originalColumns, currentColumns);
+
+    console.log({ prevColumnsDefinition, originalColumns, saveIsEqual, resetIsEqual });
+
+    saveButton.disabled = saveIsEqual;
+    resetButton.disabled = resetIsEqual;
+
+    this._resetTooltip = chi.tooltip(resetButton);
   }
 
   _handleResetColumns() {
     this._processDataOnLoad();
 
+    this._resetTooltip?.hide();
     this._updateButtonsState();
     this.key += 1;
   }
@@ -120,22 +150,6 @@ export default class ColumnCustomization extends Vue {
     this.key += 1;
   }
 
-  @Watch('columnsData')
-  _processDataOnLoad() {
-    const columnDefinition = this.$props.columnsData.columns.reduce(
-      (acc: DataTableColumnDefinition, column: DataTableColumn) => {
-        return column.selected
-          ? { ...acc, selecteds: [...acc.selecteds, column] }
-          : { ...acc, availables: [...acc.availables, column] };
-      },
-      { availables: [], selecteds: [] }
-    );
-
-    this.columnsDefinition = columnDefinition;
-    this.prevColumnsDefinition = columnDefinition;
-    this.originalColumnsDefinition = columnDefinition;
-  }
-
   _modal() {
     return (
       <div class={`${BACKDROP_CLASSES.BACKDROP} ${CLOSED_CLASS}`}>
@@ -145,10 +159,10 @@ export default class ColumnCustomization extends Vue {
             id={this._modalId}
             class={`${MODAL_CLASSES.MODAL}`}
             role="dialog"
-            aria-label="Customize columns"
+            aria-label="Customize Columns"
             aria-modal="true">
             <header class={MODAL_CLASSES.HEADER}>
-              <h2 class={MODAL_CLASSES.TITLE}>Customize columns</h2>
+              <h2 class={MODAL_CLASSES.TITLE}>Customize Columns</h2>
               <button
                 class={`${BUTTON_CLASSES.BUTTON} -icon -close`}
                 onClick={this._handleCancelChanges}
@@ -164,21 +178,23 @@ export default class ColumnCustomization extends Vue {
             <footer class={MODAL_CLASSES.FOOTER}>
               <button
                 ref="resetButton"
+                data-tooltip="Reset to default columns and order"
                 class={`
                   ${BUTTON_CLASSES.BUTTON}
                   ${BUTTON_CLASSES.ICON_BUTTON}
                   ${BUTTON_CLASSES.FLAT}
                   ${BUTTON_CLASSES.SIZES.XS}
-                  ${UTILITY_CLASSES.PADDING.Y[0]}`}
+                  ${UTILITY_CLASSES.PADDING.Y[0]}
+                  chi-column-customization__reset-button`}
                 onClick={this._handleResetColumns}
                 disabled>
                 <div
                   class={`${BUTTON_CLASSES.CONTENT} ${UTILITY_CLASSES.FLEX.COLUMN} ${UTILITY_CLASSES.ALIGN_ITEMS.CENTER}`}>
                   <i
                     aria-hidden="true"
-                    class={`${ICON_CLASS} icon-reload -sm--2 ${UTILITY_CLASSES.MARGIN.RIGHT[0]}`}></i>
+                    class={`${ICON_CLASS} icon-reset -sm--2 ${UTILITY_CLASSES.MARGIN.RIGHT[0]}`}></i>
                   <span
-                    class={`${UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE} ${UTILITY_CLASSES.TYPOGRAPHY.COLOR.PRIMARY} ${UTILITY_CLASSES.TYPOGRAPHY.SIZE.TWO_XS}`}>
+                    class={`${UTILITY_CLASSES.TYPOGRAPHY.TEXT_UPPERCASE} ${UTILITY_CLASSES.TYPOGRAPHY.SIZE.TWO_XS}`}>
                     Reset
                   </span>
                 </div>
