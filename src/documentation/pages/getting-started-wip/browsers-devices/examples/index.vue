@@ -1,6 +1,5 @@
 <template lang="pug">
   .chi-grid__container.-pt--3
-    <Setup />
     <BrowserSupport />
 </template>
 
