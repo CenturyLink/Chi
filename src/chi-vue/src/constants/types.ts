@@ -152,6 +152,7 @@ export interface DataTableColumn {
   label: string;
   selected: boolean;
   locked: true;
+  wildcard?: boolean;
 }
 export interface DataTableColumnsData {
   columns: DataTableColumn[];

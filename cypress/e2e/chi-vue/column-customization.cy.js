@@ -209,6 +209,7 @@ describe('Column Customization', () => {
   });
 
   it(`Should trigger the ${DATA_TABLE_EVENTS.COLUMNS_CHANGE} event on SAVE button click`, () => {
+    cy.visit('tests/chi-vue/column-customization.html');
     cy.window()
       .its('baseColumnCustomizationExample')
       .then(baseColumnCustomizationExample => {
@@ -234,6 +235,7 @@ describe('Column Customization', () => {
   it(`Should order available columns alphabetically by default`, () => {
     const letters = ['A', 'B', 'G', 'H', 'I', 'J'];
 
+    cy.visit('tests/chi-vue/column-customization.html');
     cy.get('@columnsBtn').click();
     cy.get('@availableColumns')
       .children()
