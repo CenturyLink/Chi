@@ -180,7 +180,8 @@ export default class ColumnCustomization extends Vue {
                   ${BUTTON_CLASSES.FLAT}
                   ${BUTTON_CLASSES.SIZES.XS}
                   ${UTILITY_CLASSES.PADDING.Y[0]}
-                  chi-column-customization__reset-button`}
+                  chi-column-customization__reset-button
+                `}
                 onClick={this._handleResetColumns}
                 disabled>
                 <div

@@ -120,6 +120,15 @@ export default class ColumnCustomizationContent extends Vue {
     });
   }
 
+  getLastLockedColumnIndex(columns: DataTableColumn[]): number {
+    return columns.reduceRight((acc: number, column: DataTableColumn, index: number) => {
+      if (column.locked && acc === -1) {
+        return index;
+      }
+      return acc;
+    }, -1);
+  }
+
   render() {
     const selectButton = this._controlButton('chevron-right', this._handleSelectOptions);
     const deselectButton = this._controlButton('chevron-left', this._handleDeselectOptions);
