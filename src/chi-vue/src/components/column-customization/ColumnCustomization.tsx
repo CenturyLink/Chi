@@ -14,7 +14,7 @@ import { DATA_TABLE_EVENTS } from '@/constants/events';
 import DataTableToolbar from '@/components/data-table-toolbar/DataTableToolbar';
 import { DataTableColumn, DataTableColumnDefinition, DataTableColumnsData } from '@/constants/types';
 import ColumnCustomizationContent from './ColumnCustomizationModalContent';
-import { checkColumnsAreEqual } from './utils';
+import { checkColumnsChanged } from './utils';
 import Tooltip from '../tooltip/tooltip';
 import { Component, Vue } from '@/build/vue-wrapper';
 
@@ -113,13 +113,8 @@ export default class ColumnCustomization extends Vue {
     const saveButton = this.$refs.saveButton as HTMLButtonElement;
     const resetButton = this.$refs.resetButton as HTMLButtonElement;
 
-    const saveIsEqual = checkColumnsAreEqual(prevColumnsDefinition, currentColumns);
-    const resetIsEqual = checkColumnsAreEqual(originalColumns, currentColumns);
-
-    console.log({ prevColumnsDefinition, originalColumns, saveIsEqual, resetIsEqual });
-
-    saveButton.disabled = saveIsEqual;
-    resetButton.disabled = resetIsEqual;
+    saveButton.disabled = checkColumnsChanged(prevColumnsDefinition, currentColumns);
+    resetButton.disabled = checkColumnsChanged(originalColumns, currentColumns);
 
     this._resetTooltip = chi.tooltip(resetButton);
   }

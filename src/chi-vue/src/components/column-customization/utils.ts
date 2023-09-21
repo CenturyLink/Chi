@@ -7,8 +7,7 @@ export const icons = {
   'chevron-right': { ariaLabel: 'Select', ref: 'buttonRows' },
 };
 
-export const checkColumnsAreEqual = (originalData: DataTableColumn[], newData: DataTableColumn[]) => {
-  console.log({ newData, originalData });
+export const checkColumnsChanged = (originalData: DataTableColumn[], newData: DataTableColumn[]) => {
   const hasEqualSize = originalData.length === newData.length;
   const hasEqualColumns = (column: DataTableColumn, index: number) => {
     const item = newData[index];
@@ -23,22 +22,22 @@ export const _changeOrder = (arr: any[], oldIndex: number, newIndex: number) => 
 };
 
 export const changeMultiplesColumnIndex = (columns: DataTableColumn[], oldIndexes: number[], direction: string) => {
+  const columnsCopy = [...columns];
   // eslint-disable-next-line
   // @ts-ignore
-  const lastLocked = columns.findLastIndex(({ locked }) => locked);
-  const isUp = direction === 'up';
+  const lastLocked = columnsCopy.findLastIndex(({ locked }) => locked);
 
   oldIndexes.forEach(index => {
-    const isWildCard = columns[index].wildcard === true;
-    const nextIndex = isUp ? index - 1 : index + 1;
+    const isWildCard = columnsCopy[index].wildcard === true;
+    const nextIndex = direction === 'up' ? index - 1 : index + 1;
     const isGreaterThanLastLocked = nextIndex > lastLocked;
 
     const canChange = nextIndex >= 0 && (isWildCard || isGreaterThanLastLocked);
 
     if (canChange) {
-      return _changeOrder(columns, index, nextIndex);
+      return _changeOrder(columnsCopy, index, nextIndex);
     }
   });
 
-  return columns;
+  return columnsCopy;
 };
