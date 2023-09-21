@@ -14,10 +14,10 @@ const ACCORDION_CLASSES = {
   TRIGGER: 'chi-accordion__trigger'
 };
 const TOOLBAR_CLASSES = {
-  FILTERS: 'chi-toolbar__filters',
+  FILTERS: 'chi-toolbar__filters'
 };
 const FILTERS_EVENTS = {
-  FILTERS_CHANGE: 'chiFiltersChange',
+  FILTERS_CHANGE: 'chiFiltersChange'
 };
 
 const hasClassAssertion = (el, value) => {
@@ -26,37 +26,12 @@ const hasClassAssertion = (el, value) => {
 
 describe('Data Table Filters', () => {
   before(() => {
-    cy.visit('tests/chi-vue/filters.html');
-  });
-
-  beforeEach(() => {
-    cy.get(`[data-cy='data-table-filters']`)
-      .as('filters');
-  });
-
-  it(`Should render all filters`, () => {
-    cy.get('@filters')
-      .children()
-      .first()
-      .children()
-      .as('filters')
-      .should('have.length', 4);
-    cy
-      .get('@filters')
-      .first()
-      .find(`.${SELECT_CLASS}`).should.exist;
-    cy
-      .get('@filters')
-      .eq(1)
-      .find(`.${INPUT_CLASS}`).should.exist;
-    cy
-      .get('@filters')
-      .eq(2)
-      .find(`.${CHECKBOX_CLASS}`).should.exist;
+    cy.visit('tests/chi-vue/data-table-filters.html');
   });
 
   describe('Advanced filters', () => {
     beforeEach(() => {
+      cy.get(`[data-cy='data-table-filters']`).as('filters');
       cy.get('@filters')
         .children()
         .first()
@@ -68,6 +43,27 @@ describe('Data Table Filters', () => {
       cy.get('@filters')
         .find(`[title="Filters"]`)
         .as('popover');
+    });
+
+    it(`Should render all filters`, () => {
+      cy.get('@filters')
+        .children()
+        .first()
+        .children()
+        .as('currentFilters')
+        .should('have.length', 4);
+      cy
+        .get('@currentFilters')
+        .first()
+        .find(`.${SELECT_CLASS}`).should.exist;
+      cy
+        .get('@currentFilters')
+        .eq(1)
+        .find(`.${INPUT_CLASS}`).should.exist;
+      cy
+        .get('@currentFilters')
+        .eq(2)
+        .find(`.${CHECKBOX_CLASS}`).should.exist;
     });
 
     it('Should render an advanced filters button when some filters are set to advanced', () => {
@@ -90,7 +86,6 @@ describe('Data Table Filters', () => {
     });
 
     it('Should close the chi popover', () => {
-      console.log("_____+++", cy.get('@popover'));
       cy.get('@popover')
         .find(`.${BUTTON_CLASS}`)
         .contains('Cancel')
@@ -204,7 +199,7 @@ describe('Data Table Filters', () => {
         .then(() => {
           cy.get('@popover')
             .find(`.${BUTTON_CLASS}`)
-            .contains('APPLYx')
+            .contains('Apply')
             .should('not.have.attr', 'disabled');
           cy.get(`.${ACCORDION_CLASSES.ITEM}`)
             .first()
@@ -216,9 +211,6 @@ describe('Data Table Filters', () => {
         .find(`.${CLOSE_CLASS}`)
         .click();
     });
-
-
-
 
     it('Should reset the chi popover filters and disable the Apply button on reset button click', () => {
       cy.get('@advancedFilter').click();
@@ -278,8 +270,7 @@ describe('Data Table Filters', () => {
       cy.window()
         .its('filtersExample')
         .then(filtersExample => {
-
-          console.log("filtersExample.$refs", filtersExample.$refs);
+          console.log('filtersExample.$refs', filtersExample.$refs);
           const component = filtersExample.$refs.filtersRef;
           const spy = cy.spy();
 
@@ -311,5 +302,4 @@ describe('Data Table Filters', () => {
         });
     });
   });
-
 });
