@@ -48,7 +48,7 @@ export default class DataTableFilters extends Vue {
     this._advancedFiltersData = [];
   }
 
-  async created() {
+  created() {
     const isModuleRegistered = Object.keys(this.$store.state).includes(STORE_KEY);
     this._drawerID = `drawer_${uuid4()}`;
 
@@ -70,12 +70,15 @@ export default class DataTableFilters extends Vue {
 
     this._advancedFiltersData = copyArrayOfObjects(advancedFilters);
 
-    const plainFiltersData = this.$props.filtersData.reduce((accumulator: any, currentValue: any) => {
-      return { ...accumulator, [currentValue.id]: currentValue.type === 'checkbox' ? false : currentValue.value || '' };
-    }, {});
+    this.$props.filtersData.forEach((currentValue: any) => {
+      const filterPayload = {
+        id: currentValue.id,
+        value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
+      };
 
-    await this.storeModule.updateFilterConfig(plainFiltersData);
-    await this.storeModule.updateFilterConfigLive(plainFiltersData);
+      this.storeModule.updateFilterConfig(filterPayload);
+      this.storeModule.updateFilterConfigLive(filterPayload);
+    });
   }
 
   get filterElementValue() {
@@ -201,12 +204,12 @@ export default class DataTableFilters extends Vue {
     );
   }
 
-  async _changeFormElementFilter(ev: Event, elementType: DataTableFormElementFilters, mobile: boolean) {
+  _changeFormElementFilter(ev: Event, elementType: DataTableFormElementFilters, mobile: boolean) {
     if (ev.target) {
       const newFilterData = getElementFilterData(ev, elementType);
 
       if (!mobile) {
-        await this.storeModule.updateFilterConfig({
+        this.storeModule.updateFilterConfig({
           ...this.filterElementValue,
           ...{
             [newFilterData?.id?.replace(/-desktop|-mobile/gi, '') || 'no-id']:
@@ -214,7 +217,7 @@ export default class DataTableFilters extends Vue {
           },
         });
 
-        await this.storeModule.updateFilterConfigLive({
+        this.storeModule.updateFilterConfigLive({
           ...this.filterElementValueLive,
           ...{
             [newFilterData?.id?.replace(/-desktop|-mobile/gi, '') || 'no-id']:
@@ -226,7 +229,7 @@ export default class DataTableFilters extends Vue {
           this._emitFiltersChanged();
         }
       } else {
-        await this.storeModule.updateFilterConfigLive({
+        this.storeModule.updateFilterConfigLive({
           ...this.filterElementValueLive,
           ...{
             [newFilterData?.id?.replace(/-desktop|-mobile/gi, '') || 'no-id']:
@@ -307,8 +310,8 @@ export default class DataTableFilters extends Vue {
     return null;
   }
 
-  async applyChanges() {
-    await this.storeModule.updateFilterConfig({
+  applyChanges() {
+    this.storeModule.updateFilterConfig({
       ...this.filterElementValueLive,
     });
     this._emitFiltersChanged();
@@ -391,8 +394,8 @@ export default class DataTableFilters extends Vue {
               <button
                 onClick={() => this.toggleDrawer()}
                 class={`
-                ${BUTTON_CLASSES.BUTTON}
-                `}>
+                  ${BUTTON_CLASSES.BUTTON}
+                  `}>
                 Cancel
               </button>
               <button
@@ -401,10 +404,10 @@ export default class DataTableFilters extends Vue {
                   this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive)
                 }
                 class={`
-                ${BUTTON_CLASSES.BUTTON}
-                ${BUTTON_CLASSES.PRIMARY}
-                ${UTILITY_CLASSES.MARGIN.LEFT[2]}
-                `}>
+                  ${BUTTON_CLASSES.BUTTON}
+                  ${BUTTON_CLASSES.PRIMARY}
+                  ${UTILITY_CLASSES.MARGIN.LEFT[2]}
+                  `}>
                 Apply
               </button>
             </div>

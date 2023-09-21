@@ -1,4 +1,4 @@
-import { Module, VuexModule, MutationAction } from 'vuex-module-decorators';
+import { Module, VuexModule, Mutation } from 'vuex-module-decorators';
 
 export const STORE_KEY = '$_chi-vue';
 
@@ -7,32 +7,16 @@ export const STORE_KEY = '$_chi-vue';
   name: STORE_KEY,
 })
 export default class ChiVue extends VuexModule {
-  filterConfig: object = {};
-  filterConfigLive: object = {};
+  filterConfig: Record<string, string> = {};
+  filterConfigLive: Record<string, string> = {};
 
-  @MutationAction
-  async updateFilterConfig(payload: any) {
-    try {
-      return {
-        filterConfig: payload,
-      };
-    } catch (error) {
-      return {
-        filterConfig: {},
-      };
-    }
+  @Mutation
+  updateFilterConfig(payload: { id: string; value: string }) {
+    this.filterConfig[payload.id] = payload.value;
   }
 
-  @MutationAction
-  async updateFilterConfigLive(payload: any) {
-    try {
-      return {
-        filterConfigLive: payload,
-      };
-    } catch (error) {
-      return {
-        filterConfigLive: {},
-      };
-    }
+  @Mutation
+  updateFilterConfigLive(payload: { id: string; value: string }) {
+    this.filterConfigLive[payload.id] = payload.value;
   }
 }

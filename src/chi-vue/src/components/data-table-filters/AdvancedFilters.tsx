@@ -80,7 +80,7 @@ export default class AdvancedFilters extends Vue {
     return this.storeModule.filterConfigLive;
   }
 
-  async created() {
+  created() {
     this._advancedFilterAccordionId = `accordion__${this.filterUniqueID}`;
     this._advancedFilterUuid = uuid4();
     this._advancedFilterButtonId = `button__${this._advancedFilterUuid}`;
@@ -93,14 +93,15 @@ export default class AdvancedFilters extends Vue {
         this._planeAdvancedData = this.advancedFiltersData.reduce((accumulator: any, currentValue: any) => {
           return {
             ...accumulator,
-            [currentValue.id]: currentValue.type === 'checkbox' ? false : currentValue.value || '',
+            id: currentValue.id,
+            value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
           };
         }, {});
       }
     }
   }
 
-  async mounted() {
+  mounted() {
     const dataTableFiltersComponent = findComponent(this, 'DataTableFilters');
 
     if (this._advancedFilterAccordionId) {
@@ -159,7 +160,7 @@ export default class AdvancedFilters extends Vue {
     );
   }
 
-  async _changeFormElementFilter(ev: Event, elementType: DataTableFormElementFilters) {
+  _changeFormElementFilter(ev: Event, elementType: DataTableFormElementFilters) {
     if (ev.target) {
       const newFilterData: {
         name: string;
@@ -168,7 +169,7 @@ export default class AdvancedFilters extends Vue {
         id: string;
       } | null = getElementFilterData(ev, elementType);
 
-      await this.storeModule.updateFilterConfigLive({
+      this.storeModule.updateFilterConfigLive({
         ...this.filterElementValueLive,
         ...{
           [newFilterData?.id.replace(/-desktop|-mobile/gi, '') || 'no-id']:
@@ -386,8 +387,8 @@ export default class AdvancedFilters extends Vue {
     this.$emit(DATA_TABLE_EVENTS.ADVANCED_FILTERS_CHANGE);
   }
 
-  async _applyAdvancedFiltersChange() {
-    await this.storeModule.updateFilterConfig(this.filterElementValueLive);
+  _applyAdvancedFiltersChange() {
+    this.storeModule.updateFilterConfig(this.filterElementValueLive);
     this._emitAdvancedFiltersChange();
   }
 
@@ -403,9 +404,9 @@ export default class AdvancedFilters extends Vue {
     }
   }
 
-  async _resetAdvancedFilters() {
-    await this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...this._planeAdvancedData });
-    await this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...this._planeAdvancedData });
+  _resetAdvancedFilters() {
+    this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...this._planeAdvancedData });
+    this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...this._planeAdvancedData });
     this._emitAdvancedFiltersChange();
   }
 
