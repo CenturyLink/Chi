@@ -57,6 +57,6 @@ import { SR_ONLY } from '../../chi-vue/src/constants/classes';
   }
 })
 export default class Copy extends Vue {
-  @Prop() id: string;
+  @Prop({ default: '' }) id?: string;
 }
 </script>
