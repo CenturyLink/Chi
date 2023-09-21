@@ -128,29 +128,17 @@ export default class ColumnCustomization extends Vue {
   }
 
   _cancelColumnsChange() {
-    const originalSelectedColumns = this.columnsData?.columns.filter((column: DataTableColumn) => column.selected);
-
-    if (this._previousSelected) {
-      this._selectedData = this._previousSelected;
-      this._selectedColumns = this._selectedData;
-      this._availableColumns = this._availableColumns?.filter(
-        (columnAvailable: DataTableColumn) =>
-          !this._selectedColumns?.some(
-            (columnSelected: DataTableColumn) => columnAvailable.name === columnSelected.name
-          )
-      );
-
-      if (originalSelectedColumns) {
-        (this.$refs.resetButton as HTMLButtonElement).disabled = checkColumns(
-          originalSelectedColumns,
-          this._previousSelected
-        );
-      }
-    }
+    const originalSelectedColumns = this.columnsData?.columns.filter(column => column.selected);
+    const previousSelected = this._previousSelected || (originalSelectedColumns as DataTableColumn[]);
+    const selectedNames = previousSelected.map(({ name }) => name);
 
     (this.$refs.saveButton as HTMLButtonElement).disabled = true;
     this._chiModal.hide();
     this.key += 1;
+
+    this._selectedData = previousSelected;
+    this._selectedColumns = previousSelected;
+    this._availableColumns = this.columnsData?.columns.filter(({ name }) => !selectedNames.includes(name));
   }
 
   beforeCreate() {
