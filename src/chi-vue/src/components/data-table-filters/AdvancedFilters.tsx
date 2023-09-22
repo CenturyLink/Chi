@@ -68,7 +68,6 @@ export default class AdvancedFilters extends Vue {
   _advancedFilterButtonId?: string;
   _advancedFilterPopoverId?: string;
   storeModule?: any;
-  _planeAdvancedData = {};
   isExpanded = false;
   _filtersTooltip?: any;
 
@@ -88,16 +87,6 @@ export default class AdvancedFilters extends Vue {
 
     if (!this.storeModule && this.$store) {
       this.storeModule = getModule(store, this.$store);
-
-      if (this.advancedFiltersData) {
-        this._planeAdvancedData = this.advancedFiltersData.reduce((accumulator: any, currentValue: any) => {
-          return {
-            ...accumulator,
-            id: currentValue.id,
-            value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
-          };
-        }, {});
-      }
     }
   }
 
@@ -388,7 +377,7 @@ export default class AdvancedFilters extends Vue {
   }
 
   _applyAdvancedFiltersChange() {
-    this.storeModule.updateFilterConfig(this.filterElementValueLive);
+    this.storeModule.updateFilterConfig(this.filterElementValue, false);
     this._emitAdvancedFiltersChange();
   }
 
@@ -405,8 +394,18 @@ export default class AdvancedFilters extends Vue {
   }
 
   _resetAdvancedFilters() {
-    this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...this._planeAdvancedData });
-    this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...this._planeAdvancedData });
+    if (this.advancedFiltersData) {
+      this.advancedFiltersData?.forEach((currentValue: any) => {
+        const filterPayload = {
+          id: currentValue.id,
+          value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
+        };
+
+        this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...filterPayload });
+        this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...filterPayload });
+      });
+    }
+
     this._emitAdvancedFiltersChange();
   }
 
