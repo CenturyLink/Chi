@@ -132,6 +132,10 @@ export default class ColumnCustomization extends Vue {
     const previousSelected = this._previousSelected || (originalSelectedColumns as DataTableColumn[]);
     const selectedNames = previousSelected.map(({ name }) => name);
 
+    if (originalSelectedColumns) {
+      (this.$refs.resetButton as HTMLButtonElement).disabled = checkColumns(originalSelectedColumns, previousSelected);
+    }
+
     (this.$refs.saveButton as HTMLButtonElement).disabled = true;
     this._chiModal.hide();
     this.key += 1;
