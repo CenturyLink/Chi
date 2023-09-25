@@ -377,7 +377,7 @@ export default class AdvancedFilters extends Vue {
   }
 
   _applyAdvancedFiltersChange() {
-    this.storeModule.updateFilterConfig(this.filterElementValue, false);
+    this.storeModule.updateFilterConfig(this.filterElementValueLive);
     this._emitAdvancedFiltersChange();
   }
 
