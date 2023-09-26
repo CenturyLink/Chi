@@ -212,11 +212,12 @@ export class Carousel {
     itemWidth: number
   ) {
     const gap = this._getGap();
+    const itemsShown = this.maxItemsShown + remainingItems;
 
     this.remainingSpace = Math.abs(
       this.fullScrollLength -
-        (this.maxItemsShown + remainingItems) * itemWidth -
-        gap * (this.maxItemsShown + remainingItems) -
+        itemsShown * itemWidth -
+        gap * itemsShown -
         gap / 3
     );
 
@@ -422,9 +423,8 @@ export class Carousel {
 
     if (statComponent) {
       const statComputedStyle = window.getComputedStyle(statComponent);
-      const gap = parseInt(statComputedStyle.gap, 10);
 
-      return gap;
+      return parseInt(statComputedStyle.gap, 10);
     }
 
     return 0;
