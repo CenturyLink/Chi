@@ -14,7 +14,7 @@
           label(for=`unique-id-mer${i}`)
             = 'Option ' + `${i}`
       .chi-label.-status.-danger
-        | Please select an option.
+        | Please select an option
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -57,7 +57,7 @@ import { Component, Vue } from 'vue-property-decorator';
     <input class="chi-picker__input" name="unique-name-mer" type="checkbox" id="unique-id-mer2">
     <label for="unique-id-mer2">Option 2</label>
   </div>
-  <div class="chi-label -status -danger">Please select an option.</div>
+  <div class="chi-label -status -danger">Please select an option</div>
 </fieldset>`
       }
     };
