@@ -12,7 +12,7 @@
             input.chi-picker__input(type='radio', name='example__error', :id="`example__error_${item}`" :required="item === 1")
             label(:for="`example__error_${item}`") Option {{ item }}
       .chi-label.-status.-danger
-        | Please select an option.
+        | Please select an option
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -73,7 +73,7 @@ export default class Error extends Vue {
     <div class="chi-picker-group__content">${pickerInputs}
     </div>
   </div>
-  <div class="chi-label -status -danger">Please select an option.</div>
+  <div class="chi-label -status -danger">Please select an option</div>
 </fieldset>`;
   }
 }
