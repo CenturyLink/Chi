@@ -6,7 +6,7 @@
       .chi-checkbox
         input(type="checkbox" class="chi-checkbox__input" id="checkbox-me1")
         label(for="checkbox-me1" class="chi-checkbox__label") Checkbox
-      .chi-label.-status Optional input message
+      .chi-label.-status Optional helper message
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -41,7 +41,7 @@ import { Component, Vue } from 'vue-property-decorator';
     <input type="checkbox" class="chi-checkbox__input" id="checkbox-me1">
     <label class="chi-checkbox__label" for="checkbox-me1">Checkbox</label>
   </div>
-  <div class="chi-label -status">Optional input message</div>
+  <div class="chi-label -status">Optional helper message</div>
 </div>`
       }
     };

@@ -21,10 +21,22 @@
     }
 
     &-end {
+      display: flex;
+      flex-direction: column-reverse;
       margin-top: 1rem;
 
+      .chi-button + .chi-button {
+        margin-bottom: 0.5rem;
+      }
+
       @include respond-to(md) {
+        flex-direction: row;
         margin-top: 0;
+
+        .chi-button + .chi-button {
+          margin-bottom: 0;
+          margin-left: 0.5rem;
+        }
       }
     }
 
@@ -36,9 +48,15 @@
   }
 
   &__title {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
+    flex-direction: column;
     justify-content: flex-start;
+
+    @include respond-to(md) {
+      align-items: center;
+      flex-direction: row;
+    }
 
     &-heading {
       font-size: $font-size-h3;
@@ -67,13 +85,18 @@
       }
 
       & + .chi-main__title-subheading {
-        border-left: 0.0625rem solid $color-border-base;
+        @include respond-to(md) {
+          border-left: 0.0625rem solid $color-border-base;
+        }
       }
     }
 
     &-subheading {
       font-size: $font-size-base;
-      padding-left: 1rem;
+
+      @include respond-to(md) {
+        padding-left: 1rem;
+      }
     }
   }
 

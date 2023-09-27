@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-07-19T10:28:17",
+  "timestamp": "2023-09-26T15:26:57",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1912,6 +1912,22 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "visibleItems",
+          "type": "number",
+          "mutable": false,
+          "attr": "visible-items",
+          "reflectToAttr": false,
+          "docs": "To provide number of items in the dropdown to be displayed, and apply scroll if needed",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [
@@ -2075,6 +2091,23 @@
           "values": [
             {
               "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "stateIconTooltip",
+          "type": "string",
+          "mutable": false,
+          "attr": "state-icon-tooltip",
+          "reflectToAttr": true,
+          "docs": "to render a state tooltip",
+          "docsTags": [],
+          "default": "EPANEL_TOOLTIP_CONTENT",
+          "values": [
+            {
+              "type": "string"
             }
           ],
           "optional": false,

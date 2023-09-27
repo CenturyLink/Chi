@@ -8,6 +8,7 @@ const CAROUSEL_DOTS_CLASS = 'chi-carousel__dots';
 const CAROUSEL_PAGINATION_CLASS = 'chi-carousel__pagination';
 const CAROUSEL_VIEW_CHANGE_EVENT = 'chiViewChange';
 const ACTIVE_CLASS = '-active';
+const VISIBLE_CLASS = '-visible';
 const CAROUSEL_DIRECTION_CONTROL_CLASS = '.chi-carousel__control';
 
 describe('Carousel', () => {
@@ -243,8 +244,8 @@ describe('Carousel', () => {
     beforeEach(() => {
       cy.get("[data-cy='autoplay']").as('autoplay');
       cy.get('@autoplay')
-        .find(`.${CAROUSEL_ITEM_CLASS}.${ACTIVE_CLASS}`)
-        .as('activeItems');
+        .find(`.${CAROUSEL_ITEM_CLASS}.${VISIBLE_CLASS}`)
+        .as('visibleItems');
       cy.get('@autoplay')
         .find(`.${CAROUSEL_PREVIOUS_CLASS}`)
         .find('button')
@@ -269,7 +270,7 @@ describe('Carousel', () => {
       cy.get('@autoplay').within(() => {
         cy.get('@prevButton').should('be.disabled');
 
-        return cy.get('@activeItems').should($item => {
+        return cy.get('@visibleItems').should($item => {
           expect($item).to.have.length(3);
           expect($item.eq(0)).to.contain(1);
           expect($item.eq(2)).to.contain(3);
@@ -281,7 +282,7 @@ describe('Carousel', () => {
       cy.get('@autoplay').within(() => {
         cy.get('@prevButton').should('not.be.disabled');
 
-        return cy.get('@activeItems').should($item => {
+        return cy.get('@visibleItems').should($item => {
           expect($item.eq(0)).to.contain(4);
           expect($item.eq(2)).to.contain(6);
         });
@@ -292,7 +293,7 @@ describe('Carousel', () => {
       cy.get('@autoplay').within(() => {
         cy.get('@nextButton').should('be.disabled');
 
-        return cy.get('@activeItems').should($item => {
+        return cy.get('@visibleItems').should($item => {
           expect($item.eq(0)).to.contain(6);
           expect($item.eq(2)).to.contain(8);
         });

@@ -1,6 +1,6 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
-export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.37.0`;
+export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.39.0`;
 export const DOCS_URL = `${TEMP_DEVELOPMENT_FALLBACK_URL}/js/ce/docs.json`;
 export const THEMES = {
   centurylink: {
@@ -83,9 +83,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/avatar`,
+    to: `components/avatar`,
     label: 'Avatar',
-    source: 'pug'
+    source: 'vue'
   },
   {
     to: `components/badge`,
@@ -108,9 +108,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/button-group`,
+    to: `components/button-group`,
     label: 'Button group',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/card`,
@@ -163,9 +163,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'vue'
   },
   {
-    href: `components/flag-icon`,
+    to: `components/flag-icon`,
     label: 'Flag icon',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/footer`,
@@ -268,9 +268,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/skeleton`,
+    to: `components/skeleton`,
     label: 'Skeleton',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/spinner`,
@@ -288,9 +288,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/table`,
+    to: `components/table`,
     label: 'Table',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/tabs`,
@@ -330,6 +330,8 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '5.39.0',
+  '5.38.0',
   '5.37.0',
   '5.36.0',
   '5.35.0',
@@ -416,11 +418,11 @@ export const COLORS = {
     name: 'success',
     value: '#007E44'
   },
-  'SUCCESS-LIGHT': {
+  SUCCESS_LIGHT: {
     name: 'success-light',
     value: '#DBFAEE'
   },
-  'SUCCESS-LIGHTER': {
+  SUCCESS_LIGHTER: {
     name: 'success-lighter',
     value: '#F1FEF8'
   },
@@ -428,11 +430,11 @@ export const COLORS = {
     name: 'info',
     value: '#0075C9'
   },
-  'INFO-LIGHT': {
+  INFO_LIGHT: {
     name: 'info-light',
     value: '#F5F9FC'
   },
-  'INFO-LIGHTER': {
+  INFO_LIGHTER: {
     name: 'info-lighter',
     value: '#E0F3FF'
   },
@@ -440,11 +442,11 @@ export const COLORS = {
     name: 'warning',
     value: '#A15C00'
   },
-  'WARNING-LIGHT': {
+  WARNING_LIGHT: {
     name: 'warning-light',
     value: '#FAECD9'
   },
-  'WARNING-LIGHTER': {
+  WARNING_LIGHTER: {
     name: 'warning-lighter',
     value: '#FFF8ED'
   },
@@ -452,11 +454,11 @@ export const COLORS = {
     name: 'danger',
     value: '#D62015'
   },
-  'DANGER-LIGHT': {
+  DANGER_LIGHT: {
     name: 'danger-light',
     value: '#FFE8E5'
   },
-  'DANGER-LIGHTER': {
+  DANGER_LIGHTER: {
     name: 'danger-lighter',
     value: '#FFF5F5'
   },
@@ -464,31 +466,31 @@ export const COLORS = {
     name: 'muted',
     value: '#53565A'
   },
-  'MUTED-LIGHT': {
+  MUTED_LIGHT: {
     name: 'muted-light',
     value: '#EDF0F2'
   },
-  'MUTED-LIGHTER': {
+  MUTED_LIGHTER: {
     name: 'muted-lighter',
     value: '#F8F9F9'
   },
-  'BG-NONE': {
+  BG_NONE: {
     name: '-bg--none',
     value: 'none'
   },
-  'GREY-15': {
+  GREY_15: {
     name: 'grey-15',
     value: '#F4F5F6'
   },
-  'GREY-20': {
+  GREY_20: {
     name: 'grey-20',
     value: '#EDF0F2'
   },
-  'GREY-25': {
+  GREY_25: {
     name: 'grey-25',
     value: '#DADEE2'
   },
-  'GREY-30': {
+  GREY_30: {
     name: 'grey-30',
     value: '#D0D4D9'
   },
@@ -512,7 +514,7 @@ export const COLORS = {
     name: 'primary',
     value: '#0075C9'
   },
-  'PRIMARY-CENTURYLINK': {
+  PRIMARY_CENTURYLINK: {
     name: 'primary',
     value: '#0047BB'
   },
@@ -520,8 +522,229 @@ export const COLORS = {
     name: 'secondary',
     value: '#38C6F4'
   },
-  'SECONDARY-CENTURYLINK': {
+  SECONDARY_CENTURYLINK: {
     name: 'primary',
     value: '#48D597'
-  }
+  },
+  CYAN_50: {
+    name: 'cyan-50',
+    value: '#0C9ED9'
+  },
+  GRAY_100: {
+    name: 'gray-100',
+    value: '#242526'
+  },
+  GRAY_90: {
+    name: 'gray-90',
+    value: '#313336'
+  },
+  GRAY_90_BRIGHTSPEED: {
+    name: 'gray-90-brightspeed',
+    value: '#191919'
+  },
+  GRAY_80: {
+    name: 'gray-80',
+    value: '#333333'
+  },
+  GRAY_70: {
+    name: 'gray-70',
+    value: '#4C4C4C'
+  },
+  GRAY_60: {
+    name: 'gray-60',
+    value: '#65686C'
+  },
+  GRAY_60_BRIGHTSPEED: {
+    name: 'gray-60-brightspeed',
+    value: '#666666'
+  },
+  GRAY_50: {
+    name: 'gray-50',
+    value: '#8E9399'
+  },
+  GRAY_50_BRIGHTSPEED: {
+    name: 'gray-50-brightspeed',
+    value: '#7F7F7F'
+  },
+  GRAY_40: {
+    name: 'gray-40',
+    value: '#ACB0B5'
+  },
+  GRAY_40_BRIGHTSPEED: {
+    name: 'gray-40-brightspeed',
+    value: '#999999'
+  },
+  GRAY_30: {
+    name: 'gray-30',
+    value: '#B2B2B2'
+  },
+  GRAY_25: {
+    name: 'gray-25',
+    value: '#DDDEDF'
+  },
+  GRAY_20: {
+    name: 'gray-20',
+    value: '#E6E7E8'
+  },
+  GRAY_15: {
+    name: 'gray-15',
+    value: '#F0F1F1'
+  },
+  GRAY_10: {
+    name: 'gray-10',
+    value: '#F2F2F2'
+  },
+  GREEN_60: {
+    name: 'green-60',
+    value: '#009054'
+  },
+  GREEN_60_CENTURYLINK: {
+    name: 'green-60-centurylink',
+    value: '#008000'
+  },
+  GREEN_35: {
+    name: 'green-35',
+    value: '#6FD16F'
+  },
+  GREEN_30: {
+    name: 'green-30',
+    value: '#95E9C9'
+  },
+  GREEN_30_CENTURYLINK: {
+    name: 'green-30-centurylink',
+    value: '#A7DBA7'
+  },
+  GREEN_20: {
+    name: 'green-20',
+    value: '#CEF2CE'
+  },
+  GREEN_50: {
+    name: 'green-50',
+    value: '#189E18'
+  },
+  BLUE_75: {
+    name: 'blue-75',
+    value: '#0262B9'
+  },
+  BLUE_60: {
+    name: 'blue-60',
+    value: '#0080DC'
+  },
+  BLUE_60_CENTURYLINK: {
+    name: 'blue-60-centurylink',
+    value: '#0060FA'
+  },
+  BLUE_50_CENTURYLINK: {
+    name: 'blue-50-centurylink',
+    value: '#468AF1'
+  },
+  BLUE_30: {
+    name: 'blue-30',
+    value: '#AEDEFF'
+  },
+  BLUE_30_CENTURYLINK: {
+    name: 'blue-30-centurylink',
+    value: '#C0D7FA'
+  },
+  BLUE_20: {
+    name: 'blue-20',
+    value: '#E6F0FF'
+  },
+  RED_70: {
+    name: 'red-70',
+    value: '#A01903'
+  },
+  RED_60_BRIGHTSPEED: {
+    name: 'red-60-brightspeed',
+    value: '#D52C10'
+  },
+  RED_60_CENTURYLINK: {
+    name: 'red-60-centurylink',
+    value: '#D81820'
+  },
+  RED_60: {
+    name: 'red-60',
+    value: '#EE3026'
+  },
+  RED_50: {
+    name: 'red-50',
+    value: '#FA4628'
+  },
+  RED_50_CENTURYLINK: {
+    name: 'red-50-centurylink',
+    value: '#FA5056'
+  },
+  RED_30: {
+    name: 'red-30',
+    value: '#FFC2BD'
+  },
+  RED_30_CENTURYLINK: {
+    name: 'red-30-centurylink',
+    value: '#FCC7C9'
+  },
+  RED_30_BRIGHTSPEED: {
+    name: 'red-30-brightspeed',
+    value: '#FCA293'
+  },
+  RED_20: {
+    name: 'red-20',
+    value: '#FBDFDB'
+  },
+  RED_20_CENTURYLINK: {
+    name: 'red-20-centurylink',
+    value: '#FCE8E9'
+  },
+  YELLOW_60: {
+    name: 'yellow-60',
+    value: '#B96B00'
+  },
+  YELLOW_60_CENTURYLINK: {
+    name: 'yellow-60-centurylink',
+    value: '#946300'
+  },
+  YELLOW_60_BRIGHTSPEED: {
+    name: 'yellow-60-brightspeed',
+    value: '#AD7600'
+  },
+  YELLOW_50: {
+    name: 'yellow-50',
+    value: '#D19110'
+  },
+  YELLOW_40: {
+    name: 'yellow-40',
+    value: '#FFC800'
+  },
+  YELLOW_35: {
+    name: 'yellow-35',
+    value: '#F9F162'
+  },
+  YELLOW_30: {
+    name: 'yellow-30',
+    value: '#FFCC89'
+  },
+  YELLOW_30_CENTURYLINK: {
+    name: 'yellow-30-centurylink',
+    value: '#F6ED79'
+  },
+  YELLOW_30_BRIGHTSPEED: {
+    name: 'yellow-30-brightspeed',
+    value: '#FFE37F'
+  },
+  YELLOW_20: {
+    name: 'yellow-20',
+    value: '#FFF1BF'
+  },
+  YELLOW_20_CENTURYLINK: {
+    name: 'yellow-20-centurylink',
+    value: '#F9F5BE'
+  },
+  TEAL_BLUE_40: {
+    name: 'teal-blue-40',
+    value: '#02BCB2'
+  },
+  ORANGE_40: {
+    name: 'orange-40',
+    value: '#FA783C'
+  },
+
 };

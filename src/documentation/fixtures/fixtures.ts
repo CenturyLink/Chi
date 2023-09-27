@@ -3,8 +3,11 @@ import {
   ILink,
   IThemes,
   IZIndex,
-  IBreakpoints
+  IBreakpoints,
+  ThemesColor,
+  ITableHead,
 } from '~/models/models';
+import { COLORS } from  '~/constants/constants';
 
 export const FOOTER_LINKS: ILink[] = [
   { href: 'https://www.lumen.com/en-us/about.html', title: 'About Us' },
@@ -516,6 +519,748 @@ export const zIndexValues: IZIndex[] = [
   { key: 'auto', color: '', margin: 0, text: '-' }
 ];
 
+const neutralColors = [
+  [
+    {
+      code: COLORS.GRAY_100.value,
+      text: 'Grey 100',
+      description: 'Used for primary text color on white and low-contrast backgrounds on black.',
+      a11y: 'AAA',
+      class: '-text--white',
+    },
+    {
+      code: COLORS.GRAY_90.value,
+      text: 'Grey 90',
+      description: 'Used for low-contrast borders on black and medium-contrast backgrounds on black.',
+      a11y: 'AAA',
+      class: '-text--white',
+    },
+    {
+      code: COLORS.GREY.value,
+      text: 'Grey 80',
+      description: 'Used for medium-contrast borders on black and high-contrast backgrounds on black.',
+      a11y: 'AAA',
+      class: '-text--white',
+    },
+    {
+      code: COLORS.MUTED.value,
+      text: 'Grey 70',
+      description: 'Used for secondary text on white and high-contrast borders on black.',
+      a11y: 'AA',
+      class: '-text--white',
+    },
+  ],
+  [
+    {
+      code: COLORS.GRAY_60.value,
+      text: 'Grey 60',
+      description: 'Used for muted or disabled text and icons on white.',
+      a11y: 'AA',
+      class: '-text--white',
+    },
+    {
+      code: COLORS.GRAY_50.value,
+      text: 'Grey 50',
+      description: 'Used for muted or disabled text and icons on black.',
+      a11y: 'AA',
+    },
+    {
+      code: COLORS.GRAY_40.value,
+      text: 'Grey 40',
+      description: 'Used for high-contrast borders on white.',
+      a11y: 'AAA',
+    },
+    {
+      code: COLORS.GREY_30.value,
+      text: 'Grey 30',
+      description: 'Used for medium-contrast borders on white.',
+      a11y: 'AAA',
+    },
+  ],
+  [
+    {
+      code: COLORS.GREY_25.value,
+      text: 'Grey 25',
+      description: 'Used for medium-contrast borders and high-contrast backgrounds on white.',
+      a11y: 'AAA',
+    },
+    {
+      code: COLORS.MUTED_LIGHT.value,
+      text: 'Grey 20',
+      description: 'Used for low-contrast borders and medium-contrast backgrounds on white.',
+      a11y: 'AAA',
+    },
+    {
+      code: COLORS.GREY_15.value,
+      text: 'Grey 15',
+      description: 'Used for low-contrast backgrounds on white.',
+      a11y: 'AAA',
+    },
+    {
+      code: COLORS.MUTED_LIGHTER.value,
+      text: 'Grey 10',
+      description: 'Used for low-contrast backgrounds on white.',
+      a11y: 'AAA',
+    },
+  ],
+];
+
+export const colors: ThemesColor = {
+  lumen: {
+    brand: {
+      main: [
+        {
+          title: 'Primary Accent',
+          id: 'primary-accent',
+          code: COLORS.INFO.value,
+          a11y: 'AA',
+          text: 'Blue 70',
+          class: '-text--white',
+        },
+        {
+          title: 'Secondary Accent',
+          id: 'secondary-accent',
+          code: COLORS.SECONDARY.value,
+          text: 'Cyan 40',
+          a11y: 'AAA',
+        }
+      ],
+      supporting: [
+        {
+          text: 'White',
+          code: COLORS.WHITE.value,
+          a11y: 'AAA',
+          class: '-b--1',
+        },
+        {
+          text: 'Cyan 50',
+          code: COLORS.CYAN_50.value,
+          a11y: 'AA',
+        },
+        {
+          text: 'Navy 100',
+          code: COLORS.NAVY.value,
+          class: '-text--white',
+          a11y: 'AAA',
+        },
+        {
+          text: 'Black',
+          code: COLORS.BLACK.value,
+          class: '-text--white',
+          a11y: 'AAA',
+        },
+      ]
+    },
+    neutral: neutralColors,
+    semantic: [
+      [
+        {
+          code: COLORS.SUCCESS.value,
+          text: 'Green 70',
+          a11y: 'AA',
+          class: '-text--white',
+        }, {
+          code: COLORS.GREEN_60.value,
+          text: 'Green 60',
+          a11y: 'AA',
+          class: '-text--white',
+        }, {
+          code: COLORS.GREEN_30.value,
+          text: 'Green 30',
+          a11y: 'AAA',
+        }, {
+          code: COLORS.SUCCESS_LIGHT.value,
+          text: 'Green 20',
+          a11y: 'AAA',
+        }],
+      [
+        {
+          code: COLORS.BLUE_75.value,
+          text: 'Blue 75',
+          a11y: 'AA',
+          class: '-text--white',
+        },
+        {
+          code: COLORS.BLUE_60.value,
+          text: 'Blue 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.BLUE_30.value,
+          text: 'Blue 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.INFO_LIGHTER.value,
+          text: 'Blue 20',
+          a11y: 'AAA',
+        }
+      ],
+      [
+        {
+          code: COLORS.DANGER.value,
+          text: 'Red 70',
+          a11y: 'AA',
+          class: '-text--white',
+        },
+        {
+          code: COLORS.RED_60.value,
+          text: 'Red 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.RED_30.value,
+          text: 'Red 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.DANGER_LIGHT.value,
+          text: 'Red 20',
+          a11y: 'AAA',
+        }
+      ],
+      [
+        {
+          code: COLORS.WARNING.value,
+          text: 'Yellow 70',
+          a11y: 'AA',
+          class: '-text--white',
+        },
+        {
+          code: COLORS.YELLOW_60.value,
+          text: 'Yellow 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.YELLOW_30.value,
+          text: 'Yellow 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.WARNING_LIGHT.value,
+          text: 'Yellow 20',
+          a11y: 'AAA',
+        }
+      ],
+    ],
+  },
+  centurylink: {
+    brand: {
+      main: [
+        {
+          title: 'Primary Accent',
+          id: 'primary-accent',
+          code: COLORS.PRIMARY_CENTURYLINK.value,
+          a11y: 'AAA',
+          text: 'Blue 70',
+          class: '-text--white',
+        },
+        {
+          title: 'Secondary Accent',
+          id: 'secondary-accent',
+          code: COLORS.SECONDARY_CENTURYLINK.value,
+          a11y: 'AAA',
+          text: 'Mint 40',
+        }
+      ],
+      supporting: [
+        {
+          text: 'White',
+          code: COLORS.WHITE.value,
+          a11y: 'AAA',
+          class: '-b--1',
+        },
+        {
+          text: 'Teal Blue 40',
+          code: COLORS.TEAL_BLUE_40.value,
+          a11y: 'AA',
+        },
+        {
+          text: 'Yellow 35',
+          code: COLORS.YELLOW_35.value,
+          a11y: 'AAA',
+        },
+        {
+          text: 'Green 35',
+          code: COLORS.GREEN_35.value,
+          a11y: 'AAA',
+        },
+      ]
+    },
+    neutral: neutralColors,
+    semantic: [
+      [
+        {
+          code: COLORS.GREEN_60_CENTURYLINK.value,
+          text: 'Green 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.GREEN_50.value,
+          text: 'Green 50',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.GREEN_30_CENTURYLINK.value,
+          text: 'Green 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.GREEN_20.value,
+          text: 'Green 20',
+          a11y: 'AAA',
+        }
+      ],
+      [
+        {
+          code: COLORS.BLUE_60_CENTURYLINK.value,
+          text: 'Blue 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.BLUE_50_CENTURYLINK.value,
+          text: 'Blue 50',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.BLUE_30_CENTURYLINK.value,
+          text: 'Blue 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.BLUE_20.value,
+          text: 'Blue 20',
+          a11y: 'AAA',
+        }
+      ],
+      [
+        {
+          code: COLORS.RED_60_CENTURYLINK.value,
+          text: 'Red 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.RED_50_CENTURYLINK.value,
+          text: 'Red 50',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.RED_30_CENTURYLINK.value,
+          text: 'Red 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.RED_20_CENTURYLINK.value,
+          text: 'Red 20',
+          a11y: 'AAA',
+        }
+      ],
+      [
+        {
+          code: COLORS.YELLOW_60_CENTURYLINK.value,
+          text: 'Yellow 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.YELLOW_50.value,
+          text: 'Yellow 50',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.YELLOW_30_CENTURYLINK.value,
+          text: 'Yellow 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.YELLOW_20_CENTURYLINK.value,
+          text: 'Yellow 20',
+          a11y: 'AAA',
+        }
+      ],
+    ],
+  },
+  brightspeed: {
+    brand: {
+      main: [
+        {
+          title: 'Primary Accent',
+          id: 'primary-accent',
+          code: COLORS.YELLOW_40.value,
+          text: 'Yellow 40',
+          a11y: 'AAA',
+        },
+        {
+          title: 'Secondary Accent',
+          id: 'secondary-accent',
+          code: COLORS.ORANGE_40.value,
+          text: 'Orange 40',
+          class: '-text--black',
+          a11y: 'AAA',
+        },
+      ],
+      supporting: [
+        {
+          text: 'Red 50',
+          code: COLORS.RED_50.value,
+          wrapperClass: '-w-lg--4',
+          a11y: 'AA',
+        },
+        {
+          text: 'White',
+          code: COLORS.WHITE.value,
+          class: '-b--1',
+          wrapperClass: '-w-lg--4',
+          a11y: 'AAA',
+        },
+        {
+          text: 'Black',
+          code: COLORS.BLACK.value,
+          class: '-text--white -bg--black',
+          wrapperClass: '-w-lg--4',
+          a11y: 'AAA',
+        },
+      ]
+    },
+    neutral: [
+      [
+        {
+          code: COLORS.BLACK.value,
+          text: 'Grey 100',
+          description: 'Used for primary text color on white and low-contrast backgrounds on black.',
+          a11y: 'AAA',
+          class: '-text--white',
+        },
+        {
+          code: COLORS.GRAY_90_BRIGHTSPEED.value,
+          text: 'Grey 90',
+          description: 'Used for low-contrast borders on black and medium-contrast backgrounds on black.',
+          a11y: 'AAA',
+          class: '-text--white',
+        },
+        {
+          code: COLORS.GRAY_80.value,
+          text: 'Grey 80',
+          description: 'Used for medium-contrast borders on black and high-contrast backgrounds on black.',
+          a11y: 'AAA',
+          class: '-text--white',
+        },
+        {
+          code: COLORS.GRAY_70.value,
+          text: 'Grey 70',
+          description: 'Used for secondary text on white and high-contrast borders on black.',
+          a11y: 'AA',
+          class: '-text--white',
+        },
+      ],
+      [
+        {
+          code: COLORS.GRAY_60_BRIGHTSPEED.value,
+          text: 'Grey 60',
+          description: 'Used for muted or disabled text and icons on white.',
+          a11y: 'AAA',
+          class: '-text--white',
+        },
+        {
+          code: COLORS.GRAY_50_BRIGHTSPEED.value,
+          text: 'Grey 50',
+          description: 'Used for muted or disabled text and icons on black.',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.GRAY_40_BRIGHTSPEED.value,
+          text: 'Grey 40',
+          description: 'Used for high-contrast borders on white.',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.GRAY_30.value,
+          text: 'Grey 30',
+          description: 'Used for medium-contrast borders on white.',
+          a11y: 'AAA',
+        },
+      ],
+      [
+        {
+          code: COLORS.GRAY_25.value,
+          text: 'Grey 25',
+          description: 'Used for medium-contrast borders and high-contrast backgrounds on white.',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.GRAY_20.value,
+          text: 'Grey 20',
+          description: 'Used for low-contrast borders and medium-contrast backgrounds on white.',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.GRAY_15.value,
+          text: 'Grey 15',
+          description: 'Used for low-contrast backgrounds on white.',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.GRAY_10.value,
+          text: 'Grey 10',
+          description: 'Used for low-contrast backgrounds on white.',
+          a11y: 'AAA',
+        },
+      ],
+    ],
+    semantic: [
+      [
+        {
+          code: COLORS.SUCCESS.value,
+          text: 'Green 70',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.GREEN_60.value,
+          text: 'Green 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.GREEN_30.value,
+          text: 'Green 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.SUCCESS_LIGHT.value,
+          text: 'Green 20',
+          a11y: 'AAA',
+        }
+      ],
+      [
+        {
+          code: COLORS.BLUE_75.value,
+          text: 'Blue 75',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.BLUE_60.value,
+          text: 'Blue 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.BLUE_30.value,
+          text: 'Blue 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.INFO_LIGHTER.value,
+          text: 'Blue 20',
+          a11y: 'AAA',
+        }
+      ],
+      [
+        {
+          code: COLORS.RED_70.value,
+          text: 'Red 70',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.RED_60_BRIGHTSPEED.value,
+          text: 'Red 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.RED_30_BRIGHTSPEED.value,
+          text: 'Red 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.RED_20.value,
+          text: 'Red 20',
+          a11y: 'AAA',
+        }
+      ],
+      [
+        {
+          code: COLORS.WARNING.value,
+          text: 'Yellow 70',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.YELLOW_60_BRIGHTSPEED.value,
+          text: 'Yellow 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.YELLOW_30_BRIGHTSPEED.value,
+          text: 'Yellow 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.YELLOW_20.value,
+          text: 'Yellow 20',
+          a11y: 'AAA',
+        }
+      ],
+    ],
+  },
+  portal: {
+    brand: {
+      main: [
+        {
+          title: 'Primary Accent',
+          id: 'primary-accent',
+          code: COLORS.INFO.value,
+          a11y: 'AA',
+          text: 'Blue 70',
+          class: '-text--white',
+        },
+        {
+          title: 'Secondary Accent',
+          id: 'secondary-accent',
+          code: COLORS.SECONDARY.value,
+          text: 'Cyan 40',
+          a11y: 'AAA',
+        }
+      ],
+      supporting: [
+        {
+          text: 'White',
+          code: COLORS.WHITE.value,
+          a11y: 'AAA',
+          class: '-b--1',
+        },
+        {
+          text: 'Cyan 50',
+          code: COLORS.CYAN_50.value,
+          a11y: 'AA',
+        },
+        {
+          text: 'Navy 100',
+          code: COLORS.NAVY.value,
+          class: '-text--white',
+          a11y: 'AAA',
+        },
+        {
+          text: 'Black',
+          code: COLORS.BLACK.value,
+          class: '-text--white -bg--black',
+          a11y: 'AAA',
+        },
+      ]
+    },
+    neutral: neutralColors,
+    semantic: [
+      [
+        {
+          code: COLORS.SUCCESS.value,
+          text: 'Green 70',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.GREEN_60.value,
+          text: 'Green 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.GREEN_30.value,
+          text: 'Green 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.SUCCESS_LIGHT.value,
+          text: 'Green 20',
+          a11y: 'AAA',
+        }
+      ],
+      [
+        {
+          code: COLORS.BLUE_75.value,
+          text: 'Blue 75',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.BLUE_60.value,
+          text: 'Blue 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.BLUE_30.value,
+          text: 'Blue 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.INFO_LIGHTER.value,
+          text: 'Blue 20',
+          a11y: 'AAA',
+        }
+      ],
+      [
+        {
+          code: COLORS.DANGER.value,
+          text: 'Red 70',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.RED_60.value,
+          text: 'Red 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.RED_30.value,
+          text: 'Red 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.DANGER_LIGHT.value,
+          text: 'Red 20',
+          a11y: 'AAA',
+        }
+      ],
+      [
+        {
+          code: COLORS.WARNING.value,
+          text: 'Yellow 70',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.YELLOW_60.value,
+          text: 'Yellow 60',
+          class: '-text--white',
+          a11y: 'AA',
+        },
+        {
+          code: COLORS.YELLOW_30.value,
+          text: 'Yellow 30',
+          a11y: 'AAA',
+        },
+        {
+          code: COLORS.WARNING_LIGHT.value,
+          text: 'Yellow 20',
+          a11y: 'AAA',
+        }
+      ],
+    ],
+  },
+  colt: null,
+}
+
 export const breakpoints: IBreakpoints[] = [
   { name: 'sm', value: 'sm and larger' },
   { name: 'md', value: 'md and larger' },
@@ -561,3 +1306,25 @@ export const defaultColumns = [
     width: ''
   }
 ];
+
+export const getTableHead = (data: Partial<ITableHead> = {}) => [
+    {
+      title: data.col1?.title || 'Name',
+      key: 'cell1',
+      width: '',
+      className: data.col1?.className || ''
+    },
+    {
+      title: 'ID',
+      key: 'cell2',
+      width: '',
+      className: data.col2?.className || ''
+    },
+    {
+      title: 'Last Login',
+      key: 'cell3',
+      width: '',
+      className: data.col3?.className || ''
+    }
+  ];
+

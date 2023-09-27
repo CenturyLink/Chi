@@ -7,11 +7,11 @@
       label(class="chi-label" for="example-er1") Label
         abbr(class="chi-label__required" aria-label="Required field") *
       select(class="chi-select -danger" id="example-er1" required)
-        option(value="") Select
+        option(value="") - Select -
         option Option 1
         option Option 2
         option Option 3
-      .chi-label.-status.-danger Please select an option.
+      .chi-label.-status.-danger Please select an option
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>   
@@ -47,12 +47,12 @@ import { Component, Vue } from 'vue-property-decorator';
     <abbr class="chi-label__required" aria-label="Required field">*</abbr>
   </label>
   <select class="chi-select -danger" id="example-er1" required>
-    <option value="">Select</option>
+    <option value="">- Select -</option>
     <option>Option 1</option>
     <option>Option 2</option>
     <option>Option 3</option>
   </select>
-  <div class="chi-label -status -danger">Please select an option.</div>
+  <div class="chi-label -status -danger">Please select an option</div>
 </div>`
       }
     };
