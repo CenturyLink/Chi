@@ -1,6 +1,6 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
-export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.38.0`;
+export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.39.0`;
 export const DOCS_URL = `${TEMP_DEVELOPMENT_FALLBACK_URL}/js/ce/docs.json`;
 export const THEMES = {
   centurylink: {
@@ -330,6 +330,7 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '5.39.0',
   '5.38.0',
   '5.37.0',
   '5.36.0',
