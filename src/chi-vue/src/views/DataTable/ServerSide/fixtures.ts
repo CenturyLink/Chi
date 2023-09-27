@@ -1,4 +1,4 @@
-import { DataTableConfig } from '@/constants/types';
+import { DataTableActionItemResponsiveness, DataTableColumnProps, DataTableConfig } from '@/constants/types';
 
 export const exampleConfig: DataTableConfig = {
   columnResize: true,
@@ -38,6 +38,32 @@ export const exampleConfig: DataTableConfig = {
   },
   showExpandAll: true,
   showSelectAllDropdown: true,
+  actions: [
+    {
+      label: 'View',
+      icon: 'icon-check-alt',
+      onClick: (props: DataTableColumnProps) => {
+        alert(`viewed props! ${JSON.stringify(props)}`);
+      },
+    },
+    {
+      label: 'Edit',
+      icon: 'icon-edit',
+      hide: [DataTableActionItemResponsiveness.MOBILE],
+      onClick: () => (location.href = 'https://www.google.com'),
+    },
+    {
+      label: 'Download',
+      icon: 'icon-circle-arrow-down',
+      hide: [DataTableActionItemResponsiveness.DESKTOP],
+      onClick: () => console.log(`downloaded`),
+    },
+    {
+      label: 'Delete',
+      icon: 'icon-delete',
+      onClick: () => console.log('deleted'),
+    },
+  ],
 };
 
 export const exampleTableHead = {
@@ -54,7 +80,6 @@ export const exampleTableHead = {
   number: { label: 'Number', sortable: true, sortDataType: 'number' },
   date: { label: 'Date', sortable: true, sortBy: 'date', sortDataType: 'date' },
   productId: { label: 'Product / Service ID', sortable: true, sortDataType: 'string' },
-  actions: { label: ' ', align: 'right', allowOverflow: true, key: true },
 };
 
 export const exampleTablePage1 = [
@@ -75,11 +100,6 @@ export const exampleTablePage1 = [
       0,
       { template: 'date', payload: { date: new Date('02/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021063' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -93,11 +113,6 @@ export const exampleTablePage1 = [
       1,
       { template: 'date', payload: { date: new Date('03/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021071' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -114,11 +129,6 @@ export const exampleTablePage1 = [
       2,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021064' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -136,11 +146,6 @@ export const exampleTablePage1 = [
       3,
       { template: 'date', payload: { date: new Date('05/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021065' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -160,11 +165,6 @@ export const exampleTablePage1 = [
       4,
       { template: 'date', payload: { date: new Date('06/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021066' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -195,11 +195,6 @@ export const exampleTablePage1 = [
               5,
               { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
-              {
-                template: 'actions',
-                payload: { id: 'NTN0000210661' },
-                align: 'right',
-              },
             ],
           },
           {
@@ -233,11 +228,6 @@ export const exampleTablePage1 = [
                       6,
                       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                       'SVUJW034781A',
-                      {
-                        template: 'actions',
-                        payload: { id: 'NTN0000210661' },
-                        align: 'right',
-                      },
                     ],
                   },
                   {
@@ -271,11 +261,6 @@ export const exampleTablePage1 = [
                               7,
                               { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                               'SVUJW034781A',
-                              {
-                                template: 'actions',
-                                payload: { id: 'NTN00002106611' },
-                                align: 'right',
-                              },
                             ],
                           },
                           {
@@ -303,11 +288,6 @@ export const exampleTablePage1 = [
                               8,
                               { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                               'SVUJW034781A',
-                              {
-                                template: 'actions',
-                                payload: { id: 'NTN00002106621' },
-                                align: 'right',
-                              },
                             ],
                           },
                         ],
@@ -335,11 +315,6 @@ export const exampleTablePage1 = [
                       9,
                       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
                       'SVUJW034781A',
-                      {
-                        template: 'actions',
-                        payload: { id: 'NTN0000210662' },
-                        align: 'right',
-                      },
                     ],
                   },
                 ],
@@ -364,11 +339,6 @@ export const exampleTablePage1 = [
               10,
               { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
               'SVUJW034781A',
-              {
-                template: 'actions',
-                payload: { id: 'NTN0000210662' },
-                align: 'right',
-              },
             ],
           },
         ],
@@ -382,11 +352,6 @@ export const exampleTablePage1 = [
       11,
       { template: 'date', payload: { date: new Date('07/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021067' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -400,11 +365,6 @@ export const exampleTablePage1 = [
       12,
       { template: 'date', payload: { date: new Date('01/06/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021072' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -422,11 +382,6 @@ export const exampleTablePage1 = [
       13,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN0000210651' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -440,11 +395,6 @@ export const exampleTablePage1 = [
       14,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021068' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -458,11 +408,6 @@ export const exampleTablePage1 = [
       15,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021069' },
-        align: 'right',
-      },
     ],
   },
 ];
@@ -479,11 +424,6 @@ export const exampleTablePage2 = [
       16,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021070' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -497,11 +437,6 @@ export const exampleTablePage2 = [
       17,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021073' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -515,11 +450,6 @@ export const exampleTablePage2 = [
       18,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021074' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -533,11 +463,6 @@ export const exampleTablePage2 = [
       19,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021075' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -551,11 +476,6 @@ export const exampleTablePage2 = [
       20,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021076' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -569,11 +489,6 @@ export const exampleTablePage2 = [
       21,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021077' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -587,11 +502,6 @@ export const exampleTablePage2 = [
       22,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021078' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -605,11 +515,6 @@ export const exampleTablePage2 = [
       23,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021079' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -623,11 +528,6 @@ export const exampleTablePage2 = [
       24,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021080' },
-        align: 'right',
-      },
     ],
   },
   {
@@ -641,11 +541,6 @@ export const exampleTablePage2 = [
       25,
       { template: 'date', payload: { date: new Date('04/05/2018 8:00 AM') } },
       'SVUJW034781A',
-      {
-        template: 'actions',
-        payload: { id: 'NTN000021081' },
-        align: 'right',
-      },
     ],
   },
 ];

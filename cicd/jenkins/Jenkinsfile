@@ -63,7 +63,7 @@ pipeline {
       KUBE_CREDENTIALS_TEST = 'kube-secret-test'
       AMAZON_CREDENTIALS = 'awsCredentialsPR'
       AMAZON_CREDENTIALS_PR = 'awsCredentials'
-      SONARQUBE_CREDENTIALS = 'sonar-credentials'
+      SONARQUBE_CREDENTIALS = 'sonarcicdent'
       GCP_CREDENTIALS = ''
       JIRA_CREDENTIALS = 'jira-credentials'
       MSTEAMS_CREDENTIALS = 'TEAMS-SECRET'
@@ -473,9 +473,8 @@ pipeline {
           }
           stage ('Cypress local Testing') {
             agent {
-              dockerfile {
-                filename 'Dockerfile'
-                dir 'cicd/docker/sonar-scanner'
+              docker {
+                image "nexusprod.corp.intranet:4567/jsl-docker-standard-images/node14_agent:latest"
                 label 'Docker-enabled'
                 args '-m 2G --shm-size=2gb'
               }

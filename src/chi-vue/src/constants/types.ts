@@ -125,6 +125,7 @@ export interface DataTableConfig {
   showExpandAll?: boolean;
   showSelectAllDropdown?: boolean;
   emptyActionable?: DataTableEmptyActionableContent;
+  actions?: DataTableAction[];
 }
 export interface DataTableFilter {
   name: string;
@@ -154,6 +155,7 @@ export interface DataTableColumn {
   label: string;
   selected: boolean;
   locked: true;
+  wildcard?: boolean;
 }
 export interface DataTableColumnsData {
   columns: DataTableColumn[];
@@ -242,3 +244,18 @@ export interface DataTableEmptyActionableContent {
   };
 }
 //#region
+
+export type DataTableColumnProps = DataTableRow | undefined;
+
+export enum DataTableActionItemResponsiveness {
+  DESKTOP = 'desktop',
+  TABLET = 'tablet',
+  MOBILE = 'mobile',
+}
+
+export type DataTableAction = {
+  label: string;
+  icon: string;
+  onClick: (props: DataTableColumnProps) => void;
+  hide?: DataTableActionItemResponsiveness[];
+};

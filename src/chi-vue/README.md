@@ -24,6 +24,31 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # CHANGELOG
+## 2.4.0 (September 27, 2023)
+### Components
+#### Added
+* Added: Save view event `chiSaveViewInput`.
+#### Fixed
+* Fixed: Column customization cancel behavior that was removing items from columns.
+
+## 2.3.0 (September 15, 2023)
+### Components
+#### Added
+* Added: Data table Vue component now supports empty actionable view with `emptyActionable` config.
+* Added: Column customization reset button now supports tooltip.
+* Added: Column customization now supports `wildcard` config for columns that enable a specified column to appear before locked columns.
+* Added: Data table Vue component now supports configurable and responsive behavior actions column. 
+#### Changed
+* Changed: Data table Vue component pagination footer is always present in empty states (`no results`, `no filters` and `empty actionable`) for consistency with Brand guidelines.
+* Changed: Column customization reset button.
+#### Fixed
+* Fixed: Column customization chevrons icon button disabled states.
+
+## 2.2.0 (July 12, 2023)
+### Components
+#### Added
+* Added: Data table header now supports icons with `icon` property.
+
 ## 2.1.2 (June 14, 2023)
 ### Components
 #### Fixed

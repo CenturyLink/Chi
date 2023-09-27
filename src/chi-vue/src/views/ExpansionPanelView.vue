@@ -7,6 +7,8 @@
       :key="index"
       :step="index + 1"
       title="Title"
+      state-icon="true"
+      state-icon-tooltip="The step has been done"
       :state="active === index ? 'active' : active > index ? 'done' : 'pending'"
     >
       <div slot="active">

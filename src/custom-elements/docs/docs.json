@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-07-03T11:12:35",
+  "timestamp": "2023-09-26T15:26:57",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1912,6 +1912,22 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "visibleItems",
+          "type": "number",
+          "mutable": false,
+          "attr": "visible-items",
+          "reflectToAttr": false,
+          "docs": "To provide number of items in the dropdown to be displayed, and apply scroll if needed",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [
@@ -2081,6 +2097,23 @@
           "required": false
         },
         {
+          "name": "stateIconTooltip",
+          "type": "string",
+          "mutable": false,
+          "attr": "state-icon-tooltip",
+          "reflectToAttr": true,
+          "docs": "to render a state tooltip",
+          "docsTags": [],
+          "default": "EPANEL_TOOLTIP_CONTENT",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "step",
           "type": "string",
           "mutable": false,
@@ -2121,6 +2154,59 @@
       "dependents": [],
       "dependencies": [],
       "dependencyGraph": {}
+    },
+    {
+      "filePath": "src/components/helper-message/helper-message.tsx",
+      "encapsulation": "scoped",
+      "tag": "chi-helper-message",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "state",
+          "type": "\"danger\" | \"success\" | \"warning\"",
+          "mutable": false,
+          "attr": "state",
+          "reflectToAttr": true,
+          "docs": "To define state color of message text",
+          "docsTags": [],
+          "values": [
+            {
+              "value": "danger",
+              "type": "string"
+            },
+            {
+              "value": "success",
+              "type": "string"
+            },
+            {
+              "value": "warning",
+              "type": "string"
+            }
+          ],
+          "optional": true,
+          "required": false
+        }
+      ],
+      "methods": [],
+      "events": [],
+      "styles": [],
+      "slots": [],
+      "dependents": [
+        "chi-text-input"
+      ],
+      "dependencies": [
+        "chi-icon"
+      ],
+      "dependencyGraph": {
+        "chi-helper-message": [
+          "chi-icon"
+        ],
+        "chi-text-input": [
+          "chi-helper-message"
+        ]
+      }
     },
     {
       "filePath": "src/components/icon/icon.tsx",
@@ -2252,6 +2338,7 @@
         "chi-date",
         "chi-date-picker",
         "chi-drawer",
+        "chi-helper-message",
         "chi-number-input",
         "chi-text-input",
         "chi-textarea",
@@ -2275,6 +2362,9 @@
           "chi-icon"
         ],
         "chi-drawer": [
+          "chi-icon"
+        ],
+        "chi-helper-message": [
           "chi-icon"
         ],
         "chi-number-input": [
@@ -4399,7 +4489,11 @@
         ],
         "chi-text-input": [
           "chi-icon",
-          "chi-spinner"
+          "chi-spinner",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
         ]
       }
     },
@@ -5499,6 +5593,22 @@
           "required": false
         },
         {
+          "name": "helperMessage",
+          "type": "string",
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": true,
+          "docs": "To display an additional helper text message below the Text input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "iconLeft",
           "type": "string",
           "mutable": false,
@@ -5924,12 +6034,17 @@
       ],
       "dependencies": [
         "chi-icon",
-        "chi-spinner"
+        "chi-spinner",
+        "chi-helper-message"
       ],
       "dependencyGraph": {
         "chi-text-input": [
           "chi-icon",
-          "chi-spinner"
+          "chi-spinner",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
+          "chi-icon"
         ],
         "chi-phone-input": [
           "chi-text-input"
