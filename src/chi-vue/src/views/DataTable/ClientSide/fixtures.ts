@@ -434,7 +434,8 @@ export const exampleTableBody = [
     ],
   },
   {
-    id: 'NTM0000210662',
+    id: 'NTM000021067',
+    state: 'danger',
     selectionDisabled: true,
     nestedContent: {
       table: {
@@ -465,6 +466,8 @@ export const exampleTableBody = [
           {
             id: 'NTM00002106611',
             active: false,
+            state: 'danger',
+            expanded: true,
             nestedContent: {
               table: {
                 data: [
@@ -499,6 +502,7 @@ export const exampleTableBody = [
                   {
                     id: 'bbb',
                     active: false,
+                    state: 'danger',
                     data: [
                       {
                         template: 'ticketId',
@@ -507,10 +511,7 @@ export const exampleTableBody = [
                       {
                         label: 'Alerts',
                         template: 'icon',
-                        payload: {
-                          icon: 'circle-check',
-                          color: 'success',
-                        },
+                        payload: { icon: 'warning', color: 'warning' },
                       },
                       {
                         template: 'status',
@@ -534,7 +535,7 @@ export const exampleTableBody = [
               {
                 label: 'Alerts',
                 template: 'icon',
-                payload: { icon: 'circle-check', color: 'success' },
+                payload: { icon: 'warning', color: 'warning' },
               },
               {
                 template: 'status',
@@ -550,10 +551,14 @@ export const exampleTableBody = [
         ],
       },
     },
-    state: 'danger',
+    expanded: true,
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021067' } },
-      '',
+      {
+        label: 'Alerts',
+        template: 'icon',
+        payload: { icon: 'warning', color: 'warning' },
+      },
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation b',
       11,

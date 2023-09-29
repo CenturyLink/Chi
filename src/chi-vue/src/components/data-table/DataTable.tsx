@@ -1061,14 +1061,7 @@ export default class DataTable extends Vue {
     if (bodyRow.nestedContent) {
       row.push(
         <transition name="slide-fade">
-          <div
-            v-show={this.accordionsExpanded.includes(rowId)}
-            class={`
-              ${DATA_TABLE_CLASSES.ROW_CHILD_WRAPPER}
-              ${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}
-              ${state ? `${DATA_TABLE_CLASSES.BORDERED} ${state}` : ''}
-            `}
-            id={`${rowId}-content`}>
+          <div v-show={this.accordionsExpanded.includes(rowId)} id={`${rowId}-content`}>
             {rowAccordionContent}
           </div>
         </transition>
