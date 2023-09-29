@@ -48,54 +48,55 @@ h3 Base
       <div class="chi-label" id="example-3">100%</div>
       <progress aria-labelledby="example-3" value="100" max="100"></progress>
 
-h3 Semantic States
-p.-text
-  | Use semantic colors to communicate meaning to users.
-  | Use green (<code>-success</code>) for positive, blue (base state)
-  | for informative, red (<code>-danger</code>) for negative, and yellow (<code>-warning</code>) for needs attention.
-.example.-mb--3
-  .-p--3
-    .-py--2
-      .chi-label Success
-      chi-progress(value='75' max='100' state='success')
-    .-py--2
-      .chi-label Warning
-      chi-progress(value='50' max='100' state='warning')
-    .-py--2
-      .chi-label Danger
-      chi-progress(value='25' max='100' state='danger')
-  .example-tabs.-pl--2
-    ul.chi-tabs#examples-states
-      li.-active
-        a(href=`#webcomponent-states`) Web Component
-      li
-        a(href=`#html-states`) HTML Blueprint
-  .chi-tabs-panel.-active#webcomponent-states
-    :code(lang="html")
-      <!-- Success -->
-      <div class="chi-label">Success</div>
-      <chi-progress value="75" max="100" state="success"></chi-progress>
+.-portal--hide.-colt--hide.-brightspeed--hide
+  h3 Semantic States
+  p.-text
+    | Use semantic colors to communicate meaning to users.
+    | Use green (<code>-success</code>) for positive, blue (base state)
+    | for informative, red (<code>-danger</code>) for negative, and yellow (<code>-warning</code>) for needs attention.
+  .example.-mb--3
+    .-p--3
+      .-py--2
+        .chi-label Success
+        chi-progress(value='75' max='100' state='success')
+      .-py--2
+        .chi-label Warning
+        chi-progress(value='50' max='100' state='warning')
+      .-py--2
+        .chi-label Danger
+        chi-progress(value='25' max='100' state='danger')
+    .example-tabs.-pl--2
+      ul.chi-tabs#examples-states
+        li.-active
+          a(href=`#webcomponent-states`) Web Component
+        li
+          a(href=`#html-states`) HTML Blueprint
+    .chi-tabs-panel.-active#webcomponent-states
+      :code(lang="html")
+        <!-- Success -->
+        <div class="chi-label">Success</div>
+        <chi-progress value="75" max="100" state="success"></chi-progress>
 
-      <!-- Warning -->
-      <div class="chi-label">Warning</div>
-      <chi-progress value="50" max="100" state="warning"></chi-progress>
+        <!-- Warning -->
+        <div class="chi-label">Warning</div>
+        <chi-progress value="50" max="100" state="warning"></chi-progress>
 
-      <!-- Danger -->
-      <div class="chi-label">Danger</div>
-      <chi-progress value="25" max="100" state="danger"></chi-progress>
-  .chi-tabs-panel#html-states
-    :code(lang="html")
-      <!-- Success -->
-      <div class="chi-label" id="example-5">Success</div>
-      <progress aria-labelledby="example-5" class="-success" value="75" max="100"></progress>
+        <!-- Danger -->
+        <div class="chi-label">Danger</div>
+        <chi-progress value="25" max="100" state="danger"></chi-progress>
+    .chi-tabs-panel#html-states
+      :code(lang="html")
+        <!-- Success -->
+        <div class="chi-label" id="example-5">Success</div>
+        <progress aria-labelledby="example-5" class="-success" value="75" max="100"></progress>
 
-      <!-- Warning -->
-      <div class="chi-label" id="example-6">Warning</div>
-      <progress aria-labelledby="example-6" class="-warning" value="50" max="100"></progress>
+        <!-- Warning -->
+        <div class="chi-label" id="example-6">Warning</div>
+        <progress aria-labelledby="example-6" class="-warning" value="50" max="100"></progress>
 
-      <!-- Danger -->
-      <div class="chi-label" id="example-7">Danger</div>
-      <progress aria-labelledby="example-7" class="-danger" value="25" max="100"></progress>
+        <!-- Danger -->
+        <div class="chi-label" id="example-7">Danger</div>
+        <progress aria-labelledby="example-7" class="-danger" value="25" max="100"></progress>
 
 script.
     document.addEventListener(
