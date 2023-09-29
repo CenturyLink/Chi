@@ -72,7 +72,7 @@ export default class DataTableFilters extends Vue {
 
     this._advancedFiltersData = copyArrayOfObjects(advancedFilters);
 
-    this.$props.filtersData.forEach((currentValue: any) => {
+    this.$props.filtersData.forEach((currentValue: DataTableFilter) => {
       const filterPayload = {
         id: currentValue.id,
         value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
@@ -299,9 +299,6 @@ export default class DataTableFilters extends Vue {
   }
 
   applyChanges() {
-    // this.storeModule.updateFilterConfig({
-    //   ...this.filterElementValueLive,
-    // });
     this._emitFiltersChanged();
   }
 

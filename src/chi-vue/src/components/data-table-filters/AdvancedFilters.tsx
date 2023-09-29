@@ -376,7 +376,6 @@ export default class AdvancedFilters extends Vue {
   }
 
   _applyAdvancedFiltersChange() {
-    // this.storeModule.updateFilterConfig(this.filterElementValueLive);
     this._emitAdvancedFiltersChange();
   }
 
@@ -393,17 +392,19 @@ export default class AdvancedFilters extends Vue {
   }
 
   _resetAdvancedFilters() {
-    if (this.advancedFiltersData) {
-      this.advancedFiltersData?.forEach((currentValue: any) => {
-        const filterPayload = {
-          id: currentValue.id,
-          value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
-        };
-
-        this.storeModule.updateFilterConfig(filterPayload);
-        this.storeModule.updateFilterConfigLive(filterPayload);
-      });
+    if (!this.advancedFiltersData) {
+      return;
     }
+
+    this.advancedFiltersData?.forEach((currentValue: DataTableFilter) => {
+      const filterPayload = {
+        id: currentValue.id,
+        value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
+      };
+
+      this.storeModule.updateFilterConfig(filterPayload);
+      this.storeModule.updateFilterConfigLive(filterPayload);
+    });
 
     this._emitAdvancedFiltersChange();
   }
