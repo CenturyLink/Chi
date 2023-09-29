@@ -24,6 +24,7 @@ progress {
   appearance: none;
   /* Get rid of default border in Firefox. */
   border: 0;
+  border-radius: $progress-border-radius;
   /* For IE10 / IE 11 / Edge */
   color:  $progress-value-background-color;
   display: block;
