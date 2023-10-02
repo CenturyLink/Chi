@@ -58,6 +58,12 @@ section.chi-table.chi-table__options.-bordered.-my--3
                 cellWrap: <code>boolean</code>;
                 showExpandAll: <code>boolean</code>;
                 showSelectAllDropdown: <code>boolean</code>;
+                actions?: { 
+                    label: <code>string</code>;
+                    icon: <code>string</code>;
+                    onClick: <code>(props: DataTableRow | undefined) => void</code>;
+                    hide?: <code>'desktop' | 'tablet' | 'mobile'</code>;
+                  }[]
               }
           td
             div undefined
