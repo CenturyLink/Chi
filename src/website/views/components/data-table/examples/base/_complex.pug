@@ -8,38 +8,12 @@ h3 Complex
           span.-text--truncate(style="padding-left: 0.5rem;") {{ payload.status }}
         template(#name="payload")
           chi-popover-example(:name="payload.name", :id="payload.id")
-        template(#actions="payload")
-          chi-dropdown-example(:id="payload.id")
         template(#toolbar)
           chi-vue-data-table-toolbar
             template(v-slot:start)
             template(v-slot:end)
               chi-button(@click="printTable" variant="flat" type="icon" aria-label="Print data table complex example")
-                chi-icon(icon="print")
-        template(slot='bulkActions')
-          .chi-bulk-actions__buttons
-            .chi-bulk-actions__buttons-mobile.-z--40
-              chi-button(variant='flat' type='icon' aria-label='Edit')
-                chi-icon(icon='edit')
-              chi-button(variant='flat' type='icon' aria-label='Compose')
-                chi-icon(icon='compose')
-              chi-button(variant='flat' type='icon' aria-label='Delete')
-                chi-icon(icon='delete')
-              chi-button(variant='flat' type='icon' aria-label='Print')
-                chi-icon(icon='print')
-            .chi-bulk-actions__buttons-desktop
-              chi-button(size='xs' aria-label='Download')
-                chi-icon(icon='arrow-to-bottom')
-                span Download
-              chi-button(size='xs' aria-label='Compose')
-                chi-icon(icon='arrow-to-bottom')
-                span Compose
-              chi-button(size='xs' aria-label='Delete')
-                chi-icon(icon='arrow-to-bottom')
-                span Delete
-              chi-button(size='xs' aria-label='Print')
-                chi-icon(icon='arrow-to-bottom')
-                span Print
+                chi-icon(icon="print") 
   .example-tabs.-pl--2
     ul.chi-tabs#example-base-complex
       li.-disabled
@@ -59,8 +33,6 @@ h3 Complex
             a(href='#vertical-base-1' role='tab' aria-selected='true' aria-controls='vertical-base-1') ExampleDataTable.vue
           li
             a(href='#vertical-base-2' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-2') ExamplePopover.vue
-          li
-            a(href='#vertical-base-3' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-3') ExampleDropdown.vue
         script.
           chi.tab(document.getElementById('example-vertical-base'));
       .-flex--grow1
@@ -77,9 +49,6 @@ h3 Complex
               <template #name="payload">
                 <ExamplePopover :name="payload.name" :id="payload.id" />
               </template>
-              <template #actions="payload">
-                <ExampleDropdown :id="payload.id" />
-              </template>
               <template #toolbar>
                 <ChiToolbar>
                   <template v-slot:start></template>
@@ -90,52 +59,16 @@ h3 Complex
                   </template>
                 </ChiToolbar>
               </template>
-              <template #bulkActions>
-                <div class="chi-bulk-actions__buttons">
-                  <div class="chi-bulk-actions__buttons-mobile -z--40">
-                    <chi-button variant="flat" type="icon" aria-label="Edit">
-                      <chi-icon icon="edit"></chi-icon>
-                    </chi-button>
-                    <chi-button variant="flat" type="icon" aria-label="Compose">
-                      <chi-icon icon="compose"></chi-icon>
-                    </chi-button>
-                    <chi-button variant="flat" type="icon" aria-label="Delete">
-                      <chi-icon icon="delete"></chi-icon>
-                    </chi-button>
-                    <chi-button variant="flat" type="icon" aria-label="Print">
-                      <chi-icon icon="print"></chi-icon>
-                    </chi-button>
-                  </div>
-                  <div class="chi-bulk-actions__buttons-desktop">
-                    <chi-button size="xs" aria-label="Download">
-                      <chi-icon icon="arrow-to-bottom"></chi-icon>
-                      <span> Download </span>
-                    </chi-button>
-                    <chi-button size="xs" aria-label="Compose">
-                      <chi-icon icon="arrow-to-bottom"></chi-icon>
-                      <span> Compose </span>
-                    </chi-button>
-                    <chi-button size="xs" aria-label="Delete">
-                      <chi-icon icon="arrow-to-bottom"></chi-icon>
-                      <span> Delete </span>
-                    </chi-button>
-                    <chi-button size="xs" aria-label="Print">
-                      <chi-icon icon="arrow-to-bottom"></chi-icon>
-                      <span> Print </span>
-                    </chi-button>
-                  </div>
-                </div>
-              </template>
             </ChiDataTable>
 
             <!-- imports -->
             import ExamplePopover from './ExamplePopover.vue';
-            import ExampleDropdown from './ExampleDropdown.vue';
 
             <!-- Config and Data -->
             data: {
               config: {
                 columnResize: false,
+                noResultsMessage: 'No matching results',
                 selectable: true,
                 style: {
                   portal: false,
@@ -151,6 +84,13 @@ h3 Complex
                   firstLast: true,
                   pageJumper: true,
                 },
+                columnSizes: {
+                  xs: [25, 25, 20, 25, 0],
+                  sm: [25, 25, 20, 25, 0],
+                  md: [25, 25, 20, 25, 0],
+                  lg: [25, 25, 20, 25, 0],
+                  xl: [25, 25, 20, 25, 0],
+                },
                 resultsPerPage: 3,
                 defaultSort: {
                   key: 'name',
@@ -159,15 +99,38 @@ h3 Complex
                 },
                 showExpandAll: true,
                 showSelectAllDropdown: true,
+                actions: [
+                 {
+                    label: 'View',
+                    icon: 'icon-check-alt',
+                    onClick: (props) => {
+                      console.log(JSON.stringify(props));
+                    },
+                  },
+                  {
+                    label: 'Edit',
+                    icon: 'icon-edit',
+                    onClick: () => console.log(`Edited`),
+                  },
+                  {
+                    label: 'Download',
+                    icon: 'icon-circle-arrow-down',
+                    hide: ['desktop'],
+                    onClick: () => console.log(`downloaded`),
+                  },
+                  {
+                    label: 'Delete',
+                    icon: 'icon-delete',
+                    onClick: () => console.log('deleted'),
+                  },
+                ],
               },
               table: {
                 head: {
                   name: { label: 'Name', sortable: true, sortBy: 'name', sortDataType: 'string', key: true, bold: true },
-                  status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string',
-                    description: 'Helpful information goes here.' },
+                  status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: 'Helpful information goes here.' },
                   userID: { label: 'User ID', key: true, icon: 'user' },
                   lastLogin: { label: 'Last Login', key: true },
-                  actions: { label: 'Actions', align: 'right', isPrintDisabled: true },
                 },
                 body: [
                   {
@@ -181,10 +144,6 @@ h3 Complex
                       },
                       "user-name-1",
                       "18 Dec 2020 3:26 p.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "name-1" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -199,10 +158,6 @@ h3 Complex
                               },
                               "user-name-1",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "child-1-name-1" },
-                              },
                             ],
                             nestedContent: {
                               table: {
@@ -217,10 +172,6 @@ h3 Complex
                                       },
                                       "user-name-1",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-1-name-1" },
-                                      },
                                     ],
                                   },
                                   {
@@ -233,10 +184,6 @@ h3 Complex
                                       },
                                       "user-name-1",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-2-name-1" },
-                                      },
                                     ],
                                   },
                                 ],
@@ -253,10 +200,6 @@ h3 Complex
                               },
                               "user-name-1",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "child-2-name-1" },
-                              },
                             ],
                             nestedContent: {
                               table: {
@@ -271,10 +214,6 @@ h3 Complex
                                       },
                                       "user-name-1",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-3-name-1" },
-                                      },
                                     ],
                                   },
                                   {
@@ -287,10 +226,6 @@ h3 Complex
                                       },
                                       "user-name-1",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-4-name-1" },
-                                      },
                                     ],
                                   },
                                 ],
@@ -311,10 +246,6 @@ h3 Complex
                       },
                       "user-name-2",
                       "18 Dec 2020 3:26 p.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "name-2" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -329,10 +260,6 @@ h3 Complex
                               },
                               "user-name-2",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "child-1-name-2" },
-                              },
                             ],
                             nestedContent: {
                               table: {
@@ -347,10 +274,6 @@ h3 Complex
                                       },
                                       "user-name-2",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-1-name-2" },
-                                      },
                                     ],
                                   },
                                   {
@@ -363,10 +286,6 @@ h3 Complex
                                       },
                                       "user-name-2",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-2-name-2" },
-                                      },
                                     ],
                                   },
                                 ],
@@ -383,10 +302,6 @@ h3 Complex
                               },
                               "user-name-2",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "child-2-name-2" },
-                              },
                             ],
                             nestedContent: {
                               table: {
@@ -401,10 +316,6 @@ h3 Complex
                                       },
                                       "user-name-2",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-3-name-2" },
-                                      },
                                     ],
                                   },
                                   {
@@ -417,10 +328,6 @@ h3 Complex
                                       },
                                       "user-name-2",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-4-name-2" },
-                                      },
                                     ],
                                   },
                                 ],
@@ -447,12 +354,6 @@ h3 Complex
                       },
                       "user-name-3",
                       "18 Dec 2020 3:26 p.m.",
-                      {
-                        template: "actions",
-                        payload: {
-                          id: "name-3",
-                        },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -467,10 +368,6 @@ h3 Complex
                               },
                               "user-name-3",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "child-1-name-3" },
-                              },
                             ],
                             nestedContent: {
                               table: {
@@ -485,10 +382,6 @@ h3 Complex
                                       },
                                       "user-name-3",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-1-name-3" },
-                                      },
                                     ],
                                   },
                                   {
@@ -501,10 +394,6 @@ h3 Complex
                                       },
                                       "user-name-3",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-2-name-3" },
-                                      },
                                     ],
                                   },
                                 ],
@@ -521,10 +410,6 @@ h3 Complex
                               },
                               "user-name-3",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "child-2-name-3" },
-                              },
                             ],
                             nestedContent: {
                               table: {
@@ -539,10 +424,6 @@ h3 Complex
                                       },
                                       "user-name-3",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-3-name-3" },
-                                      },
                                     ],
                                   },
                                   {
@@ -555,10 +436,6 @@ h3 Complex
                                       },
                                       "user-name-3",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-4-name-3" },
-                                      },
                                     ],
                                   },
                                 ],
@@ -585,12 +462,6 @@ h3 Complex
                       },
                       "user-name-4",
                       "18 Dec 2020 3:26 p.m.",
-                      {
-                        template: "actions",
-                        payload: {
-                          id: "name-4",
-                        },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -605,10 +476,6 @@ h3 Complex
                               },
                               "user-name-4",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "child-1-name-4" },
-                              },
                             ],
                             nestedContent: {
                               table: {
@@ -623,10 +490,6 @@ h3 Complex
                                       },
                                       "user-name-4",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-1-name-4" },
-                                      },
                                     ],
                                   },
                                   {
@@ -639,10 +502,6 @@ h3 Complex
                                       },
                                       "user-name-4",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-2-name-4" },
-                                      },
                                     ],
                                   },
                                 ],
@@ -659,10 +518,6 @@ h3 Complex
                               },
                               "user-name-4",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "child-2-name-4" },
-                              },
                             ],
                             nestedContent: {
                               table: {
@@ -677,10 +532,6 @@ h3 Complex
                                       },
                                       "user-name-4",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-3-name-4" },
-                                      },
                                     ],
                                   },
                                   {
@@ -693,10 +544,6 @@ h3 Complex
                                       },
                                       "user-name-4",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-4-name-4" },
-                                      },
                                     ],
                                   },
                                 ],
@@ -723,12 +570,6 @@ h3 Complex
                       },
                       "user-name-5",
                       "18 Dec 2020 3:26 p.m.",
-                      {
-                        template: "actions",
-                        payload: {
-                          id: "name-5",
-                        },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -743,10 +584,6 @@ h3 Complex
                               },
                               "user-name-5",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "child-1-name-5" },
-                              },
                             ],
                             nestedContent: {
                               table: {
@@ -761,10 +598,6 @@ h3 Complex
                                       },
                                       "user-name-5",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-1-name-5" },
-                                      },
                                     ],
                                   },
                                   {
@@ -777,10 +610,6 @@ h3 Complex
                                       },
                                       "user-name-5",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-2-name-5" },
-                                      },
                                     ],
                                   },
                                 ],
@@ -797,10 +626,6 @@ h3 Complex
                               },
                               "user-name-5",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "child-2-name-5" },
-                              },
                             ],
                             nestedContent: {
                               table: {
@@ -815,10 +640,6 @@ h3 Complex
                                       },
                                       "user-name-5",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-3-name-5" },
-                                      },
                                     ],
                                   },
                                   {
@@ -831,10 +652,6 @@ h3 Complex
                                       },
                                       "user-name-5",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-4-name-5" },
-                                      },
                                     ],
                                   },
                                 ],
@@ -861,12 +678,6 @@ h3 Complex
                       },
                       "user-name-6",
                       "18 Dec 2020 3:26 p.m.",
-                      {
-                        template: "actions",
-                        payload: {
-                          id: "name-6",
-                        },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -881,10 +692,6 @@ h3 Complex
                               },
                               "user-name-6",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "child-1-name-6" },
-                              },
                             ],
                             nestedContent: {
                               table: {
@@ -899,10 +706,6 @@ h3 Complex
                                       },
                                       "user-name-6",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-1-name-6" },
-                                      },
                                     ],
                                   },
                                   {
@@ -915,10 +718,6 @@ h3 Complex
                                       },
                                       "user-name-6",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-2-name-6" },
-                                      },
                                     ],
                                   },
                                 ],
@@ -935,10 +734,6 @@ h3 Complex
                               },
                               "user-name-6",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "child-2-name-6" },
-                              },
                             ],
                             nestedContent: {
                               table: {
@@ -953,10 +748,6 @@ h3 Complex
                                       },
                                       "user-name-6",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-3-name-6" },
-                                      },
                                     ],
                                   },
                                   {
@@ -969,10 +760,6 @@ h3 Complex
                                       },
                                       "user-name-6",
                                       "18 Dec 2020 2:38 a.m.",
-                                      {
-                                        template: "actions",
-                                        payload: { id: "grandchild-4-name-6" },
-                                      },
                                     ],
                                   },
                                 ],
@@ -1044,36 +831,6 @@ h3 Complex
             beforeDestroy() {
               this.popover.dispose();
             }
-        #vertical-base-3.chi-tabs-panel(role='tabpanel')
-          :code(lang='html')
-            <!-- Template -->
-            <template>
-              <div class="chi-dropdown">
-                <button ref="dropdownTrigger" class="chi-button -icon -flat" aria-label="More options">
-                  <div class="chi-button__content">
-                    <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
-                  </div>
-                </button>
-                <div class="chi-dropdown__menu">
-                  <a class="chi-dropdown__menu-item" href="#">
-                    <span><i class="chi-icon icon-edit -sm -icon--primary" /></span>
-                    <span>Edit</span>
-                  </a>
-                  <a class="chi-dropdown__menu-item" href="#">
-                    <span><i class="chi-icon icon-delete -sm -icon--primary" /></span>
-                    <span>Delete</span>
-                  </a>
-                </div>
-              </div>
-            </template>
-
-            <!-- mounted -->
-            mounted() {
-              this.dropdown = chi.dropdown(this.$refs.dropdownTrigger);
-            }
-            beforeDestroy() {
-              this.dropdown.dispose();
-            }
   .chi-tabs-panel#html-base-complex
 
 script.
@@ -1144,7 +901,6 @@ script.
       chiVueDataTable: window['chi-vue'].library.components.ChiDataTable,
       chiVueDataTableToolbar: window['chi-vue'].library.components.ChiDataTableToolbar,
       ChiPopoverExample: popover,
-      ChiDropdownExample: dropdown,
     },
     methods: {
       printTable() {
@@ -1154,6 +910,7 @@ script.
     data: {
       config: {
         columnResize: false,
+        noResultsMessage: 'No matching results',
         selectable: true,
         style: {
           portal: false,
@@ -1169,6 +926,13 @@ script.
           firstLast: true,
           pageJumper: true,
         },
+        columnSizes: {
+          xs: [25, 25, 20, 25, 0],
+          sm: [25, 25, 20, 25, 0],
+          md: [25, 25, 20, 25, 0],
+          lg: [25, 25, 20, 25, 0],
+          xl: [25, 25, 20, 25, 0],
+        },
         resultsPerPage: 3,
         defaultSort: {
           key: 'name',
@@ -1177,6 +941,31 @@ script.
         },
         showExpandAll: true,
         showSelectAllDropdown: true,
+        actions: [
+          {
+            label: 'View',
+            icon: 'icon-check-alt',
+            onClick: (props) => {
+              console.log(JSON.stringify(props));
+            },
+          },
+          {
+            label: 'Edit',
+            icon: 'icon-edit',
+            onClick: () => console.log(`Edited`),
+          },
+          {
+            label: 'Download',
+            icon: 'icon-circle-arrow-down',
+            hide: ['desktop'],
+            onClick: () => console.log(`downloaded`),
+          },
+          {
+            label: 'Delete',
+            icon: 'icon-delete',
+            onClick: () => console.log('deleted'),
+          },
+        ],
       },
       table: {
         head: {
@@ -1184,7 +973,6 @@ script.
           status: { label: 'Status', sortable: true, sortBy: 'status', sortDataType: 'string', description: 'Helpful information goes here.' },
           userID: { label: 'User ID', key: true, icon: 'user' },
           lastLogin: { label: 'Last Login', key: true },
-          actions: { label: 'Actions', align: 'right', isPrintDisabled: true },
         },
         body: [
           {
@@ -1198,10 +986,6 @@ script.
               },
               "user-name-1",
               "18 Dec 2020 3:26 p.m.",
-              {
-                template: "actions",
-                payload: { id: "name-1" },
-              },
             ],
             nestedContent: {
               table: {
@@ -1216,10 +1000,6 @@ script.
                       },
                       "user-name-1",
                       "18 Dec 2020 2:38 a.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "child-1-name-1" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -1234,10 +1014,6 @@ script.
                               },
                               "user-name-1",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-1-name-1" },
-                              },
                             ],
                           },
                           {
@@ -1250,10 +1026,6 @@ script.
                               },
                               "user-name-1",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-2-name-1" },
-                              },
                             ],
                           },
                         ],
@@ -1270,10 +1042,6 @@ script.
                       },
                       "user-name-1",
                       "18 Dec 2020 2:38 a.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "child-2-name-1" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -1288,10 +1056,6 @@ script.
                               },
                               "user-name-1",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-3-name-1" },
-                              },
                             ],
                           },
                           {
@@ -1304,10 +1068,6 @@ script.
                               },
                               "user-name-1",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-4-name-1" },
-                              },
                             ],
                           },
                         ],
@@ -1328,10 +1088,6 @@ script.
               },
               "user-name-2",
               "18 Dec 2020 3:26 p.m.",
-              {
-                template: "actions",
-                payload: { id: "name-2" },
-              },
             ],
             nestedContent: {
               table: {
@@ -1346,10 +1102,6 @@ script.
                       },
                       "user-name-2",
                       "18 Dec 2020 2:38 a.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "child-1-name-2" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -1364,10 +1116,6 @@ script.
                               },
                               "user-name-2",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-1-name-2" },
-                              },
                             ],
                           },
                           {
@@ -1380,10 +1128,6 @@ script.
                               },
                               "user-name-2",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-2-name-2" },
-                              },
                             ],
                           },
                         ],
@@ -1400,10 +1144,6 @@ script.
                       },
                       "user-name-2",
                       "18 Dec 2020 2:38 a.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "child-2-name-2" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -1418,10 +1158,6 @@ script.
                               },
                               "user-name-2",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-3-name-2" },
-                              },
                             ],
                           },
                           {
@@ -1434,10 +1170,6 @@ script.
                               },
                               "user-name-2",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-4-name-2" },
-                              },
                             ],
                           },
                         ],
@@ -1464,12 +1196,6 @@ script.
               },
               "user-name-3",
               "18 Dec 2020 3:26 p.m.",
-              {
-                template: "actions",
-                payload: {
-                  id: "name-3",
-                },
-              },
             ],
             nestedContent: {
               table: {
@@ -1484,10 +1210,6 @@ script.
                       },
                       "user-name-3",
                       "18 Dec 2020 2:38 a.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "child-1-name-3" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -1502,10 +1224,6 @@ script.
                               },
                               "user-name-3",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-1-name-3" },
-                              },
                             ],
                           },
                           {
@@ -1518,10 +1236,6 @@ script.
                               },
                               "user-name-3",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-2-name-3" },
-                              },
                             ],
                           },
                         ],
@@ -1538,10 +1252,6 @@ script.
                       },
                       "user-name-3",
                       "18 Dec 2020 2:38 a.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "child-2-name-3" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -1556,10 +1266,6 @@ script.
                               },
                               "user-name-3",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-3-name-3" },
-                              },
                             ],
                           },
                           {
@@ -1572,10 +1278,6 @@ script.
                               },
                               "user-name-3",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-4-name-3" },
-                              },
                             ],
                           },
                         ],
@@ -1602,12 +1304,6 @@ script.
               },
               "user-name-4",
               "18 Dec 2020 3:26 p.m.",
-              {
-                template: "actions",
-                payload: {
-                  id: "name-4",
-                },
-              },
             ],
             nestedContent: {
               table: {
@@ -1622,10 +1318,6 @@ script.
                       },
                       "user-name-4",
                       "18 Dec 2020 2:38 a.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "child-1-name-4" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -1640,10 +1332,6 @@ script.
                               },
                               "user-name-4",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-1-name-4" },
-                              },
                             ],
                           },
                           {
@@ -1656,10 +1344,6 @@ script.
                               },
                               "user-name-4",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-2-name-4" },
-                              },
                             ],
                           },
                         ],
@@ -1676,10 +1360,6 @@ script.
                       },
                       "user-name-4",
                       "18 Dec 2020 2:38 a.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "child-2-name-4" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -1694,10 +1374,6 @@ script.
                               },
                               "user-name-4",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-3-name-4" },
-                              },
                             ],
                           },
                           {
@@ -1710,10 +1386,6 @@ script.
                               },
                               "user-name-4",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-4-name-4" },
-                              },
                             ],
                           },
                         ],
@@ -1740,12 +1412,6 @@ script.
               },
               "user-name-5",
               "18 Dec 2020 3:26 p.m.",
-              {
-                template: "actions",
-                payload: {
-                  id: "name-5",
-                },
-              },
             ],
             nestedContent: {
               table: {
@@ -1760,10 +1426,6 @@ script.
                       },
                       "user-name-5",
                       "18 Dec 2020 2:38 a.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "child-1-name-5" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -1778,10 +1440,6 @@ script.
                               },
                               "user-name-5",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-1-name-5" },
-                              },
                             ],
                           },
                           {
@@ -1794,10 +1452,6 @@ script.
                               },
                               "user-name-5",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-2-name-5" },
-                              },
                             ],
                           },
                         ],
@@ -1814,10 +1468,6 @@ script.
                       },
                       "user-name-5",
                       "18 Dec 2020 2:38 a.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "child-2-name-5" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -1832,10 +1482,6 @@ script.
                               },
                               "user-name-5",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-3-name-5" },
-                              },
                             ],
                           },
                           {
@@ -1848,10 +1494,6 @@ script.
                               },
                               "user-name-5",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-4-name-5" },
-                              },
                             ],
                           },
                         ],
@@ -1878,12 +1520,6 @@ script.
               },
               "user-name-6",
               "18 Dec 2020 3:26 p.m.",
-              {
-                template: "actions",
-                payload: {
-                  id: "name-6",
-                },
-              },
             ],
             nestedContent: {
               table: {
@@ -1898,10 +1534,6 @@ script.
                       },
                       "user-name-6",
                       "18 Dec 2020 2:38 a.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "child-1-name-6" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -1916,10 +1548,6 @@ script.
                               },
                               "user-name-6",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-1-name-6" },
-                              },
                             ],
                           },
                           {
@@ -1932,10 +1560,6 @@ script.
                               },
                               "user-name-6",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-2-name-6" },
-                              },
                             ],
                           },
                         ],
@@ -1952,10 +1576,6 @@ script.
                       },
                       "user-name-6",
                       "18 Dec 2020 2:38 a.m.",
-                      {
-                        template: "actions",
-                        payload: { id: "child-2-name-6" },
-                      },
                     ],
                     nestedContent: {
                       table: {
@@ -1970,10 +1590,6 @@ script.
                               },
                               "user-name-6",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-3-name-6" },
-                              },
                             ],
                           },
                           {
@@ -1986,10 +1602,6 @@ script.
                               },
                               "user-name-6",
                               "18 Dec 2020 2:38 a.m.",
-                              {
-                                template: "actions",
-                                payload: { id: "grandchild-4-name-6" },
-                              },
                             ],
                           },
                         ],
