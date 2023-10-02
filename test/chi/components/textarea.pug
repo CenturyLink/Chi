@@ -198,7 +198,9 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
             .chi-form__item
               textarea(class=`chi-input -success -${size}`) Value
               div.chi-label(class=`-success -text--normal -status`) 
-                i.chi-icon.icon-circle-check.sc-chi-icon-h.sc-chi-icon-s.hydrated(aria-hidden) 
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-circle-check') 
                 div Optional helper message
       tr
         td
@@ -208,7 +210,9 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
             .chi-form__item
               textarea(class=`chi-input -warning -${size}`) Value
               div.chi-label(class=`-warning -text--normal -status`) 
-                i.chi-icon.icon-warning.sc-chi-icon-h.sc-chi-icon-s.hydrated(aria-hidden) 
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-warning')
                 div Optional helper message
       tr
         td
@@ -218,5 +222,7 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
             .chi-form__item
               textarea(class=`chi-input -danger -${size}`) Value
               div.chi-label(class=`-danger -text--normal -status`) 
-                i.chi-icon.icon-circle-warning.sc-chi-icon-h.sc-chi-icon-s.hydrated(aria-hidden) 
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-circle-warning')
                 div Optional helper message
