@@ -26,8 +26,8 @@ export default class SearchInput extends Vue {
   @Prop() portal?: boolean;
   @Prop() readOnly?: boolean;
 
-  cleanButtonVisible = !!(this.value && !this.disabled);
-  inputValue = this.value || '';
+  cleanButtonVisible?: boolean;
+  inputValue!: string;
 
   @Emit(SEARCH_INPUT_EVENTS.INPUT)
   _emitInput(value: string) {
@@ -80,6 +80,15 @@ export default class SearchInput extends Vue {
     this.cleanButtonVisible = false;
     this._emitClean();
     (input as HTMLInputElement).focus();
+  }
+
+  _initDataFromProps(): void {
+    this.cleanButtonVisible = !!(this.value && !this.disabled);
+    this.inputValue = this.value || '';
+  }
+
+  beforeMount() {
+    this._initDataFromProps();
   }
 
   mounted() {
