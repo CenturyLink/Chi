@@ -227,6 +227,21 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
                       icon-right=icon,
                       icon-right-color= style == 'default' ? '' : style
                     ) Value
+
+  div(class=`test-${size}-helper-message`)
+    span.-text--h2=`Textarea / Helper Message / ${size}`
+    table(cellpadding="0" cellspacing="0" width="480px")
+      each style in ['default', 'success', 'warning', 'danger']
+        tr
+          td
+            small= `${style}`
+          td
+            .-m--1
+                  chi-textarea(
+                    size= size == 'default' ? '' : size,
+                    state= style == 'default' ? '' : style,
+                    helper-message="Optional helper message"
+                  ) Value
 script.
   function checkAllTextareasRendered() {
   const textareas = document.querySelectorAll('chi-textarea');
