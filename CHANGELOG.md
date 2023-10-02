@@ -1,4 +1,16 @@
 # CHANGELOG
+## 5.39.0 (September 27, 2023)
+### Components
+#### Added
+* Added: Dropdown now supports `visible-items` attribute to provide number of items in the dropdown to be displayed, and apply scroll if needed.
+* Added: Save view event `chiSaveViewInput`.
+#### Changed
+* Changed: App layout header responsive behavior has been improved for mobile views.
+#### Fixed
+* Fixed: Stat item `-active` state.
+* Fixed: Carousel items calculation with stat component.
+* Fixed: Column customization cancel behavior that was removing items from columns.
+
 ## 5.38.0 (September 15, 2023)
 ### Components
 #### Added

@@ -273,7 +273,8 @@ p.-text
             label(for=`unique-id-er${i}`)
               = 'Option ' + `${i}`
       .chi-label.-status.-danger
-        | Please select an option.
+        i.chi-icon.icon-circle-warning(aria-hidden='true')
+        | Please select an option
   .example-tabs.-pl--2
     ul.chi-tabs#example-error
       li.-disabled
@@ -298,7 +299,10 @@ p.-text
             <label for="unique-id-er3">Option 3</label>
           </div>
         </div>
-        <div class="chi-label -status -danger">Please select an option.</div>
+        <div class="chi-label -status -danger">
+          <i class="chi-icon icon-circle-warning" aria-hidden="true"></i>
+          Please select an option
+        </div>
       </fieldset>
 
 h2 Responsive

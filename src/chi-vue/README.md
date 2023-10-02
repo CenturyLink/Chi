@@ -24,7 +24,14 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # CHANGELOG
-## 2.2.0 (September 15, 2023)
+## 2.4.0 (September 27, 2023)
+### Components
+#### Added
+* Added: Save view event `chiSaveViewInput`.
+#### Fixed
+* Fixed: Column customization cancel behavior that was removing items from columns.
+
+## 2.3.0 (September 15, 2023)
 ### Components
 #### Added
 * Added: Data table Vue component now supports empty actionable view with `emptyActionable` config.

@@ -295,7 +295,8 @@ $transition-duration: 0.2s;
         padding-left: 2.5rem;
       }
     }
-    chi-icon, 
+
+    chi-icon,
     .chi-icon {
       &.-state {
         display: none;
@@ -303,7 +304,7 @@ $transition-duration: 0.2s;
     }
 
     &.-done {
-      chi-icon, 
+      chi-icon,
       .chi-icon {
         &.-state {
           display: block;
