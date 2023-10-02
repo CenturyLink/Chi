@@ -178,3 +178,51 @@ each size in ['default', 'xs', 'sm', 'md', 'lg', 'xl']
                       .chi-icon
                         svg
                           use(xlink:href='#icon-circle-info-outline')
+ 
+  div(class=`test-${size}-helper-message`)
+    span.-text--h2= `Textarea / Helper Message / ${size}`
+    table(cellpadding="0", cellspacing="0", width="480px")
+      tr
+        td
+          small= `default`
+        td(style='vertical-align: bottom')
+          .-m--1
+            .chi-form__item
+              textarea(class=`chi-input -default -${size}`) Value
+              div.chi-label(class=`-default -text--italic -text--normal -status`) Optional helper message
+      tr
+        td
+          small= `success`
+        td(style='vertical-align: bottom')
+          .-m--1
+            .chi-form__item
+              textarea(class=`chi-input -success -${size}`) Value
+              div.chi-label(class=`-success -text--normal -status`) 
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-circle-check') 
+                div Optional helper message
+      tr
+        td
+          small= `warning`
+        td(style='vertical-align: bottom')
+          .-m--1
+            .chi-form__item
+              textarea(class=`chi-input -warning -${size}`) Value
+              div.chi-label(class=`-warning -text--normal -status`) 
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-warning')
+                div Optional helper message
+      tr
+        td
+          small= `danger`
+        td(style='vertical-align: bottom')
+          .-m--1
+            .chi-form__item
+              textarea(class=`chi-input -danger -${size}`) Value
+              div.chi-label(class=`-danger -text--normal -status`) 
+                .chi-icon
+                  svg
+                    use(xlink:href='#icon-circle-warning')
+                div Optional helper message
