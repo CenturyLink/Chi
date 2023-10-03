@@ -49,14 +49,3 @@ export function updateFilterData(
     }
   }
 }
-
-export function compareFilters(originalFilters: any, newFiltersData: any) {
-  if (Object.keys(originalFilters).length > 0 && Object.keys(newFiltersData).length > 0) {
-    for (const prop in newFiltersData) {
-      if (originalFilters[prop] !== newFiltersData[prop]) {
-        return false;
-      }
-    }
-    return true;
-  }
-}

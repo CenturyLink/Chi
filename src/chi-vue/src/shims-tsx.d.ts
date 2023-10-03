@@ -3,6 +3,7 @@ declare module 'vue' {
     // DataTableActions
     actions?: DataTableAction[] | undefined;
     rowData?: DataTableRow;
+    dataTableNumber?: number;
 
     // DataTableTooltip
     msg?: string;

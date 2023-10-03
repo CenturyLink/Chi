@@ -177,6 +177,7 @@ export default class DataTable extends Vue {
   emptyMessage = defaultConfig.noFiltersMessage;
   emptyActionableContent = defaultConfig.emptyActionable;
   preventSortOnResize? = false;
+  actions = defaultConfig.actions;
 
   private sortable = false;
   private sortedData?: DataTableRow[] = [];
@@ -202,7 +203,6 @@ export default class DataTable extends Vue {
   _bulkActionsComponent?: DataTableBulkActions;
   _chiDropdownSelectAll: any;
   _dataTableNumber?: number;
-  _actions?: DataTableAction[] | undefined;
 
   _toggleInfoPopover(infoPopoverId: string) {
     const popover = this._getInfoPopover(infoPopoverId);
@@ -300,15 +300,15 @@ export default class DataTable extends Vue {
       ) : null,
       this._expandable ? this._headExpandable() : null,
     ];
+
+    if (this.actions?.length) {
+      this.dataTableData.head.actions = { label: 'Actions', align: 'right' };
+    }
+
     const heads = Array.isArray(this.dataTableData.head)
       ? this.dataTableData.head
       : Object.keys(this.dataTableData.head);
     const infoPopovers: JSX.Element[] = [];
-
-    if (this._actions?.length && !heads.includes('actions')) {
-      heads.push('actions');
-      this.dataTableData.head.actions = { label: ' ' };
-    }
 
     heads.forEach((column: string | DataTableColumn, cellIndex: number) => {
       const columnIndex = String(Array.isArray(this.dataTableData.head) ? cellIndex : column);
@@ -1053,7 +1053,7 @@ export default class DataTable extends Vue {
     }
 
     let cellIndex = 0;
-    const hasActions = !!this._actions?.length;
+    const hasActions = !!this.actions?.length;
 
     bodyRow.data.forEach((rowCell: any) => {
       const columnSettings = this.dataTableData.head[Object.keys(this.dataTableData.head)[cellIndex]];
@@ -1120,14 +1120,15 @@ export default class DataTable extends Vue {
     });
 
     if (hasActions) {
+      const cellWidth =
+        this.config.columnSizes && this._currentScreenBreakpoint
+          ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
+          : null;
+      const flexBasis = cellWidth ? `-flex-basis--${cellWidth}` : '';
+
       rowCells.push(
-        <div
-          class={`${DATA_TABLE_CLASSES.CELL}
-          -flex-basis--5
-          -key
-        `}
-          style="overflow: visible">
-          <DataTableActions actions={this._actions} rowData={bodyRow} />
+        <div class={`${DATA_TABLE_CLASSES.CELL} ${flexBasis} -justify-content-md--end -key`} style="overflow: visible">
+          <DataTableActions actions={this.actions} rowData={bodyRow} dataTableNumber={dataTableNumber} />
         </div>
       );
     }
@@ -1452,7 +1453,7 @@ export default class DataTable extends Vue {
     this.emptyActionableContent = Object.prototype.hasOwnProperty.call(this.config, 'emptyActionable')
       ? this.config.emptyActionable
       : defaultConfig.emptyActionable;
-    this._actions = this.config?.actions || undefined;
+    this.actions = this.config?.actions || defaultConfig.actions || [];
   }
 
   beforeMount() {
