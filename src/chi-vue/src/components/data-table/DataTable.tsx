@@ -100,6 +100,7 @@ export default class DataTable extends Vue {
   emptyActionableContent = Object.prototype.hasOwnProperty.call(this.$props.config, 'emptyActionable')
     ? this.$props.config.emptyActionable
     : defaultConfig.emptyActionable;
+  actions = this.$props.config.actions || defaultConfig.actions || [];
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -124,7 +125,6 @@ export default class DataTable extends Vue {
   } = {};
   _chiDropdownSelectAll: any;
   _dataTableNumber?: number;
-  actions = this.$props.config.actions;
 
   _toggleInfoPopover(infoPopoverId: string) {
     const popover = this._getInfoPopover(infoPopoverId);
@@ -223,14 +223,12 @@ export default class DataTable extends Vue {
       this._expandable ? this._headExpandable() : null,
     ];
 
-    const heads = Array.isArray(this.data.head) ? this.data.head : Object.keys(this.data.head);
-
-    const infoPopovers: JSX.Element[] = [];
-
     if (this.actions?.length) {
-      heads.push('actions');
-      this.data.head.actions = { label: ' ' };
+      this.data.head.actions = { label: 'Actions', align: 'right' };
     }
+
+    const heads = Array.isArray(this.data.head) ? this.data.head : Object.keys(this.data.head);
+    const infoPopovers: JSX.Element[] = [];
 
     heads.forEach((column: string | DataTableColumn, cellIndex: number) => {
       const columnIndex = String(Array.isArray(this.data.head) ? cellIndex : column);
@@ -1020,14 +1018,15 @@ export default class DataTable extends Vue {
     const state = bodyRow.state ? STATES_CLASSES[bodyRow.state] : null;
 
     if (hasActions) {
+      const cellWidth =
+        this.config.columnSizes && this._currentScreenBreakpoint
+          ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
+          : null;
+      const flexBasis = cellWidth ? `-flex-basis--${cellWidth}` : '';
+
       rowCells.push(
-        <div
-          class={`${DATA_TABLE_CLASSES.CELL}
-          -flex-basis--5
-          -key
-        `}
-          style="overflow: visible">
-          <DataTableActions actions={this.actions} rowData={bodyRow} />
+        <div class={`${DATA_TABLE_CLASSES.CELL} ${flexBasis} -justify-content-md--end -key`} style="overflow: visible">
+          <DataTableActions actions={this.actions} rowData={bodyRow} dataTableNumber={dataTableNumber} />
         </div>
       );
     }
