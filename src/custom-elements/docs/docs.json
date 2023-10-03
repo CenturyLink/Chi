@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-09-29T06:01:07",
+  "timestamp": "2023-10-03T05:25:45",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -2194,7 +2194,8 @@
       "styles": [],
       "slots": [],
       "dependents": [
-        "chi-text-input"
+        "chi-text-input",
+        "chi-textarea"
       ],
       "dependencies": [
         "chi-icon"
@@ -2204,6 +2205,9 @@
           "chi-icon"
         ],
         "chi-text-input": [
+          "chi-helper-message"
+        ],
+        "chi-textarea": [
           "chi-helper-message"
         ]
       }
@@ -6077,6 +6081,22 @@
           "required": false
         },
         {
+          "name": "helperMessage",
+          "type": "string",
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": true,
+          "docs": "To display an additional helper text message below the Text input",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "iconLeft",
           "type": "string",
           "mutable": false,
@@ -6398,10 +6418,15 @@
       "slots": [],
       "dependents": [],
       "dependencies": [
-        "chi-icon"
+        "chi-icon",
+        "chi-helper-message"
       ],
       "dependencyGraph": {
         "chi-textarea": [
+          "chi-icon",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
           "chi-icon"
         ]
       }
