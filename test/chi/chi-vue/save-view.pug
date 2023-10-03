@@ -6,39 +6,45 @@ h2 Save View
 
 #save-view.-w--100
   button.chi-button(@click="toggleSaveView") Toggle Save View
-  chi-save-view.-mt--2(:active="active" results='(1-40 of 78)', @chiSave="saveView", @chiDelete="deleteView")
+  chi-save-view.-mt--2(:config="config", @chiSave="saveView", @chiDelete="deleteView")
     button#chi-save-view__info-trigger.chi-button.-light.-icon.-flat.-xs(aria-label='Edit', @click="() => toggleInfoPopover()" slot='info-icon')
       .chi-button__content
         i.chi-icon.icon-circle-info-outline(aria-hidden='true')
-    chi-popover(:active="isInfoPopoverActive" position='right-start' title='Popover title' variant='text' arrow='' reference='#chi-save-view__info-trigger' slot='info-popover', @chiPopoverHidden="() => (isInfoPopoverActive = false)")
+    chi-popover(:active.prop="isInfoPopoverActive" position='right-start' title='Popover title' variant='text' arrow='' reference='#chi-save-view__info-trigger' slot='info-popover', @chiPopoverHidden="() => (isInfoPopoverActive = false)")
       | Lorem ipsum test test
 
 script.
-  new Vue({
-    data: () => {
+  const saveViewApp = Vue.createApp({
+    data() {
       return {
+        config: {
+          active: false,
+          results: '(1-40 of 78)'
+        },
         active: false,
-        isInfoPopoverActive: false,
+        isInfoPopoverActive: false
       }
-    },
-    components: {
-      ChiSaveView: window["chi-vue"].library.components.ChiSaveView,
     },
     methods: {
       deleteView(e) {
         console.log(e);
       },
-
       saveView(e) {
         console.log(e);
       },
-
       toggleInfoPopover() {
         this.isInfoPopoverActive = !this.isInfoPopoverActive;
       },
-
       toggleSaveView() {
         this.active = !this.active;
+
+        this.config = {
+          ...this.config,
+          active: this.active,
+        };
       },
-    },
-  }).$mount("#save-view");
+    }
+  });
+
+  saveViewApp.component('ChiSaveView', window["chi-vue"].library.components.ChiSaveView);
+  saveViewApp.mount('#save-view');
