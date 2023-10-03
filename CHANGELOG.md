@@ -1,4 +1,18 @@
 # CHANGELOG
+## 5.40.0 (October 4, 2023)
+### Components
+#### Added
+* Added: Data table Vue component now supports configurable and responsive behavior actions column with `actions` config.
+* Added: Advanced filters Vue component now supports perform actions when several data tables in the same page.
+#### Changed
+* Changed: Progress now renders with a 4px border-radius.
+### Documentation
+#### Added
+* Added: Helper message to textarea in message section.
+#### Changed
+* Changed: Footer Lumen engage link has been replaced by Marketplace.
+* Changed: Progress semantic states section has been removed from Portal theme.
+
 ## 5.39.0 (September 27, 2023)
 ### Components
 #### Added
