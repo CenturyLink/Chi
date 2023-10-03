@@ -26,8 +26,8 @@ export default class SearchInput extends Vue {
   @Prop() portal?: boolean;
   @Prop() readOnly?: boolean;
 
-  cleanButtonVisible?: boolean;
-  inputValue!: string;
+  cleanButtonVisible?: boolean = false;
+  inputValue = '';
 
   @Emit(SEARCH_INPUT_EVENTS.INPUT)
   _emitInput(value: string) {
