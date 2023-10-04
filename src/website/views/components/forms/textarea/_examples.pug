@@ -284,8 +284,7 @@ p.-text
       .chi-col.-w--12.-w-sm--8.-w-md--6
         .chi-form__item
           chi-label(for='example__message') Label
-          chi-textarea(id='example__message')
-          .chi-label.-status Optional helper message
+          chi-textarea(id='example__message' helper-message='Optional helper message')
   .example-tabs.-pl--2
     ul.chi-tabs#example-message
       li.-active
@@ -296,8 +295,7 @@ p.-text
     :code(lang="html")
       <div class="chi-form__item">
         <chi-label for="example__message">Label</chi-label>
-        <chi-textarea id="example__message"></chi-textarea>
-        <div class="chi-label -status">Optional helper message</div>
+        <chi-textarea id="example__message" helper-message="Optional helper message"></chi-textarea>
       </div>
   .chi-tabs-panel#html-message
     :code(lang="html")
