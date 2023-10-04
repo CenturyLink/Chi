@@ -359,9 +359,14 @@ export default class DataTableFilters extends Vue {
         <div class={`${DATA_TABLE_CLASSES.FILTERS}-mobile`}>
           <button
             class={`${BUTTON_CLASSES.BUTTON} ${BUTTON_CLASSES.ICON_BUTTON} ${BUTTON_CLASSES.PRIMARY} ${BUTTON_CLASSES.FLAT} ${DRAWER_CLASSES.TRIGGER}`}
-            onClick={() => this.toggleDrawer()}
+            onClick={(event: MouseEvent) => {
+              event.stopPropagation();
+
+              this.toggleDrawer();
+            }}
             data-target={this._drawerID}
-            aria-label="Open Drawer">
+            aria-label="Open Drawer"
+            type="button">
             <div class={BUTTON_CLASSES.CONTENT}>
               <i class={`${ICON_CLASS} icon-filter`} aria-hidden="true"></i>
             </div>

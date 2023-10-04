@@ -25,8 +25,8 @@
       </div>
     </button>
     <div :class="[DIVIDER_CLASSES.DIVIDER, DIVIDER_CLASSES.VERTICAL]"></div>
-    <chi-button @chiClick="cancel">Cancel</chi-button>
-    <chi-button @chiClick="apply" :disabled="disabledButtons" color="primary">Apply</chi-button>
+    <chi-button @click="cancel">Cancel</chi-button>
+    <chi-button @click="apply" :disabled="disabledButtons" color="primary">Apply</chi-button>
   </div>
 </template>
 

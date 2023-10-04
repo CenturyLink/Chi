@@ -84,6 +84,7 @@ export default class Drawer extends Vue {
     // }
 
     this.animationClasses.length = 0;
+    this.backdropAnimationClasses.length = 0;
     this.animationClasses.push(ACTIVE_CLASS);
     this._emitShow();
   }
@@ -120,7 +121,9 @@ export default class Drawer extends Vue {
     // }
 
     this.animationClasses.length = 0;
+    this.backdropAnimationClasses.length = 0;
     this.animationClasses.push('');
+    this.backdropAnimationClasses.push(CLOSED_CLASS);
     this._emitHide();
   }
 
