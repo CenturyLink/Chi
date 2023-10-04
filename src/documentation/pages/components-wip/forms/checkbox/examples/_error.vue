@@ -10,7 +10,7 @@
         label(for="checkbox-er1" class="chi-checkbox__label -danger")
           | I accept the Terms of Service
           abbr.chi-label__required(aria-label="Required field") *
-      .chi-label.-status.-danger Please accept the terms of service.
+      .chi-label.-status.-danger Please accept the terms of service
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -48,7 +48,7 @@ import { Component, Vue } from 'vue-property-decorator';
       <abbr class="chi-label__required" aria-label="Required field">*</abbr>
     </label>
   </div>
-  <div class="chi-label -status -danger">Please accept the terms of service.</div>
+  <div class="chi-label -status -danger">Please accept the terms of service</div>
 </div>`
       }
     };

@@ -240,6 +240,7 @@
                     label: <code>string</code>;
                     selected: <code>boolean</code>;
                     locked: <code>true</code>;
+                    wildcard?: <code>boolean</code>;
                   }
             tr
               td

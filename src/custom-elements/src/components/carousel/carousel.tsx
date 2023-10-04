@@ -103,10 +103,10 @@ export class Carousel {
     this.fullScrollLength = this.el.offsetWidth || this.fullScrollLength;
     if (this.single) {
       this._applySizeToItems();
-      this.transformX = -(this.currentStep * carouselItems[0].clientWidth);
+      this.transformX = -(this.currentStep * carouselItems[0].offsetWidth);
     }
 
-    const itemsShown = this.fullScrollLength / carouselItems[0].clientWidth;
+    const itemsShown = this.fullScrollLength / carouselItems[0].offsetWidth;
 
     this.maxItemsShown =
       itemsShown % 1 > MAX_ITEMS_THRESHOLD
@@ -153,7 +153,7 @@ export class Carousel {
 
   _calculateView(direction: CAROUSEL_DIRECTION, customNextStep?: number) {
     const carouselItems = this._getCarouselItems();
-    const itemWidth = carouselItems[0].clientWidth;
+    const itemWidth = carouselItems[0].offsetWidth;
     let nextStep =
       customNextStep !== undefined
         ? customNextStep
@@ -196,9 +196,13 @@ export class Carousel {
     if (customNextStep) {
       this.transformX = customNextStep * itemWidth * -1;
     } else {
+      const gap = this._getGap();
+
       this.transformX += currentLastView
         ? this.remainingSpace
-        : Math.abs(nextStep - this.currentStep) * itemWidth * direction;
+        : (Math.abs(nextStep - this.currentStep) * itemWidth +
+            gap * this.maxItemsShown) *
+          direction;
     }
   }
 
@@ -207,8 +211,14 @@ export class Carousel {
     remainingItems: number,
     itemWidth: number
   ) {
+    const gap = this._getGap();
+    const itemsShown = this.maxItemsShown + remainingItems;
+
     this.remainingSpace = Math.abs(
-      this.fullScrollLength - (this.maxItemsShown + remainingItems) * itemWidth
+      this.fullScrollLength -
+        itemsShown * itemWidth -
+        gap * itemsShown -
+        gap / 3
     );
 
     if (customNextStep) {
@@ -368,7 +378,7 @@ export class Carousel {
     this.chiViewChange.emit(view);
   }
 
-  _getCarouselItems(): NodeListOf<Element> {
+  _getCarouselItems(): NodeListOf<HTMLElement> {
     const carouselItemClasses = [CAROUSEL_CLASSES.ITEM, STAT_CLASSES.ITEM];
 
     return this.el.querySelectorAll(
@@ -383,29 +393,45 @@ export class Carousel {
   }
 
   _getItemVisibility(index) {
-    let minActiveItem = this.view * this.maxItemsShown;
-    const maxActiveItem = minActiveItem + this.maxItemsShown;
+    let minVisibleItem = this.view * this.maxItemsShown;
+    const maxVisibleItem = minVisibleItem + this.maxItemsShown;
 
     if (this.isLastView && this.restItemsShown > 0) {
-      minActiveItem =
-        minActiveItem - (this.maxItemsShown - this.restItemsShown);
+      minVisibleItem =
+        minVisibleItem - (this.maxItemsShown - this.restItemsShown);
     }
 
-    return index >= minActiveItem && index < maxActiveItem;
+    return index >= minVisibleItem && index < maxVisibleItem;
   }
 
-  setActiveClass() {
+  setVisibleClass() {
     const carouselItems = this._getCarouselItems();
 
     carouselItems.forEach((item, index) => {
       const isVisible = this._getItemVisibility(index);
 
-      item.classList.toggle(ACTIVE_CLASS, isVisible);
+      item.classList.toggle('-visible', isVisible);
     });
   }
 
+  _getStatComponent(): HTMLElement {
+    return this.el.querySelector(`.${STAT_CLASSES.STAT}`) as HTMLElement;
+  }
+
+  _getGap(): number {
+    const statComponent = this._getStatComponent();
+
+    if (statComponent) {
+      const statComputedStyle = window.getComputedStyle(statComponent);
+
+      return parseInt(statComputedStyle.gap, 10);
+    }
+
+    return 0;
+  }
+
   render() {
-    this.setActiveClass();
+    this.setVisibleClass();
 
     const prevButton = this._areThereMultipleItems() &&
       !this.noButtonControllers && (

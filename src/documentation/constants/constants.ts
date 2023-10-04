@@ -1,6 +1,6 @@
 import { CHI_VERSION, DEFAULT_THEME } from './configs';
 
-export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.37.0`;
+export const TEMP_DEVELOPMENT_FALLBACK_URL = `https://assets.ctl.io/chi/5.40.0`;
 export const DOCS_URL = `${TEMP_DEVELOPMENT_FALLBACK_URL}/js/ce/docs.json`;
 export const THEMES = {
   centurylink: {
@@ -83,9 +83,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/avatar`,
+    to: `components/avatar`,
     label: 'Avatar',
-    source: 'pug'
+    source: 'vue'
   },
   {
     to: `components/badge`,
@@ -108,9 +108,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/button-group`,
+    to: `components/button-group`,
     label: 'Button group',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/card`,
@@ -163,9 +163,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'vue'
   },
   {
-    href: `components/flag-icon`,
+    to: `components/flag-icon`,
     label: 'Flag icon',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/footer`,
@@ -268,9 +268,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/skeleton`,
+    to: `components/skeleton`,
     label: 'Skeleton',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/spinner`,
@@ -288,9 +288,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
     source: 'pug'
   },
   {
-    href: `components/table`,
+    to: `components/table`,
     label: 'Table',
-    source: 'pug'
+    source: 'vue'
   },
   {
     href: `components/tabs`,
@@ -330,6 +330,9 @@ export const NAVIGATION_COMPONENTS_ITEMS = [
 ];
 
 export const CHI_VISIBLE_VERSION = [
+  '5.40.0',
+  '5.39.0',
+  '5.38.0',
   '5.37.0',
   '5.36.0',
   '5.35.0',

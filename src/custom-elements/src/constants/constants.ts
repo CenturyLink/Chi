@@ -69,3 +69,5 @@ export const EXTRA_COUNTRIES = [
   { country: 'Serbia', country_code: 'RS' },
   { country: 'Montenegro', country_code: 'ME' }
 ];
+
+export const EPANEL_TOOLTIP_CONTENT = 'Done';

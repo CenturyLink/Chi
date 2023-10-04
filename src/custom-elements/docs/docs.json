@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-08-24T09:53:06",
+  "timestamp": "2023-10-03T14:38:03",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -1912,6 +1912,22 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "visibleItems",
+          "type": "number",
+          "mutable": false,
+          "attr": "visible-items",
+          "reflectToAttr": false,
+          "docs": "To provide number of items in the dropdown to be displayed, and apply scroll if needed",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [
@@ -2081,6 +2097,23 @@
           "required": false
         },
         {
+          "name": "stateIconTooltip",
+          "type": "string",
+          "mutable": false,
+          "attr": "state-icon-tooltip",
+          "reflectToAttr": true,
+          "docs": "to render a state tooltip",
+          "docsTags": [],
+          "default": "EPANEL_TOOLTIP_CONTENT",
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "step",
           "type": "string",
           "mutable": false,
@@ -2161,7 +2194,8 @@
       "styles": [],
       "slots": [],
       "dependents": [
-        "chi-text-input"
+        "chi-text-input",
+        "chi-textarea"
       ],
       "dependencies": [
         "chi-icon"
@@ -2171,6 +2205,9 @@
           "chi-icon"
         ],
         "chi-text-input": [
+          "chi-helper-message"
+        ],
+        "chi-textarea": [
           "chi-helper-message"
         ]
       }
@@ -6044,6 +6081,22 @@
           "required": false
         },
         {
+          "name": "helperMessage",
+          "type": "string",
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": true,
+          "docs": "To display an additional helper text message below the Textarea",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "iconLeft",
           "type": "string",
           "mutable": false,
@@ -6365,10 +6418,15 @@
       "slots": [],
       "dependents": [],
       "dependencies": [
-        "chi-icon"
+        "chi-icon",
+        "chi-helper-message"
       ],
       "dependencyGraph": {
         "chi-textarea": [
+          "chi-icon",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
           "chi-icon"
         ]
       }

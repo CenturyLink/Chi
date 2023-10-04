@@ -58,6 +58,7 @@ import { ColumnResize } from './utils/Resize';
 import Tooltip from '../tooltip/tooltip';
 import { Component, Vue } from '@/build/vue-wrapper';
 import DataTableEmptyActionable from './DataTableEmptyActionable';
+import DataTableActions from './DatatableActions';
 
 declare const chi: any;
 
@@ -98,6 +99,7 @@ export default class DataTable extends Vue {
   emptyActionableContent = Object.prototype.hasOwnProperty.call(this.$props.config, 'emptyActionable')
     ? this.$props.config.emptyActionable
     : defaultConfig.emptyActionable;
+  actions = this.$props.config.actions || defaultConfig.actions || [];
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -220,8 +222,11 @@ export default class DataTable extends Vue {
       this._expandable ? this._headExpandable() : null,
     ];
 
-    const heads = Array.isArray(this.data.head) ? this.data.head : Object.keys(this.data.head);
+    if (this.actions?.length) {
+      this.data.head.actions = { label: 'Actions', align: 'right' };
+    }
 
+    const heads = Array.isArray(this.data.head) ? this.data.head : Object.keys(this.data.head);
     const infoPopovers: JSX.Element[] = [];
 
     heads.forEach((column: string | DataTableColumn, cellIndex: number) => {
@@ -943,6 +948,7 @@ export default class DataTable extends Vue {
     }
 
     let cellIndex = 0;
+    const hasActions = !!this.actions?.length;
 
     bodyRow.data.forEach((rowCell: any) => {
       const columnSettings = this.data.head[Object.keys(this.data.head)[cellIndex]];
@@ -1007,6 +1013,26 @@ export default class DataTable extends Vue {
         cellIndex++;
       }
     });
+
+    if (hasActions) {
+      const cellWidth =
+        this.config.columnSizes && this._currentScreenBreakpoint
+          ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
+          : null;
+      const flexBasis = cellWidth ? `-flex-basis--${cellWidth}` : '';
+
+      rowCells.push(
+        <div
+          class={`
+          ${DATA_TABLE_CLASSES.CELL} 
+          ${flexBasis} 
+          -justify-content-md--end 
+          -key`}
+          style="overflow: visible; position: initial">
+          <DataTableActions actions={this.actions} rowData={bodyRow} dataTableNumber={dataTableNumber} />
+        </div>
+      );
+    }
 
     row.push(
       <div
@@ -1158,29 +1184,26 @@ export default class DataTable extends Vue {
           : this.data.body.length
         : this.config.pagination.results;
 
-    if (
-      (pages === 1 && this.config.pagination.hideOnSinglePage) ||
-      (this.$props.data.body.length === 0 && this.mode === DataTableModes.CLIENT)
-    ) {
+    if (pages === 1 && this.config.pagination.hideOnSinglePage) {
       return null;
-    } else {
-      return (
-        <div class={DATA_TABLE_CLASSES.FOOTER}>
-          <Pagination
-            ref="pagination"
-            compact={this.config.style.portal || this.config.pagination.compact}
-            firstLast={this.config.pagination.firstLast}
-            currentPage={this.activePage}
-            pages={pages}
-            results={results}
-            pageSize={!this.config.style.portal}
-            pageJumper={this.config.pagination.pageJumper}
-            portal={this.config.style.portal}
-            size={this.config.style.portal ? 'xs' : 'md'}
-          />
-        </div>
-      );
     }
+
+    return (
+      <div class={DATA_TABLE_CLASSES.FOOTER}>
+        <Pagination
+          ref="pagination"
+          compact={this.config.style.portal || this.config.pagination.compact}
+          firstLast={this.config.pagination.firstLast}
+          currentPage={this.activePage}
+          pages={pages}
+          results={results}
+          pageSize={!this.config.style.portal}
+          pageJumper={this.config.pagination.pageJumper}
+          portal={this.config.style.portal}
+          size={this.config.style.portal ? 'xs' : 'md'}
+        />
+      </div>
+    );
   }
 
   sliceData(data: DataTableRow[]): DataTableRow[] {

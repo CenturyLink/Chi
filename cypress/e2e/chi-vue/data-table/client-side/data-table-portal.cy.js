@@ -95,10 +95,10 @@ describe('Data Table Portal', () => {
       ).should('not.exist');
     });
 
-    it('Should have no footer', () => {
+    it('Should have footer', () => {
       cy.get(`[data-cy='data-table-portal-empty']`)
         .find(`.${DATA_TABLE_CLASSES.FOOTER}`)
-        .should('not.exist');
+        .should('exist');
     });
   });
 

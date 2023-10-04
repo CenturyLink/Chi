@@ -13,7 +13,7 @@
         option Option 3
       .chi-label.-status.-danger
         i(class="chi-icon icon-circle-warning -icon--danger" aria-hidden="true")
-        | Please select an option.
+        | Please select an option
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>   
@@ -56,7 +56,7 @@ import { Component, Vue } from 'vue-property-decorator';
   </select>
   <div class="chi-label -status -danger">
     <i class="chi-icon icon-circle-warning -icon--danger" aria-hidden="true"></i>
-    Please select an option.
+    Please select an option
   </div>
 </div>`
       }
