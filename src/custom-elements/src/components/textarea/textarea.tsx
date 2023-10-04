@@ -40,7 +40,7 @@ export class Textarea {
    */
   @Prop({ reflect: true }) placeholder: string;
   /**
-   * To display an additional helper text message below the Text input
+   * To display an additional helper text message below the Textarea
    */
   @Prop({ reflect: true }) helperMessage: string;
   /**
