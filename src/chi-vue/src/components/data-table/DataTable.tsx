@@ -1025,7 +1025,13 @@ export default class DataTable extends Vue {
       const flexBasis = cellWidth ? `-flex-basis--${cellWidth}` : '';
 
       rowCells.push(
-        <div class={`${DATA_TABLE_CLASSES.CELL} ${flexBasis} -justify-content-md--end -key`} style="overflow: visible">
+        <div
+          class={`
+          ${DATA_TABLE_CLASSES.CELL} 
+          ${flexBasis} 
+          -justify-content-md--end 
+          -key`}
+          style="overflow: visible; position: initial">
           <DataTableActions actions={this.actions} rowData={bodyRow} dataTableNumber={dataTableNumber} />
         </div>
       );
