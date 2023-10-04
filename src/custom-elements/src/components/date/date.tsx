@@ -1,6 +1,7 @@
 import {
   Component,
   Event,
+  Element,
   EventEmitter,
   Listen,
   Method,
@@ -68,6 +69,8 @@ export class Date {
   @Prop({ reflect: true }) multiple = false;
 
   @State() viewMonth = dayjs();
+
+  @Element() el: HTMLElement;
 
   excludedWeekdaysArray = [];
   excludedDatesArray = [];
@@ -165,103 +168,32 @@ export class Date {
     return Promise.resolve(this.value);
   }
 
-  @Listen('keydown', { target: 'window' })
-  handleKeyDown({ key }: KeyboardEvent) {
-    const isArrowKey = ['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(key);
-    const isEnter = key === 'Enter';
+  @Listen('keydown', { target: 'document' })
+  handleKeyDown(event: KeyboardEvent) {
+    const isArrowKey = ['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key);
+    const isEnter = event.key === 'Enter';
+    const isTab = event.key === 'Tab';
+    const datePicker = this._getDatePicker();
 
-    if (isArrowKey) {
-      return this._handleDatePickerNavigation(key);
+    if (!datePicker) {
+      return;
+    }
+
+    if (isTab) {
+      return this._handleTabNavigation(event);
     }
 
     if (isEnter) {
       return this._handleSelectDate();
     }
-  }
 
-  _handleSelectDate() {
-    const focusedElement = document.activeElement as HTMLElement;
+    event.preventDefault();
 
-    if (focusedElement.classList.contains('prev')) {
-      return this.prevMonth();
-    }
-
-    if (focusedElement.classList.contains('next')) {
-      return this.nextMonth();
-    }
-
-    if (focusedElement.hasAttribute('data-date')) {
-      focusedElement.click();
+    if (isArrowKey) {
+      return this._handleDatePickerNavigation(event.key);
     }
   }
 
-  _getFocusedElement(focusedElement: HTMLElement, currentValue: string) {
-    const isDateControl = focusedElement.hasAttribute('data-date')
-    const isPrevMonth = focusedElement.classList.contains('prev')
-    const isNextMonth = focusedElement.classList.contains('next')
-
-
-    if (isDateControl) {
-      return focusedElement.dataset.date
-    }
-
-    if (isPrevMonth) {
-      return dayjs().subtract(1, 'month').startOf("month").format(this.format);
-    }
-
-    if (isNextMonth) {
-      return dayjs().add(1, 'month').startOf("month").format(this.format);
-    }
-
-    return currentValue;
-  }
-
-  _handleDatePickerNavigation(keyCode: string) {
-    const currentValue = this.value ?? dayjs().format(this.format);
-    const focusedElement = document.activeElement as HTMLElement;
-    const currentFocusedDate = this._getFocusedElement(focusedElement, currentValue);
-
-    this._onArrowNavigation(keyCode, currentFocusedDate);
-  }
-
-  _onArrowNavigation(keyCode: string, currentValue: string) {
-    const index = this._getNextPosition(keyCode);
-    const nextValue = dayjs(currentValue).add(index, 'day').format(this.format);
-    const isSameMonth = dayjs(currentValue).isSame(nextValue, 'month');
-
-    if (!isSameMonth) {
-      return this._updateMonthViewAndSetFocus(keyCode, nextValue);
-    }
-
-    return this._setFocusDate(nextValue);
-  }
-
-  _updateMonthViewAndSetFocus(keyCode: string, nextValue: string) {
-    const isPrevMonth = ['ArrowUp', 'ArrowLeft'].includes(keyCode);
-
-    isPrevMonth ? this.prevMonth() : this.nextMonth();
-
-    this._updateViewMonth(() => {
-      setTimeout(() => {
-        this._setFocusDate(nextValue);
-      });
-    });
-  }
-
-  _setFocusDate(value) {
-    const chiDate = document.querySelector(`.chi-datepicker__day[data-date="${value}"]`) as HTMLElement;
-
-    chiDate?.focus();
-  }
-
-  _getNextPosition(keyCode: string) {
-    return {
-      ArrowUp: -7,
-      ArrowDown: 7,
-      ArrowLeft: -1,
-      ArrowRight: 1
-    }[keyCode];
-  }
   /**
    * Date change value event
    */
@@ -361,6 +293,108 @@ export class Date {
     callback?.();
   }
 
+
+  _getDatePicker(): HTMLElement {
+    return this.el.closest("chi-date-picker[active]");
+  }
+
+  _handleTabNavigation(event) {
+    const datePicker = this._getDatePicker();
+    const focusedElement = document.activeElement as HTMLElement;
+    const focusableContent = Array.from(datePicker.querySelectorAll('[tabindex="0"]')) as HTMLElement[];
+    const currentIndex = focusableContent.indexOf(focusedElement);
+
+    const firstFocusableElement = focusableContent[0] as HTMLElement;
+    const lastFocusableElement = focusableContent[focusableContent.length - 1] as HTMLElement
+
+    if (focusedElement === lastFocusableElement) {
+      firstFocusableElement.focus();
+      event.preventDefault();
+    }
+
+    if (event.shiftKey) {
+      const nextFocus = focusedElement === firstFocusableElement
+        ? focusableContent.length - 1
+        : currentIndex - 1;
+
+      focusableContent[nextFocus].focus();
+      event.preventDefault();
+    }
+  }
+
+  _handleSelectDate() {
+    const focusedElement = document.activeElement as HTMLElement;
+
+    if (focusedElement.classList.contains('prev')) {
+      return this.prevMonth();
+    }
+
+    if (focusedElement.classList.contains('next')) {
+      return this.nextMonth();
+    }
+
+    if (
+      focusedElement.hasAttribute('data-date') &&
+      !focusedElement.classList.contains('-inactive')
+    ) {
+      focusedElement.click();
+    }
+  }
+
+  _getFocusedElement(focusedElement: HTMLElement, currentValue: string) {
+    const isDateControl = focusedElement.hasAttribute('data-date')
+
+    return isDateControl ? focusedElement.dataset.date : currentValue;
+  }
+
+  _handleDatePickerNavigation(keyCode: string) {
+    const currentValue = this.value ?? dayjs().format(this.format);
+    const focusedElement = document.activeElement as HTMLElement;
+    const currentFocusedDate = this._getFocusedElement(focusedElement, currentValue);
+
+    this._onArrowNavigation(keyCode, currentFocusedDate);
+  }
+
+  _onArrowNavigation(keyCode: string, currentValue: string) {
+    const index = this._getNextPosition(keyCode);
+    const nextValue = dayjs(currentValue).add(index, 'day').format(this.format);
+    const isSameMonth = dayjs(currentValue).isSame(nextValue, 'month');
+
+    if (!isSameMonth) {
+      return this._updateMonthViewAndSetFocus(keyCode, nextValue);
+    }
+
+    return this._setFocusDate(nextValue);
+  }
+
+  _updateMonthViewAndSetFocus(keyCode: string, nextValue: string) {
+    const isPrevMonth = ['ArrowUp', 'ArrowLeft'].includes(keyCode);
+
+    isPrevMonth ? this.prevMonth() : this.nextMonth();
+
+    this._updateViewMonth(() => {
+      setTimeout(() => {
+        this._setFocusDate(nextValue);
+      });
+    });
+  }
+
+  _setFocusDate(value) {
+    const datePicker = this._getDatePicker();
+    const chiDate = datePicker.querySelector(`.chi-datepicker__day[data-date="${value}"]`) as HTMLElement;
+
+    chiDate?.focus();
+  }
+
+  _getNextPosition(keyCode: string) {
+    return {
+      ArrowUp: -7,
+      ArrowDown: 7,
+      ArrowLeft: -1,
+      ArrowRight: 1
+    }[keyCode];
+  }
+
   fromString(dateStr: string): Dayjs {
     return this.format ? dayjs(dateStr, this.format) : dayjs(dateStr);
   }
@@ -431,6 +465,14 @@ export class Date {
     return false;
   }
 
+  getTabIndex(day: Dayjs) {
+    if (this.value) {
+      return this.value === this.toDayString(day) ? 0 : -1;
+    }
+
+    return day.isSame(dayjs(), 'day') ? 0 : -1;
+  }
+
   render() {
     const endOfLastMonth = this.viewMonth.subtract(1, 'month').endOf('month');
     const startOfNextMonth = this.viewMonth.add(1, 'month').startOf('month');
@@ -491,7 +533,7 @@ export class Date {
               ${day.isSame(dayjs(), 'day') ? CLASSES.TODAY : ''}
             `}
               data-date={this.toDayString(day)}
-              tabIndex={this.value ? 0 : -1}
+              tabIndex={this.getTabIndex(day)}
               onClick={() => {
                 if (
                   this.multiple &&
