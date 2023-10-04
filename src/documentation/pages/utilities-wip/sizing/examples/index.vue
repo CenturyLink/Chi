@@ -14,11 +14,11 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import Width from './width.vue';
+import Width from './_width.vue';
 import WidthExamples from './_width-examples.vue';
-import Height from './height.vue';
+import Height from './_height.vue';
 import HeightExamples from './_height-examples.vue';
-import MaximumWidthHeight from './maximum-width-height.vue';
+import MaximumWidthHeight from './_maximum-width-height.vue';
 
 @Component({
   components: {

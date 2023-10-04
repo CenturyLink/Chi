@@ -11,7 +11,7 @@ import Examples from './examples/index.vue';
 @Component({
   head() {
     return {
-      title: 'Sizing - Color'
+      title: 'Chi - Sizing'
     }
   },
   components: {
