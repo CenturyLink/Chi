@@ -1,18 +1,20 @@
 script(src="https://cdn.jsdelivr.net/npm/vue@3.3.4")
 script(src="../../chi-vue/umd/chi-vue.umd.js")
+script(type='module' src='../../js/ce/ux-chi-ce/ux-chi-ce.esm.js')
+script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 script(src=`../../js/chi.js`)
 
 h2 Save View
 
 #save-view.-w--100
   button.chi-button(@click="toggleSaveView") Toggle Save View
-  chi-save-view.-mt--2(:config="config", @chiSave="saveView", @chiDelete="deleteView")
+  chi-save-view.-mt--2(:config="config", @chi-save="saveView", @chi-delete="deleteView")
     template(v-slot:info-icon)
       button#chi-save-view__info-trigger.chi-button.-light.-icon.-flat.-xs(aria-label='Edit', @click="() => toggleInfoPopover()")
         .chi-button__content
           i.chi-icon.icon-circle-info-outline(aria-hidden='true')
     template(v-slot:info-popover)
-      chi-popover(:active.prop="isInfoPopoverActive" position='right-start' title='Popover title' variant='text' arrow='' reference='#chi-save-view__info-trigger', @chiPopoverHidden="() => (isInfoPopoverActive = false)")
+      chi-popover(:active.prop="isInfoPopoverActive" position='right-start' title='Popover title' variant='text' arrow='' reference='#chi-save-view__info-trigger', @chi-popover-hidden="() => (isInfoPopoverActive = false)")
         | Lorem ipsum test test
 
 script.
@@ -23,7 +25,7 @@ script.
           active: false,
           results: '(1-40 of 78)'
         },
-        active: false,
+        isSaveViewActive: false,
         isInfoPopoverActive: false
       }
     },
@@ -38,11 +40,11 @@ script.
         this.isInfoPopoverActive = !this.isInfoPopoverActive;
       },
       toggleSaveView() {
-        this.active = !this.active;
+        this.isSaveViewActive = !this.isSaveViewActive;
 
         this.config = {
           ...this.config,
-          active: this.active,
+          active: this.isSaveViewActive,
         };
       },
     }
