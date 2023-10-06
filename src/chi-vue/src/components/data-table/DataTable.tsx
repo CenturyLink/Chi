@@ -1015,7 +1015,8 @@ export default class DataTable extends Vue {
       }
     });
 
-    const state = bodyRow.state ? STATES_CLASSES[bodyRow.state] : null;
+    const state = this.checkIfRowHasState(bodyRow);
+    const hasState = Boolean(state);
 
     if (hasActions) {
       const cellWidth =
@@ -1052,11 +1053,11 @@ export default class DataTable extends Vue {
         ${this.$props.config.style.portal ? `-${this.$props.config.style.size}` : ''}
         ${this.selectedRows.includes(bodyRow.rowId) || bodyRow.active ? ACTIVE_CLASS : ''}
         ${
-          this._expandable && bodyRow.nestedContent
+          (this._expandable || hasState) && bodyRow.nestedContent
             ? `${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}`
             : ''
         }
-        ${state ? `${DATA_TABLE_CLASSES.BORDERED} ${state}` : ''}
+        ${state ? `${DATA_TABLE_CLASSES.STATE} ${state}` : ''}
         `}
         role="row">
         {rowCells}
@@ -1248,6 +1249,28 @@ export default class DataTable extends Vue {
     }
   }
 
+  checkIfRowHasState(row: DataTableRow) {
+    let state = null;
+
+    function recurse(rowData: DataTableRow) {
+      if (rowData.state) {
+        const childLevelClass = !row.state ? '-state--child-level' : '';
+
+        state = [STATES_CLASSES[rowData.state], childLevelClass].join(' ');
+      }
+
+      if (rowData.nestedContent?.table?.data) {
+        rowData.nestedContent.table.data.forEach((child: DataTableRow) => {
+          recurse(child);
+        });
+      }
+    }
+
+    recurse(row);
+
+    return state;
+  }
+
   serializeData() {
     const serializeRow = (
       row: DataTableRow,
@@ -1276,6 +1299,8 @@ export default class DataTable extends Vue {
         level: nestingLevel,
       };
 
+      const hasState = Boolean(this.checkIfRowHasState(row));
+
       if (
         typeof row.nestedContent === 'object' &&
         typeof row.nestedContent.table === 'object' &&
@@ -1289,7 +1314,8 @@ export default class DataTable extends Vue {
         });
       }
 
-      if (rowObject.expanded && !this.accordionsExpanded.includes(rowObject.rowId)) {
+      const shouldExpand = rowObject.expanded && !this.accordionsExpanded.includes(rowObject.rowId);
+      if (shouldExpand || hasState) {
         this.accordionsExpanded.push(rowObject.rowId);
       }
 

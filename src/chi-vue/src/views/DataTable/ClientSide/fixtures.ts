@@ -435,7 +435,6 @@ export const exampleTableBody = [
   },
   {
     id: 'NTM000021067',
-    state: 'danger',
     selectionDisabled: true,
     nestedContent: {
       table: {
@@ -466,8 +465,6 @@ export const exampleTableBody = [
           {
             id: 'NTM00002106611',
             active: false,
-            state: 'danger',
-            expanded: true,
             nestedContent: {
               table: {
                 data: [
@@ -551,7 +548,6 @@ export const exampleTableBody = [
         ],
       },
     },
-    expanded: true,
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021067' } },
       {
