@@ -509,7 +509,7 @@ p.-text
         <!-- JavaScript -->
         <script>chi.modal(document.getElementById('modal-trigger-7'));</script>
 
-.-portal--show.-brightspeed--show
+.-portal--show.-brightspeed--show.-colt--show
   h3 Alert
   .example.-mb--3
     .chi-backdrop.-p--6.-position--relative.-z--0
@@ -528,7 +528,7 @@ p.-text
                 p.-mt--1.-mb--0
                   | Supporting text to explain the subhead text. Check user story to customize based on requirements.
                   | This is placeholder text to show spacing and line height. Replace this text with text provided in requirements.
-          footer.chi-modal__footer
+          footer.chi-modal__footer.-justify-content--center
             button.chi-button.-primary Button
     .example-tabs.-pl--2
       ul.chi-tabs#example-portal-modal-alert
@@ -570,7 +570,7 @@ p.-text
                   </div>
                 </div>
               </div>
-              <footer class="chi-modal__footer">
+              <footer class="chi-modal__footer -justify-content--center">
                 <button class="chi-button -primary">Button</button>
               </footer>
             </section>
@@ -579,70 +579,70 @@ p.-text
 
         <!-- JavaScript -->
         <script>chi.modal(document.getElementById('modal-trigger-alert'));</script>
+.-portal--hide.-colt--hide.-brightspeed--hide
+  h3 Multi-step
+  p.-text
+    | For multi-step modals, ensure the class <code>-centered</code> is applied
+    | to <code>chi-modal__title</code>. This will provide sufficient real estate on the
+    | left side to store a back button <code>chi-modal__back</code>.
+  .example.-mb--3
+    .chi-backdrop.-p--6.-position--relative.-z--0
+      .chi-backdrop__wrapper
+        section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
+          header.chi-modal__header
+            h2.chi-modal__title.-centered Modal Title
+            button.chi-modal__back(aria-label='Back')
+            button(class='chi-button -icon -close', aria-label='Close')
+              .chi-button__content
+                i.chi-icon.icon-x(aria-hidden="true")
+          .chi-modal__content
+            p.-text.-m--0 Modal content
+          footer.chi-modal__footer
+            button.chi-button.-primary Next
+    .example-tabs.-pl--2
+      ul.chi-tabs#example-multistep
+        li.-disabled
+          a(href=`#webcomponent-multistep`) Web Component
+        li.-active
+          a(href=`#html-multistep`) HTML Blueprint
+    .chi-tabs-panel#webcomponent-multistep
+    .chi-tabs-panel.-active#html-multistep
+      .chi-tab__description
+        span.-text--grey
+          | This HTML Blueprint requires JavaScript.
+          | You may use your own solution, or use Chi's vanilla JavaScript solution,
+          | <a href="../../getting-started/installation">Chi.js</a>.
+      :code(lang="html")
+        <!-- Trigger -->
+        <button id="modal-trigger-8" class="chi-button chi-modal__trigger" data-target="#modal-8">
+          Launch multi-step modal
+        </button>
 
-h3 Multi-step
-p.-text
-  | For multi-step modals, ensure the class <code>-centered</code> is applied
-  | to <code>chi-modal__title</code>. This will provide sufficient real estate on the
-  | left side to store a back button <code>chi-modal__back</code>.
-.example.-mb--3
-  .chi-backdrop.-p--6.-position--relative.-z--0
-    .chi-backdrop__wrapper
-      section.chi-modal(role="dialog", aria-label="Modal description", aria-modal="true")
-        header.chi-modal__header
-          h2.chi-modal__title.-centered Modal Title
-          button.chi-modal__back(aria-label='Back')
-          button(class='chi-button -icon -close', aria-label='Close')
-            .chi-button__content
-              i.chi-icon.icon-x(aria-hidden="true")
-        .chi-modal__content
-          p.-text.-m--0 Modal content
-        footer.chi-modal__footer
-          button.chi-button.-primary Next
-  .example-tabs.-pl--2
-    ul.chi-tabs#example-multistep
-      li.-disabled
-        a(href=`#webcomponent-multistep`) Web Component
-      li.-active
-        a(href=`#html-multistep`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-multistep
-  .chi-tabs-panel.-active#html-multistep
-    .chi-tab__description
-      span.-text--grey
-        | This HTML Blueprint requires JavaScript.
-        | You may use your own solution, or use Chi's vanilla JavaScript solution,
-        | <a href="../../getting-started/installation">Chi.js</a>.
-    :code(lang="html")
-      <!-- Trigger -->
-      <button id="modal-trigger-8" class="chi-button chi-modal__trigger" data-target="#modal-8">
-        Launch multi-step modal
-      </button>
-
-      <!-- Modal -->
-      <div class="chi-backdrop -closed">
-        <div class="chi-backdrop__wrapper">
-          <section id="modal-8" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
-            <header class="chi-modal__header">
-              <h2 class="chi-modal__title -centered">Modal Title</h2>
-              <button class="chi-modal__back" aria-label="Back"></button>
-              <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
-                <div class="chi-button__content">
-                  <i class="chi-icon icon-x" aria-hidden="true"></i>
-                </div>
-              </button>
-            </header>
-            <div class="chi-modal__content">
-              <p class="-text -m--0">Modal content</p>
-            </div>
-            <footer class="chi-modal__footer">
-              <button class="chi-button -primary">Next</button>
-            </footer>
-          </section>
+        <!-- Modal -->
+        <div class="chi-backdrop -closed">
+          <div class="chi-backdrop__wrapper">
+            <section id="modal-8" class="chi-modal" role="dialog" aria-label="Modal description" aria-modal="true">
+              <header class="chi-modal__header">
+                <h2 class="chi-modal__title -centered">Modal Title</h2>
+                <button class="chi-modal__back" aria-label="Back"></button>
+                <button class="chi-button -icon -close" data-dismiss="modal" aria-label="Close">
+                  <div class="chi-button__content">
+                    <i class="chi-icon icon-x" aria-hidden="true"></i>
+                  </div>
+                </button>
+              </header>
+              <div class="chi-modal__content">
+                <p class="-text -m--0">Modal content</p>
+              </div>
+              <footer class="chi-modal__footer">
+                <button class="chi-button -primary">Next</button>
+              </footer>
+            </section>
+          </div>
         </div>
-      </div>
 
-      <!-- JavaScript -->
-      <script>chi.modal(document.getElementById('modal-trigger-8'));</script>
+        <!-- JavaScript -->
+        <script>chi.modal(document.getElementById('modal-trigger-8'));</script>
 
 .-portal--hide
   h3 Simple
