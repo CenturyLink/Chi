@@ -884,12 +884,9 @@ $sizes: (
 
     .chi-data-table__row {
       background-color: $color-background-muted-lighter;
+      border-bottom: 0;
       margin-top: 0.5rem;
       padding: 1rem;
-
-      &:not(.-bordered) {
-        border-bottom: 0;
-      }
 
       @include respond-to(md) {
         background-color: transparent;
