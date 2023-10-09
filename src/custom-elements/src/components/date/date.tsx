@@ -187,8 +187,6 @@ export class Date {
       return this._handleSelectDate();
     }
 
-    event.preventDefault();
-
     if (isArrowKey) {
       return this._handleDatePickerNavigation(event.key);
     }
@@ -342,7 +340,14 @@ export class Date {
   }
 
   _getFocusedElement(focusedElement: HTMLElement, currentValue: string) {
-    const isDateControl = focusedElement.hasAttribute('data-date')
+    const isDateControl = focusedElement.hasAttribute('data-date');
+    const firstDayMonth = this._vm.monthDays[0].format('MM');
+    const currentMonth = dayjs(currentValue).format('MM');
+    const isSameMonth = firstDayMonth === currentMonth;
+
+    if (!isDateControl && !isSameMonth) {
+      return this._vm.monthDays[0].format(this.format);
+    }
 
     return isDateControl ? focusedElement.dataset.date : currentValue;
   }
