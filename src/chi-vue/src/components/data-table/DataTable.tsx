@@ -1028,9 +1028,9 @@ export default class DataTable extends Vue {
       rowCells.push(
         <div
           class={`
-          ${DATA_TABLE_CLASSES.CELL} 
-          ${flexBasis} 
-          -justify-content-md--end 
+          ${DATA_TABLE_CLASSES.CELL}
+          ${flexBasis}
+          -justify-content-md--end
           -key`}
           style="overflow: visible; position: initial">
           <DataTableActions actions={this.actions} rowData={bodyRow} dataTableNumber={dataTableNumber} />
@@ -1249,7 +1249,7 @@ export default class DataTable extends Vue {
     }
   }
 
-  checkIfRowHasState(row: DataTableRow) {
+  checkIfRowHasState(row: DataTableRow): string | null {
     let state = null;
 
     function recurse(rowData: DataTableRow) {
@@ -1299,7 +1299,8 @@ export default class DataTable extends Vue {
         level: nestingLevel,
       };
 
-      const hasState = Boolean(this.checkIfRowHasState(row));
+      const state = this.checkIfRowHasState(row);
+      const hasChildLevelState = state?.split(' ').includes('-state--child-level');
 
       if (
         typeof row.nestedContent === 'object' &&
@@ -1315,7 +1316,7 @@ export default class DataTable extends Vue {
       }
 
       const shouldExpand = rowObject.expanded && !this.accordionsExpanded.includes(rowObject.rowId);
-      if (shouldExpand || hasState) {
+      if (shouldExpand || hasChildLevelState) {
         this.accordionsExpanded.push(rowObject.rowId);
       }
 

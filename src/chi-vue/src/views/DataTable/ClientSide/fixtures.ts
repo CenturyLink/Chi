@@ -464,6 +464,7 @@ export const exampleTableBody = [
           },
           {
             id: 'NTM00002106611',
+            state: 'danger',
             active: false,
             nestedContent: {
               table: {
@@ -499,7 +500,6 @@ export const exampleTableBody = [
                   {
                     id: 'bbb',
                     active: false,
-                    state: 'danger',
                     data: [
                       {
                         template: 'ticketId',
