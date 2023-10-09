@@ -45,6 +45,11 @@ export class Alert {
   @Prop({ reflect: true }) closable = false;
 
   /**
+   * To render alert with Spinner
+   */
+  @Prop({ reflect: true }) spinner = false;
+
+  /**
    *  custom event when trying to dismiss an alert.
    */
   @Event() dismissAlert: EventEmitter<void>;
@@ -133,10 +138,19 @@ export class Alert {
     this.dismissAlert.emit();
   }
 
+  
   render() {
-    const chiIcon = <chi-icon icon={this.icon} color={this.color || null} extraClass="chi-alert__icon"></chi-icon>;
+    const spinnerSizeMapping = {
+      sm: 'sm',
+      md: 'sm',
+      lg: 'sm--2',
+      xl: 'sm--2'
+    };
+
+    const chiIcon = (!this.spinner) && <chi-icon icon={this.icon} color={this.color || null} extraClass="chi-alert__icon"></chi-icon>;
     const alertTitle = this.alertTitle && <p class="chi-alert__title">{this.alertTitle}</p>;
     const chiActions = this.alertActions && <div class="chi-alert__actions"><slot name="chi-alert__actions"></slot></div>;
+    const spinner = this.spinner && <chi-spinner class="chi-alert__icon" size={spinnerSizeMapping[this.size] || 'sm'} />;
     const chiClickableIcon = this.alertClickableIcon && <div class="chi-alert__clickable-icon"><slot name="chi-alert__clickable-icon"></slot></div>;
 
     return (
@@ -149,6 +163,7 @@ export class Alert {
         role="alert"
       >
         {this.icon && chiIcon}
+        {spinner}
         <div class="chi-alert__content">
           {alertTitle}
           <p class="chi-alert__text"><slot></slot></p>
