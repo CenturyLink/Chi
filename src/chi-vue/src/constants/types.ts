@@ -1,5 +1,3 @@
-import { STATES_CLASSES } from './states';
-
 //#region GENERAL
 export const GENERAL_POSITIONS = ['left', 'top', 'right', 'bottom'] as const;
 //#endregion
