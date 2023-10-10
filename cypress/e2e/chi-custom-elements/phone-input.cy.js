@@ -358,6 +358,22 @@ describe('Phone Input', () => {
     });
   });
 
+  describe('Numeric Input Only', () => {
+    it('Should allow only numbers in the input', () => {
+      cy.get(`[data-cy='phone-input-masking']`)
+        .as('maskingExample')
+        .should('have.attr', 'numeric-input-only');
+      cy.get(`@maskingExample`)
+      .find('input[type="tel"]')
+      .clear()
+      .type('1234!@#$abc')
+      .invoke('val')
+      .then(val => {
+        expect(val).to.equal('1234');
+      });
+    });
+  });
+
   describe('Sizes', () => {
     const sizes = [SIZES.sm, SIZES.md, SIZES.lg, SIZES.xl];
 

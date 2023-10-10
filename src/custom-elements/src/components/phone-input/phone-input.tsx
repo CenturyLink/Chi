@@ -64,6 +64,10 @@ export class ChiPhoneInput {
    */
   @Prop({ reflect: true }) dynamicValue: boolean = false;
   /**
+   * To set numbers only mode on Phone input
+   */
+  @Prop({ reflect: true }) numericInputOnly: boolean = false;
+  /**
    * To define two letter ISO country codes to exclude from Phone input dropdown
    */
   @Prop({ mutable: true, reflect: true }) excludedCountries?: string;
@@ -298,6 +302,29 @@ export class ChiPhoneInput {
     );
   };
 
+  _pasteHandler = (event: ClipboardEvent): void => {
+    const phoneNumberRegex = new RegExp('^[0-9()+-_ ]+$');
+    const clipboardData = event.clipboardData.getData('text');
+    const containsOnlyAllowedChars = phoneNumberRegex.test(clipboardData);
+
+    if (!containsOnlyAllowedChars) {
+      event.preventDefault();
+    }
+  }
+
+  _keyPressHandler = (event: KeyboardEvent): void => {
+    const onlyNumbersRegex = new RegExp('^[0-9]+$');
+    const isKeyNumber = onlyNumbersRegex.test(event.key);
+
+    if (event.key === 'Enter') {
+      return;
+    }
+
+    if (!isKeyNumber) {
+      event.preventDefault();
+    }
+  }
+
   _prefixChangeHandler(event: Event, country: Country): void {
     event.preventDefault();
     this._prefix = `+${country.dialCode}`;
@@ -392,9 +419,8 @@ export class ChiPhoneInput {
     );
   }
 
-  render(): JSX.Element {
-    const dropdown = this._renderDropdown();
-    const textInput = (
+  renderTextInput(commonProps: Record<string, any>): JSX.Element {
+    return (
       <chi-text-input
         id={`${this._uuid}`}
         type="tel"
@@ -405,13 +431,26 @@ export class ChiPhoneInput {
         value={this._suffix}
         onChiChange={this._suffixInputChangeHandler}
         onChiInput={this._inputHandler}
+        {...commonProps}
       />
     );
+  }
+
+  render(): JSX.Element {
+    const dropdown = this._renderDropdown();
+
+    const numericInputOnlyProps = {
+      onKeyPress: this._keyPressHandler,
+      onPaste: this._pasteHandler,
+    };
+
+    const textInput = this.renderTextInput({});
+    const textInputNumericOnly = this.renderTextInput(numericInputOnlyProps);
 
     return (
       <div class={`${PHONE_INPUT_CLASSES.PHONE_INPUT}`}>
         {dropdown}
-        {textInput}
+        {this.numericInputOnly ? textInputNumericOnly : textInput}
       </div>
     );
   }
