@@ -2,8 +2,7 @@
   <ComponentExample title="Actionable" titleSize="h4" id="bubble_actionable" padding="-p--1" :tabs="exampleTabs">
     chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable, slot='example')
       | This is a large closable success alert
-      chi-button(slot="chi-alert__actions") Secondary action
-      chi-button(slot="chi-alert__actions", color='primary') Primary action
+      chi-button(slot="chi-alert__actions", color='primary') Action
     <Wrapper slot='code-webcomponent'>
       .chi-tab__description
         span
@@ -44,8 +43,7 @@ import { Component, Vue } from 'vue-property-decorator';
       codeSnippets: {
         webcomponent: `<chi-alert color="success" icon="circle-check" size="lg" title="Success" closable>
   This is a large closable success alert
-  <chi-button slot="chi-alert__actions">Secondary action</chi-button>
-  <chi-button slot="chi-alert__actions" color="primary">Primary action</chi-button>
+  <chi-button slot="chi-alert__actions" color="primary">Action</chi-button>
 </chi-alert>`,
         htmlblueprint: `<div class="chi-alert -success -lg" role="alert">
   <i class="chi-alert__icon chi-icon icon-circle-check" aria-hidden="true"></i>
@@ -53,8 +51,7 @@ import { Component, Vue } from 'vue-property-decorator';
     <p class="chi-alert__title">Success</p>
     <p class="chi-alert__text">This is a large closable success alert</p>
     <div class="chi-alert__actions">
-      <button class="chi-button">Secondary action</button>
-      <button class="chi-button -primary">Primary action</button>
+      <button class="chi-button -primary">Action</button>
     </div>
   </div>
   <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
