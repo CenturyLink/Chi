@@ -1015,9 +1015,6 @@ export default class DataTable extends Vue {
       }
     });
 
-    const state = this.checkIfRowHasState(bodyRow);
-    const hasState = Boolean(state);
-
     if (hasActions) {
       const cellWidth =
         this.config.columnSizes && this._currentScreenBreakpoint
@@ -1038,6 +1035,10 @@ export default class DataTable extends Vue {
       );
     }
 
+    const isExpanded = this.accordionsExpanded.includes(rowId);
+    const state = this.checkIfRowHasState(bodyRow);
+    const hasState = bodyRow.state || (state && !isExpanded);
+
     row.push(
       <div
         id={rowId}
@@ -1054,10 +1055,10 @@ export default class DataTable extends Vue {
         ${this.selectedRows.includes(bodyRow.rowId) || bodyRow.active ? ACTIVE_CLASS : ''}
         ${
           (this._expandable || hasState) && bodyRow.nestedContent
-            ? `${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}`
+            ? `${isExpanded ? EXPANDED_CLASS : COLLAPSED_CLASS}`
             : ''
         }
-        ${state ? `${DATA_TABLE_CLASSES.STATE} ${state}` : ''}
+        ${hasState ? `${DATA_TABLE_CLASSES.STATE} ${state}` : ''}
         `}
         role="row">
         {rowCells}
@@ -1254,16 +1255,12 @@ export default class DataTable extends Vue {
 
     function recurse(rowData: DataTableRow) {
       if (rowData.state) {
-        const childLevelClass = !row.state ? '-state--child-level' : '';
-
-        state = [STATES_CLASSES[rowData.state], childLevelClass].join(' ');
+        state = STATES_CLASSES[rowData.state];
       }
 
-      if (rowData.nestedContent?.table?.data) {
-        rowData.nestedContent.table.data.forEach((child: DataTableRow) => {
-          recurse(child);
-        });
-      }
+      rowData.nestedContent?.table?.data?.forEach((child: DataTableRow) => {
+        recurse(child);
+      });
     }
 
     recurse(row);
@@ -1299,9 +1296,6 @@ export default class DataTable extends Vue {
         level: nestingLevel,
       };
 
-      const state = this.checkIfRowHasState(row);
-      const hasChildLevelState = state?.split(' ').includes('-state--child-level');
-
       if (
         typeof row.nestedContent === 'object' &&
         typeof row.nestedContent.table === 'object' &&
@@ -1315,6 +1309,8 @@ export default class DataTable extends Vue {
         });
       }
 
+      const state = this.checkIfRowHasState(row);
+      const hasChildLevelState = state && !row.state;
       const shouldExpand = rowObject.expanded && !this.accordionsExpanded.includes(rowObject.rowId);
       if (shouldExpand || hasChildLevelState) {
         this.accordionsExpanded.push(rowObject.rowId);

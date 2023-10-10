@@ -290,7 +290,7 @@ $sizes: (
       }
     }
 
-    &.-state:not(.-expanded) {
+    &.-state {
       &.-warning {
         box-shadow: 0 0 0 0.0625rem $data-table-state-warning-box-shadow inset;
       }
@@ -305,11 +305,21 @@ $sizes: (
       }
     }
 
-    &,
     &-child,
     &-grand-child {
-      &.-state:not(.-expanded),
-      &.-state.-expanded:not(.-state--child-level) {
+      background-color: $data-table-row-active-background-color;
+      box-shadow: inset 0.25rem 0 0 $color-border-primary;
+
+      @include respond-to(md) {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+
+    &.-expanded,
+    &-child,
+    &-grand-child {
+      &.-state {
         &.-warning {
           box-shadow: 0 0 0 0.0625rem $data-table-state-warning-box-shadow inset,
             inset 0.25rem 0 0 $color-border-primary;
@@ -326,21 +336,6 @@ $sizes: (
           box-shadow: 0 0 0 0.0625rem $data-table-state-info-box-shadow inset,
             inset 0.25rem 0 0 $color-border-primary;
         }
-      }
-    }
-
-    &-child,
-    &-grand-child {
-      background-color: $data-table-row-active-background-color;
-
-      &:not(.-state),
-      &.-state.-state--child-level.-expanded {
-        box-shadow: inset 0.25rem 0 0 $color-border-primary;
-      }
-
-      @include respond-to(md) {
-        display: flex;
-        flex-direction: row;
       }
     }
 
