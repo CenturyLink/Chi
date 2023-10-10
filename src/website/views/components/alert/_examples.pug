@@ -8,7 +8,7 @@ p.-text
 h4 Default
 .example.-mb--3
   .-p--1
-    chi-alert(icon='circle-info').-m--2
+    chi-alert(icon='flag').-m--2
       | This is a base alert
     each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(color=type, icon=val)
@@ -28,7 +28,7 @@ h4 Default
       | text color. This is useful for displaying neutral alerts with no specific value state.
     :code(lang="html")
       <!-- Base - No semantic color defined -->
-      <chi-alert icon="circle-info">
+      <chi-alert icon="flag">
         This is a base alert
       </chi-alert>
       <!-- Success -->
@@ -60,7 +60,7 @@ h4 Default
     :code(lang="html")
       <!-- Base - No semantic color class defined -->
       <div class="chi-alert" role="alert">
-        <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
+        <i class="chi-alert__icon chi-icon icon-flag" aria-hidden="true"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is a base alert</p>
         </div>
@@ -140,7 +140,7 @@ p.-text
   | The title will automatically get colored based on the alerts semantic color class.
 .example.-mb--3
   .-p--1
-    chi-alert(icon='circle-info', title="Base").-m--2
+    chi-alert(icon='flag', title="Base").-m--2
       | This is a base alert
     each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(color=type, icon=val, title=type)
@@ -156,7 +156,7 @@ p.-text
       | Use the <code>title=""</code> attribute to display a title above the alert text.
     :code(lang="html")
       <!-- Base - No semantic color defined -->
-      <chi-alert icon="circle-info" title="Base">
+      <chi-alert icon="flag" title="Base">
         This is a base alert
       </chi-alert>
       <!-- Success -->
@@ -186,7 +186,7 @@ p.-text
     :code(lang="html")
       <!-- Base - No semantic color class defined -->
       <div class="chi-alert" role="alert">
-        <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
+        <i class="chi-alert__icon chi-icon icon-flag" aria-hidden="true"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__title">Base</p>
           <p class="chi-alert__text">This is a base alert</p>
@@ -878,8 +878,7 @@ p.-text
     .-p--1
       chi-alert.-m--2(color='success' icon='circle-check' size='lg' title='Success' closable mutable='false')
         | This is a large closable success alert
-        chi-button(slot="chi-alert__actions") Secondary action
-        chi-button(slot="chi-alert__actions" color='primary') Primary action
+        chi-button(slot="chi-alert__actions" color='primary') Action
     .example-tabs.-pl--2
       ul.chi-tabs#example-actionable
         li.-active
@@ -892,8 +891,7 @@ p.-text
       :code(lang="html")
         <chi-alert color="success" icon="circle-check" size="lg" title="Success" closable>
           This is a large closable success alert
-          <chi-button slot="chi-alert__actions">Secondary action</chi-button>
-          <chi-button slot="chi-alert__actions" color="primary">Primary action</chi-button>
+          <chi-button slot="chi-alert__actions" color="primary">Action</chi-button>
         </chi-alert>
     .chi-tabs-panel#html-actionable
       .chi-tab__description
@@ -907,8 +905,7 @@ p.-text
             <p class="chi-alert__title">Success</p>
             <p class="chi-alert__text">This is a large closable success alert</p>
             <div class="chi-alert__actions">
-              <button class="chi-button">Secondary action</button>
-              <button class="chi-button -primary">Primary action</button>
+              <button class="chi-button -primary">Action</button>
             </div>
           </div>
           <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
@@ -924,8 +921,7 @@ p.-text
     .-p--1
       chi-alert.-m--2(color='success', icon='circle-check', size='lg', title="Success", closable, mutable='false')
         | This is a large closable success alert
-        chi-button(slot="chi-alert__actions", variant='outline', color='primary', uppercase) Secondary action
-        chi-button(slot="chi-alert__actions", color='primary', uppercase) Primary action
+        chi-button(slot="chi-alert__actions" size="xs") Action
     .example-tabs.-pl--2
       ul.chi-tabs#example-actionable
         li.-active
@@ -938,8 +934,7 @@ p.-text
       :code(lang="html")
         <chi-alert color="success" icon="circle-check" size="lg" title="Success" closable>
           This is a large closable success alert
-          <chi-button slot="chi-alert__actions">Secondary action</chi-button>
-          <chi-button slot="chi-alert__actions" color="primary">Primary action</chi-button>
+          <chi-button slot="chi-alert__actions" size="xs">Action</chi-button>
         </chi-alert>
     .chi-tabs-panel#html-portal-actionable
       .chi-tab__description
@@ -953,8 +948,7 @@ p.-text
             <p class="chi-alert__title">Success</p>
             <p class="chi-alert__text">This is a large closable success alert</p>
             <div class="chi-alert__actions">
-              <button class="chi-button">Secondary action</button>
-              <button class="chi-button -primary">Primary action</button>
+              <button class="chi-button -xs">Action</button>
             </div>
           </div>
           <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
@@ -975,7 +969,7 @@ p.-text
   h4 Default
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(type='banner', icon='circle-info')
+      chi-alert.-m--2(type='banner', icon='flag')
         | This is a base alert
       each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
         chi-alert.-m--2(color=type, icon=val, type='banner')
@@ -989,7 +983,7 @@ p.-text
     .chi-tabs-panel.-active#webcomponent-banner-default
       :code(lang="html")
         <!-- Base - No semantic color defined -->
-        <chi-alert type="banner" icon="circle-info">
+        <chi-alert type="banner" icon="flag">
           This is a base alert
         </chi-alert>
         <!-- Success -->
@@ -1016,7 +1010,7 @@ p.-text
       :code(lang="html")
         <!-- Base - No semantic color class defined -->
         <div class="chi-alert -banner" role="alert">
-          <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
+          <i class="chi-alert__icon chi-icon icon-flag" aria-hidden="true"></i>
           <div class="chi-alert__content">
             <p class="chi-alert__text">This is a base alert</p>
           </div>
@@ -1095,7 +1089,7 @@ p.-text
     | To override the title color, apply a text color utility class.
   .example.-mb--3
     .-p--1
-      chi-alert.-m--2(type='banner', icon='circle-info', title="Base")
+      chi-alert.-m--2(type='banner', icon='flag', title="Base")
         | This is a base alert
       each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
         chi-alert.-m--2(color=type, type='banner', icon=val, title=type)
@@ -1111,7 +1105,7 @@ p.-text
         | Use <code>title=""</code> attribute to add a title to an Alert.
       :code(lang="html")
         <!-- Base - No semantic color defined -->
-        <chi-alert type="banner" icon="circle-info" title="Base">
+        <chi-alert type="banner" icon="flag" title="Base">
           This is a base alert
         </chi-alert>
         <!-- Success -->
@@ -1140,7 +1134,7 @@ p.-text
       :code(lang="html")
         <!-- Base - No semantic color class defined -->
         <div class="chi-alert -banner" role="alert">
-          <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
+          <i class="chi-alert__icon chi-icon icon-flag" aria-hidden="true"></i>
           <div class="chi-alert__content">
             <p class="chi-alert__title">Base</p>
             <p class="chi-alert__text">This is a base alert</p>
@@ -1367,10 +1361,9 @@ p.-text
   h4 Actionable
   .example.-mb--3
     .-p--1.-bg--grey-20
-      chi-alert.-m--2(type='banner', icon='circle-info', size='lg', title="Base", closable, mutable='false')
+      chi-alert.-m--2(type='banner', icon='flag', size='lg', title="Base", closable, mutable='false')
         | This is a large closable alert
-        chi-button(slot="chi-alert__actions") Secondary action
-        chi-button(slot="chi-alert__actions", color='primary') Primary action
+        chi-button(slot="chi-alert__actions", color='primary') Action
     .example-tabs.-pl--2
       ul.chi-tabs#example-banner-actionable
         li.-active
@@ -1381,10 +1374,9 @@ p.-text
       .chi-tab__description
         | Add buttons to an alert by defining <code>slot="chi-alert__actions"</code> on each <code>chi-button</code>.
       :code(lang="html")
-        <chi-alert type="banner" icon="circle-info" size="lg" title="Base" closable>
+        <chi-alert type="banner" icon="flag" size="lg" title="Base" closable>
           This is a large closable alert
-          <chi-button slot="chi-alert__actions">Secondary action</chi-button>
-          <chi-button slot="chi-alert__actions" color="primary">Primary action</chi-button>
+          <chi-button slot="chi-alert__actions" color="primary">Action</chi-button>
         </chi-alert>
     .chi-tabs-panel#html-banner-actionable
       .chi-tab__description
@@ -1393,13 +1385,12 @@ p.-text
         | Large Alerts have extra <code>chi-alert</code> padding, a larger <code>chi-alert__icon</code>, and a larger <code>chi-alert__close-button</code>.
       :code(lang="html")
         <div class="chi-alert -banner -lg" role="alert">
-          <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
+          <i class="chi-alert__icon chi-icon icon-flag" aria-hidden="true"></i>
           <div class="chi-alert__content">
             <p class="chi-alert__title">Base</p>
             <p class="chi-alert__text">This is a large closable alert</p>
             <div class="chi-alert__actions">
-              <button class="chi-button">Secondary action</button>
-              <button class="chi-button -primary">Primary action</button>
+              <button class="chi-button -primary">Action</button>
             </div>
           </div>
           <button class="chi-alert__close-button chi-button -icon -close" aria-label="Close">
@@ -1415,7 +1406,7 @@ p.-text
 h4 Default
 .example.-mb--3
   .-p--1
-    chi-alert.-m--2(type='toast', icon='circle-info', mutable='false')
+    chi-alert.-m--2(type='toast', icon='flag', mutable='false')
       | This is a base alert
     each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(type='toast', icon=val, color=type, mutable='false')
@@ -1431,7 +1422,7 @@ h4 Default
       | To use a toast alert, set the <code>type</code> attribute to <code>toast</code>.
     :code(lang="html")
       <!-- Base - No semantic color defined -->
-      <chi-alert type="toast" icon="circle-info">
+      <chi-alert type="toast" icon="flag">
         This is a base alert
       </chi-alert>
       <!-- Success -->
@@ -1460,7 +1451,7 @@ h4 Default
     :code(lang="html")
       <!-- Base - No semantic color class defined -->
       <div class="chi-alert -toast" role="alert">
-        <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
+        <i class="chi-alert__icon chi-icon icon-flag" aria-hidden="true"></i>
         <div class="chi-alert__content">
           <p class="chi-alert__text">This is a base alert</p>
         </div>
@@ -1534,7 +1525,7 @@ h4 Default
 h4 Titled
 .example.-mb--3
   .-p--1
-    chi-alert.-m--2(type='toast', icon='circle-info', title="Base", mutable='false')
+    chi-alert.-m--2(type='toast', icon='flag', title="Base", mutable='false')
       | This is a base alert
     each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       chi-alert.-m--2(type='toast', color=type, icon=val, title=type, mutable='false')
@@ -1548,7 +1539,7 @@ h4 Titled
   .chi-tabs-panel.-active#webcomponent-toast-titled
     :code(lang="html")
       <!-- Base - No semantic color defined -->
-      <chi-alert type="toast" icon="circle-info" title="Base">
+      <chi-alert type="toast" icon="flag" title="Base">
         This is a base alert
       </chi-alert>
       <!-- Success -->

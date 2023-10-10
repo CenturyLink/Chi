@@ -1,7 +1,7 @@
 <template lang="pug">
   <ComponentExample title="Default" titleSize="h4" id="toast_default_lumen_centurylink" padding="-p--1" :tabs="exampleTabs">
     <Wrapper slot='example'>
-      chi-alert.-m--2(type='toast', icon='circle-info')
+      chi-alert.-m--2(type='toast', icon='flag')
         | This is a base alert
       each val, type in {success:'circle-check', danger:'circle-warning', warning:'warning', info:'circle-info', muted:'circle-info'}
         chi-alert.-m--2(type='toast', icon=val, color=type)
@@ -44,7 +44,7 @@ import { Component, Vue } from 'vue-property-decorator';
       ],
       codeSnippets: {
         webcomponent: `<!-- Base - No semantic color defined -->
-<chi-alert type="toast" icon="circle-info">
+<chi-alert type="toast" icon="flag">
   This is a base alert
 </chi-alert>
 <!-- Success -->
@@ -69,7 +69,7 @@ import { Component, Vue } from 'vue-property-decorator';
 </chi-alert>`,
         htmlblueprint: `<!-- Base - No semantic color class defined -->
 <div class="chi-alert -toast" role="alert">
-  <i class="chi-alert__icon chi-icon icon-circle-info" aria-hidden="true"></i>
+  <i class="chi-alert__icon chi-icon icon-flag" aria-hidden="true"></i>
   <div class="chi-alert__content">
     <p class="chi-alert__text">This is a base alert</p>
   </div>
