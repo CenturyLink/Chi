@@ -290,17 +290,17 @@ $sizes: (
       }
     }
 
-    &.-state {
-      &.-warning {
+    &.-row {
+      &--warning {
         box-shadow: 0 0 0 0.0625rem $data-table-state-warning-box-shadow inset;
       }
-      &.-danger {
+      &--danger {
         box-shadow: 0 0 0 0.0625rem $data-table-state-danger-box-shadow inset;
       }
-      &.-success {
+      &--success {
         box-shadow: 0 0 0 0.0625rem $data-table-state-success-box-shadow inset;
       }
-      &.-info {
+      &--info {
         box-shadow: 0 0 0 0.0625rem $data-table-state-info-box-shadow inset;
       }
     }
@@ -319,22 +319,22 @@ $sizes: (
     &.-expanded,
     &-child,
     &-grand-child {
-      &.-state {
-        &.-warning {
+      &.-row {
+        &--warning {
           box-shadow: 0 0 0 0.0625rem $data-table-state-warning-box-shadow inset,
-            inset 0.25rem 0 0 $color-border-primary;
+            inset 0.25rem 0 0 $data-table-state-warning-box-shadow;
         }
-        &.-danger {
+        &--danger {
           box-shadow: 0 0 0 0.0625rem $data-table-state-danger-box-shadow inset,
-            inset 0.25rem 0 0 $color-border-primary;
+            inset 0.25rem 0 0 $data-table-state-danger-box-shadow;
         }
-        &.-success {
+        &--success {
           box-shadow: 0 0 0 0.0625rem $data-table-state-success-box-shadow inset,
-            inset 0.25rem 0 0 $color-border-primary;
+            inset 0.25rem 0 0 $data-table-state-success-box-shadow;
         }
-        &.-info {
+        &--info {
           box-shadow: 0 0 0 0.0625rem $data-table-state-info-box-shadow inset,
-            inset 0.25rem 0 0 $color-border-primary;
+            inset 0.25rem 0 0 $data-table-state-info-box-shadow;
         }
       }
     }

@@ -50,7 +50,7 @@ export interface DataTableRow {
   print?: {
     isNestedContentPrintDisabled?: boolean;
   };
-  state?: keyof typeof STATES_CLASSES;
+  state?: string;
 }
 export interface DataTableData {
   head: {

@@ -58,7 +58,6 @@ import { ColumnResize } from './utils/Resize';
 import Tooltip from '../tooltip/tooltip';
 import { Component, Vue } from '@/build/vue-wrapper';
 import DataTableEmptyActionable from './DataTableEmptyActionable';
-import { STATES_CLASSES } from '@/constants/states';
 import DataTableActions from './DatatableActions';
 
 declare const chi: any;
@@ -1036,7 +1035,7 @@ export default class DataTable extends Vue {
     }
 
     const isExpanded = this.accordionsExpanded.includes(rowId);
-    const state = this.checkIfRowHasState(bodyRow);
+    const state = this._getRowState(bodyRow);
     const hasState = bodyRow.state || (state && !isExpanded);
 
     row.push(
@@ -1058,7 +1057,7 @@ export default class DataTable extends Vue {
             ? `${isExpanded ? EXPANDED_CLASS : COLLAPSED_CLASS}`
             : ''
         }
-        ${hasState ? `${DATA_TABLE_CLASSES.STATE} ${state}` : ''}
+        ${hasState ? state : ''}
         `}
         role="row">
         {rowCells}
@@ -1250,20 +1249,22 @@ export default class DataTable extends Vue {
     }
   }
 
-  checkIfRowHasState(row: DataTableRow): string | null {
+  _getRowState(row: DataTableRow): string | null {
     let state = null;
 
-    function recurse(rowData: DataTableRow) {
+    const findStateInChildren = (rowData: DataTableRow) => {
+      const children = rowData.nestedContent?.table?.data;
+
       if (rowData.state) {
-        state = STATES_CLASSES[rowData.state];
+        state = `-row--${rowData.state}`;
       }
 
-      rowData.nestedContent?.table?.data?.forEach((child: DataTableRow) => {
-        recurse(child);
+      children?.forEach((childRow: DataTableRow) => {
+        findStateInChildren(childRow);
       });
-    }
+    };
 
-    recurse(row);
+    findStateInChildren(row);
 
     return state;
   }
@@ -1309,10 +1310,10 @@ export default class DataTable extends Vue {
         });
       }
 
-      const state = this.checkIfRowHasState(row);
-      const hasChildLevelState = state && !row.state;
+      const state = this._getRowState(row);
+      const hasState = state && !row.state;
       const shouldExpand = rowObject.expanded && !this.accordionsExpanded.includes(rowObject.rowId);
-      if (shouldExpand || hasChildLevelState) {
+      if (shouldExpand || hasState) {
         this.accordionsExpanded.push(rowObject.rowId);
       }
 
