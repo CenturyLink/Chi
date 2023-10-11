@@ -4349,6 +4349,23 @@
           "required": false
         },
         {
+          "name": "numericInputOnly",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "numeric-input-only",
+          "reflectToAttr": true,
+          "docs": "To set numbers only mode on Phone input",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "placeholder",
           "type": "string",
           "mutable": false,

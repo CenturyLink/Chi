@@ -156,6 +156,27 @@ p.-text
       </div>
   #phone-input-html-error.chi-tabs-panel
 
+h3 Numeric Input Only
+p.-text
+  | Use the <code>numeric-input-only</code> boolean attribute to allow users to enter only digits in the phone input.
+.example.-mb--3
+  .-p--3
+    div(style="max-width: 18rem;")
+      chi-label(for="phone-input-numeric-input-only") Phone Number
+      chi-phone-input(id="phone-input-disabled" numeric-input-only)
+
+  .example-tabs.-pl--2
+    ul.chi-tabs
+      li.-active
+        a(href='#phone-input-wc-numeric-input-only') Web Component
+      li.-disabled
+        a(href='#phone-input-html-numeric-input-only') HTML Blueprint
+  #phone-input-wc-numeric-input-only.chi-tabs-panel.-active
+    :code(lang="html")
+      <chi-label for="phone-input-numeric-input-only">Phone Number</chi-label>
+      <chi-phone-input id="phone-input-disabled" numeric-input-only></chi-phone-input>
+  #phone-input-html-numeric-input-only.chi-tabs-panel
+
 .-portal--hide
   h3 Sizes
   p.-text 
