@@ -1313,6 +1313,7 @@ export default class DataTable extends Vue {
       const state = this._getRowState(row);
       const hasState = state && !row.state;
       const shouldExpand = rowObject.expanded && !this.accordionsExpanded.includes(rowObject.rowId);
+
       if (shouldExpand || hasState) {
         this.accordionsExpanded.push(rowObject.rowId);
       }
