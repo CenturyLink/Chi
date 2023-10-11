@@ -290,6 +290,21 @@ $sizes: (
       }
     }
 
+    &.-row {
+      &--warning {
+        box-shadow: 0 0 0 0.0625rem $data-table-state-warning-box-shadow inset;
+      }
+      &--danger {
+        box-shadow: 0 0 0 0.0625rem $data-table-state-danger-box-shadow inset;
+      }
+      &--success {
+        box-shadow: 0 0 0 0.0625rem $data-table-state-success-box-shadow inset;
+      }
+      &--info {
+        box-shadow: 0 0 0 0.0625rem $data-table-state-info-box-shadow inset;
+      }
+    }
+
     &-child,
     &-grand-child {
       background-color: $data-table-row-active-background-color;
@@ -298,6 +313,29 @@ $sizes: (
       @include respond-to(md) {
         display: flex;
         flex-direction: row;
+      }
+    }
+
+    &.-expanded,
+    &-child,
+    &-grand-child {
+      &.-row {
+        &--warning {
+          box-shadow: 0 0 0 0.0625rem $data-table-state-warning-box-shadow inset,
+            inset 0.25rem 0 0 $data-table-state-warning-box-shadow;
+        }
+        &--danger {
+          box-shadow: 0 0 0 0.0625rem $data-table-state-danger-box-shadow inset,
+            inset 0.25rem 0 0 $data-table-state-danger-box-shadow;
+        }
+        &--success {
+          box-shadow: 0 0 0 0.0625rem $data-table-state-success-box-shadow inset,
+            inset 0.25rem 0 0 $data-table-state-success-box-shadow;
+        }
+        &--info {
+          box-shadow: 0 0 0 0.0625rem $data-table-state-info-box-shadow inset,
+            inset 0.25rem 0 0 $data-table-state-info-box-shadow;
+        }
       }
     }
 

@@ -896,6 +896,11 @@ $data-table-row-hover-background-color:     $color-grey-20;
 $data-table-row-expanded-background-color:  $data-table-row-active-background-color;
 $data-table-row-expandable-icon:            $color-icon-base;
 
+$data-table-state-warning-box-shadow:       $color-yellow-60;
+$data-table-state-danger-box-shadow:        $color-red-60;
+$data-table-state-success-box-shadow:       $color-green-60;
+$data-table-state-info-box-shadow:          $color-blue-60;
+
 // Drawer
 $drawer-width:                              18.75rem;
 $drawer-height:                             18.75rem;
