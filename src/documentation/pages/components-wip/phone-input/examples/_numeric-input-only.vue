@@ -40,6 +40,6 @@
       };
     }
   })
-  export default class Disabled extends Vue {}
+  export default class NumericInputOnly extends Vue {}
   </script>
   
