@@ -92,6 +92,7 @@ $states: (
 
   // sass-lint:disable-block force-element-nesting
   .chi-alert__icon,
+  .chi-alert__spinner,
   > chi-icon .chi-icon {
     color: $alert-icon-color;
   }
@@ -100,6 +101,7 @@ $states: (
   > .chi-icon,
   > chi-icon .chi-icon,
   .chi-alert__icon,
+  .chi-alert__spinner,
   .chi-alert__clickable-icon .chi-icon {
     &:not(.icon-x) {
       flex-shrink: 0;
@@ -159,6 +161,7 @@ $states: (
       }
 
       .chi-alert__icon,
+      .chi-alert__spinner,
       > chi-icon .chi-icon { // sass-lint:disable-line force-element-nesting
         color: map-get(map-get($states, $state), color);
       }
@@ -238,6 +241,7 @@ $states: (
     > .chi-icon,
     > chi-icon .chi-icon,
     .chi-alert__icon,
+    .chi-alert__spinner,
     .chi-alert__clickable-icon .chi-icon {
       &:not(.icon-x) {
         font-size: $alert-lg-icon-size;
@@ -301,6 +305,7 @@ $states: (
     > .chi-icon,
     > chi-icon .chi-icon,
     .chi-alert__icon,
+    .chi-alert__spinner,
     .chi-alert__clickable-icon .chi-icon {
       &:not(.icon-x) {
         font-size: $alert-sm-icon-size;
@@ -345,6 +350,7 @@ $states: (
     .chi-alert {
       // sass-lint:disable-block force-element-nesting
       .chi-alert__icon,
+      .chi-alert__spinner,
       & > chi-icon .chi-icon {
         color: $alert-icon-color;
       }

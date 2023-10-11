@@ -147,11 +147,12 @@ export class Alert {
       xl: 'sm--2'
     };
 
-    const chiIcon = (!this.spinner) && <chi-icon icon={this.icon} color={this.color || null} extraClass="chi-alert__icon"></chi-icon>;
+    const chiIcon = (!this.spinner) && this.icon && <chi-icon icon={this.icon} color={this.color || null} extraClass="chi-alert__icon"></chi-icon>;
     const alertTitle = this.alertTitle && <p class="chi-alert__title">{this.alertTitle}</p>;
     const chiActions = this.alertActions && <div class="chi-alert__actions"><slot name="chi-alert__actions"></slot></div>;
-    const spinner = this.spinner && <chi-spinner class="chi-alert__icon" size={spinnerSizeMapping[this.size] || 'sm'} />;
+    const chiSpinner = this.spinner && <chi-spinner class="chi-alert__spinner" size={spinnerSizeMapping[this.size] || 'sm'} />;
     const chiClickableIcon = this.alertClickableIcon && <div class="chi-alert__clickable-icon"><slot name="chi-alert__clickable-icon"></slot></div>;
+    const chiButton = (this.closable || this.type === 'toast') && <chi-button extraClass="chi-alert__close-button" type="close" onChiClick={() => this._dismissAlert()} />
 
     return (
       <div class={`chi-alert
@@ -162,14 +163,14 @@ export class Alert {
         ${this.size ? `-${this.size}` : ''}`}
         role="alert"
       >
-        {this.icon && chiIcon}
-        {spinner}
+        {chiIcon}
+        {chiSpinner}
         <div class="chi-alert__content">
           {alertTitle}
           <p class="chi-alert__text"><slot></slot></p>
           {chiActions}
         </div>
-        {(this.closable || this.type === 'toast') && <chi-button extraClass="chi-alert__close-button" type="close" onChiClick={() => this._dismissAlert()} />}
+        {chiButton}
         {chiClickableIcon}
       </div>
     );

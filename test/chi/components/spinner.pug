@@ -94,7 +94,7 @@ each size in ['default', 'sm', 'lg']
   div(class=`test-banner-spinner-${size} -w--100`)
     each val, type in {base: 'icon-circle-info', success:'icon-circle-check', danger:'icon-circle-x', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .chi-alert.-m--2.-banner(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        .chi-alert__icon
+        .chi-alert__spinner
           svg(class=`chi-spinner ${size === 'lg' ? '-sm--2' : ''}` viewBox="0 0 66 66")
             title Loading
             circle(class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6")
@@ -105,7 +105,7 @@ each size in ['default', 'sm', 'lg']
   div(class=`test-bubble-spinner-${size} -w--100`)
     each val, type in {base:'icon-circle-info', success:'icon-circle-check', danger:'icon-circle-x', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
         .chi-alert.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-          .chi-alert__icon
+          .chi-alert__spinner
             svg(class=`chi-spinner ${size === 'lg' ? '-sm--2' : ''}` viewBox="0 0 66 66")
               title Loading
               circle(class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6")
@@ -116,7 +116,7 @@ each size in ['default', 'sm', 'lg']
   div(class=`test-toast-spinner-${size}`)
     each val, type in {base:'icon-circle-info', success:'icon-circle-check', danger:'icon-circle-x', warning:'icon-warning', info:'icon-circle-info', muted:'icon-circle-info'}
       .chi-alert.-toast.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
-        .chi-alert__icon
+        .chi-alert__spinner
           svg(class=`chi-spinner ${size === 'lg' ? '-sm--2' : ''}` viewBox="0 0 66 66")
               title Loading
               circle(class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6")
