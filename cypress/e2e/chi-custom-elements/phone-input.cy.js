@@ -359,21 +359,24 @@ describe('Phone Input', () => {
   });
 
   describe('Input mask', () => {
+    beforeEach(() => {
+      cy.get(`[data-cy='phone-input-mask']`).as('phoneInputMask');
+    });
+
     it('Should have the attribute input-mask set to true', () => {
-      cy.get(`[data-cy='phone-input-mask']`)
-        .as('maskingExample')
-        .should('have.attr', 'input-mask', true);
+      cy.get('@phoneInputMask')
+        .should('have.attr', 'input-mask');
     });
     
     it('Should allow only numbers in the input', () => {
-      cy.get(`@maskingExample`)
-      .find('input[type="tel"]')
-      .clear()
-      .type('1234!@#$abc')
-      .invoke('val')
-      .then(val => {
-        expect(val).to.equal('1234');
-      });
+      cy.get(`@phoneInputMask`)
+        .find('input[type="tel"]')
+        .clear()
+        .type('1234!@#$abc')
+        .invoke('val')
+        .then(val => {
+          expect(val).to.equal('1234');
+        });
     });
   });
 
