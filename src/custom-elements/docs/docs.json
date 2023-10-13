@@ -132,6 +132,23 @@
           "required": false
         },
         {
+          "name": "spinner",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "spinner",
+          "reflectToAttr": true,
+          "docs": "To render alert with Spinner",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "title",
           "type": "string",
           "mutable": false,
@@ -183,11 +200,13 @@
       "dependents": [],
       "dependencies": [
         "chi-icon",
+        "chi-spinner",
         "chi-button"
       ],
       "dependencyGraph": {
         "chi-alert": [
           "chi-icon",
+          "chi-spinner",
           "chi-button"
         ],
         "chi-button": [
@@ -5247,10 +5266,14 @@
       "styles": [],
       "slots": [],
       "dependents": [
+        "chi-alert",
         "chi-text-input"
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "chi-alert": [
+          "chi-spinner"
+        ],
         "chi-text-input": [
           "chi-spinner"
         ]
