@@ -360,7 +360,7 @@ describe('Phone Input', () => {
 
   describe('Input mask', () => {
     it('Should have the attribute input-mask set to true', () => {
-      cy.get(`[data-cy='phone-input-masking']`)
+      cy.get(`[data-cy='phone-input-mask']`)
         .as('maskingExample')
         .should('have.attr', 'input-mask', true);
     });
