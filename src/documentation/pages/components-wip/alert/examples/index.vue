@@ -15,6 +15,7 @@ div
     <BubbleSizesLumenCenturyLink />
     <BubbleClosableLumenCenturyLink />
     <BubbleActionable />
+    <BubbleSpinner />
 
     div.chi-divider.-my--6.-bt--2
 
@@ -45,6 +46,7 @@ div
     <BubbleSizesPortal />
     <BubbleClosablePortal />
     <BubbleActionable />
+    <BubbleSpinner />
   </div>
 </template>
 
@@ -67,6 +69,7 @@ import BubbleDefault from './_bubble_default.vue';
 import BubbleTitled from './_bubble_titled.vue';
 import BubbleSizesPortal from './_portal/_bubble_sizes.vue';
 import BubbleClosablePortal from './_portal/_bubble_closable.vue';
+import BubbleSpinner from './_bubble_spinner.vue';
 
 @Component({
   components: {
@@ -86,7 +89,8 @@ import BubbleClosablePortal from './_portal/_bubble_closable.vue';
     ToastTitledLumenCenturyLink,
     ToastSizesLumenCenturyLink,
     BubbleSizesPortal,
-    BubbleClosablePortal
+    BubbleClosablePortal,
+    BubbleSpinner
   }
 })
 export default class Examples extends Vue {}
