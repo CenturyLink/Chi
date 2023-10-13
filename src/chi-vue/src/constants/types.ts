@@ -15,6 +15,7 @@ export type PrintModes = 'full' | 'printonly' | 'screenonly';
 export type DataTableExpansionIconStyles = typeof DATA_TABLE_EXPANSION_ICON_STYLES[number];
 export const DATA_TABLE_SCREEN_BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 export type DataTableScreenBreakpoints = typeof DATA_TABLE_SCREEN_BREAKPOINTS[number];
+export type DataTableRowStates = 'success' | 'warning' | 'danger' | 'info';
 export interface DataTableStyleConfig {
   portal?: boolean;
   compact?: boolean;
@@ -48,6 +49,7 @@ export interface DataTableRow {
   print?: {
     isNestedContentPrintDisabled?: boolean;
   };
+  state?: DataTableRowStates;
 }
 export interface DataTableData {
   head: {

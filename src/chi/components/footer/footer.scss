@@ -97,8 +97,14 @@
       }
 
       .chi-dropdown__trigger {
-        &::after {
-          color: $footer-dropdown-arrow-icon-color;
+        &.chi-button {
+          &.-icon {
+            &.-flat {
+              &::after {
+                color: $footer-dropdown-arrow-icon-color;
+              }
+            }
+          }
         }
       }
     }
