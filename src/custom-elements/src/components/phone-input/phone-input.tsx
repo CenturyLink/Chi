@@ -64,6 +64,10 @@ export class ChiPhoneInput {
    */
   @Prop({ reflect: true }) dynamicValue: boolean = false;
   /**
+   * To set only numbers in the Phone Input
+   */
+  @Prop({ reflect: true }) inputMask: boolean = false;
+  /**
    * To define two letter ISO country codes to exclude from Phone input dropdown
    */
   @Prop({ mutable: true, reflect: true }) excludedCountries?: string;
@@ -298,6 +302,33 @@ export class ChiPhoneInput {
     );
   };
 
+  _pasteHandler = (event: ClipboardEvent): void => {
+    if(!this.inputMask) return;
+
+    const phoneNumberRegex = new RegExp('^[0-9()+-_ ]+$');
+    const clipboardData = event.clipboardData.getData('text');
+    const containsOnlyAllowedChars = phoneNumberRegex.test(clipboardData);
+
+    if (!containsOnlyAllowedChars) {
+      event.preventDefault();
+    }
+  }
+
+  _keyPressHandler = (event: KeyboardEvent): void => {
+    if(!this.inputMask) return;
+    
+    const onlyNumbersRegex = new RegExp('^[0-9]+$');
+    const isKeyNumber = onlyNumbersRegex.test(event.key);
+
+    if (event.key === 'Enter') {
+      return;
+    }
+
+    if (!isKeyNumber) {
+      event.preventDefault();
+    }
+  }
+
   _prefixChangeHandler(event: Event, country: Country): void {
     event.preventDefault();
     this._prefix = `+${country.dialCode}`;
@@ -405,6 +436,8 @@ export class ChiPhoneInput {
         value={this._suffix}
         onChiChange={this._suffixInputChangeHandler}
         onChiInput={this._inputHandler}
+        onKeyPress={this._keyPressHandler}
+        onPaste={this._pasteHandler}
       />
     );
 

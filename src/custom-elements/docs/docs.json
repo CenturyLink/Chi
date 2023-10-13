@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-10-11T08:53:51",
+  "timestamp": "2023-10-13T09:43:34",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -4365,6 +4365,23 @@
             }
           ],
           "optional": true,
+          "required": false
+        },
+        {
+          "name": "inputMask",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "input-mask",
+          "reflectToAttr": true,
+          "docs": "To set only numbers in the Phone Input",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
           "required": false
         },
         {
