@@ -888,6 +888,11 @@ $data-table-row-hover-background-color:     $data-table-row-active-background-co
 $data-table-row-expanded-background-color:  $data-table-row-active-background-color;
 $data-table-row-expandable-icon:            $color-blue-75;
 
+$data-table-state-warning-box-shadow:       $color-yellow-60;
+$data-table-state-danger-box-shadow:        $color-red-60;
+$data-table-state-success-box-shadow:       $color-green-60;
+$data-table-state-info-box-shadow:          $color-blue-60;
+
 // Drawer
 $drawer-width:                              18.75rem;
 $drawer-height:                             18.75rem;
@@ -1393,6 +1398,7 @@ $popover-drag-icon-color:                   $color-icon-primary-dark;
 
 // Progress
 $progress-background-color:                 $color-grey-20;
+$progress-border-radius:                    $border-radius-base;
 $progress-value-background-color:           $color-background-primary;
 $progress-value-danger-background-color:    $color-icon-danger;
 $progress-value-success-background-color:   $color-icon-success;

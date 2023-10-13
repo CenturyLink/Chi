@@ -14,7 +14,7 @@
         .chi-radio
           input(class="chi-radio__input -danger" type="radio" name="radios" id="radio-er2" required)
           label(class="chi-radio__label" for="radio-er2") Option 2
-      .chi-label.-status.-danger Please select an option.
+      .chi-label.-status.-danger Please select an option
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -61,7 +61,7 @@ import { Component, Vue } from 'vue-property-decorator';
       <label class="chi-radio__label" for="radio-er2">Option 2</label>
     </div>
   </div>
-  <div class="chi-label -status -danger">Please select an option.</div>
+  <div class="chi-label -status -danger">Please select an option</div>
 </fieldset>`
       }
     };

@@ -1,4 +1,30 @@
 # CHANGELOG
+## 5.40.0 (October 4, 2023)
+### Components
+#### Added
+* Added: Data table Vue component now supports configurable and responsive behavior actions column with `actions` config.
+* Added: Advanced filters Vue component now supports perform actions when several data tables in the same page.
+#### Changed
+* Changed: Progress now renders with a 4px border-radius.
+### Documentation
+#### Added
+* Added: Helper message to textarea in message section.
+#### Changed
+* Changed: Footer Lumen engage link has been replaced by Marketplace.
+* Changed: Progress semantic states section has been removed from Portal theme.
+
+## 5.39.0 (September 27, 2023)
+### Components
+#### Added
+* Added: Dropdown now supports `visible-items` attribute to provide number of items in the dropdown to be displayed, and apply scroll if needed.
+* Added: Save view event `chiSaveViewInput`.
+#### Changed
+* Changed: App layout header responsive behavior has been improved for mobile views.
+#### Fixed
+* Fixed: Stat item `-active` state.
+* Fixed: Carousel items calculation with stat component.
+* Fixed: Column customization cancel behavior that was removing items from columns.
+
 ## 5.38.0 (September 15, 2023)
 ### Components
 #### Added

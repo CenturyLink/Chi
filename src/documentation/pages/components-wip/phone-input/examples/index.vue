@@ -8,6 +8,7 @@
     <Value />
     <Disabled />
     <Error />
+    <InputMask />
     div(v-if="$store.state.themes.theme === 'portal'")
       <SizesPortal />
     div(v-else)
@@ -24,6 +25,7 @@ import Disabled from './_disabled.vue';
 import Error from './_error.vue';
 import SizesLumenCenturyLink from './_sizes_lumen_centurylink.vue';
 import SizesPortal from './_portal/_sizes.vue';
+import InputMask from './_input-mask.vue';
 
 @Component({
   components: {
@@ -34,7 +36,8 @@ import SizesPortal from './_portal/_sizes.vue';
     Disabled,
     Error,
     SizesLumenCenturyLink,
-    SizesPortal
+    SizesPortal,
+    InputMask
   }
 })
 export default class Examples extends Vue {}
