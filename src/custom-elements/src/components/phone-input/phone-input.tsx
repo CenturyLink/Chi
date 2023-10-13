@@ -64,7 +64,7 @@ export class ChiPhoneInput {
    */
   @Prop({ reflect: true }) dynamicValue: boolean = false;
   /**
-   * To set numbers only mode on Phone input
+   * To set only numbers in the Phone Input
    */
   @Prop({ reflect: true }) inputMask: boolean = false;
   /**
