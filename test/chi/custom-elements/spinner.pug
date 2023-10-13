@@ -77,32 +77,32 @@ h3 Spinner alert
 each size in ['default', 'sm', 'lg']
   h4 Spinner banner / #{size}
   div(class=`test-banner-spinner-${size} -w--100`)
-    each val, type in {base: 'circle-info', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
+    each type in ['base', 'success', 'danger', 'warning', 'info', 'muted']
       if (type === 'base')
-        chi-alert.-m--2(class=type, spinner, icon=val, type='banner', size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-${type}-${size}`)
+        chi-alert.-m--2(class=type, spinner, type='banner', size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-${type}-${size}`)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
       else
-        chi-alert.-m--2(color=type, spinner, icon=val, type='banner', size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-${type}-${size}`)
+        chi-alert.-m--2(color=type, spinner, type='banner', size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-${type}-${size}`)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
 
   h4 Spinner bubble / #{size}
   div(class=`test-bubble-spinner-${size} -w--100`)
-    each val, type in {base:'circle-info', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
+    each type in ['base', 'success', 'danger', 'warning', 'info', 'muted']
       if (type === 'base')
-        chi-alert.-m--2(class=type, icon=val, spinner, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-${type}-${size}`)
+        chi-alert.-m--2(class=type, spinner, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-${type}-${size}`)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
       else
-        chi-alert.-m--2(color=type, icon=val, spinner, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-${type}-${size}`)
+        chi-alert.-m--2(color=type, spinner, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-${type}-${size}`)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   
   h4 Spinner toast / #{size}
   div(class=`test-toast-spinner-${size}`)
-    each val, type in {base: 'circle-info', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
+    each type in ['base', 'success', 'danger', 'warning', 'info', 'muted']
       if (type === 'base')
-        chi-alert.-m--2(type='toast', spinner, size=`${size === 'default' ? '' : size}`, icon=val, class=type, data-cy=`alert-toast-${type}-${size}`)
+        chi-alert.-m--2(type='toast', spinner, size=`${size === 'default' ? '' : size}`, class=type, data-cy=`alert-toast-${type}-${size}`)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
       else
-        chi-alert.-m--2(type='toast', spinner, size=`${size === 'default' ? '' : size}`, icon=val, color=type, data-cy=`alert-toast-${type}-${size}`)
+        chi-alert.-m--2(type='toast', spinner, size=`${size === 'default' ? '' : size}`, color=type, data-cy=`alert-toast-${type}-${size}`)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
 
 style.

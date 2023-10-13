@@ -238,10 +238,10 @@ p.-text
   | Use the spinner attribute to let users know when information is saving or loading.
 .example.-mb--3
   .-p--1
-    chi-alert(icon='circle-info', spinner).-m--2
+    chi-alert(spinner).-m--2
       | This is a base alert
-    each val, type in {success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
-      chi-alert.-m--2(color=type, icon=val, spinner)
+    each type in ['success', 'danger', 'warning', 'info', 'muted']
+      chi-alert.-m--2(color=type, spinner)
         =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   .example-tabs.-pl--2
     ul.chi-tabs#example-spinner
@@ -254,27 +254,27 @@ p.-text
       | Use the <code>spinner</code> attribute to display spinner icon.
     :code(lang="html")
       <!-- Base - No semantic color defined -->
-      <chi-alert icon="circle-info" spinner>
+      <chi-alert spinner>
         This is a base alert
       </chi-alert>
       <!-- Success -->
-      <chi-alert color="success" icon="circle-check" spinner>
+      <chi-alert color="success" spinner>
         This is a success alert
       </chi-alert>
       <!-- Danger -->
-      <chi-alert color="danger" icon="circle-x" spinner>
+      <chi-alert color="danger" spinner>
         This is a danger alert
       </chi-alert>
       <!-- Warning -->
-      <chi-alert color="warning" icon="warning" spinner>
+      <chi-alert color="warning" spinner>
         This is a warning alert
       </chi-alert>
       <!-- Info -->
-      <chi-alert color="info" icon="circle-info" spinner>
+      <chi-alert color="info" spinner>
         This is an info alert
       </chi-alert>
       <!-- Muted -->
-      <chi-alert color="muted" icon="circle-info" spinner>
+      <chi-alert color="muted" spinner>
         This is a muted alert
       </chi-alert>
   .chi-tabs-panel#html-spinner
