@@ -424,22 +424,22 @@ export class ChiPhoneInput {
   }
 
   render(): JSX.Element {
-      const dropdown = this._renderDropdown();
-      const textInput = (
-        <chi-text-input
-          id={`${this._uuid}`}
-          type="tel"
-          state={this.state ? this.state : null}
-          size={this.size}
-          disabled={this.disabled}
-          placeholder={this.placeholder}
-          value={this._suffix}
-          onChiChange={this._suffixInputChangeHandler}
-          onChiInput={this._inputHandler}
-          onKeyPress={this._keyPressHandler}
-          onPaste={this._pasteHandler}
-        />
-      );
+    const dropdown = this._renderDropdown();
+    const textInput = (
+      <chi-text-input
+        id={`${this._uuid}`}
+        type="tel"
+        state={this.state ? this.state : null}
+        size={this.size}
+        disabled={this.disabled}
+        placeholder={this.placeholder}
+        value={this._suffix}
+        onChiChange={this._suffixInputChangeHandler}
+        onChiInput={this._inputHandler}
+        onKeyPress={this._keyPressHandler}
+        onPaste={this._pasteHandler}
+      />
+    );
 
     return (
       <div class={`${PHONE_INPUT_CLASSES.PHONE_INPUT}`}>
