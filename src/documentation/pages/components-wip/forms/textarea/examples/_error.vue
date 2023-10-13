@@ -9,7 +9,7 @@
         .chi-form__item
           chi-label(for="example__danger" required) Describe the issue
           chi-textarea(id="example__danger" state="danger" required)
-          div.chi-label.-status.-danger Please describe the issue.
+          div.chi-label.-status.-danger Please describe the issue
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>
@@ -40,7 +40,7 @@ import { Component, Vue } from 'vue-property-decorator';
         webcomponent: `<div class="chi-form__item">
   <chi-label for="example__danger" required>Describe the issue</chi-label>
   <chi-textarea id="example__danger" state="danger" required></chi-textarea>
-  <div class="chi-label -status -danger">Please describe the issue.</div>
+  <div class="chi-label -status -danger">Please describe the issue</div>
 </div>`,
         htmlblueprint: `<div class="chi-form__item">
   <label class="chi-label" for="example__danger">
@@ -48,7 +48,7 @@ import { Component, Vue } from 'vue-property-decorator';
     <abbr class="chi-label__required" aria-label="Required field">*</abbr>
   </label>
   <textarea class="chi-input -danger" id="example__danger" required></textarea>
-  <div class="chi-label -status -danger">Please describe the issue.</div>
+  <div class="chi-label -status -danger">Please describe the issue</div>
 </div>`
       }
     };

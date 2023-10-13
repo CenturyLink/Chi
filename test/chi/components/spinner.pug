@@ -88,6 +88,46 @@ h4 Colors
         p.-text(class=`-${type}`)
           = `-${type}`
 
+h3 Spinner alert
+each size in ['default', 'sm', 'lg']
+  h4 Spinner banner / #{size}
+  div(class=`test-banner-spinner-${size} -w--100`)
+    each type in ['base', 'success', 'danger', 'warning', 'info', 'muted']
+      .chi-alert.-m--2.-banner(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+        .chi-alert__spinner
+          svg(class=`chi-spinner ${size === 'lg' ? '-sm--2' : ''}` viewBox="0 0 66 66")
+            title Loading
+            circle(class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6")
+        .chi-alert__content
+          p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+
+  h4 Spinner bubble / #{size}
+  div(class=`test-bubble-spinner-${size} -w--100`)
+    each type in ['base', 'success', 'danger', 'warning', 'info', 'muted']
+        .chi-alert.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+          .chi-alert__spinner
+            svg(class=`chi-spinner ${size === 'lg' ? '-sm--2' : ''}` viewBox="0 0 66 66")
+              title Loading
+              circle(class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6")
+          .chi-alert__content
+            p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+
+  h4 Spinner toast / #{size}
+  div(class=`test-toast-spinner-${size}`)
+    each type in ['base', 'success', 'danger', 'warning', 'info', 'muted']
+      .chi-alert.-toast.-m--2(class=`-${type} ${size === 'default' ? '' : '-' + size}`)
+        .chi-alert__spinner
+          svg(class=`chi-spinner ${size === 'lg' ? '-sm--2' : ''}` viewBox="0 0 66 66")
+              title Loading
+              circle(class="path" cx="33" cy="33" r="30" fill="none" stroke-width="6")
+        .chi-alert__content
+            p.chi-alert__text=`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+        button(class='chi-alert__close-button chi-button -icon -close', aria-label='Close')
+          .chi-button__content
+            .chi-icon
+              svg
+                use(xlink:href='#icon-x')
+                
 style.
   svg {
     animation: none !important;

@@ -108,6 +108,7 @@ export const DATA_TABLE_CLASSES = {
   COMPACT: '-compact',
   TRUNCATED: '-truncated',
   PRINT_FOOTER: 'chi-data-table__print-footer',
+  STATE: '-state',
 };
 //#endregion
 
@@ -144,6 +145,7 @@ export const EPANEL_CLASSES = {
   NUMBER: 'chi-epanel__number',
   TITLE: 'chi-epanel__title',
   STATE_ICON: '-state-icon',
+  STATE: '-state',
 };
 //#endregion
 

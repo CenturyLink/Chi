@@ -11,7 +11,7 @@
         option Option 1
         option Option 2
         option Option 3
-      .chi-label.-status.-danger Please select an option.
+      .chi-label.-status.-danger Please select an option
     <pre class="language-html" slot="code-webcomponent">
       <code v-highlight="$data.codeSnippets.webcomponent" class="html"></code>
     </pre>   
@@ -52,7 +52,7 @@ import { Component, Vue } from 'vue-property-decorator';
     <option>Option 2</option>
     <option>Option 3</option>
   </select>
-  <div class="chi-label -status -danger">Please select an option.</div>
+  <div class="chi-label -status -danger">Please select an option</div>
 </div>`
       }
     };

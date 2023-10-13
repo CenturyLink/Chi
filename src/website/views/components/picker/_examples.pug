@@ -262,7 +262,8 @@ p.-text
           label(for=`unique-id-mer${i}`)
             = 'Option ' + `${i}`
       .chi-label.-status.-danger
-        | Please select an option.
+        i.chi-icon.icon-circle-warning(aria-hidden='true')
+        | Please select an option
   .example-tabs.-pl--2
     ul.chi-tabs#example-multi-select-error
       li.-disabled
@@ -285,7 +286,10 @@ p.-text
           <input class="chi-picker__input" name="unique-name-mer" type="checkbox" id="unique-id-mer2">
           <label for="unique-id-mer2">Option 2</label>
         </div>
-        <div class="chi-label -status -danger">Please select an option.</div>
+        <div class="chi-label -status -danger">
+          <i class="chi-icon icon-circle-warning" aria-hidden="true"></i>
+          Please select an option
+        </div>
       </fieldset>
 
 h3 Single-select pickers

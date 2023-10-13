@@ -209,8 +209,8 @@ export const EXTERNAL_CONTENTS: { [key: string]: ILink[] } = {
   ],
   shopLinks: [
     {
-      href: 'https://www.lumen.com/en-us/communications/hosted-voip.html',
-      title: 'Lumen Engage'
+      href: 'https://www.lumen.com/en-us/marketplace.html',
+      title: 'Marketplace'
     }
   ],
   resourceLinks: [
@@ -1689,3 +1689,16 @@ export const colorKits = {
   ],
 }
 
+
+export const sizingColumns = [
+  {
+    title: 'Sizing Class',
+    key: 'class',
+    width: '40%'
+  },
+  {
+    title: 'Value',
+    key: 'value',
+    width: ''
+  }
+];
