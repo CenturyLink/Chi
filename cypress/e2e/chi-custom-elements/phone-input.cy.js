@@ -358,11 +358,14 @@ describe('Phone Input', () => {
     });
   });
 
-  describe('Numeric Input Only', () => {
-    it('Should allow only numbers in the input', () => {
+  describe('Input mask', () => {
+    it('Should have the attribute input-mask set to ture', () => {
       cy.get(`[data-cy='phone-input-masking']`)
         .as('maskingExample')
-        .should('have.attr', 'numeric-input-only');
+        .should('have.attr', 'input-mask', true);
+    });
+    
+    it('Should allow only numbers in the input', () => {
       cy.get(`@maskingExample`)
       .find('input[type="tel"]')
       .clear()

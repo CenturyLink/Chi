@@ -66,7 +66,7 @@ export class ChiPhoneInput {
   /**
    * To set numbers only mode on Phone input
    */
-  @Prop({ reflect: true }) numericInputOnly: boolean = false;
+  @Prop({ reflect: true }) inputMask: boolean = false;
   /**
    * To define two letter ISO country codes to exclude from Phone input dropdown
    */
@@ -303,6 +303,8 @@ export class ChiPhoneInput {
   };
 
   _pasteHandler = (event: ClipboardEvent): void => {
+    if(!this.inputMask) return;
+
     const phoneNumberRegex = new RegExp('^[0-9()+-_ ]+$');
     const clipboardData = event.clipboardData.getData('text');
     const containsOnlyAllowedChars = phoneNumberRegex.test(clipboardData);
@@ -313,6 +315,8 @@ export class ChiPhoneInput {
   }
 
   _keyPressHandler = (event: KeyboardEvent): void => {
+    if(!this.inputMask) return;
+    
     const onlyNumbersRegex = new RegExp('^[0-9]+$');
     const isKeyNumber = onlyNumbersRegex.test(event.key);
 
@@ -437,20 +441,27 @@ export class ChiPhoneInput {
   }
 
   render(): JSX.Element {
-    const dropdown = this._renderDropdown();
-
-    const numericInputOnlyProps = {
-      onKeyPress: this._keyPressHandler,
-      onPaste: this._pasteHandler,
-    };
-
-    const textInput = this.renderTextInput({});
-    const textInputNumericOnly = this.renderTextInput(numericInputOnlyProps);
+      const dropdown = this._renderDropdown();
+      const textInput = (
+        <chi-text-input
+          id={`${this._uuid}`}
+          type="tel"
+          state={this.state ? this.state : null}
+          size={this.size}
+          disabled={this.disabled}
+          placeholder={this.placeholder}
+          value={this._suffix}
+          onChiChange={this._suffixInputChangeHandler}
+          onChiInput={this._inputHandler}
+          onKeyPress={this._keyPressHandler}
+          onPaste={this._pasteHandler}
+        />
+      );
 
     return (
       <div class={`${PHONE_INPUT_CLASSES.PHONE_INPUT}`}>
         {dropdown}
-        {this.numericInputOnly ? textInputNumericOnly : textInput}
+        {textInput}
       </div>
     );
   }

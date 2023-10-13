@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-10-11T06:31:37",
+  "timestamp": "2023-10-13T07:17:41",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -4349,10 +4349,10 @@
           "required": false
         },
         {
-          "name": "numericInputOnly",
+          "name": "inputMask",
           "type": "boolean",
           "mutable": false,
-          "attr": "numeric-input-only",
+          "attr": "input-mask",
           "reflectToAttr": true,
           "docs": "To set numbers only mode on Phone input",
           "docsTags": [],
