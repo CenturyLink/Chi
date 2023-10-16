@@ -173,9 +173,9 @@ export default class ThemeSwitcher extends Vue {
 
   setNewRoute(theme: string) {
     const currentRoute = this.$store.$router.currentRoute;
-    const currentTheme = this.$store.$router.currentRoute.query.theme.toString();
+    const currentTheme = currentRoute.query?.theme?.toString();
     const newTheme = theme !== 'centurylink' ? capitalize(theme) : 'CenturyLink';
-    const newRoute = currentRoute.fullPath.replace(currentTheme, newTheme);
+    const newRoute = currentTheme ? currentRoute.fullPath.replace(currentTheme, newTheme) : {path: currentRoute.fullPath, query: {theme: newTheme}};
 
     this.$router.push(newRoute);
   }
