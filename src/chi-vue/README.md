@@ -24,6 +24,11 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # CHANGELOG
+## 2.6.0 (October 17, 2023)
+### Components
+#### Added
+* Added: Data table Vue component now supports row states support.
+
 ## 2.5.0 (October 4, 2023)
 ### Components
 #### Added
