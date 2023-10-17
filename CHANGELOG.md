@@ -1,4 +1,18 @@
 # CHANGELOG
+## 5.41.0 (October 17, 2023)
+### Components
+#### Added
+* Added: Alert now supports `spinner` attribute to display animated spinner icon.
+* Added: Phone input now supports `input-mask` attribute to enter digits only.
+#### Fixed
+* Fixed: Chevron color in Footer language dropdown in Portal theme for consistency with Brand guidelines.
+### Documentation
+#### Changed
+* Changed: Alert actions section example, the two buttons shown have been replaced with one tertiary button.
+* Changed: Alert component base icon has changed from `circle-info` to `flag`.
+* Changed: Modal multi-step section has been removed for Portal theme.
+* Changed: Modal alert example button has been centered to better illustrate when there is only one action.
+
 ## 5.40.0 (October 4, 2023)
 ### Components
 #### Added
