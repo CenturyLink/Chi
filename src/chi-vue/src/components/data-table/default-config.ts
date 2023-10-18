@@ -46,4 +46,5 @@ export const defaultConfig: DataTableConfig = {
       text: DATA_TABLE_EMPTY_ACTIONABLE_MESSAGE_TEXT,
     },
   },
+  actions: [],
 };

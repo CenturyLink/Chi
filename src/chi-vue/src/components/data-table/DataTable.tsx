@@ -99,6 +99,7 @@ export default class DataTable extends Vue {
   emptyActionableContent = Object.prototype.hasOwnProperty.call(this.$props.config, 'emptyActionable')
     ? this.$props.config.emptyActionable
     : defaultConfig.emptyActionable;
+  actions = this.$props.config.actions || defaultConfig.actions || [];
   _currentScreenBreakpoint?: DataTableScreenBreakpoints;
   _dataTableId?: string;
   _expandable!: boolean;
@@ -123,7 +124,6 @@ export default class DataTable extends Vue {
   } = {};
   _chiDropdownSelectAll: any;
   _dataTableNumber?: number;
-  actions = this.$props.config.actions;
 
   _toggleInfoPopover(infoPopoverId: string) {
     const popover = this._getInfoPopover(infoPopoverId);
@@ -222,14 +222,12 @@ export default class DataTable extends Vue {
       this._expandable ? this._headExpandable() : null,
     ];
 
-    const heads = Array.isArray(this.data.head) ? this.data.head : Object.keys(this.data.head);
-
-    const infoPopovers: JSX.Element[] = [];
-
     if (this.actions?.length) {
-      heads.push('actions');
-      this.data.head.actions = { label: ' ' };
+      this.data.head.actions = { label: 'Actions', align: 'right' };
     }
+
+    const heads = Array.isArray(this.data.head) ? this.data.head : Object.keys(this.data.head);
+    const infoPopovers: JSX.Element[] = [];
 
     heads.forEach((column: string | DataTableColumn, cellIndex: number) => {
       const columnIndex = String(Array.isArray(this.data.head) ? cellIndex : column);
@@ -1017,17 +1015,28 @@ export default class DataTable extends Vue {
     });
 
     if (hasActions) {
+      const cellWidth =
+        this.config.columnSizes && this._currentScreenBreakpoint
+          ? this.config.columnSizes[this._currentScreenBreakpoint][cellIndex]
+          : null;
+      const flexBasis = cellWidth ? `-flex-basis--${cellWidth}` : '';
+
       rowCells.push(
         <div
-          class={`${DATA_TABLE_CLASSES.CELL}
-          -flex-basis--5
-          -key
-        `}
-          style="overflow: visible">
-          <DataTableActions actions={this.actions} rowData={bodyRow} />
+          class={`
+          ${DATA_TABLE_CLASSES.CELL}
+          ${flexBasis}
+          -justify-content-md--end
+          -key`}
+          style="overflow: visible; position: initial">
+          <DataTableActions actions={this.actions} rowData={bodyRow} dataTableNumber={dataTableNumber} />
         </div>
       );
     }
+
+    const isExpanded = this.accordionsExpanded.includes(rowId);
+    const state = this._getRowState(bodyRow);
+    const hasState = bodyRow.state || (state && !isExpanded);
 
     row.push(
       <div
@@ -1044,10 +1053,11 @@ export default class DataTable extends Vue {
         ${this.$props.config.style.portal ? `-${this.$props.config.style.size}` : ''}
         ${this.selectedRows.includes(bodyRow.rowId) || bodyRow.active ? ACTIVE_CLASS : ''}
         ${
-          this._expandable && bodyRow.nestedContent
-            ? `${this.accordionsExpanded.includes(rowId) ? EXPANDED_CLASS : COLLAPSED_CLASS}`
+          (this._expandable || hasState) && bodyRow.nestedContent
+            ? `${isExpanded ? EXPANDED_CLASS : COLLAPSED_CLASS}`
             : ''
         }
+        ${hasState ? state : ''}
         `}
         role="row">
         {rowCells}
@@ -1239,6 +1249,26 @@ export default class DataTable extends Vue {
     }
   }
 
+  _getRowState(row: DataTableRow): string | null {
+    let state = null;
+
+    const findStateInChildren = (rowData: DataTableRow) => {
+      const children = rowData.nestedContent?.table?.data;
+
+      if (rowData.state) {
+        state = `-row--${rowData.state}`;
+      }
+
+      children?.forEach((childRow: DataTableRow) => {
+        findStateInChildren(childRow);
+      });
+    };
+
+    findStateInChildren(row);
+
+    return state;
+  }
+
   serializeData() {
     const serializeRow = (
       row: DataTableRow,
@@ -1280,7 +1310,11 @@ export default class DataTable extends Vue {
         });
       }
 
-      if (rowObject.expanded && !this.accordionsExpanded.includes(rowObject.rowId)) {
+      const state = this._getRowState(row);
+      const hasState = state && !row.state;
+      const shouldExpand = rowObject.expanded && !this.accordionsExpanded.includes(rowObject.rowId);
+
+      if (shouldExpand || hasState) {
         this.accordionsExpanded.push(rowObject.rowId);
       }
 

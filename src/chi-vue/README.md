@@ -24,6 +24,11 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # CHANGELOG
+## 2.5.0 (October 4, 2023)
+### Components
+#### Added
+* Added: Advanced filters Vue component now supports perform actions when several data tables in the same page.
+
 ## 2.4.0 (September 27, 2023)
 ### Components
 #### Added

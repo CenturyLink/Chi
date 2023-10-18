@@ -40,6 +40,10 @@ export class Textarea {
    */
   @Prop({ reflect: true }) placeholder: string;
   /**
+   * To display an additional helper text message below the Textarea
+   */
+  @Prop({ reflect: true }) helperMessage: string;
+  /**
    * To read value of Textarea
    */
   @Prop({ attribute: null, mutable: true }) value = '';
@@ -153,12 +157,14 @@ export class Textarea {
     `;
     const iconLeft = this.iconLeft && <chi-icon color={this.iconLeftColor || null} icon={this.iconLeft} />;
     const iconRight = this.iconRight && <chi-icon color={this.iconRightColor || null} icon={this.iconRight} />;
+    const helperMessage = this.helperMessage && <chi-helper-message state={this.state}>{this.helperMessage}</chi-helper-message>;
 
-    const textarea = this.iconLeft || this.iconRight ?
+    const textarea = this.iconLeft || this.iconRight || this.helperMessage ?
       <div class={`chi-input__wrapper ${iconClasses}`}>
         {textareaElement}
         {iconLeft}
         {iconRight}
+        {helperMessage}
       </div> : textareaElement;
 
     return textarea;
