@@ -1,9 +1,8 @@
 <template lang="pug">
   div
-    <TitleAnchor title="Web Components" id="web-components" titleSize="h2" additionalClasses="-mb--0" />
-    .-lh--3
-      .chi-badge.-dark.-outline.-xs.-mr--1
-        span Optional
+    <TitleAnchor title="Web Components" id="web-components" titleSize="h2" additionalClasses="-lh--4" />
+    .chi-badge.-dark.-outline.-xs.-mr--1
+      span Optional
     p.-text
       | Chi Web Components are <a target="_blank" href="https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements" rel="noopener">Custom Elements</a>
       | designed to Lumen's specifications and built according to the HTML Living Standard.
@@ -16,7 +15,7 @@
 
     <Copy id="stylesheet">
       <pre class="language-html" slot="code">
-        <code v-highlight="stylesheet.htmlblueprint" lang='bash' class="html"></code>
+        <code v-highlight="stylesheet.htmlblueprint(version)" lang='bash' class="html"></code>
       </pre>
     </Copy>
 
@@ -95,8 +94,8 @@ declare const chi: any;
   data: () => {
     return {
       stylesheet: {
-        htmlblueprint: `<script type="module" src="https://assets.ctl.io/chi/5.37.0/js/ce/ux-chi-ce/ux-chi-ce.esm.js" integrity="sha256-sjGS/0v1TobGl9rMXlni36WXTnT7J6sMysVcZ5nxUZw=" crossorigin="anonymous">\x3C/script>
-<script nomodule="" src="https://assets.ctl.io/chi/5.37.0/js/ce/ux-chi-ce/ux-chi-ce.js" integrity="sha256-YrDiIH91dWgnfQRTLsWYoxQj7LGxf7PHV4TIZcazh5M=" crossorigin="anonymous">\x3C/script>`,
+        htmlblueprint: (version: string) => `<script type="module" src="https://assets.ctl.io/chi/${version}/js/ce/ux-chi-ce/ux-chi-ce.esm.js" integrity="sha256-sjGS/0v1TobGl9rMXlni36WXTnT7J6sMysVcZ5nxUZw=" crossorigin="anonymous">\x3C/script>
+<script nomodule="" src="https://assets.ctl.io/chi/${version}/js/ce/ux-chi-ce/ux-chi-ce.js" integrity="sha256-YrDiIH91dWgnfQRTLsWYoxQj7LGxf7PHV4TIZcazh5M=" crossorigin="anonymous">\x3C/script>`,
         HTMLAttribute: `<chi-button id="close-btn" size="md">Close</chi-button>
 <script>
   document.getElementById("close-btn").setAttribute("size", "xl");
@@ -129,12 +128,16 @@ declare const chi: any;
     }
   }
 })
-export default class Favicon extends Vue {
+export default class WebComponents extends Vue {
   mounted() {
     chi.expansionPanel(
       document.querySelectorAll('[data-chi-epanel-group="web-component-details"]'),
       {mode: 'accordion'}
     );
+  }
+
+  get version() {
+    return this.$store.state.themes.version;
   }
 }
 </script>

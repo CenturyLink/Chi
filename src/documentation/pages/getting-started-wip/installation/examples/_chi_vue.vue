@@ -1,9 +1,8 @@
 <template lang="pug">
   div
-    <TitleAnchor title="Chi Vue" id="chi-vue" titleSize="h2" additionalClasses="-mb--0" />
-    .-lh--3
-      .chi-badge.-dark.-outline.-xs.-mr--1
-        span Optional
+    <TitleAnchor title="Chi Vue" id="chi-vue" titleSize="h2" additionalClasses="-lh--4" />
+    .chi-badge.-dark.-outline.-xs.-mr--1
+      span Optional
     p.-text Chi supports a set of native Vue components. Chi Vue can be installed via Github npm registry or included from CDN as a UMD library.
 
     ul#chi-vue-tabs.chi-tabs.-border
@@ -16,15 +15,8 @@
         .-d--flex.-no-gutter.-bg--grey-15
           .-bg--grey-15.-py--3.-br--1(style="width: 14rem;")
             ul#chi-vue-npm-tabs.chi-tabs.-vertical(role='tablist' aria-label='chi-tabs-vertical-base')
-              li.-active
-                a(href='#npm--npmrc' role='tab' aria-selected='true' aria-controls='vertical-base-1') .npmrc
-              li
-                a(href='#npm--package' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-2') package.json
-              li
-                a(href='#npm--main' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-3') main.ts
-              li
-                a(href='#npm--vueconfig' role='tab' aria-selected='false' tabindex='-1' aria-controls='vertical-base-3') vue.config.js
-
+              li(v-for="(tab, index) in tabs" :key="index" :class="{ '-active': index === 0 }")
+                a(:href="`#npm--${tab.link}`" role='tab') {{ tab.title }}
           .-flex--grow1.-h--100
             #npm--npmrc.chi-tabs-panel.-active(role='tabpanel')
               <Copy id="stylesheet">
@@ -41,11 +33,11 @@
             #npm--main.chi-tabs-panel(role='tabpanel')
               .chi-tab__description
                 | Import Chi Vue and register its components globally
-                <Copy id="stylesheet">
-                  <pre class="language-javascript" slot="code">
-                    <code v-highlight="stylesheet.npm.main" lang='javascript' class="language-javascript"></code>
-                  </pre>
-                </Copy>
+              <Copy id="stylesheet">
+                <pre class="language-javascript" slot="code">
+                  <code v-highlight="stylesheet.npm.main" lang='javascript' class="language-javascript"></code>
+                </pre>
+              </Copy>
             #npm--vueconfig.chi-tabs-panel(role='tabpanel')
               .chi-tab__description
                 | Use <code>CopyWebpackPlugin</code> in vue.config.js to copy Chi Vue assets to dist
@@ -55,10 +47,11 @@
                 </pre>
               </Copy>
       #chi-vue-tabs--umd.chi-tabs-panel
-        p Include Chi Vue UMD library from CDN and register the components you need.
+        .chi-tab__description
+          | Include Chi Vue UMD library from CDN and register the components you need.
         <Copy id="stylesheet">
           <pre class="language-html" slot="code">
-            <code v-highlight="stylesheet.umd" lang='javascript' class="language-html"></code>
+            <code v-highlight="stylesheet.umd(version)" lang='javascript' class="language-html"></code>
           </pre>
         </Copy>
 </template>
@@ -71,6 +64,12 @@ declare const chi: any;
 @Component({
   data: () => {
     return {
+      tabs: [
+        { title: '.npmrc', link: 'npmrc' },
+        { title: 'package.json', link: 'package' },
+        { title: 'main.ts', link: 'main' },
+        { title: 'vue.config.js', link: 'vueconfig' },
+      ],
       stylesheet: {
         npm: {
           npmrc: `registry=https://registry.npmjs.org
@@ -81,21 +80,21 @@ declare const chi: any;
           vueconfig: `const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  configureWebpack: config => {
-    if (!config.externals) {
-      config.externals = {};
-    }
+    configureWebpack: config => {
+      if (!config.externals) {
+        config.externals = {};
+      }
 
-    config.output.filename = '[name].js';
-    config.output.chunkFilename = '[name].js';
+      config.output.filename = '[name].js';
+      config.output.chunkFilename = '[name].js';
 
-    let plugins = [{ from: '@centurylink/chi-vue/dist' }];
-    config.plugins.push(
-      new CopyWebpackPlugin(plugins, {
-        context: 'node_modules',
-        ignore: ['.DS_Store'],
-      }));
-  },
+      let plugins = [{ from: '@centurylink/chi-vue/dist' }];
+      config.plugins.push(
+        new CopyWebpackPlugin(plugins, {
+          context: 'node_modules',
+          ignore: ['.DS_Store'],
+        }));
+    },
   };`,
           main: `import(/* webpackChunkName: "chi-vue" */ '@centurylink/chi-vue').then(chiVue => {
   Object.keys(chiVue.library.components).forEach((name: string) => {
@@ -109,14 +108,14 @@ module.exports = {
   throw('@centurylink/chi-vue library is not loaded correctly!');
 });`
         },
-        umd: `<!-- UMD asset -->
-<script src="https://assets.ctl.io/chi/5.37.0/chi-vue/umd/chi-vue.umd.js">\x3C/script>
+        umd: (version: string) => `<!-- UMD asset -->
+<script src="https://assets.ctl.io/chi/${version}/chi-vue/umd/chi-vue.umd.js">\x3C/script>
 
 <!-- Vue component example -->
 new Vue({
-    components: {
-        chiVuePagination: window['chi-vue'].library.components.ChiPagination,
-    }
+  components: {
+    chiVuePagination: window['chi-vue'].library.components.ChiPagination,
+  }
 });
 
 <!-- Vue template example -->
@@ -125,10 +124,18 @@ new Vue({
     }
   }
 })
-export default class Favicon extends Vue {
+export default class ChiVue extends Vue {
   mounted() {
     chi.tab(document.getElementById('chi-vue-tabs'));
     chi.tab(document.getElementById('chi-vue-npm-tabs'));
+  }
+
+  get theme() {
+    return this.$store.state.themes.theme;
+  }
+
+  get version() {
+    return this.$store.state.themes.version;
   }
 }
 </script>

@@ -1,10 +1,10 @@
 <template lang="pug">
   div
-    <TitleAnchor title="CSS" id="css" titleSize="h2" />
+    <TitleAnchor title="CSS" id="css" titleSize="h2" additionalClasses="-lh--4" />
     p.-text Add Chi CSS by copying and pasting the stylesheet below into the header of your project. Chi's stylesheet is hosted on Lumen's Assets Server which is a highly available and performant option for loading assets into your Lumen project.
     <Copy id="stylesheet">
       <pre class="language-html" slot="code">
-        <code v-highlight="stylesheet.htmlblueprint" lang='bash' class="html"></code>
+        <code v-highlight="stylesheet.htmlblueprint(version)" lang='bash' class="html"></code>
       </pre>
     </Copy>
 
@@ -14,6 +14,8 @@
         <code v-highlight="chiClass.htmlblueprint" lang='bash' class="html"></code>
       </pre>
     </Copy>
+
+    p.-text  At this point you can now start using Chi. The documentation includes a wealth of templates and code samples to get you started.
 </template>
 
 <script lang="ts">
@@ -23,7 +25,7 @@ import { Component, Vue } from 'vue-property-decorator';
   data: () => {
     return {
       stylesheet: {
-        htmlblueprint: `<link rel="stylesheet" href="https://assets.ctl.io/chi/5.39.0/chi.css" integrity="sha256-1bhPx5yXmCMWKzXn9PFea05NRF+239d9pqYJcR3GHWY=" crossorigin="anonymous">`
+        htmlblueprint: (version: string) =>`<link rel="stylesheet" href="https://assets.ctl.io/chi/${version}/chi.css" integrity="sha256-1bhPx5yXmCMWKzXn9PFea05NRF+239d9pqYJcR3GHWY=" crossorigin="anonymous">`
       },
       chiClass: {
         htmlblueprint: `<html class="chi">
@@ -33,5 +35,10 @@ import { Component, Vue } from 'vue-property-decorator';
     }
   }
 })
-export default class CSS extends Vue {}
+export default class CSS extends Vue {
+  get version() {
+    return this.$store.state.themes.version;
+  }
+}
+
 </script>

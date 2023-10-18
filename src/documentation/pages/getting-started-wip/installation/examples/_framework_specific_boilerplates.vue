@@ -1,118 +1,80 @@
 <template lang="pug">
   div
-    <TitleAnchor title="Framework specific boilerplates" id="framework-specific-boilerplates" titleSize="h2" additionalClasses="-mb--0" />
-    .-lumen-show.-mt--5
-    table.chi-table.-bordered.-text--center.-mb--5
-      caption.-text.-text--left.-mb--2
-        | Boilerplates include:
-      thead
-        tr
-          th.-text--center
-            .-sr--only Framework
-          th.-text--center chi.css
-          th.-text--center chi.js
-          th.-text--center Web components
-          th.-text--center Favicon
-          th.-text--center Download
-      tbody
-        tr
-          td.-text--bold Vue
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            a.chi-button(href='../../boilerplates/chi-vue-boilerplate.zip')
-              .chi-button__content
-                i.chi-icon.icon-circle-arrow-down-outline(aria-hidden="true")
-                span Download
-        tr
-          td.-text--bold Stencil
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            a.chi-button(href='../../boilerplates/chi-stencil-boilerplate.zip')
-              .chi-button__content
-                i.chi-icon.icon-circle-arrow-down-outline(aria-hidden="true")
-                span Download
-        tr
-          td.-text--bold Angular
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            a.chi-button(href='../../boilerplates/chi-angular-boilerplate.zip')
-              .chi-button__content
-                i.chi-icon.icon-circle-arrow-down-outline(aria-hidden="true")
-                span Download
-        tr
-          td.-text--bold React
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            a.chi-button(href='../../boilerplates/chi-react-boilerplate.zip')
-              .chi-button__content
-                i.chi-icon.icon-circle-arrow-down-outline(aria-hidden="true")
-                span Download
-        tr
-          td.-text--bold Vue + ES6
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            i.chi-icon.icon-check.-icon--success(aria-hidden="true")
-          td
-            a.chi-button(href='../../boilerplates/chi-vue-es6-boilerplate.zip')
-              .chi-button__content
-                i.chi-icon.icon-circle-arrow-down-outline(aria-hidden="true")
-                span Download
-
+    <TitleAnchor title="Framework specific boilerplates" id="framework-specific-boilerplates" titleSize="h2" additionalClasses="-lh--4" />
+    <TableComponent :data="values" :columns="columns" :getContent="getContent" additionalClasses="-mt--3 -mb--3 -bordered -text--center" />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import { ITableColumn, ITableContent } from "~/models/models";
 
 declare const chi: any;
 
-@Component({
+const columns = [
+  {
+    title: '',
+    key: 'class',
+  },
+  {
+    title: 'chi.css',
+    key: 'css',
+  },
+  {
+    title: 'chi.js',
+    key: 'js',
+  },
+  {
+    title: 'Web components',
+    key: 'webComponents',
+  },
+  {
+    title: 'Favicon',
+    key: 'favicon',
+  },
+  {
+    title: 'Download',
+    key: 'download',
+  }
+];
+const values = ['Vue', 'Stencil', 'Angular', 'React', 'Vue + ES6'];
+
+  @Component({
   data: () => {
     return {
       stylesheet: {
-        htmlblueprint: `<link rel="stylesheet" href="https://assets.ctl.io/chi/5.39.0/chi.css" integrity="sha256-1bhPx5yXmCMWKzXn9PFea05NRF+239d9pqYJcR3GHWY=" crossorigin="anonymous">`
+        htmlblueprint: (version: string) => `<link rel="stylesheet" href="https://assets.ctl.io/chi/${version}/chi.css" integrity="sha256-1bhPx5yXmCMWKzXn9PFea05NRF+239d9pqYJcR3GHWY=" crossorigin="anonymous">`
       },
+      values,
+      columns
     }
   }
 })
-export default class Favicon extends Vue {
+export default class Boilerplates extends Vue {
   mounted() {
     chi.expansionPanel(
       document.querySelectorAll('[data-chi-epanel-group="web-component-details"]'),
       {mode: 'accordion'}
     );
+  }
+
+  getContent(column: ITableColumn, content: ITableContent) {
+    switch (column.key) {
+      case 'class':
+        return `<span class="-text--bold">${content}</span>`;
+      case 'download':
+        return `<a href="../../boilerplates/chi-vue-es6-boilerplate.zip" class="chi-button">
+                    <div class="chi-button__content">
+                        <i aria-hidden="true" class="chi-icon icon-circle-arrow-down-outline"></i>
+                        <span>Download</span>
+                    </div>
+                 </a>`;
+      default:
+        return '<i class="chi-icon icon-check -icon--success"></i>';
+    }
+  }
+
+  get version() {
+    return this.$store.state.themes.version;
   }
 }
 </script>
