@@ -73,6 +73,38 @@ h4 Colors
         p.-text(class=`-icon--${type}`)
           = `-icon--${type}`
 
+h3 Spinner alert
+each size in ['default', 'sm', 'lg']
+  h4 Spinner banner / #{size}
+  div(class=`test-banner-spinner-${size} -w--100`)
+    each type in ['base', 'success', 'danger', 'warning', 'info', 'muted']
+      if (type === 'base')
+        chi-alert.-m--2(class=type, spinner, type='banner', size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-${type}-${size}`)
+          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+      else
+        chi-alert.-m--2(color=type, spinner, type='banner', size=`${size === 'default' ? '' : size}`, data-cy=`alert-banner-${type}-${size}`)
+          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+
+  h4 Spinner bubble / #{size}
+  div(class=`test-bubble-spinner-${size} -w--100`)
+    each type in ['base', 'success', 'danger', 'warning', 'info', 'muted']
+      if (type === 'base')
+        chi-alert.-m--2(class=type, spinner, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-${type}-${size}`)
+          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+      else
+        chi-alert.-m--2(color=type, spinner, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-${type}-${size}`)
+          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+  
+  h4 Spinner toast / #{size}
+  div(class=`test-toast-spinner-${size}`)
+    each type in ['base', 'success', 'danger', 'warning', 'info', 'muted']
+      if (type === 'base')
+        chi-alert.-m--2(type='toast', spinner, size=`${size === 'default' ? '' : size}`, class=type, data-cy=`alert-toast-${type}-${size}`)
+          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+      else
+        chi-alert.-m--2(type='toast', spinner, size=`${size === 'default' ? '' : size}`, color=type, data-cy=`alert-toast-${type}-${size}`)
+          =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
+
 style.
   svg {
     animation: none !important;
