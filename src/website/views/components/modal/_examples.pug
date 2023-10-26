@@ -1,3 +1,6 @@
+script(src='https://cdn.jsdelivr.net/npm/vue@2.6.11')
+script(src='../../chi-vue/umd/chi-vue.umd.js')
+
 h2 Examples
 p.-text
   | Modals are composed of several parts. To render a modal, include a modal backdrop, modal header, modal body,
@@ -700,6 +703,81 @@ p.-text
         <!-- JavaScript -->
         <script>chi.modal(document.getElementById('modal-trigger-9'));</script>
 
+h3 Column Customization
+p.-text
+  | Opens column customization modal, and allows to modify them.
+.example.-mb--3
+  chi-vue-column-customization(id="column-customization" ref="baseColumnCustomizationRef" :columns-data="columnsData")
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-no-results
+      li.-disabled
+        a(href=`#webcomponent-no-results`) Web Component
+      li.-active
+        a(href=`#vue-no-results`) Vue
+      li.-disabled
+        a(href=`#html-no-results`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-no-results
+  .chi-tabs-panel.-active#vue-no-results
+    .chi-tab__description Use <code>columns-data</code> to customize the columns.
+    :code(lang='html')
+      <!-- Vue component -->
+      <ChiColumnCustomization id="column-customization" ref="baseColumnCustomizationRef" :columns-data="columnsData"></ChiColumnCustomization>
+
+      <!-- Config and Data -->
+      data: {
+        columnsData: {
+          columns: [
+            {
+              name: 'columnE',
+              label: 'Column E',
+              selected: true,
+            },
+            {
+              name: 'columnB',
+              label: 'Column B',
+            },
+            {
+              name: 'columnA',
+              label: 'Column A',
+            },
+            {
+              name: 'columnC',
+              label: 'Column C',
+              locked: true,
+              selected: true,
+            },
+            {
+              name: 'columnD',
+              label: 'Column D',
+              locked: true,
+              selected: true,
+            },
+            {
+              name: 'columnF',
+              label: 'Column F',
+              selected: true,
+            },
+            {
+              name: 'columnJ',
+              label: 'Column J',
+            },
+            {
+              name: 'columnG',
+              label: 'Column G',
+            },
+            {
+              name: 'columnI',
+              label: 'Column I',
+            },
+            {
+              name: 'columnH',
+              label: 'Column H',
+            },
+          ];,
+        },
+      },
+  .chi-tabs-panel#html-no-results
+
 script.
     document.addEventListener(
     'DOMContentLoaded',
@@ -707,5 +785,69 @@ script.
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
       chi.modal(document.querySelectorAll('#modal-trigger-1'));
       chi.modal(document.querySelectorAll('#modal-trigger-portal-1'));
+    })
+
+    const exampleColumns = [
+    {
+      name: 'columnE',
+      label: 'Column E',
+      selected: true,
+    },
+    {
+      name: 'columnB',
+      label: 'Column B',
+    },
+    {
+      name: 'columnA',
+      label: 'Column A',
+    },
+    {
+      name: 'columnC',
+      label: 'Column C',
+      locked: true,
+      selected: true,
+    },
+    {
+      name: 'columnD',
+      label: 'Column D',
+      locked: true,
+      selected: true,
+    },
+    {
+      name: 'columnF',
+      label: 'Column F',
+      selected: true,
+    },
+    {
+      name: 'columnJ',
+      label: 'Column J',
+    },
+    {
+      name: 'columnG',
+      label: 'Column G',
+    },
+    {
+      name: 'columnI',
+      label: 'Column I',
+    },
+    {
+      name: 'columnH',
+      label: 'Column H',
+    },
+  ];
+
+  new Vue({
+    components: {
+      chiVueColumnCustomization: window["chi-vue"].library.components.ChiColumnCustomization,
+    },
+    data: {
+      columnsData: {
+        columns: exampleColumns,
+      },
+    },
+    mounted() {
+      if (window.Cypress) {
+        window.baseColumnCustomizationExample = this;
+      }
     }
-  );
+  }).$mount("#column-customization");
