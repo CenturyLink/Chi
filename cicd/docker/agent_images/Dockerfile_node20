@@ -29,6 +29,8 @@ RUN wget "https://github.com/github/hub/releases/download/v2.14.2/hub-linux-amd6
     && mv hub-linux-amd64-2.14.2/bin/hub /usr/local/bin \
     && chmod +x /usr/local/bin/hub
 
+RUN npm install -g yarn@latest --force
+
 ENV QT_X11_NO_MITSHM=1
 ENV _X11_NO_MITSHM=1
 ENV _MITSHM=0

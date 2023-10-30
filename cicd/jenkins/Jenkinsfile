@@ -79,7 +79,7 @@ pipeline {
       PROJECT_MAL = "chi"
       DOCKER_REPO = 'chi'
 
-      VUE3_BRANCH = 'master-vue3'
+      PROD_BRANCH = 'master'
       BRANCH_NAME = GIT_BRANCH.split('/')[-1].trim().toLowerCase()
       COMMIT_ID = GIT_COMMIT.substring(0,7).trim().toLowerCase()
       PULL_REQUEST="pr-${env.CHANGE_ID}"
@@ -422,6 +422,7 @@ pipeline {
               docker {
                 image getNodeAgentBlock(null, 'image')
                 label 'Docker-enabled'
+                args '-m 2G --shm-size=2gb'
               }
             }
             steps {
@@ -458,7 +459,7 @@ pipeline {
                   }
                 }
                 sh script: """
-                  ./node_modules/.bin/cypress run --browser chrome --headless
+                  ./node_modules/.bin/cypress run
                 """, label: "Running NPX before adding JSL file, TEST."
                 jslNpxWrapper('gulp serve:stop')
               }
@@ -599,10 +600,6 @@ pipeline {
             steps {
               script {
                 dir('src/chi-vue') {
-                  def packageJson = readJSON file: 'package.json'
-                  def newVersion = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
-                  packageJson.version = newVersion.toString()
-                  writeJSON file: 'package.json', json: packageJson
                   ghYarnWrap('install')
                   jslNpmWrapper('run build:component')
                   jslNpmWrapper('pack')
@@ -623,10 +620,6 @@ pipeline {
             steps {
               script {
                 dir('src/chi-vue') {
-                  def packageJson = readJSON file: 'package.json'
-                  def newVersion = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
-                  packageJson.version = newVersion.toString()
-                  writeJSON file: 'package.json', json: packageJson
                   chiVueNexusPublish()
                 }
               }
@@ -731,11 +724,6 @@ PolicyDocument
                   sh "rm -rf dist node_modules"
                   unstash name: "DIST-CHI-DOCUMENTATION"
                   unstash name: "DIST-CHI"
-                  def packageJson = readJSON file: 'package.json'
-                  def packageVersion = packageJson.version
-                  def newVersion = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
-                  packageJson.version = newVersion.toString()
-                  writeJSON file: 'package.json', json: packageJson
                   sh script:"""
                     sed -i 's#/getting-started#getting-started#g' dist/index.html
 
@@ -788,8 +776,7 @@ PRDesc
                     echo "PlaceHolder for STAGING ASSET Server Push of CHI version"
                 }
                 if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
-                  def tagType = env.TAG_NAME.toString().indexOf("##VUE3") != -1 ? "DEPLOYMENT##VUE3" : "DEPLOYMENT"
-                  def previousDeploymentCommit = jslGCRTagCommit(tagType, 2)
+                  def previousDeploymentCommit = jslGCRTagCommit("DEPLOYMENT", 2)
                   def changeLog = jslAuditChangelog(true, env.GIT_COMMIT, previousDeploymentCommit)
                   echo "Sending Jira Deployment changeLog for PROD: ${changeLog}"
                   jslDeploymentContractValidationWrite("production")
@@ -847,10 +834,7 @@ PRDesc
             steps {
               script {
                 unstash 'smokeTests'
-                def newTag = env.IS_VUE3_TRIGGER.toBoolean() ? env.TAG_NAME.replace("##VUE3","") : env.TAG_NAME
-                withEnv(["TAG_NAME=${newTag}"]) {
-                  jslPostQualityGate7Validation("'cypress/reports/smokeTests/*.xml'")
-                }
+                jslPostQualityGate7Validation("'cypress/reports/smokeTests/*.xml'")
               }
             }
           }
@@ -876,11 +860,7 @@ PRDesc
             if (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1) {
               env.DEVOPS_GCR_PREPROD_BRANCH = env.PROD_BRANCH
               echo "Adding smoke Tests / smoke Test hook to Adoption Stats"
-              def newTag = env.IS_VUE3_TRIGGER.toBoolean() ? env.TAG_NAME.replace("##VUE3","") : env.TAG_NAME
-              withEnv(["TAG_NAME=${newTag}"]) {
-                jslAdoptionMain('cypress/reports/smokeTests/*.xml')
-              }
-
+              jslAdoptionMain('cypress/reports/smokeTests/*.xml')
             } else {
               try {
                 sh """
@@ -1045,21 +1025,6 @@ def chiVueNexusPublish() {
 
 
 def printSummary() {
-  def buildCauses = currentBuild.getBuildCauses()
-  def startedFromUpstream = buildCauses.any { cause -> cause._class == 'org.jenkinsci.plugins.workflow.support.steps.build.BuildUpstreamCause' }
-  def baseJobName = env.JOB_NAME.replace("${env.JOB_BASE_NAME}", "${env.VUE3_BRANCH}")
-  def causeUpstream = false
-  if (startedFromUpstream) {
-    causeUpstream = buildCauses.any { cause -> cause.upstreamProject =~ /${baseJobName}/ }
-  }
-  def isDevOpsGCRVue3 = env.TAG_NAME =~ /.*##(PROMOTE|DEPLOYMENT)##VUE3##.*/
-  env.IS_VUE3_TRIGGER = (causeUpstream || isDevOpsGCRVue3)
-  if (env.BRANCH_NAME == env.VUE3_BRANCH || env.CHANGE_TARGET == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean()) {
-    env.PROD_BRANCH = env.VUE3_BRANCH
-  } else {
-    env.PROD_BRANCH = 'master'
-  }
-
   def chivueProjectJson = readJSON file: 'src/chi-vue/package.json', returnPojo: true;
   env.CHIVUE_PACKAGE_SCOPE = chivueProjectJson['name'].split('/')[0].replaceFirst("@", "")
   env.GITHUB_ORGANIZATION = jslGitGetRepoOwner()
@@ -1074,7 +1039,6 @@ def printSummary() {
   CHANGE_ID: ${env.CHANGE_ID}
   TAG: ${env.TAG_NAME}
   PROD_BRANCH: ${env.PROD_BRANCH}
-  IS_VUE3_TRIGGER: ${env.IS_VUE3_TRIGGER}
 
   CHIVUE_PACKAGE_SCOPE: ${env.CHIVUE_PACKAGE_SCOPE}
   GITHUB_ORGANIZATION: ${env.GITHUB_ORGANIZATION}
@@ -1109,10 +1073,6 @@ def gitHubReleaser(def scope = 'chi') {
   def versionPatchOld = versionPatch.toInteger() == 0 ? '0' : (versionPatch.toInteger() - 1).toString()
   
   def classifier = scope == 'chi-vue' ? "-${scope}" : ''
-
-  if (env.BRANCH_NAME == env.VUE3_BRANCH || env.CHANGE_TARGET == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean()) {
-    classifier = classifier == '' ? '-vue3' : classifier.replace('-vue', '-vue3')
-  }
 
   def publishVersion = "v${versionMajor}.${versionMinor}.${versionPatch}${classifier}"
 
@@ -1149,7 +1109,7 @@ def getNodeAgentBlock(def scope = null, def type = null) {
 
 	def nodeVersion = '14'
 
-  if ( (env.BRANCH_NAME == env.VUE3_BRANCH || env.CHANGE_TARGET == env.VUE3_BRANCH || (env.TAG_NAME && env.TAG_NAME.toString().indexOf("##DEPLOYMENT##") != -1 && env.IS_VUE3_TRIGGER.toBoolean()) ) && scope == 'chi-vue' ) {
+  if (scope == 'chi-vue') {
     nodeVersion = '20'
   }
 
@@ -1173,13 +1133,13 @@ def ghYarnWrap(def args, def githubCredentials = env.GITHUB_TOKEN_CREDENTIALS) {
 def promoteDeployTagGCR() {
   def tagAttributes = jslGCRGetTagAttributes()
   echo "Processing ${tagAttributes['tagType']} tag for DevOps ${tagAttributes['gcrNumber']}"
-  jslGCRTag('PROMOTE##VUE3', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
-  def tagName = jslGCRTag('DEPLOYMENT##VUE3', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
+  jslGCRTag('PROMOTE', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
+  def tagName = jslGCRTag('DEPLOYMENT', tagAttributes['tsMark'], tagAttributes['gcrNumber'], env.COMMIT_ID, env.PROD_BRANCH)
   def currentJob = env.JOB_NAME.toString()
   def currentBaseName = env.JOB_BASE_NAME.toString()
   def pathJob = currentJob - currentBaseName
   echo "Triggering deployment to production job ${pathJob} with tag ${tagName}"
-  jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6, [booleanParam(name:'isVue3',value: env.IS_VUE3_TRIGGER.toBoolean())] )
+  jslTriggerRemoteJob(tagName.trim(), "/${pathJob}/".toString(), false, false, 6)
 }
 
 
@@ -1225,10 +1185,6 @@ def customElementsBuild() {
 }
 
 def chiVueBuild() {
-  def packageJson = readJSON file: 'package.json'
-  def newVersion = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
-  packageJson.version = newVersion.toString()
-  writeJSON file: 'package.json', json: packageJson
   jslNpmWrapper('ci')
   jslNpmWrapper('run build:component')
   stash name: "DIST-CHI-VUE", includes: "dist/**"
@@ -1255,10 +1211,6 @@ def buildChi() {
     unstash name: "DIST-CHI-CE"
   }
   sh "sleep 10s"
-  def packageJson = readJSON file: 'package.json'
-  def newVersion = ( env.BRANCH_NAME == env.VUE3_BRANCH || env.IS_VUE3_TRIGGER.toBoolean() )? "${packageJson.version}-vue3" : packageJson.version
-  packageJson.version = newVersion.toString()
-  writeJSON file: 'package.json', json: packageJson
   ghYarnWrap('install')
   jslNpmWrapper('run cicd:build:pre:sri')
   jslNpmWrapper('run sri')
@@ -1294,11 +1246,7 @@ def smokeTestChecker(def scope) {
         def repoOwner=jslGitGetRepoOwner()
         def repoName=jslGitGetRepoName()
         def allReleases = jslGitHubRequestsHandler("https://api.github.com/repos/${repoOwner}/${repoName}/releases", "Get GitHub release for ${version}", ["Accept: application/vnd.github+json"], 'GET', null, env.GITHUB_TOKEN_CREDENTIALS, true)
-        if (version =~ /.*vue3.*/) {
-          latestChiVueRelease = allReleases.data.find { release -> release.name =~ /.*chi-vue3/ }
-        } else {
-          latestChiVueRelease = allReleases.data.find { release -> release.name =~ /.*chi-vue/ }
-        }
+        latestChiVueRelease = allReleases.data.find { release -> release.name =~ /.*chi-vue/ }
     } catch (Exception e) {
       echo "Error checking chi-vue releases: ${e.getMessage()}"
     }
