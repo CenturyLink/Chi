@@ -709,19 +709,19 @@ p.-text
 .example.-mb--3
   chi-vue-column-customization(id="column-customization" ref="baseColumnCustomizationRef" :columns-data="columnsData")
   .example-tabs.-pl--2
-    ul.chi-tabs#example-no-results
+    ul.chi-tabs#example-column-customization-modal
       li.-disabled
-        a(href=`#webcomponent-no-results`) Web Component
+        a(href=`#webcomponent-column-customization-modal`) Web Component
       li.-active
-        a(href=`#vue-no-results`) Vue
+        a(href=`#vue-column-customization-modal`) Vue
       li.-disabled
-        a(href=`#html-no-results`) HTML Blueprint
-  .chi-tabs-panel#webcomponent-no-results
-  .chi-tabs-panel.-active#vue-no-results
-    .chi-tab__description Use <code>columns-data</code> to customize the columns.
+        a(href=`#html-column-customization-modal`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-column-customization-modal
+  .chi-tabs-panel.-active#vue-column-customization-modal
+    .chi-tab__description Use <code>columnsData</code> to customize the columns.
     :code(lang='html')
       <!-- Vue component -->
-      <ChiColumnCustomization id="column-customization" ref="baseColumnCustomizationRef" :columns-data="columnsData"></ChiColumnCustomization>
+      <ChiColumnCustomization id="column-customization" ref="baseColumnCustomizationRef" :columnsData="columnsData"></ChiColumnCustomization>
 
       <!-- Config and Data -->
       data: {
@@ -776,7 +776,7 @@ p.-text
           ];,
         },
       },
-  .chi-tabs-panel#html-no-results
+  .chi-tabs-panel#html-column-customization-modal
 
 script.
     document.addEventListener(
@@ -844,10 +844,5 @@ script.
       columnsData: {
         columns: exampleColumns,
       },
-    },
-    mounted() {
-      if (window.Cypress) {
-        window.baseColumnCustomizationExample = this;
-      }
     }
   }).$mount("#column-customization");
