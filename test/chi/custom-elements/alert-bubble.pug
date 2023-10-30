@@ -7,7 +7,7 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 each size in ['default', 'sm', 'lg']
   h4 Default / #{size}
   div(class=`test-bubble-${size} -w--100`)
-    each val, type in {base:'circle-info', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
+    each val, type in {base:'flag', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       if (type === 'base')
         chi-alert.-m--2(class=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-${type}-${size}`)
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
@@ -16,7 +16,7 @@ each size in ['default', 'sm', 'lg']
           =`This is ${type === 'info' ? 'an' : 'a'} ${type} alert`
   h4 Centered / #{size}
   div(class=`test-bubble-center-${size} -w--100`)
-    each val, type in {base:'circle-info', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
+    each val, type in {base:'flag', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       if (type === 'base')
         chi-alert.-m--2(class=type, icon=val, center, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-center-${type}-${size}`)
           =`This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
@@ -25,7 +25,7 @@ each size in ['default', 'sm', 'lg']
           =`This is ${type === 'info' ? 'an' : 'a'} centered ${type} alert`
   h4 Dismissible / #{size}
   div(class=`test-bubble-dismissible-${size} -w--100`)
-    each val, type in {base:'circle-info', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
+    each val, type in {base:'flag', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       if (type === 'base')
         chi-alert.-m--2(class=type, icon=val, closable, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-dismissible-${type}-${size}`)
           =`This is a dismissible ${type} alert`
@@ -34,7 +34,7 @@ each size in ['default', 'sm', 'lg']
           =`This is a dismissible ${type} alert`
   h4 Titled / #{size}
   div(class=`test-bubble-titled-${size} -w--100`)
-    each val, type in {base:'circle-info', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
+    each val, type in {base:'flag', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       if (type === 'base')
         chi-alert.-m--2(class=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-titled-${type}-${size}`, title=type)
           =`This is a titled ${type} alert`
@@ -43,20 +43,18 @@ each size in ['default', 'sm', 'lg']
           =`This is a titled ${type} alert`
   h4 Actionable / #{size}
   div(class=`test-bubble-actionable-${size} -w--100`)
-    each val, type in {base:'circle-info', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
+    each val, type in {base:'flag', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
       if (type === 'base')
         chi-alert.-m--2(class=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-titled-${type}-${size}`, title=type)
           =`This is a ${size} ${type} actionable alert`
-          button(slot="chi-alert__actions", class=`-${size}`).chi-button Secondary action
-          button(slot="chi-alert__actions", class=`-${size}`).chi-button.-primary Primary action
+          button(slot="chi-alert__actions", class=`-${size}`).chi-button.-primary Action
       else
         chi-alert.-m--2(color=type, icon=val, size=`${size === 'default' ? '' : size}`, data-cy=`alert-bubble-actionable-${type}-${size}`, title=type)
           =`This is a ${size} ${type} actionable alert`
-          button(slot="chi-alert__actions", class=`-${size}`).chi-button Secondary action
-          button(slot="chi-alert__actions", class=`-${size}`).chi-button.-primary Primary action
+          button(slot="chi-alert__actions", class=`-${size}`).chi-button.-primary Action
 h4 Clickable Link Alert / default
 div(class=`test-bubble-clickable-link-default -w--100`)
-  each val, type in {base:'circle-info', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
+  each val, type in {base:'flag', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
     if (type === 'base')
       .-m--2
         chi-link.-d--block(href='#' no-hover-underline)
@@ -69,7 +67,7 @@ div(class=`test-bubble-clickable-link-default -w--100`)
             chi-icon(icon='chevron-right' slot='chi-alert__clickable-icon')
 h4 Clickable Button Alert / default
 div(class=`test-bubble-clickable-button-default -w--100`)
-  each val, type in {base:'circle-info', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
+  each val, type in {base:'flag', success:'circle-check', danger:'circle-x', warning:'warning', info:'circle-info', muted:'circle-info'}
     if (type === 'base')
       .-m--2
         chi-button(variant='flat' extra-class='-b--0 -p--0 -text--no-transform -no-hover' fluid)

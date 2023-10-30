@@ -79,6 +79,18 @@
               td
                 div
                   em undefined
+            tr
+              td
+                div
+                  code stateIconTooltip
+              td
+                div to define a content for state icon tooltip
+              td
+                div
+                  code string
+              td
+                div
+                  em Done
     h2 JavaScript
     h3 Actions
     p.-text

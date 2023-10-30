@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-08-31T17:41:51",
+  "timestamp": "2023-10-16T16:13:52",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -132,6 +132,23 @@
           "required": false
         },
         {
+          "name": "spinner",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "spinner",
+          "reflectToAttr": true,
+          "docs": "To render alert with Spinner",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "title",
           "type": "string",
           "mutable": false,
@@ -183,11 +200,13 @@
       "dependents": [],
       "dependencies": [
         "chi-icon",
+        "chi-spinner",
         "chi-button"
       ],
       "dependencyGraph": {
         "chi-alert": [
           "chi-icon",
+          "chi-spinner",
           "chi-button"
         ],
         "chi-button": [
@@ -1912,6 +1931,22 @@
           ],
           "optional": false,
           "required": false
+        },
+        {
+          "name": "visibleItems",
+          "type": "number",
+          "mutable": false,
+          "attr": "visible-items",
+          "reflectToAttr": false,
+          "docs": "To provide number of items in the dropdown to be displayed, and apply scroll if needed",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": true,
+          "required": false
         }
       ],
       "methods": [
@@ -2088,6 +2123,7 @@
           "reflectToAttr": true,
           "docs": "to render a state tooltip",
           "docsTags": [],
+          "default": "EPANEL_TOOLTIP_CONTENT",
           "values": [
             {
               "type": "string"
@@ -2177,7 +2213,8 @@
       "styles": [],
       "slots": [],
       "dependents": [
-        "chi-text-input"
+        "chi-text-input",
+        "chi-textarea"
       ],
       "dependencies": [
         "chi-icon"
@@ -2187,6 +2224,9 @@
           "chi-icon"
         ],
         "chi-text-input": [
+          "chi-helper-message"
+        ],
+        "chi-textarea": [
           "chi-helper-message"
         ]
       }
@@ -4328,6 +4368,23 @@
           "required": false
         },
         {
+          "name": "inputMask",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "input-mask",
+          "reflectToAttr": true,
+          "docs": "To set only numbers in the Phone Input",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "placeholder",
           "type": "string",
           "mutable": false,
@@ -5209,10 +5266,14 @@
       "styles": [],
       "slots": [],
       "dependents": [
+        "chi-alert",
         "chi-text-input"
       ],
       "dependencies": [],
       "dependencyGraph": {
+        "chi-alert": [
+          "chi-spinner"
+        ],
         "chi-text-input": [
           "chi-spinner"
         ]
@@ -6060,6 +6121,22 @@
           "required": false
         },
         {
+          "name": "helperMessage",
+          "type": "string",
+          "mutable": false,
+          "attr": "helper-message",
+          "reflectToAttr": true,
+          "docs": "To display an additional helper text message below the Textarea",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "iconLeft",
           "type": "string",
           "mutable": false,
@@ -6381,10 +6458,15 @@
       "slots": [],
       "dependents": [],
       "dependencies": [
-        "chi-icon"
+        "chi-icon",
+        "chi-helper-message"
       ],
       "dependencyGraph": {
         "chi-textarea": [
+          "chi-icon",
+          "chi-helper-message"
+        ],
+        "chi-helper-message": [
           "chi-icon"
         ]
       }

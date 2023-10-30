@@ -109,15 +109,19 @@ const exampleColumns = [
     name: 'columnE',
     label: 'Column E',
     selected: true,
+    wildcard: true,
   },
   {
     name: 'columnF',
     label: 'Column F',
     selected: true,
+    wildcard: true,
   },
   {
     name: 'columnG',
     label: 'Column G',
+    selected: true,
+    wildcard: true,
   },
   {
     name: 'columnH',
@@ -430,7 +434,7 @@ export const exampleTableBody = [
     ],
   },
   {
-    id: 'NTM0000210662',
+    id: 'NTM000021067',
     selectionDisabled: true,
     nestedContent: {
       table: {
@@ -460,6 +464,7 @@ export const exampleTableBody = [
           },
           {
             id: 'NTM00002106611',
+            state: 'danger',
             active: false,
             nestedContent: {
               table: {
@@ -503,10 +508,7 @@ export const exampleTableBody = [
                       {
                         label: 'Alerts',
                         template: 'icon',
-                        payload: {
-                          icon: 'circle-check',
-                          color: 'success',
-                        },
+                        payload: { icon: 'warning', color: 'warning' },
                       },
                       {
                         template: 'status',
@@ -530,7 +532,7 @@ export const exampleTableBody = [
               {
                 label: 'Alerts',
                 template: 'icon',
-                payload: { icon: 'circle-check', color: 'success' },
+                payload: { icon: 'warning', color: 'warning' },
               },
               {
                 template: 'status',
@@ -548,7 +550,11 @@ export const exampleTableBody = [
     },
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021067' } },
-      '',
+      {
+        label: 'Alerts',
+        template: 'icon',
+        payload: { icon: 'warning', color: 'warning' },
+      },
       { template: 'status', payload: { status: 'inactive' } },
       'Colocation b',
       11,
@@ -572,6 +578,7 @@ export const exampleTableBody = [
   {
     id: 'NTM0000210651',
     active: false,
+    state: 'warning',
     data: [
       { template: 'ticketId', payload: { id: 'NTM0000210651' } },
       {
@@ -602,6 +609,7 @@ export const exampleTableBody = [
   {
     id: 'NTM000021069',
     active: false,
+    state: 'success',
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021069' } },
       {},
@@ -628,6 +636,7 @@ export const exampleTableBody = [
   {
     id: 'NTM000021073',
     active: false,
+    state: 'info',
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021073' } },
       {},

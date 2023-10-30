@@ -96,7 +96,7 @@ pipeline {
       RC_TAG_PATTERN =  /(.*##RC##.*)/
       PROMOTE_TAG_PATTERN =  /(.*##PROMOTE##.*)/
       DEPLOY_TAG_PATTERN =  /(.*##DEPLOYMENT##.*)/
-      NODE_OPTIONS = "--max-old-space-size=1536"
+      NODE_OPTIONS = "--max-old-space-size=8192"
       GENERATE_SOURCEMAP = "false"
 
       SONAR_PROPERTIES_FILE = "./cicd/docker/SonarQube/sonar-project.properties"

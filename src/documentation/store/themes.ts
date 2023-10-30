@@ -1,8 +1,9 @@
-import { DEFAULT_THEME } from '~/constants/configs';
+import { DEFAULT_THEME, CHI_VERSION } from '~/constants/configs';
 import { THEMES } from '../constants/constants';
 
 export const state = () => ({
-  theme: DEFAULT_THEME as keyof typeof THEMES
+  theme: DEFAULT_THEME as keyof typeof THEMES,
+  version: CHI_VERSION,
 });
 
 export const mutations = {

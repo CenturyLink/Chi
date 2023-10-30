@@ -11,7 +11,7 @@ import {
 } from '@/constants/classes';
 import { DataTableCustomItem, DataTableFilter, DataTableFormElementFilters } from '@/constants/types';
 import { Prop } from 'vue-property-decorator';
-import { compareFilters, getElementFilterData } from './FilterUtils';
+import { getElementFilterData } from './FilterUtils';
 import { findComponent, uuid4 } from '@/utils/utils';
 import DataTableFilters from '@/components/data-table-filters/DataTableFilters';
 import { getModule } from 'vuex-module-decorators';
@@ -19,6 +19,7 @@ import store from '@/store/index';
 import { DATA_TABLE_EVENTS } from '@/constants/events';
 import AdvancedFiltersPopoverFooter from './AdvancedFiltersPopoverFooter.vue';
 import { Component, Vue } from '@/build/vue-wrapper';
+import { Compare } from '@/utils/Compare';
 
 Vue.config.ignoredElements = [
   'chi-alert',
@@ -68,7 +69,6 @@ export default class AdvancedFilters extends Vue {
   _advancedFilterButtonId?: string;
   _advancedFilterPopoverId?: string;
   storeModule?: any;
-  _planeAdvancedData = {};
   isExpanded = false;
   _filtersTooltip?: any;
 
@@ -80,7 +80,7 @@ export default class AdvancedFilters extends Vue {
     return this.storeModule.filterConfigLive;
   }
 
-  async created() {
+  created() {
     this._advancedFilterAccordionId = `accordion__${this.filterUniqueID}`;
     this._advancedFilterUuid = uuid4();
     this._advancedFilterButtonId = `button__${this._advancedFilterUuid}`;
@@ -88,19 +88,10 @@ export default class AdvancedFilters extends Vue {
 
     if (!this.storeModule && this.$store) {
       this.storeModule = getModule(store, this.$store);
-
-      if (this.advancedFiltersData) {
-        this._planeAdvancedData = this.advancedFiltersData.reduce((accumulator: any, currentValue: any) => {
-          return {
-            ...accumulator,
-            [currentValue.id]: currentValue.type === 'checkbox' ? false : currentValue.value || '',
-          };
-        }, {});
-      }
     }
   }
 
-  async mounted() {
+  mounted() {
     const dataTableFiltersComponent = findComponent(this, 'DataTableFilters');
 
     if (this._advancedFilterAccordionId) {
@@ -159,7 +150,7 @@ export default class AdvancedFilters extends Vue {
     );
   }
 
-  async _changeFormElementFilter(ev: Event, elementType: DataTableFormElementFilters) {
+  _changeFormElementFilter(ev: Event, elementType: DataTableFormElementFilters) {
     if (ev.target) {
       const newFilterData: {
         name: string;
@@ -167,14 +158,12 @@ export default class AdvancedFilters extends Vue {
         value?: string;
         id: string;
       } | null = getElementFilterData(ev, elementType);
+      const filterPayload = {
+        id: newFilterData?.id.replace(/-desktop|-mobile/gi, '') || 'no-id',
+        value: elementType !== 'checkbox' ? newFilterData?.value : newFilterData?.checked,
+      };
 
-      await this.storeModule.updateFilterConfigLive({
-        ...this.filterElementValueLive,
-        ...{
-          [newFilterData?.id.replace(/-desktop|-mobile/gi, '') || 'no-id']:
-            elementType !== 'checkbox' ? newFilterData?.value : newFilterData?.checked,
-        },
-      });
+      this.storeModule.updateFilterConfigLive(filterPayload);
     }
   }
 
@@ -285,7 +274,7 @@ export default class AdvancedFilters extends Vue {
   render() {
     const advancedFilters: JSX.Element[] = [];
     const disabledFooterButtons =
-      this.filterElementValueLive && compareFilters(this.filterElementValue, this.filterElementValueLive);
+      this.filterElementValueLive && Compare.deepEqual(this.filterElementValue, this.filterElementValueLive);
 
     this.advancedFiltersData &&
       this.advancedFiltersData.forEach((filter: DataTableFilter) => {
@@ -386,8 +375,7 @@ export default class AdvancedFilters extends Vue {
     this.$emit(DATA_TABLE_EVENTS.ADVANCED_FILTERS_CHANGE);
   }
 
-  async _applyAdvancedFiltersChange() {
-    await this.storeModule.updateFilterConfig(this.filterElementValueLive);
+  _applyAdvancedFiltersChange() {
     this._emitAdvancedFiltersChange();
   }
 
@@ -403,9 +391,21 @@ export default class AdvancedFilters extends Vue {
     }
   }
 
-  async _resetAdvancedFilters() {
-    await this.storeModule.updateFilterConfig({ ...this.filterElementValue, ...this._planeAdvancedData });
-    await this.storeModule.updateFilterConfigLive({ ...this.filterElementValueLive, ...this._planeAdvancedData });
+  _resetAdvancedFilters() {
+    if (!this.advancedFiltersData) {
+      return;
+    }
+
+    this.advancedFiltersData?.forEach((currentValue: DataTableFilter) => {
+      const filterPayload = {
+        id: currentValue.id,
+        value: currentValue.type === 'checkbox' ? false : currentValue.value || '',
+      };
+
+      this.storeModule.updateFilterConfig(filterPayload);
+      this.storeModule.updateFilterConfigLive(filterPayload);
+    });
+
     this._emitAdvancedFiltersChange();
   }
 

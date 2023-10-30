@@ -8,6 +8,7 @@ declare const chi: any;
 export default class DataTableActions extends Vue {
   @Prop() actions?: DataTableAction[];
   @Prop() rowData?: DataTableColumnProps;
+  @Prop() dataTableNumber!: number;
 
   dropdown: any;
   modal: any;
@@ -52,7 +53,7 @@ export default class DataTableActions extends Vue {
         <button
           ref="modalTrigger"
           class="chi-button -icon -flat -centered chi-modal__trigger"
-          data-target="#modal-actions">
+          data-target={`#modal-actions-${this.dataTableNumber}`}>
           <div class="chi-button__content">
             <i class="chi-icon icon-more-vert" aria-hidden="true"></i>
           </div>
@@ -61,7 +62,7 @@ export default class DataTableActions extends Vue {
         <div class="chi-backdrop -mobile-bottom -closed">
           <div class="chi-backdrop__wrapper">
             <section
-              id="modal-actions"
+              id={`modal-actions-${this.dataTableNumber}`}
               class="chi-modal"
               role="dialog"
               aria-label="Modal description"

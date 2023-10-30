@@ -1,4 +1,64 @@
 # CHANGELOG
+## 5.41.0 (October 17, 2023)
+### Components
+#### Added
+* Added: Alert now supports `spinner` attribute to display animated spinner icon.
+* Added: Phone input now supports `input-mask` attribute to enter digits only.
+#### Fixed
+* Fixed: Chevron color in Footer language dropdown in Portal theme for consistency with Brand guidelines.
+### Documentation
+#### Changed
+* Changed: Alert actions section example, the two buttons shown have been replaced with one tertiary button.
+* Changed: Alert component base icon has changed from `circle-info` to `flag`.
+* Changed: Modal multi-step section has been removed for Portal theme.
+* Changed: Modal alert example button has been centered to better illustrate when there is only one action.
+
+## 5.40.0 (October 4, 2023)
+### Components
+#### Added
+* Added: Data table Vue component now supports configurable and responsive behavior actions column with `actions` config.
+* Added: Advanced filters Vue component now supports perform actions when several data tables in the same page.
+#### Changed
+* Changed: Progress now renders with a 4px border-radius.
+### Documentation
+#### Added
+* Added: Helper message to textarea in message section.
+#### Changed
+* Changed: Footer Lumen engage link has been replaced by Marketplace.
+* Changed: Progress semantic states section has been removed from Portal theme.
+
+## 5.39.0 (September 27, 2023)
+### Components
+#### Added
+* Added: Dropdown now supports `visible-items` attribute to provide number of items in the dropdown to be displayed, and apply scroll if needed.
+* Added: Save view event `chiSaveViewInput`.
+#### Changed
+* Changed: App layout header responsive behavior has been improved for mobile views.
+#### Fixed
+* Fixed: Stat item `-active` state.
+* Fixed: Carousel items calculation with stat component.
+* Fixed: Column customization cancel behavior that was removing items from columns.
+
+## 5.38.0 (September 15, 2023)
+### Components
+#### Added
+* Added: Expansion panel state icons now supports tooltip.
+* Added: Data table Vue component now supports empty actionable view with `emptyActionable` config.
+* Added: Column customization reset button now supports tooltip.
+* Added: Column customization now supports `wildcard` config for columns that enable a specified column to appear before locked columns.
+#### Changed
+* Changed: Helper message `font-style` from `regular` to `italic` if no state is present.
+* Changed: Toggle switch `xs` size to `sm` by default in Portal theme for consistency with Brand guidelines.
+* Changed: Data table Vue component pagination footer is always present in empty states (`no results`, `no filters` and `empty actionable`) for consistency with Brand guidelines.
+* Changed: Column customization reset button.
+#### Fixed
+* Fixed: Phone input `lg` size height mismatch between the country code dropdown and the input field.
+* Fixed: Header navbar `lg` size height has been increased from 24px to 32px in Portal theme for consistency with Brand guidelines.
+* Fixed: Header margin between logo and title for consistency with Brand guidelines.
+* Fixed: Draggable popover resize addEventListener that was causing console errors.
+* Fixed: Tabbed navigation bar with children dropdown now close automatically when hovering out.
+* Fixed: Column customization chevrons icon button disabled states.
+
 ## 5.37.0 (July 12, 2023)
 ### Components
 #### Added

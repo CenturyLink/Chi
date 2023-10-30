@@ -156,7 +156,7 @@ export class Drag {
     this.component = component;
     this.trigger.addEventListener('mousedown', this.dragMouseDownHandler);
     this.trigger.addEventListener('touchstart', this.dragTouchHandler);
-    window.addEventListener('resize', this.handlerResize.bind(this));
+    window.addEventListener('resize', this.handlerResize);
   }
 
   dispose() {
