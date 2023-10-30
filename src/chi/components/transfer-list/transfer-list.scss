@@ -1,0 +1,36 @@
+.transfer-list-column {
+  &__title {
+    color: $transfer-list-title-text-color;
+  }
+}
+
+.transfer-list-column-box {
+  width: 300px;
+  border: 0.0625rem solid $transfer-list-border-color;
+  border-radius: $transfer-list-border-radius;
+  position: relative;
+
+  &__content {
+    overflow: auto;
+    height: 320px;
+  }
+
+  &__search {
+    margin: 0.9375rem;
+  }
+
+  &__item {
+    padding: 0.625rem 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: $transfer-list-item-color;
+
+    &:hover {
+      background: $transfer-list-item-hover-color;
+    }
+
+    &.-active {
+      background: $transfer-list-item-active-color;
+    }
+  }
+}
