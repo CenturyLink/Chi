@@ -878,7 +878,26 @@ export default class DataTable extends Vue {
     toggleRows(this.slicedData);
   }
 
-  _rowAccordionContent(accordionData: DataTableRowNestedContent, contentLevel: 'parent' | 'child') {
+  _rowAccordionContent(
+    accordionData: DataTableRowNestedContent,
+    contentLevel: 'parent' | 'child',
+    parentIsStriped: boolean,
+    parentRowIsSelected: boolean
+  ) {
+    const getHTMLElement = (value: any) => (
+      <div
+        class={`${DATA_TABLE_CLASSES.ROW_CHILD} ${UTILITY_CLASSES.PADDING[2]}
+        ${
+          accordionData.alwaysVisible
+            ? parentRowIsSelected
+              ? ACTIVE_CLASS
+              : `${DATA_TABLE_CLASSES.ALWAYS_OPENED} ${parentIsStriped ? '-striped-content' : '-white-content'}`
+            : ''
+        }`}
+        role="row">
+        {value}
+      </div>
+    );
     if (accordionData.template) {
       const template: NormalizedScopedSlot | undefined = this.$scopedSlots[accordionData.template];
 
@@ -886,12 +905,7 @@ export default class DataTable extends Vue {
         throw Error(`No template with name ${accordionData.template} is provided.`);
       } else {
         const element = template(accordionData.payload);
-
-        return (
-          <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} ${UTILITY_CLASSES.PADDING[2]}`} role="row">
-            {element}
-          </div>
-        );
+        return getHTMLElement(element);
       }
     } else if (accordionData.table) {
       if (accordionData.table.data) {
@@ -900,11 +914,7 @@ export default class DataTable extends Vue {
         });
       }
     } else {
-      return (
-        <div class={`${DATA_TABLE_CLASSES.ROW_CHILD} ${UTILITY_CLASSES.PADDING[2]}`} role="row">
-          {accordionData.value}
-        </div>
-      );
+      return getHTMLElement(accordionData.value);
     }
   }
 
@@ -922,7 +932,8 @@ export default class DataTable extends Vue {
           ? DATA_TABLE_CLASSES.ROW_GRAND_CHILD
           : rowLevel === 'child'
           ? DATA_TABLE_CLASSES.ROW_CHILD
-          : DATA_TABLE_CLASSES.ROW;
+          : DATA_TABLE_CLASSES.ROW,
+      rowIsSelected = this.selectedRows.includes(bodyRow.rowId);
 
     if (this.config.selectable) {
       rowCells.push(
@@ -933,17 +944,25 @@ export default class DataTable extends Vue {
     }
 
     if (this._expandable) {
+      const emptyCell = <div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`} role="cell" />;
       if (bodyRow.nestedContent) {
         if (rowLevel === 'grandChild' || rowLevel === 'child') {
           rowCells.push(<div class="chi-data-table__cell -expandable"></div>);
-        } else {
+        } else if (!bodyRow.nestedContent.alwaysVisible) {
           rowCells.push(this._expansionButtonCell(bodyRow));
+        } else {
+          rowCells.push(emptyCell);
         }
         rowAccordionContent.push(
-          this._rowAccordionContent(bodyRow.nestedContent, rowLevel === 'child' ? 'child' : 'parent')
+          this._rowAccordionContent(
+            bodyRow.nestedContent,
+            rowLevel === 'child' ? 'child' : 'parent',
+            striped,
+            rowIsSelected
+          )
         );
       } else {
-        rowCells.push(<div class={`${DATA_TABLE_CLASSES.CELL} ${DATA_TABLE_CLASSES.EXPANDABLE}`} role="cell" />);
+        rowCells.push(emptyCell);
       }
     }
 
@@ -1051,9 +1070,9 @@ export default class DataTable extends Vue {
             : ''
         }
         ${this.$props.config.style.portal ? `-${this.$props.config.style.size}` : ''}
-        ${this.selectedRows.includes(bodyRow.rowId) || bodyRow.active ? ACTIVE_CLASS : ''}
+        ${rowIsSelected || bodyRow.active ? ACTIVE_CLASS : ''}
         ${
-          (this._expandable || hasState) && bodyRow.nestedContent
+          (this._expandable || hasState) && bodyRow.nestedContent && !bodyRow.nestedContent.alwaysVisible
             ? `${isExpanded ? EXPANDED_CLASS : COLLAPSED_CLASS}`
             : ''
         }
@@ -1312,7 +1331,9 @@ export default class DataTable extends Vue {
 
       const state = this._getRowState(row);
       const hasState = state && !row.state;
-      const shouldExpand = rowObject.expanded && !this.accordionsExpanded.includes(rowObject.rowId);
+      const shouldExpand =
+        (rowObject.expanded || rowObject.nestedContent?.alwaysVisible) &&
+        !this.accordionsExpanded.includes(rowObject.rowId);
 
       if (shouldExpand || hasState) {
         this.accordionsExpanded.push(rowObject.rowId);

@@ -387,6 +387,7 @@ export const exampleTableBody = [
     active: false,
     nestedContent: {
       value: 'asdasdasd',
+      alwaysVisible: true,
     },
     data: [
       { template: 'ticketId', payload: { id: 'NTM000021064' } },

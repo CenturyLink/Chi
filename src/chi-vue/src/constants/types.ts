@@ -32,6 +32,7 @@ export interface DataTableRowNestedContent {
   template: string;
   value: string;
   payload: any;
+  alwaysVisible?: boolean;
 }
 export interface DataTableRow {
   active: boolean;

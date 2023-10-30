@@ -109,6 +109,7 @@ export const DATA_TABLE_CLASSES = {
   TRUNCATED: '-truncated',
   PRINT_FOOTER: 'chi-data-table__print-footer',
   STATE: '-state',
+  ALWAYS_OPENED: '-always-opened',
 };
 //#endregion
 

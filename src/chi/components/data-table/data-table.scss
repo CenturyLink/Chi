@@ -19,6 +19,7 @@ $sizes: (
   )
 );
 
+
 .chi-data-table {
   border-collapse: collapse;
   display: block;
@@ -27,6 +28,18 @@ $sizes: (
   overflow-x: initial;
   overflow-y: initial;
   width: 100%;
+
+  .-always-opened {
+    box-shadow: none !important;
+  }
+  
+  .-striped-content{
+    background-color: #f5f8fc !important;
+  }
+  
+  .-white-content{
+    background-color: #ffffff !important;
+  }
 
   .chi-data-table__print-footer {
     padding: 1rem;
