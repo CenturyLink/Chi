@@ -294,12 +294,15 @@ $sizes: (
       &--warning {
         box-shadow: 0 0 0 0.0625rem $data-table-state-warning-box-shadow inset;
       }
+
       &--danger {
         box-shadow: 0 0 0 0.0625rem $data-table-state-danger-box-shadow inset;
       }
+
       &--success {
         box-shadow: 0 0 0 0.0625rem $data-table-state-success-box-shadow inset;
       }
+
       &--info {
         box-shadow: 0 0 0 0.0625rem $data-table-state-info-box-shadow inset;
       }
@@ -322,19 +325,22 @@ $sizes: (
       &.-row {
         &--warning {
           box-shadow: 0 0 0 0.0625rem $data-table-state-warning-box-shadow inset,
-            inset 0.25rem 0 0 $data-table-state-warning-box-shadow;
+          inset 0.25rem 0 0 $data-table-state-warning-box-shadow;
         }
+
         &--danger {
           box-shadow: 0 0 0 0.0625rem $data-table-state-danger-box-shadow inset,
-            inset 0.25rem 0 0 $data-table-state-danger-box-shadow;
+          inset 0.25rem 0 0 $data-table-state-danger-box-shadow;
         }
+
         &--success {
           box-shadow: 0 0 0 0.0625rem $data-table-state-success-box-shadow inset,
-            inset 0.25rem 0 0 $data-table-state-success-box-shadow;
+          inset 0.25rem 0 0 $data-table-state-success-box-shadow;
         }
+
         &--info {
           box-shadow: 0 0 0 0.0625rem $data-table-state-info-box-shadow inset,
-            inset 0.25rem 0 0 $data-table-state-info-box-shadow;
+          inset 0.25rem 0 0 $data-table-state-info-box-shadow;
         }
       }
     }
