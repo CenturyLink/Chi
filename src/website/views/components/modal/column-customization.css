@@ -1,0 +1,46 @@
+/* This is compiled code from /chi-vue/src/components/column-customization/column-customization.scss to have it working in the modal section */
+/* This is temporary solution */
+
+select.chi-select[multiple] {
+    padding: .25rem
+}
+
+select.chi-select[multiple] option {
+    align-items: center;
+    display: flex;
+    min-height: 1.5rem;
+    white-space: normal;
+    word-break: break-all
+}
+
+select.chi-select[multiple].available-columns,select.chi-select[multiple].selected-columns {
+    height: 12.5rem;
+    width: 14rem
+}
+
+select.chi-select[multiple].selected-columns option {
+    padding-left: 2rem
+}
+
+select.chi-select[multiple].selected-columns option.-locked {
+    position: relative
+}
+
+select.chi-select[multiple].selected-columns option.-locked:before {
+    content: "";
+    font-family: chi!important;
+    font-size: .75rem;
+    height: .75rem;
+    width: .75rem;
+    position: absolute;
+    left: .625rem;
+    top: .375rem
+}
+
+.chi-column-customization__reset-button .chi-button__content span {
+    color: #0262b9
+}
+
+.chi-column-customization__reset-button[disabled] .chi-button__content span {
+    color: #65686c
+}

@@ -1,5 +1,4 @@
-script(src='https://cdn.jsdelivr.net/npm/vue@2.6.11')
-script(src='../../chi-vue/umd/chi-vue.umd.js')
+link(rel='stylesheet', href='column-customization.css')
 
 h2 Examples
 p.-text
@@ -707,7 +706,59 @@ h3 Column Customization
 p.-text
   | Opens column customization modal, and allows to modify them.
 .example.-mb--3
-  chi-vue-column-customization(id="column-customization" ref="baseColumnCustomizationRef" :columns-data="columnsData")
+  #column-customization.chi-data-table__columns
+   .chi-backdrop.-center.-p--6.-position--relative
+    .chi-backdrop__wrapper
+      section.chi-modal.-animated.-active(data-cy='chi-modal' role='dialog' aria-label='Customize Columns' aria-modal='true')
+        header.chi-modal__header
+          h2.chi-modal__title Customize Columns
+          button.chi-button.-icon.-close(aria-label='Close')
+            .chi-button__content
+              i.chi-icon.icon-x(aria-hidden='true')
+        .chi-modal__content
+          .-d--flex
+            .-flex--grow1
+              div
+                .-text--bold Available Columns
+                select.chi-select.available-columns(multiple='multiple')
+                  option(value='columnA') Column A
+                  option(value='columnB') Column B
+                  option(value='columnG') Column G
+                  option(value='columnH') Column H
+                  option(value='columnI') Column I
+                  option(value='columnJ') Column J
+            .-px--1.-d--flex.-align-items--center
+              .-d--flex.-flex--column
+                button.chi-button.-icon.-flat(aria-label='select')
+                  .chi-button__content
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
+                button.chi-button.-icon.-flat(aria-label='Deselect')
+                  .chi-button__content
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+            .-flex--grow1
+              div
+                .-text--bold Selected Columns
+                select.chi-select.selected-columns(multiple='multiple')
+                  option.-locked(disabled='disabled' value='columnC') Column C
+                  option.-locked(disabled='disabled' value='columnD') Column D
+                  option(value='columnE') Column E
+                  option(value='columnF') Column F
+            .-px--1.-d--flex.-align-items--center
+              .-d--flex.-flex--column
+                button.chi-button.-icon.-flat(aria-label='Move Up')
+                  .chi-button__content
+                    i.chi-icon.icon-chevron-up(aria-hidden='true')
+                button.chi-button.-icon.-flat(aria-label='Move Down')
+                  .chi-button__content
+                    i.chi-icon.icon-chevron-down(aria-hidden='true')
+        footer.chi-modal__footer
+          button.chi-button.-icon.-flat.-xs.-py--0.chi-column-customization__reset-button(data-tooltip='Reset to default columns and order' aria-describedby='chi-tooltip-22' disabled='')
+            .chi-button__content.-flex--column.-align-items--center
+              i.chi-icon.icon-reset.-sm--2.-mr--0(aria-hidden='true')
+              span.-text--uppercase.-text--2xs Reset
+          .chi-divider.-vertical.-mr--2
+          button.chi-button Cancel
+          button.chi-button.-primary Save
   .example-tabs.-pl--2
     ul.chi-tabs#example-column-customization-modal
       li.-disabled
@@ -786,63 +837,3 @@ script.
       chi.modal(document.querySelectorAll('#modal-trigger-1'));
       chi.modal(document.querySelectorAll('#modal-trigger-portal-1'));
     })
-
-    const exampleColumns = [
-    {
-      name: 'columnE',
-      label: 'Column E',
-      selected: true,
-    },
-    {
-      name: 'columnB',
-      label: 'Column B',
-    },
-    {
-      name: 'columnA',
-      label: 'Column A',
-    },
-    {
-      name: 'columnC',
-      label: 'Column C',
-      locked: true,
-      selected: true,
-    },
-    {
-      name: 'columnD',
-      label: 'Column D',
-      locked: true,
-      selected: true,
-    },
-    {
-      name: 'columnF',
-      label: 'Column F',
-      selected: true,
-    },
-    {
-      name: 'columnJ',
-      label: 'Column J',
-    },
-    {
-      name: 'columnG',
-      label: 'Column G',
-    },
-    {
-      name: 'columnI',
-      label: 'Column I',
-    },
-    {
-      name: 'columnH',
-      label: 'Column H',
-    },
-  ];
-
-  new Vue({
-    components: {
-      chiVueColumnCustomization: window["chi-vue"].library.components.ChiColumnCustomization,
-    },
-    data: {
-      columnsData: {
-        columns: exampleColumns,
-      },
-    }
-  }).$mount("#column-customization");
