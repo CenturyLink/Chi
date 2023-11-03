@@ -1,36 +1,50 @@
 .transfer-list-column {
-  &__title {
-    color: $transfer-list-title-text-color;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+
+  &__content {
+    border: 0.0625rem solid $transfer-list-border-color;
+    border-radius: $transfer-list-border-radius;
+    position: relative;
+    overflow: auto;
+    height: 300px;
   }
 }
 
-.transfer-list-column-box {
-  width: 300px;
-  border: 0.0625rem solid $transfer-list-border-color;
-  border-radius: $transfer-list-border-radius;
-  position: relative;
+.transfer-list-column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 
-  &__content {
-    overflow: auto;
-    height: 320px;
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 0.3125rem;
+    color: $transfer-list-title-text-color;
+    font-weight: 700;
+    margin: 0;
   }
 
-  &__header {
-    margin: 0.9375rem;
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.3125rem;
+  }
+}
+
+.transfer-list-item {
+  padding: 0.625rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  background: $transfer-list-item-color;
+
+  &:hover {
+    background: $transfer-list-item-hover-color;
   }
 
-  &__item {
-    padding: 0.625rem 1.25rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    background: $transfer-list-item-color;
-
-    &:hover {
-      background: $transfer-list-item-hover-color;
-    }
-
-    &.-active {
-      background: $transfer-list-item-active-color;
-    }
+  &.-active {
+    background: $transfer-list-item-active-color;
   }
 }
