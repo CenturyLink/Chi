@@ -195,13 +195,13 @@ section.chi-table.chi-table__options.-bordered.-my--3
       tbody
         tr
           td
-            div <code>toggleRow() => Promise&lt;void&gt;</code>
+            div <code>toggleRow(DataTableRow) => void</code>
           td
-            div To expand / collapse specific rows
+            div To expand / collapse specific rows. <code>RowId</code> is created using pattern: <code>row-dt-${dataTableNumber}-${rowId}</code>
           td
-            | Type: Promise<void>
+            | Type: void
           td
-            div rowId: <code>string</code>
+            div DataTableRow: <code> { rowId: string }</code>
         tr
           td
             div <code>print() => void</code>
