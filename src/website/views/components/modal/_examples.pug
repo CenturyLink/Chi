@@ -1,5 +1,3 @@
-link(rel='stylesheet', href='column-customization.css')
-
 h2 Examples
 p.-text
   | Modals are composed of several parts. To render a modal, include a modal backdrop, modal header, modal body,
@@ -837,3 +835,48 @@ script.
       chi.modal(document.querySelectorAll('#modal-trigger-1'));
       chi.modal(document.querySelectorAll('#modal-trigger-portal-1'));
     })
+
+style. 
+    select.chi-select[multiple] {
+      padding: .25rem
+    }
+
+    select.chi-select[multiple] option {
+      align-items: center;
+      display: flex;
+      min-height: 1.5rem;
+      white-space: normal;
+      word-break: break-all
+    }
+
+    select.chi-select[multiple].available-columns,select.chi-select[multiple].selected-columns {
+      height: 12.5rem;
+      width: 14rem
+    }
+
+    select.chi-select[multiple].selected-columns option {
+      padding-left: 2rem
+    }
+
+    select.chi-select[multiple].selected-columns option.-locked {
+      position: relative
+    }
+
+    select.chi-select[multiple].selected-columns option.-locked:before {
+      content: "";
+      font-family: chi!important;
+      font-size: .75rem;
+      height: .75rem;
+      width: .75rem;
+      position: absolute;
+      left: .625rem;
+      top: .375rem
+    }
+
+    .chi-column-customization__reset-button .chi-button__content span {
+      color: #0262b9
+    }
+
+    .chi-column-customization__reset-button[disabled] .chi-button__content span {
+      color: #65686c
+    }
