@@ -1,7 +1,6 @@
 <template lang="pug">
   div
     h2 Web Component
-    <PropertiesGenerator tag="chi-badge" />
 </template>
 
 <script lang="ts">
