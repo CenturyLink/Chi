@@ -700,6 +700,133 @@ p.-text
         <!-- JavaScript -->
         <script>chi.modal(document.getElementById('modal-trigger-9'));</script>
 
+h3 Column Customization
+p.-text
+  | Opens column customization modal, and allows to modify them.
+.example.-mb--3
+  #column-customization.chi-data-table__columns
+   .chi-backdrop.-center.-p--6.-position--relative
+    .chi-backdrop__wrapper
+      section.chi-modal.-animated.-active(data-cy='chi-modal' role='dialog' aria-label='Customize Columns' aria-modal='true')
+        header.chi-modal__header
+          h2.chi-modal__title Customize Columns
+          button.chi-button.-icon.-close(aria-label='Close')
+            .chi-button__content
+              i.chi-icon.icon-x(aria-hidden='true')
+        .chi-modal__content
+          .-d--flex
+            .-flex--grow1
+              div
+                .-text--bold Available Columns
+                select.chi-select.available-columns(multiple='multiple')
+                  option(value='columnA') Column A
+                  option(value='columnB') Column B
+                  option(value='columnG') Column G
+                  option(value='columnH') Column H
+                  option(value='columnI') Column I
+                  option(value='columnJ') Column J
+            .-px--1.-d--flex.-align-items--center
+              .-d--flex.-flex--column
+                button.chi-button.-icon.-flat(aria-label='select')
+                  .chi-button__content
+                    i.chi-icon.icon-chevron-right(aria-hidden='true')
+                button.chi-button.-icon.-flat(aria-label='Deselect')
+                  .chi-button__content
+                    i.chi-icon.icon-chevron-left(aria-hidden='true')
+            .-flex--grow1
+              div
+                .-text--bold Selected Columns
+                select.chi-select.selected-columns(multiple='multiple')
+                  option.-locked(disabled='disabled' value='columnC') Column C
+                  option.-locked(disabled='disabled' value='columnD') Column D
+                  option(value='columnE') Column E
+                  option(value='columnF') Column F
+            .-px--1.-d--flex.-align-items--center
+              .-d--flex.-flex--column
+                button.chi-button.-icon.-flat(aria-label='Move Up')
+                  .chi-button__content
+                    i.chi-icon.icon-chevron-up(aria-hidden='true')
+                button.chi-button.-icon.-flat(aria-label='Move Down')
+                  .chi-button__content
+                    i.chi-icon.icon-chevron-down(aria-hidden='true')
+        footer.chi-modal__footer
+          button.chi-button.-icon.-flat.-xs.-py--0.chi-column-customization__reset-button(data-tooltip='Reset to default columns and order' aria-describedby='chi-tooltip-22' disabled='')
+            .chi-button__content.-flex--column.-align-items--center
+              i.chi-icon.icon-reset.-sm--2.-mr--0(aria-hidden='true')
+              span.-text--uppercase.-text--2xs Reset
+          .chi-divider.-vertical.-mr--2
+          button.chi-button Cancel
+          button.chi-button.-primary Save
+  .example-tabs.-pl--2
+    ul.chi-tabs#example-column-customization-modal
+      li.-disabled
+        a(href=`#webcomponent-column-customization-modal`) Web Component
+      li.-active
+        a(href=`#vue-column-customization-modal`) Vue
+      li.-disabled
+        a(href=`#html-column-customization-modal`) HTML Blueprint
+  .chi-tabs-panel#webcomponent-column-customization-modal
+  .chi-tabs-panel.-active#vue-column-customization-modal
+    .chi-tab__description Use <code>columnsData</code> to customize the columns.
+    :code(lang='html')
+      <!-- Vue component -->
+      <ChiColumnCustomization :columnsData="columnsData"></ChiColumnCustomization>
+
+      <!-- Config and Data -->
+      data: {
+        columnsData: {
+          columns: [
+            {
+              name: 'columnE',
+              label: 'Column E',
+              selected: true,
+            },
+            {
+              name: 'columnB',
+              label: 'Column B',
+            },
+            {
+              name: 'columnA',
+              label: 'Column A',
+            },
+            {
+              name: 'columnC',
+              label: 'Column C',
+              locked: true,
+              selected: true,
+            },
+            {
+              name: 'columnD',
+              label: 'Column D',
+              locked: true,
+              selected: true,
+            },
+            {
+              name: 'columnF',
+              label: 'Column F',
+              selected: true,
+            },
+            {
+              name: 'columnJ',
+              label: 'Column J',
+            },
+            {
+              name: 'columnG',
+              label: 'Column G',
+            },
+            {
+              name: 'columnI',
+              label: 'Column I',
+            },
+            {
+              name: 'columnH',
+              label: 'Column H',
+            },
+          ];,
+        },
+      },
+  .chi-tabs-panel#html-column-customization-modal
+
 script.
     document.addEventListener(
     'DOMContentLoaded',
@@ -707,5 +834,49 @@ script.
       chi.tab(document.querySelectorAll('.chi-tabs-panel .chi-tabs'));
       chi.modal(document.querySelectorAll('#modal-trigger-1'));
       chi.modal(document.querySelectorAll('#modal-trigger-portal-1'));
+    })
+
+style. 
+    select.chi-select[multiple] {
+      padding: .25rem
     }
-  );
+
+    select.chi-select[multiple] option {
+      align-items: center;
+      display: flex;
+      min-height: 1.5rem;
+      white-space: normal;
+      word-break: break-all
+    }
+
+    select.chi-select[multiple].available-columns,select.chi-select[multiple].selected-columns {
+      height: 12.5rem;
+      width: 14rem
+    }
+
+    select.chi-select[multiple].selected-columns option {
+      padding-left: 2rem
+    }
+
+    select.chi-select[multiple].selected-columns option.-locked {
+      position: relative
+    }
+
+    select.chi-select[multiple].selected-columns option.-locked:before {
+      content: "";
+      font-family: chi!important;
+      font-size: .75rem;
+      height: .75rem;
+      width: .75rem;
+      position: absolute;
+      left: .625rem;
+      top: .375rem
+    }
+
+    .chi-column-customization__reset-button .chi-button__content span {
+      color: #0262b9
+    }
+
+    .chi-column-customization__reset-button[disabled] .chi-button__content span {
+      color: #65686c
+    }
