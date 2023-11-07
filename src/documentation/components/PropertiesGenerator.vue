@@ -109,7 +109,6 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
       props: [],
       events: [],
       methods: [],
-      docs: Vue.prototype.$chiDocs
     };
   }
 })
@@ -121,8 +120,8 @@ export default class PropertiesGenerator extends Vue {
   }
 
   created() {
-    if (this.$data.docs) {
-      const component = this.$data.docs.components?.find(
+    if (Vue.prototype.$chiDocs) {
+      const component = Vue.prototype.$chiDocs.components?.find(
         (component: {tag: string}) => component.tag === this.tag
       );
 
