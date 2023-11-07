@@ -1,5 +1,5 @@
 {
-  "timestamp": "2023-10-30T13:23:46",
+  "timestamp": "2023-11-06T11:18:09",
   "compiler": {
     "name": "@stencil/core",
     "version": "1.8.9",
@@ -5437,6 +5437,23 @@
           "attr": "border",
           "reflectToAttr": false,
           "docs": "To enable border",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "inverse",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "inverse",
+          "reflectToAttr": false,
+          "docs": "To set inverse style",
           "docsTags": [],
           "default": "false",
           "values": [

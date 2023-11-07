@@ -16,7 +16,8 @@ import {
   GENERIC_SIZE_CLASSES,
   ICON_CLASS,
   TABS_CLASSES,
-  UTILITY_CLASSES
+  UTILITY_CLASSES,
+  INVERSE_CLASS
 } from '../../constants/classes';
 import {
   ANIMATION_DURATION,
@@ -75,6 +76,10 @@ export class Tabs {
    *  To configure See more Dropdown trigger message
    */
   @Prop() seeMoreMessage = TABS_SEE_MORE_DEFAULT_MESSAGE;
+  /**
+   * To set inverse style
+   */
+  @Prop() inverse = false;
 
   @State() sliding = false;
   @State() isSeeMoreActive = false;
@@ -601,6 +606,7 @@ export class Tabs {
             ${this.solid && TABS_CLASSES.SOLID}
             ${this.sliding && TABS_CLASSES.SLIDING}
             ${this.size ? `-${this.size}` : ''}
+            ${this.inverse && INVERSE_CLASS}
           `}
           ref={el => {
             this.ulElement = el;

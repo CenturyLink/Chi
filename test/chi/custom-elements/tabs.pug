@@ -8,16 +8,89 @@ h2 Base
 .-w--100
   chi-tabs(active-tab='tab-a' id='base' sliding-border)
 
-//- h2 Border
-//- .-w--100
-//-   chi-tabs(active-tab='tab-a' border id='base' sliding-border)
+//- documentation examples
 
-//- h2 Vertical
-//- chi-tabs(active-tab='tab-a' id='vertical' vertical sliding-border)
+h2 Horizontal
+h3 Flat 
+h4 Base
+.-w--100 
+  chi-tabs(id='horizontal-flat-base')
 
-//- h2 Solid
-//- .-w--100
-//-   chi-tabs(active-tab='tab-a' id='solid' solid sliding-border)
+h4 Inverse
+.-w--100 
+  chi-tabs(id='horizontal-flat-inverse' inverse)
+
+h3 Solid 
+.-w--100 
+  chi-tabs(id='horizontal-flat-solid' solid size="lg" border)
+
+h2 Vertical 
+h3 Flat
+
+h4 Base
+.-w--100
+  chi-tabs(id='vertical-flat-base' vertical)
+h4 Inverse
+.-w--100
+  chi-tabs(id='vertical-flat-inverse' vertical inverse)
+
+h3 Solid 
+.-w--100 
+  chi-tabs(id='vertical-solid' vertical solid) 
+
+//- not suported by wc
+//- h3 Subtabs 
+//- .-w--100 
+//-   chi-tabs(id='vertical-subtabs' vertical)
+
+h2 Border
+h3 Base
+.-w--100
+  chi-tabs(id='bordered-base' border)
+h3 Inverse
+.-w--100
+  chi-tabs(id='bordered-inverse' inverse border)
+
+h2 Additional sizes 
+h3 Horizontal
+h4 XS
+.-w--100 
+  chi-tabs(id='size-XS-horizontal' size='xs')
+h4 SM
+.-w--100 
+  chi-tabs(id='size-SM-horizontal' size='sm')
+h4 MD
+.-w--100 
+  chi-tabs(id='size-MD-horizontal' size='md')
+h4 LG
+.-w--100 
+  chi-tabs(id='size-LG-horizontal' size='lg')
+h4 XL
+.-w--100 
+  chi-tabs(id='size-XL-horizontal' size='xl')
+h4 SM_2
+.-w--100 
+  chi-tabs(id='size-SM_2-horizontal' size='sm--2')
+h3 Vertical
+h4 XS
+.-w--100 
+  chi-tabs(id='size-XS-vertical' vertical size='xs')
+h4 SM
+.-w--100 
+  chi-tabs(id='size-SM-vertical' vertical size='sm')
+h4 MD
+.-w--100 
+  chi-tabs(id='size-MD-vertical' vertical size='md')
+h4 LG
+.-w--100 
+  chi-tabs(id='size-LG-vertical' vertical size='lg')
+h4 XL
+.-w--100 
+  chi-tabs(id='size-XL-vertical' vertical size='xl')
+h4 SM_2
+.-w--100 
+  chi-tabs(id='size-SM_2-vertical' vertical size='sm--2')
+
 
 //- h2 No animation
 //- .-w--100
@@ -193,4 +266,60 @@ script.
     tabElement.addEventListener('chiTabChange', e => {
       console.log(e);
     });
+
+    const getExampleTabs = id => ({
+      [id]: [
+        {label: 'Active tab', id: `${id}-example-1`},
+        {label: 'Tab Link', id: `${id}-example-2`},
+        {label: 'Tab Link', id: `${id}-example-3`},
+      ]
+    })
+
+
+    const chiTabElements = [
+      'horizontal-flat-base',
+      'horizontal-flat-inverse',
+      'horizontal-flat-solid',
+      'vertical-flat-base',
+      'vertical-flat-inverse',
+      'vertical-solid',
+      //- {"vertical-subtabs": [
+      //-   {label: "Active tab", id: 'vertical-subtabs-1', children: [
+      //-     {label: "Active subtab", id: 'vertical-subtabs-1-1', children: [
+      //-       {label: "Tab Link", id: 'vertical-subtabs-1-1-1'},
+      //-       {label: "Tab Link", id: 'vertical-subtabs-1-1-2'},
+      //-     ]},
+      //-     {label: "Tab Link", id: 'vertical-subtabs-1-2'},
+      //-     {label: "Tab Link", id: 'vertical-subtabs-1-3'},
+      //-   ]},
+      //-   {label: "Tab Link", id: 'vertical-subtabs-2'},
+      //-   {label: "Tab Link", id: 'vertical-subtabs-3'},
+      //- ]},
+      'bordered-base',
+      'bordered-inverse',
+      'size-XS-horizontal',
+      'size-XS-vertical',
+      'size-SM-horizontal',
+      'size-SM-vertical',
+      'size-MD-horizontal',
+      'size-MD-vertical',
+      'size-LG-horizontal',
+      'size-LG-vertical',
+      'size-XL-horizontal',
+      'size-XL-vertical',
+      'size-SM_2-horizontal',
+      'size-SM_2-vertical',
+    ].reduce((acc, curr) => ({
+      ...acc,
+      ...(typeof(curr) === 'string' ? getExampleTabs(curr) : curr)
+    }), {})
+
+    // add tabs to elements and set event listener to show active pannel
+    for (const [tabId, tabs] of Object.entries(chiTabElements)) {
+      const element = document.getElementById(tabId);
+      element.tabs = tabs;
+      element.activeTab = tabs[0].id
+
+      element.addEventListener('chiTabChange', console.log)
+    }
   });
