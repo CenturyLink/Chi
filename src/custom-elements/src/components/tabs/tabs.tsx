@@ -207,12 +207,12 @@ export class Tabs {
                     UTILITY_CLASSES.JUSTIFY.BETWEEN
                   } ${this._isActiveTab(child) ? ACTIVE_CLASS : ''}`}
                   id={child.id}
+                  href={this.getTabHref(child)}
+                  target={this.getTabHrefTarget(child)}
                   onMouseEnter={() => this.handlerTabMouseEnter(child)}
                   onMouseLeave={e => this.handlerMouseLeave(e)}
                   onClick={e => {
-                    const dropdownElement = this.el.querySelector(
-                      `chi-dropdown#subLevelDropdown-${tab.id}`
-                    ) as HTMLChiDropdownElement;
+                    const dropdownElement = this.getSubLevelDropdown(tab.id);
                     const firstLevelTriggerElement = this.el.querySelector(
                       `li#${firstLevelId} a`
                     ) as HTMLElement;
@@ -246,6 +246,52 @@ export class Tabs {
     return this.el.querySelector(`li.${ACTIVE_CLASS}`) as HTMLElement;
   }
 
+  /**
+   * Gets the element for a dropdown sublevel with the given ID
+   */
+  getSubLevelDropdown(id: string): HTMLChiDropdownElement {
+    return this.el.querySelector(
+      `chi-dropdown#subLevelDropdown-${id}`
+    ) as unknown as HTMLChiDropdownElement;
+  }
+
+  /**
+   * Returns the href for the given tab. 
+   * If the tab has an external href, normalizes the href to ensure that
+   * the browser does not prepends the current domain.
+   * @param tab Tab data
+   */
+  getTabHref(tab: TabTrigger): string {
+    let href = tab.href || `#${tab.id}`;
+
+    if (tab.href?.startsWith('www.')) {
+      href = '//' + href       
+    }
+
+    return href
+  }
+
+  /**
+   * If the tab contains a target, returns it.
+   * If the tab contains an external href, the default behavior is to open
+   * the link in a new tab.
+   */
+  getTabHrefTarget(tab: TabTrigger): string {
+    let target = tab.target || ''
+
+    if (!this.isTabAnchorLink(tab) && !target) {
+      target = '_blank'
+    }
+
+    return target
+  }
+  /**
+   * Checks wether the tab is an anchor link (internal link) 
+   */
+  isTabAnchorLink(tabData :TabTrigger): boolean {
+    return !tabData.href || tabData.href.startsWith('#')
+  }
+
   getPosition(el: HTMLElement): TabTriggerPosition {
     const cs = window.getComputedStyle(el);
     const marginTop = cs.getPropertyValue('margin-top');
@@ -276,7 +322,10 @@ export class Tabs {
     tabData: TabTrigger,
     slidingBorderNewPosition?: HTMLElement
   ) {
-    e.preventDefault();
+    // do not follow link
+    if (this.isTabAnchorLink(tabData)) {
+      e.preventDefault();
+    }
     if (this.animation && !this.animation.isStopped()) {
       this.animation.stop();
     }
@@ -358,9 +407,7 @@ export class Tabs {
     if (!tabData.children) return;
 
     this.dropdownKeys[tabData.id] += 1;
-    const dropdownElement = this.el.querySelector(
-      `#subLevelDropdown-${tabData.id}`
-    );
+    const dropdownElement = this.getSubLevelDropdown(tabData.id)
 
     if (dropdownElement) {
       (dropdownElement as HTMLChiDropdownElement).show();
@@ -464,10 +511,10 @@ export class Tabs {
 
   hideDropdowns(dropdowns: string[]) {
     dropdowns.forEach(id => {
-      const dropdownElement = this.el.querySelector(`#subLevelDropdown-${id}`);
+      const dropdownElement = this.getSubLevelDropdown(id)
 
       if (dropdownElement) {
-        (dropdownElement as HTMLChiDropdownElement).hide();
+        dropdownElement.hide();
       }
     });
   }
@@ -510,7 +557,8 @@ export class Tabs {
               }}
             >
               <a
-                href={`#${tab.id}`}
+                href={this.getTabHref(tab)}
+                target={this.getTabHrefTarget(tab)}
                 class={tab.children ? '-has-child' : ''}
                 role="tab"
                 aria-selected={this._isActiveTab(tab)}
@@ -559,7 +607,8 @@ export class Tabs {
               this._isActiveTab(tab) ? ACTIVE_CLASS : ''
             }`}
             id={tab.id}
-            href="#"
+            href={this.getTabHref(tab)}
+            target={this.getTabHrefTarget(tab)}
             onMouseEnter={() => this.handlerTabMouseEnter(tab)}
             onMouseLeave={e => this.handlerMouseLeave(e, true)}
             onClick={e => {
