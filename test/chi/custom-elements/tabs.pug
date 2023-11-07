@@ -8,7 +8,9 @@ h2 Base
 .-w--100
   chi-tabs(active-tab='tab-a' id='base' sliding-border)
 
-//- documentation examples
+//- h2 Border
+//- .-w--100
+//-   chi-tabs(active-tab='tab-a' border id='base' sliding-border)
 
 h2 Horizontal
 h3 Flat 
@@ -17,7 +19,7 @@ h4 Base
   chi-tabs(id='horizontal-flat-base')
 
 h4 Inverse
-.-w--100 
+.-w--100.-bg--black
   chi-tabs(id='horizontal-flat-inverse' inverse)
 
 h3 Solid 
@@ -30,8 +32,10 @@ h3 Flat
 h4 Base
 .-w--100
   chi-tabs(id='vertical-flat-base' vertical)
+
 h4 Inverse
-.-w--100
+
+.-w--100.-bg--black
   chi-tabs(id='vertical-flat-inverse' vertical inverse)
 
 h3 Solid 
@@ -47,8 +51,10 @@ h2 Border
 h3 Base
 .-w--100
   chi-tabs(id='bordered-base' border)
+
 h3 Inverse
-.-w--100
+
+.-w--100.-bg--black
   chi-tabs(id='bordered-inverse' inverse border)
 
 h2 Additional sizes 
@@ -91,6 +97,9 @@ h4 SM_2
 .-w--100 
   chi-tabs(id='size-SM_2-vertical' vertical size='sm--2')
 
+//- h2 Solid
+//- .-w--100
+//-   chi-tabs(active-tab='tab-a' id='solid' solid sliding-border)
 
 //- h2 No animation
 //- .-w--100
@@ -113,7 +122,7 @@ script.
         },
         {
           label: 'Tab B',
-          id: 'tab-b'
+          id: 'tab-b',
         },
         {
           label: 'Tab C',
@@ -261,6 +270,33 @@ script.
           label: 'Tab P',
           id: 'tab-p'
         },
+        {
+          label: 'Google',
+          id: 'tab-href',
+          href: 'https://www.google.com',
+          children: [
+            {
+              label: 'Google spain',
+              id: 'tab-href-google-spain',
+              href: 'www.google.es'
+            },
+            {
+              label: 'Google uk same window',
+              id: 'tab-href-google-uk',
+              href: 'www.google.co.uk',
+              target: '_self'
+            },
+            {
+              label: 'Internal link',
+              id: 'tab-href-internal'
+            }
+          ]
+        },
+        {
+          label: 'Tab Q external',
+          id: 'tab-q',
+          href: 'www.google.es'
+        }
       ];
     }
     tabElement.addEventListener('chiTabChange', e => {
@@ -283,18 +319,6 @@ script.
       'vertical-flat-base',
       'vertical-flat-inverse',
       'vertical-solid',
-      //- {"vertical-subtabs": [
-      //-   {label: "Active tab", id: 'vertical-subtabs-1', children: [
-      //-     {label: "Active subtab", id: 'vertical-subtabs-1-1', children: [
-      //-       {label: "Tab Link", id: 'vertical-subtabs-1-1-1'},
-      //-       {label: "Tab Link", id: 'vertical-subtabs-1-1-2'},
-      //-     ]},
-      //-     {label: "Tab Link", id: 'vertical-subtabs-1-2'},
-      //-     {label: "Tab Link", id: 'vertical-subtabs-1-3'},
-      //-   ]},
-      //-   {label: "Tab Link", id: 'vertical-subtabs-2'},
-      //-   {label: "Tab Link", id: 'vertical-subtabs-3'},
-      //- ]},
       'bordered-base',
       'bordered-inverse',
       'size-XS-horizontal',
