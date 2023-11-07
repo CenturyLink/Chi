@@ -102,6 +102,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import axios from 'axios';
 
 @Component({
   data: () => {
@@ -109,6 +110,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
       props: [],
       events: [],
       methods: [],
+      docs: null
     };
   }
 })
@@ -119,17 +121,34 @@ export default class PropertiesGenerator extends Vue {
     return `CustomEvent<${detail}>`;
   }
 
-  created() {
-    if (Vue.prototype.$chiDocs) {
-      const component = Vue.prototype.$chiDocs.components?.find(
-        (component: {tag: string}) => component.tag === this.tag
-      );
+  async getDocs() {
+    try {
+      const response = await axios.get("https://assets.ctl.io/chi/5.41.0/js/ce/docs.json");
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 
-      if (component) {
-        this.$data.props = component.props;
-        this.$data.events = component.events;
-        this.$data.methods = component.methods;
-      }
+  async mounted() {
+    if (Vue.prototype.$chiDocs) {
+      console.log('got docs from vue prototype chidocs')
+      this.$data.docs = Vue.prototype.$chiDocs;
+    }
+    else {
+      console.log('force re-getting docs')
+      this.$data.docs = await this.getDocs()
+    }
+
+    const component = this.$data.docs.components?.find(
+      (component: { tag: string }) => component.tag === this.tag
+    );
+
+    if (component) {
+      this.$data.props = component.props;
+      this.$data.events = component.events;
+      this.$data.methods = component.methods;
     }
   }
 }
