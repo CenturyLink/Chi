@@ -1,5 +1,5 @@
 <template lang="pug">
-  div This is written with no condition ||| isPropsLoaded: {{ isPropsLoaded }}
+  div
     div(v-if="isPropsLoaded")
       h3 Properties
       section.chi-table.chi-table__options.-bordered.-my--3
@@ -126,36 +126,19 @@ export default class PropertiesGenerator extends Vue {
     return `CustomEvent<${detail}>`;
   }
 
-  async getDocs() {
-    try {
-      const response = await axios.get("https://assets.ctl.io/chi/5.41.0/js/ce/docs.json");
-      return response.data;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
-  }
-
   async created() {
-    console.log('created hook started')
     if (Vue.prototype.$chiDocs) {
-      console.log('got docs from vue prototype chidocs')
       this.$data.docs = Vue.prototype.$chiDocs;
-    }
-    else {
-      console.log('force re-getting docs')
-      this.$data.docs = await this.getDocs()
-    }
 
-    const component = this.$data.docs.components?.find(
-      (component: { tag: string }) => component.tag === this.tag
-    );
+      const component = this.$data.docs.components?.find(
+        (component: { tag: string }) => component.tag === this.tag
+      );
 
-    if (component) {
-      this.$data.props = component.props;
-      this.$data.events = component.events;
-      this.$data.methods = component.methods;
+      if (component) {
+        this.$data.props = component.props;
+        this.$data.events = component.events;
+        this.$data.methods = component.methods;
+      }
     }
   }
-}
 </script>
