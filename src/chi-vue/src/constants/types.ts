@@ -125,6 +125,7 @@ export interface DataTableConfig {
   showSelectAllDropdown?: boolean;
   emptyActionable?: DataTableEmptyActionableContent;
   actions?: DataTableAction[];
+  expandedNestedContent?: boolean;
 }
 export interface DataTableFilter {
   name: string;

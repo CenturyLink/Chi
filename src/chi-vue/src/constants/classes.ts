@@ -345,6 +345,8 @@ export const UTILITY_CLASSES = {
       4: '-pl--4',
       5: '-pl--5',
       6: '-pl--6',
+      7: '-pl--7',
+      8: '-pl--8',
     },
     RIGHT: {
       1: '-pr--1',
