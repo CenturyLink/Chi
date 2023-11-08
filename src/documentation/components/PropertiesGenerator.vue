@@ -102,7 +102,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import axios from 'axios';
 
 @Component({
   data: () => {
@@ -110,7 +109,7 @@ import axios from 'axios';
       props: [],
       events: [],
       methods: [],
-      docs: null
+      docs: Vue.prototype.$chiDocs
     };
   },
   computed: {
@@ -126,12 +125,10 @@ export default class PropertiesGenerator extends Vue {
     return `CustomEvent<${detail}>`;
   }
 
-  async created() {
-    if (Vue.prototype.$chiDocs) {
-      this.$data.docs = Vue.prototype.$chiDocs;
-
+  created() {
+    if (this.$data.docs) {
       const component = this.$data.docs.components?.find(
-        (component: { tag: string }) => component.tag === this.tag
+        (component: {tag: string}) => component.tag === this.tag
       );
 
       if (component) {

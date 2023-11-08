@@ -57,8 +57,8 @@ module.exports = {
       config.optimization.minimizer('terser').tap(args => {
         args[0].terserOptions = {
           compress: {
-            drop_console: false,
-            drop_debugger: false,
+            drop_console: true,
+            drop_debugger: true,
           },
           keep_classnames: true,
           keep_fnames: true,

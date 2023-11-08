@@ -7,12 +7,6 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component({
-  computed: {
-    isChiDocsLoaded() {
-      return Vue?.prototype?.$chiDocs !== undefined;
-    }
-  }
-})
+@Component({})
 export default class Properties extends Vue {}
 </script>
