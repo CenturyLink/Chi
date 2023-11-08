@@ -7,6 +7,9 @@ script(nomodule='' src='../../js/ce/ux-chi-ce/ux-chi-ce.js')
 - var positions = ['top', 'right', 'bottom', 'left', 'top-start', 'top-end', 'right-start', 'right-end', 'bottom-start', 'bottom-end', 'left-start', 'left-end'];
 - var methods = ['toggle', 'show', 'hide']
 - var events = ['show', 'hide', 'keydown', 'item-selected']
+- var colors = ["primary", "secondary", "danger", "dark", "light" ]
+- var variants = ["", "outline", "flat"]
+- var sizes = [ "xs", "sm", "md", "lg", "xl" ]
 
 .-mt--5(style='width: 500px; height: 500px;')
   span.-text--h2=`Base`
@@ -101,12 +104,43 @@ chi-dropdown#dropdown-level-4(position="right-start" reference="#test-nesting-le
   a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
   a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
 
+.test-nesting.-d--flex.-mt--5(style='width: 1000px; height: 600px;')
+  span.-text--h2=`Color - And Variants`
+    each variant in variants
+      .-w--100.-h--100.-d--flex.-flex--row.-align-items--center.-justify-content--around
+        each color in colors
+          chi-dropdown(id=`test-variant-${variant}-color-${color}-dropdown` button=`${color}${variant ? '-' + variant : ''}` color=color variant=variant)
+            a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+            a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+            a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
+
+.-mt--5(style='width: 1000px;')
+  span.-text--h2=`Button sizes`
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--around
+    each size in sizes
+      chi-dropdown(id=`test-size-${size}-dropdown` button=`Size-${size}` size=size)
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+        a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 3
+
+.-mt--5(style='width: 500px; height: 500px;')
+  span.-text--h2=`Disabled`
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    chi-dropdown(disabled button="Disabled")
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+
+.-mt--5(style='width: 500px; height: 500px;')
+  span.-text--h2=`Uppercase text`
+  .-w--100.-h--100.-d--flex.-align-items--center.-justify-content--center
+    chi-dropdown(uppercase button="this text is uppercased")
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 1
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+      a.chi-dropdown__menu-item(href='#' slot='menu') Menu item 2
+
+
+
 script.
-  const dropdowns = [
-    {trigger: '#test-toggle-trigger', dropdown: '#test-toggle-dropdown', method: 'toggle'},
-    {trigger: '#test-show-trigger', dropdown: '#test-show-dropdown', method: 'show'},
-    {trigger: '#test-hide-trigger', dropdown: '#test-hide-dropdown', method: 'hide'},
-  ];
   const multiLevelDropdowns = [
     {trigger: '#test-nesting-level-2', dropdown: '#dropdown-level-3'},
     {trigger: '#test-nesting-level-3', dropdown: '#dropdown-level-4'},
@@ -115,25 +149,6 @@ script.
   const referenceDropdown = document.getElementById('test-reference-dropdown');
   let isReferenceDropdownActive = false;
 
-  Array.prototype.forEach.call(dropdowns, function(dropdownData){
-    const trigger = document.querySelector(dropdownData.trigger);
-    const dropdown = document.querySelector(dropdownData.dropdown);
-
-    if (trigger && dropdown) {
-      trigger.addEventListener('click', function(e) {
-        switch (dropdownData.method) {
-          case 'show':
-            dropdown.show();
-            break;
-          case 'hide':
-            dropdown.hide();
-            break;
-          default:
-            dropdown.toggle();
-        }
-      });
-    }
-  });
 
   Array.prototype.forEach.call(multiLevelDropdowns, function(dropdownData){
     const trigger = document.querySelector(dropdownData.trigger);
